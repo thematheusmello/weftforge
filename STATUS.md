@@ -8,7 +8,7 @@ All six roadmap gates remain open beyond the bounded implementation evidence.
 ## Recoverable implementation and publication
 
 Verified public repository/origin: https://github.com/thematheusmello/weftforge.
-Published main: `69ad78ce018674db4595c5ddf6e0a18b00275c82` ([PR14](https://github.com/thematheusmello/weftforge/pull/14)).
+Published main: `28cae66b684e368e7fbe6b3240069ae0eb6e16e6` ([PR15](https://github.com/thematheusmello/weftforge/pull/15)).
 The preceding main2837647 Linux/macOS/Windows source checks and evidence validation passed in
 [CI43526530172](https://github.com/thematheusmello/weftforge/actions/runs/43526530172).
 [Pages43526530260](https://github.com/thematheusmello/weftforge/actions/runs/43526530260)
@@ -22,16 +22,26 @@ targets main8419363, with byte/SHA-verified original editable shirt and OBJ/SVG
 assets. No compiled binaries/installers ship. Its inspector data-preservation bug
 is disclosed in the release notes and [issue13](https://github.com/thematheusmello/weftforge/issues/13).
 
-Current root branch `feat/grain-native-acceptance` integrates the grain increment
-from recoverable commit `b8c9a1a615787c851d6fea15265faf30541f1024` in its separate
-`feat/grain-authoring` worktree. It adds authored grain, orthotropic materials,
-strict v1→v2 migration, native/CLI controls and the inspector fix. Source integration checks passed (formatting,44 Rust tests, strict clippy and
-24 Python/registry checks). New native acceptance files are retained locally for a
-reviewed report after the source checkpoint is public. The merged
-[reference-access PR14](https://github.com/thematheusmello/weftforge/pull/14) records
-the latest read-only sign-in observation; all eight push/PR checks passed. Main
-CI/Pages for its merge are being verified separately. No source build/probe is
-running locally.
+The grain, strict v2 migration and inspector fix are merged through PR15. All
+eight push/PR Linux/macOS/Windows/evidence checks passed on its source-identical
+head9738099. Main [CI43529986279](https://github.com/thematheusmello/weftforge/actions/runs/43529986279)
+is still running at this checkpoint; [Pages43529986285](https://github.com/thematheusmello/weftforge/actions/runs/43529986285)
+succeeded. Reference-access PR14 also completed all checks and merged.
+
+Current root branch `docs/grain-evidence` retains the new native editing/persistence
+pass and the same replay's fitting failure in separate scoped reports. Every
+report points to public source28cae66, whose26 Rust/workspace/lock/toolchain files
+byte-match the actual b8c9a1a build source. The executable was retained; no rebuild
+at the later publication commit is claimed. Historical reports/fixtures remain
+unchanged, including their stale flags and original outcomes.
+
+The curve increment is recoverable as `c48cd958101c5602a09824c5836d4874c4c6b0d5`
+in `feat/sewn-curve-editing`:49 Rust/24 Python checks,fmt,clippy and release builds
+passed. Native curve acceptance is next. The local MCP adapter is active in its
+separate worktree with explicit module/shared-export ownership; root is avoiding
+concurrent shared-target Cargo work. Completed disposable debug caches were
+removed after disk exhaustion; retained f00e,03d440 and1ed6d1 binaries were rehashed
+unchanged. No source build/benchmark/research process remains live on root.
 
 ## What works and what was checked
 
@@ -98,7 +108,11 @@ independent axis strain0.26930346 exceeds the unchanged0.15 limit. Seam gap5.55e
 passes0.005m; avatar/ground thickness error0 passes0.002m. SVG authored paths and
 millimetre scale pass. Retain this anisotropic garment failure. Successful editing
 and persistence do not establish fitting quality. Independent self-contact and
-animation checks remain absent. New screenshot/report review is in progress.
+animation checks remain absent. New scoped reports are `WF-20261113-GRAIN-AUTHORING-001` (passed subset) and
+`WF-20261113-GRAIN-FIT-001` (failed fit), with original screenshot/provenance under
+`docs/images/studio-grain.*`. A headless repeat exits1 with identical axis strain
+within1e-12;3 simulated seconds took22.19s wall (~0.135 simulated s/wall s).
+The fitting discrepancy is [issue16](https://github.com/thematheusmello/weftforge/issues/16).
 
 ## Reference laboratory
 
@@ -130,12 +144,13 @@ old evidence stale. Current failures cannot be hidden by another pass or removin
 run references. Before the first actual reference pass can qualify, add baseline
 revision/settings and reviewed contract/scenario/criteria digest qualification.
 
-1. Finish source integration checks and publish the grain/inspector fix. Retain a
-   public source checkpoint, then publish new scoped native reports and the
-   anisotropic failure. Preserve all old fixtures/artifacts and accurate freshness.
-2. Continue the isolated `feat/sewn-curve-editing` increment: native curve controls
-   and exact sewn-interval partitioning on split, with relationship/history/remesh
-   checks. Its agent has explicit separate ownership and no publication authority.
+1. Publish the reviewed grain native reports and retained anisotropic failure,
+   after registry/generated/artifact checks. Preserve the source checkpoint, all
+   old artifacts/outcomes and accurate per-scope freshness.
+2. Exercise the retained1ed6d1 curve executable through numeric control editing,
+   sewn split, history, refinement and save/reopen; independently check geometry
+   and sewing. Integrate its tested source and review grain-report staleness.
+   Then integrate the local MCP adapter/shared export guard with protocol tests.
 3. Improve sewing semantics and garment/contact convergence, then measure layered
    shirt+jacket, contrasting fabrics/refinement and real responsiveness. Continue
    professional construction, avatar imports, animation/caches, PBR, interchange,
@@ -144,6 +159,6 @@ revision/settings and reviewed contract/scenario/criteria digest qualification.
    original scenarios. Implementation-only checks never count as reference parity.
 
 Last observed own-app PID52560 is paused at3s Drape with no active-job indicator.
-Historical reference PID18283 showed sign-in at23:06UTC. Grain build/check sessions
-completed; the curve agent is active in its isolated worktree. Recheck actual
+Historical reference PID18283 showed sign-in at23:06UTC. Grain and curve build/check sessions
+completed; the MCP agent is active in its isolated worktree. Recheck actual
 processes and CI handles before resuming; do not duplicate live work.

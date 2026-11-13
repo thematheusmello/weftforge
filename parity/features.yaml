@@ -118,6 +118,15 @@
           },
           "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
           "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
         }
       ],
       "comparison_criteria": {
@@ -171,6 +180,28 @@
             "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
             "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
+        },
+        {
+          "id": "WF-20261113-GRAIN-AUTHORING-001",
+          "commit": "28cae66b684e368e7fbe6b3240069ae0eb6e16e6",
+          "timestamp": "2026-11-13T23:58:16.741338Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/grain-shirt-before-color.weftforge": "b2918d22d09db1e679824ae7c6bf6d643b940f8e6124dffeccb22f05a6484007",
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+            "fixtures/grain-shirt-drape.obj": "bbc8a32cc4984b6fb6399401c00e84cd2b02136add77e5501417fbffe930b8f9",
+            "fixtures/grain-shirt-patterns.svg": "7a48f7e879046d005a7ad9bb18f3b1ba4f60d7c1bc15bc513f1effc91b6928fb",
+            "docs/images/studio-grain.png": "4de35d6e9f974b8b3a4309d8fdb3775af377fd90fca51cef05efa991a45e4537",
+            "docs/images/studio-grain.json": "7b793efd76b2172c7ded59dc362ea4a6af2abddc50f22824b679a3752381e72f",
+            "parity/reports/artifacts/independent-grain-shirt.json": "8038d046db79121c7355c55d97891e3590a4d78801a387e28c3de54252e5dbef",
+            "parity/scenarios/UI-GRAIN-001.json": "95723646472edcf1c14fb0bbf4da619905bf0eebca959c1fc1599a31de6e1581",
+            "parity/reports/artifacts/grain-fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/grain-tests.log": "2d33ca38060f7a9aab30bb398977fb2fc2d103546cf758680124817898acbe7c",
+            "parity/reports/artifacts/grain-clippy.log": "c481bf9e0c524795e35e98b78eade115a37c6bf594a570103fbe94e45feae27e",
+            "parity/reports/artifacts/grain-xtask.log": "f731bb1d11f5439c9fe48a24eb0498ae4e24e1eed1b4a96d1a58c73f8e56d236"
+          },
+          "path": "parity/reports/WF-20261113-GRAIN-AUTHORING-001.json"
         }
       ],
       "known_gaps": [
@@ -180,7 +211,7 @@
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "UI-003",
@@ -253,6 +284,15 @@
           },
           "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
           "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
         }
       ],
       "comparison_criteria": {
@@ -272,7 +312,9 @@
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/2"
       ],
-      "prs": [],
+      "prs": [
+        "https://github.com/thematheusmello/weftforge/pull/15"
+      ],
       "implementation_status": "partial",
       "verification_status": "not_run",
       "verification_runs": [
@@ -321,6 +363,28 @@
             "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
             "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
+        },
+        {
+          "id": "WF-20261113-GRAIN-AUTHORING-001",
+          "commit": "28cae66b684e368e7fbe6b3240069ae0eb6e16e6",
+          "timestamp": "2026-11-13T23:58:16.741338Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/grain-shirt-before-color.weftforge": "b2918d22d09db1e679824ae7c6bf6d643b940f8e6124dffeccb22f05a6484007",
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+            "fixtures/grain-shirt-drape.obj": "bbc8a32cc4984b6fb6399401c00e84cd2b02136add77e5501417fbffe930b8f9",
+            "fixtures/grain-shirt-patterns.svg": "7a48f7e879046d005a7ad9bb18f3b1ba4f60d7c1bc15bc513f1effc91b6928fb",
+            "docs/images/studio-grain.png": "4de35d6e9f974b8b3a4309d8fdb3775af377fd90fca51cef05efa991a45e4537",
+            "docs/images/studio-grain.json": "7b793efd76b2172c7ded59dc362ea4a6af2abddc50f22824b679a3752381e72f",
+            "parity/reports/artifacts/independent-grain-shirt.json": "8038d046db79121c7355c55d97891e3590a4d78801a387e28c3de54252e5dbef",
+            "parity/scenarios/UI-GRAIN-001.json": "95723646472edcf1c14fb0bbf4da619905bf0eebca959c1fc1599a31de6e1581",
+            "parity/reports/artifacts/grain-fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/grain-tests.log": "2d33ca38060f7a9aab30bb398977fb2fc2d103546cf758680124817898acbe7c",
+            "parity/reports/artifacts/grain-clippy.log": "c481bf9e0c524795e35e98b78eade115a37c6bf594a570103fbe94e45feae27e",
+            "parity/reports/artifacts/grain-xtask.log": "f731bb1d11f5439c9fe48a24eb0498ae4e24e1eed1b4a96d1a58c73f8e56d236"
+          },
+          "path": "parity/reports/WF-20261113-GRAIN-AUTHORING-001.json"
         }
       ],
       "known_gaps": [
@@ -330,7 +394,7 @@
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "UI-005",
@@ -1013,7 +1077,17 @@
       ],
       "reference_observation_status": "unobserved",
       "evidence_ids": [],
-      "scenarios": [],
+      "scenarios": [
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -1032,19 +1106,44 @@
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3"
       ],
-      "prs": [],
+      "prs": [
+        "https://github.com/thematheusmello/weftforge/pull/15"
+      ],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-GRAIN-AUTHORING-001",
+          "commit": "28cae66b684e368e7fbe6b3240069ae0eb6e16e6",
+          "timestamp": "2026-11-13T23:58:16.741338Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/grain-shirt-before-color.weftforge": "b2918d22d09db1e679824ae7c6bf6d643b940f8e6124dffeccb22f05a6484007",
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+            "fixtures/grain-shirt-drape.obj": "bbc8a32cc4984b6fb6399401c00e84cd2b02136add77e5501417fbffe930b8f9",
+            "fixtures/grain-shirt-patterns.svg": "7a48f7e879046d005a7ad9bb18f3b1ba4f60d7c1bc15bc513f1effc91b6928fb",
+            "docs/images/studio-grain.png": "4de35d6e9f974b8b3a4309d8fdb3775af377fd90fca51cef05efa991a45e4537",
+            "docs/images/studio-grain.json": "7b793efd76b2172c7ded59dc362ea4a6af2abddc50f22824b679a3752381e72f",
+            "parity/reports/artifacts/independent-grain-shirt.json": "8038d046db79121c7355c55d97891e3590a4d78801a387e28c3de54252e5dbef",
+            "parity/scenarios/UI-GRAIN-001.json": "95723646472edcf1c14fb0bbf4da619905bf0eebca959c1fc1599a31de6e1581",
+            "parity/reports/artifacts/grain-fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/grain-tests.log": "2d33ca38060f7a9aab30bb398977fb2fc2d103546cf758680124817898acbe7c",
+            "parity/reports/artifacts/grain-clippy.log": "c481bf9e0c524795e35e98b78eade115a37c6bf594a570103fbe94e45feae27e",
+            "parity/reports/artifacts/grain-xtask.log": "f731bb1d11f5439c9fe48a24eb0498ae4e24e1eed1b4a96d1a58c73f8e56d236"
+          },
+          "path": "parity/reports/WF-20261113-GRAIN-AUTHORING-001.json"
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Authored grain/stiffness, strict v1 migration and CPU response have implementation tests. Native edit/history/v2 reopen/color isolation were observed; reviewed scoped report is pending. The anisotropic shirt failed the unchanged strain limit. Reference defaults/semantics remain unobserved."
+        "Native grain/history/v2 reopen/shared stiffness/color isolation passed a bounded implementation replay; the same anisotropic garment failed its unchanged strain criterion. Reference defaults and complete contract remain unobserved."
       ],
       "contradictions": [],
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "PAT-009",
@@ -1791,6 +1890,15 @@
           },
           "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
           "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
         }
       ],
       "comparison_criteria": {
@@ -1811,7 +1919,8 @@
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/2",
-        "https://github.com/thematheusmello/weftforge/issues/8"
+        "https://github.com/thematheusmello/weftforge/issues/8",
+        "https://github.com/thematheusmello/weftforge/issues/16"
       ],
       "prs": [],
       "implementation_status": "partial",
@@ -1885,16 +1994,41 @@
             "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
             "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
+        },
+        {
+          "id": "WF-20261113-GRAIN-FIT-001",
+          "commit": "28cae66b684e368e7fbe6b3240069ae0eb6e16e6",
+          "timestamp": "2026-11-13T23:58:16.741338Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/grain-shirt-before-color.weftforge": "b2918d22d09db1e679824ae7c6bf6d643b940f8e6124dffeccb22f05a6484007",
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+            "fixtures/grain-shirt-drape.obj": "bbc8a32cc4984b6fb6399401c00e84cd2b02136add77e5501417fbffe930b8f9",
+            "fixtures/grain-shirt-patterns.svg": "7a48f7e879046d005a7ad9bb18f3b1ba4f60d7c1bc15bc513f1effc91b6928fb",
+            "docs/images/studio-grain.png": "4de35d6e9f974b8b3a4309d8fdb3775af377fd90fca51cef05efa991a45e4537",
+            "docs/images/studio-grain.json": "7b793efd76b2172c7ded59dc362ea4a6af2abddc50f22824b679a3752381e72f",
+            "parity/reports/artifacts/independent-grain-shirt.json": "8038d046db79121c7355c55d97891e3590a4d78801a387e28c3de54252e5dbef",
+            "parity/scenarios/UI-GRAIN-001.json": "95723646472edcf1c14fb0bbf4da619905bf0eebca959c1fc1599a31de6e1581",
+            "parity/reports/artifacts/grain-fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/grain-tests.log": "2d33ca38060f7a9aab30bb398977fb2fc2d103546cf758680124817898acbe7c",
+            "parity/reports/artifacts/grain-clippy.log": "c481bf9e0c524795e35e98b78eade115a37c6bf594a570103fbe94e45feae27e",
+            "parity/reports/artifacts/grain-xtask.log": "f731bb1d11f5439c9fe48a24eb0498ae4e24e1eed1b4a96d1a58c73f8e56d236",
+            "parity/reports/artifacts/grain-fit-cli.json": "8069a252e254557391c7e08065dde6652e1d946c6bc2be32df9b21c62c70f55f",
+            "parity/reports/artifacts/grain-fit-cli.log": "1f07dfafffea171a563d76f57e1c7dc4cb68d50bce4bf83234481cb75f93790e"
+          },
+          "path": "parity/reports/WF-20261113-GRAIN-FIT-001.json"
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Native anisotropic shirt: strain0.26930346 >0.15; seam5.55e-6m and avatar/ground error0 pass. No tolerance or material substitution was made."
       ],
       "contradictions": [],
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "FIT-004",
@@ -2380,6 +2514,15 @@
           },
           "initial_conditions": "Original garment, two physical parameter sets; same appearance and conditions.",
           "expected_outcomes": "Independent analytic extension/contact tolerances; investigate any mesh-dependent material behavior."
+        },
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
         }
       ],
       "comparison_criteria": {
@@ -2399,7 +2542,8 @@
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/4",
-        "https://github.com/thematheusmello/weftforge/issues/8"
+        "https://github.com/thematheusmello/weftforge/issues/8",
+        "https://github.com/thematheusmello/weftforge/issues/16"
       ],
       "prs": [],
       "implementation_status": "partial",
@@ -2442,16 +2586,41 @@
             "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
             "parity/reports/artifacts/tight-fit.json": "f523ce00375f64a2620c2cdb54392caf62213c6a8617f69f30fe2ccdb70900a3"
           }
+        },
+        {
+          "id": "WF-20261113-GRAIN-FIT-001",
+          "commit": "28cae66b684e368e7fbe6b3240069ae0eb6e16e6",
+          "timestamp": "2026-11-13T23:58:16.741338Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/grain-shirt-before-color.weftforge": "b2918d22d09db1e679824ae7c6bf6d643b940f8e6124dffeccb22f05a6484007",
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+            "fixtures/grain-shirt-drape.obj": "bbc8a32cc4984b6fb6399401c00e84cd2b02136add77e5501417fbffe930b8f9",
+            "fixtures/grain-shirt-patterns.svg": "7a48f7e879046d005a7ad9bb18f3b1ba4f60d7c1bc15bc513f1effc91b6928fb",
+            "docs/images/studio-grain.png": "4de35d6e9f974b8b3a4309d8fdb3775af377fd90fca51cef05efa991a45e4537",
+            "docs/images/studio-grain.json": "7b793efd76b2172c7ded59dc362ea4a6af2abddc50f22824b679a3752381e72f",
+            "parity/reports/artifacts/independent-grain-shirt.json": "8038d046db79121c7355c55d97891e3590a4d78801a387e28c3de54252e5dbef",
+            "parity/scenarios/UI-GRAIN-001.json": "95723646472edcf1c14fb0bbf4da619905bf0eebca959c1fc1599a31de6e1581",
+            "parity/reports/artifacts/grain-fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/grain-tests.log": "2d33ca38060f7a9aab30bb398977fb2fc2d103546cf758680124817898acbe7c",
+            "parity/reports/artifacts/grain-clippy.log": "c481bf9e0c524795e35e98b78eade115a37c6bf594a570103fbe94e45feae27e",
+            "parity/reports/artifacts/grain-xtask.log": "f731bb1d11f5439c9fe48a24eb0498ae4e24e1eed1b4a96d1a58c73f8e56d236",
+            "parity/reports/artifacts/grain-fit-cli.json": "8069a252e254557391c7e08065dde6652e1d946c6bc2be32df9b21c62c70f55f",
+            "parity/reports/artifacts/grain-fit-cli.log": "1f07dfafffea171a563d76f57e1c7dc4cb68d50bce4bf83234481cb75f93790e"
+          },
+          "path": "parity/reports/WF-20261113-GRAIN-FIT-001.json"
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Native anisotropic shirt: strain0.26930346 >0.15; seam5.55e-6m and avatar/ground error0 pass. No tolerance or material substitution was made."
       ],
       "contradictions": [],
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "SIM-007",
@@ -2506,7 +2675,17 @@
       ],
       "reference_observation_status": "unobserved",
       "evidence_ids": [],
-      "scenarios": [],
+      "scenarios": [
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -2527,10 +2706,35 @@
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/5"
       ],
-      "prs": [],
+      "prs": [
+        "https://github.com/thematheusmello/weftforge/pull/15"
+      ],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-GRAIN-AUTHORING-001",
+          "commit": "28cae66b684e368e7fbe6b3240069ae0eb6e16e6",
+          "timestamp": "2026-11-13T23:58:16.741338Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/grain-shirt-before-color.weftforge": "b2918d22d09db1e679824ae7c6bf6d643b940f8e6124dffeccb22f05a6484007",
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+            "fixtures/grain-shirt-drape.obj": "bbc8a32cc4984b6fb6399401c00e84cd2b02136add77e5501417fbffe930b8f9",
+            "fixtures/grain-shirt-patterns.svg": "7a48f7e879046d005a7ad9bb18f3b1ba4f60d7c1bc15bc513f1effc91b6928fb",
+            "docs/images/studio-grain.png": "4de35d6e9f974b8b3a4309d8fdb3775af377fd90fca51cef05efa991a45e4537",
+            "docs/images/studio-grain.json": "7b793efd76b2172c7ded59dc362ea4a6af2abddc50f22824b679a3752381e72f",
+            "parity/reports/artifacts/independent-grain-shirt.json": "8038d046db79121c7355c55d97891e3590a4d78801a387e28c3de54252e5dbef",
+            "parity/scenarios/UI-GRAIN-001.json": "95723646472edcf1c14fb0bbf4da619905bf0eebca959c1fc1599a31de6e1581",
+            "parity/reports/artifacts/grain-fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/grain-tests.log": "2d33ca38060f7a9aab30bb398977fb2fc2d103546cf758680124817898acbe7c",
+            "parity/reports/artifacts/grain-clippy.log": "c481bf9e0c524795e35e98b78eade115a37c6bf594a570103fbe94e45feae27e",
+            "parity/reports/artifacts/grain-xtask.log": "f731bb1d11f5439c9fe48a24eb0498ae4e24e1eed1b4a96d1a58c73f8e56d236"
+          },
+          "path": "parity/reports/WF-20261113-GRAIN-AUTHORING-001.json"
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -2538,7 +2742,7 @@
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "MAT-002",
@@ -2809,6 +3013,15 @@
           },
           "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
           "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
         }
       ],
       "comparison_criteria": {
@@ -2830,7 +3043,9 @@
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/6"
       ],
-      "prs": [],
+      "prs": [
+        "https://github.com/thematheusmello/weftforge/pull/15"
+      ],
       "implementation_status": "partial",
       "verification_status": "not_run",
       "verification_runs": [
@@ -2879,17 +3094,39 @@
             "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
             "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
+        },
+        {
+          "id": "WF-20261113-GRAIN-AUTHORING-001",
+          "commit": "28cae66b684e368e7fbe6b3240069ae0eb6e16e6",
+          "timestamp": "2026-11-13T23:58:16.741338Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/grain-shirt-before-color.weftforge": "b2918d22d09db1e679824ae7c6bf6d643b940f8e6124dffeccb22f05a6484007",
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+            "fixtures/grain-shirt-drape.obj": "bbc8a32cc4984b6fb6399401c00e84cd2b02136add77e5501417fbffe930b8f9",
+            "fixtures/grain-shirt-patterns.svg": "7a48f7e879046d005a7ad9bb18f3b1ba4f60d7c1bc15bc513f1effc91b6928fb",
+            "docs/images/studio-grain.png": "4de35d6e9f974b8b3a4309d8fdb3775af377fd90fca51cef05efa991a45e4537",
+            "docs/images/studio-grain.json": "7b793efd76b2172c7ded59dc362ea4a6af2abddc50f22824b679a3752381e72f",
+            "parity/reports/artifacts/independent-grain-shirt.json": "8038d046db79121c7355c55d97891e3590a4d78801a387e28c3de54252e5dbef",
+            "parity/scenarios/UI-GRAIN-001.json": "95723646472edcf1c14fb0bbf4da619905bf0eebca959c1fc1599a31de6e1581",
+            "parity/reports/artifacts/grain-fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/grain-tests.log": "2d33ca38060f7a9aab30bb398977fb2fc2d103546cf758680124817898acbe7c",
+            "parity/reports/artifacts/grain-clippy.log": "c481bf9e0c524795e35e98b78eade115a37c6bf594a570103fbe94e45feae27e",
+            "parity/reports/artifacts/grain-xtask.log": "f731bb1d11f5439c9fe48a24eb0498ae4e24e1eed1b4a96d1a58c73f8e56d236"
+          },
+          "path": "parity/reports/WF-20261113-GRAIN-AUTHORING-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Native writer is v2 with strict lossless v1 migration for grain/orthotropy. Updated native reopen was observed; reviewed report and broader recovery workflow evidence are pending."
+        "Native v2 save/quit/relaunch/reopen passed on one identified macOS executable; broader asset/recovery/platform workflows remain incomplete."
       ],
       "contradictions": [],
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "FILE-002",
@@ -2990,6 +3227,15 @@
           },
           "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
           "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
         }
       ],
       "comparison_criteria": {
@@ -3058,6 +3304,28 @@
             "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
             "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
+        },
+        {
+          "id": "WF-20261113-GRAIN-AUTHORING-001",
+          "commit": "28cae66b684e368e7fbe6b3240069ae0eb6e16e6",
+          "timestamp": "2026-11-13T23:58:16.741338Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/grain-shirt-before-color.weftforge": "b2918d22d09db1e679824ae7c6bf6d643b940f8e6124dffeccb22f05a6484007",
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+            "fixtures/grain-shirt-drape.obj": "bbc8a32cc4984b6fb6399401c00e84cd2b02136add77e5501417fbffe930b8f9",
+            "fixtures/grain-shirt-patterns.svg": "7a48f7e879046d005a7ad9bb18f3b1ba4f60d7c1bc15bc513f1effc91b6928fb",
+            "docs/images/studio-grain.png": "4de35d6e9f974b8b3a4309d8fdb3775af377fd90fca51cef05efa991a45e4537",
+            "docs/images/studio-grain.json": "7b793efd76b2172c7ded59dc362ea4a6af2abddc50f22824b679a3752381e72f",
+            "parity/reports/artifacts/independent-grain-shirt.json": "8038d046db79121c7355c55d97891e3590a4d78801a387e28c3de54252e5dbef",
+            "parity/scenarios/UI-GRAIN-001.json": "95723646472edcf1c14fb0bbf4da619905bf0eebca959c1fc1599a31de6e1581",
+            "parity/reports/artifacts/grain-fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/grain-tests.log": "2d33ca38060f7a9aab30bb398977fb2fc2d103546cf758680124817898acbe7c",
+            "parity/reports/artifacts/grain-clippy.log": "c481bf9e0c524795e35e98b78eade115a37c6bf594a570103fbe94e45feae27e",
+            "parity/reports/artifacts/grain-xtask.log": "f731bb1d11f5439c9fe48a24eb0498ae4e24e1eed1b4a96d1a58c73f8e56d236"
+          },
+          "path": "parity/reports/WF-20261113-GRAIN-AUTHORING-001.json"
         }
       ],
       "known_gaps": [
@@ -3068,7 +3336,7 @@
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "FILE-004",
@@ -3141,6 +3409,15 @@
           },
           "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
           "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-GRAIN-001",
+          "path": "parity/scenarios/UI-GRAIN-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
+          "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
         }
       ],
       "comparison_criteria": {
@@ -3209,6 +3486,28 @@
             "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
             "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
+        },
+        {
+          "id": "WF-20261113-GRAIN-AUTHORING-001",
+          "commit": "28cae66b684e368e7fbe6b3240069ae0eb6e16e6",
+          "timestamp": "2026-11-13T23:58:16.741338Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/grain-shirt-before-color.weftforge": "b2918d22d09db1e679824ae7c6bf6d643b940f8e6124dffeccb22f05a6484007",
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+            "fixtures/grain-shirt-drape.obj": "bbc8a32cc4984b6fb6399401c00e84cd2b02136add77e5501417fbffe930b8f9",
+            "fixtures/grain-shirt-patterns.svg": "7a48f7e879046d005a7ad9bb18f3b1ba4f60d7c1bc15bc513f1effc91b6928fb",
+            "docs/images/studio-grain.png": "4de35d6e9f974b8b3a4309d8fdb3775af377fd90fca51cef05efa991a45e4537",
+            "docs/images/studio-grain.json": "7b793efd76b2172c7ded59dc362ea4a6af2abddc50f22824b679a3752381e72f",
+            "parity/reports/artifacts/independent-grain-shirt.json": "8038d046db79121c7355c55d97891e3590a4d78801a387e28c3de54252e5dbef",
+            "parity/scenarios/UI-GRAIN-001.json": "95723646472edcf1c14fb0bbf4da619905bf0eebca959c1fc1599a31de6e1581",
+            "parity/reports/artifacts/grain-fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/grain-tests.log": "2d33ca38060f7a9aab30bb398977fb2fc2d103546cf758680124817898acbe7c",
+            "parity/reports/artifacts/grain-clippy.log": "c481bf9e0c524795e35e98b78eade115a37c6bf594a570103fbe94e45feae27e",
+            "parity/reports/artifacts/grain-xtask.log": "f731bb1d11f5439c9fe48a24eb0498ae4e24e1eed1b4a96d1a58c73f8e56d236"
+          },
+          "path": "parity/reports/WF-20261113-GRAIN-AUTHORING-001.json"
         }
       ],
       "known_gaps": [
@@ -3218,7 +3517,7 @@
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "FILE-006",
