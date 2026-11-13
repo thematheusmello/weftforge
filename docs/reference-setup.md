@@ -1,15 +1,19 @@
 # Reference laboratory
 
 Reference access is **blocked before the garment workspace**. The official macOS
-Individual installer was downloaded, verified, copied to a user Applications
-folder, and launched on 2026-11-13. The app presented its Terms of Service. No
-terms were accepted, account created, credentials entered, or entitlement claimed.
+Individual installer was downloaded, verified, installed and launched on
+2026-11-13. The latest read-only REA observation at 23:06 UTC shows the Personal
+2026.1.237 **CLO-SET sign-in** screen. No Terms modal or garment workspace is
+visible in that selected main window. Current terms acceptance and account
+entitlement remain unknown.
 
-The operator must review/accept the app terms personally, then sign in and activate
-a legitimate trial or license. The official website's Start Trial action also
-requires sign-in; eligibility, checkout requirements, and subsequent account
-verification remain unobserved. This is the minimum intervention required before
-reference garment scenarios can run.
+The investigator earlier observed a Terms of Service dialog and stopped before
+accepting. No terms were accepted or credentials entered by the investigator.
+The account holder must sign in and activate a legitimate trial or license, and
+personally review any terms presented. The official website's Start Trial action
+also requires sign-in; eligibility, checkout requirements and subsequent account
+verification remain unobserved. Sign-in is the currently observed intervention
+needed before reference garment scenarios can run.
 
 ## Recorded identity
 

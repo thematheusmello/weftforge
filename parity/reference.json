@@ -59,8 +59,8 @@
   "blockers": [
     {
       "id": "REF-TERMS",
-      "state": "confirmed",
-      "action": "Account holder must personally review/accept the app Terms of Service."
+      "state": "historically-observed-current-acceptance-unknown",
+      "action": "Account holder must review any Terms of Service presented. No Terms modal was displayed in the latest selected-window capture; current acceptance is unverified."
     },
     {
       "id": "REF-LICENSE",
@@ -200,6 +200,20 @@
       "limitations": [
         "Documentation discovery, not current-build execution.",
         "Normalized extraction may omit webpage content; full native/menu discovery is incomplete."
+      ]
+    },
+    {
+      "id": "ev_e9e1aab8b65f947b5cc25a15d5583eefa906867ecb441b5a2aaaa8393974278f",
+      "kind": "rea-native-ui-observation",
+      "timestamp": "2026-11-13T23:06:07.544715Z",
+      "retention": "complete-private-record",
+      "sha256": "b6728ef1c1057a4be21a031a83fd5907f9a756dd9cb7a81cc77c7ad66a3da450",
+      "observed": "Personal 2026.1.237 CLO-SET sign-in screen; no Terms modal or garment workspace displayed in the selected main window.",
+      "accessibility_nodes": 12,
+      "truncated": false,
+      "limitations": [
+        "Read-only selected main window; no authoring actions executed.",
+        "Absence of a displayed Terms modal does not establish acceptance or entitlement."
       ]
     }
   ],
@@ -705,5 +719,14 @@
   "intentional_exclusions": [
     "Vendor billing, activation and storefront administration are excluded from the replacement feature set."
   ],
-  "qualification": "This provisional baseline is not frozen and supplies zero verified functional-parity claims."
+  "qualification": "This provisional baseline is not frozen and supplies zero verified functional-parity claims.",
+  "latest_access_observation": {
+    "timestamp": "2026-11-13T23:06:07.544715Z",
+    "evidence_id": "ev_e9e1aab8b65f947b5cc25a15d5583eefa906867ecb441b5a2aaaa8393974278f",
+    "observed_state": "Personal 2026.1.237 CLO-SET sign-in screen; no Terms modal or garment workspace displayed in the selected main window.",
+    "current_observed_blocker": "CLO-SET sign-in; legitimate account entitlement remains unverified.",
+    "terms_acceptance": "unknown",
+    "actions_executed": [],
+    "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e"
+  }
 }

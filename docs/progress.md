@@ -99,7 +99,7 @@ Complete identified implementation workflow: **passed**, [WF-20261113-SINGLE-CAN
 
 Continue professional editing and sewing with relationship-preserving changes; retain tight-garment failures and investigate convergence/contact. Reference workflow acceptance remains required.
 
-Reference access is held at user-reviewed Terms of Service and trial activation. See [STATUS.md](https://github.com/thematheusmello/weftforge/blob/main/STATUS.md), [ROADMAP.md](https://github.com/thematheusmello/weftforge/blob/main/ROADMAP.md), [workflow runs](https://github.com/thematheusmello/weftforge/actions), and [releases](https://github.com/thematheusmello/weftforge/releases).
+Current reference access and remaining operator actions are recorded in [reference setup](https://github.com/thematheusmello/weftforge/blob/main/docs/reference-setup.md). See [STATUS.md](https://github.com/thematheusmello/weftforge/blob/main/STATUS.md), [ROADMAP.md](https://github.com/thematheusmello/weftforge/blob/main/ROADMAP.md), [workflow runs](https://github.com/thematheusmello/weftforge/actions), and [releases](https://github.com/thematheusmello/weftforge/releases).
 
 Known solver limits: discrete vertex/triangle contact has no full edge/edge continuous contact, contact search is quadratic, and fabric approximations are uncalibrated. Cross-platform launch, animation, advanced authoring and native commercial-project compatibility remain open.
 
