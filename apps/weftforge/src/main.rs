@@ -106,6 +106,7 @@ struct InspectorDraft {
     selected: Option<Id>,
     dimensions: Option<[f64; 2]>,
     placement: Option<Placement>,
+    grain_angle: Option<f64>,
     material: Option<Material>,
     resolution: f64,
     color_pending: bool,
@@ -120,6 +121,7 @@ impl InspectorDraft {
                 .and_then(|piece| project.piece_bounds(piece.id).ok())
                 .map(|[min, max]| std::array::from_fn(|axis| max[axis] - min[axis])),
             placement: piece.map(|piece| piece.placement),
+            grain_angle: piece.map(|piece| piece.grain_angle),
             material: piece
                 .and_then(|piece| project.material(piece.material))
                 .cloned(),
@@ -144,6 +146,11 @@ impl InspectorDraft {
                 && let Some(placement) = self.placement
             {
                 commands.push(Command::SetPlacement { piece, placement });
+            }
+            if self.grain_angle != original.grain_angle
+                && let Some(angle) = self.grain_angle
+            {
+                commands.push(Command::SetGrain { piece, angle });
             }
             if self.material != original.material
                 && let Some(material) = &self.material
@@ -816,7 +823,7 @@ impl Studio {
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
                 ui.separator(); ui.strong(&piece.name);
                 if let Some(dimensions)=&mut draft.dimensions {
-                    ui.horizontal(|ui| { ui.label("Size m"); for value in dimensions { commit|=numeric_commit(&ui.add(egui::DragValue::new(value).speed(0.005).range(0.01..=5.0))); } });
+                    ui.horizontal(|ui| { ui.label("Size m"); for value in dimensions { commit|=numeric_commit(&ui.add(egui::DragValue::new(value).speed(0.005).range(0.01..=5.0).clamp_existing_to_range(false))); } });
                 }
                 if let Some(placement)=&mut draft.placement {
                     ui.label("Arrange X / Y / Z m");
@@ -824,12 +831,18 @@ impl Studio {
                     ui.label("Rotate X / Y / Z radians");
                     ui.horizontal(|ui| { for value in &mut placement.rotation { commit|=numeric_commit(&ui.add(egui::DragValue::new(value).speed(0.02))); } });
                 }
+                if let Some(angle)=&mut draft.grain_angle {
+                    ui.label("Warp angle radians");
+                    ui.small("0 = +U (right); positive turns toward +V (up).");
+                    commit|=numeric_commit(&ui.add(egui::DragValue::new(angle).speed(0.02)));
+                }
                 if let Some(material)=&mut draft.material {
                     let count=self.editor.project.pieces.iter().filter(|piece|piece.material==material.id).count();
                     ui.label(format!("Shared fabric · {count} pieces")); ui.small("Changes affect every assigned piece. Uncalibrated approximation.");
-                    ui.label("Mass/area kg/m²"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut material.areal_density).speed(0.01).range(0.01..=5.0)));
-                    ui.label("Stretch N/m"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut material.stretch_stiffness).speed(10.0).range(1.0..=100000.0)));
-                    ui.label("Bend N·m"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut material.bending_stiffness).speed(0.00001).range(0.0..=1.0)));
+                    ui.label("Mass/area kg/m²"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut material.areal_density).speed(0.01).range(0.001..=100.0).clamp_existing_to_range(false)));
+                    ui.label("Warp stiffness N/m"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut material.warp_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)));
+                    ui.label("Weft stiffness N/m"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut material.weft_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)));
+                    ui.label("Bend N·m"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut material.bending_stiffness).speed(0.00001).range(0.0..=1.0e8).clamp_existing_to_range(false)));
                     draft.color_pending|=ui.color_edit_button_rgb(&mut material.color).changed();
                     commit|=draft.color_pending && ui.input(|input|input.pointer.any_released());
                 }
@@ -932,6 +945,24 @@ impl Studio {
                         painter.circle_filled(self.to_screen(point.position, r), 3.5, color);
                     }
                 }
+            }
+            if let Ok([min, max]) = doc.piece_bounds(piece.id) {
+                let center = std::array::from_fn(|axis| (min[axis] + max[axis]) * 0.5);
+                let length =
+                    ((max[0] - min[0]).min(max[1] - min[1]) * 0.25).min(0.1) as f32 * self.scale;
+                let direction = Vec2::new(
+                    piece.grain_angle.cos() as f32,
+                    -piece.grain_angle.sin() as f32,
+                ) * length;
+                let origin = self.to_screen(center, r);
+                painter.arrow(origin, direction, Stroke::new(1.5, color));
+                painter.text(
+                    origin + Vec2::new(0., 9.),
+                    egui::Align2::CENTER_TOP,
+                    "Warp",
+                    egui::FontId::proportional(10.),
+                    color,
+                );
             }
             if let Some(curve) = piece.boundary.first().and_then(|id| doc.curve(*id))
                 && let Ok(p) = curve.evaluate(&doc, 0.)
@@ -1488,6 +1519,9 @@ mod tests {
         }
         draft.placement.as_mut().unwrap().translation[2] = 0.25;
         draft.material.as_mut().unwrap().areal_density = 0.3;
+        draft.material.as_mut().unwrap().warp_stiffness = 50.;
+        draft.material.as_mut().unwrap().weft_stiffness = 1000.;
+        draft.grain_angle = Some(std::f64::consts::FRAC_PI_2);
         assert_eq!(app.editor.project.revision, 1);
         assert_eq!(app.editor.project.piece_bounds(piece).unwrap()[1][0], 0.4);
         app.draft = Some(draft);
@@ -1503,7 +1537,16 @@ mod tests {
                 .translation[2],
             0.25
         );
+        assert_eq!(
+            app.editor.project.piece(piece).unwrap().grain_angle,
+            std::f64::consts::FRAC_PI_2
+        );
+        assert_eq!(app.editor.project.materials[0].warp_stiffness, 50.);
+        assert_eq!(app.editor.project.materials[0].weft_stiffness, 1000.);
         assert!(app.editor.undo());
+        assert_eq!(app.editor.project.piece(piece).unwrap().grain_angle, 0.);
+        assert_eq!(app.editor.project.materials[0].warp_stiffness, 400.);
+        assert_eq!(app.editor.project.materials[0].weft_stiffness, 400.);
         assert_eq!(app.editor.project.piece_bounds(piece).unwrap()[1][0], 0.4);
         assert_eq!(
             app.editor
@@ -1515,6 +1558,43 @@ mod tests {
             0.0
         );
         assert_eq!(app.editor.project.materials[0].areal_density, 0.18);
+    }
+
+    #[test]
+    fn inspecting_and_recoloring_preserves_valid_imported_dimensions_and_physics() {
+        let mut app = Studio::empty();
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Fine panel".into(),
+                origin: [0., 0.],
+                width: 0.005,
+                height: 0.006,
+            })
+            .unwrap();
+        let mut fabric = app.editor.project.materials[0].clone();
+        fabric.areal_density = 0.002;
+        fabric.warp_stiffness = 0.5;
+        fabric.weft_stiffness = 200000.;
+        fabric.bending_stiffness = 2.;
+        app.editor
+            .execute(Command::UpdateMaterial { material: fabric })
+            .unwrap();
+        app.selected = Some(app.editor.project.pieces[0].id);
+        let before = app.editor.project.clone();
+        let ctx = egui::Context::default();
+        let _ = ctx.run_ui(egui::RawInput::default(), |ui| app.inspector(ui));
+        assert_eq!(app.editor.project, before);
+        let mut draft = app
+            .draft
+            .take()
+            .unwrap_or_else(|| InspectorDraft::new(&app.editor.project, app.selected));
+        draft.material.as_mut().unwrap().color = [0.7, 0.3, 0.2];
+        app.draft = Some(draft);
+        assert!(app.commit_draft());
+        let mut expected = before;
+        expected.revision += 1;
+        expected.materials[0].color = [0.7, 0.3, 0.2];
+        assert_eq!(app.editor.project, expected);
     }
 
     #[test]

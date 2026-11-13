@@ -1,4 +1,7 @@
-use crate::{Error, Mesh, Project, Result, ensure};
+use crate::{
+    Curve, Error, Id, Mannequin, Material, Mesh, Piece, Placement, Point, Project, Result, Seam,
+    ensure,
+};
 use serde::{Deserialize, Serialize};
 use std::ffi::OsString;
 use std::fmt::Write as _;
@@ -7,16 +10,98 @@ use std::io::{Read, Write};
 use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicU64, Ordering};
 
-pub const FORMAT_VERSION: u32 = 1;
+pub const FORMAT_VERSION: u32 = 2;
 pub const MAX_PROJECT_BYTES: u64 = 16 * 1024 * 1024;
 static TEMP_ID: AtomicU64 = AtomicU64::new(0);
 
 #[derive(Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
-struct Document {
+struct Document<P = Project> {
     format: String,
     version: u32,
-    project: Project,
+    project: P,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct ProjectV1 {
+    revision: u64,
+    points: Vec<Point>,
+    curves: Vec<Curve>,
+    pieces: Vec<PieceV1>,
+    materials: Vec<MaterialV1>,
+    seams: Vec<Seam>,
+    mannequin: Mannequin,
+    resolution: f64,
+    next_id: Id,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct PieceV1 {
+    id: Id,
+    name: String,
+    boundary: Vec<Id>,
+    placement: Placement,
+    material: Id,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct MaterialV1 {
+    id: Id,
+    name: String,
+    areal_density: f64,
+    stretch_stiffness: f64,
+    shear_stiffness: f64,
+    bending_stiffness: f64,
+    damping: f64,
+    friction: f64,
+    collision_thickness: f64,
+    color: [f32; 3],
+}
+
+impl From<ProjectV1> for Project {
+    fn from(old: ProjectV1) -> Self {
+        Self {
+            revision: old.revision,
+            points: old.points,
+            curves: old.curves,
+            pieces: old
+                .pieces
+                .into_iter()
+                .map(|piece| Piece {
+                    id: piece.id,
+                    name: piece.name,
+                    boundary: piece.boundary,
+                    placement: piece.placement,
+                    material: piece.material,
+                    grain_angle: 0.0,
+                })
+                .collect(),
+            materials: old
+                .materials
+                .into_iter()
+                .map(|material| Material {
+                    id: material.id,
+                    name: material.name,
+                    areal_density: material.areal_density,
+                    warp_stiffness: material.stretch_stiffness,
+                    weft_stiffness: material.stretch_stiffness,
+                    shear_stiffness: material.shear_stiffness,
+                    bending_stiffness: material.bending_stiffness,
+                    damping: material.damping,
+                    friction: material.friction,
+                    collision_thickness: material.collision_thickness,
+                    color: material.color,
+                })
+                .collect(),
+            seams: old.seams,
+            mannequin: old.mannequin,
+            resolution: old.resolution,
+            next_id: old.next_id,
+        }
+    }
 }
 
 pub fn recovery_path(path: impl AsRef<Path>) -> PathBuf {
@@ -46,14 +131,21 @@ impl Project {
             bytes.len() as u64 <= MAX_PROJECT_BYTES,
             "Project exceeds the 16 MiB file limit",
         )?;
-        let document: Document = serde_json::from_slice(bytes)?;
-        ensure(document.format == "weftforge", "Not a WeftForge project")?;
-        ensure(
-            document.version == FORMAT_VERSION,
-            "Unsupported WeftForge project version; no data was loaded",
-        )?;
-        document.project.validate()?;
-        Ok(document.project)
+        let header: Document<serde::de::IgnoredAny> = serde_json::from_slice(bytes)?;
+        ensure(header.format == "weftforge", "Not a WeftForge project")?;
+        let project = match header.version {
+            1 => serde_json::from_slice::<Document<ProjectV1>>(bytes)?
+                .project
+                .into(),
+            FORMAT_VERSION => serde_json::from_slice::<Document>(bytes)?.project,
+            _ => {
+                return Err(Error(
+                    "Unsupported WeftForge project version; no data was loaded".into(),
+                ));
+            }
+        };
+        project.validate()?;
+        Ok(project)
     }
 
     pub fn load(path: impl AsRef<Path>) -> Result<Self> {

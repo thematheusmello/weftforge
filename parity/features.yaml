@@ -93,9 +93,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "UI-002",
@@ -178,9 +178,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "UI-003",
@@ -219,7 +219,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -328,9 +328,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "UI-005",
@@ -436,9 +436,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "UI-006",
@@ -477,7 +477,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -584,9 +584,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "PAT-002",
@@ -644,7 +644,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "stale"
     },
@@ -744,9 +744,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "PAT-004",
@@ -842,9 +842,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "PAT-005",
@@ -913,7 +913,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "stale"
     },
@@ -954,7 +954,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -995,7 +995,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -1007,7 +1007,9 @@
       "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
       "source_links": [
         "https://support.marvelousdesigner.com/",
-        "https://www.marvelousdesigner.com/products/releases"
+        "https://www.marvelousdesigner.com/products/releases",
+        "https://support.marvelousdesigner.com/hc/en-us/articles/47358420149017-FABRIC-PHYSICAL-PROPERTIES-Adjust-Stretch-Weft-Warp-Shear",
+        "https://support.marvelousdesigner.com/hc/en-us/articles/47358119414937-2D-Snapshot-2025-0"
       ],
       "reference_observation_status": "unobserved",
       "evidence_ids": [],
@@ -1021,21 +1023,26 @@
         "status": "proposed; see reviewed specification before reference evaluation"
       },
       "dependencies": [],
-      "implementation_locations": [],
+      "implementation_locations": [
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/simulation.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs"
+      ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3"
       ],
       "prs": [],
-      "implementation_status": "planned",
+      "implementation_status": "partial",
       "verification_status": "not_run",
       "verification_runs": [],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Solver supports grain but editable document has no grain parameter yet."
+        "Authored grain/stiffness, strict v1 migration and CPU response have implementation tests. Native edit/history/v2 reopen/color isolation were observed; reviewed scoped report is pending. The anisotropic shirt failed the unchanged strain limit. Reference defaults/semantics remain unobserved."
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -1076,7 +1083,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -1118,7 +1125,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -1229,9 +1236,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "SEW-001",
@@ -1353,9 +1360,9 @@
         "Public partial-sewing API uses normalized boundary length; current document intervals and default correspondence use curve parameter t. Arc-length equivalence remains unverified."
       ],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "SEW-002",
@@ -1395,7 +1402,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -1465,7 +1472,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "stale"
     },
@@ -1511,7 +1518,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -1553,7 +1560,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -1595,7 +1602,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -1680,9 +1687,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FIT-002",
@@ -1732,7 +1739,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -1885,9 +1892,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FIT-004",
@@ -1927,7 +1934,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -2012,9 +2019,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "SIM-002",
@@ -2049,7 +2056,9 @@
       },
       "dependencies": [],
       "implementation_locations": [
-        "crates/weftforge-sim/src/lib.rs"
+        "crates/weftforge-sim/src/lib.rs",
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/simulation.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/4"
@@ -2091,9 +2100,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "SIM-003",
@@ -2163,9 +2172,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "SIM-004",
@@ -2233,7 +2242,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "stale"
     },
@@ -2346,9 +2355,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "SIM-006",
@@ -2440,9 +2449,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "SIM-007",
@@ -2481,7 +2490,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -2509,7 +2518,12 @@
       "dependencies": [
         "SIM-002"
       ],
-      "implementation_locations": [],
+      "implementation_locations": [
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/simulation.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs"
+      ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/5"
       ],
@@ -2522,7 +2536,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -2563,7 +2577,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -2604,7 +2618,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -2655,7 +2669,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -2708,7 +2722,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -2750,7 +2764,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -2868,13 +2882,14 @@
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Native writer is v2 with strict lossless v1 migration for grain/orthotropy. Updated native reopen was observed; reviewed report and broader recovery workflow evidence are pending."
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FILE-002",
@@ -2941,7 +2956,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "stale"
     },
@@ -3051,9 +3066,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FILE-004",
@@ -3092,7 +3107,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -3201,9 +3216,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FILE-006",
@@ -3240,7 +3255,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -3281,7 +3296,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -3338,7 +3353,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "stale"
     },
@@ -3381,7 +3396,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -3438,7 +3453,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "stale"
     },
@@ -3483,7 +3498,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -3526,7 +3541,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license.",
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified.",
         "GitHub Project board creation rejected: authenticated token lacks project and read:project scopes. Issues work independently."
       ],
       "freshness": "missing"
@@ -3579,7 +3594,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -3623,7 +3638,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -3664,7 +3679,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     },
@@ -3706,7 +3721,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "User must review reference app terms and activate legitimate trial/license."
+        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
       "freshness": "missing"
     }
