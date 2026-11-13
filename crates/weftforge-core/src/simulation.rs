@@ -21,11 +21,11 @@ pub fn create_cloth(project: &Project, mesh: &Mesh) -> Result<Cloth> {
                 .ok_or_else(|| crate::Error("Pattern references an unknown material".into()))?;
             Ok(Material {
                 areal_density: material.areal_density,
-                warp_stiffness: material.stretch_stiffness,
-                weft_stiffness: material.stretch_stiffness,
+                warp_stiffness: material.warp_stiffness,
+                weft_stiffness: material.weft_stiffness,
                 shear_stiffness: material.shear_stiffness,
                 bending_stiffness: material.bending_stiffness,
-                grain_angle: 0.0,
+                grain_angle: piece.grain_angle,
                 damping: material.damping,
                 friction: material.friction,
                 collision_thickness: material.collision_thickness,

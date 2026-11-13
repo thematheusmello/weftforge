@@ -102,5 +102,5 @@
     "xtask/Cargo.toml",
     "xtask/src"
   ],
-  "freshness_reason": "Progress validation and its tests changed after this aggregate regression run. Original checks, source identities and artifacts are retained; scoped numerical and native workflow reports are unaffected."
+  "freshness_reason": "Progress validation and its tests changed after this aggregate regression run. Original checks, source identities and artifacts are retained; scoped numerical and native workflow reports are unaffected. Authored grain and separate warp/weft stiffness changed the document, strict v1/v2 reader, solver bridge and native/CLI controls after this run. Original source identities, fixture/artifact hashes, measurements and outcomes are retained; rerun the affected workflow on the new authoring implementation. The independent output evaluator now measures authored grain axes (legacy angle zero)."
 }

@@ -123,6 +123,8 @@ pub struct Piece {
     pub boundary: Vec<Id>,
     pub placement: Placement,
     pub material: Id,
+    /// Warp axis in material UV: radians counterclockwise from +U toward +V.
+    pub grain_angle: f64,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -131,7 +133,8 @@ pub struct Material {
     pub id: Id,
     pub name: String,
     pub areal_density: f64,
-    pub stretch_stiffness: f64,
+    pub warp_stiffness: f64,
+    pub weft_stiffness: f64,
     pub shear_stiffness: f64,
     pub bending_stiffness: f64,
     pub damping: f64,
@@ -146,7 +149,8 @@ impl Default for Material {
             id: 1,
             name: "Cotton approximation (uncalibrated)".into(),
             areal_density: 0.18,
-            stretch_stiffness: 400.0,
+            warp_stiffness: 400.0,
+            weft_stiffness: 400.0,
             shear_stiffness: 100.0,
             bending_stiffness: 0.003,
             damping: 0.2,
@@ -264,7 +268,7 @@ pub struct Project {
     pub seams: Vec<Seam>,
     pub mannequin: Mannequin,
     pub resolution: f64,
-    next_id: Id,
+    pub(crate) next_id: Id,
 }
 
 impl Default for Project {
@@ -373,7 +377,11 @@ impl Project {
                     && (0.001..=100.0).contains(&material.areal_density),
                 "Areal density must be in [0.001, 100] kg/m²",
             )?;
-            for value in [material.stretch_stiffness, material.shear_stiffness] {
+            for value in [
+                material.warp_stiffness,
+                material.weft_stiffness,
+                material.shear_stiffness,
+            ] {
                 ensure(
                     value.is_finite() && value > 0.0 && value <= 1.0e8,
                     "Membrane stiffness must be positive and finite",
@@ -409,6 +417,10 @@ impl Project {
         let mut used_points = BTreeSet::new();
         for piece in &self.pieces {
             validate_name(&piece.name)?;
+            ensure(
+                piece.grain_angle.is_finite(),
+                "Grain angle must be finite radians",
+            )?;
             ensure(
                 piece.boundary.len() >= 3,
                 "A boundary needs at least three curves",
@@ -556,6 +568,7 @@ impl Project {
                     boundary,
                     placement: Placement::default(),
                     material,
+                    grain_angle: 0.,
                 });
             }
             Command::AddRectangle {
@@ -709,6 +722,13 @@ impl Project {
                     .ok_or_else(|| Error("Unknown piece".into()))?
                     .placement = placement;
             }
+            Command::SetGrain { piece, angle } => {
+                self.pieces
+                    .iter_mut()
+                    .find(|item| item.id == piece)
+                    .ok_or_else(|| Error("Unknown piece".into()))?
+                    .grain_angle = angle;
+            }
             Command::SetMaterial { piece, material } => {
                 self.pieces
                     .iter_mut()
@@ -842,6 +862,11 @@ pub enum Command {
     SetPlacement {
         piece: Id,
         placement: Placement,
+    },
+    SetGrain {
+        piece: Id,
+        /// Warp direction in material-space radians, counterclockwise from +U.
+        angle: f64,
     },
     SetMaterial {
         piece: Id,

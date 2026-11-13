@@ -1,182 +1,149 @@
 # WeftForge status — active development, 2026-11-13
 
-The complete independent garment studio and one-to-one recorded-reference parity
-remain the goal. The first bounded garment workflow has a complete single-candidate
-implementation replay; reference acceptance and all remaining gates are open. No feature has verified reference parity. The56-contract inventory is
-incomplete and must expand with discovery.
+The complete independent native garment studio and recorded one-to-one reference
+parity remain the goal. No feature has verified reference parity: 0/56 inventoried
+contracts, with discovery incomplete and the full-product denominator unknown.
+All six roadmap gates remain open beyond the bounded implementation evidence.
 
-## Current recoverable state
+## Recoverable implementation and publication
 
-Published main revision: `2837647b5e9ab565fa1bdc03886bff58165a66b0` ([PR12](https://github.com/thematheusmello/weftforge/pull/12)).
-The public repository/origin is verified: https://github.com/thematheusmello/weftforge.
-Rust application, CLI, core, solver, manifests and lockfile remain byte-identical
-to tested source `ff3914474c8acc30d10c70a8489cae56cfa2c872`; final native executable
-SHA-256 is `f00e07755922c7096a4d6c1dec5418c91cf2d5a0a185f04d27bf35957245111b`.
-[PR10](https://github.com/thematheusmello/weftforge/pull/10) retained scoped reports
-and fixed evidence CI; PR11 closed the full single-candidate workflow attribution
-gap. All original failures and the earlier composite observation remain retained.
+Verified public repository/origin: https://github.com/thematheusmello/weftforge.
+Published main: `69ad78ce018674db4595c5ddf6e0a18b00275c82` ([PR14](https://github.com/thematheusmello/weftforge/pull/14)).
+The preceding main2837647 Linux/macOS/Windows source checks and evidence validation passed in
+[CI43526530172](https://github.com/thematheusmello/weftforge/actions/runs/43526530172).
+[Pages43526530260](https://github.com/thematheusmello/weftforge/actions/runs/43526530260)
+succeeded; https://thematheusmello.github.io/weftforge/ returned HTTP200 with domains,
+freshness and attributable runs. Earlier CI/component and Pages/artifact-visibility
+failures remain in their original runs; bounded fixes are integrated. Project
+board creation lacks project/read:project token scopes; issues and registry work.
 
-The [v0.1.0-alpha.1 source engineering preview](https://github.com/thematheusmello/weftforge/releases/tag/v0.1.0-alpha.1)
-is public at main8419363, with original editable project and matching OBJ/SVG
-samples. Public asset downloads were byte/SHA-256 checked against the tested files.
-No compiled installers/binaries ship in that preview. Full product/parity and
-binary-distribution notice/signing/platform-launch gates remain incomplete.
+The public [v0.1.0-alpha.1 source preview](https://github.com/thematheusmello/weftforge/releases/tag/v0.1.0-alpha.1)
+targets main8419363, with byte/SHA-verified original editable shirt and OBJ/SVG
+assets. No compiled binaries/installers ship. Its inspector data-preservation bug
+is disclosed in the release notes and [issue13](https://github.com/thematheusmello/weftforge/issues/13).
 
-The per-report freshness/dashboard fix is merged through PR12. Its Linux, macOS,
-Windows and evidence checks all passed on the PR head. Main CI43526530172 is still
-running at this checkpoint; Pages43526530260 completed successfully. The public
-site returned HTTP200 and includes per-domain status, freshness and attributable runs. A separate grain
-and orthotropic-material increment is under final validation in an isolated
-worktree, with legacy migration and inspector data-preservation regressions.
+Current root branch `feat/grain-native-acceptance` integrates the grain increment
+from recoverable commit `b8c9a1a615787c851d6fea15265faf30541f1024` in its separate
+`feat/grain-authoring` worktree. It adds authored grain, orthotropic materials,
+strict v1→v2 migration, native/CLI controls and the inspector fix. Source integration checks passed (formatting,44 Rust tests, strict clippy and
+24 Python/registry checks). New native acceptance files are retained locally for a
+reviewed report after the source checkpoint is public. The merged
+[reference-access PR14](https://github.com/thematheusmello/weftforge/pull/14) records
+the latest read-only sign-in observation; all eight push/PR checks passed. Main
+CI/Pages for its merge are being verified separately. No source build/probe is
+running locally.
 
-Delivery issues [#1–#7](https://github.com/thematheusmello/weftforge/issues) and six
-milestones cover discovery and every roadmap gate. Reproductions:
-[tight-shirt/convergence #8](https://github.com/thematheusmello/weftforge/issues/8)
-and [arc-length partial sewing #9](https://github.com/thematheusmello/weftforge/issues/9).
-The valid-import inspector clamping defect is recorded as [#13](https://github.com/thematheusmello/weftforge/issues/13),
-and the alpha.1 release notes disclose it. Its regression fix awaits integration.
-GitHub Pages deployed successfully in [run43512419050](https://github.com/thematheusmello/weftforge/actions/runs/43512419050);
-https://thematheusmello.github.io/weftforge/ returned HTTP200 with the correct title.
-A later [Pages run43515229132](https://github.com/thematheusmello/weftforge/actions/runs/43515229132)
-failed an observed artifact-visibility race: upload14080172593 succeeded, deploy
-immediately listed0 artifacts, and the same run later listed1 unexpired artifact.
-The bounded API visibility check repaired publication. [Pages run43517946669](https://github.com/thematheusmello/weftforge/actions/runs/43517946669)
-completed successfully and the site returned HTTP200 afterward. The earlier
-artifact-visibility failure remains retained in its run logs.
-The first source CI run is [43512419034](https://github.com/thematheusmello/weftforge/actions/runs/43512419034).
-Linux/macOS/Windows source builds/tests/clippy passed; the initial evidence job
-failed Rustup component installation (`cargo-fmt` conflict). Explicit manifest
-components fixed it. Both [pushCI43513630203](https://github.com/thematheusmello/weftforge/actions/runs/43513630203)
-and [PRCI43513640378](https://github.com/thematheusmello/weftforge/actions/runs/43513640378)
-finished green on the merged fix, including all3 platforms and evidence checks.
-The published main8419363 also has fully green [CI43517946830](https://github.com/thematheusmello/weftforge/actions/runs/43517946830).
-Project board creation failed:
-token lacks project/read:project scopes. Issues and registry work independently.
+## What works and what was checked
 
-## What works and how it was checked
+The GUI-independent Rust core retains stable authored points, straight/cubic
+curves, pieces, materials and oriented curve-interval seams with explicit
+correspondence. Typed transactions provide undo/redo and revision invalidation.
+Conforming refinement preserves seam mapping; interior flips improve mesh quality.
+Sewn-curve splitting still explicitly rejects pending relationship rewriting.
+Cubic intersection checking has a documented tessellation tolerance.
 
-Editable core: stable points/straight and cubic curves/pieces/materials/seams;
-oriented parameter intervals and explicit correspondence; conforming refinement,
-interior quality flips and boundary correspondence; typed transactions/history;
-actual edit→rest mesh; bounded versioned atomic saves/recovery; OBJ/SVG export.
-Sewn-curve split explicitly fails pending interval rewriting. Cubic intersection
-validation has a documented tessellation tolerance rather than exact predicates.
+The native eframe/wgpu editor connects 2D/3D selection, rectangle/polygon creation,
+interval sewing, dimensions, placement and materials to the real engine. It has
+command search, revision-tagged cancellable workers, save/open/export, untitled
+and named autosave and explicit recovery. Initial contact construction only has
+before/after cancellation; file IO and validation retain synchronous portions.
+The projected triangle preview still lacks professional rendering/depth/PBR.
 
-CPU solver: f64 XPBD material strain and dihedral bend, area mass, damping/friction,
-weighted seams with explicit bounded-speed assembly, avatar/ground and discrete
-vertex/triangle self/layer contact, diagnostic guard and transactional cancel/fail.
-No GPU simulation, full edge/edge CCD, or measured/calibrated fabric presets.
+The f64 CPU XPBD solver has orthotropic membrane strain, dihedral bending, area
+mass, damping/friction, weighted seams with bounded-speed assembly, analytic
+avatar/ground and discrete vertex/triangle self/layer contact. No full edge/edge
+CCD, GPU solver or measured fabric calibration. Contact search is quadratic.
 
-Native editor: connected2D/3D views, original capsule mannequin, polygon/rectangle
-creation, interval sewing, numeric edits/placement/shared material, coherent undo,
-revision-tagged mesh/simulation workers, save/open/export, untitled autosave and
-explicit recovery. Initial solver contact construction has only before/after
-cancellation checks; file IO and validated commands retain synchronous portions.
+Native v2 writes per-piece `grain_angle` (radians, counterclockwise +U→+V) and
+separate positive warp/weft stiffnesses in N/m. Strict v1 reading copies old stretch
+to both axes, supplies zero grain and preserves every other authored value/ID and
+revision. Existing fixtures remain unchanged. Atomic saves retain exact prior
+valid bytes in recovery; invalid input/unsupported versions retain the old project.
+Loading is bounded to16MiB. v2 files require the updated app. OBJ preserves static
+geometry, metre/Y-up scale, UVs, normals and piece groups; SVG preserves authored
+curves at physical millimetre scale. No MTL appearance or animation export yet.
 
-Actual UI observations: authored two14-point relaxed-shirt pieces from empty,
-sewed8 edges, arranged atZ±0.22m, saved/closed/reopened, changed resolution.07→.12m,
-assembled60steps with gravity0, then draped120steps. Both widths changed1.06→1.08m,
-Undo/Redo restored exact numeric values, saved, and resimulated; OBJ/SVG came from
-actual UI. Final158vertices/244triangles, t3s; independent output parser measured
-max axis strain.0854172, seam gap3.07e-7m, avatar/ground thickness error~1.64e-16m,
-and exact authored millimetre SVG paths. These satisfy predeclared scene limits,
-not full product/reference parity. That first composite run is retained unchanged. A fresh full replay then used
-the SAME identified f00e executable from empty through authoring/simulation/save/
-quit/relaunch/reopen/edit/history/resimulation/export. It saved1.08m widths and
-verified them after reopening, edited both to1.10m, and produced independently
-checked outputs: strain.08071753, seam2.79e-8m, contact~1.50e-16m. Native source
-identity and screenshot are in docs/images/studio-single-candidate.*; exact actions
-and original points are in the new candidate scenario/report.
+All44 Rust tests and24 Python checks passed on the grain source, including strict
+migration/duplicate rejection, history/rollback, CLI edits, grain-aware independent
+metrics and the real-egui inspector clamping regression. Formatting, strict
+all-target clippy, xtask verification and native/CLI release builds passed. The
+CPU bridge patch test rotates warp50/weft1000N/m through a quarter-turn: top height
+0.2029735316→0.2023383529m (0.635mm more compression, above the predeclared0.3mm
+criterion). Recoloring yields bit-identical solved positions. This is an original
+implementation test, not reference parity or calibration.
 
-`cargo fmt --all --check`, workspace tests, strict all-target clippy, registry
-validation and independent OBJ/SVG scenario passed on the integrated source.
-Independent evaluator tests also pass; a deliberate1mm SVG-scale mutation is
-rejected. Public platform CI has passed source tests and lint on all three OSes; full
-workflow success and GUI launches remain unverified. See verification
-and physics docs for equations, tolerances, commands, hardware and evidence scope.
+## Actual native workflow evidence
 
-## Failures and remaining scope
+Historical `f00e` executable (source `ff3914474c8acc30d10c70a8489cae56cfa2c872`)
+completed the full empty-project shirt workflow: authored two14-point panels,
+sewed8 edges, arranged, assembled/draped, edited, saved, quit/reopened, edited
+again with Undo/Redo, resimulated and exported. Final158vertices/244triangles,
+3s simulation, independent strain0.08071753, seam2.79e-8m and avatar/ground error
+~1.50e-16m passed that scene's declared limits. The earlier composite replay and
+all original failures remain retained. These reports are now stale for the
+changed runtime; they have not been rewritten as new executions.
 
-The original tight-shirt fixture stays unchanged. Its default simultaneous-gravity
-and refinement runs fail fitting criteria despite finite output. Its0.96m body
-circumference is smaller than the1.131m torso; increasing mesh quality alone does
-not establish convergence. A separate relaxed fixture passes only its documented
-explicit assembly/drape protocol (CPU slower than real time). Keep both results.
-Partial curved-sewing parameter fractions differ from a documented boundary
-arc-length API lead; runtime semantics remain unobserved.
+New grain native executable SHA-256:
+`03d44055eacfa20ecd6c69a051e259707848560ae0bf5db5d61282455c04b895`.
+CLI SHA-256: `e84b4303caa8208be94e6aef1628efb14eaba30c85585978e23d7d6c86c7f403`.
+Root opened the unchanged v1 shirt, observed both default stiffnesses400, set front
+grainπ/2 and verified Undo0/Redoπ/2, set shared warp50/weft1000, recolored, saved a
+new v2 file, quit/relaunched the same executable and reopened. Frontπ/2/back0 and
+shared stiffness persisted. Independent JSON comparison confirms color/revision
+were the only changes between the saved before/after color snapshots.
 
-Advanced patterns, attachments, avatar imports, grain authoring/regions,
-PBR/textures/shadows, animation/timeline/caches, layers UI, glTF/DXF/printing,
-MD-native decoding, local MCP and production output preparation remain open.
-No distributable binary release is approved by this status: full notice collection,
-three-platform launch/package QA and signing remain release work. Native bindings,
-platform libraries and drivers are accurately excluded from any all-Rust claim.
+The native assembly60steps with gravity0 followed by drape120steps under gravity
+−9.81, dt1/60s,8substeps/32iterations produced actual OBJ/SVG. **Fitting failed**:
+independent axis strain0.26930346 exceeds the unchanged0.15 limit. Seam gap5.55e-6m
+passes0.005m; avatar/ground thickness error0 passes0.002m. SVG authored paths and
+millimetre scale pass. Retain this anisotropic garment failure. Successful editing
+and persistence do not establish fitting quality. Independent self-contact and
+animation checks remain absent. New screenshot/report review is in progress.
 
-## Reference laboratory and blocker
+## Reference laboratory
 
-Official Marvelous Designer Personal2026.1.237 was downloaded, hashed, installed
-and launched. REA6.9.0 selected-window evidence observes the access boundary.
-Latest read-only REA evidence at 23:06 UTC shows CLO-SET sign-in, with no Terms
-modal displayed in the selected main window. Current terms acceptance and account
-entitlement remain unknown. The account holder must sign in/activate a legitimate
-trial or license and review any terms presented.
-No garment reference workflow has executed. Baseline is provisional: full observed
-build/settings/units/locale/graphics are not frozen. See parity/reference.json.
-Raw installer/binary/account artifacts are private outside Git. The local private
-manifest location is in the thread handoff, never public files. No proprietary
-code analysis was used. REA CLI works with existing Node26.12.1; current-session
-MCP unconnected, Ghidra unconfigured. No setup or download is still running.
+Official Personal2026.1.237 installer and executable identities are retained in
+`parity/reference.json`; listing build2026.1.237.58920 is not yet confirmed in About.
+Latest REA6.9.0 read-only capture at23:06UTC shows **CLO-SET sign-in**, with no Terms
+modal or garment workspace in the selected main window. Current terms acceptance
+and account entitlement remain unknown. The account holder must sign in/activate
+a legitimate trial/license and review any terms presented. No investigator terms
+acceptance or credential entry occurred. No garment reference scenario executed.
+Baseline remains provisional: build/preferences/units/locale/graphics are unfrozen.
 
-## Evidence integrity checkpoint
+Raw installer, binaries, account UI and complete research evidence remain private
+outside Git; no personal paths are published. No proprietary code analysis was
+used. REA CLI6.9.0 works with Node26.12.1; current-session MCP is unconnected and
+Ghidra unconfigured/not invoked. No installer/setup/research job is running.
 
-The reviewed per-run evidence-freshness patch retains all original fields in all five
-reports: IDs, tested commits, source/fixture/artifact hashes, measurements and
-failed outcomes are unchanged. Registry schema 2 adds per-report freshness and
-reviewed source scopes. Historical committed identity is always checked; only
-current scoped inputs are compared with the working tree. Stale old baselines
-remain attributable history. Current failed scenes cannot be hidden by a newer
-pass or removal of a run reference.
+## Failures, evidence integrity and next steps
 
-Native and numerical reports remain current because their relevant runtime and
-evaluator source is unchanged. The aggregate regression report is stale after
-the progress checks changed; seven otherwise-uncovered feature freshness flags
-are stale until rerun. Implementation/verification states and all 56 IDs stay the
-same, with 0/56 verified reference parity. Both generated reports expose freshness;
-the dashboard now includes domains, retained runs/source links, failed/blocked
-contracts and next delivery. Current identified-workflow text derives from the
-source-qualified complete replay report rather than a static first-gate message.
+The original tight shirt and refinement failures remain unchanged ([issue8](https://github.com/thematheusmello/weftforge/issues/8)).
+Its0.96m body circumference is below the1.131m torso; finer meshes alone did not
+establish convergence. The separate relaxed garment passed only its explicit
+assembly/drape protocol and is slower than real time. Partial-sewing curve-t
+versus documented arc-length semantics remain unresolved ([issue9](https://github.com/thematheusmello/weftforge/issues/9)).
 
-Validation on this patch: all 34 workspace Rust tests, all 22 Python checks through
-`cargo xtask verify`, `cargo fmt --all --check`, strict all-target workspace clippy,
-generated consistency and original-report-field preservation passed. No Rust,
-workflow, fixture or retained artifact changed. No check job remains running.
-Next: exercise the grain/material increment in the native app, then rerun relevant
-scopes before promoting new current evidence after implementation changes. Before the first reference
-comparison can qualify, add explicit baseline revision/settings and reviewed
-contract/scenario/criteria digest qualification; current ID/source matching alone
-does not prove unchanged full requirements. No reference pass exists today.
+Schema2 scopes freshness per run. Every original ID, tested commit, source/input/
+artifact hash and outcome is preserved; changed relevant runtime/checkers mark
+old evidence stale. Current failures cannot be hidden by another pass or removing
+run references. Before the first actual reference pass can qualify, add baseline
+revision/settings and reviewed contract/scenario/criteria digest qualification.
 
-## Next exact actions
+1. Finish source integration checks and publish the grain/inspector fix. Retain a
+   public source checkpoint, then publish new scoped native reports and the
+   anisotropic failure. Preserve all old fixtures/artifacts and accurate freshness.
+2. Continue the isolated `feat/sewn-curve-editing` increment: native curve controls
+   and exact sewn-interval partitioning on split, with relationship/history/remesh
+   checks. Its agent has explicit separate ownership and no publication authority.
+3. Improve sewing semantics and garment/contact convergence, then measure layered
+   shirt+jacket, contrasting fabrics/refinement and real responsiveness. Continue
+   professional construction, avatar imports, animation/caches, PBR, interchange,
+   printing, output preparation, automation and all distribution gates.
+4. When reference access is available, freeze settings and execute the controlled
+   original scenarios. Implementation-only checks never count as reference parity.
 
-1. Complete native acceptance and review of authored grain, orthotropic material
-   controls, strict v1→v2 migration and the imported-inspector clamping fix.
-   Recheck current CI and Pages handles. Preserve every failed scene and original
-   source/input/artifact identity.
-2. Advance professional pattern/sewing authoring through one reviewed contract
-   at a time. Use current source scopes to rerun or stale affected evidence; retain
-   historical failures. Rerun the aggregate tooling/regression scope before
-   claiming its seven currently stale feature checks current.
-3. Improve authored sewing length semantics, robust relationship-preserving sewn
-   splits and curve UI; add local command automation for reproducible workflows.
-4. Fix garment convergence/contact beyond these fixtures; measure layered shirt+
-   jacket, contrasting fabrics and responsiveness. Continue all six roadmap gates.
-5. When reference access is available, freeze baseline preferences and run the
-   same controlled scenarios; no implementation-only evidence counts as parity.
-
-## Last confirmed live state
-
-At latest native capture the WeftForge PID1550 was alive, paused after a completed3s
-drape, no background job. Reference PID18283 was alive at last investigator poll,
-CLO-SET sign-in displayed at 23:06 UTC; terms acceptance and entitlement are
-unverified. No research/benchmark process remains live. Recheck
-actual processes/handles before assuming either app or any job is still running.
+Last observed own-app PID52560 is paused at3s Drape with no active-job indicator.
+Historical reference PID18283 showed sign-in at23:06UTC. Grain build/check sessions
+completed; the curve agent is active in its isolated worktree. Recheck actual
+processes and CI handles before resuming; do not duplicate live work.

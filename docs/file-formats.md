@@ -9,9 +9,10 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 
 | Format | Import/read | Export/write | Editable construction | Static/animated | Current limits |
 | --- | --- | --- | --- | --- | --- |
-| `.weftforge` v1 | Yes | Yes | Supported authoring model | Static authoring | JSON, 16 MiB limit; no embedded external assets or saved simulation frames |
-| `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same v1 model | Static authoring | One prior saved document; no silent fallback |
-| `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same v1 model | Static authoring | Dirty named documents only; no automatic recovery UI |
+| `.weftforge` v2 | Yes | Yes | Supported authoring model including grain and orthotropy | Static authoring | JSON, 16 MiB limit; no embedded external assets or saved simulation frames |
+| `.weftforge` v1 | Yes, lossless migration | No | Original supported model | Static authoring | Old stretch maps to both axes; grain defaults to zero; saving writes v2 |
+| `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1/v2 model | Static authoring | One prior saved document; no silent fallback |
+| `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1/v2 model | Static authoring | Dirty named documents only; no automatic recovery UI |
 | OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups; no MTL/textures |
 | SVG | No | Yes | Boundary curves only in output | Static 2D | `M/L/C/Z` paths; mm physical size; no sewing/materials/internal features/print tiling |
 | glTF/GLB | No | No | None yet | None yet | Planned validated avatar/mesh/animation workflows |
@@ -24,14 +25,14 @@ avatar reader is wired into the project model; an installed parsing dependency
 does not establish an import feature. Export validation with independent software
 must be evidenced separately from our own writer/reader round trips.
 
-## Native v1 representation
+## Native v2 representation
 
 The UTF-8 JSON envelope is:
 
 ```json
 {
   "format": "weftforge",
-  "version": 1,
+  "version": 2,
   "project": {
     "revision": 0,
     "points": [],
@@ -48,9 +49,11 @@ The UTF-8 JSON envelope is:
 
 This structural illustration omits a valid default material; generate a valid
 empty project with `weftforge-cli new FILE.weftforge`. Treat the current Rust
-serialized types and validation as authoritative for v1; schema migrations are
-not implemented. A different format marker/version, unknown field, malformed JSON
-or invalid construction is rejected without replacing the open project.
+serialized types and validation as authoritative for v2. The reader accepts v1
+through the explicit migration below. A different format marker, unsupported
+version, unknown or duplicate field, malformed JSON or invalid construction is
+rejected without replacing the open project. Schemas are strict: a v1 envelope
+cannot contain v2 fields, and a v2 material cannot retain the old stretch field.
 
 Authoring coordinates use f64 metres. 3D is right-handed/Y-up; pattern coordinates
 are material-space U/V with V upward. Placements store metre translations and XYZ
@@ -58,19 +61,50 @@ Euler rotations in radians, applied in that order. Mass uses kilograms, time
 seconds, density kg/m², membrane stiffness N/m, and bending rigidity N·m.
 
 Points and straight/cubic curves retain stable IDs. A piece contains a name,
-ordered closed boundary of curve IDs, placement and material ID. Cubic controls
+ordered closed boundary of curve IDs, placement, material ID and `grain_angle`.
+The angle is f64 radians counterclockwise from material +U toward +V and identifies
+the warp axis; weft is perpendicular. Zero points right in the V-up 2D canvas.
+Placement changes the arranged orientation without changing the authored grain.
+Angles must be finite and are retained without normalization. Cubic controls
 are absolute 2D coordinates; a null control array means a straight boundary.
 Sewing stores two oriented curve intervals (`curve`, `t0`, `t1`) plus strictly
 increasing normalized correspondence pairs including `[0,0]` and `[1,1]`.
 Decreasing interval endpoints encode reversed direction. Derived seam samples
 reference those authored relationships rather than persistent vertex indices.
 
-Materials store physical parameters and display color. The mannequin stores
+Materials store distinct `warp_stiffness` and `weft_stiffness` in N/m, plus the
+separate shear/bend/density/damping/friction/collision values and display color.
+The document defaults are 400 N/m for both axes. Color changes do not alter the
+physical parameters. The mannequin stores
 analytic capsule endpoints/radii. Resolution is a document-wide mesh setting.
 The format does **not** yet store solver timestep/iterations, current drape or
-velocities, undo history, selection/camera, grain-angle authoring, pins,
+velocities, undo history, selection/camera, pins,
 attachments, holes/internal lines, external avatar assets, textures, animation,
 lighting or cache data. These are visible persistence gaps on the roadmap.
+
+## Lossless v1 migration
+
+The version-1 schema stored `material.stretch_stiffness` and no per-piece grain.
+Its reader uses the strict original field types, then maps:
+
+```text
+v2.piece.grain_angle = 0 radians
+v2.material.warp_stiffness = v1.material.stretch_stiffness
+v2.material.weft_stiffness = v1.material.stretch_stiffness
+```
+
+These were the old document-to-solver inputs. All other stored values, including
+IDs, names, points, controls, seams, placements, mannequin, material values,
+resolution, next ID and document revision, are preserved. Loading v1 does not
+rewrite it or create an authoring revision; the next explicit save writes v2.
+When saving over a valid v1 primary, recovery retains its exact original bytes.
+Older application builds cannot read v2, and there is no downgrade writer.
+
+The four existing v1 fixtures and retained snapshots stay byte-identical in the
+repository. Migration tests compare every authored value, rest arrangement/mass,
+nondefault physical parameters, v2 unequal axes/nonzero grain, strict duplicate and
+mixed-schema rejection, and v1 recovery bytes after v2 saves. They do not replace
+native interaction or reference-format compatibility evidence.
 
 ## Validation and saves
 
@@ -98,7 +132,7 @@ cargo run --release -p weftforge-cli -- recover garment.weftforge recovered.weft
 The desktop writes dirty named documents to `<filename>.autosave` every 30 seconds
 and also retains session autosaves for untitled work in the platform data directory.
 The Recover window lists session files and current project sidecars; recovering
-creates a dirty copy requiring Save As. Autosave files use the same v1 parser;
+creates a dirty copy requiring Save As. Autosave writes v2 and recovery uses the same strict v1/v2 reader;
 failed recovery preserves the current document. Unsaved
 close is blocked until save or an explicit discard action. There is no silent
 fallback from a corrupt primary to an older version.

@@ -10,13 +10,17 @@ import sys
 def sub(a,b):return [x-y for x,y in zip(a,b)]
 def norm(v):return math.sqrt(sum(x*x for x in v))
 def lerp(a,b,t):return [x+(y-x)*t for x,y in zip(a,b)]
-def strain(world,uv):
+def strain(world,uv,grain_angle=0.):
+    assert math.isfinite(grain_angle),'non-finite grain angle'
     a,b=sub(uv[1],uv[0]),sub(uv[2],uv[0]);det=a[0]*b[1]-b[0]*a[1]
     assert abs(det)>1e-12,'degenerate material triangle'
     e,f=sub(world[1],world[0]),sub(world[2],world[0])
     u=[(e[i]*b[1]-f[i]*a[1])/det for i in range(3)]
     v=[(f[i]*a[0]-e[i]*b[0])/det for i in range(3)]
-    return max(abs(norm(u)-1),abs(norm(v)-1))
+    sine,cosine=math.sin(grain_angle),math.cos(grain_angle)
+    warp=[cosine*a+sine*b for a,b in zip(u,v)]
+    weft=[-sine*a+cosine*b for a,b in zip(u,v)]
+    return max(abs(norm(warp)-1),abs(norm(weft)-1))
 
 def measure(project_path,obj_path,svg_path=None):
     project=json.loads(pathlib.Path(project_path).read_text())['project']
@@ -38,7 +42,7 @@ def measure(project_path,obj_path,svg_path=None):
         assert pid in pieces and len(face)==3,'invalid face/piece group'
         assert all(0<=a<len(vertices) and 0<=b<len(uv) and 0<=c<len(normals) for a,b,c in face),'face index out of range'
         world=[vertices[v] for v,_,_ in face];rest=[uv[u] for _,u,_ in face]
-        max_strain=max(max_strain,strain(world,rest));by_piece[pid].append((world,rest))
+        max_strain=max(max_strain,strain(world,rest,pieces[pid].get('grain_angle',0.)));by_piece[pid].append((world,rest))
         thickness=materials[pieces[pid]['material']]['collision_thickness']
         for vertex,_,_ in face:
             if (pid,vertex) in used:continue

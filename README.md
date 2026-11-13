@@ -6,8 +6,8 @@ WeftForge is a free, open-source native Rust garment studio in early development
 The target is one-to-one functional parity with a recorded Marvelous Designer
 baseline across interaction, authoring, complete workflows, simulation/output,
 files, and operation. **Verified reference parity: zero.** The reference app is
-installed but garment access is blocked at terms acceptance and legitimate
-account activation; the baseline is provisional.
+installed but garment access is blocked at CLO-SET sign-in. Current terms
+acceptance and legitimate entitlement remain unverified; the baseline is provisional.
 
 Public repository: [thematheusmello/weftforge](https://github.com/thematheusmello/weftforge).
 See [current status](STATUS.md), [generated progress](docs/progress.md), [dashboard](docs/dashboard/index.html), the
@@ -25,7 +25,8 @@ The source implements a native eframe/wgpu workspace with a 2D pattern canvas,
 basic 3D garment preview, piece selection, numeric properties, command search,
 and undo/redo. Rectangle/polygon construction feeds the same Rust document engine
 as the CLI. The core retains straight/cubic boundaries, oriented seam intervals,
-explicit seam correspondence, physical materials, placement, and derived meshes.
+explicit seam correspondence, authored warp direction per piece, separate warp/weft
+physical stiffness, placement and derived meshes.
 
 An f64 CPU cloth solver provides membrane/bending constraints, sewn boundaries,
 gravity, ground/analytic mannequin contact, and self-contact. Simulation runs in
@@ -33,7 +34,8 @@ cancelable background batches; material values are uncalibrated approximations.
 This is an early solver, with contact robustness and reference drape agreement
 still to establish.
 
-Versioned `.weftforge` JSON stores the supported editable construction. OBJ mesh
+Version2 `.weftforge` JSON stores supported editable construction and reads old
+version1 projects through a strict lossless migration. Older apps cannot open v2. OBJ mesh
 and SVG pattern export exist; [format details and gaps](docs/file-formats.md)
 explain what survives each path. Simulation frames/settings, imported avatars,
 textures, animation, advanced construction, and Marvelous Designer native project

@@ -79,8 +79,8 @@
     "Set front translation[0.55,0,0.22] andback[-0.55,0,-0.22]; set resolution0.12m.",
     "Turn reversed pairing off; sew authored boundaries1,2,4,5,9,10,12,13 to matching back boundaries using full same-direction intervals and explicit linear correspondence.",
     "Run Assembly60steps gravity0 thenDrape120steps gravity-9.81, dt1/60s,8substeps,32iterations,closure1m/s. Observe3s finite state, strain~.09.",
-    "Adjust both widths1.06\u21921.08m; save the actual editable project. Quit the process, relaunch same retained executable, and reopen via native Open dialog.",
-    "Select front; observe persisted1.08m. Edit to1.10m, oneUndo\u21921.08m andoneRedo\u21921.10m. Edit back width1.08\u21921.10m andsave. Eight seams remain.",
+    "Adjust both widths1.06→1.08m; save the actual editable project. Quit the process, relaunch same retained executable, and reopen via native Open dialog.",
+    "Select front; observe persisted1.08m. Edit to1.10m, oneUndo→1.08m andoneRedo→1.10m. Edit back width1.08→1.10m andsave. Eight seams remain.",
     "Run same explicit Assembly60+Drape120 protocol on edited construction. Observe3s, strain~.081, assembly0, displayed seam/contact0, initialintersections0.",
     "Export actual solver positions toOBJ and authored paths toSVG via native Save dialogs. Independently parse finalauthoring/mesh/patterns; capture selected native window through REA."
   ],
@@ -131,7 +131,7 @@
   ],
   "single_identified_candidate_workflow": true,
   "scenario_id": "UI-SHIRT-CANDIDATE-001",
-  "freshness": "current",
+  "freshness": "stale",
   "source_scope": [
     ".cargo/config.toml",
     "Cargo.lock",
@@ -145,5 +145,6 @@
     "apps/weftforge/src",
     "scripts/check_drape.py",
     "scripts/check_exports.py"
-  ]
+  ],
+  "freshness_reason": "Authored grain and separate warp/weft stiffness changed the document, strict v1/v2 reader, solver bridge and native/CLI controls after this run. Original source identities, fixture/artifact hashes, measurements and outcomes are retained; rerun the affected workflow on the new authoring implementation. The independent output evaluator now measures authored grain axes (legacy angle zero)."
 }

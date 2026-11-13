@@ -71,9 +71,18 @@ Increase iterations and reduce substep duration when residuals remain high.
 ## Stretch, shear and grain
 
 Each triangle derives its 3x2 deformation gradient F = Ds*inverse(Dm), using
-pattern coordinates in Dm and deformed edge vectors in Ds. Grain rotates the two
-material axes by the material's `grain_angle` in radians. Let f_w and f_f be the
-resulting warp and weft columns. The scalar constraints are:
+pattern coordinates in Dm and deformed edge vectors in Ds. The editable piece's
+`grain_angle` is radians counterclockwise from material +U toward +V; the document
+bridge copies that angle and its assigned material's distinct warp/weft stiffnesses
+into each triangle's solver input. The 2D arrow displays this same warp axis.
+For unrotated deformation columns f_u and f_v:
+
+```text
+f_w = cos(angle)*f_u + sin(angle)*f_v
+f_f = -sin(angle)*f_u + cos(angle)*f_v
+```
+
+The scalar constraints are:
 
 ```text
 C_w = (dot(f_w,f_w) - 1)/2
@@ -87,11 +96,32 @@ k_s = A * shear_stiffness
 All three membrane stiffnesses are N/m. Their energy coefficients are N m; their
 constraints are dimensionless. This is a simple orthotropic Green-strain model
 with no Poisson coupling, plasticity or compression-specific wrinkling law. The
-default 0.2 kg/m², 800/600/120 N/m warp/weft/shear values are uncalibrated examples.
-They are not identified measured fabrics or reference-application presets.
+standalone solver DTO defaults of 0.2 kg/m² and 800/600/120 N/m warp/weft/shear
+are uncalibrated examples. The application's document defaults remain 0.18 kg/m²
+and 400/400/100 N/m; v1 migration copies the old stretch value to both axes and
+sets piece grain to zero, preserving the old physical inputs. Neither set is an
+identified measured fabric or a reference-application preset. Shear, bending,
+density, damping, friction and collision offset remain separate parameters;
+changing the display color does not change them.
 
 `max_stretch_error` reports max(abs(length(f_w)-1), abs(length(f_f)-1)). It is a
 material-axis length diagnostic, not a bound on all principal strains or shear.
+
+The authored numerical bridge regression loads a planar 0.2 m square against the
+ground, with density 0.2 kg/m², warp 50 N/m, weft 1000 N/m and damping 8 s^-1.
+After one second (dt=1/120 s, two substeps, 24 iterations), its top is
+0.2029735316 m at grain zero and 0.2023383529 m after a quarter-turn: 0.635179 mm
+more compression, exceeding the declared 0.3 mm minimum response. A color-only
+edit produces exactly the same solved positions. This bounded planar loading test
+checks that authored anisotropy reaches the real CPU engine, not buckling,
+calibration or general garment quality. It runs in
+`crates/weftforge-core/tests/grain.rs`.
+
+The independent output evaluator rotates its geometric deformation columns into
+the piece's authored axes too; legacy files with no angle use zero. A hand-derived
+45-degree fiber test under 1.2x U stretch yields sqrt((1.2²+1)/2)-1 rather than the
+unrotated 0.2. It calls no solver code. This keeps its material-axis diagnostic
+consistent with the stated quantity without supplying a reference drape answer.
 
 ## Bending
 
@@ -204,6 +234,13 @@ currently has no internal cancellation polling, so cancellation latency still
 depends on mesh size; background worker ownership is required by the application.
 
 ## Numerical evidence
+
+Retained runtime reports below describe their identified historical source and
+fixtures. The grain-authoring document/bridge/UI and independent-evaluator change
+marks those affected runs stale in the per-report registry without changing any
+outcome, source/artifact hash or failed scene. Current native grain/reopen/export
+workflow evidence remains pending; the focused authoring tests above are
+implementation-only.
 
 Run the focused suite with:
 

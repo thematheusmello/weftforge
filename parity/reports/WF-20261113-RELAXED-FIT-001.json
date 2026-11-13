@@ -87,7 +87,7 @@
     }
   },
   "known_failure_not_replaced": "Original tight-shirt and simultaneous-gravity refinement remain failed.",
-  "freshness": "current",
+  "freshness": "stale",
   "source_scope": [
     ".cargo/config.toml",
     "Cargo.lock",
@@ -100,5 +100,6 @@
     "apps/weftforge-cli/Cargo.toml",
     "apps/weftforge-cli/src",
     "scripts/check_drape.py"
-  ]
+  ],
+  "freshness_reason": "Authored grain and separate warp/weft stiffness changed the document, strict v1/v2 reader, solver bridge and native/CLI controls after this run. Original source identities, fixture/artifact hashes, measurements and outcomes are retained; rerun the affected workflow on the new authoring implementation. The independent output evaluator now measures authored grain axes (legacy angle zero)."
 }
