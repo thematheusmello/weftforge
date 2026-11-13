@@ -1,0 +1,103 @@
+{
+  "architecture": "aarch64",
+  "criteria": {
+    "finite": true,
+    "max_contact_penetration_below_m": 0.002,
+    "max_seam_gap_below_m": 0.005,
+    "max_stretch_error_below": 0.15,
+    "seam_assembly_remaining_m": 0.0
+  },
+  "diagnostics": {
+    "contacts": 21666,
+    "finite": true,
+    "initial_intersections": 0,
+    "kinetic_energy": 4.821404127434334e-8,
+    "max_contact_error": 5.551115123125783e-17,
+    "max_seam_error": 1.973021499105091e-7,
+    "max_stretch_error": 0.2343853235654847,
+    "seam_assembly_remaining": 0.0,
+    "simulation_time": 2.9999999999999942,
+    "step_seconds": 0.121069916
+  },
+  "export_written": false,
+  "kind": "implementation_only",
+  "limitations": [
+    "Original analytic avatar and uncalibrated fabrics",
+    "Finite fixture thresholds do not establish general garment quality or reference parity"
+  ],
+  "median_step_seconds": 0.12091725,
+  "memory_bytes": null,
+  "p95_step_seconds": 0.1299925,
+  "phases": [
+    {
+      "diagnostics": {
+        "contacts": 21274,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 2.3362213121198738e-6,
+        "max_contact_error": 3.0531133177191805e-16,
+        "max_seam_error": 1.973021499105087e-7,
+        "max_stretch_error": 0.23356554872800994,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.0000000000000013,
+        "step_seconds": 0.119578667
+      },
+      "name": "assembly",
+      "settings": {
+        "dt": 0.016666666666666666,
+        "gravity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "iterations": 32,
+        "seam_closure_speed": 1.0,
+        "substeps": 8
+      },
+      "simulated_seconds": 1.0,
+      "steps_completed": 60,
+      "steps_requested": 60,
+      "wall_seconds": 7.317964
+    },
+    {
+      "diagnostics": {
+        "contacts": 21666,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 4.821404127434334e-8,
+        "max_contact_error": 5.551115123125783e-17,
+        "max_seam_error": 1.973021499105091e-7,
+        "max_stretch_error": 0.2343853235654847,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.9999999999999942,
+        "step_seconds": 0.121069916
+      },
+      "name": "drape",
+      "settings": {
+        "dt": 0.016666666666666666,
+        "gravity": [
+          0.0,
+          -9.81,
+          0.0
+        ],
+        "iterations": 32,
+        "seam_closure_speed": 1.0,
+        "substeps": 8
+      },
+      "simulated_seconds": 2.0,
+      "steps_completed": 120,
+      "steps_requested": 120,
+      "wall_seconds": 14.552535458
+    }
+  ],
+  "platform": "macos",
+  "protocol": "explicit-zero-gravity-assembly-then-drape-v1",
+  "simulated_seconds": 2.9999999999999942,
+  "simulated_seconds_per_wall_second": 0.1371710433059331,
+  "solver_error": null,
+  "status": "failed",
+  "triangles": 232,
+  "vertices": 152,
+  "viewport_frame_seconds": null,
+  "wall_seconds": 21.870505084
+}

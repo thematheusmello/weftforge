@@ -46,7 +46,23 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-NATIVE-UI-001",
+          "path": "parity/reports/WF-20261113-NATIVE-UI-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+            "fixtures/ui-shirt-drape.obj": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+            "fixtures/ui-shirt-patterns.svg": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+            "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+            "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
+            "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -54,7 +70,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "UI-002",
@@ -89,7 +105,23 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-NATIVE-UI-001",
+          "path": "parity/reports/WF-20261113-NATIVE-UI-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+            "fixtures/ui-shirt-drape.obj": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+            "fixtures/ui-shirt-patterns.svg": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+            "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+            "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
+            "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -97,7 +129,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "UI-003",
@@ -183,7 +215,38 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-NATIVE-UI-001",
+          "path": "parity/reports/WF-20261113-NATIVE-UI-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+            "fixtures/ui-shirt-drape.obj": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+            "fixtures/ui-shirt-patterns.svg": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+            "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+            "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
+            "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -191,7 +254,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "UI-005",
@@ -234,7 +297,38 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-NATIVE-UI-001",
+          "path": "parity/reports/WF-20261113-NATIVE-UI-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+            "fixtures/ui-shirt-drape.obj": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+            "fixtures/ui-shirt-patterns.svg": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+            "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+            "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
+            "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "Meshing and simulation are revision-tagged background jobs; solver initialization checks cancellation only before/after initial contact analysis; command validation and file IO retain synchronous portions."
@@ -243,7 +337,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "UI-006",
@@ -327,7 +421,38 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-NATIVE-UI-001",
+          "path": "parity/reports/WF-20261113-NATIVE-UI-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+            "fixtures/ui-shirt-drape.obj": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+            "fixtures/ui-shirt-patterns.svg": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+            "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+            "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
+            "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -335,7 +460,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "PAT-002",
@@ -371,7 +496,23 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -379,7 +520,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "PAT-003",
@@ -414,7 +555,38 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-NATIVE-UI-001",
+          "path": "parity/reports/WF-20261113-NATIVE-UI-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+            "fixtures/ui-shirt-drape.obj": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+            "fixtures/ui-shirt-patterns.svg": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+            "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+            "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
+            "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -422,7 +594,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "PAT-004",
@@ -455,7 +627,38 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-NATIVE-UI-001",
+          "path": "parity/reports/WF-20261113-NATIVE-UI-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+            "fixtures/ui-shirt-drape.obj": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+            "fixtures/ui-shirt-patterns.svg": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+            "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+            "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
+            "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -463,7 +666,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "PAT-005",
@@ -509,7 +712,23 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "Sewn-curve splitting explicitly rejected; curve joining unsupported."
@@ -518,7 +737,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "PAT-006",
@@ -770,7 +989,38 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-NATIVE-UI-001",
+          "path": "parity/reports/WF-20261113-NATIVE-UI-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+            "fixtures/ui-shirt-drape.obj": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+            "fixtures/ui-shirt-patterns.svg": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+            "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+            "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
+            "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -778,7 +1028,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "SEW-001",
@@ -836,7 +1086,38 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-NATIVE-UI-001",
+          "path": "parity/reports/WF-20261113-NATIVE-UI-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+            "fixtures/ui-shirt-drape.obj": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+            "fixtures/ui-shirt-patterns.svg": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+            "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+            "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
+            "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -846,7 +1127,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "SEW-002",
@@ -934,7 +1215,23 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -942,7 +1239,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "SEW-004",
@@ -1107,7 +1404,23 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-NATIVE-UI-001",
+          "path": "parity/reports/WF-20261113-NATIVE-UI-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+            "fixtures/ui-shirt-drape.obj": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+            "fixtures/ui-shirt-patterns.svg": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+            "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+            "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
+            "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -1115,7 +1428,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "FIT-002",
@@ -1232,8 +1545,62 @@
       ],
       "prs": [],
       "implementation_status": "partial",
-      "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_status": "failed",
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-RELAXED-FIT-001",
+          "path": "parity/reports/WF-20261113-RELAXED-FIT-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/relaxed-shirt.weftforge": "5daf847ef95a44c1f8f2924661fdb5e8aa790a983daceb6dc2964604ba839820",
+            "parity/reports/artifacts/relaxed-fit.json": "a8dcbf1ed6e5a8001d02221ca51cb71140ac66decc6da37a2198ceef966daacc",
+            "parity/reports/artifacts/independent-relaxed-fit.json": "9ae29f6e0cb9fe64284f16a3cfc1e0b8db8568883058b5ff0076a08468c0807b"
+          }
+        },
+        {
+          "id": "WF-20261113-TIGHT-FIT-001",
+          "path": "parity/reports/WF-20261113-TIGHT-FIT-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+            "parity/reports/artifacts/tight-fit.json": "f523ce00375f64a2620c2cdb54392caf62213c6a8617f69f30fe2ccdb70900a3"
+          }
+        },
+        {
+          "id": "WF-20261113-NATIVE-UI-001",
+          "path": "parity/reports/WF-20261113-NATIVE-UI-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+            "fixtures/ui-shirt-drape.obj": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+            "fixtures/ui-shirt-patterns.svg": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+            "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+            "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
+            "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -1241,7 +1608,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "FIT-004",
@@ -1320,7 +1687,46 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "failed",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-RELAXED-FIT-001",
+          "path": "parity/reports/WF-20261113-RELAXED-FIT-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/relaxed-shirt.weftforge": "5daf847ef95a44c1f8f2924661fdb5e8aa790a983daceb6dc2964604ba839820",
+            "parity/reports/artifacts/relaxed-fit.json": "a8dcbf1ed6e5a8001d02221ca51cb71140ac66decc6da37a2198ceef966daacc",
+            "parity/reports/artifacts/independent-relaxed-fit.json": "9ae29f6e0cb9fe64284f16a3cfc1e0b8db8568883058b5ff0076a08468c0807b"
+          }
+        },
+        {
+          "id": "WF-20261113-TIGHT-FIT-001",
+          "path": "parity/reports/WF-20261113-TIGHT-FIT-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+            "parity/reports/artifacts/tight-fit.json": "f523ce00375f64a2620c2cdb54392caf62213c6a8617f69f30fe2ccdb70900a3"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "Original tight-shirt drape finishes after assembly/mesh fixes, but fitting-quality strain and seam residual fail declared criteria; preserve the scene."
@@ -1329,7 +1735,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "SIM-002",
@@ -1372,7 +1778,35 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-RELAXED-FIT-001",
+          "path": "parity/reports/WF-20261113-RELAXED-FIT-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/relaxed-shirt.weftforge": "5daf847ef95a44c1f8f2924661fdb5e8aa790a983daceb6dc2964604ba839820",
+            "parity/reports/artifacts/relaxed-fit.json": "a8dcbf1ed6e5a8001d02221ca51cb71140ac66decc6da37a2198ceef966daacc",
+            "parity/reports/artifacts/independent-relaxed-fit.json": "9ae29f6e0cb9fe64284f16a3cfc1e0b8db8568883058b5ff0076a08468c0807b"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -1380,7 +1814,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "SIM-003",
@@ -1416,7 +1850,35 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-RELAXED-FIT-001",
+          "path": "parity/reports/WF-20261113-RELAXED-FIT-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/relaxed-shirt.weftforge": "5daf847ef95a44c1f8f2924661fdb5e8aa790a983daceb6dc2964604ba839820",
+            "parity/reports/artifacts/relaxed-fit.json": "a8dcbf1ed6e5a8001d02221ca51cb71140ac66decc6da37a2198ceef966daacc",
+            "parity/reports/artifacts/independent-relaxed-fit.json": "9ae29f6e0cb9fe64284f16a3cfc1e0b8db8568883058b5ff0076a08468c0807b"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -1424,7 +1886,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "SIM-004",
@@ -1469,7 +1931,23 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "Vertex/triangle discrete contact; edge/edge and full continuous contact missing; layered shirt+jacket acceptance unverified."
@@ -1478,7 +1956,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "SIM-005",
@@ -1514,7 +1992,50 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-RELAXED-FIT-001",
+          "path": "parity/reports/WF-20261113-RELAXED-FIT-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/relaxed-shirt.weftforge": "5daf847ef95a44c1f8f2924661fdb5e8aa790a983daceb6dc2964604ba839820",
+            "parity/reports/artifacts/relaxed-fit.json": "a8dcbf1ed6e5a8001d02221ca51cb71140ac66decc6da37a2198ceef966daacc",
+            "parity/reports/artifacts/independent-relaxed-fit.json": "9ae29f6e0cb9fe64284f16a3cfc1e0b8db8568883058b5ff0076a08468c0807b"
+          }
+        },
+        {
+          "id": "WF-20261113-NATIVE-UI-001",
+          "path": "parity/reports/WF-20261113-NATIVE-UI-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+            "fixtures/ui-shirt-drape.obj": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+            "fixtures/ui-shirt-patterns.svg": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+            "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+            "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
+            "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -1522,7 +2043,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "SIM-006",
@@ -1569,7 +2090,46 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "failed",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-RELAXED-FIT-001",
+          "path": "parity/reports/WF-20261113-RELAXED-FIT-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/relaxed-shirt.weftforge": "5daf847ef95a44c1f8f2924661fdb5e8aa790a983daceb6dc2964604ba839820",
+            "parity/reports/artifacts/relaxed-fit.json": "a8dcbf1ed6e5a8001d02221ca51cb71140ac66decc6da37a2198ceef966daacc",
+            "parity/reports/artifacts/independent-relaxed-fit.json": "9ae29f6e0cb9fe64284f16a3cfc1e0b8db8568883058b5ff0076a08468c0807b"
+          }
+        },
+        {
+          "id": "WF-20261113-TIGHT-FIT-001",
+          "path": "parity/reports/WF-20261113-TIGHT-FIT-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+            "parity/reports/artifacts/tight-fit.json": "f523ce00375f64a2620c2cdb54392caf62213c6a8617f69f30fe2ccdb70900a3"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -1577,7 +2137,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "SIM-007",
@@ -1945,7 +2505,38 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-NATIVE-UI-001",
+          "path": "parity/reports/WF-20261113-NATIVE-UI-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+            "fixtures/ui-shirt-drape.obj": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+            "fixtures/ui-shirt-patterns.svg": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+            "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+            "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
+            "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -1953,7 +2544,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "FILE-002",
@@ -1998,7 +2589,23 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -2006,7 +2613,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "FILE-003",
@@ -2051,7 +2658,38 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-NATIVE-UI-001",
+          "path": "parity/reports/WF-20261113-NATIVE-UI-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+            "fixtures/ui-shirt-drape.obj": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+            "fixtures/ui-shirt-patterns.svg": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+            "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+            "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
+            "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "Current export has geometry/UV/normals/piece groups; avatar import and material assignments missing."
@@ -2060,7 +2698,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "FILE-004",
@@ -2146,7 +2784,38 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        },
+        {
+          "id": "WF-20261113-NATIVE-UI-001",
+          "path": "parity/reports/WF-20261113-NATIVE-UI-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+            "fixtures/ui-shirt-drape.obj": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+            "fixtures/ui-shirt-patterns.svg": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+            "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+            "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
+            "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -2154,7 +2823,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "FILE-006",
@@ -2267,7 +2936,23 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -2275,7 +2960,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "APP-002",
@@ -2351,7 +3036,23 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261113-REGRESSION-001",
+          "path": "parity/reports/WF-20261113-REGRESSION-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T21:39:11Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/tests.log": "49b65405c01a142dc4eeee9157990918a4060e70b3165001f1d538fb6072c638",
+            "parity/reports/artifacts/clippy.log": "f2066ca264b9a8598ecd436c70919e1efe1acea4098ad2a13b5d82d67bc049ec",
+            "parity/reports/artifacts/registry.log": "9c43a8f4cf44593af8827658e681afc1ab711b7ae5e53aa54406ede300402749",
+            "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
+            "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -2359,7 +3060,7 @@
       "blockers": [
         "User must review reference app terms and activate legitimate trial/license."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "APP-004",

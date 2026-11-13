@@ -10,7 +10,7 @@ Implementation: 0/56 implemented; 36/56 partial; 0/56 in progress; 20/56 planned
 
 Verified reference parity: **0/56** inventoried contracts. Implementation-only checks do not count as reference parity.
 
-Verification states: passed 0/56, failed 2/56, blocked 2/56, stale 0/56, not_run 52/56.
+Verification states: passed 0/56, failed 3/56, blocked 2/56, stale 0/56, not_run 51/56.
 
 Reference observation: observed 0/56, documentation_only 5/56, unobserved 51/56, blocked 0/56.
 
@@ -34,39 +34,39 @@ Reference observation: observed 0/56, documentation_only 5/56, unobserved 51/56,
 
 | ID | Capability | Implementation | Verification | Reference | Evidence / issue |
 |---|---|---|---|---|---|
-| UI-001 | Connected 2D and 3D workspace | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/2) |
-| UI-002 | Coherent selection | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/2) |
+| UI-001 | Connected 2D and 3D workspace | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/2) |
+| UI-002 | Coherent selection | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/2) |
 | UI-003 | Shortcuts and command search | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/2) |
-| UI-004 | Transactions and history | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/2) |
-| UI-005 | Cancellable background jobs | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/2) |
+| UI-004 | Transactions and history | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/2) |
+| UI-005 | Cancellable background jobs | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/2) |
 | UI-006 | Accessibility and high DPI | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/2) |
-| PAT-001 | Editable polygons and straight boundaries | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/3) |
-| PAT-002 | Cubic curve authoring | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/3) · [issue](https://github.com/thematheusmello/weftforge/issues/9) |
-| PAT-003 | Rectangles and primitives | partial | not_run | documentation_only | [issue](https://github.com/thematheusmello/weftforge/issues/3) |
-| PAT-004 | Pattern transforms | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/3) |
-| PAT-005 | Split and join boundaries | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/3) |
+| PAT-001 | Editable polygons and straight boundaries | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/3) |
+| PAT-002 | Cubic curve authoring | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/3) · [issue](https://github.com/thematheusmello/weftforge/issues/9) |
+| PAT-003 | Rectangles and primitives | partial | not_run | documentation_only | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/3) |
+| PAT-004 | Pattern transforms | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/3) |
+| PAT-005 | Split and join boundaries | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/3) |
 | PAT-006 | Cut pieces and holes | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/3) |
 | PAT-007 | Internal features and measurements | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/3) |
 | PAT-008 | Grain direction | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/3) |
 | PAT-009 | Seam allowances and offsets | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/3) |
 | PAT-010 | Darts pleats and linked symmetry | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/3) |
-| PAT-011 | Resolution and triangulation | partial | not_run | documentation_only | [issue](https://github.com/thematheusmello/weftforge/issues/3) |
-| SEW-001 | Oriented interval sewing | partial | not_run | documentation_only | [issue](https://github.com/thematheusmello/weftforge/issues/3) · [issue](https://github.com/thematheusmello/weftforge/issues/9) |
+| PAT-011 | Resolution and triangulation | partial | not_run | documentation_only | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/3) |
+| SEW-001 | Oriented interval sewing | partial | not_run | documentation_only | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/3) · [issue](https://github.com/thematheusmello/weftforge/issues/9) |
 | SEW-002 | Free chain and internal sewing | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/3) |
-| SEW-003 | Easing and gathering | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/3) · [issue](https://github.com/thematheusmello/weftforge/issues/9) |
+| SEW-003 | Easing and gathering | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/3) · [issue](https://github.com/thematheusmello/weftforge/issues/9) |
 | SEW-004 | Seam diagnostics and editing | partial | not_run | documentation_only | [issue](https://github.com/thematheusmello/weftforge/issues/3) · [issue](https://github.com/thematheusmello/weftforge/issues/9) |
 | SEW-005 | Construction attachments | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/3) |
 | SEW-006 | Topstitching and export welding | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/3) |
-| FIT-001 | Avatar import and arrangement | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/2) |
+| FIT-001 | Avatar import and arrangement | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/2) |
 | FIT-002 | Pins grabbing and layers | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/2) |
-| FIT-003 | Edit and regenerate garment | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/2) · [issue](https://github.com/thematheusmello/weftforge/issues/8) |
+| FIT-003 | Edit and regenerate garment | partial | failed | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-RELAXED-FIT-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-TIGHT-FIT-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/2) · [issue](https://github.com/thematheusmello/weftforge/issues/8) |
 | FIT-004 | Drawing on avatar and preserving shape | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/2) |
-| SIM-001 | Documented cloth solver | partial | failed | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/4) · [issue](https://github.com/thematheusmello/weftforge/issues/8) |
-| SIM-002 | Physical fabric parameters | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/4) |
-| SIM-003 | Avatar and ground contact | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/4) |
-| SIM-004 | Self and layered contact | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/4) |
-| SIM-005 | Simulation control and diagnostics | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/4) · [issue](https://github.com/thematheusmello/weftforge/issues/8) |
-| SIM-006 | Convergence and calibration | partial | failed | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/4) · [issue](https://github.com/thematheusmello/weftforge/issues/8) |
+| SIM-001 | Documented cloth solver | partial | failed | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-RELAXED-FIT-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-TIGHT-FIT-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/4) · [issue](https://github.com/thematheusmello/weftforge/issues/8) |
+| SIM-002 | Physical fabric parameters | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-RELAXED-FIT-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/4) |
+| SIM-003 | Avatar and ground contact | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-RELAXED-FIT-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/4) |
+| SIM-004 | Self and layered contact | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/4) |
+| SIM-005 | Simulation control and diagnostics | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-RELAXED-FIT-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/4) · [issue](https://github.com/thematheusmello/weftforge/issues/8) |
+| SIM-006 | Convergence and calibration | partial | failed | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-RELAXED-FIT-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-TIGHT-FIT-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/4) · [issue](https://github.com/thematheusmello/weftforge/issues/8) |
 | SIM-007 | GPU acceleration | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/4) |
 | MAT-001 | Material assignment and presets | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/5) |
 | MAT-002 | Appearance texture and PBR | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/5) |
@@ -74,16 +74,16 @@ Reference observation: observed 0/56, documentation_only 5/56, unobserved 51/56,
 | ANIM-001 | Animated avatars | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/5) |
 | ANIM-002 | Timeline and cache invalidation | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/5) |
 | ANIM-003 | Output preparation | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/5) |
-| FILE-001 | Editable native projects | partial | not_run | documentation_only | [issue](https://github.com/thematheusmello/weftforge/issues/6) |
-| FILE-002 | Atomic save and recovery | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/6) |
-| FILE-003 | OBJ interchange | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/6) |
+| FILE-001 | Editable native projects | partial | not_run | documentation_only | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/6) |
+| FILE-002 | Atomic save and recovery | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/6) |
+| FILE-003 | OBJ interchange | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/6) |
 | FILE-004 | glTF and GLB interchange | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/6) |
-| FILE-005 | Patterns SVG DXF and printing | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/6) |
+| FILE-005 | Patterns SVG DXF and printing | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/6) |
 | FILE-006 | Marvelous native compatibility | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/6) |
 | FILE-007 | Animation and cache export | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/6) |
-| APP-001 | Shared command engine and adapters | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/7) |
+| APP-001 | Shared command engine and adapters | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/7) |
 | APP-002 | Cross-platform packaging | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/7) |
-| APP-003 | Offline operation and licensing | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/7) |
+| APP-003 | Offline operation and licensing | partial | not_run | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/7) |
 | APP-004 | Recovery and responsiveness | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/7) |
 | APP-005 | Public delivery and evidence | partial | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/7) |
 | PERF-001 | Representative performance | planned | not_run | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/7) |
@@ -155,3 +155,8 @@ Known solver limits: discrete vertex/triangle contact has no full edge/edge cont
 - **REF-003**: Full reference contract and runtime comparison not yet established.; User must review reference app terms and activate legitimate trial/license.
 
 ## Latest attributable runs
+
+- [WF-20261113-NATIVE-UI-001](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json): implementation_only, passed, commit `ff3914474c8acc30d10c70a8489cae56cfa2c872`, macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1, 2026-11-13T21:39:11Z.
+- [WF-20261113-REGRESSION-001](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json): implementation_only, passed, commit `ff3914474c8acc30d10c70a8489cae56cfa2c872`, macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1, 2026-11-13T21:39:11Z.
+- [WF-20261113-RELAXED-FIT-001](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-RELAXED-FIT-001.json): implementation_only, passed, commit `ff3914474c8acc30d10c70a8489cae56cfa2c872`, macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1, 2026-11-13T21:39:11Z.
+- [WF-20261113-TIGHT-FIT-001](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-TIGHT-FIT-001.json): implementation_only, failed, commit `ff3914474c8acc30d10c70a8489cae56cfa2c872`, macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1, 2026-11-13T21:39:11Z.
