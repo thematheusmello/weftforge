@@ -7,18 +7,23 @@ incomplete and must expand with discovery.
 
 ## Current recoverable state
 
-The first buildable implementation is complete in the worktree and ready for
-its initial source commit/publication. The public repository and origin are
-verified: https://github.com/thematheusmello/weftforge. Source publication and
-CI verification are the next external actions; exact tested source identities
-will be attached in parity/reports/. No unrelated preexisting source existed.
+Published source: `ff3914474c8acc30d10c70a8489cae56cfa2c872` on main. The public
+repository and origin are verified: https://github.com/thematheusmello/weftforge.
+Scoped run reports and a one-line evidence-CI toolchain correction are on
+`evidence/first-garment-checkpoint`. Reports retain exact source/input/artifact
+hashes and the single-candidate GUI replay gap. No unrelated source existed.
 
 Delivery issues [#1–#7](https://github.com/thematheusmello/weftforge/issues) and six
 milestones cover discovery and every roadmap gate. Reproductions:
 [tight-shirt/convergence #8](https://github.com/thematheusmello/weftforge/issues/8)
 and [arc-length partial sewing #9](https://github.com/thematheusmello/weftforge/issues/9).
-GitHub Pages is configured for the generated docs/dashboard workflow; actual
-successful deployment is unverified until push. Project board creation failed:
+GitHub Pages deployed successfully in [run43512419050](https://github.com/thematheusmello/weftforge/actions/runs/43512419050);
+https://thematheusmello.github.io/weftforge/ returned HTTP200 with the correct title.
+The first source CI run is [43512419034](https://github.com/thematheusmello/weftforge/actions/runs/43512419034).
+Linux/macOS/Windows tests and clippy passed; release builds were still running at
+last poll. The evidence job failed Rustup component installation (`cargo-fmt`
+conflict); the branch explicitly installs manifest components to repair it.
+New CI on the fix remains required. Project board creation failed:
 token lacks project/read:project scopes. Issues and registry work independently.
 
 ## What works and how it was checked
@@ -55,7 +60,8 @@ remains necessary. Final binary digest and screenshot are in docs/images/.
 `cargo fmt --all --check`, workspace tests, strict all-target clippy, registry
 validation and independent OBJ/SVG scenario passed on the integrated source.
 Independent evaluator tests also pass; a deliberate1mm SVG-scale mutation is
-rejected. Public platform CI is configured but has not yet run. See verification
+rejected. Public platform CI has passed source tests and lint on all three OSes; full
+workflow success and GUI launches remain unverified. See verification
 and physics docs for equations, tolerances, commands, hardware and evidence scope.
 
 ## Failures and remaining scope
@@ -89,9 +95,9 @@ MCP unconnected, Ghidra unconfigured. No setup or download is still running.
 
 ## Next exact actions
 
-1. Commit and push tested source; attach scoped run reports with SHA/source/input/
-   artifact hashes, regenerate progress, inspect public CI/Pages and correct real
-   cross-platform failures. Use linked feature branches/PRs for next increments.
+1. Finish and merge the evidence/CI-fix PR after checks and repository requirements.
+   Inspect authoritative CI/Pages terminal states. Preserve the initial failed
+   evidence job and fix any new platform failure without weakening checks.
 2. Replay the entire empty-project workflow on one identified candidate, including
    post-reopen dimension edit and actual export. Preserve observed failures.
 3. Improve authored sewing length semantics, robust relationship-preserving sewn

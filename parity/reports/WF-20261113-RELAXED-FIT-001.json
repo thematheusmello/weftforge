@@ -1,0 +1,90 @@
+{
+  "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+  "source_hashes": {
+    ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "Cargo.lock": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
+    "Cargo.toml": "94e7047c9c39af1ec30cd7d6aa88a406138c93cbcb35eac9c5279b750cb98c03",
+    "apps/weftforge-cli/Cargo.toml": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+    "apps/weftforge-cli/src/main.rs": "8f81f94930fc87de1655bddbe8e04a97ae0a8457f862f57a268cd3e11e760c4a",
+    "apps/weftforge/Cargo.toml": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+    "apps/weftforge/src/main.rs": "7ec28eb92ca98467954e220943dbe2c5a7fb09085490c673c4735cec27347a73",
+    "crates/weftforge-core/Cargo.toml": "eac1be8f249f92f0b98686099bac5e11cfeeed064a7da944c3e331a2c09ff56e",
+    "crates/weftforge-core/src/document.rs": "43b31bbebaf523f94d6550bdfbda7532a7788741ecfa0b34ae48401d2084822f",
+    "crates/weftforge-core/src/geometry.rs": "9af80750bc6bd3f722c667e9596a19055802c03d9c0e5315bda16320d502f154",
+    "crates/weftforge-core/src/lib.rs": "b54d19bce3ff323a394c9e79306de6e7bcdac8033b0ed277387fbf78c7a00ebc",
+    "crates/weftforge-core/src/persistence.rs": "85cddea9418bc79c6394c236bb471be6b97d6649fc065c02cff90fb4be4fb4d6",
+    "crates/weftforge-core/src/simulation.rs": "9422dc30c5454b1307e51fb859a83a75946e66f30af4ffa26f8fd9c566b8f245",
+    "crates/weftforge-core/tests/shirt.rs": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+    "crates/weftforge-core/tests/workflow.rs": "4062b8ccbf453588b525ff1721e9876089c50a2b0446463030bf1f4176747a39",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/constraints.rs": "3456ba2565eadc5e113d5278f6dda6c46164a0f98f66400058e7ca9887f4298f",
+    "crates/weftforge-sim/src/contact.rs": "242afc27053ffc12bacd19d20cff247c87ce44f5f13f6046d9b5996a86c8dd6f",
+    "crates/weftforge-sim/src/lib.rs": "5d318903e94faa93805a419847726acbfdd3c8173df86754b5f348f7ce7d1a5a",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/tests.rs": "30a5ba9170d369ec80ceb7402aa67047286fbda100dd3073e1f0f5a6c6f8754a",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+    "scripts/check_drape.py": "8425f34806acc5942fbb647f8f4767cb0c1006fbf5fd4b068c4067711c036986",
+    "scripts/check_exports.py": "18272fdf98572677d63dfdda88d47e6d089e2a6bf51461cb102170dc1557b7a2",
+    "scripts/progress.py": "d253505f7e77302fc8d07b208a10da93d25ae19ce4c8be9bd88f2bed0b8eb383",
+    "scripts/test_drape.py": "bb940d2b1b8929d33f1a2c3cfaae42057f578a2a2ce26a4fa302990f3b83ff68",
+    "scripts/test_exports.py": "7d949462fc487d411cf729ec2b0685318e25cdd8a61b56e2e3ff4f83e4c74a16",
+    "scripts/test_progress.py": "06999bce67616c85091939772fcd21da1ed815459ac5954d9c897dccd9c66f95",
+    "xtask/Cargo.toml": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+    "xtask/src/main.rs": "c6b00f69cd1c047ddb291c1c87b1270a9229238e305f2ef32fdcd79b0ac0ef55"
+  },
+  "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+  "timestamp": "2026-11-13T21:39:11Z",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "complete_contract": false,
+  "reference_executed": false,
+  "code_identity_note": "Source contents frozen as this commit; final executable hash matches a no-change release rebuild. Initial UI authoring used an earlier local build without retained digest; no claim that the complete UI flow ran on one identified candidate.",
+  "id": "WF-20261113-RELAXED-FIT-001",
+  "kind": "implementation_only",
+  "status": "passed",
+  "feature_ids": [
+    "SIM-001",
+    "SIM-002",
+    "SIM-003",
+    "SIM-005",
+    "SIM-006",
+    "FIT-003"
+  ],
+  "artifact_hashes": {
+    "fixtures/relaxed-shirt.weftforge": "5daf847ef95a44c1f8f2924661fdb5e8aa790a983daceb6dc2964604ba839820",
+    "parity/reports/artifacts/relaxed-fit.json": "a8dcbf1ed6e5a8001d02221ca51cb71140ac66decc6da37a2198ceef966daacc",
+    "parity/reports/artifacts/independent-relaxed-fit.json": "9ae29f6e0cb9fe64284f16a3cfc1e0b8db8568883058b5ff0076a08468c0807b"
+  },
+  "scope": "One original relaxed-shirt fixture with declared explicit gravity-off assembly and gravity-on drape; independent output metrics. No general garment convergence, self-contact correctness or reference equivalence.",
+  "command": "cargo run --release -p weftforge-cli -- fit-benchmark fixtures/relaxed-shirt.weftforge",
+  "metrics": {
+    "kind": "independently_checked_output",
+    "status": "passed",
+    "scope": "straight-boundary original fixture; no self-contact or animation verification",
+    "vertices": 158,
+    "triangles": 244,
+    "pieces": 2,
+    "max_material_axis_strain": 0.08999346914210493,
+    "max_seam_gap_m": 1.3898802852362387e-08,
+    "max_avatar_ground_thickness_error_m": 2.5153490401663703e-17,
+    "bounds_m": [
+      [
+        -0.44837656696376815,
+        0.4578593436624894
+      ],
+      [
+        1.0669574236159698,
+        1.580261682875669
+      ],
+      [
+        -0.2539998573343895,
+        0.25440752750437134
+      ]
+    ],
+    "criteria": {
+      "strain_below": 0.15,
+      "seam_gap_below_m": 0.005,
+      "avatar_ground_thickness_error_below_m": 0.002
+    }
+  },
+  "known_failure_not_replaced": "Original tight-shirt and simultaneous-gravity refinement remain failed."
+}

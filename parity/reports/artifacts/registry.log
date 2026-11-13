@@ -1,0 +1,27 @@
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running `target/debug/xtask verify`
+Registry valid: 56 inventoried contracts; generated reports checked.
+............
+----------------------------------------------------------------------
+Ran 12 tests in 0.031s
+
+OK
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running `target/debug/weftforge-cli --help`
+WeftForge CLI — offline editable garment tools
+
+new PROJECT
+sample PROJECT                         original two-panel shirt (implementation fixture)
+inspect PROJECT
+rectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT
+resize INPUT OUTPUT PIECE_ID WIDTH HEIGHT
+export-obj PROJECT OUTPUT.obj
+export-svg PROJECT OUTPUT.svg
+simulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled
+benchmark PROJECT STEPS                JSON measurements for the same solver
+fit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape
+fit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass
+recover PROJECT OUTPUT                explicitly load last valid recovery
+
+Units: metres, kilograms, seconds; Y-up. All edits use the desktop command engine.
+Simulation is currently a rebuildable state; projects store editable construction.
