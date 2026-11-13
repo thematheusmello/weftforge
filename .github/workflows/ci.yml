@@ -35,6 +35,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: '1.94.1'
+          components: rustfmt, clippy
       - run: python3 -m pip install -r requirements-dev.txt
       - run: cargo xtask verify
       - run: cargo xtask scenario
