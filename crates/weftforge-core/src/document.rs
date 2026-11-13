@@ -610,13 +610,6 @@ impl Project {
                     t.is_finite() && t > 1.0e-6 && t < 1.0 - 1.0e-6,
                     "Split t must be strictly inside the curve",
                 )?;
-                ensure(
-                    !self
-                        .seams
-                        .iter()
-                        .any(|seam| seam.a.curve == curve || seam.b.curve == curve),
-                    "Splitting a sewn curve is unsupported; remove its seams first",
-                )?;
                 let original = self
                     .curve(curve)
                     .ok_or_else(|| Error("Unknown curve".into()))?
@@ -671,6 +664,15 @@ impl Project {
                     .position(|&id| id == curve)
                     .ok_or_else(|| Error("Curve has no piece".into()))?;
                 piece.boundary.insert(index + 1, second);
+                for seam in std::mem::take(&mut self.seams) {
+                    let portions = split_seam(seam, curve, second, t);
+                    for (index, mut portion) in portions.into_iter().enumerate() {
+                        if index > 0 {
+                            portion.id = self.allocate_id()?;
+                        }
+                        self.seams.push(portion);
+                    }
+                }
             }
             Command::ResizePiece {
                 piece,
@@ -812,6 +814,74 @@ impl Project {
         }
         Ok(())
     }
+}
+
+fn split_seam(seam: Seam, curve: Id, second: Id, t: f64) -> Vec<Seam> {
+    let source = if seam.a.curve == curve {
+        0
+    } else if seam.b.curve == curve {
+        1
+    } else {
+        return vec![seam];
+    };
+    let intervals = [seam.a, seam.b];
+    let interval = intervals[source];
+    let fraction = (t - interval.t0) / (interval.t1 - interval.t0);
+    let mut cuts = vec![[0.0, 0.0]];
+    if fraction > 0.0 && fraction < 1.0 {
+        let mut cut = [0.0; 2];
+        cut[source] = fraction;
+        cut[1 - source] = crate::geometry::correspondence(&seam.correspondence, fraction, source);
+        cuts.push(cut);
+    }
+    cuts.push([1.0, 1.0]);
+    cuts.windows(2)
+        .map(|bounds| {
+            let [start, end] = [bounds[0], bounds[1]];
+            let mut portion = seam.clone();
+            portion.correspondence = vec![[0.0, 0.0]];
+            for pair in &seam.correspondence {
+                // An interpolated cut can round onto a breakpoint on either axis.
+                if (0..2).all(|axis| pair[axis] > start[axis] && pair[axis] < end[axis]) {
+                    portion.correspondence.push(std::array::from_fn(|axis| {
+                        (pair[axis] - start[axis]) / (end[axis] - start[axis])
+                    }));
+                }
+            }
+            portion.correspondence.push([1.0, 1.0]);
+            let remap = |axis: usize| {
+                let interval = intervals[axis];
+                let parameter = |fraction| {
+                    if fraction == 0.0 {
+                        interval.t0
+                    } else if fraction == 1.0 {
+                        interval.t1
+                    } else if axis == source {
+                        // This boundary was constructed at the exact authored split t.
+                        t
+                    } else {
+                        interval.parameter(fraction)
+                    }
+                };
+                let [mut t0, mut t1] = [parameter(start[axis]), parameter(end[axis])];
+                let mut id = interval.curve;
+                if axis == source {
+                    if (t0 + t1) * 0.5 > t {
+                        id = second;
+                        t0 = (t0 - t) / (1.0 - t);
+                        t1 = (t1 - t) / (1.0 - t);
+                    } else {
+                        t0 /= t;
+                        t1 /= t;
+                    }
+                }
+                CurveInterval { curve: id, t0, t1 }
+            };
+            portion.a = remap(0);
+            portion.b = remap(1);
+            portion
+        })
+        .collect()
 }
 
 fn validate_name(name: &str) -> Result<()> {

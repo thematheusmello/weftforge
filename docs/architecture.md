@@ -50,8 +50,11 @@ shared midpoint vertices. Cubic bounds use analytic derivative roots. Polygon
 validity uses a bounded polyline approximation for curves: intersections below
 the documented 0.2 mm tolerance can remain unresolved. Collinear zero-area faces
 from ear clipping are discarded without weakening the strict positive-area mesh
-validation. Sewn-curve splits are explicitly rejected pending interval rewriting;
-unsupported relationships are not silently discarded.
+validation. De Casteljau splits retain exact authored cubics. Every affected seam
+is partitioned in its oriented correspondence coordinates and remapped to local
+curve parameters; unrelated IDs and material assignments remain intact. The
+original seam ID survives on its first oriented portion and later portions get
+new IDs. Invalid or unrepresentably short portions fail the whole transaction.
 
 ## Commands, transactions, revisions and jobs
 

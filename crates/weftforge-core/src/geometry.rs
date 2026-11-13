@@ -643,7 +643,7 @@ fn append_stitches(
     Ok(())
 }
 
-fn correspondence(pairs: &[[f64; 2]], fraction: f64, source: usize) -> f64 {
+pub(crate) fn correspondence(pairs: &[[f64; 2]], fraction: f64, source: usize) -> f64 {
     for pair in pairs.windows(2) {
         if fraction <= pair[1][source] {
             let t = (fraction - pair[0][source]) / (pair[1][source] - pair[0][source]);

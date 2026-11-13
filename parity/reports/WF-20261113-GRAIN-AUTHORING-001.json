@@ -6,7 +6,7 @@
   "kind": "implementation_only",
   "complete_contract": false,
   "reference_executed": false,
-  "freshness": "current",
+  "freshness": "stale",
   "source_hashes": {
     ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
     "Cargo.lock": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
@@ -135,5 +135,6 @@
     "fitting": "failed: see WF-20261113-GRAIN-FIT-001"
   },
   "paired_failure_report": "WF-20261113-GRAIN-FIT-001",
-  "native_capture_timestamp": "2026-11-13T23:35:00Z"
+  "native_capture_timestamp": "2026-11-13T23:35:00Z",
+  "freshness_reason": "Native/CLI curve authoring and sewing-preserving subdivision changed relevant scoped source after this run. Original source/input/artifact identities and pass/failure outcomes are retained; rerun on the integrated candidate."
 }

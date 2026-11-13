@@ -1,4 +1,4 @@
-# WeftForge status — active development, 2026-11-13
+# WeftForge status — active development, 2026-11-14
 
 The complete independent native garment studio and recorded one-to-one reference
 parity remain the goal. No feature has verified reference parity: 0/56 inventoried
@@ -162,3 +162,20 @@ Last observed own-app PID52560 is paused at3s Drape with no active-job indicator
 Historical reference PID18283 showed sign-in at23:06UTC. Grain and curve build/check sessions
 completed; the MCP agent is active in its isolated worktree. Recheck actual
 processes and CI handles before resuming; do not duplicate live work.
+
+## Integrated curve/MCP/recovery candidate
+
+Root branch `feat/curve-mcp-recovery` is integrating reviewed c48cd958 curve
+controls and sewing-preserving subdivision with the tested local MCP adapter and
+shared export guards. The native curve probe created a disposable editable panel;
+its complete workflow was not accepted. Actual Cmd+Q exited while Unsaved was
+visible ([issue18](https://github.com/thematheusmello/weftforge/issues/18)). The
+pinned platform lifecycle bypasses window CloseRequested; latest-dirty shutdown
+recovery is being implemented/tested separately, with the native Quit limitation
+explicit. No unrelated user document was involved.
+
+New grain reports retain their original outcomes, artifacts and identities but
+are stale after these relevant source changes. Run the full native curve/history/
+refinement/save/reopen and last-second quit/recovery scenarios on the combined
+identified candidate after all source checks pass. Then publish qualified new
+reports. Do not label the aborted preliminary probe a complete workflow.

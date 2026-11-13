@@ -108,7 +108,9 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "spec/features/PAT-005-sewn-curve-editing.md"
+      ],
       "scenarios": [
         {
           "id": "UI-SHIRT-CANDIDATE-001",
@@ -205,13 +207,14 @@
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Selected boundary ID, 2D highlight and current inspector values implemented; new native interaction evidence and complete cross-view subobject selection remain pending."
       ],
       "contradictions": [],
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "UI-003",
@@ -394,7 +397,7 @@
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "UI-005",
@@ -663,7 +666,9 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "spec/features/PAT-005-sewn-curve-editing.md"
+      ],
       "scenarios": [],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
@@ -677,7 +682,12 @@
         "PAT-001"
       ],
       "implementation_locations": [
-        "crates/weftforge-core/src/lib.rs"
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/geometry.rs",
+        "crates/weftforge-core/tests/workflow.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/tests/curves.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3",
@@ -704,7 +714,8 @@
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Selected native boundary numeric controls/straightness and CLI commands are implemented; identified native curve-edit/split/reopen acceptance remains pending."
       ],
       "contradictions": [],
       "blockers": [
@@ -921,7 +932,9 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "spec/features/PAT-005-sewn-curve-editing.md"
+      ],
       "scenarios": [
         {
           "id": "EDIT-RELATION-001",
@@ -946,7 +959,12 @@
         "SEW-001"
       ],
       "implementation_locations": [
-        "crates/weftforge-core/src/lib.rs"
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/geometry.rs",
+        "crates/weftforge-core/tests/workflow.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/tests/curves.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3"
@@ -973,7 +991,7 @@
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Sewn-curve splitting explicitly rejected; curve joining unsupported."
+        "Sewn line/cubic splitting now partitions oriented partial/gathered correspondence; native acceptance pending. Joining remains unsupported; portions below the existing 1e-8 local-parameter limit fail atomically."
       ],
       "contradictions": [],
       "blockers": [
@@ -1143,7 +1161,7 @@
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "PAT-009",
@@ -1351,7 +1369,8 @@
       ],
       "reference_observation_status": "documentation_only",
       "evidence_ids": [
-        "spec/features/SEW-001-oriented-segment-sewing.md"
+        "spec/features/SEW-001-oriented-segment-sewing.md",
+        "spec/features/PAT-005-sewn-curve-editing.md"
       ],
       "scenarios": [
         {
@@ -1395,7 +1414,12 @@
         "PAT-011"
       ],
       "implementation_locations": [
-        "crates/weftforge-core/src/lib.rs"
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/geometry.rs",
+        "crates/weftforge-core/tests/workflow.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/tests/curves.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3",
@@ -1453,7 +1477,8 @@
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Sewn split point-pair preservation has analytical implementation checks at 1e-12 m; native/runtime reference comparison and arc-length issue #9 remain open."
       ],
       "contradictions": [
         "Public partial-sewing API uses normalized boundary length; current document intervals and default correspondence use curve parameter t. Arc-length equivalence remains unverified."
@@ -1516,7 +1541,9 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "spec/features/PAT-005-sewn-curve-editing.md"
+      ],
       "scenarios": [
         {
           "id": "SEW-CUBIC-001",
@@ -1540,7 +1567,12 @@
         "SEW-001"
       ],
       "implementation_locations": [
-        "crates/weftforge-core/src/lib.rs"
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/geometry.rs",
+        "crates/weftforge-core/tests/workflow.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/tests/curves.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3",
@@ -1567,7 +1599,8 @@
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Sewn split point-pair preservation has analytical implementation checks at 1e-12 m; native/runtime reference comparison and arc-length issue #9 remain open."
       ],
       "contradictions": [],
       "blockers": [
@@ -2028,7 +2061,7 @@
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FIT-004",
@@ -2620,7 +2653,7 @@
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "SIM-007",
@@ -2742,7 +2775,7 @@
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "MAT-002",
@@ -3126,7 +3159,7 @@
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FILE-002",
@@ -3336,7 +3369,7 @@
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FILE-004",
@@ -3517,7 +3550,7 @@
       "blockers": [
         "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FILE-006",
@@ -3610,7 +3643,9 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "spec/features/PAT-005-sewn-curve-editing.md"
+      ],
       "scenarios": [],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
@@ -3648,7 +3683,8 @@
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "curve-controls and split CLI endpoints share native commands; local MCP remains planned. Historical reports remain stale for changed document/native/CLI scopes."
       ],
       "contradictions": [],
       "blockers": [

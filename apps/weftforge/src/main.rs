@@ -9,7 +9,9 @@ use std::{
     },
     time::{Duration, Instant, SystemTime, UNIX_EPOCH},
 };
-use weftforge_core::{Command, CurveInterval, Editor, Id, Material, Mesh, Placement, Project};
+use weftforge_core::{
+    Command, Curve, CurveInterval, Editor, Id, Material, Mesh, Placement, Project,
+};
 use weftforge_sim::{Cloth, StepSettings};
 
 #[derive(Clone, Copy, PartialEq)]
@@ -104,6 +106,7 @@ struct AutosaveJob {
 struct InspectorDraft {
     revision: u64,
     selected: Option<Id>,
+    curve: Option<Curve>,
     dimensions: Option<[f64; 2]>,
     placement: Option<Placement>,
     grain_angle: Option<f64>,
@@ -112,11 +115,12 @@ struct InspectorDraft {
     color_pending: bool,
 }
 impl InspectorDraft {
-    fn new(project: &Project, selected: Option<Id>) -> Self {
+    fn new(project: &Project, selected: Option<Id>, selected_curve: Option<Id>) -> Self {
         let piece = selected.and_then(|id| project.piece(id));
         Self {
             revision: project.revision,
             selected,
+            curve: selected_curve.and_then(|id| project.curve(id)).cloned(),
             dimensions: piece
                 .and_then(|piece| project.piece_bounds(piece.id).ok())
                 .map(|[min, max]| std::array::from_fn(|axis| max[axis] - min[axis])),
@@ -130,8 +134,20 @@ impl InspectorDraft {
         }
     }
     fn commands(&self, project: &Project) -> Vec<Command> {
-        let original = Self::new(project, self.selected);
+        let original = Self::new(
+            project,
+            self.selected,
+            self.curve.as_ref().map(|curve| curve.id),
+        );
         let mut commands = Vec::new();
+        if self.curve != original.curve
+            && let Some(curve) = &self.curve
+        {
+            commands.push(Command::SetCurveControls {
+                curve: curve.id,
+                controls: curve.controls,
+            });
+        }
         if let Some(piece) = self.selected {
             if self.dimensions != original.dimensions
                 && let Some([width, height]) = self.dimensions
@@ -179,6 +195,8 @@ struct Studio {
     draft: Option<InspectorDraft>,
     playing: bool,
     selected: Option<Id>,
+    selected_curve: Option<Id>,
+    split_t: f64,
     tool: Tool,
     polygon: Vec<[f64; 2]>,
     drag_start: Option<[f64; 2]>,
@@ -239,6 +257,8 @@ impl Studio {
             draft: None,
             playing: false,
             selected: None,
+            selected_curve: None,
+            split_t: 0.5,
             tool: Tool::Select,
             polygon: vec![],
             drag_start: None,
@@ -301,8 +321,17 @@ impl Studio {
         commands.is_empty() || self.apply_command(Command::Transaction(commands))
     }
     fn select(&mut self, selected: Option<Id>) {
-        if self.selected != selected && self.commit_draft() {
+        if (self.selected != selected || self.selected_curve.is_some()) && self.commit_draft() {
             self.selected = selected;
+            self.selected_curve = None;
+        }
+    }
+    fn select_curve(&mut self, selected: Option<(Id, Id)>) {
+        let piece = selected.map(|(piece, _)| piece);
+        let curve = selected.map(|(_, curve)| curve);
+        if (self.selected != piece || self.selected_curve != curve) && self.commit_draft() {
+            self.selected = piece;
+            self.selected_curve = curve;
         }
     }
     fn cancel(&mut self) {
@@ -338,6 +367,14 @@ impl Studio {
             .is_some_and(|id| self.editor.project.piece(id).is_none())
         {
             self.selected = None;
+        }
+        if self.selected_curve.is_some_and(|curve| {
+            !self
+                .selected
+                .and_then(|id| self.editor.project.piece(id))
+                .is_some_and(|piece| piece.boundary.contains(&curve))
+        }) {
+            self.selected_curve = None;
         }
         if self
             .seam_start
@@ -809,6 +846,16 @@ impl Studio {
             for piece in self.editor.project.pieces.clone() {
                 if ui.selectable_label(self.selected==Some(piece.id),&piece.name).clicked() { self.select(Some(piece.id)); }
             }
+            if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
+                ui.label("Boundary curve · select here or in 2D");
+                egui::ComboBox::from_id_salt("boundary-curve")
+                    .selected_text(self.selected_curve.map_or("Choose boundary".into(),|id|format!("Curve #{id}")))
+                    .show_ui(ui,|ui| {
+                        for (index,id) in piece.boundary.iter().enumerate() {
+                            if ui.selectable_label(self.selected_curve==Some(*id),format!("Boundary {} · curve #{id}",index+1)).clicked() { self.select_curve(Some((piece.id,*id))); }
+                        }
+                    });
+            }
             ui.separator(); ui.label("Pattern name"); ui.text_edit_singleline(&mut self.name);
             ui.horizontal(|ui| { ui.label("W / H m"); for value in &mut self.size { ui.add(egui::DragValue::new(value).speed(0.01).range(0.01..=5.0)); } });
             ui.horizontal(|ui| { ui.label("X / Y m"); for value in &mut self.coordinate { ui.add(egui::DragValue::new(value).speed(0.01)); } });
@@ -818,10 +865,33 @@ impl Studio {
             }
             if ui.button("Add polygon point").clicked() { self.polygon.push(self.coordinate); self.tool=Tool::Polygon; }
             if ui.button(format!("Close pattern ({} points)",self.polygon.len())).clicked() { self.finish_polygon(); }
-            let mut draft=self.draft.take().filter(|draft|draft.revision==self.editor.project.revision && draft.selected==self.selected)
-                .unwrap_or_else(||InspectorDraft::new(&self.editor.project,self.selected));
+            let mut draft=self.draft.take().filter(|draft|draft.revision==self.editor.project.revision && draft.selected==self.selected && draft.curve.as_ref().map(|curve|curve.id)==self.selected_curve)
+                .unwrap_or_else(||InspectorDraft::new(&self.editor.project,self.selected,self.selected_curve));
+            let mut split=None;
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
                 ui.separator(); ui.strong(&piece.name);
+                if let Some(curve)=&mut draft.curve {
+                    ui.strong(format!("Selected curve #{}",curve.id));
+                    let start=self.editor.project.point(curve.start).expect("validated curve start").position;
+                    let end=self.editor.project.point(curve.end).expect("validated curve end").position;
+                    ui.label(format!("P0 #{} · {:.6} / {:.6} m",curve.start,start[0],start[1]));
+                    ui.label(format!("P3 #{} · {:.6} / {:.6} m",curve.end,end[0],end[1]));
+                    let mut cubic=curve.controls.is_some();
+                    if ui.checkbox(&mut cubic,"Cubic Bezier").changed() {
+                        curve.controls=cubic.then(||[1.0/3.0,2.0/3.0].map(|t|std::array::from_fn(|axis|start[axis]+(end[axis]-start[axis])*t)));
+                        commit=true;
+                    }
+                    if let Some(controls)=&mut curve.controls {
+                        for (index,point) in controls.iter_mut().enumerate() {
+                            ui.label(format!("P{} control X / Y m",index+1));
+                            ui.horizontal(|ui| { for value in point { commit|=numeric_commit(&ui.add(egui::DragValue::new(value).speed(0.001))); } });
+                        }
+                    }
+                    ui.horizontal(|ui| { ui.label("Split parameter t"); ui.add(egui::DragValue::new(&mut self.split_t).speed(0.01)); });
+                    ui.small("Interior curve parameter, not arc length. Sewing is partitioned without changing point pairs.");
+                    if ui.button("Split selected curve").clicked() { split=Some(curve.id); }
+                    ui.separator();
+                }
                 if let Some(dimensions)=&mut draft.dimensions {
                     ui.horizontal(|ui| { ui.label("Size m"); for value in dimensions { commit|=numeric_commit(&ui.add(egui::DragValue::new(value).speed(0.005).range(0.01..=5.0).clamp_existing_to_range(false))); } });
                 }
@@ -861,6 +931,7 @@ impl Studio {
             if let Some(cloth)=&self.cloth { let diagnostics=cloth.diagnostics(); ui.label(format!("Time {:.3} s\nAssembly remaining {:.4} m\nStretch error {:.3}\nSeam gap {:.4} m\nContact error {:.4} m\nInitial intersections {}",cloth.simulation_time(),diagnostics.seam_assembly_remaining,diagnostics.max_stretch_error,diagnostics.max_seam_error,diagnostics.max_contact_error,diagnostics.initial_intersections)); }
             self.draft=Some(draft);
             if let Some(seam)=remove { self.execute(Command::RemoveSeam { seam }); }
+            if let Some(curve)=split { self.execute(Command::SplitCurve { curve,t:self.split_t }); }
         });
         if commit {
             self.commit_draft();
@@ -939,8 +1010,35 @@ impl Studio {
                     }
                     painter.add(egui::Shape::line(
                         samples,
-                        Stroke::new(if selected { 2.5 } else { 1.5 }, color),
+                        if self.selected_curve == Some(*id) {
+                            Stroke::new(4., Color32::GOLD)
+                        } else {
+                            Stroke::new(if selected { 2.5 } else { 1.5 }, color)
+                        },
                     ));
+                    if self.selected_curve == Some(*id) {
+                        if let Some([a, b]) = curve.controls {
+                            for (point, control) in [(curve.start, a), (curve.end, b)] {
+                                if let Some(point) = doc.point(point) {
+                                    painter.line_segment(
+                                        [
+                                            self.to_screen(point.position, r),
+                                            self.to_screen(control, r),
+                                        ],
+                                        Stroke::new(1., Color32::GOLD),
+                                    );
+                                }
+                                painter.circle_stroke(
+                                    self.to_screen(control, r),
+                                    4.,
+                                    Stroke::new(1.5, Color32::GOLD),
+                                );
+                            }
+                        }
+                        if let Ok(point) = curve.evaluate(&doc, self.split_t) {
+                            painter.circle_filled(self.to_screen(point, r), 4., Color32::WHITE);
+                        }
+                    }
                     if let Some(point) = doc.point(curve.start) {
                         painter.circle_filled(self.to_screen(point.position, r), 3.5, color);
                     }
@@ -1043,7 +1141,7 @@ impl Studio {
         }
         if response.clicked() {
             match self.tool {
-                Tool::Select => self.select(nearest.map(|p| p.0)),
+                Tool::Select => self.select_curve(nearest),
                 Tool::Polygon => {
                     if let Some(p) = pointer {
                         self.polygon.push(self.to_pattern(p, r));
@@ -1513,7 +1611,7 @@ mod tests {
             .unwrap();
         let piece = app.editor.project.pieces[0].id;
         app.selected = Some(piece);
-        let mut draft = InspectorDraft::new(&app.editor.project, app.selected);
+        let mut draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
         for width in [0.41, 0.45, 0.5] {
             draft.dimensions.as_mut().unwrap()[0] = width;
         }
@@ -1584,10 +1682,9 @@ mod tests {
         let ctx = egui::Context::default();
         let _ = ctx.run_ui(egui::RawInput::default(), |ui| app.inspector(ui));
         assert_eq!(app.editor.project, before);
-        let mut draft = app
-            .draft
-            .take()
-            .unwrap_or_else(|| InspectorDraft::new(&app.editor.project, app.selected));
+        let mut draft = app.draft.take().unwrap_or_else(|| {
+            InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve)
+        });
         draft.material.as_mut().unwrap().color = [0.7, 0.3, 0.2];
         app.draft = Some(draft);
         assert!(app.commit_draft());
@@ -1595,6 +1692,75 @@ mod tests {
         expected.revision += 1;
         expected.materials[0].color = [0.7, 0.3, 0.2];
         assert_eq!(app.editor.project, expected);
+    }
+
+    #[test]
+    fn selected_curve_controls_and_split_use_fresh_drafts_atomic_history_and_invalidation() {
+        let mut app = Studio::empty();
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Curved panel".into(),
+                origin: [0., 0.],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+        let piece = app.editor.project.pieces[0].id;
+        let curve = app.editor.project.pieces[0].boundary[2];
+        app.select_curve(Some((piece, curve)));
+        let before = app.editor.project.clone();
+        let ctx = egui::Context::default();
+        let _ = ctx.run_ui(egui::RawInput::default(), |ui| app.inspector(ui));
+        assert_eq!(app.editor.project, before);
+        let mut draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
+        for height in [0.65, 0.7, 0.8] {
+            draft.curve.as_mut().unwrap().controls = Some([[0.3, height], [0.1, height]]);
+        }
+        app.draft = Some(draft);
+        assert!(app.commit_draft());
+        assert_eq!(app.editor.project.revision, before.revision + 1);
+        assert!(app.needs_mesh);
+        assert_eq!(app.selected_curve, Some(curve));
+        assert_eq!(
+            app.editor.project.curve(curve).unwrap().controls,
+            Some([[0.3, 0.8], [0.1, 0.8]])
+        );
+        let authored = app.editor.project.clone();
+        app.split_t = 0.3;
+        app.execute(Command::SplitCurve {
+            curve,
+            t: app.split_t,
+        });
+        assert_eq!(app.editor.project.revision, authored.revision + 1);
+        assert_eq!(app.editor.project.pieces[0].boundary.len(), 5);
+        assert_eq!(app.selected_curve, Some(curve));
+        assert!(app.editor.undo());
+        app.rebuild();
+        assert_eq!(app.editor.project.curves, authored.curves);
+        assert!(app.editor.undo());
+        app.rebuild();
+        assert_eq!(app.editor.project.curves, before.curves);
+        assert!(app.editor.redo());
+        app.rebuild();
+        let mut draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
+        draft.curve.as_mut().unwrap().controls = Some([[f64::NAN, 0.8], [0.1, 0.8]]);
+        app.draft = Some(draft);
+        let before_invalid = app.editor.project.clone();
+        assert!(!app.commit_draft());
+        assert_eq!(app.editor.project, before_invalid);
+        assert!(app.editor.can_redo());
+        assert!(app.message.contains("finite"));
+        let mut draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
+        draft.curve.as_mut().unwrap().controls = None;
+        app.draft = Some(draft);
+        assert!(app.commit_draft());
+        assert_eq!(app.editor.project.curve(curve).unwrap().controls, None);
+        let next = app.editor.project.pieces[0].boundary[0];
+        app.select_curve(Some((piece, next)));
+        let draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
+        assert_eq!(draft.curve.unwrap().id, next);
+        app.select(Some(piece));
+        assert_eq!(app.selected_curve, None);
     }
 
     #[test]

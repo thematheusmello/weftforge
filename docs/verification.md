@@ -50,6 +50,19 @@ fixtures test original independently justified geometry, not generated reference
 answers. Maintain failure thresholds; do not disable contact or reduce scene
 coverage to pass a benchmark.
 
+The bounded sewn-curve split checks compare original cubic evaluation and
+original/partitioned sewn physical point pairs at a predeclared 1e-12 m tolerance
+(and 1e-12 for normalized parameter comparisons). They exercise either seam side,
+both interval orientations, gathered piecewise-linear mappings, partial ranges,
+splits on correspondence breakpoints and interval endpoints, several seams, and
+the explicit same-curve-both-sides validation exclusion. Remeshing at 0.09/0.035 m
+must retain the authored maps and positive triangles. History branching, failed
+transaction rollback and actual v2 save/reopen are tested. Native inspector state
+and real CLI subprocess checks are implementation evidence; no new native
+interaction capture or reference comparison is implied. The identified native
+acceptance steps and remaining limits are in
+[PAT-005](../spec/features/PAT-005-sewn-curve-editing.md).
+
 ## Desktop acceptance scope
 
 Start empty. Author shirt boundaries through actual UI actions, sew, arrange,

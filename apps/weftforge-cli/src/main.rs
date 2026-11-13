@@ -17,7 +17,7 @@ fn run() -> Result<()> {
     let args: Vec<_> = std::env::args().skip(1).collect();
     match args.first().map(String::as_str) {
         None | Some("--help" | "-h" | "help") => println!(
-            "WeftForge CLI — offline editable garment tools\n\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj\nexport-svg PROJECT OUTPUT.svg\nsimulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
+            "WeftForge CLI — offline editable garment tools\n\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj\nexport-svg PROJECT OUTPUT.svg\nsimulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Curve t is not arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
         ),
         Some("new") => {
             count(&args, 2)?;
@@ -35,7 +35,7 @@ fn run() -> Result<()> {
             println!(
                 "{}",
                 serde_json::to_string_pretty(
-                    &serde_json::json!({"revision":p.revision,"units":"m","up":"Y","pieces":p.pieces.len(),"curves":p.curves.len(),"vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"seams":seams,"stitches":mesh.stitches.len(),"patterns":p.pieces.iter().map(|piece|serde_json::json!({"id":piece.id,"name":piece.name,"material":piece.material,"grain_angle_radians":piece.grain_angle})).collect::<Vec<_>>(),"materials":p.materials})
+                    &serde_json::json!({"revision":p.revision,"units":"m","up":"Y","pieces":p.pieces.len(),"curves":p.curves.len(),"construction":{"points":p.points,"curves":p.curves},"vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"seams":seams,"stitches":mesh.stitches.len(),"patterns":p.pieces.iter().map(|piece|serde_json::json!({"id":piece.id,"name":piece.name,"material":piece.material,"grain_angle_radians":piece.grain_angle})).collect::<Vec<_>>(),"materials":p.materials})
                 )?
             );
         }
@@ -59,6 +59,32 @@ fn run() -> Result<()> {
                 height: number(&args[5])?,
             })?;
             e.project.save(Path::new(&args[2]))?;
+        }
+        Some("curve-controls") => {
+            let controls = if args.len() == 5 && args[4] == "straight" {
+                None
+            } else {
+                count(&args, 8)?;
+                Some([
+                    [number(&args[4])?, number(&args[5])?],
+                    [number(&args[6])?, number(&args[7])?],
+                ])
+            };
+            let mut editor = Editor::new(Project::load(Path::new(&args[1]))?)?;
+            editor.execute(Command::SetCurveControls {
+                curve: args[3].parse()?,
+                controls,
+            })?;
+            editor.project.save(Path::new(&args[2]))?;
+        }
+        Some("split") => {
+            count(&args, 5)?;
+            let mut editor = Editor::new(Project::load(Path::new(&args[1]))?)?;
+            editor.execute(Command::SplitCurve {
+                curve: args[3].parse()?,
+                t: number(&args[4])?,
+            })?;
+            editor.project.save(Path::new(&args[2]))?;
         }
         Some("grain") => {
             count(&args, 5)?;
