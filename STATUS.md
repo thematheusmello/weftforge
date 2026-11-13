@@ -7,7 +7,7 @@ incomplete and must expand with discovery.
 
 ## Current recoverable state
 
-Published main revision: `8419363c977b64a44eecb6a797616a7f9e082ceb` ([PR11](https://github.com/thematheusmello/weftforge/pull/11)).
+Published main revision: `2837647b5e9ab565fa1bdc03886bff58165a66b0` ([PR12](https://github.com/thematheusmello/weftforge/pull/12)).
 The public repository/origin is verified: https://github.com/thematheusmello/weftforge.
 Rust application, CLI, core, solver, manifests and lockfile remain byte-identical
 to tested source `ff3914474c8acc30d10c70a8489cae56cfa2c872`; final native executable
@@ -22,16 +22,19 @@ samples. Public asset downloads were byte/SHA-256 checked against the tested fil
 No compiled installers/binaries ship in that preview. Full product/parity and
 binary-distribution notice/signing/platform-launch gates remain incomplete.
 
-Current local branch `fix/report-freshness` has the reviewed/tested per-report
-freshness patch (cherry-picked `71a89b3`, originally `ae104c6` in its isolated
-worktree); only this publication-status text was updated afterward. No Rust,
-workflow, fixture or retained output changed. Publish and verify that tooling PR
-before starting the next professional authoring increment.
+The per-report freshness/dashboard fix is merged through PR12. Its Linux, macOS,
+Windows and evidence checks all passed on the PR head. Main CI43526530172 is still
+running at this checkpoint; Pages43526530260 completed successfully. The public
+site returned HTTP200 and includes per-domain status, freshness and attributable runs. A separate grain
+and orthotropic-material increment is under final validation in an isolated
+worktree, with legacy migration and inspector data-preservation regressions.
 
 Delivery issues [#1–#7](https://github.com/thematheusmello/weftforge/issues) and six
 milestones cover discovery and every roadmap gate. Reproductions:
 [tight-shirt/convergence #8](https://github.com/thematheusmello/weftforge/issues/8)
 and [arc-length partial sewing #9](https://github.com/thematheusmello/weftforge/issues/9).
+The valid-import inspector clamping defect is recorded as [#13](https://github.com/thematheusmello/weftforge/issues/13),
+and the alpha.1 release notes disclose it. Its regression fix awaits integration.
 GitHub Pages deployed successfully in [run43512419050](https://github.com/thematheusmello/weftforge/actions/runs/43512419050);
 https://thematheusmello.github.io/weftforge/ returned HTTP200 with the correct title.
 A later [Pages run43515229132](https://github.com/thematheusmello/weftforge/actions/runs/43515229132)
@@ -112,8 +115,11 @@ platform libraries and drivers are accurately excluded from any all-Rust claim.
 ## Reference laboratory and blocker
 
 Official Marvelous Designer Personal2026.1.237 was downloaded, hashed, installed
-and launched. REA6.9.0 selected-window evidence observes the terms/sign-in boundary.
-User must personally review terms and sign in/activate a legitimate trial/license.
+and launched. REA6.9.0 selected-window evidence observes the access boundary.
+Latest read-only REA evidence at 23:06 UTC shows CLO-SET sign-in, with no Terms
+modal displayed in the selected main window. Current terms acceptance and account
+entitlement remain unknown. The account holder must sign in/activate a legitimate
+trial or license and review any terms presented.
 No garment reference workflow has executed. Baseline is provisional: full observed
 build/settings/units/locale/graphics are not frozen. See parity/reference.json.
 Raw installer/binary/account artifacts are private outside Git. The local private
@@ -144,17 +150,18 @@ Validation on this patch: all 34 workspace Rust tests, all 22 Python checks thro
 `cargo xtask verify`, `cargo fmt --all --check`, strict all-target workspace clippy,
 generated consistency and original-report-field preservation passed. No Rust,
 workflow, fixture or retained artifact changed. No check job remains running.
-Next: publish/merge the tested patch, then rerun relevant scopes before promoting
-new current evidence after implementation changes. Before the first reference
+Next: exercise the grain/material increment in the native app, then rerun relevant
+scopes before promoting new current evidence after implementation changes. Before the first reference
 comparison can qualify, add explicit baseline revision/settings and reviewed
 contract/scenario/criteria digest qualification; current ID/source matching alone
 does not prove unchanged full requirements. No reference pass exists today.
 
 ## Next exact actions
 
-1. Publish and merge the tested per-run evidence-freshness/dashboard PR after
-   relevant checks. Recheck current CI and Pages handles. Preserve every failed
-   scene and original source/input/artifact identity.
+1. Complete native acceptance and review of authored grain, orthotropic material
+   controls, strict v1→v2 migration and the imported-inspector clamping fix.
+   Recheck current CI and Pages handles. Preserve every failed scene and original
+   source/input/artifact identity.
 2. Advance professional pattern/sewing authoring through one reviewed contract
    at a time. Use current source scopes to rerun or stale affected evidence; retain
    historical failures. Rerun the aggregate tooling/regression scope before
@@ -170,5 +177,6 @@ does not prove unchanged full requirements. No reference pass exists today.
 
 At latest native capture the WeftForge PID1550 was alive, paused after a completed3s
 drape, no background job. Reference PID18283 was alive at last investigator poll,
-terms/license still pending. No research/benchmark process remains live. Recheck
+CLO-SET sign-in displayed at 23:06 UTC; terms acceptance and entitlement are
+unverified. No research/benchmark process remains live. Recheck
 actual processes/handles before assuming either app or any job is still running.
