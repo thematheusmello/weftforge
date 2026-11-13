@@ -16,7 +16,8 @@ Implementation coverage and verified reference parity are tracked separately.
 An original empty-project shirt workflow has been exercised through the actual
 macOS UI, including sewing, arrangement, simulation, save/reopen, dimension edits,
 undo/redo and independently measured OBJ/SVG export. This is an implementation-only
-scene result; the complete first gate and reference comparison remain open.
+scene result on one identified executable; reference comparison and the
+remaining professional integration gates remain open.
 
 ## Current increment
 
@@ -94,4 +95,4 @@ Original WeftForge code is licensed **MIT OR Apache-2.0**. Dependency and asset
 licenses retain their own terms; see the repository notices. WeftForge is an
 independent project and is not affiliated with CLO Virtual Fashion.
 
-![Actual native WeftForge on macOS, original edited shirt](docs/images/studio-macos.png)
+![Actual native WeftForge on macOS, original edited shirt](docs/images/studio-single-candidate.png)

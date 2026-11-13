@@ -118,3 +118,28 @@ the bounded Assembly/Drape buttons were added; its executable digest was not
 retained. The final reopen/edit/simulation/export build is hashed and matches
 the committed source candidate. A fresh full empty-project replay on a single
 identified release candidate remains required before accepting the full gate.
+
+## Complete replay on one identified executable
+
+A separate fresh run closes the earlier composite-build attribution gap.
+`WF-20261113-SINGLE-CANDIDATE-001` starts with an empty project in the retained
+`f00e0775…45111b` executable; all23 Rust/workspace/lock/toolchain files were
+independently compared with source `ff3914474c8acc30d10c70a8489cae56cfa2c872`.
+It authored both14-point panels in the canvas, arranged and sewed8 boundaries,
+simulated, adjusted widths1.06→1.08m, saved, quit/relaunched/reopened, observed
+persisted1.08m, edited to1.10m (Undo1.08/Redo1.10), saved and resimulated. Both
+simulation stages and native OBJ/SVG export use the same identified executable.
+Exact original canvas points and settings are in the candidate scenario.
+
+The final independently parsed result is158vertices/244triangles, material-axis
+strain0.08071752985 (<0.15), seam gap2.78859e-8m (<0.005m), avatar/ground thickness
+error~1.50e-16m (<0.002m), and authored SVG paths at1mm per user unit. The native
+capture/provenance are `docs/images/studio-single-candidate.*`; final construction
+and actual UI exports are `fixtures/single-candidate-*`. The prior1.08m save is
+retained in the run artifacts. Original tight-shirt failures are untouched.
+
+This witnesses the first bounded garment integration workflow. Reference parity,
+complete professional authoring, animation and all remaining acceptance workflows
+are still open. Windows/Linux source builds/tests/lint passed hostedCI, but GUI
+launch/operation there is unverified. See mergedPR10 and its two green CI runs;
+the initial evidence-job setup failure remains linked in STATUS.md.

@@ -23,6 +23,15 @@
           },
           "initial_conditions": "Empty default native document; original two-panel shirt dimensions in fixture are design targets only.",
           "expected_outcomes": "Editable geometry/relationships persist, garment responds, independent output scale passes; no pregenerated garment may replace UI creation."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
         }
       ],
       "comparison_criteria": {
@@ -61,6 +70,22 @@
             "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
             "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
           }
+        },
+        {
+          "id": "WF-20261113-SINGLE-CANDIDATE-001",
+          "path": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T22:03:39Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/single-candidate-drape.obj": "a1bf4ca83fb2484148582562d6886ce814434ab774dbd389e3acaea4d028d5d5",
+            "fixtures/single-candidate-patterns.svg": "7ce9592160726ec6c23761099495296da2bc2c892680faf62381787011efa8a8",
+            "docs/images/studio-single-candidate.png": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+            "docs/images/studio-single-candidate.json": "68ffbdc3a024646ffdf631de3ce9bef14f29d300751973d175442c41bdb6167a",
+            "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
+            "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
+          }
         }
       ],
       "known_gaps": [
@@ -84,7 +109,17 @@
       ],
       "reference_observation_status": "unobserved",
       "evidence_ids": [],
-      "scenarios": [],
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -119,6 +154,22 @@
             "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
             "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
             "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        },
+        {
+          "id": "WF-20261113-SINGLE-CANDIDATE-001",
+          "path": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T22:03:39Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/single-candidate-drape.obj": "a1bf4ca83fb2484148582562d6886ce814434ab774dbd389e3acaea4d028d5d5",
+            "fixtures/single-candidate-patterns.svg": "7ce9592160726ec6c23761099495296da2bc2c892680faf62381787011efa8a8",
+            "docs/images/studio-single-candidate.png": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+            "docs/images/studio-single-candidate.json": "68ffbdc3a024646ffdf631de3ce9bef14f29d300751973d175442c41bdb6167a",
+            "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
+            "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
         }
       ],
@@ -193,6 +244,15 @@
           },
           "initial_conditions": "Original cubic sewn garment, default CPU settings; capture construction IDs.",
           "expected_outcomes": "Supported relationships preserved or explicitly rejected/invalidation reported; one gesture one undo; no silent ID retargeting."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
         }
       ],
       "comparison_criteria": {
@@ -245,6 +305,22 @@
             "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
             "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
           }
+        },
+        {
+          "id": "WF-20261113-SINGLE-CANDIDATE-001",
+          "path": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T22:03:39Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/single-candidate-drape.obj": "a1bf4ca83fb2484148582562d6886ce814434ab774dbd389e3acaea4d028d5d5",
+            "fixtures/single-candidate-patterns.svg": "7ce9592160726ec6c23761099495296da2bc2c892680faf62381787011efa8a8",
+            "docs/images/studio-single-candidate.png": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+            "docs/images/studio-single-candidate.json": "68ffbdc3a024646ffdf631de3ce9bef14f29d300751973d175442c41bdb6167a",
+            "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
+            "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
+          }
         }
       ],
       "known_gaps": [
@@ -277,6 +353,15 @@
           },
           "initial_conditions": "Document CPU/GPU/RAM/OS, original representative multi-piece and layered fixtures.",
           "expected_outcomes": "Mesh sizes and settings attributable; no frame-rate proxy for real-time cloth; no unknown metric represented as measured."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
         }
       ],
       "comparison_criteria": {
@@ -326,6 +411,22 @@
             "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
             "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
             "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        },
+        {
+          "id": "WF-20261113-SINGLE-CANDIDATE-001",
+          "path": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T22:03:39Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/single-candidate-drape.obj": "a1bf4ca83fb2484148582562d6886ce814434ab774dbd389e3acaea4d028d5d5",
+            "fixtures/single-candidate-patterns.svg": "7ce9592160726ec6c23761099495296da2bc2c892680faf62381787011efa8a8",
+            "docs/images/studio-single-candidate.png": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+            "docs/images/studio-single-candidate.json": "68ffbdc3a024646ffdf631de3ce9bef14f29d300751973d175442c41bdb6167a",
+            "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
+            "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
         }
       ],
@@ -401,6 +502,15 @@
           },
           "initial_conditions": "Empty default native document; original two-panel shirt dimensions in fixture are design targets only.",
           "expected_outcomes": "Editable geometry/relationships persist, garment responds, independent output scale passes; no pregenerated garment may replace UI creation."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
         }
       ],
       "comparison_criteria": {
@@ -450,6 +560,22 @@
             "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
             "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
             "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        },
+        {
+          "id": "WF-20261113-SINGLE-CANDIDATE-001",
+          "path": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T22:03:39Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/single-candidate-drape.obj": "a1bf4ca83fb2484148582562d6886ce814434ab774dbd389e3acaea4d028d5d5",
+            "fixtures/single-candidate-patterns.svg": "7ce9592160726ec6c23761099495296da2bc2c892680faf62381787011efa8a8",
+            "docs/images/studio-single-candidate.png": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+            "docs/images/studio-single-candidate.json": "68ffbdc3a024646ffdf631de3ce9bef14f29d300751973d175442c41bdb6167a",
+            "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
+            "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
         }
       ],
@@ -536,7 +662,17 @@
       "evidence_ids": [
         "spec/features/PAT-003-rectangles.md"
       ],
-      "scenarios": [],
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -584,6 +720,22 @@
             "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
             "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
             "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        },
+        {
+          "id": "WF-20261113-SINGLE-CANDIDATE-001",
+          "path": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T22:03:39Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/single-candidate-drape.obj": "a1bf4ca83fb2484148582562d6886ce814434ab774dbd389e3acaea4d028d5d5",
+            "fixtures/single-candidate-patterns.svg": "7ce9592160726ec6c23761099495296da2bc2c892680faf62381787011efa8a8",
+            "docs/images/studio-single-candidate.png": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+            "docs/images/studio-single-candidate.json": "68ffbdc3a024646ffdf631de3ce9bef14f29d300751973d175442c41bdb6167a",
+            "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
+            "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
         }
       ],
@@ -608,7 +760,17 @@
       ],
       "reference_observation_status": "unobserved",
       "evidence_ids": [],
-      "scenarios": [],
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -656,6 +818,22 @@
             "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
             "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
             "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        },
+        {
+          "id": "WF-20261113-SINGLE-CANDIDATE-001",
+          "path": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T22:03:39Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/single-candidate-drape.obj": "a1bf4ca83fb2484148582562d6886ce814434ab774dbd389e3acaea4d028d5d5",
+            "fixtures/single-candidate-patterns.svg": "7ce9592160726ec6c23761099495296da2bc2c892680faf62381787011efa8a8",
+            "docs/images/studio-single-candidate.png": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+            "docs/images/studio-single-candidate.json": "68ffbdc3a024646ffdf631de3ce9bef14f29d300751973d175442c41bdb6167a",
+            "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
+            "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
         }
       ],
@@ -967,6 +1145,15 @@
           },
           "initial_conditions": "Original curved pieces and unequal lengths in core workflow regression, fixed authored cubic controls.",
           "expected_outcomes": "Stable authored curve IDs and correspondence preserved; orientation and deliberate easing measurable independently."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
         }
       ],
       "comparison_criteria": {
@@ -1019,6 +1206,22 @@
             "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
             "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
           }
+        },
+        {
+          "id": "WF-20261113-SINGLE-CANDIDATE-001",
+          "path": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T22:03:39Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/single-candidate-drape.obj": "a1bf4ca83fb2484148582562d6886ce814434ab774dbd389e3acaea4d028d5d5",
+            "fixtures/single-candidate-patterns.svg": "7ce9592160726ec6c23761099495296da2bc2c892680faf62381787011efa8a8",
+            "docs/images/studio-single-candidate.png": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+            "docs/images/studio-single-candidate.json": "68ffbdc3a024646ffdf631de3ce9bef14f29d300751973d175442c41bdb6167a",
+            "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
+            "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
+          }
         }
       ],
       "known_gaps": [
@@ -1062,6 +1265,15 @@
           },
           "initial_conditions": "Original curved pieces and unequal lengths in core workflow regression, fixed authored cubic controls.",
           "expected_outcomes": "Stable authored curve IDs and correspondence preserved; orientation and deliberate easing measurable independently."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
         }
       ],
       "comparison_criteria": {
@@ -1115,6 +1327,22 @@
             "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
             "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
             "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        },
+        {
+          "id": "WF-20261113-SINGLE-CANDIDATE-001",
+          "path": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T22:03:39Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/single-candidate-drape.obj": "a1bf4ca83fb2484148582562d6886ce814434ab774dbd389e3acaea4d028d5d5",
+            "fixtures/single-candidate-patterns.svg": "7ce9592160726ec6c23761099495296da2bc2c892680faf62381787011efa8a8",
+            "docs/images/studio-single-candidate.png": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+            "docs/images/studio-single-candidate.json": "68ffbdc3a024646ffdf631de3ce9bef14f29d300751973d175442c41bdb6167a",
+            "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
+            "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
         }
       ],
@@ -1383,7 +1611,17 @@
       ],
       "reference_observation_status": "unobserved",
       "evidence_ids": [],
-      "scenarios": [],
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -1418,6 +1656,22 @@
             "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
             "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
             "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        },
+        {
+          "id": "WF-20261113-SINGLE-CANDIDATE-001",
+          "path": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T22:03:39Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/single-candidate-drape.obj": "a1bf4ca83fb2484148582562d6886ce814434ab774dbd389e3acaea4d028d5d5",
+            "fixtures/single-candidate-patterns.svg": "7ce9592160726ec6c23761099495296da2bc2c892680faf62381787011efa8a8",
+            "docs/images/studio-single-candidate.png": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+            "docs/images/studio-single-candidate.json": "68ffbdc3a024646ffdf631de3ce9bef14f29d300751973d175442c41bdb6167a",
+            "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
+            "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
         }
       ],
@@ -1521,6 +1775,15 @@
           },
           "initial_conditions": "Original editable shirt before and after drape, authored dimensions measured.",
           "expected_outcomes": "Actual rest/simulated garment changes correspond; controls and sewing remain editable."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
         }
       ],
       "comparison_criteria": {
@@ -1598,6 +1861,22 @@
             "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
             "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
             "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        },
+        {
+          "id": "WF-20261113-SINGLE-CANDIDATE-001",
+          "path": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T22:03:39Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/single-candidate-drape.obj": "a1bf4ca83fb2484148582562d6886ce814434ab774dbd389e3acaea4d028d5d5",
+            "fixtures/single-candidate-patterns.svg": "7ce9592160726ec6c23761099495296da2bc2c892680faf62381787011efa8a8",
+            "docs/images/studio-single-candidate.png": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+            "docs/images/studio-single-candidate.json": "68ffbdc3a024646ffdf631de3ce9bef14f29d300751973d175442c41bdb6167a",
+            "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
+            "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
         }
       ],
@@ -1970,7 +2249,17 @@
       ],
       "reference_observation_status": "unobserved",
       "evidence_ids": [],
-      "scenarios": [],
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -2033,6 +2322,22 @@
             "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
             "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
             "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        },
+        {
+          "id": "WF-20261113-SINGLE-CANDIDATE-001",
+          "path": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T22:03:39Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/single-candidate-drape.obj": "a1bf4ca83fb2484148582562d6886ce814434ab774dbd389e3acaea4d028d5d5",
+            "fixtures/single-candidate-patterns.svg": "7ce9592160726ec6c23761099495296da2bc2c892680faf62381787011efa8a8",
+            "docs/images/studio-single-candidate.png": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+            "docs/images/studio-single-candidate.json": "68ffbdc3a024646ffdf631de3ce9bef14f29d300751973d175442c41bdb6167a",
+            "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
+            "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
         }
       ],
@@ -2481,6 +2786,15 @@
           },
           "initial_conditions": "Nontrivial authored project with valid previous file; isolated test destination.",
           "expected_outcomes": "Last valid data survives; errors keep current project; no silent replacement or data loss."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
         }
       ],
       "comparison_criteria": {
@@ -2534,6 +2848,22 @@
             "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
             "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
             "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        },
+        {
+          "id": "WF-20261113-SINGLE-CANDIDATE-001",
+          "path": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T22:03:39Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/single-candidate-drape.obj": "a1bf4ca83fb2484148582562d6886ce814434ab774dbd389e3acaea4d028d5d5",
+            "fixtures/single-candidate-patterns.svg": "7ce9592160726ec6c23761099495296da2bc2c892680faf62381787011efa8a8",
+            "docs/images/studio-single-candidate.png": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+            "docs/images/studio-single-candidate.json": "68ffbdc3a024646ffdf631de3ce9bef14f29d300751973d175442c41bdb6167a",
+            "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
+            "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
         }
       ],
@@ -2636,6 +2966,15 @@
           },
           "initial_conditions": "Original shirt with expected x\u00b10.53,y1.02..1.56,z\u00b10.22m; distinct destinations.",
           "expected_outcomes": "Physical scale, axes, UVs, unit normals, groups and closed physical pattern paths; material/animation attributes remain unsupported."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
         }
       ],
       "comparison_criteria": {
@@ -2687,6 +3026,22 @@
             "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
             "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
             "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        },
+        {
+          "id": "WF-20261113-SINGLE-CANDIDATE-001",
+          "path": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T22:03:39Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/single-candidate-drape.obj": "a1bf4ca83fb2484148582562d6886ce814434ab774dbd389e3acaea4d028d5d5",
+            "fixtures/single-candidate-patterns.svg": "7ce9592160726ec6c23761099495296da2bc2c892680faf62381787011efa8a8",
+            "docs/images/studio-single-candidate.png": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+            "docs/images/studio-single-candidate.json": "68ffbdc3a024646ffdf631de3ce9bef14f29d300751973d175442c41bdb6167a",
+            "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
+            "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
         }
       ],
@@ -2762,6 +3117,15 @@
           },
           "initial_conditions": "Original shirt with expected x\u00b10.53,y1.02..1.56,z\u00b10.22m; distinct destinations.",
           "expected_outcomes": "Physical scale, axes, UVs, unit normals, groups and closed physical pattern paths; material/animation attributes remain unsupported."
+        },
+        {
+          "id": "UI-SHIRT-CANDIDATE-001",
+          "path": "parity/scenarios/UI-SHIRT-CANDIDATE-001.json",
+          "fixture_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+          },
+          "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
+          "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
         }
       ],
       "comparison_criteria": {
@@ -2813,6 +3177,22 @@
             "docs/images/studio-macos.png": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
             "docs/images/studio-macos.json": "dae2fdfa2c9227858995f66cf0bab8706939f0ca1370cb7b97a25624c18d6e40",
             "parity/reports/artifacts/independent-ui-fit.json": "631a3644892b1b4bfaddd2a883eece539b7b492dcb608681120713bed5cace2a"
+          }
+        },
+        {
+          "id": "WF-20261113-SINGLE-CANDIDATE-001",
+          "path": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+          "commit": "ff3914474c8acc30d10c70a8489cae56cfa2c872",
+          "timestamp": "2026-11-13T22:03:39Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+            "fixtures/single-candidate-drape.obj": "a1bf4ca83fb2484148582562d6886ce814434ab774dbd389e3acaea4d028d5d5",
+            "fixtures/single-candidate-patterns.svg": "7ce9592160726ec6c23761099495296da2bc2c892680faf62381787011efa8a8",
+            "docs/images/studio-single-candidate.png": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+            "docs/images/studio-single-candidate.json": "68ffbdc3a024646ffdf631de3ce9bef14f29d300751973d175442c41bdb6167a",
+            "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
+            "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
         }
       ],

@@ -1,16 +1,18 @@
 # WeftForge status — active development, 2026-11-13
 
 The complete independent garment studio and one-to-one recorded-reference parity
-remain the goal. Full gate1 is not accepted; current evidence is an implementation
-increment. No feature has verified reference parity. The56-contract inventory is
+remain the goal. The first bounded garment workflow has a complete single-candidate
+implementation replay; reference acceptance and all remaining gates are open. No feature has verified reference parity. The56-contract inventory is
 incomplete and must expand with discovery.
 
 ## Current recoverable state
 
 Published source: `ff3914474c8acc30d10c70a8489cae56cfa2c872` on main. The public
 repository and origin are verified: https://github.com/thematheusmello/weftforge.
-Scoped run reports and a one-line evidence-CI toolchain correction are on
-`evidence/first-garment-checkpoint`. Reports retain exact source/input/artifact
+Scoped reports and the evidence-CI toolchain correction merged in
+[PR10](https://github.com/thematheusmello/weftforge/pull/10) at
+`8341048fa0bcedea9fab10a178a579db4b103630`. A separate complete single-candidate
+UI replay and retained output are on `evidence/single-candidate-workflow`. Reports retain exact source/input/artifact
 hashes and the single-candidate GUI replay gap. No unrelated source existed.
 
 Delivery issues [#1–#7](https://github.com/thematheusmello/weftforge/issues) and six
@@ -19,11 +21,17 @@ milestones cover discovery and every roadmap gate. Reproductions:
 and [arc-length partial sewing #9](https://github.com/thematheusmello/weftforge/issues/9).
 GitHub Pages deployed successfully in [run43512419050](https://github.com/thematheusmello/weftforge/actions/runs/43512419050);
 https://thematheusmello.github.io/weftforge/ returned HTTP200 with the correct title.
+A later [Pages run43515229132](https://github.com/thematheusmello/weftforge/actions/runs/43515229132)
+failed an observed artifact-visibility race: upload14080172593 succeeded, deploy
+immediately listed0 artifacts, and the same run later listed1 unexpired artifact.
+The single-candidate branch adds a bounded API visibility check before deploy;
+its actual successful deployment remains required.
 The first source CI run is [43512419034](https://github.com/thematheusmello/weftforge/actions/runs/43512419034).
-Linux/macOS/Windows tests and clippy passed; release builds were still running at
-last poll. The evidence job failed Rustup component installation (`cargo-fmt`
-conflict); the branch explicitly installs manifest components to repair it.
-New CI on the fix remains required. Project board creation failed:
+Linux/macOS/Windows source builds/tests/clippy passed; the initial evidence job
+failed Rustup component installation (`cargo-fmt` conflict). Explicit manifest
+components fixed it. Both [pushCI43513630203](https://github.com/thematheusmello/weftforge/actions/runs/43513630203)
+and [PRCI43513640378](https://github.com/thematheusmello/weftforge/actions/runs/43513640378)
+finished green on the merged fix, including all3 platforms and evidence checks. Project board creation failed:
 token lacks project/read:project scopes. Issues and registry work independently.
 
 ## What works and how it was checked
@@ -53,9 +61,13 @@ Undo/Redo restored exact numeric values, saved, and resimulated; OBJ/SVG came fr
 actual UI. Final158vertices/244triangles, t3s; independent output parser measured
 max axis strain.0854172, seam gap3.07e-7m, avatar/ground thickness error~1.64e-16m,
 and exact authored millimetre SVG paths. These satisfy predeclared scene limits,
-not full product/reference parity. Initial authoring preceded the phase-buttons
-build and its digest was not retained: a fresh complete single-candidate replay
-remains necessary. Final binary digest and screenshot are in docs/images/.
+not full product/reference parity. That first composite run is retained unchanged. A fresh full replay then used
+the SAME identified f00e executable from empty through authoring/simulation/save/
+quit/relaunch/reopen/edit/history/resimulation/export. It saved1.08m widths and
+verified them after reopening, edited both to1.10m, and produced independently
+checked outputs: strain.08071753, seam2.79e-8m, contact~1.50e-16m. Native source
+identity and screenshot are in docs/images/studio-single-candidate.*; exact actions
+and original points are in the new candidate scenario/report.
 
 `cargo fmt --all --check`, workspace tests, strict all-target clippy, registry
 validation and independent OBJ/SVG scenario passed on the integrated source.
@@ -95,11 +107,14 @@ MCP unconnected, Ghidra unconfigured. No setup or download is still running.
 
 ## Next exact actions
 
-1. Finish and merge the evidence/CI-fix PR after checks and repository requirements.
-   Inspect authoritative CI/Pages terminal states. Preserve the initial failed
-   evidence job and fix any new platform failure without weakening checks.
-2. Replay the entire empty-project workflow on one identified candidate, including
-   post-reopen dimension edit and actual export. Preserve observed failures.
+1. Finish the single-candidate evidence PR, verify report consistency and Pages
+   publication, and retain all failed scenes. Source code is unchanged from the
+   fully tested candidate and merged evidence-CI fix.
+2. Continue professional editing/sewing and resolve per-run evidence freshness
+   before code evolves: current validator conservatively checks every registered
+   run source against current files, so historical runs must remain attributable
+   without falsely blocking a newly rerun current check. Narrow source scopes and
+   retain per-run stale status rather than dropping failures.
 3. Improve authored sewing length semantics, robust relationship-preserving sewn
    splits and curve UI; add local command automation for reproducible workflows.
 4. Fix garment convergence/contact beyond these fixtures; measure layered shirt+
@@ -109,7 +124,7 @@ MCP unconnected, Ghidra unconfigured. No setup or download is still running.
 
 ## Last confirmed live state
 
-At native capture the WeftForge PID64498 was alive, paused after a completed3s
+At latest native capture the WeftForge PID1550 was alive, paused after a completed3s
 drape, no background job. Reference PID18283 was alive at last investigator poll,
 terms/license still pending. No research/benchmark process remains live. Recheck
 actual processes/handles before assuming either app or any job is still running.
