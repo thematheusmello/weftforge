@@ -105,16 +105,44 @@ manifest location is in the thread handoff, never public files. No proprietary
 code analysis was used. REA CLI works with existing Node26.12.1; current-session
 MCP unconnected, Ghidra unconfigured. No setup or download is still running.
 
+## Evidence integrity checkpoint
+
+The isolated `fix/evidence-freshness` patch retains all original fields in all five
+reports: IDs, tested commits, source/fixture/artifact hashes, measurements and
+failed outcomes are unchanged. Registry schema 2 adds per-report freshness and
+reviewed source scopes. Historical committed identity is always checked; only
+current scoped inputs are compared with the working tree. Stale old baselines
+remain attributable history. Current failed scenes cannot be hidden by a newer
+pass or removal of a run reference.
+
+Native and numerical reports remain current because their relevant runtime and
+evaluator source is unchanged. The aggregate regression report is stale after
+the progress checks changed; seven otherwise-uncovered feature freshness flags
+are stale until rerun. Implementation/verification states and all 56 IDs stay the
+same, with 0/56 verified reference parity. Both generated reports expose freshness;
+the dashboard now includes domains, retained runs/source links, failed/blocked
+contracts and next delivery. Current identified-workflow text derives from the
+source-qualified complete replay report rather than a static first-gate message.
+
+Validation on this patch: all 34 workspace Rust tests, all 22 Python checks through
+`cargo xtask verify`, `cargo fmt --all --check`, strict all-target workspace clippy,
+generated consistency and original-report-field preservation passed. No Rust,
+workflow, fixture or retained artifact changed. No check job remains running.
+Next: review/merge the tested patch, then rerun relevant scopes before promoting
+new current evidence after implementation changes. Before the first reference
+comparison can qualify, add explicit baseline revision/settings and reviewed
+contract/scenario/criteria digest qualification; current ID/source matching alone
+does not prove unchanged full requirements. No reference pass exists today.
+
 ## Next exact actions
 
 1. Finish the single-candidate evidence PR, verify report consistency and Pages
    publication, and retain all failed scenes. Source code is unchanged from the
    fully tested candidate and merged evidence-CI fix.
-2. Continue professional editing/sewing and resolve per-run evidence freshness
-   before code evolves: current validator conservatively checks every registered
-   run source against current files, so historical runs must remain attributable
-   without falsely blocking a newly rerun current check. Narrow source scopes and
-   retain per-run stale status rather than dropping failures.
+2. Review and integrate the per-run evidence-freshness checkpoint before code
+   evolves. Keep historical reports attributable, update relevant source scopes
+   when inputs grow, and rerun or explicitly stale affected evidence. Retain
+   failed scenes and source identities throughout professional editing/sewing.
 3. Improve authored sewing length semantics, robust relationship-preserving sewn
    splits and curve UI; add local command automation for reproducible workflows.
 4. Fix garment convergence/contact beyond these fixtures; measure layered shirt+

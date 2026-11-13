@@ -130,5 +130,20 @@
     "Dedicated depth-buffer rendering/PBR and physical display DPI"
   ],
   "single_identified_candidate_workflow": true,
-  "scenario_id": "UI-SHIRT-CANDIDATE-001"
+  "scenario_id": "UI-SHIRT-CANDIDATE-001",
+  "freshness": "current",
+  "source_scope": [
+    ".cargo/config.toml",
+    "Cargo.lock",
+    "Cargo.toml",
+    "rust-toolchain.toml",
+    "crates/weftforge-core/Cargo.toml",
+    "crates/weftforge-core/src",
+    "crates/weftforge-sim/Cargo.toml",
+    "crates/weftforge-sim/src",
+    "apps/weftforge/Cargo.toml",
+    "apps/weftforge/src",
+    "scripts/check_drape.py",
+    "scripts/check_exports.py"
+  ]
 }
