@@ -1,0 +1,2633 @@
+{
+  "schema_version": 1,
+  "discovery_complete": false,
+  "features": [
+    {
+      "id": "UI-001",
+      "category": "UI",
+      "title": "Connected 2D and 3D workspace",
+      "required_reference_behavior": "Connect patterns, hierarchy, tools, properties, material, simulation and timeline.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-001",
+          "path": "parity/scenarios/UI-SHIRT-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Empty default native document; original two-panel shirt dimensions in fixture are design targets only.",
+          "expected_outcomes": "Editable geometry/relationships persist, garment responds, independent output scale passes; no pregenerated garment may replace UI creation."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-001",
+        "FIT-001"
+      ],
+      "implementation_locations": [
+        "apps/weftforge/src/main.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/2"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "UI-002",
+      "category": "UI",
+      "title": "Coherent selection",
+      "required_reference_behavior": "Synchronize piece and subobject selection across views.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "UI-001"
+      ],
+      "implementation_locations": [
+        "apps/weftforge/src/main.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/2"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "UI-003",
+      "category": "UI",
+      "title": "Shortcuts and command search",
+      "required_reference_behavior": "Match observed keyboard shortcuts, context tools and numeric input.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_locations": [
+        "apps/weftforge/src/main.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/2"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "UI-004",
+      "category": "UI",
+      "title": "Transactions and history",
+      "required_reference_behavior": "Undo and redo a complete authoring gesture atomically; exclude navigation and simulation frames.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "EDIT-RELATION-001",
+          "path": "parity/scenarios/EDIT-RELATION-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original cubic sewn garment, default CPU settings; capture construction IDs.",
+          "expected_outcomes": "Supported relationships preserved or explicitly rejected/invalidation reported; one gesture one undo; no silent ID retargeting."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "APP-001"
+      ],
+      "implementation_locations": [
+        "apps/weftforge/src/main.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/2"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "UI-005",
+      "category": "UI",
+      "title": "Cancellable background jobs",
+      "required_reference_behavior": "Navigate, save and edit during expensive operations, cancel promptly, reject obsolete results.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "PERFORMANCE-001",
+          "path": "parity/scenarios/PERFORMANCE-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Document CPU/GPU/RAM/OS, original representative multi-piece and layered fixtures.",
+          "expected_outcomes": "Mesh sizes and settings attributable; no frame-rate proxy for real-time cloth; no unknown metric represented as measured."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_locations": [
+        "apps/weftforge/src/main.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/2"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established.",
+        "Meshing and simulation are revision-tagged background jobs; solver initialization checks cancellation only before/after initial contact analysis; command validation and file IO retain synchronous portions."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "UI-006",
+      "category": "UI",
+      "title": "Accessibility and high DPI",
+      "required_reference_behavior": "Accessible names, keyboard access, readable high-DPI controls and interaction parity.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_locations": [
+        "apps/weftforge/src/main.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/2"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "PAT-001",
+      "category": "PAT",
+      "title": "Editable polygons and straight boundaries",
+      "required_reference_behavior": "Preserve stable points, named pieces and exact line dimensions.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-001",
+          "path": "parity/scenarios/UI-SHIRT-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Empty default native document; original two-panel shirt dimensions in fixture are design targets only.",
+          "expected_outcomes": "Editable geometry/relationships persist, garment responds, independent output scale passes; no pregenerated garment may replace UI creation."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_locations": [
+        "crates/weftforge-core/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "PAT-002",
+      "category": "PAT",
+      "title": "Cubic curve authoring",
+      "required_reference_behavior": "Edit authored curves and control points without flattening construction.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-001"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-core/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3",
+        "https://github.com/thematheusmello/weftforge/issues/9"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "PAT-003",
+      "category": "PAT",
+      "title": "Rectangles and primitives",
+      "required_reference_behavior": "Match creation gestures, defaults and numeric dimension dialogs.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "documentation_only",
+      "evidence_ids": [
+        "spec/features/PAT-003-rectangles.md"
+      ],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_locations": [
+        "crates/weftforge-core/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "PAT-004",
+      "category": "PAT",
+      "title": "Pattern transforms",
+      "required_reference_behavior": "Move, rotate, scale and mirror patterns with numeric precision.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_locations": [
+        "crates/weftforge-core/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "PAT-005",
+      "category": "PAT",
+      "title": "Split and join boundaries",
+      "required_reference_behavior": "Preserve relationships or provide explicit invalidation on split/join.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "EDIT-RELATION-001",
+          "path": "parity/scenarios/EDIT-RELATION-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original cubic sewn garment, default CPU settings; capture construction IDs.",
+          "expected_outcomes": "Supported relationships preserved or explicitly rejected/invalidation reported; one gesture one undo; no silent ID retargeting."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-002",
+        "SEW-001"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-core/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established.",
+        "Sewn-curve splitting explicitly rejected; curve joining unsupported."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "PAT-006",
+      "category": "PAT",
+      "title": "Cut pieces and holes",
+      "required_reference_behavior": "Author, validate and retain internal holes and cutting operations.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-002"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "PAT-007",
+      "category": "PAT",
+      "title": "Internal features and measurements",
+      "required_reference_behavior": "Names, notches, internal lines, measurements and constraints remain editable.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-002"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "PAT-008",
+      "category": "PAT",
+      "title": "Grain direction",
+      "required_reference_behavior": "Author material grain, use anisotropic physical response and retain it on edit.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established.",
+        "Solver supports grain but editable document has no grain parameter yet."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "PAT-009",
+      "category": "PAT",
+      "title": "Seam allowances and offsets",
+      "required_reference_behavior": "Editable curve offsets and seam allowances with measured scale.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-002"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "PAT-010",
+      "category": "PAT",
+      "title": "Darts pleats and linked symmetry",
+      "required_reference_behavior": "Construct darts, pleats and linked mirrored edits with relationships.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-002",
+        "SEW-001"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "PAT-011",
+      "category": "PAT",
+      "title": "Resolution and triangulation",
+      "required_reference_behavior": "Refine valid concave curved patterns with boundary-to-curve correspondence.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "documentation_only",
+      "evidence_ids": [
+        "spec/features/PAT-011-particle-distance.md"
+      ],
+      "scenarios": [
+        {
+          "id": "SEW-CUBIC-001",
+          "path": "parity/scenarios/SEW-CUBIC-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original curved pieces and unequal lengths in core workflow regression, fixed authored cubic controls.",
+          "expected_outcomes": "Stable authored curve IDs and correspondence preserved; orientation and deliberate easing measurable independently."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-001"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-core/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "SEW-001",
+      "category": "SEW",
+      "title": "Oriented interval sewing",
+      "required_reference_behavior": "Oriented authored-curve intervals with explicit correspondence independent of vertices.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "documentation_only",
+      "evidence_ids": [
+        "spec/features/SEW-001-oriented-segment-sewing.md"
+      ],
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-001",
+          "path": "parity/scenarios/UI-SHIRT-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Empty default native document; original two-panel shirt dimensions in fixture are design targets only.",
+          "expected_outcomes": "Editable geometry/relationships persist, garment responds, independent output scale passes; no pregenerated garment may replace UI creation."
+        },
+        {
+          "id": "SEW-CUBIC-001",
+          "path": "parity/scenarios/SEW-CUBIC-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original curved pieces and unequal lengths in core workflow regression, fixed authored cubic controls.",
+          "expected_outcomes": "Stable authored curve IDs and correspondence preserved; orientation and deliberate easing measurable independently."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-002",
+        "PAT-011"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-core/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3",
+        "https://github.com/thematheusmello/weftforge/issues/9"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [
+        "Public partial-sewing API uses normalized boundary length; current document intervals and default correspondence use curve parameter t. Arc-length equivalence remains unverified."
+      ],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "SEW-002",
+      "category": "SEW",
+      "title": "Free chain and internal sewing",
+      "required_reference_behavior": "Free sewing, partial boundaries, ordered chains and internal relationships.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SEW-001",
+        "PAT-007"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "SEW-003",
+      "category": "SEW",
+      "title": "Easing and gathering",
+      "required_reference_behavior": "Curved unequal-length seams with deliberate, editable easing.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "SEW-CUBIC-001",
+          "path": "parity/scenarios/SEW-CUBIC-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original curved pieces and unequal lengths in core workflow regression, fixed authored cubic controls.",
+          "expected_outcomes": "Stable authored curve IDs and correspondence preserved; orientation and deliberate easing measurable independently."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SEW-001"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-core/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3",
+        "https://github.com/thematheusmello/weftforge/issues/9"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "SEW-004",
+      "category": "SEW",
+      "title": "Seam diagnostics and editing",
+      "required_reference_behavior": "Show direction, length mismatch and errors before simulation; edit and remove.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "documentation_only",
+      "evidence_ids": [
+        "spec/features/SEW-001-oriented-segment-sewing.md"
+      ],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SEW-001"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-core/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3",
+        "https://github.com/thematheusmello/weftforge/issues/9"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "SEW-005",
+      "category": "SEW",
+      "title": "Construction attachments",
+      "required_reference_behavior": "Folds, elastic, buttons, buttonholes, zippers and trims: separate physics, authoring and visuals.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SEW-001",
+        "SIM-001"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "SEW-006",
+      "category": "SEW",
+      "title": "Topstitching and export welding",
+      "required_reference_behavior": "Distinguish physical seams, visible topstitching and optional export welding.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SEW-001",
+        "FILE-003"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/3"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "FIT-001",
+      "category": "FIT",
+      "title": "Avatar import and arrangement",
+      "required_reference_behavior": "Validated original or redistributable avatar paths, scale/axes, translate/rotate and arrangement aids.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "FILE-003"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-core/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/2"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "FIT-002",
+      "category": "FIT",
+      "title": "Pins grabbing and layers",
+      "required_reference_behavior": "Interactive cloth grab, authored pins, temporary constraints, outfits and layer controls.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "CONTACT-LAYER-001",
+          "path": "parity/scenarios/CONTACT-LAYER-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original shirt+jacket around analytic avatar and ground; tolerances declared before execution.",
+          "expected_outcomes": "Inner layer responds physically; record penetration, seam and strain residuals, no disabled self-contact."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "FIT-001",
+        "SIM-003"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/2"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "FIT-003",
+      "category": "FIT",
+      "title": "Edit and regenerate garment",
+      "required_reference_behavior": "Pattern, seam, material and avatar edits regenerate the actual simulated garment with explicit invalidation.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-001",
+          "path": "parity/scenarios/UI-SHIRT-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Empty default native document; original two-panel shirt dimensions in fixture are design targets only.",
+          "expected_outcomes": "Editable geometry/relationships persist, garment responds, independent output scale passes; no pregenerated garment may replace UI creation."
+        },
+        {
+          "id": "EDIT-RELATION-001",
+          "path": "parity/scenarios/EDIT-RELATION-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original cubic sewn garment, default CPU settings; capture construction IDs.",
+          "expected_outcomes": "Supported relationships preserved or explicitly rejected/invalidation reported; one gesture one undo; no silent ID retargeting."
+        },
+        {
+          "id": "FIT-DIMENSION-001",
+          "path": "parity/scenarios/FIT-DIMENSION-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original editable shirt before and after drape, authored dimensions measured.",
+          "expected_outcomes": "Actual rest/simulated garment changes correspond; controls and sewing remain editable."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-001",
+        "SEW-001",
+        "SIM-001"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-core/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/2",
+        "https://github.com/thematheusmello/weftforge/issues/8"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "FIT-004",
+      "category": "FIT",
+      "title": "Drawing on avatar and preserving shape",
+      "required_reference_behavior": "Inventory and implement advanced avatar pattern drawing and shape-preserving edits.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "FIT-001",
+        "PAT-002"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/2"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "SIM-001",
+      "category": "SIM",
+      "title": "Documented cloth solver",
+      "required_reference_behavior": "Repeatable CPU numerical cloth with gravity, stretch, shear, bending and damping.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-011",
+        "SIM-002"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-sim/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/4",
+        "https://github.com/thematheusmello/weftforge/issues/8"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "failed",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established.",
+        "Original tight-shirt drape finishes after assembly/mesh fixes, but fitting-quality strain and seam residual fail declared criteria; preserve the scene."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "SIM-002",
+      "category": "SIM",
+      "title": "Physical fabric parameters",
+      "required_reference_behavior": "Mass/area, friction, collision thickness and grain-dependent properties in documented units.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "FABRIC-REFINE-001",
+          "path": "parity/scenarios/FABRIC-REFINE-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original garment, two physical parameter sets; same appearance and conditions.",
+          "expected_outcomes": "Independent analytic extension/contact tolerances; investigate any mesh-dependent material behavior."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_locations": [
+        "crates/weftforge-sim/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/4"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "SIM-003",
+      "category": "SIM",
+      "title": "Avatar and ground contact",
+      "required_reference_behavior": "Physical collision against avatar and ground, initial-intersection diagnostics and recovery.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SIM-001",
+        "FIT-001"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-sim/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/4"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "SIM-004",
+      "category": "SIM",
+      "title": "Self and layered contact",
+      "required_reference_behavior": "Cloth self-contact and garment layers exchange contact response within declared tolerances.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "CONTACT-LAYER-001",
+          "path": "parity/scenarios/CONTACT-LAYER-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original shirt+jacket around analytic avatar and ground; tolerances declared before execution.",
+          "expected_outcomes": "Inner layer responds physically; record penetration, seam and strain residuals, no disabled self-contact."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SIM-003"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-sim/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/4"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established.",
+        "Vertex/triangle discrete contact; edge/edge and full continuous contact missing; layered shirt+jacket acceptance unverified."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "SIM-005",
+      "category": "SIM",
+      "title": "Simulation control and diagnostics",
+      "required_reference_behavior": "Play, pause, reset, step, resimulate, cancel, quality controls and finite/instability diagnostics.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SIM-001"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-sim/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/4",
+        "https://github.com/thematheusmello/weftforge/issues/8"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "SIM-006",
+      "category": "SIM",
+      "title": "Convergence and calibration",
+      "required_reference_behavior": "Independent analytic cases, mesh/timestep refinement, contrasting fabrics and measured tolerances.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "FABRIC-REFINE-001",
+          "path": "parity/scenarios/FABRIC-REFINE-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original garment, two physical parameter sets; same appearance and conditions.",
+          "expected_outcomes": "Independent analytic extension/contact tolerances; investigate any mesh-dependent material behavior."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SIM-001",
+        "SIM-004"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-sim/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/4",
+        "https://github.com/thematheusmello/weftforge/issues/8"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "failed",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "SIM-007",
+      "category": "SIM",
+      "title": "GPU acceleration",
+      "required_reference_behavior": "Measured GPU acceleration with explicit comparison against CPU reference and supported hardware.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SIM-006"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/4"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "MAT-001",
+      "category": "MAT",
+      "title": "Material assignment and presets",
+      "required_reference_behavior": "Assign physical materials by piece or region; approximate versus measured presets labeled.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SIM-002"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/5"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "MAT-002",
+      "category": "MAT",
+      "title": "Appearance texture and PBR",
+      "required_reference_behavior": "UV texture transforms and PBR maps separate from physical parameters.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "MAT-001"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/5"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "MAT-003",
+      "category": "MAT",
+      "title": "Lighting capture and inspection",
+      "required_reference_behavior": "Shadows, wireframe, scene capture, UV and deformation/contact diagnostics.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "MAT-002"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/5"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "ANIM-001",
+      "category": "ANIM",
+      "title": "Animated avatars",
+      "required_reference_behavior": "Validated skeletons, skeletal or supported deforming animation, scale, axes and collision inspection.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "ANIMATION-CACHE-001",
+          "path": "parity/scenarios/ANIMATION-CACHE-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original redistributable animated avatar, explicit seconds/frame range and validated collision mesh.",
+          "expected_outcomes": "Changed input cannot reuse old simulation; temporal contact and scale correct; unsupported path stays unverified."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "FILE-004"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/5"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "ANIM-002",
+      "category": "ANIM",
+      "title": "Timeline and cache invalidation",
+      "required_reference_behavior": "Frame ranges, caches, scrubbing and playback; invalidate changed inputs.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "ANIMATION-CACHE-001",
+          "path": "parity/scenarios/ANIMATION-CACHE-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original redistributable animated avatar, explicit seconds/frame range and validated collision mesh.",
+          "expected_outcomes": "Changed input cannot reuse old simulation; temporal contact and scale correct; unsupported path stays unverified."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "ANIM-001",
+        "SIM-005"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/5"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established.",
+        "No timeline, cache persistence or animation implemented."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "ANIM-003",
+      "category": "ANIM",
+      "title": "Output preparation",
+      "required_reference_behavior": "Mesh density, UVs, normals, thickness, seams and retopology workflows.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-011",
+        "FILE-003"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/5"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "FILE-001",
+      "category": "FILE",
+      "title": "Editable native projects",
+      "required_reference_behavior": "Versioned portable .weftforge retains all supported construction, materials, avatars and settings.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "documentation_only",
+      "evidence_ids": [
+        "spec/features/FILE-001-project-workflow.md"
+      ],
+      "scenarios": [
+        {
+          "id": "UI-SHIRT-001",
+          "path": "parity/scenarios/UI-SHIRT-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Empty default native document; original two-panel shirt dimensions in fixture are design targets only.",
+          "expected_outcomes": "Editable geometry/relationships persist, garment responds, independent output scale passes; no pregenerated garment may replace UI creation."
+        },
+        {
+          "id": "RECOVERY-001",
+          "path": "parity/scenarios/RECOVERY-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Nontrivial authored project with valid previous file; isolated test destination.",
+          "expected_outcomes": "Last valid data survives; errors keep current project; no silent replacement or data loss."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-001",
+        "SEW-001",
+        "MAT-001"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-core/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/6"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "FILE-002",
+      "category": "FILE",
+      "title": "Atomic save and recovery",
+      "required_reference_behavior": "Interrupted save, autosave/recovery, bounded load, missing assets, malformed and unsupported-version errors.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "RECOVERY-001",
+          "path": "parity/scenarios/RECOVERY-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Nontrivial authored project with valid previous file; isolated test destination.",
+          "expected_outcomes": "Last valid data survives; errors keep current project; no silent replacement or data loss."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "FILE-001"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-core/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/6"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "FILE-003",
+      "category": "FILE",
+      "title": "OBJ interchange",
+      "required_reference_behavior": "Validated avatar/mesh OBJ import/export with scale, axes, UVs, normals, groups and materials.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "EXPORT-INDEPENDENT-001",
+          "path": "parity/scenarios/EXPORT-INDEPENDENT-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original shirt with expected x\u00b10.53,y1.02..1.56,z\u00b10.22m; distinct destinations.",
+          "expected_outcomes": "Physical scale, axes, UVs, unit normals, groups and closed physical pattern paths; material/animation attributes remain unsupported."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-011"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-core/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/6"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established.",
+        "Current export has geometry/UV/normals/piece groups; avatar import and material assignments missing."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "FILE-004",
+      "category": "FILE",
+      "title": "glTF and GLB interchange",
+      "required_reference_behavior": "Validated static/animated avatar and mesh paths with explicit capability matrix.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "FILE-003"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/6"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "FILE-005",
+      "category": "FILE",
+      "title": "Patterns SVG DXF and printing",
+      "required_reference_behavior": "Editable pattern SVG and documented DXF subset; verifiable physical-size printing.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "EXPORT-INDEPENDENT-001",
+          "path": "parity/scenarios/EXPORT-INDEPENDENT-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Original shirt with expected x\u00b10.53,y1.02..1.56,z\u00b10.22m; distinct destinations.",
+          "expected_outcomes": "Physical scale, axes, UVs, unit normals, groups and closed physical pattern paths; material/animation attributes remain unsupported."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "PAT-002"
+      ],
+      "implementation_locations": [
+        "crates/weftforge-core/src/lib.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/6"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "FILE-006",
+      "category": "FILE",
+      "title": "Marvelous native compatibility",
+      "required_reference_behavior": "Research and test actual native editable-project decoding and preservation separately from mesh interchange.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/6"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "FILE-007",
+      "category": "FILE",
+      "title": "Animation and cache export",
+      "required_reference_behavior": "Inventory and validate supported animated/cache production formats independently.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "ANIM-002"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/6"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "APP-001",
+      "category": "APP",
+      "title": "Shared command engine and adapters",
+      "required_reference_behavior": "Typed validated commands shared by GUI, CLI and local MCP automation.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_locations": [
+        "apps/weftforge/src/main.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/7"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "APP-002",
+      "category": "APP",
+      "title": "Cross-platform packaging",
+      "required_reference_behavior": "Native macOS Apple Silicon, Windows and Linux builds, launch checks and redistributable prereleases.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "APP-003"
+      ],
+      "implementation_locations": [
+        "apps/weftforge/src/main.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/7"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "APP-003",
+      "category": "APP",
+      "title": "Offline operation and licensing",
+      "required_reference_behavior": "Offline creation/simulation/save/export, license/asset audit and native dependency notices.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_locations": [
+        "apps/weftforge/src/main.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/7"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "APP-004",
+      "category": "APP",
+      "title": "Recovery and responsiveness",
+      "required_reference_behavior": "Save, navigate, cancel and recover during expensive operations without blocking UI.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "UI-005",
+        "FILE-002"
+      ],
+      "implementation_locations": [
+        "apps/weftforge/src/main.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/7"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established.",
+        "Unsaved-work autosave and explicit recovery implemented/tested; crash/restart GUI and representative large-scene latency still require evidence."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "APP-005",
+      "category": "APP",
+      "title": "Public delivery and evidence",
+      "required_reference_behavior": "Public repository, issues, PRs, CI, samples, screenshots, releases and generated attributable progress.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "REF-003"
+      ],
+      "implementation_locations": [
+        "apps/weftforge/src/main.rs"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/7"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license.",
+        "GitHub Project board creation rejected: authenticated token lacks project and read:project scopes. Issues work independently."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "PERF-001",
+      "category": "PERF",
+      "title": "Representative performance",
+      "required_reference_behavior": "Documented hardware, multi-piece/layer mesh, solver step throughput, viewport time, memory and save/cancel timing.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [
+        {
+          "id": "PERFORMANCE-001",
+          "path": "parity/scenarios/PERFORMANCE-001.json",
+          "fixture_hashes": {
+            "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
+          },
+          "initial_conditions": "Document CPU/GPU/RAM/OS, original representative multi-piece and layered fixtures.",
+          "expected_outcomes": "Mesh sizes and settings attributable; no frame-rate proxy for real-time cloth; no unknown metric represented as measured."
+        }
+      ],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "SIM-004",
+        "APP-004"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/7"
+      ],
+      "prs": [],
+      "implementation_status": "planned",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "REF-001",
+      "category": "REF",
+      "title": "Frozen legitimate baseline",
+      "required_reference_behavior": "Official installed version/build/hash, OS/architecture/preferences/units/locale/graphics/date.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [
+        "parity/reference.json"
+      ],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_locations": [
+        "parity/reference.json",
+        "docs/reference-setup.md"
+      ],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/1"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "blocked",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "REF-002",
+      "category": "REF",
+      "title": "Complete discovery inventory",
+      "required_reference_behavior": "Audit all menus, contextual tools, dialogs, shortcuts, defaults/ranges/errors/file handling/workflows, including local substitutes for hosted creation.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [
+        "spec/features/discovery-inventory.md"
+      ],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/1"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "blocked",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    },
+    {
+      "id": "REF-003",
+      "category": "REF",
+      "title": "Controlled comparisons",
+      "required_reference_behavior": "Independent original fixtures, scenarios and evaluators, complete contract evidence, stale propagation and public discrepancy reports.",
+      "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+      "source_links": [
+        "https://support.marvelousdesigner.com/",
+        "https://www.marvelousdesigner.com/products/releases"
+      ],
+      "reference_observation_status": "unobserved",
+      "evidence_ids": [],
+      "scenarios": [],
+      "comparison_criteria": {
+        "units": "SI metres, kilograms, seconds; radians",
+        "exact": [
+          "Authored dimensions and relationships where meaningful."
+        ],
+        "numerical_tolerances": [],
+        "status": "proposed; see reviewed specification before reference evaluation"
+      },
+      "dependencies": [
+        "REF-001",
+        "REF-002"
+      ],
+      "implementation_locations": [],
+      "issues": [
+        "https://github.com/thematheusmello/weftforge/issues/1"
+      ],
+      "prs": [],
+      "implementation_status": "partial",
+      "verification_status": "not_run",
+      "verification_runs": [],
+      "known_gaps": [
+        "Full reference contract and runtime comparison not yet established."
+      ],
+      "contradictions": [],
+      "blockers": [
+        "User must review reference app terms and activate legitimate trial/license."
+      ],
+      "freshness": "missing"
+    }
+  ]
+}

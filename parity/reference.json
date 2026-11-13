@@ -1,0 +1,709 @@
+{
+  "schema_version": 1,
+  "baseline_id": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "product": "Marvelous Designer",
+  "baseline_status": "provisional",
+  "frozen": false,
+  "observation_date": "2026-11-13",
+  "download_listing": {
+    "license_type": "Individual / Personal",
+    "platform": "Mac",
+    "version_build": "2026.1.237.58920",
+    "release_date": "2026-10-14",
+    "source_id": "DOC-DOWNLOAD-20261113"
+  },
+  "installer": {
+    "filename": "MarvelousDesigner_Personal_2026_1_237_Installer.dmg",
+    "bytes": 2261300347,
+    "sha256": "3eedb7529e3e22a9e6d1953f8201c839dbc7217948454758f9b04552bcea3931",
+    "source_host": "installer.marvelousdesigner.com",
+    "retrieval": "official-download-page-button",
+    "retained": "private-outside-repository"
+  },
+  "application": {
+    "bundle_name": "MarvelousDesigner.app",
+    "bundle_id": "com.clovirtualfashion.MarvelousDesigner_PER",
+    "bundle_short_version": "2026.1.237",
+    "bundle_version": null,
+    "observed_ui_version": "2026.1.237",
+    "observed_ui_build": null,
+    "executable_name": "MarvelousDesigner_PER",
+    "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+    "architectures": [
+      "x86_64",
+      "arm64"
+    ],
+    "observed_runtime_architecture": "arm64",
+    "signer": "CLO Virtual Fashion Inc.",
+    "team_id": "LM3T6Q78ZL",
+    "gatekeeper": "accepted-notarized-developer-id",
+    "launch_observed": true,
+    "garment_workspace_observed": false
+  },
+  "host": {
+    "os": "macOS",
+    "version": "27.2",
+    "build": "26B123",
+    "architecture": "arm64",
+    "support_assessment": "Above vendor macOS 14 minimum; not one of the explicitly recommended macOS 15/26 versions."
+  },
+  "settings": {
+    "units": null,
+    "locale": null,
+    "preferences": null,
+    "graphics": null,
+    "license_entitlement": null
+  },
+  "reference_observation_status": "blocked",
+  "blockers": [
+    {
+      "id": "REF-TERMS",
+      "state": "confirmed",
+      "action": "Account holder must personally review/accept the app Terms of Service."
+    },
+    {
+      "id": "REF-LICENSE",
+      "state": "confirmed-signin-required-entitlement-unobserved",
+      "action": "Sign in with a legitimate CLO-SET/Marvelous Designer account and activate the appropriate trial or license."
+    }
+  ],
+  "tools": {
+    "rea_cli": "6.9.0",
+    "rea_skill": "62",
+    "node": "26.12.1",
+    "native_provider": "native-macos",
+    "native_provider_version": null,
+    "codex_registration": "doctor-healthy-live-connection-unconfirmed",
+    "ghidra": "unconfigured-not-invoked",
+    "hopper": "detected-not-invoked",
+    "gui_driver": "cua_repl-native-mac"
+  },
+  "evidence": [
+    {
+      "id": "ev_1c6ffe1fecfd187facba0ecd52316cb21ebe1c700b5046759b3b3f320e746e56",
+      "kind": "rea-installation-classification",
+      "retention": "complete-private-bundle",
+      "sha256": "8c7d29aa04f705b31af8a442002e99201c3bf6ad54110c19671dc9d8ebbe6d93",
+      "entries_examined": 7427,
+      "bytes_read": 28608,
+      "child_symlinks_not_followed": 106,
+      "limitations": [
+        "Directory digest commits to examined metadata/read ranges, not all file contents.",
+        "No candidate markers does not establish absence of components or features.",
+        "Does not observe execution or establish functional parity."
+      ]
+    },
+    {
+      "id": "ev_c875f70fed8bfd5f9466314dfbd5bd5aa42921fa83dfcd35b9f16666f440c456",
+      "kind": "rea-native-ui-observation",
+      "retention": "complete-private-record",
+      "sha256": "80c513f57c88cb0f0b368b164151b77edc3102962c410ed284fc23b2fadf25e0",
+      "observed": "Personal sign-in window showing 2026.1.237; exact executable identity matched.",
+      "accessibility_nodes": 12,
+      "truncated": false,
+      "limitations": [
+        "Selected main window only; terms modal and garment workspace not captured.",
+        "No declared authoring actions executed."
+      ]
+    },
+    {
+      "id": "LAB-TERMS-20261113",
+      "kind": "cua-native-ui-direct-observation",
+      "retention": "task-transcript-and-private-research-note",
+      "observed": "Terms of Service dialog; stopped before accepting.",
+      "limitations": [
+        "No separately retained modal screenshot."
+      ]
+    },
+    {
+      "id": "LAB-NATIVE-WINDOW-REJECTED-20261113",
+      "kind": "failed-rea-observation",
+      "retention": "private-record",
+      "sha256": "bad66ac2e39663e1facd80cff192e81bab3d9e0a16f582099154ac177b3d3d6f",
+      "outcome": "Selected modal-layer window rejected as window-mismatch; corrected to discovered main window for subsequent capture."
+    },
+    {
+      "id": "DOC-CONTRACTS-EXTRACT-20261113",
+      "kind": "official-manual-web-tool-extraction",
+      "retention": "private-normalized-web-output",
+      "sha256": "c2d25657c58a5f59e6951e6390ca9526dad0f8a4bd35c10a539f9e8d91a09fda",
+      "limitations": [
+        "Documentation claims are not current-build runtime observations.",
+        "Direct HTTP retrieval from support site failed; normalized web-tool extracts retained instead of HTML."
+      ]
+    },
+    {
+      "id": "DOC-DISCOVERY-EXTRACT-20261113",
+      "kind": "official-manual-web-tool-extraction",
+      "retention": "private-normalized-web-output",
+      "sha256": "3f86ca4fe562554e521b1b0c2e3f6c36ad8b7f502cf782e968e5f6834dd1ab82",
+      "limitations": [
+        "Index and selected articles do not establish complete discovery coverage."
+      ]
+    },
+    {
+      "id": "DOC-EXTENDED-A238DC3295A5",
+      "kind": "official-public-documentation-web-tool-extraction",
+      "retention": "private-normalized-web-output",
+      "sha256": "9ce4a9f693236cfcff04c4211e63d87415b9dd31d8515cf821c09d05b008f733",
+      "limitations": [
+        "Documentation discovery, not current-build execution.",
+        "Normalized extraction may omit webpage content; full native/menu discovery is incomplete."
+      ]
+    },
+    {
+      "id": "DOC-EXTENDED-ECAC60CE8CB2",
+      "kind": "official-public-documentation-web-tool-extraction",
+      "retention": "private-normalized-web-output",
+      "sha256": "38647fcb730a67513336acc51eee888e189fecb1e655d167447ba73ac459f13c",
+      "limitations": [
+        "Documentation discovery, not current-build execution.",
+        "Normalized extraction may omit webpage content; full native/menu discovery is incomplete."
+      ]
+    },
+    {
+      "id": "DOC-EXTENDED-0C9A9A4353E5",
+      "kind": "official-public-documentation-web-tool-extraction",
+      "retention": "private-normalized-web-output",
+      "sha256": "184ebd290a11a6fcd176642c18b0c89550891407347182064fdd33b6c98818a4",
+      "limitations": [
+        "Documentation discovery, not current-build execution.",
+        "Normalized extraction may omit webpage content; full native/menu discovery is incomplete."
+      ]
+    },
+    {
+      "id": "DOC-EXTENDED-8D784CA827DA",
+      "kind": "official-public-documentation-web-tool-extraction",
+      "retention": "private-normalized-web-output",
+      "sha256": "d27c440f9a5dd40bc277718bfcdc1e10e786b5b9e9431617ede78d5ed862c70e",
+      "limitations": [
+        "Documentation discovery, not current-build execution.",
+        "Normalized extraction may omit webpage content; full native/menu discovery is incomplete."
+      ]
+    },
+    {
+      "id": "DOC-EXTENDED-848FA1E220C7",
+      "kind": "official-public-documentation-web-tool-extraction",
+      "retention": "private-normalized-web-output",
+      "sha256": "80ac385fa7b537c3dc23e55dbc4a9a3acd11f1cfeff1b39e9f5bf51d35938131",
+      "limitations": [
+        "Documentation discovery, not current-build execution.",
+        "Normalized extraction may omit webpage content; full native/menu discovery is incomplete."
+      ]
+    },
+    {
+      "id": "DOC-EXTENDED-CE28A93905D0",
+      "kind": "official-public-documentation-web-tool-extraction",
+      "retention": "private-normalized-web-output",
+      "sha256": "87340a6671928212e5d4751f54206673bdfcd1021f8d69dd44757bae558c2e4c",
+      "limitations": [
+        "Documentation discovery, not current-build execution.",
+        "Normalized extraction may omit webpage content; full native/menu discovery is incomplete."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "DOC-DOWNLOAD-20261113",
+      "url": "https://www.marvelousdesigner.com/products/download",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-TRIAL-20261113",
+      "url": "https://www.marvelousdesigner.com/products/trial",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-REQUIREMENTS-20261113",
+      "url": "https://www.marvelousdesigner.com/manuals/articles/47358219834649",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-MANUAL-INDEX-20261113",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/categories/51985515993625-Manual",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-RECTANGLE-20261113",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358203451673-Rectangle",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-SEGMENT-SEWING-20261113",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358199517209-Segment-Sewing-2D",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-PARTICLE-DISTANCE-20261113",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358268602777-Particle-Distance-Setting",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-PROJECT-SAVE-20261113",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358219651225-Project-File-ZPrj-Open-Save",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-NEW-2026-1-20261113",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/59743730927129-Marvelous-Designer-2026-1-New-Feature-List",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-FORMATS-20261113",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358199862553-Compatible-File-Format",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-GLTF-20261113",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/55686813557913-glTG-2-0-glTF-GLB-File-ver-2026-0",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-5DC79BA6E292",
+      "url": "https://developer.marvelousdesigner.com/changelog.html",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-7D1DB5B4BD40",
+      "url": "https://developer.marvelousdesigner.com/index.html",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-F61104BEB640",
+      "url": "https://developer.marvelousdesigner.com/list.html",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-EB0E2CC79E3C",
+      "url": "https://github.com/morluto/rea/blob/main/docs/guides/native/native-investigation.md",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-FCFE4E291CCA",
+      "url": "https://github.com/morluto/rea/blob/main/docs/reconstruction-coverage.md",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-839670978B3E",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358119414937-2D-Snapshot-2025-0",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-F40B5CC4A2C9",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358120094361-Shortcuts-Hotkeys-2025-0",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-3D2B26622308",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358125463321-Simulation-Properties",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-52C0579FB6AB",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358146159769-Pins",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-4EE2FD35159E",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358161486361--Beta-AI-Graphic-Generator-Ver-2024-1",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-DE8D477E4D8D",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358169252633-Marvelous-Designer-File-Format",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-DDEB3895CA37",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358169509273-User-Interface-Above-ver4-2-0",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-DDBF2369BABC",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358198817689--Mode-UV-EDITOR",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-50D5DFB0136F",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358214227353-Retopology-ver-12-Above",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-34242F49D7B3",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358232630937-Simulation",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-10D22D27EFB5",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358240361625-Menu",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-48A7DC0DDA5B",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358260608793-Set-Default-Files-Above-ver-4-2-0",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-BA618E60D310",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358269290393-History-Window",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-8B1B2EE3464E",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358277921177-Python-Script",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-BF8369C82FF8",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358323609369-Merge-Vertex-by-Proximity-at-Export",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-E1013E466E5A",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358348786969-Custom-View",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-9E1A638FDCAB",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358351055897--Beta-AI-Texture-Generator-Ver-2024-1",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-C2B6565F9B55",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358355178393-Cache-Animation-Export",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-D3098EBE3318",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/47358430412441-FABRIC-PHYSICAL-PROPERTIES-Adjust-Collision-Thickness",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-C26F33350619",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/48920289920537-AI-Pose-Generator-Beta",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-E187A02714C0",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/48920347302297-Pattern-Drafter-Beta",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-D16A8602455D",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/48920706512665-ZIPPER-Zipper-Style",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-621972D86FBD",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/49132239080857-Print-on-Fabric",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-ED9932F4B433",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/49694260744089-AI-Studio-Plug-In-Activation",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-93633A4ED6F5",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/51581344460185-AI-Image-Generator",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-375EBBAFEEFF",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/55654243482649-Blend-Shape-Avatar",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-30ECCC557E13",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/55654873005081-3D-Pencil-Avatar",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-41D0F6ED13A3",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/59781111736345-Brush-Pinching",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-6385DFC7BF93",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/59782132043289-Pinching-Simulation-Override",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-D74C7C6E0774",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/59782795610393-Customize-Toolbar",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-B58C2123E078",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/59783425428121-Internal-Line-Variable-Fold-Angle",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-F939F65824E7",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/59790915241241-Viewport-Camera",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-C02407A09FE0",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/articles/59816167297433-Seamline-Rip",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-6DCF654F784D",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986372762905-Window",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-8041FA4F6C2D",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986433234585-3D-Window-Environment",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-3E1861651550",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986503167513-Import-Export",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-33980EFAC980",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986513612313-Avatar",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-3C6DBF3D12F4",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986608298009-2D-Pattern-Shape",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-0F450B9812FE",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986645976473-Edit-2D-Pattern",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-68765693465D",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986645976473-Edit-2D-Pattern?page=2",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-71584A07F2E8",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986665714457-Edit-3D-Garment",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-55D020C5BD76",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986702397337-Arrangement",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-FDD14988595F",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986704279065-Garment-Properties",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-8D75A85810B7",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986752872217-Fabric",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-CAA5925ADAAE",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986752872217-Fabric?page=2",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-6AA9BA8485DF",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986755223705-Sewing",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-845CC728ECAF",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986821785753-Material",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-A1C2C81B3214",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986890767129-Topstitch",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-8AF71F953EA1",
+      "url": "https://support.marvelousdesigner.com/hc/en-us/sections/51986994136857-Animation",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    },
+    {
+      "id": "DOC-DISCOVERY-BD70D0D23F8E",
+      "url": "https://www.marvelousdesigner.com/products/release?tab=feature&v=2026.1",
+      "reviewed_on": "2026-11-13",
+      "evidence_type": "public-documentation-discovery-lead",
+      "runtime_observed": false
+    }
+  ],
+  "discovery": {
+    "status": "incomplete",
+    "documentation_index_reviewed": true,
+    "runtime_menu_inventory": "unobserved",
+    "reference_authoring_scenarios_completed": 0,
+    "reviewed_specifications": [
+      "PAT-003",
+      "PAT-011",
+      "SEW-001",
+      "SEW-004",
+      "FILE-001"
+    ],
+    "unobserved_areas": "All garment authoring, simulation/output, file interoperability, performance, preferences, dialogs and complete workflows.",
+    "documentation_registry_groups_mapped": 56,
+    "completed_reference_workflow_contracts": 0,
+    "total_actual_reference_features": null
+  },
+  "known_contradictions": [
+    {
+      "subject": "macOS deployment/support",
+      "facts": [
+        "Bundle deployment target declares macOS 12.0.",
+        "Current official requirements list macOS 14 minimum."
+      ],
+      "resolution": "Use current vendor requirements for supported laboratory setup; do not infer supported OS from bundle metadata."
+    },
+    {
+      "subject": "macOS GPU simulation",
+      "facts": [
+        "Requirements text explains Nvidia CUDA acceleration.",
+        "2026.1 feature list explicitly advertises macOS GPU simulation."
+      ],
+      "resolution": "Backend, device support, and current-build behavior remain unobserved."
+    }
+  ],
+  "intentional_exclusions": [
+    "Vendor billing, activation and storefront administration are excluded from the replacement feature set."
+  ],
+  "qualification": "This provisional baseline is not frozen and supplies zero verified functional-parity claims."
+}

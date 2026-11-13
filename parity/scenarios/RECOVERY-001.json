@@ -1,0 +1,10 @@
+{
+  "id": "RECOVERY-001",
+  "status": "proposed_not_reference_executed",
+  "initial_conditions": "Nontrivial authored project with valid previous file; isolated test destination.",
+  "actions": [
+    "Interrupt atomic save before replacement; load/recover, test unsupported/malformed versions and missing assets."
+  ],
+  "expected_outcomes": "Last valid data survives; errors keep current project; no silent replacement or data loss.",
+  "fixture_policy": "Original redistributable fixtures; UI creation scenario must begin empty."
+}

@@ -1,0 +1,10 @@
+{
+  "id": "ANIMATION-CACHE-001",
+  "status": "proposed_not_reference_executed",
+  "initial_conditions": "Original redistributable animated avatar, explicit seconds/frame range and validated collision mesh.",
+  "actions": [
+    "Simulate/cache/scrub; change seam/material and rerun."
+  ],
+  "expected_outcomes": "Changed input cannot reuse old simulation; temporal contact and scale correct; unsupported path stays unverified.",
+  "fixture_policy": "Original redistributable fixtures; UI creation scenario must begin empty."
+}

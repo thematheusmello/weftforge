@@ -1,0 +1,10 @@
+{
+  "id": "EDIT-RELATION-001",
+  "status": "proposed_not_reference_executed",
+  "initial_conditions": "Original cubic sewn garment, default CPU settings; capture construction IDs.",
+  "actions": [
+    "Edit curve, split edge, refine, undo/redo; inspect material and seam dependencies."
+  ],
+  "expected_outcomes": "Supported relationships preserved or explicitly rejected/invalidation reported; one gesture one undo; no silent ID retargeting.",
+  "fixture_policy": "Original redistributable fixtures; UI creation scenario must begin empty."
+}

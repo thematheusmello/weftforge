@@ -1,0 +1,10 @@
+{
+  "id": "FABRIC-REFINE-001",
+  "status": "proposed_not_reference_executed",
+  "initial_conditions": "Original garment, two physical parameter sets; same appearance and conditions.",
+  "actions": [
+    "Repeat material comparison at finer mesh and half timestep; record area mass and deformation."
+  ],
+  "expected_outcomes": "Independent analytic extension/contact tolerances; investigate any mesh-dependent material behavior.",
+  "fixture_policy": "Original redistributable fixtures; UI creation scenario must begin empty."
+}

@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "kind": "implementation_only_native_ui_observation",
+  "evidence_id": "ev_4fa13b71e9f569139cb732124739ed6472d2e4c6f8a9aff72eca03ababfc2686",
+  "observation_window_utc": {
+    "requested_at": "2026-11-13T21:32:16Z",
+    "evidence_written_at": "2026-11-13T21:32:56.149249+00:00",
+    "timestamp_basis": "Bounded-call start and local result-file completion; individual image timestamp not supplied by provider."
+  },
+  "producer": {
+    "tool": "REA observe-native-ui",
+    "rea_version": "6.9.0",
+    "node_version": "26.12.1",
+    "provider": {
+      "id": "native-macos",
+      "name": "macOS native inspection utilities",
+      "version": null
+    },
+    "ui_actions": [],
+    "auxiliary_tool_versions": {
+      "apple_swift": "6.4.2",
+      "swift_driver": "1.168.6",
+      "target": "arm64-apple-macosx27.2.0"
+    }
+  },
+  "host": {
+    "os": "macOS",
+    "version": "27.2",
+    "build": "26B123",
+    "architecture": "arm64"
+  },
+  "application": {
+    "name": "WeftForge",
+    "bundle_id": "org.weftforge.studio",
+    "bundle_version": "0.1.0",
+    "executable_name": "weftforge",
+    "executable_sha256": "f00e07755922c7096a4d6c1dec5418c91cf2d5a0a185f04d27bf35957245111b",
+    "runtime_architecture": "arm64",
+    "source_commit": null,
+    "source_commit_status": "Not yet recorded at capture; executable identity is pinned independently."
+  },
+  "window": {
+    "title": "WeftForge",
+    "pid_at_capture": 64498,
+    "window_id_at_capture": 55128,
+    "native_frame_points": {
+      "x": 555,
+      "y": 124,
+      "width": 1450,
+      "height": 932
+    },
+    "image_pixels": {
+      "width": 1450,
+      "height": 932
+    },
+    "display_backing_scale_factor": 1.0,
+    "physical_dpi": null,
+    "actual_client_content_rect": null,
+    "source_requested_client_size_points": {
+      "width": 1450,
+      "height": 900
+    },
+    "geometry_limitations": [
+      "Native frame includes the title bar; actual client content rectangle was not independently sampled.",
+      "Physical DPI was not measured; backing scale is an observed OS display property."
+    ]
+  },
+  "screenshot": {
+    "path": "docs/images/studio-macos.png",
+    "sha256": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+    "bytes": 251681,
+    "editing": "None; copied byte-for-byte from the selected-window REA PNG.",
+    "privacy_review": "Visually reviewed original WeftForge window only; no account information, personal paths, unrelated applications, proprietary reference assets or reference UI."
+  },
+  "accessibility": {
+    "node_count": 79,
+    "truncated": false,
+    "raw_tree": "Retained privately with the complete REA record."
+  },
+  "scene": {
+    "fixture": {
+      "path": "fixtures/ui-authored-shirt.weftforge",
+      "sha256": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+      "bytes": 12039
+    },
+    "document_revision": 20,
+    "authored_points": 28,
+    "authored_curves": 28,
+    "pieces": [
+      {
+        "id": 2,
+        "name": "UI shirt front",
+        "placement": {
+          "translation": [
+            0.55,
+            0.0,
+            0.22
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "material": 1
+      },
+      {
+        "id": 31,
+        "name": "UI shirt back",
+        "placement": {
+          "translation": [
+            -0.55,
+            0.0,
+            -0.22
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "material": 1
+      }
+    ],
+    "seams": 8,
+    "resolution_m": 0.12,
+    "analytic_mannequin": {
+      "capsules": [
+        {
+          "a": [
+            0.0,
+            0.9,
+            0.0
+          ],
+          "b": [
+            0.0,
+            1.4,
+            0.0
+          ],
+          "radius": 0.18
+        },
+        {
+          "a": [
+            0.0,
+            1.53,
+            0.0
+          ],
+          "b": [
+            0.0,
+            1.65,
+            0.0
+          ],
+          "radius": 0.105
+        },
+        {
+          "a": [
+            -0.22,
+            1.4,
+            0.0
+          ],
+          "b": [
+            -0.55,
+            1.22,
+            0.0
+          ],
+          "radius": 0.065
+        },
+        {
+          "a": [
+            0.22,
+            1.4,
+            0.0
+          ],
+          "b": [
+            0.55,
+            1.22,
+            0.0
+          ],
+          "radius": 0.065
+        },
+        {
+          "a": [
+            -0.09,
+            0.88,
+            0.0
+          ],
+          "b": [
+            -0.09,
+            0.18,
+            0.0
+          ],
+          "radius": 0.085
+        },
+        {
+          "a": [
+            0.09,
+            0.88,
+            0.0
+          ],
+          "b": [
+            0.09,
+            0.18,
+            0.0
+          ],
+          "radius": 0.085
+        }
+      ]
+    },
+    "world_up": "Y",
+    "length_unit": "metre",
+    "stage_display": "Drape",
+    "state_display": "PAUSED",
+    "mesh_vertices_display": 158
+  },
+  "camera": {
+    "yaw_rad": -0.45,
+    "pitch_rad": 0.12,
+    "scale_pixels_per_metre": 270.0,
+    "provenance": "Operator reported unchanged initial defaults; current camera values were not exposed through AX or a debug-state export.",
+    "projection": "Orthographic projected triangle preview; source-defined basic shading, no calibrated lighting."
+  },
+  "displayed_next_step_settings": {
+    "dt_s": "0.01667",
+    "substeps": 8,
+    "iterations": 32,
+    "gravity_m_s2": [
+      0.0,
+      -9.81,
+      0.0
+    ],
+    "seam_closure_m_s": "1.00"
+  },
+  "displayed_diagnostics": {
+    "time_s": "3.000",
+    "assembly_remaining_m": "0.0000",
+    "material_axis_stretch_error": "0.085",
+    "seam_gap_m": "0.0000",
+    "contact_error_m": "0.0000",
+    "initial_intersections": "0",
+    "rounding_note": "Captured UI text is rounded; displayed zeros do not establish exact zero physical error."
+  },
+  "related_exports": [
+    {
+      "path": "fixtures/ui-shirt-drape.obj",
+      "sha256": "780540d66208d55095a82a8632af8250e9bcd461bb1ea53f93fde07cda537b2d",
+      "bytes": 34970
+    },
+    {
+      "path": "fixtures/ui-shirt-patterns.svg",
+      "sha256": "6d21aabec733594f9f3d5d1050054ee4a098f7793b838c31efc2534a90417d49",
+      "bytes": 1251
+    }
+  ],
+  "private_evidence": {
+    "record_sha256": "7859200a67b25cdff0c336e2ca04362e06eaf1279b18166f3ea96f8c59bf9181",
+    "absolute_paths": "Omitted from public provenance.",
+    "full_record": "Retained in the operator-controlled research directory."
+  },
+  "limitations": [
+    "Single selected native window; no pointer, keyboard or authoring actions performed by this REA observation.",
+    "The preceding authoring, save/reopen/edit, assembly and drape workflow is documented by a separate operator action log.",
+    "A screenshot and displayed diagnostics do not establish numerical contact correctness, complete workflow verification or reference parity.",
+    "No Marvelous Designer garment workflow has been observed; this is original WeftForge evidence only."
+  ]
+}
