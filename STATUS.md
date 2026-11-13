@@ -7,13 +7,26 @@ incomplete and must expand with discovery.
 
 ## Current recoverable state
 
-Published source: `ff3914474c8acc30d10c70a8489cae56cfa2c872` on main. The public
-repository and origin are verified: https://github.com/thematheusmello/weftforge.
-Scoped reports and the evidence-CI toolchain correction merged in
-[PR10](https://github.com/thematheusmello/weftforge/pull/10) at
-`8341048fa0bcedea9fab10a178a579db4b103630`. A separate complete single-candidate
-UI replay and retained output are on `evidence/single-candidate-workflow`. Reports retain exact source/input/artifact
-hashes and the single-candidate GUI replay gap. No unrelated source existed.
+Published main revision: `8419363c977b64a44eecb6a797616a7f9e082ceb` ([PR11](https://github.com/thematheusmello/weftforge/pull/11)).
+The public repository/origin is verified: https://github.com/thematheusmello/weftforge.
+Rust application, CLI, core, solver, manifests and lockfile remain byte-identical
+to tested source `ff3914474c8acc30d10c70a8489cae56cfa2c872`; final native executable
+SHA-256 is `f00e07755922c7096a4d6c1dec5418c91cf2d5a0a185f04d27bf35957245111b`.
+[PR10](https://github.com/thematheusmello/weftforge/pull/10) retained scoped reports
+and fixed evidence CI; PR11 closed the full single-candidate workflow attribution
+gap. All original failures and the earlier composite observation remain retained.
+
+The [v0.1.0-alpha.1 source engineering preview](https://github.com/thematheusmello/weftforge/releases/tag/v0.1.0-alpha.1)
+is public at main8419363, with original editable project and matching OBJ/SVG
+samples. Public asset downloads were byte/SHA-256 checked against the tested files.
+No compiled installers/binaries ship in that preview. Full product/parity and
+binary-distribution notice/signing/platform-launch gates remain incomplete.
+
+Current local branch `fix/report-freshness` has the reviewed/tested per-report
+freshness patch (cherry-picked `71a89b3`, originally `ae104c6` in its isolated
+worktree); only this publication-status text was updated afterward. No Rust,
+workflow, fixture or retained output changed. Publish and verify that tooling PR
+before starting the next professional authoring increment.
 
 Delivery issues [#1–#7](https://github.com/thematheusmello/weftforge/issues) and six
 milestones cover discovery and every roadmap gate. Reproductions:
@@ -24,14 +37,17 @@ https://thematheusmello.github.io/weftforge/ returned HTTP200 with the correct t
 A later [Pages run43515229132](https://github.com/thematheusmello/weftforge/actions/runs/43515229132)
 failed an observed artifact-visibility race: upload14080172593 succeeded, deploy
 immediately listed0 artifacts, and the same run later listed1 unexpired artifact.
-The single-candidate branch adds a bounded API visibility check before deploy;
-its actual successful deployment remains required.
+The bounded API visibility check repaired publication. [Pages run43517946669](https://github.com/thematheusmello/weftforge/actions/runs/43517946669)
+completed successfully and the site returned HTTP200 afterward. The earlier
+artifact-visibility failure remains retained in its run logs.
 The first source CI run is [43512419034](https://github.com/thematheusmello/weftforge/actions/runs/43512419034).
 Linux/macOS/Windows source builds/tests/clippy passed; the initial evidence job
 failed Rustup component installation (`cargo-fmt` conflict). Explicit manifest
 components fixed it. Both [pushCI43513630203](https://github.com/thematheusmello/weftforge/actions/runs/43513630203)
 and [PRCI43513640378](https://github.com/thematheusmello/weftforge/actions/runs/43513640378)
-finished green on the merged fix, including all3 platforms and evidence checks. Project board creation failed:
+finished green on the merged fix, including all3 platforms and evidence checks.
+The published main8419363 also has fully green [CI43517946830](https://github.com/thematheusmello/weftforge/actions/runs/43517946830).
+Project board creation failed:
 token lacks project/read:project scopes. Issues and registry work independently.
 
 ## What works and how it was checked
@@ -107,7 +123,7 @@ MCP unconnected, Ghidra unconfigured. No setup or download is still running.
 
 ## Evidence integrity checkpoint
 
-The isolated `fix/evidence-freshness` patch retains all original fields in all five
+The reviewed per-run evidence-freshness patch retains all original fields in all five
 reports: IDs, tested commits, source/fixture/artifact hashes, measurements and
 failed outcomes are unchanged. Registry schema 2 adds per-report freshness and
 reviewed source scopes. Historical committed identity is always checked; only
@@ -128,7 +144,7 @@ Validation on this patch: all 34 workspace Rust tests, all 22 Python checks thro
 `cargo xtask verify`, `cargo fmt --all --check`, strict all-target workspace clippy,
 generated consistency and original-report-field preservation passed. No Rust,
 workflow, fixture or retained artifact changed. No check job remains running.
-Next: review/merge the tested patch, then rerun relevant scopes before promoting
+Next: publish/merge the tested patch, then rerun relevant scopes before promoting
 new current evidence after implementation changes. Before the first reference
 comparison can qualify, add explicit baseline revision/settings and reviewed
 contract/scenario/criteria digest qualification; current ID/source matching alone
@@ -136,13 +152,13 @@ does not prove unchanged full requirements. No reference pass exists today.
 
 ## Next exact actions
 
-1. Finish the single-candidate evidence PR, verify report consistency and Pages
-   publication, and retain all failed scenes. Source code is unchanged from the
-   fully tested candidate and merged evidence-CI fix.
-2. Review and integrate the per-run evidence-freshness checkpoint before code
-   evolves. Keep historical reports attributable, update relevant source scopes
-   when inputs grow, and rerun or explicitly stale affected evidence. Retain
-   failed scenes and source identities throughout professional editing/sewing.
+1. Publish and merge the tested per-run evidence-freshness/dashboard PR after
+   relevant checks. Recheck current CI and Pages handles. Preserve every failed
+   scene and original source/input/artifact identity.
+2. Advance professional pattern/sewing authoring through one reviewed contract
+   at a time. Use current source scopes to rerun or stale affected evidence; retain
+   historical failures. Rerun the aggregate tooling/regression scope before
+   claiming its seven currently stale feature checks current.
 3. Improve authored sewing length semantics, robust relationship-preserving sewn
    splits and curve UI; add local command automation for reproducible workflows.
 4. Fix garment convergence/contact beyond these fixtures; measure layered shirt+
