@@ -1,0 +1,38 @@
+{
+  "kind": "independently_checked_output",
+  "status": "passed",
+  "scope": "straight-boundary original fixture; no self-contact or animation verification",
+  "vertices": 158,
+  "triangles": 244,
+  "pieces": 2,
+  "max_material_axis_strain": 0.08071752985498803,
+  "max_seam_gap_m": 2.7885907436391503e-08,
+  "max_avatar_ground_thickness_error_m": 1.5005358067199381e-16,
+  "bounds_m": [
+    [
+      -0.4707799744256916,
+      0.47473387850613796
+    ],
+    [
+      1.0625448967750166,
+      1.580772506628273
+    ],
+    [
+      -0.26616012793313304,
+      0.26626655756456546
+    ]
+  ],
+  "patterns": {
+    "paths": 2,
+    "millimetres_per_user_unit": [
+      1.0,
+      1.0
+    ],
+    "authored_points_match": true
+  },
+  "criteria": {
+    "strain_below": 0.15,
+    "seam_gap_below_m": 0.005,
+    "avatar_ground_thickness_error_below_m": 0.002
+  }
+}

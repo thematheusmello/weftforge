@@ -1,0 +1,165 @@
+{
+  "id": "UI-SHIRT-CANDIDATE-001",
+  "status": "implementation_only_passed",
+  "reference_status": "not_executed",
+  "baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "initial_conditions": "Launch retained f00e executable into empty document; create all original pattern boundaries viaUI.",
+  "actions": [
+    "Launch retained f00e executable into empty Project::default; no pregenerated garment loaded.",
+    "Use canvas Polygon to enter14points for Candidate front and14points for Candidate back; commit both editable closed contours.",
+    "Set front translation[0.55,0,0.22] andback[-0.55,0,-0.22]; set resolution0.12m.",
+    "Turn reversed pairing off; sew authored boundaries1,2,4,5,9,10,12,13 to matching back boundaries using full same-direction intervals and explicit linear correspondence.",
+    "Run Assembly60steps gravity0 thenDrape120steps gravity-9.81, dt1/60s,8substeps,32iterations,closure1m/s. Observe3s finite state, strain~.09.",
+    "Adjust both widths1.06\u21921.08m; save the actual editable project. Quit the process, relaunch same retained executable, and reopen via native Open dialog.",
+    "Select front; observe persisted1.08m. Edit to1.10m, oneUndo\u21921.08m andoneRedo\u21921.10m. Edit back width1.08\u21921.10m andsave. Eight seams remain.",
+    "Run same explicit Assembly60+Drape120 protocol on edited construction. Observe3s, strain~.081, assembly0, displayed seam/contact0, initialintersections0.",
+    "Export actual solver positions toOBJ and authored paths toSVG via native Save dialogs. Independently parse finalauthoring/mesh/patterns; capture selected native window through REA."
+  ],
+  "criteria": {
+    "strain_below": 0.15,
+    "seam_gap_below_m": 0.005,
+    "avatar_ground_thickness_error_below_m": 0.002
+  },
+  "report": "parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json",
+  "prohibitions": [
+    "Do not replace canvas authoring by loading a pregenerated garment.",
+    "Do not use this relaxed scene to overwrite the unchanged tight-shirt/refinement failure.",
+    "Do not count an implementation workflow as verified reference parity."
+  ],
+  "original_canvas_vertices_m": {
+    "front": [
+      [
+        -0.88,
+        1.02
+      ],
+      [
+        -0.22,
+        1.02
+      ],
+      [
+        -0.24,
+        1.27
+      ],
+      [
+        -0.07,
+        1.2
+      ],
+      [
+        -0.02,
+        1.38
+      ],
+      [
+        -0.31,
+        1.56
+      ],
+      [
+        -0.45,
+        1.56
+      ],
+      [
+        -0.47,
+        1.49
+      ],
+      [
+        -0.63,
+        1.49
+      ],
+      [
+        -0.65,
+        1.56
+      ],
+      [
+        -0.79,
+        1.56
+      ],
+      [
+        -1.08,
+        1.38
+      ],
+      [
+        -1.03,
+        1.2
+      ],
+      [
+        -0.86,
+        1.27
+      ]
+    ],
+    "back": [
+      [
+        0.22,
+        1.02
+      ],
+      [
+        0.88,
+        1.02
+      ],
+      [
+        0.86,
+        1.27
+      ],
+      [
+        1.03,
+        1.2
+      ],
+      [
+        1.08,
+        1.38
+      ],
+      [
+        0.79,
+        1.56
+      ],
+      [
+        0.65,
+        1.56
+      ],
+      [
+        0.63,
+        1.49
+      ],
+      [
+        0.47,
+        1.49
+      ],
+      [
+        0.45,
+        1.56
+      ],
+      [
+        0.31,
+        1.56
+      ],
+      [
+        0.02,
+        1.38
+      ],
+      [
+        0.07,
+        1.2
+      ],
+      [
+        0.24,
+        1.27
+      ]
+    ]
+  },
+  "quality_settings": {
+    "dt_seconds": 0.016666666666666666,
+    "substeps": 8,
+    "iterations": 32,
+    "seam_closure_speed_m_per_second": 1.0,
+    "assembly_steps": 60,
+    "assembly_gravity_m_per_s2": [
+      0,
+      0,
+      0
+    ],
+    "drape_steps": 120,
+    "drape_gravity_m_per_s2": [
+      0,
+      -9.81,
+      0
+    ]
+  }
+}
