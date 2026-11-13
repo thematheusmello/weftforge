@@ -82,5 +82,25 @@
     "cargo xtask verify",
     "cargo xtask scenario",
     "cargo xtask package"
-  ]
+  ],
+  "freshness": "stale",
+  "source_scope": [
+    ".cargo/config.toml",
+    "Cargo.lock",
+    "Cargo.toml",
+    "rust-toolchain.toml",
+    "crates/weftforge-core/Cargo.toml",
+    "crates/weftforge-core/src",
+    "crates/weftforge-sim/Cargo.toml",
+    "crates/weftforge-sim/src",
+    "apps/weftforge/Cargo.toml",
+    "apps/weftforge/src",
+    "apps/weftforge-cli/Cargo.toml",
+    "apps/weftforge-cli/src",
+    "crates/weftforge-core/tests",
+    "scripts",
+    "xtask/Cargo.toml",
+    "xtask/src"
+  ],
+  "freshness_reason": "Progress validation and its tests changed after this aggregate regression run. Original checks, source identities and artifacts are retained; scoped numerical and native workflow reports are unaffected."
 }

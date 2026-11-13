@@ -53,5 +53,19 @@
   "scope": "Fixed original tight-shirt fails the declared15% material-axis strain criterion. Retain input and diagnostic output; do not substitute relaxed fixture results.",
   "command": "cargo run --release -p weftforge-cli -- fit-benchmark fixtures/original-shirt.weftforge",
   "observed_exit_code": 1,
-  "failure_reason": "Maximum material-axis strain 0.234385 exceeds predeclared 0.15; source garment circumference undersizes torso. Simultaneous-gravity mesh refinement also fails; full numerical explanation remains open."
+  "failure_reason": "Maximum material-axis strain 0.234385 exceeds predeclared 0.15; source garment circumference undersizes torso. Simultaneous-gravity mesh refinement also fails; full numerical explanation remains open.",
+  "freshness": "current",
+  "source_scope": [
+    ".cargo/config.toml",
+    "Cargo.lock",
+    "Cargo.toml",
+    "rust-toolchain.toml",
+    "crates/weftforge-core/Cargo.toml",
+    "crates/weftforge-core/src",
+    "crates/weftforge-sim/Cargo.toml",
+    "crates/weftforge-sim/src",
+    "apps/weftforge-cli/Cargo.toml",
+    "apps/weftforge-cli/src",
+    "scripts/check_drape.py"
+  ]
 }
