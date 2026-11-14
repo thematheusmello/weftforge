@@ -1,0 +1,118 @@
+{
+  "declared_at": "2026-11-14T17:54:14.471231+00:00",
+  "kind": "append_only_prospective_two_case_causal_and_balance_probe",
+  "prior_plan": "plan.json",
+  "prior_plan_sha256": "b97a22b3e37b6543412346cc9ee10a8dea19643779ad4d0a118a4040675c30e2",
+  "baseline_analysis": "control-analysis.json",
+  "baseline_analysis_sha256": "c27bd8aaa510116e8c9c3dc823e9a02a3dc859d4a86ccfa284afb8a6d3731e81",
+  "source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "source_manifest_sha256": "1ecf305630bff2025223a2d3279e51141f7aa4a01d86999ad0c63ef546d9797c",
+  "fixture_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "executed_probe_binary": "target/release/cloth-balance-probe",
+  "executed_probe_binary_sha256": "215ee6789e8da6ca3623971d9e5dc8d7903e8b051a4b3ff563d964a166699e8b",
+  "frozen_code_sha256": {
+    "probe-harness/Cargo.toml": "f57258d4f7cb8b953c707f83ed632dcbd1ba85bb005402b76f8eb78a68afd40a",
+    "probe-harness/Cargo.lock": "dccb61e260c6d06ab6293a5de1325acb323381ccdd0b1aa712cd979498873e22",
+    "probe-harness/src/main.rs": "2e9b0a78b4966b8da2daccf44e21922e11133805801faaa6254cae7c03a9bc40",
+    "probe_job.py": "012ea85230a59cd8b57330d679d34cf414a893d63e7c1ed94a6e1f38f699e575",
+    "measure.py": "32f2d9fbb8ac82b85f9a438a31e73d4292cd08356ec06ed91c68e8cf40e41ce2",
+    "balance_measure.py": "58da92075e6346225bd846ef2b982b0092941f9b6b10564e44840bc0a695bbbc"
+  },
+  "baseline_findings_selecting_cases": {
+    "rest_strain_near_zero": 6.661338147750939e-16,
+    "mesh_vertices_triangles": [
+      150,
+      228
+    ],
+    "first_frame_above_15percent": 24,
+    "closure_complete_and_seam_below_5mm_frame": 27,
+    "t1_peak_strain": 0.24118490382884583,
+    "t3_peak_strain": 0.32351913672966237,
+    "t1_seam_m": 6.911103501829521e-07,
+    "peak_regions": "t1 weak back-neck warp; t3 weak front-left-cuff warp, peak vertices within45 micrometres of original capsule surfaces",
+    "remaining_questions": [
+      "Can additional fixed zero-G evolution remove the15% failure after completed assembly, or does it persist without gravity?",
+      "Does removal of mannequin contact eliminate or materially reduce the zero-G assembly strain while all cloth, meshing, sewing and self-contact settings remain fixed?"
+    ]
+  },
+  "cases": [
+    {
+      "name": "zero-g-balance",
+      "fresh_start": "Original document, original mesh positions, zero velocities; deterministic replay of unchanged first60 control frames then exactly120 more zero-G frames",
+      "frames": 180,
+      "gravity_all_frames": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "contact": "All production original mannequin/ground/self/interpanel contacts remain on",
+      "deterministic_prefix_requirement": "Positions and velocities exactly match baseline frames0..60; mismatch is retained and invalidates the intended branch comparison",
+      "comparison": "Independent strain/energy/momentum/velocity/interval impulse at t1,t2,t3; nodal drift from t1; t3 versus baseline gravity. Exactly one fixed2s balance interval, no subsequent blind extension."
+    },
+    {
+      "name": "no-avatar",
+      "fresh_start": "Load unchanged original fixture; retain original project alongside runtime project; clear mannequin capsules in memory only, assert resulting Mesh exactly equals original mesh, then simulate exactly60 zero-G frames",
+      "frames": 60,
+      "gravity_all_frames": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "contact": "Original ground/self/interpanel contacts remain on; only analytic mannequin capsules omitted",
+      "comparison": "Independent t1 peak strain, spatial distribution, elastic energies, closure/seam residuals and momentum versus original t1 baseline. Counterfactual input is solely a causal diagnostic and cannot establish garment-quality or fitting pass."
+    }
+  ],
+  "fixed_shared_settings": {
+    "dt_s": 0.016666666666666666,
+    "substeps": 8,
+    "iterations": 32,
+    "seam_closure_m_per_s": 1.0,
+    "density_stiffness_grain_bending_damping_friction_thickness": "Unchanged original values",
+    "phase_wall_cap_s": 180,
+    "per_case_wrapper_cap_s": 420,
+    "run_order": [
+      "zero-g-balance",
+      "no-avatar"
+    ]
+  },
+  "unchanged_quality_screen": {
+    "strain_below": 0.15,
+    "seam_gap_m_below": 0.005,
+    "supported_contact_penetration_m_below": 0.002,
+    "assembly_target_m": 0,
+    "finite": true
+  },
+  "separate_sensitivity_triggers": {
+    "peak_axis_strain_absolute_difference": 0.005,
+    "max_nodal_drift_m": 0.001
+  },
+  "interpretation_rules": [
+    "Dropping below15% only in the avatar-free diagnostic supports avatar loading as a causal contributor to this trajectory; it does not justify removing avatars or claiming a product quality pass.",
+    "Persistent zero-G strain above15% after fixed2s continuation rejects only the proposition that this particular extra interval resolves the observed failure; it does not prove equilibrium or impossibility.",
+    "A change above0.005 in peak strain or0.001m nodal drift is flagged as sensitivity, not convergence or a solver defect.",
+    "Report signed material-axis strain, energy and full force limitations; conditional8.73% neck/14.04% cuff uniform extension estimates are not a rigorous15% axis-strain lower bound.",
+    "Do not infer force equilibrium from low KE or finite steps; contact reactions and XPBD multipliers are not exported."
+  ],
+  "saved_observables": [
+    "Full positions, velocities, settings, diagnostics and timings every public frame",
+    "Exact original and runtime project, mesh, UV, masses, boundary/seam source associations",
+    "Independent same geometric strain/energy/momentum/force calculations as baseline",
+    "Independent conservative membrane/bending/sewing force vectors at frame60 and terminal frame180 where applicable"
+  ],
+  "case_budget": {
+    "baseline_completed": 1,
+    "new_cases_now_registered": 2,
+    "total_cases_cap": 3,
+    "no_more_cases_this_task": true
+  },
+  "checks": {
+    "offline_build": "passed",
+    "strict_clippy": "passed",
+    "independent_measure_selfchecks": "passed"
+  },
+  "non_goals": [
+    "No production/default/fixture/tolerance edits or tuning",
+    "No general convergence, calibration, reference parity or solver-defect claim",
+    "No native UI, CI, Pages or public registry changes"
+  ]
+}

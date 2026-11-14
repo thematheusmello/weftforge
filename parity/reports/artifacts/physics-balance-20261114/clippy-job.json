@@ -1,0 +1,31 @@
+{
+  "stage": "clippy",
+  "started_at": "2026-11-14T17:47:03.325528+00:00",
+  "launcher_pid": 65850,
+  "command": [
+    "cargo",
+    "clippy",
+    "--locked",
+    "--release",
+    "--offline",
+    "--manifest-path",
+    "<EXPERIMENT_ROOT>/harness/Cargo.toml",
+    "--all-targets",
+    "--",
+    "-D",
+    "warnings"
+  ],
+  "cwd": "<EXPERIMENT_ROOT>/source",
+  "environment_overrides": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_TARGET_DIR": "<EXPERIMENT_ROOT>/target"
+  },
+  "wall_cap_seconds": 240,
+  "status": "failed",
+  "child_pid": 65895,
+  "child_process_group": 65895,
+  "exit_code": 101,
+  "completed_at": "2026-11-14T17:47:07.504166+00:00",
+  "wall_seconds": 4.178632625029422
+}

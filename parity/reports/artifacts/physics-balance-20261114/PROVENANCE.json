@@ -1,0 +1,1365 @@
+{
+  "kind": "public_candidate_pathname_only_provenance_derivatives",
+  "prepared_at": "2026-11-14T18:03:46.968641+00:00",
+  "source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "rules": [
+    "Exact original fixture, saved numerical state, source, plan, driver and analysis bytes are retained.",
+    "Only the exact private experiment absolute pathname prefix is replaced in logs/ledgers containing it; raw hashes and replacement counts remain.",
+    "No binaries, targets, .git data, personal filesystem paths, proprietary assets or credentials are included.",
+    "The producer original inventory retains raw private artifact hashes; MANIFEST.json is the candidate closure inventory.",
+    "Historical files are copied byte-identically solely for source-bound mesh/shared-time comparison, not a new reference/quality result.",
+    "Independent reviewer receipt stays separate."
+  ],
+  "files": [
+    {
+      "bundle_path": "REPORT.txt",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/REPORT.txt",
+      "raw_sha256": "2de35d41b804eed45ae9ea680dc85b811d14c0f59696f7d9a78922a930b3abc2",
+      "bundle_sha256": "2de35d41b804eed45ae9ea680dc85b811d14c0f59696f7d9a78922a930b3abc2",
+      "raw_bytes": 3807,
+      "bundle_bytes": 3807,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "analysis.stderr",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/analysis.stderr",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bundle_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "bundle_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "analysis.stdout",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/analysis.stdout",
+      "raw_sha256": "80e1dc5d50f5fd5063f781460b3554fbb96d4bd98181783ca0166f3c7dd7da9c",
+      "bundle_sha256": "80e1dc5d50f5fd5063f781460b3554fbb96d4bd98181783ca0166f3c7dd7da9c",
+      "raw_bytes": 13536,
+      "bundle_bytes": 13536,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "analyze.py",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/analyze.py",
+      "raw_sha256": "19c1a667afa8de2430489f61cde0da6f17de5a576016f8400aab90026113a032",
+      "bundle_sha256": "19c1a667afa8de2430489f61cde0da6f17de5a576016f8400aab90026113a032",
+      "raw_bytes": 11449,
+      "bundle_bytes": 11449,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "analyze_probes.py",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/analyze_probes.py",
+      "raw_sha256": "d75661bc92d845be0ef4e239cbad4a3f02c97e7db32bb93c3349b4b1e5d7958e",
+      "bundle_sha256": "d75661bc92d845be0ef4e239cbad4a3f02c97e7db32bb93c3349b4b1e5d7958e",
+      "raw_bytes": 8639,
+      "bundle_bytes": 8639,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "balance_measure.py",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/balance_measure.py",
+      "raw_sha256": "58da92075e6346225bd846ef2b982b0092941f9b6b10564e44840bc0a695bbbc",
+      "bundle_sha256": "58da92075e6346225bd846ef2b982b0092941f9b6b10564e44840bc0a695bbbc",
+      "raw_bytes": 8535,
+      "bundle_bytes": 8535,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "build-job.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/build-job.json",
+      "raw_sha256": "964418ca430392f1454754bab05c6680ae9eaf0622b5ccc01ec30c3989e053b5",
+      "bundle_sha256": "897403f2987ff3b80b785a719c0e51e7fcaffd25ff63eed805f2bbd545bd9745",
+      "raw_bytes": 974,
+      "bundle_bytes": 746,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "pathname_prefix_only",
+        "replacement_token": "<EXPERIMENT_ROOT>",
+        "private_prefix_sha256": "e1d50d18d49fa4ac6084a8ac609e009b493661441c39fba339603b7eefafadc5",
+        "replacement_count": 3,
+        "numerical_fixture_state_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "build-probes-job.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/build-probes-job.json",
+      "raw_sha256": "a0c1f7cf93f0a819a8bc1987dac1441a247f322337a72a957e784c04135a5b38",
+      "bundle_sha256": "2bba3e1803ee95cd14d71c95507a199e65c73b710008acb85732030f2a401dd7",
+      "raw_bytes": 986,
+      "bundle_bytes": 758,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "pathname_prefix_only",
+        "replacement_token": "<EXPERIMENT_ROOT>",
+        "private_prefix_sha256": "e1d50d18d49fa4ac6084a8ac609e009b493661441c39fba339603b7eefafadc5",
+        "replacement_count": 3,
+        "numerical_fixture_state_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "build-probes.stderr",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/build-probes.stderr",
+      "raw_sha256": "ac156cb642113c7272f2f5d5f6b9f54731e8783d58340ea9b39239f1552bf325",
+      "bundle_sha256": "7d3390d7d167a84d3233aa627eebb9c77539db781606d74b52af244f915974cb",
+      "raw_bytes": 212,
+      "bundle_bytes": 136,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "pathname_prefix_only",
+        "replacement_token": "<EXPERIMENT_ROOT>",
+        "private_prefix_sha256": "e1d50d18d49fa4ac6084a8ac609e009b493661441c39fba339603b7eefafadc5",
+        "replacement_count": 1,
+        "numerical_fixture_state_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "build-probes.stdout",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/build-probes.stdout",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bundle_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "bundle_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "build-retry1-job.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/build-retry1-job.json",
+      "raw_sha256": "e841d8246acd69be191a9adbb4a3be9829ce649f6c630495bac6e3fbfd88baca",
+      "bundle_sha256": "30152eacf65fbd984266034cd019bbc0c830f9e6c27d002af4f84648cda8844e",
+      "raw_bytes": 980,
+      "bundle_bytes": 752,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "pathname_prefix_only",
+        "replacement_token": "<EXPERIMENT_ROOT>",
+        "private_prefix_sha256": "e1d50d18d49fa4ac6084a8ac609e009b493661441c39fba339603b7eefafadc5",
+        "replacement_count": 3,
+        "numerical_fixture_state_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "build-retry1.stderr",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/build-retry1.stderr",
+      "raw_sha256": "0b6d1e08d29f48b1c3e1744a74252d5566160268625012d3e50b4552b223bd00",
+      "bundle_sha256": "26b3664bcbb50b220eb5174d2aed2dea49965119efbc9aa0bb8d6e7c55be9249",
+      "raw_bytes": 211,
+      "bundle_bytes": 135,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "pathname_prefix_only",
+        "replacement_token": "<EXPERIMENT_ROOT>",
+        "private_prefix_sha256": "e1d50d18d49fa4ac6084a8ac609e009b493661441c39fba339603b7eefafadc5",
+        "replacement_count": 1,
+        "numerical_fixture_state_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "build-retry1.stdout",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/build-retry1.stdout",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bundle_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "bundle_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "build.stderr",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/build.stderr",
+      "raw_sha256": "d8026ea6c0f1ef8f70b8b0d4993f5b7e8d562fef9149f813a1e52534cd734315",
+      "bundle_sha256": "f9f92969665202eafe46c195346f14b7dab86f1df20316f2a5887ddada9c5ca9",
+      "raw_bytes": 1006,
+      "bundle_bytes": 778,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "pathname_prefix_only",
+        "replacement_token": "<EXPERIMENT_ROOT>",
+        "private_prefix_sha256": "e1d50d18d49fa4ac6084a8ac609e009b493661441c39fba339603b7eefafadc5",
+        "replacement_count": 3,
+        "numerical_fixture_state_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "build.stdout",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/build.stdout",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bundle_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "bundle_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "clippy-job.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/clippy-job.json",
+      "raw_sha256": "87bcd7ac727fcc00db3e1bb797e613248f177e01ba320430d83cfa61827c00b0",
+      "bundle_sha256": "41e369e7dc68e7d9b537adffd72147801f818619a5adc7505075b88c9eae2eba",
+      "raw_bytes": 944,
+      "bundle_bytes": 716,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "pathname_prefix_only",
+        "replacement_token": "<EXPERIMENT_ROOT>",
+        "private_prefix_sha256": "e1d50d18d49fa4ac6084a8ac609e009b493661441c39fba339603b7eefafadc5",
+        "replacement_count": 3,
+        "numerical_fixture_state_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "clippy-probes-job.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/clippy-probes-job.json",
+      "raw_sha256": "9d51ef2ad7c599b37d76cae5980537ed20cbaf72b2fc0a6f4b82650cad2b4483",
+      "bundle_sha256": "d2c787cbebca15f985e4e16ab18ee49a4b353c188b3dc20cd7844205a2c3964c",
+      "raw_bytes": 959,
+      "bundle_bytes": 731,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "pathname_prefix_only",
+        "replacement_token": "<EXPERIMENT_ROOT>",
+        "private_prefix_sha256": "e1d50d18d49fa4ac6084a8ac609e009b493661441c39fba339603b7eefafadc5",
+        "replacement_count": 3,
+        "numerical_fixture_state_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "clippy-probes.stderr",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/clippy-probes.stderr",
+      "raw_sha256": "6437531553af4c70563ba1c17a41ee639a34b9e1048f22f2766ef58dc824f5e8",
+      "bundle_sha256": "cb56b203c193330ed73d29dccdc640080c1091df607c81a3f9491b39a7082e06",
+      "raw_bytes": 212,
+      "bundle_bytes": 136,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "pathname_prefix_only",
+        "replacement_token": "<EXPERIMENT_ROOT>",
+        "private_prefix_sha256": "e1d50d18d49fa4ac6084a8ac609e009b493661441c39fba339603b7eefafadc5",
+        "replacement_count": 1,
+        "numerical_fixture_state_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "clippy-probes.stdout",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/clippy-probes.stdout",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bundle_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "bundle_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "clippy-retry1-job.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/clippy-retry1-job.json",
+      "raw_sha256": "adac4cfe1e862c531a6f89304594421c5a2eec8e1a1b4a1b97755b1d2c73e254",
+      "bundle_sha256": "621d0f6f9350f525604c2ff56502e500bc58a5cad93c11b733beeb101946fcc7",
+      "raw_bytes": 952,
+      "bundle_bytes": 724,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "pathname_prefix_only",
+        "replacement_token": "<EXPERIMENT_ROOT>",
+        "private_prefix_sha256": "e1d50d18d49fa4ac6084a8ac609e009b493661441c39fba339603b7eefafadc5",
+        "replacement_count": 3,
+        "numerical_fixture_state_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "clippy-retry1.stderr",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/clippy-retry1.stderr",
+      "raw_sha256": "5745b0a1acdd60a0ef02f2d43341e8ecd8aef493a90cfaf776d0d8e5bace147f",
+      "bundle_sha256": "1b6ef6f850d6917e280728c2aea2fae6b4f8f2d52ffc5c9e428afec627e9d783",
+      "raw_bytes": 211,
+      "bundle_bytes": 135,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "pathname_prefix_only",
+        "replacement_token": "<EXPERIMENT_ROOT>",
+        "private_prefix_sha256": "e1d50d18d49fa4ac6084a8ac609e009b493661441c39fba339603b7eefafadc5",
+        "replacement_count": 1,
+        "numerical_fixture_state_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "clippy-retry1.stdout",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/clippy-retry1.stdout",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bundle_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "bundle_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "clippy.stderr",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/clippy.stderr",
+      "raw_sha256": "828ec09dd8da062b34da58705bb6bb9983b3a18b2f8336e9a7b29baccf5d6ee4",
+      "bundle_sha256": "a945715ffca8fa8bcdaa6ba576ebf0987a6ba80f8ca66d2753fbd83887f8c8bf",
+      "raw_bytes": 1339,
+      "bundle_bytes": 1111,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "pathname_prefix_only",
+        "replacement_token": "<EXPERIMENT_ROOT>",
+        "private_prefix_sha256": "e1d50d18d49fa4ac6084a8ac609e009b493661441c39fba339603b7eefafadc5",
+        "replacement_count": 3,
+        "numerical_fixture_state_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "clippy.stdout",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/clippy.stdout",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bundle_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "bundle_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "control/completed-case.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/control/completed-case.json",
+      "raw_sha256": "0b900d59fd4d5961666b72aaf276a7c1a67a62c913e9541fdb5f5acb4dc337c2",
+      "bundle_sha256": "0b900d59fd4d5961666b72aaf276a7c1a67a62c913e9541fdb5f5acb4dc337c2",
+      "raw_bytes": 586,
+      "bundle_bytes": 586,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "control/rest-metadata.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/control/rest-metadata.json",
+      "raw_sha256": "0c58d8aa2cb2712f004c020b558e120f7b7fc2357231527e106da45740968e80",
+      "bundle_sha256": "0c58d8aa2cb2712f004c020b558e120f7b7fc2357231527e106da45740968e80",
+      "raw_bytes": 61251,
+      "bundle_bytes": 61251,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "control/steps.jsonl",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/control/steps.jsonl",
+      "raw_sha256": "78e9b9b00caba5e26e3b0320f855b654379d459e5b7fdf311d294dbd4d1bfc77",
+      "bundle_sha256": "78e9b9b00caba5e26e3b0320f855b654379d459e5b7fdf311d294dbd4d1bfc77",
+      "raw_bytes": 86959,
+      "bundle_bytes": 86959,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "control/trajectory.jsonl",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/control/trajectory.jsonl",
+      "raw_sha256": "feb4d50b5d40e549b48bc309fb43b8d0968357d340a3946b17898229d579b7cb",
+      "bundle_sha256": "feb4d50b5d40e549b48bc309fb43b8d0968357d340a3946b17898229d579b7cb",
+      "raw_bytes": 3591287,
+      "bundle_bytes": 3591287,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "control-analysis.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/control-analysis.json",
+      "raw_sha256": "c27bd8aaa510116e8c9c3dc823e9a02a3dc859d4a86ccfa284afb8a6d3731e81",
+      "bundle_sha256": "c27bd8aaa510116e8c9c3dc823e9a02a3dc859d4a86ccfa284afb8a6d3731e81",
+      "raw_bytes": 691986,
+      "bundle_bytes": 691986,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "control-independent-forces.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/control-independent-forces.json",
+      "raw_sha256": "f5aa939bc2b4b91cb9853170dc2082dc8b5fe2b09682fa9067d95de43893fb79",
+      "bundle_sha256": "f5aa939bc2b4b91cb9853170dc2082dc8b5fe2b09682fa9067d95de43893fb79",
+      "raw_bytes": 278103,
+      "bundle_bytes": 278103,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "control-job.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/control-job.json",
+      "raw_sha256": "28cd176c6b5267a372f67ac195eb3743dd64d59e782303d291d14c9fefe85ffb",
+      "bundle_sha256": "d01db33e20fb2d5f7c482d22b5ee635c1172f982bb5df8468463dba75bc6bdcd",
+      "raw_bytes": 1052,
+      "bundle_bytes": 672,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "pathname_prefix_only",
+        "replacement_token": "<EXPERIMENT_ROOT>",
+        "private_prefix_sha256": "e1d50d18d49fa4ac6084a8ac609e009b493661441c39fba339603b7eefafadc5",
+        "replacement_count": 5,
+        "numerical_fixture_state_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "control.stderr",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/control.stderr",
+      "raw_sha256": "ad01654792b6b0486469ddd9ebcb05ecf0e3c61a684e008e52784cae49379165",
+      "bundle_sha256": "ad01654792b6b0486469ddd9ebcb05ecf0e3c61a684e008e52784cae49379165",
+      "raw_bytes": 1167,
+      "bundle_bytes": 1167,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "control.stdout",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/control.stdout",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bundle_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "bundle_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "harness/Cargo.lock",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/harness/Cargo.lock",
+      "raw_sha256": "7285edb616da51522eacfccc659cf216520f6462c7f54ec34d06c797a44471a0",
+      "bundle_sha256": "7285edb616da51522eacfccc659cf216520f6462c7f54ec34d06c797a44471a0",
+      "raw_bytes": 3992,
+      "bundle_bytes": 3992,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "harness/Cargo.toml",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/harness/Cargo.toml",
+      "raw_sha256": "c79b711c5112026010aad41b6d345d8ecb537b181ea0c7a742706c2714624f90",
+      "bundle_sha256": "c79b711c5112026010aad41b6d345d8ecb537b181ea0c7a742706c2714624f90",
+      "raw_bytes": 332,
+      "bundle_bytes": 332,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "harness/src/main.rs",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/harness/src/main.rs",
+      "raw_sha256": "b215edd790b44bf7bc353b0f3724d025a158d11f0e6c04c9194a12feafc8c580",
+      "bundle_sha256": "b215edd790b44bf7bc353b0f3724d025a158d11f0e6c04c9194a12feafc8c580",
+      "raw_bytes": 4615,
+      "bundle_bytes": 4615,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "independent-force-check.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/independent-force-check.json",
+      "raw_sha256": "89f61ccc5e64ca22efadda7450b9b59348f428303ff9901cd3bc13b262c34073",
+      "bundle_sha256": "89f61ccc5e64ca22efadda7450b9b59348f428303ff9901cd3bc13b262c34073",
+      "raw_bytes": 693,
+      "bundle_bytes": 693,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "job.py",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/job.py",
+      "raw_sha256": "e5dff623f0ef3f5bd6687a139328d03e1dbc5b5ae2a4eb8ca91f2d06c9d8dbd4",
+      "bundle_sha256": "e5dff623f0ef3f5bd6687a139328d03e1dbc5b5ae2a4eb8ca91f2d06c9d8dbd4",
+      "raw_bytes": 2620,
+      "bundle_bytes": 2620,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "measure.py",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/measure.py",
+      "raw_sha256": "32f2d9fbb8ac82b85f9a438a31e73d4292cd08356ec06ed91c68e8cf40e41ce2",
+      "bundle_sha256": "32f2d9fbb8ac82b85f9a438a31e73d4292cd08356ec06ed91c68e8cf40e41ce2",
+      "raw_bytes": 5359,
+      "bundle_bytes": 5359,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "no-avatar/completed-case.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/no-avatar/completed-case.json",
+      "raw_sha256": "29c6618e01df28a88c90dbaee9a461457bb66b8a6ffe6371fc33c0c6108626cd",
+      "bundle_sha256": "29c6618e01df28a88c90dbaee9a461457bb66b8a6ffe6371fc33c0c6108626cd",
+      "raw_bytes": 573,
+      "bundle_bytes": 573,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "no-avatar/rest-metadata.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/no-avatar/rest-metadata.json",
+      "raw_sha256": "6a632faeec032509f9e787427621063b8a11a29dfedfa4433c3fed119f9b2737",
+      "bundle_sha256": "6a632faeec032509f9e787427621063b8a11a29dfedfa4433c3fed119f9b2737",
+      "raw_bytes": 72185,
+      "bundle_bytes": 72185,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "no-avatar/steps.jsonl",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/no-avatar/steps.jsonl",
+      "raw_sha256": "51a4358aedd3f75263ea08a301180d2dc1e550c8f3954f0ddeddd980df74fb1c",
+      "bundle_sha256": "51a4358aedd3f75263ea08a301180d2dc1e550c8f3954f0ddeddd980df74fb1c",
+      "raw_bytes": 29357,
+      "bundle_bytes": 29357,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "no-avatar/trajectory.jsonl",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/no-avatar/trajectory.jsonl",
+      "raw_sha256": "03ee65bd1560a9312735223c13cb9f59d2e193ff67cb5206f21068d9aa0473d8",
+      "bundle_sha256": "03ee65bd1560a9312735223c13cb9f59d2e193ff67cb5206f21068d9aa0473d8",
+      "raw_bytes": 1188259,
+      "bundle_bytes": 1188259,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "no-avatar-job.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/no-avatar-job.json",
+      "raw_sha256": "cf836167426ed2eb81f381467a1a2cd89979af44ee59b55d145fd518daa1348b",
+      "bundle_sha256": "7ea97be8391850d000923018d5fbe598969389975fa0095904c84384c3570da9",
+      "raw_bytes": 1067,
+      "bundle_bytes": 687,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "pathname_prefix_only",
+        "replacement_token": "<EXPERIMENT_ROOT>",
+        "private_prefix_sha256": "e1d50d18d49fa4ac6084a8ac609e009b493661441c39fba339603b7eefafadc5",
+        "replacement_count": 5,
+        "numerical_fixture_state_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "no-avatar.stderr",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/no-avatar.stderr",
+      "raw_sha256": "125b4d752d6d3b12088d964dd6896483301268c0ef9947c425d1496684e9e19e",
+      "bundle_sha256": "125b4d752d6d3b12088d964dd6896483301268c0ef9947c425d1496684e9e19e",
+      "raw_bytes": 388,
+      "bundle_bytes": 388,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "no-avatar.stdout",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/no-avatar.stdout",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bundle_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "bundle_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "original-grain-shirt.weftforge",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/original-grain-shirt.weftforge",
+      "raw_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+      "bundle_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+      "raw_bytes": 12161,
+      "bundle_bytes": 12161,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "peak-avatar-geometry.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/peak-avatar-geometry.json",
+      "raw_sha256": "78fcb99c549fc39efc411adbed1e5b4e9b3df4864bec636ce355e037cb71caf8",
+      "bundle_sha256": "78fcb99c549fc39efc411adbed1e5b4e9b3df4864bec636ce355e037cb71caf8",
+      "raw_bytes": 6187,
+      "bundle_bytes": 6187,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "plan-erratum-001.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/plan-erratum-001.json",
+      "raw_sha256": "84be68e05c02804e037d86187c4318e8c66d6f02ead2d5c742ea3e4825a8d72f",
+      "bundle_sha256": "84be68e05c02804e037d86187c4318e8c66d6f02ead2d5c742ea3e4825a8d72f",
+      "raw_bytes": 1024,
+      "bundle_bytes": 1024,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "plan-probes-001.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/plan-probes-001.json",
+      "raw_sha256": "14d0f812879fd744fac403d005f262ebe5d72e7b2656b7ef4120feb3cbc61d61",
+      "bundle_sha256": "14d0f812879fd744fac403d005f262ebe5d72e7b2656b7ef4120feb3cbc61d61",
+      "raw_bytes": 6324,
+      "bundle_bytes": 6324,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "plan.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/plan.json",
+      "raw_sha256": "b97a22b3e37b6543412346cc9ee10a8dea19643779ad4d0a118a4040675c30e2",
+      "bundle_sha256": "b97a22b3e37b6543412346cc9ee10a8dea19643779ad4d0a118a4040675c30e2",
+      "raw_bytes": 7482,
+      "bundle_bytes": 7482,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "plan.sha256",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/plan.sha256",
+      "raw_sha256": "99103e63e33ec3ce90a855a241a1b14b85abaa3773085a4c9b3f6a5fdb90a531",
+      "bundle_sha256": "99103e63e33ec3ce90a855a241a1b14b85abaa3773085a4c9b3f6a5fdb90a531",
+      "raw_bytes": 76,
+      "bundle_bytes": 76,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "prefix-history-proof.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/prefix-history-proof.json",
+      "raw_sha256": "7a57a157ee19ddd52cd405ed7e5983d246c7601e2d664a472c6e6bbe9c9671f2",
+      "bundle_sha256": "7a57a157ee19ddd52cd405ed7e5983d246c7601e2d664a472c6e6bbe9c9671f2",
+      "raw_bytes": 16058,
+      "bundle_bytes": 16058,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "preregistered-v0/job.py",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/preregistered-v0/job.py",
+      "raw_sha256": "1a2d51da60bde29282af8f5a190dd41ef9f5b998010fd6703ee8195627594334",
+      "bundle_sha256": "1a2d51da60bde29282af8f5a190dd41ef9f5b998010fd6703ee8195627594334",
+      "raw_bytes": 2593,
+      "bundle_bytes": 2593,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "preregistered-v0/main.rs",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/preregistered-v0/main.rs",
+      "raw_sha256": "abad66e1c0075086ffac07ac39dadd8e0ba08883d0ba2eb1a7ce3ca92bfbfb7f",
+      "bundle_sha256": "abad66e1c0075086ffac07ac39dadd8e0ba08883d0ba2eb1a7ce3ca92bfbfb7f",
+      "raw_bytes": 4606,
+      "bundle_bytes": 4606,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "probe-harness/Cargo.lock",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/probe-harness/Cargo.lock",
+      "raw_sha256": "dccb61e260c6d06ab6293a5de1325acb323381ccdd0b1aa712cd979498873e22",
+      "bundle_sha256": "dccb61e260c6d06ab6293a5de1325acb323381ccdd0b1aa712cd979498873e22",
+      "raw_bytes": 3987,
+      "bundle_bytes": 3987,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "probe-harness/Cargo.toml",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/probe-harness/Cargo.toml",
+      "raw_sha256": "f57258d4f7cb8b953c707f83ed632dcbd1ba85bb005402b76f8eb78a68afd40a",
+      "bundle_sha256": "f57258d4f7cb8b953c707f83ed632dcbd1ba85bb005402b76f8eb78a68afd40a",
+      "raw_bytes": 327,
+      "bundle_bytes": 327,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "probe-harness/src/main.rs",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/probe-harness/src/main.rs",
+      "raw_sha256": "2e9b0a78b4966b8da2daccf44e21922e11133805801faaa6254cae7c03a9bc40",
+      "bundle_sha256": "2e9b0a78b4966b8da2daccf44e21922e11133805801faaa6254cae7c03a9bc40",
+      "raw_bytes": 5021,
+      "bundle_bytes": 5021,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "probe_job.py",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/probe_job.py",
+      "raw_sha256": "012ea85230a59cd8b57330d679d34cf414a893d63e7c1ed94a6e1f38f699e575",
+      "bundle_sha256": "012ea85230a59cd8b57330d679d34cf414a893d63e7c1ed94a6e1f38f699e575",
+      "raw_bytes": 2647,
+      "bundle_bytes": 2647,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "probes-analysis.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/probes-analysis.json",
+      "raw_sha256": "b1ade76b27cd6e6dffdb4faebb0d83dae0e3e01e7651648b4dba50220c46ac9f",
+      "bundle_sha256": "b1ade76b27cd6e6dffdb4faebb0d83dae0e3e01e7651648b4dba50220c46ac9f",
+      "raw_bytes": 822941,
+      "bundle_bytes": 822941,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "probes-analysis.stderr",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/probes-analysis.stderr",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bundle_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "bundle_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "probes-analysis.stdout",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/probes-analysis.stdout",
+      "raw_sha256": "cc056e2c4df7e913904a93b9215e35e54ff6f578e1b6fc7e4f1c0090b0aece72",
+      "bundle_sha256": "cc056e2c4df7e913904a93b9215e35e54ff6f578e1b6fc7e4f1c0090b0aece72",
+      "raw_bytes": 2357,
+      "bundle_bytes": 2357,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "probes-independent-forces.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/probes-independent-forces.json",
+      "raw_sha256": "50d2c7d0f2a9e512b3828d888a8fa800ed410d7e9fb212f8ae5aff953cdb402a",
+      "bundle_sha256": "50d2c7d0f2a9e512b3828d888a8fa800ed410d7e9fb212f8ae5aff953cdb402a",
+      "raw_bytes": 177877,
+      "bundle_bytes": 177877,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "process-confirmations.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/process-confirmations.json",
+      "raw_sha256": "df45b51bfc7b70f557ebc2223ec1acc24559c851badc277d6a90018369460e62",
+      "bundle_sha256": "df45b51bfc7b70f557ebc2223ec1acc24559c851badc277d6a90018369460e62",
+      "raw_bytes": 5373,
+      "bundle_bytes": 5373,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source-manifest.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/source-manifest.json",
+      "raw_sha256": "1ecf305630bff2025223a2d3279e51141f7aa4a01d86999ad0c63ef546d9797c",
+      "bundle_sha256": "1ecf305630bff2025223a2d3279e51141f7aa4a01d86999ad0c63ef546d9797c",
+      "raw_bytes": 4089,
+      "bundle_bytes": 4089,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "summary.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/summary.json",
+      "raw_sha256": "0801d004e4d9f3c7fd459a52ab7285fdf4d2d242e1a7b3e690756dbe26021f1a",
+      "bundle_sha256": "0801d004e4d9f3c7fd459a52ab7285fdf4d2d242e1a7b3e690756dbe26021f1a",
+      "raw_bytes": 8315,
+      "bundle_bytes": 8315,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "zero-g-balance/completed-case.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/zero-g-balance/completed-case.json",
+      "raw_sha256": "cb00c343a8c84fb1f7bd748b69633dae9bcd43fe895ef39d97b4ec8a034de7a7",
+      "bundle_sha256": "cb00c343a8c84fb1f7bd748b69633dae9bcd43fe895ef39d97b4ec8a034de7a7",
+      "raw_bytes": 577,
+      "bundle_bytes": 577,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "zero-g-balance/rest-metadata.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/zero-g-balance/rest-metadata.json",
+      "raw_sha256": "9a054825d7e7a60c623a0ecf044ec997537f5f6e4ab4e9e03ae60afef2f90b6d",
+      "bundle_sha256": "9a054825d7e7a60c623a0ecf044ec997537f5f6e4ab4e9e03ae60afef2f90b6d",
+      "raw_bytes": 73457,
+      "bundle_bytes": 73457,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "zero-g-balance/steps.jsonl",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/zero-g-balance/steps.jsonl",
+      "raw_sha256": "988fbea4aae7a3cd56aedb9904157ae028069ee2d583b61c0106a842e6148e4f",
+      "bundle_sha256": "988fbea4aae7a3cd56aedb9904157ae028069ee2d583b61c0106a842e6148e4f",
+      "raw_bytes": 86801,
+      "bundle_bytes": 86801,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "zero-g-balance/trajectory.jsonl",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/zero-g-balance/trajectory.jsonl",
+      "raw_sha256": "6a2657faa89b31acddbb7a5d6ce4597a7710b33c3d6e96fa4afc5e30eeec37c5",
+      "bundle_sha256": "6a2657faa89b31acddbb7a5d6ce4597a7710b33c3d6e96fa4afc5e30eeec37c5",
+      "raw_bytes": 3588230,
+      "bundle_bytes": 3588230,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "zero-g-balance-job.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/zero-g-balance-job.json",
+      "raw_sha256": "a9c82faf8334866f7c288ed9ca344229096053889e8ce002e43f175bd18a310d",
+      "bundle_sha256": "9ef5c2c1bb8c3b2dcaa1d0a9aa76a58b6de04015ec558d1ca5d1d253139e143a",
+      "raw_bytes": 1082,
+      "bundle_bytes": 702,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "pathname_prefix_only",
+        "replacement_token": "<EXPERIMENT_ROOT>",
+        "private_prefix_sha256": "e1d50d18d49fa4ac6084a8ac609e009b493661441c39fba339603b7eefafadc5",
+        "replacement_count": 5,
+        "numerical_fixture_state_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "zero-g-balance.stderr",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/zero-g-balance.stderr",
+      "raw_sha256": "2d13d8ab1423bb8df06d410415d420d142f4b32484eae7b9b58f112ac2272c18",
+      "bundle_sha256": "2d13d8ab1423bb8df06d410415d420d142f4b32484eae7b9b58f112ac2272c18",
+      "raw_bytes": 1089,
+      "bundle_bytes": 1089,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "zero-g-balance.stdout",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/zero-g-balance.stdout",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bundle_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "bundle_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "producer-original-artifact-inventory.json",
+      "origin": "<PRIVATE_EXPERIMENT_ROOT>/MANIFEST.json",
+      "raw_sha256": "341c482495c2e14c1521618196fb15285a2a81997418adbf9c39f8cc671fab84",
+      "bundle_sha256": "341c482495c2e14c1521618196fb15285a2a81997418adbf9c39f8cc671fab84",
+      "raw_bytes": 10574,
+      "bundle_bytes": 10574,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/.cargo/config.toml",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:.cargo/config.toml",
+      "raw_sha256": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+      "bundle_sha256": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+      "raw_bytes": 34,
+      "bundle_bytes": 34,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/Cargo.lock",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:Cargo.lock",
+      "raw_sha256": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
+      "bundle_sha256": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
+      "raw_bytes": 107152,
+      "bundle_bytes": 107152,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/Cargo.toml",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:Cargo.toml",
+      "raw_sha256": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+      "bundle_sha256": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+      "raw_bytes": 667,
+      "bundle_bytes": 667,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/apps/weftforge-cli/Cargo.toml",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:apps/weftforge-cli/Cargo.toml",
+      "raw_sha256": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+      "bundle_sha256": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+      "raw_bytes": 347,
+      "bundle_bytes": 347,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/apps/weftforge-cli/src/main.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:apps/weftforge-cli/src/main.rs",
+      "raw_sha256": "ed87a813e17ccf44383244caf3d1cf6eab1fcc77116a4c0d0bf66b6a18a0b0e4",
+      "bundle_sha256": "ed87a813e17ccf44383244caf3d1cf6eab1fcc77116a4c0d0bf66b6a18a0b0e4",
+      "raw_bytes": 20940,
+      "bundle_bytes": 20940,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/apps/weftforge-cli/src/mcp.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:apps/weftforge-cli/src/mcp.rs",
+      "raw_sha256": "16945b502e24a4294bc44754b995f513869646537c5f8d8aec89418e2e67ea71",
+      "bundle_sha256": "16945b502e24a4294bc44754b995f513869646537c5f8d8aec89418e2e67ea71",
+      "raw_bytes": 22959,
+      "bundle_bytes": 22959,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/apps/weftforge-cli/tests/curves.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:apps/weftforge-cli/tests/curves.rs",
+      "raw_sha256": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+      "bundle_sha256": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+      "raw_bytes": 5513,
+      "bundle_bytes": 5513,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/apps/weftforge-cli/tests/grain.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:apps/weftforge-cli/tests/grain.rs",
+      "raw_sha256": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+      "bundle_sha256": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+      "raw_bytes": 3098,
+      "bundle_bytes": 3098,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/apps/weftforge-cli/tests/mcp_stdio.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:apps/weftforge-cli/tests/mcp_stdio.rs",
+      "raw_sha256": "ccc9c12e3660806c86375a5e7d123e08b11df355b448868c3ea9050a1446a2a0",
+      "bundle_sha256": "ccc9c12e3660806c86375a5e7d123e08b11df355b448868c3ea9050a1446a2a0",
+      "raw_bytes": 35479,
+      "bundle_bytes": 35479,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/apps/weftforge/Cargo.toml",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:apps/weftforge/Cargo.toml",
+      "raw_sha256": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+      "bundle_sha256": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+      "raw_bytes": 365,
+      "bundle_bytes": 365,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/apps/weftforge/src/main.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:apps/weftforge/src/main.rs",
+      "raw_sha256": "d0dae7ce279e492687351c969adc43b7189cd92367c1023b2b77451bb8d5c5e7",
+      "bundle_sha256": "d0dae7ce279e492687351c969adc43b7189cd92367c1023b2b77451bb8d5c5e7",
+      "raw_bytes": 264535,
+      "bundle_bytes": 264535,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/Cargo.toml",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/Cargo.toml",
+      "raw_sha256": "eac1be8f249f92f0b98686099bac5e11cfeeed064a7da944c3e331a2c09ff56e",
+      "bundle_sha256": "eac1be8f249f92f0b98686099bac5e11cfeeed064a7da944c3e331a2c09ff56e",
+      "raw_bytes": 319,
+      "bundle_bytes": 319,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/src/document.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/src/document.rs",
+      "raw_sha256": "bfc73ea6acc9ed56b85b51ef482de4aad169053e7a6770892e12f6d4e046c725",
+      "bundle_sha256": "bfc73ea6acc9ed56b85b51ef482de4aad169053e7a6770892e12f6d4e046c725",
+      "raw_bytes": 53294,
+      "bundle_bytes": 53294,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/src/geometry.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/src/geometry.rs",
+      "raw_sha256": "66d094f631997e5b737960cd9a5d834bcbad05c2ccf4c117bdd5a8c903c578ce",
+      "bundle_sha256": "66d094f631997e5b737960cd9a5d834bcbad05c2ccf4c117bdd5a8c903c578ce",
+      "raw_bytes": 34867,
+      "bundle_bytes": 34867,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/src/lib.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/src/lib.rs",
+      "raw_sha256": "2029a2b759e008dc987ba46cc850a89122fba321407e8168ebd2071998031afd",
+      "bundle_sha256": "2029a2b759e008dc987ba46cc850a89122fba321407e8168ebd2071998031afd",
+      "raw_bytes": 1175,
+      "bundle_bytes": 1175,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/src/persistence.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/src/persistence.rs",
+      "raw_sha256": "fccc18f5aafee7328202848dbc0bfd70c15f8865c5e6c06adc442baafa4ded4b",
+      "bundle_sha256": "fccc18f5aafee7328202848dbc0bfd70c15f8865c5e6c06adc442baafa4ded4b",
+      "raw_bytes": 25358,
+      "bundle_bytes": 25358,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/src/persistence/dxf.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/src/persistence/dxf.rs",
+      "raw_sha256": "49e56ab60030a640e49d3ce9b263d99dcce562a5616f1dada529603f074b7475",
+      "bundle_sha256": "49e56ab60030a640e49d3ce9b263d99dcce562a5616f1dada529603f074b7475",
+      "raw_bytes": 7036,
+      "bundle_bytes": 7036,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/src/sewing.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/src/sewing.rs",
+      "raw_sha256": "344dfaacb6ae325e8534e5c3c7b844209b7e3714625383740eef47f8557ef93d",
+      "bundle_sha256": "344dfaacb6ae325e8534e5c3c7b844209b7e3714625383740eef47f8557ef93d",
+      "raw_bytes": 27347,
+      "bundle_bytes": 27347,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/src/simulation.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/src/simulation.rs",
+      "raw_sha256": "4c96b5548dc4663fd9d743855043a0e483be2ff2ca310ca19fcc263fee9bd6f1",
+      "bundle_sha256": "4c96b5548dc4663fd9d743855043a0e483be2ff2ca310ca19fcc263fee9bd6f1",
+      "raw_bytes": 7428,
+      "bundle_bytes": 7428,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/tests/dxf.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/tests/dxf.rs",
+      "raw_sha256": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+      "bundle_sha256": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+      "raw_bytes": 16900,
+      "bundle_bytes": 16900,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge",
+      "raw_sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+      "bundle_sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+      "raw_bytes": 8107,
+      "bundle_bytes": 8107,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/tests/grain.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/tests/grain.rs",
+      "raw_sha256": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+      "bundle_sha256": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+      "raw_bytes": 5015,
+      "bundle_bytes": 5015,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/tests/joins.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/tests/joins.rs",
+      "raw_sha256": "04334446a2408086541227b3ee149e12d9ca28da061e36268b33bb3502ad2334",
+      "bundle_sha256": "04334446a2408086541227b3ee149e12d9ca28da061e36268b33bb3502ad2334",
+      "raw_bytes": 19832,
+      "bundle_bytes": 19832,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/tests/migration.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/tests/migration.rs",
+      "raw_sha256": "577937ffbd5d0c42935a2a97772bc5aa53a7accca6e529efa4b86be9aa543099",
+      "bundle_sha256": "577937ffbd5d0c42935a2a97772bc5aa53a7accca6e529efa4b86be9aa543099",
+      "raw_bytes": 13776,
+      "bundle_bytes": 13776,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/tests/seam_reversal.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/tests/seam_reversal.rs",
+      "raw_sha256": "ae9ea4bee0b3ed5b80a1f6350b428db4a92f68a5f21bdc1b7bb1b2b02723b66a",
+      "bundle_sha256": "ae9ea4bee0b3ed5b80a1f6350b428db4a92f68a5f21bdc1b7bb1b2b02723b66a",
+      "raw_bytes": 6202,
+      "bundle_bytes": 6202,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/tests/sewing_groups.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/tests/sewing_groups.rs",
+      "raw_sha256": "db0c8ae6d0af688137aa7034663f3223899da05347e4bb9e3ee2592430a7480c",
+      "bundle_sha256": "db0c8ae6d0af688137aa7034663f3223899da05347e4bb9e3ee2592430a7480c",
+      "raw_bytes": 34825,
+      "bundle_bytes": 34825,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/tests/shirt.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/tests/shirt.rs",
+      "raw_sha256": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+      "bundle_sha256": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+      "raw_bytes": 2949,
+      "bundle_bytes": 2949,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-core/tests/workflow.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-core/tests/workflow.rs",
+      "raw_sha256": "efb80806e4c355f44145332649ebcad1089d79dc078141a7a1f792edb6b17af0",
+      "bundle_sha256": "efb80806e4c355f44145332649ebcad1089d79dc078141a7a1f792edb6b17af0",
+      "raw_bytes": 23857,
+      "bundle_bytes": 23857,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-sim/Cargo.toml",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-sim/Cargo.toml",
+      "raw_sha256": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+      "bundle_sha256": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+      "raw_bytes": 205,
+      "bundle_bytes": 205,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-sim/src/constraints.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-sim/src/constraints.rs",
+      "raw_sha256": "3456ba2565eadc5e113d5278f6dda6c46164a0f98f66400058e7ca9887f4298f",
+      "bundle_sha256": "3456ba2565eadc5e113d5278f6dda6c46164a0f98f66400058e7ca9887f4298f",
+      "raw_bytes": 6696,
+      "bundle_bytes": 6696,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-sim/src/contact.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-sim/src/contact.rs",
+      "raw_sha256": "c600c7825c7c075c343b3d105005bf0ac771700dbf2141a4ae2668576f267e26",
+      "bundle_sha256": "c600c7825c7c075c343b3d105005bf0ac771700dbf2141a4ae2668576f267e26",
+      "raw_bytes": 21067,
+      "bundle_bytes": 21067,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-sim/src/lib.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-sim/src/lib.rs",
+      "raw_sha256": "92f83a398cd8b7bb15bec23939d851fded15012a4c688689960195e116fbbc0f",
+      "bundle_sha256": "92f83a398cd8b7bb15bec23939d851fded15012a4c688689960195e116fbbc0f",
+      "raw_bytes": 24762,
+      "bundle_bytes": 24762,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-sim/src/math.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-sim/src/math.rs",
+      "raw_sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+      "bundle_sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+      "raw_bytes": 2391,
+      "bundle_bytes": 2391,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/crates/weftforge-sim/src/tests.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:crates/weftforge-sim/src/tests.rs",
+      "raw_sha256": "103eedaac498c5e6540a7ce171ecfd6db9dca9774b57fa506a62893e2a91f493",
+      "bundle_sha256": "103eedaac498c5e6540a7ce171ecfd6db9dca9774b57fa506a62893e2a91f493",
+      "raw_bytes": 27346,
+      "bundle_bytes": 27346,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/rust-toolchain.toml",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:rust-toolchain.toml",
+      "raw_sha256": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+      "bundle_sha256": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+      "raw_bytes": 86,
+      "bundle_bytes": 86,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/xtask/Cargo.toml",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:xtask/Cargo.toml",
+      "raw_sha256": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+      "bundle_sha256": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+      "raw_bytes": 241,
+      "bundle_bytes": 241,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/xtask/src/main.rs",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:xtask/src/main.rs",
+      "raw_sha256": "a65250e8f24f54f737a673d52f7bf75b76a9a9f4a453678bb90ccfd776e64a2a",
+      "bundle_sha256": "a65250e8f24f54f737a673d52f7bf75b76a9a9f4a453678bb90ccfd776e64a2a",
+      "raw_bytes": 6889,
+      "bundle_bytes": 6889,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/fixtures/original-shirt.weftforge",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:fixtures/original-shirt.weftforge",
+      "raw_sha256": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+      "bundle_sha256": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+      "raw_bytes": 11818,
+      "bundle_bytes": 11818,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/fixtures/relaxed-shirt.weftforge",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:fixtures/relaxed-shirt.weftforge",
+      "raw_sha256": "5daf847ef95a44c1f8f2924661fdb5e8aa790a983daceb6dc2964604ba839820",
+      "bundle_sha256": "5daf847ef95a44c1f8f2924661fdb5e8aa790a983daceb6dc2964604ba839820",
+      "raw_bytes": 11926,
+      "bundle_bytes": 11926,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/fixtures/ui-authored-shirt.weftforge",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:fixtures/ui-authored-shirt.weftforge",
+      "raw_sha256": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+      "bundle_sha256": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+      "raw_bytes": 12039,
+      "bundle_bytes": 12039,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source/fixtures/single-candidate-shirt.weftforge",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:fixtures/single-candidate-shirt.weftforge",
+      "raw_sha256": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+      "bundle_sha256": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+      "raw_bytes": 12057,
+      "bundle_bytes": 12057,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "LICENSE-MIT",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:LICENSE-MIT",
+      "raw_sha256": "5a79a5be6e18069ea095bcb13f724f90cee6a70b1fd6b5e2b1f505f050c25b0d",
+      "bundle_sha256": "5a79a5be6e18069ea095bcb13f724f90cee6a70b1fd6b5e2b1f505f050c25b0d",
+      "raw_bytes": 1079,
+      "bundle_bytes": 1079,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "LICENSE-APACHE",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:LICENSE-APACHE",
+      "raw_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bundle_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "raw_bytes": 11358,
+      "bundle_bytes": 11358,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "source-context/physics.md",
+      "origin": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9:docs/physics.md",
+      "raw_sha256": "a8539eecc5f4cce93ce8bf3936bd4f58a819390b5ac1d448635e5e2eb77db3f6",
+      "bundle_sha256": "a8539eecc5f4cce93ce8bf3936bd4f58a819390b5ac1d448635e5e2eb77db3f6",
+      "raw_bytes": 25972,
+      "bundle_bytes": 25972,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "historical/runs/rest-metadata.json",
+      "origin": "tracked:parity/reports/artifacts/physics-full-path-20261114/runs/rest-metadata.json",
+      "raw_sha256": "f913bd805252c0c8076cd03d528c92810c6009832d35b07c5fe3f9ecbd9de0d0",
+      "bundle_sha256": "f913bd805252c0c8076cd03d528c92810c6009832d35b07c5fe3f9ecbd9de0d0",
+      "raw_bytes": 53845,
+      "bundle_bytes": 53845,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "historical/runs/trajectory.jsonl",
+      "origin": "tracked:parity/reports/artifacts/physics-full-path-20261114/runs/trajectory.jsonl",
+      "raw_sha256": "b85d50c3299ba33087622e9a4ac21b78abbbaf1e86c609af740f67813a4b9292",
+      "bundle_sha256": "b85d50c3299ba33087622e9a4ac21b78abbbaf1e86c609af740f67813a4b9292",
+      "raw_bytes": 785478,
+      "bundle_bytes": 785478,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "review-support/replay_review.py",
+      "origin": "independent_review:replay_review.py",
+      "raw_sha256": "ef19fef14b25088d951823c11da0b9f8e1733dd8c8137353e66186c0eb3eabdb",
+      "bundle_sha256": "ef19fef14b25088d951823c11da0b9f8e1733dd8c8137353e66186c0eb3eabdb",
+      "raw_bytes": 29287,
+      "bundle_bytes": 29287,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "review-support/review-receipt.json",
+      "origin": "independent_review:review-receipt.json",
+      "raw_sha256": "ae1397c3291485a2a55ab2e7c510a041cb8642496f01608b8aeffef20996e025",
+      "bundle_sha256": "ae1397c3291485a2a55ab2e7c510a041cb8642496f01608b8aeffef20996e025",
+      "raw_bytes": 81679,
+      "bundle_bytes": 81679,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "review-support/review.stderr",
+      "origin": "independent_review:review.stderr",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bundle_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "bundle_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "review-support/expected-peaks-preregistered.json",
+      "origin": "independent_review:expected-peaks-preregistered.json",
+      "raw_sha256": "5f8ffcfc077d41a39aa3084466f88806c85a09b4d6ed004213ecfc16d76bbc0e",
+      "bundle_sha256": "5f8ffcfc077d41a39aa3084466f88806c85a09b4d6ed004213ecfc16d76bbc0e",
+      "raw_bytes": 3799,
+      "bundle_bytes": 3799,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "review-support/REVIEW.md",
+      "origin": "independent_review:REVIEW.md",
+      "raw_sha256": "567305331a5984062a659d0b548d721a725951fe2d8735ecea0d4580f5cc5594",
+      "bundle_sha256": "567305331a5984062a659d0b548d721a725951fe2d8735ecea0d4580f5cc5594",
+      "raw_bytes": 8541,
+      "bundle_bytes": 8541,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "review-support/MANIFEST.json",
+      "origin": "independent_review:MANIFEST.json",
+      "raw_sha256": "71a5b8fcd4868c45881bfc7ac892ed60a18d1cf94b904656091d691c4e3a8a8e",
+      "bundle_sha256": "71a5b8fcd4868c45881bfc7ac892ed60a18d1cf94b904656091d691c4e3a8a8e",
+      "raw_bytes": 625,
+      "bundle_bytes": 625,
+      "byte_identical": true,
+      "derivative": null
+    }
+  ]
+}

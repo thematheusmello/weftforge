@@ -1,0 +1,23 @@
+{
+  "kind": "saved_state_independent_force_sanity_check_no_simulation",
+  "source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "frame": 60,
+  "membrane_sampled_nodes": [
+    55,
+    147,
+    54,
+    89,
+    27
+  ],
+  "membrane_energy_central_difference_epsilon_m": 1e-07,
+  "membrane_gradient_max_abs_error_N": 5.881324316447945e-10,
+  "membrane_error_limit_N": 1e-07,
+  "bending_force_central_difference_epsilons_m": [
+    1e-06,
+    5e-07
+  ],
+  "bending_force_max_nodal_difference_N": 1.0098929126897277e-09,
+  "bending_difference_limit_N": 1e-06,
+  "no_new_solver_cases": true,
+  "limit": "Checks conservative energy gradients only; no contact reaction or full force balance."
+}

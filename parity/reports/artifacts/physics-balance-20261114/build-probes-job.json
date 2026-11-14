@@ -1,0 +1,28 @@
+{
+  "stage": "build-probes",
+  "started_at": "2026-11-14T17:52:42.376751+00:00",
+  "launcher_pid": 70232,
+  "command": [
+    "cargo",
+    "build",
+    "--locked",
+    "--release",
+    "--offline",
+    "--manifest-path",
+    "<EXPERIMENT_ROOT>/probe-harness/Cargo.toml"
+  ],
+  "cwd": "<EXPERIMENT_ROOT>/source",
+  "environment_overrides": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_TARGET_DIR": "<EXPERIMENT_ROOT>/target"
+  },
+  "wall_cap_seconds": 240,
+  "status": "completed",
+  "child_pid": 70254,
+  "child_process_group": 70254,
+  "exit_code": 0,
+  "completed_at": "2026-11-14T17:52:51.195316+00:00",
+  "wall_seconds": 8.818530832999386,
+  "binary_sha256": "215ee6789e8da6ca3623971d9e5dc8d7903e8b051a4b3ff563d964a166699e8b"
+}

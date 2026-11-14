@@ -1,0 +1,880 @@
+{
+  "id": "WF-20261114-PHYSICS-BALANCE-001",
+  "commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "timestamp": "2026-11-14T18:14:50.558388Z",
+  "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "kind": "implementation_only",
+  "status": "failed",
+  "feature_ids": [
+    "SIM-001",
+    "SIM-005",
+    "SIM-006",
+    "FIT-003"
+  ],
+  "complete_contract": false,
+  "reference_executed": false,
+  "freshness": "current",
+  "source_scope": [
+    ".cargo",
+    "Cargo.toml",
+    "Cargo.lock",
+    "rust-toolchain.toml",
+    "apps",
+    "crates",
+    "xtask"
+  ],
+  "source_hashes": {
+    ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "Cargo.lock": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
+    "Cargo.toml": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+    "apps/weftforge-cli/Cargo.toml": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+    "apps/weftforge-cli/src/main.rs": "ed87a813e17ccf44383244caf3d1cf6eab1fcc77116a4c0d0bf66b6a18a0b0e4",
+    "apps/weftforge-cli/src/mcp.rs": "16945b502e24a4294bc44754b995f513869646537c5f8d8aec89418e2e67ea71",
+    "apps/weftforge-cli/tests/curves.rs": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+    "apps/weftforge-cli/tests/grain.rs": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+    "apps/weftforge-cli/tests/mcp_stdio.rs": "ccc9c12e3660806c86375a5e7d123e08b11df355b448868c3ea9050a1446a2a0",
+    "apps/weftforge/Cargo.toml": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+    "apps/weftforge/src/main.rs": "d0dae7ce279e492687351c969adc43b7189cd92367c1023b2b77451bb8d5c5e7",
+    "crates/weftforge-core/Cargo.toml": "eac1be8f249f92f0b98686099bac5e11cfeeed064a7da944c3e331a2c09ff56e",
+    "crates/weftforge-core/src/document.rs": "bfc73ea6acc9ed56b85b51ef482de4aad169053e7a6770892e12f6d4e046c725",
+    "crates/weftforge-core/src/geometry.rs": "66d094f631997e5b737960cd9a5d834bcbad05c2ccf4c117bdd5a8c903c578ce",
+    "crates/weftforge-core/src/lib.rs": "2029a2b759e008dc987ba46cc850a89122fba321407e8168ebd2071998031afd",
+    "crates/weftforge-core/src/persistence.rs": "fccc18f5aafee7328202848dbc0bfd70c15f8865c5e6c06adc442baafa4ded4b",
+    "crates/weftforge-core/src/persistence/dxf.rs": "49e56ab60030a640e49d3ce9b263d99dcce562a5616f1dada529603f074b7475",
+    "crates/weftforge-core/src/sewing.rs": "344dfaacb6ae325e8534e5c3c7b844209b7e3714625383740eef47f8557ef93d",
+    "crates/weftforge-core/src/simulation.rs": "4c96b5548dc4663fd9d743855043a0e483be2ff2ca310ca19fcc263fee9bd6f1",
+    "crates/weftforge-core/tests/dxf.rs": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+    "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+    "crates/weftforge-core/tests/grain.rs": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+    "crates/weftforge-core/tests/joins.rs": "04334446a2408086541227b3ee149e12d9ca28da061e36268b33bb3502ad2334",
+    "crates/weftforge-core/tests/migration.rs": "577937ffbd5d0c42935a2a97772bc5aa53a7accca6e529efa4b86be9aa543099",
+    "crates/weftforge-core/tests/seam_reversal.rs": "ae9ea4bee0b3ed5b80a1f6350b428db4a92f68a5f21bdc1b7bb1b2b02723b66a",
+    "crates/weftforge-core/tests/sewing_groups.rs": "db0c8ae6d0af688137aa7034663f3223899da05347e4bb9e3ee2592430a7480c",
+    "crates/weftforge-core/tests/shirt.rs": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+    "crates/weftforge-core/tests/workflow.rs": "efb80806e4c355f44145332649ebcad1089d79dc078141a7a1f792edb6b17af0",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/constraints.rs": "3456ba2565eadc5e113d5278f6dda6c46164a0f98f66400058e7ca9887f4298f",
+    "crates/weftforge-sim/src/contact.rs": "c600c7825c7c075c343b3d105005bf0ac771700dbf2141a4ae2668576f267e26",
+    "crates/weftforge-sim/src/lib.rs": "92f83a398cd8b7bb15bec23939d851fded15012a4c688689960195e116fbbc0f",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/tests.rs": "103eedaac498c5e6540a7ce171ecfd6db9dca9774b57fa506a62893e2a91f493",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+    "xtask/Cargo.toml": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+    "xtask/src/main.rs": "a65250e8f24f54f737a673d52f7bf75b76a9a9f4a453678bb90ccfd776e64a2a"
+  },
+  "artifact_hashes": {
+    "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+    "parity/reports/artifacts/physics-balance-20261114/CLOSURE.json": "c84113579b987d1868ed57b16aef590ba4023db6484a1a51b08b5f7376f5ef2f",
+    "parity/reports/artifacts/physics-balance-20261114/LICENSE-APACHE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "parity/reports/artifacts/physics-balance-20261114/LICENSE-MIT": "5a79a5be6e18069ea095bcb13f724f90cee6a70b1fd6b5e2b1f505f050c25b0d",
+    "parity/reports/artifacts/physics-balance-20261114/MANIFEST.json": "4ff761cc5556ba39c5e3f64a09cca28289d26218680ac0df5c43e7f8c39e6660",
+    "parity/reports/artifacts/physics-balance-20261114/PROVENANCE.json": "07f31e8bcec69d308dea4f9fc87746b3ed001b21c5acc248074e78c4d422b2c2",
+    "parity/reports/artifacts/physics-balance-20261114/README.txt": "720b87d00e2d8a75ac228d540545a5475cb349633018bccd2ee69236cd05a060",
+    "parity/reports/artifacts/physics-balance-20261114/REPORT.txt": "2de35d41b804eed45ae9ea680dc85b811d14c0f59696f7d9a78922a930b3abc2",
+    "parity/reports/artifacts/physics-balance-20261114/analysis.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/physics-balance-20261114/analysis.stdout": "80e1dc5d50f5fd5063f781460b3554fbb96d4bd98181783ca0166f3c7dd7da9c",
+    "parity/reports/artifacts/physics-balance-20261114/analyze.py": "19c1a667afa8de2430489f61cde0da6f17de5a576016f8400aab90026113a032",
+    "parity/reports/artifacts/physics-balance-20261114/analyze_probes.py": "d75661bc92d845be0ef4e239cbad4a3f02c97e7db32bb93c3349b4b1e5d7958e",
+    "parity/reports/artifacts/physics-balance-20261114/balance_measure.py": "58da92075e6346225bd846ef2b982b0092941f9b6b10564e44840bc0a695bbbc",
+    "parity/reports/artifacts/physics-balance-20261114/build-job.json": "897403f2987ff3b80b785a719c0e51e7fcaffd25ff63eed805f2bbd545bd9745",
+    "parity/reports/artifacts/physics-balance-20261114/build-probes-job.json": "2bba3e1803ee95cd14d71c95507a199e65c73b710008acb85732030f2a401dd7",
+    "parity/reports/artifacts/physics-balance-20261114/build-probes.stderr": "7d3390d7d167a84d3233aa627eebb9c77539db781606d74b52af244f915974cb",
+    "parity/reports/artifacts/physics-balance-20261114/build-probes.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/physics-balance-20261114/build-retry1-job.json": "30152eacf65fbd984266034cd019bbc0c830f9e6c27d002af4f84648cda8844e",
+    "parity/reports/artifacts/physics-balance-20261114/build-retry1.stderr": "26b3664bcbb50b220eb5174d2aed2dea49965119efbc9aa0bb8d6e7c55be9249",
+    "parity/reports/artifacts/physics-balance-20261114/build-retry1.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/physics-balance-20261114/build.stderr": "f9f92969665202eafe46c195346f14b7dab86f1df20316f2a5887ddada9c5ca9",
+    "parity/reports/artifacts/physics-balance-20261114/build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/physics-balance-20261114/clippy-job.json": "41e369e7dc68e7d9b537adffd72147801f818619a5adc7505075b88c9eae2eba",
+    "parity/reports/artifacts/physics-balance-20261114/clippy-probes-job.json": "d2c787cbebca15f985e4e16ab18ee49a4b353c188b3dc20cd7844205a2c3964c",
+    "parity/reports/artifacts/physics-balance-20261114/clippy-probes.stderr": "cb56b203c193330ed73d29dccdc640080c1091df607c81a3f9491b39a7082e06",
+    "parity/reports/artifacts/physics-balance-20261114/clippy-probes.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/physics-balance-20261114/clippy-retry1-job.json": "621d0f6f9350f525604c2ff56502e500bc58a5cad93c11b733beeb101946fcc7",
+    "parity/reports/artifacts/physics-balance-20261114/clippy-retry1.stderr": "1b6ef6f850d6917e280728c2aea2fae6b4f8f2d52ffc5c9e428afec627e9d783",
+    "parity/reports/artifacts/physics-balance-20261114/clippy-retry1.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/physics-balance-20261114/clippy.stderr": "a945715ffca8fa8bcdaa6ba576ebf0987a6ba80f8ca66d2753fbd83887f8c8bf",
+    "parity/reports/artifacts/physics-balance-20261114/clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/physics-balance-20261114/control-analysis.json": "c27bd8aaa510116e8c9c3dc823e9a02a3dc859d4a86ccfa284afb8a6d3731e81",
+    "parity/reports/artifacts/physics-balance-20261114/control-independent-forces.json": "f5aa939bc2b4b91cb9853170dc2082dc8b5fe2b09682fa9067d95de43893fb79",
+    "parity/reports/artifacts/physics-balance-20261114/control-job.json": "d01db33e20fb2d5f7c482d22b5ee635c1172f982bb5df8468463dba75bc6bdcd",
+    "parity/reports/artifacts/physics-balance-20261114/control.stderr": "ad01654792b6b0486469ddd9ebcb05ecf0e3c61a684e008e52784cae49379165",
+    "parity/reports/artifacts/physics-balance-20261114/control.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/physics-balance-20261114/control/completed-case.json": "0b900d59fd4d5961666b72aaf276a7c1a67a62c913e9541fdb5f5acb4dc337c2",
+    "parity/reports/artifacts/physics-balance-20261114/control/rest-metadata.json": "0c58d8aa2cb2712f004c020b558e120f7b7fc2357231527e106da45740968e80",
+    "parity/reports/artifacts/physics-balance-20261114/control/steps.jsonl": "78e9b9b00caba5e26e3b0320f855b654379d459e5b7fdf311d294dbd4d1bfc77",
+    "parity/reports/artifacts/physics-balance-20261114/control/trajectory.jsonl": "feb4d50b5d40e549b48bc309fb43b8d0968357d340a3946b17898229d579b7cb",
+    "parity/reports/artifacts/physics-balance-20261114/harness/Cargo.lock": "7285edb616da51522eacfccc659cf216520f6462c7f54ec34d06c797a44471a0",
+    "parity/reports/artifacts/physics-balance-20261114/harness/Cargo.toml": "c79b711c5112026010aad41b6d345d8ecb537b181ea0c7a742706c2714624f90",
+    "parity/reports/artifacts/physics-balance-20261114/harness/src/main.rs": "b215edd790b44bf7bc353b0f3724d025a158d11f0e6c04c9194a12feafc8c580",
+    "parity/reports/artifacts/physics-balance-20261114/historical/runs/rest-metadata.json": "f913bd805252c0c8076cd03d528c92810c6009832d35b07c5fe3f9ecbd9de0d0",
+    "parity/reports/artifacts/physics-balance-20261114/historical/runs/trajectory.jsonl": "b85d50c3299ba33087622e9a4ac21b78abbbaf1e86c609af740f67813a4b9292",
+    "parity/reports/artifacts/physics-balance-20261114/independent-force-check.json": "89f61ccc5e64ca22efadda7450b9b59348f428303ff9901cd3bc13b262c34073",
+    "parity/reports/artifacts/physics-balance-20261114/job.py": "e5dff623f0ef3f5bd6687a139328d03e1dbc5b5ae2a4eb8ca91f2d06c9d8dbd4",
+    "parity/reports/artifacts/physics-balance-20261114/measure.py": "32f2d9fbb8ac82b85f9a438a31e73d4292cd08356ec06ed91c68e8cf40e41ce2",
+    "parity/reports/artifacts/physics-balance-20261114/no-avatar-job.json": "7ea97be8391850d000923018d5fbe598969389975fa0095904c84384c3570da9",
+    "parity/reports/artifacts/physics-balance-20261114/no-avatar.stderr": "125b4d752d6d3b12088d964dd6896483301268c0ef9947c425d1496684e9e19e",
+    "parity/reports/artifacts/physics-balance-20261114/no-avatar.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/physics-balance-20261114/no-avatar/completed-case.json": "29c6618e01df28a88c90dbaee9a461457bb66b8a6ffe6371fc33c0c6108626cd",
+    "parity/reports/artifacts/physics-balance-20261114/no-avatar/rest-metadata.json": "6a632faeec032509f9e787427621063b8a11a29dfedfa4433c3fed119f9b2737",
+    "parity/reports/artifacts/physics-balance-20261114/no-avatar/steps.jsonl": "51a4358aedd3f75263ea08a301180d2dc1e550c8f3954f0ddeddd980df74fb1c",
+    "parity/reports/artifacts/physics-balance-20261114/no-avatar/trajectory.jsonl": "03ee65bd1560a9312735223c13cb9f59d2e193ff67cb5206f21068d9aa0473d8",
+    "parity/reports/artifacts/physics-balance-20261114/original-grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+    "parity/reports/artifacts/physics-balance-20261114/peak-avatar-geometry.json": "78fcb99c549fc39efc411adbed1e5b4e9b3df4864bec636ce355e037cb71caf8",
+    "parity/reports/artifacts/physics-balance-20261114/plan-erratum-001.json": "84be68e05c02804e037d86187c4318e8c66d6f02ead2d5c742ea3e4825a8d72f",
+    "parity/reports/artifacts/physics-balance-20261114/plan-probes-001.json": "14d0f812879fd744fac403d005f262ebe5d72e7b2656b7ef4120feb3cbc61d61",
+    "parity/reports/artifacts/physics-balance-20261114/plan.json": "b97a22b3e37b6543412346cc9ee10a8dea19643779ad4d0a118a4040675c30e2",
+    "parity/reports/artifacts/physics-balance-20261114/plan.sha256": "99103e63e33ec3ce90a855a241a1b14b85abaa3773085a4c9b3f6a5fdb90a531",
+    "parity/reports/artifacts/physics-balance-20261114/prefix-history-proof.json": "7a57a157ee19ddd52cd405ed7e5983d246c7601e2d664a472c6e6bbe9c9671f2",
+    "parity/reports/artifacts/physics-balance-20261114/preregistered-v0/job.py": "1a2d51da60bde29282af8f5a190dd41ef9f5b998010fd6703ee8195627594334",
+    "parity/reports/artifacts/physics-balance-20261114/preregistered-v0/main.rs": "abad66e1c0075086ffac07ac39dadd8e0ba08883d0ba2eb1a7ce3ca92bfbfb7f",
+    "parity/reports/artifacts/physics-balance-20261114/probe-harness/Cargo.lock": "dccb61e260c6d06ab6293a5de1325acb323381ccdd0b1aa712cd979498873e22",
+    "parity/reports/artifacts/physics-balance-20261114/probe-harness/Cargo.toml": "f57258d4f7cb8b953c707f83ed632dcbd1ba85bb005402b76f8eb78a68afd40a",
+    "parity/reports/artifacts/physics-balance-20261114/probe-harness/src/main.rs": "2e9b0a78b4966b8da2daccf44e21922e11133805801faaa6254cae7c03a9bc40",
+    "parity/reports/artifacts/physics-balance-20261114/probe_job.py": "012ea85230a59cd8b57330d679d34cf414a893d63e7c1ed94a6e1f38f699e575",
+    "parity/reports/artifacts/physics-balance-20261114/probes-analysis.json": "b1ade76b27cd6e6dffdb4faebb0d83dae0e3e01e7651648b4dba50220c46ac9f",
+    "parity/reports/artifacts/physics-balance-20261114/probes-analysis.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/physics-balance-20261114/probes-analysis.stdout": "cc056e2c4df7e913904a93b9215e35e54ff6f578e1b6fc7e4f1c0090b0aece72",
+    "parity/reports/artifacts/physics-balance-20261114/probes-independent-forces.json": "50d2c7d0f2a9e512b3828d888a8fa800ed410d7e9fb212f8ae5aff953cdb402a",
+    "parity/reports/artifacts/physics-balance-20261114/process-confirmations.json": "df45b51bfc7b70f557ebc2223ec1acc24559c851badc277d6a90018369460e62",
+    "parity/reports/artifacts/physics-balance-20261114/producer-original-artifact-inventory.json": "341c482495c2e14c1521618196fb15285a2a81997418adbf9c39f8cc671fab84",
+    "parity/reports/artifacts/physics-balance-20261114/review-support/MANIFEST.json": "71a5b8fcd4868c45881bfc7ac892ed60a18d1cf94b904656091d691c4e3a8a8e",
+    "parity/reports/artifacts/physics-balance-20261114/review-support/REVIEW.md": "567305331a5984062a659d0b548d721a725951fe2d8735ecea0d4580f5cc5594",
+    "parity/reports/artifacts/physics-balance-20261114/review-support/expected-peaks-preregistered.json": "5f8ffcfc077d41a39aa3084466f88806c85a09b4d6ed004213ecfc16d76bbc0e",
+    "parity/reports/artifacts/physics-balance-20261114/review-support/replay_review.py": "ef19fef14b25088d951823c11da0b9f8e1733dd8c8137353e66186c0eb3eabdb",
+    "parity/reports/artifacts/physics-balance-20261114/review-support/review-link.json": "a2641b700082fea65cde109adcf9e1569f03d05222def976c11eeedaf5e3de3d",
+    "parity/reports/artifacts/physics-balance-20261114/review-support/review-receipt.json": "ae1397c3291485a2a55ab2e7c510a041cb8642496f01608b8aeffef20996e025",
+    "parity/reports/artifacts/physics-balance-20261114/review-support/review.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/physics-balance-20261114/source-context/physics.md": "a8539eecc5f4cce93ce8bf3936bd4f58a819390b5ac1d448635e5e2eb77db3f6",
+    "parity/reports/artifacts/physics-balance-20261114/source-manifest.json": "1ecf305630bff2025223a2d3279e51141f7aa4a01d86999ad0c63ef546d9797c",
+    "parity/reports/artifacts/physics-balance-20261114/source/.cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "parity/reports/artifacts/physics-balance-20261114/source/Cargo.lock": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
+    "parity/reports/artifacts/physics-balance-20261114/source/Cargo.toml": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+    "parity/reports/artifacts/physics-balance-20261114/source/apps/weftforge-cli/Cargo.toml": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+    "parity/reports/artifacts/physics-balance-20261114/source/apps/weftforge-cli/src/main.rs": "ed87a813e17ccf44383244caf3d1cf6eab1fcc77116a4c0d0bf66b6a18a0b0e4",
+    "parity/reports/artifacts/physics-balance-20261114/source/apps/weftforge-cli/src/mcp.rs": "16945b502e24a4294bc44754b995f513869646537c5f8d8aec89418e2e67ea71",
+    "parity/reports/artifacts/physics-balance-20261114/source/apps/weftforge-cli/tests/curves.rs": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+    "parity/reports/artifacts/physics-balance-20261114/source/apps/weftforge-cli/tests/grain.rs": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+    "parity/reports/artifacts/physics-balance-20261114/source/apps/weftforge-cli/tests/mcp_stdio.rs": "ccc9c12e3660806c86375a5e7d123e08b11df355b448868c3ea9050a1446a2a0",
+    "parity/reports/artifacts/physics-balance-20261114/source/apps/weftforge/Cargo.toml": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+    "parity/reports/artifacts/physics-balance-20261114/source/apps/weftforge/src/main.rs": "d0dae7ce279e492687351c969adc43b7189cd92367c1023b2b77451bb8d5c5e7",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/Cargo.toml": "eac1be8f249f92f0b98686099bac5e11cfeeed064a7da944c3e331a2c09ff56e",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/src/document.rs": "bfc73ea6acc9ed56b85b51ef482de4aad169053e7a6770892e12f6d4e046c725",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/src/geometry.rs": "66d094f631997e5b737960cd9a5d834bcbad05c2ccf4c117bdd5a8c903c578ce",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/src/lib.rs": "2029a2b759e008dc987ba46cc850a89122fba321407e8168ebd2071998031afd",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/src/persistence.rs": "fccc18f5aafee7328202848dbc0bfd70c15f8865c5e6c06adc442baafa4ded4b",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/src/persistence/dxf.rs": "49e56ab60030a640e49d3ce9b263d99dcce562a5616f1dada529603f074b7475",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/src/sewing.rs": "344dfaacb6ae325e8534e5c3c7b844209b7e3714625383740eef47f8557ef93d",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/src/simulation.rs": "4c96b5548dc4663fd9d743855043a0e483be2ff2ca310ca19fcc263fee9bd6f1",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/tests/dxf.rs": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/tests/grain.rs": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/tests/joins.rs": "04334446a2408086541227b3ee149e12d9ca28da061e36268b33bb3502ad2334",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/tests/migration.rs": "577937ffbd5d0c42935a2a97772bc5aa53a7accca6e529efa4b86be9aa543099",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/tests/seam_reversal.rs": "ae9ea4bee0b3ed5b80a1f6350b428db4a92f68a5f21bdc1b7bb1b2b02723b66a",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/tests/sewing_groups.rs": "db0c8ae6d0af688137aa7034663f3223899da05347e4bb9e3ee2592430a7480c",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/tests/shirt.rs": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-core/tests/workflow.rs": "efb80806e4c355f44145332649ebcad1089d79dc078141a7a1f792edb6b17af0",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-sim/src/constraints.rs": "3456ba2565eadc5e113d5278f6dda6c46164a0f98f66400058e7ca9887f4298f",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-sim/src/contact.rs": "c600c7825c7c075c343b3d105005bf0ac771700dbf2141a4ae2668576f267e26",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-sim/src/lib.rs": "92f83a398cd8b7bb15bec23939d851fded15012a4c688689960195e116fbbc0f",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "parity/reports/artifacts/physics-balance-20261114/source/crates/weftforge-sim/src/tests.rs": "103eedaac498c5e6540a7ce171ecfd6db9dca9774b57fa506a62893e2a91f493",
+    "parity/reports/artifacts/physics-balance-20261114/source/fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+    "parity/reports/artifacts/physics-balance-20261114/source/fixtures/relaxed-shirt.weftforge": "5daf847ef95a44c1f8f2924661fdb5e8aa790a983daceb6dc2964604ba839820",
+    "parity/reports/artifacts/physics-balance-20261114/source/fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+    "parity/reports/artifacts/physics-balance-20261114/source/fixtures/ui-authored-shirt.weftforge": "3eb51cf352fdc14e21458004a97c7d1df17e38072becfe78fecf3d13244776f7",
+    "parity/reports/artifacts/physics-balance-20261114/source/rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+    "parity/reports/artifacts/physics-balance-20261114/source/xtask/Cargo.toml": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+    "parity/reports/artifacts/physics-balance-20261114/source/xtask/src/main.rs": "a65250e8f24f54f737a673d52f7bf75b76a9a9f4a453678bb90ccfd776e64a2a",
+    "parity/reports/artifacts/physics-balance-20261114/summary.json": "0801d004e4d9f3c7fd459a52ab7285fdf4d2d242e1a7b3e690756dbe26021f1a",
+    "parity/reports/artifacts/physics-balance-20261114/verify.py": "a2e2a0fc1ea5ba3fc163670665a55d08afa088f9999bd786001dd68ad711908c",
+    "parity/reports/artifacts/physics-balance-20261114/zero-g-balance-job.json": "9ef5c2c1bb8c3b2dcaa1d0a9aa76a58b6de04015ec558d1ca5d1d253139e143a",
+    "parity/reports/artifacts/physics-balance-20261114/zero-g-balance.stderr": "2d13d8ab1423bb8df06d410415d420d142f4b32484eae7b9b58f112ac2272c18",
+    "parity/reports/artifacts/physics-balance-20261114/zero-g-balance.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/physics-balance-20261114/zero-g-balance/completed-case.json": "cb00c343a8c84fb1f7bd748b69633dae9bcd43fe895ef39d97b4ec8a034de7a7",
+    "parity/reports/artifacts/physics-balance-20261114/zero-g-balance/rest-metadata.json": "9a054825d7e7a60c623a0ecf044ec997537f5f6e4ab4e9e03ae60afef2f90b6d",
+    "parity/reports/artifacts/physics-balance-20261114/zero-g-balance/steps.jsonl": "988fbea4aae7a3cd56aedb9904157ae028069ee2d583b61c0106a842e6148e4f",
+    "parity/reports/artifacts/physics-balance-20261114/zero-g-balance/trajectory.jsonl": "6a2657faa89b31acddbb7a5d6ce4597a7710b33c3d6e96fa4afc5e30eeec37c5",
+    "parity/scenarios/SIM-BALANCE-001.json": "8c834e5f9b47a8f6a2c16ff7b4223aef8bffb58b32dde597028a6b8a7285f4b0"
+  },
+  "scope": "Three preregistered original-shirt causal diagnostics at runtime3eddef; unchanged quality failure, exact prefix, independently reconstructed material strain, force gradients, energy and supported static contact.",
+  "declarations": {
+    "parity/reports/artifacts/physics-balance-20261114/plan.json": "b97a22b3e37b6543412346cc9ee10a8dea19643779ad4d0a118a4040675c30e2",
+    "parity/reports/artifacts/physics-balance-20261114/plan-erratum-001.json": "84be68e05c02804e037d86187c4318e8c66d6f02ead2d5c742ea3e4825a8d72f",
+    "parity/reports/artifacts/physics-balance-20261114/plan-probes-001.json": "14d0f812879fd744fac403d005f262ebe5d72e7b2656b7ef4120feb3cbc61d61"
+  },
+  "saved_replay": "parity/reports/artifacts/physics-balance-20261114/verify.py",
+  "executed_harnesses": [
+    "parity/reports/artifacts/physics-balance-20261114/harness/src/main.rs",
+    "parity/reports/artifacts/physics-balance-20261114/probe-harness/src/main.rs"
+  ],
+  "independent_review": "parity/reports/artifacts/physics-balance-20261114/review-support/review-receipt.json",
+  "protocol": {
+    "dt_s": 0.016666666666666666,
+    "substeps": 8,
+    "iterations": 32,
+    "seam_closure_m_per_s": 1.0,
+    "control": "60zeroG +120gravity frames from fresh original arrangement",
+    "zero_g_branch": "identical60zeroG prefix +120more zeroG frames; no reset",
+    "no_avatar_probe": "fresh60zeroG frames, only mannequin capsules omitted in memory; ground and self-contact retained",
+    "quality_limits": {
+      "finite": true,
+      "assembly_remaining_m": 0.0,
+      "axis_strain_below": 0.15,
+      "seam_gap_m_below": 0.005,
+      "supported_contact_m_below": 0.002
+    },
+    "no_avatar_quality": null
+  },
+  "measurements": {
+    "saved_states": 423,
+    "timed_steps": 420,
+    "vertices": 150,
+    "triangles": 228,
+    "stitches": 28,
+    "independent_checkpoints": {
+      "control": [
+        {
+          "frame": 60,
+          "time_s": 1.0,
+          "material": {
+            "peak": {
+              "triangle": 186,
+              "piece": 31,
+              "vertices": [
+                55,
+                147,
+                54
+              ],
+              "axis": "warp",
+              "signed_strain": 0.24118490382884605,
+              "absolute_strain": 0.24118490382884605
+            },
+            "minimum_signed": -0.09629471136714984,
+            "maximum_signed": 0.24118490382884605,
+            "energy_components_J": [
+              0.07315486677980126,
+              0.03781394198122316,
+              0.09934574863786434
+            ],
+            "energy_J": 0.21031455739888877,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.2385075381978683,
+                "absolute_strain": 0.2385075381978683
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.24118490382884605,
+                "absolute_strain": 0.24118490382884605
+              }
+            }
+          },
+          "bending_energy_J": 0.1216990945508396,
+          "elastic_energy_J": 0.3320136519497284,
+          "sewing_energy_J": 2.6691863717272717e-05,
+          "seam_gap_m": 6.911103501829521e-07,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.0022873448983509147,
+              1.3357572070944197,
+              0.00012455640816310271
+            ],
+            "momentum_kg_m_per_s": [
+              0.00046672180078727055,
+              0.0004152642137384339,
+              -0.0001640315256143827
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              -3.1069616663532442e-06,
+              6.602919908532604e-05,
+              6.346620660430446e-05
+            ],
+            "kinetic_energy_J": 1.8961163932671315e-05,
+            "rms_speed_m_per_s": 0.015687034712760672,
+            "max_speed_m_per_s": 0.10763181630692728
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            {
+              "node": 55,
+              "capsule": 1,
+              "clearance_m": 8.280555563347329e-06,
+              "axial_fraction": 0.16476725966022396
+            },
+            {
+              "node": 147,
+              "capsule": 0,
+              "clearance_m": 4.48936682891669e-05,
+              "axial_fraction": 1.0
+            },
+            {
+              "node": 54,
+              "capsule": 1,
+              "clearance_m": 8.84369088819878e-08,
+              "axial_fraction": 0.3997625969505466
+            }
+          ],
+          "last_frame_drift_m": {
+            "max_m": 0.0017457468667264233,
+            "mass_weighted_rms_m": 0.0003267155518039456
+          },
+          "interval_nodal_effective_force_max_N": 0.009357035923446671,
+          "interval_mass_rms_acceleration_m_per_s2": 1.340934163104049,
+          "conservative_force_maxima_N": {
+            "membrane": 3.376843045946881,
+            "bending": 0.40619139858297404,
+            "sewing": 69.11103501829521,
+            "combined": 68.83099713224195
+          }
+        },
+        {
+          "frame": 180,
+          "time_s": 3.0,
+          "material": {
+            "peak": {
+              "triangle": 31,
+              "piece": 2,
+              "vertices": [
+                89,
+                27,
+                28
+              ],
+              "axis": "warp",
+              "signed_strain": 0.32351913672966237,
+              "absolute_strain": 0.32351913672966237
+            },
+            "minimum_signed": -0.1152954343190592,
+            "maximum_signed": 0.32351913672966237,
+            "energy_components_J": [
+              0.08702177041990815,
+              0.03524996628417248,
+              0.09853493143108234
+            ],
+            "energy_J": 0.22080666813516298,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.32351913672966237,
+                "absolute_strain": 0.32351913672966237
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.23329520327885178,
+                "absolute_strain": 0.23329520327885178
+              }
+            }
+          },
+          "bending_energy_J": 0.12656099012467759,
+          "elastic_energy_J": 0.34736765825984056,
+          "sewing_energy_J": 2.669067653643125e-05,
+          "seam_gap_m": 6.91110350198192e-07,
+          "analytic_penetration_m": 1.1275702593849246e-17,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.002465637567301439,
+              1.3362932120222688,
+              0.0021209865532047967
+            ],
+            "momentum_kg_m_per_s": [
+              0.00011115566655275714,
+              2.9654427224959315e-05,
+              6.386440386751546e-05
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              -2.0284606405792467e-05,
+              6.957764184641291e-06,
+              2.6669976213020084e-05
+            ],
+            "kinetic_energy_J": 1.3863400867268586e-06,
+            "rms_speed_m_per_s": 0.004241732255152513,
+            "max_speed_m_per_s": 0.017664487506019615
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            {
+              "node": 89,
+              "capsule": 2,
+              "clearance_m": 2.325626805279018e-05,
+              "axial_fraction": 0.4262470771238785
+            },
+            {
+              "node": 27,
+              "capsule": 2,
+              "clearance_m": 5.824767751461124e-14,
+              "axial_fraction": 0.6569396423149628
+            },
+            {
+              "node": 28,
+              "capsule": 2,
+              "clearance_m": 5.270499865847426e-06,
+              "axial_fraction": 0.6934763171035307
+            }
+          ],
+          "last_frame_drift_m": {
+            "max_m": 0.0002791221294374729,
+            "mass_weighted_rms_m": 7.089544114907044e-05
+          },
+          "interval_nodal_effective_force_max_N": 0.00024158774204234597,
+          "interval_mass_rms_acceleration_m_per_s2": 0.04194333422279302,
+          "conservative_force_maxima_N": {
+            "membrane": 3.0615527635613367,
+            "bending": 0.4601021035215742,
+            "sewing": 69.1110350198192,
+            "combined": 68.93233869576753
+          }
+        }
+      ],
+      "zero-g-balance": [
+        {
+          "frame": 150,
+          "time_s": 2.5,
+          "material": {
+            "peak": {
+              "triangle": 31,
+              "piece": 2,
+              "vertices": [
+                89,
+                27,
+                28
+              ],
+              "axis": "warp",
+              "signed_strain": 0.30754068587091354,
+              "absolute_strain": 0.30754068587091354
+            },
+            "minimum_signed": -0.1192756978461258,
+            "maximum_signed": 0.30754068587091354,
+            "energy_components_J": [
+              0.08163921979030075,
+              0.03592478011838447,
+              0.09930504166140514
+            ],
+            "energy_J": 0.21686904157009035,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.30754068587091354,
+                "absolute_strain": 0.30754068587091354
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.2400996449250863,
+                "absolute_strain": 0.2400996449250863
+              }
+            }
+          },
+          "bending_energy_J": 0.12826069240304475,
+          "elastic_energy_J": 0.34512973397313507,
+          "sewing_energy_J": 1.4063057575756467e-05,
+          "seam_gap_m": 4.74426838644433e-07,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.002558298699794775,
+              1.3384484826329086,
+              0.002204869023642432
+            ],
+            "momentum_kg_m_per_s": [
+              3.141655297514045e-05,
+              6.899931800810464e-05,
+              -1.835641683790582e-05
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              -9.518884164252054e-06,
+              1.5973664547089257e-05,
+              2.325962395625054e-06
+            ],
+            "kinetic_energy_J": 8.534183910330592e-07,
+            "rms_speed_m_per_s": 0.0033280463020353987,
+            "max_speed_m_per_s": 0.012176980938645313
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "last_frame_drift_m": {
+            "max_m": 0.00014513218692069013,
+            "mass_weighted_rms_m": 4.694035329246255e-05
+          },
+          "interval_nodal_effective_force_max_N": 0.000769603495657919,
+          "interval_mass_rms_acceleration_m_per_s2": 0.14501517492588725
+        },
+        {
+          "frame": 180,
+          "time_s": 3.0,
+          "material": {
+            "peak": {
+              "triangle": 31,
+              "piece": 2,
+              "vertices": [
+                89,
+                27,
+                28
+              ],
+              "axis": "warp",
+              "signed_strain": 0.3216992187720238,
+              "absolute_strain": 0.3216992187720238
+            },
+            "minimum_signed": -0.12255211525814991,
+            "maximum_signed": 0.3216992187720238,
+            "energy_components_J": [
+              0.08396840563237579,
+              0.03593803407535039,
+              0.09993467225987492
+            ],
+            "energy_J": 0.2198411119676011,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.3216992187720238,
+                "absolute_strain": 0.3216992187720238
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.23985996470843052,
+                "absolute_strain": 0.23985996470843052
+              }
+            }
+          },
+          "bending_energy_J": 0.12912715468593222,
+          "elastic_energy_J": 0.3489682666535333,
+          "sewing_energy_J": 1.3364735223293857e-05,
+          "seam_gap_m": 4.5946317598255657e-07,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.002663892248627542,
+              1.338642444469294,
+              0.0024296993393006527
+            ],
+            "momentum_kg_m_per_s": [
+              3.509794126561489e-05,
+              5.235878317584123e-05,
+              2.8454203205212933e-05
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              -1.5308638441056613e-05,
+              9.609679993053184e-06,
+              3.1529756562782274e-06
+            ],
+            "kinetic_energy_J": 8.008125700325299e-07,
+            "rms_speed_m_per_s": 0.003223842392276891,
+            "max_speed_m_per_s": 0.012429504787865756
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            {
+              "node": 89,
+              "capsule": 2,
+              "clearance_m": 2.4225936740634828e-05,
+              "axial_fraction": 0.4187247815340076
+            },
+            {
+              "node": 27,
+              "capsule": 2,
+              "clearance_m": 4.983773810307568e-14,
+              "axial_fraction": 0.6514082610888997
+            },
+            {
+              "node": 28,
+              "capsule": 2,
+              "clearance_m": 5.202520986863184e-06,
+              "axial_fraction": 0.6855350527779316
+            }
+          ],
+          "last_frame_drift_m": {
+            "max_m": 0.00020748551137169294,
+            "mass_weighted_rms_m": 5.503959612830231e-05
+          },
+          "interval_nodal_effective_force_max_N": 0.0002852501062172972,
+          "interval_mass_rms_acceleration_m_per_s2": 0.04047829377673174,
+          "conservative_force_maxima_N": {
+            "membrane": 3.278375002062769,
+            "bending": 0.4542997975798479,
+            "sewing": 45.94631759825565,
+            "combined": 45.89974606878002
+          }
+        }
+      ],
+      "no-avatar": [
+        {
+          "frame": 60,
+          "time_s": 1.0,
+          "material": {
+            "peak": {
+              "triangle": 114,
+              "piece": 31,
+              "vertices": [
+                34,
+                35,
+                91
+              ],
+              "axis": "warp",
+              "signed_strain": -0.0024257322555789607,
+              "absolute_strain": 0.0024257322555789607
+            },
+            "minimum_signed": -0.0024257322555789607,
+            "maximum_signed": 0.0023748289263267885,
+            "energy_components_J": [
+              1.8460387229116207e-05,
+              1.0405088576083074e-05,
+              2.4444455054606743e-05
+            ],
+            "energy_J": 5.3309930859806026e-05,
+            "per_piece": {
+              "2": {
+                "triangle": 92,
+                "piece": 2,
+                "vertices": [
+                  125,
+                  126,
+                  73
+                ],
+                "axis": "warp",
+                "signed_strain": 0.0023748289263267885,
+                "absolute_strain": 0.0023748289263267885
+              },
+              "31": {
+                "triangle": 114,
+                "piece": 31,
+                "vertices": [
+                  34,
+                  35,
+                  91
+                ],
+                "axis": "warp",
+                "signed_strain": -0.0024257322555789607,
+                "absolute_strain": 0.0024257322555789607
+              }
+            }
+          },
+          "bending_energy_J": 0.00043162369560395325,
+          "elastic_energy_J": 0.0004849336264637593,
+          "sewing_energy_J": 9.892574870406306e-12,
+          "seam_gap_m": 1.811512628289636e-10,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.02000000000012008,
+              1.291082828283886,
+              -2.7121575764961914e-15
+            ],
+            "momentum_kg_m_per_s": [
+              5.812696240733814e-14,
+              2.7799172052023e-13,
+              -2.717751506909946e-15
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              1.6380461478183418e-05,
+              -3.852846505959512e-06,
+              5.939967443085993e-06
+            ],
+            "kinetic_energy_J": 0.00012998028705538475,
+            "rms_speed_m_per_s": 0.04107211874514111,
+            "max_speed_m_per_s": 0.1543813599341958
+          },
+          "arithmetic_screen": true,
+          "original_quality": null,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            null,
+            null,
+            null
+          ],
+          "last_frame_drift_m": {
+            "max_m": 0.0022245408991764144,
+            "mass_weighted_rms_m": 0.000675745750443307
+          },
+          "interval_nodal_effective_force_max_N": 0.006871027408925553,
+          "interval_mass_rms_acceleration_m_per_s2": 1.3007334305191542,
+          "conservative_force_maxima_N": {
+            "membrane": 0.026143257293272895,
+            "bending": 0.008271250783298462,
+            "sewing": 0.01811512628289636,
+            "combined": 0.026710572601380135
+          }
+        }
+      ]
+    },
+    "exact_prefix": {
+      "frames_0_through_60": "exact positions, velocities, settings and all diagnostics except measured step_seconds",
+      "seam_targets": "source recurrence reconstructed for every frame; nonnegative targets all zero at frame60",
+      "limits": "No direct private-memory serialization; source multipliers are local to each substep and reset there"
+    },
+    "zero_g_comparison": {
+      "t1_peak_strain": 0.24118490382884583,
+      "terminal_peak_strain": 0.3216992187720238,
+      "terminal_strain_difference_from_original_same_time_control": -0.0018199179576385838,
+      "terminal_nodal_drift_from_original_same_time_control_m": {
+        "max_m": 0.010353265374953001,
+        "mass_weighted_rms_m": 0.0037722293972425555
+      },
+      "terminal_velocity_drift_from_original_same_time_control_m_per_s": {
+        "max_m": 0.015704486975340964,
+        "mass_weighted_rms_m": 0.0028928964788579553
+      },
+      "terminal_minus_t1_peak_strain": 0.08051431494317796,
+      "terminal_nodal_drift_from_own_t1_m": {
+        "max_m": 0.02236873002938586,
+        "mass_weighted_rms_m": 0.008967686458126407
+      },
+      "terminal_elastic_energy_J": 0.3489682666535333,
+      "terminal_seam_m": 4.5946317598255657e-07,
+      "terminal_supported_contact_m": 0.0,
+      "terminal_rms_speed_m_per_s": 0.003223842392276891,
+      "terminal_KE_J": 8.008125700325299e-07,
+      "terminal_original_quality_passed": false,
+      "strain_sensitivity_trigger_exceeded": false,
+      "nodal_sensitivity_trigger_exceeded": true,
+      "last_half_second_peak_strain_min_max": [
+        0.30808823424694975,
+        0.3216992187720238
+      ],
+      "last_half_second_nodal_drift_m": {
+        "max_m": 0.0036204802892315577,
+        "mass_weighted_rms_m": 0.0010207689530057004
+      },
+      "last_half_second_elastic_energy_change_J": 0.0038385326803982434
+    },
+    "no_avatar_comparison": {
+      "t1_peak_strain": 0.0024257322555789607,
+      "terminal_peak_strain": 0.0024257322555789607,
+      "terminal_strain_difference_from_original_same_time_control": -0.23875917157326687,
+      "terminal_nodal_drift_from_original_same_time_control_m": {
+        "max_m": 0.28746075367988194,
+        "mass_weighted_rms_m": 0.13442736922438822
+      },
+      "terminal_velocity_drift_from_original_same_time_control_m_per_s": {
+        "max_m": 0.16595485987451405,
+        "mass_weighted_rms_m": 0.044669296665555504
+      },
+      "terminal_minus_t1_peak_strain": 0.0,
+      "terminal_nodal_drift_from_own_t1_m": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "terminal_elastic_energy_J": 0.00048493362646375923,
+      "terminal_seam_m": 1.811512628289636e-10,
+      "terminal_supported_contact_m": 0.0,
+      "terminal_rms_speed_m_per_s": 0.04107211874514111,
+      "terminal_KE_J": 0.00012998028705538475,
+      "terminal_original_quality_passed": null,
+      "strain_sensitivity_trigger_exceeded": true,
+      "nodal_sensitivity_trigger_exceeded": true
+    },
+    "exact_last_half_second": {
+      "first_frame": 150,
+      "last_frame": 180,
+      "strain_from": 0.30754068587091354,
+      "strain_to": 0.3216992187720238,
+      "max_nodal_drift_m": 0.0036204802892315577,
+      "membrane_bending_energy_change_J": 0.0038385326803982434
+    },
+    "retained_sample_range_qualification": "Producer last_half_second_peak_strain_min_max uses151..180; exact2.5..3s endpoints use150..180. Original outputs unchanged.",
+    "historical_topology_comparison": "Historical158V244T differs from current150V228T;28stitch mappings equal; direct nodal comparison is not equivalent."
+  },
+  "result": "Original control fails unchanged strain screen at1s and3s. Zero-G continuation still evolves and fails. Mannequin omission supports a bounded avatar-loaded-assembly contribution; its quality is null. No geometric-impossibility, full-force-equilibrium, solver-defect, convergence, calibration or reference-parity conclusion.",
+  "gates": {
+    "source37_and_independent_saved_output_review": "passed",
+    "standalone_candidate_saved_replay": "passed",
+    "all_original_jobs_terminal": true,
+    "production_changes_for_experiment": false,
+    "github_actions": "disabled_at_user_request_until_full_project_complete",
+    "pages": "not_run"
+  },
+  "limits": [
+    "No reference application execution or verified parity, calibrated fabric, static equilibrium, full force balance or convergence result.",
+    "No-avatar arithmetic is a counterfactual and its original garment-quality value remains null.",
+    "Supported static contact checks cover analytic point-capsule/ground and excluded vertex-triangle distances; no full edge-edge or continuous collision proof.",
+    "Conservative energy gradients omit contact/friction reactions and damping; finite-iteration XPBD impulses need not equal endpoint gradients.",
+    "Conditional perimeter estimates cannot establish a lower bound on material-axis strain while shear and migration remain possible.",
+    "All132 bundled files are byte-identical to the frozen public candidate, including15 documented pathname-only derivatives and raw hash provenance; numerical data/fixtures/plans are unchanged.",
+    "Bundled README and independent receipt retain their preparation-time ignored/private qualification; tracked delivery is established separately from a clean checkout.",
+    "The material-strain visibility candidate6c455 is a separate unaccepted increment; these numerical runs execute3eddef."
+  ]
+}

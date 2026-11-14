@@ -1,0 +1,24 @@
+{
+  "stage": "zero-g-balance",
+  "started_at": "2026-11-14T17:54:14.845683+00:00",
+  "launcher_pid": 70783,
+  "command": [
+    "<EXPERIMENT_ROOT>/target/release/cloth-balance-probe",
+    "<EXPERIMENT_ROOT>/original-grain-shirt.weftforge",
+    "<EXPERIMENT_ROOT>/zero-g-balance",
+    "zero-g-balance"
+  ],
+  "cwd": "<EXPERIMENT_ROOT>/source",
+  "environment_overrides": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_TARGET_DIR": "<EXPERIMENT_ROOT>/target"
+  },
+  "wall_cap_seconds": 420,
+  "status": "completed",
+  "child_pid": 70879,
+  "child_process_group": 70879,
+  "exit_code": 0,
+  "completed_at": "2026-11-14T17:54:34.330459+00:00",
+  "wall_seconds": 19.48467116698157
+}

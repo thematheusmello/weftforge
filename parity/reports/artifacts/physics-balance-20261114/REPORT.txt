@@ -1,0 +1,23 @@
+Pinned original garment diagnosis completed privately with three preregistered cases.
+
+Source: 3eddef067c8a1f03f192c8e6822a8da2a94f9bf9; clean detached source, exclusive offline Cargo target.
+Original fixture SHA-256: 82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7.
+Original quality screen stays strain <0.15, seam <0.005m, supported contact <0.002m, finite and completed assembly.
+
+Current mesh changes from historical158 vertices/244 triangles to150/228, with28 original stitch mappings retained. The fixed control still fails: zero-G t1 peak strain0.24118490382884583; gravity t3 peak0.32351913672966237. The initial arrangement is unstrained to6.66e-16; >15% first occurs at frame24; seam targets and <5mm gaps complete at frame27. Thus initial prestrain and incomplete seam closure do not explain the retained t1 failure.
+
+Zero gravity still contains actuator-driven sewing, avatar contact and friction. Omitting only mannequin capsules in memory reduces t1 peak strain to0.0024257322555789607, with original mesh/materials/grain/seams/ground/self-contact/settings unchanged. This is bounded causal evidence of avatar-loaded assembly. It is never garment-quality acceptance or a replacement benchmark.
+
+A fixed extra2s of zero-G evolution instead ends at strain0.3216992187720238. Its last0.5s peak rises0.30808823424694975 to0.3216992187720238; maximum nodal drift is0.0036204802892315577m, and membrane+bending energy rises0.0038385326803982434J. Low RMS speed0.003223842392276891m/s does not establish balance. Total independently computed membrane+bending+sewing+kinetic energy rises0.3320593049773783J at t1 to0.34898243220132663J at t3; a complete contact/projection work budget is unavailable.
+
+Independent geometric conservative forces, physical masses, momentum, energies and residuals are retained. Contact/friction reactions and per-substep multipliers are unexported, so full equilibrium, convergence, geometric impossibility and solver defect remain unknown. Conditional neck/cuff circumference estimates8.73%/14.04% do not prove the15% axis-strain screen impossible.
+
+Prefix verification: all61 original0..60-frame positions, velocities, settings and physical diagnostics match exactly, excluding wall time. The per-stitch target vector is provably allzero at frame60 from the nonnegative target invariant and observed max0. Source has no persistent contact/multiplier history; no reset occurred. This is observed physical equality plus a source-backed internal-state proof, not a bytewise private-memory dump.
+
+All three cases exited0;423 full snapshots and420 frame timings retained. Every recorded job and analysis is terminal and every recorded wrapper/child PID is absent. No live handles. Production/default/fixture/tolerance/registry/docs/CI/UI are unchanged. Initial diagnostic Clippy failure and logging-only correction are retained; both diagnostic harnesses now pass fmt and strict Clippy. Independent geometry/force checks pass.
+
+Read plan.json and plan-probes-001.json for prospective criteria; summary.json, control-analysis.json, probes-analysis.json, prefix-history-proof.json and process-confirmations.json for final outputs. Independent review owns a separate directory and has not been folded into these producer conclusions.
+
+Exact next decision: independent review of saved artifacts, followed by owner authorization (if appropriate) of a bounded full per-substep force/impulse/work-accounting increment on the unchanged original garment. Do not run further blind extensions or change fitting inputs/thresholds to pass. No production changes authorized yet.
+
+Private/ignored evidence is not delivery. Any proposed public subset needs tracked artifacts and clean-checkout registry/map verification; raw build/job logs contain private checkout paths.

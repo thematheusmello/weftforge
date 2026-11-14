@@ -1,0 +1,21 @@
+[workspace]
+members = ["crates/weftforge-core", "crates/weftforge-sim", "apps/weftforge", "apps/weftforge-cli", "xtask"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/thematheusmello/weftforge"
+
+[workspace.dependencies]
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = { version = "=1.0.154", features = ["float_roundtrip"] }
+eframe = { version = "=0.35.0", default-features = false, features = ["wgpu", "default_fonts", "x11", "wayland", "accesskit"] }
+earcutr = "=0.5.0"
+rfd = "=0.18.0"
+tobj = "=4.0.5"
+
+[profile.release]
+lto = "thin"

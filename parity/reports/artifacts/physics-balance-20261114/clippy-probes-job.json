@@ -1,0 +1,31 @@
+{
+  "stage": "clippy-probes",
+  "started_at": "2026-11-14T17:53:42.809090+00:00",
+  "launcher_pid": 70608,
+  "command": [
+    "cargo",
+    "clippy",
+    "--locked",
+    "--release",
+    "--offline",
+    "--manifest-path",
+    "<EXPERIMENT_ROOT>/probe-harness/Cargo.toml",
+    "--all-targets",
+    "--",
+    "-D",
+    "warnings"
+  ],
+  "cwd": "<EXPERIMENT_ROOT>/source",
+  "environment_overrides": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_TARGET_DIR": "<EXPERIMENT_ROOT>/target"
+  },
+  "wall_cap_seconds": 240,
+  "status": "completed",
+  "child_pid": 70630,
+  "child_process_group": 70630,
+  "exit_code": 0,
+  "completed_at": "2026-11-14T17:53:43.558913+00:00",
+  "wall_seconds": 0.7498457089532167
+}

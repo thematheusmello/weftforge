@@ -1,0 +1,46 @@
+{
+  "kind": "ignored_public_candidate_complete_saved_evidence_closure",
+  "source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "current_runtime_source_scope_file_count": 37,
+  "fixture": "original-grain-shirt.weftforge",
+  "fixture_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "cases": {
+    "control": {
+      "snapshots": 181,
+      "steps": 180,
+      "original_quality": "failed"
+    },
+    "zero-g-balance": {
+      "snapshots": 181,
+      "steps": 180,
+      "original_quality": "failed"
+    },
+    "no-avatar": {
+      "snapshots": 61,
+      "steps": 60,
+      "original_quality": null,
+      "purpose": "capsule-omission causal diagnostic only"
+    }
+  },
+  "closure_rule": "MANIFEST.json enumerates every regular file other than itself; verify.py rejects missing, changed, extra or symlinked artifacts. Manifest SHA is retained in the external candidate receipt, avoiding self-hashing.",
+  "preservation": "Frozen plans, numerical/state/fixture/source/driver/analyzer bytes are original; private pathname-only log/ledger derivatives retain raw hashes and exact replacement counts.",
+  "source_snapshot_scope": "37 recorded runtime source files plus compile-time native test fixtures and source-context physics documentation/licences; this is not a complete repository or registry checkout.",
+  "historical_scope": "Exact retained e342 rest-metadata and full trajectory copied only for historical source-qualified mesh/shared-time comparisons. No historical rerun.",
+  "excluded": [
+    "compiled Cargo targets and binaries",
+    "Git metadata",
+    "personal path prefixes",
+    "proprietary installers/assets/extracts",
+    "credentials",
+    "new simulation or production changes"
+  ],
+  "limitations": [
+    "No full contact/friction force reactions or substep impulse/work accounting",
+    "No static equilibrium, convergence, geometric impossibility or solver-defect result",
+    "No calibrated fabric/reference parity or general collision proof",
+    "No original garment acceptance from capsule omission"
+  ],
+  "replay": "python3 verify.py",
+  "independent_review": "Kept separately under review-support; its receipt identity and original checker hash remain distinct from producer replay.",
+  "publication_gate": "Ignored candidate is not public delivery; owner must track all chosen files and run registry/map checks from clean checkout."
+}

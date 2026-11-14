@@ -1,0 +1,146 @@
+{
+  "kind": "private_failed_original_garment_quality_with_causal_diagnosis",
+  "completed_at": "2026-11-14T18:00:58.669602+00:00",
+  "source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "source_manifest_sha256": "1ecf305630bff2025223a2d3279e51141f7aa4a01d86999ad0c63ef546d9797c",
+  "fixture_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "plan_sha256": "b97a22b3e37b6543412346cc9ee10a8dea19643779ad4d0a118a4040675c30e2",
+  "probe_plan_sha256": "14d0f812879fd744fac403d005f262ebe5d72e7b2656b7ef4120feb3cbc61d61",
+  "unchanged_quality_limits": {
+    "max_absolute_material_axis_strain_below": 0.15,
+    "max_seam_gap_m_below": 0.005,
+    "max_supported_contact_penetration_m_below": 0.002,
+    "seam_assembly_target_m": 0.0,
+    "finite": true
+  },
+  "original_current_control": {
+    "mesh_vertices": 150,
+    "mesh_triangles": 228,
+    "stitches": 28,
+    "t1_zero_g_strain": 0.24118490382884583,
+    "t1_seam_gap_m": 6.911103501829521e-07,
+    "t1_contact_m": 0.0,
+    "t3_gravity_strain": 0.32351913672966237,
+    "t3_seam_gap_m": 6.91110350198192e-07,
+    "t3_contact_m": 1.3877787807814457e-17,
+    "quality": "failed_unchanged_15percent_strain_screen"
+  },
+  "fixed_zero_g_balance": {
+    "t1_peak_strain": 0.24118490382884583,
+    "terminal_peak_strain": 0.3216992187720238,
+    "terminal_strain_difference_from_original_same_time_control": -0.0018199179576385838,
+    "terminal_nodal_drift_from_original_same_time_control_m": {
+      "max_m": 0.010353265374953001,
+      "mass_weighted_rms_m": 0.0037722293972425555
+    },
+    "terminal_velocity_drift_from_original_same_time_control_m_per_s": {
+      "max_m": 0.015704486975340964,
+      "mass_weighted_rms_m": 0.0028928964788579553
+    },
+    "terminal_minus_t1_peak_strain": 0.08051431494317796,
+    "terminal_nodal_drift_from_own_t1_m": {
+      "max_m": 0.02236873002938586,
+      "mass_weighted_rms_m": 0.008967686458126407
+    },
+    "terminal_elastic_energy_J": 0.3489682666535333,
+    "terminal_seam_m": 4.5946317598255657e-07,
+    "terminal_supported_contact_m": 0.0,
+    "terminal_rms_speed_m_per_s": 0.003223842392276891,
+    "terminal_KE_J": 8.008125700325299e-07,
+    "terminal_original_quality_passed": false,
+    "strain_sensitivity_trigger_exceeded": false,
+    "nodal_sensitivity_trigger_exceeded": true,
+    "last_half_second_peak_strain_min_max": [
+      0.30808823424694975,
+      0.3216992187720238
+    ],
+    "last_half_second_nodal_drift_m": {
+      "max_m": 0.0036204802892315577,
+      "mass_weighted_rms_m": 0.0010207689530057004
+    },
+    "last_half_second_elastic_energy_change_J": 0.0038385326803982434
+  },
+  "avatar_omission_causal_diagnostic": {
+    "t1_peak_strain": 0.0024257322555789607,
+    "terminal_peak_strain": 0.0024257322555789607,
+    "terminal_strain_difference_from_original_same_time_control": -0.23875917157326687,
+    "terminal_nodal_drift_from_original_same_time_control_m": {
+      "max_m": 0.28746075367988194,
+      "mass_weighted_rms_m": 0.13442736922438822
+    },
+    "terminal_velocity_drift_from_original_same_time_control_m_per_s": {
+      "max_m": 0.16595485987451405,
+      "mass_weighted_rms_m": 0.044669296665555504
+    },
+    "terminal_minus_t1_peak_strain": 0.0,
+    "terminal_nodal_drift_from_own_t1_m": {
+      "max_m": 0.0,
+      "mass_weighted_rms_m": 0.0
+    },
+    "terminal_elastic_energy_J": 0.00048493362646375923,
+    "terminal_seam_m": 1.811512628289636e-10,
+    "terminal_supported_contact_m": 0.0,
+    "terminal_rms_speed_m_per_s": 0.04107211874514111,
+    "terminal_KE_J": 0.00012998028705538475,
+    "terminal_original_quality_passed": null,
+    "strain_sensitivity_trigger_exceeded": true,
+    "nodal_sensitivity_trigger_exceeded": true
+  },
+  "causal_findings": [
+    "The rest arrangement has independent axis strain only6.66e-16, so the high strain is generated during sewing/contact rather than inherited as prestrain.",
+    "Original paired source seams have equal lengths and corresponding arrangedX/Y points. Initial stitch distance is0.44m. Targets and seam gaps close by frame27; the >15% strain first occurs at frame24 and persists after closure.",
+    "Zero gravity does not remove the active sewing actuator or static avatar contact/friction constraints. All peak-triangle nodes at the t1 back neckline and t3 left cuff lie within45micrometres of original capsule surfaces.",
+    "Omitting only mannequin capsules in memory, with unchanged original rest mesh/materials/grain/stitches/ground/self-contact/settings, reduces t1 peak strain from0.2411849 to0.00242573. This supplies a bounded causal link to avatar-loaded assembly. It is not replacement fitting evidence.",
+    "The fixed two-second additional zero-G interval increases peak strain to0.3216992, rather than removing the original quality failure. Last0.5s strain, geometry and stored energy still change, so static balance is unestablished.",
+    "Current scheduling changes the original mesh from historical158/244 to150/228. Historical and current failure magnitudes must remain separately source-bound; no mismatched nodal comparison was made.",
+    "Conditional neck/cuff circumference estimates require about8.73%/14.04% uniform tangent extension, but finite capsule ends, moving neckline, shear and mixed directional stiffness prevent treating them as a proof that15% axis strain is geometrically impossible."
+  ],
+  "force_energy_status": {
+    "independent_membrane_bending_sewing_forces": "retained and self-checked",
+    "zero_g_energy_membrane_bending_sewing_plus_KE_at_t1_J": 0.3320593049773783,
+    "zero_g_energy_membrane_bending_sewing_plus_KE_at_t3_J": 0.34898243220132663,
+    "interpretation": "The stored-energy increase is observed under fixed zero-G/closed-seam evolution; contact/projection energy work and finite-step effects are unaccounted. This is not a force-equilibrium or solver-defect proof.",
+    "missing_observables": [
+      "per-substep XPBD multipliers/impulses",
+      "complete collider/cloth contact normal and friction reactions",
+      "a complete work/energy budget and constrained stationarity residual"
+    ]
+  },
+  "prefix_history": "prefix-history-proof.json: all61 snapshots exactly match physical state/settings/diagnostics apart from timing, with source-backed proof of zero per-stitch targets and no retained multiplier/contact history; no reset",
+  "validation": {
+    "baseline_and_probe_harness_fmt": "passed",
+    "baseline_harness_strict_clippy": "failed first logging idiom check retained; passed after logging-only correction",
+    "probe_harness_strict_clippy": "passed",
+    "independent_geometry_and_force_selfchecks": "passed",
+    "saved_scene_membrane_gradient_error_max_N": 5.881324316447945e-10,
+    "saved_scene_bending_epsilon_force_difference_max_N": 1.0098929126897277e-09,
+    "solver_cases_total": 3,
+    "every_case_exit_code": 0,
+    "case_snapshot_counts": {
+      "control": 181,
+      "zero-g-balance": 181,
+      "no-avatar": 61
+    },
+    "timing_records": 420,
+    "all_recorded_jobs_terminal": true,
+    "all_recorded_wrapper_child_pids_absent": true,
+    "live_handles": [],
+    "detached_source_clean": true,
+    "production_changes": false,
+    "original_fixture_changed": false,
+    "workspace_gates_rerun": "not rerun because this increment changes no production files; external diagnostic fmt/strictClippy/selfchecks were run",
+    "github_actions": "remained disabled",
+    "pages": "not run"
+  },
+  "exact_next_decision": "Independent reviewer validates saved artifacts, then owner decides whether to authorize a bounded full per-substep force/impulse/work-accounting increment on the unchanged original garment before any geometry/material/solver fix or further refinement. No more simulations or production changes are authorized by this task.",
+  "publication_status": "All diagnosis remains ignored/private; not public delivery or a parity registry update. Any proposed public subset requires owner review, tracked artifacts and clean-checkout registry/map verification; raw private job/build logs contain checkout paths.",
+  "no_claims": [
+    "No reference parity",
+    "No physical calibration",
+    "No force equilibrium",
+    "No convergence",
+    "No geometric impossibility",
+    "No solver defect",
+    "No garment-quality acceptance from avatar omission"
+  ]
+}

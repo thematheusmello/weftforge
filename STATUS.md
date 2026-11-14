@@ -8,13 +8,14 @@ inventory, not a feature-completion denominator.
 ## Publication and cost policy
 
 Public repository: https://github.com/thematheusmello/weftforge.
-Last published main is `e342471b18bc5d636d8e869ba0d374710ea15da3`, merged
-[PR32](https://github.com/thematheusmello/weftforge/pull/32). Its DXF runtime source
+Last published main is `4a2c556860b7fc4b6898495117dd97cfb6f1a66c`, merged
+[PR33](https://github.com/thematheusmello/weftforge/pull/33), with the exact tested
+`ab30318` tree and all runtime ancestry preserved. Earlier [PR32](https://github.com/thematheusmello/weftforge/pull/32)
+delivered DXF runtime source
 `cd151b3b89e26d55a4dcd4525790006660c4e766` and 113 original artifacts remain in
 [WF-20261114-DXF-001](parity/reports/WF-20261114-DXF-001.json), now stale after the
 sewing changes. Earlier source-pinned outcomes and failures remain retained.
-The ordered-sewing branch is published at `081ea17622b7fb24b32c2803f05aaa2a13d43f0f`
-in open [PR33](https://github.com/thematheusmello/weftforge/pull/33).
+PR33 head and merge each have zero workflow runs; Actions remains `enabled:false`.
 
 **Keep GitHub Actions and Pages disabled until the entire project is complete.**
 The user requested this to stop development costs. Repository `enabled:false`
@@ -30,14 +31,15 @@ and cross-platform launch/distribution acceptance remain open.
 
 ## Current ordered-sewing checkpoint
 
-Working branch: `feat/ordered-sewing-paths`. Executed runtime source is
+Ordered-sewing runtime source is
 `3eddef067c8a1f03f192c8e6822a8da2a94f9bf9`, with 37 scoped runtime/test files.
 Source-map checkpoint `529e1c407025decfb94a14acc23b242e9cf9ce16` preserves the
 runtime ancestry. Documentation, registry and evidence are committed and pushed.
 Clean checkout `a661ae495c91f9aa63c33ce1bf5f5b0853217216` passes the full retained-output
 replay and xtask; final metadata `081ea176` passes registry/map and all 1,375
-report-artifact tracking/hash checks. PR33 awaits ordinary merge, preserving
-the tested source/evidence ancestry.
+report-artifact tracking/hash checks. Final PR metadata `ab30318` also passes
+clean-checkout registry/map/artifact/source checks. The ordinary PR33 merge is
+confirmed; its tree is identical to the tested final head.
 
 Authoritative ordered M:N groups pair cumulative **authored arc lengths** across
 partial, reversed and disconnected spans, with editable nonlinear maps. Gaps
@@ -114,9 +116,12 @@ new meshing source has no accepted garment-quality run. See [physics](docs/physi
 The new source-bound original-shirt control also fails: 24.1185% maximum strain
 after 1 s of zero-gravity assembly and 32.3519% at 3 s after gravity. Its current
 mesh is 150 vertices / 228 triangles, so old and new nodal arrays are not directly
-comparable. Two preregistered causal probes and producer analysis are complete;
-independent review is pending. Removing the mannequin in one diagnostic cannot qualify garment
-quality. Original inputs and all acceptance thresholds remain unchanged.
+comparable. Both preregistered causal probes and independent review are complete.
+The fixed extra zero-G branch ends at 32.1699%, still evolving; removing only
+mannequin capsules gives 0.242573% but cannot qualify garment quality. Exact
+frame150–180 endpoints are 30.7541%–32.1699%, not the separately retained
+frame151–180 range. Full force balance and a solver defect remain unknown.
+Original inputs and all acceptance thresholds remain unchanged.
 
 Full free/internal sewing, cut/trim, constraints, calibrated fabrics, robust
 layered contact, avatars/animation, rendering/CJK fonts, imports/interchange,
@@ -134,12 +139,14 @@ remain unobserved. The one-click manual diagnosis question is pending. This is
 input noncompletion, not absence; preserve the earlier Rectangle observation.
 See [dated research notes](spec/features/SEW-002-runtime-notes-20261114.md).
 
-1. Verify the PR33 link/status-only metadata from a clean checkout; the full
-   850-file replay/54-Python/map gates already passed at a661ae4.
-2. Merge PR33 normally, preserving source/evidence ancestry; verify Actions
-   remains disabled and no head/merge workflows or Pages updates ran.
-3. Review and publish the current-source cloth diagnosis with its original failure
-   and counterfactual limits; do not infer equilibrium from low velocities.
+1. Finish tracked closure and clean-checkout registry/map/saved-output replay for
+   the current-source balance report, then publish it with its failures intact.
+2. Complete material-strain attribution at committed candidate `6c45535cb312f7fed8ad872ee87b6ba5e5974e35`
+   in `.local/strain-attribution-ui-20261114/`: local build gates, independent
+   unchanged-control regression, real desktop and packaged CLI checks. The
+   prospective contract is `209a8fda` / `spec/features/SIM-005-strain-attribution.md`.
+3. Keep Actions and Pages disabled and source/evidence ancestry intact at each
+   publication. No roadmap gate is accepted.
 4. Continue the remaining
    native/reference construction and complete-roadmap work; no gate is accepted.
 
@@ -152,7 +159,14 @@ all850 bundle files and853 run artifacts were tracked at a661ae4. Final metadata
 tasks. Cloth control 50261 (PIDs 66594/66638), zero-G continuation 58088
 (70783/70879) and no-avatar diagnostic 24011 (71314/71336) are confirmed terminal,
 all exit 0; numerical quality acceptance is separate from process success.
-Saved-state analysis 80646 is terminal, exit 0; independent balance_review is
-active at the last observation. Their ignored ledgers are in `.local/cloth-balance-20261114/` and
+Saved-state analysis 80646 is terminal, exit 0; independent review passed and froze
+expected strain peaks before new executable output. Public-candidate replay1981
+is terminal, exit 0. Original ledgers are in `.local/cloth-balance-20261114/` and
 `.local/cloth-balance-review-20261114/`. Recheck actual job state on resume.
+Attribution gates99131 passed fmt/126 workspace tests/strict Clippy/standard packaging;
+its current-job ledger is `.local/strain-attribution-ui-20261114/.local/attribution-gates/`.
+The independent attribution-control regression76935 is running after offline
+build44359 and focused Clippy47480 passed. Native acceptance has frozen its plan
+and is switching from the saved older product to the exact6c455 package;
+its records are in `.local/strain-native-20261114/`.
 Raw local ledgers remain ignored; keep separate Cargo targets per worktree.
