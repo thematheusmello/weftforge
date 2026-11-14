@@ -8,7 +8,7 @@ Every remaining roadmap gate stays in scope.
 ## Published and recoverable state
 
 Public repository: https://github.com/thematheusmello/weftforge.
-Published main: `1343b0c46b5c4f097709996785fb55d5d23ac174`
+Last main with automated CI/Pages: `1343b0c46b5c4f097709996785fb55d5d23ac174`
 ([native join PR30](https://github.com/thematheusmello/weftforge/pull/30));
 all eight push/PR platform and evidence checks passed.
 [Source PR21](https://github.com/thematheusmello/weftforge/pull/21) is retained
@@ -24,6 +24,9 @@ ship yet. Distribution notices, platform launch/package QA and signing remain.
 Historical tags and failed or stale evidence have not been rewritten.
 
 Current branch: `feat/native-seam-reversal`.
+Current source/evidence delivery:
+[PR31](https://github.com/thematheusmello/weftforge/pull/31), with exact evidence
+checkpoint `e75786ba3e1b259503f00a25f6034427a37edb96`.
 
 GitHub Actions is disabled at repository level (`enabled:false`), verified on
 2026-11-14 at the user's request to stop ongoing development costs. No active
@@ -39,6 +42,10 @@ All32 scoped source/test files still match. Local fmt,92 Rust tests, strict
 Clippy and xtask (54 Python checks,949-entry map) pass. Its preregistered
 native reversal/history/reopen/rejection subset passes independent checks;
 see [the report](parity/reports/WF-20261114-NATIVE-REVERSAL-001.json).
+Detached clean-checkout registry/map, native and saved-SDK replay, all364 unique
+report-artifact tracking/hash checks and new-artifact privacy checks passed at
+e75786b. The final local xtask also passed. After pushing the branch, Actions
+still reported `enabled:false` and zero branch workflow runs.
 
 Retained bounded native I/O candidate source: `1528e3662380a4a74c3b70d3ef9b11f2c607af5f`;
 native `a16acde0fb010a34b1452881ca9865ac3a3ef58908ca50e2719177fb9ab3b838`,
@@ -248,9 +255,9 @@ No current report qualifies as a complete reference parity pass.
 
 ## Active work and next steps
 
-1. Publish the reviewed seam-reversal source and exact native evidence after
-   clean-checkout registry/map/replay/privacy checks. Keep Actions disabled;
-   do not wait for or dispatch paid platform checks or Pages deployments.
+1. Keep Actions disabled through development; source/evidence publication and
+   local checks continue. Re-enable only after the full project is complete.
+   Do not dispatch platform checks or Pages deployments at intermediate gates.
 2. Continue the next substantive construction/format or simulation increment,
    using the existing949-ID map and reviewed behavior contracts. Preserve all
    205 packets/56 landmarks and source ancestors. The zero-ID DXF route
@@ -290,7 +297,7 @@ longer running at the latest process check; its last retained observation was
 the saved reversed fixture. The bounded DXF inspection found no DXF
 entry among16 live File > Export children in that state; it does not establish
 product-wide absence or export behavior. Native acceptance, capture and SDK
-agents have completed their checks; only publication review remains.
+agents have completed their checks and publication review found no blockers.
 No root Cargo job is live at this source checkpoint.
 
 The private2.26GB installer and generated build caches require Expansion. The
