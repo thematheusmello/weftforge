@@ -33,11 +33,14 @@ capture. No raw UI, proprietary asset or implementation technique is supplied to
 implementers. Activating Rectangle is recorded as tool activation only; the
 [bounded original rectangle run](../features/PAT-003-runtime-20261114.md) now
 records numeric creation, one-step history, document save/close/open and physical
-OBJ bounds. Particle-distance edits and curved sewing remain pending. No menu
-entry qualifies as verified parity from presence alone.
+OBJ bounds. The [bounded resolution run](../features/PAT-011-runtime-20261114.md)
+adds the 20 to 10 mm edit, one Undo/Redo, separate save/export, and target-state
+reopen after process restart. Its whole-window AX gap remains explicit. Curved
+sewing remains pending. No menu entry qualifies as verified parity from presence
+alone.
 
-Continue with numeric rectangle resize, controlled particle distance, process
-restart, and reversed partial sewing on curves. The initial CUA coordinate route
+Continue with numeric rectangle resize, resolution limits/cancellation and sewn
+constraints, and reversed partial sewing on curves. The initial CUA coordinate route
 failed; a pinned target-guarded native pointer fallback supports controlled
 canvas input. Retain the failed attempts and remaining modal-capture/AX
 limitations while testing each route. Expand the catalog with real canvas

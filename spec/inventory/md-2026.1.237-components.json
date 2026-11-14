@@ -2326,7 +2326,7 @@
       ],
       "kind": "AXIncrementor",
       "presence_status": "observed",
-      "behavior_status": "not_executed",
+      "behavior_status": "bounded_edit_remesh_history_save_export_reopen",
       "accepted_range": null,
       "error_behavior": null,
       "value": "20",
@@ -2335,7 +2335,22 @@
       "evidence_ids": [
         "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
       ],
-      "note": "Particle-distance editing and its mesh-regeneration effects remain pending. Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+      "note": "Particle-distance editing and its mesh-regeneration effects remain pending. Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested.",
+      "behavior_contract": "../features/PAT-011-runtime-20261114.md",
+      "additional_observations": {
+        "case_id": "REF-PAT-011-RESOLUTION-001",
+        "particle_distance_mm": [
+          20,
+          10
+        ],
+        "commit": "keyboard replacement and Return",
+        "single_undo_redo": "observed",
+        "target_state_after_process_reopen": "10 mm, 1127 vertices, 2149 faces",
+        "accepted_range": null,
+        "invalid_input": "unobserved",
+        "post_sewing_or_simulation_cache": "unobserved",
+        "whole_reopen_capture_gap": "one unrelated AX node attribute failure; all target fields read"
+      }
     },
     {
       "id": "MDUI-60BDAF345C9F",

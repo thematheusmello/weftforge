@@ -2,8 +2,11 @@
 
 Reference state: **partial runtime observed**. The original rectangle
 [document save/close/open run](PAT-003-runtime-20261114.md) preserves its inspected
-properties and native file hash. Process restart, broader formats, atomic writes,
-failed loads and recovery remain pending. Candidate baseline:
+properties and native file hash. The derived original PD10 fixture also preserves
+the inspected target fields/counts across normal process quit/relaunch and
+reopening in the [bounded resolution run](PAT-011-runtime-20261114.md), with an
+explicit whole-window AX gap. Broader formats, atomic writes, failed loads and
+recovery remain pending. Candidate baseline:
 `MD-2026.1.237.58920-macos-arm64-20261113`.
 
 The [official project manual](https://support.marvelousdesigner.com/hc/en-us/articles/47358219651225-Project-File-ZPrj-Open-Save)

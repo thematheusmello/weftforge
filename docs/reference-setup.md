@@ -64,8 +64,9 @@ advertises 14 days. Account eligibility was not established.
 6. Record the actual running executable identity. macOS may launch a quarantined
    copy through App Translocation; do not assume the installed path equals the
    process path.
-7. Before evaluating features, freeze an About/build capture and all relevant
-   settings in `parity/reference.json`, then run the original controlled fixtures.
+7. Record the actual About/build and relevant settings in `parity/reference.json`.
+   Keep exploratory cases provisional while settings are incomplete. Freeze the
+   baseline before qualifying a reference comparison.
 
 Installers, binaries, signed URLs, commercial screenshots, PID/window
 identities, and the private manifest remain outside the public checkout. Public
@@ -78,8 +79,17 @@ The [original numeric rectangle run](../spec/features/PAT-003-runtime-20261114.m
 created 200 × 300 mm through the actual UI, tested one-step Undo/Redo, saved,
 closed the document through New Project, reopened it and independently measured
 its original OBJ export. Maximum dimension error was 0.000122 mm against the
-predeclared 0.01 mm tolerance. This does not complete the broad rectangle feature,
-exercise a process restart or establish a WeftForge comparison.
+predeclared 0.01 mm tolerance. That initial document lifecycle does not complete
+the broad rectangle feature or establish a WeftForge comparison.
+
+The [bounded resolution run](../spec/features/PAT-011-runtime-20261114.md) changes
+the same original rectangle from 20 to 10 mm, checks one Undo/Redo, saves a
+separate native file, exports and independently checks its boundary, then observes
+its target fields/counts after normal process quit/relaunch and reopening.
+Maximum boundary error is 0.000488 mm under the same tolerance. Startup initially
+shows a black window and AX failure, later reaches the workspace without another
+restart or account action, and the final target-state capture has one unrelated
+AX node attribute gap. These limits remain explicit.
 
 The available CUA coordinate route failed for the translocated target. A private,
 pinned native pointer driver using public CoreGraphics and Accessibility APIs
@@ -93,7 +103,7 @@ window IDs. Modal values therefore have native CUA evidence, while untruncated
 REA workspace captures cover before/created/history/saved/reopened states.
 
 Next: numeric resize, constructor edge cases and modifiers, particle-distance
-editing with mesh/boundary preservation, process restart, then controlled curved
-and reversed partial sewing. Continue all menu/flyout/context/panel/dialog,
+limits/cancellation and sewn constraints, then controlled curved and reversed
+partial sewing. Continue all menu/flyout/context/panel/dialog,
 shortcut, default, range, error and end-to-end discovery. The baseline remains
 provisional and verified reference parity remains zero.

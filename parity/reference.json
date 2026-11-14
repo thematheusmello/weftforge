@@ -58,7 +58,8 @@
       "limitation": "Millimetre labels in these controls do not establish every import/export or global unit setting.",
       "additional_observed_scopes": [
         "Rectangle constructor Width/Height mm",
-        "OBJ export mm (Default) at 100%"
+        "OBJ export mm (Default) at 100%",
+        "Pattern Particle Distance (mm): observed 20 to 10 edit and persisted 10 after process reopen"
       ]
     },
     "locale": {
@@ -361,6 +362,53 @@
       "limitations": [
         "Original unsimulated axis-aligned rectangle and positive-index OBJ subset only.",
         "Not a complete geometry, interoperability or reference-parity qualification."
+      ]
+    },
+    {
+      "id": "ev_70894c8a58ca3682740479dde6eb32470ea30261f52c46ffd3de4473e64a48b8",
+      "kind": "rea-native-ui-original-particle-distance-edit",
+      "timestamp": "2026-11-14T03:04:07.608065+00:00",
+      "retention": "complete private producer record and private commercial screenshot; capture gaps remain explicit",
+      "sha256": "47218986e7374a6bd0e0a6d090ab8c2f97e9bf096ca61180cd3b1e7584867920",
+      "accessibility_nodes": 214,
+      "truncated": false,
+      "gaps": [],
+      "observed": "Original selected rectangle changed from 20 to 10 mm particle distance; 1127 vertices/2149 faces and both boundary totals 1000.0 mm. One Undo restored 20 mm/290 vertices/525 faces; one Redo returned the identical retained PD10 record.",
+      "limitations": [
+        "Bounded original fixture observation; no WeftForge comparison or verified parity.",
+        "No simulation, sewing or cache-invalidation behavior qualified."
+      ]
+    },
+    {
+      "id": "ev_6d18e2118fd1bcaa6568188d754f8a3974bfbc18c774f906b94e211f2bd48f56",
+      "kind": "rea-native-ui-original-pd10-after-process-reopen",
+      "timestamp": "2026-11-14T03:20:58.797790+00:00",
+      "retention": "complete private producer record and private commercial screenshot; capture gaps remain explicit",
+      "sha256": "7fff0f5640bf580a601d89c458b56eb07eb503e9c018feca378c5aae58c06a5f",
+      "accessibility_nodes": 214,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [103]: AXError -25202",
+        "AX role unavailable at path [103]: AXError -25202",
+        "AX title unavailable at path [103]: AXError -25202",
+        "AX value unavailable at path [103]: AXError -25202",
+        "AX child count unavailable at path [103]: AXError -25202"
+      ],
+      "observed": "Saved PD10 original reopened after normal quit/relaunch; target particle distance, mesh counts, name and boundary totals persisted. Whole AX capture has an explicit node attribute gap.",
+      "limitations": [
+        "Bounded original fixture observation; no WeftForge comparison or verified parity.",
+        "No simulation, sewing or cache-invalidation behavior qualified."
+      ]
+    },
+    {
+      "id": "REF-PAT-011-RESOLUTION-001-PD20-PD10",
+      "kind": "reviewed-original-resolution-edit-export-and-process-reopen",
+      "path": "spec/observations/REF-PAT-011-RESOLUTION-001-pd20-pd10.json",
+      "sha256": "0d9c574a69adbe3cebf98e05595de9438ded094047468ffd79c19984aa6b54ec",
+      "observed": "20 to 10 mm edit, one Undo/Redo, separate native save, fixed-unit OBJ size/boundary checks, and target-state reopen after process restart. Maximum boundary errors 0.000122 and 0.000488 mm pass declared 0.01 mm tolerance.",
+      "limitations": [
+        "Baseline remains provisional; full PAT-011 and WeftForge comparison incomplete.",
+        "Black startup/AX failures retained as history; final whole-window AX capture has one node attribute gap."
       ]
     }
   ],
@@ -840,14 +888,16 @@
       "SEW-004",
       "FILE-001"
     ],
-    "unobserved_areas": "Broad/advanced behavior, most dialogs/panels, ranges/errors/modifiers, numeric resize, particle-distance edits, sewing, simulation, process restart, broader file interoperability and performance; the bounded original rectangle and physical OBJ dimension observation do not complete these groups.",
+    "unobserved_areas": "Broad/advanced behavior, most dialogs/panels, ranges/errors/modifiers, numeric resize, 5 mm and limit/cancellation resolution cases, sewn constraints after remeshing, sewing execution, simulation/caches, broader interoperability and performance; bounded original rectangle and PD20/PD10 loops do not complete these groups.",
     "documentation_registry_groups_mapped": 56,
     "completed_reference_workflow_contracts": 0,
     "total_actual_reference_features": null,
     "runtime_menu_catalog": "spec/inventory/md-2026.1.237-main-menus.json",
     "runtime_behavior_notes": [
       "spec/features/PAT-003-runtime-20261114.md",
-      "spec/observations/REF-PAT-003-RECTANGLE-001-pd20.json"
+      "spec/observations/REF-PAT-003-RECTANGLE-001-pd20.json",
+      "spec/features/PAT-011-runtime-20261114.md",
+      "spec/observations/REF-PAT-011-RESOLUTION-001-pd20-pd10.json"
     ]
   },
   "known_contradictions": [
@@ -871,16 +921,32 @@
   "intentional_exclusions": [
     "Vendor billing, activation and storefront administration are excluded from the replacement feature set."
   ],
-  "qualification": "Provisional settings baseline. Workspace, detailed menu presence and bounded original rectangle/history/document persistence/export dimensions are observed. Broad contracts and WeftForge comparison remain incomplete; zero verified functional-parity claims.",
+  "qualification": "Provisional settings baseline. Detailed menu/component presence, original rectangle creation/history, fixed-unit physical/boundary measurements, and bounded 20-to-10-mm edit/history/save/export/process-reopen are observed. Broad contracts and WeftForge comparison remain incomplete; zero verified functional-parity claims. Whole-window AX gaps and earlier startup failures remain explicit.",
   "latest_access_observation": {
-    "timestamp": "2026-11-14T00:31:55.636690+00:00",
-    "evidence_id": "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
-    "observed_state": "Garment workspace accessible: Untitled_MD.zprj, 2D/3D toolbars, Object Browser, Property Editor and full version label 2026.1.237 (r58920).",
+    "timestamp": "2026-11-14T03:20:58.797790+00:00",
+    "evidence_id": "ev_6d18e2118fd1bcaa6568188d754f8a3974bfbc18c774f906b94e211f2bd48f56",
+    "observed_state": "Saved original 200 by 300 mm rectangle reopened after normal process quit/relaunch: Particle Distance 10 mm, 1127 vertices, 2149 faces, both selected boundary totals 1000.0 mm, simulation off.",
     "current_observed_blocker": null,
-    "access_handled_by": "account-holder; no investigator credential or activation actions",
+    "access_handled_by": "Account-holder handled trial activation; investigator performed no credential, terms or licensing actions.",
     "license_type_or_expiry": "not inspected",
-    "actions_executed": [],
+    "actions_executed": [
+      "normal application quit/relaunch",
+      "nonbinding Welcome close",
+      "File > Open > Project for owned original PD10 fixture",
+      "two Proceed actions through observed low-space warning",
+      "Edit > Select All"
+    ],
     "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+    "accessibility_nodes": 214,
+    "truncated": true,
+    "gaps": [
+      "AX actions unavailable at path [103]: AXError -25202",
+      "AX role unavailable at path [103]: AXError -25202",
+      "AX title unavailable at path [103]: AXError -25202",
+      "AX value unavailable at path [103]: AXError -25202",
+      "AX child count unavailable at path [103]: AXError -25202"
+    ],
+    "limitation": "All stated target fields were read; the whole window capture has one unrelated AX node attribute failure and is not complete.",
     "privacy": "Account greeting and raw commercial UI remain private."
   },
   "access_history": [
@@ -891,6 +957,29 @@
       "current_observed_blocker": "CLO-SET sign-in; legitimate account entitlement remains unverified.",
       "terms_acceptance": "unknown",
       "actions_executed": [],
+      "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e"
+    },
+    {
+      "timestamp": "2026-11-14T00:31:55.636690+00:00",
+      "evidence_id": "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+      "observed_state": "Garment workspace accessible: Untitled_MD.zprj, 2D/3D toolbars, Object Browser, Property Editor and full version label 2026.1.237 (r58920).",
+      "current_observed_blocker": null,
+      "access_handled_by": "account-holder; no investigator credential or activation actions",
+      "license_type_or_expiry": "not inspected",
+      "actions_executed": [],
+      "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+      "privacy": "Account greeting and raw commercial UI remain private."
+    },
+    {
+      "evidence_id": "ev_03f150d6cb0e685109332115274e164bbf1d4106d1321bd566cf7a7515dd17b7",
+      "observed_state": "After normal process quit/relaunch, a black 580 by 585 startup window was observed; the accompanying AX read failed with -25204.",
+      "current_observed_blocker": "Startup observation temporarily unavailable; cause unknown.",
+      "later_outcome": "The same process subsequently reached the workspace without another restart or account action.",
+      "actions_executed": [],
+      "screenshot_only": true,
+      "gaps": [
+        "Accessibility capture was disabled"
+      ],
       "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e"
     }
   ],
