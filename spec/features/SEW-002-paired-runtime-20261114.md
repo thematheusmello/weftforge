@@ -7,6 +7,8 @@ continuous arc-length correspondence, explicit reversal, simulation and WeftForg
 comparison remain unmeasured. The [structured observation](../observations/REF-SEW-002-PAIR-002.json)
 pins the retained records and these limits. The earlier
 [first-side-only attempt](SEW-002-runtime-20261114.md) remains a separate case.
+The subsequent [explicit reversal case](SEW-002-reverse-runtime-20261114.md)
+observes changed endpoint guides, Undo/Redo and document reopen on another copy.
 
 ## Original input and declared measurement
 

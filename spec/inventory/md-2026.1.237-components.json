@@ -3,7 +3,7 @@
   "product_build": "2026.1.237 (r58920)",
   "status": "partial_observed_presence_values_and_bounded_original_workflows",
   "counts": {
-    "records": 339,
+    "records": 356,
     "complete_behavior_contracts": 0
   },
   "limitations": [
@@ -21,7 +21,8 @@
     "Preference shortcut categories are collapsed. Disabled Action hints are not evidence of active global shortcut behavior.",
     "Unit System Millimeter and Decimal Places 1 do not establish a regional numeric locale or every import/export unit.",
     "Curvature and free-sewing records qualify one original edge/history and a100 mm first-side preview only. Completed/reversed sewing, numeric limits, arc-length endpoint measurements and cloth physics remain unobserved.",
-    "The whole-edge case observes one 300 mm pair, one Undo/Redo and document reopen. Its final native run was interrupted after partial input; after-captures, not a clean driver status, establish the resulting pair. Reversal, partial completion, physical correspondence and simulation remain unqualified."
+    "The whole-edge case observes one 300 mm pair, one Undo/Redo and document reopen. Its final native run was interrupted after partial input; after-captures, not a clean driver status, establish the resulting pair. Reversal, partial completion, physical correspondence and simulation remain unqualified.",
+    "Open Project entries are input-specific current modal values; gray controls are visual availability observations with no retained AX enabled flag or alternative-content test."
   ],
   "records": [
     {
@@ -9230,6 +9231,407 @@
       ],
       "note": "Unlabeled header action; visible icon presence only, effect unexecuted.",
       "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-2BE8734C0A80",
+      "parent_path": [],
+      "path": [
+        "Open Project"
+      ],
+      "kind": "dialog",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Observed modal title; this original input opened with default/current options accepted unchanged."
+    },
+    {
+      "id": "MDUI-636BD67CDCDE",
+      "parent_path": [
+        "Open Project"
+      ],
+      "path": [
+        "Open Project",
+        "Load Type"
+      ],
+      "kind": "section label",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Load Type",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ]
+    },
+    {
+      "id": "MDUI-0BE6334C60EA",
+      "parent_path": [
+        "Open Project",
+        "Load Type"
+      ],
+      "path": [
+        "Open Project",
+        "Load Type",
+        "Open"
+      ],
+      "kind": "radio button",
+      "presence_status": "observed",
+      "behavior_status": "bounded_original_open_with_current_options",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Current selected mode accepted through OK; mode switch and alternative mode behavior untested."
+    },
+    {
+      "id": "MDUI-502DB0FBAC6A",
+      "parent_path": [
+        "Open Project",
+        "Load Type"
+      ],
+      "path": [
+        "Open Project",
+        "Load Type",
+        "Add"
+      ],
+      "kind": "radio button",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ]
+    },
+    {
+      "id": "MDUI-3B4B356700AE",
+      "parent_path": [
+        "Open Project"
+      ],
+      "path": [
+        "Open Project",
+        "Content"
+      ],
+      "kind": "section label",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Content",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ]
+    },
+    {
+      "id": "MDUI-961D6E2B1D93",
+      "parent_path": [
+        "Open Project",
+        "Content"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Object"
+      ],
+      "kind": "section label",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Object",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ]
+    },
+    {
+      "id": "MDUI-061A7168A10B",
+      "parent_path": [
+        "Open Project",
+        "Content",
+        "Object"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Object",
+        "Garment"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "bounded_checked_option_accepted_unchanged",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Checked at this original input open; toggle behavior untested."
+    },
+    {
+      "id": "MDUI-4EB0FA9F44DD",
+      "parent_path": [
+        "Open Project",
+        "Content",
+        "Object"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Object",
+        "Avatar"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Gray/unchecked in this input-specific modal. No activation or alternative-content test; AX enabled flag not retained.",
+      "visually_disabled": true
+    },
+    {
+      "id": "MDUI-6C6EC7004592",
+      "parent_path": [
+        "Open Project",
+        "Content",
+        "Object"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Object",
+        "Scene and Props"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Gray/unchecked in this input-specific modal. No activation or alternative-content test; AX enabled flag not retained.",
+      "visually_disabled": true
+    },
+    {
+      "id": "MDUI-10DCD4DBFAD1",
+      "parent_path": [
+        "Open Project",
+        "Content",
+        "Object"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Object",
+        "3D State"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Gray/unchecked in this input-specific modal. No activation or alternative-content test; AX enabled flag not retained.",
+      "visually_disabled": true
+    },
+    {
+      "id": "MDUI-66D1223C6B2C",
+      "parent_path": [
+        "Open Project",
+        "Content"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Environment"
+      ],
+      "kind": "section label",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Environment",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ]
+    },
+    {
+      "id": "MDUI-602971BED059",
+      "parent_path": [
+        "Open Project",
+        "Content",
+        "Environment"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Environment",
+        "Custom View"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Gray/unchecked in this input-specific modal. AX enabled flag not retained; activation untested.",
+      "visually_disabled": true
+    },
+    {
+      "id": "MDUI-5DFC65C2921C",
+      "parent_path": [
+        "Open Project",
+        "Content",
+        "Environment"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Environment",
+        "Display Settings"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "bounded_checked_option_accepted_unchanged",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Checked at this original input open; toggle behavior untested."
+    },
+    {
+      "id": "MDUI-8DD62DEE8D91",
+      "parent_path": [
+        "Open Project"
+      ],
+      "path": [
+        "Open Project",
+        "Reset"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ]
+    },
+    {
+      "id": "MDUI-8CB1D51E5992",
+      "parent_path": [
+        "Open Project"
+      ],
+      "path": [
+        "Open Project",
+        "OK"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "bounded_original_open_with_current_options",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Accepted the observed Open/Garment/Display Settings configuration; original two-panel workspace reached."
+    },
+    {
+      "id": "MDUI-C16630CE051D",
+      "parent_path": [
+        "Open Project"
+      ],
+      "path": [
+        "Open Project",
+        "Cancel"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ]
+    },
+    {
+      "id": "MDUI-8060A3ACDDD6",
+      "parent_path": [
+        "Open Project"
+      ],
+      "path": [
+        "Open Project",
+        "Close"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Visible unlabeled X control; close action unexecuted.",
+      "reviewer_descriptor": true
     }
   ],
   "observation_sources": [
@@ -9898,6 +10300,15 @@
       "retained_record_sha256": "4fc958c66e640d09db23eff528e70770100cc5e8b7778cfdde693a00239ad9d7",
       "observed_at": "2026-11-14T07:22:06.353Z",
       "privacy": "Complete commercial/account record and screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE002-OPEN-PROJECT-OPTIONS",
+      "provider": "native AX transition and private screenshot",
+      "observed_at": "2026-11-14T07:07:01.272Z",
+      "retained_record_sha256": "a321e8727be4eacda1baf6ee0b81151b1383481a88f929dca3eac1381403bd13",
+      "context": "Opening original unsewn two-panel checkpoint; Open/Garment/Display Settings accepted unchanged.",
+      "capture_scope": "Private modal screenshot and AX transition; values/visual availability only except Open and OK route.",
+      "privacy": "Raw UI remains private."
     }
   ],
   "path_label_policy": "Paths group observed controls for indexing. Reviewer descriptors identify some unlabeled radio groups or repeated axis controls; their visible values/options are literal observations. A descriptor does not establish a printed UI label."
