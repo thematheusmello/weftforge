@@ -756,3 +756,205 @@ fn resource_precision_cancellation_and_invalid_preview_fail_without_mutation() {
     mesh.sewing_groups.push(mesh.sewing_groups[0].clone());
     assert!(mesh.validate().is_err());
 }
+
+#[test]
+fn conditioned_short_spans_reject_global_parameter_rounding_before_commit_or_io() {
+    let mut editor = Editor::default();
+    for (name, origin, width) in [
+        ("Long original", [0., 0.], 10.),
+        ("Short original", [12., 0.], 1.),
+    ] {
+        editor
+            .execute(Command::AddRectangle {
+                name: name.into(),
+                origin,
+                width,
+                height: 0.1,
+            })
+            .unwrap();
+    }
+    let a = interval(editor.project.pieces[0].boundary[0], 0.99999997, 0.99999999);
+    let b = interval(editor.project.pieces[1].boundary[0], 0., 5e-6);
+    let ill_conditioned = vec![[0., 0.], [0.5, 0.2], [0.50000001, 0.8], [1., 1.]];
+
+    // Independent straight-line oracle: a rounded global t changes the steep map.
+    let returned_t = a.t0 + (a.t1 - a.t0) * 0.50000001;
+    let resolved_u = (returned_t - a.t0) / (a.t1 - a.t0);
+    let required_v = 0.2 + (resolved_u - 0.5) / (0.50000001 - 0.5) * 0.6;
+    let physical_error = (0.8 - required_v).abs() * 5e-6;
+    assert!((physical_error - 5.019982071452556e-7).abs() < 1e-13);
+    assert!(physical_error > 1e-8);
+
+    let safe_map = vec![[0., 0.], [0.4, 0.2], [0.6, 0.8], [1., 1.]];
+    editor
+        .execute(Command::AddSewingGroup {
+            name: "Representable conditioned spans".into(),
+            a: vec![a],
+            b: vec![b],
+            correspondence: safe_map,
+        })
+        .unwrap();
+    let geometry = editor
+        .project
+        .sewing_group_geometry(editor.project.sewing_groups[0].id)
+        .unwrap();
+    assert_eq!(geometry.portions.len(), 3);
+    for portion in &geometry.portions {
+        let u = (portion.a.t1 - a.t0) / (a.t1 - a.t0);
+        let v = if u <= 0.4 {
+            u * 0.5
+        } else if u <= 0.6 {
+            0.2 + (u - 0.4) * 3.
+        } else {
+            0.8 + (u - 0.6) * 0.5
+        };
+        assert!(((portion.b.t1 - b.t0) - v * (b.t1 - b.t0)).abs() <= 1e-8);
+    }
+    editor
+        .execute(Command::SetResolution { metres: 0.5 })
+        .unwrap();
+    assert!(editor.undo());
+    let before = editor.project.clone();
+    assert!(editor.can_redo());
+    for cubic in [false, true] {
+        for reversed in [false, true] {
+            let mut variant = Editor::new(before.clone()).unwrap();
+            if cubic {
+                variant
+                    .execute(Command::SetCurveControls {
+                        curve: a.curve,
+                        controls: Some([[1., 0.], [9., 0.]]),
+                    })
+                    .unwrap();
+            }
+            if reversed {
+                let mut group = variant.project.sewing_groups[0].clone();
+                for interval in group.a.iter_mut().chain(&mut group.b) {
+                    std::mem::swap(&mut interval.t0, &mut interval.t1);
+                }
+                variant
+                    .execute(Command::UpdateSewingGroup { group })
+                    .unwrap();
+            }
+            let unchanged = variant.project.clone();
+            let mut group = unchanged.sewing_groups[0].clone();
+            group.correspondence = ill_conditioned.clone();
+            assert!(
+                variant
+                    .execute(Command::UpdateSewingGroup {
+                        group: group.clone()
+                    })
+                    .unwrap_err()
+                    .0
+                    .contains("precision budget")
+            );
+            assert_eq!(variant.project, unchanged);
+            let mut invalid = unchanged;
+            invalid.sewing_groups[0] = group;
+            assert!(
+                invalid
+                    .sewing_group_geometry(invalid.sewing_groups[0].id)
+                    .unwrap_err()
+                    .0
+                    .contains("precision budget")
+            );
+            assert!(
+                invalid
+                    .to_json()
+                    .unwrap_err()
+                    .0
+                    .contains("precision budget")
+            );
+        }
+    }
+    let mut invalid = before.clone();
+    invalid.sewing_groups[0].correspondence = ill_conditioned.clone();
+    for command in [
+        Command::AddSewingGroup {
+            name: "Unrepresentable spans".into(),
+            a: vec![a],
+            b: vec![b],
+            correspondence: ill_conditioned.clone(),
+        },
+        Command::UpdateSewingGroup {
+            group: invalid.sewing_groups[0].clone(),
+        },
+        Command::Transaction(vec![
+            Command::SetResolution { metres: 0.5 },
+            Command::UpdateSewingGroup {
+                group: invalid.sewing_groups[0].clone(),
+            },
+        ]),
+    ] {
+        assert!(
+            editor
+                .execute(command)
+                .unwrap_err()
+                .0
+                .contains("precision budget")
+        );
+        assert_eq!(editor.project, before);
+        assert!(editor.can_redo());
+    }
+    assert!(invalid.validate().is_ok());
+    assert!(
+        invalid
+            .sewing_group_geometry(invalid.sewing_groups[0].id)
+            .unwrap_err()
+            .0
+            .contains("precision budget")
+    );
+    assert!(
+        invalid
+            .to_json()
+            .unwrap_err()
+            .0
+            .contains("precision budget")
+    );
+    assert!(
+        Editor::new(invalid.clone())
+            .unwrap_err()
+            .0
+            .contains("precision budget")
+    );
+    invalid.resolution = 0.5;
+    assert!(invalid.mesh().unwrap_err().0.contains("precision budget"));
+
+    let directory = std::env::temp_dir().join(format!(
+        "weftforge-group-precision-{}-{}",
+        std::process::id(),
+        std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos()
+    ));
+    std::fs::create_dir(&directory).unwrap();
+    let path = directory.join("original.weftforge");
+    before.save(&path).unwrap();
+    before.save(&path).unwrap();
+    let primary = std::fs::read(&path).unwrap();
+    let recovery = std::fs::read(weftforge_core::recovery_path(&path)).unwrap();
+    assert!(
+        invalid
+            .save(&path)
+            .unwrap_err()
+            .0
+            .contains("precision budget")
+    );
+    assert_eq!(std::fs::read(&path).unwrap(), primary);
+    assert_eq!(
+        std::fs::read(weftforge_core::recovery_path(&path)).unwrap(),
+        recovery
+    );
+    let mut malformed: serde_json::Value = serde_json::from_slice(&primary).unwrap();
+    malformed["project"]["sewing_groups"][0]["correspondence"] = json!(ill_conditioned);
+    assert!(
+        Project::from_json(&serde_json::to_vec(&malformed).unwrap())
+            .unwrap_err()
+            .0
+            .contains("precision budget")
+    );
+    assert_eq!(editor.project, before);
+    assert!(editor.redo());
+    std::fs::remove_dir_all(directory).unwrap();
+}
