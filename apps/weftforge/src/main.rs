@@ -961,7 +961,7 @@ impl Studio {
                 }
                 ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("piece",piece.id))),|ui| {
                 if let Some(dimensions)=&mut draft.dimensions {
-                    ui.horizontal(|ui| { ui.label("Size m"); for value in dimensions { commit|=numeric_commit(&ui.add(numeric_value(ui,value).speed(0.005).range(0.01..=5.0).clamp_existing_to_range(false))); } });
+                    ui.horizontal(|ui| { ui.label("Size m"); for value in dimensions { commit|=numeric_commit(&ui.add(numeric_value(ui,value).speed(0.005))); } });
                 }
                 if let Some(placement)=&mut draft.placement {
                     ui.label("Arrange X / Y / Z m");
@@ -2974,6 +2974,129 @@ mod tests {
             0.0
         );
         assert_eq!(app.editor.project.materials[0].areal_density, 0.18);
+    }
+
+    #[test]
+    fn focusing_small_and_large_piece_sizes_preserves_document_and_history() {
+        use egui::accesskit::{Action, ActionRequest, NodeId, TreeId};
+        fn frame(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            events: Vec<egui::Event>,
+        ) -> egui::FullOutput {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1450., 1800.))),
+                    events,
+                    ..Default::default()
+                },
+                |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+            )
+        }
+        fn field(output: &egui::FullOutput, value: f64) -> NodeId {
+            output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(_, node)| node.numeric_value() == Some(value))
+                .unwrap()
+                .0
+        }
+        fn focus(target_node: NodeId) -> egui::Event {
+            egui::Event::AccessKitActionRequest(ActionRequest {
+                action: Action::Focus,
+                target_tree: TreeId::ROOT,
+                target_node,
+                data: None,
+            })
+        }
+        fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+            egui::Event::Key {
+                key,
+                physical_key: None,
+                pressed: true,
+                repeat: false,
+                modifiers,
+            }
+        }
+        for dimensions in [[0.005, 0.006], [6., 0.006]] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = Studio::empty();
+            app.editor
+                .execute(Command::AddRectangle {
+                    name: "Valid dimensions".into(),
+                    origin: [0., 0.],
+                    width: dimensions[0],
+                    height: dimensions[1],
+                })
+                .unwrap();
+            let piece = app.editor.project.pieces[0].id;
+            app.editor
+                .execute(Command::SetGrain { piece, angle: 0.25 })
+                .unwrap();
+            assert!(app.editor.undo());
+            app.selected = Some(piece);
+            let before = app.editor.project.clone();
+            let history = (app.editor.can_undo(), app.editor.can_redo());
+            for value in dimensions {
+                let output = frame(&ctx, &mut app, vec![]);
+                frame(&ctx, &mut app, vec![focus(field(&output, value))]);
+                frame(&ctx, &mut app, vec![]);
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+                );
+                frame(&ctx, &mut app, vec![]);
+                assert_eq!(app.editor.project, before, "untouched size {value}");
+                assert_eq!((app.editor.can_undo(), app.editor.can_redo()), history);
+                assert!(
+                    app.draft
+                        .as_ref()
+                        .is_none_or(|draft| draft.commands(&before).is_empty())
+                );
+            }
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(&ctx, &mut app, vec![focus(field(&output, dimensions[0]))]);
+            frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text("0".into()),
+                ],
+            );
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+            );
+            assert!(
+                app.message
+                    .contains("Piece dimensions must be positive metres")
+            );
+            assert_eq!(
+                app.editor.project, before,
+                "invalid size must not replace the document"
+            );
+            assert_eq!((app.editor.can_undo(), app.editor.can_redo()), history);
+            let dir = exit_test_directory("size-focus");
+            let path = dir.join("valid-sizes.weftforge");
+            app.path = Some(path.clone());
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::S, egui::Modifiers::COMMAND)],
+            );
+            let saved = Project::load(path).unwrap();
+            fs::remove_dir_all(dir).unwrap();
+            assert_eq!(saved, before);
+        }
     }
 
     #[test]
