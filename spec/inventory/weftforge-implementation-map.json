@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "purpose": "Source-pinned engineering crosswalk and bounded handoff queue, not a second implementation/verification status registry or a complete product inventory.",
-  "source_commit": "cd151b3b89e26d55a4dcd4525790006660c4e766",
+  "source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
   "reference_build": "2026.1.237 (r58920)",
   "inputs": [
     {
@@ -20,7 +20,7 @@
   "status_authority": {
     "path": "parity/features.yaml",
     "lookup": "Join groups[].feature_ids to features[].id at the revision being reported. Read implementation_status, reference_observation_status, verification_status and freshness there; no status value is copied here.",
-    "pinned_registry_sha256": "14a718555563652fe6b65d8d3ea0ef4e5fc357b5e722bdd03191f3464f854325"
+    "pinned_registry_sha256": "dc94f39485ceb83f7af2720b2e4638d48254f05664a9c19e037e459762b3a9cc"
   },
   "coverage_semantics": [
     "949 catalog IDs are entry-path discovery records, not the feature denominator. All previous 928 entries, 205 packets and 56 source landmarks remain; 17 input-specific Open Project controls and four selected-seam Edit-menu label paths join existing groups. No packet or broad feature is completed by these additions. Counts of groups or packets are ownership counts, not parity percentages.",
@@ -52,37 +52,37 @@
     "commands": {
       "path": "crates/weftforge-core/src/document.rs",
       "anchor": "pub enum Command {",
-      "scope": "Actual shared typed authoring variants; no generic transform, internal feature, attachment or avatar-mesh command exists."
+      "scope": "The 22 shared typed variants include Transaction, all 19 earlier variants and AddSewingGroup/UpdateSewingGroup/RemoveSewingGroup. Legacy Seam commands retain curve-parameter semantics; no generic transform, internal feature, attachment or avatar-mesh command exists."
     },
     "project": {
       "path": "crates/weftforge-core/src/document.rs",
       "anchor": "pub struct Project {",
-      "scope": "Authoritative editable geometry, pieces, materials, seams, capsule mannequin and global resolution; not a complete scene/animation/attachment model."
+      "scope": "Authoritative editable geometry, pieces, materials, legacy parameter-based seams, ordered SewingGroup paths, capsule mannequin and global resolution. SewingGroup stores stable id/name, ordered oriented interval vectors and a monotone normalized cumulative arc-length map; rest mesh, metric previews and solver state remain derived."
     },
     "history": {
       "path": "crates/weftforge-core/src/document.rs",
       "anchor": "pub fn execute(&mut self, command: Command)",
-      "scope": "Clone/validate/commit transaction and bounded undo/redo history with monotone revisions/IDs."
+      "scope": "Clone/structurally validate/commit transactions with bounded undo/redo and monotone revisions/IDs. New or affected groups undergo bounded metric/cell validation before commit; failure retains construction/history/Redo. Expensive validation is scoped to changed groups or source geometry."
     },
     "curves": {
       "path": "crates/weftforge-core/src/document.rs",
       "anchor": "Command::SplitCurve { curve, t } =>",
-      "scope": "Exact cubic split partitions authored seam correspondence; bounded JoinCurve reconstructs consecutive collinear lines or compatible cubic children, remaps intervals and retains separate seam records with placement-aware 1e-12 m control/roundoff bounds. General fitting/merging and trim are absent."
+      "scope": "Exact cubic split retains legacy seam remapping and rewrites every affected group span in traversal order, including reversed spans and endpoint splits. Bounded JoinCurve remaps each group occurrence without merging authored list entries, preserving group identity/name/map/order; legacy inverse-join placement-aware 1e-12 m control/roundoff bounds remain. General fitting/merging and trim are absent."
     },
     "mesh": {
       "path": "crates/weftforge-core/src/geometry.rs",
       "anchor": "pub fn mesh_cancellable(",
-      "scope": "Conforming triangle rest mesh with authored boundary parameters and revision; not editable retopology/quads."
+      "scope": "Revision-tagged conforming triangle rest mesh with authored boundary parameters; sibling sewing.rs derives arc-length group portions and weighted stitches, preserving both one-sided disconnected knots. The final refinement schedule improves slivers before subdivision and retains the exact original asymmetric-fine fixture regression. No editable retopology/quads or reference tessellation identity is claimed."
     },
     "seam_lengths": {
       "path": "crates/weftforge-core/src/geometry.rs",
       "anchor": "pub fn seam_lengths(",
-      "scope": "Authored interval lengths are available; menu/dialog semantics and complete diagnostics are absent."
+      "scope": "Legacy seam_lengths retains interval length reporting and parameter-based pairing. Sibling sewing.rs exposes interval_length, interval_parameter_at_length and sewing_group_geometry for ordered authored arc-length paths with a declared 1e-8 m absolute path/location budget, conditioned map inversion, finite/work/depth limits and explicit errors; no unbounded fallback or reference metric equivalence is claimed."
     },
     "native_io": {
       "path": "crates/weftforge-core/src/persistence.rs",
       "anchor": "pub fn from_json(",
-      "scope": "Validated versioned native JSON with v1 migration; this is not commercial native project decoding."
+      "scope": "Strict native v3 requires both seams and sewing_groups. Strict v1/v2 readers migrate with empty groups, retaining legacy IDs/order/f64/t-map semantics; unknown, duplicate, missing or mixed-version fields remain errors. Bounded load/save also validates group metrics; this is not commercial project decoding."
     },
     "atomic_save": {
       "path": "crates/weftforge-core/src/persistence.rs",
@@ -102,7 +102,7 @@
     "adapter": {
       "path": "crates/weftforge-core/src/simulation.rs",
       "anchor": "pub fn create_cloth_cancellable(",
-      "scope": "Revision-checked mesh/material/seam/capsule boundary; pins are always empty, colliders are ground and capsules."
+      "scope": "Revision-checked mesh/material/legacy-seam/group/capsule boundary; matching derived group IDs are required and real weighted group stitches enter the existing CPU solver. Pins remain empty; colliders are ground and capsules. No sewing calibration or reference physical parity follows."
     },
     "solver": {
       "path": "crates/weftforge-sim/src/lib.rs",
@@ -127,22 +127,22 @@
     "ui_tools": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "enum Tool {",
-      "scope": "Only Select, Polygon, Rectangle and Sew are native tool modes."
+      "scope": "Five native tool modes: Select, Polygon, Rectangle, legacy Sew and ordered SewingPaths (M:N sewing). Tool switches/reset/load discard pending gestures without creating a partial group."
     },
     "ui_toolbar": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "fn toolbar(",
-      "scope": "Native open/save/history and OBJ/SVG/DXF export entry points, plus bounded play/pause/step/assemble/drape/reset/cancel controls. Export buttons queue the typed ExportFormat and remembered numeric focus, preventing press/blur from committing drafts before success. A button is source presence, not native acceptance or a new reference catalog ID."
+      "scope": "Native open/save/history and OBJ/SVG/DXF exports, simulation controls and M:N sewing activation. The ordered A/B draft shows span counts/directions and Enter/Delete/Escape behavior; toolbar/search share set_tool reset handling. Typed export format/focus queuing remains. Source presence is not native acceptance or a reference catalog ID."
     },
     "ui_properties": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "fn inspector(",
-      "scope": "Stable piece/curve/seam widget scopes and passive RGB buffering remain. Per-seam Reverse uses UpdateSeam, and Join uses JoinCurve, through generic apply_inspector_action: pending inspector changes commit with the action as one transaction; success clears superseded numeric text/focus and rejection retains current draft/input/history. Rows show seam ID, name, curve IDs and oriented parameters; broader field/selection/preferences editing remains absent."
+      "scope": "Stable piece/curve/legacy-seam/group scopes and passive RGB buffering. Ordered A/B drafts have accessible boundary-add controls and interval rows; group rows expose identity, directed spans, revision-derived arc lengths/mismatch/portion count, structured name/span/curve/t/map editing, Reverse B and removal through shared commands. apply_inspector_action combines valid pending edits into one transaction and retains draft/input/history on failure. Full canvas seam selection, legacy property editing and reference sewing semantics remain open."
     },
     "ui_pattern": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "fn patterns(",
-      "scope": "2D authored boundary display/picking, point drag, polygon/rectangle/sewing input, fixed grid and hardcoded snap. Each seam now draws both authored endpoint guides using oriented t0/t1; the guides visualize endpoint pairing only, not interior nonlinear correspondence, physical twist or arc-length equivalence."
+      "scope": "2D authored boundaries/picking, point drag, legacy edge-pair sewing and ordered A/B boundary collection. Pending paths show every span/order/direction. Accepted groups draw every derived source-owned portion and paired endpoints only from the matching revision; legacy seams retain both t0/t1 endpoint guides. No physical twist, continuous pixel measurement or independent visibility controls are supplied."
     },
     "ui_garment": {
       "path": "apps/weftforge/src/main.rs",
@@ -152,7 +152,7 @@
     "ui_jobs": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "fn start_batch(",
-      "scope": "Revision-tagged cancellable worker batches and stale-result rejection; no persistent animation cache."
+      "scope": "Revision-tagged cancellable worker batches derive mesh/group metrics and portions once for the relevant revision and reject stale/cancelled results. Inspector rendering does not repeatedly integrate group curves; no persistent animation cache exists."
     },
     "ui_load": {
       "path": "apps/weftforge/src/main.rs",
@@ -172,7 +172,7 @@
     "ui_shortcuts": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "fn ui(&mut self, ui: &mut egui::Ui",
-      "scope": "Fixed native shortcuts/search and focus/rectangle-modal background guards remain. Command search includes Export DXF and uses the same queued format/focus export path as the toolbar, processed after inspector input. No separate DXF key binding or configurable keymap is claimed. Focused numeric edit buffers clear on accepted actions/history; failed exports retain them."
+      "scope": "Fixed shortcuts/search and modal/focus guards remain. M:N sewing is reachable from search; Enter confirms A then commits B, Delete/Backspace removes the last pending span and Escape cancels outside focused editors/modals. Tool switches reset the draft. DXF shares the queued export/focus path; no configurable keymap or separate DXF binding is claimed."
     },
     "snap": {
       "path": "apps/weftforge/src/main.rs",
@@ -182,22 +182,22 @@
     "cli": {
       "path": "apps/weftforge-cli/src/main.rs",
       "anchor": "fn run()",
-      "scope": "Explicit new/inspect/rectangle/resize/curve-controls/split/join/grain/stiffness/export/simulate/fit/recover routes. export-dxf INPUT OUTPUT uses Project::export_dxf, refuses source/native replacement and reports source_revision, authored_dxf, mm and boundary-only loss scope. join retains shared JoinCurve validation/transaction handling; failed edits preserve previous outputs."
+      "scope": "Existing offline routes remain, plus execute INPUT OUTPUT COMMANDS.json: a strict original-byte JSON array of 1..1024 nontransaction shared commands, at most 1 MiB, committed once through the shared engine before atomic save. inspect-sewing emits canonical native v3 source, actual derived group lengths/portions and revision-tagged rest mesh/boundaries/stitches. Generic inspect also includes authored groups and group geometry. DXF remains boundary-only; failed edits preserve old outputs."
     },
     "mcp": {
       "path": "apps/weftforge-cli/src/mcp.rs",
       "anchor": "fn call(",
-      "scope": "Six stateless local file tools, including project_export_dxf with required input/output paths. DXF returns source_revision, authored_dxf, mm, positive UV-to-XY and explicit boundary-only loss scope. project_execute still applies shared typed commands as one transaction; this is not live GUI control, and an export tool adds no authoring Command variant."
+      "scope": "Six stateless local file tools remain. project_execute shares the same 1..1024-command transaction helper as CLI execute and exposes group add/update/remove; project_inspect returns all authored groups/stable relationships without a mesh. Export tools retain revision/unit/loss metadata and protected destinations. CLI inspect-sewing supplies derived rest constraints separately; this is not live GUI control."
     },
     "mcp_schema": {
       "path": "apps/weftforge-cli/src/mcp.rs",
       "anchor": "fn command_schema()",
-      "scope": "Handwritten schema for the 18 nontransaction variants, including join_curve with one curve ID; must stay synchronized with the 19 typed Command variants and adapters."
+      "scope": "Closed handwritten schema for all 21 nontransaction variants, including Add/Update/RemoveSewingGroup payloads, bounded ordered interval arrays and explicit correspondence; synchronized with the 22 typed Command variants including Transaction. The six-tool surface does not grow for each authoring variant."
     },
     "workflow_tests": {
       "path": "crates/weftforge-core/tests/workflow.rs",
       "anchor": "fn reversed_gathered_cubic_intervals_retain_correspondence",
-      "scope": "Implementation-only authoring, sewing, refinement, persistence and independent OBJ parser regression tests."
+      "scope": "Implementation-only authoring/sewing/refinement/IO/OBJ regressions remain. Sibling tests/sewing_groups.rs checks disconnected 2:3 one-sided knots, independent cubic length/inversion, nonuniform collinear cubics, nonlinear maps, split/join/remesh/geometry edits, reversal/history/dependent removal, strict migration/atomic IO, cancellation/work/precision rejection. The exact tests/fixtures/asymmetric-fine.weftforge regression covers final mesh scheduling; none establishes reference parity."
     },
     "grain_tests": {
       "path": "crates/weftforge-core/tests/grain.rs",
@@ -207,17 +207,17 @@
     "cli_tests": {
       "path": "apps/weftforge-cli/tests/curves.rs",
       "anchor": "fn cli_edits_splits_and_joins_sewn_curves_and_preserves_outputs_on_failure",
-      "scope": "Implementation-only CLI curve/split/join failure preservation and public-help checks now include export-dxf advertisement. DXF CLI/MCP byte agreement and source/destination preservation are covered by the stdio integration source tests. Native/reference acceptance remains authoritative in the registry/reports."
+      "scope": "Implementation-only CLI curve/split/join and output-preservation/help tests remain compatible with native v3. Sibling mcp_stdio.rs exercises shared CLI execute, inspect-sewing canonical source/actual constraints, group commands and strict/bounded command-file rejection. Native/reference acceptance remains in the registry/reports."
     },
     "mcp_tests": {
       "path": "apps/weftforge-cli/tests/mcp_stdio.rs",
       "anchor": "fn stdio_authors_atomic_shared_commands",
-      "scope": "Implementation-only stdio lifecycle, schema/input validation, transactions, bounded join_curve, and sixth-tool DXF checks. Source assertions compare CLI/MCP DXF bytes, inspect source_revision/mm/axes/loss metadata, preserve native input and reject protected destinations. They do not supply independent DXF consumer or native desktop acceptance."
+      "scope": "Implementation-only stdio lifecycle/closed-schema/transaction/error tests retain six-tool DXF checks and add CLI/MCP group command agreement, canonical source inspection, actual rest constraints, failed destination/recovery preservation and 1..1024-command limits. These are adapter checks, not independent physical/native/reference sewing or DXF acceptance."
     },
     "migration_tests": {
       "path": "crates/weftforge-core/tests/migration.rs",
       "anchor": "fn real_v1_fixtures_migrate",
-      "scope": "Lossless native migration and rejection of malformed/mixed versions."
+      "scope": "Strict native v1/v2-to-v3 migration preserves legacy authored geometry/physical values/IDs/order/revision/t-maps and introduces only an empty group vector. V3 stores required seams/groups and rejects missing/mixed/duplicate/unknown fields; sibling sewing_groups.rs covers exact group/map reopen/recovery and failed metric-save preservation."
     },
     "sim_tests": {
       "path": "crates/weftforge-sim/src/tests.rs",
@@ -262,7 +262,7 @@
     "ui_field_state": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "ui.make_persistent_id((\"piece\",piece.id))",
-      "scope": "Stable creation/piece/curve/sewing/mesh widget scopes isolate numeric edit buffers from hierarchy rows. Each seam row additionally uses the stable seam ID, preserving distinct Reverse/Remove controls for duplicate names created by splitting; widget scopes do not add authored schema fields or Command variants."
+      "scope": "Stable creation/piece/curve/legacy-seam/group/mesh scopes isolate edit buffers and duplicate-name rows. Group span reorder/remove/reverse and easing-knot mutations clear superseded numeric buffers; accessible Add boundary controls and per-row curve selectors use authored IDs. Modal group edits apply once or cancel without committing the draft."
     },
     "ui_rgb_buffer": {
       "path": "apps/weftforge/src/main.rs",
@@ -317,12 +317,12 @@
     "json_bit_tests": {
       "path": "crates/weftforge-core/tests/migration.rs",
       "anchor": "fn original_v1_point_bits_survive_load_migration_save_and_reload",
-      "scope": "Implementation-only decimal-parser-to-bit checks cover v1/v2 load/migration/save/reload/recovery and difficult values; rejection tests retain bounded invalid-input behavior. Fresh native parser acceptance remains pending."
+      "scope": "Implementation-only decimal-to-bit checks retain difficult v1/v2 inputs through strict v3 migration/save/reload/recovery. Group tests preserve exact legacy maps and authored group f64 fields. Rejection remains bounded; these source checks do not supply current native parser acceptance."
     },
     "seam_fields": {
       "path": "crates/weftforge-core/src/document.rs",
       "anchor": "pub struct Seam {",
-      "scope": "Current authored seam stores id/name, two oriented curve intervals and monotone parameter correspondence; it has no Turned, fold, Tension, Sublayer, normal-map or 3D Seamline property state."
+      "scope": "Legacy Seam retains id/name, two oriented curve intervals and normalized curve-parameter correspondence unchanged. Sibling SewingGroup in document.rs adds ordered a/b vectors and a normalized cumulative authored arc-length map; sewing.rs owns derived lengths/portions. Neither model has Turned/fold/Tension/Sublayer/normal-map/3D Seamline property state."
     },
     "analytic_membrane_tests": {
       "path": "crates/weftforge-sim/src/tests.rs",
@@ -364,7 +364,9 @@
     },
     "chain-seams": {
       "setup": "Author four original pieces whose target edge chains have 1:2 and 2:3 curve counts, one cubic, differing tessellations and explicit partial endpoints. Record chain order/orientation and intended gathered versus invalid pairings before execution.",
-      "existing_original_seeds": [],
+      "existing_original_seeds": [
+        "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge"
+      ],
       "rule": "Recipe is a needed original fixture, not proof it was executed; newly authored reference files/assets must pass redistribution review."
     },
     "concave-internal": {
@@ -3216,10 +3218,11 @@
         "mcp",
         "migration_tests",
         "json_roundtrip_config",
-        "json_bit_tests"
+        "json_bit_tests",
+        "project"
       ],
       "shared_commands": [],
-      "candidate_behavior": "Native .weftforge v2 loads/saves atomically with v1 migration. Shared serde_json round-trip f64 decoding and independent decimal-to-bit migration/save/reload/recovery source regressions remain. Native qualification/freshness is read from the authoritative registry and reports rather than inferred from these source routes; commercial native formats and metadata variants remain undecoded.",
+      "candidate_behavior": "Strict native .weftforge v3 atomically stores required legacy seams and ordered sewing_groups. Strict v1/v2 migration introduces empty groups without reinterpreting legacy t-maps or changing authored IDs/order/f64 values. Structural/metric and bounded file validation rejects malformed, missing, duplicate, unknown or mixed-version data before replacement. Shared round-trip f64 decoding and exact IO regressions remain implementation evidence; current native qualification/freshness comes from the registry/reports. Commercial formats and metadata variants remain undecoded.",
       "missing_functionality": [
         "Reference native decoding research; metadata preservation; exact open/save option contracts and unsupported-data reporting.",
         "Show Option to Save Metadata and Save with Thumbnail preferences are configured read-only; native thumbnail/metadata contents and future-save/default/reset behavior are not implemented by current native JSON IO.",
@@ -4065,7 +4068,7 @@
         "mcp_tests"
       ],
       "shared_commands": [],
-      "candidate_behavior": "Offline typed JSON commands, CLI and six stateless local MCP file tools cover bounded authoring/export. CLI export-dxf and project_export_dxf share the validated R2000 boundary writer and report source revision, mm and loss scope; MCP additionally returns the positive UV-to-XY axis declaration. The shared Command set stays at 19 including Transaction, while MCP arrays accept the 18 nontransaction variants. No Script importer, Python editor/runtime, live GUI control, persistent undo or simulation-job API exists.",
+      "candidate_behavior": "CLI execute accepts a strict original-byte JSON array of 1..1024 shared nontransaction commands, at most 1 MiB, and commits/saves once through the same helper as MCP project_execute. The core has 22 variants including Transaction; both arrays expose all 21 nontransaction variants, including ordered group add/update/remove, while the MCP surface stays six stateless file tools. CLI inspect-sewing returns canonical v3 source plus actual derived group/rest constraints; MCP project_inspect returns authored relationships without meshing. DXF remains the validated boundary-only writer. No Script/Python runtime, live GUI control, persistent undo or simulation-job API exists.",
       "missing_functionality": [
         "Observed scripting capabilities and local command-based substitute, script editing/execution/reporting and discoverable API docs; maintain the native offline runtime requirement."
       ],
@@ -4236,13 +4239,16 @@
       "source_refs": [
         "commands",
         "ui_properties",
-        "history"
+        "history",
+        "project",
+        "workflow_tests"
       ],
       "shared_commands": [
         "RemovePiece",
-        "RemoveSeam"
+        "RemoveSeam",
+        "RemoveSewingGroup"
       ],
-      "candidate_behavior": "Native piece/seam removal is shared and transactional; generic selection deletion and dependency previews are absent.",
+      "candidate_behavior": "Native piece/legacy-seam/group removal uses shared transactions. Removing a piece removes the whole ordered group if any span depends on it, reports the dependent-group count and preserves unrelated groups; Undo restores the relationship. This independent policy is not a reference deletion finding. Generic selection deletion and dependency previews remain absent.",
       "missing_functionality": [
         "Typed selection deletion for each object kind, dependency invalidation/cascade contract, hotkey/context and old-state preservation."
       ],
@@ -5168,12 +5174,13 @@
         "mcp_schema"
       ],
       "shared_commands": [
-        "UpdateSeam"
+        "UpdateSeam",
+        "UpdateSewingGroup"
       ],
-      "candidate_behavior": "Native per-seam Reverse clones the chosen seam, swaps only side B t0/t1, and submits existing UpdateSeam. It preserves seam identity/name/order, side A, covered parameter intervals and the stored normalized correspondence; two reversals restore construction apart from revision. Stable seam-ID rows distinguish duplicate names and both endpoint guides show the categorical connection change. Generic inspector action handling combines pending drafts and Reverse in one transaction and preserves draft/current numeric input/history on failure. Intervals remain curve parameters; core/in-process checks do not establish actual desktop acceptance, continuous arc-length/reference equivalence, easing or physical twist.",
+      "candidate_behavior": "Legacy per-seam Reverse still swaps only side B t0/t1 through UpdateSeam, preserving its normalized parameter map and duplicate-name ID rows. Ordered group Reverse B uses UpdateSewingGroup to reverse B span order and swap every span direction while retaining identity/name/A/map; two reversals restore all group fields. Native rows/modal share transactional pending-draft and numeric-buffer guards and revision-derived portion/endpoint guides. Source/in-process tests describe implementation behavior; historical legacy reversal execution does not qualify the new group workflow, continuous reference equivalence, easing or physical twist.",
       "missing_functionality": [
-        "Execute a separately declared native reversal sequence on an identified executable, including the chosen ID among duplicate names, focused pending numeric input, rejected action preservation, two endpoint guides, Undo/Redo, remeshing and save/reopen. Historical join execution does not qualify the changed native reversal source; current qualification belongs in the authoritative registry/reports.",
-        "Resolve reference continuous correspondence/geometry, multiple selection and alternative entry/error contracts independently. Endpoint guides do not expose a hidden orientation flag, complete arc-length mapping, unequal-length physical easing or simulated twist; broader seam properties remain unmodeled."
+        "Execute the newly declared ordered-group reversal/edit/history/reopen workflow on an identified native executable, retaining exact chosen identity, map, focused input, failure/cancel behavior and revision-derived guides. Current execution qualification belongs solely in the registry/reports; historical per-seam reversal does not qualify changed group source.",
+        "Resolve reference continuous correspondence/geometry, multiple selection and alternative entry/error contracts independently. Endpoint/portion guides do not establish hidden reference orientation state, physical easing or simulated twist; broader seam properties remain unmodeled."
       ],
       "runtime_questions": [
         "The bounded reference command switches A0-B0/A1-B1 guides to A0-B1/A1-B0 while preserving the same 100.0-labeled intervals. Which continuous pair points, ordered-side representation and stable IDs are retained beyond this categorical UI result, and how do unequal lengths, multiple selection, remeshing, cancel/error and alternative entry routes behave?"
@@ -5506,10 +5513,12 @@
         "sim_tests",
         "initial_contacts",
         "live_contacts",
-        "initial_contact_tests"
+        "initial_contact_tests",
+        "mesh",
+        "workflow_tests"
       ],
       "shared_commands": [],
-      "candidate_behavior": "Native play/pause/step/reset and assembly/drape phases drive cancellable CPU worker state and reject obsolete revisions. Initial immutable contact diagnostics now use a conservative BVH; live solving and subsequent/reset diagnostic scans remain quadratic. This does not establish simulation parity, whole-solver acceleration or a new native performance result.",
+      "candidate_behavior": "Native play/pause/step/reset and assembly/drape phases drive cancellable CPU worker state and reject obsolete revisions. Initial immutable contact diagnostics now use a conservative BVH; live solving and subsequent/reset diagnostic scans remain quadratic. This does not establish simulation parity, whole-solver acceleration or a new native performance result. Ordered group IDs/portions remain derived mesh data; the adapter checks source revision/group identities and forwards their real weighted stitches to the existing solver with ordinary contacts. No new solver physics, full gathering calibration or accepted fitting result follows from small implementation tests.",
       "missing_functionality": [
         "Observed reference toggle/quality/job/gesture behavior and complete shared controls; no parity claim from current worker tests.",
         "Measure current initialization versus mutable step/diagnostic costs separately; the initial-only hierarchy does not resolve live collision scaling."
@@ -5545,7 +5554,7 @@
       "shared_commands": [
         "SetResolution"
       ],
-      "candidate_behavior": "One document-wide edge-length resolution rebuilds conforming rest mesh and invalidates simulation; no high/low presets or per-piece resolution/subdivision mode exists.",
+      "candidate_behavior": "One document-wide edge-length resolution rebuilds conforming rest mesh and invalidates simulation; no high/low presets or per-piece resolution/subdivision mode exists. Ordered group construction remains unchanged across remeshing; lengths/portions and weighted stitches are rebuilt for the new revision using authored arc length rather than the mesh chord metric. The final refinement schedule improves slivers before subdivision and retains an exact original fine-fixture regression; it does not define reference tessellation or change global/per-pattern scope.",
       "missing_functionality": [
         "Runtime preset values/scope, subdivision display distinction, validation bounds and preserved rest/seam correspondence.",
         "Selected-pattern Particle Distance is explicitly measured in mm, while current SetResolution is document-wide metres. No per-pattern field/edit/remesh semantics are implemented; this control must not be conflated with Side Geometry Resolution.",
@@ -5948,7 +5957,7 @@
         "SplitCurve",
         "JoinCurve"
       ],
-      "candidate_behavior": "Exact parameter-t split remaps authored seams with stable IDs; bounded JoinCurve joins the selected boundary to its consecutive oriented neighbor, including the closing pair, and retains the selected curve ID. It accepts only compatible straight/cubic inverse constructions within a placement-aware 1e-12 m control-plus-f64 bound, remaps both seam sides affinely and preserves separate seam IDs/maps. Native inspector, CLI join and MCP join_curve use the shared typed command. Native joins include pending drafts in one transaction; rejection preserves document/history/draft/current numeric input, and success clears superseded text/focus. These source routes and in-process checks do not themselves qualify native execution or reference behavior. Read the declared native join subset and its current qualification in the authoritative registry/reports; broader reference join semantics remain unknown.",
+      "candidate_behavior": "Exact parameter-t split remaps authored seams with stable IDs; bounded JoinCurve joins the selected boundary to its consecutive oriented neighbor, including the closing pair, and retains the selected curve ID. It accepts only compatible straight/cubic inverse constructions within a placement-aware 1e-12 m control-plus-f64 bound, remaps both seam sides affinely and preserves separate seam IDs/maps. Native inspector, CLI join and MCP join_curve use the shared typed command. Native joins include pending drafts in one transaction; rejection preserves document/history/draft/current numeric input, and success clears superseded text/focus. These source routes and in-process checks do not themselves qualify native execution or reference behavior. Read the declared native join subset and its current qualification in the authoritative registry/reports; broader reference join semantics remain unknown. Ordered groups are rewritten separately: split expands each affected span in traversal order, including reversed/endpoint cases; join transforms every occurrence while retaining individual list entries, group ID/name/map/order. Current authored arc lengths/pairing are rederived within the declared group metric budget. Legacy parameter correspondence and tighter inverse-geometry tests remain distinct.",
       "missing_functionality": [
         "Reference gesture/numeric/arc-length-versus-parameter contracts, selection/snapping/failure/history semantics and independent comparison remain unknown. Bounded JoinCurve is inverse construction, not arbitrary curve fitting, corner removal, mixed straight/cubic merging or trim.",
         "Broader native invalid-split/control branches, split Undo/Redo, large-placement and coalesced-event cases require their own declared execution. Read the UI-BOUNDED-JOIN-001 native subset and its source/executable identity, independent checks and current qualification in the authoritative registry/reports; source/in-process/CLI/MCP tests do not supply reference parity."
@@ -6296,16 +6305,19 @@
         "seam_lengths",
         "workflow_tests",
         "seam_fields",
-        "ui_field_state"
+        "ui_field_state",
+        "mcp_schema"
       ],
       "shared_commands": [
         "UpdateSeam",
-        "RemoveSeam"
+        "RemoveSeam",
+        "UpdateSewingGroup",
+        "RemoveSewingGroup"
       ],
-      "candidate_behavior": "Core can update/remove seams. Native inspector rows now show seam name/ID and both curve IDs/oriented parameters, use stable seam-ID widget scopes for duplicate names, and expose Reverse/Remove. Reverse uses existing UpdateSeam and shared inspector transaction/focus guards; both endpoint guides appear on the 2D canvas. Full canvas seam selection, name/property/general interval editing, direction/length diagnostics and a complete sewing edit tool remain absent.",
+      "candidate_behavior": "Legacy seam ID/name/curve/parameter rows retain Reverse/Remove. New ordered group rows identify every span and direction, report current revision-derived arc lengths/mismatch/paired portions, and expose Edit group, Reverse B and Remove group. The structured modal edits name, ordered curve-ID/t intervals and explicit nonlinear easing knots; accessible boundary-add controls and row comboboxes support precise paths. Shared commands combine pending inspector edits and one completed action into one transaction; rejection retains draft/input/history and Cancel commits nothing. Full canvas seam picking, general legacy interval/name/property editing, multi-selection and reference-equivalent preflight remain absent.",
       "missing_functionality": [
-        "Reopened whole/partial/reversed seams are retrieved through Edit Sewing then Select All with unchanged identity/current settings; direct picking, name/property/interval edits, invalid/cancelled input, multiple selection and full preflight diagnostics remain unqualified. One exposed Reverse Sewing command changes categorical guides but does not measure continuous correspondence.",
-        "Actual native reversal input/history/reopen and stable duplicate-name row behavior require a separately declared desktop run. In-process source checks cover these paths but do not supply that acceptance or settle reference selection/property/correspondence semantics."
+        "Reference direct picking, name/property/interval edit rules, mixed/multiple selection and complete preflight diagnostics remain unqualified. Bounded whole/partial/reversed retrieval and categorical guides do not establish continuous correspondence or a complete sewing editor.",
+        "Run the actual native ordered draft/modal edit/reversal/removal/cancellation and editable reopen workflow separately from in-process tests, including focused edits and failed-action preservation; read its declared scope and qualification in the registry/reports."
       ],
       "runtime_questions": [
         "How are seams selected/edited, do handles address arc length or parameters and which errors/length mismatch/direction warnings appear before simulation?",
@@ -6344,7 +6356,7 @@
       "shared_commands": [
         "AddSeam"
       ],
-      "candidate_behavior": "Oriented authored intervals and explicit monotone mapping generate weighted stitches independent of tessellation; native edge-pair creation exists.",
+      "candidate_behavior": "Legacy single-curve AddSeam retains oriented intervals, normalized curve-parameter correspondence and weighted mesh stitches. Native legacy edge-pair creation remains distinct from new ordered SewingGroup arc-length pairing. Both derive revision-tagged constraints independently of the display mesh; the new representation does not reinterpret old v1/v2 nonlinear maps or establish reference correspondence.",
       "missing_functionality": [
         "Complete entry/selection/direction/endpoint contracts beyond the bounded whole-edge, paired partial and categorical reversal cases, including unequal lengths/easing, exact curved/free endpoints and numerical mismatch/correspondence diagnostics.",
         "Two separately accepted numeric 100 mm sides now establish one completed partial pair and a later Reverse Sewing changes categorical endpoint guides. These outcomes supply no exact control geometry, continuous arc-length mapping, sewn remeshing, simulation or process-restart contract."
@@ -6373,16 +6385,34 @@
       "source_refs": [
         "commands",
         "mesh",
-        "workflow_tests"
+        "workflow_tests",
+        "project",
+        "curves",
+        "seam_lengths",
+        "seam_fields",
+        "ui_tools",
+        "ui_toolbar",
+        "ui_properties",
+        "ui_pattern",
+        "ui_jobs",
+        "cli",
+        "mcp",
+        "mcp_schema",
+        "mcp_tests",
+        "native_io",
+        "adapter"
       ],
       "shared_commands": [
         "AddSeam",
-        "Transaction"
+        "Transaction",
+        "AddSewingGroup",
+        "UpdateSewingGroup",
+        "RemoveSewingGroup"
       ],
-      "candidate_behavior": "Single-curve interval seams and explicit correspondence exist; no ordered edge-chain entity or M:N/free chain tool exists.",
+      "candidate_behavior": "First-class SewingGroup stores one stable relationship with ordered/oriented A/B interval vectors and an explicit monotone normalized cumulative authored arc-length map. Lines and bounded cubic integration/inversion use a declared 1e-8 m path/location budget; disconnected gaps add no length and both one-sided knots survive portion/stitch derivation. Work/depth/precision limits reject unsupported cases atomically. Split/join preserve group identity/map/list order; geometry edits recompute lengths; piece deletion removes whole dependent groups. Native M:N sewing collects A then B with Enter, Delete-last/Escape/reset, accessible boundary controls and precise structured group/map editing. CLI/MCP use three shared group commands and strict v3 IO; matching-revision portions/stitches feed the existing solver. This is a bounded implementation candidate, not observed reference M:N execution or physical sewing parity.",
       "missing_functionality": [
-        "Persistent ordered chain correspondence, compound mapping, free endpoint tools, multi-seam transaction and edit/refinement rules.",
-        "A later separate original case accepts 100 mm on each numeric side and completes one AddSeam-like authoring gesture with one Undo/Redo and document reopen. Its categorical reversal is observed separately. Independent physical boundary-length-to-parameter conversion, continuous correspondence, unequal-length easing, general free endpoints and chain/M:N behavior remain unestablished."
+        "Free canvas endpoint/physical-length authoring and numeric first-side preview/dialog, internal relationships, automatic sewing, broader edit/selection/entry contracts and independently qualified native M:N workflows remain in scope. Precise t endpoints and a structured editor do not implement every documented Free Sewing interaction.",
+        "The separate original 100 mm partial-pair and categorical reversal/history/document-reopen cases do not establish reference ordered M:N chains, continuous arc-length correspondence, unequal-length easing, successful Escape cancellation, remeshing or simulation. Documentation and implementation-only integrals/constraint tests cannot supply those runtime answers."
       ],
       "runtime_questions": [
         "How do M:N and free variants form ordered chains, partial endpoints and normalized/eased correspondence across mismatched lengths and curve counts?",
@@ -6434,12 +6464,13 @@
       "source_refs": [
         "seam_lengths",
         "cli",
-        "ui_properties"
+        "ui_properties",
+        "mesh"
       ],
       "shared_commands": [],
-      "candidate_behavior": "Core computes authored seam-side lengths and CLI inspect returns them; native check dialog/threshold/scope is missing.",
+      "candidate_behavior": "Legacy seam interval lengths remain available. Ordered groups derive authored cumulative arc-length totals/mismatch in metres and source-owned paired portions once per matching mesh revision; inspector rows display them and CLI inspect/inspect-sewing expose actual derived data. A native selected/all checking dialog, acceptable-easing policy and reference threshold/scope remain absent.",
       "missing_functionality": [
-        "Visible selected/all mismatch check with exact units, sign/ratio and declared acceptable easing versus invalid sewing."
+        "Selected/all mismatch checking with reviewed units/precision, sign/ratio, thresholds and explicit acceptable easing versus invalid sewing. Current raw group totals and derived portions do not establish that reference diagnostic policy."
       ],
       "runtime_questions": [
         "What mismatch metric/precision/threshold and scope are used, and how are deliberately gathered seams distinguished from errors?"
@@ -7403,10 +7434,11 @@
         "ui_pattern",
         "ui_properties",
         "mesh",
-        "seam_lengths"
+        "seam_lengths",
+        "ui_jobs"
       ],
       "shared_commands": [],
-      "candidate_behavior": "Native 2D sewing lines, two endpoint-pair guides per seam and stable ID/name rows with both interval directions now exist. The guides follow t0/t1 endpoint pairing and visualize no interior nonlinear map. Independent sewing/length/seamline/thread visibility controls, selected-state diagnostics and 3D overlays remain absent; no physical twist or arc-length result follows from the display.",
+      "candidate_behavior": "Legacy seams draw both t-based endpoint guides and retain stable ID/name rows. Pending ordered drafts show every A/B span/order/direction; matching-revision group previews draw all source-owned portions and paired endpoints, with authored arc-length totals/mismatch in the inspector. Metrics/guides are background-derived and withheld while rebuilding. These are source-derived guides, not interior pixel measurements or physical twist results. Independent sewing/length/seamline/thread visibility controls, full canvas picking and 3D overlays remain absent.",
       "missing_functionality": [
         "Separate physical seam, seamline and thread display objects, selected/all scopes, direction/mismatch diagnostics and picking."
       ],
@@ -8977,10 +9009,12 @@
         "ui_pattern",
         "ui_properties",
         "seam_lengths",
-        "curves"
+        "curves",
+        "ui_tools",
+        "seam_fields"
       ],
       "shared_commands": [],
-      "candidate_behavior": "Current native sewing picks authored curve intervals through the existing Sew tool and shared AddSeam backend. It has no Free Sewing endpoint/first-side physical-length preview or Create Sewing Line dialog; a preview is not a completed authoring command, and cubic parameter t is not assumed to equal a boundary-length ratio.",
+      "candidate_behavior": "Legacy Sew retains single-curve interval authoring. Ordered M:N sewing adds transient A/B collections, explicit t-endpoint controls, visible spans and two-stage Enter/Delete/Escape/reset behavior through AddSewingGroup. It still has no reference-style Free Sewing first-side physical-length preview or Create Sewing Line dialog; a numeric t field is not a physical-length endpoint guide. New arc-length evaluation lives in sewing.rs and does not redefine legacy t maps.",
       "missing_functionality": [
         "A separate transient first-side start/length/preview state and numeric mm dialog with keyboard commit, independent source-curve length conversion and explicit authored/rest/current display basis.",
         "The later two-side 100 mm case and separate categorical reversal/history/document-reopen are observed, but arbitrary range/invalid/Cancel/Close/Escape effects, exact curved endpoints and continuous length-to-parameter conversion remain unestablished. Keep transient first-side preview separate from the final shared AddSeam transaction."
@@ -9020,7 +9054,7 @@
         "ui_properties"
       ],
       "shared_commands": [],
-      "candidate_behavior": "Current Seam has only identity, oriented intervals and correspondence, and the solver adapter creates weighted stitches. No authored Turned/fold/Tension/Sublayer state or native seam-property editor implements these observed controls.",
+      "candidate_behavior": "Legacy Seam and ordered SewingGroup provide identity, oriented interval coverage and their distinct parameter/arc-length maps; the solver adapter creates weighted stitches. Neither stores Turned, fold, Tension or Sublayer state, and the structured group editor does not implement the observed physical/seam-property controls.",
       "missing_functionality": [
         "Reviewed independent semantics and stored state for Turned, Tension, Set Sublayer, Fold Strength and Fold Angle, including paired field/slider interactions, validation, history and physical/visual separation."
       ],
@@ -19947,7 +19981,7 @@
       "group_id": "project-load-save"
     }
   ],
-  "source_snapshot_note": "This corrected integrated DXF source pin preserves all 949 catalog entries, 205 packets, 56 landmark identities/paths and queued slices, with the single approved ui_export signature update from fn export(&mut self, svg: bool) to fn export(&mut self, ctx: &egui::Context, format: ExportFormat, focused: Option<egui::Id>) recorded exactly. The other valid anchors and 19 authoring Command variants remain. Project::export_dxf in persistence.rs delegates to new persistence/dxf.rs for deterministic ASCII R2000 LINE/cubic SPLINE, millimetres, positive pattern UV-to-XY and stable-ID piece layers, with validation and atomic destination protection. Desktop toolbar/search queue typed ExportFormat and remembered focus until after inspector input; export_to_path executes pending commands on a cloned Editor and installs it only after successful SVG/DXF output replacement. Cancel/invalid draft/path/write failure retain document/history/draft/text/focus through finish_numeric_action. Pending changed OBJ is retained/rejected with Tab/wait/retry; ready rest/drape OBJ remains unchanged; CLI export-dxf and sixth local MCP tool project_export_dxf expose the same bounded writer and revision/unit/loss metadata; MCP additionally returns the UV-to-XY axis declaration. The runtime/test scope now has 34 files including the DXF renderer and tests/dxf.rs. New DXF source-unit, independent consumer and integrated native acceptance require their own qualification; no completed run or reference parity is inferred here. Existing native Reverse, duplicate-name seam-ID rows, both endpoint guides and generic inspector-action behavior remain unchanged by this map. The M31 native reversal case is retained in WF-20261114-NATIVE-REVERSAL-001 at source 9d30a71 with its 32 inputs, executable and capture/input limitations; that historical case does not qualify this changed export runtime. Current status/freshness belongs solely to the registry/reports. DXF route absence remains bounded and zero-ID; no vendor support, exclusion, import/apparel/printing or physical-arc-length claim follows. Preserve original 928 expansion/6401c6a/26dd585/9cb2af3/9d30a71/M31/5f4124c ancestry and keep Actions/Pages disabled during development.",
+  "source_snapshot_note": "Ordered M:N source pin 3eddef067c8a1f03f192c8e6822a8da2a94f9bf9 preserves every 949 catalog entry, all 205 packet definitions, all 56 landmark identities/paths and queued slices. All current anchors remain valid; earlier approved CLI-test and typed-export old/new signatures stay in provenance. The shared core set is 22 variants including Transaction and the three group commands; CLI/MCP arrays accept 21 nontransaction variants and MCP remains six tools. SewingGroup is authoritative ordered/oriented construction with normalized authored arc-length maps; legacy Seam commands/t semantics remain. New sewing.rs derives bounded metrics/one-sided portions/real weighted stitches and tests/sewing_groups.rs checks independent integrals, disconnected 2:3, maps, edit/remesh/IO/history/rejection. Native M:N toolbar/search, transient A/B Enter/Delete/Escape/reset, accessible span controls, structured name/interval/map editor, Reverse B/removal and revision-derived guides are source candidates. Strict native v3 requires both seams/groups and strict v1/v2 migration adds empty groups without reinterpreting legacy data. CLI execute is strict/bounded/atomic and inspect-sewing emits canonical source plus actual rest constraints. The final runtime/test scope is 37 tracked files including sewing.rs, sewing_groups.rs and exact original tests/fixtures/asymmetric-fine.weftforge; the final geometry scheduling fix improves slivers before subdivision. Prior DXF/export protection and focus staging remain; SVG/DXF/OBJ do not preserve groups. Implementation-only checks establish no reference M:N execution, native qualification, continuous reference equivalence, physical gathering calibration or completed roadmap gate. Retained join/reversal/DXF evidence qualifies only its declared source/executable/subset; current status/freshness belongs solely to parity/features.yaml and reports, including retained failures. Preserve original 928 expansion/6401c6a/26dd585/9cb2af3/9d30a71/M31/5f4124c/cd151b3/4dac7e1 and final runtime ancestry; Actions/Pages remain disabled during development.",
   "expansion_origin": {
     "previous_map_commit": "fbe5ee08a74dc176e47a287366cbf5d1bbd0abf3",
     "previous_map_sha256": "2457e280ec2070e41748b8a3b80d8d7ba16a41f0cfa6dc0409c4f7768d178b9a",
@@ -19955,7 +19989,7 @@
     "preserved_catalog_ids": 928,
     "additional_menu_ids": 4,
     "additional_component_ids": 17,
-    "catalog_commit": "cd151b3b89e26d55a4dcd4525790006660c4e766",
+    "catalog_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
     "preservation_rule": "Retain the original 928-to-949 expansion proof and its 6401c6a catalog/source anchor. All 949 entries, 205 packet definitions, 56 landmark identities/paths and first three bounded slices survive the integrated source refresh. Only explicit reviewed source/reference rechecks replace obsolete group text or landmark scope/renamed anchors; no new reference entry or feature completion follows from a WeftForge implementation button.",
     "original_catalog_commit": "6401c6aa0aa1a54e1642b334dad1c5729466e0af"
   },
@@ -20059,12 +20093,17 @@
       "path": "spec/features/FILE-005-dxf-pattern-export.md",
       "sha256": "b0373181a6ae79c148aa154c0c2269956c2fed3587b5c6d0aef929108e11dd73",
       "scope": "Implementation-independent public-standards FILE-005-v1 profile for an ASCII R2000 pattern-boundary writer: LINE and exact cubic SPLINE, physical mm in UV-to-XY with positive V, stable-ID piece layers, deterministic infrastructure and validated atomic output. No vendor output/implementation supplies this contract. Source-unit, independent raw/ezdxf consumer and native desktop acceptance require separate evidence; import, printing, ASTM/AAMA apparel semantics and reference parity remain outside this bounded subset without leaving the full target."
+    },
+    {
+      "path": "spec/features/SEW-002-ordered-paths.md",
+      "sha256": "9baedd713b5a8dd4f251d7f2c5d0c51b408ecdabb32813a07dae06d25dcae960",
+      "scope": "Independent SEW-002-PATHS-v1 implementation contract for persistent ordered M:N groups, arc-length budgets/disconnected knots, legacy t-map compatibility, strict native v3 migration, shared commands, transaction/gesture/editor rules and independent acceptance. Linked official documentation is distinguished from recorded 2026.1.237/r58920 runtime observations; no new reference execution, parity, physical gathering or roadmap-gate result is supplied."
     }
   ],
   "source_rechecks": [
     {
       "group_id": "split-boundary",
-      "reason": "Integrated source adds shared JoinCurve, the native inspector action with pending-draft/current-focus guards, placement-aware f64 bounds, CLI join and MCP join_curve. Replace blanket missing-join wording with this bounded source candidate while retaining general join/trim/reference semantics and a pointer to authoritative native qualification.",
+      "reason": "Integrated source adds shared JoinCurve, the native inspector action with pending-draft/current-focus guards, placement-aware f64 bounds, CLI join and MCP join_curve. Replace blanket missing-join wording with this bounded source candidate while retaining general join/trim/reference semantics and a pointer to authoritative native qualification. Current ordered groups additionally require the reviewed arc-length, strict-v3, shared-command and native draft/editor distinctions.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -20079,12 +20118,13 @@
         "cli_tests",
         "mcp",
         "mcp_schema",
-        "mcp_tests"
+        "mcp_tests",
+        "workflow_tests"
       ]
     },
     {
       "group_id": "project-load-save",
-      "reason": "The integrated document/native source changed after the earlier parser-specific map note. Describe the retained IO implementation without copying a pending/current evidence judgment; native qualification and staleness remain authoritative in the registry/reports.",
+      "reason": "The integrated document/native source changed after the earlier parser-specific map note. Describe the retained IO implementation without copying a pending/current evidence judgment; native qualification and staleness remain authoritative in the registry/reports. Current ordered groups additionally require the reviewed arc-length, strict-v3, shared-command and native draft/editor distinctions.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -20093,15 +20133,20 @@
         "commands",
         "ui_load",
         "ui_save",
-        "ui_recovery"
+        "ui_recovery",
+        "native_io",
+        "project",
+        "migration_tests",
+        "json_bit_tests"
       ]
     },
     {
       "group_id": "reverse-sewing",
-      "reason": "Integrated native Reverse now uses existing UpdateSeam, stable ID-scoped duplicate-name rows, two endpoint guides and generic inspector transaction/focus handling. Replace the obsolete creation-only/no-connected-reverse description while retaining pending desktop acceptance and unmeasured reference/physical semantics.",
+      "reason": "Integrated native Reverse now uses existing UpdateSeam, stable ID-scoped duplicate-name rows, two endpoint guides and generic inspector transaction/focus handling. Replace the obsolete creation-only/no-connected-reverse description while retaining pending desktop acceptance and unmeasured reference/physical semantics. Current ordered groups additionally require the reviewed arc-length, strict-v3, shared-command and native draft/editor distinctions.",
       "changed_fields": [
         "candidate_behavior",
-        "missing_functionality"
+        "missing_functionality",
+        "shared_commands"
       ],
       "source_refs": [
         "commands",
@@ -20109,32 +20154,40 @@
         "ui_pattern",
         "ui_field_state",
         "seam_fields",
-        "mcp_schema"
+        "mcp_schema",
+        "workflow_tests"
       ]
     },
     {
       "group_id": "sewing-editor",
-      "reason": "The inspector now exposes per-seam identity/curve/parameter rows and Reverse/Remove with shared action guards; preserve the missing broader canvas selection/property/interval editor and source-only acceptance boundary.",
+      "reason": "The inspector now exposes per-seam identity/curve/parameter rows and Reverse/Remove with shared action guards; preserve the missing broader canvas selection/property/interval editor and source-only acceptance boundary. Current ordered groups additionally require the reviewed arc-length, strict-v3, shared-command and native draft/editor distinctions.",
       "changed_fields": [
         "candidate_behavior",
-        "missing_functionality"
+        "missing_functionality",
+        "shared_commands"
       ],
       "source_refs": [
         "ui_properties",
         "ui_pattern",
         "ui_field_state",
-        "commands"
+        "commands",
+        "seam_fields",
+        "mcp_schema",
+        "workflow_tests"
       ]
     },
     {
       "group_id": "sewing-display",
-      "reason": "The 2D renderer now draws both endpoint connections and the inspector identifies seam rows; refine display coverage without claiming interior correspondence, physical effects or independent visibility controls.",
+      "reason": "The 2D renderer now draws both endpoint connections and the inspector identifies seam rows; refine display coverage without claiming interior correspondence, physical effects or independent visibility controls. Current ordered groups additionally require the reviewed arc-length, strict-v3, shared-command and native draft/editor distinctions.",
       "changed_fields": [
         "candidate_behavior"
       ],
       "source_refs": [
         "ui_pattern",
-        "ui_properties"
+        "ui_properties",
+        "mesh",
+        "seam_lengths",
+        "ui_jobs"
       ]
     },
     {
@@ -20156,7 +20209,7 @@
     },
     {
       "group_id": "automation-scripts",
-      "reason": "The local MCP surface grows from five tools to six with project_export_dxf, while shared authoring commands remain 19. Distinguish stateless boundary export from scripting/live GUI/jobs and retain loss/error/identity metadata.",
+      "reason": "The DXF increment grew the local MCP surface from five tools to six without changing authoring variants. The ordered M:N increment retains those six tools and expands the shared set to 22 including Transaction, exposing 21 nontransaction variants through the same CLI/MCP transaction helper. Recheck strict bounded command files, actual authored/rest inspection, group payloads and adapter preservation without implying scripting/live GUI/jobs or reference parity.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -20164,7 +20217,8 @@
         "cli",
         "mcp",
         "mcp_schema",
-        "mcp_tests"
+        "mcp_tests",
+        "commands"
       ]
     },
     {
@@ -20189,6 +20243,125 @@
         "ui_toolbar",
         "cli",
         "mcp"
+      ]
+    },
+    {
+      "group_id": "segment-sewing",
+      "reason": "The ordered M:N increment adds source-backed group behavior while retaining legacy parameter-based seams and all unresolved reference/full-feature requirements.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "commands",
+        "seam_fields",
+        "mesh",
+        "workflow_tests"
+      ]
+    },
+    {
+      "group_id": "free-chain-sewing",
+      "reason": "The ordered M:N increment adds source-backed group behavior while retaining legacy parameter-based seams and all unresolved reference/full-feature requirements.",
+      "changed_fields": [
+        "shared_commands",
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "commands",
+        "project",
+        "curves",
+        "mesh",
+        "seam_lengths",
+        "seam_fields",
+        "ui_tools",
+        "ui_toolbar",
+        "ui_properties",
+        "ui_pattern",
+        "ui_jobs",
+        "cli",
+        "mcp",
+        "mcp_schema",
+        "mcp_tests",
+        "workflow_tests",
+        "native_io",
+        "adapter"
+      ]
+    },
+    {
+      "group_id": "sewing-length-check",
+      "reason": "The ordered M:N increment adds source-backed group behavior while retaining legacy parameter-based seams and all unresolved reference/full-feature requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "seam_lengths",
+        "mesh",
+        "ui_properties",
+        "cli"
+      ]
+    },
+    {
+      "group_id": "resolution",
+      "reason": "The ordered M:N increment adds source-backed group behavior while retaining legacy parameter-based seams and all unresolved reference/full-feature requirements.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "mesh",
+        "workflow_tests",
+        "ui_jobs"
+      ]
+    },
+    {
+      "group_id": "simulate",
+      "reason": "The ordered M:N increment adds source-backed group behavior while retaining legacy parameter-based seams and all unresolved reference/full-feature requirements.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "adapter",
+        "mesh",
+        "workflow_tests"
+      ]
+    },
+    {
+      "group_id": "delete-selection",
+      "reason": "The ordered M:N increment adds source-backed group behavior while retaining legacy parameter-based seams and all unresolved reference/full-feature requirements.",
+      "changed_fields": [
+        "shared_commands",
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "commands",
+        "project",
+        "ui_properties",
+        "workflow_tests"
+      ]
+    },
+    {
+      "group_id": "free-sewing-length-preview",
+      "reason": "The ordered M:N increment adds source-backed group behavior while retaining legacy parameter-based seams and all unresolved reference/full-feature requirements.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "ui_tools",
+        "ui_pattern",
+        "ui_properties",
+        "seam_lengths",
+        "seam_fields"
+      ]
+    },
+    {
+      "group_id": "seam-properties",
+      "reason": "The ordered M:N increment adds source-backed group behavior while retaining legacy parameter-based seams and all unresolved reference/full-feature requirements.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "seam_fields",
+        "adapter"
       ]
     }
   ],
@@ -20233,28 +20406,28 @@
       "changed_fields": [
         "scope"
       ],
-      "reason": "The integrated JoinCurve command, native inspector and CLI/MCP adapter source now implement a bounded inverse join; update only the related scope description."
+      "reason": "The integrated JoinCurve command, native inspector and CLI/MCP adapter source now implement a bounded inverse join; update only the related scope description. The ordered M:N source recheck also covers the current group construction, metric/IO/adapter/UI scope; its existing valid anchor and earlier provenance remain."
     },
     {
       "source_id": "ui_properties",
       "changed_fields": [
         "scope"
       ],
-      "reason": "The join-only join_next_curve helper is replaced by generic apply_inspector_action for JoinCurve and UpdateSeam. Review per-seam Reverse, pending-draft/current-focus transaction handling and stable row scope; the inspector anchor remains valid."
+      "reason": "The join-only join_next_curve helper is replaced by generic apply_inspector_action for JoinCurve and UpdateSeam. Review per-seam Reverse, pending-draft/current-focus transaction handling and stable row scope; the inspector anchor remains valid. The ordered M:N source recheck also covers the current group construction, metric/IO/adapter/UI scope; its existing valid anchor and earlier provenance remain."
     },
     {
       "source_id": "cli",
       "changed_fields": [
         "scope"
       ],
-      "reason": "Integrated DXF core and adapters add a third export format; review writer safety, format-specific coordinates, toolbar/search routing and six-tool local MCP coverage without adding catalog IDs or changing the authoring command set."
+      "reason": "Integrated DXF core and adapters add a third export format; review writer safety, format-specific coordinates, toolbar/search routing and six-tool local MCP coverage without adding catalog IDs or changing the authoring command set. The ordered M:N source recheck also covers the current group construction, metric/IO/adapter/UI scope; its existing valid anchor and earlier provenance remain."
     },
     {
       "source_id": "mcp_schema",
       "changed_fields": [
         "scope"
       ],
-      "reason": "The integrated JoinCurve command, native inspector and CLI/MCP adapter source now implement a bounded inverse join; update only the related scope description."
+      "reason": "The integrated JoinCurve command, native inspector and CLI/MCP adapter source now implement a bounded inverse join; update only the related scope description. The ordered M:N source recheck also covers the current group construction, metric/IO/adapter/UI scope; its existing valid anchor and earlier provenance remain."
     },
     {
       "source_id": "cli_tests",
@@ -20262,7 +20435,7 @@
         "anchor",
         "scope"
       ],
-      "reason": "The CLI subprocess regression was renamed to include split/join and failure-output preservation. Retain this landmark identity/path and explicitly replace its old invalid function anchor with the exact valid renamed anchor. DXF additionally appears in CLI help and adapter output-preservation checks; retain the same renamed anchor.",
+      "reason": "The CLI subprocess regression was renamed to include split/join and failure-output preservation. Retain this landmark identity/path and explicitly replace its old invalid function anchor with the exact valid renamed anchor. DXF additionally appears in CLI help and adapter output-preservation checks; retain the same renamed anchor. The ordered M:N source recheck also covers the current group construction, metric/IO/adapter/UI scope; its existing valid anchor and earlier provenance remain.",
       "previous_anchor": "fn cli_edits_and_splits_sewn_curves",
       "current_anchor": "fn cli_edits_splits_and_joins_sewn_curves_and_preserves_outputs_on_failure"
     },
@@ -20271,21 +20444,21 @@
       "changed_fields": [
         "scope"
       ],
-      "reason": "Integrated DXF core and adapters add a third export format; review writer safety, format-specific coordinates, toolbar/search routing and six-tool local MCP coverage without adding catalog IDs or changing the authoring command set."
+      "reason": "Integrated DXF core and adapters add a third export format; review writer safety, format-specific coordinates, toolbar/search routing and six-tool local MCP coverage without adding catalog IDs or changing the authoring command set. The ordered M:N source recheck also covers the current group construction, metric/IO/adapter/UI scope; its existing valid anchor and earlier provenance remain."
     },
     {
       "source_id": "ui_pattern",
       "changed_fields": [
         "scope"
       ],
-      "reason": "Native seam reversal adds ID-scoped rows and two endpoint guides; review the bounded source scope without changing this landmark identity/path/valid anchor."
+      "reason": "Native seam reversal adds ID-scoped rows and two endpoint guides; review the bounded source scope without changing this landmark identity/path/valid anchor. The ordered M:N source recheck also covers the current group construction, metric/IO/adapter/UI scope; its existing valid anchor and earlier provenance remain."
     },
     {
       "source_id": "ui_field_state",
       "changed_fields": [
         "scope"
       ],
-      "reason": "Native seam reversal adds ID-scoped rows and two endpoint guides; review the bounded source scope without changing this landmark identity/path/valid anchor."
+      "reason": "Native seam reversal adds ID-scoped rows and two endpoint guides; review the bounded source scope without changing this landmark identity/path/valid anchor. The ordered M:N source recheck also covers the current group construction, metric/IO/adapter/UI scope; its existing valid anchor and earlier provenance remain."
     },
     {
       "source_id": "atomic_save",
@@ -20306,7 +20479,7 @@
       "changed_fields": [
         "scope"
       ],
-      "reason": "The DXF entry points use export_button to queue typed format and remembered focus until after inspector input, preserving pending state through Cancel/path/write failure. Review the source scope without changing the landmark identity/path/anchor."
+      "reason": "The DXF entry points use export_button to queue typed format and remembered focus until after inspector input, preserving pending state through Cancel/path/write failure. Review the source scope without changing the landmark identity/path/anchor. The ordered M:N source recheck also covers the current group construction, metric/IO/adapter/UI scope; its existing valid anchor and earlier provenance remain."
     },
     {
       "source_id": "ui_export",
@@ -20324,14 +20497,105 @@
       "changed_fields": [
         "scope"
       ],
-      "reason": "The DXF entry points use export_button to queue typed format and remembered focus until after inspector input, preserving pending state through Cancel/path/write failure. Review the source scope without changing the landmark identity/path/anchor."
+      "reason": "The DXF entry points use export_button to queue typed format and remembered focus until after inspector input, preserving pending state through Cancel/path/write failure. Review the source scope without changing the landmark identity/path/anchor. The ordered M:N source recheck also covers the current group construction, metric/IO/adapter/UI scope; its existing valid anchor and earlier provenance remain."
     },
     {
       "source_id": "mcp",
       "changed_fields": [
         "scope"
       ],
-      "reason": "Integrated DXF core and adapters add a third export format; review writer safety, format-specific coordinates, toolbar/search routing and six-tool local MCP coverage without adding catalog IDs or changing the authoring command set."
+      "reason": "Integrated DXF core and adapters add a third export format; review writer safety, format-specific coordinates, toolbar/search routing and six-tool local MCP coverage without adding catalog IDs or changing the authoring command set. The ordered M:N source recheck also covers the current group construction, metric/IO/adapter/UI scope; its existing valid anchor and earlier provenance remain."
+    },
+    {
+      "source_id": "commands",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The ordered M:N increment changes this pinned source. Recheck group construction, arc-length derivation, strict v3 IO, transaction/adapter/UI boundaries and implementation-only evidence while preserving landmark identity/path/valid anchor."
+    },
+    {
+      "source_id": "project",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The ordered M:N increment changes this pinned source. Recheck group construction, arc-length derivation, strict v3 IO, transaction/adapter/UI boundaries and implementation-only evidence while preserving landmark identity/path/valid anchor."
+    },
+    {
+      "source_id": "history",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The ordered M:N increment changes this pinned source. Recheck group construction, arc-length derivation, strict v3 IO, transaction/adapter/UI boundaries and implementation-only evidence while preserving landmark identity/path/valid anchor."
+    },
+    {
+      "source_id": "mesh",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The ordered M:N increment changes this pinned source. Recheck group construction, arc-length derivation, strict v3 IO, transaction/adapter/UI boundaries and implementation-only evidence while preserving landmark identity/path/valid anchor."
+    },
+    {
+      "source_id": "seam_lengths",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The ordered M:N increment changes this pinned source. Recheck group construction, arc-length derivation, strict v3 IO, transaction/adapter/UI boundaries and implementation-only evidence while preserving landmark identity/path/valid anchor."
+    },
+    {
+      "source_id": "native_io",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The ordered M:N increment changes this pinned source. Recheck group construction, arc-length derivation, strict v3 IO, transaction/adapter/UI boundaries and implementation-only evidence while preserving landmark identity/path/valid anchor."
+    },
+    {
+      "source_id": "adapter",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The ordered M:N increment changes this pinned source. Recheck group construction, arc-length derivation, strict v3 IO, transaction/adapter/UI boundaries and implementation-only evidence while preserving landmark identity/path/valid anchor."
+    },
+    {
+      "source_id": "ui_tools",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The ordered M:N increment changes this pinned source. Recheck group construction, arc-length derivation, strict v3 IO, transaction/adapter/UI boundaries and implementation-only evidence while preserving landmark identity/path/valid anchor."
+    },
+    {
+      "source_id": "ui_jobs",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The ordered M:N increment changes this pinned source. Recheck group construction, arc-length derivation, strict v3 IO, transaction/adapter/UI boundaries and implementation-only evidence while preserving landmark identity/path/valid anchor."
+    },
+    {
+      "source_id": "workflow_tests",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The ordered M:N increment changes this pinned source. Recheck group construction, arc-length derivation, strict v3 IO, transaction/adapter/UI boundaries and implementation-only evidence while preserving landmark identity/path/valid anchor."
+    },
+    {
+      "source_id": "migration_tests",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The ordered M:N increment changes this pinned source. Recheck group construction, arc-length derivation, strict v3 IO, transaction/adapter/UI boundaries and implementation-only evidence while preserving landmark identity/path/valid anchor."
+    },
+    {
+      "source_id": "json_bit_tests",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The ordered M:N increment changes this pinned source. Recheck group construction, arc-length derivation, strict v3 IO, transaction/adapter/UI boundaries and implementation-only evidence while preserving landmark identity/path/valid anchor."
+    },
+    {
+      "source_id": "seam_fields",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The ordered M:N increment changes this pinned source. Recheck group construction, arc-length derivation, strict v3 IO, transaction/adapter/UI boundaries and implementation-only evidence while preserving landmark identity/path/valid anchor."
     }
   ]
 }
