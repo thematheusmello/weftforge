@@ -179,7 +179,11 @@ remains failed. Actor visually reviews all41native JPEGs; root independently
 views8keycaptures and checks intrinsic EXIF on45paths including4duplicates.
 Nested candidates stay byte-identical, including earlier preparation wording.
 Root's first saved-reader output-directory/JSONL integration failure is retained
-outside the closed bundle. Clean tracked publication checks follow locally.
+outside the closed bundle. Clean tracked replay/registry/map pass at0eaf7aa;
+xtask atcd91f6a passes54Python checks, registry/map and actualCLIhelp. All37runtime
+files remain6c455; no new Rust suite is implied by this evidence-only increment.
+Eight publication proof files retain the seven ignored-autosave tracking refusal,
+independent review and path-only qualified xtask log. Final metadata checks follow.
 
 The single original-shirt force audit is complete in
 `.local/force-balance-design-20261114/shirt-run-001/`. Base6c455 plus private
@@ -208,10 +212,13 @@ strain failure remains. No production audit overlay has been integrated.
    exact f64bits except named wall times; no quality claim. Closure
    `.local/contact-invariance-20261114/CLOSURE.json` SHA is `ff0edaf3…6c6`.
    All source1,842/frozen64files stay exact; alljobs terminal. New unchanged
-   full A/B are being prepared separately in
-   `.local/harbor-contact-candidates-20261114/`; require new source/binary/input/
-   evaluator freeze before their one420s/256MiB attempts. No easier scene,
-   settings or quality screen. Keep linear-stitch source excluded for this test.
+   full A/B are separately frozen/authorized in
+   `.local/harbor-contact-candidates-20261114/`, preregistrationdcd00e55…40f7,
+   full-driver e4a220b4…c3de, authorizationac755b30…4712. A completes180steps+
+   independent181state analysis in55.277s, final strain8.6663% passes the final
+   strict screen; frame29 remains15.3559% failed. B is currently running once
+   from fresh edited construction under its original420s/256MiB limits. No
+   easier scene/settings/screen or linear-stitch source is included.
 2. Review separate candidate `35afac60` on `feat/linear-closed-stitches` in
    `.local/linear-closed-stitches-20261114/`. Prospective
    [SIM-001](spec/features/SIM-001-closed-stitch-energy.md) preserves the elastic
@@ -240,6 +247,9 @@ drivers6513/11372; native attempt cancelled; force-audit wrapper66760 and
 driver67564/analyzer68295 exit0. Prefix review95651/wrapper19019/child19163 exits0.
 Focused performance tests/Clippy6261/89269, all3invariance cases33956/57964/79338,
 stitch tests/Clippy and native-stage checks are terminal. The new fullHarbor
-preparation build78246/wrapper50333/release50596/Clippy50826 exits0; no new full
-physical case has started. Reference inventory36748 and REA observation64096
-are terminal0. Recheck actual handles before resuming; use separate Cargo targets.
+preparation build78246/wrapper50333/release50596/Clippy50826 exits0. New fullA
+47986/wrapper68695/driver68840/analyzer70089 all0. New fullB58288/wrapper71496/
+driver71641 starts20:55:21.243379Z, deadline21:02:21.243379Z including analysis
+and one frozen compare-edit. Root clean xtask66629 and replay/map85648 are0.
+Reference inventory36748 and REA observation64096 are terminal0. Recheck actual
+handles before resuming; use separate Cargo targets.

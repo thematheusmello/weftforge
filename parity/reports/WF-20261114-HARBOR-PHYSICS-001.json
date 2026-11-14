@@ -244,7 +244,12 @@
     "parity/reports/artifacts/harbor-workflow-20261114/root-qualification/root-image-review.json": "96e3f428ce7bf0885817ec556515822e393b701022552913714a4f1cbc26d75e",
     "parity/reports/artifacts/harbor-workflow-20261114/root-qualification/source-pretest.json": "d996bed57c5ef7776813bdfff6eb9921af55be7af3e5a9e75073a51ebb57be49",
     "parity/reports/artifacts/harbor-workflow-20261114/verify.py": "f79cf1538199dc3da485c5419db2f9807353b328be8dcba292dcafe118539d4b",
-    "parity/scenarios/UI-HARBOR-001.json": "4a7c689f5b8ee422a48a35e4613f887fa89d07c14cea77776dc0bda51b12ce33"
+    "parity/scenarios/UI-HARBOR-001.json": "4a7c689f5b8ee422a48a35e4613f887fa89d07c14cea77776dc0bda51b12ce33",
+    "parity/reports/artifacts/harbor-publication-20261114/independent-review.json": "a2971f8e85331fca127ba12dd43f7a1101f992a6515946306036b969bf2dec2b",
+    "parity/reports/artifacts/harbor-publication-20261114/receipt.json": "1d1a11c03325ebae5a42026040ffff5c16b75709cd36b9387c778b1cffd03c9e",
+    "parity/reports/artifacts/harbor-publication-20261114/saved-output-replay.json": "a200c19dfed73629226458225e7ec0b02c0c2f4f60ab4b32aac41bbf86e58e8d",
+    "parity/reports/artifacts/harbor-publication-20261114/tracking-refusal.json": "bd96f43a3f3136a1c2212719482ce7a4b14dabc98bab732d6e4e749ddda77a18",
+    "parity/reports/artifacts/harbor-publication-20261114/xtask.public.log": "01adf358a30c66130670687b1c442b4fd0179a51dd45c195e90b9360bc5ac0fd"
   },
   "bundle": {
     "path": "parity/reports/artifacts/harbor-workflow-20261114",
@@ -336,5 +341,12 @@
     "Supported static particle-triangle contact checks establish no full CCD or edge-edge completeness.",
     "No equilibrium, calibration, convergence, benchmark speedup or referenceparity claim.",
     "Original weak-grain fixture and failures remain separate; no substitute for those benchmarks."
-  ]
+  ],
+  "clean_publication_qualification": {
+    "receipt": "parity/reports/artifacts/harbor-publication-20261114/receipt.json",
+    "independent_review": "parity/reports/artifacts/harbor-publication-20261114/independent-review.json",
+    "tracked_bundle_files": 326,
+    "clean_saved_replay_head": "0eaf7aa674da23a2fe94943a4f6c2b51e38e447c",
+    "new_product_or_physics_runs_for_publication": 0
+  }
 }
