@@ -1,0 +1,6 @@
+{
+  "stage": "First physical-attempt candidate preparation",
+  "result": "Refused before manifest",
+  "cause": "Native file-dialog AX events contain six bare profile-label occurrences after path-prefix redaction. Native project/OBJ/JPEG/event originals were unchanged.",
+  "correction": "Add exact literal profile-label replacement to public text derivatives only, recording ordered UTF-8 offsets, original prefix hash/length and source/output hashes. No visual or numerical artifacts changed."
+}

@@ -1,0 +1,9 @@
+{
+  "kind": "Retained root saved-evidence replay preparation failure; no physical run",
+  "first_manifest_sha256": "8ab1e8090130b2e8ab88b8b29f249bbb6649cccba7fb396597d534abe714eb69",
+  "first_verifier_sha256": "4b0c2533ff9b8e63b2997dc52a007c71b639dd7880bb349c702ca54c6e886ac4",
+  "observed": "All prior closure, source and authoring/native checks passed; prefix-reader child exited1. Initial wrapper raised CalledProcessError without surfacing its captured stderr.",
+  "source_diagnosis": "TemporaryDirectory already existed; frozen reader requires a new output directory via OUTPUT.mkdir(). The frozen reader also emits JSON Lines rather than one JSON document.",
+  "correction": "Pass a nonexistent child directory, preserve scriptstdout as text and parse only single-JSON producer outputs; surface childreturncode/stderr. No frozen subtree/input/image/numerical result/criterion changes.",
+  "child_stderr_retained": false
+}

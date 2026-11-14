@@ -1,0 +1,6 @@
+{
+  "kind": "Retained packaging metadata checker refusal",
+  "initial_check": "Allowed only top-level EXIF width/height tags256/257",
+  "outcome": "Refused tag34665 value26 on firstJPEG",
+  "qualification": "34665 is an intrinsic pointer to EXIF IFD containing only40962PixelXDimension1450 and40963PixelYDimension932. All45JPEGs have the same intrinsic dimensions structure. No personalmetadata or image changes; subsequent check validates nestedtagsets and dimensions explicitly."
+}

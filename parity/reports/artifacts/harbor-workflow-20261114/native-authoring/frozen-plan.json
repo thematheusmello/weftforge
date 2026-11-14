@@ -1,0 +1,301 @@
+{
+  "run": "empty-shirt-authoring-20261114",
+  "frozen_utc": "2026-11-14T19:08:18.635007+00:00",
+  "phase": "authoring only; no simulation controls authorized in this phase",
+  "runtime_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+  "runtime_sha256": "95fa1b7cb24b8de1a6b507330c2fe43ece0efe5a14226bb28c39f922fcee28c3",
+  "initial_pid": 99058,
+  "design_name": "Harbor relaxed two-panel shirt",
+  "units": "SI metres, kilograms, seconds; Y-up",
+  "base_vertices": [
+    [
+      -0.36,
+      0.96
+    ],
+    [
+      0.36,
+      0.96
+    ],
+    [
+      0.34,
+      1.27
+    ],
+    [
+      0.63,
+      1.14
+    ],
+    [
+      0.66,
+      1.4
+    ],
+    [
+      0.28,
+      1.6
+    ],
+    [
+      0.12,
+      1.6
+    ],
+    [
+      0.1,
+      1.5
+    ],
+    [
+      -0.1,
+      1.5
+    ],
+    [
+      -0.12,
+      1.6
+    ],
+    [
+      -0.28,
+      1.6
+    ],
+    [
+      -0.66,
+      1.4
+    ],
+    [
+      -0.63,
+      1.14
+    ],
+    [
+      -0.34,
+      1.27
+    ]
+  ],
+  "pieces": [
+    {
+      "name": "Harbor front",
+      "vertices": [
+        [
+          -1.08,
+          0.96
+        ],
+        [
+          -0.36,
+          0.96
+        ],
+        [
+          -0.38,
+          1.27
+        ],
+        [
+          -0.09,
+          1.14
+        ],
+        [
+          -0.06,
+          1.4
+        ],
+        [
+          -0.44,
+          1.6
+        ],
+        [
+          -0.6,
+          1.6
+        ],
+        [
+          -0.62,
+          1.5
+        ],
+        [
+          -0.82,
+          1.5
+        ],
+        [
+          -0.84,
+          1.6
+        ],
+        [
+          -1.0,
+          1.6
+        ],
+        [
+          -1.38,
+          1.4
+        ],
+        [
+          -1.35,
+          1.14
+        ],
+        [
+          -1.06,
+          1.27
+        ]
+      ],
+      "placement": {
+        "translation": [
+          0.72,
+          0,
+          0.24
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "grain_angle": 1.5707963267948966
+    },
+    {
+      "name": "Harbor back",
+      "vertices": [
+        [
+          0.36,
+          0.96
+        ],
+        [
+          1.08,
+          0.96
+        ],
+        [
+          1.06,
+          1.27
+        ],
+        [
+          1.35,
+          1.14
+        ],
+        [
+          1.38,
+          1.4
+        ],
+        [
+          1.0,
+          1.6
+        ],
+        [
+          0.84,
+          1.6
+        ],
+        [
+          0.82,
+          1.5
+        ],
+        [
+          0.62,
+          1.5
+        ],
+        [
+          0.6,
+          1.6
+        ],
+        [
+          0.44,
+          1.6
+        ],
+        [
+          0.06,
+          1.4
+        ],
+        [
+          0.09,
+          1.14
+        ],
+        [
+          0.38,
+          1.27
+        ]
+      ],
+      "placement": {
+        "translation": [
+          -0.72,
+          0,
+          -0.24
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "grain_angle": 1.5707963267948966
+    }
+  ],
+  "seams_zero_based_matching_boundary_indices": [
+    1,
+    2,
+    4,
+    5,
+    9,
+    10,
+    12,
+    13
+  ],
+  "seam_intervals": {
+    "a": [
+      0,
+      1
+    ],
+    "b": [
+      0,
+      1
+    ],
+    "correspondence": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ]
+  },
+  "open_boundaries_zero_based": [
+    0,
+    3,
+    6,
+    7,
+    8,
+    11
+  ],
+  "material": {
+    "id": 1,
+    "name": "Cotton approximation (uncalibrated)",
+    "areal_density": 0.18,
+    "warp_stiffness": 400,
+    "weft_stiffness": 400,
+    "shear_stiffness": 100,
+    "bending_stiffness": 0.003,
+    "damping": 0.2,
+    "friction": 0.4,
+    "collision_thickness": 0.003,
+    "color": [
+      0.22,
+      0.55,
+      0.76
+    ]
+  },
+  "resolution": 0.07,
+  "dimension_edit": {
+    "piece": "Harbor front",
+    "width_unchanged": 1.32,
+    "height_before": 0.64,
+    "height_after": 0.68,
+    "anchor": "bounds minimum (-1.38,.96)",
+    "expected_y_formula": ".96 + (old_y - .96) * .68/.64",
+    "sequence": "reopen -> height .68 -> save receipt -> Undo -> save receipt -> Redo -> save receipt -> Undo -> save final frozen design"
+  },
+  "quality_limits_unchanged": {
+    "max_material_strain": 0.15,
+    "seam_gap_m": 0.005,
+    "contact_error_m": 0.002
+  },
+  "prior_failed_evidence": "Existing original weak-grain benchmark and all previous failures remain immutable and failing. This design does not replace that benchmark.",
+  "clearance_reasoning": {
+    "body_circumference_m": 1.1309733552923256,
+    "garment_torso_circumference_m": 1.44,
+    "torso_ease_ratio": 0.27323954473516254,
+    "cuff_perimeter_m": 0.523450093132096,
+    "arm_circumference_m": 0.4084070449666731,
+    "neck_perimeter_m": 0.8079215610874229,
+    "neck_circumference_m": 0.6597344572538565,
+    "initial_plane_torso_surface_gap_m": 0.06,
+    "initial_plane_gap_minus_cloth_thickness_m": 0.056999999999999995,
+    "reason": "Two flat panels initially at z=+/-0.24 clear every original analytic capsule by at least 0.06 m in the z direction. Approximate closed torso, cuff and neck perimeters exceed the respective circular body sections. This is a geometric design rationale, not a prediction that solver quality gates pass."
+  }
+}

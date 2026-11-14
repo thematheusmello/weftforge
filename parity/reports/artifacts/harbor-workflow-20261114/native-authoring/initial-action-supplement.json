@@ -1,0 +1,135 @@
+{
+  "source": "Exact initial UI calls transcribed from this run tool history; later detailed actions are in actions.jsonl.",
+  "actions": [
+    {
+      "action": "Save empty baseline",
+      "calls": [
+        [
+          "click",
+          6
+        ],
+        [
+          "pressKey",
+          "super+shift+g"
+        ],
+        [
+          "setValue",
+          69,
+          "<checkout>/.local/empty-shirt-authoring-20261114"
+        ],
+        [
+          "pressKey",
+          "Return"
+        ],
+        [
+          "setValue",
+          74,
+          "empty-start.weftforge"
+        ],
+        [
+          "click",
+          78
+        ]
+      ]
+    },
+    {
+      "action": "Initial ineffective egui setter attempt",
+      "calls": [
+        [
+          "setValue",
+          98,
+          "Harbor front"
+        ],
+        [
+          "setValue",
+          103,
+          "-1.08"
+        ],
+        [
+          "setValue",
+          104,
+          "0.96"
+        ]
+      ]
+    },
+    {
+      "action": "Initial native name correction",
+      "calls": [
+        [
+          "click",
+          98
+        ],
+        [
+          "pressKey",
+          "super+a"
+        ],
+        [
+          "typeText",
+          "Harbor front"
+        ],
+        [
+          "pressKey",
+          "Tab"
+        ]
+      ]
+    },
+    {
+      "action": "First staged coordinate input",
+      "calls": [
+        [
+          "click",
+          103,
+          {
+            "clickCount": 2
+          }
+        ],
+        [
+          "pressKey",
+          "super+a"
+        ],
+        [
+          "typeText",
+          "-1.08"
+        ],
+        [
+          "pressKey",
+          "Tab"
+        ],
+        [
+          "pressKey",
+          "super+a"
+        ],
+        [
+          "typeText",
+          "0.96"
+        ],
+        [
+          "pressKey",
+          "Tab"
+        ],
+        [
+          "click",
+          106
+        ]
+      ]
+    },
+    {
+      "action": "First successful front checkpoint native save",
+      "calls": [
+        [
+          "click",
+          6
+        ],
+        [
+          "setValue",
+          107,
+          "front-created.weftforge"
+        ],
+        [
+          "click",
+          111
+        ]
+      ]
+    }
+  ]
+}

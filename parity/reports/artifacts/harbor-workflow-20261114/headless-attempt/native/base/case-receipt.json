@@ -1,0 +1,94 @@
+{
+  "case": "base",
+  "status": "capped during Drape; previous accepted assembly snapshot retained",
+  "input_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+  "reference_input_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+  "actual_input_file": "stage-000.weftforge",
+  "actual_input_revision": 20,
+  "native_runtime_sha256": "95fa1b7cb24b8de1a6b507330c2fe43ece0efe5a14226bb28c39f922fcee28c3",
+  "source_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+  "process_pid": 57507,
+  "fresh_original_arrangement": true,
+  "initial_zero_velocity": true,
+  "initial_zero_velocity_evidence": "Fresh no-file process/Open and authoring-only history, no prior physics; rest OBJ exact. Native OBJ alone does not expose velocity.",
+  "dt_s": 0.016666666666666666,
+  "substeps": 8,
+  "iterations": 32,
+  "seam_closure_m_per_s": 1.0,
+  "assembly_frames": [
+    1,
+    60
+  ],
+  "gravity_frames_requested": [
+    61,
+    180
+  ],
+  "gravity_m_per_s2": [
+    0,
+    -9.81,
+    0
+  ],
+  "all_contacts_enabled": true,
+  "no_continuation_or_retry": true,
+  "actual_accepted_checkpoints": [
+    0,
+    60
+  ],
+  "missing_checkpoints": [
+    180
+  ],
+  "wall_cap_s": 420,
+  "clock_start": {
+    "utc": "2026-11-14T20:00:18.737Z",
+    "monotonic_ms": 3239926.452667,
+    "deadline_monotonic_ms": 3659926.454459
+  },
+  "last_pre_cap_poll_elapsed_s": 419.2785990420002,
+  "first_post_cap_observation_elapsed_s": 422.7046465830002,
+  "AX_observation_overrun_s": 2.704646583000226,
+  "cancel_receipt_utc": "2026-11-14T20:07:22.334Z",
+  "cancel_receipt_monotonic_ms": 3663520.504792,
+  "cap_detection_note": "Poll419.279s was active. The next native AX read completed422.705s; Cancel was issued once immediately afterward. This observation overrun is retained explicitly, not treated as an extension or completed case.",
+  "accepted_snapshot_reported_diagnostics": {
+    "time_s": 1.0,
+    "assembly_remaining_m_shown": 0.0,
+    "peak_material_strain_percent_shown": 7.12,
+    "seam_gap_m_shown": 0.0,
+    "contact_error_m_shown": 0.0,
+    "initial_intersections_shown": 0,
+    "precision_note": "Native UI values are rounded; zeros are not independently exact zero proof."
+  },
+  "post_cap_source_identical_to_original": true,
+  "post_cap_obj_byte_identical_to_accepted_frame60": true,
+  "artifacts": {
+    "stage-000.weftforge": {
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "bytes": 11808
+    },
+    "stage-000.obj": {
+      "sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+      "bytes": 154152
+    },
+    "stage-060.weftforge": {
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "bytes": 11808
+    },
+    "stage-060.obj": {
+      "sha256": "7917b80683e52ede2eac3ea6d807100f806428f8a26b075d8afb17a04a6861f3",
+      "bytes": 154802
+    },
+    "cap-retained.weftforge": {
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "bytes": 11808
+    },
+    "cap-retained.obj": {
+      "sha256": "7917b80683e52ede2eac3ea6d807100f806428f8a26b075d8afb17a04a6861f3",
+      "bytes": 154802
+    }
+  },
+  "quality_result": "Full fixed case incomplete; no final physical quality pass claimed. Rounded assembly diagnostics are recorded separately.",
+  "closed_target_status": "UI shows0.0000m at accepted frame60; exact recurrence/independent qualification pending, no rounded-zero proof.",
+  "state_persistence_limit": "Native .weftforge saves editable construction only; native OBJ plus AX/JPEG records the accepted physical geometry/time/diagnostics. No hidden cloth cache was extracted.",
+  "B_precondition_status": "No accepted A draped state exists. Requested direct-post-drape B edit paused for root decision, no B physics or input editing performed.",
+  "recorded_utc": "2026-11-14T20:09:26.955122+00:00"
+}

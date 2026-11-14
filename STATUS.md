@@ -8,20 +8,30 @@ inventory, not a feature-completion denominator.
 ## Publication and cost policy
 
 Public repository: https://github.com/thematheusmello/weftforge.
-Last published main is `2d65b9e926a37532d9b168ee49075763759374c2`, merged
-[PR34](https://github.com/thematheusmello/weftforge/pull/34). It retains the original
-cloth balance failure, 132-file bundle and four clean-publication receipts.
-Its tree equals tested final head `0130bf76`. Earlier
+Last published main is `e6595ee787a30b3e8efa8502b42ce70536481d66`, merged
+[PR35](https://github.com/thematheusmello/weftforge/pull/35). Its tree equals tested
+final head `c8cdc3b0`; all37 runtime files match executed `6c45535c`.
+Earlier [PR34](https://github.com/thematheusmello/weftforge/pull/34), main `2d65b9e`,
+retains the original cloth balance failure, 132-file bundle and four
+clean-publication receipts. Its tree equals tested final head `0130bf76`. Earlier
 [PR33](https://github.com/thematheusmello/weftforge/pull/33), main `4a2c5568`,
 delivered ordered M:N sewing and strict v3 projects with preserved ancestry.
 [PR32](https://github.com/thematheusmello/weftforge/pull/32) delivered DXF.
-The tested visibility source/evidence is public at `2dc45007` in open
-[PR35](https://github.com/thematheusmello/weftforge/pull/35); final metadata and
-ordinary merge remain next.
+Visibility delivery is merged. Clean final `c8cdc3b0` checks all1,686 report
+artifacts and the unchanged37-file runtime. Publication audit is retained in
+`.local/verification/published-e6595ee787a3.json`.
+
+[PR36](https://github.com/thematheusmello/weftforge/pull/36) prepares the Harbor
+authoring/stopped-physics evidence and historical capture-encoding qualification.
+Clean `58190f75` validates all2,024 tracked report artifacts and the unchanged
+37-file runtime; its326-file closed bundle has strict saved replay,54Python
+checks, actualCLIhelp and independent publication review. Final PR metadata
+is being qualified locally; runtime optimization/native-stage candidates remain
+separate and are not advertised as integrated behavior.
 
 **Keep GitHub Actions and Pages disabled until the entire project is complete.**
 The user requested this to stop development costs. Repository `enabled:false`
-and all 54 historical runs terminal were rechecked after both merges. PR33/34
+and all 54 historical runs terminal were rechecked after all three merges. PR33/34/35
 final heads and merges each have zero workflow runs. Last CI/Pages runs
 43585595600/43585595609 belong to main `1343b0c46b5c4f097709996785fb55d5d23ac174`.
 Do not dispatch workflows at interim checkpoints. Required checks run locally;
@@ -33,7 +43,8 @@ and cross-platform launch/distribution acceptance remain open.
 
 ## Current material-strain increment
 
-Working branch: `feat/material-strain-attribution`, integration `938b2670746fb97da70540912595637264b4bf1e`.
+Working branch: `research/force-balance-audit`; published visibility integration
+is `938b2670746fb97da70540912595637264b4bf1e`.
 All 37 scoped runtime/test files exactly match executed candidate
 `6c45535cb312f7fed8ad872ee87b6ba5e5974e35`. Prospective contract
 `209a8fda72aaca90a08c330427354dd457224a6c` is
@@ -54,7 +65,7 @@ settings and prior diagnostics match the original exactly, excluding step time.
 All180 meaningful peak associations agree independently within2.23e-16 strain.
 The original quality failures remain failures.
 
-Actual native PID99058 uses executable
+The accepted native capture used PID99058 and executable
 `95fa1b7cb24b8de1a6b507330c2fe43ece0efe5a14226bb28c39f922fcee28c3`.
 It displays Candidate back / Warp +24.12% after actual60-frame assembly, then
 Candidate front / Warp +32.35% after120-frame gravity drape. Root independently
@@ -62,7 +73,8 @@ viewed the original captures. Both150-vertex/228-triangle OBJ outputs have exact
 expected topology/decimal exports; parsed position/UV error is at most6.94e-18m.
 Stage authoring bytes are identical (revision28); the immutable v2 input is not
 overwritten. Seam/contact labels are four-decimal display values, not raw zeros.
-The app remains saved/paused at completed Drape, total3s; no simulation job is live.
+At capture closure the app was saved/paused at completed Drape, total3s.
+It was subsequently quit for the separate empty-project workflow below.
 
 Packaged CLI `c7e63b52d60b293357ba60c49dfed3643472ab177352f2501ebfb207f7ed1092`
 passes the three-command checker2792: actual fit exits1 for quality and preserves
@@ -134,24 +146,124 @@ created no constructor or geometry, so M:N reference proportions/history/files
 remain unobserved. The one-click manual diagnosis question is pending. This is
 input noncompletion, not absence; preserve the earlier Rectangle observation.
 See [dated research notes](spec/features/SEW-002-runtime-notes-20261114.md).
+Passive REA refresh at18:57:29–36Z confirms the same live process/window and
+executable, Rectangle value1,95 nontruncated AX nodes and no visible constructor.
+No closed pattern is visible; the isolated2Ddot is not interpreted as authored
+geometry. No activation/input occurred and no manual-click outcome is inferred.
+Private evidence is `ev_bc8e54db21a2003e2b5ac036a9a9fb173c20404528915a02d9288edb9a6b616a`;
+reviewed facts SHA is `570833c3be8f2d3bfe595b7687c8f1e1bc67812e8f640fabf9697683d8d661a7`.
 
-1. Verify final PR35 metadata from a clean checkout, then merge normally,
-   preserving the tested runtime/evidence and all source ancestry.
-2. Publish the strain-attribution increment preserving all source/evidence
-   ancestry; verify Actions stays disabled and no head/merge workflows run.
-3. Follow the approved private observational overlay and single analytical case
-   in `.local/force-balance-design-20261114/`. Root reviewed its closed-form
-   arithmetic. Freeze patch/schema/driver/analyzer/binary before execution;
-   original-shirt replay requires a later root review of the analytical result.
-   No production solver changes or tuning are authorized. Correction accounting
-   alone cannot establish physical contact reactions or equilibrium.
-4. Continue native/reference construction and all remaining roadmap work.
+The original Harbor workflow in `.local/empty-shirt-authoring-20261114/` now has
+completed native authoring evidence: actual empty start, two14-vertex panels,
+placements/grain/eight seams, save, real quit/relaunch/reopen, and a front-height
+edit with Undo/Redo/Undo. Frozen plan is `0f07ac19…ddd`. Authored/reopened bytes
+match SHA `445db3e2…77c`; final restored revision20 is `fc494974…da7`. Root's
+independent receipt `02bfcb94…e0a` checks every coordinate/ID and history state
+against the prospective1e-12m tolerance; four affine-X roundoffs are at most
+1.12e-16m. The first routed degenerate draft and first overly strict bitwise
+checker refusal remain retained. The authoring subtree has153manifest entries
+plus its manifest; its33 raw screenshots are correctly named JPEGs.
 
-All reported Rust builds, original three-case diagnostics, independent visibility
-regression, CLI and native simulations/checks are terminal. The retained native
-application is open, not a running simulation job. Unified evidence preparation
-71767 and clean40401/36772/59030/47879 are terminal0. The private force-balance
-agent is preparing the frozen observational overlay; its analytical-only run is
-authorized after preregistration, with no execution handle reported yet. Recheck
-actual handles/ledgers before resuming. Raw ledgers stay
-ignored; use separate Cargo targets per worktree.
+Unmodified source6c455 Harbor headless A/B attempts both hit the unchanged
+420-second cap. A accepts163 frames, B158; their next steps cancel transactionally.
+There is no frame180 or full physical acceptance. A native assembly accepts60
+frames; its OBJ is byte-identical to headless frame60. Native Drape's first
+post-cap observation occurs at422.705s; Cancel is issued immediately afterward,
+retaining the2.705s observation overrun and prior accepted assembly. Native B is
+`not_run` because its completed-A-Drape precondition is
+missing. Native PID57507 remains saved/paused. The separate physical-attempt
+subtree has44manifest entries plus its manifest; authoring bytes are unchanged.
+
+Post-failure read-only qualification checks all323 retained boundary states,
+mass, targets, supported contacts and cancellation. A frame29 has15.3559% strain,
+above15%; B prefix maximum is10.1651%. These incomplete prefixes cannot establish
+final quality. Source/settings/inputs remain unchanged. Ledgers and original
+failures stay in `.local/harbor-physics-20261114/`. The combined326-file
+[retained bundle](parity/reports/artifacts/harbor-workflow-20261114/README.md)
+replays authoring and all323 saved prefix states without running physics.
+[Authoring](parity/reports/WF-20261114-HARBOR-AUTHORING-001.json) passes its bounded
+checks; [physical completion](parity/reports/WF-20261114-HARBOR-PHYSICS-001.json)
+remains failed. Actor visually reviews all41native JPEGs; root independently
+views8keycaptures and checks intrinsic EXIF on45paths including4duplicates.
+Nested candidates stay byte-identical, including earlier preparation wording.
+Root's first saved-reader output-directory/JSONL integration failure is retained
+outside the closed bundle. Clean tracked replay/registry/map pass at0eaf7aa;
+xtask atcd91f6a passes54Python checks, registry/map and actualCLIhelp. All37runtime
+files remain6c455; no new Rust suite is implied by this evidence-only increment.
+Eight publication proof files retain the seven ignored-autosave tracking refusal,
+independent review and path-only qualified xtask log. Final metadata checks follow.
+
+The single original-shirt force audit is complete in
+`.local/force-balance-design-20261114/shirt-run-001/`. Base6c455 plus private
+observational patch13f927… reproduces all181 production states exactly except
+wall time, with traced frames24/27/60/180. Independent receipt `3881fc17…b87`
+reconstructs all32 captured substeps and31,849 analytic-collider events. At the
+same frame180/substep5/node18, seam elastic force norm is69.1110N, multiplier
+force0.862155N and actual projection action0.795538N. Correction accounting is a
+telescoping identity; it does not establish contact reaction or equilibrium.
+Cloth contact was enabled but unexercised in the captured windows. The original
+strain failure remains. No production audit overlay has been integrated.
+
+1. Qualify performance-only candidate `3aa20b15` on
+   `feat/conservative-contact-candidates`, worktree
+   `.local/contact-candidates-20261114/`. Prospective
+   [SIM-004](spec/features/SIM-004-contact-candidates.md) reuses the existing
+   hierarchy for live queries, preserving ascending projection order and falling
+   back to the original remaining scan after query movement. The initial26sim
+   tests pass; final6contact tests additionally check ordering across hierarchy
+   leaves. Fmt and strictsim Clippy pass; the independent exhaustive diagnostic
+   oracle is retained.
+   First test fixture accidentally inherited0.002m thickness instead of declared
+   0.003m; the original failure is retained and only that setup was corrected.
+   Frozen independent regression now passes all504 states: original181 plus
+   Harbor164/159. Metadata, x/v, settings and diagnostics includingpeak are
+   exact f64bits except named wall times; no quality claim. Closure
+   `.local/contact-invariance-20261114/CLOSURE.json` SHA is `ff0edaf3…6c6`.
+   All source1,842/frozen64files stay exact; alljobs terminal. New unchanged
+   full A/B are separately frozen/authorized in
+   `.local/harbor-contact-candidates-20261114/`, preregistrationdcd00e55…40f7,
+   full-driver e4a220b4…c3de, authorizationac755b30…4712. A completes180steps+
+   independent181state analysis in55.277s, final strain8.6663% passes the final
+   strict screen; frame29 remains15.3559% failed. B completes180steps+181state
+   analysis in55.196s, final strain6.8045% passes. The frozen compare-edit runs
+   once in0.448s within B's420s deadline: front authored curve/t response is
+  29.859952mm at180. All362 states are independently checked, original prefixes
+   remain exact, and all69new/1,842sourcefiles stay unchanged. No easier scene,
+   settings/screen or linear-stitch source is included. Full headless completion
+   does not establish a new native workflow; the old native0/60 comparison is
+   explicitly historical6c↔3aa. Public-safe packaging remains separate.
+2. Review separate candidate `35afac60` on `feat/linear-closed-stitches` in
+   `.local/linear-closed-stitches-20261114/`. Prospective
+   [SIM-001](spec/features/SIM-001-closed-stitch-energy.md) preserves the elastic
+   zero-target energy with three constant coordinate constraints; positive/hard
+   targets keep their radial path. The frozen N32 operator is legacy RED and
+   candidate GREEN at unchanged1e-12 criteria. All32solver tests across the
+   acceptance/remaining runs, fmt and strictsim Clippy pass. A first new hard
+   test's exact-rational expectation failure is retained; its strict expected
+   scalar now follows independently derived3-4-5 f64 arithmetic. No garment
+   improvement follows from that operator alone. Independent math/source/evidence
+   review finds no blocking defect, with inherited denominator<=1e-20/nonfinite
+   skip explicitly qualified. Run separately bound garment validation before
+   combining it with the performance candidate.
+3. Native stage-label candidate `1ad6b8ed` on `fix/native-stage-reset` fixes all
+   clear-cloth transitions in3production lines. Frozen tests3RED→4GREEN,
+   all33nativeunit tests, fmt and strictpackageClippy pass. Pending/cancelled/
+   stale/failedjobs retain prioracceptedstage; acceptedmeshes preserve queued
+   batches/Play. NativeUI and full integrated checks remain pending.
+4. Publish reviewed Harbor/audit progress and the capture-encoding qualification
+   only after tracked-clean registry/map/hash checks. Keep the reference manual
+   click question pending; do not inject further reference input meanwhile.
+   Continue all remaining roadmap work after these bounded increments.
+
+All reported physical jobs are terminal: Harbor headless wrappers6362/11227,
+drivers6513/11372; native attempt cancelled; force-audit wrapper66760 and
+driver67564/analyzer68295 exit0. Prefix review95651/wrapper19019/child19163 exits0.
+Focused performance tests/Clippy6261/89269, all3invariance cases33956/57964/79338,
+stitch tests/Clippy and native-stage checks are terminal. The new fullHarbor
+preparation build78246/wrapper50333/release50596/Clippy50826 exits0. New fullA
+47986/wrapper68695/driver68840/analyzer70089 all0. New fullB58288/wrapper71496/
+driver71641/analyzer72622 all0; compare-edit73370/child73512 exits0 within the
+originaldeadline. Postflight SHA86c1a903…347e, handoffda036754…a8fc, no owned
+physical jobs active. Root clean xtask66629 and replay/map85648/62189 are0.
+Reference inventory36748 and REA observation64096 are terminal0. Recheck actual
+handles before resuming; use separate Cargo targets.

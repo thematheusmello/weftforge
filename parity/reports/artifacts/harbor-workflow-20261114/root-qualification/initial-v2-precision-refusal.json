@@ -1,0 +1,33 @@
+{
+  "kind": "retained_root_checker_precision_assumption",
+  "original_check": "X exact bit equality on front during ResizePiece height edit",
+  "outcome": "refused actual input",
+  "observed_differences": [
+    {
+      "point": 4,
+      "old_x": -0.36,
+      "edited_x": -0.3599999999999999,
+      "difference_m": 1.1102230246251565e-16
+    },
+    {
+      "point": 6,
+      "old_x": -0.09,
+      "edited_x": -0.09000000000000008,
+      "difference_m": -8.326672684688674e-17
+    },
+    {
+      "point": 7,
+      "old_x": -0.06,
+      "edited_x": -0.06000000000000005,
+      "difference_m": -5.551115123125783e-17
+    },
+    {
+      "point": 8,
+      "old_x": -0.44,
+      "edited_x": -0.43999999999999995,
+      "difference_m": 5.551115123125783e-17
+    }
+  ],
+  "max_abs_x_difference_m": 1.1102230246251565e-16,
+  "qualification": "The already-declared authored-coordinate criterion is1e-12m, not exact front-X bits after affine resize. Back coordinates and non-point fields remain exact. No source/fixture/output changes or new physics occurred."
+}

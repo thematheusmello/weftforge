@@ -1,0 +1,108 @@
+Window: "WeftForge", App: WeftForge.
+0 standard window WeftForge, Secondary Actions: Raise
+	1 container
+		2 text (settable) WeftForge
+		3 text (settable) Open garment design.
+		4 button Open…
+		5 button Save
+		6 button Save as…
+		7 button Recover…
+		8 button Export OBJ
+		9 button Export SVG
+		10 button Export DXF
+		11 button Undo
+		12 button Redo
+		13 button Commands ⌘K
+		14 toggle button (settable, boolean) Select / edit, Value: off
+		15 toggle button (settable, boolean) Polygon, Value: on
+		16 toggle button (settable, boolean) Rectangle, Value: off
+		17 toggle button (settable, boolean) Sew edges, Value: off
+		18 toggle button (settable, boolean) M:N sewing, Value: off
+		19 button Play
+		20 button Step
+		21 button Assemble (gravity off)
+		22 button Drape
+		23 button Reset
+		24 checkbox (settable, boolean) Wireframe, Value: off
+		25 text (settable) 2 pieces · 0 legacy seams · 0 sewing groups · 654 vertices
+		26 text (settable) Stage: Rest arrangement
+		27 text (settable) Next step settings: dt 0.01667 s · 4 substeps · 8 iterations · gravity [0.0, -9.81, 0.0] m/s² · seam closure 0.50 m/s
+		28 text (settable) Rest mesh rebuilt from editable construction.
+		29 text (settable) Unsaved
+		30 button Discard and close
+		31 text (settable) Construction
+		32 toggle button (settable, boolean) Harbor front, Value: off
+		33 toggle button (settable, boolean) Harbor back, Value: on
+		34 text (settable) Boundary curve · select here or in 2D
+		35 pop up button (settable) Choose boundary
+		36 text (settable) Pattern name
+		37 text field (settable) Harbor back
+		38 text (settable) W / H m
+		39 stepper (settable) 0.50
+		40 stepper (settable) 0.60
+		41 text (settable) X / Y m
+		42 stepper (settable) 0.38
+		43 stepper (settable) 1.27
+		44 button Add rectangle
+		45 button Add polygon point
+		46 button Close pattern (0 points)
+		47 text (settable) Harbor back
+		48 text (settable) Size m
+		49 stepper (settable) 1.320
+		50 stepper (settable) 0.640
+		51 text (settable) Arrange X / Y / Z m
+		52 stepper (settable) -0.72
+		53 stepper (settable) 0.00
+		54 stepper (settable) -0.24
+		55 text (settable) Rotate X / Y / Z radians
+		56 stepper (settable) 0.00
+		57 stepper (settable) 0.00
+		58 stepper (settable) 0.00
+		59 text (settable) Warp angle radians
+		60 text (settable) 0 = +U (right); positive turns toward +V (up).
+		61 stepper (settable) 1.5708
+		62 text (settable) Shared fabric · 2 pieces
+		63 text (settable) Changes affect every assigned piece. Uncalibrated approximation.
+		64 text (settable) Mass/area kg/m²
+		65 stepper (settable) 0.18
+		66 text (settable) Warp stiffness N/m
+		67 stepper (settable) 400
+		68 text (settable) Weft stiffness N/m
+		69 stepper (settable) 400
+		70 text (settable) Bend N·m
+		71 stepper (settable) 0.00300
+		72 color well
+		73 button Delete selected
+		74 text (settable) Sewing
+		75 checkbox (settable, boolean) Reverse paired edge, Value: on
+		76 text (settable) A interval / B interval (0–1)
+		77 stepper (settable) 0.00
+		78 stepper (settable) 1.00
+		79 stepper (settable) 0.00
+		80 stepper (settable) 1.00
+		81 text (settable) Sew edges: click two 2D boundaries.
+		82 text (settable) Intervals use curve parameter t, not arc length. Reverse swaps B's direction and keeps the normalized mapping.
+		83 text (settable) Ordered sewing groups
+		84 text (settable) Pairing: total authored arc length in metres. Span endpoints use curve parameter t.
+		85 text (settable) Mesh edge length m
+		86 stepper (settable) 0.070
+		87 text (settable) Iterations / substeps
+		88 stepper (settable) 8
+		89 stepper (settable) 4
+		90 scroll bar
+		91 text (settable) 2D PATTERNS
+		92 text (settable) Metres · 1 cm snap · scroll zoom · middle drag pan
+		93 unknown
+		94 text (settable) 3D GARMENT
+		95 text (settable) Drag orbit · scroll zoom · triangle selection
+		96 unknown
+	97 text WeftForge
+	98 menu button Window sharing
+99 menu bar
+	100 WeftForge
+
+Selected text: ```
+0.18
+```
+
+Note: Pay special attention to the content selected by the user. If the user asks a question or refers to the content they are looking at on-screen, they might be referring to the selected content (but they might be referring to something else that's visible, too).

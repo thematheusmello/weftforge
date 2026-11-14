@@ -1,0 +1,85 @@
+{
+  "stage": "build",
+  "wrapper_pid": 73995,
+  "status": "completed",
+  "started_utc": "2026-11-14T19:30:47.433455+00:00",
+  "wall_cap_seconds": 240,
+  "numerical_output_cap_bytes_overall": 268435456,
+  "children": [
+    {
+      "pid": 74139,
+      "process_group": 74139,
+      "argv": [
+        "cargo",
+        "generate-lockfile",
+        "--offline",
+        "--manifest-path",
+        "harness/Cargo.toml"
+      ],
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "pid": 74143,
+      "process_group": 74143,
+      "argv": [
+        "cargo",
+        "fmt",
+        "--manifest-path",
+        "harness/Cargo.toml"
+      ],
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "pid": 74201,
+      "process_group": 74201,
+      "argv": [
+        "cargo",
+        "fmt",
+        "--manifest-path",
+        "harness/Cargo.toml",
+        "--",
+        "--check"
+      ],
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "pid": 74259,
+      "process_group": 74259,
+      "argv": [
+        "cargo",
+        "build",
+        "--offline",
+        "--locked",
+        "--release",
+        "--manifest-path",
+        "harness/Cargo.toml"
+      ],
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "pid": 75047,
+      "process_group": 75047,
+      "argv": [
+        "cargo",
+        "clippy",
+        "--offline",
+        "--locked",
+        "--manifest-path",
+        "harness/Cargo.toml",
+        "--all-targets",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "completed_utc": "2026-11-14T19:31:21.617861+00:00",
+  "wall_seconds": 34.18405375001021,
+  "numerical_bytes_overall": 0
+}

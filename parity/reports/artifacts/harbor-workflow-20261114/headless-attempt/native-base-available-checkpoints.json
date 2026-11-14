@@ -1,0 +1,57 @@
+{
+  "kind": "Read-only exact available-checkpoint comparison; no dynamics or full physical quality analysis",
+  "utc": "2026-11-14T20:11:46.711478+00:00",
+  "case": "base",
+  "status": "verified_only_rest_and_assembly_checkpoints",
+  "frozen_preregistration_sha256": "d228f59ac72ca248df5e759b1d0ede14f2a32f99e0ecc22f301ec7ffff81b6d8",
+  "frozen_checker_sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+  "actual_native_receipt_sha256": "eaf1ae0f0e3c1d9a81f4487f067619f726434fad77a729cbff76fb23fbba6653",
+  "native_source_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+  "native_input_runtime_settings_receipt_verified_for_available_checkpoints": true,
+  "checkpoints": [
+    {
+      "frame": 0,
+      "native_obj_sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+      "headless_obj_sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+      "whole_OBJ_byte_identical": true,
+      "frozen_token_topology_rounding_normal_check": {
+        "exact_position_uv_face_group_tokens": true,
+        "max_decimal_rounding_error_m": "4.996880205580964684486389160E-18",
+        "rounding_bound_m": "5e-18",
+        "max_normal_component_error": 0.0
+      }
+    },
+    {
+      "frame": 60,
+      "native_obj_sha256": "7917b80683e52ede2eac3ea6d807100f806428f8a26b075d8afb17a04a6861f3",
+      "headless_obj_sha256": "7917b80683e52ede2eac3ea6d807100f806428f8a26b075d8afb17a04a6861f3",
+      "whole_OBJ_byte_identical": true,
+      "frozen_token_topology_rounding_normal_check": {
+        "exact_position_uv_face_group_tokens": true,
+        "max_decimal_rounding_error_m": "4.999701289250424451893195510E-18",
+        "rounding_bound_m": "5e-18",
+        "max_normal_component_error": 2.220446049250313e-16
+      }
+    }
+  ],
+  "cap_retained_source_unchanged": true,
+  "cap_retained_OBJ_exact_frame60": true,
+  "actor_artifacts_unchanged_before_after_sha256": {
+    "case-receipt.json": "eaf1ae0f0e3c1d9a81f4487f067619f726434fad77a729cbff76fb23fbba6653",
+    "stage-000.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+    "stage-060.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+    "cap-retained.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+    "stage-000.obj": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+    "stage-060.obj": "7917b80683e52ede2eac3ea6d807100f806428f8a26b075d8afb17a04a6861f3",
+    "cap-retained.obj": "7917b80683e52ede2eac3ea6d807100f806428f8a26b075d8afb17a04a6861f3"
+  },
+  "missing_checkpoint": 180,
+  "full181_state_native_headless_protocol": "incomplete, not run or passed",
+  "cross_edit_final_curve_t_comparison": "incomplete; no headless180 in either case and nativeB not_run",
+  "native_A_cap_observation_overrun_s": 2.704646583000226,
+  "limits": [
+    "No partial checkpoint substitution for final180",
+    "No new physics, continuation, retry, extension or altered evaluator",
+    "No independent final quality, force, velocity, equilibrium, calibration or reference parity claim"
+  ]
+}

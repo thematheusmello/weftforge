@@ -1,0 +1,11 @@
+{
+  "kind": "Preserved package preflight second refusal; no physical/data/evaluator change",
+  "utc": "2026-11-14T20:26:22.439730+00:00",
+  "first_failure": "Generic package preflight rejected EXIF presence before inspecting its content.",
+  "preserved_package": "public-safe-candidate-incomplete-02",
+  "preserved_packager": "checks/package-v1.py",
+  "preserved_packager_sha256": "8c185c212f9c12e203831ef151667bf0e80cc81740c34ee2a30c820ababa02a1",
+  "correction": "Retain unchanged JPEG bytes. Read-only metadata audit found only an EXIF IFD pointer and pixel width/height, no GPS/comment/device ID/path. JPEG signatures and actual privacy evidence remain checked.",
+  "metadata_audit": "checks/jpeg-metadata-audit.json",
+  "physical_retry_or_image_edit": false
+}

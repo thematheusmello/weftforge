@@ -1,0 +1,118 @@
+Window: "WeftForge", App: WeftForge.
+0 standard window WeftForge, Secondary Actions: Raise
+	1 container
+		2 text (settable) WeftForge
+		3 text (settable) Open garment design.
+		4 button Open…
+		5 button Save
+		6 button Save as…
+		7 button Recover…
+		8 button Export OBJ
+		9 button Export SVG
+		10 button Export DXF
+		11 button Undo
+		12 button Redo
+		13 button Commands ⌘K
+		14 toggle button (settable, boolean) Select / edit, Value: on
+		15 toggle button (settable, boolean) Polygon, Value: off
+		16 toggle button (settable, boolean) Rectangle, Value: off
+		17 toggle button (settable, boolean) Sew edges, Value: off
+		18 toggle button (settable, boolean) M:N sewing, Value: off
+		19 button Play
+		20 button Step
+		21 button Assemble (gravity off)
+		22 button Drape
+		23 button Reset
+		24 checkbox (settable, boolean) Wireframe, Value: off
+		25 text (settable) 2 pieces · 8 legacy seams · 0 sewing groups · 654 vertices
+		26 text (settable) Stage: Assembly (gravity off)
+		27 text (settable) Next step settings: dt 0.01667 s · 8 substeps · 32 iterations · gravity [0.0, -9.81, 0.0] m/s² · seam closure 1.00 m/s
+		28 text (settable) Cancelled phase; previous accepted snapshot retained.
+		29 text (settable) Construction
+		30 toggle button (settable, boolean) Harbor front, Value: off
+		31 toggle button (settable, boolean) Harbor back, Value: off
+		32 text (settable) Pattern name
+		33 text field (settable) Pattern 1
+		34 text (settable) W / H m
+		35 stepper (settable) 0.50
+		36 stepper (settable) 0.60
+		37 text (settable) X / Y m
+		38 stepper (settable) -0.25
+		39 stepper (settable) 1.00
+		40 button Add rectangle
+		41 button Add polygon point
+		42 button Close pattern (0 points)
+		43 text (settable) Sewing
+		44 checkbox (settable, boolean) Reverse paired edge, Value: on
+		45 text (settable) A interval / B interval (0–1)
+		46 stepper (settable) 0.00
+		47 stepper (settable) 1.00
+		48 stepper (settable) 0.00
+		49 stepper (settable) 1.00
+		50 text (settable) Sew edges: click two 2D boundaries.
+		51 text (settable) Intervals use curve parameter t, not arc length. Reverse swaps B's direction and keeps the normalized mapping.
+		52 text (settable) Seam 1 · #60
+		53 text (settable) A #18: t 0 → 1
+B #47: t 0 → 1
+		54 button Reverse
+		55 button Remove
+		56 text (settable) Seam 2 · #61
+		57 text (settable) A #19: t 0 → 1
+B #48: t 0 → 1
+		58 button Reverse
+		59 button Remove
+		60 text (settable) Seam 3 · #62
+		61 text (settable) A #21: t 0 → 1
+B #50: t 0 → 1
+		62 button Reverse
+		63 button Remove
+		64 text (settable) Seam 4 · #63
+		65 text (settable) A #22: t 0 → 1
+B #51: t 0 → 1
+		66 button Reverse
+		67 button Remove
+		68 text (settable) Seam 5 · #64
+		69 text (settable) A #26: t 0 → 1
+B #55: t 0 → 1
+		70 button Reverse
+		71 button Remove
+		72 text (settable) Seam 6 · #65
+		73 text (settable) A #27: t 0 → 1
+B #56: t 0 → 1
+		74 button Reverse
+		75 button Remove
+		76 text (settable) Seam 7 · #66
+		77 text (settable) A #29: t 0 → 1
+B #58: t 0 → 1
+		78 button Reverse
+		79 button Remove
+		80 text (settable) Seam 8 · #67
+		81 text (settable) A #30: t 0 → 1
+B #59: t 0 → 1
+		82 button Reverse
+		83 button Remove
+		84 text (settable) Ordered sewing groups
+		85 text (settable) Pairing: total authored arc length in metres. Span endpoints use curve parameter t.
+		86 text (settable) Mesh edge length m
+		87 stepper (settable) 0.070
+		88 text (settable) Iterations / substeps
+		89 stepper (settable) 32
+		90 stepper (settable) 8
+		91 text (settable) Time 1.000 s
+Assembly remaining 0.0000 m
+Peak material strain 7.12%
+Seam gap 0.0000 m
+Contact error 0.0000 m
+Initial intersections 0
+		92 text (settable) Harbor front · Weft +7.12%
+		93 scroll bar
+		94 text (settable) 2D PATTERNS
+		95 text (settable) Metres · 1 cm snap · scroll zoom · middle drag pan
+		96 unknown
+		97 text (settable) 3D GARMENT
+		98 text (settable) Drag orbit · scroll zoom · triangle selection
+		99 unknown
+	100 text WeftForge
+	101 menu button Window sharing
+102 menu bar
+	103 WeftForge

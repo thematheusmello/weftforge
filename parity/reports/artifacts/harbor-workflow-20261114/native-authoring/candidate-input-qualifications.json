@@ -1,0 +1,46 @@
+[
+  {
+    "kind": "native input routing",
+    "observed": "AX setValue on egui name/numeric creation fields produced no change. Direct focus/key input was used instead.",
+    "status": "Retained; no source fix or parity claim inferred."
+  },
+  {
+    "kind": "first polygon staging attempt",
+    "observed": "Rapid direct click/type batch left point7 equal to point6 and point10 Y=1.00 instead of1.60. Close rejected a degenerate edge, leaving zero pieces.",
+    "artifacts": [
+      "04-front-draft.png",
+      "05-front-created.png",
+      "06-failed-draft-cancelled.png"
+    ],
+    "resolution": "Escape deliberately cancelled rejected draft; unchanged frozen coordinates reentered with per-field focus observation, paste, exact readback, then Add point."
+  },
+  {
+    "kind": "local receipt helper bug",
+    "observed": "First numeric AX parser included role text and produced NaN. The check stopped before staging a point. A retained function closure then still used the old parser.",
+    "resolution": "Fresh helper names with a strict role/value parser and assert-based parser self-check. This was an evaluator defect, not a garment or product failure."
+  },
+  {
+    "kind": "native name focus routing",
+    "observed": "AX click/paste batch did not focus or rename the second creation field.",
+    "resolution": "Visible coordinate click held100ms established focus, then paste/Tab and readback confirmed Harbor back."
+  },
+  {
+    "kind": "AX observation truncation",
+    "observed": "With a piece selected, first100-child AX cap hid seam6 onward and caused a deliberate check stop.",
+    "resolution": "Native Select/edit, blank canvas deselection, and return to Sew exposed the complete list. Seam6 and all8 final pairs were correct; no seam was retried or changed."
+  },
+  {
+    "kind": "overstrict history comparison",
+    "observed": "A first whole-document equality assertion after Undo failed because the revision advanced16\u219218. The geometry and all other serialized construction matched exactly.",
+    "artifacts": [
+      "history-first-check-failure.json"
+    ],
+    "resolution": "Independent final checker asserts expected monotonic16/17/18/19/20 revisions and exact equality of every other serialized field. The frozen geometry and physical limits were never changed."
+  },
+  {
+    "kind": "screenshot container mismatch",
+    "observed": "Original CUA screenshot payloads were JPEG bytes saved under private .png filenames. First candidate PNG-signature check stopped.",
+    "resolution": "Original private bytes retained. Public candidate has only correctly named raw-screenshots/*.jpg copies with byte-identical SHA256, actual MIME/header checks and explicit source/public mapping. Generated PNG variants from the superseded packaging attempt are omitted.",
+    "artifact": "screenshot-format-and-integrity.json"
+  }
+]

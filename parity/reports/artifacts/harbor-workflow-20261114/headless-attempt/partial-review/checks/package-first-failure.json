@@ -1,0 +1,10 @@
+{
+  "kind": "Preserved package privacy-check first failure; no physical/data/evaluator change",
+  "utc": "2026-11-14T20:25:03.937306+00:00",
+  "first_failure": "Package privacy scanner rejected generated verify.py because the verifier included the literal forbidden search prefixes and a local username in its own code.",
+  "preserved_package": "public-safe-candidate-incomplete-01",
+  "preserved_packager": "checks/package-v0.py",
+  "preserved_packager_sha256": "513543117941acc4b45229f6f55ee3393cff8933c426c433bf4ccb41381dd8ca",
+  "correction": "Generic path-prefix checks use joined strings in generated public verifier; omit local username entirely. No numerical data, input, original evaluator or analysis result changed.",
+  "status": "metadata-only package preflight refusal retained, not a physical retry"
+}

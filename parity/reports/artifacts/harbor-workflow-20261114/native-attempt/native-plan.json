@@ -1,0 +1,93 @@
+{
+  "frozen_utc": "2026-11-14T19:58:14.526537+00:00",
+  "authorization": "Parent /root explicitly authorized this next native phase: exactly A then direct post-drape UI height-edit B, no third physical case, no retries/tuning/continuation.",
+  "phase": "Native physics; no new UI input before this registration.",
+  "source_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+  "runtime_sha256": "95fa1b7cb24b8de1a6b507330c2fe43ece0efe5a14226bb28c39f922fcee28c3",
+  "initial_pid": 57507,
+  "headless_registration_file": ".local/harbor-physics-20261114/preregistration.json",
+  "headless_registration_sha256": "d228f59ac72ca248df5e759b1d0ede14f2a32f99e0ecc22f301ec7ffff81b6d8",
+  "frozen_authoring_plan_sha256": "0f07ac196c8e285c1441dc3a16f0027f65c2b901b4630abfa180a216b56e1ddd",
+  "closed_authoring_candidate_manifest_sha256": "c7466657d51dc48d42e4ba669ed00b5f21cf4af5d7c33b5147c4902de9cb96c4",
+  "cases": [
+    {
+      "name": "base",
+      "actual_start_file": "harbor-final-restored.weftforge",
+      "reference_input_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "revision": 20,
+      "mesh_vertices": 654,
+      "mesh_triangles": 1172,
+      "freshness_evidence": "Existing PID57507 was launched with no garmentfile, opened own authored file, performed authoring only, and remains saved/rest/paused. No physics controls have ever run in this process."
+    },
+    {
+      "name": "height",
+      "reference_input_file": "height-edited.weftforge",
+      "reference_input_sha256": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5",
+      "construction_action": "Only from case A actual draped state: native inspector front Height .64 -> .68, minimum Y.96 anchor, width unchanged. No import/load or typed command injection.",
+      "expected_revision": 21,
+      "revision_rule": "Observe actual; all serialized project/construction fields except revision must exactly equal frozen UI-authored B17 before any B physics. On any other difference stop; no normalization.",
+      "mesh_vertices": 640,
+      "mesh_triangles": 1144,
+      "freshness_evidence": "Record rest remesh invalidation, disappearance of Time/cloth diagnostics and exact rest OBJ match. Production last_stage may stay stale Drape after mesh rebuild; retain this known pre-input UI observation limitation, do not Reset to conceal it."
+    }
+  ],
+  "settings": {
+    "dt_s": 0.016666666666666666,
+    "substeps": 8,
+    "iterations": 32,
+    "seam_closure_m_per_s": 1.0,
+    "assembly_frames": [
+      1,
+      60
+    ],
+    "assembly_gravity": [
+      0,
+      0,
+      0
+    ],
+    "drape_frames": [
+      61,
+      180
+    ],
+    "drape_gravity": [
+      0,
+      -9.81,
+      0
+    ],
+    "all_contacts_enabled": true,
+    "pins": []
+  },
+  "native_actions": "Actual Assemble (gravity off) once (60), then actual Drape once (120). Observe active settings/counts/time; no Play or Step. Save editable source and native OBJ plus AX/raw JPEG at rest/frame60/frame180.",
+  "artifact_names": [
+    "stage-000.weftforge",
+    "stage-000.obj",
+    "stage-060.weftforge",
+    "stage-060.obj",
+    "stage-180.weftforge",
+    "stage-180.obj",
+    "case-receipt.json"
+  ],
+  "wall_cap": {
+    "seconds_per_case": 420,
+    "start": "Immediately before actual Assemble input",
+    "end": "Observed Drape completion and associated stage exports/inspection, all charged to same cap",
+    "clock": "Node performance.now monotonic plus UTC receipt timestamps",
+    "on_error_or_cap": "Cancel job if present, stop case without retry/extension/tuning, preserve accepted/partial state and error/cap receipt; never start another batch for this case."
+  },
+  "quality": {
+    "finite_required": true,
+    "assembly_target_exactly_zero_required": true,
+    "material_strain_max_exclusive": 0.15,
+    "stitch_gap_m_max_exclusive": 0.005,
+    "supported_contact_penetration_m_max_exclusive": 0.002,
+    "no_quality_pass_expected": true,
+    "observability": "UI closure/strain/contact values are rounded; preserve exact shown values without treating rounded zeros as independent exact proof. Native OBJ/headless comparisons and independent evaluator qualify supported metrics; no native velocity/force/equilibrium/calibration/reference parity claims."
+  },
+  "input_receipt_semantics": {
+    "input_sha256": "Actual saved native source bytes SHA256, including actual revision.",
+    "reference_input_sha256": "Frozen preregistered reference bytes SHA256; differs for B if actual revision21.",
+    "construction_equivalence": "Independent exact all serialized fields except revision; before B physics. Never rewrite input or mislabel actual bytes."
+  },
+  "post_B": "Native Save, actual Quit/relaunch/Open own final saved source, verify editable construction, source and rest export; only reversible existing height/history semantics if an edit is needed. No third physical case.",
+  "protected": "All earlier authoring artifacts, first failures, 153-file authoring public-safe candidate and weak-grain benchmark remain unchanged. New files only below native-physics/."
+}

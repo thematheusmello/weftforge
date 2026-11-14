@@ -1,0 +1,15 @@
+{
+  "stage": "geometry-only static preflight",
+  "status": "failed_before_any_Cloth_construction_or_dynamics",
+  "check": "loaded_project == source JSON",
+  "cause": "The core document stores display color in f32; JSON source decimals are normalized to their typed f32 values when Project is reserialized. All physical fields and authored coordinates are unchanged.",
+  "retained_evaluator": "checks/prepare-geometry-v0.py",
+  "correction": "Compare exactly after independently applying f32 conversion only to material.color; no physical tolerance or quality threshold changed.",
+  "simulation_cases_executed": 0,
+  "outputs_retained": [
+    "prepared/base/mesh-metadata.json",
+    "prepared/base/rest.obj",
+    "prepared/height/mesh-metadata.json",
+    "prepared/height/rest.obj"
+  ]
+}

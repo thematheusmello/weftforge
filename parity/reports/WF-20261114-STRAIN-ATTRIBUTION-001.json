@@ -236,7 +236,8 @@
     "parity/reports/artifacts/strain-attribution-publication-20261114/saved-output-replay.json": "68442eca29a4a2bf5d2f0488d438c1d2ae391dd0a80cf177dbdab4e5370a50d7",
     "parity/reports/artifacts/strain-attribution-publication-20261114/xtask.public.log": "fa144083dc9a6f8d315c5a4fb554660240821fccf0bdcf36625fb386b742b247",
     "parity/scenarios/SIM-STRAIN-ATTRIBUTION-001.json": "ea7c357080f3bc25f56354101e09eae80ae6987c479b9a5219ffa8a327eb5cf7",
-    "spec/features/SIM-005-strain-attribution.md": "71bbea48b09a3f07cc516625e1506ae07a73a79f3db35fcf59564dc44cc23700"
+    "spec/features/SIM-005-strain-attribution.md": "71bbea48b09a3f07cc516625e1506ae07a73a79f3db35fcf59564dc44cc23700",
+    "parity/reports/artifacts/capture-encoding-20261114/audit.json": "f4c9e3202fd5fb0913c4ec43a5274d346e64f25e50eaaa2aa121bc44ec120071"
   },
   "scope": "Read-only material-strain attribution through shared CPU diagnostics/core mapping, actual standalone native application and packaged CLI. Original shirt failure is preserved; no physics or authoring changes.",
   "prospective_contract": {
@@ -326,5 +327,11 @@
     "receipt": "parity/reports/artifacts/strain-attribution-publication-20261114/receipt.json",
     "tracked_bundle_files": 167,
     "new_simulations": 0
+  },
+  "capture_encoding_qualification": {
+    "audit": "parity/reports/artifacts/capture-encoding-20261114/audit.json",
+    "historical_misnamed_JPEG_captures": 8,
+    "original_bytes_paths_and_manifests_unchanged": true,
+    "qualification": "Historical PNG descriptions refer to .png suffixes; these original captured bytes are JPEG. No pixel conversion or new UI run occurred. The cited audit identifies exact hashes and actual formats."
   }
 }

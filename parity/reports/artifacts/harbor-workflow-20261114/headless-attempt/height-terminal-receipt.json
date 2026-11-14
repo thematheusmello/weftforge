@@ -1,0 +1,56 @@
+{
+  "kind": "Case B terminal cap/failure receipt; metadata/counts only, no independent physical analysis after cap",
+  "utc": "2026-11-14T20:10:05.907185+00:00",
+  "case": "height",
+  "status": "incomplete_at_fixed_wall_cap",
+  "state_count": 159,
+  "step_count": 158,
+  "last_retained_frame": 158,
+  "attempted_failed_frame": 159,
+  "solver_error": "simulation cancelled; previous state retained",
+  "transactionally_retained_state_diagnostics_exact": true,
+  "last_reported_solver_diagnostics": {
+    "contacts": 17579,
+    "finite": true,
+    "initial_intersections": 0,
+    "kinetic_energy": 2.477106786650269e-06,
+    "max_contact_error": 0.0,
+    "max_seam_error": 6.102359412044339e-09,
+    "max_stretch_error": 0.06809275255748704,
+    "peak_strain": {
+      "axis": "warp",
+      "signed_strain": 0.06809275255748704,
+      "triangle": 590
+    },
+    "seam_assembly_remaining": 0.0,
+    "simulation_time": 2.633333333333329,
+    "step_seconds": 2.599861625
+  },
+  "job": "checks/height-job.json",
+  "job_sha256": "88f0e85d973aa3bd4ea42500c182fa36967fba8c08c962dab559e0d278d080d1",
+  "wall_seconds_including_cancellation_receipt_bookkeeping": 420.05320195900276,
+  "independent_physical_analysis": "not run; original cap ended driver before180-frame completion",
+  "final180_quality_result": "unknown/incomplete, never pass",
+  "retained_outputs": {
+    "runs/height/rest-metadata.json": {
+      "bytes": 579859,
+      "sha256": "d7032bd7e87338e19138647a859a0c447c105868c5f5dfec1b4fa48037cbe4ac"
+    },
+    "runs/height/steps.jsonl": {
+      "bytes": 89670,
+      "sha256": "865a8586a6fb52cd58e8a7cdbf6bbfaf5b6e2d213b8834802f9c6d949fbd5c1b"
+    },
+    "runs/height/failed-step.json": {
+      "bytes": 85551,
+      "sha256": "1b6d0054dbc2345c3975347f16b22c91f41afb7829d39667e9ba54b5f88d34ea"
+    },
+    "runs/height/trajectory.jsonl": {
+      "bytes": 13210401,
+      "sha256": "bf0862841cc1d6bdadd2a6762579a3bbaed7c2683c2fa24c3fe5583da497ba86"
+    },
+    "runs/height/stage-060.obj": {
+      "bytes": 151488,
+      "sha256": "6e097d7cad1a8537befcd6919164797a8a75ceb64c65f0159a08c9cddddf186e"
+    }
+  }
+}

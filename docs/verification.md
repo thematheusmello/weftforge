@@ -129,6 +129,14 @@ independently reconstructed output. This accepts diagnostic visibility only.
 The original quality failure, equilibrium/convergence gaps and full reference
 contract remain open. See [SIM-005](../spec/features/SIM-005-strain-attribution.md).
 
+The [capture encoding audit](../parity/reports/artifacts/capture-encoding-20261114/audit.json)
+qualifies historical screenshot filenames: 25 ordered-sewing and eight strain
+captures have `.png` suffixes but contain original JPEG bytes. Earlier PNG wording
+was a filename classification error. Their original bytes, hashes, paths and
+frozen manifests remain unchanged; the images still show the recorded native
+workflow. Later Harbor captures use `.jpg` with signature checks. No pixels were
+converted and no physical or authoring result changed for this correction.
+
 ### Shutdown and recovery boundary
 
 The preliminary curve-candidate probe found that macOS Cmd+Q quit a dirty

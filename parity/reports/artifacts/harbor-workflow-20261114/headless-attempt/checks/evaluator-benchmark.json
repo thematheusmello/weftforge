@@ -1,0 +1,90 @@
+{
+  "kind": "Preparation-only static geometry evaluator throughput; no Cloth or stepping",
+  "pid": 96433,
+  "started_utc": "2026-11-14T19:46:56.451973+00:00",
+  "python": "3.13.0",
+  "machine": "arm64",
+  "metrics_sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+  "benchmark_source_sha256": "a0bc0d60267a1622d5253844e7a3a20bfe2e5f95bcf24a87421da0f86fbdb4a6",
+  "coverage": "181 complete independent metric sets for each mesh and static geometry arrangement; no trajectory is fabricated",
+  "hard_wall_cap_seconds": 120,
+  "jobs": [
+    {
+      "mesh_case": "base",
+      "arrangement": "rest",
+      "vertices": 654,
+      "triangles": 1172,
+      "complete_independent_metric_sets": 181,
+      "wall_seconds": 6.4928282499313354,
+      "last_static_metric_set": {
+        "material_axis_strain": 3.885780586188048e-15,
+        "sampled_seam_gap_m": 0.48,
+        "avatar_ground_penetration_m": 0.0,
+        "supported_self_interpanel_penetration_m": 0.0,
+        "positive_depth_pairs": {
+          "self": 0,
+          "interpanel": 0
+        }
+      }
+    },
+    {
+      "mesh_case": "base",
+      "arrangement": "synthetic_parallel_layers_4mm_apart",
+      "vertices": 654,
+      "triangles": 1172,
+      "complete_independent_metric_sets": 181,
+      "wall_seconds": 16.047565707936883,
+      "last_static_metric_set": {
+        "material_axis_strain": 3.885780586188048e-15,
+        "sampled_seam_gap_m": 0.004,
+        "avatar_ground_penetration_m": 0.18269696969696975,
+        "supported_self_interpanel_penetration_m": 0.002,
+        "positive_depth_pairs": {
+          "self": 0,
+          "interpanel": 3156
+        }
+      }
+    },
+    {
+      "mesh_case": "height",
+      "arrangement": "rest",
+      "vertices": 640,
+      "triangles": 1144,
+      "complete_independent_metric_sets": 181,
+      "wall_seconds": 6.363073250046,
+      "last_static_metric_set": {
+        "material_axis_strain": 3.885780586188048e-15,
+        "sampled_seam_gap_m": 0.4816637831516918,
+        "avatar_ground_penetration_m": 0.0,
+        "supported_self_interpanel_penetration_m": 0.0,
+        "positive_depth_pairs": {
+          "self": 0,
+          "interpanel": 0
+        }
+      }
+    },
+    {
+      "mesh_case": "height",
+      "arrangement": "synthetic_parallel_layers_4mm_apart",
+      "vertices": 640,
+      "triangles": 1144,
+      "complete_independent_metric_sets": 181,
+      "wall_seconds": 12.26122829108499,
+      "last_static_metric_set": {
+        "material_axis_strain": 3.885780586188048e-15,
+        "sampled_seam_gap_m": 0.040199502484483375,
+        "avatar_ground_penetration_m": 0.18269696969696975,
+        "supported_self_interpanel_penetration_m": 0.002,
+        "positive_depth_pairs": {
+          "self": 0,
+          "interpanel": 1058
+        }
+      }
+    }
+  ],
+  "status": "completed",
+  "elapsed_seconds": 41.1768047909718,
+  "physical_solver_throughput": "not measured or promised; each real driver+analysis remains hard-capped at420s",
+  "worst_case_geometry_completion_guarantee": false,
+  "acceleration_correctness": "Exhaustive-vs-grid analytic selfchecks include face/edge/vertex regions, shifted grid boundaries, self/interpanel, seam exclusions and wide-AABB fallback; partition never drops wide triangles"
+}

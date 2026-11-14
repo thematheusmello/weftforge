@@ -1,0 +1,15 @@
+{
+  "kind": "Retained clean publication refusal before any push",
+  "commit": "acb1c832849f904058ce424725582c716782ab36",
+  "missing_manifested_artifacts": [
+    "parity/reports/artifacts/harbor-workflow-20261114/native-authoring/empty-start.weftforge.autosave",
+    "parity/reports/artifacts/harbor-workflow-20261114/native-authoring/front-created.weftforge.autosave",
+    "parity/reports/artifacts/harbor-workflow-20261114/native-authoring/harbor-reopened.weftforge.autosave",
+    "parity/reports/artifacts/harbor-workflow-20261114/native-authoring/height-edited.weftforge.autosave",
+    "parity/reports/artifacts/harbor-workflow-20261114/native-authoring/panels-arranged.weftforge.autosave",
+    "parity/reports/artifacts/harbor-workflow-20261114/native-authoring/panels-arranged.weftforge.autosave.recovery",
+    "parity/reports/artifacts/harbor-workflow-20261114/native-authoring/two-panels-created.weftforge.autosave"
+  ],
+  "reason": "Seven original authoring autosave snapshots matched normal repository ignore rules; first clean verifier refused tracked closure.",
+  "correction": "Explicitly track only these seven already-reviewed, hash-bound original snapshots; frozen bundle bytes/manifests unchanged."
+}

@@ -1,0 +1,32 @@
+{
+  "kind": "Typed appearance channel serialization only; physical fields remain exactly verified",
+  "definition": "core document Material.color is [f32; 3]; canonical input decimal and metadata reserialization differ only in those three appearance channels",
+  "source_document_sha256": "bfc73ea6acc9ed56b85b51ef482de4aad169053e7a6770892e12f6d4e046c725",
+  "channels": [
+    {
+      "original_json_decimal": "0.22",
+      "original_f64_bits_hex": "3fcc28f5c28f5c29",
+      "typed_f32_bits_hex": "3e6147ae",
+      "reserialized_f64_decimal": "0.2199999988079071",
+      "reserialized_f64_bits_hex": "3fcc28f5c0000000"
+    },
+    {
+      "original_json_decimal": "0.55",
+      "original_f64_bits_hex": "3fe199999999999a",
+      "typed_f32_bits_hex": "3f0ccccd",
+      "reserialized_f64_decimal": "0.550000011920929",
+      "reserialized_f64_bits_hex": "3fe19999a0000000"
+    },
+    {
+      "original_json_decimal": "0.76",
+      "original_f64_bits_hex": "3fe851eb851eb852",
+      "typed_f32_bits_hex": "3f428f5c",
+      "reserialized_f64_decimal": "0.7599999904632568",
+      "reserialized_f64_bits_hex": "3fe851eb80000000"
+    }
+  ],
+  "blanket_scalar_normalization": false,
+  "physical_parameters_normalized": false,
+  "preserved_first_failure": "checks/geometry-preflight-first-failure.json",
+  "preserved_first_evaluator": "checks/prepare-geometry-v0.py"
+}
