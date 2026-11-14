@@ -1072,7 +1072,7 @@
       "PAT-002",
       "SEW-002"
     ],
-    "unobserved_areas": "Broad/advanced behavior, many dialogs/panels, ranges/errors/modifiers, numeric resize,5 mm and limit/cancellation resolution cases, sewn constraints after remeshing, completed/reversed sewing and independent curved arc-length measurements, simulation/caches, broader interoperability and performance. Bounded rectangle, PD 20/PD10, curve/history and first partial-side observations do not complete these groups.",
+    "unobserved_areas": "Broad/advanced behavior, many dialogs/panels, ranges/errors/modifiers, numeric resize, 5 mm and limit/cancellation resolution cases, reversed/partial sewing, physical correspondence and sewn remeshing, simulation/caches, broader interoperability and performance. One whole-edge pair/history/document-reopen loop and the prior bounded workflows do not complete these groups.",
     "documentation_registry_groups_mapped": 56,
     "completed_reference_workflow_contracts": 0,
     "total_actual_reference_features": null,
@@ -1083,11 +1083,13 @@
       "spec/features/PAT-011-runtime-20261114.md",
       "spec/observations/REF-PAT-011-RESOLUTION-001-pd20-pd10.json",
       "spec/features/SEW-002-runtime-20261114.md",
-      "spec/observations/REF-SEW-002-FREE-PARTIAL-001.json"
+      "spec/observations/REF-SEW-002-FREE-PARTIAL-001.json",
+      "spec/features/SEW-001-runtime-20261114.md",
+      "spec/observations/REF-SEW-001-WHOLE-001.json"
     ],
     "runtime_component_catalog": "spec/inventory/md-2026.1.237-components.json",
-    "runtime_component_observations": 313,
-    "combined_menu_component_observations": 902
+    "runtime_component_observations": 339,
+    "combined_menu_component_observations": 928
   },
   "known_contradictions": [
     {
@@ -1110,28 +1112,27 @@
   "intentional_exclusions": [
     "Vendor billing, activation and storefront administration are excluded from the replacement feature set."
   ],
-  "qualification": "Provisional settings baseline. Menu/component presence, original rectangle creation/history, fixed-unit physical/boundary measurements, bounded 20-to-10-mm edit/history/save/export/process-reopen, one curved-edge gesture/history and a 100 mm first-side sewing preview are observed. Broad contracts and WeftForge comparison remain incomplete; zero verified functional-parity claims. Earlier AX/startup/input limitations remain explicit.",
+  "qualification": "Provisional settings baseline. Presence/value inventory, bounded original rectangle and resolution workflows, one curve/history and first partial preview, and one whole-edge pair with Undo/Redo and document save/close/open are observed. Broad contracts, physical correspondence, reversal/partial completion, simulation and WeftForge comparison remain incomplete. Zero verified parity claims; interrupted input and historical AX/startup gaps remain explicit.",
   "latest_access_observation": {
-    "timestamp": "2026-11-14T04:29:52.423271+00:00",
-    "evidence_id": "ev_102ef94168a0b4cab79e4b0bc124470af857fc779d686c7533bdd4cb1d664d0f",
-    "observed_state": "Saved separate original two-panel curved checkpoint; Edit Sewing selected; simulation off; no selection or modal; unfinished Free Sewing preview removed by switching tools. No completed seam observed.",
+    "timestamp": "2026-11-14T06:10:42.703007+00:00",
+    "evidence_id": "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521",
+    "observed_state": "Owned two-panel whole-edge result reopened after document close; Edit Sewing and Select All expose the same seam name/settings, both 300.0 mm labels and directional marks; simulation off, no modal.",
     "current_observed_blocker": null,
-    "access_handled_by": "Account-holder handled trial activation; investigator performed no credential, terms or licensing actions.",
-    "license_type_or_expiry": "not inspected",
     "actions_executed": [
-      "new original numeric two-panel construction",
-      "one curved-edge gesture, Undo and Redo",
-      "first-side numeric100 mm Free Sewing preview",
-      "2D Zoom Extents All after unexpected viewport displacement",
-      "tool switch removed unfinished preview",
-      "Save As separate owned curved checkpoint"
+      "Segment Sewing original whole-side pair",
+      "one Edit Undo and one Edit Redo",
+      "Save As separate owned result",
+      "File New Project then Open Project for the saved result",
+      "Edit Sewing then Edit Select All"
     ],
     "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
-    "accessibility_nodes": 92,
+    "accessibility_nodes": 142,
     "truncated": false,
     "gaps": [],
-    "limitation": "This final blank-property state has no AX gaps. Earlier selected-pattern records retain an unrelated node attribute failure. No completed/reversed sewing, independent curved export or new-checkpoint reopen is claimed.",
-    "privacy": "Account greeting and raw commercial UI remain private."
+    "access_handled_by": "Account holder; no investigator account, terms, licensing or security action.",
+    "license_type_or_expiry": "not inspected",
+    "limitation": "Final pointer run reported an AXSize failure with possible partial input; completed pair verified in independent after-capture and history/reopen loop. Same process throughout; no reversal, partial completion, simulation or physical correspondence claim.",
+    "privacy": "Account greeting and raw commercial UI stay private."
   },
   "access_history": [
     {
@@ -1191,6 +1192,28 @@
         "AX child count unavailable at path [103]: AXError -25202"
       ],
       "limitation": "All stated target fields were read; the whole window capture has one unrelated AX node attribute failure and is not complete.",
+      "privacy": "Account greeting and raw commercial UI remain private."
+    },
+    {
+      "timestamp": "2026-11-14T04:29:52.423271+00:00",
+      "evidence_id": "ev_102ef94168a0b4cab79e4b0bc124470af857fc779d686c7533bdd4cb1d664d0f",
+      "observed_state": "Saved separate original two-panel curved checkpoint; Edit Sewing selected; simulation off; no selection or modal; unfinished Free Sewing preview removed by switching tools. No completed seam observed.",
+      "current_observed_blocker": null,
+      "access_handled_by": "Account-holder handled trial activation; investigator performed no credential, terms or licensing actions.",
+      "license_type_or_expiry": "not inspected",
+      "actions_executed": [
+        "new original numeric two-panel construction",
+        "one curved-edge gesture, Undo and Redo",
+        "first-side numeric100 mm Free Sewing preview",
+        "2D Zoom Extents All after unexpected viewport displacement",
+        "tool switch removed unfinished preview",
+        "Save As separate owned curved checkpoint"
+      ],
+      "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+      "accessibility_nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "limitation": "This final blank-property state has no AX gaps. Earlier selected-pattern records retain an unrelated node attribute failure. No completed/reversed sewing, independent curved export or new-checkpoint reopen is claimed.",
       "privacy": "Account greeting and raw commercial UI remain private."
     }
   ],
