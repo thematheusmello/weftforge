@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "purpose": "Source-pinned engineering crosswalk and bounded handoff queue, not a second implementation/verification status registry or a complete product inventory.",
-  "source_commit": "9cb2af3f86e1db03f1242542e7271ab51a9cbf64",
+  "source_commit": "9d30a71bbc2b0e051d9eaddc42b5f3b7dab08bde",
   "reference_build": "2026.1.237 (r58920)",
   "inputs": [
     {
@@ -20,7 +20,7 @@
   "status_authority": {
     "path": "parity/features.yaml",
     "lookup": "Join groups[].feature_ids to features[].id at the revision being reported. Read implementation_status, reference_observation_status, verification_status and freshness there; no status value is copied here.",
-    "pinned_registry_sha256": "0893a160f9863b80593dbe1bdc130158873ecb59eae116b3451942b9b3671a72"
+    "pinned_registry_sha256": "9cd8e7a217dbf14051cc9839534f42d59b92ac37825067730776df62ffb88009"
   },
   "coverage_semantics": [
     "949 catalog IDs are entry-path discovery records, not the feature denominator. All previous 928 entries, 205 packets and 56 source landmarks remain; 17 input-specific Open Project controls and four selected-seam Edit-menu label paths join existing groups. No packet or broad feature is completed by these additions. Counts of groups or packets are ownership counts, not parity percentages.",
@@ -137,12 +137,12 @@
     "ui_properties": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "fn inspector(",
-      "scope": "Stable piece/curve numeric widget scopes and passive RGB buffering remain. Join with next boundary sends pending inspector changes and JoinCurve as one transaction; success clears superseded numeric text/focus and rejection retains draft/current input without idle commit. Existing dimensions/cubic/split/join/placement/grain/fabric controls remain a bounded subset, not a complete property/preferences editor."
+      "scope": "Stable piece/curve/seam widget scopes and passive RGB buffering remain. Per-seam Reverse uses UpdateSeam, and Join uses JoinCurve, through generic apply_inspector_action: pending inspector changes commit with the action as one transaction; success clears superseded numeric text/focus and rejection retains current draft/input/history. Rows show seam ID, name, curve IDs and oriented parameters; broader field/selection/preferences editing remains absent."
     },
     "ui_pattern": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "fn patterns(",
-      "scope": "2D authored boundary display/picking, point drag, polygon/rectangle/sewing input, fixed grid and hardcoded snap."
+      "scope": "2D authored boundary display/picking, point drag, polygon/rectangle/sewing input, fixed grid and hardcoded snap. Each seam now draws both authored endpoint guides using oriented t0/t1; the guides visualize endpoint pairing only, not interior nonlinear correspondence, physical twist or arc-length equivalence."
     },
     "ui_garment": {
       "path": "apps/weftforge/src/main.rs",
@@ -262,7 +262,7 @@
     "ui_field_state": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "ui.make_persistent_id((\"piece\",piece.id))",
-      "scope": "Stable creation/piece/curve/sewing/mesh scopes isolate numeric edit buffers from dynamic hierarchy rows; these are widget IDs, not new authored schema/Command variants."
+      "scope": "Stable creation/piece/curve/sewing/mesh widget scopes isolate numeric edit buffers from hierarchy rows. Each seam row additionally uses the stable seam ID, preserving distinct Reverse/Remove controls for duplicate names created by splitting; widget scopes do not add authored schema fields or Command variants."
     },
     "ui_rgb_buffer": {
       "path": "apps/weftforge/src/main.rs",
@@ -631,7 +631,7 @@
         "FILE-005",
         "FILE-007"
       ],
-      "reason": "SVG/DXF editable import and production output/printing remain target requirements even when an entry path is absent from the empty-state menu snapshot."
+      "reason": "SVG/DXF editable import and production output/printing remain target requirements. REF-FILE-005-DXF-005 observes no DXF entry only in the current File > Export AX route, with no dialog/action/output and zero new IDs. This does not establish product-wide support or remove scope; the required documented DXF subset remains in the implementation queue."
     },
     {
       "lead": "Bond/Skive creation",
@@ -5155,14 +5155,19 @@
       "source_refs": [
         "commands",
         "ui_properties",
-        "workflow_tests"
+        "workflow_tests",
+        "ui_pattern",
+        "ui_field_state",
+        "seam_fields",
+        "mcp_schema"
       ],
       "shared_commands": [
         "UpdateSeam"
       ],
-      "candidate_behavior": "Oriented intervals and explicit correspondence are editable in core; native UI exposes orientation only while creating a seam.",
+      "candidate_behavior": "Native per-seam Reverse clones the chosen seam, swaps only side B t0/t1, and submits existing UpdateSeam. It preserves seam identity/name/order, side A, covered parameter intervals and the stored normalized correspondence; two reversals restore construction apart from revision. Stable seam-ID rows distinguish duplicate names and both endpoint guides show the categorical connection change. Generic inspector action handling combines pending drafts and Reverse in one transaction and preserves draft/current numeric input/history on failure. Intervals remain curve parameters; core/in-process checks do not establish actual desktop acceptance, continuous arc-length/reference equivalence, easing or physical twist.",
       "missing_functionality": [
-        "A selected-seam reverse command with bounded categorical guide feedback, unchanged intervals/lengths/settings, one-step history and document persistence is now observed in the reference. WeftForge still needs a connected selected-seam reverse action and independent continuous correspondence/remesh/undo checks; UI guides do not expose a hidden orientation flag or exact arc-length mapping."
+        "Execute a separately declared native reversal sequence on an identified executable, including the chosen ID among duplicate names, focused pending numeric input, rejected action preservation, two endpoint guides, Undo/Redo, remeshing and save/reopen. Historical join execution does not qualify the changed native reversal source; current qualification belongs in the authoritative registry/reports.",
+        "Resolve reference continuous correspondence/geometry, multiple selection and alternative entry/error contracts independently. Endpoint guides do not expose a hidden orientation flag, complete arc-length mapping, unequal-length physical easing or simulated twist; broader seam properties remain unmodeled."
       ],
       "runtime_questions": [
         "The bounded reference command switches A0-B0/A1-B1 guides to A0-B1/A1-B0 while preserving the same 100.0-labeled intervals. Which continuous pair points, ordered-side representation and stable IDs are retained beyond this categorical UI result, and how do unequal lengths, multiple selection, remeshing, cancel/error and alternative entry routes behave?"
@@ -6284,15 +6289,17 @@
         "ui_pattern",
         "seam_lengths",
         "workflow_tests",
-        "seam_fields"
+        "seam_fields",
+        "ui_field_state"
       ],
       "shared_commands": [
         "UpdateSeam",
         "RemoveSeam"
       ],
-      "candidate_behavior": "Core can update/remove seams; native UI creates interval seams and removes them but lacks full seam selection/edit tool and direction/length editor.",
+      "candidate_behavior": "Core can update/remove seams. Native inspector rows now show seam name/ID and both curve IDs/oriented parameters, use stable seam-ID widget scopes for duplicate names, and expose Reverse/Remove. Reverse uses existing UpdateSeam and shared inspector transaction/focus guards; both endpoint guides appear on the 2D canvas. Full canvas seam selection, name/property/general interval editing, direction/length diagnostics and a complete sewing edit tool remain absent.",
       "missing_functionality": [
-        "Reopened whole/partial/reversed seams are retrieved through Edit Sewing then Select All with unchanged identity/current settings; direct picking, name/property/interval edits, invalid/cancelled input, multiple selection and full preflight diagnostics remain unqualified. One exposed Reverse Sewing command changes categorical guides but does not measure continuous correspondence."
+        "Reopened whole/partial/reversed seams are retrieved through Edit Sewing then Select All with unchanged identity/current settings; direct picking, name/property/interval edits, invalid/cancelled input, multiple selection and full preflight diagnostics remain unqualified. One exposed Reverse Sewing command changes categorical guides but does not measure continuous correspondence.",
+        "Actual native reversal input/history/reopen and stable duplicate-name row behavior require a separately declared desktop run. In-process source checks cover these paths but do not supply that acceptance or settle reference selection/property/correspondence semantics."
       ],
       "runtime_questions": [
         "How are seams selected/edited, do handles address arc length or parameters and which errors/length mismatch/direction warnings appear before simulation?",
@@ -7393,7 +7400,7 @@
         "seam_lengths"
       ],
       "shared_commands": [],
-      "candidate_behavior": "Native 2D sewing lines and a seam list exist; independent sewing/length/seamline/thread visibility and 3D overlays do not.",
+      "candidate_behavior": "Native 2D sewing lines, two endpoint-pair guides per seam and stable ID/name rows with both interval directions now exist. The guides follow t0/t1 endpoint pairing and visualize no interior nonlinear map. Independent sewing/length/seamline/thread visibility controls, selected-state diagnostics and 3D overlays remain absent; no physical twist or arc-length result follows from the display.",
       "missing_functionality": [
         "Separate physical seam, seamline and thread display objects, selected/all scopes, direction/mismatch diagnostics and picking."
       ],
@@ -19933,7 +19940,7 @@
       "group_id": "project-load-save"
     }
   ],
-  "source_snapshot_note": "This metadata/evidence pin retains the exact 949-ID catalogs, all entry records, 205 packets, 56 landmark identities/paths/anchors and queued slices. It contains the same 19 typed Command variants and bounded JoinCurve implementation as runtime source 26dd58535868aadc90e92636656c49426e02dc9c: all 31 recorded runtime/test source inputs are byte-identical at 9cb2af3f86e1db03f1242542e7271ab51a9cbf64. The actual native executable was built from 26dd585; this metadata pin does not imply a rebuild. UI-BOUNDED-JOIN-001 native scope, independent outputs, source/executable identity and qualification are read from the authoritative registry and WF-20261114-NATIVE-JOIN-001 report. Broader invalid-split/control and split-history branches, native large-placement/coalesced-event cases, general join/fitting/trim and reference split/join semantics remain outside that bounded scope. Existing source/landmark rechecks, reviewed Preferences retry limitations, current contract/catalog/registry hashes and the original 928 expansion/6401c6a/26dd585 ancestry remain retained. No feature status or pass result is copied into this map; broad parity and the approximately 0.2693 fitting failure remain open.",
+  "source_snapshot_note": "This reachable native seam-reversal source pin retains all 949 catalog entries, 205 packets, 56 landmark identities/paths/valid anchors and queued slices. It still has 19 typed Command variants: per-seam Reverse reuses UpdateSeam, swaps side B parameters, preserves identity/order/covered intervals/normalized mapping, and displays both endpoint guides. Generic apply_inspector_action replaces the join-only helper, sharing pending-draft/current-focus transaction handling with Join; seam-ID widget scopes preserve duplicate-name rows. The tracked runtime/test scope now contains 32 files, including crates/weftforge-core/tests/seam_reversal.rs. Core and in-process tests remain source evidence; actual native reversal desktop acceptance and reference continuous/physical semantics remain pending. Historical UI-BOUNDED-JOIN-001 stays anchored to its 26dd585 executable/source and 31 tested inputs and does not qualify this changed runtime; current evidence qualification/freshness is read only from the registry/reports. Reviewed DXF route absence adds zero IDs, does not establish product-wide support or alter the required documented subset. Current catalog/contract/registry hashes and original 928 expansion/6401c6a/26dd585/9cb2af3 ancestry remain pinned; no reference parity or new physical/arc-length claim is made.",
   "expansion_origin": {
     "previous_map_commit": "fbe5ee08a74dc176e47a287366cbf5d1bbd0abf3",
     "previous_map_sha256": "2457e280ec2070e41748b8a3b80d8d7ba16a41f0cfa6dc0409c4f7768d178b9a",
@@ -19941,7 +19948,7 @@
     "preserved_catalog_ids": 928,
     "additional_menu_ids": 4,
     "additional_component_ids": 17,
-    "catalog_commit": "9cb2af3f86e1db03f1242542e7271ab51a9cbf64",
+    "catalog_commit": "9d30a71bbc2b0e051d9eaddc42b5f3b7dab08bde",
     "preservation_rule": "Retain the original 928-to-949 expansion proof and its 6401c6a catalog/source anchor. All 949 entries, 205 packet definitions, 56 landmark identities/paths and first three bounded slices survive the integrated source refresh. Only explicit reviewed source/reference rechecks replace obsolete group text or landmark scope/renamed anchors; no new reference entry or feature completion follows from a WeftForge implementation button.",
     "original_catalog_commit": "6401c6aa0aa1a54e1642b334dad1c5729466e0af"
   },
@@ -20025,6 +20032,21 @@
       "path": "spec/observations/REF-UI-SHORTCUTS-004.json",
       "sha256": "30a192327e598ce56a4d62cbf7c2ebabe8275d475abad795275ebfcd9ef52415",
       "scope": "Reviewed public provenance separates reached Graphic Options from blocked category navigation, retained guard refusal/zero posted events and safe footer Close. Main-window before/after captures are gap-free; foreground modal uses qualified AX transitions/screenshots, not a fabricated REA result. Raw UI and host paths remain private."
+    },
+    {
+      "path": "spec/features/SEW-002-native-reversal.md",
+      "sha256": "0df0735180daed956d9f37cd00f66a20c01c13b6557bf51b4f7559d8fd30557f",
+      "scope": "Independent bounded WeftForge implementation contract: per-seam Reverse uses existing UpdateSeam to swap side B parameters, retains identity/order/covered intervals/normalized correspondence, draws both endpoint guides and shares transactional draft/focus handling with Join. Duplicate-name rows use seam IDs. Core and in-process UI checks are source evidence; desktop input acceptance, continuous arc-length/reference pairing, easing/twist and broader properties remain unqualified."
+    },
+    {
+      "path": "spec/features/FILE-005-DXF-inspection-20261114.md",
+      "sha256": "ad5d26dc0248eddfdba8ce75ece04ccd912ae22a60f33fe5f32e35ac6c58bae0",
+      "scope": "Reviewed current File > Export AX route on the original reversed partial-seam fixture: 16 child labels match the existing catalog and no DXF entry/dialog is observed. No format action, options, cancellation or output was executed. Zero catalog IDs are added; alternate routes and product-wide format support remain unknown, and the required documented DXF subset stays in scope."
+    },
+    {
+      "path": "spec/observations/REF-FILE-005-DXF-005.json",
+      "sha256": "d386b93241f981529c4f4b13365719c94b3f3d12fb950c912c8f94072944832a",
+      "scope": "Reviewed public provenance for a zero-ID current-route absence observation. Main-window before/after captures are gap-free and the original saved fixture remains hash-identical; menu evidence is AX text without a popup screenshot. No DXF dialog/output/validation/default/support or broad parity conclusion follows; raw commercial UI and private resources stay excluded."
     }
   ],
   "source_rechecks": [
@@ -20060,6 +20082,47 @@
         "ui_load",
         "ui_save",
         "ui_recovery"
+      ]
+    },
+    {
+      "group_id": "reverse-sewing",
+      "reason": "Integrated native Reverse now uses existing UpdateSeam, stable ID-scoped duplicate-name rows, two endpoint guides and generic inspector transaction/focus handling. Replace the obsolete creation-only/no-connected-reverse description while retaining pending desktop acceptance and unmeasured reference/physical semantics.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "commands",
+        "ui_properties",
+        "ui_pattern",
+        "ui_field_state",
+        "seam_fields",
+        "mcp_schema"
+      ]
+    },
+    {
+      "group_id": "sewing-editor",
+      "reason": "The inspector now exposes per-seam identity/curve/parameter rows and Reverse/Remove with shared action guards; preserve the missing broader canvas selection/property/interval editor and source-only acceptance boundary.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "ui_properties",
+        "ui_pattern",
+        "ui_field_state",
+        "commands"
+      ]
+    },
+    {
+      "group_id": "sewing-display",
+      "reason": "The 2D renderer now draws both endpoint connections and the inspector identifies seam rows; refine display coverage without claiming interior correspondence, physical effects or independent visibility controls.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "ui_pattern",
+        "ui_properties"
       ]
     }
   ],
@@ -20111,7 +20174,7 @@
       "changed_fields": [
         "scope"
       ],
-      "reason": "The integrated JoinCurve command, native inspector and CLI/MCP adapter source now implement a bounded inverse join; update only the related scope description."
+      "reason": "The join-only join_next_curve helper is replaced by generic apply_inspector_action for JoinCurve and UpdateSeam. Review per-seam Reverse, pending-draft/current-focus transaction handling and stable row scope; the inspector anchor remains valid."
     },
     {
       "source_id": "cli",
@@ -20143,6 +20206,20 @@
         "scope"
       ],
       "reason": "The integrated JoinCurve command, native inspector and CLI/MCP adapter source now implement a bounded inverse join; update only the related scope description."
+    },
+    {
+      "source_id": "ui_pattern",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "Native seam reversal adds ID-scoped rows and two endpoint guides; review the bounded source scope without changing this landmark identity/path/valid anchor."
+    },
+    {
+      "source_id": "ui_field_state",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "Native seam reversal adds ID-scoped rows and two endpoint guides; review the bounded source scope without changing this landmark identity/path/valid anchor."
     }
   ]
 }
