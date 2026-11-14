@@ -3,7 +3,11 @@
 This is a reviewed public-documentation discovery map, **not a completed menu or
 feature inventory**. Reviewed on 2026-11-13 against the provisional
 `MD-2026.1.237.58920-macos-arm64-20261113` baseline. The installed reference reached
-terms/sign-in; no garment workspace or authoring scenario was executed.
+terms/sign-in at that review date. On 2026-11-14, account-holder activation made
+the garment workspace accessible and full build r58920 was confirmed. The
+[current observed menu/component inventory](../inventory/README.md) supplements
+this historical documentation map. No complete authoring scenario has yet
+executed.
 
 The 56 current registry contracts are broad groups, not a count of all commercial
 features. Documentation leads are mapped for **56/56** groups below. Completed reference-workflow
@@ -13,7 +17,9 @@ recorded separately in `parity/reference.json` and cannot qualify a garment cont
 
 ## Registry discovery map
 
-Each row is **unobserved** at runtime. A link identifies an official documentation
+Rows below retain the **unobserved complete behavior** state from the documentation
+review; newly observed workspace/menu presence is recorded separately and does
+not complete those contracts. A link identifies an official documentation
 lead inspected through its page or section index; it does not establish every
 listed behavior, complete current-build coverage, or an implementation. Project
 obligations without a vendor equivalent are identified explicitly. Follow-up

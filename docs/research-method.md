@@ -51,8 +51,12 @@ Complete raw Evidence and its limitations were retained privately. A separate
 selected-window REA observation captured the Personal sign-in screen, 12 AX nodes
 without truncation, and its matching arm64 executable hash. An initial attempt to
 select the modal-layer window returned a retained `window-mismatch` failure; the
-subsequent run selected the discovered main window. Neither capture performed
-authoring actions or observed the garment workspace.
+subsequent run selected the discovered main window. Those historical captures performed no authoring actions and did not observe
+the garment workspace. After account-holder activation, the 2026-11-14 workspace
+capture independently confirmed the full `2026.1.237 (r58920)` build and garment
+workspace. Raw account/commercial UI remains private. Native menu presence and
+selected Graphic Options are now observed; complete authoring workflows remain
+pending.
 
 ## Bounded investigation loop
 

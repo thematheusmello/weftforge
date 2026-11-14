@@ -1,19 +1,16 @@
 # Reference laboratory
 
-Reference access is **blocked before the garment workspace**. The official macOS
-Individual installer was downloaded, verified, installed and launched on
-2026-11-13. The latest read-only REA observation at 23:06 UTC shows the Personal
-2026.1.237 **CLO-SET sign-in** screen. No Terms modal or garment workspace is
-visible in that selected main window. Current terms acceptance and account
-entitlement remain unknown.
+Reference garment workspace access is **available**. The account holder handled
+sign-in and trial/license activation. A fresh read-only REA capture on
+2026-11-14 at 00:31 UTC observed `Untitled_MD.zprj`, both 2D/3D toolbars, Object
+Browser, Property Editor, and the exact label `Version:  2026.1.237 (r58920)`.
+The running executable matches the retained installer identity. Account greeting,
+commercial UI screenshots and raw AX records remain private.
 
-The investigator earlier observed a Terms of Service dialog and stopped before
-accepting. No terms were accepted or credentials entered by the investigator.
-The account holder must sign in and activate a legitimate trial or license, and
-personally review any terms presented. The official website's Start Trial action
-also requires sign-in; eligibility, checkout requirements and subsequent account
-verification remain unobserved. Sign-in is the currently observed intervention
-needed before reference garment scenarios can run.
+The older Terms and sign-in observations are preserved as history, not current
+access blockers. No terms, credentials or account actions were performed by the
+investigator. Workspace access does not establish license type, expiry, complete
+workflow behavior or reference parity.
 
 ## Recorded identity
 
@@ -31,12 +28,19 @@ needed before reference garment scenarios can run.
 | Signing | CLO Virtual Fashion Inc., team `LM3T6Q78ZL` |
 | Gatekeeper assessment | Accepted, Notarized Developer ID |
 | Host | macOS 27.2, build 26B123, arm64 |
-| Baseline | Provisional; UI build, preferences, units, locale, graphics, and license remain unconfirmed |
+| Baseline | Provisional; full UI build and Graphic Options observed; units, numeric locale and simulation settings incomplete |
 
-A selected-window REA capture independently observed the Personal sign-in UI
-showing `2026.1.237`. The full download build comes from the official listing;
-it has **not** been confirmed in an About dialog. The bundle's deployment target of macOS 12.0 is
-packaging metadata and does not supersede the current vendor requirements.
+The workspace capture independently confirms the full build `r58920`, rather than
+relying only on the download listing. The Graphic Options page currently exposes
+x4 antialiasing, Alpha Blending, Naive Ordered transparency rendering, and
+4096 × 4096 maximum image resolution. No preference was changed. English UI labels
+are observed; selected language, numeric locale, units and simulation settings
+remain incomplete. The baseline stays unfrozen at revision 1.
+
+The [observed menu catalog](../spec/inventory/md-2026.1.237-main-menus.json) records
+17 main menus and 572 nonroot AX entries. These are presence observations, with
+505 leaf-like nodes that can include disabled headings or empty submenus. They
+are not 505 complete behavior contracts or a whole-product denominator.
 
 The [official requirements](https://www.marvelousdesigner.com/manuals/articles/47358219834649)
 list Apple Silicon and macOS 14 minimum, with 15/26 recommended. This host exceeds
@@ -63,7 +67,7 @@ advertises 14 days. Account eligibility was not established.
 7. Before evaluating features, freeze an About/build capture and all relevant
    settings in `parity/reference.json`, then run the original controlled fixtures.
 
-Installers, binaries, source snapshots, signed URLs, screenshots, PID/window
+Installers, binaries, signed URLs, commercial screenshots, PID/window
 identities, and the private manifest remain outside the public checkout. Public
 metadata is limited to redacted provenance, hashes, reviewed behavior contracts,
 and qualifying redistributable reports.
@@ -73,5 +77,8 @@ and qualifying redistributable reports.
 Start with numeric rectangle creation, oriented segment sewing with a deliberate
 length mismatch, particle-distance editing, and save/close/reopen. Use the reviewed
 contracts in `spec/features/`. Preserve the initial state and outputs before
-moving to a full empty-project shirt workflow. No garment reference run has yet
-executed.
+moving to a full empty-project shirt workflow. Rectangle tool activation and its `S` shortcut were observed; numeric creation,
+editing and persistence are still pending. CUA coordinate input to this live
+translocated app returned `noWindowsAvailable`; custom Preferences navigation
+returned `AXError.notImplemented`. These are tooling gaps, not absent product
+features. Supported menus and AX controls continue to be inspected.

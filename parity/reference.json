@@ -5,7 +5,7 @@
   "product": "Marvelous Designer",
   "baseline_status": "provisional",
   "frozen": false,
-  "observation_date": "2026-11-13",
+  "observation_date": "2026-11-14",
   "download_listing": {
     "license_type": "Individual / Personal",
     "platform": "Mac",
@@ -27,7 +27,7 @@
     "bundle_short_version": "2026.1.237",
     "bundle_version": null,
     "observed_ui_version": "2026.1.237",
-    "observed_ui_build": null,
+    "observed_ui_build": "58920",
     "executable_name": "MarvelousDesigner_PER",
     "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
     "architectures": [
@@ -39,7 +39,8 @@
     "team_id": "LM3T6Q78ZL",
     "gatekeeper": "accepted-notarized-developer-id",
     "launch_observed": true,
-    "garment_workspace_observed": false
+    "garment_workspace_observed": true,
+    "observed_ui_label": "Version:  2026.1.237 (r58920)"
   },
   "host": {
     "os": "macOS",
@@ -49,25 +50,65 @@
     "support_assessment": "Above vendor macOS 14 minimum; not one of the explicitly recommended macOS 15/26 versions."
   },
   "settings": {
-    "units": null,
-    "locale": null,
-    "preferences": null,
-    "graphics": null,
-    "license_entitlement": null
-  },
-  "reference_observation_status": "blocked",
-  "blockers": [
-    {
-      "id": "REF-TERMS",
-      "state": "historically-observed-current-acceptance-unknown",
-      "action": "Account holder must review any Terms of Service presented. No Terms modal was displayed in the latest selected-window capture; current acceptance is unverified."
+    "units": {
+      "observed_control_unit": "mm",
+      "scope": "Grid Properties: 2D grid distance and 2D/3D arrow movement labels",
+      "app_unit_preference": null,
+      "evidence_id": "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5",
+      "limitation": "Millimetre labels in these controls do not establish every import/export or global unit setting."
     },
-    {
-      "id": "REF-LICENSE",
-      "state": "confirmed-signin-required-entitlement-unobserved",
-      "action": "Sign in with a legitimate CLO-SET/Marvelous Designer account and activate the appropriate trial or license."
+    "locale": {
+      "ui_language_observed": "English interface labels",
+      "selected_language_setting": null,
+      "numeric_locale": null,
+      "limitation": "Language menu lists English, but its checked state was not exposed; locale preferences not inspected."
+    },
+    "preferences": {
+      "inspected_pages": [
+        "Graphic Options"
+      ],
+      "uninspected_pages": [
+        "View Controls",
+        "Shortcuts",
+        "User Interface",
+        "3D",
+        "2D",
+        "Other",
+        "Snap",
+        "Default Files",
+        "CLO API",
+        "CLO-SET"
+      ],
+      "navigation_gap": "Custom preference navigation returned AXError.notImplemented in CUA; no settings changed."
+    },
+    "graphics": {
+      "antialiasing": "x4",
+      "normal_blending_method": "Alpha Blending",
+      "transparency_rendering_method": "Naive Ordered",
+      "maximum_image_resolution_pixels": [
+        4096,
+        4096
+      ],
+      "evidence_id": "ev_e9a1b227223ca8f4e3efbf93974d4f1229a21c372b8af7aa8e515418a3c2c6c7",
+      "changed_by_investigator": false
+    },
+    "license_entitlement": "workspace access observed; license type/expiry not inspected",
+    "grid_properties": {
+      "auto_adjust_distance_with_zoom": true,
+      "show_2d_grid": true,
+      "snap_to_grid": false,
+      "distance_mm": 10,
+      "arrow_2d_mm": 10,
+      "arrow_3d_mm": 10,
+      "show_3d_grid": true,
+      "axis_brightness": 120,
+      "grid_line_brightness": 80,
+      "evidence_id": "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5",
+      "changed_by_investigator": false
     }
-  ],
+  },
+  "reference_observation_status": "workspace_accessible",
+  "blockers": [],
   "tools": {
     "rea_cli": "6.9.0",
     "rea_skill": "62",
@@ -214,6 +255,59 @@
       "limitations": [
         "Read-only selected main window; no authoring actions executed.",
         "Absence of a displayed Terms modal does not establish acceptance or entitlement."
+      ]
+    },
+    {
+      "id": "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+      "kind": "rea-native-ui-workspace-observation",
+      "timestamp": "2026-11-14T00:31:55.636690+00:00",
+      "retention": "complete-private-record-and-private-commercial-screenshot",
+      "sha256": "aad198971615af09a6aa27c84f8744d0beda9b2b9a8064ccad434087f946fda2",
+      "observed": "Accessible Untitled_MD.zprj workspace with exact full UI build 2026.1.237 (r58920).",
+      "accessibility_nodes": 95,
+      "truncated": false,
+      "limitations": [
+        "Read-only workspace identity/access capture; no authoring actions.",
+        "Native macOS menubar is not part of this selected-window REA AX tree.",
+        "Raw commercial/account UI is not redistributable."
+      ]
+    },
+    {
+      "id": "ev_e9a1b227223ca8f4e3efbf93974d4f1229a21c372b8af7aa8e515418a3c2c6c7",
+      "kind": "rea-native-ui-preferences-observation",
+      "retention": "complete-private-record",
+      "sha256": "41865415813a07b7b368a152bfa6c390844d1389dc5d95b60e9dafa639984022",
+      "observed": "Graphic Options page: x4 antialiasing, Alpha Blending, Naive Ordered transparency, 4096 x 4096 maximum image resolution.",
+      "accessibility_nodes": 49,
+      "truncated": false,
+      "limitations": [
+        "Preferences read without changes; other pages and physical simulation defaults remain unobserved."
+      ]
+    },
+    {
+      "id": "CUA-MAIN-MENU-INVENTORY-20261114",
+      "kind": "cua-native-menu-presence-inventory",
+      "retention": "17-complete-private-native-tool-records-and-private-commercial-screenshots",
+      "sha256": "06a085cfa7763c7bc71241f5d3f8a556252a2d692ee69e7c3f8b72282ed526fb",
+      "observed": "17 main menus,572 nonroot entries,505 leaf-like nodes including2 empty submenus; all hierarchy paths and disabled markers independently cross-checked.",
+      "limitations": [
+        "Menu presence only; no complete workflow execution.",
+        "Leaf-like node count is not a feature denominator.",
+        "Selected-window REA workspace capture binds identity but does not supply the native menu tree."
+      ]
+    },
+    {
+      "id": "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5",
+      "kind": "rea-native-ui-grid-properties-observation",
+      "timestamp": "2026-11-14T00:58:34.942171Z",
+      "retention": "complete-private-record-and-private-commercial-screenshot",
+      "sha256": "279cb574f39632507ee5b376543ad9e3c7fb233958b12589826679554cba544a",
+      "observed": "Grid Properties expose millimetre distance/movement controls; current values and checked states recorded under settings.",
+      "accessibility_nodes": 130,
+      "truncated": false,
+      "limitations": [
+        "Read-only property inspection, not factory-default or accepted-range testing.",
+        "Does not establish global/import/export unit preferences."
       ]
     }
   ],
@@ -684,7 +778,7 @@
   "discovery": {
     "status": "incomplete",
     "documentation_index_reviewed": true,
-    "runtime_menu_inventory": "unobserved",
+    "runtime_menu_inventory": "17-main-menus-and-572-nonroot-AX-entries-observed-presence-only",
     "reference_authoring_scenarios_completed": 0,
     "reviewed_specifications": [
       "PAT-003",
@@ -693,10 +787,11 @@
       "SEW-004",
       "FILE-001"
     ],
-    "unobserved_areas": "All garment authoring, simulation/output, file interoperability, performance, preferences, dialogs and complete workflows.",
+    "unobserved_areas": "Most property pages, dialogs, shortcuts, numeric defaults/ranges/error behavior, canvas context menus/flyouts, all complete authoring/simulation/export/performance workflows; known menu presence is not executed behavior.",
     "documentation_registry_groups_mapped": 56,
     "completed_reference_workflow_contracts": 0,
-    "total_actual_reference_features": null
+    "total_actual_reference_features": null,
+    "runtime_menu_catalog": "spec/inventory/md-2026.1.237-main-menus.json"
   },
   "known_contradictions": [
     {
@@ -719,14 +814,28 @@
   "intentional_exclusions": [
     "Vendor billing, activation and storefront administration are excluded from the replacement feature set."
   ],
-  "qualification": "This provisional baseline is not frozen and supplies zero verified functional-parity claims.",
+  "qualification": "Provisional settings baseline; workspace access and menu presence now observed, but zero complete reference workflow contracts and zero verified functional-parity claims.",
   "latest_access_observation": {
-    "timestamp": "2026-11-13T23:06:07.544715Z",
-    "evidence_id": "ev_e9e1aab8b65f947b5cc25a15d5583eefa906867ecb441b5a2aaaa8393974278f",
-    "observed_state": "Personal 2026.1.237 CLO-SET sign-in screen; no Terms modal or garment workspace displayed in the selected main window.",
-    "current_observed_blocker": "CLO-SET sign-in; legitimate account entitlement remains unverified.",
-    "terms_acceptance": "unknown",
+    "timestamp": "2026-11-14T00:31:55.636690+00:00",
+    "evidence_id": "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+    "observed_state": "Garment workspace accessible: Untitled_MD.zprj, 2D/3D toolbars, Object Browser, Property Editor and full version label 2026.1.237 (r58920).",
+    "current_observed_blocker": null,
+    "access_handled_by": "account-holder; no investigator credential or activation actions",
+    "license_type_or_expiry": "not inspected",
     "actions_executed": [],
-    "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e"
-  }
+    "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+    "privacy": "Account greeting and raw commercial UI remain private."
+  },
+  "access_history": [
+    {
+      "timestamp": "2026-11-13T23:06:07.544715Z",
+      "evidence_id": "ev_e9e1aab8b65f947b5cc25a15d5583eefa906867ecb441b5a2aaaa8393974278f",
+      "observed_state": "Personal 2026.1.237 CLO-SET sign-in screen; no Terms modal or garment workspace displayed in the selected main window.",
+      "current_observed_blocker": "CLO-SET sign-in; legitimate account entitlement remains unverified.",
+      "terms_acceptance": "unknown",
+      "actions_executed": [],
+      "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e"
+    }
+  ],
+  "baseline_change_note": "Revision 1 retained and not frozen: new access/build/graphics observations append evidence; required units, numeric locale, simulation and workflow settings remain incomplete."
 }

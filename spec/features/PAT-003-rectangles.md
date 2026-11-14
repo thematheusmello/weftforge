@@ -1,6 +1,6 @@
 # PAT-003 — Rectangle creation
 
-Reference state: **documentation reviewed; runtime blocked**. Candidate baseline:
+Reference state: **documentation reviewed; workspace accessible; behavior execution pending**. Candidate baseline:
 `MD-2026.1.237.58920-macos-arm64-20261113`. Current-build defaults and platform
 modifier mapping remain unobserved.
 
