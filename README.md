@@ -66,6 +66,11 @@ cargo run --release -p weftforge-cli -- export-svg garment.weftforge patterns.sv
 cargo run --release -p weftforge-cli -- export-obj garment.weftforge garment.obj
 ```
 
+For local stateless MCP file authoring, run `weftforge-cli mcp`. See
+[automation](docs/automation.md) for supported protocols, commands and limits.
+The adapter uses the same validated Rust operations; active-GUI control and MCP
+simulation jobs remain open.
+
 CLI dimensions use metres, kilograms, seconds, radians, and Y-up 3D. The desktop
 currently snaps canvas gestures to 1 cm. Fine numeric editing, modifier semantics,
 and full reference interaction matching remain partial.

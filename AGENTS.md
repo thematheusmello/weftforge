@@ -12,6 +12,7 @@ bounded to integrated increments while preserving the full parity target.
 - No proprietary installers, assets, binary extracts, credentials, or personal
   filesystem paths in public files. Research lives outside this repository.
 - Use shared typed commands for authoring; commit gestures as one transaction.
+  Keep command changes in sync with CLI/MCP adapters, tool schemas and tests.
 - Validate external input and preserve the old project on any failed load/save.
 - Run cargo fmt --all --check, cargo test --workspace, cargo clippy --workspace
   --all-targets -- -D warnings, and cargo xtask verify for an integrated change.
