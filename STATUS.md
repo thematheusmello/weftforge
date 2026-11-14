@@ -8,20 +8,22 @@ inventory, not a feature-completion denominator.
 ## Publication and cost policy
 
 Public repository: https://github.com/thematheusmello/weftforge.
-Last published main is `2d65b9e926a37532d9b168ee49075763759374c2`, merged
-[PR34](https://github.com/thematheusmello/weftforge/pull/34). It retains the original
-cloth balance failure, 132-file bundle and four clean-publication receipts.
-Its tree equals tested final head `0130bf76`. Earlier
+Last published main is `e6595ee787a30b3e8efa8502b42ce70536481d66`, merged
+[PR35](https://github.com/thematheusmello/weftforge/pull/35). Its tree equals tested
+final head `c8cdc3b0`; all37 runtime files match executed `6c45535c`.
+Earlier [PR34](https://github.com/thematheusmello/weftforge/pull/34), main `2d65b9e`,
+retains the original cloth balance failure, 132-file bundle and four
+clean-publication receipts. Its tree equals tested final head `0130bf76`. Earlier
 [PR33](https://github.com/thematheusmello/weftforge/pull/33), main `4a2c5568`,
 delivered ordered M:N sewing and strict v3 projects with preserved ancestry.
 [PR32](https://github.com/thematheusmello/weftforge/pull/32) delivered DXF.
-The tested visibility source/evidence is public at `2dc45007` in open
-[PR35](https://github.com/thematheusmello/weftforge/pull/35); final metadata and
-ordinary merge remain next.
+Visibility delivery is merged. Clean final `c8cdc3b0` checks all1,686 report
+artifacts and the unchanged37-file runtime. Publication audit is retained in
+`.local/verification/published-e6595ee787a3.json`.
 
 **Keep GitHub Actions and Pages disabled until the entire project is complete.**
 The user requested this to stop development costs. Repository `enabled:false`
-and all 54 historical runs terminal were rechecked after both merges. PR33/34
+and all 54 historical runs terminal were rechecked after all three merges. PR33/34/35
 final heads and merges each have zero workflow runs. Last CI/Pages runs
 43585595600/43585595609 belong to main `1343b0c46b5c4f097709996785fb55d5d23ac174`.
 Do not dispatch workflows at interim checkpoints. Required checks run locally;
@@ -33,7 +35,8 @@ and cross-platform launch/distribution acceptance remain open.
 
 ## Current material-strain increment
 
-Working branch: `feat/material-strain-attribution`, integration `938b2670746fb97da70540912595637264b4bf1e`.
+Working branch: `research/force-balance-audit`; published visibility integration
+is `938b2670746fb97da70540912595637264b4bf1e`.
 All 37 scoped runtime/test files exactly match executed candidate
 `6c45535cb312f7fed8ad872ee87b6ba5e5974e35`. Prospective contract
 `209a8fda72aaca90a08c330427354dd457224a6c` is
@@ -135,23 +138,26 @@ remain unobserved. The one-click manual diagnosis question is pending. This is
 input noncompletion, not absence; preserve the earlier Rectangle observation.
 See [dated research notes](spec/features/SEW-002-runtime-notes-20261114.md).
 
-1. Verify final PR35 metadata from a clean checkout, then merge normally,
-   preserving the tested runtime/evidence and all source ancestry.
-2. Publish the strain-attribution increment preserving all source/evidence
-   ancestry; verify Actions stays disabled and no head/merge workflows run.
-3. Follow the approved private observational overlay and single analytical case
+1. Follow the approved private observational overlay and single analytical case
    in `.local/force-balance-design-20261114/`. Root reviewed its closed-form
    arithmetic. Freeze patch/schema/driver/analyzer/binary before execution;
    original-shirt replay requires a later root review of the analytical result.
    No production solver changes or tuning are authorized. Correction accounting
    alone cannot establish physical contact reactions or equilibrium.
-4. Continue native/reference construction and all remaining roadmap work.
+2. Recheck the reference handoff state read-only, retaining all raw account/UI
+   evidence privately. The manual click question remains pending until observed
+   outcome or an answer; do not inject further reference input meanwhile.
+3. Continue native/reference construction and all remaining roadmap work.
 
 All reported Rust builds, original three-case diagnostics, independent visibility
 regression, CLI and native simulations/checks are terminal. The retained native
 application is open, not a running simulation job. Unified evidence preparation
 71767 and clean40401/36772/59030/47879 are terminal0. The private force-balance
-agent is preparing the frozen observational overlay; its analytical-only run is
-authorized after preregistration, with no execution handle reported yet. Recheck
+agent is preparing the frozen observational overlay. Its final build/static
+check25436 is active (reported source fmt PID40763,Clippy40821); no analytical
+execution is reported yet. Its analytical-only run is authorized after frozen
+patch/schema/driver/analyzer/binary preregistration. Base37 manifest is
+`c42d45e0c9bae69065a4b4f01bc5fcbc897499c0904b59b32a326c81ee23a3da`.
+Reference read-only inventory36748 is active at the last observation. Recheck
 actual handles/ledgers before resuming. Raw ledgers stay
 ignored; use separate Cargo targets per worktree.
