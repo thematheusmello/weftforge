@@ -1230,6 +1230,45 @@
       "provider": "pinned native driver check only; no run invoked",
       "retained_record_sha256": "0ed978386215f33a0fca58e826e215adcaf36328059fee6c2c9f6c4bd98e5d7f",
       "privacy": "Complete host/process/request records remain private."
+    },
+    {
+      "id": "CUA-DXF005-LIVE-FILE-MENU",
+      "key": "file_menu",
+      "provider": "native AX action/state",
+      "retained_record_sha256": "fb4d68e45ffeb63608a936c7380d7def13d444eb3a1a82bc4c7f91d95343432c",
+      "observed_at": "2026-11-14T10:25:30.505Z",
+      "content_types": [
+        "text"
+      ],
+      "context": "Exposed live File tree; text-only record, including 16 Export children. No menu screenshot returned.",
+      "privacy": "Full commercial/account UI and personal paths remain private."
+    },
+    {
+      "id": "CUA-DXF005-AFTER-EXPORT-PARENT",
+      "key": "after_parent",
+      "provider": "native AX action/state",
+      "retained_record_sha256": "39b80ce532eefff63627cb8223e3ddb4162d386a64640e855aa6e28f2b664529",
+      "observed_at": "2026-11-14T10:26:07.124Z",
+      "content_types": [
+        "text",
+        "image"
+      ],
+      "context": "Actual after-state is the standard workspace, not an open Export popup. AX and screenshot retained.",
+      "privacy": "Full commercial/account UI and personal paths remain private."
+    },
+    {
+      "id": "PLAN-DXF005-20261114",
+      "key": "plan",
+      "provider": "predeclared bounded read-only original-fixture case",
+      "retained_record_sha256": "7a851c9086642cae139441f8351b241f98a56177674b322d35fdab6007d519af",
+      "declared_at": "2026-11-14T10:24:46.700037+00:00"
+    },
+    {
+      "id": "REVIEW-DXF005-EXPORT-INDEX",
+      "key": "transcription_review",
+      "provider": "reviewed transcription matched against retained native File tree and catalog",
+      "retained_record_sha256": "a79858c7192697df908fcd7bd73440e73f5107a36d7f2aaf7f0a2296e3e5f782",
+      "reviewed_at": "2026-11-14T10:29:17.506988+00:00"
     }
   ],
   "sources": [
@@ -1729,7 +1768,9 @@
       "spec/features/SEW-002-reverse-runtime-20261114.md",
       "spec/observations/REF-SEW-002-REVERSE-003.json",
       "spec/features/UI-shortcuts-inspection-20261114.md",
-      "spec/observations/REF-UI-SHORTCUTS-004.json"
+      "spec/observations/REF-UI-SHORTCUTS-004.json",
+      "spec/features/FILE-005-DXF-inspection-20261114.md",
+      "spec/observations/REF-FILE-005-DXF-005.json"
     ],
     "runtime_component_catalog": "spec/inventory/md-2026.1.237-components.json",
     "runtime_component_observations": 356,
@@ -1766,7 +1807,16 @@
         "path": "spec/observations/REF-SEW-002-REVERSE-003.json",
         "scope": "One explicit nested Edit-menu reversal changes categorical dashed endpoint guides with unchanged 100.0 intervals, Undo/Redo and same-process document reopen; no independent continuous mapping or simulation."
       }
-    ]
+    ],
+    "latest_DXF_route_inspection": {
+      "case_id": "REF-FILE-005-DXF-005",
+      "route": "File > Export",
+      "child_labels_observed": 16,
+      "DXF_entry_observed": false,
+      "DXF_dialog_observed": false,
+      "new_inventory_ids": 0,
+      "scope": "Current exposed AX menu state only; not a product-wide support conclusion."
+    }
   },
   "known_contradictions": [
     {
@@ -1791,14 +1841,13 @@
   ],
   "qualification": "Provisional settings baseline. Bounded original rectangle/resolution, curve/history, whole-edge sewing, paired numeric partial sewing and explicit reversal with Undo/Redo/document reopen are observed. Broad contracts, continuous geometric correspondence, simulation and WeftForge comparison remain incomplete. Zero verified parity; historical AX/startup/driver failures retained.",
   "latest_access_observation": {
-    "timestamp": "2026-11-14T08:35:26.648272+00:00",
+    "timestamp": "2026-11-14T10:27:30.649100+00:00",
     "evidence_id": "ev_43eafac4eeb88048db8360bfdedb6bffb47aba7c8db83e611cae041ee0365069",
-    "observed_state": "Preferences closed after bounded read-only inspection. Same saved original reversed partial pair selected, both 100.0 labels, simulation off, no modal.",
+    "observed_state": "Protected saved reversed original fixture remains selected after read-only File > Export inspection; simulation off, no menu/dialog.",
     "current_observed_blocker": null,
-    "limitation": "Graphics current values reobserved, but shortcut descendants/effective bindings, range/error behavior and global settings-file equality not measured.",
+    "bounded_inspection_gap": "No DXF entry in the exposed current File > Export tree; no DXF dialog inspected. Export parent click returned workspace instead of an open popup.",
     "baseline_frozen": false,
-    "verified_parity_claimed": false,
-    "bounded_inspection_gap": "Shortcut category expansion blocked by host input/navigation route in this inspection; garment workspace accessible."
+    "verified_parity_claimed": false
   },
   "access_history": [
     {
@@ -1937,6 +1986,17 @@
       "baseline_frozen": false,
       "verified_parity_claimed": false,
       "history_note": "Prior saved reference state; preserved."
+    },
+    {
+      "timestamp": "2026-11-14T08:35:26.648272+00:00",
+      "evidence_id": "ev_43eafac4eeb88048db8360bfdedb6bffb47aba7c8db83e611cae041ee0365069",
+      "observed_state": "Preferences closed after bounded read-only inspection. Same saved original reversed partial pair selected, both 100.0 labels, simulation off, no modal.",
+      "current_observed_blocker": null,
+      "limitation": "Graphics current values reobserved, but shortcut descendants/effective bindings, range/error behavior and global settings-file equality not measured.",
+      "baseline_frozen": false,
+      "verified_parity_claimed": false,
+      "bounded_inspection_gap": "Shortcut category expansion blocked by host input/navigation route in this inspection; garment workspace accessible.",
+      "history_note": "Prior read-only Preferences inspection; preserved."
     }
   ],
   "baseline_change_note": "Revision 1 retained and not frozen: new read-only unit, configured preference and post-restart graphics observations append evidence without changing settings. Regional numeric parsing and other qualifying conditions remain incomplete; a missing displayed default simulation-property path is recorded without causal inference."

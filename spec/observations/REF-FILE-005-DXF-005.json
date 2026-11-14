@@ -1,0 +1,367 @@
+{
+  "schema_version": 1,
+  "case_id": "REF-FILE-005-DXF-005",
+  "product_build": "2026.1.237 (r58920)",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "baseline_status": "provisional_unfrozen",
+  "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "status": "DXF_entry_not_observed_in_current_exposed_File_Export_tree_dialog_unobserved",
+  "declared_scope": "One read-only File > Export DXF entry/dialog inspection on the protected original reversed fixture, cancel if available, no format command or acceptance.",
+  "initial_state": "Saved original two-panel partial reversed pair selected in Edit Sewing, simulation off.",
+  "entry": {
+    "menu": "File > Export",
+    "catalog_id": "MDUI-63ADA567D670",
+    "live_tree_child_count": 16,
+    "DXF_label_present": false,
+    "matches_existing_catalog_children": true
+  },
+  "observed_export_entries": [
+    {
+      "catalog_id": "MDUI-3D2BC256E171",
+      "path": [
+        "File",
+        "Export",
+        "OBJ"
+      ],
+      "disabled_marker": false,
+      "enabled": null,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    },
+    {
+      "catalog_id": "MDUI-C5F1A41A9D5C",
+      "path": [
+        "File",
+        "Export",
+        "OBJ (Selected)"
+      ],
+      "disabled_marker": false,
+      "enabled": null,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    },
+    {
+      "catalog_id": "MDUI-26586E975AEA",
+      "path": [
+        "File",
+        "Export",
+        "FBX"
+      ],
+      "disabled_marker": false,
+      "enabled": null,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    },
+    {
+      "catalog_id": "MDUI-164C6F2D9D96",
+      "path": [
+        "File",
+        "Export",
+        "glTF 2.0 (GLTF)"
+      ],
+      "disabled_marker": false,
+      "enabled": null,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    },
+    {
+      "catalog_id": "MDUI-E699759CEFFA",
+      "path": [
+        "File",
+        "Export",
+        "glTF 2.0 (GLB)"
+      ],
+      "disabled_marker": false,
+      "enabled": null,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    },
+    {
+      "catalog_id": "MDUI-48540BE089C2",
+      "path": [
+        "File",
+        "Export",
+        "Alembic"
+      ],
+      "disabled_marker": false,
+      "enabled": null,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    },
+    {
+      "catalog_id": "MDUI-37616B10A848",
+      "path": [
+        "File",
+        "Export",
+        "USD"
+      ],
+      "disabled_marker": false,
+      "enabled": null,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    },
+    {
+      "catalog_id": "MDUI-1C115D990D16",
+      "path": [
+        "File",
+        "Export",
+        "VRM"
+      ],
+      "disabled_marker": false,
+      "enabled": null,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    },
+    {
+      "catalog_id": "MDUI-618D9FA13985",
+      "path": [
+        "File",
+        "Export",
+        "Animation"
+      ],
+      "disabled_marker": true,
+      "enabled": false,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    },
+    {
+      "catalog_id": "MDUI-A5D2AD026D2E",
+      "path": [
+        "File",
+        "Export",
+        "Maya Cache (MC)"
+      ],
+      "disabled_marker": false,
+      "enabled": null,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    },
+    {
+      "catalog_id": "MDUI-85C8FF045407",
+      "path": [
+        "File",
+        "Export",
+        "Maya Cache (MCX)"
+      ],
+      "disabled_marker": false,
+      "enabled": null,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    },
+    {
+      "catalog_id": "MDUI-1C56F663474A",
+      "path": [
+        "File",
+        "Export",
+        "Point Cache 2"
+      ],
+      "disabled_marker": false,
+      "enabled": null,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    },
+    {
+      "catalog_id": "MDUI-8E5EBAC2DF23",
+      "path": [
+        "File",
+        "Export",
+        "MDD Cache (Standard)"
+      ],
+      "disabled_marker": false,
+      "enabled": null,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    },
+    {
+      "catalog_id": "MDUI-EC594DE617FB",
+      "path": [
+        "File",
+        "Export",
+        "MDD Cache (Maya/3ds Max)"
+      ],
+      "disabled_marker": false,
+      "enabled": null,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    },
+    {
+      "catalog_id": "MDUI-9D3D45E6FD59",
+      "path": [
+        "File",
+        "Export",
+        "OBJ Sequence"
+      ],
+      "disabled_marker": false,
+      "enabled": null,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    },
+    {
+      "catalog_id": "MDUI-631F79FBF7E4",
+      "path": [
+        "File",
+        "Export",
+        "Bone Information (JSON)"
+      ],
+      "disabled_marker": false,
+      "enabled": null,
+      "checked": null,
+      "shortcut": null,
+      "behavior": "not_executed_in_this_case"
+    }
+  ],
+  "actions": [
+    {
+      "action": "Open File through normal AX menu action",
+      "result": "Exposed File tree contains Export with 16 retained child labels; no DXF."
+    },
+    {
+      "action": "Click observed Export parent",
+      "result": "Returns the standard workspace rather than leaving a submenu open. No format item was invoked; no export or save dialog observed."
+    }
+  ],
+  "DXF_dialog_opened": false,
+  "DXF_tabs_observed": false,
+  "DXF_options_observed": false,
+  "DXF_units_observed": false,
+  "DXF_current_or_default_values": null,
+  "DXF_ranges_or_errors": null,
+  "DXF_dialog_cancel_executed": false,
+  "format_output_observed": false,
+  "visual_Export_popup_audit_completed": false,
+  "preservation": {
+    "fixture_name": "reference-free-reversed-003.zprj",
+    "fixture_bytes": 100554,
+    "fixture_sha256_before": "0afcfe4281526e2250bef6b6d945bdc7e48f388b8236c765623bafb17702ba8d",
+    "fixture_sha256_after": "0afcfe4281526e2250bef6b6d945bdc7e48f388b8236c765623bafb17702ba8d",
+    "fixture_hash_unchanged": true,
+    "selected_pair_and_settings_retained": true,
+    "simulation": false,
+    "no_menu_or_modal_at_handoff": true,
+    "preferences_or_values_changed": false,
+    "activation_or_guarded_pointer_fallback": false,
+    "account_security_TCC_or_WeftForge_action": false,
+    "target_seam_field_sequences_equal": true
+  },
+  "inventory": {
+    "combined_records": 949,
+    "new_ids": 0,
+    "catalog_bytes_unchanged": true
+  },
+  "evidence": [
+    {
+      "id": "ev_22fdf5e2c6ccbd6a31f9a0f20ab38d3a26cb04001828f03da5fb8d57e7a86ac6",
+      "key": "before",
+      "provider": "REA 6.9.0 native main-window observation",
+      "retained_record_sha256": "5dbdf737dbc0201f0397dc07bd3b3d10b3b0c0dc2a2d82e8a37c54782f519c59",
+      "capture_summary_sha256": "31c2f10f870ee9b2889f70725dbd5a3d045f363c028ae000141696977e91d22b",
+      "started_at": "2026-11-14T10:24:48.665716+00:00",
+      "completed_at": "2026-11-14T10:24:58.011210+00:00",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "original_png_sha256": "1a1a81783898cd34c899f07f17795601b4a2e9606891a272bd234c79e2795d72",
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Full commercial/account UI and personal paths remain private."
+    },
+    {
+      "id": "CUA-DXF005-LIVE-FILE-MENU",
+      "key": "file_menu",
+      "provider": "native AX action/state",
+      "retained_record_sha256": "fb4d68e45ffeb63608a936c7380d7def13d444eb3a1a82bc4c7f91d95343432c",
+      "observed_at": "2026-11-14T10:25:30.505Z",
+      "content_types": [
+        "text"
+      ],
+      "context": "Exposed live File tree; text-only record, including 16 Export children. No menu screenshot returned.",
+      "privacy": "Full commercial/account UI and personal paths remain private."
+    },
+    {
+      "id": "CUA-DXF005-AFTER-EXPORT-PARENT",
+      "key": "after_parent",
+      "provider": "native AX action/state",
+      "retained_record_sha256": "39b80ce532eefff63627cb8223e3ddb4162d386a64640e855aa6e28f2b664529",
+      "observed_at": "2026-11-14T10:26:07.124Z",
+      "content_types": [
+        "text",
+        "image"
+      ],
+      "context": "Actual after-state is the standard workspace, not an open Export popup. AX and screenshot retained.",
+      "privacy": "Full commercial/account UI and personal paths remain private."
+    },
+    {
+      "id": "ev_43eafac4eeb88048db8360bfdedb6bffb47aba7c8db83e611cae041ee0365069",
+      "key": "after",
+      "provider": "REA 6.9.0 native main-window observation",
+      "retained_record_sha256": "080cce1093e53dcc939f0373a95e3272c605b0a1469d7ca59a111f46d8123206",
+      "capture_summary_sha256": "5521f0c003b726c8c09000e4a086cb70f5a30ae9bb198d3bcd1e7b1d5ff8149a",
+      "started_at": "2026-11-14T10:27:22.398112+00:00",
+      "completed_at": "2026-11-14T10:27:30.649100+00:00",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "original_png_sha256": "0d3bd9bfd110b47a009ead82a9c15c07401540df37e19b68c38d6ce20bc23a4a",
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Full commercial/account UI and personal paths remain private."
+    },
+    {
+      "id": "PLAN-DXF005-20261114",
+      "key": "plan",
+      "provider": "predeclared bounded read-only original-fixture case",
+      "retained_record_sha256": "7a851c9086642cae139441f8351b241f98a56177674b322d35fdab6007d519af",
+      "declared_at": "2026-11-14T10:24:46.700037+00:00"
+    },
+    {
+      "id": "REVIEW-DXF005-EXPORT-INDEX",
+      "key": "transcription_review",
+      "provider": "reviewed transcription matched against retained native File tree and catalog",
+      "retained_record_sha256": "a79858c7192697df908fcd7bd73440e73f5107a36d7f2aaf7f0a2296e3e5f782",
+      "reviewed_at": "2026-11-14T10:29:17.506988+00:00"
+    },
+    {
+      "id": "REVIEW-DXF005-TARGET-PRESERVATION",
+      "key": "target_preservation_review",
+      "provider": "independent comparison of retained target AX field sequences and native file hashes",
+      "retained_record_sha256": "d67d36468e40beab9a2d197bfc341ce80d2129a214ecd594306f9d5a6ea1a61b",
+      "reviewed_at": "2026-11-14T10:33:24.556661+00:00"
+    }
+  ],
+  "limitations": [
+    "This absence finding covers the exposed File > Export AX tree in the observed build/fixture/state only.",
+    "The live File record is text-only; clicking the Export parent does not leave a visual popup. No DXF dialog behavior is fabricated.",
+    "Absence here does not establish product-wide unsupported DXF, an edition/license explanation, alternate entry paths, preferences, format defaults or output semantics.",
+    "No DXF output, geometry/physics comparison, WeftForge workflow replay or parity qualification.",
+    "The full WeftForge DXF target remains unchanged; this case supplies no comparative DXF options/output oracle."
+  ],
+  "open_questions": [
+    "Alternate legitimate DXF entry points or a separately scoped documentation discovery.",
+    "DXF dialog options, units, ranges, error/cancellation and output semantics."
+  ],
+  "weftforge_comparison": "not_run",
+  "factory_default_claimed": false,
+  "physics_tested": false,
+  "verified_parity_claimed": false,
+  "complete_broad_feature_contracts": 0
+}
