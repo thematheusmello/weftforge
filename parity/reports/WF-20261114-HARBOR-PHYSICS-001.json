@@ -72,9 +72,9 @@
     "parity/reports/artifacts/harbor-publication-20261114/first-preparation-manifest.json": "8ab1e8090130b2e8ab88b8b29f249bbb6649cccba7fb396597d534abe714eb69",
     "parity/reports/artifacts/harbor-publication-20261114/first-preparation-verify.py": "4b0c2533ff9b8e63b2997dc52a007c71b639dd7880bb349c702ca54c6e886ac4",
     "parity/reports/artifacts/harbor-publication-20261114/preparation-refusal.json": "ff69f56ec6f97af8ad082b890c8aa364fd5c1b92c1e7bdd9f4ea53b348631309",
-    "parity/reports/artifacts/harbor-workflow-20261114/MANIFEST.json": "0a47ef4bbb4e2f07246ac2eb970076e19c26f61aeaeeaf90c108c7e41b809e58",
-    "parity/reports/artifacts/harbor-workflow-20261114/PROVENANCE.json": "9c630bd37f6c25bb57b1ca11dae7999cd4986a9213f73fc3ecd74ebb13c27f3c",
-    "parity/reports/artifacts/harbor-workflow-20261114/README.md": "17eba67bd5dbe3b365b180cba224b9b1feece66025dc810f18f2b8154725169f",
+    "parity/reports/artifacts/harbor-workflow-20261114/MANIFEST.json": "95a6d490ccc1902c30ef303bf3aecce6d32b950fdd4a3155d4b4997cad5186f3",
+    "parity/reports/artifacts/harbor-workflow-20261114/PROVENANCE.json": "70fef66a7d418936a1a014d61b11baaa9604bfb47926580076f6f2e6c46dbe80",
+    "parity/reports/artifacts/harbor-workflow-20261114/README.md": "e6a0237f00615cad12e5a523ed9b7fc4122dbb702bcaeacbd39a62f234f2a44e",
     "parity/reports/artifacts/harbor-workflow-20261114/headless-attempt/DERIVATIONS.json": "7f95556562deb165a8650abd03fe47b729e0aad213410f5088c68c865555c4cc",
     "parity/reports/artifacts/harbor-workflow-20261114/headless-attempt/MANIFEST.json": "75a1c7b03981455f726d18259e3d826613c4445a01998a4e00de330784cbc214",
     "parity/reports/artifacts/harbor-workflow-20261114/headless-attempt/PROTOCOL.md": "2fadcb4930f6347f33aec39d6d676c0a5678f1b798e5e02a6c1fff6d1b62f6b9",
@@ -248,7 +248,7 @@
   },
   "bundle": {
     "path": "parity/reports/artifacts/harbor-workflow-20261114",
-    "manifest_sha256": "0a47ef4bbb4e2f07246ac2eb970076e19c26f61aeaeeaf90c108c7e41b809e58",
+    "manifest_sha256": "95a6d490ccc1902c30ef303bf3aecce6d32b950fdd4a3155d4b4997cad5186f3",
     "all_frozen_subtree_bytes_unchanged": true,
     "historical_candidate_status_metadata_retained": true
   },
@@ -301,12 +301,13 @@
     "A_missing_checkpoints": [
       180
     ],
-    "A_observed_cancel_seconds": 422.7046465830002,
     "A_observation_overrun_s": 2.704646583000226,
     "A_cancel_retains_accepted_assembly_OBJ_bytes": true,
     "A_native_headless_0_60_OBJ_bytes_identical": true,
     "B": "not_run_missing_accepted_A_post_drape",
-    "hidden_worker_frames": "unknown; accepted snapshot only"
+    "hidden_worker_frames": "unknown; accepted snapshot only",
+    "A_first_post_cap_AX_observation_elapsed_s": 422.7046465830002,
+    "A_Cancel_timing_qualification": "Cancel issued once immediately after this observation; exact toolreceipt later. Observation time is not the precise cancel instant."
   },
   "post_failure_reader": {
     "scope": "incomplete_prefix_only; frozen after failed executions and before arithmetic calculation",

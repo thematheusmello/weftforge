@@ -159,9 +159,10 @@ plus its manifest; its33 raw screenshots are correctly named JPEGs.
 Unmodified source6c455 Harbor headless A/B attempts both hit the unchanged
 420-second cap. A accepts163 frames, B158; their next steps cancel transactionally.
 There is no frame180 or full physical acceptance. A native assembly accepts60
-frames; its OBJ is byte-identical to headless frame60. The native Drape attempt
-is cancelled at422.705s, retaining the2.705s observation overrun and prior accepted
-assembly. Native B is `not_run` because its completed-A-Drape precondition is
+frames; its OBJ is byte-identical to headless frame60. Native Drape's first
+post-cap observation occurs at422.705s; Cancel is issued immediately afterward,
+retaining the2.705s observation overrun and prior accepted assembly. Native B is
+`not_run` because its completed-A-Drape precondition is
 missing. Native PID57507 remains saved/paused. The separate physical-attempt
 subtree has44manifest entries plus its manifest; authoring bytes are unchanged.
 

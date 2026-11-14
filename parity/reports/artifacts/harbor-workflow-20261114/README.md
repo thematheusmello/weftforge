@@ -8,9 +8,10 @@ evidence on runtime source `6c45535cb312f7fed8ad872ee87b6ba5e5974e35`.
 
 Physical completion **failed**. The unchanged 420-second headless attempts
 accepted 163 and 158 frames instead of 180. Native A accepted assembly frame60;
-its OBJ matches headless frame60 byte for byte. Native Drape was cancelled at
-422.705 seconds, preserving the 2.705-second observation overrun and prior
-accepted snapshot. Native B was not run because completed A Drape was required.
+its OBJ matches headless frame60 byte for byte. The first post-cap native Drape
+observation occurred at422.705 seconds; Cancel was issued immediately afterward.
+The 2.705-second observation overrun and prior accepted snapshot are retained.
+Native B was not run because completed A Drape was required.
 There is no final frame180 artifact or complete garment-workflow acceptance.
 
 The separately frozen **post-failure** reader checks all 323 available headless
