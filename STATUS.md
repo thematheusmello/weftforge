@@ -24,6 +24,12 @@ ship yet. Distribution notices, platform launch/package QA and signing remain.
 Historical tags and failed or stale evidence have not been rewritten.
 
 Current branch: `feat/native-seam-reversal`.
+
+GitHub Actions is disabled at repository level (`enabled:false`), verified on
+2026-11-14 at the user's request to stop ongoing development costs. No active
+runs remained. Keep all required checks local and do not re-enable Actions until
+the complete project is done. The Pages site remains at its last deployment;
+new generated progress can still be published in the repository.
 Retained bounded native I/O candidate source: `1528e3662380a4a74c3b70d3ef9b11f2c607af5f`;
 native `a16acde0fb010a34b1452881ca9865ac3a3ef58908ca50e2719177fb9ab3b838`,
 CLI `820b8329de53fe6cc167533d3e0f0b55953b14e0ff74e5d6fda4cead77b9f0b7`.
