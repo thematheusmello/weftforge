@@ -1,0 +1,42 @@
+{
+  "declared_at": "2026-11-13T23:27:27.238373+00:00",
+  "kind": "implementation_only",
+  "commit": "b8c9a1a615787c851d6fea15265faf30541f1024",
+  "executable_sha256": "03d44055eacfa20ecd6c69a051e259707848560ae0bf5db5d61282455c04b895",
+  "fixture_hashes": {
+    "fixtures/single-candidate-shirt.weftforge": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa"
+  },
+  "actions": [
+    "Open retained v1 shirt, confirm grain0 and both stiffness400",
+    "Set front warp angle pi/2, Undo0,Redo pi/2",
+    "Set shared warp50N/m,weft1000N/m",
+    "Recolor,save as new v2 project,quit,relaunch same executable,reopen",
+    "Confirm saved grain/stiffness; grain remains per-piece; shared stiffness reaches both pieces",
+    "Assemble60steps gravity0;Drape120steps gravity[0,-9.81,0],8substeps32iterations",
+    "ExportOBJandSVG; independently measure axes,UVs,normals,seams,contact,strain,physicalscale"
+  ],
+  "acceptance": {
+    "authored_values_preserved": true,
+    "color_changes_physics": false,
+    "finite_output": true,
+    "fit_quality_limits": {
+      "maximum_material_axis_strain": 0.15,
+      "maximum_seam_gap_m": 0.005,
+      "maximum_avatar_ground_thickness_error_m": 0.002
+    },
+    "fit_quality_note": "Same declared prior scene limits; retain any failure without weakening. This changed anisotropic garment has not been calibrated."
+  },
+  "limitations": [
+    "No reference execution",
+    "No independent self-contact evaluator",
+    "Does not rerun original empty-project creation"
+  ],
+  "id": "UI-GRAIN-001",
+  "reference_executed": false,
+  "actual_outcome": {
+    "authoring_and_persistence": "passed",
+    "fit_quality": "failed",
+    "independent_metrics": "parity/reports/artifacts/independent-grain-shirt.json"
+  },
+  "acceptance_scope_note": "Authoring/persistence and fit quality are separately reported subsets of this predeclared scenario. Overall fitting acceptance failed; no complete garment/reference contract is passed."
+}

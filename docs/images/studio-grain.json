@@ -1,0 +1,386 @@
+{
+  "schema_version": 1,
+  "kind": "implementation_only_native_ui_observation",
+  "case": "grain-and-directional-stiffness-candidate",
+  "evidence_id": "ev_73f3d3c78d5f2957f992531ca59e00e7343aaa51b2ca274b5780f92808fd2b6c",
+  "observation_window_utc": {
+    "requested_at": "2026-11-13T23:34:51.863181+00:00",
+    "evidence_written_at": "2026-11-13T23:35:00.266500+00:00",
+    "timestamp_basis": "Bounded-call start and local completion; individual image timestamp not supplied by provider."
+  },
+  "producer": {
+    "tool": "REA observe-native-ui",
+    "rea_version": "6.9.0",
+    "node_version": "26.12.1",
+    "provider": {
+      "id": "native-macos",
+      "name": "macOS native inspection utilities",
+      "version": null
+    },
+    "ui_actions": [],
+    "help_revalidated": true,
+    "auxiliary_tool_versions": {
+      "apple_swift": "6.4.2",
+      "swift_driver": "1.168.6",
+      "target": "arm64-apple-macosx27.2.0"
+    }
+  },
+  "host": {
+    "os": "macOS",
+    "version": "27.2",
+    "build": "26B123",
+    "architecture": "arm64"
+  },
+  "application": {
+    "name": "WeftForge",
+    "bundle_id": "org.weftforge.studio",
+    "bundle_version": "0.1.0",
+    "executable_name": "weftforge",
+    "executable_sha256": "03d44055eacfa20ecd6c69a051e259707848560ae0bf5db5d61282455c04b895",
+    "executable_bytes": 13901200,
+    "runtime_architecture": "arm64",
+    "source_commit": "b8c9a1a615787c851d6fea15265faf30541f1024",
+    "source_identity": {
+      "compared_file_count": 26,
+      "all_matched": true,
+      "comparison": "Independent byte comparison of working-tree Rust source, workspace manifests, Cargo.lock and toolchain file against the named Git commit. Complete file hashes retained privately.",
+      "build_provenance": "Operator reports this executable was built from this source; the executable hash is independently checked. This is not a reproducible-build attestation."
+    }
+  },
+  "window": {
+    "title": "WeftForge",
+    "pid_at_capture": 52560,
+    "window_id_at_capture": 55590,
+    "process_launch_unix_s": 1794612561.592587,
+    "native_frame_points": {
+      "x": 555,
+      "y": 124,
+      "width": 1450,
+      "height": 932
+    },
+    "image_pixels": {
+      "width": 1450,
+      "height": 932
+    },
+    "display_backing_scale_factor": 1,
+    "physical_dpi": null,
+    "actual_client_content_rect": null,
+    "actual_canvas_viewport_rects": null,
+    "source_requested_client_size_points": {
+      "width": 1450,
+      "height": 900
+    },
+    "geometry_limitations": [
+      "Native frame includes title bar. Actual client and canvas viewport rectangles were not independently exposed by this REA record.",
+      "Physical DPI was not measured. Backing scale is an observed OS display property; requested client size is a source setting."
+    ]
+  },
+  "screenshot": {
+    "path": "docs/images/studio-grain.png",
+    "sha256": "4de35d6e9f974b8b3a4309d8fdb3775af377fd90fca51cef05efa991a45e4537",
+    "bytes": 280451,
+    "editing": "None; copied byte-for-byte from the selected-window REA PNG.",
+    "privacy_review": "Visually reviewed original WeftForge window and original garment assets only; no account information, personal paths, unrelated applications, proprietary reference assets or reference UI."
+  },
+  "accessibility": {
+    "node_count": 107,
+    "truncated": false,
+    "raw_tree": "Retained privately with complete REA record."
+  },
+  "scene": {
+    "fixture": {
+      "path": "fixtures/grain-shirt.weftforge",
+      "sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+      "bytes": 12161
+    },
+    "format_version": 2,
+    "document_revision": 28,
+    "authored_points": 28,
+    "authored_curves": 28,
+    "pieces": [
+      {
+        "id": 2,
+        "name": "Candidate front",
+        "placement": {
+          "translation": [
+            0.55,
+            0.0,
+            0.22
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "material": 1,
+        "grain_angle": 1.5707963267948966,
+        "boundary_point_count": 14,
+        "width_m": 1.1,
+        "height_m": 0.54
+      },
+      {
+        "id": 31,
+        "name": "Candidate back",
+        "placement": {
+          "translation": [
+            -0.55,
+            0.0,
+            -0.22
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "material": 1,
+        "grain_angle": 0.0,
+        "boundary_point_count": 14,
+        "width_m": 1.1,
+        "height_m": 0.54
+      }
+    ],
+    "seams": 8,
+    "resolution_m": 0.12,
+    "materials": [
+      {
+        "id": 1,
+        "name": "Cotton approximation (uncalibrated)",
+        "areal_density": 0.18,
+        "warp_stiffness": 50.0,
+        "weft_stiffness": 1000.0,
+        "shear_stiffness": 100.0,
+        "bending_stiffness": 0.003,
+        "damping": 0.2,
+        "friction": 0.4,
+        "collision_thickness": 0.003,
+        "color": [
+          0.6162278,
+          0.43667638,
+          0.17926629
+        ]
+      }
+    ],
+    "analytic_mannequin": {
+      "capsules": [
+        {
+          "a": [
+            0.0,
+            0.9,
+            0.0
+          ],
+          "b": [
+            0.0,
+            1.4,
+            0.0
+          ],
+          "radius": 0.18
+        },
+        {
+          "a": [
+            0.0,
+            1.53,
+            0.0
+          ],
+          "b": [
+            0.0,
+            1.65,
+            0.0
+          ],
+          "radius": 0.105
+        },
+        {
+          "a": [
+            -0.22,
+            1.4,
+            0.0
+          ],
+          "b": [
+            -0.55,
+            1.22,
+            0.0
+          ],
+          "radius": 0.065
+        },
+        {
+          "a": [
+            0.22,
+            1.4,
+            0.0
+          ],
+          "b": [
+            0.55,
+            1.22,
+            0.0
+          ],
+          "radius": 0.065
+        },
+        {
+          "a": [
+            -0.09,
+            0.88,
+            0.0
+          ],
+          "b": [
+            -0.09,
+            0.18,
+            0.0
+          ],
+          "radius": 0.085
+        },
+        {
+          "a": [
+            0.09,
+            0.88,
+            0.0
+          ],
+          "b": [
+            0.09,
+            0.18,
+            0.0
+          ],
+          "radius": 0.085
+        }
+      ]
+    },
+    "world_up": "Y",
+    "length_unit": "metre",
+    "stage_display": "Drape",
+    "state_display": "PAUSED",
+    "mesh_vertices_display": 158,
+    "selection_display": "Candidate front"
+  },
+  "displayed_selected_piece_settings": {
+    "width_m": "1.100",
+    "height_m": "0.540",
+    "placement_translation_m": [
+      "0.55",
+      "0.00",
+      "0.22"
+    ],
+    "placement_rotation_rad": [
+      "0.00",
+      "0.00",
+      "0.00"
+    ],
+    "warp_angle_rad": "1.5708",
+    "angle_legend": "0 = +U (right); positive turns toward +V (up).",
+    "shared_material_piece_count": 2,
+    "mass_per_area_kg_m2": "0.18",
+    "warp_stiffness_n_per_m": "50",
+    "weft_stiffness_n_per_m": "1000",
+    "bending_stiffness_n_times_m": "0.00300"
+  },
+  "displayed_next_step_settings": {
+    "dt_s": "0.01667",
+    "substeps": 8,
+    "iterations": 32,
+    "gravity_m_s2": [
+      0.0,
+      -9.81,
+      0.0
+    ],
+    "seam_closure_m_s": "1.00"
+  },
+  "displayed_diagnostics": {
+    "time_s": "3.000",
+    "assembly_remaining_m": "0.0000",
+    "material_axis_stretch_error": "0.269",
+    "seam_gap_m": "0.0000",
+    "contact_error_m": "0.0000",
+    "initial_intersections": "0",
+    "rounding_note": "Captured UI text is rounded; displayed zeros do not establish exact zero physical error."
+  },
+  "fit_assessment": {
+    "status": "failed_from_displayed_metric",
+    "criterion": "Material-axis strain must be below 0.15.",
+    "criterion_source": {
+      "path": "scripts/check_drape.py",
+      "sha256": "789752b2503a14a8637c833ff6867e9a659dbf7313fd01f41b92b1626d4cb7d6",
+      "bytes": 7709
+    },
+    "displayed_value": "0.269",
+    "raw_solver_value": null,
+    "scope": "Displayed strain exceeds this original-scene acceptance limit. No numerical solver or contact correctness claim follows from the screenshot."
+  },
+  "camera": {
+    "runtime_values": null,
+    "source_defaults": {
+      "yaw_rad": -0.45,
+      "pitch_rad": 0.12,
+      "scale_logical_points_per_metre": 270.0
+    },
+    "provenance": "Defaults read from the identified source. Runtime camera was not exposed by AX or a debug-state export.",
+    "projection": "Source-defined orthographic projected triangle preview and basic shading; no calibrated lighting."
+  },
+  "original_v1_input": {
+    "path": "fixtures/single-candidate-shirt.weftforge",
+    "sha256": "65ff27d2ec992f661cd0f375e8d98342260f90e7e02683f3768cf8d97ebd06fa",
+    "bytes": 12057,
+    "unchanged_from_prior_capture": true
+  },
+  "color_edit_document_comparison": {
+    "before": {
+      "path": "fixtures/grain-shirt-before-color.weftforge",
+      "sha256": "b2918d22d09db1e679824ae7c6bf6d643b940f8e6124dffeccb22f05a6484007",
+      "bytes": 12156
+    },
+    "before_revision": 26,
+    "after_revision": 28,
+    "before_rgb": [
+      0.21999997,
+      0.54999995,
+      0.76
+    ],
+    "after_rgb": [
+      0.6162278,
+      0.43667638,
+      0.17926629
+    ],
+    "independent_result": "Before and after saved document data are equal after removing only document revision and the shared material color. This does not measure live simulation-cache reuse."
+  },
+  "related_exports": [
+    {
+      "path": "fixtures/grain-shirt-drape.obj",
+      "sha256": "bbc8a32cc4984b6fb6399401c00e84cd2b02136add77e5501417fbffe930b8f9",
+      "bytes": 34979
+    },
+    {
+      "path": "fixtures/grain-shirt-patterns.svg",
+      "sha256": "7a48f7e879046d005a7ad9bb18f3b1ba4f60d7c1bc15bc513f1effc91b6928fb",
+      "bytes": 1263
+    }
+  ],
+  "preceding_workflow": {
+    "provenance": "Separate operator native CUA action log; these steps are not proved by this single REA snapshot.",
+    "reported_steps": [
+      "Opened unchanged version-1 single-candidate shirt.",
+      "Set front grain to pi/2; observed Undo to 0 and Redo to pi/2.",
+      "Set shared warp/weft stiffness to 50/1000 N/m and made a color-only edit.",
+      "Saved version 2, quit, relaunched same executable and reopened; verified front grain pi/2 and back grain 0.",
+      "Ran 60 gravity-off assembly steps and 120 gravity-enabled drape steps and exported the listed OBJ and SVG through the UI."
+    ]
+  },
+  "private_evidence": {
+    "record_sha256": "2a6d2b5b7a0b12e7580d5c56d7e4e659215657eb1e78c6bfbfe913531b00a5b9",
+    "source_identity_record_sha256": "8f4f7ad012636c35ce94389a6854dd63168ae23fd8349f314096af5ea249048f",
+    "window_inventory_record_sha256": "bd281605640bd3576d3aac1eebf40247a22c27decd76756d1e5c711d5d528730",
+    "absolute_paths": "Omitted from public provenance.",
+    "full_record": "Retained in the operator-controlled research directory."
+  },
+  "limitations": [
+    "Read-only selected-window observation: no pointer, keyboard, document, account or activation input.",
+    "This failed-fit candidate is implementation evidence only, not reference parity or release gate acceptance.",
+    "The saved version-2 document supplies exact piece grain/material values. Selected front angle and shared stiffness are also exposed in AX; back angle is not simultaneously displayed in this screenshot.",
+    "A screenshot and rounded diagnostics do not establish complete workflow verification, physical calibration, exact seam/contact error or numerical stability.",
+    "No proprietary reference app was inspected during this capture."
+  ],
+  "publication_source_equivalence": {
+    "public_commit": "28cae66b684e368e7fbe6b3240069ae0eb6e16e6",
+    "original_build_source_commit": "b8c9a1a615787c851d6fea15265faf30541f1024",
+    "compared_file_count": 26,
+    "all_matched": true,
+    "method": "Independent byte comparison of all Rust/workspace/lock/toolchain files. The executable was retained from the original build; no rebuild is claimed at the later public commit."
+  }
+}

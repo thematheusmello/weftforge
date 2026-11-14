@@ -1,0 +1,124 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on artifact directory
+   Compiling weftforge-core v0.1.0 (<workspace>/crates/weftforge-core)
+   Compiling weftforge-cli v0.1.0 (<workspace>/apps/weftforge-cli)
+   Compiling weftforge v0.1.0 (<workspace>/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.94s
+     Running unittests src/main.rs (target/debug/deps/weftforge-6a310df98b73c5db)
+
+running 7 tests
+test tests::canvas_picking ... ok
+test tests::inspector_updates_commit_once_and_undo_as_one_transaction ... ok
+test tests::cancelled_and_obsolete_jobs_do_not_replace_the_display_snapshot ... ok
+test tests::bounded_fit_phases_queue_without_rebuild_and_continue_accepted_cloth_state ... ok
+test tests::export_guard_preserves_source_projects_and_symlink_aliases ... ok
+test tests::untitled_autosave_recovers_editable_work_and_failed_recovery_retains_it ... ok
+test tests::inspecting_and_recoloring_preserves_valid_imported_dimensions_and_physics ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+     Running unittests src/main.rs (target/debug/deps/weftforge_cli-a0555174c99d4f9a)
+
+running 2 tests
+test tests::fit_quality_requires_closed_seams_and_all_declared_bounds ... ok
+test tests::shirt_is_editable_and_interval_sewn ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/grain.rs (target/debug/deps/grain-3511411847f7fbad)
+
+running 1 test
+test cli_authors_grain_and_orthotropy_and_preserves_output_on_invalid_values ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.26s
+
+     Running unittests src/lib.rs (target/debug/deps/weftforge_core-80dbb582569cf484)
+
+running 4 tests
+test geometry::quality_tests::cancellation_leaves_authoring_unchanged ... ok
+test geometry::quality_tests::interior_flip_preserves_boundary_and_area_while_improving_sliver ... ok
+test simulation::tests::rejects_stale_and_foreign_meshes_without_panicking ... ok
+test persistence::tests::interrupted_save_and_invalid_inputs_preserve_the_previous_document ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+     Running tests/grain.rs (target/debug/deps/grain-24cc0a59b15518e5)
+
+running 3 tests
+test invalid_grain_or_directional_stiffness_retains_document_and_history ... ok
+test grain_and_orthotropy_are_one_transaction_with_history_and_stale_mesh_rejection ... ok
+test authored_grain_rotates_real_cpu_response_while_color_preserves_physics ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+     Running tests/migration.rs (target/debug/deps/migration-9f22de0f3ebf8c58)
+
+running 5 tests
+test nondefault_v1_material_values_are_mapped_instead_of_replaced_by_defaults ... ok
+test duplicate_fields_are_rejected_at_envelope_project_and_material_boundaries ... ok
+test version_dispatch_rejects_mixed_schemas_unknown_fields_and_unsupported_versions ... ok
+test v2_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes ... ok
+test real_v1_fixtures_migrate_without_authored_geometry_or_physical_data_loss ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+
+     Running tests/shirt.rs (target/debug/deps/shirt-3a322ff833d60336)
+
+running 1 test
+test original_shirt_builds_conforming_positive_area_cloth_at_multiple_resolutions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 4.37s
+
+     Running tests/workflow.rs (target/debug/deps/workflow-b52f0b50f82b0502)
+
+running 7 tests
+test invalid_contours_and_failed_transactions_leave_document_and_history_unchanged ... ok
+test transactions_history_and_stable_ids_survive_branching ... ok
+test loaded_duplicate_ids_dangling_relationships_and_non_monotone_seams_are_rejected ... ok
+test rest_mesh_has_physical_scale_consistent_uvs_and_conforming_refinement ... ok
+test split_cubic_is_exact_and_resize_updates_real_geometry ... ok
+test independent_obj_parser_observes_metres_y_up_uvs_normals_and_piece_groups ... ok
+test reversed_gathered_cubic_intervals_retain_correspondence_through_remesh_edits_and_files ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.44s
+
+     Running unittests src/lib.rs (target/debug/deps/weftforge_sim-8e105f27fee971b5)
+
+running 14 tests
+test tests::weighted_stitch_closes_unequal_samples_and_preserves_momentum ... ok
+test tests::analytic_dihedral_gradient_matches_independent_finite_difference ... ok
+test tests::bending_reduces_fold_angle_without_translating_center_of_mass ... ok
+test tests::malformed_external_geometry_material_and_constraints_are_rejected ... ok
+test tests::finite_diagnostics_do_not_claim_satisfied_contact ... ok
+test tests::cancellation_and_failures_preserve_old_state_and_allow_recovery ... ok
+test tests::ground_torso_and_capsule_project_to_exterior ... ok
+test tests::freefall_matches_symplectic_euler_and_refines_toward_analytic_solution ... ok
+test tests::area_mass_rest_and_reset_are_si_consistent ... ok
+test tests::layers_contact_and_transfer_motion_to_the_other_layer ... ok
+test tests::swept_layer_crossing_is_resolved_and_ground_friction_resists_slide ... ok
+test tests::seam_assembly_is_bounded_monotone_cancellable_and_resettable ... ok
+test tests::grain_rotation_changes_the_physical_hanging_response ... ok
+test tests::physical_stiffness_changes_extension_and_refinement_preserves_mass_and_sag ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.71s
+
+     Running unittests src/main.rs (target/debug/deps/xtask-ac51943389f96991)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests weftforge_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests weftforge_sim
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

@@ -143,3 +143,33 @@ complete professional authoring, animation and all remaining acceptance workflow
 are still open. Windows/Linux source builds/tests/lint passed hostedCI, but GUI
 launch/operation there is unverified. See mergedPR10 and its two green CI runs;
 the initial evidence-job setup failure remains linked in STATUS.md.
+
+## Authored grain candidate
+
+The identified native `03d44055…b895` executable exercised the retained v1 shirt
+through grain edit/Undo/Redo, separate shared stiffness controls, recoloring,
+v2 save/quit/relaunch/reopen, resimulation and OBJ/SVG export. All26 Rust/workspace/
+lock/toolchain files byte-match public source `28cae66b684e368e7fbe6b3240069ae0eb6e16e6`;
+the executable was retained from the earlier b8c9a1a build, not rebuilt at the
+later publication commit. The original v1 fixture remains unchanged.
+
+[Authoring/persistence evidence](../parity/reports/WF-20261113-GRAIN-AUTHORING-001.json)
+passes only that declared subset. Before/after saved data differ only in revision
+and color; front grainπ/2, back0 and shared warp50/weft1000N/m persist.
+[The same replay's fitting evidence](../parity/reports/WF-20261113-GRAIN-FIT-001.json)
+**fails** the unchanged0.15 strain screen: independent strain0.26930346. Seam gap
+5.55e-6m and avatar/ground error0 pass their0.005m/0.002m limits. OBJ attributes,
+metre/Y-up bounds, authored SVG points and physical millimetre scale pass.
+
+This changed material is uncalibrated; a fitting-screen failure does not by itself
+establish an incorrect constitutive model. No physical inputs or limits were
+changed to obtain a pass. See [issue16](https://github.com/thematheusmello/weftforge/issues/16).
+The actual own-app screenshot and redacted capture/source provenance are
+[studio-grain.png](images/studio-grain.png) and [studio-grain.json](images/studio-grain.json).
+The original empty-project workflow remains historical stale evidence; this new
+run began by loading that authored shirt. Neither is a reference comparison.
+
+The independent headless repeat returned exit1 and the identical0.2693034615
+strain (agreement within1e-12). It simulated3s in22.19s wall, about0.135 simulated
+s/wall s on the documented host; memory and viewport frame time are unmeasured.
+The retained CLI JSON includes per-step timing/settings and finite diagnostics.
