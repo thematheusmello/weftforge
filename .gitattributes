@@ -1,0 +1,6 @@
+* text=auto eol=lf
+
+# Measured inputs and outputs must retain their committed bytes on every OS.
+fixtures/** -text
+parity/reports/artifacts/** -text
+*.png binary

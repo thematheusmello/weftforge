@@ -19,6 +19,8 @@ bounded to integrated increments while preserving the full parity target.
 - Run cargo fmt --all --check, cargo test --workspace, cargo clippy --workspace
   --all-targets -- -D warnings, and cargo xtask verify for an integrated change.
 - Maintain STATUS.md with evidence, exact next steps and confirmed job handles.
+- Before publishing evidence, require every artifact to be Git-tracked and run
+  registry/map checks from a clean checkout; local ignored files are not delivery.
 - Keep compiled Cargo targets separate across worktrees; cached binaries can embed
   checkout paths. Registry downloads may be shared.
 - Independent geometry, simulation, UI and verification agents may work in
