@@ -900,7 +900,13 @@ fn validate_coordinates<const N: usize>(point: &[f64; N]) -> Result<()> {
     )
 }
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(
+    tag = "type",
+    content = "data",
+    rename_all = "snake_case",
+    deny_unknown_fields
+)]
 pub enum Command {
     AddPolygon {
         name: String,
