@@ -8,9 +8,11 @@ inventory, not a feature-completion denominator.
 ## Publication and cost policy
 
 Public repository: https://github.com/thematheusmello/weftforge.
-Last published main is `e6595ee787a30b3e8efa8502b42ce70536481d66`, merged
-[PR35](https://github.com/thematheusmello/weftforge/pull/35). Its tree equals tested
-final head `c8cdc3b0`; all37 runtime files match executed `6c45535c`.
+Last published main is `3bc6317733d3dec6bed45dc056fdad669c369a1a`, merged
+[PR36](https://github.com/thematheusmello/weftforge/pull/36). Its tree equals tested
+final head `63963816`; all 37 runtime files match executed `6c45535c`.
+Earlier [PR35](https://github.com/thematheusmello/weftforge/pull/35), main
+`e6595ee7`, delivered strain attribution; its tree equals tested `c8cdc3b0`.
 Earlier [PR34](https://github.com/thematheusmello/weftforge/pull/34), main `2d65b9e`,
 retains the original cloth balance failure, 132-file bundle and four
 clean-publication receipts. Its tree equals tested final head `0130bf76`. Earlier
@@ -21,17 +23,19 @@ Visibility delivery is merged. Clean final `c8cdc3b0` checks all1,686 report
 artifacts and the unchanged37-file runtime. Publication audit is retained in
 `.local/verification/published-e6595ee787a3.json`.
 
-[PR36](https://github.com/thematheusmello/weftforge/pull/36) prepares the Harbor
+[PR36](https://github.com/thematheusmello/weftforge/pull/36) delivers the Harbor
 authoring/stopped-physics evidence and historical capture-encoding qualification.
 Clean `58190f75` validates all2,024 tracked report artifacts and the unchanged
 37-file runtime; its326-file closed bundle has strict saved replay,54Python
-checks, actualCLIhelp and independent publication review. Final PR metadata
-is being qualified locally; runtime optimization/native-stage candidates remain
-separate and are not advertised as integrated behavior.
+checks, actual CLI help and independent publication review. Final clean
+`63963816` repeats registry/map and all 2,024 artifact checks. Publication audit
+is `.local/verification/published-3bc6317733d3.json`. Runtime optimization and
+native-stage changes are now merged locally for integration checks; public main
+still has the earlier runtime.
 
 **Keep GitHub Actions and Pages disabled until the entire project is complete.**
 The user requested this to stop development costs. Repository `enabled:false`
-and all 54 historical runs terminal were rechecked after all three merges. PR33/34/35
+and all 54 historical runs terminal were rechecked after PR36. PR33/34/35/36
 final heads and merges each have zero workflow runs. Last CI/Pages runs
 43585595600/43585595609 belong to main `1343b0c46b5c4f097709996785fb55d5d23ac174`.
 Do not dispatch workflows at interim checkpoints. Required checks run locally;
@@ -43,9 +47,15 @@ and cross-platform launch/distribution acceptance remain open.
 
 ## Current material-strain increment
 
-Working branch: `research/force-balance-audit`; published visibility integration
-is `938b2670746fb97da70540912595637264b4bf1e`.
-All 37 scoped runtime/test files exactly match executed candidate
+Working branch: `feat/contact-native-workflow`; local integration is
+`c3fc77b4451ca4a86d9c1549c7ab9b09d9997516`. Its complete core/sim source matches
+qualified `3aa20b15`, and native/CLI source matches stage-fix `1ad6b8ed`. Only
+three runtime/test files differ from `6c45535c`; linear-stitch candidate `35afac60`
+is excluded. Full integrated checks, package binding and native execution are
+next. The three current earlier reports and their 13 feature freshness states
+are marked stale; source-bound outputs and failures remain intact.
+
+Published visibility integration is `938b2670`, with runtime candidate
 `6c45535cb312f7fed8ad872ee87b6ba5e5974e35`. Prospective contract
 `209a8fda72aaca90a08c330427354dd457224a6c` is
 [SIM-005 strain attribution](spec/features/SIM-005-strain-attribution.md).

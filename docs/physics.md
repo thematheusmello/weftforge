@@ -192,8 +192,19 @@ target is applied when stepping, rather than rewriting the arrangement.
 
 Contact is always evaluated. There is no scene-size threshold that disables self
 or intergarment contact. All merged pieces and garments participate in the same
-particle/triangle path. A swept AABB rejection reduces closest-point work, but
-the broadphase currently remains O(vertices*triangles) per iteration.
+particle/triangle path. Each projection pass builds the existing triangle
+hierarchy from the same swept, thickness-expanded AABBs. A swept particle query
+collects candidates, filters the exact AABB predicate and sorts triangle indices
+into the original projection order.
+
+If a contact moves the queried particle, the remaining triangle indices use the
+original linear scan: that correction can reach a later bound outside the first
+query. Bounds retain their original per-pass snapshot even when triangle nodes
+move. Static diagnostics use the hierarchy without changing positions; tests
+retain a separate exhaustive search oracle. Dense overlap, sorting and the
+linear fallback can still be expensive. This optimization adds no collision law,
+contact toggle or continuous-collision completeness. See
+[SIM-004](../spec/features/SIM-004-contact-candidates.md).
 
 Particle/triangle closest points include face, edge and vertex regions. Penetration
 below the summed thickness creates an inverse-mass-weighted unilateral position
@@ -232,8 +243,9 @@ establish production collision robustness.
 `Cloth::new_cancellable` builds a complete candidate or returns `Cancelled`;
 `Cloth::new` delegates with a non-cancelling callback. Construction polls within
 input validation, constraint/mass/seam setup, contact bounds and initial
-intersection analysis. Contact analysis checks each vertex and every 256 triangle
-or collider candidates, including rejected candidates. Its initial count and
+intersection analysis. Contact analysis polls per vertex and hierarchy node,
+with bounded intervals during bounds construction, partitioning and collider
+scans. Rejected candidates still participate in cancellation. Its initial count and
 maximum penetration come from the same completed analysis. The core
 `create_cloth_cancellable` adapter forwards the native worker's existing atomic
 cancel flag; cancellation never installs a partial cloth or alters the accepted
@@ -245,7 +257,8 @@ inside the initial triangle-candidate loop; actual native cancellation interacti
 and measured latency still require separate acceptance.
 
 A step builds candidate positions/velocities locally. Cancellation is checked at
-substeps, iterations and every 32 particles of the cloth contact loop. A failed or
+substeps, iterations, hierarchy work and every 32 particles of the cloth contact
+loop. Poll counts are implementation details. A failed or
 cancelled call preserves positions, velocities, time and diagnostics from the
 last successful call. The caller receives the explicit error. Non-finite state or
 derived diagnostics, displacement above 100 m in one substep, or material-axis
