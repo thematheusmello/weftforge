@@ -1599,7 +1599,7 @@
     "status": "incomplete",
     "documentation_index_reviewed": true,
     "runtime_menu_inventory": "17 initial main menus with 589 paths, plus four selected-seam contextual paths; union 593 menu records",
-    "reference_authoring_scenarios_completed": 0,
+    "reference_authoring_scenarios_completed": null,
     "reviewed_specifications": [
       "PAT-003",
       "PAT-011",
@@ -1630,7 +1630,40 @@
     ],
     "runtime_component_catalog": "spec/inventory/md-2026.1.237-components.json",
     "runtime_component_observations": 356,
-    "combined_menu_component_observations": 949
+    "combined_menu_component_observations": 949,
+    "reference_authoring_scenarios_completed_note": "A normalized count of completed authoring scenarios has not been defined. Zero would incorrectly imply no executed bounded authoring outcomes. The explicit cases below are partial observation scopes, not completed broad workflow contracts or verified parity; completed_reference_workflow_contracts remains zero and the full product denominator remains unknown.",
+    "bounded_observed_cases": [
+      {
+        "case_id": "REF-PAT-003-RECTANGLE-001",
+        "path": "spec/observations/REF-PAT-003-RECTANGLE-001-pd20.json",
+        "scope": "Original numeric rectangle creation, one-step history, document reopen and independent OBJ bounds; broader constructor options, cancellation and limits remain open."
+      },
+      {
+        "case_id": "REF-PAT-011-RESOLUTION-001",
+        "path": "spec/observations/REF-PAT-011-RESOLUTION-001-pd20-pd10.json",
+        "scope": "Original unsimulated/unsewn rectangle 20-to-10 mm resolution edit, history, mesh/boundary export and delayed process restart/reopen; sewn/deformed/cached state and general limits remain open."
+      },
+      {
+        "case_id": "REF-SEW-002-FREE-PARTIAL-001",
+        "path": "spec/observations/REF-SEW-002-FREE-PARTIAL-001.json",
+        "scope": "Original curvature gesture/history and a 100 mm first-side preview only; this case did not complete a seam and its Escape attempt remains unresolved."
+      },
+      {
+        "case_id": "REF-SEW-001-WHOLE-001",
+        "path": "spec/observations/REF-SEW-001-WHOLE-001.json",
+        "scope": "One original whole-edge visible pair, Undo/Redo and same-process document reopen after interrupted/possibly partial input; no clean pairing-driver pass or independent continuous correspondence."
+      },
+      {
+        "case_id": "REF-SEW-002-PAIR-002",
+        "path": "spec/observations/REF-SEW-002-PAIR-002.json",
+        "scope": "Two numeric 100 mm sides, completed original partial pair, Undo/Redo and same-process document reopen; retain input/capture/warning qualifications and unmeasured continuous geometry."
+      },
+      {
+        "case_id": "REF-SEW-002-REVERSE-003",
+        "path": "spec/observations/REF-SEW-002-REVERSE-003.json",
+        "scope": "One explicit nested Edit-menu reversal changes categorical dashed endpoint guides with unchanged 100.0 intervals, Undo/Redo and same-process document reopen; no independent continuous mapping or simulation."
+      }
+    ]
   },
   "known_contradictions": [
     {
