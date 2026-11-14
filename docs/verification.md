@@ -79,6 +79,35 @@ contrasting fabric mesh/timestep refinement; animated cache invalidation;
 interrupted save, missing assets and malformed/unsupported inputs; independent
 all-advertised export attributes; and representative responsiveness/performance.
 
+### Shutdown and recovery boundary
+
+The preliminary curve-candidate probe found that macOS Cmd+Q quit a dirty
+untitled panel without the window-close warning; see
+[issue #18](https://github.com/thematheusmello/weftforge/issues/18). The retained
+`1ed6d18d…` executable did not provide last-second shutdown retention. The pinned
+winit 0.30.13 application-termination path emits `LoopExiting`, while window close
+emits `CloseRequested`. eframe 0.35.0 calls `App::on_exit` on application
+termination; its exposed viewport `CancelClose` cannot cancel that global Quit.
+The window-close guard must not be described as a universal unsaved-quit prompt.
+
+The follow-up uses `on_exit` to commit valid pending numeric drafts, finish any
+older autosave writer, then synchronously retain the latest dirty authoritative
+document. Saved projects use a `.autosave` sidecar; untitled projects use the
+operating-system recovery directory. If that destination fails, one fresh
+`Exit-…weftforge.autosave` path in the recovery directory is attempted. Recovery
+requires explicit opening of a copy; the primary is never saved by shutdown.
+Invalid drafts retain the last valid construction. Clean exit and explicit
+Discard do not write a new latest-state snapshot; older autosaves remain.
+Exhausted recovery destinations produce a native error and stderr report, but
+global Quit is already in progress and cannot be canceled. Forced termination
+and storage failure are not covered by a successful-shutdown guarantee.
+
+Focused implementation checks load retained files and recover them exactly after
+last-second curve/grain edits, a pending older writer and valid drafts. They also
+check primary-byte preservation, explicit discard, clean exit, unique fallback,
+invalid drafts and all-destination failure. Actual macOS Cmd+Q/relaunch/recovery
+acceptance on the integrated candidate remains pending.
+
 ## Host and performance scope
 
 Initial host: Apple M3 Max, 16 CPU cores, 40 GPU cores, 48 GiB RAM, macOS 27.2

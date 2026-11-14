@@ -179,3 +179,16 @@ are stale after these relevant source changes. Run the full native curve/history
 refinement/save/reopen and last-second quit/recovery scenarios on the combined
 identified candidate after all source checks pass. Then publish qualified new
 reports. Do not label the aborted preliminary probe a complete workflow.
+
+Shutdown retention fix3014a6e is integrated locally: App::on_exit commits valid
+drafts, drains an older autosave writer, then synchronously retains the current
+dirty construction as explicit recovery without saving primary. GlobalmacOSQuit
+remains uncancellable through the pinned APIs. Focused lifecycle tests passed;
+combined native last-second Quit/relaunch/recovery acceptance is still pending.
+The same native saver now refuses existing nonregular output and recovery
+destinations; issue19 includes the reproduced dangling-link defect.
+
+At00:15UTC the account holder replied that they will sign in and activate the
+reference trial. This is intent, not confirmation of completion or entitlement.
+Avoid account-UI capture or native focus changes during that action; continue
+headless checks and wait for a ready signal before reference scenarios.
