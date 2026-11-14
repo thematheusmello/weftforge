@@ -521,6 +521,13 @@ fn command_schema() -> Value {
             ),
         ),
         (
+            "add_ellipse",
+            object(
+                json!({"name":text,"origin":xy,"width":number,"height":number}),
+                &["name", "origin", "width", "height"],
+            ),
+        ),
+        (
             "move_point",
             object(json!({"point":id,"position":xy}), &["point", "position"]),
         ),

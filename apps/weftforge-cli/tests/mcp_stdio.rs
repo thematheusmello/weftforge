@@ -314,7 +314,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
             .as_array()
             .unwrap()
             .len(),
-        21
+        22
     );
     success(&server.call("project_create", json!({"output":project_path})));
     let initial = server.call("project_inspect", json!({"path":project_path}));
@@ -445,7 +445,7 @@ fn sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constrai
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 21);
+    assert_eq!(variants.len(), 22);
     for name in [
         "add_sewing_group",
         "update_sewing_group",
@@ -680,6 +680,90 @@ fn stdio_advertises_and_executes_join_atomically_without_overwriting_failed_outp
         assert!(response.get("error").is_some() || response["result"]["isError"] == true);
         assert_eq!(fs::read(&output).unwrap(), valid);
     }
+    server.finish();
+}
+
+#[test]
+fn stdio_ellipse_discovery_creation_inspection_and_failure_preservation() {
+    let directory = Directory::new();
+    let input = directory.path("empty.weftforge");
+    let output = directory.path("ellipse.weftforge");
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let listed = server.request("tools/list", json!({}));
+    let schema = listed["result"]["tools"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|tool| tool["name"] == "project_execute")
+        .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|variant| variant["properties"]["type"]["const"] == "add_ellipse")
+        .unwrap();
+    assert_eq!(
+        schema["properties"]["data"]["required"],
+        json!(["name", "origin", "width", "height"])
+    );
+    assert_eq!(schema["properties"]["data"]["additionalProperties"], false);
+    success(&server.call("project_create", json!({"output":input})));
+    let original_input = fs::read(&input).unwrap();
+    let command = json!({"type":"add_ellipse","data":{"name":"Original MCP ellipse","origin":[-0.4,0.2],"width":0.8,"height":0.6}});
+    let response = server.call(
+        "project_execute",
+        json!({"input":input,"output":output,"commands":[command]}),
+    );
+    assert_eq!(success(&response)["revision"], 1);
+    let saved = Project::load(&output).unwrap();
+    assert_eq!(
+        saved.piece_bounds(saved.pieces[0].id).unwrap(),
+        [[-0.4, 0.2], [0.4, 0.8]]
+    );
+    assert!(saved.curves.iter().all(|c| c.controls.is_some()));
+    let inspected = server.call("project_inspect", json!({"path":output}));
+    assert_eq!(
+        success(&inspected)["project"],
+        serde_json::to_value(&saved).unwrap()
+    );
+    success(&server.call(
+        "project_execute",
+        json!({"input":output,"output":output,"commands":[command]}),
+    ));
+    let previous_output = fs::read(&output).unwrap();
+    let previous_recovery = fs::read(recovery_path(&output)).unwrap();
+    for data in [
+        json!({"name":"x","origin":[0,0],"width":0,"height":0.4}),
+        json!({"name":"x","origin":[0,0],"width":-1,"height":0.4}),
+        json!({"name":"x","origin":[999.9,0],"width":0.3,"height":0.4}),
+        json!({"name":"x","origin":[0,0],"width":0.3,"height":0.4,"extra":1}),
+        json!({"name":"x","origin":[0,0],"width":"NaN","height":0.4}),
+        json!({"name":"x","origin":[0,0],"width":0.3}),
+    ] {
+        let result = server.call(
+            "project_execute",
+            json!({"input":input,"output":output,"commands":[{"type":"add_ellipse","data":data}]}),
+        );
+        assert!(
+            result.get("error").is_some() || result["result"]["isError"] == true,
+            "{result}"
+        );
+        assert_eq!(fs::read(&input).unwrap(), original_input);
+        assert_eq!(fs::read(&output).unwrap(), previous_output);
+        assert_eq!(fs::read(recovery_path(&output)).unwrap(), previous_recovery);
+    }
+    let malformed = directory.path("invalid.weftforge");
+    fs::write(
+        &malformed,
+        r#"{"format":"weftforge","version":99,"project":{}}"#,
+    )
+    .unwrap();
+    tool_error(&server.call(
+        "project_execute",
+        json!({"input":malformed,"output":output,"commands":[command]}),
+    ));
+    assert_eq!(fs::read(&output).unwrap(), previous_output);
+    assert_eq!(fs::read(recovery_path(&output)).unwrap(), previous_recovery);
     server.finish();
 }
 

@@ -15,6 +15,8 @@ is the minimum X/Y corner of the bounding box; the opposite corner is
 `1e-6` metres. Authored endpoints and absolute controls must satisfy the existing
 finite coordinate limit of ±1000 metres. Names, IDs, project object counts,
 contour degeneracy and boundary sampling retain the existing validation.
+The native W/H fields retain their existing 0.01–5 metre control range; CLI/MCP
+commands use the core limits above.
 
 Let `rx = width/2`, `ry = height/2`, `cx = origin.x + rx`,
 `cy = origin.y + ry`, and `k = 4*(sqrt(2)-1)/3`. The ordered boundary starts at
