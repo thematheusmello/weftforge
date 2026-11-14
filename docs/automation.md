@@ -134,8 +134,10 @@ Tool validation, load, execution, mesh, and write failures return `isError: true
 with an error string in both text and structured content. The server remains
 usable after ordinary failures. An invalid command or partially failing command
 array writes nothing. Invalid/unsupported native input is never silently
-recovered. Existing invalid project output is retained by the native saver;
-successful replacement of a valid native output retains its previous bytes in
+recovered. Native saves retain existing invalid project output. Existing
+symbolic links, including dangling links, and other nonregular destinations
+are refused before staging or changing recovery files.
+Successful replacement of a valid native output retains its previous bytes in
 `<output>.recovery`. Filesystem durability has the limits described in
 [native saves](file-formats.md#validation-and-saves).
 

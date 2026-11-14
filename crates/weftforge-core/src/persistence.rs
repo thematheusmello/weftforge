@@ -167,12 +167,19 @@ impl Project {
     fn save_impl(&self, path: &Path, interrupt_before_replace: bool) -> Result<()> {
         let bytes = self.to_json()?;
         ensure(path.file_name().is_some(), "Save path needs a filename")?;
+        let exists = match fs::symlink_metadata(path) {
+            Ok(metadata) => {
+                ensure(
+                    metadata.file_type().is_file(),
+                    "Refusing to replace a non-regular project file",
+                )?;
+                true
+            }
+            Err(error) if error.kind() == std::io::ErrorKind::NotFound => false,
+            Err(error) => return Err(error.into()),
+        };
         let staged = StagedFile::write(path, &bytes)?;
-        if path.try_exists()? {
-            ensure(
-                fs::symlink_metadata(path)?.file_type().is_file(),
-                "Refusing to replace a non-regular project file",
-            )?;
+        if exists {
             let previous = read_bounded(path)?;
             Self::from_json(&previous).map_err(|error| {
                 Error(format!(
@@ -399,6 +406,61 @@ impl Drop for StagedFile {
 mod tests {
     use super::*;
     use crate::{Command, Editor};
+
+    #[test]
+    fn saves_refuse_nonregular_destinations_without_changing_targets_or_recovery() {
+        let directory = std::env::temp_dir().join(format!(
+            "weftforge-save-destinations-{}-{}",
+            std::process::id(),
+            TEMP_ID.fetch_add(1, Ordering::Relaxed)
+        ));
+        fs::create_dir(&directory).unwrap();
+        let primary = directory.join("primary.weftforge");
+        let mut project = Project::default();
+        project.save(&primary).unwrap();
+        let original = fs::read(&primary).unwrap();
+        project.resolution = 0.04;
+        let folder = directory.join("folder.weftforge");
+        fs::create_dir(&folder).unwrap();
+        fs::write(folder.join("retained"), b"folder contents").unwrap();
+        fs::write(recovery_path(&folder), b"prior folder recovery").unwrap();
+        assert!(project.save(&folder).is_err());
+        assert_eq!(
+            fs::read(folder.join("retained")).unwrap(),
+            b"folder contents"
+        );
+        assert_eq!(
+            fs::read(recovery_path(&folder)).unwrap(),
+            b"prior folder recovery"
+        );
+        #[cfg(unix)]
+        for (name, target) in [
+            ("valid.weftforge", primary.clone()),
+            ("dangling.weftforge", directory.join("absent")),
+        ] {
+            let output = directory.join(name);
+            std::os::unix::fs::symlink(&target, &output).unwrap();
+            fs::write(recovery_path(&output), b"prior symlink recovery").unwrap();
+            assert!(project.save(&output).is_err(), "{name}");
+            assert!(
+                fs::symlink_metadata(&output)
+                    .unwrap()
+                    .file_type()
+                    .is_symlink()
+            );
+            assert_eq!(fs::read_link(&output).unwrap(), target);
+            assert_eq!(fs::read(&primary).unwrap(), original);
+            assert_eq!(
+                fs::read(recovery_path(&output)).unwrap(),
+                b"prior symlink recovery"
+            );
+        }
+        assert!(!directory.join("absent").exists());
+        project.save(&primary).unwrap();
+        assert_eq!(Project::load(&primary).unwrap(), project);
+        assert_eq!(fs::read(recovery_path(&primary)).unwrap(), original);
+        fs::remove_dir_all(directory).unwrap();
+    }
 
     #[test]
     fn exports_preserve_native_projects_and_aliases_at_any_extension() {

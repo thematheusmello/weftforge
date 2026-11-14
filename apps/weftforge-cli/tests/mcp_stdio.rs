@@ -444,6 +444,42 @@ fn stdio_errors_preserve_input_output_and_recovery_and_allow_retry() {
     assert_eq!(fs::read(&invalid_target).unwrap(), b"user data");
     let missing_parent = directory.path("missing/out.weftforge");
     tool_error(&server.call("project_execute", json!({"input":input,"output":missing_parent,"commands":[Command::SetResolution { metres: 0.04 }]})));
+    let folder = directory.path("folder.weftforge");
+    fs::create_dir(&folder).unwrap();
+    fs::write(folder.join("retained"), b"folder contents").unwrap();
+    fs::write(recovery_path(&folder), &previous_recovery).unwrap();
+    tool_error(&server.call(
+        "project_execute",
+        json!({"input":input,"output":folder,"commands":[Command::SetResolution { metres: 0.04 }]}),
+    ));
+    assert_eq!(
+        fs::read(folder.join("retained")).unwrap(),
+        b"folder contents"
+    );
+    assert_eq!(fs::read(recovery_path(&folder)).unwrap(), previous_recovery);
+    #[cfg(unix)]
+    for (name, target) in [
+        ("valid.weftforge", input.clone()),
+        ("dangling.weftforge", directory.path("absent")),
+    ] {
+        let destination = directory.path(name);
+        std::os::unix::fs::symlink(&target, &destination).unwrap();
+        fs::write(recovery_path(&destination), &previous_recovery).unwrap();
+        tool_error(&server.call("project_execute", json!({"input":input,"output":destination,"commands":[Command::SetResolution { metres: 0.04 }]})));
+        assert!(
+            fs::symlink_metadata(&destination)
+                .unwrap()
+                .file_type()
+                .is_symlink()
+        );
+        assert_eq!(fs::read_link(&destination).unwrap(), target);
+        assert_eq!(fs::read(&input).unwrap(), original);
+        assert_eq!(
+            fs::read(recovery_path(&destination)).unwrap(),
+            previous_recovery
+        );
+    }
+    assert!(!directory.path("absent").exists());
     tool_error(&server.call(
         "project_export_obj",
         json!({"input":input,"output":directory.0}),
