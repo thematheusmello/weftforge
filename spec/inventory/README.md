@@ -15,16 +15,20 @@ services make them unsuitable as a product-feature denominator. `Edit > Context
 Menu` lists commands but does not verify a canvas right-click menu. Checked
 states, shortcuts, ranges and behavior stay unknown until separately observed.
 
-[Component catalog](md-2026.1.237-components.json) contains 166 observed toolbar,
+[Component catalog](md-2026.1.237-components.json) contains 304 observed toolbar,
 panel, tab, property and dialog entries. The original 61 IDs remain unchanged.
 The next 105 entries describe already captured Simulation Properties, selected
 original-pattern fields, the rectangle constructor, OBJ export options and Fit
 Properties. Their source records are pinned by hash in `observation_sources`.
 The [reviewed surface notes](../features/UI-property-surfaces-20261114.md) explain
-the capture context and remaining gaps. Ranges and most edit/error behavior
-remain unknown.
+that capture context. A further 138 records cover the
+[read-only preference pass](../features/UI-preferences-runtime-20261114.md),
+including actual unit/display settings and configured recovery controls.
+Ranges and most edit/error behavior remain unknown. The
+[component outline](md-2026.1.237-components.txt) is a compact index of the same
+records.
 
-The combined current inventory has 755 records: 589 menu nodes and 166 component
+The combined current inventory has 893 records: 589 menu nodes and 304 component
 observations. This is an expanding observation index, not a complete product
 feature count. Adding a field does not complete its behavior contract.
 

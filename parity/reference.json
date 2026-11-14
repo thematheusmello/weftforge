@@ -52,28 +52,29 @@
   "settings": {
     "units": {
       "observed_control_unit": "mm",
-      "scope": "Grid Properties: 2D grid distance and 2D/3D arrow movement labels",
-      "app_unit_preference": null,
+      "scope": "Actual Preferences > User Interface Unit System plus observed millimetre grid/constructor/particle-distance/export controls",
+      "app_unit_preference": "Millimeter",
       "evidence_id": "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5",
-      "limitation": "Millimetre labels in these controls do not establish every import/export or global unit setting.",
+      "limitation": "Unit System and observed control scopes do not establish every import/export override or unit parsing case.",
       "additional_observed_scopes": [
         "Rectangle constructor Width/Height mm",
         "OBJ export mm (Default) at 100%",
         "Pattern Particle Distance (mm): observed 20 to 10 edit and persisted 10 after process reopen"
-      ]
+      ],
+      "app_unit_preference_evidence_id": "CUA-PREF-USER-INTERFACE-20261114"
     },
     "locale": {
       "ui_language_observed": "English interface labels",
       "selected_language_setting": null,
       "numeric_locale": null,
-      "limitation": "Language menu lists English, but its checked state was not exposed; locale preferences not inspected.",
-      "numeric_decimal_separator_observed": "."
+      "limitation": "English UI labels, decimal point display and Decimal Places 1 observed. Checked Language setting and regional numeric parsing remain unobserved. Keyboard highlight in an opened language submenu is not a checked setting.",
+      "numeric_decimal_separator_observed": ".",
+      "numeric_display_decimal_places": 1,
+      "display_preferences_evidence_id": "CUA-PREF-USER-INTERFACE-20261114"
     },
     "preferences": {
       "inspected_pages": [
-        "Graphic Options"
-      ],
-      "uninspected_pages": [
+        "Graphic Options",
         "View Controls",
         "Shortcuts",
         "User Interface",
@@ -85,7 +86,18 @@
         "CLO API",
         "CLO-SET"
       ],
-      "navigation_gap": "Custom preference navigation returned AXError.notImplemented in CUA; no settings changed."
+      "uninspected_pages": [],
+      "navigation_gap": "Read-only category navigation resolved by ordinary exact-process activation, exposed Preferences Raise and focused-list keyboard navigation. Earlier CUA coordinate/AX failures retained. Foreground modal REA selection still rejected.",
+      "changed_by_investigator": false,
+      "remaining_gaps": [
+        "Preference edits, ranges, invalid input, resets and persistence",
+        "Collapsed shortcut descendants and effective active key bindings",
+        "Unseen font/display/appearance subfields and alternative dropdown options",
+        "Selected Language and regional numeric parser",
+        "Actual autosave/retention/recovery behavior",
+        "Plugin/PLM/account-switch behavior"
+      ],
+      "scope": "Presence and current values only; inspected page does not mean complete behavior."
     },
     "graphics": {
       "antialiasing": "x4",
@@ -96,7 +108,8 @@
         4096
       ],
       "evidence_id": "ev_e9a1b227223ca8f4e3efbf93974d4f1229a21c372b8af7aa8e515418a3c2c6c7",
-      "changed_by_investigator": false
+      "changed_by_investigator": false,
+      "reobserved_after_restart_evidence_id": "ev_3db501984c845df74276abad6e8ccfccc6deed308c385adc8fba08ac4c577c27"
     },
     "license_entitlement": "workspace access observed; license type/expiry not inspected",
     "grid_properties": {
@@ -111,6 +124,54 @@
       "grid_line_brightness": 80,
       "evidence_id": "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5",
       "changed_by_investigator": false
+    },
+    "view_controls": {
+      "preset": "Magic Mouse",
+      "axis_constraint_key": "Shift",
+      "smart_panning": true,
+      "auto_focus": true,
+      "switch_focus_back_when_unselected": true,
+      "default_y_axis_position": 0,
+      "default_x_axis_angle": 0,
+      "default_camera_distance_for_shortcuts": 3000,
+      "evidence_id": "CUA-PREF-VIEW-CONTROLS-20261114",
+      "limitation": "Displayed preferences, not a current camera pose or executed gesture. Unprinted field units remain unknown."
+    },
+    "construction_defaults": {
+      "mesh": "Triangle",
+      "gizmo": "Unified Gizmo",
+      "arrangement_shape_type": "Curved",
+      "arrangement_point_size_displayed": 18,
+      "sync_fold_arrangement_angle": true,
+      "default_particle_distance_displayed": 20,
+      "automatically_offset_2d_patterns_when_cut": true,
+      "evidence_ids": [
+        "CUA-PREF-3D-20261114",
+        "CUA-PREF-2D-20261114"
+      ],
+      "limitation": "Observed configured defaults, not universal constants or proof of their effects."
+    },
+    "snap_preferences": {
+      "smart_guide": true,
+      "snap_to_pattern": true,
+      "snap_to_grid": false,
+      "evidence_id": "CUA-PREF-SNAP-20261114",
+      "changed_by_investigator": false
+    },
+    "autosave_preferences": {
+      "interval_minutes": 10,
+      "max_file_count": 5,
+      "retention_days": 5,
+      "file_type": "Project (ZPRJ)",
+      "evidence_id": "CUA-PREF-DEFAULT-FILES-20261114",
+      "limitation": "Read-only configuration; timing, retention deletion and recovery not executed."
+    },
+    "default_simulation_property_path": {
+      "displayed_path_exists": false,
+      "private_existence_record_sha256": "a144ab7d15d9b1190a45dccd64532105ec7f4f120b778b4d152df0a3f2ae928e",
+      "evidence_id": "CUA-PREF-DEFAULT-FILES-20261114",
+      "changed_by_investigator": false,
+      "limitation": "Displayed path refers to the prior OS translocation and is absent at metadata check. No path/preset contents published or read; settings actually loaded and startup cause are not inferred."
     }
   },
   "reference_observation_status": "workspace_accessible",
@@ -409,6 +470,127 @@
       "limitations": [
         "Baseline remains provisional; full PAT-011 and WeftForge comparison incomplete.",
         "Black startup/AX failures retained as history; final whole-window AX capture has one node attribute gap."
+      ]
+    },
+    {
+      "id": "CUA-PREF-VIEW-CONTROLS-20261114",
+      "kind": "native-ui-read-only-preference-observation",
+      "sha256": "bb8bb27e25d224eab64d00f38bc710d5a41a2b336a0db5eed35ad4442d8c268a",
+      "retention": "complete private native transition/viewport record; account, paths and palette excluded from public review",
+      "observed": "Read-only Preferences > View Controls; category navigation only, no preference value changed.",
+      "limitations": [
+        "Current configuration read only; values, ranges, alternative choices and effects untested.",
+        "Native page records are transition diffs and viewport images; collapsed/unseen sections remain explicit gaps."
+      ]
+    },
+    {
+      "id": "CUA-PREF-SHORTCUTS-20261114",
+      "kind": "native-ui-read-only-preference-observation",
+      "sha256": "1304e4af249bf1deaf883a76d6f4e3b5ad2c3d986040f361a683c7b0f1d212a8",
+      "retention": "complete private native transition/viewport record; account, paths and palette excluded from public review",
+      "observed": "Read-only Preferences > Shortcuts; category navigation only, no preference value changed.",
+      "limitations": [
+        "Current configuration read only; values, ranges, alternative choices and effects untested.",
+        "Native page records are transition diffs and viewport images; collapsed/unseen sections remain explicit gaps."
+      ]
+    },
+    {
+      "id": "CUA-PREF-USER-INTERFACE-20261114",
+      "kind": "native-ui-read-only-preference-observation",
+      "sha256": "d75d19ab8cb8b2ab7d314e689377f61894f8e28be6979d3e2043b8abf699c386",
+      "retention": "complete private native transition/viewport record; account, paths and palette excluded from public review",
+      "observed": "Read-only Preferences > User Interface; category navigation only, no preference value changed.",
+      "limitations": [
+        "Current configuration read only; values, ranges, alternative choices and effects untested.",
+        "Native page records are transition diffs and viewport images; collapsed/unseen sections remain explicit gaps."
+      ]
+    },
+    {
+      "id": "CUA-PREF-3D-20261114",
+      "kind": "native-ui-read-only-preference-observation",
+      "sha256": "4a5a806cfee0721d8d88be59d991f3f324b39f381bdd8c774ec59893479f5ba9",
+      "retention": "complete private native transition/viewport record; account, paths and palette excluded from public review",
+      "observed": "Read-only Preferences > 3D; category navigation only, no preference value changed.",
+      "limitations": [
+        "Current configuration read only; values, ranges, alternative choices and effects untested.",
+        "Native page records are transition diffs and viewport images; collapsed/unseen sections remain explicit gaps."
+      ]
+    },
+    {
+      "id": "CUA-PREF-2D-20261114",
+      "kind": "native-ui-read-only-preference-observation",
+      "sha256": "51a8dd590a628008c1b0bc3e58117baf6e9787a63ede795b0040222830b2682e",
+      "retention": "complete private native transition/viewport record; account, paths and palette excluded from public review",
+      "observed": "Read-only Preferences > 2D; category navigation only, no preference value changed.",
+      "limitations": [
+        "Current configuration read only; values, ranges, alternative choices and effects untested.",
+        "Native page records are transition diffs and viewport images; collapsed/unseen sections remain explicit gaps."
+      ]
+    },
+    {
+      "id": "CUA-PREF-OTHER-20261114",
+      "kind": "native-ui-read-only-preference-observation",
+      "sha256": "a0b1ac4829011bf7aa4cb31a63ecc8a5acf73d8cc90142546b4696df68639566",
+      "retention": "complete private native transition/viewport record; account, paths and palette excluded from public review",
+      "observed": "Read-only Preferences > Other; category navigation only, no preference value changed.",
+      "limitations": [
+        "Current configuration read only; values, ranges, alternative choices and effects untested.",
+        "Native page records are transition diffs and viewport images; collapsed/unseen sections remain explicit gaps."
+      ]
+    },
+    {
+      "id": "CUA-PREF-SNAP-20261114",
+      "kind": "native-ui-read-only-preference-observation",
+      "sha256": "f9a3d089fabc0d71b405e3e71b3b89f36e000ac864827017212e7b126570a23c",
+      "retention": "complete private native transition/viewport record; account, paths and palette excluded from public review",
+      "observed": "Read-only Preferences > Snap; category navigation only, no preference value changed.",
+      "limitations": [
+        "Current configuration read only; values, ranges, alternative choices and effects untested.",
+        "Native page records are transition diffs and viewport images; collapsed/unseen sections remain explicit gaps."
+      ]
+    },
+    {
+      "id": "CUA-PREF-DEFAULT-FILES-20261114",
+      "kind": "native-ui-read-only-preference-observation",
+      "sha256": "745eaaa5a6aef785762eace0328b18359c820ee21eaa6c48c149973afc71bb31",
+      "retention": "complete private native transition/viewport record; account, paths and palette excluded from public review",
+      "observed": "Read-only Preferences > Default Files; category navigation only, no preference value changed.",
+      "limitations": [
+        "Current configuration read only; values, ranges, alternative choices and effects untested.",
+        "Native page records are transition diffs and viewport images; collapsed/unseen sections remain explicit gaps."
+      ]
+    },
+    {
+      "id": "CUA-PREF-CLO-API-20261114",
+      "kind": "native-ui-read-only-preference-observation",
+      "sha256": "71a84c9acb8cc6d1259eb96aab4614361d338696444eb775d1c0263355b27d98",
+      "retention": "complete private native transition/viewport record; account, paths and palette excluded from public review",
+      "observed": "Read-only Preferences > CLO API; category navigation only, no preference value changed.",
+      "limitations": [
+        "Current configuration read only; values, ranges, alternative choices and effects untested.",
+        "Native page records are transition diffs and viewport images; collapsed/unseen sections remain explicit gaps."
+      ]
+    },
+    {
+      "id": "CUA-PREF-CLO-SET-20261114",
+      "kind": "native-ui-read-only-preference-observation",
+      "sha256": "b9f0f3d433d3a2facf3c80aaacbd86570df1ac956ad00058dc936eaa44346fe5",
+      "retention": "complete private native transition/viewport record; account, paths and palette excluded from public review",
+      "observed": "Read-only Preferences > CLO-SET; category navigation only, no preference value changed.",
+      "limitations": [
+        "Current configuration read only; values, ranges, alternative choices and effects untested.",
+        "Native page records are transition diffs and viewport images; collapsed/unseen sections remain explicit gaps."
+      ]
+    },
+    {
+      "id": "REA-PREF-GRAPHICS-REOBSERVED-20261114",
+      "kind": "native-ui-read-only-preference-observation",
+      "sha256": "f278e18f83e979b1cd09fd8ce8a37a47e621f724b680f9e4089cd6d51dfc385d",
+      "retention": "complete private native transition/viewport record; account, paths and palette excluded from public review",
+      "observed": "Graphic Options at the start of the post-restart preference pass; no values changed.",
+      "limitations": [
+        "Current configuration read only; values, ranges, alternative choices and effects untested.",
+        "Native page records are transition diffs and viewport images; collapsed/unseen sections remain explicit gaps."
       ]
     }
   ],
@@ -898,7 +1080,10 @@
       "spec/observations/REF-PAT-003-RECTANGLE-001-pd20.json",
       "spec/features/PAT-011-runtime-20261114.md",
       "spec/observations/REF-PAT-011-RESOLUTION-001-pd20-pd10.json"
-    ]
+    ],
+    "runtime_component_catalog": "spec/inventory/md-2026.1.237-components.json",
+    "runtime_component_observations": 304,
+    "combined_menu_component_observations": 893
   },
   "known_contradictions": [
     {
@@ -983,5 +1168,5 @@
       "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e"
     }
   ],
-  "baseline_change_note": "Revision 1 retained and not frozen: new access/build/graphics observations append evidence; required units, numeric locale, simulation and workflow settings remain incomplete."
+  "baseline_change_note": "Revision 1 retained and not frozen: new read-only unit, configured preference and post-restart graphics observations append evidence without changing settings. Regional numeric parsing and other qualifying conditions remain incomplete; a missing displayed default simulation-property path is recorded without causal inference."
 }

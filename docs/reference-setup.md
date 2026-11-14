@@ -28,14 +28,19 @@ workflow behavior or reference parity.
 | Signing | CLO Virtual Fashion Inc., team `LM3T6Q78ZL` |
 | Gatekeeper assessment | Accepted, Notarized Developer ID |
 | Host | macOS 27.2, build 26B123, arm64 |
-| Baseline | Provisional; full UI build and Graphic Options observed; units, numeric locale and simulation settings incomplete |
+| Baseline | Provisional; build, Unit System and configured preferences observed; numeric locale and other qualifying conditions incomplete |
 
 The workspace capture independently confirms the full build `r58920`, rather than
 relying only on the download listing. The Graphic Options page currently exposes
 x4 antialiasing, Alpha Blending, Naive Ordered transparency rendering, and
-4096 × 4096 maximum image resolution. No preference was changed. English UI labels
-are observed; selected language, numeric locale, units and simulation settings
-remain incomplete. The baseline stays unfrozen at revision 1.
+4096 × 4096 maximum image resolution. The
+[read-only preference pass](../spec/features/UI-preferences-runtime-20261114.md)
+also observes Unit System Millimeter, Decimal Places 1, Magic Mouse controls,
+construction/snap defaults and autosave configuration. No preference was changed.
+English UI labels are observed; selected language and regional numeric parsing
+remain unknown. A displayed default simulation-property path is absent at a
+metadata check; settings actually loaded are not inferred. The baseline stays
+unfrozen at revision 1.
 
 The [observed menu catalog](../spec/inventory/md-2026.1.237-main-menus.json) records
 17 main menus and 572 nonroot AX entries. These are presence observations, with
