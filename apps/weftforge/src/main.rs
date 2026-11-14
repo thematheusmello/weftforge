@@ -344,10 +344,6 @@ impl Studio {
         command: Command,
         focused: Option<egui::Id>,
     ) {
-        let frame = ctx.cumulative_frame_nr();
-        let current = ctx
-            .memory(|memory| memory.focused())
-            .filter(|&id| ctx.data_mut(|data| data.get_temp::<String>(id)).is_some());
         let mut commands = self
             .draft
             .as_ref()
@@ -359,29 +355,39 @@ impl Studio {
         } else {
             Command::Transaction(commands)
         };
-        if self.apply_command(command) {
-            for id in focused.into_iter().chain(current) {
-                // Numeric caches must not replay values from before the action.
-                ctx.data_mut(|data| data.remove::<String>(id));
-                ctx.memory_mut(|memory| memory.surrender_focus(id));
-            }
-            ctx.data_mut(|data| {
+        let succeeded = self.apply_command(command);
+        finish_numeric_action(ctx, focused, succeeded);
+    }
+    fn inspector_focus(&self, ctx: &egui::Context) -> Option<egui::Id> {
+        let key = egui::Id::new("inspector-input-focus");
+        let identity = (
+            self.editor.project.revision,
+            self.selected,
+            self.selected_curve,
+        );
+        if let Some(id) = numeric_focus(ctx) {
+            // Keep the edit text across a button's separate press/release frames.
+            ctx.data_mut(|data| data.insert_temp(key, (identity, id)));
+        }
+        ctx.data_mut(|data| data.get_temp::<((u64, Option<Id>, Option<Id>), egui::Id)>(key))
+            .filter(|(stamp, _)| *stamp == identity)
+            .map(|(_, id)| id)
+    }
+    fn export_button(&self, ui: &mut egui::Ui, format: ExportFormat, label: &str) -> bool {
+        let focused = self.inspector_focus(ui.ctx());
+        let response = ui.button(label);
+        let clicked = response.clicked();
+        if response.is_pointer_button_down_on() || clicked {
+            finish_numeric_action(ui.ctx(), focused, false);
+            let frame = ui.ctx().cumulative_frame_nr();
+            ui.ctx().data_mut(|data| {
                 data.insert_temp(
-                    egui::Id::new("inspector-action-blur"),
-                    (frame, [focused, current]),
+                    egui::Id::new("export-request"),
+                    (frame, clicked.then_some(format), focused),
                 )
             });
-        } else if let Some(id) = current.or(focused) {
-            ctx.memory_mut(|memory| memory.request_focus(id));
-            if focused.is_some() && current.is_some() && focused != current {
-                ctx.data_mut(|data| {
-                    data.insert_temp(
-                        egui::Id::new("inspector-action-blur"),
-                        (frame, [focused, None]),
-                    )
-                });
-            }
         }
+        clicked
     }
     fn select(&mut self, selected: Option<Id>) {
         if (self.selected != selected || self.selected_curve.is_some()) && self.commit_draft() {
@@ -620,49 +626,82 @@ impl Studio {
             }
         }
     }
-    fn export(&mut self, format: ExportFormat) {
-        if !self.commit_draft() {
-            return;
-        }
-        let ext = match format {
-            ExportFormat::Obj => "obj",
-            ExportFormat::Svg => "svg",
-            ExportFormat::Dxf => "dxf",
-        };
-        if let Some(path) = rfd::FileDialog::new()
-            .add_filter(ext, &[ext])
-            .set_file_name(format!("garment.{ext}"))
-            .save_file()
-        {
-            if let Err(error) = export_path_guard(self.path.as_deref(), &path) {
-                self.message = error;
-                return;
-            }
-            let result = if matches!(format, ExportFormat::Svg) {
-                self.editor.project.export_svg(&path)
-            } else if matches!(format, ExportFormat::Dxf) {
-                self.editor.project.export_dxf(&path)
-            } else if let Some(mesh) = &self.mesh {
-                if mesh.doc_revision != self.editor.project.revision {
-                    self.message = "The rest mesh is rebuilding; export when it is ready.".into();
-                    return;
-                }
-                let mut output = (**mesh).clone();
-                if let Some(state) = &self.cloth {
-                    output.positions = state.positions().to_vec();
-                }
-                output.export_obj(&path)
+    fn export(&mut self, ctx: &egui::Context, format: ExportFormat, focused: Option<egui::Id>) {
+        let path = choose_export_path(ctx, format);
+        self.export_to_path(ctx, format, path.as_deref(), focused);
+    }
+    fn export_to_path(
+        &mut self,
+        ctx: &egui::Context,
+        format: ExportFormat,
+        path: Option<&Path>,
+        focused: Option<egui::Id>,
+    ) -> bool {
+        let result = (|| -> Result<bool, String> {
+            let Some(path) = path else {
+                return Ok(false);
+            };
+            export_path_guard(self.path.as_deref(), path)?;
+            let commands = self
+                .draft
+                .as_ref()
+                .filter(|draft| draft.revision == self.editor.project.revision)
+                .map_or_else(Vec::new, |draft| draft.commands(&self.editor.project));
+            let candidate = if commands.is_empty() {
+                None
             } else {
-                self.message = "Create a pattern first.".into();
-                return;
+                let mut editor = self.editor.clone();
+                editor
+                    .execute(Command::Transaction(commands))
+                    .map_err(|error| error.to_string())?;
+                Some(editor)
             };
-            self.message = match result {
-                Ok(()) if matches!(format, ExportFormat::Dxf) =>
-                    "Exported DXF pattern boundaries in millimetres; sewing and materials stay in .weftforge.".into(),
-                Ok(()) => format!("Exported {ext}; OBJ metres, SVG millimetres."),
-                Err(e) => e.to_string(),
-            };
-        }
+            let project = candidate
+                .as_ref()
+                .map_or(&self.editor.project, |editor| &editor.project);
+            match format {
+                ExportFormat::Svg => project.export_svg(path),
+                ExportFormat::Dxf => project.export_dxf(path),
+                ExportFormat::Obj => {
+                    if candidate.is_some() {
+                        return Err("Finish pending edits with Tab, wait for the rest mesh, then retry OBJ export. Pending edits were retained.".into());
+                    }
+                    let mesh = self.mesh.as_ref().ok_or("Create a pattern first.")?;
+                    if mesh.doc_revision != project.revision {
+                        return Err("The rest mesh is rebuilding; export when it is ready.".into());
+                    }
+                    let mut output = (**mesh).clone();
+                    if let Some(state) = &self.cloth {
+                        output.positions = state.positions().to_vec();
+                    }
+                    output.export_obj(path)
+                }
+            }.map_err(|error| error.to_string())?;
+            // The successful file replacement is the commit point for pending edits too.
+            if let Some(editor) = candidate {
+                self.editor = editor;
+                self.dirty = true;
+                self.rebuild();
+            } else {
+                self.draft = None;
+            }
+            Ok(true)
+        })();
+        let written = matches!(result, Ok(true));
+        let ids = finish_numeric_action(ctx, focused, written);
+        // A chooser or pointer press can report this same blur on the next frame.
+        let frame = ctx.cumulative_frame_nr();
+        ctx.data_mut(|data| data.insert_temp(egui::Id::new("inspector-action-blur"), (frame, ids)));
+        self.message = match result {
+            Ok(false) => "Export cancelled; pending edits retained.".into(),
+            Ok(true) => match format {
+                ExportFormat::Dxf => "Exported DXF pattern boundaries in millimetres; sewing and materials stay in .weftforge.".into(),
+                ExportFormat::Svg => "Exported SVG pattern boundaries in millimetres.".into(),
+                ExportFormat::Obj => "Exported OBJ in metres.".into(),
+            },
+            Err(error) => error,
+        };
+        written
     }
     fn history(&mut self, ctx: &egui::Context, redo: bool) {
         if !self.commit_draft() {
@@ -865,15 +904,9 @@ impl Studio {
                 self.refresh_recovery();
                 self.show_recovery = true;
             }
-            if ui.button("Export OBJ").clicked() {
-                self.export(ExportFormat::Obj);
-            }
-            if ui.button("Export SVG").clicked() {
-                self.export(ExportFormat::Svg);
-            }
-            if ui.button("Export DXF").clicked() {
-                self.export(ExportFormat::Dxf);
-            }
+            self.export_button(ui, ExportFormat::Obj, "Export OBJ");
+            self.export_button(ui, ExportFormat::Svg, "Export SVG");
+            self.export_button(ui, ExportFormat::Dxf, "Export DXF");
             if ui.button("Undo").clicked() {
                 self.history(ui.ctx(), false);
             }
@@ -962,28 +995,17 @@ impl Studio {
     fn inspector(&mut self, ui: &mut egui::Ui) {
         ui.heading("Construction");
         let mut commit = false;
-        let mut acting = false;
-        let focus_key = ui.make_persistent_id("inspector-input-focus");
-        let identity = (
-            self.editor.project.revision,
-            self.selected,
-            self.selected_curve,
-        );
-        if let Some(id) = ui.ctx().memory(|memory| memory.focused())
-            && ui
+        let mut acting = self.search
+            || ui
                 .ctx()
-                .data_mut(|data| data.get_temp::<String>(id))
-                .is_some()
-        {
-            // Keep numeric input across the press/release that activates an inspector action.
-            ui.ctx()
-                .data_mut(|data| data.insert_temp(focus_key, (identity, id)));
-        }
-        let action_focus = ui
-            .ctx()
-            .data_mut(|data| data.get_temp::<((u64, Option<Id>, Option<Id>), egui::Id)>(focus_key))
-            .filter(|(stamp, _)| *stamp == identity)
-            .map(|(_, id)| id);
+                .data_mut(|data| {
+                    data.get_temp::<(u64, Option<ExportFormat>, Option<egui::Id>)>(egui::Id::new(
+                        "export-request",
+                    ))
+                })
+                .is_some_and(|(frame, _, _)| frame == ui.ctx().cumulative_frame_nr());
+        let focus_key = egui::Id::new("inspector-input-focus");
+        let action_focus = self.inspector_focus(ui.ctx());
         egui::ScrollArea::vertical().id_salt("inspector").show(ui,|ui| {
             for piece in self.editor.project.pieces.clone() {
                 ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("piece-row",piece.id))),|ui| {
@@ -1755,9 +1777,16 @@ impl eframe::App for Studio {
                         "Rectangle",
                         "Sew edges",
                     ] {
-                        if label.to_lowercase().contains(&self.query.to_lowercase())
-                            && ui.button(label).clicked()
-                        {
+                        if !label.to_lowercase().contains(&self.query.to_lowercase()) {
+                            continue;
+                        }
+                        let clicked = match label {
+                            "Export OBJ" => self.export_button(ui, ExportFormat::Obj, label),
+                            "Export SVG" => self.export_button(ui, ExportFormat::Svg, label),
+                            "Export DXF" => self.export_button(ui, ExportFormat::Dxf, label),
+                            _ => ui.button(label).clicked(),
+                        };
+                        if clicked {
                             match label {
                                 "Save project" => self.save(false),
                                 "Open project" => self.choose_open(),
@@ -1765,9 +1794,7 @@ impl eframe::App for Studio {
                                     self.refresh_recovery();
                                     self.show_recovery = true;
                                 }
-                                "Export OBJ" => self.export(ExportFormat::Obj),
-                                "Export SVG" => self.export(ExportFormat::Svg),
-                                "Export DXF" => self.export(ExportFormat::Dxf),
+                                "Export OBJ" | "Export SVG" | "Export DXF" => {}
                                 "Undo" => self.history(&ctx, false),
                                 "Redo" => self.history(&ctx, true),
                                 "Reset simulation" => {
@@ -1790,7 +1817,54 @@ impl eframe::App for Studio {
             ctx.input_mut(|input| input.events = events);
         }
         self.rectangle_window(&ctx);
+        if let Some((_, Some(format), focused)) = ctx
+            .data_mut(|data| {
+                data.remove_temp::<(u64, Option<ExportFormat>, Option<egui::Id>)>(egui::Id::new(
+                    "export-request",
+                ))
+            })
+            .filter(|(frame, _, _)| *frame == ctx.cumulative_frame_nr())
+        {
+            // Read numeric input before opening a blocking native chooser.
+            self.export(&ctx, format, focused);
+        }
     }
+}
+fn numeric_focus(ctx: &egui::Context) -> Option<egui::Id> {
+    ctx.memory(|memory| memory.focused())
+        .filter(|&id| ctx.data_mut(|data| data.get_temp::<String>(id)).is_some())
+}
+fn finish_numeric_action(
+    ctx: &egui::Context,
+    focused: Option<egui::Id>,
+    succeeded: bool,
+) -> [Option<egui::Id>; 2] {
+    let frame = ctx.cumulative_frame_nr();
+    let current = numeric_focus(ctx);
+    if succeeded {
+        for id in focused.into_iter().chain(current) {
+            // Numeric caches must not replay values from before the action.
+            ctx.data_mut(|data| data.remove::<String>(id));
+            ctx.memory_mut(|memory| memory.surrender_focus(id));
+        }
+        ctx.data_mut(|data| {
+            data.insert_temp(
+                egui::Id::new("inspector-action-blur"),
+                (frame, [focused, current]),
+            )
+        });
+    } else if let Some(id) = current.or(focused) {
+        ctx.memory_mut(|memory| memory.request_focus(id));
+        if focused.is_some() && current.is_some() && focused != current {
+            ctx.data_mut(|data| {
+                data.insert_temp(
+                    egui::Id::new("inspector-action-blur"),
+                    (frame, [focused, None]),
+                )
+            });
+        }
+    }
+    [focused, current]
 }
 fn numeric_value<'a>(ui: &egui::Ui, value: &'a mut f64) -> egui::DragValue<'a> {
     let id = ui.next_auto_id();
@@ -1863,7 +1937,7 @@ fn export_path_guard(project: Option<&Path>, output: &Path) -> Result<(), String
         .extension()
         .is_some_and(|extension| extension.eq_ignore_ascii_case("weftforge"))
     {
-        return Err("Choose an OBJ or SVG output; project files are preserved.".into());
+        return Err("Choose an OBJ, SVG or DXF output; project files are preserved.".into());
     }
     let Some(project) = project else {
         return Ok(());
@@ -1888,6 +1962,23 @@ fn export_path_guard(project: Option<&Path>, output: &Path) -> Result<(), String
     } else {
         Ok(())
     }
+}
+fn choose_export_path(_ctx: &egui::Context, format: ExportFormat) -> Option<PathBuf> {
+    #[cfg(test)]
+    if let Some(path) = _ctx.data_mut(|data| {
+        data.remove_temp::<Option<PathBuf>>(egui::Id::new("test-export-destination"))
+    }) {
+        return path;
+    }
+    let ext = match format {
+        ExportFormat::Obj => "obj",
+        ExportFormat::Svg => "svg",
+        ExportFormat::Dxf => "dxf",
+    };
+    rfd::FileDialog::new()
+        .add_filter(ext, &[ext])
+        .set_file_name(format!("garment.{ext}"))
+        .save_file()
 }
 fn snap(v: f64) -> f64 {
     (v * 100.).round() / 100.
@@ -2403,6 +2494,429 @@ mod tests {
             frame(&ctx, &mut app, vec![]);
             assert_eq!(app.editor.project.piece(piece).unwrap().grain_angle, 0.25);
         }
+    }
+
+    #[test]
+    fn focused_export_keeps_failed_drafts_and_history_until_output_is_written() {
+        use egui::accesskit::{Action, ActionRequest, NodeId, TreeId};
+        fn frame(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            events: Vec<egui::Event>,
+        ) -> egui::FullOutput {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1450., 1800.))),
+                    events,
+                    ..Default::default()
+                },
+                |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+            )
+        }
+        fn action(target_node: NodeId, action: Action) -> egui::Event {
+            egui::Event::AccessKitActionRequest(ActionRequest {
+                action,
+                target_tree: TreeId::ROOT,
+                target_node,
+                data: None,
+            })
+        }
+        fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+            egui::Event::Key {
+                key,
+                physical_key: None,
+                pressed: true,
+                repeat: false,
+                modifiers,
+            }
+        }
+        fn button(output: &egui::FullOutput, label: &str) -> (NodeId, Pos2) {
+            let (id, node) = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .rfind(|(_, node)| {
+                    node.label() == Some(label) && node.supports_action(Action::Click)
+                })
+                .unwrap();
+            let bounds = node.bounds().unwrap();
+            (
+                *id,
+                Pos2::new(
+                    ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                    ((bounds.y0 + bounds.y1) * 0.5) as f32,
+                ),
+            )
+        }
+        fn history(editor: &Editor) -> [Vec<Project>; 2] {
+            let mut backward = editor.clone();
+            let mut forward = editor.clone();
+            let mut undo = Vec::new();
+            let mut redo = Vec::new();
+            while backward.undo() {
+                undo.push(backward.project.clone());
+            }
+            while forward.redo() {
+                redo.push(forward.project.clone());
+            }
+            [undo, redo]
+        }
+        struct Directory(PathBuf);
+        impl Drop for Directory {
+            fn drop(&mut self) {
+                fs::remove_dir_all(&self.0).unwrap();
+            }
+        }
+        let directory = Directory(std::env::temp_dir().join(format!(
+            "weftforge-export-ui-{}-{}",
+            std::process::id(),
+            SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_nanos()
+        )));
+        fs::create_dir(&directory.0).unwrap();
+        for (format, label) in [
+            (ExportFormat::Dxf, "Export DXF"),
+            (ExportFormat::Svg, "Export SVG"),
+            (ExportFormat::Obj, "Export OBJ"),
+        ] {
+            for outcome in ["cancel", "protected", "write", "invalid", "success"] {
+                for input in [
+                    "ax",
+                    "pointer",
+                    "tab",
+                    "focus",
+                    "text",
+                    "search",
+                    "search_pointer",
+                ] {
+                    if !matches!(format, ExportFormat::Dxf) && !matches!(input, "ax" | "pointer") {
+                        continue;
+                    }
+                    let pointer = matches!(input, "pointer" | "search_pointer");
+                    let ctx = egui::Context::default();
+                    ctx.enable_accesskit();
+                    let mut app = Studio::empty();
+                    app.session_autosave = None;
+                    app.editor
+                        .execute(Command::AddRectangle {
+                            name: "Export panel".into(),
+                            origin: [0., 0.],
+                            width: 0.4,
+                            height: 0.6,
+                        })
+                        .unwrap();
+                    let piece = app.editor.project.pieces[0].id;
+                    app.editor
+                        .execute(Command::SetGrain {
+                            piece,
+                            angle: 0.125,
+                        })
+                        .unwrap();
+                    app.editor
+                        .execute(Command::SetGrain {
+                            piece,
+                            angle: 0.123,
+                        })
+                        .unwrap();
+                    assert!(app.editor.undo());
+                    app.selected = Some(piece);
+                    app.search = matches!(input, "search" | "search_pointer");
+                    app.query = label.into();
+                    let before = app.editor.clone();
+                    let original_history = history(&before);
+                    let source = directory.0.join("source.weftforge");
+                    app.editor.project.save(&source).unwrap();
+                    let source_bytes = fs::read(&source).unwrap();
+                    app.path = (outcome != "write").then(|| source.clone());
+                    let mesh = Arc::new(app.editor.project.mesh().unwrap());
+                    app.mesh = Some(mesh.clone());
+                    let output = directory.0.join("output.export");
+                    fs::write(&output, b"previous output").unwrap();
+                    let destination = match outcome {
+                        "cancel" => None,
+                        "protected" => Some(source.clone()),
+                        "write" => Some(directory.0.join("missing/output.export")),
+                        _ => Some(output.clone()),
+                    };
+                    let update = frame(&ctx, &mut app, vec![]);
+                    let numeric = update
+                        .platform_output
+                        .accesskit_update
+                        .as_ref()
+                        .unwrap()
+                        .nodes
+                        .iter()
+                        .find(|(_, node)| node.numeric_value() == Some(0.4))
+                        .unwrap()
+                        .0;
+                    let other = if matches!(input, "tab" | "focus") {
+                        let nodes = &update
+                            .platform_output
+                            .accesskit_update
+                            .as_ref()
+                            .unwrap()
+                            .nodes;
+                        let bounds = nodes
+                            .iter()
+                            .find(|(id, _)| *id == numeric)
+                            .unwrap()
+                            .1
+                            .bounds()
+                            .unwrap();
+                        let height = nodes
+                            .iter()
+                            .find(|(_, node)| {
+                                node.numeric_value() == Some(0.6)
+                                    && node.bounds().is_some_and(|b| {
+                                        (b.y0 - bounds.y0).abs() < 1.0 && b.x0 > bounds.x0
+                                    })
+                            })
+                            .unwrap()
+                            .0;
+                        frame(&ctx, &mut app, vec![action(height, Action::Focus)]);
+                        frame(&ctx, &mut app, vec![]);
+                        let id = ctx.memory(|memory| memory.focused()).unwrap();
+                        let text = ctx.data_mut(|data| data.get_temp::<String>(id)).unwrap();
+                        Some((height, id, text))
+                    } else {
+                        None
+                    };
+                    frame(&ctx, &mut app, vec![action(numeric, Action::Focus)]);
+                    frame(&ctx, &mut app, vec![]);
+                    app.draft
+                        .get_or_insert_with(|| {
+                            InspectorDraft::new(
+                                &app.editor.project,
+                                app.selected,
+                                app.selected_curve,
+                            )
+                        })
+                        .resolution = 0.08;
+                    let text = if outcome == "invalid" { "0" } else { "0.450" };
+                    let initial_text = if input == "text" { "0.4" } else { text };
+                    let update = frame(
+                        &ctx,
+                        &mut app,
+                        vec![
+                            key(egui::Key::A, egui::Modifiers::COMMAND),
+                            egui::Event::Text(initial_text.into()),
+                        ],
+                    );
+                    let focused = ctx.memory(|memory| memory.focused()).unwrap();
+                    let mut expected_draft = app.draft.as_ref().unwrap().clone();
+                    expected_draft.dimensions.as_mut().unwrap()[0] =
+                        if outcome == "invalid" { 0.0 } else { 0.45 };
+                    let pending = expected_draft.commands(&before.project);
+                    assert_eq!(app.editor.project, before.project);
+                    assert_eq!(
+                        ctx.data_mut(|data| data.get_temp::<String>(focused)),
+                        Some(initial_text.into())
+                    );
+                    let (export, position) = button(&update, label);
+                    ctx.data_mut(|data| {
+                        data.insert_temp(egui::Id::new("test-export-destination"), destination)
+                    });
+                    if pointer {
+                        for pressed in [true, false] {
+                            frame(
+                                &ctx,
+                                &mut app,
+                                vec![
+                                    egui::Event::PointerMoved(position),
+                                    egui::Event::PointerButton {
+                                        pos: position,
+                                        button: egui::PointerButton::Primary,
+                                        pressed,
+                                        modifiers: egui::Modifiers::NONE,
+                                    },
+                                ],
+                            );
+                            if pressed {
+                                assert_eq!(
+                                    app.editor.project, before.project,
+                                    "{label}/{outcome}: pointer press"
+                                );
+                                assert_eq!(history(&app.editor), original_history);
+                            }
+                        }
+                    } else {
+                        let mut events = match input {
+                            "tab" => vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+                            "focus" => vec![action(other.as_ref().unwrap().0, Action::Focus)],
+                            "text" => vec![
+                                key(egui::Key::A, egui::Modifiers::COMMAND),
+                                egui::Event::Text(text.into()),
+                            ],
+                            _ => Vec::new(),
+                        };
+                        events.push(action(export, Action::Click));
+                        frame(&ctx, &mut app, events);
+                    }
+                    let written = outcome == "success" && !matches!(format, ExportFormat::Obj);
+                    if written {
+                        let mut expected = before.clone();
+                        expected.execute(Command::Transaction(pending)).unwrap();
+                        assert_eq!(app.editor.project, expected.project);
+                        assert_eq!(history(&app.editor), history(&expected));
+                        assert!(app.dirty);
+                        assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), None);
+                        if let Some((_, id, _)) = &other {
+                            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(*id)), None);
+                        }
+                        let bytes = fs::read_to_string(&output).unwrap();
+                        assert!(bytes.contains(if matches!(format, ExportFormat::Dxf) {
+                            "11\n450\n"
+                        } else {
+                            "L 450 "
+                        }));
+                        frame(&ctx, &mut app, vec![]);
+                        let update = frame(
+                            &ctx,
+                            &mut app,
+                            vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+                        );
+                        assert_eq!(app.editor.project, expected.project);
+                        let (undo, _) = button(&update, "Undo");
+                        let update = frame(&ctx, &mut app, vec![action(undo, Action::Click)]);
+                        assert!(expected.undo());
+                        assert_eq!(app.editor.project, expected.project);
+                        let (redo, _) = button(&update, "Redo");
+                        frame(&ctx, &mut app, vec![action(redo, Action::Click)]);
+                        assert!(expected.redo());
+                        assert_eq!(app.editor.project, expected.project);
+                    } else {
+                        assert_eq!(
+                            app.editor.project, before.project,
+                            "{label}/{outcome}: failed or cancelled export"
+                        );
+                        assert_eq!(history(&app.editor), original_history);
+                        assert!(!app.dirty);
+                        assert!(!app.needs_mesh && app.job.is_none());
+                        assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+                        assert_eq!(
+                            app.draft.as_ref().unwrap().commands(&before.project),
+                            pending
+                        );
+                        let retained = other.as_ref().map_or(focused, |(_, id, _)| *id);
+                        let retained_text =
+                            other.as_ref().map_or(text, |(_, _, value)| value.as_str());
+                        assert_eq!(
+                            ctx.memory(|memory| memory.focused()),
+                            Some(retained),
+                            "{label}/{outcome}/{input}"
+                        );
+                        assert_eq!(
+                            ctx.data_mut(|data| data.get_temp::<String>(retained)),
+                            Some(retained_text.into())
+                        );
+                        assert_eq!(fs::read(&output).unwrap(), b"previous output");
+                        frame(&ctx, &mut app, vec![]);
+                        assert_eq!(
+                            app.editor.project, before.project,
+                            "{label}/{outcome}: delayed blur"
+                        );
+                        assert_eq!(history(&app.editor), original_history);
+                        assert_eq!(
+                            app.draft.as_ref().unwrap().commands(&before.project),
+                            pending
+                        );
+                        assert_eq!(ctx.memory(|memory| memory.focused()), Some(retained));
+                        assert_eq!(
+                            ctx.data_mut(|data| data.get_temp::<String>(retained)),
+                            Some(retained_text.into())
+                        );
+                        if outcome != "invalid" {
+                            let mut expected = before.clone();
+                            expected.execute(Command::Transaction(pending)).unwrap();
+                            frame(
+                                &ctx,
+                                &mut app,
+                                vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+                            );
+                            assert_eq!(
+                                app.editor.project, expected.project,
+                                "{label}/{outcome}: intentional later Tab"
+                            );
+                        }
+                    }
+                    assert_eq!(fs::read(&source).unwrap(), source_bytes);
+                    app.cancel();
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn obj_export_uses_ready_rest_or_current_drape_without_changing_construction() {
+        let directory = std::env::temp_dir().join(format!(
+            "weftforge-export-obj-ui-{}-{}",
+            std::process::id(),
+            SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        fs::create_dir(&directory).unwrap();
+        let ctx = egui::Context::default();
+        let mut app = Studio::empty();
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "OBJ panel".into(),
+                origin: [2., 1.],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+        let before = app.editor.project.clone();
+        let mesh = Arc::new(before.mesh().unwrap());
+        app.mesh = Some(mesh.clone());
+        for draped in [false, true] {
+            if draped {
+                let mut cloth = weftforge_core::simulation::create_cloth(&before, &mesh).unwrap();
+                cloth.step(Default::default(), || false).unwrap();
+                assert_ne!(cloth.positions(), mesh.positions);
+                app.cloth = Some(Arc::new(cloth));
+            }
+            let path = directory.join(if draped { "draped.obj" } else { "rest.obj" });
+            app.draft = Some(InspectorDraft::new(&before, None, None));
+            assert!(app.export_to_path(&ctx, ExportFormat::Obj, Some(&path), None));
+            let positions: Vec<[f64; 3]> = fs::read_to_string(&path)
+                .unwrap()
+                .lines()
+                .filter_map(|line| line.strip_prefix("v "))
+                .map(|line| {
+                    line.split_whitespace()
+                        .map(|value| value.parse().unwrap())
+                        .collect::<Vec<_>>()
+                        .try_into()
+                        .unwrap()
+                })
+                .collect();
+            let expected = app
+                .cloth
+                .as_ref()
+                .map_or(mesh.positions.as_slice(), |cloth| cloth.positions());
+            assert_eq!(positions.len(), expected.len());
+            for (actual, expected) in positions.iter().zip(expected) {
+                for axis in 0..3 {
+                    assert!((actual[axis] - expected[axis]).abs() <= 1e-15);
+                }
+            }
+            assert_eq!(app.editor.project, before);
+            assert!(!app.dirty && !app.needs_mesh && app.job.is_none());
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+        }
+        let path = directory.join("stale.obj");
+        fs::write(&path, b"retained output").unwrap();
+        let mut stale = (*mesh).clone();
+        stale.doc_revision -= 1;
+        app.mesh = Some(Arc::new(stale));
+        assert!(!app.export_to_path(&ctx, ExportFormat::Obj, Some(&path), None));
+        assert_eq!(fs::read(&path).unwrap(), b"retained output");
+        assert_eq!(app.editor.project, before);
+        fs::remove_dir_all(directory).unwrap();
     }
 
     #[test]
