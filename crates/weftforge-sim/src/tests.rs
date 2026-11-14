@@ -28,6 +28,13 @@ fn settings() -> StepSettings {
 #[test]
 fn area_mass_rest_and_reset_are_si_consistent() {
     let mut cloth = Cloth::new(square()).unwrap();
+    let rest_peak = Some(StrainPeak {
+        triangle: 0,
+        axis: MaterialAxis::Warp,
+        signed_strain: 0.,
+    });
+    assert_eq!(cloth.diagnostics().peak_strain, rest_peak);
+    assert_eq!(Diagnostics::default().peak_strain, None);
     assert!((cloth.masses().iter().sum::<f64>() - 0.2).abs() < 1e-14);
     let rest = cloth.positions().to_vec();
     for _ in 0..20 {
@@ -54,6 +61,7 @@ fn area_mass_rest_and_reset_are_si_consistent() {
     assert_eq!(cloth.positions(), rest);
     assert_eq!(cloth.simulation_time(), 0.);
     assert!(cloth.velocities().iter().all(|v| *v == [0.; 3]));
+    assert_eq!(cloth.diagnostics().peak_strain, rest_peak);
 }
 
 #[test]
@@ -86,29 +94,86 @@ fn freefall_matches_symplectic_euler_and_refines_toward_analytic_solution() {
 #[test]
 fn membrane_affine_strain_follows_material_axes_under_arrangement_and_winding() {
     let uv = [[2., 3.], [2.4, 3.1], [1.8, 3.5]];
-    // A 90-degree rigid arrangement of F = [[1.2, 0.25], [0, 0.7], [0, 0]].
-    let x: Vec<_> = uv
-        .iter()
-        .map(|[u, v]| [10. - 0.7 * v, 2. + 1.2 * u + 0.25 * v, -0.4])
-        .collect();
-    for grain_angle in [0., 0.37, std::f64::consts::FRAC_PI_2] {
-        let (sin, cos) = grain_angle.sin_cos();
-        let warp = (1.2 * cos + 0.25 * sin).hypot(0.7 * sin);
-        let weft = (-1.2 * sin + 0.25 * cos).hypot(0.7 * cos);
-        let expected = (warp - 1.).abs().max((weft - 1.).abs());
-        for tri in [[0, 1, 2], [0, 2, 1]] {
-            let membrane = constraints::Membrane::new(
-                tri,
-                &uv,
-                Material {
+    for [u_scale, shear, v_scale] in [[1.2, 0.25, 0.7], [1.5, 0.25, 0.85]] {
+        // A 90-degree rigid arrangement of F = [[u_scale, shear], [0, v_scale], [0, 0]].
+        let x: Vec<_> = uv
+            .iter()
+            .map(|[u, v]| [10. - v_scale * v, 2. + u_scale * u + shear * v, -0.4])
+            .collect();
+        for grain_angle in [0., 0.37, std::f64::consts::FRAC_PI_2] {
+            let (sin, cos) = grain_angle.sin_cos();
+            let warp = (u_scale * cos + shear * sin).hypot(v_scale * sin) - 1.;
+            let weft = (-u_scale * sin + shear * cos).hypot(v_scale * cos) - 1.;
+            let (axis, signed_strain) = if weft.abs() > warp.abs() {
+                (MaterialAxis::Weft, weft)
+            } else {
+                (MaterialAxis::Warp, warp)
+            };
+            for tri in [[0, 1, 2], [0, 2, 1]] {
+                let material = Material {
                     grain_angle,
                     ..Default::default()
-                },
-            );
-            assert!((membrane.area - 0.11).abs() < 1e-14);
-            assert!((membrane.stretch_error(&x) - expected).abs() < 1e-13);
+                };
+                let membrane = constraints::Membrane::new(tri, &uv, material);
+                assert!((membrane.area - 0.11).abs() < 1e-14);
+                let actual = membrane.signed_strains(&x);
+                assert!((actual[0] - warp).abs() < 1e-13);
+                assert!((actual[1] - weft).abs() < 1e-13);
+                let cloth = Cloth::new(ClothInput {
+                    positions: x.clone(),
+                    material_uv: uv.to_vec(),
+                    triangles: vec![tri],
+                    triangle_materials: vec![material],
+                    ..Default::default()
+                })
+                .unwrap();
+                let diagnostics = cloth.diagnostics();
+                let peak = diagnostics.peak_strain.unwrap();
+                assert_eq!(peak.triangle, 0);
+                assert_eq!(peak.axis, axis);
+                assert!((peak.signed_strain - signed_strain).abs() < 1e-13);
+                assert_eq!(diagnostics.max_stretch_error, peak.signed_strain.abs());
+            }
         }
     }
+}
+
+#[test]
+fn peak_strain_uses_input_triangle_order_and_exact_ties_choose_warp() {
+    let mut input = ClothInput {
+        positions: vec![
+            [10., 2., 0.],
+            [10.5, 2., 0.],
+            [10., 2., 1.5],
+            [0., 2., 0.],
+            [1.5, 2., 0.],
+            [0., 2., 0.5],
+        ],
+        material_uv: [[0., 0.], [1., 0.], [0., 1.]].repeat(2),
+        triangles: vec![[3, 4, 5], [0, 1, 2]],
+        triangle_materials: vec![Material::default(); 2],
+        ..Default::default()
+    };
+    let check = |input: &ClothInput, triangle, axis, signed_strain| {
+        let cloth = Cloth::new(input.clone()).unwrap();
+        assert_eq!(
+            cloth.diagnostics().peak_strain,
+            Some(StrainPeak {
+                triangle,
+                axis,
+                signed_strain,
+            })
+        );
+        assert_eq!(cloth.diagnostics().max_stretch_error, signed_strain.abs());
+    };
+    check(&input, 0, MaterialAxis::Warp, 0.5);
+    input.triangles.reverse();
+    check(&input, 0, MaterialAxis::Warp, -0.5);
+    input.triangles.reverse();
+    input.positions[2][2] = 1.75;
+    check(&input, 1, MaterialAxis::Weft, 0.75);
+    input.triangles.reverse();
+    check(&input, 0, MaterialAxis::Weft, 0.75);
 }
 
 #[test]
@@ -317,9 +382,48 @@ fn layers_contact_and_transfer_motion_to_the_other_layer() {
 }
 
 #[test]
+fn cancellation_after_measurement_preserves_peak_strain() {
+    let mut input = square();
+    for p in &mut input.positions {
+        p[0] *= 1.5;
+    }
+    let mut cloth = Cloth::new(input).unwrap();
+    let before = cloth.diagnostics().clone();
+    let mut complete = cloth.clone();
+    let total = std::cell::Cell::new(0);
+    complete
+        .step(settings(), || {
+            total.set(total.get() + 1);
+            false
+        })
+        .unwrap();
+    assert_ne!(complete.diagnostics().peak_strain, before.peak_strain);
+    let calls = std::cell::Cell::new(0);
+    assert_eq!(
+        cloth
+            .step(settings(), || {
+                calls.set(calls.get() + 1);
+                calls.get() == total.get()
+            })
+            .unwrap_err(),
+        SimulationError::Cancelled
+    );
+    assert_eq!(calls.get(), total.get());
+    assert_eq!(cloth.diagnostics().peak_strain, before.peak_strain);
+    assert_eq!(
+        cloth.diagnostics().max_stretch_error,
+        before.max_stretch_error
+    );
+    assert_eq!(cloth.positions(), cloth.input.positions);
+    assert!(cloth.velocities().iter().all(|v| *v == [0.; 3]));
+    assert_eq!(cloth.simulation_time(), 0.);
+}
+
+#[test]
 fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
     let mut cloth = Cloth::new(square()).unwrap();
     let before = cloth.positions().to_vec();
+    let before_peak = cloth.diagnostics().peak_strain;
     let counter = std::cell::Cell::new(0);
     let error = cloth
         .step(settings(), || {
@@ -329,6 +433,7 @@ fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
         .unwrap_err();
     assert_eq!(error, SimulationError::Cancelled);
     assert_eq!(cloth.positions(), before);
+    assert_eq!(cloth.diagnostics().peak_strain, before_peak);
     assert_eq!(cloth.simulation_time(), 0.);
     assert!(
         cloth
@@ -342,6 +447,7 @@ fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
             .is_err()
     );
     assert_eq!(cloth.positions(), before);
+    assert_eq!(cloth.diagnostics().peak_strain, before_peak);
     assert!(matches!(
         cloth.step(
             StepSettings {
@@ -353,6 +459,7 @@ fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
         Err(SimulationError::Unstable(_))
     ));
     assert_eq!(cloth.positions(), before);
+    assert_eq!(cloth.diagnostics().peak_strain, before_peak);
     cloth.step(settings(), || false).unwrap();
     assert!(cloth.diagnostics().finite);
 }
