@@ -145,46 +145,77 @@ geometry. No activation/input occurred and no manual-click outcome is inferred.
 Private evidence is `ev_bc8e54db21a2003e2b5ac036a9a9fb173c20404528915a02d9288edb9a6b616a`;
 reviewed facts SHA is `570833c3be8f2d3bfe595b7687c8f1e1bc67812e8f640fabf9697683d8d661a7`.
 
-The original Harbor empty-project workflow is now active separately in
-`.local/empty-shirt-authoring-20261114/`, frozen plan
-`0f07ac196c8e285c1441dc3a16f0027f65c2b901b4630abfa180a216b56e1ddd`.
-Same-binary fresh PID47128 starts with a verified v3 revision0 empty document.
-Both14-vertex panels are created through actual numeric staging/Close pattern;
-all28 frozen vertices/straight curves match independent saved-source parsing at
-revision2. Checkpoint SHA is `e4828356cf37524c1106b2c8c12a6cef2dd813fd4e9f5930db9399a2a029b6f9`.
-The first routed draft was rejected for a degenerate edge and left0pieces;
-its correction reached the unchanged frozen design. Arrangement,grain,sewing,
-save/reopen and planned height-edit history remain in progress. No simulation
-is authorized for this workflow yet. It cannot replace the failed weak-grain
-benchmark or qualify a complete garment gate.
+The original Harbor workflow in `.local/empty-shirt-authoring-20261114/` now has
+completed native authoring evidence: actual empty start, two14-vertex panels,
+placements/grain/eight seams, save, real quit/relaunch/reopen, and a front-height
+edit with Undo/Redo/Undo. Frozen plan is `0f07ac19…ddd`. Authored/reopened bytes
+match SHA `445db3e2…77c`; final restored revision20 is `fc494974…da7`. Root's
+independent receipt `02bfcb94…e0a` checks every coordinate/ID and history state
+against the prospective1e-12m tolerance; four affine-X roundoffs are at most
+1.12e-16m. The first routed degenerate draft and first overly strict bitwise
+checker refusal remain retained. The153-file authoring candidate is frozen,
+private and not yet published; its33 raw screenshots are correctly named JPEGs.
 
-1. Follow the approved single original-shirt diagnostic in
-   `.local/force-balance-design-20261114/shirt-run-001/`. The private analytical
-   overlay passed258 producer and321 independent checks, exact audited/ordinary
-   state equality, all6 cancellation polls and invalid-settings retention.
-   Independent receipt SHA is `bef9d0337b7508aea1cd542e8c81e6813180bda12da03d40664ddfea82f34074`.
-   Keep base6c455 plus observational patch13f927… explicitly separate from
-   production. Preregister the new driver/analyzer/binary; trace only frames
-   24/27/60/180 and compare all181 states exactly with production6c455.
-   Fixed caps remain420s/256MiB; no tuning,other scenes or blind extension.
-   No production solver changes or tuning are authorized. Correction accounting
-   alone cannot establish physical contact reactions or equilibrium.
-2. Finish Harbor UI authoring/history/persistence under the frozen plan; root
-   must qualify the authored state and fixed physical plan before simulation.
-   The reference manual click question remains pending; do not inject further
-   reference input meanwhile. All raw account/UI evidence remains private.
-3. Continue native/reference construction and all remaining roadmap work.
+Unmodified source6c455 Harbor headless A/B attempts both hit the unchanged
+420-second cap. A accepts163 frames, B158; their next steps cancel transactionally.
+There is no frame180 or full physical acceptance. A native assembly accepts60
+frames; its OBJ is byte-identical to headless frame60. The native Drape attempt
+is cancelled at422.705s, retaining the2.705s observation overrun and prior accepted
+assembly. Native B is `not_run` because its completed-A-Drape precondition is
+missing. Native PID57507 remains saved/paused. The separate44-file physical
+attempt candidate is frozen; it does not alter the153-file authoring bundle.
 
-All reported Rust builds, original three-case diagnostics, independent visibility
-regression, CLI and native simulations/checks are terminal. The retained native
-accepted capture application was closed; new PID47128 is authoring without a
-simulation job. Unified evidence preparation
-71767 and clean40401/36772/59030/47879 are terminal0. The private force-balance
-agent's build/static25436 and analytical99416 are terminal0. Wrapper41625 and
-children41947/41949/41950 are confirmed terminal; only the separately approved
-original-shirt diagnostic is being prepared, with no execution handle reported
-yet. Base37 manifest is
-`c42d45e0c9bae69065a4b4f01bc5fcbc897499c0904b59b32a326c81ee23a3da`.
-Reference read-only inventory36748 and REA observation64096 are terminal0. Recheck
-actual handles/ledgers before resuming. Raw ledgers stay
-ignored; use separate Cargo targets per worktree.
+Post-failure read-only qualification checks all323 retained boundary states,
+mass, targets, supported contacts and cancellation. A frame29 has15.3559% strain,
+above15%; B prefix maximum is10.1651%. These incomplete prefixes cannot establish
+final quality. Source/settings/inputs remain unchanged. Ledgers and original
+failures stay in `.local/harbor-physics-20261114/`; packaging is in progress.
+
+The single original-shirt force audit is complete in
+`.local/force-balance-design-20261114/shirt-run-001/`. Base6c455 plus private
+observational patch13f927… reproduces all181 production states exactly except
+wall time, with traced frames24/27/60/180. Independent receipt `3881fc17…b87`
+reconstructs all32 captured substeps and31,849 analytic-collider events. At the
+same frame180/substep5/node18, seam elastic force norm is69.1110N, multiplier
+force0.862155N and actual projection action0.795538N. Correction accounting is a
+telescoping identity; it does not establish contact reaction or equilibrium.
+Cloth contact was enabled but unexercised in the captured windows. The original
+strain failure remains. No production audit overlay has been integrated.
+
+1. Qualify performance-only candidate `3aa20b15` on
+   `feat/conservative-contact-candidates`, worktree
+   `.local/contact-candidates-20261114/`. Prospective
+   [SIM-004](spec/features/SIM-004-contact-candidates.md) reuses the existing
+   hierarchy for live queries, preserving ascending projection order and falling
+   back to the original remaining scan after query movement. The initial26sim
+   tests pass; final6contact tests additionally check ordering across hierarchy
+   leaves. Fmt and strictsim Clippy pass; the independent exhaustive diagnostic
+   oracle is retained.
+   First test fixture accidentally inherited0.002m thickness instead of declared
+   0.003m; the original failure is retained and only that setup was corrected.
+   Bind source/binary/evaluator before comparing the original181 states and both
+   Harbor prefixes exactly, excluding wall time. Only then repeat unchanged A/B
+   with the same420s/256MiB limits. No easier scene, settings or quality screen.
+2. Review separate candidate `35afac60` on `feat/linear-closed-stitches` in
+   `.local/linear-closed-stitches-20261114/`. Prospective
+   [SIM-001](spec/features/SIM-001-closed-stitch-energy.md) preserves the elastic
+   zero-target energy with three constant coordinate constraints; positive/hard
+   targets keep their radial path. The frozen N32 operator is legacy RED and
+   candidate GREEN at unchanged1e-12 criteria. All32solver tests across the
+   acceptance/remaining runs, fmt and strictsim Clippy pass. A first new hard
+   test's exact-rational expectation failure is retained; its strict expected
+   scalar now follows independently derived3-4-5 f64 arithmetic. No garment
+   improvement follows from that operator alone. Finish review and validation
+   before combining it with the performance candidate.
+3. Publish reviewed Harbor/audit progress and the capture-encoding qualification
+   only after tracked-clean registry/map/hash checks. Keep the reference manual
+   click question pending; do not inject further reference input meanwhile.
+   Continue all remaining roadmap work after these bounded increments.
+
+All reported physical jobs are terminal: Harbor headless wrappers6362/11227,
+drivers6513/11372; native attempt cancelled; force-audit wrapper66760 and
+driver67564/analyzer68295 exit0. Prefix review95651/wrapper19019/child19163 exits0.
+The latest focused performance tests/Clippy6261 are terminal0. Separate stitch
+edge verification and evidence packaging are active; consult agent ledgers for
+their exact handles. Reference inventory36748 and REA observation64096 are
+terminal0. Recheck actual handles before resuming; use separate Cargo targets.

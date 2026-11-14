@@ -1,0 +1,390 @@
+{
+  "kind": "historical_capture_encoding_qualification",
+  "checked_at": "2026-11-14T19:46:39.661973+00:00",
+  "scope": "The 47 tracked raster captures present at main e6595ee, before Harbor publication.",
+  "tracked_images": 47,
+  "actual_PNG": 14,
+  "actual_JPEG": 33,
+  "incorrect_png_suffix_count": 33,
+  "original_image_bytes_changed": false,
+  "original_paths_and_frozen_manifests_preserved": true,
+  "qualification": "The 33 listed historical .png paths contain original JPEG bytes. Earlier PNG wording was a filename classification error. They are actual native captures and remain unaltered and hash-bound. This correction changes no image pixels, authoring, numerical result, acceptance criterion or binary. Future Harbor captures use correct JPEG suffixes and header checks.",
+  "records": [
+    {
+      "path": "docs/images/studio-grain.png",
+      "sha256": "4de35d6e9f974b8b3a4309d8fdb3775af377fd90fca51cef05efa991a45e4537",
+      "bytes": 280451,
+      "actual_mime": "image/png",
+      "suffix": ".png",
+      "suffix_matches_format": true
+    },
+    {
+      "path": "docs/images/studio-macos.png",
+      "sha256": "bc755bf225d7f3b4c56831f6762535bc316b60cf4be798e4ef552d3fc4a7d348",
+      "bytes": 251681,
+      "actual_mime": "image/png",
+      "suffix": ".png",
+      "suffix_matches_format": true
+    },
+    {
+      "path": "docs/images/studio-sewn-curve.png",
+      "sha256": "67c52b3b8e22a2923cc1df5fa9b8632cf72b290488ca991678cafca59a64af03",
+      "bytes": 363121,
+      "actual_mime": "image/png",
+      "suffix": ".png",
+      "suffix_matches_format": true
+    },
+    {
+      "path": "docs/images/studio-single-candidate.png",
+      "sha256": "8a2b9922e53185927c39d93638a529a2aa1433279533324a434c65fa517b6d20",
+      "bytes": 253963,
+      "actual_mime": "image/png",
+      "suffix": ".png",
+      "suffix_matches_format": true
+    },
+    {
+      "path": "parity/reports/artifacts/curve-join-20261114/native/corner-join-error.png",
+      "sha256": "e970d655567bfeff321e4c6f7812146a51921d791a2bc3e9431f85733fcbe29d",
+      "bytes": 317265,
+      "actual_mime": "image/png",
+      "suffix": ".png",
+      "suffix_matches_format": true
+    },
+    {
+      "path": "parity/reports/artifacts/document-f64-20261114/recovered-native.png",
+      "sha256": "f76471d51b4c5a2affbcfb93b9ed15be12ee1dd3a9192fe7298088ab58faba3e",
+      "bytes": 239267,
+      "actual_mime": "image/png",
+      "suffix": ".png",
+      "suffix_matches_format": true
+    },
+    {
+      "path": "parity/reports/artifacts/dxf-20261114/captures/export/dxf-export-final.png",
+      "sha256": "c487d4a58269ea6c6bffdf115b5ab1d95276c177ebdf98cf822da8d142df669c",
+      "bytes": 293374,
+      "actual_mime": "image/png",
+      "suffix": ".png",
+      "suffix_matches_format": true
+    },
+    {
+      "path": "parity/reports/artifacts/dxf-20261114/captures/pending-cancel/dxf-pending-cancel.png",
+      "sha256": "7968db1c1df076df4c50ca3cee3d12c90430eb0db0653520ed983980b502eded",
+      "bytes": 255382,
+      "actual_mime": "image/png",
+      "suffix": ".png",
+      "suffix_matches_format": true
+    },
+    {
+      "path": "parity/reports/artifacts/dxf-20261114/native/captures/dxf-pending-cancel-20261114T135220Z.png",
+      "sha256": "7968db1c1df076df4c50ca3cee3d12c90430eb0db0653520ed983980b502eded",
+      "bytes": 255382,
+      "actual_mime": "image/png",
+      "suffix": ".png",
+      "suffix_matches_format": true
+    },
+    {
+      "path": "parity/reports/artifacts/numeric-rectangle-20261114/3ed0-reopened-small.png",
+      "sha256": "f965332d6df1a270ceed6adaa12b3ec0df17162d26bbe839fd8af18310727d9d",
+      "bytes": 236998,
+      "actual_mime": "image/png",
+      "suffix": ".png",
+      "suffix_matches_format": true
+    },
+    {
+      "path": "parity/reports/artifacts/numeric-rectangle-20261114/dab0-focused-redone.png",
+      "sha256": "93170537612bb09666d4ce3ca658c67be48e5185cd077e50a70b3a018b33edb8",
+      "bytes": 248281,
+      "actual_mime": "image/png",
+      "suffix": ".png",
+      "suffix_matches_format": true
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/actions/000-startup.png",
+      "sha256": "41b92f28c4ae043a5645425d6bf28f072ba0aaa9e83eb364ce6507dbb162e8f9",
+      "bytes": 159053,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/actions/editor-before.png",
+      "sha256": "362f943e7ec73ad5707170319e604e38148a4b5117ccccdfd6b15ea5ffb0825b",
+      "bytes": 181817,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/actions/editor-complete-pending.png",
+      "sha256": "93a8527f31de65a9ca87491c1faa216296f484b77ee86b2536849f19e3f65d93",
+      "bytes": 190425,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/actions/fit-five-panels.png",
+      "sha256": "308f76a9329a4dd3c10ed7afe114634e01fbca02e2cf0e06891aae38967ac80a",
+      "bytes": 181366,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/actions/fitted-five-panels.png",
+      "sha256": "4574822fd2545ad620d6218c4f533c7e58af461a57f9ffa183a9a90963a61add",
+      "bytes": 190264,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/actions/pending-all-b-spans.png",
+      "sha256": "8352f434ed079f67c09d72d6aa15c6ee5c4df2fabff00ef1c02010e2de9fff16",
+      "bytes": 200620,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/actions/zoom-to-all-panels.png",
+      "sha256": "ce73274556535982da7ee8cb46cf4fa81ec1ae4166c74b14d0480b5f189a5a12",
+      "bytes": 178862,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/confirmed_a_pending_b/screenshot.png",
+      "sha256": "450ccc841a3747ae11e3af024158fc7294f1013c0196752e8fe45ca00b886c38",
+      "bytes": 197415,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/created/screenshot.png",
+      "sha256": "3e1b82931571611a714ca538ef3be4df7318eeb7d7372785c28e834858160a2c",
+      "bytes": 196139,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/delete_last_a/screenshot.png",
+      "sha256": "ae354ac50b267e5db9f23acf4db1eb4680821abafe5cba3e56a3bca3bb5f1754",
+      "bytes": 196898,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/edited/screenshot.png",
+      "sha256": "d5f1863d9f5091ff53adb93fddbc78c13b236f8adfcc1905546b6c270f7aba28",
+      "bytes": 197317,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/empty_a_enter/screenshot.png",
+      "sha256": "c79b7ad43125712929b911fabfdc19e0ccfac203a198de53f9e8601e52eac028",
+      "bytes": 191589,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/empty_b_enter/screenshot.png",
+      "sha256": "ab5f2035b5bf52cf657e6d07952cc6b85dc739eacd94ca9d2dc7c23fce4e001c",
+      "bytes": 199822,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/escape_a/screenshot.png",
+      "sha256": "401defdbbb2e265bd3245d827c33104780dba8f61c58065a6567826e9aba37e7",
+      "bytes": 191619,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/load_reset/screenshot.png",
+      "sha256": "ff591d58cecfcc9cb77b1186ff70f90bf9d94a20c7f5277ea58d87931760fbe6",
+      "bytes": 191880,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/loaded/screenshot.png",
+      "sha256": "ddd003a0a8d018575b256fab7d982aab1e83ad4b7c4c4452cddd761c2b3dc497",
+      "bytes": 173294,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/redo_create/screenshot.png",
+      "sha256": "fd4002fdd7e37ed3530b06449bbde666383a3be7089048a021eb6232b404fb99",
+      "bytes": 199829,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/redo_edit/screenshot.png",
+      "sha256": "09275766f3e166c669f14efa9fe1e86e9078d1866244d04b93b36af5f9223d43",
+      "bytes": 197202,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/reopened/screenshot.png",
+      "sha256": "76596106ea74c45b19b9ec414f56e524d0b9e2f03b745b65358791b39cbe4007",
+      "bytes": 184735,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/reversed_once/screenshot.png",
+      "sha256": "f02d6181936b2bab9368160c8ff49337a72bd1ea59337945979b71cf27a6d7b7",
+      "bytes": 196231,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/reversed_twice/screenshot.png",
+      "sha256": "adc323d00e0c3a198b588db139db0a4d1169c22cb7044efa0adfaeeb639da54d",
+      "bytes": 195829,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/saved/screenshot.png",
+      "sha256": "ef6a2a27db55036085aff032953fc1d677fd7a84c204edc740cadd527f5f12f7",
+      "bytes": 195829,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/tool_reset/screenshot.png",
+      "sha256": "2d59e4726154faa547460e5ff8a14221bfc487b72db10afbef52d9f509bc05b2",
+      "bytes": 173268,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/undo_create/screenshot.png",
+      "sha256": "fbc7aac9bd72fb4f611c29d79aaaa986f3d8209737340a29f5921d0523117ada",
+      "bytes": 190035,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/ordered-sewing-20261114/native/checkpoints/undo_edit/screenshot.png",
+      "sha256": "93b3050424b572843d12a101ac8586a3eaccccaa98f4220ea7e611572a5a1d3f",
+      "bytes": 198551,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/seam-reversal-20261114/captures/after-reversal.png",
+      "sha256": "e23f865546429f2ed42b9306bb59271c8c1f63c421c3b2cad30cb2eec14b1834",
+      "bytes": 298109,
+      "actual_mime": "image/png",
+      "suffix": ".png",
+      "suffix_matches_format": true
+    },
+    {
+      "path": "parity/reports/artifacts/seam-reversal-20261114/captures/before-reversal.png",
+      "sha256": "79e6cb0ed20295d2399423a08def7c6ad7df217fdbf9b04bc7a8c3341699f2be",
+      "bytes": 304318,
+      "actual_mime": "image/png",
+      "suffix": ".png",
+      "suffix_matches_format": true
+    },
+    {
+      "path": "parity/reports/artifacts/seam-reversal-20261114/captures/revision-limit-error.png",
+      "sha256": "cf07b868b365cfd267435cf7af25770c25973323c12107e8eddfb61f9e3c7920",
+      "bytes": 266830,
+      "actual_mime": "image/png",
+      "suffix": ".png",
+      "suffix_matches_format": true
+    },
+    {
+      "path": "parity/reports/artifacts/strain-attribution-20261114/native/03-rest-loaded.png",
+      "sha256": "ca9f87bc7c867b7dec120821c7208d4e1a46abc0f14cc32473410a1066d1d530",
+      "bytes": 192583,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/strain-attribution-20261114/native/04-assembly-first-observation.png",
+      "sha256": "43fde9b7db258fd67522c17e6ea55b8106e410387aeae569298d1bfaa0ab9bed",
+      "bytes": 196279,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/strain-attribution-20261114/native/06-assembly-complete-top.png",
+      "sha256": "9e82263694faef6c5a5e0208a18385f4c638f8947bde8262d7bf305826224de5",
+      "bytes": 194576,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/strain-attribution-20261114/native/07-assembly-inspector.png",
+      "sha256": "9cc8af419dad25c6267f5cb5dc1acfd9b0d2a27f6c473eb9c9cbaa841c7fab47",
+      "bytes": 200873,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/strain-attribution-20261114/native/08-assembly-export-complete.png",
+      "sha256": "dcee57850786ae24efc83855e1574941da0cdf4a6122dfb055dcbc61a005604c",
+      "bytes": 196808,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/strain-attribution-20261114/native/10-drape-first-observation.png",
+      "sha256": "1975cdbce01c912014f3144b3474dd2c656929ee8e8b55f484b6ec617fcecb1c",
+      "bytes": 199624,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/strain-attribution-20261114/native/12-drape-complete-inspector.png",
+      "sha256": "6eb51c589391bd5bd7005495111bbe3591676721547116cfd0a12ee71b9b30d3",
+      "bytes": 198337,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    },
+    {
+      "path": "parity/reports/artifacts/strain-attribution-20261114/native/13-drape-export-complete.png",
+      "sha256": "bf8d06665a78b2c69e53613edc4919242ab3e5019d4b73fa71e20a8874666ea4",
+      "bytes": 195964,
+      "actual_mime": "image/jpeg",
+      "suffix": ".png",
+      "suffix_matches_format": false
+    }
+  ]
+}

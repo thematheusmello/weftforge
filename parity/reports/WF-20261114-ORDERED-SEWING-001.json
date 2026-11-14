@@ -923,7 +923,8 @@
     "parity/scenarios/SEW-ORDERED-001.json": "ec882382da0a1e1cc0cc10a532c2ab2cb4ad713008192d9afef061e2bf36bfd0",
     "parity/reports/artifacts/ordered-sewing-publication-20261114/receipt.json": "16749b801a938346160779dca80431b55aa40d9de15c19cd6a05f15e84b1dac4",
     "parity/reports/artifacts/ordered-sewing-publication-20261114/retained-output-replay.log": "71353643da8499165907cf99aae6cd9b05d19a8c0b7d7c9a82663c0c4d0485c8",
-    "parity/reports/artifacts/ordered-sewing-publication-20261114/xtask.public.log": "e69a60cbecc53fb33667d4e3083b52b45737388e8be577fbd31c42885bba4d47"
+    "parity/reports/artifacts/ordered-sewing-publication-20261114/xtask.public.log": "e69a60cbecc53fb33667d4e3083b52b45737388e8be577fbd31c42885bba4d47",
+    "parity/reports/artifacts/capture-encoding-20261114/audit.json": "f4c9e3202fd5fb0913c4ec43a5274d346e64f25e50eaaa2aa121bc44ec120071"
   },
   "scope": "Original ordered partial/reversed/disconnected2:3 authored-arc-length groups and nonlinear maps; legacy f64 semantics; actual rest stitches; shared Editor split/join/history/removal; strict source/file failure preservation; standalone native creation/edit/history/reversal/save/real-quit/relaunch/reopen line case; official legacy SDK. Bounded implementation evidence only.",
   "profile": {
@@ -1275,5 +1276,11 @@
     "Unsigned local macOS package only; no new released binaries, signing/notices or Windows/Linux launch acceptance.",
     "Original metadata/test-driver refusals remain retained; no predeclared criteria, input or limit was altered to pass."
   ],
-  "freshness_reason": "Historical source-bound outputs remain unchanged. Material-strain attribution at6c455 changes current scoped solver/core/UI/CLI source; this complete earlier run has not been re-executed on that scoped source."
+  "freshness_reason": "Historical source-bound outputs remain unchanged. Material-strain attribution at6c455 changes current scoped solver/core/UI/CLI source; this complete earlier run has not been re-executed on that scoped source.",
+  "capture_encoding_qualification": {
+    "audit": "parity/reports/artifacts/capture-encoding-20261114/audit.json",
+    "historical_misnamed_JPEG_captures": 25,
+    "original_bytes_paths_and_manifests_unchanged": true,
+    "qualification": "Historical PNG descriptions refer to .png suffixes; these original captured bytes are JPEG. No pixel conversion or new UI run occurred. The cited audit identifies exact hashes and actual formats."
+  }
 }
