@@ -18,7 +18,7 @@
   "scoped_source_file_count": 30,
   "only_scoped_source_delta": {
     "path": "crates/weftforge-core/tests/migration.rs",
-    "kind": "Uncompiled integration-test fixture preparation normalizes CRLF before inserting explicit decimal literals."
+    "kind": "Integration-test fixture preparation normalizes CRLF before inserting decimal literals; not linked into packaged applications."
   },
   "additional_changes": "Intentional audited autosave fixture now Git-tracked; delivery attributes preserve evidence bytes; AGENTS requires tracked artifact closure/clean checkout. No runtime input or schema change.",
   "original_report": "parity/reports/artifacts/document-f64-20261114/native-execution-report-1528.json",

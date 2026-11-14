@@ -239,8 +239,9 @@ Reference_lab has returned the desktop input lease to root. Root's own
 candidate PID1335 is idle, saved, with an unedited focused grain value; do not
 replace its isolated package. Its read-only REA capture has93 nodes, no gaps or
 truncation and a matched executable digest. Independent I/O verification/bundle
-is complete. No root Cargo job is live. Corrected79-test/Clippy/xtask gates pass; tracked artifact
-closure and a detached clean checkout are required before the CI retry. Generated external caches and private
+is complete. No root Cargo job is live. Corrected79-test/Clippy/xtask gates pass; all257 tracked artifact
+hashes, clean-checkout registry/map checks and fixed-case oracle replay passed
+with command-local core.autocrlf=true. CI retry follows this snapshot. Generated external caches and private
 research remain retained; do not remove unrelated files or change protections.
 
 The source-only anisotropic review independently reproduces the retained weak-warp

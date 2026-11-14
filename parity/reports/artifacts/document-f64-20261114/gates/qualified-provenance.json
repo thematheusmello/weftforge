@@ -30,6 +30,19 @@
       "derivation": "Only personal workspace prefix replaced by ${WORKSPACE}."
     }
   },
-  "final_clean_checkout_and_CI": "pending",
+  "final_clean_checkout_and_CI": {
+    "checked_at": "2026-11-14T08:26:38.476650+00:00",
+    "clean_checkout_commit": "a949ed5bdf0e3b7b0a6316a9dc4e68a82d3b6dd1",
+    "checkout_option": "core.autocrlf=true (command-local; no global setting change)",
+    "tracked_artifact_files": 257,
+    "all_artifact_hashes": "passed",
+    "registry_generated_outputs": "passed",
+    "inventory_map": "passed;928 IDs",
+    "fixed_case_io_oracle_replay": "passed;five negative witnesses and historical rounding failure retained",
+    "post_replay_worktree": "clean",
+    "source_line_endings": "all tracked Rust sources LF",
+    "CI_results": "Recorded separately by the eight push/pull-request checks on PR28; the earlier failed runs remain visible.",
+    "PR": "https://github.com/thematheusmello/weftforge/pull/28"
+  },
   "xtask": "passed;54 Python checks,928-ID map and CLI help"
 }
