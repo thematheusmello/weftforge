@@ -3,18 +3,18 @@
   "product_build": "2026.1.237 (r58920)",
   "baseline_id": "MD-2026.1.237.58920-macos-arm64-20261113",
   "baseline_revision": 1,
-  "catalog_status": "partial-discovery-presence-only",
+  "catalog_status": "partial-discovery-presence-values-and-bounded-actions",
   "initial_state": "New accessible Untitled_MD.zprj workspace, no authored pieces or avatar visible, Fabric tab active. No user files opened.",
-  "surface": "native macOS main menubar, including nested AX-exposed entries in this empty-project state",
+  "surface": "Native macOS main menubar: initial empty-project tree plus separately sourced selected-original-seam contextual additions.",
   "identity_rule": "MDUI- plus first 12 uppercase hexadecimal SHA-256 characters of surface plus full exact label path separated by NUL. IDs persist across insertion/reordering; a renamed path requires an alias review.",
   "counts": {
     "main_menus": 17,
-    "entries_excluding_main_menu_roots": 572,
-    "all_nodes": 589,
-    "leaf_like_nodes": 505,
+    "entries_excluding_main_menu_roots": 576,
+    "all_nodes": 593,
+    "leaf_like_nodes": 509,
     "executed_complete_behavior_contracts": 0,
     "empty_submenus": 2,
-    "command_candidate_leaf_nodes": 503
+    "command_candidate_leaf_nodes": 507
   },
   "evidence_policy": "Full native Computer Use AX menu-action records and selected-app screenshots are retained privately and independently matched against all reviewed paths/disabled markers. REA binds the live workspace/build; its selected-window AX tree does not contain the native macOS menubar.",
   "state_limitations": [
@@ -24,7 +24,8 @@
     "Leading spaces in displayed group labels were normalized; hierarchy follows actual AX submenu nesting, not visual padding.",
     "Edit > Context Menu is a menu-based catalog, not an executed canvas right-click context menu.",
     "No menu presence is a successful end-to-end workflow or reference-parity claim.",
-    "Account/activation/storefront and OS service entries are inventoried without account actions; replacement scope must be assessed separately."
+    "Account/activation/storefront and OS service entries are inventoried without account actions; replacement scope must be assessed separately.",
+    "Counts now describe a union of distinct observed contexts, not one simultaneous menu state. New label paths are kept separate until alias/behavior review."
   ],
   "records": [
     {
@@ -4204,9 +4205,9 @@
         "Context Menu",
         "2D Pattern",
         "Rotate",
-        "Clockwise (45º)"
+        "Clockwise (45\u00ba)"
       ],
-      "label": "Clockwise (45º)",
+      "label": "Clockwise (45\u00ba)",
       "node_kind": "menu_item",
       "presence_status": "observed",
       "state_at_observation": {
@@ -4228,9 +4229,9 @@
         "Context Menu",
         "2D Pattern",
         "Rotate",
-        "Clockwise (90º)"
+        "Clockwise (90\u00ba)"
       ],
-      "label": "Clockwise (90º)",
+      "label": "Clockwise (90\u00ba)",
       "node_kind": "menu_item",
       "presence_status": "observed",
       "state_at_observation": {
@@ -4252,9 +4253,9 @@
         "Context Menu",
         "2D Pattern",
         "Rotate",
-        "Counterclockwise (45º)"
+        "Counterclockwise (45\u00ba)"
       ],
-      "label": "Counterclockwise (45º)",
+      "label": "Counterclockwise (45\u00ba)",
       "node_kind": "menu_item",
       "presence_status": "observed",
       "state_at_observation": {
@@ -4276,9 +4277,9 @@
         "Context Menu",
         "2D Pattern",
         "Rotate",
-        "Counterclockwise (90º)"
+        "Counterclockwise (90\u00ba)"
       ],
-      "label": "Counterclockwise (90º)",
+      "label": "Counterclockwise (90\u00ba)",
       "node_kind": "menu_item",
       "presence_status": "observed",
       "state_at_observation": {
@@ -4835,7 +4836,18 @@
       "behavior_status": "not_executed",
       "presence_evidence_id": "CUA-MENU-EDIT-20261114",
       "workspace_binding_evidence_id": "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
-      "observed_at": "2026-11-14T00:38:47.186Z"
+      "observed_at": "2026-11-14T00:38:47.186Z",
+      "additional_state_observations": [
+        {
+          "evidence_id": "CUA-SELECTED-SEAM-EDIT-MENU-20261114",
+          "observed_at": "2026-11-14T07:49:40.774Z",
+          "context": "Selected original reversed partial seam",
+          "disabled_marker": false,
+          "enabled": null,
+          "checked": null,
+          "shortcut": null
+        }
+      ]
     },
     {
       "id": "MDUI-091C42E7A68B",
@@ -4855,10 +4867,26 @@
         "checked": null,
         "shortcut": null
       },
-      "behavior_status": "not_executed",
+      "behavior_status": "bounded_original_partial_reverse_history_document_reopen",
       "presence_evidence_id": "CUA-MENU-EDIT-20261114",
       "workspace_binding_evidence_id": "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
-      "observed_at": "2026-11-14T00:38:47.186Z"
+      "observed_at": "2026-11-14T00:38:47.186Z",
+      "additional_state_observations": [
+        {
+          "evidence_id": "CUA-SELECTED-SEAM-EDIT-MENU-20261114",
+          "observed_at": "2026-11-14T07:49:40.774Z",
+          "context": "Selected original reversed partial seam",
+          "disabled_marker": false,
+          "enabled": null,
+          "checked": null,
+          "shortcut": null
+        }
+      ],
+      "case_ids": [
+        "REF-SEW-002-REVERSE-003"
+      ],
+      "behavior_evidence_id": "ev_43eafac4eeb88048db8360bfdedb6bffb47aba7c8db83e611cae041ee0365069",
+      "behavior_contract": "spec/features/SEW-002-reverse-runtime-20261114.md"
     },
     {
       "id": "MDUI-F12789DD3D7B",
@@ -4881,7 +4909,18 @@
       "behavior_status": "not_executed",
       "presence_evidence_id": "CUA-MENU-EDIT-20261114",
       "workspace_binding_evidence_id": "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
-      "observed_at": "2026-11-14T00:38:47.186Z"
+      "observed_at": "2026-11-14T00:38:47.186Z",
+      "additional_state_observations": [
+        {
+          "evidence_id": "CUA-SELECTED-SEAM-EDIT-MENU-20261114",
+          "observed_at": "2026-11-14T07:49:40.774Z",
+          "context": "Selected original reversed partial seam",
+          "disabled_marker": false,
+          "enabled": null,
+          "checked": null,
+          "shortcut": null
+        }
+      ]
     },
     {
       "id": "MDUI-3A218EEFA2AC",
@@ -4904,7 +4943,18 @@
       "behavior_status": "not_executed",
       "presence_evidence_id": "CUA-MENU-EDIT-20261114",
       "workspace_binding_evidence_id": "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
-      "observed_at": "2026-11-14T00:38:47.186Z"
+      "observed_at": "2026-11-14T00:38:47.186Z",
+      "additional_state_observations": [
+        {
+          "evidence_id": "CUA-SELECTED-SEAM-EDIT-MENU-20261114",
+          "observed_at": "2026-11-14T07:49:40.774Z",
+          "context": "Selected original reversed partial seam",
+          "disabled_marker": false,
+          "enabled": null,
+          "checked": null,
+          "shortcut": null
+        }
+      ]
     },
     {
       "id": "MDUI-596E929A4341",
@@ -4927,7 +4977,18 @@
       "behavior_status": "not_executed",
       "presence_evidence_id": "CUA-MENU-EDIT-20261114",
       "workspace_binding_evidence_id": "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
-      "observed_at": "2026-11-14T00:38:47.186Z"
+      "observed_at": "2026-11-14T00:38:47.186Z",
+      "additional_state_observations": [
+        {
+          "evidence_id": "CUA-SELECTED-SEAM-EDIT-MENU-20261114",
+          "observed_at": "2026-11-14T07:49:40.774Z",
+          "context": "Selected original reversed partial seam",
+          "disabled_marker": false,
+          "enabled": null,
+          "checked": null,
+          "shortcut": null
+        }
+      ]
     },
     {
       "id": "MDUI-73ACD4EE3897",
@@ -4950,7 +5011,18 @@
       "behavior_status": "not_executed",
       "presence_evidence_id": "CUA-MENU-EDIT-20261114",
       "workspace_binding_evidence_id": "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
-      "observed_at": "2026-11-14T00:38:47.186Z"
+      "observed_at": "2026-11-14T00:38:47.186Z",
+      "additional_state_observations": [
+        {
+          "evidence_id": "CUA-SELECTED-SEAM-EDIT-MENU-20261114",
+          "observed_at": "2026-11-14T07:49:40.774Z",
+          "context": "Selected original reversed partial seam",
+          "disabled_marker": false,
+          "enabled": null,
+          "checked": null,
+          "shortcut": null
+        }
+      ]
     },
     {
       "id": "MDUI-78C0FCF40644",
@@ -11721,9 +11793,9 @@
       "path": [
         "Settings",
         "Language",
-        "简体中文"
+        "\u7b80\u4f53\u4e2d\u6587"
       ],
-      "label": "简体中文",
+      "label": "\u7b80\u4f53\u4e2d\u6587",
       "node_kind": "menu_item",
       "presence_status": "observed",
       "state_at_observation": {
@@ -11743,9 +11815,9 @@
       "path": [
         "Settings",
         "Language",
-        "日本語"
+        "\u65e5\u672c\u8a9e"
       ],
-      "label": "日本語",
+      "label": "\u65e5\u672c\u8a9e",
       "node_kind": "menu_item",
       "presence_status": "observed",
       "state_at_observation": {
@@ -11765,9 +11837,9 @@
       "path": [
         "Settings",
         "Language",
-        "한국어"
+        "\ud55c\uad6d\uc5b4"
       ],
-      "label": "한국어",
+      "label": "\ud55c\uad6d\uc5b4",
       "node_kind": "menu_item",
       "presence_status": "observed",
       "state_at_observation": {
@@ -11809,9 +11881,9 @@
       "path": [
         "Settings",
         "Language",
-        "Español"
+        "Espa\u00f1ol"
       ],
-      "label": "Español",
+      "label": "Espa\u00f1ol",
       "node_kind": "menu_item",
       "presence_status": "observed",
       "state_at_observation": {
@@ -11831,9 +11903,9 @@
       "path": [
         "Settings",
         "Language",
-        "Français"
+        "Fran\u00e7ais"
       ],
-      "label": "Français",
+      "label": "Fran\u00e7ais",
       "node_kind": "menu_item",
       "presence_status": "observed",
       "state_at_observation": {
@@ -11875,9 +11947,9 @@
       "path": [
         "Settings",
         "Language",
-        "Português"
+        "Portugu\u00eas"
       ],
-      "label": "Português",
+      "label": "Portugu\u00eas",
       "node_kind": "menu_item",
       "presence_status": "observed",
       "state_at_observation": {
@@ -11897,9 +11969,9 @@
       "path": [
         "Settings",
         "Language",
-        "繁體中文"
+        "\u7e41\u9ad4\u4e2d\u6587"
       ],
-      "label": "繁體中文",
+      "label": "\u7e41\u9ad4\u4e2d\u6587",
       "node_kind": "menu_item",
       "presence_status": "observed",
       "state_at_observation": {
@@ -12362,9 +12434,9 @@
       "path": [
         "Help",
         "Manual",
-        "中文"
+        "\u4e2d\u6587"
       ],
-      "label": "中文",
+      "label": "\u4e2d\u6587",
       "node_kind": "menu_item",
       "presence_status": "observed",
       "state_at_observation": {
@@ -12406,9 +12478,9 @@
       "path": [
         "Help",
         "Manual",
-        "日本語"
+        "\u65e5\u672c\u8a9e"
       ],
-      "label": "日本語",
+      "label": "\u65e5\u672c\u8a9e",
       "node_kind": "menu_item",
       "presence_status": "observed",
       "state_at_observation": {
@@ -12428,9 +12500,9 @@
       "path": [
         "Help",
         "Manual",
-        "한국어"
+        "\ud55c\uad6d\uc5b4"
       ],
-      "label": "한국어",
+      "label": "\ud55c\uad6d\uc5b4",
       "node_kind": "menu_item",
       "presence_status": "observed",
       "state_at_observation": {
@@ -12886,9 +12958,9 @@
       "path": [
         "MarvelousDesigner",
         "Services",
-        "Services Settings…"
+        "Services Settings\u2026"
       ],
-      "label": "Services Settings…",
+      "label": "Services Settings\u2026",
       "node_kind": "menu_item",
       "presence_status": "observed",
       "state_at_observation": {
@@ -12986,6 +13058,117 @@
       "presence_evidence_id": "CUA-MENU-MARVELOUSDESIGNER-20261114",
       "workspace_binding_evidence_id": "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
       "observed_at": "2026-11-14T00:39:52.435Z"
+    },
+    {
+      "id": "MDUI-A376C6210DDA",
+      "parent_id": "MDUI-EC1AFA767E6E",
+      "path": [
+        "Edit",
+        "Context Menu",
+        "3D Garment",
+        "Flat"
+      ],
+      "label": "Flat",
+      "node_kind": "menu_item",
+      "presence_status": "observed",
+      "state_at_observation": {
+        "disabled_marker": false,
+        "enabled": null,
+        "checked": null,
+        "shortcut": null
+      },
+      "behavior_status": "not_executed",
+      "presence_evidence_id": "CUA-SELECTED-SEAM-EDIT-MENU-20261114",
+      "workspace_binding_evidence_id": "ev_43eafac4eeb88048db8360bfdedb6bffb47aba7c8db83e611cae041ee0365069",
+      "observed_at": "2026-11-14T07:49:40.774Z",
+      "observed_context": "Selected original reversed partial seam in Edit Sewing; two panels, simulation off.",
+      "note": "Context-specific label/presence; behavioral equivalence to other labels is not established."
+    },
+    {
+      "id": "MDUI-BDCB24B978FF",
+      "parent_id": "MDUI-7618D0581096",
+      "path": [
+        "Edit",
+        "Context Menu",
+        "Sewing",
+        "Apply Turned Sewing Line Type"
+      ],
+      "label": "Apply Turned Sewing Line Type",
+      "node_kind": "menu_item",
+      "presence_status": "observed",
+      "state_at_observation": {
+        "disabled_marker": false,
+        "enabled": null,
+        "checked": null,
+        "shortcut": null
+      },
+      "behavior_status": "not_executed",
+      "presence_evidence_id": "CUA-SELECTED-SEAM-EDIT-MENU-20261114",
+      "workspace_binding_evidence_id": "ev_43eafac4eeb88048db8360bfdedb6bffb47aba7c8db83e611cae041ee0365069",
+      "observed_at": "2026-11-14T07:49:40.774Z",
+      "observed_context": "Selected original reversed partial seam in Edit Sewing; two panels, simulation off.",
+      "note": "Context-specific label/presence; behavioral equivalence to other labels is not established.",
+      "additional_state_observations": [
+        {
+          "evidence_id": "CUA-SELECTED-SEAM-EDIT-MENU-20261114",
+          "observed_at": "2026-11-14T07:49:40.774Z",
+          "context": "Selected original reversed partial seam",
+          "disabled_marker": false,
+          "enabled": null,
+          "checked": null,
+          "shortcut": null
+        }
+      ]
+    },
+    {
+      "id": "MDUI-7132EF1C1807",
+      "parent_id": "MDUI-3F450191D942",
+      "path": [
+        "Edit",
+        "Context Menu",
+        "Display",
+        "Show 3D Pattern"
+      ],
+      "label": "Show 3D Pattern",
+      "node_kind": "menu_item",
+      "presence_status": "observed",
+      "state_at_observation": {
+        "disabled_marker": false,
+        "enabled": null,
+        "checked": null,
+        "shortcut": null
+      },
+      "behavior_status": "not_executed",
+      "presence_evidence_id": "CUA-SELECTED-SEAM-EDIT-MENU-20261114",
+      "workspace_binding_evidence_id": "ev_43eafac4eeb88048db8360bfdedb6bffb47aba7c8db83e611cae041ee0365069",
+      "observed_at": "2026-11-14T07:49:40.774Z",
+      "observed_context": "Selected original reversed partial seam in Edit Sewing; two panels, simulation off.",
+      "note": "Context-specific label/presence; behavioral equivalence to other labels is not established."
+    },
+    {
+      "id": "MDUI-C698D7B5E4AC",
+      "parent_id": "MDUI-3F450191D942",
+      "path": [
+        "Edit",
+        "Context Menu",
+        "Display",
+        "Hide All 3D Patterns"
+      ],
+      "label": "Hide All 3D Patterns",
+      "node_kind": "menu_item",
+      "presence_status": "observed",
+      "state_at_observation": {
+        "disabled_marker": false,
+        "enabled": null,
+        "checked": null,
+        "shortcut": null
+      },
+      "behavior_status": "not_executed",
+      "presence_evidence_id": "CUA-SELECTED-SEAM-EDIT-MENU-20261114",
+      "workspace_binding_evidence_id": "ev_43eafac4eeb88048db8360bfdedb6bffb47aba7c8db83e611cae041ee0365069",
+      "observed_at": "2026-11-14T07:49:40.774Z",
+      "observed_context": "Selected original reversed partial seam in Edit Sewing; two panels, simulation off.",
+      "note": "Context-specific label/presence; behavioral equivalence to other labels is not established."
     }
   ],
   "evidence": [
@@ -13209,7 +13392,44 @@
         "Menu presence/default marker snapshot only; actions not executed.",
         "Private full tool records include commercial/account UI and are not redistributable."
       ]
+    },
+    {
+      "id": "CUA-SELECTED-SEAM-EDIT-MENU-20261114",
+      "tool": "Native Computer Use AX menu action/state",
+      "tool_version": "1001874",
+      "observed_at": "2026-11-14T07:49:40.774Z",
+      "record_sha256": "318aa2109d360c1639b2c3d330238cdaa7ae4733ab57baa4fc2b5261cc492b0b",
+      "retention": "complete-private-tool-record",
+      "observed_edit_menu_paths": 153,
+      "limitations": [
+        "Selected-seam presence/disabled-marker snapshot; unexecuted commands remain unexecuted.",
+        "Native selected-window REA does not contain the macOS menubar.",
+        "One Escape attempt left the menu open; exposed Cancel action closed it. Escape delivery/behavior remains unresolved."
+      ]
+    },
+    {
+      "id": "CUA-SELECTED-SEAM-MENU-CLOSE-REVIEW-20261114",
+      "tool": "reviewed CUA action/state extract; complete raw tool response not exported",
+      "recorded_at": "2026-11-14T07:56:23.462406+00:00",
+      "record_sha256": "b1fce9999e7852b1a5e52ad1cc961c0607b4d90732d520329e75c5cdc7668928",
+      "retention": "private reviewed extract",
+      "limitations": [
+        "One Escape attempt left the menu visible; exposed Cancel then returned the standard window. Escape delivery versus behavior remains unresolved."
+      ]
     }
   ],
-  "review_validation": "All589 exact hierarchy paths and disabled markers matched against17 retained raw native menu records. Known empty submenus are typed explicitly. This checks transcription, not behavior or completeness beyond the observed state."
+  "review_validation": "Original 589 paths/disabled markers remain unchanged. A later complete selected-seam Edit tree has 153 normalized paths; four new exact paths extend the union to 593. Three original contextual labels are absent in the later tree. Transcription and stable IDs were checked; functional equivalence and overall completeness are not established.",
+  "initial_state_node_count": 589,
+  "observed_contexts": [
+    {
+      "name": "Initial empty project",
+      "nodes": 589
+    },
+    {
+      "name": "Selected original reversed partial seam",
+      "edit_menu_paths": 153,
+      "evidence_id": "CUA-SELECTED-SEAM-EDIT-MENU-20261114",
+      "note": "Four previously unseen exact paths; three initial labels are absent in this state. No alias or functional equivalence inferred."
+    }
+  ]
 }

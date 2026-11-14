@@ -1,38 +1,40 @@
 {
   "schema_version": 1,
   "purpose": "Source-pinned engineering crosswalk and bounded handoff queue, not a second implementation/verification status registry or a complete product inventory.",
-  "source_commit": "df28375c5a070f9516c32534aa4202f3a06f9662",
+  "source_commit": "6401c6aa0aa1a54e1642b334dad1c5729466e0af",
   "reference_build": "2026.1.237 (r58920)",
   "inputs": [
     {
       "catalog": "menus",
       "path": "spec/inventory/md-2026.1.237-main-menus.json",
-      "sha256": "0d0ebb92cac1d64a717249dc9f10fbb4ac7256b447442d99c3eb88a5314dece9",
-      "records": 589
+      "sha256": "e9910b3fa78a2fbf59fe3ad3ba0e9545cfd609d9c0d010a753e0da4edb3fd996",
+      "records": 593
     },
     {
       "catalog": "components",
       "path": "spec/inventory/md-2026.1.237-components.json",
-      "sha256": "00395c1b0493c5f35c51bda485ac7f355b3421f4ddd15dec3336dcad50f6e6db",
-      "records": 339
+      "sha256": "6d8bebdfd01202a50a387e4492afe3ace6fc6e9c3b58571fbb0528281addb38f",
+      "records": 356
     }
   ],
   "status_authority": {
     "path": "parity/features.yaml",
     "lookup": "Join groups[].feature_ids to features[].id at the revision being reported. Read implementation_status, reference_observation_status, verification_status and freshness there; no status value is copied here.",
-    "pinned_registry_sha256": "1ed6e66d146928dd08ee44d6ef8dae59f7a67c3d3781c265aa1bd5f785256a61"
+    "pinned_registry_sha256": "ee8643c0aaba7b7a5ff2b766ad04d24320f31b9373c36d7ae034d02c176d00ea"
   },
   "coverage_semantics": [
-    "928 catalog IDs are entry-path discovery records, not the feature denominator. All previous 902 entries and 202 packets remain; 26 additional Segment Sewing/seam-panel observations and three bounded groups/packets do not complete broad features. Counts of groups or packets are ownership counts, not parity percentages.",
-    "The menu input is an empty-workspace snapshot. Components include selected original-pattern/constructor/OBJ/Fit controls and read-only preference configuration. Reviewed bounded rectangle creation/history/reopen, one 20-to-10 mm resolution edit/history/export and delayed process restart/reopen were executed in the reference; preference effects, ranges, alternate options, much canvas/context behavior and physics remain untested.",
+    "949 catalog IDs are entry-path discovery records, not the feature denominator. All previous 928 entries, 205 packets and 56 source landmarks remain; 17 input-specific Open Project controls and four selected-seam Edit-menu label paths join existing groups. No packet or broad feature is completed by these additions. Counts of groups or packets are ownership counts, not parity percentages.",
+    "The menu input is a union of the initial empty-workspace snapshot and four selected original-seam Edit-menu label paths, not one simultaneous state. Components include selected original-pattern/constructor/OBJ/Fit controls, read-only preferences and one input-specific Open Project dialog. Bounded rectangle/resolution/whole-edge/partial-pair/reversal/history/reopen cases are documented separately; preference effects, alternate options, ranges, general correspondence and physics remain untested.",
     "mapping_relation is a source relationship at source_commit: candidate_partial means connected source exists for a bounded related behavior; planned means a mapped capability is missing; ambiguous means its semantics or role cannot yet be assigned decisively. These values are not authoritative feature statuses.",
     "Coherent groups preserve candidate aliases and distinct selection/format/parameter variants. Similar labels do not establish identical behavior; each entry path must be exercised or have an evidenced alias contract.",
     "Heading is provisional for three disabled section-like leaves; keep them visible until nonempty/selected-state evidence resolves the role. Empty submenus remain containers, with unknown dynamic children.",
     "Only vendor activation/session administration is excluded among these records. Hosted creation, rigging, AI, templates, content acquisition and local equivalents stay in scope; storefront-only exclusion requires evidence and later reviewed scope adjudication.",
     "Component paths can contain explicit reviewer descriptors for unlabeled or repeated controls; retain exact catalog paths without asserting that every path segment is a printed label. No values from private paths, vendor presets, textures or palettes are reproduced here.",
     "The new vendor account-switch action is excluded session administration; its preferences category and all substantive creation/content/extension workflows remain inventoried. Read-only preference values are current configuration, not factory constants, tested bindings, calibrated units or a selected numeric locale/language.",
-    "The new original curve/history run is bounded to one displayed 200.0-to-206.9 mm edge change and one Undo/Redo. Numeric Free Sewing reaches a 100 mm first-side preview only; the second side, completed/reversed seam, exact curve/control-point/arc-length geometry and Escape cancellation remain unconfirmed. A pointer-dependent initial length is not a default and mm is not a locale identifier.",
-    "Whole-edge Segment Sewing has one freshly observed original pair/history/document-reopen outcome despite an interrupted pairing input run; guard refusals posted no input where stated. The driver outcome and observed authoring effect remain separate. Seam fields/sliders, current 5/180 values and literal 300.0 labels do not establish units/ranges, exact endpoint ordering, reversed/partial sewing, physical effects or process restart."
+    "The original curve/history run remains bounded to one displayed 200.0-to-206.9 mm edge change and one Undo/Redo; its 100 mm first-side preview did not complete a seam and Escape cancellation remains unresolved. A later separate case accepts two numeric 100 mm sides, one Undo/Redo and document reopen; a further case switches categorical dashed endpoint guides through Reverse Sewing and repeats history/reopen. Neither case measures exact controls, continuous arc length, unequal-length easing or simulation. Pointer-dependent initial lengths are not defaults and mm is not a locale identifier.",
+    "Whole-edge Segment Sewing has one original pair/history/document-reopen outcome despite an interrupted pairing input run; guard refusals posted no input where stated. The later paired partial/reversal cases retain their own input/capture qualifications. Driver outcomes and observed authoring effects remain separate. Current seam values and visible labels do not establish factory defaults, ranges, unprinted units, continuous correspondence, physical effects or process restart.",
+    "Open Project Open/Garment/Display Settings were accepted unchanged for one original input. Add, other contents, Reset, Cancel and Close were not exercised; gray unchecked controls have no retained AX enabled flag and are not universal availability/default rules.",
+    "Flat, Apply Turned Sewing Line Type, Show 3D Pattern and Hide All 3D Patterns retain new exact IDs alongside earlier labels. Group membership is an engineering handoff, not an alias/equivalence finding. The selected-seam Edit > Context Menu tree does not establish a canvas right-click menu, and contextual absence does not delete an earlier observation."
   ],
   "mapping_relation_values": [
     "candidate_partial",
@@ -491,6 +493,24 @@
         "spec/observations/REF-SEW-001-WHOLE-001.json"
       ],
       "rule": "The reference result is a bounded visible pair/history/document-reopen observation after interrupted input. No clean driver pass, exact orientation, process restart, property effect, completed partial seam or simulation answer is provided. Private native resources are excluded."
+    },
+    "partial-sewing-history": {
+      "setup": "Use two original 0.20 by 0.30 m panels with simulation off. Retain the reviewed curved upper boundary and straight second boundary as a bounded visible case with unknown exact curve controls. Accept 0.100 m on both numeric sides, distinguish the first-side preview from a selected pair, retain categorical A0/A1/B0/B1 guide connections, then reverse once with Undo/Redo and separate document New/Open. For independent numerical comparison author a new asymmetric cubic with declared original controls and integrated arc length before running either application.",
+      "existing_original_seeds": [
+        "spec/features/SEW-002-paired-runtime-20261114.md",
+        "spec/observations/REF-SEW-002-PAIR-002.json",
+        "spec/features/SEW-002-reverse-runtime-20261114.md",
+        "spec/observations/REF-SEW-002-REVERSE-003.json"
+      ],
+      "rule": "The public cases supply displayed lengths and categorical endpoint-guide changes, not proprietary projects, continuous arc-length answers, hidden orientation flags, a restart, physical twist or a simulation reference. Preserve the separate original incomplete preview case and its input/capture limitations."
+    },
+    "open-project-options": {
+      "setup": "Open an original saved two-panel project and record which content is present, the modal current Open/Add selection, checked/gray fields, exact control labels and preserved old document before acceptance. Repeat future alternative-content, Add, Reset and cancellation cases separately with independently authored inputs and predeclared old-document/history checks.",
+      "existing_original_seeds": [
+        "spec/features/SEW-002-paired-runtime-20261114.md",
+        "spec/observations/REF-SEW-002-PAIR-002.json"
+      ],
+      "rule": "Only unchanged current Open/Garment/Display Settings accepted through OK is observed. Gray/unchecked is input-specific visual evidence with no retained AX enabled flag; alternate-content, mode-switch, Reset, Cancel/Close and universal defaults remain untested. No private native input is supplied."
     }
   },
   "owner_lanes": {
@@ -3207,14 +3227,17 @@
       ],
       "runtime_questions": [
         "Which editable objects/assets/settings and metadata are stored by each variant, and what happens on cancel, unsupported versions or missing assets?",
-        "Do these preferences affect future save dialogs, embedded data or sidecars, and what is included/excluded for native editable construction, thumbnails, metadata and unsupported reference formats?"
+        "Do these preferences affect future save dialogs, embedded data or sidecars, and what is included/excluded for native editable construction, thumbnails, metadata and unsupported reference formats?",
+        "For each original content mix, what enables the Open Project Garment/Avatar/Scene and Props/3D State/Custom View/Display Settings controls, and how do selection changes, Reset, Cancel and Close preserve the old document and history?"
       ],
       "fixture_ids": [
         "dirty-project",
         "save-failure",
-        "preference-effects"
+        "preference-effects",
+        "open-project-options"
       ],
-      "packet_id": "PACK-project-load-save"
+      "packet_id": "PACK-project-load-save",
+      "reviewed_reference_scope": "One original input opened using current Open, checked Garment and Display Settings, with other content gray/unchecked and no retained AX enabled flag. OK was accepted unchanged; mode switching, other content, Reset, Cancel/Close and general option/default/format behavior remain untested."
     },
     {
       "id": "garment-packages",
@@ -3264,13 +3287,16 @@
         "Validated merge with fresh IDs, preserved seams/materials/assets and one transaction."
       ],
       "runtime_questions": [
-        "How are duplicate names, units, avatars, materials and document settings resolved on Add Project and cancellation?"
+        "How are duplicate names, units, avatars, materials and document settings resolved on Add Project and cancellation?",
+        "The input-specific Open Project dialog exposes Add unselected. Does that radio route share the Add Project contract, what options change after selection, and is one merged transaction cancellable without replacing the old document? No Add action was executed."
       ],
       "fixture_ids": [
         "three-pieces",
-        "avatar-pair"
+        "avatar-pair",
+        "open-project-options"
       ],
-      "packet_id": "PACK-project-merge"
+      "packet_id": "PACK-project-merge",
+      "reviewed_reference_scope": "The newly mapped Add radio is presence/current state only; grouping with Add Project does not establish entry equivalence or merge behavior."
     },
     {
       "id": "trim-assets",
@@ -4525,15 +4551,18 @@
       ],
       "runtime_questions": [
         "For every entry path, which 2D/3D/rest/current state is the source/target, which axes/pivots are used and do sewing/materials or current drape survive?",
-        "What scope and unit do Default Arrangement Shape Type and Point Size use, and do they change authored placement, arrangement aids or only future objects?"
+        "What scope and unit do Default Arrangement Shape Type and Point Size use, and do they change authored placement, arrangement aids or only future objects?",
+        "The selected-seam Edit tree exposes Flat where the initial tree included Arrange as Flat. Are these aliases or different state/scope operations, and which construction/rest/current states and history change? Neither label was executed in this observation."
       ],
       "fixture_ids": [
         "three-pieces",
         "avatar-pair",
         "layered-panels",
-        "preference-effects"
+        "preference-effects",
+        "partial-sewing-history"
       ],
-      "packet_id": "PACK-arrangement"
+      "packet_id": "PACK-arrangement",
+      "reviewed_reference_scope": "Flat is a later exact contextual label with its own ID; Arrange as Flat remains retained. No alias, flattening result, selected-scope or physical behavior is inferred."
     },
     {
       "id": "symmetric-weights",
@@ -5132,15 +5161,17 @@
       ],
       "candidate_behavior": "Oriented intervals and explicit correspondence are editable in core; native UI exposes orientation only while creating a seam.",
       "missing_functionality": [
-        "Reference-equivalent selected seam reverse command/feedback and preservation of correspondence under undo/remesh."
+        "A selected-seam reverse command with bounded categorical guide feedback, unchanged intervals/lengths/settings, one-step history and document persistence is now observed in the reference. WeftForge still needs a connected selected-seam reverse action and independent continuous correspondence/remesh/undo checks; UI guides do not expose a hidden orientation flag or exact arc-length mapping."
       ],
       "runtime_questions": [
-        "Does Reverse Sewing reverse one side, swap sides, alter correspondence or reorient both; what pair points and seam IDs remain?"
+        "The bounded reference command switches A0-B0/A1-B1 guides to A0-B1/A1-B0 while preserving the same 100.0-labeled intervals. Which continuous pair points, ordered-side representation and stable IDs are retained beyond this categorical UI result, and how do unequal lengths, multiple selection, remeshing, cancel/error and alternative entry routes behave?"
       ],
       "fixture_ids": [
-        "unequal-curves"
+        "unequal-curves",
+        "partial-sewing-history"
       ],
-      "packet_id": "PACK-reverse-sewing"
+      "packet_id": "PACK-reverse-sewing",
+      "reviewed_reference_scope": "REF-SEW-002-REVERSE-003 uses Edit > Context Menu > Sewing > Reverse Sewing once, then Undo/Redo and same-process document New/Open. Initial selected captures are truncated with five unrelated AX attribute failures; final reopened selected capture is complete. No canvas right-click, shortcut, toolbar, multiple selection, independent geometry, process restart, simulation or parity result is supplied."
     },
     {
       "id": "fabric-assignment",
@@ -5406,14 +5437,17 @@
         "Independent display visibility/isolation model with selected/all/archive/avatar scopes and picking consistency."
       ],
       "runtime_questions": [
-        "Does hidden state affect selection, physics, export or persistence; how do isolate and Show All restore prior visibility?"
+        "Does hidden state affect selection, physics, export or persistence; how do isolate and Show All restore prior visibility?",
+        "What selected/all/view scope and restoration state do the later Show 3D Pattern and Hide All 3D Patterns labels use, and are earlier garment-label paths aliases? Their selected-seam menu presence alone answers none of these questions."
       ],
       "fixture_ids": [
         "three-pieces",
         "avatar-pair",
-        "layered-panels"
+        "layered-panels",
+        "partial-sewing-history"
       ],
-      "packet_id": "PACK-visibility-isolation"
+      "packet_id": "PACK-visibility-isolation",
+      "reviewed_reference_scope": "Show 3D Pattern and Hide All 3D Patterns are distinct newly observed selected-seam Edit-menu paths. They were not executed and do not prove a canvas context menu or alias equivalence."
     },
     {
       "id": "wireframe",
@@ -6252,7 +6286,7 @@
       ],
       "candidate_behavior": "Core can update/remove seams; native UI creates interval seams and removes them but lacks full seam selection/edit tool and direction/length editor.",
       "missing_functionality": [
-        "One reopened seam is retrieved through Edit Sewing then Select All with the same private identity/current values; direct picking, name/property/interval/correspondence edits, invalid/cancelled input and full preflight diagnostics remain unqualified."
+        "Reopened whole/partial/reversed seams are retrieved through Edit Sewing then Select All with unchanged identity/current settings; direct picking, name/property/interval edits, invalid/cancelled input, multiple selection and full preflight diagnostics remain unqualified. One exposed Reverse Sewing command changes categorical guides but does not measure continuous correspondence."
       ],
       "runtime_questions": [
         "How are seams selected/edited, do handles address arc length or parameters and which errors/length mismatch/direction warnings appear before simulation?",
@@ -6262,10 +6296,11 @@
       "fixture_ids": [
         "unequal-curves",
         "curved-sewing-preview",
-        "whole-edge-sewing"
+        "whole-edge-sewing",
+        "partial-sewing-history"
       ],
       "packet_id": "PACK-sewing-editor",
-      "reviewed_reference_scope": "The selected seam panel and current unedited fields return after one Redo and document reopen. Generated name identity was compared privately, not exposed as a naming algorithm/default; no property edit or header action was executed."
+      "reviewed_reference_scope": "Selected whole-edge, partial and reversed pairs return with the same private name and unedited current fields after history/document reopen. The partial reversal command changes dashed guides only at the documented categorical level. Generated names are private identity checks, not a naming algorithm; no ordinary property edit or header action was executed."
     },
     {
       "id": "segment-sewing",
@@ -6292,19 +6327,20 @@
       ],
       "candidate_behavior": "Oriented authored intervals and explicit monotone mapping generate weighted stitches independent of tessellation; native edge-pair creation exists.",
       "missing_functionality": [
-        "Complete entry/selection/direction/endpoint contracts beyond the newly observed one whole-edge pair, including interval/free endpoints, reversed/unequal/curved cases and precise mismatch/correspondence diagnostics.",
-        "The separate 100 mm Free Sewing first-side preview still does not establish a completed partial or reversed seam. The new Segment Sewing whole-edge outcome supplies no exact ordered endpoint or arc-length equivalence, sewn remeshing, simulation or process-restart contract."
+        "Complete entry/selection/direction/endpoint contracts beyond the bounded whole-edge, paired partial and categorical reversal cases, including unequal lengths/easing, exact curved/free endpoints and numerical mismatch/correspondence diagnostics.",
+        "Two separately accepted numeric 100 mm sides now establish one completed partial pair and a later Reverse Sewing changes categorical endpoint guides. These outcomes supply no exact control geometry, continuous arc-length mapping, sewn remeshing, simulation or process-restart contract."
       ],
       "runtime_questions": [
         "Which orientation, selected intervals and endpoint picks define sewing; how are reversed, curved and unequal-length cases accepted, diagnosed and edited?",
-        "Which exact ordered endpoints and numerical orientation correspond to the visible marks, and how do manual/shortcut/3D entry, mismatch, reverse, invalid/cancelled input and independent fixed-unit geometry compare beyond this whole-edge case?"
+        "Beyond the bounded whole-edge, paired 100 mm and categorical reversal cases, which exact numerical endpoints and orientation match the visible marks; how do manual/shortcut/3D entry, unequal lengths, invalid/cancelled input and independent fixed-unit geometry compare?"
       ],
       "fixture_ids": [
         "unequal-curves",
-        "whole-edge-sewing"
+        "whole-edge-sewing",
+        "partial-sewing-history"
       ],
       "packet_id": "PACK-segment-sewing",
-      "reviewed_reference_scope": "One original whole-edge pair uses two declared 300 mm straight sides and displays literal 300.0 on both traces under separately observed Millimeter configuration. One Undo/Redo and document New/Open restore the same private identity/current settings. A fresh read established the pair after an interrupted driver run with possible partial input; earlier guard refusals are retained separately. No clean driver pass, N shortcut/3D gesture, numerical orientation, reversal, partial completion, simulation or independent geometric correspondence is claimed."
+      "reviewed_reference_scope": "The earlier 300.0-label whole-edge result retains interrupted/partial-input qualification and its separate guard refusals. Later independent cases accept two numeric 100 mm sides and change dashed endpoint guides via exposed Reverse Sewing, each with one Undo/Redo and same-process document reopen. Partial paired and reversal captures retain their own AX/truncation/warning limits. No clean pass is retroactively assigned to the earlier driver, and no continuous correspondence, shortcut/3D input, restart or physical sewing is established."
     },
     {
       "id": "free-chain-sewing",
@@ -6327,19 +6363,20 @@
       "candidate_behavior": "Single-curve interval seams and explicit correspondence exist; no ordered edge-chain entity or M:N/free chain tool exists.",
       "missing_functionality": [
         "Persistent ordered chain correspondence, compound mapping, free endpoint tools, multi-seam transaction and edit/refinement rules.",
-        "A physical-length first-side preview and numeric dialog are not a completed AddSeam transaction. Confirm both sides, direction and measured boundary-length-to-parameter conversion before claiming correspondence or sewing."
+        "A later separate original case accepts 100 mm on each numeric side and completes one AddSeam-like authoring gesture with one Undo/Redo and document reopen. Its categorical reversal is observed separately. Independent physical boundary-length-to-parameter conversion, continuous correspondence, unequal-length easing, general free endpoints and chain/M:N behavior remain unestablished."
       ],
       "runtime_questions": [
         "How do M:N and free variants form ordered chains, partial endpoints and normalized/eased correspondence across mismatched lengths and curve counts?",
-        "After the confirmed first-side preview, which second-side selection/numeric sequence commits a seam, and how do reversed endpoints, mismatch, Escape, tool switch, undo/reopen and remeshing behave?"
+        "Beyond the now observed two-side 100 mm Tab/OK sequence, how do arbitrary endpoints, unequal lengths/easing, numeric limits, Escape/Cancel, tool switch, multi-edge chains and remeshing behave, and what independent measurements establish continuous correspondence?"
       ],
       "fixture_ids": [
         "unequal-curves",
         "chain-seams",
-        "curved-sewing-preview"
+        "curved-sewing-preview",
+        "partial-sewing-history"
       ],
       "packet_id": "PACK-free-chain-sewing",
-      "reviewed_reference_scope": "The menu/2D tool was selected and both 2D/3D toolbars exposed a checked Free Sewing label. Only the 2D first side reached numeric 100 mm preview; no 3D gesture, M shortcut, completed second side, seam, reversal or correspondence was established. The unexpected viewport displacement has unknown cause; the Smart Panning preference is not causal proof."
+      "reviewed_reference_scope": "The earlier first-side-only case remains incomplete. A later separate 2D Free Sewing case accepts two numeric 100 mm sides, one Undo/Redo and document reopen; the subsequent reversal switches categorical dashed guides and repeats history/reopen. M shortcut/3D gestures, continuous arc-length mapping, unequal-length or M:N chains, successful Escape cancellation and simulation remain unconfirmed. The earlier viewport shift has unknown cause."
     },
     {
       "id": "auto-sewing",
@@ -8924,20 +8961,21 @@
       "candidate_behavior": "Current native sewing picks authored curve intervals through the existing Sew tool and shared AddSeam backend. It has no Free Sewing endpoint/first-side physical-length preview or Create Sewing Line dialog; a preview is not a completed authoring command, and cubic parameter t is not assumed to equal a boundary-length ratio.",
       "missing_functionality": [
         "A separate transient first-side start/length/preview state and numeric mm dialog with keyboard commit, independent source-curve length conversion and explicit authored/rest/current display basis.",
-        "The reference second side, completed/reversed seam, arbitrary range/invalid/cancel/Close/Escape effects and independent curved endpoints are not established; keep these variants and dependencies open."
+        "The later two-side 100 mm case and separate categorical reversal/history/document-reopen are observed, but arbitrary range/invalid/Cancel/Close/Escape effects, exact curved endpoints and continuous length-to-parameter conversion remain unestablished. Keep transient first-side preview separate from the final shared AddSeam transaction."
       ],
       "runtime_questions": [
         "What initial-state/pointer rules determine the first numeric preview, which exact physical curve measure places a typed endpoint and how do orientation, selection, units/locale and precision affect it?",
         "The 90.6 mm initial value is pointer-dependent and only 100 mm Tab/OK was confirmed. What accepted limits, Cancel/Close/Escape/tool-switch behavior, single-preview history and save/reopen semantics apply?",
-        "What exact second-side sequence commits an oriented physical seam, and what independent endpoint/correspondence checks distinguish completion from first-side preview or equal numeric curve parameters?"
+        "The later reference sequence accepts 100 mm in a second numeric dialog from an interior straight-boundary start and produces one selected pair. What independently measured endpoints and continuous correspondence distinguish a general correct result from equal labels or equal curve parameters, especially for unequal lengths and asymmetric curves?"
       ],
       "fixture_ids": [
         "curved-sewing-preview",
         "unequal-curves",
-        "keyboard"
+        "keyboard",
+        "partial-sewing-history"
       ],
       "packet_id": "PACK-free-sewing-length-preview",
-      "reviewed_reference_scope": "The separately completed whole-edge Segment Sewing pair does not qualify this Free Sewing preview packet. Its second side, completed/reversed partial seam and independent physical-length-to-parameter endpoint mapping remain unconfirmed."
+      "reviewed_reference_scope": "The original preview-only case remains a separate incomplete run. Later REF-SEW-002-PAIR-002 accepts two numeric 100 mm sides with one Undo/Redo and same-process document reopen; REF-SEW-002-REVERSE-003 changes categorical endpoint guides and repeats history/reopen. Neither result supplies independent physical-length-to-parameter mapping, general defaults/limits/cancellation, a process restart or simulation."
     },
     {
       "id": "seam-properties",
@@ -8967,14 +9005,17 @@
       "runtime_questions": [
         "Which authored/rest/current/visual/contact state changes for each checkbox and fold field, and what is inherited or shared across seams?",
         "What units, accepted limits, normalization, disabled states, field/slider synchronization and commit/cancel/reset behavior apply? The current 5/180 values have no printed units and are not stiffness/angle calibration or factory-default guarantees.",
-        "How do the supported properties follow reversed/curved/partial seams, remeshing and save/reopen, and how is Set Sublayer distinct from pattern layers or display stacking?"
+        "How do the supported properties follow reversed/curved/partial seams, remeshing and save/reopen, and how is Set Sublayer distinct from pattern layers or display stacking?",
+        "Does Apply Turned Sewing Line Type share stored state and history with the selected-seam Turned checkbox, which seams does it affect, and what physical versus appearance effect follows? The contextual command was not executed."
       ],
       "fixture_ids": [
         "whole-edge-sewing",
         "unequal-curves",
-        "layered-panels"
+        "layered-panels",
+        "partial-sewing-history"
       ],
-      "packet_id": "PACK-seam-properties"
+      "packet_id": "PACK-seam-properties",
+      "reviewed_reference_scope": "Apply Turned Sewing Line Type is a new exact selected-seam Edit-menu path. Current Turned/fold/tension/sublayer fields remain unchanged through the separate partial/reversal cases; no command/checkbox equivalence or property effect is established."
     },
     {
       "id": "seamline-appearance",
@@ -19649,17 +19690,251 @@
       ],
       "classification": "component",
       "group_id": "seam-header-actions"
+    },
+    {
+      "catalog_id": "MDUI-A376C6210DDA",
+      "catalog": "menus",
+      "path": [
+        "Edit",
+        "Context Menu",
+        "3D Garment",
+        "Flat"
+      ],
+      "classification": "action",
+      "group_id": "arrangement"
+    },
+    {
+      "catalog_id": "MDUI-BDCB24B978FF",
+      "catalog": "menus",
+      "path": [
+        "Edit",
+        "Context Menu",
+        "Sewing",
+        "Apply Turned Sewing Line Type"
+      ],
+      "classification": "action",
+      "group_id": "seam-properties"
+    },
+    {
+      "catalog_id": "MDUI-7132EF1C1807",
+      "catalog": "menus",
+      "path": [
+        "Edit",
+        "Context Menu",
+        "Display",
+        "Show 3D Pattern"
+      ],
+      "classification": "action",
+      "group_id": "visibility-isolation"
+    },
+    {
+      "catalog_id": "MDUI-C698D7B5E4AC",
+      "catalog": "menus",
+      "path": [
+        "Edit",
+        "Context Menu",
+        "Display",
+        "Hide All 3D Patterns"
+      ],
+      "classification": "action",
+      "group_id": "visibility-isolation"
+    },
+    {
+      "catalog_id": "MDUI-2BE8734C0A80",
+      "catalog": "components",
+      "path": [
+        "Open Project"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-636BD67CDCDE",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "Load Type"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-0BE6334C60EA",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "Load Type",
+        "Open"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-502DB0FBAC6A",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "Load Type",
+        "Add"
+      ],
+      "classification": "component",
+      "group_id": "project-merge"
+    },
+    {
+      "catalog_id": "MDUI-3B4B356700AE",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "Content"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-961D6E2B1D93",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "Content",
+        "Object"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-061A7168A10B",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "Content",
+        "Object",
+        "Garment"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-4EB0FA9F44DD",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "Content",
+        "Object",
+        "Avatar"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-6C6EC7004592",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "Content",
+        "Object",
+        "Scene and Props"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-10DCD4DBFAD1",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "Content",
+        "Object",
+        "3D State"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-66D1223C6B2C",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "Content",
+        "Environment"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-602971BED059",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "Content",
+        "Environment",
+        "Custom View"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-5DFC65C2921C",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "Content",
+        "Environment",
+        "Display Settings"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-8DD62DEE8D91",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "Reset"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-8CB1D51E5992",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "OK"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-C16630CE051D",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "Cancel"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-8060A3ACDDD6",
+      "catalog": "components",
+      "path": [
+        "Open Project",
+        "Close"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
     }
   ],
-  "source_snapshot_note": "This exact source/catalog pin contains the reviewed 928-ID inventory and shared serde_json float_roundtrip decoding fix with v1/v2 bit-regression source tests. The current source still has 18 Command variants. Earlier native evidence is stale for the parser/source change and fresh native revalidation remains pending; no test count or native pass is inferred. Analytical membrane regressions do not resolve the retained approximately 0.2693 axis-strain fitting failure or establish calibration. The new reference result is one 300.0-label whole-edge Segment Sewing pair, one Undo/Redo and document New/Open, observed after interrupted/partially posted driver input and separately retained guard refusals. It is not a clean driver pass, process restart, reversed/partial seam, simulation or parity claim. The separate 100 mm Free Sewing preview remains incomplete.",
+  "source_snapshot_note": "This reachable source/catalog pin contains all 949 reviewed IDs: the initial 589 menu records plus four selected-seam labels, and 356 components including 17 input-specific Open Project controls. All 928 prior entries, 205 packet definitions, 56 source landmarks and 18 Command variants remain. Compared with the previous source pin, the only landmark-file change normalizes CRLF in the migration test fixture builder; no new native authoring behavior is inferred. The shared f64 decoding implementation and bit regressions remain candidates, not reference parity or copied freshness. Bounded paired partial/reversal/history/document-reopen cases now refine the earlier preview-only scope. They retain refused/failed input, truncated/AX-gap captures and repeated-warning qualifications. Exact continuous correspondence, general open-option semantics, arbitrary limits/cancellation, process restart, physical sewing and broad feature completion remain open. Current status/native evidence qualification stays solely in the authoritative registry/reports; analytical membrane tests do not resolve the retained approximately 0.2693 axis-strain fitting failure.",
   "expansion_origin": {
-    "previous_map_commit": "1528e3662380a4a74c3b70d3ef9b11f2c607af5f",
-    "previous_map_sha256": "b76a79cdba305720e14b14c3ddd02716241fc2acd7b9710df610bfb1b731a3de",
-    "previous_source_commit": "8fb684e14ecc4685acefd2acfeea3e46a2dc3df5",
-    "preserved_catalog_ids": 902,
-    "additional_component_ids": 26,
-    "catalog_commit": "df28375c5a070f9516c32534aa4202f3a06f9662",
-    "preservation_rule": "Preserve all 902 previous entry records, 202 packet definitions and first three bounded slices exactly. New whole-edge observations remain bounded; only explicit source/reference rechecks replace obsolete group descriptions. Retain the full source/catalog ancestor chain and authoritative status lookup."
+    "previous_map_commit": "fbe5ee08a74dc176e47a287366cbf5d1bbd0abf3",
+    "previous_map_sha256": "2457e280ec2070e41748b8a3b80d8d7ba16a41f0cfa6dc0409c4f7768d178b9a",
+    "previous_source_commit": "df28375c5a070f9516c32534aa4202f3a06f9662",
+    "preserved_catalog_ids": 928,
+    "additional_menu_ids": 4,
+    "additional_component_ids": 17,
+    "catalog_commit": "6401c6aa0aa1a54e1642b334dad1c5729466e0af",
+    "preservation_rule": "Preserve all 928 previous entry records, all 205 packet definitions, all 56 source landmarks and the first three bounded slices exactly. New input-specific Open Project controls and selected-seam contextual labels join existing groups; explicit reviewed reference rechecks refine obsolete first-side/reversal wording without completing broad contracts. Retain the source/catalog ancestor chain and authoritative status lookup."
   },
   "reviewed_contract_sources": [
     {
@@ -19684,8 +19959,8 @@
     },
     {
       "path": "spec/features/SEW-002-runtime-20261114.md",
-      "sha256": "8b7b0dcd2c0a07a42f9f483d1abaf7acee8e8ab476cdcd6e8766f8f99e179af6",
-      "scope": "One original replication setup, curvature gesture/history and 100 mm first-side preview only. The 213-node before capture is truncated with ten AXError -25202 attribute failures across two nodes; later 214-node selected-property captures are truncated with five failures at one node. First-side/final blank-property captures have 92 nodes without gaps. No confirmed second side, completed/reversed seam, exact curve/arc-length endpoint, successful Escape cancellation or sewing simulation."
+      "sha256": "a617ade897e851e013193b78c44463b1b500dacc04346d38e67605017cb81aec",
+      "scope": "Earlier independent case only: one original replication setup, curvature gesture/history and 100 mm first-side preview. Retains its truncated/AX-gap captures and unresolved Escape input. Its second side did not complete; later paired and reversal cases are separate. No exact curve/arc-length endpoint, independent correspondence, successful Escape cancellation or sewing simulation is supplied by this case."
     },
     {
       "path": "spec/observations/REF-SEW-002-FREE-PARTIAL-001.json",
@@ -19704,46 +19979,79 @@
     },
     {
       "path": "spec/features/SEW-001-oriented-segment-sewing.md",
-      "sha256": "57a7c83353f6a65e10474b3c957f404847d1a77b1da1f896c3916c1a3daf9b28",
-      "scope": "Separates the bounded whole-edge observation from documented/proposed reversal, mismatch and arc-length contracts; implementation-only tests and equal labels do not supply reference endpoint correspondence."
-    }
-  ],
-  "source_rechecks": [
+      "sha256": "9ad1ba7c317c0661e417bf17a85ec817e82c0dcdf74d89c02f9f3e7477cd5ae0",
+      "scope": "Separates the observed bounded whole-edge, numeric partial-pair and categorical reversal/history/reopen cases from documented/proposed continuous correspondence, general orientation, mismatch/easing and simulation contracts. Implementation-only tests and equal labels do not supply independent arc-length geometry or parity."
+    },
     {
-      "group_id": "project-load-save",
-      "reason": "Current shared serde_json dependency now enables float_roundtrip decoding and new bit regressions cover v1/v2 persistence; describe that source fix while keeping native revalidation and unsupported formats open.",
-      "changed_fields": [
-        "candidate_behavior"
-      ],
-      "source_refs": [
-        "native_io",
-        "atomic_save",
-        "ui_load",
-        "ui_save",
-        "cli",
-        "mcp",
-        "migration_tests",
-        "json_roundtrip_config",
-        "json_bit_tests"
-      ]
+      "path": "spec/features/SEW-002-paired-runtime-20261114.md",
+      "sha256": "8bcabb89b3dfe49afe8852a4799bf106c3e7062c8a67968368dddfc36da8ce4e",
+      "scope": "Two 100 mm Tab/OK side dialogs, completed original partial pair, one Undo/Redo and same-process document New/Open. Open Project accepts current checked Garment/Display Settings for this input only. Retains refused/failed inputs, repeated low-space warning and truncated reopened AX capture; no continuous geometry, general defaults, alternate open options, process restart or parity claim."
+    },
+    {
+      "path": "spec/observations/REF-SEW-002-PAIR-002.json",
+      "sha256": "88835256bc434692a3a33578d2e6316cfb56d795aec9c64f9e66f523b451400a",
+      "scope": "Reviewed public original partial-pair provenance and bounded outcomes, with explicit input, capture and numerical-measurement limits. Raw UI, proprietary native containers and resources stay private."
+    },
+    {
+      "path": "spec/features/SEW-002-reverse-runtime-20261114.md",
+      "sha256": "5c9ff13804080b5216d48ed5cad02b816636f4f7b2e9b480cd7176ddfe2c32fa",
+      "scope": "One exposed nested Edit-menu Reverse Sewing changes A0-B0/A1-B1 dashed guides to A0-B1/A1-B0 while preserving both 100.0 labels, then Undo/Redo and same-process document reopen. Categorical UI correspondence only; retains truncated first captures and repeated warning. No continuous mapping, hidden orientation, physical twist, simulation or broad parity contract."
+    },
+    {
+      "path": "spec/observations/REF-SEW-002-REVERSE-003.json",
+      "sha256": "63ede576ad0130d6705bbdd1e71008561e351a6702ffe1698b900800f615e8b9",
+      "scope": "Reviewed public reversal case with original protected inputs, exact entry route, categorical guide checks and history/reopen, plus capture gaps and independent-geometry limits. Canvas context menus, shortcuts, multiple selection and commercial container internals were not examined."
     }
   ],
+  "source_rechecks": [],
   "reference_rechecks": [
     {
       "group_id": "segment-sewing",
       "changed_fields": [
-        "missing_functionality"
+        "missing_functionality",
+        "runtime_questions",
+        "reviewed_reference_scope"
       ],
-      "contract_path": "spec/features/SEW-001-runtime-20261114.md",
-      "reason": "The reviewed run establishes one whole-edge pair/history/document-reopen outcome after interrupted input, replacing blanket pending-entry wording without closing exact endpoint, reversal, partial/unequal/curved or physical contracts."
+      "contract_path": "spec/features/SEW-002-paired-runtime-20261114.md",
+      "reason": "Replace blanket unconfirmed-partial wording with the separate bounded completed pair and categorical reversal while retaining the earlier interrupted-input case and unmeasured numerical/physical variants."
     },
     {
       "group_id": "sewing-editor",
       "changed_fields": [
-        "missing_functionality"
+        "missing_functionality",
+        "reviewed_reference_scope"
       ],
-      "contract_path": "spec/features/SEW-001-runtime-20261114.md",
-      "reason": "The reopened seam is retrieved through Edit Sewing plus Select All with unchanged current values; restrict the remaining gap wording to untested direct picking and property/correspondence edits."
+      "contract_path": "spec/features/SEW-002-reverse-runtime-20261114.md",
+      "reason": "Reopened partial/reversed pairs retain identity/current fields and one exposed command changes categorical guides. Ordinary field/header/direct-pick behavior stays open."
+    },
+    {
+      "group_id": "reverse-sewing",
+      "changed_fields": [
+        "missing_functionality",
+        "runtime_questions"
+      ],
+      "contract_path": "spec/features/SEW-002-reverse-runtime-20261114.md",
+      "reason": "The guide connection switch, history and document reopen are now observed; retain continuous geometry, representation and physical semantics as questions."
+    },
+    {
+      "group_id": "free-chain-sewing",
+      "changed_fields": [
+        "missing_functionality",
+        "runtime_questions",
+        "reviewed_reference_scope"
+      ],
+      "contract_path": "spec/features/SEW-002-paired-runtime-20261114.md",
+      "reason": "A later independent two-side numeric case completes one pair. Preserve the original first-side-only run and unmeasured chain/M:N/continuous correspondence variants."
+    },
+    {
+      "group_id": "free-sewing-length-preview",
+      "changed_fields": [
+        "missing_functionality",
+        "runtime_questions",
+        "reviewed_reference_scope"
+      ],
+      "contract_path": "spec/features/SEW-002-paired-runtime-20261114.md",
+      "reason": "Update obsolete blanket second-side/reversal-unknown wording without merging transient preview state into a completed seam or claiming independent curve endpoint measurement."
     }
   ]
 }
