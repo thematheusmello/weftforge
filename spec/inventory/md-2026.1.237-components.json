@@ -1,17 +1,21 @@
 {
   "schema_version": 1,
   "product_build": "2026.1.237 (r58920)",
-  "status": "partial-observed-presence-and-read-only-values",
+  "status": "partial-observed-presence-values-and-bounded-rectangle-execution",
   "counts": {
-    "records": 61,
+    "records": 166,
     "complete_behavior_contracts": 0
   },
   "limitations": [
     "No control presence/value is a complete executed behavior or parity claim.",
-    "Accepted ranges, invalid input, cancellation and gesture/transaction boundaries remain untested.",
+    "Accepted ranges, invalid input and most cancellation/gesture effects remain untested. Only the linked bounded rectangle contract records actual executed behavior.",
     "Unlabeled toolbar icons and canvas navigation are not silently assigned names.",
     "Rendered default vendor fabric/avatar/texture assets are not supplied to implementers.",
-    "Initial state values do not imply immutable factory defaults."
+    "Initial state values do not imply immutable factory defaults.",
+    "Read-only solver values do not identify an algorithm or establish physics parity; units not printed in the actual control remain unknown.",
+    "Selected-pattern fields refer to the original unsimulated 200 by 300 mm rectangle, not all selections or factory defaults.",
+    "Fit Properties visibly exposes Stress and Pressure in this capture; an unsuccessful attempted Strain selection is not evidence of a Strain tab.",
+    "There are no complete broad feature contracts or verified WeftForge comparisons in this component inventory."
   ],
   "records": [
     {
@@ -1435,6 +1439,2965 @@
         "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5"
       ],
       "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-1517775E851A",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Preset"
+      ],
+      "kind": "AXMenuButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Normal (Default)",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "note": "Displayed in the observed empty project. No simulation or setting edit was performed; an unprinted unit remains unknown.",
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-797B8ECABD23",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Time Step"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "0.033333",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "note": "Displayed in the observed empty project. No simulation or setting edit was performed; an unprinted unit remains unknown.",
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-DC8CABE76501",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Simulations per Frame"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "1",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "note": "Displayed in the observed empty project. No simulation or setting edit was performed; an unprinted unit remains unknown.",
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-FEED087F46A9",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "CG Finish Condition"
+      ],
+      "kind": "AXMenuButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Iteration",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "note": "Displayed in the observed empty project. No simulation or setting edit was performed; an unprinted unit remains unknown.",
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-9B80640D5182",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "CG Iteration Count"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "50",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "note": "Displayed in the observed empty project. No simulation or setting edit was performed; an unprinted unit remains unknown.",
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-D131B4F777E4",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "CG Residual"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "1e-04",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "note": "Displayed in the observed empty project. No simulation or setting edit was performed; an unprinted unit remains unknown.",
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-65B8F7B7B3A6",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Self Collision Iteration Count"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "1",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "note": "Displayed in the observed empty project. No simulation or setting edit was performed; an unprinted unit remains unknown.",
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-3B1E54F04484",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Air Damping"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "1",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "note": "Displayed in the observed empty project. No simulation or setting edit was performed; an unprinted unit remains unknown.",
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-E49A03EC6218",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Gravity"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "-9800",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "note": "Displayed in the observed empty project. No simulation or setting edit was performed; an unprinted unit remains unknown.",
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-861665CC183A",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Pinching Simulation Override"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "note": "Displayed in the observed empty project. No simulation or setting edit was performed; an unprinted unit remains unknown.",
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-15C852FC388D",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Automatic Maximum CPU"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "note": "Displayed in the observed empty project. No simulation or setting edit was performed; an unprinted unit remains unknown.",
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-BED5587768BD",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Nonlinear Simulation"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "note": "Displayed in the observed empty project. No simulation or setting edit was performed; an unprinted unit remains unknown.",
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-237E7B81A176",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Ripping Mode"
+      ],
+      "kind": "AXMenuButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Accurate",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "note": "Displayed in the observed empty project. No simulation or setting edit was performed; an unprinted unit remains unknown.",
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-3059725EAFE4",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties",
+        "Automatic Maximum CPU"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Automatic Maximum CPU",
+        "Number of CPU in Use"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "12",
+      "unit": null,
+      "enabled": false,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54",
+        "CUA-SIMULATION-PROPERTIES-20261114"
+      ],
+      "note": "Native AX explicitly marks this field disabled while Automatic Maximum CPU is on. Twelve is this host observation, not a product constant.",
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-560F0728EC19",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Ground"
+      ],
+      "kind": "collapsible section",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "note": "Collapsed in the retained image; its child fields are unobserved.",
+      "initial_expanded": false,
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-91EA397D5812",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties",
+        "Avatar-Cloth Collision Detection"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Avatar-Cloth Collision Detection",
+        "Triangle-Vertex"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-1F66D9880E75",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties",
+        "Avatar-Cloth Collision Detection"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Avatar-Cloth Collision Detection",
+        "Edge-Edge"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-363A58F1D69E",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties",
+        "Self-Collision Detection"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Self-Collision Detection",
+        "Triangle-Vertex"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-A41187465746",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties",
+        "Self-Collision Detection"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Self-Collision Detection",
+        "Edge-Edge"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-9CF3CB9B3F9D",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties",
+        "Self-Collision Detection"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Self-Collision Detection",
+        "Avoidance Stiffness"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "0.001",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-06E2A2FFE755",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties",
+        "Proximity Detection"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Proximity Detection",
+        "Vertex-Triangle"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-D80631D6D385",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties",
+        "Proximity Detection"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Proximity Detection",
+        "Edge-Edge"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-C31875D07CC8",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Intersection Resolution"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-387D1EFEB4FC",
+      "parent_path": [
+        "Settings",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Layer-Based Collision Detection"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-7D099707C5CE",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Information"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Information",
+        "Name"
+      ],
+      "kind": "AXTextField",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Pattern_1720",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "One generated name in this run; no naming sequence or required name is inferred. Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-3D9D527E78D1",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "2D Line Length"
+      ],
+      "kind": "AXTextField",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "1000.0mm",
+      "unit": "mm",
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "The whole rectangle boundary is selected; this value does not establish how arbitrary partial selections aggregate. Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-F854FF0A715B",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "3D Line Length"
+      ],
+      "kind": "AXTextField",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "1000.0mm",
+      "unit": "mm",
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "The rectangle is unsimulated; no deformation measurement is inferred. Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-A115BC5D090F",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Elastic"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-14EB8EB38A5F",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Seam Taping"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-4BB9948F5144",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Show Schematic Line"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Show Schematic Line",
+        "Z-Offset"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "0",
+      "unit": "mm",
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-A21B69147E8D",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Show Schematic Line"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Show Schematic Line",
+        "Face"
+      ],
+      "kind": "AXMenuButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Both",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-199261B9D0E0",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Show Schematic Line"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-3609D7C4BCB9",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Fabric"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Fabric",
+        "Grain Direction"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "0",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "The displayed label does not print an angle unit; the unit and wrap range remain unobserved. Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-33470F537367",
+      "parent_path": [
+        "Property Editor",
+        "Pattern"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Solidify"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-BC7D0F0BAE16",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Particle Distance"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "20",
+      "unit": "mm",
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Particle-distance editing and its mesh-regeneration effects remain pending. Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-60BDAF345C9F",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Layer"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "0",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-58C1B530E161",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Simulation Shrinkage Weft"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "100",
+      "unit": "%",
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-BDCBD68F08AF",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Simulation Shrinkage Warp"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "100",
+      "unit": "%",
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-DAB3E91202D4",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Add'l Thickness - Collision"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "2.5",
+      "unit": "mm",
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-DD47D0767CAF",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Pressure"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "0",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "No unit is printed beside this control in the retained observation. Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-D68ACC6F5C21",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Add'l Thickness - Rendering"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "0",
+      "unit": "mm",
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-7D41AB516989",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Extrusion Direction"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Extrusion Direction",
+        "Front Face"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-4C31FF8BCFEB",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Extrusion Direction"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Extrusion Direction",
+        "Back Face"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-CE0C7A4C6DBA",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Extrusion Direction"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Extrusion Direction",
+        "Seam Face"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-FA5BC72FD95F",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Extrusion Direction"
+      ],
+      "kind": "AXMenuButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Both",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-17B7A9B1FCF0",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Side Geometry"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Side Geometry",
+        "Curvature"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "100",
+      "unit": "%",
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-9A85D7B3BD83",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Side Geometry"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Side Geometry",
+        "Resolution"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "6",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Side Geometry Resolution is a separately labeled field; it is not equated with Particle Distance. Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-159DFF7B708B",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Side Geometry"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Side Geometry",
+        "Double Sided"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-4E54DB2B5562",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "UV Expansion"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "UV Expansion",
+        "Back Face"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-267868BE6B67",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "UV Expansion"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "UV Expansion",
+        "Side Face"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-BC4081D0D0C2",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Mesh Type"
+      ],
+      "kind": "AXMenuButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Triangle",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-B7470C7A544B",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Face Count"
+      ],
+      "kind": "AXTextField",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "525",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Native displayed count; independently corroborated by 525 OBJ triangles in this run only. Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-3703D73BD365",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Vertex Count"
+      ],
+      "kind": "AXTextField",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "290",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "Native displayed count; independently corroborated by 290 OBJ vertices in this run only. Read from the selected original 200 by 300 mm unsimulated rectangle. This property was not edited; range, persistence under edits, and effect remain untested."
+    },
+    {
+      "id": "MDUI-6D560C91F392",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Fabric"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Fabric",
+        "Fabric"
+      ],
+      "kind": "AXMenuButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471"
+      ],
+      "note": "One existing default fabric is assigned. Its name, preset data and material parameters are not supplied or calibrated by this observation."
+    },
+    {
+      "id": "MDUI-8BABF05572BC",
+      "parent_path": [
+        "Property Editor",
+        "Pattern",
+        "Fabric"
+      ],
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Fabric",
+        "Reset Grain Direction"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471",
+        "CUA-RECTANGLE-CONSTRUCTOR-20261114"
+      ],
+      "note": "Native AX description identifies this button. The reset action was not executed."
+    },
+    {
+      "id": "MDUI-34832A6613FD",
+      "parent_path": [
+        "Create Rectangle",
+        "Size"
+      ],
+      "path": [
+        "Create Rectangle",
+        "Size",
+        "Width"
+      ],
+      "kind": "numeric field",
+      "presence_status": "observed",
+      "behavior_status": "bounded_numeric_entry",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 200,
+      "unit": "mm",
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-RECTANGLE-CONSTRUCTOR-20261114"
+      ],
+      "note": "Values immediately before OK in the original 200 by 300 mm run. Numeric entry used keyboard replacement and Tab; no accepted interval, clamping rule, linked-dimension behavior, or Cancel behavior is established.",
+      "behavior_contract": "../features/PAT-003-runtime-20261114.md"
+    },
+    {
+      "id": "MDUI-96780FC904A9",
+      "parent_path": [
+        "Create Rectangle",
+        "Size"
+      ],
+      "path": [
+        "Create Rectangle",
+        "Size",
+        "Height"
+      ],
+      "kind": "numeric field",
+      "presence_status": "observed",
+      "behavior_status": "bounded_numeric_entry",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 300,
+      "unit": "mm",
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-RECTANGLE-CONSTRUCTOR-20261114"
+      ],
+      "note": "Values immediately before OK in the original 200 by 300 mm run. Numeric entry used keyboard replacement and Tab; no accepted interval, clamping rule, linked-dimension behavior, or Cancel behavior is established.",
+      "behavior_contract": "../features/PAT-003-runtime-20261114.md"
+    },
+    {
+      "id": "MDUI-2D23FD2248B8",
+      "parent_path": [
+        "Create Rectangle",
+        "Size"
+      ],
+      "path": [
+        "Create Rectangle",
+        "Size",
+        "Dimension link"
+      ],
+      "kind": "link control",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-RECTANGLE-CONSTRUCTOR-20261114"
+      ],
+      "note": "Values immediately before OK in the original 200 by 300 mm run. Numeric entry used keyboard replacement and Tab; no accepted interval, clamping rule, linked-dimension behavior, or Cancel behavior is established.",
+      "behavior_contract": "../features/PAT-003-runtime-20261114.md",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-B4A7420831F3",
+      "parent_path": [
+        "Create Rectangle",
+        "Replicate"
+      ],
+      "path": [
+        "Create Rectangle",
+        "Replicate",
+        "Interval"
+      ],
+      "kind": "numeric field",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 300,
+      "unit": "mm",
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-RECTANGLE-CONSTRUCTOR-20261114"
+      ],
+      "note": "Values immediately before OK in the original 200 by 300 mm run. Numeric entry used keyboard replacement and Tab; no accepted interval, clamping rule, linked-dimension behavior, or Cancel behavior is established.",
+      "behavior_contract": "../features/PAT-003-runtime-20261114.md"
+    },
+    {
+      "id": "MDUI-F364DDB68788",
+      "parent_path": [
+        "Create Rectangle",
+        "Replicate"
+      ],
+      "path": [
+        "Create Rectangle",
+        "Replicate",
+        "Angle"
+      ],
+      "kind": "numeric field",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 90,
+      "unit": "degree",
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-RECTANGLE-CONSTRUCTOR-20261114"
+      ],
+      "note": "Values immediately before OK in the original 200 by 300 mm run. Numeric entry used keyboard replacement and Tab; no accepted interval, clamping rule, linked-dimension behavior, or Cancel behavior is established.",
+      "behavior_contract": "../features/PAT-003-runtime-20261114.md"
+    },
+    {
+      "id": "MDUI-01A7D9C47181",
+      "parent_path": [
+        "Create Rectangle",
+        "Replicate"
+      ],
+      "path": [
+        "Create Rectangle",
+        "Replicate",
+        "Number of Shapes"
+      ],
+      "kind": "integer field",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-RECTANGLE-CONSTRUCTOR-20261114"
+      ],
+      "note": "Values immediately before OK in the original 200 by 300 mm run. Numeric entry used keyboard replacement and Tab; no accepted interval, clamping rule, linked-dimension behavior, or Cancel behavior is established.",
+      "behavior_contract": "../features/PAT-003-runtime-20261114.md"
+    },
+    {
+      "id": "MDUI-AD730DF9D32E",
+      "parent_path": [
+        "Create Rectangle"
+      ],
+      "path": [
+        "Create Rectangle",
+        "OK"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "bounded_creation",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-RECTANGLE-CONSTRUCTOR-20261114"
+      ],
+      "note": "Values immediately before OK in the original 200 by 300 mm run. Numeric entry used keyboard replacement and Tab; no accepted interval, clamping rule, linked-dimension behavior, or Cancel behavior is established.",
+      "behavior_contract": "../features/PAT-003-runtime-20261114.md"
+    },
+    {
+      "id": "MDUI-8661F6BEC14C",
+      "parent_path": [
+        "Create Rectangle"
+      ],
+      "path": [
+        "Create Rectangle",
+        "Cancel"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-RECTANGLE-CONSTRUCTOR-20261114"
+      ],
+      "note": "Values immediately before OK in the original 200 by 300 mm run. Numeric entry used keyboard replacement and Tab; no accepted interval, clamping rule, linked-dimension behavior, or Cancel behavior is established.",
+      "behavior_contract": "../features/PAT-003-runtime-20261114.md"
+    },
+    {
+      "id": "MDUI-6AC43EA3241D",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Preset"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Preset",
+        "Preset Path"
+      ],
+      "kind": "path field",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Field presence only; local path and vendor configuration contents are excluded. Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-F99A3362B2C6",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Preset"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Preset",
+        "Select Configuration"
+      ],
+      "kind": "selector",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": false,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-88C8D3A70A66",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Select All Patterns"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": true,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "The disclosure beside this control was not expanded. Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-B6F9B6E903AB",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Select All Avatars"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": false,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "No avatar exists in the original scene. Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-2A5EEA1D39DC",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Select All Graphics and Trims"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": false,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "No graphic or trim exists in the original scene. Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-EEE5DBD0119B",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Object grouping"
+      ],
+      "kind": "radio group",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Single Object",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "visible_options": [
+        "Single Object",
+        "Multiple Objects"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-1348A213693E",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Welding"
+      ],
+      "kind": "radio group",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Unweld",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "visible_options": [
+        "Unweld",
+        "Weld",
+        "Weld Selected Patterns in Workspace"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-4619C3C55785",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Thickness"
+      ],
+      "kind": "radio group",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Thin",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "visible_options": [
+        "Thin",
+        "Thick"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-45301DBFD9B0",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Merge Vertex by Proximity"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-3AEB2FF776F7",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Weld Turned Sewing Lines"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": false,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-A092387577F6",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Unified UV Coordinates (PNG)"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-3CD60A975CBB",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Include Hidden Object"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-C80ADF50D16C",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Include Internal Shape"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-BB904320D596",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Scale unit"
+      ],
+      "kind": "selector",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "mm (Default)",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Only the selected unit is observed. This independent unit declaration is used by the physical export evaluator. Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-F83FBFA85D3D",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Scale percent"
+      ],
+      "kind": "numeric field",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 100,
+      "unit": "%",
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-FCA6EBCA39FB",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "First axis"
+      ],
+      "kind": "selector",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "X",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-2C0744E5A396",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "Second axis"
+      ],
+      "kind": "selector",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Y (Up)",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-256E953DB0FE",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "Third axis"
+      ],
+      "kind": "selector",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Z",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-06FCE3AC133F",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "Invert first axis"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-2064413F6D8F",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "Invert second axis"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-ED1CE5D0628B",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "Invert third axis"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-F1A466A3D697",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File",
+        "Texture destination"
+      ],
+      "kind": "radio group",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Save with Absolute Texture Image File Path",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "visible_options": [
+        "Save with Absolute Texture Image File Path",
+        "Save with Texture Files (ZIP)"
+      ],
+      "note": "Texture paths and material resources remain private; neither destination mode was changed. Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-423140CB4BDA",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File",
+        "Diffuse Color Combined on Texture"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": false,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-6D92395370B1",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File",
+        "Exclude Ambient Map & Color (for Modo)"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": false,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-5B36A1EC268D",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File",
+        "Save with Transparency Map Extracted from Diffuse Map"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": false,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-0F40CDF8A323",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File",
+        "Save with Meta Data (XML)"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-D6B64C9177A3",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Reset"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-048AED478BE4",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "OK"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "bounded_export",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Executed once to write the original OBJ. Only declared units, original bounds and mesh counts were independently checked. Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-F5AA39EF821E",
+      "parent_path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog"
+      ],
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Cancel"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-OBJ-EXPORT-OPTIONS-20261114"
+      ],
+      "note": "Visible title Export OBJ; AX title Import OBJ. Options were not edited. Ranges and effects of alternative options remain untested."
+    },
+    {
+      "id": "MDUI-AD24E23C72B0",
+      "parent_path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "tabs"
+      ],
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "tabs",
+        "Stress"
+      ],
+      "kind": "tab",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": true,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FIT-STRESS-20261114"
+      ],
+      "note": "The Stress page is displayed. No stress computation or cloth simulation was run. Vendor palette values are excluded. An attempted Strain selection did not change this page; Strain tab presence is unobserved."
+    },
+    {
+      "id": "MDUI-B683983602A9",
+      "parent_path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "tabs"
+      ],
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "tabs",
+        "Pressure"
+      ],
+      "kind": "tab",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FIT-STRESS-20261114"
+      ],
+      "note": "Visible tab only; its page was not opened. No stress computation or cloth simulation was run. Vendor palette values are excluded. An attempted Strain selection did not change this page; Strain tab presence is unobserved."
+    },
+    {
+      "id": "MDUI-9C4A22DEDA55",
+      "parent_path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress"
+      ],
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Range Color Count"
+      ],
+      "kind": "selector",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 8,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FIT-STRESS-20261114"
+      ],
+      "note": "No stress computation or cloth simulation was run. Vendor palette values are excluded. An attempted Strain selection did not change this page; Strain tab presence is unobserved."
+    },
+    {
+      "id": "MDUI-D1610BAA814A",
+      "parent_path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress"
+      ],
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Range unit"
+      ],
+      "kind": "selector",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "kPa",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FIT-STRESS-20261114"
+      ],
+      "note": "No stress computation or cloth simulation was run. Vendor palette values are excluded. An attempted Strain selection did not change this page; Strain tab presence is unobserved.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-A5668C8D0E4F",
+      "parent_path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress"
+      ],
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Range maximum"
+      ],
+      "kind": "table cell",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 100,
+      "unit": "kPa",
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FIT-STRESS-20261114"
+      ],
+      "note": "Displayed maximum only; accepted editing range remains unknown. No stress computation or cloth simulation was run. Vendor palette values are excluded. An attempted Strain selection did not change this page; Strain tab presence is unobserved.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-05C7957F3996",
+      "parent_path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress"
+      ],
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Range minimum"
+      ],
+      "kind": "table cell",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": "kPa",
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FIT-STRESS-20261114"
+      ],
+      "note": "Displayed minimum only; accepted editing range remains unknown. No stress computation or cloth simulation was run. Vendor palette values are excluded. An attempted Strain selection did not change this page; Strain tab presence is unobserved.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-996790DABB9B",
+      "parent_path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress"
+      ],
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Graph Type"
+      ],
+      "kind": "selector",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Gradation",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FIT-STRESS-20261114"
+      ],
+      "note": "No stress computation or cloth simulation was run. Vendor palette values are excluded. An attempted Strain selection did not change this page; Strain tab presence is unobserved."
+    },
+    {
+      "id": "MDUI-CAC7F27B53E6",
+      "parent_path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress"
+      ],
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Graph surface"
+      ],
+      "kind": "selector",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Mesh",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FIT-STRESS-20261114"
+      ],
+      "note": "Mesh is the visible selection. The control has no separate printed field label. No stress computation or cloth simulation was run. Vendor palette values are excluded. An attempted Strain selection did not change this page; Strain tab presence is unobserved.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-69F679D1249A",
+      "parent_path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Show"
+      ],
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Show",
+        "Weft"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": true,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FIT-STRESS-20261114"
+      ],
+      "note": "No stress computation or cloth simulation was run. Vendor palette values are excluded. An attempted Strain selection did not change this page; Strain tab presence is unobserved."
+    },
+    {
+      "id": "MDUI-C384EE0C908E",
+      "parent_path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Show"
+      ],
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Show",
+        "Warp"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": true,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FIT-STRESS-20261114"
+      ],
+      "note": "No stress computation or cloth simulation was run. Vendor palette values are excluded. An attempted Strain selection did not change this page; Strain tab presence is unobserved."
+    },
+    {
+      "id": "MDUI-C9EC8AA71114",
+      "parent_path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Show"
+      ],
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Show",
+        "Shear"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": true,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FIT-STRESS-20261114"
+      ],
+      "note": "No stress computation or cloth simulation was run. Vendor palette values are excluded. An attempted Strain selection did not change this page; Strain tab presence is unobserved."
+    },
+    {
+      "id": "MDUI-31F67DCCA757",
+      "parent_path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog"
+      ],
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Reset"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FIT-STRESS-20261114"
+      ],
+      "note": "No stress computation or cloth simulation was run. Vendor palette values are excluded. An attempted Strain selection did not change this page; Strain tab presence is unobserved."
+    },
+    {
+      "id": "MDUI-20FD7038CE08",
+      "parent_path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog"
+      ],
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Close"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "bounded_close",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FIT-STRESS-20261114"
+      ],
+      "note": "Closing this read-only modal was observed; reset and table editing were not tested. No stress computation or cloth simulation was run. Vendor palette values are excluded. An attempted Strain selection did not change this page; Strain tab presence is unobserved."
     }
-  ]
+  ],
+  "observation_sources": [
+    {
+      "id": "SIMULATION-REA-20261114",
+      "provider": "REA",
+      "retained_record_sha256": "becfdcd760f426dd8aac8a089f3f7732cb4d65e6b34d938b32dbf6322ee3f448",
+      "context": "Read-only Simulation Properties in the empty project; Rectangle selected; simulation off.",
+      "privacy": "Complete native records and commercial/account screenshots remain private.",
+      "evidence_id": "ev_71fd407caa921caaab241a9d52c2209afca6a947c5d24450c13a5aa4b5234a54",
+      "truncated": false
+    },
+    {
+      "id": "CUA-SIMULATION-PROPERTIES-20261114",
+      "provider": "native AX and screenshot",
+      "retained_record_sha256": "8e7f644ba09a9bb2a07244e27794cf482b1cc3953c571e2e168524bcb0c66a21",
+      "context": "Corroborates the disabled CPU count and displayed field labels.",
+      "privacy": "Complete native records and commercial/account screenshots remain private.",
+      "observed_at": "2026-11-14T01:04:29.731Z"
+    },
+    {
+      "id": "PATTERN-REA-20261114",
+      "provider": "REA",
+      "retained_record_sha256": "23dd5e4d370ee73d1f0b8cbe44344b1a3495897aa2f74482642ebfdaafd4a645",
+      "context": "One original 200 by 300 mm rectangle selected immediately after creation; simulation off.",
+      "privacy": "Complete native records and commercial/account screenshots remain private.",
+      "evidence_id": "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471",
+      "truncated": false
+    },
+    {
+      "id": "CUA-RECTANGLE-CONSTRUCTOR-20261114",
+      "provider": "native screenshot and declared inputs",
+      "retained_record_sha256": "f39d83b1f1bdc57058e7e452bccf5d359b67102cf08062aa82d935a375698416",
+      "context": "Constructor immediately before accepting original width 200 mm and height 300 mm.",
+      "privacy": "Complete native records and commercial/account screenshots remain private.",
+      "observed_at": "2026-11-14T01:39:16.928Z"
+    },
+    {
+      "id": "CUA-OBJ-EXPORT-OPTIONS-20261114",
+      "provider": "native screenshot and reviewed options",
+      "retained_record_sha256": "8a86d60b0565e1804cf32a5b0cc8872904c104e7f625a7bcf7dc39ab736adac3",
+      "context": "Export OBJ after reopening the original rectangle; options left unchanged.",
+      "privacy": "Complete native records and commercial/account screenshots remain private.",
+      "observed_at": "2026-11-14T01:58:23.711Z"
+    },
+    {
+      "id": "CUA-FIT-STRESS-20261114",
+      "provider": "native screenshot",
+      "retained_record_sha256": "dfbb301ab1eb19f27a2ab588adc6dff32e311b67332027da441555b8b6f676fc",
+      "context": "Stress page remains displayed before and after an unsuccessful attempted tab selection; only Stress and Pressure tabs are visible.",
+      "privacy": "Complete native records and commercial/account screenshots remain private.",
+      "observed_at": "2026-11-14T01:18:35.190Z"
+    }
+  ],
+  "path_label_policy": "Paths group observed controls for indexing. Reviewer descriptors identify some unlabeled radio groups or repeated axis controls; their visible values/options are literal observations. A descriptor does not establish a printed UI label."
 }
