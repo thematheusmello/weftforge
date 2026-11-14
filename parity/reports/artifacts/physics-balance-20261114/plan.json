@@ -1,0 +1,113 @@
+{
+  "declared_at": "2026-11-14T17:47:03.142817+00:00",
+  "kind": "prospective_private_implementation_only_cloth_causal_diagnostic",
+  "source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "source_manifest": "source-manifest.json",
+  "source_manifest_sha256": "1ecf305630bff2025223a2d3279e51141f7aa4a01d86999ad0c63ef546d9797c",
+  "source_file_count": 37,
+  "source_detached_and_clean": true,
+  "fixture_original_path": "fixtures/grain-shirt.weftforge",
+  "retained_original_fixture": "original-grain-shirt.weftforge",
+  "fixture_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "existing_standard_cli_sha256": "5755ecd4aefb29b0060370c8369ee823fdbbd19cae85d5dd675edec48de954e1",
+  "executed_diagnostic_binary": "target/release/cloth-balance-diagnostic",
+  "diagnostic_binary_sha256": "033b2043ae8caf66ae1fdbef998f844f48a6ca64cea7473c5c29b73cdb86699b",
+  "frozen_code_sha256": {
+    "harness/Cargo.toml": "c79b711c5112026010aad41b6d345d8ecb537b181ea0c7a742706c2714624f90",
+    "harness/Cargo.lock": "7285edb616da51522eacfccc659cf216520f6462c7f54ec34d06c797a44471a0",
+    "harness/src/main.rs": "abad66e1c0075086ffac07ac39dadd8e0ba08883d0ba2eb1a7ce3ca92bfbfb7f",
+    "measure.py": "32f2d9fbb8ac82b85f9a438a31e73d4292cd08356ec06ed91c68e8cf40e41ce2",
+    "balance_measure.py": "58da92075e6346225bd846ef2b982b0092941f9b6b10564e44840bc0a695bbbc",
+    "job.py": "1a2d51da60bde29282af8f5a190dd41ef9f5b998010fd6703ee8195627594334"
+  },
+  "question": "Why does unchanged original grain-shirt develop high material-axis strain during zero-gravity sewing, and does the current 3ed source mesh change the historical result?",
+  "baseline": {
+    "name": "current_control_8x32",
+    "fresh_original_arrangement": true,
+    "initial_velocity_m_per_s": 0,
+    "dt_s": 0.016666666666666666,
+    "substeps": 8,
+    "iterations": 32,
+    "seam_closure_m_per_s": 1.0,
+    "assembly_frames": 60,
+    "assembly_gravity_m_per_s2": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "drape_frames": 120,
+    "drape_gravity_m_per_s2": [
+      0.0,
+      -9.81,
+      0.0
+    ],
+    "supported_contact": "production core bridge, all original mannequin, ground, self and interpanel contacts enabled",
+    "phase_wall_cap_s": 180,
+    "whole_run_wall_cap_s": 420
+  },
+  "unchanged_quality_limits": {
+    "finite": true,
+    "seam_target_m": 0.0,
+    "max_absolute_material_axis_length_strain_below": 0.15,
+    "max_seam_gap_m_below": 0.005,
+    "max_supported_contact_penetration_m_below": 0.002
+  },
+  "independent_observables": [
+    "Original UV/triangle area masses independently reconstructed and compared to public solver masses; rest versus arranged strain with piece grain angles",
+    "Every-frame signed warp/weft length strains and locations, maximum extension and compression, membrane energies from documented Green strain energy",
+    "Bending energies from original rest adjacency/dihedrals; conservative bending forces at predeclared frames 0,30,45,60,180 via local central differences epsilon 1e-6 m",
+    "Conservative membrane and sewing energy gradients/forces from UV and source seam mapping, not implementation diagnostics; membrane force analytic derivative self-checked by central differences",
+    "Sampled stitch gaps and assembly target from original initial gap minus declared actuator travel; independent capsule/ground penetration (not independent full self-contact proof)",
+    "Total mass, center of mass, kinetic energy, linear and angular momentum from original positions/masses and velocities; every-frame delta momentum/dt and nodal m*delta_velocity/dt are interval effective net force, not instantaneous force equilibrium",
+    "Authored seam side lengths, original correspondence orientation, arranged weighted-point gaps/offsets and conditional body/neck/cuff circumference bounds from source seam graph; report direction-dependent/shear limitations of axis strain",
+    "Current versus historical mesh positions, UV, triangles, piece IDs, stitches, masses; same-time positional differences only where node identity agrees; historical states never relabeled current",
+    "Final and assembly quality outcomes with original failed thresholds visible"
+  ],
+  "hypotheses_and_discriminators": [
+    {
+      "hypothesis": "Initial arrangement is already strained",
+      "discriminator": "Independent rest F and rest energy distinguish prestrain from sewing-induced strain"
+    },
+    {
+      "hypothesis": "Seam orientation or unequal source edge lengths force a mismatch",
+      "discriminator": "Independent seam interval endpoints/lengths and sampled source correspondence; equal sides and common arranged x/y reject this simple explanation but do not prove global fitting"
+    },
+    {
+      "hypothesis": "Assembly is incomplete at t=1s",
+      "discriminator": "Temporary targets and actual weighted gaps below fixed seam screen distinguish unclosed assembly from cloth strain after closure"
+    },
+    {
+      "hypothesis": "Current mesh scheduling changes the result",
+      "discriminator": "Exact current versus e342 mesh arrays/masses and full-path endpoint comparison; no numerical values presumed current before this run"
+    },
+    {
+      "hypothesis": "Geometric fit or avatar reaction drives local high strain without gravity",
+      "discriminator": "Locate high strain with source seam/neck/cuff geometry and collider clearance; conditional circumference bounds cannot alone establish 15% axis-strain impossibility"
+    },
+    {
+      "hypothesis": "Residual assembly dynamics or finite solver convergence produces strain",
+      "discriminator": "Energy, momentum and nodal effective-force changes quantify continued motion; at most two later preregistered targeted probes may distinguish zero-G relaxation, contact loading or substep sensitivity; no equilibrium or defect inference from low speed"
+    }
+  ],
+  "sequence_and_budget": {
+    "first": "Run exactly one fixed original current-source baseline before selecting a probe",
+    "total_new_cases_at_most": 3,
+    "later_cases": "Only with a concrete unresolved question and append-only preregistration after baseline analysis. Preserve all original inputs and failures. No broad sweep, no blind time extension, no material/default/fixture/tolerance tuning."
+  },
+  "force_balance_limit": "Public Cloth exports no constraint multipliers or contact reactions, and analytic-collider residuals omit independent full self-contact reaction. Independent conservative forces and interval impulses do not establish full static equilibrium. Any report must state equilibrium unknown.",
+  "checks_before_run": [
+    "Original independent geometric self-checks passed",
+    "New force/energy finite differences, mass, momentum, sewing and bending self-checks passed",
+    "Offline exclusive target build passed; harness fmt and strict clippy required before run"
+  ],
+  "ownership": "Only ignored .local/cloth-balance-20261114; clean detached source left untouched; no production/default/fixture/tolerance, registry, docs, CI or UI changes",
+  "publication": "Private prospective diagnosis, not delivery or public parity evidence; root must review any proposed tracked subset from clean checkout before publishing",
+  "non_goals": [
+    "No reference application or proprietary assets",
+    "No native UI",
+    "No physical fabric calibration",
+    "No general convergence or solver-defect claim",
+    "No full contact robustness proof",
+    "No GitHub Actions or Pages"
+  ]
+}

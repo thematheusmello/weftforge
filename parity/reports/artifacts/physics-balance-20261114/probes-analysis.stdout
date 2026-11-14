@@ -1,0 +1,61 @@
+zero-g-balance {
+  "t1_peak_strain": 0.24118490382884583,
+  "terminal_peak_strain": 0.3216992187720238,
+  "terminal_strain_difference_from_original_same_time_control": -0.0018199179576385838,
+  "terminal_nodal_drift_from_original_same_time_control_m": {
+    "max_m": 0.010353265374953001,
+    "mass_weighted_rms_m": 0.0037722293972425555
+  },
+  "terminal_velocity_drift_from_original_same_time_control_m_per_s": {
+    "max_m": 0.015704486975340964,
+    "mass_weighted_rms_m": 0.0028928964788579553
+  },
+  "terminal_minus_t1_peak_strain": 0.08051431494317796,
+  "terminal_nodal_drift_from_own_t1_m": {
+    "max_m": 0.02236873002938586,
+    "mass_weighted_rms_m": 0.008967686458126407
+  },
+  "terminal_elastic_energy_J": 0.3489682666535333,
+  "terminal_seam_m": 4.5946317598255657e-07,
+  "terminal_supported_contact_m": 0.0,
+  "terminal_rms_speed_m_per_s": 0.003223842392276891,
+  "terminal_KE_J": 8.008125700325299e-07,
+  "terminal_original_quality_passed": false,
+  "strain_sensitivity_trigger_exceeded": false,
+  "nodal_sensitivity_trigger_exceeded": true,
+  "last_half_second_peak_strain_min_max": [
+    0.30808823424694975,
+    0.3216992187720238
+  ],
+  "last_half_second_nodal_drift_m": {
+    "max_m": 0.0036204802892315577,
+    "mass_weighted_rms_m": 0.0010207689530057004
+  },
+  "last_half_second_elastic_energy_change_J": 0.0038385326803982434
+}
+no-avatar {
+  "t1_peak_strain": 0.0024257322555789607,
+  "terminal_peak_strain": 0.0024257322555789607,
+  "terminal_strain_difference_from_original_same_time_control": -0.23875917157326687,
+  "terminal_nodal_drift_from_original_same_time_control_m": {
+    "max_m": 0.28746075367988194,
+    "mass_weighted_rms_m": 0.13442736922438822
+  },
+  "terminal_velocity_drift_from_original_same_time_control_m_per_s": {
+    "max_m": 0.16595485987451405,
+    "mass_weighted_rms_m": 0.044669296665555504
+  },
+  "terminal_minus_t1_peak_strain": 0.0,
+  "terminal_nodal_drift_from_own_t1_m": {
+    "max_m": 0.0,
+    "mass_weighted_rms_m": 0.0
+  },
+  "terminal_elastic_energy_J": 0.00048493362646375923,
+  "terminal_seam_m": 1.811512628289636e-10,
+  "terminal_supported_contact_m": 0.0,
+  "terminal_rms_speed_m_per_s": 0.04107211874514111,
+  "terminal_KE_J": 0.00012998028705538475,
+  "terminal_original_quality_passed": null,
+  "strain_sensitivity_trigger_exceeded": true,
+  "nodal_sensitivity_trigger_exceeded": true
+}

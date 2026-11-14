@@ -1,0 +1,481 @@
+use std::{
+    error::Error,
+    fs::File,
+    io::Read,
+    path::{Path, PathBuf},
+    time::Instant,
+};
+use weftforge_core::{Command, CurveInterval, Editor, Mesh, Placement, Project};
+use weftforge_sim::{Diagnostics, StepSettings};
+mod mcp;
+type Result<T> = std::result::Result<T, Box<dyn Error>>;
+const MAX_COMMANDS: usize = 1024;
+const MAX_COMMAND_BYTES: u64 = 1024 * 1024;
+
+fn main() {
+    if let Err(error) = run() {
+        eprintln!("weftforge-cli: {error}");
+        std::process::exit(1);
+    }
+}
+fn run() -> Result<()> {
+    let args: Vec<_> = std::env::args().skip(1).collect();
+    match args.first().map(String::as_str) {
+        None | Some("--help" | "-h" | "help") => println!(
+            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj\nexport-svg PROJECT OUTPUT.svg\nexport-dxf PROJECT OUTPUT.dxf          exterior pattern boundaries in mm\nsimulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
+        ),
+        Some("mcp") => {
+            count(&args, 1)?;
+            mcp::serve()?;
+        }
+        Some("new") => {
+            count(&args, 2)?;
+            Project::default().save(Path::new(&args[1]))?;
+        }
+        Some("sample") => {
+            count(&args, 2)?;
+            sample()?.save(Path::new(&args[1]))?;
+        }
+        Some("inspect") => {
+            count(&args, 2)?;
+            let p = Project::load(Path::new(&args[1]))?;
+            let mesh = p.mesh()?;
+            let seams:Vec<_>=p.seams.iter().map(|s|serde_json::json!({"id":s.id,"name":s.name,"lengths_m":p.seam_lengths(s.id).ok()})).collect();
+            println!(
+                "{}",
+                serde_json::to_string_pretty(
+                    &serde_json::json!({"revision":p.revision,"units":"m","up":"Y","pieces":p.pieces.len(),"curves":p.curves.len(),"construction":{"points":p.points,"curves":p.curves},"vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"seams":seams,"sewing_groups":p.sewing_groups,"sewing_group_geometry":sewing_geometry(&mesh),"stitches":mesh.stitches.len(),"patterns":p.pieces.iter().map(|piece|serde_json::json!({"id":piece.id,"name":piece.name,"material":piece.material,"grain_angle_radians":piece.grain_angle})).collect::<Vec<_>>(),"materials":p.materials})
+                )?
+            );
+        }
+        Some("inspect-sewing") => {
+            count(&args, 2)?;
+            let project = Project::load(Path::new(&args[1]))?;
+            let mesh = project.mesh()?;
+            // Preserve native f32 color serialization rather than Value's f64 promotion.
+            let source: serde_json::Value = serde_json::from_slice(&serde_json::to_vec(&project)?)?;
+            println!(
+                "{}",
+                serde_json::to_string_pretty(&serde_json::json!({
+                    "kind":"sewing_inspection",
+                    "source":{"format":"weftforge","version":weftforge_core::FORMAT_VERSION,"project":source},
+                    "sewing_groups":sewing_geometry(&mesh),
+                    "mesh":{
+                        "doc_revision":mesh.doc_revision,"positions":mesh.positions,"uv":mesh.uv,
+                        "triangles":mesh.triangles,"piece_ids":mesh.piece_ids,
+                        "boundary":mesh.boundary.iter().map(|s|serde_json::json!({"piece":s.piece,"curve":s.curve,"t":s.t,"vertex":s.vertex})).collect::<Vec<_>>(),
+                        "stitches":mesh.stitches.iter().map(|s|serde_json::json!({
+                            "seam":s.seam,
+                            "a":{"vertices":s.a.vertices,"weight":s.a.weight},
+                            "b":{"vertices":s.b.vertices,"weight":s.b.weight}
+                        })).collect::<Vec<_>>()
+                    }
+                }))?
+            );
+        }
+        Some("execute") => {
+            count(&args, 4)?;
+            let mut bytes = Vec::new();
+            File::open(&args[3])?
+                .take(MAX_COMMAND_BYTES + 1)
+                .read_to_end(&mut bytes)?;
+            if bytes.len() as u64 > MAX_COMMAND_BYTES {
+                return Err("Command file exceeds the 1 MiB limit".into());
+            }
+            // Deserialize original bytes so duplicate command fields remain errors.
+            let commands: Vec<Command> = serde_json::from_slice(&bytes)?;
+            let (revision, commands_applied) =
+                execute_commands(Path::new(&args[1]), Path::new(&args[2]), commands)?;
+            println!(
+                "{}",
+                serde_json::json!({"revision":revision,"commands_applied":commands_applied})
+            );
+        }
+        Some("rectangle") => {
+            count(&args, 8)?;
+            let mut e = Editor::new(Project::load(Path::new(&args[1]))?)?;
+            e.execute(Command::AddRectangle {
+                name: args[3].clone(),
+                origin: [number(&args[4])?, number(&args[5])?],
+                width: number(&args[6])?,
+                height: number(&args[7])?,
+            })?;
+            e.project.save(Path::new(&args[2]))?;
+        }
+        Some("resize") => {
+            count(&args, 6)?;
+            let mut e = Editor::new(Project::load(Path::new(&args[1]))?)?;
+            e.execute(Command::ResizePiece {
+                piece: args[3].parse()?,
+                width: number(&args[4])?,
+                height: number(&args[5])?,
+            })?;
+            e.project.save(Path::new(&args[2]))?;
+        }
+        Some("curve-controls") => {
+            let controls = if args.len() == 5 && args[4] == "straight" {
+                None
+            } else {
+                count(&args, 8)?;
+                Some([
+                    [number(&args[4])?, number(&args[5])?],
+                    [number(&args[6])?, number(&args[7])?],
+                ])
+            };
+            let mut editor = Editor::new(Project::load(Path::new(&args[1]))?)?;
+            editor.execute(Command::SetCurveControls {
+                curve: args[3].parse()?,
+                controls,
+            })?;
+            editor.project.save(Path::new(&args[2]))?;
+        }
+        Some("split") => {
+            count(&args, 5)?;
+            let mut editor = Editor::new(Project::load(Path::new(&args[1]))?)?;
+            editor.execute(Command::SplitCurve {
+                curve: args[3].parse()?,
+                t: number(&args[4])?,
+            })?;
+            editor.project.save(Path::new(&args[2]))?;
+        }
+        Some("join") => {
+            count(&args, 4)?;
+            let mut editor = Editor::new(Project::load(Path::new(&args[1]))?)?;
+            editor.execute(Command::JoinCurve {
+                curve: args[3].parse()?,
+            })?;
+            editor.project.save(Path::new(&args[2]))?;
+        }
+        Some("grain") => {
+            count(&args, 5)?;
+            let mut editor = Editor::new(Project::load(Path::new(&args[1]))?)?;
+            editor.execute(Command::SetGrain {
+                piece: args[3].parse()?,
+                angle: number(&args[4])?,
+            })?;
+            editor.project.save(Path::new(&args[2]))?;
+        }
+        Some("stiffness") => {
+            count(&args, 6)?;
+            let mut editor = Editor::new(Project::load(Path::new(&args[1]))?)?;
+            let id = args[3].parse()?;
+            let mut material = editor
+                .project
+                .material(id)
+                .ok_or("unknown material")?
+                .clone();
+            material.warp_stiffness = number(&args[4])?;
+            material.weft_stiffness = number(&args[5])?;
+            editor.execute(Command::UpdateMaterial { material })?;
+            editor.project.save(Path::new(&args[2]))?;
+        }
+        Some("export-obj") => {
+            count(&args, 3)?;
+            distinct(&args[1], &args[2])?;
+            Project::load(Path::new(&args[1]))?
+                .mesh()?
+                .export_obj(Path::new(&args[2]))?;
+        }
+        Some("export-svg") => {
+            count(&args, 3)?;
+            distinct(&args[1], &args[2])?;
+            Project::load(Path::new(&args[1]))?.export_svg(Path::new(&args[2]))?;
+        }
+        Some("export-dxf") => {
+            count(&args, 3)?;
+            distinct(&args[1], &args[2])?;
+            let project = Project::load(Path::new(&args[1]))?;
+            project.export_dxf(Path::new(&args[2]))?;
+            println!(
+                "{}",
+                serde_json::json!({"output":args[2],"source_revision":project.revision,"kind":"authored_dxf","length_unit":"mm","scope":"Exterior pattern boundaries only; sewing, materials, grain and 3D placements require the native project."})
+            );
+        }
+        Some("simulate" | "benchmark") => {
+            let benchmark = args[0] == "benchmark";
+            count(&args, if benchmark { 3 } else { 4 })?;
+            let steps: usize = args[if benchmark { 2 } else { 3 }].parse()?;
+            if !(1..=100000).contains(&steps) {
+                return Err("steps must be between 1 and 100000".into());
+            }
+            let p = Project::load(Path::new(&args[1]))?;
+            let mut mesh = p.mesh()?;
+            let mut cloth = weftforge_core::simulation::create_cloth(&p, &mesh)?;
+            let start = Instant::now();
+            let mut timings = Vec::with_capacity(steps);
+            for _ in 0..steps {
+                timings.push(cloth.step(StepSettings::default(), || false)?.step_seconds);
+            }
+            let seconds = start.elapsed().as_secs_f64();
+            timings.sort_by(f64::total_cmp);
+            if !benchmark {
+                distinct(&args[1], &args[2])?;
+                mesh.positions = cloth.positions().to_vec();
+                mesh.export_obj(Path::new(&args[2]))?;
+            }
+            println!(
+                "{}",
+                serde_json::to_string_pretty(
+                    &serde_json::json!({"kind":"implementation_only","platform":std::env::consts::OS,"architecture":std::env::consts::ARCH,"vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"steps":steps,"settings":StepSettings::default(),"wall_seconds":seconds,"simulated_seconds":cloth.simulation_time(),"simulated_seconds_per_wall_second":cloth.simulation_time()/seconds,"median_step_seconds":timings[timings.len()/2],"p95_step_seconds":timings[(timings.len()-1)*95/100],"diagnostics":cloth.diagnostics(),"memory_bytes":null,"viewport_frame_seconds":null})
+                )?
+            );
+        }
+        Some("fit-benchmark" | "fit") => {
+            let benchmark = args[0] == "fit-benchmark";
+            count(&args, if benchmark { 2 } else { 3 })?;
+            if !benchmark {
+                distinct(&args[1], &args[2])?;
+            }
+            let project = Project::load(Path::new(&args[1]))?;
+            let (mesh, mut report, passed) = fit(&project)?;
+            if !benchmark && passed {
+                mesh.export_obj(Path::new(&args[2]))?;
+                report["export_written"] = serde_json::json!(true);
+            }
+            println!("{}", serde_json::to_string_pretty(&report)?);
+            if !passed {
+                return Err(
+                    "fitting quality check failed; see JSON report; prior output retained".into(),
+                );
+            }
+        }
+        Some("recover") => {
+            count(&args, 3)?;
+            distinct(&args[1], &args[2])?;
+            Project::recover(Path::new(&args[1]))?.save(Path::new(&args[2]))?;
+        }
+        Some(other) => return Err(format!("unknown command {other}; run --help").into()),
+    }
+    Ok(())
+}
+
+fn sewing_geometry(mesh: &Mesh) -> Vec<serde_json::Value> {
+    mesh.sewing_groups
+        .iter()
+        .map(|group| {
+            serde_json::json!({
+                "id":group.id,"lengths":group.lengths,
+                "portions":group.portions.iter().map(|portion|serde_json::json!({"a":portion.a,"b":portion.b})).collect::<Vec<_>>()
+            })
+        })
+        .collect()
+}
+
+fn execute_commands(input: &Path, output: &Path, commands: Vec<Command>) -> Result<(u64, usize)> {
+    if commands.is_empty() || commands.len() > MAX_COMMANDS {
+        return Err("commands must contain between 1 and 1024 shared commands".into());
+    }
+    if commands
+        .iter()
+        .any(|command| matches!(command, Command::Transaction(_)))
+    {
+        return Err("Nested transactions are unsupported; supply commands directly".into());
+    }
+    let count = commands.len();
+    let mut editor = Editor::new(Project::load(input)?)?;
+    editor.execute(Command::Transaction(commands))?;
+    editor.project.save(output)?;
+    Ok((editor.project.revision, count))
+}
+fn count(args: &[String], expected: usize) -> Result<()> {
+    if args.len() != expected {
+        Err(format!(
+            "expected {} arguments after {}; run --help",
+            expected - 1,
+            args[0]
+        )
+        .into())
+    } else {
+        Ok(())
+    }
+}
+fn number(value: &str) -> Result<f64> {
+    let n: f64 = value.parse()?;
+    if n.is_finite() {
+        Ok(n)
+    } else {
+        Err("numeric input must be finite".into())
+    }
+}
+fn distinct(input: &str, output: &str) -> Result<()> {
+    let absolute = |p: &str| -> std::io::Result<PathBuf> {
+        let p = Path::new(p);
+        if p.exists() {
+            p.canonicalize()
+        } else {
+            Ok(std::env::current_dir()?.join(p))
+        }
+    };
+    if absolute(input)? == absolute(output)? {
+        Err("export must not replace its source project".into())
+    } else {
+        Ok(())
+    }
+}
+
+fn fit_quality(d: &Diagnostics) -> bool {
+    d.finite
+        && d.seam_assembly_remaining == 0.
+        && d.max_stretch_error < 0.15
+        && d.max_seam_error < 0.005
+        && d.max_contact_error < 0.002
+}
+
+fn fit(project: &Project) -> Result<(Mesh, serde_json::Value, bool)> {
+    let mut mesh = project.mesh()?;
+    let mut cloth = weftforge_core::simulation::create_cloth(project, &mesh)?;
+    let start = Instant::now();
+    let mut phases = Vec::new();
+    let mut failure = None;
+    let mut timings = Vec::new();
+    for (name, steps, gravity) in [("assembly", 60, [0.; 3]), ("drape", 120, [0., -9.81, 0.])] {
+        let settings = StepSettings {
+            dt: 1. / 60.,
+            substeps: 8,
+            iterations: 32,
+            seam_closure_speed: 1.,
+            gravity,
+        };
+        let phase_start = Instant::now();
+        let mut completed = 0;
+        for _ in 0..steps {
+            match cloth.step(settings, || false) {
+                Ok(d) => {
+                    timings.push(d.step_seconds);
+                    completed += 1;
+                }
+                Err(error) => {
+                    failure = Some(error.to_string());
+                    break;
+                }
+            }
+        }
+        phases.push(serde_json::json!({
+            "name":name,"steps_requested":steps,"steps_completed":completed,"settings":settings,
+            "wall_seconds":phase_start.elapsed().as_secs_f64(),"simulated_seconds":f64::from(completed)*settings.dt,
+            "diagnostics":cloth.diagnostics(),
+        }));
+        if failure.is_some() {
+            break;
+        }
+    }
+    let seconds = start.elapsed().as_secs_f64();
+    let passed = failure.is_none() && fit_quality(cloth.diagnostics());
+    timings.sort_by(f64::total_cmp);
+    let median = timings.get(timings.len() / 2).copied();
+    let p95 = timings
+        .get(timings.len().saturating_sub(1) * 95 / 100)
+        .copied();
+    let report = serde_json::json!({
+        "kind":"implementation_only","protocol":"explicit-zero-gravity-assembly-then-drape-v1",
+        "status":if passed {"passed"} else {"failed"},"solver_error":failure,
+        "criteria":{"finite":true,"seam_assembly_remaining_m":0.,"max_stretch_error_below":0.15,"max_seam_gap_below_m":0.005,"max_contact_penetration_below_m":0.002},
+        "platform":std::env::consts::OS,"architecture":std::env::consts::ARCH,
+        "vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"phases":phases,
+        "wall_seconds":seconds,"simulated_seconds":cloth.simulation_time(),"simulated_seconds_per_wall_second":cloth.simulation_time()/seconds,
+        "median_step_seconds":median,"p95_step_seconds":p95,"diagnostics":cloth.diagnostics(),
+        "memory_bytes":null,"viewport_frame_seconds":null,"export_written":false,
+        "limitations":["Original analytic avatar and uncalibrated fabrics","Finite fixture thresholds do not establish general garment quality or reference parity"],
+    });
+    mesh.positions = cloth.positions().to_vec();
+    Ok((mesh, report, passed))
+}
+
+fn sample() -> Result<Project> {
+    let outline = vec![
+        [-0.24, 1.02],
+        [0.24, 1.02],
+        [0.24, 1.27],
+        [0.48, 1.20],
+        [0.53, 1.38],
+        [0.24, 1.56],
+        [0.10, 1.56],
+        [0.08, 1.49],
+        [-0.08, 1.49],
+        [-0.10, 1.56],
+        [-0.24, 1.56],
+        [-0.53, 1.38],
+        [-0.48, 1.20],
+        [-0.24, 1.27],
+    ];
+    let mut e = Editor::new(Project::default())?;
+    e.execute(Command::AddPolygon {
+        name: "Shirt front".into(),
+        vertices: outline.clone(),
+    })?;
+    e.execute(Command::AddPolygon {
+        name: "Shirt back".into(),
+        vertices: outline.iter().map(|p| [p[0] + 1.2, p[1]]).collect(),
+    })?;
+    let front = e.project.pieces[0].clone();
+    let back = e.project.pieces[1].clone();
+    e.execute(Command::SetPlacement {
+        piece: front.id,
+        placement: Placement {
+            translation: [0., 0., 0.22],
+            rotation: [0.; 3],
+        },
+    })?;
+    e.execute(Command::SetPlacement {
+        piece: back.id,
+        placement: Placement {
+            translation: [-1.2, 0., -0.22],
+            rotation: [0.; 3],
+        },
+    })?;
+    for index in [1, 2, 4, 5, 9, 10, 12, 13] {
+        e.execute(Command::AddSeam {
+            name: format!("Construction seam {index}"),
+            a: CurveInterval::full(front.boundary[index]),
+            b: CurveInterval::full(back.boundary[index]),
+            correspondence: vec![[0., 0.], [1., 1.]],
+        })?;
+    }
+    e.execute(Command::SetResolution { metres: 0.12 })?;
+    Ok(e.project)
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn fit_quality_requires_closed_seams_and_all_declared_bounds() {
+        let mut d = Diagnostics {
+            finite: true,
+            ..Default::default()
+        };
+        assert!(fit_quality(&d));
+        d.seam_assembly_remaining = 0.001;
+        assert!(!fit_quality(&d));
+        d.seam_assembly_remaining = 0.;
+        d.max_stretch_error = 0.15;
+        assert!(!fit_quality(&d));
+        d.max_stretch_error = 0.;
+        d.max_seam_error = 0.005;
+        assert!(!fit_quality(&d));
+        d.max_seam_error = 0.;
+        d.max_contact_error = 0.002;
+        assert!(!fit_quality(&d));
+        d.max_contact_error = 0.;
+        d.finite = false;
+        assert!(!fit_quality(&d));
+    }
+    #[test]
+    fn shirt_is_editable_and_interval_sewn() {
+        let p = sample().unwrap();
+        assert_eq!(p.pieces.len(), 2);
+        assert_eq!(p.seams.len(), 8);
+        assert_eq!(p.curves.len(), 28);
+        let mesh = p.mesh().unwrap();
+        assert!(mesh.stitches.len() > 16);
+        let mut e = Editor::new(p).unwrap();
+        let id = e.project.pieces[0].id;
+        e.execute(Command::ResizePiece {
+            piece: id,
+            width: 1.16,
+            height: 0.6,
+        })
+        .unwrap();
+        assert_eq!(e.project.seams.len(), 8);
+        assert!(e.undo());
+    }
+}

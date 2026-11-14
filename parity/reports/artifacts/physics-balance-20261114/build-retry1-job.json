@@ -1,0 +1,28 @@
+{
+  "stage": "build-retry1",
+  "started_at": "2026-11-14T17:47:44.553770+00:00",
+  "launcher_pid": 66278,
+  "command": [
+    "cargo",
+    "build",
+    "--locked",
+    "--release",
+    "--offline",
+    "--manifest-path",
+    "<EXPERIMENT_ROOT>/harness/Cargo.toml"
+  ],
+  "cwd": "<EXPERIMENT_ROOT>/source",
+  "environment_overrides": {
+    "CARGO_BUILD_JOBS": "1",
+    "CARGO_INCREMENTAL": "0",
+    "CARGO_TARGET_DIR": "<EXPERIMENT_ROOT>/target"
+  },
+  "wall_cap_seconds": 240,
+  "status": "completed",
+  "child_pid": 66374,
+  "child_process_group": 66374,
+  "exit_code": 0,
+  "completed_at": "2026-11-14T17:47:53.444351+00:00",
+  "wall_seconds": 8.890544833033346,
+  "binary_sha256": "033b2043ae8caf66ae1fdbef998f844f48a6ca64cea7473c5c29b73cdb86699b"
+}

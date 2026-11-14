@@ -439,3 +439,27 @@ assembly alone. These results establish path sensitivity, not static equilibrium
 convergence, calibration or a sufficient production fix. All original fitting
 failures and the 15% screen remain unchanged; replay instructions accompany the
 tracked original outputs.
+
+The [current-source balance diagnosis](../parity/reports/WF-20261114-PHYSICS-BALANCE-001.json)
+uses runtime `3eddef067c8a` and the unchanged original shirt. Its new mesh has
+150 vertices / 228 triangles, compared with the historical 158 / 244; all 28
+stitch mappings are unchanged. Nodal arrays across those different topologies
+are not compared as equivalent. The original 8/32 control fails the same strain
+screen at 24.1185% after assembly and 32.3519% after drape.
+
+Two fixed causal probes clarify this failure without changing production inputs
+or acceptance. Continuing the identical first 60 frames for 120 more zero-gravity
+frames ends at 32.1699%. During exactly 2.5–3.0 s, strain rises from 30.7541% to
+32.1699%, maximum node displacement is 3.62048 mm, and membrane-plus-bending
+energy rises by 0.00383853 J. Low RMS speed does not establish equilibrium.
+All 61 shared prefix states match exactly apart from wall-clock timing.
+
+Separately omitting only mannequin capsules in memory gives 0.242573% strain at
+1 s with the same cloth, ground and self-contact settings. That counterfactual
+isolates avatar-loaded assembly as a contributor; it cannot count as a garment
+quality pass. Neither initial prestrain nor incomplete seam closure explains the
+original 1 s failure. Geometric impossibility and a solver defect remain unproven.
+Independent conservative force gradients omit contact/friction reactions and
+per-substep impulses, so full force balance, convergence and calibration remain
+open. All three original runs, 423 saved states, 420 timings and pre-run plans
+are retained with separate independent review and read-only replay.

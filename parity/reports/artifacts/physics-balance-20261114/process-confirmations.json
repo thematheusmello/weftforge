@@ -1,0 +1,228 @@
+{
+  "confirmed_at": "2026-11-14T17:59:07.248539+00:00",
+  "all_job_ledgers_terminal": true,
+  "all_recorded_launcher_and_child_pids_absent": true,
+  "solver_cases": 3,
+  "no_live_handles": true,
+  "jobs": [
+    {
+      "ledger": "build-job.json",
+      "stage": "build",
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 23.682782000047155,
+      "processes": [
+        {
+          "field": "launcher_pid",
+          "pid": 63144,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        },
+        {
+          "field": "child_pid",
+          "pid": 63167,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "ledger": "build-probes-job.json",
+      "stage": "build-probes",
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 8.818530832999386,
+      "processes": [
+        {
+          "field": "launcher_pid",
+          "pid": 70232,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        },
+        {
+          "field": "child_pid",
+          "pid": 70254,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "ledger": "build-retry1-job.json",
+      "stage": "build-retry1",
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 8.890544833033346,
+      "processes": [
+        {
+          "field": "launcher_pid",
+          "pid": 66278,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        },
+        {
+          "field": "child_pid",
+          "pid": 66374,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "ledger": "clippy-job.json",
+      "stage": "clippy",
+      "exit_code": 101,
+      "status": "failed",
+      "wall_seconds": 4.178632625029422,
+      "processes": [
+        {
+          "field": "launcher_pid",
+          "pid": 65850,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        },
+        {
+          "field": "child_pid",
+          "pid": 65895,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "ledger": "clippy-probes-job.json",
+      "stage": "clippy-probes",
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.7498457089532167,
+      "processes": [
+        {
+          "field": "launcher_pid",
+          "pid": 70608,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        },
+        {
+          "field": "child_pid",
+          "pid": 70630,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "ledger": "clippy-retry1-job.json",
+      "stage": "clippy-retry1",
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 0.809799458947964,
+      "processes": [
+        {
+          "field": "launcher_pid",
+          "pid": 66562,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        },
+        {
+          "field": "child_pid",
+          "pid": 66584,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "ledger": "control-job.json",
+      "stage": "control",
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 20.214847875060514,
+      "processes": [
+        {
+          "field": "launcher_pid",
+          "pid": 66594,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        },
+        {
+          "field": "child_pid",
+          "pid": 66638,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "ledger": "no-avatar-job.json",
+      "stage": "no-avatar",
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 6.434238499961793,
+      "processes": [
+        {
+          "field": "launcher_pid",
+          "pid": 71314,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        },
+        {
+          "field": "child_pid",
+          "pid": 71336,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        }
+      ]
+    },
+    {
+      "ledger": "zero-g-balance-job.json",
+      "stage": "zero-g-balance",
+      "exit_code": 0,
+      "status": "completed",
+      "wall_seconds": 19.48467116698157,
+      "processes": [
+        {
+          "field": "launcher_pid",
+          "pid": 70783,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        },
+        {
+          "field": "child_pid",
+          "pid": 70879,
+          "ps_exit_code": 1,
+          "ps_output": "",
+          "process_absent": true
+        }
+      ]
+    }
+  ],
+  "analysis_tool_sessions": {
+    "control_analysis": {
+      "exec_session": 26605,
+      "exit_code": 0
+    },
+    "probe_analysis": {
+      "exec_session": 80646,
+      "exit_code": 0
+    }
+  },
+  "detached_source_clean": true,
+  "root_original_fixture_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7"
+}

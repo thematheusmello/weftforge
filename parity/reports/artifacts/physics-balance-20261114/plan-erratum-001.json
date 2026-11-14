@@ -1,0 +1,19 @@
+{
+  "declared_at": "2026-11-14T17:48:48.218182+00:00",
+  "kind": "append_only_pre_run_clippy_erratum",
+  "prior_plan": "plan.json",
+  "prior_plan_sha256": "b97a22b3e37b6543412346cc9ee10a8dea19643779ad4d0a118a4040675c30e2",
+  "current_result_yet_generated": false,
+  "reason": "Strict diagnostic Clippy rejected logging modulo; replace frame % 15 == 0 with frame.is_multiple_of(15). The old code and failed check remain in preregistered-v0/ and clippy-job.json/clippy.stderr. No simulation settings, data or implementation changed.",
+  "frozen_code_sha256": {
+    "harness/src/main.rs": "b215edd790b44bf7bc353b0f3724d025a158d11f0e6c04c9194a12feafc8c580",
+    "job.py": "e5dff623f0ef3f5bd6687a139328d03e1dbc5b5ae2a4eb8ca91f2d06c9d8dbd4"
+  },
+  "executed_binary_sha256": "033b2043ae8caf66ae1fdbef998f844f48a6ca64cea7473c5c29b73cdb86699b",
+  "binary_is_byte_identical_to_initial_build": true,
+  "checks": {
+    "harness_fmt": "passed",
+    "strict_harness_clippy": "passed_retry1",
+    "independent_self_checks": "passed"
+  }
+}

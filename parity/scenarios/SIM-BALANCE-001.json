@@ -1,0 +1,21 @@
+{
+  "id": "SIM-BALANCE-001",
+  "feature_ids": [
+    "SIM-001",
+    "SIM-005",
+    "SIM-006",
+    "FIT-003"
+  ],
+  "fixture_hashes": {
+    "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7"
+  },
+  "initial_conditions": "Unchanged original grain-shirt construction, fresh arranged state and zero velocities; 8 substeps/32 iterations, dt1/60s, closure1m/s; ground/self/avatar contact enabled. Two separately preregistered diagnostic branches retain the same cloth inputs.",
+  "expected_outcomes": "Retain original 15percent-strain/5mm-seam/2mm-supported-contact/finite/closed-assembly quality screen and every trajectory/failure. Compare an exact shared assembly prefix and fixed zero-G continuation. Mannequin omission is a counterfactual with quality null, never a replacement acceptance scene. Full force equilibrium/convergence require separate evidence.",
+  "declarations": [
+    "parity/reports/artifacts/physics-balance-20261114/plan.json",
+    "parity/reports/artifacts/physics-balance-20261114/plan-erratum-001.json",
+    "parity/reports/artifacts/physics-balance-20261114/plan-probes-001.json"
+  ],
+  "kind": "implementation_only",
+  "reference_execution": "not_run"
+}

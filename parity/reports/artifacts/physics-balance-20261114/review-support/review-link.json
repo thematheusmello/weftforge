@@ -1,0 +1,24 @@
+{
+  "kind": "separate_independent_review_identity_not_producer_acceptance",
+  "review_id": "cloth-balance-review-20261114",
+  "external_receipt_sha256": "ae1397c3291485a2a55ab2e7c510a041cb8642496f01608b8aeffef20996e025",
+  "bundled_unmodified_independent_checker": "review-support/replay_review.py",
+  "checker_sha256": "ef19fef14b25088d951823c11da0b9f8e1733dd8c8137353e66186c0eb3eabdb",
+  "receipt_included": true,
+  "facts_independently_recomputed": [
+    "all423saved strains/masses/membrane+bending energies",
+    "conservative force vectors",
+    "original0..60prefix and target recurrence",
+    "supported static vertex/triangle and analytic contact checkpoints",
+    "original failures retained and avatar omission nonacceptance"
+  ],
+  "limits": [
+    "The external receipt remains separate and is not manufactured or overwritten by producer replay.",
+    "Bundled checker does not run simulation or import producer analyzers.",
+    "Candidate verify.py directly verifies source snapshot hashes; clean Git-state observation remains original provenance and is not re-proven from source files alone."
+  ],
+  "separate_receipt": "review-support/review-receipt.json",
+  "independent_manifest": "review-support/MANIFEST.json",
+  "independent_manifest_sha256": "71a5b8fcd4868c45881bfc7ac892ed60a18d1cf94b904656091d691c4e3a8a8e",
+  "receipt_role": "Independent original-bundle review, copied verbatim; distinct from producer candidate replay."
+}
