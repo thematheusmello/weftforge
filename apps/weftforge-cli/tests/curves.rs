@@ -6,7 +6,7 @@ use std::{
 use weftforge_core::{Command as Edit, CurveInterval, Editor, Project};
 
 #[test]
-fn cli_edits_and_splits_sewn_curves_and_preserves_outputs_on_failure() {
+fn cli_edits_splits_and_joins_sewn_curves_and_preserves_outputs_on_failure() {
     let dir = std::env::temp_dir().join(format!(
         "weftforge-cli-curves-{}-{}",
         std::process::id(),
@@ -77,10 +77,52 @@ fn cli_edits_and_splits_sewn_curves_and_preserves_outputs_on_failure() {
     assert_eq!(split.seams.len(), 2);
     assert_eq!(split.seams[0].id, controls.seams[0].id);
     assert_eq!(split.revision, controls.revision + 1);
+    let split_path = dir.join("split.weftforge");
+    fs::copy(&output, &split_path).unwrap();
+    let result = run("join", &split_path, &[]);
+    assert!(
+        result.status.success(),
+        "{}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+    let joined = Project::load(&output).unwrap();
+    assert_eq!(joined.curves.len(), controls.curves.len());
+    assert_eq!(joined.points, controls.points);
+    assert_eq!(joined.pieces, controls.pieces);
+    assert_eq!(joined.revision, split.revision + 1);
+    assert_eq!(joined.seams.len(), split.seams.len());
+    for (before, after) in controls
+        .curve(a)
+        .unwrap()
+        .controls
+        .unwrap()
+        .into_iter()
+        .flatten()
+        .zip(
+            joined
+                .curve(a)
+                .unwrap()
+                .controls
+                .unwrap()
+                .into_iter()
+                .flatten(),
+        )
+    {
+        assert!((before - after).abs() < 1e-12);
+    }
+    for (before, after) in split.seams.iter().zip(&joined.seams) {
+        assert_eq!(
+            (before.id, &before.correspondence),
+            (after.id, &after.correspondence)
+        );
+        assert_eq!(after.a.curve, a);
+    }
     let valid = fs::read(&output).unwrap();
     for (command, values) in [
         ("split", vec!["0"]),
         ("split", vec!["NaN"]),
+        ("join", vec![]),
+        ("join", vec!["unexpected"]),
         ("curve-controls", vec!["NaN", "0", "0", "0"]),
         ("curve-controls", vec!["0.3", "-1", "0.1", "-1"]),
         ("curve-controls", vec!["straight", "unexpected"]),
@@ -110,6 +152,7 @@ fn cli_edits_and_splits_sewn_curves_and_preserves_outputs_on_failure() {
     let help = String::from_utf8(result.stdout).unwrap();
     assert!(help.contains("curve-controls INPUT OUTPUT CURVE_ID straight"));
     assert!(help.contains("split INPUT OUTPUT CURVE_ID T"));
+    assert!(help.contains("join INPUT OUTPUT CURVE_ID"));
     assert_eq!(Project::load(&input).unwrap(), editor.project);
     fs::remove_dir_all(dir).unwrap();
 }

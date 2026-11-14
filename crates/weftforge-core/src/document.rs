@@ -674,6 +674,69 @@ impl Project {
                     }
                 }
             }
+            Command::JoinCurve { curve } => {
+                let piece_index = self
+                    .pieces
+                    .iter()
+                    .position(|piece| piece.boundary.contains(&curve))
+                    .ok_or_else(|| Error("Curve has no piece".into()))?;
+                let boundary = &self.pieces[piece_index].boundary;
+                ensure(
+                    boundary.len() > 3,
+                    "Join must retain at least three boundary curves",
+                )?;
+                let index = boundary.iter().position(|&id| id == curve).unwrap();
+                let second = boundary[(index + 1) % boundary.len()];
+                let left = self
+                    .curve(curve)
+                    .ok_or_else(|| Error("Unknown curve".into()))?
+                    .clone();
+                let right = self
+                    .curve(second)
+                    .ok_or_else(|| Error("Missing next curve".into()))?
+                    .clone();
+                ensure(
+                    left.end == right.start,
+                    "Join needs consecutive oriented curves",
+                )?;
+                ensure(
+                    self.pieces
+                        .iter()
+                        .flat_map(|piece| &piece.boundary)
+                        .filter(|&&id| id == curve || id == second)
+                        .count()
+                        == 2
+                        && !self.curves.iter().any(|other| {
+                            other.id != curve
+                                && other.id != second
+                                && (other.start == left.end || other.end == left.end)
+                        }),
+                    "Join would remove referenced construction geometry",
+                )?;
+                let (controls, t) = joined_geometry(self, &left, &right)?;
+                for seam in &mut self.seams {
+                    for interval in [&mut seam.a, &mut seam.b] {
+                        if interval.curve == curve {
+                            interval.t0 *= t;
+                            interval.t1 *= t;
+                        } else if interval.curve == second {
+                            interval.curve = curve;
+                            interval.t0 = t + (1.0 - t) * interval.t0;
+                            interval.t1 = t + (1.0 - t) * interval.t1;
+                        }
+                    }
+                }
+                let joined = self
+                    .curves
+                    .iter_mut()
+                    .find(|item| item.id == curve)
+                    .unwrap();
+                joined.end = right.end;
+                joined.controls = controls;
+                self.pieces[piece_index].boundary.retain(|&id| id != second);
+                self.curves.retain(|item| item.id != second);
+                self.points.retain(|item| item.id != left.end);
+            }
             Command::ResizePiece {
                 piece,
                 width,
@@ -816,6 +879,110 @@ impl Project {
     }
 }
 
+fn joined_geometry(
+    project: &Project,
+    left: &Curve,
+    right: &Curve,
+) -> Result<(Option<[[f64; 2]; 2]>, f64)> {
+    const TOLERANCE: f64 = 1.0e-12;
+    let a = project
+        .point(left.start)
+        .ok_or_else(|| Error("Missing curve start".into()))?
+        .position;
+    let m = project
+        .point(left.end)
+        .ok_or_else(|| Error("Missing join point".into()))?
+        .position;
+    let b = project
+        .point(right.end)
+        .ok_or_else(|| Error("Missing curve end".into()))?
+        .position;
+    let sub = |a: [f64; 2], b: [f64; 2]| std::array::from_fn(|axis| a[axis] - b[axis]);
+    let length = |v: [f64; 2]| v[0].hypot(v[1]);
+    let interior = |t: f64| t.is_finite() && t > 1.0e-6 && t < 1.0 - 1.0e-6;
+    match (left.controls, right.controls) {
+        (None, None) => {
+            let lengths = [length(sub(m, a)), length(sub(b, m))];
+            let t = lengths[0] / (lengths[0] + lengths[1]);
+            let join = std::array::from_fn(|axis| a[axis] + (b[axis] - a[axis]) * t);
+            ensure(
+                interior(t) && length(sub(join, m)) <= TOLERANCE,
+                "Join needs nondegenerate collinear straight curves with 1e-6 < t < 1-1e-6",
+            )?;
+            Ok((None, t))
+        }
+        (Some([c, d]), Some([e, f])) => {
+            // Endpoint derivatives scale by t^k and (1-t)^k; higher orders recover stationary joins.
+            let derivatives = [
+                [sub(m, d), sub(e, m)],
+                [
+                    std::array::from_fn(|i| m[i] - 2.0 * d[i] + c[i]),
+                    std::array::from_fn(|i| f[i] - 2.0 * e[i] + m[i]),
+                ],
+                [
+                    std::array::from_fn(|i| m[i] - 3.0 * d[i] + 3.0 * c[i] - a[i]),
+                    std::array::from_fn(|i| b[i] - 3.0 * f[i] + 3.0 * e[i] - m[i]),
+                ],
+            ];
+            let mut accepted: Option<([[f64; 2]; 2], f64)> = None;
+            for (order, derivative) in derivatives.into_iter().enumerate() {
+                let norms = derivative.map(length);
+                if norms.iter().any(|&norm| norm <= TOLERANCE) {
+                    continue;
+                }
+                let weights = norms.map(|norm| norm.powf(1.0 / (order + 1) as f64));
+                let t = weights[0] / (weights[0] + weights[1]);
+                if !interior(t) {
+                    continue;
+                }
+                let controls = [
+                    std::array::from_fn(|i| a[i] + (c[i] - a[i]) / t),
+                    std::array::from_fn(|i| b[i] + (f[i] - b[i]) / (1.0 - t)),
+                ];
+                let lerp =
+                    |a: [f64; 2], b: [f64; 2]| std::array::from_fn(|i| a[i] + (b[i] - a[i]) * t);
+                let ac = lerp(a, controls[0]);
+                let cd = lerp(controls[0], controls[1]);
+                let db = lerp(controls[1], b);
+                let left_control = lerp(ac, cd);
+                let right_control = lerp(cd, db);
+                let join = lerp(left_control, right_control);
+                // Bernstein weights are nonnegative and sum to one: this bounds every curve point.
+                if [[a, c, d, m], [m, e, f, b]]
+                    .into_iter()
+                    .zip([[a, ac, left_control, join], [join, right_control, db, b]])
+                    .any(|(actual, candidate)| {
+                        actual.into_iter().zip(candidate).any(|(a, b)| {
+                            let error = length(sub(a, b));
+                            !error.is_finite() || error > TOLERANCE
+                        })
+                    })
+                {
+                    continue;
+                }
+                if let Some((_, previous_t)) = accepted {
+                    ensure(
+                        (t - previous_t).abs() <= TOLERANCE,
+                        "Join parameter is ambiguous within the geometric tolerance",
+                    )?;
+                } else {
+                    accepted = Some((controls, t));
+                }
+            }
+            accepted
+                .map(|(controls, t)| (Some(controls), t))
+                .ok_or_else(|| {
+                    Error(
+                        "Join needs compatible nondegenerate cubic children with 1e-6 < t < 1-1e-6 and error <= 1e-12 m".into(),
+                    )
+                })
+        }
+        _ => Err(Error(
+            "Join needs two straight curves or two compatible cubic children".into(),
+        )),
+    }
+}
+
 fn split_seam(seam: Seam, curve: Id, second: Id, t: f64) -> Vec<Seam> {
     let source = if seam.a.curve == curve {
         0
@@ -929,6 +1096,9 @@ pub enum Command {
     SplitCurve {
         curve: Id,
         t: f64,
+    },
+    JoinCurve {
+        curve: Id,
     },
     ResizePiece {
         piece: Id,

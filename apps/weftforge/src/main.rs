@@ -332,6 +332,20 @@ impl Studio {
         let commands = draft.commands(&self.editor.project);
         commands.is_empty() || self.apply_command(Command::Transaction(commands))
     }
+    fn join_next_curve(&mut self, curve: Id) {
+        let mut commands = self
+            .draft
+            .take()
+            .filter(|draft| draft.revision == self.editor.project.revision)
+            .map_or_else(Vec::new, |draft| draft.commands(&self.editor.project));
+        commands.push(Command::JoinCurve { curve });
+        let command = if commands.len() == 1 {
+            commands.pop().unwrap()
+        } else {
+            Command::Transaction(commands)
+        };
+        self.apply_command(command);
+    }
     fn select(&mut self, selected: Option<Id>) {
         if (self.selected != selected || self.selected_curve.is_some()) && self.commit_draft() {
             self.selected = selected;
@@ -931,6 +945,7 @@ impl Studio {
             let mut draft=self.draft.take().filter(|draft|draft.revision==self.editor.project.revision && draft.selected==self.selected && draft.curve.as_ref().map(|curve|curve.id)==self.selected_curve)
                 .unwrap_or_else(||InspectorDraft::new(&self.editor.project,self.selected,self.selected_curve));
             let mut split=None;
+            let mut join=None;
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
                 ui.separator(); ui.strong(&piece.name);
                 if let Some(curve)=&mut draft.curve {
@@ -956,6 +971,7 @@ impl Studio {
                     });
                     ui.small("Interior curve parameter, not arc length. Sewing is partitioned without changing point pairs.");
                     if ui.button("Split selected curve").clicked() { split=Some(curve.id); }
+                    if ui.button("Join with next boundary").on_hover_text("Preserve compatible straight or cubic geometry and sewing. The selected curve ID survives; unsafe joins are rejected.").clicked() { join=Some(curve.id); }
                     ui.separator();
                     });
                 }
@@ -1007,6 +1023,7 @@ impl Studio {
             self.draft=Some(draft);
             if let Some(seam)=remove { self.execute(Command::RemoveSeam { seam }); }
             if let Some(curve)=split { self.execute(Command::SplitCurve { curve,t:self.split_t }); }
+            if let Some(curve)=join { self.join_next_curve(curve); }
         });
         let opening_rectangle = self.tool == Tool::Rectangle
             && self
@@ -3201,6 +3218,120 @@ mod tests {
         let draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
         assert_eq!(draft.curve.unwrap().id, next);
         app.select(Some(piece));
+        assert_eq!(app.selected_curve, None);
+    }
+
+    #[test]
+    fn selected_join_button_commits_one_revision_and_rejects_pending_edits_atomically() {
+        use egui::accesskit::{Action, ActionRequest, TreeId};
+        fn frame(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            events: Vec<egui::Event>,
+        ) -> egui::FullOutput {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(700., 2000.))),
+                    events,
+                    ..Default::default()
+                },
+                |ui| app.inspector(ui),
+            )
+        }
+        fn click_join(ctx: &egui::Context, app: &mut Studio) {
+            let output = frame(ctx, app, vec![]);
+            let target_node = output
+                .platform_output
+                .accesskit_update
+                .unwrap()
+                .nodes
+                .into_iter()
+                .find(|(_, node)| {
+                    node.label() == Some("Join with next boundary")
+                        && node.supports_action(Action::Click)
+                })
+                .unwrap()
+                .0;
+            frame(
+                ctx,
+                app,
+                vec![egui::Event::AccessKitActionRequest(ActionRequest {
+                    action: Action::Click,
+                    target_tree: TreeId::ROOT,
+                    target_node,
+                    data: None,
+                })],
+            );
+        }
+        let mut app = Studio::empty();
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Join panel".into(),
+                origin: [0., 0.],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+        let piece = app.editor.project.pieces[0].id;
+        let curve = app.editor.project.pieces[0].boundary[2];
+        app.editor
+            .execute(Command::SetCurveControls {
+                curve,
+                controls: Some([[0.3, 0.8], [0.1, 0.8]]),
+            })
+            .unwrap();
+        app.editor
+            .execute(Command::SplitCurve { curve, t: 0.4 })
+            .unwrap();
+        let right = app.editor.project.curves.last().unwrap().id;
+        app.select_curve(Some((piece, curve)));
+        let before = app.editor.project.clone();
+        let mut draft = InspectorDraft::new(&before, app.selected, app.selected_curve);
+        draft.resolution = 0.09;
+        app.draft = Some(draft);
+        let (_sender, receiver) = mpsc::channel();
+        let cancel = Arc::new(AtomicBool::new(false));
+        app.job = Some(Job {
+            revision: before.revision,
+            kind: JobKind::Mesh,
+            batch: None,
+            cancel: cancel.clone(),
+            receiver,
+        });
+        app.pending_batch = Some(SimulationBatch::drape());
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        click_join(&ctx, &mut app);
+        assert_eq!(app.editor.project.revision, before.revision + 1);
+        assert_eq!(app.editor.project.resolution, 0.09);
+        assert_eq!(app.editor.project.curves.len(), before.curves.len() - 1);
+        assert_eq!(app.selected_curve, Some(curve));
+        assert!(app.editor.project.curve(right).is_none());
+        assert!(app.draft.is_none());
+        assert!(app.dirty && app.needs_mesh);
+        assert!(cancel.load(Ordering::Relaxed));
+        assert!(app.pending_batch.is_none());
+        let joined = app.editor.project.clone();
+        assert!(app.editor.undo());
+        app.rebuild();
+        assert_eq!(app.editor.project.curves, before.curves);
+        assert_eq!(app.editor.project.resolution, before.resolution);
+        app.select_curve(Some((piece, right)));
+        let before_invalid = app.editor.project.clone();
+        let mut draft = InspectorDraft::new(&before_invalid, app.selected, app.selected_curve);
+        draft.resolution = 0.08;
+        app.draft = Some(draft);
+        app.dirty = false;
+        click_join(&ctx, &mut app);
+        assert_eq!(app.editor.project, before_invalid);
+        assert_eq!(app.selected_curve, Some(right));
+        assert!(!app.dirty);
+        assert!(app.editor.can_redo());
+        assert!(app.message.contains("two straight"));
+        assert!(app.editor.redo());
+        app.rebuild();
+        assert_eq!(app.editor.project.curves, joined.curves);
+        assert_eq!(app.editor.project.resolution, joined.resolution);
         assert_eq!(app.selected_curve, None);
     }
 

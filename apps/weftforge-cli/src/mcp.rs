@@ -528,6 +528,7 @@ fn command_schema() -> Value {
             "split_curve",
             object(json!({"curve":id,"t":number}), &["curve", "t"]),
         ),
+        ("join_curve", object(json!({"curve":id}), &["curve"])),
         (
             "resize_piece",
             object(
