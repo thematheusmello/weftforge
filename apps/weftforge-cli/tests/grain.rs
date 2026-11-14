@@ -3,7 +3,7 @@ use std::{
     process::Command,
     time::{SystemTime, UNIX_EPOCH},
 };
-use weftforge_core::Project;
+use weftforge_core::{FORMAT_VERSION, Project};
 
 #[test]
 fn cli_authors_grain_and_orthotropy_and_preserves_output_on_invalid_values() {
@@ -65,9 +65,11 @@ fn cli_authors_grain_and_orthotropy_and_preserves_output_on_invalid_values() {
     assert_eq!(authored.materials[0].color, original.materials[0].color);
     assert_eq!(authored.points, original.points);
     assert_eq!(authored.seams, original.seams);
+    assert!(authored.sewing_groups.is_empty());
     let valid = fs::read(&output).unwrap();
     let json: serde_json::Value = serde_json::from_slice(&valid).unwrap();
-    assert_eq!(json["version"], 2);
+    assert_eq!(json["version"], FORMAT_VERSION);
+    assert_eq!(json["project"]["sewing_groups"], serde_json::json!([]));
     let result = Command::new(binary)
         .arg("grain")
         .arg(&grain)
