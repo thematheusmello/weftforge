@@ -18,7 +18,7 @@
   ],
   "complete_contract": false,
   "reference_executed": false,
-  "freshness": "current",
+  "freshness": "stale",
   "source_hashes": {
     ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
     "Cargo.lock": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
@@ -1274,5 +1274,6 @@
     "Decoded SDK messages and path-only derivatives are explicitly qualified, not raw transport bytes. Official client evidence applies only to SDK1.28.1/legacy2025-11-25.",
     "Unsigned local macOS package only; no new released binaries, signing/notices or Windows/Linux launch acceptance.",
     "Original metadata/test-driver refusals remain retained; no predeclared criteria, input or limit was altered to pass."
-  ]
+  ],
+  "freshness_reason": "Historical source-bound outputs remain unchanged. Material-strain attribution at6c455 changes current scoped solver/core/UI/CLI source; this complete earlier run has not been re-executed on that scoped source."
 }

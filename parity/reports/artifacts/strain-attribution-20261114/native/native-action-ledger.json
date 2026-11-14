@@ -1,0 +1,71 @@
+{
+  "kind": "ordered_native_action_ledger",
+  "origin": "Transcribed from successful documented CUA calls; major event timestamps are retained in events.jsonl. Intermediate native file-dialog observations remain in the conversation.",
+  "coordinate_clicks": 0,
+  "blind_retries": 0,
+  "native_tool_errors": 0,
+  "manual_solver_settings_edits": 0,
+  "actions": [
+    {
+      "ordinal": 1,
+      "action": "Observe prior product via exact old app path; verify saved five-piece/one-group rest session and PID21067; native super+q once. No observation of quit binding.",
+      "evidence": "01-quit-process.json"
+    },
+    {
+      "ordinal": 2,
+      "action": "Launch exact frozen standard6c455 package via cua.getApp; verify PID99058/start/executable SHA; initial native project empty.",
+      "evidence": "02-launch-process.json"
+    },
+    {
+      "ordinal": 3,
+      "action": "Click Open\u2026; super+shift+g; set native PathTextField to disposable original copy; Return; click selected Open.",
+      "input": "original-shirt-disposable.weftforge",
+      "evidence": "03-rest-loaded.ax.txt"
+    },
+    {
+      "ordinal": 4,
+      "action": "Click existing Assemble (gravity off) once; observe active60steps/zeroG/8substeps/32iterations/1m-s closure.",
+      "evidence": "04-assembly-first-observation.ax.txt"
+    },
+    {
+      "ordinal": 5,
+      "action": "Observe completed assembly; scroll fresh AX scrollbar93 down2pages to expose read-only inspector diagnostics.",
+      "evidence": "07-assembly-inspector.png"
+    },
+    {
+      "ordinal": 6,
+      "action": "Click Save as\u2026; set native filename assembly-native.weftforge; click Save.",
+      "output": "assembly-native.weftforge"
+    },
+    {
+      "ordinal": 7,
+      "action": "Click Export OBJ; set native filename assembly-native.obj; click Save; observe Exported OBJ in metres.",
+      "evidence": "08-assembly-export-complete.ax.txt"
+    },
+    {
+      "ordinal": 8,
+      "action": "Click existing Drape once; observe active120steps/gravity[0,-9.81,0]/8substeps/32iterations/1m-s closure.",
+      "evidence": "10-drape-first-observation.ax.txt"
+    },
+    {
+      "ordinal": 9,
+      "action": "Observe completed native drape at3.000s; read inspector labels and retain original screenshot.",
+      "evidence": "12-drape-complete-inspector.png"
+    },
+    {
+      "ordinal": 10,
+      "action": "Click Save as\u2026; set native filename drape-native.weftforge; click Save.",
+      "output": "drape-native.weftforge"
+    },
+    {
+      "ordinal": 11,
+      "action": "Click Export OBJ; set native filename drape-native.obj; click Save; observe final native labels/export completion.",
+      "evidence": "13-drape-export-complete.ax.txt"
+    },
+    {
+      "ordinal": 12,
+      "action": "Send CUA completion_summary exactly once; no further native interaction. Then perform saved-output checks only.",
+      "evidence": "saved-output-check.json"
+    }
+  ]
+}

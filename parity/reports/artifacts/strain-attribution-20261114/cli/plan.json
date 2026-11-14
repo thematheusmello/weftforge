@@ -1,0 +1,27 @@
+{
+  "source_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+  "binary_sha256": "c7e63b52d60b293357ba60c49dfed3643472ab177352f2501ebfb207f7ed1092",
+  "input_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "checker_sha256": "6bba7c30c505db8ca2d0da10c7bfd37f8e9ea7a81d0b71a97b53c8c8e66324f4",
+  "expected_peaks_sha256": "5f8ffcfc077d41a39aa3084466f88806c85a09b4d6ed004213ecfc16d76bbc0e",
+  "frozen_at": "2026-11-14T18:17:42.917157+00:00",
+  "commands": [
+    [
+      "fit",
+      "original.weftforge",
+      "retained-output.obj"
+    ],
+    [
+      "simulate",
+      "original.weftforge",
+      "one-step.obj",
+      "1"
+    ],
+    [
+      "benchmark",
+      "original.weftforge",
+      "1"
+    ]
+  ],
+  "criteria": "Preserve original failed fit/sentinel; exact source and adapter fields; independent material-gradient check within1e-12; no parameter or threshold changes."
+}

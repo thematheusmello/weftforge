@@ -1,0 +1,63 @@
+[
+  {
+    "name": "fmt",
+    "command": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--check"
+    ],
+    "source_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+    "started_at": "2026-11-14T18:08:05.189686+00:00",
+    "pid": 90647,
+    "status": "completed",
+    "exit_code": 0,
+    "completed_at": "2026-11-14T18:08:05.597725+00:00"
+  },
+  {
+    "name": "tests",
+    "command": [
+      "cargo",
+      "test",
+      "--workspace"
+    ],
+    "source_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+    "started_at": "2026-11-14T18:08:05.598306+00:00",
+    "pid": 90705,
+    "status": "completed",
+    "exit_code": 0,
+    "completed_at": "2026-11-14T18:09:09.488723+00:00"
+  },
+  {
+    "name": "clippy",
+    "command": [
+      "cargo",
+      "clippy",
+      "--workspace",
+      "--all-targets",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "source_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+    "started_at": "2026-11-14T18:09:09.489064+00:00",
+    "pid": 92152,
+    "status": "completed",
+    "exit_code": 0,
+    "completed_at": "2026-11-14T18:09:25.317678+00:00"
+  },
+  {
+    "name": "package",
+    "command": [
+      "cargo",
+      "xtask",
+      "package"
+    ],
+    "source_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+    "started_at": "2026-11-14T18:09:25.318026+00:00",
+    "pid": 93384,
+    "status": "completed",
+    "exit_code": 0,
+    "completed_at": "2026-11-14T18:10:35.049610+00:00"
+  }
+]

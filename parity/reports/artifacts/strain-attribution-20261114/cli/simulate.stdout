@@ -1,0 +1,47 @@
+{
+  "architecture": "aarch64",
+  "diagnostics": {
+    "contacts": 0,
+    "finite": true,
+    "initial_intersections": 0,
+    "kinetic_energy": 0.0032590243992439098,
+    "max_contact_error": 0.0,
+    "max_seam_error": 0.4316666667151332,
+    "max_stretch_error": 0.0005639860962614041,
+    "peak_strain": {
+      "axis": "warp",
+      "signed_strain": 0.0005639860962614041,
+      "triangle": 209
+    },
+    "seam_assembly_remaining": 0.4316666666666667,
+    "simulation_time": 0.016666666666666666,
+    "step_seconds": 0.014313791
+  },
+  "kind": "implementation_only",
+  "median_step_seconds": 0.014313791,
+  "memory_bytes": null,
+  "p95_step_seconds": 0.014313791,
+  "peak_strain_piece": {
+    "id": 31,
+    "name": "Candidate back"
+  },
+  "platform": "macos",
+  "settings": {
+    "dt": 0.016666666666666666,
+    "gravity": [
+      0.0,
+      -9.81,
+      0.0
+    ],
+    "iterations": 8,
+    "seam_closure_speed": 0.5,
+    "substeps": 4
+  },
+  "simulated_seconds": 0.016666666666666666,
+  "simulated_seconds_per_wall_second": 1.163944491487201,
+  "steps": 1,
+  "triangles": 228,
+  "vertices": 150,
+  "viewport_frame_seconds": null,
+  "wall_seconds": 0.014319125
+}

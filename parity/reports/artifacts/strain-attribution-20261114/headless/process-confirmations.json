@@ -1,0 +1,60 @@
+{
+  "kind": "post_acceptance_terminal_job_and_source_confirmation",
+  "observed_at": "2026-11-14T18:17:14.572353+00:00",
+  "jobs_all_terminal_exit_zero": true,
+  "recorded_launcher_and_child_pids_absent": true,
+  "processes": [
+    {
+      "stage": "build",
+      "handle": "launcher_pid",
+      "pid": 97431,
+      "present": false,
+      "observed_process": "",
+      "ps_exit_code": 1
+    },
+    {
+      "stage": "build",
+      "handle": "child_pid",
+      "pid": 97573,
+      "present": false,
+      "observed_process": "",
+      "ps_exit_code": 1
+    },
+    {
+      "stage": "clippy",
+      "handle": "launcher_pid",
+      "pid": 98608,
+      "present": false,
+      "observed_process": "",
+      "ps_exit_code": 1
+    },
+    {
+      "stage": "clippy",
+      "handle": "child_pid",
+      "pid": 98760,
+      "present": false,
+      "observed_process": "",
+      "ps_exit_code": 1
+    },
+    {
+      "stage": "run",
+      "handle": "launcher_pid",
+      "pid": 99216,
+      "present": false,
+      "observed_process": "",
+      "ps_exit_code": 1
+    },
+    {
+      "stage": "run",
+      "handle": "child_pid",
+      "pid": 99358,
+      "present": false,
+      "observed_process": "",
+      "ps_exit_code": 1
+    }
+  ],
+  "source_still_clean": true,
+  "source_37_hashes_still_exact": true,
+  "source_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+  "new_simulation_count": 1
+}

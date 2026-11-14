@@ -1,0 +1,108 @@
+{
+  "kind": "actual_native_SIM005_diagnostic_attribution_acceptance",
+  "closed_at": "2026-11-14T18:26:44.656568+00:00",
+  "native_diagnostic_visibility_status": "passed",
+  "original_garment_quality_status": "failed",
+  "parity_status": "not_claimed",
+  "plan_path": "plan.json",
+  "plan_sha256": "b07b2b4239732a59593399be059713f0d892c428f1b11801a0fc8ef6a2a5bd4b",
+  "acceptance_contract_commit": "209a8fda72aaca90a08c330427354dd457224a6c",
+  "acceptance_contract_sha256": "71bbea48b09a3f07cc516625e1506ae07a73a79f3db35fcf59564dc44cc23700",
+  "runtime_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+  "runtime_source_files": 37,
+  "native_executable_sha256": "95fa1b7cb24b8de1a6b507330c2fe43ece0efe5a14226bb28c39f922fcee28c3",
+  "binary_binding_sha256": "758cbf42a07ebb9c214da50024d6b20d694c70b300397e2a5b9a1efc12d8efb9",
+  "source_pretest_sha256": "d996bed57c5ef7776813bdfff6eb9921af55be7af3e5a9e75073a51ebb57be49",
+  "native_pid": 99058,
+  "native_process_started_local": "2026-11-14 18:14:33 Europe/Lisbon",
+  "native_process_identity_scope": "Read-only ps command rows and executable on-disk SHA observed before/after the workflow; full original path values retained privately and public paths made repository-relative.",
+  "fixture_original_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "original_fixture_and_disposable_input_still_byte_identical": true,
+  "native_batch_workflow": {
+    "assembly_frames": 60,
+    "drape_additional_frames": 120,
+    "total_frames": 180,
+    "dt_seconds": 0.016666666666666666,
+    "substeps": 8,
+    "iterations": 32,
+    "assembly_gravity_m_per_s2": [
+      0,
+      0,
+      0
+    ],
+    "drape_gravity_m_per_s2": [
+      0,
+      -9.81,
+      0
+    ],
+    "seam_closure_m_per_s": 1,
+    "native_buttons_used": true,
+    "manual_settings_edits": false
+  },
+  "native_observations": [
+    {
+      "stage": "assembly",
+      "time_label": "1.000 s",
+      "peak_label": "24.12%",
+      "attribution_label": "Candidate back · Warp +24.12%",
+      "screenshot": "07-assembly-inspector.png",
+      "ax": "07-assembly-inspector.ax.txt"
+    },
+    {
+      "stage": "drape",
+      "time_label": "3.000 s",
+      "peak_label": "32.35%",
+      "attribution_label": "Candidate front · Warp +32.35%",
+      "screenshot": "12-drape-complete-inspector.png",
+      "ax": "12-drape-complete-inspector.ax.txt"
+    }
+  ],
+  "other_observed_inspector_labels": {
+    "seam_gap": "0.0000 m",
+    "contact_error": "0.0000 m",
+    "initial_intersections": "0"
+  },
+  "event_numeric_scope": "The zero seam/contact numbers in events.jsonl transcribe four-decimal native display labels; they are rounded display values, not claims that raw solver residuals are zero. Source time labels are likewise rounded.",
+  "finite_scope": "No separate finite-status label exists in the native inspector. Finiteness is independently checked in original native OBJ coordinates/normals and is also true in retained original-control diagnostics.",
+  "retained_original_control_prior_diagnostics": {
+    "60": {
+      "contacts": 8173,
+      "finite": true,
+      "initial_intersections": 0,
+      "kinetic_energy": 1.8961163932671308e-05,
+      "max_contact_error": 0.0,
+      "max_seam_error": 6.911103501829521e-07,
+      "max_stretch_error": 0.24118490382884605,
+      "seam_assembly_remaining": 0.0,
+      "simulation_time": 1.0000000000000013
+    },
+    "180": {
+      "contacts": 8305,
+      "finite": true,
+      "initial_intersections": 0,
+      "kinetic_energy": 1.386340086726859e-06,
+      "max_contact_error": 1.3877787807814457e-17,
+      "max_seam_error": 6.91110350198192e-07,
+      "max_stretch_error": 0.32351913672966237,
+      "seam_assembly_remaining": 0.0,
+      "simulation_time": 2.9999999999999942
+    }
+  },
+  "raw_diagnostics_source": "Original-control trajectory with SHA feb4d50b5d40e549b48bc309fb43b8d0968357d340a3946b17898229d579b7cb; these are the retained original run values, not direct native private-memory readings.",
+  "source_integrity": "Assembly and drape source bytes identical; v2 to v3 adds only default sewing_groups=[]. Existing f32 color JSON is unchanged. All remaining authored f64 bits, arrays, revision28 and stable IDs match original. 09 strict whole-map equality false is explained solely by that newly explicit empty field; 11 and saved-output checker confirm semantic integrity.",
+  "saved_output_check": "saved-output-check.json",
+  "portable_checker": "verify_native_saved.py",
+  "portable_command": "python3 verify_native_saved.py EVIDENCE_DIRECTORY ORIGINAL_CONTROL_DIRECTORY",
+  "replay_runs": "saved-output-replay-runs.json",
+  "native_cua_completion_summary_count": 1,
+  "native_workflow_complete": true,
+  "no_further_native_input_after_completion": true,
+  "public_scope": "Candidate-only original PNG/source/OBJ bytes plus path-only text derivatives; prior product UI retained privately. No installer, licensed-reference interaction, account data, production code, Git, GitHub or CI changes.",
+  "publication_status": "Local ignored evidence candidate; root must track artifacts and run clean-checkout publication gates.",
+  "limits": [
+    "Both strains exceed unchanged15% limit; low displayed contact/seam residuals and an attractive image cannot accept the garment.",
+    "Editable snapshots exclude simulation state; native OBJ snapshots provide positions/UV/topology but no native velocities.",
+    "No force-balance, fabric calibration, fitting acceptance, reference parity or full SIM-005 claim.",
+    "Public source bindings establish frozen runtime provenance; source integration and publication checks are owned by root."
+  ]
+}

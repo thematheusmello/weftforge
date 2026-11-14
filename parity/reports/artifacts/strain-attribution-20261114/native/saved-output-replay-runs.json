@@ -1,0 +1,24 @@
+{
+  "kind": "no_simulator_saved_output_replay_runs",
+  "runs": [
+    {
+      "name": "repo_root",
+      "exit_code": 0,
+      "stdout_raw_path": "private/native-saved-check.stdout.json",
+      "stdout_sha256": "e465802923645dd98c8c14a7b955f3a9112724dfacfddcdad2f4b9c5a50bb7a6",
+      "stderr_raw_path": "private/native-saved-check.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "different_working_directory",
+      "exit_code": 0,
+      "stdout_raw_path": "private/portable-replay.stdout.json",
+      "stdout_sha256": "c0a07de43dcca7575751bb1c18125c36c6e4c1f16402edc846d8cae87e616dba",
+      "stderr_raw_path": "private/portable-replay.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "portable_command": "python3 verify_native_saved.py EVIDENCE_DIRECTORY ORIGINAL_CONTROL_DIRECTORY",
+  "simulator_executed": false,
+  "checker_sha256": "4476dc35a78632b055d9a4a5fe87282d9d06e7bae3ca5b6fc6ef5445becf3872"
+}

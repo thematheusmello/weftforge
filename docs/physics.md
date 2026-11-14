@@ -106,6 +106,14 @@ changing the display color does not change them.
 
 `max_stretch_error` reports max(abs(length(f_w)-1), abs(length(f_f)-1)). It is a
 material-axis length diagnostic, not a bound on all principal strains or shear.
+`peak_strain` identifies the current solver triangle, `warp` or `weft`, and
+signed `length(f_axis)-1`; positive means extension, negative compression.
+Exact ties choose the first input triangle and then warp. The triangle index
+belongs to the current rest mesh, while the shared core bridge resolves its
+authored pattern ID. Default/legacy diagnostics can have no attribution. The
+native inspector shows the pattern, direction and signed percentage; CLI reports
+include the same typed metric and pattern ID/name. This adds no physical force
+and changes no fitting threshold. See the [bounded contract](../spec/features/SIM-005-strain-attribution.md).
 
 The authored numerical bridge regression loads a planar 0.2 m square against the
 ground, with density 0.2 kg/m², warp 50 N/m, weft 1000 N/m and damping 8 s^-1.

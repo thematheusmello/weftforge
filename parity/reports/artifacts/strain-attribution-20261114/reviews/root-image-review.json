@@ -1,0 +1,42 @@
+{
+  "kind": "independent_root_visual_review_of_original_captures",
+  "reviewed_at": "2026-11-14T18:29:00.390888+00:00",
+  "source_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+  "images": {
+    "07-assembly-inspector.png": {
+      "sha256": "9cc8af419dad25c6267f5cb5dc1acfd9b0d2a27f6c473eb9c9cbaa841c7fab47",
+      "visible_observations": [
+        "Time1.000s",
+        "Assembly remaining0.0000m",
+        "Peak material strain24.12%",
+        "Candidate back · Warp +24.12%",
+        "Seam gap0.0000m",
+        "Contact error0.0000m",
+        "Initial intersections0",
+        "8substeps/32iterations,zero gravity",
+        "2pieces/8legacyseams/0groups/150vertices"
+      ]
+    },
+    "12-drape-complete-inspector.png": {
+      "sha256": "6eb51c589391bd5bd7005495111bbe3591676721547116cfd0a12ee71b9b30d3",
+      "visible_observations": [
+        "Time3.000s",
+        "Assembly remaining0.0000m",
+        "Peak material strain32.35%",
+        "Candidate front · Warp +32.35%",
+        "Seam gap0.0000m",
+        "Contact error0.0000m",
+        "Initial intersections0",
+        "8substeps/32iterations,gravity−9.81Y",
+        "2pieces/8legacyseams/0groups/150vertices"
+      ]
+    }
+  },
+  "scope": "Root directly viewed both original PNGs with the image tool; no new UI input or simulation. Process/source qualification is separately retained by the native capture receipts.",
+  "qualifications": [
+    "Seam/contact observations are four-decimal display values, not exact solver residuals.",
+    "Finite status is not an existing inspector label; numerical finite checks come from saved-output evaluation.",
+    "Visible strain exceeds the unchanged15percent quality screen; no fitting/equilibrium/reference-parity acceptance.",
+    "No personal/account/path information is visible in these two images."
+  ]
+}
