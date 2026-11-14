@@ -8,8 +8,8 @@ Every remaining roadmap gate stays in scope.
 ## Published and recoverable state
 
 Public repository: https://github.com/thematheusmello/weftforge.
-Published main: `d34c9d18a2f4c672eb3130f2c80f24d59c4f95ce`
-([native evidence PR24](https://github.com/thematheusmello/weftforge/pull/24));
+Published main: `96a3dbed7c2c43aaf88d50b20f96d36bdfeb23e9`
+([numeric editing PR27](https://github.com/thematheusmello/weftforge/pull/27));
 all eight push/PR platform and evidence checks passed.
 [Source PR21](https://github.com/thematheusmello/weftforge/pull/21) is retained
 as ancestor `68bdb9fb774177f074f69edc1b2965336670cc9f`.
@@ -23,11 +23,18 @@ remains at older `8419363` and discloses its inspector defect. No native binarie
 ship yet. Distribution notices, platform launch/package QA and signing remain.
 Historical tags and failed or stale evidence have not been rewritten.
 
-Current branch: `feat/numeric-rectangle-and-contact-init`.
+Current branch: `feat/document-f64-roundtrip`.
+The shared JSON parser now enables existing float_roundtrip support, with
+independent bit tests for v1/v2 fields, high-magnitude stiffness and recovery.
+Two analytic membrane tests are integrated without changing production solver
+math or the failed fixture. Workspace gates and native revalidation are underway.
+
+The following completed native candidate is historical after these source changes:
 Accepted bounded native candidate source: `359ac5b2fedfece5cfef9f22861c279bd2708801`;
 native executable `3ed0ab22b4e7335c8dff9a58350b7f68eb2aa9b5ba1c39059c9043a7210c6880`,
 CLI `3b0977567273c57d74edaf2ac470e0740b55fb2f7a3fec56e53b8b0463aab32f`.
-Runtime/test sources remain identical after the later evidence/catalog merges.
+Runtime/test sources now differ in parser configuration and independent tests;
+its completed reports are explicitly stale until affected native workflows rerun.
 This integrates the numeric rectangle dialog, stable widget scopes, modal input
 isolation, focused-history/RGB fixes, precision-preserving numeric editing,
 valid small/large size preservation and initial-contact BVH. The current map has
@@ -209,10 +216,10 @@ Root's saved own candidate PID79057 is idle on the cancellation fixture; do not
 overwrite its isolated package. The read-only reopened-small capture has 94 nodes,
 no gaps/truncation and a matched executable digest. Curve_output_check is packaging
 independent public evidence (complete); Integrated_review checks attribution and reproduction.
-No root Cargo job is live. External generated caches are retained; do not remove
+Root is starting integrated workspace gates; retain their returned session handles. External generated caches are retained; do not remove
 unrelated files or change system protections.
 
 A separate solver review found no justified production math change for issue16.
 Its two analytic regressions and review note pass 22 sim tests/strict Clippy on
-isolated commit `c248903655a4c30dbab93d004f9c0229101e3f22`; they are not merged
-into this 73-test native checkpoint. The fitting failure remains unresolved.
+isolated commit `c248903655a4c30dbab93d004f9c0229101e3f22`; they are now merged in the next source increment. The prior73-test native
+checkpoint stays retained; the fitting failure remains unresolved.
