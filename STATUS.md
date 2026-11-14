@@ -51,9 +51,34 @@ Working branch: `feat/contact-native-workflow`; local integration is
 `c3fc77b4451ca4a86d9c1549c7ab9b09d9997516`. Its complete core/sim source matches
 qualified `3aa20b15`, and native/CLI source matches stage-fix `1ad6b8ed`. Only
 three runtime/test files differ from `6c45535c`; linear-stitch candidate `35afac60`
-is excluded. Full integrated checks, package binding and native execution are
-next. The three current earlier reports and their 13 feature freshness states
+is excluded. Candidate `7fe9e187d34ef6ce87184f502c87e01357f15b2f` now passes
+formatting, all 133 Rust tests, strict workspace Clippy, xtask's 54 Python checks,
+registry/map, actual CLI help and standard unsigned packaging. Root gate24823 /
+wrapper11621 and all five children are terminal0. Logs and source pretest are in
+`.local/contact-native-integration-20261114/`; pretest SHA is `a83f0e2e…da4d0`.
+The three earlier reports and their 13 feature freshness states
 are marked stale; source-bound outputs and failures remain intact.
+
+The eight-file private package is frozen read-only at
+`.local/candidates/7fe9e187d34e/`. Native SHA is
+`de81ef668998f016756492b94ef7786118f929e777cb73e2c9587cc94ba91996`;
+CLI SHA is `26a75925c69eb5cfc67fa9d3a4561a5e5de5a74b087a5e49234f2d5757c09aa9`.
+Binary binding SHA is `df7bca1fd682665575597f933048ce66c5f03d29c95821908945bb88f24e5003`.
+No new native launch/input/physics has occurred. The actor's frozen plan in
+`.local/harbor-native-integrated-20261114/native-acceptance-plan-v2.json`, SHA
+`cdf04026197c7d672deb978a03ab86d8529e54bd57d67f8532e6e02554745edf`,
+requires current-source empty UI creation, A20 simulation, edit21/Undo22 with
+actual Drape-to-Rest observation, save/real quit/reopen A22, then B23 simulation
+and export. Exactly two whole 420-second physical cases, no tuning/retry.
+
+The independent adapter in `.local/harbor-native-evaluator-20261114/` is being
+prepared. It must bind this new source/package, qualify revision-only physical
+input identity and exact rest OBJ before dynamics, and compare native0/60/180
+with immutable3aa gold. Point-design tolerance remains separate from exact
+physical identity; no normalization. Read its final freeze/selfchecks and issue
+root authorization bound to plan, evaluator and package before waking the actor.
+Pending-mesh race UI evidence is conditional on actual observation; unit coverage
+does not become a claimed native observation. The reference handoff stays pending.
 
 Published visibility integration is `938b2670`, with runtime candidate
 `6c45535cb312f7fed8ad872ee87b6ba5e5974e35`. Prospective contract
@@ -259,7 +284,8 @@ strain failure remains. No production audit overlay has been integrated.
    clear-cloth transitions in3production lines. Frozen tests3RED→4GREEN,
    all33nativeunit tests, fmt and strictpackageClippy pass. Pending/cancelled/
    stale/failedjobs retain prioracceptedstage; acceptedmeshes preserve queued
-   batches/Play. NativeUI and full integrated checks remain pending.
+   batches/Play. Full integrated gates now pass at7fe9; current native UI remains
+   pending under the bound plan above.
 4. Publish reviewed Harbor/audit progress and the capture-encoding qualification
    only after tracked-clean registry/map/hash checks. Keep the reference manual
    click question pending; do not inject further reference input meanwhile.
@@ -275,5 +301,17 @@ preparation build78246/wrapper50333/release50596/Clippy50826 exits0. New fullA
 driver71641/analyzer72622 all0; compare-edit73370/child73512 exits0 within the
 originaldeadline. Postflight SHA86c1a903…347e, handoffda036754…a8fc, no owned
 physical jobs active. Root clean xtask66629 and replay/map85648/62189 are0.
+The new full130-file candidate and saved historical3aa replay are closed in
+`.local/harbor-contact-candidates-20261114/public-safe-candidate/`, manifest
+`8aeb60086fd8b7f2927bf4b8f30bf9187a6b07985b07634b793b3737f14991ec`.
+Read-only replay27868/wrapper97445/reader97587 exits0; all362 saved states pass.
+It remains ignored/unpublished until tracked-clean delivery checks.
+
+Separate original-shirt validation on math candidate35af is preparation-only in
+`.local/closed-stitch-garment-20261114/`. Fmt/build/Clippy jobs35921 and ledgers
+complete0; no new Cloth initialization/steps. Its evaluator/preregistration is
+still being frozen, then root must approve the single unchanged180-step control.
+Cap is420s including analysis and256MiB numerical output, not an RSS limit.
+Do not integrate35af or start that physical case from preparation alone.
 Reference inventory36748 and REA observation64096 are terminal0. Recheck actual
 handles before resuming; use separate Cargo targets.
