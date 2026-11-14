@@ -1,0 +1,42 @@
+{
+  "id": "UI-SEWN-CURVE-002",
+  "declared_at": "2026-11-14T02:17:35.180433Z",
+  "kind": "implementation_only",
+  "source_build_commit": "eb153cd49dc0417b8702d6fc9b5a1156aad9b650",
+  "executable_sha256": "4fbd66afcd467101b535b6e36d07a0bfdcfa1bb1540b93bfe1c0c27257977c9d",
+  "cli_executable_sha256": "b2bc0999486eb79b88e05e34080d4d3072ce9e5c385640e22de61d43168a6396",
+  "prior_declaration": "UI-SEWN-CURVE-001 retained separately; earlier probe aborted and exposed dirty global Quit",
+  "initial_state": "Empty native project; create two original 0.4 x 0.6 m rectangles at [0,0] and [1,0] through the actual GUI.",
+  "actions": [
+    "Create rectangles in native app",
+    "Select first topboundary;enablecubic;controlsP1[.3,.8],P2[.1,.8]metres",
+    "Sew to other topboundary with reversedpairing",
+    "Save before-split authored construction",
+    "Split selected cubic at t.4;observe two seamrecords;Undo/Redo",
+    "Tryinvalidsplit0 andinvalidcurvecontrol;retain geometry/history andvisibleerror",
+    "Resolution.09then.035;savev2;quit/relaunchsameexe;reopen;exportOBJandSVG"
+  ],
+  "criteria": {
+    "analytic_cubic_positions_absolute_m": 1e-12,
+    "sewn_point_pairs_absolute_m": 1e-12,
+    "normalized_parameters_absolute": 1e-12,
+    "unchanged_authoring_on_failed_edit": true,
+    "undo_redo_and_reopen_restore_relationships": true,
+    "finer_mesh_increases_vertices_and_preserves_positive_faces": true
+  },
+  "additional_actions": [
+    "After save/reopen/export, edit accepted construction and immediately issue global Cmd+Q before the next autosave interval.",
+    "Verify original primary bytes unchanged, latest authored state retained as recovery, then relaunch this exact executable and explicitly recover."
+  ],
+  "additional_criteria": {
+    "primary_bytes_unchanged_on_dirty_quit": true,
+    "latest_authored_state_in_explicit_recovery": true,
+    "recovered_construction_editable": true
+  },
+  "limitations": [
+    "No referenceexecution",
+    "No clothsimulation/fittingquality claim for these2Dconstructionpanels",
+    "Joining,internalfeatures,arc-length semanticsremainmissing",
+    "Native initialization cancellation latency requires a separately measured run."
+  ]
+}

@@ -129,6 +129,16 @@
           },
           "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
           "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
         }
       ],
       "comparison_criteria": {
@@ -204,6 +214,39 @@
             "parity/reports/artifacts/grain-xtask.log": "f731bb1d11f5439c9fe48a24eb0498ae4e24e1eed1b4a96d1a58c73f8e56d236"
           },
           "path": "parity/reports/WF-20261113-GRAIN-AUTHORING-001.json"
+        },
+        {
+          "id": "WF-20261114-SEWN-CURVE-001",
+          "path": "parity/reports/WF-20261114-SEWN-CURVE-001.json",
+          "commit": "68bdb9fb774177f074f69edc1b2965336670cc9f",
+          "timestamp": "2026-11-14T02:57:03.379039Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "docs/images/studio-sewn-curve.json": "43387e770de7e47f4401c5182e49b9bcc7eea74db7cf62293c183016d899214a",
+            "docs/images/studio-sewn-curve.png": "67c52b3b8e22a2923cc1df5fa9b8632cf72b290488ca991678cafca59a64af03",
+            "fixtures/sewn-curve/after-invalid-control.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-invalid-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/coarse.obj": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+            "fixtures/sewn-curve/coarse.weftforge": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+            "fixtures/sewn-curve/fine.obj": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+            "fixtures/sewn-curve/fine.svg": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+            "fixtures/sewn-curve/manifest.json": "7d35686b8b44fb31f478ad450e8d6453f7f1cdf1bad69ae7710c41e589c08b05",
+            "fixtures/sewn-curve/quit-pending.json": "14d9efa8c869f06129e7c7a0d21a69834270aae2d8b4e22ea7fd2e4e1fa43de0",
+            "fixtures/sewn-curve/quit-precondition.json": "d62bb4d2a5bcf313b75f14cbdd59bf92acce481e55630cdec60974de55b32225",
+            "fixtures/sewn-curve/quit-recovery-capture.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/quit-result.json": "458c726acac105ce5ffe941b0f0905c01169f136a8c8c659beae6ed41b120c1c",
+            "fixtures/sewn-curve/recovered-edited.weftforge": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+            "fixtures/sewn-curve/recovered.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/ui-declaration.json": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-check.log": "7ccea40898f314627fbb644d5b1cb6e5196a8a4c5c6b1a3d75cad8a2735656f9",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json": "b204cba97976b962c3e4a74e18aead5fed1b074e30556498da62263ed33bce64",
+            "parity/reports/artifacts/sewn-curve-20261114/rerun-arguments.json": "8cdb1b8fc2fa0e6157dfa0c44b4e9dae80fb9b436481e76bc43d11a3e028869d",
+            "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
+          }
         }
       ],
       "known_gaps": [
@@ -214,7 +257,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "UI-003",
@@ -296,6 +339,16 @@
           },
           "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
           "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
         }
       ],
       "comparison_criteria": {
@@ -388,6 +441,39 @@
             "parity/reports/artifacts/grain-xtask.log": "f731bb1d11f5439c9fe48a24eb0498ae4e24e1eed1b4a96d1a58c73f8e56d236"
           },
           "path": "parity/reports/WF-20261113-GRAIN-AUTHORING-001.json"
+        },
+        {
+          "id": "WF-20261114-SEWN-CURVE-001",
+          "path": "parity/reports/WF-20261114-SEWN-CURVE-001.json",
+          "commit": "68bdb9fb774177f074f69edc1b2965336670cc9f",
+          "timestamp": "2026-11-14T02:57:03.379039Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "docs/images/studio-sewn-curve.json": "43387e770de7e47f4401c5182e49b9bcc7eea74db7cf62293c183016d899214a",
+            "docs/images/studio-sewn-curve.png": "67c52b3b8e22a2923cc1df5fa9b8632cf72b290488ca991678cafca59a64af03",
+            "fixtures/sewn-curve/after-invalid-control.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-invalid-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/coarse.obj": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+            "fixtures/sewn-curve/coarse.weftforge": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+            "fixtures/sewn-curve/fine.obj": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+            "fixtures/sewn-curve/fine.svg": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+            "fixtures/sewn-curve/manifest.json": "7d35686b8b44fb31f478ad450e8d6453f7f1cdf1bad69ae7710c41e589c08b05",
+            "fixtures/sewn-curve/quit-pending.json": "14d9efa8c869f06129e7c7a0d21a69834270aae2d8b4e22ea7fd2e4e1fa43de0",
+            "fixtures/sewn-curve/quit-precondition.json": "d62bb4d2a5bcf313b75f14cbdd59bf92acce481e55630cdec60974de55b32225",
+            "fixtures/sewn-curve/quit-recovery-capture.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/quit-result.json": "458c726acac105ce5ffe941b0f0905c01169f136a8c8c659beae6ed41b120c1c",
+            "fixtures/sewn-curve/recovered-edited.weftforge": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+            "fixtures/sewn-curve/recovered.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/ui-declaration.json": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-check.log": "7ccea40898f314627fbb644d5b1cb6e5196a8a4c5c6b1a3d75cad8a2735656f9",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json": "b204cba97976b962c3e4a74e18aead5fed1b074e30556498da62263ed33bce64",
+            "parity/reports/artifacts/sewn-curve-20261114/rerun-arguments.json": "8cdb1b8fc2fa0e6157dfa0c44b4e9dae80fb9b436481e76bc43d11a3e028869d",
+            "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
+          }
         }
       ],
       "known_gaps": [
@@ -397,7 +483,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "UI-005",
@@ -578,6 +664,16 @@
           },
           "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
           "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
         }
       ],
       "comparison_criteria": {
@@ -644,6 +740,39 @@
             "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
             "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
+        },
+        {
+          "id": "WF-20261114-SEWN-CURVE-001",
+          "path": "parity/reports/WF-20261114-SEWN-CURVE-001.json",
+          "commit": "68bdb9fb774177f074f69edc1b2965336670cc9f",
+          "timestamp": "2026-11-14T02:57:03.379039Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "docs/images/studio-sewn-curve.json": "43387e770de7e47f4401c5182e49b9bcc7eea74db7cf62293c183016d899214a",
+            "docs/images/studio-sewn-curve.png": "67c52b3b8e22a2923cc1df5fa9b8632cf72b290488ca991678cafca59a64af03",
+            "fixtures/sewn-curve/after-invalid-control.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-invalid-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/coarse.obj": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+            "fixtures/sewn-curve/coarse.weftforge": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+            "fixtures/sewn-curve/fine.obj": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+            "fixtures/sewn-curve/fine.svg": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+            "fixtures/sewn-curve/manifest.json": "7d35686b8b44fb31f478ad450e8d6453f7f1cdf1bad69ae7710c41e589c08b05",
+            "fixtures/sewn-curve/quit-pending.json": "14d9efa8c869f06129e7c7a0d21a69834270aae2d8b4e22ea7fd2e4e1fa43de0",
+            "fixtures/sewn-curve/quit-precondition.json": "d62bb4d2a5bcf313b75f14cbdd59bf92acce481e55630cdec60974de55b32225",
+            "fixtures/sewn-curve/quit-recovery-capture.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/quit-result.json": "458c726acac105ce5ffe941b0f0905c01169f136a8c8c659beae6ed41b120c1c",
+            "fixtures/sewn-curve/recovered-edited.weftforge": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+            "fixtures/sewn-curve/recovered.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/ui-declaration.json": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-check.log": "7ccea40898f314627fbb644d5b1cb6e5196a8a4c5c6b1a3d75cad8a2735656f9",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json": "b204cba97976b962c3e4a74e18aead5fed1b074e30556498da62263ed33bce64",
+            "parity/reports/artifacts/sewn-curve-20261114/rerun-arguments.json": "8cdb1b8fc2fa0e6157dfa0c44b4e9dae80fb9b436481e76bc43d11a3e028869d",
+            "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
+          }
         }
       ],
       "known_gaps": [
@@ -653,7 +782,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "PAT-002",
@@ -669,7 +798,18 @@
       "evidence_ids": [
         "spec/features/PAT-005-sewn-curve-editing.md"
       ],
-      "scenarios": [],
+      "scenarios": [
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -711,6 +851,39 @@
             "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
             "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
           }
+        },
+        {
+          "id": "WF-20261114-SEWN-CURVE-001",
+          "path": "parity/reports/WF-20261114-SEWN-CURVE-001.json",
+          "commit": "68bdb9fb774177f074f69edc1b2965336670cc9f",
+          "timestamp": "2026-11-14T02:57:03.379039Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "docs/images/studio-sewn-curve.json": "43387e770de7e47f4401c5182e49b9bcc7eea74db7cf62293c183016d899214a",
+            "docs/images/studio-sewn-curve.png": "67c52b3b8e22a2923cc1df5fa9b8632cf72b290488ca991678cafca59a64af03",
+            "fixtures/sewn-curve/after-invalid-control.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-invalid-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/coarse.obj": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+            "fixtures/sewn-curve/coarse.weftforge": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+            "fixtures/sewn-curve/fine.obj": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+            "fixtures/sewn-curve/fine.svg": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+            "fixtures/sewn-curve/manifest.json": "7d35686b8b44fb31f478ad450e8d6453f7f1cdf1bad69ae7710c41e589c08b05",
+            "fixtures/sewn-curve/quit-pending.json": "14d9efa8c869f06129e7c7a0d21a69834270aae2d8b4e22ea7fd2e4e1fa43de0",
+            "fixtures/sewn-curve/quit-precondition.json": "d62bb4d2a5bcf313b75f14cbdd59bf92acce481e55630cdec60974de55b32225",
+            "fixtures/sewn-curve/quit-recovery-capture.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/quit-result.json": "458c726acac105ce5ffe941b0f0905c01169f136a8c8c659beae6ed41b120c1c",
+            "fixtures/sewn-curve/recovered-edited.weftforge": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+            "fixtures/sewn-curve/recovered.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/ui-declaration.json": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-check.log": "7ccea40898f314627fbb644d5b1cb6e5196a8a4c5c6b1a3d75cad8a2735656f9",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json": "b204cba97976b962c3e4a74e18aead5fed1b074e30556498da62263ed33bce64",
+            "parity/reports/artifacts/sewn-curve-20261114/rerun-arguments.json": "8cdb1b8fc2fa0e6157dfa0c44b4e9dae80fb9b436481e76bc43d11a3e028869d",
+            "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
+          }
         }
       ],
       "known_gaps": [
@@ -721,7 +894,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "PAT-003",
@@ -746,6 +919,16 @@
           },
           "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
           "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
         }
       ],
       "comparison_criteria": {
@@ -812,6 +995,39 @@
             "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
             "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
+        },
+        {
+          "id": "WF-20261114-SEWN-CURVE-001",
+          "path": "parity/reports/WF-20261114-SEWN-CURVE-001.json",
+          "commit": "68bdb9fb774177f074f69edc1b2965336670cc9f",
+          "timestamp": "2026-11-14T02:57:03.379039Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "docs/images/studio-sewn-curve.json": "43387e770de7e47f4401c5182e49b9bcc7eea74db7cf62293c183016d899214a",
+            "docs/images/studio-sewn-curve.png": "67c52b3b8e22a2923cc1df5fa9b8632cf72b290488ca991678cafca59a64af03",
+            "fixtures/sewn-curve/after-invalid-control.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-invalid-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/coarse.obj": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+            "fixtures/sewn-curve/coarse.weftforge": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+            "fixtures/sewn-curve/fine.obj": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+            "fixtures/sewn-curve/fine.svg": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+            "fixtures/sewn-curve/manifest.json": "7d35686b8b44fb31f478ad450e8d6453f7f1cdf1bad69ae7710c41e589c08b05",
+            "fixtures/sewn-curve/quit-pending.json": "14d9efa8c869f06129e7c7a0d21a69834270aae2d8b4e22ea7fd2e4e1fa43de0",
+            "fixtures/sewn-curve/quit-precondition.json": "d62bb4d2a5bcf313b75f14cbdd59bf92acce481e55630cdec60974de55b32225",
+            "fixtures/sewn-curve/quit-recovery-capture.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/quit-result.json": "458c726acac105ce5ffe941b0f0905c01169f136a8c8c659beae6ed41b120c1c",
+            "fixtures/sewn-curve/recovered-edited.weftforge": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+            "fixtures/sewn-curve/recovered.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/ui-declaration.json": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-check.log": "7ccea40898f314627fbb644d5b1cb6e5196a8a4c5c6b1a3d75cad8a2735656f9",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json": "b204cba97976b962c3e4a74e18aead5fed1b074e30556498da62263ed33bce64",
+            "parity/reports/artifacts/sewn-curve-20261114/rerun-arguments.json": "8cdb1b8fc2fa0e6157dfa0c44b4e9dae80fb9b436481e76bc43d11a3e028869d",
+            "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
+          }
         }
       ],
       "known_gaps": [
@@ -821,7 +1037,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "PAT-004",
@@ -944,6 +1160,16 @@
           },
           "initial_conditions": "Original cubic sewn garment, default CPU settings; capture construction IDs.",
           "expected_outcomes": "Supported relationships preserved or explicitly rejected/invalidation reported; one gesture one undo; no silent ID retargeting."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
         }
       ],
       "comparison_criteria": {
@@ -987,6 +1213,39 @@
             "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
             "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
           }
+        },
+        {
+          "id": "WF-20261114-SEWN-CURVE-001",
+          "path": "parity/reports/WF-20261114-SEWN-CURVE-001.json",
+          "commit": "68bdb9fb774177f074f69edc1b2965336670cc9f",
+          "timestamp": "2026-11-14T02:57:03.379039Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "docs/images/studio-sewn-curve.json": "43387e770de7e47f4401c5182e49b9bcc7eea74db7cf62293c183016d899214a",
+            "docs/images/studio-sewn-curve.png": "67c52b3b8e22a2923cc1df5fa9b8632cf72b290488ca991678cafca59a64af03",
+            "fixtures/sewn-curve/after-invalid-control.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-invalid-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/coarse.obj": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+            "fixtures/sewn-curve/coarse.weftforge": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+            "fixtures/sewn-curve/fine.obj": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+            "fixtures/sewn-curve/fine.svg": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+            "fixtures/sewn-curve/manifest.json": "7d35686b8b44fb31f478ad450e8d6453f7f1cdf1bad69ae7710c41e589c08b05",
+            "fixtures/sewn-curve/quit-pending.json": "14d9efa8c869f06129e7c7a0d21a69834270aae2d8b4e22ea7fd2e4e1fa43de0",
+            "fixtures/sewn-curve/quit-precondition.json": "d62bb4d2a5bcf313b75f14cbdd59bf92acce481e55630cdec60974de55b32225",
+            "fixtures/sewn-curve/quit-recovery-capture.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/quit-result.json": "458c726acac105ce5ffe941b0f0905c01169f136a8c8c659beae6ed41b120c1c",
+            "fixtures/sewn-curve/recovered-edited.weftforge": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+            "fixtures/sewn-curve/recovered.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/ui-declaration.json": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-check.log": "7ccea40898f314627fbb644d5b1cb6e5196a8a4c5c6b1a3d75cad8a2735656f9",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json": "b204cba97976b962c3e4a74e18aead5fed1b074e30556498da62263ed33bce64",
+            "parity/reports/artifacts/sewn-curve-20261114/rerun-arguments.json": "8cdb1b8fc2fa0e6157dfa0c44b4e9dae80fb9b436481e76bc43d11a3e028869d",
+            "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
+          }
         }
       ],
       "known_gaps": [
@@ -997,7 +1256,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "PAT-006",
@@ -1278,6 +1537,16 @@
           },
           "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
           "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
         }
       ],
       "comparison_criteria": {
@@ -1346,6 +1615,39 @@
             "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
             "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
+        },
+        {
+          "id": "WF-20261114-SEWN-CURVE-001",
+          "path": "parity/reports/WF-20261114-SEWN-CURVE-001.json",
+          "commit": "68bdb9fb774177f074f69edc1b2965336670cc9f",
+          "timestamp": "2026-11-14T02:57:03.379039Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "docs/images/studio-sewn-curve.json": "43387e770de7e47f4401c5182e49b9bcc7eea74db7cf62293c183016d899214a",
+            "docs/images/studio-sewn-curve.png": "67c52b3b8e22a2923cc1df5fa9b8632cf72b290488ca991678cafca59a64af03",
+            "fixtures/sewn-curve/after-invalid-control.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-invalid-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/coarse.obj": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+            "fixtures/sewn-curve/coarse.weftforge": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+            "fixtures/sewn-curve/fine.obj": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+            "fixtures/sewn-curve/fine.svg": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+            "fixtures/sewn-curve/manifest.json": "7d35686b8b44fb31f478ad450e8d6453f7f1cdf1bad69ae7710c41e589c08b05",
+            "fixtures/sewn-curve/quit-pending.json": "14d9efa8c869f06129e7c7a0d21a69834270aae2d8b4e22ea7fd2e4e1fa43de0",
+            "fixtures/sewn-curve/quit-precondition.json": "d62bb4d2a5bcf313b75f14cbdd59bf92acce481e55630cdec60974de55b32225",
+            "fixtures/sewn-curve/quit-recovery-capture.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/quit-result.json": "458c726acac105ce5ffe941b0f0905c01169f136a8c8c659beae6ed41b120c1c",
+            "fixtures/sewn-curve/recovered-edited.weftforge": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+            "fixtures/sewn-curve/recovered.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/ui-declaration.json": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-check.log": "7ccea40898f314627fbb644d5b1cb6e5196a8a4c5c6b1a3d75cad8a2735656f9",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json": "b204cba97976b962c3e4a74e18aead5fed1b074e30556498da62263ed33bce64",
+            "parity/reports/artifacts/sewn-curve-20261114/rerun-arguments.json": "8cdb1b8fc2fa0e6157dfa0c44b4e9dae80fb9b436481e76bc43d11a3e028869d",
+            "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
+          }
         }
       ],
       "known_gaps": [
@@ -1355,7 +1657,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "SEW-001",
@@ -1399,6 +1701,16 @@
           },
           "initial_conditions": "Empty default project; retained f00e executable and original authored14point panels. Fixed0.12mresolution and explicit0g assembly/drape quality settings.",
           "expected_outcomes": "Editable saved seams and dimensions persist; one-command undo/redo; actual resimulation and independently measured output pass fixed scene criteria."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
         }
       ],
       "comparison_criteria": {
@@ -1474,6 +1786,39 @@
             "parity/reports/artifacts/independent-single-candidate.json": "7f906568494e68f0f9ca17800d844d69b2f15e968c4101a437b173ba1fdd3ba1",
             "parity/reports/artifacts/single-candidate-before-reopen.weftforge": "49c7ff71ff366341491a3a561eb5f6048e8b820b4a666c77aa6bdba136b991e2"
           }
+        },
+        {
+          "id": "WF-20261114-SEWN-CURVE-001",
+          "path": "parity/reports/WF-20261114-SEWN-CURVE-001.json",
+          "commit": "68bdb9fb774177f074f69edc1b2965336670cc9f",
+          "timestamp": "2026-11-14T02:57:03.379039Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "docs/images/studio-sewn-curve.json": "43387e770de7e47f4401c5182e49b9bcc7eea74db7cf62293c183016d899214a",
+            "docs/images/studio-sewn-curve.png": "67c52b3b8e22a2923cc1df5fa9b8632cf72b290488ca991678cafca59a64af03",
+            "fixtures/sewn-curve/after-invalid-control.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-invalid-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/coarse.obj": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+            "fixtures/sewn-curve/coarse.weftforge": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+            "fixtures/sewn-curve/fine.obj": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+            "fixtures/sewn-curve/fine.svg": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+            "fixtures/sewn-curve/manifest.json": "7d35686b8b44fb31f478ad450e8d6453f7f1cdf1bad69ae7710c41e589c08b05",
+            "fixtures/sewn-curve/quit-pending.json": "14d9efa8c869f06129e7c7a0d21a69834270aae2d8b4e22ea7fd2e4e1fa43de0",
+            "fixtures/sewn-curve/quit-precondition.json": "d62bb4d2a5bcf313b75f14cbdd59bf92acce481e55630cdec60974de55b32225",
+            "fixtures/sewn-curve/quit-recovery-capture.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/quit-result.json": "458c726acac105ce5ffe941b0f0905c01169f136a8c8c659beae6ed41b120c1c",
+            "fixtures/sewn-curve/recovered-edited.weftforge": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+            "fixtures/sewn-curve/recovered.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/ui-declaration.json": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-check.log": "7ccea40898f314627fbb644d5b1cb6e5196a8a4c5c6b1a3d75cad8a2735656f9",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json": "b204cba97976b962c3e4a74e18aead5fed1b074e30556498da62263ed33bce64",
+            "parity/reports/artifacts/sewn-curve-20261114/rerun-arguments.json": "8cdb1b8fc2fa0e6157dfa0c44b4e9dae80fb9b436481e76bc43d11a3e028869d",
+            "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
+          }
         }
       ],
       "known_gaps": [
@@ -1486,7 +1831,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "SEW-002",
@@ -1553,6 +1898,16 @@
           },
           "initial_conditions": "Original curved pieces and unequal lengths in core workflow regression, fixed authored cubic controls.",
           "expected_outcomes": "Stable authored curve IDs and correspondence preserved; orientation and deliberate easing measurable independently."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
         }
       ],
       "comparison_criteria": {
@@ -1596,6 +1951,39 @@
             "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
             "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
           }
+        },
+        {
+          "id": "WF-20261114-SEWN-CURVE-001",
+          "path": "parity/reports/WF-20261114-SEWN-CURVE-001.json",
+          "commit": "68bdb9fb774177f074f69edc1b2965336670cc9f",
+          "timestamp": "2026-11-14T02:57:03.379039Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "docs/images/studio-sewn-curve.json": "43387e770de7e47f4401c5182e49b9bcc7eea74db7cf62293c183016d899214a",
+            "docs/images/studio-sewn-curve.png": "67c52b3b8e22a2923cc1df5fa9b8632cf72b290488ca991678cafca59a64af03",
+            "fixtures/sewn-curve/after-invalid-control.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-invalid-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/coarse.obj": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+            "fixtures/sewn-curve/coarse.weftforge": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+            "fixtures/sewn-curve/fine.obj": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+            "fixtures/sewn-curve/fine.svg": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+            "fixtures/sewn-curve/manifest.json": "7d35686b8b44fb31f478ad450e8d6453f7f1cdf1bad69ae7710c41e589c08b05",
+            "fixtures/sewn-curve/quit-pending.json": "14d9efa8c869f06129e7c7a0d21a69834270aae2d8b4e22ea7fd2e4e1fa43de0",
+            "fixtures/sewn-curve/quit-precondition.json": "d62bb4d2a5bcf313b75f14cbdd59bf92acce481e55630cdec60974de55b32225",
+            "fixtures/sewn-curve/quit-recovery-capture.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/quit-result.json": "458c726acac105ce5ffe941b0f0905c01169f136a8c8c659beae6ed41b120c1c",
+            "fixtures/sewn-curve/recovered-edited.weftforge": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+            "fixtures/sewn-curve/recovered.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/ui-declaration.json": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-check.log": "7ccea40898f314627fbb644d5b1cb6e5196a8a4c5c6b1a3d75cad8a2735656f9",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json": "b204cba97976b962c3e4a74e18aead5fed1b074e30556498da62263ed33bce64",
+            "parity/reports/artifacts/sewn-curve-20261114/rerun-arguments.json": "8cdb1b8fc2fa0e6157dfa0c44b4e9dae80fb9b436481e76bc43d11a3e028869d",
+            "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
+          }
         }
       ],
       "known_gaps": [
@@ -1606,7 +1994,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "SEW-004",
@@ -1622,7 +2010,18 @@
       "evidence_ids": [
         "spec/features/SEW-001-oriented-segment-sewing.md"
       ],
-      "scenarios": [],
+      "scenarios": [
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -1644,7 +2043,41 @@
       "prs": [],
       "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261114-SEWN-CURVE-001",
+          "path": "parity/reports/WF-20261114-SEWN-CURVE-001.json",
+          "commit": "68bdb9fb774177f074f69edc1b2965336670cc9f",
+          "timestamp": "2026-11-14T02:57:03.379039Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "docs/images/studio-sewn-curve.json": "43387e770de7e47f4401c5182e49b9bcc7eea74db7cf62293c183016d899214a",
+            "docs/images/studio-sewn-curve.png": "67c52b3b8e22a2923cc1df5fa9b8632cf72b290488ca991678cafca59a64af03",
+            "fixtures/sewn-curve/after-invalid-control.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-invalid-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/coarse.obj": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+            "fixtures/sewn-curve/coarse.weftforge": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+            "fixtures/sewn-curve/fine.obj": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+            "fixtures/sewn-curve/fine.svg": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+            "fixtures/sewn-curve/manifest.json": "7d35686b8b44fb31f478ad450e8d6453f7f1cdf1bad69ae7710c41e589c08b05",
+            "fixtures/sewn-curve/quit-pending.json": "14d9efa8c869f06129e7c7a0d21a69834270aae2d8b4e22ea7fd2e4e1fa43de0",
+            "fixtures/sewn-curve/quit-precondition.json": "d62bb4d2a5bcf313b75f14cbdd59bf92acce481e55630cdec60974de55b32225",
+            "fixtures/sewn-curve/quit-recovery-capture.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/quit-result.json": "458c726acac105ce5ffe941b0f0905c01169f136a8c8c659beae6ed41b120c1c",
+            "fixtures/sewn-curve/recovered-edited.weftforge": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+            "fixtures/sewn-curve/recovered.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/ui-declaration.json": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-check.log": "7ccea40898f314627fbb644d5b1cb6e5196a8a4c5c6b1a3d75cad8a2735656f9",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json": "b204cba97976b962c3e4a74e18aead5fed1b074e30556498da62263ed33bce64",
+            "parity/reports/artifacts/sewn-curve-20261114/rerun-arguments.json": "8cdb1b8fc2fa0e6157dfa0c44b4e9dae80fb9b436481e76bc43d11a3e028869d",
+            "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
+          }
+        }
+      ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established."
       ],
@@ -1652,7 +2085,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "missing"
+      "freshness": "current"
     },
     {
       "id": "SEW-005",
@@ -3055,6 +3488,16 @@
           },
           "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
           "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
         }
       ],
       "comparison_criteria": {
@@ -3152,6 +3595,39 @@
             "parity/reports/artifacts/grain-xtask.log": "f731bb1d11f5439c9fe48a24eb0498ae4e24e1eed1b4a96d1a58c73f8e56d236"
           },
           "path": "parity/reports/WF-20261113-GRAIN-AUTHORING-001.json"
+        },
+        {
+          "id": "WF-20261114-SEWN-CURVE-001",
+          "path": "parity/reports/WF-20261114-SEWN-CURVE-001.json",
+          "commit": "68bdb9fb774177f074f69edc1b2965336670cc9f",
+          "timestamp": "2026-11-14T02:57:03.379039Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "docs/images/studio-sewn-curve.json": "43387e770de7e47f4401c5182e49b9bcc7eea74db7cf62293c183016d899214a",
+            "docs/images/studio-sewn-curve.png": "67c52b3b8e22a2923cc1df5fa9b8632cf72b290488ca991678cafca59a64af03",
+            "fixtures/sewn-curve/after-invalid-control.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-invalid-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/coarse.obj": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+            "fixtures/sewn-curve/coarse.weftforge": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+            "fixtures/sewn-curve/fine.obj": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+            "fixtures/sewn-curve/fine.svg": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+            "fixtures/sewn-curve/manifest.json": "7d35686b8b44fb31f478ad450e8d6453f7f1cdf1bad69ae7710c41e589c08b05",
+            "fixtures/sewn-curve/quit-pending.json": "14d9efa8c869f06129e7c7a0d21a69834270aae2d8b4e22ea7fd2e4e1fa43de0",
+            "fixtures/sewn-curve/quit-precondition.json": "d62bb4d2a5bcf313b75f14cbdd59bf92acce481e55630cdec60974de55b32225",
+            "fixtures/sewn-curve/quit-recovery-capture.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/quit-result.json": "458c726acac105ce5ffe941b0f0905c01169f136a8c8c659beae6ed41b120c1c",
+            "fixtures/sewn-curve/recovered-edited.weftforge": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+            "fixtures/sewn-curve/recovered.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/ui-declaration.json": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-check.log": "7ccea40898f314627fbb644d5b1cb6e5196a8a4c5c6b1a3d75cad8a2735656f9",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json": "b204cba97976b962c3e4a74e18aead5fed1b074e30556498da62263ed33bce64",
+            "parity/reports/artifacts/sewn-curve-20261114/rerun-arguments.json": "8cdb1b8fc2fa0e6157dfa0c44b4e9dae80fb9b436481e76bc43d11a3e028869d",
+            "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
+          }
         }
       ],
       "known_gaps": [
@@ -3162,7 +3638,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "FILE-002",
@@ -3276,6 +3752,16 @@
           },
           "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
           "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
         }
       ],
       "comparison_criteria": {
@@ -3366,6 +3852,39 @@
             "parity/reports/artifacts/grain-xtask.log": "f731bb1d11f5439c9fe48a24eb0498ae4e24e1eed1b4a96d1a58c73f8e56d236"
           },
           "path": "parity/reports/WF-20261113-GRAIN-AUTHORING-001.json"
+        },
+        {
+          "id": "WF-20261114-SEWN-CURVE-001",
+          "path": "parity/reports/WF-20261114-SEWN-CURVE-001.json",
+          "commit": "68bdb9fb774177f074f69edc1b2965336670cc9f",
+          "timestamp": "2026-11-14T02:57:03.379039Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "docs/images/studio-sewn-curve.json": "43387e770de7e47f4401c5182e49b9bcc7eea74db7cf62293c183016d899214a",
+            "docs/images/studio-sewn-curve.png": "67c52b3b8e22a2923cc1df5fa9b8632cf72b290488ca991678cafca59a64af03",
+            "fixtures/sewn-curve/after-invalid-control.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-invalid-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/coarse.obj": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+            "fixtures/sewn-curve/coarse.weftforge": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+            "fixtures/sewn-curve/fine.obj": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+            "fixtures/sewn-curve/fine.svg": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+            "fixtures/sewn-curve/manifest.json": "7d35686b8b44fb31f478ad450e8d6453f7f1cdf1bad69ae7710c41e589c08b05",
+            "fixtures/sewn-curve/quit-pending.json": "14d9efa8c869f06129e7c7a0d21a69834270aae2d8b4e22ea7fd2e4e1fa43de0",
+            "fixtures/sewn-curve/quit-precondition.json": "d62bb4d2a5bcf313b75f14cbdd59bf92acce481e55630cdec60974de55b32225",
+            "fixtures/sewn-curve/quit-recovery-capture.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/quit-result.json": "458c726acac105ce5ffe941b0f0905c01169f136a8c8c659beae6ed41b120c1c",
+            "fixtures/sewn-curve/recovered-edited.weftforge": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+            "fixtures/sewn-curve/recovered.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/ui-declaration.json": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-check.log": "7ccea40898f314627fbb644d5b1cb6e5196a8a4c5c6b1a3d75cad8a2735656f9",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json": "b204cba97976b962c3e4a74e18aead5fed1b074e30556498da62263ed33bce64",
+            "parity/reports/artifacts/sewn-curve-20261114/rerun-arguments.json": "8cdb1b8fc2fa0e6157dfa0c44b4e9dae80fb9b436481e76bc43d11a3e028869d",
+            "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
+          }
         }
       ],
       "known_gaps": [
@@ -3376,7 +3895,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "FILE-004",
@@ -3458,6 +3977,16 @@
           },
           "initial_conditions": "Original retained v1 shirt, grain0, shared warp/weft400 after lossless migration; native03d440 candidate.",
           "expected_outcomes": "Exact authoring/history/v2 persistence/color isolation; same .15strain/.005mseam/.002mcontact fitting screen, retain failures."
+        },
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
         }
       ],
       "comparison_criteria": {
@@ -3548,6 +4077,39 @@
             "parity/reports/artifacts/grain-xtask.log": "f731bb1d11f5439c9fe48a24eb0498ae4e24e1eed1b4a96d1a58c73f8e56d236"
           },
           "path": "parity/reports/WF-20261113-GRAIN-AUTHORING-001.json"
+        },
+        {
+          "id": "WF-20261114-SEWN-CURVE-001",
+          "path": "parity/reports/WF-20261114-SEWN-CURVE-001.json",
+          "commit": "68bdb9fb774177f074f69edc1b2965336670cc9f",
+          "timestamp": "2026-11-14T02:57:03.379039Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "docs/images/studio-sewn-curve.json": "43387e770de7e47f4401c5182e49b9bcc7eea74db7cf62293c183016d899214a",
+            "docs/images/studio-sewn-curve.png": "67c52b3b8e22a2923cc1df5fa9b8632cf72b290488ca991678cafca59a64af03",
+            "fixtures/sewn-curve/after-invalid-control.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-invalid-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/coarse.obj": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+            "fixtures/sewn-curve/coarse.weftforge": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+            "fixtures/sewn-curve/fine.obj": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+            "fixtures/sewn-curve/fine.svg": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+            "fixtures/sewn-curve/manifest.json": "7d35686b8b44fb31f478ad450e8d6453f7f1cdf1bad69ae7710c41e589c08b05",
+            "fixtures/sewn-curve/quit-pending.json": "14d9efa8c869f06129e7c7a0d21a69834270aae2d8b4e22ea7fd2e4e1fa43de0",
+            "fixtures/sewn-curve/quit-precondition.json": "d62bb4d2a5bcf313b75f14cbdd59bf92acce481e55630cdec60974de55b32225",
+            "fixtures/sewn-curve/quit-recovery-capture.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/quit-result.json": "458c726acac105ce5ffe941b0f0905c01169f136a8c8c659beae6ed41b120c1c",
+            "fixtures/sewn-curve/recovered-edited.weftforge": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+            "fixtures/sewn-curve/recovered.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/ui-declaration.json": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-check.log": "7ccea40898f314627fbb644d5b1cb6e5196a8a4c5c6b1a3d75cad8a2735656f9",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json": "b204cba97976b962c3e4a74e18aead5fed1b074e30556498da62263ed33bce64",
+            "parity/reports/artifacts/sewn-curve-20261114/rerun-arguments.json": "8cdb1b8fc2fa0e6157dfa0c44b4e9dae80fb9b436481e76bc43d11a3e028869d",
+            "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
+          }
         }
       ],
       "known_gaps": [
@@ -3557,7 +4119,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "FILE-006",
@@ -3653,7 +4215,18 @@
       "evidence_ids": [
         "spec/features/PAT-005-sewn-curve-editing.md"
       ],
-      "scenarios": [],
+      "scenarios": [
+        {
+          "id": "UI-SEWN-CURVE-002",
+          "path": "parity/scenarios/UI-SEWN-CURVE-002.json",
+          "fixture_hashes": {
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53"
+          },
+          "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+          "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -3705,6 +4278,39 @@
             "parity/reports/artifacts/integration-20261114/scenario.log": "f910f5e60c903b157414db43bca84c12dfbf86bb3d9b3b853835211a9bc4bc88",
             "parity/reports/artifacts/integration-20261114/tests.log": "f6524ebffef4c13bb7cdf1256e9a8aa87f7b14c9cafbd4645cf966ede4d9618b",
             "parity/reports/artifacts/integration-20261114/xtask.log": "2477d864793e3ee6e5584af6ec9564f0d1881af4ee9693233388f893a4e42753"
+          }
+        },
+        {
+          "id": "WF-20261114-SEWN-CURVE-001",
+          "path": "parity/reports/WF-20261114-SEWN-CURVE-001.json",
+          "commit": "68bdb9fb774177f074f69edc1b2965336670cc9f",
+          "timestamp": "2026-11-14T02:57:03.379039Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "docs/images/studio-sewn-curve.json": "43387e770de7e47f4401c5182e49b9bcc7eea74db7cf62293c183016d899214a",
+            "docs/images/studio-sewn-curve.png": "67c52b3b8e22a2923cc1df5fa9b8632cf72b290488ca991678cafca59a64af03",
+            "fixtures/sewn-curve/after-invalid-control.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-invalid-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/after-split.weftforge": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+            "fixtures/sewn-curve/before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "fixtures/sewn-curve/coarse.obj": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+            "fixtures/sewn-curve/coarse.weftforge": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+            "fixtures/sewn-curve/fine.obj": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+            "fixtures/sewn-curve/fine.svg": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+            "fixtures/sewn-curve/fine.weftforge": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+            "fixtures/sewn-curve/manifest.json": "7d35686b8b44fb31f478ad450e8d6453f7f1cdf1bad69ae7710c41e589c08b05",
+            "fixtures/sewn-curve/quit-pending.json": "14d9efa8c869f06129e7c7a0d21a69834270aae2d8b4e22ea7fd2e4e1fa43de0",
+            "fixtures/sewn-curve/quit-precondition.json": "d62bb4d2a5bcf313b75f14cbdd59bf92acce481e55630cdec60974de55b32225",
+            "fixtures/sewn-curve/quit-recovery-capture.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/quit-result.json": "458c726acac105ce5ffe941b0f0905c01169f136a8c8c659beae6ed41b120c1c",
+            "fixtures/sewn-curve/recovered-edited.weftforge": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+            "fixtures/sewn-curve/recovered.weftforge": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+            "fixtures/sewn-curve/ui-declaration.json": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-check.log": "7ccea40898f314627fbb644d5b1cb6e5196a8a4c5c6b1a3d75cad8a2735656f9",
+            "parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json": "b204cba97976b962c3e4a74e18aead5fed1b074e30556498da62263ed33bce64",
+            "parity/reports/artifacts/sewn-curve-20261114/rerun-arguments.json": "8cdb1b8fc2fa0e6157dfa0c44b4e9dae80fb9b436481e76bc43d11a3e028869d",
+            "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
           }
         }
       ],

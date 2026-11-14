@@ -1,0 +1,53 @@
+{
+  "id": "CURVE-MCP-RECOVERY-CANDIDATE-001",
+  "source_commit": "eb153cd49dc0417b8702d6fc9b5a1156aad9b650",
+  "checked_runtime_source_commit": "eb153cd49dc0417b8702d6fc9b5a1156aad9b650",
+  "runtime_source_files": {
+    "Cargo.lock": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
+    "Cargo.toml": "94e7047c9c39af1ec30cd7d6aa88a406138c93cbcb35eac9c5279b750cb98c03",
+    "apps/weftforge-cli/Cargo.toml": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+    "apps/weftforge-cli/src/main.rs": "a1422661354de0a459fe0b6e0c09af33262529b39b3c79c3e2429fae022b0ed0",
+    "apps/weftforge-cli/src/mcp.rs": "4ad27496ce02a1b2286ebc6b40fbb37939aed66440673ddbc416408173c34fb5",
+    "apps/weftforge-cli/tests/curves.rs": "8336a87c542067f139f47b9266229868b29a20538335b41070b6f534a552d5e7",
+    "apps/weftforge-cli/tests/grain.rs": "30e64fd99703f850f7bf5c7b7b26b66790404c666569fb9ab3e36d307a685559",
+    "apps/weftforge-cli/tests/mcp_stdio.rs": "5738f153601a742fef863c3866a3be4126346ec4b721239e6bc55527f3f0812e",
+    "apps/weftforge/Cargo.toml": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+    "apps/weftforge/src/main.rs": "de72f1cf6de50540e43e0f7df68d3a2957b2b19f4bff12c4a47fc6c91569a634",
+    "crates/weftforge-core/Cargo.toml": "eac1be8f249f92f0b98686099bac5e11cfeeed064a7da944c3e331a2c09ff56e",
+    "crates/weftforge-core/src/document.rs": "6d4937fce661cca2582af629917361b29ea2f65d89086b3ac39010e0c16fdd4b",
+    "crates/weftforge-core/src/geometry.rs": "2b2840d51e6eaa9b72a9128fb273099dd6c86ecd2e7be3359aeaebbd612fa6b8",
+    "crates/weftforge-core/src/lib.rs": "b54d19bce3ff323a394c9e79306de6e7bcdac8033b0ed277387fbf78c7a00ebc",
+    "crates/weftforge-core/src/persistence.rs": "9d66cbe725c450e272cb94d9971d84e5d941d5eceb4f20ac92e416eabeed6150",
+    "crates/weftforge-core/src/simulation.rs": "abf7a38b14c7cb6e670a929198aae78ae9f795d7cbeefda069ff2486781d6913",
+    "crates/weftforge-core/tests/grain.rs": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+    "crates/weftforge-core/tests/migration.rs": "84d0f88064a6621ca2bc0c262f2662ac9af9f3e941e5f7c772e7fb5d7f6885c1",
+    "crates/weftforge-core/tests/shirt.rs": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+    "crates/weftforge-core/tests/workflow.rs": "909ec0c491fab7b32fd645a09f46e5b0419631d1e88c7e1026e2da19d93870b8",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/constraints.rs": "3456ba2565eadc5e113d5278f6dda6c46164a0f98f66400058e7ca9887f4298f",
+    "crates/weftforge-sim/src/contact.rs": "ffc089bd80042dacd7994bdeece007182a94d719581e8006e03f3662fc08254c",
+    "crates/weftforge-sim/src/lib.rs": "ee4c0bf3d78079266a77ea965b681724bdf7f4ef9c7b4bfbe9447680e686f44c",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/tests.rs": "3c8c89e16c4dd9e1074eecedca22c52c80863544add94fd47c9a28253c934ec3",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+    "xtask/Cargo.toml": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+    "xtask/src/main.rs": "a65250e8f24f54f737a673d52f7bf75b76a9a9f4a453678bb90ccfd776e64a2a"
+  },
+  "binaries": {
+    "target/package/WeftForge.app/Contents/MacOS/weftforge": "4fbd66afcd467101b535b6e36d07a0bfdcfa1bb1540b93bfe1c0c27257977c9d",
+    "target/package/weftforge-cli": "b2bc0999486eb79b88e05e34080d4d3072ce9e5c385640e22de61d43168a6396"
+  },
+  "checks": {
+    "rust_tests": 61,
+    "python_tests": 51,
+    "map_entries": 650,
+    "fmt": "passed",
+    "strict_clippy": "passed",
+    "xtask_verify": "passed",
+    "package": "passed",
+    "native_acceptance": "pending",
+    "reference_parity": "not_claimed"
+  },
+  "report": "parity/reports/WF-20261114-INTEGRATION-001.json",
+  "binary_build_source_commit": "eb153cd49dc0417b8702d6fc9b5a1156aad9b650"
+}

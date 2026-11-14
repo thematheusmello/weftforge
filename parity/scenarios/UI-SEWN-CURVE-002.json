@@ -1,0 +1,38 @@
+{
+  "id": "UI-SEWN-CURVE-002",
+  "kind": "implementation_only",
+  "original_declaration": "fixtures/sewn-curve/ui-declaration.json",
+  "original_declaration_sha256": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+  "initial_state": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
+  "actions": [
+    "Select first top boundary #9, enable cubic and enter P1 [.3,.8], P2 [.1,.8] metres.",
+    "Choose Sew edges and pair that curve to the second top edge with Reverse paired edge on; save before-split.",
+    "Split selected cubic at t .4, observe two seams, Undo once and Redo once; save after-split.",
+    "Try split t0 and NaN control X; observe errors and save unchanged accepted construction.",
+    "Set mesh spacing .09 and export coarse OBJ; set .035 and save fine native construction.",
+    "Clean Quit, relaunch the same identified executable, reopen fine through native Open, export fine OBJ and SVG.",
+    "Focus Curve A warp angle, type .25 without Tab/focus loss; verify primary rev14/grain0 and no autosave, then global Cmd+Q.",
+    "Verify primary unchanged and new recovery rev15/grain.25; relaunch the same executable, open primary and explicitly choose its Recover copy.",
+    "Save recovered as a new file, edit only curve9 P1 X .36 to .37, and save a new edited recovery copy."
+  ],
+  "criteria": {
+    "authored_cubic_all_point_bound_m": 1e-12,
+    "physical_sewn_pair_all_point_bound_m": 1e-12,
+    "normalized_correspondence_bound": 1e-12,
+    "rejected_edits_preserve_full_document_bytes_and_revision": true,
+    "refinement_changes_only_resolution_and_revision": true,
+    "finer_mesh_increases_vertices_and_has_positive_faces": true,
+    "obj_finite_metres_uv_and_unit_normals": true,
+    "svg_editable_cubics_and_millimetres": true,
+    "primary_preserved_during_shutdown": true,
+    "valid_focused_draft_retained": true,
+    "explicit_recovered_copy_and_subsequent_authoring": true
+  },
+  "limits": [
+    "No cloth simulation or garment-fitting acceptance.",
+    "No reference comparison or complete feature contract.",
+    "One reversed full curve-parameter seam; broader partial/gathered and arc-length semantics require separate runs.",
+    "Creation edit-buffer defect #22 was independently reproduced during the workflow; both actual authored panel dimensions stayed correct. Its fix is a separate candidate."
+  ],
+  "declaration_variation": "Actual Quit case preserves an uncommitted valid inspector draft, rather than the earlier plan of committing the edit before Quit. Fixed geometry, equality and primary-preservation limits are unchanged."
+}
