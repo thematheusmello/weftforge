@@ -1,0 +1,266 @@
+{
+  "artifact_kind": "public_derived_summary_with_verbatim_raw_benchmark_streams",
+  "evidence_class": "implementation_only",
+  "run_id": "20261114T043343968638Z",
+  "origin": {
+    "fresh_exact_commit_measurements": true,
+    "private_original_report_sha256": "32e71f8f914545c554c87bde8a58fe70ae89d5dfeb323f6206a52581e3d147a1",
+    "private_original_bundle_manifest_sha256": "ac999db21f05f84cef8f6e283ad1f617706c021b0f46962c45c1608f2c3d2f48",
+    "private_bundle_unchanged": true,
+    "publication_note": "This JSON is a public derived summary. It omits private filesystem paths. Included benchmark stdout/stderr are unchanged raw streams; build logs and binaries remain private.",
+    "earlier_dirty_checkout_timings_included": false
+  },
+  "scope": {
+    "timed_api": "weftforge_core::simulation::create_cloth through complete Cloth initialization and initial static diagnostics",
+    "optimized_work": "immutable initial vertex-triangle contact/intersection analysis",
+    "includes": [
+      "project/mesh validation in create_cloth",
+      "solver input preparation",
+      "complete cloth construction",
+      "initial diagnostics"
+    ],
+    "excludes": [
+      "compilation",
+      "fixture parsing",
+      "rest-mesh generation",
+      "printing",
+      "Cloth destruction after each result"
+    ],
+    "count_definition": "initial_intersections includes the existing analytic-collider and cloth-contact diagnostic counts",
+    "native_behavior": "not_measured",
+    "full_simulation_quality": "not_measured",
+    "live_step_performance": "not_measured",
+    "reference_parity": "not_assessed"
+  },
+  "input": {
+    "file": "original-shirt.weftforge",
+    "sha256": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+    "bytes": 11818,
+    "source_path": "fixtures/original-shirt.weftforge",
+    "resolution_metres": "0.015",
+    "vertices": 15459,
+    "triangles": 30488,
+    "preparation": "Parse the fixture and generate the mesh once before all three constructor trials per executable."
+  },
+  "producer": {
+    "file": "initial_contact_timing.rs",
+    "sha256": "46797dcba3ebf23aacf36b67758d6c27523ff12cd77ce86a390f94d30111f284",
+    "bytes": 857,
+    "compile_path": "crates/weftforge-core/examples/initial_contact_timing.rs",
+    "copied_verbatim": true
+  },
+  "lockfile": {
+    "source_path": "Cargo.lock",
+    "sha256": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
+    "included": false,
+    "source": "exact source checkouts"
+  },
+  "environment": {
+    "system": "Darwin arm64",
+    "rustc_verbose": "rustc 1.94.1 (e408947bf 2026-03-25)\nbinary: rustc\ncommit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1\ncommit-date: 2026-03-25\nhost: aarch64-apple-darwin\nrelease: 1.94.1\nLLVM version: 21.1.8\n",
+    "cargo_verbose": "cargo 1.94.1 (29ea6fb6a 2026-03-24)\nrelease: 1.94.1\ncommit-hash: 29ea6fb6a5db279426f4cc4e17aa385f05a0cfbc\ncommit-date: 2026-03-24\nhost: aarch64-apple-darwin\nlibgit2: 1.9.2 (sys:0.20.3 vendored)\nlibcurl: 8.7.1 (sys:0.4.83+curl-8.15.0 system ssl:(SecureTransport) LibreSSL/3.3.6)\nssl: OpenSSL 3.5.4 30 Sep 2025\nos: Mac OS 27.2.0 [64-bit]\n",
+    "rustc_executable_sha256": "b69cbcffa5e990057035d53ccc8163e8392ce784f6abb114c19ceb61528ba9f6",
+    "cargo_executable_sha256": "532141271ce821135f63822c21fcd76c7972cbf69c19bc35e6ca8b00fcd5c40e",
+    "release_lto": "thin, as configured in the exact source root Cargo.toml",
+    "build_target_storage": "separate fresh external-volume Cargo targets; no compiled targets shared or copied",
+    "warmup_trials": 0,
+    "execution_order": [
+      "build before",
+      "build after",
+      "measure before",
+      "measure after"
+    ],
+    "concurrency": "Serial builds and measurements. No competing Cargo/compiler/benchmark process was found at the recorded pre-phase checks. Large mesh/simulation work was deferred; tiny GUI actions and normal system activity were permitted.",
+    "compiler_overrides_checked_after_measurement": {
+      "RUSTFLAGS": null,
+      "CARGO_ENCODED_RUSTFLAGS": null,
+      "RUSTC_WRAPPER": null,
+      "RUSTC_WORKSPACE_WRAPPER": null,
+      "RUSTUP_TOOLCHAIN": null,
+      "CARGO_BUILD_TARGET": null,
+      "CARGO_INCREMENTAL": null,
+      "CARGO_PROFILE_RELEASE_LTO": null,
+      "CARGO_PROFILE_RELEASE_CODEGEN_UNITS": null
+    }
+  },
+  "integrated_source_equivalence": {
+    "commit": "9b2a8fc7ff895f6eada9ac8f39ac865e99eafe50",
+    "after_core_and_sim_trees_identical": true,
+    "scope": [
+      "crates/weftforge-core",
+      "crates/weftforge-sim"
+    ]
+  },
+  "variants": {
+    "before": {
+      "source_commit": "68bdb9fb774177f074f69edc1b2965336670cc9f",
+      "source_tree_git_ids": {
+        "weftforge-core": "0e7c58f0bf38b0641d2afd8b000602a4a912d584",
+        "weftforge-sim": "95d47e54c9049c264c2fca3e972759a8d7998932"
+      },
+      "source_file_sha256": {
+        "crates/weftforge-core/src/simulation.rs": "abf7a38b14c7cb6e670a929198aae78ae9f795d7cbeefda069ff2486781d6913",
+        "crates/weftforge-sim/src/contact.rs": "ffc089bd80042dacd7994bdeece007182a94d719581e8006e03f3662fc08254c",
+        "crates/weftforge-sim/src/lib.rs": "ee4c0bf3d78079266a77ea965b681724bdf7f4ef9c7b4bfbe9447680e686f44c"
+      },
+      "tracked_sources_clean_before_and_after": true,
+      "fixture_sha256": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+      "lockfile_sha256": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
+      "producer_sha256": "46797dcba3ebf23aacf36b67758d6c27523ff12cd77ce86a390f94d30111f284",
+      "executable_sha256": "784120712f70d4846bed6b28ac7839bc4ba0f7c53a326afd455abac9304dabd7",
+      "executable_bytes": 799200,
+      "build": {
+        "argv": [
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "-p",
+          "weftforge-core",
+          "--example",
+          "initial_contact_timing"
+        ],
+        "working_directory": "exact source checkout",
+        "target": "fresh separate external Cargo target for this checkout",
+        "started_at_utc": "2026-11-14T04:35:27.081519+00:00",
+        "finished_at_utc": "2026-11-14T04:35:38.008128+00:00",
+        "exit_code": 0
+      },
+      "measurement": {
+        "argv_template": [
+          "<unique-cargo-target>/release/examples/initial_contact_timing"
+        ],
+        "started_at_utc": "2026-11-14T04:35:48.772024+00:00",
+        "finished_at_utc": "2026-11-14T04:36:06.052234+00:00",
+        "exit_code": 0,
+        "raw_stdout": {
+          "file": "before.run.stdout.log",
+          "sha256": "a3bf9d90401f41b9938182968c42a51884e7402d270620399775f5d6ecd3152b",
+          "bytes": 339,
+          "copied_verbatim": true,
+          "redacted": false
+        },
+        "raw_stderr": {
+          "file": "before.run.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "copied_verbatim": true,
+          "redacted": false
+        },
+        "runs": [
+          {
+            "run": 1,
+            "seconds": "5.598073500",
+            "initial_intersections": 71927,
+            "max_contact_error_metres": "0.00536994076963222"
+          },
+          {
+            "run": 2,
+            "seconds": "5.618584042",
+            "initial_intersections": 71927,
+            "max_contact_error_metres": "0.00536994076963222"
+          },
+          {
+            "run": 3,
+            "seconds": "5.624450458",
+            "initial_intersections": 71927,
+            "max_contact_error_metres": "0.00536994076963222"
+          }
+        ],
+        "median_seconds": "5.618584042"
+      }
+    },
+    "after": {
+      "source_commit": "461f2e208b11aaa630c8a028e94d6a7d5ab80b56",
+      "source_tree_git_ids": {
+        "weftforge-core": "a0d2f48e00b8b345e3e85617d7519f7b89d0175c",
+        "weftforge-sim": "c3a9ff002624a8dbbbaa8b66745ac7b7c5c617f4"
+      },
+      "source_file_sha256": {
+        "crates/weftforge-core/src/simulation.rs": "e4295d2a048029e88c25e4e6a9395570fd85b827d80c6671509c1ad7daec150c",
+        "crates/weftforge-sim/src/contact.rs": "c600c7825c7c075c343b3d105005bf0ac771700dbf2141a4ae2668576f267e26",
+        "crates/weftforge-sim/src/lib.rs": "92f83a398cd8b7bb15bec23939d851fded15012a4c688689960195e116fbbc0f"
+      },
+      "tracked_sources_clean_before_and_after": true,
+      "fixture_sha256": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+      "lockfile_sha256": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
+      "producer_sha256": "46797dcba3ebf23aacf36b67758d6c27523ff12cd77ce86a390f94d30111f284",
+      "executable_sha256": "40dddd555cb31506099f95bbac9093e247c9f37284f0e8dd167373a68ce92753",
+      "executable_bytes": 816624,
+      "build": {
+        "argv": [
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "-p",
+          "weftforge-core",
+          "--example",
+          "initial_contact_timing"
+        ],
+        "working_directory": "exact source checkout",
+        "target": "fresh separate external Cargo target for this checkout",
+        "started_at_utc": "2026-11-14T04:35:38.078362+00:00",
+        "finished_at_utc": "2026-11-14T04:35:48.708493+00:00",
+        "exit_code": 0
+      },
+      "measurement": {
+        "argv_template": [
+          "<unique-cargo-target>/release/examples/initial_contact_timing"
+        ],
+        "started_at_utc": "2026-11-14T04:36:06.112254+00:00",
+        "finished_at_utc": "2026-11-14T04:36:06.660741+00:00",
+        "exit_code": 0,
+        "raw_stdout": {
+          "file": "after.run.stdout.log",
+          "sha256": "574b9a7f3eb875fb09f36d0ee0f863334a7555c78bccded7192bc9a96beb1511",
+          "bytes": 339,
+          "copied_verbatim": true,
+          "redacted": false
+        },
+        "raw_stderr": {
+          "file": "after.run.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "copied_verbatim": true,
+          "redacted": false
+        },
+        "runs": [
+          {
+            "run": 1,
+            "seconds": "0.057026500",
+            "initial_intersections": 71927,
+            "max_contact_error_metres": "0.00536994076963222"
+          },
+          {
+            "run": 2,
+            "seconds": "0.055006042",
+            "initial_intersections": 71927,
+            "max_contact_error_metres": "0.00536994076963222"
+          },
+          {
+            "run": 3,
+            "seconds": "0.056252833",
+            "initial_intersections": 71927,
+            "max_contact_error_metres": "0.00536994076963222"
+          }
+        ],
+        "median_seconds": "0.056252833"
+      }
+    }
+  },
+  "derived_statistics": {
+    "median_before_seconds": "5.618584042",
+    "median_after_seconds": "0.056252833",
+    "observed_median_ratio": "99.88090807799848942719027147",
+    "method": "Median of each three printed constructor durations; ratio is before median divided by after median."
+  },
+  "limitations": [
+    "Three trials per version on one developer machine; no warmup, randomized order, confidence interval, or controlled OS/background-load isolation.",
+    "This is constructor timing that includes initial static contact diagnostics. Native responsiveness, cloth fitting, full simulation quality, and reference parity are unclaimed.",
+    "Live cloth collision projection and live step/reset contact diagnostics still use quadratic triangle scans; this benchmark does not measure step throughput.",
+    "Fully overlapping initial bounds retain worst-case quadratic candidate work.",
+    "Capped partition work can yield coarser pruning on adversarial input order.",
+    "Executable hashes identify the measured binaries; rebuild hashes can differ with checkout paths or toolchain/environment changes."
+  ]
+}
