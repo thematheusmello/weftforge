@@ -835,8 +835,8 @@ fn constructor_cancels_inside_initial_contact_query_without_publishing_state() {
 fn initial_hierarchy_matches_brute_force_for_contacts_thickness_and_sewing_filters() {
     let compare = |input: ClothInput| {
         let cloth = Cloth::new(input.clone()).unwrap();
-        // The existing live diagnostic scans every triangle, independently of the hierarchy.
-        let expected = cloth.contact_errors(&input.positions);
+        // Keep an exhaustive diagnostic oracle independent of the hierarchy.
+        let expected = cloth.exhaustive_contact_errors(&input.positions);
         assert_eq!(cloth.diagnostics().max_contact_error, expected.0);
         assert_eq!(cloth.diagnostics().initial_intersections, expected.1);
         assert_eq!(cloth.positions(), input.positions);
