@@ -12,7 +12,7 @@ use std::{
 use weftforge_core::{
     Command, Curve, CurveInterval, Editor, Id, Material, Mesh, Placement, Project, SewingGroup,
 };
-use weftforge_sim::{Cloth, StepSettings};
+use weftforge_sim::{Cloth, MaterialAxis, StepSettings};
 
 #[derive(Clone, Copy, PartialEq)]
 enum Tool {
@@ -1293,7 +1293,17 @@ impl Studio {
                 ui.add(egui::DragValue::new(&mut self.settings.iterations).range(1..=50));
                 ui.add(egui::DragValue::new(&mut self.settings.substeps).range(1..=16));
             });
-            if let Some(cloth)=&self.cloth { let diagnostics=cloth.diagnostics(); ui.label(format!("Time {:.3} s\nAssembly remaining {:.4} m\nStretch error {:.3}\nSeam gap {:.4} m\nContact error {:.4} m\nInitial intersections {}",cloth.simulation_time(),diagnostics.seam_assembly_remaining,diagnostics.max_stretch_error,diagnostics.max_seam_error,diagnostics.max_contact_error,diagnostics.initial_intersections)); }
+            if let Some(cloth)=&self.cloth {
+                let diagnostics=cloth.diagnostics();
+                ui.label(format!("Time {:.3} s\nAssembly remaining {:.4} m\nPeak material strain {:.2}%\nSeam gap {:.4} m\nContact error {:.4} m\nInitial intersections {}",cloth.simulation_time(),diagnostics.seam_assembly_remaining,100.*diagnostics.max_stretch_error,diagnostics.max_seam_error,diagnostics.max_contact_error,diagnostics.initial_intersections));
+                if let Some(peak)=diagnostics.peak_strain
+                    && let Some(mesh)=&self.mesh
+                    && let Some(piece)=weftforge_core::simulation::peak_strain_piece(&self.editor.project,mesh,diagnostics) {
+                    let axis=match peak.axis { MaterialAxis::Warp=>"Warp",MaterialAxis::Weft=>"Weft" };
+                    ui.label(format!("{} · {axis} {:+.2}%",piece.name,100.*peak.signed_strain))
+                        .on_hover_text("Material direction at the largest absolute strain. Positive means extension; negative means compression. This is not a principal-strain or shear bound.");
+                }
+            }
             });
             self.draft=Some(draft);
             if let Some(seam)=remove { self.execute(Command::RemoveSeam { seam }); }

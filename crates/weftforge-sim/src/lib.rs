@@ -156,7 +156,7 @@ pub struct StrainPeak {
 pub struct Diagnostics {
     pub simulation_time: f64,
     pub step_seconds: f64,
-    /// Maximum absolute principal material-axis length change, dimensionless.
+    /// Maximum absolute warp/weft length change, dimensionless; not a principal-strain bound.
     pub max_stretch_error: f64,
     /// Largest absolute strain; ties choose the first input triangle, then warp.
     #[serde(default)]

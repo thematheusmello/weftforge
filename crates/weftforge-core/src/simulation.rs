@@ -1,6 +1,19 @@
 //! One document-to-solver boundary shared by desktop, CLI and verification.
-use crate::{Mesh, Project, Result};
-use weftforge_sim::{Cloth, ClothInput, Collider, Material, Stitch, WeightedPoint};
+use crate::{Mesh, Piece, Project, Result};
+use weftforge_sim::{Cloth, ClothInput, Collider, Diagnostics, Material, Stitch, WeightedPoint};
+
+/// Resolves current solver triangle attribution to editable construction.
+pub fn peak_strain_piece<'a>(
+    project: &'a Project,
+    mesh: &Mesh,
+    diagnostics: &Diagnostics,
+) -> Option<&'a Piece> {
+    if mesh.doc_revision != project.revision {
+        return None;
+    }
+    let triangle = mesh.triangles.get(diagnostics.peak_strain?.triangle)?;
+    project.piece(*mesh.piece_ids.get(triangle[0])?)
+}
 
 pub fn create_cloth(project: &Project, mesh: &Mesh) -> Result<Cloth> {
     create_cloth_cancellable(project, mesh, || false)
@@ -111,6 +124,43 @@ pub fn create_cloth_cancellable(
 mod tests {
     use super::*;
     use crate::{Command, Editor};
+    #[test]
+    fn strain_attribution_resolves_current_piece_and_rejects_stale_indices() {
+        let mut editor = Editor::default();
+        for (name, origin) in [("First", [0., 0.]), ("Second", [1., 0.])] {
+            editor
+                .execute(Command::AddRectangle {
+                    name: name.into(),
+                    origin,
+                    width: 0.4,
+                    height: 0.6,
+                })
+                .unwrap();
+        }
+        let mesh = editor.project.mesh().unwrap();
+        let second = editor.project.pieces[1].id;
+        let triangle = mesh
+            .triangles
+            .iter()
+            .position(|t| mesh.piece_ids[t[0]] == second)
+            .unwrap();
+        let mut diagnostics = Diagnostics::default();
+        assert!(peak_strain_piece(&editor.project, &mesh, &diagnostics).is_none());
+        diagnostics.peak_strain = Some(weftforge_sim::StrainPeak {
+            triangle,
+            axis: weftforge_sim::MaterialAxis::Weft,
+            signed_strain: -0.25,
+        });
+        let piece = peak_strain_piece(&editor.project, &mesh, &diagnostics).unwrap();
+        assert_eq!((piece.id, piece.name.as_str()), (second, "Second"));
+        diagnostics.peak_strain.as_mut().unwrap().triangle = mesh.triangles.len();
+        assert!(peak_strain_piece(&editor.project, &mesh, &diagnostics).is_none());
+        diagnostics.peak_strain.as_mut().unwrap().triangle = triangle;
+        editor
+            .execute(Command::SetResolution { metres: 0.06 })
+            .unwrap();
+        assert!(peak_strain_piece(&editor.project, &mesh, &diagnostics).is_none());
+    }
     #[test]
     fn rejects_stale_and_foreign_meshes_without_panicking() {
         let mut editor = Editor::default();
