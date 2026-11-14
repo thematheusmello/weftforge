@@ -1,0 +1,159 @@
+{
+  "kind": "saved_evidence_replay_not_new_publication",
+  "status": "passed",
+  "candidate_only": false,
+  "git_state": "clean Git checkout; complete tracked evidence closure; current and committed37 source hashes equal6c455",
+  "artifact_files_including_manifests": 167,
+  "source_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+  "source_snapshot_hashes_verified": 37,
+  "contract_sha256": "71bbea48b09a3f07cc516625e1506ae07a73a79f3db35fcf59564dc44cc23700",
+  "implementation_visibility": "passed",
+  "original_garment_quality": "failed",
+  "reference_parity": "0/56 coarse contracts; unchanged",
+  "headless_public_API_snapshots": 181,
+  "headless_meaningful_attributions": 180,
+  "headless_prior_positions_velocities_diagnostics": "exact after excluding added attribution and wall time",
+  "native_maximum_decimal_export_difference_m": 6.938893903907228e-18,
+  "CLI_expected_exits": [
+    1,
+    0,
+    0
+  ],
+  "workspace_rust_tests_passed": 126,
+  "original_job_status": "all simulation,CLI,build/check workflows terminal; native app intentionally left open at completed Drape",
+  "retained_native_app_pid": 99058,
+  "actual_binary_scope": "Original executable hashes/process binding are retained provenance; executables are omitted and are not reobserved by saved replay.",
+  "new_simulations_product_UI_SDK_network_runs": 0,
+  "headless_saved_replay": {
+    "artifact_files": 87,
+    "source_files": 37,
+    "saved_output_replay_passed": true,
+    "new_simulations_from_verifier": 0,
+    "source_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+    "meaningful_attribution_frames": 180,
+    "max_absolute_errors": {
+      "signed_strain_absolute_error": 2.220446049250313e-16,
+      "scalar_vs_independent_absolute_error": 2.220446049250313e-16
+    },
+    "public_replay_source_state": "source checkout not supplied",
+    "public_replay_binary_state": "not supplied; retained pre-run binding only",
+    "original_quality_failures_preserved": true
+  },
+  "native_saved_replay": {
+    "kind": "native_saved_output_no_simulator_check",
+    "checked_at": "2026-11-14T18:40:26.679099+00:00",
+    "status": "passed",
+    "checker_sha256": "4476dc35a78632b055d9a4a5fe87282d9d06e7bae3ca5b6fc6ef5445becf3872",
+    "frozen_input_sha256": {
+      "fixture": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+      "oracle": "5f8ffcfc077d41a39aa3084466f88806c85a09b4d6ed004213ecfc16d76bbc0e",
+      "rest_metadata": "0c58d8aa2cb2712f004c020b558e120f7b7fc2357231527e106da45740968e80",
+      "trajectory": "feb4d50b5d40e549b48bc309fb43b8d0968357d340a3946b17898229d579b7cb"
+    },
+    "self_checks": "analytic affine extension and rejection of nonfinite OBJ input passed",
+    "assembly_drape_authored_source_bytes_identical": true,
+    "all_authored_f64_bits_order_revision_ids_unchanged": true,
+    "original_fixture_version": 2,
+    "source_normalization": "v2 input saved as v3; only default sewing_groups=[] is added. Existing f32 color JSON values already match; no color normalization difference was needed. All other authored numbers compare as f64 bits, arrays retain order.",
+    "stages": [
+      {
+        "stage": "assembly",
+        "original_control_frame": 60,
+        "source_version": 3,
+        "source_revision": 28,
+        "source_sha256": "893c0bcb3846cb40dbef16ea907e5d03db07a2725336c2f5bf736b84ea1bce24",
+        "obj_sha256": "b7ae554e6b0c111293ff41fe1dfe7c778e262df51f4f2849b927cdaa936ca43d",
+        "vertices": 150,
+        "triangles": 228,
+        "all_obj_coordinates_and_normals_finite": true,
+        "triangles_and_piece_groups_exact": true,
+        "position_and_uv_tokens_exact_original_fixed_17_decimal_export": true,
+        "maximum_position_difference_m": 6.938893903907228e-18,
+        "maximum_uv_difference_m": 6.938893903907228e-18,
+        "independent_peak": {
+          "triangle": 186,
+          "piece": 31,
+          "vertices": [
+            55,
+            147,
+            54
+          ],
+          "axis": "warp",
+          "signed_strain": 0.24118490382884605,
+          "absolute_strain": 0.24118490382884605
+        },
+        "absolute_strain_error": 0.0,
+        "actual_native_attribution_label": "Candidate back \u00b7 Warp +24.12%",
+        "original_15_percent_strain_limit_passed": false
+      },
+      {
+        "stage": "drape",
+        "original_control_frame": 180,
+        "source_version": 3,
+        "source_revision": 28,
+        "source_sha256": "893c0bcb3846cb40dbef16ea907e5d03db07a2725336c2f5bf736b84ea1bce24",
+        "obj_sha256": "5973cc6a74f2a542d9fb61a5c91400af4283c082f1b60e710aea419df48e4968",
+        "vertices": 150,
+        "triangles": 228,
+        "all_obj_coordinates_and_normals_finite": true,
+        "triangles_and_piece_groups_exact": true,
+        "position_and_uv_tokens_exact_original_fixed_17_decimal_export": true,
+        "maximum_position_difference_m": 6.938893903907228e-18,
+        "maximum_uv_difference_m": 6.938893903907228e-18,
+        "independent_peak": {
+          "triangle": 31,
+          "piece": 2,
+          "vertices": [
+            89,
+            27,
+            28
+          ],
+          "axis": "warp",
+          "signed_strain": 0.32351913672966237,
+          "absolute_strain": 0.32351913672966237
+        },
+        "absolute_strain_error": 0.0,
+        "actual_native_attribution_label": "Candidate front \u00b7 Warp +32.35%",
+        "original_15_percent_strain_limit_passed": false
+      }
+    ],
+    "limits": [
+      "Native .weftforge snapshots contain editable construction, not solver positions or velocities; OBJ is the stage position artifact.",
+      "OBJ fixed 17 decimal export rounds tiny coordinates; token equality proves the expected rendering of the retained original state, not bit-identical parsed OBJ floats.",
+      "Finiteness is checked in retained OBJ; the native inspector has no separate finite-status label.",
+      "Both original strain quality failures remain failures. This verifies diagnostic visibility and retained output, not force balance, fitting acceptance, reference parity or full SIM-005."
+    ]
+  },
+  "CLI_saved_replay": {
+    "kind": "preparation_time_saved_CLI_replay_not_new_publication",
+    "status": "passed",
+    "product_commands_executed": 0,
+    "three_expected_exit_codes": [
+      1,
+      0,
+      0
+    ],
+    "source_input_unchanged": true,
+    "prior_export_sentinel_unchanged": true,
+    "original_fit_quality": "failed",
+    "fit_assembly_piece_id": 31,
+    "fit_drape_piece_id": 2,
+    "independent_one_step_peak": {
+      "triangle": 209,
+      "piece": 31,
+      "vertices": [
+        65,
+        113,
+        64
+      ],
+      "axis": "warp",
+      "signed_strain": 0.0005639860962614041,
+      "absolute_strain": 0.0005639860962614041
+    },
+    "binary_scope": "retained original actual-executable binding; binary omitted from public candidate"
+  },
+  "limits": [
+    "Source snapshot alone is not a new clean-Git or actual-binary check; default mode additionally verifies current clean/tracked Git/source closure.",
+    "Visibility acceptance does not accept the original garment or establish force equilibrium,convergence,calibration,full collision robustness,reference parity or fullSIM005."
+  ]
+}

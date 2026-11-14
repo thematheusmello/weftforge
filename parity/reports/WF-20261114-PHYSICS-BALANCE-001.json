@@ -14,7 +14,7 @@
   ],
   "complete_contract": false,
   "reference_executed": false,
-  "freshness": "current",
+  "freshness": "stale",
   "source_scope": [
     ".cargo",
     "Cargo.toml",
@@ -887,5 +887,6 @@
     "receipt": "parity/reports/artifacts/physics-balance-publication-20261114/receipt.json",
     "tracked_bundle_files": 132,
     "new_simulations": 0
-  }
+  },
+  "freshness_reason": "Historical source-bound outputs remain unchanged. Material-strain attribution at6c455 changes current scoped solver/core/UI/CLI source; this complete earlier run has not been re-executed on that scoped source."
 }

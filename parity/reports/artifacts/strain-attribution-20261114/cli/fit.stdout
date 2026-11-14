@@ -1,0 +1,130 @@
+{
+  "architecture": "aarch64",
+  "criteria": {
+    "finite": true,
+    "max_contact_penetration_below_m": 0.002,
+    "max_seam_gap_below_m": 0.005,
+    "max_stretch_error_below": 0.15,
+    "seam_assembly_remaining_m": 0.0
+  },
+  "diagnostics": {
+    "contacts": 8305,
+    "finite": true,
+    "initial_intersections": 0,
+    "kinetic_energy": 1.386340086726859e-6,
+    "max_contact_error": 1.3877787807814457e-17,
+    "max_seam_error": 6.91110350198192e-7,
+    "max_stretch_error": 0.32351913672966237,
+    "peak_strain": {
+      "axis": "warp",
+      "signed_strain": 0.32351913672966237,
+      "triangle": 31
+    },
+    "seam_assembly_remaining": 0.0,
+    "simulation_time": 2.9999999999999942,
+    "step_seconds": 0.108713375
+  },
+  "export_written": false,
+  "kind": "implementation_only",
+  "limitations": [
+    "Original analytic avatar and uncalibrated fabrics",
+    "Finite fixture thresholds do not establish general garment quality or reference parity"
+  ],
+  "median_step_seconds": 0.099153541,
+  "memory_bytes": null,
+  "p95_step_seconds": 0.119135333,
+  "peak_strain_piece": {
+    "id": 2,
+    "name": "Candidate front"
+  },
+  "phases": [
+    {
+      "diagnostics": {
+        "contacts": 8173,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.000018961163932671308,
+        "max_contact_error": 0.0,
+        "max_seam_error": 6.911103501829521e-7,
+        "max_stretch_error": 0.24118490382884605,
+        "peak_strain": {
+          "axis": "warp",
+          "signed_strain": 0.24118490382884605,
+          "triangle": 186
+        },
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.0000000000000013,
+        "step_seconds": 0.094906959
+      },
+      "name": "assembly",
+      "peak_strain_piece": {
+        "id": 31,
+        "name": "Candidate back"
+      },
+      "settings": {
+        "dt": 0.016666666666666666,
+        "gravity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "iterations": 32,
+        "seam_closure_speed": 1.0,
+        "substeps": 8
+      },
+      "simulated_seconds": 1.0,
+      "steps_completed": 60,
+      "steps_requested": 60,
+      "wall_seconds": 6.021203417
+    },
+    {
+      "diagnostics": {
+        "contacts": 8305,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 1.386340086726859e-6,
+        "max_contact_error": 1.3877787807814457e-17,
+        "max_seam_error": 6.91110350198192e-7,
+        "max_stretch_error": 0.32351913672966237,
+        "peak_strain": {
+          "axis": "warp",
+          "signed_strain": 0.32351913672966237,
+          "triangle": 31
+        },
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.9999999999999942,
+        "step_seconds": 0.108713375
+      },
+      "name": "drape",
+      "peak_strain_piece": {
+        "id": 2,
+        "name": "Candidate front"
+      },
+      "settings": {
+        "dt": 0.016666666666666666,
+        "gravity": [
+          0.0,
+          -9.81,
+          0.0
+        ],
+        "iterations": 32,
+        "seam_closure_speed": 1.0,
+        "substeps": 8
+      },
+      "simulated_seconds": 2.0,
+      "steps_completed": 120,
+      "steps_requested": 120,
+      "wall_seconds": 12.582019584
+    }
+  ],
+  "platform": "macos",
+  "protocol": "explicit-zero-gravity-assembly-then-drape-v1",
+  "simulated_seconds": 2.9999999999999942,
+  "simulated_seconds_per_wall_second": 0.16126229639866296,
+  "solver_error": null,
+  "status": "failed",
+  "triangles": 228,
+  "vertices": 150,
+  "viewport_frame_seconds": null,
+  "wall_seconds": 18.603232541
+}

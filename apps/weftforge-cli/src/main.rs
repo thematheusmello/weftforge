@@ -216,7 +216,7 @@ fn run() -> Result<()> {
             println!(
                 "{}",
                 serde_json::to_string_pretty(
-                    &serde_json::json!({"kind":"implementation_only","platform":std::env::consts::OS,"architecture":std::env::consts::ARCH,"vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"steps":steps,"settings":StepSettings::default(),"wall_seconds":seconds,"simulated_seconds":cloth.simulation_time(),"simulated_seconds_per_wall_second":cloth.simulation_time()/seconds,"median_step_seconds":timings[timings.len()/2],"p95_step_seconds":timings[(timings.len()-1)*95/100],"diagnostics":cloth.diagnostics(),"memory_bytes":null,"viewport_frame_seconds":null})
+                    &serde_json::json!({"kind":"implementation_only","platform":std::env::consts::OS,"architecture":std::env::consts::ARCH,"vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"steps":steps,"settings":StepSettings::default(),"wall_seconds":seconds,"simulated_seconds":cloth.simulation_time(),"simulated_seconds_per_wall_second":cloth.simulation_time()/seconds,"median_step_seconds":timings[timings.len()/2],"p95_step_seconds":timings[(timings.len()-1)*95/100],"diagnostics":cloth.diagnostics(),"peak_strain_piece":strain_piece(&p,&mesh,cloth.diagnostics()),"memory_bytes":null,"viewport_frame_seconds":null})
                 )?
             );
         }
@@ -259,6 +259,15 @@ fn sewing_geometry(mesh: &Mesh) -> Vec<serde_json::Value> {
             })
         })
         .collect()
+}
+
+fn strain_piece(
+    project: &Project,
+    mesh: &Mesh,
+    diagnostics: &Diagnostics,
+) -> Option<serde_json::Value> {
+    weftforge_core::simulation::peak_strain_piece(project, mesh, diagnostics)
+        .map(|piece| serde_json::json!({"id":piece.id,"name":piece.name}))
 }
 
 fn execute_commands(input: &Path, output: &Path, commands: Vec<Command>) -> Result<(u64, usize)> {
@@ -354,6 +363,7 @@ fn fit(project: &Project) -> Result<(Mesh, serde_json::Value, bool)> {
             "name":name,"steps_requested":steps,"steps_completed":completed,"settings":settings,
             "wall_seconds":phase_start.elapsed().as_secs_f64(),"simulated_seconds":f64::from(completed)*settings.dt,
             "diagnostics":cloth.diagnostics(),
+            "peak_strain_piece":strain_piece(project,&mesh,cloth.diagnostics()),
         }));
         if failure.is_some() {
             break;
@@ -374,6 +384,7 @@ fn fit(project: &Project) -> Result<(Mesh, serde_json::Value, bool)> {
         "vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"phases":phases,
         "wall_seconds":seconds,"simulated_seconds":cloth.simulation_time(),"simulated_seconds_per_wall_second":cloth.simulation_time()/seconds,
         "median_step_seconds":median,"p95_step_seconds":p95,"diagnostics":cloth.diagnostics(),
+        "peak_strain_piece":strain_piece(project,&mesh,cloth.diagnostics()),
         "memory_bytes":null,"viewport_frame_seconds":null,"export_written":false,
         "limitations":["Original analytic avatar and uncalibrated fabrics","Finite fixture thresholds do not establish general garment quality or reference parity"],
     });
@@ -437,6 +448,22 @@ fn sample() -> Result<Project> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn legacy_diagnostics_remain_readable_with_no_attribution() {
+        let old = serde_json::json!({
+            "simulation_time":1.0,"step_seconds":0.125,"max_stretch_error":0.25,
+            "max_seam_error":0.001,"seam_assembly_remaining":0.0,"max_contact_error":0.0,
+            "kinetic_energy":0.002,"contacts":12,"initial_intersections":0,"finite":true
+        });
+        let diagnostics: Diagnostics = serde_json::from_value(old.clone()).unwrap();
+        assert!(diagnostics.peak_strain.is_none());
+        let mut new = serde_json::to_value(diagnostics).unwrap();
+        assert_eq!(
+            new.as_object_mut().unwrap().remove("peak_strain"),
+            Some(serde_json::Value::Null)
+        );
+        assert_eq!(new, old);
+    }
     #[test]
     fn fit_quality_requires_closed_seams_and_all_declared_bounds() {
         let mut d = Diagnostics {

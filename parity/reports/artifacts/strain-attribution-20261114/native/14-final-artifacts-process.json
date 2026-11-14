@@ -1,0 +1,40 @@
+{
+  "at": "2026-11-14T18:18:05.113764+00:00",
+  "event": "native_artifacts_final_binding",
+  "process_row": "99058 Sat Nov 14 18:14:33 2026     .local/candidates/6c45535cb312/WeftForge.app/Contents/MacOS/weftforge",
+  "pid": 99058,
+  "executable_sha256": "95fa1b7cb24b8de1a6b507330c2fe43ece0efe5a14226bb28c39f922fcee28c3",
+  "runtime_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+  "runtime_source_files": 37,
+  "original_fixture_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "disposable_original_byte_identical": true,
+  "stages": [
+    {
+      "stage": "assembly",
+      "source_path": "assembly-native.weftforge",
+      "source_sha256": "893c0bcb3846cb40dbef16ea907e5d03db07a2725336c2f5bf736b84ea1bce24",
+      "obj_path": "assembly-native.obj",
+      "obj_sha256": "b7ae554e6b0c111293ff41fe1dfe7c778e262df51f4f2849b927cdaa936ca43d",
+      "source_revision": 28,
+      "source_same_original_after_empty_sewing_groups_default": true,
+      "vertices": 150,
+      "triangles": 228,
+      "uvs": 150,
+      "all_coordinates_finite": true
+    },
+    {
+      "stage": "drape",
+      "source_path": "drape-native.weftforge",
+      "source_sha256": "893c0bcb3846cb40dbef16ea907e5d03db07a2725336c2f5bf736b84ea1bce24",
+      "obj_path": "drape-native.obj",
+      "obj_sha256": "5973cc6a74f2a542d9fb61a5c91400af4283c082f1b60e710aea419df48e4968",
+      "source_revision": 28,
+      "source_same_original_after_empty_sewing_groups_default": true,
+      "vertices": 150,
+      "triangles": 228,
+      "uvs": 150,
+      "all_coordinates_finite": true
+    }
+  ],
+  "source_snapshot_scope": "Editable construction only; OBJ carries native display positions, UVs and faces. No saved solver velocities/time are claimed from .weftforge."
+}

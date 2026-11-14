@@ -1,0 +1,28 @@
+{
+  "stage": "build",
+  "status": "completed",
+  "started_at": "2026-11-14T18:13:11.482495+00:00",
+  "launcher_pid": 97431,
+  "command": [
+    "cargo",
+    "build",
+    "--locked",
+    "--release",
+    "--offline",
+    "--manifest-path",
+    "<acceptance-root>/harness/Cargo.toml"
+  ],
+  "cwd": "<acceptance-root>/runtime-source",
+  "environment_overrides": {
+    "CARGO_TARGET_DIR": "<acceptance-root>/target",
+    "CARGO_BUILD_JOBS": "2",
+    "CARGO_INCREMENTAL": "0"
+  },
+  "wall_cap_seconds": 420,
+  "child_pid": 97573,
+  "child_process_group": 97573,
+  "exit_code": 0,
+  "completed_at": "2026-11-14T18:13:24.036573+00:00",
+  "wall_seconds": 12.553829042008147,
+  "binary_sha256": "eb243c4cbb9ae6bce2fb4d3a69d1cc7987f0ad66274b3c14ef0514e24615f69e"
+}

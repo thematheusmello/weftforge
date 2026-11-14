@@ -5,6 +5,14 @@ MCP stdio. It calls the same `Project`, `Editor`, and typed `Command` operations
 as the desktop. It does not connect to an open desktop document. This is a first
 integrated subset of automation, not whole-product or reference parity.
 
+The CLI simulation commands (`simulate`, `benchmark`, `fit`, `fit-benchmark`)
+report `diagnostics.peak_strain`: current zero-based solver triangle, `warp` or
+`weft`, and signed dimensionless length strain. `peak_strain_piece` resolves the
+current editable pattern's `id` and `name`; it is null when attribution cannot
+be resolved. Fitting reports include this at each phase and in the final result.
+The existing absolute maximum and quality limits remain unchanged. These are
+CLI reports; the MCP file tools below do not run simulation jobs.
+
 Build with `cargo build --release -p weftforge-cli`. A client that launches MCP
 servers can use this configuration when the executable is on its PATH:
 

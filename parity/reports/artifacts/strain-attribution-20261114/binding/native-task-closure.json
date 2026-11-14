@@ -1,0 +1,29 @@
+{
+  "kind": "native_acceptance_task_closure",
+  "closed_at": "2026-11-14T18:27:25.634647+00:00",
+  "public_subtree": ".local/strain-native-20261114/public",
+  "public_manifest": "MANIFEST.json",
+  "public_manifest_sha256": "115f4685dea9f915673cf016f6e748466cf621a8809ee953b0ed2aa5d3363734",
+  "public_payload_file_count": 46,
+  "public_total_files_including_manifest": 47,
+  "public_total_bytes_including_manifest": 1798914,
+  "private_raw_manifest_sha256": "b8dba76c93f185fb654e281f42a6b7308445f05134892037a4889b4cf642e8b6",
+  "source_binding": "public/source-binding-check.json",
+  "native_receipt": "public/native-acceptance-receipt.json",
+  "saved_output_check": "public/saved-output-check.json",
+  "portable_verifier_command": "python3 verify_native_saved.py EVIDENCE_DIRECTORY ORIGINAL_CONTROL_DIRECTORY",
+  "replays_exit_codes": [
+    0,
+    0
+  ],
+  "native_pid_left_running": 99058,
+  "native_final_stage": "Drape",
+  "native_cua_complete": true,
+  "further_mutations_authorized_to_packager": "Copy closed public subtree bytes unchanged; publication needs root gates.",
+  "limits": [
+    "Local ignored candidate only, not public delivery.",
+    "Original shirt quality remains failed; no reference parity or fullSIM005 claim.",
+    "Finiteness comes from OBJ/rawcontrol, not a native AX label.",
+    "Original solver velocities are not serialized by native save."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "SIM-STRAIN-ATTRIBUTION-001",
+  "feature_ids": [
+    "SIM-005",
+    "APP-001"
+  ],
+  "fixture_hashes": {
+    "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7"
+  },
+  "initial_conditions": "Unchanged original v2 shirt copied to disposable inputs; source6c455 and frozen standard package. Exact original8substeps/32iterations,dt1/60s,closure1m/s,60zeroG+120gravityframes; all contacts retained. Native/CLI use the shared engine. Independent original-state expected peaks were frozen before new candidate output.",
+  "expected_outcomes": "Keep original geometry,positions,velocities and all prior diagnostics exactly,except step timing; identify signed material strain/triangle/axis and current authored piece within1e-12 arithmetic tolerance with exact nonzero indices. Native labels and decimal OBJ exports agree; CLI preserves original failed quality and prior export. Old diagnostics JSON remains readable. No reference parity or original garment-quality acceptance.",
+  "contract": "spec/features/SIM-005-strain-attribution.md",
+  "contract_commit": "209a8fda72aaca90a08c330427354dd457224a6c",
+  "contract_sha256": "71bbea48b09a3f07cc516625e1506ae07a73a79f3db35fcf59564dc44cc23700",
+  "kind": "implementation_only"
+}

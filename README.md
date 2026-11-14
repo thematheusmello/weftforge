@@ -29,6 +29,8 @@ maps; legacy single seams retain their curve-parameter correspondence.
 An f64 CPU cloth solver provides membrane/bending constraints, sewn boundaries,
 gravity, ground/analytic mannequin contact, and self-contact. Simulation runs in
 cancelable background batches; material values are uncalibrated approximations.
+The inspector identifies the pattern and warp/weft direction at peak strain,
+with a signed percentage for extension or compression.
 The solver is early; general garment convergence and contact robustness remain
 ongoing work.
 

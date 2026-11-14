@@ -136,12 +136,31 @@ impl Default for StepSettings {
     }
 }
 
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum MaterialAxis {
+    Warp,
+    Weft,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Serialize, Deserialize)]
+pub struct StrainPeak {
+    /// Index into the original `ClothInput::triangles`, in input order.
+    pub triangle: usize,
+    pub axis: MaterialAxis,
+    /// Material-axis length minus one: positive extension, negative compression.
+    pub signed_strain: f64,
+}
+
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]
 pub struct Diagnostics {
     pub simulation_time: f64,
     pub step_seconds: f64,
-    /// Maximum absolute principal material-axis length change, dimensionless.
+    /// Maximum absolute warp/weft length change, dimensionless; not a principal-strain bound.
     pub max_stretch_error: f64,
+    /// Largest absolute strain; ties choose the first input triangle, then warp.
+    #[serde(default)]
+    pub peak_strain: Option<StrainPeak>,
     pub max_seam_error: f64,
     /// Largest temporary stitch target distance while sewing assembles, metres.
     pub seam_assembly_remaining: f64,
@@ -531,11 +550,26 @@ impl Cloth {
         let mut diagnostics = self.diagnostics.clone();
         diagnostics.seam_assembly_remaining =
             self.seam_remaining.iter().copied().fold(0., f64::max);
-        diagnostics.max_stretch_error = self
-            .membrane
-            .iter()
-            .map(|m| m.stretch_error(positions))
-            .fold(0., f64::max);
+        diagnostics.max_stretch_error = 0.;
+        diagnostics.peak_strain = None;
+        for (triangle, membrane) in self.membrane.iter().enumerate() {
+            let [warp, weft] = membrane.signed_strains(positions);
+            diagnostics.max_stretch_error = diagnostics
+                .max_stretch_error
+                .max(warp.abs().max(weft.abs()));
+            for (axis, signed_strain) in [(MaterialAxis::Warp, warp), (MaterialAxis::Weft, weft)] {
+                if diagnostics
+                    .peak_strain
+                    .is_none_or(|peak| signed_strain.abs() > peak.signed_strain.abs())
+                {
+                    diagnostics.peak_strain = Some(StrainPeak {
+                        triangle,
+                        axis,
+                        signed_strain,
+                    });
+                }
+            }
+        }
         diagnostics.max_seam_error = self
             .input
             .stitches
@@ -550,6 +584,9 @@ impl Cloth {
             .map(|(m, v)| 0.5 * m * dot(*v, *v))
             .sum();
         diagnostics.finite = positions.iter().chain(velocities).copied().all(finite)
+            && diagnostics
+                .peak_strain
+                .is_none_or(|peak| peak.signed_strain.is_finite())
             && [
                 diagnostics.max_stretch_error,
                 diagnostics.max_seam_error,

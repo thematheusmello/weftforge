@@ -110,6 +110,25 @@ This supplies no physical gathering, reference-equivalence or complete-roadmap
 acceptance. Local fmt,122Rust tests, strict Clippy and54Python/map checks pass;
 Actions and Pages remain disabled until the complete project is done.
 
+### Material strain attribution
+
+Runtime `6c45535cb312` adds read-only peak location/direction and signed strain.
+The original shirt's 181 retained states match the previous control exactly in
+positions, velocities, mesh and prior diagnostics, apart from step timing.
+Independent material-gradient reconstruction agrees at all 180 meaningful
+frames within 2.23e-16 strain. Analytic grain-rotated extension/compression, exact
+tie order, reset/cancellation, stale mapping and legacy diagnostics JSON checks
+pass in the 126-test workspace run; strict Clippy and standard packaging pass.
+
+The actual standalone native application displays back warp +24.12% after
+assembly, then front warp +32.35% after drape. Stage project bytes are unchanged;
+independently parsed OBJ coordinates/UVs differ from raw control arrays by at
+most 6.94e-18 m due to decimal export. Packaged CLI fitting retains its failed
+quality result and existing export; simulation/benchmark attribution agrees with
+independently reconstructed output. This accepts diagnostic visibility only.
+The original quality failure, equilibrium/convergence gaps and full reference
+contract remain open. See [SIM-005](../spec/features/SIM-005-strain-attribution.md).
+
 ### Shutdown and recovery boundary
 
 The preliminary curve-candidate probe found that macOS Cmd+Q quit a dirty

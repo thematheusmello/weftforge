@@ -1,0 +1,167 @@
+{
+  "kind": "independent_original_control_read_only_strain_attribution_acceptance",
+  "source_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+  "source_verification": "37 source hashes and clean original Git checkout verified",
+  "binary_verification": "actual retained release binary hash verified",
+  "plan_sha256": "ca6846d8b87a7feaf7aeae54d1fd6ee40f14de1a3f4ffaa26d726e0e8e0c10ac",
+  "binary_binding_sha256": "ef0c9bcf784594b06cc386d3119dbaa43b11215f69b8a430bea6206d151c0d07",
+  "executed_binary_sha256": "eb243c4cbb9ae6bce2fb4d3a69d1cc7987f0ad66274b3c14ef0514e24615f69e",
+  "frozen_expected_peaks_sha256": "5f8ffcfc077d41a39aa3084466f88806c85a09b4d6ed004213ecfc16d76bbc0e",
+  "baseline_trajectory_sha256": "feb4d50b5d40e549b48bc309fb43b8d0968357d340a3946b17898229d579b7cb",
+  "new_trajectory_sha256": "67641125c3aab9b710d19a4d0ee19c96d3d890a482fd9b26f0731dd9c9bb2cd8",
+  "frame_count": 181,
+  "new_simulation_case_count": 1,
+  "new_no_avatar_cases": 0,
+  "new_extra_zero_gravity_cases": 0,
+  "mesh_project_masses_stitches_boundary_exact": true,
+  "positions_velocities_settings_all_prior_diagnostics_exact": true,
+  "ignored_comparison_fields": [
+    "peak_strain (new field only)",
+    "step_seconds",
+    "measured_step_seconds",
+    "case/phase/initialization wall seconds"
+  ],
+  "independent_attribution_all_meaningful_frames_passed": 180,
+  "roundoff_only_frames": [
+    0
+  ],
+  "max_absolute_errors": {
+    "signed_strain_absolute_error": 2.220446049250313e-16,
+    "scalar_vs_independent_absolute_error": 2.220446049250313e-16
+  },
+  "decisive_authored_piece_mappings": [
+    {
+      "frame": 0,
+      "peak_strain": {
+        "axis": "weft",
+        "signed_strain": -6.661338147750939e-16,
+        "triangle": 16
+      },
+      "triangle_vertices": [
+        14,
+        79,
+        84
+      ],
+      "resolved_authored_piece_id": 2,
+      "resolved_authored_piece_name": "Candidate front",
+      "independent_peak": {
+        "triangle": 16,
+        "piece": 2,
+        "vertices": [
+          14,
+          79,
+          84
+        ],
+        "axis": "weft",
+        "signed_strain": -6.661338147750939e-16,
+        "absolute_strain": 6.661338147750939e-16
+      },
+      "original_quality_passed": false
+    },
+    {
+      "frame": 24,
+      "peak_strain": {
+        "axis": "warp",
+        "signed_strain": 0.1637577026526289,
+        "triangle": 31
+      },
+      "triangle_vertices": [
+        89,
+        27,
+        28
+      ],
+      "resolved_authored_piece_id": 2,
+      "resolved_authored_piece_name": "Candidate front",
+      "independent_peak": {
+        "triangle": 31,
+        "piece": 2,
+        "vertices": [
+          89,
+          27,
+          28
+        ],
+        "axis": "warp",
+        "signed_strain": 0.1637577026526289,
+        "absolute_strain": 0.1637577026526289
+      },
+      "original_quality_passed": false
+    },
+    {
+      "frame": 60,
+      "peak_strain": {
+        "axis": "warp",
+        "signed_strain": 0.24118490382884605,
+        "triangle": 186
+      },
+      "triangle_vertices": [
+        55,
+        147,
+        54
+      ],
+      "resolved_authored_piece_id": 31,
+      "resolved_authored_piece_name": "Candidate back",
+      "independent_peak": {
+        "triangle": 186,
+        "piece": 31,
+        "vertices": [
+          55,
+          147,
+          54
+        ],
+        "axis": "warp",
+        "signed_strain": 0.24118490382884605,
+        "absolute_strain": 0.24118490382884605
+      },
+      "original_quality_passed": false
+    },
+    {
+      "frame": 180,
+      "peak_strain": {
+        "axis": "warp",
+        "signed_strain": 0.32351913672966237,
+        "triangle": 31
+      },
+      "triangle_vertices": [
+        89,
+        27,
+        28
+      ],
+      "resolved_authored_piece_id": 2,
+      "resolved_authored_piece_name": "Candidate front",
+      "independent_peak": {
+        "triangle": 31,
+        "piece": 2,
+        "vertices": [
+          89,
+          27,
+          28
+        ],
+        "axis": "warp",
+        "signed_strain": 0.32351913672966237,
+        "absolute_strain": 0.32351913672966237
+      },
+      "original_quality_passed": false
+    }
+  ],
+  "unchanged_quality_limits": {
+    "strain_below": 0.15,
+    "seam_m_below": 0.005,
+    "contact_m_below": 0.002
+  },
+  "original_assembly_quality_passed": false,
+  "original_final_quality_passed": false,
+  "run_job": {
+    "started_at": "2026-11-14T18:14:39.318888+00:00",
+    "completed_at": "2026-11-14T18:14:59.067524+00:00",
+    "launcher_pid": 99216,
+    "child_pid": 99358,
+    "child_process_group": 99358,
+    "exit_code": 0
+  },
+  "limits": [
+    "Only read-only original control attribution acceptance; not a physical quality fix, convergence or force equilibrium claim.",
+    "No fresh no-avatar or extra zero-G variants and no extension to the original three-case causal plan.",
+    "Native UI/CLI adapter acceptance and full workspace checks belong to separate root-owned evidence.",
+    "Copied source snapshots and omitted binaries need their declared hash closure; omitted actual Git/binary state remains explicit."
+  ]
+}

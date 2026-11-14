@@ -1,0 +1,105 @@
+{
+  "kind": "prospective_single_original_control_read_only_attribution_acceptance",
+  "declared_at": "2026-11-14T18:13:11.057685+00:00",
+  "new_output_generated": false,
+  "source_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+  "source_manifest_sha256": "2f3cbb9004ddf0edce56bc25f1feff4c0a7a6f6fa3d9865ec2e2cbb40a685864",
+  "source_file_count": 37,
+  "source_clean_detached": true,
+  "contract_commit": "209a8fda72aaca90a08c330427354dd457224a6c",
+  "contract_sha256": "71bbea48b09a3f07cc516625e1506ae07a73a79f3db35fcf59564dc44cc23700",
+  "original_fixture_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "original_runtime_source": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "original_driver_byte_identical": {
+    "src/main.rs": "b215edd790b44bf7bc353b0f3724d025a158d11f0e6c04c9194a12feafc8c580",
+    "Cargo.lock": "7285edb616da51522eacfccc659cf216520f6462c7f54ec34d06c797a44471a0"
+  },
+  "only_driver_dependency_derivative": {
+    "file": "harness/Cargo.toml",
+    "original_sha256": "c79b711c5112026010aad41b6d345d8ecb537b181ea0c7a742706c2714624f90",
+    "new_sha256": "4fa233d68f1a33a7d904fafd60e555f43728eba4245af8e61574d96b0fea4aef",
+    "literal_from": "../source/",
+    "literal_to": "../runtime-source/",
+    "replacement_count": 2,
+    "all_other_bytes_unchanged": true
+  },
+  "frozen_independent_expected_peaks_sha256": "5f8ffcfc077d41a39aa3084466f88806c85a09b4d6ed004213ecfc16d76bbc0e",
+  "frozen_independent_checker_sha256": "ef19fef14b25088d951823c11da0b9f8e1733dd8c8137353e66186c0eb3eabdb",
+  "frozen_files_sha256": {
+    "SIM-005-strain-attribution.md": "71bbea48b09a3f07cc516625e1506ae07a73a79f3db35fcf59564dc44cc23700",
+    "baseline-control/completed-case.json": "0b900d59fd4d5961666b72aaf276a7c1a67a62c913e9541fdb5f5acb4dc337c2",
+    "baseline-control/rest-metadata.json": "0c58d8aa2cb2712f004c020b558e120f7b7fc2357231527e106da45740968e80",
+    "baseline-control/steps.jsonl": "78e9b9b00caba5e26e3b0320f855b654379d459e5b7fdf311d294dbd4d1bfc77",
+    "baseline-control/trajectory.jsonl": "feb4d50b5d40e549b48bc309fb43b8d0968357d340a3946b17898229d579b7cb",
+    "harness/Cargo.lock": "7285edb616da51522eacfccc659cf216520f6462c7f54ec34d06c797a44471a0",
+    "harness/Cargo.toml": "4fa233d68f1a33a7d904fafd60e555f43728eba4245af8e61574d96b0fea4aef",
+    "harness/src/main.rs": "b215edd790b44bf7bc353b0f3724d025a158d11f0e6c04c9194a12feafc8c580",
+    "job.py": "39c5eaadc3a3322badbfa848f49287daa23b4c0859e8b1afad73c05e0640791c",
+    "original-driver/Cargo.lock": "7285edb616da51522eacfccc659cf216520f6462c7f54ec34d06c797a44471a0",
+    "original-driver/Cargo.toml": "c79b711c5112026010aad41b6d345d8ecb537b181ea0c7a742706c2714624f90",
+    "original-driver/src/main.rs": "b215edd790b44bf7bc353b0f3724d025a158d11f0e6c04c9194a12feafc8c580",
+    "original-grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+    "replay_acceptance.py": "894b98d99e710006d9e31a0dc2910c177c42b78f92e005189f6488e8fd4f5f6c",
+    "review-support/expected-peaks-preregistered.json": "5f8ffcfc077d41a39aa3084466f88806c85a09b4d6ed004213ecfc16d76bbc0e",
+    "review-support/replay_review.py": "ef19fef14b25088d951823c11da0b9f8e1733dd8c8137353e66186c0eb3eabdb",
+    "review-support/review-receipt.json": "ae1397c3291485a2a55ab2e7c510a041cb8642496f01608b8aeffef20996e025",
+    "source-manifest.json": "2f3cbb9004ddf0edce56bc25f1feff4c0a7a6f6fa3d9865ec2e2cbb40a685864"
+  },
+  "one_case": {
+    "name": "original_control_read_only_attribution_regression",
+    "fresh_original_start": true,
+    "initial_velocities_m_per_s": 0,
+    "assembly_frames": 60,
+    "assembly_gravity_m_per_s2": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "drape_frames": 120,
+    "drape_gravity_m_per_s2": [
+      0.0,
+      -9.81,
+      0.0
+    ],
+    "dt_s": 0.016666666666666666,
+    "substeps": 8,
+    "iterations": 32,
+    "seam_closure_m_per_s": 1.0,
+    "original_ground_mannequin_self_interpanel_contact": "enabled and unchanged",
+    "run_wall_cap_s": 420
+  },
+  "build": {
+    "offline": true,
+    "exclusive_target": "target",
+    "max_build_jobs": 2,
+    "strict_focused_clippy": "harness all targets -D warnings"
+  },
+  "prospective_acceptance": {
+    "exact_every_frame": [
+      "rest mesh/project/masses/stitches/boundary",
+      "positions",
+      "velocities",
+      "settings",
+      "all previous diagnostics after removing only added peak_strain and measured step_seconds"
+    ],
+    "wall_times": "not compared",
+    "new_peak": "independently reconstruct every saved frame; meaningful nonzero triangle/axis/piece must match; signed absolute tolerance 1e-12",
+    "frozen_control_frames": [
+      0,
+      24,
+      60,
+      180
+    ],
+    "roundoff_only_limit": "initial strains at or below 1e-12 may have a different arithmetic-order-dependent peak location",
+    "quality": "unchanged15% strain/5mm seam/2mm contact; all original failures stay failed"
+  },
+  "failure_policy": "Preserve the one failed run and logs. Diagnose without production fixes, new scenes, tuning or another simulation.",
+  "case_budget": {
+    "new_control_regressions": 1,
+    "new_no_avatar_variants": 0,
+    "new_zero_g_variants": 0,
+    "original_three_case_plan_not_extended": true
+  },
+  "scope": "Only read-only SIM005 visibility acceptance. Root owns native/CLI adapter checks and full workspace verification. No UI, public/root edits, GitHub or CI.",
+  "pre_run_self_checks": "Python code syntax, independent material/force/distance checks, diagnostic-key filtering and strict screen boundaries passed"
+}

@@ -1,0 +1,345 @@
+{
+  "kind": "unified_candidate_preparation_provenance_not_publication",
+  "prepared_at": "2026-11-14T18:28:51.726776+00:00",
+  "runtime_source_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+  "frozen_subtrees": [
+    {
+      "bundle_subtree": "headless",
+      "raw_origin": "<workspace>/.local/cloth-balance-review-20261114/attribution-acceptance/public-candidate",
+      "raw_manifest_sha256": "a5a81a5244f724fa4e7faba23abe03658e0d87fbe317486c5b6e8b199a302a8e",
+      "published_manifest_sha256": "a5a81a5244f724fa4e7faba23abe03658e0d87fbe317486c5b6e8b199a302a8e",
+      "file_count_including_manifest": 88,
+      "all_subtree_bytes_identical": true,
+      "original_internal_provenance_preserved": true
+    },
+    {
+      "bundle_subtree": "native",
+      "raw_origin": "<workspace>/.local/strain-native-20261114/public",
+      "raw_manifest_sha256": "115f4685dea9f915673cf016f6e748466cf621a8809ee953b0ed2aa5d3363734",
+      "published_manifest_sha256": "115f4685dea9f915673cf016f6e748466cf621a8809ee953b0ed2aa5d3363734",
+      "file_count_including_manifest": 47,
+      "all_subtree_bytes_identical": true,
+      "original_internal_provenance_preserved": true
+    }
+  ],
+  "copied_origins": [
+    {
+      "bundle_path": "cli/check_cli.py",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/check_cli.py",
+      "raw_sha256": "6bba7c30c505db8ca2d0da10c7bfd37f8e9ea7a81d0b71a97b53c8c8e66324f4",
+      "published_sha256": "6bba7c30c505db8ca2d0da10c7bfd37f8e9ea7a81d0b71a97b53c8c8e66324f4",
+      "raw_bytes": 5297,
+      "published_bytes": 5297,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "cli/benchmark.stderr",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/cli/benchmark.stderr",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "published_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "cli/benchmark.stdout",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/cli/benchmark.stdout",
+      "raw_sha256": "c1c5e4a80ad42af4fc2d3151527140d9a45c18c16a20ff8ffa03f2b4247b8970",
+      "published_sha256": "c1c5e4a80ad42af4fc2d3151527140d9a45c18c16a20ff8ffa03f2b4247b8970",
+      "raw_bytes": 1164,
+      "published_bytes": 1164,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "cli/current-job.json",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/cli/current-job.json",
+      "raw_sha256": "d3efbd8c6efb376c03e4e6b6933c84adb4f0a61db0a00bc5c8c2d18fa3e07578",
+      "published_sha256": "d3efbd8c6efb376c03e4e6b6933c84adb4f0a61db0a00bc5c8c2d18fa3e07578",
+      "raw_bytes": 52,
+      "published_bytes": 52,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "cli/fit.stderr",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/cli/fit.stderr",
+      "raw_sha256": "1f07dfafffea171a563d76f57e1c7dc4cb68d50bce4bf83234481cb75f93790e",
+      "published_sha256": "1f07dfafffea171a563d76f57e1c7dc4cb68d50bce4bf83234481cb75f93790e",
+      "raw_bytes": 84,
+      "published_bytes": 84,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "cli/fit.stdout",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/cli/fit.stdout",
+      "raw_sha256": "5f0452fa0103103a9df1c68ba50c1890db80144d93a4fb04bba7d56622b35b50",
+      "published_sha256": "5f0452fa0103103a9df1c68ba50c1890db80144d93a4fb04bba7d56622b35b50",
+      "raw_bytes": 3583,
+      "published_bytes": 3583,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "cli/jobs.json",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/cli/jobs.json",
+      "raw_sha256": "6ff754f50d7dc84ef9c7f74f4b54dfd6d95a1b32d71e5d866d659bea418b472e",
+      "published_sha256": "b79c3b6d823ed1392b23aa251da2a03e4fe15d4e6966ed4747c0b565e0715860",
+      "raw_bytes": 1098,
+      "published_bytes": 942,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "whole_workspace_pathname_prefix_only",
+        "replacement": "<workspace>",
+        "raw_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+        "replacement_count": 3,
+        "roundtrip_byte_equality_checked": true,
+        "numeric_source_state_obj_png_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "cli/one-step.obj",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/cli/one-step.obj",
+      "raw_sha256": "ed78964e5e072bb04bd2a8657a76732f3c7845e8b0d09c05075c654f9cc98b6a",
+      "published_sha256": "ed78964e5e072bb04bd2a8657a76732f3c7845e8b0d09c05075c654f9cc98b6a",
+      "raw_bytes": 33014,
+      "published_bytes": 33014,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "cli/original.weftforge",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/cli/original.weftforge",
+      "raw_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+      "published_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+      "raw_bytes": 12161,
+      "published_bytes": 12161,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "cli/plan.json",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/cli/plan.json",
+      "raw_sha256": "0ae0914ad3282ca6bad00a3b03b4235b231cc469115c089435150428ae4963a9",
+      "published_sha256": "0ae0914ad3282ca6bad00a3b03b4235b231cc469115c089435150428ae4963a9",
+      "raw_bytes": 909,
+      "published_bytes": 909,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "cli/retained-output.obj",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/cli/retained-output.obj",
+      "raw_sha256": "14e3605bb38a5390bfd7734124fb94b6b3eca73cbd4b8dee7f5270cea647c508",
+      "published_sha256": "14e3605bb38a5390bfd7734124fb94b6b3eca73cbd4b8dee7f5270cea647c508",
+      "raw_bytes": 47,
+      "published_bytes": 47,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "cli/simulate.stderr",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/cli/simulate.stderr",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "published_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "cli/simulate.stdout",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/cli/simulate.stdout",
+      "raw_sha256": "bfd11bd9ce058486e1a08c24a741feedf1f9ca5a9e529b2b53dd304ecbcdd726",
+      "published_sha256": "bfd11bd9ce058486e1a08c24a741feedf1f9ca5a9e529b2b53dd304ecbcdd726",
+      "raw_bytes": 1166,
+      "published_bytes": 1166,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "cli/summary.json",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/cli/summary.json",
+      "raw_sha256": "9066865e56830c88d89c614d6ccc0d2b0ce87b1efafbae8896d4e99f02d4e9b3",
+      "published_sha256": "822476afaefb71209c71ad27407835c982cbca9b368228e1ac6c813b06028d3e",
+      "raw_bytes": 1768,
+      "published_bytes": 1612,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "whole_workspace_pathname_prefix_only",
+        "replacement": "<workspace>",
+        "raw_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+        "replacement_count": 3,
+        "roundtrip_byte_equality_checked": true,
+        "numeric_source_state_obj_png_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "cli/runner-stdout",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/cli-run.stdout",
+      "raw_sha256": "778f4e87d7dedfd1a444e0c6c43e010ba3c3988da5b544c555b26c80073253c3",
+      "published_sha256": "51ee4e18675960780e7ff383ee2c34f71e4f8c3096d9eaf2f27c8bb213f03c0b",
+      "raw_bytes": 1414,
+      "published_bytes": 1258,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "whole_workspace_pathname_prefix_only",
+        "replacement": "<workspace>",
+        "raw_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+        "replacement_count": 3,
+        "roundtrip_byte_equality_checked": true,
+        "numeric_source_state_obj_png_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "cli/runner-stderr",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/cli-run.stderr",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "published_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "binding/binary-binding.json",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/binary-binding.json",
+      "raw_sha256": "758cbf42a07ebb9c214da50024d6b20d694c70b300397e2a5b9a1efc12d8efb9",
+      "published_sha256": "758cbf42a07ebb9c214da50024d6b20d694c70b300397e2a5b9a1efc12d8efb9",
+      "raw_bytes": 1697,
+      "published_bytes": 1697,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "binding/source-pretest.json",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/source-pretest.json",
+      "raw_sha256": "d996bed57c5ef7776813bdfff6eb9921af55be7af3e5a9e75073a51ebb57be49",
+      "published_sha256": "d996bed57c5ef7776813bdfff6eb9921af55be7af3e5a9e75073a51ebb57be49",
+      "raw_bytes": 4295,
+      "published_bytes": 4295,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "gates/clippy.log",
+      "raw_origin": "<workspace>/.local/strain-attribution-ui-20261114/.local/attribution-gates/clippy.log",
+      "raw_sha256": "2d866a3358fb6c5731e24b12a967eb88b44d4464da3ce298209455178e4e71e4",
+      "published_sha256": "94ed19952e53b844dac0a73e0587b7c3b4180aad1ddc1aa5c0494e739d89d07a",
+      "raw_bytes": 6403,
+      "published_bytes": 6143,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "whole_workspace_pathname_prefix_only",
+        "replacement": "<workspace>",
+        "raw_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+        "replacement_count": 5,
+        "roundtrip_byte_equality_checked": true,
+        "numeric_source_state_obj_png_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "gates/current-job.json",
+      "raw_origin": "<workspace>/.local/strain-attribution-ui-20261114/.local/attribution-gates/current-job.json",
+      "raw_sha256": "da348ccee8b15f3caa0405a29b4ae6f110b6327e39b75489befc49a50450166e",
+      "published_sha256": "da348ccee8b15f3caa0405a29b4ae6f110b6327e39b75489befc49a50450166e",
+      "raw_bytes": 116,
+      "published_bytes": 116,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "gates/fmt.log",
+      "raw_origin": "<workspace>/.local/strain-attribution-ui-20261114/.local/attribution-gates/fmt.log",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_bytes": 0,
+      "published_bytes": 0,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "gates/jobs.json",
+      "raw_origin": "<workspace>/.local/strain-attribution-ui-20261114/.local/attribution-gates/jobs.json",
+      "raw_sha256": "3bf8e9f3c086cb0e6e1f7b50ac501d999d250e6b3789d9a088eb0b85bc57217f",
+      "published_sha256": "3bf8e9f3c086cb0e6e1f7b50ac501d999d250e6b3789d9a088eb0b85bc57217f",
+      "raw_bytes": 1446,
+      "published_bytes": 1446,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "gates/package.log",
+      "raw_origin": "<workspace>/.local/strain-attribution-ui-20261114/.local/attribution-gates/package.log",
+      "raw_sha256": "d623b6db1669460d64803c0d612147abf3a845b92969f6ffa0c7b49c833931bc",
+      "published_sha256": "cc6b0b19505fd33f7681735cfc95d0b67c93240a591a1b9866ce0f7423e1d4a0",
+      "raw_bytes": 6839,
+      "published_bytes": 6579,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "whole_workspace_pathname_prefix_only",
+        "replacement": "<workspace>",
+        "raw_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+        "replacement_count": 5,
+        "roundtrip_byte_equality_checked": true,
+        "numeric_source_state_obj_png_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "gates/source-pretest.json",
+      "raw_origin": "<workspace>/.local/strain-attribution-ui-20261114/.local/attribution-gates/source-pretest.json",
+      "raw_sha256": "d996bed57c5ef7776813bdfff6eb9921af55be7af3e5a9e75073a51ebb57be49",
+      "published_sha256": "d996bed57c5ef7776813bdfff6eb9921af55be7af3e5a9e75073a51ebb57be49",
+      "raw_bytes": 4295,
+      "published_bytes": 4295,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "gates/tests.log",
+      "raw_origin": "<workspace>/.local/strain-attribution-ui-20261114/.local/attribution-gates/tests.log",
+      "raw_sha256": "60d77c844fb42f471a83cbf34a9f34aed91fecc8d9832a4f2e9eb3b9bf51227b",
+      "published_sha256": "b281ee9b0326efeeaedb17ab5dad198ffba73ac6de0c90a28e65cb59b0d6ed22",
+      "raw_bytes": 20756,
+      "published_bytes": 20496,
+      "byte_identical": false,
+      "derivative": {
+        "kind": "whole_workspace_pathname_prefix_only",
+        "replacement": "<workspace>",
+        "raw_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+        "replacement_count": 5,
+        "roundtrip_byte_equality_checked": true,
+        "numeric_source_state_obj_png_bytes_changed": false
+      }
+    },
+    {
+      "bundle_path": "binding/native-task-closure.json",
+      "raw_origin": "<workspace>/.local/strain-native-20261114/closure.json",
+      "raw_sha256": "406b35a9ec067caf0638f4986cc84de071da890001565200b7b3a550be5f0f6c",
+      "published_sha256": "406b35a9ec067caf0638f4986cc84de071da890001565200b7b3a550be5f0f6c",
+      "raw_bytes": 1380,
+      "published_bytes": 1380,
+      "byte_identical": true,
+      "derivative": null
+    },
+    {
+      "bundle_path": "reviews/root-image-review.json",
+      "raw_origin": "<workspace>/.local/strain-attribution-final-20261114/image-review.json",
+      "raw_sha256": "a8fe8f2c5788751c72525e3fd3bc73e524bceb88aee2b26d5ad39579f04093bd",
+      "published_sha256": "a8fe8f2c5788751c72525e3fd3bc73e524bceb88aee2b26d5ad39579f04093bd",
+      "raw_bytes": 1827,
+      "published_bytes": 1827,
+      "byte_identical": true,
+      "derivative": null
+    }
+  ],
+  "rules": [
+    "Both closed headless/native subtrees are copied byte-identically, including their own manifests/provenance.",
+    "Additional CLI/binding/gate artifacts retain original bytes unless only the exact whole workspace pathname prefix is replaced. Raw/published hashes, replacement counts and reversible-copy checks identify every derivative.",
+    "No numerical/source/state/OBJ/PNG bytes, frozen contract, expected peaks or existing manifests are edited.",
+    "No binaries, targets or Git metadata are copied. This is ignored preparation, not publication."
+  ]
+}

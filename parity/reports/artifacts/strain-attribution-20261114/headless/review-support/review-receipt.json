@@ -1,0 +1,2481 @@
+{
+  "kind": "independent_saved_output_review_no_simulator",
+  "source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "source_verification": {
+    "status": "all recorded source hashes and clean Git HEAD verified",
+    "file_count": 37,
+    "head": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9"
+  },
+  "binaries": {
+    "target/release/cloth-balance-diagnostic": "033b2043ae8caf66ae1fdbef998f844f48a6ca64cea7473c5c29b73cdb86699b",
+    "target/release/cloth-balance-probe": "215ee6789e8da6ca3623971d9e5dc8d7903e8b051a4b3ff563d964a166699e8b"
+  },
+  "input_sha256": {
+    "plan.json": "b97a22b3e37b6543412346cc9ee10a8dea19643779ad4d0a118a4040675c30e2",
+    "plan-erratum-001.json": "84be68e05c02804e037d86187c4318e8c66d6f02ead2d5c742ea3e4825a8d72f",
+    "plan-probes-001.json": "14d0f812879fd744fac403d005f262ebe5d72e7b2656b7ef4120feb3cbc61d61",
+    "source-manifest.json": "1ecf305630bff2025223a2d3279e51141f7aa4a01d86999ad0c63ef546d9797c",
+    "harness/Cargo.toml": "c79b711c5112026010aad41b6d345d8ecb537b181ea0c7a742706c2714624f90",
+    "harness/Cargo.lock": "7285edb616da51522eacfccc659cf216520f6462c7f54ec34d06c797a44471a0",
+    "harness/src/main.rs": "b215edd790b44bf7bc353b0f3724d025a158d11f0e6c04c9194a12feafc8c580",
+    "measure.py": "32f2d9fbb8ac82b85f9a438a31e73d4292cd08356ec06ed91c68e8cf40e41ce2",
+    "balance_measure.py": "58da92075e6346225bd846ef2b982b0092941f9b6b10564e44840bc0a695bbbc",
+    "job.py": "e5dff623f0ef3f5bd6687a139328d03e1dbc5b5ae2a4eb8ca91f2d06c9d8dbd4",
+    "probe-harness/Cargo.toml": "f57258d4f7cb8b953c707f83ed632dcbd1ba85bb005402b76f8eb78a68afd40a",
+    "probe-harness/Cargo.lock": "dccb61e260c6d06ab6293a5de1325acb323381ccdd0b1aa712cd979498873e22",
+    "probe-harness/src/main.rs": "2e9b0a78b4966b8da2daccf44e21922e11133805801faaa6254cae7c03a9bc40",
+    "probe_job.py": "012ea85230a59cd8b57330d679d34cf414a893d63e7c1ed94a6e1f38f699e575",
+    "original-grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+    "control-analysis.json": "c27bd8aaa510116e8c9c3dc823e9a02a3dc859d4a86ccfa284afb8a6d3731e81",
+    "probes-analysis.json": "b1ade76b27cd6e6dffdb4faebb0d83dae0e3e01e7651648b4dba50220c46ac9f",
+    "control-independent-forces.json": "f5aa939bc2b4b91cb9853170dc2082dc8b5fe2b09682fa9067d95de43893fb79",
+    "probes-independent-forces.json": "50d2c7d0f2a9e512b3828d888a8fa800ed410d7e9fb212f8ae5aff953cdb402a",
+    "control/rest-metadata.json": "0c58d8aa2cb2712f004c020b558e120f7b7fc2357231527e106da45740968e80",
+    "control/trajectory.jsonl": "feb4d50b5d40e549b48bc309fb43b8d0968357d340a3946b17898229d579b7cb",
+    "control/steps.jsonl": "78e9b9b00caba5e26e3b0320f855b654379d459e5b7fdf311d294dbd4d1bfc77",
+    "control/completed-case.json": "0b900d59fd4d5961666b72aaf276a7c1a67a62c913e9541fdb5f5acb4dc337c2",
+    "control-job.json": "28cd176c6b5267a372f67ac195eb3743dd64d59e782303d291d14c9fefe85ffb",
+    "zero-g-balance/rest-metadata.json": "9a054825d7e7a60c623a0ecf044ec997537f5f6e4ab4e9e03ae60afef2f90b6d",
+    "zero-g-balance/trajectory.jsonl": "6a2657faa89b31acddbb7a5d6ce4597a7710b33c3d6e96fa4afc5e30eeec37c5",
+    "zero-g-balance/steps.jsonl": "988fbea4aae7a3cd56aedb9904157ae028069ee2d583b61c0106a842e6148e4f",
+    "zero-g-balance/completed-case.json": "cb00c343a8c84fb1f7bd748b69633dae9bcd43fe895ef39d97b4ec8a034de7a7",
+    "zero-g-balance-job.json": "a9c82faf8334866f7c288ed9ca344229096053889e8ce002e43f175bd18a310d",
+    "no-avatar/rest-metadata.json": "6a632faeec032509f9e787427621063b8a11a29dfedfa4433c3fed119f9b2737",
+    "no-avatar/trajectory.jsonl": "03ee65bd1560a9312735223c13cb9f59d2e193ff67cb5206f21068d9aa0473d8",
+    "no-avatar/steps.jsonl": "51a4358aedd3f75263ea08a301180d2dc1e550c8f3954f0ddeddd980df74fb1c",
+    "no-avatar/completed-case.json": "29c6618e01df28a88c90dbaee9a461457bb66b8a6ffe6371fc33c0c6108626cd",
+    "no-avatar-job.json": "cf836167426ed2eb81f381467a1a2cd89979af44ee59b55d145fd518daa1348b"
+  },
+  "self_checks": "passed material inverse/force finite differences, UV mass, face/edge/corner distances and weighted drift",
+  "fixture_normalization": "Only deserialize missing sewing_groups as [] and color channels as f32, matching source types",
+  "prefix": {
+    "frames_0_through_60": "exact positions, velocities, settings and all diagnostics except measured step_seconds",
+    "seam_targets": "source recurrence reconstructed for every frame; nonnegative targets all zero at frame60",
+    "limits": "No direct private-memory serialization; source multipliers are local to each substep and reset there"
+  },
+  "cases": {
+    "control": {
+      "frames": 180,
+      "vertices": 150,
+      "triangles": 228,
+      "stitches": 28,
+      "bends": 308,
+      "material_triangle_angle_range_degrees": [
+        10.017164550866617,
+        114.02376184569077
+      ],
+      "mass_max_difference_kg": 0.0,
+      "first_frame_above_strain_screen": 24,
+      "first_frame_assembly_closed": 27,
+      "first_frame_seam_below_5mm": 27,
+      "comparison_max_absolute_errors": {
+        "strain_vs_diagnostics": 2.220446049250313e-16,
+        "strain_vs_report": 4.440892098500626e-16,
+        "membrane_energy_vs_report_J": 2.220446049250313e-16,
+        "bending_energy_vs_report_J": 5.551115123125783e-17,
+        "sewing_energy_vs_report_J": 1.067435029256103e-11,
+        "seam_vs_diagnostics_m": 1.0587911840678754e-22,
+        "analytic_penetration_vs_report_m": 2.6020852139652106e-18
+      },
+      "checkpoints": [
+        {
+          "frame": 0,
+          "time_s": 0.0,
+          "material": {
+            "peak": {
+              "triangle": 16,
+              "piece": 2,
+              "vertices": [
+                14,
+                79,
+                84
+              ],
+              "axis": "weft",
+              "signed_strain": -6.661338147750939e-16,
+              "absolute_strain": 6.661338147750939e-16
+            },
+            "minimum_signed": -6.661338147750939e-16,
+            "maximum_signed": 6.661338147750939e-16,
+            "energy_components_J": [
+              2.288584369830394e-31,
+              6.571138518536155e-30,
+              5.888602324920794e-31
+            ],
+            "energy_J": 7.388857188011273e-30,
+            "per_piece": {
+              "2": {
+                "triangle": 16,
+                "piece": 2,
+                "vertices": [
+                  14,
+                  79,
+                  84
+                ],
+                "axis": "weft",
+                "signed_strain": -6.661338147750939e-16,
+                "absolute_strain": 6.661338147750939e-16
+              },
+              "31": {
+                "triangle": 227,
+                "piece": 31,
+                "vertices": [
+                  91,
+                  66,
+                  67
+                ],
+                "axis": "warp",
+                "signed_strain": -5.551115123125783e-16,
+                "absolute_strain": 5.551115123125783e-16
+              }
+            }
+          },
+          "bending_energy_J": 0.0,
+          "elastic_energy_J": 7.388857188011273e-30,
+          "sewing_energy_J": 0.0,
+          "seam_gap_m": 0.44,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.020000000000000046,
+              1.2910828282828284,
+              2.3744923612285836e-18
+            ],
+            "momentum_kg_m_per_s": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "kinetic_energy_J": 0.0,
+            "rms_speed_m_per_s": 0.0,
+            "max_speed_m_per_s": 0.0
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            {
+              "node": 14,
+              "capsule": 3,
+              "clearance_m": 0.20093376170801863,
+              "axial_fraction": 0.5321742846078865
+            },
+            {
+              "node": 79,
+              "capsule": 3,
+              "clearance_m": 0.15748105532448803,
+              "axial_fraction": 0.49100001335309607
+            },
+            {
+              "node": 84,
+              "capsule": 3,
+              "clearance_m": 0.1588120124149552,
+              "axial_fraction": 0.6162954506002218
+            }
+          ],
+          "conservative_force_maxima_N": {
+            "membrane": 1.1767923689971906e-13,
+            "bending": 0.0,
+            "sewing": 0.0,
+            "combined": 1.1767923689971906e-13
+          }
+        },
+        {
+          "frame": 24,
+          "time_s": 0.4,
+          "material": {
+            "peak": {
+              "triangle": 31,
+              "piece": 2,
+              "vertices": [
+                89,
+                27,
+                28
+              ],
+              "axis": "warp",
+              "signed_strain": 0.1637577026526289,
+              "absolute_strain": 0.1637577026526289
+            },
+            "minimum_signed": -0.10674137425169417,
+            "maximum_signed": 0.1637577026526289,
+            "energy_components_J": [
+              0.029163139677889718,
+              0.012389513403477251,
+              0.030118375633113113
+            ],
+            "energy_J": 0.07167102871448008,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.1637577026526289,
+                "absolute_strain": 0.1637577026526289
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.14909445091626128,
+                "absolute_strain": 0.14909445091626128
+              }
+            }
+          },
+          "bending_energy_J": 0.06618966246463137,
+          "elastic_energy_J": 0.13786069117911146,
+          "sewing_energy_J": 0.0010424334300288699,
+          "seam_gap_m": 0.04000350900978444,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.0018210741777274816,
+              1.3294803702263747,
+              0.002179378845274967
+            ],
+            "momentum_kg_m_per_s": [
+              -0.006718081747931016,
+              0.036052506106400636,
+              0.001728495123538867
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              0.003701128697261206,
+              -0.002736685834063204,
+              -0.008907965372335925
+            ],
+            "kinetic_energy_J": 0.03534363378223371,
+            "rms_speed_m_per_s": 0.6772733085588785,
+            "max_speed_m_per_s": 2.2359376997050173
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            {
+              "node": 89,
+              "capsule": 2,
+              "clearance_m": 1.441253161286668e-07,
+              "axial_fraction": 0.4822573406532509
+            },
+            {
+              "node": 27,
+              "capsule": 2,
+              "clearance_m": 5.484328269300676e-15,
+              "axial_fraction": 0.7525856344355697
+            },
+            {
+              "node": 28,
+              "capsule": 2,
+              "clearance_m": 1.0462598727138325e-06,
+              "axial_fraction": 0.7456808727288214
+            }
+          ],
+          "last_frame_drift_m": {
+            "max_m": 0.02812707607186214,
+            "mass_weighted_rms_m": 0.01128237801207754
+          },
+          "interval_nodal_effective_force_max_N": 0.1028827219649707,
+          "interval_mass_rms_acceleration_m_per_s2": 27.415622537428728
+        },
+        {
+          "frame": 27,
+          "time_s": 0.45,
+          "material": {
+            "peak": {
+              "triangle": 31,
+              "piece": 2,
+              "vertices": [
+                89,
+                27,
+                28
+              ],
+              "axis": "warp",
+              "signed_strain": 0.23981069743401995,
+              "absolute_strain": 0.23981069743401995
+            },
+            "minimum_signed": -0.128547693970523,
+            "maximum_signed": 0.23981069743401995,
+            "energy_components_J": [
+              0.08553590179533513,
+              0.0471390733465507,
+              0.10558565931920032
+            ],
+            "energy_J": 0.23826063446108614,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.23981069743401995,
+                "absolute_strain": 0.23981069743401995
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.23194511543817753,
+                "absolute_strain": 0.23194511543817753
+              }
+            }
+          },
+          "bending_energy_J": 0.11354159152884923,
+          "elastic_energy_J": 0.3518022259899354,
+          "sewing_energy_J": 9.601689971543411e-05,
+          "seam_gap_m": 1.3652809430292443e-06,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.0010357976179532658,
+              1.3309186360451757,
+              -0.00035954815032083445
+            ],
+            "momentum_kg_m_per_s": [
+              0.0013870592950179456,
+              0.014715780884663205,
+              -0.0032924314757955004
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              0.0024386179125078316,
+              0.00043454205656594296,
+              -0.0003300611627630238
+            ],
+            "kinetic_energy_J": 0.009318721608388241,
+            "rms_speed_m_per_s": 0.34776552734960975,
+            "max_speed_m_per_s": 1.823468999658987
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            {
+              "node": 89,
+              "capsule": 2,
+              "clearance_m": 3.212968086030443e-14,
+              "axial_fraction": 0.4588994328335304
+            },
+            {
+              "node": 27,
+              "capsule": 2,
+              "clearance_m": 1.43383568906863e-14,
+              "axial_fraction": 0.7132800797257434
+            },
+            {
+              "node": 28,
+              "capsule": 2,
+              "clearance_m": 1.9589687411075522e-05,
+              "axial_fraction": 0.7268098684103252
+            }
+          ],
+          "last_frame_drift_m": {
+            "max_m": 0.0185832238610166,
+            "mass_weighted_rms_m": 0.006281943425237073
+          },
+          "interval_nodal_effective_force_max_N": 0.14547503070494305,
+          "interval_mass_rms_acceleration_m_per_s2": 41.687633793174186
+        },
+        {
+          "frame": 60,
+          "time_s": 1.0,
+          "material": {
+            "peak": {
+              "triangle": 186,
+              "piece": 31,
+              "vertices": [
+                55,
+                147,
+                54
+              ],
+              "axis": "warp",
+              "signed_strain": 0.24118490382884605,
+              "absolute_strain": 0.24118490382884605
+            },
+            "minimum_signed": -0.09629471136714984,
+            "maximum_signed": 0.24118490382884605,
+            "energy_components_J": [
+              0.07315486677980126,
+              0.03781394198122316,
+              0.09934574863786434
+            ],
+            "energy_J": 0.21031455739888877,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.2385075381978683,
+                "absolute_strain": 0.2385075381978683
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.24118490382884605,
+                "absolute_strain": 0.24118490382884605
+              }
+            }
+          },
+          "bending_energy_J": 0.1216990945508396,
+          "elastic_energy_J": 0.3320136519497284,
+          "sewing_energy_J": 2.6691863717272717e-05,
+          "seam_gap_m": 6.911103501829521e-07,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.0022873448983509147,
+              1.3357572070944197,
+              0.00012455640816310271
+            ],
+            "momentum_kg_m_per_s": [
+              0.00046672180078727055,
+              0.0004152642137384339,
+              -0.0001640315256143827
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              -3.1069616663532442e-06,
+              6.602919908532604e-05,
+              6.346620660430446e-05
+            ],
+            "kinetic_energy_J": 1.8961163932671315e-05,
+            "rms_speed_m_per_s": 0.015687034712760672,
+            "max_speed_m_per_s": 0.10763181630692728
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            {
+              "node": 55,
+              "capsule": 1,
+              "clearance_m": 8.280555563347329e-06,
+              "axial_fraction": 0.16476725966022396
+            },
+            {
+              "node": 147,
+              "capsule": 0,
+              "clearance_m": 4.48936682891669e-05,
+              "axial_fraction": 1.0
+            },
+            {
+              "node": 54,
+              "capsule": 1,
+              "clearance_m": 8.84369088819878e-08,
+              "axial_fraction": 0.3997625969505466
+            }
+          ],
+          "last_frame_drift_m": {
+            "max_m": 0.0017457468667264233,
+            "mass_weighted_rms_m": 0.0003267155518039456
+          },
+          "interval_nodal_effective_force_max_N": 0.009357035923446671,
+          "interval_mass_rms_acceleration_m_per_s2": 1.340934163104049,
+          "conservative_force_maxima_N": {
+            "membrane": 3.376843045946881,
+            "bending": 0.40619139858297404,
+            "sewing": 69.11103501829521,
+            "combined": 68.83099713224195
+          }
+        },
+        {
+          "frame": 120,
+          "time_s": 2.0,
+          "material": {
+            "peak": {
+              "triangle": 31,
+              "piece": 2,
+              "vertices": [
+                89,
+                27,
+                28
+              ],
+              "axis": "warp",
+              "signed_strain": 0.296842220501945,
+              "absolute_strain": 0.296842220501945
+            },
+            "minimum_signed": -0.10896361232652363,
+            "maximum_signed": 0.296842220501945,
+            "energy_components_J": [
+              0.08281157235954009,
+              0.035311643694338514,
+              0.09747777752633464
+            ],
+            "energy_J": 0.21560099358021326,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.296842220501945,
+                "absolute_strain": 0.296842220501945
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.23488539576076106,
+                "absolute_strain": 0.23488539576076106
+              }
+            }
+          },
+          "bending_energy_J": 0.1248922713676898,
+          "elastic_energy_J": 0.34049326494790305,
+          "sewing_energy_J": 2.668997601315047e-05,
+          "seam_gap_m": 6.911103501959321e-07,
+          "analytic_penetration_m": 6.678685382510707e-17,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.002368084027535222,
+              1.3358775124998772,
+              0.0016560747469387207
+            ],
+            "momentum_kg_m_per_s": [
+              -0.00013960899830634294,
+              0.00011870410986638282,
+              0.00017616581345701596
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              -6.0311290192913745e-05,
+              1.0579499166435818e-05,
+              -2.2190181455926788e-05
+            ],
+            "kinetic_energy_J": 2.4324161273813736e-06,
+            "rms_speed_m_per_s": 0.005618589434206016,
+            "max_speed_m_per_s": 0.02601200169063297
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "last_frame_drift_m": {
+            "max_m": 0.0005898057892496211,
+            "mass_weighted_rms_m": 0.00011682888188818727
+          },
+          "interval_nodal_effective_force_max_N": 0.001937549902707746,
+          "interval_mass_rms_acceleration_m_per_s2": 0.3359121497572337
+        },
+        {
+          "frame": 150,
+          "time_s": 2.5,
+          "material": {
+            "peak": {
+              "triangle": 31,
+              "piece": 2,
+              "vertices": [
+                89,
+                27,
+                28
+              ],
+              "axis": "warp",
+              "signed_strain": 0.31364239868122024,
+              "absolute_strain": 0.31364239868122024
+            },
+            "minimum_signed": -0.11238488543477299,
+            "maximum_signed": 0.31364239868122024,
+            "energy_components_J": [
+              0.08541221261769058,
+              0.03515938258342833,
+              0.09807716202939405
+            ],
+            "energy_J": 0.21864875723051297,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.31364239868122024,
+                "absolute_strain": 0.31364239868122024
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.2340658051421025,
+                "absolute_strain": 0.2340658051421025
+              }
+            }
+          },
+          "bending_energy_J": 0.1257900271926529,
+          "elastic_energy_J": 0.3444387844231659,
+          "sewing_energy_J": 2.6690318926823058e-05,
+          "seam_gap_m": 6.911103502030122e-07,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.0024145154970916707,
+              1.3361437475960527,
+              0.0018954789735651186
+            ],
+            "momentum_kg_m_per_s": [
+              3.9595066049003184e-05,
+              7.568250385506338e-05,
+              -8.850486787428718e-05
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              8.337019898049405e-06,
+              1.1549579553700817e-05,
+              1.3198635960959926e-05
+            ],
+            "kinetic_energy_J": 2.106907517622194e-06,
+            "rms_speed_m_per_s": 0.0052291499702573074,
+            "max_speed_m_per_s": 0.026545490257106296
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "last_frame_drift_m": {
+            "max_m": 0.0003776929133380946,
+            "mass_weighted_rms_m": 8.140378547988095e-05
+          },
+          "interval_nodal_effective_force_max_N": 0.0007115089609271504,
+          "interval_mass_rms_acceleration_m_per_s2": 0.14124743353756727
+        },
+        {
+          "frame": 151,
+          "time_s": 2.5166666666666666,
+          "material": {
+            "peak": {
+              "triangle": 31,
+              "piece": 2,
+              "vertices": [
+                89,
+                27,
+                28
+              ],
+              "axis": "warp",
+              "signed_strain": 0.31407777960037886,
+              "absolute_strain": 0.31407777960037886
+            },
+            "minimum_signed": -0.11248679264259587,
+            "maximum_signed": 0.31407777960037886,
+            "energy_components_J": [
+              0.08548579766894512,
+              0.035160298435839975,
+              0.09809986408558796
+            ],
+            "energy_J": 0.21874596019037307,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.31407777960037886,
+                "absolute_strain": 0.31407777960037886
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.2340276801678456,
+                "absolute_strain": 0.2340276801678456
+              }
+            }
+          },
+          "bending_energy_J": 0.1258068111749621,
+          "elastic_energy_J": 0.34455277136533513,
+          "sewing_energy_J": 2.6690330978757754e-05,
+          "seam_gap_m": 6.911103502039358e-07,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.0024237996304825164,
+              1.3361520255021833,
+              0.001883847281251551
+            ],
+            "momentum_kg_m_per_s": [
+              0.00012019096400433197,
+              7.50316394691336e-05,
+              -0.00011720208936188873
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              1.2980933267458066e-05,
+              1.1354806343328428e-05,
+              2.794047878354912e-05
+            ],
+            "kinetic_energy_J": 2.447362107148235e-06,
+            "rms_speed_m_per_s": 0.005635824709302973,
+            "max_speed_m_per_s": 0.03006298556391582
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "last_frame_drift_m": {
+            "max_m": 0.00048496230394039696,
+            "mass_weighted_rms_m": 9.103437984596002e-05
+          },
+          "interval_nodal_effective_force_max_N": 0.0009939918426520513,
+          "interval_mass_rms_acceleration_m_per_s2": 0.12313351690055582
+        },
+        {
+          "frame": 180,
+          "time_s": 3.0,
+          "material": {
+            "peak": {
+              "triangle": 31,
+              "piece": 2,
+              "vertices": [
+                89,
+                27,
+                28
+              ],
+              "axis": "warp",
+              "signed_strain": 0.32351913672966237,
+              "absolute_strain": 0.32351913672966237
+            },
+            "minimum_signed": -0.1152954343190592,
+            "maximum_signed": 0.32351913672966237,
+            "energy_components_J": [
+              0.08702177041990815,
+              0.03524996628417248,
+              0.09853493143108234
+            ],
+            "energy_J": 0.22080666813516298,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.32351913672966237,
+                "absolute_strain": 0.32351913672966237
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.23329520327885178,
+                "absolute_strain": 0.23329520327885178
+              }
+            }
+          },
+          "bending_energy_J": 0.12656099012467759,
+          "elastic_energy_J": 0.34736765825984056,
+          "sewing_energy_J": 2.669067653643125e-05,
+          "seam_gap_m": 6.91110350198192e-07,
+          "analytic_penetration_m": 1.1275702593849246e-17,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.002465637567301439,
+              1.3362932120222688,
+              0.0021209865532047967
+            ],
+            "momentum_kg_m_per_s": [
+              0.00011115566655275714,
+              2.9654427224959315e-05,
+              6.386440386751546e-05
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              -2.0284606405792467e-05,
+              6.957764184641291e-06,
+              2.6669976213020084e-05
+            ],
+            "kinetic_energy_J": 1.3863400867268586e-06,
+            "rms_speed_m_per_s": 0.004241732255152513,
+            "max_speed_m_per_s": 0.017664487506019615
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            {
+              "node": 89,
+              "capsule": 2,
+              "clearance_m": 2.325626805279018e-05,
+              "axial_fraction": 0.4262470771238785
+            },
+            {
+              "node": 27,
+              "capsule": 2,
+              "clearance_m": 5.824767751461124e-14,
+              "axial_fraction": 0.6569396423149628
+            },
+            {
+              "node": 28,
+              "capsule": 2,
+              "clearance_m": 5.270499865847426e-06,
+              "axial_fraction": 0.6934763171035307
+            }
+          ],
+          "last_frame_drift_m": {
+            "max_m": 0.0002791221294374729,
+            "mass_weighted_rms_m": 7.089544114907044e-05
+          },
+          "interval_nodal_effective_force_max_N": 0.00024158774204234597,
+          "interval_mass_rms_acceleration_m_per_s2": 0.04194333422279302,
+          "conservative_force_maxima_N": {
+            "membrane": 3.0615527635613367,
+            "bending": 0.4601021035215742,
+            "sewing": 69.1110350198192,
+            "combined": 68.93233869576753
+          }
+        }
+      ],
+      "job": {
+        "started_at": "2026-11-14T17:48:48.386156+00:00",
+        "completed_at": "2026-11-14T17:49:08.601116+00:00",
+        "launcher_pid": 66594,
+        "child_pid": 66638,
+        "child_process_group": 66638,
+        "exit_code": 0
+      }
+    },
+    "zero-g-balance": {
+      "frames": 180,
+      "vertices": 150,
+      "triangles": 228,
+      "stitches": 28,
+      "bends": 308,
+      "material_triangle_angle_range_degrees": [
+        10.017164550866617,
+        114.02376184569077
+      ],
+      "mass_max_difference_kg": 0.0,
+      "first_frame_above_strain_screen": 24,
+      "first_frame_assembly_closed": 27,
+      "first_frame_seam_below_5mm": 27,
+      "comparison_max_absolute_errors": {
+        "strain_vs_diagnostics": 2.220446049250313e-16,
+        "strain_vs_report": 4.440892098500626e-16,
+        "membrane_energy_vs_report_J": 2.220446049250313e-16,
+        "bending_energy_vs_report_J": 5.551115123125783e-17,
+        "sewing_energy_vs_report_J": 1.067435029256103e-11,
+        "seam_vs_diagnostics_m": 1.0587911840678754e-22,
+        "analytic_penetration_vs_report_m": 2.6020852139652106e-18
+      },
+      "checkpoints": [
+        {
+          "frame": 0,
+          "time_s": 0.0,
+          "material": {
+            "peak": {
+              "triangle": 16,
+              "piece": 2,
+              "vertices": [
+                14,
+                79,
+                84
+              ],
+              "axis": "weft",
+              "signed_strain": -6.661338147750939e-16,
+              "absolute_strain": 6.661338147750939e-16
+            },
+            "minimum_signed": -6.661338147750939e-16,
+            "maximum_signed": 6.661338147750939e-16,
+            "energy_components_J": [
+              2.288584369830394e-31,
+              6.571138518536155e-30,
+              5.888602324920794e-31
+            ],
+            "energy_J": 7.388857188011273e-30,
+            "per_piece": {
+              "2": {
+                "triangle": 16,
+                "piece": 2,
+                "vertices": [
+                  14,
+                  79,
+                  84
+                ],
+                "axis": "weft",
+                "signed_strain": -6.661338147750939e-16,
+                "absolute_strain": 6.661338147750939e-16
+              },
+              "31": {
+                "triangle": 227,
+                "piece": 31,
+                "vertices": [
+                  91,
+                  66,
+                  67
+                ],
+                "axis": "warp",
+                "signed_strain": -5.551115123125783e-16,
+                "absolute_strain": 5.551115123125783e-16
+              }
+            }
+          },
+          "bending_energy_J": 0.0,
+          "elastic_energy_J": 7.388857188011273e-30,
+          "sewing_energy_J": 0.0,
+          "seam_gap_m": 0.44,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.020000000000000046,
+              1.2910828282828284,
+              2.3744923612285836e-18
+            ],
+            "momentum_kg_m_per_s": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "kinetic_energy_J": 0.0,
+            "rms_speed_m_per_s": 0.0,
+            "max_speed_m_per_s": 0.0
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            {
+              "node": 14,
+              "capsule": 3,
+              "clearance_m": 0.20093376170801863,
+              "axial_fraction": 0.5321742846078865
+            },
+            {
+              "node": 79,
+              "capsule": 3,
+              "clearance_m": 0.15748105532448803,
+              "axial_fraction": 0.49100001335309607
+            },
+            {
+              "node": 84,
+              "capsule": 3,
+              "clearance_m": 0.1588120124149552,
+              "axial_fraction": 0.6162954506002218
+            }
+          ]
+        },
+        {
+          "frame": 24,
+          "time_s": 0.4,
+          "material": {
+            "peak": {
+              "triangle": 31,
+              "piece": 2,
+              "vertices": [
+                89,
+                27,
+                28
+              ],
+              "axis": "warp",
+              "signed_strain": 0.1637577026526289,
+              "absolute_strain": 0.1637577026526289
+            },
+            "minimum_signed": -0.10674137425169417,
+            "maximum_signed": 0.1637577026526289,
+            "energy_components_J": [
+              0.029163139677889718,
+              0.012389513403477251,
+              0.030118375633113113
+            ],
+            "energy_J": 0.07167102871448008,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.1637577026526289,
+                "absolute_strain": 0.1637577026526289
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.14909445091626128,
+                "absolute_strain": 0.14909445091626128
+              }
+            }
+          },
+          "bending_energy_J": 0.06618966246463137,
+          "elastic_energy_J": 0.13786069117911146,
+          "sewing_energy_J": 0.0010424334300288699,
+          "seam_gap_m": 0.04000350900978444,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.0018210741777274816,
+              1.3294803702263747,
+              0.002179378845274967
+            ],
+            "momentum_kg_m_per_s": [
+              -0.006718081747931016,
+              0.036052506106400636,
+              0.001728495123538867
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              0.003701128697261206,
+              -0.002736685834063204,
+              -0.008907965372335925
+            ],
+            "kinetic_energy_J": 0.03534363378223371,
+            "rms_speed_m_per_s": 0.6772733085588785,
+            "max_speed_m_per_s": 2.2359376997050173
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            {
+              "node": 89,
+              "capsule": 2,
+              "clearance_m": 1.441253161286668e-07,
+              "axial_fraction": 0.4822573406532509
+            },
+            {
+              "node": 27,
+              "capsule": 2,
+              "clearance_m": 5.484328269300676e-15,
+              "axial_fraction": 0.7525856344355697
+            },
+            {
+              "node": 28,
+              "capsule": 2,
+              "clearance_m": 1.0462598727138325e-06,
+              "axial_fraction": 0.7456808727288214
+            }
+          ],
+          "last_frame_drift_m": {
+            "max_m": 0.02812707607186214,
+            "mass_weighted_rms_m": 0.01128237801207754
+          },
+          "interval_nodal_effective_force_max_N": 0.1028827219649707,
+          "interval_mass_rms_acceleration_m_per_s2": 27.415622537428728
+        },
+        {
+          "frame": 27,
+          "time_s": 0.45,
+          "material": {
+            "peak": {
+              "triangle": 31,
+              "piece": 2,
+              "vertices": [
+                89,
+                27,
+                28
+              ],
+              "axis": "warp",
+              "signed_strain": 0.23981069743401995,
+              "absolute_strain": 0.23981069743401995
+            },
+            "minimum_signed": -0.128547693970523,
+            "maximum_signed": 0.23981069743401995,
+            "energy_components_J": [
+              0.08553590179533513,
+              0.0471390733465507,
+              0.10558565931920032
+            ],
+            "energy_J": 0.23826063446108614,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.23981069743401995,
+                "absolute_strain": 0.23981069743401995
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.23194511543817753,
+                "absolute_strain": 0.23194511543817753
+              }
+            }
+          },
+          "bending_energy_J": 0.11354159152884923,
+          "elastic_energy_J": 0.3518022259899354,
+          "sewing_energy_J": 9.601689971543411e-05,
+          "seam_gap_m": 1.3652809430292443e-06,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.0010357976179532658,
+              1.3309186360451757,
+              -0.00035954815032083445
+            ],
+            "momentum_kg_m_per_s": [
+              0.0013870592950179456,
+              0.014715780884663205,
+              -0.0032924314757955004
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              0.0024386179125078316,
+              0.00043454205656594296,
+              -0.0003300611627630238
+            ],
+            "kinetic_energy_J": 0.009318721608388241,
+            "rms_speed_m_per_s": 0.34776552734960975,
+            "max_speed_m_per_s": 1.823468999658987
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            {
+              "node": 89,
+              "capsule": 2,
+              "clearance_m": 3.212968086030443e-14,
+              "axial_fraction": 0.4588994328335304
+            },
+            {
+              "node": 27,
+              "capsule": 2,
+              "clearance_m": 1.43383568906863e-14,
+              "axial_fraction": 0.7132800797257434
+            },
+            {
+              "node": 28,
+              "capsule": 2,
+              "clearance_m": 1.9589687411075522e-05,
+              "axial_fraction": 0.7268098684103252
+            }
+          ],
+          "last_frame_drift_m": {
+            "max_m": 0.0185832238610166,
+            "mass_weighted_rms_m": 0.006281943425237073
+          },
+          "interval_nodal_effective_force_max_N": 0.14547503070494305,
+          "interval_mass_rms_acceleration_m_per_s2": 41.687633793174186
+        },
+        {
+          "frame": 60,
+          "time_s": 1.0,
+          "material": {
+            "peak": {
+              "triangle": 186,
+              "piece": 31,
+              "vertices": [
+                55,
+                147,
+                54
+              ],
+              "axis": "warp",
+              "signed_strain": 0.24118490382884605,
+              "absolute_strain": 0.24118490382884605
+            },
+            "minimum_signed": -0.09629471136714984,
+            "maximum_signed": 0.24118490382884605,
+            "energy_components_J": [
+              0.07315486677980126,
+              0.03781394198122316,
+              0.09934574863786434
+            ],
+            "energy_J": 0.21031455739888877,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.2385075381978683,
+                "absolute_strain": 0.2385075381978683
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.24118490382884605,
+                "absolute_strain": 0.24118490382884605
+              }
+            }
+          },
+          "bending_energy_J": 0.1216990945508396,
+          "elastic_energy_J": 0.3320136519497284,
+          "sewing_energy_J": 2.6691863717272717e-05,
+          "seam_gap_m": 6.911103501829521e-07,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.0022873448983509147,
+              1.3357572070944197,
+              0.00012455640816310271
+            ],
+            "momentum_kg_m_per_s": [
+              0.00046672180078727055,
+              0.0004152642137384339,
+              -0.0001640315256143827
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              -3.1069616663532442e-06,
+              6.602919908532604e-05,
+              6.346620660430446e-05
+            ],
+            "kinetic_energy_J": 1.8961163932671315e-05,
+            "rms_speed_m_per_s": 0.015687034712760672,
+            "max_speed_m_per_s": 0.10763181630692728
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            {
+              "node": 55,
+              "capsule": 1,
+              "clearance_m": 8.280555563347329e-06,
+              "axial_fraction": 0.16476725966022396
+            },
+            {
+              "node": 147,
+              "capsule": 0,
+              "clearance_m": 4.48936682891669e-05,
+              "axial_fraction": 1.0
+            },
+            {
+              "node": 54,
+              "capsule": 1,
+              "clearance_m": 8.84369088819878e-08,
+              "axial_fraction": 0.3997625969505466
+            }
+          ],
+          "last_frame_drift_m": {
+            "max_m": 0.0017457468667264233,
+            "mass_weighted_rms_m": 0.0003267155518039456
+          },
+          "interval_nodal_effective_force_max_N": 0.009357035923446671,
+          "interval_mass_rms_acceleration_m_per_s2": 1.340934163104049,
+          "conservative_force_maxima_N": {
+            "membrane": 3.376843045946881,
+            "bending": 0.40619139858297404,
+            "sewing": 69.11103501829521,
+            "combined": 68.83099713224195
+          }
+        },
+        {
+          "frame": 120,
+          "time_s": 2.0,
+          "material": {
+            "peak": {
+              "triangle": 31,
+              "piece": 2,
+              "vertices": [
+                89,
+                27,
+                28
+              ],
+              "axis": "warp",
+              "signed_strain": 0.2878577892936771,
+              "absolute_strain": 0.2878577892936771
+            },
+            "minimum_signed": -0.11511280792658507,
+            "maximum_signed": 0.2878577892936771,
+            "energy_components_J": [
+              0.0786068463202077,
+              0.036159040475778,
+              0.0986202680426316
+            ],
+            "energy_J": 0.2133861548386173,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.2878577892936771,
+                "absolute_strain": 0.2878577892936771
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.24044302969776843,
+                "absolute_strain": 0.24044302969776843
+              }
+            }
+          },
+          "bending_energy_J": 0.12720375598653233,
+          "elastic_energy_J": 0.34058991082514967,
+          "sewing_energy_J": 1.5359298865428844e-05,
+          "seam_gap_m": 5.010088130601825e-07,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.002423768559980154,
+              1.3380777571037812,
+              0.0018958893817217419
+            ],
+            "momentum_kg_m_per_s": [
+              -1.210003990317832e-05,
+              0.0001625088397274692,
+              0.00034984221204346173
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              -0.00010571593454407239,
+              1.1688199503445088e-05,
+              -5.4391879982677855e-06
+            ],
+            "kinetic_energy_J": 5.1073088009296135e-06,
+            "rms_speed_m_per_s": 0.00814149985842441,
+            "max_speed_m_per_s": 0.036151522517421576
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "last_frame_drift_m": {
+            "max_m": 0.0006933948002803755,
+            "mass_weighted_rms_m": 0.00015775009336101088
+          },
+          "interval_nodal_effective_force_max_N": 0.0011950006437856943,
+          "interval_mass_rms_acceleration_m_per_s2": 0.2069702300686245
+        },
+        {
+          "frame": 150,
+          "time_s": 2.5,
+          "material": {
+            "peak": {
+              "triangle": 31,
+              "piece": 2,
+              "vertices": [
+                89,
+                27,
+                28
+              ],
+              "axis": "warp",
+              "signed_strain": 0.30754068587091354,
+              "absolute_strain": 0.30754068587091354
+            },
+            "minimum_signed": -0.1192756978461258,
+            "maximum_signed": 0.30754068587091354,
+            "energy_components_J": [
+              0.08163921979030075,
+              0.03592478011838447,
+              0.09930504166140514
+            ],
+            "energy_J": 0.21686904157009035,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.30754068587091354,
+                "absolute_strain": 0.30754068587091354
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.2400996449250863,
+                "absolute_strain": 0.2400996449250863
+              }
+            }
+          },
+          "bending_energy_J": 0.12826069240304475,
+          "elastic_energy_J": 0.34512973397313507,
+          "sewing_energy_J": 1.4063057575756467e-05,
+          "seam_gap_m": 4.74426838644433e-07,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.002558298699794775,
+              1.3384484826329086,
+              0.002204869023642432
+            ],
+            "momentum_kg_m_per_s": [
+              3.141655297514045e-05,
+              6.899931800810464e-05,
+              -1.835641683790582e-05
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              -9.518884164252054e-06,
+              1.5973664547089257e-05,
+              2.325962395625054e-06
+            ],
+            "kinetic_energy_J": 8.534183910330592e-07,
+            "rms_speed_m_per_s": 0.0033280463020353987,
+            "max_speed_m_per_s": 0.012176980938645313
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "last_frame_drift_m": {
+            "max_m": 0.00014513218692069013,
+            "mass_weighted_rms_m": 4.694035329246255e-05
+          },
+          "interval_nodal_effective_force_max_N": 0.000769603495657919,
+          "interval_mass_rms_acceleration_m_per_s2": 0.14501517492588725
+        },
+        {
+          "frame": 151,
+          "time_s": 2.5166666666666666,
+          "material": {
+            "peak": {
+              "triangle": 31,
+              "piece": 2,
+              "vertices": [
+                89,
+                27,
+                28
+              ],
+              "axis": "warp",
+              "signed_strain": 0.30808823424694953,
+              "absolute_strain": 0.30808823424694953
+            },
+            "minimum_signed": -0.11939835916775121,
+            "maximum_signed": 0.30808823424694953,
+            "energy_components_J": [
+              0.08173369432692128,
+              0.035922190464229634,
+              0.09932954350913047
+            ],
+            "energy_J": 0.2169854283002814,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.30808823424694953,
+                "absolute_strain": 0.30808823424694953
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.24008233677130786,
+                "absolute_strain": 0.24008233677130786
+              }
+            }
+          },
+          "bending_energy_J": 0.12828136794466444,
+          "elastic_energy_J": 0.34526679624494583,
+          "sewing_energy_J": 1.4061984523776651e-05,
+          "seam_gap_m": 4.7440402444175224e-07,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.0025622242804986526,
+              1.338456379362869,
+              0.002198743462145814
+            ],
+            "momentum_kg_m_per_s": [
+              3.990191033294472e-05,
+              7.716716056432583e-05,
+              -8.215315608588766e-05
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              3.501202194181782e-06,
+              1.8502185857273358e-05,
+              5.6074907320032144e-06
+            ],
+            "kinetic_energy_J": 1.5931016365455295e-06,
+            "rms_speed_m_per_s": 0.004547053906824431,
+            "max_speed_m_per_s": 0.018070788046367366
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "last_frame_drift_m": {
+            "max_m": 0.0002635280105670559,
+            "mass_weighted_rms_m": 6.72047932427911e-05
+          },
+          "interval_nodal_effective_force_max_N": 0.0005737850667341375,
+          "interval_mass_rms_acceleration_m_per_s2": 0.10325467942249494
+        },
+        {
+          "frame": 180,
+          "time_s": 3.0,
+          "material": {
+            "peak": {
+              "triangle": 31,
+              "piece": 2,
+              "vertices": [
+                89,
+                27,
+                28
+              ],
+              "axis": "warp",
+              "signed_strain": 0.3216992187720238,
+              "absolute_strain": 0.3216992187720238
+            },
+            "minimum_signed": -0.12255211525814991,
+            "maximum_signed": 0.3216992187720238,
+            "energy_components_J": [
+              0.08396840563237579,
+              0.03593803407535039,
+              0.09993467225987492
+            ],
+            "energy_J": 0.2198411119676011,
+            "per_piece": {
+              "2": {
+                "triangle": 31,
+                "piece": 2,
+                "vertices": [
+                  89,
+                  27,
+                  28
+                ],
+                "axis": "warp",
+                "signed_strain": 0.3216992187720238,
+                "absolute_strain": 0.3216992187720238
+              },
+              "31": {
+                "triangle": 186,
+                "piece": 31,
+                "vertices": [
+                  55,
+                  147,
+                  54
+                ],
+                "axis": "warp",
+                "signed_strain": 0.23985996470843052,
+                "absolute_strain": 0.23985996470843052
+              }
+            }
+          },
+          "bending_energy_J": 0.12912715468593222,
+          "elastic_energy_J": 0.3489682666535333,
+          "sewing_energy_J": 1.3364735223293857e-05,
+          "seam_gap_m": 4.5946317598255657e-07,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.002663892248627542,
+              1.338642444469294,
+              0.0024296993393006527
+            ],
+            "momentum_kg_m_per_s": [
+              3.509794126561489e-05,
+              5.235878317584123e-05,
+              2.8454203205212933e-05
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              -1.5308638441056613e-05,
+              9.609679993053184e-06,
+              3.1529756562782274e-06
+            ],
+            "kinetic_energy_J": 8.008125700325299e-07,
+            "rms_speed_m_per_s": 0.003223842392276891,
+            "max_speed_m_per_s": 0.012429504787865756
+          },
+          "arithmetic_screen": false,
+          "original_quality": false,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            {
+              "node": 89,
+              "capsule": 2,
+              "clearance_m": 2.4225936740634828e-05,
+              "axial_fraction": 0.4187247815340076
+            },
+            {
+              "node": 27,
+              "capsule": 2,
+              "clearance_m": 4.983773810307568e-14,
+              "axial_fraction": 0.6514082610888997
+            },
+            {
+              "node": 28,
+              "capsule": 2,
+              "clearance_m": 5.202520986863184e-06,
+              "axial_fraction": 0.6855350527779316
+            }
+          ],
+          "last_frame_drift_m": {
+            "max_m": 0.00020748551137169294,
+            "mass_weighted_rms_m": 5.503959612830231e-05
+          },
+          "interval_nodal_effective_force_max_N": 0.0002852501062172972,
+          "interval_mass_rms_acceleration_m_per_s2": 0.04047829377673174,
+          "conservative_force_maxima_N": {
+            "membrane": 3.278375002062769,
+            "bending": 0.4542997975798479,
+            "sewing": 45.94631759825565,
+            "combined": 45.89974606878002
+          }
+        }
+      ],
+      "job": {
+        "started_at": "2026-11-14T17:54:14.845683+00:00",
+        "completed_at": "2026-11-14T17:54:34.330459+00:00",
+        "launcher_pid": 70783,
+        "child_pid": 70879,
+        "child_process_group": 70879,
+        "exit_code": 0
+      }
+    },
+    "no-avatar": {
+      "frames": 60,
+      "vertices": 150,
+      "triangles": 228,
+      "stitches": 28,
+      "bends": 308,
+      "material_triangle_angle_range_degrees": [
+        10.017164550866617,
+        114.02376184569077
+      ],
+      "mass_max_difference_kg": 0.0,
+      "first_frame_above_strain_screen": null,
+      "first_frame_assembly_closed": 27,
+      "first_frame_seam_below_5mm": 27,
+      "comparison_max_absolute_errors": {
+        "strain_vs_diagnostics": 2.220446049250313e-16,
+        "strain_vs_report": 2.220446049250313e-16,
+        "membrane_energy_vs_report_J": 9.75781955236954e-18,
+        "bending_energy_vs_report_J": 3.469446951953614e-18,
+        "sewing_energy_vs_report_J": 2.6477712440193384e-16,
+        "seam_vs_diagnostics_m": 0.0,
+        "analytic_penetration_vs_report_m": 0.0
+      },
+      "checkpoints": [
+        {
+          "frame": 0,
+          "time_s": 0.0,
+          "material": {
+            "peak": {
+              "triangle": 16,
+              "piece": 2,
+              "vertices": [
+                14,
+                79,
+                84
+              ],
+              "axis": "weft",
+              "signed_strain": -6.661338147750939e-16,
+              "absolute_strain": 6.661338147750939e-16
+            },
+            "minimum_signed": -6.661338147750939e-16,
+            "maximum_signed": 6.661338147750939e-16,
+            "energy_components_J": [
+              2.288584369830394e-31,
+              6.571138518536155e-30,
+              5.888602324920794e-31
+            ],
+            "energy_J": 7.388857188011273e-30,
+            "per_piece": {
+              "2": {
+                "triangle": 16,
+                "piece": 2,
+                "vertices": [
+                  14,
+                  79,
+                  84
+                ],
+                "axis": "weft",
+                "signed_strain": -6.661338147750939e-16,
+                "absolute_strain": 6.661338147750939e-16
+              },
+              "31": {
+                "triangle": 227,
+                "piece": 31,
+                "vertices": [
+                  91,
+                  66,
+                  67
+                ],
+                "axis": "warp",
+                "signed_strain": -5.551115123125783e-16,
+                "absolute_strain": 5.551115123125783e-16
+              }
+            }
+          },
+          "bending_energy_J": 0.0,
+          "elastic_energy_J": 7.388857188011273e-30,
+          "sewing_energy_J": 0.0,
+          "seam_gap_m": 0.44,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.020000000000000046,
+              1.2910828282828284,
+              2.3744923612285836e-18
+            ],
+            "momentum_kg_m_per_s": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "kinetic_energy_J": 0.0,
+            "rms_speed_m_per_s": 0.0,
+            "max_speed_m_per_s": 0.0
+          },
+          "arithmetic_screen": false,
+          "original_quality": null,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "frame": 24,
+          "time_s": 0.4,
+          "material": {
+            "peak": {
+              "triangle": 123,
+              "piece": 31,
+              "vertices": [
+                148,
+                57,
+                58
+              ],
+              "axis": "warp",
+              "signed_strain": 0.01284626264184019,
+              "absolute_strain": 0.01284626264184019
+            },
+            "minimum_signed": -0.005921094711220154,
+            "maximum_signed": 0.01284626264184019,
+            "energy_components_J": [
+              0.0001597110979010202,
+              0.00013768075784031367,
+              0.00021513286867497008
+            ],
+            "energy_J": 0.000512524724416304,
+            "per_piece": {
+              "2": {
+                "triangle": 68,
+                "piece": 2,
+                "vertices": [
+                  21,
+                  129,
+                  20
+                ],
+                "axis": "warp",
+                "signed_strain": 0.005391948231972199,
+                "absolute_strain": 0.005391948231972199
+              },
+              "31": {
+                "triangle": 123,
+                "piece": 31,
+                "vertices": [
+                  148,
+                  57,
+                  58
+                ],
+                "axis": "warp",
+                "signed_strain": 0.01284626264184019,
+                "absolute_strain": 0.01284626264184019
+              }
+            }
+          },
+          "bending_energy_J": 0.0061828851453427725,
+          "elastic_energy_J": 0.006695409869759077,
+          "sewing_energy_J": 2.35216470004076e-11,
+          "seam_gap_m": 0.040000000385093576,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.02000000000000886,
+              1.2910828282830296,
+              8.6974371027021e-15
+            ],
+            "momentum_kg_m_per_s": [
+              1.7463649975421967e-14,
+              2.040650613671571e-13,
+              -2.7586711127264296e-15
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              -1.0926523025122598e-06,
+              -2.4785901541355608e-06,
+              6.283020560700338e-06
+            ],
+            "kinetic_energy_J": 0.02559323439548943,
+            "rms_speed_m_per_s": 0.5763296303175701,
+            "max_speed_m_per_s": 1.1031901972260543
+          },
+          "arithmetic_screen": false,
+          "original_quality": null,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            null,
+            null,
+            null
+          ],
+          "last_frame_drift_m": {
+            "max_m": 0.018201998502718413,
+            "mass_weighted_rms_m": 0.009459871326592614
+          },
+          "interval_nodal_effective_force_max_N": 0.012528291285793932,
+          "interval_mass_rms_acceleration_m_per_s2": 3.2347895975580627
+        },
+        {
+          "frame": 27,
+          "time_s": 0.45,
+          "material": {
+            "peak": {
+              "triangle": 72,
+              "piece": 2,
+              "vertices": [
+                127,
+                73,
+                126
+              ],
+              "axis": "warp",
+              "signed_strain": 0.01450549149885405,
+              "absolute_strain": 0.01450549149885405
+            },
+            "minimum_signed": -0.01171671144477926,
+            "maximum_signed": 0.01450549149885405,
+            "energy_components_J": [
+              0.0004503957968191054,
+              0.0002657182420827549,
+              0.00040625216740394803
+            ],
+            "energy_J": 0.0011223662063058084,
+            "per_piece": {
+              "2": {
+                "triangle": 72,
+                "piece": 2,
+                "vertices": [
+                  127,
+                  73,
+                  126
+                ],
+                "axis": "warp",
+                "signed_strain": 0.01450549149885405,
+                "absolute_strain": 0.01450549149885405
+              },
+              "31": {
+                "triangle": 141,
+                "piece": 31,
+                "vertices": [
+                  58,
+                  109,
+                  148
+                ],
+                "axis": "warp",
+                "signed_strain": -0.01171671144477926,
+                "absolute_strain": 0.01171671144477926
+              }
+            }
+          },
+          "bending_energy_J": 0.004582893686528599,
+          "elastic_energy_J": 0.005705259892834408,
+          "sewing_energy_J": 1.5442806470438593e-10,
+          "seam_gap_m": 7.814889248684686e-10,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.02000000000001387,
+              1.2910828282830804,
+              8.144879759768628e-15
+            ],
+            "momentum_kg_m_per_s": [
+              8.863197647160533e-15,
+              1.5374588417612685e-13,
+              -1.9489242381729084e-15
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              9.498981798184655e-06,
+              -2.2930802476967254e-06,
+              6.359645425506165e-06
+            ],
+            "kinetic_energy_J": 0.025380489732252685,
+            "rms_speed_m_per_s": 0.5739292514136707,
+            "max_speed_m_per_s": 1.226638160798062
+          },
+          "arithmetic_screen": true,
+          "original_quality": null,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            null,
+            null,
+            null
+          ],
+          "last_frame_drift_m": {
+            "max_m": 0.01999084201177246,
+            "mass_weighted_rms_m": 0.009520680510319054
+          },
+          "interval_nodal_effective_force_max_N": 0.09961005291865821,
+          "interval_mass_rms_acceleration_m_per_s2": 21.03727060845275
+        },
+        {
+          "frame": 60,
+          "time_s": 1.0,
+          "material": {
+            "peak": {
+              "triangle": 114,
+              "piece": 31,
+              "vertices": [
+                34,
+                35,
+                91
+              ],
+              "axis": "warp",
+              "signed_strain": -0.0024257322555789607,
+              "absolute_strain": 0.0024257322555789607
+            },
+            "minimum_signed": -0.0024257322555789607,
+            "maximum_signed": 0.0023748289263267885,
+            "energy_components_J": [
+              1.8460387229116207e-05,
+              1.0405088576083074e-05,
+              2.4444455054606743e-05
+            ],
+            "energy_J": 5.3309930859806026e-05,
+            "per_piece": {
+              "2": {
+                "triangle": 92,
+                "piece": 2,
+                "vertices": [
+                  125,
+                  126,
+                  73
+                ],
+                "axis": "warp",
+                "signed_strain": 0.0023748289263267885,
+                "absolute_strain": 0.0023748289263267885
+              },
+              "31": {
+                "triangle": 114,
+                "piece": 31,
+                "vertices": [
+                  34,
+                  35,
+                  91
+                ],
+                "axis": "warp",
+                "signed_strain": -0.0024257322555789607,
+                "absolute_strain": 0.0024257322555789607
+              }
+            }
+          },
+          "bending_energy_J": 0.00043162369560395325,
+          "elastic_energy_J": 0.0004849336264637593,
+          "sewing_energy_J": 9.892574870406306e-12,
+          "seam_gap_m": 1.811512628289636e-10,
+          "analytic_penetration_m": 0.0,
+          "motion": {
+            "mass_kg": 0.15410377358490568,
+            "center_of_mass_m": [
+              0.02000000000012008,
+              1.291082828283886,
+              -2.7121575764961914e-15
+            ],
+            "momentum_kg_m_per_s": [
+              5.812696240733814e-14,
+              2.7799172052023e-13,
+              -2.717751506909946e-15
+            ],
+            "angular_momentum_about_com_kg_m2_per_s": [
+              1.6380461478183418e-05,
+              -3.852846505959512e-06,
+              5.939967443085993e-06
+            ],
+            "kinetic_energy_J": 0.00012998028705538475,
+            "rms_speed_m_per_s": 0.04107211874514111,
+            "max_speed_m_per_s": 0.1543813599341958
+          },
+          "arithmetic_screen": true,
+          "original_quality": null,
+          "static_cloth_contact": {
+            "max_supported_static_cloth_penetration_m": 0.0,
+            "worst_pair": null,
+            "eligible_vertex_triangle_pairs": 31620
+          },
+          "peak_node_capsule_clearances": [
+            null,
+            null,
+            null
+          ],
+          "last_frame_drift_m": {
+            "max_m": 0.0022245408991764144,
+            "mass_weighted_rms_m": 0.000675745750443307
+          },
+          "interval_nodal_effective_force_max_N": 0.006871027408925553,
+          "interval_mass_rms_acceleration_m_per_s2": 1.3007334305191542,
+          "conservative_force_maxima_N": {
+            "membrane": 0.026143257293272895,
+            "bending": 0.008271250783298462,
+            "sewing": 0.01811512628289636,
+            "combined": 0.026710572601380135
+          }
+        }
+      ],
+      "job": {
+        "started_at": "2026-11-14T17:55:32.645882+00:00",
+        "completed_at": "2026-11-14T17:55:39.080140+00:00",
+        "launcher_pid": 71314,
+        "child_pid": 71336,
+        "child_process_group": 71336,
+        "exit_code": 0
+      }
+    }
+  },
+  "force_vector_max_absolute_errors_N": {
+    "control/0": {
+      "membrane_force_N": 1.262177448353619e-29,
+      "bending_force_N": 0.0,
+      "sewing_force_N": 0.0,
+      "combined_conservative_force_N": 1.262177448353619e-29
+    },
+    "control/30": {
+      "membrane_force_N": 7.771561172376096e-16,
+      "bending_force_N": 1.943639693635646e-12,
+      "sewing_force_N": 7.105427357601002e-15,
+      "combined_conservative_force_N": 1.9437507159381084e-12
+    },
+    "control/45": {
+      "membrane_force_N": 5.134781488891349e-16,
+      "bending_force_N": 1.868977195229604e-12,
+      "sewing_force_N": 4.440892098500626e-16,
+      "combined_conservative_force_N": 1.8690327063808354e-12
+    },
+    "control/60": {
+      "membrane_force_N": 5.551115123125783e-16,
+      "bending_force_N": 2.5619506516250112e-12,
+      "sewing_force_N": 1.1102230246251565e-16,
+      "combined_conservative_force_N": 2.5619506516250112e-12
+    },
+    "control/180": {
+      "membrane_force_N": 4.440892098500626e-16,
+      "bending_force_N": 1.6496248811392888e-12,
+      "sewing_force_N": 4.440892098500626e-16,
+      "combined_conservative_force_N": 1.6498746813198295e-12
+    },
+    "zero-g-balance/60": {
+      "membrane_force_N": 5.551115123125783e-16,
+      "bending_force_N": 2.5619506516250112e-12,
+      "sewing_force_N": 1.1102230246251565e-16,
+      "combined_conservative_force_N": 2.5619506516250112e-12
+    },
+    "zero-g-balance/180": {
+      "membrane_force_N": 6.661338147750939e-16,
+      "bending_force_N": 1.9384494009955233e-12,
+      "sewing_force_N": 3.552713678800501e-15,
+      "combined_conservative_force_N": 1.9385049121467546e-12
+    },
+    "no-avatar/60": {
+      "membrane_force_N": 1.8214596497756474e-17,
+      "bending_force_N": 1.3128387266192476e-14,
+      "sewing_force_N": 1.734723475976807e-18,
+      "combined_conservative_force_N": 1.3129254627930464e-14
+    }
+  },
+  "comparisons": {
+    "zero_g_vs_control_t3_position_drift_m": {
+      "max_m": 0.010353265374953001,
+      "mass_weighted_rms_m": 0.0037722293972425555
+    },
+    "zero_g_t1_to_t3_drift_m": {
+      "max_m": 0.02236873002938586,
+      "mass_weighted_rms_m": 0.008967686458126407
+    },
+    "zero_g_last_half_second_drift_m": {
+      "max_m": 0.0036204802892315577,
+      "mass_weighted_rms_m": 0.0010207689530057004
+    },
+    "zero_g_last_half_second_elastic_energy_change_J": 0.0038385326803982434,
+    "zero_g_last_half_second_peak_strain_frames_151_to_180_range": [
+      0.30808823424694953,
+      0.3216992187720238
+    ],
+    "no_avatar_vs_control_t1_position_drift_m": {
+      "max_m": 0.28746075367988194,
+      "mass_weighted_rms_m": 0.13442736922438822
+    }
+  },
+  "authored_seam_geometry": [
+    {
+      "seam": 60,
+      "source_correspondence": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "side_lengths_m": [
+        0.250860037225874,
+        0.25086003722587397
+      ],
+      "max_arranged_xy_mismatch_m": 3.3306690738754696e-16,
+      "arranged_z_gap_range_m": [
+        0.44,
+        0.44
+      ]
+    },
+    {
+      "seam": 61,
+      "source_correspondence": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "side_lengths_m": [
+        0.18979537800183113,
+        0.18979537800183124
+      ],
+      "max_arranged_xy_mismatch_m": 1.1102230246251565e-16,
+      "arranged_z_gap_range_m": [
+        0.44,
+        0.44
+      ]
+    },
+    {
+      "seam": 62,
+      "source_correspondence": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "side_lengths_m": [
+        0.3506664051948648,
+        0.3506664051948648
+      ],
+      "max_arranged_xy_mismatch_m": 5.551115123125783e-17,
+      "arranged_z_gap_range_m": [
+        0.44,
+        0.44
+      ]
+    },
+    {
+      "seam": 63,
+      "source_correspondence": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "side_lengths_m": [
+        0.14528301886792444,
+        0.1452830188679246
+      ],
+      "max_arranged_xy_mismatch_m": 1.6653345369377348e-16,
+      "arranged_z_gap_range_m": [
+        0.44,
+        0.44
+      ]
+    },
+    {
+      "seam": 64,
+      "source_correspondence": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "side_lengths_m": [
+        0.14528301886792472,
+        0.14528301886792455
+      ],
+      "max_arranged_xy_mismatch_m": 1.6653345369377348e-16,
+      "arranged_z_gap_range_m": [
+        0.44,
+        0.44
+      ]
+    },
+    {
+      "seam": 65,
+      "source_correspondence": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "side_lengths_m": [
+        0.3506664051948648,
+        0.3506664051948648
+      ],
+      "max_arranged_xy_mismatch_m": 5.551115123125783e-17,
+      "arranged_z_gap_range_m": [
+        0.44,
+        0.44
+      ]
+    },
+    {
+      "seam": 66,
+      "source_correspondence": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "side_lengths_m": [
+        0.18979537800183094,
+        0.18979537800183113
+      ],
+      "max_arranged_xy_mismatch_m": 3.885780586188048e-16,
+      "arranged_z_gap_range_m": [
+        0.44,
+        0.44
+      ]
+    },
+    {
+      "seam": 67,
+      "source_correspondence": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "side_lengths_m": [
+        0.250860037225874,
+        0.250860037225874
+      ],
+      "max_arranged_xy_mismatch_m": 1.6653345369377348e-16,
+      "arranged_z_gap_range_m": [
+        0.44,
+        0.44
+      ]
+    }
+  ],
+  "conditional_openings": [
+    {
+      "name": "hem",
+      "source_perimeter_m": 1.369811320754717,
+      "conditional_uniform_extension": -0.16059759925158668
+    },
+    {
+      "name": "neck",
+      "source_perimeter_m": 0.6241236396969392,
+      "conditional_uniform_extension": 0.08725895001333539
+    },
+    {
+      "name": "right_cuff",
+      "source_perimeter_m": 0.3746584536937238,
+      "conditional_uniform_extension": 0.1403895913089046
+    },
+    {
+      "name": "left_cuff",
+      "source_perimeter_m": 0.37465845369372397,
+      "conditional_uniform_extension": 0.14038959130890416
+    }
+  ],
+  "historical": {
+    "source": "e342471b18bc5d636d8e869ba0d374710ea15da3",
+    "array_equality": {
+      "rest_positions_m": false,
+      "uv_m": false,
+      "triangles": false,
+      "piece_ids": false,
+      "masses_kg": false
+    },
+    "same_node_drift": "not valid when topology differs"
+  },
+  "limits": [
+    "Private ignored evidence; not public delivery or reference parity.",
+    "No new simulation or production/default/fixture/threshold changes.",
+    "Static supported contact means analytic point-capsule/ground and excluded vertex-triangle distances only; no full edge-edge or continuous collision proof.",
+    "Conservative force gradients exclude contact/friction reactions and damping; sequential XPBD impulses need not equal endpoint gradients.",
+    "Low velocity, small frame changes and momentum changes do not prove force equilibrium or convergence.",
+    "Conditional perimeter estimates do not prove any material-axis strain lower bound; shear and migration remain possible.",
+    "No-avatar arithmetic result is never an original garment-quality pass."
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "kind": "prospective_native_SIM005_acceptance_plan",
+  "frozen_at": "2026-11-14T18:13:56.413842+00:00",
+  "runtime_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+  "runtime_source_files": 37,
+  "executable_sha256": "95fa1b7cb24b8de1a6b507330c2fe43ece0efe5a14226bb28c39f922fcee28c3",
+  "binary_binding_path": ".local/strain-attribution-final-20261114/binary-binding.json",
+  "binary_binding_sha256": "758cbf42a07ebb9c214da50024d6b20d694c70b300397e2a5b9a1efc12d8efb9",
+  "source_pretest_path": ".local/strain-attribution-final-20261114/source-pretest.json",
+  "source_pretest_sha256": "d996bed57c5ef7776813bdfff6eb9921af55be7af3e5a9e75073a51ebb57be49",
+  "acceptance_contract_commit": "209a8fda72aaca90a08c330427354dd457224a6c",
+  "acceptance_contract_sha256": "71bbea48b09a3f07cc516625e1506ae07a73a79f3db35fcf59564dc44cc23700",
+  "independent_expected_peaks_path": ".local/cloth-balance-review-20261114/expected-peaks-preregistered.json",
+  "independent_expected_peaks_sha256": "5f8ffcfc077d41a39aa3084466f88806c85a09b4d6ed004213ecfc16d76bbc0e",
+  "fixture_path": "fixtures/grain-shirt.weftforge",
+  "fixture_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "disposable_copy_path": ".local/strain-native-20261114/private/original-shirt-disposable.weftforge",
+  "ui_steps": [
+    "Confirm old PID 21067 matches old package and saved revision81/fivepieces/onegroup/rest; native Quit once; do not query quit binding.",
+    "Launch exact frozen standard package; native Open disposable byte-identical fixture; record revision28, two original pieces, eight seams, no groups, 150 vertices and 228 triangles; no authored edits.",
+    "Use existing Assemble (gravity off) batch once: 60 frames, dt1/60,8substeps,32iterations,zeroG,1m/sclosure. Record actual completed stage/diagnostics/peak.",
+    "Save as disposable assembly native snapshot and export OBJ without touching original.",
+    "Use existing Drape batch once:120frames,gravity[0,-9.81,0],same other settings. Record actual completed stage/diagnostics/peak.",
+    "Save as disposable drape native snapshot and export OBJ; retain quality failures and final process binding."
+  ],
+  "expected_stages": {
+    "assembly": {
+      "steps": 60,
+      "peak_percent_label": "24.12%",
+      "pattern": "Candidate back",
+      "pattern_id": 31,
+      "axis": "warp",
+      "signed_percent_label": "+24.12%",
+      "triangle": 186,
+      "vertices": [
+        55,
+        147,
+        54
+      ]
+    },
+    "drape": {
+      "additional_steps": 120,
+      "total_steps": 180,
+      "peak_percent_label": "32.35%",
+      "pattern": "Candidate front",
+      "pattern_id": 2,
+      "axis": "warp",
+      "signed_percent_label": "+32.35%",
+      "triangle": 31,
+      "vertices": [
+        89,
+        27,
+        28
+      ]
+    }
+  },
+  "constraints": [
+    "No thresholds, authoring, material, geometry, solver or contact tuning.",
+    "No parity claim; preserve original quality failures.",
+    "No proprietary reference interaction.",
+    "Native CUA actions only, fresh AX after input; screenshot grounded coordinate input only if AX unavailable; no blind retries.",
+    "Raw private screenshots/source bytes immutable; derive separate publicsafe records with path-only redaction and raw hashes.",
+    "No production/Git/GitHub/CI changes.",
+    "Failed UI tool call is not native acceptance; bounded alternate observation only."
+  ]
+}

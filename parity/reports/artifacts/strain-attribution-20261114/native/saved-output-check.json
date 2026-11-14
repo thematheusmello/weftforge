@@ -1,0 +1,85 @@
+{
+  "kind": "native_saved_output_no_simulator_check",
+  "checked_at": "2026-11-14T18:22:47.544637+00:00",
+  "status": "passed",
+  "checker_sha256": "4476dc35a78632b055d9a4a5fe87282d9d06e7bae3ca5b6fc6ef5445becf3872",
+  "frozen_input_sha256": {
+    "fixture": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+    "oracle": "5f8ffcfc077d41a39aa3084466f88806c85a09b4d6ed004213ecfc16d76bbc0e",
+    "rest_metadata": "0c58d8aa2cb2712f004c020b558e120f7b7fc2357231527e106da45740968e80",
+    "trajectory": "feb4d50b5d40e549b48bc309fb43b8d0968357d340a3946b17898229d579b7cb"
+  },
+  "self_checks": "analytic affine extension and rejection of nonfinite OBJ input passed",
+  "assembly_drape_authored_source_bytes_identical": true,
+  "all_authored_f64_bits_order_revision_ids_unchanged": true,
+  "original_fixture_version": 2,
+  "source_normalization": "v2 input saved as v3; only default sewing_groups=[] is added. Existing f32 color JSON values already match; no color normalization difference was needed. All other authored numbers compare as f64 bits, arrays retain order.",
+  "stages": [
+    {
+      "stage": "assembly",
+      "original_control_frame": 60,
+      "source_version": 3,
+      "source_revision": 28,
+      "source_sha256": "893c0bcb3846cb40dbef16ea907e5d03db07a2725336c2f5bf736b84ea1bce24",
+      "obj_sha256": "b7ae554e6b0c111293ff41fe1dfe7c778e262df51f4f2849b927cdaa936ca43d",
+      "vertices": 150,
+      "triangles": 228,
+      "all_obj_coordinates_and_normals_finite": true,
+      "triangles_and_piece_groups_exact": true,
+      "position_and_uv_tokens_exact_original_fixed_17_decimal_export": true,
+      "maximum_position_difference_m": 6.938893903907228e-18,
+      "maximum_uv_difference_m": 6.938893903907228e-18,
+      "independent_peak": {
+        "triangle": 186,
+        "piece": 31,
+        "vertices": [
+          55,
+          147,
+          54
+        ],
+        "axis": "warp",
+        "signed_strain": 0.24118490382884605,
+        "absolute_strain": 0.24118490382884605
+      },
+      "absolute_strain_error": 0.0,
+      "actual_native_attribution_label": "Candidate back \u00b7 Warp +24.12%",
+      "original_15_percent_strain_limit_passed": false
+    },
+    {
+      "stage": "drape",
+      "original_control_frame": 180,
+      "source_version": 3,
+      "source_revision": 28,
+      "source_sha256": "893c0bcb3846cb40dbef16ea907e5d03db07a2725336c2f5bf736b84ea1bce24",
+      "obj_sha256": "5973cc6a74f2a542d9fb61a5c91400af4283c082f1b60e710aea419df48e4968",
+      "vertices": 150,
+      "triangles": 228,
+      "all_obj_coordinates_and_normals_finite": true,
+      "triangles_and_piece_groups_exact": true,
+      "position_and_uv_tokens_exact_original_fixed_17_decimal_export": true,
+      "maximum_position_difference_m": 6.938893903907228e-18,
+      "maximum_uv_difference_m": 6.938893903907228e-18,
+      "independent_peak": {
+        "triangle": 31,
+        "piece": 2,
+        "vertices": [
+          89,
+          27,
+          28
+        ],
+        "axis": "warp",
+        "signed_strain": 0.32351913672966237,
+        "absolute_strain": 0.32351913672966237
+      },
+      "absolute_strain_error": 0.0,
+      "actual_native_attribution_label": "Candidate front \u00b7 Warp +32.35%",
+      "original_15_percent_strain_limit_passed": false
+    }
+  ],
+  "limits": [
+    "Native .weftforge snapshots contain editable construction, not solver positions or velocities; OBJ is the stage position artifact.",
+    "OBJ fixed 17 decimal export rounds tiny coordinates; token equality proves the expected rendering of the retained original state, not bit-identical parsed OBJ floats.",
+    "Finiteness is checked in retained OBJ; the native inspector has no separate finite-status label.",
+    "Both original strain quality failures remain failures. This verifies diagnostic visibility and retained output, not force balance, fitting acceptance, reference parity or full SIM-005."
+  ]
+}

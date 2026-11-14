@@ -1,0 +1,118 @@
+{
+  "kind": "prospective_independent_SIM005_saved_state_peak_attribution_oracle",
+  "frozen_at": "2026-11-14T18:03:56.884665+00:00",
+  "source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "fixture_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "saved_state_receipt_sha256": "ae1397c3291485a2a55ab2e7c510a041cb8642496f01608b8aeffef20996e025",
+  "independent_checker_sha256": "ef19fef14b25088d951823c11da0b9f8e1733dd8c8137353e66186c0eb3eabdb",
+  "derivation": "Standalone stdlib material UV inverse and grain rotation over original saved positions; no production analyzer imported and no new executable output observed. Strict greater-than magnitude, original triangle order, warp before weft.",
+  "rows": [
+    {
+      "case": "control",
+      "frame": 0,
+      "triangle": 16,
+      "piece": 2,
+      "vertices": [
+        14,
+        79,
+        84
+      ],
+      "axis": "weft",
+      "signed_strain": -6.661338147750939e-16,
+      "absolute_strain": 6.661338147750939e-16,
+      "trajectory_sha256": "feb4d50b5d40e549b48bc309fb43b8d0968357d340a3946b17898229d579b7cb"
+    },
+    {
+      "case": "control",
+      "frame": 24,
+      "triangle": 31,
+      "piece": 2,
+      "vertices": [
+        89,
+        27,
+        28
+      ],
+      "axis": "warp",
+      "signed_strain": 0.1637577026526289,
+      "absolute_strain": 0.1637577026526289,
+      "trajectory_sha256": "feb4d50b5d40e549b48bc309fb43b8d0968357d340a3946b17898229d579b7cb"
+    },
+    {
+      "case": "control",
+      "frame": 60,
+      "triangle": 186,
+      "piece": 31,
+      "vertices": [
+        55,
+        147,
+        54
+      ],
+      "axis": "warp",
+      "signed_strain": 0.24118490382884605,
+      "absolute_strain": 0.24118490382884605,
+      "trajectory_sha256": "feb4d50b5d40e549b48bc309fb43b8d0968357d340a3946b17898229d579b7cb"
+    },
+    {
+      "case": "control",
+      "frame": 180,
+      "triangle": 31,
+      "piece": 2,
+      "vertices": [
+        89,
+        27,
+        28
+      ],
+      "axis": "warp",
+      "signed_strain": 0.32351913672966237,
+      "absolute_strain": 0.32351913672966237,
+      "trajectory_sha256": "feb4d50b5d40e549b48bc309fb43b8d0968357d340a3946b17898229d579b7cb"
+    },
+    {
+      "case": "zero-g-balance",
+      "frame": 150,
+      "triangle": 31,
+      "piece": 2,
+      "vertices": [
+        89,
+        27,
+        28
+      ],
+      "axis": "warp",
+      "signed_strain": 0.30754068587091354,
+      "absolute_strain": 0.30754068587091354,
+      "trajectory_sha256": "6a2657faa89b31acddbb7a5d6ce4597a7710b33c3d6e96fa4afc5e30eeec37c5"
+    },
+    {
+      "case": "zero-g-balance",
+      "frame": 180,
+      "triangle": 31,
+      "piece": 2,
+      "vertices": [
+        89,
+        27,
+        28
+      ],
+      "axis": "warp",
+      "signed_strain": 0.3216992187720238,
+      "absolute_strain": 0.3216992187720238,
+      "trajectory_sha256": "6a2657faa89b31acddbb7a5d6ce4597a7710b33c3d6e96fa4afc5e30eeec37c5"
+    },
+    {
+      "case": "no-avatar",
+      "frame": 60,
+      "triangle": 114,
+      "piece": 31,
+      "vertices": [
+        34,
+        35,
+        91
+      ],
+      "axis": "warp",
+      "signed_strain": -0.0024257322555789607,
+      "absolute_strain": 0.0024257322555789607,
+      "trajectory_sha256": "03ee65bd1560a9312735223c13cb9f59d2e193ff67cb5206f21068d9aa0473d8"
+    }
+  ],
+  "initial_frame_limit": "Original frame0 is mathematically strain-free; its 1e-15 residual peak location depends on arithmetic order. Freeze the calculated tuple, but a different frame0 residual location within roundoff is not a physical attribution contradiction.",
+  "later_comparison": "Physical nonzero-frame tuple comparisons must preserve original source topology. Current-source peak visibility alone cannot cure quality or prove parity."
+}
