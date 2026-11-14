@@ -14,11 +14,13 @@ fn main() {
     }
 }
 fn run() -> Result<()> {
-    std::env::set_current_dir(Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap())?;
+    let current = std::env::current_dir()?;
+    std::env::set_current_dir(workspace_root(&current)?)?;
     match std::env::args().nth(1).as_deref() {
         Some("progress") => call("python3", &["scripts/progress.py"]),
         Some("verify") => {
             call("python3", &["scripts/progress.py", "--check"])?;
+            call("python3", &["spec/inventory/verify_implementation_map.py"])?;
             call(
                 "python3",
                 &[
@@ -27,6 +29,18 @@ fn run() -> Result<()> {
                     "discover",
                     "-s",
                     "scripts",
+                    "-p",
+                    "test_*.py",
+                ],
+            )?;
+            call(
+                "python3",
+                &[
+                    "-m",
+                    "unittest",
+                    "discover",
+                    "-s",
+                    "spec/evaluators",
                     "-p",
                     "test_*.py",
                 ],
@@ -134,5 +148,53 @@ fn run() -> Result<()> {
             println!("cargo xtask progress | verify | scenario | benchmark | package");
             Ok(())
         }
+    }
+}
+
+fn workspace_root(start: &Path) -> Result<&Path> {
+    start
+        .ancestors()
+        .find(|root| {
+            root.join("Cargo.toml").is_file()
+                && root.join("parity/features.yaml").is_file()
+                && root.join("apps/weftforge/Cargo.toml").is_file()
+        })
+        .ok_or_else(|| "Run xtask from within a WeftForge checkout".into())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn selects_the_nearest_runtime_checkout_and_rejects_outside_directories() {
+        let temp = std::env::temp_dir().join(format!(
+            "weftforge-xtask-root-{}-{}",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        let outer = temp.join("outer");
+        let inner = outer.join(".local/worktrees/inner");
+        for root in [&outer, &inner] {
+            fs::create_dir_all(root.join("parity")).unwrap();
+            fs::create_dir_all(root.join("apps/weftforge/src")).unwrap();
+            for marker in [
+                "Cargo.toml",
+                "parity/features.yaml",
+                "apps/weftforge/Cargo.toml",
+            ] {
+                fs::write(root.join(marker), b"test checkout marker").unwrap();
+            }
+        }
+        assert_eq!(workspace_root(&outer).unwrap(), outer);
+        assert_eq!(
+            workspace_root(&inner.join("apps/weftforge/src")).unwrap(),
+            inner
+        );
+        assert!(workspace_root(&temp).is_err());
+        fs::remove_dir_all(temp).unwrap();
     }
 }

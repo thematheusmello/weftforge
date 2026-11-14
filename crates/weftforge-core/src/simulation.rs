@@ -3,8 +3,26 @@ use crate::{Mesh, Project, Result};
 use weftforge_sim::{Cloth, ClothInput, Collider, Material, Stitch, WeightedPoint};
 
 pub fn create_cloth(project: &Project, mesh: &Mesh) -> Result<Cloth> {
+    create_cloth_cancellable(project, mesh, || false)
+}
+
+/// Prepares a complete solver snapshot, preserving caller-owned state on cancellation.
+pub fn create_cloth_cancellable(
+    project: &Project,
+    mesh: &Mesh,
+    cancelled: impl Fn() -> bool,
+) -> Result<Cloth> {
+    let check = || {
+        crate::ensure(
+            !cancelled(),
+            "Simulation initialization cancelled; previous state retained",
+        )
+    };
+    check()?;
     project.validate()?;
+    check()?;
     mesh.validate()?;
+    check()?;
     crate::ensure(
         mesh.doc_revision == project.revision,
         "Rest mesh belongs to an obsolete document revision",
@@ -12,7 +30,11 @@ pub fn create_cloth(project: &Project, mesh: &Mesh) -> Result<Cloth> {
     let triangle_materials = mesh
         .triangles
         .iter()
-        .map(|triangle| {
+        .enumerate()
+        .map(|(i, triangle)| {
+            if i % 256 == 0 {
+                check()?;
+            }
             let piece = project
                 .piece(mesh.piece_ids[triangle[0]])
                 .ok_or_else(|| crate::Error("Rest mesh references an unknown piece".into()))?;
@@ -39,33 +61,42 @@ pub fn create_cloth(project: &Project, mesh: &Mesh) -> Result<Cloth> {
     let stitches = mesh
         .stitches
         .iter()
-        .map(|stitch| Stitch {
-            a: weighted(&stitch.a),
-            b: weighted(&stitch.b),
-            compliance: 1e-8,
+        .enumerate()
+        .map(|(i, stitch)| {
+            if i % 256 == 0 {
+                check()?;
+            }
+            Ok(Stitch {
+                a: weighted(&stitch.a),
+                b: weighted(&stitch.b),
+                compliance: 1e-8,
+            })
         })
-        .collect();
+        .collect::<Result<_>>()?;
     let mut colliders = vec![Collider::Ground { height: 0.0 }];
-    colliders.extend(
-        project
-            .mannequin
-            .capsules
-            .iter()
-            .map(|capsule| Collider::Capsule {
-                a: capsule.a,
-                b: capsule.b,
-                radius: capsule.radius,
-            }),
-    );
-    Cloth::new(ClothInput {
-        positions: mesh.positions.clone(),
-        triangles: mesh.triangles.clone(),
-        material_uv: mesh.uv.clone(),
-        triangle_materials,
-        stitches,
-        pins: vec![],
-        colliders,
-    })
+    for (i, capsule) in project.mannequin.capsules.iter().enumerate() {
+        if i % 256 == 0 {
+            check()?;
+        }
+        colliders.push(Collider::Capsule {
+            a: capsule.a,
+            b: capsule.b,
+            radius: capsule.radius,
+        });
+    }
+    check()?;
+    Cloth::new_cancellable(
+        ClothInput {
+            positions: mesh.positions.clone(),
+            triangles: mesh.triangles.clone(),
+            material_uv: mesh.uv.clone(),
+            triangle_materials,
+            stitches,
+            pins: vec![],
+            colliders,
+        },
+        cancelled,
+    )
     .map_err(|error| crate::Error(error.to_string()))
 }
 
@@ -91,5 +122,60 @@ mod tests {
         mesh.doc_revision -= 1;
         mesh.piece_ids.fill(u64::MAX);
         assert!(create_cloth(&editor.project, &mesh).is_err());
+    }
+
+    #[test]
+    fn cancellable_adapter_reaches_initial_contacts_and_retains_inputs() {
+        let mut editor = Editor::default();
+        editor
+            .execute(Command::AddRectangle {
+                name: "Panel".into(),
+                origin: [0., 1.],
+                width: 0.2,
+                height: 0.2,
+            })
+            .unwrap();
+        let mesh = editor.project.mesh().unwrap();
+        let before = editor.project.clone();
+        let original_mesh = mesh.clone();
+        let ordinary = create_cloth(&editor.project, &mesh).unwrap();
+        let polls = std::cell::Cell::new(0);
+        let complete = create_cloth_cancellable(&editor.project, &mesh, || {
+            polls.set(polls.get() + 1);
+            false
+        })
+        .unwrap();
+        assert_eq!(complete.positions(), ordinary.positions());
+        assert_eq!(complete.masses(), ordinary.masses());
+        assert_eq!(
+            complete.diagnostics().initial_intersections,
+            ordinary.diagnostics().initial_intersections
+        );
+        assert!(polls.get() > 2);
+        // The last contact poll precedes the constructor's final publication check.
+        let cancel_at = polls.get() - 1;
+        let calls = std::cell::Cell::new(0);
+        let error = create_cloth_cancellable(&editor.project, &mesh, || {
+            calls.set(calls.get() + 1);
+            assert!(
+                calls.get() <= cancel_at,
+                "work continued after cancellation"
+            );
+            calls.get() == cancel_at
+        })
+        .unwrap_err();
+        assert!(error.to_string().contains("cancelled"));
+        assert_eq!(calls.get(), cancel_at);
+        assert_eq!(editor.project, before);
+        assert_eq!(mesh, original_mesh);
+        assert_eq!(ordinary.simulation_time(), 0.);
+        let mut invalid = mesh;
+        invalid.positions[0][0] = f64::NAN;
+        assert!(
+            create_cloth_cancellable(&editor.project, &invalid, || false)
+                .unwrap_err()
+                .to_string()
+                .contains("non-finite")
+        );
     }
 }

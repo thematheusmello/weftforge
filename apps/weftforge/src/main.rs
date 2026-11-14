@@ -4,12 +4,14 @@ use std::{
     path::{Path, PathBuf},
     sync::{
         Arc,
-        atomic::{AtomicBool, Ordering},
+        atomic::{AtomicBool, AtomicU64, Ordering},
         mpsc,
     },
     time::{Duration, Instant, SystemTime, UNIX_EPOCH},
 };
-use weftforge_core::{Command, CurveInterval, Editor, Id, Material, Mesh, Placement, Project};
+use weftforge_core::{
+    Command, Curve, CurveInterval, Editor, Id, Material, Mesh, Placement, Project,
+};
 use weftforge_sim::{Cloth, StepSettings};
 
 #[derive(Clone, Copy, PartialEq)]
@@ -104,6 +106,7 @@ struct AutosaveJob {
 struct InspectorDraft {
     revision: u64,
     selected: Option<Id>,
+    curve: Option<Curve>,
     dimensions: Option<[f64; 2]>,
     placement: Option<Placement>,
     grain_angle: Option<f64>,
@@ -112,11 +115,12 @@ struct InspectorDraft {
     color_pending: bool,
 }
 impl InspectorDraft {
-    fn new(project: &Project, selected: Option<Id>) -> Self {
+    fn new(project: &Project, selected: Option<Id>, selected_curve: Option<Id>) -> Self {
         let piece = selected.and_then(|id| project.piece(id));
         Self {
             revision: project.revision,
             selected,
+            curve: selected_curve.and_then(|id| project.curve(id)).cloned(),
             dimensions: piece
                 .and_then(|piece| project.piece_bounds(piece.id).ok())
                 .map(|[min, max]| std::array::from_fn(|axis| max[axis] - min[axis])),
@@ -130,8 +134,20 @@ impl InspectorDraft {
         }
     }
     fn commands(&self, project: &Project) -> Vec<Command> {
-        let original = Self::new(project, self.selected);
+        let original = Self::new(
+            project,
+            self.selected,
+            self.curve.as_ref().map(|curve| curve.id),
+        );
         let mut commands = Vec::new();
+        if self.curve != original.curve
+            && let Some(curve) = &self.curve
+        {
+            commands.push(Command::SetCurveControls {
+                curve: curve.id,
+                controls: curve.controls,
+            });
+        }
         if let Some(piece) = self.selected {
             if self.dimensions != original.dimensions
                 && let Some([width, height]) = self.dimensions
@@ -179,6 +195,8 @@ struct Studio {
     draft: Option<InspectorDraft>,
     playing: bool,
     selected: Option<Id>,
+    selected_curve: Option<Id>,
+    split_t: f64,
     tool: Tool,
     polygon: Vec<[f64; 2]>,
     drag_start: Option<[f64; 2]>,
@@ -205,6 +223,7 @@ struct Studio {
     show_recovery: bool,
     recovery_files: Vec<PathBuf>,
     dirty: bool,
+    discard_on_exit: bool,
     search: bool,
     query: String,
 }
@@ -239,6 +258,8 @@ impl Studio {
             draft: None,
             playing: false,
             selected: None,
+            selected_curve: None,
+            split_t: 0.5,
             tool: Tool::Select,
             polygon: vec![],
             drag_start: None,
@@ -265,6 +286,7 @@ impl Studio {
             show_recovery: false,
             recovery_files: Vec::new(),
             dirty: false,
+            discard_on_exit: false,
             search: false,
             query: String::new(),
         };
@@ -301,8 +323,17 @@ impl Studio {
         commands.is_empty() || self.apply_command(Command::Transaction(commands))
     }
     fn select(&mut self, selected: Option<Id>) {
-        if self.selected != selected && self.commit_draft() {
+        if (self.selected != selected || self.selected_curve.is_some()) && self.commit_draft() {
             self.selected = selected;
+            self.selected_curve = None;
+        }
+    }
+    fn select_curve(&mut self, selected: Option<(Id, Id)>) {
+        let piece = selected.map(|(piece, _)| piece);
+        let curve = selected.map(|(_, curve)| curve);
+        if (self.selected != piece || self.selected_curve != curve) && self.commit_draft() {
+            self.selected = piece;
+            self.selected_curve = curve;
         }
     }
     fn cancel(&mut self) {
@@ -338,6 +369,14 @@ impl Studio {
             .is_some_and(|id| self.editor.project.piece(id).is_none())
         {
             self.selected = None;
+        }
+        if self.selected_curve.is_some_and(|curve| {
+            !self
+                .selected
+                .and_then(|id| self.editor.project.piece(id))
+                .is_some_and(|piece| piece.boundary.contains(&curve))
+        }) {
+            self.selected_curve = None;
         }
         if self
             .seam_start
@@ -399,8 +438,12 @@ impl Studio {
         let mut job = Job::spawn(ctx, project.revision, JobKind::Simulation, move |cancel| {
             let mut state = match cloth {
                 Some(state) => (*state).clone(),
-                None => weftforge_core::simulation::create_cloth(&project, &mesh)
-                    .map_err(|error| error.to_string())?,
+                None => {
+                    weftforge_core::simulation::create_cloth_cancellable(&project, &mesh, || {
+                        cancel.load(Ordering::Relaxed)
+                    })
+                    .map_err(|error| error.to_string())?
+                }
             };
             check_cancelled(cancel)?;
             for _ in 0..batch.steps {
@@ -636,11 +679,7 @@ impl Studio {
             return;
         }
         self.autosave = Instant::now();
-        let path = self
-            .path
-            .as_ref()
-            .map(|path| append_suffix(path, ".autosave"))
-            .or_else(|| self.session_autosave.clone());
+        let path = self.autosave_path();
         let Some(path) = path else {
             self.message="Autosave unavailable: the operating system data directory is not configured. Save the project explicitly.".into();
             return;
@@ -649,19 +688,60 @@ impl Studio {
         let ctx = ctx.clone();
         let (sender, receiver) = mpsc::channel();
         std::thread::spawn(move || {
-            let result = (|| {
-                if let Some(parent) = path
-                    .parent()
-                    .filter(|parent| !parent.as_os_str().is_empty())
-                {
-                    fs::create_dir_all(parent).map_err(|error| error.to_string())?;
-                }
-                project.save(&path).map_err(|error| error.to_string())
-            })();
-            let _ = sender.send(result);
+            let _ = sender.send(write_autosave(&project, &path));
             ctx.request_repaint();
         });
         self.autosave_job = Some(AutosaveJob { receiver });
+    }
+    fn autosave_path(&self) -> Option<PathBuf> {
+        self.path
+            .as_ref()
+            .map(|path| append_suffix(path, ".autosave"))
+            .or_else(|| self.session_autosave.clone())
+    }
+    fn retain_on_exit(&mut self) -> Result<Option<PathBuf>, String> {
+        self.cancel();
+        if !self.discard_on_exit && !self.commit_draft() {
+            eprintln!(
+                "Pending edit rejected before shutdown recovery: {}",
+                self.message
+            );
+        }
+        if let Some(job) = self.autosave_job.take() {
+            // Finish the older write before it can replace the final recovery snapshot.
+            let _ = job.receiver.recv();
+        }
+        if self.discard_on_exit || !self.dirty {
+            return Ok(None);
+        }
+        let fallback = self
+            .session_autosave
+            .as_ref()
+            .and_then(|path| path.parent())
+            .map(|dir| {
+                static NEXT_EXIT: AtomicU64 = AtomicU64::new(0);
+                dir.join(format!(
+                    "Exit-{}-{}-{}.weftforge.autosave",
+                    std::process::id(),
+                    SystemTime::now()
+                        .duration_since(UNIX_EPOCH)
+                        .unwrap_or_default()
+                        .as_nanos(),
+                    NEXT_EXIT.fetch_add(1, Ordering::Relaxed)
+                ))
+            });
+        let mut errors = Vec::new();
+        for path in self.autosave_path().into_iter().chain(fallback) {
+            match write_autosave(&self.editor.project, &path) {
+                Ok(()) => return Ok(Some(path)),
+                Err(error) => errors.push(format!("{}: {error}", path.display())),
+            }
+        }
+        if errors.is_empty() {
+            Err("The operating system recovery directory is unavailable.".into())
+        } else {
+            Err(errors.join("\n"))
+        }
     }
     fn poll_autosave(&mut self) {
         let result = self
@@ -809,6 +889,16 @@ impl Studio {
             for piece in self.editor.project.pieces.clone() {
                 if ui.selectable_label(self.selected==Some(piece.id),&piece.name).clicked() { self.select(Some(piece.id)); }
             }
+            if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
+                ui.label("Boundary curve · select here or in 2D");
+                egui::ComboBox::from_id_salt("boundary-curve")
+                    .selected_text(self.selected_curve.map_or("Choose boundary".into(),|id|format!("Curve #{id}")))
+                    .show_ui(ui,|ui| {
+                        for (index,id) in piece.boundary.iter().enumerate() {
+                            if ui.selectable_label(self.selected_curve==Some(*id),format!("Boundary {} · curve #{id}",index+1)).clicked() { self.select_curve(Some((piece.id,*id))); }
+                        }
+                    });
+            }
             ui.separator(); ui.label("Pattern name"); ui.text_edit_singleline(&mut self.name);
             ui.horizontal(|ui| { ui.label("W / H m"); for value in &mut self.size { ui.add(egui::DragValue::new(value).speed(0.01).range(0.01..=5.0)); } });
             ui.horizontal(|ui| { ui.label("X / Y m"); for value in &mut self.coordinate { ui.add(egui::DragValue::new(value).speed(0.01)); } });
@@ -818,10 +908,33 @@ impl Studio {
             }
             if ui.button("Add polygon point").clicked() { self.polygon.push(self.coordinate); self.tool=Tool::Polygon; }
             if ui.button(format!("Close pattern ({} points)",self.polygon.len())).clicked() { self.finish_polygon(); }
-            let mut draft=self.draft.take().filter(|draft|draft.revision==self.editor.project.revision && draft.selected==self.selected)
-                .unwrap_or_else(||InspectorDraft::new(&self.editor.project,self.selected));
+            let mut draft=self.draft.take().filter(|draft|draft.revision==self.editor.project.revision && draft.selected==self.selected && draft.curve.as_ref().map(|curve|curve.id)==self.selected_curve)
+                .unwrap_or_else(||InspectorDraft::new(&self.editor.project,self.selected,self.selected_curve));
+            let mut split=None;
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
                 ui.separator(); ui.strong(&piece.name);
+                if let Some(curve)=&mut draft.curve {
+                    ui.strong(format!("Selected curve #{}",curve.id));
+                    let start=self.editor.project.point(curve.start).expect("validated curve start").position;
+                    let end=self.editor.project.point(curve.end).expect("validated curve end").position;
+                    ui.label(format!("P0 #{} · {:.6} / {:.6} m",curve.start,start[0],start[1]));
+                    ui.label(format!("P3 #{} · {:.6} / {:.6} m",curve.end,end[0],end[1]));
+                    let mut cubic=curve.controls.is_some();
+                    if ui.checkbox(&mut cubic,"Cubic Bezier").changed() {
+                        curve.controls=cubic.then(||[1.0/3.0,2.0/3.0].map(|t|std::array::from_fn(|axis|start[axis]+(end[axis]-start[axis])*t)));
+                        commit=true;
+                    }
+                    if let Some(controls)=&mut curve.controls {
+                        for (index,point) in controls.iter_mut().enumerate() {
+                            ui.label(format!("P{} control X / Y m",index+1));
+                            ui.horizontal(|ui| { for value in point { commit|=numeric_commit(&ui.add(egui::DragValue::new(value).speed(0.001))); } });
+                        }
+                    }
+                    ui.horizontal(|ui| { ui.label("Split parameter t"); ui.add(egui::DragValue::new(&mut self.split_t).speed(0.01)); });
+                    ui.small("Interior curve parameter, not arc length. Sewing is partitioned without changing point pairs.");
+                    if ui.button("Split selected curve").clicked() { split=Some(curve.id); }
+                    ui.separator();
+                }
                 if let Some(dimensions)=&mut draft.dimensions {
                     ui.horizontal(|ui| { ui.label("Size m"); for value in dimensions { commit|=numeric_commit(&ui.add(egui::DragValue::new(value).speed(0.005).range(0.01..=5.0).clamp_existing_to_range(false))); } });
                 }
@@ -861,6 +974,7 @@ impl Studio {
             if let Some(cloth)=&self.cloth { let diagnostics=cloth.diagnostics(); ui.label(format!("Time {:.3} s\nAssembly remaining {:.4} m\nStretch error {:.3}\nSeam gap {:.4} m\nContact error {:.4} m\nInitial intersections {}",cloth.simulation_time(),diagnostics.seam_assembly_remaining,diagnostics.max_stretch_error,diagnostics.max_seam_error,diagnostics.max_contact_error,diagnostics.initial_intersections)); }
             self.draft=Some(draft);
             if let Some(seam)=remove { self.execute(Command::RemoveSeam { seam }); }
+            if let Some(curve)=split { self.execute(Command::SplitCurve { curve,t:self.split_t }); }
         });
         if commit {
             self.commit_draft();
@@ -939,8 +1053,35 @@ impl Studio {
                     }
                     painter.add(egui::Shape::line(
                         samples,
-                        Stroke::new(if selected { 2.5 } else { 1.5 }, color),
+                        if self.selected_curve == Some(*id) {
+                            Stroke::new(4., Color32::GOLD)
+                        } else {
+                            Stroke::new(if selected { 2.5 } else { 1.5 }, color)
+                        },
                     ));
+                    if self.selected_curve == Some(*id) {
+                        if let Some([a, b]) = curve.controls {
+                            for (point, control) in [(curve.start, a), (curve.end, b)] {
+                                if let Some(point) = doc.point(point) {
+                                    painter.line_segment(
+                                        [
+                                            self.to_screen(point.position, r),
+                                            self.to_screen(control, r),
+                                        ],
+                                        Stroke::new(1., Color32::GOLD),
+                                    );
+                                }
+                                painter.circle_stroke(
+                                    self.to_screen(control, r),
+                                    4.,
+                                    Stroke::new(1.5, Color32::GOLD),
+                                );
+                            }
+                        }
+                        if let Ok(point) = curve.evaluate(&doc, self.split_t) {
+                            painter.circle_filled(self.to_screen(point, r), 4., Color32::WHITE);
+                        }
+                    }
                     if let Some(point) = doc.point(curve.start) {
                         painter.circle_filled(self.to_screen(point.position, r), 3.5, color);
                     }
@@ -1043,7 +1184,7 @@ impl Studio {
         }
         if response.clicked() {
             match self.tool {
-                Tool::Select => self.select(nearest.map(|p| p.0)),
+                Tool::Select => self.select_curve(nearest),
                 Tool::Polygon => {
                     if let Some(p) = pointer {
                         self.polygon.push(self.to_pattern(p, r));
@@ -1198,6 +1339,17 @@ impl Studio {
     }
 }
 impl eframe::App for Studio {
+    fn on_exit(&mut self) {
+        // macOS application Quit bypasses the cancellable viewport close request.
+        if let Err(error) = self.retain_on_exit() {
+            eprintln!("Shutdown recovery failed: {error}");
+            rfd::MessageDialog::new()
+                .set_title("Unsaved recovery failed")
+                .set_description(format!("The application is exiting, but the latest edits could not be retained.\n{error}"))
+                .set_level(rfd::MessageLevel::Error)
+                .show();
+        }
+    }
     fn ui(&mut self, ui: &mut egui::Ui, _: &mut eframe::Frame) {
         let ctx = ui.ctx().clone();
         self.poll();
@@ -1299,6 +1451,8 @@ impl eframe::App for Studio {
                 if self.dirty {
                     ui.colored_label(Color32::GOLD, "Unsaved");
                     if ui.small_button("Discard and close").clicked() {
+                        self.discard_on_exit = true;
+                        self.draft = None;
                         self.dirty = false;
                         ctx.send_viewport_cmd(egui::ViewportCommand::Close);
                     }
@@ -1394,6 +1548,15 @@ fn append_suffix(path: &Path, suffix: &str) -> PathBuf {
     let mut name = path.file_name().unwrap_or_default().to_os_string();
     name.push(suffix);
     path.with_file_name(name)
+}
+fn write_autosave(project: &Project, path: &Path) -> Result<(), String> {
+    if let Some(parent) = path
+        .parent()
+        .filter(|parent| !parent.as_os_str().is_empty())
+    {
+        fs::create_dir_all(parent).map_err(|error| error.to_string())?;
+    }
+    project.save(path).map_err(|error| error.to_string())
 }
 fn recovery_directory() -> Option<PathBuf> {
     let base = if cfg!(target_os = "windows") {
@@ -1513,7 +1676,7 @@ mod tests {
             .unwrap();
         let piece = app.editor.project.pieces[0].id;
         app.selected = Some(piece);
-        let mut draft = InspectorDraft::new(&app.editor.project, app.selected);
+        let mut draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
         for width in [0.41, 0.45, 0.5] {
             draft.dimensions.as_mut().unwrap()[0] = width;
         }
@@ -1584,10 +1747,9 @@ mod tests {
         let ctx = egui::Context::default();
         let _ = ctx.run_ui(egui::RawInput::default(), |ui| app.inspector(ui));
         assert_eq!(app.editor.project, before);
-        let mut draft = app
-            .draft
-            .take()
-            .unwrap_or_else(|| InspectorDraft::new(&app.editor.project, app.selected));
+        let mut draft = app.draft.take().unwrap_or_else(|| {
+            InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve)
+        });
         draft.material.as_mut().unwrap().color = [0.7, 0.3, 0.2];
         app.draft = Some(draft);
         assert!(app.commit_draft());
@@ -1595,6 +1757,75 @@ mod tests {
         expected.revision += 1;
         expected.materials[0].color = [0.7, 0.3, 0.2];
         assert_eq!(app.editor.project, expected);
+    }
+
+    #[test]
+    fn selected_curve_controls_and_split_use_fresh_drafts_atomic_history_and_invalidation() {
+        let mut app = Studio::empty();
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Curved panel".into(),
+                origin: [0., 0.],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+        let piece = app.editor.project.pieces[0].id;
+        let curve = app.editor.project.pieces[0].boundary[2];
+        app.select_curve(Some((piece, curve)));
+        let before = app.editor.project.clone();
+        let ctx = egui::Context::default();
+        let _ = ctx.run_ui(egui::RawInput::default(), |ui| app.inspector(ui));
+        assert_eq!(app.editor.project, before);
+        let mut draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
+        for height in [0.65, 0.7, 0.8] {
+            draft.curve.as_mut().unwrap().controls = Some([[0.3, height], [0.1, height]]);
+        }
+        app.draft = Some(draft);
+        assert!(app.commit_draft());
+        assert_eq!(app.editor.project.revision, before.revision + 1);
+        assert!(app.needs_mesh);
+        assert_eq!(app.selected_curve, Some(curve));
+        assert_eq!(
+            app.editor.project.curve(curve).unwrap().controls,
+            Some([[0.3, 0.8], [0.1, 0.8]])
+        );
+        let authored = app.editor.project.clone();
+        app.split_t = 0.3;
+        app.execute(Command::SplitCurve {
+            curve,
+            t: app.split_t,
+        });
+        assert_eq!(app.editor.project.revision, authored.revision + 1);
+        assert_eq!(app.editor.project.pieces[0].boundary.len(), 5);
+        assert_eq!(app.selected_curve, Some(curve));
+        assert!(app.editor.undo());
+        app.rebuild();
+        assert_eq!(app.editor.project.curves, authored.curves);
+        assert!(app.editor.undo());
+        app.rebuild();
+        assert_eq!(app.editor.project.curves, before.curves);
+        assert!(app.editor.redo());
+        app.rebuild();
+        let mut draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
+        draft.curve.as_mut().unwrap().controls = Some([[f64::NAN, 0.8], [0.1, 0.8]]);
+        app.draft = Some(draft);
+        let before_invalid = app.editor.project.clone();
+        assert!(!app.commit_draft());
+        assert_eq!(app.editor.project, before_invalid);
+        assert!(app.editor.can_redo());
+        assert!(app.message.contains("finite"));
+        let mut draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
+        draft.curve.as_mut().unwrap().controls = None;
+        app.draft = Some(draft);
+        assert!(app.commit_draft());
+        assert_eq!(app.editor.project.curve(curve).unwrap().controls, None);
+        let next = app.editor.project.pieces[0].boundary[0];
+        app.select_curve(Some((piece, next)));
+        let draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
+        assert_eq!(draft.curve.unwrap().id, next);
+        app.select(Some(piece));
+        assert_eq!(app.selected_curve, None);
     }
 
     #[test]
@@ -1750,6 +1981,185 @@ mod tests {
         recovered.load_document(corrupt, true);
         assert_eq!(recovered.editor.project, saved);
         assert_eq!(Project::load(&path).unwrap(), saved);
+        fs::remove_dir_all(dir).unwrap();
+    }
+
+    fn exit_test_directory(label: &str) -> PathBuf {
+        let dir = std::env::temp_dir().join(format!(
+            "weftforge-exit-{label}-{}-{}",
+            std::process::id(),
+            SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        fs::create_dir(&dir).unwrap();
+        dir
+    }
+
+    #[test]
+    fn exit_retains_last_second_drafts_after_an_older_autosave_then_recovers_exactly() {
+        let dir = exit_test_directory("ordered");
+        let path = dir.join("Untitled.weftforge.autosave");
+        let mut app = Studio::empty();
+        app.session_autosave = Some(path.clone());
+        app.execute(Command::AddRectangle {
+            name: "Last-second panel".into(),
+            origin: [0., 0.],
+            width: 0.4,
+            height: 0.6,
+        });
+        let older = app.editor.project.clone();
+        let (release, wait) = mpsc::channel();
+        let (sender, receiver) = mpsc::channel();
+        let older_path = path.clone();
+        let writer = std::thread::spawn(move || {
+            wait.recv().unwrap();
+            sender.send(write_autosave(&older, &older_path)).unwrap();
+        });
+        app.autosave_job = Some(AutosaveJob { receiver });
+        let piece = app.editor.project.pieces[0].id;
+        let curve = app.editor.project.pieces[0].boundary[2];
+        app.execute(Command::SetGrain { piece, angle: 0.37 });
+        app.select_curve(Some((piece, curve)));
+        let mut draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
+        draft.curve.as_mut().unwrap().controls = Some([[0.3, 0.8], [0.1, 0.8]]);
+        app.draft = Some(draft);
+        let mut expected = app.editor.project.clone();
+        expected
+            .curves
+            .iter_mut()
+            .find(|item| item.id == curve)
+            .unwrap()
+            .controls = Some([[0.3, 0.8], [0.1, 0.8]]);
+        expected.revision += 1;
+        let (finished, result) = mpsc::channel();
+        let shutdown = std::thread::spawn(move || {
+            eframe::App::on_exit(&mut app);
+            finished.send(app.editor.project).unwrap();
+        });
+        assert!(matches!(
+            result.recv_timeout(Duration::from_millis(50)),
+            Err(mpsc::RecvTimeoutError::Timeout)
+        ));
+        release.send(()).unwrap();
+        assert_eq!(
+            result.recv_timeout(Duration::from_secs(3)).unwrap(),
+            expected
+        );
+        shutdown.join().unwrap();
+        writer.join().unwrap();
+        assert_eq!(Project::load(&path).unwrap(), expected);
+        let mut reopened = Studio::empty();
+        reopened.recover(path);
+        assert_eq!(reopened.editor.project, expected);
+        assert!(reopened.dirty);
+        assert!(reopened.path.is_none());
+        fs::remove_dir_all(dir).unwrap();
+    }
+
+    #[test]
+    fn exit_preserves_primary_clean_and_discarded_states_and_uses_unique_fallback() {
+        let dir = exit_test_directory("fallback");
+        let primary = dir.join("garment.weftforge");
+        let sidecar = append_suffix(&primary, ".autosave");
+        let mut app = Studio::empty();
+        app.execute(Command::AddRectangle {
+            name: "Saved panel".into(),
+            origin: [0., 0.],
+            width: 0.4,
+            height: 0.6,
+        });
+        app.editor.project.save(&primary).unwrap();
+        app.path = Some(primary.clone());
+        app.session_autosave = Some(dir.join("Recovery/Untitled.weftforge.autosave"));
+        app.dirty = false;
+        let primary_bytes = fs::read(&primary).unwrap();
+        assert_eq!(app.retain_on_exit().unwrap(), None);
+        assert!(!sidecar.exists());
+        app.selected = Some(app.editor.project.pieces[0].id);
+        let mut draft = InspectorDraft::new(&app.editor.project, app.selected, None);
+        draft.grain_angle = Some(0.37);
+        app.draft = Some(draft);
+        assert_eq!(app.retain_on_exit().unwrap(), Some(sidecar.clone()));
+        assert_eq!(Project::load(&sidecar).unwrap(), app.editor.project);
+        assert_eq!(app.editor.project.pieces[0].grain_angle, 0.37);
+        assert_eq!(fs::read(&primary).unwrap(), primary_bytes);
+        let sidecar_bytes = fs::read(&sidecar).unwrap();
+        let mut draft = InspectorDraft::new(&app.editor.project, app.selected, None);
+        draft.grain_angle = Some(0.8);
+        app.draft = Some(draft);
+        app.discard_on_exit = true;
+        app.dirty = false;
+        assert_eq!(app.retain_on_exit().unwrap(), None);
+        assert_eq!(fs::read(&sidecar).unwrap(), sidecar_bytes);
+        assert_eq!(app.editor.project.pieces[0].grain_angle, 0.37);
+        app.discard_on_exit = false;
+        app.draft = None;
+        let piece = app.editor.project.pieces[0].id;
+        app.execute(Command::SetGrain { piece, angle: 0.6 });
+        fs::write(&sidecar, b"invalid prior sidecar").unwrap();
+        let retained = app.retain_on_exit().unwrap().unwrap();
+        assert_ne!(retained, sidecar);
+        assert!(
+            retained
+                .file_name()
+                .unwrap()
+                .to_string_lossy()
+                .starts_with("Exit-")
+        );
+        assert!(
+            retained
+                .file_name()
+                .unwrap()
+                .to_string_lossy()
+                .ends_with(".autosave")
+        );
+        assert_eq!(Project::load(&retained).unwrap(), app.editor.project);
+        let second = app.retain_on_exit().unwrap().unwrap();
+        assert_ne!(second, retained);
+        assert_eq!(Project::load(second).unwrap(), app.editor.project);
+        assert_eq!(fs::read(&sidecar).unwrap(), b"invalid prior sidecar");
+        assert_eq!(fs::read(&primary).unwrap(), primary_bytes);
+        fs::remove_dir_all(dir).unwrap();
+    }
+
+    #[test]
+    fn exit_retains_last_valid_geometry_and_reports_when_all_recovery_paths_fail() {
+        let dir = exit_test_directory("failed");
+        let primary = dir.join("garment.weftforge");
+        let mut app = Studio::empty();
+        app.execute(Command::AddRectangle {
+            name: "Valid panel".into(),
+            origin: [0., 0.],
+            width: 0.4,
+            height: 0.6,
+        });
+        app.path = Some(primary.clone());
+        app.editor.project.save(&primary).unwrap();
+        let before = app.editor.project.clone();
+        let primary_bytes = fs::read(&primary).unwrap();
+        app.selected = Some(app.editor.project.pieces[0].id);
+        let mut draft = InspectorDraft::new(&app.editor.project, app.selected, None);
+        draft.grain_angle = Some(f64::NAN);
+        app.draft = Some(draft);
+        let sidecar = app.retain_on_exit().unwrap().unwrap();
+        assert_eq!(app.editor.project, before);
+        assert_eq!(Project::load(&sidecar).unwrap(), before);
+        fs::write(&sidecar, b"preserve this invalid sidecar").unwrap();
+        let blocked = dir.join("blocked-directory");
+        fs::write(&blocked, b"regular file").unwrap();
+        app.session_autosave = Some(blocked.join("Untitled.weftforge.autosave"));
+        let error = app.retain_on_exit().unwrap_err();
+        assert!(error.contains("Existing project is invalid"));
+        assert!(error.contains("Exit-"));
+        assert_eq!(app.editor.project, before);
+        assert!(app.dirty);
+        assert_eq!(
+            fs::read(&sidecar).unwrap(),
+            b"preserve this invalid sidecar"
+        );
+        assert_eq!(fs::read(&primary).unwrap(), primary_bytes);
         fs::remove_dir_all(dir).unwrap();
     }
 

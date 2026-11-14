@@ -197,13 +197,6 @@ fn reversed_gathered_cubic_intervals_retain_correspondence_through_remesh_edits_
     let reopened = Project::from_json(&editor.project.to_json().unwrap()).unwrap();
     assert_eq!(reopened, editor.project);
     assert_correspondence(&reopened, &reopened.mesh().unwrap());
-    let before = editor.project.clone();
-    assert!(
-        editor
-            .execute(Command::SplitCurve { curve, t: 0.5 })
-            .is_err()
-    );
-    assert_eq!(editor.project, before);
     let removed = editor.project.pieces[0].id;
     editor
         .execute(Command::RemovePiece { piece: removed })
@@ -261,6 +254,245 @@ fn split_cubic_is_exact_and_resize_updates_real_geometry() {
     assert!((max[1] - min[1] - 0.8).abs() < 1.0e-12);
     let mesh = editor.project.mesh().unwrap();
     assert!(!mesh.triangles.is_empty());
+}
+
+// Authored f64 geometry and sewing maps must agree within 1e-12 m/parameter.
+const SPLIT_TOLERANCE: f64 = 1.0e-12;
+
+fn paired_fraction(pairs: &[[f64; 2]], fraction: f64) -> f64 {
+    let pair = pairs
+        .windows(2)
+        .find(|pair| fraction <= pair[1][0] + SPLIT_TOLERANCE)
+        .unwrap();
+    pair[0][1] + (fraction - pair[0][0]) / (pair[1][0] - pair[0][0]) * (pair[1][1] - pair[0][1])
+}
+
+fn assert_split_sewing(original: &Project, split: &Project, curve: u64, second: u64, t: f64) {
+    let original_parameter = |id, parameter| {
+        if id == curve {
+            parameter * t
+        } else if id == second {
+            t + parameter * (1.0 - t)
+        } else {
+            parameter
+        }
+    };
+    for old in &original.seams {
+        let portions: Vec<_> = split
+            .seams
+            .iter()
+            .filter(|seam| seam.name == old.name)
+            .collect();
+        assert!(!portions.is_empty());
+        assert_eq!(portions[0].id, old.id);
+        let mut previous = 0.0;
+        for portion in portions {
+            let fraction = |u| {
+                (original_parameter(portion.a.curve, portion.a.parameter(u)) - old.a.t0)
+                    / (old.a.t1 - old.a.t0)
+            };
+            assert!((fraction(0.0) - previous).abs() < SPLIT_TOLERANCE);
+            previous = fraction(1.0);
+            let samples = (0..=100)
+                .map(|i| f64::from(i) / 100.0)
+                .chain(portion.correspondence.iter().map(|pair| pair[0]));
+            for u in samples {
+                let v = paired_fraction(&portion.correspondence, u);
+                let old_u = fraction(u);
+                let old_v = paired_fraction(&old.correspondence, old_u);
+                for (before, after, old_fraction, new_fraction) in
+                    [(old.a, portion.a, old_u, u), (old.b, portion.b, old_v, v)]
+                {
+                    let expected = original
+                        .curve(before.curve)
+                        .unwrap()
+                        .evaluate(original, before.parameter(old_fraction).clamp(0.0, 1.0))
+                        .unwrap();
+                    let actual = split
+                        .curve(after.curve)
+                        .unwrap()
+                        .evaluate(split, after.parameter(new_fraction).clamp(0.0, 1.0))
+                        .unwrap();
+                    for axis in 0..2 {
+                        assert!((expected[axis] - actual[axis]).abs() < SPLIT_TOLERANCE);
+                    }
+                }
+            }
+        }
+        assert!((previous - 1.0).abs() < SPLIT_TOLERANCE);
+    }
+}
+
+#[test]
+fn sewn_splits_preserve_gathered_pairs_in_both_directions_at_breakpoints_and_interval_ends() {
+    for straight in [false, true] {
+        for source in 0..2 {
+            for reverse_a in [false, true] {
+                for reverse_b in [false, true] {
+                    let mut scene = seam_scene();
+                    let mut seam = scene.project.seams[0].clone();
+                    if straight {
+                        scene
+                            .execute(Command::Transaction(vec![
+                                Command::SetCurveControls {
+                                    curve: seam.a.curve,
+                                    controls: None,
+                                },
+                                Command::SetCurveControls {
+                                    curve: seam.b.curve,
+                                    controls: None,
+                                },
+                            ]))
+                            .unwrap();
+                    }
+                    if reverse_a {
+                        std::mem::swap(&mut seam.a.t0, &mut seam.a.t1);
+                    }
+                    if reverse_b {
+                        std::mem::swap(&mut seam.b.t0, &mut seam.b.t1);
+                    }
+                    scene
+                        .execute(Command::UpdateSeam { seam: seam.clone() })
+                        .unwrap();
+                    let interval = [seam.a, seam.b][source];
+                    let breakpoint = interval.parameter(seam.correspondence[1][source]);
+                    for t in [0.05, 0.1, 0.15, 0.5, 0.9, 0.95, breakpoint] {
+                        let mut editor = scene.clone();
+                        let original = editor.project.clone();
+                        editor
+                            .execute(Command::SplitCurve {
+                                curve: interval.curve,
+                                t,
+                            })
+                            .unwrap();
+                        let second = editor.project.curves.last().unwrap().id;
+                        assert_split_sewing(&original, &editor.project, interval.curve, second, t);
+                        let crosses =
+                            t > interval.t0.min(interval.t1) && t < interval.t0.max(interval.t1);
+                        assert_eq!(editor.project.seams.len(), if crosses { 2 } else { 1 });
+                        assert_eq!(editor.project.materials, original.materials);
+                        assert_eq!(editor.project.pieces[0].name, original.pieces[0].name);
+                    }
+                }
+            }
+        }
+    }
+}
+
+#[test]
+fn multiple_seams_survive_split_remesh_history_branching_and_v2_save_reopen() {
+    let mut editor = seam_scene();
+    let curve = editor.project.seams[0].a.curve;
+    let mut extra = editor.project.seams[0].clone();
+    extra.a.t0 = 0.05;
+    extra.a.t1 = 0.3;
+    editor
+        .execute(Command::AddSeam {
+            name: "Second partial seam".into(),
+            a: extra.a,
+            b: extra.b,
+            correspondence: extra.correspondence,
+        })
+        .unwrap();
+    let original = editor.project.clone();
+    editor
+        .execute(Command::SplitCurve { curve, t: 0.45 })
+        .unwrap();
+    let split = editor.project.clone();
+    let highest_id = split.seams.iter().map(|seam| seam.id).max().unwrap();
+    let second = split.curves.last().unwrap().id;
+    assert_split_sewing(&original, &split, curve, second, 0.45);
+    assert_eq!(split.seams.len(), 3);
+    assert_eq!(split.seams.last().unwrap().id, original.seams[1].id);
+    let mut coarse_vertices = 0;
+    for metres in [0.09, 0.035] {
+        editor.execute(Command::SetResolution { metres }).unwrap();
+        let mesh = editor.project.mesh().unwrap();
+        mesh.validate().unwrap();
+        if coarse_vertices == 0 {
+            coarse_vertices = mesh.positions.len();
+        } else {
+            assert!(mesh.positions.len() > coarse_vertices);
+        }
+        for &[a, b, c] in &mesh.triangles {
+            let [a, b, c] = [mesh.uv[a], mesh.uv[b], mesh.uv[c]];
+            assert!((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]) > 0.0);
+        }
+        let samples: BTreeMap<_, _> = mesh
+            .boundary
+            .iter()
+            .map(|s| ((s.curve, s.vertex), s.t))
+            .collect();
+        for seam in &editor.project.seams {
+            let stitches: Vec<_> = mesh.stitches.iter().filter(|s| s.seam == seam.id).collect();
+            assert!(stitches.len() >= 2);
+            for stitch in stitches {
+                let parameter = |interval: CurveInterval, p: weftforge_core::WeightedVertex| {
+                    let t = samples[&(interval.curve, p.vertices[0])] * (1.0 - p.weight)
+                        + samples[&(interval.curve, p.vertices[1])] * p.weight;
+                    (t - interval.t0) / (interval.t1 - interval.t0)
+                };
+                let u = parameter(seam.a, stitch.a);
+                let v = parameter(seam.b, stitch.b);
+                assert!((v - paired_fraction(&seam.correspondence, u)).abs() < SPLIT_TOLERANCE);
+            }
+        }
+        assert_eq!(editor.project.seams, split.seams);
+    }
+    let path = std::env::temp_dir().join(format!(
+        "weftforge-split-{}-{}.weftforge",
+        std::process::id(),
+        FILE_ID.fetch_add(1, Ordering::Relaxed)
+    ));
+    editor.project.save(&path).unwrap();
+    assert_eq!(Project::load(&path).unwrap(), editor.project);
+    let json: serde_json::Value = serde_json::from_slice(&fs::read(&path).unwrap()).unwrap();
+    assert_eq!(json["version"], 2);
+    fs::remove_file(path).unwrap();
+    assert!(editor.undo());
+    assert!(editor.undo());
+    assert_eq!(editor.project.seams, split.seams);
+    assert!(editor.undo());
+    assert_eq!(editor.project.seams, original.seams);
+    assert!(editor.redo());
+    assert_eq!(editor.project.seams, split.seams);
+    assert_eq!(editor.project.points, split.points);
+    assert_eq!(editor.project.curves, split.curves);
+    assert!(editor.undo());
+    let before = editor.project.clone();
+    assert!(editor.can_redo());
+    for t in [0.0, 1.0, f64::NAN, 0.15 + 1.0e-12] {
+        assert!(editor.execute(Command::SplitCurve { curve, t }).is_err());
+        assert_eq!(editor.project, before);
+        assert!(editor.can_redo());
+    }
+    assert!(
+        editor
+            .execute(Command::Transaction(vec![
+                Command::SplitCurve { curve, t: 0.5 },
+                Command::SetResolution { metres: 0.0 }
+            ]))
+            .is_err()
+    );
+    assert_eq!(editor.project, before);
+    assert!(editor.can_redo());
+    editor
+        .execute(Command::SplitCurve { curve, t: 0.5 })
+        .unwrap();
+    assert!(!editor.can_redo());
+    assert!(editor.project.curves.last().unwrap().id > highest_id);
+    assert!(editor.project.seams[1].id > highest_id);
+}
+
+#[test]
+fn a_seam_cannot_reference_the_same_curve_on_both_sides() {
+    let mut editor = seam_scene();
+    let mut seam = editor.project.seams[0].clone();
+    seam.b = CurveInterval::reversed(seam.a.curve);
+    let before = editor.project.clone();
+    let error = editor.execute(Command::UpdateSeam { seam }).unwrap_err();
+    assert!(error.to_string().contains("distinct curves"));
+    assert_eq!(editor.project, before);
 }
 
 #[test]

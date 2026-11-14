@@ -50,6 +50,19 @@ fixtures test original independently justified geometry, not generated reference
 answers. Maintain failure thresholds; do not disable contact or reduce scene
 coverage to pass a benchmark.
 
+The bounded sewn-curve split checks compare original cubic evaluation and
+original/partitioned sewn physical point pairs at a predeclared 1e-12 m tolerance
+(and 1e-12 for normalized parameter comparisons). They exercise either seam side,
+both interval orientations, gathered piecewise-linear mappings, partial ranges,
+splits on correspondence breakpoints and interval endpoints, several seams, and
+the explicit same-curve-both-sides validation exclusion. Remeshing at 0.09/0.035 m
+must retain the authored maps and positive triangles. History branching, failed
+transaction rollback and actual v2 save/reopen are tested. Native inspector state
+and real CLI subprocess checks are implementation evidence; no new native
+interaction capture or reference comparison is implied. The identified native
+acceptance steps and remaining limits are in
+[PAT-005](../spec/features/PAT-005-sewn-curve-editing.md).
+
 ## Desktop acceptance scope
 
 Start empty. Author shirt boundaries through actual UI actions, sew, arrange,
@@ -65,6 +78,35 @@ connected 2D/3D sleeve edit; measured interacting shirt+jacket/ground/avatar;
 contrasting fabric mesh/timestep refinement; animated cache invalidation;
 interrupted save, missing assets and malformed/unsupported inputs; independent
 all-advertised export attributes; and representative responsiveness/performance.
+
+### Shutdown and recovery boundary
+
+The preliminary curve-candidate probe found that macOS Cmd+Q quit a dirty
+untitled panel without the window-close warning; see
+[issue #18](https://github.com/thematheusmello/weftforge/issues/18). The retained
+`1ed6d18d…` executable did not provide last-second shutdown retention. The pinned
+winit 0.30.13 application-termination path emits `LoopExiting`, while window close
+emits `CloseRequested`. eframe 0.35.0 calls `App::on_exit` on application
+termination; its exposed viewport `CancelClose` cannot cancel that global Quit.
+The window-close guard must not be described as a universal unsaved-quit prompt.
+
+The follow-up uses `on_exit` to commit valid pending numeric drafts, finish any
+older autosave writer, then synchronously retain the latest dirty authoritative
+document. Saved projects use a `.autosave` sidecar; untitled projects use the
+operating-system recovery directory. If that destination fails, one fresh
+`Exit-…weftforge.autosave` path in the recovery directory is attempted. Recovery
+requires explicit opening of a copy; the primary is never saved by shutdown.
+Invalid drafts retain the last valid construction. Clean exit and explicit
+Discard do not write a new latest-state snapshot; older autosaves remain.
+Exhausted recovery destinations produce a native error and stderr report, but
+global Quit is already in progress and cannot be canceled. Forced termination
+and storage failure are not covered by a successful-shutdown guarantee.
+
+Focused implementation checks load retained files and recover them exactly after
+last-second curve/grain edits, a pending older writer and valid drafts. They also
+check primary-byte preservation, explicit discard, clean exit, unique fallback,
+invalid drafts and all-destination failure. Actual macOS Cmd+Q/relaunch/recovery
+acceptance on the integrated candidate remains pending.
 
 ## Host and performance scope
 

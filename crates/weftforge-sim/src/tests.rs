@@ -557,3 +557,117 @@ fn finite_diagnostics_do_not_claim_satisfied_contact() {
     assert!(result.max_contact_error > 1.);
     assert_eq!(result.contacts, 0);
 }
+
+#[test]
+fn constructor_cancels_inside_initial_triangle_candidates_without_publishing_state() {
+    use std::cell::Cell;
+    // More than one candidate block per vertex, with genuine initial layer intersections.
+    let patches = CANCELLATION_CHECK_INTERVAL + 1;
+    let mut input = ClothInput::default();
+    for _ in 0..patches {
+        let offset = input.positions.len();
+        input
+            .positions
+            .extend([[0., 1., 0.], [1., 1., 0.], [0., 1., 1.]]);
+        input.material_uv.extend([[0., 0.], [1., 0.], [0., 1.]]);
+        input.triangles.push([offset, offset + 1, offset + 2]);
+        input.triangle_materials.push(Material::default());
+    }
+    let total = Cell::new(0_usize);
+    let ordinary = Cloth::new(input.clone()).unwrap();
+    let complete = Cloth::new_cancellable(input.clone(), || {
+        total.set(total.get() + 1);
+        false
+    })
+    .unwrap();
+    assert_eq!(complete.positions(), ordinary.positions());
+    assert_eq!(complete.velocities(), ordinary.velocities());
+    assert_eq!(complete.masses(), ordinary.masses());
+    assert_eq!(
+        complete.diagnostics().initial_intersections,
+        3 * patches * (patches - 1)
+    );
+    assert_eq!(
+        complete.diagnostics().initial_intersections,
+        ordinary.diagnostics().initial_intersections
+    );
+    assert_eq!(
+        complete.diagnostics().max_contact_error,
+        2. * Material::default().collision_thickness
+    );
+    assert_eq!(
+        complete.diagnostics().max_contact_error,
+        ordinary.diagnostics().max_contact_error
+    );
+    assert_eq!(
+        complete.diagnostics().max_stretch_error,
+        ordinary.diagnostics().max_stretch_error
+    );
+    assert_eq!(complete.simulation_time(), 0.);
+    assert!(complete.diagnostics().finite);
+
+    let analysis = Cell::new(0_usize);
+    let (_, intersections) = complete
+        .contact_errors_cancellable(complete.positions(), &|| {
+            analysis.set(analysis.get() + 1);
+            false
+        })
+        .unwrap();
+    assert_eq!(intersections, complete.diagnostics().initial_intersections);
+    assert!(
+        analysis.get() > 2 * input.positions.len(),
+        "candidate-loop polling must occur inside each vertex, not only outside it"
+    );
+    // Contact analysis is the last polled constructor phase before its final publish check.
+    let before_analysis = total.get() - analysis.get() - 1;
+    let through_bounds = input.positions.len().div_ceil(CANCELLATION_CHECK_INTERVAL)
+        + input.triangles.len().div_ceil(CANCELLATION_CHECK_INTERVAL);
+    let stop_at = before_analysis + through_bounds + 1 + 2; // vertex zero, second triangle-candidate block
+    assert!(stop_at < total.get());
+    let calls = Cell::new(0);
+    let cancelled = Cell::new(false);
+    let mut accepted = Cloth::new(square()).unwrap();
+    let previous = accepted.positions().to_vec();
+    match Cloth::new_cancellable(input, || {
+        assert!(
+            !cancelled.get(),
+            "initialization continued polling after cancellation"
+        );
+        calls.set(calls.get() + 1);
+        cancelled.set(calls.get() == stop_at);
+        cancelled.get()
+    }) {
+        Err(SimulationError::Cancelled) => {}
+        Err(error) => panic!("expected cancellation inside initial contacts, got {error}"),
+        Ok(next) => {
+            accepted = next;
+            panic!(
+                "cancelled initialization published {} vertices",
+                accepted.positions().len()
+            );
+        }
+    }
+    assert!(cancelled.get());
+    assert_eq!(calls.get(), stop_at);
+    assert_eq!(accepted.positions(), previous);
+    assert_eq!(accepted.simulation_time(), 0.);
+}
+
+#[test]
+fn cancellable_constructor_keeps_invalid_input_checks_and_honors_early_cancel() {
+    let mut invalid = square();
+    invalid.triangles[0][0] = usize::MAX;
+    assert!(matches!(
+        Cloth::new_cancellable(invalid, || false),
+        Err(SimulationError::InvalidInput(_))
+    ));
+    let calls = std::cell::Cell::new(0);
+    assert!(matches!(
+        Cloth::new_cancellable(square(), || {
+            calls.set(calls.get() + 1);
+            true
+        }),
+        Err(SimulationError::Cancelled)
+    ));
+    assert_eq!(calls.get(), 1);
+}

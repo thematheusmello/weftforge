@@ -167,12 +167,19 @@ impl Project {
     fn save_impl(&self, path: &Path, interrupt_before_replace: bool) -> Result<()> {
         let bytes = self.to_json()?;
         ensure(path.file_name().is_some(), "Save path needs a filename")?;
+        let exists = match fs::symlink_metadata(path) {
+            Ok(metadata) => {
+                ensure(
+                    metadata.file_type().is_file(),
+                    "Refusing to replace a non-regular project file",
+                )?;
+                true
+            }
+            Err(error) if error.kind() == std::io::ErrorKind::NotFound => false,
+            Err(error) => return Err(error.into()),
+        };
         let staged = StagedFile::write(path, &bytes)?;
-        if path.try_exists()? {
-            ensure(
-                fs::symlink_metadata(path)?.file_type().is_file(),
-                "Refusing to replace a non-regular project file",
-            )?;
+        if exists {
             let previous = read_bounded(path)?;
             Self::from_json(&previous).map_err(|error| {
                 Error(format!(
@@ -190,6 +197,7 @@ impl Project {
     }
 
     pub fn export_svg(&self, path: impl AsRef<Path>) -> Result<()> {
+        export_path_guard(path.as_ref())?;
         self.validate()?;
         let mut min = [0.0_f64; 2];
         let mut max = [1.0_f64; 2];
@@ -260,6 +268,7 @@ impl Project {
 
 impl Mesh {
     pub fn export_obj(&self, path: impl AsRef<Path>) -> Result<()> {
+        export_path_guard(path.as_ref())?;
         self.validate()?;
         let normals = self.normals()?;
         let mut obj =
@@ -286,6 +295,41 @@ impl Mesh {
         }
         StagedFile::write(path.as_ref(), obj.as_bytes())?.replace(path.as_ref())
     }
+}
+
+fn export_path_guard(path: &Path) -> Result<()> {
+    let native_name = |path: &Path| {
+        let name = path
+            .file_name()
+            .unwrap_or_default()
+            .to_string_lossy()
+            .to_ascii_lowercase();
+        let name = name.strip_suffix(".recovery").unwrap_or(&name);
+        let name = name.strip_suffix(".autosave").unwrap_or(name);
+        name.ends_with(".weftforge")
+    };
+    ensure(
+        !native_name(path),
+        "Exports must not replace native project, autosave, or recovery files",
+    )?;
+    match fs::symlink_metadata(path) {
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound => return Ok(()),
+        Err(error) => return Err(error.into()),
+        Ok(_) => {}
+    }
+    ensure(
+        !native_name(&path.canonicalize()?),
+        "Exports must not replace native project, autosave, or recovery files",
+    )?;
+    let metadata = fs::metadata(path)?;
+    ensure(metadata.is_file(), "Export output must be a regular file")?;
+    if metadata.len() <= MAX_PROJECT_BYTES {
+        ensure(
+            Project::from_json(&read_bounded(path)?).is_err(),
+            "Exports must not replace an existing native project",
+        )?;
+    }
+    Ok(())
 }
 
 fn xml_escape(value: &str) -> String {
@@ -341,6 +385,14 @@ impl StagedFile {
     }
 
     fn replace(self, target: &Path) -> Result<()> {
+        match fs::symlink_metadata(target) {
+            Ok(metadata) => ensure(
+                metadata.file_type().is_file(),
+                "Refusing to replace a non-regular project or recovery file",
+            )?,
+            Err(error) if error.kind() == std::io::ErrorKind::NotFound => {}
+            Err(error) => return Err(error.into()),
+        }
         fs::rename(&self.path, target)?;
         // The rename is the commit point; directory fsync support varies by OS.
         if let Some(parent) = target.parent().filter(|p| !p.as_os_str().is_empty())
@@ -362,6 +414,177 @@ impl Drop for StagedFile {
 mod tests {
     use super::*;
     use crate::{Command, Editor};
+
+    #[test]
+    fn saves_refuse_nonregular_destinations_without_changing_targets_or_recovery() {
+        let directory = std::env::temp_dir().join(format!(
+            "weftforge-save-destinations-{}-{}",
+            std::process::id(),
+            TEMP_ID.fetch_add(1, Ordering::Relaxed)
+        ));
+        fs::create_dir(&directory).unwrap();
+        let primary = directory.join("primary.weftforge");
+        let mut project = Project::default();
+        project.save(&primary).unwrap();
+        let original = fs::read(&primary).unwrap();
+        project.resolution = 0.04;
+        let folder = directory.join("folder.weftforge");
+        fs::create_dir(&folder).unwrap();
+        fs::write(folder.join("retained"), b"folder contents").unwrap();
+        fs::write(recovery_path(&folder), b"prior folder recovery").unwrap();
+        assert!(project.save(&folder).is_err());
+        assert_eq!(
+            fs::read(folder.join("retained")).unwrap(),
+            b"folder contents"
+        );
+        assert_eq!(
+            fs::read(recovery_path(&folder)).unwrap(),
+            b"prior folder recovery"
+        );
+        #[cfg(unix)]
+        for (name, target) in [
+            ("valid.weftforge", primary.clone()),
+            ("dangling.weftforge", directory.join("absent")),
+        ] {
+            let output = directory.join(name);
+            std::os::unix::fs::symlink(&target, &output).unwrap();
+            fs::write(recovery_path(&output), b"prior symlink recovery").unwrap();
+            assert!(project.save(&output).is_err(), "{name}");
+            assert!(
+                fs::symlink_metadata(&output)
+                    .unwrap()
+                    .file_type()
+                    .is_symlink()
+            );
+            assert_eq!(fs::read_link(&output).unwrap(), target);
+            assert_eq!(fs::read(&primary).unwrap(), original);
+            assert_eq!(
+                fs::read(recovery_path(&output)).unwrap(),
+                b"prior symlink recovery"
+            );
+        }
+        assert!(!directory.join("absent").exists());
+        let recovery = recovery_path(&primary);
+        #[cfg(unix)]
+        for target in [primary.clone(), directory.join("absent-recovery")] {
+            std::os::unix::fs::symlink(&target, &recovery).unwrap();
+            assert!(project.save(&primary).is_err());
+            assert_eq!(fs::read_link(&recovery).unwrap(), target);
+            assert_eq!(fs::read(&primary).unwrap(), original);
+            fs::remove_file(&recovery).unwrap();
+        }
+        fs::create_dir(&recovery).unwrap();
+        fs::write(recovery.join("retained"), b"recovery folder contents").unwrap();
+        assert!(project.save(&primary).is_err());
+        assert_eq!(fs::read(&primary).unwrap(), original);
+        assert_eq!(
+            fs::read(recovery.join("retained")).unwrap(),
+            b"recovery folder contents"
+        );
+        fs::remove_dir_all(&recovery).unwrap();
+        project.save(&primary).unwrap();
+        assert_eq!(Project::load(&primary).unwrap(), project);
+        assert_eq!(fs::read(recovery_path(&primary)).unwrap(), original);
+        fs::remove_dir_all(directory).unwrap();
+    }
+
+    #[test]
+    fn exports_preserve_native_projects_and_aliases_at_any_extension() {
+        let directory = std::env::temp_dir().join(format!(
+            "weftforge-export-guard-{}-{}",
+            std::process::id(),
+            TEMP_ID.fetch_add(1, Ordering::Relaxed)
+        ));
+        fs::create_dir(&directory).unwrap();
+        let mut editor = Editor::default();
+        editor
+            .execute(Command::AddRectangle {
+                name: "Front".into(),
+                origin: [0., 0.],
+                width: 0.3,
+                height: 0.4,
+            })
+            .unwrap();
+        let mesh = editor.project.mesh().unwrap();
+        let native = Project::default().to_json().unwrap();
+        for name in [
+            "other.weftforge",
+            "draft.WEFTFORGE.AUTOSAVE",
+            "old.weftforge.recovery",
+            "old.weftforge.autosave.recovery",
+            "project.obj",
+            "project.svg",
+            "unusual.native",
+        ] {
+            let path = directory.join(name);
+            fs::write(&path, &native).unwrap();
+            assert!(editor.project.export_svg(&path).is_err(), "{name}");
+            assert!(mesh.export_obj(&path).is_err(), "{name}");
+            assert_eq!(fs::read(&path).unwrap(), native);
+        }
+        let protected = directory.join("ordinary.WeFtFoRgE");
+        fs::write(&protected, b"invalid but native-named contents").unwrap();
+        assert!(editor.project.export_svg(&protected).is_err());
+        assert!(mesh.export_obj(&protected).is_err());
+        assert_eq!(
+            fs::read(&protected).unwrap(),
+            b"invalid but native-named contents"
+        );
+        let hardlink = directory.join("hardlink.svg");
+        fs::hard_link(directory.join("unusual.native"), &hardlink).unwrap();
+        assert!(editor.project.export_svg(&hardlink).is_err());
+        assert!(mesh.export_obj(&hardlink).is_err());
+        assert_eq!(fs::read(&hardlink).unwrap(), native);
+        let folder = directory.join("folder.svg");
+        fs::create_dir(&folder).unwrap();
+        assert!(editor.project.export_svg(&folder).is_err());
+        assert!(mesh.export_obj(&folder).is_err());
+        assert!(folder.is_dir());
+        #[cfg(unix)]
+        for (target, alias) in [
+            ("unusual.native", "alias.obj"),
+            ("ordinary.WeFtFoRgE", "named-alias.svg"),
+        ] {
+            let path = directory.join(alias);
+            std::os::unix::fs::symlink(directory.join(target), &path).unwrap();
+            let previous = fs::read(&path).unwrap();
+            assert!(editor.project.export_svg(&path).is_err());
+            assert!(mesh.export_obj(&path).is_err());
+            assert_eq!(fs::read(&path).unwrap(), previous);
+            assert!(
+                fs::symlink_metadata(&path)
+                    .unwrap()
+                    .file_type()
+                    .is_symlink()
+            );
+        }
+        #[cfg(unix)]
+        {
+            let broken = directory.join("broken.svg");
+            std::os::unix::fs::symlink(directory.join("absent"), &broken).unwrap();
+            assert!(editor.project.export_svg(&broken).is_err());
+            assert!(mesh.export_obj(&broken).is_err());
+            assert!(
+                fs::symlink_metadata(&broken)
+                    .unwrap()
+                    .file_type()
+                    .is_symlink()
+            );
+        }
+        let svg = directory.join("patterns.svg");
+        let obj = directory.join("rest.obj");
+        fs::write(&svg, b"old SVG").unwrap();
+        fs::write(&obj, b"old OBJ").unwrap();
+        editor.project.export_svg(&svg).unwrap();
+        mesh.export_obj(&obj).unwrap();
+        assert!(fs::read_to_string(svg).unwrap().contains("<svg"));
+        assert!(
+            fs::read_to_string(obj)
+                .unwrap()
+                .starts_with("# WeftForge OBJ")
+        );
+        fs::remove_dir_all(directory).unwrap();
+    }
 
     #[test]
     fn interrupted_save_and_invalid_inputs_preserve_the_previous_document() {

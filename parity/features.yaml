@@ -93,7 +93,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -108,7 +108,9 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "spec/features/PAT-005-sewn-curve-editing.md"
+      ],
       "scenarios": [
         {
           "id": "UI-SHIRT-CANDIDATE-001",
@@ -205,13 +207,14 @@
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Selected boundary ID, 2D highlight and current inspector values implemented; new native interaction evidence and complete cross-view subobject selection remain pending."
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "UI-003",
@@ -250,7 +253,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -392,9 +395,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "UI-005",
@@ -496,11 +499,11 @@
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Meshing and simulation are revision-tagged background jobs; solver initialization checks cancellation only before/after initial contact analysis; command validation and file IO retain synchronous portions."
+        "Meshing and simulation are revision-tagged background jobs. Initialization now polls inside initial contact analysis; some validation, allocation and final diagnostic phases remain non-interruptible. Actual GUI cancellation latency remains unmeasured."
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -541,7 +544,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -648,7 +651,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -663,7 +666,9 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "spec/features/PAT-005-sewn-curve-editing.md"
+      ],
       "scenarios": [],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
@@ -677,7 +682,12 @@
         "PAT-001"
       ],
       "implementation_locations": [
-        "crates/weftforge-core/src/lib.rs"
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/geometry.rs",
+        "crates/weftforge-core/tests/workflow.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/tests/curves.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3",
@@ -704,11 +714,12 @@
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Selected native boundary numeric controls/straightness and CLI commands are implemented; identified native curve-edit/split/reopen acceptance remains pending."
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -808,7 +819,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -906,7 +917,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -921,7 +932,9 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "spec/features/PAT-005-sewn-curve-editing.md"
+      ],
       "scenarios": [
         {
           "id": "EDIT-RELATION-001",
@@ -946,7 +959,12 @@
         "SEW-001"
       ],
       "implementation_locations": [
-        "crates/weftforge-core/src/lib.rs"
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/geometry.rs",
+        "crates/weftforge-core/tests/workflow.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/tests/curves.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3"
@@ -973,11 +991,11 @@
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Sewn-curve splitting explicitly rejected; curve joining unsupported."
+        "Sewn line/cubic splitting now partitions oriented partial/gathered correspondence; native acceptance pending. Joining remains unsupported; portions below the existing 1e-8 local-parameter limit fail atomically."
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -1018,7 +1036,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -1059,7 +1077,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -1141,9 +1159,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "PAT-009",
@@ -1182,7 +1200,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -1224,7 +1242,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -1335,7 +1353,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -1351,7 +1369,8 @@
       ],
       "reference_observation_status": "documentation_only",
       "evidence_ids": [
-        "spec/features/SEW-001-oriented-segment-sewing.md"
+        "spec/features/SEW-001-oriented-segment-sewing.md",
+        "spec/features/PAT-005-sewn-curve-editing.md"
       ],
       "scenarios": [
         {
@@ -1395,7 +1414,12 @@
         "PAT-011"
       ],
       "implementation_locations": [
-        "crates/weftforge-core/src/lib.rs"
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/geometry.rs",
+        "crates/weftforge-core/tests/workflow.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/tests/curves.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3",
@@ -1453,13 +1477,14 @@
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Sewn split point-pair preservation has analytical implementation checks at 1e-12 m; native/runtime reference comparison and arc-length issue #9 remain open."
       ],
       "contradictions": [
         "Public partial-sewing API uses normalized boundary length; current document intervals and default correspondence use curve parameter t. Arc-length equivalence remains unverified."
       ],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -1501,7 +1526,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -1516,7 +1541,9 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "spec/features/PAT-005-sewn-curve-editing.md"
+      ],
       "scenarios": [
         {
           "id": "SEW-CUBIC-001",
@@ -1540,7 +1567,12 @@
         "SEW-001"
       ],
       "implementation_locations": [
-        "crates/weftforge-core/src/lib.rs"
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/geometry.rs",
+        "crates/weftforge-core/tests/workflow.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/tests/curves.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3",
@@ -1567,11 +1599,12 @@
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Sewn split point-pair preservation has analytical implementation checks at 1e-12 m; native/runtime reference comparison and arc-length issue #9 remain open."
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -1617,7 +1650,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -1659,7 +1692,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -1701,7 +1734,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -1786,7 +1819,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -1838,7 +1871,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -2026,9 +2059,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FIT-004",
@@ -2068,7 +2101,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -2153,7 +2186,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -2234,7 +2267,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -2306,7 +2339,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -2376,7 +2409,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -2489,7 +2522,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -2618,9 +2651,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "SIM-007",
@@ -2659,7 +2692,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -2740,9 +2773,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "MAT-002",
@@ -2781,7 +2814,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -2822,7 +2855,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -2873,7 +2906,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -2926,7 +2959,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -2968,7 +3001,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -3038,10 +3071,13 @@
         "MAT-001"
       ],
       "implementation_locations": [
-        "crates/weftforge-core/src/lib.rs"
+        "crates/weftforge-core/src/lib.rs",
+        "crates/weftforge-core/src/persistence.rs"
       ],
       "issues": [
-        "https://github.com/thematheusmello/weftforge/issues/6"
+        "https://github.com/thematheusmello/weftforge/issues/6",
+        "https://github.com/thematheusmello/weftforge/issues/18",
+        "https://github.com/thematheusmello/weftforge/issues/19"
       ],
       "prs": [
         "https://github.com/thematheusmello/weftforge/pull/15"
@@ -3124,9 +3160,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FILE-002",
@@ -3163,10 +3199,13 @@
         "FILE-001"
       ],
       "implementation_locations": [
-        "crates/weftforge-core/src/lib.rs"
+        "crates/weftforge-core/src/lib.rs",
+        "crates/weftforge-core/src/persistence.rs"
       ],
       "issues": [
-        "https://github.com/thematheusmello/weftforge/issues/6"
+        "https://github.com/thematheusmello/weftforge/issues/6",
+        "https://github.com/thematheusmello/weftforge/issues/18",
+        "https://github.com/thematheusmello/weftforge/issues/19"
       ],
       "prs": [],
       "implementation_status": "partial",
@@ -3189,11 +3228,12 @@
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Pinned macOS global Quit cannot be canceled; on_exit now retains latest valid dirty work explicitly. Actual integrated last-second Quit/recovery acceptance remains pending; forced termination and storage failure are outside that guarantee."
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -3334,9 +3374,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FILE-004",
@@ -3375,7 +3415,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -3515,9 +3555,9 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FILE-006",
@@ -3554,7 +3594,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -3595,7 +3635,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -3610,7 +3650,9 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "spec/features/PAT-005-sewn-curve-editing.md"
+      ],
       "scenarios": [],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
@@ -3622,7 +3664,10 @@
       },
       "dependencies": [],
       "implementation_locations": [
-        "apps/weftforge/src/main.rs"
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/src/mcp.rs",
+        "crates/weftforge-core/src/document.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/7"
@@ -3645,16 +3690,33 @@
             "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
             "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
           }
+        },
+        {
+          "id": "WF-20261114-INTEGRATION-001",
+          "path": "parity/reports/WF-20261114-INTEGRATION-001.json",
+          "commit": "eb153cd49dc0417b8702d6fc9b5a1156aad9b650",
+          "timestamp": "2026-11-14T02:17:35.180433Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/integration-20261114/clippy.log": "31b02b0e8b190a5a44aa69dc33682c3ea8ad03816de648b7eb3f74d9e70258ea",
+            "parity/reports/artifacts/integration-20261114/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/integration-20261114/official-sdk.json": "3c861371a99dd020bf8877003b52238317c8ea859f2a9f559862c4cb446b8171",
+            "parity/reports/artifacts/integration-20261114/package.log": "3bdef42dde69bf1f7de78989b9cf1d836ba2d4ebe26e98a842ae8db9b2829265",
+            "parity/reports/artifacts/integration-20261114/scenario.log": "f910f5e60c903b157414db43bca84c12dfbf86bb3d9b3b853835211a9bc4bc88",
+            "parity/reports/artifacts/integration-20261114/tests.log": "f6524ebffef4c13bb7cdf1256e9a8aa87f7b14c9cafbd4645cf966ede4d9618b",
+            "parity/reports/artifacts/integration-20261114/xtask.log": "2477d864793e3ee6e5584af6ec9564f0d1881af4ee9693233388f893a4e42753"
+          }
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Native/CLI commands and five stateless local MCP file tools share the validated command engine. Official SDK1.28.1 legacy smoke passed on the adapter candidate; combined-build acceptance is pending. Live-GUI control, MCP simulation jobs, persistent undo and cancellation remain open."
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "APP-002",
@@ -3695,7 +3757,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -3752,7 +3814,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "stale"
     },
@@ -3797,7 +3859,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -3840,7 +3902,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified.",
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending.",
         "GitHub Project board creation rejected: authenticated token lacks project and read:project scopes. Issues work independently."
       ],
       "freshness": "missing"
@@ -3893,7 +3955,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -3937,7 +3999,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -3978,7 +4040,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     },
@@ -4020,7 +4082,7 @@
       ],
       "contradictions": [],
       "blockers": [
-        "Reference garment workspace is blocked at CLO-SET sign-in; legitimate entitlement and current terms acceptance are unverified."
+        "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
       "freshness": "missing"
     }

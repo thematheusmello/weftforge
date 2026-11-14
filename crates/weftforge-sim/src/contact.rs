@@ -1,4 +1,6 @@
-use crate::{Cloth, Collider, SimulationError, Vec3, math::*};
+use crate::{
+    CANCELLATION_CHECK_INTERVAL, Cloth, Collider, SimulationError, Vec3, check_cancel, math::*,
+};
 
 impl Cloth {
     pub(crate) fn project_colliders(&self, x: &mut [Vec3], previous: &[Vec3]) -> usize {
@@ -97,12 +99,37 @@ impl Cloth {
     }
 
     pub(crate) fn contact_errors(&self, x: &[Vec3]) -> (f64, usize) {
-        let max_thickness = self.thickness.iter().copied().fold(0., f64::max);
-        let bounds = triangle_bounds(&self.input.triangles, x, x, 2. * max_thickness);
+        self.contact_errors_cancellable(x, &|| false)
+            .expect("A non-cancelling callback cannot interrupt contact analysis")
+    }
+
+    pub(crate) fn contact_errors_cancellable(
+        &self,
+        x: &[Vec3],
+        cancelled: &impl Fn() -> bool,
+    ) -> Result<(f64, usize), SimulationError> {
+        let mut max_thickness = 0_f64;
+        for (i, &thickness) in self.thickness.iter().enumerate() {
+            if i % CANCELLATION_CHECK_INTERVAL == 0 {
+                check_cancel(cancelled)?;
+            }
+            max_thickness = max_thickness.max(thickness);
+        }
+        let bounds = triangle_bounds_cancellable(
+            &self.input.triangles,
+            x,
+            x,
+            2. * max_thickness,
+            cancelled,
+        )?;
         let mut maximum = 0_f64;
         let mut count = 0;
         for v in 0..x.len() {
-            for &collider in &self.input.colliders {
+            check_cancel(cancelled)?;
+            for (i, &collider) in self.input.colliders.iter().enumerate() {
+                if i % CANCELLATION_CHECK_INTERVAL == 0 {
+                    check_cancel(cancelled)?;
+                }
                 if let Some((_, depth)) = collider_contact(collider, x[v], self.thickness[v]) {
                     maximum = maximum.max(depth);
                     if depth > 1e-8 {
@@ -110,7 +137,10 @@ impl Cloth {
                     }
                 }
             }
-            for (&tri, bounds) in self.input.triangles.iter().zip(&bounds) {
+            for (i, (&tri, bounds)) in self.input.triangles.iter().zip(&bounds).enumerate() {
+                if i % CANCELLATION_CHECK_INTERVAL == 0 {
+                    check_cancel(cancelled)?;
+                }
                 if tri.iter().any(|i| self.excluded[v].contains(i)) || !overlaps(bounds, x[v], x[v])
                 {
                     continue;
@@ -128,7 +158,7 @@ impl Cloth {
                 }
             }
         }
-        (maximum, count)
+        Ok((maximum, count))
     }
 }
 
@@ -139,9 +169,23 @@ fn triangle_bounds(
     previous: &[Vec3],
     gap: f64,
 ) -> Vec<Bounds> {
+    triangle_bounds_cancellable(triangles, x, previous, gap, &|| false)
+        .expect("A non-cancelling callback cannot interrupt bounds construction")
+}
+fn triangle_bounds_cancellable(
+    triangles: &[[usize; 3]],
+    x: &[Vec3],
+    previous: &[Vec3],
+    gap: f64,
+    cancelled: &impl Fn() -> bool,
+) -> Result<Vec<Bounds>, SimulationError> {
     triangles
         .iter()
-        .map(|tri| {
+        .enumerate()
+        .map(|(i, tri)| {
+            if i % CANCELLATION_CHECK_INTERVAL == 0 {
+                check_cancel(cancelled)?;
+            }
             let mut bounds = [[f64::INFINITY; 3], [f64::NEG_INFINITY; 3]];
             for &v in tri {
                 for axis in 0..3 {
@@ -149,7 +193,7 @@ fn triangle_bounds(
                     bounds[1][axis] = bounds[1][axis].max(x[v][axis].max(previous[v][axis]) + gap);
                 }
             }
-            bounds
+            Ok(bounds)
         })
         .collect()
 }

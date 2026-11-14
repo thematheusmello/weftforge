@@ -1,6 +1,6 @@
 # SEW-001 / SEW-004 — Segment sewing and diagnostics
 
-Reference state: **documentation reviewed; runtime blocked**. Candidate baseline:
+Reference state: **documentation reviewed; workspace accessible; behavior execution pending**. Candidate baseline:
 `MD-2026.1.237.58920-macos-arm64-20261113`.
 
 The [official Segment Sewing manual](https://support.marvelousdesigner.com/hc/en-us/articles/47358199517209-Segment-Sewing-2D)

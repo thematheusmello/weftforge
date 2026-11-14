@@ -133,8 +133,11 @@ The desktop writes dirty named documents to `<filename>.autosave` every 30 secon
 and also retains session autosaves for untitled work in the platform data directory.
 The Recover window lists session files and current project sidecars; recovering
 creates a dirty copy requiring Save As. Autosave writes v2 and recovery uses the same strict v1/v2 reader;
-failed recovery preserves the current document. Unsaved
-close is blocked until save or an explicit discard action. There is no silent
+failed recovery preserves the current document. A window-close request with
+unsaved edits is blocked until save or an explicit discard action. macOS
+application Quit bypasses that guard; shutdown synchronously retains the latest
+valid dirty document as an explicit recovery copy (see issue #18 and
+[verification](verification.md#shutdown-and-recovery-boundary)). There is no silent
 fallback from a corrupt primary to an older version.
 
 ## Export semantics

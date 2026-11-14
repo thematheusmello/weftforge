@@ -221,6 +221,21 @@ establish production collision robustness.
 
 ## Failure, cancellation and recovery
 
+`Cloth::new_cancellable` builds a complete candidate or returns `Cancelled`;
+`Cloth::new` delegates with a non-cancelling callback. Construction polls within
+input validation, constraint/mass/seam setup, contact bounds and initial
+intersection analysis. Contact analysis checks each vertex and every 256 triangle
+or collider candidates, including rejected candidates. Its initial count and
+maximum penetration come from the same completed analysis. The core
+`create_cloth_cancellable` adapter forwards the native worker's existing atomic
+cancel flag; cancellation never installs a partial cloth or alters the accepted
+mesh/document. The ordinary adapter remains available for headless callers.
+Project/mesh validation, vector allocation/copying and final linear diagnostic
+aggregation retain before/after-only checks; this is cooperative cancellation,
+not a hard latency guarantee. Deterministic callback sentinels cover cancellation
+inside the initial triangle-candidate loop; actual native cancellation interaction
+and measured latency still require separate acceptance.
+
 A step builds candidate positions/velocities locally. Cancellation is checked at
 substeps, iterations and every 32 particles of the cloth contact loop. A failed or
 cancelled call preserves positions, velocities, time and diagnostics from the
@@ -229,9 +244,10 @@ derived diagnostics, displacement above 100 m in one substep, or material-axis
 extension above 500% rejects the complete call as unstable. These are runaway
 guards, not a complete inversion or energy-stability detector. Large finite seam
 or contact residuals are returned without disguising them as successful fitting.
-Reset remains available after errors. The final residual pass is quadratic and
-currently has no internal cancellation polling, so cancellation latency still
-depends on mesh size; background worker ownership is required by the application.
+Reset remains available after errors. The final stepped residual pass and direct
+reset still use the non-cancelling contact-analysis path. Cancellation latency in
+those phases depends on mesh size; background worker ownership is required by the
+application.
 
 ## Numerical evidence
 

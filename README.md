@@ -62,9 +62,23 @@ cargo run --release -p weftforge-cli -- export-svg garment.weftforge patterns.sv
 cargo run --release -p weftforge-cli -- export-obj garment.weftforge garment.obj
 ```
 
+For local stateless MCP file authoring, run `weftforge-cli mcp`. See
+[automation](docs/automation.md) for supported protocols, commands and limits.
+The adapter uses the same validated Rust operations; active-GUI control and MCP
+simulation jobs remain open.
+
 CLI dimensions use metres, kilograms, seconds, radians, and Y-up 3D. The desktop
 currently snaps canvas gestures to 1 cm. Fine numeric editing and modifier support
 remain partial.
+
+Select a boundary in 2D or in the inspector's boundary list to edit absolute
+cubic controls or make it straight. The selected edge and controls are gold;
+the white marker previews the explicit split parameter. Splitting preserves
+oriented sewing, including partial and gathered mappings. CLI `inspect` exposes
+construction IDs, points and controls; `curve-controls INPUT OUTPUT CURVE_ID X1
+Y1 X2 Y2` (or `straight`) and `split INPUT OUTPUT CURVE_ID T` use the same commands.
+`T` is curve parameter, not arc length. See the
+[bounded curve-editing contract](spec/features/PAT-005-sewn-curve-editing.md).
 
 ## Verify and contribute
 

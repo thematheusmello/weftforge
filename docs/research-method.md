@@ -51,8 +51,13 @@ Complete raw Evidence and its limitations were retained privately. A separate
 selected-window REA observation captured the Personal sign-in screen, 12 AX nodes
 without truncation, and its matching arm64 executable hash. An initial attempt to
 select the modal-layer window returned a retained `window-mismatch` failure; the
-subsequent run selected the discovered main window. Neither capture performed
-authoring actions or observed the garment workspace.
+subsequent run selected the discovered main window. Those historical captures performed no authoring actions and did not observe
+the garment workspace. After account-holder activation, the 2026-11-14 workspace
+capture independently confirmed the full `2026.1.237 (r58920)` build and garment
+workspace. Raw account/commercial UI remains private. Native menu presence and
+selected Graphic Options are now observed; the first original numeric rectangle create/history/document-save-close-open
+sequence and physical OBJ bounds are now observed. Wider workflows remain
+pending.
 
 ## Bounded investigation loop
 
@@ -79,6 +84,24 @@ steps. They neither activate a license nor cover every canvas gesture. Use a
 native driver or documented human steps for unsupported gestures, with consistent
 before/after evidence. macOS permissions and helper failures remain explicit.
 The Linux desktop-capture workflow is not a macOS recorder.
+
+
+A private native pointer fallback was required after CUA coordinate lookup failed.
+Its reviewed driver uses ordinary public CoreGraphics events and public AX hit
+testing. Each point requires the pinned bundle/executable, exact PID/window/frame,
+fresh screenshot calibration, existing permission, foreground ownership, first
+normal CG window identity and exact target AX containing-window identity. It
+refuses ambiguous, foreign or unexpected modal input ownership. An observed
+full-display pass-through overlay made geometric stacking alone insufficient;
+the dual gate preserves actual input-owner checks. Source/binary hashes and
+no-input counterexamples are retained. This laboratory driver is not a product
+dependency and performs no account or permission changes.
+
+The original rectangle OBJ measurement uses independently authored public code
+under `spec/evaluators/`. Its expected dimensions originate in actual constructor
+input and its physical unit in the export control. A one-millimetre mutation is
+rejected without changing those expectations. This is a bounded original-export
+dimension check, not a native-format decoder or complete interoperability test.
 
 ## Retention and publication
 

@@ -12,6 +12,8 @@ use std::time::Instant;
 
 pub type Vec3 = [f64; 3];
 
+const CANCELLATION_CHECK_INTERVAL: usize = 256;
+
 #[derive(Clone, Copy, Debug, Serialize, Deserialize)]
 pub struct Material {
     /// kg/m²; each triangle distributes its material-space mass equally to its nodes.
@@ -189,7 +191,16 @@ pub struct Cloth {
 
 impl Cloth {
     pub fn new(input: ClothInput) -> Result<Self, SimulationError> {
-        validate(&input)?;
+        Self::new_cancellable(input, || false)
+    }
+
+    /// Builds a complete state or returns cancellation; no partially built cloth is published.
+    pub fn new_cancellable(
+        input: ClothInput,
+        cancelled: impl Fn() -> bool,
+    ) -> Result<Self, SimulationError> {
+        check_cancel(&cancelled)?;
+        validate(&input, &cancelled)?;
         let n = input.positions.len();
         let mut masses = vec![0.; n];
         let mut thickness = vec![0_f64; n];
@@ -204,6 +215,9 @@ impl Cloth {
             .zip(&input.triangle_materials)
             .enumerate()
         {
+            if ti % CANCELLATION_CHECK_INTERVAL == 0 {
+                check_cancel(&cancelled)?;
+            }
             let constraint = Membrane::new(tri, &input.material_uv, material);
             if !constraint.valid_scale() {
                 return Err(invalid("non-finite derived membrane coefficients"));
@@ -227,7 +241,10 @@ impl Cloth {
             membrane.push(constraint);
         }
         let mut bends = Vec::new();
-        for (edge, faces) in edge_faces {
+        for (i, (edge, faces)) in edge_faces.into_iter().enumerate() {
+            if i % CANCELLATION_CHECK_INTERVAL == 0 {
+                check_cancel(&cancelled)?;
+            }
             if faces.len() > 2 {
                 return Err(invalid("non-manifold triangle edge"));
             }
@@ -245,7 +262,10 @@ impl Cloth {
                 }
             }
         }
-        for stitch in &input.stitches {
+        for (i, stitch) in input.stitches.iter().enumerate() {
+            if i % CANCELLATION_CHECK_INTERVAL == 0 {
+                check_cancel(&cancelled)?;
+            }
             // Sewing neighborhoods are one surface after closure, so thickness must not oppose the seam.
             for a in stitch.a.vertices {
                 for b in stitch.b.vertices {
@@ -256,6 +276,9 @@ impl Cloth {
         }
         let mut inverse_masses = Vec::with_capacity(n);
         for i in 0..n {
+            if i % CANCELLATION_CHECK_INTERVAL == 0 {
+                check_cancel(&cancelled)?;
+            }
             if !masses[i].is_finite() || masses[i] <= 1e-16 {
                 return Err(invalid(
                     "every vertex must have positive incident material area and mass",
@@ -273,19 +296,26 @@ impl Cloth {
             }
             inverse_masses.push(masses[i].recip());
         }
-        for pin in &input.pins {
+        for (i, pin) in input.pins.iter().enumerate() {
+            if i % CANCELLATION_CHECK_INTERVAL == 0 {
+                check_cancel(&cancelled)?;
+            }
             inverse_masses[pin.vertex] = 0.;
         }
         let seam_remaining = input
             .stitches
             .iter()
-            .map(|s| {
-                length(sub(
+            .enumerate()
+            .map(|(i, s)| {
+                if i % CANCELLATION_CHECK_INTERVAL == 0 {
+                    check_cancel(&cancelled)?;
+                }
+                Ok(length(sub(
                     s.a.position(&input.positions),
                     s.b.position(&input.positions),
-                ))
+                )))
             })
-            .collect();
+            .collect::<Result<_, SimulationError>>()?;
         let mut cloth = Self {
             positions: input.positions.clone(),
             velocities: vec![[0.; 3]; n],
@@ -304,13 +334,17 @@ impl Cloth {
                 ..Default::default()
             },
         };
-        cloth.diagnostics.initial_intersections = cloth.contact_errors(&cloth.positions).1;
-        cloth.update_errors();
+        let (contact_error, intersections) =
+            cloth.contact_errors_cancellable(&cloth.positions, &cancelled)?;
+        cloth.diagnostics =
+            cloth.measure_errors_with_contact(&cloth.positions, &cloth.velocities, contact_error);
+        cloth.diagnostics.initial_intersections = intersections;
         if !cloth.diagnostics.finite {
             return Err(invalid(
                 "non-finite derived mass, strain or contact geometry",
             ));
         }
+        check_cancel(&cancelled)?;
         Ok(cloth)
     }
 
@@ -486,6 +520,14 @@ impl Cloth {
         self.diagnostics = self.measure_errors(&self.positions, &self.velocities);
     }
     fn measure_errors(&self, positions: &[Vec3], velocities: &[Vec3]) -> Diagnostics {
+        self.measure_errors_with_contact(positions, velocities, self.contact_errors(positions).0)
+    }
+    fn measure_errors_with_contact(
+        &self,
+        positions: &[Vec3],
+        velocities: &[Vec3],
+        contact_error: f64,
+    ) -> Diagnostics {
         let mut diagnostics = self.diagnostics.clone();
         diagnostics.seam_assembly_remaining =
             self.seam_remaining.iter().copied().fold(0., f64::max);
@@ -500,7 +542,7 @@ impl Cloth {
             .iter()
             .map(|s| length(sub(s.a.position(positions), s.b.position(positions))))
             .fold(0., f64::max);
-        diagnostics.max_contact_error = self.contact_errors(positions).0;
+        diagnostics.max_contact_error = contact_error;
         diagnostics.kinetic_energy = self
             .masses
             .iter()
@@ -523,7 +565,14 @@ impl Cloth {
 fn invalid(message: &str) -> SimulationError {
     SimulationError::InvalidInput(message.into())
 }
-fn validate(input: &ClothInput) -> Result<(), SimulationError> {
+fn check_cancel(cancelled: &impl Fn() -> bool) -> Result<(), SimulationError> {
+    if cancelled() {
+        Err(SimulationError::Cancelled)
+    } else {
+        Ok(())
+    }
+}
+fn validate(input: &ClothInput, cancelled: &impl Fn() -> bool) -> Result<(), SimulationError> {
     let n = input.positions.len();
     if n < 3
         || input.triangles.is_empty()
@@ -534,13 +583,24 @@ fn validate(input: &ClothInput) -> Result<(), SimulationError> {
             "require vertices, material coordinates and one material per triangle",
         ));
     }
-    if !input.positions.iter().copied().all(finite)
-        || !input.material_uv.iter().flatten().all(|v| v.is_finite())
-    {
-        return Err(invalid("non-finite rest/material coordinates"));
+    for (i, (&position, uv)) in input.positions.iter().zip(&input.material_uv).enumerate() {
+        if i % CANCELLATION_CHECK_INTERVAL == 0 {
+            check_cancel(cancelled)?;
+        }
+        if !finite(position) || !uv.iter().all(|v| v.is_finite()) {
+            return Err(invalid("non-finite rest/material coordinates"));
+        }
     }
     let mut unique_triangles = BTreeSet::new();
-    for (tri, mat) in input.triangles.iter().zip(&input.triangle_materials) {
+    for (i, (tri, mat)) in input
+        .triangles
+        .iter()
+        .zip(&input.triangle_materials)
+        .enumerate()
+    {
+        if i % CANCELLATION_CHECK_INTERVAL == 0 {
+            check_cancel(cancelled)?;
+        }
         if tri.iter().any(|&i| i >= n) || tri[0] == tri[1] || tri[1] == tri[2] || tri[2] == tri[0] {
             return Err(invalid("triangle contains invalid/repeated vertex index"));
         }
@@ -591,7 +651,10 @@ fn validate(input: &ClothInput) -> Result<(), SimulationError> {
             ));
         }
     }
-    for stitch in &input.stitches {
+    for (i, stitch) in input.stitches.iter().enumerate() {
+        if i % CANCELLATION_CHECK_INTERVAL == 0 {
+            check_cancel(cancelled)?;
+        }
         if !stitch.compliance.is_finite() || stitch.compliance < 0. {
             return Err(invalid("invalid stitch compliance"));
         }
@@ -609,12 +672,18 @@ fn validate(input: &ClothInput) -> Result<(), SimulationError> {
         }
     }
     let mut pinned = BTreeSet::new();
-    for pin in &input.pins {
+    for (i, pin) in input.pins.iter().enumerate() {
+        if i % CANCELLATION_CHECK_INTERVAL == 0 {
+            check_cancel(cancelled)?;
+        }
         if pin.vertex >= n || !finite(pin.target) || !pinned.insert(pin.vertex) {
             return Err(invalid("invalid or duplicate pin"));
         }
     }
-    for collider in &input.colliders {
+    for (i, collider) in input.colliders.iter().enumerate() {
+        if i % CANCELLATION_CHECK_INTERVAL == 0 {
+            check_cancel(cancelled)?;
+        }
         let valid = match *collider {
             Collider::Ground { height } => height.is_finite(),
             Collider::Torso { center, radii } => {

@@ -1,0 +1,1440 @@
+{
+  "schema_version": 1,
+  "product_build": "2026.1.237 (r58920)",
+  "status": "partial-observed-presence-and-read-only-values",
+  "counts": {
+    "records": 61,
+    "complete_behavior_contracts": 0
+  },
+  "limitations": [
+    "No control presence/value is a complete executed behavior or parity claim.",
+    "Accepted ranges, invalid input, cancellation and gesture/transaction boundaries remain untested.",
+    "Unlabeled toolbar icons and canvas navigation are not silently assigned names.",
+    "Rendered default vendor fabric/avatar/texture assets are not supplied to implementers.",
+    "Initial state values do not imply immutable factory defaults."
+  ],
+  "records": [
+    {
+      "id": "MDUI-A03CAC69E9BC",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Simulate"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": "Space",
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-5B57407F5E8A",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Select/Move"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 1,
+      "enabled": null,
+      "shortcut": "Q",
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-24C5FE5D2E0C",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Select Mesh (Brush)"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-A56837B3ACE9",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Sculpt"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-52AE4C57BF6B",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Edit Styleline"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-87625520BFCD",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Edit Tack"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-063AD2BE5A37",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Edit Rip"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-B4C2CA7758D1",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Reset 2D Arrangement (All)"
+      ],
+      "kind": "AXButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": null,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-486A75C40B86",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Fold Arrangement"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-4B54726622E8",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Re-drape 3D Arrangement"
+      ],
+      "kind": "AXButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": null,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-12B643FC36EA",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Edit Sewing"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-14D0C6C9C542",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Edit Topology"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-716CBCEC36A1",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Edit Line (3D Pattern)"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-A22CF7054D63",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Edit Texture (3D)"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-C5B284E61BE6",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Select/Move Button"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-3F94C73CA401",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Zipper"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-B24EC8EB5D68",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Edit Piping"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-8AC111F262E5",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Select Binding"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-434E2F62A946",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Press"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-DD75E14FF83B",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Edit Measure (Avatar)"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-71034CACA0BC",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Play Motion"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": false,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-BAF98EAD70C1",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Transform Pattern"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 1,
+      "enabled": null,
+      "shortcut": "A",
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-87FC07884F6D",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Edit Pattern"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": "Z",
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-B4626B684A2A",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Polygon"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": "H",
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-AE49A7523060",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Internal Polygon/Line"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": "G",
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-BBE11F1B7699",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Auto Fitting"
+      ],
+      "kind": "AXButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": null,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-CC5926B649B0",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Edit Sewing"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": "B",
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-582993BEC4D5",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Edit Topology"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-FCC44AC0A03D",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Steam"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-4272B8C8360D",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Seam Taping"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-12BBCFAA19B5",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Edit Texture (2D)"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": "T",
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-F077F6EB73E9",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Pleats"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-B6972F351992",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Edit Topstitch"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": "J",
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-8A493042E506",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Edit Puckering"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-E458BFCC3B49",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Edit Lacing"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_value": 0,
+      "enabled": null,
+      "shortcut": null,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Value at the first accessible empty-workspace capture; not a factory-default guarantee. Flyouts remain unobserved."
+    },
+    {
+      "id": "MDUI-73DD731921A7",
+      "parent_path": [
+        "Object Browser",
+        "tabs"
+      ],
+      "path": [
+        "Object Browser",
+        "tabs",
+        "Scene"
+      ],
+      "kind": "tab",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_active": false,
+      "evidence_ids": [
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Tab labels come from native AX descriptions and the initial selected Fabric panel, not from the blank REA tab titles. Contents remain uninspected."
+    },
+    {
+      "id": "MDUI-DFBF93DC9381",
+      "parent_path": [
+        "Object Browser",
+        "tabs"
+      ],
+      "path": [
+        "Object Browser",
+        "tabs",
+        "Fabric"
+      ],
+      "kind": "tab",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_active": true,
+      "evidence_ids": [
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Tab labels come from native AX descriptions and the initial selected Fabric panel, not from the blank REA tab titles. Contents remain uninspected."
+    },
+    {
+      "id": "MDUI-22BE936A15DB",
+      "parent_path": [
+        "Object Browser",
+        "tabs"
+      ],
+      "path": [
+        "Object Browser",
+        "tabs",
+        "Graphic"
+      ],
+      "kind": "tab",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_active": false,
+      "evidence_ids": [
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Tab labels come from native AX descriptions and the initial selected Fabric panel, not from the blank REA tab titles. Contents remain uninspected."
+    },
+    {
+      "id": "MDUI-B85387681953",
+      "parent_path": [
+        "Object Browser",
+        "tabs"
+      ],
+      "path": [
+        "Object Browser",
+        "tabs",
+        "Button"
+      ],
+      "kind": "tab",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_active": false,
+      "evidence_ids": [
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Tab labels come from native AX descriptions and the initial selected Fabric panel, not from the blank REA tab titles. Contents remain uninspected."
+    },
+    {
+      "id": "MDUI-2AC95646D1A2",
+      "parent_path": [
+        "Object Browser",
+        "tabs"
+      ],
+      "path": [
+        "Object Browser",
+        "tabs",
+        "Buttonhole"
+      ],
+      "kind": "tab",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_active": false,
+      "evidence_ids": [
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Tab labels come from native AX descriptions and the initial selected Fabric panel, not from the blank REA tab titles. Contents remain uninspected."
+    },
+    {
+      "id": "MDUI-D10BDE90614A",
+      "parent_path": [
+        "Object Browser",
+        "tabs"
+      ],
+      "path": [
+        "Object Browser",
+        "tabs",
+        "Topstitch"
+      ],
+      "kind": "tab",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_active": false,
+      "evidence_ids": [
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Tab labels come from native AX descriptions and the initial selected Fabric panel, not from the blank REA tab titles. Contents remain uninspected."
+    },
+    {
+      "id": "MDUI-23749004AE01",
+      "parent_path": [
+        "Object Browser",
+        "tabs"
+      ],
+      "path": [
+        "Object Browser",
+        "tabs",
+        "Puckering"
+      ],
+      "kind": "tab",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_active": false,
+      "evidence_ids": [
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Tab labels come from native AX descriptions and the initial selected Fabric panel, not from the blank REA tab titles. Contents remain uninspected."
+    },
+    {
+      "id": "MDUI-E8F39FDFB027",
+      "parent_path": [
+        "Object Browser",
+        "tabs"
+      ],
+      "path": [
+        "Object Browser",
+        "tabs",
+        "Trim"
+      ],
+      "kind": "tab",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_active": false,
+      "evidence_ids": [
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Tab labels come from native AX descriptions and the initial selected Fabric panel, not from the blank REA tab titles. Contents remain uninspected."
+    },
+    {
+      "id": "MDUI-A0E11631C871",
+      "parent_path": [
+        "Object Browser",
+        "tabs"
+      ],
+      "path": [
+        "Object Browser",
+        "tabs",
+        "Zipper"
+      ],
+      "kind": "tab",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_active": false,
+      "evidence_ids": [
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ],
+      "note": "Tab labels come from native AX descriptions and the initial selected Fabric panel, not from the blank REA tab titles. Contents remain uninspected."
+    },
+    {
+      "id": "MDUI-1BC2DE7798F1",
+      "parent_path": [
+        "workspace",
+        "panels"
+      ],
+      "path": [
+        "workspace",
+        "panels",
+        "3D Window"
+      ],
+      "kind": "panel",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_visible": true,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ]
+    },
+    {
+      "id": "MDUI-53AC84335015",
+      "parent_path": [
+        "workspace",
+        "panels"
+      ],
+      "path": [
+        "workspace",
+        "panels",
+        "2D Pattern Window"
+      ],
+      "kind": "panel",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_visible": true,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ]
+    },
+    {
+      "id": "MDUI-049C28A70306",
+      "parent_path": [
+        "workspace",
+        "panels"
+      ],
+      "path": [
+        "workspace",
+        "panels",
+        "Object Browser"
+      ],
+      "kind": "panel",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_visible": true,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ]
+    },
+    {
+      "id": "MDUI-368438642D6A",
+      "parent_path": [
+        "workspace",
+        "panels"
+      ],
+      "path": [
+        "workspace",
+        "panels",
+        "Property Editor"
+      ],
+      "kind": "panel",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "initial_visible": true,
+      "evidence_ids": [
+        "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",
+        "CUA-INITIAL-WORKSPACE-20261114"
+      ]
+    },
+    {
+      "id": "MDUI-C4D778FBD6EE",
+      "parent_path": [
+        "Settings",
+        "Preferences",
+        "Graphic Options"
+      ],
+      "path": [
+        "Settings",
+        "Preferences",
+        "Graphic Options",
+        "Antialiasing"
+      ],
+      "kind": "preference",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "x4",
+      "visible_options": [
+        "Off",
+        "x2",
+        "x4",
+        "x8",
+        "x16"
+      ],
+      "evidence_ids": [
+        "ev_e9a1b227223ca8f4e3efbf93974d4f1229a21c372b8af7aa8e515418a3c2c6c7"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-983A9BA8A066",
+      "parent_path": [
+        "Settings",
+        "Preferences",
+        "Graphic Options"
+      ],
+      "path": [
+        "Settings",
+        "Preferences",
+        "Graphic Options",
+        "Normal Blending Method"
+      ],
+      "kind": "preference",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Alpha Blending",
+      "visible_options": null,
+      "evidence_ids": [
+        "ev_e9a1b227223ca8f4e3efbf93974d4f1229a21c372b8af7aa8e515418a3c2c6c7"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-07D89DE16440",
+      "parent_path": [
+        "Settings",
+        "Preferences",
+        "Graphic Options"
+      ],
+      "path": [
+        "Settings",
+        "Preferences",
+        "Graphic Options",
+        "Transparency Rendering Method"
+      ],
+      "kind": "preference",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Naive Ordered",
+      "visible_options": null,
+      "evidence_ids": [
+        "ev_e9a1b227223ca8f4e3efbf93974d4f1229a21c372b8af7aa8e515418a3c2c6c7"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-7EF0A806219B",
+      "parent_path": [
+        "Settings",
+        "Preferences",
+        "Graphic Options"
+      ],
+      "path": [
+        "Settings",
+        "Preferences",
+        "Graphic Options",
+        "Set Maximum Image Resolution for Rendering"
+      ],
+      "kind": "preference",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "4096 x 4096 pixels",
+      "visible_options": null,
+      "evidence_ids": [
+        "ev_e9a1b227223ca8f4e3efbf93974d4f1229a21c372b8af7aa8e515418a3c2c6c7"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-1CAB593C6164",
+      "parent_path": [
+        "Settings",
+        "Grid Properties",
+        "2D Grid"
+      ],
+      "path": [
+        "Settings",
+        "Grid Properties",
+        "2D Grid",
+        "Auto Adjust Distance with Zoom"
+      ],
+      "kind": "property",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": true,
+      "unit": null,
+      "evidence_ids": [
+        "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-80BDB2EAFA26",
+      "parent_path": [
+        "Settings",
+        "Grid Properties",
+        "2D Grid"
+      ],
+      "path": [
+        "Settings",
+        "Grid Properties",
+        "2D Grid",
+        "Show 2D Grid"
+      ],
+      "kind": "property",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": true,
+      "unit": null,
+      "evidence_ids": [
+        "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-356B1B1C1EC9",
+      "parent_path": [
+        "Settings",
+        "Grid Properties",
+        "2D Grid"
+      ],
+      "path": [
+        "Settings",
+        "Grid Properties",
+        "2D Grid",
+        "Snap to Grid"
+      ],
+      "kind": "property",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": false,
+      "unit": null,
+      "evidence_ids": [
+        "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-AD6B04C749B0",
+      "parent_path": [
+        "Settings",
+        "Grid Properties",
+        "2D Grid"
+      ],
+      "path": [
+        "Settings",
+        "Grid Properties",
+        "2D Grid",
+        "Distance"
+      ],
+      "kind": "property",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 10,
+      "unit": "mm",
+      "evidence_ids": [
+        "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-068DF137FB0A",
+      "parent_path": [
+        "Settings",
+        "Grid Properties",
+        "2D Grid"
+      ],
+      "path": [
+        "Settings",
+        "Grid Properties",
+        "2D Grid",
+        "2D Arrow Key Movement"
+      ],
+      "kind": "property",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 10,
+      "unit": "mm",
+      "evidence_ids": [
+        "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-7249DAEE4FE0",
+      "parent_path": [
+        "Settings",
+        "Grid Properties",
+        "3D Grid"
+      ],
+      "path": [
+        "Settings",
+        "Grid Properties",
+        "3D Grid",
+        "Axes"
+      ],
+      "kind": "property",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 120,
+      "unit": "brightness; scale/range unobserved",
+      "evidence_ids": [
+        "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-AD1FC7933DC3",
+      "parent_path": [
+        "Settings",
+        "Grid Properties",
+        "3D Grid"
+      ],
+      "path": [
+        "Settings",
+        "Grid Properties",
+        "3D Grid",
+        "Grid Lines"
+      ],
+      "kind": "property",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 80,
+      "unit": "brightness; scale/range unobserved",
+      "evidence_ids": [
+        "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-C1E85CD184C4",
+      "parent_path": [
+        "Settings",
+        "Grid Properties",
+        "3D Grid"
+      ],
+      "path": [
+        "Settings",
+        "Grid Properties",
+        "3D Grid",
+        "Show 3D Grid"
+      ],
+      "kind": "property",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": true,
+      "unit": null,
+      "evidence_ids": [
+        "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5"
+      ],
+      "changed_by_investigator": false
+    },
+    {
+      "id": "MDUI-5E0794204A7D",
+      "parent_path": [
+        "Settings",
+        "Grid Properties",
+        "3D Grid"
+      ],
+      "path": [
+        "Settings",
+        "Grid Properties",
+        "3D Grid",
+        "3D Arrow Key Movement"
+      ],
+      "kind": "property",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 10,
+      "unit": "mm",
+      "evidence_ids": [
+        "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5"
+      ],
+      "changed_by_investigator": false
+    }
+  ]
+}
