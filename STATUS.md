@@ -16,6 +16,8 @@ delivered DXF runtime source
 [WF-20261114-DXF-001](parity/reports/WF-20261114-DXF-001.json), now stale after the
 sewing changes. Earlier source-pinned outcomes and failures remain retained.
 PR33 head and merge each have zero workflow runs; Actions remains `enabled:false`.
+The balance evidence branch `9caa8374` is public in open
+[PR34](https://github.com/thematheusmello/weftforge/pull/34).
 
 **Keep GitHub Actions and Pages disabled until the entire project is complete.**
 The user requested this to stop development costs. Repository `enabled:false`
@@ -144,8 +146,8 @@ remain unobserved. The one-click manual diagnosis question is pending. This is
 input noncompletion, not absence; preserve the earlier Rectangle observation.
 See [dated research notes](spec/features/SEW-002-runtime-notes-20261114.md).
 
-1. Publish the clean-checked current-source balance report with its failures
-   intact, preserving runtime ancestry and the original 132-file bundle.
+1. Verify final PR34 metadata from a clean checkout, then merge normally with
+   Actions still disabled and the original 132-file bundle unchanged.
 2. Complete material-strain attribution at committed candidate `6c45535cb312f7fed8ad872ee87b6ba5e5974e35`
    in `.local/strain-attribution-ui-20261114/`: local build gates, independent
    unchanged-control regression, real desktop and packaged CLI checks. The
