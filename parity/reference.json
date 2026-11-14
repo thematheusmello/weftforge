@@ -1068,9 +1068,11 @@
       "PAT-011",
       "SEW-001",
       "SEW-004",
-      "FILE-001"
+      "FILE-001",
+      "PAT-002",
+      "SEW-002"
     ],
-    "unobserved_areas": "Broad/advanced behavior, most dialogs/panels, ranges/errors/modifiers, numeric resize, 5 mm and limit/cancellation resolution cases, sewn constraints after remeshing, sewing execution, simulation/caches, broader interoperability and performance; bounded original rectangle and PD20/PD10 loops do not complete these groups.",
+    "unobserved_areas": "Broad/advanced behavior, many dialogs/panels, ranges/errors/modifiers, numeric resize,5 mm and limit/cancellation resolution cases, sewn constraints after remeshing, completed/reversed sewing and independent curved arc-length measurements, simulation/caches, broader interoperability and performance. Bounded rectangle, PD 20/PD10, curve/history and first partial-side observations do not complete these groups.",
     "documentation_registry_groups_mapped": 56,
     "completed_reference_workflow_contracts": 0,
     "total_actual_reference_features": null,
@@ -1079,11 +1081,13 @@
       "spec/features/PAT-003-runtime-20261114.md",
       "spec/observations/REF-PAT-003-RECTANGLE-001-pd20.json",
       "spec/features/PAT-011-runtime-20261114.md",
-      "spec/observations/REF-PAT-011-RESOLUTION-001-pd20-pd10.json"
+      "spec/observations/REF-PAT-011-RESOLUTION-001-pd20-pd10.json",
+      "spec/features/SEW-002-runtime-20261114.md",
+      "spec/observations/REF-SEW-002-FREE-PARTIAL-001.json"
     ],
     "runtime_component_catalog": "spec/inventory/md-2026.1.237-components.json",
-    "runtime_component_observations": 304,
-    "combined_menu_component_observations": 893
+    "runtime_component_observations": 313,
+    "combined_menu_component_observations": 902
   },
   "known_contradictions": [
     {
@@ -1106,32 +1110,27 @@
   "intentional_exclusions": [
     "Vendor billing, activation and storefront administration are excluded from the replacement feature set."
   ],
-  "qualification": "Provisional settings baseline. Detailed menu/component presence, original rectangle creation/history, fixed-unit physical/boundary measurements, and bounded 20-to-10-mm edit/history/save/export/process-reopen are observed. Broad contracts and WeftForge comparison remain incomplete; zero verified functional-parity claims. Whole-window AX gaps and earlier startup failures remain explicit.",
+  "qualification": "Provisional settings baseline. Menu/component presence, original rectangle creation/history, fixed-unit physical/boundary measurements, bounded 20-to-10-mm edit/history/save/export/process-reopen, one curved-edge gesture/history and a 100 mm first-side sewing preview are observed. Broad contracts and WeftForge comparison remain incomplete; zero verified functional-parity claims. Earlier AX/startup/input limitations remain explicit.",
   "latest_access_observation": {
-    "timestamp": "2026-11-14T03:20:58.797790+00:00",
-    "evidence_id": "ev_6d18e2118fd1bcaa6568188d754f8a3974bfbc18c774f906b94e211f2bd48f56",
-    "observed_state": "Saved original 200 by 300 mm rectangle reopened after normal process quit/relaunch: Particle Distance 10 mm, 1127 vertices, 2149 faces, both selected boundary totals 1000.0 mm, simulation off.",
+    "timestamp": "2026-11-14T04:29:52.423271+00:00",
+    "evidence_id": "ev_102ef94168a0b4cab79e4b0bc124470af857fc779d686c7533bdd4cb1d664d0f",
+    "observed_state": "Saved separate original two-panel curved checkpoint; Edit Sewing selected; simulation off; no selection or modal; unfinished Free Sewing preview removed by switching tools. No completed seam observed.",
     "current_observed_blocker": null,
     "access_handled_by": "Account-holder handled trial activation; investigator performed no credential, terms or licensing actions.",
     "license_type_or_expiry": "not inspected",
     "actions_executed": [
-      "normal application quit/relaunch",
-      "nonbinding Welcome close",
-      "File > Open > Project for owned original PD10 fixture",
-      "two Proceed actions through observed low-space warning",
-      "Edit > Select All"
+      "new original numeric two-panel construction",
+      "one curved-edge gesture, Undo and Redo",
+      "first-side numeric100 mm Free Sewing preview",
+      "2D Zoom Extents All after unexpected viewport displacement",
+      "tool switch removed unfinished preview",
+      "Save As separate owned curved checkpoint"
     ],
     "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
-    "accessibility_nodes": 214,
-    "truncated": true,
-    "gaps": [
-      "AX actions unavailable at path [103]: AXError -25202",
-      "AX role unavailable at path [103]: AXError -25202",
-      "AX title unavailable at path [103]: AXError -25202",
-      "AX value unavailable at path [103]: AXError -25202",
-      "AX child count unavailable at path [103]: AXError -25202"
-    ],
-    "limitation": "All stated target fields were read; the whole window capture has one unrelated AX node attribute failure and is not complete.",
+    "accessibility_nodes": 92,
+    "truncated": false,
+    "gaps": [],
+    "limitation": "This final blank-property state has no AX gaps. Earlier selected-pattern records retain an unrelated node attribute failure. No completed/reversed sewing, independent curved export or new-checkpoint reopen is claimed.",
     "privacy": "Account greeting and raw commercial UI remain private."
   },
   "access_history": [
@@ -1166,6 +1165,33 @@
         "Accessibility capture was disabled"
       ],
       "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e"
+    },
+    {
+      "timestamp": "2026-11-14T03:20:58.797790+00:00",
+      "evidence_id": "ev_6d18e2118fd1bcaa6568188d754f8a3974bfbc18c774f906b94e211f2bd48f56",
+      "observed_state": "Saved original 200 by 300 mm rectangle reopened after normal process quit/relaunch: Particle Distance 10 mm, 1127 vertices, 2149 faces, both selected boundary totals 1000.0 mm, simulation off.",
+      "current_observed_blocker": null,
+      "access_handled_by": "Account-holder handled trial activation; investigator performed no credential, terms or licensing actions.",
+      "license_type_or_expiry": "not inspected",
+      "actions_executed": [
+        "normal application quit/relaunch",
+        "nonbinding Welcome close",
+        "File > Open > Project for owned original PD10 fixture",
+        "two Proceed actions through observed low-space warning",
+        "Edit > Select All"
+      ],
+      "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+      "accessibility_nodes": 214,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [103]: AXError -25202",
+        "AX role unavailable at path [103]: AXError -25202",
+        "AX title unavailable at path [103]: AXError -25202",
+        "AX value unavailable at path [103]: AXError -25202",
+        "AX child count unavailable at path [103]: AXError -25202"
+      ],
+      "limitation": "All stated target fields were read; the whole window capture has one unrelated AX node attribute failure and is not complete.",
+      "privacy": "Account greeting and raw commercial UI remain private."
     }
   ],
   "baseline_change_note": "Revision 1 retained and not frozen: new read-only unit, configured preference and post-restart graphics observations append evidence without changing settings. Regional numeric parsing and other qualifying conditions remain incomplete; a missing displayed default simulation-property path is recorded without causal inference."
