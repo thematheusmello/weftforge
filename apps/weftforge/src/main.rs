@@ -2216,10 +2216,17 @@ impl eframe::App for Studio {
                     ui.set_height(h - 20.0);
                     self.inspector(ui);
                 });
-            ui.columns(2, |cols| {
-                self.patterns(&mut cols[0]);
-                self.garment(&mut cols[1]);
-            });
+            // Columns inherit the parent max rect, so bound them above the transport.
+            ui.allocate_ui_with_layout(
+                Vec2::new(ui.available_width(), h),
+                egui::Layout::top_down(egui::Align::Min),
+                |ui| {
+                    ui.columns(2, |cols| {
+                        self.patterns(&mut cols[0]);
+                        self.garment(&mut cols[1]);
+                    });
+                },
+            );
         });
         if self.search {
             let mut open = true;
@@ -2719,6 +2726,38 @@ mod tests {
                 frame(&mut app);
                 let output = frame(&mut app);
                 let nodes = &output.platform_output.accesskit_update.unwrap().nodes;
+                let canvases: Vec<_> = output
+                    .shapes
+                    .iter()
+                    .filter_map(|shape| match &shape.shape {
+                        egui::Shape::Rect(rect)
+                            if rect.fill == Color32::from_rgb(31, 36, 40)
+                                || rect.fill == Color32::from_rgb(28, 32, 36) =>
+                        {
+                            Some(rect.rect)
+                        }
+                        _ => None,
+                    })
+                    .collect();
+                assert_eq!(canvases.len(), 2);
+                let transport = nodes
+                    .iter()
+                    .find(|(_, node)| node.label() == Some("Play"))
+                    .unwrap()
+                    .1
+                    .bounds()
+                    .unwrap();
+                let frame = Rect::from_min_size(Pos2::ZERO, Vec2::from(size));
+                for canvas in canvases {
+                    assert!(
+                        frame.contains_rect(canvas),
+                        "canvas outside {size:?}/busy={busy}: {canvas:?}"
+                    );
+                    assert!(
+                        canvas.bottom() <= transport.y0 as f32,
+                        "canvas overpaints transport at {size:?}/busy={busy}: {canvas:?}, {transport:?}"
+                    );
+                }
                 let mut labels = vec![
                     "Open…",
                     "Undo",
