@@ -899,6 +899,15 @@ fn joined_geometry(
         .position;
     let sub = |a: [f64; 2], b: [f64; 2]| std::array::from_fn(|axis| a[axis] - b[axis]);
     let length = |v: [f64; 2]| v[0].hypot(v[1]);
+    // Reserve evaluation, affine-parameter, subdivision and norm-comparison roundoff before accepting a geometric bound.
+    let roundoff = |points: &[[f64; 2]]| {
+        256.0
+            * f64::EPSILON
+            * points
+                .iter()
+                .map(|&point| length(point).next_up())
+                .fold(0.0, f64::max)
+    };
     let interior = |t: f64| t.is_finite() && t > 1.0e-6 && t < 1.0 - 1.0e-6;
     match (left.controls, right.controls) {
         (None, None) => {
@@ -906,8 +915,8 @@ fn joined_geometry(
             let t = lengths[0] / (lengths[0] + lengths[1]);
             let join = std::array::from_fn(|axis| a[axis] + (b[axis] - a[axis]) * t);
             ensure(
-                interior(t) && length(sub(join, m)) <= TOLERANCE,
-                "Join needs nondegenerate collinear straight curves with 1e-6 < t < 1-1e-6",
+                interior(t) && (length(sub(join, m)) + roundoff(&[a, m, b])).next_up() <= TOLERANCE,
+                "Join needs nondegenerate collinear straight curves with 1e-6 < t < 1-1e-6 and error including f64 roundoff <= 1e-12 m",
             )?;
             Ok((None, t))
         }
@@ -947,6 +956,7 @@ fn joined_geometry(
                 let left_control = lerp(ac, cd);
                 let right_control = lerp(cd, db);
                 let join = lerp(left_control, right_control);
+                let budget = roundoff(&[a, c, d, m, e, f, b, controls[0], controls[1]]);
                 // Bernstein weights are nonnegative and sum to one: this bounds every curve point.
                 if [[a, c, d, m], [m, e, f, b]]
                     .into_iter()
@@ -954,7 +964,7 @@ fn joined_geometry(
                     .any(|(actual, candidate)| {
                         actual.into_iter().zip(candidate).any(|(a, b)| {
                             let error = length(sub(a, b));
-                            !error.is_finite() || error > TOLERANCE
+                            !error.is_finite() || (error + budget).next_up() > TOLERANCE
                         })
                     })
                 {

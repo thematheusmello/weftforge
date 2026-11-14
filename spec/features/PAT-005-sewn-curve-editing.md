@@ -58,6 +58,10 @@ placement, grain and material IDs/values survive. Native **Join with next
 boundary** includes pending inspector changes and the join in one typed
 command/transaction, one revision and one undo step. It uses the existing worker
 cancellation, mesh invalidation and fresh selection/draft handling.
+Rejection retains the pending draft, numeric edit text and input focus as well
+as the accepted document/history. A successful join clears the prior numeric
+edit buffer and focus because the retained ID now has parent control values;
+later Tab/blur must not replay the child's old text.
 
 Only two straight curves or two compatible cubic children are supported. For
 straight curves, recover `t` as left length / combined length, and check that the
@@ -76,11 +80,29 @@ stationary joins. Each candidate must satisfy `1e-6 < t < 1-1e-6`, matching the
 split command's supported range. Reconstruct the parent controls as
 `P1=A+(C-A)/t` and `P2=B+(F-B)/(1-t)`.
 
-Subdivide that candidate at `t` with de Casteljau. Require the Euclidean norm of
+Subdivide that candidate at `t` with de Casteljau. Bound the Euclidean norm of
 every difference between corresponding original/reconstructed child controls,
-including endpoints, to be at most `1e-12 m`. The Bernstein weights are
+including endpoints. The Bernstein weights are
 nonnegative and sum to one, so the largest control difference bounds the error
 at **every** child parameter; finite point samples do not determine acceptance.
+That geometric bound alone is insufficient for f64 evaluation and remapping.
+Reserve `256 * f64::EPSILON * S` metres, where `S` is the maximum Euclidean norm
+of any original or candidate-parent control point (including endpoints), rounded
+up. Require each control difference **plus** that reserve to be at most the
+unchanged `1e-12 m` limit; round the final sum upward before comparison. The
+same reserve applies to the straight shared-point bound. Large absolute
+coordinates can exhaust the precision budget even for otherwise exact joins;
+they are conservatively rejected.
+
+With IEEE unit roundoff `u=EPSILON/2`, the reserve is `512*u*S`. The loose
+allocation covers both Bernstein evaluations (`64*u*S`), three levels of
+de Casteljau arithmetic (`64*u*S`), old/new interval and child-parameter affine
+arithmetic (`128*u*S`, using the cubic derivative bound `|P'| <= 6*S`), and
+control-difference/norm comparison (`32*u*S`). Their sum is below the reserve,
+leaving room for higher-order rounding terms. Candidate parameter reconstruction
+need not be exact: the geometric bound is checked using the actual recovered
+f64 parameter and actual stored parent controls.
+
 Candidates that pass must agree on `t` within `1e-12`, or the join is ambiguous
 and fails. No surviving candidate, mixed straight/cubic representation,
 degenerate geometry, corners and shape changes fail without fitting or snapping.
@@ -128,6 +150,10 @@ preserve history. An in-process egui button
 test checks a join with pending inspector changes commits once, invalidates a
 worker, and preserves document/redo on rejection. It is source evidence, not an
 observed desktop run.
+Additional regressions retain the concrete high-coordinate case where the
+geometric guard passes but a child's near-end f64 evaluation exceeds `1e-12 m`,
+and exercise focused numeric text, pending drafts, AX/pointer Join, Tab and
+undo/redo through the full in-process app UI.
 
 Actual native acceptance is pending a separately identified executable. Start
 empty; create two 0.4 by 0.6 m rectangles at X=0 and X=1. Select the first top

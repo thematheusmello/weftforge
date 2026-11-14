@@ -407,3 +407,35 @@ fn join_rejects_numerically_ambiguous_or_extreme_parameter_reconstruction() {
     let (editor, left, _) = children(PARENT, 5.0e-7, false);
     rejects_with_redo(editor, left, "1e-6 < t");
 }
+
+#[test]
+fn join_rejects_a_full_domain_roundoff_error_above_the_unchanged_tolerance() {
+    let [a, m, b] = [
+        [913.1126541019662, 0.5],
+        [968.7824350386107, 0.500000000001],
+        [977.3265791058585, 0.5],
+    ];
+    let mut editor = Editor::default();
+    editor
+        .execute(Command::AddPolygon {
+            name: "Floating-point boundary witness".into(),
+            vertices: vec![a, m, b, [b[0], 0.8], [a[0], 0.8]],
+        })
+        .unwrap();
+    let curve = editor.project.pieces[0].boundary[0];
+    let right = editor.project.pieces[0].boundary[1];
+    let mut candidate = editor.project.curve(curve).unwrap().clone();
+    candidate.end = editor.project.curve(right).unwrap().end;
+    let length = |a: [f64; 2], b: [f64; 2]| (a[0] - b[0]).hypot(a[1] - b[1]);
+    let t = length(a, m) / (length(a, m) + length(m, b));
+    assert!(length(candidate.evaluate(&editor.project, t).unwrap(), m) <= TOLERANCE);
+    let old = editor
+        .project
+        .curve(curve)
+        .unwrap()
+        .evaluate(&editor.project, 0.9999)
+        .unwrap();
+    let joined = candidate.evaluate(&editor.project, t * 0.9999).unwrap();
+    assert!(length(old, joined) > TOLERANCE, "{old:?} versus {joined:?}");
+    rejects_with_redo(editor, curve, "1e-12");
+}
