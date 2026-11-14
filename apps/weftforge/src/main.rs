@@ -605,9 +605,14 @@ impl Studio {
             };
         }
     }
-    fn history(&mut self, redo: bool) {
+    fn history(&mut self, ctx: &egui::Context, redo: bool) {
         if !self.commit_draft() {
             return;
+        }
+        // Restored values must not inherit the focused field's old edit text.
+        if let Some(id) = ctx.memory(|memory| memory.focused()) {
+            ctx.data_mut(|data| data.remove::<String>(id));
+            ctx.memory_mut(|memory| memory.surrender_focus(id));
         }
         if if redo {
             self.editor.redo()
@@ -808,10 +813,10 @@ impl Studio {
                 self.export(true);
             }
             if ui.button("Undo").clicked() {
-                self.history(false);
+                self.history(ui.ctx(), false);
             }
             if ui.button("Redo").clicked() {
-                self.history(true);
+                self.history(ui.ctx(), true);
             }
             if ui.button("Commands ⌘K").clicked() {
                 self.search = true;
@@ -976,7 +981,9 @@ impl Studio {
                     ui.label("Warp stiffness N/m"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut material.warp_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)));
                     ui.label("Weft stiffness N/m"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut material.weft_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)));
                     ui.label("Bend N·m"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut material.bending_stiffness).speed(0.00001).range(0.0..=1.0e8).clamp_existing_to_range(false)));
-                    draft.color_pending|=ui.color_edit_button_rgb(&mut material.color).changed();
+                    // RGB conversion can round unchanged values while drawing the widget.
+                    let mut color=material.color;
+                    if ui.color_edit_button_rgb(&mut color).changed() { material.color=color; draft.color_pending=true; }
                     commit|=draft.color_pending && ui.input(|input|input.pointer.any_released());
                 }
                 });
@@ -1477,12 +1484,12 @@ impl eframe::App for Studio {
                 )
             })
         {
-            self.history(true);
+            self.history(&ctx, true);
         } else if self.rectangle.is_none()
             && !ctx.egui_wants_keyboard_input()
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::Z))
         {
-            self.history(false);
+            self.history(&ctx, false);
         }
         if self.rectangle.is_none()
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::K))
@@ -1633,8 +1640,8 @@ impl eframe::App for Studio {
                                 }
                                 "Export OBJ" => self.export(false),
                                 "Export SVG" => self.export(true),
-                                "Undo" => self.history(false),
-                                "Redo" => self.history(true),
+                                "Undo" => self.history(&ctx, false),
+                                "Redo" => self.history(&ctx, true),
                                 "Reset simulation" => {
                                     self.reset_simulation();
                                 }
@@ -1786,6 +1793,164 @@ mod tests {
         assert!(
             (segment_distance(Pos2::new(0.5, 1.), Pos2::ZERO, Pos2::new(1., 0.)) - 1.).abs() < 1e-6
         );
+    }
+
+    #[test]
+    fn focused_numeric_history_restore_survives_blur_and_retains_redo() {
+        use egui::accesskit::{Action, ActionRequest, NodeId, TreeId};
+        fn frame(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            events: Vec<egui::Event>,
+        ) -> egui::FullOutput {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1450., 1800.))),
+                    events,
+                    ..Default::default()
+                },
+                |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+            )
+        }
+        fn action(target_node: NodeId, action: Action) -> egui::Event {
+            egui::Event::AccessKitActionRequest(ActionRequest {
+                action,
+                target_tree: TreeId::ROOT,
+                target_node,
+                data: None,
+            })
+        }
+        fn button(output: &egui::FullOutput, label: &str) -> (NodeId, Pos2) {
+            let (id, node) = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(_, node)| {
+                    node.label() == Some(label) && node.supports_action(Action::Click)
+                })
+                .unwrap();
+            let bounds = node.bounds().unwrap();
+            (
+                *id,
+                Pos2::new(
+                    ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                    ((bounds.y0 + bounds.y1) * 0.5) as f32,
+                ),
+            )
+        }
+        fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+            egui::Event::Key {
+                key,
+                physical_key: None,
+                pressed: true,
+                repeat: false,
+                modifiers,
+            }
+        }
+        for pointer in [false, true] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = Studio::empty();
+            app.editor
+                .execute(Command::AddRectangle {
+                    name: "Panel".into(),
+                    origin: [0., 0.],
+                    width: 0.4,
+                    height: 0.6,
+                })
+                .unwrap();
+            let piece = app.editor.project.pieces[0].id;
+            app.editor
+                .execute(Command::SetGrain {
+                    piece,
+                    angle: 0.125,
+                })
+                .unwrap();
+            app.selected = Some(piece);
+            let before = app.editor.project.clone();
+            let output = frame(&ctx, &mut app, vec![]);
+            let (grain, grain_node) = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(_, node)| node.numeric_value() == Some(0.125))
+                .unwrap();
+            let grain = *grain;
+            let display_before = grain_node.value().unwrap().to_owned();
+            frame(&ctx, &mut app, vec![action(grain, Action::Focus)]);
+            frame(&ctx, &mut app, vec![]);
+            let output = frame(
+                &ctx,
+                &mut app,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text("0.25".into()),
+                ],
+            );
+            assert_eq!(app.editor.project, before);
+            assert_eq!(app.draft.as_ref().unwrap().grain_angle, Some(0.25));
+            let (undo, pos) = button(&output, "Undo");
+            if pointer {
+                for pressed in [true, false] {
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![
+                            egui::Event::PointerMoved(pos),
+                            egui::Event::PointerButton {
+                                pos,
+                                button: egui::PointerButton::Primary,
+                                pressed,
+                                modifiers: egui::Modifiers::NONE,
+                            },
+                        ],
+                    );
+                }
+            } else {
+                frame(&ctx, &mut app, vec![action(undo, Action::Click)]);
+            }
+            assert_eq!(app.editor.project.piece(piece).unwrap().grain_angle, 0.125);
+            assert!(
+                app.editor.can_redo(),
+                "redo immediately after Undo; pointer={pointer}"
+            );
+            let output = frame(&ctx, &mut app, vec![]);
+            let grain_node = &output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(id, _)| *id == grain)
+                .unwrap()
+                .1;
+            assert_eq!(grain_node.value(), Some(display_before.as_str()));
+            let output = frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+            );
+            assert_eq!(
+                app.editor.project.piece(piece).unwrap().grain_angle,
+                0.125,
+                "after blur; pointer={pointer}"
+            );
+            assert!(app.editor.can_redo(), "redo after blur; pointer={pointer}");
+            let mut restored = before;
+            restored.revision = app.editor.project.revision;
+            assert_eq!(app.editor.project, restored);
+            let (redo, _) = button(&output, "Redo");
+            frame(&ctx, &mut app, vec![action(redo, Action::Click)]);
+            frame(&ctx, &mut app, vec![]);
+            assert_eq!(app.editor.project.piece(piece).unwrap().grain_angle, 0.25);
+        }
     }
 
     #[test]
@@ -2362,7 +2527,7 @@ mod tests {
         assert!((max[0] - min[0] - 0.2).abs() < 1.0e-12);
         assert!((max[1] - min[1] - 0.3).abs() < 1.0e-12);
         assert_eq!(app.selected, Some(piece));
-        app.history(false);
+        app.history(&ctx, false);
         assert!(app.editor.project.pieces.is_empty());
         assert!(!app.editor.can_undo());
         assert!(app.editor.can_redo());
@@ -2411,7 +2576,7 @@ mod tests {
         assert_eq!(app.editor.project.pieces.len(), 1);
         assert_eq!(app.editor.project.resolution, pending_resolution);
         assert!(app.draft.is_none());
-        app.history(false);
+        app.history(&ctx, false);
         assert!(app.editor.project.pieces.is_empty());
         assert_eq!(app.editor.project.resolution, before.resolution);
         assert!(!app.editor.can_undo());
