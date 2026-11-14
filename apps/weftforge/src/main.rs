@@ -919,8 +919,8 @@ impl Studio {
             // Explicit scopes keep auto-ID edit buffers stable as dynamic rows appear.
             ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("creation")),|ui| {
             ui.separator(); ui.label("Pattern name"); ui.text_edit_singleline(&mut self.name);
-            ui.horizontal(|ui| { ui.label("W / H m"); for value in &mut self.size { ui.add(egui::DragValue::new(value).speed(0.01).range(0.01..=5.0)); } });
-            ui.horizontal(|ui| { ui.label("X / Y m"); for value in &mut self.coordinate { ui.add(egui::DragValue::new(value).speed(0.01)); } });
+            ui.horizontal(|ui| { ui.label("W / H m"); for value in &mut self.size { ui.add(numeric_value(ui,value).speed(0.01).range(0.01..=5.0)); } });
+            ui.horizontal(|ui| { ui.label("X / Y m"); for value in &mut self.coordinate { ui.add(numeric_value(ui,value).speed(0.01)); } });
             if ui.button("Add rectangle").clicked() {
                 self.execute(Command::AddRectangle { name:self.name.clone(),origin:self.coordinate,width:self.size[0],height:self.size[1] });
                 self.select(self.editor.project.pieces.last().map(|piece|piece.id));
@@ -948,11 +948,11 @@ impl Studio {
                     if let Some(controls)=&mut curve.controls {
                         for (index,point) in controls.iter_mut().enumerate() {
                             ui.label(format!("P{} control X / Y m",index+1));
-                            ui.horizontal(|ui| { for value in point { commit|=numeric_commit(&ui.add(egui::DragValue::new(value).speed(0.001))); } });
+                            ui.horizontal(|ui| { for value in point { commit|=numeric_commit(&ui.add(numeric_value(ui,value).speed(0.001))); } });
                         }
                     }
                     ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("split")),|ui| {
-                        ui.horizontal(|ui| { ui.label("Split parameter t"); ui.add(egui::DragValue::new(&mut self.split_t).speed(0.01)); });
+                        ui.horizontal(|ui| { ui.label("Split parameter t"); ui.add(numeric_value(ui,&mut self.split_t).speed(0.01)); });
                     });
                     ui.small("Interior curve parameter, not arc length. Sewing is partitioned without changing point pairs.");
                     if ui.button("Split selected curve").clicked() { split=Some(curve.id); }
@@ -961,26 +961,26 @@ impl Studio {
                 }
                 ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("piece",piece.id))),|ui| {
                 if let Some(dimensions)=&mut draft.dimensions {
-                    ui.horizontal(|ui| { ui.label("Size m"); for value in dimensions { commit|=numeric_commit(&ui.add(egui::DragValue::new(value).speed(0.005).range(0.01..=5.0).clamp_existing_to_range(false))); } });
+                    ui.horizontal(|ui| { ui.label("Size m"); for value in dimensions { commit|=numeric_commit(&ui.add(numeric_value(ui,value).speed(0.005).range(0.01..=5.0).clamp_existing_to_range(false))); } });
                 }
                 if let Some(placement)=&mut draft.placement {
                     ui.label("Arrange X / Y / Z m");
-                    ui.horizontal(|ui| { for value in &mut placement.translation { commit|=numeric_commit(&ui.add(egui::DragValue::new(value).speed(0.01))); } });
+                    ui.horizontal(|ui| { for value in &mut placement.translation { commit|=numeric_commit(&ui.add(numeric_value(ui,value).speed(0.01))); } });
                     ui.label("Rotate X / Y / Z radians");
-                    ui.horizontal(|ui| { for value in &mut placement.rotation { commit|=numeric_commit(&ui.add(egui::DragValue::new(value).speed(0.02))); } });
+                    ui.horizontal(|ui| { for value in &mut placement.rotation { commit|=numeric_commit(&ui.add(numeric_value(ui,value).speed(0.02))); } });
                 }
                 if let Some(angle)=&mut draft.grain_angle {
                     ui.label("Warp angle radians");
                     ui.small("0 = +U (right); positive turns toward +V (up).");
-                    commit|=numeric_commit(&ui.add(egui::DragValue::new(angle).speed(0.02)));
+                    commit|=numeric_commit(&ui.add(numeric_value(ui,angle).speed(0.02)));
                 }
                 if let Some(material)=&mut draft.material {
                     let count=self.editor.project.pieces.iter().filter(|piece|piece.material==material.id).count();
                     ui.label(format!("Shared fabric · {count} pieces")); ui.small("Changes affect every assigned piece. Uncalibrated approximation.");
-                    ui.label("Mass/area kg/m²"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut material.areal_density).speed(0.01).range(0.001..=100.0).clamp_existing_to_range(false)));
-                    ui.label("Warp stiffness N/m"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut material.warp_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)));
-                    ui.label("Weft stiffness N/m"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut material.weft_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)));
-                    ui.label("Bend N·m"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut material.bending_stiffness).speed(0.00001).range(0.0..=1.0e8).clamp_existing_to_range(false)));
+                    ui.label("Mass/area kg/m²"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.areal_density).speed(0.01).range(0.001..=100.0).clamp_existing_to_range(false)));
+                    ui.label("Warp stiffness N/m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.warp_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)));
+                    ui.label("Weft stiffness N/m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.weft_stiffness).speed(10.0).range(0.0..=1.0e8).clamp_existing_to_range(false)));
+                    ui.label("Bend N·m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut material.bending_stiffness).speed(0.00001).range(0.0..=1.0e8).clamp_existing_to_range(false)));
                     // RGB conversion can round unchanged values while drawing the widget.
                     let mut color=material.color;
                     if ui.color_edit_button_rgb(&mut color).changed() { material.color=color; draft.color_pending=true; }
@@ -992,12 +992,12 @@ impl Studio {
             let mut remove=None;
             ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("sewing")),|ui| {
             ui.separator(); ui.strong("Sewing"); ui.checkbox(&mut self.reversed,"Reverse paired edge"); ui.label("A interval / B interval (0–1)");
-            for range in &mut self.intervals { ui.horizontal(|ui| { for value in range { ui.add(egui::DragValue::new(value).speed(0.01).range(0.0..=1.0)); } }); }
+            for range in &mut self.intervals { ui.horizontal(|ui| { for value in range { ui.add(numeric_value(ui,value).speed(0.01).range(0.0..=1.0)); } }); }
             ui.label(if self.seam_start.is_some() { "Click paired boundary in 2D." } else { "Sew edges: click two 2D boundaries." });
             for seam in &self.editor.project.seams { ui.horizontal(|ui| { ui.label(&seam.name); if ui.small_button("Remove").clicked() { remove=Some(seam.id); } }); }
             });
             ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("mesh-settings")),|ui| {
-            ui.separator(); ui.label("Mesh edge length m"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut draft.resolution).speed(0.005).range(0.005..=0.5)));
+            ui.separator(); ui.label("Mesh edge length m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut draft.resolution).speed(0.005).range(0.005..=0.5)));
             ui.label("Iterations / substeps"); ui.horizontal(|ui| {
                 ui.add(egui::DragValue::new(&mut self.settings.iterations).range(1..=50));
                 ui.add(egui::DragValue::new(&mut self.settings.substeps).range(1..=16));
@@ -1664,6 +1664,19 @@ impl eframe::App for Studio {
         self.rectangle_window(&ctx);
     }
 }
+fn numeric_value<'a>(ui: &egui::Ui, value: &'a mut f64) -> egui::DragValue<'a> {
+    let id = ui.next_auto_id();
+    let ctx = ui.ctx().clone();
+    let formatter = ui.style().number_formatter.clone();
+    egui::DragValue::new(value).custom_formatter(move |value, decimals| {
+        // egui reparses its edit buffer on blur even when the text was never changed.
+        if ctx.memory(|memory| memory.has_focus(id)) {
+            value.to_string()
+        } else {
+            formatter.format(value, decimals)
+        }
+    })
+}
 fn numeric_commit(response: &egui::Response) -> bool {
     response.drag_stopped()
         || response.lost_focus()
@@ -1793,6 +1806,307 @@ mod tests {
         assert!(
             (segment_distance(Pos2::new(0.5, 1.), Pos2::ZERO, Pos2::new(1., 0.)) - 1.).abs() < 1e-6
         );
+    }
+
+    #[test]
+    fn numeric_fields_preserve_unedited_bits_and_accept_text_steps_and_drags() {
+        fn frame(ctx: &egui::Context, value: &mut f64, events: Vec<egui::Event>) -> egui::Response {
+            let mut response = None;
+            let _ = ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(500., 200.))),
+                    events,
+                    ..Default::default()
+                },
+                |ui| {
+                    response = Some(ui.add(numeric_value(ui, value).speed(0.001)));
+                    let _ = ui.button("Done");
+                },
+            );
+            response.unwrap()
+        }
+        fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+            egui::Event::Key {
+                key,
+                physical_key: None,
+                pressed: true,
+                repeat: false,
+                modifiers,
+            }
+        }
+        for original in [
+            2.1333333333333333,
+            std::f64::consts::FRAC_PI_2,
+            -0.12345678901234566,
+            1.0e-18,
+            1.0e18,
+            -0.0,
+        ] {
+            let ctx = egui::Context::default();
+            let mut value = original;
+            let field = frame(&ctx, &mut value, vec![]);
+            ctx.memory_mut(|memory| memory.request_focus(field.id));
+            frame(&ctx, &mut value, vec![]);
+            let blurred = frame(
+                &ctx,
+                &mut value,
+                vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+            );
+            assert!(blurred.lost_focus());
+            frame(&ctx, &mut value, vec![]);
+            assert_eq!(value.to_bits(), original.to_bits());
+        }
+        let ctx = egui::Context::default();
+        let mut value = 2.1333333333333333;
+        let field = frame(&ctx, &mut value, vec![]);
+        ctx.memory_mut(|memory| memory.request_focus(field.id));
+        frame(&ctx, &mut value, vec![]);
+        let response = frame(
+            &ctx,
+            &mut value,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("2.13333".into()),
+            ],
+        );
+        assert!(response.changed());
+        assert_eq!(
+            value, 2.13333,
+            "deliberately typing the rounded display must still edit"
+        );
+        for (step, expected) in [(egui::Key::ArrowUp, 2.134), (egui::Key::ArrowDown, 2.133)] {
+            let response = frame(&ctx, &mut value, vec![key(step, egui::Modifiers::NONE)]);
+            assert!(response.changed());
+            assert_eq!(value, expected);
+        }
+        frame(
+            &ctx,
+            &mut value,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("invalid".into()),
+            ],
+        );
+        frame(
+            &ctx,
+            &mut value,
+            vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+        );
+        assert_eq!(
+            value, 2.133,
+            "invalid text must preserve the last valid value"
+        );
+        let response = frame(&ctx, &mut value, vec![]);
+        let start = response.rect.center();
+        frame(
+            &ctx,
+            &mut value,
+            vec![
+                egui::Event::PointerMoved(start),
+                egui::Event::PointerButton {
+                    pos: start,
+                    button: egui::PointerButton::Primary,
+                    pressed: true,
+                    modifiers: egui::Modifiers::NONE,
+                },
+            ],
+        );
+        let end = start + Vec2::new(20., 0.);
+        let dragged = frame(&ctx, &mut value, vec![egui::Event::PointerMoved(end)]);
+        assert!(dragged.dragged() && dragged.changed());
+        assert!(value > 2.133);
+        let released = frame(
+            &ctx,
+            &mut value,
+            vec![egui::Event::PointerButton {
+                pos: end,
+                button: egui::PointerButton::Primary,
+                pressed: false,
+                modifiers: egui::Modifiers::NONE,
+            }],
+        );
+        assert!(released.drag_stopped() && numeric_commit(&released));
+    }
+
+    #[test]
+    fn tabbing_over_unedited_curve_control_preserves_saved_f64_precision() {
+        use egui::accesskit::{Action, ActionRequest, NodeId, TreeId};
+        fn frame(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            events: Vec<egui::Event>,
+        ) -> egui::FullOutput {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1450., 1800.))),
+                    events,
+                    ..Default::default()
+                },
+                |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+            )
+        }
+        fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+            egui::Event::Key {
+                key,
+                physical_key: None,
+                pressed: true,
+                repeat: false,
+                modifiers,
+            }
+        }
+        fn control(output: &egui::FullOutput, x: f64, axis: usize) -> (NodeId, Pos2) {
+            let nodes = &output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes;
+            let row = nodes
+                .iter()
+                .find(|(_, node)| node.numeric_value() == Some(x))
+                .unwrap()
+                .1
+                .bounds()
+                .unwrap();
+            let mut fields: Vec<_> = nodes
+                .iter()
+                .filter(|(_, node)| {
+                    node.numeric_value().is_some()
+                        && node
+                            .bounds()
+                            .is_some_and(|bounds| (bounds.y0 - row.y0).abs() < 1.)
+                })
+                .collect();
+            fields.sort_by(|a, b| {
+                a.1.bounds()
+                    .unwrap()
+                    .x0
+                    .total_cmp(&b.1.bounds().unwrap().x0)
+            });
+            let (id, node) = fields[axis];
+            let bounds = node.bounds().unwrap();
+            (
+                *id,
+                Pos2::new(
+                    ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                    ((bounds.y0 + bounds.y1) * 0.5) as f32,
+                ),
+            )
+        }
+        fn click(ctx: &egui::Context, app: &mut Studio, pos: Pos2) {
+            for pressed in [true, false] {
+                frame(
+                    ctx,
+                    app,
+                    vec![
+                        egui::Event::PointerMoved(pos),
+                        egui::Event::PointerButton {
+                            pos,
+                            button: egui::PointerButton::Primary,
+                            pressed,
+                            modifiers: egui::Modifiers::NONE,
+                        },
+                    ],
+                );
+            }
+            frame(ctx, app, vec![]);
+        }
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = Studio::empty();
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Precision panel".into(),
+                origin: [2., 0.],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+        let piece = app.editor.project.pieces[0].id;
+        let curve = app.editor.project.pieces[0].boundary[2];
+        app.select_curve(Some((piece, curve)));
+        let output = frame(&ctx, &mut app, vec![]);
+        let cubic = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| node.label() == Some("Cubic Bezier"))
+            .unwrap()
+            .0;
+        let output = frame(
+            &ctx,
+            &mut app,
+            vec![egui::Event::AccessKitActionRequest(ActionRequest {
+                action: Action::Click,
+                target_tree: TreeId::ROOT,
+                target_node: cubic,
+                data: None,
+            })],
+        );
+        let original = app.editor.project.curve(curve).unwrap().controls.unwrap();
+        assert_eq!(
+            original,
+            [[2.2666666666666666, 0.6], [2.1333333333333333, 0.6]]
+        );
+        let (_, p1_y) = control(&output, original[0][0], 1);
+        let (p2_x, _) = control(&output, original[1][0], 0);
+        click(&ctx, &mut app, p1_y);
+        frame(
+            &ctx,
+            &mut app,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("0.8".into()),
+            ],
+        );
+        let output = frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+        );
+        assert_eq!(
+            output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .focus,
+            p2_x
+        );
+        let output = frame(&ctx, &mut app, vec![]);
+        let (_, p2_y) = control(&output, original[1][0], 1);
+        click(&ctx, &mut app, p2_y);
+        frame(
+            &ctx,
+            &mut app,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("0.8".into()),
+            ],
+        );
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+        );
+        let dir = exit_test_directory("numeric-precision");
+        let path = dir.join("precision.weftforge");
+        app.path = Some(path.clone());
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::S, egui::Modifiers::COMMAND)],
+        );
+        let saved = Project::load(&path).unwrap();
+        fs::remove_dir_all(dir).unwrap();
+        assert_eq!(
+            saved.curve(curve).unwrap().controls,
+            Some([[original[0][0], 0.8], [original[1][0], 0.8]])
+        );
+        assert_eq!(saved, app.editor.project);
     }
 
     #[test]
