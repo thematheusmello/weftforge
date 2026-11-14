@@ -57,7 +57,7 @@ settings and prior diagnostics match the original exactly, excluding step time.
 All180 meaningful peak associations agree independently within2.23e-16 strain.
 The original quality failures remain failures.
 
-Actual native PID99058 uses executable
+The accepted native capture used PID99058 and executable
 `95fa1b7cb24b8de1a6b507330c2fe43ece0efe5a14226bb28c39f922fcee28c3`.
 It displays Candidate back / Warp +24.12% after actual60-frame assembly, then
 Candidate front / Warp +32.35% after120-frame gravity drape. Root independently
@@ -65,7 +65,8 @@ viewed the original captures. Both150-vertex/228-triangle OBJ outputs have exact
 expected topology/decimal exports; parsed position/UV error is at most6.94e-18m.
 Stage authoring bytes are identical (revision28); the immutable v2 input is not
 overwritten. Seam/contact labels are four-decimal display values, not raw zeros.
-The app remains saved/paused at completed Drape, total3s; no simulation job is live.
+At capture closure the app was saved/paused at completed Drape, total3s.
+It was subsequently quit for the separate empty-project workflow below.
 
 Packaged CLI `c7e63b52d60b293357ba60c49dfed3643472ab177352f2501ebfb207f7ed1092`
 passes the three-command checker2792: actual fit exits1 for quality and preserves
@@ -137,27 +138,53 @@ created no constructor or geometry, so M:N reference proportions/history/files
 remain unobserved. The one-click manual diagnosis question is pending. This is
 input noncompletion, not absence; preserve the earlier Rectangle observation.
 See [dated research notes](spec/features/SEW-002-runtime-notes-20261114.md).
+Passive REA refresh at18:57:29–36Z confirms the same live process/window and
+executable, Rectangle value1,95 nontruncated AX nodes and no visible constructor.
+No closed pattern is visible; the isolated2Ddot is not interpreted as authored
+geometry. No activation/input occurred and no manual-click outcome is inferred.
+Private evidence is `ev_bc8e54db21a2003e2b5ac036a9a9fb173c20404528915a02d9288edb9a6b616a`;
+reviewed facts SHA is `570833c3be8f2d3bfe595b7687c8f1e1bc67812e8f640fabf9697683d8d661a7`.
 
-1. Follow the approved private observational overlay and single analytical case
-   in `.local/force-balance-design-20261114/`. Root reviewed its closed-form
-   arithmetic. Freeze patch/schema/driver/analyzer/binary before execution;
-   original-shirt replay requires a later root review of the analytical result.
+The original Harbor empty-project workflow is now active separately in
+`.local/empty-shirt-authoring-20261114/`, frozen plan
+`0f07ac196c8e285c1441dc3a16f0027f65c2b901b4630abfa180a216b56e1ddd`.
+Same-binary fresh PID47128 starts with a verified v3 revision0 empty document.
+Both14-vertex panels are created through actual numeric staging/Close pattern;
+all28 frozen vertices/straight curves match independent saved-source parsing at
+revision2. Checkpoint SHA is `e4828356cf37524c1106b2c8c12a6cef2dd813fd4e9f5930db9399a2a029b6f9`.
+The first routed draft was rejected for a degenerate edge and left0pieces;
+its correction reached the unchanged frozen design. Arrangement,grain,sewing,
+save/reopen and planned height-edit history remain in progress. No simulation
+is authorized for this workflow yet. It cannot replace the failed weak-grain
+benchmark or qualify a complete garment gate.
+
+1. Follow the approved single original-shirt diagnostic in
+   `.local/force-balance-design-20261114/shirt-run-001/`. The private analytical
+   overlay passed258 producer and321 independent checks, exact audited/ordinary
+   state equality, all6 cancellation polls and invalid-settings retention.
+   Independent receipt SHA is `bef9d0337b7508aea1cd542e8c81e6813180bda12da03d40664ddfea82f34074`.
+   Keep base6c455 plus observational patch13f927… explicitly separate from
+   production. Preregister the new driver/analyzer/binary; trace only frames
+   24/27/60/180 and compare all181 states exactly with production6c455.
+   Fixed caps remain420s/256MiB; no tuning,other scenes or blind extension.
    No production solver changes or tuning are authorized. Correction accounting
    alone cannot establish physical contact reactions or equilibrium.
-2. Recheck the reference handoff state read-only, retaining all raw account/UI
-   evidence privately. The manual click question remains pending until observed
-   outcome or an answer; do not inject further reference input meanwhile.
+2. Finish Harbor UI authoring/history/persistence under the frozen plan; root
+   must qualify the authored state and fixed physical plan before simulation.
+   The reference manual click question remains pending; do not inject further
+   reference input meanwhile. All raw account/UI evidence remains private.
 3. Continue native/reference construction and all remaining roadmap work.
 
 All reported Rust builds, original three-case diagnostics, independent visibility
 regression, CLI and native simulations/checks are terminal. The retained native
-application is open, not a running simulation job. Unified evidence preparation
+accepted capture application was closed; new PID47128 is authoring without a
+simulation job. Unified evidence preparation
 71767 and clean40401/36772/59030/47879 are terminal0. The private force-balance
-agent is preparing the frozen observational overlay. Its final build/static
-check25436 is active (reported source fmt PID40763,Clippy40821); no analytical
-execution is reported yet. Its analytical-only run is authorized after frozen
-patch/schema/driver/analyzer/binary preregistration. Base37 manifest is
+agent's build/static25436 and analytical99416 are terminal0. Wrapper41625 and
+children41947/41949/41950 are confirmed terminal; only the separately approved
+original-shirt diagnostic is being prepared, with no execution handle reported
+yet. Base37 manifest is
 `c42d45e0c9bae69065a4b4f01bc5fcbc897499c0904b59b32a326c81ee23a3da`.
-Reference read-only inventory36748 is active at the last observation. Recheck
+Reference read-only inventory36748 and REA observation64096 are terminal0. Recheck
 actual handles/ledgers before resuming. Raw ledgers stay
 ignored; use separate Cargo targets per worktree.
