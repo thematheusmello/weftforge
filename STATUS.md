@@ -8,8 +8,8 @@ Every remaining roadmap gate stays in scope.
 ## Published and recoverable state
 
 Public repository: https://github.com/thematheusmello/weftforge.
-Published main: `8d8ba72d85e9a82fabeb93c5f290b543f14d2436`
-([exact native I/O PR28](https://github.com/thematheusmello/weftforge/pull/28));
+Published main: `9d0e1a8a8f7b0100d3420a11b8765fc4d2f3e5f0`
+([949-path mapping PR29](https://github.com/thematheusmello/weftforge/pull/29));
 all eight push/PR platform and evidence checks passed.
 [Source PR21](https://github.com/thematheusmello/weftforge/pull/21) is retained
 as ancestor `68bdb9fb774177f074f69edc1b2965336670cc9f`.
@@ -23,22 +23,24 @@ remains at older `8419363` and discloses its inspector defect. No native binarie
 ship yet. Distribution notices, platform launch/package QA and signing remain.
 Historical tags and failed or stale evidence have not been rewritten.
 
-Current branch: `feat/sewing-context-949`.
-Current bounded native I/O candidate source: `1528e3662380a4a74c3b70d3ef9b11f2c607af5f`;
+Current branch: `feat/native-curve-join`.
+Retained bounded native I/O candidate source: `1528e3662380a4a74c3b70d3ef9b11f2c607af5f`;
 native `a16acde0fb010a34b1452881ca9865ac3a3ef58908ca50e2719177fb9ab3b838`,
 CLI `820b8329de53fe6cc167533d3e0f0b55953b14e0ff74e5d6fda4cead77b9f0b7`.
 The shared JSON parser enables existing float_roundtrip support without a new
 crate or lockfile change. Independent v1/v2 bit regressions and two analytic
 membrane tests pass; production solver math and the failed fixture are unchanged.
 
-The [native IEEE report](parity/reports/WF-20261114-NATIVE-IEEE-001.json) passes
-its declared file-I/O subset: legacy migration/save/reopen, extreme stiffness,
+The [native IEEE report](parity/reports/WF-20261114-NATIVE-IEEE-001.json) passed
+its declared file-I/O subset on its identified historical source: legacy migration/save/reopen, extreme stiffness,
 modern untouched fields and rejected loads, focused Quit retention and explicit
 recovery/reopen. The current map has949 IDs; the executable was packaged at the
 902-ID snapshot. After CI exposed an ignored autosave fixture and CRLF-dependent test preparation,
 all package bytes remained identical. Native actions remain attributed to1528;
 source4194 is separately qualified by exact rebuilt desktop/CLI/resource identity.
-The sole30-file scoped delta is the uncompiled migration-test preparation line.
+The sole30-file scoped delta at that qualification was migration-test preparation.
+The report is now stale after exact-join source integration; its original
+execution, package hashes, qualification and artifacts remain unchanged.
 
 The completed `359ac5b` / `3ed0ab22` rectangle/curve/history/cancellation reports
 are retained as stale after parser configuration and test sources changed. Their
@@ -60,7 +62,8 @@ The editable core retains stable points, straight/cubic curves, pieces, material
 and oriented seam intervals with explicit correspondence. Typed transactions,
 undo/redo and revision invalidation remain shared by adapters. Subdivision
 preserves reversed, partial and gathered physical point pairs at parameter t;
-joining, internal features and arc-length semantics remain open. Undo retains
+bounded inverse joining is now integrated in source; broader join/trim acceptance,
+internal features and arc-length semantics remain open. Undo retains
 the allocator high-water mark intentionally, preventing reuse on abandoned history.
 
 The f64 CPU XPBD solver includes orthotropic membrane strain, dihedral bending,
@@ -97,11 +100,13 @@ simulation jobs and persistent undo remain open.
 
 The combined runtime code passes **79 Rust tests**, formatting, strict Clippy
 and `cargo xtask verify`: **54 Python checks**, the packaged902-ID map and current
-CLI help. The PR28 gate passes all54 Python checks, the **928-ID** map and
+CLI help. These gates describe the retained pre-join source. The PR28 gate passes all54 Python checks, the **928-ID** map and
 registry after completed artifact packaging. The current metadata-only checkpoint
 again passes79 Rust tests, formatting, strict Clippy and xtask with54 Python
 checks and the **949-ID** map. All30 scoped runtime/test source inputs remain
-byte-identical to the qualified4194 source. The standard unsigned native package
+byte-identical to the qualified4194 source at that metadata checkpoint.
+The new join source has89 workspace tests in its isolated worker; integrated
+gates and the declared native join subset now pass. The standard unsigned native package
 builds. Official Python MCP SDK1.28.1 also passes its legacy2025-11-25 smoke on
 CLI `820b8329`, with five tools, four decoded replies and zero stderr. A modern
 external client and distribution gates remain open.
@@ -180,7 +185,7 @@ Older original shirt workflow `f00e` / `ff391447` passed its declared fitting
 limits: strain 0.08071753, seam 2.79e-8 m, contact about 1.50e-16 m. It is stale.
 The later anisotropic shirt **failed**: strain 0.26930346 > 0.15, despite passing
 seam/contact limits; the headless repeat matched within 1e-12. See
-[issue16](https://github.com/thematheusmello/weftforge/issues/16).
+[issue 16](https://github.com/thematheusmello/weftforge/issues/16).
 Tight-shirt/refinement failures remain in
 [issue8](https://github.com/thematheusmello/weftforge/issues/8); its 0.96 m body
 circumference is below the 1.131 m torso. No fixture or tolerance was substituted
@@ -227,35 +232,52 @@ No current report qualifies as a complete reference parity pass.
 
 ## Active work and next steps
 
-1. Publish the reviewed949-ID sewing-context crosswalk and bounded case metadata;
-   exact native I/O PR28 is merged with all eight checks green and issue26 closed.
-2. Independently review and integrate isolated exact shape-preserving join commit
-   `eaed5f9247cf36e2a65de9a8e62682637e9d5664` and correction
-   `343e771e3ca2a32704eaa1cca45b8c8e31d1e67a`;88 workspace tests/Clippy/xtask pass
-   in its own worktree. Additional coalesced-focus/placement regressions are being
-   corrected before integration. Native join acceptance is pending and this is not general
-   reference join semantics. Integration must stale/revalidate affected evidence.
-3. Continue preferences, contextual dialogs/ranges/errors and end-to-end workflows;
-   map every new observation batch. A bounded Shortcuts navigation retry retained
-   an input-driver guard gap; no preference change or category-content observation
-   is claimed.
-4. Keep native initialization phase/worker timing, complete garment fitting and
-   reference comparison gates open. Continue construction, simulation/contact,
+1. Publish the current native join checkpoint after artifact closure, detached
+   clean-checkout registry/map/evaluator checks and all eight push/PR CI checks.
+   PR28 and PR29 are merged; all their checks and main CI passed. Published
+   dashboard bytes match `9d0e1a8` exactly (SHA-256 cae10536…5905f6).
+2. The current join candidate is source `26dd585`, native `9c8b0936` and CLI `ca49402e`.
+   All 31 scoped runtime/test inputs remain identical after metadata integration.
+   Its 89 Rust tests, strict Clippy, formatting and xtask: 54 Python checks/949-ID
+   map pass. The declared native subset and independent portable evaluator pass;
+   this does not accept a broad feature, fitting workflow or reference parity.
+3. Independently review the next isolated seam-reversal implementation. It reuses
+   UpdateSeam, stable per-seam row identities and endpoint guides. Its source/UI
+   checks and native acceptance remain separate and pending; no root code changed.
+4. Continue preferences, contextual dialogs/ranges/errors and end-to-end workflows.
+   The bounded Shortcuts retry retained an input-driver guard gap, with no settings
+   change or shortcut-content claim. Continue construction, simulation/contact,
    animation, avatar, rendering, interchange, printing, automation and delivery.
-   Verified parity stays zero; the complete product denominator remains unknown.
+   Full product scope stays active; verified parity stays 0/56 and the denominator
+   remains incomplete.
 
-Reference_lab has returned the desktop input lease to root. Root's own
-candidate PID1335 is idle, saved, with an unedited focused grain value; do not
-replace its isolated package. Its read-only REA capture has93 nodes, no gaps or
-truncation and a matched executable digest. Independent I/O verification/bundle
-is complete. No root Cargo job is live. Corrected79-test/Clippy/xtask gates pass; all257 tracked artifact
-hashes, clean-checkout registry/map checks and fixed-case oracle replay passed
-with command-local core.autocrlf=true. PR28 then passed all eight CI checks and merged. Pages deployment passed and
-HTTP200 dashboard bytes exactly match8d8ba72 (SHA-256cae10536…5905f6).
-Generated external caches and private
-research remain retained; do not remove unrelated files or change protections.
+The native join workflow started empty, created two original 0.4 × 0.6 m panels and
+a reversed sewn cubic, split at t = 0.4 and joined while child P1 X was focused.
+Curve 9 returned to the original parent and both seam records survived. Untouched
+focus, later Tab and rejected corner Join retain exact accepted file bytes;
+Undo/Redo each advance one revision and restore construction. Coarse/fine exports
+have 194/2296 vertices and 325/4448 positive triangles. Reopen restores revision 14
+and allocator 24. The independent parent/child/sewn polynomial bounds are below
+2.12e-16 m, with zero affine-interval error.
 
-The source-only anisotropic review independently reproduces the retained weak-warp
-strain0.26930346 failure and finds no justified production math change. Its two
-analytic regressions are integrated; calibration/convergence and issue16 remain
-open. Parser performance was not benchmarked.
+Official Python MCP SDK 1.28.1 / legacy 2025-11-25 lists five tools, advertises
+JoinCurve, matches 104 floating fields, metadata and native joined bytes and preserves an error
+sentinel; stderr is empty. Modern external clients and live-GUI MCP remain open.
+
+Root retains the UI lease. Current own candidate PID 77275 is saved at the final
+corner-error checkpoint, two pieces/two seams/2296 vertices, Curve A/curve7
+selected, simulation off, no modal or active gesture. Read-only REA captured the
+preceding error with 105 nodes, no gaps/truncation and matched kernel executable
+hashes. No root Cargo job is live. Private original inputs and all failed or
+ambiguous driver attempts remain retained.
+
+An internal full-disk condition interrupted save-dialog snapshots. The private
+2.26 GB installer was relocated to Expansion with exact byte and extended-attribute
+checks; its original Lab path is a symlink. All other Lab evidence/fixtures were
+rehash-verified. That retained archive and generated build caches require the
+external volume; current isolated native candidate remains internal. No user
+files, protections, permissions or reference garment state were changed.
+
+The source-only anisotropic review reproduces retained weak-warp strain 0.26930346
+and finds no justified production math change. Calibration/convergence and
+issue 16 remain open. Parser performance was not benchmarked.

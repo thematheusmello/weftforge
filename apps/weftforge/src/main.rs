@@ -332,6 +332,40 @@ impl Studio {
         let commands = draft.commands(&self.editor.project);
         commands.is_empty() || self.apply_command(Command::Transaction(commands))
     }
+    fn join_next_curve(&mut self, ctx: &egui::Context, curve: Id, focused: Option<egui::Id>) {
+        let frame = ctx.cumulative_frame_nr();
+        let current = ctx
+            .memory(|memory| memory.focused())
+            .filter(|&id| ctx.data_mut(|data| data.get_temp::<String>(id)).is_some());
+        let mut commands = self
+            .draft
+            .as_ref()
+            .filter(|draft| draft.revision == self.editor.project.revision)
+            .map_or_else(Vec::new, |draft| draft.commands(&self.editor.project));
+        commands.push(Command::JoinCurve { curve });
+        let command = if commands.len() == 1 {
+            commands.pop().unwrap()
+        } else {
+            Command::Transaction(commands)
+        };
+        if self.apply_command(command) {
+            for id in focused.into_iter().chain(current) {
+                // The retained curve's controls must not inherit its child's edit text.
+                ctx.data_mut(|data| data.remove::<String>(id));
+                ctx.memory_mut(|memory| memory.surrender_focus(id));
+            }
+            ctx.data_mut(|data| {
+                data.insert_temp(egui::Id::new("join-blur"), (frame, [focused, current]))
+            });
+        } else if let Some(id) = current.or(focused) {
+            ctx.memory_mut(|memory| memory.request_focus(id));
+            if focused.is_some() && current.is_some() && focused != current {
+                ctx.data_mut(|data| {
+                    data.insert_temp(egui::Id::new("join-blur"), (frame, [focused, None]))
+                });
+            }
+        }
+    }
     fn select(&mut self, selected: Option<Id>) {
         if (self.selected != selected || self.selected_curve.is_some()) && self.commit_draft() {
             self.selected = selected;
@@ -900,6 +934,28 @@ impl Studio {
     fn inspector(&mut self, ui: &mut egui::Ui) {
         ui.heading("Construction");
         let mut commit = false;
+        let mut joining = false;
+        let focus_key = ui.make_persistent_id("join-input-focus");
+        let identity = (
+            self.editor.project.revision,
+            self.selected,
+            self.selected_curve,
+        );
+        if let Some(id) = ui.ctx().memory(|memory| memory.focused())
+            && ui
+                .ctx()
+                .data_mut(|data| data.get_temp::<String>(id))
+                .is_some()
+        {
+            // Keep the numeric input across the pointer press/release that activates Join.
+            ui.ctx()
+                .data_mut(|data| data.insert_temp(focus_key, (identity, id)));
+        }
+        let join_focus = ui
+            .ctx()
+            .data_mut(|data| data.get_temp::<((u64, Option<Id>, Option<Id>), egui::Id)>(focus_key))
+            .filter(|(stamp, _)| *stamp == identity)
+            .map(|(_, id)| id);
         egui::ScrollArea::vertical().id_salt("inspector").show(ui,|ui| {
             for piece in self.editor.project.pieces.clone() {
                 ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("piece-row",piece.id))),|ui| {
@@ -931,6 +987,7 @@ impl Studio {
             let mut draft=self.draft.take().filter(|draft|draft.revision==self.editor.project.revision && draft.selected==self.selected && draft.curve.as_ref().map(|curve|curve.id)==self.selected_curve)
                 .unwrap_or_else(||InspectorDraft::new(&self.editor.project,self.selected,self.selected_curve));
             let mut split=None;
+            let mut join=None;
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
                 ui.separator(); ui.strong(&piece.name);
                 if let Some(curve)=&mut draft.curve {
@@ -956,6 +1013,9 @@ impl Studio {
                     });
                     ui.small("Interior curve parameter, not arc length. Sewing is partitioned without changing point pairs.");
                     if ui.button("Split selected curve").clicked() { split=Some(curve.id); }
+                    let response=ui.button("Join with next boundary").on_hover_text("Preserve compatible straight or cubic geometry and sewing. The selected curve ID survives; unsafe joins are rejected.");
+                    joining|=response.is_pointer_button_down_on();
+                    if response.clicked() { join=Some(curve.id); }
                     ui.separator();
                     });
                 }
@@ -1007,6 +1067,7 @@ impl Studio {
             self.draft=Some(draft);
             if let Some(seam)=remove { self.execute(Command::RemoveSeam { seam }); }
             if let Some(curve)=split { self.execute(Command::SplitCurve { curve,t:self.split_t }); }
+            if let Some(curve)=join { joining=true; self.join_next_curve(ui.ctx(),curve,join_focus); }
         });
         let opening_rectangle = self.tool == Tool::Rectangle
             && self
@@ -1014,8 +1075,23 @@ impl Studio {
                 .and_then(|id| ui.ctx().read_response(id))
                 .is_some_and(|response| response.clicked());
         // Keep pending edits staged while the numeric constructor opens or remains open.
-        if commit && self.rectangle.is_none() && !opening_rectangle {
+        if commit && !joining && self.rectangle.is_none() && !opening_rectangle {
             self.commit_draft();
+        }
+        if !joining
+            && !ui.input(|input| input.pointer.any_down())
+            && !ui
+                .ctx()
+                .memory(|memory| memory.focused())
+                .is_some_and(|id| {
+                    ui.ctx()
+                        .data_mut(|data| data.get_temp::<String>(id))
+                        .is_some()
+                })
+        {
+            ui.ctx().data_mut(|data| {
+                data.remove::<((u64, Option<Id>, Option<Id>), egui::Id)>(focus_key)
+            });
         }
     }
     fn to_screen(&self, p: [f64; 2], r: Rect) -> Pos2 {
@@ -1678,8 +1754,16 @@ fn numeric_value<'a>(ui: &egui::Ui, value: &'a mut f64) -> egui::DragValue<'a> {
     })
 }
 fn numeric_commit(response: &egui::Response) -> bool {
+    // egui reports a mid-frame focus transfer's blur on the following frame too.
+    let join_blur = response
+        .ctx
+        .data_mut(|data| data.get_temp::<(u64, [Option<egui::Id>; 2])>(egui::Id::new("join-blur")))
+        .is_some_and(|(frame, ids)| {
+            response.ctx.cumulative_frame_nr().saturating_sub(frame) <= 1
+                && ids.contains(&Some(response.id))
+        });
     response.drag_stopped()
-        || response.lost_focus()
+        || (response.lost_focus() && !join_blur)
         || (response.changed() && !response.is_pointer_button_down_on() && !response.has_focus())
 }
 fn check_cancelled(cancel: &AtomicBool) -> Result<(), String> {
@@ -3202,6 +3286,455 @@ mod tests {
         assert_eq!(draft.curve.unwrap().id, next);
         app.select(Some(piece));
         assert_eq!(app.selected_curve, None);
+    }
+
+    #[test]
+    fn selected_join_button_commits_one_revision_and_rejects_pending_edits_atomically() {
+        use egui::accesskit::{Action, ActionRequest, TreeId};
+        fn frame(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            events: Vec<egui::Event>,
+        ) -> egui::FullOutput {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(700., 2000.))),
+                    events,
+                    ..Default::default()
+                },
+                |ui| app.inspector(ui),
+            )
+        }
+        fn click_join(ctx: &egui::Context, app: &mut Studio) {
+            let output = frame(ctx, app, vec![]);
+            let target_node = output
+                .platform_output
+                .accesskit_update
+                .unwrap()
+                .nodes
+                .into_iter()
+                .find(|(_, node)| {
+                    node.label() == Some("Join with next boundary")
+                        && node.supports_action(Action::Click)
+                })
+                .unwrap()
+                .0;
+            frame(
+                ctx,
+                app,
+                vec![egui::Event::AccessKitActionRequest(ActionRequest {
+                    action: Action::Click,
+                    target_tree: TreeId::ROOT,
+                    target_node,
+                    data: None,
+                })],
+            );
+        }
+        let mut app = Studio::empty();
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Join panel".into(),
+                origin: [0., 0.],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+        let piece = app.editor.project.pieces[0].id;
+        let curve = app.editor.project.pieces[0].boundary[2];
+        app.editor
+            .execute(Command::SetCurveControls {
+                curve,
+                controls: Some([[0.3, 0.8], [0.1, 0.8]]),
+            })
+            .unwrap();
+        app.editor
+            .execute(Command::SplitCurve { curve, t: 0.4 })
+            .unwrap();
+        let right = app.editor.project.curves.last().unwrap().id;
+        app.select_curve(Some((piece, curve)));
+        let before = app.editor.project.clone();
+        let mut draft = InspectorDraft::new(&before, app.selected, app.selected_curve);
+        draft.resolution = 0.09;
+        app.draft = Some(draft);
+        let (_sender, receiver) = mpsc::channel();
+        let cancel = Arc::new(AtomicBool::new(false));
+        app.job = Some(Job {
+            revision: before.revision,
+            kind: JobKind::Mesh,
+            batch: None,
+            cancel: cancel.clone(),
+            receiver,
+        });
+        app.pending_batch = Some(SimulationBatch::drape());
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        click_join(&ctx, &mut app);
+        assert_eq!(app.editor.project.revision, before.revision + 1);
+        assert_eq!(app.editor.project.resolution, 0.09);
+        assert_eq!(app.editor.project.curves.len(), before.curves.len() - 1);
+        assert_eq!(app.selected_curve, Some(curve));
+        assert!(app.editor.project.curve(right).is_none());
+        assert!(app.draft.is_none());
+        assert!(app.dirty && app.needs_mesh);
+        assert!(cancel.load(Ordering::Relaxed));
+        assert!(app.pending_batch.is_none());
+        let joined = app.editor.project.clone();
+        assert!(app.editor.undo());
+        app.rebuild();
+        assert_eq!(app.editor.project.curves, before.curves);
+        assert_eq!(app.editor.project.resolution, before.resolution);
+        app.select_curve(Some((piece, right)));
+        let before_invalid = app.editor.project.clone();
+        let mut draft = InspectorDraft::new(&before_invalid, app.selected, app.selected_curve);
+        draft.resolution = 0.08;
+        app.draft = Some(draft);
+        app.dirty = false;
+        click_join(&ctx, &mut app);
+        assert_eq!(app.editor.project, before_invalid);
+        assert_eq!(app.selected_curve, Some(right));
+        assert!(!app.dirty);
+        assert!(app.editor.can_redo());
+        assert!(app.message.contains("two straight"));
+        assert_eq!(app.draft.as_ref().unwrap().resolution, 0.08);
+        assert!(app.editor.redo());
+        app.rebuild();
+        assert_eq!(app.editor.project.curves, joined.curves);
+        assert_eq!(app.editor.project.resolution, joined.resolution);
+        assert_eq!(app.selected_curve, None);
+    }
+
+    #[test]
+    fn join_focus_keeps_failed_drafts_and_clears_successful_control_text_before_tab() {
+        use egui::accesskit::{Action, ActionRequest, NodeId, TreeId};
+        fn frame(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            events: Vec<egui::Event>,
+        ) -> egui::FullOutput {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1450., 1800.))),
+                    events,
+                    ..Default::default()
+                },
+                |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+            )
+        }
+        fn action(target_node: NodeId, action: Action) -> egui::Event {
+            egui::Event::AccessKitActionRequest(ActionRequest {
+                action,
+                target_tree: TreeId::ROOT,
+                target_node,
+                data: None,
+            })
+        }
+        fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+            egui::Event::Key {
+                key,
+                physical_key: None,
+                pressed: true,
+                repeat: false,
+                modifiers,
+            }
+        }
+        fn button(output: &egui::FullOutput, label: &str) -> (NodeId, Pos2) {
+            let (id, node) = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(_, node)| {
+                    node.label() == Some(label) && node.supports_action(Action::Click)
+                })
+                .unwrap();
+            let bounds = node.bounds().unwrap();
+            (
+                *id,
+                Pos2::new(
+                    ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                    ((bounds.y0 + bounds.y1) * 0.5) as f32,
+                ),
+            )
+        }
+        #[derive(Clone, Copy, Debug)]
+        enum JoinInput {
+            Ax,
+            Pointer,
+            Tab,
+            Focus,
+        }
+        for success in [true, false] {
+            for input in [
+                JoinInput::Ax,
+                JoinInput::Pointer,
+                JoinInput::Tab,
+                JoinInput::Focus,
+            ] {
+                let pointer = matches!(input, JoinInput::Pointer);
+                let coalesced = matches!(input, JoinInput::Tab | JoinInput::Focus);
+                let ctx = egui::Context::default();
+                ctx.enable_accesskit();
+                let mut app = Studio::empty();
+                app.editor
+                    .execute(Command::AddRectangle {
+                        name: "Focused join panel".into(),
+                        origin: [0., 0.],
+                        width: 0.4,
+                        height: 0.6,
+                    })
+                    .unwrap();
+                let piece = app.editor.project.pieces[0].id;
+                let left = app.editor.project.pieces[0].boundary[2];
+                app.editor
+                    .execute(Command::SetCurveControls {
+                        curve: left,
+                        controls: Some([[0.3, 0.8], [0.1, 0.8]]),
+                    })
+                    .unwrap();
+                app.editor
+                    .execute(Command::SplitCurve {
+                        curve: left,
+                        t: 0.4,
+                    })
+                    .unwrap();
+                let selected = if success {
+                    left
+                } else {
+                    app.editor.project.curves.last().unwrap().id
+                };
+                app.editor
+                    .execute(Command::SetGrain {
+                        piece,
+                        angle: 0.123,
+                    })
+                    .unwrap();
+                assert!(app.editor.undo());
+                app.select_curve(Some((piece, selected)));
+                let before = app.editor.project.clone();
+                let original_x = before.curve(selected).unwrap().controls.unwrap()[0][0];
+                let draft = InspectorDraft::new(&before, app.selected, app.selected_curve);
+                app.draft = Some(draft);
+                let output = frame(&ctx, &mut app, vec![]);
+                let numeric = output
+                    .platform_output
+                    .accesskit_update
+                    .as_ref()
+                    .unwrap()
+                    .nodes
+                    .iter()
+                    .find(|(_, node)| {
+                        node.numeric_value()
+                            == Some(if success || coalesced {
+                                original_x
+                            } else {
+                                before.resolution
+                            })
+                    })
+                    .unwrap()
+                    .0;
+                let current_field = if coalesced {
+                    let nodes = &output
+                        .platform_output
+                        .accesskit_update
+                        .as_ref()
+                        .unwrap()
+                        .nodes;
+                    let bounds = nodes
+                        .iter()
+                        .find(|(id, _)| *id == numeric)
+                        .unwrap()
+                        .1
+                        .bounds()
+                        .unwrap();
+                    let y = nodes
+                        .iter()
+                        .filter(|(_, node)| {
+                            node.numeric_value().is_some()
+                                && node.bounds().is_some_and(|b| {
+                                    (b.y0 - bounds.y0).abs() < 1.0 && b.x0 > bounds.x0
+                                })
+                        })
+                        .min_by(|a, b| {
+                            a.1.bounds()
+                                .unwrap()
+                                .x0
+                                .total_cmp(&b.1.bounds().unwrap().x0)
+                        })
+                        .unwrap()
+                        .0;
+                    frame(&ctx, &mut app, vec![action(y, Action::Focus)]);
+                    frame(&ctx, &mut app, vec![]);
+                    Some((y, ctx.memory(|memory| memory.focused()).unwrap()))
+                } else {
+                    None
+                };
+                let current_text = current_field
+                    .and_then(|(_, id)| ctx.data_mut(|data| data.get_temp::<String>(id)));
+                frame(&ctx, &mut app, vec![action(numeric, Action::Focus)]);
+                frame(&ctx, &mut app, vec![]);
+                if success || coalesced {
+                    app.draft
+                        .get_or_insert_with(|| {
+                            InspectorDraft::new(&before, app.selected, app.selected_curve)
+                        })
+                        .resolution = 0.08;
+                }
+                let text = if success || coalesced {
+                    format!("{original_x}0")
+                } else {
+                    "0.080".into()
+                };
+                let output = frame(
+                    &ctx,
+                    &mut app,
+                    vec![
+                        key(egui::Key::A, egui::Modifiers::COMMAND),
+                        egui::Event::Text(text.clone()),
+                    ],
+                );
+                let focused = ctx.memory(|memory| memory.focused()).unwrap();
+                assert_eq!(
+                    ctx.data_mut(|data| data.get_temp::<String>(focused)),
+                    Some(text.clone())
+                );
+                assert_eq!(app.editor.project, before);
+                let pending = app.draft.as_ref().unwrap().commands(&before);
+                let (join, pos) = button(&output, "Join with next boundary");
+                if pointer {
+                    for pressed in [true, false] {
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![
+                                egui::Event::PointerMoved(pos),
+                                egui::Event::PointerButton {
+                                    pos,
+                                    button: egui::PointerButton::Primary,
+                                    pressed,
+                                    modifiers: egui::Modifiers::NONE,
+                                },
+                            ],
+                        );
+                        if pressed || !success {
+                            assert_eq!(
+                                app.editor.project, before,
+                                "pointer pressed={pressed}, success={success}"
+                            );
+                            assert!(app.editor.can_redo());
+                            assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+                            assert_eq!(
+                                ctx.data_mut(|data| data.get_temp::<String>(focused)),
+                                Some(text.clone())
+                            );
+                        }
+                    }
+                } else {
+                    let mut events = match input {
+                        JoinInput::Tab => vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+                        JoinInput::Focus => vec![action(current_field.unwrap().0, Action::Focus)],
+                        _ => Vec::new(),
+                    };
+                    events.push(action(join, Action::Click));
+                    frame(&ctx, &mut app, events);
+                }
+                if success {
+                    let joined = app.editor.project.clone();
+                    assert_eq!(joined.revision, before.revision + 1, "pointer={pointer}");
+                    assert!(
+                        (joined.curve(left).unwrap().controls.unwrap()[0][0] - 0.3).abs() <= 1e-12
+                    );
+                    assert_eq!(
+                        ctx.data_mut(|data| data.get_temp::<String>(focused)),
+                        None,
+                        "pointer={pointer}"
+                    );
+                    if let Some((_, id)) = current_field {
+                        assert_eq!(
+                            ctx.data_mut(|data| data.get_temp::<String>(id)),
+                            None,
+                            "current numeric buffer survived coalesced Join"
+                        );
+                    }
+                    frame(&ctx, &mut app, vec![]);
+                    let output = frame(
+                        &ctx,
+                        &mut app,
+                        vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+                    );
+                    assert_eq!(
+                        app.editor.project, joined,
+                        "Tab replayed old child controls; pointer={pointer}"
+                    );
+                    let (undo, _) = button(&output, "Undo");
+                    frame(&ctx, &mut app, vec![action(undo, Action::Click)]);
+                    let undone = app.editor.project.clone();
+                    assert_eq!(undone.curves, before.curves);
+                    assert_eq!(undone.resolution, before.resolution);
+                    assert!(app.editor.can_redo());
+                    let output = frame(
+                        &ctx,
+                        &mut app,
+                        vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+                    );
+                    assert_eq!(app.editor.project, undone);
+                    assert!(app.editor.can_redo());
+                    let (redo, _) = button(&output, "Redo");
+                    frame(&ctx, &mut app, vec![action(redo, Action::Click)]);
+                    assert_eq!(app.editor.project.curves, joined.curves);
+                    assert_eq!(app.editor.project.resolution, joined.resolution);
+                } else {
+                    assert_eq!(app.editor.project, before, "pointer={pointer}");
+                    assert!(app.editor.can_redo());
+                    assert_eq!(
+                        app.draft.as_ref().unwrap().commands(&before),
+                        pending,
+                        "pointer={pointer}"
+                    );
+                    if let Some((_, id)) = current_field {
+                        assert_eq!(
+                            ctx.data_mut(|data| data.get_temp::<String>(id)),
+                            current_text
+                        );
+                    } else {
+                        assert_eq!(
+                            ctx.data_mut(|data| data.get_temp::<String>(focused)),
+                            Some(text),
+                            "pointer={pointer}"
+                        );
+                    }
+                    assert_eq!(
+                        ctx.memory(|memory| memory.focused()),
+                        Some(current_field.map_or(focused, |(_, id)| id)),
+                        "pointer={pointer}"
+                    );
+                    frame(&ctx, &mut app, vec![]);
+                    assert_eq!(app.editor.project, before, "idle after rejected {input:?}");
+                    assert!(app.editor.can_redo());
+                    assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+                    if let Some((_, id)) = current_field {
+                        assert_eq!(
+                            ctx.data_mut(|data| data.get_temp::<String>(id)),
+                            current_text
+                        );
+                    }
+                    assert_eq!(
+                        ctx.memory(|memory| memory.focused()),
+                        Some(current_field.map_or(focused, |(_, id)| id))
+                    );
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+                    );
+                    assert_eq!(app.editor.project.revision, before.revision + 1);
+                    assert_eq!(app.editor.project.resolution, 0.08);
+                    assert!(!app.editor.can_redo());
+                }
+                app.cancel();
+            }
+        }
     }
 
     #[test]

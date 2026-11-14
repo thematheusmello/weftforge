@@ -313,7 +313,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
             .as_array()
             .unwrap()
             .len(),
-        17
+        18
     );
     success(&server.call("project_create", json!({"output":project_path})));
     let initial = server.call("project_inspect", json!({"path":project_path}));
@@ -361,6 +361,91 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
         "mm"
     );
     check_rectangle_exports(&obj, &svg);
+    server.finish();
+}
+
+#[test]
+fn stdio_advertises_and_executes_join_atomically_without_overwriting_failed_output() {
+    use weftforge_core::CurveInterval;
+    let directory = Directory::new();
+    let input = directory.path("split.weftforge");
+    let output = directory.path("joined.weftforge");
+    let mut expected = Editor::default();
+    for x in [0.0, 1.0] {
+        expected
+            .execute(Command::AddRectangle {
+                name: "Panel".into(),
+                origin: [x, 0.0],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+    }
+    let curve = expected.project.pieces[0].boundary[2];
+    let other = expected.project.pieces[1].boundary[2];
+    expected
+        .execute(Command::Transaction(vec![
+            Command::SetCurveControls {
+                curve,
+                controls: Some([[0.3, 0.8], [0.1, 0.8]]),
+            },
+            Command::AddSeam {
+                name: "Sewn cubic".into(),
+                a: CurveInterval::full(curve),
+                b: CurveInterval::reversed(other),
+                correspondence: vec![[0.0, 0.0], [0.4, 0.65], [1.0, 1.0]],
+            },
+            Command::SplitCurve { curve, t: 0.4 },
+        ]))
+        .unwrap();
+    expected.project.save(&input).unwrap();
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let listed = server.request("tools/list", json!({}));
+    let schema = listed["result"]["tools"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|tool| tool["name"] == "project_execute")
+        .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|variant| variant["properties"]["type"]["const"] == "join_curve")
+        .unwrap();
+    assert_eq!(schema["properties"]["data"]["required"], json!(["curve"]));
+    assert_eq!(schema["properties"]["data"]["additionalProperties"], false);
+    assert_eq!(
+        schema["properties"]["data"]["properties"]
+            .as_object()
+            .unwrap()
+            .len(),
+        1
+    );
+    let command = Command::JoinCurve { curve };
+    let before_revision = expected.project.revision;
+    let response = server.call(
+        "project_execute",
+        json!({"input":input,"output":output,"commands":[command]}),
+    );
+    assert_eq!(success(&response)["revision"], before_revision + 1);
+    expected
+        .execute(Command::Transaction(vec![command]))
+        .unwrap();
+    assert_eq!(Project::load(&output).unwrap(), expected.project);
+    let valid = fs::read(&output).unwrap();
+    for commands in [
+        json!([{"type":"join_curve","data":{"curve":curve,"next":other}}]),
+        json!([{"type":"join_curve","data":{"curve":other}}]),
+        json!([{"type":"join_curve","data":{"curve":curve,"t":0.4}}]),
+    ] {
+        let response = server.call(
+            "project_execute",
+            json!({"input":output,"output":output,"commands":commands}),
+        );
+        assert!(response.get("error").is_some() || response["result"]["isError"] == true);
+        assert_eq!(fs::read(&output).unwrap(), valid);
+    }
     server.finish();
 }
 

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "purpose": "Source-pinned engineering crosswalk and bounded handoff queue, not a second implementation/verification status registry or a complete product inventory.",
-  "source_commit": "6401c6aa0aa1a54e1642b334dad1c5729466e0af",
+  "source_commit": "9cb2af3f86e1db03f1242542e7271ab51a9cbf64",
   "reference_build": "2026.1.237 (r58920)",
   "inputs": [
     {
@@ -20,7 +20,7 @@
   "status_authority": {
     "path": "parity/features.yaml",
     "lookup": "Join groups[].feature_ids to features[].id at the revision being reported. Read implementation_status, reference_observation_status, verification_status and freshness there; no status value is copied here.",
-    "pinned_registry_sha256": "ee8643c0aaba7b7a5ff2b766ad04d24320f31b9373c36d7ae034d02c176d00ea"
+    "pinned_registry_sha256": "0893a160f9863b80593dbe1bdc130158873ecb59eae116b3451942b9b3671a72"
   },
   "coverage_semantics": [
     "949 catalog IDs are entry-path discovery records, not the feature denominator. All previous 928 entries, 205 packets and 56 source landmarks remain; 17 input-specific Open Project controls and four selected-seam Edit-menu label paths join existing groups. No packet or broad feature is completed by these additions. Counts of groups or packets are ownership counts, not parity percentages.",
@@ -67,7 +67,7 @@
     "curves": {
       "path": "crates/weftforge-core/src/document.rs",
       "anchor": "Command::SplitCurve { curve, t } =>",
-      "scope": "Exact cubic split partitions authored seam correspondence; no join or trim implementation."
+      "scope": "Exact cubic split partitions authored seam correspondence; bounded JoinCurve reconstructs consecutive collinear lines or compatible cubic children, remaps intervals and retains separate seam records with placement-aware 1e-12 m control/roundoff bounds. General fitting/merging and trim are absent."
     },
     "mesh": {
       "path": "crates/weftforge-core/src/geometry.rs",
@@ -137,7 +137,7 @@
     "ui_properties": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "fn inspector(",
-      "scope": "Piece/curve numeric controls now have stable creation/piece/curve/sewing/mesh widget scopes; a temporary RGB buffer avoids passive rounding commits. Existing dimensions/cubic/split/placement/grain/fabric controls remain a bounded subset, not a complete property/preferences editor."
+      "scope": "Stable piece/curve numeric widget scopes and passive RGB buffering remain. Join with next boundary sends pending inspector changes and JoinCurve as one transaction; success clears superseded numeric text/focus and rejection retains draft/current input without idle commit. Existing dimensions/cubic/split/join/placement/grain/fabric controls remain a bounded subset, not a complete property/preferences editor."
     },
     "ui_pattern": {
       "path": "apps/weftforge/src/main.rs",
@@ -182,7 +182,7 @@
     "cli": {
       "path": "apps/weftforge-cli/src/main.rs",
       "anchor": "fn run()",
-      "scope": "Explicit new/inspect/rectangle/resize/curve-controls/split/grain/stiffness/export/simulate/fit/recover CLI routes."
+      "scope": "Explicit new/inspect/rectangle/resize/curve-controls/split/join/grain/stiffness/export/simulate/fit/recover CLI routes. join takes INPUT OUTPUT CURVE_ID and uses the shared JoinCurve validation/transaction path; failed edits preserve the previous output."
     },
     "mcp": {
       "path": "apps/weftforge-cli/src/mcp.rs",
@@ -192,7 +192,7 @@
     "mcp_schema": {
       "path": "apps/weftforge-cli/src/mcp.rs",
       "anchor": "fn command_schema()",
-      "scope": "Handwritten schema for the 17 nontransaction variants; must stay synchronized with typed commands and adapters."
+      "scope": "Handwritten schema for the 18 nontransaction variants, including join_curve with one curve ID; must stay synchronized with the 19 typed Command variants and adapters."
     },
     "workflow_tests": {
       "path": "crates/weftforge-core/tests/workflow.rs",
@@ -206,13 +206,13 @@
     },
     "cli_tests": {
       "path": "apps/weftforge-cli/tests/curves.rs",
-      "anchor": "fn cli_edits_and_splits_sewn_curves",
-      "scope": "Implementation-only command-line curve/split failure preservation."
+      "anchor": "fn cli_edits_splits_and_joins_sewn_curves_and_preserves_outputs_on_failure",
+      "scope": "Implementation-only subprocess checks cover curve controls, split, bounded join and previous-output preservation on rejection. These checks do not supply native/reference acceptance; native scope and qualification remain in the authoritative registry/reports."
     },
     "mcp_tests": {
       "path": "apps/weftforge-cli/tests/mcp_stdio.rs",
       "anchor": "fn stdio_authors_atomic_shared_commands",
-      "scope": "Implementation-only stdio lifecycle, schema/input validation, transactions and independently measured physical exports."
+      "scope": "Implementation-only stdio lifecycle, schema/input validation, transactions, bounded join_curve command advertisement/execution and independently measured physical exports. Native/reference qualification remains in the authoritative registry/reports."
     },
     "migration_tests": {
       "path": "crates/weftforge-core/tests/migration.rs",
@@ -3219,11 +3219,11 @@
         "json_bit_tests"
       ],
       "shared_commands": [],
-      "candidate_behavior": "Native .weftforge v2 loads/saves atomically with v1 migration. Shared serde_json round-trip f64 decoding is now enabled, with independent decimal-to-bit migration/save/reload/recovery source regressions. Prior native evidence is stale for this parser revision and fresh native revalidation is pending; commercial native formats and metadata variants remain undecoded.",
+      "candidate_behavior": "Native .weftforge v2 loads/saves atomically with v1 migration. Shared serde_json round-trip f64 decoding and independent decimal-to-bit migration/save/reload/recovery source regressions remain. Native qualification/freshness is read from the authoritative registry and reports rather than inferred from these source routes; commercial native formats and metadata variants remain undecoded.",
       "missing_functionality": [
         "Reference native decoding research; metadata preservation; exact open/save option contracts and unsupported-data reporting.",
         "Show Option to Save Metadata and Save with Thumbnail preferences are configured read-only; native thumbnail/metadata contents and future-save/default/reset behavior are not implemented by current native JSON IO.",
-        "Revalidate exact authored f64 fields through the current real native load/save/reopen path; old native results do not qualify the new parser, and the fix cannot restore values already saved after rounding."
+        "Qualify exact authored f64 fields through the real native load/save/reopen path for the current runtime source. Retained runs do not automatically qualify later source changes, and round-trip decoding cannot restore values already saved after rounding."
       ],
       "runtime_questions": [
         "Which editable objects/assets/settings and metadata are stored by each variant, and what happens on cancel, unsupported versions or missing assets?",
@@ -3542,7 +3542,8 @@
         "save-failure",
         "preference-effects"
       ],
-      "packet_id": "PACK-preference-assets"
+      "packet_id": "PACK-preference-assets",
+      "reviewed_reference_scope": "The historical eleven-page preference pass remains separate. REF-UI-SHORTCUTS-004 reaches Graphic Options and reobserves configured values/exposed alternatives, then cannot reach Shortcuts through the guarded route. Footer Close returns the original selected partial seam; no shortcut descendants/effective bindings, settings edits/reset/persistence, new catalog IDs or global settings-file byte equality were established."
     },
     {
       "id": "surface-texture-export",
@@ -5928,14 +5929,18 @@
         "mcp_schema",
         "ui_field_state",
         "ui_numeric_history",
-        "ui_modal_tests"
+        "ui_modal_tests",
+        "mcp",
+        "mcp_tests"
       ],
       "shared_commands": [
-        "SplitCurve"
+        "SplitCurve",
+        "JoinCurve"
       ],
-      "candidate_behavior": "Exact parameter-t split remaps authored seams with stable IDs and survives history/persistence; native inspector and CLI/MCP support it.",
+      "candidate_behavior": "Exact parameter-t split remaps authored seams with stable IDs; bounded JoinCurve joins the selected boundary to its consecutive oriented neighbor, including the closing pair, and retains the selected curve ID. It accepts only compatible straight/cubic inverse constructions within a placement-aware 1e-12 m control-plus-f64 bound, remaps both seam sides affinely and preserves separate seam IDs/maps. Native inspector, CLI join and MCP join_curve use the shared typed command. Native joins include pending drafts in one transaction; rejection preserves document/history/draft/current numeric input, and success clears superseded text/focus. These source routes and in-process checks do not themselves qualify native execution or reference behavior. Read the declared native join subset and its current qualification in the authoritative registry/reports; broader reference join semantics remain unknown.",
       "missing_functionality": [
-        "Runtime gesture/numeric/arc-length versus parameter contract, selection behavior, snapping and reference failure cases; joining remains separate missing scope."
+        "Reference gesture/numeric/arc-length-versus-parameter contracts, selection/snapping/failure/history semantics and independent comparison remain unknown. Bounded JoinCurve is inverse construction, not arbitrary curve fitting, corner removal, mixed straight/cubic merging or trim.",
+        "Broader native invalid-split/control branches, split Undo/Redo, large-placement and coalesced-event cases require their own declared execution. Read the UI-BOUNDED-JOIN-001 native subset and its source/executable identity, independent checks and current qualification in the authoritative registry/reports; source/in-process/CLI/MCP tests do not supply reference parity."
       ],
       "runtime_questions": [
         "Is split location arc length, parameter, projection or explicit coordinate; which IDs/selection/constraints/sewing remain and what invalid locations are rejected?"
@@ -5943,7 +5948,8 @@
       "fixture_ids": [
         "unequal-curves"
       ],
-      "packet_id": "PACK-split-boundary"
+      "packet_id": "PACK-split-boundary",
+      "reviewed_reference_scope": "PAT-005 separates independently authored WeftForge split/join implementation and native-evidence scopes from unknown reference behavior. Reference split/join interaction, defaults, general joining, continuous arc-length conversion and post-join sewing semantics remain unobserved; the separately observed sewing reversal does not qualify joining."
     },
     {
       "id": "slash-spread",
@@ -8368,7 +8374,8 @@
         "texture-panel",
         "camera-scene"
       ],
-      "packet_id": "PACK-graphic-preferences"
+      "packet_id": "PACK-graphic-preferences",
+      "reviewed_reference_scope": "The historical eleven-page preference pass remains separate. REF-UI-SHORTCUTS-004 reaches Graphic Options and reobserves configured values/exposed alternatives, then cannot reach Shortcuts through the guarded route. Footer Close returns the original selected partial seam; no shortcut descendants/effective bindings, settings edits/reset/persistence, new catalog IDs or global settings-file byte equality were established."
     },
     {
       "id": "catalog-containers",
@@ -8741,7 +8748,8 @@
         "three-pieces",
         "preference-effects"
       ],
-      "packet_id": "PACK-shortcut-preferences"
+      "packet_id": "PACK-shortcut-preferences",
+      "reviewed_reference_scope": "The historical eleven-page preference pass remains separate. REF-UI-SHORTCUTS-004 reaches Graphic Options and reobserves configured values/exposed alternatives, then cannot reach Shortcuts through the guarded route. Footer Close returns the original selected partial seam; no shortcut descendants/effective bindings, settings edits/reset/persistence, new catalog IDs or global settings-file byte equality were established."
     },
     {
       "id": "unit-display-preferences",
@@ -19925,7 +19933,7 @@
       "group_id": "project-load-save"
     }
   ],
-  "source_snapshot_note": "This reachable source/catalog pin contains all 949 reviewed IDs: the initial 589 menu records plus four selected-seam labels, and 356 components including 17 input-specific Open Project controls. All 928 prior entries, 205 packet definitions, 56 source landmarks and 18 Command variants remain. Compared with the previous source pin, the only landmark-file change normalizes CRLF in the migration test fixture builder; no new native authoring behavior is inferred. The shared f64 decoding implementation and bit regressions remain candidates, not reference parity or copied freshness. Bounded paired partial/reversal/history/document-reopen cases now refine the earlier preview-only scope. They retain refused/failed input, truncated/AX-gap captures and repeated-warning qualifications. Exact continuous correspondence, general open-option semantics, arbitrary limits/cancellation, process restart, physical sewing and broad feature completion remain open. Current status/native evidence qualification stays solely in the authoritative registry/reports; analytical membrane tests do not resolve the retained approximately 0.2693 axis-strain fitting failure.",
+  "source_snapshot_note": "This metadata/evidence pin retains the exact 949-ID catalogs, all entry records, 205 packets, 56 landmark identities/paths/anchors and queued slices. It contains the same 19 typed Command variants and bounded JoinCurve implementation as runtime source 26dd58535868aadc90e92636656c49426e02dc9c: all 31 recorded runtime/test source inputs are byte-identical at 9cb2af3f86e1db03f1242542e7271ab51a9cbf64. The actual native executable was built from 26dd585; this metadata pin does not imply a rebuild. UI-BOUNDED-JOIN-001 native scope, independent outputs, source/executable identity and qualification are read from the authoritative registry and WF-20261114-NATIVE-JOIN-001 report. Broader invalid-split/control and split-history branches, native large-placement/coalesced-event cases, general join/fitting/trim and reference split/join semantics remain outside that bounded scope. Existing source/landmark rechecks, reviewed Preferences retry limitations, current contract/catalog/registry hashes and the original 928 expansion/6401c6a/26dd585 ancestry remain retained. No feature status or pass result is copied into this map; broad parity and the approximately 0.2693 fitting failure remain open.",
   "expansion_origin": {
     "previous_map_commit": "fbe5ee08a74dc176e47a287366cbf5d1bbd0abf3",
     "previous_map_sha256": "2457e280ec2070e41748b8a3b80d8d7ba16a41f0cfa6dc0409c4f7768d178b9a",
@@ -19933,8 +19941,9 @@
     "preserved_catalog_ids": 928,
     "additional_menu_ids": 4,
     "additional_component_ids": 17,
-    "catalog_commit": "6401c6aa0aa1a54e1642b334dad1c5729466e0af",
-    "preservation_rule": "Preserve all 928 previous entry records, all 205 packet definitions, all 56 source landmarks and the first three bounded slices exactly. New input-specific Open Project controls and selected-seam contextual labels join existing groups; explicit reviewed reference rechecks refine obsolete first-side/reversal wording without completing broad contracts. Retain the source/catalog ancestor chain and authoritative status lookup."
+    "catalog_commit": "9cb2af3f86e1db03f1242542e7271ab51a9cbf64",
+    "preservation_rule": "Retain the original 928-to-949 expansion proof and its 6401c6a catalog/source anchor. All 949 entries, 205 packet definitions, 56 landmark identities/paths and first three bounded slices survive the integrated source refresh. Only explicit reviewed source/reference rechecks replace obsolete group text or landmark scope/renamed anchors; no new reference entry or feature completion follows from a WeftForge implementation button.",
+    "original_catalog_commit": "6401c6aa0aa1a54e1642b334dad1c5729466e0af"
   },
   "reviewed_contract_sources": [
     {
@@ -19954,8 +19963,8 @@
     },
     {
       "path": "spec/features/UI-preferences-runtime-20261114.md",
-      "sha256": "0a0594f2eedfbe76e5fb4ad3beda52864494084e88709be625a7ba15f58f104e",
-      "scope": "Read-only current configuration and page transitions. No preference edits/effects/ranges/reset, account/plugin action or actual autosave/retention behavior; locale/language and unprinted units remain unknown."
+      "sha256": "6a2a99f0a20db601ebe002b2f155475fdcd5dd9918ce7a8142d5d810ecebb034",
+      "scope": "Historical eleven-page read-only current configuration and page transitions. The later retry reaches Graphic Options only and cannot navigate to Shortcuts through the guarded route; it does not invalidate the earlier separate pass or supply new IDs/bindings. Preference edits/effects/ranges/reset/persistence, account/plugin actions, locale/language and unprinted units remain unknown."
     },
     {
       "path": "spec/features/SEW-002-runtime-20261114.md",
@@ -20001,57 +20010,139 @@
       "path": "spec/observations/REF-SEW-002-REVERSE-003.json",
       "sha256": "63ede576ad0130d6705bbdd1e71008561e351a6702ffe1698b900800f615e8b9",
       "scope": "Reviewed public reversal case with original protected inputs, exact entry route, categorical guide checks and history/reopen, plus capture gaps and independent-geometry limits. Canvas context menus, shortcuts, multiple selection and commercial container internals were not examined."
+    },
+    {
+      "path": "spec/features/PAT-005-sewn-curve-editing.md",
+      "sha256": "9a1145cd14c9da55959e30df6e223018bbedf89235821d5b6aafde9edfe415b3",
+      "scope": "Independent WeftForge contract for numeric controls, exact sewn split and bounded inverse JoinCurve, including affine seam remapping, placement/f64 bounds and transactional draft/focus preservation. Distinguishes broader unexecuted curve-editing branches from the separately declared UI-BOUNDED-JOIN-001 subset on runtime source 26dd585. Native execution scope, independent saved-output checks and qualification are authoritative in the registry/reports; reference join interaction/semantics remain unknown."
+    },
+    {
+      "path": "spec/features/UI-shortcuts-inspection-20261114.md",
+      "sha256": "59a5b5a0843e85061bc5dbe915d8234e1a6faa0aec5c2bb4e21ccd53d1cd7d26",
+      "scope": "Reviewed REF-UI-SHORTCUTS-004 retry: Graphic Options and unchanged current values/options were observed; guarded navigation to Shortcuts was blocked and footer Close returned the saved original garment workspace. No shortcut descendant/effective binding, settings-file byte equality, new catalog ID, setting edit/reset/persistence or parity result is supplied."
+    },
+    {
+      "path": "spec/observations/REF-UI-SHORTCUTS-004.json",
+      "sha256": "30a192327e598ce56a4d62cbf7c2ebabe8275d475abad795275ebfcd9ef52415",
+      "scope": "Reviewed public provenance separates reached Graphic Options from blocked category navigation, retained guard refusal/zero posted events and safe footer Close. Main-window before/after captures are gap-free; foreground modal uses qualified AX transitions/screenshots, not a fabricated REA result. Raw UI and host paths remain private."
     }
   ],
-  "source_rechecks": [],
+  "source_rechecks": [
+    {
+      "group_id": "split-boundary",
+      "reason": "Integrated source adds shared JoinCurve, the native inspector action with pending-draft/current-focus guards, placement-aware f64 bounds, CLI join and MCP join_curve. Replace blanket missing-join wording with this bounded source candidate while retaining general join/trim/reference semantics and a pointer to authoritative native qualification.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality",
+        "shared_commands"
+      ],
+      "source_refs": [
+        "commands",
+        "curves",
+        "ui_properties",
+        "ui_field_state",
+        "cli",
+        "cli_tests",
+        "mcp",
+        "mcp_schema",
+        "mcp_tests"
+      ]
+    },
+    {
+      "group_id": "project-load-save",
+      "reason": "The integrated document/native source changed after the earlier parser-specific map note. Describe the retained IO implementation without copying a pending/current evidence judgment; native qualification and staleness remain authoritative in the registry/reports.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "commands",
+        "ui_load",
+        "ui_save",
+        "ui_recovery"
+      ]
+    }
+  ],
   "reference_rechecks": [
     {
-      "group_id": "segment-sewing",
+      "group_id": "preference-assets",
       "changed_fields": [
-        "missing_functionality",
-        "runtime_questions",
         "reviewed_reference_scope"
       ],
-      "contract_path": "spec/features/SEW-002-paired-runtime-20261114.md",
-      "reason": "Replace blanket unconfirmed-partial wording with the separate bounded completed pair and categorical reversal while retaining the earlier interrupted-input case and unmeasured numerical/physical variants."
+      "contract_path": "spec/features/UI-shortcuts-inspection-20261114.md",
+      "reason": "Qualify the later read-only retry as reached Graphic Options with blocked Shortcuts navigation and safe Close, without overwriting the earlier historical eleven-page observation or inferring effective bindings/settings persistence."
     },
     {
-      "group_id": "sewing-editor",
+      "group_id": "shortcut-preferences",
       "changed_fields": [
-        "missing_functionality",
         "reviewed_reference_scope"
       ],
-      "contract_path": "spec/features/SEW-002-reverse-runtime-20261114.md",
-      "reason": "Reopened partial/reversed pairs retain identity/current fields and one exposed command changes categorical guides. Ordinary field/header/direct-pick behavior stays open."
+      "contract_path": "spec/features/UI-shortcuts-inspection-20261114.md",
+      "reason": "Qualify the later read-only retry as reached Graphic Options with blocked Shortcuts navigation and safe Close, without overwriting the earlier historical eleven-page observation or inferring effective bindings/settings persistence."
     },
     {
-      "group_id": "reverse-sewing",
+      "group_id": "graphic-preferences",
       "changed_fields": [
-        "missing_functionality",
-        "runtime_questions"
-      ],
-      "contract_path": "spec/features/SEW-002-reverse-runtime-20261114.md",
-      "reason": "The guide connection switch, history and document reopen are now observed; retain continuous geometry, representation and physical semantics as questions."
-    },
-    {
-      "group_id": "free-chain-sewing",
-      "changed_fields": [
-        "missing_functionality",
-        "runtime_questions",
         "reviewed_reference_scope"
       ],
-      "contract_path": "spec/features/SEW-002-paired-runtime-20261114.md",
-      "reason": "A later independent two-side numeric case completes one pair. Preserve the original first-side-only run and unmeasured chain/M:N/continuous correspondence variants."
+      "contract_path": "spec/features/UI-shortcuts-inspection-20261114.md",
+      "reason": "Qualify the later read-only retry as reached Graphic Options with blocked Shortcuts navigation and safe Close, without overwriting the earlier historical eleven-page observation or inferring effective bindings/settings persistence."
+    }
+  ],
+  "source_update_origin": {
+    "previous_map_commit": "ea3e7d1db955d7f1450ff232f0ea3979470f6ecb",
+    "previous_map_sha256": "43c44e3ee46181cfacd83dd9f9566a926bf7d1d49c5bf13f32927a1a022f4f10",
+    "previous_source_commit": "6401c6aa0aa1a54e1642b334dad1c5729466e0af",
+    "preserved_catalog_ids": 949,
+    "preserved_packets": 205,
+    "preserved_landmarks": 56,
+    "preservation_rule": "Preserve every previous entry record, packet, landmark identity/path and queued slice exactly. Preserve landmark anchors except the explicitly reviewed CLI test rename; scope text changes require source landmark rechecks against changed pinned files. Keep the earlier 6401c6a and original 928-entry expansion ancestry reachable."
+  },
+  "source_landmark_rechecks": [
+    {
+      "source_id": "curves",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The integrated JoinCurve command, native inspector and CLI/MCP adapter source now implement a bounded inverse join; update only the related scope description."
     },
     {
-      "group_id": "free-sewing-length-preview",
+      "source_id": "ui_properties",
       "changed_fields": [
-        "missing_functionality",
-        "runtime_questions",
-        "reviewed_reference_scope"
+        "scope"
       ],
-      "contract_path": "spec/features/SEW-002-paired-runtime-20261114.md",
-      "reason": "Update obsolete blanket second-side/reversal-unknown wording without merging transient preview state into a completed seam or claiming independent curve endpoint measurement."
+      "reason": "The integrated JoinCurve command, native inspector and CLI/MCP adapter source now implement a bounded inverse join; update only the related scope description."
+    },
+    {
+      "source_id": "cli",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The integrated JoinCurve command, native inspector and CLI/MCP adapter source now implement a bounded inverse join; update only the related scope description."
+    },
+    {
+      "source_id": "mcp_schema",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The integrated JoinCurve command, native inspector and CLI/MCP adapter source now implement a bounded inverse join; update only the related scope description."
+    },
+    {
+      "source_id": "cli_tests",
+      "changed_fields": [
+        "anchor",
+        "scope"
+      ],
+      "reason": "The CLI subprocess regression was renamed to include split/join and failure-output preservation. Retain this landmark identity/path and explicitly replace its old invalid function anchor with the exact valid renamed anchor.",
+      "previous_anchor": "fn cli_edits_and_splits_sewn_curves",
+      "current_anchor": "fn cli_edits_splits_and_joins_sewn_curves_and_preserves_outputs_on_failure"
+    },
+    {
+      "source_id": "mcp_tests",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The integrated JoinCurve command, native inspector and CLI/MCP adapter source now implement a bounded inverse join; update only the related scope description."
     }
   ]
 }

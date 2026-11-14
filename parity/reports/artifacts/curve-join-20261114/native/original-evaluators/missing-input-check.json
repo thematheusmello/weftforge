@@ -1,0 +1,133 @@
+{
+  "scenario": "UI-BOUNDED-JOIN-001",
+  "kind": "implementation_only",
+  "evaluator_sha256": "5cda873ce5898d15c550c966e3e9423e75e4835ece02022c062bc02d1bae5002",
+  "original_evaluator_sha256": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+  "absolute_tolerance_m": "1e-12",
+  "normalized_parameter_tolerance": "1e-12",
+  "arithmetic": "Exact rational serialized-decimal geometry; outward Decimal70 reporting.",
+  "limitations": [
+    "No reference execution/parity, cloth fitting or simulation claim.",
+    "No large-translation native coverage; default placements only.",
+    "No coalesced-event native coverage; saved files do not establish GUI event timing.",
+    "GUI actions, focused buffers, error display and process identity require the parent UI record."
+  ],
+  "self_check": {
+    "kind": "synthesized_oracle_self_checks_only",
+    "status": "passed",
+    "exact_positive_split_and_join": {
+      "retained_curve_id": 9,
+      "retired_curve_id": 22,
+      "retired_shared_point_id": 21,
+      "original_parent_geometry": {
+        "all_parameters_upper_bound_m": "0",
+        "maximum_squared_control_difference_m2_exact": "0",
+        "proof": "Exact rational power restriction and Bernstein convex hull.",
+        "within_1e_12_m": true
+      },
+      "child_geometry": {
+        "all_parameters_upper_bound_m": "0",
+        "maximum_squared_control_difference_m2_exact": "0",
+        "proof": "Exact rational power restriction and Bernstein convex hull.",
+        "within_1e_12_m": true
+      },
+      "normalized_affine_interval_error": {
+        "upper_bound": "0",
+        "maximum_absolute_error_exact": "0",
+        "within_1e_12": true
+      },
+      "sewn_point_pairs": {
+        "both_sides_bound": {
+          "all_parameters_upper_bound_m": "0",
+          "maximum_squared_control_difference_m2_exact": "0",
+          "proof": "Exact rational power restriction and Bernstein convex hull.",
+          "within_1e_12_m": true
+        },
+        "piecewise_affine_correspondence_intervals_proved": 2
+      },
+      "single_revision": true,
+      "unintended_field_changes": [],
+      "allocator_unchanged": true
+    },
+    "synthetic_svg": {
+      "sha256": "b2dc87a66b980205369ce3b3203a4a470f7fde824f742c379f8078b7531adae5",
+      "editable_closed_piece_paths": 2,
+      "editable_cubic_segments": 1,
+      "physical_user_unit": "millimetre",
+      "saved_authoring_error": {
+        "all_parameters_upper_bound_m": "0",
+        "maximum_squared_control_difference_m2_exact": "0",
+        "proof": "Exact rational power restriction and Bernstein convex hull.",
+        "within_1e_12_m": true
+      },
+      "original_parent_error": {
+        "all_parameters_upper_bound_m": "0",
+        "maximum_squared_control_difference_m2_exact": "0",
+        "proof": "Exact rational power restriction and Bernstein convex hull.",
+        "within_1e_12_m": true
+      },
+      "parser": "Unchanged original evaluator svg_path_commands."
+    },
+    "negative_witnesses": {
+      "control_drift_1e_6_m": {
+        "status": "rejected",
+        "reason": "joined original parent control bound: 0.000001000000000000000000000000000000000000000000000000000000000000000000001 m; squared exact 1/1000000000000",
+        "measured_error": {
+          "all_parameters_upper_bound_m": "0.000001000000000000000000000000000000000000000000000000000000000000000000001",
+          "maximum_squared_control_difference_m2_exact": "1/1000000000000",
+          "proof": "Exact rational power restriction and Bernstein convex hull.",
+          "within_1e_12_m": false
+        }
+      },
+      "seam_interval_drift_1e_6": {
+        "status": "rejected",
+        "reason": "join affine interval error exceeds 1e-12: 1/1000000",
+        "measured_error": {
+          "upper_bound": "0.000001",
+          "maximum_absolute_error_exact": "1/1000000",
+          "within_1e_12": false
+        }
+      },
+      "id_retirement": {
+        "status": "rejected",
+        "reason": "joined child/shared-point IDs did not retire",
+        "measured_error": null
+      },
+      "unintended_material_change": {
+        "status": "rejected",
+        "reason": "join changed unintended fields/order/name/correspondence or did not commit once",
+        "measured_error": null
+      },
+      "stale_cache_svg_geometry_1e_6_m": {
+        "status": "rejected",
+        "reason": "SVG stale/authored geometry bound: 0.000001000000000000000000000000000000000000000000000000000000000000000000001 m; squared exact 1/1000000000000",
+        "measured_error": {
+          "all_parameters_upper_bound_m": "0.000001000000000000000000000000000000000000000000000000000000000000000000001",
+          "maximum_squared_control_difference_m2_exact": "1/1000000000000",
+          "proof": "Exact rational power restriction and Bernstein convex hull.",
+          "within_1e_12_m": false
+        }
+      }
+    },
+    "native_outputs_created": false
+  },
+  "status": "incomplete_missing_native_outputs",
+  "missing_files": [
+    "before-split.weftforge",
+    "after-split.weftforge",
+    "after-focus.weftforge",
+    "after-join.weftforge",
+    "after-join-tab.weftforge",
+    "join-undone.weftforge",
+    "join-redone.weftforge",
+    "coarse.weftforge",
+    "fine.weftforge",
+    "reopened.weftforge",
+    "after-corner-error.weftforge",
+    "coarse.obj",
+    "coarse.svg",
+    "fine.obj",
+    "fine.svg",
+    "ui-declaration.json"
+  ]
+}

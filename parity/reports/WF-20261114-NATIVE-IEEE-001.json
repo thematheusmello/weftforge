@@ -16,7 +16,7 @@
   "complete_contract": false,
   "reference_executed": false,
   "single_identified_candidate_workflow": false,
-  "freshness": "current",
+  "freshness": "stale",
   "source_hashes": {
     ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
     "Cargo.lock": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
@@ -215,5 +215,6 @@
   "qualification_timestamp": "2026-11-14T08:16:11.681890+00:00",
   "byte_identical_rebuild_qualification": "parity/reports/artifacts/document-f64-20261114/exact-rebuild-qualification.json",
   "original_native_execution_report": "parity/reports/artifacts/document-f64-20261114/native-execution-report-1528.json",
-  "provenance_note": "Native actions executed the1528 build. Source4194 is qualified by an identical rebuilt desktop/CLI and package after a test-only line-ending correction; no new native run is claimed."
+  "provenance_note": "Native actions executed the1528 build. Source4194 is qualified by an identical rebuilt desktop/CLI and package after a test-only line-ending correction; no new native run is claimed.",
+  "freshness_reason": "Exact-join integration changes authored document/native/CLI/MCP sources and adds join regressions. Prior native execution and byte-identical rebuild remain historical; a separately identified current join candidate is pending."
 }

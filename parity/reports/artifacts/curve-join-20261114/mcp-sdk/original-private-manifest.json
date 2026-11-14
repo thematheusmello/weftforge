@@ -1,0 +1,50 @@
+{
+  "kind": "private_official_sdk_stdio_evidence",
+  "status": "passed_bounded_legacy_join_and_error_smoke",
+  "created_at": "2026-11-14T09:46:34.882671+00:00",
+  "client_version": "1.28.1",
+  "negotiated_protocol": "2025-11-25",
+  "cli_sha256": "ca49402e497f71a2785bd96a6ef936cb320ffef856acb682824fe66e108fa25a",
+  "inputs_sha256": {
+    "after-split.weftforge": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+    "after-join.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+    "reopened.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae"
+  },
+  "all_native_inputs_byte_unchanged": true,
+  "files": {
+    "input-identities.json": {
+      "sha256": "8d40af990c6f8fbd2793993de7e4377118ec4db6bf396c43d5b08eae72f82980",
+      "bytes": 634
+    },
+    "run-official-sdk.py": {
+      "sha256": "8ea159c3cf6d580b06c596f6384e1c4867196a5f1507b860f94689d2731e3c84",
+      "bytes": 9923
+    },
+    "sdk-joined.weftforge": {
+      "sha256": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+      "bytes": 5278
+    },
+    "sdk-rejected-sentinel.weftforge": {
+      "sha256": "6f5e75f4e2ef3dec7fee74bcc1d5d31cf94510f3f3786bdc196283b3d343bcd2",
+      "bytes": 65
+    },
+    "sdk-report.json": {
+      "sha256": "04a01662c6276f29cc32a1bc1e61f67b610cb443d36da9e590a2600f33409219",
+      "bytes": 4496
+    },
+    "sdk-transcript.json": {
+      "sha256": "cbf07f3709e0e130c1d925299cf9e365f2face728161f7e436a37ca4b2f56ba0",
+      "bytes": 44726
+    },
+    "server-stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "limits": [
+    "Local stdio only; no network or listener, installation, Cargo or native UI.",
+    "SDK output is not a native UI output.",
+    "Legacy 2025-11-25 only; no modern external-client or reference-parity claim."
+  ],
+  "transcript_kind": "Decoded MCP messages at the official SDK stream boundary; not literal transport bytes."
+}

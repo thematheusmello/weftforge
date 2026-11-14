@@ -77,7 +77,10 @@ the white marker previews the explicit split parameter. Splitting preserves
 oriented sewing, including partial and gathered mappings. CLI `inspect` exposes
 construction IDs, points and controls; `curve-controls INPUT OUTPUT CURVE_ID X1
 Y1 X2 Y2` (or `straight`) and `split INPUT OUTPUT CURVE_ID T` use the same commands.
-`T` is curve parameter, not arc length. See the
+`T` is curve parameter, not arc length. `join INPUT OUTPUT CURVE_ID` and the
+inspector’s **Join with next boundary** restore compatible neighboring segments
+while preserving sewing. Unsupported corners or exhausted precision budgets
+produce a validation error. See the
 [bounded curve-editing contract](spec/features/PAT-005-sewn-curve-editing.md).
 
 ## Verify and contribute

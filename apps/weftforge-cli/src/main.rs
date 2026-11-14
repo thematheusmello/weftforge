@@ -18,7 +18,7 @@ fn run() -> Result<()> {
     let args: Vec<_> = std::env::args().skip(1).collect();
     match args.first().map(String::as_str) {
         None | Some("--help" | "-h" | "help") => println!(
-            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj\nexport-svg PROJECT OUTPUT.svg\nsimulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Curve t is not arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
+            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj\nexport-svg PROJECT OUTPUT.svg\nsimulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Curve t is not arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
         ),
         Some("mcp") => {
             count(&args, 1)?;
@@ -88,6 +88,14 @@ fn run() -> Result<()> {
             editor.execute(Command::SplitCurve {
                 curve: args[3].parse()?,
                 t: number(&args[4])?,
+            })?;
+            editor.project.save(Path::new(&args[2]))?;
+        }
+        Some("join") => {
+            count(&args, 4)?;
+            let mut editor = Editor::new(Project::load(Path::new(&args[1]))?)?;
+            editor.execute(Command::JoinCurve {
+                curve: args[3].parse()?,
             })?;
             editor.project.save(Path::new(&args[2]))?;
         }

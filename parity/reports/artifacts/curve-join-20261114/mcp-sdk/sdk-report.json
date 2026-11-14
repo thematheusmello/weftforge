@@ -1,0 +1,116 @@
+{
+  "kind": "implementation_only_official_sdk_stdio_smoke",
+  "started_at": "2026-11-14T09:45:48.676658+00:00",
+  "client": "official Python mcp",
+  "client_version": "1.28.1",
+  "script_sha256": "8ea159c3cf6d580b06c596f6384e1c4867196a5f1507b860f94689d2731e3c84",
+  "cli_sha256": "ca49402e497f71a2785bd96a6ef936cb320ffef856acb682824fe66e108fa25a",
+  "inputs_before": {
+    "after-split.weftforge": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+    "after-join.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+    "reopened.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae"
+  },
+  "transcript_kind": "Decoded MCP messages at the official SDK stream boundary; not literal transport bytes.",
+  "limits": [
+    "Local stdio only; no network or listener, installation, Cargo or native UI.",
+    "SDK output is not a native UI output.",
+    "Legacy 2025-11-25 only; no modern external-client or reference-parity claim."
+  ],
+  "sentinel_before_sha256": "6f5e75f4e2ef3dec7fee74bcc1d5d31cf94510f3f3786bdc196283b3d343bcd2",
+  "negotiated_protocol": "2025-11-25",
+  "server_info": {
+    "name": "weftforge-cli",
+    "title": null,
+    "version": "0.1.0",
+    "websiteUrl": null,
+    "icons": null
+  },
+  "tool_names": [
+    "project_inspect",
+    "project_create",
+    "project_execute",
+    "project_export_svg",
+    "project_export_obj"
+  ],
+  "join_curve_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "curve": {
+            "maximum": 18446744073709551615,
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "curve"
+        ],
+        "type": "object"
+      },
+      "type": {
+        "const": "join_curve"
+      }
+    },
+    "required": [
+      "type",
+      "data"
+    ],
+    "type": "object"
+  },
+  "join_result": {
+    "_meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"commands_applied\":1,\"input\":\"${WORKSPACE}/.local/native-join-acceptance/after-split.weftforge\",\"output\":\"${WORKSPACE}/.local/native-join-acceptance/mcp-sdk/sdk-joined.weftforge\",\"revision\":10}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": {
+      "commands_applied": 1,
+      "input": "${WORKSPACE}/.local/native-join-acceptance/after-split.weftforge",
+      "output": "${WORKSPACE}/.local/native-join-acceptance/mcp-sdk/sdk-joined.weftforge",
+      "revision": 10
+    },
+    "isError": false
+  },
+  "sdk_joined_sha256": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+  "sdk_joined_equals_native_after_join_bytes": true,
+  "typed_comparison_oracle_sha256": "9e46dae6ababcb0066b01ec9864d5230c76b4daecd5a45a4378b952f5760a892",
+  "typed_comparison": {
+    "float_fields_bit_exact": 104,
+    "all_nonfloat_fields_and_schema_exact": true
+  },
+  "rejected_result": {
+    "_meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":\"Join needs nondegenerate collinear straight curves with 1e-6 < t < 1-1e-6 and error including f64 roundoff <= 1e-12 m\"}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": {
+      "error": "Join needs nondegenerate collinear straight curves with 1e-6 < t < 1-1e-6 and error including f64 roundoff <= 1e-12 m"
+    },
+    "isError": true
+  },
+  "sentinel_after_sha256": "6f5e75f4e2ef3dec7fee74bcc1d5d31cf94510f3f3786bdc196283b3d343bcd2",
+  "stderr_bytes": 0,
+  "status": "passed_bounded_legacy_join_and_error_smoke",
+  "inputs_after": {
+    "after-split.weftforge": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+    "after-join.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+    "reopened.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae"
+  },
+  "all_native_inputs_byte_unchanged": true,
+  "cli_after_sha256": "ca49402e497f71a2785bd96a6ef936cb320ffef856acb682824fe66e108fa25a",
+  "stdout_decoded_messages": 4,
+  "client_messages": 5,
+  "finished_at": "2026-11-14T09:45:48.977540+00:00",
+  "transcript_sha256": "cbf07f3709e0e130c1d925299cf9e365f2face728161f7e436a37ca4b2f56ba0"
+}

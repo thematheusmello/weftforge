@@ -106,13 +106,18 @@ existing projects may assign different IDs. Current-profile calls use the same
 arguments and additionally include the per-request `_meta` shown above.
 
 The supported shared commands are `add_polygon`, `add_rectangle`, `move_point`,
-`set_curve_controls`, `split_curve`, `resize_piece`, `set_placement`, `set_grain`,
+`set_curve_controls`, `split_curve`, `join_curve`, `resize_piece`, `set_placement`, `set_grain`,
 `set_material`, `add_material`, `update_material`, `add_seam`, `update_seam`,
 `remove_seam`, `remove_piece`, `set_resolution`, and `set_mannequin`.
 Their exact data fields and nested types are in `tools/list`; the shared core
 validation remains authoritative. Authoring uses f64 SI units, placement/grain
 angles use radians, and membrane stiffness uses N/m. See
 [file formats](file-formats.md) for the native representation and physical units.
+`join_curve` takes `{"curve":CURVE_ID}` and joins that oriented boundary with
+its next boundary, including the closing pair. It retains the selected ID and
+sewing records; incompatible geometry or unsafe remapping fails atomically.
+The [bounded join contract](../spec/features/PAT-005-sewn-curve-editing.md#shape-preserving-join)
+defines its geometry and parameter limits.
 
 ## Failure and scope boundaries
 

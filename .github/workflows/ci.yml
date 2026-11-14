@@ -38,6 +38,10 @@ jobs:
           components: rustfmt, clippy
       - run: python3 -m pip install -r requirements-dev.txt
       - run: cargo xtask verify
+      - name: Replay bounded native join evidence
+        run: >-
+          python3 parity/reports/artifacts/curve-join-20261114/native/original-evaluators/verify_native_join.py
+          --case-dir parity/reports/artifacts/curve-join-20261114/native
       - run: cargo xtask scenario
       - uses: actions/upload-artifact@v4
         with:

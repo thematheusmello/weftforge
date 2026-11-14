@@ -258,5 +258,34 @@ This is a construction and recovery pass, not a complete garment/fitting replay,
 a full feature contract or reference parity. No cloth simulation ran. The
 separately reproduced creation edit-buffer defect
 [issue22](https://github.com/thematheusmello/weftforge/issues/22) remains visible;
-its new candidate requires its own native acceptance. Historical garment fitting
+its correction was accepted in PR27 and that scoped evidence is now historical
+after later source changes. Historical garment fitting
 failures and stale complete-workflow reports remain unchanged.
+
+
+## Bounded native join replay
+
+[WF-20261114-NATIVE-JOIN-001](../parity/reports/WF-20261114-NATIVE-JOIN-001.json)
+records source `26dd585`, desktop `9c8b0936` and CLI `ca49402e`. Starting empty,
+two original panels were created, one boundary made cubic and sewn with reversed
+pairing. Split and Join retained the original curve identity and both sewing
+records. Focus/Tab, one Undo/Redo, refinement, actual OBJ/SVG export, process
+restart/reopen and rejected corner geometry were checked.
+
+Independent exact rational control/interval checks bound the authored parent
+error by 2.119e-16 m and reconstructed-child/sewn-locus error by 8.695e-17 m against
+the preregistered 1e-12 m limit. Focus, Tab and corner rejection preserve exact
+saved bytes. Meshes increase from 194 vertices/325 positive triangles to 2296/4448;
+both SVG exports retain two closed piece paths and one editable cubic.
+
+The official Python MCP SDK 1.28.1 negotiated legacy 2025-11-25, advertised the
+join command and produced bytes identical to the native joined document. A
+rejected corner command preserved its output sentinel and all native inputs.
+This is five-tool local stdio evidence, not a modern-client or active-GUI claim.
+
+The [portable bundle](../parity/reports/artifacts/curve-join-20261114/native/README.md)
+contains exact native inputs, frozen evaluators, meaningful negative witnesses
+and a gap-free read-only REA corner-error capture. Parent observations retain
+AX focus/pagination and temporary full-disk input-driver qualifications. No
+reference parity, cloth fitting, large-placement native case or coalesced-event
+native case is claimed. Earlier source-pinned evidence remains historical/stale.
