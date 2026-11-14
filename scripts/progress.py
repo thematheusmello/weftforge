@@ -17,7 +17,13 @@ BASE = 'https://github.com/thematheusmello/weftforge'
 def read(path):
     return json.loads((ROOT / path).read_text())
 
+def public_path(path):
+    parts = pathlib.PurePosixPath(path)
+    if parts.is_absolute() or '..' in parts.parts or '.git' in parts.parts or '\\' in path or str(parts) != path:
+        raise ValueError(f'invalid public evidence path: {path}')
+
 def local(path):
+    public_path(path)
     p = (ROOT / path).resolve()
     if not p.is_relative_to(ROOT) or not p.is_file():
         raise ValueError(f'missing or nonpublic evidence path: {path}')
@@ -26,9 +32,7 @@ def local(path):
 def source_paths(report, current=False):
     """Directory scopes detect added/deleted inputs as well as changed files."""
     for path in [*report['source_hashes'], *report['source_scope']]:
-        parts = pathlib.PurePosixPath(path)
-        if parts.is_absolute() or '..' in parts.parts or '.git' in parts.parts or '\\' in path or str(parts) != path:
-            raise ValueError(f"{report['id']}: invalid source path {path}")
+        public_path(path)
     command = (['git', 'ls-files', '--cached', '--others', '--exclude-standard', '-z', '--'] if current
                else ['git', 'ls-tree', '-r', '--name-only', '-z', report['commit'], '--'])
     paths = subprocess.check_output(command + report['source_scope'], cwd=ROOT).decode().split('\0')
@@ -59,6 +63,75 @@ def implementation_paths(feature, by_id, seen=None):
     seen = seen | {feature['id']}
     return set(feature['implementation_locations']).union(
         *(implementation_paths(by_id[dep], by_id, seen) for dep in feature['dependencies']))
+
+def json_digest(value):
+    return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':'),
+                                     ensure_ascii=False, allow_nan=False).encode('utf-8')).hexdigest()
+
+def reference_settings(reference):
+    # The legacy entitlement field is account state, not an evaluated behavior setting.
+    settings = reference.get('settings', {})
+    if not isinstance(settings, dict):raise ValueError('reference settings must be an object')
+    return {key: value for key, value in settings.items() if key != 'license_entitlement'}
+
+def reference_frozen(reference):
+    if reference.get('frozen') is not True:return False
+    def known(value):
+        if isinstance(value, dict):return all(known(item) for item in value.values())
+        if isinstance(value, list):return all(known(item) for item in value)
+        return value is not None
+    settings = reference_settings(reference)
+    return ({'units', 'locale', 'preferences', 'graphics'} <= settings.keys()
+            and known(settings))
+
+def reference_qualification(report, data, reference, commit=None):
+    """Pin normative inputs separately from mutable implementation/status prose."""
+    if type(reference['baseline_revision']) is not int or reference['baseline_revision'] < 1:
+        raise ValueError('reference baseline revision must be a positive integer')
+    def contents(path):
+        public_path(path)
+        return (local(path).read_bytes() if commit is None else
+                subprocess.check_output(['git', 'show', commit + ':' + path], cwd=ROOT))
+    by_id = {feature['id']: feature for feature in data['features']}
+    pending = list(report['feature_ids'])
+    contracts = {}
+    while pending:
+        fid = pending.pop()
+        if fid in contracts:continue
+        feature = by_id[fid]
+        if feature['reference_baseline'] != reference['baseline_id']:
+            raise ValueError(f'{fid}: qualified contract baseline differs')
+        documents = feature.get('contract_documents', {})
+        for path, digest in documents.items():
+            if hashlib.sha256(contents(path)).hexdigest() != digest:
+                raise ValueError(f'{fid}: reviewed contract document hash differs {path}')
+        scenarios = []
+        for scenario in feature['scenarios']:
+            for path, digest in scenario['fixture_hashes'].items():
+                if hashlib.sha256(contents(path)).hexdigest() != digest:
+                    raise ValueError(f'{fid}: qualified fixture hash differs {path}')
+            scenarios.append(scenario | {'definition_sha256': hashlib.sha256(contents(scenario['path'])).hexdigest()})
+        contracts[fid] = {
+            'contract_sha256': json_digest({'required_reference_behavior': feature['required_reference_behavior'],
+                                           'contract_documents': documents, 'dependencies': feature['dependencies']}),
+            'scenarios_sha256': json_digest(scenarios),
+            'comparison_criteria_sha256': json_digest(feature['comparison_criteria'])}
+        pending.extend(feature['dependencies'])
+    return {'baseline_revision': reference['baseline_revision'],
+            'settings_sha256': json_digest(reference_settings(reference)), 'contracts': contracts}
+
+def qualification_current(report, data, reference):
+    return (report['reference_baseline'] == reference['baseline_id']
+            and report.get('reference_qualification') == reference_qualification(report, data, reference))
+
+def qualification_matches_commit(report):
+    committed_data = json.loads(subprocess.check_output(
+        ['git', 'show', report['commit'] + ':parity/features.yaml'], cwd=ROOT))
+    committed_reference = json.loads(subprocess.check_output(
+        ['git', 'show', report['commit'] + ':parity/reference.json'], cwd=ROOT))
+    return (report['reference_baseline'] == committed_reference['baseline_id']
+            and report['reference_qualification'] == reference_qualification(
+                report, committed_data, committed_reference, commit=report['commit']))
 
 def validate(data):
     schema = read('parity/schema.json')
@@ -91,6 +164,9 @@ def validate(data):
         for artifact, digest in report['artifact_hashes'].items():
             if hashlib.sha256(local(artifact).read_bytes()).hexdigest() != digest:
                 raise ValueError(f"{report['id']}: stale artifact {artifact}")
+        if report['kind'] == 'reference_comparison' and 'reference_qualification' in report:
+            if not qualification_matches_commit(report):
+                raise ValueError(f"{report['id']}: qualification differs from tested commit")
         if report['freshness'] == 'current':
             if report['reference_baseline'] != reference['baseline_id']:
                 raise ValueError(f"{report['id']}: report baseline differs")
@@ -99,12 +175,22 @@ def validate(data):
             for fid in report['feature_ids']:
                 if not implementation_paths(by_id[fid], by_id) <= scoped:
                     raise ValueError(f"{fid}: current report scope omits feature or dependency implementation")
+            if report['kind'] == 'reference_comparison' and (report['reference_executed'] or report['status'] != 'blocked'):
+                if not report['reference_executed'] or not qualification_current(report, data, reference):
+                    raise ValueError(f"{report['id']}: changed or missing reference qualification requires rerun or stale evidence")
+                if (report['complete_contract'] and report['status'] == 'passed'
+                        and any(not by_id[fid].get('contract_documents') or not by_id[fid]['scenarios']
+                                for fid in report['reference_qualification']['contracts'])):
+                    raise ValueError(f"{report['id']}: complete comparison requires reviewed contract documents and scenarios")
         reports[path] = report, scoped
     for f in data['features']:
         if f['reference_baseline'] != reference['baseline_id']:
             raise ValueError(f"{f['id']}: baseline mismatch")
         for path in f['implementation_locations'] + f['evidence_ids']:
             local(path)
+        for path, digest in f.get('contract_documents', {}).items():
+            if hashlib.sha256(local(path).read_bytes()).hexdigest() != digest:
+                raise ValueError(f"{f['id']}: reviewed contract document hash differs {path}")
         for scenario in f['scenarios']:
             local(scenario['path'])
             for fixture, digest in scenario['fixture_hashes'].items():
@@ -139,11 +225,12 @@ def validate(data):
     return reference
 
 def parity_verified(feature, by_id, reference, seen=None):
-    # shortcut: qualify baseline/settings/contract digests before the first actual reference pass.
     seen=set() if seen is None else seen
     if feature['id'] in seen:return False
     seen=seen|{feature['id']}
-    if reference.get('frozen') is not True or feature['implementation_status'] != 'implemented' or feature['verification_status'] != 'passed' or feature['reference_observation_status'] != 'observed' or feature['freshness'] != 'current':
+    if (not reference_frozen(reference) or feature['implementation_status'] != 'implemented'
+            or feature['verification_status'] != 'passed' or feature['reference_observation_status'] != 'observed'
+            or feature['freshness'] != 'current' or not feature.get('contract_documents') or not feature['scenarios']):
         return False
     required = implementation_paths(feature, by_id)
     reports = (read(run['path']) for run in feature['verification_runs'])
@@ -151,6 +238,8 @@ def parity_verified(feature, by_id, reference, seen=None):
                and r.get('status') == 'passed' and r.get('complete_contract') is True
                and r.get('reference_executed') is True and feature['id'] in r.get('feature_ids', [])
                and r.get('reference_baseline') == feature['reference_baseline'] == reference.get('baseline_id')
+               and qualification_current(r, {'features': list(by_id.values())}, reference)
+               and qualification_matches_commit(r)
                and required <= (scoped := validate_sources(r)) and sources_current(r, scoped)
                for r in reports):return False
     return all(parity_verified(by_id[d],by_id,reference,seen) for d in feature['dependencies'])

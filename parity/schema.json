@@ -298,6 +298,14 @@
               },
               "additionalProperties": false
             }
+          },
+          "contract_documents": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
           }
         },
         "additionalProperties": false
@@ -406,6 +414,55 @@
         "freshness_reason": {
           "type": "string",
           "minLength": 1
+        },
+        "reference_qualification": {
+          "type": "object",
+          "required": [
+            "baseline_revision",
+            "settings_sha256",
+            "contracts"
+          ],
+          "properties": {
+            "baseline_revision": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "settings_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "contracts": {
+              "type": "object",
+              "minProperties": 1,
+              "propertyNames": {
+                "pattern": "^[A-Z]+-[0-9]{3}$"
+              },
+              "additionalProperties": {
+                "type": "object",
+                "required": [
+                  "contract_sha256",
+                  "scenarios_sha256",
+                  "comparison_criteria_sha256"
+                ],
+                "properties": {
+                  "contract_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "scenarios_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "comparison_criteria_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
         }
       },
       "allOf": [
@@ -420,6 +477,42 @@
           "then": {
             "required": [
               "freshness_reason"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "reference_comparison"
+              },
+              "freshness": {
+                "const": "current"
+              }
+            },
+            "anyOf": [
+              {
+                "properties": {
+                  "reference_executed": {
+                    "const": true
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "passed",
+                      "failed"
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "then": {
+            "required": [
+              "reference_qualification"
             ]
           }
         }
