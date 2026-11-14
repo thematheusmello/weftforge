@@ -278,9 +278,7 @@ impl Project {
             }
             include_collinear_vertices(&mut mesh, start, triangle_start)?;
         }
-        improve_triangle_quality(&mut mesh, &cancelled)?;
         refine(self, &mut mesh, &cancelled)?;
-        improve_triangle_quality(&mut mesh, &cancelled)?;
         for seam in &self.seams {
             check_cancel(&cancelled)?;
             append_stitches(&mesh.boundary, seam, &mut mesh.stitches)?;
@@ -564,6 +562,8 @@ fn include_collinear_vertices(mesh: &mut Mesh, start: usize, triangle_start: usi
 fn refine(project: &Project, mesh: &mut Mesh, cancelled: &impl Fn() -> bool) -> Result<()> {
     for _ in 0..20 {
         check_cancel(cancelled)?;
+        // Remove slivers before subdivision multiplies their long edges.
+        improve_triangle_quality(mesh, cancelled)?;
         let mut split = BTreeMap::new();
         for &[a, b, c] in &mesh.triangles {
             check_cancel(cancelled)?;
@@ -778,6 +778,127 @@ fn segments_intersect(a: [f64; 2], b: [f64; 2], c: [f64; 2], d: [f64; 2]) -> boo
 #[cfg(test)]
 mod quality_tests {
     use super::*;
+
+    #[test]
+    fn fine_curved_panels_preserve_area_topology_and_sewing_within_mesh_limits() {
+        let project = Project::from_json(include_bytes!(
+            "../tests/fixtures/asymmetric-fine.weftforge"
+        ))
+        .unwrap();
+        let original = project.clone();
+        assert_eq!(project.resolution, 0.017);
+        let mesh = project.mesh().unwrap();
+        mesh.validate().unwrap();
+        let mut edges = BTreeMap::<_, (usize, i32)>::new();
+        let mut areas = BTreeMap::<_, f64>::new();
+        let mut faces = BTreeMap::<_, usize>::new();
+        for &triangle in &mesh.triangles {
+            let [a, b, c] = triangle.map(|vertex| mesh.uv[vertex]);
+            let area = cross(a, b, c) * 0.5;
+            assert!(area > 0.);
+            *areas.entry(mesh.piece_ids[triangle[0]]).or_default() += area;
+            *faces.entry(mesh.piece_ids[triangle[0]]).or_default() += 1;
+            for i in 0..3 {
+                let (a, b) = (triangle[i], triangle[(i + 1) % 3]);
+                assert!(distance(mesh.uv[a], mesh.uv[b]) <= project.resolution * 1.4 + 1e-12);
+                let (count, orientation) = edges.entry(edge_key(a, b)).or_default();
+                *count += 1;
+                *orientation += if a < b { 1 } else { -1 };
+            }
+        }
+        assert!(
+            edges
+                .values()
+                .all(|&(count, orientation)| { count == 1 || (count == 2 && orientation == 0) })
+        );
+        let mut expected_boundary = BTreeSet::new();
+        let mut boundary_areas = BTreeMap::<_, f64>::new();
+        for piece in &project.pieces {
+            for id in &piece.boundary {
+                let curve = project.curve(*id).unwrap();
+                let mut samples: Vec<_> = mesh
+                    .boundary
+                    .iter()
+                    .filter(|sample| sample.curve == *id)
+                    .collect();
+                samples.sort_by(|a, b| a.t.total_cmp(&b.t));
+                assert_eq!(samples.first().unwrap().t, 0.);
+                assert_eq!(samples.last().unwrap().t, 1.);
+                for sample in &samples {
+                    assert_eq!(sample.piece, piece.id);
+                    assert_eq!(mesh.piece_ids[sample.vertex], piece.id);
+                    assert!(
+                        distance(
+                            mesh.uv[sample.vertex],
+                            curve.evaluate(&project, sample.t).unwrap()
+                        ) < 1e-12
+                    );
+                }
+                for pair in samples.windows(2) {
+                    assert!(pair[0].t < pair[1].t);
+                    assert!(expected_boundary.insert(edge_key(pair[0].vertex, pair[1].vertex)));
+                    let [a, b] = [pair[0], pair[1]].map(|sample| mesh.uv[sample.vertex]);
+                    *boundary_areas.entry(piece.id).or_default() +=
+                        (a[0] * b[1] - a[1] * b[0]) * 0.5;
+                }
+            }
+            let vertices = mesh.piece_ids.iter().filter(|&&id| id == piece.id).count();
+            let piece_edges = edges
+                .keys()
+                .filter(|&&(a, _)| mesh.piece_ids[a] == piece.id)
+                .count();
+            assert_eq!(vertices + faces[&piece.id], piece_edges + 1);
+            assert!((areas[&piece.id] - boundary_areas[&piece.id]).abs() < 1e-9);
+        }
+        assert_eq!(
+            edges
+                .iter()
+                .filter_map(|(&edge, &(count, _))| (count == 1).then_some(edge))
+                .collect::<BTreeSet<_>>(),
+            expected_boundary
+        );
+        // Exact cubic line integrals bound the boundary tessellation's area error.
+        for (piece, analytic_area) in [
+            (2, 1.488565),
+            (11, 0.288),
+            (20, 1.11123),
+            (29, 0.372),
+            (38, 0.48),
+        ] {
+            assert!((areas[&piece] - analytic_area).abs() < 1e-5);
+        }
+        let group = &project.sewing_groups[0];
+        assert_eq!(
+            mesh.sewing_groups,
+            vec![project.sewing_group_geometry(group.id).unwrap()]
+        );
+        assert!(!mesh.stitches.is_empty());
+        for stitch in &mesh.stitches {
+            assert_eq!(stitch.seam, group.id);
+            for (endpoint, side) in [(stitch.a, &group.a), (stitch.b, &group.b)] {
+                assert!(side.iter().any(|interval| {
+                    endpoint.vertices.iter().all(|&vertex| {
+                        mesh.boundary
+                            .iter()
+                            .any(|sample| sample.curve == interval.curve && sample.vertex == vertex)
+                    })
+                }));
+            }
+        }
+        let calls = std::cell::Cell::new(0);
+        assert!(
+            project
+                .mesh_cancellable(|| {
+                    calls.set(calls.get() + 1);
+                    calls.get() > 100_000
+                })
+                .unwrap_err()
+                .0
+                .contains("cancelled")
+        );
+        assert_eq!(project, original);
+    }
+
     #[test]
     fn cancellation_leaves_authoring_unchanged() {
         let project = Project::default();
