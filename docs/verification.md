@@ -386,3 +386,9 @@ trip, printing, other consumers and full reference parity remain open. No cloth
 simulation or fitting claim follows; the retained strain/refinement failures are
 unchanged. Verified reference parity stays0/56, with no roadmap gate accepted.
 Actions and Pages stay disabled until the full project is complete.
+
+Clean evidence checkpoint `b16a7ae` also passes xtask/registry/map, strict tracked
+bundle verification, all nine original DXFs through the pinned ordinary consumer,
+native snapshot/Cancel-Redo and saved SDK replay. Historical physics replay
+reproduces the five failed quality screens. Later status/report metadata changes
+preserve all34 scoped runtime/test files and all113 artifact hashes.

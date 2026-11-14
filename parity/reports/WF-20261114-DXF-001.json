@@ -334,7 +334,18 @@
     "MCP_authoring_command_variants": 18,
     "scoped_source_files_still_identical": 34,
     "logs": "parity/reports/artifacts/dxf-20261114/gates",
-    "clean_checkout_publication_check": "pending final tracked registry/map and saved-output replay",
+    "clean_checkout_publication_check": {
+      "status": "passed",
+      "tracked_evidence_commit": "b16a7ae8caaae37b0430002eb0719945937b7931",
+      "checks": [
+        "cargo xtask verify: registry,949-ID map,54Python checks and CLI help",
+        "strict72-file original oracle bundle and Git tracking",
+        "all9 original DXFs via ordinary pinned consumer, native snapshots and separate Cancel/Redo evaluator",
+        "saved official SDK replay",
+        "historical physics evidence replay; original five FAILED quality screens preserved"
+      ],
+      "scoped_runtime_source_unchanged_after_metadata_updates": true
+    },
     "github_actions": "disabled_at_user_request_until_full_project_complete",
     "remote_CI": "not_run",
     "pages_deployment": "not_run"

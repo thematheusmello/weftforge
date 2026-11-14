@@ -8,10 +8,11 @@ are an engineering inventory, not a feature denominator.
 ## Published state and cost policy
 
 Public repository: https://github.com/thematheusmello/weftforge.
-Last merged main: `16e680ad774119e1ce3609b7d6c42c317f8677ef`,
-[native reversal PR31](https://github.com/thematheusmello/weftforge/pull/31), head
-`94a3da64584bdb61884bd8a8052353b853fd8d12`. Its exact evidence checkpoint is
-`e75786ba3e1b259503f00a25f6034427a37edb96`.
+DXF delivery: [PR32](https://github.com/thematheusmello/weftforge/pull/32),
+runtime source `cd151b3b89e26d55a4dcd4525790006660c4e766`, tracked evidence
+checkpoint `b16a7ae8caaae37b0430002eb0719945937b7931`. The previous native reversal delivery is
+[PR31](https://github.com/thematheusmello/weftforge/pull/31), merged at
+`16e680ad774119e1ce3609b7d6c42c317f8677ef`.
 
 **GitHub Actions stays disabled until the full project is complete.** The user
 requested this to stop development costs. Repository `enabled:false` was verified
@@ -83,10 +84,12 @@ remain intact. Font coverage is still an open rendering limitation.
 
 The public bundle is [dxf-20261114](parity/reports/artifacts/dxf-20261114/), with
 `native/`, `mcp-sdk/`, `captures/` and `gates/` preserving original oracle layouts,
-outputs and qualifications. Its113 artifacts are tracked/hash-valid; registry/map
-and saved oracle/SDK replay pass. Final clean-checkout publication checks remain
-pending the evidence commit. This is bounded implementation acceptance, not a
-complete interchange workflow or reference-parity pass.
+outputs and qualifications. Its113 artifacts are tracked/hash-valid. From clean
+checkpoint `b16a7ae`, xtask/registry/map, the strict72-file oracle bundle, all nine
+original DXFs, native snapshots, focused-Cancel/Redo, saved SDK and historical
+physics replay pass. The latter retains all five failed quality screens. This
+is bounded implementation acceptance; full interchange and reference parity
+remain open.
 
 ## Existing workflows and evidence
 
@@ -159,20 +162,19 @@ observations. No complete current reference contract qualifies as a parity pass.
 
 ## Exact next steps and job state
 
-1. Commit the prepared DXF report/registry, generated progress and113 tracked,
-   hash-valid artifacts. Keep the original RED case, frozen primary/supplement
-   oracles and exact native outputs.
-2. Finish registry/map, independent replay and privacy checks from a clean checkout.
-   Ignored local files are not delivery. Publish/merge through the ordinary
-   repository workflow with Actions and Pages still disabled; no CI run is expected.
-3. Continue full assembly/contact diagnosis and the remaining construction,
-   avatar/animation, rendering, interchange, printing and distribution gates.
-   Completion is still the entire roadmap, not this DXF profile.
+1. Continue full assembly/contact diagnosis from the retained failed strain and
+   refinement evidence; measure the full assembly path/static balance before
+   selecting a production solver change. Keep the existing quality limits.
+2. Continue the remaining construction, reference discovery, avatar/animation,
+   rendering (including CJK font coverage), interchange, printing and distribution
+   gates. Completion is still the entire roadmap, not this DXF profile.
+3. Keep Actions and Pages disabled through subsequent development checkpoints.
+   Local checks and tracked, source-qualified evidence remain required.
 
 All recorded build/test/package gates are terminal; no Cargo job is live.
 Root5f test97981/Clippy99078/package72251 and corrected test34987/Clippy89053/
-package90261 completed. Physics39230/89137, SDK smoke, UI-fix and map checks are
-terminal. At the recorded native handoff, PID65069 is saved at revision24,
+package90261 and clean-checkout xtask26039 completed. Physics39230/89137, SDK
+smoke, UI-fix, map and saved-output replay44018 are terminal. At the recorded native handoff, PID65069 is saved at revision24,
 resolution0.05m,785vertices, Rest arrangement/paused, with no modal. Its predecessor
 PID55249 was confirmed exited before the same-binary relaunch.
 
