@@ -385,6 +385,14 @@ impl StagedFile {
     }
 
     fn replace(self, target: &Path) -> Result<()> {
+        match fs::symlink_metadata(target) {
+            Ok(metadata) => ensure(
+                metadata.file_type().is_file(),
+                "Refusing to replace a non-regular project or recovery file",
+            )?,
+            Err(error) if error.kind() == std::io::ErrorKind::NotFound => {}
+            Err(error) => return Err(error.into()),
+        }
         fs::rename(&self.path, target)?;
         // The rename is the commit point; directory fsync support varies by OS.
         if let Some(parent) = target.parent().filter(|p| !p.as_os_str().is_empty())
@@ -456,6 +464,24 @@ mod tests {
             );
         }
         assert!(!directory.join("absent").exists());
+        let recovery = recovery_path(&primary);
+        #[cfg(unix)]
+        for target in [primary.clone(), directory.join("absent-recovery")] {
+            std::os::unix::fs::symlink(&target, &recovery).unwrap();
+            assert!(project.save(&primary).is_err());
+            assert_eq!(fs::read_link(&recovery).unwrap(), target);
+            assert_eq!(fs::read(&primary).unwrap(), original);
+            fs::remove_file(&recovery).unwrap();
+        }
+        fs::create_dir(&recovery).unwrap();
+        fs::write(recovery.join("retained"), b"recovery folder contents").unwrap();
+        assert!(project.save(&primary).is_err());
+        assert_eq!(fs::read(&primary).unwrap(), original);
+        assert_eq!(
+            fs::read(recovery.join("retained")).unwrap(),
+            b"recovery folder contents"
+        );
+        fs::remove_dir_all(&recovery).unwrap();
         project.save(&primary).unwrap();
         assert_eq!(Project::load(&primary).unwrap(), project);
         assert_eq!(fs::read(recovery_path(&primary)).unwrap(), original);
