@@ -897,11 +897,13 @@ impl Studio {
         let mut commit = false;
         egui::ScrollArea::vertical().id_salt("inspector").show(ui,|ui| {
             for piece in self.editor.project.pieces.clone() {
-                if ui.selectable_label(self.selected==Some(piece.id),&piece.name).clicked() { self.select(Some(piece.id)); }
+                ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("piece-row",piece.id))),|ui| {
+                    if ui.selectable_label(self.selected==Some(piece.id),&piece.name).clicked() { self.select(Some(piece.id)); }
+                });
             }
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
                 ui.label("Boundary curve · select here or in 2D");
-                egui::ComboBox::from_id_salt("boundary-curve")
+                egui::ComboBox::from_id_salt(("boundary-curve",piece.id))
                     .selected_text(self.selected_curve.map_or("Choose boundary".into(),|id|format!("Curve #{id}")))
                     .show_ui(ui,|ui| {
                         for (index,id) in piece.boundary.iter().enumerate() {
@@ -909,6 +911,8 @@ impl Studio {
                         }
                     });
             }
+            // Explicit scopes keep auto-ID edit buffers stable as dynamic rows appear.
+            ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("creation")),|ui| {
             ui.separator(); ui.label("Pattern name"); ui.text_edit_singleline(&mut self.name);
             ui.horizontal(|ui| { ui.label("W / H m"); for value in &mut self.size { ui.add(egui::DragValue::new(value).speed(0.01).range(0.01..=5.0)); } });
             ui.horizontal(|ui| { ui.label("X / Y m"); for value in &mut self.coordinate { ui.add(egui::DragValue::new(value).speed(0.01)); } });
@@ -918,12 +922,14 @@ impl Studio {
             }
             if ui.button("Add polygon point").clicked() { self.polygon.push(self.coordinate); self.tool=Tool::Polygon; }
             if ui.button(format!("Close pattern ({} points)",self.polygon.len())).clicked() { self.finish_polygon(); }
+            });
             let mut draft=self.draft.take().filter(|draft|draft.revision==self.editor.project.revision && draft.selected==self.selected && draft.curve.as_ref().map(|curve|curve.id)==self.selected_curve)
                 .unwrap_or_else(||InspectorDraft::new(&self.editor.project,self.selected,self.selected_curve));
             let mut split=None;
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
                 ui.separator(); ui.strong(&piece.name);
                 if let Some(curve)=&mut draft.curve {
+                    ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("curve",curve.id))),|ui| {
                     ui.strong(format!("Selected curve #{}",curve.id));
                     let start=self.editor.project.point(curve.start).expect("validated curve start").position;
                     let end=self.editor.project.point(curve.end).expect("validated curve end").position;
@@ -940,11 +946,15 @@ impl Studio {
                             ui.horizontal(|ui| { for value in point { commit|=numeric_commit(&ui.add(egui::DragValue::new(value).speed(0.001))); } });
                         }
                     }
-                    ui.horizontal(|ui| { ui.label("Split parameter t"); ui.add(egui::DragValue::new(&mut self.split_t).speed(0.01)); });
+                    ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("split")),|ui| {
+                        ui.horizontal(|ui| { ui.label("Split parameter t"); ui.add(egui::DragValue::new(&mut self.split_t).speed(0.01)); });
+                    });
                     ui.small("Interior curve parameter, not arc length. Sewing is partitioned without changing point pairs.");
                     if ui.button("Split selected curve").clicked() { split=Some(curve.id); }
                     ui.separator();
+                    });
                 }
+                ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("piece",piece.id))),|ui| {
                 if let Some(dimensions)=&mut draft.dimensions {
                     ui.horizontal(|ui| { ui.label("Size m"); for value in dimensions { commit|=numeric_commit(&ui.add(egui::DragValue::new(value).speed(0.005).range(0.01..=5.0).clamp_existing_to_range(false))); } });
                 }
@@ -969,19 +979,24 @@ impl Studio {
                     draft.color_pending|=ui.color_edit_button_rgb(&mut material.color).changed();
                     commit|=draft.color_pending && ui.input(|input|input.pointer.any_released());
                 }
+                });
                 if ui.button("Delete selected").clicked() { self.draft=Some(draft); self.execute(Command::RemovePiece { piece:piece.id }); return; }
             }
+            let mut remove=None;
+            ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("sewing")),|ui| {
             ui.separator(); ui.strong("Sewing"); ui.checkbox(&mut self.reversed,"Reverse paired edge"); ui.label("A interval / B interval (0–1)");
             for range in &mut self.intervals { ui.horizontal(|ui| { for value in range { ui.add(egui::DragValue::new(value).speed(0.01).range(0.0..=1.0)); } }); }
             ui.label(if self.seam_start.is_some() { "Click paired boundary in 2D." } else { "Sew edges: click two 2D boundaries." });
-            let mut remove=None;
             for seam in &self.editor.project.seams { ui.horizontal(|ui| { ui.label(&seam.name); if ui.small_button("Remove").clicked() { remove=Some(seam.id); } }); }
+            });
+            ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("mesh-settings")),|ui| {
             ui.separator(); ui.label("Mesh edge length m"); commit|=numeric_commit(&ui.add(egui::DragValue::new(&mut draft.resolution).speed(0.005).range(0.005..=0.5)));
             ui.label("Iterations / substeps"); ui.horizontal(|ui| {
                 ui.add(egui::DragValue::new(&mut self.settings.iterations).range(1..=50));
                 ui.add(egui::DragValue::new(&mut self.settings.substeps).range(1..=16));
             });
             if let Some(cloth)=&self.cloth { let diagnostics=cloth.diagnostics(); ui.label(format!("Time {:.3} s\nAssembly remaining {:.4} m\nStretch error {:.3}\nSeam gap {:.4} m\nContact error {:.4} m\nInitial intersections {}",cloth.simulation_time(),diagnostics.seam_assembly_remaining,diagnostics.max_stretch_error,diagnostics.max_seam_error,diagnostics.max_contact_error,diagnostics.initial_intersections)); }
+            });
             self.draft=Some(draft);
             if let Some(seam)=remove { self.execute(Command::RemoveSeam { seam }); }
             if let Some(curve)=split { self.execute(Command::SplitCurve { curve,t:self.split_t }); }
@@ -1759,6 +1774,293 @@ mod tests {
         assert!(
             (segment_distance(Pos2::new(0.5, 1.), Pos2::ZERO, Pos2::new(1., 0.)) - 1.).abs() < 1e-6
         );
+    }
+
+    #[test]
+    fn inspector_focus_does_not_reuse_edit_text_after_adding_or_selecting_pieces() {
+        use egui::accesskit::{Action, ActionRequest, NodeId, Role, TreeId};
+        fn frame(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            events: Vec<egui::Event>,
+        ) -> egui::FullOutput {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(500., 1800.))),
+                    events,
+                    ..Default::default()
+                },
+                |ui| app.inspector(ui),
+            )
+        }
+        fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+            egui::Event::Key {
+                key,
+                physical_key: None,
+                pressed: true,
+                repeat: false,
+                modifiers,
+            }
+        }
+        fn action(output: &egui::FullOutput, text: &str, action: Action) -> egui::Event {
+            let target_node = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(_, node)| {
+                    if action == Action::Focus {
+                        node.role() == Role::TextInput && node.value() == Some(text)
+                    } else {
+                        node.label() == Some(text) && node.supports_action(action)
+                    }
+                })
+                .unwrap_or_else(|| panic!("missing action {action:?} for {text:?}"))
+                .0;
+            request(target_node, action)
+        }
+        fn request(target_node: NodeId, action: Action) -> egui::Event {
+            egui::Event::AccessKitActionRequest(ActionRequest {
+                action,
+                target_tree: TreeId::ROOT,
+                target_node,
+                data: None,
+            })
+        }
+        fn numeric_field(output: &egui::FullOutput, label: &str, index: usize) -> NodeId {
+            let tree = output.platform_output.accesskit_update.as_ref().unwrap();
+            let top = output
+                .shapes
+                .iter()
+                .find_map(|clipped| match &clipped.shape {
+                    egui::Shape::Text(shape) if shape.galley.text() == label => {
+                        Some(shape.pos.y as f64)
+                    }
+                    _ => None,
+                })
+                .unwrap_or_else(|| panic!("missing label {label:?}"));
+            let mut fields: Vec<_> = tree
+                .nodes
+                .iter()
+                .filter_map(|(id, node)| {
+                    let bounds = node.bounds()?;
+                    (node.numeric_value().is_some() && bounds.y0 >= top - 3.0)
+                        .then_some((*id, bounds))
+                })
+                .collect();
+            let row_top = fields
+                .iter()
+                .map(|(_, bounds)| bounds.y0)
+                .min_by(f64::total_cmp)
+                .unwrap();
+            fields.retain(|(_, bounds)| bounds.y0 < row_top + 4.0);
+            fields.sort_by(|a, b| a.1.x0.total_cmp(&b.1.x0));
+            fields[index].0
+        }
+        fn replace(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            text: &str,
+            tab: bool,
+        ) -> egui::FullOutput {
+            let output = frame(
+                ctx,
+                app,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text(text.into()),
+                ],
+            );
+            if tab {
+                frame(ctx, app, vec![key(egui::Key::Tab, egui::Modifiers::NONE)])
+            } else {
+                output
+            }
+        }
+        fn focused(output: &egui::FullOutput) -> (NodeId, Option<String>, Option<f64>) {
+            let tree = output.platform_output.accesskit_update.as_ref().unwrap();
+            let node = tree.nodes.iter().find(|(id, _)| *id == tree.focus).unwrap();
+            (
+                node.0,
+                node.1.value().map(str::to_owned),
+                node.1.numeric_value(),
+            )
+        }
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = Studio::empty();
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(&output, "Pattern 1", Action::Focus)],
+        );
+        let mut output = replace(&ctx, &mut app, "Curve A", true);
+        for (value, tab) in [("0.4", true), ("0.6", true), ("0", true), ("0", false)] {
+            output = replace(&ctx, &mut app, value, tab);
+        }
+        assert_eq!(app.size, [0.4, 0.6]);
+        assert_eq!(app.coordinate, [0., 0.]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(&output, "Add rectangle", Action::Click)],
+        );
+        let output = frame(&ctx, &mut app, vec![]);
+        let after_first_add = focused(&output);
+        let first = app.editor.project.pieces[0].id;
+        assert_eq!(
+            app.editor.project.piece_bounds(first).unwrap(),
+            [[0., 0.], [0.4, 0.6]]
+        );
+
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(&output, "Curve A", Action::Focus)],
+        );
+        let mut output = replace(&ctx, &mut app, "Curve B", true);
+        for (value, tab) in [("0.4", true), ("0.6", true), ("1", true), ("0", false)] {
+            output = replace(&ctx, &mut app, value, tab);
+        }
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(&output, "Add rectangle", Action::Click)],
+        );
+        let output = frame(&ctx, &mut app, vec![]);
+        let after_second_add = focused(&output);
+        let second = app.editor.project.pieces[1].id;
+        assert_eq!(
+            app.editor.project.piece_bounds(second).unwrap(),
+            [[1., 0.], [1.4, 0.6]]
+        );
+
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(&output, "Curve A", Action::Click)],
+        );
+        let curve = app.editor.project.piece(first).unwrap().boundary[2];
+        app.select_curve(Some((first, curve)));
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(&output, "Cubic Bezier", Action::Click)],
+        );
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(&output, "Curve B", Action::Focus)],
+        );
+        let output = frame(&ctx, &mut app, vec![]);
+        assert_eq!(app.size, [0.4, 0.6]);
+        assert_eq!(after_first_add.0, after_second_add.0);
+        assert_eq!(
+            after_second_add.1.unwrap().parse::<f64>().unwrap(),
+            after_second_add.2.unwrap()
+        );
+
+        let before_selection = app.editor.project.clone();
+        let width_field = numeric_field(&output, "Size m", 0);
+        frame(&ctx, &mut app, vec![request(width_field, Action::Focus)]);
+        app.select(Some(first));
+        let output = frame(&ctx, &mut app, vec![]);
+        assert_eq!(numeric_field(&output, "Size m", 0), width_field);
+        app.select_curve(Some((first, curve)));
+        let output = frame(&ctx, &mut app, vec![]);
+        assert_eq!(numeric_field(&output, "Size m", 0), width_field);
+        assert_eq!(app.editor.project, before_selection);
+
+        let control_field = numeric_field(&output, "P1 control X / Y m", 0);
+        frame(&ctx, &mut app, vec![request(control_field, Action::Focus)]);
+        frame(&ctx, &mut app, vec![]);
+        let output = replace(&ctx, &mut app, "0.321", false);
+        assert_eq!(
+            app.draft
+                .as_ref()
+                .unwrap()
+                .curve
+                .as_ref()
+                .unwrap()
+                .controls
+                .unwrap()[0][0],
+            0.321
+        );
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(&output, "Curve B", Action::Click)],
+        );
+        assert_eq!(
+            app.editor.project.curve(curve).unwrap().controls.unwrap()[0][0],
+            0.321
+        );
+        let other_curve = app.editor.project.piece(second).unwrap().boundary[2];
+        assert!(
+            app.editor
+                .project
+                .curve(other_curve)
+                .unwrap()
+                .controls
+                .is_none()
+        );
+        app.select_curve(Some((second, other_curve)));
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(&output, "Cubic Bezier", Action::Click)],
+        );
+        let output = frame(&ctx, &mut app, vec![]);
+        assert_ne!(
+            numeric_field(&output, "P1 control X / Y m", 0),
+            control_field
+        );
+        let other_controls = app.editor.project.curve(other_curve).unwrap().controls;
+
+        let mesh_field = numeric_field(&output, "Mesh edge length m", 0);
+        frame(&ctx, &mut app, vec![request(mesh_field, Action::Focus)]);
+        frame(&ctx, &mut app, vec![]);
+        replace(&ctx, &mut app, "0.085", false);
+        app.select(Some(second));
+        let output = frame(&ctx, &mut app, vec![]);
+        assert_eq!(numeric_field(&output, "Mesh edge length m", 0), mesh_field);
+        assert_eq!(
+            focused(&output),
+            (mesh_field, Some("0.085".into()), Some(0.085))
+        );
+        app.select(Some(first));
+        let output = frame(&ctx, &mut app, vec![]);
+        assert_eq!(numeric_field(&output, "Mesh edge length m", 0), mesh_field);
+        assert_eq!(app.editor.project.resolution, 0.085);
+        assert_eq!(
+            app.editor.project.curve(other_curve).unwrap().controls,
+            other_controls
+        );
+
+        app.select_curve(Some((first, curve)));
+        let output = frame(&ctx, &mut app, vec![]);
+        let split_field = numeric_field(&output, "Split parameter t", 0);
+        frame(&ctx, &mut app, vec![request(split_field, Action::Focus)]);
+        frame(&ctx, &mut app, vec![]);
+        let output = replace(&ctx, &mut app, "0.35", false);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(&output, "Cubic Bezier", Action::Click)],
+        );
+        let output = frame(&ctx, &mut app, vec![]);
+        assert_eq!(numeric_field(&output, "Split parameter t", 0), split_field);
+        assert_eq!(
+            focused(&output),
+            (split_field, Some("0.35".into()), Some(0.35))
+        );
+        assert_eq!(app.size, [0.4, 0.6]);
     }
 
     #[test]
