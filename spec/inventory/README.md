@@ -54,6 +54,11 @@ The combined current inventory has 949 records: 593 menu nodes and 356 component
 observations. This is an expanding observation index, not a complete product
 feature count. Adding a field does not complete its behavior contract.
 
+The [source-pinned implementation map](weftforge-implementation-map.md) assigns
+all 949 exact IDs while preserving the prior 928 entries, 205 bounded packets
+and 56 source landmarks. Open Project and selected-seam label contexts remain
+explicit; related group assignments do not establish aliases or parity.
+
 Every record separates menu-presence evidence from the REA workspace identity
 capture. No raw UI, proprietary asset or implementation technique is supplied to
 implementers. Activating Rectangle is recorded as tool activation only; the
