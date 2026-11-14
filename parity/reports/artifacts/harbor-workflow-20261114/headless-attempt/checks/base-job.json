@@ -1,0 +1,48 @@
+{
+  "stage": "base",
+  "wrapper_pid": 6362,
+  "status": "failed",
+  "started_utc": "2026-11-14T19:54:41.414874+00:00",
+  "wall_cap_seconds": 420,
+  "numerical_output_cap_bytes_overall": 268435456,
+  "children": [
+    {
+      "pid": 6513,
+      "process_group": 6513,
+      "argv": [
+        "./target/release/harbor-public-driver",
+        "run",
+        "./inputs/base.weftforge",
+        "./runs/base"
+      ],
+      "status": "completed",
+      "exit_code": 1
+    }
+  ],
+  "first_failure": "RuntimeError: First failing command: exit 1",
+  "completed_utc": "2026-11-14T20:01:41.467870+00:00",
+  "wall_seconds": 420.05009416595567,
+  "numerical_bytes_overall": 16468343,
+  "retained_outputs": {
+    "runs/base/rest-metadata.json": {
+      "bytes": 590736,
+      "sha256": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9"
+    },
+    "runs/base/steps.jsonl": {
+      "bytes": 92498,
+      "sha256": "0db59f9adbd221f15e8caf6ad9d73f91f07d3559073725fdc34b1fc0e75f9f8e"
+    },
+    "runs/base/failed-step.json": {
+      "bytes": 86769,
+      "sha256": "d4afef898d7c0e26db24ff90a3faf22fef9e6a0cc7d2a8230fccbc0611fd1263"
+    },
+    "runs/base/trajectory.jsonl": {
+      "bytes": 13916586,
+      "sha256": "2f0a4cccad967b0769bbec0bd6e3e6a7a382422125513b3fc65a66961d4e347c"
+    },
+    "runs/base/stage-060.obj": {
+      "bytes": 154802,
+      "sha256": "7917b80683e52ede2eac3ea6d807100f806428f8a26b075d8afb17a04a6861f3"
+    }
+  }
+}

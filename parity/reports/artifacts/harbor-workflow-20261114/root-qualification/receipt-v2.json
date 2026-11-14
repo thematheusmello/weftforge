@@ -1,0 +1,39 @@
+{
+  "kind": "independent_root_prephysics_authoring_qualification_v2",
+  "checked_at": "2026-11-14T19:35:47.739760+00:00",
+  "runtime_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+  "input_plan_sha256": "0f07ac196c8e285c1441dc3a16f0027f65c2b901b4630abfa180a216b56e1ddd",
+  "source_files": {
+    "harbor-authored.weftforge": "445db3e25b10d6311c66baadb60825b739ba6d8d3ae45645790c151c9c4b877c",
+    "harbor-reopened.weftforge": "445db3e25b10d6311c66baadb60825b739ba6d8d3ae45645790c151c9c4b877c",
+    "harbor-final-restored.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+    "height-edited.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+  },
+  "geometry_and_sewing_match_frozen_plan": true,
+  "reopen_bytes_identical": true,
+  "final_undo_construction_exact_except_revision": true,
+  "only_front_height_edit_matches_frozen_affine_transform": true,
+  "coordinate_tolerance_m": 1e-12,
+  "base_area_per_piece_m2": [
+    0.5923,
+    0.5923
+  ],
+  "base_mass_kg": 0.213228,
+  "edited_mass_kg": 0.219891375,
+  "edited_to_base_mass_ratio": "33/32",
+  "initial_analytic_avatar_surface_gap_lower_bound_m": 0.06,
+  "initial_gap_minus_cloth_thickness_lower_bound_m": 0.056999999999999995,
+  "numerical_trajectory_observed": false,
+  "quality_prediction": "unknown; no simulation or pass claim",
+  "limits": [
+    "Does not independently prove every GUI event; actor capture/event/process records are separate.",
+    "Initial analytic avatar clearance is not full self-contact/edge-edge/CCD or draped quality evidence.",
+    "The original failed weak-grain benchmark remains unchanged."
+  ],
+  "supersedes": {
+    "receipt": "receipt.json",
+    "sha256": "d02af66c2107efd88a7c48dcf134203627ccd25209e93c22c630a80f542b7e3f",
+    "qualification": "Initial root edit check compared all Y values but did not separately reject X/point-ID changes. Original is retained. V2 checks all IDs/front X+Y within predeclared1e-12m, exact back coordinates and every other field. Initial strict-X-bit refusal is separately retained; maximum real Xroundoff1.12e-16m."
+  },
+  "self_checks": "Rejects separate in-memory front-X/back-X/point-ID/back-Y corruptions; no simulation or native source changes."
+}

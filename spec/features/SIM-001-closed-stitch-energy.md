@@ -51,6 +51,12 @@ vertices, allowed near-unit weight sums, zero gap with zero/nonzero multiplier,
 all-pinned participants, unchanged hard/positive targets, cancellation and
 whole-call failure retention. Preserve first failures and expected values.
 
+Independent source review qualifies the inherited numerical guard: projection
+skips a denominator at or below1e-20 or nonfinite. The all-pinned multiplier
+solution therefore requires a supported finite denominator; tiny-compliance
+and tiny-step overflow checks retain their prior multipliers. This qualification
+changes none of the fixed operator inputs, expected values or tolerances.
+
 Before garment claims, bind source/binary/input/evaluator and rerun original
 scenes under unchanged settings/quality limits. Distinguish all force/quality
 results and report any remaining failure. No claim of equilibrium, calibration,

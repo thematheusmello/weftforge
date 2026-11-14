@@ -1,0 +1,84 @@
+{
+  "kind": "POST-FAILURE read-only available native checkpoint qualification",
+  "status": "incomplete_prefix_only",
+  "native_receipt_sha256": "eaf1ae0f0e3c1d9a81f4487f067619f726434fad77a729cbff76fb23fbba6653",
+  "source_input_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+  "accepted_checkpoints": [
+    {
+      "frame": 0,
+      "simulation_time_s": 0.0,
+      "native_OBJ_sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+      "headless_OBJ_sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+      "entire_OBJ_bytes_identical": true,
+      "frozen_decimal_topology_normals_check": {
+        "exact_position_uv_face_group_tokens": true,
+        "max_decimal_rounding_error_m": "4.996880205580964684486389160E-18",
+        "rounding_bound_m": "5e-18",
+        "max_normal_component_error": 0.0
+      }
+    },
+    {
+      "frame": 60,
+      "simulation_time_s": 1.0,
+      "native_OBJ_sha256": "7917b80683e52ede2eac3ea6d807100f806428f8a26b075d8afb17a04a6861f3",
+      "headless_OBJ_sha256": "7917b80683e52ede2eac3ea6d807100f806428f8a26b075d8afb17a04a6861f3",
+      "entire_OBJ_bytes_identical": true,
+      "frozen_decimal_topology_normals_check": {
+        "exact_position_uv_face_group_tokens": true,
+        "max_decimal_rounding_error_m": "4.999701289250424451893195510E-18",
+        "rounding_bound_m": "5e-18",
+        "max_normal_component_error": 2.220446049250313e-16
+      }
+    }
+  ],
+  "source_JPEG_records": {
+    "kind": "Exact source JPEG identities and accepted frame/time with capture brackets supplied by native actor, independently checked against frozen events by reader",
+    "source_native_events_snapshot_sha256": "0806f828d61cf6e48a6221e8a6bef17b772435abc6abbb344f84c6355a19bdbd",
+    "exact_acquisition_instant": "not exposed; preserve request/result bracket, never substitute filesystemmtime",
+    "internal_worker_progress": "unknown; screenshots display accepted snapshot only",
+    "records": [
+      {
+        "source_filename": "stage-000-before.jpg",
+        "original_relative_source": "native-physics/base/stage-000-before.jpg",
+        "accepted_frame": 0,
+        "accepted_simulation_time_s": 0.0,
+        "capture_started_utc": "2026-11-14T19:59:09.682Z",
+        "capture_recorded_utc": "2026-11-14T19:59:09.777Z",
+        "sha256": "61ed8cb095f1056e12158bf7031ba97fa7a87d6de94ded6e17aa91c93a23d09f"
+      },
+      {
+        "source_filename": "stage-060-complete.jpg",
+        "original_relative_source": "native-physics/base/stage-060-complete.jpg",
+        "accepted_frame": 60,
+        "accepted_simulation_time_s": 1.0,
+        "capture_started_utc": "2026-11-14T20:03:37.076Z",
+        "capture_recorded_utc": "2026-11-14T20:03:37.490Z",
+        "sha256": "9bf5870412df48c8e22d727aa15bc8e24c6a3e45153cc11d99456cd78f8fd6ab"
+      },
+      {
+        "source_filename": "cap-or-completion-observed.jpg",
+        "original_relative_source": "native-physics/base/cap-or-completion-observed.jpg",
+        "accepted_frame": 60,
+        "accepted_simulation_time_s": 1.0,
+        "capture_started_utc": "2026-11-14T20:07:22.335Z",
+        "capture_recorded_utc": "2026-11-14T20:07:22.394Z",
+        "sha256": "eb87b237b14570435b51519dbef646f8111ad64192d300fd18f19ee0759a5043"
+      },
+      {
+        "source_filename": "cap-retained-saved.jpg",
+        "original_relative_source": "native-physics/base/cap-retained-saved.jpg",
+        "accepted_frame": 60,
+        "accepted_simulation_time_s": 1.0,
+        "capture_started_utc": "2026-11-14T20:08:31.516Z",
+        "capture_recorded_utc": "2026-11-14T20:08:31.588Z",
+        "sha256": "5e947795ea509d098da9ab94def285cd7ee34ed3fe8b13ad2543e872aacbadc6"
+      }
+    ]
+  },
+  "native_A_180": "missing",
+  "native_B": "not_run_missing_accepted_A_post_drape_precondition",
+  "AX_cap_observation_overrun_s": 2.704646583000226,
+  "full181_state_and_0_60_180_gates": "failed_or_not_run_incomplete",
+  "overall_quality": "not_qualified_incomplete_prefix_only",
+  "internal_worker_frames": "unknown; never infer from displayed accepted snapshot"
+}

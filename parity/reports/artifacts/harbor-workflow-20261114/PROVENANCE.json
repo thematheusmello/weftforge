@@ -1,0 +1,37 @@
+{
+  "kind": "Root reviewed closed retained workflow bundle; publication requires clean tracked verifier",
+  "runtime_source_commit": "6c45535cb312f7fed8ad872ee87b6ba5e5974e35",
+  "subtrees": [
+    {
+      "subtree": "native-authoring",
+      "frozen_manifest": "MANIFEST.sha256",
+      "sha256": "c7466657d51dc48d42e4ba669ed00b5f21cf4af5d7c33b5147c4902de9cb96c4",
+      "copied_files": 154,
+      "all_bytes_identical": true
+    },
+    {
+      "subtree": "native-attempt",
+      "frozen_manifest": "MANIFEST.sha256",
+      "sha256": "604ac37f548cbd93ca558c5138f432184cd47a843775a3f180ae8a3662ca7aaf",
+      "copied_files": 45,
+      "all_bytes_identical": true
+    },
+    {
+      "subtree": "headless-attempt",
+      "frozen_manifest": "MANIFEST.json",
+      "sha256": "75a1c7b03981455f726d18259e3d826613c4445a01998a4e00de330784cbc214",
+      "copied_files": 115,
+      "all_bytes_identical": true
+    }
+  ],
+  "root_qualifications": "Exact original JSON bytes; initial incomplete check and precision refusal retained alongside final prephysics qualification.",
+  "physical_results": "Both headless attempts capped; native A retained assembly after cancellation; B not_run. No full180 or reference parity claim.",
+  "source_pretest": "root-qualification/source-pretest.json",
+  "source_pretest_sha256": "d996bed57c5ef7776813bdfff6eb9921af55be7af3e5a9e75073a51ebb57be49",
+  "image_review": "Actor visually reviews all41nativecaptures; root independentlyviews8keycaptures.45totalJPEGpaths include4exactduplicateheadlesscopies; nestedEXIFcheckcoversall45.",
+  "root_preparation_correction": {
+    "first_manifest_sha256": "8ab1e8090130b2e8ab88b8b29f249bbb6649cccba7fb396597d534abe714eb69",
+    "retained_at": "parity/reports/artifacts/harbor-publication-20261114",
+    "qualification": "Root replay output-directory/JSONL integration fix only; frozen subtrees and original results unchanged."
+  }
+}

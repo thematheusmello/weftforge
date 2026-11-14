@@ -1,0 +1,61 @@
+{
+  "checks_passed": true,
+  "frozen_plan_sha256": "0f07ac196c8e285c1441dc3a16f0027f65c2b901b4630abfa180a216b56e1ddd",
+  "receipts": [
+    {
+      "file": "empty-start.weftforge",
+      "revision": 0,
+      "sha256": "a7efc773896b7d0b1cd1de1cbda888bb589aaf213eaa214f7232453ef33fd962"
+    },
+    {
+      "file": "front-created.weftforge",
+      "revision": 1,
+      "sha256": "48e679107268bb74befef9ba6d546ee291d8218f07394d47064da08fc6da697f"
+    },
+    {
+      "file": "two-panels-created.weftforge",
+      "revision": 2,
+      "sha256": "e4828356cf37524c1106b2c8c12a6cef2dd813fd4e9f5930db9399a2a029b6f9"
+    },
+    {
+      "file": "panels-arranged.weftforge",
+      "revision": 8,
+      "sha256": "9421bd15436146ff24de5da505012c84a9cb1c448387e2bd40556be9d0064d7f"
+    },
+    {
+      "file": "harbor-authored.weftforge",
+      "revision": 16,
+      "sha256": "445db3e25b10d6311c66baadb60825b739ba6d8d3ae45645790c151c9c4b877c"
+    },
+    {
+      "file": "harbor-reopened.weftforge",
+      "revision": 16,
+      "sha256": "445db3e25b10d6311c66baadb60825b739ba6d8d3ae45645790c151c9c4b877c"
+    },
+    {
+      "file": "height-edited.weftforge",
+      "revision": 17,
+      "sha256": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+    },
+    {
+      "file": "height-undone.weftforge",
+      "revision": 18,
+      "sha256": "17c2d8ce96720db81df56dfecb9c5302fd05e9e2d3efec3ee13e72c63365e058"
+    },
+    {
+      "file": "height-redone.weftforge",
+      "revision": 19,
+      "sha256": "fed09602a8ac8399cebfe053c78a15f6e4f7db34ace6a5a06fe62214589f0460"
+    },
+    {
+      "file": "harbor-final-restored.weftforge",
+      "revision": 20,
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+    }
+  ],
+  "reopen_byte_identical": true,
+  "undo_and_final_construction_exact_except_monotonic_revision": true,
+  "redo_construction_exact_except_monotonic_revision": true,
+  "height_formula_max_f64_error_m": 2.220446049250313e-16,
+  "quality_status": "Authoring only; physics 15%/5mm/2mm gates pending; previous weak-grain benchmark remains failing; no reference parity claim."
+}

@@ -1,0 +1,46 @@
+{
+  "id": "UI-HARBOR-001",
+  "kind": "implementation_only",
+  "reference_status": "not_executed",
+  "feature_ids": [
+    "APP-001",
+    "FILE-001",
+    "FILE-003",
+    "FIT-001",
+    "FIT-003",
+    "PAT-001",
+    "SEW-001",
+    "SIM-001",
+    "SIM-004",
+    "SIM-005",
+    "UI-001",
+    "UI-004",
+    "UI-005"
+  ],
+  "fixture_hashes": {
+    "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+    "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+  },
+  "frozen_plan": "parity/reports/artifacts/harbor-workflow-20261114/native-authoring/frozen-plan.json",
+  "frozen_plan_sha256": "0f07ac196c8e285c1441dc3a16f0027f65c2b901b4630abfa180a216b56e1ddd",
+  "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
+  "actions": [
+    "Create both editable panels and set placements/grain/seams through native controls.",
+    "Save, actually quit/relaunch/reopen, save a byte-identical project.",
+    "Edit frontheight; Undo/Redo/Undo and save restored construction; back and relationships retained.",
+    "From fresh arrangement use60zeroG+120gravity frames, dt1/60,8substeps,32iterations,closure1m/s,allcontacts.",
+    "Observe and preserve any fixed420s/256MiB failure and lastacceptedstate; edited nativeB requires completedApostDrape. Export only actually accepted meshes."
+  ],
+  "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
+  "quality_limits": {
+    "strain_strictly_below": 0.15,
+    "seam_gap_strictly_below_m": 0.005,
+    "contact_penetration_strictly_below_m": 0.002,
+    "seconds_per_case_including_analysis": 420,
+    "numerical_bytes_overall": 268435456
+  },
+  "reports": [
+    "parity/reports/WF-20261114-HARBOR-AUTHORING-001.json",
+    "parity/reports/WF-20261114-HARBOR-PHYSICS-001.json"
+  ]
+}

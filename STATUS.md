@@ -153,8 +153,8 @@ match SHA `445db3e2…77c`; final restored revision20 is `fc494974…da7`. Root'
 independent receipt `02bfcb94…e0a` checks every coordinate/ID and history state
 against the prospective1e-12m tolerance; four affine-X roundoffs are at most
 1.12e-16m. The first routed degenerate draft and first overly strict bitwise
-checker refusal remain retained. The153-file authoring candidate is frozen,
-private and not yet published; its33 raw screenshots are correctly named JPEGs.
+checker refusal remain retained. The authoring subtree has153manifest entries
+plus its manifest; its33 raw screenshots are correctly named JPEGs.
 
 Unmodified source6c455 Harbor headless A/B attempts both hit the unchanged
 420-second cap. A accepts163 frames, B158; their next steps cancel transactionally.
@@ -162,14 +162,23 @@ There is no frame180 or full physical acceptance. A native assembly accepts60
 frames; its OBJ is byte-identical to headless frame60. The native Drape attempt
 is cancelled at422.705s, retaining the2.705s observation overrun and prior accepted
 assembly. Native B is `not_run` because its completed-A-Drape precondition is
-missing. Native PID57507 remains saved/paused. The separate44-file physical
-attempt candidate is frozen; it does not alter the153-file authoring bundle.
+missing. Native PID57507 remains saved/paused. The separate physical-attempt
+subtree has44manifest entries plus its manifest; authoring bytes are unchanged.
 
 Post-failure read-only qualification checks all323 retained boundary states,
 mass, targets, supported contacts and cancellation. A frame29 has15.3559% strain,
 above15%; B prefix maximum is10.1651%. These incomplete prefixes cannot establish
 final quality. Source/settings/inputs remain unchanged. Ledgers and original
-failures stay in `.local/harbor-physics-20261114/`; packaging is in progress.
+failures stay in `.local/harbor-physics-20261114/`. The combined326-file
+[retained bundle](parity/reports/artifacts/harbor-workflow-20261114/README.md)
+replays authoring and all323 saved prefix states without running physics.
+[Authoring](parity/reports/WF-20261114-HARBOR-AUTHORING-001.json) passes its bounded
+checks; [physical completion](parity/reports/WF-20261114-HARBOR-PHYSICS-001.json)
+remains failed. Actor visually reviews all41native JPEGs; root independently
+views8keycaptures and checks intrinsic EXIF on45paths including4duplicates.
+Nested candidates stay byte-identical, including earlier preparation wording.
+Root's first saved-reader output-directory/JSONL integration failure is retained
+outside the closed bundle. Clean tracked publication checks follow locally.
 
 The single original-shirt force audit is complete in
 `.local/force-balance-design-20261114/shirt-run-001/`. Base6c455 plus private
@@ -193,9 +202,15 @@ strain failure remains. No production audit overlay has been integrated.
    oracle is retained.
    First test fixture accidentally inherited0.002m thickness instead of declared
    0.003m; the original failure is retained and only that setup was corrected.
-   Bind source/binary/evaluator before comparing the original181 states and both
-   Harbor prefixes exactly, excluding wall time. Only then repeat unchanged A/B
-   with the same420s/256MiB limits. No easier scene, settings or quality screen.
+   Frozen independent regression now passes all504 states: original181 plus
+   Harbor164/159. Metadata, x/v, settings and diagnostics includingpeak are
+   exact f64bits except named wall times; no quality claim. Closure
+   `.local/contact-invariance-20261114/CLOSURE.json` SHA is `ff0edaf3…6c6`.
+   All source1,842/frozen64files stay exact; alljobs terminal. New unchanged
+   full A/B are being prepared separately in
+   `.local/harbor-contact-candidates-20261114/`; require new source/binary/input/
+   evaluator freeze before their one420s/256MiB attempts. No easier scene,
+   settings or quality screen. Keep linear-stitch source excluded for this test.
 2. Review separate candidate `35afac60` on `feat/linear-closed-stitches` in
    `.local/linear-closed-stitches-20261114/`. Prospective
    [SIM-001](spec/features/SIM-001-closed-stitch-energy.md) preserves the elastic
@@ -205,9 +220,16 @@ strain failure remains. No production audit overlay has been integrated.
    acceptance/remaining runs, fmt and strictsim Clippy pass. A first new hard
    test's exact-rational expectation failure is retained; its strict expected
    scalar now follows independently derived3-4-5 f64 arithmetic. No garment
-   improvement follows from that operator alone. Finish review and validation
-   before combining it with the performance candidate.
-3. Publish reviewed Harbor/audit progress and the capture-encoding qualification
+   improvement follows from that operator alone. Independent math/source/evidence
+   review finds no blocking defect, with inherited denominator<=1e-20/nonfinite
+   skip explicitly qualified. Run separately bound garment validation before
+   combining it with the performance candidate.
+3. Native stage-label candidate `1ad6b8ed` on `fix/native-stage-reset` fixes all
+   clear-cloth transitions in3production lines. Frozen tests3RED→4GREEN,
+   all33nativeunit tests, fmt and strictpackageClippy pass. Pending/cancelled/
+   stale/failedjobs retain prioracceptedstage; acceptedmeshes preserve queued
+   batches/Play. NativeUI and full integrated checks remain pending.
+4. Publish reviewed Harbor/audit progress and the capture-encoding qualification
    only after tracked-clean registry/map/hash checks. Keep the reference manual
    click question pending; do not inject further reference input meanwhile.
    Continue all remaining roadmap work after these bounded increments.
@@ -215,7 +237,8 @@ strain failure remains. No production audit overlay has been integrated.
 All reported physical jobs are terminal: Harbor headless wrappers6362/11227,
 drivers6513/11372; native attempt cancelled; force-audit wrapper66760 and
 driver67564/analyzer68295 exit0. Prefix review95651/wrapper19019/child19163 exits0.
-The latest focused performance tests/Clippy6261 are terminal0. Separate stitch
-edge verification and evidence packaging are active; consult agent ledgers for
-their exact handles. Reference inventory36748 and REA observation64096 are
-terminal0. Recheck actual handles before resuming; use separate Cargo targets.
+Focused performance tests/Clippy6261/89269, all3invariance cases33956/57964/79338,
+stitch tests/Clippy and native-stage checks are terminal. The new fullHarbor
+preparation build78246/wrapper50333/release50596/Clippy50826 exits0; no new full
+physical case has started. Reference inventory36748 and REA observation64096
+are terminal0. Recheck actual handles before resuming; use separate Cargo targets.

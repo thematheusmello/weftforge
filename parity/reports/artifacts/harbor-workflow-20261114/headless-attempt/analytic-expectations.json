@@ -1,0 +1,1120 @@
+{
+  "kind": "Prospective independent authoring-derived geometry; no cloth constructed or stepped",
+  "frozen_utc": "2026-11-14T19:34:55.736049+00:00",
+  "coordinate_tolerance_m": 1e-12,
+  "area_formula": "absolute shoelace/2 on exact plan decimals; height front y=.96+(y-.96)*17/16",
+  "mass_formula": "areal_density 0.18 kg/m2 times authored area; each material triangle contributes rho*A/3 per incident node",
+  "cases": {
+    "base": {
+      "input": "inputs/base.weftforge",
+      "input_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+      "revision": 20,
+      "pieces": [
+        {
+          "piece_id": 2,
+          "name": "Harbor front",
+          "point_ids": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "curve_ids": [
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30
+          ],
+          "expected_uv_decimal": [
+            [
+              "-1.08",
+              "0.96"
+            ],
+            [
+              "-0.36",
+              "0.96"
+            ],
+            [
+              "-0.38",
+              "1.27"
+            ],
+            [
+              "-0.09",
+              "1.14"
+            ],
+            [
+              "-0.06",
+              "1.4"
+            ],
+            [
+              "-0.44",
+              "1.6"
+            ],
+            [
+              "-0.6",
+              "1.6"
+            ],
+            [
+              "-0.62",
+              "1.5"
+            ],
+            [
+              "-0.82",
+              "1.5"
+            ],
+            [
+              "-0.84",
+              "1.6"
+            ],
+            [
+              "-1.0",
+              "1.6"
+            ],
+            [
+              "-1.38",
+              "1.4"
+            ],
+            [
+              "-1.35",
+              "1.14"
+            ],
+            [
+              "-1.06",
+              "1.27"
+            ]
+          ],
+          "area_m2_decimal": "0.5923",
+          "mass_kg_decimal": "0.106614",
+          "placement": {
+            "translation": [
+              0.72,
+              0.0,
+              0.24
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "material_id": 1,
+          "grain_angle_rad": 1.5707963267948966,
+          "max_authored_coordinate_formula_error_m": 0.0,
+          "bounds_uv_m": [
+            [
+              -1.38,
+              0.96
+            ],
+            [
+              -0.06,
+              1.6
+            ]
+          ]
+        },
+        {
+          "piece_id": 31,
+          "name": "Harbor back",
+          "point_ids": [
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45
+          ],
+          "curve_ids": [
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "expected_uv_decimal": [
+            [
+              "0.36",
+              "0.96"
+            ],
+            [
+              "1.08",
+              "0.96"
+            ],
+            [
+              "1.06",
+              "1.27"
+            ],
+            [
+              "1.35",
+              "1.14"
+            ],
+            [
+              "1.38",
+              "1.4"
+            ],
+            [
+              "1.0",
+              "1.6"
+            ],
+            [
+              "0.84",
+              "1.6"
+            ],
+            [
+              "0.82",
+              "1.5"
+            ],
+            [
+              "0.62",
+              "1.5"
+            ],
+            [
+              "0.6",
+              "1.6"
+            ],
+            [
+              "0.44",
+              "1.6"
+            ],
+            [
+              "0.06",
+              "1.4"
+            ],
+            [
+              "0.09",
+              "1.14"
+            ],
+            [
+              "0.38",
+              "1.27"
+            ]
+          ],
+          "area_m2_decimal": "0.5923",
+          "mass_kg_decimal": "0.106614",
+          "placement": {
+            "translation": [
+              -0.72,
+              0.0,
+              -0.24
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "material_id": 1,
+          "grain_angle_rad": 1.5707963267948966,
+          "max_authored_coordinate_formula_error_m": 0.0,
+          "bounds_uv_m": [
+            [
+              0.06,
+              0.96
+            ],
+            [
+              1.38,
+              1.6
+            ]
+          ]
+        }
+      ],
+      "seams": [
+        {
+          "seam_id": 60,
+          "boundary_index_0based": 1,
+          "curve_ids": [
+            18,
+            47
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.31064449134018134074084812180325931778412274859561",
+            "0.31064449134018134074084812180325931778412274859561"
+          ],
+          "length_mismatch_m_decimal": "0E-50",
+          "compliance_m_per_N": 1e-08
+        },
+        {
+          "seam_id": 61,
+          "boundary_index_0based": 2,
+          "curve_ids": [
+            19,
+            48
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.31780497164141406804582045589354800553656236461563",
+            "0.31780497164141406804582045589354800553656236461563"
+          ],
+          "length_mismatch_m_decimal": "0E-50",
+          "compliance_m_per_N": 1e-08
+        },
+        {
+          "seam_id": 62,
+          "boundary_index_0based": 4,
+          "curve_ids": [
+            21,
+            50
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.42941821107167776938419397562078044331114677000267",
+            "0.42941821107167776938419397562078044331114677000267"
+          ],
+          "length_mismatch_m_decimal": "0E-50",
+          "compliance_m_per_N": 1e-08
+        },
+        {
+          "seam_id": 63,
+          "boundary_index_0based": 5,
+          "curve_ids": [
+            22,
+            51
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.16",
+            "0.16"
+          ],
+          "length_mismatch_m_decimal": "0.00",
+          "compliance_m_per_N": 1e-08
+        },
+        {
+          "seam_id": 64,
+          "boundary_index_0based": 9,
+          "curve_ids": [
+            26,
+            55
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.16",
+            "0.16"
+          ],
+          "length_mismatch_m_decimal": "0.00",
+          "compliance_m_per_N": 1e-08
+        },
+        {
+          "seam_id": 65,
+          "boundary_index_0based": 10,
+          "curve_ids": [
+            27,
+            56
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.42941821107167776938419397562078044331114677000267",
+            "0.42941821107167776938419397562078044331114677000267"
+          ],
+          "length_mismatch_m_decimal": "0E-50",
+          "compliance_m_per_N": 1e-08
+        },
+        {
+          "seam_id": 66,
+          "boundary_index_0based": 12,
+          "curve_ids": [
+            29,
+            58
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.31780497164141406804582045589354800553656236461563",
+            "0.31780497164141406804582045589354800553656236461563"
+          ],
+          "length_mismatch_m_decimal": "0E-50",
+          "compliance_m_per_N": 1e-08
+        },
+        {
+          "seam_id": 67,
+          "boundary_index_0based": 13,
+          "curve_ids": [
+            30,
+            59
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.31064449134018134074084812180325931778412274859561",
+            "0.31064449134018134074084812180325931778412274859561"
+          ],
+          "length_mismatch_m_decimal": "0E-50",
+          "compliance_m_per_N": 1e-08
+        }
+      ],
+      "area_m2_decimal": "1.1846",
+      "mass_kg_decimal": "0.213228",
+      "maximum_initial_stitch_separation_upper_bound_m_decimal": "0.48",
+      "assembly_targets_expected_zero_by_frame": 29,
+      "ground_height_m": 0.0,
+      "avatar_capsules": [
+        {
+          "a": [
+            0.0,
+            0.9,
+            0.0
+          ],
+          "b": [
+            0.0,
+            1.4,
+            0.0
+          ],
+          "radius": 0.18
+        },
+        {
+          "a": [
+            0.0,
+            1.53,
+            0.0
+          ],
+          "b": [
+            0.0,
+            1.65,
+            0.0
+          ],
+          "radius": 0.105
+        },
+        {
+          "a": [
+            -0.22,
+            1.4,
+            0.0
+          ],
+          "b": [
+            -0.55,
+            1.22,
+            0.0
+          ],
+          "radius": 0.065
+        },
+        {
+          "a": [
+            0.22,
+            1.4,
+            0.0
+          ],
+          "b": [
+            0.55,
+            1.22,
+            0.0
+          ],
+          "radius": 0.065
+        },
+        {
+          "a": [
+            -0.09,
+            0.88,
+            0.0
+          ],
+          "b": [
+            -0.09,
+            0.18,
+            0.0
+          ],
+          "radius": 0.085
+        },
+        {
+          "a": [
+            0.09,
+            0.88,
+            0.0
+          ],
+          "b": [
+            0.09,
+            0.18,
+            0.0
+          ],
+          "radius": 0.085
+        }
+      ],
+      "pins": [],
+      "material": {
+        "id": 1,
+        "name": "Cotton approximation (uncalibrated)",
+        "areal_density": 0.18,
+        "warp_stiffness": 400,
+        "weft_stiffness": 400,
+        "shear_stiffness": 100,
+        "bending_stiffness": 0.003,
+        "damping": 0.2,
+        "friction": 0.4,
+        "collision_thickness": 0.003,
+        "color": [
+          0.22,
+          0.55,
+          0.76
+        ]
+      }
+    },
+    "height": {
+      "input": "inputs/height.weftforge",
+      "input_sha256": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5",
+      "revision": 17,
+      "pieces": [
+        {
+          "piece_id": 2,
+          "name": "Harbor front",
+          "point_ids": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ],
+          "curve_ids": [
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30
+          ],
+          "expected_uv_decimal": [
+            [
+              "-1.08",
+              "0.96"
+            ],
+            [
+              "-0.36",
+              "0.96"
+            ],
+            [
+              "-0.38",
+              "1.289375"
+            ],
+            [
+              "-0.09",
+              "1.15125"
+            ],
+            [
+              "-0.06",
+              "1.4275"
+            ],
+            [
+              "-0.44",
+              "1.64"
+            ],
+            [
+              "-0.6",
+              "1.64"
+            ],
+            [
+              "-0.62",
+              "1.53375"
+            ],
+            [
+              "-0.82",
+              "1.53375"
+            ],
+            [
+              "-0.84",
+              "1.64"
+            ],
+            [
+              "-1.0",
+              "1.64"
+            ],
+            [
+              "-1.38",
+              "1.4275"
+            ],
+            [
+              "-1.35",
+              "1.15125"
+            ],
+            [
+              "-1.06",
+              "1.289375"
+            ]
+          ],
+          "area_m2_decimal": "0.62931875",
+          "mass_kg_decimal": "0.1132773750",
+          "placement": {
+            "translation": [
+              0.72,
+              0.0,
+              0.24
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "material_id": 1,
+          "grain_angle_rad": 1.5707963267948966,
+          "max_authored_coordinate_formula_error_m": 2.220446049250313e-16,
+          "bounds_uv_m": [
+            [
+              -1.38,
+              0.96
+            ],
+            [
+              -0.06,
+              1.64
+            ]
+          ]
+        },
+        {
+          "piece_id": 31,
+          "name": "Harbor back",
+          "point_ids": [
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45
+          ],
+          "curve_ids": [
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59
+          ],
+          "expected_uv_decimal": [
+            [
+              "0.36",
+              "0.96"
+            ],
+            [
+              "1.08",
+              "0.96"
+            ],
+            [
+              "1.06",
+              "1.27"
+            ],
+            [
+              "1.35",
+              "1.14"
+            ],
+            [
+              "1.38",
+              "1.4"
+            ],
+            [
+              "1.0",
+              "1.6"
+            ],
+            [
+              "0.84",
+              "1.6"
+            ],
+            [
+              "0.82",
+              "1.5"
+            ],
+            [
+              "0.62",
+              "1.5"
+            ],
+            [
+              "0.6",
+              "1.6"
+            ],
+            [
+              "0.44",
+              "1.6"
+            ],
+            [
+              "0.06",
+              "1.4"
+            ],
+            [
+              "0.09",
+              "1.14"
+            ],
+            [
+              "0.38",
+              "1.27"
+            ]
+          ],
+          "area_m2_decimal": "0.5923",
+          "mass_kg_decimal": "0.106614",
+          "placement": {
+            "translation": [
+              -0.72,
+              0.0,
+              -0.24
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "material_id": 1,
+          "grain_angle_rad": 1.5707963267948966,
+          "max_authored_coordinate_formula_error_m": 0.0,
+          "bounds_uv_m": [
+            [
+              0.06,
+              0.96
+            ],
+            [
+              1.38,
+              1.6
+            ]
+          ]
+        }
+      ],
+      "seams": [
+        {
+          "seam_id": 60,
+          "boundary_index_0based": 1,
+          "curve_ids": [
+            18,
+            47
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.32998165195204414577223256650234165197552433927206",
+            "0.31064449134018134074084812180325931778412274859561"
+          ],
+          "length_mismatch_m_decimal": "0.01933716061186280503138444469908233419140159067645",
+          "compliance_m_per_N": 1e-08
+        },
+        {
+          "seam_id": 61,
+          "boundary_index_0based": 2,
+          "curve_ids": [
+            19,
+            48
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.32121412737455991289527697462055043042904512958757",
+            "0.31780497164141406804582045589354800553656236461563"
+          ],
+          "length_mismatch_m_decimal": "0.00340915573314584484945651872700242489248276497194",
+          "compliance_m_per_N": 1e-08
+        },
+        {
+          "seam_id": 62,
+          "boundary_index_0based": 4,
+          "curve_ids": [
+            21,
+            50
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.43538058064181043581236370772709219721167788146732",
+            "0.42941821107167776938419397562078044331114677000267"
+          ],
+          "length_mismatch_m_decimal": "0.00596236957013266642816973210631175390053111146465",
+          "compliance_m_per_N": 1e-08
+        },
+        {
+          "seam_id": 63,
+          "boundary_index_0based": 5,
+          "curve_ids": [
+            22,
+            51
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.16",
+            "0.16"
+          ],
+          "length_mismatch_m_decimal": "0.00",
+          "compliance_m_per_N": 1e-08
+        },
+        {
+          "seam_id": 64,
+          "boundary_index_0based": 9,
+          "curve_ids": [
+            26,
+            55
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.16",
+            "0.16"
+          ],
+          "length_mismatch_m_decimal": "0.00",
+          "compliance_m_per_N": 1e-08
+        },
+        {
+          "seam_id": 65,
+          "boundary_index_0based": 10,
+          "curve_ids": [
+            27,
+            56
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.43538058064181043581236370772709219721167788146732",
+            "0.42941821107167776938419397562078044331114677000267"
+          ],
+          "length_mismatch_m_decimal": "0.00596236957013266642816973210631175390053111146465",
+          "compliance_m_per_N": 1e-08
+        },
+        {
+          "seam_id": 66,
+          "boundary_index_0based": 12,
+          "curve_ids": [
+            29,
+            58
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.32121412737455991289527697462055043042904512958757",
+            "0.31780497164141406804582045589354800553656236461563"
+          ],
+          "length_mismatch_m_decimal": "0.00340915573314584484945651872700242489248276497194",
+          "compliance_m_per_N": 1e-08
+        },
+        {
+          "seam_id": 67,
+          "boundary_index_0based": 13,
+          "curve_ids": [
+            30,
+            59
+          ],
+          "intervals": [
+            [
+              0,
+              1
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "fraction_map": "t_b=t_a; same direction",
+          "analytic_lengths_m_decimal": [
+            "0.32998165195204414577223256650234165197552433927206",
+            "0.31064449134018134074084812180325931778412274859561"
+          ],
+          "length_mismatch_m_decimal": "0.01933716061186280503138444469908233419140159067645",
+          "compliance_m_per_N": 1e-08
+        }
+      ],
+      "area_m2_decimal": "1.22161875",
+      "mass_kg_decimal": "0.2198913750",
+      "maximum_initial_stitch_separation_upper_bound_m_decimal": "0.48166378315169181920512964121514432209701409620215",
+      "assembly_targets_expected_zero_by_frame": 29,
+      "ground_height_m": 0.0,
+      "avatar_capsules": [
+        {
+          "a": [
+            0.0,
+            0.9,
+            0.0
+          ],
+          "b": [
+            0.0,
+            1.4,
+            0.0
+          ],
+          "radius": 0.18
+        },
+        {
+          "a": [
+            0.0,
+            1.53,
+            0.0
+          ],
+          "b": [
+            0.0,
+            1.65,
+            0.0
+          ],
+          "radius": 0.105
+        },
+        {
+          "a": [
+            -0.22,
+            1.4,
+            0.0
+          ],
+          "b": [
+            -0.55,
+            1.22,
+            0.0
+          ],
+          "radius": 0.065
+        },
+        {
+          "a": [
+            0.22,
+            1.4,
+            0.0
+          ],
+          "b": [
+            0.55,
+            1.22,
+            0.0
+          ],
+          "radius": 0.065
+        },
+        {
+          "a": [
+            -0.09,
+            0.88,
+            0.0
+          ],
+          "b": [
+            -0.09,
+            0.18,
+            0.0
+          ],
+          "radius": 0.085
+        },
+        {
+          "a": [
+            0.09,
+            0.88,
+            0.0
+          ],
+          "b": [
+            0.09,
+            0.18,
+            0.0
+          ],
+          "radius": 0.085
+        }
+      ],
+      "pins": [],
+      "material": {
+        "id": 1,
+        "name": "Cotton approximation (uncalibrated)",
+        "areal_density": 0.18,
+        "warp_stiffness": 400,
+        "weft_stiffness": 400,
+        "shear_stiffness": 100,
+        "bending_stiffness": 0.003,
+        "damping": 0.2,
+        "friction": 0.4,
+        "collision_thickness": 0.003,
+        "color": [
+          0.22,
+          0.55,
+          0.76
+        ]
+      }
+    }
+  },
+  "edit_scope": "Front height only; X within 1e-12 m, Y formula, all back and other construction exact; monotonic revision differs",
+  "prior_failed_fixture_unchanged_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "quality_prediction": "unknown; ease/clearance rationale is not a quality result"
+}

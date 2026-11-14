@@ -1,0 +1,23 @@
+{
+  "kind": "Additional independent partition completeness check",
+  "metrics_sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+  "fixture": "100m-wide AABBs force direct fallback; 4mm layer distance must still detect three2mm interpanel penetrations",
+  "accelerated_equals_exhaustive": true,
+  "result": {
+    "supported_static_self_interpanel_penetration_m": 0.002,
+    "positive_depth_pairs": {
+      "self": 0,
+      "interpanel": 3
+    },
+    "intersection_pairs_depth_over_1e_minus8": 3,
+    "worst": {
+      "vertex": 3,
+      "triangle": 0,
+      "kind": "interpanel",
+      "depth_m": 0.002
+    },
+    "degenerate_faces_skipped_by_supported_model": 0,
+    "scope": "Current particle/triangle distances after one-ring/direct-stitch exclusions; no swept or edge-edge completeness claim"
+  },
+  "physical_solver_called": false
+}
