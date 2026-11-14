@@ -3690,6 +3690,22 @@
             "parity/reports/artifacts/interchange.log": "4e762c76cb121d01ca7805337a32c973637aa947ec1c47436bba4592e4cd633f",
             "parity/reports/artifacts/package.log": "bfa0e5175307a5a18c8a7fa7053c9ddcbbf81b29ef34b001380eae8d03140de1"
           }
+        },
+        {
+          "id": "WF-20261114-INTEGRATION-001",
+          "path": "parity/reports/WF-20261114-INTEGRATION-001.json",
+          "commit": "eb153cd49dc0417b8702d6fc9b5a1156aad9b650",
+          "timestamp": "2026-11-14T02:17:35.180433Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/integration-20261114/clippy.log": "31b02b0e8b190a5a44aa69dc33682c3ea8ad03816de648b7eb3f74d9e70258ea",
+            "parity/reports/artifacts/integration-20261114/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/integration-20261114/official-sdk.json": "3c861371a99dd020bf8877003b52238317c8ea859f2a9f559862c4cb446b8171",
+            "parity/reports/artifacts/integration-20261114/package.log": "3bdef42dde69bf1f7de78989b9cf1d836ba2d4ebe26e98a842ae8db9b2829265",
+            "parity/reports/artifacts/integration-20261114/scenario.log": "f910f5e60c903b157414db43bca84c12dfbf86bb3d9b3b853835211a9bc4bc88",
+            "parity/reports/artifacts/integration-20261114/tests.log": "f6524ebffef4c13bb7cdf1256e9a8aa87f7b14c9cafbd4645cf966ede4d9618b",
+            "parity/reports/artifacts/integration-20261114/xtask.log": "2477d864793e3ee6e5584af6ec9564f0d1881af4ee9693233388f893a4e42753"
+          }
         }
       ],
       "known_gaps": [
@@ -3700,7 +3716,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "APP-002",

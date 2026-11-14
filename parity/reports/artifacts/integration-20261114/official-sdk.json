@@ -1,0 +1,1235 @@
+{
+  "client": "official Python mcp",
+  "client_version": "1.28.1",
+  "negotiated_protocol": "2025-11-25",
+  "server_sha256": "b2bc0999486eb79b88e05e34080d4d3072ce9e5c385640e22de61d43168a6396",
+  "server_info": {
+    "name": "weftforge-cli",
+    "title": null,
+    "version": "0.1.0",
+    "websiteUrl": null,
+    "icons": null
+  },
+  "tool_names": [
+    "project_inspect",
+    "project_create",
+    "project_execute",
+    "project_export_svg",
+    "project_export_obj"
+  ],
+  "created_revision": 0,
+  "inspected_revision": 0,
+  "stdout_decoded_messages": 4,
+  "transcript": [
+    {
+      "direction": "client_to_server",
+      "message": {
+        "method": "initialize",
+        "params": {
+          "protocolVersion": "2025-11-25",
+          "capabilities": {},
+          "clientInfo": {
+            "name": "mcp",
+            "version": "0.1.0"
+          }
+        },
+        "jsonrpc": "2.0",
+        "id": 0
+      }
+    },
+    {
+      "direction": "server_to_client",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": 0,
+        "result": {
+          "capabilities": {
+            "tools": {}
+          },
+          "instructions": "Local stateless file authoring in SI units. Inspect stable IDs before edits. Each command array commits as one transaction. No active GUI control, simulation jobs, or persistent undo.",
+          "protocolVersion": "2025-11-25",
+          "serverInfo": {
+            "name": "weftforge-cli",
+            "version": "0.1.0"
+          }
+        }
+      }
+    },
+    {
+      "direction": "client_to_server",
+      "message": {
+        "method": "notifications/initialized",
+        "jsonrpc": "2.0"
+      }
+    },
+    {
+      "direction": "client_to_server",
+      "message": {
+        "method": "tools/list",
+        "jsonrpc": "2.0",
+        "id": 1
+      }
+    },
+    {
+      "direction": "server_to_client",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "result": {
+          "tools": [
+            {
+              "annotations": {
+                "destructiveHint": false,
+                "openWorldHint": false,
+                "readOnlyHint": true
+              },
+              "description": "Load a validated native project; return every authored object and stable relationship in SI units, without building a mesh.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "path": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path"
+                ],
+                "type": "object"
+              },
+              "name": "project_inspect"
+            },
+            {
+              "annotations": {
+                "destructiveHint": true,
+                "openWorldHint": false,
+                "readOnlyHint": false
+              },
+              "description": "Save an empty native project to a new path. Existing files are refused.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "output": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "output"
+                ],
+                "type": "object"
+              },
+              "name": "project_create"
+            },
+            {
+              "annotations": {
+                "destructiveHint": true,
+                "openWorldHint": false,
+                "readOnlyHint": false
+              },
+              "description": "Load input, execute 1\u20131024 shared typed commands atomically as one document revision, then save output with native atomic/recovery handling. Input and output may be the same native file. Inspect stable IDs before edits; nested transactions are rejected.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "commands": {
+                    "items": {
+                      "oneOf": [
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "name": {
+                                  "type": "string"
+                                },
+                                "vertices": {
+                                  "items": {
+                                    "items": {
+                                      "type": "number"
+                                    },
+                                    "maxItems": 2,
+                                    "minItems": 2,
+                                    "type": "array"
+                                  },
+                                  "type": "array"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "vertices"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "add_polygon"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "height": {
+                                  "type": "number"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "origin": {
+                                  "items": {
+                                    "type": "number"
+                                  },
+                                  "maxItems": 2,
+                                  "minItems": 2,
+                                  "type": "array"
+                                },
+                                "width": {
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "origin",
+                                "width",
+                                "height"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "add_rectangle"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "point": {
+                                  "maximum": 18446744073709551615,
+                                  "minimum": 0,
+                                  "type": "integer"
+                                },
+                                "position": {
+                                  "items": {
+                                    "type": "number"
+                                  },
+                                  "maxItems": 2,
+                                  "minItems": 2,
+                                  "type": "array"
+                                }
+                              },
+                              "required": [
+                                "point",
+                                "position"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "move_point"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "controls": {
+                                  "anyOf": [
+                                    {
+                                      "type": "null"
+                                    },
+                                    {
+                                      "items": {
+                                        "items": {
+                                          "type": "number"
+                                        },
+                                        "maxItems": 2,
+                                        "minItems": 2,
+                                        "type": "array"
+                                      },
+                                      "maxItems": 2,
+                                      "minItems": 2,
+                                      "type": "array"
+                                    }
+                                  ]
+                                },
+                                "curve": {
+                                  "maximum": 18446744073709551615,
+                                  "minimum": 0,
+                                  "type": "integer"
+                                }
+                              },
+                              "required": [
+                                "curve"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "set_curve_controls"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "curve": {
+                                  "maximum": 18446744073709551615,
+                                  "minimum": 0,
+                                  "type": "integer"
+                                },
+                                "t": {
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "curve",
+                                "t"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "split_curve"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "height": {
+                                  "type": "number"
+                                },
+                                "piece": {
+                                  "maximum": 18446744073709551615,
+                                  "minimum": 0,
+                                  "type": "integer"
+                                },
+                                "width": {
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "piece",
+                                "width",
+                                "height"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "resize_piece"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "piece": {
+                                  "maximum": 18446744073709551615,
+                                  "minimum": 0,
+                                  "type": "integer"
+                                },
+                                "placement": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "rotation": {
+                                      "items": {
+                                        "type": "number"
+                                      },
+                                      "maxItems": 3,
+                                      "minItems": 3,
+                                      "type": "array"
+                                    },
+                                    "translation": {
+                                      "items": {
+                                        "type": "number"
+                                      },
+                                      "maxItems": 3,
+                                      "minItems": 3,
+                                      "type": "array"
+                                    }
+                                  },
+                                  "required": [
+                                    "translation",
+                                    "rotation"
+                                  ],
+                                  "type": "object"
+                                }
+                              },
+                              "required": [
+                                "piece",
+                                "placement"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "set_placement"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "angle": {
+                                  "type": "number"
+                                },
+                                "piece": {
+                                  "maximum": 18446744073709551615,
+                                  "minimum": 0,
+                                  "type": "integer"
+                                }
+                              },
+                              "required": [
+                                "piece",
+                                "angle"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "set_grain"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "material": {
+                                  "maximum": 18446744073709551615,
+                                  "minimum": 0,
+                                  "type": "integer"
+                                },
+                                "piece": {
+                                  "maximum": 18446744073709551615,
+                                  "minimum": 0,
+                                  "type": "integer"
+                                }
+                              },
+                              "required": [
+                                "piece",
+                                "material"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "set_material"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "material": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "areal_density": {
+                                      "type": "number"
+                                    },
+                                    "bending_stiffness": {
+                                      "type": "number"
+                                    },
+                                    "collision_thickness": {
+                                      "type": "number"
+                                    },
+                                    "color": {
+                                      "items": {
+                                        "type": "number"
+                                      },
+                                      "maxItems": 3,
+                                      "minItems": 3,
+                                      "type": "array"
+                                    },
+                                    "damping": {
+                                      "type": "number"
+                                    },
+                                    "friction": {
+                                      "type": "number"
+                                    },
+                                    "id": {
+                                      "maximum": 18446744073709551615,
+                                      "minimum": 0,
+                                      "type": "integer"
+                                    },
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "shear_stiffness": {
+                                      "type": "number"
+                                    },
+                                    "warp_stiffness": {
+                                      "type": "number"
+                                    },
+                                    "weft_stiffness": {
+                                      "type": "number"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "name",
+                                    "areal_density",
+                                    "warp_stiffness",
+                                    "weft_stiffness",
+                                    "shear_stiffness",
+                                    "bending_stiffness",
+                                    "damping",
+                                    "friction",
+                                    "collision_thickness",
+                                    "color"
+                                  ],
+                                  "type": "object"
+                                }
+                              },
+                              "required": [
+                                "material"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "add_material"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "material": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "areal_density": {
+                                      "type": "number"
+                                    },
+                                    "bending_stiffness": {
+                                      "type": "number"
+                                    },
+                                    "collision_thickness": {
+                                      "type": "number"
+                                    },
+                                    "color": {
+                                      "items": {
+                                        "type": "number"
+                                      },
+                                      "maxItems": 3,
+                                      "minItems": 3,
+                                      "type": "array"
+                                    },
+                                    "damping": {
+                                      "type": "number"
+                                    },
+                                    "friction": {
+                                      "type": "number"
+                                    },
+                                    "id": {
+                                      "maximum": 18446744073709551615,
+                                      "minimum": 0,
+                                      "type": "integer"
+                                    },
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "shear_stiffness": {
+                                      "type": "number"
+                                    },
+                                    "warp_stiffness": {
+                                      "type": "number"
+                                    },
+                                    "weft_stiffness": {
+                                      "type": "number"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "name",
+                                    "areal_density",
+                                    "warp_stiffness",
+                                    "weft_stiffness",
+                                    "shear_stiffness",
+                                    "bending_stiffness",
+                                    "damping",
+                                    "friction",
+                                    "collision_thickness",
+                                    "color"
+                                  ],
+                                  "type": "object"
+                                }
+                              },
+                              "required": [
+                                "material"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "update_material"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "a": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "curve": {
+                                      "maximum": 18446744073709551615,
+                                      "minimum": 0,
+                                      "type": "integer"
+                                    },
+                                    "t0": {
+                                      "type": "number"
+                                    },
+                                    "t1": {
+                                      "type": "number"
+                                    }
+                                  },
+                                  "required": [
+                                    "curve",
+                                    "t0",
+                                    "t1"
+                                  ],
+                                  "type": "object"
+                                },
+                                "b": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "curve": {
+                                      "maximum": 18446744073709551615,
+                                      "minimum": 0,
+                                      "type": "integer"
+                                    },
+                                    "t0": {
+                                      "type": "number"
+                                    },
+                                    "t1": {
+                                      "type": "number"
+                                    }
+                                  },
+                                  "required": [
+                                    "curve",
+                                    "t0",
+                                    "t1"
+                                  ],
+                                  "type": "object"
+                                },
+                                "correspondence": {
+                                  "items": {
+                                    "items": {
+                                      "type": "number"
+                                    },
+                                    "maxItems": 2,
+                                    "minItems": 2,
+                                    "type": "array"
+                                  },
+                                  "type": "array"
+                                },
+                                "name": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "a",
+                                "b",
+                                "correspondence"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "add_seam"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "seam": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "a": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "curve": {
+                                          "maximum": 18446744073709551615,
+                                          "minimum": 0,
+                                          "type": "integer"
+                                        },
+                                        "t0": {
+                                          "type": "number"
+                                        },
+                                        "t1": {
+                                          "type": "number"
+                                        }
+                                      },
+                                      "required": [
+                                        "curve",
+                                        "t0",
+                                        "t1"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    "b": {
+                                      "additionalProperties": false,
+                                      "properties": {
+                                        "curve": {
+                                          "maximum": 18446744073709551615,
+                                          "minimum": 0,
+                                          "type": "integer"
+                                        },
+                                        "t0": {
+                                          "type": "number"
+                                        },
+                                        "t1": {
+                                          "type": "number"
+                                        }
+                                      },
+                                      "required": [
+                                        "curve",
+                                        "t0",
+                                        "t1"
+                                      ],
+                                      "type": "object"
+                                    },
+                                    "correspondence": {
+                                      "items": {
+                                        "items": {
+                                          "type": "number"
+                                        },
+                                        "maxItems": 2,
+                                        "minItems": 2,
+                                        "type": "array"
+                                      },
+                                      "type": "array"
+                                    },
+                                    "id": {
+                                      "maximum": 18446744073709551615,
+                                      "minimum": 0,
+                                      "type": "integer"
+                                    },
+                                    "name": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "name",
+                                    "a",
+                                    "b",
+                                    "correspondence"
+                                  ],
+                                  "type": "object"
+                                }
+                              },
+                              "required": [
+                                "seam"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "update_seam"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "seam": {
+                                  "maximum": 18446744073709551615,
+                                  "minimum": 0,
+                                  "type": "integer"
+                                }
+                              },
+                              "required": [
+                                "seam"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "remove_seam"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "piece": {
+                                  "maximum": 18446744073709551615,
+                                  "minimum": 0,
+                                  "type": "integer"
+                                }
+                              },
+                              "required": [
+                                "piece"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "remove_piece"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "metres": {
+                                  "type": "number"
+                                }
+                              },
+                              "required": [
+                                "metres"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "set_resolution"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "additionalProperties": false,
+                          "properties": {
+                            "data": {
+                              "additionalProperties": false,
+                              "properties": {
+                                "mannequin": {
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "capsules": {
+                                      "items": {
+                                        "additionalProperties": false,
+                                        "properties": {
+                                          "a": {
+                                            "items": {
+                                              "type": "number"
+                                            },
+                                            "maxItems": 3,
+                                            "minItems": 3,
+                                            "type": "array"
+                                          },
+                                          "b": {
+                                            "items": {
+                                              "type": "number"
+                                            },
+                                            "maxItems": 3,
+                                            "minItems": 3,
+                                            "type": "array"
+                                          },
+                                          "radius": {
+                                            "type": "number"
+                                          }
+                                        },
+                                        "required": [
+                                          "a",
+                                          "b",
+                                          "radius"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "type": "array"
+                                    }
+                                  },
+                                  "required": [
+                                    "capsules"
+                                  ],
+                                  "type": "object"
+                                }
+                              },
+                              "required": [
+                                "mannequin"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "const": "set_mannequin"
+                            }
+                          },
+                          "required": [
+                            "type",
+                            "data"
+                          ],
+                          "type": "object"
+                        }
+                      ]
+                    },
+                    "maxItems": 1024,
+                    "minItems": 1,
+                    "type": "array"
+                  },
+                  "input": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "output": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "input",
+                  "output",
+                  "commands"
+                ],
+                "type": "object"
+              },
+              "name": "project_execute"
+            },
+            {
+              "annotations": {
+                "destructiveHint": true,
+                "openWorldHint": false,
+                "readOnlyHint": false
+              },
+              "description": "Export authored pattern curves at physical millimetre scale. Refuse replacement of the source or native project destinations.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "input": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "output": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "input",
+                  "output"
+                ],
+                "type": "object"
+              },
+              "name": "project_export_svg"
+            },
+            {
+              "annotations": {
+                "destructiveHint": true,
+                "openWorldHint": false,
+                "readOnlyHint": false
+              },
+              "description": "Build and export a rest mesh in metres, Y-up, with source revision; no simulation. Refuse replacement of the source or native project destinations.",
+              "inputSchema": {
+                "additionalProperties": false,
+                "properties": {
+                  "input": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "output": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "input",
+                  "output"
+                ],
+                "type": "object"
+              },
+              "name": "project_export_obj"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "direction": "client_to_server",
+      "message": {
+        "method": "tools/call",
+        "params": {
+          "name": "project_create",
+          "arguments": {
+            "output": "<scratch>/original.weftforge"
+          }
+        },
+        "jsonrpc": "2.0",
+        "id": 2
+      }
+    },
+    {
+      "direction": "server_to_client",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "result": {
+          "content": [
+            {
+              "text": "{\"output\":\"<scratch>/original.weftforge\",\"revision\":0}",
+              "type": "text"
+            }
+          ],
+          "isError": false,
+          "structuredContent": {
+            "output": "<scratch>/original.weftforge",
+            "revision": 0
+          }
+        }
+      }
+    },
+    {
+      "direction": "client_to_server",
+      "message": {
+        "method": "tools/call",
+        "params": {
+          "name": "project_inspect",
+          "arguments": {
+            "path": "<scratch>/original.weftforge"
+          }
+        },
+        "jsonrpc": "2.0",
+        "id": 3
+      }
+    },
+    {
+      "direction": "server_to_client",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "result": {
+          "content": [
+            {
+              "text": "{\"project\":{\"curves\":[],\"mannequin\":{\"capsules\":[{\"a\":[0.0,0.9,0.0],\"b\":[0.0,1.4,0.0],\"radius\":0.18},{\"a\":[0.0,1.53,0.0],\"b\":[0.0,1.65,0.0],\"radius\":0.105},{\"a\":[-0.22,1.4,0.0],\"b\":[-0.55,1.22,0.0],\"radius\":0.065},{\"a\":[0.22,1.4,0.0],\"b\":[0.55,1.22,0.0],\"radius\":0.065},{\"a\":[-0.09,0.88,0.0],\"b\":[-0.09,0.18,0.0],\"radius\":0.085},{\"a\":[0.09,0.88,0.0],\"b\":[0.09,0.18,0.0],\"radius\":0.085}]},\"materials\":[{\"areal_density\":0.18,\"bending_stiffness\":0.003,\"collision_thickness\":0.003,\"color\":[0.2199999988079071,0.550000011920929,0.7599999904632568],\"damping\":0.2,\"friction\":0.4,\"id\":1,\"name\":\"Cotton approximation (uncalibrated)\",\"shear_stiffness\":100.0,\"warp_stiffness\":400.0,\"weft_stiffness\":400.0}],\"next_id\":2,\"pieces\":[],\"points\":[],\"resolution\":0.07,\"revision\":0,\"seams\":[]},\"units\":{\"length\":\"m\",\"mass\":\"kg\",\"time\":\"s\"},\"up\":\"Y\"}",
+              "type": "text"
+            }
+          ],
+          "isError": false,
+          "structuredContent": {
+            "project": {
+              "curves": [],
+              "mannequin": {
+                "capsules": [
+                  {
+                    "a": [
+                      0.0,
+                      0.9,
+                      0.0
+                    ],
+                    "b": [
+                      0.0,
+                      1.4,
+                      0.0
+                    ],
+                    "radius": 0.18
+                  },
+                  {
+                    "a": [
+                      0.0,
+                      1.53,
+                      0.0
+                    ],
+                    "b": [
+                      0.0,
+                      1.65,
+                      0.0
+                    ],
+                    "radius": 0.105
+                  },
+                  {
+                    "a": [
+                      -0.22,
+                      1.4,
+                      0.0
+                    ],
+                    "b": [
+                      -0.55,
+                      1.22,
+                      0.0
+                    ],
+                    "radius": 0.065
+                  },
+                  {
+                    "a": [
+                      0.22,
+                      1.4,
+                      0.0
+                    ],
+                    "b": [
+                      0.55,
+                      1.22,
+                      0.0
+                    ],
+                    "radius": 0.065
+                  },
+                  {
+                    "a": [
+                      -0.09,
+                      0.88,
+                      0.0
+                    ],
+                    "b": [
+                      -0.09,
+                      0.18,
+                      0.0
+                    ],
+                    "radius": 0.085
+                  },
+                  {
+                    "a": [
+                      0.09,
+                      0.88,
+                      0.0
+                    ],
+                    "b": [
+                      0.09,
+                      0.18,
+                      0.0
+                    ],
+                    "radius": 0.085
+                  }
+                ]
+              },
+              "materials": [
+                {
+                  "areal_density": 0.18,
+                  "bending_stiffness": 0.003,
+                  "collision_thickness": 0.003,
+                  "color": [
+                    0.2199999988079071,
+                    0.550000011920929,
+                    0.7599999904632568
+                  ],
+                  "damping": 0.2,
+                  "friction": 0.4,
+                  "id": 1,
+                  "name": "Cotton approximation (uncalibrated)",
+                  "shear_stiffness": 100.0,
+                  "warp_stiffness": 400.0,
+                  "weft_stiffness": 400.0
+                }
+              ],
+              "next_id": 2,
+              "pieces": [],
+              "points": [],
+              "resolution": 0.07,
+              "revision": 0,
+              "seams": []
+            },
+            "units": {
+              "length": "m",
+              "mass": "kg",
+              "time": "s"
+            },
+            "up": "Y"
+          }
+        }
+      }
+    }
+  ],
+  "stderr_bytes": 0
+}

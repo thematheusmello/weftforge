@@ -23,12 +23,12 @@ dashboard, including both reports. The source-only
 remains at older `8419363` and discloses the inspector defect. No native binaries
 ship yet. Distribution notices, platform launch/package QA and signing remain.
 
-Current branch: `feat/curve-mcp-recovery`, source checkpoint `c0af10f`.
+Current branch: `feat/curve-mcp-recovery`, source checkpoint `eb153cd`.
 This integrates sewn-curve editing, stateless MCP, shared save/export safeguards,
 shutdown retention, cooperative solver initialization cancellation, reference
 qualification, the reviewed interface catalog and its implementation crosswalk.
-The published README correction still needs merging into this branch; preserve
-its product wording and the new adapter/curve usage instructions.
+The published README correction is merged, retaining its product wording and
+the new adapter/curve usage instructions.
 
 Contributor commits are retained through root cherry-picks: curve `c48cd958`,
 shutdown `3014a6e`, export `db48813`, MCP `68521f9`, save `3c20e73`, cancellation
@@ -76,13 +76,18 @@ and atomic commands. Modern 2026-07-28 and legacy 2025-11-25 profiles have real
 stdio/schema/error tests. Official Python MCP SDK 1.28.1 independently negotiated
 legacy, listed five tools and created/inspected original files with four decoded
 responses and zero stderr on the prior integrated debug candidate `cc3dfea9…f1e8`.
-Final release SDK acceptance is pending. Live GUI automation, MCP simulation jobs,
+The final packaged CLI `b2bc0999…a6396` passes the same official SDK smoke;
+legacy interoperability is exercised, while a modern external client is pending. Live GUI automation, MCP simulation jobs,
 persistent undo and cancellation remain open.
 
 The current combined tree passes **61 Rust tests**, formatting and strict Clippy.
-The 48 current Python checks and the 650-entry structural map check pass.
+All 51 current Python checks (48 registry/export plus three independent
+reference-geometry evaluator tests) and the 650-entry structural map check pass.
 The integrated xtask rerun also passed against this checkout, including current
-CLI MCP/curve help. Release packaging and native acceptance follow. A read-only independent source review
+CLI MCP/curve help. The unsigned native package builds successfully, and its
+CLI passes the official SDK smoke test at the same identified binary hash.
+See [the integration report](parity/reports/WF-20261114-INTEGRATION-001.json).
+Native acceptance remains pending. A read-only independent source review
 found no blocker; its 146,498 varied correspondence samples had maximum normalized
 error 1.72e-13. This review did not execute native UI or replace runtime checks.
 
@@ -155,14 +160,15 @@ Historical implementation reports remain attributable.
 
 ## Next exact steps and jobs
 
-1. Finish packaging the combined candidate and retain
-   exact executable/source hashes; rerun the official SDK on that release.
+1. Retain the identified native `4fbd66af…77c9d` and CLI `b2bc0999…a6396`
+   candidate and source `eb153cd`; native UI acceptance is next.
 2. Publish the reviewed source/catalog checkpoint after normal CI gates while
    keeping native acceptance explicitly pending. Preserve pinned source history
    and the product-focused README.
-3. Reference_lab owns the exclusive native UI lease. Finish the reviewed rectangle
-   batch and further settings/range/sewing observations, then alternate the lease
-   for WeftForge curve/refinement and dirty-Quit recovery acceptance.
+3. The reviewed rectangle batch is integrated. Root now owns the native UI lease
+   for WeftForge curve/refinement and dirty-Quit recovery acceptance. Reference_lab
+   left its original saved rectangle selected at 20 mm particle distance, no modal
+   and simulation off; it uses no desktop tools until the lease is returned.
 4. Rectangle_numeric is implementing only the observed single-click numeric
    rectangle slice in an isolated worktree. It receives reviewed behavior only;
    replication, linked dimensions, reference anchor and range semantics remain
@@ -172,6 +178,6 @@ Historical implementation reports remain attributable.
    gate. GitHub Project board creation still lacks project/read:project scopes;
    issues, milestones and the registry work independently.
 
-Current root handle: package session `74023`; root fmt/test/Clippy/xtask/cache
-relocation jobs completed. Reference_lab and Rectangle_numeric are active;
-Integrated_review completed read-only. Recheck handles before launching duplicates.
+No root build/test job remains live. Reference_lab continues documentation only;
+Rectangle_numeric is finishing isolated checks. Integrated_review completed
+read-only. Recheck actual handles before launching duplicates.

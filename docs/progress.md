@@ -14,7 +14,7 @@ Verification states: passed 0/56, failed 3/56, blocked 2/56, stale 0/56, not_run
 
 Reference observation: observed 0/56, documentation_only 5/56, unobserved 51/56, blocked 0/56.
 
-Evidence freshness: current 0/56, stale 28/56, missing 28/56.
+Evidence freshness: current 1/56, stale 27/56, missing 28/56.
 
 ## Per-domain status
 
@@ -83,7 +83,7 @@ Evidence freshness: current 0/56, stale 28/56, missing 28/56.
 | FILE-005 | Patterns SVG DXF and printing | partial | not_run | stale | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-NATIVE-UI-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-GRAIN-AUTHORING-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/6) |
 | FILE-006 | Marvelous native compatibility | planned | not_run | missing | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/6) |
 | FILE-007 | Animation and cache export | planned | not_run | missing | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/6) |
-| APP-001 | Shared command engine and adapters | partial | not_run | stale | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/7) |
+| APP-001 | Shared command engine and adapters | partial | not_run | current | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261114-INTEGRATION-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/7) |
 | APP-002 | Cross-platform packaging | partial | not_run | missing | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/7) |
 | APP-003 | Offline operation and licensing | partial | not_run | stale | unobserved | [run](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-REGRESSION-001.json) · [issue](https://github.com/thematheusmello/weftforge/issues/7) |
 | APP-004 | Recovery and responsiveness | partial | not_run | missing | unobserved | [issue](https://github.com/thematheusmello/weftforge/issues/7) |
@@ -162,6 +162,7 @@ Known solver limits: discrete vertex/triangle contact has no full edge/edge cont
 
 ## Latest attributable runs
 
+- [WF-20261114-INTEGRATION-001](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261114-INTEGRATION-001.json): implementation_only, passed, **current**, commit `eb153cd49dc0417b8702d6fc9b5a1156aad9b650`, macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1, 2026-11-14T02:17:35.180433Z.
 - [WF-20261113-GRAIN-FIT-001](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-GRAIN-FIT-001.json): implementation_only, failed, **stale**, commit `28cae66b684e368e7fbe6b3240069ae0eb6e16e6`, macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1, 2026-11-13T23:58:16.741338Z. Native/CLI curve authoring and sewing-preserving subdivision changed relevant scoped source after this run. Original source/input/artifact identities and pass/failure outcomes are retained; rerun on the integrated candidate.
 - [WF-20261113-GRAIN-AUTHORING-001](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-GRAIN-AUTHORING-001.json): implementation_only, passed, **stale**, commit `28cae66b684e368e7fbe6b3240069ae0eb6e16e6`, macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1, 2026-11-13T23:58:16.741338Z. Native/CLI curve authoring and sewing-preserving subdivision changed relevant scoped source after this run. Original source/input/artifact identities and pass/failure outcomes are retained; rerun on the integrated candidate.
 - [WF-20261113-SINGLE-CANDIDATE-001](https://github.com/thematheusmello/weftforge/blob/main/parity/reports/WF-20261113-SINGLE-CANDIDATE-001.json): implementation_only, passed, **stale**, commit `ff3914474c8acc30d10c70a8489cae56cfa2c872`, macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1, 2026-11-13T22:03:39Z. Authored grain and separate warp/weft stiffness changed the document, strict v1/v2 reader, solver bridge and native/CLI controls after this run. Original source identities, fixture/artifact hashes, measurements and outcomes are retained; rerun the affected workflow on the new authoring implementation. The independent output evaluator now measures authored grain axes (legacy angle zero).
