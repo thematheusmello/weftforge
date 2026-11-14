@@ -2,24 +2,20 @@
 
 **Open garment design. Patterns, fabric, and freedom.**
 
-WeftForge is a free, open-source native Rust garment studio in early development.
-The target is one-to-one functional parity with a recorded Marvelous Designer
-baseline across interaction, authoring, complete workflows, simulation/output,
-files, and operation. **Verified reference parity: zero.** The reference app is
-installed but garment access is blocked at CLO-SET sign-in. Current terms
-acceptance and legitimate entitlement remain unverified; the baseline is provisional.
+WeftForge is a free, open-source native Rust studio for garment design.
+Create editable 2D patterns, sew and arrange pieces, explore fabric behavior,
+and simulate garments in 3D. Core design, saving and export workflows run offline.
+
+The project is in active development. See the roadmap and progress reports for
+current capabilities, tested builds and remaining work.
 
 Public repository: [thematheusmello/weftforge](https://github.com/thematheusmello/weftforge).
 See [current status](STATUS.md), [generated progress](docs/progress.md), [dashboard](docs/dashboard/index.html), the
 [feature registry](parity/features.yaml), and the [complete roadmap](ROADMAP.md).
-Implementation coverage and verified reference parity are tracked separately.
-An original empty-project shirt workflow has been exercised through the actual
-macOS UI, including sewing, arrangement, simulation, save/reopen, dimension edits,
-undo/redo and independently measured OBJ/SVG export. This is an implementation-only
-scene result on one identified executable; reference comparison and the
-remaining professional integration gates remain open.
+Original sample projects are available in [fixtures](fixtures). See
+[verification](docs/verification.md) for tested workflows and current limits.
 
-## Current increment
+## Current capabilities
 
 The source implements a native eframe/wgpu workspace with a 2D pattern canvas,
 basic 3D garment preview, piece selection, numeric properties, command search,
@@ -31,15 +27,15 @@ physical stiffness, placement and derived meshes.
 An f64 CPU cloth solver provides membrane/bending constraints, sewn boundaries,
 gravity, ground/analytic mannequin contact, and self-contact. Simulation runs in
 cancelable background batches; material values are uncalibrated approximations.
-This is an early solver, with contact robustness and reference drape agreement
-still to establish.
+The solver is early; general garment convergence and contact robustness remain
+ongoing work.
 
 Version2 `.weftforge` JSON stores supported editable construction and reads old
 version1 projects through a strict lossless migration. Older apps cannot open v2. OBJ mesh
 and SVG pattern export exist; [format details and gaps](docs/file-formats.md)
 explain what survives each path. Simulation frames/settings, imported avatars,
-textures, animation, advanced construction, and Marvelous Designer native project
-compatibility are not yet complete. The 3D preview is basic shaded geometry;
+textures, animation, advanced construction and third-party project formats
+remain planned. The 3D preview is basic shaded geometry;
 professional rendering and GPU cloth simulation remain on the roadmap.
 
 ## Build and run
@@ -67,8 +63,8 @@ cargo run --release -p weftforge-cli -- export-obj garment.weftforge garment.obj
 ```
 
 CLI dimensions use metres, kilograms, seconds, radians, and Y-up 3D. The desktop
-currently snaps canvas gestures to 1 cm. Fine numeric editing, modifier semantics,
-and full reference interaction matching remain partial.
+currently snaps canvas gestures to 1 cm. Fine numeric editing and modifier support
+remain partial.
 
 ## Verify and contribute
 
@@ -82,19 +78,14 @@ cargo xtask verify
 Check [STATUS.md](STATUS.md) for checks actually run and platform evidence. The
 target platforms are macOS (including Apple Silicon), Windows, and Linux;
 source portability is not proof that every platform has been built or launched.
-The CLI `benchmark PROJECT STEPS` command reports implementation measurements;
-it does not evaluate reference equivalence.
+The CLI `benchmark PROJECT STEPS` command reports mesh sizes, CPU timing and
+constraint diagnostics.
 
-Keep core/solver code independent of the GUI. Make bounded integrated changes
-linked to stable parity IDs, retain failures and unknowns, and run relevant checks.
-Read [AGENTS.md](AGENTS.md), [architecture](docs/architecture.md),
-[physics](docs/physics.md), and the [research method](docs/research-method.md).
-Use original or appropriately licensed assets. Keep commercial installers,
-proprietary code/assets, account data, and raw restricted evidence outside this
-repository.
+Keep core and solver code independent of the GUI, and include focused verification
+with contributions. Read [AGENTS.md](AGENTS.md), [architecture](docs/architecture.md)
+and [physics](docs/physics.md). Use original or appropriately licensed assets.
 
 Original WeftForge code is licensed **MIT OR Apache-2.0**. Dependency and asset
-licenses retain their own terms; see the repository notices. WeftForge is an
-independent project and is not affiliated with CLO Virtual Fashion.
+licenses retain their own terms; see the [third-party notices](THIRD_PARTY.md).
 
 ![Actual native WeftForge on macOS, original edited shirt](docs/images/studio-single-candidate.png)
