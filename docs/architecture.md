@@ -68,7 +68,15 @@ run in revision-tagged workers, and explicit recovery includes untitled autosave
 consult STATUS.md for the tested revision.
 
 CPU simulation operates in a bounded worker batch with cancellation and an input
-revision. Results for an obsolete document are rejected. Step failure or cancel
+revision. The native worker passes the same atomic flag through
+`create_cloth_cancellable` to `Cloth::new_cancellable`, then into stepping.
+Initialization checks cancellation inside input/constraint construction and initial
+contact bounds/vertex/candidate loops; a cancelled candidate is discarded without
+replacing accepted cloth, rest mesh or construction. Ordinary constructors delegate
+with a non-cancelling callback. Core project/mesh validation, allocation/copying and
+final linear diagnostic aggregation still have before/after-only checks, so this
+is cooperative rather than a fixed cancellation-latency bound. Results for an
+obsolete document are rejected. Step failure or cancel
 retains the previous complete state. Expensive meshing and solver preparation
 must use the same revision/cancel discipline; command validation, file IO and
 native dialogs currently retain bounded synchronous portions. No timeline cache

@@ -438,8 +438,12 @@ impl Studio {
         let mut job = Job::spawn(ctx, project.revision, JobKind::Simulation, move |cancel| {
             let mut state = match cloth {
                 Some(state) => (*state).clone(),
-                None => weftforge_core::simulation::create_cloth(&project, &mesh)
-                    .map_err(|error| error.to_string())?,
+                None => {
+                    weftforge_core::simulation::create_cloth_cancellable(&project, &mesh, || {
+                        cancel.load(Ordering::Relaxed)
+                    })
+                    .map_err(|error| error.to_string())?
+                }
             };
             check_cancelled(cancel)?;
             for _ in 0..batch.steps {

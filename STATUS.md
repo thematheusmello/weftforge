@@ -192,3 +192,30 @@ At00:15UTC the account holder replied that they will sign in and activate the
 reference trial. This is intent, not confirmation of completion or entitlement.
 Avoid account-UI capture or native focus changes during that action; continue
 headless checks and wait for a ready signal before reference scenarios.
+
+## Pending cancellable-initialization integration
+
+Isolated branch `feat/cancellable-initialization`, based on `1e8212e`, adds
+`Cloth::new_cancellable` and the core `create_cloth_cancellable` adapter. Ordinary
+constructors still delegate without cancellation. The native simulation worker
+passes its existing atomic token into initialization. Input/constraint setup and
+initial contact bounds/vertices/candidates now poll cooperatively; cancellation
+returns no partial cloth and retains caller-owned project/mesh/accepted state.
+Contact equations, material values and numerical tolerances are unchanged.
+
+Focused checks passed in this worktree: 42 core/solver Rust tests, strict
+all-target core/solver clippy, workspace formatting, and `cargo xtask verify`
+including 24 Python checks. The deterministic sentinel stops in vertex zero's
+second triangle-candidate block, with genuine initial intersections, and asserts
+no additional polling or partial publication. Normal results, invalid input and
+adapter cancellation are covered. Existing mesh-cancellation tests still pass.
+
+Per parent coordination and limited disk space, the native dependency graph was
+not rebuilt in this worktree. Next: review/cherry-pick this increment, run full
+workspace tests/clippy and native compilation using the parent target, then
+perform actual UI cancellation during initialization while checking old accepted
+state and document preservation. GUI interaction/latency and reference parity
+remain unverified. Core project/mesh validation, allocations/copies and final
+linear aggregation retain before/after-only checks; stepped residual analysis and
+direct reset still use non-cancelling analysis. No new check, build or benchmark
+job remains running from this isolated increment.
