@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "purpose": "Source-pinned engineering crosswalk and bounded handoff queue, not a second implementation/verification status registry or a complete product inventory.",
-  "source_commit": "3548de48983bd1a897c0a6433771cd695398ee60",
+  "source_commit": "13f1d81d238801da617f68525660ae6fa1d01500",
   "reference_build": "2026.1.237 (r58920)",
   "inputs": [
     {
@@ -13,24 +13,25 @@
     {
       "catalog": "components",
       "path": "spec/inventory/md-2026.1.237-components.json",
-      "sha256": "de5cba1928d03c84c714ac128afb28b1ecc7cf285d4ba492f305ea4cfb60cccd",
-      "records": 304
+      "sha256": "a5234d53d4554151b5a22e30d2ff3a47a35f9ab93570eb10b485a1575701cbe7",
+      "records": 313
     }
   ],
   "status_authority": {
     "path": "parity/features.yaml",
     "lookup": "Join groups[].feature_ids to features[].id at the revision being reported. Read implementation_status, reference_observation_status, verification_status and freshness there; no status value is copied here.",
-    "pinned_registry_sha256": "c4c8486fe3aeb9e17dd04c09526979cef4464d1f4c60e3d9d80cc336ac471e4d"
+    "pinned_registry_sha256": "0f63fd320c0b726a6b0fb2e00c7173bcdb08cfbd1a4c68fd1bd4dd2d4c8b52c8"
   },
   "coverage_semantics": [
-    "893 catalog IDs are entry-path discovery records, not the feature denominator. All previous 755 entries and 193 packets remain; 138 added preference observations and eight narrow packets do not complete behaviors. Counts of groups or packets are ownership counts, not parity percentages.",
+    "902 catalog IDs are entry-path discovery records, not the feature denominator. All previous 893 entries and 201 packets remain; nine added curvature/free-sewing/dialog records and one bounded preview packet do not complete feature behaviors. Counts of groups or packets are ownership counts, not parity percentages.",
     "The menu input is an empty-workspace snapshot. Components include selected original-pattern/constructor/OBJ/Fit controls and read-only preference configuration. Reviewed bounded rectangle creation/history/reopen, one 20-to-10 mm resolution edit/history/export and delayed process restart/reopen were executed in the reference; preference effects, ranges, alternate options, much canvas/context behavior and physics remain untested.",
     "mapping_relation is a source relationship at source_commit: candidate_partial means connected source exists for a bounded related behavior; planned means a mapped capability is missing; ambiguous means its semantics or role cannot yet be assigned decisively. These values are not authoritative feature statuses.",
     "Coherent groups preserve candidate aliases and distinct selection/format/parameter variants. Similar labels do not establish identical behavior; each entry path must be exercised or have an evidenced alias contract.",
     "Heading is provisional for three disabled section-like leaves; keep them visible until nonempty/selected-state evidence resolves the role. Empty submenus remain containers, with unknown dynamic children.",
     "Only vendor activation/session administration is excluded among these records. Hosted creation, rigging, AI, templates, content acquisition and local equivalents stay in scope; storefront-only exclusion requires evidence and later reviewed scope adjudication.",
     "Component paths can contain explicit reviewer descriptors for unlabeled or repeated controls; retain exact catalog paths without asserting that every path segment is a printed label. No values from private paths, vendor presets, textures or palettes are reproduced here.",
-    "The new vendor account-switch action is excluded session administration; its preferences category and all substantive creation/content/extension workflows remain inventoried. Read-only preference values are current configuration, not factory constants, tested bindings, calibrated units or a selected numeric locale/language."
+    "The new vendor account-switch action is excluded session administration; its preferences category and all substantive creation/content/extension workflows remain inventoried. Read-only preference values are current configuration, not factory constants, tested bindings, calibrated units or a selected numeric locale/language.",
+    "The new original curve/history run is bounded to one displayed 200.0-to-206.9 mm edge change and one Undo/Redo. Numeric Free Sewing reaches a 100 mm first-side preview only; the second side, completed/reversed seam, exact curve/control-point/arc-length geometry and Escape cancellation remain unconfirmed. A pointer-dependent initial length is not a default and mm is not a locale identifier."
   ],
   "mapping_relation_values": [
     "candidate_partial",
@@ -294,6 +295,16 @@
       "path": "apps/weftforge/src/main.rs",
       "anchor": "fn start_autosave(",
       "scope": "Native background autosave and recoverable exit exist with fixed current policy; no configurable interval/max-count/retention/file-type/path preference contract exists."
+    },
+    "ui_numeric_precision": {
+      "path": "apps/weftforge/src/main.rs",
+      "anchor": "fn numeric_value<'a>(",
+      "scope": "Focused f64 editors format round-trip text to avoid passive blur rounding; unfocused presentation uses the existing formatter. This is a source/implementation-test change, not a native Size-workflow success or a completed forthcoming Size fix."
+    },
+    "ui_numeric_precision_tests": {
+      "path": "apps/weftforge/src/main.rs",
+      "anchor": "fn numeric_fields_preserve_unedited_bits_and_accept_text_steps_and_drags",
+      "scope": "Implementation-only preservation/edit/step/drag checks for numeric fields; no reference comparison or current native Size acceptance is supplied by the map."
     }
   },
   "fixture_recipes": {
@@ -443,6 +454,14 @@
         "spec/features/UI-preferences-runtime-20261114.md"
       ],
       "rule": "Read-only configured values, disabled shortcut hints and page-transition diffs are not execution of preference effects or factory defaults. No private path/account/palette/preset contents are fixture inputs."
+    },
+    "curved-sewing-preview": {
+      "setup": "Use two original 0.20 by 0.30 m panels with simulation off. Retain the reviewed 400 mm/0-degree/count-2 construction as one observed arrangement case only. For decisive follow-up, author an asymmetric cubic with declared original control coordinates, independently integrated arc length and a 0.100 m target from a declared endpoint; record the exact view/selection/tool and preview versus completed-seam state before each action.",
+      "existing_original_seeds": [
+        "spec/features/SEW-002-runtime-20261114.md",
+        "spec/observations/REF-SEW-002-FREE-PARTIAL-001.json"
+      ],
+      "rule": "The public run records one curve gesture/history and first-side preview only; it supplies no redistributable proprietary project, continuous curve formula, completed seam, reverse behavior or simulation answer. Choose independent metrics before new comparison."
     }
   },
   "owner_lanes": {
@@ -621,6 +640,18 @@
         "APP-001"
       ],
       "reason": "Resolve collapsed shortcut descendants, disabled Action hints, offscreen font/picker controls, unlabeled file actions and unpopulated PLM content. Test actual navigation, units/parser/checked language, snap, defaults, library replacement, autosave/retention/recovery, plugin and reset/restart effects. Current configuration and a missing stale resource path neither prove factory behavior nor diagnose startup delay."
+    },
+    {
+      "lead": "Complete the second Free Sewing side and independently measure curved endpoints",
+      "feature_ids": [
+        "PAT-002",
+        "SEW-001",
+        "SEW-002",
+        "SEW-003",
+        "SEW-004",
+        "REF-003"
+      ],
+      "reason": "Retain the confirmed 100 mm first-side preview and single displayed curve/history gesture separately from missing second-side selection, completed/reversed seam, true curve/arc-length geometry, cancel/Escape delivery, mismatch, remeshing, persistence and simulation. Reopen/export the new curved checkpoint and use known original asymmetric controls with an independent fixed-unit evaluator before correspondence claims."
     }
   ],
   "packet_rules": {
@@ -996,6 +1027,15 @@
         "verification"
       ],
       "decisive_acceptance": "Implement one reviewed preference or dependent operation at a time using original data. Observe accepted units/ranges, enabled states, page/gesture effects, commit/cancel/reset and restart persistence before comparison; never promote displayed configuration, disabled hints or unknown units to defaults/active behavior. Verify settings do not create unintended authored edits, resource paths are bounded and failures/cleanup preserve the old project and last valid recovery."
+    },
+    "WP-33": {
+      "title": "First-side Free Sewing preview",
+      "owner_lanes": [
+        "geometry",
+        "desktop",
+        "verification"
+      ],
+      "decisive_acceptance": "On an original asymmetric curve, reproduce the reviewed first endpoint/right-click/Length-mm keyboard-Tab/OK sequence and visibly retain the 100 mm first-side preview without claiming a committed seam. Independently integrate known original curve geometry before comparing its preview endpoint; one-decimal reference labels supply no high-precision tolerance. Keep preview state distinct from authored AddSeam/history and accepted simulation. Resolve Cancel/Close/Escape/tool-switch behavior and second-side completion through separate reviewed contracts; failures retain the old document."
     }
   },
   "next_executable_parts": [
@@ -2984,6 +3024,16 @@
       "depends_on": [
         "PACK-plugin-manager",
         "PACK-project-load-save"
+      ]
+    },
+    {
+      "id": "PACK-free-sewing-length-preview",
+      "order": 202,
+      "acceptance_profile": "WP-33",
+      "group_id": "free-sewing-length-preview",
+      "depends_on": [
+        "PACK-curve-tools",
+        "PACK-segment-sewing"
       ]
     }
   ],
@@ -5643,14 +5693,17 @@
       "source_refs": [
         "commands",
         "ui_properties",
-        "ui_pattern"
+        "ui_pattern",
+        "ui_numeric_precision",
+        "ui_numeric_precision_tests"
       ],
       "shared_commands": [
         "ResizePiece"
       ],
-      "candidate_behavior": "Native inspector resizes a complete piece bounding box; there is no complete-pattern drag/rotate/scale/mirror transform tool.",
+      "candidate_behavior": "ResizePiece and native Size controls provide a bounding-box resize candidate; focused numeric round-trip formatting is present in source, but a separate Size-field fix and successful native Size acceptance are still pending. A complete-pattern drag/rotate/scale/mirror transform tool remains absent.",
       "missing_functionality": [
-        "2D transform tool, typed whole-selection transform command, pivots, exact numeric entry and relation preservation."
+        "2D transform tool, typed whole-selection transform command, pivots, exact numeric entry and relation preservation.",
+        "Do not infer a successful native Size edit from numeric-formatting source/tests; the separate Size fix and exact transaction/persistence/runtime acceptance remain open."
       ],
       "runtime_questions": [
         "What handles, pivots, modifier locks, numeric entry and selection scopes are supported, and which seam/grain data transform?"
@@ -5723,12 +5776,15 @@
         "Reviewed handle/curve-point continuity types, gestures, smooth algorithm outcome and relationship/parameterization preservation."
       ],
       "runtime_questions": [
-        "What point kinds/continuity, drag handles and smooth scope are exposed; what curve shape and authored parameter constraints must remain?"
+        "What point kinds/continuity, drag handles and smooth scope are exposed; what curve shape and authored parameter constraints must remain?",
+        "Can an asymmetric original curve with known authoring coordinates reproduce the observed gesture/history and independently measured shape; which handles, continuity and true arc-length behavior follow beyond the one displayed edge?"
       ],
       "fixture_ids": [
-        "unequal-curves"
+        "unequal-curves",
+        "curved-sewing-preview"
       ],
-      "packet_id": "PACK-curve-tools"
+      "packet_id": "PACK-curve-tools",
+      "reviewed_reference_scope": "One menu-selected Edit Curvature midpoint drag changed a displayed 200.0 mm original edge to 206.9 mm and one Undo/Redo restored each displayed state with simulation off. The C hint was not executed. Exact control points, continuous arc length, conversion formula and exported curved geometry remain unmeasured; one-decimal lengths do not justify a 0.01 mm geometry tolerance."
     },
     {
       "id": "split-boundary",
@@ -5856,7 +5912,7 @@
       "candidate_behavior": "AddRectangle remains shared by GUI/CLI/MCP. The native Rectangle tool now opens a click-triggered width/height modal initialized to 500/500 mm, converts accepted dimensions to metres and commits through the shared command; drag/numeric inspector routes also remain. Stable widget scopes, modal background/AccessKit isolation and staged-draft transaction handling are present in source. Fresh native candidate acceptance is pending; reference anchor equivalence and broad constructor variants are not established.",
       "missing_functionality": [
         "Complete reviewed click/drag/anchor/default/range/shortcut/numeric-locale behavior, linked dimensions, replication interval/angle/count and fresh native comparison of the current modal/history path.",
-        "Source Cancel/error/modal isolation tests exist, but the reference constructor Cancel, invalid/clamped inputs, linking and replication remain unexecuted; preserve these as unknown rather than equating source tests with reference behavior."
+        "Source Cancel/error/modal isolation tests exist. Reference constructor Cancel, invalid/clamped inputs and linking remain unexecuted; one explicit 400 mm interval/0-degree/count-2 replication case is now observed separately. General replication angle/spacing rules, counts/ranges and construction-history semantics remain unqualified."
       ],
       "runtime_questions": [
         "Which click/drag/right-click/numeric entry sequence creates a rectangle; what anchors, units/defaults/ranges, cancel and undo behavior apply?",
@@ -6110,10 +6166,12 @@
         "Reference seam picking, interval/correspondence editing, preflight diagnostics and all-view feedback."
       ],
       "runtime_questions": [
-        "How are seams selected/edited, do handles address arc length or parameters and which errors/length mismatch/direction warnings appear before simulation?"
+        "How are seams selected/edited, do handles address arc length or parameters and which errors/length mismatch/direction warnings appear before simulation?",
+        "Switching to Edit Sewing removed this unfinished first-side preview; when is that transient state discarded versus committed, and how does it differ from deleting or editing an actual seam?"
       ],
       "fixture_ids": [
-        "unequal-curves"
+        "unequal-curves",
+        "curved-sewing-preview"
       ],
       "packet_id": "PACK-sewing-editor"
     },
@@ -6141,7 +6199,8 @@
       ],
       "candidate_behavior": "Oriented authored intervals and explicit monotone mapping generate weighted stitches independent of tessellation; native edge-pair creation exists.",
       "missing_functionality": [
-        "Runtime entry/selection/direction/endpoint contract, interval/free endpoint gestures and visible mismatch/correspondence diagnostics."
+        "Runtime entry/selection/direction/endpoint contract, interval/free endpoint gestures and visible mismatch/correspondence diagnostics.",
+        "The new Free Sewing first-side preview does not execute Segment Sewing, reverse an existing seam or establish oriented interval/arc-length endpoint equivalence."
       ],
       "runtime_questions": [
         "Which orientation, selected intervals and endpoint picks define sewing; how are reversed, curved and unequal-length cases accepted, diagnosed and edited?"
@@ -6171,16 +6230,20 @@
       ],
       "candidate_behavior": "Single-curve interval seams and explicit correspondence exist; no ordered edge-chain entity or M:N/free chain tool exists.",
       "missing_functionality": [
-        "Persistent ordered chain correspondence, compound mapping, free endpoint tools, multi-seam transaction and edit/refinement rules."
+        "Persistent ordered chain correspondence, compound mapping, free endpoint tools, multi-seam transaction and edit/refinement rules.",
+        "A physical-length first-side preview and numeric dialog are not a completed AddSeam transaction. Confirm both sides, direction and measured boundary-length-to-parameter conversion before claiming correspondence or sewing."
       ],
       "runtime_questions": [
-        "How do M:N and free variants form ordered chains, partial endpoints and normalized/eased correspondence across mismatched lengths and curve counts?"
+        "How do M:N and free variants form ordered chains, partial endpoints and normalized/eased correspondence across mismatched lengths and curve counts?",
+        "After the confirmed first-side preview, which second-side selection/numeric sequence commits a seam, and how do reversed endpoints, mismatch, Escape, tool switch, undo/reopen and remeshing behave?"
       ],
       "fixture_ids": [
         "unequal-curves",
-        "chain-seams"
+        "chain-seams",
+        "curved-sewing-preview"
       ],
-      "packet_id": "PACK-free-chain-sewing"
+      "packet_id": "PACK-free-chain-sewing",
+      "reviewed_reference_scope": "The menu/2D tool was selected and both 2D/3D toolbars exposed a checked Free Sewing label. Only the 2D first side reached numeric 100 mm preview; no 3D gesture, M shortcut, completed second side, seam, reversal or correspondence was established. The unexpected viewport displacement has unknown cause; the Smart Panning preference is not causal proof."
     },
     {
       "id": "auto-sewing",
@@ -8245,13 +8308,15 @@
         "Selection-aware curve/chain aggregation and current-versus-rest measured length with explicit source revision, units/precision and no stale values."
       ],
       "runtime_questions": [
-        "The captured whole unsimulated boundary totals 1000.0 mm; how do partial/multiple/curved selections aggregate, is either field editable, and how does the 3D value update after deformation/reset or stale mesh rejection?"
+        "The captured whole unsimulated boundary totals 1000.0 mm; how do partial/multiple/curved selections aggregate, is either field editable, and how does the 3D value update after deformation/reset or stale mesh rejection?",
+        "How do displayed 206.9 mm curved-edge lengths compare with independently measured continuous arc length and current/rest geometry; what precision/rounding and selection rules apply without treating the unsimulated 2D/3D display as a deformed-cloth measurement?"
       ],
       "fixture_ids": [
         "unequal-curves",
         "layered-panels",
         "print-panel",
-        "selected-pattern-properties"
+        "selected-pattern-properties",
+        "curved-sewing-preview"
       ],
       "packet_id": "PACK-selected-line-lengths"
     },
@@ -8731,6 +8796,43 @@
         "preference-effects"
       ],
       "packet_id": "PACK-plm-integration-discovery"
+    },
+    {
+      "id": "free-sewing-length-preview",
+      "title": "Numeric first-side Free Sewing length preview",
+      "feature_ids": [
+        "SEW-002",
+        "SEW-001",
+        "SEW-004",
+        "PAT-002",
+        "UI-003",
+        "UI-004"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "commands",
+        "ui_pattern",
+        "ui_properties",
+        "seam_lengths",
+        "curves"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Current native sewing picks authored curve intervals through the existing Sew tool and shared AddSeam backend. It has no Free Sewing endpoint/first-side physical-length preview or Create Sewing Line dialog; a preview is not a completed authoring command, and cubic parameter t is not assumed to equal a boundary-length ratio.",
+      "missing_functionality": [
+        "A separate transient first-side start/length/preview state and numeric mm dialog with keyboard commit, independent source-curve length conversion and explicit authored/rest/current display basis.",
+        "The reference second side, completed/reversed seam, arbitrary range/invalid/cancel/Close/Escape effects and independent curved endpoints are not established; keep these variants and dependencies open."
+      ],
+      "runtime_questions": [
+        "What initial-state/pointer rules determine the first numeric preview, which exact physical curve measure places a typed endpoint and how do orientation, selection, units/locale and precision affect it?",
+        "The 90.6 mm initial value is pointer-dependent and only 100 mm Tab/OK was confirmed. What accepted limits, Cancel/Close/Escape/tool-switch behavior, single-preview history and save/reopen semantics apply?",
+        "What exact second-side sequence commits an oriented physical seam, and what independent endpoint/correspondence checks distinguish completion from first-side preview or equal numeric curve parameters?"
+      ],
+      "fixture_ids": [
+        "curved-sewing-preview",
+        "unequal-curves",
+        "keyboard"
+      ],
+      "packet_id": "PACK-free-sewing-length-preview"
     }
   ],
   "entries": [
@@ -18956,17 +19058,106 @@
       ],
       "classification": "excluded",
       "group_id": "vendor-session-administration"
+    },
+    {
+      "catalog_id": "MDUI-94691EDD7D54",
+      "catalog": "components",
+      "path": [
+        "2D toolbar",
+        "Edit Curvature"
+      ],
+      "classification": "component",
+      "group_id": "curve-tools"
+    },
+    {
+      "catalog_id": "MDUI-FD377FE35173",
+      "catalog": "components",
+      "path": [
+        "2D toolbar",
+        "Free Sewing"
+      ],
+      "classification": "component",
+      "group_id": "free-chain-sewing"
+    },
+    {
+      "catalog_id": "MDUI-B37712C9182B",
+      "catalog": "components",
+      "path": [
+        "3D toolbar",
+        "Free Sewing"
+      ],
+      "classification": "component",
+      "group_id": "free-chain-sewing"
+    },
+    {
+      "catalog_id": "MDUI-5FF699F8AC4E",
+      "catalog": "components",
+      "path": [
+        "Create Sewing Line"
+      ],
+      "classification": "component",
+      "group_id": "free-sewing-length-preview"
+    },
+    {
+      "catalog_id": "MDUI-6F97DC1085CF",
+      "catalog": "components",
+      "path": [
+        "Create Sewing Line",
+        "Length"
+      ],
+      "classification": "component",
+      "group_id": "free-sewing-length-preview"
+    },
+    {
+      "catalog_id": "MDUI-0742C79A38B8",
+      "catalog": "components",
+      "path": [
+        "Create Sewing Line",
+        "Length unit"
+      ],
+      "classification": "component",
+      "group_id": "free-sewing-length-preview"
+    },
+    {
+      "catalog_id": "MDUI-EC335883AD8D",
+      "catalog": "components",
+      "path": [
+        "Create Sewing Line",
+        "OK"
+      ],
+      "classification": "component",
+      "group_id": "free-sewing-length-preview"
+    },
+    {
+      "catalog_id": "MDUI-888575DC5612",
+      "catalog": "components",
+      "path": [
+        "Create Sewing Line",
+        "Cancel"
+      ],
+      "classification": "component",
+      "group_id": "free-sewing-length-preview"
+    },
+    {
+      "catalog_id": "MDUI-B74EE556B6AE",
+      "catalog": "components",
+      "path": [
+        "Create Sewing Line",
+        "Close"
+      ],
+      "classification": "component",
+      "group_id": "free-sewing-length-preview"
     }
   ],
-  "source_snapshot_note": "This retained pin combines the current candidate Rust source with the latest 893-ID reviewed catalog. Source now includes a 500/500 mm numeric rectangle modal for the bounded unlinked valid case, stable widget scopes, modal input/AccessKit isolation, focused-history and unchanged-RGB-buffer fixes. These source changes await fresh native candidate acceptance and do not complete the broad rectangle/history/accessibility contracts. Immutable initial contact diagnostics use a conservative BVH; live collision solving and subsequent/reset contact diagnostics remain quadratic. All 18 shared Command variants and the authored schema are unchanged.",
+  "source_snapshot_note": "This retained pin combines the current candidate Rust source with the latest 902-ID reviewed catalog. Source now includes a 500/500 mm numeric rectangle modal for the bounded unlinked valid case, stable widget scopes, modal input/AccessKit isolation, focused-history and unchanged-RGB-buffer fixes. These source changes await fresh native candidate acceptance and do not complete the broad rectangle/history/accessibility contracts. Immutable initial contact diagnostics use a conservative BVH; live collision solving and subsequent/reset contact diagnostics remain quadratic. All 18 shared Command variants and the authored schema are unchanged. The current pin also contains focused numeric round-trip formatting and its implementation-only checks. A separate Size-field fix is still forthcoming, and no successful native Size edit or new numeric runtime acceptance is claimed. The reference Free Sewing observation ends at a 100 mm first-side preview; second-side completion, reversal, arc-length endpoint equivalence and sewn simulation are unconfirmed.",
   "expansion_origin": {
-    "previous_map_commit": "07d0be1b09021fe1add7460563b13470d6e286cb",
-    "previous_map_sha256": "0fd1f1ea013a77dc882920236728c5cb4e760c9b93e3d16f4410e33e4636a1c4",
-    "previous_source_commit": "9acb265411e80d01152a5345a7119e2ed8bb2194",
-    "preserved_catalog_ids": 755,
-    "additional_component_ids": 138,
-    "catalog_commit": "3548de48983bd1a897c0a6433771cd695398ee60",
-    "preservation_rule": "All previous entry records, packet IDs/definitions and first three bounded slices are retained unchanged. Source descriptions can be re-reviewed only in explicitly listed source_rechecks; no old feature scope or status-authority rule is removed. Retain the prior 9acb265 source/catalog pin and the current pin as ancestors."
+    "previous_map_commit": "7d901305f541e8cdcf77200eab47ead825c19ed8",
+    "previous_map_sha256": "528bace0399c7c16f84d218c255322dba0d77f6706c992a61d5f9c85c75e9282",
+    "previous_source_commit": "3548de48983bd1a897c0a6433771cd695398ee60",
+    "preserved_catalog_ids": 893,
+    "additional_component_ids": 9,
+    "catalog_commit": "13f1d81d238801da617f68525660ae6fa1d01500",
+    "preservation_rule": "Preserve all previous 893 entry records, 201 packet definitions and first three bounded slices. Only explicit source_rechecks or reviewed-contract reference_rechecks may replace obsolete group descriptions; no old entry, variant or status-authority rule is removed. Retain all catalog/source anchors as ancestors."
   },
   "reviewed_contract_sources": [
     {
@@ -18976,8 +19167,8 @@
     },
     {
       "path": "spec/features/PAT-003-runtime-20261114.md",
-      "sha256": "4da5c8dbac6f53b760174a6e7c00507657fca7d31ffa2b59b0761282076f830a",
-      "scope": "Bounded original numeric rectangle creation/history/document reopen and unchanged-option OBJ measurement. The later PD10 process restart/reopen is documented separately in PAT-011; constructor Cancel/limits/link/replication and numeric dimension resize remain untested."
+      "sha256": "8bf429006c7b5dc3de78707a31c95aa52851e9aba837ecec9b3b3aef7e99806c",
+      "scope": "Bounded original numeric rectangle creation/history/document reopen and unchanged-option OBJ measurement, with the PD10 process restart/reopen recorded separately. One later interval 400 mm/angle 0/count 2 construction is recorded in SEW-002, without a general replication formula or arbitrary limits/link/cancel/resize contract."
     },
     {
       "path": "spec/features/PAT-011-runtime-20261114.md",
@@ -18988,101 +19179,42 @@
       "path": "spec/features/UI-preferences-runtime-20261114.md",
       "sha256": "0a0594f2eedfbe76e5fb4ad3beda52864494084e88709be625a7ba15f58f104e",
       "scope": "Read-only current configuration and page transitions. No preference edits/effects/ranges/reset, account/plugin action or actual autosave/retention behavior; locale/language and unprinted units remain unknown."
+    },
+    {
+      "path": "spec/features/SEW-002-runtime-20261114.md",
+      "sha256": "b55d24ab54ab93562c59434ca332623b97fa2109aa2e31b29a567ab6b752ed9c",
+      "scope": "One original replication setup, one curvature gesture/history and a 100 mm first-side Free Sewing preview. No confirmed second side, completed or reversed seam, measured exact curve/arclength endpoints, successful Escape cancellation, curved export/reopen or simulation comparison."
+    },
+    {
+      "path": "spec/observations/REF-SEW-002-FREE-PARTIAL-001.json",
+      "sha256": "53e3a2e706845eaa2079ed62758f6c8ea83636222d27584f8d49b4a051762e26",
+      "scope": "Reviewed public provenance and bounded original construction/curve/preview outcomes; private native containers, raw UI and proprietary resources are not implementation inputs."
     }
   ],
   "source_rechecks": [
     {
-      "group_id": "rectangle",
-      "reason": "The retained current desktop source adds the numeric modal, stable scopes, input isolation and staged commit path; the prior pre-dialog source claim is obsolete.",
+      "group_id": "pattern-transform-tool",
+      "reason": "Current desktop source adds focused numeric round-trip formatting, while the Size-field workflow remains under a separate pending fix; retain the backend candidate without claiming runtime success.",
       "changed_fields": [
-        "candidate_behavior",
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "commands",
+        "ui_properties",
+        "ui_pattern",
+        "ui_numeric_precision",
+        "ui_numeric_precision_tests"
+      ]
+    }
+  ],
+  "reference_rechecks": [
+    {
+      "group_id": "rectangle",
+      "changed_fields": [
         "missing_functionality"
       ],
-      "source_refs": [
-        "commands",
-        "ui_pattern",
-        "ui_properties",
-        "cli",
-        "mcp_schema",
-        "workflow_tests",
-        "mcp_tests",
-        "ui_rectangle",
-        "ui_numeric_history",
-        "ui_field_state",
-        "ui_modal_tests",
-        "ui_history_tests"
-      ]
-    },
-    {
-      "group_id": "undo-redo",
-      "reason": "Current desktop history explicitly clears focused widget buffers and the inspector avoids passive RGB writeback; document history commands/schema did not change.",
-      "changed_fields": [
-        "candidate_behavior"
-      ],
-      "source_refs": [
-        "history",
-        "ui_shortcuts",
-        "ui_properties",
-        "workflow_tests",
-        "mcp_schema",
-        "ui_numeric_history",
-        "ui_field_state",
-        "ui_rgb_buffer",
-        "ui_history_tests",
-        "ui_modal_tests"
-      ]
-    },
-    {
-      "group_id": "fabric-assignment",
-      "reason": "Only the desktop RGB-buffer/history behavior changed; material physics, authoring state and commands are unchanged.",
-      "changed_fields": [
-        "candidate_behavior"
-      ],
-      "source_refs": [
-        "commands",
-        "project",
-        "ui_properties",
-        "solver_material",
-        "adapter",
-        "grain_tests",
-        "ui_rgb_buffer",
-        "ui_field_state",
-        "ui_numeric_history"
-      ]
-    },
-    {
-      "group_id": "simulate",
-      "reason": "Current solver constructor diagnostic queries use the new conservative hierarchy; the mutable live-contact loop remains unchanged.",
-      "changed_fields": [
-        "candidate_behavior"
-      ],
-      "source_refs": [
-        "ui_toolbar",
-        "ui_shortcuts",
-        "ui_jobs",
-        "solver",
-        "adapter",
-        "sim_tests",
-        "initial_contacts",
-        "live_contacts",
-        "initial_contact_tests"
-      ]
-    },
-    {
-      "group_id": "workspace-statistics",
-      "reason": "Initial diagnostics gained an immutable BVH; no unrelated statistics overlay or live-solver acceleration was implemented.",
-      "changed_fields": [
-        "candidate_behavior"
-      ],
-      "source_refs": [
-        "ui_toolbar",
-        "ui_jobs",
-        "ui_recovery",
-        "cli",
-        "initial_contacts",
-        "live_contacts",
-        "initial_contact_tests"
-      ]
+      "contract_path": "spec/features/SEW-002-runtime-20261114.md",
+      "reason": "The reviewed run executes one explicit two-rectangle replication setup. Replace the obsolete blanket unexecuted-replication wording while retaining all broader formula, linking, limits/cancel and history gaps."
     }
   ]
 }

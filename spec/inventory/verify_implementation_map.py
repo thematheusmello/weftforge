@@ -33,9 +33,9 @@ def check():
         for record in records:
             assert record['id'] not in catalogs, record['id']
             catalogs[record['id']] = (source['catalog'], record)
-    assert len(catalogs) == 893
+    assert len(catalogs) == 902
     assert Counter(catalog for catalog, _ in catalogs.values()) == {
-        'menus': 589, 'components': 304
+        'menus': 589, 'components': 313
     }
 
     origin = data['expansion_origin']
@@ -49,8 +49,8 @@ def check():
     assert hashlib.sha256(previous_raw).hexdigest() == origin['previous_map_sha256']
     previous = json.loads(previous_raw)
     previous_entries = {entry['catalog_id']: entry for entry in previous['entries']}
-    assert len(previous_entries) == origin['preserved_catalog_ids'] == 755
-    assert len(catalogs.keys() - previous_entries.keys()) == origin['additional_component_ids'] == 138
+    assert len(previous_entries) == origin['preserved_catalog_ids'] == 893
+    assert len(catalogs.keys() - previous_entries.keys()) == origin['additional_component_ids'] == 9
     assert all(catalogs[entry_id][0] == 'components' for entry_id in catalogs.keys() - previous_entries.keys())
     assert origin['previous_source_commit'] == previous['source_commit']
     subprocess.run(['git', 'merge-base', '--is-ancestor', previous['source_commit'], commit], cwd=ROOT, check=True)
@@ -78,9 +78,17 @@ def check():
     assert len(groups) == len(data['groups'])
     rechecks = {review['group_id']: review for review in data['source_rechecks']}
     assert len(rechecks) == len(data['source_rechecks'])
+    reference_rechecks = {review['group_id']: review for review in data['reference_rechecks']}
+    assert len(reference_rechecks) == len(data['reference_rechecks'])
+    contract_paths = {contract['path'] for contract in data['reviewed_contract_sources']}
     for old_group in previous['groups']:
         assert old_group['id'] in groups
         review = rechecks.get(old_group['id'])
+        reference_review = reference_rechecks.get(old_group['id'])
+        if reference_review:
+            assert reference_review['reason']
+            assert reference_review['changed_fields'] and set(reference_review['changed_fields']) <= {'missing_functionality'}
+            assert reference_review['contract_path'] in contract_paths
         if review:
             assert review['reason'] and review['source_refs']
             assert set(review['changed_fields']) <= {'candidate_behavior', 'missing_functionality'}
@@ -94,11 +102,12 @@ def check():
             assert changed_source, old_group['id']
         for key, value in old_group.items():
             current = groups[old_group['id']][key]
-            if review and key in review['changed_fields']:
+            if (review and key in review['changed_fields']) or (reference_review and key in reference_review['changed_fields']):
                 assert current != value, (old_group['id'], key)
                 continue
             assert (current[:len(value)] == value if isinstance(value, list) else current == value), (old_group['id'], key)
     assert set(rechecks) <= {group['id'] for group in previous['groups']}
+    assert set(reference_rechecks) <= {group['id'] for group in previous['groups']}
     packets = {packet['id']: packet for packet in data['work_packets']}
     assert len(packets) == len(data['work_packets']) == len(groups)
     assert {packet['order'] for packet in packets.values()} == set(range(1, len(packets) + 1))
@@ -140,7 +149,7 @@ def check():
     entries = data['entries']
     entry_counts = Counter(entry['catalog_id'] for entry in entries)
     assert set(entry_counts) == set(catalogs)
-    assert len(entries) == 893 and set(entry_counts.values()) == {1}
+    assert len(entries) == 902 and set(entry_counts.values()) == {1}
     current_entries = {entry['catalog_id']: entry for entry in entries}
     assert all(current_entries[entry_id] == entry for entry_id, entry in previous_entries.items())
     used_groups = set()
@@ -167,7 +176,7 @@ def check():
             assert groups[entry['group_id']]['scope_exclusion'], entry
     assert used_groups == set(groups)
     assert Counter(entry['classification'] for entry in entries) == {
-        'action': 498, 'component': 303, 'container': 86, 'heading': 3, 'excluded': 3
+        'action': 498, 'component': 312, 'container': 86, 'heading': 3, 'excluded': 3
     }
 
     required_checks = {
@@ -237,8 +246,8 @@ def check():
     no_status_copy(data)
     readable = (MAP.with_suffix('.md')).read_text()
     assert all(f'`{packet_id}`' in readable for packet_id in packets)
-    assert commit in readable and '893 unique IDs' in readable
-    print(f'PASS: 893 unique catalog IDs; preserved 755 entries/193 packets; {len(groups)} reviewed groups/packets; '
+    assert commit in readable and '902 unique IDs' in readable
+    print(f'PASS: 902 unique catalog IDs; preserved 893 entries/201 packets; {len(groups)} reviewed groups/packets; '
           f'{len(sources)} source landmarks; catalog hashes, feature/source links and acyclic dependencies valid.')
 
 
