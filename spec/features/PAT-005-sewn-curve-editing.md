@@ -62,6 +62,13 @@ Rejection retains the pending draft, numeric edit text and input focus as well
 as the accepted document/history. A successful join clears the prior numeric
 edit buffer and focus because the retained ID now has parent control values;
 later Tab/blur must not replay the child's old text.
+Focus may transfer during rendering (including Tab/AX Focus and Join in the
+same input frame). Success clears both the remembered input and the numeric
+input actually focused at the command callback. Rejection retains the current
+input, or the remembered input if the pointer gesture already released focus.
+Suppress the superseded inputs' delayed blur signals through the following UI
+frame; actual value changes/drags and a later Tab from the retained input still
+commit normally. A rejected join must not commit its pending draft on idle.
 
 Only two straight curves or two compatible cubic children are supported. For
 straight curves, recover `t` as left length / combined length, and check that the
@@ -86,20 +93,31 @@ including endpoints. The Bernstein weights are
 nonnegative and sum to one, so the largest control difference bounds the error
 at **every** child parameter; finite point samples do not determine acceptance.
 That geometric bound alone is insufficient for f64 evaluation and remapping.
-Reserve `256 * f64::EPSILON * S` metres, where `S` is the maximum Euclidean norm
-of any original or candidate-parent control point (including endpoints), rounded
-up. Require each control difference **plus** that reserve to be at most the
-unchanged `1e-12 m` limit; round the final sum upward before comparison. The
-same reserve applies to the straight shared-point bound. Large absolute
-coordinates can exhaust the precision budget even for otherwise exact joins;
-they are conservatively rejected.
+Let `P` be the maximum Euclidean norm of any original or candidate-parent
+control point (including endpoints). Let `T` be the Euclidean norm of the
+owning piece's unchanged 3D placement translation. For each rotation angle,
+the actual f64 sine/cosine coefficients give the rotation block an operator
+norm at most `max(1,hypot(sin(angle),cos(angle)))`; their product is `K`.
+Norms, products and sums used for these bounds round upward. This accounts for
+the actual placement coefficients without assuming exact orthogonality.
+
+Reserve `256 * f64::EPSILON * S` metres, with `S=K*P+T`. Require each control
+difference multiplied by `K`, **plus** that reserve, to be at most the unchanged
+`1e-12 m` limit; round the final product and sum upward. The same bound applies
+to the straight shared-point difference. This preserves the physical point-pair
+guarantee after `Placement::transform`, as well as the pattern-space bound.
+Large local coordinates **or placement translations** can exhaust the precision
+budget even for otherwise exact joins; they are conservatively rejected.
 
 With IEEE unit roundoff `u=EPSILON/2`, the reserve is `512*u*S`. The loose
 allocation covers both Bernstein evaluations (`64*u*S`), three levels of
 de Casteljau arithmetic (`64*u*S`), old/new interval and child-parameter affine
-arithmetic (`128*u*S`, using the cubic derivative bound `|P'| <= 6*S`), and
-control-difference/norm comparison (`32*u*S`). Their sum is below the reserve,
-leaving room for higher-order rounding terms. Candidate parameter reconstruction
+arithmetic (`128*u*S`, using the transformed-curve derivative bound
+`|C'| <= 6*K*P <= 6*S`), and
+control-difference/norm comparison (`32*u*S`). Both placement transforms add
+`64*u*S` for their rotation multiplies/adds and final translation additions.
+Their sum is below the reserve, leaving room for higher-order rounding terms.
+Candidate parameter reconstruction
 need not be exact: the geometric bound is checked using the actual recovered
 f64 parameter and actual stored parent controls.
 
@@ -154,6 +172,9 @@ Additional regressions retain the concrete high-coordinate case where the
 geometric guard passes but a child's near-end f64 evaluation exceeds `1e-12 m`,
 and exercise focused numeric text, pending drafts, AX/pointer Join, Tab and
 undo/redo through the full in-process app UI.
+They also retain a 1000 m placement-translation witness where the pattern-space
+guard passes but transformed points exceed `1e-12 m`, compare rotated/translated
+sewn point pairs, and exercise coalesced Tab/AX Focus plus Join in one UI frame.
 
 Actual native acceptance is pending a separately identified executable. Start
 empty; create two 0.4 by 0.6 m rectangles at X=0 and X=1. Select the first top

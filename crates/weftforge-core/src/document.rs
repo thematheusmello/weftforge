@@ -713,7 +713,8 @@ impl Project {
                         }),
                     "Join would remove referenced construction geometry",
                 )?;
-                let (controls, t) = joined_geometry(self, &left, &right)?;
+                let (controls, t) =
+                    joined_geometry(self, &left, &right, self.pieces[piece_index].placement)?;
                 for seam in &mut self.seams {
                     for interval in [&mut seam.a, &mut seam.b] {
                         if interval.curve == curve {
@@ -883,6 +884,7 @@ fn joined_geometry(
     project: &Project,
     left: &Curve,
     right: &Curve,
+    placement: Placement,
 ) -> Result<(Option<[[f64; 2]; 2]>, f64)> {
     const TOLERANCE: f64 = 1.0e-12;
     let a = project
@@ -899,14 +901,20 @@ fn joined_geometry(
         .position;
     let sub = |a: [f64; 2], b: [f64; 2]| std::array::from_fn(|axis| a[axis] - b[axis]);
     let length = |v: [f64; 2]| v[0].hypot(v[1]);
-    // Reserve evaluation, affine-parameter, subdivision and norm-comparison roundoff before accepting a geometric bound.
+    let rotation_scale = placement
+        .rotation
+        .into_iter()
+        .map(|angle| angle.sin().hypot(angle.cos()).max(1.0).next_up())
+        .fold(1.0, |scale, norm| (scale * norm).next_up());
+    let [x, y, z] = placement.translation;
+    let translation_scale = x.hypot(y).next_up().hypot(z).next_up();
+    // Include the unchanged placement's rotation and translation arithmetic in the physical-point error budget.
     let roundoff = |points: &[[f64; 2]]| {
-        256.0
-            * f64::EPSILON
-            * points
-                .iter()
-                .map(|&point| length(point).next_up())
-                .fold(0.0, f64::max)
+        let scale = points
+            .iter()
+            .map(|&point| length(point).next_up())
+            .fold(0.0, f64::max);
+        256.0 * f64::EPSILON * ((rotation_scale * scale).next_up() + translation_scale).next_up()
     };
     let interior = |t: f64| t.is_finite() && t > 1.0e-6 && t < 1.0 - 1.0e-6;
     match (left.controls, right.controls) {
@@ -914,8 +922,9 @@ fn joined_geometry(
             let lengths = [length(sub(m, a)), length(sub(b, m))];
             let t = lengths[0] / (lengths[0] + lengths[1]);
             let join = std::array::from_fn(|axis| a[axis] + (b[axis] - a[axis]) * t);
+            let error = (rotation_scale * length(sub(join, m))).next_up();
             ensure(
-                interior(t) && (length(sub(join, m)) + roundoff(&[a, m, b])).next_up() <= TOLERANCE,
+                interior(t) && (error + roundoff(&[a, m, b])).next_up() <= TOLERANCE,
                 "Join needs nondegenerate collinear straight curves with 1e-6 < t < 1-1e-6 and error including f64 roundoff <= 1e-12 m",
             )?;
             Ok((None, t))
@@ -963,8 +972,9 @@ fn joined_geometry(
                     .zip([[a, ac, left_control, join], [join, right_control, db, b]])
                     .any(|(actual, candidate)| {
                         actual.into_iter().zip(candidate).any(|(a, b)| {
-                            let error = length(sub(a, b));
-                            !error.is_finite() || (error + budget).next_up() > TOLERANCE
+                            let error = (rotation_scale * length(sub(a, b))).next_up();
+                            let bound = (error + budget).next_up();
+                            !bound.is_finite() || bound > TOLERANCE
                         })
                     })
                 {

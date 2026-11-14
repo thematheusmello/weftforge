@@ -113,17 +113,33 @@ fn assert_same_pairs(before: &Project, after: &Project) {
             let v = pair[0][1]
                 + (u - pair[0][0]) / (pair[1][0] - pair[0][0]) * (pair[1][1] - pair[0][1]);
             for (a, b, fraction) in [(old.a, new.a, u), (old.b, new.b, v)] {
-                close(
-                    before
-                        .curve(a.curve)
+                let expected = before
+                    .curve(a.curve)
+                    .unwrap()
+                    .evaluate(before, a.parameter(fraction))
+                    .unwrap();
+                let actual = after
+                    .curve(b.curve)
+                    .unwrap()
+                    .evaluate(after, b.parameter(fraction))
+                    .unwrap();
+                close(expected, actual);
+                let placed = |project: &Project, curve, point| {
+                    project
+                        .pieces
+                        .iter()
+                        .find(|piece| piece.boundary.contains(&curve))
                         .unwrap()
-                        .evaluate(before, a.parameter(fraction))
-                        .unwrap(),
-                    after
-                        .curve(b.curve)
-                        .unwrap()
-                        .evaluate(after, b.parameter(fraction))
-                        .unwrap(),
+                        .placement
+                        .transform(point)
+                };
+                let expected = placed(before, a.curve, expected);
+                let actual = placed(after, b.curve, actual);
+                assert!(
+                    (expected[0] - actual[0])
+                        .hypot(expected[1] - actual[1])
+                        .hypot(expected[2] - actual[2])
+                        <= TOLERANCE
                 );
             }
         }
@@ -215,6 +231,25 @@ fn join_preserves_both_children_sewn_pairs_in_all_orientations_and_v2_remesh() {
                         })
                         .unwrap();
                     let other = editor.project.pieces[1].boundary[2];
+                    let pieces = [editor.project.pieces[0].id, editor.project.pieces[1].id];
+                    editor
+                        .execute(Command::Transaction(vec![
+                            Command::SetPlacement {
+                                piece: pieces[0],
+                                placement: weftforge_core::Placement {
+                                    translation: [0.2, 1.2, -0.1],
+                                    rotation: [0.43, -0.27, 0.81],
+                                },
+                            },
+                            Command::SetPlacement {
+                                piece: pieces[1],
+                                placement: weftforge_core::Placement {
+                                    translation: [-0.4, 0.9, 0.25],
+                                    rotation: [-0.2, 0.5, -0.4],
+                                },
+                            },
+                        ]))
+                        .unwrap();
                     for (index, curve) in [left, right].into_iter().enumerate() {
                         let mut intervals = [
                             CurveInterval {
@@ -437,5 +472,39 @@ fn join_rejects_a_full_domain_roundoff_error_above_the_unchanged_tolerance() {
         .unwrap();
     let joined = candidate.evaluate(&editor.project, t * 0.9999).unwrap();
     assert!(length(old, joined) > TOLERANCE, "{old:?} versus {joined:?}");
+    rejects_with_redo(editor, curve, "1e-12");
+}
+
+#[test]
+fn join_rejects_placement_roundoff_above_the_physical_point_tolerance() {
+    let [a, m, b] = [[0.0, 0.0], [0.15, 9.8e-13], [0.3, 0.0]];
+    let mut editor = Editor::default();
+    editor
+        .execute(Command::AddPolygon {
+            name: "Placed boundary witness".into(),
+            vertices: vec![a, m, b, [0.3, 0.3], [0.0, 0.3]],
+        })
+        .unwrap();
+    let piece = editor.project.pieces[0].id;
+    let placement = weftforge_core::Placement {
+        translation: [0.0, 1000.0, 0.0],
+        ..Default::default()
+    };
+    editor
+        .execute(Command::SetPlacement { piece, placement })
+        .unwrap();
+    let curve = editor.project.pieces[0].boundary[0];
+    let right = editor.project.pieces[0].boundary[1];
+    let mut candidate = editor.project.curve(curve).unwrap().clone();
+    candidate.end = editor.project.curve(right).unwrap().end;
+    let point = candidate.evaluate(&editor.project, 0.5).unwrap();
+    let geometric_error = (point[0] - m[0]).hypot(point[1] - m[1]);
+    assert!(geometric_error + 256.0 * f64::EPSILON * 0.3 < TOLERANCE);
+    let old = placement.transform(m);
+    let joined = placement.transform(point);
+    let error = (old[0] - joined[0])
+        .hypot(old[1] - joined[1])
+        .hypot(old[2] - joined[2]);
+    assert!(error > TOLERANCE, "{old:?} versus {joined:?}: {error}");
     rejects_with_redo(editor, curve, "1e-12");
 }
