@@ -24,16 +24,25 @@ ship yet. Distribution notices, platform launch/package QA and signing remain.
 Historical tags and failed or stale evidence have not been rewritten.
 
 Current branch: `feat/numeric-rectangle-and-contact-init`.
-Frozen local candidate source: `f348223d5dadfaa7312cb93c1f2ec09a0e7e8dec`;
-native executable `dab0f0f3fbda1e778dde45c230bd944cf140b9c99a86e9376d0078ac6e80bff3`,
+Accepted bounded native candidate source: `359ac5b2fedfece5cfef9f22861c279bd2708801`;
+native executable `3ed0ab22b4e7335c8dff9a58350b7f68eb2aa9b5ba1c39059c9043a7210c6880`,
 CLI `3b0977567273c57d74edaf2ac470e0740b55fb2f7a3fec56e53b8b0463aab32f`.
-This unpublished candidate integrates the numeric rectangle dialog, stable widget
-scopes, modal input isolation, focused-history/RGB fixes, initial-contact BVH and
-893-entry implementation map. Native investigation found a separate numeric
-focus/blur precision defect; this candidate is not fully accepted.
+Runtime/test sources remain identical after the later evidence/catalog merges.
+This integrates the numeric rectangle dialog, stable widget scopes, modal input
+isolation, focused-history/RGB fixes, precision-preserving numeric editing,
+valid small/large size preservation and initial-contact BVH. The current map has
+902 entries; the executable was packaged at its 893-entry source snapshot.
+
+The preceding `f348223d` / `dab0f0f3` candidate and its precision failure remain
+retained in [the failed run](parity/reports/WF-20261114-NUMERIC-RECTANGLE-001.json).
+New bounded [main acceptance](parity/reports/WF-20261114-NUMERIC-RECTANGLE-002.json)
+and [batch cancellation](parity/reports/WF-20261114-BATCH-CANCEL-001.json) reports
+pass their declared subsets and retain original/invalid/failed states.
+No complete feature, fitting, release-ready binary or reference parity is claimed.
 
 Preserve merge ancestry: source-pinned maps retain `7e59f2a`, `9acb265` and
-`3548de48983bd1a897c0a6433771cd695398ee60`. Do not squash away these anchors.
+`3548de48983bd1a897c0a6433771cd695398ee60` and `13f1d81d238801da617f68525660ae6fa1d01500`.
+Measured benchmark source `461f2e2` is also retained. Do not squash away these anchors.
 Only generated Cargo caches were relocated to the external volume; file sizes
 and identified binary hashes were checked. Local target symlinks require that
 volume. CI uses fresh targets; compiled targets must stay separate by worktree.
@@ -52,14 +61,16 @@ area-based mass, damping/friction, bounded-speed assembly, analytic avatar/groun
 and discrete vertex/triangle self/layer contact. Initialization polls the native
 worker's cancellation token. The new BVH accelerates only initial static contact
 diagnostics; live collision projection and step diagnostics remain quadratic.
-Some allocation/validation/final phases remain non-interruptible. Actual native
-cancellation latency, edge/edge CCD, GPU cloth and calibrated fabrics remain open.
+Some allocation/validation/final phases remain non-interruptible. Actual native batch cancellation acknowledged a click in 890 ms including CUA/AX
+overhead; exact preparation/step phase and worker exit latency remain unmeasured.
+Edge/edge CCD, GPU cloth and calibrated fabrics remain open.
 
 Fresh serial before/after measurements on an original 15,459-vertex / 30,488-face
 fixture reduced median initialization diagnostics from 5.618584042 s to
 0.056252833 s (99.88×). All six runs retained the same 71,927 intersections and
 0.00536994076963222 m maximum error. Exact committed sources, executable hashes,
-producer, driver and original raw timing output are retained locally. This is
+producer and original raw timing output are retained; the portable public bundle
+and reproduction procedure are in [the benchmark](docs/initial-contact-benchmark.md). This is
 initialization evidence, not live-simulation speed or fitting evidence.
 
 Native v2 stores editable construction and strictly migrates v1. Atomic save and
@@ -77,9 +88,11 @@ created/inspected an original file on the new identified CLI, with four decoded
 responses and zero stderr. A modern external client, live GUI control, MCP
 simulation jobs and persistent undo remain open.
 
-The frozen combined code passes **70 Rust tests**, formatting, strict Clippy and
+The combined runtime code passes **73 Rust tests**, formatting, strict Clippy and
 `cargo xtask verify`: **54 Python checks** (48 script and six independent
-reference evaluator tests), the **893-ID** map and current CLI help. Its unsigned
+reference evaluator tests), the **893-ID** packaged snapshot and current CLI help.
+The final combined evidence gate passes all54 Python checks, the **902-ID** map
+and registry after public artifact packaging. Its unsigned
 native package builds. Subsequent source changes require appropriate new checks.
 Earlier temporary-directory collisions and compile-time xtask root selection were
 fixed with regression coverage; wrong-checkout output is not current evidence.
@@ -111,6 +124,32 @@ A separate source worker is fixing shared numeric focus/blur handling in
 relaunch and reopen preserve the actual saved bytes, including that defect.
 Restart and cancellation acceptance remain pending for the final fixed build.
 
+The corrected `3ed0ab22` candidate passes the original main construction slice:
+exact 200 × 300 mm OBJ/SVG, independent fields, Cancel/error protection, one
+Undo/Redo, stable creation values, full cubic controls and focused grain history.
+Untouched cubic X values equal their original f64 inputs; independent rational
+errors are below 6.67e-17 m. The native 5 × 6 mm rectangle survives untouched
+focus/Tab/blur and invalid-zero restoration. Four saves, including clean
+Quit/relaunch/reopen, are byte-identical at revision12. Final exports contain
+475 vertices / 846 positive triangles and four editable SVG paths; full cubic
+bounds are below 2.83e-16 m. Materials remain unchanged.
+
+A stale automation helper briefly reopened the old build; its mixed-instance
+attempt is explicitly invalid and retained. A double-click on a moving field
+left an earlier Y-edit incomplete; that state is also retained. Explicit app
+arguments and an observed single click completed the corrected target; neither
+aborted attempt is credited as a completed workflow.
+
+A separate prepared original 15 mm shirt exercised native batch cancellation:
+15,459 vertices, eight seams, active zero-gravity assembly, Cancel acknowledgement
+and retained rest arrangement. Native saves and actual OBJ exports are byte-identical
+before/after cancellation. The 890 ms UI measurement includes automation/AX
+overhead and does not measure worker exit or constructor-only cancellation.
+Its v1-to-v2 save has expected schema migration plus two 1e-16 m coordinate
+deltas. Those are below the unchanged 1e-12 m criterion, but exact source-coordinate
+equality is false; [issue26](https://github.com/thematheusmello/weftforge/issues/26)
+tracks parser precision. No bit-perfect migration claim is made.
+
 Older original shirt workflow `f00e` / `ff391447` passed its declared fitting
 limits: strain 0.08071753, seam 2.79e-8 m, contact about 1.50e-16 m. It is stale.
 The later anisotropic shirt **failed**: strain 0.26930346 > 0.15, despite passing
@@ -134,12 +173,12 @@ REA 6.9.0 observes the installed Personal 2026.1.237 (r58920), executable
 Millimeter, but numeric locale, language and wider behavioral preferences are
 not fully frozen. Raw account/commercial records and vendor artifacts stay private.
 
-The current reviewed catalog has **589 menu nodes plus 304 component records**.
+The current reviewed catalog has **589 menu nodes plus 313 component records**.
 The [crosswalk](spec/inventory/weftforge-implementation-map.md) assigns all
-**893 unique IDs** once to **201 bounded packets and 50 source landmarks**,
+**902 unique IDs** once to **202 bounded packets and 52 source landmarks**,
 retaining all prior entries. This maps observed surfaces to implementation work;
-it is not a feature denominator or a parity pass. A later nine-record sewing
-observation batch is retained separately, not yet integrated into this map.
+it is not a feature denominator or a parity pass. All 893 previous entries and
+201 packets are preserved; the new sewing packet covers first-side preview only.
 
 Original reference rectangle entry, Undo/Redo, save/reopen and PD20→PD10 edits
 were executed. Independent exports stayed within the declared 0.01 mm dimension
@@ -155,21 +194,25 @@ No current report qualifies as a complete reference parity pass.
 
 ## Active work and next steps
 
-1. Fix and independently review numeric focus/blur precision. Retain the failing
-   candidate; rerun affected native scenarios on a newly identified executable.
-2. Complete save/relaunch/reopen and measured native initialization cancellation
-   acceptance; publish original fixtures, checks and explicit limits.
-3. Publish the combined source, reproducible initialization timings and expanded
-   map with all eight CI checks passing; preserve source-anchor ancestry.
-4. Continue reference sewing, preferences, contextual dialogs/ranges/errors and
-   end-to-end workflows. Integrate the next catalog batch with a complete map.
-5. Continue all construction, simulation/contact, animation, avatar, rendering,
-   interchange, printing, automation and delivery gates. Verified parity stays zero.
+1. Publish the completed source/evidence checkpoint and require all eight CI
+   checks before merging. Local final evidence gates pass. Preserve the failed
+   and invalid attempts, source ancestry and the product README.
+2. Keep native preparation-phase timing, worker termination, JSON float precision,
+   complete garment fitting and reference comparison gates open.
+3. Continue actual reference whole-edge/partial sewing, preferences, contextual
+   dialogs/ranges/errors and end-to-end workflows; map each new observation batch.
+4. Continue every construction, simulation/contact, animation, avatar, rendering,
+   interchange, printing, automation and delivery gate. Verified parity stays zero.
 
-Root exclusively owns desktop input. Reference_lab completed a coordinated
-read-only capture: 107 nodes, no gaps/truncation, identified digest matched.
-Numeric_precision owns an isolated
-source worktree; Curve_output_check independently evaluates original native files.
-No root Cargo build/test is live. The relaunched saved app PID16510 remains open; do not
-overwrite its isolated executable. Low internal disk space requires external
-generated build caches; do not remove unrelated files or change system protections.
+Reference_lab owns exclusive desktop input for the next original sewing workflow.
+Root's saved own candidate PID79057 is idle on the cancellation fixture; do not
+overwrite its isolated package. The read-only reopened-small capture has 94 nodes,
+no gaps/truncation and a matched executable digest. Curve_output_check is packaging
+independent public evidence (complete); Integrated_review checks attribution and reproduction.
+No root Cargo job is live. External generated caches are retained; do not remove
+unrelated files or change system protections.
+
+A separate solver review found no justified production math change for issue16.
+Its two analytic regressions and review note pass 22 sim tests/strict Clippy on
+isolated commit `c248903655a4c30dbab93d004f9c0229101e3f22`; they are not merged
+into this 73-test native checkpoint. The fitting failure remains unresolved.

@@ -10,7 +10,7 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 | Format | Import/read | Export/write | Editable construction | Static/animated | Current limits |
 | --- | --- | --- | --- | --- | --- |
 | `.weftforge` v2 | Yes | Yes | Supported authoring model including grain and orthotropy | Static authoring | JSON, 16 MiB limit; no embedded external assets or saved simulation frames |
-| `.weftforge` v1 | Yes, lossless migration | No | Original supported model | Static authoring | Old stretch maps to both axes; grain defaults to zero; saving writes v2 |
+| `.weftforge` v1 | Yes, explicit migration | No | Original supported model | Static authoring | Old stretch maps to both axes; grain defaults to zero; saving writes v2; floating-point read precision remains under investigation |
 | `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1/v2 model | Static authoring | One prior saved document; no silent fallback |
 | `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1/v2 model | Static authoring | Dirty named documents only; no automatic recovery UI |
 | OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups; no MTL/textures |
@@ -82,7 +82,7 @@ velocities, undo history, selection/camera, pins,
 attachments, holes/internal lines, external avatar assets, textures, animation,
 lighting or cache data. These are visible persistence gaps on the roadmap.
 
-## Lossless v1 migration
+## Explicit v1 migration
 
 The version-1 schema stored `material.stretch_stiffness` and no per-piece grain.
 Its reader uses the strict original field types, then maps:
@@ -93,10 +93,13 @@ v2.material.warp_stiffness = v1.material.stretch_stiffness
 v2.material.weft_stiffness = v1.material.stretch_stiffness
 ```
 
-These were the old document-to-solver inputs. All other stored values, including
-IDs, names, points, controls, seams, placements, mannequin, material values,
-resolution, next ID and document revision, are preserved. Loading v1 does not
-rewrite it or create an authoring revision; the next explicit save writes v2.
+These were the old document-to-solver inputs. The migration retains the other
+stored fields, including IDs, names, geometry, seams, placement and revision.
+A native check found two coordinate changes of 1e-16 m while reading/saving v1;
+exact floating-point preservation is under investigation in
+[issue26](https://github.com/thematheusmello/weftforge/issues/26). This is below
+that check's 1e-12 m geometric limit, but is not bit-perfect preservation.
+Loading v1 does not rewrite it or create an authoring revision; the next explicit save writes v2.
 When saving over a valid v1 primary, recovery retains its exact original bytes.
 Older application builds cannot read v2, and there is no downgrade writer.
 
