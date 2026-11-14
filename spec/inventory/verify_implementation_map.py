@@ -47,10 +47,10 @@ def check():
         ['git', 'show', f'{previous_commit}:spec/inventory/weftforge-implementation-map.json'], cwd=ROOT
     )
     assert hashlib.sha256(previous_raw).hexdigest() == origin['previous_map_sha256']
-    previous = json.loads(previous_raw)
-    previous_entries = {entry['catalog_id']: entry for entry in previous['entries']}
-    assert len(previous_entries) == origin['preserved_catalog_ids'] == 928
-    added_ids = catalogs.keys() - previous_entries.keys()
+    expansion = json.loads(previous_raw)
+    expansion_entries = {entry['catalog_id']: entry for entry in expansion['entries']}
+    assert len(expansion_entries) == origin['preserved_catalog_ids'] == 928
+    added_ids = catalogs.keys() - expansion_entries.keys()
     assert Counter(catalogs[entry_id][0] for entry_id in added_ids) == {
         'menus': origin['additional_menu_ids'], 'components': origin['additional_component_ids']
     } == {'menus': 4, 'components': 17}
@@ -59,10 +59,34 @@ def check():
     }
     assert all(catalogs[entry_id][1]['path'][0] == 'Open Project'
                for entry_id in added_ids if catalogs[entry_id][0] == 'components')
-    assert origin['previous_source_commit'] == previous['source_commit']
+    assert origin['previous_source_commit'] == expansion['source_commit']
+    subprocess.run(['git', 'merge-base', '--is-ancestor', expansion['source_commit'], commit], cwd=ROOT, check=True)
+
+    update = data['source_update_origin']
+    previous_commit = update['previous_map_commit']
+    assert re.fullmatch(r'[0-9a-f]{40}', previous_commit)
+    subprocess.run(['git', 'merge-base', '--is-ancestor', previous_commit, commit], cwd=ROOT, check=True)
+    subprocess.run(['git', 'merge-base', '--is-ancestor', origin['previous_map_commit'], previous_commit],
+                   cwd=ROOT, check=True)
+    previous_raw = subprocess.check_output(
+        ['git', 'show', f'{previous_commit}:spec/inventory/weftforge-implementation-map.json'], cwd=ROOT
+    )
+    assert hashlib.sha256(previous_raw).hexdigest() == update['previous_map_sha256']
+    previous = json.loads(previous_raw)
+    previous_entries = {entry['catalog_id']: entry for entry in previous['entries']}
+    assert len(previous_entries) == update['preserved_catalog_ids'] == 949
+    assert all(previous_entries[entry_id] == entry for entry_id, entry in expansion_entries.items())
+    assert data['entries'] == previous['entries']
+    assert update['previous_source_commit'] == previous['source_commit'] == origin['original_catalog_commit']
     subprocess.run(['git', 'merge-base', '--is-ancestor', previous['source_commit'], commit], cwd=ROOT, check=True)
+    for source in data['inputs']:
+        original = subprocess.check_output(
+            ['git', 'show', f"{origin['original_catalog_commit']}:{source['path']}"], cwd=ROOT
+        )
+        assert original == pinned(source['path'])
     assert data['work_packets'] == previous['work_packets'] and len(data['work_packets']) == 205
-    assert data['source_landmarks'] == previous['source_landmarks'] and len(data['source_landmarks']) == 56
+    assert len(data['work_packets']) == update['preserved_packets']
+    assert len(data['source_landmarks']) == update['preserved_landmarks'] == 56
     assert data['next_executable_parts'] == previous['next_executable_parts']
     assert data['status_authority']['path'] == previous['status_authority']['path']
     assert data['status_authority']['lookup'] == previous['status_authority']['lookup']
@@ -99,9 +123,11 @@ def check():
                 'missing_functionality', 'runtime_questions', 'reviewed_reference_scope'
             }
             assert reference_review['contract_path'] in contract_paths
+            assert all(groups[old_group['id']].get(key) != old_group.get(key)
+                       for key in reference_review['changed_fields'])
         if review:
             assert review['reason'] and review['source_refs']
-            assert set(review['changed_fields']) <= {'candidate_behavior', 'missing_functionality'}
+            assert set(review['changed_fields']) <= {'candidate_behavior', 'missing_functionality', 'shared_commands'}
             assert review['changed_fields']
             assert set(review['source_refs']) <= data['source_landmarks'].keys()
             changed_source = False
@@ -122,14 +148,33 @@ def check():
     assert len(packets) == len(data['work_packets']) == len(groups)
     assert {packet['order'] for packet in packets.values()} == set(range(1, len(packets) + 1))
     sources = data['source_landmarks']
-    for source in sources.values():
+    landmark_rechecks = {review['source_id']: review for review in data['source_landmark_rechecks']}
+    assert len(landmark_rechecks) == len(data['source_landmark_rechecks'])
+    assert set(sources) == set(previous['source_landmarks'])
+    assert set(landmark_rechecks) <= sources.keys()
+    for source_id, source in sources.items():
+        old_source = previous['source_landmarks'][source_id]
+        assert source.keys() == old_source.keys() and source['path'] == old_source['path'], source_id
+        review = landmark_rechecks.get(source_id)
+        changed_fields = set() if review is None else set(review['changed_fields'])
+        if review:
+            assert review['reason'] and changed_fields and changed_fields <= {'scope', 'anchor'}, source_id
+            old_raw = subprocess.check_output(
+                ['git', 'show', f"{previous['source_commit']}:{source['path']}"], cwd=ROOT
+            )
+            assert old_source['anchor'] in old_raw.decode() and old_raw != pinned(source['path']), source_id
+            if 'anchor' in changed_fields:
+                assert review['previous_anchor'] == old_source['anchor'], source_id
+                assert review['current_anchor'] == source['anchor'], source_id
+        for key, value in old_source.items():
+            assert (source[key] != value if key in changed_fields else source[key] == value), (source_id, key)
         assert (ROOT / source['path']).is_file(), source['path']
         assert source['anchor'] in pinned(source['path']).decode(), source
         assert source['scope'], source
     document = pinned('crates/weftforge-core/src/document.rs').decode()
     command_enum = document.split('pub enum Command {', 1)[1].split('#[derive', 1)[0]
     commands = set(re.findall(r'^    ([A-Z]\w*)\s*[({]', command_enum, re.MULTILINE))
-    assert len(commands) == 18
+    assert len(commands) == 19 and 'JoinCurve' in commands
 
     fixture_ids = set(data['fixture_recipes'])
     for fixture in data['fixture_recipes'].values():
@@ -257,7 +302,8 @@ def check():
     readable = (MAP.with_suffix('.md')).read_text()
     assert all(f'`{packet_id}`' in readable for packet_id in packets)
     assert commit in readable and '949 unique IDs' in readable
-    print(f'PASS: 949 unique catalog IDs; preserved 928 entries/205 packets; {len(groups)} reviewed groups/packets; '
+    print(f'PASS: 949 unique catalog IDs; preserved 949 entries/205 packets and original 928-entry expansion; '
+          f'{len(groups)} reviewed groups/packets; '
           f'{len(sources)} source landmarks; catalog hashes, feature/source links and acyclic dependencies valid.')
 
 
