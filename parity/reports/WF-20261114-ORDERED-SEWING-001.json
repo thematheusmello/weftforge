@@ -920,7 +920,10 @@
     "parity/reports/artifacts/ordered-sewing-20261114/verify.py": "06f1213e8b59f32fa4019321d5dce18f9a9b1b6a3d96c9ebe3da6caec3ac5352",
     "spec/features/SEW-002-ordered-paths.md": "9baedd713b5a8dd4f251d7f2c5d0c51b408ecdabb32813a07dae06d25dcae960",
     "spec/features/SEW-002-runtime-notes-20261114.md": "a93472d01f33b5dafc78ae2ad65da1e689e4aea7d8760a8bee2d6bd99a73988c",
-    "parity/scenarios/SEW-ORDERED-001.json": "ec882382da0a1e1cc0cc10a532c2ab2cb4ad713008192d9afef061e2bf36bfd0"
+    "parity/scenarios/SEW-ORDERED-001.json": "ec882382da0a1e1cc0cc10a532c2ab2cb4ad713008192d9afef061e2bf36bfd0",
+    "parity/reports/artifacts/ordered-sewing-publication-20261114/receipt.json": "16749b801a938346160779dca80431b55aa40d9de15c19cd6a05f15e84b1dac4",
+    "parity/reports/artifacts/ordered-sewing-publication-20261114/retained-output-replay.log": "71353643da8499165907cf99aae6cd9b05d19a8c0b7d7c9a82663c0c4d0485c8",
+    "parity/reports/artifacts/ordered-sewing-publication-20261114/xtask.public.log": "e69a60cbecc53fb33667d4e3083b52b45737388e8be577fbd31c42885bba4d47"
   },
   "scope": "Original ordered partial/reversed/disconnected2:3 authored-arc-length groups and nonlinear maps; legacy f64 semantics; actual rest stitches; shared Editor split/join/history/removal; strict source/file failure preservation; standalone native creation/edit/history/reversal/save/real-quit/relaunch/reopen line case; official legacy SDK. Bounded implementation evidence only.",
   "profile": {
@@ -1241,8 +1244,20 @@
     "logs": "parity/reports/artifacts/ordered-sewing-20261114/supplemental/runtime/gates",
     "standard_unsigned_package": "passed",
     "clean_checkout_publication_check": {
-      "status": "pending",
-      "required": "All850bundle files tracked; verify.py retained-output replay plus clean-checkout registry/map/xtask verification."
+      "status": "passed",
+      "tracked_evidence_commit": "a661ae495c91f9aa63c33ce1bf5f5b0853217216",
+      "receipt": "parity/reports/artifacts/ordered-sewing-publication-20261114/receipt.json",
+      "bundle_files_tracked": 850,
+      "all_run_artifacts_at_checkpoint_tracked": 853,
+      "checks": [
+        "unchanged original10case numerical oracle and11checkpoint operations evaluator, retaining original expected metadata failure",
+        "original18checkpoint native evaluator plus expected false-review refusal",
+        "frozen saved officialSDK comparisons, original core/UI reviewer integrity and fine/coarse independent mesh geometry",
+        "all37runtime Git/local source hashes, complete850bundle Git tracking, clean checkout before/after",
+        "cargo xtask verify: registry,949-ID/205packet/56landmark map,54Python checks and freshly builtCLIhelp"
+      ],
+      "source_and_original_candidate_artifacts_unchanged": true,
+      "publication_receipt_and_logs_added_after_checkpoint": true
     },
     "github_actions": "disabled_at_user_request_until_full_project_complete",
     "remote_CI": "not_run",

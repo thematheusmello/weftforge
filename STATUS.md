@@ -32,7 +32,8 @@ Working branch: `feat/ordered-sewing-paths`. Executed runtime source is
 `3eddef067c8a1f03f192c8e6822a8da2a94f9bf9`, with 37 scoped runtime/test files.
 Source-map checkpoint `529e1c407025decfb94a14acc23b242e9cf9ce16` preserves the
 runtime ancestry. New documentation, registry and evidence are prepared locally;
-tracked clean-checkout publication verification and the PR remain next.
+clean-checkout a661ae4 now passes full retained-output replay and xtask;
+publication metadata and the PR remain next.
 
 Authoritative ordered M:N groups pair cumulative **authored arc lengths** across
 partial, reversed and disconnected spans, with editable nonlinear maps. Gaps
@@ -70,9 +71,10 @@ an operation that relaunches it.
 
 The public-safe bundle contains 850 files, including 25 original native PNGs,
 18 saved sources, frozen evaluators/inputs, actual outputs and labeled path
-provenance. Root report/scenario/reference-note links bring this run to 853
+provenance. Root report/scenario/reference-note links bring this run to 856
 artifacts. Every file must be Git-tracked and replayed from a clean checkout
-before publication; ignored local originals alone are not delivery.
+before publication; that clean-checkout replay passed at a661ae4.
+Ignored local originals alone are not delivery.
 
 ## Failures retained and local gates
 
@@ -122,9 +124,9 @@ remain unobserved. The one-click manual diagnosis question is pending. This is
 input noncompletion, not absence; preserve the earlier Rectangle observation.
 See [dated research notes](spec/features/SEW-002-runtime-notes-20261114.md).
 
-1. Track the prepared 850-file bundle/report/scenario/docs; commit recoverably.
-2. From a clean checkout run the retained-output verify.py, registry/map/xtask,
-   artifact-tracking/privacy checks and source identity checks before publishing.
+1. Commit the clean-checkout receipt/log derivatives and final publication metadata.
+2. Recheck final metadata, complete artifact tracking and source identity from a
+   clean checkout; the full850-file replay/54Python/map gates already passed at a661ae4.
 3. Publish an ordinary PR preserving all source/evidence ancestry; verify Actions
    remains disabled and no head/merge workflows or Pages updates ran.
 4. Continue current-source cloth balance/refinement diagnosis and the remaining
@@ -133,6 +135,9 @@ See [dated research notes](spec/features/SEW-002-runtime-notes-20261114.md).
 Root gates 46670/59961/33589/43122, headless producer 94587 (first driver error),
 corrected negative attempt, SDK run, operations 3209, independent output 54062/
 50008 and all agent core/UI/mesh checks are terminal. Metadata progress 57683
-and map 94015 passed; no Cargo/producer job is currently live. All agents have
-finished their bounded tasks. Recheck authoritative process/job state on resume.
+and map 94015 passed. Clean replay75295 and isolated offline xtask63373 passed;
+all850 bundle files and853 run artifacts were tracked at a661ae4. No Cargo/
+producer job is currently live. Sewing agents finished their bounded tasks. The new cloth_balance agent is
+preparing a fixed current-source diagnosis under the original quality limits;
+no execution handle has been reported yet. Recheck actual process/job state on resume.
 Raw local ledgers remain ignored; keep separate Cargo targets per worktree.
