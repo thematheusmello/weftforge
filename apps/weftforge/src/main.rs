@@ -102,6 +102,12 @@ struct AutosaveJob {
     receiver: mpsc::Receiver<Result<(), String>>,
 }
 
+struct RectangleDraft {
+    origin: [f64; 2],
+    dimensions_mm: [String; 2],
+    error: Option<String>,
+}
+
 #[derive(Clone)]
 struct InspectorDraft {
     revision: u64,
@@ -199,7 +205,9 @@ struct Studio {
     split_t: f64,
     tool: Tool,
     polygon: Vec<[f64; 2]>,
+    pattern_canvas: Option<egui::Id>,
     drag_start: Option<[f64; 2]>,
+    rectangle: Option<RectangleDraft>,
     drag_point: Option<Id>,
     preview: Option<[f64; 2]>,
     seam_start: Option<Id>,
@@ -262,7 +270,9 @@ impl Studio {
             split_t: 0.5,
             tool: Tool::Select,
             polygon: vec![],
+            pattern_canvas: None,
             drag_start: None,
+            rectangle: None,
             drag_point: None,
             preview: None,
             seam_start: None,
@@ -976,7 +986,13 @@ impl Studio {
             if let Some(seam)=remove { self.execute(Command::RemoveSeam { seam }); }
             if let Some(curve)=split { self.execute(Command::SplitCurve { curve,t:self.split_t }); }
         });
-        if commit {
+        let opening_rectangle = self.tool == Tool::Rectangle
+            && self
+                .pattern_canvas
+                .and_then(|id| ui.ctx().read_response(id))
+                .is_some_and(|response| response.clicked());
+        // Keep pending edits staged while the numeric constructor opens or remains open.
+        if commit && self.rectangle.is_none() && !opening_rectangle {
             self.commit_draft();
         }
     }
@@ -994,10 +1010,74 @@ impl Studio {
             snap(self.center[1] - d.y as f64),
         ]
     }
+    fn rectangle_window(&mut self, ctx: &egui::Context) {
+        let Some(mut rectangle) = self.rectangle.take() else {
+            return;
+        };
+        let mut accept = false;
+        let mut cancel = false;
+        let response = egui::Modal::new(egui::Id::new("create-rectangle")).show(ctx, |ui| {
+            ui.heading("Create Rectangle");
+            for (label, value) in ["Width (mm)", "Height (mm)"]
+                .into_iter()
+                .zip(&mut rectangle.dimensions_mm)
+            {
+                ui.horizontal(|ui| {
+                    let label = ui.label(label);
+                    ui.add(egui::TextEdit::singleline(value).desired_width(100.0))
+                        .labelled_by(label.id);
+                });
+            }
+            if let Some(error) = &rectangle.error {
+                ui.colored_label(Color32::LIGHT_RED, error);
+            }
+            ui.horizontal(|ui| {
+                accept = ui.button("OK").clicked();
+                cancel = ui.button("Cancel").clicked();
+            });
+        });
+        if cancel || response.should_close() {
+            return;
+        }
+        if accept {
+            let dimensions = rectangle
+                .dimensions_mm
+                .each_ref()
+                .map(|value| value.trim().parse::<f64>());
+            if let [Ok(width), Ok(height)] = dimensions {
+                let mut commands = self
+                    .draft
+                    .as_ref()
+                    .filter(|draft| draft.revision == self.editor.project.revision)
+                    .map_or_else(Vec::new, |draft| draft.commands(&self.editor.project));
+                // Reference input limits are unobserved; the shared command validates dimensions.
+                commands.push(Command::AddRectangle {
+                    name: self.name.clone(),
+                    origin: rectangle.origin,
+                    width: width / 1000.0,
+                    height: height / 1000.0,
+                });
+                let command = if commands.len() == 1 {
+                    commands.pop().expect("rectangle command")
+                } else {
+                    Command::Transaction(commands)
+                };
+                if self.apply_command(command) {
+                    self.select(self.editor.project.pieces.last().map(|piece| piece.id));
+                    return;
+                }
+                rectangle.error = Some(self.message.clone());
+            } else {
+                rectangle.error = Some("Enter numeric width and height in mm.".into());
+            }
+        }
+        self.rectangle = Some(rectangle);
+    }
     fn patterns(&mut self, ui: &mut egui::Ui) {
         ui.strong("2D PATTERNS");
         ui.small("Metres · 1 cm snap · scroll zoom · middle drag pan");
         let (response, painter) = ui.allocate_painter(ui.available_size(), Sense::click_and_drag());
+        self.pattern_canvas = Some(response.id);
         let r = response.rect;
         painter.rect_filled(r, 3., Color32::from_rgb(28, 35, 42));
         if response.hovered() {
@@ -1217,7 +1297,16 @@ impl Studio {
                         }
                     }
                 }
-                Tool::Rectangle => {}
+                Tool::Rectangle => {
+                    if let Some(p) = pointer {
+                        // shortcut: existing snapped lower-left anchor; reference equivalence needs observation.
+                        self.rectangle = Some(RectangleDraft {
+                            origin: self.to_pattern(p, r),
+                            dimensions_mm: ["500".into(), "500".into()],
+                            error: None,
+                        });
+                    }
+                }
             }
         }
     }
@@ -1354,13 +1443,18 @@ impl eframe::App for Studio {
         let ctx = ui.ctx().clone();
         self.poll();
         self.poll_autosave();
-        if ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::S)) {
+        if self.rectangle.is_none()
+            && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::S))
+        {
             self.save(false);
         }
-        if ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::O)) {
+        if self.rectangle.is_none()
+            && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::O))
+        {
             self.choose_open();
         }
-        if !ctx.egui_wants_keyboard_input()
+        if self.rectangle.is_none()
+            && !ctx.egui_wants_keyboard_input()
             && ctx.input_mut(|i| {
                 i.consume_key(
                     egui::Modifiers::COMMAND | egui::Modifiers::SHIFT,
@@ -1369,15 +1463,18 @@ impl eframe::App for Studio {
             })
         {
             self.history(true);
-        } else if !ctx.egui_wants_keyboard_input()
+        } else if self.rectangle.is_none()
+            && !ctx.egui_wants_keyboard_input()
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::Z))
         {
             self.history(false);
         }
-        if ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::K)) {
+        if self.rectangle.is_none()
+            && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::K))
+        {
             self.search = !self.search;
         }
-        if !ctx.egui_wants_keyboard_input() {
+        if self.rectangle.is_none() && !ctx.egui_wants_keyboard_input() {
             if ctx.input(|i| i.key_pressed(egui::Key::Space)) {
                 self.playing = !self.playing;
                 self.pending_batch = None;
@@ -1530,6 +1627,7 @@ impl eframe::App for Studio {
             self.search &= open;
         }
         self.recovery_window(&ctx);
+        self.rectangle_window(&ctx);
     }
 }
 fn numeric_commit(response: &egui::Response) -> bool {
@@ -1661,6 +1759,198 @@ mod tests {
         assert!(
             (segment_distance(Pos2::new(0.5, 1.), Pos2::ZERO, Pos2::new(1., 0.)) - 1.).abs() < 1e-6
         );
+    }
+
+    #[test]
+    fn numeric_rectangle_click_commits_once_and_cancel_or_errors_preserve_drafts_and_history() {
+        fn frame(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            events: Vec<egui::Event>,
+        ) -> egui::FullOutput {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(900., 700.))),
+                    events,
+                    ..Default::default()
+                },
+                |ui| {
+                    ui.columns(2, |columns| {
+                        app.inspector(&mut columns[0]);
+                        app.patterns(&mut columns[1]);
+                    });
+                    app.rectangle_window(ui.ctx());
+                },
+            )
+        }
+        fn pointer(pos: Pos2, pressed: bool) -> egui::Event {
+            egui::Event::PointerButton {
+                pos,
+                button: egui::PointerButton::Primary,
+                pressed,
+                modifiers: egui::Modifiers::NONE,
+            }
+        }
+        fn click(ctx: &egui::Context, app: &mut Studio, pos: Pos2) -> egui::FullOutput {
+            frame(
+                ctx,
+                app,
+                vec![egui::Event::PointerMoved(pos), pointer(pos, true)],
+            );
+            frame(ctx, app, vec![pointer(pos, false)])
+        }
+        fn text_position(output: &egui::FullOutput, text: &str, index: usize) -> Pos2 {
+            output
+                .shapes
+                .iter()
+                .filter_map(|clipped| match &clipped.shape {
+                    egui::Shape::Text(shape)
+                        if shape.galley.text() == text
+                            || text.parse::<f64>().ok().is_some_and(|value| {
+                                shape.galley.text().parse::<f64>().ok() == Some(value)
+                            }) =>
+                    {
+                        Some(shape.pos + shape.galley.size() * 0.5)
+                    }
+                    _ => None,
+                })
+                .nth(index)
+                .unwrap_or_else(|| panic!("missing text {text:?}"))
+        }
+        fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+            egui::Event::Key {
+                key,
+                physical_key: None,
+                pressed: true,
+                repeat: false,
+                modifiers,
+            }
+        }
+        let ctx = egui::Context::default();
+        let mut app = Studio::empty();
+        app.tool = Tool::Rectangle;
+        let before = app.editor.project.clone();
+        frame(&ctx, &mut app, vec![]);
+        let anchor = Pos2::new(600., 250.);
+        click(&ctx, &mut app, anchor);
+        assert_eq!(app.editor.project, before);
+        assert!(!app.dirty);
+        assert!(!app.editor.can_undo());
+        let rectangle = app.rectangle.as_ref().unwrap();
+        assert_eq!(rectangle.dimensions_mm, ["500", "500"]);
+        let origin = rectangle.origin;
+        let output = frame(&ctx, &mut app, vec![]);
+        click(&ctx, &mut app, text_position(&output, "500", 0));
+        frame(
+            &ctx,
+            &mut app,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("200".into()),
+                key(egui::Key::Tab, egui::Modifiers::NONE),
+            ],
+        );
+        assert_eq!(
+            app.rectangle.as_ref().unwrap().dimensions_mm,
+            ["200", "500"]
+        );
+        frame(
+            &ctx,
+            &mut app,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("300".into()),
+                key(egui::Key::Tab, egui::Modifiers::NONE),
+            ],
+        );
+        assert_eq!(
+            app.rectangle.as_ref().unwrap().dimensions_mm,
+            ["200", "300"]
+        );
+        let output = frame(&ctx, &mut app, vec![]);
+        click(&ctx, &mut app, text_position(&output, "OK", 0));
+        assert!(app.rectangle.is_none());
+        assert_eq!(app.editor.project.revision, before.revision + 1);
+        assert_eq!(app.editor.project.pieces.len(), 1);
+        let piece = app.editor.project.pieces[0].id;
+        let [min, max] = app.editor.project.piece_bounds(piece).unwrap();
+        assert_eq!(min, origin);
+        assert!((max[0] - min[0] - 0.2).abs() < 1.0e-12);
+        assert!((max[1] - min[1] - 0.3).abs() < 1.0e-12);
+        assert_eq!(app.selected, Some(piece));
+        app.history(false);
+        assert!(app.editor.project.pieces.is_empty());
+        assert!(!app.editor.can_undo());
+        assert!(app.editor.can_redo());
+
+        let before = app.editor.project.clone();
+        let output = frame(&ctx, &mut app, vec![]);
+        click(&ctx, &mut app, text_position(&output, "0.07", 0));
+        frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("0.075".into()),
+            ],
+        );
+        let pending_resolution = app.draft.as_ref().unwrap().resolution;
+        assert_eq!(pending_resolution, 0.075);
+        assert_eq!(app.editor.project, before);
+        frame(&ctx, &mut app, vec![]);
+        click(&ctx, &mut app, anchor);
+        assert_eq!(app.editor.project, before);
+        for width in ["0", "invalid"] {
+            app.rectangle.as_mut().unwrap().dimensions_mm[0] = width.into();
+            let output = frame(&ctx, &mut app, vec![]);
+            click(&ctx, &mut app, text_position(&output, "OK", 0));
+            assert!(app.rectangle.as_ref().unwrap().error.is_some());
+            assert_eq!(app.editor.project, before);
+            assert_eq!(app.draft.as_ref().unwrap().resolution, pending_resolution);
+            assert!(!app.editor.can_undo());
+            assert!(app.editor.can_redo());
+        }
+        let output = frame(&ctx, &mut app, vec![]);
+        click(&ctx, &mut app, text_position(&output, "Cancel", 0));
+        assert!(app.rectangle.is_none());
+        assert_eq!(app.editor.project, before);
+        assert_eq!(app.draft.as_ref().unwrap().resolution, pending_resolution);
+        assert!(!app.editor.can_undo());
+        assert!(app.editor.can_redo());
+
+        frame(&ctx, &mut app, vec![]);
+        click(&ctx, &mut app, anchor);
+        app.rectangle.as_mut().unwrap().dimensions_mm = ["200".into(), "300".into()];
+        let output = frame(&ctx, &mut app, vec![]);
+        click(&ctx, &mut app, text_position(&output, "OK", 0));
+        assert_eq!(app.editor.project.pieces.len(), 1);
+        assert_eq!(app.editor.project.resolution, pending_resolution);
+        assert!(app.draft.is_none());
+        app.history(false);
+        assert!(app.editor.project.pieces.is_empty());
+        assert_eq!(app.editor.project.resolution, before.resolution);
+        assert!(!app.editor.can_undo());
+
+        let ctx = egui::Context::default();
+        let mut app = Studio::empty();
+        app.tool = Tool::Rectangle;
+        frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![egui::Event::PointerMoved(anchor), pointer(anchor, true)],
+        );
+        for pos in [anchor + Vec2::splat(20.), anchor + Vec2::splat(100.)] {
+            frame(&ctx, &mut app, vec![egui::Event::PointerMoved(pos)]);
+        }
+        frame(
+            &ctx,
+            &mut app,
+            vec![pointer(anchor + Vec2::splat(100.), false)],
+        );
+        assert!(app.rectangle.is_none());
+        assert_eq!(app.editor.project.pieces.len(), 1);
     }
 
     #[test]
