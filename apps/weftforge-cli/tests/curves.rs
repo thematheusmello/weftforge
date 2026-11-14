@@ -153,6 +153,7 @@ fn cli_edits_splits_and_joins_sewn_curves_and_preserves_outputs_on_failure() {
     assert!(help.contains("curve-controls INPUT OUTPUT CURVE_ID straight"));
     assert!(help.contains("split INPUT OUTPUT CURVE_ID T"));
     assert!(help.contains("join INPUT OUTPUT CURVE_ID"));
+    assert!(help.contains("export-dxf PROJECT OUTPUT.dxf"));
     assert_eq!(Project::load(&input).unwrap(), editor.project);
     fs::remove_dir_all(dir).unwrap();
 }

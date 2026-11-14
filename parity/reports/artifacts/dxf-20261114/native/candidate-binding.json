@@ -1,0 +1,128 @@
+{
+  "binding_profile": "FILE-005-v1-independent-before-native-launch",
+  "bound_utc": "2026-11-14T13:18:10.631479+00:00",
+  "oracle_revision": "original frozen oracle; no changes after any output inspection",
+  "oracle_freeze": {
+    "path": "freeze.json",
+    "sha256": "20fc2dc605374c5ee9b4056c3716e18156266515db2a82bbc02f99288f7e6560",
+    "criteria_sha256": "d0f452e4deb041b1b66978a141d6ea9267159a1b9ff72e96f1d9889fa49b3bc8",
+    "evaluator_sha256": "6756739bebef6f0753ad0bb86eed3ed0116b8d6d1dfaecf548b368c44a959ed6",
+    "fixture_manifest_sha256": "92572af6209fe480997f5269149255edfd25dff83e08839243a912914263e917",
+    "pretest_sha256": "41b0c828b071a6e9574603e92f690f3e1b8a15648fd07477ec6322503e44178a"
+  },
+  "candidate_pretest": {
+    "path": "candidate-pretest.json",
+    "sha256": "b9cf229507f5249fb9fa680e7c6e15189b37b04f2d496d2b7e75031602879976"
+  },
+  "candidate": {
+    "source_commit": "cd151b3b89e26d55a4dcd4525790006660c4e766",
+    "source_tree_sha256": "248b48c03ed194f9dae6c48bd4229e7418be69b9b9e07376128cda59d932b48b",
+    "source_scope": [
+      ".cargo",
+      "Cargo.toml",
+      "Cargo.lock",
+      "rust-toolchain.toml",
+      "apps",
+      "crates",
+      "xtask"
+    ],
+    "scoped_source_file_count": 34,
+    "source_identity_check": "All 34 files hashed as bytes from git object and current checkout, identical to pretest. Production source text was not decoded, inspected or displayed.",
+    "package_relative_path": ".local/candidates/cd151b3b89e2",
+    "package_file_hashes": {
+      "LICENSE-APACHE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "LICENSE-MIT": "5a79a5be6e18069ea095bcb13f724f90cee6a70b1fd6b5e2b1f505f050c25b0d",
+      "README.md": "137495e402da559fe34b1f10cfece3890a241fe03244de0d62a3644c4d399072",
+      "THIRD_PARTY.md": "da5201bd1cadff85193d02040d0f99b7a7b4949fe4857684f91efaa1f5799a0d",
+      "WeftForge.app/Contents/Info.plist": "5ac9539a4fb95ced9cc9463a5840176f69b86a826c39be0f7971378d93c218b5",
+      "WeftForge.app/Contents/MacOS/weftforge": "4cdc758b057975b47fe81306d4fec2c8f598e8ea5e5d83601c6eab2baa0d199b",
+      "weftforge": "4cdc758b057975b47fe81306d4fec2c8f598e8ea5e5d83601c6eab2baa0d199b",
+      "weftforge-cli": "e90ac57b9bd345ad1d844b4f3f9e684c96fa58af0f795d5f7a168ddfc3fad20f"
+    },
+    "actual_package_file_count": 8,
+    "actual_package_hashes_match_pretest": true,
+    "native_sha256": "4cdc758b057975b47fe81306d4fec2c8f598e8ea5e5d83601c6eab2baa0d199b",
+    "cli_sha256": "e90ac57b9bd345ad1d844b4f3f9e684c96fa58af0f795d5f7a168ddfc3fad20f",
+    "cli_bytes_identical_to_independently_accepted_headless_precheck": true
+  },
+  "existing_independent_headless_result": {
+    "path": "reports/headless-pre-ui-fix/summary.json",
+    "sha256": "94c02e644f717dd023bf5010ace2fd4eb2608c415e981740953cb760b79a07d3",
+    "scope": "Same CLI bytes, five source-derived profile cases accepted. This is not native desktop acceptance."
+  },
+  "inputs": {
+    "mixed": {
+      "path": "input/mixed.weftforge",
+      "sha256": "5c12187aded14c962b76dba7526a68f13395c9f5a2b92f04015ea8e3eff8d82c",
+      "revision": 20,
+      "piece_ids_in_array_order": [
+        11,
+        2
+      ]
+    },
+    "native-expected": {
+      "path": "input/native-expected.weftforge",
+      "sha256": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb",
+      "revision": 21,
+      "piece_ids_in_array_order": [
+        11,
+        2
+      ]
+    },
+    "mixed-placement-resolution": {
+      "path": "input/mixed-placement-resolution.weftforge",
+      "sha256": "6f28c49cd943c418d3334abc1f6e1a111e8030d2f49ed10bda50d2f3ea2470d7",
+      "revision": 20,
+      "piece_ids_in_array_order": [
+        11,
+        2
+      ]
+    },
+    "rectangle": {
+      "path": "input/rectangle.weftforge",
+      "sha256": "e404bbc181c55b91a6203b90cf10f94a78f19da615fd679732bf8ab7dc2d2f18",
+      "revision": 20,
+      "piece_ids_in_array_order": [
+        11
+      ]
+    },
+    "empty": {
+      "path": "input/empty.weftforge",
+      "sha256": "864bd308bff8cb3d461bdd91f7f5bdef1e4de34692f2fdeaabf1ec74181358c5",
+      "revision": 20,
+      "piece_ids_in_array_order": []
+    }
+  },
+  "native_sequence": {
+    "authority": "CRITERIA.md frozen native scenario; no acceptance or sequence change",
+    "source_before": "native/source-before.weftforge",
+    "source_after_cancel": "native/source-after-cancel.weftforge",
+    "source_after_pending_resolution_export": "native/source-after.weftforge",
+    "source_after_repeat": "native/source-after-repeat.weftforge",
+    "source_after_relaunch": "native/reopened.weftforge",
+    "first_export": "native/native-mixed.dxf",
+    "repeat_export": "native/native-mixed-repeat.dxf",
+    "cancel_sentinel": "native/native-cancel-sentinel.dxf",
+    "cancel_sentinel_sha256": "a31bb56a44c5f0ef9b46ad91614a019cbf3b75d0c26b9f06153f19c9254cb942",
+    "initial_expected_source": "input/mixed.weftforge",
+    "pending_edit": "Mesh resolution 0.04 -> 0.045, no Tab; toolbar ExportDXF must commit once on success",
+    "after_success_expected_source": "input/native-expected.weftforge",
+    "after_success_expected_revision": 21,
+    "repeat_route": "Command Search ExportDXF",
+    "snapshot_output_directory_at_binding": "Only original cancellation sentinel exists; no native source/export output present."
+  },
+  "execution_boundary": {
+    "producer_declared_native_execution": "not_started",
+    "oracle_agent_started_native": false,
+    "native_process_inventory_independently_inspected": false,
+    "cargo_ui_server_run_by_oracle_agent": false,
+    "root_reported_integrated_checks": "98 Rust tests, fmt, Clippy and package pass; final xtask job 27110 pending root observation at request time. Not rerun by independent oracle.",
+    "this_binding_authorizes_no_criterion_changes": true
+  },
+  "acceptance_status": "Identity bound before declared first native launch; native acceptance remains pending original artifacts and observed UI actions.",
+  "limitations": [
+    "No native output generated by this agent",
+    "No reference parity, other CAD, import, apparel round trip or printing claim",
+    "Ignored local evidence is not delivery; track artifacts and run registry/map checks from clean checkout before publication"
+  ]
+}

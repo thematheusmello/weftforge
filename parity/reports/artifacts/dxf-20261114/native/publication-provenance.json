@@ -1,0 +1,418 @@
+{
+  "original_copies": [
+    {
+      "path": "freeze.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/freeze.json",
+      "sha256": "20fc2dc605374c5ee9b4056c3716e18156266515db2a82bbc02f99288f7e6560",
+      "bytes_preserved": true
+    },
+    {
+      "path": "CRITERIA.md",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/CRITERIA.md",
+      "sha256": "d0f452e4deb041b1b66978a141d6ea9267159a1b9ff72e96f1d9889fa49b3bc8",
+      "bytes_preserved": true
+    },
+    {
+      "path": "evaluate.py",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/evaluate.py",
+      "sha256": "6756739bebef6f0753ad0bb86eed3ed0116b8d6d1dfaecf548b368c44a959ed6",
+      "bytes_preserved": true
+    },
+    {
+      "path": "prepare_fixtures.py",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/prepare_fixtures.py",
+      "sha256": "6293b08eb0da8cc07a5d577df9f945b84f2a506a662bda88a137ccecabdc8c21",
+      "bytes_preserved": true
+    },
+    {
+      "path": "candidate-pretest.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/candidate-pretest.json",
+      "sha256": "b9cf229507f5249fb9fa680e7c6e15189b37b04f2d496d2b7e75031602879976",
+      "bytes_preserved": true
+    },
+    {
+      "path": "candidate-binding.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/candidate-binding.json",
+      "sha256": "ded5f27d1cb5df0dbb3c007f2dbdf5936dc1f2d6babbac256eda61d1cdbd2bf4",
+      "bytes_preserved": true
+    },
+    {
+      "path": "parent-native-log.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/parent-native-log.json",
+      "sha256": "89632eaf8c123c979dbfa5c47c3a39ff1ba622d6a59d7519e6c3f84b7eb5d786",
+      "bytes_preserved": true
+    },
+    {
+      "path": "input/empty.weftforge",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/input/empty.weftforge",
+      "sha256": "864bd308bff8cb3d461bdd91f7f5bdef1e4de34692f2fdeaabf1ec74181358c5",
+      "bytes_preserved": true
+    },
+    {
+      "path": "input/manifest.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/input/manifest.json",
+      "sha256": "92572af6209fe480997f5269149255edfd25dff83e08839243a912914263e917",
+      "bytes_preserved": true
+    },
+    {
+      "path": "input/mixed-placement-resolution.weftforge",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/input/mixed-placement-resolution.weftforge",
+      "sha256": "6f28c49cd943c418d3334abc1f6e1a111e8030d2f49ed10bda50d2f3ea2470d7",
+      "bytes_preserved": true
+    },
+    {
+      "path": "input/mixed.weftforge",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/input/mixed.weftforge",
+      "sha256": "5c12187aded14c962b76dba7526a68f13395c9f5a2b92f04015ea8e3eff8d82c",
+      "bytes_preserved": true
+    },
+    {
+      "path": "input/native-expected.weftforge",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/input/native-expected.weftforge",
+      "sha256": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb",
+      "bytes_preserved": true
+    },
+    {
+      "path": "input/original-restored.weftforge",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/input/original-restored.weftforge",
+      "sha256": "a240c2ae33b3d933872201817bba2f17ad4fae3fe898d2141f3ed8e0357f9a1d",
+      "bytes_preserved": true
+    },
+    {
+      "path": "input/rectangle.weftforge",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/input/rectangle.weftforge",
+      "sha256": "e404bbc181c55b91a6203b90cf10f94a78f19da615fd679732bf8ab7dc2d2f18",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/cancel-draft-visual-review.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/cancel-draft-visual-review.json",
+      "sha256": "c4df2fb054d1e2567a2bafbb5a8eab3ed40127e40b0386c9d5af5d8ebce162da",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/cancel-draft.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/cancel-draft.json",
+      "sha256": "7f413c2fffa7dbc578056043ffd6c4954e9aa26f1f2c798a8445338615d5395b",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/consumer.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/consumer.json",
+      "sha256": "75569f6f47628d08c7a248d6b475556bb310d43a7b27f2cfd1e8d2c15d2004a8",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/ezdxf-license.txt",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/ezdxf-license.txt",
+      "sha256": "db97ca426fc0d2b8124145de0f36181db73e6e713ce642d42fed2efc442edf19",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/final-cli-identity.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/final-cli-identity.json",
+      "sha256": "918ee6bbe30aa45985ee449e03675e972d075977c20cf75f3b06faecf6339f58",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/headless-pre-ui-fix/empty.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/headless-pre-ui-fix/empty.json",
+      "sha256": "848787e8f6fb32b1a0bfc5e8f7cdb23964cc873caf0d1e97975ba1138b2a3494",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/headless-pre-ui-fix/mixed-placement-resolution.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/headless-pre-ui-fix/mixed-placement-resolution.json",
+      "sha256": "fae0f763f7cc002105573030c5e638849fd76558debe709c0fe56dee42f5b676",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/headless-pre-ui-fix/mixed.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/headless-pre-ui-fix/mixed.json",
+      "sha256": "e97b5f2f4d18f7d66b932103aa406bfba0e0961281278840a43f0da5cd0a2db6",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/headless-pre-ui-fix/native-expected.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/headless-pre-ui-fix/native-expected.json",
+      "sha256": "90fa13b3c51d01aaaa6fe8d7ee4cf9cc791132cffda3bd2bfc1ab1d632df728f",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/headless-pre-ui-fix/rectangle.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/headless-pre-ui-fix/rectangle.json",
+      "sha256": "795b1c7cf6eed178c09f00c25633b3e7de8e8deaa4c48c20bf41bda3dd1e3059",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/headless-pre-ui-fix/summary.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/headless-pre-ui-fix/summary.json",
+      "sha256": "94c02e644f717dd023bf5010ace2fd4eb2608c415e981740953cb760b79a07d3",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/native-primary/native-mixed-actual-source.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/native-primary/native-mixed-actual-source.json",
+      "sha256": "a09a3feac9b0b53e4f7641ff9330d770ee7c09ffc2b7875940b8419bf5eeb403",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/native-primary/native-mixed-frozen-source.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/native-primary/native-mixed-frozen-source.json",
+      "sha256": "bbc2a8e754c1881cae421348fb265a163c62b5acfc7685ded045a77f3eb96a2b",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/native-primary/native-mixed-repeat-actual-source.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/native-primary/native-mixed-repeat-actual-source.json",
+      "sha256": "e1aa2ce3b8f05b050d44e9beb65528a960f9d072a6192062ba6f36fc5c918978",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/native-primary/snapshots.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/native-primary/snapshots.json",
+      "sha256": "79e4324ff9881d4872acbe80506be9f7e91b6f190692e2a9da04ce15fb62664e",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/native-primary/summary.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/native-primary/summary.json",
+      "sha256": "a501008ffb58e0bce50747e9d65d374f39d44e9768c4701e0861abd85226e0ae",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/pip-install.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/pip-install.json",
+      "sha256": "6856ee80a2b82ef4c2f8b92ad7b81910c2925fa39daafabcc19008eca6134311",
+      "bytes_preserved": true
+    },
+    {
+      "path": "reports/pretest.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/reports/pretest.json",
+      "sha256": "41b0c828b071a6e9574603e92f690f3e1b8a15648fd07477ec6322503e44178a",
+      "bytes_preserved": true
+    },
+    {
+      "path": "supplement-cancel-draft/CRITERIA.md",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/supplement-cancel-draft/CRITERIA.md",
+      "sha256": "ba4e96a6a6e7cc7b3f164a06cf23e86167943b163d3708907d8d80a88443d794",
+      "bytes_preserved": true
+    },
+    {
+      "path": "supplement-cancel-draft/evaluate_cancel.py",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/supplement-cancel-draft/evaluate_cancel.py",
+      "sha256": "4fc083be1aa086c38f99459457c594ff875f2a9c7b1e1ef79ae1df758c51c830",
+      "bytes_preserved": true
+    },
+    {
+      "path": "supplement-cancel-draft/expected-baseline.weftforge",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/supplement-cancel-draft/expected-baseline.weftforge",
+      "sha256": "4daae1873e1697f53ed6f029f52875a903d9b5f242294817f9b8121f13261df9",
+      "bytes_preserved": true
+    },
+    {
+      "path": "supplement-cancel-draft/expected-redone.weftforge",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/supplement-cancel-draft/expected-redone.weftforge",
+      "sha256": "4132bd6c6cb96f7155d01b4d7ba7a1efd0fd4d1acfbefa986a34269a467e0a31",
+      "bytes_preserved": true
+    },
+    {
+      "path": "supplement-cancel-draft/freeze.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/supplement-cancel-draft/freeze.json",
+      "sha256": "a93edd4e0275c752a65a6bb3d041828c580440b7314934eec7b5d301e4011d79",
+      "bytes_preserved": true
+    },
+    {
+      "path": "supplement-cancel-draft/observation-template.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/supplement-cancel-draft/observation-template.json",
+      "sha256": "c4281e887a6884786755355f7efdca70779b1ce5a91b2d1eab881ffa5febc5f7",
+      "bytes_preserved": true
+    },
+    {
+      "path": "supplement-cancel-draft/pretest.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/supplement-cancel-draft/pretest.json",
+      "sha256": "178560cc76623962e3d9a7dc9723b1f6291f6544b2b232a15a73a3de24c4af44",
+      "bytes_preserved": true
+    },
+    {
+      "path": "supplement-cancel-draft/primary-file-hashes.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/supplement-cancel-draft/primary-file-hashes.json",
+      "sha256": "6905b423b26913df398e9c3caf7d3b1749e441093ffbd82ad465b1dd8e802484",
+      "bytes_preserved": true
+    },
+    {
+      "path": "native/source-before.weftforge",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/native/source-before.weftforge",
+      "sha256": "3d2149a47fe78a5eec368dfb292c50ce3afbfe0be8d58bd32bfa2a05d44d509c",
+      "bytes_preserved": true
+    },
+    {
+      "path": "native/source-after-cancel.weftforge",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/native/source-after-cancel.weftforge",
+      "sha256": "3d2149a47fe78a5eec368dfb292c50ce3afbfe0be8d58bd32bfa2a05d44d509c",
+      "bytes_preserved": true
+    },
+    {
+      "path": "native/source-after.weftforge",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/native/source-after.weftforge",
+      "sha256": "edfb76d326c63a82550bb8f6907a107b4eee4307666ce119ebf08a2624d3902f",
+      "bytes_preserved": true
+    },
+    {
+      "path": "native/source-after-repeat.weftforge",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/native/source-after-repeat.weftforge",
+      "sha256": "edfb76d326c63a82550bb8f6907a107b4eee4307666ce119ebf08a2624d3902f",
+      "bytes_preserved": true
+    },
+    {
+      "path": "native/reopened.weftforge",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/native/reopened.weftforge",
+      "sha256": "edfb76d326c63a82550bb8f6907a107b4eee4307666ce119ebf08a2624d3902f",
+      "bytes_preserved": true
+    },
+    {
+      "path": "native/native-mixed.dxf",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/native/native-mixed.dxf",
+      "sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "bytes_preserved": true
+    },
+    {
+      "path": "native/native-mixed-repeat.dxf",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/native/native-mixed-repeat.dxf",
+      "sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "bytes_preserved": true
+    },
+    {
+      "path": "native/native-cancel-sentinel.dxf",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/native/native-cancel-sentinel.dxf",
+      "sha256": "a31bb56a44c5f0ef9b46ad91614a019cbf3b75d0c26b9f06153f19c9254cb942",
+      "bytes_preserved": true
+    },
+    {
+      "path": "native/cancel-draft-baseline.weftforge",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/native/cancel-draft-baseline.weftforge",
+      "sha256": "82845ea75ab052839a1edf878662759f0e496f6c909183ac407d23fc6c9abd23",
+      "bytes_preserved": true
+    },
+    {
+      "path": "native/cancel-draft-redone.weftforge",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/native/cancel-draft-redone.weftforge",
+      "sha256": "dd59234802b5dea8e3e1463763aef810697842b55c9290b77b8a9409fcf0e13a",
+      "bytes_preserved": true
+    },
+    {
+      "path": "native/cancel-draft-observations.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/native/cancel-draft-observations.json",
+      "sha256": "b0bd6a25e86af24f3494b861967ee9864ef384c2843d3c94a0269a5171ceda19",
+      "bytes_preserved": true
+    },
+    {
+      "path": "native/cancel-draft-action-log.json",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/native/cancel-draft-action-log.json",
+      "sha256": "c25e03f7c4fed9fc3ea6a303c525285cc287186d9f72adbd3b915023f1fd017d",
+      "bytes_preserved": true
+    },
+    {
+      "path": "native/source-after-cancel.weftforge.autosave",
+      "private_source_relative_to_workspace": ".local/dxf-acceptance-20261114/native/source-after-cancel.weftforge.autosave",
+      "sha256": "edfb76d326c63a82550bb8f6907a107b4eee4307666ce119ebf08a2624d3902f",
+      "bytes_preserved": true
+    },
+    {
+      "path": "headless/pre-ui-fix/mixed.dxf",
+      "private_source_relative_to_workspace": ".local/dxf-producer-20261114/pre-ui-fix/mixed.dxf",
+      "sha256": "722a2bf5b239d704d8aac21e0f3325c163830af39ce3d8c27ed8405a1b380d4d",
+      "bytes_preserved": true
+    },
+    {
+      "path": "headless/pre-ui-fix/mixed-repeat.dxf",
+      "private_source_relative_to_workspace": ".local/dxf-producer-20261114/pre-ui-fix/mixed-repeat.dxf",
+      "sha256": "722a2bf5b239d704d8aac21e0f3325c163830af39ce3d8c27ed8405a1b380d4d",
+      "bytes_preserved": true
+    },
+    {
+      "path": "headless/pre-ui-fix/mixed-placement-resolution.dxf",
+      "private_source_relative_to_workspace": ".local/dxf-producer-20261114/pre-ui-fix/mixed-placement-resolution.dxf",
+      "sha256": "722a2bf5b239d704d8aac21e0f3325c163830af39ce3d8c27ed8405a1b380d4d",
+      "bytes_preserved": true
+    },
+    {
+      "path": "headless/pre-ui-fix/rectangle.dxf",
+      "private_source_relative_to_workspace": ".local/dxf-producer-20261114/pre-ui-fix/rectangle.dxf",
+      "sha256": "a7a5627fc30151cf01e73bd0c80e2bcd8c55c85058cf9e3e695af9868d6bd7fd",
+      "bytes_preserved": true
+    },
+    {
+      "path": "headless/pre-ui-fix/empty.dxf",
+      "private_source_relative_to_workspace": ".local/dxf-producer-20261114/pre-ui-fix/empty.dxf",
+      "sha256": "f9553444fbcc81b936b903fa44941dc656b191e12e856fbab373ce6feb8b9924",
+      "bytes_preserved": true
+    },
+    {
+      "path": "headless/pre-ui-fix/native-expected.dxf",
+      "private_source_relative_to_workspace": ".local/dxf-producer-20261114/pre-ui-fix/native-expected.dxf",
+      "sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "bytes_preserved": true
+    },
+    {
+      "path": "headless/pre-ui-fix/producer-plan.json",
+      "private_source_relative_to_workspace": ".local/dxf-producer-20261114/pre-ui-fix/producer-plan.json",
+      "sha256": "17264e7348b98b17552dd9dd71fab09ee109ff74a0ee30a53b46fa5a82878652",
+      "bytes_preserved": true
+    },
+    {
+      "path": "headless/final/producer-plan.json",
+      "private_source_relative_to_workspace": ".local/dxf-producer-20261114/final/producer-plan.json",
+      "sha256": "7320533bbecd7079d00032906fc6878202e4d506bac474f4f134fbb12031d11f",
+      "bytes_preserved": true
+    },
+    {
+      "path": "headless/final/from-native-snapshot.dxf",
+      "private_source_relative_to_workspace": ".local/dxf-producer-20261114/final/from-native-snapshot.dxf",
+      "sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "bytes_preserved": true
+    }
+  ],
+  "path_only_public_derivatives": [
+    {
+      "path": "headless/pre-ui-fix/producer-results.public.json",
+      "private_source_relative_to_workspace": ".local/dxf-producer-20261114/pre-ui-fix/producer-results.json",
+      "private_original_sha256": "e0ebb955c6b42a21c79ec9a48abc086f23efc98b4521eab03a6c3af09288f420",
+      "public_copy_sha256": "afda9d6bfeff774043ef4fd2c609e4eb24df97af2d8ba928d7cef39665990e2f",
+      "operation": "Replace only repository workspace absolute prefix with literal ${WORKSPACE}; source/original retained privately. No geometry/source/evaluator bytes transformed."
+    },
+    {
+      "path": "headless/pre-ui-fix/oracle-run-results.public.json",
+      "private_source_relative_to_workspace": ".local/dxf-producer-20261114/pre-ui-fix/oracle-run-results.json",
+      "private_original_sha256": "2fce69176e757f29fb4f2b35e40f68295f79144f7e084c50dac65712638ed9df",
+      "public_copy_sha256": "9dd8310a78944fbe3ea8069fbc1724f8e22bfe6f017ae73d582eb3dd80000692",
+      "operation": "Replace only repository workspace absolute prefix with literal ${WORKSPACE}; source/original retained privately. No geometry/source/evaluator bytes transformed."
+    },
+    {
+      "path": "headless/pre-ui-fix/oracle-run-results-venv.public.json",
+      "private_source_relative_to_workspace": ".local/dxf-producer-20261114/pre-ui-fix/oracle-run-results-venv.json",
+      "private_original_sha256": "fbf2ba137813802ef138042db9ff01906fcdb3beb486ff98e4e9588c7e620988",
+      "public_copy_sha256": "0f6349b573f2b8fc63064d88a9a951491a7c37b254de923066bfc742e3cf180e",
+      "operation": "Replace only repository workspace absolute prefix with literal ${WORKSPACE}; source/original retained privately. No geometry/source/evaluator bytes transformed."
+    },
+    {
+      "path": "headless/final/producer-result.public.json",
+      "private_source_relative_to_workspace": ".local/dxf-producer-20261114/final/producer-result.json",
+      "private_original_sha256": "45d5653eb450df8957fc58bdac664d9bc6b1405157d974a275ef91d81921232f",
+      "public_copy_sha256": "b4ea6f5141b86d1aef15ad36677b13b91de0c61e0ea1334582f98b7406b53c12",
+      "operation": "Replace only repository workspace absolute prefix with literal ${WORKSPACE}; source/original retained privately. No geometry/source/evaluator bytes transformed."
+    }
+  ],
+  "external_capture_dependency": {
+    "path": "captures/dxf-pending-cancel-20261114T135220Z.png",
+    "sha256": "7968db1c1df076df4c50ca3cee3d12c90430eb0db0653520ed983980b502eded",
+    "status": "Original visually reviewed. Root agent must place same bytes at this relative path during final merge; excluded from oracle-only selection by explicit file ownership."
+  },
+  "autosave_alias": {
+    "path": "native/source-after-cancel.weftforge.autosave",
+    "sha256": "edfb76d326c63a82550bb8f6907a107b4eee4307666ce119ebf08a2624d3902f",
+    "same_bytes_as": "native/source-after.weftforge",
+    "reason": "Original primary summary includes this observed public-source JSON artifact. Included identically; track explicitly despite ignore rule. No other volatile scratch files selected."
+  },
+  "excluded": "No candidate binaries, venv, wheels, SDK subset, raw capture helpers/context/inventory or capture images copied into this oracle-only selection."
+}

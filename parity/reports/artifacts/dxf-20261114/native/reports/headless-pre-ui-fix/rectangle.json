@@ -1,0 +1,146 @@
+{
+  "source_file": "rectangle.weftforge",
+  "source_sha256": "e404bbc181c55b91a6203b90cf10f94a78f19da615fd679732bf8ab7dc2d2f18",
+  "source_revision": 20,
+  "dxf_file": "rectangle.dxf",
+  "dxf_sha256": "a7a5627fc30151cf01e73bd0c80e2bcd8c55c85058cf9e3e695af9868d6bd7fd",
+  "dxf_size_bytes": 3516,
+  "consumer": {
+    "name": "ezdxf",
+    "version": "1.4.5",
+    "read_method": "ezdxf.readfile(original_path)",
+    "recover_used": false,
+    "save_or_rewrite_used": false
+  },
+  "raw_errors": [],
+  "raw_details": {
+    "sections": [
+      "HEADER",
+      "CLASSES",
+      "TABLES",
+      "BLOCKS",
+      "ENTITIES",
+      "OBJECTS"
+    ],
+    "comments": [
+      "WeftForge FILE-005-v1: pattern boundaries in millimetres",
+      "Source document revision: 20",
+      "UV->XY; positive V->positive Y; Z=0; boundary-only"
+    ],
+    "raw_entity_types": [
+      "LINE",
+      "LINE",
+      "LINE",
+      "LINE"
+    ],
+    "expected_curves": [
+      {
+        "kind": "LINE",
+        "piece": 11,
+        "curve": 16,
+        "layer": "WF_PIECE_11",
+        "points": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            125.0,
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "kind": "LINE",
+        "piece": 11,
+        "curve": 17,
+        "layer": "WF_PIECE_11",
+        "points": [
+          [
+            125.0,
+            0.0,
+            0.0
+          ],
+          [
+            125.0,
+            250.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "kind": "LINE",
+        "piece": 11,
+        "curve": 18,
+        "layer": "WF_PIECE_11",
+        "points": [
+          [
+            125.0,
+            250.0,
+            0.0
+          ],
+          [
+            0.0,
+            250.0,
+            0.0
+          ]
+        ]
+      },
+      {
+        "kind": "LINE",
+        "piece": 11,
+        "curve": 19,
+        "layer": "WF_PIECE_11",
+        "points": [
+          [
+            0.0,
+            250.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    ],
+    "known_rectangle_mm": [
+      125.0,
+      250.0
+    ],
+    "handle_count": 32,
+    "max_handle": "20",
+    "handseed": "21"
+  },
+  "consumer_errors": [],
+  "audit_errors": [],
+  "audit_fixes": [],
+  "consumer_details": {
+    "max_bspline_sample_error_mm": 0.0,
+    "splines": [],
+    "modelspace_count": 4,
+    "modelspace_types": [
+      "LINE",
+      "LINE",
+      "LINE",
+      "LINE"
+    ]
+  },
+  "original_bytes_preserved": true,
+  "accepted": true,
+  "evaluator_sha256": "6756739bebef6f0753ad0bb86eed3ed0116b8d6d1dfaecf548b368c44a959ed6",
+  "contract": "FILE-005-v1",
+  "sample_t": [
+    0,
+    0.125,
+    0.25,
+    0.5,
+    0.75,
+    0.875,
+    1
+  ],
+  "sample_tolerance_mm": 1e-08
+}

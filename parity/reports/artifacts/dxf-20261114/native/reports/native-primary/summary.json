@@ -1,0 +1,66 @@
+{
+  "contract": "FILE-005-v1",
+  "oracle_unchanged": true,
+  "candidate_binding_sha256": "ded5f27d1cb5df0dbb3c007f2dbdf5936dc1f2d6babbac256eda61d1cdbd2bf4",
+  "results": [
+    {
+      "report": "reports/native-primary/snapshots.json",
+      "accepted": true,
+      "source_revision": null,
+      "dxf_sha256": null,
+      "raw_errors": [],
+      "consumer_errors": [],
+      "audit_errors": [],
+      "audit_fixes": [],
+      "max_sample_error_mm": null
+    },
+    {
+      "report": "reports/native-primary/native-mixed-actual-source.json",
+      "accepted": true,
+      "source_revision": 21,
+      "dxf_sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "raw_errors": [],
+      "consumer_errors": [],
+      "audit_errors": [],
+      "audit_fixes": [],
+      "max_sample_error_mm": 5.684341886080802e-14
+    },
+    {
+      "report": "reports/native-primary/native-mixed-repeat-actual-source.json",
+      "accepted": true,
+      "source_revision": 21,
+      "dxf_sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "raw_errors": [],
+      "consumer_errors": [],
+      "audit_errors": [],
+      "audit_fixes": [],
+      "max_sample_error_mm": 5.684341886080802e-14
+    },
+    {
+      "report": "reports/native-primary/native-mixed-frozen-source.json",
+      "accepted": true,
+      "source_revision": 21,
+      "dxf_sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "raw_errors": [],
+      "consumer_errors": [],
+      "audit_errors": [],
+      "audit_fixes": [],
+      "max_sample_error_mm": 5.684341886080802e-14
+    }
+  ],
+  "original_native_files_sha256": {
+    "source-after-cancel.weftforge": "3d2149a47fe78a5eec368dfb292c50ce3afbfe0be8d58bd32bfa2a05d44d509c",
+    "native-cancel-sentinel.dxf": "a31bb56a44c5f0ef9b46ad91614a019cbf3b75d0c26b9f06153f19c9254cb942",
+    "source-after-cancel.weftforge.autosave": "edfb76d326c63a82550bb8f6907a107b4eee4307666ce119ebf08a2624d3902f",
+    "native-mixed.dxf": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+    "source-after-repeat.weftforge": "edfb76d326c63a82550bb8f6907a107b4eee4307666ce119ebf08a2624d3902f",
+    "source-before.weftforge": "3d2149a47fe78a5eec368dfb292c50ce3afbfe0be8d58bd32bfa2a05d44d509c",
+    "reopened.weftforge": "edfb76d326c63a82550bb8f6907a107b4eee4307666ce119ebf08a2624d3902f",
+    "native-mixed-repeat.dxf": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+    "source-after.weftforge": "edfb76d326c63a82550bb8f6907a107b4eee4307666ce119ebf08a2624d3902f"
+  },
+  "all_original_files_preserved": true,
+  "native_exports_byte_identical_to_headless_revision21": true,
+  "UI_actions": "Producer-observed; original action log separate. This oracle reviews saved artifacts, not hidden UI history.",
+  "pending_cancel_case": "Original primary Cancel had no pending field draft; supplemental case declared separately before further UI."
+}

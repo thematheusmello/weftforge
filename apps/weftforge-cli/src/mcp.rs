@@ -373,6 +373,7 @@ fn call(line: &[u8]) -> Result<Value, String> {
             | "project_execute"
             | "project_export_svg"
             | "project_export_obj"
+            | "project_export_dxf"
     ) {
         return Err(format!("Unknown tool: {}", header.name));
     }
@@ -420,20 +421,32 @@ fn call(line: &[u8]) -> Result<Value, String> {
                     json!({"input":args.input,"output":args.output,"revision":editor.project.revision,"commands_applied":count}),
                 )
             }
-            "project_export_svg" | "project_export_obj" => {
+            "project_export_svg" | "project_export_obj" | "project_export_dxf" => {
                 let args: FileArgs = arguments(line)?;
                 super::distinct(&args.input, &args.output)?;
                 let project = Project::load(Path::new(&args.input))?;
-                let svg = header.name == "project_export_svg";
-                if svg {
-                    project.export_svg(Path::new(&args.output))?;
-                } else {
-                    project.mesh()?.export_obj(Path::new(&args.output))?;
+                let (kind, unit, up) = match header.name.as_str() {
+                    "project_export_svg" => {
+                        project.export_svg(Path::new(&args.output))?;
+                        ("authored_svg", "mm", "pattern V up; SVG Y inverted")
+                    }
+                    "project_export_dxf" => {
+                        project.export_dxf(Path::new(&args.output))?;
+                        ("authored_dxf", "mm", "pattern U = +X, V = +Y; Z = 0")
+                    }
+                    _ => {
+                        project.mesh()?.export_obj(Path::new(&args.output))?;
+                        ("rest_obj", "m", "Y")
+                    }
+                };
+                let mut result = json!({"input":args.input,"output":args.output,"source_revision":project.revision,
+                    "kind":kind,"length_unit":unit,"up":up});
+                if header.name == "project_export_dxf" {
+                    result["scope"] = json!(
+                        "Exterior pattern boundaries only; sewing, materials, grain and 3D placements require the native project."
+                    );
                 }
-                Ok(
-                    json!({"input":args.input,"output":args.output,"source_revision":project.revision,
-                    "kind":if svg {"authored_svg"} else {"rest_obj"},"length_unit":if svg {"mm"} else {"m"},"up":if svg {"pattern V up; SVG Y inverted"} else {"Y"}}),
-                )
+                Ok(result)
             }
             _ => unreachable!("tool name was checked above"),
         }
@@ -589,6 +602,7 @@ fn tools() -> Vec<Value> {
         ("project_create", "Save an empty native project to a new path. Existing files are refused.", object(json!({"output":path}), &["output"]), false),
         ("project_execute", "Load input, execute 1–1024 shared typed commands atomically as one document revision, then save output with native atomic/recovery handling. Input and output may be the same native file. Inspect stable IDs before edits; nested transactions are rejected.", object(json!({"input":path,"output":path,"commands":{"type":"array","minItems":1,"maxItems":MAX_COMMANDS,"items":command_schema()}}), &["input","output","commands"]), false),
         ("project_export_svg", "Export authored pattern curves at physical millimetre scale. Refuse replacement of the source or native project destinations.", files.clone(), false),
-        ("project_export_obj", "Build and export a rest mesh in metres, Y-up, with source revision; no simulation. Refuse replacement of the source or native project destinations.", files, false),
+        ("project_export_obj", "Build and export a rest mesh in metres, Y-up, with source revision; no simulation. Refuse replacement of the source or native project destinations.", files.clone(), false),
+        ("project_export_dxf", "Export authored exterior pattern boundaries as R2000 DXF LINE/SPLINE geometry in millimetres, without 3D placement. Sewing, materials and grain require the native project. Refuse replacement of source or native project destinations.", files, false),
     ].into_iter().map(|(name,description,input,read_only)|json!({"name":name,"description":description,"inputSchema":input,"annotations":{"readOnlyHint":read_only,"destructiveHint":!read_only,"openWorldHint":false}})).collect()
 }

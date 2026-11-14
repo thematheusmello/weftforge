@@ -1,0 +1,53 @@
+{
+  "id": "UI-NATIVE-DXF-PENDING-CANCEL-capture-derivations",
+  "created_at_utc": "2026-11-14T13:53:47.700496+00:00",
+  "private_raw_retention": "Complete originals remain private. Original filenames below are relative to the private capture collection.",
+  "path_redaction": "Only exact workspace executable prefixes are replaced with <workspace>; the absolute workspace prefix is not reproduced.",
+  "artifacts": [
+    {
+      "public_file": "dxf-pending-cancel.png",
+      "public_sha256": "7968db1c1df076df4c50ca3cee3d12c90430eb0db0653520ed983980b502eded",
+      "originals": [
+        {
+          "file": "dxf-pending-cancel-20261114T135220Z.png",
+          "sha256": "7968db1c1df076df4c50ca3cee3d12c90430eb0db0653520ed983980b502eded"
+        }
+      ],
+      "derivation": "Byte-identical copy; no image or metadata transformation."
+    },
+    {
+      "public_file": "dxf-pending-cancel.ax.json",
+      "public_sha256": "a81f8e41c6ef3c0486b8782641e1b53fade83551f76739c76665bb9eedda717c",
+      "originals": [
+        {
+          "file": "dxf-pending-cancel-20261114T135220Z.ax.json",
+          "sha256": "58c2daea2371a6d953356d98c79412d2ea9b2c78cde0b78bf3fe091e462ac2db"
+        }
+      ],
+      "derivation": "Replace only the exact workspace prefix in the executable field with <workspace>; every other byte, node, value, AX path and gap flag is preserved."
+    },
+    {
+      "public_file": "reviewed-summary.json",
+      "public_sha256": "6f1623958b9a81a610bc89a553d7cd9b135d2d6e5e7c30b156fa115a18d51acc",
+      "originals": [
+        {
+          "file": "dxf-pending-cancel-20261114T135220Z.json",
+          "sha256": "c4d91c0c97587be3084becee05f3ca77e157658c18cd95b3ca2b0955e1ef7608"
+        },
+        {
+          "file": "dxf-pending-cancel-20261114T135220Z.context.json",
+          "sha256": "e73a5eac23a67caca15cb7b4711eaa7aa90ca266dbc9a8f32751995da42b769a"
+        },
+        {
+          "file": "dxf-pending-cancel-20261114T135220Z.inventory-before.json",
+          "sha256": "c35656ebf3762fa9f9d12dee5cfc72aa03473bc13d2e74cccda9f26926c04ce1"
+        },
+        {
+          "file": "dxf-pending-cancel-20261114T135220Z.inventory-after.json",
+          "sha256": "21d825968538fa5546b535db60cc8fbe5cfa6d788d9d6941bf314f23cd99498e"
+        }
+      ],
+      "derivation": "Review/select target identity, status and coverage facts; retain source hashes; replace exact workspace prefix in selected executable paths with <workspace>; omit raw base64, process command strings and unrelated inventory."
+    }
+  ]
+}

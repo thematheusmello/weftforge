@@ -1,0 +1,59 @@
+{
+  "source_file": "empty.weftforge",
+  "source_sha256": "864bd308bff8cb3d461bdd91f7f5bdef1e4de34692f2fdeaabf1ec74181358c5",
+  "source_revision": 20,
+  "dxf_file": "empty.dxf",
+  "dxf_sha256": "f9553444fbcc81b936b903fa44941dc656b191e12e856fbab373ce6feb8b9924",
+  "dxf_size_bytes": 2921,
+  "consumer": {
+    "name": "ezdxf",
+    "version": "1.4.5",
+    "read_method": "ezdxf.readfile(original_path)",
+    "recover_used": false,
+    "save_or_rewrite_used": false
+  },
+  "raw_errors": [],
+  "raw_details": {
+    "sections": [
+      "HEADER",
+      "CLASSES",
+      "TABLES",
+      "BLOCKS",
+      "ENTITIES",
+      "OBJECTS"
+    ],
+    "comments": [
+      "WeftForge FILE-005-v1: pattern boundaries in millimetres",
+      "Source document revision: 20",
+      "UV->XY; positive V->positive Y; Z=0; boundary-only"
+    ],
+    "raw_entity_types": [],
+    "expected_curves": [],
+    "handle_count": 27,
+    "max_handle": "1B",
+    "handseed": "1C"
+  },
+  "consumer_errors": [],
+  "audit_errors": [],
+  "audit_fixes": [],
+  "consumer_details": {
+    "max_bspline_sample_error_mm": 0.0,
+    "splines": [],
+    "modelspace_count": 0,
+    "modelspace_types": []
+  },
+  "original_bytes_preserved": true,
+  "accepted": true,
+  "evaluator_sha256": "6756739bebef6f0753ad0bb86eed3ed0116b8d6d1dfaecf548b368c44a959ed6",
+  "contract": "FILE-005-v1",
+  "sample_t": [
+    0,
+    0.125,
+    0.25,
+    0.5,
+    0.75,
+    0.875,
+    1
+  ],
+  "sample_tolerance_mm": 1e-08
+}

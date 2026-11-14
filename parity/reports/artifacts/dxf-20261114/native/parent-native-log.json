@@ -1,0 +1,135 @@
+{
+  "kind": "parent_native_observations",
+  "started_at": "2026-11-14T13:19:18.514848+00:00",
+  "source_commit": "cd151b3b89e26d55a4dcd4525790006660c4e766",
+  "native_executable_sha256": "4cdc758b057975b47fe81306d4fec2c8f598e8ea5e5d83601c6eab2baa0d199b",
+  "cli_executable_sha256": "e90ac57b9bd345ad1d844b4f3f9e684c96fa58af0f795d5f7a168ddfc3fad20f",
+  "candidate_pretest_sha256": "b9cf229507f5249fb9fa680e7c6e15189b37b04f2d496d2b7e75031602879976",
+  "binding_sha256": "ded5f27d1cb5df0dbb3c007f2dbdf5936dc1f2d6babbac256eda61d1cdbd2bf4",
+  "oracle_freeze_sha256": "20fc2dc605374c5ee9b4056c3716e18156266515db2a82bbc02f99288f7e6560",
+  "evaluator_sha256": "6756739bebef6f0753ad0bb86eed3ed0116b8d6d1dfaecf548b368c44a959ed6",
+  "gates_before_launch": {
+    "fmt": "passed",
+    "Rust_tests": 98,
+    "clippy": "passed",
+    "xtask": "passed",
+    "xtask_session": 27110,
+    "package": "passed",
+    "package_session": 90261
+  },
+  "prior_native_processes": [
+    {
+      "pid": 42700,
+      "executable": "${WORKSPACE}/.local/candidates/9d30a71bbc2b/WeftForge.app/Contents/MacOS/weftforge",
+      "executable_sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70"
+    }
+  ],
+  "candidate_native_not_running_before_launch": true,
+  "sentinel_sha256_before": "a31bb56a44c5f0ef9b46ad91614a019cbf3b75d0c26b9f06153f19c9254cb942",
+  "native_output_directory": "native/",
+  "observations": [
+    {
+      "stage": "retire_previous_build",
+      "observed": "Prior source9d app was Saved,2296vertices,rest arrangement. Cmd-Q followed by getAXState produced an empty old-source app window; kernel process check follows. This is not the new native candidate and no authoring action was taken.",
+      "prior42700_exited": true,
+      "old_source_processes_after_observation": [
+        {
+          "pid": 53649,
+          "path": "${WORKSPACE}/.local/candidates/9d30a71bbc2b/WeftForge.app/Contents/MacOS/weftforge",
+          "sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70"
+        }
+      ]
+    },
+    {
+      "recorded_at": "2026-11-14T13:21:44.078996+00:00",
+      "stage": "previous_builds_exited",
+      "original_pid": 42700,
+      "observation_reopened_old_pid": 53649,
+      "both_exited": true,
+      "method": "CUA Cmd-Q, app inventory, then authoritative ps; no post-quit getAXState on old binding."
+    },
+    {
+      "recorded_at": "2026-11-14T13:22:10.065994+00:00",
+      "stage": "candidate_launched",
+      "pid": 55249,
+      "ui": "Fresh empty project,0 pieces/0 seams/0 vertices; Export DXF toolbar button visible; rest arrangement,simulation off.",
+      "explicit_app_path": "${WORKSPACE}/.local/candidates/cd151b3b89e2/WeftForge.app",
+      "executable_hash_matches_binding": true
+    },
+    {
+      "recorded_at": "2026-11-14T13:25:37.240528+00:00",
+      "stage": "source_before_saved",
+      "actions": [
+        "Native Open selected exact frozen input/mixed.weftforge through Go-to path sheet.",
+        "Observed two Unicode/punctuation-named piece rows, both off,2 seams and1159 vertices; rest arrangement.",
+        "Adjusted only 2D scroll zoom to frame both pieces; no authoring edit.",
+        "Native Save as source-before.weftforge using explicit Go-to canonical native/ directory and verified filename."
+      ],
+      "source_revision": 20,
+      "source_resolution_m": 0.04,
+      "all_typed_fields_equal_frozen_input": true,
+      "source_sha256": "3d2149a47fe78a5eec368dfb292c50ce3afbfe0be8d58bd32bfa2a05d44d509c"
+    },
+    {
+      "recorded_at": "2026-11-14T13:26:37.180861+00:00",
+      "stage": "native_export_cancel",
+      "actions": [
+        "Clicked actual toolbar Export DXF with no pending numeric draft.",
+        "Selected canonical native/ folder and existing cancellation sentinel filename; clicked native Cancel without Save/Replace.",
+        "Observed Export cancelled; pending edits retained.1159 vertices.",
+        "Saved source-after-cancel.weftforge."
+      ],
+      "before_after_native_project_bytes_equal": true,
+      "sentinel_sha256_unchanged": "a31bb56a44c5f0ef9b46ad91614a019cbf3b75d0c26b9f06153f19c9254cb942"
+    },
+    {
+      "recorded_at": "2026-11-14T13:28:03.728342+00:00",
+      "stage": "pending_resolution_native_export",
+      "actions": [
+        "Single-clicked screenshot-grounded Mesh edge field at[28,675]; CUA selected0.04.",
+        "Atomic paste0.045. CUA exposed focused stepper0.045,1159 vertices and no Unsaved marker; no Tab.",
+        "Clicked actual toolbar Export DXF. Chose native-mixed.dxf in canonical native/ folder, then native Save.",
+        "Observed907 vertices and Unsaved after return; the initial export status was superseded by asynchronous rest-mesh completion before the helper observed it.",
+        "Native Save as source-after.weftforge; Saved editable project atomically."
+      ],
+      "revision": 21,
+      "resolution_m": 0.045,
+      "all_fields_equal_predeclared_after": true,
+      "native_dxf_sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "native_dxf_bytes_equal_accepted_cli_and_sdk": true
+    },
+    {
+      "recorded_at": "2026-11-14T13:35:27.404218+00:00",
+      "stage": "command_search_repeat_and_quit",
+      "actions": [
+        "Opened actual Command search from toolbar. AX click of query did not expose focus; screenshot-grounded click[143,99] plus atomic pasteDXF focused query and filtered to one command.",
+        "Clicked Export DXF inside the filtered Command search container, not the toolbar; native Save as native-mixed-repeat.dxf.",
+        "Observed persistent Exported DXF pattern boundaries in millimetres; sewing and materials stay in .weftforge.907 vertices.",
+        "Paused input for passive REA capture on actual PID55249/window61897; no source/edit change.",
+        "Native Save as source-after-repeat.weftforge, then Cmd-Q. App inventory is transient; ps confirmed PID55249 exited. No post-quit getAXState was called."
+      ],
+      "repeated_dxf_bytes_equal": true,
+      "after_repeat_project_bytes_equal": true,
+      "snapshot_revision": 21
+    },
+    {
+      "recorded_at": "2026-11-14T13:37:28.978247+00:00",
+      "stage": "real_process_reopen",
+      "actions": [
+        "Fresh explicit same-package CUA binding launched empty application after authoritative exit of PID55249.",
+        "Native Open selected source-after.weftforge through full-path Go-to sheet.907vertices,resolution0.045,rest arrangement.",
+        "Native Save as reopened.weftforge; observed Saved editable project atomically."
+      ],
+      "new_pid": 65069,
+      "same_executable_sha256": "4cdc758b057975b47fe81306d4fec2c8f598e8ea5e5d83601c6eab2baa0d199b",
+      "reopened_bytes_equal_after_and_repeat": true,
+      "reopened_sha256": "edfb76d326c63a82550bb8f6907a107b4eee4307666ce119ebf08a2624d3902f",
+      "final_state": "Saved,2 pieces/2seams/907vertices,no selection,simulation off,no modal."
+    }
+  ],
+  "first_candidate_pid": 55249,
+  "first_candidate_exited": true,
+  "reopened_candidate_pid": 65069,
+  "native_sequence_complete": true,
+  "all34_source_hashes_still_match": true
+}

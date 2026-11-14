@@ -1,0 +1,42 @@
+[
+  {
+    "case": "mixed",
+    "exit_code": 0,
+    "stdout": "{\"kind\":\"authored_dxf\",\"length_unit\":\"mm\",\"output\":\"${WORKSPACE}/.local/dxf-producer-20261114/pre-ui-fix/mixed.dxf\",\"scope\":\"Exterior pattern boundaries only; sewing, materials, grain and 3D placements require the native project.\",\"source_revision\":20}\n",
+    "stderr": "",
+    "output_sha256": "722a2bf5b239d704d8aac21e0f3325c163830af39ce3d8c27ed8405a1b380d4d",
+    "input_sha256_after": "5c12187aded14c962b76dba7526a68f13395c9f5a2b92f04015ea8e3eff8d82c"
+  },
+  {
+    "case": "mixed-placement-resolution",
+    "exit_code": 0,
+    "stdout": "{\"kind\":\"authored_dxf\",\"length_unit\":\"mm\",\"output\":\"${WORKSPACE}/.local/dxf-producer-20261114/pre-ui-fix/mixed-placement-resolution.dxf\",\"scope\":\"Exterior pattern boundaries only; sewing, materials, grain and 3D placements require the native project.\",\"source_revision\":20}\n",
+    "stderr": "",
+    "output_sha256": "722a2bf5b239d704d8aac21e0f3325c163830af39ce3d8c27ed8405a1b380d4d",
+    "input_sha256_after": "6f28c49cd943c418d3334abc1f6e1a111e8030d2f49ed10bda50d2f3ea2470d7"
+  },
+  {
+    "case": "rectangle",
+    "exit_code": 0,
+    "stdout": "{\"kind\":\"authored_dxf\",\"length_unit\":\"mm\",\"output\":\"${WORKSPACE}/.local/dxf-producer-20261114/pre-ui-fix/rectangle.dxf\",\"scope\":\"Exterior pattern boundaries only; sewing, materials, grain and 3D placements require the native project.\",\"source_revision\":20}\n",
+    "stderr": "",
+    "output_sha256": "a7a5627fc30151cf01e73bd0c80e2bcd8c55c85058cf9e3e695af9868d6bd7fd",
+    "input_sha256_after": "e404bbc181c55b91a6203b90cf10f94a78f19da615fd679732bf8ab7dc2d2f18"
+  },
+  {
+    "case": "empty",
+    "exit_code": 0,
+    "stdout": "{\"kind\":\"authored_dxf\",\"length_unit\":\"mm\",\"output\":\"${WORKSPACE}/.local/dxf-producer-20261114/pre-ui-fix/empty.dxf\",\"scope\":\"Exterior pattern boundaries only; sewing, materials, grain and 3D placements require the native project.\",\"source_revision\":20}\n",
+    "stderr": "",
+    "output_sha256": "f9553444fbcc81b936b903fa44941dc656b191e12e856fbab373ce6feb8b9924",
+    "input_sha256_after": "864bd308bff8cb3d461bdd91f7f5bdef1e4de34692f2fdeaabf1ec74181358c5"
+  },
+  {
+    "case": "native-expected",
+    "exit_code": 0,
+    "stdout": "{\"kind\":\"authored_dxf\",\"length_unit\":\"mm\",\"output\":\"${WORKSPACE}/.local/dxf-producer-20261114/pre-ui-fix/native-expected.dxf\",\"scope\":\"Exterior pattern boundaries only; sewing, materials, grain and 3D placements require the native project.\",\"source_revision\":21}\n",
+    "stderr": "",
+    "output_sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+    "input_sha256_after": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb"
+  }
+]

@@ -392,3 +392,27 @@ zero-gravity assembly protocol and relaxed design provide one bounded successful
 case, while these failures remain evidence requiring investigation. Refinement
 of the accepted relaxed protocol, calibrated fabrics, persistent realistic
 layered outfits and general garment robustness remain open.
+
+## Bounded weak-warp refinement, 2026-11-14
+
+The [retained refinement analysis](../parity/reports/WF-20261114-PHYSICS-REFINEMENT-001.json)
+uses historical source `16e680ad` and the unchanged original grain-shirt fixture.
+It reproduces the 26.9303% strain failure at three simulated seconds. The peak is
+extension along the 50 N/m warp near arm/neck contact. Strain already reaches
+25.9692% after the first second of zero-gravity assembly, so gravitational settling
+alone cannot explain the result.
+
+Three continuations start from the same three-second positions and velocities.
+At four seconds, 8 substeps/32 iterations gives 26.7718% maximum axis strain;
+8/64 gives 26.6893%, and 16/32 gives 26.2492%. All remain above the unchanged 15%
+screen. The refined continuations reduce seam residual from about 5.5 micrometres
+to about 10 nanometres, while moving nodes up to 2.11/3.90 mm relative to the
+same-time control. Smaller seam error therefore does not establish a well-fitted
+or converged garment.
+
+The numerical sensitivity triggers were declared separately from fitting limits.
+No material, fixture, solver, tolerance or default was changed to obtain these
+results. The experiment refines continuation only; static force balance, the full
+assembly path, mesh convergence, calibrated fabric behavior and reference
+comparison remain unmeasured. Issue 16 stays failed. The exact API driver, inputs,
+stored states and read-only verification recipe are retained with the report.

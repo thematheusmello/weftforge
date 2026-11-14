@@ -1,0 +1,15 @@
+{
+  "phase": "publication saved-output replay; not the live SDK run",
+  "attempt": 1,
+  "exit_code": 1,
+  "server_calls": 0,
+  "command": "python3 -B - <<'PY'\nfrom pathlib import Path\nreadme = Path('README.md').read_text()\nblock = readme.split(\"python3 -B - <<'PY'\\n\", 1)[1].split('\\nPY\\n', 1)[0]\nexec(compile(block, 'README.md saved-output replay', 'exec'))\nPY",
+  "working_directory": "${WORKSPACE}/.local/dxf-sdk-20261114/publish",
+  "stderr": "Traceback (most recent call last):\n  File \"<stdin>\", line 4, in <module>\n  File \"README.md saved-output replay\", line 8, in <module>\nAssertionError: publish-manifest.json\n",
+  "cause": "Manifest was opened before inventory, so its file inventory incorrectly included its own then-empty bytes.",
+  "retained_failed_manifest": "failed-publication-manifest.json",
+  "failed_manifest_sha256": "bff2ee3731487a391d38d60117416c61670ab8f32a519575f7e6c8ee00b0c80e",
+  "private_complete_attempt_snapshot_relative_to_workspace": ".local/dxf-sdk-20261114/publication-attempt-01/",
+  "correction": "Inventory files before opening the new manifest and exclude the manifest filename explicitly. The original self-exclusion criterion is unchanged.",
+  "live_sdk_smoke_unchanged": true
+}

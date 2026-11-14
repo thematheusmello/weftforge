@@ -1,0 +1,173 @@
+{
+  "title": "Bounded weak-warp garment refinement analysis",
+  "kind": "implementation_only_historical_diagnostic",
+  "source_commit": "16e680ad774119e1ce3609b7d6c42c317f8677ef",
+  "fixture": "fixtures/grain-shirt.weftforge",
+  "fixture_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "overall_fit_status": "FAILED",
+  "criteria_unchanged": {
+    "finite": true,
+    "assembly_remaining_m": 0,
+    "max_material_axis_strain_below": 0.15,
+    "max_seam_gap_below_m": 0.005,
+    "max_supported_contact_penetration_below_m": 0.002
+  },
+  "independent_sensitivity_triggers_not_fit_criteria": {
+    "absolute_strain_difference_vs_same_time_control_above": 0.005,
+    "max_nodal_displacement_vs_same_time_control_above_m": 0.001
+  },
+  "cases": [
+    {
+      "phase": "baseline_assembly_8x32",
+      "status": "FAILED",
+      "simulation_time_s": 1.0000000000000013,
+      "max_material_axis_strain": 0.2596921305615896,
+      "max_seam_gap_m": 5.5659824307055875e-06,
+      "max_supported_contact_penetration_m": 0.0,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.2596921305615896,
+        "absolute_strain": 0.2596921305615896
+      }
+    },
+    {
+      "phase": "baseline_drape_8x32",
+      "status": "FAILED",
+      "simulation_time_s": 2.9999999999999942,
+      "max_material_axis_strain": 0.26930346146570994,
+      "max_seam_gap_m": 5.54878287996357e-06,
+      "max_supported_contact_penetration_m": 0.0,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.2693034614657097,
+        "absolute_strain": 0.2693034614657097
+      }
+    },
+    {
+      "phase": "continuation_8x32",
+      "status": "FAILED",
+      "simulation_time_s": 3.9999999999999907,
+      "max_material_axis_strain": 0.2677182817333772,
+      "max_seam_gap_m": 5.498606116110485e-06,
+      "max_supported_contact_penetration_m": 0.0,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.2677182817333774,
+        "absolute_strain": 0.2677182817333774
+      }
+    },
+    {
+      "phase": "iteration_8x64",
+      "status": "FAILED",
+      "simulation_time_s": 3.9999999999999907,
+      "max_material_axis_strain": 0.26689260199894527,
+      "max_seam_gap_m": 1.0163211126123291e-08,
+      "max_supported_contact_penetration_m": 0.0,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.26689260199894504,
+        "absolute_strain": 0.26689260199894504
+      }
+    },
+    {
+      "phase": "substep_16x32",
+      "status": "FAILED",
+      "simulation_time_s": 3.9999999999999907,
+      "max_material_axis_strain": 0.26249175457553875,
+      "max_seam_gap_m": 9.67209752660444e-09,
+      "max_supported_contact_penetration_m": 9.71445146547012e-17,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.26249175457553875,
+        "absolute_strain": 0.26249175457553875
+      }
+    }
+  ],
+  "comparison_to_t4_control": {
+    "continuation_8x32": {
+      "strain_difference_from_t4_control": 0.0,
+      "nodal_difference_from_t4_control": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": false
+    },
+    "iteration_8x64": {
+      "strain_difference_from_t4_control": -0.0008256797344319278,
+      "nodal_difference_from_t4_control": {
+        "max_m": 0.0021115426407618157,
+        "mass_weighted_rms_m": 0.000665927440030127
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    "substep_16x32": {
+      "strain_difference_from_t4_control": -0.005226527157838445,
+      "nodal_difference_from_t4_control": {
+        "max_m": 0.0038958967898920964,
+        "mass_weighted_rms_m": 0.0017153088101014848
+      },
+      "strain_sensitivity_exceeded": true,
+      "displacement_sensitivity_exceeded": true
+    }
+  },
+  "interpretation": "Continuation and one-factor refinements leave 26.2\u201326.8% soft-warp strain. Finite numerical sensitivity is visible; these measurements justify no constitutive, material, fixture or acceptance-limit change.",
+  "not_established": [
+    "Equilibrium",
+    "Full numerical convergence",
+    "A specific solver defect or production fix",
+    "Independent full collision freedom",
+    "Physical fabric calibration",
+    "Reference or whole-product parity"
+  ],
+  "source_scope_note": "These are historical16e-source results. Publication with later changes does not rerun or validate those later sources.",
+  "exit_code_note": "The diagnostic harness returned 0 because all bounded measurements completed. Every final garment case failed the unchanged 15% fitting screen.",
+  "publication_note": "plan.json and conclusion.json retain their original private-diagnostic labels and the conclusion published=false value; those describe the time they were written, not the later package location.",
+  "original_hash_meanings": {
+    "provenance.binary_sha256": "Actual diagnostic executable used for the retained run; the binary is excluded and a portable rebuild need not have this hash.",
+    "plan.immutable_cli_sha256": "Existing CLI binary verified before analysis; the comparison runs used the retained API harness, not this CLI.",
+    "retained-artifact-hashes.json": "Expected/actual identities of 15 previously public artifacts; those artifacts are referenced from the16e checkout and are not duplicated here.",
+    "MANIFEST.json": "Original/published byte identities of the package files, including explicitly documented exact path-only redactions."
+  }
+}

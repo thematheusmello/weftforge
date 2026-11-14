@@ -121,9 +121,11 @@ Initial host: Apple M3 Max, 16 CPU cores, 40 GPU cores, 48 GiB RAM, macOS 27.2
 It explicitly leaves memory and viewport timing null until separately measured.
 A responsive viewport does not establish real-time simulation.
 
-Public CI is configured to test Linux/macOS/Windows source builds on hosted runners; build success
-alone does not prove GUI launch, platform dialogs, notarization or hardware
-behavior. Licensed reference runs are local/trusted, never fork CI jobs.
+The CI configuration covers Linux/macOS/Windows source builds, but GitHub Actions
+and Pages are disabled during development at the user's request. Checks run
+locally and no CI run is expected until the full project is complete. Historical
+build success does not prove GUI launch, platform dialogs, notarization or
+hardware behavior. Licensed reference runs are local/trusted, never fork CI jobs.
 
 ## Witnessed native increment (macOS, 2026-11-13)
 
@@ -322,3 +324,71 @@ This is implementation-only acceptance. Simulation, physical easing/twist,
 continuous arc-length pairing, broad native editing and full reference parity
 remain unverified. GitHub Actions and Pages updates are disabled during
 development at the user's request; checks continue locally.
+
+
+## Bounded native DXF export
+
+[WF-20261114-DXF-001](../parity/reports/WF-20261114-DXF-001.json) records corrected
+source `cd151b3`,34 scoped runtime/test files, native executable `4cdc758b` and
+unchanged CLI `e90ac57b`. Local fmt,98 Rust tests, strict Clippy, xtask verification
+(54 Python checks plus949 catalog IDs) and standard unsigned packaging pass.
+The55 in-process App::ui cases within23 app tests are source regressions; the
+actual native input sequence below is separate evidence. The earlier5f desktop
+package was not launched after review found the inherited pre-Cancel draft
+commit. That RED case and its corrected regressions remain retained.
+
+The [FILE-005-v1 profile](../spec/features/FILE-005-dxf-pattern-export.md) covers
+ASCII R2000 exterior LINE/exact cubic SPLINE geometry in physical millimetres,
+positive pattern UV-to-XY, ordered closure and stable-ID piece layers. The frozen
+independent oracle reads original, unmodified exports with ezdxf1.4.5 and checks
+raw records plus ordinary read/audit: zero raw/consumer/audit errors or fixes.
+Five headless cases include mixed geometry, a125x250mm rectangle and a valid
+empty drawing; placement/resolution changes preserve geometry. The mixed case
+has seven LINEs and one exact cubic, with maximum sampled error
+5.684341886080802e-14mm. Exact controls/knots and adjacency are also required;
+sample agreement alone is insufficient.
+
+The actual native run starts at revision20/resolution0.04m. A focused pending
+0.045m edit commits once, to revision21, only after successful toolbar DXF output.
+The command-search repeat produces identical bytes, SHA
+`ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7`,
+matching the original CLI and official Python MCP SDK1.28.1/legacy2025-11-25
+export. Six tools, revision/unit/UV-XY/boundary-only metadata and rejection/output
+preservation were checked. The original Cancel preserves the saved document and
+sentinel but contains no pending-field case. Authoritative `ps` confirms PID55249
+quit; PID65069 relaunches the same binary and reopens byte-exact saved revision21.
+
+The separately preregistered focused-Cancel supplement has frozen declaration
+`a93edd4e…` and unchanged evaluator
+`4fc083be1aa086c38f99459457c594ff875f2a9c7b1e1ef79ae1df758c51c830`.
+Open revision21, commit0.05m to22, Undo to23/0.045m and save the baseline. Type
+0.055m without Tab, invoke toolbar Export DXF and Cancel. Independent review of
+original PNG `7968db1c…` observes focused0.055 text,907vertices, no Unsaved marker
+and the retained-draft cancellation message. Restore0.045 without Tab; exactly
+one Redo reaches24/0.05m and save. Independent evaluation accepts exact baseline
+and redone fields with all eight protected primary hashes unchanged. The image
+supports visible focus/state; observed actions and saved Redo consequences
+supply the distinct sequence/history evidence. This supplement and its original
+visual review pass; no evaluator or native output was rewritten to obtain acceptance.
+
+Native labels show missing CJK glyph boxes while literal AX and JSON names remain
+intact. This is an open font-rendering limitation. The final recorded handoff is
+PID65069, saved revision24/resolution0.05m,785vertices, Rest arrangement/paused,
+with no modal. All build/package gates are terminal; no Cargo job remains.
+
+The [artifact bundle](../parity/reports/artifacts/dxf-20261114/) preserves the
+original relative oracle layout under `native/`, with `mcp-sdk/`, `captures/` and
+`gates/`. The report retains source/executable identities, original files, failed
+attempts, declarations, observed action logs and independent results. Native
+write/permission/storage failures and broader export options are outside this
+executed subset. Import, ASTM/AAMA apparel interchange, sewing/material round
+trip, printing, other consumers and full reference parity remain open. No cloth
+simulation or fitting claim follows; the retained strain/refinement failures are
+unchanged. Verified reference parity stays0/56, with no roadmap gate accepted.
+Actions and Pages stay disabled until the full project is complete.
+
+Clean evidence checkpoint `b16a7ae` also passes xtask/registry/map, strict tracked
+bundle verification, all nine original DXFs through the pinned ordinary consumer,
+native snapshot/Cancel-Redo and saved SDK replay. Historical physics replay
+reproduces the five failed quality screens. Later status/report metadata changes
+preserve all34 scoped runtime/test files and all113 artifact hashes.

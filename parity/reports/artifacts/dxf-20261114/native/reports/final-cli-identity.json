@@ -1,0 +1,77 @@
+{
+  "stage": "Final CLI identity review only; producer ran actual original saved native source",
+  "source_sha256_verified": "edfb76d326c63a82550bb8f6907a107b4eee4307666ce119ebf08a2624d3902f",
+  "dxf_sha256_verified": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+  "byte_identical_to_accepted_native": true,
+  "producer_plan_sha256": "7320533bbecd7079d00032906fc6878202e4d506bac474f4f134fbb12031d11f",
+  "producer_result_sha256": "45d5653eb450df8957fc58bdac664d9bc6b1405157d974a275ef91d81921232f",
+  "no_cli_or_ui_invoked_by_reviewer": true,
+  "private_path_scan": [
+    {
+      "path": "captures/capture_dxf_readonly.py",
+      "line_numbers": [
+        3,
+        12,
+        13,
+        59,
+        61
+      ]
+    },
+    {
+      "path": "captures/dxf-export-final-20261114T133410Z.ax.json",
+      "line_numbers": [
+        5
+      ]
+    },
+    {
+      "path": "captures/dxf-export-final-20261114T133410Z.context.json",
+      "line_numbers": [
+        11,
+        12,
+        14,
+        32,
+        33,
+        41,
+        42,
+        51,
+        54,
+        65,
+        68,
+        360
+      ]
+    },
+    {
+      "path": "captures/dxf-export-final-20261114T133410Z.inventory-after.json",
+      "line_numbers": [
+        5,
+        6,
+        307,
+        310
+      ]
+    },
+    {
+      "path": "captures/dxf-export-final-20261114T133410Z.inventory-before.json",
+      "line_numbers": [
+        5,
+        6,
+        307,
+        310
+      ]
+    },
+    {
+      "path": "captures/dxf-export-final-20261114T133410Z.json",
+      "line_numbers": [
+        1
+      ]
+    },
+    {
+      "path": "captures/prepare_public_capture.py",
+      "line_numbers": [
+        3
+      ]
+    }
+  ],
+  "producer_exit_code_verified": 0,
+  "producer_stderr_empty": true,
+  "cli_sha256_after_verified": "e90ac57b9bd345ad1d844b4f3f9e684c96fa58af0f795d5f7a168ddfc3fad20f"
+}

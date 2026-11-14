@@ -17,7 +17,7 @@
   ],
   "complete_contract": false,
   "reference_executed": false,
-  "freshness": "current",
+  "freshness": "stale",
   "source_hashes": {
     ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
     "Cargo.lock": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
@@ -375,5 +375,6 @@
     "Native file-panel AX double-click and expired-index attempts are retained; screenshot-grounded file selection and refreshed AX completed the intended actions.",
     "The CLI is byte-identical to the earlier candidate. SDK evidence adds one legacy local-file case; modern clients, live-GUI control, persistent MCP undo and jobs remain open.",
     "No new remote platform CI or Pages deployment: repository Actions disabled by the user until the full project is done. Local gates and exact artifacts remain required."
-  ]
+  ],
+  "freshness_reason": "DXF pattern export changes the scoped application, CLI/MCP and tests after this executed reversal case. Original candidate, declaration, evaluator and output artifacts remain unchanged; no current reversal replay is claimed for the new increment."
 }

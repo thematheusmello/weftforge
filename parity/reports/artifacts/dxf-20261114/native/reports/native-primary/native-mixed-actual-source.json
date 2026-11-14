@@ -1,0 +1,336 @@
+{
+  "source_file": "source-after.weftforge",
+  "source_sha256": "edfb76d326c63a82550bb8f6907a107b4eee4307666ce119ebf08a2624d3902f",
+  "source_revision": 21,
+  "dxf_file": "native-mixed.dxf",
+  "dxf_sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+  "dxf_size_bytes": 4805,
+  "consumer": {
+    "name": "ezdxf",
+    "version": "1.4.5",
+    "read_method": "ezdxf.readfile(original_path)",
+    "recover_used": false,
+    "save_or_rewrite_used": false
+  },
+  "raw_errors": [],
+  "raw_details": {
+    "sections": [
+      "HEADER",
+      "CLASSES",
+      "TABLES",
+      "BLOCKS",
+      "ENTITIES",
+      "OBJECTS"
+    ],
+    "comments": [
+      "WeftForge FILE-005-v1: pattern boundaries in millimetres",
+      "Source document revision: 21",
+      "UV->XY; positive V->positive Y; Z=0; boundary-only"
+    ],
+    "raw_entity_types": [
+      "LINE",
+      "LINE",
+      "SPLINE",
+      "LINE",
+      "LINE",
+      "LINE",
+      "LINE",
+      "LINE"
+    ],
+    "expected_curves": [
+      {
+        "kind": "LINE",
+        "piece": 2,
+        "curve": 7,
+        "layer": "WF_PIECE_2",
+        "points": [
+          [
+            -123.45678901234568,
+            -234.56789012345678,
+            0.0
+          ],
+          [
+            276.54321098765433,
+            -234.56789012345678,
+            0.0
+          ]
+        ]
+      },
+      {
+        "kind": "LINE",
+        "piece": 2,
+        "curve": 8,
+        "layer": "WF_PIECE_2",
+        "points": [
+          [
+            276.54321098765433,
+            -234.56789012345678,
+            0.0
+          ],
+          [
+            276.54321098765433,
+            365.43210987654317,
+            0.0
+          ]
+        ]
+      },
+      {
+        "kind": "SPLINE",
+        "piece": 2,
+        "curve": 9,
+        "layer": "WF_PIECE_2",
+        "points": [
+          [
+            276.54321098765433,
+            365.43210987654317,
+            0.0
+          ],
+          [
+            176.54321098765425,
+            565.4321098765433,
+            0.0
+          ],
+          [
+            -23.456789012345673,
+            565.4321098765432,
+            0.0
+          ],
+          [
+            -123.45678901234568,
+            365.43210987654317,
+            0.0
+          ]
+        ]
+      },
+      {
+        "kind": "LINE",
+        "piece": 2,
+        "curve": 10,
+        "layer": "WF_PIECE_2",
+        "points": [
+          [
+            -123.45678901234568,
+            365.43210987654317,
+            0.0
+          ],
+          [
+            -123.45678901234568,
+            -234.56789012345678,
+            0.0
+          ]
+        ]
+      },
+      {
+        "kind": "LINE",
+        "piece": 11,
+        "curve": 16,
+        "layer": "WF_PIECE_11",
+        "points": [
+          [
+            876.5432109876543,
+            -234.56789012345678,
+            0.0
+          ],
+          [
+            1276.5432109876542,
+            -234.56789012345678,
+            0.0
+          ]
+        ]
+      },
+      {
+        "kind": "LINE",
+        "piece": 11,
+        "curve": 17,
+        "layer": "WF_PIECE_11",
+        "points": [
+          [
+            1276.5432109876542,
+            -234.56789012345678,
+            0.0
+          ],
+          [
+            1276.5432109876542,
+            365.43210987654317,
+            0.0
+          ]
+        ]
+      },
+      {
+        "kind": "LINE",
+        "piece": 11,
+        "curve": 18,
+        "layer": "WF_PIECE_11",
+        "points": [
+          [
+            1276.5432109876542,
+            365.43210987654317,
+            0.0
+          ],
+          [
+            876.5432109876543,
+            365.43210987654317,
+            0.0
+          ]
+        ]
+      },
+      {
+        "kind": "LINE",
+        "piece": 11,
+        "curve": 19,
+        "layer": "WF_PIECE_11",
+        "points": [
+          [
+            876.5432109876543,
+            365.43210987654317,
+            0.0
+          ],
+          [
+            876.5432109876543,
+            -234.56789012345678,
+            0.0
+          ]
+        ]
+      }
+    ],
+    "handle_count": 37,
+    "max_handle": "25",
+    "handseed": "26"
+  },
+  "consumer_errors": [],
+  "audit_errors": [],
+  "audit_fixes": [],
+  "consumer_details": {
+    "max_bspline_sample_error_mm": 5.684341886080802e-14,
+    "splines": [
+      {
+        "curve": 9,
+        "samples": [
+          {
+            "t": 0,
+            "bspline_mm": [
+              276.54321098765433,
+              365.43210987654317,
+              0.0
+            ],
+            "authored_bezier_mm": [
+              276.54321098765433,
+              365.43210987654317,
+              0.0
+            ],
+            "max_abs_error_mm": 0.0
+          },
+          {
+            "t": 0.125,
+            "bspline_mm": [
+              234.7463359876543,
+              431.05710987654317,
+              0.0
+            ],
+            "authored_bezier_mm": [
+              234.7463359876543,
+              431.05710987654317,
+              0.0
+            ],
+            "max_abs_error_mm": 0.0
+          },
+          {
+            "t": 0.25,
+            "bspline_mm": [
+              185.9182109876543,
+              477.9321098765432,
+              0.0
+            ],
+            "authored_bezier_mm": [
+              185.91821098765428,
+              477.9321098765432,
+              0.0
+            ],
+            "max_abs_error_mm": 2.842170943040401e-14
+          },
+          {
+            "t": 0.5,
+            "bspline_mm": [
+              76.5432109876543,
+              515.4321098765433,
+              0.0
+            ],
+            "authored_bezier_mm": [
+              76.5432109876543,
+              515.4321098765433,
+              0.0
+            ],
+            "max_abs_error_mm": 0.0
+          },
+          {
+            "t": 0.75,
+            "bspline_mm": [
+              -32.83178901234569,
+              477.93210987654317,
+              0.0
+            ],
+            "authored_bezier_mm": [
+              -32.83178901234569,
+              477.9321098765432,
+              0.0
+            ],
+            "max_abs_error_mm": 5.684341886080802e-14
+          },
+          {
+            "t": 0.875,
+            "bspline_mm": [
+              -81.65991401234568,
+              431.05710987654317,
+              0.0
+            ],
+            "authored_bezier_mm": [
+              -81.65991401234568,
+              431.0571098765432,
+              0.0
+            ],
+            "max_abs_error_mm": 5.684341886080802e-14
+          },
+          {
+            "t": 1,
+            "bspline_mm": [
+              -123.45678901234568,
+              365.43210987654317,
+              0.0
+            ],
+            "authored_bezier_mm": [
+              -123.45678901234568,
+              365.43210987654317,
+              0.0
+            ],
+            "max_abs_error_mm": 0.0
+          }
+        ]
+      }
+    ],
+    "modelspace_count": 8,
+    "modelspace_types": [
+      "LINE",
+      "LINE",
+      "SPLINE",
+      "LINE",
+      "LINE",
+      "LINE",
+      "LINE",
+      "LINE"
+    ]
+  },
+  "original_bytes_preserved": true,
+  "accepted": true,
+  "evaluator_sha256": "6756739bebef6f0753ad0bb86eed3ed0116b8d6d1dfaecf548b368c44a959ed6",
+  "contract": "FILE-005-v1",
+  "sample_t": [
+    0,
+    0.125,
+    0.25,
+    0.5,
+    0.75,
+    0.875,
+    1
+  ],
+  "sample_tolerance_mm": 1e-08
+}

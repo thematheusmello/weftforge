@@ -1,0 +1,95 @@
+{
+  "declared_at": "2026-11-14T11:53:26.408271+00:00",
+  "kind": "private_implementation_only_diagnostic",
+  "source_commit": "16e680ad774119e1ce3609b7d6c42c317f8677ef",
+  "production_inputs_unchanged": true,
+  "fixture": "fixtures/grain-shirt.weftforge",
+  "fixture_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "immutable_cli_sha256": "ca49402e497f71a2785bd96a6ef936cb320ffef856acb682824fe66e108fa25a",
+  "question": "Does the 26.93% weak-warp strain persist under continuation and one-factor numerical refinement from the exact same t=3s cloth state?",
+  "baseline": {
+    "assembly_steps": 60,
+    "assembly_gravity": [
+      0,
+      0,
+      0
+    ],
+    "drape_steps": 120,
+    "drape_gravity": [
+      0,
+      -9.81,
+      0
+    ],
+    "dt_s": 0.016666666666666666,
+    "substeps": 8,
+    "iterations": 32,
+    "seam_closure_speed_m_per_s": 1,
+    "wall_cap_per_phase_s": 120
+  },
+  "branches_from_same_baseline_state": [
+    {
+      "name": "continuation_8x32",
+      "steps": 60,
+      "substeps": 8,
+      "iterations": 32
+    },
+    {
+      "name": "iteration_8x64",
+      "steps": 60,
+      "substeps": 8,
+      "iterations": 64
+    },
+    {
+      "name": "substep_16x32",
+      "steps": 60,
+      "substeps": 16,
+      "iterations": 32
+    }
+  ],
+  "branch_shared": {
+    "dt_s": 0.016666666666666666,
+    "gravity": [
+      0,
+      -9.81,
+      0
+    ],
+    "seam_closure_speed_m_per_s": 1,
+    "wall_cap_per_branch_s": 90,
+    "contact": "all supported cloth/collider contacts remain on",
+    "changed_material_or_geometry": false
+  },
+  "checks": {
+    "baseline_report_max_axis_strain_match_abs": 1e-12,
+    "trajectory_sampling_every_frames": 15,
+    "sensitivity_strain_difference_abs": 0.005,
+    "sensitivity_max_nodal_drift_m": 0.001,
+    "quality_criteria_unchanged": {
+      "finite": true,
+      "assembly_remaining_m": 0,
+      "max_axis_strain_below": 0.15,
+      "max_seam_gap_below_m": 0.005,
+      "max_contact_penetration_below_m": 0.002
+    }
+  },
+  "metrics": [
+    "signed per-axis strain/location",
+    "max and mass-weighted RMS nodal drift",
+    "kinetic energy and RMS speed",
+    "seam and supported contact residual",
+    "assembly_remaining",
+    "wall time"
+  ],
+  "build": {
+    "jobs": 1,
+    "incremental": false,
+    "offline": true,
+    "target": "<EXCLUSIVE_CARGO_TARGET_DIR>",
+    "code": "existing public core/sim APIs; no production edits"
+  },
+  "non_goals": [
+    "No reference calibration or parity claim",
+    "No proprietary research/UI/Actions",
+    "No solver fixes or threshold edits",
+    "No analytic tests repeated"
+  ]
+}

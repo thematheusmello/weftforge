@@ -1,0 +1,121 @@
+{
+  "frozen_at": "2026-11-14T12:36:10.818659+00:00",
+  "before_server_calls": true,
+  "package_source_label_supplied_by_coordinator": "5f4124c",
+  "client_version": "1.28.1",
+  "protocol": "2025-11-25",
+  "immutable": {
+    "cli": {
+      "path": ".local/dxf-producer-20261114/pre-ui-fix/weftforge-cli",
+      "sha256": "e90ac57b9bd345ad1d844b4f3f9e684c96fa58af0f795d5f7a168ddfc3fad20f",
+      "bytes": 1719584
+    },
+    "source": {
+      "path": ".local/dxf-acceptance-20261114/input/native-expected.weftforge",
+      "sha256": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb",
+      "bytes": 5675
+    },
+    "comparison_dxf": {
+      "path": ".local/dxf-producer-20261114/pre-ui-fix/native-expected.dxf",
+      "sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "bytes": 4805
+    },
+    "native-input-copy.weftforge": {
+      "path": ".local/dxf-sdk-20261114/native-input-copy.weftforge",
+      "sha256": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb",
+      "bytes": 5675
+    },
+    "malformed.weftforge": {
+      "path": ".local/dxf-sdk-20261114/malformed.weftforge",
+      "sha256": "e9af7e4f999c939048997ae232a89c26b1c101f60a70f4f1ad1dcd25e785c82d",
+      "bytes": 44
+    },
+    "future.weftforge": {
+      "path": ".local/dxf-sdk-20261114/future.weftforge",
+      "sha256": "3b337d2241b991a489de4adfa1873fc1f07fc9404843b3e388fbf1c8d083bea8",
+      "bytes": 5678
+    },
+    "invalid-source-sentinel.dxf": {
+      "path": ".local/dxf-sdk-20261114/invalid-source-sentinel.dxf",
+      "sha256": "8b0320a5c9d507aba29d15f10cfd125ea3238edd4a917fc3dfa1c0d807ef9a9e",
+      "bytes": 55
+    }
+  },
+  "input_authoring": {
+    "revision": 21,
+    "resolution_metres": 0.045
+  },
+  "tool_names": [
+    "project_inspect",
+    "project_create",
+    "project_execute",
+    "project_export_svg",
+    "project_export_obj",
+    "project_export_dxf"
+  ],
+  "export_schema_requirements": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "input",
+      "output"
+    ],
+    "only_properties": {
+      "input": "string",
+      "output": "string"
+    }
+  },
+  "success_metadata": {
+    "kind": "authored_dxf",
+    "length_unit": "mm",
+    "source_revision": 21,
+    "up": "pattern U = +X, V = +Y; Z = 0",
+    "scope": "Exterior pattern boundaries only; sewing, materials, grain and 3D placements require the native project."
+  },
+  "metadata_contract_origin": "docs/automation.md, FILE-005-v1, and coordinator reviewed literal API handoff before calls",
+  "calls": [
+    {
+      "case": "new_output",
+      "input": ".local/dxf-acceptance-20261114/input/native-expected.weftforge",
+      "output": ".local/dxf-sdk-20261114/sdk-export.dxf",
+      "is_error": false,
+      "expected_output_sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7"
+    },
+    {
+      "case": "same_input_output",
+      "input": ".local/dxf-sdk-20261114/native-input-copy.weftforge",
+      "output": ".local/dxf-sdk-20261114/native-input-copy.weftforge",
+      "is_error": true,
+      "preserved_sha256": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb"
+    },
+    {
+      "case": "malformed_source",
+      "input": ".local/dxf-sdk-20261114/malformed.weftforge",
+      "output": ".local/dxf-sdk-20261114/invalid-source-sentinel.dxf",
+      "is_error": true,
+      "preserved_sha256": "8b0320a5c9d507aba29d15f10cfd125ea3238edd4a917fc3dfa1c0d807ef9a9e"
+    },
+    {
+      "case": "future_source",
+      "input": ".local/dxf-sdk-20261114/future.weftforge",
+      "output": ".local/dxf-sdk-20261114/invalid-source-sentinel.dxf",
+      "is_error": true,
+      "preserved_sha256": "8b0320a5c9d507aba29d15f10cfd125ea3238edd4a917fc3dfa1c0d807ef9a9e"
+    }
+  ],
+  "failure_requirements": [
+    "isError=true",
+    "nonempty structuredContent.error",
+    "preexisting destination bytes unchanged",
+    "all frozen files unchanged"
+  ],
+  "limits": [
+    "Local stdio only; no network, listener, installation, Cargo, native UI or Actions.",
+    "Headless pre-UI-fix 5f4124c package only; no final-package acceptance.",
+    "SDK output compares with accepted CLI geometry output, not a native UI result.",
+    "Legacy 2025-11-25 official-client subset only; no current-profile client claim.",
+    "No CAD consumer, apparel round-trip, printer-scale, physical-sewing or reference-parity claim.",
+    "Private ignored execution artifacts; not tracked published delivery.",
+    "Same-source rejection uses an owned byte-identical source copy."
+  ]
+}

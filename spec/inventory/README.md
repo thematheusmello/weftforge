@@ -67,6 +67,10 @@ retains blocked Shortcuts navigation without adding catalog IDs or bindings.
 The [DXF route inspection](../features/FILE-005-DXF-inspection-20261114.md)
 adds zero IDs and supplies no product-wide support conclusion; the required DXF
 subset remains in scope.
+The [independent DXF writer profile](../features/FILE-005-dxf-pattern-export.md)
+now has core/desktop/CLI/MCP source entry points for R2000 exterior boundaries in
+millimetres. It adds no reference IDs or parity claim; writer/consumer/native
+acceptance and broader interchange/printing requirements remain separate.
 
 Every record separates menu-presence evidence from the REA workspace identity
 capture. No raw UI, proprietary asset or implementation technique is supplied to

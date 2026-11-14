@@ -31,8 +31,8 @@ The solver is early; general garment convergence and contact robustness remain
 ongoing work.
 
 Version2 `.weftforge` JSON stores supported editable construction and reads old
-version1 projects through a strict version migration. Older apps cannot open v2. OBJ mesh
-and SVG pattern export exist; [format details and gaps](docs/file-formats.md)
+version1 projects through a strict version migration. Older apps cannot open v2. OBJ mesh,
+SVG and DXF pattern export exist; [format details and gaps](docs/file-formats.md)
 explain what survives each path. Simulation frames/settings, imported avatars,
 textures, animation, advanced construction and third-party project formats
 remain planned. The 3D preview is basic shaded geometry;
@@ -59,6 +59,7 @@ cargo run --release -p weftforge-cli -- new garment.weftforge
 cargo run --release -p weftforge-cli -- rectangle garment.weftforge garment.weftforge Front -0.25 1.0 0.5 0.6
 cargo run --release -p weftforge-cli -- inspect garment.weftforge
 cargo run --release -p weftforge-cli -- export-svg garment.weftforge patterns.svg
+cargo run --release -p weftforge-cli -- export-dxf garment.weftforge patterns.dxf
 cargo run --release -p weftforge-cli -- export-obj garment.weftforge garment.obj
 ```
 

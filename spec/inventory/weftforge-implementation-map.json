@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "purpose": "Source-pinned engineering crosswalk and bounded handoff queue, not a second implementation/verification status registry or a complete product inventory.",
-  "source_commit": "9d30a71bbc2b0e051d9eaddc42b5f3b7dab08bde",
+  "source_commit": "cd151b3b89e26d55a4dcd4525790006660c4e766",
   "reference_build": "2026.1.237 (r58920)",
   "inputs": [
     {
@@ -20,7 +20,7 @@
   "status_authority": {
     "path": "parity/features.yaml",
     "lookup": "Join groups[].feature_ids to features[].id at the revision being reported. Read implementation_status, reference_observation_status, verification_status and freshness there; no status value is copied here.",
-    "pinned_registry_sha256": "9cd8e7a217dbf14051cc9839534f42d59b92ac37825067730776df62ffb88009"
+    "pinned_registry_sha256": "14a718555563652fe6b65d8d3ea0ef4e5fc357b5e722bdd03191f3464f854325"
   },
   "coverage_semantics": [
     "949 catalog IDs are entry-path discovery records, not the feature denominator. All previous 928 entries, 205 packets and 56 source landmarks remain; 17 input-specific Open Project controls and four selected-seam Edit-menu label paths join existing groups. No packet or broad feature is completed by these additions. Counts of groups or packets are ownership counts, not parity percentages.",
@@ -87,12 +87,12 @@
     "atomic_save": {
       "path": "crates/weftforge-core/src/persistence.rs",
       "anchor": "fn save_impl(",
-      "scope": "Bounded validated loads, atomic replacement, explicit recovery and interrupted-save testing."
+      "scope": "Bounded validated loads, atomic replacement, explicit recovery and interrupted-save testing. DXF export validates the document and scaled finite coordinates before StagedFile replacement; export guards retain native/recovery files and non-regular targets, with CLI/MCP source-destination identity checks."
     },
     "svg": {
       "path": "crates/weftforge-core/src/persistence.rs",
       "anchor": "pub fn export_svg(",
-      "scope": "Authored curves exported at millimetre physical scale; no SVG/DXF importer or raster snapshot/print UI."
+      "scope": "Pattern-space vector writers: SVG exports authored curves at millimetre physical scale with inverted SVG Y. Sibling Project::export_dxf delegates to persistence/dxf.rs for deterministic ASCII R2000 LINE/cubic SPLINE in mm with positive V-to-Y, unchanged authored positions and stable-ID piece layers. No SVG/DXF importer, apparel round trip or raster snapshot/print UI exists."
     },
     "obj": {
       "path": "crates/weftforge-core/src/persistence.rs",
@@ -132,7 +132,7 @@
     "ui_toolbar": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "fn toolbar(",
-      "scope": "Native open/save/export/history and bounded play/pause/step/assemble/drape/reset/cancel controls."
+      "scope": "Native open/save/history and OBJ/SVG/DXF export entry points, plus bounded play/pause/step/assemble/drape/reset/cancel controls. Export buttons queue the typed ExportFormat and remembered numeric focus, preventing press/blur from committing drafts before success. A button is source presence, not native acceptance or a new reference catalog ID."
     },
     "ui_properties": {
       "path": "apps/weftforge/src/main.rs",
@@ -172,7 +172,7 @@
     "ui_shortcuts": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "fn ui(&mut self, ui: &mut egui::Ui",
-      "scope": "Fixed native shortcuts/search and keyboard-focus guards now also exclude rectangle-modal background actions. Focused numeric edit buffers are cleared on document undo/redo; no configurable shortcut preferences exist."
+      "scope": "Fixed native shortcuts/search and focus/rectangle-modal background guards remain. Command search includes Export DXF and uses the same queued format/focus export path as the toolbar, processed after inspector input. No separate DXF key binding or configurable keymap is claimed. Focused numeric edit buffers clear on accepted actions/history; failed exports retain them."
     },
     "snap": {
       "path": "apps/weftforge/src/main.rs",
@@ -182,12 +182,12 @@
     "cli": {
       "path": "apps/weftforge-cli/src/main.rs",
       "anchor": "fn run()",
-      "scope": "Explicit new/inspect/rectangle/resize/curve-controls/split/join/grain/stiffness/export/simulate/fit/recover CLI routes. join takes INPUT OUTPUT CURVE_ID and uses the shared JoinCurve validation/transaction path; failed edits preserve the previous output."
+      "scope": "Explicit new/inspect/rectangle/resize/curve-controls/split/join/grain/stiffness/export/simulate/fit/recover routes. export-dxf INPUT OUTPUT uses Project::export_dxf, refuses source/native replacement and reports source_revision, authored_dxf, mm and boundary-only loss scope. join retains shared JoinCurve validation/transaction handling; failed edits preserve previous outputs."
     },
     "mcp": {
       "path": "apps/weftforge-cli/src/mcp.rs",
       "anchor": "fn call(",
-      "scope": "Five file-authoring/export tools; project_execute applies typed commands as a transaction. This does not control a live GUI session."
+      "scope": "Six stateless local file tools, including project_export_dxf with required input/output paths. DXF returns source_revision, authored_dxf, mm, positive UV-to-XY and explicit boundary-only loss scope. project_execute still applies shared typed commands as one transaction; this is not live GUI control, and an export tool adds no authoring Command variant."
     },
     "mcp_schema": {
       "path": "apps/weftforge-cli/src/mcp.rs",
@@ -207,12 +207,12 @@
     "cli_tests": {
       "path": "apps/weftforge-cli/tests/curves.rs",
       "anchor": "fn cli_edits_splits_and_joins_sewn_curves_and_preserves_outputs_on_failure",
-      "scope": "Implementation-only subprocess checks cover curve controls, split, bounded join and previous-output preservation on rejection. These checks do not supply native/reference acceptance; native scope and qualification remain in the authoritative registry/reports."
+      "scope": "Implementation-only CLI curve/split/join failure preservation and public-help checks now include export-dxf advertisement. DXF CLI/MCP byte agreement and source/destination preservation are covered by the stdio integration source tests. Native/reference acceptance remains authoritative in the registry/reports."
     },
     "mcp_tests": {
       "path": "apps/weftforge-cli/tests/mcp_stdio.rs",
       "anchor": "fn stdio_authors_atomic_shared_commands",
-      "scope": "Implementation-only stdio lifecycle, schema/input validation, transactions, bounded join_curve command advertisement/execution and independently measured physical exports. Native/reference qualification remains in the authoritative registry/reports."
+      "scope": "Implementation-only stdio lifecycle, schema/input validation, transactions, bounded join_curve, and sixth-tool DXF checks. Source assertions compare CLI/MCP DXF bytes, inspect source_revision/mm/axes/loss metadata, preserve native input and reject protected destinations. They do not supply independent DXF consumer or native desktop acceptance."
     },
     "migration_tests": {
       "path": "crates/weftforge-core/tests/migration.rs",
@@ -246,8 +246,8 @@
     },
     "ui_export": {
       "path": "apps/weftforge/src/main.rs",
-      "anchor": "fn export(&mut self, svg: bool)",
-      "scope": "Native file destination and current/revision-safe OBJ snapshot export use fixed metres/Y-up; no OBJ option/preset/selection/unit-axis dialog exists at this source pin."
+      "anchor": "fn export(&mut self, ctx: &egui::Context, format: ExportFormat, focused: Option<egui::Id>)",
+      "scope": "Toolbar/search queue ExportFormat plus remembered numeric focus until the inspector has read the frame input. export_to_path stages valid pending commands in a cloned Editor and writes SVG/DXF before installing that editor; Cancel, invalid draft, path/write failure retain document/history/draft/edit text/focus through finish_numeric_action. Pending changed OBJ is retained/rejected with Tab/wait/retry; ready revision-safe rest/drape OBJ behavior remains. Destination guards protect loaded/native projects; no reference option/preset/selection dialog is implemented."
     },
     "ui_rectangle": {
       "path": "apps/weftforge/src/main.rs",
@@ -631,7 +631,7 @@
         "FILE-005",
         "FILE-007"
       ],
-      "reason": "SVG/DXF editable import and production output/printing remain target requirements. REF-FILE-005-DXF-005 observes no DXF entry only in the current File > Export AX route, with no dialog/action/output and zero new IDs. This does not establish product-wide support or remove scope; the required documented DXF subset remains in the implementation queue."
+      "reason": "SVG/DXF editable import, production output/printing and complete interchange remain required. FILE-005-v1 now has a bounded standards-profile R2000 DXF boundary-export source candidate; source-unit, independent consumer and native acceptance still need qualification. REF-FILE-005-DXF-005 remains only a current File > Export AX absence with no dialog/action/output and zero IDs; it neither establishes vendor product-wide support nor removes the target. Import, apparel semantics and printing are not implemented by the boundary writer."
     },
     {
       "lead": "Bond/Skive creation",
@@ -3615,7 +3615,7 @@
         "ui_export"
       ],
       "shared_commands": [],
-      "candidate_behavior": "Only triangle OBJ export exists; native UI can export the accepted simulated snapshot, while MCP exports a rest mesh.",
+      "candidate_behavior": "Only triangle OBJ export exists for this format. Native ready revision-safe rest mesh/current drape snapshot export and MCP rest-mesh export remain. A changed pending inspector draft is retained/rejected for OBJ with explicit Tab/wait/retry guidance; it is not silently committed or exported against the old mesh. Queue/focus completion preserves prior document/history and pending input on Cancel/path/write failure. No OBJ importer, option/preset or selection-export UI is added.",
       "missing_functionality": [
         "OBJ parsing; replacement versus add/to-garment construction semantics; selected scope, material libraries, welding/thickness options and independent consumer checks.",
         "The 29 observed export controls add preset/configuration, pattern/avatar/graphic-trim scope, grouping, welding/merge/turned-seam, thickness, unified UV, hidden/internal geometry, units/percent/axis inversions, texture destinations/map processing, XML metadata and reset/OK/Cancel. The current writer has none of these option controls and uses fixed metres/Y-up.",
@@ -4065,7 +4065,7 @@
         "mcp_tests"
       ],
       "shared_commands": [],
-      "candidate_behavior": "Offline typed JSON commands, CLI and local MCP cover a bounded authoring subset; no Script importer or Python editor/runtime exists.",
+      "candidate_behavior": "Offline typed JSON commands, CLI and six stateless local MCP file tools cover bounded authoring/export. CLI export-dxf and project_export_dxf share the validated R2000 boundary writer and report source revision, mm and loss scope; MCP additionally returns the positive UV-to-XY axis declaration. The shared Command set stays at 19 including Transaction, while MCP arrays accept the 18 nontransaction variants. No Script importer, Python editor/runtime, live GUI control, persistent undo or simulation-job API exists.",
       "missing_functionality": [
         "Observed scripting capabilities and local command-based substitute, script editing/execution/reporting and discoverable API docs; maintain the native offline runtime requirement."
       ],
@@ -4088,12 +4088,18 @@
       "mapping_relation": "candidate_partial",
       "source_refs": [
         "svg",
-        "ui_toolbar"
+        "ui_toolbar",
+        "atomic_save",
+        "ui_export",
+        "cli",
+        "mcp",
+        "mcp_tests"
       ],
       "shared_commands": [],
-      "candidate_behavior": "SVG export preserves authored physical scale; no 1:1 snapshot dialog, pagination or print workflow exists.",
+      "candidate_behavior": "SVG preserves authored physical scale, and the bounded FILE-005-v1 DXF writer now exports each authored exterior line/cubic as R2000 LINE/SPLINE in physical millimetres, UV-to-XY with positive V and stable-ID piece layers. Project::export_dxf calls the persistence/dxf.rs renderer and validated atomic output path; typed desktop ExportFormat, CLI export-dxf and sixth MCP tool project_export_dxf expose the same writer with boundary-only scope. Mesh, simulation and 3D placement do not supply DXF coordinates. These vector exports do not implement a 1:1 snapshot dialog, pagination, calibrated printing or complete pattern interchange. The desktop queues format/focus after inspector input, validates pending commands on a cloned Editor, and installs the staged state only after successful SVG/DXF file replacement; cancellation or failure retains the previous document/history and focused draft. The shared OBJ path retains/rejects changed drafts with Tab/wait/retry guidance.",
       "missing_functionality": [
-        "Snapshot/print output type, scale calibration, page tiling, margins and independent physical-size check."
+        "Snapshot/print output type, scale calibration, page tiling, margins and independent physical-size check.",
+        "Qualify the new DXF writer through source-unit execution, the declared independent unmodified raw/ezdxf read-and-audit checks, CLI/MCP error/output preservation and separately identified native toolbar/search/export acceptance. Import, apparel conventions, sewing/material round trip, other consumers and physical printing remain outside this bounded writer and still required where specified."
       ],
       "runtime_questions": [
         "What file/paper dimensions, units, crop, scale and line/label choices are applied by 2D Patterns (1:1)?"
@@ -8739,10 +8745,11 @@
       "mapping_relation": "planned",
       "source_refs": [
         "ui_shortcuts",
-        "ui_numeric_history"
+        "ui_numeric_history",
+        "ui_export"
       ],
       "shared_commands": [],
-      "candidate_behavior": "A fixed native command search and several focus-guarded bindings exist; there is no editable shortcut-preference search/category/conflict/reset interface.",
+      "candidate_behavior": "A fixed native command search, including Export DXF through the typed ExportFormat dispatcher, and several focus-guarded bindings exist. This source entry supplies no separate DXF keyboard binding and no editable shortcut-preference search/category/conflict/reset interface.",
       "missing_functionality": [
         "Inventory expanded command descendants and search/edit/delete/reset behavior; configurable keymap with per-tool/modal/focus scope and accessible conflict feedback."
       ],
@@ -19940,7 +19947,7 @@
       "group_id": "project-load-save"
     }
   ],
-  "source_snapshot_note": "This reachable native seam-reversal source pin retains all 949 catalog entries, 205 packets, 56 landmark identities/paths/valid anchors and queued slices. It still has 19 typed Command variants: per-seam Reverse reuses UpdateSeam, swaps side B parameters, preserves identity/order/covered intervals/normalized mapping, and displays both endpoint guides. Generic apply_inspector_action replaces the join-only helper, sharing pending-draft/current-focus transaction handling with Join; seam-ID widget scopes preserve duplicate-name rows. The tracked runtime/test scope now contains 32 files, including crates/weftforge-core/tests/seam_reversal.rs. Core and in-process tests remain source evidence; actual native reversal desktop acceptance and reference continuous/physical semantics remain pending. Historical UI-BOUNDED-JOIN-001 stays anchored to its 26dd585 executable/source and 31 tested inputs and does not qualify this changed runtime; current evidence qualification/freshness is read only from the registry/reports. Reviewed DXF route absence adds zero IDs, does not establish product-wide support or alter the required documented subset. Current catalog/contract/registry hashes and original 928 expansion/6401c6a/26dd585/9cb2af3 ancestry remain pinned; no reference parity or new physical/arc-length claim is made.",
+  "source_snapshot_note": "This corrected integrated DXF source pin preserves all 949 catalog entries, 205 packets, 56 landmark identities/paths and queued slices, with the single approved ui_export signature update from fn export(&mut self, svg: bool) to fn export(&mut self, ctx: &egui::Context, format: ExportFormat, focused: Option<egui::Id>) recorded exactly. The other valid anchors and 19 authoring Command variants remain. Project::export_dxf in persistence.rs delegates to new persistence/dxf.rs for deterministic ASCII R2000 LINE/cubic SPLINE, millimetres, positive pattern UV-to-XY and stable-ID piece layers, with validation and atomic destination protection. Desktop toolbar/search queue typed ExportFormat and remembered focus until after inspector input; export_to_path executes pending commands on a cloned Editor and installs it only after successful SVG/DXF output replacement. Cancel/invalid draft/path/write failure retain document/history/draft/text/focus through finish_numeric_action. Pending changed OBJ is retained/rejected with Tab/wait/retry; ready rest/drape OBJ remains unchanged; CLI export-dxf and sixth local MCP tool project_export_dxf expose the same bounded writer and revision/unit/loss metadata; MCP additionally returns the UV-to-XY axis declaration. The runtime/test scope now has 34 files including the DXF renderer and tests/dxf.rs. New DXF source-unit, independent consumer and integrated native acceptance require their own qualification; no completed run or reference parity is inferred here. Existing native Reverse, duplicate-name seam-ID rows, both endpoint guides and generic inspector-action behavior remain unchanged by this map. The M31 native reversal case is retained in WF-20261114-NATIVE-REVERSAL-001 at source 9d30a71 with its 32 inputs, executable and capture/input limitations; that historical case does not qualify this changed export runtime. Current status/freshness belongs solely to the registry/reports. DXF route absence remains bounded and zero-ID; no vendor support, exclusion, import/apparel/printing or physical-arc-length claim follows. Preserve original 928 expansion/6401c6a/26dd585/9cb2af3/9d30a71/M31/5f4124c ancestry and keep Actions/Pages disabled during development.",
   "expansion_origin": {
     "previous_map_commit": "fbe5ee08a74dc176e47a287366cbf5d1bbd0abf3",
     "previous_map_sha256": "2457e280ec2070e41748b8a3b80d8d7ba16a41f0cfa6dc0409c4f7768d178b9a",
@@ -19948,7 +19955,7 @@
     "preserved_catalog_ids": 928,
     "additional_menu_ids": 4,
     "additional_component_ids": 17,
-    "catalog_commit": "9d30a71bbc2b0e051d9eaddc42b5f3b7dab08bde",
+    "catalog_commit": "cd151b3b89e26d55a4dcd4525790006660c4e766",
     "preservation_rule": "Retain the original 928-to-949 expansion proof and its 6401c6a catalog/source anchor. All 949 entries, 205 packet definitions, 56 landmark identities/paths and first three bounded slices survive the integrated source refresh. Only explicit reviewed source/reference rechecks replace obsolete group text or landmark scope/renamed anchors; no new reference entry or feature completion follows from a WeftForge implementation button.",
     "original_catalog_commit": "6401c6aa0aa1a54e1642b334dad1c5729466e0af"
   },
@@ -20047,6 +20054,11 @@
       "path": "spec/observations/REF-FILE-005-DXF-005.json",
       "sha256": "d386b93241f981529c4f4b13365719c94b3f3d12fb950c912c8f94072944832a",
       "scope": "Reviewed public provenance for a zero-ID current-route absence observation. Main-window before/after captures are gap-free and the original saved fixture remains hash-identical; menu evidence is AX text without a popup screenshot. No DXF dialog/output/validation/default/support or broad parity conclusion follows; raw commercial UI and private resources stay excluded."
+    },
+    {
+      "path": "spec/features/FILE-005-dxf-pattern-export.md",
+      "sha256": "b0373181a6ae79c148aa154c0c2269956c2fed3587b5c6d0aef929108e11dd73",
+      "scope": "Implementation-independent public-standards FILE-005-v1 profile for an ASCII R2000 pattern-boundary writer: LINE and exact cubic SPLINE, physical mm in UV-to-XY with positive V, stable-ID piece layers, deterministic infrastructure and validated atomic output. No vendor output/implementation supplies this contract. Source-unit, independent raw/ezdxf consumer and native desktop acceptance require separate evidence; import, printing, ASTM/AAMA apparel semantics and reference parity remain outside this bounded subset without leaving the full target."
     }
   ],
   "source_rechecks": [
@@ -20124,6 +20136,60 @@
         "ui_pattern",
         "ui_properties"
       ]
+    },
+    {
+      "group_id": "pattern-snapshot-print",
+      "reason": "The existing FILE-005 group now has a bounded public-profile DXF export candidate alongside SVG. Recheck the authored geometry writer, physical units, typed native dispatcher, CLI/MCP metadata and destination preservation while retaining all print/import/apparel/reference gaps and independent/native acceptance requirements. The reviewed cd151b3 GUI correction stages pending edits on a cloned Editor, queues remembered focus, and commits only after successful output replacement; failed/cancelled attempts preserve the old accepted and pending states.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "svg",
+        "atomic_save",
+        "ui_toolbar",
+        "ui_export",
+        "cli",
+        "mcp",
+        "mcp_tests"
+      ]
+    },
+    {
+      "group_id": "automation-scripts",
+      "reason": "The local MCP surface grows from five tools to six with project_export_dxf, while shared authoring commands remain 19. Distinguish stateless boundary export from scripting/live GUI/jobs and retain loss/error/identity metadata.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "cli",
+        "mcp",
+        "mcp_schema",
+        "mcp_tests"
+      ]
+    },
+    {
+      "group_id": "shortcut-preferences",
+      "reason": "Fixed command search now reaches the typed DXF dispatcher. This source relationship does not implement editable keymap preferences, establish an active DXF shortcut or add a reference entry.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "ui_shortcuts",
+        "ui_export"
+      ]
+    },
+    {
+      "group_id": "obj-interchange",
+      "reason": "The shared typed GUI export fix queues numeric input and stages SVG/DXF drafts; OBJ deliberately retains/rejects changed drafts until Tab and a ready mesh, while ready rest/drape snapshots and MCP rest export remain. Recheck this changed failure-preservation path without changing OBJ scope or claiming new native acceptance.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "ui_export",
+        "ui_toolbar",
+        "cli",
+        "mcp"
+      ]
     }
   ],
   "reference_rechecks": [
@@ -20159,7 +20225,7 @@
     "preserved_catalog_ids": 949,
     "preserved_packets": 205,
     "preserved_landmarks": 56,
-    "preservation_rule": "Preserve every previous entry record, packet, landmark identity/path and queued slice exactly. Preserve landmark anchors except the explicitly reviewed CLI test rename; scope text changes require source landmark rechecks against changed pinned files. Keep the earlier 6401c6a and original 928-entry expansion ancestry reachable."
+    "preservation_rule": "Preserve every previous entry record, packet, landmark identity/path and queued slice exactly. Preserve valid landmark anchors except explicit reviewed source-signature changes: retain exact old/new CLI test and typed ExportFormat dispatcher anchors in provenance. Scope/anchor updates require source landmark rechecks against changed pinned files. Keep the earlier 6401c6a and original 928-entry expansion ancestry reachable."
   },
   "source_landmark_rechecks": [
     {
@@ -20181,7 +20247,7 @@
       "changed_fields": [
         "scope"
       ],
-      "reason": "The integrated JoinCurve command, native inspector and CLI/MCP adapter source now implement a bounded inverse join; update only the related scope description."
+      "reason": "Integrated DXF core and adapters add a third export format; review writer safety, format-specific coordinates, toolbar/search routing and six-tool local MCP coverage without adding catalog IDs or changing the authoring command set."
     },
     {
       "source_id": "mcp_schema",
@@ -20196,7 +20262,7 @@
         "anchor",
         "scope"
       ],
-      "reason": "The CLI subprocess regression was renamed to include split/join and failure-output preservation. Retain this landmark identity/path and explicitly replace its old invalid function anchor with the exact valid renamed anchor.",
+      "reason": "The CLI subprocess regression was renamed to include split/join and failure-output preservation. Retain this landmark identity/path and explicitly replace its old invalid function anchor with the exact valid renamed anchor. DXF additionally appears in CLI help and adapter output-preservation checks; retain the same renamed anchor.",
       "previous_anchor": "fn cli_edits_and_splits_sewn_curves",
       "current_anchor": "fn cli_edits_splits_and_joins_sewn_curves_and_preserves_outputs_on_failure"
     },
@@ -20205,7 +20271,7 @@
       "changed_fields": [
         "scope"
       ],
-      "reason": "The integrated JoinCurve command, native inspector and CLI/MCP adapter source now implement a bounded inverse join; update only the related scope description."
+      "reason": "Integrated DXF core and adapters add a third export format; review writer safety, format-specific coordinates, toolbar/search routing and six-tool local MCP coverage without adding catalog IDs or changing the authoring command set."
     },
     {
       "source_id": "ui_pattern",
@@ -20220,6 +20286,52 @@
         "scope"
       ],
       "reason": "Native seam reversal adds ID-scoped rows and two endpoint guides; review the bounded source scope without changing this landmark identity/path/valid anchor."
+    },
+    {
+      "source_id": "atomic_save",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "Integrated DXF core and adapters add a third export format; review writer safety, format-specific coordinates, toolbar/search routing and six-tool local MCP coverage without adding catalog IDs or changing the authoring command set."
+    },
+    {
+      "source_id": "svg",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "Integrated DXF core and adapters add a third export format; review writer safety, format-specific coordinates, toolbar/search routing and six-tool local MCP coverage without adding catalog IDs or changing the authoring command set."
+    },
+    {
+      "source_id": "ui_toolbar",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The DXF entry points use export_button to queue typed format and remembered focus until after inspector input, preserving pending state through Cancel/path/write failure. Review the source scope without changing the landmark identity/path/anchor."
+    },
+    {
+      "source_id": "ui_export",
+      "changed_fields": [
+        "anchor",
+        "scope"
+      ],
+      "reason": "The third export format and reviewed atomic GUI fix replace the old bool selector with ctx/ExportFormat/focused parameters at cd151b3. Preserve ui_export identity/path and the exact old anchor; review queued input, cloned-Editor staging and shared finish_numeric_action behavior with the final valid signature.",
+      "previous_anchor": "fn export(&mut self, svg: bool)",
+      "current_anchor": "fn export(&mut self, ctx: &egui::Context, format: ExportFormat, focused: Option<egui::Id>)",
+      "source_commit": "cd151b3b89e26d55a4dcd4525790006660c4e766"
+    },
+    {
+      "source_id": "ui_shortcuts",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "The DXF entry points use export_button to queue typed format and remembered focus until after inspector input, preserving pending state through Cancel/path/write failure. Review the source scope without changing the landmark identity/path/anchor."
+    },
+    {
+      "source_id": "mcp",
+      "changed_fields": [
+        "scope"
+      ],
+      "reason": "Integrated DXF core and adapters add a third export format; review writer safety, format-specific coordinates, toolbar/search routing and six-tool local MCP coverage without adding catalog IDs or changing the authoring command set."
     }
   ]
 }

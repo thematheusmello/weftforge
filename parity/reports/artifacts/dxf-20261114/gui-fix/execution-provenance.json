@@ -1,0 +1,181 @@
+{
+  "kind": "historical_headless_native_app_export_regression_supplement",
+  "prepared_at_utc": "2026-11-14T14:01:53.202795+00:00",
+  "source": "Exact retained CommandExecution records from the investigator session. Logs encode each recorded aggregated_output string as UTF-8; no manual transcription, reconstruction, rerun, native process or source edit.",
+  "derivation": "Only the exact absolute workspace prefix and dedicated Cargo target prefix are replaced in public log bytes. Original selected execution records and decoded aggregate text remain private, identified by SHA-256 below.",
+  "replacement_tokens": {
+    "workspace": "${WORKSPACE}",
+    "dedicated_cargo_target": "${CARGO_TARGET_DIR}"
+  },
+  "runs": {
+    "red-export-cancel": {
+      "log": "red-export-cancel.log",
+      "execution_record_id": "exec-c8ae2747-59bd-4949-b489-e01611863f3b",
+      "process_handle": "40627",
+      "original_session_file": "rollout-2026-11-14T01-58-24-01a1d7c6-fbb3-7590-9fbe-6cc2b140155c.jsonl",
+      "original_record_line_1_based": 2194,
+      "original_private_record_sha256": "c2678aed2e54cf5f5eddb054c3818add43ab9a7b93648a16988d73b45305c271",
+      "original_private_log_sha256": "558a9847ad09b33cc77efbcc434a33237483d862bf79cdb63b3329cd0e1fe508",
+      "public_log_sha256": "f16c6af96d4459cfbdc85b22da6555a0b64a1ddb64e1d6d43d2c3f08c86de03b",
+      "original_log_utf8_bytes": 9796,
+      "public_log_bytes": 9606,
+      "workspace_prefix_replacements": 3,
+      "target_prefix_replacements": 1,
+      "command_argv": [
+        "/bin/zsh",
+        "-lc",
+        "CARGO_BUILD_JOBS=1 CARGO_INCREMENTAL=0 CARGO_TARGET_DIR=${CARGO_TARGET_DIR} CARGO_NET_OFFLINE=true cargo test -p weftforge focused_export_keeps_failed_drafts_and_history_until_output_is_written -- --nocapture"
+      ],
+      "working_directory": "${WORKSPACE}/.local/worktrees/dxf-export-atomic-ui",
+      "started_at_utc": "2026-11-14T12:31:33.614000+00:00",
+      "completed_at_utc": "2026-11-14T12:34:41.665000+00:00",
+      "reported_duration": {
+        "secs": 188,
+        "nanos": 49311375
+      },
+      "exit_code": 101,
+      "status": "failed"
+    },
+    "green-app-tests": {
+      "log": "green-app-tests.log",
+      "execution_record_id": "exec-9506ca64-c5dd-42e5-bfcc-9d5b3eda316f",
+      "process_handle": "64063",
+      "original_session_file": "rollout-2026-11-14T01-58-24-01a1d7c6-fbb3-7590-9fbe-6cc2b140155c.jsonl",
+      "original_record_line_1_based": 2400,
+      "original_private_record_sha256": "19f0cfb8d7e8c060a5803f85d769ed99abab2663fd0f29506d23efbf65cc9332",
+      "original_private_log_sha256": "d04ed684dfd20d43e427ab636898484c633f6b36527844ee95bd7fecc6d4ed7a",
+      "public_log_sha256": "59cf1c33fc22df0b0823c3fa245fc549dc19e96b075f8cde4ee7005e7f6e8f16",
+      "original_log_utf8_bytes": 2597,
+      "public_log_bytes": 2509,
+      "workspace_prefix_replacements": 1,
+      "target_prefix_replacements": 1,
+      "command_argv": [
+        "/bin/zsh",
+        "-lc",
+        "CARGO_BUILD_JOBS=1 CARGO_INCREMENTAL=0 CARGO_TARGET_DIR=${CARGO_TARGET_DIR} CARGO_NET_OFFLINE=true cargo test -p weftforge -- --nocapture"
+      ],
+      "working_directory": "${WORKSPACE}/.local/worktrees/dxf-export-atomic-ui",
+      "started_at_utc": "2026-11-14T12:46:34.433000+00:00",
+      "completed_at_utc": "2026-11-14T12:47:06.735000+00:00",
+      "reported_duration": {
+        "secs": 32,
+        "nanos": 302357792
+      },
+      "exit_code": 0,
+      "status": "completed"
+    },
+    "green-clippy": {
+      "log": "green-clippy.log",
+      "execution_record_id": "exec-3644efe3-dd85-4bc0-b813-ba4d907a966d",
+      "process_handle": "22077",
+      "original_session_file": "rollout-2026-11-14T01-58-24-01a1d7c6-fbb3-7590-9fbe-6cc2b140155c.jsonl",
+      "original_record_line_1_based": 2428,
+      "original_private_record_sha256": "bd1e2fbb3553c19ed5896a4cbee0c36500eedd7cc2dede611346b0067c429b91",
+      "original_private_log_sha256": "9a19934ac33f2d2c6c618ac269f3aa096e0b6200062e6d552c4165acc7153ddc",
+      "public_log_sha256": "912ecdd26f34e22f692dc92768ee87305b1f05bfdf9898ac2c1849fb3cbaf95b",
+      "original_log_utf8_bytes": 6403,
+      "public_log_bytes": 6148,
+      "workspace_prefix_replacements": 5,
+      "target_prefix_replacements": 0,
+      "command_argv": [
+        "/bin/zsh",
+        "-lc",
+        "CARGO_BUILD_JOBS=1 CARGO_INCREMENTAL=0 CARGO_TARGET_DIR=${CARGO_TARGET_DIR} CARGO_NET_OFFLINE=true cargo clippy --workspace --all-targets -- -D warnings"
+      ],
+      "working_directory": "${WORKSPACE}/.local/worktrees/dxf-export-atomic-ui",
+      "started_at_utc": "2026-11-14T12:48:03.950000+00:00",
+      "completed_at_utc": "2026-11-14T12:49:23.913000+00:00",
+      "reported_duration": {
+        "secs": 79,
+        "nanos": 961950500
+      },
+      "exit_code": 0,
+      "status": "completed"
+    },
+    "green-fmt": {
+      "log": "green-fmt.log",
+      "execution_record_id": "exec-b243154e-0d41-44fe-a2dc-f0e199754187",
+      "process_handle": "26572",
+      "original_session_file": "rollout-2026-11-14T01-58-24-01a1d7c6-fbb3-7590-9fbe-6cc2b140155c.jsonl",
+      "original_record_line_1_based": 2413,
+      "original_private_record_sha256": "615c671543217bf4db08c55351be1a1829a5fd12a1a1f5b73784410b576a70cc",
+      "original_private_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_log_utf8_bytes": 0,
+      "public_log_bytes": 0,
+      "workspace_prefix_replacements": 0,
+      "target_prefix_replacements": 0,
+      "command_argv": [
+        "/bin/zsh",
+        "-lc",
+        "cargo fmt --all --check"
+      ],
+      "working_directory": "${WORKSPACE}/.local/worktrees/dxf-export-atomic-ui",
+      "started_at_utc": "2026-11-14T12:47:57.352000+00:00",
+      "completed_at_utc": "2026-11-14T12:47:57.892000+00:00",
+      "reported_duration": {
+        "secs": 0,
+        "nanos": 540249375
+      },
+      "exit_code": 0,
+      "status": "completed"
+    }
+  },
+  "source_attribution": {
+    "base_commit": "5f4124c0b86a520fd06f2e7355bc5000fea9d8db",
+    "fix_commit": "409d84575392665de8d088d06115b76bbc4962e5",
+    "fix_main_rs_sha256": "1cd18a49fb2e30c5c24a5c02ade30df42d4bc01f6e94b2cfcfab06abd70def3b",
+    "red": "The production export precommit ordering from base 5f4124c was tested with uncommitted regression code and a test-only chooser hook. It is not a clean 5f4124c test-source snapshot or a native-package execution. The injected chooser returned Cancel while actual App::ui processed the Export DXF AX action.",
+    "red_source_and_binary_digest_limit": "An exact digest of the instrumented RED source or historical test executable was not captured. No retrospective byte-identical or exact-native-binary attribution is claimed.",
+    "green": "The final all-app tests, fmt and Clippy ran on the completed fix working tree, which remained unchanged until commit 409d845. This attribution is the investigator's recorded working-tree history; no before-compilation source or test-executable digest was frozen.",
+    "intermediate_focused_green": "The earlier focused 55-case pass (handle 90000) is retained privately. The final 23-test log includes the same regression plus the subsequently added OBJ check and is the published final source check."
+  },
+  "red_observation": {
+    "status": "failed_expected_old_behavior",
+    "first_executed_case": "Export DXF / Cancel / AccessKit Click with a focused valid width draft and a staged resolution",
+    "project_revision_before": 4,
+    "project_revision_after": 5,
+    "width_before_m": "0.4",
+    "width_after_m": "0.45",
+    "resolution_before_m": "0.07",
+    "resolution_after_m": "0.08",
+    "failure": "First project equality assertion failed. Later history assertions and the remaining planned cases did not execute in this RED run.",
+    "redo": "Redo clearing follows the existing Editor::execute implementation; it was not separately asserted after the first RED equality failure."
+  },
+  "green_scope": {
+    "rust_app_tests": 23,
+    "focused_export_cases": 55,
+    "case_count_method": "35 DXF cases (7 input forms x 5 outcomes), 10 SVG and 10 OBJ cases (2 input forms x 5 outcomes), inside one passing Rust regression function. 55 is not a count of independent Rust tests.",
+    "inputs": [
+      "AX Click",
+      "pointer Down/Up",
+      "DXF Tab+AX Export",
+      "DXF AX Focus+Export",
+      "DXF text+AX Export in one RawInput",
+      "DXF command-search AX",
+      "DXF command-search pointer Down/Up"
+    ],
+    "outcomes": [
+      "Cancel",
+      "protected source path",
+      "missing-parent write failure",
+      "invalid staged width",
+      "successful SVG/DXF or retained pending OBJ"
+    ],
+    "assertions": [
+      "accepted project/revision and complete undo/redo history",
+      "staged commands, dirty state, ready mesh and focused numeric String",
+      "next-frame delayed blur and later intentional Tab",
+      "one successful transaction, output geometry, Undo/Redo",
+      "OBJ ready rest/current draped vertices and stale-mesh sentinel preservation"
+    ],
+    "strict_workspace_clippy": "passed",
+    "fmt_all_check": "passed"
+  },
+  "limits": [
+    "Headless actual eframe::App::ui acceptance, not native operating-system UI or rfd interaction. The chooser is a test-only injected result.",
+    "Captured aggregate output text, not separate stdout/stderr streams or a wire-level recording.",
+    "No reference parity, full garment workflow or performance claim.",
+    "No reruns or source changes while extracting this supplement. The separately frozen later native acceptance is unchanged."
+  ]
+}

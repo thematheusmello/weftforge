@@ -1,0 +1,243 @@
+{
+  "accepted": true,
+  "candidate_outputs_read": false,
+  "positive_spline_max_sample_error_mm": 5.684341886080802e-14,
+  "negative_witness_count": 34,
+  "negative_witnesses": [
+    {
+      "name": "f32 roundoff after scale",
+      "rejected": true,
+      "reason": "curve 9: exact scaled SPLINE controls [(276.543212890625, 365.4320983886719, 0.0), (176.543212890625, 565.43212890625, 0.0), (-23.456789016723633, 565.43212890625, 0.0), (-123.456787109375, 365.4320983886719, 0.0)] != [(276.54321098765433, 365.43210987654317, 0.0), (176.54321098765425, 565.4321098765433, 0.0), (-23.456789012345673, 565.4321098765432, 0.0), (-123.45678901234568, 365.43210987654317, 0.0)]"
+    },
+    {
+      "name": "metres without x1000",
+      "rejected": true,
+      "reason": "curve 7: exact scaled LINE endpoints [(-0.12345678901234568, -0.23456789012345677, 0.0), (0.27654321098765433, -0.23456789012345677, 0.0)] != [(-123.45678901234568, -234.56789012345678, 0.0), (276.54321098765433, -234.56789012345678, 0.0)]"
+    },
+    {
+      "name": "SVG Y inversion",
+      "rejected": true,
+      "reason": "curve 7: exact scaled LINE endpoints [(-123.45678901234568, 234.56789012345678, 0.0), (276.54321098765433, 234.56789012345678, 0.0)] != [(-123.45678901234568, -234.56789012345678, 0.0), (276.54321098765433, -234.56789012345678, 0.0)]"
+    },
+    {
+      "name": "3D placement translation applied",
+      "rejected": true,
+      "reason": "curve 7: exact scaled LINE endpoints [(386.54321098765433, -234.56789012345678, 0.0), (786.5432109876543, -234.56789012345678, 0.0)] != [(-123.45678901234568, -234.56789012345678, 0.0), (276.54321098765433, -234.56789012345678, 0.0)]"
+    },
+    {
+      "name": "fixed 6-decimal output",
+      "rejected": true,
+      "reason": "curve 9: exact scaled SPLINE controls [(276.543211, 365.43211, 0.0), (176.543211, 565.43211, 0.0), (-23.456789, 565.43211, 0.0), (-123.456789, 365.43211, 0.0)] != [(276.54321098765433, 365.43210987654317, 0.0), (176.54321098765425, 565.4321098765433, 0.0), (-23.456789012345673, 565.4321098765432, 0.0), (-123.45678901234568, 365.43210987654317, 0.0)]"
+    },
+    {
+      "name": "cubic endpoints used as interpolating controls",
+      "rejected": true,
+      "reason": "curve 9: exact scaled SPLINE controls [(276.54321098765433, 0.0, 0.0), (176.54321098765425, 0.0, 0.0), (-23.456789012345673, 0.0, 0.0), (-123.45678901234568, 0.0, 0.0)] != [(276.54321098765433, 365.43210987654317, 0.0), (176.54321098765425, 565.4321098765433, 0.0), (-23.456789012345673, 565.4321098765432, 0.0), (-123.45678901234568, 365.43210987654317, 0.0)]"
+    },
+    {
+      "name": "SPLINE rational flag",
+      "rejected": true,
+      "reason": "SPLINE flags/degree/counts"
+    },
+    {
+      "name": "SPLINE wrong knot",
+      "rejected": true,
+      "reason": "SPLINE knots"
+    },
+    {
+      "name": "SPLINE wrong normal",
+      "rejected": true,
+      "reason": "SPLINE normal"
+    },
+    {
+      "name": "missing explicit LINE Z",
+      "rejected": true,
+      "reason": "group 30: expected once, found []"
+    },
+    {
+      "name": "wrong piece/order",
+      "rejected": true,
+      "reason": "curve 7: layer/order"
+    },
+    {
+      "name": "missing model-space declaration",
+      "rejected": true,
+      "reason": "group 410: expected once, found []"
+    },
+    {
+      "name": "extra closing edge count",
+      "rejected": true,
+      "reason": "extra boundary entity"
+    },
+    {
+      "name": "missing CLASSES section",
+      "rejected": true,
+      "reason": "missing/out-of-order section CLASSES"
+    },
+    {
+      "name": "BOM",
+      "rejected": true,
+      "reason": "binary/BOM"
+    },
+    {
+      "name": "CRLF",
+      "rejected": true,
+      "reason": "non-LF line ending"
+    },
+    {
+      "name": "missing final newline",
+      "rejected": true,
+      "reason": "missing final LF"
+    },
+    {
+      "name": "duplicate required field",
+      "rejected": true,
+      "reason": "group 70: expected once, found ['8', '8']"
+    },
+    {
+      "name": "missing raw INSUNITS despite consumer defaults",
+      "rejected": true,
+      "raw_errors": [
+        "header: AssertionError: $INSUNITS missing/wrong raw declaration"
+      ]
+    },
+    {
+      "name": "raw TABLE count mismatch",
+      "rejected": true,
+      "raw_errors": [
+        "TABLES: AssertionError: VPORT count mismatch",
+        "BLOCKS: KeyError: '*Model_Space'",
+        "entity 0/curve 7: KeyError: '*Model_Space'",
+        "entity 1/curve 8: KeyError: '*Model_Space'",
+        "entity 2/curve 9: KeyError: '*Model_Space'",
+        "entity 3/curve 10: KeyError: '*Model_Space'",
+        "entity 4/curve 16: KeyError: '*Model_Space'",
+        "entity 5/curve 17: KeyError: '*Model_Space'",
+        "entity 6/curve 18: KeyError: '*Model_Space'",
+        "entity 7/curve 19: KeyError: '*Model_Space'",
+        "exact adjacency/closure: AssertionError: unreadable geometry prevents closure acceptance",
+        "OBJECTS/layout links: KeyError: '*Model_Space'",
+        "handles/references: AssertionError: unresolved group 330 reference 29"
+      ]
+    },
+    {
+      "name": "duplicate raw handle",
+      "rejected": true,
+      "raw_errors": [
+        "handles/references: AssertionError: duplicate handle 40"
+      ]
+    },
+    {
+      "name": "wrong model-space owner",
+      "rejected": true,
+      "raw_errors": [
+        "entity 0/curve 7: AssertionError: wrong model-space owner",
+        "exact adjacency/closure: AssertionError: unreadable geometry prevents closure acceptance"
+      ]
+    },
+    {
+      "name": "unresolved raw reference",
+      "rejected": true,
+      "raw_errors": [
+        "handles/references: AssertionError: unresolved group 340 reference FFFF"
+      ]
+    },
+    {
+      "name": "missing raw BLOCK_RECORD layout link",
+      "rejected": true,
+      "raw_errors": [
+        "OBJECTS/layout links: AssertionError: group 340: expected once, found []"
+      ]
+    },
+    {
+      "name": "missing raw LAYOUT reverse block link",
+      "rejected": true,
+      "raw_errors": [
+        "OBJECTS/layout links: AssertionError: group 330: expected once, found []"
+      ]
+    },
+    {
+      "name": "missing raw ACAD_GROUP declaration",
+      "rejected": true,
+      "raw_errors": [
+        "OBJECTS/layout links: AssertionError: root entries"
+      ]
+    },
+    {
+      "name": "HANDSEED below emitted handles",
+      "rejected": true,
+      "raw_errors": [
+        "handles/references: AssertionError: HANDSEED must exceed every emitted handle"
+      ]
+    },
+    {
+      "name": "DIMSTYLE group 5 instead of 105",
+      "rejected": true,
+      "raw_errors": [
+        "TABLES: AssertionError: DIMSTYLE handle must be group 105",
+        "handles/references: AssertionError: group 105: expected once, found []"
+      ]
+    },
+    {
+      "name": "R2007 BLOCK_RECORD insertion units in R2000",
+      "rejected": true,
+      "raw_errors": [
+        "TABLES: AssertionError: R2007 BLOCK_RECORD field in R2000"
+      ]
+    },
+    {
+      "name": "extra raw closing LINE entity",
+      "rejected": true,
+      "raw_errors": [
+        "entity count: AssertionError: 9 != 8",
+        "handles/references: AssertionError: unresolved group 330 reference 1"
+      ]
+    },
+    {
+      "name": "missing raw table-record owner",
+      "rejected": true,
+      "raw_errors": [
+        "TABLES: IndexError: list index out of range",
+        "BLOCKS: KeyError: '*Model_Space'",
+        "entity 0/curve 7: KeyError: '*Model_Space'",
+        "entity 1/curve 8: KeyError: '*Model_Space'",
+        "entity 2/curve 9: KeyError: '*Model_Space'",
+        "entity 3/curve 10: KeyError: '*Model_Space'",
+        "entity 4/curve 16: KeyError: '*Model_Space'",
+        "entity 5/curve 17: KeyError: '*Model_Space'",
+        "entity 6/curve 18: KeyError: '*Model_Space'",
+        "entity 7/curve 19: KeyError: '*Model_Space'",
+        "exact adjacency/closure: AssertionError: unreadable geometry prevents closure acceptance",
+        "OBJECTS/layout links: KeyError: '*Model_Space'",
+        "handles/references: AssertionError: unresolved group 330 reference 29"
+      ]
+    },
+    {
+      "name": "nonfinite numeric data",
+      "rejected": true,
+      "reason": "non-finite number 'nan'"
+    },
+    {
+      "name": "invalid handle",
+      "rejected": true,
+      "reason": "invalid hexadecimal handle 'x123'"
+    },
+    {
+      "name": "0.001 mm cubic control perturbation",
+      "rejected": true,
+      "max_sample_error_mm": 0.00042187500002910383
+    }
+  ],
+  "evaluator_sha256": "6756739bebef6f0753ad0bb86eed3ed0116b8d6d1dfaecf548b368c44a959ed6",
+  "contract": "FILE-005-v1",
+  "sample_t": [
+    0,
+    0.125,
+    0.25,
+    0.5,
+    0.75,
+    0.875,
+    1
+  ],
+  "sample_tolerance_mm": 1e-08
+}
