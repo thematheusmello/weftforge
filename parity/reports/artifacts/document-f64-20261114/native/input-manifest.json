@@ -1,0 +1,68 @@
+{
+  "id": "DOCUMENT-IEEE-INPUTS-001",
+  "prepared_at": "2026-11-14T06:37:30.980189+00:00",
+  "kind": "implementation_only",
+  "candidate_source_commit": "1528e3662380a4a74c3b70d3ef9b11f2c607af5f",
+  "criteria": {
+    "rounding": "Exact decimal -> destination IEEE binary64 or binary32, nearest/ties-even; no tolerance or decimal fitting.",
+    "color_destination": "binary32 directly from decimal, never through binary64",
+    "all_other_authoring_float_fields": "binary64",
+    "v1_mapping": [
+      "version1->2",
+      "stretch_stiffness copied to warp_stiffness and weft_stiffness",
+      "missing grain_angle defaults to0"
+    ],
+    "unchanged_nonfloat_fields": "All IDs, revisions, next_id, names, relationships and other schema fields retained.",
+    "invalid_load": "Reject1e400 or schema99 atomically; preserve the previously accepted document and history.",
+    "recovery": {
+      "focused_grain_literal": "0.12345678901234568",
+      "only_intended_change": "Focused grain field and one command revision; primary save remains unchanged; explicit recovery retains edit."
+    }
+  },
+  "raw_boundary_literals": {
+    "warp_stiffness": "99999999.99999999",
+    "weft_stiffness": "1.0000000000000002",
+    "areal_density": "0.18000000000000002",
+    "bending_stiffness": "0.0030000000000000005",
+    "color_red": "0.5000000298023224",
+    "color_green": "0.22",
+    "color_blue": "0.76"
+  },
+  "critical_expected_color_bits": "0x3f000001",
+  "wrong_double_rounded_color_bits": "0x3f000000",
+  "sources": {
+    "v1_original_sha256": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+    "v2_previous_actual_sha256": "a87cc6456bb64de249d2474f7ecae9da01883248d695052343a6c89e2861e4a5"
+  },
+  "inputs": {
+    "v1-original.weftforge": {
+      "sha256": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+      "bytes": 11818,
+      "expected_load": "accept"
+    },
+    "v1-extreme-stiffness.weftforge": {
+      "sha256": "2463672f7c5bcdd38e87227821556b6475ba674e4e67e28b582a67e65019006a",
+      "bytes": 11830,
+      "expected_load": "accept"
+    },
+    "v2-ieee-boundaries.weftforge": {
+      "sha256": "f98aec962a3b7e4899bd67a1fafe5844b4aaaf4994ebb7984ec96116b92459bd",
+      "bytes": 5760,
+      "expected_load": "accept"
+    },
+    "invalid-number.weftforge": {
+      "sha256": "859b80389aa2906cd2705fe0b0171ec680b4697d5830d42d008e1f1cb1c63f21",
+      "bytes": 5748,
+      "expected_load": "reject"
+    },
+    "invalid-schema99.weftforge": {
+      "sha256": "542177c3e068296fab7e1f863884a890a506a06c5af50291dfd846d1da61b31e",
+      "bytes": 5761,
+      "expected_load": "reject"
+    }
+  },
+  "limits": [
+    "No fitting, simulation or reference-parity claim.",
+    "Independent expected-bits supplement will be derived only from these frozen raw inputs, without native output inputs."
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "kind": "implementation_only",
+  "status": "passed_v2_focused_quit_saved_output_checks",
+  "oracle_sha256": "9e46dae6ababcb0066b01ec9864d5230c76b4daecd5a45a4378b952f5760a892",
+  "expected_bits_sha256": "2f471d3ef127f3057b1ed5d7085b5fc3b8e66e52a87506415aa29ee705c1903d",
+  "grain_literal": "0.12345678901234568",
+  "grain_expected_binary64": "0x3fbf9add3746f65f",
+  "float_fields_bit_exact": 103,
+  "all_nonfloat_fields_and_schema_exact": true,
+  "only_document_changes": [
+    "project.revision11->12",
+    "piece20.grain_angle .25->predeclared literal"
+  ],
+  "primary_bytes_unchanged": true,
+  "one_ulp_grain_negative_witness": {
+    "status": "rejected",
+    "reason": "/project/pieces/2/grain_angle binary64: expected0x3fbf9add3746f65f, actual0x3fbf9add3746f660"
+  },
+  "artifacts": {
+    "v2-ieee-boundaries.weftforge": {
+      "sha256": "f98aec962a3b7e4899bd67a1fafe5844b4aaaf4994ebb7984ec96116b92459bd",
+      "bytes": 5760
+    },
+    "before-quit.weftforge": {
+      "sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "bytes": 5752
+    },
+    "quit-recovery-capture.weftforge": {
+      "sha256": "7aca4d484193345549d9babb99138aa962f58711216c0f917aef82f7fb3a99a2",
+      "bytes": 5767
+    },
+    "quit-precondition.json": {
+      "sha256": "4ccad23e5531c7e6cfde57565ce82ded47cd0f81170e5b9b20644e461e808499",
+      "bytes": 602
+    },
+    "quit-result.json": {
+      "sha256": "345b390b67496e5d412d27dd5d63aacdc6557407810984596a469507a44df531",
+      "bytes": 538
+    }
+  },
+  "limits": [
+    "Focused draft/global Quit and process exit are parent-observed UI evidence.",
+    "Explicit recovery/save remains pending.",
+    "No simulation, fitting or reference parity claim."
+  ]
+}

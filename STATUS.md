@@ -8,8 +8,8 @@ Every remaining roadmap gate stays in scope.
 ## Published and recoverable state
 
 Public repository: https://github.com/thematheusmello/weftforge.
-Published main: `d34c9d18a2f4c672eb3130f2c80f24d59c4f95ce`
-([native evidence PR24](https://github.com/thematheusmello/weftforge/pull/24));
+Published main: `96a3dbed7c2c43aaf88d50b20f96d36bdfeb23e9`
+([numeric editing PR27](https://github.com/thematheusmello/weftforge/pull/27));
 all eight push/PR platform and evidence checks passed.
 [Source PR21](https://github.com/thematheusmello/weftforge/pull/21) is retained
 as ancestor `68bdb9fb774177f074f69edc1b2965336670cc9f`.
@@ -23,25 +23,32 @@ remains at older `8419363` and discloses its inspector defect. No native binarie
 ship yet. Distribution notices, platform launch/package QA and signing remain.
 Historical tags and failed or stale evidence have not been rewritten.
 
-Current branch: `feat/numeric-rectangle-and-contact-init`.
-Accepted bounded native candidate source: `359ac5b2fedfece5cfef9f22861c279bd2708801`;
-native executable `3ed0ab22b4e7335c8dff9a58350b7f68eb2aa9b5ba1c39059c9043a7210c6880`,
-CLI `3b0977567273c57d74edaf2ac470e0740b55fb2f7a3fec56e53b8b0463aab32f`.
-Runtime/test sources remain identical after the later evidence/catalog merges.
-This integrates the numeric rectangle dialog, stable widget scopes, modal input
-isolation, focused-history/RGB fixes, precision-preserving numeric editing,
-valid small/large size preservation and initial-contact BVH. The current map has
-902 entries; the executable was packaged at its 893-entry source snapshot.
+Current branch: `feat/document-f64-roundtrip`.
+Current bounded native I/O candidate source: `1528e3662380a4a74c3b70d3ef9b11f2c607af5f`;
+native `a16acde0fb010a34b1452881ca9865ac3a3ef58908ca50e2719177fb9ab3b838`,
+CLI `820b8329de53fe6cc167533d3e0f0b55953b14e0ff74e5d6fda4cead77b9f0b7`.
+The shared JSON parser enables existing float_roundtrip support without a new
+crate or lockfile change. Independent v1/v2 bit regressions and two analytic
+membrane tests pass; production solver math and the failed fixture are unchanged.
 
-The preceding `f348223d` / `dab0f0f3` candidate and its precision failure remain
-retained in [the failed run](parity/reports/WF-20261114-NUMERIC-RECTANGLE-001.json).
-New bounded [main acceptance](parity/reports/WF-20261114-NUMERIC-RECTANGLE-002.json)
-and [batch cancellation](parity/reports/WF-20261114-BATCH-CANCEL-001.json) reports
-pass their declared subsets and retain original/invalid/failed states.
+The [native IEEE report](parity/reports/WF-20261114-NATIVE-IEEE-001.json) passes
+its declared file-I/O subset: legacy migration/save/reopen, extreme stiffness,
+modern untouched fields and rejected loads, focused Quit retention and explicit
+recovery/reopen. The current map has928 IDs; the executable was packaged at the
+902-ID snapshot. After CI exposed an ignored autosave fixture and CRLF-dependent test preparation,
+all package bytes remained identical. Native actions remain attributed to1528;
+source4194 is separately qualified by exact rebuilt desktop/CLI/resource identity.
+The sole30-file scoped delta is the uncompiled migration-test preparation line.
+
+The completed `359ac5b` / `3ed0ab22` rectangle/curve/history/cancellation reports
+are retained as stale after parser configuration and test sources changed. Their
+original inputs, outputs and accepted/failed/invalid attempts remain unchanged.
+The earlier `f348223d` / `dab0f0f3` precision failure is retained separately.
 No complete feature, fitting, release-ready binary or reference parity is claimed.
 
 Preserve merge ancestry: source-pinned maps retain `7e59f2a`, `9acb265` and
-`3548de48983bd1a897c0a6433771cd695398ee60` and `13f1d81d238801da617f68525660ae6fa1d01500`.
+`3548de48983bd1a897c0a6433771cd695398ee60`, `13f1d81d238801da617f68525660ae6fa1d01500`,
+`8fb684e14ecc4685acefd2acfeea3e46a2dc3df5` and `df28375c5a070f9516c32534aa4202f3a06f9662`.
 Measured benchmark source `461f2e2` is also retained. Do not squash away these anchors.
 Only generated Cargo caches were relocated to the external volume; file sizes
 and identified binary hashes were checked. Local target symlinks require that
@@ -88,12 +95,13 @@ created/inspected an original file on the new identified CLI, with four decoded
 responses and zero stderr. A modern external client, live GUI control, MCP
 simulation jobs and persistent undo remain open.
 
-The combined runtime code passes **73 Rust tests**, formatting, strict Clippy and
-`cargo xtask verify`: **54 Python checks** (48 script and six independent
-reference evaluator tests), the **893-ID** packaged snapshot and current CLI help.
-The final combined evidence gate passes all54 Python checks, the **902-ID** map
-and registry after public artifact packaging. Its unsigned
-native package builds. Subsequent source changes require appropriate new checks.
+The combined runtime code passes **79 Rust tests**, formatting, strict Clippy
+and `cargo xtask verify`: **54 Python checks**, the packaged902-ID map and current
+CLI help. The final combined gate passes all54 Python checks, the **928-ID** map and
+registry after completed artifact packaging. The standard unsigned native package
+builds. Official Python MCP SDK1.28.1 also passes its legacy2025-11-25 smoke on
+CLI `820b8329`, with five tools, four decoded replies and zero stderr. A modern
+external client and distribution gates remain open.
 Earlier temporary-directory collisions and compile-time xtask root selection were
 fixed with regression coverage; wrong-checkout output is not current evidence.
 
@@ -150,6 +158,21 @@ deltas. Those are below the unchanged 1e-12 m criterion, but exact source-coordi
 equality is false; [issue26](https://github.com/thematheusmello/weftforge/issues/26)
 tracks parser precision. No bit-perfect migration claim is made.
 
+New native `a16acde0` preserves every declared typed number:188 fields for each
+legacy case and103 for the modern case. Independent exact Fraction/IEEE-bit
+expectations reject the old point/stiffness one-ULP errors and f32 double-rounding.
+Points40/41 retain their original nearest binary64 values; stiffness remains
+99999999.99999999; colour R rounds directly to binary32 `0x3f000001`.
+
+Modern untouched-focus and invalid-load saves are byte-identical at revision11.
+A focused grain draft0.12345678901234568 survives Cmd+Q into recovery revision12,
+leaving primary unchanged. Actual Recover copy, Save as and native reopen preserve
+all103 fields and exactly the intended grain/revision delta. The oracle, inputs
+and expected bits were frozen before output evaluation. Historical rounded files
+remain unchanged and still fail the exact oracle; lost values cannot be inferred.
+Legacy invalid-load/focus/focused-Quit branches were not executed in native UI;
+this is targeted I/O acceptance, not a complete project/garment contract.
+
 Older original shirt workflow `f00e` / `ff391447` passed its declared fitting
 limits: strain 0.08071753, seam 2.79e-8 m, contact about 1.50e-16 m. It is stale.
 The later anisotropic shirt **failed**: strain 0.26930346 > 0.15, despite passing
@@ -173,20 +196,24 @@ REA 6.9.0 observes the installed Personal 2026.1.237 (r58920), executable
 Millimeter, but numeric locale, language and wider behavioral preferences are
 not fully frozen. Raw account/commercial records and vendor artifacts stay private.
 
-The current reviewed catalog has **589 menu nodes plus 313 component records**.
+The current reviewed catalog has **589 menu nodes plus339 component records**.
 The [crosswalk](spec/inventory/weftforge-implementation-map.md) assigns all
-**902 unique IDs** once to **202 bounded packets and 52 source landmarks**,
+**928 unique IDs** once to **205 bounded packets and56 source landmarks**,
 retaining all prior entries. This maps observed surfaces to implementation work;
-it is not a feature denominator or a parity pass. All 893 previous entries and
-201 packets are preserved; the new sewing packet covers first-side preview only.
+it is not a feature denominator or a parity pass. All902 previous entries and
+202 packets are preserved. New seam property/appearance packets are planned;
+unidentified header controls remain explicitly ambiguous.
 
 Original reference rectangle entry, Undo/Redo, save/reopen and PD20→PD10 edits
 were executed. Independent exports stayed within the declared 0.01 mm dimension
 limit: 290→1127 vertices, with separately checked closed boundary topology.
 Normal PD10 restart temporarily showed a black window before resolving in the
 same process; final target fields persisted, with explicit AX gaps/truncation.
-An original two-panel curved fixture exists. First-side free-sewing selection
-is preview evidence only; the paired/reversed seam remains unconfirmed.
+An original two-panel curved fixture exists. A whole-edge300mm pair, one
+Undo/Redo and document New/Open preserve observed seam properties. Interrupted
+driver input and guard refusals remain qualified; this is not a clean driver,
+process-restart, simulation, reversal or partial-seam comparison. The separately saved100/100mm partial and reversal cases are complete in
+an isolated949-entry catalog batch, pending review and map integration.
 
 Reference qualification still requires technical identity, behavior settings,
 contracts, scenarios, original fixtures, criteria and transitive dependency pins.
@@ -194,25 +221,30 @@ No current report qualifies as a complete reference parity pass.
 
 ## Active work and next steps
 
-1. Publish the completed source/evidence checkpoint and require all eight CI
-   checks before merging. Local final evidence gates pass. Preserve the failed
-   and invalid attempts, source ancestry and the product README.
-2. Keep native preparation-phase timing, worker termination, JSON float precision,
-   complete garment fitting and reference comparison gates open.
-3. Continue actual reference whole-edge/partial sewing, preferences, contextual
-   dialogs/ranges/errors and end-to-end workflows; map each new observation batch.
-4. Continue every construction, simulation/contact, animation, avatar, rendering,
-   interchange, printing, automation and delivery gate. Verified parity stays zero.
+1. Publish the exact native I/O source/evidence checkpoint with final local gates
+   and all eight CI checks, preserving historical outcomes and source anchors.
+2. Independently review and integrate isolated exact shape-preserving join commit
+   `eaed5f9247cf36e2a65de9a8e62682637e9d5664` and correction
+   `343e771e3ca2a32704eaa1cca45b8c8e31d1e67a`;88 workspace tests/Clippy/xtask pass
+   in its own worktree. Native join acceptance is pending and this is not general
+   reference join semantics. Integration must stale/revalidate affected evidence.
+3. Continue reference partial sewing, preferences, contextual dialogs/ranges/errors
+   and end-to-end workflows; map every new observation batch.
+4. Keep native initialization phase/worker timing, complete garment fitting and
+   reference comparison gates open. Continue construction, simulation/contact,
+   animation, avatar, rendering, interchange, printing, automation and delivery.
+   Verified parity stays zero; the complete product denominator remains unknown.
 
-Reference_lab owns exclusive desktop input for the next original sewing workflow.
-Root's saved own candidate PID79057 is idle on the cancellation fixture; do not
-overwrite its isolated package. The read-only reopened-small capture has 94 nodes,
-no gaps/truncation and a matched executable digest. Curve_output_check is packaging
-independent public evidence (complete); Integrated_review checks attribution and reproduction.
-No root Cargo job is live. External generated caches are retained; do not remove
-unrelated files or change system protections.
+Reference_lab has returned the desktop input lease to root. Root's own
+candidate PID1335 is idle, saved, with an unedited focused grain value; do not
+replace its isolated package. Its read-only REA capture has93 nodes, no gaps or
+truncation and a matched executable digest. Independent I/O verification/bundle
+is complete. No root Cargo job is live. Corrected79-test/Clippy/xtask gates pass; all257 tracked artifact
+hashes, clean-checkout registry/map checks and fixed-case oracle replay passed
+with command-local core.autocrlf=true. CI retry follows this snapshot. Generated external caches and private
+research remain retained; do not remove unrelated files or change protections.
 
-A separate solver review found no justified production math change for issue16.
-Its two analytic regressions and review note pass 22 sim tests/strict Clippy on
-isolated commit `c248903655a4c30dbab93d004f9c0229101e3f22`; they are not merged
-into this 73-test native checkpoint. The fitting failure remains unresolved.
+The source-only anisotropic review independently reproduces the retained weak-warp
+strain0.26930346 failure and finds no justified production math change. Its two
+analytic regressions are integrated; calibration/convergence and issue16 remain
+open. Parser performance was not benchmarked.

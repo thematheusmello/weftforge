@@ -1,0 +1,379 @@
+{
+  "schema_version": 1,
+  "case_id": "REF-SEW-001-WHOLE-001",
+  "product_build": "2026.1.237 (r58920)",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "baseline_status": "provisional_unfrozen",
+  "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "status": "bounded_whole_edge_pair_history_and_document_reopen_observed",
+  "units": "Millimeter configured and constructor/export units observed separately; this case records literal one-decimal UI side lengths.",
+  "numeric_locale": "unknown",
+  "predeclared_target": "Two original 300 mm straight left sides; visible marks, one Undo/Redo and document save/close/open.",
+  "predeclared_tolerance": "Literal displayed 300.0 canvas labels on both sides under the separately observed Millimeter configuration; the canvas does not print a unit beside those labels. No sub-display precision or physical geometry/solver tolerance inferred.",
+  "original_geometry": {
+    "panels": 2,
+    "declared_width_mm": 200,
+    "declared_height_mm": 300,
+    "upper_bottom_edge": "original curve from prior controlled case; not used for this whole-side pair",
+    "prior_particle_distance_mm": 20,
+    "particle_distance_changed": false,
+    "simulation_executed": false
+  },
+  "entry": {
+    "menu": "Sewing > Segment Sewing",
+    "displayed_2d_shortcut_hint": "N",
+    "shortcut_executed": false,
+    "both_toolbar_labels_checked": true
+  },
+  "observed_pair": {
+    "first_visibly_accepted_side": "lower panel straight left side",
+    "first_preview_length_mm": 300.0,
+    "first_preview_difference_text": "300.0 (300.0 / 0.0)",
+    "other_side": "upper panel straight left side",
+    "completed_pair_visible": true,
+    "side_displayed_lengths_mm": [
+      300.0,
+      300.0
+    ],
+    "directional_marks_visible": true,
+    "exact_ordered_endpoints": "unmeasured",
+    "numerical_orientation_flag": "unobserved",
+    "reverse_sewing_executed": false,
+    "completed_pair_mismatch_readout": "not displayed/read; equal side labels are not a separate UI mismatch measurement",
+    "generated_seam_name": "retained privately; equal after Redo and reopen",
+    "literal_canvas_labels": [
+      "300.0",
+      "300.0"
+    ],
+    "canvas_label_unit_basis": "Unit System Millimeter observed separately; no unit text beside these canvas labels."
+  },
+  "seam_current_values": {
+    "Turned": false,
+    "Fold Strength": {
+      "value": 5,
+      "unit": "not printed"
+    },
+    "Fold Angle": {
+      "value": 180,
+      "unit": "not printed"
+    },
+    "Tension": false,
+    "Set Sublayer": false,
+    "Topstitch": false,
+    "Puckering": false,
+    "3D Seamline": "Plain Seam",
+    "Normal Map Intensity": {
+      "value": 10,
+      "unit": "not printed"
+    },
+    "Normal Map Thickness": {
+      "value": 1.5,
+      "unit": "mm"
+    }
+  },
+  "seam_property_values_changed": false,
+  "history": {
+    "one_undo": "paired traces/marks and selected-seam properties disappear; two panel outlines remain",
+    "one_redo": "paired traces/marks, both 300.0 labels and same seam name/settings return"
+  },
+  "persistence": {
+    "saved_new_working_copy_before_edits": true,
+    "saved_separate_result": true,
+    "document_closed_to_empty": true,
+    "document_reopened": true,
+    "reselection": "Sewing > Edit Sewing then Edit > Select All",
+    "same_seam_name_and_settings_observed": true,
+    "both_300_mm_labels_and_marks_observed": true,
+    "native_hash_unchanged": true,
+    "original_input_hash_unchanged": true,
+    "process_restart_executed": false,
+    "warning": "Same low-space warning remains after first Proceed; second Proceed completes open. Distinct modal instances versus delayed handling are not established."
+  },
+  "input_qualification": {
+    "driver_source_sha256": "df39282ebcf11d25de180a33e31aa0f295d23f3521ba4d299ea7c7f357d5c812",
+    "driver_binary_sha256": "4d945a09b6a45b41cc2de8799206a01a76aad235d830740708078985286c97ed",
+    "guard_policy_changed": false,
+    "occluded_dry_runs": "refused before events; foreign system dialogs untouched",
+    "first_unoccluded_upper_click": "3 events reported; no visible authoring effect",
+    "lower_side_click": "3 events reported; cyan 300.0 first-side preview observed",
+    "final_pairing_run": "Required AXSize unavailable (-25202) reported during gesture; actual event count unavailable. Fresh after-capture shows completed pair.",
+    "final_pairing_run_clean_pass": false,
+    "final_pairing_run_partial_input_possible": true,
+    "final_pairing_click_repeated_after_observed_result": false
+  },
+  "native_files": [
+    {
+      "name": "reference-sewing-curved-unsewn.zprj",
+      "role": "unchanged original input",
+      "bytes": 62298,
+      "sha256": "6d2280542cdccb84c09f46ef709c4c20e3152a01cf1fc42e775aff7b10edcffd",
+      "publication": "private native container; internal format not inspected"
+    },
+    {
+      "name": "reference-whole-edge-sewing-working.zprj",
+      "role": "new protected copy saved before sewing",
+      "bytes": 62415,
+      "sha256": "1687f6939e40fd0ea6321576d0921f9ccb2f2e66640a5e28167470250e67cb8c",
+      "publication": "private native container; internal format not inspected"
+    },
+    {
+      "name": "reference-whole-edge-sewn.zprj",
+      "role": "saved whole-edge result, subsequently closed and reopened",
+      "bytes": 85418,
+      "sha256": "43eba999dd571df11e7a71e8c26251a66b6327b1ed4d43e5d8fdeaea8e1b9b02",
+      "publication": "private native container; internal format not inspected"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_ff0caa3ee7452280e1de74a58ae53ebaf6d98d82c4e3323a5564bb954a9cac40",
+      "key": "before",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "d797f67f5726db002e75deb331e945c7adbabf19e02aac2cc4af42da55575915",
+      "started_at": "2026-11-14T05:55:57.060472+00:00",
+      "completed_at": "2026-11-14T05:56:04.747324+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_1531af1e1825b222c0b78d01802f58aefcf341d6b3a0741e7531e2baa880bd6a",
+      "key": "first300",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "7e9617c0f6a46bcc7f660aa1d20559de3f9578d97f0b08f2099a07400251cfdb",
+      "started_at": "2026-11-14T05:59:19.983218+00:00",
+      "completed_at": "2026-11-14T05:59:27.610497+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_c8392e5e61ba58421f28d1a65a88018b42162e44ec595df7aa0ab7d4b4483bdf",
+      "key": "created",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "6b2f1bb06c286610a556e21f4922bbc8ceb8e6d43374975897d57551805858ff",
+      "started_at": "2026-11-14T06:01:25.388979+00:00",
+      "completed_at": "2026-11-14T06:01:33.119233+00:00",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_8309ab1a8efff245e56edcadf1e08a05750b4ae46e568635fad68eb20c6cf005",
+      "key": "undo",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "6a9cbab4fa31be8bd87d08d623d2ca3f1f616ae0132839a4a092e48f574668db",
+      "started_at": "2026-11-14T06:03:56.894981+00:00",
+      "completed_at": "2026-11-14T06:04:05.317758+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_0a15fa906d0f1cfbea26380cf20f1c785505535d7c28deaaca47edf8415b01a5",
+      "key": "redo",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "3774c075c79e6570747d52446db2d5370f74ce9ae62805cb14f485a0373c2b9b",
+      "started_at": "2026-11-14T06:04:50.558280+00:00",
+      "completed_at": "2026-11-14T06:04:58.809189+00:00",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_29b6cb31a7807682ecb76f178ffcf45a37887da8782444d6f53f47af7d4916e1",
+      "key": "saved",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "aa8f4f7a48b540493f179a0eb17bd3c49599f7da3e3c8cdd534629f053aec140",
+      "started_at": "2026-11-14T06:06:30.191835+00:00",
+      "completed_at": "2026-11-14T06:06:38.249838+00:00",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_bc6b47fed8963341f5518233da2129641b41f59a88e601a3fa5a3af4674a462b",
+      "key": "closed",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "271bbe5ef5ab2664b160845b03c35b63c9b8492d75c81b702e4f40adbff53959",
+      "started_at": "2026-11-14T06:07:00.849846+00:00",
+      "completed_at": "2026-11-14T06:07:08.358418+00:00",
+      "nodes": 95,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_904d1c95f94c4890c4520cde3665ecfbfbbccef2d51c2480b3611834e3f220b0",
+      "key": "reopened",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "c9938275856a7f04f7cf9783dc770f4f9e12d62358d4cb98194f4cdbf0c78a65",
+      "started_at": "2026-11-14T06:08:34.910099+00:00",
+      "completed_at": "2026-11-14T06:08:42.418988+00:00",
+      "nodes": 95,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521",
+      "key": "reselected",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "a1ef41faf7ae8e80d935b85797422f9432f041b4c68a8f03ec86cb491590a7e8",
+      "started_at": "2026-11-14T06:10:34.861896+00:00",
+      "completed_at": "2026-11-14T06:10:42.703007+00:00",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "CUA-SEGMENT-SEWING-HINT-20261114",
+      "key": "tool_hint",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "457c2ec52f6c8e08ae11b4eb122bc2e87960a7e21cbbfe67ca30a211808c7b98",
+      "observed_at": "2026-11-14T06:16:45.006Z",
+      "context": "Menu activation after whole-edge document reopen; retains checked labels, displayed N hint and unchanged selected-seam controls. No new authoring gesture.",
+      "privacy": "Complete native record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "CUA-WHOLE-EDGE-SAVE-WARNING-20261114",
+      "key": "warning",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "68459d3e880939d223210e6db27d7fba6b6a80bf82042e299bfc9cad661d0ec6",
+      "observed_at": "2026-11-14T05:49:48.476Z",
+      "context": "Low-space warning before saving the protected original working copy; no seam edit yet.",
+      "privacy": "Complete native record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "PLAN-SEW-001-WHOLE-20261114",
+      "key": "plan",
+      "provider": "predeclared original-fixture scenario",
+      "retained_record_sha256": "bcffbfb4d3ab11558cf54c559f988992cd17e1a694a990ce284e3d6c2c23b01f",
+      "declared_at": "2026-11-14T05:48:26.068972+00:00",
+      "context": "Two original 300 mm straight sides; literal displayed length, categorical marks, one Undo/Redo and document save/close/open. No physical solver or arc-length tolerance inferred."
+    },
+    {
+      "id": "INPUT-WHOLE-EDGE-FIRST-CLICK-CHECK",
+      "key": "whole-edge-first-click-check",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "0ed978386215f33a0fca58e826e215adcaf36328059fee6c2c9f6c4bd98e5d7f",
+      "operation": "check",
+      "refused": "Selected window is not the first normal CG window at this point",
+      "events_posted": 0,
+      "partial_input_possible": false,
+      "privacy": "Complete pointer requests and raw records remain private."
+    },
+    {
+      "id": "INPUT-WHOLE-EDGE-FIRST-CLICK-RAISED-CHECK",
+      "key": "whole-edge-first-click-raised-check",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "fa49c4ce7b01bbb32a5b3292d70b1a8f0b967017e6a40c194b84b6d63beed0eb",
+      "operation": "check",
+      "refused": "System-wide AX hit belongs to another process",
+      "events_posted": 0,
+      "partial_input_possible": false,
+      "privacy": "Complete pointer requests and raw records remain private."
+    },
+    {
+      "id": "INPUT-WHOLE-EDGE-FIRST-CLICK-FOCUSED-CHECK",
+      "key": "whole-edge-first-click-focused-check",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "fa49c4ce7b01bbb32a5b3292d70b1a8f0b967017e6a40c194b84b6d63beed0eb",
+      "operation": "check",
+      "refused": "System-wide AX hit belongs to another process",
+      "events_posted": 0,
+      "partial_input_possible": false,
+      "privacy": "Complete pointer requests and raw records remain private."
+    },
+    {
+      "id": "INPUT-WHOLE-EDGE-FIRST-CLICK-UNOCCLUDED-RUN",
+      "key": "whole-edge-first-click-unoccluded-run",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "a2bed17cdfa2500bc7d37e65e73d75e3ee90ae4ff1925e1ba70d1002a1fed396",
+      "operation": "run",
+      "refused": null,
+      "events_posted": 3,
+      "partial_input_possible": false,
+      "privacy": "Complete pointer requests and raw records remain private."
+    },
+    {
+      "id": "INPUT-WHOLE-EDGE-SECOND-CLICK-RUN",
+      "key": "whole-edge-second-click-run",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "5e2891fec751a2053f31470031dcfb14ac231e611230d3571e3ae75475d7364e",
+      "operation": "run",
+      "refused": null,
+      "events_posted": 3,
+      "partial_input_possible": false,
+      "privacy": "Complete pointer requests and raw records remain private."
+    },
+    {
+      "id": "INPUT-WHOLE-EDGE-UPPER-PAIR-CLICK-RUN",
+      "key": "whole-edge-upper-pair-click-run",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "bb688459797590c986fa8b464d6d9c1d5edffda3f51868439b68a9614b4a26a8",
+      "operation": "run",
+      "refused": "Required AX attribute AXSize unavailable: -25202",
+      "events_posted": null,
+      "partial_input_possible": true,
+      "privacy": "Complete pointer requests and raw records remain private."
+    }
+  ],
+  "independent_curve_or_seam_geometry_measurement": "not_run",
+  "open_questions": [
+    "Explicit Reverse Sewing and ordered endpoint correspondence.",
+    "Completed partial Free Sewing and asymmetric arc-length endpoint measurement.",
+    "Unequal lengths/easing and mismatch color/threshold cases.",
+    "Sewing cancellation/rejection and seam-property range/edit behavior.",
+    "Post-edit attachment, sewn remeshing and simulation closure.",
+    "Process restart of the sewn result.",
+    "Header/normal-map control effects and undisplayed configuration."
+  ],
+  "weftforge_comparison": "not_run",
+  "verified_parity_claimed": false,
+  "complete_broad_feature_contracts": 0
+}

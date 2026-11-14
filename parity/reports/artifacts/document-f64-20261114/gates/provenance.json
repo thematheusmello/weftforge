@@ -1,0 +1,48 @@
+{
+  "logs": {
+    "tests": {
+      "original_private_raw_sha256": "8e92b8761e3bf2a30b019139a35201eeec7e0a258ce87bbc96d6879c6cfcdc30",
+      "public_derived_path": "parity/reports/artifacts/document-f64-20261114/gates/tests.log",
+      "public_derived_sha256": "e52d13c7e682d2f79ac36206d20a187b5c24cc0700965ad7471eb51790434ba6",
+      "derivation": "Only the personal absolute workspace prefix is replaced by ${WORKSPACE}.",
+      "runtime_source_commit": "1528e3662380a4a74c3b70d3ef9b11f2c607af5f"
+    },
+    "clippy": {
+      "original_private_raw_sha256": "98e960196bbcd4ed74161751d447b395fe7a85a0527b16b0a6a65b0ee608e939",
+      "public_derived_path": "parity/reports/artifacts/document-f64-20261114/gates/clippy.log",
+      "public_derived_sha256": "5c960f75d87881710e56652156a6384eaa52c6505600470b6e8749f81621addc",
+      "derivation": "Only the personal absolute workspace prefix is replaced by ${WORKSPACE}.",
+      "runtime_source_commit": "1528e3662380a4a74c3b70d3ef9b11f2c607af5f"
+    },
+    "snapshot-xtask": {
+      "original_private_raw_sha256": "1260ba45d2e1387e79efcde6b72c998c51ad0911ee46a664628ca7e2bdb37dd7",
+      "public_derived_path": "parity/reports/artifacts/document-f64-20261114/gates/snapshot-xtask.log",
+      "public_derived_sha256": "c4fbb6356c649807475325efe671cab3e5705ba347e7c002ecf509ac0bef3a7c",
+      "derivation": "Only the personal absolute workspace prefix is replaced by ${WORKSPACE}.",
+      "runtime_source_commit": "1528e3662380a4a74c3b70d3ef9b11f2c607af5f"
+    },
+    "package": {
+      "original_private_raw_sha256": "fe14c44d6a195a24e9685bce4685576b9c4803624d5e9c3ad8061d3962702bce",
+      "public_derived_path": "parity/reports/artifacts/document-f64-20261114/gates/package.log",
+      "public_derived_sha256": "d7d38e8088d8b4f5752eb5577334a51dcf6e9b6ad6f97acbaf8b862ba87babf6",
+      "derivation": "Only the personal absolute workspace prefix is replaced by ${WORKSPACE}.",
+      "runtime_source_commit": "1528e3662380a4a74c3b70d3ef9b11f2c607af5f"
+    },
+    "publish-xtask": {
+      "original_private_raw_sha256": "eb8524682f0aa649246463d6038bb44a09708c87318ffb5f036590925d67de61",
+      "public_derived_path": "parity/reports/artifacts/document-f64-20261114/gates/publish-xtask.log",
+      "public_derived_sha256": "eb8524682f0aa649246463d6038bb44a09708c87318ffb5f036590925d67de61",
+      "derivation": "Only the personal absolute workspace prefix is replaced by ${WORKSPACE}.",
+      "runtime_source_commit": "1528e3662380a4a74c3b70d3ef9b11f2c607af5f"
+    }
+  },
+  "rust_tests": 79,
+  "python_checks": 54,
+  "packaged_snapshot_inventory_ids": 902,
+  "later928_map": "Structural/registry validation passed; final evidence/CI gate follows completed artifact packaging.",
+  "fmt": "cargo fmt --all --check passed with no output.",
+  "final_inventory_ids": 928,
+  "final_work_packets": 205,
+  "final_source_landmarks": 56,
+  "final_evidence_gate": "cargo xtask verify passed all54 Python checks, current registry/map and CLI help after completed native artifact packaging"
+}

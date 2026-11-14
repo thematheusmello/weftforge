@@ -22,6 +22,146 @@ fn temp_path() -> PathBuf {
     ))
 }
 
+fn assert_decimal_bits(actual: f64, decimal: &str) {
+    // Keep the expected parser independent of the JSON reader under test.
+    let expected: f64 = decimal.parse().unwrap();
+    assert_eq!(actual.to_bits(), expected.to_bits(), "{decimal}");
+}
+
+fn assert_fixture_point_bits(project: &Project) {
+    let actual = [40, 41].map(|id| project.point(id).unwrap().position[0].to_bits());
+    let expected = ["1.1199999999999999", "1.0999999999999999"]
+        .map(|decimal| decimal.parse::<f64>().unwrap().to_bits());
+    assert_eq!(actual, expected, "Original fixture point X coordinates");
+}
+
+fn assert_disk_roundtrip(bytes: &[u8], check: impl Fn(&Project)) {
+    let path = temp_path();
+    fs::write(&path, bytes).unwrap();
+    let project = Project::load(&path).unwrap();
+    check(&project);
+    check(&Project::from_json(&project.to_json().unwrap()).unwrap());
+    project.save(&path).unwrap();
+    check(&Project::load(&path).unwrap());
+    check(&Project::recover(&path).unwrap());
+    assert_eq!(fs::read(recovery_path(&path)).unwrap(), bytes);
+    fs::remove_file(&path).unwrap();
+    fs::remove_file(recovery_path(&path)).unwrap();
+}
+
+#[test]
+fn original_v1_point_bits_survive_load_migration_save_and_reload() {
+    let prepared = std::str::from_utf8(V1_FIXTURES[0]).unwrap().replacen(
+        "\"resolution\": 0.12",
+        "\"resolution\": 0.015",
+        1,
+    );
+    assert_disk_roundtrip(prepared.as_bytes(), |project| {
+        assert_fixture_point_bits(project);
+        assert_decimal_bits(project.resolution, "0.015");
+    });
+}
+
+fn precision_document(version: u32) -> String {
+    let mut text = std::str::from_utf8(V1_FIXTURES[0])
+        .unwrap()
+        .replace("\r\n", "\n")
+        .replace(
+            "\"resolution\": 0.12",
+            "\"resolution\": 0.015000000000000001",
+        )
+        .replace(
+            "\"stretch_stiffness\": 400.0",
+            "\"stretch_stiffness\": 99999999.99999999",
+        )
+        .replace("\"damping\": 0.2", "\"damping\": 51.248178375505404")
+        .replace(
+            "\"translation\": [\n            0.0,",
+            "\"translation\": [\n            999.9999999999999,",
+        )
+        .replace(
+            "\"rotation\": [\n            0.0,",
+            "\"rotation\": [\n            999999.9999999999,",
+        );
+    if version == 2 {
+        text = text
+            .replace("\"version\": 1", "\"version\": 2")
+            .replace(
+                "\"stretch_stiffness\": 99999999.99999999",
+                "\"warp_stiffness\": 99999999.99999999, \"weft_stiffness\": 99999999.99999999",
+            )
+            .replace(
+                "\"placement\":",
+                "\"grain_angle\": 999999.9999999999, \"placement\":",
+            );
+    }
+    text
+}
+
+fn assert_precision_document_bits(project: &Project, version: u32) {
+    assert_decimal_bits(project.materials[0].warp_stiffness, "99999999.99999999");
+    assert_decimal_bits(project.materials[0].weft_stiffness, "99999999.99999999");
+    assert_decimal_bits(project.materials[0].damping, "51.248178375505404");
+    assert_decimal_bits(
+        project.pieces[0].placement.translation[0],
+        "999.9999999999999",
+    );
+    assert_decimal_bits(project.pieces[0].placement.rotation[0], "999999.9999999999");
+    let grain = if version == 1 {
+        "0.0"
+    } else {
+        "999999.9999999999"
+    };
+    assert_decimal_bits(project.pieces[0].grain_angle, grain);
+    assert_fixture_point_bits(project);
+    assert_decimal_bits(project.resolution, "0.015000000000000001");
+}
+
+#[test]
+fn v1_hard_decimals_and_large_authoring_values_keep_their_bits() {
+    assert_disk_roundtrip(precision_document(1).as_bytes(), |project| {
+        assert_precision_document_bits(project, 1);
+    });
+}
+
+#[test]
+fn v2_hard_decimals_and_large_authoring_values_keep_their_bits() {
+    assert_disk_roundtrip(precision_document(2).as_bytes(), |project| {
+        assert_precision_document_bits(project, 2);
+    });
+}
+
+#[test]
+fn both_schema_readers_reject_nonfinite_and_out_of_range_numbers() {
+    for version in [1, 2] {
+        let text = precision_document(version);
+        for invalid in [
+            "NaN",
+            "Infinity",
+            "-Infinity",
+            "1e309",
+            "-1e309",
+            "null",
+            "\"0.015\"",
+            "0.5000000000000001",
+        ] {
+            let bad = text.replace(
+                "\"resolution\": 0.015000000000000001",
+                &format!("\"resolution\": {invalid}"),
+            );
+            assert!(
+                Project::from_json(bad.as_bytes()).is_err(),
+                "v{version}: {invalid}"
+            );
+        }
+        let bad = text.replace("99999999.99999999", "100000000.00000001");
+        assert!(
+            Project::from_json(bad.as_bytes()).is_err(),
+            "v{version}: excessive stiffness"
+        );
+    }
+}
+
 fn assert_lossless_v1(bytes: &[u8]) -> Project {
     let old: Value = serde_json::from_slice(bytes).unwrap();
     assert_eq!(old["version"], 1);

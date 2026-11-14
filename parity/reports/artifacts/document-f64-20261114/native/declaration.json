@@ -1,0 +1,32 @@
+{
+  "id": "UI-NATIVE-IEEE-ROUNDTRIP-001",
+  "declared_at": "2026-11-14T06:38:37.439081+00:00",
+  "kind": "implementation_only",
+  "source_commit": "1528e3662380a4a74c3b70d3ef9b11f2c607af5f",
+  "executable_sha256": "a16acde0fb010a34b1452881ca9865ac3a3ef58908ca50e2719177fb9ab3b838",
+  "cli_sha256": "820b8329de53fe6cc167533d3e0f0b55953b14e0ff74e5d6fda4cead77b9f0b7",
+  "pid": 75074,
+  "input_manifest_sha256": "3a3e8b6bf7cd76282eb18afef508650831154fbb752b95395777fca1ecc55c5f",
+  "initial_state": "Empty native document in identified new candidate; simulation off. Existing own original fixtures exercise file I/O only.",
+  "actions": [
+    "NativeOpenv1-original,SaveAsnewv2, reopen/save and compare every supplied field using exact IEEE expectations and explicit v1 mapping.",
+    "NativeOpenv1-extreme-stiffness,SaveAs; confirm just-below-1e8f64 survives.",
+    "NativeOpenv2-ieee-boundaries,SaveAs; focus/blur untouched highprecision field, save and compare allf64/f32 bits.",
+    "Try invalid-number and unsupported-schema through nativeOpen; errors retain accepted document and named primary; save new checkpoints.",
+    "Save before-quit, type grain0.12345678901234568withoutTab,CmdQ. Retain autosave bytes and verify primary untouched; relaunch/Open/explicitRecover/saveasnew; compare intended grain/revision delta only."
+  ],
+  "criteria": {
+    "numeric_interpretation": "exact decimal->typed IEEEbinary64/binary32 nearest/ties-even, independent Fraction oracle or standard parser expectations fixed before outputs",
+    "unchanged_input_bytes": true,
+    "v1_schema_mapping": "grain0; stretch copied to warp/weft; allotherfields/IDs/revisionpreserved under typed numeric interpretation",
+    "no_unintended_field_changes": true,
+    "invalid_load_retains_accepted_state": true,
+    "untouched_focus_blur_no_revision_change": true,
+    "focused_quit_recovery_preserves_latest_draft_without_primary_overwrite": true
+  },
+  "limits": [
+    "Targeted native file parsing/persistence/recovery only; not a full empty-project garment workflow, fitting, performance or reference parity test.",
+    "The parser cannot reconstruct values already saved after rounding.",
+    "Input fixtures remain immutable; no tolerance/fixture changes to force a pass."
+  ]
+}

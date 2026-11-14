@@ -1,0 +1,177 @@
+{
+  "source_case_id": "UI-NATIVE-IEEE-ROUNDTRIP-001",
+  "original_inputs_and_outputs": {
+    "v1-original.weftforge": {
+      "sha256": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+      "bytes": 11818
+    },
+    "v1-extreme-stiffness.weftforge": {
+      "sha256": "2463672f7c5bcdd38e87227821556b6475ba674e4e67e28b582a67e65019006a",
+      "bytes": 11830
+    },
+    "v2-ieee-boundaries.weftforge": {
+      "sha256": "f98aec962a3b7e4899bd67a1fafe5844b4aaaf4994ebb7984ec96116b92459bd",
+      "bytes": 5760
+    },
+    "invalid-number.weftforge": {
+      "sha256": "859b80389aa2906cd2705fe0b0171ec680b4697d5830d42d008e1f1cb1c63f21",
+      "bytes": 5748
+    },
+    "invalid-schema99.weftforge": {
+      "sha256": "542177c3e068296fab7e1f863884a890a506a06c5af50291dfd846d1da61b31e",
+      "bytes": 5761
+    },
+    "input-manifest.json": {
+      "sha256": "3a3e8b6bf7cd76282eb18afef508650831154fbb752b95395777fca1ecc55c5f",
+      "bytes": 2833
+    },
+    "expected-bits.json": {
+      "sha256": "2f471d3ef127f3057b1ed5d7085b5fc3b8e66e52a87506415aa29ee705c1903d",
+      "bytes": 135036
+    },
+    "v1-saved-v2.weftforge": {
+      "sha256": "75feeb35df50a9feaebc0b18cfba592c43c43fbd97848c021328adab44632b90",
+      "bytes": 11904
+    },
+    "v1-reopened-v2.weftforge": {
+      "sha256": "75feeb35df50a9feaebc0b18cfba592c43c43fbd97848c021328adab44632b90",
+      "bytes": 11904
+    },
+    "v1-extreme-saved-v2.weftforge": {
+      "sha256": "543ca6bfb46a5cecd3499b6ed1f7f6f8e2589fb44b572035a101a2c755fe4f96",
+      "bytes": 11928
+    },
+    "v2-saved.weftforge": {
+      "sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "bytes": 5752
+    },
+    "v2-after-focus.weftforge": {
+      "sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "bytes": 5752
+    },
+    "after-invalid-number.weftforge": {
+      "sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "bytes": 5752
+    },
+    "after-invalid-schema.weftforge": {
+      "sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "bytes": 5752
+    },
+    "before-quit.weftforge": {
+      "sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "bytes": 5752
+    },
+    "before-quit.weftforge.autosave": {
+      "sha256": "7aca4d484193345549d9babb99138aa962f58711216c0f917aef82f7fb3a99a2",
+      "bytes": 5767
+    },
+    "quit-recovery-capture.weftforge": {
+      "sha256": "7aca4d484193345549d9babb99138aa962f58711216c0f917aef82f7fb3a99a2",
+      "bytes": 5767
+    },
+    "recovered-saved.weftforge": {
+      "sha256": "7aca4d484193345549d9babb99138aa962f58711216c0f917aef82f7fb3a99a2",
+      "bytes": 5767
+    },
+    "recovered-reopened.weftforge": {
+      "sha256": "7aca4d484193345549d9babb99138aa962f58711216c0f917aef82f7fb3a99a2",
+      "bytes": 5767
+    },
+    "declaration.json": {
+      "sha256": "f8ff15d010bc1eb6ffdc9c9a027b15ff51ed1fdbc79e43bb879316f0490d6f3d",
+      "bytes": 2261
+    },
+    "process.json": {
+      "sha256": "eb2602a9b5db71aecb0866c812e42c95114002dd263c85414948459f7172584f",
+      "bytes": 180
+    },
+    "restart-process.json": {
+      "sha256": "70f761a6d3407a2ce06130274040f413601a7575c04da04e4eaaab80939625b1",
+      "bytes": 290
+    },
+    "quit-precondition.json": {
+      "sha256": "4ccad23e5531c7e6cfde57565ce82ded47cd0f81170e5b9b20644e461e808499",
+      "bytes": 602
+    },
+    "quit-result.json": {
+      "sha256": "345b390b67496e5d412d27dd5d63aacdc6557407810984596a469507a44df531",
+      "bytes": 538
+    }
+  },
+  "original_reports": {
+    "v1-saved-check.json": {
+      "sha256": "e1c59d2450e9987ce191c4f56e6f5cba79d212a400385724b11eb205f368ea2c",
+      "bytes": 496
+    },
+    "v1-reopened-check.json": {
+      "sha256": "19659c2a3e2939a53ec40875d0086cf8cc15dfd54463bbf143ddadd587de17eb",
+      "bytes": 499
+    },
+    "v1-extreme-check.json": {
+      "sha256": "e138ae99632e42086bd0f47ea08ebfcf6c7e8265132a070cbd2d5c790b8f97be",
+      "bytes": 513
+    },
+    "v2-saved-check.json": {
+      "sha256": "6a36c27cf99ed195ba6d517fa8937acc579cffa1721b358cac058f24e580e204",
+      "bytes": 500
+    },
+    "v2-after-focus-check.json": {
+      "sha256": "18ad6b01e5574a9ab3ecb5798ae5b5a42134c791f60e53836f0cd74d25714d02",
+      "bytes": 506
+    },
+    "after-invalid-number-check.json": {
+      "sha256": "1ce156cc70d7cef5f3383dc3f76144ff512bdea8298b766a7c27ea38a3ff9af2",
+      "bytes": 512
+    },
+    "after-invalid-schema-check.json": {
+      "sha256": "d2042c7c35dfd7c08ab86c0333acbde07758de39234495d27199ba8a923aa1d4",
+      "bytes": 512
+    },
+    "before-quit-check.json": {
+      "sha256": "a3a6451b428ed00f98abe5c30e8b5837ae41805b1dfd213bd6307708e09eb395",
+      "bytes": 503
+    },
+    "v2-quit-recovery-check.json": {
+      "sha256": "d5d9676c4601613b384672bd8cfc12d1236be87827735904e0a776c7eb4b7162",
+      "bytes": 1724
+    },
+    "independent-document-io-check.json": {
+      "sha256": "20224c4f1c98f921848ea84f5e29e29e719d5d97e39f9b98411ddbc53ea878a4",
+      "bytes": 11971
+    }
+  },
+  "original_evaluators": {
+    "ieee_document_oracle.py": {
+      "sha256": "9e46dae6ababcb0066b01ec9864d5230c76b4daecd5a45a4378b952f5760a892",
+      "portable_copy": "byte-identical, bundle-relative paths"
+    },
+    "verify_document_io.py": {
+      "sha256": "f1303d55ed1935b482345b1afdf07afc98fb2c0d5521df90ac70e263ed64b24e",
+      "portable_copy": "byte-identical, bundle-relative paths"
+    }
+  },
+  "private_path_records_omitted": {},
+  "prior_failed_f64_case": {
+    "source_commit": "359ac5b2fedfece5cfef9f22861c279bd2708801",
+    "candidate_executable_sha256": "3ed0ab22b4e7335c8dff9a58350b7f68eb2aa9b5ba1c39059c9043a7210c6880",
+    "qualification": "Historical failed typed-roundtrip evidence; separate candidate, never credited to current pass.",
+    "files": {
+      "prior-manifest.json": {
+        "sha256": "63e1b42e4b04bef9942ae9dad287ed2702ac7f1ee57824636902c64b2fef9382",
+        "bytes": 22929
+      },
+      "prior-cancellation-report.json": {
+        "sha256": "e81c3baf3ce88badac21c95066e9efc1e7efd1668a06d187d75c9fd2c6f2eee2",
+        "bytes": 4702
+      },
+      "prior-v1-input.weftforge": {
+        "sha256": "533eafe8a4554b8d7955ca3279b467b4afd7ed350eb9820a5741da13297178cb",
+        "bytes": 11820
+      },
+      "prior-rounded-v2.weftforge": {
+        "sha256": "6199bef4900b58c3500fa3c904cd19ef84763b9354698bdcbd363894e3517686",
+        "bytes": 11876
+      }
+    }
+  }
+}
