@@ -52,11 +52,13 @@ fn run() -> Result<()> {
             count(&args, 2)?;
             let project = Project::load(Path::new(&args[1]))?;
             let mesh = project.mesh()?;
+            // Preserve native f32 color serialization rather than Value's f64 promotion.
+            let source: serde_json::Value = serde_json::from_slice(&serde_json::to_vec(&project)?)?;
             println!(
                 "{}",
                 serde_json::to_string_pretty(&serde_json::json!({
                     "kind":"sewing_inspection",
-                    "source":{"format":"weftforge","version":weftforge_core::FORMAT_VERSION,"project":project},
+                    "source":{"format":"weftforge","version":weftforge_core::FORMAT_VERSION,"project":source},
                     "sewing_groups":sewing_geometry(&mesh),
                     "mesh":{
                         "doc_revision":mesh.doc_revision,"positions":mesh.positions,"uv":mesh.uv,
