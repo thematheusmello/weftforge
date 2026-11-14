@@ -21,6 +21,14 @@ Visibility delivery is merged. Clean final `c8cdc3b0` checks all1,686 report
 artifacts and the unchanged37-file runtime. Publication audit is retained in
 `.local/verification/published-e6595ee787a3.json`.
 
+[PR36](https://github.com/thematheusmello/weftforge/pull/36) prepares the Harbor
+authoring/stopped-physics evidence and historical capture-encoding qualification.
+Clean `58190f75` validates all2,024 tracked report artifacts and the unchanged
+37-file runtime; its326-file closed bundle has strict saved replay,54Python
+checks, actualCLIhelp and independent publication review. Final PR metadata
+is being qualified locally; runtime optimization/native-stage candidates remain
+separate and are not advertised as integrated behavior.
+
 **Keep GitHub Actions and Pages disabled until the entire project is complete.**
 The user requested this to stop development costs. Repository `enabled:false`
 and all 54 historical runs terminal were rechecked after all three merges. PR33/34/35
@@ -216,9 +224,14 @@ strain failure remains. No production audit overlay has been integrated.
    `.local/harbor-contact-candidates-20261114/`, preregistrationdcd00e55…40f7,
    full-driver e4a220b4…c3de, authorizationac755b30…4712. A completes180steps+
    independent181state analysis in55.277s, final strain8.6663% passes the final
-   strict screen; frame29 remains15.3559% failed. B is currently running once
-   from fresh edited construction under its original420s/256MiB limits. No
-   easier scene/settings/screen or linear-stitch source is included.
+   strict screen; frame29 remains15.3559% failed. B completes180steps+181state
+   analysis in55.196s, final strain6.8045% passes. The frozen compare-edit runs
+   once in0.448s within B's420s deadline: front authored curve/t response is
+  29.859952mm at180. All362 states are independently checked, original prefixes
+   remain exact, and all69new/1,842sourcefiles stay unchanged. No easier scene,
+   settings/screen or linear-stitch source is included. Full headless completion
+   does not establish a new native workflow; the old native0/60 comparison is
+   explicitly historical6c↔3aa. Public-safe packaging remains separate.
 2. Review separate candidate `35afac60` on `feat/linear-closed-stitches` in
    `.local/linear-closed-stitches-20261114/`. Prospective
    [SIM-001](spec/features/SIM-001-closed-stitch-energy.md) preserves the elastic
@@ -249,7 +262,8 @@ Focused performance tests/Clippy6261/89269, all3invariance cases33956/57964/7933
 stitch tests/Clippy and native-stage checks are terminal. The new fullHarbor
 preparation build78246/wrapper50333/release50596/Clippy50826 exits0. New fullA
 47986/wrapper68695/driver68840/analyzer70089 all0. New fullB58288/wrapper71496/
-driver71641 starts20:55:21.243379Z, deadline21:02:21.243379Z including analysis
-and one frozen compare-edit. Root clean xtask66629 and replay/map85648 are0.
+driver71641/analyzer72622 all0; compare-edit73370/child73512 exits0 within the
+originaldeadline. Postflight SHA86c1a903…347e, handoffda036754…a8fc, no owned
+physical jobs active. Root clean xtask66629 and replay/map85648/62189 are0.
 Reference inventory36748 and REA observation64096 are terminal0. Recheck actual
 handles before resuming; use separate Cargo targets.
