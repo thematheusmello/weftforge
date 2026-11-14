@@ -99,14 +99,23 @@ impl Cloth {
     }
 
     pub(crate) fn contact_errors(&self, x: &[Vec3]) -> (f64, usize) {
-        self.contact_errors_cancellable(x, &|| false)
+        self.analyze_contacts(x, &|| false, false)
             .expect("A non-cancelling callback cannot interrupt contact analysis")
     }
 
-    pub(crate) fn contact_errors_cancellable(
+    pub(crate) fn initial_contact_errors_cancellable(
         &self,
         x: &[Vec3],
         cancelled: &impl Fn() -> bool,
+    ) -> Result<(f64, usize), SimulationError> {
+        self.analyze_contacts(x, cancelled, true)
+    }
+
+    fn analyze_contacts(
+        &self,
+        x: &[Vec3],
+        cancelled: &impl Fn() -> bool,
+        initial: bool,
     ) -> Result<(f64, usize), SimulationError> {
         let mut max_thickness = 0_f64;
         for (i, &thickness) in self.thickness.iter().enumerate() {
@@ -122,6 +131,11 @@ impl Cloth {
             2. * max_thickness,
             cancelled,
         )?;
+        let hierarchy = if initial {
+            Some(TriangleHierarchy::new(&bounds, cancelled)?)
+        } else {
+            None
+        };
         let mut maximum = 0_f64;
         let mut count = 0;
         for v in 0..x.len() {
@@ -137,13 +151,12 @@ impl Cloth {
                     }
                 }
             }
-            for (i, (&tri, bounds)) in self.input.triangles.iter().zip(&bounds).enumerate() {
-                if i % CANCELLATION_CHECK_INTERVAL == 0 {
-                    check_cancel(cancelled)?;
-                }
-                if tri.iter().any(|i| self.excluded[v].contains(i)) || !overlaps(bounds, x[v], x[v])
+            let mut consider = |i: usize| {
+                let tri = self.input.triangles[i];
+                if tri.iter().any(|i| self.excluded[v].contains(i))
+                    || !overlaps(&bounds[i], x[v], x[v])
                 {
-                    continue;
+                    return;
                 }
                 let gap = self.thickness[v]
                     + tri
@@ -156,6 +169,16 @@ impl Cloth {
                         count += 1;
                     }
                 }
+            };
+            if let Some(hierarchy) = &hierarchy {
+                hierarchy.visit(0, x[v], cancelled, &mut consider)?;
+            } else {
+                for i in 0..self.input.triangles.len() {
+                    if i % CANCELLATION_CHECK_INTERVAL == 0 {
+                        check_cancel(cancelled)?;
+                    }
+                    consider(i);
+                }
             }
         }
         Ok((maximum, count))
@@ -163,6 +186,140 @@ impl Cloth {
 }
 
 type Bounds = [Vec3; 2];
+
+struct TriangleHierarchy {
+    indices: Vec<usize>,
+    nodes: Vec<TriangleNode>,
+}
+
+struct TriangleNode {
+    bounds: Bounds,
+    range: std::ops::Range<usize>,
+    children: Option<[usize; 2]>,
+}
+
+impl TriangleHierarchy {
+    fn new(bounds: &[Bounds], cancelled: &impl Fn() -> bool) -> Result<Self, SimulationError> {
+        let indices = (0..bounds.len())
+            .map(|i| {
+                if i % CANCELLATION_CHECK_INTERVAL == 0 {
+                    check_cancel(cancelled)?;
+                }
+                Ok(i)
+            })
+            .collect::<Result<_, SimulationError>>()?;
+        let mut hierarchy = Self {
+            indices,
+            nodes: Vec::new(),
+        };
+        hierarchy.build(0..bounds.len(), bounds, cancelled)?;
+        Ok(hierarchy)
+    }
+
+    fn build(
+        &mut self,
+        range: std::ops::Range<usize>,
+        bounds: &[Bounds],
+        cancelled: &impl Fn() -> bool,
+    ) -> Result<usize, SimulationError> {
+        check_cancel(cancelled)?;
+        let mut combined = [[f64::INFINITY; 3], [f64::NEG_INFINITY; 3]];
+        for (i, &triangle) in self.indices[range.clone()].iter().enumerate() {
+            if i % CANCELLATION_CHECK_INTERVAL == 0 {
+                check_cancel(cancelled)?;
+            }
+            for axis in 0..3 {
+                combined[0][axis] = combined[0][axis].min(bounds[triangle][0][axis]);
+                combined[1][axis] = combined[1][axis].max(bounds[triangle][1][axis]);
+            }
+        }
+        let node = self.nodes.len();
+        self.nodes.push(TriangleNode {
+            bounds: combined,
+            range: range.clone(),
+            children: None,
+        });
+        if range.len() > 8 {
+            let axis = (0..3)
+                .max_by(|&a, &b| {
+                    (combined[1][a] - combined[0][a]).total_cmp(&(combined[1][b] - combined[0][b]))
+                })
+                .unwrap();
+            partition_triangles(&mut self.indices[range.clone()], bounds, axis, cancelled)?;
+            let middle = range.start + range.len() / 2;
+            let left = self.build(range.start..middle, bounds, cancelled)?;
+            let right = self.build(middle..range.end, bounds, cancelled)?;
+            self.nodes[node].children = Some([left, right]);
+        }
+        Ok(node)
+    }
+
+    fn visit(
+        &self,
+        node: usize,
+        point: Vec3,
+        cancelled: &impl Fn() -> bool,
+        consider: &mut impl FnMut(usize),
+    ) -> Result<(), SimulationError> {
+        check_cancel(cancelled)?;
+        let node = &self.nodes[node];
+        if overlaps(&node.bounds, point, point) {
+            if let Some(children) = node.children {
+                for child in children {
+                    self.visit(child, point, cancelled, consider)?;
+                }
+            } else {
+                for &triangle in &self.indices[node.range.clone()] {
+                    consider(triangle);
+                }
+            }
+        }
+        Ok(())
+    }
+}
+
+fn partition_triangles(
+    indices: &mut [usize],
+    bounds: &[Bounds],
+    axis: usize,
+    cancelled: &impl Fn() -> bool,
+) -> Result<(), SimulationError> {
+    let middle = indices.len() / 2;
+    let (mut start, mut end) = (0, indices.len());
+    let mut work = 0;
+    // shortcut: capped selection can yield coarse splits, upgrade if measured pruning regresses.
+    while end - start > 1 && work < indices.len().saturating_mul(4) {
+        let pivot = bounds[indices[start + (end - start) / 2]][0][axis];
+        let (mut lower, mut i, mut upper) = (start, start, end);
+        while i < upper {
+            if work % CANCELLATION_CHECK_INTERVAL == 0 {
+                check_cancel(cancelled)?;
+            }
+            work += 1;
+            match bounds[indices[i]][0][axis].total_cmp(&pivot) {
+                std::cmp::Ordering::Less => {
+                    indices.swap(i, lower);
+                    lower += 1;
+                    i += 1;
+                }
+                std::cmp::Ordering::Equal => i += 1,
+                std::cmp::Ordering::Greater => {
+                    upper -= 1;
+                    indices.swap(i, upper);
+                }
+            }
+        }
+        if middle < lower {
+            end = lower;
+        } else if middle >= upper {
+            start = upper;
+        } else {
+            break;
+        }
+    }
+    Ok(())
+}
+
 fn triangle_bounds(
     triangles: &[[usize; 3]],
     x: &[Vec3],
@@ -299,6 +456,144 @@ pub(crate) fn collider_contact(collider: Collider, p: Vec3, thickness: f64) -> O
             let correction = sub(target, d);
             let depth = length(correction);
             Some((unit(correction), depth))
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::cell::Cell;
+
+    fn separated_bounds() -> Vec<Bounds> {
+        (0..4096)
+            .map(|i| [[i as f64 * 3., 0., 0.], [i as f64 * 3. + 1., 1., 1.]])
+            .collect()
+    }
+
+    #[test]
+    fn hierarchy_is_conservative_and_prunes_separated_bounds() {
+        let mut bounds = separated_bounds();
+        let hierarchy = TriangleHierarchy::new(&bounds, &|| false).unwrap();
+        let mut candidates = 0;
+        hierarchy
+            .visit(0, [0.5; 3], &|| false, &mut |_| candidates += 1)
+            .unwrap();
+        assert!(
+            candidates <= 8,
+            "separated triangles should only visit one leaf"
+        );
+        bounds.extend([[[0.; 3], [1.; 3]]; 17]);
+        bounds.push([[-f64::MAX; 3], [f64::MAX; 3]]);
+        bounds.push([[f64::NEG_INFINITY; 3], [f64::INFINITY; 3]]);
+        bounds.reverse();
+        let hierarchy = TriangleHierarchy::new(&bounds, &|| false).unwrap();
+        for point in [
+            [-0.; 3],
+            [0.5; 3],
+            [1.; 3],
+            [123.5, 0.5, 0.5],
+            [12286., 1., 1.],
+            [f64::MAX; 3],
+            [-f64::MAX; 3],
+        ] {
+            let expected: Vec<_> = bounds
+                .iter()
+                .enumerate()
+                .filter_map(|(i, bounds)| overlaps(bounds, point, point).then_some(i))
+                .collect();
+            let mut actual = Vec::new();
+            hierarchy
+                .visit(0, point, &|| false, &mut |i| {
+                    if overlaps(&bounds[i], point, point) {
+                        actual.push(i);
+                    }
+                })
+                .unwrap();
+            actual.sort_unstable();
+            assert_eq!(actual, expected);
+        }
+        let bounds: Vec<_> = (0..4096)
+            .map(|i| {
+                let radius = ((i * 4051) % 4096 + 1) as f64;
+                [[-radius; 3], [radius; 3]]
+            })
+            .collect();
+        let hierarchy = TriangleHierarchy::new(&bounds, &|| false).unwrap();
+        let mut candidates = Vec::new();
+        hierarchy
+            .visit(0, [0.; 3], &|| false, &mut |i| candidates.push(i))
+            .unwrap();
+        candidates.sort_unstable();
+        assert_eq!(candidates, (0..bounds.len()).collect::<Vec<_>>());
+    }
+
+    #[test]
+    fn hierarchy_build_and_partition_cancel_during_work() {
+        let bounds = separated_bounds();
+        let polls = Cell::new(0);
+        TriangleHierarchy::new(&bounds, &|| {
+            polls.set(polls.get() + 1);
+            false
+        })
+        .unwrap();
+        for stop_at in [1, 2, polls.get() / 2, polls.get()] {
+            let calls = Cell::new(0);
+            let result = TriangleHierarchy::new(&bounds, &|| {
+                calls.set(calls.get() + 1);
+                assert!(calls.get() <= stop_at);
+                calls.get() == stop_at
+            });
+            assert!(matches!(result, Err(SimulationError::Cancelled)));
+            assert_eq!(calls.get(), stop_at);
+        }
+        let mut indices: Vec<_> = (0..bounds.len()).collect();
+        let calls = Cell::new(0);
+        assert_eq!(
+            partition_triangles(&mut indices, &bounds, 0, &|| {
+                calls.set(calls.get() + 1);
+                assert!(calls.get() <= 2);
+                calls.get() == 2
+            }),
+            Err(SimulationError::Cancelled)
+        );
+        assert_eq!(calls.get(), 2);
+    }
+
+    #[test]
+    fn hierarchy_query_cancels_when_all_bounds_overlap() {
+        let bounds = vec![[[0.; 3], [1.; 3]]; CANCELLATION_CHECK_INTERVAL + 1];
+        let hierarchy = TriangleHierarchy::new(&bounds, &|| false).unwrap();
+        let polls = Cell::new(0);
+        hierarchy
+            .visit(
+                0,
+                [0.5; 3],
+                &|| {
+                    polls.set(polls.get() + 1);
+                    false
+                },
+                &mut |_| {},
+            )
+            .unwrap();
+        for stop_at in [2, polls.get() / 2] {
+            let calls = Cell::new(0);
+            let mut candidates = 0;
+            assert_eq!(
+                hierarchy.visit(
+                    0,
+                    [0.5; 3],
+                    &|| {
+                        calls.set(calls.get() + 1);
+                        assert!(calls.get() <= stop_at);
+                        calls.get() == stop_at
+                    },
+                    &mut |_| candidates += 1,
+                ),
+                Err(SimulationError::Cancelled)
+            );
+            assert_eq!(calls.get(), stop_at);
+            assert!(candidates < bounds.len());
         }
     }
 }

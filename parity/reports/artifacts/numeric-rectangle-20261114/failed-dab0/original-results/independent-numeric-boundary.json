@@ -1,0 +1,47 @@
+{
+  "kind": "independent-original-rectangle-boundary-measurement",
+  "status": "passed",
+  "input_filename": "numeric.obj",
+  "input_sha256": "8837eacc7c9eafd5ecf8aca9a3087516786ed9b0d8cb42db57d47227f5c4240b",
+  "parser_sha256": "93e03a7d41d317e782a1833be9a634fc7cce1db2b6b25faecb8b5eac5d47de12",
+  "dimension_parser_sha256": "cd9887a428439fdb54bdb20276c0ab8e8144a43e386df01f76a75ae9703462cb",
+  "declared_export_unit": "m",
+  "expected_dimensions_mm": [
+    200.0,
+    300.0
+  ],
+  "tolerance_mm": 0.01,
+  "unit_basis": "Observed export control; fixed conversion, never fitted to bounds",
+  "translation_policy": "Ignore translation using exported minima; no authored position or rotation result is claimed",
+  "checks": {
+    "physical_dimensions": true,
+    "all_vertices_used": true,
+    "one_connected_mesh": true,
+    "edge_incidence_one_or_two": true,
+    "boundary_degree_two": true,
+    "one_boundary_loop": true,
+    "disk_euler_characteristic": true,
+    "consistent_nondegenerate_projected_winding": true,
+    "boundary_on_declared_rectangle": true,
+    "all_declared_corners_covered": true,
+    "projected_area": true
+  },
+  "vertices": 43,
+  "faces": 68,
+  "edges": 110,
+  "boundary_edges": 16,
+  "boundary_vertices": 16,
+  "boundary_components": 1,
+  "euler_characteristic": 1,
+  "max_boundary_error_mm": 0.0,
+  "max_corner_error_mm": 0.0,
+  "projected_triangle_area_mm2": 60000.0,
+  "expected_area_mm2": 60000.0,
+  "area_tolerance_mm2": 10.0,
+  "limitations": [
+    "One original unsimulated axis-aligned rectangle, positive-index triangle OBJ subset",
+    "Manifold incidence, winding, boundary and area checks; no general polygon/intersection proof",
+    "Texture, material, normals, native format and cloth physics are not qualified",
+    "Independent fixture measurements supply zero verified WeftForge parity claims"
+  ]
+}

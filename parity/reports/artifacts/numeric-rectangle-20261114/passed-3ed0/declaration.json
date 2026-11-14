@@ -1,0 +1,40 @@
+{
+  "id": "UI-NUMERIC-RECTANGLE-002",
+  "declared_at": "2026-11-14T05:22:30.905161+00:00",
+  "kind": "implementation_only",
+  "source_commit": "359ac5b2fedfece5cfef9f22861c279bd2708801",
+  "executable_sha256": "3ed0ab22b4e7335c8dff9a58350b7f68eb2aa9b5ba1c39059c9043a7210c6880",
+  "cli_sha256": "3b0977567273c57d74edaf2ac470e0740b55fb2f7a3fec56e53b8b0463aab32f",
+  "initial_state": "Empty document in the new identified native app; simulation off.",
+  "actions": [
+    "Rectangle single canvas click: inspect500/500mm initial independent fields, Cancel and verify no shape/history mutation.",
+    "Create200x300mm through native modal; save, export OBJ/SVG, one Undo removes it and one Redo restores it.",
+    "Try zero/nonfinite width and Cancel; accepted document/revision stay unchanged; observe disabled background controls.",
+    "Reproduce creation-field identity sequence through two additional0.4x0.6m inspector rectangles and selected-curve controls; creation values must not migrate.",
+    "Type focused grain .25; toolbar AX Undo then blur must retain old construction and redo; actual Redo restores only the intended grain edit.",
+    "Create a5x6mm rectangle through the numeric modal, save, focus/tab/blur its untouched selected Size fields, and save again. The accepted native project/revision/history must remain unchanged. Invalidzero width must fail atomically; restoring the original field permits save without unrelated changes.",
+    "Save, clean Quit/relaunch same executable and reopen editable state.",
+    "Native mesh/simulation initialization cancellation is a separate measured subcase; defer large work until paired timing completes."
+  ],
+  "criteria": {
+    "authored_width_height_m": [
+      0.2,
+      0.3
+    ],
+    "authored_dimension_absolute_tolerance_m": 1e-12,
+    "export_physical_dimension_absolute_tolerance_mm": 0.01,
+    "cancel_and_error_preserve_accepted_state": true,
+    "one_undo_redo_for_creation": true,
+    "creation_fields_preserved_across_dynamic_controls": true,
+    "focused_undo_blur_preserves_redo": true,
+    "no_unintended_material_change": true,
+    "save_relaunch_reopen_editable": true,
+    "untouched_curve_control_values_preserved_exactly": true,
+    "valid_five_mm_selected_size_focus_blur_preserves_accepted_state": true
+  },
+  "limits": [
+    "No full reference contract/parity claim; reference anchor, link/replication, input limits and cancellation semantics remain unobserved.",
+    "Only exported dimensions may be compared to the separately retained original reference rectangle; no world placement/topology/material equivalence inferred.",
+    "No cloth fitting or rendering quality claim."
+  ]
+}

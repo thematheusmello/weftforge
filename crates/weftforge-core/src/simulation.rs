@@ -178,4 +178,28 @@ mod tests {
                 .contains("non-finite")
         );
     }
+
+    #[test]
+    fn original_shirt_initial_contacts_match_full_scan_at_multiple_resolutions() {
+        let mut project =
+            Project::from_json(include_bytes!("../../../fixtures/original-shirt.weftforge"))
+                .unwrap();
+        for resolution in [0.07, 0.035] {
+            project.resolution = resolution;
+            let mesh = project.mesh().unwrap();
+            let mut cloth = create_cloth(&project, &mesh).unwrap();
+            let initial = cloth.diagnostics().clone();
+            // Reset uses the unchanged exhaustive live diagnostics on the same rest positions.
+            cloth.reset();
+            assert_eq!(cloth.positions(), mesh.positions);
+            assert_eq!(
+                initial.initial_intersections,
+                cloth.diagnostics().initial_intersections
+            );
+            assert_eq!(
+                initial.max_contact_error,
+                cloth.diagnostics().max_contact_error
+            );
+        }
+    }
 }

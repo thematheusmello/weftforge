@@ -335,7 +335,7 @@ impl Cloth {
             },
         };
         let (contact_error, intersections) =
-            cloth.contact_errors_cancellable(&cloth.positions, &cancelled)?;
+            cloth.initial_contact_errors_cancellable(&cloth.positions, &cancelled)?;
         cloth.diagnostics =
             cloth.measure_errors_with_contact(&cloth.positions, &cloth.velocities, contact_error);
         cloth.diagnostics.initial_intersections = intersections;

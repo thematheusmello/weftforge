@@ -1,0 +1,35 @@
+{
+  "id": "UI-BATCH-CANCEL-001",
+  "declared_at": "2026-11-14T05:41:44.362737+00:00",
+  "kind": "implementation_only",
+  "source_commit": "359ac5b2fedfece5cfef9f22861c279bd2708801",
+  "executable_sha256": "3ed0ab22b4e7335c8dff9a58350b7f68eb2aa9b5ba1c39059c9043a7210c6880",
+  "input": "init-cancel-input.weftforge",
+  "input_sha256": "533eafe8a4554b8d7955ca3279b467b4afd7ed350eb9820a5741da13297178cb",
+  "derived_from": "fixtures/original-shirt.weftforge",
+  "derived_from_sha256": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+  "only_fixture_change": {
+    "project.resolution": {
+      "before": 0.12,
+      "after": 0.015
+    }
+  },
+  "initial_state": "Open original prepared15mmfixture in the identified native app; wait for rest mesh, simulation off. Save/export before snapshot.",
+  "actions": [
+    "Click Assemble (gravity off), observe active stage and Cancel job.",
+    "Click Cancel job immediately after observing it, then observe native acknowledgement and retained Rest arrangement.",
+    "Save/export after snapshot and independently compare native and OBJ bytes to before."
+  ],
+  "criteria": {
+    "ui_acknowledges_cancel": true,
+    "accepted_document_bytes_unchanged": true,
+    "accepted_export_snapshot_bytes_unchanged": true,
+    "no_accepted_completed_simulation": true
+  },
+  "measurement": "Date.now brackets the native click and following AX acknowledgement. Durations include CUA/AX overhead and are UI acknowledgement measurements.",
+  "limits": [
+    "Native UI exposes a simulation batch, not individual preparation/initialization/step phases; exact cancellation phase and worker-thread termination latency remain unmeasured.",
+    "No constructor-only latency, live collision speed, garment quality, reference contract or parity pass is claimed.",
+    "Prepared original fixture is used only for this cancellation subcase, not as a replacement for empty-project authoring."
+  ]
+}

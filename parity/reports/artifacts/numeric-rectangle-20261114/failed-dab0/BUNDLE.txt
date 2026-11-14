@@ -1,0 +1,14 @@
+Portable derivative of UI-NUMERIC-RECTANGLE-001 (implementation evidence only).
+
+Run: python3 -B run_checks.py
+Run from any working directory; all fixture paths are relative to this bundle.
+The runner must exit 1 after reproducing the known unchanged-P2-X precision failure.
+Other checks are expected to pass. See selfcheck-run.log for individual exit codes.
+No fixture bytes, geometry, units, tolerances or failed expectations were normalized.
+Original reports are retained byte-for-byte in original-results; their hashes and
+original evaluator hashes are retained in provenance.json and manifest.json.
+The portable numeric checker omits machine-specific process metadata only.
+The empty undo state deliberately records actual next_id=11, not initial 2;
+revision-only equality is false. Implementation intent is not inferred here.
+Reference baseline remains provisional. No full parity, cloth fitting, rendering
+quality, original-reference placement/topology/material equivalence, or timing claim.

@@ -1,0 +1,372 @@
+{
+  "schema_version": 1,
+  "case_ids": [
+    "REF-PAT-002-CURVATURE-001",
+    "REF-SEW-002-FREE-PARTIAL-001"
+  ],
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "baseline_status": "provisional_unfrozen",
+  "product_build": "2026.1.237 (r58920)",
+  "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "status": "bounded_curve_creation_history_and_first_partial_side_only",
+  "units": "mm as printed in actual constructor and sewing dialog; configured Unit System Millimeter observed separately",
+  "numeric_locale": "unknown",
+  "simulation_executed": false,
+  "original_construction": {
+    "width_mm": 200,
+    "height_mm": 300,
+    "replicate_interval_mm": 400,
+    "replicate_angle_degrees": 0,
+    "shape_count": 2,
+    "dimension_link": false,
+    "observed_arrangement": "vertical in this view; no general angle/spacing convention inferred",
+    "both_selected_boundary_length_2d_mm": 2000.0,
+    "both_selected_boundary_length_3d_mm": 2000.0,
+    "particle_distance_mm": 20
+  },
+  "curve_gesture": {
+    "entry": "2D Pattern > Edit > Edit Curvature",
+    "after_displayed_length_2d_mm": 206.9,
+    "after_displayed_length_3d_mm": 206.9,
+    "gesture": "One straight-edge midpoint drag outward, using the pinned target-guarded public native pointer route.",
+    "window_bounds_points": [
+      1,
+      31,
+      2207,
+      1303
+    ],
+    "observed_image_size_px": [
+      2048,
+      1209
+    ],
+    "image_points_px": [
+      [
+        1297,
+        575
+      ],
+      [
+        1297,
+        610
+      ]
+    ],
+    "one_undo_displayed_length_mm": 200.0,
+    "one_redo_displayed_length_mm": 206.9,
+    "authored_curve_control_points": "not exposed or measured",
+    "physical_export_check": "not_run",
+    "shape_formula_inferred": false,
+    "declared_straight_edge_length_mm": 200.0,
+    "selection_before_gesture": "Both original rectangle boundaries selected, combined 2D/3D total 2000.0 mm; the straight edge dimension comes from the typed 200 mm width."
+  },
+  "free_partial": {
+    "entry": "Sewing > Free Sewing",
+    "shortcut_hint": "M; displayed hint only, shortcut itself not executed",
+    "first_start": "left endpoint of original curved boundary",
+    "numeric_dialog_initial_length_mm": 90.6,
+    "entered_length_mm": 100,
+    "commit": "keyboard replacement then Tab, observed 100, then OK",
+    "first_preview_displayed_length_mm": 100.0,
+    "first_preview_difference_text": "100.0 (100.0 / 0.0)",
+    "completed_seam_observed": false,
+    "second_start_attempt": "right endpoint of other panel top boundary; subsequent viewport displacement observed",
+    "second_numeric_dialog_probe": "no modal opened",
+    "one_escape_attempt": "visible preview remained; no successful cancellation claimed",
+    "safe_checkpoint_action": "Switch to Edit Sewing; unfinished preview disappeared, then Save As separate native project.",
+    "reverse_sewing_executed": false
+  },
+  "independent_curve_or_seam_measurement": "not_run",
+  "native_files": [
+    {
+      "name": "reference-sewing-two-rectangles-unsewn.zprj",
+      "role": "two straight panels before curvature",
+      "bytes": 58309,
+      "sha256": "74e4a917989b31d8dfc37b1c1c32292c3310e38569f0294980fc81436736805c",
+      "publication": "private native file; internal format not inspected"
+    },
+    {
+      "name": "reference-sewing-curved-unsewn.zprj",
+      "role": "curved checkpoint after unfinished preview removed",
+      "bytes": 62298,
+      "sha256": "6d2280542cdccb84c09f46ef709c4c20e3152a01cf1fc42e775aff7b10edcffd",
+      "publication": "private native file; internal format not inspected"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_b5299c90a2ebb92a2f30665eb2f8efcfeda041a70c03882a0ea62dc3ca486759",
+      "key": "curve_before",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "0dfe0bb4923d78628a2f4799ce87ceca715b519e74fe29c80b31ca5bc416253c",
+      "started_at": "2026-11-14T04:19:07.087991+00:00",
+      "completed_at": "2026-11-14T04:19:14.722308+00:00",
+      "nodes": 213,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [41, 5, 0]: AXError -25202",
+        "AX role unavailable at path [41, 5, 0]: AXError -25202",
+        "AX title unavailable at path [41, 5, 0]: AXError -25202",
+        "AX value unavailable at path [41, 5, 0]: AXError -25202",
+        "AX child count unavailable at path [41, 5, 0]: AXError -25202",
+        "AX actions unavailable at path [103]: AXError -25202",
+        "AX role unavailable at path [103]: AXError -25202",
+        "AX title unavailable at path [103]: AXError -25202",
+        "AX value unavailable at path [103]: AXError -25202",
+        "AX child count unavailable at path [103]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_0332e2b195499ff3dea180a0cfa361225b3b76070b3ed45c1d60b52bc84d87e0",
+      "key": "curve_after",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "479eba32803ab1445ff9c44e878188cd1e62c65e4fa81f4774faa1408ee97b05",
+      "started_at": "2026-11-14T04:19:47.244928+00:00",
+      "completed_at": "2026-11-14T04:19:54.789691+00:00",
+      "nodes": 214,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [103]: AXError -25202",
+        "AX role unavailable at path [103]: AXError -25202",
+        "AX title unavailable at path [103]: AXError -25202",
+        "AX value unavailable at path [103]: AXError -25202",
+        "AX child count unavailable at path [103]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_995bed7c2f100d0e93f9db2ef256176d4829170db8990c931aa0e030e6752346",
+      "key": "curve_undo",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "4ba7c08833494f06154f86459ba3c1d6495692e754e9a4f7c959b4cadcca4f32",
+      "started_at": "2026-11-14T04:20:28.326134+00:00",
+      "completed_at": "2026-11-14T04:20:35.893673+00:00",
+      "nodes": 214,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [103]: AXError -25202",
+        "AX role unavailable at path [103]: AXError -25202",
+        "AX title unavailable at path [103]: AXError -25202",
+        "AX value unavailable at path [103]: AXError -25202",
+        "AX child count unavailable at path [103]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_0d0ddbccf2c205cbf0c6e3a0ba285d6fab91ab701dcd3c12832ab91ebdcc7053",
+      "key": "curve_redo",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "092deb80ce188a2c72563161309ed79d24a6f6701bf05663540f37e4aeb40b7f",
+      "started_at": "2026-11-14T04:21:01.282691+00:00",
+      "completed_at": "2026-11-14T04:21:08.888024+00:00",
+      "nodes": 214,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [103]: AXError -25202",
+        "AX role unavailable at path [103]: AXError -25202",
+        "AX title unavailable at path [103]: AXError -25202",
+        "AX value unavailable at path [103]: AXError -25202",
+        "AX child count unavailable at path [103]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_4bc3e6be51a50907614015c909b16748bcf853e35ae3a7ff54b9469c8e4ffbe1",
+      "key": "free_tool",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "d17ee60586d5d2ddeec70aa010f300388a6190669696c11f7db4524d5482ac62",
+      "started_at": "2026-11-14T04:21:44.461565+00:00",
+      "completed_at": "2026-11-14T04:21:52.492105+00:00",
+      "nodes": 211,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [103]: AXError -25202",
+        "AX role unavailable at path [103]: AXError -25202",
+        "AX title unavailable at path [103]: AXError -25202",
+        "AX value unavailable at path [103]: AXError -25202",
+        "AX child count unavailable at path [103]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_3d8f07cd09e6990b0c20b0c3e5de53cf42c7ba7dfc4e2aa8b4f91f6b62b59ed8",
+      "key": "first_point",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "7ce6ceafe96eb32aa7da4160638172a002951cbbb698afa482eed08f8569e0cf",
+      "started_at": "2026-11-14T04:22:36.763819+00:00",
+      "completed_at": "2026-11-14T04:22:44.328193+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_0e33a8c22086b3593a86bbb94e07a5147d1bdb8bf9f36013b1d7fea42abc4cef",
+      "key": "first_100",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "e3e6017ec44652f81164a9c950bd36cbfb4ffe94093f6b1db9f548e405ddef56",
+      "started_at": "2026-11-14T04:23:54.625384+00:00",
+      "completed_at": "2026-11-14T04:24:03.677343+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_0facb2fddd95efba1e75fb650a978405f0a6e2da65069216ba7b0957b892dfc0",
+      "key": "unexpected_view",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "f9b30c79fe8499ef71c82701aae67ffc8b749dbff4818d7baea17785756c2e65",
+      "started_at": "2026-11-14T04:24:52.542218+00:00",
+      "completed_at": "2026-11-14T04:25:00.301134+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_ddc4c1799b51aefc81962294c77208da04e2fd1924501324ecbb4adc41ed903a",
+      "key": "view_restored",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "11389ecb30bfcb264ffc144ac629faf717c6c71de719ebaae0a4275678632467",
+      "started_at": "2026-11-14T04:26:44.357842+00:00",
+      "completed_at": "2026-11-14T04:26:52.423422+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_102ef94168a0b4cab79e4b0bc124470af857fc779d686c7533bdd4cb1d664d0f",
+      "key": "saved_checkpoint",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "b36fdc41c8df69ba110cc5495fb9736fe739c0fb7cd2f8aa4c1f782baff42690",
+      "started_at": "2026-11-14T04:29:44.556349+00:00",
+      "completed_at": "2026-11-14T04:29:52.423271+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "CUA-SEWING-RECTANGLE-REPLICATION-20261114",
+      "key": "constructor",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "3400894649bbea5f3ef647780f49d2e8eed6beb9c633bce91f7e4e612e50604e",
+      "observed_at": "2026-11-14T04:11:15.808Z",
+      "context": "Original constructor before OK: width 200 mm, height 300 mm, interval 400 mm, angle 0 degrees, count 2, dimension link off.",
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "CUA-SEWING-TWO-ORIGINAL-PANELS-20261114",
+      "key": "created",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "1ed91e70e4eed75674bee217db725737de3138de55cdd7d95de00b011538dcc8",
+      "observed_at": "2026-11-14T04:12:09.220Z",
+      "context": "After OK: two original rectangles selected; 2D/3D boundary totals 2000.0 mm; PD 20; simulation off.",
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE-SEWING-LENGTH-DIALOG-20261114",
+      "key": "length_dialog",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "483b5885520626bf45268882dc153f4258024768c1fb12fb49617d1eb5cc8f00",
+      "observed_at": "2026-11-14T04:23:11.048Z",
+      "context": "Create Sewing Line after first curve endpoint and right-click; initial length 90.6 mm depends on this pointer position.",
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE-SEWING-LENGTH-100-20261114",
+      "key": "length_entered",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "6bdc8483a6934b05b370339b9e3801af30de04880773a788a665496e6120c65e",
+      "observed_at": "2026-11-14T04:23:34.047Z",
+      "context": "Before OK: entered length 100 mm, keyboard plus Tab; OK focused.",
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE-SEWING-SECOND-LENGTH-PROBE-20261114",
+      "key": "second_probe",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "b2c49fdf647f66b8881e6c6b5533c37bcacb417103038ecc56413bec436a91ea",
+      "observed_at": "2026-11-14T04:27:20.432Z",
+      "context": "No modal opened after second numeric-dialog probe; no completed seam inferred.",
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE-SEWING-ESCAPE-ATTEMPT-20261114",
+      "key": "escape_attempt",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "2e8a072e06b7a1fa9208eb4f21a32a341d3b4bdad74a7116b9add912d766a0d1",
+      "observed_at": "2026-11-14T04:28:24.689Z",
+      "context": "One Escape attempt left visible first-side preview; input delivery/cancellation semantics unresolved.",
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    }
+  ],
+  "open_questions": [
+    "Complete both sides with explicit correspondence and numeric lengths.",
+    "Reverse Sewing, undo/redo and persistence of a completed seam.",
+    "Asymmetric curve control-point values and independent arc-length endpoint comparison.",
+    "Unequal lengths, mismatch threshold, invalid/clamped/cancelled length entries.",
+    "Curved boundary export, sewn remeshing and simulation results.",
+    "The cause of viewport displacement; preference state alone does not prove causality.",
+    "Escape delivery/cancellation semantics.",
+    "Reopen and independently validate the new curved native checkpoint."
+  ],
+  "counterexamples_to_avoid": [
+    {
+      "claim": "A100 mm first-side preview proves a completed two-sided seam.",
+      "status": "unsupported; no completed seam observed"
+    },
+    {
+      "claim": "A curve parameter of0.5 is the same as half arc length.",
+      "status": "not established; public API uses boundary-length ratios and this UI run did not measure cubic parameters"
+    },
+    {
+      "claim": "One successful curve gesture qualifies arbitrary cubic authoring or cloth physics.",
+      "status": "unsupported; this run is bounded to the observed edge and history"
+    }
+  ],
+  "weftforge_comparison": "not_run",
+  "verified_parity_claimed": false,
+  "complete_broad_feature_contracts": 0
+}

@@ -1,0 +1,10 @@
+{
+  "status": "invalid_automation_attempt",
+  "recorded_at": "2026-11-14T05:29:55.900673+00:00",
+  "reason": "A reused helper captured the prior f348 application binding and reopened it. Dynamic-field UI observations cannot be attributed to the new candidate; original output bytes retained. Initial numeric modal/save/export helpers used the new explicit binding and remain separately checked.",
+  "files": {
+    "identity-a.weftforge": "5a4089ba17cb6b4dcb463d175a432bb76394c98bfd74db734a56e66067318aae",
+    "identity-b.weftforge": "ad79ed7e0951a63d721c34019b8b9f487715186a1836a57c57cab27dae0a226c"
+  },
+  "corrective_action": "Close stale clean instance, verify only new PID56306, reopen numeric-redone and replay with explicit App helper arguments."
+}

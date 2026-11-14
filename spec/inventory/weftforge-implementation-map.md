@@ -2,9 +2,9 @@
 
 This source-pinned engineering map assigns every entry in the reviewed menu and component catalogs. It preserves the complete target and prepares bounded implementation handoffs. It does not establish feature completion or reference parity.
 
-Source: `7e59f2a88daeb8084107bda79779b56426060c9f`. Reference build: `2026.1.237 (r58920)`. [Machine-readable map](weftforge-implementation-map.json).
+Source: `8fb684e14ecc4685acefd2acfeea3e46a2dc3df5`. Reference build: `2026.1.237 (r58920)`. [Machine-readable map](weftforge-implementation-map.json).
 
-Coverage: **650 unique IDs** = 589 menu nodes + 61 components; 498 action candidates, 61 components, 86 containers, 3 provisional headings, 2 excluded vendor administration entries. The menu input contains 17 roots, 572 nonroot entries and 505 leaf-like nodes. **These counts are not a feature denominator.**
+Coverage: **902 unique IDs** = 589 menu nodes + 313 component-catalog records; classifications are 498 action candidates, 312 in-scope components, 86 containers, 3 provisional headings and 3 excluded vendor administration entries. The menu input contains 17 roots, 572 nonroot entries and 505 leaf-like nodes. **These counts are not a feature denominator.**
 
 Current implementation, reference observation, verification and evidence freshness come only from [parity/features.yaml](../../parity/features.yaml). Join each group’s feature IDs to that registry at the revision being reported. The map copies no feature status fields. Candidate source relationships describe only the pinned code and must be re-reviewed after relevant source/catalog changes.
 
@@ -12,11 +12,49 @@ Current implementation, reference observation, verification and evidence freshne
 
 The native code has 18 Command variants, including Transaction, and four tool modes: Select, Polygon, Rectangle and Sew. Existing related paths include native versioned projects/recovery, editable polygons/cubics, exact split/seam remapping, piece resizing/placement, grain/physical fabric editing, interval sewing, triangle meshing, a cancellable CPU solver, shared selection and bounded CLI/MCP file authoring. These are candidates for comparison, not established semantic matches.
 
-The 184 engineering groups have 51 source-backed partial candidates, 113 planned missing mappings and 20 unresolved mappings. Groups combine candidate aliases and engineering variants; they do not collapse differing format directions, selection scopes, parameter semantics or entry paths. Every retained path remains in the JSON. Similar names do not establish behavior equivalence.
+The 202 engineering groups have 54 source-backed partial candidates, 126 planned missing mappings and 22 unresolved mappings. Groups combine candidate aliases and engineering variants; they do not collapse differing format directions, selection scopes, parameter semantics or entry paths. Every retained path remains in the JSON. Similar names do not establish behavior equivalence.
 
-Only AI Studio Activation and Sign Out are excluded vendor activation/session administration entries. AI Studio creation remains a discovery lead. EveryWear, GameWear/Explore, AI pose, auto avatar/motion conversion, pattern drafting, libraries and AI assistance remain in scope with local-substitute leads or explicit unresolved semantics. Resolve destination-only storefront administration from runtime evidence before excluding any more entries.
+AI Studio Activation, Sign Out and the newly observed Switch CLO-SET Account action are excluded vendor activation/session administration entries. The CLO-SET preferences page remains inventoried. AI Studio creation remains a discovery lead. EveryWear, GameWear/Explore, AI pose, auto avatar/motion conversion, pattern drafting, libraries and AI assistance remain in scope with local-substitute leads or explicit unresolved semantics. Resolve destination-only storefront administration from runtime evidence before excluding any more entries.
 
 The disabled Pattern, Arrangement and Layouts leaves are provisional headings; selected-state observation must resolve whether they ever become actions. Recent and Plug-in are empty containers with unknown dynamic children. Neither heading/container counts nor these unresolved leaves establish a completion percentage.
+
+## Expanded property/control review
+
+The 105 added IDs preserve all earlier 650 entry mappings, all 184 packets and the first three bounded slices unchanged. The [reviewed surface notes](../features/UI-property-surfaces-20261114.md) cover 24 Simulation Properties controls, 31 fields on one selected original pattern, eight rectangle-constructor controls, 29 OBJ export options and 13 Fit controls. Most controls were only read; the [bounded rectangle run](../features/PAT-003-runtime-20261114.md) records keyboard width/height entry, one OK, history, document reopen and one unchanged-option export. These observations supply no completed broad feature or WeftForge parity claim.
+
+The retained source pin now contains the numeric rectangle modal, stable widget scopes, modal input/AccessKit isolation, focused-history and passive RGB-buffer fixes. It remains a partial source candidate: linking, repetition, complete anchor/limits/locale semantics and fresh native acceptance are pending. Preserve both the earlier `9acb265` catalog/source ancestor and the new source pin when integrating this map.
+
+Most new controls join existing groups: global simulation properties, grain alignment/reset, solidify, particle-distance resolution, seam taping, UVs, topology, fabric assignment, statistics, rectangle, OBJ and fit maps. Nine appended packets separate selected name/line-length properties, elastic, schematic-line presentation, physical layers, directional shrinkage, additional collision thickness, pressure and rendering extrusion/side geometry. Their precise source gaps, runtime questions and fixtures are in JSON; no existing variant is removed.
+
+- Particle Distance is explicitly mm and differs from Side Geometry Resolution. Additional physical collision thickness differs from rendering extrusion. Directional shrinkage differs from material stiffness.
+- Global solver values and selected grain/pressure fields with no printed unit remain unknown. CG labels do not identify an algorithm; this host’s disabled CPU count does not define a product constant. Ground children remain collapsed/unobserved.
+- Constructor pre-OK dimensions differ from initial dialog values. A later run observed one interval-400-mm/angle-0/count-2 setup, with vertical placement in that view. General replication formulas/counts/history, linking, Cancel and invalid-input limits remain untested; angle zero is not inferred to mean horizontal.
+- The executed OBJ route and visible title are Export despite the AX Import title. Alternate grouping/weld/thickness/UV/axis/texture/preset/metadata options remain untested. Exported units come from the observed unit control, never inferred by fitting dimensions.
+- Fit Properties shows Stress and a visible unopened Pressure tab. The unsuccessful Strain selection does not establish a Strain tab; the independent Strain Map menu entry stays in scope. Displayed kPa ranges and colors are neither material calibration nor accepted edit limits.
+
+## Current source and preference expansion
+
+The [reviewed preference notes](../features/UI-preferences-runtime-20261114.md) add 138 read-only observations across the 11 visible categories. All previous 755 entry records, 193 packets and first three bounded slices remain unchanged. Eight appended groups cover navigation bindings/focus, shortcut preferences, display units/precision, original UI appearance/palette handling, autosave policy, default resources, replacement naming and unpopulated PLM integration. Related defaults, toolbars, library options, snap, texture handling and plugins join existing groups. Account switching is explicit vendor session administration; the surrounding page and substantive creation/content remain in scope.
+
+The configured values are not factory defaults or executed effects. Binding selectors and disabled Action hints do not prove active shortcuts. Millimeter/one decimal place do not identify a numeric locale or checked language, and do not supply units for camera, gravity, grain or pressure fields. Collapsed shortcut children, offscreen picker controls, unlabeled resource buttons, alternative options, reset/persistence, actual autosave/retention and plugin/PLM behavior remain unknown. Private paths, account identity, palette and preset contents are excluded from implementation inputs.
+
+Current source rechecks establish a bounded native rectangle constructor with 500/500 mm text defaults, shared-command conversion/commit, stable numeric widget scopes, modal background/input isolation and focused-history/RGB safeguards. They do not establish a fresh native candidate comparison, reference Cancel/limits/link/replication semantics or broad parity. The first rectangle slice stays open for that acceptance.
+
+Initial immutable contact diagnostics now use a conservative BVH with exact narrow-phase/exclusion checks and cancellation. Mutable/live collision solving and later/reset contact diagnostic scans remain quadratic. Source tests against brute force do not establish reference contact parity, whole-solver acceleration or measured representative performance.
+
+The [resolution run](../features/PAT-011-runtime-20261114.md) now covers one original unsimulated/unsewn rectangle at 20 and 10 mm, one-step history, independent physical boundary/mesh checks and delayed process restart/reopen. It does not impose exact tessellation counts on WeftForge, test sewn/deformed/cached state or settle arbitrary input limits. No preference or source change in this map updates feature status, report freshness or generated progress; those remain integration work.
+
+## Curve and first-side sewing increment
+
+The [reviewed curve/Free Sewing contract](../features/SEW-002-runtime-20261114.md) adds nine observations: Edit Curvature in the 2D toolbar, Free Sewing in both toolbars, and six Create Sewing Line dialog controls. All prior 893 entry records, 201 packets and the first three bounded slices remain unchanged. The curve label joins `curve-tools`; both sewing tool labels join `free-chain-sewing`; one appended `free-sewing-length-preview` packet owns the numeric first-side stage.
+
+One original curve gesture/history changed a displayed 200.0 mm edge to 206.9 mm, then restored those displays through one Undo/Redo. Exact controls, continuous arc length and curved export geometry remain unmeasured; the one-decimal display supports no 0.01 mm endpoint claim. C/M hints and the 3D checked label are not executed shortcut or 3D gesture evidence.
+
+The corrected capture summary retains the truncated 213-node before capture with ten attribute failures across two nodes, and truncated later 214-node selected-property captures with five failures at one node. The first-side and final blank-property captures have 92 nodes without gaps.
+
+The numeric Length dialog accepted 100 mm through keyboard replacement, Tab and OK and showed a first-side preview. The initial 90.6 mm value depended on pointer state. **The second side is unconfirmed: no completed seam, reversed correspondence, independent arc-length equivalence or sewing simulation was observed.** One Escape attempt left the preview visible; delivery/cancellation remains unresolved. Switching to Edit Sewing removed the unfinished preview. The unexpected viewport shift has unknown cause; configured Smart Panning alone does not explain it.
+
+The exact committed source pin includes focused numeric round-trip formatting and the reviewed Size-field validation fix, which removes the former widget clamp and delegates validation to ResizePiece. Native proof/publication for the fixed candidate remains pending; the retained failed run is not promoted to a pass. Remaining work is to reopen/export the curved checkpoint, resolve preview/cancel state, complete and reverse both sides, and independently compare endpoints using an original asymmetric curve before sewing/refinement/physics claims.
 
 ## First three executable parts
 
@@ -269,14 +307,32 @@ Checks from our implementation cannot supply the reference answer. Compare exact
 | 182 | `PACK-application-about` — About application | APP-002, APP-003 | `PACK-application-quit`, `PACK-workspace-panels` | desktop, files, verification |
 | 183 | `PACK-os-services` — Native OS Services and diagnostic menu routes | APP-002, UI-006, REF-002 | `PACK-application-quit`, `PACK-workspace-panels` | desktop, files, verification |
 | 184 | `PACK-application-window-lifecycle` — Hide app/others or show all windows | APP-002, UI-001, UI-006 | `PACK-application-quit`, `PACK-workspace-panels` | desktop, files, verification |
+| 185 | `PACK-pattern-name-property` — Selected pattern name property | PAT-007, PAT-001, UI-004, FILE-001 | `PACK-point-pattern-edit` | authoring, geometry, solver, files, desktop, automation, verification |
+| 186 | `PACK-selected-line-lengths` — Selected-line 2D and 3D length properties | PAT-007, FIT-003, UI-002 | `PACK-point-pattern-edit`, `PACK-simulate` | authoring, geometry, solver, files, desktop, automation, verification |
+| 187 | `PACK-edge-elastic` — Selected-line elastic construction | SEW-005, SIM-002, PAT-007, FILE-001 | `PACK-segment-sewing`, `PACK-internal-primitives` | authoring, geometry, solver, files, desktop, automation, verification |
+| 188 | `PACK-schematic-line-properties` — Selected schematic-line visibility, face and Z-offset | MAT-003, PAT-007, FILE-001 | `PACK-point-pattern-edit`, `PACK-schematic-render` | authoring, geometry, solver, files, desktop, automation, verification |
+| 189 | `PACK-pattern-layer-property` — Selected pattern physical layer property | FIT-002, SIM-004, SIM-005, FILE-001 | `PACK-superimpose-layer-clone`, `PACK-simulate` | authoring, geometry, solver, files, desktop, automation, verification |
+| 190 | `PACK-directional-shrinkage` — Selected pattern warp/weft simulation shrinkage | SIM-002, PAT-008, FIT-003, FILE-001 | `PACK-fabric-assignment`, `PACK-grain-alignment` | authoring, geometry, solver, files, desktop, automation, verification |
+| 191 | `PACK-pattern-collision-thickness` — Selected pattern additional collision thickness | SIM-002, SIM-003, SIM-004, FIT-003, FILE-001 | `PACK-simulate`, `PACK-fabric-assignment` | authoring, geometry, solver, files, desktop, automation, verification |
+| 192 | `PACK-pattern-pressure` — Selected pattern pressure property | SIM-002, SIM-005, FIT-003, FILE-001 | `PACK-simulate` | authoring, geometry, solver, files, desktop, automation, verification |
+| 193 | `PACK-pattern-render-geometry` — Selected rendering thickness, extrusion and side geometry | ANIM-003, MAT-003, MAT-002, FILE-003, FILE-001 | `PACK-retopology`, `PACK-obj-interchange` | authoring, geometry, solver, files, desktop, automation, verification |
+| 194 | `PACK-view-control-preferences` — Navigation bindings, focus and viewpoint-default preferences | UI-001, UI-003, UI-006, MAT-003 | `PACK-viewpoints`, `PACK-workspace-panels` | desktop, files, automation, verification |
+| 195 | `PACK-shortcut-preferences` — Shortcut search, collapsed categories and disabled action hints | UI-003, UI-006, APP-001 | `PACK-workspace-panels`, `PACK-undo-redo` | desktop, files, automation, verification |
+| 196 | `PACK-unit-display-preferences` — User display units, precision and construction-specific units | UI-003, UI-006, PAT-007, SEW-005, SEW-006, APP-001 | `PACK-rectangle`, `PACK-workspace-panels` | desktop, files, automation, verification |
+| 197 | `PACK-appearance-preferences` — UI line/highlight appearance, typography and custom palette resources | UI-001, UI-006, MAT-003 | `PACK-workspace-panels` | desktop, files, automation, verification |
+| 198 | `PACK-autosave-preferences` — Autosave destination, interval, count, retention and file-type preferences | FILE-002, APP-004, UI-003 | `PACK-application-quit`, `PACK-project-load-save` | desktop, files, automation, verification |
+| 199 | `PACK-default-resource-preferences` — Default project/material/simulation/scratch/info/capture resources | FILE-001, FILE-002, MAT-001, MAT-002, SIM-005, APP-003 | `PACK-preference-assets`, `PACK-project-load-save` | desktop, files, automation, verification |
+| 200 | `PACK-object-replacement-preferences` — Object-browser replacement naming preference | UI-001, FILE-001, APP-001, REF-002 | `PACK-workspace-panels`, `PACK-local-libraries` | desktop, files, automation, verification |
+| 201 | `PACK-plm-integration-discovery` — Unpopulated PLM integration settings | APP-001, APP-003, FILE-001, REF-002 | `PACK-plugin-manager`, `PACK-project-load-save` | authoring, files, desktop, automation, verification |
+| 202 | `PACK-free-sewing-length-preview` — Numeric first-side Free Sewing length preview | SEW-002, SEW-001, SEW-004, PAT-002, UI-003, UI-004 | `PACK-curve-tools`, `PACK-segment-sewing` | geometry, desktop, verification |
 
 ## Crosswalk review and remaining discovery
 
-Each JSON group identifies the actual source landmarks and shared commands, source-backed candidate behavior, missing functionality, exact runtime questions, original fixture recipes and its bounded packet. All 650 JSON entries retain exact catalog IDs and paths and have one explicit action/component/container/heading/excluded classification. Source landmarks name actual Rust anchors; proposed future behavior is described as missing rather than given imaginary implementation locations.
+Each JSON group identifies the actual source landmarks and shared commands, source-backed candidate behavior, missing functionality, exact runtime questions, original fixture recipes and its bounded packet. All 902 JSON entries retain exact catalog IDs and paths and have one explicit action/component/container/heading/excluded classification. Source landmarks name actual Rust anchors; proposed future behavior is described as missing rather than given imaginary implementation locations. Explicit source/reference rechecks refine obsolete descriptions while keeping entry/packet IDs, unresolved variants and authoritative status rules.
 
-The catalogs are empty-workspace presence/read-only snapshots. Actual canvas context menus, unlabeled icons, toolbar flyouts, selected-state properties, accepted ranges/defaults/errors, populated dynamic menus, native format semantics and complete workflows still require observation. Required discovery leads in JSON retain AI Studio creation, native editable compatibility, uncataloged SVG/DXF/printing, Bond/Skive creation, complete physical/GPU/performance contracts and cross-platform/offline release gates.
+The catalogs combine an empty-workspace menu snapshot with component presence/read-only values, selected original-pattern/constructor/OBJ/Fit observations and 138 preference observations. The bounded 20-to-10 mm reference resolution edit/export and delayed process restart/reopen are now documented; sewn/deformed/cache/limit variants remain unexecuted. Actual canvas context menus, unlabeled icons, toolbar flyouts, selected-state properties, accepted ranges/defaults/errors, populated dynamic menus, native format semantics and complete workflows still require observation. Required discovery leads in JSON retain AI Studio creation, native editable compatibility, uncataloged SVG/DXF/printing, Bond/Skive creation, complete physical/GPU/performance contracts and cross-platform/offline release gates.
 
-The existing 56 coarse feature contracts remain authoritative and discovery is incomplete. Specialized production formats or newly observed behaviors may need reviewed new feature contracts; this mapping does not quietly redefine those 56 contracts or turn 650 menu/component records into a new denominator.
+The existing 56 coarse feature contracts remain authoritative and discovery is incomplete. Specialized production formats or newly observed behaviors may need reviewed new feature contracts; this mapping does not quietly redefine those 56 contracts or turn 902 menu/component records into a new denominator.
 
 ## Reproducible self-check
 
@@ -284,13 +340,15 @@ The existing 56 coarse feature contracts remain authoritative and discovery is i
 python3 spec/inventory/verify_implementation_map.py
 ```
 
-The dependency-free check verifies exact 650-ID coverage and uniqueness, catalog/path/classification fidelity, pinned input hashes, valid feature/source/fixture/owner links, packet/group/dependency integrity and an acyclic dependency graph. It rejects copied status fields. It validates mapping structure, not reference behavior. Full Rust gates are for integrated source changes; this artifact-only mapping does not change the application.
+The dependency-free check verifies exact 902-ID coverage and uniqueness, preservation of all previous 902 entries and 202 packets, catalog/path/classification fidelity, pinned input hashes, valid feature/source/fixture/owner links, packet/group/dependency integrity and an acyclic dependency graph. It rejects copied status fields. It validates mapping structure, not reference behavior. Full Rust gates are for integrated source changes; this artifact-only mapping does not change the application.
 
 ## Input pins
 
 | Catalog | Records | SHA-256 |
 |---|---:|---|
 | [md-2026.1.237-main-menus.json](md-2026.1.237-main-menus.json) | 589 | `0d0ebb92cac1d64a717249dc9f10fbb4ac7256b447442d99c3eb88a5314dece9` |
-| [md-2026.1.237-components.json](md-2026.1.237-components.json) | 61 | `909a4627877fbdb5be8c46d163812fc526fc8dc9b3d9100edcf7eb50f8cce20b` |
+| [md-2026.1.237-components.json](md-2026.1.237-components.json) | 313 | `a5234d53d4554151b5a22e30d2ff3a47a35f9ab93570eb10b485a1575701cbe7` |
 
-Pinned registry SHA-256: `7d72f5eec47ce415f44366cb46b7d8076ec54ea529819aeb3e3bf94c48dfe395`. The hash records the mapping review input; current feature status is always read from the authoritative registry, including later revisions.
+Pinned registry SHA-256: `15df2f6bae97255336b930440da4a086cd3c8e525197183557e33640ee228869`. The hash records the mapping review input; current feature status is always read from the authoritative registry, including later revisions. The retained catalog commit is the source pin and an ancestor of this map update; integration must preserve that history.
+
+Previous reviewed map: `b1f01564c375a033950dd91de926a6c8e2b0a1e4`, SHA-256 `44d70edea7b062fe6ff112e5ebc60b2ffb3c2876d2e3d8a5ae3c9e952dbf6c73`. All 902 entry records, 202 packets and first three bounded slices are preserved exactly. This refresh adds no catalog ID or behavior; it corrects committed source/contract/registry anchors and obsolete Size-fix wording. The checker rejects missing/duplicate IDs, changed prior entries/packets and invalid source/catalog/contract anchors.

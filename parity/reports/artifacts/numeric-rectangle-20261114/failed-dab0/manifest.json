@@ -1,0 +1,244 @@
+{
+  "bundle_id": "UI-NUMERIC-RECTANGLE-001-PUBLIC-DERIVATIVE",
+  "kind": "implementation_only_portable_derivative",
+  "source_commit": "f348223d5dadfaa7312cb93c1f2ec09a0e7e8dec",
+  "candidate_executable_sha256": "dab0f0f3fbda1e778dde45c230bd944cf140b9c99a86e9376d0078ac6e80bff3",
+  "status": "known_precision_failure_reproduced",
+  "declaration_copied_byte_identical": true,
+  "copied_fixture_count": 14,
+  "raw_original_report_count": 6,
+  "original_case_unchanged_verified": true,
+  "portable_from_other_working_directory_verified": true,
+  "public_content_scan": "No personal filesystem paths, symlinks, raw reference research, process metadata or proprietary assets included.",
+  "fixture_or_tolerance_normalization": false,
+  "expected_runner_exit_code": 1,
+  "selfcheck_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+  ],
+  "known_failure": {
+    "curve": 27,
+    "unintended_control": "P2 X",
+    "actual_m": "2.13333",
+    "expected_rational_m": "32/15",
+    "absolute_error_m": "0.000003333333333333333333333333333333333333333333333333333333333333333",
+    "authoring_tolerance_m": "1e-12",
+    "checker_exit_code": 1
+  },
+  "allocator_observation": {
+    "initial_next_id": 2,
+    "undone_next_id": 11,
+    "revision_only_empty_equality": false,
+    "implementation_intent": "Not inferred by the independent evaluator; parent interpretation is separate."
+  },
+  "derivative_changes": [
+    "Own checkers use bundle-relative paths and add explicit original-evaluator SHA labels.",
+    "The numeric derivative omits process.json from artifact enumeration only.",
+    "A portable reopen byte checker and fixed check runner were added.",
+    "Fixture bytes, fixed metre/millimetre conversions, tolerances and failure expectations are unchanged."
+  ],
+  "provenance": {
+    "source_case_id": "UI-NUMERIC-RECTANGLE-001",
+    "fixtures": {
+      "declaration.json": "8b569811535553a5e21bf90f00715745d9bf7dde903315221b99ae2e3d172e38",
+      "empty.weftforge": "a876afe8445fb90895cd12b1159f0fbaf5af10a6760e35c3bc35d5d9d6f55b5c",
+      "numeric.weftforge": "3da018cb71ede7cfd6f67941f8fe33a20ac841589be866e366c9e352ebebbd55",
+      "numeric.obj": "8837eacc7c9eafd5ecf8aca9a3087516786ed9b0d8cb42db57d47227f5c4240b",
+      "numeric.svg": "f52c8206298ad1a364fbc498a6894b8dc7211651e916fc456e6662b1b86ea51c",
+      "numeric-undone.weftforge": "459305dd35c3f7b9332bf24b93ef02bb1ab7b245c4f7c899e67f5d0cc2020bba",
+      "numeric-redone.weftforge": "ea7460e149dfd1f546063cc6c68d68a1ca77b82e3db437ac10977d070f705246",
+      "numeric-after-errors.weftforge": "ea7460e149dfd1f546063cc6c68d68a1ca77b82e3db437ac10977d070f705246",
+      "identity-a.weftforge": "9019627675fbb65f3267c7444711307fa686e841ed06f0fa8f8ffccec099b877",
+      "identity-b.weftforge": "86ff5f6acc6b718507ae4451e521abcd56adeec6bafaecb92d33023f687366ce",
+      "identity-curved.weftforge": "881787962715c55fbb1fd3110de6021e3555023cefb256926442dfd6c3435fb6",
+      "focused-undone.weftforge": "aa90d54b50fb9f85eb8b5311ad75c2594f00d52e5e02697349827b15c9f6630a",
+      "focused-redone.weftforge": "9ff0c0d3298322da4f0cdea018cfef4d0ae034c9e8bfe9a6dbb011256455981c",
+      "reopened.weftforge": "9ff0c0d3298322da4f0cdea018cfef4d0ae034c9e8bfe9a6dbb011256455981c"
+    },
+    "original_results": {
+      "independent-numeric-bounds.json": "0fd8303ccb93c31519677a3494af67bd876b038ec3c81648fc9159bcf3ee04a7",
+      "independent-numeric-boundary.json": "56ba1220a4528b689899be98ad00fbe37be7606fd79bcf2e1773d929133160bb",
+      "independent-numeric-check.json": "ec79953ba7bb891a31bfc0aed77a77959aa604956aee81d34bfced0e0af9a246",
+      "independent-numeric-history-check.json": "5e1529bbc565ff505379fe19c5c8cce6f311105823855a6552112d13c7ef7721",
+      "independent-identity-history-check.json": "57a872665cc65284ba19d28beda03e02656bb59e523ffbfb2c0394f564b8e7cc",
+      "independent-reopen-check.json": "2cca1c7b900bffb22a72c2a2ca2954f7de78b347ce2a2cd60c8f4ee3694d40d1"
+    },
+    "original_evaluators": {
+      "original_obj_bounds.py": {
+        "sha256": "cd9887a428439fdb54bdb20276c0ab8e8144a43e386df01f76a75ae9703462cb",
+        "portable_copy": "byte-identical independent evaluator"
+      },
+      "original_obj_boundary.py": {
+        "sha256": "93e03a7d41d317e782a1833be9a634fc7cce1db2b6b25faecb8b5eac5d47de12",
+        "portable_copy": "byte-identical independent evaluator"
+      },
+      "verify_numeric_rectangle.py": {
+        "sha256": "eda43bea0586ad9d3b83e74947b4555eea3d6ecb61218c0cf2c30a9b1ed56c45",
+        "portable_copy": "explicit derivative; fixture paths relative to this bundle"
+      },
+      "verify_numeric_history.py": {
+        "sha256": "b12e67fc3dfff4a21aebacc5eef823452510e05d79fe865b932bf091a9aede2c",
+        "portable_copy": "explicit derivative; fixture paths relative to this bundle"
+      },
+      "verify_identity_history.py": {
+        "sha256": "884e22a442efc1f1ff6754247e653ad9d253ed4c91cefdd6afb7b384b13c021b",
+        "portable_copy": "explicit derivative; fixture paths relative to this bundle"
+      }
+    }
+  },
+  "files": {
+    "BUNDLE.txt": {
+      "sha256": "a7fd9b3333db888ca49f3a9f06bd8c72bf3b8ffb6f5fa4f8c799d639f4f69c93",
+      "bytes": 999
+    },
+    "declaration.json": {
+      "sha256": "8b569811535553a5e21bf90f00715745d9bf7dde903315221b99ae2e3d172e38",
+      "bytes": 2223
+    },
+    "empty.weftforge": {
+      "sha256": "a876afe8445fb90895cd12b1159f0fbaf5af10a6760e35c3bc35d5d9d6f55b5c",
+      "bytes": 1952
+    },
+    "focused-redone.weftforge": {
+      "sha256": "9ff0c0d3298322da4f0cdea018cfef4d0ae034c9e8bfe9a6dbb011256455981c",
+      "bytes": 5679
+    },
+    "focused-undone.weftforge": {
+      "sha256": "aa90d54b50fb9f85eb8b5311ad75c2594f00d52e5e02697349827b15c9f6630a",
+      "bytes": 5678
+    },
+    "identity-a.weftforge": {
+      "sha256": "9019627675fbb65f3267c7444711307fa686e841ed06f0fa8f8ffccec099b877",
+      "bytes": 4339
+    },
+    "identity-b.weftforge": {
+      "sha256": "86ff5f6acc6b718507ae4451e521abcd56adeec6bafaecb92d33023f687366ce",
+      "bytes": 5536
+    },
+    "identity-curved.weftforge": {
+      "sha256": "881787962715c55fbb1fd3110de6021e3555023cefb256926442dfd6c3435fb6",
+      "bytes": 5677
+    },
+    "independent-identity-history-check.json": {
+      "sha256": "e8e509683d8c24e1e5c4aea0df727b86621694152d98d4fe4514d884fb6ba639",
+      "bytes": 3906
+    },
+    "independent-numeric-boundary.json": {
+      "sha256": "56ba1220a4528b689899be98ad00fbe37be7606fd79bcf2e1773d929133160bb",
+      "bytes": 1844
+    },
+    "independent-numeric-bounds.json": {
+      "sha256": "0fd8303ccb93c31519677a3494af67bd876b038ec3c81648fc9159bcf3ee04a7",
+      "bytes": 1248
+    },
+    "independent-numeric-check.json": {
+      "sha256": "e61bcd305672f7bb809b43ee2d8c51c30100ea87b9930901c85c18b9dac805d2",
+      "bytes": 6368
+    },
+    "independent-numeric-history-check.json": {
+      "sha256": "d1dfdddf6c713765dfb1ab8359b26194c157ece6f48c81fcb9f14664195cf52c",
+      "bytes": 2359
+    },
+    "independent-reopen-check.json": {
+      "sha256": "711796a2005c1d5647f2352e51001e33849936bb8ef169b8a12454782233b81b",
+      "bytes": 1215
+    },
+    "numeric-after-errors.weftforge": {
+      "sha256": "ea7460e149dfd1f546063cc6c68d68a1ca77b82e3db437ac10977d070f705246",
+      "bytes": 3142
+    },
+    "numeric-redone.weftforge": {
+      "sha256": "ea7460e149dfd1f546063cc6c68d68a1ca77b82e3db437ac10977d070f705246",
+      "bytes": 3142
+    },
+    "numeric-undone.weftforge": {
+      "sha256": "459305dd35c3f7b9332bf24b93ef02bb1ab7b245c4f7c899e67f5d0cc2020bba",
+      "bytes": 1953
+    },
+    "numeric.obj": {
+      "sha256": "8837eacc7c9eafd5ecf8aca9a3087516786ed9b0d8cb42db57d47227f5c4240b",
+      "bytes": 9187
+    },
+    "numeric.svg": {
+      "sha256": "f52c8206298ad1a364fbc498a6894b8dc7211651e916fc456e6662b1b86ea51c",
+      "bytes": 435
+    },
+    "numeric.weftforge": {
+      "sha256": "3da018cb71ede7cfd6f67941f8fe33a20ac841589be866e366c9e352ebebbd55",
+      "bytes": 3142
+    },
+    "original-results/independent-identity-history-check.json": {
+      "sha256": "57a872665cc65284ba19d28beda03e02656bb59e523ffbfb2c0394f564b8e7cc",
+      "bytes": 3667
+    },
+    "original-results/independent-numeric-boundary.json": {
+      "sha256": "56ba1220a4528b689899be98ad00fbe37be7606fd79bcf2e1773d929133160bb",
+      "bytes": 1844
+    },
+    "original-results/independent-numeric-bounds.json": {
+      "sha256": "0fd8303ccb93c31519677a3494af67bd876b038ec3c81648fc9159bcf3ee04a7",
+      "bytes": 1248
+    },
+    "original-results/independent-numeric-check.json": {
+      "sha256": "ec79953ba7bb891a31bfc0aed77a77959aa604956aee81d34bfced0e0af9a246",
+      "bytes": 6261
+    },
+    "original-results/independent-numeric-history-check.json": {
+      "sha256": "5e1529bbc565ff505379fe19c5c8cce6f311105823855a6552112d13c7ef7721",
+      "bytes": 2120
+    },
+    "original-results/independent-reopen-check.json": {
+      "sha256": "2cca1c7b900bffb22a72c2a2ca2954f7de78b347ce2a2cd60c8f4ee3694d40d1",
+      "bytes": 1243
+    },
+    "original_obj_boundary.py": {
+      "sha256": "93e03a7d41d317e782a1833be9a634fc7cce1db2b6b25faecb8b5eac5d47de12",
+      "bytes": 7263
+    },
+    "original_obj_bounds.py": {
+      "sha256": "cd9887a428439fdb54bdb20276c0ab8e8144a43e386df01f76a75ae9703462cb",
+      "bytes": 5625
+    },
+    "provenance.json": {
+      "sha256": "f8d0f6bf274047bec84e15e5547f3d41a85f9366440b570b7f7a50b11c09485f",
+      "bytes": 3134
+    },
+    "reopened.weftforge": {
+      "sha256": "9ff0c0d3298322da4f0cdea018cfef4d0ae034c9e8bfe9a6dbb011256455981c",
+      "bytes": 5679
+    },
+    "run_checks.py": {
+      "sha256": "3d3824140e86ae761850afdbf47fb6c19a8ef20688a9a6d9e7b40075b946218d",
+      "bytes": 2693
+    },
+    "selfcheck-run.log": {
+      "sha256": "ae6a3fb0dfcdaff81843bc4587ce3051d3f67e1653e82f017662edb8fb17acd0",
+      "bytes": 3758
+    },
+    "verify_identity_history.py": {
+      "sha256": "3dd4797dfb58aab2c0788e44887fa91b360aad981352a9c19c01e8c7029dc5e0",
+      "bytes": 6846
+    },
+    "verify_numeric_history.py": {
+      "sha256": "0a0b74fa6361cb66486045e32e693511a2897536a78a7b5b05c2769d73ddf3d7",
+      "bytes": 4220
+    },
+    "verify_numeric_rectangle.py": {
+      "sha256": "b99eaeedec5a3fb47a599bc5d66bb7611888f8f89d556efa7f3d8cf7a0f6bbe1",
+      "bytes": 7687
+    },
+    "verify_reopen.py": {
+      "sha256": "6688b8364be8c8314430a40a7be77d621e208a3b4eb73342f9a285033b8145b7",
+      "bytes": 2188
+    }
+  },
+  "limits": [
+    "Reference baseline remains provisional; no full reference contract/parity claim.",
+    "Only bounded fixed-unit physical dimensions are comparable; no placement/topology/material equivalence.",
+    "UI gestures/process identity remain parent evidence; no timing, cloth fitting or rendering-quality claim."
+  ]
+}

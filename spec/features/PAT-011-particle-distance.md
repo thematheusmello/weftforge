@@ -1,6 +1,6 @@
 # PAT-011 — Pattern mesh resolution
 
-Reference state: **documentation reviewed; workspace accessible; behavior execution pending**. Candidate baseline:
+Reference state: **20 to 10 mm edit, one-step history, separate save/export and target-state process reopen observed; broad contract incomplete**. Candidate baseline:
 `MD-2026.1.237.58920-macos-arm64-20261113`.
 
 The [official Particle Distance manual](https://support.marvelousdesigner.com/hc/en-us/articles/47358268602777-Particle-Distance-Setting)
@@ -23,3 +23,22 @@ within 0.01 mm; mesh counts need measurement before any exact expectation is set
 Probe 0.8, 700, adjacent out-of-range values, NaN-like input, undo/redo, and canceled
 background work. Clamping, rejection, remeshing algorithm, and defaults remain
 unknown.
+
+The [original rectangle baseline](PAT-003-runtime-20261114.md) now supplies one
+measured 20 mm case: 290 vertices, 525 triangles and a single 53-edge boundary loop.
+The [independent boundary evaluator](../evaluators/original_obj_boundary.py)
+checks fixed physical dimensions, boundary positions, connected incidence,
+projected winding and area for that unsimulated axis-aligned fixture. A mesh with
+an interior hole can preserve its bounds, so the physical-size check alone is
+insufficient for this comparison. These measurements are the baseline of one
+run; they do not require every mesh at 20 mm to have those exact counts.
+The [bounded runtime run](PAT-011-runtime-20261114.md) now observes a 20 to 10 mm
+edit, one Undo/Redo, separate native save and post-edit OBJ export. At 10 mm,
+1127 vertices and 2149 triangles preserve the declared rectangle with maximum
+boundary error 0.000488 mm. Exact counts are observations of this fixture rather
+than a required universal triangulation. After a normal quit, the new process
+initially shows a black startup window with an AX failure. It subsequently reaches
+the workspace without another restart or account action, and the saved PD10
+target fields/counts are observed after reopening. The final whole-window AX
+capture has one unrelated node attribute gap; this limit and the earlier startup
+failures remain explicit.

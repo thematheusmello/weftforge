@@ -1,0 +1,47 @@
+{
+  "logs": {
+    "tests": {
+      "original_private_raw_sha256": "7f74c0959dd6348a6dbe7c1f1a5593599858c9c34d8e8897ab1a379d66452753",
+      "public_derived_path": "parity/reports/artifacts/numeric-rectangle-20261114/gates/tests.log",
+      "public_derived_sha256": "d53d31e136c633725938fbc11903bc56ac7c002b38b8b98376a576899f6183f7",
+      "derivation": "Only the personal absolute workspace prefix is replaced by ${WORKSPACE}.",
+      "tested_source_commit": "359ac5b2fedfece5cfef9f22861c279bd2708801"
+    },
+    "clippy": {
+      "original_private_raw_sha256": "4e99fd59eba0c5fea2562568624e329836e60d693a3932385f89e4b76b4130ca",
+      "public_derived_path": "parity/reports/artifacts/numeric-rectangle-20261114/gates/clippy.log",
+      "public_derived_sha256": "e236a03af69ee19ca1d282f10c791645ea68bb9050a6e16dd27920e499b0ff69",
+      "derivation": "Only the personal absolute workspace prefix is replaced by ${WORKSPACE}.",
+      "tested_source_commit": "359ac5b2fedfece5cfef9f22861c279bd2708801"
+    },
+    "snapshot-xtask": {
+      "original_private_raw_sha256": "85fbcfeaea4f0fb6e642fbe58bdc5700fd9d71edfb86245307da18bd539a27f5",
+      "public_derived_path": "parity/reports/artifacts/numeric-rectangle-20261114/gates/snapshot-xtask.log",
+      "public_derived_sha256": "07d66d5b0e7771f1df072c610a0ec4e05d7d5da0f5de97ab508d77df2e84ab95",
+      "derivation": "Only the personal absolute workspace prefix is replaced by ${WORKSPACE}.",
+      "tested_source_commit": "359ac5b2fedfece5cfef9f22861c279bd2708801"
+    },
+    "package": {
+      "original_private_raw_sha256": "840d40dbcb770305d95b82b662e442801a0bf3f8df76e454a0ed83e49d32cc28",
+      "public_derived_path": "parity/reports/artifacts/numeric-rectangle-20261114/gates/package.log",
+      "public_derived_sha256": "e7e6ca0671355f376f371b518b0e2c4ed95d314d6ff2bc9d01cc6284e6f38b4d",
+      "derivation": "Only the personal absolute workspace prefix is replaced by ${WORKSPACE}.",
+      "tested_source_commit": "359ac5b2fedfece5cfef9f22861c279bd2708801"
+    },
+    "publish-xtask": {
+      "original_private_raw_sha256": "130252e38771599a4083691d5d0cdc357bd288fb7525a331d0d699fa026573a9",
+      "public_derived_path": "parity/reports/artifacts/numeric-rectangle-20261114/gates/publish-xtask.log",
+      "public_derived_sha256": "130252e38771599a4083691d5d0cdc357bd288fb7525a331d0d699fa026573a9",
+      "derivation": "Only the personal absolute workspace prefix is replaced by ${WORKSPACE}.",
+      "runtime_source_commit": "359ac5b2fedfece5cfef9f22861c279bd2708801"
+    }
+  },
+  "rust_tests": 73,
+  "python_checks": 54,
+  "snapshot_catalog_ids": 893,
+  "later_902_map": "Final cargo xtask verify passed on the902-entry map and completed public reports; runtime/test source identities remain exactly the359 candidate.",
+  "fmt": "cargo fmt --all --check passed; no output.",
+  "retained_environment_failure": "An earlier external ExFAT TMPDIR lacked link support; its failed raw log remains private. Passing workspace run uses native APFS temp. No product tests were skipped.",
+  "final_catalog_ids": 902,
+  "final_evidence_checks": 54
+}

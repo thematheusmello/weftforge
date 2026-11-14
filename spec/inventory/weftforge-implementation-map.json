@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "purpose": "Source-pinned engineering crosswalk and bounded handoff queue, not a second implementation/verification status registry or a complete product inventory.",
-  "source_commit": "7e59f2a88daeb8084107bda79779b56426060c9f",
+  "source_commit": "8fb684e14ecc4685acefd2acfeea3e46a2dc3df5",
   "reference_build": "2026.1.237 (r58920)",
   "inputs": [
     {
@@ -13,22 +13,25 @@
     {
       "catalog": "components",
       "path": "spec/inventory/md-2026.1.237-components.json",
-      "sha256": "909a4627877fbdb5be8c46d163812fc526fc8dc9b3d9100edcf7eb50f8cce20b",
-      "records": 61
+      "sha256": "a5234d53d4554151b5a22e30d2ff3a47a35f9ab93570eb10b485a1575701cbe7",
+      "records": 313
     }
   ],
   "status_authority": {
     "path": "parity/features.yaml",
     "lookup": "Join groups[].feature_ids to features[].id at the revision being reported. Read implementation_status, reference_observation_status, verification_status and freshness there; no status value is copied here.",
-    "pinned_registry_sha256": "7d72f5eec47ce415f44366cb46b7d8076ec54ea529819aeb3e3bf94c48dfe395"
+    "pinned_registry_sha256": "15df2f6bae97255336b930440da4a086cd3c8e525197183557e33640ee228869"
   },
   "coverage_semantics": [
-    "650 catalog IDs are entry-path discovery records, not the feature denominator. Counts of groups or packets are ownership counts, not parity percentages.",
-    "Menus record one empty-workspace presence snapshot; components add a few initial/read-only values. Complete reference behaviors, canvas context menus, unlabeled icons, flyouts, ranges, errors and populated states remain unobserved unless separately contracted.",
+    "902 catalog IDs are entry-path discovery records, not the feature denominator. All previous 893 entries and 201 packets remain; nine added curvature/free-sewing/dialog records and one bounded preview packet do not complete feature behaviors. Counts of groups or packets are ownership counts, not parity percentages.",
+    "The menu input is an empty-workspace snapshot. Components include selected original-pattern/constructor/OBJ/Fit controls and read-only preference configuration. Reviewed bounded rectangle creation/history/reopen, one 20-to-10 mm resolution edit/history/export and delayed process restart/reopen were executed in the reference; preference effects, ranges, alternate options, much canvas/context behavior and physics remain untested.",
     "mapping_relation is a source relationship at source_commit: candidate_partial means connected source exists for a bounded related behavior; planned means a mapped capability is missing; ambiguous means its semantics or role cannot yet be assigned decisively. These values are not authoritative feature statuses.",
     "Coherent groups preserve candidate aliases and distinct selection/format/parameter variants. Similar labels do not establish identical behavior; each entry path must be exercised or have an evidenced alias contract.",
     "Heading is provisional for three disabled section-like leaves; keep them visible until nonempty/selected-state evidence resolves the role. Empty submenus remain containers, with unknown dynamic children.",
-    "Only vendor activation/session administration is excluded among these records. Hosted creation, rigging, AI, templates, content acquisition and local equivalents stay in scope; storefront-only exclusion requires evidence and later reviewed scope adjudication."
+    "Only vendor activation/session administration is excluded among these records. Hosted creation, rigging, AI, templates, content acquisition and local equivalents stay in scope; storefront-only exclusion requires evidence and later reviewed scope adjudication.",
+    "Component paths can contain explicit reviewer descriptors for unlabeled or repeated controls; retain exact catalog paths without asserting that every path segment is a printed label. No values from private paths, vendor presets, textures or palettes are reproduced here.",
+    "The new vendor account-switch action is excluded session administration; its preferences category and all substantive creation/content/extension workflows remain inventoried. Read-only preference values are current configuration, not factory constants, tested bindings, calibrated units or a selected numeric locale/language.",
+    "The new original curve/history run is bounded to one displayed 200.0-to-206.9 mm edge change and one Undo/Redo. Numeric Free Sewing reaches a 100 mm first-side preview only; the second side, completed/reversed seam, exact curve/control-point/arc-length geometry and Escape cancellation remain unconfirmed. A pointer-dependent initial length is not a default and mm is not a locale identifier."
   ],
   "mapping_relation_values": [
     "candidate_partial",
@@ -115,8 +118,8 @@
     },
     "contact": {
       "path": "crates/weftforge-sim/src/contact.rs",
-      "anchor": "fn ",
-      "scope": "Current CPU contact implementation; not a semantic implementation of per-pattern layers/deactivation flags."
+      "anchor": "fn analyze_contacts(",
+      "scope": "Immutable constructor overlap analysis uses a conservative expanded-triangle BVH. project_cloth still scans every vertex/triangle pair with bounds/exclusion filtering; later/reset contact diagnostics use brute force. This is not whole-solver acceleration or a reference contact parity claim."
     },
     "ui_tools": {
       "path": "apps/weftforge/src/main.rs",
@@ -131,7 +134,7 @@
     "ui_properties": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "fn inspector(",
-      "scope": "Piece/curve selection, dimensions, cubic controls/split, placement, grain, shared fabric, seam removal and limited solver controls."
+      "scope": "Piece/curve numeric controls now have stable creation/piece/curve/sewing/mesh widget scopes; a temporary RGB buffer avoids passive rounding commits. Existing dimensions/cubic/split/placement/grain/fabric controls remain a bounded subset, not a complete property/preferences editor."
     },
     "ui_pattern": {
       "path": "apps/weftforge/src/main.rs",
@@ -166,7 +169,7 @@
     "ui_shortcuts": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "fn ui(&mut self, ui: &mut egui::Ui",
-      "scope": "A small fixed shortcut/search list, keyboard focus guards and fixed workspace layout."
+      "scope": "Fixed native shortcuts/search and keyboard-focus guards now also exclude rectangle-modal background actions. Focused numeric edit buffers are cleared on document undo/redo; no configurable shortcut preferences exist."
     },
     "snap": {
       "path": "apps/weftforge/src/main.rs",
@@ -222,6 +225,86 @@
       "path": "xtask/src/main.rs",
       "anchor": "fn main()",
       "scope": "Integrated verification/report tooling; a passing source check is not reference parity."
+    },
+    "piece_fields": {
+      "path": "crates/weftforge-core/src/document.rs",
+      "anchor": "pub struct Piece {",
+      "scope": "Names, boundary IDs, placement, material and grain exist; no pattern layer, shrinkage, pressure, additional collision/rendering thickness or side/extrusion property state."
+    },
+    "material_fields": {
+      "path": "crates/weftforge-core/src/document.rs",
+      "anchor": "pub struct Material {",
+      "scope": "Physical material-level collision_thickness and directional stiffness exist; these are not the observed per-pattern additional thickness or shrinkage controls."
+    },
+    "step_settings": {
+      "path": "crates/weftforge-sim/src/lib.rs",
+      "anchor": "pub struct StepSettings {",
+      "scope": "Explicit seconds dt, substeps, iterations, gravity and seam-closure speed; no semantic match to CG labels, host CPU-count controls or unprinted reference units is established."
+    },
+    "ui_export": {
+      "path": "apps/weftforge/src/main.rs",
+      "anchor": "fn export(&mut self, svg: bool)",
+      "scope": "Native file destination and current/revision-safe OBJ snapshot export use fixed metres/Y-up; no OBJ option/preset/selection/unit-axis dialog exists at this source pin."
+    },
+    "ui_rectangle": {
+      "path": "apps/weftforge/src/main.rs",
+      "anchor": "fn rectangle_window(",
+      "scope": "Native click-open 500/500 mm width/height modal converts accepted values to metres through AddRectangle; pending inspector changes can join one transaction. Link/replication and complete reference limits/anchor semantics remain absent or unqualified."
+    },
+    "ui_numeric_history": {
+      "path": "apps/weftforge/src/main.rs",
+      "anchor": "fn history(&mut self, ctx: &egui::Context, redo: bool)",
+      "scope": "Commit validated drafts, remove the focused widget text buffer and surrender focus before restoring history, avoiding stale numeric text reapplying restored values."
+    },
+    "ui_field_state": {
+      "path": "apps/weftforge/src/main.rs",
+      "anchor": "ui.make_persistent_id((\"piece\",piece.id))",
+      "scope": "Stable creation/piece/curve/sewing/mesh scopes isolate numeric edit buffers from dynamic hierarchy rows; these are widget IDs, not new authored schema/Command variants."
+    },
+    "ui_rgb_buffer": {
+      "path": "apps/weftforge/src/main.rs",
+      "anchor": "let mut color=material.color;",
+      "scope": "Only an actual color widget change writes back to the draft; passive display conversion cannot create an authoring transaction."
+    },
+    "ui_modal_tests": {
+      "path": "apps/weftforge/src/main.rs",
+      "anchor": "fn rectangle_modal_blocks_background_accesskit_actions_and_preserves_staged_edits",
+      "scope": "Implementation-only modal/background input and staged-draft regression checks; not native reference comparison evidence."
+    },
+    "ui_history_tests": {
+      "path": "apps/weftforge/src/main.rs",
+      "anchor": "fn focused_numeric_history_restore_survives_blur_and_retains_redo",
+      "scope": "Implementation-only focused numeric history regression; fresh native candidate acceptance remains pending."
+    },
+    "initial_contacts": {
+      "path": "crates/weftforge-sim/src/contact.rs",
+      "anchor": "pub(crate) fn initial_contact_errors_cancellable(",
+      "scope": "Initial immutable overlap diagnostics build/query a thickness-expanded conservative triangle hierarchy with cancellation polling and unchanged exact narrow-phase/exclusion checks."
+    },
+    "live_contacts": {
+      "path": "crates/weftforge-sim/src/contact.rs",
+      "anchor": "pub(crate) fn project_cloth(",
+      "scope": "Mutable/live cloth contact remains a vertex-by-triangle scan with bounds filtering and is not accelerated by the initial hierarchy."
+    },
+    "initial_contact_tests": {
+      "path": "crates/weftforge-sim/src/tests.rs",
+      "anchor": "fn initial_hierarchy_matches_brute_force_for_contacts_thickness_and_sewing_filters",
+      "scope": "Implementation-only comparison to brute-force initial diagnostics, including thickness, exclusions, sewing filters and cancellation; not reference runtime calibration or general scaling evidence."
+    },
+    "ui_autosave": {
+      "path": "apps/weftforge/src/main.rs",
+      "anchor": "fn start_autosave(",
+      "scope": "Native background autosave and recoverable exit exist with fixed current policy; no configurable interval/max-count/retention/file-type/path preference contract exists."
+    },
+    "ui_numeric_precision": {
+      "path": "apps/weftforge/src/main.rs",
+      "anchor": "fn numeric_value<'a>(",
+      "scope": "Focused f64 editors format round-trip text to avoid passive blur rounding; unfocused presentation uses the existing formatter. The separate Size-field validation fix is present in current source, but formatting/implementation tests do not establish native Size acceptance or reference parity."
+    },
+    "ui_numeric_precision_tests": {
+      "path": "apps/weftforge/src/main.rs",
+      "anchor": "fn numeric_fields_preserve_unedited_bits_and_accept_text_steps_and_drags",
+      "scope": "Implementation-only preservation/edit/step/drag checks for numeric fields; no reference comparison or current native Size acceptance is supplied by the map."
     }
   },
   "fixture_recipes": {
@@ -356,6 +439,29 @@
         "parity/scenarios/PERFORMANCE-001.json"
       ],
       "rule": "Recipe is a needed original fixture, not proof it was executed; newly authored reference files/assets must pass redistribution review."
+    },
+    "selected-pattern-properties": {
+      "setup": "Start with the original 0.20 by 0.30 m unsimulated rectangle and all four boundary curves selected. Change one property only after its unit/commit behavior is reviewed; compare a second separately named piece, a reversed curved seam and an actually simulated layered extension. Retain exact authored values, selection/source revision and independent rest/current/display/export measurements.",
+      "existing_original_seeds": [
+        "spec/features/UI-property-surfaces-20261114.md",
+        "spec/features/PAT-003-runtime-20261114.md"
+      ],
+      "rule": "Recipe is a needed original fixture, not proof property edits or simulation were executed; do not hardcode the recorded fixture name/counts or reproduce private vendor assets."
+    },
+    "preference-effects": {
+      "setup": "Use disposable original empty/dirty/two-piece projects and a fixed view/DPI. Record a named preference page and unchanged configuration first, then execute only one reviewed preference operation with exact accepted value, units and intended scope. Test actual effect, cancel/reset/restart and missing/invalid local-resource cases independently; retention tests use an isolated temporary fixture directory.",
+      "existing_original_seeds": [
+        "spec/features/UI-preferences-runtime-20261114.md"
+      ],
+      "rule": "Read-only configured values, disabled shortcut hints and page-transition diffs are not execution of preference effects or factory defaults. No private path/account/palette/preset contents are fixture inputs."
+    },
+    "curved-sewing-preview": {
+      "setup": "Use two original 0.20 by 0.30 m panels with simulation off. Retain the reviewed 400 mm/0-degree/count-2 construction as one observed arrangement case only. For decisive follow-up, author an asymmetric cubic with declared original control coordinates, independently integrated arc length and a 0.100 m target from a declared endpoint; record the exact view/selection/tool and preview versus completed-seam state before each action.",
+      "existing_original_seeds": [
+        "spec/features/SEW-002-runtime-20261114.md",
+        "spec/observations/REF-SEW-002-FREE-PARTIAL-001.json"
+      ],
+      "rule": "The public run records one curve gesture/history and first-side preview only; it supplies no redistributable proprietary project, continuous curve formula, completed seam, reverse behavior or simulation answer. Choose independent metrics before new comparison."
     }
   },
   "owner_lanes": {
@@ -509,6 +615,43 @@
         "APP-005"
       ],
       "reason": "Native menus are platform-specific evidence. Windows/Linux/Apple Silicon launch, accessibility/high-DPI, package/license/asset review, recovery and offline release evidence remain independent required gates."
+    },
+    {
+      "lead": "Property units, editing and hidden children",
+      "feature_ids": [
+        "REF-002",
+        "SIM-002",
+        "SIM-003",
+        "SIM-004",
+        "MAT-003",
+        "FILE-003",
+        "PAT-003"
+      ],
+      "reason": "Resolve unprinted global solver/grain/pressure units, collapsed Ground children, selected/mixed-pattern edits, constructor link/replication/Cancel/limits, OBJ alternate options/paths/presets and Pressure/any Strain property pages. Read-only displayed values, AX-settable cells and one unchanged-option export do not establish accepted ranges, algorithms, material calibration or complete contracts."
+    },
+    {
+      "lead": "Preference effects and actual configured scope",
+      "feature_ids": [
+        "REF-001",
+        "REF-002",
+        "UI-003",
+        "UI-006",
+        "FILE-002",
+        "APP-001"
+      ],
+      "reason": "Resolve collapsed shortcut descendants, disabled Action hints, offscreen font/picker controls, unlabeled file actions and unpopulated PLM content. Test actual navigation, units/parser/checked language, snap, defaults, library replacement, autosave/retention/recovery, plugin and reset/restart effects. Current configuration and a missing stale resource path neither prove factory behavior nor diagnose startup delay."
+    },
+    {
+      "lead": "Complete the second Free Sewing side and independently measure curved endpoints",
+      "feature_ids": [
+        "PAT-002",
+        "SEW-001",
+        "SEW-002",
+        "SEW-003",
+        "SEW-004",
+        "REF-003"
+      ],
+      "reason": "Retain the confirmed 100 mm first-side preview and single displayed curve/history gesture separately from missing second-side selection, completed/reversed seam, true curve/arc-length geometry, cancel/Escape delivery, mismatch, remeshing, persistence and simulation. Reopen/export the new curved checkpoint and use known original asymmetric controls with an independent fixed-unit evaluator before correspondence claims."
     }
   ],
   "packet_rules": {
@@ -861,6 +1004,38 @@
         "verification"
       ],
       "decisive_acceptance": "Run one platform lifecycle/package scenario on the real built executable, including native hide/quit/reopen, high-DPI keyboard access, save/recovery and offline launch. Record tested build/hash/platform, licenses and unsupported surfaces; do not infer other platforms from source tests."
+    },
+    "WP-31": {
+      "title": "Selected pattern property controls",
+      "owner_lanes": [
+        "authoring",
+        "geometry",
+        "solver",
+        "files",
+        "desktop",
+        "automation",
+        "verification"
+      ],
+      "decisive_acceptance": "Implement one reviewed selected-pattern property only. On an original 0.20 by 0.30 m rectangle plus a curved, simulated or layered extension as relevant, compare exact authored values/units and independently measured physical or display/output effects. Verify mixed selection, invalid input, cancel, one undo/redo unit, source edit/remesh/invalidation and editable save/reopen. Keep physical, rest and appearance-only fields distinct; never infer unknown reference units or copy fixture counts/defaults."
+    },
+    "WP-32": {
+      "title": "Read-only preference behavior handoffs",
+      "owner_lanes": [
+        "desktop",
+        "files",
+        "automation",
+        "verification"
+      ],
+      "decisive_acceptance": "Implement one reviewed preference or dependent operation at a time using original data. Observe accepted units/ranges, enabled states, page/gesture effects, commit/cancel/reset and restart persistence before comparison; never promote displayed configuration, disabled hints or unknown units to defaults/active behavior. Verify settings do not create unintended authored edits, resource paths are bounded and failures/cleanup preserve the old project and last valid recovery."
+    },
+    "WP-33": {
+      "title": "First-side Free Sewing preview",
+      "owner_lanes": [
+        "geometry",
+        "desktop",
+        "verification"
+      ],
+      "decisive_acceptance": "On an original asymmetric curve, reproduce the reviewed first endpoint/right-click/Length-mm keyboard-Tab/OK sequence and visibly retain the 100 mm first-side preview without claiming a committed seam. Independently integrate known original curve geometry before comparing its preview endpoint; one-decimal reference labels supply no high-precision tolerance. Keep preview state distinct from authored AddSeam/history and accepted simulation. Resolve Cancel/Close/Escape/tool-switch behavior and second-side completion through separate reviewed contracts; failures retain the old document."
     }
   },
   "next_executable_parts": [
@@ -2683,6 +2858,183 @@
         "PACK-application-quit",
         "PACK-workspace-panels"
       ]
+    },
+    {
+      "id": "PACK-pattern-name-property",
+      "order": 185,
+      "acceptance_profile": "WP-31",
+      "group_id": "pattern-name-property",
+      "depends_on": [
+        "PACK-point-pattern-edit"
+      ]
+    },
+    {
+      "id": "PACK-selected-line-lengths",
+      "order": 186,
+      "acceptance_profile": "WP-31",
+      "group_id": "selected-line-lengths",
+      "depends_on": [
+        "PACK-point-pattern-edit",
+        "PACK-simulate"
+      ]
+    },
+    {
+      "id": "PACK-edge-elastic",
+      "order": 187,
+      "acceptance_profile": "WP-31",
+      "group_id": "edge-elastic",
+      "depends_on": [
+        "PACK-segment-sewing",
+        "PACK-internal-primitives"
+      ]
+    },
+    {
+      "id": "PACK-schematic-line-properties",
+      "order": 188,
+      "acceptance_profile": "WP-31",
+      "group_id": "schematic-line-properties",
+      "depends_on": [
+        "PACK-point-pattern-edit",
+        "PACK-schematic-render"
+      ]
+    },
+    {
+      "id": "PACK-pattern-layer-property",
+      "order": 189,
+      "acceptance_profile": "WP-31",
+      "group_id": "pattern-layer-property",
+      "depends_on": [
+        "PACK-superimpose-layer-clone",
+        "PACK-simulate"
+      ]
+    },
+    {
+      "id": "PACK-directional-shrinkage",
+      "order": 190,
+      "acceptance_profile": "WP-31",
+      "group_id": "directional-shrinkage",
+      "depends_on": [
+        "PACK-fabric-assignment",
+        "PACK-grain-alignment"
+      ]
+    },
+    {
+      "id": "PACK-pattern-collision-thickness",
+      "order": 191,
+      "acceptance_profile": "WP-31",
+      "group_id": "pattern-collision-thickness",
+      "depends_on": [
+        "PACK-simulate",
+        "PACK-fabric-assignment"
+      ]
+    },
+    {
+      "id": "PACK-pattern-pressure",
+      "order": 192,
+      "acceptance_profile": "WP-31",
+      "group_id": "pattern-pressure",
+      "depends_on": [
+        "PACK-simulate"
+      ]
+    },
+    {
+      "id": "PACK-pattern-render-geometry",
+      "order": 193,
+      "acceptance_profile": "WP-31",
+      "group_id": "pattern-render-geometry",
+      "depends_on": [
+        "PACK-retopology",
+        "PACK-obj-interchange"
+      ]
+    },
+    {
+      "id": "PACK-view-control-preferences",
+      "order": 194,
+      "acceptance_profile": "WP-32",
+      "group_id": "view-control-preferences",
+      "depends_on": [
+        "PACK-viewpoints",
+        "PACK-workspace-panels"
+      ]
+    },
+    {
+      "id": "PACK-shortcut-preferences",
+      "order": 195,
+      "acceptance_profile": "WP-32",
+      "group_id": "shortcut-preferences",
+      "depends_on": [
+        "PACK-workspace-panels",
+        "PACK-undo-redo"
+      ]
+    },
+    {
+      "id": "PACK-unit-display-preferences",
+      "order": 196,
+      "acceptance_profile": "WP-32",
+      "group_id": "unit-display-preferences",
+      "depends_on": [
+        "PACK-rectangle",
+        "PACK-workspace-panels"
+      ]
+    },
+    {
+      "id": "PACK-appearance-preferences",
+      "order": 197,
+      "acceptance_profile": "WP-32",
+      "group_id": "appearance-preferences",
+      "depends_on": [
+        "PACK-workspace-panels"
+      ]
+    },
+    {
+      "id": "PACK-autosave-preferences",
+      "order": 198,
+      "acceptance_profile": "WP-32",
+      "group_id": "autosave-preferences",
+      "depends_on": [
+        "PACK-application-quit",
+        "PACK-project-load-save"
+      ]
+    },
+    {
+      "id": "PACK-default-resource-preferences",
+      "order": 199,
+      "acceptance_profile": "WP-32",
+      "group_id": "default-resource-preferences",
+      "depends_on": [
+        "PACK-preference-assets",
+        "PACK-project-load-save"
+      ]
+    },
+    {
+      "id": "PACK-object-replacement-preferences",
+      "order": 200,
+      "acceptance_profile": "WP-32",
+      "group_id": "object-replacement-preferences",
+      "depends_on": [
+        "PACK-workspace-panels",
+        "PACK-local-libraries"
+      ]
+    },
+    {
+      "id": "PACK-plm-integration-discovery",
+      "order": 201,
+      "acceptance_profile": "WP-27",
+      "group_id": "plm-integration-discovery",
+      "depends_on": [
+        "PACK-plugin-manager",
+        "PACK-project-load-save"
+      ]
+    },
+    {
+      "id": "PACK-free-sewing-length-preview",
+      "order": 202,
+      "acceptance_profile": "WP-33",
+      "group_id": "free-sewing-length-preview",
+      "depends_on": [
+        "PACK-curve-tools",
+        "PACK-segment-sewing"
+      ]
     }
   ],
   "groups": [
@@ -2763,14 +3115,17 @@
       "shared_commands": [],
       "candidate_behavior": "Native .weftforge v2 loads/saves atomically with v1 migration; commercial project files and metadata variants are not decoded.",
       "missing_functionality": [
-        "Reference native decoding research; metadata preservation; exact open/save option contracts and unsupported-data reporting."
+        "Reference native decoding research; metadata preservation; exact open/save option contracts and unsupported-data reporting.",
+        "Show Option to Save Metadata and Save with Thumbnail preferences are configured read-only; native thumbnail/metadata contents and future-save/default/reset behavior are not implemented by current native JSON IO."
       ],
       "runtime_questions": [
-        "Which editable objects/assets/settings and metadata are stored by each variant, and what happens on cancel, unsupported versions or missing assets?"
+        "Which editable objects/assets/settings and metadata are stored by each variant, and what happens on cancel, unsupported versions or missing assets?",
+        "Do these preferences affect future save dialogs, embedded data or sidecars, and what is included/excluded for native editable construction, thumbnails, metadata and unsupported reference formats?"
       ],
       "fixture_ids": [
         "dirty-project",
-        "save-failure"
+        "save-failure",
+        "preference-effects"
       ],
       "packet_id": "PACK-project-load-save"
     },
@@ -3032,14 +3387,17 @@
       "shared_commands": [],
       "candidate_behavior": "No source-backed implementation of this behavior was found at the pinned commit.",
       "missing_functionality": [
-        "Persisted toolbar configuration, group/order editing, reset and validated tool-set IO."
+        "Persisted toolbar configuration, group/order editing, reset and validated tool-set IO.",
+        "The 2D/3D toolbar placement selectors are configured to Top in this run, but alternative positions, docking effects and persisted layout/shortcut interactions are untested."
       ],
       "runtime_questions": [
-        "What exactly is persisted by Tool Set; how do reorder/group/reset interact with shortcuts and inaccessible tools?"
+        "What exactly is persisted by Tool Set; how do reorder/group/reset interact with shortcuts and inaccessible tools?",
+        "Do toolbar position preferences move only that toolbar or also change tool grouping/order/shortcuts, and what keyboard/high-DPI/layout restore behavior applies?"
       ],
       "fixture_ids": [
         "empty",
-        "keyboard"
+        "keyboard",
+        "preference-effects"
       ],
       "packet_id": "PACK-toolset-assets"
     },
@@ -3059,14 +3417,17 @@
       "shared_commands": [],
       "candidate_behavior": "No source-backed implementation of this behavior was found at the pinned commit.",
       "missing_functionality": [
-        "User preference model/dialog/IO, local storage, validation, migration and reset behavior."
+        "User preference model/dialog/IO, local storage, validation, migration and reset behavior.",
+        "Observed preference category navigation and Save as Preferences/Reset/Close controls do not implement preference editing, export/reset or persistence; reset of suppressed dialogs is also unexecuted."
       ],
       "runtime_questions": [
-        "Which tabs/controls/preferences exist beyond the captured graphic options; do import/reset/restart affect documents or only application state?"
+        "Which tabs/controls/preferences exist beyond the captured graphic options; do import/reset/restart affect documents or only application state?",
+        "Which values, paths and dialog-suppression states are affected by Save as Preferences, Reset, Close and Reset Dialog with Don't Show Again; what cancel/restart/migration/error behavior applies?"
       ],
       "fixture_ids": [
         "keyboard",
-        "save-failure"
+        "save-failure",
+        "preference-effects"
       ],
       "packet_id": "PACK-preference-assets"
     },
@@ -3136,20 +3497,27 @@
         "ui_toolbar",
         "cli",
         "mcp",
-        "workflow_tests"
+        "workflow_tests",
+        "ui_export"
       ],
       "shared_commands": [],
       "candidate_behavior": "Only triangle OBJ export exists; native UI can export the accepted simulated snapshot, while MCP exports a rest mesh.",
       "missing_functionality": [
-        "OBJ parsing; replacement versus add/to-garment construction semantics; selected scope, material libraries, welding/thickness options and independent consumer checks."
+        "OBJ parsing; replacement versus add/to-garment construction semantics; selected scope, material libraries, welding/thickness options and independent consumer checks.",
+        "The 29 observed export controls add preset/configuration, pattern/avatar/graphic-trim scope, grouping, welding/merge/turned-seam, thickness, unified UV, hidden/internal geometry, units/percent/axis inversions, texture destinations/map processing, XML metadata and reset/OK/Cancel. The current writer has none of these option controls and uses fixed metres/Y-up.",
+        "The executed route and visible title are Export OBJ despite the AX title Import OBJ. Only unchanged options and independently measured original dimensions/counts are established; dropdown contents, selected disclosures and alternate effects remain untested."
       ],
       "runtime_questions": [
-        "For each direction/scope, what do units, axes, normals, UVs, groups, materials, welding and thickness mean; is OBJ to Garment editable construction or a mesh-only object?"
+        "For each direction/scope, what do units, axes, normals, UVs, groups, materials, welding and thickness mean; is OBJ to Garment editable construction or a mesh-only object?",
+        "For one original fixture and one changed option at a time, what exact selection, object count/grouping, seam/proximity welding, turned-seam and Thin/Thick geometry changes occur, with explicit loss reports and independent consumers?",
+        "How do declared units, percent scale and each axis/inversion compose without fitting exported bounds; what preset/reset/cancel/overwrite behavior and hidden/internal/trim/avatar inclusion apply?",
+        "Which original assets and paths are packaged by absolute versus ZIP texture destinations, combined/excluded/extracted maps and XML metadata, and how do failure/cancel preserve old outputs without exposing private paths or vendor resources?"
       ],
       "fixture_ids": [
         "units-mesh",
         "rigged-avatar",
-        "motion"
+        "motion",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-obj-interchange"
     },
@@ -3710,14 +4078,20 @@
         "ui_shortcuts",
         "ui_properties",
         "workflow_tests",
-        "mcp_schema"
+        "mcp_schema",
+        "ui_numeric_history",
+        "ui_field_state",
+        "ui_rgb_buffer",
+        "ui_history_tests",
+        "ui_modal_tests"
       ],
       "shared_commands": [
         "Transaction"
       ],
-      "candidate_behavior": "Authoring history uses whole validated project snapshots, one gesture transaction and stable IDs; no history panel exists and CLI/MCP invocations use file transactions rather than a persistent UI history.",
+      "candidate_behavior": "Authoring history still restores validated project snapshots with monotone revisions/IDs. Native history now commits the current valid draft, clears the focused numeric edit text and releases focus before undo/redo; passive RGB rendering no longer writes rounded values into drafts. Stable scoped widgets and modal isolation are source-backed regressions, while a fresh native candidate history comparison remains pending and no full history panel exists.",
       "missing_functionality": [
-        "Runtime-equivalent gesture boundaries/history presentation, focus-sensitive shortcuts and all future operation participation."
+        "Runtime-equivalent gesture boundaries/history presentation, focus-sensitive shortcuts and all future operation participation.",
+        "Fresh native acceptance for focused field undo/redo, subsequent blur, pending numeric edits and unchanged RGB display; implementation-only tests do not establish reference gesture semantics."
       ],
       "runtime_questions": [
         "What is one undo unit for draw, drag, numeric entry, seam edits and material changes; do selection/navigation/simulation or saved sessions participate?"
@@ -3938,14 +4312,17 @@
       "shared_commands": [],
       "candidate_behavior": "No source-backed implementation of this behavior was found at the pinned commit.",
       "missing_functionality": [
-        "A reviewed definition of solidify, stored rest/shape constraints and interaction with edits and collision."
+        "A reviewed definition of solidify, stored rest/shape constraints and interaction with edits and collision.",
+        "A selected-pattern Solidify checkbox is present but was not toggled; its alias relationship with the context action remains untested."
       ],
       "runtime_questions": [
-        "Does solidify preserve draped shape, rigidify, add thickness or change another property; what data/physics survive resets?"
+        "Does solidify preserve draped shape, rigidify, add thickness or change another property; what data/physics survive resets?",
+        "Do the selected-pattern checkbox and context action share one state, and which rest/current shape, history and persistence data change on both transitions?"
       ],
       "fixture_ids": [
         "material-panels",
-        "layered-panels"
+        "layered-panels",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-solidify"
     },
@@ -3963,14 +4340,20 @@
       "shared_commands": [],
       "candidate_behavior": "Generated rest meshes are triangles with authored correspondence; no user-authored quad conversion or topology choice exists.",
       "missing_functionality": [
-        "Conversion rules, editable/output topology distinction, remapping of UVs/seams/materials and conversion error handling."
+        "Conversion rules, editable/output topology distinction, remapping of UVs/seams/materials and conversion error handling.",
+        "The selected-pattern Mesh Type selector displays Triangle for this original fixture; alternative values and equivalence to context triangulate/quadrangulate actions remain unobserved.",
+        "The 3D preference Mesh selector is distinct from a selected-pattern Mesh Type property; whether it governs new or existing authored/rest/display/output topology is untested."
       ],
       "runtime_questions": [
-        "Does conversion alter rest, simulation or only output mesh; what boundaries, quad metrics and relationships are preserved?"
+        "Does conversion alter rest, simulation or only output mesh; what boundaries, quad metrics and relationships are preserved?",
+        "Which Mesh Type options are actually offered for different patterns and what editable/rest/simulation/output mesh changes occur compared with the context conversion actions?",
+        "When the 3D Mesh preference changes, which new/existing/imported pieces or caches change, and does it share state with selected Mesh Type or context conversions?"
       ],
       "fixture_ids": [
         "unequal-curves",
-        "units-mesh"
+        "units-mesh",
+        "selected-pattern-properties",
+        "preference-effects"
       ],
       "packet_id": "PACK-mesh-topology-conversion"
     },
@@ -4050,15 +4433,18 @@
       ],
       "candidate_behavior": "Per-piece translation/XYZ Euler placement exists; reset/symmetric/reverse/wrap/re-drape reference operations and arrangement snapshots do not.",
       "missing_functionality": [
-        "Distinct authored placement/rest/simulated state contracts, selected/all scope, reset snapshots, symmetry/wrap operations and connected feedback."
+        "Distinct authored placement/rest/simulated state contracts, selected/all scope, reset snapshots, symmetry/wrap operations and connected feedback.",
+        "Configured default arrangement shape and point size are observed preferences; point-size units and their effects on new/current arrangement are untested."
       ],
       "runtime_questions": [
-        "For every entry path, which 2D/3D/rest/current state is the source/target, which axes/pivots are used and do sewing/materials or current drape survive?"
+        "For every entry path, which 2D/3D/rest/current state is the source/target, which axes/pivots are used and do sewing/materials or current drape survive?",
+        "What scope and unit do Default Arrangement Shape Type and Point Size use, and do they change authored placement, arrangement aids or only future objects?"
       ],
       "fixture_ids": [
         "three-pieces",
         "avatar-pair",
-        "layered-panels"
+        "layered-panels",
+        "preference-effects"
       ],
       "packet_id": "PACK-arrangement"
     },
@@ -4327,14 +4713,17 @@
       "shared_commands": [],
       "candidate_behavior": "No source-backed implementation of this behavior was found at the pinned commit.",
       "missing_functionality": [
-        "Validated topological cut with new pieces/holes, stable source relationships and optional generated seams."
+        "Validated topological cut with new pieces/holes, stable source relationships and optional generated seams.",
+        "Automatically Offset 2D Patterns when Cut is observed but unexecuted; an offset distance, direction, scope or transaction boundary is not inferred."
       ],
       "runtime_questions": [
-        "Which internal/boundary paths can cut, how are IDs/material/grain/sewing distributed and which orientations does Cut & Sew generate?"
+        "Which internal/boundary paths can cut, how are IDs/material/grain/sewing distributed and which orientations does Cut & Sew generate?",
+        "What offset is applied after each cut variant, how is it chosen for multiple pieces/negative coordinates and is offset part of the same authored undo unit?"
       ],
       "fixture_ids": [
         "concave-internal",
-        "unequal-curves"
+        "unequal-curves",
+        "preference-effects"
       ],
       "packet_id": "PACK-cut-and-sew"
     },
@@ -4435,14 +4824,17 @@
       "shared_commands": [],
       "candidate_behavior": "No source-backed implementation of this behavior was found at the pinned commit.",
       "missing_functionality": [
-        "Explicit authored clone scopes, ID/remapped dependency handling, internal shape data and one transaction."
+        "Explicit authored clone scopes, ID/remapped dependency handling, internal shape data and one transaction.",
+        "Copied-pattern numeric indexing is a configured preference only; no naming sequence, collision handling or clone behavior is established."
       ],
       "runtime_questions": [
-        "What geometry, labels, sewing, materials and relations are copied by each variant, and where are clone pieces/internal shapes placed?"
+        "What geometry, labels, sewing, materials and relations are copied by each variant, and where are clone pieces/internal shapes placed?",
+        "How do copied-pattern indexing choices apply across duplicate names, repeated copies, project reload and independent versus linked clones without changing stable object IDs?"
       ],
       "fixture_ids": [
         "linked-pieces",
-        "concave-internal"
+        "concave-internal",
+        "preference-effects"
       ],
       "packet_id": "PACK-clone-construction"
     },
@@ -4678,22 +5070,28 @@
         "ui_properties",
         "solver_material",
         "adapter",
-        "grain_tests"
+        "grain_tests",
+        "ui_rgb_buffer",
+        "ui_field_state",
+        "ui_numeric_history"
       ],
       "shared_commands": [
         "SetMaterial",
         "AddMaterial",
         "UpdateMaterial"
       ],
-      "candidate_behavior": "Typed fabric assignment/add/update and piece-level physical materials exist; GUI edits one shared fabric and lacks a full browser/preset workflow.",
+      "candidate_behavior": "Typed fabric assignment/add/update and piece-level physical materials still exist; GUI edits one shared fabric. The inspector now stages RGB in a temporary display buffer and writes it only on an actual widget change, preventing passive rounding from committing material/history edits. A full fabric browser/preset workflow and fresh native comparison are still missing.",
       "missing_functionality": [
-        "Reference fabric browser/dialog/region assignment, reusable original presets and explicit approximate/calibrated labeling."
+        "Reference fabric browser/dialog/region assignment, reusable original presets and explicit approximate/calibrated labeling.",
+        "The selected-pattern Fabric selector is observed without exposing proprietary preset contents; its dropdown, reassignment, copy/shared ownership and undo effects remain untested."
       ],
       "runtime_questions": [
-        "What does Basic Fabric reset, are assigned objects copied or shared and how do material/appearance/grain changes affect other pieces and cache invalidation?"
+        "What does Basic Fabric reset, are assigned objects copied or shared and how do material/appearance/grain changes affect other pieces and cache invalidation?",
+        "What local fabric choices and child controls appear for one versus mixed selections, and does reassignment share, clone or reset physical/appearance/grain properties?"
       ],
       "fixture_ids": [
-        "material-panels"
+        "material-panels",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-fabric-assignment"
     },
@@ -4713,13 +5111,16 @@
       "shared_commands": [],
       "candidate_behavior": "No source-backed implementation of this behavior was found at the pinned commit.",
       "missing_functionality": [
-        "Portable texture maps, UV transforms, color spaces, image bounds, refresh/missing asset behavior and texture editing tools."
+        "Portable texture maps, UV transforms, color spaces, image bounds, refresh/missing asset behavior and texture editing tools.",
+        "External texture-editor registration and read-only sRGB/legacy texture/source-location preferences add unexecuted asset-handling routes; no private paths or proprietary resources are supplied."
       ],
       "runtime_questions": [
-        "Are transformations per material, piece, face or graphic; how do 2D/3D controls, image refresh and deleting/flipping textures affect UVs/export/physics?"
+        "Are transformations per material, piece, face or graphic; how do 2D/3D controls, image refresh and deleting/flipping textures affect UVs/export/physics?",
+        "What does registering an external editor launch with original assets, how are edits refreshed/cancelled, and what color-space/source-location/legacy-save transformations occur without changing physical fabric properties?"
       ],
       "fixture_ids": [
-        "texture-panel"
+        "texture-panel",
+        "preference-effects"
       ],
       "packet_id": "PACK-textures"
     },
@@ -4766,21 +5167,25 @@
         "ui_properties",
         "ui_pattern",
         "adapter",
-        "grain_tests"
+        "grain_tests",
+        "piece_fields"
       ],
       "shared_commands": [
         "SetGrain"
       ],
       "candidate_behavior": "Per-piece grain in radians reaches orthotropic CPU material response and native selected-piece display; no named alignment actions exist.",
       "missing_functionality": [
-        "Observed reference axis/parallel semantics, multi-selection, linked updates and display toggle."
+        "Observed reference axis/parallel semantics, multi-selection, linked updates and display toggle.",
+        "The selected-pattern Grain Direction field and Reset Grain Direction button are indexed. Their reference angle unit, wrap range, reset target and edit semantics are unknown; the current SetGrain radians convention is only a source candidate."
       ],
       "runtime_questions": [
-        "Which authored, world or screen axes define each action and display; how do mirrored/rotated pieces and curve targets determine grain?"
+        "Which authored, world or screen axes define each action and display; how do mirrored/rotated pieces and curve targets determine grain?",
+        "Which unit/sign/wrap and multi-selection aggregation apply to Grain Direction, and does Reset Grain Direction use a pattern axis, fabric default or another baseline without altering visual texture angle?"
       ],
       "fixture_ids": [
         "material-panels",
-        "unequal-curves"
+        "unequal-curves",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-grain-alignment"
     },
@@ -4964,12 +5369,16 @@
         "ui_jobs",
         "solver",
         "adapter",
-        "sim_tests"
+        "sim_tests",
+        "initial_contacts",
+        "live_contacts",
+        "initial_contact_tests"
       ],
       "shared_commands": [],
-      "candidate_behavior": "Native play/pause/step/reset and assembly/drape phases drive actual cancellable CPU worker state and reject obsolete revisions.",
+      "candidate_behavior": "Native play/pause/step/reset and assembly/drape phases drive cancellable CPU worker state and reject obsolete revisions. Initial immutable contact diagnostics now use a conservative BVH; live solving and subsequent/reset diagnostic scans remain quadratic. This does not establish simulation parity, whole-solver acceleration or a new native performance result.",
       "missing_functionality": [
-        "Observed reference toggle/quality/job/gesture behavior and complete shared controls; no parity claim from current worker tests."
+        "Observed reference toggle/quality/job/gesture behavior and complete shared controls; no parity claim from current worker tests.",
+        "Measure current initialization versus mutable step/diagnostic costs separately; the initial-only hierarchy does not resolve live collision scaling."
       ],
       "runtime_questions": [
         "What does Space/toggle start, pause, resume or reset; which state is retained on edits, failure/cancel and resimulation, and what units/settings apply?"
@@ -4994,23 +5403,33 @@
         "mesh",
         "ui_properties",
         "ui_jobs",
-        "workflow_tests"
+        "workflow_tests",
+        "piece_fields",
+        "ui_field_state",
+        "ui_numeric_history"
       ],
       "shared_commands": [
         "SetResolution"
       ],
       "candidate_behavior": "One document-wide edge-length resolution rebuilds conforming rest mesh and invalidates simulation; no high/low presets or per-piece resolution/subdivision mode exists.",
       "missing_functionality": [
-        "Runtime preset values/scope, subdivision display distinction, validation bounds and preserved rest/seam correspondence."
+        "Runtime preset values/scope, subdivision display distinction, validation bounds and preserved rest/seam correspondence.",
+        "Selected-pattern Particle Distance is explicitly measured in mm, while current SetResolution is document-wide metres. No per-pattern field/edit/remesh semantics are implemented; this control must not be conflated with Side Geometry Resolution.",
+        "Preference Default Particle Distance is a separate read-only configuration value with no printed unit in that control; its effect on new versus existing patterns is untested."
       ],
       "runtime_questions": [
-        "Are these remesh density, display subdivision or saved quality profiles; which pieces/caches change and what does Show Subdivisions display?"
+        "Are these remesh density, display subdivision or saved quality profiles; which pieces/caches change and what does Show Subdivisions display?",
+        "Does Particle Distance apply per selected pattern or a larger scope, what metric/accepted bounds and mesh changes follow a controlled edit, and how do seam correspondence, undo/reopen and current drape respond?",
+        "How does the configured default particle-distance preference apply to new/imported/copied patterns, and what unit does that preference field actually use without inferring it from the separate Unit System setting?"
       ],
       "fixture_ids": [
         "unequal-curves",
-        "layered-panels"
+        "layered-panels",
+        "selected-pattern-properties",
+        "preference-effects"
       ],
-      "packet_id": "PACK-resolution"
+      "packet_id": "PACK-resolution",
+      "reviewed_reference_scope": "The public bounded original rectangle run now records Particle Distance 20 to 10 mm, one Undo/Redo, changed mesh counts, fixed-unit independent size/boundary checks and delayed process restart/reopen. It is unsimulated and unsewn; it neither defines a mesh-count formula nor settles curved/sewn attachment, cache, multi-selection or input-limit behavior. Current source still exposes document-wide SetResolution, not the complete reference per-pattern property."
     },
     {
       "id": "mesh-selection",
@@ -5166,14 +5585,17 @@
       "shared_commands": [],
       "candidate_behavior": "No source-backed implementation of this behavior was found at the pinned commit.",
       "missing_functionality": [
-        "Editable fold/internal relation and arrangement angle/pivot tool distinct from physical material bending."
+        "Editable fold/internal relation and arrangement angle/pivot tool distinct from physical material bending.",
+        "Sync Fold Arrangement Angle is a read-only configured checkbox, not an executed fold relation or synchronization contract."
       ],
       "runtime_questions": [
-        "Which lines/angles/directions and current versus rest state define a fold, and how do subsequent simulation/reset/source edits behave?"
+        "Which lines/angles/directions and current versus rest state define a fold, and how do subsequent simulation/reset/source edits behave?",
+        "Which authored/current angles are synchronized and when, what changes on toggle, and does undo/save/reopen retain the relationship or only a preference?"
       ],
       "fixture_ids": [
         "concave-internal",
-        "material-panels"
+        "material-panels",
+        "preference-effects"
       ],
       "packet_id": "PACK-fold-arrangement"
     },
@@ -5271,14 +5693,17 @@
       "source_refs": [
         "commands",
         "ui_properties",
-        "ui_pattern"
+        "ui_pattern",
+        "ui_numeric_precision",
+        "ui_numeric_precision_tests"
       ],
       "shared_commands": [
         "ResizePiece"
       ],
-      "candidate_behavior": "Native inspector resizes a complete piece bounding box; there is no complete-pattern drag/rotate/scale/mirror transform tool.",
+      "candidate_behavior": "ResizePiece and native Size controls provide a bounding-box resize candidate. Focused numeric round-trip formatting and the reviewed Size-field validation fix are now implemented in source; Size no longer imposes the former native widget clamp and uses shared command validation. Native proof/publication for the fixed candidate remains pending. A complete-pattern drag/rotate/scale/mirror transform tool remains absent.",
       "missing_functionality": [
-        "2D transform tool, typed whole-selection transform command, pivots, exact numeric entry and relation preservation."
+        "2D transform tool, typed whole-selection transform command, pivots, exact numeric entry and relation preservation.",
+        "Do not infer a successful native Size workflow from the source validation fix or implementation-only checks. Publish/review native evidence for the fixed candidate, including exact dimensions, failed-input preservation, history and editable reopen."
       ],
       "runtime_questions": [
         "What handles, pivots, modifier locks, numeric entry and selection scopes are supported, and which seam/grain data transform?"
@@ -5304,7 +5729,10 @@
         "commands",
         "ui_pattern",
         "ui_properties",
-        "workflow_tests"
+        "workflow_tests",
+        "ui_field_state",
+        "ui_numeric_history",
+        "ui_modal_tests"
       ],
       "shared_commands": [
         "MovePoint"
@@ -5335,7 +5763,10 @@
         "curves",
         "ui_properties",
         "ui_pattern",
-        "workflow_tests"
+        "workflow_tests",
+        "ui_field_state",
+        "ui_numeric_history",
+        "ui_modal_tests"
       ],
       "shared_commands": [
         "SetCurveControls"
@@ -5345,12 +5776,15 @@
         "Reviewed handle/curve-point continuity types, gestures, smooth algorithm outcome and relationship/parameterization preservation."
       ],
       "runtime_questions": [
-        "What point kinds/continuity, drag handles and smooth scope are exposed; what curve shape and authored parameter constraints must remain?"
+        "What point kinds/continuity, drag handles and smooth scope are exposed; what curve shape and authored parameter constraints must remain?",
+        "Can an asymmetric original curve with known authoring coordinates reproduce the observed gesture/history and independently measured shape; which handles, continuity and true arc-length behavior follow beyond the one displayed edge?"
       ],
       "fixture_ids": [
-        "unequal-curves"
+        "unequal-curves",
+        "curved-sewing-preview"
       ],
-      "packet_id": "PACK-curve-tools"
+      "packet_id": "PACK-curve-tools",
+      "reviewed_reference_scope": "One menu-selected Edit Curvature midpoint drag changed a displayed 200.0 mm original edge to 206.9 mm and one Undo/Redo restored each displayed state with simulation off. The C hint was not executed. Exact control points, continuous arc length, conversion formula and exported curved geometry remain unmeasured; one-decimal lengths do not justify a 0.01 mm geometry tolerance."
     },
     {
       "id": "split-boundary",
@@ -5369,7 +5803,10 @@
         "workflow_tests",
         "cli",
         "cli_tests",
-        "mcp_schema"
+        "mcp_schema",
+        "ui_field_state",
+        "ui_numeric_history",
+        "ui_modal_tests"
       ],
       "shared_commands": [
         "SplitCurve"
@@ -5462,22 +5899,30 @@
         "cli",
         "mcp_schema",
         "workflow_tests",
-        "mcp_tests"
+        "mcp_tests",
+        "ui_rectangle",
+        "ui_numeric_history",
+        "ui_field_state",
+        "ui_modal_tests",
+        "ui_history_tests"
       ],
       "shared_commands": [
         "AddRectangle"
       ],
-      "candidate_behavior": "AddRectangle preserves exact authored dimensions through native drag/numeric inspector, CLI and MCP; a reference-style creation dialog is not established.",
+      "candidate_behavior": "AddRectangle remains shared by GUI/CLI/MCP. The native Rectangle tool now opens a click-triggered width/height modal initialized to 500/500 mm, converts accepted dimensions to metres and commits through the shared command; drag/numeric inspector routes also remain. Stable widget scopes, modal background/AccessKit isolation and staged-draft transaction handling are present in source. Fresh native candidate acceptance is pending; reference anchor equivalence and broad constructor variants are not established.",
       "missing_functionality": [
-        "Reviewed rectangle click/drag/numeric dialog, anchor/axis/default/range/cancel and single-transaction interaction contract."
+        "Complete reviewed click/drag/anchor/default/range/shortcut/numeric-locale behavior, linked dimensions, replication interval/angle/count and fresh native comparison of the current modal/history path.",
+        "Source Cancel/error/modal isolation tests exist. Reference constructor Cancel, invalid/clamped inputs and linking remain unexecuted; one explicit 400 mm interval/0-degree/count-2 replication case is now observed separately. General replication angle/spacing rules, counts/ranges and construction-history semantics remain unqualified."
       ],
       "runtime_questions": [
-        "Which click/drag/right-click/numeric entry sequence creates a rectangle; what anchors, units/defaults/ranges, cancel and undo behavior apply?"
+        "Which click/drag/right-click/numeric entry sequence creates a rectangle; what anchors, units/defaults/ranges, cancel and undo behavior apply?",
+        "What initial versus pre-OK values, link toggles, replication count/interval/angle, focus/keyboard commit and invalid-input behavior occur on further original runs; is each accepted repeated-shape construction one transaction?"
       ],
       "fixture_ids": [
         "empty",
         "print-panel",
-        "keyboard"
+        "keyboard",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-rectangle"
     },
@@ -5721,10 +6166,12 @@
         "Reference seam picking, interval/correspondence editing, preflight diagnostics and all-view feedback."
       ],
       "runtime_questions": [
-        "How are seams selected/edited, do handles address arc length or parameters and which errors/length mismatch/direction warnings appear before simulation?"
+        "How are seams selected/edited, do handles address arc length or parameters and which errors/length mismatch/direction warnings appear before simulation?",
+        "Switching to Edit Sewing removed this unfinished first-side preview; when is that transient state discarded versus committed, and how does it differ from deleting or editing an actual seam?"
       ],
       "fixture_ids": [
-        "unequal-curves"
+        "unequal-curves",
+        "curved-sewing-preview"
       ],
       "packet_id": "PACK-sewing-editor"
     },
@@ -5752,7 +6199,8 @@
       ],
       "candidate_behavior": "Oriented authored intervals and explicit monotone mapping generate weighted stitches independent of tessellation; native edge-pair creation exists.",
       "missing_functionality": [
-        "Runtime entry/selection/direction/endpoint contract, interval/free endpoint gestures and visible mismatch/correspondence diagnostics."
+        "Runtime entry/selection/direction/endpoint contract, interval/free endpoint gestures and visible mismatch/correspondence diagnostics.",
+        "The new Free Sewing first-side preview does not execute Segment Sewing, reverse an existing seam or establish oriented interval/arc-length endpoint equivalence."
       ],
       "runtime_questions": [
         "Which orientation, selected intervals and endpoint picks define sewing; how are reversed, curved and unequal-length cases accepted, diagnosed and edited?"
@@ -5782,16 +6230,20 @@
       ],
       "candidate_behavior": "Single-curve interval seams and explicit correspondence exist; no ordered edge-chain entity or M:N/free chain tool exists.",
       "missing_functionality": [
-        "Persistent ordered chain correspondence, compound mapping, free endpoint tools, multi-seam transaction and edit/refinement rules."
+        "Persistent ordered chain correspondence, compound mapping, free endpoint tools, multi-seam transaction and edit/refinement rules.",
+        "A physical-length first-side preview and numeric dialog are not a completed AddSeam transaction. Confirm both sides, direction and measured boundary-length-to-parameter conversion before claiming correspondence or sewing."
       ],
       "runtime_questions": [
-        "How do M:N and free variants form ordered chains, partial endpoints and normalized/eased correspondence across mismatched lengths and curve counts?"
+        "How do M:N and free variants form ordered chains, partial endpoints and normalized/eased correspondence across mismatched lengths and curve counts?",
+        "After the confirmed first-side preview, which second-side selection/numeric sequence commits a seam, and how do reversed endpoints, mismatch, Escape, tool switch, undo/reopen and remeshing behave?"
       ],
       "fixture_ids": [
         "unequal-curves",
-        "chain-seams"
+        "chain-seams",
+        "curved-sewing-preview"
       ],
-      "packet_id": "PACK-free-chain-sewing"
+      "packet_id": "PACK-free-chain-sewing",
+      "reviewed_reference_scope": "The menu/2D tool was selected and both 2D/3D toolbars exposed a checked Free Sewing label. Only the 2D first side reached numeric 100 mm preview; no 3D gesture, M shortcut, completed second side, seam, reversal or correspondence was established. The unexpected viewport displacement has unknown cause; the Smart Panning preference is not causal proof."
     },
     {
       "id": "auto-sewing",
@@ -6077,14 +6529,17 @@
       "shared_commands": [],
       "candidate_behavior": "No source-backed implementation of this behavior was found at the pinned commit.",
       "missing_functionality": [
-        "Authored tape path/width/material/stiffness and explicit physical/visual effects with edit/persistence rules."
+        "Authored tape path/width/material/stiffness and explicit physical/visual effects with edit/persistence rules.",
+        "The selected-line Seam Taping checkbox is observed but unedited; its relationship to the toolbar/menu tool and any child controls is unresolved."
       ],
       "runtime_questions": [
-        "Which curves/regions can be taped, what width/material parameters matter physically and how is tape removed or updated after a seam edit?"
+        "Which curves/regions can be taped, what width/material parameters matter physically and how is tape removed or updated after a seam edit?",
+        "Does the selected-line checkbox toggle the same authored tape object as the menu/tool, and which controls appear after enabling it on one or several selected boundaries?"
       ],
       "fixture_ids": [
         "attachments",
-        "unequal-curves"
+        "unequal-curves",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-seam-taping"
     },
@@ -6458,14 +6913,17 @@
       "shared_commands": [],
       "candidate_behavior": "No source-backed implementation of this behavior was found at the pinned commit.",
       "missing_functionality": [
-        "Observed plug-in API/lifecycle/trust model and native offline extension interface; do not load proprietary binaries."
+        "Observed plug-in API/lifecycle/trust model and native offline extension interface; do not load proprietary binaries.",
+        "CLO API Add/Delete and empty Feature/Position table are inventoried without installing a plugin; no plugin trust, lifecycle, feature registration or placement behavior has executed."
       ],
       "runtime_questions": [
-        "What capabilities, discovery/install/uninstall, compatibility checks and permission/transaction/cancel behavior are exposed, and what is actually absent from the empty Plug-in submenu?"
+        "What capabilities, discovery/install/uninstall, compatibility checks and permission/transaction/cancel behavior are exposed, and what is actually absent from the empty Plug-in submenu?",
+        "Which documented local plugin capabilities, permissions, compatibility and feature/position mappings appear after legitimate original extensions are added, and what survives deletion/restart without vendor runtime dependence?"
       ],
       "fixture_ids": [
         "keyboard",
-        "save-failure"
+        "save-failure",
+        "preference-effects"
       ],
       "packet_id": "PACK-plugin-manager"
     },
@@ -6487,7 +6945,8 @@
         "Confirm the boundaries without account actions; inventory any substantive AI Studio creation controls separately rather than excluding them with activation."
       ],
       "fixture_ids": [
-        "empty"
+        "empty",
+        "preference-effects"
       ],
       "scope_exclusion": "Vendor activation and account session administration; replacement creation/simulation/save/export must remain offline without accounts.",
       "packet_id": "PACK-vendor-session-administration"
@@ -6973,19 +7432,26 @@
         "ui_toolbar",
         "ui_jobs",
         "ui_recovery",
-        "cli"
+        "cli",
+        "initial_contacts",
+        "live_contacts",
+        "initial_contact_tests"
       ],
       "shared_commands": [],
-      "candidate_behavior": "Native piece/seam/vertex counts, diagnostics/time/job/dirty labels and CLI solver timings exist; these observed overlays and viewport/memory timings do not.",
+      "candidate_behavior": "Native counts, aggregate diagnostics, job/dirty labels and CLI solver timing paths remain. Initial overlap diagnostics have a conservative BVH, but live contact and later/reset diagnostic scans still use quadratic vertex/triangle work. No new viewport/memory/timing overlay or current candidate benchmark result is supplied by the map.",
       "missing_functionality": [
-        "Precisely labeled authored/rest/current/display/performance counters, true physical viewport size and correct autosave schedule feedback."
+        "Precisely labeled authored/rest/current/display/performance counters, true physical viewport size and correct autosave schedule feedback.",
+        "Selected-pattern Face Count and Vertex Count are fixture-specific readouts corroborated by one OBJ, not universal defaults or required matching tessellation.",
+        "Benchmark initial contact analysis separately from mutable collision solving and later diagnostics on declared meshes/hardware; retain missing memory/viewport/cancel/save measurements."
       ],
       "runtime_questions": [
-        "Which counters/time/memory/mesh states are measured, when do overlays update and what units/pauses/failed saves affect the autosave countdown?"
+        "Which counters/time/memory/mesh states are measured, when do overlays update and what units/pauses/failed saves affect the autosave countdown?",
+        "Which selected/rest/current/subdivision/output mesh does each property count, how are several selected patterns aggregated and when do counts refresh after Particle Distance, topology or rendering-thickness changes?"
       ],
       "fixture_ids": [
         "large-garment",
-        "dirty-project"
+        "dirty-project",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-workspace-statistics"
     },
@@ -7113,14 +7579,19 @@
       "shared_commands": [],
       "candidate_behavior": "Aggregate max stretch/seam/contact errors exist; no per-element stress/strain/pressure fields or fit-map shader/legend exists.",
       "missing_functionality": [
-        "Predeclared dimensional field definitions, measured values/units, per-element data, legends/ranges and no-data handling."
+        "Predeclared dimensional field definitions, measured values/units, per-element data, legends/ranges and no-data handling.",
+        "The 13 Fit controls cover the displayed Stress page and visible unopened Pressure tab, color count, kPa range display, gradation/mesh and Weft/Warp/Shear toggles plus Reset/Close. No stress/pressure field was computed, no table edit was executed and no palette or numerical threshold is adopted.",
+        "The attempted Strain selection did not leave Stress; a Strain tab remains unobserved while the separately inventoried Strain Map menu entry remains in scope."
       ],
       "runtime_questions": [
-        "Which tensor/scalar, units, rest/current basis, averaging, thresholds and legend ranges define each map, and which properties alter the computation versus colors?"
+        "Which tensor/scalar, units, rest/current basis, averaging, thresholds and legend ranges define each map, and which properties alter the computation versus colors?",
+        "Which Stress range units/valid edit limits, color-count/gradation/surface and directional toggles change displayed data versus computation; what reset/persistence and no-data behavior apply?",
+        "What actually appears after opening Pressure, and under what state can any Strain properties be observed; does closing or cancelling retain edits without implying physics calibration?"
       ],
       "fixture_ids": [
         "material-panels",
-        "layered-panels"
+        "layered-panels",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-fit-maps"
     },
@@ -7171,14 +7642,17 @@
       ],
       "candidate_behavior": "Numeric world XYZ placement exists; no draggable screen/local/world gizmo or visual scale preference exists.",
       "missing_functionality": [
-        "Coordinate-space transform math/pivots, screen-size gizmo scale, precision gestures and one committed transaction."
+        "Coordinate-space transform math/pivots, screen-size gizmo scale, precision gestures and one committed transaction.",
+        "Unified/Divided Gizmo preference is observed with a shortcut-override warning; neither mode switch nor Q/W/E reassignment was executed."
       ],
       "runtime_questions": [
-        "How are local axes defined after rotation/reflection, which pivots/constraints apply and is gizmo scale a view preference independent from geometry?"
+        "How are local axes defined after rotation/reflection, which pivots/constraints apply and is gizmo scale a view preference independent from geometry?",
+        "What concrete tool/shortcut changes and conflict/reset rules follow Unified versus Divided Gizmo, including active modal/keyboard focus and saved user bindings?"
       ],
       "fixture_ids": [
         "three-pieces",
-        "camera-scene"
+        "camera-scene",
+        "preference-effects"
       ],
       "packet_id": "PACK-gizmos"
     },
@@ -7198,15 +7672,18 @@
       "shared_commands": [],
       "candidate_behavior": "No source-backed implementation of this behavior was found at the pinned commit.",
       "missing_functionality": [
-        "Observed curve/point/angle/tangent snap candidates, screen-distance tolerance, priorities, guide display and modifier bypass."
+        "Observed curve/point/angle/tangent snap candidates, screen-distance tolerance, priorities, guide display and modifier bypass.",
+        "The matching preference checkboxes are read-only observations; their equivalence to menu controls and actual snapping/guide effects remains untested."
       ],
       "runtime_questions": [
-        "Which geometric candidates/axes/angles win at what pixel distance, how do zoom and selected geometry affect them and how can snapping be temporarily bypassed?"
+        "Which geometric candidates/axes/angles win at what pixel distance, how do zoom and selected geometry affect them and how can snapping be temporarily bypassed?",
+        "Are preference and menu snap states aliases or independent scopes, and when do changes become active in canvas gestures or new sessions?"
       ],
       "fixture_ids": [
         "three-pieces",
         "unequal-curves",
-        "keyboard"
+        "keyboard",
+        "preference-effects"
       ],
       "packet_id": "PACK-pattern-smart-snap"
     },
@@ -7225,14 +7702,17 @@
       "shared_commands": [],
       "candidate_behavior": "Hardcoded centimetre rounding is used while authoring; no menu/property state, adjustable step or bypass exists.",
       "missing_functionality": [
-        "One shared snap preference with observed origins/distance/units and exact negative-coordinate rounding/modifier behavior."
+        "One shared snap preference with observed origins/distance/units and exact negative-coordinate rounding/modifier behavior.",
+        "The read-only configured preference is unchecked while current source still applies hardcoded centimetre snap; no behavioral equivalence or preference implementation is implied."
       ],
       "runtime_questions": [
-        "Do the menu/property controls alias the same state; what grid origin/distance and half-step rounding apply and when is snap bypassed?"
+        "Do the menu/property controls alias the same state; what grid origin/distance and half-step rounding apply and when is snap bypassed?",
+        "How does the preference interact with menu/property Snap to Grid, modifier bypass, spacing and reload/reset without treating the configured unchecked state as a tested gesture?"
       ],
       "fixture_ids": [
         "print-panel",
-        "keyboard"
+        "keyboard",
+        "preference-effects"
       ],
       "packet_id": "PACK-grid-snap"
     },
@@ -7305,20 +7785,29 @@
         "solver",
         "ui_properties",
         "ui_toolbar",
-        "ui_jobs"
+        "ui_jobs",
+        "step_settings",
+        "adapter",
+        "contact"
       ],
       "shared_commands": [],
       "candidate_behavior": "Native iterations/substeps and explicit displayed batch settings exist; solver uses CPU f64 with contact always active.",
       "missing_functionality": [
-        "Full observed property inventory, units/ranges/presets, backend selection, invalidation rules and validated settings shared with CLI/MCP."
+        "Full observed property inventory, units/ranges/presets, backend selection, invalidation rules and validated settings shared with CLI/MCP.",
+        "The 24 newly indexed controls expose global presets, timestep/frame cadence, CG stopping fields, collision modes, damping/gravity, pinching/nonlinear/ripping choices and CPU controls; current StepSettings and native iteration/substep fields implement only a different bounded control subset.",
+        "Ground is collapsed and its children remain unobserved. Units not printed by these reference controls remain unknown; the host-disabled CPU count must not become a fixed default."
       ],
       "runtime_questions": [
-        "Which controls govern timestep/quality/contact/gravity/material/backend, what ranges/defaults and reset rules apply, and do changing values rebuild or continue current cloth?"
+        "Which controls govern timestep/quality/contact/gravity/material/backend, what ranges/defaults and reset rules apply, and do changing values rebuild or continue current cloth?",
+        "What units, edit/commit/cancel/history/persistence and accepted ranges apply to each observed global numeric field, and how do Time Step and Simulations per Frame relate to physical time versus presentation?",
+        "What outcomes distinguish each CG stopping, nonlinear, pinching, ripping, avatar/self/proximity/intersection/layer detection option without inferring an algorithm from a label; what settings are unavailable or incompatible together?",
+        "What fields appear when Ground is expanded and Automatic Maximum CPU is disabled, how is CPU availability determined, and what is preserved on cancelled or invalid edits?"
       ],
       "fixture_ids": [
         "material-panels",
         "layered-panels",
-        "large-garment"
+        "large-garment",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-simulation-properties"
     },
@@ -7359,7 +7848,10 @@
         "ui_shortcuts",
         "ui_properties",
         "ui_pattern",
-        "ui_garment"
+        "ui_garment",
+        "ui_field_state",
+        "ui_numeric_history",
+        "ui_modal_tests"
       ],
       "shared_commands": [],
       "candidate_behavior": "Native fixed side inspector plus paired 2D/3D canvases and shared selection exist; no dockable panel/tab browser/window toggles exist.",
@@ -7392,14 +7884,17 @@
       "shared_commands": [],
       "candidate_behavior": "Rest UVs equal physical pattern coordinates; no editable UV layer, atlas packing or UV editor exists.",
       "missing_functionality": [
-        "Distinct editable/output UV representation, selection/transform/packing tools and UV-safe export without modifying authoring scale."
+        "Distinct editable/output UV representation, selection/transform/packing tools and UV-safe export without modifying authoring scale.",
+        "Back Face and Side Face UV Expansion checkboxes are observed but unedited; generated physical pattern UVs do not implement separate expanded output faces."
       ],
       "runtime_questions": [
-        "Are UVs linked to patterns or independent output islands; what transforms/packing/units and remesh/material synchronization rules apply?"
+        "Are UVs linked to patterns or independent output islands; what transforms/packing/units and remesh/material synchronization rules apply?",
+        "How do the two UV Expansion choices change front/back/side islands, offsets, scale, overlap and packing under Thin/Thick export, and what survives remesh or source edits?"
       ],
       "fixture_ids": [
         "texture-panel",
-        "unequal-curves"
+        "unequal-curves",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-uv-editor"
     },
@@ -7422,15 +7917,18 @@
       "shared_commands": [],
       "candidate_behavior": "No source-backed implementation of this behavior was found at the pinned commit.",
       "missing_functionality": [
-        "Portable original/licensed asset/preset catalog, local thumbnails/metadata, modular construction interfaces, validation and atomic insertion."
+        "Portable original/licensed asset/preset catalog, local thumbnails/metadata, modular construction interfaces, validation and atomic insertion.",
+        "CONNECT/modular folder controls and modular edit/style-mixing/fabric-cleanup preferences are present; private paths/content and effects of unlabeled adjacent actions are unknown."
       ],
       "runtime_questions": [
-        "Which fabric/pattern/avatar/trim/modules can be created, saved, searched and inserted; what connection/editability rules and offline substitutes are needed for hosted content?"
+        "Which fabric/pattern/avatar/trim/modules can be created, saved, searched and inserted; what connection/editability rules and offline substitutes are needed for hosted content?",
+        "What local catalog/resource roots and adjacent actions do these controls actually select or reset, and how do edit protection, cross-style mixing and unused-fabric cleanup preserve authored dependencies and undo/recovery?"
       ],
       "fixture_ids": [
         "local-content",
         "linked-pieces",
-        "attachments"
+        "attachments",
+        "preference-effects"
       ],
       "packet_id": "PACK-local-libraries"
     },
@@ -7531,14 +8029,17 @@
       "shared_commands": [],
       "candidate_behavior": "No source-backed implementation of this behavior was found at the pinned commit.",
       "missing_functionality": [
-        "Reviewed host/transfer data model and original native/local bridge route; vendor installation administration is separable from substantive transfer."
+        "Reviewed host/transfer data model and original native/local bridge route; vendor installation administration is separable from substantive transfer.",
+        "Enable LiveSync being checked is configuration presence, not an executed connection, installed bridge or working transfer workflow."
       ],
       "runtime_questions": [
-        "Does this entry only install/open a bridge or perform live mesh/material/animation transfer; which supported hosts, updates, identity and rollback semantics matter?"
+        "Does this entry only install/open a bridge or perform live mesh/material/animation transfer; which supported hosts, updates, identity and rollback semantics matter?",
+        "What concrete host/session/update/rollback behavior follows the LiveSync setting, and how does offline disabled/unavailable operation preserve local authored content?"
       ],
       "fixture_ids": [
         "units-mesh",
-        "motion"
+        "motion",
+        "preference-effects"
       ],
       "packet_id": "PACK-livesync"
     },
@@ -7755,6 +8256,583 @@
         "keyboard"
       ],
       "packet_id": "PACK-catalog-containers"
+    },
+    {
+      "id": "pattern-name-property",
+      "title": "Selected pattern name property",
+      "feature_ids": [
+        "PAT-007",
+        "PAT-001",
+        "UI-004",
+        "FILE-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "piece_fields",
+        "commands",
+        "ui_properties"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Piece::name is authored and retained by native IO; existing names can be set during AddPolygon/AddRectangle, but no shared rename command or selected-name editor exists.",
+      "missing_functionality": [
+        "Validated selected-pattern rename, mixed-selection behavior, command/adapter schema, one-gesture history and persistent display synchronization."
+      ],
+      "runtime_questions": [
+        "Is Name editable for one or several patterns, what length/empty/duplicate/unicode behavior and commit/cancel rules apply, and are generated naming sequences merely session values?"
+      ],
+      "fixture_ids": [
+        "three-pieces",
+        "keyboard",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-pattern-name-property"
+    },
+    {
+      "id": "selected-line-lengths",
+      "title": "Selected-line 2D and 3D length properties",
+      "feature_ids": [
+        "PAT-007",
+        "FIT-003",
+        "UI-002"
+      ],
+      "mapping_relation": "candidate_partial",
+      "source_refs": [
+        "seam_lengths",
+        "mesh",
+        "ui_properties",
+        "ui_garment"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Authored seam intervals have computed lengths and current cloth positions are distinct from rest mesh, but there is no selected-line aggregate 2D/3D property display or edit contract.",
+      "missing_functionality": [
+        "Selection-aware curve/chain aggregation and current-versus-rest measured length with explicit source revision, units/precision and no stale values."
+      ],
+      "runtime_questions": [
+        "The captured whole unsimulated boundary totals 1000.0 mm; how do partial/multiple/curved selections aggregate, is either field editable, and how does the 3D value update after deformation/reset or stale mesh rejection?",
+        "How do displayed 206.9 mm curved-edge lengths compare with independently measured continuous arc length and current/rest geometry; what precision/rounding and selection rules apply without treating the unsimulated 2D/3D display as a deformed-cloth measurement?"
+      ],
+      "fixture_ids": [
+        "unequal-curves",
+        "layered-panels",
+        "print-panel",
+        "selected-pattern-properties",
+        "curved-sewing-preview"
+      ],
+      "packet_id": "PACK-selected-line-lengths"
+    },
+    {
+      "id": "edge-elastic",
+      "title": "Selected-line elastic construction",
+      "feature_ids": [
+        "SEW-005",
+        "SIM-002",
+        "PAT-007",
+        "FILE-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "piece_fields",
+        "commands",
+        "adapter",
+        "solver_material"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Directional fabric stiffness exists, but no authored line-elastic relation, setting or adapter behavior exists; stiffness must not substitute for elastic construction.",
+      "missing_functionality": [
+        "Stable authored interval/chain elastic relation with observed rest-ratio/strength parameters, separate visual/physical effects and remesh/history/persistence."
+      ],
+      "runtime_questions": [
+        "Which child fields appear after enabling Elastic, what units/rest-length or strength definitions and partial-line scope apply, and how do source resize, sewing, remesh and disable affect physical targets?"
+      ],
+      "fixture_ids": [
+        "unequal-curves",
+        "material-panels",
+        "attachments",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-edge-elastic"
+    },
+    {
+      "id": "schematic-line-properties",
+      "title": "Selected schematic-line visibility, face and Z-offset",
+      "feature_ids": [
+        "MAT-003",
+        "PAT-007",
+        "FILE-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "piece_fields",
+        "ui_pattern",
+        "ui_garment"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Boundary lines can be displayed, but no persistent selected-line schematic visibility, face selector or Z-offset property exists.",
+      "missing_functionality": [
+        "Per-authored-line schematic presentation state distinct from the whole-view Schematic Render action; observed face/offset semantics, source following and output behavior."
+      ],
+      "runtime_questions": [
+        "Do Show Schematic Line, Face and mm Z-Offset affect 2D, current 3D, schematic capture or exported geometry, how is the face normal chosen, and do toggles alter only presentation?"
+      ],
+      "fixture_ids": [
+        "unequal-curves",
+        "camera-scene",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-schematic-line-properties"
+    },
+    {
+      "id": "pattern-layer-property",
+      "title": "Selected pattern physical layer property",
+      "feature_ids": [
+        "FIT-002",
+        "SIM-004",
+        "SIM-005",
+        "FILE-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "piece_fields",
+        "adapter",
+        "contact"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "CPU self/layered contact tests exist, but authored Piece has no layer value or selected layer control; display stacking order is a separate missing behavior.",
+      "missing_functionality": [
+        "Observed physical layer value and conflict/order semantics through typed authoring, collision preparation, UI feedback, remesh and saved construction."
+      ],
+      "runtime_questions": [
+        "What accepted values, mixed-selection editing and pairwise contact priority does Layer define; how does it differ from display order and interact with layer-based collision toggles, layer clones and disabled patterns?"
+      ],
+      "fixture_ids": [
+        "layered-panels",
+        "three-pieces",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-pattern-layer-property"
+    },
+    {
+      "id": "directional-shrinkage",
+      "title": "Selected pattern warp/weft simulation shrinkage",
+      "feature_ids": [
+        "SIM-002",
+        "PAT-008",
+        "FIT-003",
+        "FILE-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "piece_fields",
+        "material_fields",
+        "adapter"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Per-piece grain and orthotropic stiffness reach CPU materials, but there is no directional shrinkage state; stiffness and grain edits do not implement the observed percent controls.",
+      "missing_functionality": [
+        "Separate warp/weft target shrinkage in authored state and rest/simulation preparation, preserved under grain/source edits with explicit invalidation and saved editable values."
+      ],
+      "runtime_questions": [
+        "What baseline and material axes define each percent value, is it contraction/expansion or another convention, and how do units/ranges, grain rotation, shared fabrics, source resizing, remesh and reset compose?"
+      ],
+      "fixture_ids": [
+        "material-panels",
+        "unequal-curves",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-directional-shrinkage"
+    },
+    {
+      "id": "pattern-collision-thickness",
+      "title": "Selected pattern additional collision thickness",
+      "feature_ids": [
+        "SIM-002",
+        "SIM-003",
+        "SIM-004",
+        "FIT-003",
+        "FILE-001"
+      ],
+      "mapping_relation": "candidate_partial",
+      "source_refs": [
+        "piece_fields",
+        "material_fields",
+        "adapter",
+        "contact"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Material::collision_thickness is a physical SI input to the CPU solver; no per-pattern additional-thickness field or composition with a material/base thickness exists.",
+      "missing_functionality": [
+        "Reviewed per-pattern additional mm thickness semantics and composition, bounded contact preparation, clear physical/display distinction and source-revision invalidation."
+      ],
+      "runtime_questions": [
+        "Is the additional value additive, per side or pairwise, how is it combined with material/avatar thickness and negative/mixed values, and what measured contact clearance and history/persistence behavior result?"
+      ],
+      "fixture_ids": [
+        "layered-panels",
+        "material-panels",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-pattern-collision-thickness"
+    },
+    {
+      "id": "pattern-pressure",
+      "title": "Selected pattern pressure property",
+      "feature_ids": [
+        "SIM-002",
+        "SIM-005",
+        "FIT-003",
+        "FILE-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "piece_fields",
+        "step_settings",
+        "adapter",
+        "solver"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Current StepSettings provides gravity and seam closure but no authored pressure or surface-pressure force; the reference pressure unit and scale are not printed.",
+      "missing_functionality": [
+        "A reviewed dimensioned pressure convention and supported surface/closure behavior, validated authored property and numerical force integration with remesh consistency."
+      ],
+      "runtime_questions": [
+        "What unit/scale/sign and open/closed-surface rule does Pressure use, which area/normal and orientation define forces, and how do accepted ranges, remesh, layers, source edits and reset affect it?"
+      ],
+      "fixture_ids": [
+        "material-panels",
+        "layered-panels",
+        "motion",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-pattern-pressure"
+    },
+    {
+      "id": "pattern-render-geometry",
+      "title": "Selected rendering thickness, extrusion and side geometry",
+      "feature_ids": [
+        "ANIM-003",
+        "MAT-003",
+        "MAT-002",
+        "FILE-003",
+        "FILE-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "piece_fields",
+        "mesh",
+        "obj",
+        "ui_export",
+        "ui_garment"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "The current display/export surfaces are unthickened triangles with generated normals and physical pattern UVs; no rendering extrusion or side-geometry property state exists.",
+      "missing_functionality": [
+        "Distinct additional rendering thickness in mm, front/back/seam face and extrusion direction, side curvature/resolution/double-sided controls with source-linked output mesh and UV/material preservation.",
+        "Side Geometry Resolution must remain separate from physical Particle Distance and collision thickness; no alternative option effect or accepted range is established."
+      ],
+      "runtime_questions": [
+        "Which geometry is generated by each face/extrusion/side control, what is the signed offset/reference surface and allowed range, and does it affect display, Thick export, UV expansion or any simulation geometry?",
+        "How do side curvature percent, Side Geometry Resolution with unknown unit/scale and double-sided choices follow curved seams, normals, source edits and remesh without changing editable pattern dimensions or physical collision thickness?"
+      ],
+      "fixture_ids": [
+        "unequal-curves",
+        "texture-panel",
+        "units-mesh",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-pattern-render-geometry"
+    },
+    {
+      "id": "view-control-preferences",
+      "title": "Navigation bindings, focus and viewpoint-default preferences",
+      "feature_ids": [
+        "UI-001",
+        "UI-003",
+        "UI-006",
+        "MAT-003"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "ui_pattern",
+        "ui_garment",
+        "ui_shortcuts"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Fixed native pan/zoom/orbit exist, but no editable navigation preset/modifier/mouse/focus/default-view preference model or dialog exists.",
+      "missing_functionality": [
+        "Configurable preset/gesture bindings, conflicts, zoom increment/direction, axis constraint, smart panning/focus and viewpoint-shortcut defaults with validated persistence."
+      ],
+      "runtime_questions": [
+        "Which actual gesture combinations work and conflict, why are some modifiers disabled, and what changes after editing a preset or binding?",
+        "What units and target/restoration semantics apply to zoom increment and default Y position/X angle/camera distance; do unselection/focus toggles affect a view preference or current document selection?"
+      ],
+      "fixture_ids": [
+        "camera-scene",
+        "keyboard",
+        "three-pieces",
+        "preference-effects"
+      ],
+      "packet_id": "PACK-view-control-preferences"
+    },
+    {
+      "id": "shortcut-preferences",
+      "title": "Shortcut search, collapsed categories and disabled action hints",
+      "feature_ids": [
+        "UI-003",
+        "UI-006",
+        "APP-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "ui_shortcuts",
+        "ui_numeric_history"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "A fixed native command search and several focus-guarded bindings exist; there is no editable shortcut-preference search/category/conflict/reset interface.",
+      "missing_functionality": [
+        "Inventory expanded command descendants and search/edit/delete/reset behavior; configurable keymap with per-tool/modal/focus scope and accessible conflict feedback."
+      ],
+      "runtime_questions": [
+        "What does Menu Name/Shortcut Key search return, which descendants appear for each category and how are duplicate, platform-specific or unavailable shortcuts assigned/reset/deleted?",
+        "The W/P/D Action hints are disabled rows: in what exact tool/selection state do they become meaningful and what behavior occurs, without treating hints as verified active bindings?"
+      ],
+      "fixture_ids": [
+        "keyboard",
+        "three-pieces",
+        "preference-effects"
+      ],
+      "packet_id": "PACK-shortcut-preferences"
+    },
+    {
+      "id": "unit-display-preferences",
+      "title": "User display units, precision and construction-specific units",
+      "feature_ids": [
+        "UI-003",
+        "UI-006",
+        "PAT-007",
+        "SEW-005",
+        "SEW-006",
+        "APP-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "project",
+        "ui_properties",
+        "ui_rectangle",
+        "cli",
+        "mcp"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Core authoring/CPU use explicit SI and the rectangle modal converts mm; native inspector units are otherwise fixed. No global display-unit/precision/ligne/topstitch-unit preference model exists.",
+      "missing_functionality": [
+        "Validated display and construction-specific unit preferences that preserve f64 SI authoring; consistent labels, rounding, parser behavior and adapters without silent physical rescaling."
+      ],
+      "runtime_questions": [
+        "What values/options and restart/current/new-document scope do Unit System, Decimal Places, button Ligne and topstitch thickness units affect?",
+        "Which regional numeric parser and checked Language are actually selected; how are decimal separators, rounding, negative values and import/export units handled without inferring them from Millimeter/one decimal place alone?"
+      ],
+      "fixture_ids": [
+        "print-panel",
+        "keyboard",
+        "attachments",
+        "preference-effects"
+      ],
+      "packet_id": "PACK-unit-display-preferences"
+    },
+    {
+      "id": "appearance-preferences",
+      "title": "UI line/highlight appearance, typography and custom palette resources",
+      "feature_ids": [
+        "UI-001",
+        "UI-006",
+        "MAT-003"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "ui_pattern",
+        "ui_garment",
+        "ui_properties"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Native colors, line widths and fonts are mostly fixed; material RGB editing is separate from global UI appearance, and no palette resource/settings interface exists.",
+      "missing_functionality": [
+        "Original accessible line/selection/hover/status colors, typography/pixel thickness preferences and bounded user palette resource handling without copying vendor palette values."
+      ],
+      "runtime_questions": [
+        "Which label/swatch exposes an editable picker, including offscreen AX-only highlights, and what units/ranges/contrast/DPI/reset/persistence apply to font size and pixel thickness?",
+        "What format and action semantics belong to the Custom Color Palette ACO path and unlabeled buttons; are unsupported resources rejected without reading or altering vendor presets?"
+      ],
+      "fixture_ids": [
+        "keyboard",
+        "camera-scene",
+        "local-content",
+        "preference-effects"
+      ],
+      "packet_id": "PACK-appearance-preferences"
+    },
+    {
+      "id": "autosave-preferences",
+      "title": "Autosave destination, interval, count, retention and file-type preferences",
+      "feature_ids": [
+        "FILE-002",
+        "APP-004",
+        "UI-003"
+      ],
+      "mapping_relation": "candidate_partial",
+      "source_refs": [
+        "ui_autosave",
+        "ui_recovery",
+        "atomic_save",
+        "native_io"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Native background autosave and exit recovery exist under a fixed current policy, but no configurable destination/interval/max-count/retention/file-type preference implementation exists.",
+      "missing_functionality": [
+        "Reviewed scheduling, retention cleanup and recoverable file policy, validated local destinations/options and UI preferences with safe migration and cancellation/failure handling."
+      ],
+      "runtime_questions": [
+        "How do configured minutes/count/days/file type affect actual timed saves, dirty/untitled documents, worker load, naming and recovery; what happens at zero/invalid values or a missing/unwritable destination?",
+        "Which old files are eligible for retention cleanup and when, how are last valid recovery/original user files protected, and what are the adjacent unlabeled path actions and reset/cancel/restart effects?"
+      ],
+      "fixture_ids": [
+        "dirty-project",
+        "save-failure",
+        "large-garment",
+        "preference-effects"
+      ],
+      "packet_id": "PACK-autosave-preferences"
+    },
+    {
+      "id": "default-resource-preferences",
+      "title": "Default project/material/simulation/scratch/info/capture resources",
+      "feature_ids": [
+        "FILE-001",
+        "FILE-002",
+        "MAT-001",
+        "MAT-002",
+        "SIM-005",
+        "APP-003"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "project",
+        "native_io",
+        "ui_recovery",
+        "ui_export"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Native default construction and runtime paths exist without a configurable default-resource model; reference project/material/preset file contents and private paths are not available to implementation.",
+      "missing_functionality": [
+        "Bounded default resource and scratch/output configuration, missing-resource diagnostics, native/original substitutes and truthful per-format capability handling; unlabeled adjacent actions need observation."
+      ],
+      "runtime_questions": [
+        "For each path and adjacent action, is the target a source template, asset/preset, destination or reset/browse operation; which current/new documents or exports consume it?",
+        "How are missing/translocated resources, custom material refresh, relative paths, malformed/untrusted presets and restart/cancel handled without silently changing current authoring or assuming a missing configured path caused startup delay?"
+      ],
+      "fixture_ids": [
+        "local-content",
+        "save-failure",
+        "dirty-project",
+        "preference-effects"
+      ],
+      "packet_id": "PACK-default-resource-preferences"
+    },
+    {
+      "id": "object-replacement-preferences",
+      "title": "Object-browser replacement naming preference",
+      "feature_ids": [
+        "UI-001",
+        "FILE-001",
+        "APP-001",
+        "REF-002"
+      ],
+      "mapping_relation": "ambiguous",
+      "source_refs": [
+        "project",
+        "commands",
+        "ui_properties"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "The native hierarchy has names but no generic asset/block/object replacement command or replacement-name preference; the selected radio value does not identify every affected object type.",
+      "missing_functionality": [
+        "Reviewed object replacement scope and name/identity/dependency policy, atomic replacement with explicit loss/invalidity reporting and user preferences."
+      ],
+      "runtime_questions": [
+        "Which object types and replace workflows use the updated-name radio, what identity/material/sewing/attachment references are retained and what name collisions, undo/cancel/reopen behavior apply?"
+      ],
+      "fixture_ids": [
+        "local-content",
+        "three-pieces",
+        "linked-pieces",
+        "preference-effects"
+      ],
+      "packet_id": "PACK-object-replacement-preferences"
+    },
+    {
+      "id": "plm-integration-discovery",
+      "title": "Unpopulated PLM integration settings",
+      "feature_ids": [
+        "APP-001",
+        "APP-003",
+        "FILE-001",
+        "REF-002"
+      ],
+      "mapping_relation": "ambiguous",
+      "source_refs": [
+        "commands",
+        "mcp",
+        "native_io"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "An unpopulated reference settings section is observed; no particular PLM capability, licensing tier, supported schema or functioning integration can be inferred. Native CLI/MCP provide bounded local authoring only.",
+      "missing_functionality": [
+        "Reviewed substantive metadata/workflow/connection contract if exposed, with a native offline local substitute where applicable; keep account/admin scope separate from creation."
+      ],
+      "runtime_questions": [
+        "What controls and substantive project/asset/metadata operations appear under legitimate configured conditions, what data/transactions/errors are involved, and which parts are merely vendor administration?"
+      ],
+      "fixture_ids": [
+        "local-content",
+        "save-failure",
+        "preference-effects"
+      ],
+      "packet_id": "PACK-plm-integration-discovery"
+    },
+    {
+      "id": "free-sewing-length-preview",
+      "title": "Numeric first-side Free Sewing length preview",
+      "feature_ids": [
+        "SEW-002",
+        "SEW-001",
+        "SEW-004",
+        "PAT-002",
+        "UI-003",
+        "UI-004"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "commands",
+        "ui_pattern",
+        "ui_properties",
+        "seam_lengths",
+        "curves"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Current native sewing picks authored curve intervals through the existing Sew tool and shared AddSeam backend. It has no Free Sewing endpoint/first-side physical-length preview or Create Sewing Line dialog; a preview is not a completed authoring command, and cubic parameter t is not assumed to equal a boundary-length ratio.",
+      "missing_functionality": [
+        "A separate transient first-side start/length/preview state and numeric mm dialog with keyboard commit, independent source-curve length conversion and explicit authored/rest/current display basis.",
+        "The reference second side, completed/reversed seam, arbitrary range/invalid/cancel/Close/Escape effects and independent curved endpoints are not established; keep these variants and dependencies open."
+      ],
+      "runtime_questions": [
+        "What initial-state/pointer rules determine the first numeric preview, which exact physical curve measure places a typed endpoint and how do orientation, selection, units/locale and precision affect it?",
+        "The 90.6 mm initial value is pointer-dependent and only 100 mm Tab/OK was confirmed. What accepted limits, Cancel/Close/Escape/tool-switch behavior, single-preview history and save/reopen semantics apply?",
+        "What exact second-side sequence commits an oriented physical seam, and what independent endpoint/correspondence checks distinguish completion from first-side preview or equal numeric curve parameters?"
+      ],
+      "fixture_ids": [
+        "curved-sewing-preview",
+        "unequal-curves",
+        "keyboard"
+      ],
+      "packet_id": "PACK-free-sewing-length-preview"
     }
   ],
   "entries": [
@@ -14871,6 +15949,3264 @@
       ],
       "classification": "container",
       "group_id": "catalog-containers"
+    },
+    {
+      "catalog_id": "MDUI-1517775E851A",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Preset"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-797B8ECABD23",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Time Step"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-DC8CABE76501",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Simulations per Frame"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-FEED087F46A9",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "CG Finish Condition"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-9B80640D5182",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "CG Iteration Count"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-D131B4F777E4",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "CG Residual"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-65B8F7B7B3A6",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Self Collision Iteration Count"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-3B1E54F04484",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Air Damping"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-E49A03EC6218",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Gravity"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-861665CC183A",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Pinching Simulation Override"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-15C852FC388D",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Automatic Maximum CPU"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-BED5587768BD",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Nonlinear Simulation"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-237E7B81A176",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Ripping Mode"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-3059725EAFE4",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Automatic Maximum CPU",
+        "Number of CPU in Use"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-560F0728EC19",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Ground"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-91EA397D5812",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Avatar-Cloth Collision Detection",
+        "Triangle-Vertex"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-1F66D9880E75",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Avatar-Cloth Collision Detection",
+        "Edge-Edge"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-363A58F1D69E",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Self-Collision Detection",
+        "Triangle-Vertex"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-A41187465746",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Self-Collision Detection",
+        "Edge-Edge"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-9CF3CB9B3F9D",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Self-Collision Detection",
+        "Avoidance Stiffness"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-06E2A2FFE755",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Proximity Detection",
+        "Vertex-Triangle"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-D80631D6D385",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Proximity Detection",
+        "Edge-Edge"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-C31875D07CC8",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Intersection Resolution"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-387D1EFEB4FC",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Layer-Based Collision Detection"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-7D099707C5CE",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Information",
+        "Name"
+      ],
+      "classification": "component",
+      "group_id": "pattern-name-property"
+    },
+    {
+      "catalog_id": "MDUI-3D9D527E78D1",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "2D Line Length"
+      ],
+      "classification": "component",
+      "group_id": "selected-line-lengths"
+    },
+    {
+      "catalog_id": "MDUI-F854FF0A715B",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "3D Line Length"
+      ],
+      "classification": "component",
+      "group_id": "selected-line-lengths"
+    },
+    {
+      "catalog_id": "MDUI-A115BC5D090F",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Elastic"
+      ],
+      "classification": "component",
+      "group_id": "edge-elastic"
+    },
+    {
+      "catalog_id": "MDUI-14EB8EB38A5F",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Seam Taping"
+      ],
+      "classification": "component",
+      "group_id": "seam-taping"
+    },
+    {
+      "catalog_id": "MDUI-4BB9948F5144",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Show Schematic Line",
+        "Z-Offset"
+      ],
+      "classification": "component",
+      "group_id": "schematic-line-properties"
+    },
+    {
+      "catalog_id": "MDUI-A21B69147E8D",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Show Schematic Line",
+        "Face"
+      ],
+      "classification": "component",
+      "group_id": "schematic-line-properties"
+    },
+    {
+      "catalog_id": "MDUI-199261B9D0E0",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Show Schematic Line"
+      ],
+      "classification": "component",
+      "group_id": "schematic-line-properties"
+    },
+    {
+      "catalog_id": "MDUI-3609D7C4BCB9",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Fabric",
+        "Grain Direction"
+      ],
+      "classification": "component",
+      "group_id": "grain-alignment"
+    },
+    {
+      "catalog_id": "MDUI-8BABF05572BC",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Fabric",
+        "Reset Grain Direction"
+      ],
+      "classification": "component",
+      "group_id": "grain-alignment"
+    },
+    {
+      "catalog_id": "MDUI-33470F537367",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Solidify"
+      ],
+      "classification": "component",
+      "group_id": "solidify"
+    },
+    {
+      "catalog_id": "MDUI-BC7D0F0BAE16",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Particle Distance"
+      ],
+      "classification": "component",
+      "group_id": "resolution"
+    },
+    {
+      "catalog_id": "MDUI-60BDAF345C9F",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Layer"
+      ],
+      "classification": "component",
+      "group_id": "pattern-layer-property"
+    },
+    {
+      "catalog_id": "MDUI-58C1B530E161",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Simulation Shrinkage Weft"
+      ],
+      "classification": "component",
+      "group_id": "directional-shrinkage"
+    },
+    {
+      "catalog_id": "MDUI-BDCBD68F08AF",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Simulation Shrinkage Warp"
+      ],
+      "classification": "component",
+      "group_id": "directional-shrinkage"
+    },
+    {
+      "catalog_id": "MDUI-DAB3E91202D4",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Add'l Thickness - Collision"
+      ],
+      "classification": "component",
+      "group_id": "pattern-collision-thickness"
+    },
+    {
+      "catalog_id": "MDUI-DD47D0767CAF",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Pressure"
+      ],
+      "classification": "component",
+      "group_id": "pattern-pressure"
+    },
+    {
+      "catalog_id": "MDUI-D68ACC6F5C21",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Add'l Thickness - Rendering"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-7D41AB516989",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Extrusion Direction",
+        "Front Face"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-4C31FF8BCFEB",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Extrusion Direction",
+        "Back Face"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-CE0C7A4C6DBA",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Extrusion Direction",
+        "Seam Face"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-FA5BC72FD95F",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Extrusion Direction"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-17B7A9B1FCF0",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Side Geometry",
+        "Curvature"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-9A85D7B3BD83",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Side Geometry",
+        "Resolution"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-159DFF7B708B",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Side Geometry",
+        "Double Sided"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-4E54DB2B5562",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "UV Expansion",
+        "Back Face"
+      ],
+      "classification": "component",
+      "group_id": "uv-editor"
+    },
+    {
+      "catalog_id": "MDUI-267868BE6B67",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "UV Expansion",
+        "Side Face"
+      ],
+      "classification": "component",
+      "group_id": "uv-editor"
+    },
+    {
+      "catalog_id": "MDUI-BC4081D0D0C2",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Mesh Type"
+      ],
+      "classification": "component",
+      "group_id": "mesh-topology-conversion"
+    },
+    {
+      "catalog_id": "MDUI-B7470C7A544B",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Face Count"
+      ],
+      "classification": "component",
+      "group_id": "workspace-statistics"
+    },
+    {
+      "catalog_id": "MDUI-3703D73BD365",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Vertex Count"
+      ],
+      "classification": "component",
+      "group_id": "workspace-statistics"
+    },
+    {
+      "catalog_id": "MDUI-6D560C91F392",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Fabric",
+        "Fabric"
+      ],
+      "classification": "component",
+      "group_id": "fabric-assignment"
+    },
+    {
+      "catalog_id": "MDUI-34832A6613FD",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "Size",
+        "Width"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-96780FC904A9",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "Size",
+        "Height"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-2D23FD2248B8",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "Size",
+        "Dimension link"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-B4A7420831F3",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "Replicate",
+        "Interval"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-F364DDB68788",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "Replicate",
+        "Angle"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-01A7D9C47181",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "Replicate",
+        "Number of Shapes"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-AD730DF9D32E",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "OK"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-8661F6BEC14C",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "Cancel"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-6AC43EA3241D",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Preset",
+        "Preset Path"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-F99A3362B2C6",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Preset",
+        "Select Configuration"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-88C8D3A70A66",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Select All Patterns"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-B6F9B6E903AB",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Select All Avatars"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-2A5EEA1D39DC",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Select All Graphics and Trims"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-EEE5DBD0119B",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Object grouping"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-1348A213693E",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Welding"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-4619C3C55785",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Thickness"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-45301DBFD9B0",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Merge Vertex by Proximity"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-3AEB2FF776F7",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Weld Turned Sewing Lines"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-A092387577F6",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Unified UV Coordinates (PNG)"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-3CD60A975CBB",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Include Hidden Object"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-C80ADF50D16C",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Include Internal Shape"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-BB904320D596",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Scale unit"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-F83FBFA85D3D",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Scale percent"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-FCA6EBCA39FB",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "First axis"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-2C0744E5A396",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "Second axis"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-256E953DB0FE",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "Third axis"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-06FCE3AC133F",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "Invert first axis"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-2064413F6D8F",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "Invert second axis"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-ED1CE5D0628B",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "Invert third axis"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-F1A466A3D697",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File",
+        "Texture destination"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-423140CB4BDA",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File",
+        "Diffuse Color Combined on Texture"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-6D92395370B1",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File",
+        "Exclude Ambient Map & Color (for Modo)"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-5B36A1EC268D",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File",
+        "Save with Transparency Map Extracted from Diffuse Map"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-0F40CDF8A323",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File",
+        "Save with Meta Data (XML)"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-D6B64C9177A3",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Reset"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-048AED478BE4",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "OK"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-F5AA39EF821E",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Cancel"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-AD24E23C72B0",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "tabs",
+        "Stress"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-B683983602A9",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "tabs",
+        "Pressure"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-9C4A22DEDA55",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Range Color Count"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-D1610BAA814A",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Range unit"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-A5668C8D0E4F",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Range maximum"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-05C7957F3996",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Range minimum"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-996790DABB9B",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Graph Type"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-CAC7F27B53E6",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Graph surface"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-69F679D1249A",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Show",
+        "Weft"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-C384EE0C908E",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Show",
+        "Warp"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-C9EC8AA71114",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Show",
+        "Shear"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-31F67DCCA757",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Reset"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-20FD7038CE08",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Close"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-E9AC7F5197A8",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls"
+      ],
+      "classification": "component",
+      "group_id": "preference-assets"
+    },
+    {
+      "catalog_id": "MDUI-CFD99FC10C18",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts"
+      ],
+      "classification": "component",
+      "group_id": "preference-assets"
+    },
+    {
+      "catalog_id": "MDUI-148A60B6EB80",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface"
+      ],
+      "classification": "component",
+      "group_id": "preference-assets"
+    },
+    {
+      "catalog_id": "MDUI-4CAAB921AC29",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "3D"
+      ],
+      "classification": "component",
+      "group_id": "preference-assets"
+    },
+    {
+      "catalog_id": "MDUI-6E9D14CF9F23",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "2D"
+      ],
+      "classification": "component",
+      "group_id": "preference-assets"
+    },
+    {
+      "catalog_id": "MDUI-A7E96D1BC415",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Other"
+      ],
+      "classification": "component",
+      "group_id": "preference-assets"
+    },
+    {
+      "catalog_id": "MDUI-19F520E7EBEA",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Snap"
+      ],
+      "classification": "component",
+      "group_id": "preference-assets"
+    },
+    {
+      "catalog_id": "MDUI-07E6BBF1171B",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files"
+      ],
+      "classification": "component",
+      "group_id": "preference-assets"
+    },
+    {
+      "catalog_id": "MDUI-E38604AC708F",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "CLO API"
+      ],
+      "classification": "component",
+      "group_id": "preference-assets"
+    },
+    {
+      "catalog_id": "MDUI-2BB7ED8CDB93",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "CLO-SET"
+      ],
+      "classification": "component",
+      "group_id": "preference-assets"
+    },
+    {
+      "catalog_id": "MDUI-BB86C9CE8249",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Other",
+        "Dialog",
+        "Reset Dialog with \"Don't Show Again\""
+      ],
+      "classification": "component",
+      "group_id": "preference-assets"
+    },
+    {
+      "catalog_id": "MDUI-D5687DF04FC3",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Graphic Options"
+      ],
+      "classification": "component",
+      "group_id": "preference-assets"
+    },
+    {
+      "catalog_id": "MDUI-D58D43BFAAE6",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Save as Preferences"
+      ],
+      "classification": "component",
+      "group_id": "preference-assets"
+    },
+    {
+      "catalog_id": "MDUI-04E0D476C377",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Reset"
+      ],
+      "classification": "component",
+      "group_id": "preference-assets"
+    },
+    {
+      "catalog_id": "MDUI-C335ACFC7688",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Close"
+      ],
+      "classification": "component",
+      "group_id": "preference-assets"
+    },
+    {
+      "catalog_id": "MDUI-BB8C09A5C904",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Preset"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-B897C86BA17E",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Pan",
+        "Modifier 1"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-19F6C3A7D7AD",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Pan",
+        "Modifier 2"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-AB3CFDFC25DE",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Pan",
+        "Mouse control"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-3B70F3AD93E8",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Zoom",
+        "Modifier 1"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-D2AB6C2E7A16",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Zoom",
+        "Modifier 2"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-ADE9D7D7F7EB",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Zoom",
+        "Mouse control"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-C652E79BB855",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Rotate (3D Garment Window Only)",
+        "Modifier 1"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-397D81B355C6",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Rotate (3D Garment Window Only)",
+        "Modifier 2"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-7FC5D290755E",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Rotate (3D Garment Window Only)",
+        "Mouse control"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-899F3EDB659C",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Pop-Up Menu",
+        "Modifier 1"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-D93141B088FF",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Pop-Up Menu",
+        "Modifier 2"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-6E293FD216A8",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Pop-Up Menu",
+        "Mouse control"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-EEB72E8E4419",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Zoom",
+        "Increment"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-BFD8CBF1E9F5",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Zoom",
+        "Direction"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-A05C8EE6F0CB",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Others",
+        "Axis Constraint Key"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-A3B8CB0806D0",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Others",
+        "Smart Panning"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-BFE923814349",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Others",
+        "Auto Focus"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-E1E3B45FAC70",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "Others",
+        "Switch focus back to default center when unselected"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-7995C73C00C7",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "View Point",
+        "Default Y-Axis Position"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-E078CAF891C3",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "View Point",
+        "Default X-Axis Angle"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-EF1AEFE9FD73",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "View Controls",
+        "View Point",
+        "Default Camera Distance for Viewpoint Shortcuts"
+      ],
+      "classification": "component",
+      "group_id": "view-control-preferences"
+    },
+    {
+      "catalog_id": "MDUI-8FD0134563BB",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Search",
+        "Menu Name"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-499D32CBC5C6",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Search",
+        "Shortcut Key"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-ACAFB66E40D8",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Search",
+        "Results"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-F8B5300AA7B0",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "File"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-0A62D6B769BA",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "Edit"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-BFFB559C01F3",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "3D Garment"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-BF45BA36553E",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "Avatar"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-A2EA2B8589EC",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "2D Pattern"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-C91790CFEB9C",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "Help"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-AA0DEA8FC197",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "Animation"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-72C9AB5B64E4",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "Sewing"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-0EBC36D8F6DC",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "Materials"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-EED6801CFA75",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "Display"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-FFA984070F8D",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "Settings"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-0161EAC754A0",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "Render"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-F22AEDBE554D",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "Plugins"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-895B18A10C65",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "Retopology"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-5E57ACA385E6",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "Window"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-4016E2B1DCE4",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Function",
+        "CONNECT"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-53B62BECEB9E",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Action hints",
+        "Create Pin"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-3C8A92138E12",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Action hints",
+        "Create Pin (Use QWE Gizmo)"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-AA07DAC250A2",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Shortcuts",
+        "Action hints",
+        "Move Segment Point Only"
+      ],
+      "classification": "component",
+      "group_id": "shortcut-preferences"
+    },
+    {
+      "catalog_id": "MDUI-AE82AB6D7483",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Unit",
+        "Unit System"
+      ],
+      "classification": "component",
+      "group_id": "unit-display-preferences"
+    },
+    {
+      "catalog_id": "MDUI-E6EBF033C351",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Unit",
+        "Decimal Places"
+      ],
+      "classification": "component",
+      "group_id": "unit-display-preferences"
+    },
+    {
+      "catalog_id": "MDUI-B69D7BED4694",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Unit",
+        "Use Ligne (L) for Button Width"
+      ],
+      "classification": "component",
+      "group_id": "unit-display-preferences"
+    },
+    {
+      "catalog_id": "MDUI-A1BBBDF43BB8",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Unit",
+        "Default Topstitch Thread Thickness Unit"
+      ],
+      "classification": "component",
+      "group_id": "unit-display-preferences"
+    },
+    {
+      "catalog_id": "MDUI-1962F9048CC0",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Toolbar",
+        "3D Toolbar"
+      ],
+      "classification": "component",
+      "group_id": "toolset-assets"
+    },
+    {
+      "catalog_id": "MDUI-FC47EBDE26C6",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Toolbar",
+        "2D Toolbar"
+      ],
+      "classification": "component",
+      "group_id": "toolset-assets"
+    },
+    {
+      "catalog_id": "MDUI-17134C517312",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Appearance",
+        "Line",
+        "Pattern Outline"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-62EA6228808C",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Appearance",
+        "Line",
+        "Internal Line"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-E0B2235B6A27",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Appearance",
+        "Line",
+        "Wireframe"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-34470A6CA5D5",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Appearance",
+        "Line",
+        "Selected"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-F71EEA42A790",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Appearance",
+        "Line",
+        "Hover"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-4A79F67DC01F",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Appearance",
+        "Line",
+        "Font Size"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-01DCDF226B85",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Appearance",
+        "Thickness",
+        "Thickness (Pixels)"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-CE9AD641B362",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Appearance",
+        "Highlight",
+        "3D Pattern"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-9EC39562B77F",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Appearance",
+        "Highlight",
+        "Freeze"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-0193944AF5E6",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Appearance",
+        "Highlight",
+        "Strengthen"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-1F70441C041A",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Appearance",
+        "Highlight",
+        "Layer"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-F5A534B77981",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Appearance",
+        "Highlight",
+        "Bond"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-231E586CFEB0",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "User Interface",
+        "Appearance",
+        "Highlight",
+        "Solidify"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-F91F1AEDD4F3",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Custom Color Palette",
+        "Palette File (ACO)"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-95E938CD4C76",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Custom Color Palette",
+        "Palette File (ACO)",
+        "Adjacent action 1"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-685178B7596D",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Custom Color Palette",
+        "Palette File (ACO)",
+        "Adjacent action 2"
+      ],
+      "classification": "component",
+      "group_id": "appearance-preferences"
+    },
+    {
+      "catalog_id": "MDUI-3AE9C336B74B",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "3D",
+        "Mesh"
+      ],
+      "classification": "component",
+      "group_id": "mesh-topology-conversion"
+    },
+    {
+      "catalog_id": "MDUI-9157C61A9A7B",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "3D",
+        "Arrangement",
+        "Default Arrangement Shape Type"
+      ],
+      "classification": "component",
+      "group_id": "arrangement"
+    },
+    {
+      "catalog_id": "MDUI-8C67C77A106B",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "3D",
+        "Arrangement",
+        "Default Arrangement Point Size"
+      ],
+      "classification": "component",
+      "group_id": "arrangement"
+    },
+    {
+      "catalog_id": "MDUI-6A226AB55067",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "3D",
+        "Arrangement",
+        "Sync Fold Arrangement Angle"
+      ],
+      "classification": "component",
+      "group_id": "fold-arrangement"
+    },
+    {
+      "catalog_id": "MDUI-48E9C0F552F8",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "3D",
+        "Gizmo"
+      ],
+      "classification": "component",
+      "group_id": "gizmos"
+    },
+    {
+      "catalog_id": "MDUI-30A921B9A41C",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "2D",
+        "Pattern",
+        "Default Particle Distance"
+      ],
+      "classification": "component",
+      "group_id": "resolution"
+    },
+    {
+      "catalog_id": "MDUI-B0BC38933763",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "2D",
+        "Pattern",
+        "Index Type of Copied Pattern"
+      ],
+      "classification": "component",
+      "group_id": "clone-construction"
+    },
+    {
+      "catalog_id": "MDUI-E3AEA4F0137B",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "2D",
+        "Pattern",
+        "Automatically Offset 2D Patterns when Cut"
+      ],
+      "classification": "component",
+      "group_id": "cut-and-sew"
+    },
+    {
+      "catalog_id": "MDUI-E40419599E0F",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Other",
+        "Library",
+        "CONNECT Folder"
+      ],
+      "classification": "component",
+      "group_id": "local-libraries"
+    },
+    {
+      "catalog_id": "MDUI-B3EAA423AAFB",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Other",
+        "Library",
+        "CONNECT Folder",
+        "Adjacent action"
+      ],
+      "classification": "component",
+      "group_id": "local-libraries"
+    },
+    {
+      "catalog_id": "MDUI-2130628CE3AC",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Other",
+        "Modular Library",
+        "Default Folder"
+      ],
+      "classification": "component",
+      "group_id": "local-libraries"
+    },
+    {
+      "catalog_id": "MDUI-4FCE26EDBDBC",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Other",
+        "Modular Library",
+        "Default Folder",
+        "Adjacent action"
+      ],
+      "classification": "component",
+      "group_id": "local-libraries"
+    },
+    {
+      "catalog_id": "MDUI-9D87783D169D",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Other",
+        "Modular Library",
+        "Protect Modular Library to Restrict Editing"
+      ],
+      "classification": "component",
+      "group_id": "local-libraries"
+    },
+    {
+      "catalog_id": "MDUI-6D8AB7762967",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Other",
+        "Modular Library",
+        "Prevent Blocks Mix and Match across Different Styles"
+      ],
+      "classification": "component",
+      "group_id": "local-libraries"
+    },
+    {
+      "catalog_id": "MDUI-2D0531D00456",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Other",
+        "Modular Library",
+        "Automatically Remove Unused Fabrics When Replacing Blocks"
+      ],
+      "classification": "component",
+      "group_id": "local-libraries"
+    },
+    {
+      "catalog_id": "MDUI-EA8FEA9E70E5",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Other",
+        "MetaData",
+        "Show Option to Save Metadata"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-5D2D5652EDC3",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Project",
+        "Save with Thumbnail (PNG)"
+      ],
+      "classification": "component",
+      "group_id": "project-load-save"
+    },
+    {
+      "catalog_id": "MDUI-7C0698B17660",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Other",
+        "LiveSync",
+        "Enable LiveSync"
+      ],
+      "classification": "component",
+      "group_id": "livesync"
+    },
+    {
+      "catalog_id": "MDUI-05C66C6DF678",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Other",
+        "Object Browser",
+        "Replacement name"
+      ],
+      "classification": "component",
+      "group_id": "object-replacement-preferences"
+    },
+    {
+      "catalog_id": "MDUI-8680377CFB17",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Other",
+        "Application",
+        "Register Application to Open Texture",
+        "Add"
+      ],
+      "classification": "component",
+      "group_id": "textures"
+    },
+    {
+      "catalog_id": "MDUI-04326EBEF410",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Materials",
+        "Convert to sRGB Profile when opening a texture image"
+      ],
+      "classification": "component",
+      "group_id": "textures"
+    },
+    {
+      "catalog_id": "MDUI-8D03873488D5",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Materials",
+        "Save Textures Compatible with Low Versions"
+      ],
+      "classification": "component",
+      "group_id": "textures"
+    },
+    {
+      "catalog_id": "MDUI-7E124096E45A",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Materials",
+        "Texture Images",
+        "Open from"
+      ],
+      "classification": "component",
+      "group_id": "textures"
+    },
+    {
+      "catalog_id": "MDUI-6DE12889F1CB",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Snap",
+        "Smart Guide"
+      ],
+      "classification": "component",
+      "group_id": "pattern-smart-snap"
+    },
+    {
+      "catalog_id": "MDUI-06810A80FF94",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Snap",
+        "Snap to Pattern"
+      ],
+      "classification": "component",
+      "group_id": "pattern-smart-snap"
+    },
+    {
+      "catalog_id": "MDUI-94EA7E145319",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Snap",
+        "Snap to Grid"
+      ],
+      "classification": "component",
+      "group_id": "grid-snap"
+    },
+    {
+      "catalog_id": "MDUI-CE560C315469",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Project",
+        "Project File (ZPRJ)"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-D0A77FC1A28C",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Project",
+        "Project File (ZPRJ)",
+        "Adjacent action 1"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-5BA071764DC8",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Project",
+        "Project File (ZPRJ)",
+        "Adjacent action 2"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-A9D1EBC7DDB2",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Materials",
+        "Fabric Physical Property"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-2903F0C49EDB",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Materials",
+        "Fabric Physical Property",
+        "Adjacent action 1"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-189D61F92098",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Materials",
+        "Fabric Physical Property",
+        "Adjacent action 2"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-3EB288ED8458",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Simulation Property",
+        "Simulation Property (SMP)"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-BC71788F0EB4",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Simulation Property",
+        "Simulation Property (SMP)",
+        "Adjacent action 1"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-729CCC418430",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Simulation Property",
+        "Simulation Property (SMP)",
+        "Adjacent action 2"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-49469279590C",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Temporary Files",
+        "Scratch Path"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-1B5892AB7A5E",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Temporary Files",
+        "Scratch Path",
+        "Adjacent action 1"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-3BE88A2DAFE5",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Temporary Files",
+        "Scratch Path",
+        "Adjacent action 2"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-FD648D260351",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Garment Information",
+        "Garment Information File (JSON)"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-61B1BF13CC4D",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Garment Information",
+        "Garment Information File (JSON)",
+        "Adjacent action 1"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-6596AF84DA17",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Garment Information",
+        "Garment Information File (JSON)",
+        "Adjacent action 2"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-B414F3F7D0E2",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Capture",
+        "Video Capture"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-B5FAE4679F30",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Capture",
+        "Video Capture",
+        "Adjacent action 1"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-BFDBFF17CD7C",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Capture",
+        "Video Capture",
+        "Adjacent action 2"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-CD2A522F7D1D",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Materials",
+        "Refresh from Custom Folder Path"
+      ],
+      "classification": "component",
+      "group_id": "default-resource-preferences"
+    },
+    {
+      "catalog_id": "MDUI-8934D9D5F949",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Auto Save",
+        "File Path"
+      ],
+      "classification": "component",
+      "group_id": "autosave-preferences"
+    },
+    {
+      "catalog_id": "MDUI-0959FB273272",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Auto Save",
+        "File Path",
+        "Adjacent action 1"
+      ],
+      "classification": "component",
+      "group_id": "autosave-preferences"
+    },
+    {
+      "catalog_id": "MDUI-053C34FAA803",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Auto Save",
+        "File Path",
+        "Adjacent action 2"
+      ],
+      "classification": "component",
+      "group_id": "autosave-preferences"
+    },
+    {
+      "catalog_id": "MDUI-7BA7248DFA0C",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Auto Save",
+        "Time Interval"
+      ],
+      "classification": "component",
+      "group_id": "autosave-preferences"
+    },
+    {
+      "catalog_id": "MDUI-E1CD8B046AFE",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Auto Save",
+        "Max File Count"
+      ],
+      "classification": "component",
+      "group_id": "autosave-preferences"
+    },
+    {
+      "catalog_id": "MDUI-B2CB59706AC5",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Auto Save",
+        "Retention Period"
+      ],
+      "classification": "component",
+      "group_id": "autosave-preferences"
+    },
+    {
+      "catalog_id": "MDUI-BA6D480F3510",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "Default Files",
+        "Auto Save",
+        "File Type"
+      ],
+      "classification": "component",
+      "group_id": "autosave-preferences"
+    },
+    {
+      "catalog_id": "MDUI-E0D35FB4025C",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "CLO API",
+        "Plug-in",
+        "Add"
+      ],
+      "classification": "component",
+      "group_id": "plugin-manager"
+    },
+    {
+      "catalog_id": "MDUI-59C8954F7DF9",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "CLO API",
+        "Plug-in",
+        "Delete"
+      ],
+      "classification": "component",
+      "group_id": "plugin-manager"
+    },
+    {
+      "catalog_id": "MDUI-2F2C06B67043",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "CLO API",
+        "Plug-in",
+        "Feature / Position"
+      ],
+      "classification": "component",
+      "group_id": "plugin-manager"
+    },
+    {
+      "catalog_id": "MDUI-9B84A57CB2C9",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "CLO API",
+        "PLM Settings"
+      ],
+      "classification": "component",
+      "group_id": "plm-integration-discovery"
+    },
+    {
+      "catalog_id": "MDUI-D76A4744102C",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Preferences",
+        "CLO-SET",
+        "Switch CLO-SET Account"
+      ],
+      "classification": "excluded",
+      "group_id": "vendor-session-administration"
+    },
+    {
+      "catalog_id": "MDUI-94691EDD7D54",
+      "catalog": "components",
+      "path": [
+        "2D toolbar",
+        "Edit Curvature"
+      ],
+      "classification": "component",
+      "group_id": "curve-tools"
+    },
+    {
+      "catalog_id": "MDUI-FD377FE35173",
+      "catalog": "components",
+      "path": [
+        "2D toolbar",
+        "Free Sewing"
+      ],
+      "classification": "component",
+      "group_id": "free-chain-sewing"
+    },
+    {
+      "catalog_id": "MDUI-B37712C9182B",
+      "catalog": "components",
+      "path": [
+        "3D toolbar",
+        "Free Sewing"
+      ],
+      "classification": "component",
+      "group_id": "free-chain-sewing"
+    },
+    {
+      "catalog_id": "MDUI-5FF699F8AC4E",
+      "catalog": "components",
+      "path": [
+        "Create Sewing Line"
+      ],
+      "classification": "component",
+      "group_id": "free-sewing-length-preview"
+    },
+    {
+      "catalog_id": "MDUI-6F97DC1085CF",
+      "catalog": "components",
+      "path": [
+        "Create Sewing Line",
+        "Length"
+      ],
+      "classification": "component",
+      "group_id": "free-sewing-length-preview"
+    },
+    {
+      "catalog_id": "MDUI-0742C79A38B8",
+      "catalog": "components",
+      "path": [
+        "Create Sewing Line",
+        "Length unit"
+      ],
+      "classification": "component",
+      "group_id": "free-sewing-length-preview"
+    },
+    {
+      "catalog_id": "MDUI-EC335883AD8D",
+      "catalog": "components",
+      "path": [
+        "Create Sewing Line",
+        "OK"
+      ],
+      "classification": "component",
+      "group_id": "free-sewing-length-preview"
+    },
+    {
+      "catalog_id": "MDUI-888575DC5612",
+      "catalog": "components",
+      "path": [
+        "Create Sewing Line",
+        "Cancel"
+      ],
+      "classification": "component",
+      "group_id": "free-sewing-length-preview"
+    },
+    {
+      "catalog_id": "MDUI-B74EE556B6AE",
+      "catalog": "components",
+      "path": [
+        "Create Sewing Line",
+        "Close"
+      ],
+      "classification": "component",
+      "group_id": "free-sewing-length-preview"
     }
-  ]
+  ],
+  "source_snapshot_note": "This exact committed pin contains the reviewed 902-ID catalog, corrected SEW-002 capture-gap summary, current numeric rectangle/history/modal/precision code, and the reviewed Size-field validation fix. Size edits now defer validation to shared ResizePiece instead of imposing the former native widget clamp. Native proof/publication for the fixed candidate remains pending; the retained failed run is not a pass. Initial-only contact BVH and quadratic live/later diagnostic limits remain unchanged. No new command/schema, catalog ID, behavior completion or parity claim is introduced; Free Sewing remains a first-side 100 mm preview with unconfirmed second side/reversal/arc-length equivalence.",
+  "expansion_origin": {
+    "previous_map_commit": "b1f01564c375a033950dd91de926a6c8e2b0a1e4",
+    "previous_map_sha256": "44d70edea7b062fe6ff112e5ebc60b2ffb3c2876d2e3d8a5ae3c9e952dbf6c73",
+    "previous_source_commit": "13f1d81d238801da617f68525660ae6fa1d01500",
+    "preserved_catalog_ids": 902,
+    "additional_component_ids": 0,
+    "catalog_commit": "8fb684e14ecc4685acefd2acfeea3e46a2dc3df5",
+    "preservation_rule": "This is an anchor/description refresh with no new catalog or behavior. Preserve all 902 prior entries, 202 packet definitions and first three bounded slices exactly; retain prior catalog/source anchors as ancestors. Only the declared source recheck replaces obsolete Size-fix wording."
+  },
+  "reviewed_contract_sources": [
+    {
+      "path": "spec/features/UI-property-surfaces-20261114.md",
+      "sha256": "522c101352ef9d3a53ea97d88829e54c0fde30d992a468d43a12b9a7ed50769d",
+      "scope": "Reviewed control-presence/value contexts and explicit unknowns; no broad behavior completion or WeftForge comparison."
+    },
+    {
+      "path": "spec/features/PAT-003-runtime-20261114.md",
+      "sha256": "8bf429006c7b5dc3de78707a31c95aa52851e9aba837ecec9b3b3aef7e99806c",
+      "scope": "Bounded original numeric rectangle creation/history/document reopen and unchanged-option OBJ measurement, with the PD10 process restart/reopen recorded separately. One later interval 400 mm/angle 0/count 2 construction is recorded in SEW-002, without a general replication formula or arbitrary limits/link/cancel/resize contract."
+    },
+    {
+      "path": "spec/features/PAT-011-runtime-20261114.md",
+      "sha256": "e432c288fc177a23ce353ab5f2b77a0f9cf6206e12d47615d7a9ffa953ea852c",
+      "scope": "Bounded original unsimulated/unsewn rectangle Particle Distance 20 to 10 mm edit, one-step history, independent mesh/boundary output and process restart/reopen; no universal mesh formula or sewn/deformed/cached behavior."
+    },
+    {
+      "path": "spec/features/UI-preferences-runtime-20261114.md",
+      "sha256": "0a0594f2eedfbe76e5fb4ad3beda52864494084e88709be625a7ba15f58f104e",
+      "scope": "Read-only current configuration and page transitions. No preference edits/effects/ranges/reset, account/plugin action or actual autosave/retention behavior; locale/language and unprinted units remain unknown."
+    },
+    {
+      "path": "spec/features/SEW-002-runtime-20261114.md",
+      "sha256": "8e5163fcb2968ac46264edf9faea370d1d25eecab5ec08cf8f8195af226db7e7",
+      "scope": "One original replication setup, curvature gesture/history and 100 mm first-side preview only. The 213-node before capture is truncated with ten AXError -25202 attribute failures across two nodes; later 214-node selected-property captures are truncated with five failures at one node. First-side/final blank-property captures have 92 nodes without gaps. No confirmed second side, completed/reversed seam, exact curve/arc-length endpoint, successful Escape cancellation or sewing simulation."
+    },
+    {
+      "path": "spec/observations/REF-SEW-002-FREE-PARTIAL-001.json",
+      "sha256": "53e3a2e706845eaa2079ed62758f6c8ea83636222d27584f8d49b4a051762e26",
+      "scope": "Reviewed public provenance and bounded original construction/curve/preview outcomes; private native containers, raw UI and proprietary resources are not implementation inputs."
+    }
+  ],
+  "source_rechecks": [
+    {
+      "group_id": "pattern-transform-tool",
+      "reason": "The reviewed Size-field source fix removes the former widget clamp and delegates validation to the shared command; replace forthcoming-fix wording without promoting the retained failed run or unpublished native proof.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "commands",
+        "ui_properties",
+        "ui_pattern",
+        "ui_numeric_precision",
+        "ui_numeric_precision_tests"
+      ]
+    }
+  ],
+  "reference_rechecks": []
 }

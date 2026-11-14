@@ -1,0 +1,52 @@
+{
+  "kind": "independent-original-export-dimension-measurement",
+  "status": "passed",
+  "input_filename": "numeric.obj",
+  "input_sha256": "8837eacc7c9eafd5ecf8aca9a3087516786ed9b0d8cb42db57d47227f5c4240b",
+  "parser_sha256": "cd9887a428439fdb54bdb20276c0ab8e8144a43e386df01f76a75ae9703462cb",
+  "declared_export_unit": "m",
+  "unit_basis": "Observed export control; fixed conversion, never fitted to bounds",
+  "vertices": 43,
+  "uv_coordinates": 43,
+  "normals": 43,
+  "faces": 68,
+  "face_sizes": {
+    "3": 68
+  },
+  "bounds_mm": {
+    "min": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "max": [
+      200.0,
+      300.0,
+      0.0
+    ],
+    "extent": [
+      200.0,
+      300.0,
+      0.0
+    ]
+  },
+  "expected_sorted_extent_mm": [
+    0.0,
+    200.0,
+    300.0
+  ],
+  "extent_errors_mm": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "declared_extent_tolerance_mm": 0.01,
+  "convex_hull_vertices": 4,
+  "convex_hull_perimeter_mm": 1000.0,
+  "convex_hull_area_mm2": 60000.0,
+  "limitations": [
+    "Original unsimulated axis-aligned rectangle only; positive-index OBJ subset",
+    "Dimension result does not establish interior topology, cloth physics or parity",
+    "Native project, vendor resources and materials are not decoded or consumed"
+  ]
+}

@@ -56,8 +56,10 @@ the garment workspace. After account-holder activation, the 2026-11-14 workspace
 capture independently confirmed the full `2026.1.237 (r58920)` build and garment
 workspace. Raw account/commercial UI remains private. Native menu presence and
 selected Graphic Options are now observed; the first original numeric rectangle create/history/document-save-close-open
-sequence and physical OBJ bounds are now observed. Wider workflows remain
-pending.
+sequence and physical OBJ bounds are now observed. The bounded 20 to 10 mm edit
+also records one-step history, separate save/export, independent boundary checks
+and target-state process reopen. Its historical startup failures and final AX
+node gap remain explicit. Wider workflows remain pending.
 
 ## Bounded investigation loop
 

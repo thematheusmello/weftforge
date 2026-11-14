@@ -1,0 +1,67 @@
+{
+  "scenario": "UI-NUMERIC-RECTANGLE-001",
+  "kind": "implementation_only",
+  "evaluator_sha256": "0a0b74fa6361cb66486045e32e693511a2897536a78a7b5b05c2769d73ddf3d7",
+  "status": "passed_with_explicit_allocator_delta",
+  "undo": {
+    "revision": 2,
+    "geometry_empty": true,
+    "all_baseline_data_identical_except": [
+      "revision",
+      "next_id"
+    ],
+    "revision_only_empty_equality": false,
+    "initial_next_id": 2,
+    "undone_next_id": 11,
+    "allocator_note": "Actual retained value is visible here; no implementation-intent or bug conclusion is inferred."
+  },
+  "redo": {
+    "revision": 3,
+    "equals_original_except_revision": true
+  },
+  "error_cancel": {
+    "revision": 3,
+    "full_document_and_bytes_unchanged": true
+  },
+  "materials_identical_to_empty_in_all_checkpoints": true,
+  "negative_witness_error_increments_revision": {
+    "status": "rejected",
+    "reason": "Rejected input/cancel changed accepted document or revision"
+  },
+  "artifacts": {
+    "empty.weftforge": {
+      "sha256": "a876afe8445fb90895cd12b1159f0fbaf5af10a6760e35c3bc35d5d9d6f55b5c",
+      "bytes": 1952,
+      "revision": 0
+    },
+    "numeric.weftforge": {
+      "sha256": "3da018cb71ede7cfd6f67941f8fe33a20ac841589be866e366c9e352ebebbd55",
+      "bytes": 3142,
+      "revision": 1
+    },
+    "numeric-undone.weftforge": {
+      "sha256": "459305dd35c3f7b9332bf24b93ef02bb1ab7b245c4f7c899e67f5d0cc2020bba",
+      "bytes": 1953,
+      "revision": 2
+    },
+    "numeric-redone.weftforge": {
+      "sha256": "ea7460e149dfd1f546063cc6c68d68a1ca77b82e3db437ac10977d070f705246",
+      "bytes": 3142,
+      "revision": 3
+    },
+    "numeric-after-errors.weftforge": {
+      "sha256": "ea7460e149dfd1f546063cc6c68d68a1ca77b82e3db437ac10977d070f705246",
+      "bytes": 3142,
+      "revision": 3
+    }
+  },
+  "limitations": [
+    "One-click Undo/Redo and rejected input/cancel gestures are parent-observed native UI evidence.",
+    "Empty revision-only equality is explicitly false because next_id remains at the allocated high-water value.",
+    "No reference parity, cloth fitting or rendering quality claim."
+  ],
+  "portable_derivative": {
+    "original_evaluator_sha256": "b12e67fc3dfff4a21aebacc5eef823452510e05d79fe865b932bf091a9aede2c",
+    "note": "Bundle-relative fixtures; process metadata omitted; fixture bytes and tolerances unchanged."
+  }
+}

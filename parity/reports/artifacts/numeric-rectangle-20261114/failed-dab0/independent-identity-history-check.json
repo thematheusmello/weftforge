@@ -1,0 +1,131 @@
+{
+  "scenario": "UI-NUMERIC-RECTANGLE-001",
+  "kind": "implementation_only",
+  "evaluator_sha256": "3dd4797dfb58aab2c0788e44887fa91b360aad981352a9c19c01e8c7029dc5e0",
+  "status": "partial_pass_with_control_precision_defect",
+  "rectangle_additions": {
+    "a_revision": 4,
+    "b_revision": 5,
+    "expected_size_m": [
+      "0.4",
+      "0.6"
+    ],
+    "expected_anchors_m": [
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "exact_native_addition_checks": "passed",
+    "original_numeric_and_other_fields_preserved": true
+  },
+  "curve27": {
+    "revision": 9,
+    "revision_increase_from_straight_b": 4,
+    "endpoints_m": [
+      [
+        "2.4",
+        "0.6"
+      ],
+      [
+        "2",
+        "0.6"
+      ]
+    ],
+    "actual_controls_m": [
+      [
+        "2.2666666666666666",
+        "0.8"
+      ],
+      [
+        "2.13333",
+        "0.8"
+      ]
+    ],
+    "expected_control_x_rationals_m": [
+      "34/15",
+      "32/15"
+    ],
+    "expected_control_x_decimal_m": [
+      "2.266666666666666666666666666666666666666666666666666666666666666666667",
+      "2.133333333333333333333333333333333333333333333333333333333333333333333"
+    ],
+    "control_x_absolute_errors_m": [
+      "6.6666666666666666666666666666666666666666666666666667E-17",
+      "0.000003333333333333333333333333333333333333333333333333333333333333333"
+    ],
+    "authoring_tolerance_m": "1E-12",
+    "unchanged_standard_third_x": false,
+    "only_changed_native_fields": [
+      "revision",
+      "curves[id=27].controls"
+    ],
+    "failure": "Unedited P2 X is 2.13333 instead of the standard third; do not normalize this value."
+  },
+  "focused_undo": {
+    "revision": 11,
+    "equals_actual_curved_except_revision": true,
+    "all_grains_zero": true
+  },
+  "focused_redo": {
+    "revision": 12,
+    "only_intended_b_grain_and_revision_changed": true,
+    "b_grain_angle_rad": "0.25",
+    "actual_quantized_curve_controls_preserved": true
+  },
+  "materials_identical_to_empty_in_all_checkpoints": true,
+  "negative_witness_focus_blur_mutates_grain": {
+    "status": "rejected",
+    "reason": "Focused undo/blur changed data beyond draft-commit/undo revision"
+  },
+  "artifacts": {
+    "empty.weftforge": {
+      "sha256": "a876afe8445fb90895cd12b1159f0fbaf5af10a6760e35c3bc35d5d9d6f55b5c",
+      "bytes": 1952,
+      "revision": 0
+    },
+    "numeric-after-errors.weftforge": {
+      "sha256": "ea7460e149dfd1f546063cc6c68d68a1ca77b82e3db437ac10977d070f705246",
+      "bytes": 3142,
+      "revision": 3
+    },
+    "identity-a.weftforge": {
+      "sha256": "9019627675fbb65f3267c7444711307fa686e841ed06f0fa8f8ffccec099b877",
+      "bytes": 4339,
+      "revision": 4
+    },
+    "identity-b.weftforge": {
+      "sha256": "86ff5f6acc6b718507ae4451e521abcd56adeec6bafaecb92d33023f687366ce",
+      "bytes": 5536,
+      "revision": 5
+    },
+    "identity-curved.weftforge": {
+      "sha256": "881787962715c55fbb1fd3110de6021e3555023cefb256926442dfd6c3435fb6",
+      "bytes": 5677,
+      "revision": 9
+    },
+    "focused-undone.weftforge": {
+      "sha256": "aa90d54b50fb9f85eb8b5311ad75c2594f00d52e5e02697349827b15c9f6630a",
+      "bytes": 5678,
+      "revision": 11
+    },
+    "focused-redone.weftforge": {
+      "sha256": "9ff0c0d3298322da4f0cdea018cfef4d0ae034c9e8bfe9a6dbb011256455981c",
+      "bytes": 5679,
+      "revision": 12
+    }
+  },
+  "limitations": [
+    "Inspector creation-field text persistence and focus/blur gestures are parent-observed UI evidence.",
+    "The observed standard-third control precision expectation fails for this identified candidate.",
+    "No reference parity, cloth fitting or rendering quality claim."
+  ],
+  "portable_derivative": {
+    "original_evaluator_sha256": "884e22a442efc1f1ff6754247e653ad9d253ed4c91cefdd6afb7b384b13c021b",
+    "note": "Bundle-relative fixtures; process metadata omitted; fixture bytes and tolerances unchanged."
+  }
+}

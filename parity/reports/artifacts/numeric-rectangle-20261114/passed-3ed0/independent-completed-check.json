@@ -1,0 +1,272 @@
+{
+  "scenario": "UI-NUMERIC-RECTANGLE-002",
+  "kind": "implementation_only",
+  "status": "passed_main_native_saved_output_acceptance",
+  "evaluator_sha256": "03b7bc968be14d0bedf25c9a2383779d0890a054a4acf5f910540f9890686302",
+  "candidate": {
+    "source_commit": "359ac5b2fedfece5cfef9f22861c279bd2708801",
+    "executable_sha256": "3ed0ab22b4e7335c8dff9a58350b7f68eb2aa9b5ba1c39059c9043a7210c6880",
+    "identity_basis": "Parent-observed declaration/process records; this checker does not query native processes."
+  },
+  "fixed_authoring_tolerance_m": "1E-12",
+  "fixed_initial_obj_tolerance_mm": "0.01",
+  "initial_phase_report_sha256": "d7c1192aafc534b7b4a2b34aa49958789994f3c545cf93d5f51c04470e5ccdb2",
+  "partial_phase_retained": {
+    "report_sha256": "ee216b8dbe81da705ea9a04571954d7a1daf4e0bd68d84f2bcf74c689cc77e55",
+    "both_y_target_reached": false,
+    "completion_is_separate_file": "precision-curved.weftforge"
+  },
+  "completed_curve": {
+    "revision": 8,
+    "controls_m": [
+      [
+        "2.2666666666666666",
+        "0.8"
+      ],
+      [
+        "2.1333333333333333",
+        "0.8"
+      ]
+    ],
+    "untouched_x_exactly_equal_to_collinear": true,
+    "independent_third_x_errors_m": [
+      "6.6666666666666666666666666666666666666666666666666667E-17",
+      "3.3333333333333333333333333333333333333333333333333333E-17"
+    ],
+    "only_completion_changes": [
+      "revision",
+      "curves[id=27].controls[1][1]"
+    ]
+  },
+  "focused_history": {
+    "undo_revision": 10,
+    "redo_revision": 11,
+    "undo_matches_complete_except_revision": true,
+    "redo_changes_only_b_grain_to_point25_and_revision": true
+  },
+  "small": {
+    "revision": 12,
+    "next_id": 38,
+    "width_m": "0.005",
+    "height_m": "0.006",
+    "measured_anchor_m": [
+      "0.36",
+      "0.62"
+    ],
+    "anchor_policy": "Recorded source position; no independent UI placement claim.",
+    "width_height_errors_m": [
+      "0.000",
+      "0.000"
+    ],
+    "only_declared_small_construction_added": true,
+    "focus_invalid_restore_reopen_bytes_identical": [
+      "small-before-focus.weftforge",
+      "small-after-focus.weftforge",
+      "small-after-invalid.weftforge",
+      "reopened.weftforge"
+    ],
+    "shared_sha256": "481e67ce9a25471514a74d61fdcac67f0602a39eebd8160c33605b1294d109df"
+  },
+  "materials_exact_empty_baseline_all_qualified_native_files": true,
+  "final_obj": {
+    "vertices": 475,
+    "uvs": 475,
+    "normals": 475,
+    "triangles": 846,
+    "edges": 1317,
+    "components": 4,
+    "euler_characteristic_sum": 4,
+    "bounds_m": [
+      [
+        "0E-17",
+        "2.39999999999999991"
+      ],
+      [
+        "0E-17",
+        "0.75000000000000000"
+      ],
+      [
+        "0E-17",
+        "0E-17"
+      ]
+    ],
+    "minimum_twice_projected_area_m2": "0.0000300000000000000000000000000000",
+    "all_faces_positive": true,
+    "finite_unit_normals_and_uvs": true
+  },
+  "final_svg": {
+    "editable_piece_paths": 4,
+    "editable_cubic_segments": 1,
+    "physical_user_unit": "millimetre",
+    "maximum_authored_coordinate_error_m": "2E-16",
+    "cubic_all_points_error_bound_m": "2.828427124746190097603377448419396157139343750753896146353359475981464E-16"
+  },
+  "negative_witnesses": {
+    "selected_size_clamped_to_10mm": {
+      "status": "rejected",
+      "reason": "Small must remain 5x6mm"
+    },
+    "obj_repeated_vertex_face": {
+      "status": "rejected",
+      "reason": "OBJ repeated triangle vertex"
+    },
+    "svg_wrong_physical_unit": {
+      "status": "rejected",
+      "reason": "SVG fixed millimetres"
+    }
+  },
+  "invalid_mixed_instance": {
+    "qualification": "excluded; no candidate execution attribution",
+    "classification_sha256": "eba7529d56c4cf15cddf8cf497ecb72039065dc415d9d02870a1f37e47576219",
+    "retained_artifacts": [
+      "invalid-mixed-instance-attempt/classification.json",
+      "invalid-mixed-instance-attempt/identity-a.weftforge",
+      "invalid-mixed-instance-attempt/identity-b.weftforge"
+    ]
+  },
+  "artifacts": {
+    "empty.weftforge": {
+      "sha256": "a876afe8445fb90895cd12b1159f0fbaf5af10a6760e35c3bc35d5d9d6f55b5c",
+      "bytes": 1952
+    },
+    "after-cancel.weftforge": {
+      "sha256": "a876afe8445fb90895cd12b1159f0fbaf5af10a6760e35c3bc35d5d9d6f55b5c",
+      "bytes": 1952
+    },
+    "after-errors.weftforge": {
+      "sha256": "a876afe8445fb90895cd12b1159f0fbaf5af10a6760e35c3bc35d5d9d6f55b5c",
+      "bytes": 1952
+    },
+    "numeric.weftforge": {
+      "sha256": "3da018cb71ede7cfd6f67941f8fe33a20ac841589be866e366c9e352ebebbd55",
+      "bytes": 3142
+    },
+    "numeric-undone.weftforge": {
+      "sha256": "459305dd35c3f7b9332bf24b93ef02bb1ab7b245c4f7c899e67f5d0cc2020bba",
+      "bytes": 1953
+    },
+    "numeric-redone.weftforge": {
+      "sha256": "ea7460e149dfd1f546063cc6c68d68a1ca77b82e3db437ac10977d070f705246",
+      "bytes": 3142
+    },
+    "identity-a.weftforge": {
+      "sha256": "9019627675fbb65f3267c7444711307fa686e841ed06f0fa8f8ffccec099b877",
+      "bytes": 4339
+    },
+    "identity-b.weftforge": {
+      "sha256": "86ff5f6acc6b718507ae4451e521abcd56adeec6bafaecb92d33023f687366ce",
+      "bytes": 5536
+    },
+    "curve-collinear.weftforge": {
+      "sha256": "204128a67b62eef7163fe13224a5b5df6ccc70abddfff4084b4a3882dd2c93c8",
+      "bytes": 5688
+    },
+    "identity-curved.weftforge": {
+      "sha256": "41d08d196ad96037ed6c3ba41fd2b52322cb9d978a5038c9005917319de52ae5",
+      "bytes": 5688
+    },
+    "focused-undone.weftforge": {
+      "sha256": "ccd0bd1fb7860eeeea445297be1b390a1ba5c5a3bb38fbdc1462166c8f958ef1",
+      "bytes": 5688
+    },
+    "focused-redone.weftforge": {
+      "sha256": "16b4a3240de747fb82fa08b00b6d52ce316c9a38ad0068204fa491d8e216a811",
+      "bytes": 5690
+    },
+    "precision-curved.weftforge": {
+      "sha256": "b3138d2d2366a217a4cccd033aafdf8d9f4cee7d314a5616b445a90df6f4d8fa",
+      "bytes": 5688
+    },
+    "precision-focused-undone.weftforge": {
+      "sha256": "554117ef3455d250a8efbc0fdb78eadd5e1ee5ecbc8f076b64f033a06c2568c4",
+      "bytes": 5689
+    },
+    "precision-focused-redone.weftforge": {
+      "sha256": "a87cc6456bb64de249d2474f7ecae9da01883248d695052343a6c89e2861e4a5",
+      "bytes": 5690
+    },
+    "small-before-focus.weftforge": {
+      "sha256": "481e67ce9a25471514a74d61fdcac67f0602a39eebd8160c33605b1294d109df",
+      "bytes": 6894
+    },
+    "small-after-focus.weftforge": {
+      "sha256": "481e67ce9a25471514a74d61fdcac67f0602a39eebd8160c33605b1294d109df",
+      "bytes": 6894
+    },
+    "small-after-invalid.weftforge": {
+      "sha256": "481e67ce9a25471514a74d61fdcac67f0602a39eebd8160c33605b1294d109df",
+      "bytes": 6894
+    },
+    "reopened.weftforge": {
+      "sha256": "481e67ce9a25471514a74d61fdcac67f0602a39eebd8160c33605b1294d109df",
+      "bytes": 6894
+    },
+    "declaration.json": {
+      "sha256": "24e5634b19f3801237bee778850a0125b254394503b7af637e930ce0a2a22238",
+      "bytes": 2670
+    },
+    "process.json": {
+      "sha256": "969a46745553682ac973c4e71e16d084cea132b4eda5df25010012b57adf4f4b",
+      "bytes": 209
+    },
+    "restart-process.json": {
+      "sha256": "9a85121f0cf37685f3249e69a0dfae21af31ce83520677bfddc03b5a3a5fb7d5",
+      "bytes": 308
+    },
+    "numeric.obj": {
+      "sha256": "8837eacc7c9eafd5ecf8aca9a3087516786ed9b0d8cb42db57d47227f5c4240b",
+      "bytes": 9187
+    },
+    "numeric.svg": {
+      "sha256": "f52c8206298ad1a364fbc498a6894b8dc7211651e916fc456e6662b1b86ea51c",
+      "bytes": 435
+    },
+    "final.obj": {
+      "sha256": "9cc8ec1601dc2bb86d65886b0cb49643df9175518e6789f453b3ae0c82a920ac",
+      "bytes": 110871
+    },
+    "final.svg": {
+      "sha256": "bfc19fb03b44396908d2056c1570b864d23362a153ff338d6db0c5d73c0336da",
+      "bytes": 935
+    },
+    "independent-numeric-bounds.json": {
+      "sha256": "0fd8303ccb93c31519677a3494af67bd876b038ec3c81648fc9159bcf3ee04a7",
+      "bytes": 1248
+    },
+    "independent-numeric-boundary.json": {
+      "sha256": "56ba1220a4528b689899be98ad00fbe37be7606fd79bcf2e1773d929133160bb",
+      "bytes": 1844
+    },
+    "independent-initial-check.json": {
+      "sha256": "d7c1192aafc534b7b4a2b34aa49958789994f3c545cf93d5f51c04470e5ccdb2",
+      "bytes": 8042
+    },
+    "independent-dynamic-check.json": {
+      "sha256": "ee216b8dbe81da705ea9a04571954d7a1daf4e0bd68d84f2bcf74c689cc77e55",
+      "bytes": 4530
+    },
+    "invalid-mixed-instance-attempt/classification.json": {
+      "sha256": "eba7529d56c4cf15cddf8cf497ecb72039065dc415d9d02870a1f37e47576219",
+      "bytes": 756
+    },
+    "invalid-mixed-instance-attempt/identity-a.weftforge": {
+      "sha256": "5a4089ba17cb6b4dcb463d175a432bb76394c98bfd74db734a56e66067318aae",
+      "bytes": 4344
+    },
+    "invalid-mixed-instance-attempt/identity-b.weftforge": {
+      "sha256": "ad79ed7e0951a63d721c34019b8b9f487715186a1836a57c57cab27dae0a226c",
+      "bytes": 5546
+    }
+  },
+  "separate_initialization_cancellation": "Not evaluated by this saved-output checker; requires separately measured parent evidence.",
+  "limits": [
+    "No reference parity, reference placement/topology/material equivalence, cloth fitting or rendering-quality claim.",
+    "UI gestures, field text, explicit app/process identity and reopen interaction remain parent-observed evidence.",
+    "Final OBJ validates finite positive mesh/UV/normals and bounded topology; no cubic tessellation accuracy at 1e-12m is claimed.",
+    "Earlier incomplete action and mixed-instance attempt are retained separately, without normalization."
+  ],
+  "portable_derivative": {
+    "original_evaluator_sha256": "67dc4b4d8565ba5a1a98bd4361f7ea21a0f47249dc8dee24b2e05fae2fe4d10d",
+    "note": "Bundle-relative paths; original fixtures and fixed criteria unchanged; raw original report retained."
+  }
+}

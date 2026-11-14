@@ -1,0 +1,234 @@
+{
+  "scenario": "UI-NUMERIC-RECTANGLE-002",
+  "kind": "implementation_only",
+  "evaluator_sha256": "41f44cdb721b352f75e5518d2c9a3f14dfbe6eafae762c62e903191479784bce",
+  "authored_tolerance_m": "1E-12",
+  "candidate": {
+    "source_commit": "359ac5b2fedfece5cfef9f22861c279bd2708801",
+    "executable_sha256": "3ed0ab22b4e7335c8dff9a58350b7f68eb2aa9b5ba1c39059c9043a7210c6880",
+    "identity_basis": "Parent-observed declaration/process records; this checker does not query native processes."
+  },
+  "cancel_error": {
+    "empty_revision": 0,
+    "after_cancel_revision": 0,
+    "after_errors_revision": 0,
+    "all_native_bytes_identical": true
+  },
+  "history": {
+    "undo_revision": 2,
+    "redo_revision": 3,
+    "undone_geometry_empty": true,
+    "initial_next_id": 2,
+    "undone_next_id": 11,
+    "revision_only_empty_equality": false,
+    "undo_equals_empty_except_revision_and_allocator": true,
+    "redo_equals_numeric_except_revision": true
+  },
+  "native": {
+    "revision": 1,
+    "next_id": 11,
+    "points": 4,
+    "curves": 4,
+    "pieces": 1,
+    "seams": 0,
+    "width_m": "0.2",
+    "height_m": "0.3",
+    "max_authored_coordinate_error_m": "0",
+    "resolution_m": "0.07",
+    "materials_identical_to_empty": true,
+    "material_color": [
+      "0.22",
+      "0.55",
+      "0.76"
+    ],
+    "other_baseline_data_identical": true
+  },
+  "svg": {
+    "closed_editable_paths": 1,
+    "physical_user_unit": "millimetre",
+    "width_mm": 200,
+    "height_mm": 300,
+    "coordinate_error_mm": 0,
+    "pattern_y_inverted": true
+  },
+  "negative_witnesses": {
+    "authored_width_perturbation_1mm": {
+      "status": "rejected",
+      "reason": "Authored rectangle dimension or position mismatch"
+    },
+    "phantom_rgb_drift": {
+      "status": "rejected",
+      "reason": "Unexpected baseline change: materials"
+    },
+    "incorrect_svg_physical_unit": {
+      "status": "rejected",
+      "reason": "SVG must declare millimetres"
+    },
+    "cancel_preservation_byte_witness": {
+      "status": "rejected",
+      "reason": "Cancel/error native bytes changed"
+    }
+  },
+  "obj_bounds": {
+    "kind": "independent-original-export-dimension-measurement",
+    "status": "passed",
+    "input_filename": "numeric.obj",
+    "input_sha256": "8837eacc7c9eafd5ecf8aca9a3087516786ed9b0d8cb42db57d47227f5c4240b",
+    "parser_sha256": "cd9887a428439fdb54bdb20276c0ab8e8144a43e386df01f76a75ae9703462cb",
+    "declared_export_unit": "m",
+    "unit_basis": "Observed export control; fixed conversion, never fitted to bounds",
+    "vertices": 43,
+    "uv_coordinates": 43,
+    "normals": 43,
+    "faces": 68,
+    "face_sizes": {
+      "3": 68
+    },
+    "bounds_mm": {
+      "min": [
+        "0.0",
+        "0.0",
+        "0.0"
+      ],
+      "max": [
+        "200.0",
+        "300.0",
+        "0.0"
+      ],
+      "extent": [
+        "200.0",
+        "300.0",
+        "0.0"
+      ]
+    },
+    "expected_sorted_extent_mm": [
+      "0.0",
+      "200.0",
+      "300.0"
+    ],
+    "extent_errors_mm": [
+      "0.0",
+      "0.0",
+      "0.0"
+    ],
+    "declared_extent_tolerance_mm": "0.01",
+    "convex_hull_vertices": 4,
+    "convex_hull_perimeter_mm": "1000.0",
+    "convex_hull_area_mm2": "60000.0",
+    "limitations": [
+      "Original unsimulated axis-aligned rectangle only; positive-index OBJ subset",
+      "Dimension result does not establish interior topology, cloth physics or parity",
+      "Native project, vendor resources and materials are not decoded or consumed"
+    ]
+  },
+  "obj_boundary": {
+    "kind": "independent-original-rectangle-boundary-measurement",
+    "status": "passed",
+    "input_filename": "numeric.obj",
+    "input_sha256": "8837eacc7c9eafd5ecf8aca9a3087516786ed9b0d8cb42db57d47227f5c4240b",
+    "parser_sha256": "93e03a7d41d317e782a1833be9a634fc7cce1db2b6b25faecb8b5eac5d47de12",
+    "dimension_parser_sha256": "cd9887a428439fdb54bdb20276c0ab8e8144a43e386df01f76a75ae9703462cb",
+    "declared_export_unit": "m",
+    "expected_dimensions_mm": [
+      "200.0",
+      "300.0"
+    ],
+    "tolerance_mm": "0.01",
+    "unit_basis": "Observed export control; fixed conversion, never fitted to bounds",
+    "translation_policy": "Ignore translation using exported minima; no authored position or rotation result is claimed",
+    "checks": {
+      "physical_dimensions": true,
+      "all_vertices_used": true,
+      "one_connected_mesh": true,
+      "edge_incidence_one_or_two": true,
+      "boundary_degree_two": true,
+      "one_boundary_loop": true,
+      "disk_euler_characteristic": true,
+      "consistent_nondegenerate_projected_winding": true,
+      "boundary_on_declared_rectangle": true,
+      "all_declared_corners_covered": true,
+      "projected_area": true
+    },
+    "vertices": 43,
+    "faces": 68,
+    "edges": 110,
+    "boundary_edges": 16,
+    "boundary_vertices": 16,
+    "boundary_components": 1,
+    "euler_characteristic": 1,
+    "max_boundary_error_mm": "0.0",
+    "max_corner_error_mm": "0.0",
+    "projected_triangle_area_mm2": "60000.0",
+    "expected_area_mm2": "60000.0",
+    "area_tolerance_mm2": "10.0",
+    "limitations": [
+      "One original unsimulated axis-aligned rectangle, positive-index triangle OBJ subset",
+      "Manifold incidence, winding, boundary and area checks; no general polygon/intersection proof",
+      "Texture, material, normals, native format and cloth physics are not qualified",
+      "Independent fixture measurements supply zero verified WeftForge parity claims"
+    ]
+  },
+  "artifacts": {
+    "declaration.json": {
+      "sha256": "24e5634b19f3801237bee778850a0125b254394503b7af637e930ce0a2a22238",
+      "bytes": 2670
+    },
+    "process.json": {
+      "sha256": "969a46745553682ac973c4e71e16d084cea132b4eda5df25010012b57adf4f4b",
+      "bytes": 209
+    },
+    "empty.weftforge": {
+      "sha256": "a876afe8445fb90895cd12b1159f0fbaf5af10a6760e35c3bc35d5d9d6f55b5c",
+      "bytes": 1952
+    },
+    "numeric.weftforge": {
+      "sha256": "3da018cb71ede7cfd6f67941f8fe33a20ac841589be866e366c9e352ebebbd55",
+      "bytes": 3142
+    },
+    "numeric.obj": {
+      "sha256": "8837eacc7c9eafd5ecf8aca9a3087516786ed9b0d8cb42db57d47227f5c4240b",
+      "bytes": 9187
+    },
+    "numeric.svg": {
+      "sha256": "f52c8206298ad1a364fbc498a6894b8dc7211651e916fc456e6662b1b86ea51c",
+      "bytes": 435
+    },
+    "after-cancel.weftforge": {
+      "sha256": "a876afe8445fb90895cd12b1159f0fbaf5af10a6760e35c3bc35d5d9d6f55b5c",
+      "bytes": 1952
+    },
+    "after-errors.weftforge": {
+      "sha256": "a876afe8445fb90895cd12b1159f0fbaf5af10a6760e35c3bc35d5d9d6f55b5c",
+      "bytes": 1952
+    },
+    "numeric-undone.weftforge": {
+      "sha256": "459305dd35c3f7b9332bf24b93ef02bb1ab7b245c4f7c899e67f5d0cc2020bba",
+      "bytes": 1953
+    },
+    "numeric-redone.weftforge": {
+      "sha256": "ea7460e149dfd1f546063cc6c68d68a1ca77b82e3db437ac10977d070f705246",
+      "bytes": 3142
+    },
+    "independent-numeric-bounds.json": {
+      "sha256": "0fd8303ccb93c31519677a3494af67bd876b038ec3c81648fc9159bcf3ee04a7",
+      "bytes": 1248
+    },
+    "independent-numeric-boundary.json": {
+      "sha256": "56ba1220a4528b689899be98ad00fbe37be7606fd79bcf2e1773d929133160bb",
+      "bytes": 1844
+    }
+  },
+  "status": "passed_for_supplied_initial_outputs_with_explicit_allocator_delta",
+  "pending": [
+    "Dynamic field identity and exact control preservation, focused history, 5x6mm selected-size preservation, restart/reopen, separately measured initialization/cancellation"
+  ],
+  "limitations": [
+    "No full reference contract/parity claim; physical-dimension comparison only, with fixed units and no normalization.",
+    "No inferred world placement, reference topology/material equivalence, cloth fitting or rendering quality.",
+    "Modal state, focused fields and native gestures are parent-observed UI evidence."
+  ],
+  "portable_derivative": {
+    "original_evaluator_sha256": "d00578044086411cd4438db657bc7440696e03ef1c8921841feaa2af2b95c2d4",
+    "note": "Bundle-relative paths; original fixtures and fixed criteria unchanged; raw original report retained."
+  }
+}

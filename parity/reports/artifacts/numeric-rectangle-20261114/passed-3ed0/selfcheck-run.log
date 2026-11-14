@@ -1,0 +1,187 @@
+{
+  "bundle_kind": "explicit_portable_derivative",
+  "status": "passed_scoped_checks",
+  "overall_exit_code": 0,
+  "checks": [
+    {
+      "case": "numeric_obj_bounds",
+      "command": [
+        "python3",
+        "-B",
+        "original_obj_bounds.py",
+        "numeric.obj",
+        "--unit",
+        "m",
+        "--expected-mm",
+        "200",
+        "300",
+        "--tolerance-mm",
+        ".01"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matches_expected_exit": true,
+      "stderr": "",
+      "output_report": "independent-numeric-bounds.json",
+      "output_report_sha256": "0fd8303ccb93c31519677a3494af67bd876b038ec3c81648fc9159bcf3ee04a7"
+    },
+    {
+      "case": "numeric_obj_boundary",
+      "command": [
+        "python3",
+        "-B",
+        "original_obj_boundary.py",
+        "numeric.obj",
+        "--unit",
+        "m",
+        "--expected-mm",
+        "200",
+        "300",
+        "--tolerance-mm",
+        ".01"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matches_expected_exit": true,
+      "stderr": "",
+      "output_report": "independent-numeric-boundary.json",
+      "output_report_sha256": "56ba1220a4528b689899be98ad00fbe37be7606fd79bcf2e1773d929133160bb"
+    },
+    {
+      "case": "initial_numeric",
+      "command": [
+        "python3",
+        "-B",
+        "verify_initial_numeric.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matches_expected_exit": true,
+      "stderr": "",
+      "stdout": "{\"status\": \"passed_for_supplied_initial_outputs_with_explicit_allocator_delta\", \"report\": \"independent-initial-check.json\", \"report_sha256\": \"d7c1192aafc534b7b4a2b34aa49958789994f3c545cf93d5f51c04470e5ccdb2\", \"evaluator_sha256\": \"41f44cdb721b352f75e5518d2c9a3f14dfbe6eafae762c62e903191479784bce\"}\n"
+    },
+    {
+      "case": "earlier_partial_curve_and_history",
+      "command": [
+        "python3",
+        "-B",
+        "verify_dynamic_numeric.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matches_expected_exit": true,
+      "stderr": "",
+      "stdout": "{\"status\": \"passed_precision_and_focused_history_with_incomplete_curve_target\", \"report\": \"independent-dynamic-check.json\", \"report_sha256\": \"ee216b8dbe81da705ea9a04571954d7a1daf4e0bd68d84f2bcf74c689cc77e55\", \"evaluator_sha256\": \"c66470203c01398dbd62167a538edb8ab1a8ca6c22a165dde0a78b385187f4c2\"}\n"
+    },
+    {
+      "case": "completed_main",
+      "command": [
+        "python3",
+        "-B",
+        "verify_completed_numeric.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matches_expected_exit": true,
+      "stderr": "",
+      "stdout": "{\"status\": \"passed_main_native_saved_output_acceptance\", \"report\": \"independent-completed-check.json\", \"report_sha256\": \"92a184600b06544575ac8fd88ee8878612e1dc49f3d75bb081b65814d9dbb2f0\", \"evaluator_sha256\": \"03b7bc968be14d0bedf25c9a2383779d0890a054a4acf5f910540f9890686302\"}\n"
+    },
+    {
+      "case": "separate_cancel_snapshots",
+      "command": [
+        "python3",
+        "-B",
+        "verify_cancellation.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matches_expected_exit": true,
+      "stderr": "",
+      "stdout": "{\"status\": \"passed_saved_snapshot_cancel_checks\", \"report\": \"independent-cancellation-check.json\", \"report_sha256\": \"e75ca00b777bbb750bd7dbd09cad8944b3fe932ed2d2382d52931444c26f5d3f\", \"evaluator_sha256\": \"d2a70bf609c402767f6452d97f7aaeb434fc61db6b85d8110817bfd39260b260\"}\n"
+    }
+  ],
+  "negative_witnesses": {
+    "initial/authored_width_perturbation_1mm": {
+      "status": "rejected",
+      "reason": "Authored rectangle dimension or position mismatch"
+    },
+    "initial/phantom_rgb_drift": {
+      "status": "rejected",
+      "reason": "Unexpected baseline change: materials"
+    },
+    "initial/incorrect_svg_physical_unit": {
+      "status": "rejected",
+      "reason": "SVG must declare millimetres"
+    },
+    "initial/cancel_preservation_byte_witness": {
+      "status": "rejected",
+      "reason": "Cancel/error native bytes changed"
+    },
+    "main/selected_size_clamped_to_10mm": {
+      "status": "rejected",
+      "reason": "Small must remain 5x6mm"
+    },
+    "main/obj_repeated_vertex_face": {
+      "status": "rejected",
+      "reason": "OBJ repeated triangle vertex"
+    },
+    "main/svg_wrong_physical_unit": {
+      "status": "rejected",
+      "reason": "SVG fixed millimetres"
+    },
+    "cancel/unintended_migration_material_change": {
+      "status": "rejected",
+      "reason": "Native migration changed source fields beyond explicit schema migration"
+    },
+    "cancel/same_json_but_changed_snapshot_bytes": {
+      "status": "rejected",
+      "reason": "Cancelled accepted snapshot bytes changed"
+    },
+    "cancel/source_point_exceeds_fixed_tolerance": {
+      "status": "rejected",
+      "reason": "Native source coordinate exceeds unchanged 1e-12 m tolerance"
+    },
+    "cancel/obj_repeated_corner": {
+      "status": "rejected",
+      "reason": "Repeated OBJ triangle corner"
+    },
+    "partial/old_quantization": {
+      "status": "rejected",
+      "reason": "Untouched cubic X values changed"
+    },
+    "partial/focus_blur_grain": {
+      "status": "rejected",
+      "reason": "Focused undo/blur changed data beyond draft-commit/undo revision"
+    }
+  },
+  "all_13_negative_witnesses_rejected": true,
+  "scopes": {
+    "main_saved_output_acceptance": "passed_main_native_saved_output_acceptance",
+    "separate_cancellation_snapshot_check": "passed_saved_snapshot_cancel_checks",
+    "earlier_partial_y_action": "retained incomplete; not credited as the completed target",
+    "mixed_instance_attempt": "retained invalid; excluded from candidate attribution",
+    "source_migration_bit_lossless": false,
+    "source_coordinate_deltas_m": [
+      {
+        "point_id": 40,
+        "axis": 0,
+        "before_m": "1.1199999999999999",
+        "after_m": "1.12",
+        "signed_delta_m": "1E-16"
+      },
+      {
+        "point_id": 41,
+        "axis": 0,
+        "before_m": "1.0999999999999999",
+        "after_m": "1.1",
+        "signed_delta_m": "1E-16"
+      }
+    ],
+    "prior_failed_candidate": "separate retained provenance, not executed by this new-candidate runner"
+  },
+  "limits": [
+    "No UI, Cargo, timing experiment or simulation is performed by this runner.",
+    "Parent-observed 890 ms is CUA/AX UI acknowledgement only; exact phase and worker exit are unmeasured.",
+    "No full reference parity, fitting or rendering-quality claim."
+  ]
+}

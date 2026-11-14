@@ -1,0 +1,19 @@
+Portable derivative of UI-NUMERIC-RECTANGLE-002 plus separate UI-BATCH-CANCEL-001.
+Run: python3 -B run_checks.py (any working directory). Expected exit: 0.
+
+Main saved-output acceptance and cancellation-snapshot acceptance are separate.
+Earlier partial-Y files remain incomplete; the mixed-instance attempt is excluded
+from candidate attribution. Their bytes/classification remain retained unchanged.
+The earlier failed candidate is identified separately in prior-evidence.
+
+Input fixtures, declared metre/mm units and 1e-12 m/.01 mm criteria are unchanged.
+Original reports/evaluators are retained byte-for-byte in provenance directories;
+root checkers/results are explicitly labelled portable derivatives.
+Original source v1 -> native v2 migration is NOT bit-lossless: point 40 and point 41
+X each change by 1e-16 m. Exact coordinate equality is false; both deltas remain
+visible. Cancellation before/after native and OBJ snapshots are byte-identical.
+The prepared raw original fixture changes only resolution .12 -> .015.
+
+The parent-observed 890 ms is UI click/AX acknowledgement including CUA overhead.
+Exact initialization versus step phase and worker termination latency are unmeasured.
+No full reference parity, fitting, rendering quality or general physics claim.
