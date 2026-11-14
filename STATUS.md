@@ -71,12 +71,20 @@ requires current-source empty UI creation, A20 simulation, edit21/Undo22 with
 actual Drape-to-Rest observation, save/real quit/reopen A22, then B23 simulation
 and export. Exactly two whole 420-second physical cases, no tuning/retry.
 
-The independent adapter in `.local/harbor-native-evaluator-20261114/` is being
-prepared. It must bind this new source/package, qualify revision-only physical
-input identity and exact rest OBJ before dynamics, and compare native0/60/180
-with immutable3aa gold. Point-design tolerance remains separate from exact
-physical identity; no normalization. Read its final freeze/selfchecks and issue
-root authorization bound to plan, evaluator and package before waking the actor.
+The independent adapter in `.local/harbor-native-evaluator-20261114/` is frozen:
+`evaluator-freeze.json` SHA is
+`ad82440d9c697d39f55ee229669d28732343cae9b5173b9523f5996855e6e75a`.
+Eight selfcheck groups and all six gold-only OBJ checkpoints pass. Root reviewed
+its full code/interface, verified the 12 frozen files and issued
+`.local/harbor-native-integrated-20261114/execution-authorization.json`, SHA
+`91d700623e4ca866af97c69ddfb5c0d739401a39cc9ebf7c2c2592e2202b58d0`.
+Both root and evaluator independently validate that actual authorization.
+The native actor is now authorized to begin the fixed workflow; no new native
+outcome has yet been reported. Before each Assemble it must obtain an independent
+verified preflight for exact physical input except revision and exact rest OBJ.
+Point-design tolerance remains separate from physical identity; no normalization.
+On refusal, stop before physics and preserve it. Native0/60/180 will compare
+against immutable3aa gold with new binary/revision identities explicit.
 Pending-mesh race UI evidence is conditional on actual observation; unit coverage
 does not become a claimed native observation. The reference handoff stays pending.
 
@@ -307,11 +315,18 @@ The new full130-file candidate and saved historical3aa replay are closed in
 Read-only replay27868/wrapper97445/reader97587 exits0; all362 saved states pass.
 It remains ignored/unpublished until tracked-clean delivery checks.
 
-Separate original-shirt validation on math candidate35af is preparation-only in
-`.local/closed-stitch-garment-20261114/`. Fmt/build/Clippy jobs35921 and ledgers
-complete0; no new Cloth initialization/steps. Its evaluator/preregistration is
-still being frozen, then root must approve the single unchanged180-step control.
-Cap is420s including analysis and256MiB numerical output, not an RSS limit.
-Do not integrate35af or start that physical case from preparation alone.
+The single authorized original-shirt case on math candidate35af is terminal in
+`.local/closed-stitch-garment-20261114/`: session67094/wrapper39237,
+driver39382 exits0, frozen evaluator39561 exits1, all PIDs absent. All181 states
+complete in22.791s within420s/256MiB; final strain32.35191565% still fails15%.
+Mass/rest/settings/targets are exact; seam/contact/finite checks pass. The one
+attribution failure at frame6 is retained: independent competing peaks differ
+by2.220446049250313e-16, and candidate positions/velocities/diagnostic peak are
+bit-identical to frozen6c before first zero-target dispatch27/substep3. This
+supports observer ambiguity, not a newly established solver regression, while
+the frozen evaluator remains failed. No retry or garment-improvement claim.
+Terminal handoff SHA is `e85e4a5288b9e5dd26790b44d91d284a9ae7b258c407bfb96912b985bc282765`.
+Keep35af separate from native7fe; further physics or integration needs a new
+reviewed step. All original failures and 57 retained local files remain intact.
 Reference inventory36748 and REA observation64096 are terminal0. Recheck actual
 handles before resuming; use separate Cargo targets.
