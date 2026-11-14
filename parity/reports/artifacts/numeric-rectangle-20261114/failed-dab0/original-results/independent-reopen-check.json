@@ -1,0 +1,42 @@
+{
+  "scenario": "UI-NUMERIC-RECTANGLE-001",
+  "kind": "implementation_only",
+  "candidate_executable_sha256": "dab0f0f3fbda1e778dde45c230bd944cf140b9c99a86e9376d0078ac6e80bff3",
+  "status": "passed_for_reopened_saved_bytes",
+  "before": "focused-redone.weftforge",
+  "after": "reopened.weftforge",
+  "full_native_bytes_equal": true,
+  "full_document_and_revision_equal": true,
+  "revision": 12,
+  "materials_exact_empty_baseline": true,
+  "grain_by_piece": {
+    "2": 0.0,
+    "11": 0.0,
+    "20": 0.25
+  },
+  "actual_curve27_controls": [
+    [
+      2.2666666666666666,
+      0.8
+    ],
+    [
+      2.13333,
+      0.8
+    ]
+  ],
+  "artifacts": {
+    "focused-redone.weftforge": {
+      "sha256": "9ff0c0d3298322da4f0cdea018cfef4d0ae034c9e8bfe9a6dbb011256455981c",
+      "bytes": 5679
+    },
+    "reopened.weftforge": {
+      "sha256": "9ff0c0d3298322da4f0cdea018cfef4d0ae034c9e8bfe9a6dbb011256455981c",
+      "bytes": 5679
+    }
+  },
+  "limitations": [
+    "Clean quit, process identity, relaunch/native Open and UI editability observations are parent evidence.",
+    "Known unedited P2X quantization remains retained; this byte-equality check does not resolve it.",
+    "No reference parity, cloth fitting or rendering quality claim."
+  ]
+}

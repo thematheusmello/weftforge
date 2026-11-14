@@ -1,0 +1,49 @@
+{
+  "source_case_id": "UI-NUMERIC-RECTANGLE-001",
+  "fixtures": {
+    "declaration.json": "8b569811535553a5e21bf90f00715745d9bf7dde903315221b99ae2e3d172e38",
+    "empty.weftforge": "a876afe8445fb90895cd12b1159f0fbaf5af10a6760e35c3bc35d5d9d6f55b5c",
+    "numeric.weftforge": "3da018cb71ede7cfd6f67941f8fe33a20ac841589be866e366c9e352ebebbd55",
+    "numeric.obj": "8837eacc7c9eafd5ecf8aca9a3087516786ed9b0d8cb42db57d47227f5c4240b",
+    "numeric.svg": "f52c8206298ad1a364fbc498a6894b8dc7211651e916fc456e6662b1b86ea51c",
+    "numeric-undone.weftforge": "459305dd35c3f7b9332bf24b93ef02bb1ab7b245c4f7c899e67f5d0cc2020bba",
+    "numeric-redone.weftforge": "ea7460e149dfd1f546063cc6c68d68a1ca77b82e3db437ac10977d070f705246",
+    "numeric-after-errors.weftforge": "ea7460e149dfd1f546063cc6c68d68a1ca77b82e3db437ac10977d070f705246",
+    "identity-a.weftforge": "9019627675fbb65f3267c7444711307fa686e841ed06f0fa8f8ffccec099b877",
+    "identity-b.weftforge": "86ff5f6acc6b718507ae4451e521abcd56adeec6bafaecb92d33023f687366ce",
+    "identity-curved.weftforge": "881787962715c55fbb1fd3110de6021e3555023cefb256926442dfd6c3435fb6",
+    "focused-undone.weftforge": "aa90d54b50fb9f85eb8b5311ad75c2594f00d52e5e02697349827b15c9f6630a",
+    "focused-redone.weftforge": "9ff0c0d3298322da4f0cdea018cfef4d0ae034c9e8bfe9a6dbb011256455981c",
+    "reopened.weftforge": "9ff0c0d3298322da4f0cdea018cfef4d0ae034c9e8bfe9a6dbb011256455981c"
+  },
+  "original_results": {
+    "independent-numeric-bounds.json": "0fd8303ccb93c31519677a3494af67bd876b038ec3c81648fc9159bcf3ee04a7",
+    "independent-numeric-boundary.json": "56ba1220a4528b689899be98ad00fbe37be7606fd79bcf2e1773d929133160bb",
+    "independent-numeric-check.json": "ec79953ba7bb891a31bfc0aed77a77959aa604956aee81d34bfced0e0af9a246",
+    "independent-numeric-history-check.json": "5e1529bbc565ff505379fe19c5c8cce6f311105823855a6552112d13c7ef7721",
+    "independent-identity-history-check.json": "57a872665cc65284ba19d28beda03e02656bb59e523ffbfb2c0394f564b8e7cc",
+    "independent-reopen-check.json": "2cca1c7b900bffb22a72c2a2ca2954f7de78b347ce2a2cd60c8f4ee3694d40d1"
+  },
+  "original_evaluators": {
+    "original_obj_bounds.py": {
+      "sha256": "cd9887a428439fdb54bdb20276c0ab8e8144a43e386df01f76a75ae9703462cb",
+      "portable_copy": "byte-identical independent evaluator"
+    },
+    "original_obj_boundary.py": {
+      "sha256": "93e03a7d41d317e782a1833be9a634fc7cce1db2b6b25faecb8b5eac5d47de12",
+      "portable_copy": "byte-identical independent evaluator"
+    },
+    "verify_numeric_rectangle.py": {
+      "sha256": "eda43bea0586ad9d3b83e74947b4555eea3d6ecb61218c0cf2c30a9b1ed56c45",
+      "portable_copy": "explicit derivative; fixture paths relative to this bundle"
+    },
+    "verify_numeric_history.py": {
+      "sha256": "b12e67fc3dfff4a21aebacc5eef823452510e05d79fe865b932bf091a9aede2c",
+      "portable_copy": "explicit derivative; fixture paths relative to this bundle"
+    },
+    "verify_identity_history.py": {
+      "sha256": "884e22a442efc1f1ff6754247e653ad9d253ed4c91cefdd6afb7b384b13c021b",
+      "portable_copy": "explicit derivative; fixture paths relative to this bundle"
+    }
+  }
+}
