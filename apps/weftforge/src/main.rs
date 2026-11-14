@@ -519,7 +519,7 @@ impl Studio {
         self.needs_mesh = !self.editor.project.pieces.is_empty();
         if !self.needs_mesh {
             self.mesh = None;
-            self.cloth = None;
+            self.reset_simulation();
         }
         if self
             .selected
@@ -631,6 +631,7 @@ impl Studio {
                 Ok(JobOutput::Mesh(mesh)) => {
                     self.mesh = Some(mesh);
                     self.cloth = None;
+                    self.last_stage = "Rest arrangement";
                     self.message = "Rest mesh rebuilt from editable construction.".into();
                 }
                 Ok(JobOutput::Simulation(state)) => {
@@ -666,7 +667,7 @@ impl Studio {
                 self.reset_gestures();
                 self.sewing_edit = None;
                 self.mesh = None;
-                self.cloth = None;
+                self.reset_simulation();
                 self.rebuild();
                 self.autosave = Instant::now();
                 self.message = if recovered {
@@ -5155,6 +5156,165 @@ mod tests {
                 reopened.cancel();
             }
         }
+    }
+
+    fn accepted_drape_studio() -> Studio {
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Stage panel".into(),
+                origin: [2., 1.],
+                width: 0.1,
+                height: 0.1,
+            })
+            .unwrap();
+        let mesh = Arc::new(app.editor.project.mesh().unwrap());
+        let mut cloth =
+            weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap();
+        cloth.step(Default::default(), || false).unwrap();
+        app.mesh = Some(mesh);
+        let (sender, receiver) = mpsc::channel();
+        app.job = Some(Job {
+            revision: app.editor.project.revision,
+            kind: JobKind::Simulation,
+            batch: Some(SimulationBatch::drape()),
+            cancel: Arc::new(AtomicBool::new(false)),
+            receiver,
+        });
+        sender
+            .send(Ok(JobOutput::Simulation(Arc::new(cloth))))
+            .ok()
+            .unwrap();
+        app.poll();
+        assert_eq!(app.last_stage, "Drape");
+        assert!(app.cloth.as_ref().unwrap().simulation_time() > 0.);
+        app
+    }
+
+    #[test]
+    fn stage_resets_when_accepting_mesh_and_preserves_queued_work() {
+        for playing in [false, true] {
+            let mut app = accepted_drape_studio();
+            let old_cloth = app.cloth.clone().unwrap();
+            app.execute(Command::SetResolution { metres: 0.025 });
+            assert!(app.needs_mesh);
+            assert_eq!(app.last_stage, "Drape");
+            assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &old_cloth));
+            let mesh = Arc::new(app.editor.project.mesh().unwrap());
+            let (sender, receiver) = mpsc::channel();
+            app.job = Some(Job {
+                revision: app.editor.project.revision,
+                kind: JobKind::Mesh,
+                batch: None,
+                cancel: Arc::new(AtomicBool::new(false)),
+                receiver,
+            });
+            app.needs_mesh = false;
+            if playing {
+                app.playing = true;
+            } else {
+                app.queue_batch(SimulationBatch::assemble());
+            }
+            app.poll();
+            assert_eq!(app.last_stage, "Drape");
+            assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &old_cloth));
+            sender.send(Ok(JobOutput::Mesh(mesh.clone()))).ok().unwrap();
+            app.poll();
+            assert_eq!(app.last_stage, "Rest arrangement");
+            assert!(app.cloth.is_none());
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert_eq!(app.playing, playing);
+            assert_eq!(
+                app.pending_batch.map(|batch| batch.stage),
+                (!playing).then_some(SimulationBatch::assemble().stage)
+            );
+        }
+    }
+
+    #[test]
+    fn stage_and_snapshot_survive_unaccepted_jobs() {
+        for kind in [JobKind::Mesh, JobKind::Simulation] {
+            for outcome in ["failed", "stale", "cancelled"] {
+                let mut app = accepted_drape_studio();
+                let mesh = app.mesh.clone().unwrap();
+                let cloth = app.cloth.clone().unwrap();
+                if kind == JobKind::Mesh {
+                    app.execute(Command::SetResolution { metres: 0.025 });
+                }
+                let (sender, receiver) = mpsc::channel();
+                app.job = Some(Job {
+                    revision: app.editor.project.revision + u64::from(outcome == "stale"),
+                    kind,
+                    batch: (kind == JobKind::Simulation).then(SimulationBatch::assemble),
+                    cancel: Arc::new(AtomicBool::new(false)),
+                    receiver,
+                });
+                if outcome == "cancelled" {
+                    app.cancel();
+                }
+                app.poll();
+                assert_eq!(app.last_stage, "Drape");
+                assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+                let output = if outcome == "failed" {
+                    Err("Worker failed; previous state retained.".into())
+                } else {
+                    Ok(match kind {
+                        JobKind::Mesh => JobOutput::Mesh(Arc::new((*mesh).clone())),
+                        JobKind::Simulation => JobOutput::Simulation(Arc::new((*cloth).clone())),
+                    })
+                };
+                sender.send(output).ok().unwrap();
+                app.poll();
+                assert!(app.job.is_none());
+                assert_eq!(app.last_stage, "Drape", "{outcome}");
+                assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh), "{outcome}");
+                assert!(
+                    Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth),
+                    "{outcome}"
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn stage_resets_only_on_successful_document_load() {
+        let dir = exit_test_directory("stage-load");
+        let valid = dir.join("valid.weftforge");
+        let corrupt = dir.join("corrupt.weftforge");
+        fs::write(&corrupt, b"{not valid").unwrap();
+        for recovered in [false, true] {
+            let mut app = accepted_drape_studio();
+            let project = app.editor.project.clone();
+            project.save(&valid).unwrap();
+            let mesh = app.mesh.clone().unwrap();
+            let cloth = app.cloth.clone().unwrap();
+            app.load_document(corrupt.clone(), recovered);
+            assert_eq!(app.editor.project, project);
+            assert_eq!(app.last_stage, "Drape");
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+            app.load_document(valid.clone(), recovered);
+            assert_eq!(app.editor.project, project);
+            assert_eq!(app.last_stage, "Rest arrangement");
+            assert!(app.mesh.is_none() && app.cloth.is_none());
+            assert!(app.needs_mesh);
+            assert_eq!(app.dirty, recovered);
+            assert_eq!(app.path, (!recovered).then(|| valid.clone()));
+        }
+        fs::remove_dir_all(dir).unwrap();
+    }
+
+    #[test]
+    fn stage_resets_when_construction_becomes_empty() {
+        let mut app = accepted_drape_studio();
+        app.execute(Command::RemovePiece {
+            piece: app.editor.project.pieces[0].id,
+        });
+        assert!(app.editor.project.pieces.is_empty());
+        assert!(app.mesh.is_none() && app.cloth.is_none());
+        assert!(!app.needs_mesh);
+        assert_eq!(app.last_stage, "Rest arrangement");
     }
 
     #[test]
