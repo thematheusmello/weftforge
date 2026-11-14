@@ -1,0 +1,31 @@
+{
+  "schema": "independent-chain-sewing-receipt-interface-v1",
+  "command": "python3 evaluate.py inspect CASE ACTUAL_RECEIPT NEW_RESULT",
+  "case_selection": "CASE is a key from expectations.json; it is chosen independently of the producer receipt.",
+  "producer_receipt": {
+    "kind": "sewing_inspection",
+    "source": {"format": "weftforge", "version": 3, "project": "actual authoritative Project, all fields"},
+    "sewing_groups": [{"id": "actual stable group ID", "lengths": ["A metres", "B metres"], "portions": [{"a": {"curve": "ID", "t0": "f64", "t1": "f64"}, "b": {"curve": "ID", "t0": "f64", "t1": "f64"}}]}],
+    "mesh": {
+      "doc_revision": "actual source revision",
+      "positions": [["x", "y", "z"]],
+      "uv": [["u", "v"]],
+      "triangles": [["index", "index", "index"]],
+      "piece_ids": "actual public Mesh field",
+      "boundary": [{"piece": "ID", "curve": "ID", "t": "f64", "vertex": "position index"}],
+      "stitches": [{"seam": "group or legacy seam ID", "a": {"vertices": ["i", "j"], "weight": "w"}, "b": {"vertices": ["i", "j"], "weight": "w"}}]
+    }
+  },
+  "weighted_vertex": "(1-w)*positions[i] + w*positions[j]; boundary t uses the same weights on the owning curve.",
+  "checks": [
+    "Exact authoritative source fields, ordering, IDs, allocator, revision and f64 bits; v1/v2 migrate only the specified version-dependent fields and empty group vector.",
+    "Independent cumulative authored arc lengths within 1e-8 m per path.",
+    "Derived portions preserve list order and interval direction, cover the full path, and split at every A/B/map knot; harmless extra subdivisions are allowed.",
+    "Both one-sided physical endpoints at disconnected knots survive; stored selected endpoint t values remain exact.",
+    "Every mesh stitch belongs to its original curve; weights never create an artificial connector across disconnected spans.",
+    "Infer continuous cumulative lengths independently from boundary t and weights, then check authored group correspondence; legacy seams retain normalized parameter correspondence.",
+    "Every required cell endpoint and relevant selected mesh boundary sample has a real stitch with the group ID.",
+    "Mesh revision matches source. Weighted rest chord deviation is reported separately and never substitutes for the authored answer."
+  ],
+  "not_inferred_from_this_receipt": ["history", "actual native gestures", "save/reopen", "rejected input preservation", "cancellation/exhaustion", "reference equivalence", "physical gathering quality"]
+}

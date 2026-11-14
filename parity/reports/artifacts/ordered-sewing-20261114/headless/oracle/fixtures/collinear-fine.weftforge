@@ -1,0 +1,237 @@
+{
+  "format": "weftforge",
+  "version": 3,
+  "project": {
+    "revision": 74,
+    "points": [
+      {
+        "id": 3,
+        "position": [
+          -0.0,
+          0.0
+        ]
+      },
+      {
+        "id": 4,
+        "position": [
+          0.7,
+          0.0
+        ]
+      },
+      {
+        "id": 5,
+        "position": [
+          0.7,
+          0.6
+        ]
+      },
+      {
+        "id": 6,
+        "position": [
+          -0.0,
+          0.6
+        ]
+      },
+      {
+        "id": 12,
+        "position": [
+          1.0,
+          0.1
+        ]
+      },
+      {
+        "id": 13,
+        "position": [
+          1.6,
+          0.1
+        ]
+      },
+      {
+        "id": 14,
+        "position": [
+          1.6,
+          0.7
+        ]
+      },
+      {
+        "id": 15,
+        "position": [
+          1.0,
+          0.7
+        ]
+      }
+    ],
+    "curves": [
+      {
+        "id": 7,
+        "start": 3,
+        "end": 4,
+        "controls": [
+          [
+            0.01,
+            0.0
+          ],
+          [
+            0.05,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 8,
+        "start": 4,
+        "end": 5,
+        "controls": null
+      },
+      {
+        "id": 9,
+        "start": 5,
+        "end": 6,
+        "controls": null
+      },
+      {
+        "id": 10,
+        "start": 6,
+        "end": 3,
+        "controls": null
+      },
+      {
+        "id": 16,
+        "start": 12,
+        "end": 13,
+        "controls": null
+      },
+      {
+        "id": 17,
+        "start": 13,
+        "end": 14,
+        "controls": null
+      },
+      {
+        "id": 18,
+        "start": 14,
+        "end": 15,
+        "controls": null
+      },
+      {
+        "id": 19,
+        "start": 15,
+        "end": 12,
+        "controls": null
+      }
+    ],
+    "pieces": [
+      {
+        "id": 2,
+        "name": "Original disconnected panel 1",
+        "boundary": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "placement": {
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "material": 1,
+        "grain_angle": 0.0
+      },
+      {
+        "id": 11,
+        "name": "Original disconnected panel 2",
+        "boundary": [
+          16,
+          17,
+          18,
+          19
+        ],
+        "placement": {
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "material": 1,
+        "grain_angle": 0.0
+      }
+    ],
+    "materials": [
+      {
+        "id": 1,
+        "name": "Original oracle cloth; uncalibrated",
+        "areal_density": 0.18,
+        "warp_stiffness": 400.0,
+        "weft_stiffness": 400.0,
+        "shear_stiffness": 100.0,
+        "bending_stiffness": 0.003,
+        "damping": 0.2,
+        "friction": 0.4,
+        "collision_thickness": 0.003,
+        "color": [
+          0.25,
+          0.5,
+          0.75
+        ]
+      }
+    ],
+    "seams": [],
+    "sewing_groups": [
+      {
+        "id": 1000,
+        "name": "Nonuniform collinear authored speed",
+        "a": [
+          {
+            "curve": 7,
+            "t0": 0.9,
+            "t1": 0.2
+          }
+        ],
+        "b": [
+          {
+            "curve": 16,
+            "t0": 0.1,
+            "t1": 0.95
+          }
+        ],
+        "correspondence": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.23,
+            0.41
+          ],
+          [
+            0.71,
+            0.82
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      }
+    ],
+    "mannequin": {
+      "capsules": []
+    },
+    "resolution": 0.017,
+    "next_id": 1001
+  }
+}

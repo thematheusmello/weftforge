@@ -1,0 +1,28 @@
+{
+  "must_reject": [
+    "missing-v3-groups",
+    "unknown-group-field",
+    "future-version",
+    "empty-side",
+    "unknown-curve",
+    "zero-span",
+    "overlap-within-side",
+    "overlap-across-sides",
+    "nonmonotone-map",
+    "duplicate-group-id",
+    "oversized-side",
+    "total-interval-bound",
+    "duplicate-json-field"
+  ],
+  "preserve": [
+    "construction",
+    "revision",
+    "history/Redo",
+    "old destination bytes"
+  ],
+  "expensive_work": {
+    "status": "prospective",
+    "case": "cancel before install, stale revision, explicit exhausted-work injection",
+    "required": "use bounded job/public test configuration; useful error; no approximate fallback/partial install"
+  }
+}

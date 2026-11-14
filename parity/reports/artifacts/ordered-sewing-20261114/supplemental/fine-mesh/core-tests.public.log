@@ -1,0 +1,122 @@
+   Compiling weftforge-core v0.1.0 (<FINE_WORKTREE>/crates/weftforge-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.97s
+     Running unittests src/lib.rs (<WORKSPACE>/.local/chain-fine-mesh-20261114/target/debug/deps/weftforge_core-bb6730e393b37c31)
+
+running 11 tests
+test sewing::tests::new_groups_do_not_snap_nearby_parameters_by_a_legacy_t_tolerance ... ok
+test geometry::quality_tests::cancellation_leaves_authoring_unchanged ... ok
+test sewing::tests::metric_limits_cancel_or_reject_without_an_approximate_fallback ... ok
+test geometry::quality_tests::interior_flip_preserves_boundary_and_area_while_improving_sliver ... ok
+test simulation::tests::rejects_stale_and_foreign_meshes_without_panicking ... ok
+test simulation::tests::cancellable_adapter_reaches_initial_contacts_and_retains_inputs ... ok
+test persistence::tests::interrupted_save_and_invalid_inputs_preserve_the_previous_document ... ok
+test persistence::tests::exports_preserve_native_projects_and_aliases_at_any_extension ... ok
+test persistence::tests::saves_refuse_nonregular_destinations_without_changing_targets_or_recovery ... ok
+test simulation::tests::original_shirt_initial_contacts_match_full_scan_at_multiple_resolutions ... ok
+test geometry::quality_tests::fine_curved_panels_preserve_area_topology_and_sewing_within_mesh_limits ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 13.08s
+
+     Running tests/dxf.rs (<WORKSPACE>/.local/chain-fine-mesh-20261114/target/debug/deps/dxf-311e9f60ed138e58)
+
+running 4 tests
+test r2000_infrastructure_has_resolved_unique_handles_counts_and_layout_links ... ok
+test exact_authored_boundaries_and_piece_order_survive_ascii_mm_export ... ok
+test known_dimensions_and_geometry_ignore_placement_resolution_and_simulation ... ok
+test empty_project_is_valid_and_failed_exports_preserve_project_history_and_files ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+     Running tests/grain.rs (<WORKSPACE>/.local/chain-fine-mesh-20261114/target/debug/deps/grain-02427923e7bf66d9)
+
+running 3 tests
+test invalid_grain_or_directional_stiffness_retains_document_and_history ... ok
+test grain_and_orthotropy_are_one_transaction_with_history_and_stale_mesh_rejection ... ok
+test authored_grain_rotates_real_cpu_response_while_color_preserves_physics ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+     Running tests/joins.rs (<WORKSPACE>/.local/chain-fine-mesh-20261114/target/debug/deps/joins-4369fc1bcf59e6c9)
+
+running 7 tests
+test join_rejects_placement_roundoff_above_the_physical_point_tolerance ... ok
+test join_rejects_numerically_ambiguous_or_extreme_parameter_reconstruction ... ok
+test incompatible_midpoint_invisible_cubics_mixed_controls_and_corners_reject_atomically ... ok
+test join_rejects_self_seams_tiny_remapped_intervals_and_failing_transactions ... ok
+test join_rejects_a_full_domain_roundoff_error_above_the_unchanged_tolerance ... ok
+test join_recovers_analytic_cubic_children_including_stationary_derivatives_and_wrap ... ok
+test join_preserves_both_children_sewn_pairs_in_all_orientations_and_v3_remesh ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+
+     Running tests/migration.rs (<WORKSPACE>/.local/chain-fine-mesh-20261114/target/debug/deps/migration-8495cb4526650a5f)
+
+running 9 tests
+test nondefault_v1_material_values_are_mapped_instead_of_replaced_by_defaults ... ok
+test duplicate_fields_are_rejected_at_envelope_project_and_material_boundaries ... ok
+test both_schema_readers_reject_nonfinite_and_out_of_range_numbers ... ok
+test version_dispatch_rejects_mixed_schemas_unknown_fields_and_unsupported_versions ... ok
+test real_v1_fixtures_migrate_without_authored_geometry_or_physical_data_loss ... ok
+test original_v1_point_bits_survive_load_migration_save_and_reload ... ok
+test v1_hard_decimals_and_large_authoring_values_keep_their_bits ... ok
+test v2_hard_decimals_and_large_authoring_values_keep_their_bits ... ok
+test v3_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+     Running tests/seam_reversal.rs (<WORKSPACE>/.local/chain-fine-mesh-20261114/target/debug/deps/seam_reversal-78bf253116c0f2fa)
+
+running 2 tests
+test rejected_staged_reversal_retains_document_and_redo ... ok
+test reversal_changes_endpoint_pairing_and_preserves_partial_nonlinear_construction ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.93s
+
+     Running tests/sewing_groups.rs (<WORKSPACE>/.local/chain-fine-mesh-20261114/target/debug/deps/sewing_groups-7c0003498f24b7cc)
+
+running 13 tests
+test group_commands_reversal_history_branches_and_dependent_removal_are_atomic ... ok
+test disjoint_same_curve_coverage_survives_split_join_but_overlaps_are_rejected ... ok
+test strict_v3_and_legacy_v2_keep_authored_values_and_maps_without_reinterpretation ... ok
+test disconnected_two_to_three_keeps_both_one_sided_knots_and_real_constraints ... ok
+test a_thousand_cubic_spans_share_one_absolute_path_budget ... ok
+test collinear_nonuniform_cubic_uses_physical_length_in_both_directions ... ok
+test geometry_edits_keep_attachments_recompute_lengths_and_reject_old_meshes ... ok
+test conditioned_short_spans_reject_global_parameter_rounding_before_commit_or_io ... ok
+test group_save_reopen_recovery_and_failed_metric_save_keep_existing_files ... ok
+test split_join_partial_cubics_keep_group_identity_maps_and_pair_locations ... ok
+test resource_precision_cancellation_and_invalid_preview_fail_without_mutation ... ok
+test split_at_partial_endpoints_and_authored_map_knots_keeps_all_positive_spans ... ok
+test asymmetric_cubic_metric_and_nonlinear_pairs_match_independent_integrals ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+     Running tests/shirt.rs (<WORKSPACE>/.local/chain-fine-mesh-20261114/target/debug/deps/shirt-cbe46d891f268a3b)
+
+running 1 test
+test original_shirt_builds_conforming_positive_area_cloth_at_multiple_resolutions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+     Running tests/workflow.rs (<WORKSPACE>/.local/chain-fine-mesh-20261114/target/debug/deps/workflow-93e099dcd6d0b785)
+
+running 10 tests
+test invalid_contours_and_failed_transactions_leave_document_and_history_unchanged ... ok
+test transactions_history_and_stable_ids_survive_branching ... ok
+test a_seam_cannot_reference_the_same_curve_on_both_sides ... ok
+test loaded_duplicate_ids_dangling_relationships_and_non_monotone_seams_are_rejected ... ok
+test rest_mesh_has_physical_scale_consistent_uvs_and_conforming_refinement ... ok
+test split_cubic_is_exact_and_resize_updates_real_geometry ... ok
+test independent_obj_parser_observes_metres_y_up_uvs_normals_and_piece_groups ... ok
+test sewn_splits_preserve_gathered_pairs_in_both_directions_at_breakpoints_and_interval_ends ... ok
+test multiple_seams_survive_split_remesh_history_branching_and_v3_save_reopen ... ok
+test reversed_gathered_cubic_intervals_retain_correspondence_through_remesh_edits_and_files ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.34s
+
+   Doc-tests weftforge_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

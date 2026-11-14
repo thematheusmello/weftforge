@@ -1,0 +1,12 @@
+{
+  "initial_checker_sha256": "3654e3ef8ed91676cb7ecfadad2e4f559cc34bc5f50033d3e515e384390d43da",
+  "corrected_checker_sha256": "7b9f200c5c118dfe424e4d6caf555d2aaff6975ca14d72d71778e829f2d1d212",
+  "first_observed_failure": "The initial packaging checker compared SDK full model content blocks directly to exclude_none=True decoded-stream blocks.",
+  "allowed_omissions_only": [
+    "calls[i].result.content[j].annotations",
+    "calls[i].result.content[j]._meta"
+  ],
+  "correction": "Require both saved metadata fields to be null, then omit only those keys on protocol content blocks. Compare authoritative structuredContent directly, including null curve controls. Reuse the frozen pure schema checker for the saved six-tool/21-variant listing.",
+  "other_packaging_assertion_correction": "The not-yet-reached original-fine stderr literal had an extra newline in this new checker; correct it to the exact existing single-newline source bytes. No original artifact changed.",
+  "unchanged": "Frozen runner, expectations, bit manifests, inputs, evaluators, actual outputs and saved SDK records."
+}

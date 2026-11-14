@@ -1,0 +1,21 @@
+{
+  "after": {
+    "can_redo": true,
+    "can_undo": false,
+    "revision": 75
+  },
+  "before": {
+    "can_redo": false,
+    "can_undo": true,
+    "revision": 74
+  },
+  "callsite": "src/main.rs:110",
+  "kind": "public_api_invocation",
+  "method": "Editor::undo",
+  "process_id": 7742,
+  "request": "undo_removal.request.json",
+  "returned": {
+    "accepted": true,
+    "error": null
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "kind": "publication-volume-path-correction-v1",
+  "corrected_utc": "2026-11-14T17:28:34.021548+00:00",
+  "scope": "One already path-derived workspace test log retained18build-cache volume prefixes not covered by the first publisher scan. Root scan caught them before any public upload.",
+  "original_candidate_manifest_sha256": "3d730aa8aec1a1e35e0194905c7aa681c8f653343a44199b57f914c8ed9182bd",
+  "artifact": "provenance/local-gates/workspace-test.publication.log",
+  "original_raw_log_sha256": "f7a717649e6fc979e51c531c5bebe0f8d46aa801f75a9be798fd0e7cb3bd457a",
+  "prior_public_candidate_log_sha256": "4b6ec46f67f1c5932bb14afe2eeaaa6f8ead6a762abc64d48a4d1c50201710d3",
+  "published_log_sha256": "2d22488d705fdbf9d485cc67ad4f27522e22bdf1b952f0312bbc899c3e4376a2",
+  "prior_bytes": 20836,
+  "published_bytes": 20296,
+  "replacement_class": "machine-specific build-volume cache prefix",
+  "replacement": "<CARGO_CACHE>",
+  "replacements": 18,
+  "line_count_preserved": true,
+  "raw_original_preserved_privately": true,
+  "prior_candidate_metadata_preserved": [
+    "bundle-manifest.original-candidate.json",
+    "publication-derivatives.original-candidate.json"
+  ],
+  "candidate_source_inputs_outputs_and_frozen_checks_unchanged": true
+}

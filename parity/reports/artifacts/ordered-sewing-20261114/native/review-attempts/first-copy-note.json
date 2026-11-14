@@ -1,0 +1,15 @@
+{
+  "kind": "retained-native-review-copy-packaging-failure-v1",
+  "status": "historical failure preserved",
+  "reason": "missing or escaping capture artifact",
+  "diagnosis": "The original198-artifact inventory omitted the separately retained ps_lstart-qualified first-process record. The first reviewed copy changed launch_record to the canonical qualification without copying that file. The complete reviewed copy adds its unchanged original bytes/hash. No native input, saved source or expected outcome changed.",
+  "first_manifest": "review-attempts/first-copy-manifest.original.json",
+  "first_manifest_sha256": "549ee2d9ddddd74f59993c6711b32de247da97273dce4e0ab43a85375adbbb74",
+  "first_result": "review-attempts/first-copy.failure.json",
+  "original_invocation_sha256": "6e41b6c66988fe24921026fbccee1f6267293ac241769cc6b76614518e88bf49",
+  "canonical_qualification": "processes/01-qualified-quit.json",
+  "canonical_qualification_sha256": "07e4cd7643501dabcdb1e89b0db0a94cd64ba19531f4daa22916d2b3285268c0",
+  "original_launch_estimate": "processes/01-launch.json",
+  "original_launch_sha256": "21243c01ccd8dba730728bb53d5cd39615825a1702d7a5a2610784f605f7ce26",
+  "replay_scope": "Historical first-manifest artifact environment is not reconstructed; failure result and immutable manifest/invocation hash are retained. Replay uses the complete portable manifests."
+}

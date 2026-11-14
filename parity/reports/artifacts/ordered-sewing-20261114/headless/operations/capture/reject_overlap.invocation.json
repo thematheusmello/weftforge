@@ -1,0 +1,21 @@
+{
+  "after": {
+    "can_redo": true,
+    "can_undo": true,
+    "revision": 76
+  },
+  "before": {
+    "can_redo": true,
+    "can_undo": true,
+    "revision": 76
+  },
+  "callsite": "src/main.rs:103",
+  "kind": "public_api_invocation",
+  "method": "Editor::execute",
+  "process_id": 7742,
+  "request": "reject_overlap.request.json",
+  "returned": {
+    "accepted": false,
+    "error": "Sewing group coverage overlaps on the same curve"
+  }
+}

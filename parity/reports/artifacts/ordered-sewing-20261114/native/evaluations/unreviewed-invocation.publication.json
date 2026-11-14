@@ -1,0 +1,20 @@
+{
+  "observed_utc": "2026-11-14T17:00:43.390270+00:00",
+  "exit_code": 1,
+  "evaluator_sha256": "cb03826786fafa671e41dfac301c306dbb029a928acd06eecce6ef8d1ea3d294",
+  "manifest_sha256": "44d6e10357d14658ec79bb892dda3dc62e480bfef606f4de1a04444fcde9633b",
+  "result_sha256": "a0dd16432088b4bd2a23998ede0ab7a3dd4c1412111d1a1f3f694b5baf927361",
+  "stdout_sha256": "4d81b532b54551b1d9a8802f6fc05ff9a1886298caab2321630074655bf3fe88",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "kind": "portable native retained-output evaluation receipt",
+  "original_actual_invocation_sha256": "fc621d451ef22ec115bd353c0367ae7c1da5020f5272a27202ae92e36ef2e0bb",
+  "path_presentation": "Actual invocation is retained privately; portable command below uses combined evidence bundle paths.",
+  "command_from_combined_bundle_root": [
+    "python3",
+    "oracle/native-supplement/evaluate_native.py",
+    "native/capture-manifest.unreviewed.publication.json",
+    "NEW_RESULT_JSON"
+  ],
+  "candidate_binary_executed": false,
+  "native_UI_executed": false
+}

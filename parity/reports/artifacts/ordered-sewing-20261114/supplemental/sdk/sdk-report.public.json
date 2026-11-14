@@ -1,0 +1,1874 @@
+{
+  "kind": "implementation_only_official_sdk_ordered_sewing_groups_smoke",
+  "started_at": "2026-11-14T16:25:51.308646+00:00",
+  "client": "official Python mcp",
+  "client_version": "1.28.1",
+  "python_version": "3.13.0 (main, Nov 12 2025, 18:15:04) [Clang 17.0.0 (clang-1700.0.13.3)]",
+  "python_executable": "<HOME>/.pyenv/versions/3.13.0/bin/python3",
+  "python_executable_sha256": "dae804f93cd396de84720747c66218ff0aed9f74385f71dd9b3e62c49ce5b2ce",
+  "sdk_files": {
+    "<HOME>/.pyenv/versions/3.13.0/lib/python3.13/site-packages/mcp/__init__.py": "f66ae17959a1420edb67624dcd79da20860543e1d513b7d5c86ec0250cf8af72",
+    "<HOME>/.pyenv/versions/3.13.0/lib/python3.13/site-packages/mcp/client/session.py": "92f812af17983f5a36b4703b065216cc49252fc59dbd04b753286fa78580b07a",
+    "<HOME>/.pyenv/versions/3.13.0/lib/python3.13/site-packages/mcp/client/stdio/__init__.py": "a23227cfe1e3456f16ab41311486a399cf547fcc6b645399bf9bf3a6dc6cf654"
+  },
+  "binding": {
+    "cli_path": ".local/candidates/3eddef067c8a/weftforge-cli",
+    "cli_sha256": "5755ecd4aefb29b0060370c8369ee823fdbbd19cae85d5dd675edec48de954e1",
+    "source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9"
+  },
+  "binding_sha256": "5d6b70e052a5acfd192e7c84fc88be66d6b853d63ed02ee2e7f61b6edab1814c",
+  "cli_before_sha256": "5755ecd4aefb29b0060370c8369ee823fdbbd19cae85d5dd675edec48de954e1",
+  "freeze_sha256": "0bde0fc960a0c3e1c9f93238cb9c9e899b455da7dde72dab663105e02f76e285",
+  "frozen_files_before": {
+    "README.md": "03fc4803279ab4c10c85ec183ad6b031d749d0e449afd768b662550d97f90c5d",
+    "expectation.json": "3b51e578a53a70da579523030c019fb46bde3b435d3f3d57f66d6bd707e94dc6",
+    "expected-batch-numeric-bits.json": "64a8ec491da956d8cc15fb4190136b3f214301727bbfa3853b1b8bed42c67402",
+    "expected-batch.weftforge": "ee1a637d3f8ffbcd922ec7e0292ed9b864d272d09f919f1a979e69399a540c16",
+    "expected-removed-numeric-bits.json": "a84a142fcae4cdfc500c8fd991774dfbd38dea959b6b247f8a5474f33315037a",
+    "expected-removed.weftforge": "c3383090da63227fd87664b93282cebe4aa59d25c9e72281c84a1a6ef1a5ce3c",
+    "future.weftforge": "43f3f8d5500aad5eca2e89c8c1c2e458cdcee5045006bf7d7ae5516f486dcb18",
+    "input.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+    "malformed.weftforge": "06da0cb084b0926d6cc49a47d2d6eaeb9d16d1d39f21fbf277232b1f626c10cc",
+    "preparation-self-checks.json": "4211174119a0b7dc8e631a5de65e2e2dbec90bdedcafe480f4a67d39a6b90bd5",
+    "preserved-output.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+    "run-official-sdk.py": "4f77425fe1ba24e5934af2328186169bd50c12f472903c4b1f1d736e85729327"
+  },
+  "limits": [
+    "Official SDK 1.28.1 legacy 2025-11-25 local stdio only.",
+    "Final packaged CLI identity must be bound before starting a server.",
+    "No production source, candidate outputs or independent evaluator used to generate expectations.",
+    "No GUI control, undo/Redo, native gesture or live-document synchronization claim.",
+    "No metric/mesh, physical sewing, current-profile client or reference-parity claim.",
+    "Native/fixture CLI comparisons are separate evidence.",
+    "No network, installation, listeners, CI, Cargo or export calls.",
+    "Local ignored artifacts are not tracked published evidence."
+  ],
+  "calls": [
+    {
+      "case": "atomic_update_and_add",
+      "result": {
+        "_meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"commands_applied\":2,\"input\":\"<WORKSPACE>/.local/chain-sewing-sdk-20261114/input.weftforge\",\"output\":\"<WORKSPACE>/.local/chain-sewing-sdk-20261114/sdk-batch.weftforge\",\"revision\":74}",
+            "annotations": null,
+            "_meta": null
+          }
+        ],
+        "structuredContent": {
+          "commands_applied": 2,
+          "input": "<WORKSPACE>/.local/chain-sewing-sdk-20261114/input.weftforge",
+          "output": "<WORKSPACE>/.local/chain-sewing-sdk-20261114/sdk-batch.weftforge",
+          "revision": 74
+        },
+        "isError": false
+      },
+      "output_before_sha256": null,
+      "typed_native_matches_frozen_expectation": true,
+      "output_sha256": "863e997c017f02bc511473b7cfa0e3083e3eeabcc3ced7f47882cbeea9173827"
+    },
+    {
+      "case": "inspect_atomic_result",
+      "result": {
+        "_meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"project\":{\"curves\":[{\"controls\":null,\"end\":4,\"id\":7,\"start\":3},{\"controls\":null,\"end\":5,\"id\":8,\"start\":4},{\"controls\":null,\"end\":6,\"id\":9,\"start\":5},{\"controls\":null,\"end\":3,\"id\":10,\"start\":6},{\"controls\":null,\"end\":13,\"id\":16,\"start\":12},{\"controls\":null,\"end\":14,\"id\":17,\"start\":13},{\"controls\":null,\"end\":15,\"id\":18,\"start\":14},{\"controls\":null,\"end\":12,\"id\":19,\"start\":15},{\"controls\":null,\"end\":22,\"id\":25,\"start\":21},{\"controls\":null,\"end\":23,\"id\":26,\"start\":22},{\"controls\":null,\"end\":24,\"id\":27,\"start\":23},{\"controls\":null,\"end\":21,\"id\":28,\"start\":24},{\"controls\":null,\"end\":31,\"id\":34,\"start\":30},{\"controls\":null,\"end\":32,\"id\":35,\"start\":31},{\"controls\":null,\"end\":33,\"id\":36,\"start\":32},{\"controls\":null,\"end\":30,\"id\":37,\"start\":33},{\"controls\":null,\"end\":40,\"id\":43,\"start\":39},{\"controls\":null,\"end\":41,\"id\":44,\"start\":40},{\"controls\":null,\"end\":42,\"id\":45,\"start\":41},{\"controls\":null,\"end\":39,\"id\":46,\"start\":42}],\"mannequin\":{\"capsules\":[]},\"materials\":[{\"areal_density\":0.18,\"bending_stiffness\":0.003,\"collision_thickness\":0.003,\"color\":[0.25,0.5,0.75],\"damping\":0.2,\"friction\":0.4,\"id\":1,\"name\":\"Original oracle cloth; uncalibrated\",\"shear_stiffness\":100.0,\"warp_stiffness\":400.0,\"weft_stiffness\":400.0}],\"next_id\":1002,\"pieces\":[{\"boundary\":[7,8,9,10],\"grain_angle\":0.0,\"id\":2,\"material\":1,\"name\":\"Original disconnected panel 1\",\"placement\":{\"rotation\":[0.0,0.0,0.0],\"translation\":[0.0,0.0,0.0]}},{\"boundary\":[16,17,18,19],\"grain_angle\":0.0,\"id\":11,\"material\":1,\"name\":\"Original disconnected panel 2\",\"placement\":{\"rotation\":[0.0,0.0,0.0],\"translation\":[0.0,0.0,0.0]}},{\"boundary\":[25,26,27,28],\"grain_angle\":0.0,\"id\":20,\"material\":1,\"name\":\"Original disconnected panel 3\",\"placement\":{\"rotation\":[0.0,0.0,0.0],\"translation\":[0.0,0.0,0.0]}},{\"boundary\":[34,35,36,37],\"grain_angle\":0.0,\"id\":29,\"material\":1,\"name\":\"Original disconnected panel 4\",\"placement\":{\"rotation\":[0.0,0.0,0.0],\"translation\":[0.0,0.0,0.0]}},{\"boundary\":[43,44,45,46],\"grain_angle\":0.0,\"id\":38,\"material\":1,\"name\":\"Original disconnected panel 5\",\"placement\":{\"rotation\":[0.0,0.0,0.0],\"translation\":[0.0,0.0,0.0]}}],\"points\":[{\"id\":3,\"position\":[0.0,0.0]},{\"id\":4,\"position\":[0.4,0.0]},{\"id\":5,\"position\":[0.4,0.6]},{\"id\":6,\"position\":[0.0,0.6]},{\"id\":12,\"position\":[1.0,1.0]},{\"id\":13,\"position\":[1.5,1.0]},{\"id\":14,\"position\":[1.5,1.6]},{\"id\":15,\"position\":[1.0,1.6]},{\"id\":21,\"position\":[2.0,0.2]},{\"id\":22,\"position\":[2.4,0.2]},{\"id\":23,\"position\":[2.4,0.8]},{\"id\":24,\"position\":[2.0,0.8]},{\"id\":30,\"position\":[3.0,1.3]},{\"id\":31,\"position\":[3.6,1.3]},{\"id\":32,\"position\":[3.6,1.9]},{\"id\":33,\"position\":[3.0,1.9]},{\"id\":39,\"position\":[4.2,-0.1]},{\"id\":40,\"position\":[4.6,-0.1]},{\"id\":41,\"position\":[4.6,0.5]},{\"id\":42,\"position\":[4.2,0.5]}],\"resolution\":0.11,\"revision\":74,\"seams\":[],\"sewing_groups\":[{\"a\":[{\"curve\":7,\"t0\":0.125,\"t1\":0.375},{\"curve\":16,\"t0\":0.9,\"t1\":0.3}],\"b\":[{\"curve\":43,\"t0\":0.375,\"t1\":0.125},{\"curve\":34,\"t0\":0.25,\"t1\":0.75},{\"curve\":25,\"t0\":0.75,\"t1\":0.25}],\"correspondence\":[[0.0,0.0],[1.0,1.0]],\"id\":1000,\"name\":\"SDK renamed original, reversed B\"},{\"a\":[{\"curve\":8,\"t0\":0.125,\"t1\":0.875},{\"curve\":17,\"t0\":0.8,\"t1\":0.2}],\"b\":[{\"curve\":26,\"t0\":0.9,\"t1\":0.1},{\"curve\":35,\"t0\":0.25,\"t1\":0.75},{\"curve\":44,\"t0\":0.125,\"t1\":0.625}],\"correspondence\":[[0.0,0.0],[0.2,0.35],[0.625,0.8],[1.0,1.0]],\"id\":1001,\"name\":\"SDK independent nonlinear two to three\"}]},\"units\":{\"length\":\"m\",\"mass\":\"kg\",\"time\":\"s\"},\"up\":\"Y\"}",
+            "annotations": null,
+            "_meta": null
+          }
+        ],
+        "structuredContent": {
+          "project": {
+            "curves": [
+              {
+                "controls": null,
+                "end": 4,
+                "id": 7,
+                "start": 3
+              },
+              {
+                "controls": null,
+                "end": 5,
+                "id": 8,
+                "start": 4
+              },
+              {
+                "controls": null,
+                "end": 6,
+                "id": 9,
+                "start": 5
+              },
+              {
+                "controls": null,
+                "end": 3,
+                "id": 10,
+                "start": 6
+              },
+              {
+                "controls": null,
+                "end": 13,
+                "id": 16,
+                "start": 12
+              },
+              {
+                "controls": null,
+                "end": 14,
+                "id": 17,
+                "start": 13
+              },
+              {
+                "controls": null,
+                "end": 15,
+                "id": 18,
+                "start": 14
+              },
+              {
+                "controls": null,
+                "end": 12,
+                "id": 19,
+                "start": 15
+              },
+              {
+                "controls": null,
+                "end": 22,
+                "id": 25,
+                "start": 21
+              },
+              {
+                "controls": null,
+                "end": 23,
+                "id": 26,
+                "start": 22
+              },
+              {
+                "controls": null,
+                "end": 24,
+                "id": 27,
+                "start": 23
+              },
+              {
+                "controls": null,
+                "end": 21,
+                "id": 28,
+                "start": 24
+              },
+              {
+                "controls": null,
+                "end": 31,
+                "id": 34,
+                "start": 30
+              },
+              {
+                "controls": null,
+                "end": 32,
+                "id": 35,
+                "start": 31
+              },
+              {
+                "controls": null,
+                "end": 33,
+                "id": 36,
+                "start": 32
+              },
+              {
+                "controls": null,
+                "end": 30,
+                "id": 37,
+                "start": 33
+              },
+              {
+                "controls": null,
+                "end": 40,
+                "id": 43,
+                "start": 39
+              },
+              {
+                "controls": null,
+                "end": 41,
+                "id": 44,
+                "start": 40
+              },
+              {
+                "controls": null,
+                "end": 42,
+                "id": 45,
+                "start": 41
+              },
+              {
+                "controls": null,
+                "end": 39,
+                "id": 46,
+                "start": 42
+              }
+            ],
+            "mannequin": {
+              "capsules": []
+            },
+            "materials": [
+              {
+                "areal_density": 0.18,
+                "bending_stiffness": 0.003,
+                "collision_thickness": 0.003,
+                "color": [
+                  0.25,
+                  0.5,
+                  0.75
+                ],
+                "damping": 0.2,
+                "friction": 0.4,
+                "id": 1,
+                "name": "Original oracle cloth; uncalibrated",
+                "shear_stiffness": 100.0,
+                "warp_stiffness": 400.0,
+                "weft_stiffness": 400.0
+              }
+            ],
+            "next_id": 1002,
+            "pieces": [
+              {
+                "boundary": [
+                  7,
+                  8,
+                  9,
+                  10
+                ],
+                "grain_angle": 0.0,
+                "id": 2,
+                "material": 1,
+                "name": "Original disconnected panel 1",
+                "placement": {
+                  "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              },
+              {
+                "boundary": [
+                  16,
+                  17,
+                  18,
+                  19
+                ],
+                "grain_angle": 0.0,
+                "id": 11,
+                "material": 1,
+                "name": "Original disconnected panel 2",
+                "placement": {
+                  "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              },
+              {
+                "boundary": [
+                  25,
+                  26,
+                  27,
+                  28
+                ],
+                "grain_angle": 0.0,
+                "id": 20,
+                "material": 1,
+                "name": "Original disconnected panel 3",
+                "placement": {
+                  "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              },
+              {
+                "boundary": [
+                  34,
+                  35,
+                  36,
+                  37
+                ],
+                "grain_angle": 0.0,
+                "id": 29,
+                "material": 1,
+                "name": "Original disconnected panel 4",
+                "placement": {
+                  "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              },
+              {
+                "boundary": [
+                  43,
+                  44,
+                  45,
+                  46
+                ],
+                "grain_angle": 0.0,
+                "id": 38,
+                "material": 1,
+                "name": "Original disconnected panel 5",
+                "placement": {
+                  "rotation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "translation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                }
+              }
+            ],
+            "points": [
+              {
+                "id": 3,
+                "position": [
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "id": 4,
+                "position": [
+                  0.4,
+                  0.0
+                ]
+              },
+              {
+                "id": 5,
+                "position": [
+                  0.4,
+                  0.6
+                ]
+              },
+              {
+                "id": 6,
+                "position": [
+                  0.0,
+                  0.6
+                ]
+              },
+              {
+                "id": 12,
+                "position": [
+                  1.0,
+                  1.0
+                ]
+              },
+              {
+                "id": 13,
+                "position": [
+                  1.5,
+                  1.0
+                ]
+              },
+              {
+                "id": 14,
+                "position": [
+                  1.5,
+                  1.6
+                ]
+              },
+              {
+                "id": 15,
+                "position": [
+                  1.0,
+                  1.6
+                ]
+              },
+              {
+                "id": 21,
+                "position": [
+                  2.0,
+                  0.2
+                ]
+              },
+              {
+                "id": 22,
+                "position": [
+                  2.4,
+                  0.2
+                ]
+              },
+              {
+                "id": 23,
+                "position": [
+                  2.4,
+                  0.8
+                ]
+              },
+              {
+                "id": 24,
+                "position": [
+                  2.0,
+                  0.8
+                ]
+              },
+              {
+                "id": 30,
+                "position": [
+                  3.0,
+                  1.3
+                ]
+              },
+              {
+                "id": 31,
+                "position": [
+                  3.6,
+                  1.3
+                ]
+              },
+              {
+                "id": 32,
+                "position": [
+                  3.6,
+                  1.9
+                ]
+              },
+              {
+                "id": 33,
+                "position": [
+                  3.0,
+                  1.9
+                ]
+              },
+              {
+                "id": 39,
+                "position": [
+                  4.2,
+                  -0.1
+                ]
+              },
+              {
+                "id": 40,
+                "position": [
+                  4.6,
+                  -0.1
+                ]
+              },
+              {
+                "id": 41,
+                "position": [
+                  4.6,
+                  0.5
+                ]
+              },
+              {
+                "id": 42,
+                "position": [
+                  4.2,
+                  0.5
+                ]
+              }
+            ],
+            "resolution": 0.11,
+            "revision": 74,
+            "seams": [],
+            "sewing_groups": [
+              {
+                "a": [
+                  {
+                    "curve": 7,
+                    "t0": 0.125,
+                    "t1": 0.375
+                  },
+                  {
+                    "curve": 16,
+                    "t0": 0.9,
+                    "t1": 0.3
+                  }
+                ],
+                "b": [
+                  {
+                    "curve": 43,
+                    "t0": 0.375,
+                    "t1": 0.125
+                  },
+                  {
+                    "curve": 34,
+                    "t0": 0.25,
+                    "t1": 0.75
+                  },
+                  {
+                    "curve": 25,
+                    "t0": 0.75,
+                    "t1": 0.25
+                  }
+                ],
+                "correspondence": [
+                  [
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    1.0,
+                    1.0
+                  ]
+                ],
+                "id": 1000,
+                "name": "SDK renamed original, reversed B"
+              },
+              {
+                "a": [
+                  {
+                    "curve": 8,
+                    "t0": 0.125,
+                    "t1": 0.875
+                  },
+                  {
+                    "curve": 17,
+                    "t0": 0.8,
+                    "t1": 0.2
+                  }
+                ],
+                "b": [
+                  {
+                    "curve": 26,
+                    "t0": 0.9,
+                    "t1": 0.1
+                  },
+                  {
+                    "curve": 35,
+                    "t0": 0.25,
+                    "t1": 0.75
+                  },
+                  {
+                    "curve": 44,
+                    "t0": 0.125,
+                    "t1": 0.625
+                  }
+                ],
+                "correspondence": [
+                  [
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.2,
+                    0.35
+                  ],
+                  [
+                    0.625,
+                    0.8
+                  ],
+                  [
+                    1.0,
+                    1.0
+                  ]
+                ],
+                "id": 1001,
+                "name": "SDK independent nonlinear two to three"
+              }
+            ]
+          },
+          "units": {
+            "length": "m",
+            "mass": "kg",
+            "time": "s"
+          },
+          "up": "Y"
+        },
+        "isError": false
+      },
+      "output_before_sha256": null,
+      "typed_project_matches_frozen_expectation": true
+    },
+    {
+      "case": "remove_only_created_group",
+      "result": {
+        "_meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"commands_applied\":1,\"input\":\"<WORKSPACE>/.local/chain-sewing-sdk-20261114/sdk-batch.weftforge\",\"output\":\"<WORKSPACE>/.local/chain-sewing-sdk-20261114/sdk-removed.weftforge\",\"revision\":75}",
+            "annotations": null,
+            "_meta": null
+          }
+        ],
+        "structuredContent": {
+          "commands_applied": 1,
+          "input": "<WORKSPACE>/.local/chain-sewing-sdk-20261114/sdk-batch.weftforge",
+          "output": "<WORKSPACE>/.local/chain-sewing-sdk-20261114/sdk-removed.weftforge",
+          "revision": 75
+        },
+        "isError": false
+      },
+      "output_before_sha256": null,
+      "typed_native_matches_frozen_expectation": true,
+      "output_sha256": "35290e78ef1140f304a77b6bde385fd81a33303a209a99dd092d2460bbfe1bc0"
+    },
+    {
+      "case": "reject_overlap_atomically",
+      "result": {
+        "_meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"error\":\"Sewing group coverage overlaps on the same curve\"}",
+            "annotations": null,
+            "_meta": null
+          }
+        ],
+        "structuredContent": {
+          "error": "Sewing group coverage overlaps on the same curve"
+        },
+        "isError": true
+      },
+      "output_before_sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+      "output_after_sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067"
+    },
+    {
+      "case": "reject_future_version",
+      "result": {
+        "_meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"error\":\"Unsupported WeftForge project version; no data was loaded\"}",
+            "annotations": null,
+            "_meta": null
+          }
+        ],
+        "structuredContent": {
+          "error": "Unsupported WeftForge project version; no data was loaded"
+        },
+        "isError": true
+      },
+      "output_before_sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+      "output_after_sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067"
+    },
+    {
+      "case": "reject_malformed_json",
+      "result": {
+        "_meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"error\":\"EOF while parsing a value at line 1 column 44\"}",
+            "annotations": null,
+            "_meta": null
+          }
+        ],
+        "structuredContent": {
+          "error": "EOF while parsing a value at line 1 column 44"
+        },
+        "isError": true
+      },
+      "output_before_sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+      "output_after_sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067"
+    }
+  ],
+  "transcript_kind": "Original decoded SDK stream messages, not literal transport bytes.",
+  "initialized": {
+    "_meta": null,
+    "protocolVersion": "2025-11-25",
+    "capabilities": {
+      "experimental": null,
+      "logging": null,
+      "prompts": null,
+      "resources": null,
+      "tools": {
+        "listChanged": null
+      },
+      "completions": null,
+      "tasks": null
+    },
+    "serverInfo": {
+      "name": "weftforge-cli",
+      "title": null,
+      "version": "0.1.0",
+      "websiteUrl": null,
+      "icons": null
+    },
+    "instructions": "Local stateless file authoring in SI units. Inspect stable IDs before edits. Each command array commits as one transaction. No active GUI control, simulation jobs, or persistent undo."
+  },
+  "execute_input_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "commands": {
+        "items": {
+          "oneOf": [
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "vertices": {
+                      "items": {
+                        "items": {
+                          "type": "number"
+                        },
+                        "maxItems": 2,
+                        "minItems": 2,
+                        "type": "array"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "vertices"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "add_polygon"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "height": {
+                      "type": "number"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "origin": {
+                      "items": {
+                        "type": "number"
+                      },
+                      "maxItems": 2,
+                      "minItems": 2,
+                      "type": "array"
+                    },
+                    "width": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "origin",
+                    "width",
+                    "height"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "add_rectangle"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "point": {
+                      "maximum": 18446744073709551615,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "position": {
+                      "items": {
+                        "type": "number"
+                      },
+                      "maxItems": 2,
+                      "minItems": 2,
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "point",
+                    "position"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "move_point"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "controls": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "items": {
+                            "items": {
+                              "type": "number"
+                            },
+                            "maxItems": 2,
+                            "minItems": 2,
+                            "type": "array"
+                          },
+                          "maxItems": 2,
+                          "minItems": 2,
+                          "type": "array"
+                        }
+                      ]
+                    },
+                    "curve": {
+                      "maximum": 18446744073709551615,
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "curve"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "set_curve_controls"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "curve": {
+                      "maximum": 18446744073709551615,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "t": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "curve",
+                    "t"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "split_curve"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "curve": {
+                      "maximum": 18446744073709551615,
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "curve"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "join_curve"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "height": {
+                      "type": "number"
+                    },
+                    "piece": {
+                      "maximum": 18446744073709551615,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "width": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "piece",
+                    "width",
+                    "height"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "resize_piece"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "piece": {
+                      "maximum": 18446744073709551615,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "placement": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "rotation": {
+                          "items": {
+                            "type": "number"
+                          },
+                          "maxItems": 3,
+                          "minItems": 3,
+                          "type": "array"
+                        },
+                        "translation": {
+                          "items": {
+                            "type": "number"
+                          },
+                          "maxItems": 3,
+                          "minItems": 3,
+                          "type": "array"
+                        }
+                      },
+                      "required": [
+                        "translation",
+                        "rotation"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "piece",
+                    "placement"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "set_placement"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "angle": {
+                      "type": "number"
+                    },
+                    "piece": {
+                      "maximum": 18446744073709551615,
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "piece",
+                    "angle"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "set_grain"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "material": {
+                      "maximum": 18446744073709551615,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "piece": {
+                      "maximum": 18446744073709551615,
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "piece",
+                    "material"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "set_material"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "material": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "areal_density": {
+                          "type": "number"
+                        },
+                        "bending_stiffness": {
+                          "type": "number"
+                        },
+                        "collision_thickness": {
+                          "type": "number"
+                        },
+                        "color": {
+                          "items": {
+                            "type": "number"
+                          },
+                          "maxItems": 3,
+                          "minItems": 3,
+                          "type": "array"
+                        },
+                        "damping": {
+                          "type": "number"
+                        },
+                        "friction": {
+                          "type": "number"
+                        },
+                        "id": {
+                          "maximum": 18446744073709551615,
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "shear_stiffness": {
+                          "type": "number"
+                        },
+                        "warp_stiffness": {
+                          "type": "number"
+                        },
+                        "weft_stiffness": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "areal_density",
+                        "warp_stiffness",
+                        "weft_stiffness",
+                        "shear_stiffness",
+                        "bending_stiffness",
+                        "damping",
+                        "friction",
+                        "collision_thickness",
+                        "color"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "material"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "add_material"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "material": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "areal_density": {
+                          "type": "number"
+                        },
+                        "bending_stiffness": {
+                          "type": "number"
+                        },
+                        "collision_thickness": {
+                          "type": "number"
+                        },
+                        "color": {
+                          "items": {
+                            "type": "number"
+                          },
+                          "maxItems": 3,
+                          "minItems": 3,
+                          "type": "array"
+                        },
+                        "damping": {
+                          "type": "number"
+                        },
+                        "friction": {
+                          "type": "number"
+                        },
+                        "id": {
+                          "maximum": 18446744073709551615,
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "shear_stiffness": {
+                          "type": "number"
+                        },
+                        "warp_stiffness": {
+                          "type": "number"
+                        },
+                        "weft_stiffness": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "areal_density",
+                        "warp_stiffness",
+                        "weft_stiffness",
+                        "shear_stiffness",
+                        "bending_stiffness",
+                        "damping",
+                        "friction",
+                        "collision_thickness",
+                        "color"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "material"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "update_material"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "a": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "curve": {
+                          "maximum": 18446744073709551615,
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "t0": {
+                          "type": "number"
+                        },
+                        "t1": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "curve",
+                        "t0",
+                        "t1"
+                      ],
+                      "type": "object"
+                    },
+                    "b": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "curve": {
+                          "maximum": 18446744073709551615,
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "t0": {
+                          "type": "number"
+                        },
+                        "t1": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "curve",
+                        "t0",
+                        "t1"
+                      ],
+                      "type": "object"
+                    },
+                    "correspondence": {
+                      "items": {
+                        "items": {
+                          "type": "number"
+                        },
+                        "maxItems": 2,
+                        "minItems": 2,
+                        "type": "array"
+                      },
+                      "maxItems": 1024,
+                      "minItems": 2,
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "a",
+                    "b",
+                    "correspondence"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "add_seam"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "seam": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "a": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "curve": {
+                              "maximum": 18446744073709551615,
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "t0": {
+                              "type": "number"
+                            },
+                            "t1": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "curve",
+                            "t0",
+                            "t1"
+                          ],
+                          "type": "object"
+                        },
+                        "b": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "curve": {
+                              "maximum": 18446744073709551615,
+                              "minimum": 0,
+                              "type": "integer"
+                            },
+                            "t0": {
+                              "type": "number"
+                            },
+                            "t1": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "curve",
+                            "t0",
+                            "t1"
+                          ],
+                          "type": "object"
+                        },
+                        "correspondence": {
+                          "items": {
+                            "items": {
+                              "type": "number"
+                            },
+                            "maxItems": 2,
+                            "minItems": 2,
+                            "type": "array"
+                          },
+                          "maxItems": 1024,
+                          "minItems": 2,
+                          "type": "array"
+                        },
+                        "id": {
+                          "maximum": 18446744073709551615,
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "a",
+                        "b",
+                        "correspondence"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "seam"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "update_seam"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "seam": {
+                      "maximum": 18446744073709551615,
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "seam"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "remove_seam"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "a": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "curve": {
+                            "maximum": 18446744073709551615,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "t0": {
+                            "type": "number"
+                          },
+                          "t1": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "curve",
+                          "t0",
+                          "t1"
+                        ],
+                        "type": "object"
+                      },
+                      "maxItems": 1024,
+                      "minItems": 1,
+                      "type": "array"
+                    },
+                    "b": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "curve": {
+                            "maximum": 18446744073709551615,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          "t0": {
+                            "type": "number"
+                          },
+                          "t1": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "curve",
+                          "t0",
+                          "t1"
+                        ],
+                        "type": "object"
+                      },
+                      "maxItems": 1024,
+                      "minItems": 1,
+                      "type": "array"
+                    },
+                    "correspondence": {
+                      "items": {
+                        "items": {
+                          "type": "number"
+                        },
+                        "maxItems": 2,
+                        "minItems": 2,
+                        "type": "array"
+                      },
+                      "maxItems": 1024,
+                      "minItems": 2,
+                      "type": "array"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "a",
+                    "b",
+                    "correspondence"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "add_sewing_group"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "group": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "a": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "curve": {
+                                "maximum": 18446744073709551615,
+                                "minimum": 0,
+                                "type": "integer"
+                              },
+                              "t0": {
+                                "type": "number"
+                              },
+                              "t1": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "curve",
+                              "t0",
+                              "t1"
+                            ],
+                            "type": "object"
+                          },
+                          "maxItems": 1024,
+                          "minItems": 1,
+                          "type": "array"
+                        },
+                        "b": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "curve": {
+                                "maximum": 18446744073709551615,
+                                "minimum": 0,
+                                "type": "integer"
+                              },
+                              "t0": {
+                                "type": "number"
+                              },
+                              "t1": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "curve",
+                              "t0",
+                              "t1"
+                            ],
+                            "type": "object"
+                          },
+                          "maxItems": 1024,
+                          "minItems": 1,
+                          "type": "array"
+                        },
+                        "correspondence": {
+                          "items": {
+                            "items": {
+                              "type": "number"
+                            },
+                            "maxItems": 2,
+                            "minItems": 2,
+                            "type": "array"
+                          },
+                          "maxItems": 1024,
+                          "minItems": 2,
+                          "type": "array"
+                        },
+                        "id": {
+                          "maximum": 18446744073709551615,
+                          "minimum": 0,
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "a",
+                        "b",
+                        "correspondence"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "group"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "update_sewing_group"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "group": {
+                      "maximum": 18446744073709551615,
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "group"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "remove_sewing_group"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "piece": {
+                      "maximum": 18446744073709551615,
+                      "minimum": 0,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "piece"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "remove_piece"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "metres": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "metres"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "set_resolution"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "mannequin": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "capsules": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "a": {
+                                "items": {
+                                  "type": "number"
+                                },
+                                "maxItems": 3,
+                                "minItems": 3,
+                                "type": "array"
+                              },
+                              "b": {
+                                "items": {
+                                  "type": "number"
+                                },
+                                "maxItems": 3,
+                                "minItems": 3,
+                                "type": "array"
+                              },
+                              "radius": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "a",
+                              "b",
+                              "radius"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "required": [
+                        "capsules"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "mannequin"
+                  ],
+                  "type": "object"
+                },
+                "type": {
+                  "const": "set_mannequin"
+                }
+              },
+              "required": [
+                "type",
+                "data"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        "maxItems": 1024,
+        "minItems": 1,
+        "type": "array"
+      },
+      "input": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "output": {
+        "minLength": 1,
+        "type": "string"
+      }
+    },
+    "required": [
+      "input",
+      "output",
+      "commands"
+    ],
+    "type": "object"
+  },
+  "tool_names": [
+    "project_inspect",
+    "project_create",
+    "project_execute",
+    "project_export_svg",
+    "project_export_obj",
+    "project_export_dxf"
+  ],
+  "stderr_bytes": 0,
+  "status": "passed_bounded_legacy_ordered_group_smoke",
+  "frozen_files_after": {
+    "README.md": "03fc4803279ab4c10c85ec183ad6b031d749d0e449afd768b662550d97f90c5d",
+    "expectation.json": "3b51e578a53a70da579523030c019fb46bde3b435d3f3d57f66d6bd707e94dc6",
+    "expected-batch-numeric-bits.json": "64a8ec491da956d8cc15fb4190136b3f214301727bbfa3853b1b8bed42c67402",
+    "expected-batch.weftforge": "ee1a637d3f8ffbcd922ec7e0292ed9b864d272d09f919f1a979e69399a540c16",
+    "expected-removed-numeric-bits.json": "a84a142fcae4cdfc500c8fd991774dfbd38dea959b6b247f8a5474f33315037a",
+    "expected-removed.weftforge": "c3383090da63227fd87664b93282cebe4aa59d25c9e72281c84a1a6ef1a5ce3c",
+    "future.weftforge": "43f3f8d5500aad5eca2e89c8c1c2e458cdcee5045006bf7d7ae5516f486dcb18",
+    "input.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+    "malformed.weftforge": "06da0cb084b0926d6cc49a47d2d6eaeb9d16d1d39f21fbf277232b1f626c10cc",
+    "preparation-self-checks.json": "4211174119a0b7dc8e631a5de65e2e2dbec90bdedcafe480f4a67d39a6b90bd5",
+    "preserved-output.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+    "run-official-sdk.py": "4f77425fe1ba24e5934af2328186169bd50c12f472903c4b1f1d736e85729327"
+  },
+  "all_frozen_files_unchanged": true,
+  "success_output_hashes_after": {
+    "sdk-batch.weftforge": "863e997c017f02bc511473b7cfa0e3083e3eeabcc3ced7f47882cbeea9173827",
+    "sdk-removed.weftforge": "35290e78ef1140f304a77b6bde385fd81a33303a209a99dd092d2460bbfe1bc0"
+  },
+  "success_outputs_unchanged_after_errors": true,
+  "cli_after_sha256": "5755ecd4aefb29b0060370c8369ee823fdbbd19cae85d5dd675edec48de954e1",
+  "binding_after_sha256": "5d6b70e052a5acfd192e7c84fc88be66d6b853d63ed02ee2e7f61b6edab1814c",
+  "client_messages": 9,
+  "server_messages": 8,
+  "finished_at": "2026-11-14T16:25:51.350341+00:00",
+  "transcript_sha256": "c468079a795a966f1394b9f8f6acc9d467387ea668886445ff9031d18fe95ea4"
+}

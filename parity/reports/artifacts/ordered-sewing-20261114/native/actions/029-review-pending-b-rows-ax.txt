@@ -1,0 +1,107 @@
+Window: "WeftForge", App: WeftForge.
+0 standard window WeftForge, Secondary Actions: Raise
+	1 container (showing 26-126 of 126 items)
+		2 text (settable) Next step settings: dt 0.01667 s · 4 substeps · 8 iterations · gravity [0.0, -9.81, 0.0] m/s² · seam closure 0.50 m/s
+		3 text (settable) Saved editable project atomically.
+		4 text (settable) Construction
+		5 toggle button (settable, boolean) Original disconnected panel 1, Value: off
+		6 toggle button (settable, boolean) Original disconnected panel 2, Value: off
+		7 toggle button (settable, boolean) Original disconnected panel 3, Value: off
+		8 toggle button (settable, boolean) Original disconnected panel 4, Value: off
+		9 toggle button (settable, boolean) Original disconnected panel 5, Value: off
+		10 text (settable) Pattern name
+		11 text field (settable) Pattern 1
+		12 text (settable) W / H m
+		13 stepper (settable) 0.50
+		14 stepper (settable) 0.60
+		15 text (settable) X / Y m
+		16 stepper (settable) -0.25
+		17 stepper (settable) 1.00
+		18 button Add rectangle
+		19 button Add polygon point
+		20 button Close pattern (0 points)
+		21 text (settable) Sewing
+		22 checkbox (settable, boolean) Reverse paired edge, Value: off
+		23 text (settable) A interval / B interval (0–1)
+		24 stepper (settable) 0.90
+		25 stepper (settable) 0.30
+		26 stepper (settable) 0.125
+		27 stepper (settable) 0.375
+		28 text (settable) Sew edges: click two 2D boundaries.
+		29 text (settable) Intervals use curve parameter t, not arc length. Reverse swaps B's direction and keeps the normalized mapping.
+		30 text (settable) Ordered sewing groups
+		31 text (settable) Pairing: total authored arc length in metres. Span endpoints use curve parameter t.
+		32 text (settable) Select side B · A 2 spans / B 3 spans
+		33 text (settable) Click boundaries in traversal order; next span uses the A/B interval above and B direction setting. Enter confirms a side; Delete removes the latest span; Escape cancels.
+		34 text (settable) Side A · 2 spans
+		35 text (settable) A1
+		36 pop up button (settable) Curve #7
+		37 text (settable) t start
+		38 stepper (settable) t start, Value: 0.125
+		39 text (settable) t end
+		40 stepper (settable) t end, Value: 0.375
+		41 button (disabled) Up
+		42 button Down
+		43 button Direction
+		44 button Remove span
+		45 text (settable) A2
+		46 pop up button (settable) Curve #16
+		47 text (settable) t start
+		48 stepper (settable) t start, Value: 0.90
+		49 text (settable) t end
+		50 stepper (settable) t end, Value: 0.30
+		51 button Up
+		52 button (disabled) Down
+		53 button Direction
+		54 button Remove span
+		55 text (settable) Side B · 3 spans
+		56 text (settable) B1
+		57 pop up button (settable) Curve #25
+		58 text (settable) t start
+		59 stepper (settable) t start, Value: 0.25
+		60 text (settable) t end
+		61 stepper (settable) t end, Value: 0.75
+		62 button (disabled) Up
+		63 button Down
+		64 button Direction
+		65 button Remove span
+		66 text (settable) B2
+		67 pop up button (settable) Curve #34
+		68 text (settable) t start
+		69 stepper (settable) t start, Value: 0.75
+		70 text (settable) t end
+		71 stepper (settable) t end, Value: 0.25
+		72 button Up
+		73 button Down
+		74 button Direction
+		75 button Remove span
+		76 text (settable) B3
+		77 pop up button (settable) Curve #43
+		78 text (settable) t start
+		79 stepper (settable) t start, Value: 0.125
+		80 text (settable) t end
+		81 stepper (settable) t end, Value: 0.375
+		82 button (settable, unknown) Up
+		83 button (disabled, settable, unknown) Down
+		84 button (settable, unknown) Direction
+		85 button (settable, unknown) Remove span
+		86 button (settable, unknown) Add boundary to B
+		87 button (settable, unknown) Create sewing group (Enter)
+		88 button (settable, unknown) Delete last
+		89 button (settable, unknown) Cancel sewing (Escape)
+		90 text (settable) Mesh edge length m
+		91 stepper (settable) 0.110
+		92 text (settable) Iterations / substeps
+		93 stepper (settable) 8
+		94 stepper (settable) 4
+		95 scroll bar (settable, unknown)
+		96 text (settable) 2D PATTERNS
+		97 text (settable) Metres · 1 cm snap · scroll zoom · middle drag pan
+		98 unknown (settable, unknown)
+		99 text (settable) 3D GARMENT
+		100 text (settable) Drag orbit · scroll zoom · triangle selection
+		101 unknown (settable, unknown)
+	102 text WeftForge
+	103 menu button Window sharing
+104 menu bar
+	105 WeftForge

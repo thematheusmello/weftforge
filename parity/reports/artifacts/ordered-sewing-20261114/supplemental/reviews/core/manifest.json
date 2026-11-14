@@ -1,0 +1,258 @@
+{
+  "declaration": {
+    "contract": {
+      "git_blob": "0f1d105653f19f3c6f6d41477e57983b6f445408",
+      "path": "spec/features/SEW-002-ordered-paths.md",
+      "sha256": "9baedd713b5a8dd4f251d7f2c5d0c51b408ecdabb32813a07dae06d25dcae960"
+    },
+    "fixed_original_harness_expectation": {
+      "classification": "build must succeed separately; check_replay.py rejects compile-like output, unrelated panic, wrong exit, and unsuccessful validation binaries",
+      "meaning": "the unchanged old harness unwraps Add, so the intended precision rejection panics; it is not a new correctness failure",
+      "program_exit": 101,
+      "required_error": "Sewing correspondence exceeds the supported absolute precision budget",
+      "stdout": ""
+    },
+    "fixed_parent": "70897ee5378cb36edb9647b4c0e5fdcfb884c54a",
+    "fixed_source": "9cd0a215df4a5977b1b3263061a6cb98183eb2d4",
+    "fixed_source_files": [
+      {
+        "git_blob": "7fb51bce5ce03ccb47d07dcc78f46e2b4f0b9f78",
+        "path": "crates/weftforge-core/src/sewing.rs",
+        "sha256": "344dfaacb6ae325e8534e5c3c7b844209b7e3714625383740eef47f8557ef93d"
+      },
+      {
+        "git_blob": "8ad63ee2a061e2844c603bc2229a68da4b5d5261",
+        "path": "crates/weftforge-core/tests/sewing_groups.rs",
+        "sha256": "db0c8ae6d0af688137aa7034663f3223899da05347e4bb9e3ee2592430a7480c"
+      }
+    ],
+    "frozen_counterexample": {
+      "a_interval": [
+        0.99999997,
+        0.99999999
+      ],
+      "b_interval": [
+        0.0,
+        5e-06
+      ],
+      "correspondence": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.2
+        ],
+        [
+          0.50000001,
+          0.8
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "curves": "bottom boundary edge of each rectangle",
+      "harness_sha256": "e7382664aa777a72dae7011824bbf95a8df6c0ef1aa4fe3cbf01068746c9160e",
+      "oracle": "independent exact straight-line proportionality u=(At-a0)/(a1-a0), v=(Bt-b0)/(b1-b0), and locally evaluated authored piecewise-linear map; no production metric/map helper",
+      "original_observed_error_m_decimal": "5.01998207145255645e-7",
+      "paired_location_budget_m": 1e-08,
+      "rectangles": [
+        {
+          "height": 0.1,
+          "name": "A",
+          "origin": [
+            0.0,
+            0.0
+          ],
+          "width": 10.0
+        },
+        {
+          "height": 0.1,
+          "name": "B",
+          "origin": [
+            20.0,
+            0.0
+          ],
+          "width": 1.0
+        }
+      ],
+      "units": "metres"
+    },
+    "kind": "independent read-only core source review and focused public-API numerical/ownership probes",
+    "limitations": [
+      "No general interval proof or universal hardware bitwise identity is claimed.",
+      "No native gesture, physical gathering, reference parity or roadmap acceptance is claimed.",
+      "The conservative fixed guard can reject extreme finite configurations.",
+      "Core-author gate reports remain attributed reports, not independently rerun gates.",
+      "The old raw panic observation is retained in the historical receipt; fresh committed-source replay is separate from this packaging operation.",
+      "The prepared ignored subset is not delivered evidence until copied, Git-tracked and registry/map checked from a clean checkout."
+    ],
+    "original_parent": "3c1760028dcbf5a3759907ded137b25a0714cf4a",
+    "original_source": "70897ee5378cb36edb9647b4c0e5fdcfb884c54a",
+    "original_source_files": [
+      {
+        "git_blob": "1eb10d357359a60780bc3afcfcfd930423d14fb8",
+        "path": "crates/weftforge-core/src/sewing.rs",
+        "sha256": "aaefcae6b7f08e33ed3b5ebdd37f54aaec8c073bcd34bc2958960c22af783698"
+      },
+      {
+        "git_blob": "4610fd78455477bf5a73e8ec1a9d4de69593b1d7",
+        "path": "crates/weftforge-core/src/document.rs",
+        "sha256": "bfc73ea6acc9ed56b85b51ef482de4aad169053e7a6770892e12f6d4e046c725"
+      },
+      {
+        "git_blob": "51bc219e01904a4fd0d149da00a84970e2bf343f",
+        "path": "crates/weftforge-core/src/simulation.rs",
+        "sha256": "4c96b5548dc4663fd9d743855043a0e483be2ff2ca310ca19fcc263fee9bd6f1"
+      },
+      {
+        "git_blob": "733472fd0ab960c66a68d6f2c2ce804c5495ea10",
+        "path": "crates/weftforge-core/src/persistence.rs",
+        "sha256": "fccc18f5aafee7328202848dbc0bfd70c15f8865c5e6c06adc442baafa4ded4b"
+      },
+      {
+        "git_blob": "924cf7de6429fbcecc13d1d5770f7395a20648f8",
+        "path": "Cargo.lock",
+        "sha256": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba"
+      }
+    ],
+    "packaging_checks": "private/public byte equality, frozen SHA checks, source object identities, path/target exclusion, package-integrity verification, assert-based replay classifier self-checks; no new builds, production changes or wide gates",
+    "recorded_outputs": [
+      {
+        "path": "results/70897ee-counterexample.stdout.txt",
+        "program_exit": 0,
+        "recording": "retained tool session 75822, combined program stdout from two output chunks; compiler/invocation lines excluded",
+        "source": "70897ee5378cb36edb9647b4c0e5fdcfb884c54a"
+      },
+      {
+        "cases": 4,
+        "path": "results/9cd0a21-precision_guard.stdout.txt",
+        "program_exit": 0,
+        "recording": "retained committed-source recheck output chunk 25f2ae",
+        "source": "9cd0a215df4a5977b1b3263061a6cb98183eb2d4"
+      },
+      {
+        "cases_per_run": 68,
+        "fixed_source_sewing_git_blob": "7fb51bce5ce03ccb47d07dcc78f46e2b4f0b9f78",
+        "path": "results/ownership.stdout.txt",
+        "program_exit": 0,
+        "recording": "identical stdout in retained original session 30924 and fixed-working-tree chunk 8b09ea; fixed production blob matches committed 9cd0a21",
+        "sources": [
+          "70897ee5378cb36edb9647b4c0e5fdcfb884c54a",
+          "9cd0a215df4a5977b1b3263061a6cb98183eb2d4"
+        ]
+      }
+    ],
+    "sanitization": {
+      "allowed_change": "exact local path prefix replacement only",
+      "copied_retained_files_unchanged": true,
+      "replacements_applied": []
+    }
+  },
+  "file_count_including_manifest": 13,
+  "files": [
+    {
+      "bytes": 4099,
+      "origin": "new publication staging and replay instructions",
+      "path": "README.md",
+      "public_sha256": "db148c50a44beb2ea8af6c0c8fd8bf2587fe7c4f36784e3bfaaccd94ac8ad200"
+    },
+    {
+      "bytes": 4600,
+      "origin": "new package integrity and runtime-result classifier; assert-based positive and negative self-checks",
+      "path": "check_replay.py",
+      "public_sha256": "e0b64b16450e41b5de1cc2dabe8ddff5567f329acd8d00548d59ac4956bebe2d"
+    },
+    {
+      "bytes": 3962,
+      "local_path_prefix_replacements": [],
+      "origin": "byte-identical retained private review file",
+      "original_relative_path": "Cargo.lock",
+      "original_sha256": "493267d58c2bbbc02611d023b89de6b31fb1744c74edf188f4dfdb7dd666808b",
+      "path": "harness/Cargo.lock",
+      "public_sha256": "493267d58c2bbbc02611d023b89de6b31fb1744c74edf188f4dfdb7dd666808b"
+    },
+    {
+      "bytes": 169,
+      "local_path_prefix_replacements": [],
+      "origin": "byte-identical retained private review file",
+      "original_relative_path": "Cargo.toml",
+      "original_sha256": "3bb12bf1e61061197476e255dd3b5c22fa173f6bc0cbfa511a81d8c400d5d17b",
+      "path": "harness/Cargo.toml",
+      "public_sha256": "3bb12bf1e61061197476e255dd3b5c22fa173f6bc0cbfa511a81d8c400d5d17b"
+    },
+    {
+      "bytes": 2976,
+      "local_path_prefix_replacements": [],
+      "origin": "byte-identical retained private review file",
+      "original_relative_path": "src/bin/ownership.rs",
+      "original_sha256": "0d9cb20364f395150f93370de7f3dd8a5477c46ab17c98022a0b26239fa24836",
+      "path": "harness/src/bin/ownership.rs",
+      "public_sha256": "0d9cb20364f395150f93370de7f3dd8a5477c46ab17c98022a0b26239fa24836"
+    },
+    {
+      "bytes": 2722,
+      "local_path_prefix_replacements": [],
+      "origin": "byte-identical retained private review file",
+      "original_relative_path": "src/bin/precision_guard.rs",
+      "original_sha256": "91da2af0b38151c964c066a664f0cda5cf89924abd41b837b6daf8bcd59c4b82",
+      "path": "harness/src/bin/precision_guard.rs",
+      "public_sha256": "91da2af0b38151c964c066a664f0cda5cf89924abd41b837b6daf8bcd59c4b82"
+    },
+    {
+      "bytes": 1900,
+      "local_path_prefix_replacements": [],
+      "origin": "byte-identical retained private review file",
+      "original_relative_path": "src/main.rs",
+      "original_sha256": "e7382664aa777a72dae7011824bbf95a8df6c0ef1aa4fe3cbf01068746c9160e",
+      "path": "harness/src/main.rs",
+      "public_sha256": "e7382664aa777a72dae7011824bbf95a8df6c0ef1aa4fe3cbf01068746c9160e"
+    },
+    {
+      "bytes": 4433,
+      "local_path_prefix_replacements": [],
+      "origin": "byte-identical retained private review file",
+      "original_relative_path": "FINAL-9cd0a21-review.md",
+      "original_sha256": "20f7da21a75162cabb6492ce0b7c6a051fa57c25023388bd16ebafa30ff943f6",
+      "path": "receipts/FINAL-9cd0a21-review.md",
+      "public_sha256": "20f7da21a75162cabb6492ce0b7c6a051fa57c25023388bd16ebafa30ff943f6"
+    },
+    {
+      "bytes": 3672,
+      "local_path_prefix_replacements": [],
+      "origin": "byte-identical retained private review file",
+      "original_relative_path": "ORIGINAL-70897ee-review.md",
+      "original_sha256": "0df83f8dbfd1d3f5b7b8d968943c00390746d9766cb31af15b7eb9174bc2d57e",
+      "path": "receipts/ORIGINAL-70897ee-review.md",
+      "public_sha256": "0df83f8dbfd1d3f5b7b8d968943c00390746d9766cb31af15b7eb9174bc2d57e"
+    },
+    {
+      "bytes": 1187,
+      "local_path_prefix_replacements": [],
+      "origin": "literal program stdout transcribed from retained tool results; not a newly captured complete process log",
+      "original_sha256": "665b53966e1710e20b6885a139c879437d1c47295007fa6a55c983403eb66f9c",
+      "path": "results/70897ee-counterexample.stdout.txt",
+      "public_sha256": "665b53966e1710e20b6885a139c879437d1c47295007fa6a55c983403eb66f9c"
+    },
+    {
+      "bytes": 222,
+      "local_path_prefix_replacements": [],
+      "origin": "literal program stdout transcribed from retained tool results; not a newly captured complete process log",
+      "original_sha256": "58518616d44926cdf27322559b82dd47800501e27362f3924bce3cacc777ec3b",
+      "path": "results/9cd0a21-precision_guard.stdout.txt",
+      "public_sha256": "58518616d44926cdf27322559b82dd47800501e27362f3924bce3cacc777ec3b"
+    },
+    {
+      "bytes": 172,
+      "local_path_prefix_replacements": [],
+      "origin": "literal program stdout transcribed from retained tool results; not a newly captured complete process log",
+      "original_sha256": "86172f25d2c1bf7175a56b9d96c3d3e641b2321447a1055a1f24d167c70045c9",
+      "path": "results/ownership.stdout.txt",
+      "public_sha256": "86172f25d2c1bf7175a56b9d96c3d3e641b2321447a1055a1f24d167c70045c9"
+    }
+  ],
+  "prepared_date": "2026-11-14",
+  "schema": "weftforge-core-source-review-subset-v1"
+}

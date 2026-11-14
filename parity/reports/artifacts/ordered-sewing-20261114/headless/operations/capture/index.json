@@ -1,0 +1,107 @@
+{
+  "checkpoints": {
+    "joined": "joined.receipt.json",
+    "redo_join": "redo_join.receipt.json",
+    "redo_removal": "redo_removal.receipt.json",
+    "rejected_overlap": "rejected_overlap.receipt.json",
+    "remeshed": "remeshed.receipt.json",
+    "removal_loaded": "removal_loaded.receipt.json",
+    "removed": "removed.receipt.json",
+    "split": "split.receipt.json",
+    "split_loaded": "split_loaded.receipt.json",
+    "undo_join": "undo_join.receipt.json",
+    "undo_removal": "undo_removal.receipt.json"
+  },
+  "commands": [
+    {
+      "error": null,
+      "invocation": "split.invocation.json",
+      "name": "split",
+      "observer_review": false,
+      "rejected": false,
+      "request": "split.request.json",
+      "response": "split.response.json",
+      "shared_editor_command": true
+    },
+    {
+      "error": null,
+      "invocation": "join.invocation.json",
+      "name": "join",
+      "observer_review": false,
+      "rejected": false,
+      "request": "join.request.json",
+      "response": "join.response.json",
+      "shared_editor_command": true
+    },
+    {
+      "error": null,
+      "invocation": "undo_join.invocation.json",
+      "name": "undo_join",
+      "observer_review": false,
+      "rejected": false,
+      "request": "undo_join.request.json",
+      "response": "undo_join.response.json",
+      "shared_editor_command": true
+    },
+    {
+      "error": "Sewing group coverage overlaps on the same curve",
+      "invocation": "reject_overlap.invocation.json",
+      "name": "reject_overlap",
+      "observer_review": false,
+      "rejected": true,
+      "request": "reject_overlap.request.json",
+      "response": "reject_overlap.response.json",
+      "shared_editor_command": true
+    },
+    {
+      "error": null,
+      "invocation": "redo_join.invocation.json",
+      "name": "redo_join",
+      "observer_review": false,
+      "rejected": false,
+      "request": "redo_join.request.json",
+      "response": "redo_join.response.json",
+      "shared_editor_command": true
+    },
+    {
+      "error": null,
+      "invocation": "remesh.invocation.json",
+      "name": "remesh",
+      "observer_review": false,
+      "rejected": false,
+      "request": "remesh.request.json",
+      "response": "remesh.response.json",
+      "shared_editor_command": true
+    },
+    {
+      "error": null,
+      "invocation": "remove_piece.invocation.json",
+      "name": "remove_piece",
+      "observer_review": false,
+      "rejected": false,
+      "request": "remove_piece.request.json",
+      "response": "remove_piece.response.json",
+      "shared_editor_command": true
+    },
+    {
+      "error": null,
+      "invocation": "undo_removal.invocation.json",
+      "name": "undo_removal",
+      "observer_review": false,
+      "rejected": false,
+      "request": "undo_removal.request.json",
+      "response": "undo_removal.response.json",
+      "shared_editor_command": true
+    },
+    {
+      "error": null,
+      "invocation": "redo_removal.invocation.json",
+      "name": "redo_removal",
+      "observer_review": false,
+      "rejected": false,
+      "request": "redo_removal.request.json",
+      "response": "redo_removal.response.json",
+      "shared_editor_command": true
+    }
+  ]
+}

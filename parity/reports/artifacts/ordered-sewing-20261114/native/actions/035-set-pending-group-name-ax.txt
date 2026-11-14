@@ -1,0 +1,107 @@
+Window: "WeftForge", App: WeftForge.
+0 standard window WeftForge, Secondary Actions: Raise
+	1 container (showing 66-166 of 166 items)
+		2 text (settable) A1 · #7 · t 0.125 → 0.375
+		3 text (settable) A2 · #16 · t 0.9 → 0.3
+		4 text (settable) B1 · #25 · t 0.25 → 0.75
+		5 text (settable) B2 · #34 · t 0.75 → 0.25
+		6 text (settable) B3 · #43 · t 0.125 → 0.375
+		7 text (settable) A 0.40000000 m · B 0.60000000 m
+Mismatch +0.20000000 m · 4 paired portions
+		8 button (disabled) Edit group
+		9 button (disabled) Reverse B
+		10 button (disabled) Remove group
+		11 text (settable) Mesh edge length m
+		12 stepper (disabled, settable) 0.110
+		13 text (settable) Iterations / substeps
+		14 stepper (disabled, settable) 8
+		15 stepper (disabled, settable) 4
+		16 text (settable) 2D PATTERNS
+		17 text (settable) Metres · 1 cm snap · scroll zoom · middle drag pan
+		18 text (settable) 3D GARMENT
+		19 text (settable) Drag orbit · scroll zoom · triangle selection
+		20 text (settable) Edit sewing group #1001
+		21 text (settable) Name
+		22 text field (settable) Name, Value: Sewing group 1
+		23 text (settable) Pairing uses normalized total authored arc length. Each span keeps its own curve parameter endpoints and direction; gaps add no length.
+		24 text (settable) Side A · 2 spans
+		25 text (settable) A1
+		26 pop up button (settable) Curve #7
+		27 text (settable) t start
+		28 stepper (settable) t start, Value: 0.15
+		29 text (settable) t end
+		30 stepper (settable) t end, Value: 0.40
+		31 button (disabled) Up
+		32 button Down
+		33 button (settable, unknown) Direction
+		34 button (settable, unknown) Remove span
+		35 text (settable) A2
+		36 pop up button (settable) Curve #16
+		37 text (settable) t start
+		38 stepper (settable) t start, Value: 0.90
+		39 text (settable) t end
+		40 stepper (settable) t end, Value: 0.30
+		41 button (settable, unknown) Up
+		42 button (disabled, settable, unknown) Down
+		43 button (settable, unknown) Direction
+		44 button (settable, unknown) Remove span
+		45 button (settable, unknown) Add boundary to A
+		46 text (settable) Side B · 3 spans
+		47 text (settable) B1
+		48 pop up button (settable) Curve #25
+		49 text (settable) t start
+		50 stepper (settable) t start, Value: 0.25
+		51 text (settable) t end
+		52 stepper (settable) t end, Value: 0.75
+		53 button (disabled, settable, unknown) Up
+		54 button (settable, unknown) Down
+		55 button (settable, unknown) Direction
+		56 button (settable, unknown) Remove span
+		57 text (settable) B2
+		58 pop up button (settable) Curve #34
+		59 text (settable) t start
+		60 stepper (settable) t start, Value: 0.75
+		61 text (settable) t end
+		62 stepper (settable) t end, Value: 0.25
+		63 button (settable, unknown) Up
+		64 button (settable, unknown) Down
+		65 button (settable, unknown) Direction
+		66 button (settable, unknown) Remove span
+		67 text (settable) B3
+		68 pop up button (settable) Curve #43
+		69 text (settable) t start
+		70 stepper (settable) t start, Value: 0.125
+		71 text (settable) t end
+		72 stepper (settable) t end, Value: 0.375
+		73 button (settable, unknown) Up
+		74 button (disabled, settable, unknown) Down
+		75 button (settable, unknown) Direction
+		76 button (settable, unknown) Remove span
+		77 button (settable, unknown) Add boundary to B
+		78 button (settable, unknown) Reverse B order and directions
+		79 text (settable) Easing map · normalized A length / B length
+		80 text (settable) Knot 1
+		81 text (settable) A
+		82 stepper (settable) A, Value: 0.00
+		83 text (settable) B
+		84 stepper (settable) B, Value: 0.00
+		85 text (settable) Knot 2
+		86 text (settable) A
+		87 stepper (settable) A, Value: 0.50
+		88 text (settable) B
+		89 stepper (settable) B, Value: 0.50
+		90 button (settable, unknown) Remove knot
+		91 text (settable) Knot 3
+		92 text (settable) A
+		93 stepper (settable) A, Value: 1.00
+		94 text (settable) B
+		95 stepper (settable) B, Value: 1.00
+		96 button (settable, unknown) Add easing knot
+		97 button (settable, unknown) Apply group
+		98 button (settable, unknown) Cancel group edit
+	99 text WeftForge
+	100 menu button Window sharing
+101 menu bar
+	102 WeftForge
+
+The focused UI element is 22 text field (settable) Name, Value: Sewing group 1

@@ -1,0 +1,26 @@
+{
+  "id": "003-select-first-partial-a",
+  "started_utc": "2026-11-14T16:33:43.606Z",
+  "request": {
+    "actions": [
+      {
+        "tool": "setValue",
+        "element": 50,
+        "value": "0.125"
+      },
+      {
+        "tool": "setValue",
+        "element": 51,
+        "value": "0.375"
+      },
+      {
+        "tool": "click",
+        "position": [
+          609,
+          817
+        ],
+        "grounding": "middle of panel1 bottom boundary in empty_a_enter screenshot"
+      }
+    ]
+  }
+}

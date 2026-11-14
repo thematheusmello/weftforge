@@ -1,0 +1,22 @@
+{"checkpoint":"split_loaded","event":"loaded","revision":73}
+{"checkpoint":"split_loaded","event":"checkpoint","revision":73,"stitches":17,"triangles":424,"vertices":270}
+{"accepted":true,"after":{"can_redo":false,"can_undo":true,"revision":74},"before":{"can_redo":false,"can_undo":false,"revision":73},"error":null,"event":"operation","method":"Editor::execute","operation":"split"}
+{"checkpoint":"split","event":"checkpoint","revision":74,"stitches":18,"triangles":424,"vertices":270}
+{"accepted":true,"after":{"can_redo":false,"can_undo":true,"revision":75},"before":{"can_redo":false,"can_undo":true,"revision":74},"error":null,"event":"operation","method":"Editor::execute","operation":"join"}
+{"checkpoint":"joined","event":"checkpoint","revision":75,"stitches":19,"triangles":424,"vertices":270}
+{"accepted":true,"after":{"can_redo":true,"can_undo":true,"revision":76},"before":{"can_redo":false,"can_undo":true,"revision":75},"error":null,"event":"operation","method":"Editor::undo","operation":"undo_join"}
+{"checkpoint":"undo_join","event":"checkpoint","revision":76,"stitches":18,"triangles":424,"vertices":270}
+{"accepted":false,"after":{"can_redo":true,"can_undo":true,"revision":76},"before":{"can_redo":true,"can_undo":true,"revision":76},"error":"Sewing group coverage overlaps on the same curve","event":"operation","method":"Editor::execute","operation":"reject_overlap"}
+{"checkpoint":"rejected_overlap","event":"checkpoint","revision":76,"stitches":18,"triangles":424,"vertices":270}
+{"accepted":true,"after":{"can_redo":false,"can_undo":true,"revision":77},"before":{"can_redo":true,"can_undo":true,"revision":76},"error":null,"event":"operation","method":"Editor::redo","operation":"redo_join"}
+{"checkpoint":"redo_join","event":"checkpoint","revision":77,"stitches":19,"triangles":424,"vertices":270}
+{"accepted":true,"after":{"can_redo":false,"can_undo":true,"revision":78},"before":{"can_redo":false,"can_undo":true,"revision":77},"error":null,"event":"operation","method":"Editor::execute","operation":"remesh"}
+{"checkpoint":"remeshed","event":"checkpoint","revision":78,"stitches":61,"triangles":48052,"vertices":24349}
+{"checkpoint":"removal_loaded","event":"loaded","revision":73}
+{"checkpoint":"removal_loaded","event":"checkpoint","revision":73,"stitches":23,"triangles":424,"vertices":270}
+{"accepted":true,"after":{"can_redo":false,"can_undo":true,"revision":74},"before":{"can_redo":false,"can_undo":false,"revision":73},"error":null,"event":"operation","method":"Editor::execute","operation":"remove_piece"}
+{"checkpoint":"removed","event":"checkpoint","revision":74,"stitches":6,"triangles":332,"vertices":212}
+{"accepted":true,"after":{"can_redo":true,"can_undo":false,"revision":75},"before":{"can_redo":false,"can_undo":true,"revision":74},"error":null,"event":"operation","method":"Editor::undo","operation":"undo_removal"}
+{"checkpoint":"undo_removal","event":"checkpoint","revision":75,"stitches":23,"triangles":424,"vertices":270}
+{"accepted":true,"after":{"can_redo":false,"can_undo":true,"revision":76},"before":{"can_redo":true,"can_undo":false,"revision":75},"error":null,"event":"operation","method":"Editor::redo","operation":"redo_removal"}
+{"checkpoint":"redo_removal","event":"checkpoint","revision":76,"stitches":6,"triangles":332,"vertices":212}

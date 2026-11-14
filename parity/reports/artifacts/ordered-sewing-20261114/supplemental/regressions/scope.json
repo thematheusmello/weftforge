@@ -1,0 +1,13 @@
+{
+  "adapter_red_commit": "e7bac322a0f3d3d513a3c77c984bcde7c5ac374d",
+  "adapter_fix_commit": "ec28db041479de6040ef4d1245ceb166b2ddfc84",
+  "adapter_issue": "The original inspect-sewing receipt widened f32 display colors through serde_json::json!, differing from canonical native serialization. The fix materializes the native serialized project representation.",
+  "adapter_historical_green": "Six mcp_stdio tests passed. The retained historical green log does not itself embed a source commit pin. Its association with the fix is historical context, not a new exact-source replay.",
+  "grain_fix_commit": "6417d5aebc8dd87d8f5711f0173318d40518ba2a",
+  "grain_original_failure": "The initial workspace run stopped at the old grain caller assertion expecting literal native version 2; actual authored output was native version 3.",
+  "grain_fix": "The old caller now checks CURRENT_FORMAT_VERSION and the empty sewing_groups field. No version-3 writer rollback or oracle/fixture edit.",
+  "grain_historical_green": "The single grain test passed. Its retained historical log does not embed a source commit pin.",
+  "current_exact_source": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "current_validation": "Separately, the source-bound final workspace log and all-local-gates.json record all 122 Rust tests passing on the 37-file runtime snapshot.",
+  "scope": "Implementation-only historical development regressions. No GUI, current-profile independent client, physical or reference-parity acceptance."
+}

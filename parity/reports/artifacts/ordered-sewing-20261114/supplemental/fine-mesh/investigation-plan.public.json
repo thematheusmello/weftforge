@@ -1,0 +1,51 @@
+{
+  "frozen_at_utc": "2026-11-14T16:05:06.881861+00:00",
+  "baseline_commit": "6f9b2bbfe2b9252945bf55eb7da58807af949ba9",
+  "worktree": "<FINE_WORKTREE>",
+  "branch": "fix/fine-curved-mesh-20261114",
+  "target_dir": "<WORKSPACE>/.local/chain-fine-mesh-20261114/target",
+  "original_inputs_sha256": {
+    "asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+    "asymmetric-coarse.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2"
+  },
+  "immutable_inputs": [
+    "original fixture bytes",
+    "requested resolution 0.017 metres",
+    "100000 mesh vertex cap",
+    "200000 mesh triangle cap",
+    "authoritative curves and boundary parameters",
+    "piece and stitch ownership"
+  ],
+  "scope": [
+    "crates/weftforge-core/src/geometry.rs",
+    "one focused core test",
+    "exact original public fixture copy only if needed"
+  ],
+  "forbidden_reads": [
+    "independent oracle expected answers",
+    "independent oracle evaluator output"
+  ],
+  "hypotheses": [
+    "area or edge bounds mathematically require more than resource limits",
+    "simultaneous edge splitting preserves skinny ear-clipped triangulation; quality improvement occurs too late",
+    "another refinement or quality-flip defect oversamples"
+  ],
+  "measurements_before_fix": [
+    "analytic signed cubic-curve area and perimeter for each piece",
+    "minimum triangle count from area and maximum permitted edge",
+    "baseline vertices triangles split edges and triangle quality each refinement pass",
+    "boundary sample count and geometric extents"
+  ],
+  "acceptance_after_fix": [
+    "same original fine fixture succeeds under frozen limits and resolution",
+    "independent area conservation, positive faces, manifold topology and boundary association checks",
+    "max edge at most resolution*1.5 matching existing contract",
+    "boundary parameter positions agree with authoritative curves",
+    "piece ownership preserved; stitches still refer to correct sides",
+    "coarse, legacy and existing mesh regressions",
+    "cargo fmt --all --check",
+    "cargo test -p weftforge-core",
+    "cargo clippy -p weftforge-core --all-targets -- -D warnings"
+  ],
+  "delivery": "commit only owned source and focused regression; root performs independent oracle acceptance and integrated workspace checks"
+}

@@ -1,0 +1,1264 @@
+{
+  "kind": "ordered-sewing-supplemental-evidence-candidate-v1",
+  "source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "cli_sha256": "5755ecd4aefb29b0060370c8369ee823fdbbd19cae85d5dd675edec48de954e1",
+  "native_sha256": "e935a4331cd884be7c81078f82da9119bea87211bf702cfc8959ba6eaca54053",
+  "status": "Local candidate only; tracking and clean-checkout publication checks are owned by the integrator.",
+  "self_excluded": "manifest.json; the separate local candidate-manifest.json hashes this manifest and all public files.",
+  "derivative_policy": "Exact bytes wherever safe. Path-bearing whole-file transcripts receive literal prefix substitutions to documented role tokens; original source paths, sizes and SHA-256 values remain bound in each entry. These derivatives are not complete raw-byte logs. Decoded SDK messages were never literal transport bytes.",
+  "replacement_roles": [
+    "<WORKSPACE>",
+    "<HOME>",
+    "<FINE_WORKTREE>",
+    "<CARGO_TARGET>"
+  ],
+  "generic_path_literal_exception": {
+    "path": "reviews/core/check_replay.py",
+    "reason": "The unchanged frozen integrity checker tests a generic private-temp prefix assembled as byte-string fragments. This is code, not an actual personal filesystem path."
+  },
+  "file_count_including_manifest": 99,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 6606,
+      "sha256": "18ef298495f0fd770c8823c0442dba9b70f3dc1320f6e423229db9db0c3f5da0",
+      "kind": "authored-packaging-record",
+      "source": {
+        "path": ".local/chain-extra-artifacts-20261114/prepare.py",
+        "bytes": 13994,
+        "sha256": "2112adcdaaf7702d3629cdd2b3d8a21f97d1eb14e0e431347123d850394a7f60",
+        "section": "README.md",
+        "input_sources": [
+          {
+            "path": ".local/chain-extra-artifacts-20261114/README.template.md",
+            "bytes": 6606,
+            "sha256": "18ef298495f0fd770c8823c0442dba9b70f3dc1320f6e423229db9db0c3f5da0"
+          },
+          {
+            "path": ".local/chain-sewing-sdk-20261114/freeze.json",
+            "bytes": 1946,
+            "sha256": "0bde0fc960a0c3e1c9f93238cb9c9e899b455da7dde72dab663105e02f76e285"
+          },
+          {
+            "path": ".local/chain-sewing-final-20261114/source-pretest.json",
+            "bytes": 5170,
+            "sha256": "fb4cd8b96be4a36511873fc8ff7d6b482eeececa7dc2eb6861f3e03a6e5ba0cf"
+          },
+          {
+            "path": ".local/chain-fine-mesh-20261114/completion.json",
+            "bytes": 1327,
+            "sha256": "6766992b9786925344f4222107ceb6066d3a6760b5ffef64b4c9342070e51878"
+          }
+        ]
+      }
+    },
+    {
+      "path": "check_bundle.py",
+      "bytes": 9834,
+      "sha256": "7b9f200c5c118dfe424e4d6caf555d2aaff6975ca14d72d71778e829f2d1d212",
+      "kind": "authored-packaging-record",
+      "source": {
+        "path": ".local/chain-extra-artifacts-20261114/prepare.py",
+        "bytes": 13994,
+        "sha256": "2112adcdaaf7702d3629cdd2b3d8a21f97d1eb14e0e431347123d850394a7f60",
+        "section": "check_bundle.py",
+        "input_sources": [
+          {
+            "path": ".local/chain-extra-artifacts-20261114/check_bundle.py",
+            "bytes": 9834,
+            "sha256": "7b9f200c5c118dfe424e4d6caf555d2aaff6975ca14d72d71778e829f2d1d212"
+          }
+        ]
+      }
+    },
+    {
+      "path": "fine-mesh/area-bounds.json",
+      "bytes": 986,
+      "sha256": "4e84b55dc961c9440dd35b7ffbf505d8d70409f8efd5727a5a32ae66e1df1ca3",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/area-bounds.json",
+        "bytes": 986,
+        "sha256": "4e84b55dc961c9440dd35b7ffbf505d8d70409f8efd5727a5a32ae66e1df1ca3"
+      }
+    },
+    {
+      "path": "fine-mesh/baseline-fine.stderr",
+      "bytes": 1385,
+      "sha256": "039788ef971f39a3e8e4e20c90a21d2e8c8fe5a5759fad3db1928f89af0dcf1b",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/baseline-fine.stderr",
+        "bytes": 1385,
+        "sha256": "039788ef971f39a3e8e4e20c90a21d2e8c8fe5a5759fad3db1928f89af0dcf1b"
+      }
+    },
+    {
+      "path": "fine-mesh/baseline-fine.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/baseline-fine.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "path": "fine-mesh/baseline-identities.json",
+      "bytes": 301,
+      "sha256": "4dc0c5582cbd93155a59df92e1bfa8e96d0f9bb40ee5e255f57b08cf19120715",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/baseline-identities.json",
+        "bytes": 301,
+        "sha256": "4dc0c5582cbd93155a59df92e1bfa8e96d0f9bb40ee5e255f57b08cf19120715"
+      }
+    },
+    {
+      "path": "fine-mesh/baseline-instrumentation.patch",
+      "bytes": 2383,
+      "sha256": "6334fa054703a2d0980bac5508e4a299e375e88412d4d28429f602ec7d1c5c8f",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/baseline-instrumentation.patch",
+        "bytes": 2383,
+        "sha256": "6334fa054703a2d0980bac5508e4a299e375e88412d4d28429f602ec7d1c5c8f"
+      }
+    },
+    {
+      "path": "fine-mesh/baseline-result.json",
+      "bytes": 56,
+      "sha256": "a2c71e8523e050406d3ae0a8101a4794cc576190c43a6b1585fd5a066218a0ce",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/baseline-result.json",
+        "bytes": 56,
+        "sha256": "a2c71e8523e050406d3ae0a8101a4794cc576190c43a6b1585fd5a066218a0ce"
+      }
+    },
+    {
+      "path": "fine-mesh/candidate-fine-checks.json",
+      "bytes": 2583,
+      "sha256": "afaf71f9b0a4790d2c278c793ba5198bbb6077ad1e5e62c37babc679f20e9e89",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/candidate-fine-checks.json",
+        "bytes": 2583,
+        "sha256": "afaf71f9b0a4790d2c278c793ba5198bbb6077ad1e5e62c37babc679f20e9e89"
+      }
+    },
+    {
+      "path": "fine-mesh/candidate-fine.stderr",
+      "bytes": 1162,
+      "sha256": "ae767cab1668ffac77f17f30ba6efd044846a1bdaa5af76d63df971572bf41cb",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/candidate-fine.stderr",
+        "bytes": 1162,
+        "sha256": "ae767cab1668ffac77f17f30ba6efd044846a1bdaa5af76d63df971572bf41cb"
+      }
+    },
+    {
+      "path": "fine-mesh/candidate-identities.json",
+      "bytes": 302,
+      "sha256": "7d3ef067a9de77c34658ceb04feaa4d3cd6cf3933fa8f2224fde1769cb6f29ea",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/candidate-identities.json",
+        "bytes": 302,
+        "sha256": "7d3ef067a9de77c34658ceb04feaa4d3cd6cf3933fa8f2224fde1769cb6f29ea"
+      }
+    },
+    {
+      "path": "fine-mesh/candidate-result.json",
+      "bytes": 56,
+      "sha256": "359ba844e92d7c35b76b76a21e5169e4f5d70108886e6982b09b377c120cff49",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/candidate-result.json",
+        "bytes": 56,
+        "sha256": "359ba844e92d7c35b76b76a21e5169e4f5d70108886e6982b09b377c120cff49"
+      }
+    },
+    {
+      "path": "fine-mesh/check-mesh.py",
+      "bytes": 5622,
+      "sha256": "ff167e09dfa78bd55554b3cbecece8332d74095c4df31a224a138ec2d9f983f3",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/check-mesh.py",
+        "bytes": 5622,
+        "sha256": "ff167e09dfa78bd55554b3cbecece8332d74095c4df31a224a138ec2d9f983f3"
+      }
+    },
+    {
+      "path": "fine-mesh/completion.json",
+      "bytes": 1327,
+      "sha256": "6766992b9786925344f4222107ceb6066d3a6760b5ffef64b4c9342070e51878",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/completion.json",
+        "bytes": 1327,
+        "sha256": "6766992b9786925344f4222107ceb6066d3a6760b5ffef64b4c9342070e51878"
+      }
+    },
+    {
+      "path": "fine-mesh/core-clippy-result.json",
+      "bytes": 130,
+      "sha256": "493c465cb45ef36e7f196e128694cf2831cfd3520567ac77e0f8e106a5df51e1",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/core-clippy-result.json",
+        "bytes": 130,
+        "sha256": "493c465cb45ef36e7f196e128694cf2831cfd3520567ac77e0f8e106a5df51e1"
+      }
+    },
+    {
+      "path": "fine-mesh/core-clippy.public.log",
+      "bytes": 709,
+      "sha256": "d873dd2423e2d69043c3fff259c48771e48fa10ad121adcffb36c834754100ed",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/core-clippy.log",
+        "bytes": 773,
+        "sha256": "b4278446a13450a9ef19d1f6b0e372bfdf9bacc6aa0587d99db92a54b61867a7"
+      },
+      "replacement_counts": {
+        "fine-mesh-worktree": 2
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "fine-mesh/core-tests-result.json",
+      "bytes": 101,
+      "sha256": "10f8100dcd98ee7ebe7d733b22b8f1dc4769904d838d54ac1e3e56d41ee10b1d",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/core-tests-result.json",
+        "bytes": 101,
+        "sha256": "10f8100dcd98ee7ebe7d733b22b8f1dc4769904d838d54ac1e3e56d41ee10b1d"
+      }
+    },
+    {
+      "path": "fine-mesh/core-tests.public.log",
+      "bytes": 7533,
+      "sha256": "4040a6bab0d61618f4564ab307caa66adc1f74ef14be6647dd374ffca10a020c",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/core-tests.log",
+        "bytes": 8033,
+        "sha256": "f281c1adb8685d93d69c42ebf4edf2b1077cfe20a84c5f043e48f058da79fd82"
+      },
+      "replacement_counts": {
+        "workspace-root": 9,
+        "fine-mesh-worktree": 1
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "fine-mesh/debug-precheck/asymmetric-fine.receipt.json",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-producer-20261114/debug-precheck/asymmetric-fine.receipt.json",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "path": "fine-mesh/debug-precheck/asymmetric-fine.stderr",
+      "bytes": 73,
+      "sha256": "6483492e2d18e0c48e31f1d94125b876870f6d722f5500d44b4ba0f461778096",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-producer-20261114/debug-precheck/asymmetric-fine.stderr",
+        "bytes": 73,
+        "sha256": "6483492e2d18e0c48e31f1d94125b876870f6d722f5500d44b4ba0f461778096"
+      }
+    },
+    {
+      "path": "fine-mesh/debug-precheck/producer-plan.json",
+      "bytes": 6853,
+      "sha256": "d58da2e6a1a8b9c4eb5034db03e2aa650941e918b4bfd10a0cc0b0b123de3947",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-producer-20261114/debug-precheck/producer-plan.json",
+        "bytes": 6853,
+        "sha256": "d58da2e6a1a8b9c4eb5034db03e2aa650941e918b4bfd10a0cc0b0b123de3947"
+      }
+    },
+    {
+      "path": "fine-mesh/debug-precheck/producer-results.json",
+      "bytes": 3129,
+      "sha256": "3d14f20263866015b8f664e19fd7ac1fa4f28da7427109fe52e830ec90e85239",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-producer-20261114/debug-precheck/producer-results.json",
+        "bytes": 3129,
+        "sha256": "3d14f20263866015b8f664e19fd7ac1fa4f28da7427109fe52e830ec90e85239"
+      }
+    },
+    {
+      "path": "fine-mesh/fixtures/asymmetric-coarse.weftforge",
+      "bytes": 8106,
+      "sha256": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-acceptance-20261114/fixtures/asymmetric-coarse.weftforge",
+        "bytes": 8106,
+        "sha256": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2"
+      }
+    },
+    {
+      "path": "fine-mesh/fixtures/asymmetric-fine.weftforge",
+      "bytes": 8107,
+      "sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-acceptance-20261114/fixtures/asymmetric-fine.weftforge",
+        "bytes": 8107,
+        "sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d"
+      }
+    },
+    {
+      "path": "fine-mesh/investigation-plan.public.json",
+      "bytes": 2350,
+      "sha256": "675e949e9ad13fffdd374132caee6874db50b1bbc03e59685aff9a52bed1902b",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/investigation-plan.json",
+        "bytes": 2434,
+        "sha256": "0b9e4ed5e9e59728bd17ad89a79b9f2f9d9743c4532204399b9309dca0ed44d7"
+      },
+      "replacement_counts": {
+        "workspace-root": 1,
+        "fine-mesh-worktree": 1
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "fine-mesh/measure-authoring.public.py.txt",
+      "bytes": 1671,
+      "sha256": "98cfadffbff5f4a9149001d1db483590c179aa518b07d2d94781e7a59ca2acd3",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/measure-authoring.py",
+        "bytes": 1723,
+        "sha256": "afd8a17648a0c62ba60e4ce40ed34443b6eeb20754f593c88111e06a835c1d68"
+      },
+      "replacement_counts": {
+        "workspace-root": 1
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "fine-mesh/omitted-successful-records.json",
+      "bytes": 1953,
+      "sha256": "399738025e67996d025129ccd5983f7185b0b27ff256af53663d2b3661ef8b7f",
+      "kind": "authored-packaging-record",
+      "source": {
+        "path": ".local/chain-extra-artifacts-20261114/prepare.py",
+        "bytes": 13994,
+        "sha256": "2112adcdaaf7702d3629cdd2b3d8a21f97d1eb14e0e431347123d850394a7f60",
+        "section": "fine-mesh/omitted-successful-records.json",
+        "input_sources": [
+          {
+            "path": ".local/chain-fine-mesh-20261114/production-plan.json",
+            "bytes": 946,
+            "sha256": "0b8d26c88142e116e641aca8ec830c9cba582e320fde11300f06049976c2f32f"
+          },
+          {
+            "path": ".local/chain-sewing-producer-20261114/debug-precheck/producer-results.json",
+            "bytes": 3129,
+            "sha256": "3d14f20263866015b8f664e19fd7ac1fa4f28da7427109fe52e830ec90e85239"
+          }
+        ]
+      }
+    },
+    {
+      "path": "fine-mesh/production-asymmetric-coarse-checks.json",
+      "bytes": 2523,
+      "sha256": "6cd878393a88beb242f48ff7a743cabd23ca12a42f512981598f4946f3007219",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/production-asymmetric-coarse-checks.json",
+        "bytes": 2523,
+        "sha256": "6cd878393a88beb242f48ff7a743cabd23ca12a42f512981598f4946f3007219"
+      }
+    },
+    {
+      "path": "fine-mesh/production-asymmetric-fine-checks.json",
+      "bytes": 2583,
+      "sha256": "afaf71f9b0a4790d2c278c793ba5198bbb6077ad1e5e62c37babc679f20e9e89",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/production-asymmetric-fine-checks.json",
+        "bytes": 2583,
+        "sha256": "afaf71f9b0a4790d2c278c793ba5198bbb6077ad1e5e62c37babc679f20e9e89"
+      }
+    },
+    {
+      "path": "fine-mesh/production-plan.json",
+      "bytes": 946,
+      "sha256": "0b8d26c88142e116e641aca8ec830c9cba582e320fde11300f06049976c2f32f",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/production-plan.json",
+        "bytes": 946,
+        "sha256": "0b8d26c88142e116e641aca8ec830c9cba582e320fde11300f06049976c2f32f"
+      }
+    },
+    {
+      "path": "fine-mesh/production-results.json",
+      "bytes": 198,
+      "sha256": "d25f32e0a32dd3ddab9920e1e67f33dfb310bf114bd3a82fd887d3c0971d24f7",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/production-results.json",
+        "bytes": 198,
+        "sha256": "d25f32e0a32dd3ddab9920e1e67f33dfb310bf114bd3a82fd887d3c0971d24f7"
+      }
+    },
+    {
+      "path": "fine-mesh/production-source.patch",
+      "bytes": 6610,
+      "sha256": "11f2b2909e65777404eb7ce2a9acbae2f18bf1a28a6e31fb31d879120fabc20a",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/production-source.patch",
+        "bytes": 6610,
+        "sha256": "11f2b2909e65777404eb7ce2a9acbae2f18bf1a28a6e31fb31d879120fabc20a"
+      }
+    },
+    {
+      "path": "fine-mesh/production-verification-summary.json",
+      "bytes": 602,
+      "sha256": "85d73190a5e347ceb73b48071adccffd18253d835531751cb64bee812ef6e05d",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/production-verification-summary.json",
+        "bytes": 602,
+        "sha256": "85d73190a5e347ceb73b48071adccffd18253d835531751cb64bee812ef6e05d"
+      }
+    },
+    {
+      "path": "fine-mesh/validator-correction.json",
+      "bytes": 382,
+      "sha256": "885c1dd5f87c78f786cd9e4732c0d359adde6f3706ea133697fc724ec0eb55b2",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-fine-mesh-20261114/validator-correction.json",
+        "bytes": 382,
+        "sha256": "885c1dd5f87c78f786cd9e4732c0d359adde6f3706ea133697fc724ec0eb55b2"
+      }
+    },
+    {
+      "path": "packaging-review/check_bundle.initial.py.txt",
+      "bytes": 9108,
+      "sha256": "3654e3ef8ed91676cb7ecfadad2e4f559cc34bc5f50033d3e515e384390d43da",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-extra-artifacts-20261114/review/check_bundle-initial.py",
+        "bytes": 9108,
+        "sha256": "3654e3ef8ed91676cb7ecfadad2e4f559cc34bc5f50033d3e515e384390d43da"
+      }
+    },
+    {
+      "path": "packaging-review/checker-correction.json",
+      "bytes": 1099,
+      "sha256": "cbf1610f634bff648d0310127139f26f52f442dd0812fcdfe5f44ca2a4894c4f",
+      "kind": "authored-packaging-record",
+      "source": {
+        "path": ".local/chain-extra-artifacts-20261114/prepare.py",
+        "bytes": 13994,
+        "sha256": "2112adcdaaf7702d3629cdd2b3d8a21f97d1eb14e0e431347123d850394a7f60",
+        "section": "packaging-review/checker-correction.json",
+        "input_sources": [
+          {
+            "path": ".local/chain-extra-artifacts-20261114/review/check_bundle-initial.py",
+            "bytes": 9108,
+            "sha256": "3654e3ef8ed91676cb7ecfadad2e4f559cc34bc5f50033d3e515e384390d43da"
+          },
+          {
+            "path": ".local/chain-extra-artifacts-20261114/check_bundle.py",
+            "bytes": 9834,
+            "sha256": "7b9f200c5c118dfe424e4d6caf555d2aaff6975ca14d72d71778e829f2d1d212"
+          }
+        ]
+      }
+    },
+    {
+      "path": "packaging-review/initial-check.json",
+      "bytes": 464,
+      "sha256": "d4fa27b90084af4c6bbe291bbdf2ee3c67c2dda6fa2f624f5e53456bdcf31161",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-extra-artifacts-20261114/review/initial-check.json",
+        "bytes": 464,
+        "sha256": "d4fa27b90084af4c6bbe291bbdf2ee3c67c2dda6fa2f624f5e53456bdcf31161"
+      }
+    },
+    {
+      "path": "packaging-review/initial-check.stderr.public.txt",
+      "bytes": 245,
+      "sha256": "8eba376d3a6e78caec2e84682ef2a758d75bf49926f694d95846c331583feb7b",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": ".local/chain-extra-artifacts-20261114/review/initial-check.stderr.txt",
+        "bytes": 297,
+        "sha256": "3c5ca47e7409c0ac938efd784483054b6d03be16fbf5ceb6fc9da89fc5206648"
+      },
+      "replacement_counts": {
+        "workspace-root": 1
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "packaging-review/initial-check.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-extra-artifacts-20261114/review/initial-check.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "path": "regressions/6417d5a-grain-current-version.patch",
+      "bytes": 1141,
+      "sha256": "af6ecab00d9bbb67dfee2127e54e2c54acc51d0ca2d5eb9995358e7e86bb40ce",
+      "kind": "exact-git-patch",
+      "source": {
+        "path": "apps/weftforge-cli/tests/grain.rs",
+        "commit": "6417d5aebc8dd87d8f5711f0173318d40518ba2a",
+        "command": [
+          "git",
+          "show",
+          "--format=",
+          "6417d5aebc8dd87d8f5711f0173318d40518ba2a",
+          "--",
+          "apps/weftforge-cli/tests/grain.rs"
+        ],
+        "bytes": 1141,
+        "sha256": "af6ecab00d9bbb67dfee2127e54e2c54acc51d0ca2d5eb9995358e7e86bb40ce"
+      }
+    },
+    {
+      "path": "regressions/adapter-green.public.log",
+      "bytes": 1524,
+      "sha256": "7a1de71a3634b71370a5f463c9a884e08f9533bf1d0e1153829cd5c9b5c6989c",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": "target/verification/chain-cli-tests-fixed.log",
+        "bytes": 1634,
+        "sha256": "056d22f0740c3e5f35655ce6aebeebb734c60f11ddd0c38bb7a8b8b59a030469"
+      },
+      "replacement_counts": {
+        "workspace-root": 1,
+        "cargo-target": 2
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "regressions/adapter-red-identity.json",
+      "bytes": 1135,
+      "sha256": "66094a4d42ce0a6a175026c90240ea58ea800c1a8a1bff5b945cfdbea4333f35",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-adapter-regression-20261114/red-identity.json",
+        "bytes": 1135,
+        "sha256": "66094a4d42ce0a6a175026c90240ea58ea800c1a8a1bff5b945cfdbea4333f35"
+      }
+    },
+    {
+      "path": "regressions/adapter-source-snapshot-red.public.log",
+      "bytes": 15515,
+      "sha256": "a3b8f4c4b1a3dbc42d017a12352f145ae2ff410bafef43a7f482371d74a4a420",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": ".local/chain-adapter-regression-20261114/source-snapshot-red.log",
+        "bytes": 15700,
+        "sha256": "c220cc6307d0b922554d036619b26ecb20dda1f416ff663aa17bc72b0a560969"
+      },
+      "replacement_counts": {
+        "workspace-root": 3,
+        "cargo-target": 1
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "regressions/ec28db0-canonical-serialization.patch",
+      "bytes": 1132,
+      "sha256": "980e6429e02df74cd50df11f9124c83709f08ec80af40d4d763edd7be2c24d74",
+      "kind": "exact-git-patch",
+      "source": {
+        "path": "apps/weftforge-cli/src/main.rs",
+        "commit": "ec28db041479de6040ef4d1245ceb166b2ddfc84",
+        "command": [
+          "git",
+          "show",
+          "--format=",
+          "ec28db041479de6040ef4d1245ceb166b2ddfc84",
+          "--",
+          "apps/weftforge-cli/src/main.rs"
+        ],
+        "bytes": 1132,
+        "sha256": "980e6429e02df74cd50df11f9124c83709f08ec80af40d4d763edd7be2c24d74"
+      }
+    },
+    {
+      "path": "regressions/grain-green.public.log",
+      "bytes": 1433,
+      "sha256": "34b6f3bc30d96083a2b20d4c6e85ef67a0c87cb749a67c2769a413c9599d0f10",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": "target/verification/chain-cli-grain-v3.log",
+        "bytes": 1572,
+        "sha256": "d5b6e5b6833d069753fe135f52fc2463eacf3bb296942925e0d3b8e18d56b46c"
+      },
+      "replacement_counts": {
+        "workspace-root": 1,
+        "cargo-target": 3
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "regressions/grain-workspace-red.public.log",
+      "bytes": 5136,
+      "sha256": "268dd2c7e12237fe171d41282be541f119ab040e111145a264103d0ecff66753",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": "target/verification/chain-workspace-tests.log",
+        "bytes": 5454,
+        "sha256": "d4602b0e138e273c911e56fee8d50e132658a7480a7dbda2614187f692b257f1"
+      },
+      "replacement_counts": {
+        "workspace-root": 5,
+        "cargo-target": 2
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "regressions/scope.json",
+      "bytes": 1505,
+      "sha256": "3b5a8431adc4884aa501972cb1f39724746936e519237527d4156490109744e5",
+      "kind": "authored-packaging-record",
+      "source": {
+        "path": ".local/chain-extra-artifacts-20261114/prepare.py",
+        "bytes": 13994,
+        "sha256": "2112adcdaaf7702d3629cdd2b3d8a21f97d1eb14e0e431347123d850394a7f60",
+        "section": "regressions/scope.json",
+        "input_sources": [
+          {
+            "path": ".local/chain-adapter-regression-20261114/red-identity.json",
+            "bytes": 1135,
+            "sha256": "66094a4d42ce0a6a175026c90240ea58ea800c1a8a1bff5b945cfdbea4333f35"
+          },
+          {
+            "path": ".local/chain-sewing-final-20261114/source-pretest.json",
+            "bytes": 5170,
+            "sha256": "fb4cd8b96be4a36511873fc8ff7d6b482eeececa7dc2eb6861f3e03a6e5ba0cf"
+          }
+        ]
+      }
+    },
+    {
+      "path": "reviews/core/README.md",
+      "bytes": 4099,
+      "sha256": "db148c50a44beb2ea8af6c0c8fd8bf2587fe7c4f36784e3bfaaccd94ac8ad200",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-core-review-20261114/publish/README.md",
+        "bytes": 4099,
+        "sha256": "db148c50a44beb2ea8af6c0c8fd8bf2587fe7c4f36784e3bfaaccd94ac8ad200"
+      }
+    },
+    {
+      "path": "reviews/core/check_replay.py",
+      "bytes": 4600,
+      "sha256": "e0b64b16450e41b5de1cc2dabe8ddff5567f329acd8d00548d59ac4956bebe2d",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-core-review-20261114/publish/check_replay.py",
+        "bytes": 4600,
+        "sha256": "e0b64b16450e41b5de1cc2dabe8ddff5567f329acd8d00548d59ac4956bebe2d"
+      }
+    },
+    {
+      "path": "reviews/core/harness/Cargo.lock",
+      "bytes": 3962,
+      "sha256": "493267d58c2bbbc02611d023b89de6b31fb1744c74edf188f4dfdb7dd666808b",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-core-review-20261114/publish/harness/Cargo.lock",
+        "bytes": 3962,
+        "sha256": "493267d58c2bbbc02611d023b89de6b31fb1744c74edf188f4dfdb7dd666808b"
+      }
+    },
+    {
+      "path": "reviews/core/harness/Cargo.toml",
+      "bytes": 169,
+      "sha256": "3bb12bf1e61061197476e255dd3b5c22fa173f6bc0cbfa511a81d8c400d5d17b",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-core-review-20261114/publish/harness/Cargo.toml",
+        "bytes": 169,
+        "sha256": "3bb12bf1e61061197476e255dd3b5c22fa173f6bc0cbfa511a81d8c400d5d17b"
+      }
+    },
+    {
+      "path": "reviews/core/harness/src/bin/ownership.rs",
+      "bytes": 2976,
+      "sha256": "0d9cb20364f395150f93370de7f3dd8a5477c46ab17c98022a0b26239fa24836",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-core-review-20261114/publish/harness/src/bin/ownership.rs",
+        "bytes": 2976,
+        "sha256": "0d9cb20364f395150f93370de7f3dd8a5477c46ab17c98022a0b26239fa24836"
+      }
+    },
+    {
+      "path": "reviews/core/harness/src/bin/precision_guard.rs",
+      "bytes": 2722,
+      "sha256": "91da2af0b38151c964c066a664f0cda5cf89924abd41b837b6daf8bcd59c4b82",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-core-review-20261114/publish/harness/src/bin/precision_guard.rs",
+        "bytes": 2722,
+        "sha256": "91da2af0b38151c964c066a664f0cda5cf89924abd41b837b6daf8bcd59c4b82"
+      }
+    },
+    {
+      "path": "reviews/core/harness/src/main.rs",
+      "bytes": 1900,
+      "sha256": "e7382664aa777a72dae7011824bbf95a8df6c0ef1aa4fe3cbf01068746c9160e",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-core-review-20261114/publish/harness/src/main.rs",
+        "bytes": 1900,
+        "sha256": "e7382664aa777a72dae7011824bbf95a8df6c0ef1aa4fe3cbf01068746c9160e"
+      }
+    },
+    {
+      "path": "reviews/core/manifest.json",
+      "bytes": 11079,
+      "sha256": "936210c556e8279d4f5d50bd92b34d321c1dce4e425bc2111de1705582ac7331",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-core-review-20261114/publish/manifest.json",
+        "bytes": 11079,
+        "sha256": "936210c556e8279d4f5d50bd92b34d321c1dce4e425bc2111de1705582ac7331"
+      }
+    },
+    {
+      "path": "reviews/core/receipts/FINAL-9cd0a21-review.md",
+      "bytes": 4433,
+      "sha256": "20f7da21a75162cabb6492ce0b7c6a051fa57c25023388bd16ebafa30ff943f6",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-core-review-20261114/publish/receipts/FINAL-9cd0a21-review.md",
+        "bytes": 4433,
+        "sha256": "20f7da21a75162cabb6492ce0b7c6a051fa57c25023388bd16ebafa30ff943f6"
+      }
+    },
+    {
+      "path": "reviews/core/receipts/ORIGINAL-70897ee-review.md",
+      "bytes": 3672,
+      "sha256": "0df83f8dbfd1d3f5b7b8d968943c00390746d9766cb31af15b7eb9174bc2d57e",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-core-review-20261114/publish/receipts/ORIGINAL-70897ee-review.md",
+        "bytes": 3672,
+        "sha256": "0df83f8dbfd1d3f5b7b8d968943c00390746d9766cb31af15b7eb9174bc2d57e"
+      }
+    },
+    {
+      "path": "reviews/core/results/70897ee-counterexample.stdout.txt",
+      "bytes": 1187,
+      "sha256": "665b53966e1710e20b6885a139c879437d1c47295007fa6a55c983403eb66f9c",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-core-review-20261114/publish/results/70897ee-counterexample.stdout.txt",
+        "bytes": 1187,
+        "sha256": "665b53966e1710e20b6885a139c879437d1c47295007fa6a55c983403eb66f9c"
+      }
+    },
+    {
+      "path": "reviews/core/results/9cd0a21-precision_guard.stdout.txt",
+      "bytes": 222,
+      "sha256": "58518616d44926cdf27322559b82dd47800501e27362f3924bce3cacc777ec3b",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-core-review-20261114/publish/results/9cd0a21-precision_guard.stdout.txt",
+        "bytes": 222,
+        "sha256": "58518616d44926cdf27322559b82dd47800501e27362f3924bce3cacc777ec3b"
+      }
+    },
+    {
+      "path": "reviews/core/results/ownership.stdout.txt",
+      "bytes": 172,
+      "sha256": "86172f25d2c1bf7175a56b9d96c3d3e641b2321447a1055a1f24d167c70045c9",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-core-review-20261114/publish/results/ownership.stdout.txt",
+        "bytes": 172,
+        "sha256": "86172f25d2c1bf7175a56b9d96c3d3e641b2321447a1055a1f24d167c70045c9"
+      }
+    },
+    {
+      "path": "reviews/ui/README.md",
+      "bytes": 2493,
+      "sha256": "dc275d6f52f284d9fc308f4ccc9eaeb4a80354af93249f36a15a8cc280f105bd",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-ui-review-20261114/public-candidate/README.md",
+        "bytes": 2493,
+        "sha256": "dc275d6f52f284d9fc308f4ccc9eaeb4a80354af93249f36a15a8cc280f105bd"
+      }
+    },
+    {
+      "path": "reviews/ui/accessibility-repro.rs",
+      "bytes": 769,
+      "sha256": "f87973a9f8004c001126e766221595b22b95ac8c0d81c044b880dc9104db0641",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-ui-review-20261114/public-candidate/accessibility-repro.rs",
+        "bytes": 769,
+        "sha256": "f87973a9f8004c001126e766221595b22b95ac8c0d81c044b880dc9104db0641"
+      }
+    },
+    {
+      "path": "reviews/ui/green-fix.log",
+      "bytes": 500,
+      "sha256": "6536444bfb935d94d7a06049021828f6d68ca817de68da6de4009c1b6526f033",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-ui-review-20261114/public-candidate/green-fix.log",
+        "bytes": 500,
+        "sha256": "6536444bfb935d94d7a06049021828f6d68ca817de68da6de4009c1b6526f033"
+      }
+    },
+    {
+      "path": "reviews/ui/provenance.json",
+      "bytes": 1725,
+      "sha256": "ead910ee9c00ed3aee3c7f181ea039c7beeacb192a79bab94c149e584e2b3ca6",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-ui-review-20261114/public-candidate/provenance.json",
+        "bytes": 1725,
+        "sha256": "ead910ee9c00ed3aee3c7f181ea039c7beeacb192a79bab94c149e584e2b3ca6"
+      }
+    },
+    {
+      "path": "reviews/ui/red-original.log",
+      "bytes": 2126,
+      "sha256": "72a3a4626af25abe3e63093beb031a55a8698444aaa8eb3e38cbd83233ebfd2c",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-ui-review-20261114/public-candidate/red-original.log",
+        "bytes": 2126,
+        "sha256": "72a3a4626af25abe3e63093beb031a55a8698444aaa8eb3e38cbd83233ebfd2c"
+      }
+    },
+    {
+      "path": "reviews/ui/reverse-b-repro.rs",
+      "bytes": 2621,
+      "sha256": "0b02351c3686e8d231ea10086edd339c997dfab61429cc086d803a62d5578f45",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-ui-review-20261114/public-candidate/reverse-b-repro.rs",
+        "bytes": 2621,
+        "sha256": "0b02351c3686e8d231ea10086edd339c997dfab61429cc086d803a62d5578f45"
+      }
+    },
+    {
+      "path": "runtime/binary-binding.json",
+      "bytes": 1622,
+      "sha256": "4eaee15deba5002c8283db2aedcfe869af49c04e6500ca1a8a516ff2e51d97a0",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-final-20261114/binary-binding.json",
+        "bytes": 1622,
+        "sha256": "4eaee15deba5002c8283db2aedcfe869af49c04e6500ca1a8a516ff2e51d97a0"
+      }
+    },
+    {
+      "path": "runtime/gates/all-local-gates.json",
+      "bytes": 1955,
+      "sha256": "7bbe235ff941227c58686d6b42e74a32702cb4a7526d7e60b3ea5626fb9843d8",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-final-20261114/gates/all-local-gates.json",
+        "bytes": 1955,
+        "sha256": "7bbe235ff941227c58686d6b42e74a32702cb4a7526d7e60b3ea5626fb9843d8"
+      }
+    },
+    {
+      "path": "runtime/gates/clippy.public.log",
+      "bytes": 270,
+      "sha256": "23e9da457a726ecef9966a0430d33be37d7bcab0f58121e27dc16cb3a69d95a2",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": ".local/chain-sewing-final-20261114/gates/clippy.log",
+        "bytes": 426,
+        "sha256": "7982dd70a7a4bfb539a8439f017fb861804fde55660d634f9d2cbcb423cb6b57"
+      },
+      "replacement_counts": {
+        "workspace-root": 3
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "runtime/gates/fmt.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-final-20261114/gates/fmt.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "path": "runtime/gates/package.public.log",
+      "bytes": 453,
+      "sha256": "90d86e50dd0e85d42074b82977c7a7ee4b4b6f6870ca0d8420f29a292c262540",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": ".local/chain-sewing-final-20261114/gates/package.log",
+        "bytes": 609,
+        "sha256": "cb7d369603f0ab47f4d1e4a1c9637a0ddcda3036bce7a30ceea398641ef5b57e"
+      },
+      "replacement_counts": {
+        "workspace-root": 3
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "runtime/gates/rust-gates.json",
+      "bytes": 1315,
+      "sha256": "58496149b2fc32d8564bc3f35fbdcdfe01f98faa32033ef56c5d5d1d26aeb23a",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-final-20261114/gates/rust-gates.json",
+        "bytes": 1315,
+        "sha256": "58496149b2fc32d8564bc3f35fbdcdfe01f98faa32033ef56c5d5d1d26aeb23a"
+      }
+    },
+    {
+      "path": "runtime/gates/workspace-test.public.log",
+      "bytes": 20314,
+      "sha256": "79bafbbc45090df9a365283aef7be069bc0191e92157ea501c255fdca3943491",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": ".local/chain-sewing-final-20261114/gates/workspace-test.log",
+        "bytes": 20992,
+        "sha256": "f7a717649e6fc979e51c531c5bebe0f8d46aa801f75a9be798fd0e7cb3bd457a"
+      },
+      "replacement_counts": {
+        "workspace-root": 3,
+        "cargo-target": 18
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "runtime/gates/xtask.public.log",
+      "bytes": 2594,
+      "sha256": "c484e69b12d7ae773042676b4facf050ae9f162fec42bd82d0c39e441770275f",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": ".local/chain-sewing-final-20261114/gates/xtask.log",
+        "bytes": 2698,
+        "sha256": "0ea073fac60a54159de981cb319c2abfb0bd3dfd507c26547b96013ced70892d"
+      },
+      "replacement_counts": {
+        "workspace-root": 2
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "runtime/source-pretest.json",
+      "bytes": 5170,
+      "sha256": "fb4cd8b96be4a36511873fc8ff7d6b482eeececa7dc2eb6861f3e03a6e5ba0cf",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-final-20261114/source-pretest.json",
+        "bytes": 5170,
+        "sha256": "fb4cd8b96be4a36511873fc8ff7d6b482eeececa7dc2eb6861f3e03a6e5ba0cf"
+      }
+    },
+    {
+      "path": "sdk/README.md",
+      "bytes": 3265,
+      "sha256": "03fc4803279ab4c10c85ec183ad6b031d749d0e449afd768b662550d97f90c5d",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/README.md",
+        "bytes": 3265,
+        "sha256": "03fc4803279ab4c10c85ec183ad6b031d749d0e449afd768b662550d97f90c5d"
+      }
+    },
+    {
+      "path": "sdk/binding.json",
+      "bytes": 212,
+      "sha256": "5d6b70e052a5acfd192e7c84fc88be66d6b853d63ed02ee2e7f61b6edab1814c",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/binding.json",
+        "bytes": 212,
+        "sha256": "5d6b70e052a5acfd192e7c84fc88be66d6b853d63ed02ee2e7f61b6edab1814c"
+      }
+    },
+    {
+      "path": "sdk/client-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/client-stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "path": "sdk/client-stdout.txt",
+      "bytes": 385,
+      "sha256": "788f6d353c9c7ceeb33e07e0904b20ed1ca7b7ece994ee32c87ca85c4c7a4f6a",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/client-stdout.txt",
+        "bytes": 385,
+        "sha256": "788f6d353c9c7ceeb33e07e0904b20ed1ca7b7ece994ee32c87ca85c4c7a4f6a"
+      }
+    },
+    {
+      "path": "sdk/expectation.json",
+      "bytes": 10053,
+      "sha256": "3b51e578a53a70da579523030c019fb46bde3b435d3f3d57f66d6bd707e94dc6",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/expectation.json",
+        "bytes": 10053,
+        "sha256": "3b51e578a53a70da579523030c019fb46bde3b435d3f3d57f66d6bd707e94dc6"
+      }
+    },
+    {
+      "path": "sdk/expected-batch-numeric-bits.json",
+      "bytes": 18663,
+      "sha256": "64a8ec491da956d8cc15fb4190136b3f214301727bbfa3853b1b8bed42c67402",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/expected-batch-numeric-bits.json",
+        "bytes": 18663,
+        "sha256": "64a8ec491da956d8cc15fb4190136b3f214301727bbfa3853b1b8bed42c67402"
+      }
+    },
+    {
+      "path": "sdk/expected-batch.weftforge",
+      "bytes": 8472,
+      "sha256": "ee1a637d3f8ffbcd922ec7e0292ed9b864d272d09f919f1a979e69399a540c16",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/expected-batch.weftforge",
+        "bytes": 8472,
+        "sha256": "ee1a637d3f8ffbcd922ec7e0292ed9b864d272d09f919f1a979e69399a540c16"
+      }
+    },
+    {
+      "path": "sdk/expected-removed-numeric-bits.json",
+      "bytes": 15703,
+      "sha256": "a84a142fcae4cdfc500c8fd991774dfbd38dea959b6b247f8a5474f33315037a",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/expected-removed-numeric-bits.json",
+        "bytes": 15703,
+        "sha256": "a84a142fcae4cdfc500c8fd991774dfbd38dea959b6b247f8a5474f33315037a"
+      }
+    },
+    {
+      "path": "sdk/expected-removed.weftforge",
+      "bytes": 7571,
+      "sha256": "c3383090da63227fd87664b93282cebe4aa59d25c9e72281c84a1a6ef1a5ce3c",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/expected-removed.weftforge",
+        "bytes": 7571,
+        "sha256": "c3383090da63227fd87664b93282cebe4aa59d25c9e72281c84a1a6ef1a5ce3c"
+      }
+    },
+    {
+      "path": "sdk/freeze.json",
+      "bytes": 1946,
+      "sha256": "0bde0fc960a0c3e1c9f93238cb9c9e899b455da7dde72dab663105e02f76e285",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/freeze.json",
+        "bytes": 1946,
+        "sha256": "0bde0fc960a0c3e1c9f93238cb9c9e899b455da7dde72dab663105e02f76e285"
+      }
+    },
+    {
+      "path": "sdk/future.weftforge",
+      "bytes": 7576,
+      "sha256": "43f3f8d5500aad5eca2e89c8c1c2e458cdcee5045006bf7d7ae5516f486dcb18",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/future.weftforge",
+        "bytes": 7576,
+        "sha256": "43f3f8d5500aad5eca2e89c8c1c2e458cdcee5045006bf7d7ae5516f486dcb18"
+      }
+    },
+    {
+      "path": "sdk/input.weftforge",
+      "bytes": 7573,
+      "sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/input.weftforge",
+        "bytes": 7573,
+        "sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067"
+      }
+    },
+    {
+      "path": "sdk/malformed.weftforge",
+      "bytes": 44,
+      "sha256": "06da0cb084b0926d6cc49a47d2d6eaeb9d16d1d39f21fbf277232b1f626c10cc",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/malformed.weftforge",
+        "bytes": 44,
+        "sha256": "06da0cb084b0926d6cc49a47d2d6eaeb9d16d1d39f21fbf277232b1f626c10cc"
+      }
+    },
+    {
+      "path": "sdk/pre-call-identities.public.json",
+      "bytes": 3395,
+      "sha256": "e9c9bc0501c1cfdd305347c3daafde86b4bfa5282e530c74c1b5b390f0750deb",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/pre-call-identities.json",
+        "bytes": 3439,
+        "sha256": "33a97e7f5c63a0aedbc81369759ccc5321da6d1af128b59054e9fab15a188b75"
+      },
+      "replacement_counts": {
+        "home-root": 4
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "sdk/preparation-self-checks.json",
+      "bytes": 288,
+      "sha256": "4211174119a0b7dc8e631a5de65e2e2dbec90bdedcafe480f4a67d39a6b90bd5",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/preparation-self-checks.json",
+        "bytes": 288,
+        "sha256": "4211174119a0b7dc8e631a5de65e2e2dbec90bdedcafe480f4a67d39a6b90bd5"
+      }
+    },
+    {
+      "path": "sdk/preserved-output.weftforge",
+      "bytes": 7573,
+      "sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/preserved-output.weftforge",
+        "bytes": 7573,
+        "sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067"
+      }
+    },
+    {
+      "path": "sdk/run-official-sdk.py",
+      "bytes": 14716,
+      "sha256": "4f77425fe1ba24e5934af2328186169bd50c12f472903c4b1f1d736e85729327",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/run-official-sdk.py",
+        "bytes": 14716,
+        "sha256": "4f77425fe1ba24e5934af2328186169bd50c12f472903c4b1f1d736e85729327"
+      }
+    },
+    {
+      "path": "sdk/sdk-batch.weftforge",
+      "bytes": 8471,
+      "sha256": "863e997c017f02bc511473b7cfa0e3083e3eeabcc3ced7f47882cbeea9173827",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/sdk-batch.weftforge",
+        "bytes": 8471,
+        "sha256": "863e997c017f02bc511473b7cfa0e3083e3eeabcc3ced7f47882cbeea9173827"
+      }
+    },
+    {
+      "path": "sdk/sdk-removed.weftforge",
+      "bytes": 7570,
+      "sha256": "35290e78ef1140f304a77b6bde385fd81a33303a209a99dd092d2460bbfe1bc0",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/sdk-removed.weftforge",
+        "bytes": 7570,
+        "sha256": "35290e78ef1140f304a77b6bde385fd81a33303a209a99dd092d2460bbfe1bc0"
+      }
+    },
+    {
+      "path": "sdk/sdk-report.public.json",
+      "bytes": 63229,
+      "sha256": "902c1409c4fb5676ff03e0ac9df1adef1702b46ef1d097a8bbe516285593ecac",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/sdk-report.json",
+        "bytes": 63689,
+        "sha256": "6c1b1936b4f9dd0a991444cd92de4dc5ce194758f501e41111dfbb41edfcdb3b"
+      },
+      "replacement_counts": {
+        "workspace-root": 8,
+        "home-root": 4
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "sdk/sdk-transcript.public.json",
+      "bytes": 81112,
+      "sha256": "d2be5bd001d3df627aa0311c9de4ab4569a45052d89f364897b2608f1bf6ad7d",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/sdk-transcript.json",
+        "bytes": 82100,
+        "sha256": "c468079a795a966f1394b9f8f6acc9d467387ea668886445ff9031d18fe95ea4"
+      },
+      "replacement_counts": {
+        "workspace-root": 19
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "sdk/sdk-transcript.public.jsonl",
+      "bytes": 29662,
+      "sha256": "0bc7dba9fcc1affa28e0ef9741155ab7ed2a6f921828b3eb61ed65078667f573",
+      "kind": "path-redacted-derivative",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/sdk-transcript.jsonl",
+        "bytes": 30650,
+        "sha256": "03257922bc4393f88fcab8eea850fc03a21a30fe93f5ac13e5ebe0d6f46370cf"
+      },
+      "replacement_counts": {
+        "workspace-root": 19
+      },
+      "derivative_policy": "Whole-file literal prefix substitution only; no lines omitted, no normalization or semantic rewrite. Source SHA-256 binds retained original bytes, which are not included here."
+    },
+    {
+      "path": "sdk/server-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "kind": "exact-copy",
+      "source": {
+        "path": ".local/chain-sewing-sdk-20261114/server-stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}

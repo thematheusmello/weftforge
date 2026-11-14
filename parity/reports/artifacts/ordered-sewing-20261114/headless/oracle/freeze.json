@@ -1,0 +1,163 @@
+{
+  "kind": "chain-sewing-pretest-freeze-v1",
+  "frozen_utc": "2026-11-14T14:56:40.908079+00:00",
+  "reviewed_contract": {
+    "path": "spec/features/SEW-002-ordered-paths.md",
+    "sha256": "9baedd713b5a8dd4f251d7f2c5d0c51b408ecdabb32813a07dae06d25dcae960"
+  },
+  "parent_declared_initial_commit": "3c1760028dcbf5a3759907ded137b25a0714cf4a",
+  "candidate_source_or_outputs_inspected": false,
+  "read_scope": [
+    "AGENTS.md",
+    "Ponytail FULL skill",
+    "spec/features/SEW-002-ordered-paths.md",
+    "fixtures/original-shirt.weftforge",
+    "fixtures/sewn-curve/before-split.weftforge"
+  ],
+  "own_scope": ".local/chain-sewing-acceptance-20261114",
+  "artifact_count": 33,
+  "artifacts": {
+    "criteria.md": {
+      "sha256": "09edf4713437ef26e639c78019755207705eefd73cb253af045eefcf81e29799",
+      "bytes": 7548
+    },
+    "evaluate.py": {
+      "sha256": "b58376e8def80abc350376120282ef99ef853bdbfa8eecb5089dde02c86f10b7",
+      "bytes": 18113
+    },
+    "expectations.json": {
+      "sha256": "68a63c3f31d7de18f5df1f4735824b807335e9dfc74f8365a61db08a814c7eb5",
+      "bytes": 164977
+    },
+    "fixtures/asymmetric-coarse.weftforge": {
+      "sha256": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2",
+      "bytes": 8106
+    },
+    "fixtures/asymmetric-fine.weftforge": {
+      "sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+      "bytes": 8107
+    },
+    "fixtures/collinear-coarse.weftforge": {
+      "sha256": "6202e2b1b6b66b631b0e119955cb25cc038423c7a2c4ef37292d4d8125b6fbd8",
+      "bytes": 3874
+    },
+    "fixtures/collinear-fine.weftforge": {
+      "sha256": "e686082e62e34a1dda3c642329e814e899350fba44e9590309dfc9132fb543ce",
+      "bytes": 3875
+    },
+    "fixtures/empty-groups-v3.weftforge": {
+      "sha256": "0210b721df1f61b28ba79ca0ce23bbb1df529ae7eccd6c82edd0cdba966f34af",
+      "bytes": 6789
+    },
+    "fixtures/invalid-duplicate-group-id.weftforge": {
+      "sha256": "6a5d89b421c1b870191fd047508015dfc29eb08ae7e4c8cba9b6a3b77d56ed9f",
+      "bytes": 8353
+    },
+    "fixtures/invalid-duplicate-json-field.weftforge": {
+      "sha256": "2d8d954a747dc1465471bbda0c7e4e6a6aed761fa41ae3d26c0b99e82defb9a7",
+      "bytes": 7587
+    },
+    "fixtures/invalid-empty-side.weftforge": {
+      "sha256": "8d55bc7725e0688e099dca1071388e7c54ee716458da0e2186d89fc4ae788dd0",
+      "bytes": 7372
+    },
+    "fixtures/invalid-future-version.weftforge": {
+      "sha256": "7bcf3fe2af3bbb8698488650af05d108a5bf3012a4c4d5831c1e214a98cca339",
+      "bytes": 7573
+    },
+    "fixtures/invalid-missing-v3-groups.weftforge": {
+      "sha256": "239053c86d0524e12c9cb84ee0d853f827859aa0d639cccac47ea6d4e58b9c9b",
+      "bytes": 6764
+    },
+    "fixtures/invalid-nonmonotone-map.weftforge": {
+      "sha256": "1921c9c77865a253938f0ac8a0d80d5ef8f850c859ec2e04c8bf4a8068959ab6",
+      "bytes": 7689
+    },
+    "fixtures/invalid-overlap-across-sides.weftforge": {
+      "sha256": "da51d850d92b41ff01c6d3a2850a94fd0e380b0c5cf06d7c4d19758cabe5fcc2",
+      "bytes": 7667
+    },
+    "fixtures/invalid-overlap-within-side.weftforge": {
+      "sha256": "eff386dcc6ffc730a031bcf6124a852ddf04f7eadb35dd1b2607cfbaa00e7a1c",
+      "bytes": 7667
+    },
+    "fixtures/invalid-oversized-side.weftforge": {
+      "sha256": "cbdd7e426f9e182cdeb838df6d3f193425933e5d2f245acccb08759048a34420",
+      "bytes": 134350
+    },
+    "fixtures/invalid-total-interval-bound.weftforge": {
+      "sha256": "052847b2be650df1307b552058126d10d665dae615dc6021b622da91489af3f5",
+      "bytes": 2267493
+    },
+    "fixtures/invalid-unknown-curve.weftforge": {
+      "sha256": "1f88aaf8dd57da712708cc04599c8aede8a6d97b91c0c7bb2438ed3c499247c0",
+      "bytes": 7578
+    },
+    "fixtures/invalid-unknown-group-field.weftforge": {
+      "sha256": "cea0f8c587ef3e68c07e10f28dd9ed796d21243ddbfe4b43bf8e94c358d298db",
+      "bytes": 7595
+    },
+    "fixtures/invalid-zero-span.weftforge": {
+      "sha256": "7f4df4f7ab0c0febaad1b0db1bbcf28197a393485dfcfa874b29bee7d2735d4a",
+      "bytes": 7573
+    },
+    "fixtures/legacy-v1-f64.weftforge": {
+      "sha256": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d",
+      "bytes": 3877
+    },
+    "fixtures/legacy-v2-f64.weftforge": {
+      "sha256": "b352064873c2674ef0e12d8d354329c06bbd1e3b09934440c48f29b8f046867b",
+      "bytes": 3992
+    },
+    "fixtures/line-identity-coarse.weftforge": {
+      "sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+      "bytes": 7573
+    },
+    "fixtures/line-identity-fine.weftforge": {
+      "sha256": "1ebcc4b98c03f84e610ce476541c1f84d9185a71b81118900854fdc2e0d2a918",
+      "bytes": 7574
+    },
+    "fixtures/line-nonlinear-coarse.weftforge": {
+      "sha256": "b238147b5df80db8ef053ff4ad2239f97c8c3cb890034c98d5cf930bbd16aafe",
+      "bytes": 7690
+    },
+    "fixtures/line-nonlinear-fine.weftforge": {
+      "sha256": "2fc79b502d929233ea3d23d31fac4a284327b2290d983d02f3bba5d5b658ecc9",
+      "bytes": 7691
+    },
+    "interface.json": {
+      "sha256": "0d07de21237d02c60e2bc79ab5cd46d488b0aaf584fb8b9a07a9268c0a8e7060",
+      "bytes": 2530
+    },
+    "negative-cases.json": {
+      "sha256": "e4d924773805115d8166decd5b1e1248b3a3049d10ac5f740f78da5e8946ecb2",
+      "bytes": 702
+    },
+    "oracle.py": {
+      "sha256": "bf7cddedec7f8e58afd689ff034e1a8b19d0218a41e9bbb3841be449dda2e333",
+      "bytes": 9250
+    },
+    "prepare.py": {
+      "sha256": "b0616fbfe1e861f895b2208702ac966506b51feee27ea3d03e48793e6372f72e",
+      "bytes": 10482
+    },
+    "results/pre-freeze-self-check.json": {
+      "sha256": "5ed19dcf9b540d04935ad02ca44fbb317b65c0457be0d2f6dc1295a07b834809",
+      "bytes": 7684
+    },
+    "results/pretest-self-check.json": {
+      "sha256": "45fd88aac837a68c04b7da571ca66608ba3d4571fe81c57f04e2346b0e5a8886",
+      "bytes": 8019
+    }
+  },
+  "delivery_status": "local ignored oracle preparation only; not public tracked evidence",
+  "remaining_unknown": [
+    "candidate geometry/mesh acceptance",
+    "history and split/join operation captures",
+    "rejection preservation",
+    "standalone native workflow",
+    "bounded cancellation/staleness/exhaustion",
+    "reference parity",
+    "physical quality"
+  ]
+}

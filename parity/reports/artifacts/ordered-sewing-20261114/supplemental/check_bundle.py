@@ -1,0 +1,170 @@
+"""Review saved bytes and outcomes only; never execute a product or SDK runner."""
+import ast
+import hashlib
+import json
+import math
+from pathlib import Path
+import re
+import struct
+import subprocess
+import sys
+from types import SimpleNamespace
+
+PACKAGE = Path(__file__).resolve().parent
+
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def load(path):
+    def unique(pairs):
+        result = {}
+        for key, value in pairs:
+            assert key not in result, f'Duplicate field: {key}'
+            result[key] = value
+        return result
+    return json.loads(path.read_bytes(), object_pairs_hook=unique)
+
+
+manifest = load(PACKAGE / 'manifest.json')
+entries = {row['path']: row for row in manifest['files']}
+assert len(entries) == len(manifest['files'])
+actual = {str(path.relative_to(PACKAGE)) for path in PACKAGE.rglob('*') if path.is_file()}
+assert actual == set(entries) | {'manifest.json'}
+assert len(actual) == manifest['file_count_including_manifest']
+for name, row in entries.items():
+    relative = Path(name)
+    assert not relative.is_absolute() and '..' not in relative.parts
+    path = PACKAGE / relative
+    assert not path.is_symlink() and path.stat().st_size == row['bytes']
+    assert sha(path) == row['sha256'], name
+    if row['kind'] in ['exact-copy', 'exact-git-patch']:
+        assert row['source']['sha256'] == row['sha256']
+        assert row['source']['bytes'] == row['bytes']
+    if row['kind'] == 'path-redacted-derivative':
+        assert row['replacement_counts'] and row['source']['sha256'] != row['sha256']
+
+sdk = PACKAGE / 'sdk'
+freeze = load(sdk / 'freeze.json')
+assert sha(sdk / 'freeze.json') == '0bde0fc960a0c3e1c9f93238cb9c9e899b455da7dde72dab663105e02f76e285'
+for name, row in freeze['files'].items():
+    assert (sdk / name).stat().st_size == row['bytes']
+    assert sha(sdk / name) == row['sha256']
+
+# Reuse only the frozen runner's pure comparison functions, without its imports or server entry point.
+names = {'check', 'float_kind', 'float_bits', 'compare', 'numeric_bits', 'check_schema'}
+tree = ast.parse((sdk / 'run-official-sdk.py').read_text())
+functions = [node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name in names]
+assert {node.name for node in functions} == names
+namespace = {'math': math, 'struct': struct}
+exec(compile(ast.Module(body=functions, type_ignores=[]), 'frozen-sdk-comparison', 'exec'), namespace)
+compare = namespace['compare']
+numeric_bits = namespace['numeric_bits']
+
+plan = load(sdk / 'expectation.json')
+report = load(sdk / 'sdk-report.public.json')
+precall = load(sdk / 'pre-call-identities.public.json')
+binding = load(sdk / 'binding.json')
+assert report['status'] == 'passed_bounded_legacy_ordered_group_smoke'
+assert report['client_version'] == plan['client_version'] == '1.28.1'
+assert report['initialized']['protocolVersion'] == plan['protocol'] == '2025-11-25'
+assert report['binding'] == precall['binding'] == binding
+assert binding['source_commit'] == manifest['source_commit']
+assert report['cli_before_sha256'] == report['cli_after_sha256'] == binding['cli_sha256'] == manifest['cli_sha256']
+assert report['freeze_sha256'] == precall['freeze_sha256'] == sha(sdk / 'freeze.json')
+assert report['binding_sha256'] == report['binding_after_sha256'] == sha(sdk / 'binding.json')
+expected_hashes = {name: row['sha256'] for name, row in freeze['files'].items()}
+assert report['frozen_files_before'] == report['frozen_files_after'] == precall['frozen_files_before'] == expected_hashes
+assert report['all_frozen_files_unchanged'] and report['success_outputs_unchanged_after_errors']
+assert not list(sdk.glob('*.recovery*'))
+assert report['stderr_bytes'] == (sdk / 'server-stderr.txt').stat().st_size == (sdk / 'client-stderr.txt').stat().st_size == 0
+assert report['tool_names'] == plan['tool_names'] and len(report['tool_names']) == 6
+variants = report['execute_input_schema']['properties']['commands']['items']['oneOf']
+assert len(variants) == 21 and {row['properties']['type']['const'] for row in variants} == set(plan['command_variants'])
+assert all(row['additionalProperties'] is False and row['properties']['data']['additionalProperties'] is False for row in variants)
+
+transcript = load(sdk / 'sdk-transcript.public.json')
+jsonl = [json.loads(line) for line in (sdk / 'sdk-transcript.public.jsonl').read_text().splitlines()]
+assert transcript == jsonl
+assert report['transcript_sha256'] == entries['sdk/sdk-transcript.public.json']['source']['sha256']
+client_messages = [row['message'] for row in transcript if row['direction'] == 'client_to_server']
+server_messages = [row['message'] for row in transcript if row['direction'] == 'server_to_client']
+assert len(client_messages) == report['client_messages'] == 9
+assert len(server_messages) == report['server_messages'] == 8
+requests = [message for message in client_messages if message.get('method') == 'tools/call']
+responses = {message['id']: message['result'] for message in server_messages}
+listed = responses[1]
+listed_schema = namespace['check_schema'](SimpleNamespace(
+    tools=[SimpleNamespace(**tool) for tool in listed['tools']],
+    nextCursor=listed.get('nextCursor')), plan)
+assert listed_schema == report['execute_input_schema']
+assert len(requests) == len(plan['calls']) == len(report['calls']) == 6
+for case, saved, request in zip(plan['calls'], report['calls'], requests):
+    assert case['case'] == saved['case']
+    arguments = dict(case['arguments'])
+    for key in ('input', 'output', 'path'):
+        if key in arguments:
+            arguments[key] = '<WORKSPACE>/.local/chain-sewing-sdk-20261114/' + arguments[key]
+    assert request['params'] == {'name': case['tool'], 'arguments': arguments}
+    result = saved['result']
+    assert result['isError'] is case['is_error']
+    response = responses[request['id']]
+    for key in ['structuredContent', 'isError']:
+        assert response[key] == result[key]
+    blocks = result['content']
+    assert all(set(block) == {'type', 'text', 'annotations', '_meta'}
+               and block['annotations'] is None and block['_meta'] is None for block in blocks)
+    # SDK stream dumping omits null content-block metadata; project nulls stay exact.
+    assert response['content'] == [
+        {key: value for key, value in block.items() if key not in {'annotations', '_meta'}}
+        for block in blocks]
+    if case['is_error']:
+        assert isinstance(result['structuredContent']['error'], str) and result['structuredContent']['error']
+        assert saved['output_before_sha256'] == saved['output_after_sha256'] == case['preserved_sha256']
+        assert sha(sdk / case['arguments']['output']) == case['preserved_sha256']
+    elif case['tool'] == 'project_inspect':
+        compare(load(sdk / case['expected_native'])['project'], result['structuredContent']['project'], ('project',))
+        assert result['structuredContent']['up'] == 'Y' and saved['typed_project_matches_frozen_expectation']
+    else:
+        expected, output = load(sdk / case['expected_native']), load(sdk / case['arguments']['output'])
+        compare(expected, output)
+        assert numeric_bits(expected) == load(sdk / case['expected_bits']) == numeric_bits(output)
+        assert result['structuredContent'] == dict(case['expected_result'], input=arguments['input'], output=arguments['output'])
+        assert saved['typed_native_matches_frozen_expectation']
+        assert saved['output_sha256'] == report['success_output_hashes_after'][case['arguments']['output']] == sha(sdk / case['arguments']['output'])
+
+fine = PACKAGE / 'fine-mesh'
+assert load(fine / 'fixtures/asymmetric-fine.weftforge')['project']['resolution'] == 0.017
+assert (fine / 'debug-precheck/asymmetric-fine.receipt.json').stat().st_size == 0
+assert (fine / 'debug-precheck/asymmetric-fine.stderr').read_text() == 'weftforge-cli: Refinement exceeds mesh vertex limit; increase resolution\n'
+for case in ['asymmetric-fine', 'asymmetric-coarse']:
+    checks = load(fine / ('production-' + case + '-checks.json'))
+    assert checks['vertices'] <= 100000 and checks['triangles'] <= 200000
+    assert checks['max_edge_m'] <= checks['max_edge_limit_m']
+    assert checks['fixture_sha256'] == sha(fine / ('fixtures/' + case + '.weftforge'))
+correction = load(fine / 'validator-correction.json')
+assert correction['status'] == 'rerun pending'
+assert len(load(fine / 'production-verification-summary.json')) == 2
+
+gates = load(PACKAGE / 'runtime/gates/all-local-gates.json')
+assert gates['commit'] == manifest['source_commit'] and gates['all_required_passed']
+assert all(gate['exit_code'] == 0 for gate in gates['gates'].values())
+assert gates['gates']['workspace_tests']['passed'] == 122
+assert gates['gates']['xtask']['python_checks'] == 54
+ui = load(PACKAGE / 'reviews/ui/provenance.json')
+for name, expected in ui['artifact_sha256'].items():
+    assert sha(PACKAGE / 'reviews/ui' / name) == expected
+subprocess.run([sys.executable, '-B', str(PACKAGE / 'reviews/core/check_replay.py'), '--self-test'], check=True)
+
+markers = [b'/' + b'Users/', b'/' + b'Volumes/', b'file' + b'://', b'/var/' + b'folders/']
+private_marker = b'/' + b'private/'
+for name in actual:
+    data = (PACKAGE / name).read_bytes()
+    assert not any(marker in data for marker in markers), name
+    if private_marker in data:
+        assert name == 'reviews/core/check_replay.py' and data.count(private_marker) == 1, name
+        assert b'private_prefixes = [' in data
+    assert not re.search(rb'AKIA[A-Z0-9]{16}|gh[pousr]_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9]{24,}', data), name
+    assert not re.search(rb'[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}', data), name
+print(f'Integrity, frozen SDK saved outcomes, six-call decoded transcript, preservation, scopes and public-path scan passed ({len(actual)} files). No server, binary, Cargo or native UI executed.')

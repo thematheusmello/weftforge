@@ -1,0 +1,10 @@
+[package]
+name = "chain-sewing-operations-producer"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+serde_json = { version = "=1.0.154", features = ["float_roundtrip"] }
+weftforge-core = { path = "../source/crates/weftforge-core" }
+
+[workspace]

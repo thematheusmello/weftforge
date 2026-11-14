@@ -1,0 +1,20 @@
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/weftforge_sim-3sieyka2rixpr/s-ho5ne9fjnw-1tuy3mm-working`
+
+warning: `weftforge-sim` (lib) generated 1 warning
+   Compiling weftforge-cli v0.1.0 (<WORKSPACE>/apps/weftforge-cli)
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/weftforge_cli-07fqr4g6f6icj/s-ho5nhvdbwe-1e1an2d-working`
+
+warning: `weftforge-cli` (bin "weftforge-cli") generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 9.15s
+     Running tests/mcp_stdio.rs (target/debug/deps/mcp_stdio-d2a6315228ae9868)
+
+running 6 tests
+test cli_command_files_are_bounded_strict_and_do_not_replace_failed_destinations ... ok
+test stdio_advertises_and_executes_join_atomically_without_overwriting_failed_output ... ok
+test stdio_validates_protocol_lifecycle_modern_metadata_and_line_bounds ... ok
+test stdio_errors_preserve_input_output_and_recovery_and_allow_retry ... ok
+test sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constraints ... ok
+test stdio_authors_atomic_shared_commands_and_exports_physical_units ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.40s
+

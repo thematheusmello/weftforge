@@ -9,9 +9,9 @@ flips its vertical coordinate; OBJ uses metres/Y-up.
 ## Present responsibility boundaries
 
 - `weftforge-core`: stable ID document objects, authored straight/cubic boundaries,
-  oriented seam intervals with explicit monotone correspondence, materials and
+  oriented seam intervals and ordered sewing groups, materials and
   capsule mannequin; typed commands, transaction/history; meshing, project IO,
-  OBJ/SVG export and one document-to-solver adapter.
+  OBJ/SVG/DXF export and one document-to-solver adapter.
 - `weftforge-sim`: GUI-independent CPU cloth, material-space strain, dihedral bend,
   area mass, weighted sewing, contact, diagnostics and transactional step failure.
 - `weftforge`: native eframe/egui editor and wgpu-backed drawing. Pattern canvas,
@@ -19,7 +19,8 @@ flips its vertical coordinate; OBJ uses metres/Y-up.
   first viewport implementation. It does not yet have a dedicated depth-buffered
   garment shader, PBR, textures, shadows, animation timeline or GPU simulation.
 - `weftforge-cli`: offline creation/inspect/edit/mesh/simulate/export/benchmark and
-  explicit recovery through the same library commands. Local MCP remains planned.
+  explicit recovery through the same library commands. Six stateless local MCP
+  file tools expose the shared validated engine; live-GUI control remains open.
 - `xtask`, `scripts/`: integration, independently parsed output, registry/evidence
   validation, report/dashboard generation and unsigned package preparation.
 
@@ -29,11 +30,19 @@ The libraries do not depend on egui, a browser, Python, REA, or commercial SDKs.
 
 ## Authored geometry, rest mesh and state
 
-Every point, curve, piece, material and seam has a stable integer ID. Curves
+Every point, curve, piece, material, seam and sewing group has a stable integer ID. Curves
 reference authored points and optional absolute Bezier control coordinates.
 Piece boundaries are ordered closed chains. A seam stores two oriented [t0,t1]
 intervals and a monotone normalized parameter correspondence; it never refers to
 simulation vertex indices. Unequal lengths are deliberate easing.
+
+An ordered group instead stores two lists of authored intervals and one map of
+normalized cumulative arc lengths. Each interval retains its curve t endpoints;
+gaps between disconnected spans add no length. Both one-sided endpoints at a
+path knot survive. Metric work is bounded, with a1e-8m authored-path budget and
+explicit errors for exhausted work or unsupported floating-point precision.
+Native v3 saves both legacy seams and groups; strict older-format migration
+does not reinterpret legacy correspondence.
 
 The rebuildable rest mesh has material coordinates, physical arranged positions,
 triangles, per-vertex piece IDs, source document revision and sampled boundary
@@ -43,7 +52,10 @@ this authored correspondence. The simulation receives a distinct state, never
 mutates the document, and is invalidated by construction edits. The current
 export mesh is a copy of the rest mesh with simulated positions. UVs remain
 physical pattern coordinates rather than a packed atlas; output thickness and
-welding remain open work.
+welding remain open work. The rest mesh also carries each group's current
+lengths and paired source portions for native guides; rendering does not
+integrate curve lengths every frame. These rest constraints do not establish
+physical gathering quality or a converged sewn garment.
 
 Convex/concave boundaries are tessellated then triangulated and refined with
 shared midpoint vertices. Cubic bounds use analytic derivative roots. Polygon
@@ -55,6 +67,11 @@ is partitioned in its oriented correspondence coordinates and remapped to local
 curve parameters; unrelated IDs and material assignments remain intact. The
 original seam ID survives on its first oriented portion and later portions get
 new IDs. Invalid or unrepresentably short portions fail the whole transaction.
+Group split/join rewrites preserve their single identity, map, traversal order
+and separate authored list entries. Removing a participating piece removes the
+whole dependent group; unrelated groups survive. Quality improvement runs before
+each refinement level to keep inherited slivers from multiplying, while the
+existing mesh limits, authored boundary parameters and cancellation checks remain.
 
 ## Commands, transactions, revisions and jobs
 

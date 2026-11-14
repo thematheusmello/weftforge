@@ -1,0 +1,87 @@
+{
+  "candidate_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "binary_sha256": "5755ecd4aefb29b0060370c8369ee823fdbbd19cae85d5dd675edec48de954e1",
+  "cases": [
+    {
+      "case": "line-identity-coarse",
+      "receipt_sha256": "d057406310b8fc96e331f659a667ad9ec8ad8dba423356e8141c0ad33fd49478",
+      "result_sha256": "e946b8c86ac6c2273b13014b475db5d011cf796280c380bf586799d4ce504281",
+      "status": "pass",
+      "exit_code": 0,
+      "pid": 10006
+    },
+    {
+      "case": "line-nonlinear-coarse",
+      "receipt_sha256": "1210cc955a4db4507632f04adee0834e4b75bfee0b6e505581739a7beb03dac5",
+      "result_sha256": "8bf9bf3522839eb2f4f22c09d44181d52125e979bb2fbce9fb472fc71e7566a6",
+      "status": "pass",
+      "exit_code": 0,
+      "pid": 10007
+    },
+    {
+      "case": "collinear-coarse",
+      "receipt_sha256": "d62a7763fd18aeb852639eb61c0f8ada29809db7f484979e450749721f307435",
+      "result_sha256": "c880d6f1f086ce780b967917e8a271df81789e89f33aaf6ce13c5e4292675c75",
+      "status": "pass",
+      "exit_code": 0,
+      "pid": 10008
+    },
+    {
+      "case": "asymmetric-coarse",
+      "receipt_sha256": "f670570ced8a839e34a0ea7f05bef9c9558964253720f871a20ea7e2ced49dcd",
+      "result_sha256": "668e09777d4e12f84b3b94a1eb8551157302e9da29a1872124525486d8a5e3c6",
+      "status": "pass",
+      "exit_code": 0,
+      "pid": 10009
+    },
+    {
+      "case": "legacy-v2-f64",
+      "receipt_sha256": "0e09c4525c49f4f38ff9ccaeea90fa559064ecb550f7d2329e7d4b249e67c236",
+      "result_sha256": "d4b0da0e8b3381d15932f7adacef1f180efb90f62cc9198a93257ce2d97551b5",
+      "status": "pass",
+      "exit_code": 0,
+      "pid": 10012
+    },
+    {
+      "case": "line-identity-fine",
+      "receipt_sha256": "16143784e162b165e6a54ac4322f8d05163bccd72193de6d2965b2229708d17a",
+      "result_sha256": "fa38ac4bf9e25fda2622f76ae3912d32a609625b4fc2c61299cbe7d519e911b2",
+      "status": "pass",
+      "exit_code": 0,
+      "pid": 10013
+    },
+    {
+      "case": "line-nonlinear-fine",
+      "receipt_sha256": "8d57b960bb636d40ae000aaa3a573e49f889abb8e7c04d1b7dbe4845d4d1b271",
+      "result_sha256": "7b7c68bcd1e21bd9e2d989120e61189874b3601f76f733360809406062ceccf1",
+      "status": "pass",
+      "exit_code": 0,
+      "pid": 10014
+    },
+    {
+      "case": "collinear-fine",
+      "receipt_sha256": "4296fac17aac0995d821a407a302bae23041c8785fa4125ecd6a9869949456ba",
+      "result_sha256": "5b64aa049b3c8aadb49e97ec6d3cf23c15c3efee7f53cf37de7083db5f115639",
+      "status": "pass",
+      "exit_code": 0,
+      "pid": 10015
+    },
+    {
+      "case": "asymmetric-fine",
+      "receipt_sha256": "4ce736b7f9d6c962261a799a08a4c5e9eebc6409fa1b59088195d59e831a59b0",
+      "result_sha256": "36be6198a8fd91cd3ea353b9ae6eee8d17934863b59c75597f2915bd10c65250",
+      "status": "pass",
+      "exit_code": 0,
+      "pid": 10016
+    },
+    {
+      "case": "legacy-v1-f64",
+      "receipt_sha256": "2bdedcda1c25a8498c60ed90de1936895d523a705cbc27211ff68f538adf50d9",
+      "result_sha256": "391e462d264d34db2c2cbdc7b1e4628bd84cf005af5351826b34258aa674d2f3",
+      "status": "pass",
+      "exit_code": 0,
+      "pid": 10017
+    }
+  ],
+  "all_passed": true
+}

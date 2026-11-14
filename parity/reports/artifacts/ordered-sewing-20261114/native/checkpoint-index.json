@@ -1,0 +1,150 @@
+{
+  "kind": "original-unreviewed-native-checkpoint-index-v1",
+  "checkpoints": {
+    "loaded": {
+      "source": "checkpoints/loaded/source.weftforge",
+      "tool_transcript": "checkpoints/loaded/tool-transcript.json",
+      "screenshot": "checkpoints/loaded/screenshot.png",
+      "accessibility": "checkpoints/loaded/accessibility.txt",
+      "observed_ui_action": "load_original_no_group_fixture",
+      "observer_review": false
+    },
+    "empty_a_enter": {
+      "source": "checkpoints/empty_a_enter/source.weftforge",
+      "tool_transcript": "checkpoints/empty_a_enter/tool-transcript.json",
+      "screenshot": "checkpoints/empty_a_enter/screenshot.png",
+      "accessibility": "checkpoints/empty_a_enter/accessibility.txt",
+      "observed_ui_action": "enter_with_empty_a",
+      "observer_review": false
+    },
+    "delete_last_a": {
+      "source": "checkpoints/delete_last_a/source.weftforge",
+      "tool_transcript": "checkpoints/delete_last_a/tool-transcript.json",
+      "screenshot": "checkpoints/delete_last_a/screenshot.png",
+      "accessibility": "checkpoints/delete_last_a/accessibility.txt",
+      "observed_ui_action": "select_two_partial_a_intervals_then_delete_last",
+      "observer_review": false
+    },
+    "escape_a": {
+      "source": "checkpoints/escape_a/source.weftforge",
+      "tool_transcript": "checkpoints/escape_a/tool-transcript.json",
+      "screenshot": "checkpoints/escape_a/screenshot.png",
+      "accessibility": "checkpoints/escape_a/accessibility.txt",
+      "observed_ui_action": "escape_pending_a",
+      "observer_review": false
+    },
+    "empty_b_enter": {
+      "source": "checkpoints/empty_b_enter/source.weftforge",
+      "tool_transcript": "checkpoints/empty_b_enter/tool-transcript.json",
+      "screenshot": "checkpoints/empty_b_enter/screenshot.png",
+      "accessibility": "checkpoints/empty_b_enter/accessibility.txt",
+      "observed_ui_action": "confirm_two_partial_a_intervals_then_enter_empty_b",
+      "observer_review": false
+    },
+    "tool_reset": {
+      "source": "checkpoints/tool_reset/source.weftforge",
+      "tool_transcript": "checkpoints/tool_reset/tool-transcript.json",
+      "screenshot": "checkpoints/tool_reset/screenshot.png",
+      "accessibility": "checkpoints/tool_reset/accessibility.txt",
+      "observed_ui_action": "switch_tool_while_draft_pending",
+      "observer_review": false
+    },
+    "load_reset": {
+      "source": "checkpoints/load_reset/source.weftforge",
+      "tool_transcript": "checkpoints/load_reset/tool-transcript.json",
+      "screenshot": "checkpoints/load_reset/screenshot.png",
+      "accessibility": "checkpoints/load_reset/accessibility.txt",
+      "observed_ui_action": "load_original_fixture_while_draft_pending",
+      "observer_review": false
+    },
+    "confirmed_a_pending_b": {
+      "source": "checkpoints/confirmed_a_pending_b/source.weftforge",
+      "tool_transcript": "checkpoints/confirmed_a_pending_b/tool-transcript.json",
+      "screenshot": "checkpoints/confirmed_a_pending_b/screenshot.png",
+      "accessibility": "checkpoints/confirmed_a_pending_b/accessibility.txt",
+      "observed_ui_action": "select_ordered_partial_a_then_enter",
+      "observer_review": false
+    },
+    "created": {
+      "source": "checkpoints/created/source.weftforge",
+      "tool_transcript": "checkpoints/created/tool-transcript.json",
+      "screenshot": "checkpoints/created/screenshot.png",
+      "accessibility": "checkpoints/created/accessibility.txt",
+      "observed_ui_action": "select_ordered_partial_b_then_enter",
+      "observer_review": false
+    },
+    "undo_create": {
+      "source": "checkpoints/undo_create/source.weftforge",
+      "tool_transcript": "checkpoints/undo_create/tool-transcript.json",
+      "screenshot": "checkpoints/undo_create/screenshot.png",
+      "accessibility": "checkpoints/undo_create/accessibility.txt",
+      "observed_ui_action": "one_native_undo_after_create",
+      "observer_review": false
+    },
+    "redo_create": {
+      "source": "checkpoints/redo_create/source.weftforge",
+      "tool_transcript": "checkpoints/redo_create/tool-transcript.json",
+      "screenshot": "checkpoints/redo_create/screenshot.png",
+      "accessibility": "checkpoints/redo_create/accessibility.txt",
+      "observed_ui_action": "one_native_redo_after_create",
+      "observer_review": false
+    },
+    "edited": {
+      "source": "checkpoints/edited/source.weftforge",
+      "tool_transcript": "checkpoints/edited/tool-transcript.json",
+      "screenshot": "checkpoints/edited/screenshot.png",
+      "accessibility": "checkpoints/edited/accessibility.txt",
+      "observed_ui_action": "commit_complete_group_name_endpoint_map_edit_once",
+      "observer_review": false
+    },
+    "undo_edit": {
+      "source": "checkpoints/undo_edit/source.weftforge",
+      "tool_transcript": "checkpoints/undo_edit/tool-transcript.json",
+      "screenshot": "checkpoints/undo_edit/screenshot.png",
+      "accessibility": "checkpoints/undo_edit/accessibility.txt",
+      "observed_ui_action": "one_native_undo_after_edit",
+      "observer_review": false
+    },
+    "redo_edit": {
+      "source": "checkpoints/redo_edit/source.weftforge",
+      "tool_transcript": "checkpoints/redo_edit/tool-transcript.json",
+      "screenshot": "checkpoints/redo_edit/screenshot.png",
+      "accessibility": "checkpoints/redo_edit/accessibility.txt",
+      "observed_ui_action": "one_native_redo_after_edit",
+      "observer_review": false
+    },
+    "reversed_once": {
+      "source": "checkpoints/reversed_once/source.weftforge",
+      "tool_transcript": "checkpoints/reversed_once/tool-transcript.json",
+      "screenshot": "checkpoints/reversed_once/screenshot.png",
+      "accessibility": "checkpoints/reversed_once/accessibility.txt",
+      "observed_ui_action": "one_native_reverse_b",
+      "observer_review": false
+    },
+    "reversed_twice": {
+      "source": "checkpoints/reversed_twice/source.weftforge",
+      "tool_transcript": "checkpoints/reversed_twice/tool-transcript.json",
+      "screenshot": "checkpoints/reversed_twice/screenshot.png",
+      "accessibility": "checkpoints/reversed_twice/accessibility.txt",
+      "observed_ui_action": "second_native_reverse_b",
+      "observer_review": false
+    },
+    "saved": {
+      "source": "checkpoints/saved/source.weftforge",
+      "tool_transcript": "checkpoints/saved/tool-transcript.json",
+      "screenshot": "checkpoints/saved/screenshot.png",
+      "accessibility": "checkpoints/saved/accessibility.txt",
+      "observed_ui_action": "native_save",
+      "observer_review": false
+    },
+    "reopened": {
+      "source": "checkpoints/reopened/source.weftforge",
+      "tool_transcript": "checkpoints/reopened/tool-transcript.json",
+      "screenshot": "checkpoints/reopened/screenshot.png",
+      "accessibility": "checkpoints/reopened/accessibility.txt",
+      "observed_ui_action": "native_quit_then_relaunch_and_reopen_saved_file",
+      "observer_review": false
+    }
+  },
+  "events": 56
+}

@@ -1,0 +1,82 @@
+{
+  "kind": "external-public-api-operations-producer-plan-v1",
+  "prepared_utc_date": "2026-11-14",
+  "execution_status_at_freeze": "No driver build, binding, candidate invocation or candidate receipt has occurred.",
+  "intended_source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "source_binding_policy": "Immutable clean detached worktree under owned source; exact tracked-source hashes and binary SHA256; exclusive new Cargo target. Build is allowed at pin, execution awaits exact-pin final workspace gates.",
+  "observer_review": false,
+  "commands": [
+    "split",
+    "join",
+    "undo_join",
+    "reject_overlap",
+    "redo_join",
+    "remesh",
+    "remove_piece",
+    "undo_removal",
+    "redo_removal"
+  ],
+  "checkpoints": [
+    "split_loaded",
+    "split",
+    "joined",
+    "undo_join",
+    "rejected_overlap",
+    "redo_join",
+    "remeshed",
+    "removal_loaded",
+    "removed",
+    "undo_removal",
+    "redo_removal"
+  ],
+  "action_requests": {
+    "split_loaded": "requests/split_loaded.json",
+    "split": "requests/split.json",
+    "join": "requests/join.json",
+    "undo_join": "requests/undo_join.json",
+    "reject_overlap": "requests/reject_overlap.json",
+    "redo_join": "requests/redo_join.json",
+    "remesh": "requests/remesh.json",
+    "removal_loaded": "requests/removal_loaded.json",
+    "remove_piece": "requests/remove_piece.json",
+    "undo_removal": "requests/undo_removal.json",
+    "redo_removal": "requests/redo_removal.json"
+  },
+  "receipt_policy": "Actual authoritative Editor.project; actual Project::mesh and Mesh::validate for every checkpoint. Native Project serialization through bytes before composing Value preserves f32 appearance fields. No expected-state computation, oracle, evaluator or other producer-output ingestion.",
+  "persistence_policy": "One live Editor per fixture context. create_new output writes; new per-attempt folders; stdout/stderr/invocations retained, including failures. No overwrite of first-run artifacts.",
+  "contract_sha256": {
+    "operations-supplement/declaration.md": "9fc926f2fbb050c7d1eaec99578ea54c569994dbfdaf4b9326de4dbc86e5c0a2",
+    "supplement-public-api-contract.json": "76270c4aa2984e2b67c35d2be303edc1a2cb88af18ecdb0a16ed9bc532cbfe6b",
+    "interface.json": "0d07de21237d02c60e2bc79ab5cd46d488b0aaf584fb8b9a07a9268c0a8e7060"
+  },
+  "input_original_sha256": {
+    "input-split-join-v3.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+    "input-dependent-removal-v3.weftforge": "e4a4acf83ba909002855a82fdacf265069651c792b56eb39ac0499ae68882fbf",
+    "invalid-overlap-group.json": "78c5ec621f8fe88956e3991b88e48f215702f310813ae2074c0d1c9cc1f84ebc"
+  },
+  "frozen_files": {
+    "producer.py": "dffa35e73f5d005af8fc73303c215ba9fc576ee395ab92d23909035439266522",
+    "driver/Cargo.toml": "67326a7a4da76bf67810999090eec310e612ede858c906f773dd2cfda9798c90",
+    "driver/src/main.rs": "634190ed5c63e8c4bb9a1920985721a7626c059958fead4cc55fddaf23dbd834",
+    "inputs/input-dependent-removal-v3.weftforge": "e4a4acf83ba909002855a82fdacf265069651c792b56eb39ac0499ae68882fbf",
+    "inputs/input-split-join-v3.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+    "inputs/invalid-overlap-group.json": "78c5ec621f8fe88956e3991b88e48f215702f310813ae2074c0d1c9cc1f84ebc",
+    "requests/join.json": "c53b8b82a4f26c2899b067f3f2075004d725b790ebfcc434fe37a136e0579f2d",
+    "requests/redo_join.json": "f33b8198505ffca6f9817cbbdc3f2d36f8b1176badf71f7d7336121cbec94e96",
+    "requests/redo_removal.json": "0ef6629cc623dc98c669d7276fb587136ebddadbc52a1ad50dfc7d29b96bd242",
+    "requests/reject_overlap.json": "1216d551d3edbdc0b5e91dea7b03eb2f7fc629d5e311385868fb68f9406f6e66",
+    "requests/remesh.json": "092e087829d74447fe32196aaeb7c1307fc6c483f1d78da907b3dd084f16c67b",
+    "requests/removal_loaded.json": "06e61d21f8705c786e42630a6989d4aa0e15cea0d29242c5aef30c9f9be8e242",
+    "requests/remove_piece.json": "becfbe32dcb17d645dd09a6eb7534f46b541d509ea81ab8a973517b560f0114d",
+    "requests/split.json": "d8dbd21143c763a227e02bdcce5bac42cc22dce8edddb81762e21622625bf728",
+    "requests/split_loaded.json": "783eb974dae480f7628b228e83cf470abdadd357a2a9ffbbe41f7b26d2a4d7e8",
+    "requests/undo_join.json": "dd094070c06e048215075c73d4edece97d296c7eae5356215bdd22c0d7a206bc",
+    "requests/undo_removal.json": "eb34bb8c1f5aacf26dee0a116f1fa661d386785209460cc73bf8a40b71484b70"
+  },
+  "scope": "Only ignored .local/chain-sewing-operations-producer-20261114. No production, tests, docs, registry or independent oracle edits. No proprietary artifact access. GitHub Actions remain disabled.",
+  "skipped": [
+    "persistent MCP history/product API additions",
+    "independent acceptance evaluation",
+    "reference or physics claims"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "checkpoint": "loaded",
+  "actions": [
+    {
+      "id": "001-open-working-project",
+      "started_utc": "2026-11-14T16:31:09.374Z",
+      "request": {
+        "tool": "click",
+        "element": 4,
+        "label": "Open…"
+      },
+      "completed_utc": "2026-11-14T16:31:11.093Z",
+      "accessibility": "actions/001-open-working-project-ax.txt",
+      "publication_accessibility_omission": {
+        "original_artifact": "actions/001-open-working-project-ax.txt",
+        "original_sha256": "010811f748a6c3aa7782c737d88f40b1f16d4bea3631221c396c429340ba2fff",
+        "original_bytes": 10542,
+        "reason": "Dialog-only AX contains personal file-dialog sidebar and filesystem paths. Native Open request/action records and resulting clean app AX/source checkpoints are retained."
+      }
+    },
+    {
+      "id": "002-go-to-working-file",
+      "started_utc": "2026-11-14T16:31:14.787Z",
+      "request": {
+        "tool": "pressKey",
+        "key": "super+shift+g"
+      },
+      "completed_utc": "2026-11-14T16:31:15.376Z",
+      "accessibility": "actions/002-go-to-working-file-ax.txt",
+      "publication_accessibility_omission": {
+        "original_artifact": "actions/002-go-to-working-file-ax.txt",
+        "original_sha256": "bab7a03012b996c9756c808af2d7530fe353d320d2af4cc8091f4b7abe8c04d7",
+        "original_bytes": 1109,
+        "reason": "Dialog-only AX contains personal file-dialog sidebar and filesystem paths. Native Open request/action records and resulting clean app AX/source checkpoints are retained."
+      }
+    },
+    {
+      "id": "003-choose-working-file",
+      "started_utc": "2026-11-14T16:31:20.575Z",
+      "request": {
+        "tool": "setValue+pressKey",
+        "element": 2,
+        "value": ".local/chain-sewing-final-20261114/native/working.weftforge",
+        "key": "Return"
+      },
+      "completed_utc": "2026-11-14T16:31:22.115Z",
+      "accessibility": "actions/003-choose-working-file-ax.txt",
+      "publication_accessibility_omission": {
+        "original_artifact": "actions/003-choose-working-file-ax.txt",
+        "original_sha256": "1f9a833a9626903947debb24dffe986515f0619dc2d593507150398c050f00ea",
+        "original_bytes": 6106,
+        "reason": "Dialog-only AX contains personal file-dialog sidebar and filesystem paths. Native Open request/action records and resulting clean app AX/source checkpoints are retained."
+      }
+    },
+    {
+      "id": "004-load-working-file",
+      "started_utc": "2026-11-14T16:31:26.212Z",
+      "request": {
+        "tool": "click",
+        "element": 118,
+        "label": "Open"
+      },
+      "completed_utc": "2026-11-14T16:31:27.239Z",
+      "accessibility": "actions/004-load-working-file-ax.txt"
+    },
+    {
+      "id": "005-save-loaded",
+      "started_utc": "2026-11-14T16:31:53.394Z",
+      "request": {
+        "tool": "click",
+        "element": 5,
+        "label": "Save"
+      },
+      "completed_utc": "2026-11-14T16:31:53.862Z",
+      "accessibility": "actions/005-save-loaded-ax.txt"
+    }
+  ],
+  "publication_derivative": {
+    "original_path": "checkpoints/loaded/tool-transcript.json",
+    "original_sha256": "d6ede7ee9d0a4b3f036b538375f06365d0599c113a40a60943406838c3942144",
+    "kind": "public path presentation derivative",
+    "changes": "Absolute workspace prefix becomes a workspace-relative path; omitted dialog-only AX references receive explicit omission metadata. Action identifiers, order, input values and outcomes are retained."
+  }
+}

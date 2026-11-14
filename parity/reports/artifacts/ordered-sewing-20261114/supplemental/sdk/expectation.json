@@ -1,0 +1,374 @@
+{
+  "frozen_at": "2026-11-14T15:38:19.204961+00:00",
+  "before_candidate_or_server_inspection": true,
+  "contract": "SEW-002-PATHS-v1",
+  "contract_sha256": "9baedd713b5a8dd4f251d7f2c5d0c51b408ecdabb32813a07dae06d25dcae960",
+  "independent_source": {
+    "path_relative_to_workspace": ".local/chain-sewing-acceptance-20261114/fixtures/line-identity-coarse.weftforge",
+    "sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+    "owned_copy": "input.weftforge"
+  },
+  "client_version": "1.28.1",
+  "protocol": "2025-11-25",
+  "binding_fields_supplied_later": [
+    "cli_path",
+    "cli_sha256",
+    "source_commit"
+  ],
+  "tool_names": [
+    "project_inspect",
+    "project_create",
+    "project_execute",
+    "project_export_svg",
+    "project_export_obj",
+    "project_export_dxf"
+  ],
+  "command_variants": [
+    "add_polygon",
+    "add_rectangle",
+    "move_point",
+    "set_curve_controls",
+    "split_curve",
+    "join_curve",
+    "resize_piece",
+    "set_placement",
+    "set_grain",
+    "set_material",
+    "add_material",
+    "update_material",
+    "add_seam",
+    "update_seam",
+    "remove_seam",
+    "remove_piece",
+    "set_resolution",
+    "set_mannequin",
+    "add_sewing_group",
+    "update_sewing_group",
+    "remove_sewing_group"
+  ],
+  "new_command_data_fields": {
+    "add_sewing_group": [
+      "name",
+      "a",
+      "b",
+      "correspondence"
+    ],
+    "update_sewing_group": [
+      "group"
+    ],
+    "remove_sewing_group": [
+      "group"
+    ]
+  },
+  "precision": {
+    "default": "Exact IEEE f64 bits for every expected floating field.",
+    "exception": "project.materials[*].color[*] uses exact IEEE f32 bits.",
+    "other_values": "Exact keys, types, array order and values; no tolerance or unknown fields."
+  },
+  "calls": [
+    {
+      "case": "atomic_update_and_add",
+      "tool": "project_execute",
+      "is_error": false,
+      "arguments": {
+        "input": "input.weftforge",
+        "output": "sdk-batch.weftforge",
+        "commands": [
+          {
+            "type": "update_sewing_group",
+            "data": {
+              "group": {
+                "id": 1000,
+                "name": "SDK renamed original, reversed B",
+                "a": [
+                  {
+                    "curve": 7,
+                    "t0": 0.125,
+                    "t1": 0.375
+                  },
+                  {
+                    "curve": 16,
+                    "t0": 0.9,
+                    "t1": 0.3
+                  }
+                ],
+                "b": [
+                  {
+                    "curve": 43,
+                    "t0": 0.375,
+                    "t1": 0.125
+                  },
+                  {
+                    "curve": 34,
+                    "t0": 0.25,
+                    "t1": 0.75
+                  },
+                  {
+                    "curve": 25,
+                    "t0": 0.75,
+                    "t1": 0.25
+                  }
+                ],
+                "correspondence": [
+                  [
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    1.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "type": "add_sewing_group",
+            "data": {
+              "name": "SDK independent nonlinear two to three",
+              "a": [
+                {
+                  "curve": 8,
+                  "t0": 0.125,
+                  "t1": 0.875
+                },
+                {
+                  "curve": 17,
+                  "t0": 0.8,
+                  "t1": 0.2
+                }
+              ],
+              "b": [
+                {
+                  "curve": 26,
+                  "t0": 0.9,
+                  "t1": 0.1
+                },
+                {
+                  "curve": 35,
+                  "t0": 0.25,
+                  "t1": 0.75
+                },
+                {
+                  "curve": 44,
+                  "t0": 0.125,
+                  "t1": 0.625
+                }
+              ],
+              "correspondence": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.2,
+                  0.35
+                ],
+                [
+                  0.625,
+                  0.8
+                ],
+                [
+                  1.0,
+                  1.0
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "expected_result": {
+        "revision": 74,
+        "commands_applied": 2
+      },
+      "expected_native": "expected-batch.weftforge",
+      "expected_bits": "expected-batch-numeric-bits.json"
+    },
+    {
+      "case": "inspect_atomic_result",
+      "tool": "project_inspect",
+      "is_error": false,
+      "arguments": {
+        "path": "sdk-batch.weftforge"
+      },
+      "expected_native": "expected-batch.weftforge"
+    },
+    {
+      "case": "remove_only_created_group",
+      "tool": "project_execute",
+      "is_error": false,
+      "arguments": {
+        "input": "sdk-batch.weftforge",
+        "output": "sdk-removed.weftforge",
+        "commands": [
+          {
+            "type": "remove_sewing_group",
+            "data": {
+              "group": 1001
+            }
+          }
+        ]
+      },
+      "expected_result": {
+        "revision": 75,
+        "commands_applied": 1
+      },
+      "expected_native": "expected-removed.weftforge",
+      "expected_bits": "expected-removed-numeric-bits.json"
+    },
+    {
+      "case": "reject_overlap_atomically",
+      "tool": "project_execute",
+      "is_error": true,
+      "arguments": {
+        "input": "sdk-removed.weftforge",
+        "output": "preserved-output.weftforge",
+        "commands": [
+          {
+            "type": "update_sewing_group",
+            "data": {
+              "group": {
+                "id": 1000,
+                "name": "REJECTED transaction must not commit",
+                "a": [
+                  {
+                    "curve": 7,
+                    "t0": 0.125,
+                    "t1": 0.375
+                  },
+                  {
+                    "curve": 16,
+                    "t0": 0.9,
+                    "t1": 0.3
+                  }
+                ],
+                "b": [
+                  {
+                    "curve": 43,
+                    "t0": 0.375,
+                    "t1": 0.125
+                  },
+                  {
+                    "curve": 34,
+                    "t0": 0.25,
+                    "t1": 0.75
+                  },
+                  {
+                    "curve": 25,
+                    "t0": 0.75,
+                    "t1": 0.25
+                  }
+                ],
+                "correspondence": [
+                  [
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    1.0,
+                    1.0
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "type": "add_sewing_group",
+            "data": {
+              "name": "REJECTED overlapping group",
+              "a": [
+                {
+                  "curve": 8,
+                  "t0": 0.125,
+                  "t1": 0.875
+                }
+              ],
+              "b": [
+                {
+                  "curve": 8,
+                  "t0": 0.75,
+                  "t1": 0.25
+                }
+              ],
+              "correspondence": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  1.0,
+                  1.0
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "preserved_sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067"
+    },
+    {
+      "case": "reject_future_version",
+      "tool": "project_execute",
+      "is_error": true,
+      "arguments": {
+        "input": "future.weftforge",
+        "output": "preserved-output.weftforge",
+        "commands": [
+          {
+            "type": "add_rectangle",
+            "data": {
+              "name": "REJECTED source must not create this rectangle",
+              "origin": [
+                0.0,
+                0.0
+              ],
+              "width": 0.2,
+              "height": 0.3
+            }
+          }
+        ]
+      },
+      "preserved_sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067"
+    },
+    {
+      "case": "reject_malformed_json",
+      "tool": "project_execute",
+      "is_error": true,
+      "arguments": {
+        "input": "malformed.weftforge",
+        "output": "preserved-output.weftforge",
+        "commands": [
+          {
+            "type": "add_rectangle",
+            "data": {
+              "name": "REJECTED source must not create this rectangle",
+              "origin": [
+                0.0,
+                0.0
+              ],
+              "width": 0.2,
+              "height": 0.3
+            }
+          }
+        ]
+      },
+      "preserved_sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067"
+    }
+  ],
+  "failure_requirements": [
+    "isError true and nonempty structuredContent.error",
+    "preexisting native sentinel unchanged after each failure",
+    "all frozen files and both successful output bytes unchanged",
+    "no recovery-file side effect"
+  ],
+  "limits": [
+    "Official SDK 1.28.1 legacy 2025-11-25 local stdio only.",
+    "Final packaged CLI identity must be bound before starting a server.",
+    "No production source, candidate outputs or independent evaluator used to generate expectations.",
+    "No GUI control, undo/Redo, native gesture or live-document synchronization claim.",
+    "No metric/mesh, physical sewing, current-profile client or reference-parity claim.",
+    "Native/fixture CLI comparisons are separate evidence.",
+    "No network, installation, listeners, CI, Cargo or export calls.",
+    "Local ignored artifacts are not tracked published evidence."
+  ]
+}

@@ -1,0 +1,353 @@
+{
+  "kind": "oracle_self_check",
+  "candidate_outputs_inspected": false,
+  "synthetic_positive_receipts": 10,
+  "negative_witnesses": [
+    {
+      "case": "line-identity-coarse",
+      "mutation": "revision-corruption",
+      "rejected": true
+    },
+    {
+      "case": "line-identity-coarse",
+      "mutation": "f64-corruption",
+      "rejected": true
+    },
+    {
+      "case": "line-identity-coarse",
+      "mutation": "lost-disconnected-or-map-cell",
+      "rejected": true
+    },
+    {
+      "case": "line-identity-coarse",
+      "mutation": "wrong-span-order",
+      "rejected": true
+    },
+    {
+      "case": "line-identity-coarse",
+      "mutation": "wrong-direction",
+      "rejected": true
+    },
+    {
+      "case": "line-identity-coarse",
+      "mutation": "wrong-total-metric",
+      "rejected": true
+    },
+    {
+      "case": "line-identity-coarse",
+      "mutation": "artificial-source-bridge",
+      "rejected": true
+    },
+    {
+      "case": "line-nonlinear-coarse",
+      "mutation": "revision-corruption",
+      "rejected": true
+    },
+    {
+      "case": "line-nonlinear-coarse",
+      "mutation": "f64-corruption",
+      "rejected": true
+    },
+    {
+      "case": "line-nonlinear-coarse",
+      "mutation": "lost-disconnected-or-map-cell",
+      "rejected": true
+    },
+    {
+      "case": "line-nonlinear-coarse",
+      "mutation": "wrong-span-order",
+      "rejected": true
+    },
+    {
+      "case": "line-nonlinear-coarse",
+      "mutation": "wrong-direction",
+      "rejected": true
+    },
+    {
+      "case": "line-nonlinear-coarse",
+      "mutation": "wrong-total-metric",
+      "rejected": true
+    },
+    {
+      "case": "line-nonlinear-coarse",
+      "mutation": "artificial-source-bridge",
+      "rejected": true
+    },
+    {
+      "case": "collinear-coarse",
+      "mutation": "revision-corruption",
+      "rejected": true
+    },
+    {
+      "case": "collinear-coarse",
+      "mutation": "f64-corruption",
+      "rejected": true
+    },
+    {
+      "case": "collinear-coarse",
+      "mutation": "lost-disconnected-or-map-cell",
+      "rejected": true
+    },
+    {
+      "case": "collinear-coarse",
+      "mutation": "wrong-span-order",
+      "rejected": true
+    },
+    {
+      "case": "collinear-coarse",
+      "mutation": "wrong-direction",
+      "rejected": true
+    },
+    {
+      "case": "collinear-coarse",
+      "mutation": "wrong-total-metric",
+      "rejected": true
+    },
+    {
+      "case": "collinear-coarse",
+      "mutation": "artificial-source-bridge",
+      "rejected": true
+    },
+    {
+      "case": "collinear-coarse",
+      "mutation": "collinear-t-equals-length-shortcut",
+      "rejected": true
+    },
+    {
+      "case": "asymmetric-coarse",
+      "mutation": "revision-corruption",
+      "rejected": true
+    },
+    {
+      "case": "asymmetric-coarse",
+      "mutation": "f64-corruption",
+      "rejected": true
+    },
+    {
+      "case": "asymmetric-coarse",
+      "mutation": "lost-disconnected-or-map-cell",
+      "rejected": true
+    },
+    {
+      "case": "asymmetric-coarse",
+      "mutation": "wrong-span-order",
+      "rejected": true
+    },
+    {
+      "case": "asymmetric-coarse",
+      "mutation": "wrong-direction",
+      "rejected": true
+    },
+    {
+      "case": "asymmetric-coarse",
+      "mutation": "wrong-total-metric",
+      "rejected": true
+    },
+    {
+      "case": "asymmetric-coarse",
+      "mutation": "artificial-source-bridge",
+      "rejected": true
+    },
+    {
+      "case": "legacy-v2-f64",
+      "mutation": "revision-corruption",
+      "rejected": true
+    },
+    {
+      "case": "legacy-v2-f64",
+      "mutation": "f64-corruption",
+      "rejected": true
+    },
+    {
+      "case": "legacy-v2-f64",
+      "mutation": "legacy-map-reinterpretation-in-source",
+      "rejected": true
+    },
+    {
+      "case": "legacy-v2-f64",
+      "mutation": "migration-drops-seam",
+      "rejected": true
+    },
+    {
+      "case": "line-identity-fine",
+      "mutation": "revision-corruption",
+      "rejected": true
+    },
+    {
+      "case": "line-identity-fine",
+      "mutation": "f64-corruption",
+      "rejected": true
+    },
+    {
+      "case": "line-identity-fine",
+      "mutation": "lost-disconnected-or-map-cell",
+      "rejected": true
+    },
+    {
+      "case": "line-identity-fine",
+      "mutation": "wrong-span-order",
+      "rejected": true
+    },
+    {
+      "case": "line-identity-fine",
+      "mutation": "wrong-direction",
+      "rejected": true
+    },
+    {
+      "case": "line-identity-fine",
+      "mutation": "wrong-total-metric",
+      "rejected": true
+    },
+    {
+      "case": "line-identity-fine",
+      "mutation": "artificial-source-bridge",
+      "rejected": true
+    },
+    {
+      "case": "line-nonlinear-fine",
+      "mutation": "revision-corruption",
+      "rejected": true
+    },
+    {
+      "case": "line-nonlinear-fine",
+      "mutation": "f64-corruption",
+      "rejected": true
+    },
+    {
+      "case": "line-nonlinear-fine",
+      "mutation": "lost-disconnected-or-map-cell",
+      "rejected": true
+    },
+    {
+      "case": "line-nonlinear-fine",
+      "mutation": "wrong-span-order",
+      "rejected": true
+    },
+    {
+      "case": "line-nonlinear-fine",
+      "mutation": "wrong-direction",
+      "rejected": true
+    },
+    {
+      "case": "line-nonlinear-fine",
+      "mutation": "wrong-total-metric",
+      "rejected": true
+    },
+    {
+      "case": "line-nonlinear-fine",
+      "mutation": "artificial-source-bridge",
+      "rejected": true
+    },
+    {
+      "case": "collinear-fine",
+      "mutation": "revision-corruption",
+      "rejected": true
+    },
+    {
+      "case": "collinear-fine",
+      "mutation": "f64-corruption",
+      "rejected": true
+    },
+    {
+      "case": "collinear-fine",
+      "mutation": "lost-disconnected-or-map-cell",
+      "rejected": true
+    },
+    {
+      "case": "collinear-fine",
+      "mutation": "wrong-span-order",
+      "rejected": true
+    },
+    {
+      "case": "collinear-fine",
+      "mutation": "wrong-direction",
+      "rejected": true
+    },
+    {
+      "case": "collinear-fine",
+      "mutation": "wrong-total-metric",
+      "rejected": true
+    },
+    {
+      "case": "collinear-fine",
+      "mutation": "artificial-source-bridge",
+      "rejected": true
+    },
+    {
+      "case": "collinear-fine",
+      "mutation": "collinear-t-equals-length-shortcut",
+      "rejected": true
+    },
+    {
+      "case": "asymmetric-fine",
+      "mutation": "revision-corruption",
+      "rejected": true
+    },
+    {
+      "case": "asymmetric-fine",
+      "mutation": "f64-corruption",
+      "rejected": true
+    },
+    {
+      "case": "asymmetric-fine",
+      "mutation": "lost-disconnected-or-map-cell",
+      "rejected": true
+    },
+    {
+      "case": "asymmetric-fine",
+      "mutation": "wrong-span-order",
+      "rejected": true
+    },
+    {
+      "case": "asymmetric-fine",
+      "mutation": "wrong-direction",
+      "rejected": true
+    },
+    {
+      "case": "asymmetric-fine",
+      "mutation": "wrong-total-metric",
+      "rejected": true
+    },
+    {
+      "case": "asymmetric-fine",
+      "mutation": "artificial-source-bridge",
+      "rejected": true
+    },
+    {
+      "case": "legacy-v1-f64",
+      "mutation": "revision-corruption",
+      "rejected": true
+    },
+    {
+      "case": "legacy-v1-f64",
+      "mutation": "f64-corruption",
+      "rejected": true
+    },
+    {
+      "case": "legacy-v1-f64",
+      "mutation": "legacy-map-reinterpretation-in-source",
+      "rejected": true
+    },
+    {
+      "case": "legacy-v1-f64",
+      "mutation": "migration-drops-seam",
+      "rejected": true
+    },
+    {
+      "case": "mesh-mechanics",
+      "mutation": "weighted-artificial-bridge",
+      "rejected": true
+    },
+    {
+      "case": "mesh-mechanics",
+      "mutation": "missing-real-constraints",
+      "rejected": true
+    },
+    {
+      "case": "mesh-mechanics",
+      "mutation": "stale-rest-mesh",
+      "rejected": true
+    }
+  ],
+  "claim": "evaluator mechanics only; no production acceptance or reference parity"
+}

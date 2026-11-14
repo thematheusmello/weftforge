@@ -1,0 +1,18 @@
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/weftforge_sim-3sieyka2rixpr/s-ho5ne9fjnw-1tuy3mm-working`
+
+warning: `weftforge-sim` (lib) generated 1 warning
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/weftforge_core-375x8xhhkmnns/s-ho5nsi5hfb-0moy837-working`
+
+warning: `weftforge-core` (lib) generated 1 warning
+   Compiling weftforge-cli v0.1.0 (<WORKSPACE>/apps/weftforge-cli)
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/weftforge_cli-07fqr4g6f6icj/s-ho5nsn9k5v-0ej8ts9-working`
+
+warning: `weftforge-cli` (bin "weftforge-cli") generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.72s
+     Running tests/grain.rs (target/debug/deps/grain-6ce5cda1a5c0788b)
+
+running 1 test
+test cli_authors_grain_and_orthotropy_and_preserves_output_on_invalid_values ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.26s
+
