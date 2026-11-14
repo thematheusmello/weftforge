@@ -122,7 +122,7 @@ fn reversal_changes_endpoint_pairing_and_preserves_partial_nonlinear_constructio
             let saved = editor.project.to_json().unwrap();
             assert_eq!(
                 serde_json::from_slice::<serde_json::Value>(&saved).unwrap()["version"],
-                2
+                3
             );
             let reopened = Project::from_json(&saved).unwrap();
             assert_eq!(reopened, editor.project);
