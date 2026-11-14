@@ -1,0 +1,43 @@
+{
+  "status": "Not included in this supplemental package.",
+  "successful_receipt_delivery": "The separate output-review bundle carries all ten final actual CLI receipts. The two fine/coarse receipts here have identical hashes to its final-runtime inputs.",
+  "records": [
+    {
+      "path": ".local/chain-fine-mesh-20261114/candidate-fine.stdout",
+      "bytes": 14828365,
+      "sha256": "4ce736b7f9d6c962261a799a08a4c5e9eebc6409fa1b59088195d59e831a59b0"
+    },
+    {
+      "path": ".local/chain-fine-mesh-20261114/production-asymmetric-fine.stdout",
+      "bytes": 14828365,
+      "sha256": "4ce736b7f9d6c962261a799a08a4c5e9eebc6409fa1b59088195d59e831a59b0"
+    },
+    {
+      "path": ".local/chain-fine-mesh-20261114/production-asymmetric-coarse.stdout",
+      "bytes": 266542,
+      "sha256": "f670570ced8a839e34a0ea7f05bef9c9558964253720f871a20ea7e2ced49dcd"
+    },
+    {
+      "path": ".local/chain-fine-mesh-20261114/candidate-geometry.rs",
+      "bytes": 29808,
+      "sha256": "9516f8ceab8f2a225c812b5ceb04a55369cb65294b3303c27958bf56d04e4966"
+    },
+    {
+      "path": ".local/chain-fine-mesh-20261114/candidate-instrumented-geometry.rs",
+      "bytes": 30710,
+      "sha256": "d3c4bbf6ec9cc9160cbbf66cc19ac4e128e6b6992b9f4b7cefb3a1d54bd02ba1"
+    },
+    {
+      "path": ".local/chain-sewing-final-20261114/headless/asymmetric-fine/inspect-stdout.json",
+      "bytes": 14828365,
+      "sha256": "4ce736b7f9d6c962261a799a08a4c5e9eebc6409fa1b59088195d59e831a59b0"
+    },
+    {
+      "path": ".local/chain-sewing-final-20261114/headless/asymmetric-coarse/inspect-stdout.json",
+      "bytes": 266542,
+      "sha256": "f670570ced8a839e34a0ea7f05bef9c9558964253720f871a20ea7e2ced49dcd"
+    }
+  ],
+  "omitted_debug_success_receipts": 9,
+  "debug_scope": "producer-results.json records nine other historical debug successes. Their raw successful receipts and evaluations are omitted; this package makes no published replay claim for those nine."
+}

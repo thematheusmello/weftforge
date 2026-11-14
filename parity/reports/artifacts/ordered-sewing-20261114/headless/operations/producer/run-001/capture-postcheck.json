@@ -1,0 +1,20 @@
+{
+  "kind": "producer-capture-integrity-check-v1",
+  "manifest_sha256": "7ac6e04afe1dae0815bc0f1dd25d03a3849dacbbe4bac9ec29172e5bb66bb082",
+  "artifacts_count": 45,
+  "artifact_hashes_match": true,
+  "actual_request_bytes_match_frozen_plan": true,
+  "actual_response_invocation_records_agree": true,
+  "actual_command_process_ids": [
+    7742
+  ],
+  "all_supplied_gate_log_hashes_match": true,
+  "detached_source_status_after_capture": "",
+  "observer_review": false,
+  "independent_evaluator_invoked": false,
+  "transcript_sha256": {
+    "stdout": "ba559240360591b797448a025d9eab0ad10bd809ef74a85019853bcbb365f3a7",
+    "stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "invocation": "cddc7545a099ed048c6b79febff450c9ab4bd897215ddcbe2b620454c8761e9c"
+  }
+}

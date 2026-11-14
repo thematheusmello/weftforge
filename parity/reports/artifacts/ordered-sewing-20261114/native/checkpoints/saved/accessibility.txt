@@ -1,0 +1,95 @@
+Window: "WeftForge", App: WeftForge.
+0 standard window WeftForge, Secondary Actions: Raise
+	1 container
+		2 text (settable) WeftForge
+		3 text (settable) Open garment design.
+		4 button Open…
+		5 button Save
+		6 button Save as…
+		7 button Recover…
+		8 button Export OBJ
+		9 button Export SVG
+		10 button Export DXF
+		11 button Undo
+		12 button Redo
+		13 button Commands ⌘K
+		14 toggle button (settable, boolean) Select / edit, Value: off
+		15 toggle button (settable, boolean) Polygon, Value: off
+		16 toggle button (settable, boolean) Rectangle, Value: off
+		17 toggle button (settable, boolean) Sew edges, Value: off
+		18 toggle button (settable, boolean) M:N sewing, Value: on
+		19 text (settable) Select A · A 0 / B 0 · Enter confirms · Delete last · Esc cancels
+		20 button Play
+		21 button Step
+		22 button Assemble (gravity off)
+		23 button Drape
+		24 button Reset
+		25 checkbox (settable, boolean) Wireframe, Value: off
+		26 text (settable) 5 pieces · 0 legacy seams · 1 sewing groups · 270 vertices
+		27 text (settable) Stage: Rest arrangement
+		28 text (settable) Next step settings: dt 0.01667 s · 4 substeps · 8 iterations · gravity [0.0, -9.81, 0.0] m/s² · seam closure 0.50 m/s
+		29 text (settable) Saved editable project atomically.
+		30 text (settable) Construction
+		31 toggle button (settable, boolean) Original disconnected panel 1, Value: off
+		32 toggle button (settable, boolean) Original disconnected panel 2, Value: off
+		33 toggle button (settable, boolean) Original disconnected panel 3, Value: off
+		34 toggle button (settable, boolean) Original disconnected panel 4, Value: off
+		35 toggle button (settable, boolean) Original disconnected panel 5, Value: off
+		36 text (settable) Pattern name
+		37 text field (settable) Pattern 1
+		38 text (settable) W / H m
+		39 stepper (settable) 0.50
+		40 stepper (settable) 0.60
+		41 text (settable) X / Y m
+		42 stepper (settable) -0.25
+		43 stepper (settable) 1.00
+		44 button Add rectangle
+		45 button Add polygon point
+		46 button Close pattern (0 points)
+		47 text (settable) Sewing
+		48 checkbox (settable, boolean) Reverse paired edge, Value: off
+		49 text (settable) A interval / B interval (0–1)
+		50 stepper (settable) 0.90
+		51 stepper (settable) 0.30
+		52 stepper (settable) 0.125
+		53 stepper (settable) 0.375
+		54 text (settable) Sew edges: click two 2D boundaries.
+		55 text (settable) Intervals use curve parameter t, not arc length. Reverse swaps B's direction and keeps the normalized mapping.
+		56 text (settable) Ordered sewing groups
+		57 text (settable) Pairing: total authored arc length in metres. Span endpoints use curve parameter t.
+		58 text (settable) Select side A · A 0 spans / B 0 spans
+		59 text (settable) Click boundaries in traversal order; next span uses the A/B interval above and B direction setting. Enter confirms a side; Delete removes the latest span; Escape cancels.
+		60 text (settable) Side A · 0 spans
+		61 button Add boundary to A
+		62 text (settable) Side B · 0 spans
+		63 button Confirm A (Enter)
+		64 button Delete last
+		65 button Cancel sewing (Escape)
+		66 text (settable) Native ordered acceptance edited · group #1001
+		67 text (settable) A 2 spans → B 3 spans
+		68 text (settable) A1 · #7 · t 0.15 → 0.4
+		69 text (settable) A2 · #16 · t 0.9 → 0.3
+		70 text (settable) B1 · #25 · t 0.25 → 0.75
+		71 text (settable) B2 · #34 · t 0.75 → 0.25
+		72 text (settable) B3 · #43 · t 0.125 → 0.375
+		73 text (settable) A 0.40000000 m · B 0.60000000 m
+Mismatch +0.20000000 m · 6 paired portions
+		74 button Edit group
+		75 button Reverse B
+		76 button Remove group
+		77 text (settable) Mesh edge length m
+		78 stepper (settable) 0.110
+		79 text (settable) Iterations / substeps
+		80 stepper (settable) 8
+		81 stepper (settable) 4
+		82 scroll bar
+		83 text (settable) 2D PATTERNS
+		84 text (settable) Metres · 1 cm snap · scroll zoom · middle drag pan
+		85 unknown
+		86 text (settable) 3D GARMENT
+		87 text (settable) Drag orbit · scroll zoom · triangle selection
+		88 unknown
+	89 text WeftForge
+	90 menu button Window sharing
+91 menu bar
+	92 WeftForge

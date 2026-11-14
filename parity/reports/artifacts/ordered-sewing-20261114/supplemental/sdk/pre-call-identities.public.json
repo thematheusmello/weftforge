@@ -1,0 +1,48 @@
+{
+  "kind": "implementation_only_official_sdk_ordered_sewing_groups_smoke",
+  "started_at": "2026-11-14T16:25:51.308646+00:00",
+  "client": "official Python mcp",
+  "client_version": "1.28.1",
+  "python_version": "3.13.0 (main, Nov 12 2025, 18:15:04) [Clang 17.0.0 (clang-1700.0.13.3)]",
+  "python_executable": "<HOME>/.pyenv/versions/3.13.0/bin/python3",
+  "python_executable_sha256": "dae804f93cd396de84720747c66218ff0aed9f74385f71dd9b3e62c49ce5b2ce",
+  "sdk_files": {
+    "<HOME>/.pyenv/versions/3.13.0/lib/python3.13/site-packages/mcp/__init__.py": "f66ae17959a1420edb67624dcd79da20860543e1d513b7d5c86ec0250cf8af72",
+    "<HOME>/.pyenv/versions/3.13.0/lib/python3.13/site-packages/mcp/client/session.py": "92f812af17983f5a36b4703b065216cc49252fc59dbd04b753286fa78580b07a",
+    "<HOME>/.pyenv/versions/3.13.0/lib/python3.13/site-packages/mcp/client/stdio/__init__.py": "a23227cfe1e3456f16ab41311486a399cf547fcc6b645399bf9bf3a6dc6cf654"
+  },
+  "binding": {
+    "cli_path": ".local/candidates/3eddef067c8a/weftforge-cli",
+    "cli_sha256": "5755ecd4aefb29b0060370c8369ee823fdbbd19cae85d5dd675edec48de954e1",
+    "source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9"
+  },
+  "binding_sha256": "5d6b70e052a5acfd192e7c84fc88be66d6b853d63ed02ee2e7f61b6edab1814c",
+  "cli_before_sha256": "5755ecd4aefb29b0060370c8369ee823fdbbd19cae85d5dd675edec48de954e1",
+  "freeze_sha256": "0bde0fc960a0c3e1c9f93238cb9c9e899b455da7dde72dab663105e02f76e285",
+  "frozen_files_before": {
+    "README.md": "03fc4803279ab4c10c85ec183ad6b031d749d0e449afd768b662550d97f90c5d",
+    "expectation.json": "3b51e578a53a70da579523030c019fb46bde3b435d3f3d57f66d6bd707e94dc6",
+    "expected-batch-numeric-bits.json": "64a8ec491da956d8cc15fb4190136b3f214301727bbfa3853b1b8bed42c67402",
+    "expected-batch.weftforge": "ee1a637d3f8ffbcd922ec7e0292ed9b864d272d09f919f1a979e69399a540c16",
+    "expected-removed-numeric-bits.json": "a84a142fcae4cdfc500c8fd991774dfbd38dea959b6b247f8a5474f33315037a",
+    "expected-removed.weftforge": "c3383090da63227fd87664b93282cebe4aa59d25c9e72281c84a1a6ef1a5ce3c",
+    "future.weftforge": "43f3f8d5500aad5eca2e89c8c1c2e458cdcee5045006bf7d7ae5516f486dcb18",
+    "input.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+    "malformed.weftforge": "06da0cb084b0926d6cc49a47d2d6eaeb9d16d1d39f21fbf277232b1f626c10cc",
+    "preparation-self-checks.json": "4211174119a0b7dc8e631a5de65e2e2dbec90bdedcafe480f4a67d39a6b90bd5",
+    "preserved-output.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+    "run-official-sdk.py": "4f77425fe1ba24e5934af2328186169bd50c12f472903c4b1f1d736e85729327"
+  },
+  "limits": [
+    "Official SDK 1.28.1 legacy 2025-11-25 local stdio only.",
+    "Final packaged CLI identity must be bound before starting a server.",
+    "No production source, candidate outputs or independent evaluator used to generate expectations.",
+    "No GUI control, undo/Redo, native gesture or live-document synchronization claim.",
+    "No metric/mesh, physical sewing, current-profile client or reference-parity claim.",
+    "Native/fixture CLI comparisons are separate evidence.",
+    "No network, installation, listeners, CI, Cargo or export calls.",
+    "Local ignored artifacts are not tracked published evidence."
+  ],
+  "calls": [],
+  "transcript_kind": "Original decoded SDK stream messages, not literal transport bytes."
+}

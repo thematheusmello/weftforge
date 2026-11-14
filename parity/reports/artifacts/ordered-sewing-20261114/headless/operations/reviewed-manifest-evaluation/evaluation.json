@@ -1,0 +1,225 @@
+{
+  "kind": "headless-chain-sewing-evaluation-v1",
+  "status": "pass",
+  "candidate": {
+    "commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+    "binary_sha256": "ab64abad99f02ee2408b3e4b63221cb3b78c200651bc25d78617a1f88cf3c6ef"
+  },
+  "checkpoints": [
+    {
+      "checkpoint": "split_loaded",
+      "metric": [
+        {
+          "group": 1000,
+          "portions": 4,
+          "maximum_portion_pair_error_m": "4.16333634234433895251856314257632231726453888718908553940294E-17"
+        }
+      ],
+      "mesh": {
+        "stitches": 17,
+        "maximum_pair_error_m": "9.43689570931383262738289045169322848827595576055774061952595E-17",
+        "maximum_weighted_rest_chord_deviation_m": "2.22044604925031308084726333618164062500000000000000000000000E-16",
+        "legacy_stitches": {}
+      },
+      "maximum_continuity_error_m": null
+    },
+    {
+      "checkpoint": "split",
+      "metric": [
+        {
+          "group": 1000,
+          "portions": 5,
+          "maximum_portion_pair_error_m": "3.37692836656818283687154368731347350210571659371736747517032E-17"
+        }
+      ],
+      "mesh": {
+        "stitches": 18,
+        "maximum_pair_error_m": "5.06539254985228260613955439402456590545022101858018051203734E-17",
+        "maximum_weighted_rest_chord_deviation_m": "2.22044604925031308084726333618164062500000000000000000000000E-16",
+        "legacy_stitches": {}
+      },
+      "maximum_continuity_error_m": "4.16333634234433702658861875534057617187499999999999999999999E-17"
+    },
+    {
+      "checkpoint": "joined",
+      "metric": [
+        {
+          "group": 1000,
+          "portions": 5,
+          "maximum_portion_pair_error_m": "2.77555756156289038809410697660924452767298282804825265291515E-17"
+        }
+      ],
+      "mesh": {
+        "stitches": 19,
+        "maximum_pair_error_m": "8.38449680055456758623780522133691802843743870325319246730402E-17",
+        "maximum_weighted_rest_chord_deviation_m": "2.22044604925031308084726333618164062500000000000000000000000E-16",
+        "legacy_stitches": {}
+      },
+      "maximum_continuity_error_m": "5.55111512312578270211815834045410156250000000000000000000000E-17"
+    },
+    {
+      "checkpoint": "undo_join",
+      "metric": [
+        {
+          "group": 1000,
+          "portions": 5,
+          "maximum_portion_pair_error_m": "3.37692836656818283687154368731347350210571659371736747517032E-17"
+        }
+      ],
+      "mesh": {
+        "stitches": 18,
+        "maximum_pair_error_m": "5.06539254985228260613955439402456590545022101858018051203734E-17",
+        "maximum_weighted_rest_chord_deviation_m": "2.22044604925031308084726333618164062500000000000000000000000E-16",
+        "legacy_stitches": {}
+      },
+      "maximum_continuity_error_m": "4.16333634234433702658861875534057617187499999999999999999999E-17"
+    },
+    {
+      "checkpoint": "rejected_overlap",
+      "metric": [
+        {
+          "group": 1000,
+          "portions": 5,
+          "maximum_portion_pair_error_m": "3.37692836656818283687154368731347350210571659371736747517032E-17"
+        }
+      ],
+      "mesh": {
+        "stitches": 18,
+        "maximum_pair_error_m": "5.06539254985228260613955439402456590545022101858018051203734E-17",
+        "maximum_weighted_rest_chord_deviation_m": "2.22044604925031308084726333618164062500000000000000000000000E-16",
+        "legacy_stitches": {}
+      },
+      "maximum_continuity_error_m": "4.16333634234433702658861875534057617187499999999999999999999E-17"
+    },
+    {
+      "checkpoint": "redo_join",
+      "metric": [
+        {
+          "group": 1000,
+          "portions": 5,
+          "maximum_portion_pair_error_m": "2.77555756156289038809410697660924452767298282804825265291515E-17"
+        }
+      ],
+      "mesh": {
+        "stitches": 19,
+        "maximum_pair_error_m": "8.38449680055456758623780522133691802843743870325319246730402E-17",
+        "maximum_weighted_rest_chord_deviation_m": "2.22044604925031308084726333618164062500000000000000000000000E-16",
+        "legacy_stitches": {}
+      },
+      "maximum_continuity_error_m": "5.55111512312578270211815834045410156250000000000000000000000E-17"
+    },
+    {
+      "checkpoint": "remeshed",
+      "metric": [
+        {
+          "group": 1000,
+          "portions": 5,
+          "maximum_portion_pair_error_m": "2.77555756156289038809410697660924452767298282804825265291515E-17"
+        }
+      ],
+      "mesh": {
+        "stitches": 61,
+        "maximum_pair_error_m": "9.92261828258733412351256396763589525065720582409103784228077E-17",
+        "maximum_weighted_rest_chord_deviation_m": "3.33066907387546962127089500427246093749999999999999999999999E-16",
+        "legacy_stitches": {}
+      },
+      "maximum_continuity_error_m": "5.55111512312578270211815834045410156250000000000000000000000E-17"
+    },
+    {
+      "checkpoint": "removal_loaded",
+      "metric": [
+        {
+          "group": 1000,
+          "portions": 4,
+          "maximum_portion_pair_error_m": "4.16333634234433895251856314257632231726453888718908553940294E-17"
+        },
+        {
+          "group": 1001,
+          "portions": 2,
+          "maximum_portion_pair_error_m": "1.58603289232165335773534243931773890253364536710121508183424E-18"
+        }
+      ],
+      "mesh": {
+        "stitches": 23,
+        "maximum_pair_error_m": "9.43689570931383262738289045169322848827595576055774061952595E-17",
+        "maximum_weighted_rest_chord_deviation_m": "2.22044604925031308084726333618164062500000000000000000000000E-16",
+        "legacy_stitches": {}
+      },
+      "maximum_continuity_error_m": null
+    },
+    {
+      "checkpoint": "removed",
+      "metric": [
+        {
+          "group": 1001,
+          "portions": 2,
+          "maximum_portion_pair_error_m": "1.58603289232165335773534243931773890253364536710121508183424E-18"
+        }
+      ],
+      "mesh": {
+        "stitches": 6,
+        "maximum_pair_error_m": "1.27445719986556400949202194853582931374792248047965229400211E-17",
+        "maximum_weighted_rest_chord_deviation_m": "2.22044604925031308084726333618164062500000000000000000000000E-16",
+        "legacy_stitches": {}
+      },
+      "maximum_continuity_error_m": null
+    },
+    {
+      "checkpoint": "undo_removal",
+      "metric": [
+        {
+          "group": 1000,
+          "portions": 4,
+          "maximum_portion_pair_error_m": "4.16333634234433895251856314257632231726453888718908553940294E-17"
+        },
+        {
+          "group": 1001,
+          "portions": 2,
+          "maximum_portion_pair_error_m": "1.58603289232165335773534243931773890253364536710121508183424E-18"
+        }
+      ],
+      "mesh": {
+        "stitches": 23,
+        "maximum_pair_error_m": "9.43689570931383262738289045169322848827595576055774061952595E-17",
+        "maximum_weighted_rest_chord_deviation_m": "2.22044604925031308084726333618164062500000000000000000000000E-16",
+        "legacy_stitches": {}
+      },
+      "maximum_continuity_error_m": null
+    },
+    {
+      "checkpoint": "redo_removal",
+      "metric": [
+        {
+          "group": 1001,
+          "portions": 2,
+          "maximum_portion_pair_error_m": "1.58603289232165335773534243931773890253364536710121508183424E-18"
+        }
+      ],
+      "mesh": {
+        "stitches": 6,
+        "maximum_pair_error_m": "1.27445719986556400949202194853582931374792248047965229400211E-17",
+        "maximum_weighted_rest_chord_deviation_m": "2.22044604925031308084726333618164062500000000000000000000000E-16",
+        "legacy_stitches": {}
+      },
+      "maximum_continuity_error_m": null
+    }
+  ],
+  "observed": [
+    "reversed crossing split traversal",
+    "stable group ID/name/map",
+    "retained joined entries",
+    "continuous source pairing",
+    "remesh identity",
+    "whole dependent removal",
+    "unrelated common-interval group preservation",
+    "one-step removal Undo/Redo",
+    "error source/revision preservation and surviving Redo"
+  ],
+  "still_unknown": [
+    "broader deep history and native file failure preservation",
+    "bounded cancellation/staleness/exhaustion",
+    "reference parity",
+    "physical quality",
+    "complete roadmap gate"
+  ]
+}

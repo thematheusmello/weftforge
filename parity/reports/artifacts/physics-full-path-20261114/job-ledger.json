@@ -1,0 +1,56 @@
+{
+  "jobs": [
+    {
+      "stage": "build",
+      "status": "completed",
+      "started_at": "2026-11-14T14:23:26.349517+00:00",
+      "launcher_pid": 94220,
+      "child_pid": 94363,
+      "child_process_group": 94363,
+      "command": [
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--offline",
+        "--manifest-path",
+        "<EXPERIMENT_ROOT>/harness/Cargo.toml"
+      ],
+      "cwd": "<EXPERIMENT_ROOT>/source",
+      "environment_overrides": {
+        "CARGO_BUILD_JOBS": "1",
+        "CARGO_INCREMENTAL": "0",
+        "CARGO_TARGET_DIR": "<EXPERIMENT_ROOT>/target"
+      },
+      "log": "build.log",
+      "wall_cap_seconds": 180,
+      "exit_code": 0,
+      "completed_at": "2026-11-14T14:23:47.687811+00:00",
+      "wall_seconds": 21.342311624903232
+    },
+    {
+      "stage": "run",
+      "status": "completed",
+      "started_at": "2026-11-14T14:24:29.477199+00:00",
+      "launcher_pid": 95400,
+      "child_pid": 95570,
+      "child_process_group": 95570,
+      "command": [
+        "<EXPERIMENT_ROOT>/target/release/physics-full-path-diagnostic",
+        "<EXPERIMENT_ROOT>/source/fixtures/grain-shirt.weftforge",
+        "<EXPERIMENT_ROOT>/runs"
+      ],
+      "cwd": "<EXPERIMENT_ROOT>/source",
+      "environment_overrides": {
+        "CARGO_BUILD_JOBS": "1",
+        "CARGO_INCREMENTAL": "0",
+        "CARGO_TARGET_DIR": "<EXPERIMENT_ROOT>/target"
+      },
+      "log": "run.log",
+      "wall_cap_seconds": 600,
+      "exit_code": 0,
+      "completed_at": "2026-11-14T14:26:20.377610+00:00",
+      "wall_seconds": 110.90172999992501
+    }
+  ]
+}

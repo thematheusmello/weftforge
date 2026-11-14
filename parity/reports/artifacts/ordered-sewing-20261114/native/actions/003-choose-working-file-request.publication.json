@@ -1,0 +1,16 @@
+{
+  "id": "003-choose-working-file",
+  "started_utc": "2026-11-14T16:31:20.575Z",
+  "request": {
+    "tool": "setValue+pressKey",
+    "element": 2,
+    "value": ".local/chain-sewing-final-20261114/native/working.weftforge",
+    "key": "Return"
+  },
+  "publication_derivative": {
+    "original_path": "actions/003-choose-working-file-request.json",
+    "original_sha256": "3b803cffc6157108464369a7bde4863e1282f0e43d101ee82a8e437172c9968c",
+    "kind": "public path presentation derivative",
+    "changes": "Absolute workspace prefix becomes a workspace-relative path; omitted dialog-only AX references receive explicit omission metadata. Action identifiers, order, input values and outcomes are retained."
+  }
+}

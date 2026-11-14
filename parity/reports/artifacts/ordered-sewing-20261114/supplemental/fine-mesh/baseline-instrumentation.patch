@@ -1,0 +1,55 @@
+diff --git a/crates/weftforge-core/src/geometry.rs b/crates/weftforge-core/src/geometry.rs
+index 85d0972..24eab44 100644
+--- a/crates/weftforge-core/src/geometry.rs
++++ b/crates/weftforge-core/src/geometry.rs
+@@ -278,7 +278,9 @@ impl Project {
+             }
+             include_collinear_vertices(&mut mesh, start, triangle_start)?;
+         }
++        trace_mesh("earcut", &mesh, 0);
+         improve_triangle_quality(&mut mesh, &cancelled)?;
++        trace_mesh("prequality", &mesh, 0);
+         refine(self, &mut mesh, &cancelled)?;
+         improve_triangle_quality(&mut mesh, &cancelled)?;
+         for seam in &self.seams {
+@@ -562,7 +564,7 @@ fn include_collinear_vertices(mesh: &mut Mesh, start: usize, triangle_start: usi
+ }
+ 
+ fn refine(project: &Project, mesh: &mut Mesh, cancelled: &impl Fn() -> bool) -> Result<()> {
+-    for _ in 0..20 {
++    for level in 0..20 {
+         check_cancel(cancelled)?;
+         let mut split = BTreeMap::new();
+         for &[a, b, c] in &mesh.triangles {
+@@ -573,6 +575,8 @@ fn refine(project: &Project, mesh: &mut Mesh, cancelled: &impl Fn() -> bool) ->
+                 }
+             }
+         }
++        trace_mesh("refine", mesh, split.len());
++        eprintln!("level={level}");
+         if split.is_empty() {
+             return Ok(());
+         }
+@@ -645,6 +649,22 @@ fn refine(project: &Project, mesh: &mut Mesh, cancelled: &impl Fn() -> bool) ->
+     Err(Error("Refinement did not converge within 20 levels".into()))
+ }
+ 
++fn trace_mesh(stage: &str, mesh: &Mesh, split: usize) {
++    let mut quality = Vec::new();
++    let mut max_edge: f64 = 0.;
++    let mut area = 0.;
++    for &triangle in &mesh.triangles {
++        let [a, b, c] = triangle.map(|i| mesh.uv[i]);
++        let edges = [distance(a,b),distance(b,c),distance(c,a)];
++        max_edge = max_edge.max(edges.into_iter().fold(0., f64::max));
++        let area2 = cross(a,b,c);
++        area += area2 * 0.5;
++        quality.push(area2 / edges.into_iter().map(|e| e*e).sum::<f64>());
++    }
++    quality.sort_by(f64::total_cmp);
++    eprintln!("{stage}: vertices={} triangles={} split={split} boundary={} area={area:.12} max_edge={max_edge:.12} quality_min={:.9} quality_median={:.9}",mesh.positions.len(),mesh.triangles.len(),mesh.boundary.len(),quality[0],quality[quality.len()/2]);
++}
++
+ fn append_stitches(
+     boundary: &[BoundarySample],
+     seam: &Seam,

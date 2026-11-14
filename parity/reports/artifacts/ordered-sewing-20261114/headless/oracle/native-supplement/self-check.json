@@ -1,0 +1,12 @@
+{
+  "kind": "native-supplement-self-check",
+  "candidate_outputs_inspected": false,
+  "checkpoint_count": 18,
+  "rejected_mutations": [
+    "wrong-created-allocator",
+    "wrong-created-revision",
+    "lost-disconnected-span",
+    "wrong-map"
+  ],
+  "claim": "checkpoint/evaluator mechanics only; no native action performed"
+}

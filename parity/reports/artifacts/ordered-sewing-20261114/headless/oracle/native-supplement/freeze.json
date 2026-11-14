@@ -1,0 +1,40 @@
+{
+  "kind": "native-supplement-pretest-freeze-v1",
+  "frozen_utc": "2026-11-14T15:43:10.610440+00:00",
+  "original_freeze_sha256": "d84f38184dded9a574ace4e30c6a3860029d1b4fa9ae98e0e50d52bf73ac1ed0",
+  "candidate_actions_or_outputs_inspected": false,
+  "candidate_binding": "Root must separately pin exact commit/source/date/executable/gates before actions; no candidate result is part of this freeze",
+  "artifacts": {
+    "native-supplement/declaration.md": {
+      "sha256": "981f97874512301b73335d5cb1ca61c17fa76e8f6daf33cb19b4f8314be0ab25",
+      "bytes": 5213
+    },
+    "native-supplement/evaluate_native.py": {
+      "sha256": "cb03826786fafa671e41dfac301c306dbb029a928acd06eecce6ef8d1ea3d294",
+      "bytes": 5801
+    },
+    "native-supplement/expected-checkpoints.json": {
+      "sha256": "880a6957779b779a34d5795eb8537b846665380157e9d9cfff67aaf1e3a244d7",
+      "bytes": 163157
+    },
+    "native-supplement/input-no-groups-v3.weftforge": {
+      "sha256": "676f9c37b798b80ef902d7864ffc2ad414c96c870a1eb7287b027ae34ece9b0b",
+      "bytes": 6789
+    },
+    "native-supplement/self-check.json": {
+      "sha256": "ecf9790ff365cdf199ad8beb231005ed2d58bcde29f2f8c8559429104aef373e",
+      "bytes": 327
+    }
+  },
+  "shared_inputs": {
+    "build_supplements.py": "22b79ce191cdd3bdd81629e69b86bf3eac26790530a9db3131a3c1cfed1b093a",
+    "supplement-public-api-contract.json": "76270c4aa2984e2b67c35d2be303edc1a2cb88af18ecdb0a16ed9bc532cbfe6b",
+    "oracle.py": "bf7cddedec7f8e58afd689ff034e1a8b19d0218a41e9bbb3841be449dda2e333",
+    "evaluate.py": "b58376e8def80abc350376120282ef99ef853bdbfa8eecb5089dde02c86f10b7",
+    "criteria.md": "09edf4713437ef26e639c78019755207705eefd73cb253af045eefcf81e29799",
+    "interface.json": "0d07de21237d02c60e2bc79ab5cd46d488b0aaf584fb8b9a07a9268c0a8e7060",
+    "expectations.json": "68a63c3f31d7de18f5df1f4735824b807335e9dfc74f8365a61db08a814c7eb5"
+  },
+  "delivery_status": "Local ignored prospective oracle only; not public tracked evidence",
+  "claim": "original concrete input/action/checkpoint/evaluator preregistration only; actual candidate results unknown"
+}

@@ -1,0 +1,55 @@
+{
+  "checked_at": "2026-11-14T14:28:18.206564+00:00",
+  "build_exec_session_id": 14948,
+  "run_exec_session_id": 10150,
+  "verification_exec_session_id": 5498,
+  "build_confirmed_live": {
+    "launcher_pid": 94220,
+    "cargo_pid": 94363,
+    "ps_elapsed_s": [
+      5,
+      4
+    ]
+  },
+  "run_confirmed_live": {
+    "launcher_pid": 95400,
+    "solver_pid": 95570,
+    "ps_elapsed_s": [
+      5,
+      4
+    ]
+  },
+  "terminal_process_checks": [
+    {
+      "pid": 94220,
+      "ps_exit_code": 1,
+      "live": false,
+      "observed_stdout": "  PID  PPID ELAPSED STAT COMM\n"
+    },
+    {
+      "pid": 94363,
+      "ps_exit_code": 1,
+      "live": false,
+      "observed_stdout": "  PID  PPID ELAPSED STAT COMM\n"
+    },
+    {
+      "pid": 95400,
+      "ps_exit_code": 1,
+      "live": false,
+      "observed_stdout": "  PID  PPID ELAPSED STAT COMM\n"
+    },
+    {
+      "pid": 95570,
+      "ps_exit_code": 1,
+      "live": false,
+      "observed_stdout": "  PID  PPID ELAPSED STAT COMM\n"
+    }
+  ],
+  "all_recorded_processes_terminal": true,
+  "verification": {
+    "independent_reanalysis": "passed",
+    "harness_fmt": "passed",
+    "harness_clippy_all_targets": "passed",
+    "production_integrated_checks": "not run; no production edits"
+  }
+}

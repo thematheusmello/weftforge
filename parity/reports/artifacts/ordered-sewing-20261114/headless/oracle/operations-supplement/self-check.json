@@ -1,0 +1,22 @@
+{
+  "kind": "headless-supplement-self-check",
+  "candidate_outputs_inspected": false,
+  "checkpoints": 11,
+  "continuity_errors_m": [
+    "4.16333634234433702658861875534057617187499999999999999999999E-17",
+    "1.38777878078144567552953958511352539062500000000000000000000E-17",
+    "4.16333634234433702658861875534057617187499999999999999999999E-17",
+    "1.38777878078144567552953958511352539062500000000000000000000E-17",
+    "1.38777878078144567552953958511352539062500000000000000000000E-17"
+  ],
+  "rejected_mutations": [
+    "wrong-child-traversal",
+    "joined-entries-merged",
+    "wrong-recovered-t",
+    "allocator-rewound",
+    "partial-dependent-trim",
+    "unrelated-group-lost",
+    "rejection-mutates-revision"
+  ],
+  "claim": "independent prospective mechanics only; no shared command executed"
+}

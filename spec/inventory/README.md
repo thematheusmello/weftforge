@@ -58,10 +58,16 @@ The [source-pinned implementation map](weftforge-implementation-map.md) assigns
 all 949 exact IDs while preserving the prior 928 entries, 205 bounded packets
 and 56 source landmarks. Open Project and selected-seam label contexts remain
 explicit; related group assignments do not establish aliases or parity.
-Its current source adds bounded per-seam Reverse through existing `UpdateSeam`;
-native execution qualification comes from the [registry](../../parity/features.yaml)
-and reports. Historical join execution does not qualify the changed runtime;
-broader reference join/reversal semantics remain unknown.
+Its current source at `3eddef0` adds first-class ordered M:N `SewingGroup`
+construction, three shared commands, strict native v3 with lossless v1/v2
+migration, native A/B drafting/structured group editing and shared CLI/MCP
+authoring. Legacy parameter-based seams remain distinct from new authored
+arc-length groups. The [ordered-path contract](../features/SEW-002-ordered-paths.md)
+and implementation map preserve remaining free/internal/automatic sewing and
+physical requirements. Native execution qualification comes from the
+[registry](../../parity/features.yaml) and reports. Historical join/reversal/DXF
+execution qualifies only its declared source and subset; it does not qualify
+the changed runtime or establish reference M:N correspondence/parity.
 The [later Preferences retry](../features/UI-shortcuts-inspection-20261114.md)
 retains blocked Shortcuts navigation without adding catalog IDs or bindings.
 The [DXF route inspection](../features/FILE-005-DXF-inspection-20261114.md)

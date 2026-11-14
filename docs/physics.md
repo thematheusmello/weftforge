@@ -416,3 +416,26 @@ results. The experiment refines continuation only; static force balance, the ful
 assembly path, mesh convergence, calibrated fabric behavior and reference
 comparison remain unmeasured. Issue 16 stays failed. The exact API driver, inputs,
 stored states and read-only verification recipe are retained with the report.
+
+The separate [full-path experiment](../parity/reports/WF-20261114-PHYSICS-FULL-PATH-001.json)
+starts each quality setting from the unchanged original arrangement at source
+`e342471b`, rather than refining only the continuation. It retains all 39 sampled
+position/velocity states and 540 timed steps. Independent geometric measurements
+give:
+
+| Full-path quality | Strain after 1 s assembly | Strain after 3 s total | Final screen |
+| --- | --- | --- | --- |
+| 8 substeps / 32 iterations | 25.969213% | 26.930346% | Failed |
+| 8 / 64 | 26.126438% | 27.168563% | Failed |
+| 16 / 32 | 26.546938% | 26.698742% | Failed |
+
+Before gravity, 16/32 already differs from control by 0.005777 strain and up to
+11.087 mm in position, exceeding both separately declared sensitivity triggers.
+At three seconds the refined paths differ by up to 2.547 and 23.748 mm, while
+their maximum-strain differences remain below 0.005. The control reproduces all
+13 shared historical samples and the original native OBJ within 6.94e-18 m.
+Both assembly and drape were refined, so the final differences do not isolate
+assembly alone. These results establish path sensitivity, not static equilibrium,
+convergence, calibration or a sufficient production fix. All original fitting
+failures and the 15% screen remain unchanged; replay instructions accompany the
+tracked original outputs.

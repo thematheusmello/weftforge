@@ -1,0 +1,8011 @@
+{
+  "kind": "native-chain-sewing-expected-v1",
+  "actions": {
+    "loaded": "load_original_no_group_fixture",
+    "empty_a_enter": "enter_with_empty_a",
+    "delete_last_a": "select_two_partial_a_intervals_then_delete_last",
+    "escape_a": "escape_pending_a",
+    "empty_b_enter": "confirm_two_partial_a_intervals_then_enter_empty_b",
+    "tool_reset": "switch_tool_while_draft_pending",
+    "load_reset": "load_original_fixture_while_draft_pending",
+    "confirmed_a_pending_b": "select_ordered_partial_a_then_enter",
+    "created": "select_ordered_partial_b_then_enter",
+    "undo_create": "one_native_undo_after_create",
+    "redo_create": "one_native_redo_after_create",
+    "edited": "commit_complete_group_name_endpoint_map_edit_once",
+    "undo_edit": "one_native_undo_after_edit",
+    "redo_edit": "one_native_redo_after_edit",
+    "reversed_once": "one_native_reverse_b",
+    "reversed_twice": "second_native_reverse_b",
+    "saved": "native_save",
+    "reopened": "native_quit_then_relaunch_and_reopen_saved_file"
+  },
+  "checkpoints": {
+    "loaded": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 73,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1001
+      }
+    },
+    "empty_a_enter": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 73,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1001
+      }
+    },
+    "delete_last_a": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 73,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1001
+      }
+    },
+    "escape_a": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 73,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1001
+      }
+    },
+    "empty_b_enter": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 73,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1001
+      }
+    },
+    "tool_reset": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 73,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1001
+      }
+    },
+    "load_reset": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 73,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1001
+      }
+    },
+    "confirmed_a_pending_b": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 73,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1001
+      }
+    },
+    "created": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 74,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [
+          {
+            "id": 1001,
+            "name": "Sewing group 1",
+            "a": [
+              {
+                "curve": 7,
+                "t0": 0.125,
+                "t1": 0.375
+              },
+              {
+                "curve": 16,
+                "t0": 0.9,
+                "t1": 0.3
+              }
+            ],
+            "b": [
+              {
+                "curve": 25,
+                "t0": 0.25,
+                "t1": 0.75
+              },
+              {
+                "curve": 34,
+                "t0": 0.75,
+                "t1": 0.25
+              },
+              {
+                "curve": 43,
+                "t0": 0.125,
+                "t1": 0.375
+              }
+            ],
+            "correspondence": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                1.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1002
+      }
+    },
+    "undo_create": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 75,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1002
+      }
+    },
+    "redo_create": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 76,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [
+          {
+            "id": 1001,
+            "name": "Sewing group 1",
+            "a": [
+              {
+                "curve": 7,
+                "t0": 0.125,
+                "t1": 0.375
+              },
+              {
+                "curve": 16,
+                "t0": 0.9,
+                "t1": 0.3
+              }
+            ],
+            "b": [
+              {
+                "curve": 25,
+                "t0": 0.25,
+                "t1": 0.75
+              },
+              {
+                "curve": 34,
+                "t0": 0.75,
+                "t1": 0.25
+              },
+              {
+                "curve": 43,
+                "t0": 0.125,
+                "t1": 0.375
+              }
+            ],
+            "correspondence": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                1.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1002
+      }
+    },
+    "edited": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 77,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [
+          {
+            "id": 1001,
+            "name": "Native ordered acceptance edited",
+            "a": [
+              {
+                "curve": 7,
+                "t0": 0.15,
+                "t1": 0.4
+              },
+              {
+                "curve": 16,
+                "t0": 0.9,
+                "t1": 0.3
+              }
+            ],
+            "b": [
+              {
+                "curve": 25,
+                "t0": 0.25,
+                "t1": 0.75
+              },
+              {
+                "curve": 34,
+                "t0": 0.75,
+                "t1": 0.25
+              },
+              {
+                "curve": 43,
+                "t0": 0.125,
+                "t1": 0.375
+              }
+            ],
+            "correspondence": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.2,
+                0.12
+              ],
+              [
+                0.55,
+                0.72
+              ],
+              [
+                1.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1002
+      }
+    },
+    "undo_edit": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 78,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [
+          {
+            "id": 1001,
+            "name": "Sewing group 1",
+            "a": [
+              {
+                "curve": 7,
+                "t0": 0.125,
+                "t1": 0.375
+              },
+              {
+                "curve": 16,
+                "t0": 0.9,
+                "t1": 0.3
+              }
+            ],
+            "b": [
+              {
+                "curve": 25,
+                "t0": 0.25,
+                "t1": 0.75
+              },
+              {
+                "curve": 34,
+                "t0": 0.75,
+                "t1": 0.25
+              },
+              {
+                "curve": 43,
+                "t0": 0.125,
+                "t1": 0.375
+              }
+            ],
+            "correspondence": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                1.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1002
+      }
+    },
+    "redo_edit": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 79,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [
+          {
+            "id": 1001,
+            "name": "Native ordered acceptance edited",
+            "a": [
+              {
+                "curve": 7,
+                "t0": 0.15,
+                "t1": 0.4
+              },
+              {
+                "curve": 16,
+                "t0": 0.9,
+                "t1": 0.3
+              }
+            ],
+            "b": [
+              {
+                "curve": 25,
+                "t0": 0.25,
+                "t1": 0.75
+              },
+              {
+                "curve": 34,
+                "t0": 0.75,
+                "t1": 0.25
+              },
+              {
+                "curve": 43,
+                "t0": 0.125,
+                "t1": 0.375
+              }
+            ],
+            "correspondence": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.2,
+                0.12
+              ],
+              [
+                0.55,
+                0.72
+              ],
+              [
+                1.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1002
+      }
+    },
+    "reversed_once": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 80,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [
+          {
+            "id": 1001,
+            "name": "Native ordered acceptance edited",
+            "a": [
+              {
+                "curve": 7,
+                "t0": 0.15,
+                "t1": 0.4
+              },
+              {
+                "curve": 16,
+                "t0": 0.9,
+                "t1": 0.3
+              }
+            ],
+            "b": [
+              {
+                "curve": 43,
+                "t0": 0.375,
+                "t1": 0.125
+              },
+              {
+                "curve": 34,
+                "t0": 0.25,
+                "t1": 0.75
+              },
+              {
+                "curve": 25,
+                "t0": 0.75,
+                "t1": 0.25
+              }
+            ],
+            "correspondence": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.2,
+                0.12
+              ],
+              [
+                0.55,
+                0.72
+              ],
+              [
+                1.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1002
+      }
+    },
+    "reversed_twice": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 81,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [
+          {
+            "id": 1001,
+            "name": "Native ordered acceptance edited",
+            "a": [
+              {
+                "curve": 7,
+                "t0": 0.15,
+                "t1": 0.4
+              },
+              {
+                "curve": 16,
+                "t0": 0.9,
+                "t1": 0.3
+              }
+            ],
+            "b": [
+              {
+                "curve": 25,
+                "t0": 0.25,
+                "t1": 0.75
+              },
+              {
+                "curve": 34,
+                "t0": 0.75,
+                "t1": 0.25
+              },
+              {
+                "curve": 43,
+                "t0": 0.125,
+                "t1": 0.375
+              }
+            ],
+            "correspondence": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.2,
+                0.12
+              ],
+              [
+                0.55,
+                0.72
+              ],
+              [
+                1.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1002
+      }
+    },
+    "saved": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 81,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [
+          {
+            "id": 1001,
+            "name": "Native ordered acceptance edited",
+            "a": [
+              {
+                "curve": 7,
+                "t0": 0.15,
+                "t1": 0.4
+              },
+              {
+                "curve": 16,
+                "t0": 0.9,
+                "t1": 0.3
+              }
+            ],
+            "b": [
+              {
+                "curve": 25,
+                "t0": 0.25,
+                "t1": 0.75
+              },
+              {
+                "curve": 34,
+                "t0": 0.75,
+                "t1": 0.25
+              },
+              {
+                "curve": 43,
+                "t0": 0.125,
+                "t1": 0.375
+              }
+            ],
+            "correspondence": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.2,
+                0.12
+              ],
+              [
+                0.55,
+                0.72
+              ],
+              [
+                1.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1002
+      }
+    },
+    "reopened": {
+      "format": "weftforge",
+      "version": 3,
+      "project": {
+        "revision": 81,
+        "points": [
+          {
+            "id": 3,
+            "position": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "id": 4,
+            "position": [
+              0.4,
+              0.0
+            ]
+          },
+          {
+            "id": 5,
+            "position": [
+              0.4,
+              0.6
+            ]
+          },
+          {
+            "id": 6,
+            "position": [
+              0.0,
+              0.6
+            ]
+          },
+          {
+            "id": 12,
+            "position": [
+              1.0,
+              1.0
+            ]
+          },
+          {
+            "id": 13,
+            "position": [
+              1.5,
+              1.0
+            ]
+          },
+          {
+            "id": 14,
+            "position": [
+              1.5,
+              1.6
+            ]
+          },
+          {
+            "id": 15,
+            "position": [
+              1.0,
+              1.6
+            ]
+          },
+          {
+            "id": 21,
+            "position": [
+              2.0,
+              0.2
+            ]
+          },
+          {
+            "id": 22,
+            "position": [
+              2.4,
+              0.2
+            ]
+          },
+          {
+            "id": 23,
+            "position": [
+              2.4,
+              0.8
+            ]
+          },
+          {
+            "id": 24,
+            "position": [
+              2.0,
+              0.8
+            ]
+          },
+          {
+            "id": 30,
+            "position": [
+              3.0,
+              1.3
+            ]
+          },
+          {
+            "id": 31,
+            "position": [
+              3.6,
+              1.3
+            ]
+          },
+          {
+            "id": 32,
+            "position": [
+              3.6,
+              1.9
+            ]
+          },
+          {
+            "id": 33,
+            "position": [
+              3.0,
+              1.9
+            ]
+          },
+          {
+            "id": 39,
+            "position": [
+              4.2,
+              -0.1
+            ]
+          },
+          {
+            "id": 40,
+            "position": [
+              4.6,
+              -0.1
+            ]
+          },
+          {
+            "id": 41,
+            "position": [
+              4.6,
+              0.5
+            ]
+          },
+          {
+            "id": 42,
+            "position": [
+              4.2,
+              0.5
+            ]
+          }
+        ],
+        "curves": [
+          {
+            "id": 7,
+            "start": 3,
+            "end": 4,
+            "controls": null
+          },
+          {
+            "id": 8,
+            "start": 4,
+            "end": 5,
+            "controls": null
+          },
+          {
+            "id": 9,
+            "start": 5,
+            "end": 6,
+            "controls": null
+          },
+          {
+            "id": 10,
+            "start": 6,
+            "end": 3,
+            "controls": null
+          },
+          {
+            "id": 16,
+            "start": 12,
+            "end": 13,
+            "controls": null
+          },
+          {
+            "id": 17,
+            "start": 13,
+            "end": 14,
+            "controls": null
+          },
+          {
+            "id": 18,
+            "start": 14,
+            "end": 15,
+            "controls": null
+          },
+          {
+            "id": 19,
+            "start": 15,
+            "end": 12,
+            "controls": null
+          },
+          {
+            "id": 25,
+            "start": 21,
+            "end": 22,
+            "controls": null
+          },
+          {
+            "id": 26,
+            "start": 22,
+            "end": 23,
+            "controls": null
+          },
+          {
+            "id": 27,
+            "start": 23,
+            "end": 24,
+            "controls": null
+          },
+          {
+            "id": 28,
+            "start": 24,
+            "end": 21,
+            "controls": null
+          },
+          {
+            "id": 34,
+            "start": 30,
+            "end": 31,
+            "controls": null
+          },
+          {
+            "id": 35,
+            "start": 31,
+            "end": 32,
+            "controls": null
+          },
+          {
+            "id": 36,
+            "start": 32,
+            "end": 33,
+            "controls": null
+          },
+          {
+            "id": 37,
+            "start": 33,
+            "end": 30,
+            "controls": null
+          },
+          {
+            "id": 43,
+            "start": 39,
+            "end": 40,
+            "controls": null
+          },
+          {
+            "id": 44,
+            "start": 40,
+            "end": 41,
+            "controls": null
+          },
+          {
+            "id": 45,
+            "start": 41,
+            "end": 42,
+            "controls": null
+          },
+          {
+            "id": 46,
+            "start": 42,
+            "end": 39,
+            "controls": null
+          }
+        ],
+        "pieces": [
+          {
+            "id": 2,
+            "name": "Original disconnected panel 1",
+            "boundary": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 11,
+            "name": "Original disconnected panel 2",
+            "boundary": [
+              16,
+              17,
+              18,
+              19
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 20,
+            "name": "Original disconnected panel 3",
+            "boundary": [
+              25,
+              26,
+              27,
+              28
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 29,
+            "name": "Original disconnected panel 4",
+            "boundary": [
+              34,
+              35,
+              36,
+              37
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          },
+          {
+            "id": 38,
+            "name": "Original disconnected panel 5",
+            "boundary": [
+              43,
+              44,
+              45,
+              46
+            ],
+            "placement": {
+              "translation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "rotation": [
+                0.0,
+                0.0,
+                0.0
+              ]
+            },
+            "material": 1,
+            "grain_angle": 0.0
+          }
+        ],
+        "materials": [
+          {
+            "id": 1,
+            "name": "Original oracle cloth; uncalibrated",
+            "areal_density": 0.18,
+            "warp_stiffness": 400.0,
+            "weft_stiffness": 400.0,
+            "shear_stiffness": 100.0,
+            "bending_stiffness": 0.003,
+            "damping": 0.2,
+            "friction": 0.4,
+            "collision_thickness": 0.003,
+            "color": [
+              0.25,
+              0.5,
+              0.75
+            ]
+          }
+        ],
+        "seams": [],
+        "sewing_groups": [
+          {
+            "id": 1001,
+            "name": "Native ordered acceptance edited",
+            "a": [
+              {
+                "curve": 7,
+                "t0": 0.15,
+                "t1": 0.4
+              },
+              {
+                "curve": 16,
+                "t0": 0.9,
+                "t1": 0.3
+              }
+            ],
+            "b": [
+              {
+                "curve": 25,
+                "t0": 0.25,
+                "t1": 0.75
+              },
+              {
+                "curve": 34,
+                "t0": 0.75,
+                "t1": 0.25
+              },
+              {
+                "curve": 43,
+                "t0": 0.125,
+                "t1": 0.375
+              }
+            ],
+            "correspondence": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.2,
+                0.12
+              ],
+              [
+                0.55,
+                0.72
+              ],
+              [
+                1.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "mannequin": {
+          "capsules": []
+        },
+        "resolution": 0.11,
+        "next_id": 1002
+      }
+    }
+  }
+}

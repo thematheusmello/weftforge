@@ -1,0 +1,82 @@
+   Compiling weftforge-sim v0.1.0 (<WORKSPACE>/crates/weftforge-sim)
+   Compiling xtask v0.1.0 (<WORKSPACE>/xtask)
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/weftforge_sim-1prxeql2br322/s-ho5o2k1gxh-181tgto-working`
+
+   Compiling weftforge-core v0.1.0 (<WORKSPACE>/crates/weftforge-core)
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/weftforge_sim-0jpblw1n9j3ns/s-ho5o2k1gpd-1rqnd1j-working`
+
+warning: `weftforge-sim` (lib) generated 1 warning
+warning: `weftforge-sim` (lib test) generated 1 warning
+   Compiling weftforge-cli v0.1.0 (<WORKSPACE>/apps/weftforge-cli)
+   Compiling weftforge v0.1.0 (<WORKSPACE>/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 06s
+     Running unittests src/main.rs (target/debug/deps/weftforge-e3523d833a033384)
+
+running 27 tests
+test tests::canvas_picking ... ok
+test tests::inspector_updates_commit_once_and_undo_as_one_transaction ... ok
+test tests::cancelled_and_obsolete_jobs_do_not_replace_the_display_snapshot ... ok
+test tests::bounded_fit_phases_queue_without_rebuild_and_continue_accepted_cloth_state ... ok
+test tests::export_guard_preserves_source_projects_and_symlink_aliases ... ok
+test tests::numeric_fields_preserve_unedited_bits_and_accept_text_steps_and_drags ... ok
+test tests::exit_retains_last_valid_geometry_and_reports_when_all_recovery_paths_fail ... ok
+test tests::inspecting_and_recoloring_preserves_valid_imported_dimensions_and_physics ... ok
+test tests::exit_retains_last_second_drafts_after_an_older_autosave_then_recovers_exactly ... ok
+test tests::exit_preserves_primary_clean_and_discarded_states_and_uses_unique_fallback ... ok
+test tests::selected_curve_controls_and_split_use_fresh_drafts_atomic_history_and_invalidation ... ok
+test tests::inspector_focus_does_not_reuse_edit_text_after_adding_or_selecting_pieces ... ok
+test tests::ordered_sewing::all_portion_guides_use_the_current_mesh_revision_and_authoritative_source ... ok
+test tests::untitled_autosave_recovers_editable_work_and_failed_recovery_retains_it ... ok
+test tests::numeric_rectangle_click_commits_once_and_cancel_or_errors_preserve_drafts_and_history ... ok
+test tests::selected_join_button_commits_one_revision_and_rejects_pending_edits_atomically ... ok
+test tests::focused_numeric_history_restore_survives_blur_and_retains_redo ... ok
+test tests::tabbing_over_unedited_curve_control_preserves_saved_f64_precision ... ok
+test tests::ordered_sewing::canvas_enter_sides_delete_escape_history_and_load_are_atomic ... ok
+test tests::ordered_sewing::group_controls_edit_all_fields_reverse_remove_and_preserve_one_step_history ... ok
+test tests::focusing_small_and_large_piece_sizes_preserves_document_and_history ... ok
+test tests::rectangle_modal_blocks_background_accesskit_actions_and_preserves_staged_edits ... ok
+test tests::ordered_sewing::rejected_create_and_group_edit_cancel_keep_numeric_drafts_and_redo ... ok
+test tests::obj_export_uses_ready_rest_or_current_drape_without_changing_construction ... ok
+test tests::seam_reverse_button_keeps_focused_drafts_atomic_and_draws_endpoint_pairs ... ok
+test tests::join_focus_keeps_failed_drafts_and_clears_successful_control_text_before_tab ... ok
+test tests::focused_export_keeps_failed_drafts_and_history_until_output_is_written ... ok
+
+test result: ok. 27 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 8.24s
+
+     Running unittests src/main.rs (target/debug/deps/weftforge_cli-b4b5eacd58be9717)
+
+running 2 tests
+test tests::fit_quality_requires_closed_seams_and_all_declared_bounds ... ok
+test tests::shirt_is_editable_and_interval_sewn ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/curves.rs (target/debug/deps/curves-3dbc98c0e3f861a9)
+
+running 1 test
+test cli_edits_splits_and_joins_sewn_curves_and_preserves_outputs_on_failure ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.58s
+
+     Running tests/grain.rs (target/debug/deps/grain-78adb9cf2922840c)
+
+running 1 test
+test cli_authors_grain_and_orthotropy_and_preserves_output_on_invalid_values ... FAILED
+
+failures:
+
+---- cli_authors_grain_and_orthotropy_and_preserves_output_on_invalid_values stdout ----
+
+thread 'cli_authors_grain_and_orthotropy_and_preserves_output_on_invalid_values' (49902183) panicked at apps/weftforge-cli/tests/grain.rs:70:5:
+assertion `left == right` failed
+  left: Number(3)
+ right: 2
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    cli_authors_grain_and_orthotropy_and_preserves_output_on_invalid_values
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+error: test failed, to rerun pass `-p weftforge-cli --test grain`

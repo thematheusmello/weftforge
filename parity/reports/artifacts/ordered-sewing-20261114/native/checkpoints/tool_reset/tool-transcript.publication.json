@@ -1,0 +1,382 @@
+{
+  "checkpoint": "tool_reset",
+  "actions": [
+    {
+      "id": "001-open-working-project",
+      "started_utc": "2026-11-14T16:31:09.374Z",
+      "request": {
+        "tool": "click",
+        "element": 4,
+        "label": "Open…"
+      },
+      "completed_utc": "2026-11-14T16:31:11.093Z",
+      "accessibility": "actions/001-open-working-project-ax.txt",
+      "publication_accessibility_omission": {
+        "original_artifact": "actions/001-open-working-project-ax.txt",
+        "original_sha256": "010811f748a6c3aa7782c737d88f40b1f16d4bea3631221c396c429340ba2fff",
+        "original_bytes": 10542,
+        "reason": "Dialog-only AX contains personal file-dialog sidebar and filesystem paths. Native Open request/action records and resulting clean app AX/source checkpoints are retained."
+      }
+    },
+    {
+      "id": "002-go-to-working-file",
+      "started_utc": "2026-11-14T16:31:14.787Z",
+      "request": {
+        "tool": "pressKey",
+        "key": "super+shift+g"
+      },
+      "completed_utc": "2026-11-14T16:31:15.376Z",
+      "accessibility": "actions/002-go-to-working-file-ax.txt",
+      "publication_accessibility_omission": {
+        "original_artifact": "actions/002-go-to-working-file-ax.txt",
+        "original_sha256": "bab7a03012b996c9756c808af2d7530fe353d320d2af4cc8091f4b7abe8c04d7",
+        "original_bytes": 1109,
+        "reason": "Dialog-only AX contains personal file-dialog sidebar and filesystem paths. Native Open request/action records and resulting clean app AX/source checkpoints are retained."
+      }
+    },
+    {
+      "id": "003-choose-working-file",
+      "started_utc": "2026-11-14T16:31:20.575Z",
+      "request": {
+        "tool": "setValue+pressKey",
+        "element": 2,
+        "value": ".local/chain-sewing-final-20261114/native/working.weftforge",
+        "key": "Return"
+      },
+      "completed_utc": "2026-11-14T16:31:22.115Z",
+      "accessibility": "actions/003-choose-working-file-ax.txt",
+      "publication_accessibility_omission": {
+        "original_artifact": "actions/003-choose-working-file-ax.txt",
+        "original_sha256": "1f9a833a9626903947debb24dffe986515f0619dc2d593507150398c050f00ea",
+        "original_bytes": 6106,
+        "reason": "Dialog-only AX contains personal file-dialog sidebar and filesystem paths. Native Open request/action records and resulting clean app AX/source checkpoints are retained."
+      }
+    },
+    {
+      "id": "004-load-working-file",
+      "started_utc": "2026-11-14T16:31:26.212Z",
+      "request": {
+        "tool": "click",
+        "element": 118,
+        "label": "Open"
+      },
+      "completed_utc": "2026-11-14T16:31:27.239Z",
+      "accessibility": "actions/004-load-working-file-ax.txt"
+    },
+    {
+      "id": "005-save-loaded",
+      "started_utc": "2026-11-14T16:31:53.394Z",
+      "request": {
+        "tool": "click",
+        "element": 5,
+        "label": "Save"
+      },
+      "completed_utc": "2026-11-14T16:31:53.862Z",
+      "accessibility": "actions/005-save-loaded-ax.txt"
+    },
+    {
+      "id": "006-activate-ordered-sewing",
+      "started_utc": "2026-11-14T16:32:32.162Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "click",
+            "element": 47,
+            "label": "Reverse paired edge",
+            "expected": "off"
+          },
+          {
+            "tool": "click",
+            "element": 18,
+            "label": "M:N sewing"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:32:32.698Z",
+      "accessibility": "actions/006-activate-ordered-sewing-ax.txt"
+    },
+    {
+      "id": "002-empty-a-enter",
+      "started_utc": "2026-11-14T16:33:14.132Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "pressKey",
+            "key": "Return"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:33:14.650Z",
+      "accessibility": "actions/002-empty-a-enter-ax.txt"
+    },
+    {
+      "id": "003-select-first-partial-a",
+      "started_utc": "2026-11-14T16:33:43.606Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "setValue",
+            "element": 50,
+            "value": "0.125"
+          },
+          {
+            "tool": "setValue",
+            "element": 51,
+            "value": "0.375"
+          },
+          {
+            "tool": "click",
+            "position": [
+              609,
+              817
+            ],
+            "grounding": "middle of panel1 bottom boundary in empty_a_enter screenshot"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:33:45.809Z",
+      "accessibility": "actions/003-select-first-partial-a-ax.txt"
+    },
+    {
+      "id": "004-correct-unchanged-ax-range-input",
+      "started_utc": "2026-11-14T16:34:17.515Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "pressKey",
+            "key": "Escape",
+            "reason": "AX range setters left values0/1 unchanged; discard that uncommitted selection"
+          },
+          {
+            "tool": "click",
+            "element": 50,
+            "clickCount": 2,
+            "label": "A interval start"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:34:18.369Z",
+      "accessibility": "actions/004-correct-unchanged-ax-range-input-ax.txt"
+    },
+    {
+      "id": "005-type-first-a-range",
+      "started_utc": "2026-11-14T16:34:29.080Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "pressKey",
+            "key": "super+a"
+          },
+          {
+            "tool": "paste",
+            "text": "0.125"
+          },
+          {
+            "tool": "pressKey",
+            "key": "Tab"
+          },
+          {
+            "tool": "click",
+            "element": 51,
+            "clickCount": 2
+          },
+          {
+            "tool": "pressKey",
+            "key": "super+a"
+          },
+          {
+            "tool": "paste",
+            "text": "0.375"
+          },
+          {
+            "tool": "pressKey",
+            "key": "Tab"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:34:30.073Z",
+      "accessibility": "actions/005-type-first-a-range-ax.txt"
+    },
+    {
+      "id": "006-select-correct-first-a",
+      "started_utc": "2026-11-14T16:34:38.886Z",
+      "request": {
+        "tool": "click",
+        "position": [
+          609,
+          817
+        ],
+        "grounding": "panel1 bottom boundary, same unchanged pattern viewport"
+      },
+      "completed_utc": "2026-11-14T16:34:40.256Z",
+      "accessibility": "actions/006-select-correct-first-a-ax.txt"
+    },
+    {
+      "id": "007-select-second-reversed-a",
+      "started_utc": "2026-11-14T16:35:01.994Z",
+      "request": {
+        "type_numbers": [
+          [
+            50,
+            "0.9"
+          ],
+          [
+            51,
+            "0.3"
+          ]
+        ],
+        "click": {
+          "position": [
+            833,
+            558
+          ],
+          "grounding": "visible left portion of panel2 bottom boundary in recorded baseline screenshot"
+        }
+      },
+      "completed_utc": "2026-11-14T16:35:04.085Z",
+      "accessibility": "actions/007-select-second-reversed-a-ax.txt"
+    },
+    {
+      "id": "008-delete-last-a",
+      "started_utc": "2026-11-14T16:35:24.549Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "pressKey",
+            "key": "Delete"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:35:25.107Z",
+      "accessibility": "actions/008-delete-last-a-ax.txt"
+    },
+    {
+      "id": "009-escape-pending-a",
+      "started_utc": "2026-11-14T16:35:54.426Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "pressKey",
+            "key": "Escape"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:35:55.097Z",
+      "accessibility": "actions/009-escape-pending-a-ax.txt"
+    },
+    {
+      "id": "010-repeat-a-first",
+      "started_utc": "2026-11-14T16:35:55.231Z",
+      "request": {
+        "type_numbers": [
+          [
+            50,
+            "0.125"
+          ],
+          [
+            51,
+            "0.375"
+          ]
+        ],
+        "click": {
+          "position": [
+            609,
+            817
+          ],
+          "boundary": "curve7"
+        }
+      },
+      "completed_utc": "2026-11-14T16:35:57.333Z",
+      "accessibility": "actions/010-repeat-a-first-ax.txt"
+    },
+    {
+      "id": "011-repeat-a-second",
+      "started_utc": "2026-11-14T16:35:57.334Z",
+      "request": {
+        "type_numbers": [
+          [
+            50,
+            "0.9"
+          ],
+          [
+            51,
+            "0.3"
+          ]
+        ],
+        "click": {
+          "position": [
+            833,
+            558
+          ],
+          "boundary": "curve16"
+        }
+      },
+      "completed_utc": "2026-11-14T16:35:59.450Z",
+      "accessibility": "actions/011-repeat-a-second-ax.txt"
+    },
+    {
+      "id": "012-confirm-a-empty-b",
+      "started_utc": "2026-11-14T16:35:59.450Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "pressKey",
+            "key": "Return"
+          },
+          {
+            "tool": "pressKey",
+            "key": "Return"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:35:59.948Z",
+      "accessibility": "actions/012-confirm-a-empty-b-ax.txt"
+    },
+    {
+      "id": "013-switch-tool-reset",
+      "started_utc": "2026-11-14T16:36:55.112Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "click",
+            "element": 14,
+            "label": "Select / edit"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:36:55.822Z",
+      "accessibility": "actions/013-switch-tool-reset-ax.txt"
+    }
+  ],
+  "publication_derivative": {
+    "original_path": "checkpoints/tool_reset/tool-transcript.json",
+    "original_sha256": "d87a5ad463bfae20f085517e7953e6333e168679e64a82bb1974825edac12e08",
+    "kind": "public path presentation derivative",
+    "changes": "Absolute workspace prefix becomes a workspace-relative path; omitted dialog-only AX references receive explicit omission metadata. Action identifiers, order, input values and outcomes are retained."
+  }
+}

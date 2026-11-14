@@ -1,0 +1,16 @@
+{
+  "source_commit": "e7bac322a0f3d3d513a3c77c984bcde7c5ac374d",
+  "command": "cargo test -p weftforge-cli --test mcp_stdio",
+  "session": 40220,
+  "exit_code": 101,
+  "result": "5passed,1failed; newinspect-sewingsource differs fromcanonicalnativeprojectatf32displaycolors",
+  "root_cause": "serde_json::json! materializes f32 as f64 before receipt serialization; native writer serializes f32 directly. Outgoing source snapshot must preserve native serialized values.",
+  "log_sha256": "c220cc6307d0b922554d036619b26ecb20dda1f416ff663aa17bc72b0a560969",
+  "cli_sha256": "3409ee61f08300d1fd54f2326282ec775828cd6d78d27ca8a15bf9e3582b2c2d",
+  "source_file_hashes": {
+    "apps/weftforge-cli/src/main.rs": "10ea81db505cf1341a8f3a957cc379d39aad8e39afcda6c870f81f248a692ce1",
+    "apps/weftforge-cli/src/mcp.rs": "16945b502e24a4294bc44754b995f513869646537c5f8d8aec89418e2e67ea71",
+    "apps/weftforge-cli/tests/mcp_stdio.rs": "ccc9c12e3660806c86375a5e7d123e08b11df355b448868c3ea9050a1446a2a0"
+  },
+  "qualifications": "Development adapter test, not packaged/native/independent-oracle acceptance. No criterion or original fixture changes."
+}

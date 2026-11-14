@@ -1,0 +1,75 @@
+{
+  "kind": "corrected-negative-driver-pretest-v1",
+  "declared_utc": "2026-11-14T16:28:18.917802+00:00",
+  "binding": {
+    "source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+    "bound_utc": "2026-11-14T16:22:55.399710+00:00",
+    "source_pretest_sha256": "fb4cd8b96be4a36511873fc8ff7d6b482eeececa7dc2eb6861f3e03a6e5ba0cf",
+    "scoped_source_file_count": 37,
+    "source_scope_verified_against_commit_and_local": true,
+    "cli_path": ".local/candidates/3eddef067c8a/weftforge-cli",
+    "cli_sha256": "5755ecd4aefb29b0060370c8369ee823fdbbd19cae85d5dd675edec48de954e1",
+    "native_bundle_path": ".local/candidates/3eddef067c8a/WeftForge.app",
+    "native_path": ".local/candidates/3eddef067c8a/WeftForge.app/Contents/MacOS/weftforge",
+    "native_sha256": "e935a4331cd884be7c81078f82da9119bea87211bf702cfc8959ba6eaca54053",
+    "package_files": {
+      "LICENSE-APACHE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "LICENSE-MIT": "5a79a5be6e18069ea095bcb13f724f90cee6a70b1fd6b5e2b1f505f050c25b0d",
+      "README.md": "5777769864014e918dbb17bcd1cfd80fec5024a5d6c5bac117953010f7782b41",
+      "THIRD_PARTY.md": "da5201bd1cadff85193d02040d0f99b7a7b4949fe4857684f91efaa1f5799a0d",
+      "WeftForge.app/Contents/Info.plist": "5ac9539a4fb95ced9cc9463a5840176f69b86a826c39be0f7971378d93c218b5",
+      "WeftForge.app/Contents/MacOS/weftforge": "e935a4331cd884be7c81078f82da9119bea87211bf702cfc8959ba6eaca54053",
+      "weftforge": "e935a4331cd884be7c81078f82da9119bea87211bf702cfc8959ba6eaca54053",
+      "weftforge-cli": "5755ecd4aefb29b0060370c8369ee823fdbbd19cae85d5dd675edec48de954e1"
+    },
+    "unsigned": true,
+    "native_execution": "not_started",
+    "package_log_sha256": "cb7d369603f0ab47f4d1e4a1c9637a0ddcda3036bce7a30ceea398641ef5b57e"
+  },
+  "producer_sha256": "599f000900aad5b514361387101501516e92cf3823cac68be6d6d23c3c88c673",
+  "shared_driver_sha256": "a129a5721a72ce9736555964c1d9e88ed575647a3fff34778c914fdf79139166",
+  "original_failed_attempt_sha256": "cd4be3c5f0aeca1e38ccc39d341fbecc21a05260ce885a040693ee557e6ee4ac",
+  "original_failed_attempt_retained": true,
+  "correction": "Use actual SetResolution.metres field; first attempt failed its valid control before source loading, so none of its13negative results qualifies as a load rejection.",
+  "inputs": {
+    ".local/chain-sewing-acceptance-20261114/fixtures/line-identity-coarse.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+    ".local/chain-sewing-acceptance-20261114/fixtures/legacy-v1-f64.weftforge": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d",
+    ".local/chain-sewing-acceptance-20261114/fixtures/invalid-missing-v3-groups.weftforge": "239053c86d0524e12c9cb84ee0d853f827859aa0d639cccac47ea6d4e58b9c9b",
+    ".local/chain-sewing-acceptance-20261114/fixtures/invalid-unknown-group-field.weftforge": "cea0f8c587ef3e68c07e10f28dd9ed796d21243ddbfe4b43bf8e94c358d298db",
+    ".local/chain-sewing-acceptance-20261114/fixtures/invalid-future-version.weftforge": "7bcf3fe2af3bbb8698488650af05d108a5bf3012a4c4d5831c1e214a98cca339",
+    ".local/chain-sewing-acceptance-20261114/fixtures/invalid-empty-side.weftforge": "8d55bc7725e0688e099dca1071388e7c54ee716458da0e2186d89fc4ae788dd0",
+    ".local/chain-sewing-acceptance-20261114/fixtures/invalid-unknown-curve.weftforge": "1f88aaf8dd57da712708cc04599c8aede8a6d97b91c0c7bb2438ed3c499247c0",
+    ".local/chain-sewing-acceptance-20261114/fixtures/invalid-zero-span.weftforge": "7f4df4f7ab0c0febaad1b0db1bbcf28197a393485dfcfa874b29bee7d2735d4a",
+    ".local/chain-sewing-acceptance-20261114/fixtures/invalid-overlap-within-side.weftforge": "eff386dcc6ffc730a031bcf6124a852ddf04f7eadb35dd1b2607cfbaa00e7a1c",
+    ".local/chain-sewing-acceptance-20261114/fixtures/invalid-overlap-across-sides.weftforge": "da51d850d92b41ff01c6d3a2850a94fd0e380b0c5cf06d7c4d19758cabe5fcc2",
+    ".local/chain-sewing-acceptance-20261114/fixtures/invalid-nonmonotone-map.weftforge": "1921c9c77865a253938f0ac8a0d80d5ef8f850c859ec2e04c8bf4a8068959ab6",
+    ".local/chain-sewing-acceptance-20261114/fixtures/invalid-duplicate-group-id.weftforge": "6a5d89b421c1b870191fd047508015dfc29eb08ae7e4c8cba9b6a3b77d56ed9f",
+    ".local/chain-sewing-acceptance-20261114/fixtures/invalid-oversized-side.weftforge": "cbdd7e426f9e182cdeb838df6d3f193425933e5d2f245acccb08759048a34420",
+    ".local/chain-sewing-acceptance-20261114/fixtures/invalid-total-interval-bound.weftforge": "052847b2be650df1307b552058126d10d665dae615dc6021b622da91489af3f5",
+    ".local/chain-sewing-acceptance-20261114/fixtures/invalid-duplicate-json-field.weftforge": "2d8d954a747dc1465471bbda0c7e4e6a6aed761fa41ae3d26c0b99e82defb9a7"
+  },
+  "command": [
+    {
+      "type": "set_resolution",
+      "data": {
+        "metres": 0.037
+      }
+    }
+  ],
+  "negative_cases": [
+    "missing-v3-groups",
+    "unknown-group-field",
+    "future-version",
+    "empty-side",
+    "unknown-curve",
+    "zero-span",
+    "overlap-within-side",
+    "overlap-across-sides",
+    "nonmonotone-map",
+    "duplicate-group-id",
+    "oversized-side",
+    "total-interval-bound",
+    "duplicate-json-field"
+  ],
+  "rules_unchanged": "Valid same-pipeline control succeeds. All13 malformed original sources reject with exit1/empty stdout/useful stderr while source,destination,recovery bytes stay exact. No UI/history/reference/physics inference."
+}

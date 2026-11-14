@@ -1,0 +1,18 @@
+{
+  "kind": "supplement-public-api-contract-v1",
+  "source": "Root public product-contract clarifications supplied before candidate actions or outputs on 2026-11-14",
+  "native_first_group_name": "Sewing group 1",
+  "undo_redo": "Each uses current revision + 1, restores historical construction, and next_id=max(restored.next_id,current.next_id)",
+  "split_curve16_t06": {
+    "left": 16,
+    "point": 1001,
+    "right": 1002,
+    "next_id": 1003,
+    "point_container": "append",
+    "right_curve_container": "append",
+    "piece_boundary": "insert right immediately after retained left"
+  },
+  "join": "Retain left16 and its vector slot; remove right1002 and splitpoint1001; preserve unaffected order; retain next_id1003 and separate group span entries",
+  "remove_piece11": "Remove piece and exclusive curves16..19/points12..15; remove whole dependent group; preserve unrelated objects/order/groups; allocator does not decrease",
+  "candidate_inspected": false
+}

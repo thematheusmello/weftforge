@@ -1,0 +1,105 @@
+Window: "WeftForge", App: WeftForge.
+0 standard window WeftForge, Secondary Actions: Raise
+	1 container (showing 60-160 of 160 items)
+		2 text (settable) Side B · 0 spans
+		3 button (disabled) Confirm A (Enter)
+		4 button (disabled) Delete last
+		5 button (disabled) Cancel sewing (Escape)
+		6 text (settable) Sewing group 1 · group #1001
+		7 text (settable) A 2 spans → B 3 spans
+		8 text (settable) A1 · #7 · t 0.125 → 0.375
+		9 text (settable) A2 · #16 · t 0.9 → 0.3
+		10 text (settable) B1 · #25 · t 0.25 → 0.75
+		11 text (settable) B2 · #34 · t 0.75 → 0.25
+		12 text (settable) B3 · #43 · t 0.125 → 0.375
+		13 text (settable) A 0.40000000 m · B 0.60000000 m
+Mismatch +0.20000000 m · 4 paired portions
+		14 button (disabled) Edit group
+		15 button (disabled) Reverse B
+		16 button (disabled) Remove group
+		17 text (settable) Mesh edge length m
+		18 stepper (disabled, settable) 0.110
+		19 text (settable) Iterations / substeps
+		20 stepper (disabled, settable) 8
+		21 stepper (disabled, settable) 4
+		22 text (settable) 2D PATTERNS
+		23 text (settable) Metres · 1 cm snap · scroll zoom · middle drag pan
+		24 text (settable) 3D GARMENT
+		25 text (settable) Drag orbit · scroll zoom · triangle selection
+		26 text (settable) Edit sewing group #1001
+		27 text (settable) Name
+		28 text field (settable) Name, Value: Sewing group 1
+		29 text (settable) Pairing uses normalized total authored arc length. Each span keeps its own curve parameter endpoints and direction; gaps add no length.
+		30 text (settable) Side A · 2 spans
+		31 text (settable) A1
+		32 pop up button (settable) Curve #7
+		33 text (settable) t start
+		34 stepper (settable) t start, Value: 0.125
+		35 text (settable) t end
+		36 stepper (settable) t end, Value: 0.375
+		37 button (disabled) Up
+		38 button Down
+		39 button (settable, unknown) Direction
+		40 button (settable, unknown) Remove span
+		41 text (settable) A2
+		42 pop up button (settable) Curve #16
+		43 text (settable) t start
+		44 stepper (settable) t start, Value: 0.90
+		45 text (settable) t end
+		46 stepper (settable) t end, Value: 0.30
+		47 button (settable, unknown) Up
+		48 button (disabled, settable, unknown) Down
+		49 button (settable, unknown) Direction
+		50 button (settable, unknown) Remove span
+		51 button (settable, unknown) Add boundary to A
+		52 text (settable) Side B · 3 spans
+		53 text (settable) B1
+		54 pop up button (settable) Curve #25
+		55 text (settable) t start
+		56 stepper (settable) t start, Value: 0.25
+		57 text (settable) t end
+		58 stepper (settable) t end, Value: 0.75
+		59 button (disabled, settable, unknown) Up
+		60 button (settable, unknown) Down
+		61 button (settable, unknown) Direction
+		62 button (settable, unknown) Remove span
+		63 text (settable) B2
+		64 pop up button (settable) Curve #34
+		65 text (settable) t start
+		66 stepper (settable) t start, Value: 0.75
+		67 text (settable) t end
+		68 stepper (settable) t end, Value: 0.25
+		69 button (settable, unknown) Up
+		70 button (settable, unknown) Down
+		71 button (settable, unknown) Direction
+		72 button (settable, unknown) Remove span
+		73 text (settable) B3
+		74 pop up button (settable) Curve #43
+		75 text (settable) t start
+		76 stepper (settable) t start, Value: 0.125
+		77 text (settable) t end
+		78 stepper (settable) t end, Value: 0.375
+		79 button (settable, unknown) Up
+		80 button (disabled, settable, unknown) Down
+		81 button (settable, unknown) Direction
+		82 button (settable, unknown) Remove span
+		83 button (settable, unknown) Add boundary to B
+		84 button (settable, unknown) Reverse B order and directions
+		85 text (settable) Easing map · normalized A length / B length
+		86 text (settable) Knot 1
+		87 text (settable) A
+		88 stepper (settable) A, Value: 0.00
+		89 text (settable) B
+		90 stepper (settable) B, Value: 0.00
+		91 text (settable) Knot 2
+		92 text (settable) A
+		93 stepper (settable) A, Value: 1.00
+		94 text (settable) B
+		95 stepper (settable) B, Value: 1.00
+		96 button (settable, unknown) Add easing knot
+		97 button (settable, unknown) Apply group
+		98 button (settable, unknown) Cancel group edit
+	99 text WeftForge
+	100 menu button Window sharing
+101 menu bar
+	102 WeftForge

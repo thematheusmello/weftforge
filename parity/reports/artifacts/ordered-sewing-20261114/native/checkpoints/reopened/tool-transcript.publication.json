@@ -1,0 +1,1081 @@
+{
+  "checkpoint": "reopened",
+  "actions": [
+    {
+      "id": "001-open-working-project",
+      "started_utc": "2026-11-14T16:31:09.374Z",
+      "request": {
+        "tool": "click",
+        "element": 4,
+        "label": "Open…"
+      },
+      "completed_utc": "2026-11-14T16:31:11.093Z",
+      "accessibility": "actions/001-open-working-project-ax.txt",
+      "publication_accessibility_omission": {
+        "original_artifact": "actions/001-open-working-project-ax.txt",
+        "original_sha256": "010811f748a6c3aa7782c737d88f40b1f16d4bea3631221c396c429340ba2fff",
+        "original_bytes": 10542,
+        "reason": "Dialog-only AX contains personal file-dialog sidebar and filesystem paths. Native Open request/action records and resulting clean app AX/source checkpoints are retained."
+      }
+    },
+    {
+      "id": "002-go-to-working-file",
+      "started_utc": "2026-11-14T16:31:14.787Z",
+      "request": {
+        "tool": "pressKey",
+        "key": "super+shift+g"
+      },
+      "completed_utc": "2026-11-14T16:31:15.376Z",
+      "accessibility": "actions/002-go-to-working-file-ax.txt",
+      "publication_accessibility_omission": {
+        "original_artifact": "actions/002-go-to-working-file-ax.txt",
+        "original_sha256": "bab7a03012b996c9756c808af2d7530fe353d320d2af4cc8091f4b7abe8c04d7",
+        "original_bytes": 1109,
+        "reason": "Dialog-only AX contains personal file-dialog sidebar and filesystem paths. Native Open request/action records and resulting clean app AX/source checkpoints are retained."
+      }
+    },
+    {
+      "id": "003-choose-working-file",
+      "started_utc": "2026-11-14T16:31:20.575Z",
+      "request": {
+        "tool": "setValue+pressKey",
+        "element": 2,
+        "value": ".local/chain-sewing-final-20261114/native/working.weftforge",
+        "key": "Return"
+      },
+      "completed_utc": "2026-11-14T16:31:22.115Z",
+      "accessibility": "actions/003-choose-working-file-ax.txt",
+      "publication_accessibility_omission": {
+        "original_artifact": "actions/003-choose-working-file-ax.txt",
+        "original_sha256": "1f9a833a9626903947debb24dffe986515f0619dc2d593507150398c050f00ea",
+        "original_bytes": 6106,
+        "reason": "Dialog-only AX contains personal file-dialog sidebar and filesystem paths. Native Open request/action records and resulting clean app AX/source checkpoints are retained."
+      }
+    },
+    {
+      "id": "004-load-working-file",
+      "started_utc": "2026-11-14T16:31:26.212Z",
+      "request": {
+        "tool": "click",
+        "element": 118,
+        "label": "Open"
+      },
+      "completed_utc": "2026-11-14T16:31:27.239Z",
+      "accessibility": "actions/004-load-working-file-ax.txt"
+    },
+    {
+      "id": "005-save-loaded",
+      "started_utc": "2026-11-14T16:31:53.394Z",
+      "request": {
+        "tool": "click",
+        "element": 5,
+        "label": "Save"
+      },
+      "completed_utc": "2026-11-14T16:31:53.862Z",
+      "accessibility": "actions/005-save-loaded-ax.txt"
+    },
+    {
+      "id": "006-activate-ordered-sewing",
+      "started_utc": "2026-11-14T16:32:32.162Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "click",
+            "element": 47,
+            "label": "Reverse paired edge",
+            "expected": "off"
+          },
+          {
+            "tool": "click",
+            "element": 18,
+            "label": "M:N sewing"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:32:32.698Z",
+      "accessibility": "actions/006-activate-ordered-sewing-ax.txt"
+    },
+    {
+      "id": "002-empty-a-enter",
+      "started_utc": "2026-11-14T16:33:14.132Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "pressKey",
+            "key": "Return"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:33:14.650Z",
+      "accessibility": "actions/002-empty-a-enter-ax.txt"
+    },
+    {
+      "id": "003-select-first-partial-a",
+      "started_utc": "2026-11-14T16:33:43.606Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "setValue",
+            "element": 50,
+            "value": "0.125"
+          },
+          {
+            "tool": "setValue",
+            "element": 51,
+            "value": "0.375"
+          },
+          {
+            "tool": "click",
+            "position": [
+              609,
+              817
+            ],
+            "grounding": "middle of panel1 bottom boundary in empty_a_enter screenshot"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:33:45.809Z",
+      "accessibility": "actions/003-select-first-partial-a-ax.txt"
+    },
+    {
+      "id": "004-correct-unchanged-ax-range-input",
+      "started_utc": "2026-11-14T16:34:17.515Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "pressKey",
+            "key": "Escape",
+            "reason": "AX range setters left values0/1 unchanged; discard that uncommitted selection"
+          },
+          {
+            "tool": "click",
+            "element": 50,
+            "clickCount": 2,
+            "label": "A interval start"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:34:18.369Z",
+      "accessibility": "actions/004-correct-unchanged-ax-range-input-ax.txt"
+    },
+    {
+      "id": "005-type-first-a-range",
+      "started_utc": "2026-11-14T16:34:29.080Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "pressKey",
+            "key": "super+a"
+          },
+          {
+            "tool": "paste",
+            "text": "0.125"
+          },
+          {
+            "tool": "pressKey",
+            "key": "Tab"
+          },
+          {
+            "tool": "click",
+            "element": 51,
+            "clickCount": 2
+          },
+          {
+            "tool": "pressKey",
+            "key": "super+a"
+          },
+          {
+            "tool": "paste",
+            "text": "0.375"
+          },
+          {
+            "tool": "pressKey",
+            "key": "Tab"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:34:30.073Z",
+      "accessibility": "actions/005-type-first-a-range-ax.txt"
+    },
+    {
+      "id": "006-select-correct-first-a",
+      "started_utc": "2026-11-14T16:34:38.886Z",
+      "request": {
+        "tool": "click",
+        "position": [
+          609,
+          817
+        ],
+        "grounding": "panel1 bottom boundary, same unchanged pattern viewport"
+      },
+      "completed_utc": "2026-11-14T16:34:40.256Z",
+      "accessibility": "actions/006-select-correct-first-a-ax.txt"
+    },
+    {
+      "id": "007-select-second-reversed-a",
+      "started_utc": "2026-11-14T16:35:01.994Z",
+      "request": {
+        "type_numbers": [
+          [
+            50,
+            "0.9"
+          ],
+          [
+            51,
+            "0.3"
+          ]
+        ],
+        "click": {
+          "position": [
+            833,
+            558
+          ],
+          "grounding": "visible left portion of panel2 bottom boundary in recorded baseline screenshot"
+        }
+      },
+      "completed_utc": "2026-11-14T16:35:04.085Z",
+      "accessibility": "actions/007-select-second-reversed-a-ax.txt"
+    },
+    {
+      "id": "008-delete-last-a",
+      "started_utc": "2026-11-14T16:35:24.549Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "pressKey",
+            "key": "Delete"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:35:25.107Z",
+      "accessibility": "actions/008-delete-last-a-ax.txt"
+    },
+    {
+      "id": "009-escape-pending-a",
+      "started_utc": "2026-11-14T16:35:54.426Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "pressKey",
+            "key": "Escape"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:35:55.097Z",
+      "accessibility": "actions/009-escape-pending-a-ax.txt"
+    },
+    {
+      "id": "010-repeat-a-first",
+      "started_utc": "2026-11-14T16:35:55.231Z",
+      "request": {
+        "type_numbers": [
+          [
+            50,
+            "0.125"
+          ],
+          [
+            51,
+            "0.375"
+          ]
+        ],
+        "click": {
+          "position": [
+            609,
+            817
+          ],
+          "boundary": "curve7"
+        }
+      },
+      "completed_utc": "2026-11-14T16:35:57.333Z",
+      "accessibility": "actions/010-repeat-a-first-ax.txt"
+    },
+    {
+      "id": "011-repeat-a-second",
+      "started_utc": "2026-11-14T16:35:57.334Z",
+      "request": {
+        "type_numbers": [
+          [
+            50,
+            "0.9"
+          ],
+          [
+            51,
+            "0.3"
+          ]
+        ],
+        "click": {
+          "position": [
+            833,
+            558
+          ],
+          "boundary": "curve16"
+        }
+      },
+      "completed_utc": "2026-11-14T16:35:59.450Z",
+      "accessibility": "actions/011-repeat-a-second-ax.txt"
+    },
+    {
+      "id": "012-confirm-a-empty-b",
+      "started_utc": "2026-11-14T16:35:59.450Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "pressKey",
+            "key": "Return"
+          },
+          {
+            "tool": "pressKey",
+            "key": "Return"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:35:59.948Z",
+      "accessibility": "actions/012-confirm-a-empty-b-ax.txt"
+    },
+    {
+      "id": "013-switch-tool-reset",
+      "started_utc": "2026-11-14T16:36:55.112Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "click",
+            "element": 14,
+            "label": "Select / edit"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:36:55.822Z",
+      "accessibility": "actions/013-switch-tool-reset-ax.txt"
+    },
+    {
+      "id": "014-pending-draft-before-load",
+      "started_utc": "2026-11-14T16:36:55.948Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "click",
+            "element": 18,
+            "label": "M:N sewing"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:36:56.375Z",
+      "accessibility": "actions/014-pending-draft-before-load-ax.txt"
+    },
+    {
+      "id": "015-prepare-load-reset-draft",
+      "started_utc": "2026-11-14T16:36:56.375Z",
+      "request": {
+        "type_numbers": [
+          [
+            50,
+            "0.125"
+          ],
+          [
+            51,
+            "0.375"
+          ]
+        ],
+        "click": {
+          "position": [
+            609,
+            817
+          ],
+          "boundary": "curve7"
+        }
+      },
+      "completed_utc": "2026-11-14T16:36:58.399Z",
+      "accessibility": "actions/015-prepare-load-reset-draft-ax.txt"
+    },
+    {
+      "id": "016-open-while-draft-pending",
+      "started_utc": "2026-11-14T16:36:58.399Z",
+      "request": {
+        "tool": "click",
+        "element": 4,
+        "label": "Open…"
+      },
+      "completed_utc": "2026-11-14T16:36:59.322Z",
+      "accessibility": "actions/016-open-while-draft-pending-ax.txt",
+      "publication_accessibility_omission": {
+        "original_artifact": "actions/016-open-while-draft-pending-ax.txt",
+        "original_sha256": "b0c008bfd60821e97d78c35454d333bb5b98a97e22143192cb056cdbcb2e0ed6",
+        "original_bytes": 6343,
+        "reason": "Dialog-only AX contains personal file-dialog sidebar and filesystem paths. Native Open request/action records and resulting clean app AX/source checkpoints are retained."
+      }
+    },
+    {
+      "id": "017-reload-working-reset-draft",
+      "started_utc": "2026-11-14T16:37:06.024Z",
+      "request": {
+        "tool": "click",
+        "element": 49,
+        "clickCount": 2,
+        "label": "working.weftforge"
+      },
+      "completed_utc": "2026-11-14T16:37:06.774Z",
+      "accessibility": "actions/017-reload-working-reset-draft-ax.txt",
+      "publication_accessibility_omission": {
+        "original_artifact": "actions/017-reload-working-reset-draft-ax.txt",
+        "original_sha256": "dee49357ece773514a95755fd8f671a06183de09229c9085520068a0c98415e1",
+        "original_bytes": 6617,
+        "reason": "Dialog-only AX contains personal file-dialog sidebar and filesystem paths. Native Open request/action records and resulting clean app AX/source checkpoints are retained."
+      }
+    },
+    {
+      "id": "018-confirm-reload-reset",
+      "started_utc": "2026-11-14T16:37:12.397Z",
+      "request": {
+        "tool": "click",
+        "element": 130,
+        "label": "Open"
+      },
+      "completed_utc": "2026-11-14T16:37:13.129Z",
+      "accessibility": "actions/018-confirm-reload-reset-ax.txt"
+    },
+    {
+      "id": "019-save-load-reset",
+      "started_utc": "2026-11-14T16:37:13.130Z",
+      "request": {
+        "tool": "click",
+        "element": 5,
+        "label": "Save"
+      },
+      "completed_utc": "2026-11-14T16:37:13.889Z",
+      "accessibility": "actions/019-save-load-reset-ax.txt"
+    },
+    {
+      "id": "020-zoom-to-all-panels",
+      "started_utc": "2026-11-14T16:38:45.504Z",
+      "request": {
+        "tool": "scroll",
+        "position": [
+          600,
+          450
+        ],
+        "direction": "down",
+        "pages": 3
+      },
+      "completed_utc": "2026-11-14T16:38:47.164Z",
+      "accessibility": "actions/020-zoom-to-all-panels-ax.txt"
+    },
+    {
+      "id": "021-refine-panel-view",
+      "started_utc": "2026-11-14T16:39:37.214Z",
+      "request": {
+        "tool": "scroll",
+        "position": [
+          600,
+          450
+        ],
+        "direction": "up",
+        "pages": 0.15
+      },
+      "completed_utc": "2026-11-14T16:39:37.898Z",
+      "accessibility": "actions/021-refine-panel-view-ax.txt"
+    },
+    {
+      "id": "022-fit-whole-ordered-path-view",
+      "started_utc": "2026-11-14T16:40:10.770Z",
+      "request": {
+        "tool": "scroll",
+        "position": [
+          600,
+          450
+        ],
+        "direction": "up",
+        "pages": 0.25
+      },
+      "completed_utc": "2026-11-14T16:40:11.348Z",
+      "accessibility": "actions/022-fit-whole-ordered-path-view-ax.txt"
+    },
+    {
+      "id": "023-final-select-a-first",
+      "started_utc": "2026-11-14T16:40:23.705Z",
+      "request": {
+        "type_numbers": [
+          [
+            50,
+            "0.125"
+          ],
+          [
+            51,
+            "0.375"
+          ]
+        ],
+        "click": {
+          "position": [
+            569,
+            616
+          ],
+          "grounding": "panel1 bottom boundary in fitted-five-panels.png"
+        }
+      },
+      "completed_utc": "2026-11-14T16:40:25.690Z",
+      "accessibility": "actions/023-final-select-a-first-ax.txt"
+    },
+    {
+      "id": "024-final-select-a-second",
+      "started_utc": "2026-11-14T16:40:25.691Z",
+      "request": {
+        "type_numbers": [
+          [
+            50,
+            "0.9"
+          ],
+          [
+            51,
+            "0.3"
+          ]
+        ],
+        "click": {
+          "position": [
+            630,
+            557
+          ],
+          "grounding": "panel2 bottom boundary in fitted-five-panels.png"
+        }
+      },
+      "completed_utc": "2026-11-14T16:40:27.730Z",
+      "accessibility": "actions/024-final-select-a-second-ax.txt"
+    },
+    {
+      "id": "025-confirm-final-a",
+      "started_utc": "2026-11-14T16:40:27.731Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "pressKey",
+            "key": "Return"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:40:28.223Z",
+      "accessibility": "actions/025-confirm-final-a-ax.txt"
+    },
+    {
+      "id": "026-select-b-first",
+      "started_utc": "2026-11-14T16:41:32.890Z",
+      "request": {
+        "type_numbers": [
+          [
+            52,
+            "0.25"
+          ],
+          [
+            53,
+            "0.75"
+          ]
+        ],
+        "click": {
+          "position": [
+            695,
+            604
+          ],
+          "grounding": "panel3 bottom boundary in confirmed_a_pending_b screenshot"
+        }
+      },
+      "completed_utc": "2026-11-14T16:41:34.985Z",
+      "accessibility": "actions/026-select-b-first-ax.txt"
+    },
+    {
+      "id": "027-select-b-second",
+      "started_utc": "2026-11-14T16:41:34.986Z",
+      "request": {
+        "type_numbers": [
+          [
+            52,
+            "0.75"
+          ],
+          [
+            53,
+            "0.25"
+          ]
+        ],
+        "click": {
+          "position": [
+            759,
+            540
+          ],
+          "grounding": "panel4 bottom boundary in confirmed_a_pending_b screenshot"
+        }
+      },
+      "completed_utc": "2026-11-14T16:41:37.105Z",
+      "accessibility": "actions/027-select-b-second-ax.txt"
+    },
+    {
+      "id": "028-select-b-third",
+      "started_utc": "2026-11-14T16:42:27.058Z",
+      "request": {
+        "type_numbers": [
+          [
+            52,
+            "0.125"
+          ],
+          [
+            53,
+            "0.375"
+          ]
+        ],
+        "click": {
+          "position": [
+            823,
+            622
+          ],
+          "grounding": "panel5 bottom boundary in confirmed_a_pending_b screenshot"
+        }
+      },
+      "completed_utc": "2026-11-14T16:42:29.191Z",
+      "accessibility": "actions/028-select-b-third-ax.txt"
+    },
+    {
+      "id": "029-review-pending-b-rows",
+      "started_utc": "2026-11-14T16:42:29.192Z",
+      "request": {
+        "tool": "scroll",
+        "position": [
+          120,
+          800
+        ],
+        "direction": "down",
+        "pages": 1
+      },
+      "completed_utc": "2026-11-14T16:42:30.490Z",
+      "accessibility": "actions/029-review-pending-b-rows-ax.txt"
+    },
+    {
+      "id": "030-commit-and-native-save-group",
+      "started_utc": "2026-11-14T16:43:07.931Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "pressKey",
+            "key": "Return"
+          },
+          {
+            "tool": "pressKey",
+            "key": "super+s"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:43:08.400Z",
+      "accessibility": "actions/030-commit-and-native-save-group-ax.txt"
+    },
+    {
+      "id": "031-undo-native-group-create",
+      "started_utc": "2026-11-14T16:43:41.233Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "click",
+            "element": 11,
+            "label": "Undo"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:43:41.935Z",
+      "accessibility": "actions/031-undo-native-group-create-ax.txt"
+    },
+    {
+      "id": "032-redo-native-group-create",
+      "started_utc": "2026-11-14T16:43:42.074Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "click",
+            "element": 12,
+            "label": "Redo"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:43:42.752Z",
+      "accessibility": "actions/032-redo-native-group-create-ax.txt"
+    },
+    {
+      "id": "033-open-complete-group-editor",
+      "started_utc": "2026-11-14T16:43:42.883Z",
+      "request": {
+        "tool": "click",
+        "element": 74,
+        "label": "Edit group"
+      },
+      "completed_utc": "2026-11-14T16:43:43.428Z",
+      "accessibility": "actions/033-open-complete-group-editor-ax.txt"
+    },
+    {
+      "id": "034-edit-group-name-endpoint-add-knot",
+      "started_utc": "2026-11-14T16:44:36.524Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "click",
+            "element": 28,
+            "label": "Name"
+          },
+          {
+            "tool": "pressKey",
+            "key": "super+a"
+          },
+          {
+            "tool": "paste",
+            "text": "Native ordered acceptance edited"
+          },
+          {
+            "tool": "pressKey",
+            "key": "Tab"
+          }
+        ],
+        "type_numbers": [
+          [
+            34,
+            "0.15"
+          ],
+          [
+            36,
+            "0.4"
+          ]
+        ],
+        "add_knot_element": 96
+      },
+      "completed_utc": "2026-11-14T16:44:39.930Z",
+      "accessibility": "actions/034-edit-group-name-endpoint-add-knot-ax.txt"
+    },
+    {
+      "id": "035-set-pending-group-name",
+      "started_utc": "2026-11-14T16:45:25.531Z",
+      "request": {
+        "tool": "setValue",
+        "element": 22,
+        "value": "Native ordered acceptance edited",
+        "reason": "prior text action left displayed modal name unchanged"
+      },
+      "completed_utc": "2026-11-14T16:45:26.494Z",
+      "accessibility": "actions/035-set-pending-group-name-ax.txt"
+    },
+    {
+      "id": "036-type-focused-group-name",
+      "started_utc": "2026-11-14T16:45:41.934Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "pressKey",
+            "key": "super+a"
+          },
+          {
+            "tool": "paste",
+            "text": "Native ordered acceptance edited"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:45:42.501Z",
+      "accessibility": "actions/036-type-focused-group-name-ax.txt"
+    },
+    {
+      "id": "037-set-first-easing-knot-add-second",
+      "started_utc": "2026-11-14T16:46:02.665Z",
+      "request": {
+        "type_numbers": [
+          [
+            87,
+            "0.2"
+          ],
+          [
+            89,
+            "0.12"
+          ]
+        ],
+        "add_knot_element": 96
+      },
+      "completed_utc": "2026-11-14T16:46:03.851Z",
+      "accessibility": "actions/037-set-first-easing-knot-add-second-ax.txt"
+    },
+    {
+      "id": "038-complete-pending-nonlinear-map",
+      "started_utc": "2026-11-14T16:46:22.194Z",
+      "request": {
+        "type_numbers": [
+          [
+            87,
+            "0.55"
+          ],
+          [
+            89,
+            "0.72"
+          ]
+        ]
+      },
+      "completed_utc": "2026-11-14T16:46:23.328Z",
+      "accessibility": "actions/038-complete-pending-nonlinear-map-ax.txt"
+    },
+    {
+      "id": "039-commit-complete-group-edit",
+      "started_utc": "2026-11-14T16:46:34.244Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "click",
+            "element": 97,
+            "label": "Apply group"
+          },
+          {
+            "tool": "pressKey",
+            "key": "super+s"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:46:34.789Z",
+      "accessibility": "actions/039-commit-complete-group-edit-ax.txt"
+    },
+    {
+      "id": "040-undo-complete-group-edit",
+      "started_utc": "2026-11-14T16:46:34.914Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "click",
+            "element": 11,
+            "label": "Undo"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:46:35.427Z",
+      "accessibility": "actions/040-undo-complete-group-edit-ax.txt"
+    },
+    {
+      "id": "041-redo-complete-group-edit",
+      "started_utc": "2026-11-14T16:46:35.556Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "click",
+            "element": 12,
+            "label": "Redo"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:46:36.037Z",
+      "accessibility": "actions/041-redo-complete-group-edit-ax.txt"
+    },
+    {
+      "id": "042-show-group-row-actions",
+      "started_utc": "2026-11-14T16:47:18.229Z",
+      "request": {
+        "tool": "scroll",
+        "position": [
+          120,
+          850
+        ],
+        "direction": "down",
+        "pages": 0.5
+      },
+      "completed_utc": "2026-11-14T16:47:19.947Z",
+      "accessibility": "actions/042-show-group-row-actions-ax.txt"
+    },
+    {
+      "id": "043-reverse-b-once",
+      "started_utc": "2026-11-14T16:47:32.414Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "click",
+            "element": 75,
+            "label": "Reverse B"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:47:32.991Z",
+      "accessibility": "actions/043-reverse-b-once-ax.txt"
+    },
+    {
+      "id": "044-reverse-b-twice",
+      "started_utc": "2026-11-14T16:47:33.124Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "click",
+            "element": 75,
+            "label": "Reverse B"
+          },
+          {
+            "tool": "click",
+            "element": 5,
+            "label": "Save"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:47:33.608Z",
+      "accessibility": "actions/044-reverse-b-twice-ax.txt"
+    },
+    {
+      "id": "045-save-final-native-project",
+      "started_utc": "2026-11-14T16:47:33.749Z",
+      "request": {
+        "tool": "click",
+        "element": 5,
+        "label": "Save"
+      },
+      "completed_utc": "2026-11-14T16:47:34.199Z",
+      "accessibility": "actions/045-save-final-native-project-ax.txt"
+    },
+    {
+      "id": "003-native-quit-first-process",
+      "started_utc": "2026-11-14T16:48:52.257Z",
+      "request": {
+        "tool": "pressKey",
+        "key": "super+q",
+        "candidate_process": 9939
+      },
+      "note": "No app AX query after Quit; authoritative process check follows separately.",
+      "requested_utc": "2026-11-14T16:48:52.297Z"
+    },
+    {
+      "id": "004-launch-second-native-process",
+      "started_utc": "2026-11-14T16:49:39.157Z",
+      "request": {
+        "tool": "cua.getApp",
+        "bundle": ".local/candidates/3eddef067c8a/WeftForge.app"
+      },
+      "prior_process_quit": "PID9939 absence confirmed by authoritative ps",
+      "returned_utc": "2026-11-14T16:49:40.101Z"
+    },
+    {
+      "id": "046-open-after-real-relaunch",
+      "started_utc": "2026-11-14T16:51:14.392Z",
+      "request": {
+        "tool": "click",
+        "element": 4,
+        "label": "Open…",
+        "process": 21067
+      },
+      "completed_utc": "2026-11-14T16:51:15.745Z",
+      "accessibility": "actions/046-open-after-real-relaunch-ax.txt",
+      "publication_accessibility_omission": {
+        "original_artifact": "actions/046-open-after-real-relaunch-ax.txt",
+        "original_sha256": "569360cd4f6ea6f9dbbee8d3bb3297471a2a917292550948bda7b598129d4b7e",
+        "original_bytes": 7361,
+        "reason": "Dialog-only AX contains personal file-dialog sidebar and filesystem paths. Native Open request/action records and resulting clean app AX/source checkpoints are retained."
+      }
+    },
+    {
+      "id": "047-reopen-saved-native-project",
+      "started_utc": "2026-11-14T16:51:34.479Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "click",
+            "element": 49,
+            "label": "working.weftforge"
+          },
+          {
+            "tool": "click",
+            "element": 154,
+            "label": "Open"
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:51:35.426Z",
+      "accessibility": "actions/047-reopen-saved-native-project-ax.txt"
+    },
+    {
+      "id": "048-resave-in-relaunched-process",
+      "started_utc": "2026-11-14T16:51:35.426Z",
+      "request": {
+        "tool": "click",
+        "element": 5,
+        "label": "Save",
+        "process": 21067
+      },
+      "completed_utc": "2026-11-14T16:51:36.170Z",
+      "accessibility": "actions/048-resave-in-relaunched-process-ax.txt"
+    },
+    {
+      "id": "049-frame-reopened-five-panels",
+      "started_utc": "2026-11-14T16:51:36.171Z",
+      "request": {
+        "actions": [
+          {
+            "tool": "scroll",
+            "position": [
+              600,
+              450
+            ],
+            "direction": "down",
+            "pages": 3
+          },
+          {
+            "tool": "scroll",
+            "position": [
+              600,
+              450
+            ],
+            "direction": "up",
+            "pages": 0.4
+          }
+        ]
+      },
+      "completed_utc": "2026-11-14T16:51:37.946Z",
+      "accessibility": "actions/049-frame-reopened-five-panels-ax.txt"
+    }
+  ],
+  "publication_derivative": {
+    "original_path": "checkpoints/reopened/tool-transcript.json",
+    "original_sha256": "8a3aebfe0ff36b90e4364bc30315f12630357260a731879903bda618d8cf53e4",
+    "kind": "public path presentation derivative",
+    "changes": "Absolute workspace prefix becomes a workspace-relative path; omitted dialog-only AX references receive explicit omission metadata. Action identifiers, order, input values and outcomes are retained."
+  }
+}

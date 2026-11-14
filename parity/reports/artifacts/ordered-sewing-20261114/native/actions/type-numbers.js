@@ -1,0 +1,1 @@
+async function sewTypeNumbers(pairs) {for (var [index,value] of pairs) {await sewingStudio.click(index,{clickCount:2});await sewingStudio.pressKey('super+a');await sewingStudio.paste(String(value));await sewingStudio.pressKey('Tab');}}

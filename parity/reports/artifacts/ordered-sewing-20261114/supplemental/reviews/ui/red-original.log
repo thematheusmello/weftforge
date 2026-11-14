@@ -1,0 +1,24 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.61s
+
+running 2 tests
+
+thread 'tests::ordered_sewing::frozen_independent_review::review_new_group_exposes_a_boundary_add_action_without_canvas_pointer_input' (49987217) panicked at apps/weftforge/src/main.rs:6165:13:
+M:N creation offers no action to append the inspector-selected boundary without a canvas pointer hit
+test tests::ordered_sewing::frozen_independent_review::review_new_group_exposes_a_boundary_add_action_without_canvas_pointer_input ... FAILED
+Expected B[0] curve 43 interval 0.1 -> 0.9; actual 0.831234567890123 -> 0.9
+
+thread 'tests::ordered_sewing::frozen_independent_review::review_reverse_b_does_not_replay_the_old_rows_text' (49987218) panicked at apps/weftforge/src/main.rs:6153:13:
+assertion `left == right` failed: Apply persisted a replayed input onto an unrelated B span
+  left: SewingGroup { id: 47, name: "Collective", a: [CurveInterval { curve: 7, t0: 0.15, t1: 0.85 }, CurveInterval { curve: 16, t0: 0.2, t1: 0.8 }], b: [CurveInterval { curve: 43, t0: 0.831234567890123, t1: 0.9 }, CurveInterval { curve: 34, t0: 0.1, t1: 0.9 }, CurveInterval { curve: 25, t0: 0.1, t1: 0.831234567890123 }], correspondence: [[0.0, 0.0], [1.0, 1.0]] }
+ right: SewingGroup { id: 47, name: "Collective", a: [CurveInterval { curve: 7, t0: 0.15, t1: 0.85 }, CurveInterval { curve: 16, t0: 0.2, t1: 0.8 }], b: [CurveInterval { curve: 43, t0: 0.1, t1: 0.9 }, CurveInterval { curve: 34, t0: 0.1, t1: 0.9 }, CurveInterval { curve: 25, t0: 0.1, t1: 0.831234567890123 }], correspondence: [[0.0, 0.0], [1.0, 1.0]] }
+test tests::ordered_sewing::frozen_independent_review::review_reverse_b_does_not_replay_the_old_rows_text ... FAILED
+
+failures:
+
+failures:
+    tests::ordered_sewing::frozen_independent_review::review_new_group_exposes_a_boundary_add_action_without_canvas_pointer_input
+    tests::ordered_sewing::frozen_independent_review::review_reverse_b_does_not_replay_the_old_rows_text
+
+test result: FAILED. 0 passed; 2 failed; 0 ignored; 0 measured; 27 filtered out; finished in 0.18s
+
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

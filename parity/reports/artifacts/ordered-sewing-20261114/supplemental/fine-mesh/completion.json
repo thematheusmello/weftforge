@@ -1,0 +1,35 @@
+{
+  "commit": "aca60af071d5a099f4054c2793e4f6d7dfb089e8",
+  "branch": "fix/fine-curved-mesh-20261114",
+  "clean_worktree": true,
+  "owned_tracked_files": [
+    "crates/weftforge-core/src/geometry.rs",
+    "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge"
+  ],
+  "source_sha256": {
+    "crates/weftforge-core/src/geometry.rs": "66d094f631997e5b737960cd9a5d834bcbad05c2ccf4c117bdd5a8c903c578ce",
+    "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d"
+  },
+  "tests": 60,
+  "checks": [
+    "cargo fmt --all --check",
+    "cargo test -p weftforge-core",
+    "cargo clippy -p weftforge-core --all-targets -- -D warnings",
+    "git diff --check",
+    "original fine and coarse raw CLI outputs",
+    "independent geometry, boundary, topology, area, and stitch ownership validation"
+  ],
+  "terminal_jobs": {
+    "core_tests": 24525,
+    "core_clippy": 42895,
+    "production_cli": 96142,
+    "independent_validation": 70262
+  },
+  "not_checked": [
+    "workspace-wide tests and Clippy",
+    "cargo xtask verify",
+    "independent original sewing oracle",
+    "native UI"
+  ],
+  "local_artifacts_are_debug_only": "No parity or public evidence claim; root must freeze and independently validate actual merged outputs before publishing."
+}

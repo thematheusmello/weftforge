@@ -6,11 +6,13 @@
 mod document;
 mod geometry;
 mod persistence;
+mod sewing;
 pub mod simulation;
 
 pub use document::*;
 pub use geometry::*;
-pub use persistence::recovery_path;
+pub use persistence::{FORMAT_VERSION, recovery_path};
+pub use sewing::*;
 
 use std::fmt;
 

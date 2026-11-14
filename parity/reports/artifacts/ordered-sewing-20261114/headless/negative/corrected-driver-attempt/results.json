@@ -1,0 +1,331 @@
+{
+  "kind": "corrected-negative-driver-results-v1",
+  "source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "cases": [
+    {
+      "pid": 9599,
+      "exit_code": 0,
+      "timed_out": false,
+      "elapsed_s": 0.03644554107449949,
+      "stdout_sha256": "bc94097fa5c41763ad7fca8ff43488a0266ce11091b8176fb3b91cfa583bfa30",
+      "stdout_bytes": 37,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "case": "valid-control",
+      "protected_before": {
+        ".local/chain-sewing-final-20261114/negative-v2/valid-control/input.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/valid-control/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/valid-control/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "protected_after": {
+        ".local/chain-sewing-final-20261114/negative-v2/valid-control/input.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/valid-control/destination.weftforge": "6bde4d8b9f88cd81c205e613a1ea8cbb2f771a709d28901ef72fadc5a0e9d696",
+        ".local/chain-sewing-final-20261114/negative-v2/valid-control/destination.weftforge.recovery": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067"
+      },
+      "all_protected_preserved": false,
+      "accepted_expected_outcome": true
+    },
+    {
+      "pid": 9600,
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 0.011650249944068491,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "6ea9d02213b98a6fe4eca591d5013f515269c1b8ff4113fcd5535844cbf9e30a",
+      "stderr_bytes": 66,
+      "case": "missing-v3-groups",
+      "protected_before": {
+        ".local/chain-sewing-final-20261114/negative-v2/missing-v3-groups/input.weftforge": "239053c86d0524e12c9cb84ee0d853f827859aa0d639cccac47ea6d4e58b9c9b",
+        ".local/chain-sewing-final-20261114/negative-v2/missing-v3-groups/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/missing-v3-groups/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "protected_after": {
+        ".local/chain-sewing-final-20261114/negative-v2/missing-v3-groups/input.weftforge": "239053c86d0524e12c9cb84ee0d853f827859aa0d639cccac47ea6d4e58b9c9b",
+        ".local/chain-sewing-final-20261114/negative-v2/missing-v3-groups/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/missing-v3-groups/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "all_protected_preserved": true,
+      "accepted_expected_outcome": true
+    },
+    {
+      "pid": 9601,
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 0.005598124931566417,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "d9ece406bc295e444b7b9d0737cafc54e6d40a8eb6452ee7e7370452554b5a0a",
+      "stderr_bytes": 119,
+      "case": "unknown-group-field",
+      "protected_before": {
+        ".local/chain-sewing-final-20261114/negative-v2/unknown-group-field/input.weftforge": "cea0f8c587ef3e68c07e10f28dd9ed796d21243ddbfe4b43bf8e94c358d298db",
+        ".local/chain-sewing-final-20261114/negative-v2/unknown-group-field/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/unknown-group-field/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "protected_after": {
+        ".local/chain-sewing-final-20261114/negative-v2/unknown-group-field/input.weftforge": "cea0f8c587ef3e68c07e10f28dd9ed796d21243ddbfe4b43bf8e94c358d298db",
+        ".local/chain-sewing-final-20261114/negative-v2/unknown-group-field/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/unknown-group-field/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "all_protected_preserved": true,
+      "accepted_expected_outcome": true
+    },
+    {
+      "pid": 9602,
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 0.005669750040397048,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "257edba2b3e248b1b7eb25074c65e8028e029cd740800a1fff00d450bf708edb",
+      "stderr_bytes": 73,
+      "case": "future-version",
+      "protected_before": {
+        ".local/chain-sewing-final-20261114/negative-v2/future-version/input.weftforge": "7bcf3fe2af3bbb8698488650af05d108a5bf3012a4c4d5831c1e214a98cca339",
+        ".local/chain-sewing-final-20261114/negative-v2/future-version/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/future-version/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "protected_after": {
+        ".local/chain-sewing-final-20261114/negative-v2/future-version/input.weftforge": "7bcf3fe2af3bbb8698488650af05d108a5bf3012a4c4d5831c1e214a98cca339",
+        ".local/chain-sewing-final-20261114/negative-v2/future-version/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/future-version/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "all_protected_preserved": true,
+      "accepted_expected_outcome": true
+    },
+    {
+      "pid": 9603,
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 0.005699333967640996,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "3ebd7ac02e1ec8f69ba21c4ed3d89199d0a7016d20559ac833db1bc1f6ffb8a2",
+      "stderr_bytes": 61,
+      "case": "empty-side",
+      "protected_before": {
+        ".local/chain-sewing-final-20261114/negative-v2/empty-side/input.weftforge": "8d55bc7725e0688e099dca1071388e7c54ee716458da0e2186d89fc4ae788dd0",
+        ".local/chain-sewing-final-20261114/negative-v2/empty-side/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/empty-side/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "protected_after": {
+        ".local/chain-sewing-final-20261114/negative-v2/empty-side/input.weftforge": "8d55bc7725e0688e099dca1071388e7c54ee716458da0e2186d89fc4ae788dd0",
+        ".local/chain-sewing-final-20261114/negative-v2/empty-side/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/empty-side/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "all_protected_preserved": true,
+      "accepted_expected_outcome": true
+    },
+    {
+      "pid": 9604,
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 0.0055072500836104155,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "a1f5b826ddcf035b929e41c25697292e55e9bca6df9a7bc172d7d20c2126c1c8",
+      "stderr_bytes": 45,
+      "case": "unknown-curve",
+      "protected_before": {
+        ".local/chain-sewing-final-20261114/negative-v2/unknown-curve/input.weftforge": "1f88aaf8dd57da712708cc04599c8aede8a6d97b91c0c7bb2438ed3c499247c0",
+        ".local/chain-sewing-final-20261114/negative-v2/unknown-curve/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/unknown-curve/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "protected_after": {
+        ".local/chain-sewing-final-20261114/negative-v2/unknown-curve/input.weftforge": "1f88aaf8dd57da712708cc04599c8aede8a6d97b91c0c7bb2438ed3c499247c0",
+        ".local/chain-sewing-final-20261114/negative-v2/unknown-curve/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/unknown-curve/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "all_protected_preserved": true,
+      "accepted_expected_outcome": true
+    },
+    {
+      "pid": 9605,
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 0.005998500040732324,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "46be546288774cf075d4d2125cbdafff1d8f13fb9f2094cc90a05af36a1fcee4",
+      "stderr_bytes": 70,
+      "case": "zero-span",
+      "protected_before": {
+        ".local/chain-sewing-final-20261114/negative-v2/zero-span/input.weftforge": "7f4df4f7ab0c0febaad1b0db1bbcf28197a393485dfcfa874b29bee7d2735d4a",
+        ".local/chain-sewing-final-20261114/negative-v2/zero-span/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/zero-span/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "protected_after": {
+        ".local/chain-sewing-final-20261114/negative-v2/zero-span/input.weftforge": "7f4df4f7ab0c0febaad1b0db1bbcf28197a393485dfcfa874b29bee7d2735d4a",
+        ".local/chain-sewing-final-20261114/negative-v2/zero-span/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/zero-span/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "all_protected_preserved": true,
+      "accepted_expected_outcome": true
+    },
+    {
+      "pid": 9606,
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 0.005747333983890712,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "feb2c40a53c2e5c3826102543a780f9ea7c32f417da56206cf18f83fa20c1fec",
+      "stderr_bytes": 64,
+      "case": "overlap-within-side",
+      "protected_before": {
+        ".local/chain-sewing-final-20261114/negative-v2/overlap-within-side/input.weftforge": "eff386dcc6ffc730a031bcf6124a852ddf04f7eadb35dd1b2607cfbaa00e7a1c",
+        ".local/chain-sewing-final-20261114/negative-v2/overlap-within-side/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/overlap-within-side/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "protected_after": {
+        ".local/chain-sewing-final-20261114/negative-v2/overlap-within-side/input.weftforge": "eff386dcc6ffc730a031bcf6124a852ddf04f7eadb35dd1b2607cfbaa00e7a1c",
+        ".local/chain-sewing-final-20261114/negative-v2/overlap-within-side/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/overlap-within-side/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "all_protected_preserved": true,
+      "accepted_expected_outcome": true
+    },
+    {
+      "pid": 9607,
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 0.00573487498331815,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "feb2c40a53c2e5c3826102543a780f9ea7c32f417da56206cf18f83fa20c1fec",
+      "stderr_bytes": 64,
+      "case": "overlap-across-sides",
+      "protected_before": {
+        ".local/chain-sewing-final-20261114/negative-v2/overlap-across-sides/input.weftforge": "da51d850d92b41ff01c6d3a2850a94fd0e380b0c5cf06d7c4d19758cabe5fcc2",
+        ".local/chain-sewing-final-20261114/negative-v2/overlap-across-sides/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/overlap-across-sides/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "protected_after": {
+        ".local/chain-sewing-final-20261114/negative-v2/overlap-across-sides/input.weftforge": "da51d850d92b41ff01c6d3a2850a94fd0e380b0c5cf06d7c4d19758cabe5fcc2",
+        ".local/chain-sewing-final-20261114/negative-v2/overlap-across-sides/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/overlap-across-sides/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "all_protected_preserved": true,
+      "accepted_expected_outcome": true
+    },
+    {
+      "pid": 9608,
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 0.005804167012684047,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "e2e32e874df6688b391fa0fb5b12ac0831c02e3edbc4c0aae0eb7792e8fa4e97",
+      "stderr_bytes": 71,
+      "case": "nonmonotone-map",
+      "protected_before": {
+        ".local/chain-sewing-final-20261114/negative-v2/nonmonotone-map/input.weftforge": "1921c9c77865a253938f0ac8a0d80d5ef8f850c859ec2e04c8bf4a8068959ab6",
+        ".local/chain-sewing-final-20261114/negative-v2/nonmonotone-map/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/nonmonotone-map/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "protected_after": {
+        ".local/chain-sewing-final-20261114/negative-v2/nonmonotone-map/input.weftforge": "1921c9c77865a253938f0ac8a0d80d5ef8f850c859ec2e04c8bf4a8068959ab6",
+        ".local/chain-sewing-final-20261114/negative-v2/nonmonotone-map/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/nonmonotone-map/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "all_protected_preserved": true,
+      "accepted_expected_outcome": true
+    },
+    {
+      "pid": 9609,
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 0.006504583056084812,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "f2677d711aac3e27297245e3082241c3dea500a30ddbba6c16aa05e69552d2fd",
+      "stderr_bytes": 62,
+      "case": "duplicate-group-id",
+      "protected_before": {
+        ".local/chain-sewing-final-20261114/negative-v2/duplicate-group-id/input.weftforge": "6a5d89b421c1b870191fd047508015dfc29eb08ae7e4c8cba9b6a3b77d56ed9f",
+        ".local/chain-sewing-final-20261114/negative-v2/duplicate-group-id/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/duplicate-group-id/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "protected_after": {
+        ".local/chain-sewing-final-20261114/negative-v2/duplicate-group-id/input.weftforge": "6a5d89b421c1b870191fd047508015dfc29eb08ae7e4c8cba9b6a3b77d56ed9f",
+        ".local/chain-sewing-final-20261114/negative-v2/duplicate-group-id/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/duplicate-group-id/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "all_protected_preserved": true,
+      "accepted_expected_outcome": true
+    },
+    {
+      "pid": 9610,
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 0.005761457956396043,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "3ebd7ac02e1ec8f69ba21c4ed3d89199d0a7016d20559ac833db1bc1f6ffb8a2",
+      "stderr_bytes": 61,
+      "case": "oversized-side",
+      "protected_before": {
+        ".local/chain-sewing-final-20261114/negative-v2/oversized-side/input.weftforge": "cbdd7e426f9e182cdeb838df6d3f193425933e5d2f245acccb08759048a34420",
+        ".local/chain-sewing-final-20261114/negative-v2/oversized-side/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/oversized-side/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "protected_after": {
+        ".local/chain-sewing-final-20261114/negative-v2/oversized-side/input.weftforge": "cbdd7e426f9e182cdeb838df6d3f193425933e5d2f245acccb08759048a34420",
+        ".local/chain-sewing-final-20261114/negative-v2/oversized-side/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/oversized-side/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "all_protected_preserved": true,
+      "accepted_expected_outcome": true
+    },
+    {
+      "pid": 9611,
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 0.010737083037383854,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "738b82515a07d935c9b530d7ae8b935fae6b12bdf705d98f6bea15c8ccd94f2c",
+      "stderr_bytes": 62,
+      "case": "total-interval-bound",
+      "protected_before": {
+        ".local/chain-sewing-final-20261114/negative-v2/total-interval-bound/input.weftforge": "052847b2be650df1307b552058126d10d665dae615dc6021b622da91489af3f5",
+        ".local/chain-sewing-final-20261114/negative-v2/total-interval-bound/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/total-interval-bound/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "protected_after": {
+        ".local/chain-sewing-final-20261114/negative-v2/total-interval-bound/input.weftforge": "052847b2be650df1307b552058126d10d665dae615dc6021b622da91489af3f5",
+        ".local/chain-sewing-final-20261114/negative-v2/total-interval-bound/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/total-interval-bound/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "all_protected_preserved": true,
+      "accepted_expected_outcome": true
+    },
+    {
+      "pid": 9612,
+      "exit_code": 1,
+      "timed_out": false,
+      "elapsed_s": 0.00602345890365541,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stderr_sha256": "c81fb727e88accd1b1e6a992b791b03afd13cac72b4cae829797755eebb0bc06",
+      "stderr_bytes": 61,
+      "case": "duplicate-json-field",
+      "protected_before": {
+        ".local/chain-sewing-final-20261114/negative-v2/duplicate-json-field/input.weftforge": "2d8d954a747dc1465471bbda0c7e4e6a6aed761fa41ae3d26c0b99e82defb9a7",
+        ".local/chain-sewing-final-20261114/negative-v2/duplicate-json-field/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/duplicate-json-field/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "protected_after": {
+        ".local/chain-sewing-final-20261114/negative-v2/duplicate-json-field/input.weftforge": "2d8d954a747dc1465471bbda0c7e4e6a6aed761fa41ae3d26c0b99e82defb9a7",
+        ".local/chain-sewing-final-20261114/negative-v2/duplicate-json-field/destination.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+        ".local/chain-sewing-final-20261114/negative-v2/duplicate-json-field/destination.weftforge.recovery": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d"
+      },
+      "all_protected_preserved": true,
+      "accepted_expected_outcome": true
+    }
+  ],
+  "all_original_inputs_preserved": true,
+  "cli_unchanged": true,
+  "finished_utc": "2026-11-14T16:28:19.075539+00:00"
+}

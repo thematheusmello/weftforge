@@ -77,7 +77,7 @@ are rejected. The tool names and arguments are:
 
 | Tool | Required arguments | Result in `structuredContent` |
 | --- | --- | --- |
-| `project_inspect` | `path` | Complete validated `project`, SI `units`, `up: "Y"`; includes stable points, curves, piece boundaries, materials, placements, grain, seams, mannequin, resolution, revision and next ID |
+| `project_inspect` | `path` | Complete validated `project`, SI `units`, `up: "Y"`; includes stable points, curves, piece boundaries, materials, placements, grain, legacy seams, sewing groups, mannequin, resolution, revision and next ID |
 | `project_create` | `output` | Saved `output` and `revision`; existing output paths are refused |
 | `project_execute` | `input`, `output`, `commands` | Saved paths, new `revision`, and `commands_applied` |
 | `project_export_svg` | `input`, `output` | Paths, `source_revision`, `kind: "authored_svg"`, `length_unit: "mm"`, pattern/SVG axis convention |
@@ -113,7 +113,8 @@ arguments and additionally include the per-request `_meta` shown above.
 The supported shared commands are `add_polygon`, `add_rectangle`, `move_point`,
 `set_curve_controls`, `split_curve`, `join_curve`, `resize_piece`, `set_placement`, `set_grain`,
 `set_material`, `add_material`, `update_material`, `add_seam`, `update_seam`,
-`remove_seam`, `remove_piece`, `set_resolution`, and `set_mannequin`.
+`remove_seam`, `add_sewing_group`, `update_sewing_group`, `remove_sewing_group`,
+`remove_piece`, `set_resolution`, and `set_mannequin`.
 Their exact data fields and nested types are in `tools/list`; the shared core
 validation remains authoritative. Authoring uses f64 SI units, placement/grain
 angles use radians, and membrane stiffness uses N/m. See
@@ -123,6 +124,34 @@ its next boundary, including the closing pair. It retains the selected ID and
 sewing records; incompatible geometry or unsafe remapping fails atomically.
 The [bounded join contract](../spec/features/PAT-005-sewn-curve-editing.md#shape-preserving-join)
 defines its geometry and parameter limits.
+
+## Ordered sewing and headless inspection
+
+`add_sewing_group` takes `name`, ordered interval arrays `a`/`b`, and a monotone
+`correspondence`. `update_sewing_group` takes the complete `group` object;
+`remove_sewing_group` takes its stable `group` ID. Each interval stores
+`curve`, `t0` and `t1`, but a new group's map relates cumulative authored arc
+lengths. Legacy seam maps retain their original normalized-t meaning. Different
+pieces/disconnected spans are supported; gaps never add sewing length. Group
+identity and map survive supported split/join/remesh operations. The native
+writer saves v3; strict v1/v2 readers preserve legacy data and semantics.
+
+The same atomic command array can be supplied without an MCP client:
+
+```sh
+weftforge-cli execute input.weftforge output.weftforge commands.json
+weftforge-cli inspect-sewing output.weftforge
+```
+
+`commands.json` is a strict JSON array of 1–1024 shared commands, at most 1 MiB.
+Nested transactions and duplicate fields are rejected. CLI and MCP use the same
+transaction/save function; a failed command batch never partially replaces its
+output. Inspection reports the authoritative native-v3 source, group lengths,
+source-owned proportional portions, rest vertices/UVs/triangles, boundary
+parameters and actual weighted stitches. It builds a rest mesh and performs no
+simulation. Its native source uses native scalar serialization, including f32
+appearance colors; geometry and physical values retain f64 precision. This is
+separate from the MCP `project_inspect` tool, which does not build a mesh.
 
 ## Failure and scope boundaries
 

@@ -174,7 +174,13 @@ def check():
     document = pinned('crates/weftforge-core/src/document.rs').decode()
     command_enum = document.split('pub enum Command {', 1)[1].split('#[derive', 1)[0]
     commands = set(re.findall(r'^    ([A-Z]\w*)\s*[({]', command_enum, re.MULTILINE))
-    assert len(commands) == 19 and 'JoinCurve' in commands
+    assert commands == {
+        'AddMaterial', 'AddPolygon', 'AddRectangle', 'AddSeam', 'AddSewingGroup',
+        'JoinCurve', 'MovePoint', 'RemovePiece', 'RemoveSeam', 'RemoveSewingGroup',
+        'ResizePiece', 'SetCurveControls', 'SetGrain', 'SetMannequin', 'SetMaterial',
+        'SetPlacement', 'SetResolution', 'SplitCurve', 'Transaction',
+        'UpdateMaterial', 'UpdateSeam', 'UpdateSewingGroup',
+    }
 
     fixture_ids = set(data['fixture_recipes'])
     for fixture in data['fixture_recipes'].values():

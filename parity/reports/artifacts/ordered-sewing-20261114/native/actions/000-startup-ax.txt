@@ -1,0 +1,68 @@
+Window: "WeftForge", App: WeftForge.
+0 standard window WeftForge, Secondary Actions: Raise
+	1 container
+		2 text (settable) WeftForge
+		3 text (settable) Open garment design.
+		4 button Open…
+		5 button Save
+		6 button Save as…
+		7 button Recover…
+		8 button Export OBJ
+		9 button Export SVG
+		10 button Export DXF
+		11 button Undo
+		12 button Redo
+		13 button Commands ⌘K
+		14 toggle button (settable, boolean) Select / edit, Value: on
+		15 toggle button (settable, boolean) Polygon, Value: off
+		16 toggle button (settable, boolean) Rectangle, Value: off
+		17 toggle button (settable, boolean) Sew edges, Value: off
+		18 toggle button (settable, boolean) M:N sewing, Value: off
+		19 button Play
+		20 button Step
+		21 button Assemble (gravity off)
+		22 button Drape
+		23 button Reset
+		24 checkbox (settable, boolean) Wireframe, Value: off
+		25 text (settable) 0 pieces · 0 legacy seams · 0 sewing groups · 0 vertices
+		26 text (settable) Stage: Rest arrangement
+		27 text (settable) Next step settings: dt 0.01667 s · 4 substeps · 8 iterations · gravity [0.0, -9.81, 0.0] m/s² · seam closure 0.50 m/s
+		28 text (settable) Empty project · draw a pattern or enter dimensions in metres.
+		29 text (settable) Construction
+		30 text (settable) Pattern name
+		31 text field (settable) Pattern 1
+		32 text (settable) W / H m
+		33 stepper (settable) 0.50
+		34 stepper (settable) 0.60
+		35 text (settable) X / Y m
+		36 stepper (settable) -0.25
+		37 stepper (settable) 1.00
+		38 button Add rectangle
+		39 button Add polygon point
+		40 button Close pattern (0 points)
+		41 text (settable) Sewing
+		42 checkbox (settable, boolean) Reverse paired edge, Value: on
+		43 text (settable) A interval / B interval (0–1)
+		44 stepper (settable) 0.00
+		45 stepper (settable) 1.00
+		46 stepper (settable) 0.00
+		47 stepper (settable) 1.00
+		48 text (settable) Sew edges: click two 2D boundaries.
+		49 text (settable) Intervals use curve parameter t, not arc length. Reverse swaps B's direction and keeps the normalized mapping.
+		50 text (settable) Ordered sewing groups
+		51 text (settable) Pairing: total authored arc length in metres. Span endpoints use curve parameter t.
+		52 text (settable) Mesh edge length m
+		53 stepper (settable) 0.070
+		54 text (settable) Iterations / substeps
+		55 stepper (settable) 8
+		56 stepper (settable) 4
+		57 text (settable) 2D PATTERNS
+		58 text (settable) Metres · 1 cm snap · scroll zoom · middle drag pan
+		59 unknown
+		60 text (settable) 3D GARMENT
+		61 text (settable) Drag orbit · scroll zoom · triangle selection
+		62 unknown
+	63 text WeftForge
+	64 menu button Window sharing
+65 menu bar
+	66 WeftForge

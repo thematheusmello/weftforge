@@ -1,0 +1,50 @@
+{
+  "commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "recorded_utc": "2026-11-14T16:25:26.984036+00:00",
+  "gates": {
+    "fmt": {
+      "exit_code": 0,
+      "log": ".local/chain-sewing-final-20261114/gates/fmt.log"
+    },
+    "workspace_tests": {
+      "exit_code": 0,
+      "passed": 122,
+      "targets": 18,
+      "session": 46670,
+      "log": ".local/chain-sewing-final-20261114/gates/workspace-test.log"
+    },
+    "workspace_clippy": {
+      "exit_code": 0,
+      "session": 59961,
+      "environment": {
+        "CARGO_INCREMENTAL": "0"
+      },
+      "warnings": 0,
+      "log": ".local/chain-sewing-final-20261114/gates/clippy.log"
+    },
+    "xtask": {
+      "exit_code": 0,
+      "session": 33589,
+      "python_checks": 54,
+      "map_entries": 949,
+      "work_packets": 205,
+      "source_landmarks": 56,
+      "log": ".local/chain-sewing-final-20261114/gates/xtask.log"
+    },
+    "package": {
+      "exit_code": 0,
+      "session": 43122,
+      "unsigned": true,
+      "log": ".local/chain-sewing-final-20261114/gates/package.log"
+    }
+  },
+  "artifacts": {
+    ".local/chain-sewing-final-20261114/gates/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".local/chain-sewing-final-20261114/gates/workspace-test.log": "f7a717649e6fc979e51c531c5bebe0f8d46aa801f75a9be798fd0e7cb3bd457a",
+    ".local/chain-sewing-final-20261114/gates/clippy.log": "7982dd70a7a4bfb539a8439f017fb861804fde55660d634f9d2cbcb423cb6b57",
+    ".local/chain-sewing-final-20261114/gates/xtask.log": "0ea073fac60a54159de981cb319c2abfb0bd3dfd507c26547b96013ced70892d",
+    ".local/chain-sewing-final-20261114/gates/package.log": "cb7d369603f0ab47f4d1e4a1c9637a0ddcda3036bce7a30ceea398641ef5b57e"
+  },
+  "scope": "All four required integrated local gates plus standard unsigned package passed at exact37-file runtime source; separate tracked/clean-checkout publication replay remains required.",
+  "all_required_passed": true
+}

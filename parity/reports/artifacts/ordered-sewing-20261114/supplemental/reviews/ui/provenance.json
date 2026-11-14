@@ -1,0 +1,34 @@
+{
+  "review": "native ordered sewing P1/P2 independent follow-up",
+  "date": "2026-11-14",
+  "original_commit": "65c1e22fbff6ba528921629e4926caed0be397b0",
+  "original_ui_commit": "ea4dce3fd56927db455bf375b354715d9f78e2b3",
+  "fixed_commit": "ed0dd37dc06789d531db5091917c7d64afeaa4d4",
+  "source_file": "apps/weftforge/src/main.rs",
+  "source_sha256": {
+    "65c1e22fbff6ba528921629e4926caed0be397b0": "76cba0d048e0de3343706f416575267b88e1837d8db546309fec976e75114a98",
+    "ed0dd37dc06789d531db5091917c7d64afeaa4d4": "d0dae7ce279e492687351c969adc43b7189cd92367c1023b2b77451bb8d5c5e7"
+  },
+  "artifact_sha256": {
+    "reverse-b-repro.rs": "0b02351c3686e8d231ea10086edd339c997dfab61429cc086d803a62d5578f45",
+    "accessibility-repro.rs": "f87973a9f8004c001126e766221595b22b95ac8c0d81c044b880dc9104db0641",
+    "green-fix.log": "6536444bfb935d94d7a06049021828f6d68ca817de68da6de4009c1b6526f033",
+    "red-original.log": "72a3a4626af25abe3e63093beb031a55a8698444aaa8eb3e38cbd83233ebfd2c"
+  },
+  "original_result": {
+    "passed": 0,
+    "failed": 2,
+    "exit_code": 101
+  },
+  "fixed_result": {
+    "passed": 2,
+    "failed": 0,
+    "exit_code": 0
+  },
+  "harness": "Unchanged frozen snippets inserted into existing tests::ordered_sewing inside a frozen_independent_review namespace; identical wrapper on original and fix. Assertions, input decimal, event order and persisted-wrong-span proof were not changed.",
+  "limits": [
+    "In-process product UI harness only; no native app interaction or reference runtime.",
+    "Original public product fixtures and reviewed implementation contract only.",
+    "Not reference parity, physical drape quality, roadmap acceptance or clean-checkout registry publication evidence."
+  ]
+}

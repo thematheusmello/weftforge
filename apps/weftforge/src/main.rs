@@ -10,7 +10,7 @@ use std::{
     time::{Duration, Instant, SystemTime, UNIX_EPOCH},
 };
 use weftforge_core::{
-    Command, Curve, CurveInterval, Editor, Id, Material, Mesh, Placement, Project,
+    Command, Curve, CurveInterval, Editor, Id, Material, Mesh, Placement, Project, SewingGroup,
 };
 use weftforge_sim::{Cloth, StepSettings};
 
@@ -20,6 +20,7 @@ enum Tool {
     Polygon,
     Rectangle,
     Sew,
+    SewingPaths,
 }
 #[derive(Clone, Copy)]
 enum ExportFormat {
@@ -111,6 +112,20 @@ struct AutosaveJob {
 struct RectangleDraft {
     origin: [f64; 2],
     dimensions_mm: [String; 2],
+    error: Option<String>,
+}
+
+#[derive(Default)]
+struct OrderedSewingDraft {
+    a: Vec<CurveInterval>,
+    b: Vec<CurveInterval>,
+    selecting_b: bool,
+}
+
+struct SewingGroupEdit {
+    group: SewingGroup,
+    focus: Option<egui::Id>,
+    epoch: u64,
     error: Option<String>,
 }
 
@@ -217,6 +232,8 @@ struct Studio {
     drag_point: Option<Id>,
     preview: Option<[f64; 2]>,
     seam_start: Option<Id>,
+    sewing_draft: OrderedSewingDraft,
+    sewing_edit: Option<SewingGroupEdit>,
     reversed: bool,
     intervals: [[f64; 2]; 2],
     name: String,
@@ -282,6 +299,8 @@ impl Studio {
             drag_point: None,
             preview: None,
             seam_start: None,
+            sewing_draft: OrderedSewingDraft::default(),
+            sewing_edit: None,
             reversed: true,
             intervals: [[0., 1.]; 2],
             name: "Pattern 1".into(),
@@ -315,10 +334,20 @@ impl Studio {
         }
     }
     fn apply_command(&mut self, command: Command) -> bool {
+        let old_pieces = self.editor.project.pieces.len();
+        let old_groups = self.editor.project.sewing_groups.len();
         match self.editor.execute(command) {
             Ok(()) => {
                 self.dirty = true;
                 self.message = "Construction updated; simulation invalidated.".into();
+                if self.editor.project.pieces.len() < old_pieces
+                    && self.editor.project.sewing_groups.len() < old_groups
+                {
+                    self.message = format!(
+                        "Construction updated; {} dependent sewing groups removed; simulation invalidated.",
+                        old_groups - self.editor.project.sewing_groups.len()
+                    );
+                }
                 self.rebuild();
                 true
             }
@@ -343,7 +372,7 @@ impl Studio {
         ctx: &egui::Context,
         command: Command,
         focused: Option<egui::Id>,
-    ) {
+    ) -> bool {
         let mut commands = self
             .draft
             .as_ref()
@@ -357,6 +386,67 @@ impl Studio {
         };
         let succeeded = self.apply_command(command);
         finish_numeric_action(ctx, focused, succeeded);
+        succeeded
+    }
+
+    fn reset_gestures(&mut self) {
+        self.polygon.clear();
+        self.seam_start = None;
+        self.sewing_draft = OrderedSewingDraft::default();
+        self.drag_point = None;
+        self.preview = None;
+        self.drag_start = None;
+        self.rectangle = None;
+    }
+
+    fn set_tool(&mut self, tool: Tool) {
+        if self.tool != tool {
+            self.reset_gestures();
+            self.tool = tool;
+        }
+    }
+
+    fn confirm_sewing_side(&mut self, ctx: &egui::Context) {
+        let draft = &self.sewing_draft;
+        if if draft.selecting_b {
+            draft.b.is_empty()
+        } else {
+            draft.a.is_empty()
+        } {
+            self.message =
+                "Select at least one boundary on this side; sewing draft retained.".into();
+            return;
+        }
+        if !draft.selecting_b {
+            self.sewing_draft.selecting_b = true;
+            self.message = "Side A confirmed. Select ordered boundaries for B, then Enter.".into();
+            return;
+        }
+        let command = Command::AddSewingGroup {
+            name: format!(
+                "Sewing group {}",
+                self.editor.project.sewing_groups.len() + 1
+            ),
+            a: draft.a.clone(),
+            b: draft.b.clone(),
+            correspondence: vec![[0., 0.], [1., 1.]],
+        };
+        let focused = self.inspector_focus(ctx);
+        if self.apply_inspector_action(ctx, command, focused) {
+            self.sewing_draft = OrderedSewingDraft::default();
+        }
+    }
+
+    fn delete_sewing_span(&mut self) {
+        let draft = &mut self.sewing_draft;
+        if draft.selecting_b {
+            if draft.b.pop().is_none() {
+                draft.selecting_b = false;
+                draft.a.pop();
+            }
+        } else {
+            draft.a.pop();
+        }
     }
     fn inspector_focus(&self, ctx: &egui::Context) -> Option<egui::Id> {
         let key = egui::Id::new("inspector-input-focus");
@@ -572,7 +662,9 @@ impl Studio {
                 self.path = if recovered { None } else { Some(path) };
                 self.dirty = recovered;
                 self.selected = None;
-                self.polygon.clear();
+                self.selected_curve = None;
+                self.reset_gestures();
+                self.sewing_edit = None;
                 self.mesh = None;
                 self.cloth = None;
                 self.rebuild();
@@ -923,8 +1015,26 @@ impl Studio {
                 (Tool::Polygon, "Polygon"),
                 (Tool::Rectangle, "Rectangle"),
                 (Tool::Sew, "Sew edges"),
+                (Tool::SewingPaths, "M:N sewing"),
             ] {
-                ui.selectable_value(&mut self.tool, tool, label);
+                if ui.selectable_label(self.tool == tool, label).clicked() {
+                    self.set_tool(tool);
+                }
+            }
+            if self.tool == Tool::SewingPaths {
+                ui.colored_label(
+                    Color32::GOLD,
+                    format!(
+                        "Select {} · A {} / B {} · Enter confirms · Delete last · Esc cancels",
+                        if self.sewing_draft.selecting_b {
+                            "B"
+                        } else {
+                            "A"
+                        },
+                        self.sewing_draft.a.len(),
+                        self.sewing_draft.b.len()
+                    ),
+                );
             }
             ui.separator();
             if ui
@@ -978,9 +1088,10 @@ impl Studio {
             }
             ui.checkbox(&mut self.wireframe, "Wireframe");
             ui.label(format!(
-                "{} pieces · {} seams · {} vertices",
+                "{} pieces · {} legacy seams · {} sewing groups · {} vertices",
                 self.editor.project.pieces.len(),
                 self.editor.project.seams.len(),
+                self.editor.project.sewing_groups.len(),
                 self.mesh.as_ref().map_or(0, |m| m.positions.len())
             ));
         });
@@ -996,6 +1107,8 @@ impl Studio {
         ui.heading("Construction");
         let mut commit = false;
         let mut acting = self.search
+            || self.tool == Tool::SewingPaths
+            || self.sewing_edit.is_some()
             || ui
                 .ctx()
                 .data_mut(|data| {
@@ -1031,7 +1144,7 @@ impl Studio {
                 self.execute(Command::AddRectangle { name:self.name.clone(),origin:self.coordinate,width:self.size[0],height:self.size[1] });
                 self.select(self.editor.project.pieces.last().map(|piece|piece.id));
             }
-            if ui.button("Add polygon point").clicked() { self.polygon.push(self.coordinate); self.tool=Tool::Polygon; }
+            if ui.button("Add polygon point").clicked() { self.set_tool(Tool::Polygon); self.polygon.push(self.coordinate); }
             if ui.button(format!("Close pattern ({} points)",self.polygon.len())).clicked() { self.finish_polygon(); }
             });
             let mut draft=self.draft.take().filter(|draft|draft.revision==self.editor.project.revision && draft.selected==self.selected && draft.curve.as_ref().map(|curve|curve.id)==self.selected_curve)
@@ -1101,6 +1214,8 @@ impl Studio {
                 if ui.button("Delete selected").clicked() { self.draft=Some(draft); self.execute(Command::RemovePiece { piece:piece.id }); return; }
             }
             let mut remove=None;
+            let mut group_action=None;
+            let mut confirm_side=false;
             ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("sewing")),|ui| {
             ui.separator(); ui.strong("Sewing"); ui.checkbox(&mut self.reversed,"Reverse paired edge"); ui.label("A interval / B interval (0–1)");
             for range in &mut self.intervals { ui.horizontal(|ui| { for value in range { ui.add(numeric_value(ui,value).speed(0.01).range(0.0..=1.0)); } }); }
@@ -1123,6 +1238,55 @@ impl Studio {
                 });
             }
             });
+            ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("ordered-sewing")),|ui| {
+                ui.separator(); ui.strong("Ordered sewing groups");
+                ui.small("Pairing: total authored arc length in metres. Span endpoints use curve parameter t.");
+                if self.tool==Tool::SewingPaths {
+                    let draft=&mut self.sewing_draft;
+                    ui.colored_label(Color32::GOLD,format!("Select side {} · A {} spans / B {} spans",if draft.selecting_b { "B" } else { "A" },draft.a.len(),draft.b.len()));
+                    ui.small("Click boundaries in traversal order; next span uses the A/B interval above and B direction setting. Enter confirms a side; Delete removes the latest span; Escape cancels.");
+                    let selecting_b=draft.selecting_b;
+                    let b_range=if self.reversed { [self.intervals[1][1],self.intervals[1][0]] } else { self.intervals[1] };
+                    sewing_span_controls(ui,&self.editor.project,"A",&mut draft.a,self.selected_curve,(!selecting_b).then_some(self.intervals[0]));
+                    sewing_span_controls(ui,&self.editor.project,"B",&mut draft.b,self.selected_curve,selecting_b.then_some(b_range));
+                    ui.horizontal(|ui| {
+                        confirm_side=ui.button(if selecting_b { "Create sewing group (Enter)" } else { "Confirm A (Enter)" }).clicked();
+                        if ui.small_button("Delete last").clicked() { self.delete_sewing_span(); }
+                    });
+                    if ui.small_button("Cancel sewing (Escape)").clicked() { self.sewing_draft=OrderedSewingDraft::default(); }
+                }
+                let mesh=self.mesh.as_ref().filter(|mesh|mesh.doc_revision==self.editor.project.revision);
+                for group in &self.editor.project.sewing_groups {
+                    ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("sewing-group",group.id))),|ui| {
+                        ui.strong(format!("{} · group #{}",group.name,group.id));
+                        ui.small(format!("A {} spans → B {} spans",group.a.len(),group.b.len()));
+                        for (side,spans) in [("A",&group.a),("B",&group.b)] {
+                            for (index,span) in spans.iter().enumerate() { ui.small(format!("{side}{} · #{} · t {} → {}",index+1,span.curve,span.t0,span.t1)); }
+                        }
+                        if let Some(geometry)=mesh.and_then(|mesh|mesh.sewing_groups.iter().find(|geometry|geometry.id==group.id)) {
+                            ui.small(format!("A {:.8} m · B {:.8} m\nMismatch {:+.8} m · {} paired portions",geometry.lengths[0],geometry.lengths[1],geometry.lengths[1]-geometry.lengths[0],geometry.portions.len()));
+                        } else { ui.small("Lengths and guides rebuilding for this revision…"); }
+                        ui.horizontal(|ui| {
+                            let edit=ui.small_button("Edit group");
+                            acting|=edit.is_pointer_button_down_on();
+                            if edit.clicked() {
+                                acting=true;
+                                self.sewing_edit=Some(SewingGroupEdit { group:group.clone(),focus:action_focus,epoch:ui.ctx().cumulative_frame_nr(),error:None });
+                            }
+                            let reverse=ui.small_button("Reverse B");
+                            acting|=reverse.is_pointer_button_down_on();
+                            if reverse.clicked() {
+                                let mut group=group.clone();
+                                reverse_sewing_side(&mut group.b);
+                                group_action=Some(Command::UpdateSewingGroup { group });
+                            }
+                            let remove=ui.small_button("Remove group");
+                            acting|=remove.is_pointer_button_down_on();
+                            if remove.clicked() { group_action=Some(Command::RemoveSewingGroup { group:group.id }); }
+                        });
+                    });
+                }
+            });
             ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("mesh-settings")),|ui| {
             ui.separator(); ui.label("Mesh edge length m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut draft.resolution).speed(0.005).range(0.005..=0.5)));
             ui.label("Iterations / substeps"); ui.horizontal(|ui| {
@@ -1136,6 +1300,8 @@ impl Studio {
             if let Some(curve)=split { self.execute(Command::SplitCurve { curve,t:self.split_t }); }
             if let Some(curve)=join { acting=true; self.apply_inspector_action(ui.ctx(),Command::JoinCurve { curve },action_focus); }
             if let Some(seam)=reverse { acting=true; self.apply_inspector_action(ui.ctx(),Command::UpdateSeam { seam },action_focus); }
+            if let Some(command)=group_action { acting=true; self.apply_inspector_action(ui.ctx(),command,action_focus); }
+            if confirm_side { acting=true; self.confirm_sewing_side(ui.ctx()); }
         });
         let opening_rectangle = self.tool == Tool::Rectangle
             && self
@@ -1377,6 +1543,67 @@ impl Studio {
                 }
             }
         }
+        if let Some(mesh) = self
+            .mesh
+            .as_ref()
+            .filter(|mesh| mesh.doc_revision == self.editor.project.revision)
+        {
+            for geometry in &mesh.sewing_groups {
+                for portion in &geometry.portions {
+                    for (interval, color) in [
+                        (&portion.a, Color32::from_rgb(100, 200, 255)),
+                        (&portion.b, Color32::from_rgb(235, 145, 240)),
+                    ] {
+                        self.paint_sewing_interval(&painter, interval, r, color);
+                    }
+                    for fraction in [0., 1.] {
+                        let endpoint = |interval: &CurveInterval| {
+                            self.editor
+                                .project
+                                .curve(interval.curve)
+                                .and_then(|curve| {
+                                    curve
+                                        .evaluate(
+                                            &self.editor.project,
+                                            interval.parameter(fraction),
+                                        )
+                                        .ok()
+                                })
+                                .map(|point| self.to_screen(point, r))
+                        };
+                        if let (Some(a), Some(b)) = (endpoint(&portion.a), endpoint(&portion.b)) {
+                            painter.line_segment(
+                                [a, b],
+                                Stroke::new(1., Color32::from_rgb(125, 165, 235)),
+                            );
+                        }
+                    }
+                }
+            }
+        }
+        if self.tool == Tool::SewingPaths {
+            for (side, spans, color) in [
+                ("A", &self.sewing_draft.a, Color32::from_rgb(100, 200, 255)),
+                ("B", &self.sewing_draft.b, Color32::from_rgb(235, 145, 240)),
+            ] {
+                for (index, interval) in spans.iter().enumerate() {
+                    self.paint_sewing_interval(&painter, interval, r, color);
+                    if let Some(point) =
+                        self.editor.project.curve(interval.curve).and_then(|curve| {
+                            curve.evaluate(&self.editor.project, interval.t0).ok()
+                        })
+                    {
+                        painter.text(
+                            self.to_screen(point, r) + Vec2::new(4., 4.),
+                            egui::Align2::LEFT_TOP,
+                            format!("{side}{}", index + 1),
+                            egui::FontId::proportional(12.),
+                            color,
+                        );
+                    }
+                }
+            }
+        }
         for point in &self.polygon {
             painter.circle_filled(self.to_screen(*point, r), 3., Color32::GOLD);
         }
@@ -1467,6 +1694,27 @@ impl Studio {
                         }
                     }
                 }
+                Tool::SewingPaths => {
+                    if let Some((_, curve)) = nearest {
+                        let draft = &mut self.sewing_draft;
+                        let side = usize::from(draft.selecting_b);
+                        let [t0, t1] = self.intervals[side];
+                        let interval = if draft.selecting_b && self.reversed {
+                            CurveInterval {
+                                curve,
+                                t0: t1,
+                                t1: t0,
+                            }
+                        } else {
+                            CurveInterval { curve, t0, t1 }
+                        };
+                        if draft.selecting_b {
+                            draft.b.push(interval);
+                        } else {
+                            draft.a.push(interval);
+                        }
+                    }
+                }
                 Tool::Rectangle => {
                     if let Some(p) = pointer {
                         // shortcut: existing snapped lower-left anchor; reference equivalence needs observation.
@@ -1479,6 +1727,107 @@ impl Studio {
                 }
             }
         }
+    }
+    fn paint_sewing_interval(
+        &self,
+        painter: &egui::Painter,
+        interval: &CurveInterval,
+        rect: Rect,
+        color: Color32,
+    ) {
+        let Some(curve) = self.editor.project.curve(interval.curve) else {
+            return;
+        };
+        let points: Vec<_> = (0..=24)
+            .filter_map(|index| {
+                curve
+                    .evaluate(&self.editor.project, interval.parameter(index as f64 / 24.))
+                    .ok()
+            })
+            .map(|point| self.to_screen(point, rect))
+            .collect();
+        if let [.., previous, end] = points.as_slice() {
+            painter.arrow(*previous, *end - *previous, Stroke::new(2., color));
+        }
+        painter.add(egui::Shape::line(points, Stroke::new(2., color)));
+    }
+
+    fn sewing_group_window(&mut self, ctx: &egui::Context) {
+        let Some(mut edit) = self.sewing_edit.take() else {
+            return;
+        };
+        let mut apply = false;
+        let mut cancel = false;
+        let response = egui::Modal::new(egui::Id::new(("edit-sewing-group", edit.group.id, edit.epoch))).show(ctx, |ui| {
+            ui.set_width(620.);
+            ui.heading(format!("Edit sewing group #{}", edit.group.id));
+            ui.horizontal(|ui| { let label=ui.label("Name"); ui.text_edit_singleline(&mut edit.group.name).labelled_by(label.id); });
+            ui.small("Pairing uses normalized total authored arc length. Each span keeps its own curve parameter endpoints and direction; gaps add no length.");
+            egui::ScrollArea::vertical().id_salt("group-fields").max_height(420.).show(ui, |ui| {
+                let b_fields=ui.columns(2, |columns| {
+                    sewing_span_controls(&mut columns[0], &self.editor.project, "A", &mut edit.group.a, self.selected_curve, Some([0.,1.]));
+                    sewing_span_controls(&mut columns[1], &self.editor.project, "B", &mut edit.group.b, self.selected_curve, Some([0.,1.]))
+                });
+                if ui.button("Reverse B order and directions").clicked() {
+                    clear_numeric_fields(ctx,&b_fields);
+                    reverse_sewing_side(&mut edit.group.b);
+                }
+                ui.separator();
+                ui.strong("Easing map · normalized A length / B length");
+                let mut remove = None;
+                let mut map_fields=Vec::new();
+                let last = edit.group.correspondence.len() - 1;
+                for (index, pair) in edit.group.correspondence.iter_mut().enumerate() {
+                    ui.push_id(("map", index), |ui| {
+                        ui.horizontal(|ui| {
+                            ui.label(format!("Knot {}", index + 1));
+                            for (side,value) in ["A","B"].into_iter().zip(pair) {
+                                let label=ui.label(side);
+                                map_fields.push(ui.add(numeric_value(ui, value).speed(0.01)).labelled_by(label.id).id);
+                            }
+                            if index > 0 && index < last && ui.small_button("Remove knot").clicked() { remove = Some(index); }
+                        });
+                    });
+                }
+                let add=ui.button("Add easing knot").clicked();
+                if remove.is_some() || add {
+                    clear_numeric_fields(ctx,&map_fields);
+                }
+                if let Some(index) = remove { edit.group.correspondence.remove(index); }
+                if add {
+                    let map = &mut edit.group.correspondence;
+                    let last = map.len() - 1;
+                    map.insert(last, std::array::from_fn(|axis| (map[last - 1][axis] + map[last][axis]) * 0.5));
+                }
+            });
+            if let Some(error) = &edit.error { ui.colored_label(Color32::LIGHT_RED, error); }
+            ui.horizontal(|ui| {
+                apply = ui.button("Apply group").clicked();
+                cancel = ui.button("Cancel group edit").clicked();
+            });
+        });
+        if cancel || response.should_close() {
+            if let Some(id) = numeric_focus(ctx) {
+                ctx.memory_mut(|memory| memory.surrender_focus(id));
+            }
+            if let Some(id) = edit.focus {
+                ctx.memory_mut(|memory| memory.request_focus(id));
+            }
+            return;
+        }
+        if apply {
+            if self.apply_inspector_action(
+                ctx,
+                Command::UpdateSewingGroup {
+                    group: edit.group.clone(),
+                },
+                edit.focus,
+            ) {
+                return;
+            }
+            edit.error = Some(self.message.clone());
+        }
+        self.sewing_edit = Some(edit);
     }
     fn project3(&self, p: [f64; 3], r: Rect) -> (Pos2, f32) {
         let [x, y, z] = [p[0] as f32, p[1] as f32 - 1., p[2] as f32];
@@ -1613,17 +1962,21 @@ impl eframe::App for Studio {
         let ctx = ui.ctx().clone();
         self.poll();
         self.poll_autosave();
+        let editing_group = self.sewing_edit.is_some();
         if self.rectangle.is_none()
+            && !editing_group
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::S))
         {
             self.save(false);
         }
         if self.rectangle.is_none()
+            && !editing_group
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::O))
         {
             self.choose_open();
         }
         if self.rectangle.is_none()
+            && !editing_group
             && !ctx.egui_wants_keyboard_input()
             && ctx.input_mut(|i| {
                 i.consume_key(
@@ -1634,17 +1987,23 @@ impl eframe::App for Studio {
         {
             self.history(&ctx, true);
         } else if self.rectangle.is_none()
+            && !editing_group
             && !ctx.egui_wants_keyboard_input()
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::Z))
         {
             self.history(&ctx, false);
         }
         if self.rectangle.is_none()
+            && !editing_group
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::K))
         {
             self.search = !self.search;
         }
-        if self.rectangle.is_none() && !ctx.egui_wants_keyboard_input() {
+        if self.rectangle.is_none()
+            && !editing_group
+            && !self.search
+            && !ctx.egui_wants_keyboard_input()
+        {
             if ctx.input(|i| i.key_pressed(egui::Key::Space)) {
                 self.playing = !self.playing;
                 self.pending_batch = None;
@@ -1658,14 +2017,21 @@ impl eframe::App for Studio {
                 }
             }
             if ctx.input(|i| i.key_pressed(egui::Key::Enter)) {
-                self.finish_polygon();
+                if self.tool == Tool::SewingPaths {
+                    self.confirm_sewing_side(&ctx);
+                } else {
+                    self.finish_polygon();
+                }
+            }
+            if self.tool == Tool::SewingPaths
+                && ctx.input(|i| {
+                    i.key_pressed(egui::Key::Delete) || i.key_pressed(egui::Key::Backspace)
+                })
+            {
+                self.delete_sewing_span();
             }
             if ctx.input(|i| i.key_pressed(egui::Key::Escape)) {
-                self.polygon.clear();
-                self.seam_start = None;
-                self.drag_point = None;
-                self.preview = None;
-                self.drag_start = None;
+                self.reset_gestures();
             }
         }
         if self.needs_mesh && self.job.is_none() {
@@ -1698,12 +2064,10 @@ impl eframe::App for Studio {
             self.message = "Save before closing, or explicitly discard edits.".into();
         }
         // Disabled DragValue still handles AccessKit value actions in egui 0.35.
-        let modal_events = self
-            .rectangle
-            .is_some()
+        let modal_events = (self.rectangle.is_some() || self.sewing_edit.is_some())
             .then(|| ctx.input_mut(|input| std::mem::take(&mut input.events)));
         egui::Frame::central_panel(ui.style()).show(ui, |ui| {
-            if self.rectangle.is_some() {
+            if self.rectangle.is_some() || self.sewing_edit.is_some() {
                 ui.disable();
             }
             self.toolbar(ui);
@@ -1757,7 +2121,7 @@ impl eframe::App for Studio {
         if self.search {
             let mut open = true;
             egui::Window::new("Command search")
-                .enabled(self.rectangle.is_none())
+                .enabled(self.rectangle.is_none() && self.sewing_edit.is_none())
                 .open(&mut open)
                 .collapsible(false)
                 .show(&ctx, |ui| {
@@ -1776,6 +2140,7 @@ impl eframe::App for Studio {
                         "Polygon",
                         "Rectangle",
                         "Sew edges",
+                        "M:N sewing",
                     ] {
                         if !label.to_lowercase().contains(&self.query.to_lowercase()) {
                             continue;
@@ -1800,10 +2165,11 @@ impl eframe::App for Studio {
                                 "Reset simulation" => {
                                     self.reset_simulation();
                                 }
-                                "Select" => self.tool = Tool::Select,
-                                "Polygon" => self.tool = Tool::Polygon,
-                                "Rectangle" => self.tool = Tool::Rectangle,
-                                "Sew edges" => self.tool = Tool::Sew,
+                                "Select" => self.set_tool(Tool::Select),
+                                "Polygon" => self.set_tool(Tool::Polygon),
+                                "Rectangle" => self.set_tool(Tool::Rectangle),
+                                "Sew edges" => self.set_tool(Tool::Sew),
+                                "M:N sewing" => self.set_tool(Tool::SewingPaths),
                                 _ => {}
                             }
                             self.search = false;
@@ -1817,6 +2183,7 @@ impl eframe::App for Studio {
             ctx.input_mut(|input| input.events = events);
         }
         self.rectangle_window(&ctx);
+        self.sewing_group_window(&ctx);
         if let Some((_, Some(format), focused)) = ctx
             .data_mut(|data| {
                 data.remove_temp::<(u64, Option<ExportFormat>, Option<egui::Id>)>(egui::Id::new(
@@ -1833,6 +2200,128 @@ impl eframe::App for Studio {
 fn numeric_focus(ctx: &egui::Context) -> Option<egui::Id> {
     ctx.memory(|memory| memory.focused())
         .filter(|&id| ctx.data_mut(|data| data.get_temp::<String>(id)).is_some())
+}
+fn reverse_sewing_side(spans: &mut [CurveInterval]) {
+    spans.reverse();
+    for interval in spans {
+        std::mem::swap(&mut interval.t0, &mut interval.t1);
+    }
+}
+
+fn sewing_span_controls(
+    ui: &mut egui::Ui,
+    project: &Project,
+    side: &str,
+    spans: &mut Vec<CurveInterval>,
+    selected_curve: Option<Id>,
+    append_range: Option<[f64; 2]>,
+) -> Vec<egui::Id> {
+    ui.push_id(("sewing-spans", side), |ui| {
+        ui.strong(format!("Side {side} · {} spans", spans.len()));
+        let mut reorder = None;
+        let mut remove = None;
+        let mut reverse = None;
+        let mut fields = Vec::new();
+        let count = spans.len();
+        for (index, interval) in spans.iter_mut().enumerate() {
+            ui.push_id(index, |ui| {
+                ui.horizontal(|ui| {
+                    ui.label(format!("{side}{}", index + 1));
+                    egui::ComboBox::from_id_salt("curve")
+                        .selected_text(format!("Curve #{}", interval.curve))
+                        .width(110.)
+                        .show_ui(ui, |ui| {
+                            for piece in &project.pieces {
+                                for (boundary, curve) in piece.boundary.iter().enumerate() {
+                                    ui.selectable_value(
+                                        &mut interval.curve,
+                                        *curve,
+                                        format!(
+                                            "{} · boundary {} · #{curve}",
+                                            piece.name,
+                                            boundary + 1
+                                        ),
+                                    );
+                                }
+                            }
+                        });
+                });
+                ui.horizontal(|ui| {
+                    for (label, value) in
+                        [("t start", &mut interval.t0), ("t end", &mut interval.t1)]
+                    {
+                        let label = ui.label(label);
+                        let response = ui
+                            .add(numeric_value(ui, value).speed(0.01))
+                            .labelled_by(label.id);
+                        fields.push(response.id);
+                    }
+                });
+                ui.horizontal(|ui| {
+                    if ui
+                        .add_enabled(index > 0, egui::Button::new("Up").small())
+                        .clicked()
+                    {
+                        reorder = Some((index, index - 1));
+                    }
+                    if ui
+                        .add_enabled(index + 1 < count, egui::Button::new("Down").small())
+                        .clicked()
+                    {
+                        reorder = Some((index, index + 1));
+                    }
+                    if ui.small_button("Direction").clicked() {
+                        reverse = Some(index);
+                    }
+                    if ui.small_button("Remove span").clicked() {
+                        remove = Some(index);
+                    }
+                });
+            });
+        }
+        if reorder.is_some() || reverse.is_some() || remove.is_some() {
+            clear_numeric_fields(ui.ctx(), &fields);
+        }
+        if let Some((a, b)) = reorder {
+            spans.swap(a, b);
+        }
+        if let Some(index) = reverse {
+            let interval = &mut spans[index];
+            std::mem::swap(&mut interval.t0, &mut interval.t1);
+        }
+        if let Some(index) = remove {
+            spans.remove(index);
+        }
+        if let Some([t0, t1]) = append_range {
+            let curve = selected_curve.or_else(|| {
+                project
+                    .pieces
+                    .iter()
+                    .find_map(|piece| piece.boundary.first().copied())
+            });
+            if ui
+                .add_enabled(
+                    curve.is_some(),
+                    egui::Button::new(format!("Add boundary to {side}")),
+                )
+                .clicked()
+            {
+                spans.push(CurveInterval {
+                    curve: curve.expect("enabled boundary"),
+                    t0,
+                    t1,
+                });
+            }
+        }
+        fields
+    })
+    .inner
+}
+fn clear_numeric_fields(ctx: &egui::Context, fields: &[egui::Id]) {
+    for &id in fields {
+        ctx.data_mut(|data| data.remove::<String>(id));
+        ctx.memory_mut(|memory| memory.surrender_focus(id));
+    }
 }
 fn finish_numeric_action(
     ctx: &egui::Context,
@@ -5017,5 +5506,864 @@ mod tests {
         }
         assert!(Project::load(&source).is_ok());
         fs::remove_dir_all(dir).unwrap();
+    }
+    mod ordered_sewing {
+        use super::*;
+        use egui::accesskit::{Action, ActionData, ActionRequest, NodeId, TreeId};
+
+        fn frame(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            events: Vec<egui::Event>,
+        ) -> egui::FullOutput {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1450., 2400.))),
+                    events,
+                    ..Default::default()
+                },
+                |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+            )
+        }
+        fn action(id: NodeId, action: Action) -> egui::Event {
+            egui::Event::AccessKitActionRequest(ActionRequest {
+                action,
+                target_tree: TreeId::ROOT,
+                target_node: id,
+                data: None,
+            })
+        }
+        fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+            egui::Event::Key {
+                key,
+                physical_key: None,
+                pressed: true,
+                repeat: false,
+                modifiers,
+            }
+        }
+        fn buttons(output: &egui::FullOutput, label: &str) -> Vec<NodeId> {
+            let mut nodes: Vec<_> = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .filter(|(_, node)| {
+                    node.label() == Some(label)
+                        && node.supports_action(Action::Click)
+                        && !node.is_disabled()
+                })
+                .collect();
+            nodes.sort_by(|(_, a), (_, b)| {
+                let a = a.bounds().unwrap();
+                let b = b.bounds().unwrap();
+                a.x0.total_cmp(&b.x0).then(a.y0.total_cmp(&b.y0))
+            });
+            nodes.into_iter().map(|(id, _)| *id).collect()
+        }
+        fn click(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            output: &egui::FullOutput,
+            label: &str,
+        ) -> egui::FullOutput {
+            let id = *buttons(output, label)
+                .last()
+                .unwrap_or_else(|| panic!("missing button {label}"));
+            frame(ctx, app, vec![action(id, Action::Click)]);
+            frame(ctx, app, vec![])
+        }
+        fn numeric(output: &egui::FullOutput, value: f64, index: usize) -> NodeId {
+            let mut nodes: Vec<_> = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .filter(|(_, node)| node.numeric_value() == Some(value) && !node.is_disabled())
+                .collect();
+            nodes.sort_by(|(_, a), (_, b)| {
+                let a = a.bounds().unwrap();
+                let b = b.bounds().unwrap();
+                a.x0.total_cmp(&b.x0).then(a.y0.total_cmp(&b.y0))
+            });
+            nodes
+                .get(index)
+                .unwrap_or_else(|| panic!("missing numeric {value} at {index}"))
+                .0
+        }
+        fn set_number(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            id: NodeId,
+            value: f64,
+        ) -> egui::FullOutput {
+            frame(
+                ctx,
+                app,
+                vec![egui::Event::AccessKitActionRequest(ActionRequest {
+                    action: Action::SetValue,
+                    target_tree: TreeId::ROOT,
+                    target_node: id,
+                    data: Some(ActionData::NumericValue(value)),
+                })],
+            )
+        }
+        fn fixture(group: bool) -> (Studio, Vec<Id>) {
+            let mut app = Studio::empty();
+            for (index, (x, width)) in [
+                (-1.25, 0.1),
+                (-0.8, 0.3),
+                (-0.25, 0.2),
+                (0.35, 0.2),
+                (0.95, 0.2),
+            ]
+            .into_iter()
+            .enumerate()
+            {
+                app.editor
+                    .execute(Command::AddRectangle {
+                        name: format!("Panel {}", index + 1),
+                        origin: [x, 0.3],
+                        width,
+                        height: 0.4,
+                    })
+                    .unwrap();
+            }
+            let curves: Vec<_> = app
+                .editor
+                .project
+                .pieces
+                .iter()
+                .map(|piece| piece.boundary[0])
+                .collect();
+            let piece = app.editor.project.pieces[0].id;
+            app.editor
+                .execute(Command::SetGrain {
+                    piece,
+                    angle: 0.125,
+                })
+                .unwrap();
+            if group {
+                app.editor
+                    .execute(Command::Transaction(vec![
+                        Command::SetCurveControls {
+                            curve: curves[0],
+                            controls: Some([[-1.24, 0.26], [-1.18, 0.26]]),
+                        },
+                        Command::AddSewingGroup {
+                            name: "Collective".into(),
+                            a: vec![
+                                CurveInterval {
+                                    curve: curves[0],
+                                    t0: 0.15,
+                                    t1: 0.85,
+                                },
+                                CurveInterval {
+                                    curve: curves[1],
+                                    t0: 0.2,
+                                    t1: 0.8,
+                                },
+                            ],
+                            b: curves[2..]
+                                .iter()
+                                .map(|curve| CurveInterval {
+                                    curve: *curve,
+                                    t0: 0.9,
+                                    t1: 0.1,
+                                })
+                                .collect(),
+                            correspondence: vec![[0., 0.], [1., 1.]],
+                        },
+                    ]))
+                    .unwrap();
+            }
+            app.editor = Editor::new(app.editor.project.clone()).unwrap();
+            app.center = [0., 0.5];
+            app.scale = 180.;
+            (app, curves)
+        }
+        fn boundary_click(ctx: &egui::Context, app: &mut Studio, curve: Id) -> egui::FullOutput {
+            let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+            let point = app
+                .editor
+                .project
+                .curve(curve)
+                .unwrap()
+                .evaluate(&app.editor.project, 0.5)
+                .unwrap();
+            let pos = app.to_screen(point, rect);
+            frame(
+                ctx,
+                app,
+                vec![
+                    egui::Event::PointerMoved(pos),
+                    egui::Event::PointerButton {
+                        pos,
+                        button: egui::PointerButton::Primary,
+                        pressed: true,
+                        modifiers: egui::Modifiers::NONE,
+                    },
+                ],
+            );
+            frame(
+                ctx,
+                app,
+                vec![
+                    egui::Event::PointerMoved(pos),
+                    egui::Event::PointerButton {
+                        pos,
+                        button: egui::PointerButton::Primary,
+                        pressed: false,
+                        modifiers: egui::Modifiers::NONE,
+                    },
+                ],
+            )
+        }
+        fn stop_jobs(app: &mut Studio) {
+            app.cancel();
+            app.job = None;
+            app.needs_mesh = false;
+        }
+        fn assert_construction(actual: &Project, expected: &Project) {
+            let mut actual = serde_json::to_value(actual).unwrap();
+            let expected = serde_json::to_value(expected).unwrap();
+            // History preserves the allocator high-water mark so deleted IDs are never reused.
+            assert!(actual["next_id"].as_u64().unwrap() >= expected["next_id"].as_u64().unwrap());
+            actual["revision"] = expected["revision"].clone();
+            actual["next_id"] = expected["next_id"].clone();
+            assert_eq!(actual, expected);
+        }
+        fn stage_inspector(ctx: &egui::Context, app: &mut Studio) -> (egui::FullOutput, egui::Id) {
+            let output = frame(ctx, app, vec![]);
+            let grain = numeric(&output, 0.125, 0);
+            frame(ctx, app, vec![action(grain, Action::Focus)]);
+            frame(ctx, app, vec![]);
+            app.draft.as_mut().unwrap().resolution = 0.08;
+            let output = frame(
+                ctx,
+                app,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text("0.250".into()),
+                ],
+            );
+            let focused = ctx.memory(|memory| memory.focused()).unwrap();
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(focused)),
+                Some("0.250".into())
+            );
+            (output, focused)
+        }
+
+        #[test]
+        fn canvas_enter_sides_delete_escape_history_and_load_are_atomic() {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let (mut app, curves) = fixture(false);
+            let before = app.editor.project.clone();
+            app.intervals = [[0.2, 0.8], [0.1, 0.9]];
+            let output = frame(&ctx, &mut app, vec![]);
+            click(&ctx, &mut app, &output, "M:N sewing");
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+            );
+            assert_eq!(app.editor.project, before);
+            assert!(!app.sewing_draft.selecting_b);
+            boundary_click(&ctx, &mut app, curves[0]);
+            boundary_click(&ctx, &mut app, curves[1]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Delete, egui::Modifiers::NONE)],
+            );
+            assert_eq!(app.sewing_draft.a.len(), 1);
+            boundary_click(&ctx, &mut app, curves[1]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+            );
+            assert!(app.sewing_draft.selecting_b);
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+            );
+            assert_eq!(app.editor.project, before);
+            boundary_click(&ctx, &mut app, curves[2]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Delete, egui::Modifiers::NONE)],
+            );
+            assert!(app.sewing_draft.b.is_empty() && app.sewing_draft.selecting_b);
+            for curve in &curves[2..] {
+                boundary_click(&ctx, &mut app, *curve);
+            }
+            assert_eq!(
+                app.sewing_draft
+                    .a
+                    .iter()
+                    .map(|span| span.curve)
+                    .collect::<Vec<_>>(),
+                curves[..2]
+            );
+            assert_eq!(app.editor.project, before);
+            assert!(!app.editor.can_undo());
+            app.draft.as_mut().unwrap().resolution = 0.08;
+            let output = frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+            );
+            stop_jobs(&mut app);
+            let created = app.editor.project.clone();
+            assert_eq!(created.revision, before.revision + 1);
+            assert_eq!(created.resolution, 0.08);
+            let group = &created.sewing_groups[0];
+            assert_eq!(group.a.len(), 2);
+            assert_eq!(group.b.len(), 3);
+            assert!(group.a.iter().all(|span| [span.t0, span.t1] == [0.2, 0.8]));
+            assert!(group.b.iter().all(|span| [span.t0, span.t1] == [0.9, 0.1]));
+            assert!(app.sewing_draft.a.is_empty() && app.sewing_draft.b.is_empty());
+            click(&ctx, &mut app, &output, "Undo");
+            stop_jobs(&mut app);
+            assert_construction(&app.editor.project, &before);
+            assert!(!app.editor.can_undo() && app.editor.can_redo());
+            boundary_click(&ctx, &mut app, curves[4]);
+            let output = frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+            );
+            assert!(app.sewing_draft.a.is_empty());
+            assert!(app.editor.can_redo());
+            assert_construction(&app.editor.project, &before);
+            click(&ctx, &mut app, &output, "Redo");
+            stop_jobs(&mut app);
+            assert_construction(&app.editor.project, &created);
+            boundary_click(&ctx, &mut app, curves[0]);
+            let output = frame(&ctx, &mut app, vec![]);
+            click(&ctx, &mut app, &output, "Select / edit");
+            assert!(app.sewing_draft.a.is_empty());
+            let output = frame(&ctx, &mut app, vec![]);
+            let output = click(&ctx, &mut app, &output, "Commands ⌘K");
+            click(&ctx, &mut app, &output, "M:N sewing");
+            assert!(app.tool == Tool::SewingPaths);
+            boundary_click(&ctx, &mut app, curves[0]);
+            let dir = exit_test_directory("ordered-sewing-reopen");
+            let path = dir.join("group.weftforge");
+            app.editor.project.save(&path).unwrap();
+            let saved: serde_json::Value =
+                serde_json::from_slice(&fs::read(&path).unwrap()).unwrap();
+            assert_eq!(saved["version"], weftforge_core::FORMAT_VERSION);
+            app.open(dir.join("missing.weftforge"));
+            assert_eq!(app.sewing_draft.a.len(), 1);
+            app.open(path);
+            assert!(app.sewing_draft.a.is_empty() && app.sewing_draft.b.is_empty());
+            assert!(!app.sewing_draft.selecting_b);
+            assert!(app.selected_curve.is_none() && app.seam_start.is_none());
+            assert_construction(&app.editor.project, &created);
+            frame(&ctx, &mut app, vec![]);
+            stop_jobs(&mut app);
+            fs::remove_dir_all(dir).unwrap();
+        }
+
+        #[test]
+        fn group_controls_edit_all_fields_reverse_remove_and_preserve_one_step_history() {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let (mut app, curves) = fixture(true);
+            let piece = app.editor.project.pieces[0].id;
+            app.select(Some(piece));
+            let before = app.editor.project.clone();
+            let (output, focused) = stage_inspector(&ctx, &mut app);
+            let output = click(&ctx, &mut app, &output, "Edit group");
+            assert_eq!(app.editor.project, before);
+            let name = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(_, node)| node.value() == Some("Collective"))
+                .unwrap()
+                .0;
+            frame(&ctx, &mut app, vec![action(name, Action::Focus)]);
+            let output = frame(
+                &ctx,
+                &mut app,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text("Edited group".into()),
+                ],
+            );
+            let t0 = numeric(&output, 0.15, 0);
+            let output = set_number(&ctx, &mut app, t0, 0.17);
+            let output = click(&ctx, &mut app, &output, "Add easing knot");
+            let b_knot = numeric(&output, 0.5, 1);
+            let output = set_number(&ctx, &mut app, b_knot, 0.65);
+            let down = buttons(&output, "Down")[0];
+            let output = frame(&ctx, &mut app, vec![action(down, Action::Click)]);
+            assert_eq!(
+                app.sewing_edit.as_ref().unwrap().group.a[0].curve,
+                before.sewing_groups[0].a[1].curve,
+                "Down must reorder A immediately"
+            );
+            let direction = buttons(&output, "Direction")[1];
+            let output = frame(&ctx, &mut app, vec![action(direction, Action::Click)]);
+            let edited = app.sewing_edit.as_ref().unwrap().group.clone();
+            assert_eq!(edited.name, "Edited group");
+            assert_eq!(edited.a[0], before.sewing_groups[0].a[1]);
+            assert_eq!([edited.a[1].t0, edited.a[1].t1], [0.85, 0.17]);
+            assert_eq!(edited.correspondence, vec![[0., 0.], [0.5, 0.65], [1., 1.]]);
+            assert_eq!(app.editor.project, before);
+            click(&ctx, &mut app, &output, "Apply group");
+            stop_jobs(&mut app);
+            assert!(app.sewing_edit.is_none());
+            let after = app.editor.project.clone();
+            assert_eq!(after.revision, before.revision + 1);
+            assert_eq!(after.sewing_groups, vec![edited.clone()]);
+            assert_eq!(after.piece(piece).unwrap().grain_angle, 0.25);
+            assert_eq!(after.resolution, 0.08);
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), None);
+            let output = frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+            );
+            assert_eq!(app.editor.project, after);
+            let output = click(&ctx, &mut app, &output, "Undo");
+            stop_jobs(&mut app);
+            assert_construction(&app.editor.project, &before);
+            assert!(!app.editor.can_undo() && app.editor.can_redo());
+            let output = click(&ctx, &mut app, &output, "Redo");
+            stop_jobs(&mut app);
+            assert_construction(&app.editor.project, &after);
+            let output = click(&ctx, &mut app, &output, "Reverse B");
+            stop_jobs(&mut app);
+            let mut reversed = edited.clone();
+            reversed.b = curves[2..]
+                .iter()
+                .rev()
+                .map(|curve| CurveInterval {
+                    curve: *curve,
+                    t0: 0.1,
+                    t1: 0.9,
+                })
+                .collect();
+            assert_eq!(app.editor.project.sewing_groups, vec![reversed]);
+            let output = click(&ctx, &mut app, &output, "Reverse B");
+            stop_jobs(&mut app);
+            assert_eq!(app.editor.project.sewing_groups, vec![edited.clone()]);
+            let output = click(&ctx, &mut app, &output, "Remove group");
+            stop_jobs(&mut app);
+            assert!(app.editor.project.sewing_groups.is_empty());
+            click(&ctx, &mut app, &output, "Undo");
+            stop_jobs(&mut app);
+            assert_eq!(app.editor.project.sewing_groups, vec![edited]);
+        }
+
+        #[test]
+        fn rejected_create_and_group_edit_cancel_keep_numeric_drafts_and_redo() {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let (mut app, curves) = fixture(true);
+            let piece = app.editor.project.pieces[0].id;
+            app.editor
+                .execute(Command::SetGrain {
+                    piece,
+                    angle: 0.375,
+                })
+                .unwrap();
+            assert!(app.editor.undo());
+            app.select(Some(piece));
+            let before = app.editor.project.clone();
+            let (output, focused) = stage_inspector(&ctx, &mut app);
+            let output = click(&ctx, &mut app, &output, "M:N sewing");
+            boundary_click(&ctx, &mut app, curves[0]);
+            let output = click(&ctx, &mut app, &output, "Confirm A (Enter)");
+            boundary_click(&ctx, &mut app, curves[0]);
+            let output = click(&ctx, &mut app, &output, "Create sewing group (Enter)");
+            assert_eq!(app.editor.project, before);
+            assert!(app.editor.can_redo());
+            assert!(app.message.contains("overlap"));
+            assert_eq!(app.draft.as_ref().unwrap().commands(&before).len(), 2);
+            assert!(app.sewing_draft.selecting_b);
+            assert_eq!(app.sewing_draft.a.len(), 1);
+            assert_eq!(app.sewing_draft.b.len(), 1);
+            let output = click(&ctx, &mut app, &output, "Cancel sewing (Escape)");
+            assert_eq!(app.editor.project, before);
+            assert!(app.editor.can_redo());
+            app.draft
+                .as_mut()
+                .unwrap()
+                .material
+                .as_mut()
+                .unwrap()
+                .areal_density = -1.;
+            boundary_click(&ctx, &mut app, curves[0]);
+            let output = click(&ctx, &mut app, &output, "Confirm A (Enter)");
+            boundary_click(&ctx, &mut app, curves[1]);
+            let output = click(&ctx, &mut app, &output, "Create sewing group (Enter)");
+            assert_eq!(app.editor.project, before);
+            assert!(app.editor.can_redo());
+            assert!(app.message.contains("density"));
+            assert_eq!(
+                app.draft
+                    .as_ref()
+                    .unwrap()
+                    .material
+                    .as_ref()
+                    .unwrap()
+                    .areal_density,
+                -1.
+            );
+            assert_eq!(app.sewing_draft.b[0].curve, curves[1]);
+            let output = click(&ctx, &mut app, &output, "Cancel sewing (Escape)");
+            app.draft
+                .as_mut()
+                .unwrap()
+                .material
+                .as_mut()
+                .unwrap()
+                .areal_density = before.materials[0].areal_density;
+            let output = click(&ctx, &mut app, &output, "Edit group");
+            let t0 = numeric(&output, 0.15, 0);
+            let output = set_number(&ctx, &mut app, t0, 0.85);
+            click(&ctx, &mut app, &output, "Apply group");
+            assert!(app.sewing_edit.as_ref().unwrap().error.is_some());
+            assert_eq!(app.editor.project, before);
+            assert!(app.editor.can_redo());
+            assert_eq!(app.draft.as_ref().unwrap().commands(&before).len(), 2);
+            let output = frame(&ctx, &mut app, vec![]);
+            assert_eq!(app.editor.project, before);
+            let output = click(&ctx, &mut app, &output, "Cancel group edit");
+            assert!(app.sewing_edit.is_none());
+            assert_eq!(app.editor.project, before);
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(focused))
+                    .unwrap()
+                    .parse::<f64>()
+                    .unwrap(),
+                0.25
+            );
+            assert!(app.editor.can_redo());
+            let output = click(&ctx, &mut app, &output, "Edit group");
+            frame(&ctx, &mut app, vec![]);
+            assert_eq!(
+                app.sewing_edit.as_ref().unwrap().group,
+                before.sewing_groups[0]
+            );
+            click(&ctx, &mut app, &output, "Cancel group edit");
+            stop_jobs(&mut app);
+        }
+
+        #[test]
+        fn all_portion_guides_use_the_current_mesh_revision_and_authoritative_source() {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let (mut app, _) = fixture(true);
+            let mesh = Arc::new(app.editor.project.mesh().unwrap());
+            let portions = mesh.sewing_groups[0].portions.clone();
+            assert!(portions.len() >= 4);
+            app.mesh = Some(mesh.clone());
+            let guides = |output: &egui::FullOutput| -> Vec<[Pos2; 2]> {
+                output
+                    .shapes
+                    .iter()
+                    .filter_map(|shape| match shape.shape {
+                        egui::Shape::LineSegment { points, stroke }
+                            if stroke == Stroke::new(1., Color32::from_rgb(125, 165, 235)) =>
+                        {
+                            Some(points)
+                        }
+                        _ => None,
+                    })
+                    .collect()
+            };
+            let output = frame(&ctx, &mut app, vec![]);
+            let accepted = guides(&output);
+            assert_eq!(accepted.len(), portions.len() * 2);
+            let canvas = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+            for (portion, pair) in portions.iter().zip(accepted.chunks_exact(2)) {
+                for (index, t) in [0., 1.].into_iter().enumerate() {
+                    let point = |span: &CurveInterval| {
+                        app.to_screen(
+                            app.editor
+                                .project
+                                .curve(span.curve)
+                                .unwrap()
+                                .evaluate(&app.editor.project, span.parameter(t))
+                                .unwrap(),
+                            canvas,
+                        )
+                    };
+                    assert_eq!(pair[index], [point(&portion.a), point(&portion.b)]);
+                }
+            }
+            app.drag_point = Some(app.editor.project.points[0].id);
+            app.preview = Some([5., 5.]);
+            assert_eq!(guides(&frame(&ctx, &mut app, vec![])), accepted);
+            app.editor
+                .execute(Command::SetGrain {
+                    piece: app.editor.project.pieces[0].id,
+                    angle: 0.4,
+                })
+                .unwrap();
+            let output = frame(&ctx, &mut app, vec![]);
+            assert!(guides(&output).is_empty());
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert!(output.shapes.iter().any(|shape| matches!(&shape.shape, egui::Shape::Text(text) if text.galley.text().contains("Lengths and guides rebuilding"))));
+            stop_jobs(&mut app);
+        }
+        fn pointer_click_label(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            output: &egui::FullOutput,
+            label: &str,
+        ) -> egui::FullOutput {
+            let id = *buttons(output, label).last().unwrap();
+            let bounds = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(node_id, _)| *node_id == id)
+                .unwrap()
+                .1
+                .bounds()
+                .unwrap();
+            let pos = Pos2::new(
+                ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                ((bounds.y0 + bounds.y1) * 0.5) as f32,
+            );
+            frame(
+                ctx,
+                app,
+                vec![
+                    egui::Event::PointerMoved(pos),
+                    egui::Event::PointerButton {
+                        pos,
+                        button: egui::PointerButton::Primary,
+                        pressed: true,
+                        modifiers: egui::Modifiers::NONE,
+                    },
+                ],
+            );
+            frame(
+                ctx,
+                app,
+                vec![
+                    egui::Event::PointerMoved(pos),
+                    egui::Event::PointerButton {
+                        pos,
+                        button: egui::PointerButton::Primary,
+                        pressed: false,
+                        modifiers: egui::Modifiers::NONE,
+                    },
+                ],
+            );
+            frame(ctx, app, vec![])
+        }
+
+        #[test]
+        fn pointer_reverse_b_clears_all_reordered_row_buffers_and_preserves_pending_edits() {
+            for reversals in [1, 2] {
+                let ctx = egui::Context::default();
+                ctx.enable_accesskit();
+                let (mut app, curves) = fixture(true);
+                let piece = app.editor.project.pieces[0].id;
+                app.select(Some(piece));
+                let before = app.editor.project.clone();
+                let (output, inspector_focus) = stage_inspector(&ctx, &mut app);
+                let output = pointer_click_label(&ctx, &mut app, &output, "Edit group");
+                let b_start = numeric(&output, 0.9, 0);
+                frame(&ctx, &mut app, vec![action(b_start, Action::Focus)]);
+                frame(&ctx, &mut app, vec![]);
+                let output = frame(
+                    &ctx,
+                    &mut app,
+                    vec![
+                        key(egui::Key::A, egui::Modifiers::COMMAND),
+                        egui::Event::Text("0.831234567890123".into()),
+                    ],
+                );
+                let mut expected = before.sewing_groups[0].clone();
+                expected.b[0].t0 = 0.831234567890123;
+                if reversals == 1 {
+                    expected.b = vec![
+                        CurveInterval {
+                            curve: curves[4],
+                            t0: 0.1,
+                            t1: 0.9,
+                        },
+                        CurveInterval {
+                            curve: curves[3],
+                            t0: 0.1,
+                            t1: 0.9,
+                        },
+                        CurveInterval {
+                            curve: curves[2],
+                            t0: 0.1,
+                            t1: 0.831234567890123,
+                        },
+                    ];
+                }
+                let mut output =
+                    pointer_click_label(&ctx, &mut app, &output, "Reverse B order and directions");
+                for _ in 1..reversals {
+                    let _ = frame(
+                        &ctx,
+                        &mut app,
+                        vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+                    );
+                    output = pointer_click_label(
+                        &ctx,
+                        &mut app,
+                        &output,
+                        "Reverse B order and directions",
+                    );
+                }
+                let output = frame(
+                    &ctx,
+                    &mut app,
+                    vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+                );
+                assert_eq!(app.sewing_edit.as_ref().unwrap().group, expected);
+                assert_eq!(app.editor.project, before);
+                assert_eq!(app.draft.as_ref().unwrap().commands(&before).len(), 2);
+                pointer_click_label(&ctx, &mut app, &output, "Apply group");
+                stop_jobs(&mut app);
+                assert!(app.sewing_edit.is_none());
+                assert_eq!(app.editor.project.revision, before.revision + 1);
+                assert_eq!(app.editor.project.sewing_groups, vec![expected]);
+                assert_eq!(app.editor.project.piece(piece).unwrap().grain_angle, 0.25);
+                assert_eq!(app.editor.project.resolution, 0.08);
+                assert_eq!(
+                    ctx.data_mut(|data| data.get_temp::<String>(inspector_focus)),
+                    None
+                );
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+                );
+                assert_eq!(app.editor.project.revision, before.revision + 1);
+            }
+        }
+
+        fn choose_last_span_curve(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            output: &egui::FullOutput,
+            from: Id,
+            to: Id,
+            panel: usize,
+        ) -> egui::FullOutput {
+            let value = format!("Curve #{from}");
+            let id = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .filter(|(_, node)| {
+                    node.value() == Some(value.as_str())
+                        && node.supports_action(Action::Click)
+                        && !node.is_disabled()
+                })
+                .max_by(|(_, a), (_, b)| a.bounds().unwrap().y0.total_cmp(&b.bounds().unwrap().y0))
+                .unwrap()
+                .0;
+            frame(ctx, app, vec![action(id, Action::Click)]);
+            let output = frame(ctx, app, vec![]);
+            click(
+                ctx,
+                app,
+                &output,
+                &format!("Panel {panel} · boundary 1 · #{to}"),
+            )
+        }
+
+        #[test]
+        fn accesskit_only_two_to_three_creation_keeps_drafts_outside_document_until_one_commit() {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let (mut app, curves) = fixture(false);
+            let piece = app.editor.project.pieces[0].id;
+            app.select_curve(Some((piece, curves[0])));
+            app.intervals = [[0.2, 0.8], [0.1, 0.9]];
+            let before = app.editor.project.clone();
+            let (output, _) = stage_inspector(&ctx, &mut app);
+            let output = click(&ctx, &mut app, &output, "M:N sewing");
+            assert!(buttons(&output, "Add boundary to B").is_empty());
+            let output = click(&ctx, &mut app, &output, "Add boundary to A");
+            let output = click(&ctx, &mut app, &output, "Add boundary to A");
+            let output = choose_last_span_curve(&ctx, &mut app, &output, curves[0], curves[1], 2);
+            assert_eq!(
+                app.sewing_draft
+                    .a
+                    .iter()
+                    .map(|span| span.curve)
+                    .collect::<Vec<_>>(),
+                curves[..2]
+            );
+            assert_eq!(app.editor.project, before);
+            assert!(!app.editor.can_undo());
+            let mut output = click(&ctx, &mut app, &output, "Confirm A (Enter)");
+            assert!(buttons(&output, "Add boundary to A").is_empty());
+            assert!(app.sewing_draft.selecting_b);
+            for (index, curve) in curves[2..].iter().enumerate() {
+                output = click(&ctx, &mut app, &output, "Add boundary to B");
+                output =
+                    choose_last_span_curve(&ctx, &mut app, &output, curves[0], *curve, index + 3);
+                assert_eq!(app.editor.project, before);
+                assert!(!app.editor.can_undo());
+            }
+            assert_eq!(
+                app.sewing_draft
+                    .b
+                    .iter()
+                    .map(|span| span.curve)
+                    .collect::<Vec<_>>(),
+                curves[2..]
+            );
+            assert!(
+                app.sewing_draft
+                    .a
+                    .iter()
+                    .all(|span| [span.t0, span.t1] == [0.2, 0.8])
+            );
+            assert!(
+                app.sewing_draft
+                    .b
+                    .iter()
+                    .all(|span| [span.t0, span.t1] == [0.9, 0.1])
+            );
+            assert_eq!(app.draft.as_ref().unwrap().commands(&before).len(), 2);
+            let output = click(&ctx, &mut app, &output, "Create sewing group (Enter)");
+            stop_jobs(&mut app);
+            assert_eq!(app.editor.project.revision, before.revision + 1);
+            assert_eq!(app.editor.project.sewing_groups.len(), 1);
+            assert_eq!(app.editor.project.sewing_groups[0].a.len(), 2);
+            assert_eq!(app.editor.project.sewing_groups[0].b.len(), 3);
+            assert_eq!(app.editor.project.piece(piece).unwrap().grain_angle, 0.25);
+            assert_eq!(app.editor.project.resolution, 0.08);
+            click(&ctx, &mut app, &output, "Undo");
+            stop_jobs(&mut app);
+            assert_construction(&app.editor.project, &before);
+            assert!(!app.editor.can_undo() && app.editor.can_redo());
+        }
     }
 }

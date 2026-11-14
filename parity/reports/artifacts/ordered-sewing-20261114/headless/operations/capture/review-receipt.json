@@ -1,0 +1,333 @@
+{
+  "kind": "independent-shared-editor-invocation-review-v1",
+  "reviewed_utc": "2026-11-14T16:32:33.819302+00:00",
+  "original_manifest_sha256": "7ac6e04afe1dae0815bc0f1dd25d03a3849dacbbe4bac9ec29172e5bb66bb082",
+  "candidate": {
+    "commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+    "binary_sha256": "ab64abad99f02ee2408b3e4b63221cb3b78c200651bc25d78617a1f88cf3c6ef"
+  },
+  "operations": [
+    {
+      "operation": "split",
+      "method": "Editor::execute",
+      "process_id": 7742,
+      "callsite": "src/main.rs:103",
+      "request_sha256": "d8dbd21143c763a227e02bdcce5bac42cc22dce8edddb81762e21622625bf728",
+      "response_sha256": "ac8ddce9a9a4dec2a0acbb177407d9e3b5060c1cdc1c95c63ef32e3b2a2042d2",
+      "invocation_sha256": "e78a57dea83c9803b3969fa17744b3f25fc00098702efee6246dc07baaf8f33e",
+      "before": {
+        "can_redo": false,
+        "can_undo": false,
+        "revision": 73
+      },
+      "after": {
+        "can_redo": false,
+        "can_undo": true,
+        "revision": 74
+      },
+      "accepted": true,
+      "error": null,
+      "independently_reviewed": true
+    },
+    {
+      "operation": "join",
+      "method": "Editor::execute",
+      "process_id": 7742,
+      "callsite": "src/main.rs:103",
+      "request_sha256": "c53b8b82a4f26c2899b067f3f2075004d725b790ebfcc434fe37a136e0579f2d",
+      "response_sha256": "f883bb525f459a8fe96abf3904a6f3122fcecba4353416a7d9a55877d66f7409",
+      "invocation_sha256": "1b5adb4a02a08254f42bb31fa2aefafd1ae2b14a01739781e9f0e27643f175e2",
+      "before": {
+        "can_redo": false,
+        "can_undo": true,
+        "revision": 74
+      },
+      "after": {
+        "can_redo": false,
+        "can_undo": true,
+        "revision": 75
+      },
+      "accepted": true,
+      "error": null,
+      "independently_reviewed": true
+    },
+    {
+      "operation": "undo_join",
+      "method": "Editor::undo",
+      "process_id": 7742,
+      "callsite": "src/main.rs:110",
+      "request_sha256": "dd094070c06e048215075c73d4edece97d296c7eae5356215bdd22c0d7a206bc",
+      "response_sha256": "a6b31d42f976346fd4bfad4e791766647ce7d67c6b698bc1a5f3f6fc663295fb",
+      "invocation_sha256": "c5de73ff919d347049566bfe2b7a8793a5de3e6f6ae72cfe7311e9486d6b5154",
+      "before": {
+        "can_redo": false,
+        "can_undo": true,
+        "revision": 75
+      },
+      "after": {
+        "can_redo": true,
+        "can_undo": true,
+        "revision": 76
+      },
+      "accepted": true,
+      "error": null,
+      "independently_reviewed": true
+    },
+    {
+      "operation": "reject_overlap",
+      "method": "Editor::execute",
+      "process_id": 7742,
+      "callsite": "src/main.rs:103",
+      "request_sha256": "1216d551d3edbdc0b5e91dea7b03eb2f7fc629d5e311385868fb68f9406f6e66",
+      "response_sha256": "e04e4c7ba103f83fff9997e77a7173a8e0a9f5901c54de28fbee7d63caf4a9d1",
+      "invocation_sha256": "e26a4d60537d75d10ad39c52a0323300e17b742402b876b8ed3f2a7d5feb88f4",
+      "before": {
+        "can_redo": true,
+        "can_undo": true,
+        "revision": 76
+      },
+      "after": {
+        "can_redo": true,
+        "can_undo": true,
+        "revision": 76
+      },
+      "accepted": false,
+      "error": "Sewing group coverage overlaps on the same curve",
+      "independently_reviewed": true
+    },
+    {
+      "operation": "redo_join",
+      "method": "Editor::redo",
+      "process_id": 7742,
+      "callsite": "src/main.rs:119",
+      "request_sha256": "f33b8198505ffca6f9817cbbdc3f2d36f8b1176badf71f7d7336121cbec94e96",
+      "response_sha256": "09d9cc560ca1a4d487339503fbb938dd54f48778b1f4be4ed7f08f41f722a664",
+      "invocation_sha256": "d7a09c2606e8b1bc6e211e5495d5843f655f49935793b0e07eed4da598592fec",
+      "before": {
+        "can_redo": true,
+        "can_undo": true,
+        "revision": 76
+      },
+      "after": {
+        "can_redo": false,
+        "can_undo": true,
+        "revision": 77
+      },
+      "accepted": true,
+      "error": null,
+      "independently_reviewed": true
+    },
+    {
+      "operation": "remesh",
+      "method": "Editor::execute",
+      "process_id": 7742,
+      "callsite": "src/main.rs:103",
+      "request_sha256": "092e087829d74447fe32196aaeb7c1307fc6c483f1d78da907b3dd084f16c67b",
+      "response_sha256": "1c9697b62bfbbecec75406e82155670fbe65b2c3563c837490db9358475119e7",
+      "invocation_sha256": "1eb731048763111355de055aa58bfb3ebef2521a610b20ceeca039790a2692ad",
+      "before": {
+        "can_redo": false,
+        "can_undo": true,
+        "revision": 77
+      },
+      "after": {
+        "can_redo": false,
+        "can_undo": true,
+        "revision": 78
+      },
+      "accepted": true,
+      "error": null,
+      "independently_reviewed": true
+    },
+    {
+      "operation": "remove_piece",
+      "method": "Editor::execute",
+      "process_id": 7742,
+      "callsite": "src/main.rs:103",
+      "request_sha256": "becfbe32dcb17d645dd09a6eb7534f46b541d509ea81ab8a973517b560f0114d",
+      "response_sha256": "ac8ddce9a9a4dec2a0acbb177407d9e3b5060c1cdc1c95c63ef32e3b2a2042d2",
+      "invocation_sha256": "3d46645dafe0215a02647568553302261caff40525bfb28c82d842f2346935d0",
+      "before": {
+        "can_redo": false,
+        "can_undo": false,
+        "revision": 73
+      },
+      "after": {
+        "can_redo": false,
+        "can_undo": true,
+        "revision": 74
+      },
+      "accepted": true,
+      "error": null,
+      "independently_reviewed": true
+    },
+    {
+      "operation": "undo_removal",
+      "method": "Editor::undo",
+      "process_id": 7742,
+      "callsite": "src/main.rs:110",
+      "request_sha256": "eb34bb8c1f5aacf26dee0a116f1fa661d386785209460cc73bf8a40b71484b70",
+      "response_sha256": "f093a2abbbfd690de833f8454d158992cbc25931deb0a34bd6f85de1c3484a24",
+      "invocation_sha256": "7161c8ba3fa914234f3f6f2b917a888e8b9ab2bc6fb0dea9b3b4a54aa8f5fee0",
+      "before": {
+        "can_redo": false,
+        "can_undo": true,
+        "revision": 74
+      },
+      "after": {
+        "can_redo": true,
+        "can_undo": false,
+        "revision": 75
+      },
+      "accepted": true,
+      "error": null,
+      "independently_reviewed": true
+    },
+    {
+      "operation": "redo_removal",
+      "method": "Editor::redo",
+      "process_id": 7742,
+      "callsite": "src/main.rs:119",
+      "request_sha256": "0ef6629cc623dc98c669d7276fb587136ebddadbc52a1ad50dfc7d29b96bd242",
+      "response_sha256": "f53c5c14e4a342beacf3650182d84879acd8d1f33c60fd0099e3347acdebcaba",
+      "invocation_sha256": "3c3426896aaebc4cfb9dd714263ec8467ba3f431b9629f67be07b609b0e2d3ad",
+      "before": {
+        "can_redo": true,
+        "can_undo": false,
+        "revision": 75
+      },
+      "after": {
+        "can_redo": false,
+        "can_undo": true,
+        "revision": 76
+      },
+      "accepted": true,
+      "error": null,
+      "independently_reviewed": true
+    }
+  ],
+  "scope": "Independent static driver/callsite and actual request/response/invocation/receipt/log/hash review. Same live Editor across each declared context. No candidate results computed from oracle.",
+  "source": {
+    "commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+    "tracked_files_checked_against_commit_blobs_and_sha256_binding": 671,
+    "clean": true,
+    "source_binding_sha256": "d68abd32682f5fc016c1642ea57fc3634ee52eb4a0479fc18125e2f5bb13fb2f"
+  },
+  "driver": {
+    "source_sha256": "634190ed5c63e8c4bb9a1920985721a7626c059958fead4cc55fddaf23dbd834",
+    "binary_sha256": "ab64abad99f02ee2408b3e4b63221cb3b78c200651bc25d78617a1f88cf3c6ef",
+    "build_process_id": 96954,
+    "capture_process_id": 7742,
+    "capture_tool_session": 3209,
+    "capture_exit_code": 0,
+    "exclusive_target_name": "target-3eddef067c8a1f03f192c8e6822a8da2a94f9bf9"
+  },
+  "artifacts_copied_unchanged": {
+    "index.json": "f491a38f070c51afd185de61ef35567e3d6b6e5c1a92ac37f44ea65e29df4fbe",
+    "join.invocation.json": "1b5adb4a02a08254f42bb31fa2aefafd1ae2b14a01739781e9f0e27643f175e2",
+    "join.request.json": "c53b8b82a4f26c2899b067f3f2075004d725b790ebfcc434fe37a136e0579f2d",
+    "join.response.json": "f883bb525f459a8fe96abf3904a6f3122fcecba4353416a7d9a55877d66f7409",
+    "joined.receipt.json": "28f29bf4bfcb1c47457cc2e4f1f92385a2aa189e0728e2b65f4ca1ee491f0a0b",
+    "redo_join.invocation.json": "d7a09c2606e8b1bc6e211e5495d5843f655f49935793b0e07eed4da598592fec",
+    "redo_join.receipt.json": "6e353261947571df50fc3000d961be218ce43fc3694601187aa998839a96daf5",
+    "redo_join.request.json": "f33b8198505ffca6f9817cbbdc3f2d36f8b1176badf71f7d7336121cbec94e96",
+    "redo_join.response.json": "09d9cc560ca1a4d487339503fbb938dd54f48778b1f4be4ed7f08f41f722a664",
+    "redo_removal.invocation.json": "3c3426896aaebc4cfb9dd714263ec8467ba3f431b9629f67be07b609b0e2d3ad",
+    "redo_removal.receipt.json": "d5f6dc7e7e35fa6615840e594458703bb1c611eb8c02e04cce3fe01bda4a7965",
+    "redo_removal.request.json": "0ef6629cc623dc98c669d7276fb587136ebddadbc52a1ad50dfc7d29b96bd242",
+    "redo_removal.response.json": "f53c5c14e4a342beacf3650182d84879acd8d1f33c60fd0099e3347acdebcaba",
+    "reject_overlap.invocation.json": "e26a4d60537d75d10ad39c52a0323300e17b742402b876b8ed3f2a7d5feb88f4",
+    "reject_overlap.request.json": "1216d551d3edbdc0b5e91dea7b03eb2f7fc629d5e311385868fb68f9406f6e66",
+    "reject_overlap.response.json": "e04e4c7ba103f83fff9997e77a7173a8e0a9f5901c54de28fbee7d63caf4a9d1",
+    "rejected_overlap.receipt.json": "55c4ea2526d6d5b4a036c1550943f1cb6abb8192323c0ecf25c26b82faf45aa7",
+    "remesh.invocation.json": "1eb731048763111355de055aa58bfb3ebef2521a610b20ceeca039790a2692ad",
+    "remesh.request.json": "092e087829d74447fe32196aaeb7c1307fc6c483f1d78da907b3dd084f16c67b",
+    "remesh.response.json": "1c9697b62bfbbecec75406e82155670fbe65b2c3563c837490db9358475119e7",
+    "remeshed.receipt.json": "ddbc53ede354682ad23545acb9658dd4d8ddaab121c28df680b2d7183ad20bf7",
+    "removal_loaded.invocation.json": "b82c2e463c2d1e349ecdd79b8303759d1df95448df66e963f69460ef325e541b",
+    "removal_loaded.receipt.json": "4d1eab1fbdf0fe1f90085f3cf817fc546b55015328d6b607d110ead6634b3a73",
+    "removal_loaded.request.json": "06e61d21f8705c786e42630a6989d4aa0e15cea0d29242c5aef30c9f9be8e242",
+    "removal_loaded.response.json": "a441ea401b31f46851c9e46a89eab4dce3426332f85f23da3663ae507b3c3dd6",
+    "remove_piece.invocation.json": "3d46645dafe0215a02647568553302261caff40525bfb28c82d842f2346935d0",
+    "remove_piece.request.json": "becfbe32dcb17d645dd09a6eb7534f46b541d509ea81ab8a973517b560f0114d",
+    "remove_piece.response.json": "ac8ddce9a9a4dec2a0acbb177407d9e3b5060c1cdc1c95c63ef32e3b2a2042d2",
+    "removed.receipt.json": "b2a71d0096b916053eb6bc169bc7ff01ee5aaa4c5b4df88bf5ce2fb67c8c3c4a",
+    "split.invocation.json": "e78a57dea83c9803b3969fa17744b3f25fc00098702efee6246dc07baaf8f33e",
+    "split.receipt.json": "b88104da88e04507ca73597b617c4aaf20f137e96ba8cea4fe655b815634a431",
+    "split.request.json": "d8dbd21143c763a227e02bdcce5bac42cc22dce8edddb81762e21622625bf728",
+    "split.response.json": "ac8ddce9a9a4dec2a0acbb177407d9e3b5060c1cdc1c95c63ef32e3b2a2042d2",
+    "split_loaded.invocation.json": "997b41b9c8ae34473f3afd8b7993dfa51c35594f7183a82b39c381a2cf6fbc5e",
+    "split_loaded.receipt.json": "d057406310b8fc96e331f659a667ad9ec8ad8dba423356e8141c0ad33fd49478",
+    "split_loaded.request.json": "783eb974dae480f7628b228e83cf470abdadd357a2a9ffbbe41f7b26d2a4d7e8",
+    "split_loaded.response.json": "a441ea401b31f46851c9e46a89eab4dce3426332f85f23da3663ae507b3c3dd6",
+    "undo_join.invocation.json": "c5de73ff919d347049566bfe2b7a8793a5de3e6f6ae72cfe7311e9486d6b5154",
+    "undo_join.receipt.json": "55c4ea2526d6d5b4a036c1550943f1cb6abb8192323c0ecf25c26b82faf45aa7",
+    "undo_join.request.json": "dd094070c06e048215075c73d4edece97d296c7eae5356215bdd22c0d7a206bc",
+    "undo_join.response.json": "a6b31d42f976346fd4bfad4e791766647ce7d67c6b698bc1a5f3f6fc663295fb",
+    "undo_removal.invocation.json": "7161c8ba3fa914234f3f6f2b917a888e8b9ab2bc6fb0dea9b3b4a54aa8f5fee0",
+    "undo_removal.receipt.json": "395be502732543455845800ce1d7652e86236e61dc155bf0d81370683a910a3e",
+    "undo_removal.request.json": "eb34bb8c1f5aacf26dee0a116f1fa661d386785209460cc73bf8a40b71484b70",
+    "undo_removal.response.json": "f093a2abbbfd690de833f8454d158992cbc25931deb0a34bd6f85de1c3484a24"
+  },
+  "frozen_artifacts": {
+    "freeze.json": "d84f38184dded9a574ace4e30c6a3860029d1b4fa9ae98e0e50d52bf73ac1ed0",
+    "criteria.md": "09edf4713437ef26e639c78019755207705eefd73cb253af045eefcf81e29799",
+    "evaluate.py": "b58376e8def80abc350376120282ef99ef853bdbfa8eecb5089dde02c86f10b7",
+    "expectations.json": "68a63c3f31d7de18f5df1f4735824b807335e9dfc74f8365a61db08a814c7eb5",
+    "fixtures/asymmetric-coarse.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2",
+    "fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+    "fixtures/collinear-coarse.weftforge": "6202e2b1b6b66b631b0e119955cb25cc038423c7a2c4ef37292d4d8125b6fbd8",
+    "fixtures/collinear-fine.weftforge": "e686082e62e34a1dda3c642329e814e899350fba44e9590309dfc9132fb543ce",
+    "fixtures/empty-groups-v3.weftforge": "0210b721df1f61b28ba79ca0ce23bbb1df529ae7eccd6c82edd0cdba966f34af",
+    "fixtures/invalid-duplicate-group-id.weftforge": "6a5d89b421c1b870191fd047508015dfc29eb08ae7e4c8cba9b6a3b77d56ed9f",
+    "fixtures/invalid-duplicate-json-field.weftforge": "2d8d954a747dc1465471bbda0c7e4e6a6aed761fa41ae3d26c0b99e82defb9a7",
+    "fixtures/invalid-empty-side.weftforge": "8d55bc7725e0688e099dca1071388e7c54ee716458da0e2186d89fc4ae788dd0",
+    "fixtures/invalid-future-version.weftforge": "7bcf3fe2af3bbb8698488650af05d108a5bf3012a4c4d5831c1e214a98cca339",
+    "fixtures/invalid-missing-v3-groups.weftforge": "239053c86d0524e12c9cb84ee0d853f827859aa0d639cccac47ea6d4e58b9c9b",
+    "fixtures/invalid-nonmonotone-map.weftforge": "1921c9c77865a253938f0ac8a0d80d5ef8f850c859ec2e04c8bf4a8068959ab6",
+    "fixtures/invalid-overlap-across-sides.weftforge": "da51d850d92b41ff01c6d3a2850a94fd0e380b0c5cf06d7c4d19758cabe5fcc2",
+    "fixtures/invalid-overlap-within-side.weftforge": "eff386dcc6ffc730a031bcf6124a852ddf04f7eadb35dd1b2607cfbaa00e7a1c",
+    "fixtures/invalid-oversized-side.weftforge": "cbdd7e426f9e182cdeb838df6d3f193425933e5d2f245acccb08759048a34420",
+    "fixtures/invalid-total-interval-bound.weftforge": "052847b2be650df1307b552058126d10d665dae615dc6021b622da91489af3f5",
+    "fixtures/invalid-unknown-curve.weftforge": "1f88aaf8dd57da712708cc04599c8aede8a6d97b91c0c7bb2438ed3c499247c0",
+    "fixtures/invalid-unknown-group-field.weftforge": "cea0f8c587ef3e68c07e10f28dd9ed796d21243ddbfe4b43bf8e94c358d298db",
+    "fixtures/invalid-zero-span.weftforge": "7f4df4f7ab0c0febaad1b0db1bbcf28197a393485dfcfa874b29bee7d2735d4a",
+    "fixtures/legacy-v1-f64.weftforge": "7be5c94f9455417f23e5b240394b1b82935410f5baa44f77bc78797cdbea7e2d",
+    "fixtures/legacy-v2-f64.weftforge": "b352064873c2674ef0e12d8d354329c06bbd1e3b09934440c48f29b8f046867b",
+    "fixtures/line-identity-coarse.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+    "fixtures/line-identity-fine.weftforge": "1ebcc4b98c03f84e610ce476541c1f84d9185a71b81118900854fdc2e0d2a918",
+    "fixtures/line-nonlinear-coarse.weftforge": "b238147b5df80db8ef053ff4ad2239f97c8c3cb890034c98d5cf930bbd16aafe",
+    "fixtures/line-nonlinear-fine.weftforge": "2fc79b502d929233ea3d23d31fac4a284327b2290d983d02f3bba5d5b658ecc9",
+    "interface.json": "0d07de21237d02c60e2bc79ab5cd46d488b0aaf584fb8b9a07a9268c0a8e7060",
+    "negative-cases.json": "e4d924773805115d8166decd5b1e1248b3a3049d10ac5f740f78da5e8946ecb2",
+    "oracle.py": "bf7cddedec7f8e58afd689ff034e1a8b19d0218a41e9bbb3841be449dda2e333",
+    "prepare.py": "b0616fbfe1e861f895b2208702ac966506b51feee27ea3d03e48793e6372f72e",
+    "results/pre-freeze-self-check.json": "5ed19dcf9b540d04935ad02ca44fbb317b65c0457be0d2f6dc1295a07b834809",
+    "results/pretest-self-check.json": "45fd88aac837a68c04b7da571ca66608ba3d4571fe81c57f04e2346b0e5a8886",
+    "operations-supplement/freeze.json": "53f430e727e1cbcd789a09fcbaed147ff7951a77b06f9cd99fa28d62b049942c",
+    "operations-supplement/declaration.md": "9fc926f2fbb050c7d1eaec99578ea54c569994dbfdaf4b9326de4dbc86e5c0a2",
+    "operations-supplement/evaluate_operations.py": "655fe07faeb584f2eedaeb219d127598defc4434aad5c7d7821421fd33d66692",
+    "operations-supplement/expected-checkpoints.json": "5187284a9af7f87a2f0a4a4f067594c403bc0ce83e9156fbe0c3d00f2ecc4071",
+    "operations-supplement/input-dependent-removal-v3.weftforge": "e4a4acf83ba909002855a82fdacf265069651c792b56eb39ac0499ae68882fbf",
+    "operations-supplement/input-split-join-v3.weftforge": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+    "operations-supplement/invalid-overlap-group.json": "78c5ec621f8fe88956e3991b88e48f215702f310813ae2074c0d1c9cc1f84ebc",
+    "operations-supplement/self-check.json": "9c3a86e88e36321e6e402af17a3b6f96290983db30e89df7875aefd9203f5c24",
+    "native-supplement/freeze.json": "30a322a3ddc41b2778b6c218e82b66fc226d38016b1e14e740adcf4252899f9a",
+    "native-supplement/declaration.md": "981f97874512301b73335d5cb1ca61c17fa76e8f6daf33cb19b4f8314be0ab25",
+    "native-supplement/evaluate_native.py": "cb03826786fafa671e41dfac301c306dbb029a928acd06eecce6ef8d1ea3d294",
+    "native-supplement/expected-checkpoints.json": "880a6957779b779a34d5795eb8537b846665380157e9d9cfff67aaf1e3a244d7",
+    "native-supplement/input-no-groups-v3.weftforge": "676f9c37b798b80ef902d7864ffc2ad414c96c870a1eb7287b027ae34ece9b0b",
+    "native-supplement/self-check.json": "ecf9790ff365cdf199ad8beb231005ed2d58bcde29f2f8c8559429104aef373e",
+    "build_supplements.py": "22b79ce191cdd3bdd81629e69b86bf3eac26790530a9db3131a3c1cfed1b093a",
+    "supplement-public-api-contract.json": "76270c4aa2984e2b67c35d2be303edc1a2cb88af18ecdb0a16ed9bc532cbfe6b"
+  },
+  "metadata_adapter": "Reviewed manifest adds operation equal to each exact original name; changes observer_review false to true only for independently reviewed commands and binding; adds this hashed review receipt. No source receipt/request/response/invocation/index bytes or evaluator/math changed.",
+  "limitations": [
+    "native UI not reviewed",
+    "broader deep-history and native file-failure preservation unknown",
+    "cancellation/staleness/exhaustion unknown",
+    "reference parity unknown",
+    "physical quality unknown",
+    "complete roadmap gate unknown"
+  ]
+}

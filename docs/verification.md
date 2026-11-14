@@ -81,6 +81,35 @@ contrasting fabric mesh/timestep refinement; animated cache invalidation;
 interrupted save, missing assets and malformed/unsupported inputs; independent
 all-advertised export attributes; and representative responsiveness/performance.
 
+### Ordered sewing acceptance
+
+The ordered-path increment pins runtime source
+`3eddef067c8a1f03f192c8e6822a8da2a94f9bf9` and standard packaged executables.
+Its original independent Decimal arc-length oracle checks ten actual CLI
+receipts: partial/reversed/disconnected two-to-three paths, nonlinear maps,
+nonuniform and asymmetric cubics, coarse/fine meshes and strict legacy f64
+migration. Actual weighted rest stitches are checked separately from authored
+geometry. Eleven shared-Editor split/join/remesh/history/removal checkpoints and
+thirteen malformed-source file-preservation cases have independent checks.
+
+The standalone native case records eighteen original saved-source, screenshot,
+accessibility and event checkpoints. It creates a two-to-three group, checks
+draft cancellation/reset, commits a complete name/endpoint/nonlinear-map edit
+once, uses one-step Undo/Redo, reverses B twice, then saves, quits, relaunches the
+same binary and reopens. Native-resaved revision81/allocator1002 is byte-identical
+to the pre-quit save. This is the declared original line case; native cubic
+precise editing and native invalid-load/save preservation remain unverified.
+
+Original failures remain retained: the fine curved mesh hit its existing cap
+before the scheduling fix; a producer's wrong command field failed its valid
+control; operation/native review packaging needed metadata corrections. These
+have different scopes from production failures. No fixture, precision budget or
+resource limit was weakened. The report and portable retained-output replays are
+in [WF-20261114-ORDERED-SEWING-001](../parity/reports/WF-20261114-ORDERED-SEWING-001.json).
+This supplies no physical gathering, reference-equivalence or complete-roadmap
+acceptance. Local fmt,122Rust tests, strict Clippy and54Python/map checks pass;
+Actions and Pages remain disabled until the complete project is done.
+
 ### Shutdown and recovery boundary
 
 The preliminary curve-candidate probe found that macOS Cmd+Q quit a dirty

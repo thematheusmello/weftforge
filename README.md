@@ -21,8 +21,10 @@ The source implements a native eframe/wgpu workspace with a 2D pattern canvas,
 basic 3D garment preview, piece selection, numeric properties, command search,
 and undo/redo. Rectangle/polygon construction feeds the same Rust document engine
 as the CLI. The core retains straight/cubic boundaries, oriented seam intervals,
-explicit seam correspondence, authored warp direction per piece, separate warp/weft
-physical stiffness, placement and derived meshes.
+ordered M:N sewing groups, authored warp direction per piece, separate warp/weft
+physical stiffness, placement and derived meshes. Groups pair cumulative authored
+arc lengths across partial, reversed or disconnected spans, with editable easing
+maps; legacy single seams retain their curve-parameter correspondence.
 
 An f64 CPU cloth solver provides membrane/bending constraints, sewn boundaries,
 gravity, ground/analytic mannequin contact, and self-contact. Simulation runs in
@@ -30,8 +32,9 @@ cancelable background batches; material values are uncalibrated approximations.
 The solver is early; general garment convergence and contact robustness remain
 ongoing work.
 
-Version2 `.weftforge` JSON stores supported editable construction and reads old
-version1 projects through a strict version migration. Older apps cannot open v2. OBJ mesh,
+Version3 `.weftforge` JSON stores supported editable construction, including
+ordered sewing groups, and strictly migrates version1/2 projects. Older apps
+cannot open v3. OBJ mesh,
 SVG and DXF pattern export exist; [format details and gaps](docs/file-formats.md)
 explain what survives each path. Simulation frames/settings, imported avatars,
 textures, animation, advanced construction and third-party project formats
@@ -67,6 +70,11 @@ For local stateless MCP file authoring, run `weftforge-cli mcp`. See
 [automation](docs/automation.md) for supported protocols, commands and limits.
 The adapter uses the same validated Rust operations; active-GUI control and MCP
 simulation jobs remain open.
+
+Use **M:N sewing** to collect side A spans in order, confirm A, then collect and
+confirm B. The inspector supports precise span endpoints, directions, ordering
+and easing-map edits. `weftforge-cli inspect-sewing PROJECT` exposes the authored
+groups, derived portions and weighted rest-mesh stitches for headless inspection.
 
 CLI dimensions use metres, kilograms, seconds, radians, and Y-up 3D. The desktop
 currently snaps canvas gestures to 1 cm. Fine numeric editing and modifier support

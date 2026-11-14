@@ -1,0 +1,19 @@
+{
+  "id": "004-correct-unchanged-ax-range-input",
+  "started_utc": "2026-11-14T16:34:17.515Z",
+  "request": {
+    "actions": [
+      {
+        "tool": "pressKey",
+        "key": "Escape",
+        "reason": "AX range setters left values0/1 unchanged; discard that uncommitted selection"
+      },
+      {
+        "tool": "click",
+        "element": 50,
+        "clickCount": 2,
+        "label": "A interval start"
+      }
+    ]
+  }
+}

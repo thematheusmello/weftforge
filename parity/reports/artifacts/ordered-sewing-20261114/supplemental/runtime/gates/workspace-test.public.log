@@ -1,0 +1,288 @@
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/weftforge_sim-1prxeql2br322/s-ho5o2k1gxh-181tgto-working`
+
+warning: `weftforge-sim` (lib) generated 1 warning
+   Compiling weftforge-core v0.1.0 (<WORKSPACE>/crates/weftforge-core)
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/weftforge_sim-0jpblw1n9j3ns/s-ho5o2k1gpd-1rqnd1j-working`
+
+warning: `weftforge-sim` (lib test) generated 1 warning
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/weftforge_core-1tdj61i8m5d7z/s-ho5pdjg4nt-1aon80t-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/weftforge_core-14sd73ozerib9/s-ho5pdji3zd-0azqtoj-working`
+
+warning: `weftforge-core` (lib) generated 1 warning
+   Compiling weftforge-cli v0.1.0 (<WORKSPACE>/apps/weftforge-cli)
+   Compiling weftforge v0.1.0 (<WORKSPACE>/apps/weftforge)
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/weftforge_cli-1sedy8dy7tsi3/s-ho5pdrm850-17v6m57-working`
+
+warning: `weftforge-core` (lib test) generated 1 warning
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/shirt-3graj2p0bama6/s-ho5pdrkd8x-0s3b8ye-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/seam_reversal-09escvstk8oga/s-ho5pdrm86m-1y4rz04-working`
+
+warning: `weftforge-core` (test "shirt") generated 1 warning
+warning: `weftforge-cli` (bin "weftforge-cli" test) generated 1 warning
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/grain-0r9543yw7uvim/s-ho5pdrotef-0rf3g89-working`
+
+warning: `weftforge-core` (test "seam_reversal") generated 1 warning
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/grain-17tbxnvcylph3/s-ho5pdrm854-1c84s19-working`
+
+warning: `weftforge-core` (test "grain") generated 1 warning
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/joins-3vvfcpmq8mb01/s-ho5pdrj2m8-0a45z4u-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/curves-08i5tnw21vfvo/s-ho5pdrm858-04j44gs-working`
+
+warning: `weftforge-cli` (test "grain") generated 1 warning
+warning: `weftforge-core` (test "joins") generated 1 warning
+warning: `weftforge-cli` (test "curves") generated 1 warning
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/migration-2op5i9ypo9gnn/s-ho5pdrm85j-0rfbjhh-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/dxf-2myzg9vcrhkgj/s-ho5pdrm858-0pu90qo-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/sewing_groups-25bdn7b0fp6px/s-ho5pdrotfa-17mehis-working`
+
+warning: `weftforge-core` (test "migration") generated 1 warning
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/weftforge_cli-2zwabzr17261x/s-ho5pdroteh-0fscbar-working`
+
+warning: `weftforge-core` (test "dxf") generated 1 warning
+warning: `weftforge-cli` (bin "weftforge-cli") generated 1 warning
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/workflow-2aqszbmzkj5wt/s-ho5pdroted-1bouv2d-working`
+
+warning: `weftforge-core` (test "sewing_groups") generated 1 warning
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/mcp_stdio-0twalj4fbihpk/s-ho5pdrm86k-1v1zc06-working`
+
+warning: `weftforge-cli` (test "mcp_stdio") generated 1 warning
+warning: `weftforge-core` (test "workflow") generated 1 warning
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `<CARGO_TARGET>/debug/incremental/weftforge-3ntz00mrxavpo/s-ho5pdrif9w-1g23rwv-working`
+
+warning: `weftforge` (bin "weftforge" test) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2m 08s
+     Running unittests src/main.rs (target/debug/deps/weftforge-e3523d833a033384)
+
+running 29 tests
+test tests::canvas_picking ... ok
+test tests::inspector_updates_commit_once_and_undo_as_one_transaction ... ok
+test tests::cancelled_and_obsolete_jobs_do_not_replace_the_display_snapshot ... ok
+test tests::bounded_fit_phases_queue_without_rebuild_and_continue_accepted_cloth_state ... ok
+test tests::export_guard_preserves_source_projects_and_symlink_aliases ... ok
+test tests::numeric_fields_preserve_unedited_bits_and_accept_text_steps_and_drags ... ok
+test tests::inspecting_and_recoloring_preserves_valid_imported_dimensions_and_physics ... ok
+test tests::exit_retains_last_valid_geometry_and_reports_when_all_recovery_paths_fail ... ok
+test tests::exit_preserves_primary_clean_and_discarded_states_and_uses_unique_fallback ... ok
+test tests::exit_retains_last_second_drafts_after_an_older_autosave_then_recovers_exactly ... ok
+test tests::numeric_rectangle_click_commits_once_and_cancel_or_errors_preserve_drafts_and_history ... ok
+test tests::ordered_sewing::all_portion_guides_use_the_current_mesh_revision_and_authoritative_source ... ok
+test tests::inspector_focus_does_not_reuse_edit_text_after_adding_or_selecting_pieces ... ok
+test tests::selected_curve_controls_and_split_use_fresh_drafts_atomic_history_and_invalidation ... ok
+test tests::untitled_autosave_recovers_editable_work_and_failed_recovery_retains_it ... ok
+test tests::selected_join_button_commits_one_revision_and_rejects_pending_edits_atomically ... ok
+test tests::ordered_sewing::canvas_enter_sides_delete_escape_history_and_load_are_atomic ... ok
+test tests::ordered_sewing::group_controls_edit_all_fields_reverse_remove_and_preserve_one_step_history ... ok
+test tests::focusing_small_and_large_piece_sizes_preserves_document_and_history ... ok
+test tests::focused_numeric_history_restore_survives_blur_and_retains_redo ... ok
+test tests::ordered_sewing::accesskit_only_two_to_three_creation_keeps_drafts_outside_document_until_one_commit ... ok
+test tests::tabbing_over_unedited_curve_control_preserves_saved_f64_precision ... ok
+test tests::rectangle_modal_blocks_background_accesskit_actions_and_preserves_staged_edits ... ok
+test tests::ordered_sewing::rejected_create_and_group_edit_cancel_keep_numeric_drafts_and_redo ... ok
+test tests::obj_export_uses_ready_rest_or_current_drape_without_changing_construction ... ok
+test tests::ordered_sewing::pointer_reverse_b_clears_all_reordered_row_buffers_and_preserves_pending_edits ... ok
+test tests::seam_reverse_button_keeps_focused_drafts_atomic_and_draws_endpoint_pairs ... ok
+test tests::join_focus_keeps_failed_drafts_and_clears_successful_control_text_before_tab ... ok
+test tests::focused_export_keeps_failed_drafts_and_history_until_output_is_written ... ok
+
+test result: ok. 29 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 8.74s
+
+     Running unittests src/main.rs (target/debug/deps/weftforge_cli-b4b5eacd58be9717)
+
+running 2 tests
+test tests::fit_quality_requires_closed_seams_and_all_declared_bounds ... ok
+test tests::shirt_is_editable_and_interval_sewn ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/curves.rs (target/debug/deps/curves-3dbc98c0e3f861a9)
+
+running 1 test
+test cli_edits_splits_and_joins_sewn_curves_and_preserves_outputs_on_failure ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.67s
+
+     Running tests/grain.rs (target/debug/deps/grain-78adb9cf2922840c)
+
+running 1 test
+test cli_authors_grain_and_orthotropy_and_preserves_output_on_invalid_values ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+     Running tests/mcp_stdio.rs (target/debug/deps/mcp_stdio-04adcc9851a4714c)
+
+running 6 tests
+test stdio_validates_protocol_lifecycle_modern_metadata_and_line_bounds ... ok
+test stdio_advertises_and_executes_join_atomically_without_overwriting_failed_output ... ok
+test cli_command_files_are_bounded_strict_and_do_not_replace_failed_destinations ... ok
+test sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constraints ... ok
+test stdio_errors_preserve_input_output_and_recovery_and_allow_retry ... ok
+test stdio_authors_atomic_shared_commands_and_exports_physical_units ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+     Running unittests src/lib.rs (target/debug/deps/weftforge_core-b3c70b6c8d595365)
+
+running 11 tests
+test sewing::tests::new_groups_do_not_snap_nearby_parameters_by_a_legacy_t_tolerance ... ok
+test sewing::tests::metric_limits_cancel_or_reject_without_an_approximate_fallback ... ok
+test geometry::quality_tests::cancellation_leaves_authoring_unchanged ... ok
+test geometry::quality_tests::interior_flip_preserves_boundary_and_area_while_improving_sliver ... ok
+test simulation::tests::rejects_stale_and_foreign_meshes_without_panicking ... ok
+test simulation::tests::cancellable_adapter_reaches_initial_contacts_and_retains_inputs ... ok
+test persistence::tests::interrupted_save_and_invalid_inputs_preserve_the_previous_document ... ok
+test persistence::tests::exports_preserve_native_projects_and_aliases_at_any_extension ... ok
+test persistence::tests::saves_refuse_nonregular_destinations_without_changing_targets_or_recovery ... ok
+test simulation::tests::original_shirt_initial_contacts_match_full_scan_at_multiple_resolutions ... ok
+test geometry::quality_tests::fine_curved_panels_preserve_area_topology_and_sewing_within_mesh_limits ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 13.11s
+
+     Running tests/dxf.rs (target/debug/deps/dxf-2605d46c1b5a9f6e)
+
+running 4 tests
+test r2000_infrastructure_has_resolved_unique_handles_counts_and_layout_links ... ok
+test exact_authored_boundaries_and_piece_order_survive_ascii_mm_export ... ok
+test known_dimensions_and_geometry_ignore_placement_resolution_and_simulation ... ok
+test empty_project_is_valid_and_failed_exports_preserve_project_history_and_files ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+     Running tests/grain.rs (target/debug/deps/grain-4e1d5d4ba80a43fb)
+
+running 3 tests
+test invalid_grain_or_directional_stiffness_retains_document_and_history ... ok
+test grain_and_orthotropy_are_one_transaction_with_history_and_stale_mesh_rejection ... ok
+test authored_grain_rotates_real_cpu_response_while_color_preserves_physics ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+
+     Running tests/joins.rs (target/debug/deps/joins-885926e83c980fcd)
+
+running 7 tests
+test join_rejects_placement_roundoff_above_the_physical_point_tolerance ... ok
+test join_rejects_numerically_ambiguous_or_extreme_parameter_reconstruction ... ok
+test join_rejects_self_seams_tiny_remapped_intervals_and_failing_transactions ... ok
+test incompatible_midpoint_invisible_cubics_mixed_controls_and_corners_reject_atomically ... ok
+test join_rejects_a_full_domain_roundoff_error_above_the_unchanged_tolerance ... ok
+test join_recovers_analytic_cubic_children_including_stationary_derivatives_and_wrap ... ok
+test join_preserves_both_children_sewn_pairs_in_all_orientations_and_v3_remesh ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+
+     Running tests/migration.rs (target/debug/deps/migration-aa94a47530317e24)
+
+running 9 tests
+test nondefault_v1_material_values_are_mapped_instead_of_replaced_by_defaults ... ok
+test duplicate_fields_are_rejected_at_envelope_project_and_material_boundaries ... ok
+test both_schema_readers_reject_nonfinite_and_out_of_range_numbers ... ok
+test version_dispatch_rejects_mixed_schemas_unknown_fields_and_unsupported_versions ... ok
+test real_v1_fixtures_migrate_without_authored_geometry_or_physical_data_loss ... ok
+test original_v1_point_bits_survive_load_migration_save_and_reload ... ok
+test v1_hard_decimals_and_large_authoring_values_keep_their_bits ... ok
+test v2_hard_decimals_and_large_authoring_values_keep_their_bits ... ok
+test v3_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+
+     Running tests/seam_reversal.rs (target/debug/deps/seam_reversal-9c5b434375bdec0c)
+
+running 2 tests
+test rejected_staged_reversal_retains_document_and_redo ... ok
+test reversal_changes_endpoint_pairing_and_preserves_partial_nonlinear_construction ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.93s
+
+     Running tests/sewing_groups.rs (target/debug/deps/sewing_groups-10f4fb4c71a56972)
+
+running 13 tests
+test group_commands_reversal_history_branches_and_dependent_removal_are_atomic ... ok
+test disjoint_same_curve_coverage_survives_split_join_but_overlaps_are_rejected ... ok
+test a_thousand_cubic_spans_share_one_absolute_path_budget ... ok
+test strict_v3_and_legacy_v2_keep_authored_values_and_maps_without_reinterpretation ... ok
+test disconnected_two_to_three_keeps_both_one_sided_knots_and_real_constraints ... ok
+test collinear_nonuniform_cubic_uses_physical_length_in_both_directions ... ok
+test geometry_edits_keep_attachments_recompute_lengths_and_reject_old_meshes ... ok
+test group_save_reopen_recovery_and_failed_metric_save_keep_existing_files ... ok
+test conditioned_short_spans_reject_global_parameter_rounding_before_commit_or_io ... ok
+test split_join_partial_cubics_keep_group_identity_maps_and_pair_locations ... ok
+test resource_precision_cancellation_and_invalid_preview_fail_without_mutation ... ok
+test split_at_partial_endpoints_and_authored_map_knots_keeps_all_positive_spans ... ok
+test asymmetric_cubic_metric_and_nonlinear_pairs_match_independent_integrals ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+     Running tests/shirt.rs (target/debug/deps/shirt-9572946d12a1a1a3)
+
+running 1 test
+test original_shirt_builds_conforming_positive_area_cloth_at_multiple_resolutions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+     Running tests/workflow.rs (target/debug/deps/workflow-b1b42eb42d126af2)
+
+running 10 tests
+test invalid_contours_and_failed_transactions_leave_document_and_history_unchanged ... ok
+test transactions_history_and_stable_ids_survive_branching ... ok
+test a_seam_cannot_reference_the_same_curve_on_both_sides ... ok
+test loaded_duplicate_ids_dangling_relationships_and_non_monotone_seams_are_rejected ... ok
+test rest_mesh_has_physical_scale_consistent_uvs_and_conforming_refinement ... ok
+test split_cubic_is_exact_and_resize_updates_real_geometry ... ok
+test sewn_splits_preserve_gathered_pairs_in_both_directions_at_breakpoints_and_interval_ends ... ok
+test independent_obj_parser_observes_metres_y_up_uvs_normals_and_piece_groups ... ok
+test multiple_seams_survive_split_remesh_history_branching_and_v3_save_reopen ... ok
+test reversed_gathered_cubic_intervals_retain_correspondence_through_remesh_edits_and_files ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.34s
+
+     Running unittests src/lib.rs (target/debug/deps/weftforge_sim-8e105f27fee971b5)
+
+running 22 tests
+test tests::analytic_dihedral_gradient_matches_independent_finite_difference ... ok
+test tests::bending_reduces_fold_angle_without_translating_center_of_mass ... ok
+test tests::membrane_affine_strain_follows_material_axes_under_arrangement_and_winding ... ok
+test tests::membrane_projection_matches_analytic_uniaxial_and_shear_updates ... ok
+test tests::cancellable_constructor_keeps_invalid_input_checks_and_honors_early_cancel ... ok
+test tests::malformed_external_geometry_material_and_constraints_are_rejected ... ok
+test tests::weighted_stitch_closes_unequal_samples_and_preserves_momentum ... ok
+test tests::finite_diagnostics_do_not_claim_satisfied_contact ... ok
+test contact::tests::hierarchy_query_cancels_when_all_bounds_overlap ... ok
+test tests::cancellation_and_failures_preserve_old_state_and_allow_recovery ... ok
+test tests::ground_torso_and_capsule_project_to_exterior ... ok
+test tests::freefall_matches_symplectic_euler_and_refines_toward_analytic_solution ... ok
+test tests::layers_contact_and_transfer_motion_to_the_other_layer ... ok
+test tests::area_mass_rest_and_reset_are_si_consistent ... ok
+test tests::swept_layer_crossing_is_resolved_and_ground_friction_resists_slide ... ok
+test tests::seam_assembly_is_bounded_monotone_cancellable_and_resettable ... ok
+test contact::tests::hierarchy_build_and_partition_cancel_during_work ... ok
+test contact::tests::hierarchy_is_conservative_and_prunes_separated_bounds ... ok
+test tests::grain_rotation_changes_the_physical_hanging_response ... ok
+test tests::initial_hierarchy_matches_brute_force_for_contacts_thickness_and_sewing_filters ... ok
+test tests::constructor_cancels_inside_initial_contact_query_without_publishing_state ... ok
+test tests::physical_stiffness_changes_extension_and_refinement_preserves_mass_and_sag ... ok
+
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.73s
+
+     Running unittests src/main.rs (target/debug/deps/xtask-bf660e70448f02ba)
+
+running 1 test
+test tests::selects_the_nearest_runtime_checkout_and_rejects_outside_directories ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests weftforge_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests weftforge_sim
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

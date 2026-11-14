@@ -1,0 +1,48 @@
+{
+  "kind": "operations-supplement-pretest-freeze-v1",
+  "frozen_utc": "2026-11-14T15:43:10.613009+00:00",
+  "original_freeze_sha256": "d84f38184dded9a574ace4e30c6a3860029d1b4fa9ae98e0e50d52bf73ac1ed0",
+  "candidate_actions_or_outputs_inspected": false,
+  "candidate_binding": "Root must separately pin exact commit/source/date/executable/gates before actions; no candidate result is part of this freeze",
+  "artifacts": {
+    "operations-supplement/declaration.md": {
+      "sha256": "9fc926f2fbb050c7d1eaec99578ea54c569994dbfdaf4b9326de4dbc86e5c0a2",
+      "bytes": 4679
+    },
+    "operations-supplement/evaluate_operations.py": {
+      "sha256": "655fe07faeb584f2eedaeb219d127598defc4434aad5c7d7821421fd33d66692",
+      "bytes": 9345
+    },
+    "operations-supplement/expected-checkpoints.json": {
+      "sha256": "5187284a9af7f87a2f0a4a4f067594c403bc0ce83e9156fbe0c3d00f2ecc4071",
+      "bytes": 103570
+    },
+    "operations-supplement/input-dependent-removal-v3.weftforge": {
+      "sha256": "e4a4acf83ba909002855a82fdacf265069651c792b56eb39ac0499ae68882fbf",
+      "bytes": 8121
+    },
+    "operations-supplement/input-split-join-v3.weftforge": {
+      "sha256": "9472a3ff2faaf8543eb26e3edd0d05a7ac068b3e91c1108082ab93ea37640067",
+      "bytes": 7573
+    },
+    "operations-supplement/invalid-overlap-group.json": {
+      "sha256": "78c5ec621f8fe88956e3991b88e48f215702f310813ae2074c0d1c9cc1f84ebc",
+      "bytes": 653
+    },
+    "operations-supplement/self-check.json": {
+      "sha256": "9c3a86e88e36321e6e402af17a3b6f96290983db30e89df7875aefd9203f5c24",
+      "bytes": 815
+    }
+  },
+  "shared_inputs": {
+    "build_supplements.py": "22b79ce191cdd3bdd81629e69b86bf3eac26790530a9db3131a3c1cfed1b093a",
+    "supplement-public-api-contract.json": "76270c4aa2984e2b67c35d2be303edc1a2cb88af18ecdb0a16ed9bc532cbfe6b",
+    "oracle.py": "bf7cddedec7f8e58afd689ff034e1a8b19d0218a41e9bbb3841be449dda2e333",
+    "evaluate.py": "b58376e8def80abc350376120282ef99ef853bdbfa8eecb5089dde02c86f10b7",
+    "criteria.md": "09edf4713437ef26e639c78019755207705eefd73cb253af045eefcf81e29799",
+    "interface.json": "0d07de21237d02c60e2bc79ab5cd46d488b0aaf584fb8b9a07a9268c0a8e7060",
+    "expectations.json": "68a63c3f31d7de18f5df1f4735824b807335e9dfc74f8365a61db08a814c7eb5"
+  },
+  "delivery_status": "Local ignored prospective oracle only; not public tracked evidence",
+  "claim": "original concrete input/action/checkpoint/evaluator preregistration only; actual candidate results unknown"
+}

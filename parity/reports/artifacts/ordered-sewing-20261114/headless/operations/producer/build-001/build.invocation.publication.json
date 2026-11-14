@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "cargo",
+    "build",
+    "--offline",
+    "--locked",
+    "--release",
+    "--manifest-path",
+    "<WORKSPACE>/.local/chain-sewing-operations-producer-20261114/driver/Cargo.toml"
+  ],
+  "cwd": "<WORKSPACE>/.local/chain-sewing-operations-producer-20261114",
+  "environment_overrides": {
+    "CARGO_TARGET_DIR": "<WORKSPACE>/.local/chain-sewing-operations-producer-20261114/target-3eddef067c8a1f03f192c8e6822a8da2a94f9bf9"
+  },
+  "started_utc": "2026-11-14T16:18:02.911132+00:00",
+  "process_id": 96954,
+  "exit_code": 0,
+  "ended_utc": "2026-11-14T16:18:10.560124+00:00",
+  "stdout": "build.stdout",
+  "stderr": "build.stderr"
+}

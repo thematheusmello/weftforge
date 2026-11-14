@@ -1,0 +1,76 @@
+{
+  "fixture_sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+  "receipt_sha256": "4ce736b7f9d6c962261a799a08a4c5e9eebc6409fa1b59088195d59e831a59b0",
+  "vertices": 51906,
+  "triangles": 102685,
+  "boundary_records": 1137,
+  "boundary_edges": 1117,
+  "stitches": 273,
+  "max_edge_m": 0.02377648377190291,
+  "max_edge_limit_m": 0.0238,
+  "min_triangle_area_m2": 7.497282513317313e-09,
+  "boundary_parameter_position_error_m": 1.7763568394002505e-15,
+  "pieces": [
+    {
+      "piece": 2,
+      "vertices": 19261,
+      "edges": 57445,
+      "triangles": 38185,
+      "mesh_area_m2": 1.4885652211763465,
+      "boundary_polygon_area_m2": 1.488565221176299,
+      "analytic_area_m2": 1.4885650000000004,
+      "analytic_error_m2": 2.21176346126839e-07,
+      "euler_characteristic": 1,
+      "connected_components": 1
+    },
+    {
+      "piece": 11,
+      "vertices": 4590,
+      "edges": 13637,
+      "triangles": 9048,
+      "mesh_area_m2": 0.28800000000000153,
+      "boundary_polygon_area_m2": 0.2879999999999998,
+      "analytic_area_m2": 0.2879999999999998,
+      "analytic_error_m2": 1.7208456881689926e-15,
+      "euler_characteristic": 1,
+      "connected_components": 1
+    },
+    {
+      "piece": 20,
+      "vertices": 18370,
+      "edges": 54778,
+      "triangles": 36409,
+      "mesh_area_m2": 1.1112341261695753,
+      "boundary_polygon_area_m2": 1.1112341261696939,
+      "analytic_area_m2": 1.1112300000000008,
+      "analytic_error_m2": 4.126169574458771e-06,
+      "euler_characteristic": 1,
+      "connected_components": 1
+    },
+    {
+      "piece": 29,
+      "vertices": 3797,
+      "edges": 11242,
+      "triangles": 7446,
+      "mesh_area_m2": 0.3719999999999924,
+      "boundary_polygon_area_m2": 0.3719999999999999,
+      "analytic_area_m2": 0.3719999999999999,
+      "analytic_error_m2": -7.494005416219807e-15,
+      "euler_characteristic": 1,
+      "connected_components": 1
+    },
+    {
+      "piece": 38,
+      "vertices": 5888,
+      "edges": 17484,
+      "triangles": 11597,
+      "mesh_area_m2": 0.4800000000000026,
+      "boundary_polygon_area_m2": 0.480000000000001,
+      "analytic_area_m2": 0.48,
+      "analytic_error_m2": 2.609024107869118e-15,
+      "euler_characteristic": 1,
+      "connected_components": 1
+    }
+  ],
+  "checks": "resource limits, positive unique faces, all vertices used, piece ownership, oriented manifold edges, connected disk topology, max-edge threshold, exact boundary edges and curve parameters, area conservation against boundary, analytic area tolerance, placement, stitch side ownership"
+}
