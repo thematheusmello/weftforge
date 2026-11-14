@@ -1,6 +1,6 @@
 # PAT-011 — Pattern mesh resolution
 
-Reference state: **documentation reviewed; workspace accessible; behavior execution pending**. Candidate baseline:
+Reference state: **documentation reviewed; workspace accessible; 20 mm baseline measured; resolution edit pending**. Candidate baseline:
 `MD-2026.1.237.58920-macos-arm64-20261113`.
 
 The [official Particle Distance manual](https://support.marvelousdesigner.com/hc/en-us/articles/47358268602777-Particle-Distance-Setting)
@@ -23,3 +23,14 @@ within 0.01 mm; mesh counts need measurement before any exact expectation is set
 Probe 0.8, 700, adjacent out-of-range values, NaN-like input, undo/redo, and canceled
 background work. Clamping, rejection, remeshing algorithm, and defaults remain
 unknown.
+
+The [original rectangle baseline](PAT-003-runtime-20261114.md) now supplies one
+measured 20 mm case: 290 vertices, 525 triangles and a single 53-edge boundary loop.
+The [independent boundary evaluator](../evaluators/original_obj_boundary.py)
+checks fixed physical dimensions, boundary positions, connected incidence,
+projected winding and area for that unsimulated axis-aligned fixture. A mesh with
+an interior hole can preserve its bounds, so the physical-size check alone is
+insufficient for this comparison. These measurements are the baseline of one
+run; they do not require every mesh at 20 mm to have those exact counts.
+No particle-distance edit, Undo/Redo of that edit, or post-edit export has yet
+been observed.

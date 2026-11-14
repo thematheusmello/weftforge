@@ -29,9 +29,9 @@ undo, deletion, and post-edit attachment behavior remain unknown.
 
 The [public 2026.1 API list](https://developer.marvelousdesigner.com/list.html)
 documents partial-sewing ratios normalized to boundary **length**, plus separate
-orientation flags. Our current `CurveInterval` uses curve-parameter `t`. These
-representations require an explicit arc-length conversion/comparison; identical
-numbers do not imply identical locations on a cubic. The API is documentation
+orientation flags. A curve interval expressed in parameter `t` requires an
+explicit arc-length conversion/comparison against that documented representation;
+identical numbers do not imply identical locations on a cubic. The API is documentation
 evidence only and has not been executed here.
 
 Proposed follow-up `REF-SEW-001-ARC-LENGTH-002`: use an asymmetric original cubic,

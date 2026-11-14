@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "case_id": "REF-PAT-003-RECTANGLE-001",
+  "recorded_at": "2026-11-14T02:46:44.604609+00:00",
+  "kind": "offline-independent-boundary-review-of-retained-original-export",
+  "baseline_id": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "baseline_frozen": false,
+  "reference_build": "2026.1.237 (r58920)",
+  "reference_executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "source_observation": "REF-PAT-003-RECTANGLE-001-pd20.json",
+  "source_observation_sha256": "19e5df381e5eee69cb55057aeff229fff228e2b48075c7539227bd2add20fd82",
+  "new_native_ui_actions": [],
+  "expected_dimensions_source": "Actual original constructor 200 by 300 mm; unchanged from source observation.",
+  "physical_unit_source": "Actual unchanged export mm at 100%; fixed conversion, not inferred from output bounds.",
+  "evaluator": {
+    "path": "spec/evaluators/original_obj_boundary.py",
+    "sha256": "93e03a7d41d317e782a1833be9a634fc7cce1db2b6b25faecb8b5eac5d47de12",
+    "dimension_dependency_path": "spec/evaluators/original_obj_bounds.py",
+    "dimension_dependency_sha256": "cd9887a428439fdb54bdb20276c0ab8e8144a43e386df01f76a75ae9703462cb"
+  },
+  "measurement": {
+    "kind": "independent-original-rectangle-boundary-measurement",
+    "status": "passed",
+    "input_filename": "reference-rectangle-200x300-pd20.obj",
+    "input_sha256": "de6af01755f51fc8f366fa48a64817638c6c9a185af5d080bfda2240e2d237fc",
+    "parser_sha256": "93e03a7d41d317e782a1833be9a634fc7cce1db2b6b25faecb8b5eac5d47de12",
+    "dimension_parser_sha256": "cd9887a428439fdb54bdb20276c0ab8e8144a43e386df01f76a75ae9703462cb",
+    "declared_export_unit": "mm",
+    "expected_dimensions_mm": [
+      200,
+      300
+    ],
+    "tolerance_mm": 0.01,
+    "unit_basis": "Observed export control; fixed conversion, never fitted to bounds",
+    "translation_policy": "Ignore translation using exported minima; no authored position or rotation result is claimed",
+    "checks": {
+      "physical_dimensions": true,
+      "all_vertices_used": true,
+      "one_connected_mesh": true,
+      "edge_incidence_one_or_two": true,
+      "boundary_degree_two": true,
+      "one_boundary_loop": true,
+      "disk_euler_characteristic": true,
+      "consistent_nondegenerate_projected_winding": true,
+      "boundary_on_declared_rectangle": true,
+      "all_declared_corners_covered": true,
+      "projected_area": true
+    },
+    "vertices": 290,
+    "faces": 525,
+    "edges": 814,
+    "boundary_edges": 53,
+    "boundary_vertices": 53,
+    "boundary_components": 1,
+    "euler_characteristic": 1,
+    "max_boundary_error_mm": 0.00012200000014672696,
+    "max_corner_error_mm": 1.499999999055035e-05,
+    "projected_triangle_area_mm2": 60000.002721251905,
+    "expected_area_mm2": 60000,
+    "area_tolerance_mm2": 10.0,
+    "limitations": [
+      "One original unsimulated axis-aligned rectangle, positive-index triangle OBJ subset",
+      "Manifold incidence, winding, boundary and area checks; no general polygon/intersection proof",
+      "Texture, material, normals, native format and cloth physics are not qualified",
+      "Independent fixture measurements supply zero verified WeftForge parity claims"
+    ]
+  },
+  "counterexamples": [
+    {
+      "kind": "synthetic independently authored evaluator regression; not an application failure",
+      "case": "A 200 by 300 mm triangulated grid with its center cell missing.",
+      "dimension_evaluator": "passed",
+      "boundary_evaluator": "failed",
+      "observed_failure": "Two boundary components and interior edges away from the declared rectangle."
+    },
+    {
+      "kind": "synthetic independently authored evaluator regression; not an application failure",
+      "case": "Reverse one of the two rectangle triangles.",
+      "dimension_evaluator": "passed",
+      "boundary_evaluator": "failed",
+      "observed_failure": "Inconsistent projected winding."
+    }
+  ],
+  "qualification": {
+    "boundary_check": "passed for this PD20 original export only",
+    "particle_distance_edit": "not_run",
+    "weftforge_comparison": "not_run",
+    "verified_parity_claimed": false
+  },
+  "publication": "Raw original OBJ/MTL, native container, commercial/account UI and vendor resources remain private; only measurements and independent evaluator code are public."
+}
