@@ -21,13 +21,15 @@ controls, with ranges/error behavior still unknown.
 
 Every record separates menu-presence evidence from the REA workspace identity
 capture. No raw UI, proprietary asset or implementation technique is supplied to
-implementers. Activating Rectangle is recorded as tool activation only; no
-complete rectangle, particle-distance or curved-sewing workflow has yet been
-measured. Zero menu entries qualify as verified parity from presence alone.
+implementers. Activating Rectangle is recorded as tool activation only; the
+[bounded original rectangle run](../features/PAT-003-runtime-20261114.md) now
+records numeric creation, one-step history, document save/close/open and physical
+OBJ bounds. Particle-distance edits and curved sewing remain pending. No menu
+entry qualifies as verified parity from presence alone.
 
 Continue with numeric rectangle create/edit/Undo/Redo/save-close-reopen, controlled
-particle distance, and reversed partial sewing on curves. Canvas input currently
-fails through the available native driver; retain this gap while testing
-supported menu, panel, field and dialog routes. Expand the catalog with real
+particle distance, and reversed partial sewing on curves. The initial CUA coordinate route failed; a pinned target-guarded native pointer
+fallback now supports controlled canvas input. Retain the failed attempts and
+remaining modal-capture/AX limitations while testing each route. Expand the catalog with real
 canvas context menus, toolbar flyouts, all panels/tabs, dialogs, shortcuts,
 checked/enabled states, input limits, error/cancellation and end-to-end results.

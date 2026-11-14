@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "case_id": "REF-PAT-003-RECTANGLE-001",
+  "recorded_at": "2026-11-14T02:05:58.219509+00:00",
+  "kind": "reviewed-original-reference-export-measurement",
+  "baseline_id": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "baseline_frozen": false,
+  "reference_build": "2026.1.237 (r58920)",
+  "reference_executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "host": {
+    "os": "macOS",
+    "version": "27.2",
+    "build": "26B123",
+    "architecture": "arm64"
+  },
+  "original_authoring": {
+    "width_mm": 200,
+    "height_mm": 300,
+    "dimension_link": false,
+    "number_of_shapes": 1,
+    "simulation_executed": false,
+    "particle_distance_mm": 20,
+    "source_native_file_sha256": "f66fee3f7956594ce1ca241d7e565e53ce98e0189c70f5ebbe8b3dd3d720aad0",
+    "source_native_retention": "private; opaque container not inspected"
+  },
+  "reference_evidence": {
+    "created": "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471",
+    "reopened_selected": "ev_846c03f60690a87e5499faab0c2584274ff1bb5de45d22635ca7b5cdc39a3f95",
+    "export_options_private_record_sha256": "8a86d60b0565e1804cf32a5b0cc8872904c104e7f625a7bcf7dc39ab736adac3",
+    "modal_capture_limitation": "Constructor and export options are native CUA observations; separately selected modal REA observation rejected its fresh window ID."
+  },
+  "export_options": {
+    "route": "File > Export > OBJ",
+    "visible_dialog_title": "Export OBJ",
+    "ax_dialog_title": "Import OBJ",
+    "scale_percent": 100,
+    "unit": "mm (Default)",
+    "axes": [
+      "X",
+      "Y (Up)",
+      "Z"
+    ],
+    "axis_inversions": [
+      false,
+      false,
+      false
+    ],
+    "all_patterns": true,
+    "include_internal_shape": false,
+    "include_hidden_object": false,
+    "merge_by_proximity": false,
+    "welding": "Unweld",
+    "thickness": "Thin",
+    "object_mode": "Single Object",
+    "unified_uv_png": false,
+    "metadata_xml": false
+  },
+  "evaluator": {
+    "path": "spec/evaluators/original_obj_bounds.py",
+    "sha256": "cd9887a428439fdb54bdb20276c0ab8e8144a43e386df01f76a75ae9703462cb",
+    "expected_dimensions_source": "Numeric values entered in actual native constructor, not parsed OBJ metadata or fitted scale.",
+    "physical_unit_source": "Actual export unit mm at 100%; conversion fixed independently before reading OBJ coordinates.",
+    "tolerance_mm": 0.01
+  },
+  "measurement": {
+    "kind": "independent-original-export-dimension-measurement",
+    "status": "passed",
+    "input_filename": "reference-rectangle-200x300-pd20.obj",
+    "input_sha256": "de6af01755f51fc8f366fa48a64817638c6c9a185af5d080bfda2240e2d237fc",
+    "parser_sha256": "cd9887a428439fdb54bdb20276c0ab8e8144a43e386df01f76a75ae9703462cb",
+    "declared_export_unit": "mm",
+    "unit_basis": "Observed export control; fixed conversion, never fitted to bounds",
+    "vertices": 290,
+    "uv_coordinates": 290,
+    "normals": 290,
+    "faces": 525,
+    "face_sizes": {
+      "3": 525
+    },
+    "bounds_mm": {
+      "min": [
+        -255.844177,
+        1499.350708,
+        199.999985
+      ],
+      "max": [
+        -55.844162,
+        1799.35083,
+        200.000015
+      ],
+      "extent": [
+        200.00001500000002,
+        300.00012200000015,
+        2.99999999811007e-05
+      ]
+    },
+    "expected_sorted_extent_mm": [
+      0.0,
+      200.0,
+      300.0
+    ],
+    "extent_errors_mm": [
+      2.99999999811007e-05,
+      1.500000001897206e-05,
+      0.00012200000014672696
+    ],
+    "declared_extent_tolerance_mm": 0.01,
+    "convex_hull_vertices": 6,
+    "convex_hull_perimeter_mm": 1000.0000000001575,
+    "convex_hull_area_mm2": 60000.01445000006,
+    "limitations": [
+      "Original unsimulated axis-aligned rectangle only; positive-index OBJ subset",
+      "Dimension result does not establish interior topology, cloth physics or parity",
+      "Native project, vendor resources and materials are not decoded or consumed"
+    ]
+  },
+  "evaluator_counterexample": {
+    "kind": "independent controlled mutation; not an application export failure",
+    "mutation": "Compress original exported vertex X extent to 1 mm; keep expected 200 x 300 mm dimensions and fixed mm unit.",
+    "input_sha256": "c671a7fa1ba989dce3393af46381729939bbe1821c5345a9dd78d4d7d6e14bb4",
+    "result": "rejected_as_expected",
+    "measured_extent_mm": [
+      1.0,
+      300.00012200000015,
+      2.99999999811007e-05
+    ],
+    "maximum_error_mm": 199.0
+  },
+  "qualification": {
+    "dimension_check": "passed",
+    "weftforge_comparison": "not_run",
+    "full_PAT_003": "partial",
+    "verified_parity_claimed": false,
+    "pending": [
+      "numeric resize",
+      "particle-distance edit/remesh check",
+      "constructor validation/modifiers/cancel/replication",
+      "process restart",
+      "broader native file/error/recovery behavior"
+    ]
+  },
+  "publication": "Raw commercial/account screenshots, native project, OBJ/MTL and vendor resources remain private. Public report contains only original geometry measurements and evaluator provenance."
+}

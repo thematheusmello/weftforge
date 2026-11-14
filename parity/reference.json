@@ -55,13 +55,18 @@
       "scope": "Grid Properties: 2D grid distance and 2D/3D arrow movement labels",
       "app_unit_preference": null,
       "evidence_id": "ev_08cb11b34d22fea47ba88ce93395b445044244a3914f66211cf908c625b817b5",
-      "limitation": "Millimetre labels in these controls do not establish every import/export or global unit setting."
+      "limitation": "Millimetre labels in these controls do not establish every import/export or global unit setting.",
+      "additional_observed_scopes": [
+        "Rectangle constructor Width/Height mm",
+        "OBJ export mm (Default) at 100%"
+      ]
     },
     "locale": {
       "ui_language_observed": "English interface labels",
       "selected_language_setting": null,
       "numeric_locale": null,
-      "limitation": "Language menu lists English, but its checked state was not exposed; locale preferences not inspected."
+      "limitation": "Language menu lists English, but its checked state was not exposed; locale preferences not inspected.",
+      "numeric_decimal_separator_observed": "."
     },
     "preferences": {
       "inspected_pages": [
@@ -118,7 +123,16 @@
     "codex_registration": "doctor-healthy-live-connection-unconfirmed",
     "ghidra": "unconfigured-not-invoked",
     "hopper": "detected-not-invoked",
-    "gui_driver": "cua_repl-native-mac"
+    "gui_driver": "cua_repl-native-mac",
+    "native_computer_use_version": "1001874",
+    "native_pointer_driver": {
+      "revision": 2,
+      "source_sha256": "df39282ebcf11d25de180a33e31aa0f295d23f3521ba4d299ea7c7f357d5c812",
+      "binary_sha256": "4d945a09b6a45b41cc2de8799206a01a76aad235d830740708078985286c97ed",
+      "manifest_sha256": "f81b0b93503cc3cebb38b32e2a6a4993d3a59484fecd11a3608373f8e15b80bb",
+      "route": "public CoreGraphics events plus strict process/window/foreground/AX input-owner guards",
+      "publication": "private laboratory helper; no product dependency"
+    }
   },
   "evidence": [
     {
@@ -308,6 +322,45 @@
       "limitations": [
         "Read-only property inspection, not factory-default or accepted-range testing.",
         "Does not establish global/import/export unit preferences."
+      ]
+    },
+    {
+      "id": "ev_c25de63864eb3fa499bd1c428fa8afae832ac2fd88e1536e55ba84ec497e4471",
+      "kind": "rea-native-ui-original-rectangle-created",
+      "timestamp": "2026-11-14T01:39:52.740823Z",
+      "retention": "complete-private-record-and-private-commercial-screenshot",
+      "sha256": "23dd5e4d370ee73d1f0b8cbe44344b1a3495897aa2f74482642ebfdaafd4a645",
+      "accessibility_nodes": 214,
+      "truncated": false,
+      "observed": "Original numeric 200 x 300 mm rectangle created; selected 2D/3D boundary totals 1000.0 mm and particle distance 20 mm.",
+      "limitations": [
+        "Constructor is separately retained native CUA evidence; selected modal REA capture was rejected.",
+        "No physical correctness claim from perimeter alone."
+      ]
+    },
+    {
+      "id": "ev_846c03f60690a87e5499faab0c2584274ff1bb5de45d22635ca7b5cdc39a3f95",
+      "kind": "rea-native-ui-original-rectangle-reopened",
+      "timestamp": "2026-11-14T01:53:00.758344Z",
+      "retention": "complete-private-record-and-private-commercial-screenshot",
+      "sha256": "499c91a70a64ec1b614e20301720c40c4da4f996575a78afdd8b6b4489e69db6",
+      "accessibility_nodes": 214,
+      "truncated": false,
+      "observed": "Saved original document closed via New Project, reopened through File Open Project and selected; generated name, perimeter and 20 mm particle distance preserved.",
+      "limitations": [
+        "Document lifecycle only; process restart pending.",
+        "Original native container retained privately and not decoded."
+      ]
+    },
+    {
+      "id": "REF-PAT-003-RECTANGLE-001-PD20-BOUNDS",
+      "kind": "independent-original-export-dimension-measurement",
+      "path": "spec/observations/REF-PAT-003-RECTANGLE-001-pd20.json",
+      "sha256": "19e5df381e5eee69cb55057aeff229fff228e2b48075c7539227bd2add20fd82",
+      "observed": "200.000015 x 300.000122 mm extents; maximum error 0.000122 mm below declared 0.01 mm tolerance. One-mm mutation rejected.",
+      "limitations": [
+        "Original unsimulated axis-aligned rectangle and positive-index OBJ subset only.",
+        "Not a complete geometry, interoperability or reference-parity qualification."
       ]
     }
   ],
@@ -787,11 +840,15 @@
       "SEW-004",
       "FILE-001"
     ],
-    "unobserved_areas": "Most property pages, dialogs, shortcuts, numeric defaults/ranges/error behavior, canvas context menus/flyouts, all complete authoring/simulation/export/performance workflows; known menu presence is not executed behavior.",
+    "unobserved_areas": "Broad/advanced behavior, most dialogs/panels, ranges/errors/modifiers, numeric resize, particle-distance edits, sewing, simulation, process restart, broader file interoperability and performance; the bounded original rectangle and physical OBJ dimension observation do not complete these groups.",
     "documentation_registry_groups_mapped": 56,
     "completed_reference_workflow_contracts": 0,
     "total_actual_reference_features": null,
-    "runtime_menu_catalog": "spec/inventory/md-2026.1.237-main-menus.json"
+    "runtime_menu_catalog": "spec/inventory/md-2026.1.237-main-menus.json",
+    "runtime_behavior_notes": [
+      "spec/features/PAT-003-runtime-20261114.md",
+      "spec/observations/REF-PAT-003-RECTANGLE-001-pd20.json"
+    ]
   },
   "known_contradictions": [
     {
@@ -814,7 +871,7 @@
   "intentional_exclusions": [
     "Vendor billing, activation and storefront administration are excluded from the replacement feature set."
   ],
-  "qualification": "Provisional settings baseline; workspace access and menu presence now observed, but zero complete reference workflow contracts and zero verified functional-parity claims.",
+  "qualification": "Provisional settings baseline. Workspace, detailed menu presence and bounded original rectangle/history/document persistence/export dimensions are observed. Broad contracts and WeftForge comparison remain incomplete; zero verified functional-parity claims.",
   "latest_access_observation": {
     "timestamp": "2026-11-14T00:31:55.636690+00:00",
     "evidence_id": "ev_e9c8c297a80817108ce611e3955f092807162836a490652cda36af49af51324d",

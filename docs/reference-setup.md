@@ -72,13 +72,28 @@ identities, and the private manifest remain outside the public checkout. Public
 metadata is limited to redacted provenance, hashes, reviewed behavior contracts,
 and qualifying redistributable reports.
 
-## First pending reference runs
+## Controlled observations and next runs
 
-Start with numeric rectangle creation, oriented segment sewing with a deliberate
-length mismatch, particle-distance editing, and save/close/reopen. Use the reviewed
-contracts in `spec/features/`. Preserve the initial state and outputs before
-moving to a full empty-project shirt workflow. Rectangle tool activation and its `S` shortcut were observed; numeric creation,
-editing and persistence are still pending. CUA coordinate input to this live
-translocated app returned `noWindowsAvailable`; custom Preferences navigation
-returned `AXError.notImplemented`. These are tooling gaps, not absent product
-features. Supported menus and AX controls continue to be inspected.
+The [original numeric rectangle run](../spec/features/PAT-003-runtime-20261114.md)
+created 200 × 300 mm through the actual UI, tested one-step Undo/Redo, saved,
+closed the document through New Project, reopened it and independently measured
+its original OBJ export. Maximum dimension error was 0.000122 mm against the
+predeclared 0.01 mm tolerance. This does not complete the broad rectangle feature,
+exercise a process restart or establish a WeftForge comparison.
+
+The available CUA coordinate route failed for the translocated target. A private,
+pinned native pointer driver using public CoreGraphics and Accessibility APIs
+then passed exact process/window/frame/foreground/input-owner checks and opened
+the actual constructor. The earlier driver failures remain retained history;
+canvas input is now available under the investigator's exclusive UI lease.
+No permissions, license, terms or account action was performed by that driver.
+
+Separately selected REA modal-window capture still rejected fresh constructor
+window IDs. Modal values therefore have native CUA evidence, while untruncated
+REA workspace captures cover before/created/history/saved/reopened states.
+
+Next: numeric resize, constructor edge cases and modifiers, particle-distance
+editing with mesh/boundary preservation, process restart, then controlled curved
+and reversed partial sewing. Continue all menu/flyout/context/panel/dialog,
+shortcut, default, range, error and end-to-end discovery. The baseline remains
+provisional and verified reference parity remains zero.
