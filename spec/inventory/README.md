@@ -49,8 +49,10 @@ OBJ bounds. The [bounded resolution run](../features/PAT-011-runtime-20261114.md
 adds the 20 to 10 mm edit, one Undo/Redo, separate save/export, and target-state
 reopen after process restart. Its whole-window AX gap remains explicit. The
 curved first-side preview adds a numeric dialog observation. Whole-edge sewing
-now has a bounded history/persistence case; completed partial sewing and reversal
-remain pending. No menu entry qualifies as verified parity from presence alone.
+now has a bounded history/persistence case. The later
+[paired partial case](../features/SEW-002-paired-runtime-20261114.md) accepts two
+100 mm sides and observes Undo/Redo and document reopen. Explicit reversal and
+continuous arc-length correspondence remain pending. No menu entry qualifies as verified parity from presence alone.
 
 Continue with numeric rectangle resize, resolution limits/cancellation and sewn
 constraints, and reversed partial sewing on curves. The initial CUA coordinate route
