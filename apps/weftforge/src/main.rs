@@ -665,7 +665,7 @@ impl Studio {
             return;
         }
         let mut open = true;
-        egui::Window::new("Recover editable construction").open(&mut open).default_width(520.0).show(ctx,|ui| {
+        egui::Window::new("Recover editable construction").enabled(self.rectangle.is_none()).open(&mut open).default_width(520.0).show(ctx,|ui| {
             ui.label("Recovery opens a copy. Save current edits before replacing the document.");
             ui.horizontal(|ui| {
                 if ui.button("Refresh").clicked() { self.refresh_recovery(); }
@@ -1542,7 +1542,15 @@ impl eframe::App for Studio {
             ctx.send_viewport_cmd(egui::ViewportCommand::CancelClose);
             self.message = "Save before closing, or explicitly discard edits.".into();
         }
+        // Disabled DragValue still handles AccessKit value actions in egui 0.35.
+        let modal_events = self
+            .rectangle
+            .is_some()
+            .then(|| ctx.input_mut(|input| std::mem::take(&mut input.events)));
         egui::Frame::central_panel(ui.style()).show(ui, |ui| {
+            if self.rectangle.is_some() {
+                ui.disable();
+            }
             self.toolbar(ui);
             ui.separator();
             ui.horizontal(|ui| {
@@ -1594,6 +1602,7 @@ impl eframe::App for Studio {
         if self.search {
             let mut open = true;
             egui::Window::new("Command search")
+                .enabled(self.rectangle.is_none())
                 .open(&mut open)
                 .collapsible(false)
                 .show(&ctx, |ui| {
@@ -1642,6 +1651,9 @@ impl eframe::App for Studio {
             self.search &= open;
         }
         self.recovery_window(&ctx);
+        if let Some(events) = modal_events {
+            ctx.input_mut(|input| input.events = events);
+        }
         self.rectangle_window(&ctx);
     }
 }
@@ -1774,6 +1786,176 @@ mod tests {
         assert!(
             (segment_distance(Pos2::new(0.5, 1.), Pos2::ZERO, Pos2::new(1., 0.)) - 1.).abs() < 1e-6
         );
+    }
+
+    #[test]
+    fn rectangle_modal_blocks_background_accesskit_actions_and_preserves_staged_edits() {
+        use egui::accesskit::{Action, ActionData, ActionRequest, NodeId, TreeId};
+        fn frame(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            events: Vec<egui::Event>,
+        ) -> egui::FullOutput {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1450., 1800.))),
+                    events,
+                    ..Default::default()
+                },
+                |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+            )
+        }
+        fn action(target_node: NodeId, action: Action, data: Option<ActionData>) -> egui::Event {
+            egui::Event::AccessKitActionRequest(ActionRequest {
+                action,
+                target_tree: TreeId::ROOT,
+                target_node,
+                data,
+            })
+        }
+        fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+            egui::Event::Key {
+                key,
+                physical_key: None,
+                pressed: true,
+                repeat: false,
+                modifiers,
+            }
+        }
+        fn button(output: &egui::FullOutput, label: &str) -> NodeId {
+            output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(_, node)| {
+                    node.label() == Some(label) && node.supports_action(Action::Click)
+                })
+                .unwrap_or_else(|| panic!("missing button {label:?}"))
+                .0
+        }
+        fn numeric(output: &egui::FullOutput, value: f64) -> NodeId {
+            output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(_, node)| node.numeric_value() == Some(value))
+                .unwrap()
+                .0
+        }
+        for label in ["Add rectangle", "Undo"] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = Studio::empty();
+            for name in ["First", "Second"] {
+                app.editor
+                    .execute(Command::AddRectangle {
+                        name: name.into(),
+                        origin: [0., 0.],
+                        width: 0.4,
+                        height: 0.6,
+                    })
+                    .unwrap();
+            }
+            assert!(app.editor.undo());
+            app.selected = Some(app.editor.project.pieces[0].id);
+            app.size = [0.47, 0.63];
+            app.coordinate = [0.12, 0.34];
+            let mut draft = InspectorDraft::new(&app.editor.project, app.selected, None);
+            draft.grain_angle = Some(0.25);
+            draft.resolution = 0.085;
+            app.draft = Some(draft);
+            let output = frame(&ctx, &mut app, vec![]);
+            let target_button = button(&output, label);
+            let numeric_targets = [0.47, 0.12, 0.25, 0.085].map(|value| numeric(&output, value));
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(numeric_targets[2], Action::Focus, None)],
+            );
+            app.rectangle = Some(RectangleDraft {
+                origin: [0., 0.],
+                dimensions_mm: ["500".into(), "500".into()],
+                error: None,
+            });
+            let output = frame(&ctx, &mut app, vec![]);
+            let cancel = button(&output, "Cancel");
+            let width = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .filter(|(_, node)| node.value() == Some("500"))
+                .min_by(|a, b| {
+                    a.1.bounds()
+                        .unwrap()
+                        .y0
+                        .total_cmp(&b.1.bounds().unwrap().y0)
+                })
+                .unwrap()
+                .0;
+            frame(&ctx, &mut app, vec![action(width, Action::Focus, None)]);
+            for value in ["200", "300"] {
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![
+                        key(egui::Key::A, egui::Modifiers::COMMAND),
+                        egui::Event::Text(value.into()),
+                        key(egui::Key::Tab, egui::Modifiers::NONE),
+                    ],
+                );
+            }
+            assert_eq!(
+                app.rectangle.as_ref().unwrap().dimensions_mm,
+                ["200", "300"]
+            );
+            let before = app.editor.project.clone();
+            let pending = app.draft.as_ref().unwrap().commands(&before);
+            let values = (app.size, app.coordinate);
+            let history = (app.editor.can_undo(), app.editor.can_redo());
+
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(target_button, Action::Click, None)],
+            );
+            assert_eq!(app.editor.project, before, "background {label}");
+            assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+            for target in numeric_targets {
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![
+                        action(
+                            target,
+                            Action::SetValue,
+                            Some(ActionData::NumericValue(0.95)),
+                        ),
+                        action(target, Action::Increment, None),
+                    ],
+                );
+                assert_eq!((app.size, app.coordinate), values);
+                assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+                assert_eq!(app.editor.project, before);
+            }
+            assert_eq!((app.editor.can_undo(), app.editor.can_redo()), history);
+            frame(&ctx, &mut app, vec![action(cancel, Action::Click, None)]);
+            assert!(app.rectangle.is_none());
+            frame(&ctx, &mut app, vec![]);
+            assert_eq!(app.editor.project, before);
+            assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+            assert_eq!((app.size, app.coordinate), values);
+            assert_eq!((app.editor.can_undo(), app.editor.can_redo()), history);
+            assert!(!app.dirty);
+        }
     }
 
     #[test]
