@@ -17,6 +17,7 @@ def check():
     assert data['schema_version'] == 1
     commit = data['source_commit']
     assert re.fullmatch(r'[0-9a-f]{40}', commit)
+    subprocess.run(['git', 'merge-base', '--is-ancestor', commit, 'HEAD'], cwd=ROOT, check=True)
 
     def pinned(path):
         assert not Path(path).is_absolute() and '..' not in Path(path).parts, path
@@ -32,10 +33,35 @@ def check():
         for record in records:
             assert record['id'] not in catalogs, record['id']
             catalogs[record['id']] = (source['catalog'], record)
-    assert len(catalogs) == 650
+    assert len(catalogs) == 755
     assert Counter(catalog for catalog, _ in catalogs.values()) == {
-        'menus': 589, 'components': 61
+        'menus': 589, 'components': 166
     }
+
+    origin = data['expansion_origin']
+    assert origin['catalog_commit'] == commit
+    previous_commit = origin['previous_map_commit']
+    assert re.fullmatch(r'[0-9a-f]{40}', previous_commit)
+    subprocess.run(['git', 'merge-base', '--is-ancestor', previous_commit, commit], cwd=ROOT, check=True)
+    previous_raw = subprocess.check_output(
+        ['git', 'show', f'{previous_commit}:spec/inventory/weftforge-implementation-map.json'], cwd=ROOT
+    )
+    assert hashlib.sha256(previous_raw).hexdigest() == origin['previous_map_sha256']
+    previous = json.loads(previous_raw)
+    previous_entries = {entry['catalog_id']: entry for entry in previous['entries']}
+    assert len(previous_entries) == origin['preserved_catalog_ids'] == 650
+    assert len(catalogs.keys() - previous_entries.keys()) == origin['additional_component_ids'] == 105
+    assert all(catalogs[entry_id][0] == 'components' for entry_id in catalogs.keys() - previous_entries.keys())
+    assert data['work_packets'][:len(previous['work_packets'])] == previous['work_packets']
+    assert data['next_executable_parts'] == previous['next_executable_parts']
+    assert data['status_authority']['path'] == previous['status_authority']['path']
+    assert data['status_authority']['lookup'] == previous['status_authority']['lookup']
+    for contract in data['reviewed_contract_sources']:
+        raw = (ROOT / contract['path']).read_bytes()
+        assert raw == pinned(contract['path'])
+        assert hashlib.sha256(raw).hexdigest() == contract['sha256']
+        assert contract['scope']
+    assert data['source_snapshot_note']
 
     registry_path = data['status_authority']['path']
     registry_raw = pinned(registry_path)
@@ -48,6 +74,11 @@ def check():
 
     groups = {group['id']: group for group in data['groups']}
     assert len(groups) == len(data['groups'])
+    for old_group in previous['groups']:
+        assert old_group['id'] in groups
+        for key, value in old_group.items():
+            current = groups[old_group['id']][key]
+            assert (current[:len(value)] == value if isinstance(value, list) else current == value), (old_group['id'], key)
     packets = {packet['id']: packet for packet in data['work_packets']}
     assert len(packets) == len(data['work_packets']) == len(groups)
     assert {packet['order'] for packet in packets.values()} == set(range(1, len(packets) + 1))
@@ -89,7 +120,9 @@ def check():
     entries = data['entries']
     entry_counts = Counter(entry['catalog_id'] for entry in entries)
     assert set(entry_counts) == set(catalogs)
-    assert len(entries) == 650 and set(entry_counts.values()) == {1}
+    assert len(entries) == 755 and set(entry_counts.values()) == {1}
+    current_entries = {entry['catalog_id']: entry for entry in entries}
+    assert all(current_entries[entry_id] == entry for entry_id, entry in previous_entries.items())
     used_groups = set()
     for entry in entries:
         catalog, original = catalogs[entry['catalog_id']]
@@ -111,7 +144,7 @@ def check():
             assert groups[entry['group_id']]['scope_exclusion'], entry
     assert used_groups == set(groups)
     assert Counter(entry['classification'] for entry in entries) == {
-        'action': 498, 'component': 61, 'container': 86, 'heading': 3, 'excluded': 2
+        'action': 498, 'component': 166, 'container': 86, 'heading': 3, 'excluded': 2
     }
 
     required_checks = {
@@ -181,8 +214,8 @@ def check():
     no_status_copy(data)
     readable = (MAP.with_suffix('.md')).read_text()
     assert all(f'`{packet_id}`' in readable for packet_id in packets)
-    assert commit in readable and '650 unique IDs' in readable
-    print(f'PASS: 650 unique catalog IDs; {len(groups)} reviewed groups/packets; '
+    assert commit in readable and '755 unique IDs' in readable
+    print(f'PASS: 755 unique catalog IDs; preserved 650 entries/packets; {len(groups)} reviewed groups/packets; '
           f'{len(sources)} source landmarks; catalog hashes, feature/source links and acyclic dependencies valid.')
 
 

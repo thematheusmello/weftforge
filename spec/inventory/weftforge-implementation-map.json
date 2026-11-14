@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "purpose": "Source-pinned engineering crosswalk and bounded handoff queue, not a second implementation/verification status registry or a complete product inventory.",
-  "source_commit": "7e59f2a88daeb8084107bda79779b56426060c9f",
+  "source_commit": "9acb265411e80d01152a5345a7119e2ed8bb2194",
   "reference_build": "2026.1.237 (r58920)",
   "inputs": [
     {
@@ -13,22 +13,23 @@
     {
       "catalog": "components",
       "path": "spec/inventory/md-2026.1.237-components.json",
-      "sha256": "909a4627877fbdb5be8c46d163812fc526fc8dc9b3d9100edcf7eb50f8cce20b",
-      "records": 61
+      "sha256": "ca8c6f222757f47cc96daeb2e2244374e9b59d636cd2e5fe122ec22875cf11ac",
+      "records": 166
     }
   ],
   "status_authority": {
     "path": "parity/features.yaml",
     "lookup": "Join groups[].feature_ids to features[].id at the revision being reported. Read implementation_status, reference_observation_status, verification_status and freshness there; no status value is copied here.",
-    "pinned_registry_sha256": "7d72f5eec47ce415f44366cb46b7d8076ec54ea529819aeb3e3bf94c48dfe395"
+    "pinned_registry_sha256": "cb800867209e5df8fa1dbee58d39582a29bf8164f2baa716f920c44d8030f0a7"
   },
   "coverage_semantics": [
-    "650 catalog IDs are entry-path discovery records, not the feature denominator. Counts of groups or packets are ownership counts, not parity percentages.",
-    "Menus record one empty-workspace presence snapshot; components add a few initial/read-only values. Complete reference behaviors, canvas context menus, unlabeled icons, flyouts, ranges, errors and populated states remain unobserved unless separately contracted.",
+    "755 catalog IDs are entry-path discovery records, not the feature denominator. The original 650 entries and packets are preserved; the 105 added property/control observations do not complete behaviors. Counts of groups or packets are ownership counts, not parity percentages.",
+    "Menus record one empty-workspace presence snapshot; components add toolbar/panel/read-only settings and selected original-pattern/constructor/OBJ/Fit observations. Only the reviewed bounded rectangle creation/history/document reopen and unchanged-option OBJ export were executed; other edits, ranges, error/cancel effects, simulation and populated states remain unknown unless separately contracted.",
     "mapping_relation is a source relationship at source_commit: candidate_partial means connected source exists for a bounded related behavior; planned means a mapped capability is missing; ambiguous means its semantics or role cannot yet be assigned decisively. These values are not authoritative feature statuses.",
     "Coherent groups preserve candidate aliases and distinct selection/format/parameter variants. Similar labels do not establish identical behavior; each entry path must be exercised or have an evidenced alias contract.",
     "Heading is provisional for three disabled section-like leaves; keep them visible until nonempty/selected-state evidence resolves the role. Empty submenus remain containers, with unknown dynamic children.",
-    "Only vendor activation/session administration is excluded among these records. Hosted creation, rigging, AI, templates, content acquisition and local equivalents stay in scope; storefront-only exclusion requires evidence and later reviewed scope adjudication."
+    "Only vendor activation/session administration is excluded among these records. Hosted creation, rigging, AI, templates, content acquisition and local equivalents stay in scope; storefront-only exclusion requires evidence and later reviewed scope adjudication.",
+    "Component paths can contain explicit reviewer descriptors for unlabeled or repeated controls; retain exact catalog paths without asserting that every path segment is a printed label. No values from private paths, vendor presets, textures or palettes are reproduced here."
   ],
   "mapping_relation_values": [
     "candidate_partial",
@@ -222,6 +223,26 @@
       "path": "xtask/src/main.rs",
       "anchor": "fn main()",
       "scope": "Integrated verification/report tooling; a passing source check is not reference parity."
+    },
+    "piece_fields": {
+      "path": "crates/weftforge-core/src/document.rs",
+      "anchor": "pub struct Piece {",
+      "scope": "Names, boundary IDs, placement, material and grain exist; no pattern layer, shrinkage, pressure, additional collision/rendering thickness or side/extrusion property state."
+    },
+    "material_fields": {
+      "path": "crates/weftforge-core/src/document.rs",
+      "anchor": "pub struct Material {",
+      "scope": "Physical material-level collision_thickness and directional stiffness exist; these are not the observed per-pattern additional thickness or shrinkage controls."
+    },
+    "step_settings": {
+      "path": "crates/weftforge-sim/src/lib.rs",
+      "anchor": "pub struct StepSettings {",
+      "scope": "Explicit seconds dt, substeps, iterations, gravity and seam-closure speed; no semantic match to CG labels, host CPU-count controls or unprinted reference units is established."
+    },
+    "ui_export": {
+      "path": "apps/weftforge/src/main.rs",
+      "anchor": "fn export(&mut self, svg: bool)",
+      "scope": "Native file destination and current/revision-safe OBJ snapshot export use fixed metres/Y-up; no OBJ option/preset/selection/unit-axis dialog exists at this source pin."
     }
   },
   "fixture_recipes": {
@@ -356,6 +377,14 @@
         "parity/scenarios/PERFORMANCE-001.json"
       ],
       "rule": "Recipe is a needed original fixture, not proof it was executed; newly authored reference files/assets must pass redistribution review."
+    },
+    "selected-pattern-properties": {
+      "setup": "Start with the original 0.20 by 0.30 m unsimulated rectangle and all four boundary curves selected. Change one property only after its unit/commit behavior is reviewed; compare a second separately named piece, a reversed curved seam and an actually simulated layered extension. Retain exact authored values, selection/source revision and independent rest/current/display/export measurements.",
+      "existing_original_seeds": [
+        "spec/features/UI-property-surfaces-20261114.md",
+        "spec/features/PAT-003-runtime-20261114.md"
+      ],
+      "rule": "Recipe is a needed original fixture, not proof property edits or simulation were executed; do not hardcode the recorded fixture name/counts or reproduce private vendor assets."
     }
   },
   "owner_lanes": {
@@ -509,6 +538,19 @@
         "APP-005"
       ],
       "reason": "Native menus are platform-specific evidence. Windows/Linux/Apple Silicon launch, accessibility/high-DPI, package/license/asset review, recovery and offline release evidence remain independent required gates."
+    },
+    {
+      "lead": "Property units, editing and hidden children",
+      "feature_ids": [
+        "REF-002",
+        "SIM-002",
+        "SIM-003",
+        "SIM-004",
+        "MAT-003",
+        "FILE-003",
+        "PAT-003"
+      ],
+      "reason": "Resolve unprinted global solver/grain/pressure units, collapsed Ground children, selected/mixed-pattern edits, constructor link/replication/Cancel/limits, OBJ alternate options/paths/presets and Pressure/any Strain property pages. Read-only displayed values, AX-settable cells and one unchanged-option export do not establish accepted ranges, algorithms, material calibration or complete contracts."
     }
   ],
   "packet_rules": {
@@ -861,6 +903,19 @@
         "verification"
       ],
       "decisive_acceptance": "Run one platform lifecycle/package scenario on the real built executable, including native hide/quit/reopen, high-DPI keyboard access, save/recovery and offline launch. Record tested build/hash/platform, licenses and unsupported surfaces; do not infer other platforms from source tests."
+    },
+    "WP-31": {
+      "title": "Selected pattern property controls",
+      "owner_lanes": [
+        "authoring",
+        "geometry",
+        "solver",
+        "files",
+        "desktop",
+        "automation",
+        "verification"
+      ],
+      "decisive_acceptance": "Implement one reviewed selected-pattern property only. On an original 0.20 by 0.30 m rectangle plus a curved, simulated or layered extension as relevant, compare exact authored values/units and independently measured physical or display/output effects. Verify mixed selection, invalid input, cancel, one undo/redo unit, source edit/remesh/invalidation and editable save/reopen. Keep physical, rest and appearance-only fields distinct; never infer unknown reference units or copy fixture counts/defaults."
     }
   },
   "next_executable_parts": [
@@ -2683,6 +2738,94 @@
         "PACK-application-quit",
         "PACK-workspace-panels"
       ]
+    },
+    {
+      "id": "PACK-pattern-name-property",
+      "order": 185,
+      "acceptance_profile": "WP-31",
+      "group_id": "pattern-name-property",
+      "depends_on": [
+        "PACK-point-pattern-edit"
+      ]
+    },
+    {
+      "id": "PACK-selected-line-lengths",
+      "order": 186,
+      "acceptance_profile": "WP-31",
+      "group_id": "selected-line-lengths",
+      "depends_on": [
+        "PACK-point-pattern-edit",
+        "PACK-simulate"
+      ]
+    },
+    {
+      "id": "PACK-edge-elastic",
+      "order": 187,
+      "acceptance_profile": "WP-31",
+      "group_id": "edge-elastic",
+      "depends_on": [
+        "PACK-segment-sewing",
+        "PACK-internal-primitives"
+      ]
+    },
+    {
+      "id": "PACK-schematic-line-properties",
+      "order": 188,
+      "acceptance_profile": "WP-31",
+      "group_id": "schematic-line-properties",
+      "depends_on": [
+        "PACK-point-pattern-edit",
+        "PACK-schematic-render"
+      ]
+    },
+    {
+      "id": "PACK-pattern-layer-property",
+      "order": 189,
+      "acceptance_profile": "WP-31",
+      "group_id": "pattern-layer-property",
+      "depends_on": [
+        "PACK-superimpose-layer-clone",
+        "PACK-simulate"
+      ]
+    },
+    {
+      "id": "PACK-directional-shrinkage",
+      "order": 190,
+      "acceptance_profile": "WP-31",
+      "group_id": "directional-shrinkage",
+      "depends_on": [
+        "PACK-fabric-assignment",
+        "PACK-grain-alignment"
+      ]
+    },
+    {
+      "id": "PACK-pattern-collision-thickness",
+      "order": 191,
+      "acceptance_profile": "WP-31",
+      "group_id": "pattern-collision-thickness",
+      "depends_on": [
+        "PACK-simulate",
+        "PACK-fabric-assignment"
+      ]
+    },
+    {
+      "id": "PACK-pattern-pressure",
+      "order": 192,
+      "acceptance_profile": "WP-31",
+      "group_id": "pattern-pressure",
+      "depends_on": [
+        "PACK-simulate"
+      ]
+    },
+    {
+      "id": "PACK-pattern-render-geometry",
+      "order": 193,
+      "acceptance_profile": "WP-31",
+      "group_id": "pattern-render-geometry",
+      "depends_on": [
+        "PACK-retopology",
+        "PACK-obj-interchange"
+      ]
     }
   ],
   "groups": [
@@ -3136,20 +3279,27 @@
         "ui_toolbar",
         "cli",
         "mcp",
-        "workflow_tests"
+        "workflow_tests",
+        "ui_export"
       ],
       "shared_commands": [],
       "candidate_behavior": "Only triangle OBJ export exists; native UI can export the accepted simulated snapshot, while MCP exports a rest mesh.",
       "missing_functionality": [
-        "OBJ parsing; replacement versus add/to-garment construction semantics; selected scope, material libraries, welding/thickness options and independent consumer checks."
+        "OBJ parsing; replacement versus add/to-garment construction semantics; selected scope, material libraries, welding/thickness options and independent consumer checks.",
+        "The 29 observed export controls add preset/configuration, pattern/avatar/graphic-trim scope, grouping, welding/merge/turned-seam, thickness, unified UV, hidden/internal geometry, units/percent/axis inversions, texture destinations/map processing, XML metadata and reset/OK/Cancel. The current writer has none of these option controls and uses fixed metres/Y-up.",
+        "The executed route and visible title are Export OBJ despite the AX title Import OBJ. Only unchanged options and independently measured original dimensions/counts are established; dropdown contents, selected disclosures and alternate effects remain untested."
       ],
       "runtime_questions": [
-        "For each direction/scope, what do units, axes, normals, UVs, groups, materials, welding and thickness mean; is OBJ to Garment editable construction or a mesh-only object?"
+        "For each direction/scope, what do units, axes, normals, UVs, groups, materials, welding and thickness mean; is OBJ to Garment editable construction or a mesh-only object?",
+        "For one original fixture and one changed option at a time, what exact selection, object count/grouping, seam/proximity welding, turned-seam and Thin/Thick geometry changes occur, with explicit loss reports and independent consumers?",
+        "How do declared units, percent scale and each axis/inversion compose without fitting exported bounds; what preset/reset/cancel/overwrite behavior and hidden/internal/trim/avatar inclusion apply?",
+        "Which original assets and paths are packaged by absolute versus ZIP texture destinations, combined/excluded/extracted maps and XML metadata, and how do failure/cancel preserve old outputs without exposing private paths or vendor resources?"
       ],
       "fixture_ids": [
         "units-mesh",
         "rigged-avatar",
-        "motion"
+        "motion",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-obj-interchange"
     },
@@ -3938,14 +4088,17 @@
       "shared_commands": [],
       "candidate_behavior": "No source-backed implementation of this behavior was found at the pinned commit.",
       "missing_functionality": [
-        "A reviewed definition of solidify, stored rest/shape constraints and interaction with edits and collision."
+        "A reviewed definition of solidify, stored rest/shape constraints and interaction with edits and collision.",
+        "A selected-pattern Solidify checkbox is present but was not toggled; its alias relationship with the context action remains untested."
       ],
       "runtime_questions": [
-        "Does solidify preserve draped shape, rigidify, add thickness or change another property; what data/physics survive resets?"
+        "Does solidify preserve draped shape, rigidify, add thickness or change another property; what data/physics survive resets?",
+        "Do the selected-pattern checkbox and context action share one state, and which rest/current shape, history and persistence data change on both transitions?"
       ],
       "fixture_ids": [
         "material-panels",
-        "layered-panels"
+        "layered-panels",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-solidify"
     },
@@ -3963,14 +4116,17 @@
       "shared_commands": [],
       "candidate_behavior": "Generated rest meshes are triangles with authored correspondence; no user-authored quad conversion or topology choice exists.",
       "missing_functionality": [
-        "Conversion rules, editable/output topology distinction, remapping of UVs/seams/materials and conversion error handling."
+        "Conversion rules, editable/output topology distinction, remapping of UVs/seams/materials and conversion error handling.",
+        "The selected-pattern Mesh Type selector displays Triangle for this original fixture; alternative values and equivalence to context triangulate/quadrangulate actions remain unobserved."
       ],
       "runtime_questions": [
-        "Does conversion alter rest, simulation or only output mesh; what boundaries, quad metrics and relationships are preserved?"
+        "Does conversion alter rest, simulation or only output mesh; what boundaries, quad metrics and relationships are preserved?",
+        "Which Mesh Type options are actually offered for different patterns and what editable/rest/simulation/output mesh changes occur compared with the context conversion actions?"
       ],
       "fixture_ids": [
         "unequal-curves",
-        "units-mesh"
+        "units-mesh",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-mesh-topology-conversion"
     },
@@ -4687,13 +4843,16 @@
       ],
       "candidate_behavior": "Typed fabric assignment/add/update and piece-level physical materials exist; GUI edits one shared fabric and lacks a full browser/preset workflow.",
       "missing_functionality": [
-        "Reference fabric browser/dialog/region assignment, reusable original presets and explicit approximate/calibrated labeling."
+        "Reference fabric browser/dialog/region assignment, reusable original presets and explicit approximate/calibrated labeling.",
+        "The selected-pattern Fabric selector is observed without exposing proprietary preset contents; its dropdown, reassignment, copy/shared ownership and undo effects remain untested."
       ],
       "runtime_questions": [
-        "What does Basic Fabric reset, are assigned objects copied or shared and how do material/appearance/grain changes affect other pieces and cache invalidation?"
+        "What does Basic Fabric reset, are assigned objects copied or shared and how do material/appearance/grain changes affect other pieces and cache invalidation?",
+        "What local fabric choices and child controls appear for one versus mixed selections, and does reassignment share, clone or reset physical/appearance/grain properties?"
       ],
       "fixture_ids": [
-        "material-panels"
+        "material-panels",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-fabric-assignment"
     },
@@ -4766,21 +4925,25 @@
         "ui_properties",
         "ui_pattern",
         "adapter",
-        "grain_tests"
+        "grain_tests",
+        "piece_fields"
       ],
       "shared_commands": [
         "SetGrain"
       ],
       "candidate_behavior": "Per-piece grain in radians reaches orthotropic CPU material response and native selected-piece display; no named alignment actions exist.",
       "missing_functionality": [
-        "Observed reference axis/parallel semantics, multi-selection, linked updates and display toggle."
+        "Observed reference axis/parallel semantics, multi-selection, linked updates and display toggle.",
+        "The selected-pattern Grain Direction field and Reset Grain Direction button are indexed. Their reference angle unit, wrap range, reset target and edit semantics are unknown; the current SetGrain radians convention is only a source candidate."
       ],
       "runtime_questions": [
-        "Which authored, world or screen axes define each action and display; how do mirrored/rotated pieces and curve targets determine grain?"
+        "Which authored, world or screen axes define each action and display; how do mirrored/rotated pieces and curve targets determine grain?",
+        "Which unit/sign/wrap and multi-selection aggregation apply to Grain Direction, and does Reset Grain Direction use a pattern axis, fabric default or another baseline without altering visual texture angle?"
       ],
       "fixture_ids": [
         "material-panels",
-        "unequal-curves"
+        "unequal-curves",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-grain-alignment"
     },
@@ -4994,21 +5157,25 @@
         "mesh",
         "ui_properties",
         "ui_jobs",
-        "workflow_tests"
+        "workflow_tests",
+        "piece_fields"
       ],
       "shared_commands": [
         "SetResolution"
       ],
       "candidate_behavior": "One document-wide edge-length resolution rebuilds conforming rest mesh and invalidates simulation; no high/low presets or per-piece resolution/subdivision mode exists.",
       "missing_functionality": [
-        "Runtime preset values/scope, subdivision display distinction, validation bounds and preserved rest/seam correspondence."
+        "Runtime preset values/scope, subdivision display distinction, validation bounds and preserved rest/seam correspondence.",
+        "Selected-pattern Particle Distance is explicitly measured in mm, while current SetResolution is document-wide metres. No per-pattern field/edit/remesh semantics are implemented; this control must not be conflated with Side Geometry Resolution."
       ],
       "runtime_questions": [
-        "Are these remesh density, display subdivision or saved quality profiles; which pieces/caches change and what does Show Subdivisions display?"
+        "Are these remesh density, display subdivision or saved quality profiles; which pieces/caches change and what does Show Subdivisions display?",
+        "Does Particle Distance apply per selected pattern or a larger scope, what metric/accepted bounds and mesh changes follow a controlled edit, and how do seam correspondence, undo/reopen and current drape respond?"
       ],
       "fixture_ids": [
         "unequal-curves",
-        "layered-panels"
+        "layered-panels",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-resolution"
     },
@@ -5469,15 +5636,19 @@
       ],
       "candidate_behavior": "AddRectangle preserves exact authored dimensions through native drag/numeric inspector, CLI and MCP; a reference-style creation dialog is not established.",
       "missing_functionality": [
-        "Reviewed rectangle click/drag/numeric dialog, anchor/axis/default/range/cancel and single-transaction interaction contract."
+        "Reviewed rectangle click/drag/numeric dialog, anchor/axis/default/range/cancel and single-transaction interaction contract.",
+        "The eight constructor controls are indexed: width, height, link, replication interval/angle/count and OK/Cancel. The reviewed run covers keyboard/Tab entry and one OK for one unlinked shape; link, replication, constructor Cancel, invalid input and drag variants remain open.",
+        "This source snapshot precedes the separate numeric-dialog/widget stable-ID implementation; the existing numeric inspector AddRectangle route is not that reference constructor."
       ],
       "runtime_questions": [
-        "Which click/drag/right-click/numeric entry sequence creates a rectangle; what anchors, units/defaults/ranges, cancel and undo behavior apply?"
+        "Which click/drag/right-click/numeric entry sequence creates a rectangle; what anchors, units/defaults/ranges, cancel and undo behavior apply?",
+        "What initial versus pre-OK values, link toggles, replication count/interval/angle, focus/keyboard commit and invalid-input behavior occur on further original runs; is each accepted repeated-shape construction one transaction?"
       ],
       "fixture_ids": [
         "empty",
         "print-panel",
-        "keyboard"
+        "keyboard",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-rectangle"
     },
@@ -6077,14 +6248,17 @@
       "shared_commands": [],
       "candidate_behavior": "No source-backed implementation of this behavior was found at the pinned commit.",
       "missing_functionality": [
-        "Authored tape path/width/material/stiffness and explicit physical/visual effects with edit/persistence rules."
+        "Authored tape path/width/material/stiffness and explicit physical/visual effects with edit/persistence rules.",
+        "The selected-line Seam Taping checkbox is observed but unedited; its relationship to the toolbar/menu tool and any child controls is unresolved."
       ],
       "runtime_questions": [
-        "Which curves/regions can be taped, what width/material parameters matter physically and how is tape removed or updated after a seam edit?"
+        "Which curves/regions can be taped, what width/material parameters matter physically and how is tape removed or updated after a seam edit?",
+        "Does the selected-line checkbox toggle the same authored tape object as the menu/tool, and which controls appear after enabling it on one or several selected boundaries?"
       ],
       "fixture_ids": [
         "attachments",
-        "unequal-curves"
+        "unequal-curves",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-seam-taping"
     },
@@ -6978,14 +7152,17 @@
       "shared_commands": [],
       "candidate_behavior": "Native piece/seam/vertex counts, diagnostics/time/job/dirty labels and CLI solver timings exist; these observed overlays and viewport/memory timings do not.",
       "missing_functionality": [
-        "Precisely labeled authored/rest/current/display/performance counters, true physical viewport size and correct autosave schedule feedback."
+        "Precisely labeled authored/rest/current/display/performance counters, true physical viewport size and correct autosave schedule feedback.",
+        "Selected-pattern Face Count and Vertex Count are fixture-specific readouts corroborated by one OBJ, not universal defaults or required matching tessellation."
       ],
       "runtime_questions": [
-        "Which counters/time/memory/mesh states are measured, when do overlays update and what units/pauses/failed saves affect the autosave countdown?"
+        "Which counters/time/memory/mesh states are measured, when do overlays update and what units/pauses/failed saves affect the autosave countdown?",
+        "Which selected/rest/current/subdivision/output mesh does each property count, how are several selected patterns aggregated and when do counts refresh after Particle Distance, topology or rendering-thickness changes?"
       ],
       "fixture_ids": [
         "large-garment",
-        "dirty-project"
+        "dirty-project",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-workspace-statistics"
     },
@@ -7113,14 +7290,19 @@
       "shared_commands": [],
       "candidate_behavior": "Aggregate max stretch/seam/contact errors exist; no per-element stress/strain/pressure fields or fit-map shader/legend exists.",
       "missing_functionality": [
-        "Predeclared dimensional field definitions, measured values/units, per-element data, legends/ranges and no-data handling."
+        "Predeclared dimensional field definitions, measured values/units, per-element data, legends/ranges and no-data handling.",
+        "The 13 Fit controls cover the displayed Stress page and visible unopened Pressure tab, color count, kPa range display, gradation/mesh and Weft/Warp/Shear toggles plus Reset/Close. No stress/pressure field was computed, no table edit was executed and no palette or numerical threshold is adopted.",
+        "The attempted Strain selection did not leave Stress; a Strain tab remains unobserved while the separately inventoried Strain Map menu entry remains in scope."
       ],
       "runtime_questions": [
-        "Which tensor/scalar, units, rest/current basis, averaging, thresholds and legend ranges define each map, and which properties alter the computation versus colors?"
+        "Which tensor/scalar, units, rest/current basis, averaging, thresholds and legend ranges define each map, and which properties alter the computation versus colors?",
+        "Which Stress range units/valid edit limits, color-count/gradation/surface and directional toggles change displayed data versus computation; what reset/persistence and no-data behavior apply?",
+        "What actually appears after opening Pressure, and under what state can any Strain properties be observed; does closing or cancelling retain edits without implying physics calibration?"
       ],
       "fixture_ids": [
         "material-panels",
-        "layered-panels"
+        "layered-panels",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-fit-maps"
     },
@@ -7305,20 +7487,29 @@
         "solver",
         "ui_properties",
         "ui_toolbar",
-        "ui_jobs"
+        "ui_jobs",
+        "step_settings",
+        "adapter",
+        "contact"
       ],
       "shared_commands": [],
       "candidate_behavior": "Native iterations/substeps and explicit displayed batch settings exist; solver uses CPU f64 with contact always active.",
       "missing_functionality": [
-        "Full observed property inventory, units/ranges/presets, backend selection, invalidation rules and validated settings shared with CLI/MCP."
+        "Full observed property inventory, units/ranges/presets, backend selection, invalidation rules and validated settings shared with CLI/MCP.",
+        "The 24 newly indexed controls expose global presets, timestep/frame cadence, CG stopping fields, collision modes, damping/gravity, pinching/nonlinear/ripping choices and CPU controls; current StepSettings and native iteration/substep fields implement only a different bounded control subset.",
+        "Ground is collapsed and its children remain unobserved. Units not printed by these reference controls remain unknown; the host-disabled CPU count must not become a fixed default."
       ],
       "runtime_questions": [
-        "Which controls govern timestep/quality/contact/gravity/material/backend, what ranges/defaults and reset rules apply, and do changing values rebuild or continue current cloth?"
+        "Which controls govern timestep/quality/contact/gravity/material/backend, what ranges/defaults and reset rules apply, and do changing values rebuild or continue current cloth?",
+        "What units, edit/commit/cancel/history/persistence and accepted ranges apply to each observed global numeric field, and how do Time Step and Simulations per Frame relate to physical time versus presentation?",
+        "What outcomes distinguish each CG stopping, nonlinear, pinching, ripping, avatar/self/proximity/intersection/layer detection option without inferring an algorithm from a label; what settings are unavailable or incompatible together?",
+        "What fields appear when Ground is expanded and Automatic Maximum CPU is disabled, how is CPU availability determined, and what is preserved on cancelled or invalid edits?"
       ],
       "fixture_ids": [
         "material-panels",
         "layered-panels",
-        "large-garment"
+        "large-garment",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-simulation-properties"
     },
@@ -7392,14 +7583,17 @@
       "shared_commands": [],
       "candidate_behavior": "Rest UVs equal physical pattern coordinates; no editable UV layer, atlas packing or UV editor exists.",
       "missing_functionality": [
-        "Distinct editable/output UV representation, selection/transform/packing tools and UV-safe export without modifying authoring scale."
+        "Distinct editable/output UV representation, selection/transform/packing tools and UV-safe export without modifying authoring scale.",
+        "Back Face and Side Face UV Expansion checkboxes are observed but unedited; generated physical pattern UVs do not implement separate expanded output faces."
       ],
       "runtime_questions": [
-        "Are UVs linked to patterns or independent output islands; what transforms/packing/units and remesh/material synchronization rules apply?"
+        "Are UVs linked to patterns or independent output islands; what transforms/packing/units and remesh/material synchronization rules apply?",
+        "How do the two UV Expansion choices change front/back/side islands, offsets, scale, overlap and packing under Thin/Thick export, and what survives remesh or source edits?"
       ],
       "fixture_ids": [
         "texture-panel",
-        "unequal-curves"
+        "unequal-curves",
+        "selected-pattern-properties"
       ],
       "packet_id": "PACK-uv-editor"
     },
@@ -7755,6 +7949,288 @@
         "keyboard"
       ],
       "packet_id": "PACK-catalog-containers"
+    },
+    {
+      "id": "pattern-name-property",
+      "title": "Selected pattern name property",
+      "feature_ids": [
+        "PAT-007",
+        "PAT-001",
+        "UI-004",
+        "FILE-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "piece_fields",
+        "commands",
+        "ui_properties"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Piece::name is authored and retained by native IO; existing names can be set during AddPolygon/AddRectangle, but no shared rename command or selected-name editor exists.",
+      "missing_functionality": [
+        "Validated selected-pattern rename, mixed-selection behavior, command/adapter schema, one-gesture history and persistent display synchronization."
+      ],
+      "runtime_questions": [
+        "Is Name editable for one or several patterns, what length/empty/duplicate/unicode behavior and commit/cancel rules apply, and are generated naming sequences merely session values?"
+      ],
+      "fixture_ids": [
+        "three-pieces",
+        "keyboard",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-pattern-name-property"
+    },
+    {
+      "id": "selected-line-lengths",
+      "title": "Selected-line 2D and 3D length properties",
+      "feature_ids": [
+        "PAT-007",
+        "FIT-003",
+        "UI-002"
+      ],
+      "mapping_relation": "candidate_partial",
+      "source_refs": [
+        "seam_lengths",
+        "mesh",
+        "ui_properties",
+        "ui_garment"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Authored seam intervals have computed lengths and current cloth positions are distinct from rest mesh, but there is no selected-line aggregate 2D/3D property display or edit contract.",
+      "missing_functionality": [
+        "Selection-aware curve/chain aggregation and current-versus-rest measured length with explicit source revision, units/precision and no stale values."
+      ],
+      "runtime_questions": [
+        "The captured whole unsimulated boundary totals 1000.0 mm; how do partial/multiple/curved selections aggregate, is either field editable, and how does the 3D value update after deformation/reset or stale mesh rejection?"
+      ],
+      "fixture_ids": [
+        "unequal-curves",
+        "layered-panels",
+        "print-panel",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-selected-line-lengths"
+    },
+    {
+      "id": "edge-elastic",
+      "title": "Selected-line elastic construction",
+      "feature_ids": [
+        "SEW-005",
+        "SIM-002",
+        "PAT-007",
+        "FILE-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "piece_fields",
+        "commands",
+        "adapter",
+        "solver_material"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Directional fabric stiffness exists, but no authored line-elastic relation, setting or adapter behavior exists; stiffness must not substitute for elastic construction.",
+      "missing_functionality": [
+        "Stable authored interval/chain elastic relation with observed rest-ratio/strength parameters, separate visual/physical effects and remesh/history/persistence."
+      ],
+      "runtime_questions": [
+        "Which child fields appear after enabling Elastic, what units/rest-length or strength definitions and partial-line scope apply, and how do source resize, sewing, remesh and disable affect physical targets?"
+      ],
+      "fixture_ids": [
+        "unequal-curves",
+        "material-panels",
+        "attachments",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-edge-elastic"
+    },
+    {
+      "id": "schematic-line-properties",
+      "title": "Selected schematic-line visibility, face and Z-offset",
+      "feature_ids": [
+        "MAT-003",
+        "PAT-007",
+        "FILE-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "piece_fields",
+        "ui_pattern",
+        "ui_garment"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Boundary lines can be displayed, but no persistent selected-line schematic visibility, face selector or Z-offset property exists.",
+      "missing_functionality": [
+        "Per-authored-line schematic presentation state distinct from the whole-view Schematic Render action; observed face/offset semantics, source following and output behavior."
+      ],
+      "runtime_questions": [
+        "Do Show Schematic Line, Face and mm Z-Offset affect 2D, current 3D, schematic capture or exported geometry, how is the face normal chosen, and do toggles alter only presentation?"
+      ],
+      "fixture_ids": [
+        "unequal-curves",
+        "camera-scene",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-schematic-line-properties"
+    },
+    {
+      "id": "pattern-layer-property",
+      "title": "Selected pattern physical layer property",
+      "feature_ids": [
+        "FIT-002",
+        "SIM-004",
+        "SIM-005",
+        "FILE-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "piece_fields",
+        "adapter",
+        "contact"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "CPU self/layered contact tests exist, but authored Piece has no layer value or selected layer control; display stacking order is a separate missing behavior.",
+      "missing_functionality": [
+        "Observed physical layer value and conflict/order semantics through typed authoring, collision preparation, UI feedback, remesh and saved construction."
+      ],
+      "runtime_questions": [
+        "What accepted values, mixed-selection editing and pairwise contact priority does Layer define; how does it differ from display order and interact with layer-based collision toggles, layer clones and disabled patterns?"
+      ],
+      "fixture_ids": [
+        "layered-panels",
+        "three-pieces",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-pattern-layer-property"
+    },
+    {
+      "id": "directional-shrinkage",
+      "title": "Selected pattern warp/weft simulation shrinkage",
+      "feature_ids": [
+        "SIM-002",
+        "PAT-008",
+        "FIT-003",
+        "FILE-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "piece_fields",
+        "material_fields",
+        "adapter"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Per-piece grain and orthotropic stiffness reach CPU materials, but there is no directional shrinkage state; stiffness and grain edits do not implement the observed percent controls.",
+      "missing_functionality": [
+        "Separate warp/weft target shrinkage in authored state and rest/simulation preparation, preserved under grain/source edits with explicit invalidation and saved editable values."
+      ],
+      "runtime_questions": [
+        "What baseline and material axes define each percent value, is it contraction/expansion or another convention, and how do units/ranges, grain rotation, shared fabrics, source resizing, remesh and reset compose?"
+      ],
+      "fixture_ids": [
+        "material-panels",
+        "unequal-curves",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-directional-shrinkage"
+    },
+    {
+      "id": "pattern-collision-thickness",
+      "title": "Selected pattern additional collision thickness",
+      "feature_ids": [
+        "SIM-002",
+        "SIM-003",
+        "SIM-004",
+        "FIT-003",
+        "FILE-001"
+      ],
+      "mapping_relation": "candidate_partial",
+      "source_refs": [
+        "piece_fields",
+        "material_fields",
+        "adapter",
+        "contact"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Material::collision_thickness is a physical SI input to the CPU solver; no per-pattern additional-thickness field or composition with a material/base thickness exists.",
+      "missing_functionality": [
+        "Reviewed per-pattern additional mm thickness semantics and composition, bounded contact preparation, clear physical/display distinction and source-revision invalidation."
+      ],
+      "runtime_questions": [
+        "Is the additional value additive, per side or pairwise, how is it combined with material/avatar thickness and negative/mixed values, and what measured contact clearance and history/persistence behavior result?"
+      ],
+      "fixture_ids": [
+        "layered-panels",
+        "material-panels",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-pattern-collision-thickness"
+    },
+    {
+      "id": "pattern-pressure",
+      "title": "Selected pattern pressure property",
+      "feature_ids": [
+        "SIM-002",
+        "SIM-005",
+        "FIT-003",
+        "FILE-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "piece_fields",
+        "step_settings",
+        "adapter",
+        "solver"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "Current StepSettings provides gravity and seam closure but no authored pressure or surface-pressure force; the reference pressure unit and scale are not printed.",
+      "missing_functionality": [
+        "A reviewed dimensioned pressure convention and supported surface/closure behavior, validated authored property and numerical force integration with remesh consistency."
+      ],
+      "runtime_questions": [
+        "What unit/scale/sign and open/closed-surface rule does Pressure use, which area/normal and orientation define forces, and how do accepted ranges, remesh, layers, source edits and reset affect it?"
+      ],
+      "fixture_ids": [
+        "material-panels",
+        "layered-panels",
+        "motion",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-pattern-pressure"
+    },
+    {
+      "id": "pattern-render-geometry",
+      "title": "Selected rendering thickness, extrusion and side geometry",
+      "feature_ids": [
+        "ANIM-003",
+        "MAT-003",
+        "MAT-002",
+        "FILE-003",
+        "FILE-001"
+      ],
+      "mapping_relation": "planned",
+      "source_refs": [
+        "piece_fields",
+        "mesh",
+        "obj",
+        "ui_export",
+        "ui_garment"
+      ],
+      "shared_commands": [],
+      "candidate_behavior": "The current display/export surfaces are unthickened triangles with generated normals and physical pattern UVs; no rendering extrusion or side-geometry property state exists.",
+      "missing_functionality": [
+        "Distinct additional rendering thickness in mm, front/back/seam face and extrusion direction, side curvature/resolution/double-sided controls with source-linked output mesh and UV/material preservation.",
+        "Side Geometry Resolution must remain separate from physical Particle Distance and collision thickness; no alternative option effect or accepted range is established."
+      ],
+      "runtime_questions": [
+        "Which geometry is generated by each face/extrusion/side control, what is the signed offset/reference surface and allowed range, and does it affect display, Thick export, UV expansion or any simulation geometry?",
+        "How do side curvature percent, Side Geometry Resolution with unknown unit/scale and double-sided choices follow curved seams, normals, source edits and remesh without changing editable pattern dimensions or physical collision thickness?"
+      ],
+      "fixture_ids": [
+        "unequal-curves",
+        "texture-panel",
+        "units-mesh",
+        "selected-pattern-properties"
+      ],
+      "packet_id": "PACK-pattern-render-geometry"
     }
   ],
   "entries": [
@@ -14871,6 +15347,1345 @@
       ],
       "classification": "container",
       "group_id": "catalog-containers"
+    },
+    {
+      "catalog_id": "MDUI-1517775E851A",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Preset"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-797B8ECABD23",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Time Step"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-DC8CABE76501",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Simulations per Frame"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-FEED087F46A9",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "CG Finish Condition"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-9B80640D5182",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "CG Iteration Count"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-D131B4F777E4",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "CG Residual"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-65B8F7B7B3A6",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Self Collision Iteration Count"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-3B1E54F04484",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Air Damping"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-E49A03EC6218",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Gravity"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-861665CC183A",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Pinching Simulation Override"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-15C852FC388D",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Automatic Maximum CPU"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-BED5587768BD",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Nonlinear Simulation"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-237E7B81A176",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Ripping Mode"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-3059725EAFE4",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Automatic Maximum CPU",
+        "Number of CPU in Use"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-560F0728EC19",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Ground"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-91EA397D5812",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Avatar-Cloth Collision Detection",
+        "Triangle-Vertex"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-1F66D9880E75",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Avatar-Cloth Collision Detection",
+        "Edge-Edge"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-363A58F1D69E",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Self-Collision Detection",
+        "Triangle-Vertex"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-A41187465746",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Self-Collision Detection",
+        "Edge-Edge"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-9CF3CB9B3F9D",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Self-Collision Detection",
+        "Avoidance Stiffness"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-06E2A2FFE755",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Proximity Detection",
+        "Vertex-Triangle"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-D80631D6D385",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Proximity Detection",
+        "Edge-Edge"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-C31875D07CC8",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Intersection Resolution"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-387D1EFEB4FC",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Simulation Properties",
+        "Layer-Based Collision Detection"
+      ],
+      "classification": "component",
+      "group_id": "simulation-properties"
+    },
+    {
+      "catalog_id": "MDUI-7D099707C5CE",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Information",
+        "Name"
+      ],
+      "classification": "component",
+      "group_id": "pattern-name-property"
+    },
+    {
+      "catalog_id": "MDUI-3D9D527E78D1",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "2D Line Length"
+      ],
+      "classification": "component",
+      "group_id": "selected-line-lengths"
+    },
+    {
+      "catalog_id": "MDUI-F854FF0A715B",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "3D Line Length"
+      ],
+      "classification": "component",
+      "group_id": "selected-line-lengths"
+    },
+    {
+      "catalog_id": "MDUI-A115BC5D090F",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Elastic"
+      ],
+      "classification": "component",
+      "group_id": "edge-elastic"
+    },
+    {
+      "catalog_id": "MDUI-14EB8EB38A5F",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Seam Taping"
+      ],
+      "classification": "component",
+      "group_id": "seam-taping"
+    },
+    {
+      "catalog_id": "MDUI-4BB9948F5144",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Show Schematic Line",
+        "Z-Offset"
+      ],
+      "classification": "component",
+      "group_id": "schematic-line-properties"
+    },
+    {
+      "catalog_id": "MDUI-A21B69147E8D",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Show Schematic Line",
+        "Face"
+      ],
+      "classification": "component",
+      "group_id": "schematic-line-properties"
+    },
+    {
+      "catalog_id": "MDUI-199261B9D0E0",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Selected Line",
+        "Show Schematic Line"
+      ],
+      "classification": "component",
+      "group_id": "schematic-line-properties"
+    },
+    {
+      "catalog_id": "MDUI-3609D7C4BCB9",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Fabric",
+        "Grain Direction"
+      ],
+      "classification": "component",
+      "group_id": "grain-alignment"
+    },
+    {
+      "catalog_id": "MDUI-8BABF05572BC",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Fabric",
+        "Reset Grain Direction"
+      ],
+      "classification": "component",
+      "group_id": "grain-alignment"
+    },
+    {
+      "catalog_id": "MDUI-33470F537367",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Solidify"
+      ],
+      "classification": "component",
+      "group_id": "solidify"
+    },
+    {
+      "catalog_id": "MDUI-BC7D0F0BAE16",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Particle Distance"
+      ],
+      "classification": "component",
+      "group_id": "resolution"
+    },
+    {
+      "catalog_id": "MDUI-60BDAF345C9F",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Layer"
+      ],
+      "classification": "component",
+      "group_id": "pattern-layer-property"
+    },
+    {
+      "catalog_id": "MDUI-58C1B530E161",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Simulation Shrinkage Weft"
+      ],
+      "classification": "component",
+      "group_id": "directional-shrinkage"
+    },
+    {
+      "catalog_id": "MDUI-BDCBD68F08AF",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Simulation Shrinkage Warp"
+      ],
+      "classification": "component",
+      "group_id": "directional-shrinkage"
+    },
+    {
+      "catalog_id": "MDUI-DAB3E91202D4",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Add'l Thickness - Collision"
+      ],
+      "classification": "component",
+      "group_id": "pattern-collision-thickness"
+    },
+    {
+      "catalog_id": "MDUI-DD47D0767CAF",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Simulation Properties",
+        "Pressure"
+      ],
+      "classification": "component",
+      "group_id": "pattern-pressure"
+    },
+    {
+      "catalog_id": "MDUI-D68ACC6F5C21",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Add'l Thickness - Rendering"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-7D41AB516989",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Extrusion Direction",
+        "Front Face"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-4C31FF8BCFEB",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Extrusion Direction",
+        "Back Face"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-CE0C7A4C6DBA",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Extrusion Direction",
+        "Seam Face"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-FA5BC72FD95F",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Extrusion Direction"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-17B7A9B1FCF0",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Side Geometry",
+        "Curvature"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-9A85D7B3BD83",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Side Geometry",
+        "Resolution"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-159DFF7B708B",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Side Geometry",
+        "Double Sided"
+      ],
+      "classification": "component",
+      "group_id": "pattern-render-geometry"
+    },
+    {
+      "catalog_id": "MDUI-4E54DB2B5562",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "UV Expansion",
+        "Back Face"
+      ],
+      "classification": "component",
+      "group_id": "uv-editor"
+    },
+    {
+      "catalog_id": "MDUI-267868BE6B67",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "UV Expansion",
+        "Side Face"
+      ],
+      "classification": "component",
+      "group_id": "uv-editor"
+    },
+    {
+      "catalog_id": "MDUI-BC4081D0D0C2",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Mesh Type"
+      ],
+      "classification": "component",
+      "group_id": "mesh-topology-conversion"
+    },
+    {
+      "catalog_id": "MDUI-B7470C7A544B",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Face Count"
+      ],
+      "classification": "component",
+      "group_id": "workspace-statistics"
+    },
+    {
+      "catalog_id": "MDUI-3703D73BD365",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Geometry",
+        "Vertex Count"
+      ],
+      "classification": "component",
+      "group_id": "workspace-statistics"
+    },
+    {
+      "catalog_id": "MDUI-6D560C91F392",
+      "catalog": "components",
+      "path": [
+        "Property Editor",
+        "Pattern",
+        "Fabric",
+        "Fabric"
+      ],
+      "classification": "component",
+      "group_id": "fabric-assignment"
+    },
+    {
+      "catalog_id": "MDUI-34832A6613FD",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "Size",
+        "Width"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-96780FC904A9",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "Size",
+        "Height"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-2D23FD2248B8",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "Size",
+        "Dimension link"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-B4A7420831F3",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "Replicate",
+        "Interval"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-F364DDB68788",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "Replicate",
+        "Angle"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-01A7D9C47181",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "Replicate",
+        "Number of Shapes"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-AD730DF9D32E",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "OK"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-8661F6BEC14C",
+      "catalog": "components",
+      "path": [
+        "Create Rectangle",
+        "Cancel"
+      ],
+      "classification": "component",
+      "group_id": "rectangle"
+    },
+    {
+      "catalog_id": "MDUI-6AC43EA3241D",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Preset",
+        "Preset Path"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-F99A3362B2C6",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Preset",
+        "Select Configuration"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-88C8D3A70A66",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Select All Patterns"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-B6F9B6E903AB",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Select All Avatars"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-2A5EEA1D39DC",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Select All Graphics and Trims"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-EEE5DBD0119B",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Object grouping"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-1348A213693E",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Welding"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-4619C3C55785",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Thickness"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-45301DBFD9B0",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Merge Vertex by Proximity"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-3AEB2FF776F7",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Weld Turned Sewing Lines"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-A092387577F6",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Unified UV Coordinates (PNG)"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-3CD60A975CBB",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Include Hidden Object"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-C80ADF50D16C",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Object",
+        "Include Internal Shape"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-BB904320D596",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Scale unit"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-F83FBFA85D3D",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Scale percent"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-FCA6EBCA39FB",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "First axis"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-2C0744E5A396",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "Second axis"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-256E953DB0FE",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "Third axis"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-06FCE3AC133F",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "Invert first axis"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-2064413F6D8F",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "Invert second axis"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-ED1CE5D0628B",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Basic",
+        "Axis Conversion",
+        "Invert third axis"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-F1A466A3D697",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File",
+        "Texture destination"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-423140CB4BDA",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File",
+        "Diffuse Color Combined on Texture"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-6D92395370B1",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File",
+        "Exclude Ambient Map & Color (for Modo)"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-5B36A1EC268D",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File",
+        "Save with Transparency Map Extracted from Diffuse Map"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-0F40CDF8A323",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "File",
+        "Save with Meta Data (XML)"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-D6B64C9177A3",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Reset"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-048AED478BE4",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "OK"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-F5AA39EF821E",
+      "catalog": "components",
+      "path": [
+        "File",
+        "Export",
+        "OBJ",
+        "Export OBJ dialog",
+        "Cancel"
+      ],
+      "classification": "component",
+      "group_id": "obj-interchange"
+    },
+    {
+      "catalog_id": "MDUI-AD24E23C72B0",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "tabs",
+        "Stress"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-B683983602A9",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "tabs",
+        "Pressure"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-9C4A22DEDA55",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Range Color Count"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-D1610BAA814A",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Range unit"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-A5668C8D0E4F",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Range maximum"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-05C7957F3996",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Range minimum"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-996790DABB9B",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Graph Type"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-CAC7F27B53E6",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Graph surface"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-69F679D1249A",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Show",
+        "Weft"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-C384EE0C908E",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Show",
+        "Warp"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-C9EC8AA71114",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Stress",
+        "Show",
+        "Shear"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-31F67DCCA757",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Reset"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    },
+    {
+      "catalog_id": "MDUI-20FD7038CE08",
+      "catalog": "components",
+      "path": [
+        "Settings",
+        "Garment Fit Properties",
+        "Fit Properties dialog",
+        "Close"
+      ],
+      "classification": "component",
+      "group_id": "fit-maps"
+    }
+  ],
+  "source_snapshot_note": "This pin contains the expanded reviewed catalog and current candidate Rust source before the separate native numeric-rectangle dialog and widget stable-ID implementation is integrated. Existing document stable IDs remain present; this map does not claim that the separate dialog work or any new property behavior is completed or parity-verified.",
+  "expansion_origin": {
+    "previous_map_commit": "3fe36c5faccec7489ee54f97a70fcda382f57767",
+    "previous_map_sha256": "44899611b7687a4dd33edd107ef47f3d2924b70781207129e6f45a761caf5db5",
+    "preserved_catalog_ids": 650,
+    "additional_component_ids": 105,
+    "catalog_commit": "9acb265411e80d01152a5345a7119e2ed8bb2194",
+    "preservation_rule": "Every previous entry, packet and first bounded slice is retained unchanged. Existing groups may gain source-gap questions but no old variants or status-authority rules are removed."
+  },
+  "reviewed_contract_sources": [
+    {
+      "path": "spec/features/UI-property-surfaces-20261114.md",
+      "sha256": "522c101352ef9d3a53ea97d88829e54c0fde30d992a468d43a12b9a7ed50769d",
+      "scope": "Reviewed control-presence/value contexts and explicit unknowns; no broad behavior completion or WeftForge comparison."
+    },
+    {
+      "path": "spec/features/PAT-003-runtime-20261114.md",
+      "sha256": "4bf98d62d6cbe91d05fc1460e7abf20e2a1585ce934ab1f587033cc686c1fc99",
+      "scope": "Bounded original numeric rectangle creation/history/document reopen and unchanged-option OBJ measurement; process restart, constructor Cancel/limits/link/replication and numeric resize remain untested."
     }
   ]
 }
