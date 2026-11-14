@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
   "product_build": "2026.1.237 (r58920)",
-  "status": "partial-observed-presence-values-and-bounded-rectangle-execution",
+  "status": "partial_observed_presence_values_and_bounded_original_workflows",
   "counts": {
-    "records": 304,
+    "records": 313,
     "complete_behavior_contracts": 0
   },
   "limitations": [
     "No control presence/value is a complete executed behavior or parity claim.",
-    "Accepted ranges, invalid input and most cancellation/gesture effects remain untested. Only the linked bounded rectangle contract records actual executed behavior.",
+    "Accepted ranges, invalid input and most cancellation/gesture effects remain untested. Linked bounded rectangle, resolution and curve/first-side notes distinguish actual execution from unobserved behavior.",
     "Unlabeled toolbar icons and canvas navigation are not silently assigned names.",
     "Rendered default vendor fabric/avatar/texture assets are not supplied to implementers.",
     "Initial state values do not imply immutable factory defaults.",
@@ -19,7 +19,8 @@
     "Preference values are observed current configuration; no preference edits, range probes, reset, account switching or autosave execution were performed.",
     "Native preference records are transition diffs with screenshots. Foreground modal REA selection fails; source bindings and that limitation stay explicit.",
     "Preference shortcut categories are collapsed. Disabled Action hints are not evidence of active global shortcut behavior.",
-    "Unit System Millimeter and Decimal Places 1 do not establish a regional numeric locale or every import/export unit."
+    "Unit System Millimeter and Decimal Places 1 do not establish a regional numeric locale or every import/export unit.",
+    "Curvature and free-sewing records qualify one original edge/history and a100 mm first-side preview only. Completed/reversed sewing, numeric limits, arc-length endpoint measurements and cloth physics remain unobserved."
   ],
   "records": [
     {
@@ -8361,6 +8362,206 @@
       ],
       "changed_by_investigator": false,
       "note": "Closed the read-only review without changing a preference value."
+    },
+    {
+      "id": "MDUI-94691EDD7D54",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Edit Curvature"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "bounded_original_edge_and_history",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_0332e2b195499ff3dea180a0cfa361225b3b76070b3ed45c1d60b52bc84d87e0"
+      ],
+      "note": "Menu-selected tool; one 200.0 to 206.9 mm edge conversion with one Undo/Redo. Displayed shortcut not executed; arbitrary cubic behavior unqualified.",
+      "shortcut": "C"
+    },
+    {
+      "id": "MDUI-FD377FE35173",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Free Sewing"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "first_side_preview_only",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_4bc3e6be51a50907614015c909b16748bcf853e35ae3a7ff54b9469c8e4ffbe1"
+      ],
+      "note": "Menu-selected tool; one numeric100 mm first side, no completed seam or shortcut execution.",
+      "shortcut": "M"
+    },
+    {
+      "id": "MDUI-B37712C9182B",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Free Sewing"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_4bc3e6be51a50907614015c909b16748bcf853e35ae3a7ff54b9469c8e4ffbe1"
+      ],
+      "note": "Observed mirrored checked label after selecting the 2D/menu tool. No 3D canvas sewing gesture executed."
+    },
+    {
+      "id": "MDUI-5FF699F8AC4E",
+      "parent_path": [],
+      "path": [
+        "Create Sewing Line"
+      ],
+      "kind": "AXDialog",
+      "presence_status": "observed",
+      "behavior_status": "opened_for_first_side",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE-SEWING-LENGTH-DIALOG-20261114"
+      ],
+      "note": "Original curved-boundary first-side modal; broad ranges/cancellation and completed seam behavior unknown."
+    },
+    {
+      "id": "MDUI-6F97DC1085CF",
+      "parent_path": [
+        "Create Sewing Line"
+      ],
+      "path": [
+        "Create Sewing Line",
+        "Length"
+      ],
+      "kind": "stepper",
+      "presence_status": "observed",
+      "behavior_status": "bounded_100_mm_entry",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 90.6,
+      "unit": "mm",
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE-SEWING-LENGTH-DIALOG-20261114",
+        "CUA-FREE-SEWING-LENGTH-100-20261114",
+        "ev_0e33a8c22086b3593a86bbb94e07a5147d1bdb8bf9f36013b1d7fea42abc4cef"
+      ],
+      "note": "90.6 mm is this pointer-dependent preview value. Typed 100 mm then Tab and OK; accepted range and invalid-input behavior unknown."
+    },
+    {
+      "id": "MDUI-0742C79A38B8",
+      "parent_path": [
+        "Create Sewing Line"
+      ],
+      "path": [
+        "Create Sewing Line",
+        "Length unit"
+      ],
+      "kind": "AXStaticText",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "mm",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE-SEWING-LENGTH-DIALOG-20261114"
+      ],
+      "note": "Visible unit label; not a numeric locale identifier."
+    },
+    {
+      "id": "MDUI-EC335883AD8D",
+      "parent_path": [
+        "Create Sewing Line"
+      ],
+      "path": [
+        "Create Sewing Line",
+        "OK"
+      ],
+      "kind": "AXButton",
+      "presence_status": "observed",
+      "behavior_status": "first_side_100_mm_preview",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE-SEWING-LENGTH-100-20261114",
+        "ev_0e33a8c22086b3593a86bbb94e07a5147d1bdb8bf9f36013b1d7fea42abc4cef"
+      ],
+      "note": "Confirmed first-side 100 mm preview only; no completed two-sided seam claim."
+    },
+    {
+      "id": "MDUI-888575DC5612",
+      "parent_path": [
+        "Create Sewing Line"
+      ],
+      "path": [
+        "Create Sewing Line",
+        "Cancel"
+      ],
+      "kind": "AXButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE-SEWING-LENGTH-DIALOG-20261114"
+      ]
+    },
+    {
+      "id": "MDUI-B74EE556B6AE",
+      "parent_path": [
+        "Create Sewing Line"
+      ],
+      "path": [
+        "Create Sewing Line",
+        "Close"
+      ],
+      "kind": "AXButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE-SEWING-LENGTH-DIALOG-20261114"
+      ],
+      "note": "Unlabeled AX button adjacent to the dialog title; close effect unexecuted.",
+      "reviewer_descriptor": true
     }
   ],
   "observation_sources": [
@@ -8512,6 +8713,239 @@
       "truncated": false,
       "context": "Graphic Options at the start of the post-restart preference pass; no values changed.",
       "privacy": "Complete record and commercial screenshot remain private."
+    },
+    {
+      "id": "ev_b5299c90a2ebb92a2f30665eb2f8efcfeda041a70c03882a0ea62dc3ca486759",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "0dfe0bb4923d78628a2f4799ce87ceca715b519e74fe29c80b31ca5bc416253c",
+      "started_at": "2026-11-14T04:19:07.087991+00:00",
+      "completed_at": "2026-11-14T04:19:14.722308+00:00",
+      "nodes": 213,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [41, 5, 0]: AXError -25202",
+        "AX role unavailable at path [41, 5, 0]: AXError -25202",
+        "AX title unavailable at path [41, 5, 0]: AXError -25202",
+        "AX value unavailable at path [41, 5, 0]: AXError -25202",
+        "AX child count unavailable at path [41, 5, 0]: AXError -25202",
+        "AX actions unavailable at path [103]: AXError -25202",
+        "AX role unavailable at path [103]: AXError -25202",
+        "AX title unavailable at path [103]: AXError -25202",
+        "AX value unavailable at path [103]: AXError -25202",
+        "AX child count unavailable at path [103]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_0332e2b195499ff3dea180a0cfa361225b3b76070b3ed45c1d60b52bc84d87e0",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "479eba32803ab1445ff9c44e878188cd1e62c65e4fa81f4774faa1408ee97b05",
+      "started_at": "2026-11-14T04:19:47.244928+00:00",
+      "completed_at": "2026-11-14T04:19:54.789691+00:00",
+      "nodes": 214,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [103]: AXError -25202",
+        "AX role unavailable at path [103]: AXError -25202",
+        "AX title unavailable at path [103]: AXError -25202",
+        "AX value unavailable at path [103]: AXError -25202",
+        "AX child count unavailable at path [103]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_995bed7c2f100d0e93f9db2ef256176d4829170db8990c931aa0e030e6752346",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "4ba7c08833494f06154f86459ba3c1d6495692e754e9a4f7c959b4cadcca4f32",
+      "started_at": "2026-11-14T04:20:28.326134+00:00",
+      "completed_at": "2026-11-14T04:20:35.893673+00:00",
+      "nodes": 214,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [103]: AXError -25202",
+        "AX role unavailable at path [103]: AXError -25202",
+        "AX title unavailable at path [103]: AXError -25202",
+        "AX value unavailable at path [103]: AXError -25202",
+        "AX child count unavailable at path [103]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_0d0ddbccf2c205cbf0c6e3a0ba285d6fab91ab701dcd3c12832ab91ebdcc7053",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "092deb80ce188a2c72563161309ed79d24a6f6701bf05663540f37e4aeb40b7f",
+      "started_at": "2026-11-14T04:21:01.282691+00:00",
+      "completed_at": "2026-11-14T04:21:08.888024+00:00",
+      "nodes": 214,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [103]: AXError -25202",
+        "AX role unavailable at path [103]: AXError -25202",
+        "AX title unavailable at path [103]: AXError -25202",
+        "AX value unavailable at path [103]: AXError -25202",
+        "AX child count unavailable at path [103]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_4bc3e6be51a50907614015c909b16748bcf853e35ae3a7ff54b9469c8e4ffbe1",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "d17ee60586d5d2ddeec70aa010f300388a6190669696c11f7db4524d5482ac62",
+      "started_at": "2026-11-14T04:21:44.461565+00:00",
+      "completed_at": "2026-11-14T04:21:52.492105+00:00",
+      "nodes": 211,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [103]: AXError -25202",
+        "AX role unavailable at path [103]: AXError -25202",
+        "AX title unavailable at path [103]: AXError -25202",
+        "AX value unavailable at path [103]: AXError -25202",
+        "AX child count unavailable at path [103]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_3d8f07cd09e6990b0c20b0c3e5de53cf42c7ba7dfc4e2aa8b4f91f6b62b59ed8",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "7ce6ceafe96eb32aa7da4160638172a002951cbbb698afa482eed08f8569e0cf",
+      "started_at": "2026-11-14T04:22:36.763819+00:00",
+      "completed_at": "2026-11-14T04:22:44.328193+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_0e33a8c22086b3593a86bbb94e07a5147d1bdb8bf9f36013b1d7fea42abc4cef",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "e3e6017ec44652f81164a9c950bd36cbfb4ffe94093f6b1db9f548e405ddef56",
+      "started_at": "2026-11-14T04:23:54.625384+00:00",
+      "completed_at": "2026-11-14T04:24:03.677343+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_0facb2fddd95efba1e75fb650a978405f0a6e2da65069216ba7b0957b892dfc0",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "f9b30c79fe8499ef71c82701aae67ffc8b749dbff4818d7baea17785756c2e65",
+      "started_at": "2026-11-14T04:24:52.542218+00:00",
+      "completed_at": "2026-11-14T04:25:00.301134+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_ddc4c1799b51aefc81962294c77208da04e2fd1924501324ecbb4adc41ed903a",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "11389ecb30bfcb264ffc144ac629faf717c6c71de719ebaae0a4275678632467",
+      "started_at": "2026-11-14T04:26:44.357842+00:00",
+      "completed_at": "2026-11-14T04:26:52.423422+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_102ef94168a0b4cab79e4b0bc124470af857fc779d686c7533bdd4cb1d664d0f",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "b36fdc41c8df69ba110cc5495fb9736fe739c0fb7cd2f8aa4c1f782baff42690",
+      "started_at": "2026-11-14T04:29:44.556349+00:00",
+      "completed_at": "2026-11-14T04:29:52.423271+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "CUA-SEWING-RECTANGLE-REPLICATION-20261114",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "3400894649bbea5f3ef647780f49d2e8eed6beb9c633bce91f7e4e612e50604e",
+      "observed_at": "2026-11-14T04:11:15.808Z",
+      "context": "Original constructor before OK: width 200 mm, height 300 mm, interval 400 mm, angle 0 degrees, count 2, dimension link off.",
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "CUA-SEWING-TWO-ORIGINAL-PANELS-20261114",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "1ed91e70e4eed75674bee217db725737de3138de55cdd7d95de00b011538dcc8",
+      "observed_at": "2026-11-14T04:12:09.220Z",
+      "context": "After OK: two original rectangles selected; 2D/3D boundary totals 2000.0 mm; PD 20; simulation off.",
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE-SEWING-LENGTH-DIALOG-20261114",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "483b5885520626bf45268882dc153f4258024768c1fb12fb49617d1eb5cc8f00",
+      "observed_at": "2026-11-14T04:23:11.048Z",
+      "context": "Create Sewing Line after first curve endpoint and right-click; initial length 90.6 mm depends on this pointer position.",
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE-SEWING-LENGTH-100-20261114",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "6bdc8483a6934b05b370339b9e3801af30de04880773a788a665496e6120c65e",
+      "observed_at": "2026-11-14T04:23:34.047Z",
+      "context": "Before OK: entered length 100 mm, keyboard plus Tab; OK focused.",
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE-SEWING-SECOND-LENGTH-PROBE-20261114",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "b2c49fdf647f66b8881e6c6b5533c37bcacb417103038ecc56413bec436a91ea",
+      "observed_at": "2026-11-14T04:27:20.432Z",
+      "context": "No modal opened after second numeric-dialog probe; no completed seam inferred.",
+      "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE-SEWING-ESCAPE-ATTEMPT-20261114",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "2e8a072e06b7a1fa9208eb4f21a32a341d3b4bdad74a7116b9add912d766a0d1",
+      "observed_at": "2026-11-14T04:28:24.689Z",
+      "context": "One Escape attempt left visible first-side preview; input delivery/cancellation semantics unresolved.",
+      "privacy": "Complete record and commercial/account screenshot remain private."
     }
   ],
   "path_label_policy": "Paths group observed controls for indexing. Reviewer descriptors identify some unlabeled radio groups or repeated axis controls; their visible values/options are literal observations. A descriptor does not establish a printed UI label."

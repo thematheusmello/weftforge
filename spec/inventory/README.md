@@ -15,7 +15,7 @@ services make them unsuitable as a product-feature denominator. `Edit > Context
 Menu` lists commands but does not verify a canvas right-click menu. Checked
 states, shortcuts, ranges and behavior stay unknown until separately observed.
 
-[Component catalog](md-2026.1.237-components.json) contains 304 observed toolbar,
+[Component catalog](md-2026.1.237-components.json) contains 313 observed toolbar,
 panel, tab, property and dialog entries. The original 61 IDs remain unchanged.
 The next 105 entries describe already captured Simulation Properties, selected
 original-pattern fields, the rectangle constructor, OBJ export options and Fit
@@ -24,11 +24,15 @@ The [reviewed surface notes](../features/UI-property-surfaces-20261114.md) expla
 that capture context. A further 138 records cover the
 [read-only preference pass](../features/UI-preferences-runtime-20261114.md),
 including actual unit/display settings and configured recovery controls.
+Nine further entries record the curvature/free-sewing tool labels and numeric
+Create Sewing Line dialog from the [bounded original curve run](../features/SEW-002-runtime-20261114.md).
+Only one curve/history operation and a 100 mm first-side preview are qualified;
+no completed seam was observed.
 Ranges and most edit/error behavior remain unknown. The
 [component outline](md-2026.1.237-components.txt) is a compact index of the same
 records.
 
-The combined current inventory has 893 records: 589 menu nodes and 304 component
+The combined current inventory has 902 records: 589 menu nodes and 313 component
 observations. This is an expanding observation index, not a complete product
 feature count. Adding a field does not complete its behavior contract.
 
@@ -39,8 +43,9 @@ implementers. Activating Rectangle is recorded as tool activation only; the
 records numeric creation, one-step history, document save/close/open and physical
 OBJ bounds. The [bounded resolution run](../features/PAT-011-runtime-20261114.md)
 adds the 20 to 10 mm edit, one Undo/Redo, separate save/export, and target-state
-reopen after process restart. Its whole-window AX gap remains explicit. Curved
-sewing remains pending. No menu entry qualifies as verified parity from presence
+reopen after process restart. Its whole-window AX gap remains explicit. The
+curved first-side preview adds a numeric dialog observation; completed and
+reversed sewing remain pending. No menu entry qualifies as verified parity from presence
 alone.
 
 Continue with numeric rectangle resize, resolution limits/cancellation and sewn

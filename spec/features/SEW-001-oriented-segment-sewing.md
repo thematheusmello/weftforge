@@ -3,6 +3,11 @@
 Reference state: **documentation reviewed; workspace accessible; behavior execution pending**. Candidate baseline:
 `MD-2026.1.237.58920-macos-arm64-20261113`.
 
+The separate [original curve and Free Sewing observation](SEW-002-runtime-20261114.md)
+now records one curved-edge edit/history and a numeric 100 mm first-side preview.
+It did not establish a completed seam, Segment Sewing behavior, reversed
+correspondence or arc-length endpoint equivalence.
+
 The [official Segment Sewing manual](https://support.marvelousdesigner.com/hc/en-us/articles/47358199517209-Segment-Sewing-2D)
 describes sewing pattern segments and internal lines/shapes. Select the first
 boundary, then select the second while controlling their directional notches.

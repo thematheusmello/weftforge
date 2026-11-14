@@ -1,5 +1,5 @@
 Marvelous Designer Personal 2026.1.237 (r58920) — reviewed component observations
-304 records; presence/current values and bounded actions only; zero verified parity
+313 records; presence/current values and bounded actions only; zero verified parity
 Ranges and error behavior remain unknown unless separately recorded. Null values are not defaults.
 
 MDUI-A03CAC69E9BC | 3D toolbar > Simulate | 0 | not_executed
@@ -306,3 +306,12 @@ MDUI-D5687DF04FC3 | Settings > Preferences > Graphic Options | null | opened_rea
 MDUI-D58D43BFAAE6 | Settings > Preferences > Save as Preferences | null | not_executed
 MDUI-04E0D476C377 | Settings > Preferences > Reset | null | not_executed
 MDUI-C335ACFC7688 | Settings > Preferences > Close | null | bounded_close
+MDUI-94691EDD7D54 | 2D toolbar > Edit Curvature | 1 | bounded_original_edge_and_history
+MDUI-FD377FE35173 | 2D toolbar > Free Sewing | 1 | first_side_preview_only
+MDUI-B37712C9182B | 3D toolbar > Free Sewing | 1 | not_executed
+MDUI-5FF699F8AC4E | Create Sewing Line | null | opened_for_first_side
+MDUI-6F97DC1085CF | Create Sewing Line > Length | 90.6 | bounded_100_mm_entry
+MDUI-0742C79A38B8 | Create Sewing Line > Length unit | "mm" | not_executed
+MDUI-EC335883AD8D | Create Sewing Line > OK | null | first_side_100_mm_preview
+MDUI-888575DC5612 | Create Sewing Line > Cancel | null | not_executed
+MDUI-B74EE556B6AE | Create Sewing Line > Close | null | not_executed
