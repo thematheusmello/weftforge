@@ -5,6 +5,56 @@ reference parity is **0/56** coarse contracts; discovery is incomplete and no
 roadmap gate is accepted. The 949 observed interface entries are an engineering
 inventory, not a feature-completion denominator.
 
+## Native visual preview checkpoint
+
+The user requested the latest running appearance and confirmed PhotoCraft as
+the visual direction. The isolated `feat/native-studio-preview` worktree at
+`.local/native-studio-preview-20261114` is committed at `b760b990` and includes
+the independently authored editable ellipse from `fab0f3b5`, charcoal styling,
+right Properties, larger paired viewports, and bottom simulation/status controls.
+Properties commands execute before canvas painting; independent triangle-edge
+strokes avoid acute wireframe joins. This is an implementation preview, not a
+new reference-parity or roadmap acceptance claim.
+
+All 35 focused native tests pass, including current-frame exact sewing guides,
+scoped command-search actions, retained export drafts, and actual canvas paint
+non-overlap at minimum/default sizes. Final `b760b990` passed formatting,
+141 workspace Rust tests, strict workspace/all-target Clippy, xtask verification
+(54 Python checks, registry/map and actual CLI help), and standard local unsigned
+packaging. All five jobs under `.local/native-preview-checks-v3-20261114` are
+terminal with exit0 (exec24713; wrapper28492). Earlier55b checks failed four
+observer/layout cases;9e passed automated gates but its actual launch exposed
+transport overpainting. Both attempts and raw captures remain retained.
+
+The final native preview is open as **WeftForge Studio**, process32794, binary
+SHA256 `3f0e2388726c2768dfe1ddc3016f399b0f497acb13e9cfa70b9b031285dfd716`.
+Four raw1640x1032 JPEG captures under
+`.local/native-preview-20261114/captures/current` show the draped Harbor workspace,
+actual canvas selection of an editable ellipse quarter, ordered two-to-three
+sewing spans, and the four-knot easing map. The final canvas/transport layout was
+visually checked. The loaded Harbor demonstration accepted60 zero-gravity
+assembly steps plus120 drape steps at8 substeps/32 iterations and displays3.000s,
+8.67% final peak strain. This is a visual demonstration, not trajectory quality
+acceptance. Unplanned Manual Play on the ordered-sewing fixture, external-change
+driver refusals, and severe displayed strain were retained separately; input
+origin was not independently established. It was paused before loading Harbor.
+Faint AA artifacts on thin projected triangles remain; production rendering,
+advanced construction, animation and general garment convergence are unfinished.
+The complete local receipt is `.local/native-preview-20261114/PREVIEW-RECEIPT.json`
+(SHA256 `0f82373ff5164c33d5c0d81a9ce86e54dcb9af8b7602910a5f25b06e7140fc83`).
+
+The original frozen7fe authoring process47555 is saved at revision1: one14-edge
+front piece,327 rest vertices,zero draft points. Its v00/v01 saves independently
+match the frozen authoring expectations. Remaining authoring and both physical
+cases are unrun. Root's37 frozen source files remain unchanged; the preview uses
+a separate worktree/bundle and loaded original fixtures for demonstration.
+Preview evidence is under `.local/native-preview-20261114`; it cannot substitute
+for the empty-project acceptance. The preview branch and screenshots are local;
+publication still requires tracked artifacts and registry/freshness updates.
+Next resume the saved frozen authoring workflow, then integrate/publish the
+qualified runtime, ellipse and visual changes with their accurate evidence.
+GitHub Actions remains disabled; README branding was rechecked clean.
+
 ## Publication and cost policy
 
 Public repository: https://github.com/thematheusmello/weftforge.
