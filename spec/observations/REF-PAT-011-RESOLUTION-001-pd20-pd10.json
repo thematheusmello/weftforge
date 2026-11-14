@@ -1,0 +1,418 @@
+{
+  "schema_version": 1,
+  "case_id": "REF-PAT-011-RESOLUTION-001",
+  "recorded_at": "2026-11-14T03:22:53.117435+00:00",
+  "kind": "reviewed-bounded-original-resolution-edit-and-export-observation",
+  "baseline_id": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "baseline_frozen": false,
+  "reference_build": "2026.1.237 (r58920)",
+  "reference_executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "original_authoring": {
+    "width_mm": 200,
+    "height_mm": 300,
+    "number_of_patterns": 1,
+    "no_avatar": true,
+    "no_seams": true,
+    "simulation_executed": false,
+    "starting_particle_distance_mm": 20,
+    "target_particle_distance_mm": 10
+  },
+  "actions": [
+    "Revalidate the live executable, PID, selected native window and saved original rectangle.",
+    "Use ordinary exact-process activation; click the observed Particle Distance field with CUA, replace its text with 10, and commit with Return.",
+    "Execute Edit > Undo exactly once, then Edit > Redo exactly once.",
+    "File > Save As > Project to a separate original PD10 native file, preserving the original PD20 file.",
+    "File > Export > OBJ; keep observed mm/100%/Thin/Unweld options unchanged and accept OK.",
+    "Quit through MarvelousDesigner > Quit MarvelousDesigner. Relaunch the identified official installed bundle. Do not take account or licensing actions."
+  ],
+  "native_observations": {
+    "before": {
+      "evidence_id": "ev_830cb460b557452b7c6c83dfb8baef2dc5839337f073ce4089d85ddaf78726d1",
+      "retained_record_sha256": "2f785554468bdc3f9ab8ef378a0f1afda5a7448997059aa67570398ffd77913a",
+      "nodes": 214,
+      "truncated": false,
+      "gaps": [],
+      "particle_distance_mm": 20.0,
+      "vertices": 290,
+      "faces": 525,
+      "selected_2d_boundary": "1000.0mm",
+      "selected_3d_boundary": "1000.0mm",
+      "simulation_on": false,
+      "pattern_name": "Pattern_1720"
+    },
+    "pd10_applied": {
+      "evidence_id": "ev_70894c8a58ca3682740479dde6eb32470ea30261f52c46ffd3de4473e64a48b8",
+      "retained_record_sha256": "47218986e7374a6bd0e0a6d090ab8c2f97e9bf096ca61180cd3b1e7584867920",
+      "nodes": 214,
+      "truncated": false,
+      "gaps": [],
+      "particle_distance_mm": 10.0,
+      "vertices": 1127,
+      "faces": 2149,
+      "selected_2d_boundary": "1000.0mm",
+      "selected_3d_boundary": "1000.0mm",
+      "simulation_on": false,
+      "pattern_name": "Pattern_1720"
+    },
+    "one_undo": {
+      "evidence_id": "ev_4c05c95ba9ec6dc3858a8d275c671249db310bc3fdb197460b87ce03582ba57e",
+      "retained_record_sha256": "88cacee97656535cd138efebeedac7963447d32b43c30fec40135634c9cf016d",
+      "nodes": 214,
+      "truncated": false,
+      "gaps": [],
+      "particle_distance_mm": 20.0,
+      "vertices": 290,
+      "faces": 525,
+      "selected_2d_boundary": "1000.0mm",
+      "selected_3d_boundary": "1000.0mm",
+      "simulation_on": false,
+      "pattern_name": "Pattern_1720"
+    },
+    "one_redo": {
+      "evidence_id": "ev_70894c8a58ca3682740479dde6eb32470ea30261f52c46ffd3de4473e64a48b8",
+      "retained_record_sha256": "47218986e7374a6bd0e0a6d090ab8c2f97e9bf096ca61180cd3b1e7584867920",
+      "nodes": 214,
+      "truncated": false,
+      "gaps": [],
+      "particle_distance_mm": 10.0,
+      "vertices": 1127,
+      "faces": 2149,
+      "selected_2d_boundary": "1000.0mm",
+      "selected_3d_boundary": "1000.0mm",
+      "simulation_on": false,
+      "pattern_name": "Pattern_1720"
+    },
+    "saved_exported": {
+      "evidence_id": "ev_18355a2cef2730a18ecce6940eec79f205b05fb85967516992a34cfaa81eabe9",
+      "retained_record_sha256": "e42e5861a0f85c7859934abec5b39ce599e3142d00e23e569191b3a024eacb93",
+      "nodes": 214,
+      "truncated": false,
+      "gaps": [],
+      "particle_distance_mm": 10.0,
+      "vertices": 1127,
+      "faces": 2149,
+      "selected_2d_boundary": "1000.0mm",
+      "selected_3d_boundary": "1000.0mm",
+      "simulation_on": false,
+      "pattern_name": "Pattern_1720"
+    },
+    "restarted_reopened_selected": {
+      "evidence_id": "ev_6d18e2118fd1bcaa6568188d754f8a3974bfbc18c774f906b94e211f2bd48f56",
+      "retained_record_sha256": "7fff0f5640bf580a601d89c458b56eb07eb503e9c018feca378c5aae58c06a5f",
+      "nodes": 214,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [103]: AXError -25202",
+        "AX role unavailable at path [103]: AXError -25202",
+        "AX title unavailable at path [103]: AXError -25202",
+        "AX value unavailable at path [103]: AXError -25202",
+        "AX child count unavailable at path [103]: AXError -25202"
+      ],
+      "particle_distance_mm": 10,
+      "vertices": 1127,
+      "faces": 2149,
+      "selected_2d_boundary": "1000.0mm",
+      "selected_3d_boundary": "1000.0mm",
+      "simulation_on": false,
+      "pattern_name": "Pattern_1720",
+      "limitation": "Whole capture has one AX node attribute failure; all listed target fields were read successfully."
+    }
+  },
+  "export_options_private_record_sha256": "3a13c902f65153bb4af87806295fd04338897563e0f2bb3bd0efa405f42b93b4",
+  "export_options": {
+    "all_patterns": true,
+    "include_internal_shape": false,
+    "include_hidden_object": false,
+    "merge_by_proximity": false,
+    "welding": "Unweld",
+    "thickness": "Thin",
+    "object_mode": "Single Object",
+    "unified_uv_png": false,
+    "scale_percent": 100,
+    "unit": "mm (Default)",
+    "axes": [
+      "X",
+      "Y (Up)",
+      "Z"
+    ],
+    "axis_inversions": [
+      false,
+      false,
+      false
+    ],
+    "save_absolute_texture_path": true,
+    "metadata_xml": false
+  },
+  "measurements": {
+    "pd20_dimensions": {
+      "kind": "independent-original-export-dimension-measurement",
+      "status": "passed",
+      "input_filename": "reference-rectangle-200x300-pd20.obj",
+      "input_sha256": "de6af01755f51fc8f366fa48a64817638c6c9a185af5d080bfda2240e2d237fc",
+      "parser_sha256": "cd9887a428439fdb54bdb20276c0ab8e8144a43e386df01f76a75ae9703462cb",
+      "declared_export_unit": "mm",
+      "unit_basis": "Observed export control; fixed conversion, never fitted to bounds",
+      "vertices": 290,
+      "uv_coordinates": 290,
+      "normals": 290,
+      "faces": 525,
+      "face_sizes": {
+        "3": 525
+      },
+      "bounds_mm": {
+        "min": [
+          -255.844177,
+          1499.350708,
+          199.999985
+        ],
+        "max": [
+          -55.844162,
+          1799.35083,
+          200.000015
+        ],
+        "extent": [
+          200.00001500000002,
+          300.00012200000015,
+          2.99999999811007e-05
+        ]
+      },
+      "expected_sorted_extent_mm": [
+        0.0,
+        200.0,
+        300.0
+      ],
+      "extent_errors_mm": [
+        2.99999999811007e-05,
+        1.500000001897206e-05,
+        0.00012200000014672696
+      ],
+      "declared_extent_tolerance_mm": 0.01,
+      "convex_hull_vertices": 6,
+      "convex_hull_perimeter_mm": 1000.0000000001575,
+      "convex_hull_area_mm2": 60000.01445000006,
+      "limitations": [
+        "Original unsimulated axis-aligned rectangle only; positive-index OBJ subset",
+        "Dimension result does not establish interior topology, cloth physics or parity",
+        "Native project, vendor resources and materials are not decoded or consumed"
+      ]
+    },
+    "pd20_boundary": {
+      "kind": "independent-original-rectangle-boundary-measurement",
+      "status": "passed",
+      "input_filename": "reference-rectangle-200x300-pd20.obj",
+      "input_sha256": "de6af01755f51fc8f366fa48a64817638c6c9a185af5d080bfda2240e2d237fc",
+      "parser_sha256": "93e03a7d41d317e782a1833be9a634fc7cce1db2b6b25faecb8b5eac5d47de12",
+      "dimension_parser_sha256": "cd9887a428439fdb54bdb20276c0ab8e8144a43e386df01f76a75ae9703462cb",
+      "declared_export_unit": "mm",
+      "expected_dimensions_mm": [
+        200,
+        300
+      ],
+      "tolerance_mm": 0.01,
+      "unit_basis": "Observed export control; fixed conversion, never fitted to bounds",
+      "translation_policy": "Ignore translation using exported minima; no authored position or rotation result is claimed",
+      "checks": {
+        "physical_dimensions": true,
+        "all_vertices_used": true,
+        "one_connected_mesh": true,
+        "edge_incidence_one_or_two": true,
+        "boundary_degree_two": true,
+        "one_boundary_loop": true,
+        "disk_euler_characteristic": true,
+        "consistent_nondegenerate_projected_winding": true,
+        "boundary_on_declared_rectangle": true,
+        "all_declared_corners_covered": true,
+        "projected_area": true
+      },
+      "vertices": 290,
+      "faces": 525,
+      "edges": 814,
+      "boundary_edges": 53,
+      "boundary_vertices": 53,
+      "boundary_components": 1,
+      "euler_characteristic": 1,
+      "max_boundary_error_mm": 0.00012200000014672696,
+      "max_corner_error_mm": 1.499999999055035e-05,
+      "projected_triangle_area_mm2": 60000.002721251905,
+      "expected_area_mm2": 60000,
+      "area_tolerance_mm2": 10.0,
+      "limitations": [
+        "One original unsimulated axis-aligned rectangle, positive-index triangle OBJ subset",
+        "Manifold incidence, winding, boundary and area checks; no general polygon/intersection proof",
+        "Texture, material, normals, native format and cloth physics are not qualified",
+        "Independent fixture measurements supply zero verified WeftForge parity claims"
+      ]
+    },
+    "pd10_dimensions": {
+      "kind": "independent-original-export-dimension-measurement",
+      "status": "passed",
+      "input_filename": "reference-rectangle-200x300-pd10.obj",
+      "input_sha256": "88bbcf299d85702509e9edd4a3c05ebfbfaabcaae86b5a53d8ef0d2a57c5cc43",
+      "parser_sha256": "cd9887a428439fdb54bdb20276c0ab8e8144a43e386df01f76a75ae9703462cb",
+      "declared_export_unit": "mm",
+      "unit_basis": "Observed export control; fixed conversion, never fitted to bounds",
+      "vertices": 1127,
+      "uv_coordinates": 1127,
+      "normals": 1127,
+      "faces": 2149,
+      "face_sizes": {
+        "3": 2149
+      },
+      "bounds_mm": {
+        "min": [
+          -255.844193,
+          1499.350586,
+          199.999954
+        ],
+        "max": [
+          -55.844162,
+          1799.351074,
+          200.000031
+        ],
+        "extent": [
+          200.00003099999998,
+          300.0004879999999,
+          7.700000000454565e-05
+        ]
+      },
+      "expected_sorted_extent_mm": [
+        0.0,
+        200,
+        300
+      ],
+      "extent_errors_mm": [
+        7.700000000454565e-05,
+        3.099999997857594e-05,
+        0.0004879999999047868
+      ],
+      "declared_extent_tolerance_mm": 0.01,
+      "convex_hull_vertices": 9,
+      "convex_hull_perimeter_mm": 1000.0000000022309,
+      "convex_hull_area_mm2": 60000.05537641914,
+      "limitations": [
+        "Original unsimulated axis-aligned rectangle only; positive-index OBJ subset",
+        "Dimension result does not establish interior topology, cloth physics or parity",
+        "Native project, vendor resources and materials are not decoded or consumed"
+      ]
+    },
+    "pd10_boundary": {
+      "kind": "independent-original-rectangle-boundary-measurement",
+      "status": "passed",
+      "input_filename": "reference-rectangle-200x300-pd10.obj",
+      "input_sha256": "88bbcf299d85702509e9edd4a3c05ebfbfaabcaae86b5a53d8ef0d2a57c5cc43",
+      "parser_sha256": "93e03a7d41d317e782a1833be9a634fc7cce1db2b6b25faecb8b5eac5d47de12",
+      "dimension_parser_sha256": "cd9887a428439fdb54bdb20276c0ab8e8144a43e386df01f76a75ae9703462cb",
+      "declared_export_unit": "mm",
+      "expected_dimensions_mm": [
+        200,
+        300
+      ],
+      "tolerance_mm": 0.01,
+      "unit_basis": "Observed export control; fixed conversion, never fitted to bounds",
+      "translation_policy": "Ignore translation using exported minima; no authored position or rotation result is claimed",
+      "checks": {
+        "physical_dimensions": true,
+        "all_vertices_used": true,
+        "one_connected_mesh": true,
+        "edge_incidence_one_or_two": true,
+        "boundary_degree_two": true,
+        "one_boundary_loop": true,
+        "disk_euler_characteristic": true,
+        "consistent_nondegenerate_projected_winding": true,
+        "boundary_on_declared_rectangle": true,
+        "all_declared_corners_covered": true,
+        "projected_area": true
+      },
+      "vertices": 1127,
+      "faces": 2149,
+      "edges": 3275,
+      "boundary_edges": 103,
+      "boundary_vertices": 103,
+      "boundary_components": 1,
+      "euler_characteristic": 1,
+      "max_boundary_error_mm": 0.0004879999999047868,
+      "max_corner_error_mm": 0.0001258769239336341,
+      "projected_triangle_area_mm2": 59999.99081123809,
+      "expected_area_mm2": 60000,
+      "area_tolerance_mm2": 10.0,
+      "limitations": [
+        "One original unsimulated axis-aligned rectangle, positive-index triangle OBJ subset",
+        "Manifold incidence, winding, boundary and area checks; no general polygon/intersection proof",
+        "Texture, material, normals, native format and cloth physics are not qualified",
+        "Independent fixture measurements supply zero verified WeftForge parity claims"
+      ]
+    }
+  },
+  "density_change": {
+    "vertices": [
+      290,
+      1127
+    ],
+    "triangles": [
+      525,
+      2149
+    ],
+    "boundary_edges": [
+      53,
+      103
+    ],
+    "note": "Exact counts of these observed original exports; not a universal resolution formula or required WeftForge triangulation."
+  },
+  "declared_boundary_tolerance_mm": 0.01,
+  "source_native_files": [
+    {
+      "filename": "reference-rectangle-200x300.zprj",
+      "bytes": 55332,
+      "sha256": "f66fee3f7956594ce1ca241d7e565e53ce98e0189c70f5ebbe8b3dd3d720aad0"
+    },
+    {
+      "filename": "reference-rectangle-200x300-pd10.zprj",
+      "bytes": 84799,
+      "sha256": "6c31f4b0a268ab13c3bf6e4085a9827614b06d211c7f010dd51054b9a39eafac"
+    }
+  ],
+  "restart": {
+    "normal_quit": "The prior process is absent from the retained post-quit process/window inventory.",
+    "selected_window_size_points": [
+      580,
+      585
+    ],
+    "screenshot_only_evidence_id": "ev_03f150d6cb0e685109332115274e164bbf1d4106d1321bd566cf7a7515dd17b7",
+    "retained_record_sha256": "78f8a7b6a71f7f6ba70c8fe1b36f9018a77716d4b691f7ba7db450b74fa53039",
+    "screenshot_only_gap": "Accessibility capture was disabled",
+    "reopen_result": "Saved PD10 project reopened; selected target fields/counts persisted. Whole AX capture has an explicit unrelated node attribute gap.",
+    "startup_history_observed_content": "black startup window",
+    "startup_accessibility_failure": "AXError -25204",
+    "startup_cause": "unknown; no sign-in, license rejection or credential UI observed in this black window",
+    "later_progression": "The same new process reached a full-size workspace without another restart or account action.",
+    "startup_progressed_evidence_id": "ev_132d397c32f7b042f0caa1f34acf22e0b83076eeccb99a3b182bfcc612a350db",
+    "welcome_action": "Closed only the nonbinding Welcome close button; left Do Not Show Again unchecked.",
+    "reopen_warning_actions": "Two Proceed actions through the observed less-than-10-GB warning.",
+    "current_main_window_size_points": [
+      2207,
+      1303
+    ],
+    "reopened_evidence_id": "ev_6d18e2118fd1bcaa6568188d754f8a3974bfbc18c774f906b94e211f2bd48f56",
+    "current_access_blocker": null,
+    "native_file_sha256_unchanged": true
+  },
+  "qualification": {
+    "edit_and_mesh_density": "observed",
+    "single_undo_redo": "observed",
+    "original_size_and_boundary_checks": "passed at 20 and 10 mm",
+    "separate_native_save": "observed; original file hash unchanged",
+    "process_reopen": "observed target PD10 and mesh counts; partial whole-window AX capture",
+    "weftforge_comparison": "not_run",
+    "verified_parity_claimed": false,
+    "full_PAT_011": "partial",
+    "pending": [
+      "5 mm case",
+      "range limits and invalid input",
+      "canceled remeshing",
+      "post-sewing constraints and references",
+      "simulation/cache invalidation"
+    ]
+  },
+  "publication": "Only reviewed original measurements and behavior are public. Raw reference UI, native containers, OBJ/MTL, paths, credentials and vendor resources remain private."
+}
