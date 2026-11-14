@@ -167,7 +167,14 @@ fn assert_lossless_v1(bytes: &[u8]) -> Project {
     assert_eq!(old["version"], 1);
     let project = Project::from_json(bytes).unwrap();
     let mut current: Value = serde_json::from_slice(&project.to_json().unwrap()).unwrap();
-    assert_eq!(current["version"], 2);
+    assert_eq!(current["version"], 3);
+    assert_eq!(
+        current["project"]
+            .as_object_mut()
+            .unwrap()
+            .remove("sewing_groups"),
+        Some(json!([]))
+    );
     for piece in current["project"]["pieces"].as_array_mut().unwrap() {
         assert_eq!(
             piece.as_object_mut().unwrap().remove("grain_angle"),
@@ -180,7 +187,7 @@ fn assert_lossless_v1(bytes: &[u8]) -> Project {
         assert_eq!(material.remove("weft_stiffness"), Some(warp.clone()));
         material.insert("stretch_stiffness".into(), warp);
     }
-    // Inverting the two declared schema changes must reproduce every v1 authored value.
+    // Inverting the declared schema additions must reproduce every v1 authored value.
     assert_eq!(current["project"], old["project"]);
     project
 }
@@ -236,7 +243,7 @@ fn nondefault_v1_material_values_are_mapped_instead_of_replaced_by_defaults() {
 }
 
 #[test]
-fn v2_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes() {
+fn v3_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes() {
     let path = temp_path();
     fs::write(&path, V1_FIXTURES[0]).unwrap();
     let original = Project::load(&path).unwrap();
@@ -255,7 +262,7 @@ fn v2_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes() {
     let saved = fs::read(&path).unwrap();
     assert_eq!(
         serde_json::from_slice::<Value>(&saved).unwrap()["version"],
-        2
+        3
     );
     assert_eq!(Project::load(&path).unwrap(), editor.project);
     assert_eq!(fs::read(recovery_path(&path)).unwrap(), V1_FIXTURES[0]);
@@ -279,13 +286,19 @@ fn v2_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes() {
 #[test]
 fn version_dispatch_rejects_mixed_schemas_unknown_fields_and_unsupported_versions() {
     let old: Value = serde_json::from_slice(V1_FIXTURES[0]).unwrap();
-    let v2: Value = serde_json::from_slice(
+    let v3: Value = serde_json::from_slice(
         &Project::from_json(V1_FIXTURES[0])
             .unwrap()
             .to_json()
             .unwrap(),
     )
     .unwrap();
+    let mut v2 = v3.clone();
+    v2["version"] = json!(2);
+    v2["project"]
+        .as_object_mut()
+        .unwrap()
+        .remove("sewing_groups");
     let reject = |document: &Value| {
         assert!(Project::from_json(&serde_json::to_vec(document).unwrap()).is_err())
     };
@@ -310,14 +323,23 @@ fn version_dispatch_rejects_mixed_schemas_unknown_fields_and_unsupported_version
         .unwrap()
         .remove("weft_stiffness");
     reject(&bad);
-    for document in [&old, &v2] {
+    let mut bad = v3.clone();
+    bad["project"]
+        .as_object_mut()
+        .unwrap()
+        .remove("sewing_groups");
+    reject(&bad);
+    let mut bad = v2.clone();
+    bad["project"]["sewing_groups"] = json!([]);
+    reject(&bad);
+    for document in [&old, &v2, &v3] {
         let mut bad = document.clone();
         bad["unknown"] = json!(0);
         reject(&bad);
         let mut bad = document.clone();
         bad["project"]["unknown"] = json!(0);
         reject(&bad);
-        for version in [0, 3, 999] {
+        for version in [0, 4, 999] {
             let mut bad = document.clone();
             bad["version"] = json!(version);
             reject(&bad);

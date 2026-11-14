@@ -27,6 +27,13 @@ pub fn create_cloth_cancellable(
         mesh.doc_revision == project.revision,
         "Rest mesh belongs to an obsolete document revision",
     )?;
+    crate::ensure(
+        mesh.sewing_groups
+            .iter()
+            .map(|group| group.id)
+            .eq(project.sewing_groups.iter().map(|group| group.id)),
+        "Rest mesh sewing previews belong to different construction",
+    )?;
     let triangle_materials = mesh
         .triangles
         .iter()

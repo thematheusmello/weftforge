@@ -380,7 +380,7 @@ fn sewn_splits_preserve_gathered_pairs_in_both_directions_at_breakpoints_and_int
 }
 
 #[test]
-fn multiple_seams_survive_split_remesh_history_branching_and_v2_save_reopen() {
+fn multiple_seams_survive_split_remesh_history_branching_and_v3_save_reopen() {
     let mut editor = seam_scene();
     let curve = editor.project.seams[0].a.curve;
     let mut extra = editor.project.seams[0].clone();
@@ -447,7 +447,7 @@ fn multiple_seams_survive_split_remesh_history_branching_and_v2_save_reopen() {
     editor.project.save(&path).unwrap();
     assert_eq!(Project::load(&path).unwrap(), editor.project);
     let json: serde_json::Value = serde_json::from_slice(&fs::read(&path).unwrap()).unwrap();
-    assert_eq!(json["version"], 2);
+    assert_eq!(json["version"], 3);
     fs::remove_file(path).unwrap();
     assert!(editor.undo());
     assert!(editor.undo());

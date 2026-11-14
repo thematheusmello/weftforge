@@ -206,7 +206,7 @@ fn join_recovers_analytic_cubic_children_including_stationary_derivatives_and_wr
 }
 
 #[test]
-fn join_preserves_both_children_sewn_pairs_in_all_orientations_and_v2_remesh() {
+fn join_preserves_both_children_sewn_pairs_in_all_orientations_and_v3_remesh() {
     for straight in [false, true] {
         for source in 0..2 {
             for reverse_a in [false, true] {
@@ -305,7 +305,7 @@ fn join_preserves_both_children_sewn_pairs_in_all_orientations_and_v2_remesh() {
                         let json = editor.project.to_json().unwrap();
                         assert_eq!(
                             serde_json::from_slice::<serde_json::Value>(&json).unwrap()["version"],
-                            2
+                            3
                         );
                         let reopened = Project::from_json(&json).unwrap();
                         assert_eq!(reopened, editor.project);
