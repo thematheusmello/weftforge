@@ -1,0 +1,53 @@
+{
+  "id": "UI-NATIVE-DXF-EXPORT-capture-derivations",
+  "created_at_utc": "2026-11-14T13:36:09.051051+00:00",
+  "private_raw_retention": "Complete originals remain private. Original filenames below are relative to the private capture collection.",
+  "path_redaction": "Only exact workspace executable prefixes are replaced with <workspace>; the absolute workspace prefix is not reproduced.",
+  "artifacts": [
+    {
+      "public_file": "dxf-export-final.png",
+      "public_sha256": "c487d4a58269ea6c6bffdf115b5ab1d95276c177ebdf98cf822da8d142df669c",
+      "originals": [
+        {
+          "file": "dxf-export-final-20261114T133410Z.png",
+          "sha256": "c487d4a58269ea6c6bffdf115b5ab1d95276c177ebdf98cf822da8d142df669c"
+        }
+      ],
+      "derivation": "Byte-identical copy; no image or metadata transformation."
+    },
+    {
+      "public_file": "dxf-export-final.ax.json",
+      "public_sha256": "348143c6ae00cd777cba73af7d675350e6a1c1fada6a11ef1e8e2ed7ec1d1e3e",
+      "originals": [
+        {
+          "file": "dxf-export-final-20261114T133410Z.ax.json",
+          "sha256": "660c1fe716c0a45322452f02f154cf016264f6b5b284f893f5213e2d0131ad8f"
+        }
+      ],
+      "derivation": "Replace only the exact workspace prefix in the executable field with <workspace>; every other byte, node, value, AX path and gap flag is preserved."
+    },
+    {
+      "public_file": "reviewed-summary.json",
+      "public_sha256": "9a911cb416170f12dd19493c11c75ea2289ad96d47c66dc45581e4574b3ede03",
+      "originals": [
+        {
+          "file": "dxf-export-final-20261114T133410Z.json",
+          "sha256": "72f9646232a353d3bf9380c6af545c34a49a3f1691ca744acbbbc780cbda1c59"
+        },
+        {
+          "file": "dxf-export-final-20261114T133410Z.context.json",
+          "sha256": "95fd0fa531ec3da68018ae846aaf267ce3098a88700e356c402d29de2c0a36d3"
+        },
+        {
+          "file": "dxf-export-final-20261114T133410Z.inventory-before.json",
+          "sha256": "59ccde760f8cc9aa2ca2aca7a1a4124fd8dbf0e0100c0eed19e3f3f2830558b8"
+        },
+        {
+          "file": "dxf-export-final-20261114T133410Z.inventory-after.json",
+          "sha256": "720c920d5b6398fde626e553827293cdff08c08bef674b34fec6067be95973a9"
+        }
+      ],
+      "derivation": "Review/select target identity, status and coverage facts; retain source hashes; replace exact workspace prefix in selected executable paths with <workspace>; omit raw base64, process command strings and unrelated inventory."
+    }
+  ]
+}

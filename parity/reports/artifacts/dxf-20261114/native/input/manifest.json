@@ -1,0 +1,116 @@
+{
+  "contract": "FILE-005-v1",
+  "reviewed_spec_commit": "c69e377",
+  "reviewed_spec": "spec/features/FILE-005-dxf-pattern-export.md",
+  "original": {
+    "path": "parity/reports/artifacts/seam-reversal-20261114/native/restored.weftforge",
+    "sha256": "a240c2ae33b3d933872201817bba2f17ad4fae3fe898d2141f3ed8e0357f9a1d",
+    "revision": 19
+  },
+  "operations": [
+    "Copy original bytes unchanged to input/original-restored.weftforge.",
+    "For mixed, parse JSON numbers as Python binary64; add the stated binary64 shift once to every authored point position and both controls of every cubic, coordinate by coordinate. Do not translate 3D placements, mannequin or seams.",
+    "For mixed, replace piece names and placements by stable ID as stated; reverse only the pieces array; advance revision from 19 to 20 exactly once for all edits; retain all other values.",
+    "mixed-placement-resolution is a separate revision-20 branch from the same original: same geometry/names/order as mixed, all placements replaced by translation [-1.1, 1.3, -1.7] and rotation [0.7, -0.9, 1.1], resolution 0.08. No second revision increment.",
+    "rectangle is a separate revision-20 branch: keep only point IDs 12..15 with UV [0,0],[0.125,0],[0.125,0.25],[0,0.25], curves 16..19 and piece 11; set piece 11 name/placement as stated; remove seams. Known physical width 125 mm and height 250 mm.",
+    "empty is a separate revision-20 branch: empty points, curves, pieces and seams; keep other original values.",
+    "native-expected is a declared UI expectation, derived from mixed: change only resolution to binary64 0.045 and revision 20 to 21. A pending mesh-resolution field edit must commit once before native ExportDXF."
+  ],
+  "mixed_shift_metres": [
+    -0.12345678901234568,
+    -0.23456789012345677
+  ],
+  "mixed_names": {
+    "2": "Épreuve A <>/\\\":;?*|=",
+    "11": "裁断 B <>/\\\":;?*|="
+  },
+  "mixed_placements": {
+    "2": {
+      "translation": [
+        0.51,
+        -0.37,
+        0.29
+      ],
+      "rotation": [
+        0.19,
+        -0.31,
+        0.47
+      ]
+    },
+    "11": {
+      "translation": [
+        -0.62,
+        0.43,
+        -0.28
+      ],
+      "rotation": [
+        -0.23,
+        0.41,
+        -0.59
+      ]
+    }
+  },
+  "fixtures": {
+    "mixed": {
+      "path": "input/mixed.weftforge",
+      "sha256": "5c12187aded14c962b76dba7526a68f13395c9f5a2b92f04015ea8e3eff8d82c",
+      "revision": 20,
+      "piece_ids_in_array_order": [
+        11,
+        2
+      ]
+    },
+    "native-expected": {
+      "path": "input/native-expected.weftforge",
+      "sha256": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb",
+      "revision": 21,
+      "piece_ids_in_array_order": [
+        11,
+        2
+      ]
+    },
+    "mixed-placement-resolution": {
+      "path": "input/mixed-placement-resolution.weftforge",
+      "sha256": "6f28c49cd943c418d3334abc1f6e1a111e8030d2f49ed10bda50d2f3ea2470d7",
+      "revision": 20,
+      "piece_ids_in_array_order": [
+        11,
+        2
+      ]
+    },
+    "rectangle": {
+      "path": "input/rectangle.weftforge",
+      "sha256": "e404bbc181c55b91a6203b90cf10f94a78f19da615fd679732bf8ab7dc2d2f18",
+      "revision": 20,
+      "piece_ids_in_array_order": [
+        11
+      ]
+    },
+    "empty": {
+      "path": "input/empty.weftforge",
+      "sha256": "864bd308bff8cb3d461bdd91f7f5bdef1e4de34692f2fdeaabf1ec74181358c5",
+      "revision": 20,
+      "piece_ids_in_array_order": []
+    }
+  },
+  "expected_outputs": {
+    "native": [
+      "native/source-before.weftforge",
+      "native/source-after-cancel.weftforge",
+      "native/source-after.weftforge",
+      "native/source-after-repeat.weftforge",
+      "native/reopened.weftforge",
+      "native/native-mixed.dxf",
+      "native/native-mixed-repeat.dxf",
+      "native/native-cancel-sentinel.dxf"
+    ],
+    "headless": [
+      "headless/mixed.dxf",
+      "headless/mixed-repeat.dxf",
+      "headless/mixed-placement-resolution.dxf",
+      "headless/rectangle.dxf",
+      "headless/empty.dxf"
+    ]
+  },
+  "scope": "Only FILE-005-v1 source-derived profile acceptance; no reference parity, import, garment round trip, other CAD, printing or scale-on-print claim."
+}

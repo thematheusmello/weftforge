@@ -1,0 +1,115 @@
+{
+  "kind": "post_native_source_and_exact_executable_qualification",
+  "observed_at": "2026-11-14T13:59:48.725518+00:00",
+  "source_commit": "cd151b3b89e26d55a4dcd4525790006660c4e766",
+  "source_tree_sha256": "248b48c03ed194f9dae6c48bd4229e7418be69b9b9e07376128cda59d932b48b",
+  "source_scope": [
+    ".cargo",
+    "Cargo.toml",
+    "Cargo.lock",
+    "rust-toolchain.toml",
+    "apps",
+    "crates",
+    "xtask"
+  ],
+  "source_hashes": {
+    ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "Cargo.lock": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
+    "Cargo.toml": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+    "apps/weftforge-cli/Cargo.toml": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+    "apps/weftforge-cli/src/main.rs": "e0300b2facd13f46545449878a96f5d113781fd7d852db3e5a7cc6d7d14621d7",
+    "apps/weftforge-cli/src/mcp.rs": "6e931e9efd6f7128ecbfcf412190dcd4a7dd60fa3af91e9c625d823bee5b3037",
+    "apps/weftforge-cli/tests/curves.rs": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+    "apps/weftforge-cli/tests/grain.rs": "30e64fd99703f850f7bf5c7b7b26b66790404c666569fb9ab3e36d307a685559",
+    "apps/weftforge-cli/tests/mcp_stdio.rs": "1c6db82937e9174986b04c2cd301a8d687944fadd4fe5e69bd84e70d85c0c1cb",
+    "apps/weftforge/Cargo.toml": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+    "apps/weftforge/src/main.rs": "1cd18a49fb2e30c5c24a5c02ade30df42d4bc01f6e94b2cfcfab06abd70def3b",
+    "crates/weftforge-core/Cargo.toml": "eac1be8f249f92f0b98686099bac5e11cfeeed064a7da944c3e331a2c09ff56e",
+    "crates/weftforge-core/src/document.rs": "c00fbff18e329898f358e8f2226f615504c9aad4badf7fefb7f2bde8b149e93c",
+    "crates/weftforge-core/src/geometry.rs": "2b2840d51e6eaa9b72a9128fb273099dd6c86ecd2e7be3359aeaebbd612fa6b8",
+    "crates/weftforge-core/src/lib.rs": "b54d19bce3ff323a394c9e79306de6e7bcdac8033b0ed277387fbf78c7a00ebc",
+    "crates/weftforge-core/src/persistence.rs": "648c5b7e4dc65af7e143d666ddfcd23eca35ded02eeccdf53a867c43d1c5b692",
+    "crates/weftforge-core/src/persistence/dxf.rs": "49e56ab60030a640e49d3ce9b263d99dcce562a5616f1dada529603f074b7475",
+    "crates/weftforge-core/src/simulation.rs": "e4295d2a048029e88c25e4e6a9395570fd85b827d80c6671509c1ad7daec150c",
+    "crates/weftforge-core/tests/dxf.rs": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+    "crates/weftforge-core/tests/grain.rs": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+    "crates/weftforge-core/tests/joins.rs": "8ca4ee11ce4fa54668373d1cad8a25064f6bd3010587531ddca3292c2b9f6ab9",
+    "crates/weftforge-core/tests/migration.rs": "9e3ef1935e890bf4da9da1d2a5e2a9469bf6f0ea7a652c2283d266aef6a2e9e0",
+    "crates/weftforge-core/tests/seam_reversal.rs": "1a35f305830f44abcebbd4b2868311a24f8b50c97952da2c75d061d84d284007",
+    "crates/weftforge-core/tests/shirt.rs": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+    "crates/weftforge-core/tests/workflow.rs": "909ec0c491fab7b32fd645a09f46e5b0419631d1e88c7e1026e2da19d93870b8",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/constraints.rs": "3456ba2565eadc5e113d5278f6dda6c46164a0f98f66400058e7ca9887f4298f",
+    "crates/weftforge-sim/src/contact.rs": "c600c7825c7c075c343b3d105005bf0ac771700dbf2141a4ae2668576f267e26",
+    "crates/weftforge-sim/src/lib.rs": "92f83a398cd8b7bb15bec23939d851fded15012a4c688689960195e116fbbc0f",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/tests.rs": "103eedaac498c5e6540a7ce171ecfd6db9dca9774b57fa506a62893e2a91f493",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+    "xtask/Cargo.toml": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+    "xtask/src/main.rs": "a65250e8f24f54f737a673d52f7bf75b76a9a9f4a453678bb90ccfd776e64a2a"
+  },
+  "scoped_files_still_identical": 34,
+  "package_file_hashes_still_identical": {
+    "LICENSE-APACHE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "LICENSE-MIT": "5a79a5be6e18069ea095bcb13f724f90cee6a70b1fd6b5e2b1f505f050c25b0d",
+    "README.md": "137495e402da559fe34b1f10cfece3890a241fe03244de0d62a3644c4d399072",
+    "THIRD_PARTY.md": "da5201bd1cadff85193d02040d0f99b7a7b4949fe4857684f91efaa1f5799a0d",
+    "WeftForge.app/Contents/Info.plist": "5ac9539a4fb95ced9cc9463a5840176f69b86a826c39be0f7971378d93c218b5",
+    "WeftForge.app/Contents/MacOS/weftforge": "4cdc758b057975b47fe81306d4fec2c8f598e8ea5e5d83601c6eab2baa0d199b",
+    "weftforge": "4cdc758b057975b47fe81306d4fec2c8f598e8ea5e5d83601c6eab2baa0d199b",
+    "weftforge-cli": "e90ac57b9bd345ad1d844b4f3f9e684c96fa58af0f795d5f7a168ddfc3fad20f"
+  },
+  "native_sha256": "4cdc758b057975b47fe81306d4fec2c8f598e8ea5e5d83601c6eab2baa0d199b",
+  "cli_sha256": "e90ac57b9bd345ad1d844b4f3f9e684c96fa58af0f795d5f7a168ddfc3fad20f",
+  "native_process": {
+    "primary_pid": 55249,
+    "primary_quit_authoritatively_observed": true,
+    "reopened_pid": 65069,
+    "reopened_pid_still_running": true,
+    "same_package_hash_after_reopen": true,
+    "last_observed_UI": "Saved r24/resolution0.05,2pieces,2seams,785vertices,rest arrangement,simulation off,no modal.",
+    "supplement_saved_file": "native/native/cancel-draft-redone.weftforge"
+  },
+  "identical_original_dxf_outputs": {
+    "native_primary": {
+      "sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "bytes": 4805
+    },
+    "native_command_search_repeat": {
+      "sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "bytes": 4805
+    },
+    "final_cli_from_actual_native_snapshot": {
+      "sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "bytes": 4805
+    },
+    "official_legacy_sdk": {
+      "sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "bytes": 4805
+    },
+    "pre_ui_fix_cli": {
+      "sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "bytes": 4805
+    }
+  },
+  "SDK_source": {
+    "executed_source_label": "5f4124c0b86a520fd06f2e7355bc5000fea9d8db",
+    "executed_CLI_sha256": "e90ac57b9bd345ad1d844b4f3f9e684c96fa58af0f795d5f7a168ddfc3fad20f",
+    "final_CLI_byte_identical": true,
+    "same_typed_document_as_actual_native_revision21": true,
+    "sdk_fixture_sha256": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb",
+    "native_snapshot_sha256": "edfb76d326c63a82550bb8f6907a107b4eee4307666ce119ebf08a2624d3902f",
+    "lexical_JSON_bytes_equal": false
+  },
+  "independent_supplement": {
+    "freeze_sha256": "a93edd4e0275c752a65a6bb3d041828c580440b7314934eec7b5d301e4011d79",
+    "result_sha256": "7f413c2fffa7dbc578056043ffd6c4954e9aa26f1f2c798a8445338615d5395b",
+    "result": "accepted; separate independent original image review also passed"
+  },
+  "qualifications": [
+    "Candidate-pretest native_execution=not_started is its unchanged prelaunch historical observation, not the final result.",
+    "SDK artifacts retain their original headless5f execution attribution. This separate equality qualification does not claim that the SDK controlled the native UI.",
+    "No new SDK call, geometry export, simulation or criterion change occurred while producing this qualification.",
+    "Source-only public deliverable; unsigned local candidate binaries are identified by hashes and not published."
+  ]
+}

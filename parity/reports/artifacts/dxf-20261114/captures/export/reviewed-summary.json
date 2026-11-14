@@ -1,0 +1,131 @@
+{
+  "id": "UI-NATIVE-DXF-EXPORT-capture-supplement",
+  "kind": "implementation_only",
+  "producer": "REA CLI 6.9.0 observe_native_ui; single passive own-app capture",
+  "parent_candidate_attribution": {
+    "source_commit_abbreviation": "cd151b3",
+    "scoped_input_count": 34,
+    "limit": "Parent-provided candidate identity; no source/binary equivalence proof or production source read by this observer."
+  },
+  "raw_private_capture": {
+    "file": "dxf-export-final-20261114T133410Z.json",
+    "sha256": "72f9646232a353d3bf9380c6af545c34a49a3f1691ca744acbbbc780cbda1c59"
+  },
+  "evidence_id": "ev_4726f7ffa4c24644cbb344e2c0a10a418edf91c876539556f6d1ecf01fad2a4e",
+  "started_at_utc": "2026-11-14T13:34:10.513029+00:00",
+  "completed_at_utc": "2026-11-14T13:34:19.915009+00:00",
+  "input": false,
+  "activation": false,
+  "actions": [],
+  "host_kernel": {
+    "sysname": "Darwin",
+    "release": "27.2.0",
+    "version": "Darwin Kernel Version 27.2.0: Wed Oct 14 23:47:32 PDT 2026; root:xnu-13432.41.4~25/RELEASE_ARM64_T6031",
+    "machine": "arm64"
+  },
+  "identity_before": {
+    "observed_at_utc": "2026-11-14T13:34:11.626716+00:00",
+    "pid": 55249,
+    "parent_pid_from_ps": 1,
+    "process_start_as_reported_by_ps": "Sat Nov 14 13:21:56 2026",
+    "launch_time_unix_s": 1794662516.202317,
+    "kernel_proc_pidpath": "<workspace>/.local/candidates/cd151b3b89e2/WeftForge.app/Contents/MacOS/weftforge",
+    "appkit_executable": "<workspace>/.local/candidates/cd151b3b89e2/WeftForge.app/Contents/MacOS/weftforge",
+    "executable_sha256": "4cdc758b057975b47fe81306d4fec2c8f598e8ea5e5d83601c6eab2baa0d199b",
+    "bundle_id": "org.weftforge.studio",
+    "is_running": true,
+    "is_active": false,
+    "window_id": 61897,
+    "window_title": "WeftForge",
+    "window_frame_points": {
+      "x": 555,
+      "y": 124,
+      "width": 1450,
+      "height": 932
+    },
+    "backing_scale_factor": 1
+  },
+  "identity_after": {
+    "observed_at_utc": "2026-11-14T13:34:19.913578+00:00",
+    "pid": 55249,
+    "parent_pid_from_ps": 1,
+    "process_start_as_reported_by_ps": "Sat Nov 14 13:21:56 2026",
+    "launch_time_unix_s": 1794662516.202317,
+    "kernel_proc_pidpath": "<workspace>/.local/candidates/cd151b3b89e2/WeftForge.app/Contents/MacOS/weftforge",
+    "appkit_executable": "<workspace>/.local/candidates/cd151b3b89e2/WeftForge.app/Contents/MacOS/weftforge",
+    "executable_sha256": "4cdc758b057975b47fe81306d4fec2c8f598e8ea5e5d83601c6eab2baa0d199b",
+    "bundle_id": "org.weftforge.studio",
+    "is_running": true,
+    "is_active": false,
+    "window_id": 61897,
+    "window_title": "WeftForge",
+    "window_frame_points": {
+      "x": 555,
+      "y": 124,
+      "width": 1450,
+      "height": 932
+    },
+    "backing_scale_factor": 1
+  },
+  "identity_unchanged": true,
+  "screenshot": {
+    "file": "dxf-export-final.png",
+    "sha256": "c487d4a58269ea6c6bffdf115b5ab1d95276c177ebdf98cf822da8d142df669c",
+    "dimensions_pixels": [
+      1450,
+      932
+    ],
+    "copied_byte_identically": true
+  },
+  "accessibility": {
+    "file": "dxf-export-final.ax.json",
+    "returned_nodes": 72,
+    "reported_truncated": false,
+    "reported_gaps": [],
+    "complete_returned_tree_preserved": true
+  },
+  "reviewed_observations": {
+    "source": "Returned AX plus original selected-window screenshot pixels.",
+    "Export DXF toolbar button": {
+      "ax_path": [
+        0,
+        8
+      ],
+      "present": true
+    },
+    "status": {
+      "ax_path": [
+        0,
+        25
+      ],
+      "text": "Exported DXF pattern boundaries in millimetres; sewing and materials stay in .weftforge."
+    },
+    "counts": "2 pieces · 2 seams · 907 vertices",
+    "mesh_edge_length_m_display": "0.045",
+    "selected_piece_checkboxes": [
+      {
+        "title": "裁断 B <>/\\\":;?*|=",
+        "selected": false
+      },
+      {
+        "title": "Épreuve A <>/\\\":;?*|=",
+        "selected": false
+      }
+    ],
+    "stage": "Stage: Rest arrangement",
+    "viewport_overlay_pixels": "PAUSED · Y up · m",
+    "no_command_search_or_file_dialog_visible": true,
+    "no_unsaved_text_visible": true,
+    "name_rendering_limit": "The screenshot shows missing-glyph boxes for the two initial CJK characters of one pattern label; AX retains its complete Unicode title."
+  },
+  "parent_workflow_attribution": "Parent reports actual Command Search typed DXF → Export DXF → native-mixed-repeat.dxf before this snapshot. The passive observer did not replay those inputs or read the export file.",
+  "scale_source": "NSScreen backingScaleFactor for the single display containing the exact selected CGWindow frame in both retained identity inventories; scale 1, 1450×932-point frame and 1450×932-pixel PNG.",
+  "limitations": [
+    "One paused UI snapshot establishes visible toolbar/status/selection/display state, not DXF geometry, entity ordering, export bytes or absence of document mutation; those require the separate saved-output evaluator.",
+    "REA AX nodes do not expose focused-widget or pending numeric-draft state. Prior command search text, action order and dialog selection require parent observations.",
+    "Missing glyphs limit exact Unicode name reading from pixels; retained AX preserves the observed names.",
+    "Implementation-only evidence; no reference parity, physical cloth, simulation-quality or broader product pass.",
+    "Complete original raw REA Evidence, PNG, AX, kernel/process contexts and inventories remain private. This supplement omits raw base64, process command strings and general desktop inventories."
+  ],
+  "publication_status": "Prepared private supplement only; publication requires parent artifact-tracking and clean-checkout verification gates."
+}

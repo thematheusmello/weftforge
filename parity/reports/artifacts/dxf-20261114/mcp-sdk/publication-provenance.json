@@ -1,0 +1,173 @@
+{
+  "created_at": "2026-11-14T12:41:41.561918+00:00",
+  "kind": "public_safe_derivative_of_retained_private_headless_smoke",
+  "new_server_calls": 0,
+  "package": {
+    "source_label_supplied_by_coordinator": "5f4124c",
+    "cli_sha256": "e90ac57b9bd345ad1d844b4f3f9e684c96fa58af0f795d5f7a168ddfc3fad20f",
+    "scope": "Headless pre-UI-fix package only; final GUI/native comparison pending."
+  },
+  "prefix_markers": {
+    "${WORKSPACE}": "Original absolute execution workspace root.",
+    "${PYTHON_INSTALL}": "Original absolute Python 3.13.0 installation root."
+  },
+  "redaction_policy": "Only exact machine-local prefix bytes were replaced in selected JSON/Python files. Original private files were not changed.",
+  "internal_hash_policy": "Embedded report, pre-call and original-private-manifest hashes retain their original private-file meanings; use files mappings and publish-manifest.json for public hashes.",
+  "success_source": {
+    "original_location_relative_to_workspace": ".local/dxf-acceptance-20261114/input/native-expected.weftforge",
+    "included_byte_identical_file": "native-input-copy.weftforge",
+    "sha256": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb",
+    "equality_checked": true
+  },
+  "original_private_manifest_sha256": "87dd30b24bb9ee18ec3b4a8973aae2bec6ad05517b600b8d20462fc369889194",
+  "omitted_private_artifacts": [
+    "README.md",
+    "client-stdout.txt",
+    "execution.json",
+    "input-identities.json",
+    "saved-output-verification.json",
+    "sdk-transcript.jsonl"
+  ],
+  "files": {
+    "expectation.json": {
+      "private_original": "expectation.json",
+      "original_sha256": "acfa24832a746a0fcec1ebcf774280f18fc9c76f2d283c6401daa3a7637b5a89",
+      "public_sha256": "acfa24832a746a0fcec1ebcf774280f18fc9c76f2d283c6401daa3a7637b5a89",
+      "original_bytes": 4539,
+      "public_bytes": 4539,
+      "transformation": "byte_identical_copy",
+      "prefix_replacement_counts": {}
+    },
+    "pre-call-manifest.json": {
+      "private_original": "pre-call-manifest.json",
+      "original_sha256": "38014b12b99e760c15bd20d2ec4492929ec9852223189b009cf536125dc3a39f",
+      "public_sha256": "38014b12b99e760c15bd20d2ec4492929ec9852223189b009cf536125dc3a39f",
+      "original_bytes": 1083,
+      "public_bytes": 1083,
+      "transformation": "byte_identical_copy",
+      "prefix_replacement_counts": {}
+    },
+    "run-official-sdk.py": {
+      "private_original": "run-official-sdk.py",
+      "original_sha256": "93403566c16ab4e87df2cdcc3ee578cb3767816735713e13dc3f519f0d9a2fbe",
+      "public_sha256": "93403566c16ab4e87df2cdcc3ee578cb3767816735713e13dc3f519f0d9a2fbe",
+      "original_bytes": 8872,
+      "public_bytes": 8872,
+      "transformation": "byte_identical_copy",
+      "prefix_replacement_counts": {}
+    },
+    "native-input-copy.weftforge": {
+      "private_original": "native-input-copy.weftforge",
+      "original_sha256": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb",
+      "public_sha256": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb",
+      "original_bytes": 5675,
+      "public_bytes": 5675,
+      "transformation": "byte_identical_copy",
+      "prefix_replacement_counts": {}
+    },
+    "malformed.weftforge": {
+      "private_original": "malformed.weftforge",
+      "original_sha256": "e9af7e4f999c939048997ae232a89c26b1c101f60a70f4f1ad1dcd25e785c82d",
+      "public_sha256": "e9af7e4f999c939048997ae232a89c26b1c101f60a70f4f1ad1dcd25e785c82d",
+      "original_bytes": 44,
+      "public_bytes": 44,
+      "transformation": "byte_identical_copy",
+      "prefix_replacement_counts": {}
+    },
+    "future.weftforge": {
+      "private_original": "future.weftforge",
+      "original_sha256": "3b337d2241b991a489de4adfa1873fc1f07fc9404843b3e388fbf1c8d083bea8",
+      "public_sha256": "3b337d2241b991a489de4adfa1873fc1f07fc9404843b3e388fbf1c8d083bea8",
+      "original_bytes": 5678,
+      "public_bytes": 5678,
+      "transformation": "byte_identical_copy",
+      "prefix_replacement_counts": {}
+    },
+    "invalid-source-sentinel.dxf": {
+      "private_original": "invalid-source-sentinel.dxf",
+      "original_sha256": "8b0320a5c9d507aba29d15f10cfd125ea3238edd4a917fc3dfa1c0d807ef9a9e",
+      "public_sha256": "8b0320a5c9d507aba29d15f10cfd125ea3238edd4a917fc3dfa1c0d807ef9a9e",
+      "original_bytes": 55,
+      "public_bytes": 55,
+      "transformation": "byte_identical_copy",
+      "prefix_replacement_counts": {}
+    },
+    "sdk-export.dxf": {
+      "private_original": "sdk-export.dxf",
+      "original_sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "public_sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "original_bytes": 4805,
+      "public_bytes": 4805,
+      "transformation": "byte_identical_copy",
+      "prefix_replacement_counts": {}
+    },
+    "sdk-report.json": {
+      "private_original": "sdk-report.json",
+      "original_sha256": "45dd3a6749ffee5d454452451523ea99ebd7109c2b968ca11f095751de98051f",
+      "public_sha256": "c032a6382947e55a0ee2b590c1ba24ea2cde6964443b01a2fff335db23826b1f",
+      "original_bytes": 8322,
+      "public_bytes": 8003,
+      "transformation": "exact_prefix_replacement_only",
+      "prefix_replacement_counts": {
+        "${WORKSPACE}": 4,
+        "${PYTHON_INSTALL}": 5
+      }
+    },
+    "sdk-transcript.json": {
+      "private_original": "sdk-transcript.json",
+      "original_sha256": "735d72326f7e9a7693340312e458e7b3034bf4a9c24f153575827433fde9980d",
+      "public_sha256": "687b5ae8b0ccc4a38abfb9fc99879fe0164832a4e54b2a0f898bf8c4453d84de",
+      "original_bytes": 47487,
+      "public_bytes": 46875,
+      "transformation": "exact_prefix_replacement_only",
+      "prefix_replacement_counts": {
+        "${WORKSPACE}": 12
+      }
+    },
+    "client-stderr.txt": {
+      "private_original": "client-stderr.txt",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "public_bytes": 0,
+      "transformation": "byte_identical_copy",
+      "prefix_replacement_counts": {}
+    },
+    "server-stderr.txt": {
+      "private_original": "server-stderr.txt",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "public_bytes": 0,
+      "transformation": "byte_identical_copy",
+      "prefix_replacement_counts": {}
+    },
+    "preparation-attempt.json": {
+      "private_original": "preparation-attempt.json",
+      "original_sha256": "26319ed4669faef44ce35b4a9910cecd026cd672093bee1bba2f4763bc17807d",
+      "public_sha256": "39841ddb6fd52f244c3e6773e85767e5bb18fbb7588efe13e0a48c00c6ffc56d",
+      "original_bytes": 4300,
+      "public_bytes": 4045,
+      "transformation": "exact_prefix_replacement_only",
+      "prefix_replacement_counts": {
+        "${WORKSPACE}": 5
+      }
+    },
+    "original-private-manifest.json": {
+      "private_original": "evidence-manifest.json",
+      "original_sha256": "87dd30b24bb9ee18ec3b4a8973aae2bec6ad05517b600b8d20462fc369889194",
+      "public_sha256": "87dd30b24bb9ee18ec3b4a8973aae2bec6ad05517b600b8d20462fc369889194",
+      "original_bytes": 2802,
+      "public_bytes": 2802,
+      "transformation": "byte_identical_copy",
+      "prefix_replacement_counts": {}
+    }
+  },
+  "publication_tooling": {
+    "first_saved_output_replay": "failed_manifest_self_inclusion",
+    "record": "publication-tooling-attempt.json",
+    "failed_manifest": "failed-publication-manifest.json",
+    "new_server_calls": 0,
+    "final_manifest_rule": "Explicitly exclude publish-manifest.json; unchanged from the declared original rule."
+  }
+}

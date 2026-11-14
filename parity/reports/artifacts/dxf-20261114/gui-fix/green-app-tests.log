@@ -1,0 +1,32 @@
+   Compiling weftforge v0.1.0 (${WORKSPACE}/.local/worktrees/dxf-export-atomic-ui/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 23.80s
+     Running unittests src/main.rs (${CARGO_TARGET_DIR}/debug/deps/weftforge-42f30e2537bcf233)
+
+running 23 tests
+test tests::canvas_picking ... ok
+test tests::inspector_updates_commit_once_and_undo_as_one_transaction ... ok
+test tests::cancelled_and_obsolete_jobs_do_not_replace_the_display_snapshot ... ok
+Pending edit rejected before shutdown recovery: Grain angle must be finite radians
+test tests::export_guard_preserves_source_projects_and_symlink_aliases ... ok
+test tests::bounded_fit_phases_queue_without_rebuild_and_continue_accepted_cloth_state ... ok
+test tests::exit_retains_last_valid_geometry_and_reports_when_all_recovery_paths_fail ... ok
+test tests::inspecting_and_recoloring_preserves_valid_imported_dimensions_and_physics ... ok
+test tests::numeric_fields_preserve_unedited_bits_and_accept_text_steps_and_drags ... ok
+test tests::selected_curve_controls_and_split_use_fresh_drafts_atomic_history_and_invalidation ... ok
+test tests::exit_preserves_primary_clean_and_discarded_states_and_uses_unique_fallback ... ok
+test tests::untitled_autosave_recovers_editable_work_and_failed_recovery_retains_it ... ok
+test tests::exit_retains_last_second_drafts_after_an_older_autosave_then_recovers_exactly ... ok
+test tests::selected_join_button_commits_one_revision_and_rejects_pending_edits_atomically ... ok
+test tests::numeric_rectangle_click_commits_once_and_cancel_or_errors_preserve_drafts_and_history ... ok
+test tests::inspector_focus_does_not_reuse_edit_text_after_adding_or_selecting_pieces ... ok
+test tests::tabbing_over_unedited_curve_control_preserves_saved_f64_precision ... ok
+test tests::rectangle_modal_blocks_background_accesskit_actions_and_preserves_staged_edits ... ok
+test tests::focused_numeric_history_restore_survives_blur_and_retains_redo ... ok
+test tests::focusing_small_and_large_piece_sizes_preserves_document_and_history ... ok
+test tests::obj_export_uses_ready_rest_or_current_drape_without_changing_construction ... ok
+test tests::seam_reverse_button_keeps_focused_drafts_atomic_and_draws_endpoint_pairs ... ok
+test tests::join_focus_keeps_failed_drafts_and_clears_successful_control_text_before_tab ... ok
+test tests::focused_export_keeps_failed_drafts_and_history_until_output_is_written ... ok
+
+test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 7.93s
+

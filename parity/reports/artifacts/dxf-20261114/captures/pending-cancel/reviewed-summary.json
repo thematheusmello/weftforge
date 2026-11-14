@@ -1,0 +1,132 @@
+{
+  "id": "UI-NATIVE-DXF-PENDING-CANCEL-capture-supplement",
+  "kind": "implementation_only",
+  "producer": "REA CLI 6.9.0 observe_native_ui; single passive own-app capture",
+  "parent_candidate_attribution": {
+    "source_commit_abbreviation": "cd151b3",
+    "scoped_input_count": 34,
+    "limit": "Parent-provided candidate identity; no source/binary equivalence proof or production source read by this observer."
+  },
+  "raw_private_capture": {
+    "file": "dxf-pending-cancel-20261114T135220Z.json",
+    "sha256": "c4d91c0c97587be3084becee05f3ca77e157658c18cd95b3ca2b0955e1ef7608"
+  },
+  "evidence_id": "ev_9b0cd5d3f08d7c74369dad666c3f2811d07aa862ab003edd81cb3d8b1caae537",
+  "started_at_utc": "2026-11-14T13:52:20.647016+00:00",
+  "completed_at_utc": "2026-11-14T13:52:28.865179+00:00",
+  "input": false,
+  "activation": false,
+  "actions": [],
+  "host_kernel": {
+    "sysname": "Darwin",
+    "release": "27.2.0",
+    "version": "Darwin Kernel Version 27.2.0: Wed Oct 14 23:47:32 PDT 2026; root:xnu-13432.41.4~25/RELEASE_ARM64_T6031",
+    "machine": "arm64"
+  },
+  "identity_before": {
+    "observed_at_utc": "2026-11-14T13:52:21.458100+00:00",
+    "pid": 65069,
+    "parent_pid_from_ps": 1,
+    "process_start_as_reported_by_ps": "Sat Nov 14 13:35:38 2026",
+    "launch_time_unix_s": 1794663338.208448,
+    "kernel_proc_pidpath": "<workspace>/.local/candidates/cd151b3b89e2/WeftForge.app/Contents/MacOS/weftforge",
+    "appkit_executable": "<workspace>/.local/candidates/cd151b3b89e2/WeftForge.app/Contents/MacOS/weftforge",
+    "executable_sha256": "4cdc758b057975b47fe81306d4fec2c8f598e8ea5e5d83601c6eab2baa0d199b",
+    "bundle_id": "org.weftforge.studio",
+    "is_running": true,
+    "is_active": false,
+    "window_id": 62082,
+    "window_title": "WeftForge",
+    "window_frame_points": {
+      "x": 555,
+      "y": 124,
+      "width": 1450,
+      "height": 932
+    },
+    "backing_scale_factor": 1
+  },
+  "identity_after": {
+    "observed_at_utc": "2026-11-14T13:52:28.863839+00:00",
+    "pid": 65069,
+    "parent_pid_from_ps": 1,
+    "process_start_as_reported_by_ps": "Sat Nov 14 13:35:38 2026",
+    "launch_time_unix_s": 1794663338.208448,
+    "kernel_proc_pidpath": "<workspace>/.local/candidates/cd151b3b89e2/WeftForge.app/Contents/MacOS/weftforge",
+    "appkit_executable": "<workspace>/.local/candidates/cd151b3b89e2/WeftForge.app/Contents/MacOS/weftforge",
+    "executable_sha256": "4cdc758b057975b47fe81306d4fec2c8f598e8ea5e5d83601c6eab2baa0d199b",
+    "bundle_id": "org.weftforge.studio",
+    "is_running": true,
+    "is_active": false,
+    "window_id": 62082,
+    "window_title": "WeftForge",
+    "window_frame_points": {
+      "x": 555,
+      "y": 124,
+      "width": 1450,
+      "height": 932
+    },
+    "backing_scale_factor": 1
+  },
+  "identity_unchanged": true,
+  "screenshot": {
+    "file": "dxf-pending-cancel.png",
+    "sha256": "7968db1c1df076df4c50ca3cee3d12c90430eb0db0653520ed983980b502eded",
+    "dimensions_pixels": [
+      1450,
+      932
+    ],
+    "copied_byte_identically": true
+  },
+  "accessibility": {
+    "file": "dxf-pending-cancel.ax.json",
+    "returned_nodes": 72,
+    "reported_truncated": false,
+    "reported_gaps": [],
+    "complete_returned_tree_preserved": true
+  },
+  "reviewed_observations": {
+    "source": "Returned AX plus original selected-window screenshot pixels.",
+    "Export DXF toolbar button": {
+      "ax_path": [
+        0,
+        8
+      ],
+      "present": true
+    },
+    "status": {
+      "ax_path": [
+        0,
+        25
+      ],
+      "text": "Export cancelled; pending edits retained."
+    },
+    "counts": "2 pieces · 2 seams · 907 vertices",
+    "mesh_edge_length_m_display": "0.055",
+    "selected_piece_checkboxes": [
+      {
+        "title": "裁断 B <>/\\\":;?*|=",
+        "selected": false
+      },
+      {
+        "title": "Épreuve A <>/\\\":;?*|=",
+        "selected": false
+      }
+    ],
+    "stage": "Stage: Rest arrangement",
+    "viewport_overlay_pixels": "PAUSED · Y up · m",
+    "no_command_search_or_file_dialog_visible": true,
+    "no_unsaved_text_visible": true,
+    "resolution_field_focus_pixels": "Blue focus outline and caret visible around 0.055; AX schema has no focus attribute.",
+    "name_rendering_limit": "The screenshot shows missing-glyph boxes for the two initial CJK characters of one pattern label; AX retains its complete Unicode title."
+  },
+  "parent_workflow_attribution": "Parent requested a separate frozen pending-Cancel case and reports native Cancel just returned to the main window with the still-focused 0.055 draft. This passive observer did not replay those inputs or read any saved project/export file.",
+  "scale_source": "NSScreen backingScaleFactor for the single display containing the exact selected CGWindow frame in both retained identity inventories; scale 1, 1450×932-point frame and 1450×932-pixel PNG.",
+  "limitations": [
+    "One paused UI snapshot establishes the visible 0.055 field, Cancel status, 907 vertices and no Unsaved marker. It does not alone prove the stored document remains at 0.045 or that a draft was retained internally; those conclusions require parent input observations and independent native saved-file evaluation.",
+    "REA AX nodes do not expose focused-widget or pending numeric-draft state. Prior input, action order and native dialog Cancel require parent observations.",
+    "Missing glyphs limit exact Unicode name reading from pixels; retained AX preserves the observed names.",
+    "Implementation-only evidence; no reference parity, physical cloth, simulation-quality or broader product pass.",
+    "Complete original raw REA Evidence, PNG, AX, kernel/process contexts and inventories remain private. This supplement omits raw base64, process command strings and general desktop inventories."
+  ],
+  "publication_status": "Separate prospective pending-Cancel supplement; primary export capture and subset remain unchanged. Prepared privately; publication requires parent artifact-tracking and clean-checkout verification gates."
+}

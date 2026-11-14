@@ -1,0 +1,32 @@
+{
+  "gates/tests.log": {
+    "original_sha256": "9f5b85ab23bff7fe4cd5d1224820b363489fcc02e3dde8d981b36a2f5864c1ef",
+    "public_sha256": "cc84494f6c97d45b2cae341d4bf1fb6e2557538ddd9bc0779d77347c315d5ab7",
+    "derivation": "Exact absolute workspace prefix replaced with ${WORKSPACE}; no other change.",
+    "original_path": "target/verification/dxf-fixed-tests.log"
+  },
+  "gates/clippy.log": {
+    "original_sha256": "7a88e0297eeab6969f42413c3cfe0690dc84b39ffff665503820e562d39e2c47",
+    "public_sha256": "b8c40053f4226a71b887da90fd4c0befd7dd137250c657b0fe3513bf8ca66e46",
+    "derivation": "Exact absolute workspace prefix replaced with ${WORKSPACE}; no other change.",
+    "original_path": "target/verification/dxf-fixed-clippy.log"
+  },
+  "gates/package.log": {
+    "original_sha256": "b8c325b2d644cfc990dc9076c7ab3a20fa47057593434291318f37c8df0734ef",
+    "public_sha256": "aa5fd2f27ca1d8c6304de18c987330e8cbb247af902589e001eb87fb07747267",
+    "derivation": "Exact absolute workspace prefix replaced with ${WORKSPACE}; no other change.",
+    "original_path": "target/verification/dxf-fixed-package.log"
+  },
+  "gates/xtask.log": {
+    "original_sha256": "126cd536fcb4de9b6ba2f21ffa2fb0f00b07e6be057d28de553cb699fd3684e3",
+    "public_sha256": "20802d7c52b62d514704b455f8283a49f2c8db8359c9f147a441246a3b96649a",
+    "derivation": "Exact absolute workspace prefix replaced with ${WORKSPACE}; no other change.",
+    "original_path": "target/verification/dxf-fixed-xtask.log"
+  },
+  "gates/fmt.log": {
+    "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "derivation": "Original bytes unchanged. Final fmt rerun after native acceptance; no scoped source change.",
+    "original_path": "target/verification/dxf-final-fmt.log"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "stage": "headless CLI precheck only, GUI not launched",
+  "oracle_freeze_sha256": "20fc2dc605374c5ee9b4056c3716e18156266515db2a82bbc02f99288f7e6560",
+  "source_commit_declared": "5f4124c0b86a520fd06f2e7355bc5000fea9d8db",
+  "cli_sha256_declared": "e90ac57b9bd345ad1d844b4f3f9e684c96fa58af0f795d5f7a168ddfc3fad20f",
+  "cases": [
+    {
+      "case": "mixed",
+      "accepted": true,
+      "source_revision": 20,
+      "dxf_sha256": "722a2bf5b239d704d8aac21e0f3325c163830af39ce3d8c27ed8405a1b380d4d",
+      "entity_types": [
+        "LINE",
+        "LINE",
+        "SPLINE",
+        "LINE",
+        "LINE",
+        "LINE",
+        "LINE",
+        "LINE"
+      ],
+      "max_sample_error_mm": 5.684341886080802e-14,
+      "raw_handle_count": 37,
+      "known_rectangle_mm": null,
+      "audit_errors": 0,
+      "audit_fixes": 0,
+      "output_bytes_preserved": true,
+      "prior_report_reproduced_exactly": true
+    },
+    {
+      "case": "mixed-placement-resolution",
+      "accepted": true,
+      "source_revision": 20,
+      "dxf_sha256": "722a2bf5b239d704d8aac21e0f3325c163830af39ce3d8c27ed8405a1b380d4d",
+      "entity_types": [
+        "LINE",
+        "LINE",
+        "SPLINE",
+        "LINE",
+        "LINE",
+        "LINE",
+        "LINE",
+        "LINE"
+      ],
+      "max_sample_error_mm": 5.684341886080802e-14,
+      "raw_handle_count": 37,
+      "known_rectangle_mm": null,
+      "audit_errors": 0,
+      "audit_fixes": 0,
+      "output_bytes_preserved": true,
+      "prior_report_reproduced_exactly": true
+    },
+    {
+      "case": "rectangle",
+      "accepted": true,
+      "source_revision": 20,
+      "dxf_sha256": "a7a5627fc30151cf01e73bd0c80e2bcd8c55c85058cf9e3e695af9868d6bd7fd",
+      "entity_types": [
+        "LINE",
+        "LINE",
+        "LINE",
+        "LINE"
+      ],
+      "max_sample_error_mm": 0.0,
+      "raw_handle_count": 32,
+      "known_rectangle_mm": [
+        125.0,
+        250.0
+      ],
+      "audit_errors": 0,
+      "audit_fixes": 0,
+      "output_bytes_preserved": true,
+      "prior_report_reproduced_exactly": true
+    },
+    {
+      "case": "empty",
+      "accepted": true,
+      "source_revision": 20,
+      "dxf_sha256": "f9553444fbcc81b936b903fa44941dc656b191e12e856fbab373ce6feb8b9924",
+      "entity_types": [],
+      "max_sample_error_mm": 0.0,
+      "raw_handle_count": 27,
+      "known_rectangle_mm": null,
+      "audit_errors": 0,
+      "audit_fixes": 0,
+      "output_bytes_preserved": true,
+      "prior_report_reproduced_exactly": true
+    },
+    {
+      "case": "native-expected",
+      "accepted": true,
+      "source_revision": 21,
+      "dxf_sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "entity_types": [
+        "LINE",
+        "LINE",
+        "SPLINE",
+        "LINE",
+        "LINE",
+        "LINE",
+        "LINE",
+        "LINE"
+      ],
+      "max_sample_error_mm": 5.684341886080802e-14,
+      "raw_handle_count": 37,
+      "known_rectangle_mm": null,
+      "audit_errors": 0,
+      "audit_fixes": 0,
+      "output_bytes_preserved": true,
+      "prior_report_reproduced_exactly": true
+    }
+  ],
+  "failed_initial_wrapper": "Wrong interpreter failed import before evaluation; retained in original oracle-run-results.json; no output or criteria changes.",
+  "same_revision_repeat_identical": true,
+  "placement_and_resolution_variant_identical": true,
+  "native_desktop_acceptance": "pending final candidate and observed native scenario",
+  "scope_limitations": [
+    "No reference parity",
+    "No other CAD consumer",
+    "No import/apparel/garment round trip",
+    "No printing or printed scale",
+    "Pre-fix package headless only",
+    "Ignored local files are not published evidence"
+  ],
+  "cli_sha256_verified_by_independent_reader": "e90ac57b9bd345ad1d844b4f3f9e684c96fa58af0f795d5f7a168ddfc3fad20f",
+  "native_expected_vs_mixed_raw_sections_identical": true,
+  "native_expected_vs_mixed_only_revision_comment_differs": true,
+  "supplemental_comparison_note": "Initial ad hoc comment-only diff assertion assumed revision 20 without colon and failed; actual comments use revision: 20/21. Corrected comparison confirms the only change. Frozen oracle already accepted both before this supplementary check and was never changed.",
+  "original_output_sha256_after_review": {
+    "empty.dxf": "f9553444fbcc81b936b903fa44941dc656b191e12e856fbab373ce6feb8b9924",
+    "mixed-placement-resolution.dxf": "722a2bf5b239d704d8aac21e0f3325c163830af39ce3d8c27ed8405a1b380d4d",
+    "mixed-repeat.dxf": "722a2bf5b239d704d8aac21e0f3325c163830af39ce3d8c27ed8405a1b380d4d",
+    "mixed.dxf": "722a2bf5b239d704d8aac21e0f3325c163830af39ce3d8c27ed8405a1b380d4d",
+    "native-expected.dxf": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+    "rectangle.dxf": "a7a5627fc30151cf01e73bd0c80e2bcd8c55c85058cf9e3e695af9868d6bd7fd"
+  }
+}

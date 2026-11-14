@@ -1,0 +1,64 @@
+{
+  "accepted": true,
+  "supplemental_native_outputs_read": false,
+  "negative_witnesses": [
+    {
+      "name": "original precommit-on-Cancel clears Redo witness",
+      "rejected": true,
+      "reason": "redone must be exact source-derived r24/.05 document; Cancel must retain Redo"
+    },
+    {
+      "name": "wrong Redo revision despite correct resolution",
+      "rejected": true,
+      "reason": "redone must be exact source-derived r24/.05 document; Cancel must retain Redo"
+    },
+    {
+      "name": "Redo unavailable leaves baseline resolution",
+      "rejected": true,
+      "reason": "redone must be exact source-derived r24/.05 document; Cancel must retain Redo"
+    },
+    {
+      "name": "pending .055 draft committed",
+      "rejected": true,
+      "reason": "redone must be exact source-derived r24/.05 document; Cancel must retain Redo"
+    },
+    {
+      "name": "Undo did not restore .045",
+      "rejected": true,
+      "reason": "baseline must be exact source-derived r23/.045 document after one Undo"
+    },
+    {
+      "name": "unrelated authored geometry changed",
+      "rejected": true,
+      "reason": "redone must be exact source-derived r24/.05 document; Cancel must retain Redo"
+    },
+    {
+      "name": "Cancel discarded pending field text",
+      "rejected": true,
+      "reason": "observation post_cancel_pending_text: '0.045' != '0.055'"
+    },
+    {
+      "name": "Cancel committed an authoring change",
+      "rejected": true,
+      "reason": "observation post_cancel_unsaved_visible: True != False"
+    },
+    {
+      "name": "Cancel changed rest mesh",
+      "rejected": true,
+      "reason": "observation post_cancel_vertex_count: 1 != 907"
+    },
+    {
+      "name": "extra Redo attempt",
+      "rejected": true,
+      "reason": "observation redo_invocations: 2 != 1"
+    },
+    {
+      "name": "missing Undo setup",
+      "rejected": true,
+      "reason": "observation undo_invocations: 0 != 1"
+    }
+  ],
+  "negative_witness_count": 11,
+  "scope": "Supplement only: pending numeric field and Redo preservation on native ExportDXF Cancel; original FILE-005 oracle unchanged.",
+  "evaluator_sha256": "4fc083be1aa086c38f99459457c594ff875f2a9c7b1e1ef79ae1df758c51c830"
+}

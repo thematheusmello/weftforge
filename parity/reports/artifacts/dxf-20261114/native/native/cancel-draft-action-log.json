@@ -1,0 +1,57 @@
+{
+  "kind": "parent_native_supplement_observations",
+  "recorded_at": "2026-11-14T13:53:36.248575+00:00",
+  "freeze_sha256": "a93edd4e0275c752a65a6bb3d041828c580440b7314934eec7b5d301e4011d79",
+  "source_commit": "cd151b3b89e26d55a4dcd4525790006660c4e766",
+  "native_executable_sha256": "4cdc758b057975b47fe81306d4fec2c8f598e8ea5e5d83601c6eab2baa0d199b",
+  "pid": 65069,
+  "window_id": 62082,
+  "observations": [
+    {
+      "stage": "reset_history",
+      "observed": "Native Open of native/reopened.weftforge through canonical full-path picker. Two pieces, two seams,907vertices,resolution0.045,saved rest arrangement."
+    },
+    {
+      "stage": "create_redo",
+      "observed": "Single-clicked field[28,675], observed selected0.045; atomically pasted0.05 and Tab once. Observed0.050,785vertices,Unsaved. Invoked Undo exactly once, then native Save as cancel-draft-baseline.weftforge. Observed Saved and907vertices."
+    },
+    {
+      "stage": "pending_cancel",
+      "observed": "Single-clicked field, observed selected0.045; atomic paste0.055 without Tab. Observed focused0.055 with907vertices and no Unsaved. Invoked toolbar ExportDXF, selected canonical native/ and existing native-cancel-sentinel.dxf, then Cancel without Save/Replace."
+    },
+    {
+      "stage": "post_cancel",
+      "observed": "Full AX and screenshot showed focused field0.055,907vertices,no Unsaved,rest arrangement; status Export cancelled; pending edits retained. Held UI unchanged for single passive REA capture13:52:20-28UTC; no input/activation by capture agent."
+    },
+    {
+      "stage": "restore_and_redo",
+      "observed": "Clicked same field,Cmd-A; observed selected0.055. Atomic paste0.045 without Tab. Invoked Redo exactly once. Immediate helper read was unchanged; subsequent full AX/screenshot observed0.050,785vertices,Unsaved. No second Redo was invoked."
+    },
+    {
+      "stage": "save_redone",
+      "observed": "Native Save as cancel-draft-redone.weftforge in canonical native/. Observed Saved editable project atomically,785vertices; rest arrangement,simulation off,no modal. New CUA part completed."
+    }
+  ],
+  "saved_checkpoints": {
+    "cancel-draft-baseline.weftforge": {
+      "sha256": "82845ea75ab052839a1edf878662759f0e496f6c909183ac407d23fc6c9abd23",
+      "revision": 23,
+      "resolution_m": 0.045,
+      "allocator": 24
+    },
+    "cancel-draft-redone.weftforge": {
+      "sha256": "dd59234802b5dea8e3e1463763aef810697842b55c9290b77b8a9409fcf0e13a",
+      "revision": 24,
+      "resolution_m": 0.05,
+      "allocator": 24
+    }
+  },
+  "post_cancel_image": {
+    "path": "captures/dxf-pending-cancel-20261114T135220Z.png",
+    "sha256": "7968db1c1df076df4c50ca3cee3d12c90430eb0db0653520ed983980b502eded"
+  },
+  "limits": [
+    "Specific supplemental native Cancel/Redo case; no native path/write-failure or overwrite-warning case.",
+    "No new DXF export generated in this supplement; primary eight files remain immutable."
+  ]
+}

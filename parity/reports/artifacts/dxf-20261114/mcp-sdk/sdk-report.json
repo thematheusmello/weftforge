@@ -1,0 +1,190 @@
+{
+  "kind": "implementation_only_official_sdk_stdio_dxf_smoke",
+  "started_at": "2026-11-14T12:36:22.664539+00:00",
+  "client": "official Python mcp",
+  "client_version": "1.28.1",
+  "python_version": "3.13.0 (main, Nov 12 2025, 18:15:04) [Clang 17.0.0 (clang-1700.0.13.3)]",
+  "python_executable": "${PYTHON_INSTALL}/bin/python3",
+  "python_executable_sha256": "dae804f93cd396de84720747c66218ff0aed9f74385f71dd9b3e62c49ce5b2ce",
+  "sdk_module": "${PYTHON_INSTALL}/lib/python3.13/site-packages/mcp/__init__.py",
+  "sdk_files": {
+    "${PYTHON_INSTALL}/lib/python3.13/site-packages/mcp/__init__.py": "f66ae17959a1420edb67624dcd79da20860543e1d513b7d5c86ec0250cf8af72",
+    "${PYTHON_INSTALL}/lib/python3.13/site-packages/mcp/client/session.py": "92f812af17983f5a36b4703b065216cc49252fc59dbd04b753286fa78580b07a",
+    "${PYTHON_INSTALL}/lib/python3.13/site-packages/mcp/client/stdio/__init__.py": "a23227cfe1e3456f16ab41311486a399cf547fcc6b645399bf9bf3a6dc6cf654"
+  },
+  "script_sha256": "93403566c16ab4e87df2cdcc3ee578cb3767816735713e13dc3f519f0d9a2fbe",
+  "expectation_sha256": "acfa24832a746a0fcec1ebcf774280f18fc9c76f2d283c6401daa3a7637b5a89",
+  "inputs_before": {
+    "cli": "e90ac57b9bd345ad1d844b4f3f9e684c96fa58af0f795d5f7a168ddfc3fad20f",
+    "source": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb",
+    "comparison_dxf": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+    "native-input-copy.weftforge": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb",
+    "malformed.weftforge": "e9af7e4f999c939048997ae232a89c26b1c101f60a70f4f1ad1dcd25e785c82d",
+    "future.weftforge": "3b337d2241b991a489de4adfa1873fc1f07fc9404843b3e388fbf1c8d083bea8",
+    "invalid-source-sentinel.dxf": "8b0320a5c9d507aba29d15f10cfd125ea3238edd4a917fc3dfa1c0d807ef9a9e"
+  },
+  "limits": [
+    "Local stdio only; no network, listener, installation, Cargo, native UI or Actions.",
+    "Headless pre-UI-fix 5f4124c package only; no final-package acceptance.",
+    "SDK output compares with accepted CLI geometry output, not a native UI result.",
+    "Legacy 2025-11-25 official-client subset only; no current-profile client claim.",
+    "No CAD consumer, apparel round-trip, printer-scale, physical-sewing or reference-parity claim.",
+    "Private ignored execution artifacts; not tracked published delivery.",
+    "Same-source rejection uses an owned byte-identical source copy."
+  ],
+  "transcript_kind": "Original decoded SDK stream messages, not literal transport bytes.",
+  "calls": [
+    {
+      "case": "new_output",
+      "result": {
+        "_meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"input\":\"${WORKSPACE}/.local/dxf-acceptance-20261114/input/native-expected.weftforge\",\"kind\":\"authored_dxf\",\"length_unit\":\"mm\",\"output\":\"${WORKSPACE}/.local/dxf-sdk-20261114/sdk-export.dxf\",\"scope\":\"Exterior pattern boundaries only; sewing, materials, grain and 3D placements require the native project.\",\"source_revision\":21,\"up\":\"pattern U = +X, V = +Y; Z = 0\"}",
+            "annotations": null,
+            "_meta": null
+          }
+        ],
+        "structuredContent": {
+          "input": "${WORKSPACE}/.local/dxf-acceptance-20261114/input/native-expected.weftforge",
+          "kind": "authored_dxf",
+          "length_unit": "mm",
+          "output": "${WORKSPACE}/.local/dxf-sdk-20261114/sdk-export.dxf",
+          "scope": "Exterior pattern boundaries only; sewing, materials, grain and 3D placements require the native project.",
+          "source_revision": 21,
+          "up": "pattern U = +X, V = +Y; Z = 0"
+        },
+        "isError": false
+      },
+      "destination_before_sha256": null,
+      "output_sha256": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+      "equals_approved_cli_bytes": true
+    },
+    {
+      "case": "same_input_output",
+      "result": {
+        "_meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"error\":\"export must not replace its source project\"}",
+            "annotations": null,
+            "_meta": null
+          }
+        ],
+        "structuredContent": {
+          "error": "export must not replace its source project"
+        },
+        "isError": true
+      },
+      "destination_before_sha256": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb",
+      "destination_after_sha256": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb"
+    },
+    {
+      "case": "malformed_source",
+      "result": {
+        "_meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"error\":\"EOF while parsing a value at line 1 column 44\"}",
+            "annotations": null,
+            "_meta": null
+          }
+        ],
+        "structuredContent": {
+          "error": "EOF while parsing a value at line 1 column 44"
+        },
+        "isError": true
+      },
+      "destination_before_sha256": "8b0320a5c9d507aba29d15f10cfd125ea3238edd4a917fc3dfa1c0d807ef9a9e",
+      "destination_after_sha256": "8b0320a5c9d507aba29d15f10cfd125ea3238edd4a917fc3dfa1c0d807ef9a9e"
+    },
+    {
+      "case": "future_source",
+      "result": {
+        "_meta": null,
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"error\":\"Unsupported WeftForge project version; no data was loaded\"}",
+            "annotations": null,
+            "_meta": null
+          }
+        ],
+        "structuredContent": {
+          "error": "Unsupported WeftForge project version; no data was loaded"
+        },
+        "isError": true
+      },
+      "destination_before_sha256": "8b0320a5c9d507aba29d15f10cfd125ea3238edd4a917fc3dfa1c0d807ef9a9e",
+      "destination_after_sha256": "8b0320a5c9d507aba29d15f10cfd125ea3238edd4a917fc3dfa1c0d807ef9a9e"
+    }
+  ],
+  "initialized": {
+    "_meta": null,
+    "protocolVersion": "2025-11-25",
+    "capabilities": {
+      "experimental": null,
+      "logging": null,
+      "prompts": null,
+      "resources": null,
+      "tools": {
+        "listChanged": null
+      },
+      "completions": null,
+      "tasks": null
+    },
+    "serverInfo": {
+      "name": "weftforge-cli",
+      "title": null,
+      "version": "0.1.0",
+      "websiteUrl": null,
+      "icons": null
+    },
+    "instructions": "Local stateless file authoring in SI units. Inspect stable IDs before edits. Each command array commits as one transaction. No active GUI control, simulation jobs, or persistent undo."
+  },
+  "tool_names": [
+    "project_inspect",
+    "project_create",
+    "project_execute",
+    "project_export_svg",
+    "project_export_obj",
+    "project_export_dxf"
+  ],
+  "export_input_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "input": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "output": {
+        "minLength": 1,
+        "type": "string"
+      }
+    },
+    "required": [
+      "input",
+      "output"
+    ],
+    "type": "object"
+  },
+  "stderr_bytes": 0,
+  "status": "passed_bounded_legacy_dxf_and_preservation_smoke",
+  "inputs_after": {
+    "cli": "e90ac57b9bd345ad1d844b4f3f9e684c96fa58af0f795d5f7a168ddfc3fad20f",
+    "source": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb",
+    "comparison_dxf": "ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7",
+    "native-input-copy.weftforge": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb",
+    "malformed.weftforge": "e9af7e4f999c939048997ae232a89c26b1c101f60a70f4f1ad1dcd25e785c82d",
+    "future.weftforge": "3b337d2241b991a489de4adfa1873fc1f07fc9404843b3e388fbf1c8d083bea8",
+    "invalid-source-sentinel.dxf": "8b0320a5c9d507aba29d15f10cfd125ea3238edd4a917fc3dfa1c0d807ef9a9e"
+  },
+  "all_frozen_files_unchanged": true,
+  "client_messages": 7,
+  "server_messages": 6,
+  "finished_at": "2026-11-14T12:36:22.688400+00:00",
+  "transcript_sha256": "735d72326f7e9a7693340312e458e7b3034bf4a9c24f153575827433fde9980d"
+}

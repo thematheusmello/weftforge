@@ -1,0 +1,15 @@
+{
+  "source_commit": "5f4124c0b86a520fd06f2e7355bc5000fea9d8db",
+  "declared_at": "2026-11-14T12:24:38.880375+00:00",
+  "stage": "headless CLI precheck only; GUI pending failure-preservation fix and not launched",
+  "cli_sha256": "e90ac57b9bd345ad1d844b4f3f9e684c96fa58af0f795d5f7a168ddfc3fad20f",
+  "oracle_freeze_sha256": "20fc2dc605374c5ee9b4056c3716e18156266515db2a82bbc02f99288f7e6560",
+  "cases": {
+    "mixed": "5c12187aded14c962b76dba7526a68f13395c9f5a2b92f04015ea8e3eff8d82c",
+    "mixed-placement-resolution": "6f28c49cd943c418d3334abc1f6e1a111e8030d2f49ed10bda50d2f3ea2470d7",
+    "rectangle": "e404bbc181c55b91a6203b90cf10f94a78f19da615fd679732bf8ab7dc2d2f18",
+    "empty": "864bd308bff8cb3d461bdd91f7f5bdef1e4de34692f2fdeaabf1ec74181358c5",
+    "native-expected": "04c7e54d1ef459f4bf2d965d57c6e4cf816e4f9c2b049b10da0bbf8a2a984fbb"
+  },
+  "criteria": "Exact frozen FILE-005-v1 raw/ordinary ezdxf read/audit/geometry checks. No output repair or tolerance change."
+}
