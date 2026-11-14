@@ -65,11 +65,13 @@ Packaged CLI `c7e63b52d60b293357ba60c49dfed3643472ab177352f2501ebfb207f7ed1092`
 passes the three-command checker2792: actual fit exits1 for quality and preserves
 the prior output; simulate/benchmark exit0 with independently matching attribution.
 The native47-file and independent88-file candidates are frozen. The complete
-167-file bundle is now staged and hash-valid, with no binary/target files.
+167-file bundle is committed and hash-valid, with no binary/target files.
 [WF-20261114-STRAIN-ATTRIBUTION-001](parity/reports/WF-20261114-STRAIN-ATTRIBUTION-001.json)
-registers 170 artifacts and bounded visibility acceptance. Root xtask7488 passes
+registers bounded visibility acceptance. Root xtask7488 passes
 54Python checks, registry/map and actual CLI help. Strict tracked-clean replay
-is next; ignored preparation alone is not delivery.
+passed at clean `f68a9865`: all167 files tracked, strict source/contract checks,
+headless/native/CLI saved replays, registry/map and all1,681 report artifacts.
+Five separate publication proof files bring this report to175 artifacts.
 
 ## Ordered sewing already delivered
 
@@ -130,18 +132,23 @@ remain unobserved. The one-click manual diagnosis question is pending. This is
 input noncompletion, not absence; preserve the earlier Rectangle observation.
 See [dated research notes](spec/features/SEW-002-runtime-notes-20261114.md).
 
-1. Commit the staged visibility checkpoint, then run clean-checkout
-   registry/map/strict portable saved-output replay and artifact/source checks.
+1. Commit the clean-checkout visibility receipts and final metadata, verify them
+   from a clean checkout, then publish the source/evidence PR.
 2. Publish the strain-attribution increment preserving all source/evidence
    ancestry; verify Actions stays disabled and no head/merge workflows run.
-3. Review `force_balance_design`'s static-only plan before any new instrumentation
-   or simulation. Distinguish telescoping projection impulses from independently
-   justified contact reactions; no production tuning is authorized yet.
+3. Follow the approved private observational overlay and single analytical case
+   in `.local/force-balance-design-20261114/`. Root reviewed its closed-form
+   arithmetic. Freeze patch/schema/driver/analyzer/binary before execution;
+   original-shirt replay requires a later root review of the analytical result.
+   No production solver changes or tuning are authorized. Correction accounting
+   alone cannot establish physical contact reactions or equilibrium.
 4. Continue native/reference construction and all remaining roadmap work.
 
 All reported Rust builds, original three-case diagnostics, independent visibility
 regression, CLI and native simulations/checks are terminal. The retained native
 application is open, not a running simulation job. Unified evidence preparation
-71767 is terminal0; the static force-balance design agent is active. Recheck actual
-handles/ledgers before resuming; no new simulation is scheduled. Raw ledgers stay
+71767 and clean40401/36772/59030/47879 are terminal0. The private force-balance
+agent is preparing the frozen observational overlay; its analytical-only run is
+authorized after preregistration, with no execution handle reported yet. Recheck
+actual handles/ledgers before resuming. Raw ledgers stay
 ignored; use separate Cargo targets per worktree.
