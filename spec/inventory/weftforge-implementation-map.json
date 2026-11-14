@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "purpose": "Source-pinned engineering crosswalk and bounded handoff queue, not a second implementation/verification status registry or a complete product inventory.",
-  "source_commit": "13f1d81d238801da617f68525660ae6fa1d01500",
+  "source_commit": "8fb684e14ecc4685acefd2acfeea3e46a2dc3df5",
   "reference_build": "2026.1.237 (r58920)",
   "inputs": [
     {
@@ -20,7 +20,7 @@
   "status_authority": {
     "path": "parity/features.yaml",
     "lookup": "Join groups[].feature_ids to features[].id at the revision being reported. Read implementation_status, reference_observation_status, verification_status and freshness there; no status value is copied here.",
-    "pinned_registry_sha256": "0f63fd320c0b726a6b0fb2e00c7173bcdb08cfbd1a4c68fd1bd4dd2d4c8b52c8"
+    "pinned_registry_sha256": "15df2f6bae97255336b930440da4a086cd3c8e525197183557e33640ee228869"
   },
   "coverage_semantics": [
     "902 catalog IDs are entry-path discovery records, not the feature denominator. All previous 893 entries and 201 packets remain; nine added curvature/free-sewing/dialog records and one bounded preview packet do not complete feature behaviors. Counts of groups or packets are ownership counts, not parity percentages.",
@@ -299,7 +299,7 @@
     "ui_numeric_precision": {
       "path": "apps/weftforge/src/main.rs",
       "anchor": "fn numeric_value<'a>(",
-      "scope": "Focused f64 editors format round-trip text to avoid passive blur rounding; unfocused presentation uses the existing formatter. This is a source/implementation-test change, not a native Size-workflow success or a completed forthcoming Size fix."
+      "scope": "Focused f64 editors format round-trip text to avoid passive blur rounding; unfocused presentation uses the existing formatter. The separate Size-field validation fix is present in current source, but formatting/implementation tests do not establish native Size acceptance or reference parity."
     },
     "ui_numeric_precision_tests": {
       "path": "apps/weftforge/src/main.rs",
@@ -5700,10 +5700,10 @@
       "shared_commands": [
         "ResizePiece"
       ],
-      "candidate_behavior": "ResizePiece and native Size controls provide a bounding-box resize candidate; focused numeric round-trip formatting is present in source, but a separate Size-field fix and successful native Size acceptance are still pending. A complete-pattern drag/rotate/scale/mirror transform tool remains absent.",
+      "candidate_behavior": "ResizePiece and native Size controls provide a bounding-box resize candidate. Focused numeric round-trip formatting and the reviewed Size-field validation fix are now implemented in source; Size no longer imposes the former native widget clamp and uses shared command validation. Native proof/publication for the fixed candidate remains pending. A complete-pattern drag/rotate/scale/mirror transform tool remains absent.",
       "missing_functionality": [
         "2D transform tool, typed whole-selection transform command, pivots, exact numeric entry and relation preservation.",
-        "Do not infer a successful native Size edit from numeric-formatting source/tests; the separate Size fix and exact transaction/persistence/runtime acceptance remain open."
+        "Do not infer a successful native Size workflow from the source validation fix or implementation-only checks. Publish/review native evidence for the fixed candidate, including exact dimensions, failed-input preservation, history and editable reopen."
       ],
       "runtime_questions": [
         "What handles, pivots, modifier locks, numeric entry and selection scopes are supported, and which seam/grain data transform?"
@@ -19149,15 +19149,15 @@
       "group_id": "free-sewing-length-preview"
     }
   ],
-  "source_snapshot_note": "This retained pin combines the current candidate Rust source with the latest 902-ID reviewed catalog. Source now includes a 500/500 mm numeric rectangle modal for the bounded unlinked valid case, stable widget scopes, modal input/AccessKit isolation, focused-history and unchanged-RGB-buffer fixes. These source changes await fresh native candidate acceptance and do not complete the broad rectangle/history/accessibility contracts. Immutable initial contact diagnostics use a conservative BVH; live collision solving and subsequent/reset contact diagnostics remain quadratic. All 18 shared Command variants and the authored schema are unchanged. The current pin also contains focused numeric round-trip formatting and its implementation-only checks. A separate Size-field fix is still forthcoming, and no successful native Size edit or new numeric runtime acceptance is claimed. The reference Free Sewing observation ends at a 100 mm first-side preview; second-side completion, reversal, arc-length endpoint equivalence and sewn simulation are unconfirmed.",
+  "source_snapshot_note": "This exact committed pin contains the reviewed 902-ID catalog, corrected SEW-002 capture-gap summary, current numeric rectangle/history/modal/precision code, and the reviewed Size-field validation fix. Size edits now defer validation to shared ResizePiece instead of imposing the former native widget clamp. Native proof/publication for the fixed candidate remains pending; the retained failed run is not a pass. Initial-only contact BVH and quadratic live/later diagnostic limits remain unchanged. No new command/schema, catalog ID, behavior completion or parity claim is introduced; Free Sewing remains a first-side 100 mm preview with unconfirmed second side/reversal/arc-length equivalence.",
   "expansion_origin": {
-    "previous_map_commit": "7d901305f541e8cdcf77200eab47ead825c19ed8",
-    "previous_map_sha256": "528bace0399c7c16f84d218c255322dba0d77f6706c992a61d5f9c85c75e9282",
-    "previous_source_commit": "3548de48983bd1a897c0a6433771cd695398ee60",
-    "preserved_catalog_ids": 893,
-    "additional_component_ids": 9,
-    "catalog_commit": "13f1d81d238801da617f68525660ae6fa1d01500",
-    "preservation_rule": "Preserve all previous 893 entry records, 201 packet definitions and first three bounded slices. Only explicit source_rechecks or reviewed-contract reference_rechecks may replace obsolete group descriptions; no old entry, variant or status-authority rule is removed. Retain all catalog/source anchors as ancestors."
+    "previous_map_commit": "b1f01564c375a033950dd91de926a6c8e2b0a1e4",
+    "previous_map_sha256": "44d70edea7b062fe6ff112e5ebc60b2ffb3c2876d2e3d8a5ae3c9e952dbf6c73",
+    "previous_source_commit": "13f1d81d238801da617f68525660ae6fa1d01500",
+    "preserved_catalog_ids": 902,
+    "additional_component_ids": 0,
+    "catalog_commit": "8fb684e14ecc4685acefd2acfeea3e46a2dc3df5",
+    "preservation_rule": "This is an anchor/description refresh with no new catalog or behavior. Preserve all 902 prior entries, 202 packet definitions and first three bounded slices exactly; retain prior catalog/source anchors as ancestors. Only the declared source recheck replaces obsolete Size-fix wording."
   },
   "reviewed_contract_sources": [
     {
@@ -19182,8 +19182,8 @@
     },
     {
       "path": "spec/features/SEW-002-runtime-20261114.md",
-      "sha256": "b55d24ab54ab93562c59434ca332623b97fa2109aa2e31b29a567ab6b752ed9c",
-      "scope": "One original replication setup, one curvature gesture/history and a 100 mm first-side Free Sewing preview. No confirmed second side, completed or reversed seam, measured exact curve/arclength endpoints, successful Escape cancellation, curved export/reopen or simulation comparison."
+      "sha256": "8e5163fcb2968ac46264edf9faea370d1d25eecab5ec08cf8f8195af226db7e7",
+      "scope": "One original replication setup, curvature gesture/history and 100 mm first-side preview only. The 213-node before capture is truncated with ten AXError -25202 attribute failures across two nodes; later 214-node selected-property captures are truncated with five failures at one node. First-side/final blank-property captures have 92 nodes without gaps. No confirmed second side, completed/reversed seam, exact curve/arc-length endpoint, successful Escape cancellation or sewing simulation."
     },
     {
       "path": "spec/observations/REF-SEW-002-FREE-PARTIAL-001.json",
@@ -19194,9 +19194,10 @@
   "source_rechecks": [
     {
       "group_id": "pattern-transform-tool",
-      "reason": "Current desktop source adds focused numeric round-trip formatting, while the Size-field workflow remains under a separate pending fix; retain the backend candidate without claiming runtime success.",
+      "reason": "The reviewed Size-field source fix removes the former widget clamp and delegates validation to the shared command; replace forthcoming-fix wording without promoting the retained failed run or unpublished native proof.",
       "changed_fields": [
-        "candidate_behavior"
+        "candidate_behavior",
+        "missing_functionality"
       ],
       "source_refs": [
         "commands",
@@ -19207,14 +19208,5 @@
       ]
     }
   ],
-  "reference_rechecks": [
-    {
-      "group_id": "rectangle",
-      "changed_fields": [
-        "missing_functionality"
-      ],
-      "contract_path": "spec/features/SEW-002-runtime-20261114.md",
-      "reason": "The reviewed run executes one explicit two-rectangle replication setup. Replace the obsolete blanket unexecuted-replication wording while retaining all broader formula, linking, limits/cancel and history gaps."
-    }
-  ]
+  "reference_rechecks": []
 }

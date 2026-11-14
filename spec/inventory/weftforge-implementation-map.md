@@ -2,7 +2,7 @@
 
 This source-pinned engineering map assigns every entry in the reviewed menu and component catalogs. It preserves the complete target and prepares bounded implementation handoffs. It does not establish feature completion or reference parity.
 
-Source: `13f1d81d238801da617f68525660ae6fa1d01500`. Reference build: `2026.1.237 (r58920)`. [Machine-readable map](weftforge-implementation-map.json).
+Source: `8fb684e14ecc4685acefd2acfeea3e46a2dc3df5`. Reference build: `2026.1.237 (r58920)`. [Machine-readable map](weftforge-implementation-map.json).
 
 Coverage: **902 unique IDs** = 589 menu nodes + 313 component-catalog records; classifications are 498 action candidates, 312 in-scope components, 86 containers, 3 provisional headings and 3 excluded vendor administration entries. The menu input contains 17 roots, 572 nonroot entries and 505 leaf-like nodes. **These counts are not a feature denominator.**
 
@@ -50,9 +50,11 @@ The [reviewed curve/Free Sewing contract](../features/SEW-002-runtime-20261114.m
 
 One original curve gesture/history changed a displayed 200.0 mm edge to 206.9 mm, then restored those displays through one Undo/Redo. Exact controls, continuous arc length and curved export geometry remain unmeasured; the one-decimal display supports no 0.01 mm endpoint claim. C/M hints and the 3D checked label are not executed shortcut or 3D gesture evidence.
 
+The corrected capture summary retains the truncated 213-node before capture with ten attribute failures across two nodes, and truncated later 214-node selected-property captures with five failures at one node. The first-side and final blank-property captures have 92 nodes without gaps.
+
 The numeric Length dialog accepted 100 mm through keyboard replacement, Tab and OK and showed a first-side preview. The initial 90.6 mm value depended on pointer state. **The second side is unconfirmed: no completed seam, reversed correspondence, independent arc-length equivalence or sewing simulation was observed.** One Escape attempt left the preview visible; delivery/cancellation remains unresolved. Switching to Edit Sewing removed the unfinished preview. The unexpected viewport shift has unknown cause; configured Smart Panning alone does not explain it.
 
-The source pin includes focused numeric round-trip formatting and its implementation-only checks. The separate Size-field fix is still forthcoming; no successful native Size edit or new numeric runtime acceptance is claimed. Remaining work is to reopen/export the curved checkpoint, resolve preview/cancel state, complete and reverse both sides, and independently compare endpoints using an original asymmetric curve before sewing/refinement/physics claims.
+The exact committed source pin includes focused numeric round-trip formatting and the reviewed Size-field validation fix, which removes the former widget clamp and delegates validation to ResizePiece. Native proof/publication for the fixed candidate remains pending; the retained failed run is not promoted to a pass. Remaining work is to reopen/export the curved checkpoint, resolve preview/cancel state, complete and reverse both sides, and independently compare endpoints using an original asymmetric curve before sewing/refinement/physics claims.
 
 ## First three executable parts
 
@@ -338,7 +340,7 @@ The existing 56 coarse feature contracts remain authoritative and discovery is i
 python3 spec/inventory/verify_implementation_map.py
 ```
 
-The dependency-free check verifies exact 902-ID coverage and uniqueness, preservation of the previous 893 entries and 201 packets, catalog/path/classification fidelity, pinned input hashes, valid feature/source/fixture/owner links, packet/group/dependency integrity and an acyclic dependency graph. It rejects copied status fields. It validates mapping structure, not reference behavior. Full Rust gates are for integrated source changes; this artifact-only mapping does not change the application.
+The dependency-free check verifies exact 902-ID coverage and uniqueness, preservation of all previous 902 entries and 202 packets, catalog/path/classification fidelity, pinned input hashes, valid feature/source/fixture/owner links, packet/group/dependency integrity and an acyclic dependency graph. It rejects copied status fields. It validates mapping structure, not reference behavior. Full Rust gates are for integrated source changes; this artifact-only mapping does not change the application.
 
 ## Input pins
 
@@ -347,6 +349,6 @@ The dependency-free check verifies exact 902-ID coverage and uniqueness, preserv
 | [md-2026.1.237-main-menus.json](md-2026.1.237-main-menus.json) | 589 | `0d0ebb92cac1d64a717249dc9f10fbb4ac7256b447442d99c3eb88a5314dece9` |
 | [md-2026.1.237-components.json](md-2026.1.237-components.json) | 313 | `a5234d53d4554151b5a22e30d2ff3a47a35f9ab93570eb10b485a1575701cbe7` |
 
-Pinned registry SHA-256: `0f63fd320c0b726a6b0fb2e00c7173bcdb08cfbd1a4c68fd1bd4dd2d4c8b52c8`. The hash records the mapping review input; current feature status is always read from the authoritative registry, including later revisions. The retained catalog commit is the source pin and an ancestor of this map update; integration must preserve that history.
+Pinned registry SHA-256: `15df2f6bae97255336b930440da4a086cd3c8e525197183557e33640ee228869`. The hash records the mapping review input; current feature status is always read from the authoritative registry, including later revisions. The retained catalog commit is the source pin and an ancestor of this map update; integration must preserve that history.
 
-Previous reviewed map: `7d901305f541e8cdcf77200eab47ead825c19ed8`, SHA-256 `528bace0399c7c16f84d218c255322dba0d77f6706c992a61d5f9c85c75e9282`. Its 893 entry records, 201 packets and first three bounded slices are preserved exactly; this includes the earlier 650- and 755-entry inventories. The checker rejects missing/duplicate new IDs, changed prior entries/packets and invalid source/catalog/contract anchors; source/reference descriptions need explicit reviewed rechecks.
+Previous reviewed map: `b1f01564c375a033950dd91de926a6c8e2b0a1e4`, SHA-256 `44d70edea7b062fe6ff112e5ebc60b2ffb3c2876d2e3d8a5ae3c9e952dbf6c73`. All 902 entry records, 202 packets and first three bounded slices are preserved exactly. This refresh adds no catalog ID or behavior; it corrects committed source/contract/registry anchors and obsolete Size-fix wording. The checker rejects missing/duplicate IDs, changed prior entries/packets and invalid source/catalog/contract anchors.
