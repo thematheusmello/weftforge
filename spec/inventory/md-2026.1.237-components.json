@@ -3,7 +3,7 @@
   "product_build": "2026.1.237 (r58920)",
   "status": "partial_observed_presence_values_and_bounded_original_workflows",
   "counts": {
-    "records": 313,
+    "records": 339,
     "complete_behavior_contracts": 0
   },
   "limitations": [
@@ -20,7 +20,8 @@
     "Native preference records are transition diffs with screenshots. Foreground modal REA selection fails; source bindings and that limitation stay explicit.",
     "Preference shortcut categories are collapsed. Disabled Action hints are not evidence of active global shortcut behavior.",
     "Unit System Millimeter and Decimal Places 1 do not establish a regional numeric locale or every import/export unit.",
-    "Curvature and free-sewing records qualify one original edge/history and a100 mm first-side preview only. Completed/reversed sewing, numeric limits, arc-length endpoint measurements and cloth physics remain unobserved."
+    "Curvature and free-sewing records qualify one original edge/history and a100 mm first-side preview only. Completed/reversed sewing, numeric limits, arc-length endpoint measurements and cloth physics remain unobserved.",
+    "The whole-edge case observes one 300 mm pair, one Undo/Redo and document reopen. Its final native run was interrupted after partial input; after-captures, not a clean driver status, establish the resulting pair. Reversal, partial completion, physical correspondence and simulation remain unqualified."
   ],
   "records": [
     {
@@ -8562,6 +8563,658 @@
       ],
       "note": "Unlabeled AX button adjacent to the dialog title; close effect unexecuted.",
       "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-64782BAFC2EF",
+      "parent_path": [
+        "2D toolbar"
+      ],
+      "path": [
+        "2D toolbar",
+        "Segment Sewing"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "bounded_whole_pair_history_document_reopen",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-SEGMENT-SEWING-HINT-20261114"
+      ],
+      "note": "Menu route executed; N is a displayed hint only. Linked case records one original pair, history and document reopen; no simulation or broad sewing qualification.",
+      "shortcut": "N"
+    },
+    {
+      "id": "MDUI-C56F24A4486A",
+      "parent_path": [
+        "3D toolbar"
+      ],
+      "path": [
+        "3D toolbar",
+        "Segment Sewing"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-SEGMENT-SEWING-HINT-20261114"
+      ],
+      "note": "Mirrored checked label after menu activation. No 3D canvas sewing gesture executed."
+    },
+    {
+      "id": "MDUI-804E34EF0E39",
+      "parent_path": [
+        "Property Editor"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam"
+      ],
+      "kind": "AXStaticText",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Seam",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Observed selected-seam panel header; control effects/ranges untested."
+    },
+    {
+      "id": "MDUI-C61D8C18A857",
+      "parent_path": [
+        "Property Editor",
+        "Seam"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Information"
+      ],
+      "kind": "section label",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Information",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ]
+    },
+    {
+      "id": "MDUI-CA01EEC69D42",
+      "parent_path": [
+        "Property Editor",
+        "Seam"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Name"
+      ],
+      "kind": "AXTextField",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Generated original seam name retained privately and equal after Redo/reopen. Naming algorithm and name edits untested."
+    },
+    {
+      "id": "MDUI-BF17A39F2A20",
+      "parent_path": [
+        "Property Editor",
+        "Seam"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Sewing Line Type"
+      ],
+      "kind": "section label",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Sewing Line Type",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Visible heading; flattened AX text joins this heading with a later Tension label."
+    },
+    {
+      "id": "MDUI-1CD443C0327F",
+      "parent_path": [
+        "Property Editor",
+        "Seam"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Turned"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Observed current Off state; toggle effect unexecuted."
+    },
+    {
+      "id": "MDUI-D77028ED28D0",
+      "parent_path": [
+        "Property Editor",
+        "Seam"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Tension"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Observed current Off state; toggle effect unexecuted."
+    },
+    {
+      "id": "MDUI-483DAAF15086",
+      "parent_path": [
+        "Property Editor",
+        "Seam"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Set Sublayer"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Observed current Off state; toggle effect unexecuted."
+    },
+    {
+      "id": "MDUI-53756856F18C",
+      "parent_path": [
+        "Property Editor",
+        "Seam"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Topstitch"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Observed current Off state; toggle effect unexecuted."
+    },
+    {
+      "id": "MDUI-11912AECEC8C",
+      "parent_path": [
+        "Property Editor",
+        "Seam"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Puckering"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Observed current Off state; toggle effect unexecuted."
+    },
+    {
+      "id": "MDUI-BEAD39BAE1A6",
+      "parent_path": [
+        "Property Editor",
+        "Seam",
+        "Fold Strength"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Fold Strength",
+        "Field"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 5,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Field/Slider are reviewer descriptors for paired observed controls. No unit printed in this capture; range and edits untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-045BE6C6B35C",
+      "parent_path": [
+        "Property Editor",
+        "Seam",
+        "Fold Strength"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Fold Strength",
+        "Slider"
+      ],
+      "kind": "AXSlider",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 5,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Field/Slider are reviewer descriptors for paired observed controls. No unit printed in this capture; range and edits untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-6D1F1323C9D5",
+      "parent_path": [
+        "Property Editor",
+        "Seam",
+        "Fold Angle"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Fold Angle",
+        "Field"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 180,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Field/Slider are reviewer descriptors for paired observed controls. No unit printed in this capture; range and edits untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-596C51F16D49",
+      "parent_path": [
+        "Property Editor",
+        "Seam",
+        "Fold Angle"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Fold Angle",
+        "Slider"
+      ],
+      "kind": "AXSlider",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 180,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Field/Slider are reviewer descriptors for paired observed controls. No unit printed in this capture; range and edits untested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-4F2FDF1CA7D1",
+      "parent_path": [
+        "Property Editor",
+        "Seam"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "3D Seamline"
+      ],
+      "kind": "AXMenuButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Plain Seam",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Current selector value only; available options and edits unobserved."
+    },
+    {
+      "id": "MDUI-10B6A4C5A0B8",
+      "parent_path": [
+        "Property Editor",
+        "Seam"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Normal Map"
+      ],
+      "kind": "section label",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Normal Map",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ]
+    },
+    {
+      "id": "MDUI-8097F97E5399",
+      "parent_path": [
+        "Property Editor",
+        "Seam",
+        "Normal Map",
+        "Intensity"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Normal Map",
+        "Intensity",
+        "Field"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 10,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Field/Slider descriptors identify paired controls. Unit not printed; no range, texture edit or rendering effect tested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-605EA23F2A39",
+      "parent_path": [
+        "Property Editor",
+        "Seam",
+        "Normal Map",
+        "Intensity"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Normal Map",
+        "Intensity",
+        "Slider"
+      ],
+      "kind": "AXSlider",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 10,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Field/Slider descriptors identify paired controls. Unit not printed; no range, texture edit or rendering effect tested.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-9A5EDA8CAD21",
+      "parent_path": [
+        "Property Editor",
+        "Seam",
+        "Normal Map"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Normal Map",
+        "Thickness (mm)"
+      ],
+      "kind": "AXIncrementor",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1.5,
+      "unit": "mm",
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ]
+    },
+    {
+      "id": "MDUI-7424E9944514",
+      "parent_path": [
+        "Property Editor",
+        "Seam",
+        "Normal Map"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Normal Map",
+        "Preview"
+      ],
+      "kind": "AXImage",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Observed image control. Vendor asset path/content excluded; no asset read, export or reproduction.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-7A8871C24440",
+      "parent_path": [
+        "Property Editor",
+        "Seam",
+        "Normal Map"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Normal Map",
+        "Open with"
+      ],
+      "kind": "AXButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-SEGMENT-SEWING-HINT-20261114"
+      ],
+      "note": "Literal native description; action not executed."
+    },
+    {
+      "id": "MDUI-FE97134F57AA",
+      "parent_path": [
+        "Property Editor",
+        "Seam",
+        "Normal Map"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Normal Map",
+        "Unlabeled checkbox"
+      ],
+      "kind": "AXCheckBox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-SEGMENT-SEWING-HINT-20261114"
+      ],
+      "note": "Unlabeled checkbox presence/value only; purpose/effect unknown.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-1467BEBB7AAC",
+      "parent_path": [
+        "Property Editor",
+        "Seam",
+        "Normal Map"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Normal Map",
+        "Delete"
+      ],
+      "kind": "AXButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-SEGMENT-SEWING-HINT-20261114"
+      ],
+      "note": "Literal native description; action not executed."
+    },
+    {
+      "id": "MDUI-8A8407147B5D",
+      "parent_path": [
+        "Property Editor",
+        "Seam"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Header action 1"
+      ],
+      "kind": "AXButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Unlabeled header action; visible icon presence only, effect unexecuted.",
+      "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-B966000680B6",
+      "parent_path": [
+        "Property Editor",
+        "Seam"
+      ],
+      "path": [
+        "Property Editor",
+        "Seam",
+        "Header action 2"
+      ],
+      "kind": "AXButton",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521"
+      ],
+      "note": "Unlabeled header action; visible icon presence only, effect unexecuted.",
+      "reviewer_descriptor": true
     }
   ],
   "observation_sources": [
@@ -8946,6 +9599,224 @@
       "observed_at": "2026-11-14T04:28:24.689Z",
       "context": "One Escape attempt left visible first-side preview; input delivery/cancellation semantics unresolved.",
       "privacy": "Complete record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "ev_ff0caa3ee7452280e1de74a58ae53ebaf6d98d82c4e3323a5564bb954a9cac40",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "d797f67f5726db002e75deb331e945c7adbabf19e02aac2cc4af42da55575915",
+      "started_at": "2026-11-14T05:55:57.060472+00:00",
+      "completed_at": "2026-11-14T05:56:04.747324+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_1531af1e1825b222c0b78d01802f58aefcf341d6b3a0741e7531e2baa880bd6a",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "7e9617c0f6a46bcc7f660aa1d20559de3f9578d97f0b08f2099a07400251cfdb",
+      "started_at": "2026-11-14T05:59:19.983218+00:00",
+      "completed_at": "2026-11-14T05:59:27.610497+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_c8392e5e61ba58421f28d1a65a88018b42162e44ec595df7aa0ab7d4b4483bdf",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "6b2f1bb06c286610a556e21f4922bbc8ceb8e6d43374975897d57551805858ff",
+      "started_at": "2026-11-14T06:01:25.388979+00:00",
+      "completed_at": "2026-11-14T06:01:33.119233+00:00",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_8309ab1a8efff245e56edcadf1e08a05750b4ae46e568635fad68eb20c6cf005",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "6a9cbab4fa31be8bd87d08d623d2ca3f1f616ae0132839a4a092e48f574668db",
+      "started_at": "2026-11-14T06:03:56.894981+00:00",
+      "completed_at": "2026-11-14T06:04:05.317758+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_0a15fa906d0f1cfbea26380cf20f1c785505535d7c28deaaca47edf8415b01a5",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "3774c075c79e6570747d52446db2d5370f74ce9ae62805cb14f485a0373c2b9b",
+      "started_at": "2026-11-14T06:04:50.558280+00:00",
+      "completed_at": "2026-11-14T06:04:58.809189+00:00",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_29b6cb31a7807682ecb76f178ffcf45a37887da8782444d6f53f47af7d4916e1",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "aa8f4f7a48b540493f179a0eb17bd3c49599f7da3e3c8cdd534629f053aec140",
+      "started_at": "2026-11-14T06:06:30.191835+00:00",
+      "completed_at": "2026-11-14T06:06:38.249838+00:00",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_bc6b47fed8963341f5518233da2129641b41f59a88e601a3fa5a3af4674a462b",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "271bbe5ef5ab2664b160845b03c35b63c9b8492d75c81b702e4f40adbff53959",
+      "started_at": "2026-11-14T06:07:00.849846+00:00",
+      "completed_at": "2026-11-14T06:07:08.358418+00:00",
+      "nodes": 95,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_904d1c95f94c4890c4520cde3665ecfbfbbccef2d51c2480b3611834e3f220b0",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "c9938275856a7f04f7cf9783dc770f4f9e12d62358d4cb98194f4cdbf0c78a65",
+      "started_at": "2026-11-14T06:08:34.910099+00:00",
+      "completed_at": "2026-11-14T06:08:42.418988+00:00",
+      "nodes": 95,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "ev_d1e27f0b6f52daf0543b2b301f26a26ccac2916fe91bb349d93fc972818e4521",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "a1ef41faf7ae8e80d935b85797422f9432f041b4c68a8f03ec86cb491590a7e8",
+      "started_at": "2026-11-14T06:10:34.861896+00:00",
+      "completed_at": "2026-11-14T06:10:42.703007+00:00",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete records and commercial/account screenshots remain private."
+    },
+    {
+      "id": "CUA-SEGMENT-SEWING-HINT-20261114",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "457c2ec52f6c8e08ae11b4eb122bc2e87960a7e21cbbfe67ca30a211808c7b98",
+      "observed_at": "2026-11-14T06:16:45.006Z",
+      "context": "Menu activation after whole-edge document reopen; retains checked labels, displayed N hint and unchanged selected-seam controls. No new authoring gesture.",
+      "privacy": "Complete native record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "CUA-WHOLE-EDGE-SAVE-WARNING-20261114",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "68459d3e880939d223210e6db27d7fba6b6a80bf82042e299bfc9cad661d0ec6",
+      "observed_at": "2026-11-14T05:49:48.476Z",
+      "context": "Low-space warning before saving the protected original working copy; no seam edit yet.",
+      "privacy": "Complete native record and commercial/account screenshot remain private."
+    },
+    {
+      "id": "PLAN-SEW-001-WHOLE-20261114",
+      "provider": "predeclared original-fixture scenario",
+      "retained_record_sha256": "bcffbfb4d3ab11558cf54c559f988992cd17e1a694a990ce284e3d6c2c23b01f",
+      "declared_at": "2026-11-14T05:48:26.068972+00:00",
+      "context": "Two original 300 mm straight sides; literal displayed length, categorical marks, one Undo/Redo and document save/close/open. No physical solver or arc-length tolerance inferred."
+    },
+    {
+      "id": "INPUT-WHOLE-EDGE-FIRST-CLICK-CHECK",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "0ed978386215f33a0fca58e826e215adcaf36328059fee6c2c9f6c4bd98e5d7f",
+      "operation": "check",
+      "refused": "Selected window is not the first normal CG window at this point",
+      "events_posted": 0,
+      "partial_input_possible": false,
+      "privacy": "Complete pointer requests and raw records remain private."
+    },
+    {
+      "id": "INPUT-WHOLE-EDGE-FIRST-CLICK-RAISED-CHECK",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "fa49c4ce7b01bbb32a5b3292d70b1a8f0b967017e6a40c194b84b6d63beed0eb",
+      "operation": "check",
+      "refused": "System-wide AX hit belongs to another process",
+      "events_posted": 0,
+      "partial_input_possible": false,
+      "privacy": "Complete pointer requests and raw records remain private."
+    },
+    {
+      "id": "INPUT-WHOLE-EDGE-FIRST-CLICK-FOCUSED-CHECK",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "fa49c4ce7b01bbb32a5b3292d70b1a8f0b967017e6a40c194b84b6d63beed0eb",
+      "operation": "check",
+      "refused": "System-wide AX hit belongs to another process",
+      "events_posted": 0,
+      "partial_input_possible": false,
+      "privacy": "Complete pointer requests and raw records remain private."
+    },
+    {
+      "id": "INPUT-WHOLE-EDGE-FIRST-CLICK-UNOCCLUDED-RUN",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "a2bed17cdfa2500bc7d37e65e73d75e3ee90ae4ff1925e1ba70d1002a1fed396",
+      "operation": "run",
+      "refused": null,
+      "events_posted": 3,
+      "partial_input_possible": false,
+      "privacy": "Complete pointer requests and raw records remain private."
+    },
+    {
+      "id": "INPUT-WHOLE-EDGE-SECOND-CLICK-RUN",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "5e2891fec751a2053f31470031dcfb14ac231e611230d3571e3ae75475d7364e",
+      "operation": "run",
+      "refused": null,
+      "events_posted": 3,
+      "partial_input_possible": false,
+      "privacy": "Complete pointer requests and raw records remain private."
+    },
+    {
+      "id": "INPUT-WHOLE-EDGE-UPPER-PAIR-CLICK-RUN",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "bb688459797590c986fa8b464d6d9c1d5edffda3f51868439b68a9614b4a26a8",
+      "operation": "run",
+      "refused": "Required AX attribute AXSize unavailable: -25202",
+      "events_posted": null,
+      "partial_input_possible": true,
+      "privacy": "Complete pointer requests and raw records remain private."
     }
   ],
   "path_label_policy": "Paths group observed controls for indexing. Reviewer descriptors identify some unlabeled radio groups or repeated axis controls; their visible values/options are literal observations. A descriptor does not establish a printed UI label."
