@@ -122,6 +122,11 @@ mannequin capsules gives 0.242573% but cannot qualify garment quality. Exact
 frame150–180 endpoints are 30.7541%–32.1699%, not the separately retained
 frame151–180 range. Full force balance and a solver defect remain unknown.
 Original inputs and all acceptance thresholds remain unchanged.
+[WF-20261114-PHYSICS-BALANCE-001](parity/reports/WF-20261114-PHYSICS-BALANCE-001.json)
+retains the 132-file bundle and original independent review. Clean checkout
+`667d0caa` passes saved-output replay, registry/map and all 1,508 then-current
+artifact tracking/hash checks; four separate publication receipts retain those
+checks. No new simulation ran for publication.
 
 Full free/internal sewing, cut/trim, constraints, calibrated fabrics, robust
 layered contact, avatars/animation, rendering/CJK fonts, imports/interchange,
@@ -139,8 +144,8 @@ remain unobserved. The one-click manual diagnosis question is pending. This is
 input noncompletion, not absence; preserve the earlier Rectangle observation.
 See [dated research notes](spec/features/SEW-002-runtime-notes-20261114.md).
 
-1. Finish tracked closure and clean-checkout registry/map/saved-output replay for
-   the current-source balance report, then publish it with its failures intact.
+1. Publish the clean-checked current-source balance report with its failures
+   intact, preserving runtime ancestry and the original 132-file bundle.
 2. Complete material-strain attribution at committed candidate `6c45535cb312f7fed8ad872ee87b6ba5e5974e35`
    in `.local/strain-attribution-ui-20261114/`: local build gates, independent
    unchanged-control regression, real desktop and packaged CLI checks. The
@@ -165,8 +170,12 @@ is terminal, exit 0. Original ledgers are in `.local/cloth-balance-20261114/` an
 `.local/cloth-balance-review-20261114/`. Recheck actual job state on resume.
 Attribution gates99131 passed fmt/126 workspace tests/strict Clippy/standard packaging;
 its current-job ledger is `.local/strain-attribution-ui-20261114/.local/attribution-gates/`.
-The independent attribution-control regression76935 is running after offline
-build44359 and focused Clippy47480 passed. Native acceptance has frozen its plan
-and is switching from the saved older product to the exact6c455 package;
-its records are in `.local/strain-native-20261114/`.
+The independent attribution-control regression76935 is terminal, exit 0, after
+offline build44359 and focused Clippy47480 passed. All181 states match original
+physical output exactly; added meaningful peak attribution independently agrees
+within2.23e-16. Native6c455 PID99058 completed actual assembly/drape with matching
+24.12%back/32.35%front warp labels; saved-output/public-candidate checks continue
+in `.local/strain-native-20261114/`. Packaged CLI2792 is terminal, exit 0 for the
+checker; its actual fit command fails quality as expected and retains the prior
+output, while simulation/benchmark metadata agree independently.
 Raw local ledgers remain ignored; keep separate Cargo targets per worktree.
