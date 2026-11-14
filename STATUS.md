@@ -8,9 +8,10 @@ denominator. Every remaining roadmap gate stays in scope.
 ## Published and recoverable state
 
 Public repository: https://github.com/thematheusmello/weftforge.
-Published main: `eb378e35c1b0c4602dc5989593f9394a676db213`
-([README PR20](https://github.com/thematheusmello/weftforge/pull/20)); all eight
-push/PR platform and evidence checks passed. The root README is product focused.
+Published main: `68bdb9fb774177f074f69edc1b2965336670cc9f`
+([source PR21](https://github.com/thematheusmello/weftforge/pull/21)); all eight
+push/PR platform and evidence checks passed. The README correction from
+[PR20](https://github.com/thematheusmello/weftforge/pull/20) is retained. The root README is product focused.
 Keep reference laboratory and account-status details in dedicated research docs.
 
 [PR15](https://github.com/thematheusmello/weftforge/pull/15) published authored grain,
@@ -23,7 +24,8 @@ dashboard, including both reports. The source-only
 remains at older `8419363` and discloses the inspector defect. No native binaries
 ship yet. Distribution notices, platform launch/package QA and signing remain.
 
-Current branch: `feat/curve-mcp-recovery`, source checkpoint `eb153cd`.
+Current branch: `docs/native-curve-evidence`, based on published main `68bdb9f`.
+Identified native candidate source: `eb153cd`, byte-identical runtime code.
 This integrates sewn-curve editing, stateless MCP, shared save/export safeguards,
 shutdown retention, cooperative solver initialization cancellation, reference
 qualification, the reviewed interface catalog and its implementation crosswalk.
@@ -68,7 +70,7 @@ On macOS, global Quit bypasses CloseRequested in pinned winit/eframe. App::on_ex
 now commits valid drafts, drains an older autosave writer and synchronously
 retains the latest dirty construction as recovery without overwriting primary.
 Clean/discard behavior, fallback and failure reporting are tested. Actual
-integrated Cmd+Q/relaunch/recovery acceptance remains pending; forced termination
+integrated focused-draft Cmd+Q/relaunch/explicit recovery now passes; forced termination
 or storage failure is outside the retention guarantee.
 
 Five stateless MCP file tools share typed authoring, strict original-byte parsing
@@ -87,7 +89,9 @@ The integrated xtask rerun also passed against this checkout, including current
 CLI MCP/curve help. The unsigned native package builds successfully, and its
 CLI passes the official SDK smoke test at the same identified binary hash.
 See [the integration report](parity/reports/WF-20261114-INTEGRATION-001.json).
-Native acceptance remains pending. A read-only independent source review
+The bounded native construction/recovery workflow now passes; see the separate
+[native report](parity/reports/WF-20261114-SEWN-CURVE-001.json). Full garment fitting
+acceptance and the new numeric-dialog candidate remain pending. A read-only independent source review
 found no blocker; its 146,498 varied correspondence samples had maximum normalized
 error 1.72e-13. This review did not execute native UI or replace runtime checks.
 
@@ -158,26 +162,42 @@ reviewed contracts, scenarios, fixtures, criteria and transitive dependencies
 against both tested commit and current inputs before any reference pass qualifies.
 Historical implementation reports remain attributable.
 
-## Next exact steps and jobs
+## Latest bounded native result and next steps
 
-1. Retain the identified native `4fbd66af…77c9d` and CLI `b2bc0999…a6396`
-   candidate and source `eb153cd`; native UI acceptance is next.
-2. Publish the reviewed source/catalog checkpoint after normal CI gates while
-   keeping native acceptance explicitly pending. Preserve pinned source history
-   and the product-focused README.
-3. The reviewed rectangle batch is integrated. Root now owns the native UI lease
-   for WeftForge curve/refinement and dirty-Quit recovery acceptance. Reference_lab
-   left its original saved rectangle selected at 20 mm particle distance, no modal
-   and simulation off; it uses no desktop tools until the lease is returned.
-4. Rectangle_numeric is implementing only the observed single-click numeric
-   rectangle slice in an isolated worktree. It receives reviewed behavior only;
-   replication, linked dimensions, reference anchor and range semantics remain
-   unresolved. Parent owns integration and real native acceptance.
-5. Continue independent comparisons and every remaining construction, simulation,
-   animation, avatar, rendering, interchange, printing, automation and delivery
-   gate. GitHub Project board creation still lacks project/read:project scopes;
-   issues, milestones and the registry work independently.
+Native `4fbd66af…77c9d` completed original rectangle/cubic/reversed-sewing creation,
+split/history/rejected edits, refinement, clean quit/relaunch/reopen and actual
+OBJ/SVG export. Independent full-curve and sewn-pair bounds are 1e-16 m; failed
+edits preserve all bytes/revision; meshes increase 207 → 2330 vertices with
+positive faces. A still-focused valid grain draft survives global Quit into
+recovery, leaving primary unchanged. Explicit recovery and subsequent cubic
+editing preserve exactly the intended fields. See the native report and retained
+fixtures; no simulation, complete feature or reference-parity claim is made.
 
-No root build/test job remains live. Reference_lab continues documentation only;
-Rectangle_numeric is finishing isolated checks. Integrated_review completed
-read-only. Recheck actual handles before launching duplicates.
+1. Publish these reviewed native fixtures, evaluator, capture provenance and report;
+   preserve old failed/stale reports and the product-focused README.
+2. Integrate reviewed inventory branch `docs/feature-map-expansion` by preserving
+   its `9acb265` catalog/source anchor and `07d0be1` map commit. It expands the
+   published 650 entries to 755 entries / 193 packets, with old mappings intact.
+   Reference `1674738` adds an independent boundary evaluator/report; later PD10
+   history/export/restart observations are being finalized separately.
+3. Native rectangle work remains isolated on `feat/rectangle-numeric`: `51c71f3`
+   numeric modal, `aefa887` stable widget scopes, `691ad146` accessibility modal
+   isolation. Focused-draft history replay is confirmed in issue23 and its fix is underway. Do not merge
+   until reviewer findings are fixed, combined gates pass and native acceptance
+   is recorded. This source is not the native-tested 4f candidate.
+4. Reference_lab owns the native UI lease. The original PD20→PD10 rectangle edit,
+   one Undo/Redo and export/boundary checks passed; normal restart temporarily
+   exposed a black window, then progressed without another restart/account action.
+   PD10 reopen target fields persisted, with explicit AX truncation/attribute gaps.
+   Baseline settings and broad sewing/workflow discovery remain incomplete.
+5. Continue every construction, solver/contact, animation, avatar, rendering,
+   interchange, printing, automation and delivery gate. Verified parity stays zero.
+   GitHub Project scopes remain unavailable; issues, milestones and registry work.
+
+Root is retaining the native evidence and relocating only completed generated
+build caches after internal space fell again. Completed cache relocation session `62360` verified file sizes and identified
+binaries; internal free space was 2.3 GiB afterwards. No root build/test is live. Reference_lab and Rectangle_numeric are active; map and
+independent-output agents completed. Integrated_review's two concrete new-UI
+findings are assigned to the worker. Root uses no desktop input during the
+reference lease. The saved old 4f app remains running; do not overwrite its package
+executable before a normal clean quit when the next UI lease is acquired.

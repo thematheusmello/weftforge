@@ -1,9 +1,11 @@
 # Verification and acceptance
 
 Implementation checks and reference comparisons are separate. No garment
-workflow has qualifying Marvelous Designer comparison evidence. The reference
-app launched at its terms/sign-in boundary; its garment workspace, units,
-preferences, graphics and complete UI build are unobserved.
+workflow has qualifying reference comparison evidence. The reference workspace
+and complete build are observed, along with a bounded original rectangle and
+physical export measurement. Global settings and broader contracts remain
+incomplete; the baseline is provisional. See the dedicated reference setup and
+reviewed behavior documents.
 
 ## Reproducible commands
 
@@ -106,7 +108,10 @@ Focused implementation checks load retained files and recover them exactly after
 last-second curve/grain edits, a pending older writer and valid drafts. They also
 check primary-byte preservation, explicit discard, clean exit, unique fallback,
 invalid drafts and all-destination failure. Actual macOS Cmd+Q/relaunch/recovery
-acceptance on the integrated candidate remains pending.
+now passes the bounded focused-draft scenario on the identified `4fbd66af…77c9d`
+candidate. The accepted primary remains unchanged; a valid still-focused grain
+draft is retained, explicitly recovered as a copy and edited again. This does
+not execute every fallback/storage-failure path through the native UI.
 
 ## Host and performance scope
 
@@ -215,3 +220,43 @@ The independent headless repeat returned exit1 and the identical0.2693034615
 strain (agreement within1e-12). It simulated3s in22.19s wall, about0.135 simulated
 s/wall s on the documented host; memory and viewport frame time are unmeasured.
 The retained CLI JSON includes per-step timing/settings and finite diagnostics.
+
+
+## Sewn-curve and shutdown replay
+
+[WF-20261114-SEWN-CURVE-001](../parity/reports/WF-20261114-SEWN-CURVE-001.json)
+records the declared construction/recovery subset on native executable
+`4fbd66af…77c9d`, built from `eb153cd`. Its scoped runtime source is byte-identical
+to published main `68bdb9f`; no rebuild at the later publication commit is claimed.
+
+From an empty native document, two original 0.4 × 0.6 m panels were created,
+one top edge made cubic and paired to the other with reversed sewing. Splitting
+at t = 0.4, one Undo/Redo, rejected endpoint/nonfinite edits, 0.09 → 0.035 m
+refinement, save/quit/relaunch/reopen and actual OBJ/SVG export were exercised.
+Independent Bernstein bounds cover the entire authored curve and every sewn
+point pair at 1e-16 m against the predeclared 1e-12 m threshold. Both failed edits
+leave identical saved bytes and revision. Exported meshes increase from
+207 vertices / 343 triangles to 2330 / 4516, with finite coordinates, valid UVs,
+positive faces and aligned unit normals. SVG retains both cubic segments.
+
+A separate focused grain draft remained uncommitted at global Quit: primary
+revision 14/grain 0 stayed byte-identical, while the new recovery contained
+revision 15/grain 0.25. After relaunch, explicit Recover copy and a new save
+preserved those recovery bytes. Editing recovered curve 9 P1 X from 0.36 to
+0.37 changed only that coordinate and revision 16, demonstrating retained editing.
+
+The [original fixtures](../fixtures/sewn-curve),
+[independent evaluator](../parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py),
+[exact rerun arguments](../parity/reports/artifacts/sewn-curve-20261114/rerun-arguments.json)
+and [result](../parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json)
+are retained. Negative witnesses reject a 0.001 m control change, wrong seam
+orientation and unsupported SVG syntax. Static REA before/final captures are
+untruncated; intervening interactions/history/errors are parent native CUA
+observations, not a REA action recording or video.
+
+This is a construction and recovery pass, not a complete garment/fitting replay,
+a full feature contract or reference parity. No cloth simulation ran. The
+separately reproduced creation edit-buffer defect
+[issue22](https://github.com/thematheusmello/weftforge/issues/22) remains visible;
+its new candidate requires its own native acceptance. Historical garment fitting
+failures and stale complete-workflow reports remain unchanged.

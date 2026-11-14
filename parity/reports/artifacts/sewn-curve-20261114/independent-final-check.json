@@ -1,0 +1,842 @@
+{
+  "scenario": "UI-SEWN-CURVE-002",
+  "kind": "implementation_only",
+  "evaluator_sha256": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+  "invocation_arguments": [
+    "--baseline",
+    "fixtures/sewn-curve/before-split.weftforge",
+    "--split",
+    "fixtures/sewn-curve/after-split.weftforge",
+    "--split",
+    "fixtures/sewn-curve/after-invalid-split.weftforge",
+    "--split",
+    "fixtures/sewn-curve/after-invalid-control.weftforge",
+    "--split",
+    "fixtures/sewn-curve/coarse.weftforge",
+    "--split",
+    "fixtures/sewn-curve/fine.weftforge",
+    "--unchanged",
+    "fixtures/sewn-curve/after-split.weftforge",
+    "fixtures/sewn-curve/after-invalid-split.weftforge",
+    "--unchanged",
+    "fixtures/sewn-curve/after-split.weftforge",
+    "fixtures/sewn-curve/after-invalid-control.weftforge",
+    "--unchanged",
+    "fixtures/sewn-curve/quit-recovery-capture.weftforge",
+    "fixtures/sewn-curve/recovered.weftforge",
+    "--refinement-pair",
+    "fixtures/sewn-curve/coarse.weftforge",
+    "fixtures/sewn-curve/fine.weftforge",
+    "--mesh-pair",
+    "fixtures/sewn-curve/coarse.obj",
+    "fixtures/sewn-curve/fine.obj",
+    "--svg",
+    "fixtures/sewn-curve/fine.svg",
+    "fixtures/sewn-curve/fine.weftforge",
+    "--preserved-file",
+    "fixtures/sewn-curve/fine.weftforge",
+    "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+    "--preserved-file",
+    "fixtures/sewn-curve/quit-recovery-capture.weftforge",
+    "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+    "--grain-edit",
+    "fixtures/sewn-curve/fine.weftforge",
+    "fixtures/sewn-curve/quit-recovery-capture.weftforge",
+    ".25",
+    "--control-edit",
+    "fixtures/sewn-curve/recovered.weftforge",
+    "fixtures/sewn-curve/recovered-edited.weftforge",
+    ".37",
+    "--evidence",
+    "fixtures/sewn-curve/ui-declaration.json",
+    "--evidence",
+    "fixtures/sewn-curve/manifest.json",
+    "--evidence",
+    "fixtures/sewn-curve/quit-pending.json",
+    "--evidence",
+    "fixtures/sewn-curve/quit-result.json",
+    "--evidence",
+    "fixtures/sewn-curve/quit-precondition.json",
+    "--output",
+    "parity/reports/artifacts/sewn-curve-20261114/independent-final-check.json"
+  ],
+  "tolerance_absolute_m": "1E-12",
+  "tolerance_normalized_parameter": "1E-12",
+  "self_check": {
+    "de_casteljau_known_values": "passed",
+    "valid_split_fixture": "passed",
+    "svg_parser_known_path": "passed",
+    "changed_control_negative_witness": {
+      "status": "rejected",
+      "reason": "cubic preservation bound 0.00100000000000000000000000000000000000 m"
+    },
+    "wrong_orientation_negative_witness": {
+      "status": "rejected",
+      "reason": "normalized seam parameter bound 1.000"
+    },
+    "unsupported_svg_command_negative_witness": "rejected"
+  },
+  "baseline": {
+    "sha256": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+    "revision": 9,
+    "resolution_m": "0.07",
+    "next_id": 21,
+    "ids": {
+      "points": [
+        3,
+        4,
+        5,
+        6,
+        12,
+        13,
+        14,
+        15
+      ],
+      "curves": [
+        7,
+        8,
+        9,
+        10,
+        16,
+        17,
+        18,
+        19
+      ],
+      "pieces": [
+        2,
+        11
+      ],
+      "materials": [
+        1
+      ],
+      "seams": [
+        20
+      ]
+    },
+    "authored_cubic_m": [
+      [
+        "0.4",
+        "0.6"
+      ],
+      [
+        "0.3",
+        "0.8"
+      ],
+      [
+        "0.1",
+        "0.8"
+      ],
+      [
+        "0",
+        "0.6"
+      ]
+    ],
+    "oriented_seam": {
+      "id": 20,
+      "name": "Seam 1",
+      "a": {
+        "curve": 9,
+        "t0": "0.0",
+        "t1": "1.0"
+      },
+      "b": {
+        "curve": 18,
+        "t0": "1.0",
+        "t1": "0.0"
+      },
+      "correspondence": [
+        [
+          "0.0",
+          "0.0"
+        ],
+        [
+          "1.0",
+          "1.0"
+        ]
+      ]
+    }
+  },
+  "original_checkpoints": {},
+  "split_checkpoints": {
+    "after-split.weftforge": {
+      "sha256": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+      "revision": 12,
+      "resolution_m": "0.07",
+      "next_id": 24,
+      "ids": {
+        "points": [
+          3,
+          4,
+          5,
+          6,
+          12,
+          13,
+          14,
+          15,
+          21
+        ],
+        "curves": [
+          7,
+          8,
+          9,
+          10,
+          16,
+          17,
+          18,
+          19,
+          22
+        ],
+        "pieces": [
+          2,
+          11
+        ],
+        "materials": [
+          1
+        ],
+        "seams": [
+          20,
+          23
+        ]
+      },
+      "join_point_id": 21,
+      "second_curve_id": 22,
+      "join_point_m": [
+        "0.24479999999999996",
+        "0.744"
+      ],
+      "subcurve_controls_m": {
+        "9": [
+          [
+            "0.4",
+            "0.6"
+          ],
+          [
+            "0.3600000000000000000000000000000000000000000000000000000000000000000000",
+            "0.6800000000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          [
+            "0.3040000000000000000000000000000000000000000000000000000000000000000000",
+            "0.7280000000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          [
+            "0.2448",
+            "0.7440"
+          ]
+        ],
+        "22": [
+          [
+            "0.2448",
+            "0.7440"
+          ],
+          [
+            "0.1560",
+            "0.7680"
+          ],
+          [
+            "0.06",
+            "0.72"
+          ],
+          [
+            "0.0",
+            "0.6"
+          ]
+        ]
+      },
+      "cubic_all_points_error_bound_m": "1.00000000000000000000000000000000000E-16",
+      "sewn_all_point_pairs_error_bound_m": "1.00000000000000000000000000000000000E-16",
+      "normalized_parameter_error_bound": "0",
+      "seam_correspondence_intervals_proved": 2
+    },
+    "after-invalid-split.weftforge": {
+      "sha256": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+      "revision": 12,
+      "resolution_m": "0.07",
+      "next_id": 24,
+      "ids": {
+        "points": [
+          3,
+          4,
+          5,
+          6,
+          12,
+          13,
+          14,
+          15,
+          21
+        ],
+        "curves": [
+          7,
+          8,
+          9,
+          10,
+          16,
+          17,
+          18,
+          19,
+          22
+        ],
+        "pieces": [
+          2,
+          11
+        ],
+        "materials": [
+          1
+        ],
+        "seams": [
+          20,
+          23
+        ]
+      },
+      "join_point_id": 21,
+      "second_curve_id": 22,
+      "join_point_m": [
+        "0.24479999999999996",
+        "0.744"
+      ],
+      "subcurve_controls_m": {
+        "9": [
+          [
+            "0.4",
+            "0.6"
+          ],
+          [
+            "0.3600000000000000000000000000000000000000000000000000000000000000000000",
+            "0.6800000000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          [
+            "0.3040000000000000000000000000000000000000000000000000000000000000000000",
+            "0.7280000000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          [
+            "0.2448",
+            "0.7440"
+          ]
+        ],
+        "22": [
+          [
+            "0.2448",
+            "0.7440"
+          ],
+          [
+            "0.1560",
+            "0.7680"
+          ],
+          [
+            "0.06",
+            "0.72"
+          ],
+          [
+            "0.0",
+            "0.6"
+          ]
+        ]
+      },
+      "cubic_all_points_error_bound_m": "1.00000000000000000000000000000000000E-16",
+      "sewn_all_point_pairs_error_bound_m": "1.00000000000000000000000000000000000E-16",
+      "normalized_parameter_error_bound": "0",
+      "seam_correspondence_intervals_proved": 2
+    },
+    "after-invalid-control.weftforge": {
+      "sha256": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+      "revision": 12,
+      "resolution_m": "0.07",
+      "next_id": 24,
+      "ids": {
+        "points": [
+          3,
+          4,
+          5,
+          6,
+          12,
+          13,
+          14,
+          15,
+          21
+        ],
+        "curves": [
+          7,
+          8,
+          9,
+          10,
+          16,
+          17,
+          18,
+          19,
+          22
+        ],
+        "pieces": [
+          2,
+          11
+        ],
+        "materials": [
+          1
+        ],
+        "seams": [
+          20,
+          23
+        ]
+      },
+      "join_point_id": 21,
+      "second_curve_id": 22,
+      "join_point_m": [
+        "0.24479999999999996",
+        "0.744"
+      ],
+      "subcurve_controls_m": {
+        "9": [
+          [
+            "0.4",
+            "0.6"
+          ],
+          [
+            "0.3600000000000000000000000000000000000000000000000000000000000000000000",
+            "0.6800000000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          [
+            "0.3040000000000000000000000000000000000000000000000000000000000000000000",
+            "0.7280000000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          [
+            "0.2448",
+            "0.7440"
+          ]
+        ],
+        "22": [
+          [
+            "0.2448",
+            "0.7440"
+          ],
+          [
+            "0.1560",
+            "0.7680"
+          ],
+          [
+            "0.06",
+            "0.72"
+          ],
+          [
+            "0.0",
+            "0.6"
+          ]
+        ]
+      },
+      "cubic_all_points_error_bound_m": "1.00000000000000000000000000000000000E-16",
+      "sewn_all_point_pairs_error_bound_m": "1.00000000000000000000000000000000000E-16",
+      "normalized_parameter_error_bound": "0",
+      "seam_correspondence_intervals_proved": 2
+    },
+    "coarse.weftforge": {
+      "sha256": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+      "revision": 13,
+      "resolution_m": "0.09",
+      "next_id": 24,
+      "ids": {
+        "points": [
+          3,
+          4,
+          5,
+          6,
+          12,
+          13,
+          14,
+          15,
+          21
+        ],
+        "curves": [
+          7,
+          8,
+          9,
+          10,
+          16,
+          17,
+          18,
+          19,
+          22
+        ],
+        "pieces": [
+          2,
+          11
+        ],
+        "materials": [
+          1
+        ],
+        "seams": [
+          20,
+          23
+        ]
+      },
+      "join_point_id": 21,
+      "second_curve_id": 22,
+      "join_point_m": [
+        "0.24479999999999996",
+        "0.744"
+      ],
+      "subcurve_controls_m": {
+        "9": [
+          [
+            "0.4",
+            "0.6"
+          ],
+          [
+            "0.3600000000000000000000000000000000000000000000000000000000000000000000",
+            "0.6800000000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          [
+            "0.3040000000000000000000000000000000000000000000000000000000000000000000",
+            "0.7280000000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          [
+            "0.2448",
+            "0.7440"
+          ]
+        ],
+        "22": [
+          [
+            "0.2448",
+            "0.7440"
+          ],
+          [
+            "0.1560",
+            "0.7680"
+          ],
+          [
+            "0.06",
+            "0.72"
+          ],
+          [
+            "0.0",
+            "0.6"
+          ]
+        ]
+      },
+      "cubic_all_points_error_bound_m": "1.00000000000000000000000000000000000E-16",
+      "sewn_all_point_pairs_error_bound_m": "1.00000000000000000000000000000000000E-16",
+      "normalized_parameter_error_bound": "0",
+      "seam_correspondence_intervals_proved": 2
+    },
+    "fine.weftforge": {
+      "sha256": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+      "revision": 14,
+      "resolution_m": "0.035",
+      "next_id": 24,
+      "ids": {
+        "points": [
+          3,
+          4,
+          5,
+          6,
+          12,
+          13,
+          14,
+          15,
+          21
+        ],
+        "curves": [
+          7,
+          8,
+          9,
+          10,
+          16,
+          17,
+          18,
+          19,
+          22
+        ],
+        "pieces": [
+          2,
+          11
+        ],
+        "materials": [
+          1
+        ],
+        "seams": [
+          20,
+          23
+        ]
+      },
+      "join_point_id": 21,
+      "second_curve_id": 22,
+      "join_point_m": [
+        "0.24479999999999996",
+        "0.744"
+      ],
+      "subcurve_controls_m": {
+        "9": [
+          [
+            "0.4",
+            "0.6"
+          ],
+          [
+            "0.3600000000000000000000000000000000000000000000000000000000000000000000",
+            "0.6800000000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          [
+            "0.3040000000000000000000000000000000000000000000000000000000000000000000",
+            "0.7280000000000000000000000000000000000000000000000000000000000000000000"
+          ],
+          [
+            "0.2448",
+            "0.7440"
+          ]
+        ],
+        "22": [
+          [
+            "0.2448",
+            "0.7440"
+          ],
+          [
+            "0.1560",
+            "0.7680"
+          ],
+          [
+            "0.06",
+            "0.72"
+          ],
+          [
+            "0.0",
+            "0.6"
+          ]
+        ]
+      },
+      "cubic_all_points_error_bound_m": "1.00000000000000000000000000000000000E-16",
+      "sewn_all_point_pairs_error_bound_m": "1.00000000000000000000000000000000000E-16",
+      "normalized_parameter_error_bound": "0",
+      "seam_correspondence_intervals_proved": 2
+    }
+  },
+  "unchanged_pairs": [
+    {
+      "before": "after-split.weftforge",
+      "after": "after-invalid-split.weftforge",
+      "before_sha256": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+      "after_sha256": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+      "project_including_revision_unchanged": true,
+      "document_bytes_identical": true
+    },
+    {
+      "before": "after-split.weftforge",
+      "after": "after-invalid-control.weftforge",
+      "before_sha256": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+      "after_sha256": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+      "project_including_revision_unchanged": true,
+      "document_bytes_identical": true
+    },
+    {
+      "before": "quit-recovery-capture.weftforge",
+      "after": "recovered.weftforge",
+      "before_sha256": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+      "after_sha256": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+      "project_including_revision_unchanged": true,
+      "document_bytes_identical": true
+    }
+  ],
+  "obj": {
+    "coarse.obj": {
+      "sha256": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+      "vertices": 207,
+      "triangles": 343,
+      "uvs": 207,
+      "normals": 207,
+      "bounds_m": [
+        [
+          "0E-17",
+          "1.39999999999999991"
+        ],
+        [
+          "0E-17",
+          "0.74990625000000000"
+        ],
+        [
+          "0E-17",
+          "0E-17"
+        ]
+      ],
+      "minimum_twice_triangle_area_m2": "0.0000355582397460936040771484374985",
+      "minimum_twice_uv_triangle_area": "0.0000355582397460936040771484374985",
+      "finite_coordinates_uvs_and_normals": true
+    },
+    "fine.obj": {
+      "sha256": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+      "vertices": 2330,
+      "triangles": 4516,
+      "uvs": 2330,
+      "normals": 2330,
+      "bounds_m": [
+        [
+          "0E-17",
+          "1.39999999999999991"
+        ],
+        [
+          "0E-17",
+          "0.74990625000000000"
+        ],
+        [
+          "0E-17",
+          "0E-17"
+        ]
+      ],
+      "minimum_twice_triangle_area_m2": "0.0000054182942708332500065104166664",
+      "minimum_twice_uv_triangle_area": "0.0000054182942708332500065104166664",
+      "finite_coordinates_uvs_and_normals": true
+    }
+  },
+  "mesh_pairs": [
+    {
+      "coarse": "coarse.obj",
+      "fine": "fine.obj",
+      "vertex_increase": 2123,
+      "passed": true
+    }
+  ],
+  "refinement_pairs": [
+    {
+      "coarse": "coarse.weftforge",
+      "fine": "fine.weftforge",
+      "coarse_sha256": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+      "fine_sha256": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+      "changed_project_keys": [
+        "resolution",
+        "revision"
+      ],
+      "coarse_resolution_m": "0.09",
+      "fine_resolution_m": "0.035",
+      "coarse_revision": 13,
+      "fine_revision": 14,
+      "passed": true
+    }
+  ],
+  "svg": {
+    "fine.svg": {
+      "sha256": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+      "editable_piece_paths": 2,
+      "editable_cubic_segments": 2,
+      "physical_user_unit": "millimetre",
+      "pattern_y_direction": "upward via negated SVG Y",
+      "saved_authoring_error_bound_m": "1E-17",
+      "original_cubic_all_points_error_bound_m": "1.00000000000000000000000000000000000E-16"
+    }
+  },
+  "grain_edits": [
+    {
+      "before": "fine.weftforge",
+      "after": "quit-recovery-capture.weftforge",
+      "before_sha256": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+      "after_sha256": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+      "before_revision": 14,
+      "after_revision": 15,
+      "before_grain_angle_rad": "0.0",
+      "after_grain_angle_rad": "0.25",
+      "only_project_changes": [
+        "revision",
+        "pieces[id=2].grain_angle"
+      ],
+      "all_other_project_values_identical": true
+    }
+  ],
+  "control_edits": [
+    {
+      "before": "recovered.weftforge",
+      "after": "recovered-edited.weftforge",
+      "before_sha256": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+      "after_sha256": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+      "before_revision": 15,
+      "after_revision": 16,
+      "before_curve9_p1_x_m": "0.36",
+      "after_curve9_p1_x_m": "0.37",
+      "only_project_changes": [
+        "revision",
+        "curves[id=9].controls[0][0]"
+      ],
+      "all_other_project_values_identical": true
+    }
+  ],
+  "preserved_files": [
+    {
+      "file": "fine.weftforge",
+      "sha256": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+      "matches_prior_sha256": true
+    },
+    {
+      "file": "quit-recovery-capture.weftforge",
+      "sha256": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+      "matches_prior_sha256": true
+    }
+  ],
+  "artifacts": {
+    "after-invalid-control.weftforge": {
+      "sha256": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+      "bytes": 5649
+    },
+    "after-invalid-split.weftforge": {
+      "sha256": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+      "bytes": 5649
+    },
+    "after-split.weftforge": {
+      "sha256": "8b5e394434f9c261577f980384fc5d6c227a9b71287955d5362cd33cc55dd7b0",
+      "bytes": 5649
+    },
+    "before-split.weftforge": {
+      "sha256": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+      "bytes": 4865
+    },
+    "coarse.obj": {
+      "sha256": "752db0781cb63c63935afce8dfc837573d40d1e0be0c55d57e7c1cbe1f5e2dcb",
+      "bytes": 46615
+    },
+    "coarse.weftforge": {
+      "sha256": "e21561fc0f49d89d4edbe8de2f87a2007f6a73812c12cf0bfa7f05e5fc7dc66f",
+      "bytes": 5649
+    },
+    "fine.obj": {
+      "sha256": "25b467c7150e9b6dd868992e2e672803fd31363796b60dc5aa16d39901509eec",
+      "bytes": 583009
+    },
+    "fine.svg": {
+      "sha256": "3e9f4aff9eaec32270cf285df165d162d8373c183a1bdf173d8170725856f1db",
+      "bytes": 672
+    },
+    "fine.weftforge": {
+      "sha256": "abe850645a18bbaebc58847d2b9886ed0c9d4160119361a548c2a09c5d73cd53",
+      "bytes": 5650
+    },
+    "manifest.json": {
+      "sha256": "7d35686b8b44fb31f478ad450e8d6453f7f1cdf1bad69ae7710c41e589c08b05",
+      "bytes": 3971
+    },
+    "quit-pending.json": {
+      "sha256": "14d9efa8c869f06129e7c7a0d21a69834270aae2d8b4e22ea7fd2e4e1fa43de0",
+      "bytes": 417
+    },
+    "quit-precondition.json": {
+      "sha256": "d62bb4d2a5bcf313b75f14cbdd59bf92acce481e55630cdec60974de55b32225",
+      "bytes": 307
+    },
+    "quit-recovery-capture.weftforge": {
+      "sha256": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+      "bytes": 5651
+    },
+    "quit-result.json": {
+      "sha256": "458c726acac105ce5ffe941b0f0905c01169f136a8c8c659beae6ed41b120c1c",
+      "bytes": 459
+    },
+    "recovered-edited.weftforge": {
+      "sha256": "bc4f755f932f32ec36104077e422ba50f55849a1eaa3f375c681479282b5f9c1",
+      "bytes": 5651
+    },
+    "recovered.weftforge": {
+      "sha256": "097f7bbbce7edefabf4427eb2d486d63b78643410710b7b871a0612ae9790ea1",
+      "bytes": 5651
+    },
+    "ui-declaration.json": {
+      "sha256": "1bb2a386e00131be062b924b56fdf8c864915bcba8e3a6913c5107eca3bb507a",
+      "bytes": 2196
+    }
+  },
+  "limitations": [
+    "No reference execution or parity claim.",
+    "No cloth fitting or simulation quality check.",
+    "UI gestures, error display, undo/redo, process identity and recovery interaction require the parent UI record.",
+    "The final recovered control edit intentionally changes geometry; preservation bounds concern the earlier split and its unchanged saves/exports."
+  ],
+  "status": "passed_for_supplied_outputs"
+}
