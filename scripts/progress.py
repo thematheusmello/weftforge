@@ -74,15 +74,46 @@ def reference_settings(reference):
     if not isinstance(settings, dict):raise ValueError('reference settings must be an object')
     return {key: value for key, value in settings.items() if key != 'license_entitlement'}
 
+def reference_identity(reference):
+    identity = {key: reference.get(key) for key in ['baseline_id', 'baseline_revision', 'product']}
+    for section, keys in {
+            'installer': ['sha256'],
+            'application': ['bundle_name', 'bundle_id', 'bundle_short_version', 'bundle_version',
+                            'executable_name', 'executable_sha256', 'observed_ui_version',
+                            'observed_ui_build', 'observed_runtime_architecture'],
+            'host': ['os', 'version', 'build', 'architecture']}.items():
+        values = reference.get(section)
+        if values is None:values = {}
+        if not isinstance(values, dict):raise ValueError(f'reference {section} must be an object')
+        identity[section] = {key: values.get(key) for key in keys}
+    return identity
+
 def reference_frozen(reference):
     if reference.get('frozen') is not True:return False
+    def text(value):
+        return isinstance(value, str) and bool(value.strip())
     def known(value):
         if isinstance(value, dict):return all(known(item) for item in value.values())
         if isinstance(value, list):return all(known(item) for item in value)
+        if isinstance(value, str):return text(value)
         return value is not None
     settings = reference_settings(reference)
-    return ({'units', 'locale', 'preferences', 'graphics'} <= settings.keys()
-            and known(settings))
+    if (not isinstance(settings.get('units'), (str, dict)) or not settings['units']
+            or not text(settings.get('locale'))
+            or not all(isinstance(settings.get(key), dict) and settings[key] for key in ['preferences', 'graphics'])
+            or not known(settings)):
+        return False
+    identity = reference_identity(reference)
+    application = identity['application']
+    if (not all(text(value) for value in [identity['baseline_id'], identity['product'], application['bundle_id'],
+                                         application['observed_ui_version'], application['observed_runtime_architecture'],
+                                         *identity['host'].values()])
+            or type(identity['baseline_revision']) is not int or identity['baseline_revision'] < 1):
+        return False
+    build = application['observed_ui_build']
+    return ((text(build) or type(build) is int and build > 0)
+            and all(isinstance(value, str) and re.fullmatch('[0-9a-f]{64}', value)
+                    for value in [identity['installer']['sha256'], application['executable_sha256']]))
 
 def reference_qualification(report, data, reference, commit=None):
     """Pin normative inputs separately from mutable implementation/status prose."""
@@ -117,7 +148,7 @@ def reference_qualification(report, data, reference, commit=None):
             'scenarios_sha256': json_digest(scenarios),
             'comparison_criteria_sha256': json_digest(feature['comparison_criteria'])}
         pending.extend(feature['dependencies'])
-    return {'baseline_revision': reference['baseline_revision'],
+    return {'baseline_revision': reference['baseline_revision'], 'baseline_sha256': json_digest(reference_identity(reference)),
             'settings_sha256': json_digest(reference_settings(reference)), 'contracts': contracts}
 
 def qualification_current(report, data, reference):

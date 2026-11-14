@@ -41,6 +41,14 @@ class EvidenceHistoryTests(unittest.TestCase):
         self.write('parity/schema.json', schema)
         self.write('parity/reference.json', {'baseline_id': 'SYNTHETIC-1', 'frozen': True,
                                            'baseline_revision': 1, 'baseline_status': 'frozen',
+                                           'product': 'Synthetic test product',
+                                           'installer': {'sha256': '1' * 64},
+                                           'application': {'bundle_id': 'invalid.example.synthetic',
+                                                           'executable_sha256': '2' * 64,
+                                                           'observed_ui_version': '1.0', 'observed_ui_build': '123',
+                                                           'observed_runtime_architecture': 'synthetic'},
+                                           'host': {'os': 'Synthetic OS', 'version': '1.0',
+                                                    'build': '123', 'architecture': 'synthetic'},
                                            'settings': {'units': 'metres', 'locale': 'en-US',
                                                         'preferences': {'default_length': 1.0},
                                                         'graphics': {'renderer': 'synthetic'},
@@ -213,6 +221,33 @@ class EvidenceHistoryTests(unittest.TestCase):
     def test_baseline_revision_change_requires_stale_comparison(self):
         self.assert_requirement_change(lambda: self.change_reference('baseline_revision', 2))
 
+    def test_reference_executable_identity_change_requires_stale_comparison(self):
+        application = progress.read('parity/reference.json')['application'] | {'executable_sha256': '3' * 64}
+        self.assert_requirement_change(lambda: self.change_reference('application', application))
+
+    def test_reference_observed_build_change_requires_stale_comparison(self):
+        application = progress.read('parity/reference.json')['application'] | {'observed_ui_build': '124'}
+        self.assert_requirement_change(lambda: self.change_reference('application', application))
+
+    def test_reference_host_identity_change_requires_stale_comparison(self):
+        host = progress.read('parity/reference.json')['host'] | {'version': '2.0'}
+        self.assert_requirement_change(lambda: self.change_reference('host', host))
+
+    def test_reference_installer_identity_change_requires_stale_comparison(self):
+        self.assert_requirement_change(lambda: self.change_reference('installer', {'sha256': '4' * 64}))
+
+    def test_new_evidence_and_provenance_do_not_stale_reference_comparison(self):
+        self.report('REFERENCE', kind='reference_comparison')
+        reference = progress.read('parity/reference.json')
+        reference.update(evidence=[{'id': 'synthetic observation'}], latest_access_observation={'state': 'synthetic'},
+                         blockers=['Synthetic delivery status'])
+        reference['host']['support_assessment'] = 'New synthetic support prose'
+        reference['application']['garment_workspace_observed'] = True
+        reference['installer']['retrieval'] = 'New synthetic provenance prose'
+        self.write('parity/reference.json', reference)
+        progress.validate(self.data)
+        self.assertTrue(self.parity())
+
     def test_settings_change_requires_stale_comparison(self):
         settings = progress.read('parity/reference.json')['settings']
         settings['units'] = 'centimetres'
@@ -250,6 +285,7 @@ class EvidenceHistoryTests(unittest.TestCase):
         report = self.report('REFERENCE', kind='reference_comparison')
         progress.validate(self.data)
         self.assertTrue(self.parity())
+
         reference = progress.read('parity/reference.json')
         for key, value in [('frozen', False), ('settings', {}),
                            ('settings', reference['settings'] | {'units': None}),
@@ -274,6 +310,50 @@ class EvidenceHistoryTests(unittest.TestCase):
         self.write('parity/reference.json', reference)
         progress.validate(self.data)
         self.assertTrue(self.parity())
+
+    def test_frozen_settings_require_nonempty_typed_technical_records(self):
+        reference = progress.read('parity/reference.json')
+        self.assertTrue(progress.reference_frozen(reference))
+        for key, values in {
+                'units': [None, '', ' \t ', {}, [], 1, {'length': ' '}],
+                'locale': [None, '', ' \t ', {}, []],
+                'preferences': [None, {}, '', ' ', []],
+                'graphics': [None, {}, '', ' ', []]}.items():
+            for value in values:
+                with self.subTest(key=key, value=value):
+                    changed = copy.deepcopy(reference)
+                    changed['settings'][key] = value
+                    self.assertFalse(progress.reference_frozen(changed))
+        reference['settings'].update(units={'length': 'metres'}, preferences={'custom_shortcuts': []})
+        self.assertTrue(progress.reference_frozen(reference))
+
+    def test_frozen_reference_requires_known_binary_build_and_host_anchors(self):
+        reference = progress.read('parity/reference.json')
+        for section, keys in {
+                None: ['product'], 'installer': ['sha256'],
+                'application': ['bundle_id', 'executable_sha256', 'observed_ui_version',
+                                'observed_ui_build', 'observed_runtime_architecture'],
+                'host': ['os', 'version', 'build', 'architecture']}.items():
+            for key in keys:
+                for value in [None, '', ' \t ']:
+                    with self.subTest(section=section, key=key, value=value):
+                        changed = copy.deepcopy(reference)
+                        (changed if section is None else changed[section])[key] = value
+                        self.assertFalse(progress.reference_frozen(changed))
+        for section, key in [('installer', 'sha256'), ('application', 'executable_sha256')]:
+            changed = copy.deepcopy(reference)
+            changed[section][key] = 'not-a-sha256'
+            self.assertFalse(progress.reference_frozen(changed))
+        reference['application']['observed_ui_build'] = 123
+        self.assertTrue(progress.reference_frozen(reference))
+
+    def test_matching_comparison_with_unknown_binary_identity_cannot_promote(self):
+        reference = progress.read('parity/reference.json')
+        del reference['application']['executable_sha256']
+        self.write('parity/reference.json', reference)
+        self.report('UNKNOWN-BINARY', kind='reference_comparison', commit=self.commit())
+        progress.validate(self.data)
+        self.assertFalse(self.parity())
 
     def test_complete_pass_requires_reviewed_documents_but_exploration_does_not(self):
         del self.feature['contract_documents']

@@ -419,6 +419,7 @@
           "type": "object",
           "required": [
             "baseline_revision",
+            "baseline_sha256",
             "settings_sha256",
             "contracts"
           ],
@@ -426,6 +427,10 @@
             "baseline_revision": {
               "type": "integer",
               "minimum": 1
+            },
+            "baseline_sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
             },
             "settings_sha256": {
               "type": "string",
