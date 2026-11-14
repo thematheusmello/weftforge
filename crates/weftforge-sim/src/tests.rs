@@ -559,9 +559,9 @@ fn finite_diagnostics_do_not_claim_satisfied_contact() {
 }
 
 #[test]
-fn constructor_cancels_inside_initial_triangle_candidates_without_publishing_state() {
+fn constructor_cancels_inside_initial_contact_query_without_publishing_state() {
     use std::cell::Cell;
-    // More than one candidate block per vertex, with genuine initial layer intersections.
+    // A fully overlapping hierarchy still has to poll during expensive candidate work.
     let patches = CANCELLATION_CHECK_INTERVAL + 1;
     let mut input = ClothInput::default();
     for _ in 0..patches {
@@ -608,7 +608,7 @@ fn constructor_cancels_inside_initial_triangle_candidates_without_publishing_sta
 
     let analysis = Cell::new(0_usize);
     let (_, intersections) = complete
-        .contact_errors_cancellable(complete.positions(), &|| {
+        .initial_contact_errors_cancellable(complete.positions(), &|| {
             analysis.set(analysis.get() + 1);
             false
         })
@@ -618,12 +618,9 @@ fn constructor_cancels_inside_initial_triangle_candidates_without_publishing_sta
         analysis.get() > 2 * input.positions.len(),
         "candidate-loop polling must occur inside each vertex, not only outside it"
     );
-    // Contact analysis is the last polled constructor phase before its final publish check.
-    let before_analysis = total.get() - analysis.get() - 1;
-    let through_bounds = input.positions.len().div_ceil(CANCELLATION_CHECK_INTERVAL)
-        + input.triangles.len().div_ceil(CANCELLATION_CHECK_INTERVAL);
-    let stop_at = before_analysis + through_bounds + 1 + 2; // vertex zero, second triangle-candidate block
-    assert!(stop_at < total.get());
+    // Cancel in the last vertex's query, before the final constructor publication check.
+    let stop_at = total.get() - 2;
+    assert!(stop_at > total.get() - analysis.get());
     let calls = Cell::new(0);
     let cancelled = Cell::new(false);
     let mut accepted = Cloth::new(square()).unwrap();
@@ -651,6 +648,101 @@ fn constructor_cancels_inside_initial_triangle_candidates_without_publishing_sta
     assert_eq!(calls.get(), stop_at);
     assert_eq!(accepted.positions(), previous);
     assert_eq!(accepted.simulation_time(), 0.);
+}
+
+#[test]
+fn initial_hierarchy_matches_brute_force_for_contacts_thickness_and_sewing_filters() {
+    let compare = |input: ClothInput| {
+        let cloth = Cloth::new(input.clone()).unwrap();
+        // The existing live diagnostic scans every triangle, independently of the hierarchy.
+        let expected = cloth.contact_errors(&input.positions);
+        assert_eq!(cloth.diagnostics().max_contact_error, expected.0);
+        assert_eq!(cloth.diagnostics().initial_intersections, expected.1);
+        assert_eq!(cloth.positions(), input.positions);
+        assert_eq!(cloth.simulation_time(), 0.);
+        assert!(cloth.diagnostics().finite);
+        expected.1
+    };
+    assert_eq!(compare(square()), 0); // Adjacent triangles are excluded.
+    for separation in [0., 0.001, 0.004, 0.02, 0.02000001, 1.] {
+        for thickness in [1e-9, 0.002, 0.01] {
+            let mut input = layers(false);
+            for p in &mut input.positions[4..] {
+                p[1] = 1. + separation;
+            }
+            for material in &mut input.triangle_materials {
+                material.collision_thickness = thickness;
+            }
+            compare(input.clone());
+            for (i, material) in input.triangle_materials.iter_mut().enumerate() {
+                material.collision_thickness = thickness * (i + 1) as f64;
+            }
+            compare(input.clone());
+            input.stitches.push(Stitch {
+                a: WeightedPoint {
+                    vertices: [0, 1],
+                    weights: [0.25, 0.75],
+                },
+                b: WeightedPoint {
+                    vertices: [4, 5],
+                    weights: [0.75, 0.25],
+                },
+                compliance: 0.,
+            });
+            compare(input);
+        }
+    }
+    let mut crossing = layers(false);
+    crossing.positions[4..].copy_from_slice(&[
+        [0.5, 0.5, 0.5],
+        [0.5, 1., 0.5],
+        [0.5, 1.5, 1.5],
+        [0.5, 1.5, 0.],
+    ]);
+    assert!(compare(crossing) > 0);
+    let mut colliders = layers(false);
+    colliders.colliders = vec![
+        Collider::Ground { height: 1.1 },
+        Collider::Torso {
+            center: [0.5, 1., 0.5],
+            radii: [1.; 3],
+        },
+        Collider::Capsule {
+            a: [0.5, 0., 0.5],
+            b: [0.5, 2., 0.5],
+            radius: 1.,
+        },
+    ];
+    assert!(compare(colliders) > 0);
+    for n in [2, 5, 12] {
+        let patch = hanging_grid(n, 800.);
+        for layers in [1, 2, 3] {
+            let mut input = ClothInput::default();
+            for layer in 0..layers {
+                let offset = input.positions.len();
+                input.positions.extend(
+                    patch
+                        .positions
+                        .iter()
+                        .map(|p| [p[0], p[1], p[2] + layer as f64 * 0.001]),
+                );
+                input.material_uv.extend_from_slice(&patch.material_uv);
+                input
+                    .triangles
+                    .extend(patch.triangles.iter().map(|tri| tri.map(|v| v + offset)));
+                input
+                    .triangle_materials
+                    .extend(patch.triangle_materials.iter().map(|m| Material {
+                        collision_thickness: 0.002 * (layer + 1) as f64,
+                        ..*m
+                    }));
+            }
+            let expected = compare(input.clone());
+            input.triangles.reverse();
+            input.triangle_materials.reverse();
+            assert_eq!(compare(input), expected);
+        }
+    }
 }
 
 #[test]
