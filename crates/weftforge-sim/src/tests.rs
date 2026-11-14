@@ -84,6 +84,80 @@ fn freefall_matches_symplectic_euler_and_refines_toward_analytic_solution() {
 }
 
 #[test]
+fn membrane_affine_strain_follows_material_axes_under_arrangement_and_winding() {
+    let uv = [[2., 3.], [2.4, 3.1], [1.8, 3.5]];
+    // A 90-degree rigid arrangement of F = [[1.2, 0.25], [0, 0.7], [0, 0]].
+    let x: Vec<_> = uv
+        .iter()
+        .map(|[u, v]| [10. - 0.7 * v, 2. + 1.2 * u + 0.25 * v, -0.4])
+        .collect();
+    for grain_angle in [0., 0.37, std::f64::consts::FRAC_PI_2] {
+        let (sin, cos) = grain_angle.sin_cos();
+        let warp = (1.2 * cos + 0.25 * sin).hypot(0.7 * sin);
+        let weft = (-1.2 * sin + 0.25 * cos).hypot(0.7 * cos);
+        let expected = (warp - 1.).abs().max((weft - 1.).abs());
+        for tri in [[0, 1, 2], [0, 2, 1]] {
+            let membrane = constraints::Membrane::new(
+                tri,
+                &uv,
+                Material {
+                    grain_angle,
+                    ..Default::default()
+                },
+            );
+            assert!((membrane.area - 0.11).abs() < 1e-14);
+            assert!((membrane.stretch_error(&x) - expected).abs() < 1e-13);
+        }
+    }
+}
+
+#[test]
+fn membrane_projection_matches_analytic_uniaxial_and_shear_updates() {
+    let uv = [[0., 0.], [1., 0.], [0., 1.]];
+    for (grain_angle, expected_x) in [
+        (0., 1.151470588235294),
+        (std::f64::consts::FRAC_PI_2, 1.0390243902439025),
+    ] {
+        let membrane = constraints::Membrane::new(
+            [0, 1, 2],
+            &uv,
+            Material {
+                warp_stiffness: 50.,
+                weft_stiffness: 1000.,
+                grain_angle,
+                ..Default::default()
+            },
+        );
+        let mut x = [[0., 0., 0.], [1.2, 0., 0.], [0., 1., 0.]];
+        // Only x[1] moves: C=0.22, dC/dx=1.2, alpha=4 or 0.2 for area=0.5 m².
+        membrane.solve(&mut x, &[0., 1., 0.], 0.1, &mut [0.; 3]);
+        assert!((x[1][0] - expected_x).abs() < 1e-14);
+        assert_eq!(x[0], [0.; 3]);
+        assert_eq!(x[2], [0., 1., 0.]);
+    }
+    let membrane = constraints::Membrane::new(
+        [0, 1, 2],
+        &uv,
+        Material {
+            shear_stiffness: 10.,
+            ..Default::default()
+        },
+    );
+    let height = 0.91_f64.sqrt();
+    let mut x = [[0., 0., 0.], [1., 0., 0.], [0.3, height, 0.]];
+    // Both axes have unit length: only shear acts, with C=0.3 and delta_lambda=-1/32.
+    membrane.solve(&mut x, &[1.; 3], 0.2, &mut [0.; 3]);
+    let expected = [
+        [0.040625, height / 32., 0.],
+        [0.990625, -height / 32., 0.],
+        [0.26875, height, 0.],
+    ];
+    for (actual, expected) in x.into_iter().zip(expected) {
+        assert!(length(sub(actual, expected)) < 1e-14);
+    }
+}
+
+#[test]
 fn weighted_stitch_closes_unequal_samples_and_preserves_momentum() {
     let stitch = Stitch {
         a: WeightedPoint {
