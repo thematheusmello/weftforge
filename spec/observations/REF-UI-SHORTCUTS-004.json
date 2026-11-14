@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "case_id": "REF-UI-SHORTCUTS-004",
+  "product_build": "2026.1.237 (r58920)",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "baseline_status": "provisional_unfrozen",
+  "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "status": "bounded_graphics_presence_reobserved_shortcut_navigation_blocked",
+  "plan": "Read-only Shortcuts expansion for Sewing and then accessible 2D Pattern creation/edit rows; no preference or binding edits, close safely.",
+  "actual_pages_reached": [
+    "Graphic Options"
+  ],
+  "shortcut_category_opened": false,
+  "shortcut_descendants_observed": false,
+  "current_graphics_values": {
+    "antialiasing": "x4",
+    "normal_blending_method": "Alpha Blending",
+    "transparency_rendering_method": "Naive Ordered",
+    "maximum_image_resolution_pixels": [
+      4096,
+      4096
+    ]
+  },
+  "visible_antialiasing_choices": [
+    {
+      "label": "Off",
+      "value": 0
+    },
+    {
+      "label": "x2",
+      "value": 0
+    },
+    {
+      "label": "x4",
+      "value": 1
+    },
+    {
+      "label": "x8",
+      "value": 0
+    },
+    {
+      "label": "x16",
+      "value": 0
+    }
+  ],
+  "value_qualification": "Current configured states; no option selected by the investigator. Visible alternatives do not prove accepted edits, numeric range or factory defaults.",
+  "other_visible_controls": [
+    "Unlabeled question-mark button beside maximum image resolution",
+    "Separate unlabeled title close control",
+    "Save as Preferences",
+    "Reset",
+    "Footer Close"
+  ],
+  "actions": [
+    {
+      "route": "Settings > Preferences",
+      "result": "Graphic Options opened; left category labels visible only in image."
+    },
+    {
+      "route": "Exposed Raise and ordinary activation/AXRaise helpers",
+      "result": "AXRaise succeeds, but initial foreground checks are false; no setting-value action."
+    },
+    {
+      "route": "Fresh-image CUA left click at Shortcuts",
+      "result": "AXError.notImplemented; no accepted category change."
+    },
+    {
+      "route": "Optional documented launch_app entry point",
+      "result": "Not callable in this runtime; no action."
+    },
+    {
+      "route": "Ordinary macOS exact-application activation",
+      "result": "Independent read-only inspect confirms matching executable, target frontmost and Preferences window onscreen."
+    },
+    {
+      "route": "Existing pinned native pointer check",
+      "result": "Refused: Selected window is not the first normal CG window at this point. Check only; zero events by operation contract; no run."
+    },
+    {
+      "route": "Exposed Preferences footer Close",
+      "result": "Saved garment workspace returns; no modal, simulation off."
+    }
+  ],
+  "input_qualification": {
+    "driver_source_sha256": "df39282ebcf11d25de180a33e31aa0f295d23f3521ba4d299ea7c7f357d5c812",
+    "driver_binary_sha256": "4d945a09b6a45b41cc2de8799206a01a76aad235d830740708078985286c97ed",
+    "policy_changed": false,
+    "check_only": true,
+    "native_pointer_run": false,
+    "cause_of_window_guard_refusal": "not inferred",
+    "native_driver_events_posted": 0
+  },
+  "preservation": {
+    "preference_values_edited": false,
+    "bindings_edited": false,
+    "save_reset_apply_or_acceptance": false,
+    "settings_file_byte_equality": "not measured; no setting-value edit or acceptance action performed",
+    "original_fixture_name": "reference-free-reversed-003.zprj",
+    "original_fixture_bytes": 100554,
+    "original_fixture_sha256": "0afcfe4281526e2250bef6b6d945bdc7e48f388b8236c765623bafb17702ba8d",
+    "fixture_hash_unchanged": true,
+    "original_partial_pair_selected_after_close": true,
+    "simulation": false,
+    "process_restart": false,
+    "security_account_network_or_permission_action": false
+  },
+  "evidence": [
+    {
+      "id": "ev_22fdf5e2c6ccbd6a31f9a0f20ab38d3a26cb04001828f03da5fb8d57e7a86ac6",
+      "key": "before",
+      "provider": "REA 6.9.0 native main-window observation",
+      "started_at": "2026-11-14T08:27:24.479456+00:00",
+      "completed_at": "2026-11-14T08:27:33.116523+00:00",
+      "retained_record_sha256": "5dbdf737dbc0201f0397dc07bd3b3d10b3b0c0dc2a2d82e8a37c54782f519c59",
+      "original_png_sha256": "1a1a81783898cd34c899f07f17795601b4a2e9606891a272bd234c79e2795d72",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete commercial/account records and images stay private."
+    },
+    {
+      "id": "CUA-SHORTCUTS004-PREFERENCES-OPEN",
+      "key": "preferences_open",
+      "provider": "native AX transition and private screenshot",
+      "observed_at": "2026-11-14T08:27:58.712Z",
+      "retained_record_sha256": "34d5eaf25e81cb22d885d06cfd38aad7a6e2eb91975b887d526b159ee997f4db",
+      "context": "Initial Graphic Options; categories visible in image but absent from AX.",
+      "privacy": "Complete commercial/account records and images stay private."
+    },
+    {
+      "id": "CUA-SHORTCUTS004-FOREGROUND-PREFERENCES",
+      "key": "foreground",
+      "provider": "native AX transition and private screenshot",
+      "observed_at": "2026-11-14T08:33:47.040Z",
+      "retained_record_sha256": "b114154da4bddc993142d3b1f28937e1f42533e2b81cf9488b2847416d148744",
+      "context": "Graphic Options after ordinary activation and exposed Raise; no setting edit.",
+      "privacy": "Complete commercial/account records and images stay private."
+    },
+    {
+      "id": "CUA-SHORTCUTS004-AFTER-CLOSE",
+      "key": "closed",
+      "provider": "native AX transition and private screenshot",
+      "observed_at": "2026-11-14T08:34:50.605Z",
+      "retained_record_sha256": "6fbe061f530a67f923f6cf48800d76d840a525b42a92a130177b1d551400fa0a",
+      "context": "Exposed footer Close returns original saved garment workspace.",
+      "privacy": "Complete commercial/account records and images stay private."
+    },
+    {
+      "id": "ev_43eafac4eeb88048db8360bfdedb6bffb47aba7c8db83e611cae041ee0365069",
+      "key": "after",
+      "provider": "REA 6.9.0 native main-window observation",
+      "started_at": "2026-11-14T08:35:18.571471+00:00",
+      "completed_at": "2026-11-14T08:35:26.648272+00:00",
+      "retained_record_sha256": "080cce1093e53dcc939f0373a95e3272c605b0a1469d7ca59a111f46d8123206",
+      "original_png_sha256": "0d3bd9bfd110b47a009ead82a9c15c07401540df37e19b68c38d6ce20bc23a4a",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "privacy": "Complete commercial/account records and images stay private."
+    },
+    {
+      "id": "PLAN-SHORTCUTS004-20261114",
+      "key": "plan",
+      "provider": "predeclared bounded read-only inspection",
+      "retained_record_sha256": "8ba40b2b7bf79285079d2dfb801c5ab2e0c346847c7e4e3a99e40f06cedf23df",
+      "privacy": "Complete host/process/request records remain private."
+    },
+    {
+      "id": "REVIEW-SHORTCUTS004-CUA-NAVIGATION",
+      "key": "cua_errors",
+      "provider": "reviewed CUA action/error extract; complete raw tool response not exported",
+      "retained_record_sha256": "502eb3a23d1fcc235d56a4ef8d9d3b332374eaa458ca39e19e2b6c9f53e32811",
+      "privacy": "Complete host/process/request records remain private."
+    },
+    {
+      "id": "FOCUS-SHORTCUTS004-MAIN",
+      "key": "main_focus",
+      "provider": "public ordinary application activation and exact AXRaise",
+      "retained_record_sha256": "cb72e559ac6f461c133f9509a440f015a75b60d5005509b5f92b7f6bd09fdcb1",
+      "privacy": "Complete host/process/request records remain private."
+    },
+    {
+      "id": "FOCUS-SHORTCUTS004-PREFERENCES",
+      "key": "preferences_focus",
+      "provider": "public ordinary application activation and exact AXRaise",
+      "retained_record_sha256": "1c7617b2b3d2e1f7b1095f00725bcc91f9e973c490cc18064aa976fe89b984d9",
+      "privacy": "Complete host/process/request records remain private."
+    },
+    {
+      "id": "FOCUS-SHORTCUTS004-ORDINARY-OPEN",
+      "key": "ordinary_open",
+      "provider": "ordinary macOS application activation",
+      "retained_record_sha256": "7b4dd302df3789a19a3f46ad480f553e1cfc9c5e6f6bc9ee27f7bd8a88dda090",
+      "privacy": "Complete host/process/request records remain private."
+    },
+    {
+      "id": "INSPECT-SHORTCUTS004-FOREGROUND",
+      "key": "foreground_check",
+      "provider": "pinned native driver read-only identity inspection",
+      "retained_record_sha256": "f951254d28b7a361c8c3d0dbc2ea8c24f383cbc5cfd87ee9e3f8fc808f3584dc",
+      "privacy": "Complete host/process/request records remain private."
+    },
+    {
+      "id": "CHECK-SHORTCUTS004-CATEGORY",
+      "key": "guard_check",
+      "provider": "pinned native driver check only; no run invoked",
+      "retained_record_sha256": "0ed978386215f33a0fca58e826e215adcaf36328059fee6c2c9f6c4bd98e5d7f",
+      "privacy": "Complete host/process/request records remain private."
+    }
+  ],
+  "capture_limitations": "REA binds the actual main window before and after. Foreground Preferences uses complete private native AX-transition/image records, not a fabricated REA modal capture. Category labels are visible, but no unseen Shortcuts contents or bindings are inferred.",
+  "open_questions": [
+    "Shortcut category expansion and effective bindings under a supported input route.",
+    "Alternative graphics-option effects, errors, ranges, resets and persistence.",
+    "Numeric locale, checked Language and remaining baseline qualifications."
+  ],
+  "weftforge_comparison": "not_run",
+  "verified_parity_claimed": false,
+  "complete_broad_feature_contracts": 0,
+  "inventory_changes": {
+    "new_ids": 0,
+    "combined_records": 949,
+    "qualification": "The 949 catalog remains byte-identical. Visible current graphics choices/buttons are retained as observation detail; planned new shortcut descendants were not reached."
+  }
+}

@@ -56,3 +56,8 @@ autosave/retention/recovery, plugin behavior and account switching remain
 unexecuted or unobserved. Palette values and commercial assets are excluded.
 Baseline revision 1 stays provisional and unfrozen. These observations supply
 zero verified reference-parity claims.
+
+A later [bounded settings inspection](UI-shortcuts-inspection-20261114.md)
+reobserves Graphic Options and its individual radio choices, but cannot reach
+Shortcuts through the available guarded navigation route. Its blocked result and
+safe Close are retained separately; no shortcut descendant or binding is inferred.
