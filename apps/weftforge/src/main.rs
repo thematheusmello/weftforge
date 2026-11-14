@@ -1978,7 +1978,20 @@ impl Studio {
                 } else {
                     Stroke::NONE
                 };
-                painter.add(egui::Shape::convex_polygon(points.to_vec(), color, stroke));
+                painter.add(egui::Shape::convex_polygon(
+                    points.to_vec(),
+                    color,
+                    Stroke::NONE,
+                ));
+                if stroke != Stroke::NONE {
+                    for segment in [
+                        [points[0], points[1]],
+                        [points[1], points[2]],
+                        [points[2], points[0]],
+                    ] {
+                        painter.line_segment(segment, stroke);
+                    }
+                }
                 if response.clicked()
                     && response
                         .interact_pointer_pos()
@@ -2191,30 +2204,21 @@ impl eframe::App for Studio {
                 });
             });
             let h = ui.available_height().max(180.0);
-            let inspector_width = 300.0;
-            let canvas_width = (ui.available_width() - inspector_width - 26.0).max(360.0);
-            ui.horizontal_top(|ui| {
-                ui.allocate_ui_with_layout(
-                    Vec2::new(canvas_width, h),
-                    egui::Layout::top_down(egui::Align::Min),
-                    |ui| {
-                        ui.columns(2, |cols| {
-                            self.patterns(&mut cols[0]);
-                            self.garment(&mut cols[1]);
-                        });
-                    },
-                );
-                ui.separator();
-                egui::Frame::new()
-                    .fill(Color32::from_rgb(44, 48, 52))
-                    .inner_margin(10.0)
-                    .show(ui, |ui| {
-                        ui.with_layout(egui::Layout::top_down(egui::Align::Min), |ui| {
-                            ui.set_width(inspector_width - 20.0);
-                            ui.set_height(h - 20.0);
-                            self.inspector(ui);
-                        });
-                    });
+            egui::Panel::right("studio-properties")
+                .exact_size(300.0)
+                .resizable(false)
+                .frame(
+                    egui::Frame::new()
+                        .fill(Color32::from_rgb(44, 48, 52))
+                        .inner_margin(10.0),
+                )
+                .show(ui, |ui| {
+                    ui.set_height(h - 20.0);
+                    self.inspector(ui);
+                });
+            ui.columns(2, |cols| {
+                self.patterns(&mut cols[0]);
+                self.garment(&mut cols[1]);
             });
         });
         if self.search {
@@ -2655,6 +2659,34 @@ fn main() -> eframe::Result {
 #[cfg(test)]
 mod tests {
     use super::*;
+    fn command_search_action(output: &egui::FullOutput, label: &str) -> egui::accesskit::NodeId {
+        use egui::accesskit::{Action, Role};
+        let nodes = &output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes;
+        let window = nodes
+            .iter()
+            .find(|(_, node)| node.role() == Role::Window && node.label() == Some("Command search"))
+            .expect("command search window")
+            .0;
+        let mut pending = vec![window];
+        while let Some(id) = pending.pop() {
+            let node = &nodes
+                .iter()
+                .find(|(node_id, _)| *node_id == id)
+                .expect("AX child in update")
+                .1;
+            if node.label() == Some(label) && node.supports_action(Action::Click) {
+                return id;
+            }
+            pending.extend_from_slice(node.children());
+        }
+        panic!("missing command search action {label}");
+    }
+
     #[test]
     fn studio_workspace_keeps_creation_and_transport_visible() {
         for size in [[1000.0, 650.0], [1640.0, 1000.0]] {
@@ -3228,6 +3260,18 @@ mod tests {
             }
         }
         fn button(output: &egui::FullOutput, label: &str) -> (NodeId, Pos2) {
+            let palette_action = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .any(|(_, node)| {
+                    node.role() == egui::accesskit::Role::Window
+                        && node.label() == Some("Command search")
+                })
+                .then(|| command_search_action(output, label));
             let (id, node) = output
                 .platform_output
                 .accesskit_update
@@ -3235,8 +3279,10 @@ mod tests {
                 .unwrap()
                 .nodes
                 .iter()
-                .rfind(|(_, node)| {
-                    node.label() == Some(label) && node.supports_action(Action::Click)
+                .find(|(id, node)| {
+                    node.label() == Some(label)
+                        && node.supports_action(Action::Click)
+                        && palette_action.is_none_or(|expected| *id == expected)
                 })
                 .unwrap();
             let bounds = node.bounds().unwrap();
@@ -3534,7 +3580,7 @@ mod tests {
                             );
                             assert_eq!(
                                 app.editor.project, expected.project,
-                                "{label}/{outcome}: intentional later Tab"
+                                "{label}/{outcome}/{input}: intentional later Tab"
                             );
                         }
                     }
@@ -3814,14 +3860,17 @@ mod tests {
             app.search = search;
             app.query = "ellipse".into();
             let output = frame(ctx, app, search, vec![]);
+            let palette_action = search.then(|| command_search_action(&output, "Add ellipse"));
             let (target_node, node) = output
                 .platform_output
                 .accesskit_update
                 .unwrap()
                 .nodes
                 .into_iter()
-                .rfind(|(_, node)| {
-                    node.label() == Some("Add ellipse") && node.supports_action(Action::Click)
+                .find(|(id, node)| {
+                    node.label() == Some("Add ellipse")
+                        && node.supports_action(Action::Click)
+                        && palette_action.is_none_or(|expected| *id == expected)
                 })
                 .expect("accessible ellipse action");
             assert_eq!(node.role(), Role::Button);
@@ -5137,7 +5186,13 @@ mod tests {
                     events,
                     ..Default::default()
                 },
-                |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+                |ui| {
+                    eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest());
+                    let canvas = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+                    ctx.data_mut(|data| {
+                        data.insert_temp(egui::Id::new("test-current-pattern-canvas"), canvas)
+                    });
+                },
             )
         }
         fn action(target_node: NodeId, action: Action) -> egui::Event {
@@ -5158,7 +5213,7 @@ mod tests {
             }
         }
         fn buttons(output: &egui::FullOutput, label: &str) -> Vec<(NodeId, Pos2)> {
-            output
+            let mut buttons: Vec<_> = output
                 .platform_output
                 .accesskit_update
                 .as_ref()
@@ -5175,7 +5230,9 @@ mod tests {
                         Pos2::new(((b.x0 + b.x1) * 0.5) as f32, ((b.y0 + b.y1) * 0.5) as f32),
                     )
                 })
-                .collect()
+                .collect();
+            buttons.sort_by(|a, b| a.1.y.total_cmp(&b.1.y).then(a.1.x.total_cmp(&b.1.x)));
+            buttons
         }
         fn guides(output: &egui::FullOutput) -> Vec<[Pos2; 2]> {
             output
@@ -5256,10 +5313,15 @@ mod tests {
                 assert!(app.editor.can_redo());
                 app.select_curve(Some((piece, a)));
                 let before = app.editor.project.clone();
+                frame(&ctx, &mut app, vec![]); // Settle the measured footer before caching screen positions.
                 let output = frame(&ctx, &mut app, vec![]);
                 let original_guides = guides(&output);
                 assert_eq!(original_guides.len(), 4);
-                let canvas = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+                let canvas = ctx
+                    .data_mut(|data| {
+                        data.get_temp::<Rect>(egui::Id::new("test-current-pattern-canvas"))
+                    })
+                    .unwrap();
                 for (seam, pair) in before.seams.iter().zip(original_guides.chunks_exact(2)) {
                     let point = |curve, t| {
                         app.to_screen(
@@ -6010,7 +6072,13 @@ mod tests {
                     events,
                     ..Default::default()
                 },
-                |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+                |ui| {
+                    eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest());
+                    let canvas = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+                    ctx.data_mut(|data| {
+                        data.insert_temp(egui::Id::new("test-current-pattern-canvas"), canvas)
+                    });
+                },
             )
         }
         fn action(id: NodeId, action: Action) -> egui::Event {
@@ -6577,10 +6645,15 @@ mod tests {
                     })
                     .collect()
             };
+            frame(&ctx, &mut app, vec![]); // Settle the measured footer before caching screen positions.
             let output = frame(&ctx, &mut app, vec![]);
             let accepted = guides(&output);
             assert_eq!(accepted.len(), portions.len() * 2);
-            let canvas = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+            let canvas = ctx
+                .data_mut(|data| {
+                    data.get_temp::<Rect>(egui::Id::new("test-current-pattern-canvas"))
+                })
+                .unwrap();
             for (portion, pair) in portions.iter().zip(accepted.chunks_exact(2)) {
                 for (index, t) in [0., 1.].into_iter().enumerate() {
                     let point = |span: &CurveInterval| {
