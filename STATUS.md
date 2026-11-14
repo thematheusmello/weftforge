@@ -1,221 +1,177 @@
 # WeftForge status — active development, 2026-11-14
 
-The complete independent native garment studio and recorded one-to-one reference
-parity remain the goal. No feature has verified reference parity: 0/56 inventoried
-contracts, with discovery incomplete and the full-product denominator unknown.
-All six roadmap gates remain open beyond the bounded implementation evidence.
+The complete independent native garment studio and recorded one-to-one parity
+remain the goal. Verified parity is **0/56** coarse inventoried contracts.
+Discovery is incomplete; the 650 observed interface entries are not a feature
+denominator. Every remaining roadmap gate stays in scope.
 
-## Recoverable implementation and publication
+## Published and recoverable state
 
-Verified public repository/origin: https://github.com/thematheusmello/weftforge.
-Published main: `28cae66b684e368e7fbe6b3240069ae0eb6e16e6` ([PR15](https://github.com/thematheusmello/weftforge/pull/15)).
-The preceding main2837647 Linux/macOS/Windows source checks and evidence validation passed in
-[CI43526530172](https://github.com/thematheusmello/weftforge/actions/runs/43526530172).
-[Pages43526530260](https://github.com/thematheusmello/weftforge/actions/runs/43526530260)
-succeeded; https://thematheusmello.github.io/weftforge/ returned HTTP200 with domains,
-freshness and attributable runs. Earlier CI/component and Pages/artifact-visibility
-failures remain in their original runs; bounded fixes are integrated. Project
-board creation lacks project/read:project token scopes; issues and registry work.
+Public repository: https://github.com/thematheusmello/weftforge.
+Published main: `eb378e35c1b0c4602dc5989593f9394a676db213`
+([README PR20](https://github.com/thematheusmello/weftforge/pull/20)); all eight
+push/PR platform and evidence checks passed. The root README is product focused.
+Keep reference laboratory and account-status details in dedicated research docs.
 
-The public [v0.1.0-alpha.1 source preview](https://github.com/thematheusmello/weftforge/releases/tag/v0.1.0-alpha.1)
-targets main8419363, with byte/SHA-verified original editable shirt and OBJ/SVG
-assets. No compiled binaries/installers ship. Its inspector data-preservation bug
-is disclosed in the release notes and [issue13](https://github.com/thematheusmello/weftforge/issues/13).
+[PR15](https://github.com/thematheusmello/weftforge/pull/15) published authored grain,
+separate warp/weft stiffness, strict native v2 migration and the inspector fix.
+[PR17](https://github.com/thematheusmello/weftforge/pull/17) retained the editing
+pass and fitting failure separately at `ee2811f`. Its Pages deployment
+`43532703043` succeeded; public HTTP 200 bytes exactly matched the committed
+dashboard, including both reports. The source-only
+[alpha.1](https://github.com/thematheusmello/weftforge/releases/tag/v0.1.0-alpha.1)
+remains at older `8419363` and discloses the inspector defect. No native binaries
+ship yet. Distribution notices, platform launch/package QA and signing remain.
 
-The grain, strict v2 migration and inspector fix are merged through PR15. All
-eight push/PR Linux/macOS/Windows/evidence checks passed on its source-identical
-head9738099. Main [CI43529986279](https://github.com/thematheusmello/weftforge/actions/runs/43529986279)
-is still running at this checkpoint; [Pages43529986285](https://github.com/thematheusmello/weftforge/actions/runs/43529986285)
-succeeded. Reference-access PR14 also completed all checks and merged.
+Current branch: `feat/curve-mcp-recovery`, source checkpoint `c0af10f`.
+This integrates sewn-curve editing, stateless MCP, shared save/export safeguards,
+shutdown retention, cooperative solver initialization cancellation, reference
+qualification, the reviewed interface catalog and its implementation crosswalk.
+The published README correction still needs merging into this branch; preserve
+its product wording and the new adapter/curve usage instructions.
 
-Current root branch `docs/grain-evidence` retains the new native editing/persistence
-pass and the same replay's fitting failure in separate scoped reports. Every
-report points to public source28cae66, whose26 Rust/workspace/lock/toolchain files
-byte-match the actual b8c9a1a build source. The executable was retained; no rebuild
-at the later publication commit is claimed. Historical reports/fixtures remain
-unchanged, including their stale flags and original outcomes.
+Contributor commits are retained through root cherry-picks: curve `c48cd958`,
+shutdown `3014a6e`, export `db48813`, MCP `68521f9`, save `3c20e73`, cancellation
+`7038aab`, qualification `0b054222`/`65dd3f5`, inventory `f26f0d6` and map `ed98b6b`.
+The source-pinned map requires its ancestor `7e59f2a` to remain reachable; preserve
+that history when merging this checkpoint. Identified historical executables and
+all evidence remain retained. Only generated root Cargo caches were moved to the
+external volume after low disk space; file sizes and identified binary hashes
+were checked. Local target symlinks require that volume; CI uses fresh targets.
 
-The curve increment is recoverable as `c48cd958101c5602a09824c5836d4874c4c6b0d5`
-in `feat/sewn-curve-editing`:49 Rust/24 Python checks,fmt,clippy and release builds
-passed. Native curve acceptance is next. The local MCP adapter is active in its
-separate worktree with explicit module/shared-export ownership; root is avoiding
-concurrent shared-target Cargo work. Completed disposable debug caches were
-removed after disk exhaustion; retained f00e,03d440 and1ed6d1 binaries were rehashed
-unchanged. No source build/benchmark/research process remains live on root.
+## Integrated behavior and checks
 
-## What works and what was checked
+The editable core retains stable points, straight/cubic curves, pieces, materials
+and oriented seam intervals with explicit correspondence. Typed transactions,
+undo/redo and revision invalidation remain shared by adapters. Native boundary
+selection exposes numeric cubic controls and straightness. Exact subdivision
+partitions reversed, partial and gathered sewing while preserving physical point
+pairs; focused analytical tests use 1e-12 m. Tiny resulting intervals fail
+atomically. Joining, internal features and arc-length semantics remain open.
 
-The GUI-independent Rust core retains stable authored points, straight/cubic
-curves, pieces, materials and oriented curve-interval seams with explicit
-correspondence. Typed transactions provide undo/redo and revision invalidation.
-Conforming refinement preserves seam mapping; interior flips improve mesh quality.
-Sewn-curve splitting still explicitly rejects pending relationship rewriting.
-Cubic intersection checking has a documented tessellation tolerance.
+The f64 CPU XPBD solver uses orthotropic membrane strain, dihedral bending,
+area-based mass, damping/friction, bounded-speed assembly, analytic avatar/ground
+and discrete vertex/triangle self/layer contact. Initialization polls cancellation
+inside contact analysis and receives the native worker's actual token. Some
+validation, allocation and final diagnostic phases remain non-interruptible.
+Native cancellation latency is unmeasured. Contact search remains quadratic;
+full edge/edge CCD, GPU simulation and calibrated fabrics remain open.
 
-The native eframe/wgpu editor connects 2D/3D selection, rectangle/polygon creation,
-interval sewing, dimensions, placement and materials to the real engine. It has
-command search, revision-tagged cancellable workers, save/open/export, untitled
-and named autosave and explicit recovery. Initial contact construction only has
-before/after cancellation; file IO and validation retain synchronous portions.
-The projected triangle preview still lacks professional rendering/depth/PBR.
+Native v2 stores per-piece grain and separate warp/weft stiffness. Strict v1
+migration preserves prior authored fields, IDs and revision. Atomic saves retain
+prior valid recovery and refuse nonregular destinations. Shared export writers
+protect native files at any extension and aliases. Regression cases cover
+primary/recovery links, dangling links and directories. Concurrent external
+writers are not coordinated.
 
-The f64 CPU XPBD solver has orthotropic membrane strain, dihedral bending, area
-mass, damping/friction, weighted seams with bounded-speed assembly, analytic
-avatar/ground and discrete vertex/triangle self/layer contact. No full edge/edge
-CCD, GPU solver or measured fabric calibration. Contact search is quadratic.
+On macOS, global Quit bypasses CloseRequested in pinned winit/eframe. App::on_exit
+now commits valid drafts, drains an older autosave writer and synchronously
+retains the latest dirty construction as recovery without overwriting primary.
+Clean/discard behavior, fallback and failure reporting are tested. Actual
+integrated Cmd+Q/relaunch/recovery acceptance remains pending; forced termination
+or storage failure is outside the retention guarantee.
 
-Native v2 writes per-piece `grain_angle` (radians, counterclockwise +U→+V) and
-separate positive warp/weft stiffnesses in N/m. Strict v1 reading copies old stretch
-to both axes, supplies zero grain and preserves every other authored value/ID and
-revision. Existing fixtures remain unchanged. Atomic saves retain exact prior
-valid bytes in recovery; invalid input/unsupported versions retain the old project.
-Loading is bounded to16MiB. v2 files require the updated app. OBJ preserves static
-geometry, metre/Y-up scale, UVs, normals and piece groups; SVG preserves authored
-curves at physical millimetre scale. No MTL appearance or animation export yet.
+Five stateless MCP file tools share typed authoring, strict original-byte parsing
+and atomic commands. Modern 2026-07-28 and legacy 2025-11-25 profiles have real
+stdio/schema/error tests. Official Python MCP SDK 1.28.1 independently negotiated
+legacy, listed five tools and created/inspected original files with four decoded
+responses and zero stderr on the prior integrated debug candidate `cc3dfea9…f1e8`.
+Final release SDK acceptance is pending. Live GUI automation, MCP simulation jobs,
+persistent undo and cancellation remain open.
 
-All44 Rust tests and24 Python checks passed on the grain source, including strict
-migration/duplicate rejection, history/rollback, CLI edits, grain-aware independent
-metrics and the real-egui inspector clamping regression. Formatting, strict
-all-target clippy, xtask verification and native/CLI release builds passed. The
-CPU bridge patch test rotates warp50/weft1000N/m through a quarter-turn: top height
-0.2029735316→0.2023383529m (0.635mm more compression, above the predeclared0.3mm
-criterion). Recoloring yields bit-identical solved positions. This is an original
-implementation test, not reference parity or calibration.
+The current combined tree passes **61 Rust tests**, formatting and strict Clippy.
+The 48 current Python checks and the 650-entry structural map check pass.
+The integrated xtask rerun also passed against this checkout, including current
+CLI MCP/curve help. Release packaging and native acceptance follow. A read-only independent source review
+found no blocker; its 146,498 varied correspondence samples had maximum normalized
+error 1.72e-13. This review did not execute native UI or replace runtime checks.
 
-## Actual native workflow evidence
+Two local verification problems were retained and fixed: parallel MCP fixtures
+could receive the same temporary directory name, and a reused compiled xtask
+could contain an older checkout's compile-time path. The new runtime-root selector
+and unique fixture counter have regression coverage. Never share compiled Cargo
+targets across worktrees; prior wrong-checkout output is not the current gate.
 
-Historical `f00e` executable (source `ff3914474c8acc30d10c70a8489cae56cfa2c872`)
-completed the full empty-project shirt workflow: authored two14-point panels,
-sewed8 edges, arranged, assembled/draped, edited, saved, quit/reopened, edited
-again with Undo/Redo, resimulated and exported. Final158vertices/244triangles,
-3s simulation, independent strain0.08071753, seam2.79e-8m and avatar/ground error
-~1.50e-16m passed that scene's declared limits. The earlier composite replay and
-all original failures remain retained. These reports are now stale for the
-changed runtime; they have not been rewritten as new executions.
+## Actual native evidence and known failures
 
-New grain native executable SHA-256:
-`03d44055eacfa20ecd6c69a051e259707848560ae0bf5db5d61282455c04b895`.
-CLI SHA-256: `e84b4303caa8208be94e6aef1628efb14eaba30c85585978e23d7d6c86c7f403`.
-Root opened the unchanged v1 shirt, observed both default stiffnesses400, set front
-grainπ/2 and verified Undo0/Redoπ/2, set shared warp50/weft1000, recolored, saved a
-new v2 file, quit/relaunched the same executable and reopened. Frontπ/2/back0 and
-shared stiffness persisted. Independent JSON comparison confirms color/revision
-were the only changes between the saved before/after color snapshots.
+Historical `f00e` / source `ff391447` completed the original empty-project shirt
+workflow: canvas authoring, eight seams, arrangement, assembly/drape, edits,
+save/quit/relaunch/reopen, Undo/Redo, resimulation and actual OBJ/SVG export.
+Independent strain 0.08071753, seam error 2.79e-8 m and avatar/ground error about
+1.50e-16 m passed that scene's limits. Reports remain retained as stale after
+relevant source changes.
 
-The native assembly60steps with gravity0 followed by drape120steps under gravity
-−9.81, dt1/60s,8substeps/32iterations produced actual OBJ/SVG. **Fitting failed**:
-independent axis strain0.26930346 exceeds the unchanged0.15 limit. Seam gap5.55e-6m
-passes0.005m; avatar/ground thickness error0 passes0.002m. SVG authored paths and
-millimetre scale pass. Retain this anisotropic garment failure. Successful editing
-and persistence do not establish fitting quality. Independent self-contact and
-animation checks remain absent. New scoped reports are `WF-20261113-GRAIN-AUTHORING-001` (passed subset) and
-`WF-20261113-GRAIN-FIT-001` (failed fit), with original screenshot/provenance under
-`docs/images/studio-grain.*`. A headless repeat exits1 with identical axis strain
-within1e-12;3 simulated seconds took22.19s wall (~0.135 simulated s/wall s).
-The fitting discrepancy is [issue16](https://github.com/thematheusmello/weftforge/issues/16).
+Native `03d440` / source `b8c9a1a` (Rust byte-identical to published `28cae66`)
+passed the declared grain/history/shared stiffness/color-only/v2-reopen/export
+subset. Its anisotropic shirt **failed** the unchanged fitting limit: axis strain
+0.26930346 > 0.15; seam error 5.55e-6 m < 0.005 m and avatar/ground error 0 <
+0.002 m passed. A headless repeat exits 1 with matching strain within 1e-12;
+three simulated seconds took 22.19 seconds wall time. See
+[issue16](https://github.com/thematheusmello/weftforge/issues/16).
 
-## Reference laboratory
+Original tight-shirt/refinement failures remain in
+[issue8](https://github.com/thematheusmello/weftforge/issues/8). Its 0.96 m body
+circumference is below the 1.131 m torso; refinement alone did not establish
+convergence. A separate relaxed sample passed its explicit protocol. No fixture,
+tolerance or material substitution was made to turn a failed report into a pass.
 
-Official Personal2026.1.237 installer and executable identities are retained in
-`parity/reference.json`; listing build2026.1.237.58920 is not yet confirmed in About.
-Latest REA6.9.0 read-only capture at23:06UTC shows **CLO-SET sign-in**, with no Terms
-modal or garment workspace in the selected main window. Current terms acceptance
-and account entitlement remain unknown. The account holder must sign in/activate
-a legitimate trial/license and review any terms presented. No investigator terms
-acceptance or credential entry occurred. No garment reference scenario executed.
-Baseline remains provisional: build/preferences/units/locale/graphics are unfrozen.
+The `1ed6d1` curve probe created one panel and exposed the global-Quit problem;
+it did not complete acceptance. Follow
+[issue18](https://github.com/thematheusmello/weftforge/issues/18) for actual recovery,
+[issue19](https://github.com/thematheusmello/weftforge/issues/19) for native-save
+link preservation and [issue9](https://github.com/thematheusmello/weftforge/issues/9)
+for t-versus-arc-length sewing semantics. Retain aborted, failed and stale runs.
 
-Raw installer, binaries, account UI and complete research evidence remain private
-outside Git; no personal paths are published. No proprietary code analysis was
-used. REA CLI6.9.0 works with Node26.12.1; current-session MCP is unconnected and
-Ghidra unconfigured/not invoked. No installer/setup/research job is running.
+## Live reference investigation and handoffs
 
-## Failures, evidence integrity and next steps
+The actual garment workspace is accessible. REA 6.9.0 observes Personal
+2026.1.237 (r58920), executable `e7696388…c76e`, two workspaces and native panels.
+Baseline revision 1 remains provisional/unfrozen: selected global units, numeric
+locale and relevant preferences are still being recorded. Initial Graphics,
+Grid and Simulation Properties observations are retained without treating current
+values as universal defaults. Raw account and commercial records stay private.
 
-The original tight shirt and refinement failures remain unchanged ([issue8](https://github.com/thematheusmello/weftforge/issues/8)).
-Its0.96m body circumference is below the1.131m torso; finer meshes alone did not
-establish convergence. The separate relaxed garment passed only its explicit
-assembly/drape protocol and is slower than real time. Partial-sewing curve-t
-versus documented arc-length semantics remain unresolved ([issue9](https://github.com/thematheusmello/weftforge/issues/9)).
+The reviewed catalog has 589 menu nodes across 17 menus and 61 components.
+The [implementation crosswalk](spec/inventory/weftforge-implementation-map.md)
+assigns all 650 unique IDs exactly once to 184
+bounded packets and 36 source landmarks, linking every coarse registry feature.
+It is a source map, not a second status registry. It excludes only two vendor
+activation/session administration entries; hosted creation/local substitutes and
+all unresolved actions remain visible. Dialogs, contextual variants, ranges,
+errors and workflows still require execution.
 
-Schema2 scopes freshness per run. Every original ID, tested commit, source/input/
-artifact hash and outcome is preserved; changed relevant runtime/checkers mark
-old evidence stale. Current failures cannot be hidden by another pass or removing
-run references. Before the first actual reference pass can qualify, add baseline
-revision/settings and reviewed contract/scenario/criteria digest qualification.
+A guarded ordinary native pointer route delivered a recorded rectangle gesture.
+An original 200 × 300 mm rectangle was created numerically, removed/restored by
+one Undo/Redo, saved, closed and reopened. Independent OBJ measurement found
+200.000015 × 300.000122 mm: maximum error 0.000122 mm is below the predeclared
+0.01 mm limit. Raw native/OBJ/MTL files remain private. Process restart,
+constructor limits/cancellation, resolution editing and wider semantics remain
+pending. These observations establish no WeftForge comparison or parity pass.
 
-1. Publish the reviewed grain native reports and retained anisotropic failure,
-   after registry/generated/artifact checks. Preserve the source checkpoint, all
-   old artifacts/outcomes and accurate per-scope freshness.
-2. Exercise the retained1ed6d1 curve executable through numeric control editing,
-   sewn split, history, refinement and save/reopen; independently check geometry
-   and sewing. Integrate its tested source and review grain-report staleness.
-   Then integrate the local MCP adapter/shared export guard with protocol tests.
-3. Improve sewing semantics and garment/contact convergence, then measure layered
-   shirt+jacket, contrasting fabrics/refinement and real responsiveness. Continue
-   professional construction, avatar imports, animation/caches, PBR, interchange,
-   printing, output preparation, automation and all distribution gates.
-4. When reference access is available, freeze settings and execute the controlled
-   original scenarios. Implementation-only checks never count as reference parity.
+Reference qualification pins technical identity/revision, behavior settings,
+reviewed contracts, scenarios, fixtures, criteria and transitive dependencies
+against both tested commit and current inputs before any reference pass qualifies.
+Historical implementation reports remain attributable.
 
-Last observed own-app PID52560 is paused at3s Drape with no active-job indicator.
-Historical reference PID18283 showed sign-in at23:06UTC. Grain and curve build/check sessions
-completed; the MCP agent is active in its isolated worktree. Recheck actual
-processes and CI handles before resuming; do not duplicate live work.
+## Next exact steps and jobs
 
-## Integrated curve/MCP/recovery candidate
+1. Finish packaging the combined candidate and retain
+   exact executable/source hashes; rerun the official SDK on that release.
+2. Publish the reviewed source/catalog checkpoint after normal CI gates while
+   keeping native acceptance explicitly pending. Preserve pinned source history
+   and the product-focused README.
+3. Reference_lab owns the exclusive native UI lease. Finish the reviewed rectangle
+   batch and further settings/range/sewing observations, then alternate the lease
+   for WeftForge curve/refinement and dirty-Quit recovery acceptance.
+4. Rectangle_numeric is implementing only the observed single-click numeric
+   rectangle slice in an isolated worktree. It receives reviewed behavior only;
+   replication, linked dimensions, reference anchor and range semantics remain
+   unresolved. Parent owns integration and real native acceptance.
+5. Continue independent comparisons and every remaining construction, simulation,
+   animation, avatar, rendering, interchange, printing, automation and delivery
+   gate. GitHub Project board creation still lacks project/read:project scopes;
+   issues, milestones and the registry work independently.
 
-Root branch `feat/curve-mcp-recovery` is integrating reviewed c48cd958 curve
-controls and sewing-preserving subdivision with the tested local MCP adapter and
-shared export guards. The native curve probe created a disposable editable panel;
-its complete workflow was not accepted. Actual Cmd+Q exited while Unsaved was
-visible ([issue18](https://github.com/thematheusmello/weftforge/issues/18)). The
-pinned platform lifecycle bypasses window CloseRequested; latest-dirty shutdown
-recovery is being implemented/tested separately, with the native Quit limitation
-explicit. No unrelated user document was involved.
-
-New grain reports retain their original outcomes, artifacts and identities but
-are stale after these relevant source changes. Run the full native curve/history/
-refinement/save/reopen and last-second quit/recovery scenarios on the combined
-identified candidate after all source checks pass. Then publish qualified new
-reports. Do not label the aborted preliminary probe a complete workflow.
-
-Shutdown retention fix3014a6e is integrated locally: App::on_exit commits valid
-drafts, drains an older autosave writer, then synchronously retains the current
-dirty construction as explicit recovery without saving primary. GlobalmacOSQuit
-remains uncancellable through the pinned APIs. Focused lifecycle tests passed;
-combined native last-second Quit/relaunch/recovery acceptance is still pending.
-The same native saver now refuses existing nonregular output and recovery
-destinations; issue19 includes the reproduced dangling-link defect.
-
-At00:15UTC the account holder replied that they will sign in and activate the
-reference trial. This is intent, not confirmation of completion or entitlement.
-Avoid account-UI capture or native focus changes during that action; continue
-headless checks and wait for a ready signal before reference scenarios.
-
-## Pending cancellable-initialization integration
-
-Isolated branch `feat/cancellable-initialization`, based on `1e8212e`, adds
-`Cloth::new_cancellable` and the core `create_cloth_cancellable` adapter. Ordinary
-constructors still delegate without cancellation. The native simulation worker
-passes its existing atomic token into initialization. Input/constraint setup and
-initial contact bounds/vertices/candidates now poll cooperatively; cancellation
-returns no partial cloth and retains caller-owned project/mesh/accepted state.
-Contact equations, material values and numerical tolerances are unchanged.
-
-Focused checks passed in this worktree: 42 core/solver Rust tests, strict
-all-target core/solver clippy, workspace formatting, and `cargo xtask verify`
-including 24 Python checks. The deterministic sentinel stops in vertex zero's
-second triangle-candidate block, with genuine initial intersections, and asserts
-no additional polling or partial publication. Normal results, invalid input and
-adapter cancellation are covered. Existing mesh-cancellation tests still pass.
-
-Per parent coordination and limited disk space, the native dependency graph was
-not rebuilt in this worktree. Next: review/cherry-pick this increment, run full
-workspace tests/clippy and native compilation using the parent target, then
-perform actual UI cancellation during initialization while checking old accepted
-state and document preservation. GUI interaction/latency and reference parity
-remain unverified. Core project/mesh validation, allocations/copies and final
-linear aggregation retain before/after-only checks; stepped residual analysis and
-direct reset still use non-cancelling analysis. No new check, build or benchmark
-job remains running from this isolated increment.
+Current root handle: package session `74023`; root fmt/test/Clippy/xtask/cache
+relocation jobs completed. Reference_lab and Rectangle_numeric are active;
+Integrated_review completed read-only. Recheck handles before launching duplicates.

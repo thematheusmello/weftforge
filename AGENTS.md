@@ -9,6 +9,8 @@ bounded to integrated increments while preserving the full parity target.
 - Core and solver must stay independent of GUI dependencies.
 - Never claim reference parity from implementation-only tests. Keep unknown,
   blocked, failed and stale evidence visible in parity/features.yaml.
+- Keep the root README focused on WeftForge; put reference laboratory details
+  in research and evidence documents.
 - No proprietary installers, assets, binary extracts, credentials, or personal
   filesystem paths in public files. Research lives outside this repository.
 - Use shared typed commands for authoring; commit gestures as one transaction.
@@ -17,6 +19,8 @@ bounded to integrated increments while preserving the full parity target.
 - Run cargo fmt --all --check, cargo test --workspace, cargo clippy --workspace
   --all-targets -- -D warnings, and cargo xtask verify for an integrated change.
 - Maintain STATUS.md with evidence, exact next steps and confirmed job handles.
+- Keep compiled Cargo targets separate across worktrees; cached binaries can embed
+  checkout paths. Registry downloads may be shared.
 - Independent geometry, simulation, UI and verification agents may work in
   parallel with explicit file ownership and agreed interfaces. Reference
   investigators deliver reviewed public behavior contracts, never proprietary
