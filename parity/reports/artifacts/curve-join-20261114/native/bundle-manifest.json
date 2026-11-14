@@ -1,0 +1,290 @@
+{
+  "kind": "portable_exact_byte_native_join_evidence_copy",
+  "required_native_inputs": [
+    "before-split.weftforge",
+    "after-split.weftforge",
+    "after-focus.weftforge",
+    "after-join.weftforge",
+    "after-join-tab.weftforge",
+    "join-undone.weftforge",
+    "join-redone.weftforge",
+    "coarse.weftforge",
+    "fine.weftforge",
+    "reopened.weftforge",
+    "after-corner-error.weftforge",
+    "coarse.obj",
+    "coarse.svg",
+    "fine.obj",
+    "fine.svg",
+    "ui-declaration.json"
+  ],
+  "exact_source_copy_provenance": {
+    "before-split.weftforge": {
+      "sha256": "29f37f4b19604ec702e370e5bdbe3a006db1495043678ae793bb4bbec249067e",
+      "bytes": 4853,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "after-split.weftforge": {
+      "sha256": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+      "bytes": 5636,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "after-focus.weftforge": {
+      "sha256": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+      "bytes": 5636,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "after-join.weftforge": {
+      "sha256": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+      "bytes": 5278,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "after-join-tab.weftforge": {
+      "sha256": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+      "bytes": 5278,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "join-undone.weftforge": {
+      "sha256": "8665a357081d5a4d2eec357f5ee1c92f53f0221caeaeabf38104881432255568",
+      "bytes": 5637,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "join-redone.weftforge": {
+      "sha256": "5c2bbb2456370ff9d52148fd58a51ba109bdc1ba58e5632ce10333412fdfcd59",
+      "bytes": 5278,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "coarse.weftforge": {
+      "sha256": "96e7468870c1f08d9a7d1d37920c0e04a02edfcf5cd2a134238e2eeed5c35cf6",
+      "bytes": 5278,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "fine.weftforge": {
+      "sha256": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+      "bytes": 5279,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "reopened.weftforge": {
+      "sha256": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+      "bytes": 5279,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "after-corner-error.weftforge": {
+      "sha256": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+      "bytes": 5279,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "coarse.obj": {
+      "sha256": "c8b9e47f7749eb71f7cf311f2011ad0712ea81ebfe6bf34d65eca7d1eb456e33",
+      "bytes": 43633,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "coarse.svg": {
+      "sha256": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+      "bytes": 629,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "fine.obj": {
+      "sha256": "d9822cb96a446a47706ae75fe9dcd941b81fb8f5e212e4d8860f700e2bd79fda",
+      "bytes": 573990,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "fine.svg": {
+      "sha256": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+      "bytes": 629,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "ui-declaration.json": {
+      "sha256": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f",
+      "bytes": 7068,
+      "copy_kind": "preregistered_native_input",
+      "exact_source_bytes": true
+    },
+    "evaluation.json": {
+      "sha256": "2179e129b18ae81b7eb8e11be79ada21e8e209140ac4dc344c8272f9ee04d22e",
+      "bytes": 18970,
+      "copy_kind": "independent_evaluation_or_self_check",
+      "exact_source_bytes": true
+    },
+    "original-evaluators/verify_native_join.py": {
+      "sha256": "5cda873ce5898d15c550c966e3e9423e75e4835ece02022c062bc02d1bae5002",
+      "bytes": 29968,
+      "copy_kind": "independent_evaluation_or_self_check",
+      "exact_source_bytes": true
+    },
+    "original-evaluators/verify_curve_outputs.py": {
+      "sha256": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+      "bytes": 24977,
+      "copy_kind": "independent_evaluation_or_self_check",
+      "exact_source_bytes": true
+    },
+    "original-evaluators/historical-before-split.weftforge": {
+      "sha256": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+      "bytes": 4865,
+      "copy_kind": "independent_evaluation_or_self_check",
+      "exact_source_bytes": true
+    },
+    "original-evaluators/self-check.json": {
+      "sha256": "d2e01dbbee70958668bf2a7092921cc01313fc8ea350e6502c453220611ab7c6",
+      "bytes": 4978,
+      "copy_kind": "independent_evaluation_or_self_check",
+      "exact_source_bytes": true
+    },
+    "original-evaluators/end-to-end-synthetic-check.json": {
+      "sha256": "526fdd145e4e6b9fd5eb382a290f7255746b03d639ad5f8cd4625969439a2107",
+      "bytes": 10739,
+      "copy_kind": "independent_evaluation_or_self_check",
+      "exact_source_bytes": true
+    },
+    "original-evaluators/missing-input-check.json": {
+      "sha256": "2715626b5d726d5029eb8d08a4df46eaf14e6696a52aef0ffc5b7ad0e1a744db",
+      "bytes": 5410,
+      "copy_kind": "independent_evaluation_or_self_check",
+      "exact_source_bytes": true
+    },
+    "original-evaluators/native-inputs-before-evaluation.json": {
+      "sha256": "741bbeee919bdf2e8c83eec913795050b416cddb0cacc3bb7fc2071e1b459dc5",
+      "bytes": 2305,
+      "copy_kind": "independent_evaluation_or_self_check",
+      "exact_source_bytes": true
+    },
+    "corner-join-error.png": {
+      "sha256": "e970d655567bfeff321e4c6f7812146a51921d791a2bc3e9431f85733fcbe29d",
+      "bytes": 317265,
+      "copy_kind": "native_corner_rejection_screenshot",
+      "exact_source_bytes": true
+    }
+  },
+  "files": {
+    "README.md": {
+      "sha256": "4804aaac8e382dd9bce283eb35659c9ae87804a4b1fa18c326bb38e92d882dc3",
+      "bytes": 1877
+    },
+    "after-corner-error.weftforge": {
+      "sha256": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+      "bytes": 5279
+    },
+    "after-focus.weftforge": {
+      "sha256": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+      "bytes": 5636
+    },
+    "after-join-tab.weftforge": {
+      "sha256": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+      "bytes": 5278
+    },
+    "after-join.weftforge": {
+      "sha256": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+      "bytes": 5278
+    },
+    "after-split.weftforge": {
+      "sha256": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+      "bytes": 5636
+    },
+    "before-split.weftforge": {
+      "sha256": "29f37f4b19604ec702e370e5bdbe3a006db1495043678ae793bb4bbec249067e",
+      "bytes": 4853
+    },
+    "coarse.obj": {
+      "sha256": "c8b9e47f7749eb71f7cf311f2011ad0712ea81ebfe6bf34d65eca7d1eb456e33",
+      "bytes": 43633
+    },
+    "coarse.svg": {
+      "sha256": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+      "bytes": 629
+    },
+    "coarse.weftforge": {
+      "sha256": "96e7468870c1f08d9a7d1d37920c0e04a02edfcf5cd2a134238e2eeed5c35cf6",
+      "bytes": 5278
+    },
+    "corner-join-error.png": {
+      "sha256": "e970d655567bfeff321e4c6f7812146a51921d791a2bc3e9431f85733fcbe29d",
+      "bytes": 317265
+    },
+    "evaluation.json": {
+      "sha256": "2179e129b18ae81b7eb8e11be79ada21e8e209140ac4dc344c8272f9ee04d22e",
+      "bytes": 18970
+    },
+    "fine.obj": {
+      "sha256": "d9822cb96a446a47706ae75fe9dcd941b81fb8f5e212e4d8860f700e2bd79fda",
+      "bytes": 573990
+    },
+    "fine.svg": {
+      "sha256": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+      "bytes": 629
+    },
+    "fine.weftforge": {
+      "sha256": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+      "bytes": 5279
+    },
+    "independent-summary.json": {
+      "sha256": "a4aa10e199620a91d0758129d1398b78f27bfe3b57d9d1316113088f1d6f060a",
+      "bytes": 4806
+    },
+    "inputs-preserved.json": {
+      "sha256": "249ae3ee2dd346baecf49ceaf61f1b8d9172b9ff9e90a02adb4d34b4d006cc59",
+      "bytes": 2324
+    },
+    "join-redone.weftforge": {
+      "sha256": "5c2bbb2456370ff9d52148fd58a51ba109bdc1ba58e5632ce10333412fdfcd59",
+      "bytes": 5278
+    },
+    "join-undone.weftforge": {
+      "sha256": "8665a357081d5a4d2eec357f5ee1c92f53f0221caeaeabf38104881432255568",
+      "bytes": 5637
+    },
+    "original-evaluators/end-to-end-synthetic-check.json": {
+      "sha256": "526fdd145e4e6b9fd5eb382a290f7255746b03d639ad5f8cd4625969439a2107",
+      "bytes": 10739
+    },
+    "original-evaluators/historical-before-split.weftforge": {
+      "sha256": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+      "bytes": 4865
+    },
+    "original-evaluators/missing-input-check.json": {
+      "sha256": "2715626b5d726d5029eb8d08a4df46eaf14e6696a52aef0ffc5b7ad0e1a744db",
+      "bytes": 5410
+    },
+    "original-evaluators/native-inputs-before-evaluation.json": {
+      "sha256": "741bbeee919bdf2e8c83eec913795050b416cddb0cacc3bb7fc2071e1b459dc5",
+      "bytes": 2305
+    },
+    "original-evaluators/self-check.json": {
+      "sha256": "d2e01dbbee70958668bf2a7092921cc01313fc8ea350e6502c453220611ab7c6",
+      "bytes": 4978
+    },
+    "original-evaluators/verify_curve_outputs.py": {
+      "sha256": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+      "bytes": 24977
+    },
+    "original-evaluators/verify_native_join.py": {
+      "sha256": "5cda873ce5898d15c550c966e3e9423e75e4835ece02022c062bc02d1bae5002",
+      "bytes": 29968
+    },
+    "reopened.weftforge": {
+      "sha256": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+      "bytes": 5279
+    },
+    "ui-declaration.json": {
+      "sha256": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f",
+      "bytes": 7068
+    }
+  },
+  "manifest_excludes_itself": true,
+  "private_paths_redacted": false,
+  "original_content_redactions": []
+}

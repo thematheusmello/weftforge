@@ -176,7 +176,8 @@ They also retain a 1000 m placement-translation witness where the pattern-space
 guard passes but transformed points exceed `1e-12 m`, compare rotated/translated
 sewn point pairs, and exercise coalesced Tab/AX Focus plus Join in one UI frame.
 
-Actual native acceptance is pending a separately identified executable. Start
+The broader native curve-editing scenario below remains open on the current
+source; it includes branches beyond the later bounded join run. Start
 empty; create two 0.4 by 0.6 m rectangles at X=0 and X=1. Select the first top
 boundary, enable cubic controls and enter P1=(0.3,0.8), P2=(0.1,0.8) m. Sew it to
 the other top boundary with reversed orientation. Split at t=0.4 and inspect the
@@ -190,8 +191,13 @@ The original selected curve ID/control shape should return while both sewing
 records survive with their remapped intervals. Undo restores both children and
 their intervals; redo restores the join. Save/reopen and change mesh resolution;
 then attempt a corner join and retain the reported error/unchanged document.
-This join procedure also remains unobserved until a separately identified native
-executable is exercised.
+The separately declared join subset was subsequently executed on source
+`26dd585`, native `9c8b0936`, and passed its independent saved-output checks.
+[WF-20261114-NATIVE-JOIN-001](../../parity/reports/WF-20261114-NATIVE-JOIN-001.json)
+records focused child input, Join, one Undo/Redo, refinement, save/process restart/
+reopen and rejected corner geometry. That run did not repeat the broader
+invalid-split/control branches or split Undo/Redo above. Native large-placement
+and coalesced-event cases remain outside its executed scope.
 
 Historical reports keep their IDs, tested commits, source/artifact hashes and
 outcomes. Their prior freshness flags remain stale after this increment changes

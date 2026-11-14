@@ -821,6 +821,60 @@
             "parity/reports/artifacts/document-f64-20261114/recovered-native.png": "f76471d51b4c5a2affbcfb93b9ed15be12ee1dd3a9192fe7298088ab58faba3e"
           },
           "path": "parity/reports/WF-20261114-NATIVE-IEEE-001.json"
+        },
+        {
+          "id": "WF-20261114-NATIVE-JOIN-001",
+          "commit": "26dd58535868aadc90e92636656c49426e02dc9c",
+          "timestamp": "2026-11-14T09:51:41.129025Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/curve-join-20261114/candidate-pretest.json": "d267d79c90f5d25f7fbde4be3d92f7321d8392d4655eec79f15b31a2aafe9436",
+            "parity/reports/artifacts/curve-join-20261114/gates/clippy.log": "2ab545a39e378d9298eafe729cbd213f2094211d4defbef10594fc9f1522bc6e",
+            "parity/reports/artifacts/curve-join-20261114/gates/package.log": "795d07d14a833925ac3125148db69fb67c97f6a9d1ff36a763072b0bce12f0f7",
+            "parity/reports/artifacts/curve-join-20261114/gates/tests.log": "d2c64fba0a629ddbbd69a094550c7ff94ff54db0d207cf8550e53b5fedb8db39",
+            "parity/reports/artifacts/curve-join-20261114/gates/xtask.log": "c2ec190096ba30daae18d9e0c763a5f3006d3ca85bff0ad5b360efcec6ab0b18",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/input-identities.json": "8d40af990c6f8fbd2793993de7e4377118ec4db6bf396c43d5b08eae72f82980",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/original-private-manifest.json": "73086fd9785a55f9df8f12fa7157142a604a688f1bcddc4890652e9929d97d5a",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/run-official-sdk.py": "8ea159c3cf6d580b06c596f6384e1c4867196a5f1507b860f94689d2731e3c84",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-joined.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-rejected-sentinel.weftforge": "6f5e75f4e2ef3dec7fee74bcc1d5d31cf94510f3f3786bdc196283b3d343bcd2",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-report.json": "1a964e2a5e5cfe6d3a0f6b93041e374ff8b86361591d0d62c15359b39dd024a3",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-transcript.json": "7ca9c11a744c174ad93ada050af77f0fe4f4ffc4c3093ca4cf0d6cfdabe677cb",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/server-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/curve-join-20261114/native/README.md": "4804aaac8e382dd9bce283eb35659c9ae87804a4b1fa18c326bb38e92d882dc3",
+            "parity/reports/artifacts/curve-join-20261114/native/after-corner-error.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/after-focus.weftforge": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+            "parity/reports/artifacts/curve-join-20261114/native/after-join-tab.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/native/after-join.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/native/after-split.weftforge": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+            "parity/reports/artifacts/curve-join-20261114/native/before-split.weftforge": "29f37f4b19604ec702e370e5bdbe3a006db1495043678ae793bb4bbec249067e",
+            "parity/reports/artifacts/curve-join-20261114/native/bundle-manifest.json": "58145fb047ab00733da51969c1103503510aa060026f5095feab8285f1e00779",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.obj": "c8b9e47f7749eb71f7cf311f2011ad0712ea81ebfe6bf34d65eca7d1eb456e33",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.weftforge": "96e7468870c1f08d9a7d1d37920c0e04a02edfcf5cd2a134238e2eeed5c35cf6",
+            "parity/reports/artifacts/curve-join-20261114/native/corner-join-error.png": "e970d655567bfeff321e4c6f7812146a51921d791a2bc3e9431f85733fcbe29d",
+            "parity/reports/artifacts/curve-join-20261114/native/evaluation.json": "2179e129b18ae81b7eb8e11be79ada21e8e209140ac4dc344c8272f9ee04d22e",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.obj": "d9822cb96a446a47706ae75fe9dcd941b81fb8f5e212e4d8860f700e2bd79fda",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/independent-summary.json": "a4aa10e199620a91d0758129d1398b78f27bfe3b57d9d1316113088f1d6f060a",
+            "parity/reports/artifacts/curve-join-20261114/native/inputs-preserved.json": "249ae3ee2dd346baecf49ceaf61f1b8d9172b9ff9e90a02adb4d34b4d006cc59",
+            "parity/reports/artifacts/curve-join-20261114/native/join-redone.weftforge": "5c2bbb2456370ff9d52148fd58a51ba109bdc1ba58e5632ce10333412fdfcd59",
+            "parity/reports/artifacts/curve-join-20261114/native/join-undone.weftforge": "8665a357081d5a4d2eec357f5ee1c92f53f0221caeaeabf38104881432255568",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/end-to-end-synthetic-check.json": "526fdd145e4e6b9fd5eb382a290f7255746b03d639ad5f8cd4625969439a2107",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/historical-before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/missing-input-check.json": "2715626b5d726d5029eb8d08a4df46eaf14e6696a52aef0ffc5b7ad0e1a744db",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/native-inputs-before-evaluation.json": "741bbeee919bdf2e8c83eec913795050b416cddb0cacc3bb7fc2071e1b459dc5",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/self-check.json": "d2e01dbbee70958668bf2a7092921cc01313fc8ea350e6502c453220611ab7c6",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/verify_native_join.py": "5cda873ce5898d15c550c966e3e9423e75e4835ece02022c062bc02d1bae5002",
+            "parity/reports/artifacts/curve-join-20261114/native/reopened.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/ui-declaration.json": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f",
+            "parity/reports/artifacts/curve-join-20261114/parent-native-log.json": "43e92b08d327694032897facfdd91aa38d7502eaeaaf45792215f30762333b0d",
+            "parity/reports/artifacts/curve-join-20261114/restart-precondition.json": "21eb115f0ca627f933ee13fd8d361b33b45104ab029077f22c2b5f31afdf6655",
+            "parity/reports/artifacts/curve-join-20261114/supplement-provenance.json": "82afe50d86f10df533ea5db28ee9d22952ae68c4911ebb43067a026c6e00c52b"
+          },
+          "path": "parity/reports/WF-20261114-NATIVE-JOIN-001.json"
         }
       ],
       "known_gaps": [
@@ -830,7 +884,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "UI-005",
@@ -2070,6 +2124,60 @@
             "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
             "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
           }
+        },
+        {
+          "id": "WF-20261114-NATIVE-JOIN-001",
+          "commit": "26dd58535868aadc90e92636656c49426e02dc9c",
+          "timestamp": "2026-11-14T09:51:41.129025Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/curve-join-20261114/candidate-pretest.json": "d267d79c90f5d25f7fbde4be3d92f7321d8392d4655eec79f15b31a2aafe9436",
+            "parity/reports/artifacts/curve-join-20261114/gates/clippy.log": "2ab545a39e378d9298eafe729cbd213f2094211d4defbef10594fc9f1522bc6e",
+            "parity/reports/artifacts/curve-join-20261114/gates/package.log": "795d07d14a833925ac3125148db69fb67c97f6a9d1ff36a763072b0bce12f0f7",
+            "parity/reports/artifacts/curve-join-20261114/gates/tests.log": "d2c64fba0a629ddbbd69a094550c7ff94ff54db0d207cf8550e53b5fedb8db39",
+            "parity/reports/artifacts/curve-join-20261114/gates/xtask.log": "c2ec190096ba30daae18d9e0c763a5f3006d3ca85bff0ad5b360efcec6ab0b18",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/input-identities.json": "8d40af990c6f8fbd2793993de7e4377118ec4db6bf396c43d5b08eae72f82980",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/original-private-manifest.json": "73086fd9785a55f9df8f12fa7157142a604a688f1bcddc4890652e9929d97d5a",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/run-official-sdk.py": "8ea159c3cf6d580b06c596f6384e1c4867196a5f1507b860f94689d2731e3c84",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-joined.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-rejected-sentinel.weftforge": "6f5e75f4e2ef3dec7fee74bcc1d5d31cf94510f3f3786bdc196283b3d343bcd2",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-report.json": "1a964e2a5e5cfe6d3a0f6b93041e374ff8b86361591d0d62c15359b39dd024a3",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-transcript.json": "7ca9c11a744c174ad93ada050af77f0fe4f4ffc4c3093ca4cf0d6cfdabe677cb",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/server-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/curve-join-20261114/native/README.md": "4804aaac8e382dd9bce283eb35659c9ae87804a4b1fa18c326bb38e92d882dc3",
+            "parity/reports/artifacts/curve-join-20261114/native/after-corner-error.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/after-focus.weftforge": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+            "parity/reports/artifacts/curve-join-20261114/native/after-join-tab.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/native/after-join.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/native/after-split.weftforge": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+            "parity/reports/artifacts/curve-join-20261114/native/before-split.weftforge": "29f37f4b19604ec702e370e5bdbe3a006db1495043678ae793bb4bbec249067e",
+            "parity/reports/artifacts/curve-join-20261114/native/bundle-manifest.json": "58145fb047ab00733da51969c1103503510aa060026f5095feab8285f1e00779",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.obj": "c8b9e47f7749eb71f7cf311f2011ad0712ea81ebfe6bf34d65eca7d1eb456e33",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.weftforge": "96e7468870c1f08d9a7d1d37920c0e04a02edfcf5cd2a134238e2eeed5c35cf6",
+            "parity/reports/artifacts/curve-join-20261114/native/corner-join-error.png": "e970d655567bfeff321e4c6f7812146a51921d791a2bc3e9431f85733fcbe29d",
+            "parity/reports/artifacts/curve-join-20261114/native/evaluation.json": "2179e129b18ae81b7eb8e11be79ada21e8e209140ac4dc344c8272f9ee04d22e",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.obj": "d9822cb96a446a47706ae75fe9dcd941b81fb8f5e212e4d8860f700e2bd79fda",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/independent-summary.json": "a4aa10e199620a91d0758129d1398b78f27bfe3b57d9d1316113088f1d6f060a",
+            "parity/reports/artifacts/curve-join-20261114/native/inputs-preserved.json": "249ae3ee2dd346baecf49ceaf61f1b8d9172b9ff9e90a02adb4d34b4d006cc59",
+            "parity/reports/artifacts/curve-join-20261114/native/join-redone.weftforge": "5c2bbb2456370ff9d52148fd58a51ba109bdc1ba58e5632ce10333412fdfcd59",
+            "parity/reports/artifacts/curve-join-20261114/native/join-undone.weftforge": "8665a357081d5a4d2eec357f5ee1c92f53f0221caeaeabf38104881432255568",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/end-to-end-synthetic-check.json": "526fdd145e4e6b9fd5eb382a290f7255746b03d639ad5f8cd4625969439a2107",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/historical-before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/missing-input-check.json": "2715626b5d726d5029eb8d08a4df46eaf14e6696a52aef0ffc5b7ad0e1a744db",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/native-inputs-before-evaluation.json": "741bbeee919bdf2e8c83eec913795050b416cddb0cacc3bb7fc2071e1b459dc5",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/self-check.json": "d2e01dbbee70958668bf2a7092921cc01313fc8ea350e6502c453220611ab7c6",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/verify_native_join.py": "5cda873ce5898d15c550c966e3e9423e75e4835ece02022c062bc02d1bae5002",
+            "parity/reports/artifacts/curve-join-20261114/native/reopened.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/ui-declaration.json": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f",
+            "parity/reports/artifacts/curve-join-20261114/parent-native-log.json": "43e92b08d327694032897facfdd91aa38d7502eaeaaf45792215f30762333b0d",
+            "parity/reports/artifacts/curve-join-20261114/restart-precondition.json": "21eb115f0ca627f933ee13fd8d361b33b45104ab029077f22c2b5f31afdf6655",
+            "parity/reports/artifacts/curve-join-20261114/supplement-provenance.json": "82afe50d86f10df533ea5db28ee9d22952ae68c4911ebb43067a026c6e00c52b"
+          },
+          "path": "parity/reports/WF-20261114-NATIVE-JOIN-001.json"
         }
       ],
       "known_gaps": [
@@ -2080,7 +2188,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "PAT-006",
@@ -2774,6 +2882,60 @@
             "parity/reports/artifacts/sewn-curve-20261114/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
             "parity/scenarios/UI-SEWN-CURVE-002.json": "a8fa0544e46997d2441f508c157c2b7b119c94066730db7f2fe32f20ff1bcbdc"
           }
+        },
+        {
+          "id": "WF-20261114-NATIVE-JOIN-001",
+          "commit": "26dd58535868aadc90e92636656c49426e02dc9c",
+          "timestamp": "2026-11-14T09:51:41.129025Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/curve-join-20261114/candidate-pretest.json": "d267d79c90f5d25f7fbde4be3d92f7321d8392d4655eec79f15b31a2aafe9436",
+            "parity/reports/artifacts/curve-join-20261114/gates/clippy.log": "2ab545a39e378d9298eafe729cbd213f2094211d4defbef10594fc9f1522bc6e",
+            "parity/reports/artifacts/curve-join-20261114/gates/package.log": "795d07d14a833925ac3125148db69fb67c97f6a9d1ff36a763072b0bce12f0f7",
+            "parity/reports/artifacts/curve-join-20261114/gates/tests.log": "d2c64fba0a629ddbbd69a094550c7ff94ff54db0d207cf8550e53b5fedb8db39",
+            "parity/reports/artifacts/curve-join-20261114/gates/xtask.log": "c2ec190096ba30daae18d9e0c763a5f3006d3ca85bff0ad5b360efcec6ab0b18",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/input-identities.json": "8d40af990c6f8fbd2793993de7e4377118ec4db6bf396c43d5b08eae72f82980",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/original-private-manifest.json": "73086fd9785a55f9df8f12fa7157142a604a688f1bcddc4890652e9929d97d5a",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/run-official-sdk.py": "8ea159c3cf6d580b06c596f6384e1c4867196a5f1507b860f94689d2731e3c84",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-joined.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-rejected-sentinel.weftforge": "6f5e75f4e2ef3dec7fee74bcc1d5d31cf94510f3f3786bdc196283b3d343bcd2",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-report.json": "1a964e2a5e5cfe6d3a0f6b93041e374ff8b86361591d0d62c15359b39dd024a3",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-transcript.json": "7ca9c11a744c174ad93ada050af77f0fe4f4ffc4c3093ca4cf0d6cfdabe677cb",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/server-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/curve-join-20261114/native/README.md": "4804aaac8e382dd9bce283eb35659c9ae87804a4b1fa18c326bb38e92d882dc3",
+            "parity/reports/artifacts/curve-join-20261114/native/after-corner-error.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/after-focus.weftforge": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+            "parity/reports/artifacts/curve-join-20261114/native/after-join-tab.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/native/after-join.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/native/after-split.weftforge": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+            "parity/reports/artifacts/curve-join-20261114/native/before-split.weftforge": "29f37f4b19604ec702e370e5bdbe3a006db1495043678ae793bb4bbec249067e",
+            "parity/reports/artifacts/curve-join-20261114/native/bundle-manifest.json": "58145fb047ab00733da51969c1103503510aa060026f5095feab8285f1e00779",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.obj": "c8b9e47f7749eb71f7cf311f2011ad0712ea81ebfe6bf34d65eca7d1eb456e33",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.weftforge": "96e7468870c1f08d9a7d1d37920c0e04a02edfcf5cd2a134238e2eeed5c35cf6",
+            "parity/reports/artifacts/curve-join-20261114/native/corner-join-error.png": "e970d655567bfeff321e4c6f7812146a51921d791a2bc3e9431f85733fcbe29d",
+            "parity/reports/artifacts/curve-join-20261114/native/evaluation.json": "2179e129b18ae81b7eb8e11be79ada21e8e209140ac4dc344c8272f9ee04d22e",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.obj": "d9822cb96a446a47706ae75fe9dcd941b81fb8f5e212e4d8860f700e2bd79fda",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/independent-summary.json": "a4aa10e199620a91d0758129d1398b78f27bfe3b57d9d1316113088f1d6f060a",
+            "parity/reports/artifacts/curve-join-20261114/native/inputs-preserved.json": "249ae3ee2dd346baecf49ceaf61f1b8d9172b9ff9e90a02adb4d34b4d006cc59",
+            "parity/reports/artifacts/curve-join-20261114/native/join-redone.weftforge": "5c2bbb2456370ff9d52148fd58a51ba109bdc1ba58e5632ce10333412fdfcd59",
+            "parity/reports/artifacts/curve-join-20261114/native/join-undone.weftforge": "8665a357081d5a4d2eec357f5ee1c92f53f0221caeaeabf38104881432255568",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/end-to-end-synthetic-check.json": "526fdd145e4e6b9fd5eb382a290f7255746b03d639ad5f8cd4625969439a2107",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/historical-before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/missing-input-check.json": "2715626b5d726d5029eb8d08a4df46eaf14e6696a52aef0ffc5b7ad0e1a744db",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/native-inputs-before-evaluation.json": "741bbeee919bdf2e8c83eec913795050b416cddb0cacc3bb7fc2071e1b459dc5",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/self-check.json": "d2e01dbbee70958668bf2a7092921cc01313fc8ea350e6502c453220611ab7c6",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/verify_native_join.py": "5cda873ce5898d15c550c966e3e9423e75e4835ece02022c062bc02d1bae5002",
+            "parity/reports/artifacts/curve-join-20261114/native/reopened.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/ui-declaration.json": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f",
+            "parity/reports/artifacts/curve-join-20261114/parent-native-log.json": "43e92b08d327694032897facfdd91aa38d7502eaeaaf45792215f30762333b0d",
+            "parity/reports/artifacts/curve-join-20261114/restart-precondition.json": "21eb115f0ca627f933ee13fd8d361b33b45104ab029077f22c2b5f31afdf6655",
+            "parity/reports/artifacts/curve-join-20261114/supplement-provenance.json": "82afe50d86f10df533ea5db28ee9d22952ae68c4911ebb43067a026c6e00c52b"
+          },
+          "path": "parity/reports/WF-20261114-NATIVE-JOIN-001.json"
         }
       ],
       "known_gaps": [
@@ -2786,7 +2948,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "SEW-002",
@@ -4882,6 +5044,60 @@
             "parity/reports/artifacts/document-f64-20261114/recovered-native.png": "f76471d51b4c5a2affbcfb93b9ed15be12ee1dd3a9192fe7298088ab58faba3e"
           },
           "path": "parity/reports/WF-20261114-NATIVE-IEEE-001.json"
+        },
+        {
+          "id": "WF-20261114-NATIVE-JOIN-001",
+          "commit": "26dd58535868aadc90e92636656c49426e02dc9c",
+          "timestamp": "2026-11-14T09:51:41.129025Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/curve-join-20261114/candidate-pretest.json": "d267d79c90f5d25f7fbde4be3d92f7321d8392d4655eec79f15b31a2aafe9436",
+            "parity/reports/artifacts/curve-join-20261114/gates/clippy.log": "2ab545a39e378d9298eafe729cbd213f2094211d4defbef10594fc9f1522bc6e",
+            "parity/reports/artifacts/curve-join-20261114/gates/package.log": "795d07d14a833925ac3125148db69fb67c97f6a9d1ff36a763072b0bce12f0f7",
+            "parity/reports/artifacts/curve-join-20261114/gates/tests.log": "d2c64fba0a629ddbbd69a094550c7ff94ff54db0d207cf8550e53b5fedb8db39",
+            "parity/reports/artifacts/curve-join-20261114/gates/xtask.log": "c2ec190096ba30daae18d9e0c763a5f3006d3ca85bff0ad5b360efcec6ab0b18",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/input-identities.json": "8d40af990c6f8fbd2793993de7e4377118ec4db6bf396c43d5b08eae72f82980",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/original-private-manifest.json": "73086fd9785a55f9df8f12fa7157142a604a688f1bcddc4890652e9929d97d5a",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/run-official-sdk.py": "8ea159c3cf6d580b06c596f6384e1c4867196a5f1507b860f94689d2731e3c84",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-joined.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-rejected-sentinel.weftforge": "6f5e75f4e2ef3dec7fee74bcc1d5d31cf94510f3f3786bdc196283b3d343bcd2",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-report.json": "1a964e2a5e5cfe6d3a0f6b93041e374ff8b86361591d0d62c15359b39dd024a3",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-transcript.json": "7ca9c11a744c174ad93ada050af77f0fe4f4ffc4c3093ca4cf0d6cfdabe677cb",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/server-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/curve-join-20261114/native/README.md": "4804aaac8e382dd9bce283eb35659c9ae87804a4b1fa18c326bb38e92d882dc3",
+            "parity/reports/artifacts/curve-join-20261114/native/after-corner-error.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/after-focus.weftforge": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+            "parity/reports/artifacts/curve-join-20261114/native/after-join-tab.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/native/after-join.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/native/after-split.weftforge": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+            "parity/reports/artifacts/curve-join-20261114/native/before-split.weftforge": "29f37f4b19604ec702e370e5bdbe3a006db1495043678ae793bb4bbec249067e",
+            "parity/reports/artifacts/curve-join-20261114/native/bundle-manifest.json": "58145fb047ab00733da51969c1103503510aa060026f5095feab8285f1e00779",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.obj": "c8b9e47f7749eb71f7cf311f2011ad0712ea81ebfe6bf34d65eca7d1eb456e33",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.weftforge": "96e7468870c1f08d9a7d1d37920c0e04a02edfcf5cd2a134238e2eeed5c35cf6",
+            "parity/reports/artifacts/curve-join-20261114/native/corner-join-error.png": "e970d655567bfeff321e4c6f7812146a51921d791a2bc3e9431f85733fcbe29d",
+            "parity/reports/artifacts/curve-join-20261114/native/evaluation.json": "2179e129b18ae81b7eb8e11be79ada21e8e209140ac4dc344c8272f9ee04d22e",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.obj": "d9822cb96a446a47706ae75fe9dcd941b81fb8f5e212e4d8860f700e2bd79fda",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/independent-summary.json": "a4aa10e199620a91d0758129d1398b78f27bfe3b57d9d1316113088f1d6f060a",
+            "parity/reports/artifacts/curve-join-20261114/native/inputs-preserved.json": "249ae3ee2dd346baecf49ceaf61f1b8d9172b9ff9e90a02adb4d34b4d006cc59",
+            "parity/reports/artifacts/curve-join-20261114/native/join-redone.weftforge": "5c2bbb2456370ff9d52148fd58a51ba109bdc1ba58e5632ce10333412fdfcd59",
+            "parity/reports/artifacts/curve-join-20261114/native/join-undone.weftforge": "8665a357081d5a4d2eec357f5ee1c92f53f0221caeaeabf38104881432255568",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/end-to-end-synthetic-check.json": "526fdd145e4e6b9fd5eb382a290f7255746b03d639ad5f8cd4625969439a2107",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/historical-before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/missing-input-check.json": "2715626b5d726d5029eb8d08a4df46eaf14e6696a52aef0ffc5b7ad0e1a744db",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/native-inputs-before-evaluation.json": "741bbeee919bdf2e8c83eec913795050b416cddb0cacc3bb7fc2071e1b459dc5",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/self-check.json": "d2e01dbbee70958668bf2a7092921cc01313fc8ea350e6502c453220611ab7c6",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/verify_native_join.py": "5cda873ce5898d15c550c966e3e9423e75e4835ece02022c062bc02d1bae5002",
+            "parity/reports/artifacts/curve-join-20261114/native/reopened.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/ui-declaration.json": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f",
+            "parity/reports/artifacts/curve-join-20261114/parent-native-log.json": "43e92b08d327694032897facfdd91aa38d7502eaeaaf45792215f30762333b0d",
+            "parity/reports/artifacts/curve-join-20261114/restart-precondition.json": "21eb115f0ca627f933ee13fd8d361b33b45104ab029077f22c2b5f31afdf6655",
+            "parity/reports/artifacts/curve-join-20261114/supplement-provenance.json": "82afe50d86f10df533ea5db28ee9d22952ae68c4911ebb43067a026c6e00c52b"
+          },
+          "path": "parity/reports/WF-20261114-NATIVE-JOIN-001.json"
         }
       ],
       "known_gaps": [
@@ -4892,7 +5108,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "FILE-002",
@@ -5039,6 +5255,60 @@
             "parity/reports/artifacts/document-f64-20261114/recovered-native.png": "f76471d51b4c5a2affbcfb93b9ed15be12ee1dd3a9192fe7298088ab58faba3e"
           },
           "path": "parity/reports/WF-20261114-NATIVE-IEEE-001.json"
+        },
+        {
+          "id": "WF-20261114-NATIVE-JOIN-001",
+          "commit": "26dd58535868aadc90e92636656c49426e02dc9c",
+          "timestamp": "2026-11-14T09:51:41.129025Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/curve-join-20261114/candidate-pretest.json": "d267d79c90f5d25f7fbde4be3d92f7321d8392d4655eec79f15b31a2aafe9436",
+            "parity/reports/artifacts/curve-join-20261114/gates/clippy.log": "2ab545a39e378d9298eafe729cbd213f2094211d4defbef10594fc9f1522bc6e",
+            "parity/reports/artifacts/curve-join-20261114/gates/package.log": "795d07d14a833925ac3125148db69fb67c97f6a9d1ff36a763072b0bce12f0f7",
+            "parity/reports/artifacts/curve-join-20261114/gates/tests.log": "d2c64fba0a629ddbbd69a094550c7ff94ff54db0d207cf8550e53b5fedb8db39",
+            "parity/reports/artifacts/curve-join-20261114/gates/xtask.log": "c2ec190096ba30daae18d9e0c763a5f3006d3ca85bff0ad5b360efcec6ab0b18",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/input-identities.json": "8d40af990c6f8fbd2793993de7e4377118ec4db6bf396c43d5b08eae72f82980",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/original-private-manifest.json": "73086fd9785a55f9df8f12fa7157142a604a688f1bcddc4890652e9929d97d5a",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/run-official-sdk.py": "8ea159c3cf6d580b06c596f6384e1c4867196a5f1507b860f94689d2731e3c84",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-joined.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-rejected-sentinel.weftforge": "6f5e75f4e2ef3dec7fee74bcc1d5d31cf94510f3f3786bdc196283b3d343bcd2",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-report.json": "1a964e2a5e5cfe6d3a0f6b93041e374ff8b86361591d0d62c15359b39dd024a3",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-transcript.json": "7ca9c11a744c174ad93ada050af77f0fe4f4ffc4c3093ca4cf0d6cfdabe677cb",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/server-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/curve-join-20261114/native/README.md": "4804aaac8e382dd9bce283eb35659c9ae87804a4b1fa18c326bb38e92d882dc3",
+            "parity/reports/artifacts/curve-join-20261114/native/after-corner-error.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/after-focus.weftforge": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+            "parity/reports/artifacts/curve-join-20261114/native/after-join-tab.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/native/after-join.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/native/after-split.weftforge": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+            "parity/reports/artifacts/curve-join-20261114/native/before-split.weftforge": "29f37f4b19604ec702e370e5bdbe3a006db1495043678ae793bb4bbec249067e",
+            "parity/reports/artifacts/curve-join-20261114/native/bundle-manifest.json": "58145fb047ab00733da51969c1103503510aa060026f5095feab8285f1e00779",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.obj": "c8b9e47f7749eb71f7cf311f2011ad0712ea81ebfe6bf34d65eca7d1eb456e33",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.weftforge": "96e7468870c1f08d9a7d1d37920c0e04a02edfcf5cd2a134238e2eeed5c35cf6",
+            "parity/reports/artifacts/curve-join-20261114/native/corner-join-error.png": "e970d655567bfeff321e4c6f7812146a51921d791a2bc3e9431f85733fcbe29d",
+            "parity/reports/artifacts/curve-join-20261114/native/evaluation.json": "2179e129b18ae81b7eb8e11be79ada21e8e209140ac4dc344c8272f9ee04d22e",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.obj": "d9822cb96a446a47706ae75fe9dcd941b81fb8f5e212e4d8860f700e2bd79fda",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/independent-summary.json": "a4aa10e199620a91d0758129d1398b78f27bfe3b57d9d1316113088f1d6f060a",
+            "parity/reports/artifacts/curve-join-20261114/native/inputs-preserved.json": "249ae3ee2dd346baecf49ceaf61f1b8d9172b9ff9e90a02adb4d34b4d006cc59",
+            "parity/reports/artifacts/curve-join-20261114/native/join-redone.weftforge": "5c2bbb2456370ff9d52148fd58a51ba109bdc1ba58e5632ce10333412fdfcd59",
+            "parity/reports/artifacts/curve-join-20261114/native/join-undone.weftforge": "8665a357081d5a4d2eec357f5ee1c92f53f0221caeaeabf38104881432255568",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/end-to-end-synthetic-check.json": "526fdd145e4e6b9fd5eb382a290f7255746b03d639ad5f8cd4625969439a2107",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/historical-before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/missing-input-check.json": "2715626b5d726d5029eb8d08a4df46eaf14e6696a52aef0ffc5b7ad0e1a744db",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/native-inputs-before-evaluation.json": "741bbeee919bdf2e8c83eec913795050b416cddb0cacc3bb7fc2071e1b459dc5",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/self-check.json": "d2e01dbbee70958668bf2a7092921cc01313fc8ea350e6502c453220611ab7c6",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/verify_native_join.py": "5cda873ce5898d15c550c966e3e9423e75e4835ece02022c062bc02d1bae5002",
+            "parity/reports/artifacts/curve-join-20261114/native/reopened.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/ui-declaration.json": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f",
+            "parity/reports/artifacts/curve-join-20261114/parent-native-log.json": "43e92b08d327694032897facfdd91aa38d7502eaeaaf45792215f30762333b0d",
+            "parity/reports/artifacts/curve-join-20261114/restart-precondition.json": "21eb115f0ca627f933ee13fd8d361b33b45104ab029077f22c2b5f31afdf6655",
+            "parity/reports/artifacts/curve-join-20261114/supplement-provenance.json": "82afe50d86f10df533ea5db28ee9d22952ae68c4911ebb43067a026c6e00c52b"
+          },
+          "path": "parity/reports/WF-20261114-NATIVE-JOIN-001.json"
         }
       ],
       "known_gaps": [
@@ -5049,7 +5319,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "FILE-003",
@@ -6293,6 +6563,60 @@
             "parity/reports/artifacts/document-f64-20261114/recovered-native.png": "f76471d51b4c5a2affbcfb93b9ed15be12ee1dd3a9192fe7298088ab58faba3e"
           },
           "path": "parity/reports/WF-20261114-NATIVE-IEEE-001.json"
+        },
+        {
+          "id": "WF-20261114-NATIVE-JOIN-001",
+          "commit": "26dd58535868aadc90e92636656c49426e02dc9c",
+          "timestamp": "2026-11-14T09:51:41.129025Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/curve-join-20261114/candidate-pretest.json": "d267d79c90f5d25f7fbde4be3d92f7321d8392d4655eec79f15b31a2aafe9436",
+            "parity/reports/artifacts/curve-join-20261114/gates/clippy.log": "2ab545a39e378d9298eafe729cbd213f2094211d4defbef10594fc9f1522bc6e",
+            "parity/reports/artifacts/curve-join-20261114/gates/package.log": "795d07d14a833925ac3125148db69fb67c97f6a9d1ff36a763072b0bce12f0f7",
+            "parity/reports/artifacts/curve-join-20261114/gates/tests.log": "d2c64fba0a629ddbbd69a094550c7ff94ff54db0d207cf8550e53b5fedb8db39",
+            "parity/reports/artifacts/curve-join-20261114/gates/xtask.log": "c2ec190096ba30daae18d9e0c763a5f3006d3ca85bff0ad5b360efcec6ab0b18",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/input-identities.json": "8d40af990c6f8fbd2793993de7e4377118ec4db6bf396c43d5b08eae72f82980",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/original-private-manifest.json": "73086fd9785a55f9df8f12fa7157142a604a688f1bcddc4890652e9929d97d5a",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/run-official-sdk.py": "8ea159c3cf6d580b06c596f6384e1c4867196a5f1507b860f94689d2731e3c84",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-joined.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-rejected-sentinel.weftforge": "6f5e75f4e2ef3dec7fee74bcc1d5d31cf94510f3f3786bdc196283b3d343bcd2",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-report.json": "1a964e2a5e5cfe6d3a0f6b93041e374ff8b86361591d0d62c15359b39dd024a3",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/sdk-transcript.json": "7ca9c11a744c174ad93ada050af77f0fe4f4ffc4c3093ca4cf0d6cfdabe677cb",
+            "parity/reports/artifacts/curve-join-20261114/mcp-sdk/server-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/curve-join-20261114/native/README.md": "4804aaac8e382dd9bce283eb35659c9ae87804a4b1fa18c326bb38e92d882dc3",
+            "parity/reports/artifacts/curve-join-20261114/native/after-corner-error.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/after-focus.weftforge": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+            "parity/reports/artifacts/curve-join-20261114/native/after-join-tab.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/native/after-join.weftforge": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+            "parity/reports/artifacts/curve-join-20261114/native/after-split.weftforge": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+            "parity/reports/artifacts/curve-join-20261114/native/before-split.weftforge": "29f37f4b19604ec702e370e5bdbe3a006db1495043678ae793bb4bbec249067e",
+            "parity/reports/artifacts/curve-join-20261114/native/bundle-manifest.json": "58145fb047ab00733da51969c1103503510aa060026f5095feab8285f1e00779",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.obj": "c8b9e47f7749eb71f7cf311f2011ad0712ea81ebfe6bf34d65eca7d1eb456e33",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+            "parity/reports/artifacts/curve-join-20261114/native/coarse.weftforge": "96e7468870c1f08d9a7d1d37920c0e04a02edfcf5cd2a134238e2eeed5c35cf6",
+            "parity/reports/artifacts/curve-join-20261114/native/corner-join-error.png": "e970d655567bfeff321e4c6f7812146a51921d791a2bc3e9431f85733fcbe29d",
+            "parity/reports/artifacts/curve-join-20261114/native/evaluation.json": "2179e129b18ae81b7eb8e11be79ada21e8e209140ac4dc344c8272f9ee04d22e",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.obj": "d9822cb96a446a47706ae75fe9dcd941b81fb8f5e212e4d8860f700e2bd79fda",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+            "parity/reports/artifacts/curve-join-20261114/native/fine.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/independent-summary.json": "a4aa10e199620a91d0758129d1398b78f27bfe3b57d9d1316113088f1d6f060a",
+            "parity/reports/artifacts/curve-join-20261114/native/inputs-preserved.json": "249ae3ee2dd346baecf49ceaf61f1b8d9172b9ff9e90a02adb4d34b4d006cc59",
+            "parity/reports/artifacts/curve-join-20261114/native/join-redone.weftforge": "5c2bbb2456370ff9d52148fd58a51ba109bdc1ba58e5632ce10333412fdfcd59",
+            "parity/reports/artifacts/curve-join-20261114/native/join-undone.weftforge": "8665a357081d5a4d2eec357f5ee1c92f53f0221caeaeabf38104881432255568",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/end-to-end-synthetic-check.json": "526fdd145e4e6b9fd5eb382a290f7255746b03d639ad5f8cd4625969439a2107",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/historical-before-split.weftforge": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/missing-input-check.json": "2715626b5d726d5029eb8d08a4df46eaf14e6696a52aef0ffc5b7ad0e1a744db",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/native-inputs-before-evaluation.json": "741bbeee919bdf2e8c83eec913795050b416cddb0cacc3bb7fc2071e1b459dc5",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/self-check.json": "d2e01dbbee70958668bf2a7092921cc01313fc8ea350e6502c453220611ab7c6",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+            "parity/reports/artifacts/curve-join-20261114/native/original-evaluators/verify_native_join.py": "5cda873ce5898d15c550c966e3e9423e75e4835ece02022c062bc02d1bae5002",
+            "parity/reports/artifacts/curve-join-20261114/native/reopened.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+            "parity/reports/artifacts/curve-join-20261114/native/ui-declaration.json": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f",
+            "parity/reports/artifacts/curve-join-20261114/parent-native-log.json": "43e92b08d327694032897facfdd91aa38d7502eaeaaf45792215f30762333b0d",
+            "parity/reports/artifacts/curve-join-20261114/restart-precondition.json": "21eb115f0ca627f933ee13fd8d361b33b45104ab029077f22c2b5f31afdf6655",
+            "parity/reports/artifacts/curve-join-20261114/supplement-provenance.json": "82afe50d86f10df533ea5db28ee9d22952ae68c4911ebb43067a026c6e00c52b"
+          },
+          "path": "parity/reports/WF-20261114-NATIVE-JOIN-001.json"
         }
       ],
       "known_gaps": [
@@ -6303,7 +6627,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "APP-002",

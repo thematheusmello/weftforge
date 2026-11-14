@@ -1,0 +1,120 @@
+{
+  "scenario": "UI-BOUNDED-JOIN-001",
+  "kind": "implementation_only",
+  "status": "passed_for_supplied_outputs",
+  "evaluation": "evaluation.json",
+  "evaluation_sha256": "2179e129b18ae81b7eb8e11be79ada21e8e209140ac4dc344c8272f9ee04d22e",
+  "frozen_declaration": {
+    "file": "ui-declaration.json",
+    "sha256": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f"
+  },
+  "frozen_evaluator": {
+    "file": "original-evaluators/verify_native_join.py",
+    "sha256": "5cda873ce5898d15c550c966e3e9423e75e4835ece02022c062bc02d1bae5002"
+  },
+  "measured_bounds": {
+    "split_geometry": {
+      "all_parameters_upper_bound_m": "1.000000000000000000000000000000000000000000000000000000000000000000001E-16",
+      "maximum_squared_control_difference_m2_exact": "1/100000000000000000000000000000000",
+      "proof": "Exact rational power restriction and Bernstein convex hull.",
+      "within_1e_12_m": true
+    },
+    "joined_original_parent": {
+      "all_parameters_upper_bound_m": "2.118962010041709077171765895152004088331144442465392224829777945330101E-16",
+      "maximum_squared_control_difference_m2_exact": "449/10000000000000000000000000000000000",
+      "proof": "Exact rational power restriction and Bernstein convex hull.",
+      "within_1e_12_m": true
+    },
+    "reconstructed_children": {
+      "all_parameters_upper_bound_m": "8.694951178701350247162256569418395969565945703489654041962720266462417E-17",
+      "maximum_squared_control_difference_m2_exact": "295321/39062500000000000000000000000000000000",
+      "proof": "Exact rational power restriction and Bernstein convex hull.",
+      "within_1e_12_m": true
+    },
+    "full_sewn_point_pairs": {
+      "both_sides_bound": {
+        "all_parameters_upper_bound_m": "8.694951178701350247162256569418395969565945703489654041962720266462417E-17",
+        "maximum_squared_control_difference_m2_exact": "295321/39062500000000000000000000000000000000",
+        "proof": "Exact rational power restriction and Bernstein convex hull.",
+        "within_1e_12_m": true
+      },
+      "piecewise_affine_correspondence_intervals_proved": 2
+    },
+    "normalized_affine_intervals": {
+      "upper_bound": "0",
+      "maximum_absolute_error_exact": "0",
+      "within_1e_12": true
+    }
+  },
+  "unchanged_byte_pairs": [
+    {
+      "before": "after-split.weftforge",
+      "after": "after-focus.weftforge",
+      "sha256": "d904801435a660fa754b83ad088c477f385d040df36b6d4b7865a43f28e30f55",
+      "document_bytes_identical": true
+    },
+    {
+      "before": "after-join.weftforge",
+      "after": "after-join-tab.weftforge",
+      "sha256": "00d8d318b888d41b89bd9d8d4fef770ba04abb71c8e12dbb01c69e8291e6ee9a",
+      "document_bytes_identical": true
+    },
+    {
+      "before": "reopened.weftforge",
+      "after": "after-corner-error.weftforge",
+      "sha256": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+      "document_bytes_identical": true
+    }
+  ],
+  "stable_ids": {
+    "retained_curve": 9,
+    "retired_curve": 22,
+    "retired_point": 21,
+    "seams": [
+      20,
+      23
+    ],
+    "next_id": 24
+  },
+  "mesh": {
+    "coarse": {
+      "vertices": 194,
+      "triangles": 325,
+      "minimum_twice_triangle_area_m2": "0.0000763177871704102641601562499996",
+      "minimum_twice_uv_triangle_area": "0.0000763177871704102641601562499996"
+    },
+    "fine": {
+      "vertices": 2296,
+      "triangles": 4448,
+      "minimum_twice_triangle_area_m2": "0.0000046304985880853715591430664081",
+      "minimum_twice_uv_triangle_area": "0.0000046304985880853715591430664081"
+    }
+  },
+  "native_inputs_preserved": true,
+  "native_input_count": 16,
+  "content_redactions": [],
+  "privacy_review": {
+    "text_files_scanned": 24,
+    "absolute_private_path_matches": 0,
+    "corner_screenshot": "corner-join-error.png",
+    "screenshot_sha256": "e970d655567bfeff321e4c6f7812146a51921d791a2bc3e9431f85733fcbe29d",
+    "screenshot_visual_review": "Own WeftForge window, selected curve #7 and visible collinear/roundoff rejection; no desktop or private path content.",
+    "png_dimensions_px": [
+      1450,
+      932
+    ],
+    "png_chunk_crc_checks": "passed",
+    "png_exif_fields": "Image dimensions only.",
+    "png_text_chunks": 0,
+    "icc_profile_names": [
+      "ICC Profile"
+    ]
+  },
+  "limitations": [
+    "No reference execution/parity, cloth fitting or simulation claim.",
+    "No large-translation native coverage; default placements only.",
+    "No coalesced-event native coverage; saved files do not establish GUI event timing.",
+    "GUI actions, focused buffers, error display and process identity require the parent UI record."
+  ],
+  "readiness": "Independent saved-output evaluation passed; parent attribution report, registry, tracked-artifact and clean-checkout checks remain separate."
+}

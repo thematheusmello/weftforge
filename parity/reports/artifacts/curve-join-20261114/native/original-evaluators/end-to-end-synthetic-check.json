@@ -1,0 +1,387 @@
+{
+  "kind": "synthesized_evaluator_pipeline_self_check_only",
+  "status": "passed",
+  "native_outputs_created": false,
+  "evaluator_sha256": "5cda873ce5898d15c550c966e3e9423e75e4835ece02022c062bc02d1bae5002",
+  "checks": {
+    "declaration": {
+      "sha256": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f",
+      "id": "UI-BOUNDED-JOIN-001",
+      "declared_at": "2026-11-14T09:08:32.269106+00:00",
+      "source_build_commit": "26dd58535868aadc90e92636656c49426e02dc9c",
+      "source_tree_sha256": "9630666afb1b944b98bff68adca748f31f15c6c07518f7918b4e5c1c2270a812",
+      "executable_sha256": "9c8b09363ab56076e7154235c6e3c619c41fb6e1746e8fd4c3353903741467eb",
+      "candidate_identity_is_claimed_by_declaration": true,
+      "limitation": "Saved output alone cannot prove launch timing, executable process identity or GUI actions."
+    },
+    "baseline": {
+      "sha256_source": "actual before-split snapshot",
+      "revision": 9,
+      "resolution_m": "0.07",
+      "next_id": 21,
+      "ids": {
+        "points": [
+          3,
+          4,
+          5,
+          6,
+          12,
+          13,
+          14,
+          15
+        ],
+        "curves": [
+          7,
+          8,
+          9,
+          10,
+          16,
+          17,
+          18,
+          19
+        ],
+        "pieces": [
+          2,
+          11
+        ],
+        "materials": [
+          1
+        ],
+        "seams": [
+          20
+        ]
+      },
+      "authored_control_bound": {
+        "all_parameters_upper_bound_m": "0",
+        "maximum_squared_control_difference_m2_exact": "0",
+        "proof": "Exact rational power restriction and Bernstein convex hull.",
+        "within_1e_12_m": true
+      },
+      "pattern_world_equivalence": "Both placements are zero; pattern/world norms agree."
+    },
+    "split": {
+      "point_id": 21,
+      "child_id": 22,
+      "new_seam_id": 23,
+      "geometry": {
+        "all_parameters_upper_bound_m": "0",
+        "maximum_squared_control_difference_m2_exact": "0",
+        "proof": "Exact rational power restriction and Bernstein convex hull.",
+        "within_1e_12_m": true
+      },
+      "interval_parameters": {
+        "upper_bound": "0",
+        "maximum_absolute_error_exact": "0",
+        "within_1e_12": true
+      },
+      "legacy_decimal_70_check": {
+        "revision": 10,
+        "resolution_m": "0.07",
+        "next_id": 24,
+        "ids": {
+          "points": [
+            3,
+            4,
+            5,
+            6,
+            12,
+            13,
+            14,
+            15,
+            21
+          ],
+          "curves": [
+            7,
+            8,
+            9,
+            10,
+            16,
+            17,
+            18,
+            19,
+            22
+          ],
+          "pieces": [
+            2,
+            11
+          ],
+          "materials": [
+            1
+          ],
+          "seams": [
+            20,
+            23
+          ]
+        },
+        "join_point_id": 21,
+        "second_curve_id": 22,
+        "join_point_m": [
+          "0.2448",
+          "0.744"
+        ],
+        "subcurve_controls_m": {
+          "9": [
+            [
+              "0.4",
+              "0.6"
+            ],
+            [
+              "0.3600000000000000000000000000000000000000000000000000000000000000000000",
+              "0.6800000000000000000000000000000000000000000000000000000000000000000000"
+            ],
+            [
+              "0.3040000000000000000000000000000000000000000000000000000000000000000000",
+              "0.7280000000000000000000000000000000000000000000000000000000000000000000"
+            ],
+            [
+              "0.2448",
+              "0.7440"
+            ]
+          ],
+          "22": [
+            [
+              "0.2448",
+              "0.7440"
+            ],
+            [
+              "0.1560",
+              "0.7680"
+            ],
+            [
+              "0.06",
+              "0.72"
+            ],
+            [
+              "0.0",
+              "0.6"
+            ]
+          ]
+        },
+        "cubic_all_points_error_bound_m": "0",
+        "sewn_all_point_pairs_error_bound_m": "1E-71",
+        "normalized_parameter_error_bound": "0",
+        "seam_correspondence_intervals_proved": 2
+      }
+    },
+    "join": {
+      "retained_curve_id": 9,
+      "retired_curve_id": 22,
+      "retired_shared_point_id": 21,
+      "original_parent_geometry": {
+        "all_parameters_upper_bound_m": "0",
+        "maximum_squared_control_difference_m2_exact": "0",
+        "proof": "Exact rational power restriction and Bernstein convex hull.",
+        "within_1e_12_m": true
+      },
+      "child_geometry": {
+        "all_parameters_upper_bound_m": "0",
+        "maximum_squared_control_difference_m2_exact": "0",
+        "proof": "Exact rational power restriction and Bernstein convex hull.",
+        "within_1e_12_m": true
+      },
+      "normalized_affine_interval_error": {
+        "upper_bound": "0",
+        "maximum_absolute_error_exact": "0",
+        "within_1e_12": true
+      },
+      "sewn_point_pairs": {
+        "both_sides_bound": {
+          "all_parameters_upper_bound_m": "0",
+          "maximum_squared_control_difference_m2_exact": "0",
+          "proof": "Exact rational power restriction and Bernstein convex hull.",
+          "within_1e_12_m": true
+        },
+        "piecewise_affine_correspondence_intervals_proved": 2
+      },
+      "single_revision": true,
+      "unintended_field_changes": [],
+      "allocator_unchanged": true
+    },
+    "unchanged_bytes": [
+      {
+        "before": "after-split.weftforge",
+        "after": "after-focus.weftforge",
+        "sha256": "64465783c4b82a82a0e87bdc444517e01b995ccec9e18e4508689b89b0de442a",
+        "document_bytes_identical": true
+      },
+      {
+        "before": "after-join.weftforge",
+        "after": "after-join-tab.weftforge",
+        "sha256": "213b3df48ba4c406e477a0520c92a247a368c68edfcea4899b8d41cf075cfef4",
+        "document_bytes_identical": true
+      },
+      {
+        "before": "reopened.weftforge",
+        "after": "after-corner-error.weftforge",
+        "sha256": "b04510437a64b38f4f3d6151cb619260b7608282a7253f6d1312ff8abbb7b4e8",
+        "document_bytes_identical": true
+      }
+    ],
+    "undo": {
+      "construction_identical": true,
+      "ignored_fields": [
+        "revision",
+        "next_id"
+      ],
+      "before_revision": 10,
+      "after_revision": 12,
+      "before_next_id": 24,
+      "after_next_id": 24
+    },
+    "redo": {
+      "construction_identical": true,
+      "ignored_fields": [
+        "revision",
+        "next_id"
+      ],
+      "before_revision": 11,
+      "after_revision": 13,
+      "before_next_id": 24,
+      "after_next_id": 24
+    },
+    "refinement": [
+      {
+        "checkpoint": "coarse",
+        "resolution_m": "0.09",
+        "construction_identical": true,
+        "ignored_fields": [
+          "revision",
+          "resolution"
+        ],
+        "before_revision": 13,
+        "after_revision": 14,
+        "before_next_id": 24,
+        "after_next_id": 24
+      },
+      {
+        "checkpoint": "fine",
+        "resolution_m": "0.035",
+        "construction_identical": true,
+        "ignored_fields": [
+          "revision",
+          "resolution"
+        ],
+        "before_revision": 14,
+        "after_revision": 15,
+        "before_next_id": 24,
+        "after_next_id": 24
+      }
+    ],
+    "reopen": {
+      "construction_identical": true,
+      "ignored_fields": [
+        "revision",
+        "next_id"
+      ],
+      "before_revision": 15,
+      "after_revision": 15,
+      "before_next_id": 24,
+      "after_next_id": 24
+    },
+    "obj": {
+      "coarse": {
+        "sha256": "5e0ff928ca9de8f7b8b307bab3f6b80dc7ad678fc9f7b1e069d2bc6055a0dacd",
+        "vertices": 8,
+        "triangles": 4,
+        "uvs": 8,
+        "normals": 1,
+        "bounds_m": [
+          [
+            "0",
+            "1.4"
+          ],
+          [
+            "0",
+            "0.6"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "minimum_twice_triangle_area_m2": "0.24",
+        "minimum_twice_uv_triangle_area": "0.24",
+        "finite_coordinates_uvs_and_normals": true
+      },
+      "fine": {
+        "sha256": "062e3f7f484f4a93882bbe822bd2a0f35a17656d3487d18d6545cd5415a3559f",
+        "vertices": 10,
+        "triangles": 8,
+        "uvs": 10,
+        "normals": 1,
+        "bounds_m": [
+          [
+            "0",
+            "1.4"
+          ],
+          [
+            "0",
+            "0.6"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "minimum_twice_triangle_area_m2": "0.12",
+        "minimum_twice_uv_triangle_area": "0.12",
+        "finite_coordinates_uvs_and_normals": true
+      }
+    },
+    "svg": {
+      "coarse": {
+        "sha256": "b2dc87a66b980205369ce3b3203a4a470f7fde824f742c379f8078b7531adae5",
+        "editable_closed_piece_paths": 2,
+        "editable_cubic_segments": 1,
+        "physical_user_unit": "millimetre",
+        "saved_authoring_error": {
+          "all_parameters_upper_bound_m": "0",
+          "maximum_squared_control_difference_m2_exact": "0",
+          "proof": "Exact rational power restriction and Bernstein convex hull.",
+          "within_1e_12_m": true
+        },
+        "original_parent_error": {
+          "all_parameters_upper_bound_m": "0",
+          "maximum_squared_control_difference_m2_exact": "0",
+          "proof": "Exact rational power restriction and Bernstein convex hull.",
+          "within_1e_12_m": true
+        },
+        "parser": "Unchanged original evaluator svg_path_commands."
+      },
+      "fine": {
+        "sha256": "b2dc87a66b980205369ce3b3203a4a470f7fde824f742c379f8078b7531adae5",
+        "editable_closed_piece_paths": 2,
+        "editable_cubic_segments": 1,
+        "physical_user_unit": "millimetre",
+        "saved_authoring_error": {
+          "all_parameters_upper_bound_m": "0",
+          "maximum_squared_control_difference_m2_exact": "0",
+          "proof": "Exact rational power restriction and Bernstein convex hull.",
+          "within_1e_12_m": true
+        },
+        "original_parent_error": {
+          "all_parameters_upper_bound_m": "0",
+          "maximum_squared_control_difference_m2_exact": "0",
+          "proof": "Exact rational power restriction and Bernstein convex hull.",
+          "within_1e_12_m": true
+        },
+        "parser": "Unchanged original evaluator svg_path_commands."
+      }
+    },
+    "fine_vertex_increase": 2,
+    "allocator_timeline": [
+      21,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24,
+      24
+    ],
+    "native_ui_execution_requires_parent_observation_record": true
+  }
+}
