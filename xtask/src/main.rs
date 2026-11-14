@@ -33,6 +33,18 @@ fn run() -> Result<()> {
                     "test_*.py",
                 ],
             )?;
+            call(
+                "python3",
+                &[
+                    "-m",
+                    "unittest",
+                    "discover",
+                    "-s",
+                    "spec/evaluators",
+                    "-p",
+                    "test_*.py",
+                ],
+            )?;
             call("cargo", &["run", "-p", "weftforge-cli", "--", "--help"])?;
             Ok(())
         }
