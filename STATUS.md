@@ -13,6 +13,8 @@ Last published main is `e342471b18bc5d636d8e869ba0d374710ea15da3`, merged
 `cd151b3b89e26d55a4dcd4525790006660c4e766` and 113 original artifacts remain in
 [WF-20261114-DXF-001](parity/reports/WF-20261114-DXF-001.json), now stale after the
 sewing changes. Earlier source-pinned outcomes and failures remain retained.
+The ordered-sewing branch is published at `081ea17622b7fb24b32c2803f05aaa2a13d43f0f`
+in open [PR33](https://github.com/thematheusmello/weftforge/pull/33).
 
 **Keep GitHub Actions and Pages disabled until the entire project is complete.**
 The user requested this to stop development costs. Repository `enabled:false`
@@ -31,9 +33,11 @@ and cross-platform launch/distribution acceptance remain open.
 Working branch: `feat/ordered-sewing-paths`. Executed runtime source is
 `3eddef067c8a1f03f192c8e6822a8da2a94f9bf9`, with 37 scoped runtime/test files.
 Source-map checkpoint `529e1c407025decfb94a14acc23b242e9cf9ce16` preserves the
-runtime ancestry. New documentation, registry and evidence are prepared locally;
-clean-checkout a661ae4 now passes full retained-output replay and xtask;
-publication metadata and the PR remain next.
+runtime ancestry. Documentation, registry and evidence are committed and pushed.
+Clean checkout `a661ae495c91f9aa63c33ce1bf5f5b0853217216` passes the full retained-output
+replay and xtask; final metadata `081ea176` passes registry/map and all 1,375
+report-artifact tracking/hash checks. PR33 awaits ordinary merge, preserving
+the tested source/evidence ancestry.
 
 Authoritative ordered M:N groups pair cumulative **authored arc lengths** across
 partial, reversed and disconnected spans, with editable nonlinear maps. Gaps
@@ -107,6 +111,12 @@ All three runs fail the unchanged 15% strain screen at 3 s: 26.9303%, 27.1686%,
 assembly. Sensitivity crosses displacement triggers; equilibrium/convergence
 and a production solver fix are unproven. These historical results are stale;
 new meshing source has no accepted garment-quality run. See [physics](docs/physics.md).
+The new source-bound original-shirt control also fails: 24.1185% maximum strain
+after 1 s of zero-gravity assembly and 32.3519% at 3 s after gravity. Its current
+mesh is 150 vertices / 228 triangles, so old and new nodal arrays are not directly
+comparable. Two preregistered causal probes and producer analysis are complete;
+independent review is pending. Removing the mannequin in one diagnostic cannot qualify garment
+quality. Original inputs and all acceptance thresholds remain unchanged.
 
 Full free/internal sewing, cut/trim, constraints, calibrated fabrics, robust
 layered contact, avatars/animation, rendering/CJK fonts, imports/interchange,
@@ -124,20 +134,25 @@ remain unobserved. The one-click manual diagnosis question is pending. This is
 input noncompletion, not absence; preserve the earlier Rectangle observation.
 See [dated research notes](spec/features/SEW-002-runtime-notes-20261114.md).
 
-1. Commit the clean-checkout receipt/log derivatives and final publication metadata.
-2. Recheck final metadata, complete artifact tracking and source identity from a
-   clean checkout; the full850-file replay/54Python/map gates already passed at a661ae4.
-3. Publish an ordinary PR preserving all source/evidence ancestry; verify Actions
+1. Verify the PR33 link/status-only metadata from a clean checkout; the full
+   850-file replay/54-Python/map gates already passed at a661ae4.
+2. Merge PR33 normally, preserving source/evidence ancestry; verify Actions
    remains disabled and no head/merge workflows or Pages updates ran.
-4. Continue current-source cloth balance/refinement diagnosis and the remaining
+3. Review and publish the current-source cloth diagnosis with its original failure
+   and counterfactual limits; do not infer equilibrium from low velocities.
+4. Continue the remaining
    native/reference construction and complete-roadmap work; no gate is accepted.
 
 Root gates 46670/59961/33589/43122, headless producer 94587 (first driver error),
 corrected negative attempt, SDK run, operations 3209, independent output 54062/
 50008 and all agent core/UI/mesh checks are terminal. Metadata progress 57683
 and map 94015 passed. Clean replay75295 and isolated offline xtask63373 passed;
-all850 bundle files and853 run artifacts were tracked at a661ae4. No Cargo/
-producer job is currently live. Sewing agents finished their bounded tasks. The new cloth_balance agent is
-preparing a fixed current-source diagnosis under the original quality limits;
-no execution handle has been reported yet. Recheck actual process/job state on resume.
+all850 bundle files and853 run artifacts were tracked at a661ae4. Final metadata
+81653/28583 passed in its clean checkout. Sewing agents finished their bounded
+tasks. Cloth control 50261 (PIDs 66594/66638), zero-G continuation 58088
+(70783/70879) and no-avatar diagnostic 24011 (71314/71336) are confirmed terminal,
+all exit 0; numerical quality acceptance is separate from process success.
+Saved-state analysis 80646 is terminal, exit 0; independent balance_review is
+active at the last observation. Their ignored ledgers are in `.local/cloth-balance-20261114/` and
+`.local/cloth-balance-review-20261114/`. Recheck actual job state on resume.
 Raw local ledgers remain ignored; keep separate Cargo targets per worktree.
