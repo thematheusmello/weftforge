@@ -171,7 +171,7 @@ pub(crate) fn solve_stitch(
     x: &mut [Vec3],
     inverse_mass: &[f64],
     dt: f64,
-    lambda: &mut f64,
+    lambda: &mut Vec3,
 ) {
     let vertices = [
         s.a.vertices[0],
@@ -195,6 +195,24 @@ pub(crate) fn solve_stitch(
         }
     }
     let difference = sub(s.a.position(x), s.b.position(x));
+    if target_distance == 0. && s.compliance > 0. {
+        let alpha = s.compliance / (dt * dt);
+        let denominator = vertices
+            .iter()
+            .zip(coefficients)
+            .map(|(&v, weight)| inverse_mass[v] * (weight * weight))
+            .sum::<f64>()
+            + alpha;
+        if denominator <= 1e-20 || !denominator.is_finite() {
+            return;
+        }
+        let delta = std::array::from_fn(|i| (-difference[i] - alpha * lambda[i]) / denominator);
+        *lambda = add(*lambda, delta);
+        for (&v, weight) in vertices.iter().zip(coefficients) {
+            x[v] = add(x[v], mul(delta, inverse_mass[v] * weight));
+        }
+        return;
+    }
     let distance = length(difference);
     if distance < 1e-14 {
         return;
@@ -206,7 +224,7 @@ pub(crate) fn solve_stitch(
         &gradient,
         distance - target_distance,
         s.compliance / (dt * dt),
-        lambda,
+        &mut lambda[0],
         x,
         inverse_mass,
     );
