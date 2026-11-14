@@ -3,7 +3,7 @@
   "product_build": "2026.1.237 (r58920)",
   "status": "partial_observed_presence_values_and_bounded_original_workflows",
   "counts": {
-    "records": 339,
+    "records": 356,
     "complete_behavior_contracts": 0
   },
   "limitations": [
@@ -21,7 +21,8 @@
     "Preference shortcut categories are collapsed. Disabled Action hints are not evidence of active global shortcut behavior.",
     "Unit System Millimeter and Decimal Places 1 do not establish a regional numeric locale or every import/export unit.",
     "Curvature and free-sewing records qualify one original edge/history and a100 mm first-side preview only. Completed/reversed sewing, numeric limits, arc-length endpoint measurements and cloth physics remain unobserved.",
-    "The whole-edge case observes one 300 mm pair, one Undo/Redo and document reopen. Its final native run was interrupted after partial input; after-captures, not a clean driver status, establish the resulting pair. Reversal, partial completion, physical correspondence and simulation remain unqualified."
+    "The whole-edge case observes one 300 mm pair, one Undo/Redo and document reopen. Its final native run was interrupted after partial input; after-captures, not a clean driver status, establish the resulting pair. Reversal, partial completion, physical correspondence and simulation remain unqualified.",
+    "Open Project entries are input-specific current modal values; gray controls are visual availability observations with no retained AX enabled flag or alternative-content test."
   ],
   "records": [
     {
@@ -6659,7 +6660,7 @@
       "behavior_status": "not_executed",
       "accepted_range": null,
       "error_behavior": null,
-      "value": "Index Number (1, 2, 3 ⋯)",
+      "value": "Index Number (1, 2, 3 \u22ef)",
       "unit": null,
       "enabled": null,
       "evidence_ids": [
@@ -8398,17 +8399,22 @@
       ],
       "kind": "AXCheckBox",
       "presence_status": "observed",
-      "behavior_status": "first_side_preview_only",
+      "behavior_status": "bounded_paired_100_mm_history_document_reopen",
       "accepted_range": null,
       "error_behavior": null,
       "value": 1,
       "unit": null,
       "enabled": null,
       "evidence_ids": [
-        "ev_4bc3e6be51a50907614015c909b16748bcf853e35ae3a7ff54b9469c8e4ffbe1"
+        "ev_4bc3e6be51a50907614015c909b16748bcf853e35ae3a7ff54b9469c8e4ffbe1",
+        "ev_4dc0363563aea0b35e5eb08a75ba7e4482f48451d8ef3c07bc7db3a0dbdbbfc7",
+        "ev_ee12dda8bc7aab2f76f860f310f5116a31725c7709df9870d0516d102c63e632"
       ],
-      "note": "Menu-selected tool; one numeric100 mm first side, no completed seam or shortcut execution.",
-      "shortcut": "M"
+      "note": "Menu-selected tool; one numeric100 mm first side, no completed seam or shortcut execution. Later case accepts 100 mm on both curved/straight partial sides and observes one Undo/Redo plus document reopen. Exact curve parameters, reversal, ranges, errors and cancellation remain unmeasured.",
+      "shortcut": "M",
+      "case_ids": [
+        "REF-SEW-002-PAIR-002"
+      ]
     },
     {
       "id": "MDUI-B37712C9182B",
@@ -8462,7 +8468,7 @@
       ],
       "kind": "stepper",
       "presence_status": "observed",
-      "behavior_status": "bounded_100_mm_entry",
+      "behavior_status": "bounded_paired_100_mm_history_document_reopen",
       "accepted_range": null,
       "error_behavior": null,
       "value": 90.6,
@@ -8471,9 +8477,14 @@
       "evidence_ids": [
         "CUA-FREE-SEWING-LENGTH-DIALOG-20261114",
         "CUA-FREE-SEWING-LENGTH-100-20261114",
-        "ev_0e33a8c22086b3593a86bbb94e07a5147d1bdb8bf9f36013b1d7fea42abc4cef"
+        "ev_0e33a8c22086b3593a86bbb94e07a5147d1bdb8bf9f36013b1d7fea42abc4cef",
+        "ev_4dc0363563aea0b35e5eb08a75ba7e4482f48451d8ef3c07bc7db3a0dbdbbfc7",
+        "ev_ee12dda8bc7aab2f76f860f310f5116a31725c7709df9870d0516d102c63e632"
       ],
-      "note": "90.6 mm is this pointer-dependent preview value. Typed 100 mm then Tab and OK; accepted range and invalid-input behavior unknown."
+      "note": "90.6 mm is this pointer-dependent preview value. Typed 100 mm then Tab and OK; accepted range and invalid-input behavior unknown. Later case accepts 100 mm on both curved/straight partial sides and observes one Undo/Redo plus document reopen. Exact curve parameters, reversal, ranges, errors and cancellation remain unmeasured.",
+      "case_ids": [
+        "REF-SEW-002-PAIR-002"
+      ]
     },
     {
       "id": "MDUI-0742C79A38B8",
@@ -8508,7 +8519,7 @@
       ],
       "kind": "AXButton",
       "presence_status": "observed",
-      "behavior_status": "first_side_100_mm_preview",
+      "behavior_status": "bounded_paired_100_mm_history_document_reopen",
       "accepted_range": null,
       "error_behavior": null,
       "value": null,
@@ -8516,9 +8527,14 @@
       "enabled": null,
       "evidence_ids": [
         "CUA-FREE-SEWING-LENGTH-100-20261114",
-        "ev_0e33a8c22086b3593a86bbb94e07a5147d1bdb8bf9f36013b1d7fea42abc4cef"
+        "ev_0e33a8c22086b3593a86bbb94e07a5147d1bdb8bf9f36013b1d7fea42abc4cef",
+        "ev_4dc0363563aea0b35e5eb08a75ba7e4482f48451d8ef3c07bc7db3a0dbdbbfc7",
+        "ev_ee12dda8bc7aab2f76f860f310f5116a31725c7709df9870d0516d102c63e632"
       ],
-      "note": "Confirmed first-side 100 mm preview only; no completed two-sided seam claim."
+      "note": "Confirmed first-side 100 mm preview only; no completed two-sided seam claim. Later case accepts 100 mm on both curved/straight partial sides and observes one Undo/Redo plus document reopen. Exact curve parameters, reversal, ranges, errors and cancellation remain unmeasured.",
+      "case_ids": [
+        "REF-SEW-002-PAIR-002"
+      ]
     },
     {
       "id": "MDUI-888575DC5612",
@@ -9215,6 +9231,407 @@
       ],
       "note": "Unlabeled header action; visible icon presence only, effect unexecuted.",
       "reviewer_descriptor": true
+    },
+    {
+      "id": "MDUI-2BE8734C0A80",
+      "parent_path": [],
+      "path": [
+        "Open Project"
+      ],
+      "kind": "dialog",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Observed modal title; this original input opened with default/current options accepted unchanged."
+    },
+    {
+      "id": "MDUI-636BD67CDCDE",
+      "parent_path": [
+        "Open Project"
+      ],
+      "path": [
+        "Open Project",
+        "Load Type"
+      ],
+      "kind": "section label",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Load Type",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ]
+    },
+    {
+      "id": "MDUI-0BE6334C60EA",
+      "parent_path": [
+        "Open Project",
+        "Load Type"
+      ],
+      "path": [
+        "Open Project",
+        "Load Type",
+        "Open"
+      ],
+      "kind": "radio button",
+      "presence_status": "observed",
+      "behavior_status": "bounded_original_open_with_current_options",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Current selected mode accepted through OK; mode switch and alternative mode behavior untested."
+    },
+    {
+      "id": "MDUI-502DB0FBAC6A",
+      "parent_path": [
+        "Open Project",
+        "Load Type"
+      ],
+      "path": [
+        "Open Project",
+        "Load Type",
+        "Add"
+      ],
+      "kind": "radio button",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ]
+    },
+    {
+      "id": "MDUI-3B4B356700AE",
+      "parent_path": [
+        "Open Project"
+      ],
+      "path": [
+        "Open Project",
+        "Content"
+      ],
+      "kind": "section label",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Content",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ]
+    },
+    {
+      "id": "MDUI-961D6E2B1D93",
+      "parent_path": [
+        "Open Project",
+        "Content"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Object"
+      ],
+      "kind": "section label",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Object",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ]
+    },
+    {
+      "id": "MDUI-061A7168A10B",
+      "parent_path": [
+        "Open Project",
+        "Content",
+        "Object"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Object",
+        "Garment"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "bounded_checked_option_accepted_unchanged",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Checked at this original input open; toggle behavior untested."
+    },
+    {
+      "id": "MDUI-4EB0FA9F44DD",
+      "parent_path": [
+        "Open Project",
+        "Content",
+        "Object"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Object",
+        "Avatar"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Gray/unchecked in this input-specific modal. No activation or alternative-content test; AX enabled flag not retained.",
+      "visually_disabled": true
+    },
+    {
+      "id": "MDUI-6C6EC7004592",
+      "parent_path": [
+        "Open Project",
+        "Content",
+        "Object"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Object",
+        "Scene and Props"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Gray/unchecked in this input-specific modal. No activation or alternative-content test; AX enabled flag not retained.",
+      "visually_disabled": true
+    },
+    {
+      "id": "MDUI-10DCD4DBFAD1",
+      "parent_path": [
+        "Open Project",
+        "Content",
+        "Object"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Object",
+        "3D State"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Gray/unchecked in this input-specific modal. No activation or alternative-content test; AX enabled flag not retained.",
+      "visually_disabled": true
+    },
+    {
+      "id": "MDUI-66D1223C6B2C",
+      "parent_path": [
+        "Open Project",
+        "Content"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Environment"
+      ],
+      "kind": "section label",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": "Environment",
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ]
+    },
+    {
+      "id": "MDUI-602971BED059",
+      "parent_path": [
+        "Open Project",
+        "Content",
+        "Environment"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Environment",
+        "Custom View"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 0,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Gray/unchecked in this input-specific modal. AX enabled flag not retained; activation untested.",
+      "visually_disabled": true
+    },
+    {
+      "id": "MDUI-5DFC65C2921C",
+      "parent_path": [
+        "Open Project",
+        "Content",
+        "Environment"
+      ],
+      "path": [
+        "Open Project",
+        "Content",
+        "Environment",
+        "Display Settings"
+      ],
+      "kind": "checkbox",
+      "presence_status": "observed",
+      "behavior_status": "bounded_checked_option_accepted_unchanged",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": 1,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Checked at this original input open; toggle behavior untested."
+    },
+    {
+      "id": "MDUI-8DD62DEE8D91",
+      "parent_path": [
+        "Open Project"
+      ],
+      "path": [
+        "Open Project",
+        "Reset"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ]
+    },
+    {
+      "id": "MDUI-8CB1D51E5992",
+      "parent_path": [
+        "Open Project"
+      ],
+      "path": [
+        "Open Project",
+        "OK"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "bounded_original_open_with_current_options",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Accepted the observed Open/Garment/Display Settings configuration; original two-panel workspace reached."
+    },
+    {
+      "id": "MDUI-C16630CE051D",
+      "parent_path": [
+        "Open Project"
+      ],
+      "path": [
+        "Open Project",
+        "Cancel"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ]
+    },
+    {
+      "id": "MDUI-8060A3ACDDD6",
+      "parent_path": [
+        "Open Project"
+      ],
+      "path": [
+        "Open Project",
+        "Close"
+      ],
+      "kind": "button",
+      "presence_status": "observed",
+      "behavior_status": "not_executed",
+      "accepted_range": null,
+      "error_behavior": null,
+      "value": null,
+      "unit": null,
+      "enabled": null,
+      "evidence_ids": [
+        "CUA-FREE002-OPEN-PROJECT-OPTIONS"
+      ],
+      "note": "Visible unlabeled X control; close action unexecuted.",
+      "reviewer_descriptor": true
     }
   ],
   "observation_sources": [
@@ -9817,6 +10234,81 @@
       "events_posted": null,
       "partial_input_possible": true,
       "privacy": "Complete pointer requests and raw records remain private."
+    },
+    {
+      "id": "ev_4dc0363563aea0b35e5eb08a75ba7e4482f48451d8ef3c07bc7db3a0dbdbbfc7",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "348f4be37f7e888fe71743b0cc9c2b41d7f76045d8c4f97efeff0bccc2a23b2c",
+      "started_at": "2026-11-14T07:22:31.043437+00:00",
+      "completed_at": "2026-11-14T07:22:38.772497+00:00",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "3e3918f539cc716bb3eb6fbbc4a534a4b9ec373d945c11d1b9d9066cd7fd6125",
+      "privacy": "Complete commercial/account records and screenshots remain private."
+    },
+    {
+      "id": "ev_ee12dda8bc7aab2f76f860f310f5116a31725c7709df9870d0516d102c63e632",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "387b052a19cec524bb1abaaf01863f5870422f94a1708bbfab7ceb19f050ff0a",
+      "started_at": "2026-11-14T07:33:13.106723+00:00",
+      "completed_at": "2026-11-14T07:33:20.650398+00:00",
+      "nodes": 139,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [41, 4]: AXError -25202",
+        "AX role unavailable at path [41, 4]: AXError -25202",
+        "AX title unavailable at path [41, 4]: AXError -25202",
+        "AX value unavailable at path [41, 4]: AXError -25202",
+        "AX child count unavailable at path [41, 4]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "52b17d8d9350af62150c79b3739f3804260b0e467150dba9b5255043a6582426",
+      "privacy": "Complete commercial/account records and screenshots remain private."
+    },
+    {
+      "id": "CUA-FREE002-FIRST-LENGTH-INITIAL",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "94977a5898864d4d7a3f7d19a4e71b388973f5280f9b8bcf490955e78c64cff0",
+      "observed_at": "2026-11-14T07:17:57.322Z",
+      "privacy": "Complete commercial/account record and screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE002-FIRST-LENGTH-100",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "581c2db539c3f4cdfc82b304b451c4fc16aef27f452ed7689513c31eada9ef49",
+      "observed_at": "2026-11-14T07:18:26.798Z",
+      "privacy": "Complete commercial/account record and screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE002-SECOND-LENGTH-INITIAL",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "3538fb58d9f3e670a1eec900e2b7a9ea8c98a1d69901c2c733b670376dc1ac5b",
+      "observed_at": "2026-11-14T07:20:52.182Z",
+      "privacy": "Complete commercial/account record and screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE002-SECOND-LENGTH-100",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "4fc958c66e640d09db23eff528e70770100cc5e8b7778cfdde693a00239ad9d7",
+      "observed_at": "2026-11-14T07:22:06.353Z",
+      "privacy": "Complete commercial/account record and screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE002-OPEN-PROJECT-OPTIONS",
+      "provider": "native AX transition and private screenshot",
+      "observed_at": "2026-11-14T07:07:01.272Z",
+      "retained_record_sha256": "a321e8727be4eacda1baf6ee0b81151b1383481a88f929dca3eac1381403bd13",
+      "context": "Opening original unsewn two-panel checkpoint; Open/Garment/Display Settings accepted unchanged.",
+      "capture_scope": "Private modal screenshot and AX transition; values/visual availability only except Open and OK route.",
+      "privacy": "Raw UI remains private."
     }
   ],
   "path_label_policy": "Paths group observed controls for indexing. Reviewer descriptors identify some unlabeled radio groups or repeated axis controls; their visible values/options are literal observations. A descriptor does not establish a printed UI label."

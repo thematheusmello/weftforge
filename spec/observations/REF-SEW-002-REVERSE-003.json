@@ -1,0 +1,348 @@
+{
+  "schema_version": 1,
+  "case_id": "REF-SEW-002-REVERSE-003",
+  "product_build": "2026.1.237 (r58920)",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "baseline_status": "provisional_unfrozen",
+  "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "status": "bounded_explicit_reverse_history_and_document_reopen_observed",
+  "original_input_case": "REF-SEW-002-PAIR-002",
+  "numeric_locale": "unknown",
+  "declared_target": "One Reverse Sewing on the selected original 100/100 partial curve/straight pair, one Undo/Redo and document save/close/open.",
+  "tolerance": "Literal 100.0 side labels and categorical connection of the same visible endpoint landmarks. No quantified world-coordinate, continuous arc-length or hidden parameter tolerance.",
+  "preconditions": {
+    "selected_pair": "same generated name retained privately",
+    "tool": "Edit Sewing",
+    "simulation": false,
+    "saved_new_working_copy_before_change": true
+  },
+  "entry": {
+    "menu": "Edit > Context Menu > Sewing > Reverse Sewing",
+    "command_executed_once": true,
+    "direct_canvas_context_menu_opened": false,
+    "shortcut": "unobserved"
+  },
+  "endpoint_names": {
+    "A0": "original curve interval left boundary endpoint",
+    "A1": "original curve interval interior endpoint",
+    "B0": "original second side right interior start",
+    "B1": "original second side left interior end",
+    "names_are_reviewer_descriptors": true
+  },
+  "before": {
+    "side_labels": [
+      "100.0",
+      "100.0"
+    ],
+    "guides": [
+      "A0-B0",
+      "A1-B1"
+    ],
+    "guides_cross_in_this_layout": true
+  },
+  "after": {
+    "side_labels": [
+      "100.0",
+      "100.0"
+    ],
+    "guides": [
+      "A0-B1",
+      "A1-B0"
+    ],
+    "guides_cross_in_this_layout": false,
+    "visible_boundary_intervals_unchanged": true,
+    "same_seam_name": true,
+    "numeric_orientation_flag": "unobserved",
+    "physical_twist_or_solver_effect": "not measured"
+  },
+  "seam_current_values": {
+    "Turned": false,
+    "Fold Strength": {
+      "value": 5,
+      "unit": "not printed"
+    },
+    "Fold Angle": {
+      "value": 180,
+      "unit": "not printed"
+    },
+    "Tension": false,
+    "Set Sublayer": false,
+    "Topstitch": false,
+    "Puckering": false,
+    "3D Seamline": "Plain Seam",
+    "Normal Map Intensity": {
+      "value": 10,
+      "unit": "not printed"
+    },
+    "Normal Map Thickness": {
+      "value": 1.5,
+      "unit": "mm"
+    }
+  },
+  "seam_property_values_changed": false,
+  "history": {
+    "one_undo": "Crossed A0-B0/A1-B1 guides return; selected pair, both 100.0 labels and property values remain.",
+    "one_redo": "Uncrossed A0-B1/A1-B0 guides return; selected pair, both 100.0 labels and property values remain."
+  },
+  "persistence": {
+    "separate_result_saved": true,
+    "new_project_empty_observed": true,
+    "recent_document_reopen": true,
+    "reselection": "Sewing > Edit Sewing then Edit > Select All",
+    "reversed_guides_and_both_labels_preserved": true,
+    "same_seam_name_and_settings": true,
+    "result_hash_unchanged_after_reopen": true,
+    "all_five_pinned_native_hashes_unchanged": true,
+    "process_restart": false,
+    "warning": "Same low-space warning observed before both Save As actions and twice during reopen. Distinct modal instances versus repeated handling remain unknown; no Open Project options modal observed during result reopen."
+  },
+  "native_files": [
+    {
+      "name": "reference-sewing-curved-unsewn.zprj",
+      "bytes": 62298,
+      "sha256": "6d2280542cdccb84c09f46ef709c4c20e3152a01cf1fc42e775aff7b10edcffd",
+      "publication": "private native container; internal format not inspected"
+    },
+    {
+      "name": "reference-whole-edge-sewn.zprj",
+      "bytes": 85418,
+      "sha256": "43eba999dd571df11e7a71e8c26251a66b6327b1ed4d43e5d8fdeaea8e1b9b02",
+      "publication": "private native container; internal format not inspected"
+    },
+    {
+      "name": "reference-free-partial-sewn-002.zprj",
+      "bytes": 101039,
+      "sha256": "38a723294c8f58160da1577b29b775b63b2a0daeab16dd337e57b618fe1b63f3",
+      "publication": "private native container; internal format not inspected"
+    },
+    {
+      "name": "reference-free-reverse-working-003.zprj",
+      "bytes": 100791,
+      "sha256": "d3d887af2b79f63176ef6de9cb80bdee7e899745d223910724c333830184024e",
+      "publication": "private native container; internal format not inspected"
+    },
+    {
+      "name": "reference-free-reversed-003.zprj",
+      "bytes": 100554,
+      "sha256": "0afcfe4281526e2250bef6b6d945bdc7e48f388b8236c765623bafb17702ba8d",
+      "publication": "private native container; internal format not inspected"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_7ac3349f5487519cf1f3a040ad62689229663199b78a6974e735980e5ddf5575",
+      "key": "before",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "578a949bcfb0c014e002ca649bb72e0e55dc2b4d2a02f16017a65cb3ef43db5e",
+      "started_at": "2026-11-14T07:40:36.078748+00:00",
+      "completed_at": "2026-11-14T07:40:43.653381+00:00",
+      "nodes": 139,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [41, 4]: AXError -25202",
+        "AX role unavailable at path [41, 4]: AXError -25202",
+        "AX title unavailable at path [41, 4]: AXError -25202",
+        "AX value unavailable at path [41, 4]: AXError -25202",
+        "AX child count unavailable at path [41, 4]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "e83e7bfd2db90ca760c41f5b93fa288a4aa4d921c77e5902766c645c9757f538",
+      "privacy": "Raw commercial/account record and screenshot retained privately."
+    },
+    {
+      "id": "ev_9be8bbe9f30b99d514df09a9ef5fe6dee13f98323b0ae768a232264e8de48900",
+      "key": "reversed",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "1b1b6c47d69ee6d5f8ccc763d29e961e9e01e846f5d03630780318b831c5649e",
+      "started_at": "2026-11-14T07:42:11.548561+00:00",
+      "completed_at": "2026-11-14T07:42:19.388212+00:00",
+      "nodes": 139,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [41, 4]: AXError -25202",
+        "AX role unavailable at path [41, 4]: AXError -25202",
+        "AX title unavailable at path [41, 4]: AXError -25202",
+        "AX value unavailable at path [41, 4]: AXError -25202",
+        "AX child count unavailable at path [41, 4]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "c88f48e1723ed34d0355abfb363b2cb26ad8b9c630ba46bf1744a2c2f83ae9c3",
+      "privacy": "Raw commercial/account record and screenshot retained privately."
+    },
+    {
+      "id": "ev_3f236b3ff2b13d0ee86e6240748ad2a53d05a93c3243d29795f3cb31413cf26a",
+      "key": "undo",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "ef612e6c32fe03edb8a3d4074f5e3f6a08fe127604e03a91b84a5951b83995a2",
+      "started_at": "2026-11-14T07:42:49.407200+00:00",
+      "completed_at": "2026-11-14T07:42:56.774370+00:00",
+      "nodes": 139,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [41, 4]: AXError -25202",
+        "AX role unavailable at path [41, 4]: AXError -25202",
+        "AX title unavailable at path [41, 4]: AXError -25202",
+        "AX value unavailable at path [41, 4]: AXError -25202",
+        "AX child count unavailable at path [41, 4]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "8f81ea373fb481b20d1661cfdad3960aa933ccb3b738c049e0a76af302eb66f3",
+      "privacy": "Raw commercial/account record and screenshot retained privately."
+    },
+    {
+      "id": "ev_ef65ab2cdc160917b64930651487d9aac5dc35f029cbb8206addfe054385af3e",
+      "key": "redo",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "7ec70053e32a9f009020abca2c916b941d40f3f246299ad4ec5d437a488932af",
+      "started_at": "2026-11-14T07:43:20.618784+00:00",
+      "completed_at": "2026-11-14T07:43:27.956349+00:00",
+      "nodes": 139,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [41, 4]: AXError -25202",
+        "AX role unavailable at path [41, 4]: AXError -25202",
+        "AX title unavailable at path [41, 4]: AXError -25202",
+        "AX value unavailable at path [41, 4]: AXError -25202",
+        "AX child count unavailable at path [41, 4]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "07dcd0c792fe624236845cf935b71e01c60bc40a0606564aef562dbb591f88d3",
+      "privacy": "Raw commercial/account record and screenshot retained privately."
+    },
+    {
+      "id": "ev_cd17627a53747a24fcbfb1a1a9fa48dfcdbbbc62a8c62781f27046136ef85c52",
+      "key": "saved",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "63c3ab25db47d2b7be104b7bab55f3c75241e473b3c7b678618ae97c35ae09fd",
+      "started_at": "2026-11-14T07:44:26.794316+00:00",
+      "completed_at": "2026-11-14T07:44:34.156823+00:00",
+      "nodes": 139,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [41, 4]: AXError -25202",
+        "AX role unavailable at path [41, 4]: AXError -25202",
+        "AX title unavailable at path [41, 4]: AXError -25202",
+        "AX value unavailable at path [41, 4]: AXError -25202",
+        "AX child count unavailable at path [41, 4]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "0d3bd9bfd110b47a009ead82a9c15c07401540df37e19b68c38d6ce20bc23a4a",
+      "privacy": "Raw commercial/account record and screenshot retained privately."
+    },
+    {
+      "id": "ev_b7fed2b95cd76e8694666113a5a753a2e081791399f089001fbd183e86ad393c",
+      "key": "closed",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "8f1dc1ccf8b8b715cd1c8433362a3397345923fc4b46f6f795d178442e672562",
+      "started_at": "2026-11-14T07:44:52.987939+00:00",
+      "completed_at": "2026-11-14T07:45:00.666539+00:00",
+      "nodes": 95,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "c9b55a0fbe695cac740b97773ea99253b59818c7145ae08fc3dc3c5b7a61aef3",
+      "privacy": "Raw commercial/account record and screenshot retained privately."
+    },
+    {
+      "id": "ev_43eafac4eeb88048db8360bfdedb6bffb47aba7c8db83e611cae041ee0365069",
+      "key": "reselected",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "080cce1093e53dcc939f0373a95e3272c605b0a1469d7ca59a111f46d8123206",
+      "started_at": "2026-11-14T07:46:21.980462+00:00",
+      "completed_at": "2026-11-14T07:46:30.304838+00:00",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "0d3bd9bfd110b47a009ead82a9c15c07401540df37e19b68c38d6ce20bc23a4a",
+      "privacy": "Raw commercial/account record and screenshot retained privately."
+    },
+    {
+      "id": "CUA-REVERSE003-COMMAND-AFTER",
+      "key": "native_after",
+      "provider": "native AX transition and private screenshot",
+      "observed_at": "2026-11-14T07:41:50.333Z",
+      "retained_record_sha256": "ff6d1637b5e20a77c76c8f408f3b61b5456f805c93c4e46e5af206851603e1f5",
+      "privacy": "Raw commercial/account record and screenshot retained privately."
+    },
+    {
+      "id": "CUA-REVERSE003-WORKING-WARNING",
+      "key": "working_warning",
+      "provider": "native AX transition and private screenshot",
+      "observed_at": "2026-11-14T07:40:06.741Z",
+      "retained_record_sha256": "019ebe102fcfd2a01c5021470b86a46e391c82f851c37afb6d02539660a304e2",
+      "privacy": "Raw commercial/account record and screenshot retained privately."
+    },
+    {
+      "id": "CUA-REVERSE003-RESULT-WARNING",
+      "key": "result_warning",
+      "provider": "native AX transition and private screenshot",
+      "observed_at": "2026-11-14T07:43:53.403Z",
+      "retained_record_sha256": "729e29b5b5a545effc7df9b4b57e6397570af9a37aadb13d8f09420891558efe",
+      "privacy": "Raw commercial/account record and screenshot retained privately."
+    },
+    {
+      "id": "CUA-REVERSE003-REOPEN-FIRST-WARNING",
+      "key": "reopen_warning_1",
+      "provider": "native AX transition and private screenshot",
+      "observed_at": "2026-11-14T07:45:27.020Z",
+      "retained_record_sha256": "53b2900aeba6f154729f787fca42b3184e16b838e7dfe56ccd239960a8a1d841",
+      "privacy": "Raw commercial/account record and screenshot retained privately."
+    },
+    {
+      "id": "CUA-REVERSE003-REOPEN-SECOND-WARNING",
+      "key": "reopen_warning_2",
+      "provider": "native AX transition and private screenshot",
+      "observed_at": "2026-11-14T07:45:44.382Z",
+      "retained_record_sha256": "3526539282ea40a5625554b123a906b184ceda99c62df58247e0c63c75beecce",
+      "privacy": "Raw commercial/account record and screenshot retained privately."
+    },
+    {
+      "id": "PLAN-REVERSE003-20261114",
+      "key": "plan",
+      "provider": "predeclared original-fixture scenario",
+      "retained_record_sha256": "e73842240332efc24f27bc516f6af9dc7761917a58efb71fa4ef537f8f4259a4",
+      "context": "Categorical endpoint-guide switch, both literal side labels preserved, one Undo/Redo, separate save and document reopen; no simulation/arc-length claim."
+    }
+  ],
+  "capture_limitations": "Before/reversed/Undo/Redo/saved each have 139 nodes, truncated true and five AX -25202 failures at unrelated path [41,4]. Final reopened selected capture has 142 nodes, no truncation/gaps. Target seam field sequences agree across all selected stages.",
+  "input_qualification": "This case uses normal exposed AX menu commands only; no native pointer fallback, security/account or preference action.",
+  "independent_curve_or_seam_geometry_measurement": "not_run",
+  "simulation_executed": false,
+  "counterexamples": [
+    "Only selection color changes while endpoint connections stay the same.",
+    "Either visible interval shifts or either 100.0 label changes.",
+    "One Undo fails to restore the original connection pattern."
+  ],
+  "open_questions": [
+    "Continuous arc-length correspondence and exact endpoint/control-point authoring coordinates.",
+    "Other reversal entry points, multiple selection, unequal lengths and easing.",
+    "Limits, invalid input, cancellation, remeshing attachment and simulation effects.",
+    "Process restart of this result and broader interoperability."
+  ],
+  "weftforge_comparison": "not_run",
+  "verified_parity_claimed": false,
+  "complete_broad_feature_contracts": 0
+}

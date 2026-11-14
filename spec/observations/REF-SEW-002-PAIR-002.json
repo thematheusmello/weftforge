@@ -1,0 +1,504 @@
+{
+  "schema_version": 1,
+  "case_id": "REF-SEW-002-PAIR-002",
+  "product_build": "2026.1.237 (r58920)",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "baseline_revision": 1,
+  "baseline_status": "provisional_unfrozen",
+  "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "status": "bounded_paired_partial_history_and_document_reopen_observed",
+  "predeclared_target": "100 mm on the original upper curved side and 100 mm leftward from an interior point of the other panel top straight side.",
+  "predeclared_tolerance": "Literal Length 100 with printed mm in both dialogs; literal 100.0 side labels under separately observed Millimeter configuration. No sub-display geometry tolerance.",
+  "numeric_locale": "unknown",
+  "original_geometry": {
+    "panels": 2,
+    "declared_panel_width_mm": 200,
+    "declared_panel_height_mm": 300,
+    "upper_bottom_edge": "original curved boundary, prior displayed full-edge length 206.9 mm",
+    "exact_curve_controls": "unmeasured",
+    "second_side_start_authoring_coordinate": "unmeasured",
+    "simulation_executed": false
+  },
+  "entry": {
+    "menu": "Sewing > Free Sewing",
+    "displayed_shortcut_hint": "M",
+    "shortcut_executed": false,
+    "both_toolbar_labels_checked": true
+  },
+  "first_side": {
+    "start": "upper panel curved boundary left endpoint A0",
+    "pointer_dependent_initial_length_mm": 8.0,
+    "entered_length_mm": 100,
+    "numeric_commit": "replace, Tab, observe, OK",
+    "accepted_preview_label": "100.0",
+    "difference_text": "100.0 (100.0 / 0.0)",
+    "end": "interior curve endpoint A1"
+  },
+  "second_side": {
+    "start": "interior point B0 in right half of other panel top straight boundary",
+    "chosen_direction": "leftward toward interior B1",
+    "pointer_dependent_initial_length_mm": 100.0,
+    "explicitly_reentered_length_mm": 100,
+    "numeric_commit": "replace, Tab, observe, OK",
+    "accepted_pair": true
+  },
+  "observed_pair": {
+    "completed_pair_visible": true,
+    "side_labels": [
+      "100.0",
+      "100.0"
+    ],
+    "canvas_label_unit_basis": "Millimeter configuration observed separately; no unit printed beside canvas labels.",
+    "guides": "A0 connects to B0 and A1 connects to B1; dashed guides cross in this fixed 2D layout.",
+    "endpoint_labels": "Reviewer names for visible endpoints, not printed UI names.",
+    "numeric_orientation_flag": "unobserved",
+    "reverse_sewing_executed": false,
+    "generated_seam_name": "retained privately; equal after Redo and reopen",
+    "physical_twist_or_solver_implication": "not measured"
+  },
+  "seam_current_values": {
+    "Turned": false,
+    "Fold Strength": {
+      "value": 5,
+      "unit": "not printed"
+    },
+    "Fold Angle": {
+      "value": 180,
+      "unit": "not printed"
+    },
+    "Tension": false,
+    "Set Sublayer": false,
+    "Topstitch": false,
+    "Puckering": false,
+    "3D Seamline": "Plain Seam",
+    "Normal Map Intensity": {
+      "value": 10,
+      "unit": "not printed"
+    },
+    "Normal Map Thickness": {
+      "value": 1.5,
+      "unit": "mm"
+    }
+  },
+  "seam_property_values_changed": false,
+  "history": {
+    "one_undo": "Both paired traces/guides and selected-seam panel disappear; both panel outlines remain.",
+    "one_redo": "Same named seam/settings, both 100.0 labels and crossed guides return."
+  },
+  "persistence": {
+    "saved_new_working_copy_before_edits": true,
+    "saved_separate_result": true,
+    "document_closed_to_empty": true,
+    "document_reopened": true,
+    "reselection": "Sewing > Edit Sewing then Edit > Select All",
+    "same_name_settings_labels_and_guides_observed": true,
+    "native_hash_unchanged_after_reopen": true,
+    "original_input_and_whole_result_hashes_unchanged": true,
+    "process_restart_executed": false,
+    "warnings": "Low-space warning observed before Save As and twice during result reopen. Each screenshot retains the warning; distinct instances versus repeated handling are not established.",
+    "open_project_options": "Observed on opening the original unsewn input: Open selected, Garment and Display Settings checked. No options modal observed while reopening this saved result."
+  },
+  "input_qualification": {
+    "driver_source_sha256": "df39282ebcf11d25de180a33e31aa0f295d23f3521ba4d299ea7c7f357d5c812",
+    "driver_binary_sha256": "4d945a09b6a45b41cc2de8799206a01a76aad235d830740708078985286c97ed",
+    "policy_changed": false,
+    "cua_canvas_attempt": "-10005 noWindowsAvailable; unchanged before/after REA evidence; reviewed extract retained privately.",
+    "occluded_right_click_checks": "Three checks refused foreign AX owner, zero events; foreign UI untouched.",
+    "four_pointer_runs": "Each reported three events and had a fresh observed result; no unacknowledged gesture repeated."
+  },
+  "native_files": [
+    {
+      "name": "reference-sewing-curved-unsewn.zprj",
+      "role": "unchanged original unsewn input",
+      "bytes": 62298,
+      "sha256": "6d2280542cdccb84c09f46ef709c4c20e3152a01cf1fc42e775aff7b10edcffd",
+      "publication": "private native container; internal format not inspected"
+    },
+    {
+      "name": "reference-whole-edge-sewn.zprj",
+      "role": "unchanged separate whole-edge result",
+      "bytes": 85418,
+      "sha256": "43eba999dd571df11e7a71e8c26251a66b6327b1ed4d43e5d8fdeaea8e1b9b02",
+      "publication": "private native container; internal format not inspected"
+    },
+    {
+      "name": "reference-free-partial-working-002.zprj",
+      "role": "protected new copy saved before partial input",
+      "bytes": 62410,
+      "sha256": "58573b0e72ee87f88d0700909af24cfea2b9d117363444817ac571a7f45d68c2",
+      "publication": "private native container; internal format not inspected"
+    },
+    {
+      "name": "reference-free-partial-sewn-002.zprj",
+      "role": "completed partial result, saved/closed/reopened",
+      "bytes": 101039,
+      "sha256": "38a723294c8f58160da1577b29b775b63b2a0daeab16dd337e57b618fe1b63f3",
+      "publication": "private native container; internal format not inspected"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_6c56c3a6f1c32d06db85747af764c8e632c3e158fb95eff7810f8162295099f2",
+      "key": "unsewn_opened",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "2e4986dbedafcf386339823d7f67ac5624475c1a83bc891b3331d2c32d63dfdc",
+      "started_at": "2026-11-14T07:07:53.495613+00:00",
+      "completed_at": "2026-11-14T07:08:00.961606+00:00",
+      "nodes": 95,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "7417d3d1ba56d8a4ca673c18c60938edf89a293a927d15d5a0f3d1bd5d70e4d1",
+      "privacy": "Complete commercial/account records and screenshots remain private."
+    },
+    {
+      "id": "ev_a7e13c81fb0b7f63dd221726eaf8f404f42c687ff0e5ac68a11183e1420965e0",
+      "key": "before",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "7082cb2a01e16f9400a600a946e06275a41fcca922c66935fe0e978f00674a76",
+      "started_at": "2026-11-14T07:11:38.381632+00:00",
+      "completed_at": "2026-11-14T07:11:45.851248+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "a8bce0df92aa2b02ea696798f50f836c001b995f08344086a7adc159c5392bc4",
+      "privacy": "Complete commercial/account records and screenshots remain private."
+    },
+    {
+      "id": "ev_a7e13c81fb0b7f63dd221726eaf8f404f42c687ff0e5ac68a11183e1420965e0",
+      "key": "after_cua_refusal",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "7082cb2a01e16f9400a600a946e06275a41fcca922c66935fe0e978f00674a76",
+      "started_at": "2026-11-14T07:12:47.393090+00:00",
+      "completed_at": "2026-11-14T07:12:55.172898+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "a8bce0df92aa2b02ea696798f50f836c001b995f08344086a7adc159c5392bc4",
+      "privacy": "Complete commercial/account records and screenshots remain private."
+    },
+    {
+      "id": "ev_805b111908ba9c028e971f55e51f429b1d9aaa9cd6cf947440819fefa0271af6",
+      "key": "first_start",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "a228eed001c39d7ba3c00819e513b29a283471f720fb0329a2476212890bc8a9",
+      "started_at": "2026-11-14T07:13:10.458675+00:00",
+      "completed_at": "2026-11-14T07:13:17.824787+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "3c3d8cb4ecd0592dee50fb31cab20bd78337079ff88cfffd3950c7d62e3e317a",
+      "privacy": "Complete commercial/account records and screenshots remain private."
+    },
+    {
+      "id": "ev_8a8a71f5ecc06a23cb6aaf07e7124a5bf94c892dbaad5aaec1ec2c99869c550a",
+      "key": "first_100",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "f2f6b453b18250487debdff594784b01941c9e403478c833137bf27fd25d5efc",
+      "started_at": "2026-11-14T07:18:46.385463+00:00",
+      "completed_at": "2026-11-14T07:18:53.709618+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "f53b080fe2e61ec7df5773b61d7908cf1b8ed0a7094f3fea03fd296e37430d28",
+      "privacy": "Complete commercial/account records and screenshots remain private."
+    },
+    {
+      "id": "ev_1fae79dc906406d631a784f05e3b62e15f33508eeb93fd33a0ebb217ae039f9b",
+      "key": "second_interior_start",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "9cfd853a1f46195bd2054acac4b384bb921a67c2c92d7a3f4762fe50b4f601a5",
+      "started_at": "2026-11-14T07:19:45.574505+00:00",
+      "completed_at": "2026-11-14T07:19:53.196382+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "10d19e6c12f5156fe05c36152b4c742d2769bc354d55e4b7b7b394d26f737d5e",
+      "privacy": "Complete commercial/account records and screenshots remain private."
+    },
+    {
+      "id": "ev_4dc0363563aea0b35e5eb08a75ba7e4482f48451d8ef3c07bc7db3a0dbdbbfc7",
+      "key": "created",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "348f4be37f7e888fe71743b0cc9c2b41d7f76045d8c4f97efeff0bccc2a23b2c",
+      "started_at": "2026-11-14T07:22:31.043437+00:00",
+      "completed_at": "2026-11-14T07:22:38.772497+00:00",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "3e3918f539cc716bb3eb6fbbc4a534a4b9ec373d945c11d1b9d9066cd7fd6125",
+      "privacy": "Complete commercial/account records and screenshots remain private."
+    },
+    {
+      "id": "ev_237cc2c4a2fcc775b13301449f642aa75993b0ed5cfae84fb9938c252e260f7e",
+      "key": "undo",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "392ef850a76c9ef9d8dac0009815729b1914d69b6205a7b85ae496b73f559dca",
+      "started_at": "2026-11-14T07:25:57.991983+00:00",
+      "completed_at": "2026-11-14T07:26:05.717120+00:00",
+      "nodes": 92,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "8e3988c61ec01955132c985751be9fc865e0c15443846607cbe2da64cada43bd",
+      "privacy": "Complete commercial/account records and screenshots remain private."
+    },
+    {
+      "id": "ev_bd944b06067864732f9bf8f1d556409ca7767aa455623f76aeecd3bcec1f7542",
+      "key": "redo",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "f1b566beebcbdc22e017625db4e14186b3be9be6adce58a230959720d57b3995",
+      "started_at": "2026-11-14T07:29:59.803515+00:00",
+      "completed_at": "2026-11-14T07:30:08.017165+00:00",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "ad3aaaa97393fd63878b31f0eb577115d48d0e1e52bd1df4ce57e81eda3cfcae",
+      "privacy": "Complete commercial/account records and screenshots remain private."
+    },
+    {
+      "id": "ev_b10b0d39f9ec174059cc5bd5bd3d392197166ce7f53b5c8b3a1c36a858062d10",
+      "key": "saved",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "94f3c030649159a97893b16b3e8c3ecb90d0dbb7df64233b207474d17f36dda3",
+      "started_at": "2026-11-14T07:31:22.281312+00:00",
+      "completed_at": "2026-11-14T07:31:29.761949+00:00",
+      "nodes": 142,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "78eec8ef430e20fe634c73763582f5d020bbd80e3dd8e3596d4b6e568cbfea73",
+      "privacy": "Complete commercial/account records and screenshots remain private."
+    },
+    {
+      "id": "ev_dd36190631c5f79907e99f70bb20275d431c57bfa7227c5dd759b1580cced718",
+      "key": "closed",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "23dfa6ea79a076f2965a077cbbce64efb369a0a00a41421f2d6f5b666c9ac831",
+      "started_at": "2026-11-14T07:31:50.768238+00:00",
+      "completed_at": "2026-11-14T07:31:58.418201+00:00",
+      "nodes": 95,
+      "truncated": false,
+      "gaps": [],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "155d8085906cd11be30d666de3d8df09be0e2291d0bca1374b6f745f2f410ca0",
+      "privacy": "Complete commercial/account records and screenshots remain private."
+    },
+    {
+      "id": "ev_ee12dda8bc7aab2f76f860f310f5116a31725c7709df9870d0516d102c63e632",
+      "key": "reselected",
+      "provider": "REA 6.9.0 native window observation",
+      "retained_record_sha256": "387b052a19cec524bb1abaaf01863f5870422f94a1708bbfab7ceb19f050ff0a",
+      "started_at": "2026-11-14T07:33:13.106723+00:00",
+      "completed_at": "2026-11-14T07:33:20.650398+00:00",
+      "nodes": 139,
+      "truncated": true,
+      "gaps": [
+        "AX actions unavailable at path [41, 4]: AXError -25202",
+        "AX role unavailable at path [41, 4]: AXError -25202",
+        "AX title unavailable at path [41, 4]: AXError -25202",
+        "AX value unavailable at path [41, 4]: AXError -25202",
+        "AX child count unavailable at path [41, 4]: AXError -25202"
+      ],
+      "image_size_px": [
+        2048,
+        1209
+      ],
+      "original_png_sha256": "52b17d8d9350af62150c79b3739f3804260b0e467150dba9b5255043a6582426",
+      "privacy": "Complete commercial/account records and screenshots remain private."
+    },
+    {
+      "id": "CUA-FREE002-OPEN-PROJECT-OPTIONS",
+      "key": "open_options",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "a321e8727be4eacda1baf6ee0b81151b1383481a88f929dca3eac1381403bd13",
+      "observed_at": "2026-11-14T07:07:01.272Z",
+      "privacy": "Complete commercial/account record and screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE002-FIRST-LENGTH-INITIAL",
+      "key": "first_dialog",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "94977a5898864d4d7a3f7d19a4e71b388973f5280f9b8bcf490955e78c64cff0",
+      "observed_at": "2026-11-14T07:17:57.322Z",
+      "privacy": "Complete commercial/account record and screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE002-FIRST-LENGTH-100",
+      "key": "first_entered",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "581c2db539c3f4cdfc82b304b451c4fc16aef27f452ed7689513c31eada9ef49",
+      "observed_at": "2026-11-14T07:18:26.798Z",
+      "privacy": "Complete commercial/account record and screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE002-SECOND-LENGTH-INITIAL",
+      "key": "second_dialog",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "3538fb58d9f3e670a1eec900e2b7a9ea8c98a1d69901c2c733b670376dc1ac5b",
+      "observed_at": "2026-11-14T07:20:52.182Z",
+      "privacy": "Complete commercial/account record and screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE002-SECOND-LENGTH-100",
+      "key": "second_entered",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "4fc958c66e640d09db23eff528e70770100cc5e8b7778cfdde693a00239ad9d7",
+      "observed_at": "2026-11-14T07:22:06.353Z",
+      "privacy": "Complete commercial/account record and screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE002-SAVE-WARNING",
+      "key": "save_warning",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "33b228bdc000f5c6f8ccbf7b294a21c853b9d5f99066d3d0d46b4208804b0ffd",
+      "observed_at": "2026-11-14T07:30:51.791Z",
+      "privacy": "Complete commercial/account record and screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE002-REOPEN-FIRST-WARNING",
+      "key": "reopen_warning_1",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "b00f113ac6d96dfab7975a068d9f01197300ed88d354673a0d8cb6b930da5310",
+      "observed_at": "2026-11-14T07:32:16.746Z",
+      "privacy": "Complete commercial/account record and screenshot remain private."
+    },
+    {
+      "id": "CUA-FREE002-REOPEN-SECOND-WARNING",
+      "key": "reopen_warning_2",
+      "provider": "native AX transition and private screenshot",
+      "retained_record_sha256": "ff79ec26704b47135d730b688fc9ce60b1fb9cb4f170038f0c1ab8b764b56258",
+      "observed_at": "2026-11-14T07:32:35.258Z",
+      "privacy": "Complete commercial/account record and screenshot remain private."
+    },
+    {
+      "id": "PLAN-FREE002-20261114",
+      "key": "plan",
+      "provider": "predeclared original-fixture scenario",
+      "retained_record_sha256": "82a6f7f2a42e1023566da02c6b9df68b279716ca5646de277de744eae8a83bfe",
+      "context": "100 mm on each side; categorical pairing, one Undo/Redo and document persistence; no simulation or exact arc-length inference."
+    },
+    {
+      "id": "INPUT-FREE002-FIRST-LENGTH-DIALOG-CHECK",
+      "key": "free002-first-length-dialog-check",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "fa49c4ce7b01bbb32a5b3292d70b1a8f0b967017e6a40c194b84b6d63beed0eb",
+      "operation": "check",
+      "privacy": "Full identity/coordinates retained privately.",
+      "events_posted": 0,
+      "refused": "System-wide AX hit belongs to another process"
+    },
+    {
+      "id": "INPUT-FREE002-FIRST-LENGTH-DIALOG-CLEAR-CHECK",
+      "key": "free002-first-length-dialog-clear-check",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "fa49c4ce7b01bbb32a5b3292d70b1a8f0b967017e6a40c194b84b6d63beed0eb",
+      "operation": "check",
+      "privacy": "Full identity/coordinates retained privately.",
+      "events_posted": 0,
+      "refused": "System-wide AX hit belongs to another process"
+    },
+    {
+      "id": "INPUT-FREE002-FIRST-LENGTH-DIALOG-FAR-EDGE-CHECK",
+      "key": "free002-first-length-dialog-far-edge-check",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "fa49c4ce7b01bbb32a5b3292d70b1a8f0b967017e6a40c194b84b6d63beed0eb",
+      "operation": "check",
+      "privacy": "Full identity/coordinates retained privately.",
+      "events_posted": 0,
+      "refused": "System-wide AX hit belongs to another process"
+    },
+    {
+      "id": "INPUT-FREE002-FIRST-POINT-RUN",
+      "key": "free002-first-point-run",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "c0f2a36202fea1ce7f1fff7c949a85da3f5a9acf52aac2922b486870847aa7c6",
+      "operation": "run",
+      "privacy": "Full identity/coordinates retained privately.",
+      "events_posted": 3,
+      "refused": null
+    },
+    {
+      "id": "INPUT-FREE002-FIRST-LENGTH-NEAR-START-RUN",
+      "key": "free002-first-length-near-start-run",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "b851c44aced6deafa92dff1336ef8bc4f327d851b6416245a42a7b11e293e227",
+      "operation": "run",
+      "privacy": "Full identity/coordinates retained privately.",
+      "events_posted": 3,
+      "refused": null
+    },
+    {
+      "id": "INPUT-FREE002-SECOND-START-INTERIOR-RUN",
+      "key": "free002-second-start-interior-run",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "36052b16795e0c16d648d9752a884d8a043921b7dfdbe2cf583b41d523e510c0",
+      "operation": "run",
+      "privacy": "Full identity/coordinates retained privately.",
+      "events_posted": 3,
+      "refused": null
+    },
+    {
+      "id": "INPUT-FREE002-SECOND-LENGTH-DIALOG-RUN",
+      "key": "free002-second-length-dialog-run",
+      "provider": "approved target-guarded public native pointer driver",
+      "retained_record_sha256": "60ec4738e2dc89a70794e01504c247376397c1f9f3ea62305d45705ac3b33e43",
+      "operation": "run",
+      "privacy": "Full identity/coordinates retained privately.",
+      "events_posted": 3,
+      "refused": null
+    }
+  ],
+  "capture_limitations": "Created/Undo/Redo/saved captures are complete and gap-free. Reopened selected capture has 139 nodes, truncated true and five AX -25202 attributes at path [41,4]; screenshot and target seam fields are present.",
+  "independent_curve_or_seam_geometry_measurement": "not_run",
+  "open_questions": [
+    "Explicit Reverse Sewing and its endpoint correspondence.",
+    "Continuous arc length, curve control points and seam endpoint authoring coordinates.",
+    "Unequal lengths/easing, limits, invalid input and cancellation.",
+    "Post-edit attachment, sewn remeshing and separately declared simulation.",
+    "Process restart of this result and broad interoperability."
+  ],
+  "weftforge_comparison": "not_run",
+  "verified_parity_claimed": false,
+  "complete_broad_feature_contracts": 0
+}
