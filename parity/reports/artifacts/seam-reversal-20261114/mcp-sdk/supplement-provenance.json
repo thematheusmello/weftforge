@@ -1,0 +1,150 @@
+{
+  "kind": "public_sdk_reversal_supplement_provenance",
+  "prepared_at": "2026-11-14T11:32:24.617751+00:00",
+  "source_build_commit": "9d30a71bbc2b0e051d9eaddc42b5f3b7dab08bde",
+  "official_sdk_version": "1.28.1",
+  "negotiated_protocol": "2025-11-25",
+  "cli_sha256": "ca49402e497f71a2785bd96a6ef936cb320ffef856acb682824fe66e108fa25a",
+  "cli_byte_identical_to_previous_join_sdk": true,
+  "new_cli_implementation_claimed": false,
+  "status": "passed_legacy_sdk_reversal_and_native_comparison",
+  "replacement": {
+    "match": "The private absolute execution-workspace prefix; omitted from public text.",
+    "replacement": "${WORKSPACE}",
+    "other_content_changes": false
+  },
+  "derivations": {
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/original-private-manifest.json": {
+      "original_private_file": "evidence-manifest.json",
+      "original_private_sha256": "fba83826703cdc74c1e6948145a7a137e62be05b7a59f9edf7f05bee2deccc4c",
+      "published_sha256": "fba83826703cdc74c1e6948145a7a137e62be05b7a59f9edf7f05bee2deccc4c",
+      "original_bytes": 2401,
+      "published_bytes": 2401,
+      "workspace_prefix_replacements": 0,
+      "derivation": "Exact original bytes."
+    },
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/expectation.json": {
+      "original_private_file": "expectation.json",
+      "original_private_sha256": "d21c769518c65253c83a7d357fcf41c8cef29e92603de081f301274205c1efe9",
+      "published_sha256": "d21c769518c65253c83a7d357fcf41c8cef29e92603de081f301274205c1efe9",
+      "original_bytes": 2596,
+      "published_bytes": 2596,
+      "workspace_prefix_replacements": 0,
+      "derivation": "Exact original bytes."
+    },
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/expected-reversed.weftforge": {
+      "original_private_file": "expected-reversed.weftforge",
+      "original_private_sha256": "2f42ec3dac1331164be31335ebd28bc1983d8e947a2509e4a7118eb877b74cd3",
+      "published_sha256": "2f42ec3dac1331164be31335ebd28bc1983d8e947a2509e4a7118eb877b74cd3",
+      "original_bytes": 1989,
+      "published_bytes": 1989,
+      "workspace_prefix_replacements": 0,
+      "derivation": "Exact original bytes."
+    },
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/max-revision-input.weftforge": {
+      "original_private_file": "max-revision-input.weftforge",
+      "original_private_sha256": "62c630043f9c6c1afdc2d410644e6497aa31bed39fd45926f442803593930ec6",
+      "published_sha256": "62c630043f9c6c1afdc2d410644e6497aa31bed39fd45926f442803593930ec6",
+      "original_bytes": 2008,
+      "published_bytes": 2008,
+      "workspace_prefix_replacements": 0,
+      "derivation": "Exact original bytes."
+    },
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/run-official-sdk.py": {
+      "original_private_file": "run-official-sdk.py",
+      "original_private_sha256": "187670f27564692326551484ca062d50365dee01ef15c0e33afe23562bcaf54b",
+      "published_sha256": "187670f27564692326551484ca062d50365dee01ef15c0e33afe23562bcaf54b",
+      "original_bytes": 10802,
+      "published_bytes": 10802,
+      "workspace_prefix_replacements": 0,
+      "derivation": "Exact original bytes."
+    },
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/sdk-rejection-sentinel.weftforge": {
+      "original_private_file": "sdk-rejection-sentinel.weftforge",
+      "original_private_sha256": "45514129dfe3bc492fa0552f2ac86e00158b88e3289607f2e8346afdd048b201",
+      "published_sha256": "45514129dfe3bc492fa0552f2ac86e00158b88e3289607f2e8346afdd048b201",
+      "original_bytes": 47,
+      "published_bytes": 47,
+      "workspace_prefix_replacements": 0,
+      "derivation": "Exact original bytes."
+    },
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/sdk-report.json": {
+      "original_private_file": "sdk-report.json",
+      "original_private_sha256": "04672377f22742a0b43d6284e67bdf5bc2e3b818d7c9a388213f0bcf421492e8",
+      "published_sha256": "85a8170278242e67a5d196bfac0840a14c2685f2d259a2d305eabae2cdc181a3",
+      "original_bytes": 6887,
+      "published_bytes": 6632,
+      "workspace_prefix_replacements": 5,
+      "derivation": "Only the absolute execution-workspace prefix is replaced by literal ${WORKSPACE}."
+    },
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/sdk-reversed.weftforge": {
+      "original_private_file": "sdk-reversed.weftforge",
+      "original_private_sha256": "c5299308d13cc078c7e29aec3ccca0c353045b6bb913be9508842cf64d7b99fb",
+      "published_sha256": "c5299308d13cc078c7e29aec3ccca0c353045b6bb913be9508842cf64d7b99fb",
+      "original_bytes": 5336,
+      "published_bytes": 5336,
+      "workspace_prefix_replacements": 0,
+      "derivation": "Exact original bytes."
+    },
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/sdk-transcript.json": {
+      "original_private_file": "sdk-transcript.json",
+      "original_private_sha256": "07eb3c45db6a5d8fa745644faf2dc1e1dfeabd946dcc529f315ed2d4318cc6f5",
+      "published_sha256": "e29505e4bf64c770390978746ba51d87fe5852b1b815bad9491215267b095e2f",
+      "original_bytes": 46187,
+      "published_bytes": 45779,
+      "workspace_prefix_replacements": 8,
+      "derivation": "Only the absolute execution-workspace prefix is replaced by literal ${WORKSPACE}."
+    },
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/server-stderr.txt": {
+      "original_private_file": "server-stderr.txt",
+      "original_private_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "published_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_bytes": 0,
+      "published_bytes": 0,
+      "workspace_prefix_replacements": 0,
+      "derivation": "Exact original bytes."
+    }
+  },
+  "internal_private_hash_identities_retained": {
+    "sdk-report.json": [
+      "script_sha256",
+      "expectation_sha256",
+      "transcript_sha256"
+    ],
+    "original-private-manifest.json": "All files entries continue to identify the original private execution files; this is not the public checksum manifest.",
+    "qualification": "Internal hashes are not rewritten to disguise derivation. Use this mapping and publish-manifest.json for published-byte identities. Data-file hashes still match exact published data bytes."
+  },
+  "sdk_specific_max_revision_fixture": {
+    "file": "max-revision-input.weftforge",
+    "sha256": "62c630043f9c6c1afdc2d410644e6497aa31bed39fd45926f442803593930ec6",
+    "origin": "SDK preparation derived it from the frozen input-nonlinear.weftforge by changing only project.revision to u64::MAX, using compact exact Decimal JSON serialization. It is a prepared SDK input, not a native saved snapshot.",
+    "native_fixture_file": "input-revision-limit.weftforge",
+    "native_fixture_sha256": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+    "native_fixture_is_distinct_bytes": true,
+    "complete_parsed_fields_equal_to_native_fixture": true,
+    "rejection_commands": "UpdateSeam alone; no SetResolution/pending draft in the max-revision rejection."
+  },
+  "frozen_expected_comparison": {
+    "expectation_sha256": "d21c769518c65253c83a7d357fcf41c8cef29e92603de081f301274205c1efe9",
+    "expected_document_sha256": "2f42ec3dac1331164be31335ebd28bc1983d8e947a2509e4a7118eb877b74cd3",
+    "prepared_at": "2026-11-14T11:21:59.072236+00:00",
+    "before_sdk_started_at": "2026-11-14T11:23:23.241948+00:00",
+    "method": "Frozen input plus one revision, resolution 0.04 and only seam23 B t0/t1 exchanged. Actual native output was not read to derive it."
+  },
+  "execution_result": {
+    "native_sdk_bytes_equal": true,
+    "sdk_output_sha256": "c5299308d13cc078c7e29aec3ccca0c353045b6bb913be9508842cf64d7b99fb",
+    "native_after_reverse_sha256": "c5299308d13cc078c7e29aec3ccca0c353045b6bb913be9508842cf64d7b99fb",
+    "typed_binary64_fields": 103,
+    "typed_binary32_fields": 3,
+    "stdout_decoded_messages": 4,
+    "stderr_bytes": 0,
+    "sentinel_unchanged": true
+  },
+  "limits": [
+    "Decoded transcripts are SDK stream messages, not literal transport bytes.",
+    "The original script retains its execution layout; README distinguishes offline saved-output checks from a fresh live SDK replay.",
+    "No new CLI implementation, modern external-client, GUI-action, physical-sewing or reference-parity claim.",
+    "Original private captures remain unchanged."
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "recorded_at": "2026-11-14T11:18:41.274042+00:00",
+  "kind": "parent_observations",
+  "implementation_only": true,
+  "source_build_commit": "9d30a71bbc2b0e051d9eaddc42b5f3b7dab08bde",
+  "source_hashes_match": 32,
+  "executable_sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+  "initial_pid": 36362,
+  "process_observation": "36362     1 Sat Nov 14 11:07:20 2026     ${WORKSPACE}/.local/candidates/9d30a71bbc2b/WeftForge.app/Contents/MacOS/weftforge",
+  "frozen_declaration_verified": true,
+  "baseline_saved": true,
+  "baseline_bytes_equal_external_input": true,
+  "observations": [
+    {
+      "stage": "baseline",
+      "ui": "No selected piece or curve. Both Curve A/Curve B off. Two pieces, two stable seam rows #20/#23. #23 A#9 t0.4\u21921 B#18 t0.6\u21920. Mesh resolution0.035. Saved atomically. Rest arrangement; simulation not running.",
+      "view_adjustment": "2D scroll zoom adjusted before baseline pair capture. No authoring edits; resulting panel positions retained for before/after.",
+      "input_method": "CUA native app with explicit candidate app path. Save as panel filename and destination verified.",
+      "caveat": "After background read-only tools AX can expose only title/Window Raise; native window Raise restores body. This does not change document."
+    },
+    {
+      "recorded_at": "2026-11-14T11:20:38.247762+00:00",
+      "stage": "after_reverse",
+      "actions": [
+        "Clicked visible numeric resolution at[28,675]. CUA returned selected text0.035.",
+        "Atomic paste0.04; CUA exposed focused resolution stepper0.04. No Tab or blur action.",
+        "Clicked fresh AX Reverse in second stable-ID row#23. B0.6\u21920 became0\u21920.6; seam20 unchanged in UI.",
+        "Native Save as after-reverse.weftforge. Main reports Saved editable project atomically;1159 vertices."
+      ],
+      "selection": "Curve A and Curve B remain off; no selected curve.",
+      "before_sha256": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+      "after_sha256": "c5299308d13cc078c7e29aec3ccca0c353045b6bb913be9508842cf64d7b99fb"
+    },
+    {
+      "recorded_at": "2026-11-14T11:21:43.066150+00:00",
+      "stage": "history",
+      "actions": [
+        "Refocused global resolution without editing; CUA returned selected text0.04.",
+        "One native Undo. Save as undo.weftforge.2296 vertices.",
+        "Pressed Tab. Save as undo-tab.weftforge.2296 vertices.",
+        "One native Redo. Save as redo.weftforge.1159 vertices."
+      ],
+      "input_method": "Fresh main-window AX button lookup in shared helper; native Save as dialogs. No explicit numeric edit during history.",
+      "undo_tab_bytes_equal": true
+    },
+    {
+      "recorded_at": "2026-11-14T11:22:13.679568+00:00",
+      "stage": "restored_and_exports",
+      "actions": [
+        "Second Reverse on stable row#23. Native Save as restored.weftforge. Revision19/resolution0.04.",
+        "Native Export OBJ restored.obj, then Export SVG restored.svg. Both native export status messages observed.",
+        "Pressed native Command-Q. Immediately listing apps briefly still reported running; subsequent ps confirmed PID36362 absent."
+      ],
+      "restored_sha256": "a240c2ae33b3d933872201817bba2f17ad4fae3fe898d2141f3ed8e0357f9a1d",
+      "simulation": "Not run; Rest arrangement."
+    },
+    {
+      "recorded_at": "2026-11-14T11:22:43.257497+00:00",
+      "stage": "reopened",
+      "actions": [
+        "Fresh explicit candidate app path CUA binding launched empty document.",
+        "Native Open panel: double-clicked exact restored.weftforge row.1159 vertices and original seam23 B0.6\u21920.",
+        "Native Save as reopened.weftforge. Saved status."
+      ],
+      "byte_equal_restored": true,
+      "revision": 19,
+      "allocator": 24,
+      "process_changed": true
+    },
+    {
+      "recorded_at": "2026-11-14T11:24:20.961305+00:00",
+      "stage": "revision_limit_rejection",
+      "actions": [
+        "Native Open: AX double-click exact input-revision-limit filename only scrolled list; it did not open. Save helper correctly rejected missing main action.",
+        "Fresh screenshot showed intended input row visible. Coordinate click[329,273] selected it; fresh AX Open button414 loaded it.",
+        "Native Save as max-loaded.weftforge.2296vertices/resolution0.035, original B0.6\u21920. No numeric field was edited or focused after load.",
+        "An expired AX Reverse index was rejected by CUA before input. Fresh full tree/Window Raise and new Reverse56 succeeded.",
+        "Visible status Document revision limit reached. Stable seam rows/values remained unchanged, no Unsaved status. Screenshot observed."
+      ],
+      "caveat": "Maximum-revision screenshot uses reset camera after process restart; do not compare its viewport to earlier fixed before/after pair."
+    },
+    {
+      "recorded_at": "2026-11-14T11:26:56.226043+00:00",
+      "stage": "max_rejected_saved",
+      "actions": [
+        "After passive REA error capture, native Save as max-rejected.weftforge.2296 vertices and Saved editable project atomically.",
+        "CUA sequence completed; application left saved at revision maximum, no simulation or modal."
+      ],
+      "bytes_equal_max_loaded": true
+    }
+  ],
+  "original_pid_exited": true,
+  "reopened_pid": 42700,
+  "reopened_executable_sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+  "native_sequence_complete": true,
+  "final_source_hashes_match": 32,
+  "final_executable_sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+  "final_checked_at": "2026-11-14T11:29:30.336690+00:00"
+}

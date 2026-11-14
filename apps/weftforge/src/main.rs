@@ -332,7 +332,12 @@ impl Studio {
         let commands = draft.commands(&self.editor.project);
         commands.is_empty() || self.apply_command(Command::Transaction(commands))
     }
-    fn join_next_curve(&mut self, ctx: &egui::Context, curve: Id, focused: Option<egui::Id>) {
+    fn apply_inspector_action(
+        &mut self,
+        ctx: &egui::Context,
+        command: Command,
+        focused: Option<egui::Id>,
+    ) {
         let frame = ctx.cumulative_frame_nr();
         let current = ctx
             .memory(|memory| memory.focused())
@@ -342,7 +347,7 @@ impl Studio {
             .as_ref()
             .filter(|draft| draft.revision == self.editor.project.revision)
             .map_or_else(Vec::new, |draft| draft.commands(&self.editor.project));
-        commands.push(Command::JoinCurve { curve });
+        commands.push(command);
         let command = if commands.len() == 1 {
             commands.pop().unwrap()
         } else {
@@ -350,18 +355,24 @@ impl Studio {
         };
         if self.apply_command(command) {
             for id in focused.into_iter().chain(current) {
-                // The retained curve's controls must not inherit its child's edit text.
+                // Numeric caches must not replay values from before the action.
                 ctx.data_mut(|data| data.remove::<String>(id));
                 ctx.memory_mut(|memory| memory.surrender_focus(id));
             }
             ctx.data_mut(|data| {
-                data.insert_temp(egui::Id::new("join-blur"), (frame, [focused, current]))
+                data.insert_temp(
+                    egui::Id::new("inspector-action-blur"),
+                    (frame, [focused, current]),
+                )
             });
         } else if let Some(id) = current.or(focused) {
             ctx.memory_mut(|memory| memory.request_focus(id));
             if focused.is_some() && current.is_some() && focused != current {
                 ctx.data_mut(|data| {
-                    data.insert_temp(egui::Id::new("join-blur"), (frame, [focused, None]))
+                    data.insert_temp(
+                        egui::Id::new("inspector-action-blur"),
+                        (frame, [focused, None]),
+                    )
                 });
             }
         }
@@ -934,8 +945,8 @@ impl Studio {
     fn inspector(&mut self, ui: &mut egui::Ui) {
         ui.heading("Construction");
         let mut commit = false;
-        let mut joining = false;
-        let focus_key = ui.make_persistent_id("join-input-focus");
+        let mut acting = false;
+        let focus_key = ui.make_persistent_id("inspector-input-focus");
         let identity = (
             self.editor.project.revision,
             self.selected,
@@ -947,11 +958,11 @@ impl Studio {
                 .data_mut(|data| data.get_temp::<String>(id))
                 .is_some()
         {
-            // Keep the numeric input across the pointer press/release that activates Join.
+            // Keep numeric input across the press/release that activates an inspector action.
             ui.ctx()
                 .data_mut(|data| data.insert_temp(focus_key, (identity, id)));
         }
-        let join_focus = ui
+        let action_focus = ui
             .ctx()
             .data_mut(|data| data.get_temp::<((u64, Option<Id>, Option<Id>), egui::Id)>(focus_key))
             .filter(|(stamp, _)| *stamp == identity)
@@ -988,6 +999,7 @@ impl Studio {
                 .unwrap_or_else(||InspectorDraft::new(&self.editor.project,self.selected,self.selected_curve));
             let mut split=None;
             let mut join=None;
+            let mut reverse=None;
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
                 ui.separator(); ui.strong(&piece.name);
                 if let Some(curve)=&mut draft.curve {
@@ -1014,7 +1026,7 @@ impl Studio {
                     ui.small("Interior curve parameter, not arc length. Sewing is partitioned without changing point pairs.");
                     if ui.button("Split selected curve").clicked() { split=Some(curve.id); }
                     let response=ui.button("Join with next boundary").on_hover_text("Preserve compatible straight or cubic geometry and sewing. The selected curve ID survives; unsafe joins are rejected.");
-                    joining|=response.is_pointer_button_down_on();
+                    acting|=response.is_pointer_button_down_on();
                     if response.clicked() { join=Some(curve.id); }
                     ui.separator();
                     });
@@ -1054,7 +1066,23 @@ impl Studio {
             ui.separator(); ui.strong("Sewing"); ui.checkbox(&mut self.reversed,"Reverse paired edge"); ui.label("A interval / B interval (0–1)");
             for range in &mut self.intervals { ui.horizontal(|ui| { for value in range { ui.add(numeric_value(ui,value).speed(0.01).range(0.0..=1.0)); } }); }
             ui.label(if self.seam_start.is_some() { "Click paired boundary in 2D." } else { "Sew edges: click two 2D boundaries." });
-            for seam in &self.editor.project.seams { ui.horizontal(|ui| { ui.label(&seam.name); if ui.small_button("Remove").clicked() { remove=Some(seam.id); } }); }
+            ui.small("Intervals use curve parameter t, not arc length. Reverse swaps B's direction and keeps the normalized mapping.");
+            for seam in &self.editor.project.seams {
+                ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("seam",seam.id))),|ui| {
+                    ui.strong(format!("{} · #{}",seam.name,seam.id));
+                    ui.small(format!("A #{}: t {} → {}\nB #{}: t {} → {}",seam.a.curve,seam.a.t0,seam.a.t1,seam.b.curve,seam.b.t0,seam.b.t1));
+                    ui.horizontal(|ui| {
+                        let response=ui.small_button("Reverse").on_hover_text("Swap B's interval endpoints; preserve the seam identity, covered intervals and normalized correspondence.");
+                        acting|=response.is_pointer_button_down_on();
+                        if response.clicked() {
+                            let mut reversed=seam.clone();
+                            std::mem::swap(&mut reversed.b.t0,&mut reversed.b.t1);
+                            reverse=Some(reversed);
+                        }
+                        if ui.small_button("Remove").clicked() { remove=Some(seam.id); }
+                    });
+                });
+            }
             });
             ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("mesh-settings")),|ui| {
             ui.separator(); ui.label("Mesh edge length m"); commit|=numeric_commit(&ui.add(numeric_value(ui,&mut draft.resolution).speed(0.005).range(0.005..=0.5)));
@@ -1067,7 +1095,8 @@ impl Studio {
             self.draft=Some(draft);
             if let Some(seam)=remove { self.execute(Command::RemoveSeam { seam }); }
             if let Some(curve)=split { self.execute(Command::SplitCurve { curve,t:self.split_t }); }
-            if let Some(curve)=join { joining=true; self.join_next_curve(ui.ctx(),curve,join_focus); }
+            if let Some(curve)=join { acting=true; self.apply_inspector_action(ui.ctx(),Command::JoinCurve { curve },action_focus); }
+            if let Some(seam)=reverse { acting=true; self.apply_inspector_action(ui.ctx(),Command::UpdateSeam { seam },action_focus); }
         });
         let opening_rectangle = self.tool == Tool::Rectangle
             && self
@@ -1075,10 +1104,10 @@ impl Studio {
                 .and_then(|id| ui.ctx().read_response(id))
                 .is_some_and(|response| response.clicked());
         // Keep pending edits staged while the numeric constructor opens or remains open.
-        if commit && !joining && self.rectangle.is_none() && !opening_rectangle {
+        if commit && !acting && self.rectangle.is_none() && !opening_rectangle {
             self.commit_draft();
         }
-        if !joining
+        if !acting
             && !ui.input(|input| input.pointer.any_down())
             && !ui
                 .ctx()
@@ -1296,13 +1325,17 @@ impl Studio {
             }
         }
         for seam in &doc.seams {
-            let endpoint = |i: &CurveInterval| {
+            let endpoint = |i: &CurveInterval, fraction| {
                 doc.curve(i.curve)
-                    .and_then(|c| c.evaluate(&doc, (i.t0 + i.t1) * 0.5).ok())
+                    .and_then(|c| c.evaluate(&doc, i.parameter(fraction)).ok())
                     .map(|p| self.to_screen(p, r))
             };
-            if let (Some(a), Some(b)) = (endpoint(&seam.a), endpoint(&seam.b)) {
-                painter.line_segment([a, b], Stroke::new(1., Color32::from_rgb(245, 175, 87)));
+            for fraction in [0., 1.] {
+                if let (Some(a), Some(b)) =
+                    (endpoint(&seam.a, fraction), endpoint(&seam.b, fraction))
+                {
+                    painter.line_segment([a, b], Stroke::new(1., Color32::from_rgb(245, 175, 87)));
+                }
             }
         }
         for point in &self.polygon {
@@ -1755,15 +1788,17 @@ fn numeric_value<'a>(ui: &egui::Ui, value: &'a mut f64) -> egui::DragValue<'a> {
 }
 fn numeric_commit(response: &egui::Response) -> bool {
     // egui reports a mid-frame focus transfer's blur on the following frame too.
-    let join_blur = response
+    let action_blur = response
         .ctx
-        .data_mut(|data| data.get_temp::<(u64, [Option<egui::Id>; 2])>(egui::Id::new("join-blur")))
+        .data_mut(|data| {
+            data.get_temp::<(u64, [Option<egui::Id>; 2])>(egui::Id::new("inspector-action-blur"))
+        })
         .is_some_and(|(frame, ids)| {
             response.ctx.cumulative_frame_nr().saturating_sub(frame) <= 1
                 && ids.contains(&Some(response.id))
         });
     response.drag_stopped()
-        || (response.lost_focus() && !join_blur)
+        || (response.lost_focus() && !action_blur)
         || (response.changed() && !response.is_pointer_button_down_on() && !response.has_focus())
 }
 fn check_cancelled(cancel: &AtomicBool) -> Result<(), String> {
@@ -3733,6 +3768,359 @@ mod tests {
                     assert!(!app.editor.can_redo());
                 }
                 app.cancel();
+            }
+        }
+    }
+
+    #[test]
+    fn seam_reverse_button_keeps_focused_drafts_atomic_and_draws_endpoint_pairs() {
+        use egui::accesskit::{Action, ActionRequest, NodeId, TreeId};
+        fn frame(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            events: Vec<egui::Event>,
+        ) -> egui::FullOutput {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1450., 2200.))),
+                    events,
+                    ..Default::default()
+                },
+                |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+            )
+        }
+        fn action(target_node: NodeId, action: Action) -> egui::Event {
+            egui::Event::AccessKitActionRequest(ActionRequest {
+                action,
+                target_tree: TreeId::ROOT,
+                target_node,
+                data: None,
+            })
+        }
+        fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+            egui::Event::Key {
+                key,
+                physical_key: None,
+                pressed: true,
+                repeat: false,
+                modifiers,
+            }
+        }
+        fn buttons(output: &egui::FullOutput, label: &str) -> Vec<(NodeId, Pos2)> {
+            output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .filter(|(_, node)| {
+                    node.label() == Some(label) && node.supports_action(Action::Click)
+                })
+                .map(|(id, node)| {
+                    let b = node.bounds().unwrap();
+                    (
+                        *id,
+                        Pos2::new(((b.x0 + b.x1) * 0.5) as f32, ((b.y0 + b.y1) * 0.5) as f32),
+                    )
+                })
+                .collect()
+        }
+        fn guides(output: &egui::FullOutput) -> Vec<[Pos2; 2]> {
+            output
+                .shapes
+                .iter()
+                .filter_map(|shape| match shape.shape {
+                    egui::Shape::LineSegment { points, stroke }
+                        if stroke == Stroke::new(1., Color32::from_rgb(245, 175, 87)) =>
+                    {
+                        Some(points)
+                    }
+                    _ => None,
+                })
+                .collect()
+        }
+        for success in [true, false] {
+            for input in 0..3 {
+                let ctx = egui::Context::default();
+                ctx.enable_accesskit();
+                let mut app = Studio::empty();
+                for (name, origin) in [("Front", [0., 0.]), ("Back", [1., 0.])] {
+                    app.editor
+                        .execute(Command::AddRectangle {
+                            name: name.into(),
+                            origin,
+                            width: 0.4,
+                            height: 0.6,
+                        })
+                        .unwrap();
+                }
+                let piece = app.editor.project.pieces[0].id;
+                let a = app.editor.project.pieces[0].boundary[2];
+                let b = app.editor.project.pieces[1].boundary[0];
+                app.editor
+                    .execute(Command::Transaction(vec![
+                        Command::SetCurveControls {
+                            curve: a,
+                            controls: Some([[0.3, 0.8], [0.1, 0.8]]),
+                        },
+                        Command::AddSeam {
+                            name: "Same seam name".into(),
+                            a: CurveInterval {
+                                curve: a,
+                                t0: 0.15,
+                                t1: 0.85,
+                            },
+                            b: CurveInterval {
+                                curve: b,
+                                t0: 0.9,
+                                t1: 0.1,
+                            },
+                            correspondence: vec![[0., 0.], [0.4, 0.65], [1., 1.]],
+                        },
+                        Command::SplitCurve { curve: a, t: 0.5 },
+                        Command::SetGrain {
+                            piece,
+                            angle: 0.125,
+                        },
+                    ]))
+                    .unwrap();
+                assert_eq!(app.editor.project.seams.len(), 2);
+                assert_eq!(
+                    app.editor.project.seams[0].name,
+                    app.editor.project.seams[1].name
+                );
+                if !success {
+                    let mut project = app.editor.project.clone();
+                    project.revision = u64::MAX - 2;
+                    app.editor = Editor::new(project).unwrap();
+                }
+                app.editor
+                    .execute(Command::SetGrain {
+                        piece,
+                        angle: 0.375,
+                    })
+                    .unwrap();
+                assert!(app.editor.undo());
+                assert!(app.editor.can_redo());
+                app.select_curve(Some((piece, a)));
+                let before = app.editor.project.clone();
+                let output = frame(&ctx, &mut app, vec![]);
+                let original_guides = guides(&output);
+                assert_eq!(original_guides.len(), 4);
+                let canvas = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+                for (seam, pair) in before.seams.iter().zip(original_guides.chunks_exact(2)) {
+                    let point = |curve, t| {
+                        app.to_screen(
+                            before.curve(curve).unwrap().evaluate(&before, t).unwrap(),
+                            canvas,
+                        )
+                    };
+                    assert_eq!(
+                        pair[0],
+                        [
+                            point(seam.a.curve, seam.a.t0),
+                            point(seam.b.curve, seam.b.t0)
+                        ]
+                    );
+                    assert_eq!(
+                        pair[1],
+                        [
+                            point(seam.a.curve, seam.a.t1),
+                            point(seam.b.curve, seam.b.t1)
+                        ]
+                    );
+                }
+                let reverse_ids = buttons(&output, "Reverse");
+                assert_eq!(reverse_ids.len(), 2);
+                assert_ne!(reverse_ids[0].0, reverse_ids[1].0);
+                let grain = output
+                    .platform_output
+                    .accesskit_update
+                    .as_ref()
+                    .unwrap()
+                    .nodes
+                    .iter()
+                    .find(|(_, node)| node.numeric_value() == Some(0.125))
+                    .unwrap()
+                    .0;
+                frame(&ctx, &mut app, vec![action(grain, Action::Focus)]);
+                frame(&ctx, &mut app, vec![]);
+                app.draft.as_mut().unwrap().resolution = 0.08;
+                let output = frame(
+                    &ctx,
+                    &mut app,
+                    vec![
+                        key(egui::Key::A, egui::Modifiers::COMMAND),
+                        egui::Event::Text("0.250".into()),
+                    ],
+                );
+                let focused = ctx.memory(|memory| memory.focused()).unwrap();
+                assert_eq!(
+                    ctx.data_mut(|data| data.get_temp::<String>(focused)),
+                    Some("0.250".into())
+                );
+                let pending = app.draft.as_ref().unwrap().commands(&before);
+                assert_eq!(pending.len(), 2);
+                assert_eq!(app.editor.project, before);
+                let (reverse, pos) = buttons(&output, "Reverse")[1];
+                let output = if input == 1 {
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![
+                            egui::Event::PointerMoved(pos),
+                            egui::Event::PointerButton {
+                                pos,
+                                button: egui::PointerButton::Primary,
+                                pressed: true,
+                                modifiers: egui::Modifiers::NONE,
+                            },
+                        ],
+                    );
+                    assert_eq!(app.editor.project, before);
+                    assert!(app.editor.can_redo());
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![
+                            egui::Event::PointerMoved(pos),
+                            egui::Event::PointerButton {
+                                pos,
+                                button: egui::PointerButton::Primary,
+                                pressed: false,
+                                modifiers: egui::Modifiers::NONE,
+                            },
+                        ],
+                    )
+                } else {
+                    let mut events = Vec::new();
+                    if input == 2 {
+                        let resolution = output
+                            .platform_output
+                            .accesskit_update
+                            .as_ref()
+                            .unwrap()
+                            .nodes
+                            .iter()
+                            .find(|(_, node)| node.numeric_value() == Some(0.08))
+                            .unwrap()
+                            .0;
+                        events.push(action(resolution, Action::Focus));
+                    }
+                    events.push(action(reverse, Action::Click));
+                    frame(&ctx, &mut app, events)
+                };
+                if !success {
+                    assert_eq!(app.editor.project, before);
+                    assert!(app.message.contains("revision limit"));
+                    assert!(app.editor.can_redo());
+                    assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+                    assert_eq!(guides(&output), original_guides);
+                    let retained = ctx.memory(|memory| memory.focused()).unwrap();
+                    let text = if input == 2 { "0.08" } else { "0.250" };
+                    assert_eq!(
+                        ctx.data_mut(|data| data.get_temp::<String>(retained)),
+                        Some(text.into())
+                    );
+                    frame(&ctx, &mut app, vec![]);
+                    assert_eq!(app.editor.project, before);
+                    assert!(app.editor.can_redo());
+                    assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+                    assert_eq!(ctx.memory(|memory| memory.focused()), Some(retained));
+                    assert_eq!(
+                        ctx.data_mut(|data| data.get_temp::<String>(retained)),
+                        Some(text.into())
+                    );
+                    app.cancel();
+                    continue;
+                }
+                let reversed = app.editor.project.clone();
+                assert_eq!(reversed.revision, before.revision + 1);
+                assert_eq!(reversed.piece(piece).unwrap().grain_angle, 0.25);
+                assert_eq!(reversed.resolution, 0.08);
+                let mut expected = before.clone();
+                expected.revision = reversed.revision;
+                expected.pieces[0].grain_angle = 0.25;
+                expected.resolution = 0.08;
+                expected.seams[1].b.t0 = before.seams[1].b.t1;
+                expected.seams[1].b.t1 = before.seams[1].b.t0;
+                assert_eq!(reversed, expected);
+                let mut expected_guides = original_guides.clone();
+                expected_guides[2][1] = original_guides[3][1];
+                expected_guides[3][1] = original_guides[2][1];
+                assert_ne!(expected_guides, original_guides);
+                assert_eq!(guides(&output), expected_guides);
+                assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), None);
+                frame(&ctx, &mut app, vec![]);
+                let output = frame(
+                    &ctx,
+                    &mut app,
+                    vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+                );
+                assert_eq!(
+                    app.editor.project, reversed,
+                    "numeric cache replay after Reverse input {input}"
+                );
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![action(buttons(&output, "Undo")[0].0, Action::Click)],
+                );
+                let mut undone = app.editor.project.clone();
+                undone.revision = before.revision;
+                assert_eq!(undone, before);
+                let output = frame(
+                    &ctx,
+                    &mut app,
+                    vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+                );
+                assert!(app.editor.can_redo());
+                assert_eq!(guides(&output), original_guides);
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![action(buttons(&output, "Redo")[0].0, Action::Click)],
+                );
+                let mut redone = app.editor.project.clone();
+                redone.revision = reversed.revision;
+                assert_eq!(redone, reversed);
+                let dir = exit_test_directory("seam-reverse");
+                let path = dir.join("reversed.weftforge");
+                app.path = Some(path.clone());
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![key(egui::Key::S, egui::Modifiers::COMMAND)],
+                );
+                let mut reopened = Studio::empty();
+                reopened.open(path);
+                assert_eq!(reopened.editor.project, app.editor.project);
+                assert_eq!(reopened.editor.project.seams, reversed.seams);
+                fs::remove_dir_all(dir).unwrap();
+                let output = frame(&ctx, &mut app, vec![]);
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![action(buttons(&output, "Reverse")[1].0, Action::Click)],
+                );
+                let mut expected = before.clone();
+                expected.revision = app.editor.project.revision;
+                expected.resolution = 0.08;
+                expected.pieces[0].grain_angle = 0.25;
+                assert_eq!(
+                    app.editor.project, expected,
+                    "two Reverse clicks must restore the construction with the committed inspector edits"
+                );
+                let output = frame(&ctx, &mut app, vec![]);
+                assert_eq!(guides(&output), original_guides);
+                let remove = buttons(&output, "Remove")[0].0;
+                frame(&ctx, &mut app, vec![action(remove, Action::Click)]);
+                let output = frame(&ctx, &mut app, vec![]);
+                assert_eq!(buttons(&output, "Reverse")[0].0, reverse_ids[1].0);
+                assert_eq!(app.editor.project.seams, vec![before.seams[1].clone()]);
+                app.cancel();
+                reopened.cancel();
             }
         }
     }

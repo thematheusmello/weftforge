@@ -1,0 +1,268 @@
+{
+  "id": "UI-NATIVE-SEAM-REVERSAL-001-capture-supplement",
+  "kind": "implementation_only",
+  "producer": "REA CLI 6.9.0 observe_native_ui; passive own-app observation",
+  "source_build_commit_attribution": "9d30a71bbc2b0e051d9eaddc42b5f3b7dab08bde",
+  "source_attribution_limit": "Parent-provided candidate build identity; not a source/binary equivalence proof.",
+  "captures": [
+    {
+      "state": "before-reversal",
+      "raw_private_capture": {
+        "file": "before-reversal-20261114T111938Z.json",
+        "sha256": "7e90628f8e598303fbf746a1488232d664e557f76337d9631d50425ac51fe370"
+      },
+      "evidence_id": "ev_efd0e94054b6db26151f48934d12b851bdc155606b31cdd9446787b76f0b4aa5",
+      "started_at_utc": "2026-11-14T11:19:38.438541+00:00",
+      "completed_at_utc": "2026-11-14T11:19:48.050637+00:00",
+      "input": false,
+      "activation": false,
+      "identity_before": {
+        "pid": 36362,
+        "window_id": 61442,
+        "window_title": "WeftForge",
+        "launch_time_unix_s": 1794654440.0249581,
+        "bundle_id": "org.weftforge.studio",
+        "executable": "<workspace>/.local/candidates/9d30a71bbc2b/WeftForge.app/Contents/MacOS/weftforge",
+        "executable_sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+        "running": true,
+        "active": false,
+        "window_frame_points": {
+          "x": 555,
+          "y": 124,
+          "width": 1450,
+          "height": 932
+        },
+        "backing_scale_factor": 1
+      },
+      "identity_after": {
+        "pid": 36362,
+        "window_id": 61442,
+        "window_title": "WeftForge",
+        "launch_time_unix_s": 1794654440.0249581,
+        "bundle_id": "org.weftforge.studio",
+        "executable": "<workspace>/.local/candidates/9d30a71bbc2b/WeftForge.app/Contents/MacOS/weftforge",
+        "executable_sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+        "running": true,
+        "active": false,
+        "window_frame_points": {
+          "x": 555,
+          "y": 124,
+          "width": 1450,
+          "height": 932
+        },
+        "backing_scale_factor": 1
+      },
+      "identity_unchanged": true,
+      "screenshot": {
+        "file": "before-reversal.png",
+        "sha256": "79e6cb0ed20295d2399423a08def7c6ad7df217fdbf9b04bc7a8c3341699f2be",
+        "dimensions_pixels": [
+          1450,
+          932
+        ],
+        "copied_byte_identically": true
+      },
+      "accessibility": {
+        "file": "before-reversal.ax.json",
+        "returned_nodes": 71,
+        "reported_truncated": false,
+        "reported_gaps": []
+      },
+      "reviewed_observations": {
+        "source": "Returned AX and original screenshot pixels.",
+        "seam_20": "A #9: t 0 → 0.4\nB #18: t 1 → 0.6",
+        "seam_23": "A #9: t 0.4 → 1\nB #18: t 0.6 → 0",
+        "mesh_edge_length_m_display": "0.035",
+        "counts": "2 pieces · 2 seams · 2296 vertices",
+        "status": "Saved editable project atomically.",
+        "stage": "Stage: Rest arrangement",
+        "Curve A selected": false,
+        "Curve B selected": false
+      }
+    },
+    {
+      "state": "after-reversal",
+      "raw_private_capture": {
+        "file": "after-reversal-20261114T112037Z.json",
+        "sha256": "c31bbde066be4222db778424a40e003b99f0b3dd555bd23dc370c63c5935be21"
+      },
+      "evidence_id": "ev_67ecc075eec1e457d3fc9833c80e361512152c75711199d4010239055951a4c8",
+      "started_at_utc": "2026-11-14T11:20:37.980497+00:00",
+      "completed_at_utc": "2026-11-14T11:20:44.985839+00:00",
+      "input": false,
+      "activation": false,
+      "identity_before": {
+        "pid": 36362,
+        "window_id": 61442,
+        "window_title": "WeftForge",
+        "launch_time_unix_s": 1794654440.0249581,
+        "bundle_id": "org.weftforge.studio",
+        "executable": "<workspace>/.local/candidates/9d30a71bbc2b/WeftForge.app/Contents/MacOS/weftforge",
+        "executable_sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+        "running": true,
+        "active": false,
+        "window_frame_points": {
+          "x": 555,
+          "y": 124,
+          "width": 1450,
+          "height": 932
+        },
+        "backing_scale_factor": 1
+      },
+      "identity_after": {
+        "pid": 36362,
+        "window_id": 61442,
+        "window_title": "WeftForge",
+        "launch_time_unix_s": 1794654440.0249581,
+        "bundle_id": "org.weftforge.studio",
+        "executable": "<workspace>/.local/candidates/9d30a71bbc2b/WeftForge.app/Contents/MacOS/weftforge",
+        "executable_sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+        "running": true,
+        "active": false,
+        "window_frame_points": {
+          "x": 555,
+          "y": 124,
+          "width": 1450,
+          "height": 932
+        },
+        "backing_scale_factor": 1
+      },
+      "identity_unchanged": true,
+      "screenshot": {
+        "file": "after-reversal.png",
+        "sha256": "e23f865546429f2ed42b9306bb59271c8c1f63c421c3b2cad30cb2eec14b1834",
+        "dimensions_pixels": [
+          1450,
+          932
+        ],
+        "copied_byte_identically": true
+      },
+      "accessibility": {
+        "file": "after-reversal.ax.json",
+        "returned_nodes": 4,
+        "reported_truncated": false,
+        "reported_gaps": [],
+        "analyst_coverage_gap": "Four returned nodes include AXWindow and an empty content AXGroup (children_count 0). Despite reported_truncated=false and reported_gaps=[], row, numeric and selection semantics are missing from this returned tree. The tree is preserved in full; pixels and parent observations supply those details."
+      },
+      "reviewed_observations": {
+        "source": "Original screenshot pixels; content semantics absent from returned AX.",
+        "seam_20": "A #9: t 0 → 0.4; B #18: t 1 → 0.6",
+        "seam_23": "A #9: t 0.4 → 1; B #18: t 0 → 0.6",
+        "mesh_edge_length_m_display": "0.040",
+        "counts": "2 pieces · 2 seams · 1159 vertices",
+        "status": "Saved editable project atomically.",
+        "stage": "Rest arrangement",
+        "visible_guides": "Orange endpoint guides changed at the same 2D view."
+      }
+    },
+    {
+      "state": "revision-limit-error",
+      "raw_private_capture": {
+        "file": "revision-limit-error-20261114T112410Z.json",
+        "sha256": "47912e6d00d888ceb73e26643e1fbc3eb0f729a39c53d204fa65f0c9fc5b9f6e"
+      },
+      "evidence_id": "ev_4ec7379a082028c1bd279d98f753250ebc65705520c18aa2372123114ec4dc07",
+      "started_at_utc": "2026-11-14T11:24:10.909848+00:00",
+      "completed_at_utc": "2026-11-14T11:24:18.952910+00:00",
+      "input": false,
+      "activation": false,
+      "identity_before": {
+        "pid": 42700,
+        "window_id": 61674,
+        "window_title": "WeftForge",
+        "launch_time_unix_s": 1794655336.940481,
+        "bundle_id": "org.weftforge.studio",
+        "executable": "<workspace>/.local/candidates/9d30a71bbc2b/WeftForge.app/Contents/MacOS/weftforge",
+        "executable_sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+        "running": true,
+        "active": false,
+        "window_frame_points": {
+          "x": 555,
+          "y": 124,
+          "width": 1450,
+          "height": 932
+        },
+        "backing_scale_factor": 1
+      },
+      "identity_after": {
+        "pid": 42700,
+        "window_id": 61674,
+        "window_title": "WeftForge",
+        "launch_time_unix_s": 1794655336.940481,
+        "bundle_id": "org.weftforge.studio",
+        "executable": "<workspace>/.local/candidates/9d30a71bbc2b/WeftForge.app/Contents/MacOS/weftforge",
+        "executable_sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+        "running": true,
+        "active": false,
+        "window_frame_points": {
+          "x": 555,
+          "y": 124,
+          "width": 1450,
+          "height": 932
+        },
+        "backing_scale_factor": 1
+      },
+      "identity_unchanged": true,
+      "screenshot": {
+        "file": "revision-limit-error.png",
+        "sha256": "cf07b868b365cfd267435cf7af25770c25973323c12107e8eddfb61f9e3c7920",
+        "dimensions_pixels": [
+          1450,
+          932
+        ],
+        "copied_byte_identically": true
+      },
+      "accessibility": {
+        "file": "revision-limit-error.ax.json",
+        "returned_nodes": 71,
+        "reported_truncated": false,
+        "reported_gaps": []
+      },
+      "reviewed_observations": {
+        "source": "Returned AX and original screenshot pixels.",
+        "seam_20": "A #9: t 0 → 0.4\nB #18: t 1 → 0.6",
+        "seam_23": "A #9: t 0.4 → 1\nB #18: t 0.6 → 0",
+        "mesh_edge_length_m_display": "0.035",
+        "counts": "2 pieces · 2 seams · 2296 vertices",
+        "status": "Document revision limit reached",
+        "stage": "Stage: Rest arrangement",
+        "Curve A selected": false,
+        "Curve B selected": false,
+        "no_unsaved_text_visible": true
+      },
+      "parent_attribution": "Fresh load of revision-limit input, save max-loaded, no pending numeric draft, then Reverse on seam 23. These preceding actions were observed by the parent; this passive capture does not replay them.",
+      "view_limit": "New PID and default 2D camera after real relaunch; excluded from the before/after fixed-view comparison. Curve B extends past the right viewport edge."
+    }
+  ],
+  "fixed_view_comparison": {
+    "file": "before-after-2d-pixel-comparison.json",
+    "captures": [
+      "before-reversal",
+      "after-reversal"
+    ],
+    "rectangle_window_pixels": [
+      265,
+      176,
+      850,
+      924
+    ],
+    "changed_pixels": 371,
+    "changed_bbox_window_pixels": [
+      581,
+      575,
+      700,
+      592
+    ],
+    "all_other_viewport_pixels_identical": true,
+    "interpretation": "Only the orange endpoint-guide area changed within this 2D rectangle; shared/overlapping guides do not independently encode seam endpoint IDs."
+  },
+  "limitations": [
+    "Implementation-only native evidence; no reference parity, physical cloth, simulation-quality or broader product pass is established.",
+    "REA AX nodes do not expose focused-widget or pending-draft state. Exact focus, paste/click order and no-draft state require parent UI observations and saved-file evaluation.",
+    "Returned AX completeness flags do not remove the explicit after-reversal missing-content gap.",
+    "Fixed-view pixels establish changed visible guides; exact endpoint IDs and parameter pairing use parent observations and independently evaluated saved fields.",
+    "Original complete raw REA Evidence, screenshots, AX, contexts and inventories remain private. This supplement omits raw base64 and general desktop inventory."
+  ],
+  "scale_source": "NSScreen backingScaleFactor for the single display containing the selected CGWindow frame in each before/after identity inventory. All selected-window frames are 1450×932 points and original PNGs are 1450×932 pixels at scale 1.",
+  "publication_status": "Prepared private supplement only; publication requires the parent artifact-tracking and clean-checkout verification gates."
+}

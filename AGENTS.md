@@ -18,6 +18,8 @@ bounded to integrated increments while preserving the full parity target.
 - Validate external input and preserve the old project on any failed load/save.
 - Run cargo fmt --all --check, cargo test --workspace, cargo clippy --workspace
   --all-targets -- -D warnings, and cargo xtask verify for an integrated change.
+- Keep GitHub Actions disabled during development at the user's request. Run
+  checks locally; re-enable Actions and Pages only once the full project is done.
 - Maintain STATUS.md with evidence, exact next steps and confirmed job handles.
 - Before publishing evidence, require every artifact to be Git-tracked and run
   registry/map checks from a clean checkout; local ignored files are not delivery.

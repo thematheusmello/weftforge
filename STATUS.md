@@ -8,8 +8,8 @@ Every remaining roadmap gate stays in scope.
 ## Published and recoverable state
 
 Public repository: https://github.com/thematheusmello/weftforge.
-Published main: `9d0e1a8a8f7b0100d3420a11b8765fc4d2f3e5f0`
-([949-path mapping PR29](https://github.com/thematheusmello/weftforge/pull/29));
+Last main with automated CI/Pages: `1343b0c46b5c4f097709996785fb55d5d23ac174`
+([native join PR30](https://github.com/thematheusmello/weftforge/pull/30));
 all eight push/PR platform and evidence checks passed.
 [Source PR21](https://github.com/thematheusmello/weftforge/pull/21) is retained
 as ancestor `68bdb9fb774177f074f69edc1b2965336670cc9f`.
@@ -23,7 +23,30 @@ remains at older `8419363` and discloses its inspector defect. No native binarie
 ship yet. Distribution notices, platform launch/package QA and signing remain.
 Historical tags and failed or stale evidence have not been rewritten.
 
-Current branch: `feat/native-curve-join`.
+Current branch: `feat/native-seam-reversal`.
+Current source/evidence delivery:
+[PR31](https://github.com/thematheusmello/weftforge/pull/31), with exact evidence
+checkpoint `e75786ba3e1b259503f00a25f6034427a37edb96`.
+
+GitHub Actions is disabled at repository level (`enabled:false`), verified on
+2026-11-14 at the user's request to stop ongoing development costs. No active
+runs remained. Keep all required checks local and do not re-enable Actions until
+the complete project is done. The Pages site remains at its last deployment;
+new generated progress can still be published in the repository.
+
+The current executed seam-reversal candidate is source
+`9d30a71bbc2b0e051d9eaddc42b5f3b7dab08bde`, desktop
+`afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70`,
+and unchanged CLI `ca49402e497f71a2785bd96a6ef936cb320ffef856acb682824fe66e108fa25a`.
+All32 scoped source/test files still match. Local fmt,92 Rust tests, strict
+Clippy and xtask (54 Python checks,949-entry map) pass. Its preregistered
+native reversal/history/reopen/rejection subset passes independent checks;
+see [the report](parity/reports/WF-20261114-NATIVE-REVERSAL-001.json).
+Detached clean-checkout registry/map, native and saved-SDK replay, all364 unique
+report-artifact tracking/hash checks and new-artifact privacy checks passed at
+e75786b. The final local xtask also passed. After pushing the branch, Actions
+still reported `enabled:false` and zero branch workflow runs.
+
 Retained bounded native I/O candidate source: `1528e3662380a4a74c3b70d3ef9b11f2c607af5f`;
 native `a16acde0fb010a34b1452881ca9865ac3a3ef58908ca50e2719177fb9ab3b838`,
 CLI `820b8329de53fe6cc167533d3e0f0b55953b14e0ff74e5d6fda4cead77b9f0b7`.
@@ -232,52 +255,53 @@ No current report qualifies as a complete reference parity pass.
 
 ## Active work and next steps
 
-1. Publish the current native join checkpoint after artifact closure, detached
-   clean-checkout registry/map/evaluator checks and all eight push/PR CI checks.
-   PR28 and PR29 are merged; all their checks and main CI passed. Published
-   dashboard bytes match `9d0e1a8` exactly (SHA-256 cae10536…5905f6).
-2. The current join candidate is source `26dd585`, native `9c8b0936` and CLI `ca49402e`.
-   All 31 scoped runtime/test inputs remain identical after metadata integration.
-   Its 89 Rust tests, strict Clippy, formatting and xtask: 54 Python checks/949-ID
-   map pass. The declared native subset and independent portable evaluator pass;
-   this does not accept a broad feature, fitting workflow or reference parity.
-3. Independently review the next isolated seam-reversal implementation. It reuses
-   UpdateSeam, stable per-seam row identities and endpoint guides. Its source/UI
-   checks and native acceptance remain separate and pending; no root code changed.
-4. Continue preferences, contextual dialogs/ranges/errors and end-to-end workflows.
-   The bounded Shortcuts retry retained an input-driver guard gap, with no settings
-   change or shortcut-content claim. Continue construction, simulation/contact,
-   animation, avatar, rendering, interchange, printing, automation and delivery.
-   Full product scope stays active; verified parity stays 0/56 and the denominator
-   remains incomplete.
+1. Keep Actions disabled through development; source/evidence publication and
+   local checks continue. Re-enable only after the full project is complete.
+   Do not dispatch platform checks or Pages deployments at intermediate gates.
+2. Continue the next substantive construction/format or simulation increment,
+   using the existing949-ID map and reviewed behavior contracts. Preserve all
+   205 packets/56 landmarks and source ancestors. The zero-ID DXF route
+   inspection is integrated; the required documented DXF subset remains open.
+3. Retain the completed no-selection nonlinear reversal case: focused resolution
+   and Reverse commit once; nine whole-document snapshots, three unchanged
+   byte pairs and exact OBJ/SVG checks pass. Existing UpdateSeam serves native
+   and MCP; no new format, core variant or dependency was introduced.
+4. Continue construction, simulation/contact, animation, avatar, rendering,
+   interchange, printing, automation and delivery. The complete product remains
+   active; verified parity stays0/56 and discovery is incomplete.
 
-The native join workflow started empty, created two original 0.4 × 0.6 m panels and
-a reversed sewn cubic, split at t = 0.4 and joined while child P1 X was focused.
-Curve 9 returned to the original parent and both seam records survived. Untouched
-focus, later Tab and rejected corner Join retain exact accepted file bytes;
-Undo/Redo each advance one revision and restore construction. Coarse/fine exports
-have 194/2296 vertices and 325/4448 positive triangles. Reopen restores revision 14
-and allocator 24. The independent parent/child/sewn polynomial bounds are below
-2.12e-16 m, with zero affine-interval error.
+PR30 is merged as1343b0c after all eight push/PR checks. Main CI43585595600
+passes on Linux/macOS/Windows; Pages43585595609 passes. HTTP200 dashboard bytes
+exactly match1343b0c (SHA-2560ce17356…1d31d04). The root README and roadmap
+remain product focused; competitor/trial/sign-in prose is absent from README.
 
-Official Python MCP SDK 1.28.1 / legacy 2025-11-25 lists five tools, advertises
-JoinCurve, matches 104 floating fields, metadata and native joined bytes and preserves an error
-sentinel; stderr is empty. Modern external clients and live-GUI MCP remain open.
+The prior native join candidate remains source26dd585, desktop9c8b0936 and
+CLIca49402e. Its declared empty-project two-panel/cubic/reversed-seam/split/join
+/focus/history/refinement/export/process-restart/reopen/corner-rejection subset
+passed independent exact-rational checks. Parent control bound2.119e-16m and
+child/sewn bound8.695e-17m are below the declared1e-12m; affine interval error
+is zero. Focus/Tab/corner snapshots are byte-identical. Coarse/fine meshes have
+194/2296 vertices and325/4448 positive triangles. All302 published artifact
+hashes and detached-checkout replay/registry/map/privacy checks passed.
 
-Root retains the UI lease. Current own candidate PID 77275 is saved at the final
-corner-error checkpoint, two pieces/two seams/2296 vertices, Curve A/curve7
-selected, simulation off, no modal or active gesture. Read-only REA captured the
-preceding error with 105 nodes, no gaps/truncation and matched kernel executable
-hashes. No root Cargo job is live. Private original inputs and all failed or
-ambiguous driver attempts remain retained.
+Official SDK1.28.1/legacy2025-11-25 produced native-identical joined bytes and
+104 floating fields/metadata, preserved rejected output/native inputs and emitted
+zero stderr. The source and isolated candidate remain unchanged. Its report is
+now stale because the new application/helper/test sources differ; no current
+join replay or byte-identical rebuild is claimed for the reversal increment.
 
-An internal full-disk condition interrupted save-dialog snapshots. The private
-2.26 GB installer was relocated to Expansion with exact byte and extended-attribute
-checks; its original Lab path is a symlink. All other Lab evidence/fixtures were
-rehash-verified. That retained archive and generated build caches require the
-external volume; current isolated native candidate remains internal. No user
-files, protections, permissions or reference garment state were changed.
+The reversal candidate PID42700 is saved/idle at the revision-limit case with
+2 pieces,2 seams,2296 vertices, no selection, simulation off and no modal.
+PID36362 exited before the same executable restarted. Reference PID29812 is no
+longer running at the latest process check; its last retained observation was
+the saved reversed fixture. The bounded DXF inspection found no DXF
+entry among16 live File > Export children in that state; it does not establish
+product-wide absence or export behavior. Native acceptance, capture and SDK
+agents have completed their checks and publication review found no blockers.
+No root Cargo job is live at this source checkpoint.
 
-The source-only anisotropic review reproduces retained weak-warp strain 0.26930346
-and finds no justified production math change. Calibration/convergence and
-issue 16 remain open. Parser performance was not benchmarked.
+The private2.26GB installer and generated build caches require Expansion. The
+archive retains exact bytes/extended attributes through its original-path
+symlink; other Lab evidence/fixtures were rehash-verified. The source-only
+anisotropic review still reproduces weak-warp strain0.26930346; calibration,
+convergence and issue16 remain open. No tolerance/fixture adjustment hides it.

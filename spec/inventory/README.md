@@ -58,12 +58,15 @@ The [source-pinned implementation map](weftforge-implementation-map.md) assigns
 all 949 exact IDs while preserving the prior 928 entries, 205 bounded packets
 and 56 source landmarks. Open Project and selected-seam label contexts remain
 explicit; related group assignments do not establish aliases or parity.
-Its metadata pin retains runtime source `26dd585`; native join scope and
-qualification come from the [registry](../../parity/features.yaml) and
-[native report](../../parity/reports/WF-20261114-NATIVE-JOIN-001.json).
-Broader reference join semantics remain unknown.
+Its current source adds bounded per-seam Reverse through existing `UpdateSeam`;
+native execution qualification comes from the [registry](../../parity/features.yaml)
+and reports. Historical join execution does not qualify the changed runtime;
+broader reference join/reversal semantics remain unknown.
 The [later Preferences retry](../features/UI-shortcuts-inspection-20261114.md)
 retains blocked Shortcuts navigation without adding catalog IDs or bindings.
+The [DXF route inspection](../features/FILE-005-DXF-inspection-20261114.md)
+adds zero IDs and supplies no product-wide support conclusion; the required DXF
+subset remains in scope.
 
 Every record separates menu-presence evidence from the REA workspace identity
 capture. No raw UI, proprietary asset or implementation technique is supplied to

@@ -1,0 +1,29 @@
+{
+  "scenario": "UI-NATIVE-SEAM-REVERSAL-001",
+  "kind": "pre_native_launch_acceptance_freeze",
+  "frozen_at": "2026-11-14T11:06:18.400100+00:00",
+  "declaration_sha256": "5f1373081ab1e900c8d5b6e7cc1a210fef9b4d7fab582e9274dcfafe64620440",
+  "evaluator_sha256": "ff5e33b3d1c0508091c3d0a510858c44a09115350afa4079e4f3ad1041d12c98",
+  "source_build_commit": "9d30a71bbc2b0e051d9eaddc42b5f3b7dab08bde",
+  "native_executable_sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+  "native_outputs_present_at_freeze": [],
+  "candidate_execution_reported_by_parent": "not_started",
+  "artifact_hashes": {
+    "verify_native_reversal.py": "ff5e33b3d1c0508091c3d0a510858c44a09115350afa4079e4f3ad1041d12c98",
+    "prepare_inputs.py": "987a9168f69f7ceca07315f816a62ba93c8b38dab41d4283403f3b95d54ee88f",
+    "README.md": "f7de40f91ca103959260f252213a6c990e9dee9013053260eb70d08e6d51f309",
+    "fixture-provenance.json": "17f92064ebd89616013f0678b2118e9a2b5d7e04c13affa07a33362dda895a27",
+    "input-nonlinear.weftforge": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+    "input-revision-limit.weftforge": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+    "original-inputs/fine.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+    "original-inputs/fine.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+    "original-inputs/ui-declaration.json": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f",
+    "original-evaluators/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+    "candidate-pretest.json": "5d651dba1e0674f33c3ea9d08f20c4dd096fbe3af639a6a47a5615f83dfef9e4",
+    "ui-declaration.draft.json": "4aab63530f77d50e0fe42f56d032a15547d80c3aa37dfc0043e27819e1fba3cc",
+    "ui-declaration.json": "5f1373081ab1e900c8d5b6e7cc1a210fef9b4d7fab582e9274dcfafe64620440",
+    "self-check.json": "57124746db81f3b20ce22dec0e08952865071801472f1e4c9aa1d5cd7c663ebd",
+    "missing-input-check.json": "e033e20e6d0b6748ff708c76e952a38e2f6c73224261d01506534687656de7ec"
+  },
+  "parent_gate": "Parent must record this freeze digest before launching the identified candidate. No post-observation changes to declarations, evaluator, fixtures, thresholds or expected outputs."
+}

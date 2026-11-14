@@ -1,0 +1,140 @@
+{
+  "id": "UI-NATIVE-SEAM-REVERSAL-001-capture-derivations",
+  "created_at_utc": "2026-11-14T11:29:30.440865+00:00",
+  "raw_retention": "Complete original raw REA Evidence and original artifact bytes remain private; originals below are relative filenames within that private capture collection.",
+  "path_redaction": "Only the exact workspace prefix in executable paths is replaced with <workspace>. The prefix itself is not reproduced in this public supplement.",
+  "artifacts": [
+    {
+      "public_file": "before-reversal.png",
+      "public_sha256": "79e6cb0ed20295d2399423a08def7c6ad7df217fdbf9b04bc7a8c3341699f2be",
+      "originals": [
+        {
+          "file": "before-reversal-20261114T111938Z.png",
+          "sha256": "79e6cb0ed20295d2399423a08def7c6ad7df217fdbf9b04bc7a8c3341699f2be"
+        }
+      ],
+      "derivation": "Byte-identical copy of original selected-window PNG; no image transformation or metadata rewrite."
+    },
+    {
+      "public_file": "before-reversal.ax.json",
+      "public_sha256": "3968447affb972437a28348d59ca842b43db706d5b629c132c3de387696d3467",
+      "originals": [
+        {
+          "file": "before-reversal-20261114T111938Z.ax.json",
+          "sha256": "ce788c8a810474e4fa69ddef6dc80f5bd90b9c90cebc6a61fa7152a7e71efca0"
+        }
+      ],
+      "derivation": "Replace only the exact workspace prefix in the window executable field with <workspace>; preserve all other bytes, nodes, values, paths and coverage flags."
+    },
+    {
+      "public_file": "after-reversal.png",
+      "public_sha256": "e23f865546429f2ed42b9306bb59271c8c1f63c421c3b2cad30cb2eec14b1834",
+      "originals": [
+        {
+          "file": "after-reversal-20261114T112037Z.png",
+          "sha256": "e23f865546429f2ed42b9306bb59271c8c1f63c421c3b2cad30cb2eec14b1834"
+        }
+      ],
+      "derivation": "Byte-identical copy of original selected-window PNG; no image transformation or metadata rewrite."
+    },
+    {
+      "public_file": "after-reversal.ax.json",
+      "public_sha256": "45f9d4e4bd90a77ae0024f6b540400ffea79c54c1b7cb7c5556dc403e00d43bb",
+      "originals": [
+        {
+          "file": "after-reversal-20261114T112037Z.ax.json",
+          "sha256": "18723ce0903c91da3d51d739a2df8a41b19e60be0ba596b09ec3b9966ab8f46f"
+        }
+      ],
+      "derivation": "Replace only the exact workspace prefix in the window executable field with <workspace>; preserve all other bytes, nodes, values, paths and coverage flags."
+    },
+    {
+      "public_file": "revision-limit-error.png",
+      "public_sha256": "cf07b868b365cfd267435cf7af25770c25973323c12107e8eddfb61f9e3c7920",
+      "originals": [
+        {
+          "file": "revision-limit-error-20261114T112410Z.png",
+          "sha256": "cf07b868b365cfd267435cf7af25770c25973323c12107e8eddfb61f9e3c7920"
+        }
+      ],
+      "derivation": "Byte-identical copy of original selected-window PNG; no image transformation or metadata rewrite."
+    },
+    {
+      "public_file": "revision-limit-error.ax.json",
+      "public_sha256": "dc99f4cdb0fce23f06cc6d014e2d7fbc8045e6f14641ab2e3b5c6ad4205cc184",
+      "originals": [
+        {
+          "file": "revision-limit-error-20261114T112410Z.ax.json",
+          "sha256": "718358258ee242bc12ddc6f3ae87f4c669f8cf1faa4ac7190dc4906cfe45ec23"
+        }
+      ],
+      "derivation": "Replace only the exact workspace prefix in the window executable field with <workspace>; preserve all other bytes, nodes, values, paths and coverage flags."
+    },
+    {
+      "public_file": "before-after-2d-pixel-comparison.json",
+      "public_sha256": "e1f801e2512c999e4a20ff3d2551b5e6c51b1302ec889f4798ec05e2ad4a3528",
+      "originals": [
+        {
+          "file": "before-after-2d-pixel-comparison.json",
+          "sha256": "e1f801e2512c999e4a20ff3d2551b5e6c51b1302ec889f4798ec05e2ad4a3528"
+        }
+      ],
+      "derivation": "Byte-identical copy of the previously derived pixel comparison; original PNGs are unchanged."
+    },
+    {
+      "public_file": "reviewed-summary.json",
+      "public_sha256": "fc97fd9c2f032bdaa9145408941a5f68f5cb17b51dd12d76bff4ee8e20bb11e2",
+      "originals": [
+        {
+          "file": "before-reversal-20261114T111938Z.json",
+          "sha256": "7e90628f8e598303fbf746a1488232d664e557f76337d9631d50425ac51fe370"
+        },
+        {
+          "file": "before-reversal-20261114T111938Z.context.json",
+          "sha256": "b19eaade9dec1010fd91f4adc5adf0b2c65066c9ec3ff4d8ae348670990a7401"
+        },
+        {
+          "file": "before-reversal-20261114T111938Z.inventory-before.json",
+          "sha256": "2d0fac58867d2cc20242864b459d8864963fb26f3d3755addbf3585bba4b89fc"
+        },
+        {
+          "file": "before-reversal-20261114T111938Z.inventory-after.json",
+          "sha256": "551d3e54086f5cc7a25cc9654b09d80c3f2a9789b5fdaa222dca25d35f855b16"
+        },
+        {
+          "file": "after-reversal-20261114T112037Z.json",
+          "sha256": "c31bbde066be4222db778424a40e003b99f0b3dd555bd23dc370c63c5935be21"
+        },
+        {
+          "file": "after-reversal-20261114T112037Z.context.json",
+          "sha256": "d271cbd98ea5842d4ef089f635cc1084d092e3860557380b1f022fd7014dfe43"
+        },
+        {
+          "file": "after-reversal-20261114T112037Z.inventory-before.json",
+          "sha256": "e101fe2360ca40d2776d75316ed8b5f26504f79588b5971d83f6da09cb50ef3e"
+        },
+        {
+          "file": "after-reversal-20261114T112037Z.inventory-after.json",
+          "sha256": "bb3a6fb40b4a831a991389c8f655251ef59819f1c182f929d48aac8a2a41cfae"
+        },
+        {
+          "file": "revision-limit-error-20261114T112410Z.json",
+          "sha256": "47912e6d00d888ceb73e26643e1fbc3eb0f729a39c53d204fa65f0c9fc5b9f6e"
+        },
+        {
+          "file": "revision-limit-error-20261114T112410Z.context.json",
+          "sha256": "1af35d37d893a99fe0cd6c19f6a0a36b70c4c83d0c0188543daa8ab21f66757d"
+        },
+        {
+          "file": "revision-limit-error-20261114T112410Z.inventory-before.json",
+          "sha256": "3526538290721dcbffc8a30d04b5e3526e58d04201e75cad60ff9446c25f8cd3"
+        },
+        {
+          "file": "revision-limit-error-20261114T112410Z.inventory-after.json",
+          "sha256": "3ac18a3977c61f086e3a5eef9920f1dd1aaee2aad7a3ff6039713fe3118bd6d8"
+        }
+      ],
+      "derivation": "Review and select own-app capture facts, raw record hashes, timestamps, window identity/frame/scale and coverage limitations from the retained original records; omit desktop inventory and redact only the exact workspace executable prefix."
+    }
+  ]
+}

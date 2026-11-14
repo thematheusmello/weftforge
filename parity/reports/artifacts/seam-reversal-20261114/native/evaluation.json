@@ -1,0 +1,314 @@
+{
+  "scenario": "UI-NATIVE-SEAM-REVERSAL-001",
+  "kind": "implementation_only",
+  "evaluator_sha256": "ff5e33b3d1c0508091c3d0a510858c44a09115350afa4079e4f3ad1041d12c98",
+  "original_evaluator_sha256": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+  "limits": [
+    "Implementation-only native saved-output acceptance; no reference execution or parity claim.",
+    "Oriented curve parameters only; no arc-length equivalence, physical easing/twist, cloth fitting or simulation quality claim.",
+    "Default zero placements only; no large-translation coverage.",
+    "Saved files cannot establish selected/focused widgets, event timing, endpoint-guide rendering, visible revision-limit error or executing-process identity. Parent UI/process observations are required.",
+    "OBJ checks establish finite valid triangles/UVs/normals and bounded metre scale; they do not prove remesher sewing-point usage or simulation behavior."
+  ],
+  "self_check": {
+    "kind": "synthetic_in_memory_oracle_checks_only",
+    "status": "passed",
+    "positive_whole_document_checkpoints": 9,
+    "exact_nonlinear_interval_proof": {
+      "model": "A(u), Boriginal(1-v(u)); local s ranges over [0,1] in each map interval.",
+      "proof": "Exact rational affine coefficients: b1+(b0-b1)*v = b0+(b1-b0)*(1-v). Unchanged curve fields lift identical parameters to identical curve points for every s.",
+      "intervals_proved": [
+        {
+          "normalized_u_interval": [
+            "0",
+            "1/5"
+          ],
+          "normalized_v_interval": [
+            "0",
+            "7/10"
+          ],
+          "a_t_local_affine_coefficients": [
+            "2/5",
+            "3/25"
+          ],
+          "b_t_local_affine_coefficients": [
+            "0",
+            "21/50"
+          ],
+          "exact_polynomial_identity": true
+        },
+        {
+          "normalized_u_interval": [
+            "1/5",
+            "1"
+          ],
+          "normalized_v_interval": [
+            "7/10",
+            "1"
+          ],
+          "a_t_local_affine_coefficients": [
+            "13/25",
+            "12/25"
+          ],
+          "b_t_local_affine_coefficients": [
+            "21/50",
+            "9/50"
+          ],
+          "exact_polynomial_identity": true
+        }
+      ],
+      "curve_parameter_not_arc_length": true
+    },
+    "synthetic_obj_positive": {
+      "sha256": "33a66d07a991fc2a7b595c7e64963b55c7042498620feb02f7b1f8c328229d1c",
+      "vertices": 3,
+      "triangles": 1,
+      "uvs": 3,
+      "normals": 1,
+      "bounds_m": [
+        [
+          "0",
+          "1.4"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "minimum_twice_triangle_area_m2": "1.4",
+      "minimum_twice_uv_triangle_area": "1",
+      "finite_coordinates_uvs_and_normals": true
+    },
+    "negative_witnesses": {
+      "wrong_side_a_swapped": {
+        "status": "rejected",
+        "reason": "wrong_side_a_swapped.project.seams[1].a.t0: numeric value changed"
+      },
+      "map_mutated": {
+        "status": "rejected",
+        "reason": "map_mutated.project.seams[1].correspondence[1][1]: numeric value changed"
+      },
+      "extra_field": {
+        "status": "rejected",
+        "reason": "extra_field.project: field set changed"
+      },
+      "extra_revision": {
+        "status": "rejected",
+        "reason": "extra_revision.project.revision: typed value changed"
+      },
+      "stale_numeric_replay": {
+        "status": "rejected",
+        "reason": "stale_numeric_replay.project.resolution: numeric value changed"
+      },
+      "allocator_changed": {
+        "status": "rejected",
+        "reason": "allocator_changed.project.next_id: typed value changed"
+      },
+      "revision_limit_mutation": {
+        "status": "rejected",
+        "reason": "revision_limit_mutation.project.seams[1].b.t0: numeric value changed"
+      },
+      "nonfinite_obj": {
+        "status": "rejected",
+        "reason": "non-finite OBJ v"
+      },
+      "svg_control_drift_1e_6_m": {
+        "status": "rejected",
+        "reason": "SVG geometry differs from original."
+      }
+    },
+    "native_outputs_created": false
+  },
+  "checks": {
+    "declaration": {
+      "sha256": "5f1373081ab1e900c8d5b6e7cc1a210fef9b4d7fab582e9274dcfafe64620440",
+      "freeze_sha256": "eac9898cf2b57e988baa61814fef952c18fa724eb6ca420cb96c5e310dfe8ace",
+      "declared_at": "2026-11-14T11:06:18.400100+00:00",
+      "source_build_commit": "9d30a71bbc2b0e051d9eaddc42b5f3b7dab08bde",
+      "executable_sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+      "identity_is_claimed_by_declaration_requires_parent_process_record": true
+    },
+    "whole_document_checkpoints": {
+      "before-reverse": {
+        "all_fields_exact": true,
+        "revision": 15,
+        "resolution_m": "0.035",
+        "allocator": 24
+      },
+      "after-reverse": {
+        "all_fields_exact": true,
+        "revision": 16,
+        "resolution_m": "0.04",
+        "allocator": 24
+      },
+      "undo": {
+        "all_fields_exact": true,
+        "revision": 17,
+        "resolution_m": "0.035",
+        "allocator": 24
+      },
+      "undo-tab": {
+        "all_fields_exact": true,
+        "revision": 17,
+        "resolution_m": "0.035",
+        "allocator": 24
+      },
+      "redo": {
+        "all_fields_exact": true,
+        "revision": 18,
+        "resolution_m": "0.04",
+        "allocator": 24
+      },
+      "restored": {
+        "all_fields_exact": true,
+        "revision": 19,
+        "resolution_m": "0.04",
+        "allocator": 24
+      },
+      "reopened": {
+        "all_fields_exact": true,
+        "revision": 19,
+        "resolution_m": "0.04",
+        "allocator": 24
+      },
+      "max-loaded": {
+        "all_fields_exact": true,
+        "revision": 18446744073709551615,
+        "resolution_m": "0.035",
+        "allocator": 24
+      },
+      "max-rejected": {
+        "all_fields_exact": true,
+        "revision": 18446744073709551615,
+        "resolution_m": "0.035",
+        "allocator": 24
+      }
+    },
+    "exact_no_change_byte_pairs": [
+      {
+        "before": "undo.weftforge",
+        "after": "undo-tab.weftforge",
+        "sha256": "f8002a77b70ccbfb17304ba546d0c29abebbcb48886f45e01c438a5d0c6bc330",
+        "bytes_identical": true
+      },
+      {
+        "before": "restored.weftforge",
+        "after": "reopened.weftforge",
+        "sha256": "a240c2ae33b3d933872201817bba2f17ad4fae3fe898d2141f3ed8e0357f9a1d",
+        "bytes_identical": true
+      },
+      {
+        "before": "max-loaded.weftforge",
+        "after": "max-rejected.weftforge",
+        "sha256": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+        "bytes_identical": true
+      }
+    ],
+    "input_save_byte_equality_informational_only": {
+      "nonlinear_input_to_before": true,
+      "max_input_to_loaded": true
+    },
+    "nonlinear_oriented_interval_pairing": {
+      "model": "A(u), Boriginal(1-v(u)); local s ranges over [0,1] in each map interval.",
+      "proof": "Exact rational affine coefficients: b1+(b0-b1)*v = b0+(b1-b0)*(1-v). Unchanged curve fields lift identical parameters to identical curve points for every s.",
+      "intervals_proved": [
+        {
+          "normalized_u_interval": [
+            "0",
+            "1/5"
+          ],
+          "normalized_v_interval": [
+            "0",
+            "7/10"
+          ],
+          "a_t_local_affine_coefficients": [
+            "2/5",
+            "3/25"
+          ],
+          "b_t_local_affine_coefficients": [
+            "0",
+            "21/50"
+          ],
+          "exact_polynomial_identity": true
+        },
+        {
+          "normalized_u_interval": [
+            "1/5",
+            "1"
+          ],
+          "normalized_v_interval": [
+            "7/10",
+            "1"
+          ],
+          "a_t_local_affine_coefficients": [
+            "13/25",
+            "12/25"
+          ],
+          "b_t_local_affine_coefficients": [
+            "21/50",
+            "9/50"
+          ],
+          "exact_polynomial_identity": true
+        }
+      ],
+      "curve_parameter_not_arc_length": true
+    },
+    "two_reversals": "Only declared revision and resolution differ; all other document fields exact.",
+    "obj": {
+      "sha256": "6c32bcd9fc9d3b3972ad1bab7465bc37a62acab19efc667cc93bee51745cb460",
+      "vertices": 1159,
+      "triangles": 2192,
+      "uvs": 1159,
+      "normals": 1159,
+      "bounds_m": [
+        [
+          "0E-17",
+          "1.39999999999999991"
+        ],
+        [
+          "0E-17",
+          "0.75000000000000000"
+        ],
+        [
+          "0E-17",
+          "0E-17"
+        ]
+      ],
+      "minimum_twice_triangle_area_m2": "0.0000039650872349739656524658203116",
+      "minimum_twice_uv_triangle_area": "0.0000039650872349739656524658203116",
+      "finite_coordinates_uvs_and_normals": true
+    },
+    "obj_checker": "Exact unchanged original evaluator obj_check.",
+    "svg": {
+      "geometry_equal_original_fine": true,
+      "closed_editable_piece_paths": 2,
+      "editable_cubic_segments": 1,
+      "physical_user_unit": "millimetre",
+      "sha256": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4"
+    },
+    "native_ui_execution_requires_parent_observation_record": true
+  },
+  "status": "passed_for_supplied_outputs",
+  "inputs_preserved": {
+    "input-nonlinear.weftforge": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+    "input-revision-limit.weftforge": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+    "before-reverse.weftforge": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+    "after-reverse.weftforge": "c5299308d13cc078c7e29aec3ccca0c353045b6bb913be9508842cf64d7b99fb",
+    "undo.weftforge": "f8002a77b70ccbfb17304ba546d0c29abebbcb48886f45e01c438a5d0c6bc330",
+    "undo-tab.weftforge": "f8002a77b70ccbfb17304ba546d0c29abebbcb48886f45e01c438a5d0c6bc330",
+    "redo.weftforge": "67cb960f10f9695395dd3c4a51834b0036c39b0e3ea5aa8b320ba0efa131e5e3",
+    "restored.weftforge": "a240c2ae33b3d933872201817bba2f17ad4fae3fe898d2141f3ed8e0357f9a1d",
+    "reopened.weftforge": "a240c2ae33b3d933872201817bba2f17ad4fae3fe898d2141f3ed8e0357f9a1d",
+    "max-loaded.weftforge": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+    "max-rejected.weftforge": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+    "restored.obj": "6c32bcd9fc9d3b3972ad1bab7465bc37a62acab19efc667cc93bee51745cb460",
+    "restored.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+    "candidate-pretest.json": "5d651dba1e0674f33c3ea9d08f20c4dd096fbe3af639a6a47a5615f83dfef9e4",
+    "ui-declaration.json": "5f1373081ab1e900c8d5b6e7cc1a210fef9b4d7fab582e9274dcfafe64620440",
+    "preregistration-freeze.json": "eac9898cf2b57e988baa61814fef952c18fa724eb6ca420cb96c5e310dfe8ace"
+  }
+}

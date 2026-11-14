@@ -1,0 +1,109 @@
+{
+  "id": "UI-BOUNDED-JOIN-001",
+  "declared_at": "2026-11-14T09:08:32.269106+00:00",
+  "kind": "implementation_only",
+  "status_at_declaration": "preregistered_before_candidate_native_launch",
+  "source_build_commit": "26dd58535868aadc90e92636656c49426e02dc9c",
+  "source_tree_sha256": "9630666afb1b944b98bff68adca748f31f15c6c07518f7918b4e5c1c2270a812",
+  "source_tree_hash_encoding": "SHA-256 of UTF-8 compact JSON source_hashes with sorted keys/separators(',',':').",
+  "scoped_source_file_count": 31,
+  "executable_basename": "weftforge",
+  "executable_sha256": "9c8b09363ab56076e7154235c6e3c619c41fb6e1746e8fd4c3353903741467eb",
+  "cli_executable_sha256": "ca49402e497f71a2785bd96a6ef936cb320ffef856acb682824fe66e108fa25a",
+  "candidate_pretest_sha256": "d267d79c90f5d25f7fbde4be3d92f7321d8392d4655eec79f15b31a2aafe9436",
+  "evaluator_sha256": "5cda873ce5898d15c550c966e3e9423e75e4835ece02022c062bc02d1bae5002",
+  "original_evaluator_sha256": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+  "historical_baseline_sha256": "1deffbc485b9c1d4b2206e3c5cbe94d0181e2afc75ebb96cd2114cae1696b4ab",
+  "required_files": [
+    "before-split.weftforge",
+    "after-split.weftforge",
+    "after-focus.weftforge",
+    "after-join.weftforge",
+    "after-join-tab.weftforge",
+    "join-undone.weftforge",
+    "join-redone.weftforge",
+    "coarse.weftforge",
+    "fine.weftforge",
+    "reopened.weftforge",
+    "after-corner-error.weftforge",
+    "coarse.obj",
+    "coarse.svg",
+    "fine.obj",
+    "fine.svg",
+    "ui-declaration.json"
+  ],
+  "initial_state": "Empty native GUI project. All construction is original; no project fixture import.",
+  "actions": [
+    "Launch the separately identified candidate after this declaration is frozen.",
+    "Create Curve A and Curve B rectangles: width 0.4 m, height 0.6 m, pattern origins [0,0] and [1,0]. Keep both default zero 3D placements.",
+    "Select Curve A top boundary ID 9, enable cubic controls and enter P1=[0.3,0.8], P2=[0.1,0.8] m.",
+    "Sew to Curve B top boundary ID 18 with reversed full intervals, then save before-split.weftforge.",
+    "Split retained curve ID 9 at curve parameter t=0.4, then save after-split.weftforge.",
+    "Focus first-child P1 X without editing, then save after-focus.weftforge. Refocus P1 X immediately before Join if the save changes focus.",
+    "Activate Join with next boundary for the retained first child, then save after-join.weftforge.",
+    "Press Tab to expose any old child numeric text replay, then save after-join-tab.weftforge.",
+    "Invoke one Undo and save join-undone.weftforge; invoke one Redo and save join-redone.weftforge.",
+    "Change resolution to 0.09 m, save coarse.weftforge and export coarse.obj/coarse.svg from this accepted construction.",
+    "Change resolution to 0.035 m, save fine.weftforge and export fine.obj/fine.svg from this accepted construction.",
+    "Quit the native process, relaunch the same identified candidate, reopen fine.weftforge and save reopened.weftforge.",
+    "Select a rectangle corner boundary, attempt Join with next boundary, retain the visible validation error and save after-corner-error.weftforge.",
+    "Retain UI observations/screenshots and process/executable identity in a separate parent record; no evaluator or CLI-generated project substitutes for native snapshots."
+  ],
+  "criteria": {
+    "authored_polynomial_and_control_absolute_m": "1e-12",
+    "full_sewn_point_pair_absolute_m": "1e-12",
+    "normalized_affine_interval_absolute": "1e-12",
+    "proof_method": "Exact rational power-basis restrictions of serialized decimal controls. Max squared Bernstein control difference bounds every parameter; no sample-only acceptance.",
+    "stable_baseline_ids": {
+      "pieces": [
+        2,
+        11
+      ],
+      "retained_curve": 9,
+      "other_top_curve": 18,
+      "original_seam": 20
+    },
+    "discover_split_ids": "Exact point/curve/seam ID set differences after validating baseline IDs.",
+    "join_identity": "Retain selected curve/start point; retire second child and shared point; allocate/reuse no IDs.",
+    "seam_identity": "Keep both split seam records, IDs, names, order and normalized correspondence. Only child-side curve references and affine interval endpoints may change.",
+    "one_transaction": "Split, successful Join, Undo, Redo and each resolution edit each advance exactly one revision.",
+    "undo_redo_construction": "Undo restores after-split construction, Redo restores after-join construction; compare all fields except revision and reserved next_id. Allocator remains monotone and Redo allocates no IDs.",
+    "reopen_construction": "Restore all fine construction fields; revision and next_id excluded from equality, with next_id separately required unchanged.",
+    "no_change_focus_bytes": "after-focus.weftforge must be byte-identical to after-split.weftforge.",
+    "no_stale_buffer_replay_bytes": "after-join-tab.weftforge must be byte-identical to after-join.weftforge.",
+    "corner_rejection_bytes": "after-corner-error.weftforge must be byte-identical to reopened.weftforge.",
+    "unintended_changes": "All pieces, placements, grain, materials, mannequin, unrelated curves/points and document fields remain exact outside declared changes.",
+    "refinement": "Only revision/resolution changes. Fine mesh must increase vertices; all OBJ triangle areas/UV areas are positive, normals/winding/indices valid and metre scale preserved.",
+    "svg": "Two closed editable piece paths, exactly one retained editable cubic after Join, millimetre units and all control geometry within the same absolute bound."
+  },
+  "independence": {
+    "allowed_reads": [
+      "AGENTS.md",
+      "reviewed spec/features/PAT-005-sewn-curve-editing.md",
+      "original sewn-curve evaluator and fixture evidence",
+      "candidate-pretest.json identity metadata only"
+    ],
+    "prohibited_reads_actions": [
+      "No new Rust join/UI implementation read",
+      "No native UI operation",
+      "No Cargo execution",
+      "No tracked-file/root metadata edits"
+    ],
+    "synthetic_self_checks": [
+      "Exact positive split and join",
+      "1e-6 m control drift rejection",
+      "1e-6 normalized interval drift rejection",
+      "Retired ID rejection",
+      "Unintended material change rejection",
+      "1e-6 m stale SVG cache geometry rejection"
+    ]
+  },
+  "limitations": [
+    "No reference interaction or parity claim.",
+    "No cloth fitting or simulation quality claim.",
+    "Both placements remain default zero: pattern and world geometry norms coincide. No large-translation native coverage.",
+    "No native coalesced-event UI coverage; source tests cover that separate case.",
+    "Saved files cannot prove GUI gesture identity, actual input focus/event timing, displayed error text or executing-process attribution. Parent observations are required."
+  ],
+  "publication_gate": "Private until native outputs exist and privacy review completes. Every eventual published artifact must be Git-tracked and registry/map checks run from a clean checkout."
+}
