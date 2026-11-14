@@ -1,0 +1,317 @@
+{
+  "scenario": "UI-NATIVE-SEAM-REVERSAL-001",
+  "kind": "portable_exact_byte_native_reversal_evidence_copy",
+  "status": "passed_for_supplied_outputs",
+  "source_build_commit": "9d30a71bbc2b0e051d9eaddc42b5f3b7dab08bde",
+  "native_executable_sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+  "evaluator_sha256": "ff5e33b3d1c0508091c3d0a510858c44a09115350afa4079e4f3ad1041d12c98",
+  "preregistration_freeze_sha256": "eac9898cf2b57e988baa61814fef952c18fa724eb6ca420cb96c5e310dfe8ace",
+  "evaluation_sha256": "02045801f730180ff51ad1d99d4c18429340af134fe6d932ba32bdb23ed48cfe",
+  "required_native_inputs": [
+    "before-reverse.weftforge",
+    "after-reverse.weftforge",
+    "undo.weftforge",
+    "undo-tab.weftforge",
+    "redo.weftforge",
+    "restored.weftforge",
+    "reopened.weftforge",
+    "max-loaded.weftforge",
+    "max-rejected.weftforge",
+    "restored.obj",
+    "restored.svg"
+  ],
+  "exact_source_copy_provenance": {
+    "README.md": {
+      "sha256": "f7de40f91ca103959260f252213a6c990e9dee9013053260eb70d08e6d51f309",
+      "bytes": 2955,
+      "exact_source_bytes": true
+    },
+    "after-reverse.weftforge": {
+      "sha256": "c5299308d13cc078c7e29aec3ccca0c353045b6bb913be9508842cf64d7b99fb",
+      "bytes": 5336,
+      "exact_source_bytes": true
+    },
+    "before-reverse.weftforge": {
+      "sha256": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+      "bytes": 5337,
+      "exact_source_bytes": true
+    },
+    "candidate-pretest.json": {
+      "sha256": "5d651dba1e0674f33c3ea9d08f20c4dd096fbe3af639a6a47a5615f83dfef9e4",
+      "bytes": 5099,
+      "exact_source_bytes": true
+    },
+    "evaluation.json": {
+      "sha256": "02045801f730180ff51ad1d99d4c18429340af134fe6d932ba32bdb23ed48cfe",
+      "bytes": 10937,
+      "exact_source_bytes": true
+    },
+    "fixture-provenance.json": {
+      "sha256": "17f92064ebd89616013f0678b2118e9a2b5d7e04c13affa07a33362dda895a27",
+      "bytes": 2311,
+      "exact_source_bytes": true
+    },
+    "input-nonlinear.weftforge": {
+      "sha256": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+      "bytes": 5337,
+      "exact_source_bytes": true
+    },
+    "input-revision-limit.weftforge": {
+      "sha256": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+      "bytes": 5355,
+      "exact_source_bytes": true
+    },
+    "max-loaded.weftforge": {
+      "sha256": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+      "bytes": 5355,
+      "exact_source_bytes": true
+    },
+    "max-rejected.weftforge": {
+      "sha256": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+      "bytes": 5355,
+      "exact_source_bytes": true
+    },
+    "missing-input-check.json": {
+      "sha256": "e033e20e6d0b6748ff708c76e952a38e2f6c73224261d01506534687656de7ec",
+      "bytes": 4961,
+      "exact_source_bytes": true
+    },
+    "original-evaluators/verify_curve_outputs.py": {
+      "sha256": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+      "bytes": 24977,
+      "exact_source_bytes": true
+    },
+    "original-inputs/fine.svg": {
+      "sha256": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+      "bytes": 629,
+      "exact_source_bytes": true
+    },
+    "original-inputs/fine.weftforge": {
+      "sha256": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+      "bytes": 5279,
+      "exact_source_bytes": true
+    },
+    "original-inputs/ui-declaration.json": {
+      "sha256": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f",
+      "bytes": 7068,
+      "exact_source_bytes": true
+    },
+    "pre-evaluation-freeze-check.json": {
+      "sha256": "6ecd3bb935fd3f1d4b18a6dc1e4427f7162ac516cd8458072f11007880e01334",
+      "bytes": 300,
+      "exact_source_bytes": true
+    },
+    "prepare_inputs.py": {
+      "sha256": "987a9168f69f7ceca07315f816a62ba93c8b38dab41d4283403f3b95d54ee88f",
+      "bytes": 5081,
+      "exact_source_bytes": true
+    },
+    "preregistration-freeze.json": {
+      "sha256": "eac9898cf2b57e988baa61814fef952c18fa724eb6ca420cb96c5e310dfe8ace",
+      "bytes": 2330,
+      "exact_source_bytes": true
+    },
+    "redo.weftforge": {
+      "sha256": "67cb960f10f9695395dd3c4a51834b0036c39b0e3ea5aa8b320ba0efa131e5e3",
+      "bytes": 5336,
+      "exact_source_bytes": true
+    },
+    "reopened.weftforge": {
+      "sha256": "a240c2ae33b3d933872201817bba2f17ad4fae3fe898d2141f3ed8e0357f9a1d",
+      "bytes": 5336,
+      "exact_source_bytes": true
+    },
+    "restored.obj": {
+      "sha256": "6c32bcd9fc9d3b3972ad1bab7465bc37a62acab19efc667cc93bee51745cb460",
+      "bytes": 280317,
+      "exact_source_bytes": true
+    },
+    "restored.svg": {
+      "sha256": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+      "bytes": 629,
+      "exact_source_bytes": true
+    },
+    "restored.weftforge": {
+      "sha256": "a240c2ae33b3d933872201817bba2f17ad4fae3fe898d2141f3ed8e0357f9a1d",
+      "bytes": 5336,
+      "exact_source_bytes": true
+    },
+    "self-check.json": {
+      "sha256": "57124746db81f3b20ce22dec0e08952865071801472f1e4c9aa1d5cd7c663ebd",
+      "bytes": 4593,
+      "exact_source_bytes": true
+    },
+    "ui-declaration.draft.json": {
+      "sha256": "4aab63530f77d50e0fe42f56d032a15547d80c3aa37dfc0043e27819e1fba3cc",
+      "bytes": 9957,
+      "exact_source_bytes": true
+    },
+    "ui-declaration.json": {
+      "sha256": "5f1373081ab1e900c8d5b6e7cc1a210fef9b4d7fab582e9274dcfafe64620440",
+      "bytes": 10001,
+      "exact_source_bytes": true
+    },
+    "undo-tab.weftforge": {
+      "sha256": "f8002a77b70ccbfb17304ba546d0c29abebbcb48886f45e01c438a5d0c6bc330",
+      "bytes": 5337,
+      "exact_source_bytes": true
+    },
+    "undo.weftforge": {
+      "sha256": "f8002a77b70ccbfb17304ba546d0c29abebbcb48886f45e01c438a5d0c6bc330",
+      "bytes": 5337,
+      "exact_source_bytes": true
+    },
+    "verify_native_reversal.py": {
+      "sha256": "ff5e33b3d1c0508091c3d0a510858c44a09115350afa4079e4f3ad1041d12c98",
+      "bytes": 20990,
+      "exact_source_bytes": true
+    }
+  },
+  "artifact_hashes": {
+    "README.md": {
+      "sha256": "f7de40f91ca103959260f252213a6c990e9dee9013053260eb70d08e6d51f309",
+      "bytes": 2955
+    },
+    "REPLAY.md": {
+      "sha256": "5f58ae9ad488bad9af730c6cc8b0a9736733c3aa5b76255ffdb9e78b52874fe7",
+      "bytes": 2456
+    },
+    "after-reverse.weftforge": {
+      "sha256": "c5299308d13cc078c7e29aec3ccca0c353045b6bb913be9508842cf64d7b99fb",
+      "bytes": 5336
+    },
+    "before-reverse.weftforge": {
+      "sha256": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+      "bytes": 5337
+    },
+    "candidate-pretest.json": {
+      "sha256": "5d651dba1e0674f33c3ea9d08f20c4dd096fbe3af639a6a47a5615f83dfef9e4",
+      "bytes": 5099
+    },
+    "evaluation.json": {
+      "sha256": "02045801f730180ff51ad1d99d4c18429340af134fe6d932ba32bdb23ed48cfe",
+      "bytes": 10937
+    },
+    "fixture-provenance.json": {
+      "sha256": "17f92064ebd89616013f0678b2118e9a2b5d7e04c13affa07a33362dda895a27",
+      "bytes": 2311
+    },
+    "independent-summary.json": {
+      "sha256": "1086f99185c7441420ac691d7faf12a58f2fe38a014d07fd10138bf9036ee7b3",
+      "bytes": 8597
+    },
+    "input-nonlinear.weftforge": {
+      "sha256": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+      "bytes": 5337
+    },
+    "input-revision-limit.weftforge": {
+      "sha256": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+      "bytes": 5355
+    },
+    "max-loaded.weftforge": {
+      "sha256": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+      "bytes": 5355
+    },
+    "max-rejected.weftforge": {
+      "sha256": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+      "bytes": 5355
+    },
+    "missing-input-check.json": {
+      "sha256": "e033e20e6d0b6748ff708c76e952a38e2f6c73224261d01506534687656de7ec",
+      "bytes": 4961
+    },
+    "original-evaluators/verify_curve_outputs.py": {
+      "sha256": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+      "bytes": 24977
+    },
+    "original-inputs/fine.svg": {
+      "sha256": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+      "bytes": 629
+    },
+    "original-inputs/fine.weftforge": {
+      "sha256": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+      "bytes": 5279
+    },
+    "original-inputs/ui-declaration.json": {
+      "sha256": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f",
+      "bytes": 7068
+    },
+    "portable-replay-check.json": {
+      "sha256": "56917f6f610caa8c730a25328afd5aef911f07c059c32699ede3d8eaeff6dad5",
+      "bytes": 560
+    },
+    "pre-evaluation-freeze-check.json": {
+      "sha256": "6ecd3bb935fd3f1d4b18a6dc1e4427f7162ac516cd8458072f11007880e01334",
+      "bytes": 300
+    },
+    "prepare_inputs.py": {
+      "sha256": "987a9168f69f7ceca07315f816a62ba93c8b38dab41d4283403f3b95d54ee88f",
+      "bytes": 5081
+    },
+    "preregistration-freeze.json": {
+      "sha256": "eac9898cf2b57e988baa61814fef952c18fa724eb6ca420cb96c5e310dfe8ace",
+      "bytes": 2330
+    },
+    "privacy-check.json": {
+      "sha256": "2bdea5a37c7a065bb8a4fbd7e9b5459e9949e3893a02b28fb45b631015e40413",
+      "bytes": 436
+    },
+    "redo.weftforge": {
+      "sha256": "67cb960f10f9695395dd3c4a51834b0036c39b0e3ea5aa8b320ba0efa131e5e3",
+      "bytes": 5336
+    },
+    "reopened.weftforge": {
+      "sha256": "a240c2ae33b3d933872201817bba2f17ad4fae3fe898d2141f3ed8e0357f9a1d",
+      "bytes": 5336
+    },
+    "restored.obj": {
+      "sha256": "6c32bcd9fc9d3b3972ad1bab7465bc37a62acab19efc667cc93bee51745cb460",
+      "bytes": 280317
+    },
+    "restored.svg": {
+      "sha256": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+      "bytes": 629
+    },
+    "restored.weftforge": {
+      "sha256": "a240c2ae33b3d933872201817bba2f17ad4fae3fe898d2141f3ed8e0357f9a1d",
+      "bytes": 5336
+    },
+    "self-check.json": {
+      "sha256": "57124746db81f3b20ce22dec0e08952865071801472f1e4c9aa1d5cd7c663ebd",
+      "bytes": 4593
+    },
+    "ui-declaration.draft.json": {
+      "sha256": "4aab63530f77d50e0fe42f56d032a15547d80c3aa37dfc0043e27819e1fba3cc",
+      "bytes": 9957
+    },
+    "ui-declaration.json": {
+      "sha256": "5f1373081ab1e900c8d5b6e7cc1a210fef9b4d7fab582e9274dcfafe64620440",
+      "bytes": 10001
+    },
+    "undo-tab.weftforge": {
+      "sha256": "f8002a77b70ccbfb17304ba546d0c29abebbcb48886f45e01c438a5d0c6bc330",
+      "bytes": 5337
+    },
+    "undo.weftforge": {
+      "sha256": "f8002a77b70ccbfb17304ba546d0c29abebbcb48886f45e01c438a5d0c6bc330",
+      "bytes": 5337
+    },
+    "verify_native_reversal.py": {
+      "sha256": "ff5e33b3d1c0508091c3d0a510858c44a09115350afa4079e4f3ad1041d12c98",
+      "bytes": 20990
+    }
+  },
+  "manifest_self_hash_omitted": true,
+  "raw_source_and_native_artifacts_unchanged": true,
+  "portable_replay_report_bytes_identical": true,
+  "derived_metadata": [
+    "independent-summary.json",
+    "REPLAY.md",
+    "privacy-check.json",
+    "portable-replay-check.json",
+    "bundle-manifest.json"
+  ],
+  "redactions_or_path_only_derivations": [],
+  "parent_ui_evidence": "Parent screenshots/process observations are supplemented separately. No captures, SDK or parent log were read, edited or packaged by the independent evaluator.",
+  "publication_gate": "Root review, all artifacts Git-tracked, registry/map checks from a clean checkout. Saved-output acceptance is implementation-only."
+}

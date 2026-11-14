@@ -1,0 +1,80 @@
+{
+  "kind": "declared_derived_inputs_not_native_outputs",
+  "source": "parity/reports/artifacts/curve-join-20261114/native/fine.weftforge",
+  "source_sha256": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+  "source_native_scenario": "UI-BOUNDED-JOIN-001",
+  "source_build_commit": "26dd58535868aadc90e92636656c49426e02dc9c",
+  "source_provenance": "Original GUI-authored Curve A/Curve B panels with default zero placements. See exact copied original-inputs/ui-declaration.json.",
+  "asserted_baseline": {
+    "revision": 14,
+    "next_id": 24,
+    "retained_parent_curve": 9,
+    "piece_ids": [
+      2,
+      11
+    ],
+    "seam_ids": [
+      20,
+      23
+    ],
+    "placements": "default_zero"
+  },
+  "derived": {
+    "input-nonlinear.weftforge": {
+      "sha256": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+      "bytes": 5337,
+      "only_typed_changes": {
+        "project.revision": [
+          14,
+          15
+        ],
+        "project.seams[id=23].correspondence": [
+          [
+            0,
+            0
+          ],
+          [
+            0.2,
+            0.7
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "other_typed_fields_exact": true
+    },
+    "input-revision-limit.weftforge": {
+      "sha256": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+      "bytes": 5355,
+      "derived_from": "input-nonlinear.weftforge",
+      "only_typed_changes": {
+        "project.revision": [
+          15,
+          18446744073709551615
+        ]
+      },
+      "other_typed_fields_exact": true
+    }
+  },
+  "exact_original_copies": {
+    "original-inputs/fine.weftforge": {
+      "sha256": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+      "bytes": 5279
+    },
+    "original-inputs/fine.svg": {
+      "sha256": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+      "bytes": 629
+    },
+    "original-inputs/ui-declaration.json": {
+      "sha256": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f",
+      "bytes": 7068
+    },
+    "original-evaluators/verify_curve_outputs.py": {
+      "sha256": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+      "bytes": 24977
+    }
+  },
+  "native_outputs_created": false
+}

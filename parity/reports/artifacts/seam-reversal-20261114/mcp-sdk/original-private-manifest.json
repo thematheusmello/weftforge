@@ -1,0 +1,58 @@
+{
+  "kind": "private_bounded_official_sdk_reversal_evidence",
+  "status": "passed_legacy_sdk_reversal_and_native_comparison",
+  "created_at": "2026-11-14T11:24:37.435055+00:00",
+  "cli_sha256": "ca49402e497f71a2785bd96a6ef936cb320ffef856acb682824fe66e108fa25a",
+  "cli_byte_identical_to_previous_join_sdk": true,
+  "new_cli_implementation_claimed": false,
+  "frozen_expectation_sha256": "d21c769518c65253c83a7d357fcf41c8cef29e92603de081f301274205c1efe9",
+  "immutable_native_input_sha256": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+  "native_after_reverse_sha256": "c5299308d13cc078c7e29aec3ccca0c353045b6bb913be9508842cf64d7b99fb",
+  "native_sdk_bytes_equal": true,
+  "source_input_unchanged": true,
+  "sentinel_bytes_unchanged": true,
+  "files": {
+    "expectation.json": {
+      "sha256": "d21c769518c65253c83a7d357fcf41c8cef29e92603de081f301274205c1efe9",
+      "bytes": 2596
+    },
+    "expected-reversed.weftforge": {
+      "sha256": "2f42ec3dac1331164be31335ebd28bc1983d8e947a2509e4a7118eb877b74cd3",
+      "bytes": 1989
+    },
+    "max-revision-input.weftforge": {
+      "sha256": "62c630043f9c6c1afdc2d410644e6497aa31bed39fd45926f442803593930ec6",
+      "bytes": 2008
+    },
+    "run-official-sdk.py": {
+      "sha256": "187670f27564692326551484ca062d50365dee01ef15c0e33afe23562bcaf54b",
+      "bytes": 10802
+    },
+    "sdk-rejection-sentinel.weftforge": {
+      "sha256": "45514129dfe3bc492fa0552f2ac86e00158b88e3289607f2e8346afdd048b201",
+      "bytes": 47
+    },
+    "sdk-report.json": {
+      "sha256": "04672377f22742a0b43d6284e67bdf5bc2e3b818d7c9a388213f0bcf421492e8",
+      "bytes": 6887
+    },
+    "sdk-reversed.weftforge": {
+      "sha256": "c5299308d13cc078c7e29aec3ccca0c353045b6bb913be9508842cf64d7b99fb",
+      "bytes": 5336
+    },
+    "sdk-transcript.json": {
+      "sha256": "07eb3c45db6a5d8fa745644faf2dc1e1dfeabd946dcc529f315ed2d4318cc6f5",
+      "bytes": 46187
+    },
+    "server-stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "limits": [
+    "Legacy 2025-11-25 local stdio only; no modern-client or reference-parity claim.",
+    "No native GUI actions, Cargo, installation, network or listeners.",
+    "Native output was read only after root confirmed it immutable, and after expectation freeze.",
+    "Independent reversal oracle was not read or modified."
+  ]
+}

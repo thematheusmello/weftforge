@@ -1,0 +1,150 @@
+{
+  "id": "UI-NATIVE-SEAM-REVERSAL-001",
+  "declared_at": "2026-11-14T11:06:18.400100+00:00",
+  "kind": "implementation_only",
+  "status_at_declaration": "preregistered_before_candidate_native_launch",
+  "source_build_commit": "9d30a71bbc2b0e051d9eaddc42b5f3b7dab08bde",
+  "source_tree_sha256": "48815c83ce2aec4dffb065eb98a008ad7cc6ebe85ccc0abd7e1452635eaf29a8",
+  "source_tree_hash_encoding": "SHA-256 of UTF-8 compact JSON source_hashes with sorted keys/separators(',',':').",
+  "scoped_source_file_count": 32,
+  "executable_basename": "weftforge",
+  "executable_sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+  "cli_executable_sha256": "ca49402e497f71a2785bd96a6ef936cb320ffef856acb682824fe66e108fa25a",
+  "package_file_hashes": {
+    "LICENSE-APACHE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "LICENSE-MIT": "5a79a5be6e18069ea095bcb13f724f90cee6a70b1fd6b5e2b1f505f050c25b0d",
+    "README.md": "ee71c4d9880d5bd9139fb3d10a32b24b9100801b5b572ed493a5a0a67e31795f",
+    "THIRD_PARTY.md": "da5201bd1cadff85193d02040d0f99b7a7b4949fe4857684f91efaa1f5799a0d",
+    "WeftForge.app/Contents/Info.plist": "5ac9539a4fb95ced9cc9463a5840176f69b86a826c39be0f7971378d93c218b5",
+    "WeftForge.app/Contents/MacOS/weftforge": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+    "weftforge": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+    "weftforge-cli": "ca49402e497f71a2785bd96a6ef936cb320ffef856acb682824fe66e108fa25a"
+  },
+  "candidate_pretest_sha256": "5d651dba1e0674f33c3ea9d08f20c4dd096fbe3af639a6a47a5615f83dfef9e4",
+  "evaluator_sha256": "ff5e33b3d1c0508091c3d0a510858c44a09115350afa4079e4f3ad1041d12c98",
+  "original_evaluator_sha256": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+  "source_baseline_sha256": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+  "fixture_sha256": {
+    "input-nonlinear.weftforge": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+    "input-revision-limit.weftforge": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d"
+  },
+  "required_files": [
+    "input-nonlinear.weftforge",
+    "input-revision-limit.weftforge",
+    "before-reverse.weftforge",
+    "after-reverse.weftforge",
+    "undo.weftforge",
+    "undo-tab.weftforge",
+    "redo.weftforge",
+    "restored.weftforge",
+    "reopened.weftforge",
+    "max-loaded.weftforge",
+    "max-rejected.weftforge",
+    "restored.obj",
+    "restored.svg",
+    "candidate-pretest.json",
+    "ui-declaration.json",
+    "preregistration-freeze.json"
+  ],
+  "initial_state": "New separately identified native candidate. Open input-nonlinear.weftforge; no selected piece or curve. Original GUI-authored two panels and default zero placements; nonlinear map is a declared external input edit.",
+  "actions": [
+    "After this declaration/evaluator freeze is recorded, launch the newly identified native candidate.",
+    "Open input-nonlinear.weftforge without selecting any piece or curve; save before-reverse.weftforge.",
+    "Enter valid global resolution 0.04 m while focused, without Tab; click Reverse for seam ID 23. Save after-reverse.weftforge. Expected revision 16: pending resolution and B-only swap commit together once.",
+    "Refocus the resolution 0.04 field without editing; invoke one Undo and save undo.weftforge. Press Tab and save undo-tab.weftforge. Expected revision 17, resolution 0.035 m and original B orientation; no stale 0.04 replay.",
+    "Invoke one Redo and save redo.weftforge. Expected revision 18, resolution 0.04 m and B flipped.",
+    "Reverse seam 23 again and save restored.weftforge. Expected revision 19, resolution 0.04 m and original B orientation.",
+    "Export restored.obj and restored.svg from the accepted restored document.",
+    "Quit the candidate; relaunch the same executable, open restored.weftforge and save reopened.weftforge.",
+    "Open input-revision-limit.weftforge and save max-loaded.weftforge. With no pending numeric draft, click Reverse for seam 23. Retain the visible revision-limit error and save max-rejected.weftforge.",
+    "The app may remain saved on the readonly revision-limit case. Retain screenshots and parent observations for process identity, input focus/event order, exact seam row, both endpoint-guide pairings and visible rejection. No evaluator-generated project may substitute for a native snapshot."
+  ],
+  "criteria": {
+    "whole_document_equality": "Compare all top-level and project fields against independent expected field edits. Only declared revision, global resolution and seam 23 B t0/t1 may differ; preserve all other fields, list order and stable IDs exactly.",
+    "baseline_and_inputs": "Exact original fine.weftforge SHA; input-nonlinear changes only seam 23 correspondence to [[0,0],[0.2,0.7],[1,1]] and revision 14 to 15. Revision-limit input changes only revision to 18446744073709551615.",
+    "reversal": "Exchange only seam 23 side B t0/t1. Preserve side A, seam 20, both names, order, curve references, normalized correspondence, construction, materials, placements, mannequin and allocator 24.",
+    "snapshot_revisions": {
+      "before-reverse": 15,
+      "after-reverse": 16,
+      "undo": 17,
+      "undo-tab": 17,
+      "redo": 18,
+      "restored": 19,
+      "reopened": 19,
+      "max-loaded": 18446744073709551615,
+      "max-rejected": 18446744073709551615
+    },
+    "snapshot_resolution_m": {
+      "before-reverse": 0.035,
+      "after-reverse": 0.04,
+      "undo": 0.035,
+      "undo-tab": 0.035,
+      "redo": 0.04,
+      "restored": 0.04,
+      "reopened": 0.04,
+      "max-loaded": 0.035,
+      "max-rejected": 0.035
+    },
+    "nonlinear_pairing_proof": "For each stored map span prove exact rational affine identity Bnew(v)=Boriginal(1-v), with A and map unchanged. Unchanged curve fields imply identical evaluated curve points under those parameters for every local s. This is oriented-interval algebra, not physical or reference equivalence.",
+    "two_reversals": "Restore every original input field exactly except the declared resolution and revision changes.",
+    "undo_redo_reopen": "Each expected snapshot compares the whole document with revision and allocator included. Undo and Redo each advance exactly once; reopen is exact, including revision 19 and allocator 24.",
+    "mandatory_no_change_byte_pairs": [
+      [
+        "undo.weftforge",
+        "undo-tab.weftforge"
+      ],
+      [
+        "restored.weftforge",
+        "reopened.weftforge"
+      ],
+      [
+        "max-loaded.weftforge",
+        "max-rejected.weftforge"
+      ]
+    ],
+    "external_input_save_comparison": "Require exact typed fields for input-nonlinear to before-reverse and input-revision-limit to max-loaded. Allow lexical JSON normalization; record byte equality only as extra information. Preserve and hash external original inputs unchanged.",
+    "revision_limit": "Reverse with no pending draft rejects atomically at u64 maximum. Loaded and rejected native saves must be byte-identical. Visible error and actual no-draft input state require parent UI observations.",
+    "obj": "Use the exact unchanged original obj_check helper: finite vertices/UVs/normals, positive triangle and UV areas, valid indices, normals matching winding, unit normals within 1e-12, metre-scale coordinates and full pattern extent.",
+    "svg": "Use the unchanged original path parser. Parsed geometry, physical millimetre units and extent must equal exact original fine.svg despite changed resolution/sewing. Exactly two closed editable paths and one retained editable cubic.",
+    "endpoint_guides": "Parent UI evidence must show seam 23 endpoints before/after reversal with the same covered intervals: original A0-B0/A1-B1 becomes A0-B1/A1-B0. Saved files cannot establish visible rendering."
+  },
+  "independence": {
+    "allowed_reads": [
+      "AGENTS.md",
+      "spec/features/SEW-002-native-reversal.md",
+      "spec/features/SEW-001-oriented-segment-sewing.md",
+      "original public native curve-join artifacts",
+      "candidate-pretest.json identity metadata only",
+      "new native output artifacts after capture"
+    ],
+    "prohibited_reads_actions": [
+      "No production Rust/new implementation reads",
+      "No native UI operation",
+      "No Cargo execution",
+      "No tracked-file edits",
+      "No native-output fabrication"
+    ],
+    "synthetic_self_checks": [
+      "Positive complete expected history",
+      "Exact nonlinear interval algebra",
+      "Wrong side A reversal rejection",
+      "Normalized map mutation rejection",
+      "Extra field rejection",
+      "Extra revision rejection",
+      "Stale 0.04 numeric replay after Undo rejection",
+      "Allocator change rejection",
+      "Revision-limit mutation rejection",
+      "Nonfinite OBJ rejection",
+      "SVG control drift rejection"
+    ]
+  },
+  "limitations": [
+    "Implementation-only native saved-output acceptance; no reference execution or parity claim.",
+    "Oriented curve parameters only; no arc-length equivalence, physical easing/twist, cloth fitting or simulation quality claim.",
+    "Default zero placements only; no large-translation coverage.",
+    "Saved files cannot establish selected/focused widgets, event timing, endpoint-guide rendering, visible revision-limit error or executing-process identity. Parent UI/process observations are required.",
+    "OBJ checks establish finite valid triangles/UVs/normals and bounded metre scale; they do not prove remesher sewing-point usage or simulation behavior.",
+    "No native rejected pending-draft/redo-history case beyond the specified no-draft revision-limit rejection; those broader transaction properties are outside this native sequence."
+  ],
+  "publication_gate": "Private until real native outputs and parent observations exist. Before publication every artifact must be Git-tracked and registry/map checks must run from a clean checkout. No reference/broader product parity inferred."
+}

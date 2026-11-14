@@ -1,0 +1,62 @@
+{
+  "kind": "public_supplement_derivation",
+  "created_at": "2026-11-14T11:30:23.340490+00:00",
+  "native_bundle": "native/bundle-manifest.json",
+  "native_bundle_exact_copies": true,
+  "capture_derivations": "captures/derivations.json",
+  "parent_log": "parent-native-log.json",
+  "derivations": [
+    {
+      "source": "private integrated tests log",
+      "public_path": "gates/tests.log",
+      "original_sha256": "1e44a4be6cab5e40fd8007f6a5ab1d4239ee2571bd646760bb4a6a9c4668bc38",
+      "public_sha256": "6404137fad72e1e555a312951e5f15aea033f2d812eeb520f6dbeaeb32ff73e4",
+      "transformation": "Exact absolute workspace prefix replaced with literal ${WORKSPACE}; all other bytes preserved."
+    },
+    {
+      "source": "private integrated clippy log",
+      "public_path": "gates/clippy.log",
+      "original_sha256": "ae028ae4aa25285b13efbf9e5b8d012ba1855aec72baedc009d90449ad47fccb",
+      "public_sha256": "3d227f349175be61c2e93f9366c002594f0ea6a22ee0c4dd7717b4c08cae27bd",
+      "transformation": "Exact absolute workspace prefix replaced with literal ${WORKSPACE}; all other bytes preserved."
+    },
+    {
+      "source": "private integrated xtask log",
+      "public_path": "gates/xtask.log",
+      "original_sha256": "1ef6f76a39b200bb105412d8407fa951ec935ba2b7836a23444786dc29626c8f",
+      "public_sha256": "8715d43097f7cbb328bd8969df38db6d88616c3faadab703eefb8d836e9a92cb",
+      "transformation": "Exact absolute workspace prefix replaced with literal ${WORKSPACE}; all other bytes preserved."
+    },
+    {
+      "source": "private integrated package log",
+      "public_path": "gates/package.log",
+      "original_sha256": "238c18a0f2e0de9f14a167cdb8839addb4655a96c8f3735967e9afc9c73e3b41",
+      "public_sha256": "0dec88b47db80ddd4e2d89199072bd8c3014eb97592d62e8d95a2d2cd60d0926",
+      "transformation": "Exact absolute workspace prefix replaced with literal ${WORKSPACE}; all other bytes preserved."
+    }
+  ],
+  "limitations": [
+    "Native bundle and original screenshots unchanged. Capture/script/SDK derivations are separately documented.",
+    "Gate logs describe prior full local gates on the exact32 scoped files; final metadata registry/map checks are separate.",
+    "GitHub Actions disabled at repository level on user instruction; no remote CI or new Pages deployment for this increment."
+  ],
+  "fmt": {
+    "command": "cargo fmt --all --check",
+    "exit_code": 0,
+    "stdout_bytes": 0,
+    "stderr_bytes": 0,
+    "checked_after_metadata_edit": true
+  },
+  "actions_policy": {
+    "repository_enabled": false,
+    "verified_at": "2026-11-14",
+    "active_queued_waiting_pending_requested_runs": 0,
+    "reason": "User requested no Actions during development; re-enable only after the full project is done.",
+    "remote_checks_for_this_increment": "not_run",
+    "pages_deployment_for_this_increment": "not_run"
+  },
+  "parent_log_sha256": "3470b3f499eaf15d8fe046699322b509dff3c54d3ad6e6a5b9313565386d02c5",
+  "sdk_derivations": "mcp-sdk/supplement-provenance.json",
+  "sdk_public_manifest": "mcp-sdk/publish-manifest.json",
+  "sdk_original_manifest_sha256": "fba83826703cdc74c1e6948145a7a137e62be05b7a59f9edf7f05bee2deccc4c"
+}

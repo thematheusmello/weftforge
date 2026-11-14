@@ -30,6 +30,16 @@ GitHub Actions is disabled at repository level (`enabled:false`), verified on
 runs remained. Keep all required checks local and do not re-enable Actions until
 the complete project is done. The Pages site remains at its last deployment;
 new generated progress can still be published in the repository.
+
+The current executed seam-reversal candidate is source
+`9d30a71bbc2b0e051d9eaddc42b5f3b7dab08bde`, desktop
+`afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70`,
+and unchanged CLI `ca49402e497f71a2785bd96a6ef936cb320ffef856acb682824fe66e108fa25a`.
+All32 scoped source/test files still match. Local fmt,92 Rust tests, strict
+Clippy and xtask (54 Python checks,949-entry map) pass. Its preregistered
+native reversal/history/reopen/rejection subset passes independent checks;
+see [the report](parity/reports/WF-20261114-NATIVE-REVERSAL-001.json).
+
 Retained bounded native I/O candidate source: `1528e3662380a4a74c3b70d3ef9b11f2c607af5f`;
 native `a16acde0fb010a34b1452881ca9865ac3a3ef58908ca50e2719177fb9ab3b838`,
 CLI `820b8329de53fe6cc167533d3e0f0b55953b14e0ff74e5d6fda4cead77b9f0b7`.
@@ -238,18 +248,17 @@ No current report qualifies as a complete reference parity pass.
 
 ## Active work and next steps
 
-1. Integrate and verify the independently reviewed seam-reversal source, then
-   run a preregistered actual desktop case on a separately identified candidate.
-   Commits d01b1f9/b15a904 pass92 tests, fmt, Clippy and xtask54 Python checks
-   in their isolated worktree. Native acceptance remains pending.
-2. Update the source-pinned949-entry map for the shared inspector helper, stable
-   seam rows and endpoint guides. Preserve all205 packets/56 landmarks, source
-   ancestors and the full parity scope. New reference DXF route inspection
-   5173165 is reviewed preparation, with zero new IDs; integrate independently.
-3. Reuse original GUI-authored test assets with declared provenance to check
-   partial/nonlinear reversal, no-selection behavior, pending numeric edits,
-   Undo/Redo, save/reopen, endpoint guides and rejected command preservation.
-   Use existing UpdateSeam across native/CLI/MCP; no new format or core variant.
+1. Publish the reviewed seam-reversal source and exact native evidence after
+   clean-checkout registry/map/replay/privacy checks. Keep Actions disabled;
+   do not wait for or dispatch paid platform checks or Pages deployments.
+2. Continue the next substantive construction/format or simulation increment,
+   using the existing949-ID map and reviewed behavior contracts. Preserve all
+   205 packets/56 landmarks and source ancestors. The zero-ID DXF route
+   inspection is integrated; the required documented DXF subset remains open.
+3. Retain the completed no-selection nonlinear reversal case: focused resolution
+   and Reverse commit once; nine whole-document snapshots, three unchanged
+   byte pairs and exact OBJ/SVG checks pass. Existing UpdateSeam serves native
+   and MCP; no new format, core variant or dependency was introduced.
 4. Continue construction, simulation/contact, animation, avatar, rendering,
    interchange, printing, automation and delivery. The complete product remains
    active; verified parity stays0/56 and discovery is incomplete.
@@ -274,12 +283,14 @@ zero stderr. The source and isolated candidate remain unchanged. Its report is
 now stale because the new application/helper/test sources differ; no current
 join replay or byte-identical rebuild is claimed for the reversal increment.
 
-Root owns the desktop lease. Own candidate PID77275 is saved/idle with2 pieces,
-2 seams,2296 vertices, Curve A/curve7 selected, simulation off and no modal.
-Reference PID29812/window57661 holds the unchanged saved reversed fixture,
-simulation off, no menu/modal/gesture. The bounded DXF inspection found no DXF
+The reversal candidate PID42700 is saved/idle at the revision-limit case with
+2 pieces,2 seams,2296 vertices, no selection, simulation off and no modal.
+PID36362 exited before the same executable restarted. Reference PID29812 is no
+longer running at the latest process check; its last retained observation was
+the saved reversed fixture. The bounded DXF inspection found no DXF
 entry among16 live File > Export children in that state; it does not establish
-product-wide absence or export behavior. All investigator jobs are finished.
+product-wide absence or export behavior. Native acceptance, capture and SDK
+agents have completed their checks; only publication review remains.
 No root Cargo job is live at this source checkpoint.
 
 The private2.26GB installer and generated build caches require Expansion. The

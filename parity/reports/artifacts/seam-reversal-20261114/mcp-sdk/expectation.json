@@ -1,0 +1,98 @@
+{
+  "kind": "frozen_independent_sdk_reversal_expectation",
+  "prepared_at": "2026-11-14T11:21:59.072236+00:00",
+  "source_build_commit": "9d30a71bbc2b0e051d9eaddc42b5f3b7dab08bde",
+  "cli_sha256": "ca49402e497f71a2785bd96a6ef936cb320ffef856acb682824fe66e108fa25a",
+  "cli_byte_identical_to_previous_join_sdk": true,
+  "new_cli_implementation_claimed": false,
+  "native_declaration_sha256": "5f1373081ab1e900c8d5b6e7cc1a210fef9b4d7fab582e9274dcfafe64620440",
+  "input_sha256": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+  "expected_document_sha256": "2f42ec3dac1331164be31335ebd28bc1983d8e947a2509e4a7118eb877b74cd3",
+  "max_revision_input_sha256": "62c630043f9c6c1afdc2d410644e6497aa31bed39fd45926f442803593930ec6",
+  "sentinel_sha256": "45514129dfe3bc492fa0552f2ac86e00158b88e3289607f2e8346afdd048b201",
+  "normal_commands": [
+    {
+      "type": "set_resolution",
+      "data": {
+        "metres": 0.04
+      }
+    },
+    {
+      "type": "update_seam",
+      "data": {
+        "seam": {
+          "id": 23,
+          "name": "Seam 1",
+          "a": {
+            "curve": 9,
+            "t0": 0.4,
+            "t1": 1.0
+          },
+          "b": {
+            "curve": 18,
+            "t0": 0.0,
+            "t1": 0.6
+          },
+          "correspondence": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.2,
+              0.7
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "rejection_commands": [
+    {
+      "type": "update_seam",
+      "data": {
+        "seam": {
+          "id": 23,
+          "name": "Seam 1",
+          "a": {
+            "curve": 9,
+            "t0": 0.4,
+            "t1": 1.0
+          },
+          "b": {
+            "curve": 18,
+            "t0": 0.0,
+            "t1": 0.6
+          },
+          "correspondence": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.2,
+              0.7
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "expected_revision": 16,
+  "expected_resolution_m": "0.04",
+  "allowed_document_changes": [
+    "project.revision15->16",
+    "project.resolution0.035->0.04",
+    "seams[id=23].b.t0/t1 exchanged"
+  ],
+  "comparison": "Exact parsed decimal construction and all fields; no actual native output read to derive expected document.",
+  "negative_criterion": "Maximum-revision UpdateSeam alone rejects; no pending draft; preexisting sentinel bytes unchanged."
+}

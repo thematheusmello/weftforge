@@ -1,0 +1,197 @@
+{
+  "kind": "bounded_official_sdk_reversal_comparison",
+  "started_at": "2026-11-14T11:23:23.241948+00:00",
+  "script_sha256": "187670f27564692326551484ca062d50365dee01ef15c0e33afe23562bcaf54b",
+  "expectation_sha256": "d21c769518c65253c83a7d357fcf41c8cef29e92603de081f301274205c1efe9",
+  "client": "official Python mcp",
+  "client_version": "1.28.1",
+  "cli_sha256": "ca49402e497f71a2785bd96a6ef936cb320ffef856acb682824fe66e108fa25a",
+  "launch_argv": [
+    "${WORKSPACE}/.local/candidates/9d30a71bbc2b/weftforge-cli",
+    "mcp"
+  ],
+  "cli_new_implementation_claimed": false,
+  "cli_byte_identical_to_previous_join_sdk": true,
+  "input_before_sha256": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+  "max_revision_input_before_sha256": "62c630043f9c6c1afdc2d410644e6497aa31bed39fd45926f442803593930ec6",
+  "sentinel_before_sha256": "45514129dfe3bc492fa0552f2ac86e00158b88e3289607f2e8346afdd048b201",
+  "transcript_kind": "Decoded official SDK stream messages; not literal transport bytes.",
+  "limits": [
+    "Legacy 2025-11-25 local stdio only; no modern-client or reference-parity claim.",
+    "No native GUI actions, Cargo, installation, network or listeners.",
+    "Native output was read only after root confirmed it immutable, and after expectation freeze.",
+    "Independent reversal oracle was not read or modified."
+  ],
+  "negotiated_protocol": "2025-11-25",
+  "server_info": {
+    "name": "weftforge-cli",
+    "title": null,
+    "version": "0.1.0",
+    "websiteUrl": null,
+    "icons": null
+  },
+  "tool_names": [
+    "project_inspect",
+    "project_create",
+    "project_execute",
+    "project_export_svg",
+    "project_export_obj"
+  ],
+  "update_seam_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "data": {
+        "additionalProperties": false,
+        "properties": {
+          "seam": {
+            "additionalProperties": false,
+            "properties": {
+              "a": {
+                "additionalProperties": false,
+                "properties": {
+                  "curve": {
+                    "maximum": 18446744073709551615,
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "t0": {
+                    "type": "number"
+                  },
+                  "t1": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "curve",
+                  "t0",
+                  "t1"
+                ],
+                "type": "object"
+              },
+              "b": {
+                "additionalProperties": false,
+                "properties": {
+                  "curve": {
+                    "maximum": 18446744073709551615,
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  "t0": {
+                    "type": "number"
+                  },
+                  "t1": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "curve",
+                  "t0",
+                  "t1"
+                ],
+                "type": "object"
+              },
+              "correspondence": {
+                "items": {
+                  "items": {
+                    "type": "number"
+                  },
+                  "maxItems": 2,
+                  "minItems": 2,
+                  "type": "array"
+                },
+                "type": "array"
+              },
+              "id": {
+                "maximum": 18446744073709551615,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "a",
+              "b",
+              "correspondence"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "seam"
+        ],
+        "type": "object"
+      },
+      "type": {
+        "const": "update_seam"
+      }
+    },
+    "required": [
+      "type",
+      "data"
+    ],
+    "type": "object"
+  },
+  "transaction_result": {
+    "_meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"commands_applied\":2,\"input\":\"${WORKSPACE}/.local/native-reversal-acceptance/input-nonlinear.weftforge\",\"output\":\"${WORKSPACE}/.local/native-reversal-acceptance/mcp-sdk/sdk-reversed.weftforge\",\"revision\":16}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": {
+      "commands_applied": 2,
+      "input": "${WORKSPACE}/.local/native-reversal-acceptance/input-nonlinear.weftforge",
+      "output": "${WORKSPACE}/.local/native-reversal-acceptance/mcp-sdk/sdk-reversed.weftforge",
+      "revision": 16
+    },
+    "isError": false
+  },
+  "sdk_output_sha256": "c5299308d13cc078c7e29aec3ccca0c353045b6bb913be9508842cf64d7b99fb",
+  "frozen_expected_comparison": {
+    "binary64": 103,
+    "binary32": 3,
+    "all_decimal_construction_exact": true,
+    "all_nonfloat_fields_exact": true,
+    "color_note": "Unchanged fixture colors are ordinary serialized binary32 values; no new midpoint-parser test."
+  },
+  "native_after_reverse_sha256": "c5299308d13cc078c7e29aec3ccca0c353045b6bb913be9508842cf64d7b99fb",
+  "native_sdk_bytes_equal": true,
+  "native_sdk_typed_comparison": {
+    "binary64": 103,
+    "binary32": 3,
+    "all_decimal_construction_exact": true,
+    "all_nonfloat_fields_exact": true,
+    "color_note": "Unchanged fixture colors are ordinary serialized binary32 values; no new midpoint-parser test."
+  },
+  "rejection_result": {
+    "_meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":\"Document revision limit reached\"}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": {
+      "error": "Document revision limit reached"
+    },
+    "isError": true
+  },
+  "sentinel_after_sha256": "45514129dfe3bc492fa0552f2ac86e00158b88e3289607f2e8346afdd048b201",
+  "stderr_bytes": 0,
+  "status": "passed_legacy_sdk_reversal_and_native_comparison",
+  "input_after_sha256": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+  "max_revision_input_after_sha256": "62c630043f9c6c1afdc2d410644e6497aa31bed39fd45926f442803593930ec6",
+  "cli_after_sha256": "ca49402e497f71a2785bd96a6ef936cb320ffef856acb682824fe66e108fa25a",
+  "stdout_decoded_messages": 4,
+  "finished_at": "2026-11-14T11:23:23.504711+00:00",
+  "transcript_sha256": "07eb3c45db6a5d8fa745644faf2dc1e1dfeabd946dcc529f315ed2d4318cc6f5"
+}

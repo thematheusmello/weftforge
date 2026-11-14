@@ -1,0 +1,379 @@
+{
+  "id": "WF-20261114-NATIVE-REVERSAL-001",
+  "commit": "9d30a71bbc2b0e051d9eaddc42b5f3b7dab08bde",
+  "timestamp": "2026-11-14T11:36:44.647190Z",
+  "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "kind": "implementation_only",
+  "status": "passed",
+  "feature_ids": [
+    "SEW-001",
+    "SEW-004",
+    "UI-004",
+    "FILE-001",
+    "FILE-003",
+    "FILE-005",
+    "APP-001"
+  ],
+  "complete_contract": false,
+  "reference_executed": false,
+  "freshness": "current",
+  "source_hashes": {
+    ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "Cargo.lock": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
+    "Cargo.toml": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+    "apps/weftforge-cli/Cargo.toml": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+    "apps/weftforge-cli/src/main.rs": "f9f526ee22eb63681d8db3f473a64be7d06f42ab3daf884a8d2943e187e029c0",
+    "apps/weftforge-cli/src/mcp.rs": "489dd0040973e1335d573511f559c567e713c10676f8de4dc8854a42117c8eee",
+    "apps/weftforge-cli/tests/curves.rs": "3139198e2f73e293d3413b8b9ece6258ff8d940d6dcba2a0ce93938b2ff29bbc",
+    "apps/weftforge-cli/tests/grain.rs": "30e64fd99703f850f7bf5c7b7b26b66790404c666569fb9ab3e36d307a685559",
+    "apps/weftforge-cli/tests/mcp_stdio.rs": "692e2a7534ff570adeba47ee7104729fbe958de577b8fc9d2267c56eadac2c9f",
+    "apps/weftforge/Cargo.toml": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+    "apps/weftforge/src/main.rs": "56daa94e170c09cd942c232f3aa43a180e96e3e190c24055f3e96ba4dc987496",
+    "crates/weftforge-core/Cargo.toml": "eac1be8f249f92f0b98686099bac5e11cfeeed064a7da944c3e331a2c09ff56e",
+    "crates/weftforge-core/src/document.rs": "c00fbff18e329898f358e8f2226f615504c9aad4badf7fefb7f2bde8b149e93c",
+    "crates/weftforge-core/src/geometry.rs": "2b2840d51e6eaa9b72a9128fb273099dd6c86ecd2e7be3359aeaebbd612fa6b8",
+    "crates/weftforge-core/src/lib.rs": "b54d19bce3ff323a394c9e79306de6e7bcdac8033b0ed277387fbf78c7a00ebc",
+    "crates/weftforge-core/src/persistence.rs": "9d66cbe725c450e272cb94d9971d84e5d941d5eceb4f20ac92e416eabeed6150",
+    "crates/weftforge-core/src/simulation.rs": "e4295d2a048029e88c25e4e6a9395570fd85b827d80c6671509c1ad7daec150c",
+    "crates/weftforge-core/tests/grain.rs": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+    "crates/weftforge-core/tests/joins.rs": "8ca4ee11ce4fa54668373d1cad8a25064f6bd3010587531ddca3292c2b9f6ab9",
+    "crates/weftforge-core/tests/migration.rs": "9e3ef1935e890bf4da9da1d2a5e2a9469bf6f0ea7a652c2283d266aef6a2e9e0",
+    "crates/weftforge-core/tests/seam_reversal.rs": "1a35f305830f44abcebbd4b2868311a24f8b50c97952da2c75d061d84d284007",
+    "crates/weftforge-core/tests/shirt.rs": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+    "crates/weftforge-core/tests/workflow.rs": "909ec0c491fab7b32fd645a09f46e5b0419631d1e88c7e1026e2da19d93870b8",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/constraints.rs": "3456ba2565eadc5e113d5278f6dda6c46164a0f98f66400058e7ca9887f4298f",
+    "crates/weftforge-sim/src/contact.rs": "c600c7825c7c075c343b3d105005bf0ac771700dbf2141a4ae2668576f267e26",
+    "crates/weftforge-sim/src/lib.rs": "92f83a398cd8b7bb15bec23939d851fded15012a4c688689960195e116fbbc0f",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/tests.rs": "103eedaac498c5e6540a7ce171ecfd6db9dca9774b57fa506a62893e2a91f493",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+    "xtask/Cargo.toml": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+    "xtask/src/main.rs": "a65250e8f24f54f737a673d52f7bf75b76a9a9f4a453678bb90ccfd776e64a2a"
+  },
+  "source_scope": [
+    ".cargo",
+    "Cargo.toml",
+    "Cargo.lock",
+    "rust-toolchain.toml",
+    "apps",
+    "crates",
+    "xtask"
+  ],
+  "artifact_hashes": {
+    "parity/reports/artifacts/seam-reversal-20261114/captures/after-reversal.ax.json": "45f9d4e4bd90a77ae0024f6b540400ffea79c54c1b7cb7c5556dc403e00d43bb",
+    "parity/reports/artifacts/seam-reversal-20261114/captures/after-reversal.png": "e23f865546429f2ed42b9306bb59271c8c1f63c421c3b2cad30cb2eec14b1834",
+    "parity/reports/artifacts/seam-reversal-20261114/captures/before-after-2d-pixel-comparison.json": "e1f801e2512c999e4a20ff3d2551b5e6c51b1302ec889f4798ec05e2ad4a3528",
+    "parity/reports/artifacts/seam-reversal-20261114/captures/before-reversal.ax.json": "3968447affb972437a28348d59ca842b43db706d5b629c132c3de387696d3467",
+    "parity/reports/artifacts/seam-reversal-20261114/captures/before-reversal.png": "79e6cb0ed20295d2399423a08def7c6ad7df217fdbf9b04bc7a8c3341699f2be",
+    "parity/reports/artifacts/seam-reversal-20261114/captures/derivations.json": "de55ceec831c5f285eade133bfce0c61b4ced4c097c3fa2b296f1fdaf48ed09a",
+    "parity/reports/artifacts/seam-reversal-20261114/captures/reviewed-summary.json": "fc97fd9c2f032bdaa9145408941a5f68f5cb17b51dd12d76bff4ee8e20bb11e2",
+    "parity/reports/artifacts/seam-reversal-20261114/captures/revision-limit-error.ax.json": "dc99f4cdb0fce23f06cc6d014e2d7fbc8045e6f14641ab2e3b5c6ad4205cc184",
+    "parity/reports/artifacts/seam-reversal-20261114/captures/revision-limit-error.png": "cf07b868b365cfd267435cf7af25770c25973323c12107e8eddfb61f9e3c7920",
+    "parity/reports/artifacts/seam-reversal-20261114/gates/clippy.log": "3d227f349175be61c2e93f9366c002594f0ea6a22ee0c4dd7717b4c08cae27bd",
+    "parity/reports/artifacts/seam-reversal-20261114/gates/package.log": "0dec88b47db80ddd4e2d89199072bd8c3014eb97592d62e8d95a2d2cd60d0926",
+    "parity/reports/artifacts/seam-reversal-20261114/gates/tests.log": "6404137fad72e1e555a312951e5f15aea033f2d812eeb520f6dbeaeb32ff73e4",
+    "parity/reports/artifacts/seam-reversal-20261114/gates/xtask.log": "8715d43097f7cbb328bd8969df38db6d88616c3faadab703eefb8d836e9a92cb",
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/README.md": "820ebfa502796a2f0dcd707a67b69bcfe93e778edc02092a796ea38504dba2a8",
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/expectation.json": "d21c769518c65253c83a7d357fcf41c8cef29e92603de081f301274205c1efe9",
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/expected-reversed.weftforge": "2f42ec3dac1331164be31335ebd28bc1983d8e947a2509e4a7118eb877b74cd3",
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/max-revision-input.weftforge": "62c630043f9c6c1afdc2d410644e6497aa31bed39fd45926f442803593930ec6",
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/original-private-manifest.json": "fba83826703cdc74c1e6948145a7a137e62be05b7a59f9edf7f05bee2deccc4c",
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/publish-manifest.json": "2b2bd0e168a0b1846683e70f846dce4e9b45adaf923f186d2934c20a122b77f9",
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/run-official-sdk.py": "187670f27564692326551484ca062d50365dee01ef15c0e33afe23562bcaf54b",
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/sdk-rejection-sentinel.weftforge": "45514129dfe3bc492fa0552f2ac86e00158b88e3289607f2e8346afdd048b201",
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/sdk-report.json": "85a8170278242e67a5d196bfac0840a14c2685f2d259a2d305eabae2cdc181a3",
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/sdk-reversed.weftforge": "c5299308d13cc078c7e29aec3ccca0c353045b6bb913be9508842cf64d7b99fb",
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/sdk-transcript.json": "e29505e4bf64c770390978746ba51d87fe5852b1b815bad9491215267b095e2f",
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/server-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/supplement-provenance.json": "8833378b803094c15115ceec6eff2de7b7f922fdd183fad40aa55b60838b2220",
+    "parity/reports/artifacts/seam-reversal-20261114/native/README.md": "f7de40f91ca103959260f252213a6c990e9dee9013053260eb70d08e6d51f309",
+    "parity/reports/artifacts/seam-reversal-20261114/native/REPLAY.md": "5f58ae9ad488bad9af730c6cc8b0a9736733c3aa5b76255ffdb9e78b52874fe7",
+    "parity/reports/artifacts/seam-reversal-20261114/native/after-reverse.weftforge": "c5299308d13cc078c7e29aec3ccca0c353045b6bb913be9508842cf64d7b99fb",
+    "parity/reports/artifacts/seam-reversal-20261114/native/before-reverse.weftforge": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+    "parity/reports/artifacts/seam-reversal-20261114/native/bundle-manifest.json": "176f4b3360c37a16861bd2fd4dd84f35a79da1f7bcd7e73e6679b8994e23fd3d",
+    "parity/reports/artifacts/seam-reversal-20261114/native/candidate-pretest.json": "5d651dba1e0674f33c3ea9d08f20c4dd096fbe3af639a6a47a5615f83dfef9e4",
+    "parity/reports/artifacts/seam-reversal-20261114/native/evaluation.json": "02045801f730180ff51ad1d99d4c18429340af134fe6d932ba32bdb23ed48cfe",
+    "parity/reports/artifacts/seam-reversal-20261114/native/fixture-provenance.json": "17f92064ebd89616013f0678b2118e9a2b5d7e04c13affa07a33362dda895a27",
+    "parity/reports/artifacts/seam-reversal-20261114/native/independent-summary.json": "1086f99185c7441420ac691d7faf12a58f2fe38a014d07fd10138bf9036ee7b3",
+    "parity/reports/artifacts/seam-reversal-20261114/native/input-nonlinear.weftforge": "ea89bb6ad55c402eb3370888cd4ec2187b82d6b89ae9e6c4113617249b56c4f8",
+    "parity/reports/artifacts/seam-reversal-20261114/native/input-revision-limit.weftforge": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+    "parity/reports/artifacts/seam-reversal-20261114/native/max-loaded.weftforge": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+    "parity/reports/artifacts/seam-reversal-20261114/native/max-rejected.weftforge": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+    "parity/reports/artifacts/seam-reversal-20261114/native/missing-input-check.json": "e033e20e6d0b6748ff708c76e952a38e2f6c73224261d01506534687656de7ec",
+    "parity/reports/artifacts/seam-reversal-20261114/native/original-evaluators/verify_curve_outputs.py": "90148a51d1bc7f6357908f804cf7308fd4780d6219694271dd103dfc7f821350",
+    "parity/reports/artifacts/seam-reversal-20261114/native/original-inputs/fine.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+    "parity/reports/artifacts/seam-reversal-20261114/native/original-inputs/fine.weftforge": "8d4090142551f037003e3c531d524be5e80ef870f4c706a185ad1ee89e9205ae",
+    "parity/reports/artifacts/seam-reversal-20261114/native/original-inputs/ui-declaration.json": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f",
+    "parity/reports/artifacts/seam-reversal-20261114/native/portable-replay-check.json": "56917f6f610caa8c730a25328afd5aef911f07c059c32699ede3d8eaeff6dad5",
+    "parity/reports/artifacts/seam-reversal-20261114/native/pre-evaluation-freeze-check.json": "6ecd3bb935fd3f1d4b18a6dc1e4427f7162ac516cd8458072f11007880e01334",
+    "parity/reports/artifacts/seam-reversal-20261114/native/prepare_inputs.py": "987a9168f69f7ceca07315f816a62ba93c8b38dab41d4283403f3b95d54ee88f",
+    "parity/reports/artifacts/seam-reversal-20261114/native/preregistration-freeze.json": "eac9898cf2b57e988baa61814fef952c18fa724eb6ca420cb96c5e310dfe8ace",
+    "parity/reports/artifacts/seam-reversal-20261114/native/privacy-check.json": "2bdea5a37c7a065bb8a4fbd7e9b5459e9949e3893a02b28fb45b631015e40413",
+    "parity/reports/artifacts/seam-reversal-20261114/native/redo.weftforge": "67cb960f10f9695395dd3c4a51834b0036c39b0e3ea5aa8b320ba0efa131e5e3",
+    "parity/reports/artifacts/seam-reversal-20261114/native/reopened.weftforge": "a240c2ae33b3d933872201817bba2f17ad4fae3fe898d2141f3ed8e0357f9a1d",
+    "parity/reports/artifacts/seam-reversal-20261114/native/restored.obj": "6c32bcd9fc9d3b3972ad1bab7465bc37a62acab19efc667cc93bee51745cb460",
+    "parity/reports/artifacts/seam-reversal-20261114/native/restored.svg": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4",
+    "parity/reports/artifacts/seam-reversal-20261114/native/restored.weftforge": "a240c2ae33b3d933872201817bba2f17ad4fae3fe898d2141f3ed8e0357f9a1d",
+    "parity/reports/artifacts/seam-reversal-20261114/native/self-check.json": "57124746db81f3b20ce22dec0e08952865071801472f1e4c9aa1d5cd7c663ebd",
+    "parity/reports/artifacts/seam-reversal-20261114/native/ui-declaration.draft.json": "4aab63530f77d50e0fe42f56d032a15547d80c3aa37dfc0043e27819e1fba3cc",
+    "parity/reports/artifacts/seam-reversal-20261114/native/ui-declaration.json": "5f1373081ab1e900c8d5b6e7cc1a210fef9b4d7fab582e9274dcfafe64620440",
+    "parity/reports/artifacts/seam-reversal-20261114/native/undo-tab.weftforge": "f8002a77b70ccbfb17304ba546d0c29abebbcb48886f45e01c438a5d0c6bc330",
+    "parity/reports/artifacts/seam-reversal-20261114/native/undo.weftforge": "f8002a77b70ccbfb17304ba546d0c29abebbcb48886f45e01c438a5d0c6bc330",
+    "parity/reports/artifacts/seam-reversal-20261114/native/verify_native_reversal.py": "ff5e33b3d1c0508091c3d0a510858c44a09115350afa4079e4f3ad1041d12c98",
+    "parity/reports/artifacts/seam-reversal-20261114/parent-native-log.json": "3470b3f499eaf15d8fe046699322b509dff3c54d3ad6e6a5b9313565386d02c5",
+    "parity/reports/artifacts/seam-reversal-20261114/supplement-provenance.json": "f9273b92468342508c8d9d0810ce3fd3a41e8563d440905f78abd67aa6873d7e"
+  },
+  "candidate": {
+    "native_sha256": "afcb154d5b61382d4672ddedf2c26f49b7752af878a086b913c95aa6aa371c70",
+    "cli_sha256": "ca49402e497f71a2785bd96a6ef936cb320ffef856acb682824fe66e108fa25a",
+    "source_files": 32,
+    "standard_unsigned_package": true,
+    "pretest_manifest": "parity/reports/artifacts/seam-reversal-20261114/native/candidate-pretest.json",
+    "pretest_not_started_field_is_historical": true,
+    "original_pid": 36362,
+    "original_pid_exited": true,
+    "reopened_pid": 42700,
+    "same_executable_hash_after_restart": true,
+    "CLI_bytes_identical_to_previous_join_candidate": true
+  },
+  "scope": "Preregistered external nonlinear map on original GUI-authored two panels; no-selection per-seam reversal with pending resolution, Undo/Tab/Redo, second reversal, OBJ/SVG, actual process restart/reopen and no-draft revision-limit rejection. Bounded implementation acceptance only.",
+  "declaration": "parity/reports/artifacts/seam-reversal-20261114/native/ui-declaration.json",
+  "evaluator": "parity/reports/artifacts/seam-reversal-20261114/native/verify_native_reversal.py",
+  "independent_result": "parity/reports/artifacts/seam-reversal-20261114/native/evaluation.json",
+  "frozen_native_bundle_manifest": "parity/reports/artifacts/seam-reversal-20261114/native/bundle-manifest.json",
+  "parent_observations": "parity/reports/artifacts/seam-reversal-20261114/parent-native-log.json",
+  "measurements": {
+    "whole_document_checkpoints": {
+      "before-reverse": {
+        "all_fields_exact": true,
+        "revision": 15,
+        "resolution_m": "0.035",
+        "allocator": 24
+      },
+      "after-reverse": {
+        "all_fields_exact": true,
+        "revision": 16,
+        "resolution_m": "0.04",
+        "allocator": 24
+      },
+      "undo": {
+        "all_fields_exact": true,
+        "revision": 17,
+        "resolution_m": "0.035",
+        "allocator": 24
+      },
+      "undo-tab": {
+        "all_fields_exact": true,
+        "revision": 17,
+        "resolution_m": "0.035",
+        "allocator": 24
+      },
+      "redo": {
+        "all_fields_exact": true,
+        "revision": 18,
+        "resolution_m": "0.04",
+        "allocator": 24
+      },
+      "restored": {
+        "all_fields_exact": true,
+        "revision": 19,
+        "resolution_m": "0.04",
+        "allocator": 24
+      },
+      "reopened": {
+        "all_fields_exact": true,
+        "revision": 19,
+        "resolution_m": "0.04",
+        "allocator": 24
+      },
+      "max-loaded": {
+        "all_fields_exact": true,
+        "revision": 18446744073709551615,
+        "resolution_m": "0.035",
+        "allocator": 24
+      },
+      "max-rejected": {
+        "all_fields_exact": true,
+        "revision": 18446744073709551615,
+        "resolution_m": "0.035",
+        "allocator": 24
+      }
+    },
+    "exact_no_change_byte_pairs": [
+      {
+        "before": "undo.weftforge",
+        "after": "undo-tab.weftforge",
+        "sha256": "f8002a77b70ccbfb17304ba546d0c29abebbcb48886f45e01c438a5d0c6bc330",
+        "bytes_identical": true
+      },
+      {
+        "before": "restored.weftforge",
+        "after": "reopened.weftforge",
+        "sha256": "a240c2ae33b3d933872201817bba2f17ad4fae3fe898d2141f3ed8e0357f9a1d",
+        "bytes_identical": true
+      },
+      {
+        "before": "max-loaded.weftforge",
+        "after": "max-rejected.weftforge",
+        "sha256": "2106593bab0a4ddc4d78265baee82b72f5201fb4cb40e004d29736751b7ce28d",
+        "bytes_identical": true
+      }
+    ],
+    "external_input_saves_also_byte_equal": {
+      "nonlinear_input_to_before": true,
+      "max_input_to_loaded": true
+    },
+    "nonlinear_oriented_interval_pairing": {
+      "model": "A(u), Boriginal(1-v(u)); local s ranges over [0,1] in each map interval.",
+      "proof": "Exact rational affine coefficients: b1+(b0-b1)*v = b0+(b1-b0)*(1-v). Unchanged curve fields lift identical parameters to identical curve points for every s.",
+      "intervals_proved": [
+        {
+          "normalized_u_interval": [
+            "0",
+            "1/5"
+          ],
+          "normalized_v_interval": [
+            "0",
+            "7/10"
+          ],
+          "a_t_local_affine_coefficients": [
+            "2/5",
+            "3/25"
+          ],
+          "b_t_local_affine_coefficients": [
+            "0",
+            "21/50"
+          ],
+          "exact_polynomial_identity": true
+        },
+        {
+          "normalized_u_interval": [
+            "1/5",
+            "1"
+          ],
+          "normalized_v_interval": [
+            "7/10",
+            "1"
+          ],
+          "a_t_local_affine_coefficients": [
+            "13/25",
+            "12/25"
+          ],
+          "b_t_local_affine_coefficients": [
+            "21/50",
+            "9/50"
+          ],
+          "exact_polynomial_identity": true
+        }
+      ],
+      "curve_parameter_not_arc_length": true
+    },
+    "two_reversals": "Only declared revision and resolution differ; all other document fields exact.",
+    "obj": {
+      "sha256": "6c32bcd9fc9d3b3972ad1bab7465bc37a62acab19efc667cc93bee51745cb460",
+      "vertices": 1159,
+      "triangles": 2192,
+      "uvs": 1159,
+      "normals": 1159,
+      "bounds_m": [
+        [
+          "0E-17",
+          "1.39999999999999991"
+        ],
+        [
+          "0E-17",
+          "0.75000000000000000"
+        ],
+        [
+          "0E-17",
+          "0E-17"
+        ]
+      ],
+      "minimum_twice_triangle_area_m2": "0.0000039650872349739656524658203116",
+      "minimum_twice_uv_triangle_area": "0.0000039650872349739656524658203116",
+      "finite_coordinates_uvs_and_normals": true
+    },
+    "svg": {
+      "geometry_equal_original_fine": true,
+      "closed_editable_piece_paths": 2,
+      "editable_cubic_segments": 1,
+      "physical_user_unit": "millimetre",
+      "sha256": "5339421b64714244b81d7dfbe1629c3a4f877806fbb3a4b8ba09018dd41127a4"
+    },
+    "all_nine_negative_witnesses_rejected": true,
+    "unintended_document_changes": false
+  },
+  "rea_capture": {
+    "summary": "parity/reports/artifacts/seam-reversal-20261114/captures/reviewed-summary.json",
+    "evidence_ids": [
+      "ev_efd0e94054b6db26151f48934d12b851bdc155606b31cdd9446787b76f0b4aa5",
+      "ev_67ecc075eec1e457d3fc9833c80e361512152c75711199d4010239055951a4c8",
+      "ev_4ec7379a082028c1bd279d98f753250ebc65705520c18aa2372123114ec4dc07"
+    ],
+    "before_after_same_view": true,
+    "fixed_view_changed_pixels": 371,
+    "changed_bbox_window_pixels": [
+      581,
+      575,
+      700,
+      592
+    ],
+    "input_or_activation": false,
+    "returned_node_counts": [
+      71,
+      4,
+      71
+    ],
+    "after_content_gap": "After capture returns4 nodes/empty content despite no reported truncation or gaps. Pixels and parent CUA observations supply row semantics.",
+    "focus_event_order_and_no_draft": "Parent observations; not exposed by REA AX schema."
+  },
+  "official_legacy_sdk": {
+    "report": "parity/reports/artifacts/seam-reversal-20261114/mcp-sdk/sdk-report.json",
+    "client": "official Python mcp1.28.1",
+    "protocol": "2025-11-25",
+    "tools": 5,
+    "decoded_responses": 4,
+    "stderr_bytes": 0,
+    "native_bytes_equal": true,
+    "typed_float_fields_exact": 106,
+    "metadata_exact": true,
+    "transaction_commands": 2,
+    "transaction_revision": 16,
+    "revision_limit_error_preserved_sentinel": true,
+    "native_inputs_unchanged": true,
+    "CLI_implementation_unchanged": true,
+    "max_fixture": "SDK max input has typed fields identical to native max input, with independently serialized JSON bytes.",
+    "transcript": "Decoded SDK messages, not wire bytes; public path-only derivations retain original private hash identities."
+  },
+  "gates": {
+    "fmt": "passed",
+    "rust_tests": 92,
+    "clippy": "passed",
+    "xtask": "passed",
+    "python_checks": 54,
+    "catalog_ids": 949,
+    "work_packets": 205,
+    "source_landmarks": 56,
+    "shared_command_variants": 19,
+    "scoped_source_files_still_identical": 32,
+    "provenance": "parity/reports/artifacts/seam-reversal-20261114/supplement-provenance.json",
+    "github_actions": "disabled_at_user_request_until_full_project_complete",
+    "remote_CI": "not_run",
+    "pages_deployment": "not_run"
+  },
+  "limits": [
+    "Implementation-only bounded acceptance; verified reference parity stays0/56 and discovery remains incomplete.",
+    "SEW-002 in historical contract filenames names a bounded research case; this report covers coarse SEW-004 editing, not free-chain/internal sewing. Those required capabilities remain planned.",
+    "Original GUI-authored project was reused with declared external nonlinear-map/revision edits. This run did not repeat empty-project pattern creation.",
+    "Exact interval algebra concerns authored curve parameters, not arc length, physical easing/twist or complete sewing semantics.",
+    "No cloth simulation, fitting, animated/avatar workflows, large placements, broad native coalesced-event cases or pending-draft rejected-native transaction coverage.",
+    "The source-pinned map/implementation contract remain their pre-acceptance snapshot; current registry/report record the later native subset.",
+    "Before/after guides overlap, so pixels alone cannot identify each endpoint. Saved fields, visible rows and parent input order supply semantic attribution.",
+    "After-reversal REA AX has an explicit missing-content gap despite nominal completeness flags. Focus/draft state and action order rely on parent observations.",
+    "Native file-panel AX double-click and expired-index attempts are retained; screenshot-grounded file selection and refreshed AX completed the intended actions.",
+    "The CLI is byte-identical to the earlier candidate. SDK evidence adds one legacy local-file case; modern clients, live-GUI control, persistent MCP undo and jobs remain open.",
+    "No new remote platform CI or Pages deployment: repository Actions disabled by the user until the full project is done. Local gates and exact artifacts remain required."
+  ]
+}

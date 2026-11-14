@@ -289,3 +289,36 @@ and a gap-free read-only REA corner-error capture. Parent observations retain
 AX focus/pagination and temporary full-disk input-driver qualifications. No
 reference parity, cloth fitting, large-placement native case or coalesced-event
 native case is claimed. Earlier source-pinned evidence remains historical/stale.
+
+## Bounded native seam reversal
+
+[WF-20261114-NATIVE-REVERSAL-001](../parity/reports/WF-20261114-NATIVE-REVERSAL-001.json)
+records desktop source `9d30a71`, executable `afcb154d` and unchanged CLI
+`ca49402e`. The declared input derives from the original GUI-authored two-panel
+project, adding an explicit nonlinear seam map. With neither piece selected,
+Reverse on seam 23 commits a focused resolution edit and the B-only interval
+swap together. One Undo, Tab, Redo and a second Reverse preserve all expected
+document fields, stable IDs and allocator 24. Actual process restart/reopen and
+revision-limit rejection preserve exact saved bytes.
+
+The frozen independent evaluator checks all nine document snapshots and both
+nonlinear map intervals. Actual OBJ export contains 1,159 vertices and 2,192
+positive triangles with valid UVs/normals and metre scale. SVG retains the exact
+original geometry and bytes: two closed piece paths and one editable cubic.
+The official Python MCP SDK 1.28.1/legacy 2025-11-25 produces bytes identical to
+the native two-command transaction and preserves a rejected-output sentinel.
+The CLI binary is unchanged; this is an additional executed case.
+
+Passive REA captures retain the before/after guides and visible revision-limit
+error. The fixed 2D viewport differs only at 371 pixels in the guide region;
+this is an observed raster difference, not a reference comparison. The after
+capture exposes only four AX nodes despite reporting no truncation or gaps;
+its screenshot and parent CUA observations supply row semantics. Focus and
+event order require the parent observations. The source-pinned implementation
+contract remains its pre-acceptance declaration; this report records the
+subsequent bounded desktop result.
+
+This is implementation-only acceptance. Simulation, physical easing/twist,
+continuous arc-length pairing, broad native editing and full reference parity
+remain unverified. GitHub Actions and Pages updates are disabled during
+development at the user's request; checks continue locally.
