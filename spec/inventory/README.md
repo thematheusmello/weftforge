@@ -58,8 +58,10 @@ The [source-pinned implementation map](weftforge-implementation-map.md) assigns
 all 949 exact IDs while preserving the prior 928 entries, 205 bounded packets
 and 56 source landmarks. Open Project and selected-seam label contexts remain
 explicit; related group assignments do not establish aliases or parity.
-Its current source refresh includes the bounded inverse join implementation;
-reference join semantics and separately identified native acceptance stay open.
+Its metadata pin retains runtime source `26dd585`; native join scope and
+qualification come from the [registry](../../parity/features.yaml) and
+[native report](../../parity/reports/WF-20261114-NATIVE-JOIN-001.json).
+Broader reference join semantics remain unknown.
 The [later Preferences retry](../features/UI-shortcuts-inspection-20261114.md)
 retains blocked Shortcuts navigation without adding catalog IDs or bindings.
 

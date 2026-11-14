@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "purpose": "Source-pinned engineering crosswalk and bounded handoff queue, not a second implementation/verification status registry or a complete product inventory.",
-  "source_commit": "26dd58535868aadc90e92636656c49426e02dc9c",
+  "source_commit": "9cb2af3f86e1db03f1242542e7271ab51a9cbf64",
   "reference_build": "2026.1.237 (r58920)",
   "inputs": [
     {
@@ -20,7 +20,7 @@
   "status_authority": {
     "path": "parity/features.yaml",
     "lookup": "Join groups[].feature_ids to features[].id at the revision being reported. Read implementation_status, reference_observation_status, verification_status and freshness there; no status value is copied here.",
-    "pinned_registry_sha256": "f8f4f33432964b8f91e22a29f495eb2abb24ec58cd79d77752e8a5d46a69791d"
+    "pinned_registry_sha256": "0893a160f9863b80593dbe1bdc130158873ecb59eae116b3451942b9b3671a72"
   },
   "coverage_semantics": [
     "949 catalog IDs are entry-path discovery records, not the feature denominator. All previous 928 entries, 205 packets and 56 source landmarks remain; 17 input-specific Open Project controls and four selected-seam Edit-menu label paths join existing groups. No packet or broad feature is completed by these additions. Counts of groups or packets are ownership counts, not parity percentages.",
@@ -207,12 +207,12 @@
     "cli_tests": {
       "path": "apps/weftforge-cli/tests/curves.rs",
       "anchor": "fn cli_edits_splits_and_joins_sewn_curves_and_preserves_outputs_on_failure",
-      "scope": "Implementation-only subprocess checks cover curve controls, split, bounded join and previous-output preservation on rejection; no observed desktop or reference join acceptance."
+      "scope": "Implementation-only subprocess checks cover curve controls, split, bounded join and previous-output preservation on rejection. These checks do not supply native/reference acceptance; native scope and qualification remain in the authoritative registry/reports."
     },
     "mcp_tests": {
       "path": "apps/weftforge-cli/tests/mcp_stdio.rs",
       "anchor": "fn stdio_authors_atomic_shared_commands",
-      "scope": "Implementation-only stdio lifecycle, schema/input validation, transactions, bounded join_curve command advertisement/execution and independently measured physical exports; no native/reference join acceptance."
+      "scope": "Implementation-only stdio lifecycle, schema/input validation, transactions, bounded join_curve command advertisement/execution and independently measured physical exports. Native/reference qualification remains in the authoritative registry/reports."
     },
     "migration_tests": {
       "path": "crates/weftforge-core/tests/migration.rs",
@@ -5937,10 +5937,10 @@
         "SplitCurve",
         "JoinCurve"
       ],
-      "candidate_behavior": "Exact parameter-t split remaps authored seams with stable IDs; bounded JoinCurve joins the selected boundary to its consecutive oriented neighbor, including the closing pair, and retains the selected curve ID. It accepts only compatible straight/cubic inverse constructions within a placement-aware 1e-12 m control-plus-f64 bound, remaps both seam sides affinely and preserves separate seam IDs/maps. Native inspector, CLI join and MCP join_curve use the shared typed command. Native joins include pending drafts in one transaction; rejection preserves document/history/draft/current numeric input, and success clears superseded text/focus. These are source-backed candidates and in-process checks; separately identified native acceptance and reference join semantics remain pending.",
+      "candidate_behavior": "Exact parameter-t split remaps authored seams with stable IDs; bounded JoinCurve joins the selected boundary to its consecutive oriented neighbor, including the closing pair, and retains the selected curve ID. It accepts only compatible straight/cubic inverse constructions within a placement-aware 1e-12 m control-plus-f64 bound, remaps both seam sides affinely and preserves separate seam IDs/maps. Native inspector, CLI join and MCP join_curve use the shared typed command. Native joins include pending drafts in one transaction; rejection preserves document/history/draft/current numeric input, and success clears superseded text/focus. These source routes and in-process checks do not themselves qualify native execution or reference behavior. Read the declared native join subset and its current qualification in the authoritative registry/reports; broader reference join semantics remain unknown.",
       "missing_functionality": [
         "Reference gesture/numeric/arc-length-versus-parameter contracts, selection/snapping/failure/history semantics and independent comparison remain unknown. Bounded JoinCurve is inverse construction, not arbitrary curve fitting, corner removal, mixed straight/cubic merging or trim.",
-        "Execute the separately declared native split/join/save/reopen/remesh and corner-rejection acceptance procedure on an identified executable, retaining errors and unchanged document/history/input on failure. Source/in-process/CLI/MCP tests do not supply that run or reference parity."
+        "Broader native invalid-split/control branches, split Undo/Redo, large-placement and coalesced-event cases require their own declared execution. Read the UI-BOUNDED-JOIN-001 native subset and its source/executable identity, independent checks and current qualification in the authoritative registry/reports; source/in-process/CLI/MCP tests do not supply reference parity."
       ],
       "runtime_questions": [
         "Is split location arc length, parameter, projection or explicit coordinate; which IDs/selection/constraints/sewing remain and what invalid locations are rejected?"
@@ -5949,7 +5949,7 @@
         "unequal-curves"
       ],
       "packet_id": "PACK-split-boundary",
-      "reviewed_reference_scope": "PAT-005 describes independently authored WeftForge split/join behavior only. Reference split/join interaction, defaults, general joining, continuous arc-length conversion and post-join sewing semantics remain unobserved; the separately observed sewing reversal does not qualify joining."
+      "reviewed_reference_scope": "PAT-005 separates independently authored WeftForge split/join implementation and native-evidence scopes from unknown reference behavior. Reference split/join interaction, defaults, general joining, continuous arc-length conversion and post-join sewing semantics remain unobserved; the separately observed sewing reversal does not qualify joining."
     },
     {
       "id": "slash-spread",
@@ -19933,7 +19933,7 @@
       "group_id": "project-load-save"
     }
   ],
-  "source_snapshot_note": "This reachable integrated source pin retains the exact 949-ID catalogs and all prior entries, 205 packets, 56 landmark identities/paths and queued slices. It contains 19 typed Command variants including Transaction and bounded JoinCurve, with native/CLI/MCP entry support, affine sewing remapping, full control/f64 bounds including placement, and transactional draft/current-focus guards. General join/fitting/trim and reference split/join semantics remain unknown; source/in-process checks do not establish separately identified native acceptance or parity. The renamed CLI regression anchor and six related landmark scope descriptions are explicitly rechecked. Reviewed Preferences retry REF-UI-SHORTCUTS-004 reaches Graphic Options only, retains the blocked category route and safe Close, adds no IDs and does not replace the historical eleven-page pass. Exact current contract/catalog/registry hashes and the earlier 6401c6a/928-entry expansion ancestry remain pinned. Current report qualification/freshness stays solely in the authoritative registry/reports; runtime source changes do not promote retained native evidence or resolve the approximately 0.2693 fitting failure.",
+  "source_snapshot_note": "This metadata/evidence pin retains the exact 949-ID catalogs, all entry records, 205 packets, 56 landmark identities/paths/anchors and queued slices. It contains the same 19 typed Command variants and bounded JoinCurve implementation as runtime source 26dd58535868aadc90e92636656c49426e02dc9c: all 31 recorded runtime/test source inputs are byte-identical at 9cb2af3f86e1db03f1242542e7271ab51a9cbf64. The actual native executable was built from 26dd585; this metadata pin does not imply a rebuild. UI-BOUNDED-JOIN-001 native scope, independent outputs, source/executable identity and qualification are read from the authoritative registry and WF-20261114-NATIVE-JOIN-001 report. Broader invalid-split/control and split-history branches, native large-placement/coalesced-event cases, general join/fitting/trim and reference split/join semantics remain outside that bounded scope. Existing source/landmark rechecks, reviewed Preferences retry limitations, current contract/catalog/registry hashes and the original 928 expansion/6401c6a/26dd585 ancestry remain retained. No feature status or pass result is copied into this map; broad parity and the approximately 0.2693 fitting failure remain open.",
   "expansion_origin": {
     "previous_map_commit": "fbe5ee08a74dc176e47a287366cbf5d1bbd0abf3",
     "previous_map_sha256": "2457e280ec2070e41748b8a3b80d8d7ba16a41f0cfa6dc0409c4f7768d178b9a",
@@ -19941,7 +19941,7 @@
     "preserved_catalog_ids": 928,
     "additional_menu_ids": 4,
     "additional_component_ids": 17,
-    "catalog_commit": "26dd58535868aadc90e92636656c49426e02dc9c",
+    "catalog_commit": "9cb2af3f86e1db03f1242542e7271ab51a9cbf64",
     "preservation_rule": "Retain the original 928-to-949 expansion proof and its 6401c6a catalog/source anchor. All 949 entries, 205 packet definitions, 56 landmark identities/paths and first three bounded slices survive the integrated source refresh. Only explicit reviewed source/reference rechecks replace obsolete group text or landmark scope/renamed anchors; no new reference entry or feature completion follows from a WeftForge implementation button.",
     "original_catalog_commit": "6401c6aa0aa1a54e1642b334dad1c5729466e0af"
   },
@@ -20013,8 +20013,8 @@
     },
     {
       "path": "spec/features/PAT-005-sewn-curve-editing.md",
-      "sha256": "ba9bf8432cebdcf1813295c3f1c66223c65db5e8f623c48c380c0a258b360048",
-      "scope": "Independent WeftForge implementation contract for numeric controls, exact sewn split and bounded inverse JoinCurve. Covers straight/compatible cubic children, affine seam remapping, placement/f64 control-error bounds and transactional draft/focus failure preservation. In-process/source checks are implementation-only; separately identified native acceptance and reference join interaction/semantics remain pending."
+      "sha256": "9a1145cd14c9da55959e30df6e223018bbedf89235821d5b6aafde9edfe415b3",
+      "scope": "Independent WeftForge contract for numeric controls, exact sewn split and bounded inverse JoinCurve, including affine seam remapping, placement/f64 bounds and transactional draft/focus preservation. Distinguishes broader unexecuted curve-editing branches from the separately declared UI-BOUNDED-JOIN-001 subset on runtime source 26dd585. Native execution scope, independent saved-output checks and qualification are authoritative in the registry/reports; reference join interaction/semantics remain unknown."
     },
     {
       "path": "spec/features/UI-shortcuts-inspection-20261114.md",
@@ -20030,7 +20030,7 @@
   "source_rechecks": [
     {
       "group_id": "split-boundary",
-      "reason": "Integrated source adds shared JoinCurve, the native inspector action with pending-draft/current-focus guards, placement-aware f64 bounds, CLI join and MCP join_curve. Replace blanket missing-join wording with this bounded source candidate while retaining general join/trim/reference semantics and pending native acceptance.",
+      "reason": "Integrated source adds shared JoinCurve, the native inspector action with pending-draft/current-focus guards, placement-aware f64 bounds, CLI join and MCP join_curve. Replace blanket missing-join wording with this bounded source candidate while retaining general join/trim/reference semantics and a pointer to authoritative native qualification.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
