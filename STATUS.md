@@ -261,7 +261,7 @@ and allocator 24. The independent parent/child/sewn polynomial bounds are below
 2.12e-16 m, with zero affine-interval error.
 
 Official Python MCP SDK 1.28.1 / legacy 2025-11-25 lists five tools, advertises
-JoinCurve, matches all 104 typed fields/native joined bytes and preserves an error
+JoinCurve, matches 104 floating fields, metadata and native joined bytes and preserves an error
 sentinel; stderr is empty. Modern external clients and live-GUI MCP remain open.
 
 Root retains the UI lease. Current own candidate PID 77275 is saved at the final

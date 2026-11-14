@@ -8,7 +8,7 @@
   "rust_tests": 89,
   "fmt": "passed",
   "clippy": "passed",
-  "xtask": "passed;54 Python checks,949-ID map,19-command CLI help",
+  "xtask": "passed;54 Python checks,949-ID map and current CLI help",
   "gate_metadata_commit": "6728ff13efda134b8a7dda97876c232dedc26219",
   "derivations": {
     "parity/reports/artifacts/curve-join-20261114/mcp-sdk/run-official-sdk.py": {
@@ -92,5 +92,6 @@
     "SDK script is the exact historical execution script with its original local layout; decoded transcript/report have declared workspace-prefix redaction and are not wire bytes.",
     "CLI SDK output is separate from native GUI snapshots.",
     "Parent action record attributes GUI observations; read-only REA captured only the corner-error state."
-  ]
+  ],
+  "command_accounting": "19 shared core Command variants includes Transaction; MCP advertises concrete commands and rejects nested transactions."
 }

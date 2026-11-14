@@ -105,7 +105,7 @@
     "parity/reports/artifacts/curve-join-20261114/native/ui-declaration.json": "59e88b5e5e234af6576f6263ba6a5753eb5663eba64ddd84da161f3d73b1706f",
     "parity/reports/artifacts/curve-join-20261114/parent-native-log.json": "43e92b08d327694032897facfdd91aa38d7502eaeaaf45792215f30762333b0d",
     "parity/reports/artifacts/curve-join-20261114/restart-precondition.json": "21eb115f0ca627f933ee13fd8d361b33b45104ab029077f22c2b5f31afdf6655",
-    "parity/reports/artifacts/curve-join-20261114/supplement-provenance.json": "82afe50d86f10df533ea5db28ee9d22952ae68c4911ebb43067a026c6e00c52b"
+    "parity/reports/artifacts/curve-join-20261114/supplement-provenance.json": "620f5c987326d633a168155da1356df2073390033ea239ef1826e8e4aaf3e5a5"
   },
   "candidate": {
     "native_sha256": "9c8b09363ab56076e7154235c6e3c619c41fb6e1746e8fd4c3353903741467eb",
@@ -220,7 +220,8 @@
     "typed_float_fields_exact": 104,
     "corner_error_and_sentinel_preserved": true,
     "native_input_bytes_unchanged": true,
-    "transcript": "Decoded SDK stream messages with declared path redaction; not wire bytes."
+    "transcript": "Decoded SDK stream messages with declared path redaction; not wire bytes.",
+    "transcript_hash_scope": "SHA fields inside derived SDK records retain original private capture identities; public payload hashes and path-only derivations are in supplement-provenance.json and artifact_hashes."
   },
   "gates": {
     "rust_tests": 89,
