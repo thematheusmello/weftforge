@@ -188,6 +188,7 @@ struct IntervalMetric {
     leaves: Vec<Leaf>,
     length: f64,
     budget: f64,
+    rounding: f64,
 }
 
 impl IntervalMetric {
@@ -217,6 +218,29 @@ impl IntervalMetric {
             .point(curve.end)
             .ok_or_else(|| Error("Missing curve end".into()))?
             .position;
+        let control_points = curve
+            .controls
+            .map_or([start, start, end, end], |[c, d]| [start, c, d, end]);
+        let coordinate_scale = control_points
+            .iter()
+            .map(|point| point[0].abs() + point[1].abs())
+            .fold(0., f64::max);
+        let speed_bound = control_points
+            .windows(2)
+            .map(|pair| distance(pair[0], pair[1]))
+            .fold(0., f64::max)
+            * if curve.controls.is_some() { 3. } else { 1. };
+        let parameter_scale = interval
+            .t0
+            .abs()
+            .max(interval.t1.abs())
+            .max((interval.t1 - interval.t0).abs());
+        // Short spans still return global t and evaluate the original coordinates.
+        let rounding = 64. * f64::EPSILON * (coordinate_scale + speed_bound * parameter_scale);
+        ensure(
+            rounding.is_finite(),
+            "Sewing curve rounding exceeds the supported absolute precision budget",
+        )?;
         let mut leaves = Vec::new();
         let length = if let Some([c, d]) = curve.controls {
             // Translation does not affect length and local coordinates avoid cancellation.
@@ -254,6 +278,7 @@ impl IntervalMetric {
             leaves,
             length,
             budget,
+            rounding,
         })
     }
 
@@ -357,6 +382,7 @@ struct PathMetric {
     starts: Vec<f64>,
     knots: Vec<f64>,
     total: f64,
+    rounding: f64,
 }
 
 impl PathMetric {
@@ -395,6 +421,7 @@ impl PathMetric {
             "Positive sewing span collapsed in normalized path precision",
         )?;
         Ok(Self {
+            rounding: intervals.iter().map(|interval| interval.rounding).sum(),
             intervals,
             starts,
             knots,
@@ -473,7 +500,9 @@ impl GroupMetric {
         }
         ensure(
             condition.is_finite()
-                && 256. * f64::EPSILON * paths[0].total.max(paths[1].total) * condition
+                && (paths[0].rounding.max(paths[1].rounding)
+                    + 256. * f64::EPSILON * paths[0].total.max(paths[1].total))
+                    * condition
                     < SEWING_METRIC_TOLERANCE / 16.,
             "Sewing correspondence exceeds the supported absolute precision budget",
         )?;
