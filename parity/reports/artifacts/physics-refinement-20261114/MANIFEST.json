@@ -1,0 +1,171 @@
+{
+  "prepared_at": "2026-11-14T12:06:45.868380+00:00",
+  "title": "Bounded weak-warp garment refinement analysis",
+  "source_commit": "16e680ad774119e1ce3609b7d6c42c317f8677ef",
+  "kind": "implementation_only_historical_diagnostic",
+  "complete_contract": false,
+  "reference_executed": false,
+  "all_five_final_cases_fit_status": "FAILED",
+  "scope_note": "Historical 16e-source measurements only; later publication does not validate later source. No simulation was rerun while preparing this subset.",
+  "files": {
+    "README.txt": {
+      "original_sha256": null,
+      "transformation": "new publication metadata/checker; no original experiment payload replaced",
+      "redactions": [],
+      "published_sha256": "fd9436b00a7c0044f61fcb1ef47c6c34ef92cb18303a1a1a7635ff6acc9f0f03",
+      "bytes": 5472
+    },
+    "analysis.json": {
+      "original_sha256": "895eb47349fbb1b9b85d3b0d4652f0b086239697cb9a004eb22bc8c8eee2187b",
+      "published_sha256": "895eb47349fbb1b9b85d3b0d4652f0b086239697cb9a004eb22bc8c8eee2187b",
+      "transformation": "byte-for-byte copy",
+      "redactions": [],
+      "bytes": 46697
+    },
+    "conclusion.json": {
+      "original_sha256": "db61832c8f97326c0132a6a3a090ab943a491b3eb4ae37f0db6646a3506ba0b2",
+      "published_sha256": "db61832c8f97326c0132a6a3a090ab943a491b3eb4ae37f0db6646a3506ba0b2",
+      "transformation": "byte-for-byte copy",
+      "redactions": [],
+      "bytes": 10487
+    },
+    "harness/Cargo.lock": {
+      "original_sha256": "c515f84cc76fcad25c8831fad989e485ec1ce364966ce055f14d1b66fddf57ec",
+      "published_sha256": "c515f84cc76fcad25c8831fad989e485ec1ce364966ce055f14d1b66fddf57ec",
+      "transformation": "byte-for-byte copy",
+      "redactions": [],
+      "bytes": 3997
+    },
+    "harness/Cargo.toml": {
+      "original_sha256": "848e260d31712fe23e925afa3268ced0fbfe76fda7c027fa97baa944d10b77d1",
+      "published_sha256": "848e260d31712fe23e925afa3268ced0fbfe76fda7c027fa97baa944d10b77d1",
+      "transformation": "byte-for-byte copy",
+      "redactions": [],
+      "bytes": 337
+    },
+    "harness/src/main.rs": {
+      "original_sha256": "7ce4a352371818fdf029e8ad73c4ea2411084735b39eeac5bd9c8c36d5eeb587",
+      "published_sha256": "7ce4a352371818fdf029e8ad73c4ea2411084735b39eeac5bd9c8c36d5eeb587",
+      "transformation": "byte-for-byte copy",
+      "redactions": [],
+      "bytes": 3639
+    },
+    "job-ledger.json": {
+      "original_sha256": "c7f84133925ce9119070b027ede5302bc28cb4bd2c14007c118184d9f3b02fce",
+      "published_sha256": "a973ee3db9b376f97ab467de86c08bf70b568723b6411a64d86781a326bf40b4",
+      "transformation": "exact path-prefix substitutions only",
+      "redactions": [
+        {
+          "path_role": "exclusive build-target directory",
+          "replacement": "<EXCLUSIVE_CARGO_TARGET_DIR>",
+          "occurrences": 6
+        },
+        {
+          "path_role": "local Rust toolchain binary directory",
+          "replacement": "<RUST_TOOLCHAIN_BIN>/",
+          "occurrences": 2
+        },
+        {
+          "path_role": "private experiment directory relative to the original checkout",
+          "replacement": "<EXPERIMENT_DIR>/",
+          "occurrences": 5
+        },
+        {
+          "path_role": "local Cargo registry source directory",
+          "replacement": "<CARGO_REGISTRY_SRC>/",
+          "occurrences": 1
+        }
+      ],
+      "bytes": 1857
+    },
+    "plan.json": {
+      "original_sha256": "637d0642a2d4419701850ebf196938f0fe3aff4461146275c7a2edd7a2d18b03",
+      "published_sha256": "2e32d274b993afb33fa2f468d470446364b9987bbe05de73e499bfa564f18fb1",
+      "transformation": "exact path-prefix substitutions only",
+      "redactions": [
+        {
+          "path_role": "exclusive build-target directory",
+          "replacement": "<EXCLUSIVE_CARGO_TARGET_DIR>",
+          "occurrences": 1
+        }
+      ],
+      "bytes": 2620
+    },
+    "provenance.json": {
+      "original_sha256": "e518ecdbe7162d1ea0b752c463e717f27b5b2d3c4acf96ca2aa4a3fe7a3a13d6",
+      "published_sha256": "e518ecdbe7162d1ea0b752c463e717f27b5b2d3c4acf96ca2aa4a3fe7a3a13d6",
+      "transformation": "byte-for-byte copy",
+      "redactions": [],
+      "bytes": 1941
+    },
+    "retained-artifact-hashes.json": {
+      "original_sha256": "1925cf3b79eeb6a690fb2dd4268cd02c5d74e3bba17e5369f83203e8c6149cf9",
+      "published_sha256": "1925cf3b79eeb6a690fb2dd4268cd02c5d74e3bba17e5369f83203e8c6149cf9",
+      "transformation": "byte-for-byte copy",
+      "redactions": [],
+      "bytes": 3523
+    },
+    "runs/rest-metadata.json": {
+      "original_sha256": "57b728aa5507ffab17fb0202b81af4db8806c19a83d23f5d594517b39bbc956b",
+      "published_sha256": "57b728aa5507ffab17fb0202b81af4db8806c19a83d23f5d594517b39bbc956b",
+      "transformation": "byte-for-byte copy",
+      "redactions": [],
+      "bytes": 47173
+    },
+    "runs/trajectory.jsonl": {
+      "original_sha256": "45283800af6b4af5fb3837739649927c8ffce37694fd807a2a620127137e47b4",
+      "published_sha256": "45283800af6b4af5fb3837739649927c8ffce37694fd807a2a620127137e47b4",
+      "transformation": "byte-for-byte copy",
+      "redactions": [],
+      "bytes": 605341
+    },
+    "summary.json": {
+      "original_sha256": null,
+      "transformation": "new publication metadata/checker; no original experiment payload replaced",
+      "redactions": [],
+      "published_sha256": "ce81e80b162eb92dcb9b975c6671b8a0aab5a45b0cafb0f494a002e9e2bcb270",
+      "bytes": 6380
+    },
+    "verify.py": {
+      "original_sha256": null,
+      "transformation": "new publication metadata/checker; no original experiment payload replaced",
+      "redactions": [],
+      "published_sha256": "38e2723cf6dd53cc2986bfeeaf6ddedd0529a9132eb9d4bd7c64089b23e1d36b",
+      "bytes": 9149
+    }
+  },
+  "unexported_internal_hashes": {
+    "analyze.py": {
+      "original_sha256": "f204cf58b0e916f0369e82d62dedf885579f06b14dae69a464eb9b4ef9f4a3d4",
+      "reason_omitted": "Original private derivation script; the portable read-only verifier recomputes its retained numerical quantities without its redundant signed-axis input file."
+    },
+    "build.log": {
+      "original_sha256": "d034510322d717dff1c2ac90c71c9aa50adb7d41d90f6e76a4f0725a4c6de15b",
+      "reason_omitted": "Build completion is retained in the job ledger; full machine-local compiler log is omitted."
+    },
+    "run.log": {
+      "original_sha256": "b301d483ebc3a28e781a1bc81afa9ff7156a903d90cb94f7270ff6a2629c375b",
+      "reason_omitted": "All sampled metrics are retained in trajectory.jsonl; duplicate progress text is omitted."
+    },
+    "dependency-lock-comparison.json": {
+      "original_sha256": "e852dec5c873b8514e6992d49e127f2301dbaf2bb06162522a64046d8f5f10d5",
+      "reason_omitted": "Harness lock and source Cargo.lock identities permit direct reconstruction; duplicate comparison rows are omitted."
+    },
+    "retained-signed-axis-inspection.json": {
+      "original_sha256": "7bda7278060fc17e6a7fdbdfe6aab0c810e708d4f48c33f64cecb51fd849ca69",
+      "reason_omitted": "Derived inspection of the already public OBJ; the portable verifier rechecks the public geometry directly."
+    },
+    "artifact-manifest.json": {
+      "original_sha256": "8bc6bef8482735e8b16b39e0eb1604bea64bbfbe1246e82afdcac9d18c2b4448",
+      "reason_omitted": "Original private 16-file hash inventory. Its entries refer to original internal bytes, not redacted publication bytes."
+    }
+  },
+  "hash_semantics": {
+    "original_sha256": "SHA-256 of the original private experiment file before publication preparation; null means newly generated metadata/checker.",
+    "published_sha256": "SHA-256 of this package file, after only the documented exact path-prefix substitutions if applicable.",
+    "provenance.binary_sha256": "SHA-256 of the actually executed historical diagnostic binary, not a required reproducible build result and not a hash of any JSON publication copy.",
+    "plan.immutable_cli_sha256": "Identity of the immutable CLI checked before experiment; it did not execute these API-harness comparison runs.",
+    "retained-artifact-hashes.json": "All 15 previously public fixture/output/report identities are unchanged; those files are obtained from the historical source checkout.",
+    "manifest_self_hash": "The enclosing publication must hash MANIFEST.json separately; this file does not hash itself."
+  }
+}

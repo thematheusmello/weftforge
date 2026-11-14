@@ -1,0 +1,29 @@
+{
+  "build": {
+    "session_id": 39230,
+    "state": "completed",
+    "checked_at": "2026-11-14T11:53:44.789966+00:00",
+    "processes": [
+      "63039 11447       00:08 <RUST_TOOLCHAIN_BIN>/cargo build --release --offline --manifest-path <EXPERIMENT_DIR>/harness/Cargo.toml",
+      "63817 63039       00:00 <RUST_TOOLCHAIN_BIN>/rustc --crate-name serde_derive --edition=2021 <CARGO_REGISTRY_SRC>/serde_derive-1.0.229/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type proc-macro --emit=dep-info,link -C prefer-dynamic -C embed-bitcode=no -C debug-assertions=off --cfg feature=\"default\" --check-cfg cfg(docsrs,test) --check-cfg cfg(feature, values(\"default\", \"deserialize_in_place\")) -C metadata=f0814fa9664537fe -C extra-filename=-80f4db2073c0c262 --out-dir <EXCLUSIVE_CARGO_TARGET_DIR>/release/deps -C strip=debuginfo -L dependency=<EXCLUSIVE_CARGO_TARGET_DIR>/release/deps --extern proc_macro2=<EXCLUSIVE_CARGO_TARGET_DIR>/release/deps/libproc_macro2-978a63a4e790856e.rlib --extern quote=<EXCLUSIVE_CARGO_TARGET_DIR>/release/deps/libquote-a33340f6edfa8bb5.rlib --extern syn=<EXCLUSIVE_CARGO_TARGET_DIR>/release/deps/libsyn-125f940f82675b6b.rlib --extern proc_macro --cap-lints allow"
+    ],
+    "log": "<EXPERIMENT_DIR>/build.log",
+    "exit_code": 0,
+    "completed_at": "2026-11-14T11:54:25.336052+00:00"
+  },
+  "simulation": {
+    "state": "completed",
+    "pid": 64147,
+    "started_at": "2026-11-14T11:54:25.337966+00:00",
+    "command": [
+      "<EXCLUSIVE_CARGO_TARGET_DIR>/release/physics-refinement-diagnostic",
+      "<EXPERIMENT_DIR>/source/fixtures/grain-shirt.weftforge",
+      "<EXPERIMENT_DIR>/runs"
+    ],
+    "log": "<EXPERIMENT_DIR>/run.log",
+    "global_wall_cap_s": 600,
+    "session_id": 89137,
+    "exit_code": 0,
+    "completed_at": "2026-11-14T11:55:24.823215+00:00"
+  }
+}

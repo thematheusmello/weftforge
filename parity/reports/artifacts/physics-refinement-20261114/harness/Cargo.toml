@@ -1,0 +1,14 @@
+[package]
+name = "physics-refinement-diagnostic"
+version = "0.0.0"
+edition = "2024"
+
+[workspace]
+
+[dependencies]
+weftforge-core = { path = "../source/crates/weftforge-core" }
+weftforge-sim = { path = "../source/crates/weftforge-sim" }
+serde_json = { version = "=1.0.154", features = ["float_roundtrip"] }
+
+[profile.release]
+lto = "thin"

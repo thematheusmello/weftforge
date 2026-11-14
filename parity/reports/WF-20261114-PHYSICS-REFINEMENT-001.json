@@ -1,0 +1,257 @@
+{
+  "id": "WF-20261114-PHYSICS-REFINEMENT-001",
+  "commit": "16e680ad774119e1ce3609b7d6c42c317f8677ef",
+  "timestamp": "2026-11-14T12:29:24.482321Z",
+  "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "kind": "implementation_only",
+  "status": "failed",
+  "feature_ids": [
+    "SIM-006",
+    "FIT-003"
+  ],
+  "complete_contract": false,
+  "reference_executed": false,
+  "freshness": "stale",
+  "freshness_reason": "Historical16e engine/API-harness experiment. Later DXF integration changes scoped application/CLI/core files; no later-source execution is claimed. Original files and measurements are retained.",
+  "source_hashes": {
+    ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "Cargo.lock": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
+    "Cargo.toml": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+    "apps/weftforge-cli/Cargo.toml": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+    "apps/weftforge-cli/src/main.rs": "f9f526ee22eb63681d8db3f473a64be7d06f42ab3daf884a8d2943e187e029c0",
+    "apps/weftforge-cli/src/mcp.rs": "489dd0040973e1335d573511f559c567e713c10676f8de4dc8854a42117c8eee",
+    "apps/weftforge-cli/tests/curves.rs": "3139198e2f73e293d3413b8b9ece6258ff8d940d6dcba2a0ce93938b2ff29bbc",
+    "apps/weftforge-cli/tests/grain.rs": "30e64fd99703f850f7bf5c7b7b26b66790404c666569fb9ab3e36d307a685559",
+    "apps/weftforge-cli/tests/mcp_stdio.rs": "692e2a7534ff570adeba47ee7104729fbe958de577b8fc9d2267c56eadac2c9f",
+    "apps/weftforge/Cargo.toml": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+    "apps/weftforge/src/main.rs": "56daa94e170c09cd942c232f3aa43a180e96e3e190c24055f3e96ba4dc987496",
+    "crates/weftforge-core/Cargo.toml": "eac1be8f249f92f0b98686099bac5e11cfeeed064a7da944c3e331a2c09ff56e",
+    "crates/weftforge-core/src/document.rs": "c00fbff18e329898f358e8f2226f615504c9aad4badf7fefb7f2bde8b149e93c",
+    "crates/weftforge-core/src/geometry.rs": "2b2840d51e6eaa9b72a9128fb273099dd6c86ecd2e7be3359aeaebbd612fa6b8",
+    "crates/weftforge-core/src/lib.rs": "b54d19bce3ff323a394c9e79306de6e7bcdac8033b0ed277387fbf78c7a00ebc",
+    "crates/weftforge-core/src/persistence.rs": "9d66cbe725c450e272cb94d9971d84e5d941d5eceb4f20ac92e416eabeed6150",
+    "crates/weftforge-core/src/simulation.rs": "e4295d2a048029e88c25e4e6a9395570fd85b827d80c6671509c1ad7daec150c",
+    "crates/weftforge-core/tests/grain.rs": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+    "crates/weftforge-core/tests/joins.rs": "8ca4ee11ce4fa54668373d1cad8a25064f6bd3010587531ddca3292c2b9f6ab9",
+    "crates/weftforge-core/tests/migration.rs": "9e3ef1935e890bf4da9da1d2a5e2a9469bf6f0ea7a652c2283d266aef6a2e9e0",
+    "crates/weftforge-core/tests/seam_reversal.rs": "1a35f305830f44abcebbd4b2868311a24f8b50c97952da2c75d061d84d284007",
+    "crates/weftforge-core/tests/shirt.rs": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+    "crates/weftforge-core/tests/workflow.rs": "909ec0c491fab7b32fd645a09f46e5b0419631d1e88c7e1026e2da19d93870b8",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/constraints.rs": "3456ba2565eadc5e113d5278f6dda6c46164a0f98f66400058e7ca9887f4298f",
+    "crates/weftforge-sim/src/contact.rs": "c600c7825c7c075c343b3d105005bf0ac771700dbf2141a4ae2668576f267e26",
+    "crates/weftforge-sim/src/lib.rs": "92f83a398cd8b7bb15bec23939d851fded15012a4c688689960195e116fbbc0f",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/tests.rs": "103eedaac498c5e6540a7ce171ecfd6db9dca9774b57fa506a62893e2a91f493",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+    "xtask/Cargo.toml": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+    "xtask/src/main.rs": "a65250e8f24f54f737a673d52f7bf75b76a9a9f4a453678bb90ccfd776e64a2a"
+  },
+  "source_scope": [
+    ".cargo",
+    "Cargo.toml",
+    "Cargo.lock",
+    "rust-toolchain.toml",
+    "apps",
+    "crates",
+    "xtask"
+  ],
+  "artifact_hashes": {
+    "parity/reports/artifacts/physics-refinement-20261114/MANIFEST.json": "f460886db360aca3efa682d042a623953a0b3b947b52804bac16f21133204562",
+    "parity/reports/artifacts/physics-refinement-20261114/README.txt": "fd9436b00a7c0044f61fcb1ef47c6c34ef92cb18303a1a1a7635ff6acc9f0f03",
+    "parity/reports/artifacts/physics-refinement-20261114/analysis.json": "895eb47349fbb1b9b85d3b0d4652f0b086239697cb9a004eb22bc8c8eee2187b",
+    "parity/reports/artifacts/physics-refinement-20261114/conclusion.json": "db61832c8f97326c0132a6a3a090ab943a491b3eb4ae37f0db6646a3506ba0b2",
+    "parity/reports/artifacts/physics-refinement-20261114/harness/Cargo.lock": "c515f84cc76fcad25c8831fad989e485ec1ce364966ce055f14d1b66fddf57ec",
+    "parity/reports/artifacts/physics-refinement-20261114/harness/Cargo.toml": "848e260d31712fe23e925afa3268ced0fbfe76fda7c027fa97baa944d10b77d1",
+    "parity/reports/artifacts/physics-refinement-20261114/harness/src/main.rs": "7ce4a352371818fdf029e8ad73c4ea2411084735b39eeac5bd9c8c36d5eeb587",
+    "parity/reports/artifacts/physics-refinement-20261114/job-ledger.json": "a973ee3db9b376f97ab467de86c08bf70b568723b6411a64d86781a326bf40b4",
+    "parity/reports/artifacts/physics-refinement-20261114/plan.json": "2e32d274b993afb33fa2f468d470446364b9987bbe05de73e499bfa564f18fb1",
+    "parity/reports/artifacts/physics-refinement-20261114/provenance.json": "e518ecdbe7162d1ea0b752c463e717f27b5b2d3c4acf96ca2aa4a3fe7a3a13d6",
+    "parity/reports/artifacts/physics-refinement-20261114/retained-artifact-hashes.json": "1925cf3b79eeb6a690fb2dd4268cd02c5d74e3bba17e5369f83203e8c6149cf9",
+    "parity/reports/artifacts/physics-refinement-20261114/runs/rest-metadata.json": "57b728aa5507ffab17fb0202b81af4db8806c19a83d23f5d594517b39bbc956b",
+    "parity/reports/artifacts/physics-refinement-20261114/runs/trajectory.jsonl": "45283800af6b4af5fb3837739649927c8ffce37694fd807a2a620127137e47b4",
+    "parity/reports/artifacts/physics-refinement-20261114/summary.json": "ce81e80b162eb92dcb9b975c6671b8a0aab5a45b0cafb0f494a002e9e2bcb270",
+    "parity/reports/artifacts/physics-refinement-20261114/verify.py": "38e2723cf6dd53cc2986bfeeaf6ddedd0529a9132eb9d4bd7c64089b23e1d36b"
+  },
+  "experiment_declaration": "parity/reports/artifacts/physics-refinement-20261114/plan.json",
+  "harness": "parity/reports/artifacts/physics-refinement-20261114/harness/src/main.rs",
+  "harness_source_kind": "Original private experiment driver, exact bytes retained as a tracked artifact; linked project crates came from the identified clean16e checkout. The driver was not a source file in commit16e.",
+  "candidate_executable_sha256": "849d217d700cb9ea6ffc72e29e20cae37f30971e16aa50a4b433f55d5c02b8c7",
+  "source_fixture": "fixtures/grain-shirt.weftforge",
+  "source_fixture_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "summary": "parity/reports/artifacts/physics-refinement-20261114/summary.json",
+  "read_only_verifier": "parity/reports/artifacts/physics-refinement-20261114/verify.py",
+  "measurement_completed": true,
+  "unchanged_fit_criteria": {
+    "finite": true,
+    "assembly_remaining_m": 0,
+    "max_material_axis_strain_below": 0.15,
+    "max_seam_gap_below_m": 0.005,
+    "max_supported_contact_penetration_below_m": 0.002
+  },
+  "separate_sensitivity_triggers": {
+    "absolute_strain_difference_vs_same_time_control_above": 0.005,
+    "max_nodal_displacement_vs_same_time_control_above_m": 0.001
+  },
+  "cases": [
+    {
+      "phase": "baseline_assembly_8x32",
+      "status": "FAILED",
+      "simulation_time_s": 1.0000000000000013,
+      "max_material_axis_strain": 0.2596921305615896,
+      "max_seam_gap_m": 5.5659824307055875e-06,
+      "max_supported_contact_penetration_m": 0.0,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.2596921305615896,
+        "absolute_strain": 0.2596921305615896
+      }
+    },
+    {
+      "phase": "baseline_drape_8x32",
+      "status": "FAILED",
+      "simulation_time_s": 2.9999999999999942,
+      "max_material_axis_strain": 0.26930346146570994,
+      "max_seam_gap_m": 5.54878287996357e-06,
+      "max_supported_contact_penetration_m": 0.0,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.2693034614657097,
+        "absolute_strain": 0.2693034614657097
+      }
+    },
+    {
+      "phase": "continuation_8x32",
+      "status": "FAILED",
+      "simulation_time_s": 3.9999999999999907,
+      "max_material_axis_strain": 0.2677182817333772,
+      "max_seam_gap_m": 5.498606116110485e-06,
+      "max_supported_contact_penetration_m": 0.0,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.2677182817333774,
+        "absolute_strain": 0.2677182817333774
+      }
+    },
+    {
+      "phase": "iteration_8x64",
+      "status": "FAILED",
+      "simulation_time_s": 3.9999999999999907,
+      "max_material_axis_strain": 0.26689260199894527,
+      "max_seam_gap_m": 1.0163211126123291e-08,
+      "max_supported_contact_penetration_m": 0.0,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.26689260199894504,
+        "absolute_strain": 0.26689260199894504
+      }
+    },
+    {
+      "phase": "substep_16x32",
+      "status": "FAILED",
+      "simulation_time_s": 3.9999999999999907,
+      "max_material_axis_strain": 0.26249175457553875,
+      "max_seam_gap_m": 9.67209752660444e-09,
+      "max_supported_contact_penetration_m": 9.71445146547012e-17,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.26249175457553875,
+        "absolute_strain": 0.26249175457553875
+      }
+    }
+  ],
+  "comparison_to_t4_control": {
+    "continuation_8x32": {
+      "strain_difference_from_t4_control": 0.0,
+      "nodal_difference_from_t4_control": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": false
+    },
+    "iteration_8x64": {
+      "strain_difference_from_t4_control": -0.0008256797344319278,
+      "nodal_difference_from_t4_control": {
+        "max_m": 0.0021115426407618157,
+        "mass_weighted_rms_m": 0.000665927440030127
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    "substep_16x32": {
+      "strain_difference_from_t4_control": -0.005226527157838445,
+      "nodal_difference_from_t4_control": {
+        "max_m": 0.0038958967898920964,
+        "mass_weighted_rms_m": 0.0017153088101014848
+      },
+      "strain_sensitivity_exceeded": true,
+      "displacement_sensitivity_exceeded": true
+    }
+  },
+  "interpretation": "The original3s result reproduces0.26930346146570994. Strain already exceeds0.25 at1s zero-gravity assembly. Continued/refined states remain above0.26 despite much smaller seam residuals. Finite numerical sensitivity is observed; equilibrium and a specific production fix remain unproven. The1s assembly observation is not an independent complete fitting workflow.",
+  "changed_production_code": false,
+  "changed_inputs_or_tolerances": false,
+  "jobs": {
+    "build_session": 39230,
+    "simulation_session": 89137,
+    "build_exit_code": 0,
+    "simulation_exit_code": 0,
+    "live_jobs": []
+  },
+  "actions": "disabled_at_user_request; no remote workflow or Pages deployment",
+  "limits": [
+    "Equilibrium",
+    "Full numerical convergence",
+    "A specific solver defect or production fix",
+    "Independent full collision freedom",
+    "Physical fabric calibration",
+    "Reference or whole-product parity",
+    "Only the continuation after3s was refined. The full assembly path, mesh resolution and static force balance were not tested.",
+    "Supported contact residual is the existing discrete diagnostic, not independent CCD/edge-edge contact proof.",
+    "All five sampled states exceed the15% strain screen; original3s and continued4s fitting states remain failed. Exit0 means measurements completed, not fitting passed.",
+    "Historical source16e results do not qualify current DXF source. Public verifier recomputes retained numeric consistency without running simulation.",
+    "Exact diagnostic driver/Cargo files are artifacts; original executable bytes are excluded and a portable rebuild need not have their hash."
+  ]
+}
