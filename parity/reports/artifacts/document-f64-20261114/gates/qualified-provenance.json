@@ -1,0 +1,35 @@
+{
+  "qualification_source_commit": "4194dc347386749c0dd47097d8cf1856df668ff2",
+  "native_execution_source_commit": "1528e3662380a4a74c3b70d3ef9b11f2c607af5f",
+  "rust_tests": 79,
+  "fmt": "passed",
+  "clippy": "passed",
+  "logs": {
+    "qualified-tests": {
+      "original_private_raw_sha256": "a551e75d52d051dd727eb0b1503923232e2bdf79ac6ab91658c673cdac2c91ec",
+      "public_derived_path": "parity/reports/artifacts/document-f64-20261114/gates/qualified-tests.log",
+      "public_derived_sha256": "e4d672d9243c9e0b814211dcd68d43551ba91c46596b7e99a0ad05949ef94828",
+      "derivation": "Only personal workspace prefix replaced by ${WORKSPACE}."
+    },
+    "qualified-clippy": {
+      "original_private_raw_sha256": "a67e0ef447ef05e8ac4115cdeecbfdf19ad71288ffd906cab1842f83edf2a632",
+      "public_derived_path": "parity/reports/artifacts/document-f64-20261114/gates/qualified-clippy.log",
+      "public_derived_sha256": "52a6871ac5aad8f02daaa3642018a59b75caadd125e020c36eed5ed247934bed",
+      "derivation": "Only personal workspace prefix replaced by ${WORKSPACE}."
+    },
+    "qualified-package": {
+      "original_private_raw_sha256": "668ffa8e6a1a910cef8b8e87c262fafcf8be2b22b7da0777e57bcb8f8958a900",
+      "public_derived_path": "parity/reports/artifacts/document-f64-20261114/gates/qualified-package.log",
+      "public_derived_sha256": "668ffa8e6a1a910cef8b8e87c262fafcf8be2b22b7da0777e57bcb8f8958a900",
+      "derivation": "Only personal workspace prefix replaced by ${WORKSPACE}."
+    },
+    "qualified-xtask": {
+      "original_private_raw_sha256": "c649b3dbc7b178578c468b12f4fac8ba79dbb4bf73ab06bb68f78e8ec4d71b48",
+      "public_derived_path": "parity/reports/artifacts/document-f64-20261114/gates/qualified-xtask.log",
+      "public_derived_sha256": "c649b3dbc7b178578c468b12f4fac8ba79dbb4bf73ab06bb68f78e8ec4d71b48",
+      "derivation": "Only personal workspace prefix replaced by ${WORKSPACE}."
+    }
+  },
+  "final_clean_checkout_and_CI": "pending",
+  "xtask": "passed;54 Python checks,928-ID map and CLI help"
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "exact_executable_rebuild_qualification",
+  "qualified_at": "2026-11-14T08:16:11.681890+00:00",
+  "actual_native_execution_source_commit": "1528e3662380a4a74c3b70d3ef9b11f2c607af5f",
+  "qualified_source_commit": "4194dc347386749c0dd47097d8cf1856df668ff2",
+  "native_sha256": "a16acde0fb010a34b1452881ca9865ac3a3ef58908ca50e2719177fb9ab3b838",
+  "cli_sha256": "820b8329de53fe6cc167533d3e0f0b55953b14e0ff74e5d6fda4cead77b9f0b7",
+  "all_standard_package_file_hashes_identical": {
+    "LICENSE-APACHE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "LICENSE-MIT": "5a79a5be6e18069ea095bcb13f724f90cee6a70b1fd6b5e2b1f505f050c25b0d",
+    "README.md": "c669be2abe9337b1a41b9b2e86fbaec49a507886ac3591a8bf497f1972d31a88",
+    "THIRD_PARTY.md": "da5201bd1cadff85193d02040d0f99b7a7b4949fe4857684f91efaa1f5799a0d",
+    "WeftForge.app/Contents/Info.plist": "5ac9539a4fb95ced9cc9463a5840176f69b86a826c39be0f7971378d93c218b5",
+    "WeftForge.app/Contents/MacOS/weftforge": "a16acde0fb010a34b1452881ca9865ac3a3ef58908ca50e2719177fb9ab3b838",
+    "weftforge": "a16acde0fb010a34b1452881ca9865ac3a3ef58908ca50e2719177fb9ab3b838",
+    "weftforge-cli": "820b8329de53fe6cc167533d3e0f0b55953b14e0ff74e5d6fda4cead77b9f0b7"
+  },
+  "scoped_source_file_count": 30,
+  "only_scoped_source_delta": {
+    "path": "crates/weftforge-core/tests/migration.rs",
+    "kind": "Uncompiled integration-test fixture preparation normalizes CRLF before inserting explicit decimal literals."
+  },
+  "additional_changes": "Intentional audited autosave fixture now Git-tracked; delivery attributes preserve evidence bytes; AGENTS requires tracked artifact closure/clean checkout. No runtime input or schema change.",
+  "original_report": "parity/reports/artifacts/document-f64-20261114/native-execution-report-1528.json",
+  "original_report_sha256": "6e0481c943417a87951a93cc6133fcc11a3e7c495672dce1cb24c6a1f26940c6",
+  "original_manifest": "parity/reports/artifacts/document-f64-20261114/candidate-pretest.json",
+  "qualified_manifest": "parity/reports/artifacts/document-f64-20261114/rebuild-manifest-4194.json",
+  "native_run_repeated": false,
+  "limits": "This is exact package identity, not a fresh native session. Original declaration,58-file bundle,outputs,oracle,expected bits and native timestamps remain unchanged."
+}

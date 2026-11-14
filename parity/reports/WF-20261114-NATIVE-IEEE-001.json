@@ -1,6 +1,6 @@
 {
   "id": "WF-20261114-NATIVE-IEEE-001",
-  "commit": "1528e3662380a4a74c3b70d3ef9b11f2c607af5f",
+  "commit": "4194dc347386749c0dd47097d8cf1856df668ff2",
   "timestamp": "2026-11-14T07:26:07.361851Z",
   "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
   "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
@@ -36,7 +36,7 @@
     "crates/weftforge-core/src/persistence.rs": "9d66cbe725c450e272cb94d9971d84e5d941d5eceb4f20ac92e416eabeed6150",
     "crates/weftforge-core/src/simulation.rs": "e4295d2a048029e88c25e4e6a9395570fd85b827d80c6671509c1ad7daec150c",
     "crates/weftforge-core/tests/grain.rs": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
-    "crates/weftforge-core/tests/migration.rs": "6c4984193585136a3ac54058a4d39b44fe5fd8138520f23881183643aa7aa6dd",
+    "crates/weftforge-core/tests/migration.rs": "9e3ef1935e890bf4da9da1d2a5e2a9469bf6f0ea7a652c2283d266aef6a2e9e0",
     "crates/weftforge-core/tests/shirt.rs": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
     "crates/weftforge-core/tests/workflow.rs": "909ec0c491fab7b32fd645a09f46e5b0419631d1e88c7e1026e2da19d93870b8",
     "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
@@ -60,12 +60,19 @@
   ],
   "artifact_hashes": {
     "parity/reports/artifacts/document-f64-20261114/candidate-pretest.json": "08f3e42d17025e85a7941db9cea798979c3ce92ec9d357842ce2cc4e550a3bbc",
+    "parity/reports/artifacts/document-f64-20261114/exact-rebuild-qualification.json": "b3ed7ca79747734fcaf9a8cb718c76e37218dbda989b091a3b4f058369ffa2b3",
     "parity/reports/artifacts/document-f64-20261114/gates/clippy.log": "5c960f75d87881710e56652156a6384eaa52c6505600470b6e8749f81621addc",
     "parity/reports/artifacts/document-f64-20261114/gates/package.log": "d7d38e8088d8b4f5752eb5577334a51dcf6e9b6ad6f97acbaf8b862ba87babf6",
     "parity/reports/artifacts/document-f64-20261114/gates/provenance.json": "1fca75d37a11ecec4a7b705372d195428fef749a1d4fb0ccafdb8be37746d68b",
     "parity/reports/artifacts/document-f64-20261114/gates/publish-xtask.log": "eb8524682f0aa649246463d6038bb44a09708c87318ffb5f036590925d67de61",
+    "parity/reports/artifacts/document-f64-20261114/gates/qualified-clippy.log": "52a6871ac5aad8f02daaa3642018a59b75caadd125e020c36eed5ed247934bed",
+    "parity/reports/artifacts/document-f64-20261114/gates/qualified-package.log": "668ffa8e6a1a910cef8b8e87c262fafcf8be2b22b7da0777e57bcb8f8958a900",
+    "parity/reports/artifacts/document-f64-20261114/gates/qualified-provenance.json": "138ce6806b5daa4e07ed83b9f5e81378de0aa82e9765677fb45a92065c417243",
+    "parity/reports/artifacts/document-f64-20261114/gates/qualified-tests.log": "e4d672d9243c9e0b814211dcd68d43551ba91c46596b7e99a0ad05949ef94828",
+    "parity/reports/artifacts/document-f64-20261114/gates/qualified-xtask.log": "c649b3dbc7b178578c468b12f4fac8ba79dbb4bf73ab06bb68f78e8ec4d71b48",
     "parity/reports/artifacts/document-f64-20261114/gates/snapshot-xtask.log": "c4fbb6356c649807475325efe671cab3e5705ba347e7c002ecf509ac0bef3a7c",
     "parity/reports/artifacts/document-f64-20261114/gates/tests.log": "e52d13c7e682d2f79ac36206d20a187b5c24cc0700965ad7471eb51790434ba6",
+    "parity/reports/artifacts/document-f64-20261114/native-execution-report-1528.json": "6e0481c943417a87951a93cc6133fcc11a3e7c495672dce1cb24c6a1f26940c6",
     "parity/reports/artifacts/document-f64-20261114/native/BUNDLE.txt": "a31f927800ea969e14d72d1178d82d2efca57ae215439118a1658fc3aa0e7e4c",
     "parity/reports/artifacts/document-f64-20261114/native/after-invalid-number-check.json": "1ce156cc70d7cef5f3383dc3f76144ff512bdea8298b766a7c27ea38a3ff9af2",
     "parity/reports/artifacts/document-f64-20261114/native/after-invalid-number.weftforge": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
@@ -125,6 +132,7 @@
     "parity/reports/artifacts/document-f64-20261114/native/v2-saved.weftforge": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
     "parity/reports/artifacts/document-f64-20261114/native/verify_document_io.py": "f1303d55ed1935b482345b1afdf07afc98fb2c0d5521df90ac70e263ed64b24e",
     "parity/reports/artifacts/document-f64-20261114/official-sdk.json": "49c1cb808942afed4964f4e0430628b12b3bc4d3cf03c659a6fae22f15f054a9",
+    "parity/reports/artifacts/document-f64-20261114/rebuild-manifest-4194.json": "0142554e2925cf075ea75adf14ed873d274fb1cd90c392137672a9fc84292e8b",
     "parity/reports/artifacts/document-f64-20261114/recovered-native.png": "f76471d51b4c5a2affbcfb93b9ed15be12ee1dd3a9192fe7298088ab58faba3e"
   },
   "candidate": {
@@ -132,7 +140,8 @@
     "cli_sha256": "820b8329de53fe6cc167533d3e0f0b55953b14e0ff74e5d6fda4cead77b9f0b7",
     "packaging": "Unsigned standard cargo xtask package copied intact into isolated diagnostic bundle.",
     "pretest_manifest": "parity/reports/artifacts/document-f64-20261114/candidate-pretest.json",
-    "pretest_pending_native_field_retained": true
+    "pretest_pending_native_field_retained": true,
+    "rebuild_manifest": "parity/reports/artifacts/document-f64-20261114/rebuild-manifest-4194.json"
   },
   "scope": "Only the declared native project numerical decoding/migration/save/reopen, selected untouched fields, invalid modern loads, focused modern Quit retention and explicit recovery copy. No full project or garment workflow contract.",
   "declaration": "parity/reports/artifacts/document-f64-20261114/native/declaration.json",
@@ -196,7 +205,15 @@
     "catalog_ids": 928,
     "work_packets": 205,
     "source_landmarks": 56,
-    "runtime_test_sources_identical_to_candidate": true,
-    "gate_provenance": "parity/reports/artifacts/document-f64-20261114/gates/provenance.json"
-  }
+    "runtime_test_sources_identical_to_candidate": false,
+    "gate_provenance": "parity/reports/artifacts/document-f64-20261114/gates/qualified-provenance.json",
+    "runtime_sources_identical_to_candidate": true,
+    "test_source_delta": "Only migration-test CRLF preparation; test sources are not byte-identical to the original native candidate.",
+    "original_gate_provenance": "parity/reports/artifacts/document-f64-20261114/gates/provenance.json"
+  },
+  "actual_native_execution_source_commit": "1528e3662380a4a74c3b70d3ef9b11f2c607af5f",
+  "qualification_timestamp": "2026-11-14T08:16:11.681890+00:00",
+  "byte_identical_rebuild_qualification": "parity/reports/artifacts/document-f64-20261114/exact-rebuild-qualification.json",
+  "original_native_execution_report": "parity/reports/artifacts/document-f64-20261114/native-execution-report-1528.json",
+  "provenance_note": "Native actions executed the1528 build. Source4194 is qualified by an identical rebuilt desktop/CLI and package after a test-only line-ending correction; no new native run is claimed."
 }

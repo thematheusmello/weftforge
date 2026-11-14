@@ -35,7 +35,10 @@ The [native IEEE report](parity/reports/WF-20261114-NATIVE-IEEE-001.json) passes
 its declared file-I/O subset: legacy migration/save/reopen, extreme stiffness,
 modern untouched fields and rejected loads, focused Quit retention and explicit
 recovery/reopen. The current map has928 IDs; the executable was packaged at the
-902-ID snapshot. All30 runtime/test source hashes remain identical.
+902-ID snapshot. After CI exposed an ignored autosave fixture and CRLF-dependent test preparation,
+all package bytes remained identical. Native actions remain attributed to1528;
+source4194 is separately qualified by exact rebuilt desktop/CLI/resource identity.
+The sole30-file scoped delta is the uncompiled migration-test preparation line.
 
 The completed `359ac5b` / `3ed0ab22` rectangle/curve/history/cancellation reports
 are retained as stale after parser configuration and test sources changed. Their
@@ -209,8 +212,8 @@ same process; final target fields persisted, with explicit AX gaps/truncation.
 An original two-panel curved fixture exists. A whole-edge300mm pair, one
 Undo/Redo and document New/Open preserve observed seam properties. Interrupted
 driver input and guard refusals remain qualified; this is not a clean driver,
-process-restart, simulation, reversal or partial-seam comparison. The next
-separately saved partial case is underway, isolated until reviewed and mapped.
+process-restart, simulation, reversal or partial-seam comparison. The separately saved100/100mm partial and reversal cases are complete in
+an isolated949-entry catalog batch, pending review and map integration.
 
 Reference qualification still requires technical identity, behavior settings,
 contracts, scenarios, original fixtures, criteria and transitive dependency pins.
@@ -221,7 +224,8 @@ No current report qualifies as a complete reference parity pass.
 1. Publish the exact native I/O source/evidence checkpoint with final local gates
    and all eight CI checks, preserving historical outcomes and source anchors.
 2. Independently review and integrate isolated exact shape-preserving join commit
-   `eaed5f9247cf36e2a65de9a8e62682637e9d5664`;86 workspace tests/Clippy/xtask pass
+   `eaed5f9247cf36e2a65de9a8e62682637e9d5664` and correction
+   `343e771e3ca2a32704eaa1cca45b8c8e31d1e67a`;88 workspace tests/Clippy/xtask pass
    in its own worktree. Native join acceptance is pending and this is not general
    reference join semantics. Integration must stale/revalidate affected evidence.
 3. Continue reference partial sewing, preferences, contextual dialogs/ranges/errors
@@ -231,11 +235,12 @@ No current report qualifies as a complete reference parity pass.
    animation, avatar, rendering, interchange, printing, automation and delivery.
    Verified parity stays zero; the complete product denominator remains unknown.
 
-Reference_lab owns exclusive desktop input for partial Free Sewing. Root's own
+Reference_lab has returned the desktop input lease to root. Root's own
 candidate PID1335 is idle, saved, with an unedited focused grain value; do not
 replace its isolated package. Its read-only REA capture has93 nodes, no gaps or
 truncation and a matched executable digest. Independent I/O verification/bundle
-is complete. No root Cargo job is live. Generated external caches and private
+is complete. No root Cargo job is live. Corrected79-test/Clippy/xtask gates pass; tracked artifact
+closure and a detached clean checkout are required before the CI retry. Generated external caches and private
 research remain retained; do not remove unrelated files or change protections.
 
 The source-only anisotropic review independently reproduces the retained weak-warp
