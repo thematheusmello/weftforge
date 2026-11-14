@@ -1,5 +1,7 @@
 use std::{
     error::Error,
+    fs::File,
+    io::Read,
     path::{Path, PathBuf},
     time::Instant,
 };
@@ -7,6 +9,8 @@ use weftforge_core::{Command, CurveInterval, Editor, Mesh, Placement, Project};
 use weftforge_sim::{Diagnostics, StepSettings};
 mod mcp;
 type Result<T> = std::result::Result<T, Box<dyn Error>>;
+const MAX_COMMANDS: usize = 1024;
+const MAX_COMMAND_BYTES: u64 = 1024 * 1024;
 
 fn main() {
     if let Err(error) = run() {
@@ -18,7 +22,7 @@ fn run() -> Result<()> {
     let args: Vec<_> = std::env::args().skip(1).collect();
     match args.first().map(String::as_str) {
         None | Some("--help" | "-h" | "help") => println!(
-            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj\nexport-svg PROJECT OUTPUT.svg\nexport-dxf PROJECT OUTPUT.dxf          exterior pattern boundaries in mm\nsimulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Curve t is not arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
+            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj\nexport-svg PROJECT OUTPUT.svg\nexport-dxf PROJECT OUTPUT.dxf          exterior pattern boundaries in mm\nsimulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
         ),
         Some("mcp") => {
             count(&args, 1)?;
@@ -40,8 +44,49 @@ fn run() -> Result<()> {
             println!(
                 "{}",
                 serde_json::to_string_pretty(
-                    &serde_json::json!({"revision":p.revision,"units":"m","up":"Y","pieces":p.pieces.len(),"curves":p.curves.len(),"construction":{"points":p.points,"curves":p.curves},"vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"seams":seams,"stitches":mesh.stitches.len(),"patterns":p.pieces.iter().map(|piece|serde_json::json!({"id":piece.id,"name":piece.name,"material":piece.material,"grain_angle_radians":piece.grain_angle})).collect::<Vec<_>>(),"materials":p.materials})
+                    &serde_json::json!({"revision":p.revision,"units":"m","up":"Y","pieces":p.pieces.len(),"curves":p.curves.len(),"construction":{"points":p.points,"curves":p.curves},"vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"seams":seams,"sewing_groups":p.sewing_groups,"sewing_group_geometry":sewing_geometry(&mesh),"stitches":mesh.stitches.len(),"patterns":p.pieces.iter().map(|piece|serde_json::json!({"id":piece.id,"name":piece.name,"material":piece.material,"grain_angle_radians":piece.grain_angle})).collect::<Vec<_>>(),"materials":p.materials})
                 )?
+            );
+        }
+        Some("inspect-sewing") => {
+            count(&args, 2)?;
+            let project = Project::load(Path::new(&args[1]))?;
+            let mesh = project.mesh()?;
+            println!(
+                "{}",
+                serde_json::to_string_pretty(&serde_json::json!({
+                    "kind":"sewing_inspection",
+                    "source":{"format":"weftforge","version":weftforge_core::FORMAT_VERSION,"project":project},
+                    "sewing_groups":sewing_geometry(&mesh),
+                    "mesh":{
+                        "doc_revision":mesh.doc_revision,"positions":mesh.positions,"uv":mesh.uv,
+                        "triangles":mesh.triangles,"piece_ids":mesh.piece_ids,
+                        "boundary":mesh.boundary.iter().map(|s|serde_json::json!({"piece":s.piece,"curve":s.curve,"t":s.t,"vertex":s.vertex})).collect::<Vec<_>>(),
+                        "stitches":mesh.stitches.iter().map(|s|serde_json::json!({
+                            "seam":s.seam,
+                            "a":{"vertices":s.a.vertices,"weight":s.a.weight},
+                            "b":{"vertices":s.b.vertices,"weight":s.b.weight}
+                        })).collect::<Vec<_>>()
+                    }
+                }))?
+            );
+        }
+        Some("execute") => {
+            count(&args, 4)?;
+            let mut bytes = Vec::new();
+            File::open(&args[3])?
+                .take(MAX_COMMAND_BYTES + 1)
+                .read_to_end(&mut bytes)?;
+            if bytes.len() as u64 > MAX_COMMAND_BYTES {
+                return Err("Command file exceeds the 1 MiB limit".into());
+            }
+            // Deserialize original bytes so duplicate command fields remain errors.
+            let commands: Vec<Command> = serde_json::from_slice(&bytes)?;
+            let (revision, commands_applied) =
+                execute_commands(Path::new(&args[1]), Path::new(&args[2]), commands)?;
+            println!(
+                "{}",
+                serde_json::json!({"revision":revision,"commands_applied":commands_applied})
             );
         }
         Some("rectangle") => {
@@ -200,6 +245,35 @@ fn run() -> Result<()> {
         Some(other) => return Err(format!("unknown command {other}; run --help").into()),
     }
     Ok(())
+}
+
+fn sewing_geometry(mesh: &Mesh) -> Vec<serde_json::Value> {
+    mesh.sewing_groups
+        .iter()
+        .map(|group| {
+            serde_json::json!({
+                "id":group.id,"lengths":group.lengths,
+                "portions":group.portions.iter().map(|portion|serde_json::json!({"a":portion.a,"b":portion.b})).collect::<Vec<_>>()
+            })
+        })
+        .collect()
+}
+
+fn execute_commands(input: &Path, output: &Path, commands: Vec<Command>) -> Result<(u64, usize)> {
+    if commands.is_empty() || commands.len() > MAX_COMMANDS {
+        return Err("commands must contain between 1 and 1024 shared commands".into());
+    }
+    if commands
+        .iter()
+        .any(|command| matches!(command, Command::Transaction(_)))
+    {
+        return Err("Nested transactions are unsupported; supply commands directly".into());
+    }
+    let count = commands.len();
+    let mut editor = Editor::new(Project::load(input)?)?;
+    editor.execute(Command::Transaction(commands))?;
+    editor.project.save(output)?;
+    Ok((editor.project.revision, count))
 }
 fn count(args: &[String], expected: usize) -> Result<()> {
     if args.len() != expected {

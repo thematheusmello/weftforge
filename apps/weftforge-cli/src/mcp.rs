@@ -4,12 +4,12 @@ use serde::{Deserialize, Deserializer, Serialize, de::DeserializeOwned, de::Igno
 use serde_json::{Map, Value, json};
 use std::io::{self, BufRead, Read, Write};
 use std::path::Path;
-use weftforge_core::{Command, Editor, Project};
+use weftforge_core::{Command, Project};
 
 const MODERN_VERSION: &str = "2026-07-28";
 const LEGACY_VERSION: &str = "2025-11-25";
 const MAX_LINE_BYTES: usize = 1024 * 1024;
-const MAX_COMMANDS: usize = 1024;
+use super::MAX_COMMANDS;
 
 #[derive(Deserialize, Serialize)]
 #[serde(untagged)]
@@ -401,24 +401,13 @@ fn call(line: &[u8]) -> Result<Value, String> {
             }
             "project_execute" => {
                 let args: ExecuteArgs = arguments(line)?;
-                if args.commands.is_empty() || args.commands.len() > MAX_COMMANDS {
-                    return Err("commands must contain between 1 and 1024 shared commands".into());
-                }
-                if args
-                    .commands
-                    .iter()
-                    .any(|command| matches!(command, Command::Transaction(_)))
-                {
-                    return Err(
-                        "Nested transactions are unsupported; supply commands directly".into(),
-                    );
-                }
-                let count = args.commands.len();
-                let mut editor = Editor::new(Project::load(Path::new(&args.input))?)?;
-                editor.execute(Command::Transaction(args.commands))?;
-                editor.project.save(Path::new(&args.output))?;
+                let (revision, count) = super::execute_commands(
+                    Path::new(&args.input),
+                    Path::new(&args.output),
+                    args.commands,
+                )?;
                 Ok(
-                    json!({"input":args.input,"output":args.output,"revision":editor.project.revision,"commands_applied":count}),
+                    json!({"input":args.input,"output":args.output,"revision":revision,"commands_applied":count}),
                 )
             }
             "project_export_svg" | "project_export_obj" | "project_export_dxf" => {
@@ -502,9 +491,14 @@ fn command_schema() -> Value {
             "color",
         ],
     );
-    let correspondence = json!({"type":"array","items":xy});
+    let correspondence = json!({"type":"array","items":xy,"minItems":2,"maxItems":1024});
     let seam = object(
         json!({"id":id,"name":text,"a":interval,"b":interval,"correspondence":correspondence}),
+        &["id", "name", "a", "b", "correspondence"],
+    );
+    let path = json!({"type":"array","items":interval,"minItems":1,"maxItems":1024});
+    let sewing_group = object(
+        json!({"id":id,"name":text,"a":path,"b":path,"correspondence":correspondence}),
         &["id", "name", "a", "b", "correspondence"],
     );
     let mannequin = object(
@@ -581,6 +575,21 @@ fn command_schema() -> Value {
         ),
         ("update_seam", object(json!({"seam":seam}), &["seam"])),
         ("remove_seam", object(json!({"seam":id}), &["seam"])),
+        (
+            "add_sewing_group",
+            object(
+                json!({"name":text,"a":path,"b":path,"correspondence":correspondence}),
+                &["name", "a", "b", "correspondence"],
+            ),
+        ),
+        (
+            "update_sewing_group",
+            object(json!({"group":sewing_group}), &["group"]),
+        ),
+        (
+            "remove_sewing_group",
+            object(json!({"group":id}), &["group"]),
+        ),
         ("remove_piece", object(json!({"piece":id}), &["piece"])),
         (
             "set_resolution",

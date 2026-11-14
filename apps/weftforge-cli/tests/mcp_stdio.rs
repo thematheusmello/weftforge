@@ -314,7 +314,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
             .as_array()
             .unwrap()
             .len(),
-        18
+        21
     );
     success(&server.call("project_create", json!({"output":project_path})));
     let initial = server.call("project_inspect", json!({"path":project_path}));
@@ -397,6 +397,205 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
     assert_eq!(fs::read(&cli_dxf).unwrap(), fs::read(&dxf).unwrap());
     assert_eq!(fs::read(&project_path).unwrap(), source_bytes);
     server.finish();
+}
+
+#[test]
+fn sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constraints() {
+    use weftforge_core::CurveInterval;
+    let directory = Directory::new();
+    let input = directory.path("original.weftforge");
+    let created = directory.path("created.weftforge");
+    let cli_created = directory.path("cli-created.weftforge");
+    let updated = directory.path("updated.weftforge");
+    let removed = directory.path("removed.weftforge");
+    let commands_file = directory.path("commands.json");
+    let mut editor = Editor::default();
+    for (index, width) in [0.1, 0.3, 0.2, 0.1, 0.3].into_iter().enumerate() {
+        editor
+            .execute(Command::AddRectangle {
+                name: format!("Panel {index}"),
+                origin: [index as f64, 0.0],
+                width,
+                height: 0.2,
+            })
+            .unwrap();
+    }
+    editor.project.save(&input).unwrap();
+    let source = fs::read(&input).unwrap();
+    let intervals: Vec<_> = editor
+        .project
+        .pieces
+        .iter()
+        .map(|piece| CurveInterval::full(piece.boundary[0]))
+        .collect();
+    let command = Command::AddSewingGroup {
+        name: "Ordered 2:3".into(),
+        a: intervals[..2].to_vec(),
+        b: intervals[2..].to_vec(),
+        correspondence: vec![[0.0, 0.0], [1.0, 1.0]],
+    };
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let listed = server.request("tools/list", json!({}));
+    let variants = listed["result"]["tools"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|tool| tool["name"] == "project_execute")
+        .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
+        .as_array()
+        .unwrap();
+    assert_eq!(variants.len(), 21);
+    for name in [
+        "add_sewing_group",
+        "update_sewing_group",
+        "remove_sewing_group",
+    ] {
+        let variant = variants
+            .iter()
+            .find(|variant| variant["properties"]["type"]["const"] == name)
+            .unwrap();
+        assert_eq!(variant["properties"]["data"]["additionalProperties"], false);
+    }
+    let create_schema = variants
+        .iter()
+        .find(|v| v["properties"]["type"]["const"] == "add_sewing_group")
+        .unwrap();
+    for side in ["a", "b"] {
+        let path = &create_schema["properties"]["data"]["properties"][side];
+        assert_eq!(path["minItems"], 1);
+        assert_eq!(path["maxItems"], 1024);
+        assert_eq!(path["items"]["additionalProperties"], false);
+    }
+    let result = server.call(
+        "project_execute",
+        json!({"input":input,"output":created,"commands":[command]}),
+    );
+    assert_eq!(success(&result)["revision"], editor.project.revision + 1);
+    assert_eq!(success(&result)["commands_applied"], 1);
+    let project = Project::load(&created).unwrap();
+    assert!(project.seams.is_empty());
+    assert_eq!(project.sewing_groups.len(), 1);
+    let group = project.sewing_groups[0].clone();
+    assert_eq!(group.a, intervals[..2]);
+    assert_eq!(group.b, intervals[2..]);
+    let saved: Value = serde_json::from_slice(&fs::read(&created).unwrap()).unwrap();
+    assert_eq!(saved["version"], 3);
+
+    fs::write(&commands_file, serde_json::to_vec(&vec![command]).unwrap()).unwrap();
+    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+        .arg("execute")
+        .arg(&input)
+        .arg(&cli_created)
+        .arg(&commands_file)
+        .output()
+        .unwrap();
+    assert!(
+        cli.status.success(),
+        "{}",
+        String::from_utf8_lossy(&cli.stderr)
+    );
+    assert_eq!(fs::read(&created).unwrap(), fs::read(&cli_created).unwrap());
+    assert_eq!(fs::read(&input).unwrap(), source);
+    let inspect = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+        .arg("inspect-sewing")
+        .arg(&created)
+        .output()
+        .unwrap();
+    assert!(
+        inspect.status.success(),
+        "{}",
+        String::from_utf8_lossy(&inspect.stderr)
+    );
+    let inspected: Value = serde_json::from_slice(&inspect.stdout).unwrap();
+    assert_eq!(inspected["kind"], "sewing_inspection");
+    assert_eq!(inspected["source"], saved);
+    assert_eq!(inspected["mesh"]["doc_revision"], project.revision);
+    assert_eq!(inspected["sewing_groups"][0]["id"], group.id);
+    for (actual, expected) in inspected["sewing_groups"][0]["lengths"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .zip([0.4, 0.6])
+    {
+        assert!((actual.as_f64().unwrap() - expected).abs() < 1e-12);
+    }
+    let stitches = inspected["mesh"]["stitches"].as_array().unwrap();
+    assert!(!stitches.is_empty());
+    assert!(stitches.iter().all(|stitch| stitch["seam"] == group.id));
+    let mut reversed = group.clone();
+    reversed.b.reverse();
+    for interval in &mut reversed.b {
+        std::mem::swap(&mut interval.t0, &mut interval.t1);
+    }
+    let result = server.call("project_execute", json!({"input":created,"output":updated,"commands":[Command::UpdateSewingGroup{group:reversed.clone()}]}));
+    assert_eq!(success(&result)["revision"], project.revision + 1);
+    assert_eq!(
+        Project::load(&updated).unwrap().sewing_groups,
+        vec![reversed]
+    );
+    let result = server.call("project_execute", json!({"input":updated,"output":removed,"commands":[Command::RemoveSewingGroup{group:group.id}]}));
+    assert_eq!(success(&result)["revision"], project.revision + 2);
+    assert!(Project::load(&removed).unwrap().sewing_groups.is_empty());
+    assert_eq!(Project::load(&removed).unwrap().pieces, project.pieces);
+
+    let old_output = fs::read(&created).unwrap();
+    let mut invalid = group;
+    invalid.b[0] = invalid.a[0];
+    tool_error(&server.call("project_execute", json!({"input":created,"output":created,"commands":[Command::UpdateSewingGroup{group:invalid}]})));
+    assert_eq!(fs::read(&created).unwrap(), old_output);
+    fs::write(
+        &commands_file,
+        serde_json::to_vec(&vec![
+            Command::SetResolution { metres: 0.1 },
+            Command::SetResolution { metres: -1.0 },
+        ])
+        .unwrap(),
+    )
+    .unwrap();
+    let failed = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+        .arg("execute")
+        .arg(&created)
+        .arg(&created)
+        .arg(&commands_file)
+        .output()
+        .unwrap();
+    assert!(!failed.status.success());
+    assert_eq!(fs::read(&created).unwrap(), old_output);
+    assert!(!recovery_path(&created).exists());
+    server.finish();
+}
+
+#[test]
+fn cli_command_files_are_bounded_strict_and_do_not_replace_failed_destinations() {
+    let directory = Directory::new();
+    let input = directory.path("source.weftforge");
+    let output = directory.path("destination.weftforge");
+    let commands = directory.path("commands.json");
+    Project::default().save(&input).unwrap();
+    let original = fs::read(&input).unwrap();
+    fs::write(&output, &original).unwrap();
+    let cases = [
+        b"[]".to_vec(),
+        br#"[{"type":"transaction","data":[]}]"#.to_vec(),
+        br#"[{"type":"set_resolution","data":{"metres":0.1,"metres":0.2}}]"#.to_vec(),
+        vec![b' '; 1024 * 1024 + 1],
+        serde_json::to_vec(&vec![Command::SetResolution { metres: 0.1 }; 1025]).unwrap(),
+    ];
+    for bytes in cases {
+        fs::write(&commands, bytes).unwrap();
+        let result = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+            .arg("execute")
+            .arg(&input)
+            .arg(&output)
+            .arg(&commands)
+            .output()
+            .unwrap();
+        assert!(!result.status.success(), "Invalid command file accepted");
+        assert_eq!(fs::read(&input).unwrap(), original);
+        assert_eq!(fs::read(&output).unwrap(), original);
+        assert!(!recovery_path(&output).exists());
+    }
 }
 
 #[test]
