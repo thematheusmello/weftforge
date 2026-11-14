@@ -3,6 +3,7 @@ use serde::{Deserialize, Serialize};
 use std::collections::BTreeSet;
 
 pub const MAX_OBJECTS: usize = 20_000;
+pub const MAX_SEWING_SPANS: usize = 20_000;
 pub const MIN_RESOLUTION: f64 = 0.005;
 pub const MAX_RESOLUTION: f64 = 0.5;
 pub const MAX_COORDINATE: f64 = 1_000.0;
@@ -203,6 +204,18 @@ pub struct Seam {
     pub correspondence: Vec<[f64; 2]>,
 }
 
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct SewingGroup {
+    pub id: Id,
+    pub name: String,
+    /// Ordered, oriented coverage; disconnected intervals contribute no gap length.
+    pub a: Vec<CurveInterval>,
+    pub b: Vec<CurveInterval>,
+    /// Strictly increasing normalized cumulative arc-length pairs.
+    pub correspondence: Vec<[f64; 2]>,
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Capsule {
@@ -266,6 +279,7 @@ pub struct Project {
     pub pieces: Vec<Piece>,
     pub materials: Vec<Material>,
     pub seams: Vec<Seam>,
+    pub sewing_groups: Vec<SewingGroup>,
     pub mannequin: Mannequin,
     pub resolution: f64,
     pub(crate) next_id: Id,
@@ -280,6 +294,7 @@ impl Default for Project {
             pieces: Vec::new(),
             materials: vec![Material::default()],
             seams: Vec::new(),
+            sewing_groups: Vec::new(),
             mannequin: Mannequin::default(),
             resolution: 0.07,
             next_id: 2,
@@ -327,6 +342,7 @@ impl Project {
                 + self.pieces.len()
                 + self.materials.len()
                 + self.seams.len()
+                + self.sewing_groups.len()
                 <= MAX_OBJECTS,
             "Project object limit exceeded",
         )?;
@@ -344,6 +360,7 @@ impl Project {
             .chain(self.pieces.iter().map(|x| x.id))
             .chain(self.materials.iter().map(|x| x.id))
             .chain(self.seams.iter().map(|x| x.id))
+            .chain(self.sewing_groups.iter().map(|x| x.id))
         {
             ensure(
                 id != 0 && ids.insert(id),
@@ -502,6 +519,65 @@ impl Project {
                         && pair[0][0] < pair[1][0]
                         && pair[0][1] < pair[1][1],
                     "Seam correspondence must be strictly increasing",
+                )?;
+            }
+        }
+        ensure(
+            self.sewing_groups
+                .iter()
+                .map(|group| group.a.len() + group.b.len())
+                .sum::<usize>()
+                <= MAX_SEWING_SPANS,
+            "Sewing group interval reference limit exceeded",
+        )?;
+        for group in &self.sewing_groups {
+            validate_name(&group.name)?;
+            let mut coverage = std::collections::BTreeMap::<Id, Vec<[f64; 2]>>::new();
+            for side in [&group.a, &group.b] {
+                ensure(
+                    (1..=1024).contains(&side.len()),
+                    "A sewing group side needs 1 to 1024 intervals",
+                )?;
+                for interval in side {
+                    ensure(
+                        self.curve(interval.curve).is_some(),
+                        "Sewing group curve is missing",
+                    )?;
+                    ensure(
+                        interval.t0.is_finite()
+                            && interval.t1.is_finite()
+                            && (0.0..=1.0).contains(&interval.t0)
+                            && (0.0..=1.0).contains(&interval.t1)
+                            && (interval.t1 - interval.t0).abs() > 1.0e-8,
+                        "Sewing intervals must have distinct endpoints in [0,1]",
+                    )?;
+                    coverage
+                        .entry(interval.curve)
+                        .or_default()
+                        .push([interval.t0.min(interval.t1), interval.t0.max(interval.t1)]);
+                }
+            }
+            for intervals in coverage.values_mut() {
+                intervals.sort_by(|a, b| a[0].total_cmp(&b[0]));
+                ensure(
+                    intervals.windows(2).all(|pair| pair[0][1] <= pair[1][0]),
+                    "Sewing group coverage overlaps on the same curve",
+                )?;
+            }
+            ensure(
+                (2..=1024).contains(&group.correspondence.len())
+                    && group.correspondence.first() == Some(&[0., 0.])
+                    && group.correspondence.last() == Some(&[1., 1.]),
+                "Sewing group correspondence must include [0,0] and [1,1]",
+            )?;
+            for pair in group.correspondence.windows(2) {
+                ensure(
+                    pair[1]
+                        .iter()
+                        .all(|x| x.is_finite() && (0.0..=1.0).contains(x))
+                        && pair[0][0] < pair[1][0]
+                        && pair[0][1] < pair[1][1],
+                    "Sewing group correspondence must be strictly increasing",
                 )?;
             }
         }
@@ -673,6 +749,14 @@ impl Project {
                         self.seams.push(portion);
                     }
                 }
+                for group in &mut self.sewing_groups {
+                    for side in [&mut group.a, &mut group.b] {
+                        *side = side
+                            .iter()
+                            .flat_map(|&interval| split_group_interval(interval, curve, second, t))
+                            .collect();
+                    }
+                }
             }
             Command::JoinCurve { curve } => {
                 let piece_index = self
@@ -717,6 +801,18 @@ impl Project {
                     joined_geometry(self, &left, &right, self.pieces[piece_index].placement)?;
                 for seam in &mut self.seams {
                     for interval in [&mut seam.a, &mut seam.b] {
+                        if interval.curve == curve {
+                            interval.t0 *= t;
+                            interval.t1 *= t;
+                        } else if interval.curve == second {
+                            interval.curve = curve;
+                            interval.t0 = t + (1.0 - t) * interval.t0;
+                            interval.t1 = t + (1.0 - t) * interval.t1;
+                        }
+                    }
+                }
+                for group in &mut self.sewing_groups {
+                    for interval in group.a.iter_mut().chain(&mut group.b) {
                         if interval.curve == curve {
                             interval.t0 *= t;
                             interval.t1 *= t;
@@ -844,6 +940,36 @@ impl Project {
                 )?;
                 self.seams.retain(|item| item.id != seam);
             }
+            Command::AddSewingGroup {
+                name,
+                a,
+                b,
+                correspondence,
+            } => {
+                let id = self.allocate_id()?;
+                self.sewing_groups.push(SewingGroup {
+                    id,
+                    name,
+                    a,
+                    b,
+                    correspondence,
+                });
+            }
+            Command::UpdateSewingGroup { group } => {
+                let target = self
+                    .sewing_groups
+                    .iter_mut()
+                    .find(|item| item.id == group.id)
+                    .ok_or_else(|| Error("Unknown sewing group".into()))?;
+                *target = group;
+            }
+            Command::RemoveSewingGroup { group } => {
+                ensure(
+                    self.sewing_groups.iter().any(|item| item.id == group),
+                    "Unknown sewing group",
+                )?;
+                self.sewing_groups.retain(|item| item.id != group);
+            }
             Command::RemovePiece { piece } => {
                 let boundary = self
                     .piece(piece)
@@ -862,6 +988,13 @@ impl Project {
                 self.seams.retain(|item| {
                     !boundary.contains(&item.a.curve) && !boundary.contains(&item.b.curve)
                 });
+                self.sewing_groups.retain(|group| {
+                    !group
+                        .a
+                        .iter()
+                        .chain(&group.b)
+                        .any(|interval| boundary.contains(&interval.curve))
+                });
             }
             Command::SetResolution { metres } => self.resolution = metres,
             Command::SetMannequin { mannequin } => self.mannequin = mannequin,
@@ -877,6 +1010,37 @@ impl Project {
             }
         }
         Ok(())
+    }
+}
+
+fn split_group_interval(
+    interval: CurveInterval,
+    curve: Id,
+    second: Id,
+    t: f64,
+) -> Vec<CurveInterval> {
+    if interval.curve != curve {
+        return vec![interval];
+    }
+    let remap = |t0: f64, t1: f64| {
+        if t0.max(t1) <= t {
+            CurveInterval {
+                curve,
+                t0: t0 / t,
+                t1: t1 / t,
+            }
+        } else {
+            CurveInterval {
+                curve: second,
+                t0: (t0 - t) / (1. - t),
+                t1: (t1 - t) / (1. - t),
+            }
+        }
+    };
+    if interval.t0.min(interval.t1) < t && t < interval.t0.max(interval.t1) {
+        vec![remap(interval.t0, t), remap(t, interval.t1)]
+    } else {
+        vec![remap(interval.t0, interval.t1)]
     }
 }
 
@@ -1156,6 +1320,18 @@ pub enum Command {
     RemoveSeam {
         seam: Id,
     },
+    AddSewingGroup {
+        name: String,
+        a: Vec<CurveInterval>,
+        b: Vec<CurveInterval>,
+        correspondence: Vec<[f64; 2]>,
+    },
+    UpdateSewingGroup {
+        group: SewingGroup,
+    },
+    RemoveSewingGroup {
+        group: Id,
+    },
     RemovePiece {
         piece: Id,
     },
@@ -1185,6 +1361,7 @@ impl Default for Editor {
 impl Editor {
     pub fn new(project: Project) -> Result<Self> {
         project.validate()?;
+        project.validate_sewing_metrics(None)?;
         Ok(Self {
             revision: project.revision,
             project,
@@ -1197,6 +1374,57 @@ impl Editor {
         let mut next = self.project.clone();
         next.apply(command)?;
         next.validate()?;
+        if !next.sewing_groups.is_empty() {
+            use std::collections::BTreeMap;
+            let old_points: BTreeMap<_, _> = self
+                .project
+                .points
+                .iter()
+                .map(|point| (point.id, point))
+                .collect();
+            let changed_points: BTreeSet<_> = next
+                .points
+                .iter()
+                .filter(|point| old_points.get(&point.id).copied() != Some(point))
+                .map(|point| point.id)
+                .collect();
+            let old_curves: BTreeMap<_, _> = self
+                .project
+                .curves
+                .iter()
+                .map(|curve| (curve.id, curve))
+                .collect();
+            let changed_curves: BTreeSet<_> = next
+                .curves
+                .iter()
+                .filter(|curve| {
+                    old_curves.get(&curve.id).copied() != Some(curve)
+                        || changed_points.contains(&curve.start)
+                        || changed_points.contains(&curve.end)
+                })
+                .map(|curve| curve.id)
+                .collect();
+            let old_groups: BTreeMap<_, _> = self
+                .project
+                .sewing_groups
+                .iter()
+                .map(|group| (group.id, group))
+                .collect();
+            let affected: BTreeSet<_> = next
+                .sewing_groups
+                .iter()
+                .filter(|group| {
+                    old_groups.get(&group.id).copied() != Some(group)
+                        || group
+                            .a
+                            .iter()
+                            .chain(&group.b)
+                            .any(|interval| changed_curves.contains(&interval.curve))
+                })
+                .map(|group| group.id)
+                .collect();
+            next.validate_sewing_metrics(Some(&affected))?;
+        }
         let revision = self
             .revision
             .checked_add(1)

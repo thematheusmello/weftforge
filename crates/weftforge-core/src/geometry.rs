@@ -1,4 +1,6 @@
-use crate::{Curve, CurveInterval, Error, Id, Piece, Project, Result, Seam, ensure};
+use crate::{
+    Curve, CurveInterval, Error, Id, Piece, Project, Result, Seam, SewingGroupGeometry, ensure,
+};
 use std::collections::{BTreeMap, BTreeSet};
 
 pub const MAX_MESH_VERTICES: usize = 100_000;
@@ -46,6 +48,8 @@ pub struct Mesh {
     pub piece_ids: Vec<Id>,
     pub boundary: Vec<BoundarySample>,
     pub stitches: Vec<Stitch>,
+    /// Authored length/portion previews belonging to `doc_revision`.
+    pub sewing_groups: Vec<SewingGroupGeometry>,
 }
 
 impl Mesh {
@@ -116,6 +120,47 @@ impl Mesh {
                         && (0.0..=1.0).contains(&endpoint.weight),
                     "Invalid weighted seam endpoint",
                 )?;
+            }
+        }
+        ensure(
+            self.sewing_groups.len() <= crate::MAX_OBJECTS
+                && (self.sewing_groups.is_empty()
+                    || self.stitches.len() <= crate::MAX_SEWING_STITCHES)
+                && self
+                    .sewing_groups
+                    .iter()
+                    .map(|group| group.portions.len())
+                    .sum::<usize>()
+                    <= crate::MAX_SEWING_PORTIONS,
+            "Sewing preview resource limit exceeded",
+        )?;
+        let curves: BTreeSet<_> = self.boundary.iter().map(|sample| sample.curve).collect();
+        let stitched: BTreeSet<_> = self.stitches.iter().map(|stitch| stitch.seam).collect();
+        let mut group_ids = BTreeSet::new();
+        for group in &self.sewing_groups {
+            ensure(
+                group.id != 0
+                    && group_ids.insert(group.id)
+                    && stitched.contains(&group.id)
+                    && group
+                        .lengths
+                        .iter()
+                        .all(|length| length.is_finite() && *length > 0.)
+                    && !group.portions.is_empty(),
+                "Invalid sewing group preview",
+            )?;
+            for portion in &group.portions {
+                for interval in [portion.a, portion.b] {
+                    ensure(
+                        curves.contains(&interval.curve)
+                            && interval.t0.is_finite()
+                            && interval.t1.is_finite()
+                            && (0.0..=1.).contains(&interval.t0)
+                            && (0.0..=1.).contains(&interval.t1)
+                            && interval.t0 != interval.t1,
+                        "Invalid sewing group preview portion",
+                    )?;
+                }
             }
         }
         Ok(())
@@ -240,6 +285,7 @@ impl Project {
             check_cancel(&cancelled)?;
             append_stitches(&mesh.boundary, seam, &mut mesh.stitches)?;
         }
+        self.append_sewing_groups(&mut mesh, &cancelled)?;
         check_cancel(&cancelled)?;
         mesh.validate()?;
         Ok(mesh)
@@ -659,8 +705,20 @@ fn weighted_sample(
     fraction: f64,
 ) -> Result<WeightedVertex> {
     let t = interval.parameter(fraction).clamp(0.0, 1.0);
+    weighted_at_t(samples, t, 1.0e-10)
+}
+
+pub(crate) fn weighted_sample_at_t(samples: &[BoundarySample], t: f64) -> Result<WeightedVertex> {
+    weighted_at_t(samples, t, 0.)
+}
+
+fn weighted_at_t(
+    samples: &[BoundarySample],
+    t: f64,
+    snap_tolerance: f64,
+) -> Result<WeightedVertex> {
     for sample in samples {
-        if (sample.t - t).abs() < 1.0e-10 {
+        if sample.t == t || (sample.t - t).abs() < snap_tolerance {
             return Ok(WeightedVertex {
                 vertices: [sample.vertex; 2],
                 weight: 0.0,

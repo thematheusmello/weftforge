@@ -12,7 +12,7 @@ use std::sync::atomic::{AtomicU64, Ordering};
 
 mod dxf;
 
-pub const FORMAT_VERSION: u32 = 2;
+pub const FORMAT_VERSION: u32 = 3;
 pub const MAX_PROJECT_BYTES: u64 = 16 * 1024 * 1024;
 static TEMP_ID: AtomicU64 = AtomicU64::new(0);
 
@@ -36,6 +36,37 @@ struct ProjectV1 {
     mannequin: Mannequin,
     resolution: f64,
     next_id: Id,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct ProjectV2 {
+    revision: u64,
+    points: Vec<Point>,
+    curves: Vec<Curve>,
+    pieces: Vec<Piece>,
+    materials: Vec<Material>,
+    seams: Vec<Seam>,
+    mannequin: Mannequin,
+    resolution: f64,
+    next_id: Id,
+}
+
+impl From<ProjectV2> for Project {
+    fn from(old: ProjectV2) -> Self {
+        Self {
+            revision: old.revision,
+            points: old.points,
+            curves: old.curves,
+            pieces: old.pieces,
+            materials: old.materials,
+            seams: old.seams,
+            sewing_groups: Vec::new(),
+            mannequin: old.mannequin,
+            resolution: old.resolution,
+            next_id: old.next_id,
+        }
+    }
 }
 
 #[derive(Deserialize)]
@@ -99,6 +130,7 @@ impl From<ProjectV1> for Project {
                 })
                 .collect(),
             seams: old.seams,
+            sewing_groups: Vec::new(),
             mannequin: old.mannequin,
             resolution: old.resolution,
             next_id: old.next_id,
@@ -116,6 +148,7 @@ pub fn recovery_path(path: impl AsRef<Path>) -> PathBuf {
 impl Project {
     pub fn to_json(&self) -> Result<Vec<u8>> {
         self.validate()?;
+        self.validate_sewing_metrics(None)?;
         let bytes = serde_json::to_vec_pretty(&Document {
             format: "weftforge".into(),
             version: FORMAT_VERSION,
@@ -139,6 +172,9 @@ impl Project {
             1 => serde_json::from_slice::<Document<ProjectV1>>(bytes)?
                 .project
                 .into(),
+            2 => serde_json::from_slice::<Document<ProjectV2>>(bytes)?
+                .project
+                .into(),
             FORMAT_VERSION => serde_json::from_slice::<Document>(bytes)?.project,
             _ => {
                 return Err(Error(
@@ -147,6 +183,7 @@ impl Project {
             }
         };
         project.validate()?;
+        project.validate_sewing_metrics(None)?;
         Ok(project)
     }
 
