@@ -260,7 +260,7 @@ struct Studio {
 }
 impl Studio {
     fn new(cc: &eframe::CreationContext<'_>) -> Self {
-        cc.egui_ctx.set_visuals(egui::Visuals::dark());
+        studio_style(&cc.egui_ctx);
         let mut app = Self::empty();
         if let Some(path) = std::env::args_os().nth(1) {
             app.open(PathBuf::from(path));
@@ -995,8 +995,13 @@ impl Studio {
     }
     fn toolbar(&mut self, ui: &mut egui::Ui) {
         ui.horizontal_wrapped(|ui| {
-            ui.heading("WeftForge");
-            ui.colored_label(Color32::from_rgb(110, 220, 190), "Open garment design.");
+            ui.label(egui::RichText::new("WeftForge").strong().size(19.0));
+            ui.add_space(5.0);
+            ui.label(
+                egui::RichText::new("GARMENT STUDIO")
+                    .small()
+                    .color(Color32::from_rgb(127, 149, 155)),
+            );
             ui.separator();
             if ui.button("Open…").clicked() {
                 self.choose_open();
@@ -1011,9 +1016,11 @@ impl Studio {
                 self.refresh_recovery();
                 self.show_recovery = true;
             }
+            ui.separator();
             self.export_button(ui, ExportFormat::Obj, "Export OBJ");
             self.export_button(ui, ExportFormat::Svg, "Export SVG");
             self.export_button(ui, ExportFormat::Dxf, "Export DXF");
+            ui.separator();
             if ui.button("Undo").clicked() {
                 self.history(ui.ctx(), false);
             }
@@ -1024,6 +1031,8 @@ impl Studio {
                 self.search = true;
             }
         });
+        ui.add_space(5.0);
+        ui.separator();
         ui.horizontal_wrapped(|ui| {
             for (tool, label) in [
                 (Tool::Select, "Select / edit"),
@@ -1036,6 +1045,17 @@ impl Studio {
                     self.set_tool(tool);
                 }
             }
+            ui.separator();
+            let name = self
+                .path
+                .as_ref()
+                .and_then(|path| path.file_name())
+                .map_or_else(
+                    || "Untitled.weftforge".into(),
+                    |name| name.to_string_lossy(),
+                );
+            ui.label(egui::RichText::new(name).strong());
+            ui.weak(format!("rev {}", self.editor.project.revision));
             if self.tool == Tool::SewingPaths {
                 ui.colored_label(
                     Color32::GOLD,
@@ -1051,7 +1071,16 @@ impl Studio {
                     ),
                 );
             }
-            ui.separator();
+        });
+    }
+    fn simulation_bar(&mut self, ui: &mut egui::Ui) {
+        ui.horizontal_wrapped(|ui| {
+            ui.label(
+                egui::RichText::new("SIMULATION")
+                    .small()
+                    .strong()
+                    .color(Color32::from_rgb(127, 149, 155)),
+            );
             if ui
                 .button(if self.playing { "Pause" } else { "Play" })
                 .clicked()
@@ -1102,13 +1131,6 @@ impl Studio {
                 self.message = "Cancelled phase; previous accepted snapshot retained.".into();
             }
             ui.checkbox(&mut self.wireframe, "Wireframe");
-            ui.label(format!(
-                "{} pieces · {} legacy seams · {} sewing groups · {} vertices",
-                self.editor.project.pieces.len(),
-                self.editor.project.seams.len(),
-                self.editor.project.sewing_groups.len(),
-                self.mesh.as_ref().map_or(0, |m| m.positions.len())
-            ));
         });
         ui.horizontal_wrapped(|ui| {
             let active=self.job.as_ref().and_then(|job|job.batch);
@@ -1119,7 +1141,8 @@ impl Studio {
         });
     }
     fn inspector(&mut self, ui: &mut egui::Ui) {
-        ui.heading("Construction");
+        ui.heading("Properties");
+        ui.weak("Editable construction");
         let mut commit = false;
         let mut acting = self.search
             || self.tool == Tool::SewingPaths
@@ -1135,6 +1158,8 @@ impl Studio {
         let focus_key = egui::Id::new("inspector-input-focus");
         let action_focus = self.inspector_focus(ui.ctx());
         egui::ScrollArea::vertical().id_salt("inspector").show(ui,|ui| {
+            ui.add_space(8.0);
+            ui.strong("OBJECTS");
             for piece in self.editor.project.pieces.clone() {
                 ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("piece-row",piece.id))),|ui| {
                     if ui.selectable_label(self.selected==Some(piece.id),&piece.name).clicked() { self.select(Some(piece.id)); }
@@ -1152,7 +1177,7 @@ impl Studio {
             }
             // Explicit scopes keep auto-ID edit buffers stable as dynamic rows appear.
             ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("creation")),|ui| {
-            ui.separator(); ui.label("Pattern name"); ui.text_edit_singleline(&mut self.name);
+            ui.separator(); ui.strong("CREATE PATTERN"); ui.label("Pattern name"); ui.text_edit_singleline(&mut self.name);
             ui.horizontal(|ui| { ui.label("W / H m"); for value in &mut self.size { ui.add(numeric_value(ui,value).speed(0.01).range(0.01..=5.0)); } });
             ui.horizontal(|ui| { ui.label("X / Y m"); for value in &mut self.coordinate { ui.add(numeric_value(ui,value).speed(0.01)); } });
             if ui.button("Add rectangle").clicked() {
@@ -1236,7 +1261,7 @@ impl Studio {
             let mut group_action=None;
             let mut confirm_side=false;
             ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("sewing")),|ui| {
-            ui.separator(); ui.strong("Sewing"); ui.checkbox(&mut self.reversed,"Reverse paired edge"); ui.label("A interval / B interval (0–1)");
+            ui.separator(); ui.strong("SEWING"); ui.checkbox(&mut self.reversed,"Reverse paired edge"); ui.label("A interval / B interval (0–1)");
             for range in &mut self.intervals { ui.horizontal(|ui| { for value in range { ui.add(numeric_value(ui,value).speed(0.01).range(0.0..=1.0)); } }); }
             ui.label(if self.seam_start.is_some() { "Click paired boundary in 2D." } else { "Sew edges: click two 2D boundaries." });
             ui.small("Intervals use curve parameter t, not arc length. Reverse swaps B's direction and keeps the normalized mapping.");
@@ -1435,12 +1460,20 @@ impl Studio {
         self.rectangle = Some(rectangle);
     }
     fn patterns(&mut self, ui: &mut egui::Ui) {
-        ui.strong("2D PATTERNS");
+        ui.horizontal(|ui| {
+            ui.label(
+                egui::RichText::new("2D PATTERNS")
+                    .strong()
+                    .color(Color32::from_rgb(205, 222, 224)),
+            );
+            ui.weak("Construction");
+        });
         ui.small("Metres · 1 cm snap · scroll zoom · middle drag pan");
+        ui.add_space(4.0);
         let (response, painter) = ui.allocate_painter(ui.available_size(), Sense::click_and_drag());
         self.pattern_canvas = Some(response.id);
         let r = response.rect;
-        painter.rect_filled(r, 3., Color32::from_rgb(28, 35, 42));
+        painter.rect_filled(r, 3., Color32::from_rgb(31, 36, 40));
         if response.hovered() {
             self.scale = (self.scale * (ui.input(|i| i.smooth_scroll_delta.y) * 0.001).exp())
                 .clamp(40., 3000.);
@@ -1455,7 +1488,7 @@ impl Studio {
             for (a, b) in [([p, -3.], [p, 4.]), ([-3., p], [3., p])] {
                 painter.line_segment(
                     [self.to_screen(a, r), self.to_screen(b, r)],
-                    Stroke::new(0.5, Color32::from_gray(48)),
+                    Stroke::new(0.5, Color32::from_rgb(49, 56, 61)),
                 );
             }
         }
@@ -1869,11 +1902,19 @@ impl Studio {
         )
     }
     fn garment(&mut self, ui: &mut egui::Ui) {
-        ui.strong("3D GARMENT");
+        ui.horizontal(|ui| {
+            ui.label(
+                egui::RichText::new("3D GARMENT")
+                    .strong()
+                    .color(Color32::from_rgb(205, 222, 224)),
+            );
+            ui.weak("Fitting");
+        });
         ui.small("Drag orbit · scroll zoom · triangle selection");
+        ui.add_space(4.0);
         let (response, painter) = ui.allocate_painter(ui.available_size(), Sense::click_and_drag());
         let r = response.rect;
-        painter.rect_filled(r, 3., Color32::from_rgb(21, 27, 34));
+        painter.rect_filled(r, 3., Color32::from_rgb(28, 32, 36));
         if response.dragged() {
             let d = ui.input(|i| i.pointer.delta());
             self.yaw += d.x * 0.008;
@@ -2101,50 +2142,79 @@ impl eframe::App for Studio {
             }
             self.toolbar(ui);
             ui.separator();
-            ui.horizontal(|ui| {
-                ui.label(&self.message);
-                if let Some(job) = &self.job {
-                    ui.spinner();
-                    ui.label(if job.cancel.load(Ordering::Relaxed) {
-                        "Cancelling…"
-                    } else if job.kind == JobKind::Mesh {
-                        "Meshing…"
-                    } else {
-                        "Simulating…"
-                    });
-                }
-                if self.autosave_job.is_some() {
-                    ui.label("Autosaving…");
-                }
-                if self.dirty {
-                    ui.colored_label(Color32::GOLD, "Unsaved");
-                    if ui.small_button("Discard and close").clicked() {
-                        self.discard_on_exit = true;
-                        self.draft = None;
-                        self.dirty = false;
-                        ctx.send_viewport_cmd(egui::ViewportCommand::Close);
+            egui::Panel::bottom("studio-transport").show(ui, |ui| {
+                ui.separator();
+                self.simulation_bar(ui);
+                ui.horizontal_wrapped(|ui| {
+                    ui.weak(format!(
+                        "{} pieces  ·  {} seams  ·  {} sewing groups  ·  {} vertices",
+                        self.editor.project.pieces.len(),
+                        self.editor.project.seams.len(),
+                        self.editor.project.sewing_groups.len(),
+                        self.mesh.as_ref().map_or(0, |mesh| mesh.positions.len())
+                    ));
+                    if let Some(cloth) = &self.cloth {
+                        let diagnostics = cloth.diagnostics();
+                        ui.separator();
+                        ui.label(format!(
+                            "{:.2} s  ·  peak strain {:.2}%  ·  seam gap {:.3} mm",
+                            cloth.simulation_time(),
+                            diagnostics.max_stretch_error * 100.0,
+                            diagnostics.max_seam_error * 1000.0
+                        ));
                     }
-                }
+                });
+                ui.horizontal_wrapped(|ui| {
+                    ui.label(&self.message);
+                    if let Some(job) = &self.job {
+                        ui.spinner();
+                        ui.label(if job.cancel.load(Ordering::Relaxed) {
+                            "Cancelling…"
+                        } else if job.kind == JobKind::Mesh {
+                            "Meshing…"
+                        } else {
+                            "Simulating…"
+                        });
+                    }
+                    if self.autosave_job.is_some() {
+                        ui.label("Autosaving…");
+                    }
+                    if self.dirty {
+                        ui.colored_label(Color32::GOLD, "Unsaved");
+                        if ui.small_button("Discard and close").clicked() {
+                            self.discard_on_exit = true;
+                            self.draft = None;
+                            self.dirty = false;
+                            ctx.send_viewport_cmd(egui::ViewportCommand::Close);
+                        }
+                    }
+                });
             });
-            ui.separator();
-            let h = ui.available_height().max(100.);
+            let h = ui.available_height().max(180.0);
+            let inspector_width = 300.0;
+            let canvas_width = (ui.available_width() - inspector_width - 26.0).max(360.0);
             ui.horizontal_top(|ui| {
                 ui.allocate_ui_with_layout(
-                    Vec2::new(235., h),
-                    egui::Layout::top_down(egui::Align::Min),
-                    |ui| self.inspector(ui),
-                );
-                ui.separator();
-                ui.allocate_ui_with_layout(
-                    Vec2::new(ui.available_width(), h),
+                    Vec2::new(canvas_width, h),
                     egui::Layout::top_down(egui::Align::Min),
                     |ui| {
                         ui.columns(2, |cols| {
                             self.patterns(&mut cols[0]);
                             self.garment(&mut cols[1]);
-                        })
+                        });
                     },
                 );
+                ui.separator();
+                egui::Frame::new()
+                    .fill(Color32::from_rgb(44, 48, 52))
+                    .inner_margin(10.0)
+                    .show(ui, |ui| {
+                        ui.with_layout(egui::Layout::top_down(egui::Align::Min), |ui| {
+                            ui.set_width(inspector_width - 20.0);
+                            ui.set_height(h - 20.0);
+                            self.inspector(ui);
+                        });
+                    });
             });
         });
         if self.search {
@@ -2532,13 +2602,50 @@ fn triangle_light(t: [[f64; 3]; 3]) -> f32 {
     let len = n.iter().map(|v| v * v).sum::<f64>().sqrt().max(1e-12);
     (0.45 + 0.55 * ((n[0] * 0.3 + n[1] * 0.5 + n[2] * 0.8) / len).abs().min(1.)) as f32
 }
+fn studio_style(ctx: &egui::Context) {
+    ctx.set_theme(egui::ThemePreference::Dark);
+    let mut style = (*ctx.style_of(egui::Theme::Dark)).clone();
+    style.spacing.item_spacing = Vec2::new(8.0, 6.0);
+    style.spacing.button_padding = Vec2::new(9.0, 5.0);
+    style.spacing.interact_size.y = 25.0;
+    style.spacing.text_edit_width = 170.0;
+    style.visuals = egui::Visuals::dark();
+    let visuals = &mut style.visuals;
+    visuals.panel_fill = Color32::from_rgb(38, 42, 46);
+    visuals.window_fill = Color32::from_rgb(44, 48, 52);
+    visuals.extreme_bg_color = Color32::from_rgb(27, 31, 34);
+    visuals.faint_bg_color = Color32::from_rgb(45, 50, 55);
+    visuals.weak_text_color = Some(Color32::from_rgb(145, 158, 166));
+    visuals.widgets.noninteractive.bg_stroke = Stroke::new(1.0, Color32::from_rgb(57, 64, 70));
+    visuals.widgets.noninteractive.fg_stroke = Stroke::new(1.0, Color32::from_rgb(215, 222, 227));
+    visuals.widgets.inactive.bg_fill = Color32::from_rgb(52, 58, 64);
+    visuals.widgets.inactive.weak_bg_fill = Color32::from_rgb(48, 54, 59);
+    visuals.widgets.inactive.bg_stroke = Stroke::new(1.0, Color32::from_rgb(65, 73, 80));
+    visuals.widgets.hovered.bg_fill = Color32::from_rgb(60, 78, 84);
+    visuals.widgets.hovered.weak_bg_fill = Color32::from_rgb(53, 70, 76);
+    visuals.widgets.active.bg_fill = Color32::from_rgb(43, 91, 96);
+    visuals.selection.bg_fill = Color32::from_rgb(37, 82, 88);
+    visuals.selection.stroke = Stroke::new(1.0, Color32::from_rgb(148, 232, 217));
+    visuals.hyperlink_color = Color32::from_rgb(124, 218, 203);
+    for (kind, size) in [
+        (egui::TextStyle::Heading, 17.0),
+        (egui::TextStyle::Body, 13.0),
+        (egui::TextStyle::Button, 13.0),
+        (egui::TextStyle::Small, 11.0),
+    ] {
+        style
+            .text_styles
+            .insert(kind, egui::FontId::proportional(size));
+    }
+    ctx.set_style_of(egui::Theme::Dark, style);
+}
 fn main() -> eframe::Result {
     eframe::run_native(
         "WeftForge",
         eframe::NativeOptions {
             renderer: eframe::Renderer::Wgpu,
             viewport: egui::ViewportBuilder::default()
-                .with_inner_size([1450., 900.])
+                .with_inner_size([1640., 1000.])
                 .with_min_inner_size([1000., 650.]),
             ..Default::default()
         },
@@ -2548,6 +2655,73 @@ fn main() -> eframe::Result {
 #[cfg(test)]
 mod tests {
     use super::*;
+    #[test]
+    fn studio_workspace_keeps_creation_and_transport_visible() {
+        for size in [[1000.0, 650.0], [1640.0, 1000.0]] {
+            for busy in [false, true] {
+                let ctx = egui::Context::default();
+                ctx.enable_accesskit();
+                studio_style(&ctx);
+                let mut app = Studio::empty();
+                let (_sender, receiver) = mpsc::channel();
+                if busy {
+                    app.dirty = true;
+                    app.job = Some(Job {
+                        revision: 0,
+                        kind: JobKind::Simulation,
+                        batch: Some(SimulationBatch::assemble()),
+                        cancel: Arc::new(AtomicBool::new(false)),
+                        receiver,
+                    });
+                    app.pending_batch = Some(SimulationBatch::drape());
+                }
+                let frame = |app: &mut Studio| {
+                    ctx.run_ui(
+                        egui::RawInput {
+                            screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::from(size))),
+                            ..Default::default()
+                        },
+                        |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+                    )
+                };
+                frame(&mut app);
+                let output = frame(&mut app);
+                let nodes = &output.platform_output.accesskit_update.unwrap().nodes;
+                let mut labels = vec![
+                    "Open…",
+                    "Undo",
+                    "Add ellipse",
+                    "Play",
+                    "Drape",
+                    "Reset",
+                    app.message.as_str(),
+                ];
+                if busy {
+                    labels.extend(["Cancel job", "Discard and close", "Unsaved"]);
+                }
+                for label in labels {
+                    let node = &nodes
+                        .iter()
+                        .find(|(_, node)| {
+                            node.label() == Some(label)
+                                || (node.role() == egui::accesskit::Role::Label
+                                    && node.value() == Some(label))
+                        })
+                        .unwrap_or_else(|| panic!("missing {label} at {size:?}/busy={busy}"))
+                        .1;
+                    let bounds = node.bounds().unwrap();
+                    assert!(
+                        bounds.x0 >= 0.0
+                            && bounds.y0 >= 0.0
+                            && bounds.x1 <= size[0] as f64
+                            && bounds.y1 <= size[1] as f64,
+                        "{label} outside {size:?}/busy={busy}: {bounds:?}"
+                    );
+                }
+            }
+        }
+    }
+
     #[test]
     fn canvas_picking() {
         assert_eq!(snap(0.214), 0.21);
