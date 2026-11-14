@@ -65,6 +65,7 @@ fn original_v1_point_bits_survive_load_migration_save_and_reload() {
 fn precision_document(version: u32) -> String {
     let mut text = std::str::from_utf8(V1_FIXTURES[0])
         .unwrap()
+        .replace("\r\n", "\n")
         .replace(
             "\"resolution\": 0.12",
             "\"resolution\": 0.015000000000000001",
