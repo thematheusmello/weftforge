@@ -21,6 +21,12 @@ enum Tool {
     Rectangle,
     Sew,
 }
+#[derive(Clone, Copy)]
+enum ExportFormat {
+    Obj,
+    Svg,
+    Dxf,
+}
 #[derive(Clone, Copy, PartialEq)]
 enum JobKind {
     Mesh,
@@ -614,11 +620,15 @@ impl Studio {
             }
         }
     }
-    fn export(&mut self, svg: bool) {
+    fn export(&mut self, format: ExportFormat) {
         if !self.commit_draft() {
             return;
         }
-        let ext = if svg { "svg" } else { "obj" };
+        let ext = match format {
+            ExportFormat::Obj => "obj",
+            ExportFormat::Svg => "svg",
+            ExportFormat::Dxf => "dxf",
+        };
         if let Some(path) = rfd::FileDialog::new()
             .add_filter(ext, &[ext])
             .set_file_name(format!("garment.{ext}"))
@@ -628,8 +638,10 @@ impl Studio {
                 self.message = error;
                 return;
             }
-            let result = if svg {
+            let result = if matches!(format, ExportFormat::Svg) {
                 self.editor.project.export_svg(&path)
+            } else if matches!(format, ExportFormat::Dxf) {
+                self.editor.project.export_dxf(&path)
             } else if let Some(mesh) = &self.mesh {
                 if mesh.doc_revision != self.editor.project.revision {
                     self.message = "The rest mesh is rebuilding; export when it is ready.".into();
@@ -645,6 +657,8 @@ impl Studio {
                 return;
             };
             self.message = match result {
+                Ok(()) if matches!(format, ExportFormat::Dxf) =>
+                    "Exported DXF pattern boundaries in millimetres; sewing and materials stay in .weftforge.".into(),
                 Ok(()) => format!("Exported {ext}; OBJ metres, SVG millimetres."),
                 Err(e) => e.to_string(),
             };
@@ -852,10 +866,13 @@ impl Studio {
                 self.show_recovery = true;
             }
             if ui.button("Export OBJ").clicked() {
-                self.export(false);
+                self.export(ExportFormat::Obj);
             }
             if ui.button("Export SVG").clicked() {
-                self.export(true);
+                self.export(ExportFormat::Svg);
+            }
+            if ui.button("Export DXF").clicked() {
+                self.export(ExportFormat::Dxf);
             }
             if ui.button("Undo").clicked() {
                 self.history(ui.ctx(), false);
@@ -1729,6 +1746,7 @@ impl eframe::App for Studio {
                         "Recover project",
                         "Export OBJ",
                         "Export SVG",
+                        "Export DXF",
                         "Undo",
                         "Redo",
                         "Reset simulation",
@@ -1747,8 +1765,9 @@ impl eframe::App for Studio {
                                     self.refresh_recovery();
                                     self.show_recovery = true;
                                 }
-                                "Export OBJ" => self.export(false),
-                                "Export SVG" => self.export(true),
+                                "Export OBJ" => self.export(ExportFormat::Obj),
+                                "Export SVG" => self.export(ExportFormat::Svg),
+                                "Export DXF" => self.export(ExportFormat::Dxf),
                                 "Undo" => self.history(&ctx, false),
                                 "Redo" => self.history(&ctx, true),
                                 "Reset simulation" => {

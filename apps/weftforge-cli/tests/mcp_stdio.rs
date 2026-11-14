@@ -294,11 +294,12 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
     let project_path = directory.path("original.weftforge");
     let obj = directory.path("rest.obj");
     let svg = directory.path("patterns.svg");
+    let dxf = directory.path("patterns.dxf");
     let mut server = Server::start();
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 5);
+    assert_eq!(tools.len(), 6);
     assert!(
         tools
             .iter()
@@ -361,6 +362,40 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
         "mm"
     );
     check_rectangle_exports(&obj, &svg);
+    let source_bytes = fs::read(&project_path).unwrap();
+    let exported = server.call(
+        "project_export_dxf",
+        json!({"input":project_path,"output":dxf}),
+    );
+    let exported = success(&exported);
+    assert_eq!(exported["source_revision"], 1);
+    assert_eq!(exported["kind"], "authored_dxf");
+    assert_eq!(exported["length_unit"], "mm");
+    assert_eq!(exported["up"], "pattern U = +X, V = +Y; Z = 0");
+    assert!(
+        exported["scope"]
+            .as_str()
+            .unwrap()
+            .contains("native project")
+    );
+    let cli_dxf = directory.path("cli-patterns.dxf");
+    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+        .arg("export-dxf")
+        .arg(&project_path)
+        .arg(&cli_dxf)
+        .output()
+        .unwrap();
+    assert!(
+        cli.status.success(),
+        "{}",
+        String::from_utf8_lossy(&cli.stderr)
+    );
+    let receipt: Value = serde_json::from_slice(&cli.stdout).unwrap();
+    assert_eq!(receipt["source_revision"], 1);
+    assert_eq!(receipt["kind"], "authored_dxf");
+    assert_eq!(receipt["length_unit"], "mm");
+    assert_eq!(fs::read(&cli_dxf).unwrap(), fs::read(&dxf).unwrap());
+    assert_eq!(fs::read(&project_path).unwrap(), source_bytes);
     server.finish();
 }
 
@@ -506,7 +541,11 @@ fn stdio_errors_preserve_input_output_and_recovery_and_allow_retry() {
     tool_error(&server.receive());
     tool_error(&server.call("project_create", json!({"output":output})));
     for destination in [&input, &output] {
-        for tool in ["project_export_svg", "project_export_obj"] {
+        for tool in [
+            "project_export_svg",
+            "project_export_obj",
+            "project_export_dxf",
+        ] {
             tool_error(&server.call(tool, json!({"input":input,"output":destination})));
         }
     }
@@ -621,7 +660,7 @@ fn stdio_validates_protocol_lifecycle_modern_metadata_and_line_bounds() {
         json!(["2026-07-28"])
     );
     let listed = server.request("tools/list", json!({"_meta":modern_metadata("2026-07-28")}));
-    assert_eq!(listed["result"]["tools"].as_array().unwrap().len(), 5);
+    assert_eq!(listed["result"]["tools"].as_array().unwrap().len(), 6);
     assert_eq!(listed["result"]["cacheScope"], "public");
     assert_eq!(listed["result"]["ttlMs"], 0);
     success(&server.request("tools/call", json!({"_meta":modern_metadata("2026-07-28"),"name":"project_create","arguments":{"output":path}})));

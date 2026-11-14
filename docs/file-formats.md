@@ -16,7 +16,7 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 | OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups; no MTL/textures |
 | SVG | No | Yes | Boundary curves only in output | Static 2D | `M/L/C/Z` paths; mm physical size; no sewing/materials/internal features/print tiling |
 | glTF/GLB | No | No | None yet | None yet | Planned validated avatar/mesh/animation workflows |
-| DXF | No | No | None yet | None yet | Supported entity/unit subset still to define |
+| DXF R2000 | No | Yes | Exterior boundary curves only | Static 2D | ASCII `LINE`/cubic `SPLINE`, mm, stable piece layers; no sewing, materials, grain, 3D placement, apparel conventions or print layout |
 | Animation/cache formats | No | No | None yet | None yet | Timeline, frame caches and export not implemented |
 | Marvelous Designer `.zprj` / `.zpac` | No | No | None | None | Separate FILE-006 research/compatibility workstream |
 
@@ -162,8 +162,32 @@ SVG exports each authored exterior boundary as a named path, retaining straight
 segments and cubic Beziers. One user unit is one millimetre; physical width/height
 are expressed in mm and V is converted to downward SVG Y. It does not reconstruct
 the complete garment document when imported elsewhere. Printer scaling, page
-layout/tiling, margins, units in third-party readers, and DXF entity subsets still
+layout/tiling, margins and units in third-party readers still
 need independent workflow validation.
+
+DXF writes the [FILE-005-v1 R2000 profile](../spec/features/FILE-005-dxf-pattern-export.md):
+ASCII `AC1015`, numeric millimetres and `$INSUNITS=4`. Pattern U/V maps to DXF X/Y
+with positive V upward and Z zero; 3D placements and simulated positions do not
+affect the drawing. Each straight boundary is one `LINE`; each authored cubic is
+one degree-3 nonrational `SPLINE` with four controls and the clamped knot vector
+`[0,0,0,0,1,1,1,1]`. Curves retain direction and shared endpoints without sampled
+replacement or extra closing edges. Layers `WF_PIECE_ID` group each piece, sorted
+by stable ID. User piece names are omitted. Repeated export of the same document
+revision is byte-identical across destination names.
+
+Choose **Export DXF** in the desktop toolbar or command search, or run:
+
+```bash
+weftforge-cli export-dxf garment.weftforge patterns.dxf
+```
+
+The CLI and local MCP return the source revision, millimetres and boundary-only
+scope. DXF contains editable CAD curves rather than a complete native garment:
+sewing/correspondence, physical materials, grain, placements, meshes/drape,
+internal features, labels, seam allowances, grading and printing remain outside
+this profile. ASTM/AAMA apparel interchange, import, printer scale and behavior
+in other CAD consumers are separate requirements. See [verification](verification.md)
+for consumer and actual desktop evidence; source support alone is insufficient.
 
 Future formats must specify what they preserve and reject unsupported important
 data explicitly. They must not accept a familiar extension without decoding it,
