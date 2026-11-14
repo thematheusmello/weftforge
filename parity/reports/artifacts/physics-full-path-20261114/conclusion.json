@@ -1,0 +1,50 @@
+{
+  "completed_at": "2026-11-14T14:29:52.071234+00:00",
+  "kind": "implementation_only_full_path_diagnostic",
+  "publication_status": "local_candidate_not_published_or_registry_integrated",
+  "source_clean_at_completion": true,
+  "all_jobs_terminal": true,
+  "plan": "plan.json",
+  "metrics": "analysis.json",
+  "summary": "summary.json",
+  "states": "runs/trajectory.jsonl",
+  "per_frame_timings_and_diagnostics": "runs/steps.jsonl",
+  "result": "All 3 full-path cases fail15% strain; assembly numerical sensitivity is visible before gravity, and final nodal path sensitivity persists.",
+  "observations": [
+    "The 8/32 control reproduces all 13 prior baseline state samples, including velocities, and matches the retained native-original OBJ to 6.938893903907228e-18m maximum nodal difference with identical triangle indices.",
+    "At t=1s before gravity, control / 8x64 / 16x32 independent max-axis strains are 25.9692130562%/26.1264376164%/26.5469379153%; the16x32 difference from control is+.00577724859 strain and 11.0870881mm maximum nodal difference, exceeding both separately declared sensitivity triggers.",
+    "At t=3s, independent max-axis strain is26.9303461466%/27.1685634403%/26.6987419919%. Both refined cases exceed 1 mm maximum nodal sensitivity (2.54691610mm/23.74838362mm) while neither endpoint exceeds the .005 max-strain-difference trigger.",
+    "Refined final sampled-stitch gaps are about 10.23 / 8.77 nanometres, versus 5.55 micrometres for control; all remain failed on strain. Small supported contact/seam residual does not establish fitting or static force balance.",
+    "The full-path 8x64 endpoint increases maximum strain relative to its same-time control, whereas the historical t=4s continuation-only 8x64 endpoint decreased it. Those endpoints differ in simulated time; they demonstrate the limited scope of continuation-only evidence and cannot establish a monotonic convergence sequence."
+  ],
+  "interpretation": "Changing numerical parameters through assembly changes the path before gravity and persists into drape. This supports numerical path sensitivity, not the claim that numerical error causes all observed soft-warp strain. Both phases were refined, so final differences do not isolate assembly alone.",
+  "next_action": "Preserve issue 16 as failed. Do not change constitutive equations, stiffness, geometry, grain, contacts, defaults or fit limits based on this diagnostic. Before choosing a production solver change, measure a declared force-balance residual or undertake a bounded physically justified convergence investigation; no such follow-up is run here.",
+  "unchanged_quality_criteria": {
+    "finite": true,
+    "assembly_remaining_m": 0,
+    "max_axis_strain_below": 0.15,
+    "max_seam_gap_below_m": 0.005,
+    "max_supported_contact_penetration_below_m": 0.002
+  },
+  "uncertainties": [
+    "No force-balance or static-equilibrium measurement",
+    "No general convergence from two resolutions in numerical parameters",
+    "Analytic avatar/ground checks and sampled-stitch checks do not establish full cloth self-contact/edge-edge/CCD correctness",
+    "Old continuation endpoints are t=4s; new full-path endpoints are t=3s",
+    "Both assembly and drape are refined, so post-assembly differences cannot isolate assembly alone",
+    "No calibrated fabric, reference execution or parity result"
+  ],
+  "not_run": [
+    "No static force balance or reference calibration",
+    "No extra continuation, mesh refinement, material/tolerance change or production fix",
+    "No native UI, proprietary research, GitHub Actions or Pages",
+    "No integrated workspace checks; source unchanged"
+  ],
+  "validation": [
+    "Independent geometric oracle self-checks",
+    "All source, fixture, retained-input and frozen-driver hashes and clean detached source checked",
+    "39 state and 540 timing records validated; independent strain/stitch/contact/mass/kinetic consistency checks",
+    "Independent reanalysis reproduces retained analysis",
+    "Exact local harness fmt and offline clippy all-targets -D warnings passed"
+  ]
+}

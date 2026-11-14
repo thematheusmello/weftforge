@@ -1,0 +1,500 @@
+{
+  "id": "WF-20261114-PHYSICS-FULL-PATH-001",
+  "commit": "e342471b18bc5d636d8e869ba0d374710ea15da3",
+  "timestamp": "2026-11-14T15:14:21.007763Z",
+  "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "kind": "implementation_only",
+  "status": "failed",
+  "feature_ids": [
+    "SIM-006",
+    "FIT-003"
+  ],
+  "complete_contract": false,
+  "reference_executed": false,
+  "freshness": "stale",
+  "freshness_reason": "Historical detached e342471 diagnostic. Ordered sewing groups and v3 persistence change the current scoped source; original inputs, executed harness, results and failure status remain unchanged. This is not a current complete garment or convergence result.",
+  "source_hashes": {
+    ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "Cargo.lock": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
+    "Cargo.toml": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+    "apps/weftforge-cli/Cargo.toml": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+    "apps/weftforge-cli/src/main.rs": "e0300b2facd13f46545449878a96f5d113781fd7d852db3e5a7cc6d7d14621d7",
+    "apps/weftforge-cli/src/mcp.rs": "6e931e9efd6f7128ecbfcf412190dcd4a7dd60fa3af91e9c625d823bee5b3037",
+    "apps/weftforge-cli/tests/curves.rs": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+    "apps/weftforge-cli/tests/grain.rs": "30e64fd99703f850f7bf5c7b7b26b66790404c666569fb9ab3e36d307a685559",
+    "apps/weftforge-cli/tests/mcp_stdio.rs": "1c6db82937e9174986b04c2cd301a8d687944fadd4fe5e69bd84e70d85c0c1cb",
+    "apps/weftforge/Cargo.toml": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+    "apps/weftforge/src/main.rs": "1cd18a49fb2e30c5c24a5c02ade30df42d4bc01f6e94b2cfcfab06abd70def3b",
+    "crates/weftforge-core/Cargo.toml": "eac1be8f249f92f0b98686099bac5e11cfeeed064a7da944c3e331a2c09ff56e",
+    "crates/weftforge-core/src/document.rs": "c00fbff18e329898f358e8f2226f615504c9aad4badf7fefb7f2bde8b149e93c",
+    "crates/weftforge-core/src/geometry.rs": "2b2840d51e6eaa9b72a9128fb273099dd6c86ecd2e7be3359aeaebbd612fa6b8",
+    "crates/weftforge-core/src/lib.rs": "b54d19bce3ff323a394c9e79306de6e7bcdac8033b0ed277387fbf78c7a00ebc",
+    "crates/weftforge-core/src/persistence.rs": "648c5b7e4dc65af7e143d666ddfcd23eca35ded02eeccdf53a867c43d1c5b692",
+    "crates/weftforge-core/src/persistence/dxf.rs": "49e56ab60030a640e49d3ce9b263d99dcce562a5616f1dada529603f074b7475",
+    "crates/weftforge-core/src/simulation.rs": "e4295d2a048029e88c25e4e6a9395570fd85b827d80c6671509c1ad7daec150c",
+    "crates/weftforge-core/tests/dxf.rs": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+    "crates/weftforge-core/tests/grain.rs": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+    "crates/weftforge-core/tests/joins.rs": "8ca4ee11ce4fa54668373d1cad8a25064f6bd3010587531ddca3292c2b9f6ab9",
+    "crates/weftforge-core/tests/migration.rs": "9e3ef1935e890bf4da9da1d2a5e2a9469bf6f0ea7a652c2283d266aef6a2e9e0",
+    "crates/weftforge-core/tests/seam_reversal.rs": "1a35f305830f44abcebbd4b2868311a24f8b50c97952da2c75d061d84d284007",
+    "crates/weftforge-core/tests/shirt.rs": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+    "crates/weftforge-core/tests/workflow.rs": "909ec0c491fab7b32fd645a09f46e5b0419631d1e88c7e1026e2da19d93870b8",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/constraints.rs": "3456ba2565eadc5e113d5278f6dda6c46164a0f98f66400058e7ca9887f4298f",
+    "crates/weftforge-sim/src/contact.rs": "c600c7825c7c075c343b3d105005bf0ac771700dbf2141a4ae2668576f267e26",
+    "crates/weftforge-sim/src/lib.rs": "92f83a398cd8b7bb15bec23939d851fded15012a4c688689960195e116fbbc0f",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/tests.rs": "103eedaac498c5e6540a7ce171ecfd6db9dca9774b57fa506a62893e2a91f493",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+    "xtask/Cargo.toml": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+    "xtask/src/main.rs": "a65250e8f24f54f737a673d52f7bf75b76a9a9f4a453678bb90ccfd776e64a2a"
+  },
+  "source_scope": [
+    ".cargo",
+    "Cargo.toml",
+    "Cargo.lock",
+    "rust-toolchain.toml",
+    "apps",
+    "crates",
+    "xtask"
+  ],
+  "artifact_hashes": {
+    "parity/reports/artifacts/physics-full-path-20261114/MANIFEST.json": "c7c35bb91d043a39fdda91a38980d425595a73bb612c9be6e811a82e997fb186",
+    "parity/reports/artifacts/physics-full-path-20261114/README.txt": "60d2be1ff122bf44c059f5296f1f0a925051c7295a28966b682c0614bb29db8a",
+    "parity/reports/artifacts/physics-full-path-20261114/analysis.json": "3ef1d9134e011c9e54f28e94d3928ab1e77507e05577bfa9621285b014da62bd",
+    "parity/reports/artifacts/physics-full-path-20261114/analyze.py": "43987f2f557c57fa8f1a2b8aa577e36ea5c734c92204e0cad5effe1571ad2cc5",
+    "parity/reports/artifacts/physics-full-path-20261114/build.log": "ab64ed203bb443df5130f06f23ece5a783a24405441e02f19c5378ed9943d7f0",
+    "parity/reports/artifacts/physics-full-path-20261114/clippy.log": "2d89b79b889e5f3a124c735ad0215fc543729a57379444c6e793168fe276a9e5",
+    "parity/reports/artifacts/physics-full-path-20261114/conclusion.json": "577b1cac6b4146047c188862aa91a9374f488047eedb90c1cdc045af69e9f0b9",
+    "parity/reports/artifacts/physics-full-path-20261114/harness/Cargo.lock": "b8922d2d19d70c0c046569d99f0d00dda3c49b22e03a4f6e7dfe92531295cc36",
+    "parity/reports/artifacts/physics-full-path-20261114/harness/Cargo.toml": "5b2df30445b47f21ec87e434a94e172e9b56bfb60dae6e631a708a64b02c964a",
+    "parity/reports/artifacts/physics-full-path-20261114/harness/src/main.rs": "26dba23f0131ccd76a26937b76129fa6bca2e13efd468b9c643e6a4ef0582dd9",
+    "parity/reports/artifacts/physics-full-path-20261114/job-ledger.json": "f93157b636fc9079a3e9d681e373672ddc0f6214db7cbf89976a69ad8ac51d56",
+    "parity/reports/artifacts/physics-full-path-20261114/measure.py": "32f2d9fbb8ac82b85f9a438a31e73d4292cd08356ec06ed91c68e8cf40e41ce2",
+    "parity/reports/artifacts/physics-full-path-20261114/original-artifact-hashes.json": "5446514719884be368609700fff1ec3adee76fb3d2ee9125ff06daaacf2bd06e",
+    "parity/reports/artifacts/physics-full-path-20261114/plan.json": "c3e984a440fff1ce3b43c8059164221fa09392d0c368a703ac7c4a0dcfb642fb",
+    "parity/reports/artifacts/physics-full-path-20261114/plan.sha256": "87f04289f1c182f88de34d5c9de0ef6df7593c58eae71299d5690d8f569bb07f",
+    "parity/reports/artifacts/physics-full-path-20261114/process-confirmations.json": "c9c92d1f1924871801688616645042f6889781a0043f0a5d9b29a64eae57da3c",
+    "parity/reports/artifacts/physics-full-path-20261114/provenance.json": "ed3bba44abd7995c59c4575e84b722410e90f95984845d810171eef6c4c56cab",
+    "parity/reports/artifacts/physics-full-path-20261114/retained-inputs.json": "e0b3e133eba4f7eefc3dd8d814e84e34abaa878f1f73a9dd0fde9179cdd1adc0",
+    "parity/reports/artifacts/physics-full-path-20261114/run.log": "0347091cbcc2140869733372b96ca2664010942e615e48372816ef11f4aff0ee",
+    "parity/reports/artifacts/physics-full-path-20261114/run_job.py": "09739ff38e18615b375600458ff58a236a916b230d9f6638cabd404844f611b7",
+    "parity/reports/artifacts/physics-full-path-20261114/runs/completed-cases.json": "a595e67a201bd9c8d6bab653b146462f93561cb1d39396c9e66fdfc8fe30add6",
+    "parity/reports/artifacts/physics-full-path-20261114/runs/rest-metadata.json": "f913bd805252c0c8076cd03d528c92810c6009832d35b07c5fe3f9ecbd9de0d0",
+    "parity/reports/artifacts/physics-full-path-20261114/runs/steps.jsonl": "d6a68ddc6fa424dfeddae3bd0047490873d603056a6448733b0be40d18bdab7a",
+    "parity/reports/artifacts/physics-full-path-20261114/runs/trajectory.jsonl": "b85d50c3299ba33087622e9a4ac21b78abbbaf1e86c609af740f67813a4b9292",
+    "parity/reports/artifacts/physics-full-path-20261114/source-manifest.json": "691fc60003f5b261f137f3a0e737ba598799f28fe3abfdcf2a30bd8e71ef69b5",
+    "parity/reports/artifacts/physics-full-path-20261114/summary.json": "0f5c02c43f3d99f9d352374a6dabbd8e150b00ef69d6bccb2843d144811686f1",
+    "parity/reports/artifacts/physics-full-path-20261114/verify.py": "6efdfee1a1817a005065e6c1f75ff14a3ba8090ad9531521d2d79c90fd240be3",
+    "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+    "fixtures/grain-shirt-drape.obj": "bbc8a32cc4984b6fb6399401c00e84cd2b02136add77e5501417fbffe930b8f9"
+  },
+  "scope": "Full zero-gravity assembly and gravity drape refinement from identical original arrangements; independent geometric measurements of material-axis strain and same-time state differences.",
+  "declaration": "parity/reports/artifacts/physics-full-path-20261114/plan.json",
+  "declaration_sha256": "c3e984a440fff1ce3b43c8059164221fa09392d0c368a703ac7c4a0dcfb642fb",
+  "source_manifest": "parity/reports/artifacts/physics-full-path-20261114/source-manifest.json",
+  "executed_harness": "parity/reports/artifacts/physics-full-path-20261114/harness/src/main.rs",
+  "independent_measurement": "parity/reports/artifacts/physics-full-path-20261114/measure.py",
+  "saved_replay": "parity/reports/artifacts/physics-full-path-20261114/verify.py",
+  "fixture_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "protocol": {
+    "dt_s": 0.016666666666666666,
+    "seam_closure_m_per_s": 1.0,
+    "cases": [
+      [
+        8,
+        32
+      ],
+      [
+        8,
+        64
+      ],
+      [
+        16,
+        32
+      ]
+    ],
+    "contact_enabled_for_all_cases": true,
+    "fresh_initial_state_for_each_case": true,
+    "unchanged_quality_screen": {
+      "finite": true,
+      "assembly_target_m": 0,
+      "max_axis_strain_below": 0.15,
+      "max_seam_gap_m_below": 0.005,
+      "max_supported_contact_error_m_below": 0.002
+    },
+    "separate_sensitivity_triggers": {
+      "strain_delta": 0.005,
+      "max_nodal_difference_m": 0.001
+    },
+    "assembly": {
+      "frames": 60,
+      "gravity": [
+        0,
+        0,
+        0
+      ]
+    },
+    "drape": {
+      "frames": 120,
+      "gravity": [
+        0.0,
+        -9.81,
+        0.0
+      ]
+    }
+  },
+  "measurements": {
+    "sampled_states": 39,
+    "timed_steps": 540,
+    "cases_at_t1_and_t3": [
+      {
+        "case": "control_8x32",
+        "global_frame": 60,
+        "peak": {
+          "triangle_index": 202,
+          "piece_id": 31,
+          "axis": "warp",
+          "stiffness_N_per_m": 50.0,
+          "vertices_0based": [
+            55,
+            149,
+            54
+          ],
+          "signed_strain": 0.2596921305615896,
+          "absolute_strain": 0.2596921305615896
+        },
+        "independent_geometric_residuals": {
+          "sampled_stitch_gap_m": 5.5659824307055875e-06,
+          "avatar_ground_penetration_m": 0.0
+        },
+        "quality_passed": false,
+        "rms_speed_m_per_s": 0.02429082347181957,
+        "max_speed_m_per_s": 0.09132875751876841,
+        "time_s": 1.0,
+        "supported_contact_residual_m": 0.0,
+        "kinetic_energy_J": 4.546401157632176e-05,
+        "finite": true,
+        "assembly_remaining_m": 0.0
+      },
+      {
+        "case": "iteration_8x64",
+        "global_frame": 60,
+        "peak": {
+          "triangle_index": 202,
+          "piece_id": 31,
+          "axis": "warp",
+          "stiffness_N_per_m": 50.0,
+          "vertices_0based": [
+            55,
+            149,
+            54
+          ],
+          "signed_strain": 0.26126437616387554,
+          "absolute_strain": 0.26126437616387554
+        },
+        "independent_geometric_residuals": {
+          "sampled_stitch_gap_m": 8.906776914216048e-09,
+          "avatar_ground_penetration_m": 0.0
+        },
+        "quality_passed": false,
+        "rms_speed_m_per_s": 0.025011172046695555,
+        "max_speed_m_per_s": 0.08626954035275135,
+        "time_s": 1.0,
+        "supported_contact_residual_m": 0.0,
+        "kinetic_energy_J": 4.820048022634687e-05,
+        "finite": true,
+        "assembly_remaining_m": 0.0
+      },
+      {
+        "case": "substep_16x32",
+        "global_frame": 60,
+        "peak": {
+          "triangle_index": 202,
+          "piece_id": 31,
+          "axis": "warp",
+          "stiffness_N_per_m": 50.0,
+          "vertices_0based": [
+            55,
+            149,
+            54
+          ],
+          "signed_strain": 0.2654693791532807,
+          "absolute_strain": 0.2654693791532807
+        },
+        "independent_geometric_residuals": {
+          "sampled_stitch_gap_m": 8.80423239588193e-09,
+          "avatar_ground_penetration_m": 1.5265566588595902e-16
+        },
+        "quality_passed": false,
+        "rms_speed_m_per_s": 0.04455431501289638,
+        "max_speed_m_per_s": 0.20463948955591624,
+        "time_s": 1.0,
+        "supported_contact_residual_m": 1.5265566588595902e-16,
+        "kinetic_energy_J": 0.00015295469773912452,
+        "finite": true,
+        "assembly_remaining_m": 0.0
+      },
+      {
+        "case": "control_8x32",
+        "global_frame": 180,
+        "peak": {
+          "triangle_index": 1,
+          "piece_id": 2,
+          "axis": "warp",
+          "stiffness_N_per_m": 50.0,
+          "vertices_0based": [
+            13,
+            84,
+            12
+          ],
+          "signed_strain": 0.2693034614657097,
+          "absolute_strain": 0.2693034614657097
+        },
+        "independent_geometric_residuals": {
+          "sampled_stitch_gap_m": 5.54878287996357e-06,
+          "avatar_ground_penetration_m": 0.0
+        },
+        "quality_passed": false,
+        "rms_speed_m_per_s": 0.004307218957845903,
+        "max_speed_m_per_s": 0.025163425579045166,
+        "time_s": 3.0,
+        "supported_contact_residual_m": 0.0,
+        "kinetic_energy_J": 1.4294770173998188e-06,
+        "finite": true,
+        "assembly_remaining_m": 0.0
+      },
+      {
+        "case": "iteration_8x64",
+        "global_frame": 180,
+        "peak": {
+          "triangle_index": 1,
+          "piece_id": 2,
+          "axis": "warp",
+          "stiffness_N_per_m": 50.0,
+          "vertices_0based": [
+            13,
+            84,
+            12
+          ],
+          "signed_strain": 0.27168563440308535,
+          "absolute_strain": 0.27168563440308535
+        },
+        "independent_geometric_residuals": {
+          "sampled_stitch_gap_m": 1.0228878668273889e-08,
+          "avatar_ground_penetration_m": 0.0
+        },
+        "quality_passed": false,
+        "rms_speed_m_per_s": 0.004640396353832219,
+        "max_speed_m_per_s": 0.027132918372318907,
+        "time_s": 3.0,
+        "supported_contact_residual_m": 0.0,
+        "kinetic_energy_J": 1.6591797234338244e-06,
+        "finite": true,
+        "assembly_remaining_m": 0.0
+      },
+      {
+        "case": "substep_16x32",
+        "global_frame": 180,
+        "peak": {
+          "triangle_index": 202,
+          "piece_id": 31,
+          "axis": "warp",
+          "stiffness_N_per_m": 50.0,
+          "vertices_0based": [
+            55,
+            149,
+            54
+          ],
+          "signed_strain": 0.2669874199190614,
+          "absolute_strain": 0.2669874199190614
+        },
+        "independent_geometric_residuals": {
+          "sampled_stitch_gap_m": 8.76733204319867e-09,
+          "avatar_ground_penetration_m": 8.326672684688674e-17
+        },
+        "quality_passed": false,
+        "rms_speed_m_per_s": 0.01059309160061996,
+        "max_speed_m_per_s": 0.057446731097773845,
+        "time_s": 3.0,
+        "supported_contact_residual_m": 8.326672684688674e-17,
+        "kinetic_energy_J": 8.646268806989671e-06,
+        "finite": true,
+        "assembly_remaining_m": 0.0
+      }
+    ],
+    "same_time_comparisons": [
+      {
+        "case": "iteration_8x64",
+        "global_frame": 60,
+        "time_s": 1.0,
+        "max_axis_strain_difference_from_control": 0.001572245602285971,
+        "nodal_difference_from_control": {
+          "max_m": 0.0004942930227903533,
+          "mass_weighted_rms_m": 0.0002216474899327821
+        },
+        "velocity_difference_from_control": {
+          "max_m_per_s": 0.05471064052439537,
+          "mass_weighted_rms_m_per_s": 0.006770389629991476
+        },
+        "strain_sensitivity_exceeded": false,
+        "displacement_sensitivity_exceeded": false
+      },
+      {
+        "case": "substep_16x32",
+        "global_frame": 60,
+        "time_s": 1.0,
+        "max_axis_strain_difference_from_control": 0.005777248591691153,
+        "nodal_difference_from_control": {
+          "max_m": 0.011087088131404951,
+          "mass_weighted_rms_m": 0.005094042498334721
+        },
+        "velocity_difference_from_control": {
+          "max_m_per_s": 0.19703905263198893,
+          "mass_weighted_rms_m_per_s": 0.03972763639879653
+        },
+        "strain_sensitivity_exceeded": true,
+        "displacement_sensitivity_exceeded": true
+      },
+      {
+        "case": "iteration_8x64",
+        "global_frame": 180,
+        "time_s": 3.0,
+        "max_axis_strain_difference_from_control": 0.0023821729373756373,
+        "nodal_difference_from_control": {
+          "max_m": 0.0025469160989273184,
+          "mass_weighted_rms_m": 0.0009343467832474042
+        },
+        "velocity_difference_from_control": {
+          "max_m_per_s": 0.0021356612332498978,
+          "mass_weighted_rms_m_per_s": 0.00044621171206599814
+        },
+        "strain_sensitivity_exceeded": false,
+        "displacement_sensitivity_exceeded": true
+      },
+      {
+        "case": "substep_16x32",
+        "global_frame": 180,
+        "time_s": 3.0,
+        "max_axis_strain_difference_from_control": -0.0023160415466483286,
+        "nodal_difference_from_control": {
+          "max_m": 0.023748383617866062,
+          "mass_weighted_rms_m": 0.006389249886044123
+        },
+        "velocity_difference_from_control": {
+          "max_m_per_s": 0.04901124140760313,
+          "mass_weighted_rms_m_per_s": 0.008972580877733094
+        },
+        "strain_sensitivity_exceeded": false,
+        "displacement_sensitivity_exceeded": true
+      }
+    ],
+    "native_original_comparison": {
+      "artifact": "fixtures/grain-shirt-drape.obj",
+      "max_nodal_difference_m": 6.938893903907228e-18,
+      "mass_weighted_rms_nodal_difference_m": 2.171136829702342e-18,
+      "max_uv_component_difference_m": 6.938893903907228e-18,
+      "triangle_indices_match_exactly": true,
+      "native_independent_max_axis_strain": 0.2693034614657097,
+      "strain_difference": 0.0,
+      "declared_match": true
+    },
+    "historical_control_all13shared_time_samples_match": true,
+    "timings": [
+      {
+        "assembly_wall_seconds": 7.478613666,
+        "case": "control_8x32",
+        "case_wall_seconds": 22.373049583,
+        "completed_frames": 180,
+        "drape_wall_seconds": 14.88897675,
+        "final_diagnostics": {
+          "contacts": 8008,
+          "finite": true,
+          "initial_intersections": 0,
+          "kinetic_energy": 1.4294770173998188e-06,
+          "max_contact_error": 0.0,
+          "max_seam_error": 5.54878287996357e-06,
+          "max_stretch_error": 0.26930346146570994,
+          "seam_assembly_remaining": 0.0,
+          "simulation_time": 2.9999999999999942,
+          "step_seconds": 0.118970875
+        },
+        "initialization_wall_seconds": 0.000451541,
+        "measured_step_median_seconds": 0.12333545800000001,
+        "measured_step_p95_seconds": 0.129734292,
+        "simulated_seconds_per_wall_second": 0.1340899008367428
+      },
+      {
+        "assembly_wall_seconds": 14.6489555,
+        "case": "iteration_8x64",
+        "case_wall_seconds": 43.80950375,
+        "completed_frames": 180,
+        "drape_wall_seconds": 29.156045625,
+        "final_diagnostics": {
+          "contacts": 10291,
+          "finite": true,
+          "initial_intersections": 0,
+          "kinetic_energy": 1.6591797234338244e-06,
+          "max_contact_error": 0.0,
+          "max_seam_error": 1.0228878668273889e-08,
+          "max_stretch_error": 0.27168563440308535,
+          "seam_assembly_remaining": 0.0,
+          "simulation_time": 2.9999999999999942,
+          "step_seconds": 0.256462292
+        },
+        "initialization_wall_seconds": 0.000368167,
+        "measured_step_median_seconds": 0.2418291875,
+        "measured_step_p95_seconds": 0.252302541,
+        "simulated_seconds_per_wall_second": 0.06847829222443544
+      },
+      {
+        "assembly_wall_seconds": 14.678173167,
+        "case": "substep_16x32",
+        "case_wall_seconds": 44.445843125,
+        "completed_frames": 180,
+        "drape_wall_seconds": 29.763206125,
+        "final_diagnostics": {
+          "contacts": 10860,
+          "finite": true,
+          "initial_intersections": 0,
+          "kinetic_energy": 8.646268806989671e-06,
+          "max_contact_error": 8.326672684688674e-17,
+          "max_seam_error": 8.76733204319867e-09,
+          "max_stretch_error": 0.2669874199190614,
+          "seam_assembly_remaining": 0.0,
+          "simulation_time": 2.9999999999999942,
+          "step_seconds": 0.246780625
+        },
+        "initialization_wall_seconds": 0.000294833,
+        "measured_step_median_seconds": 0.2457518545,
+        "measured_step_p95_seconds": 0.25694475,
+        "simulated_seconds_per_wall_second": 0.06749787582075482
+      }
+    ]
+  },
+  "result": "All three final scenes fail the unchanged15percent strain screen. Substep refinement already crosses both sensitivity triggers at1second beforegravity. Full-path and historical continuation-only endpoints remain separately time-qualified; no physical calibration, static equilibrium, convergence or solver-defect conclusion follows.",
+  "gates": {
+    "harness_fmt": "passed",
+    "harness_clippy": "passed",
+    "read_only_public_saved_replay": "passed",
+    "production_changes_for_experiment": false,
+    "build_exit_code": 0,
+    "run_exit_code": 0,
+    "all_experiment_processes_terminal": true,
+    "github_actions": "disabled_at_user_request_until_full_project_complete",
+    "pages": "not_run"
+  },
+  "limits": [
+    "No force-balance or static-equilibrium measurement",
+    "No general convergence from two resolutions in numerical parameters",
+    "Analytic avatar/ground checks and sampled-stitch checks do not establish full cloth self-contact/edge-edge/CCD correctness",
+    "Old continuation endpoints are t=4s; new full-path endpoints are t=3s",
+    "Both assembly and drape are refined, so post-assembly differences cannot isolate assembly alone",
+    "No calibrated fabric, reference execution or parity result",
+    "All39 states,540timing records and independent analyses are retained. Numerical data are original; only documented personal path prefixes in selected logs/ledgers were redacted.",
+    "Source identity is pinned separately from the later tracked harness artifact; the diagnostic harness is not misattributed to the historical application commit.",
+    "No additional simulation was performed for artifact integration or saved-output verification.",
+    "All original failed fitting scenes, thresholds and previous continuation-only evidence remain unchanged."
+  ]
+}

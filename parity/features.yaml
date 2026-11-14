@@ -1079,7 +1079,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "UI-005",
@@ -3226,7 +3226,7 @@
         "https://support.marvelousdesigner.com/",
         "https://www.marvelousdesigner.com/products/releases"
       ],
-      "reference_observation_status": "unobserved",
+      "reference_observation_status": "documentation_only",
       "evidence_ids": [],
       "scenarios": [],
       "comparison_criteria": {
@@ -3241,22 +3241,33 @@
         "SEW-001",
         "PAT-007"
       ],
-      "implementation_locations": [],
+      "implementation_locations": [
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/sewing.rs",
+        "crates/weftforge-core/src/geometry.rs",
+        "crates/weftforge-core/src/persistence.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/src/mcp.rs"
+      ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3"
       ],
       "prs": [],
-      "implementation_status": "planned",
+      "implementation_status": "in_progress",
       "verification_status": "not_run",
       "verification_runs": [],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Persistent arc-length sewing groups and strictv3migration are under integration. New reference2:3constructor/input sequence didnotcomplete; group/history/persistence/proportions remain unobserved. Full free canvas/internal sewing, physical gathering and complete reference equivalence remain required."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "missing"
+      "freshness": "missing",
+      "contract_documents": {
+        "spec/features/SEW-002-ordered-paths.md": "9baedd713b5a8dd4f251d7f2c5d0c51b408ecdabb32813a07dae06d25dcae960"
+      }
     },
     {
       "id": "SEW-003",
@@ -3968,11 +3979,50 @@
             "parity/reports/artifacts/physics-refinement-20261114/verify.py": "38e2723cf6dd53cc2986bfeeaf6ddedd0529a9132eb9d4bd7c64089b23e1d36b"
           },
           "path": "parity/reports/WF-20261114-PHYSICS-REFINEMENT-001.json"
+        },
+        {
+          "id": "WF-20261114-PHYSICS-FULL-PATH-001",
+          "commit": "e342471b18bc5d636d8e869ba0d374710ea15da3",
+          "timestamp": "2026-11-14T15:14:21.007763Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/physics-full-path-20261114/MANIFEST.json": "c7c35bb91d043a39fdda91a38980d425595a73bb612c9be6e811a82e997fb186",
+            "parity/reports/artifacts/physics-full-path-20261114/README.txt": "60d2be1ff122bf44c059f5296f1f0a925051c7295a28966b682c0614bb29db8a",
+            "parity/reports/artifacts/physics-full-path-20261114/analysis.json": "3ef1d9134e011c9e54f28e94d3928ab1e77507e05577bfa9621285b014da62bd",
+            "parity/reports/artifacts/physics-full-path-20261114/analyze.py": "43987f2f557c57fa8f1a2b8aa577e36ea5c734c92204e0cad5effe1571ad2cc5",
+            "parity/reports/artifacts/physics-full-path-20261114/build.log": "ab64ed203bb443df5130f06f23ece5a783a24405441e02f19c5378ed9943d7f0",
+            "parity/reports/artifacts/physics-full-path-20261114/clippy.log": "2d89b79b889e5f3a124c735ad0215fc543729a57379444c6e793168fe276a9e5",
+            "parity/reports/artifacts/physics-full-path-20261114/conclusion.json": "577b1cac6b4146047c188862aa91a9374f488047eedb90c1cdc045af69e9f0b9",
+            "parity/reports/artifacts/physics-full-path-20261114/harness/Cargo.lock": "b8922d2d19d70c0c046569d99f0d00dda3c49b22e03a4f6e7dfe92531295cc36",
+            "parity/reports/artifacts/physics-full-path-20261114/harness/Cargo.toml": "5b2df30445b47f21ec87e434a94e172e9b56bfb60dae6e631a708a64b02c964a",
+            "parity/reports/artifacts/physics-full-path-20261114/harness/src/main.rs": "26dba23f0131ccd76a26937b76129fa6bca2e13efd468b9c643e6a4ef0582dd9",
+            "parity/reports/artifacts/physics-full-path-20261114/job-ledger.json": "f93157b636fc9079a3e9d681e373672ddc0f6214db7cbf89976a69ad8ac51d56",
+            "parity/reports/artifacts/physics-full-path-20261114/measure.py": "32f2d9fbb8ac82b85f9a438a31e73d4292cd08356ec06ed91c68e8cf40e41ce2",
+            "parity/reports/artifacts/physics-full-path-20261114/original-artifact-hashes.json": "5446514719884be368609700fff1ec3adee76fb3d2ee9125ff06daaacf2bd06e",
+            "parity/reports/artifacts/physics-full-path-20261114/plan.json": "c3e984a440fff1ce3b43c8059164221fa09392d0c368a703ac7c4a0dcfb642fb",
+            "parity/reports/artifacts/physics-full-path-20261114/plan.sha256": "87f04289f1c182f88de34d5c9de0ef6df7593c58eae71299d5690d8f569bb07f",
+            "parity/reports/artifacts/physics-full-path-20261114/process-confirmations.json": "c9c92d1f1924871801688616645042f6889781a0043f0a5d9b29a64eae57da3c",
+            "parity/reports/artifacts/physics-full-path-20261114/provenance.json": "ed3bba44abd7995c59c4575e84b722410e90f95984845d810171eef6c4c56cab",
+            "parity/reports/artifacts/physics-full-path-20261114/retained-inputs.json": "e0b3e133eba4f7eefc3dd8d814e84e34abaa878f1f73a9dd0fde9179cdd1adc0",
+            "parity/reports/artifacts/physics-full-path-20261114/run.log": "0347091cbcc2140869733372b96ca2664010942e615e48372816ef11f4aff0ee",
+            "parity/reports/artifacts/physics-full-path-20261114/run_job.py": "09739ff38e18615b375600458ff58a236a916b230d9f6638cabd404844f611b7",
+            "parity/reports/artifacts/physics-full-path-20261114/runs/completed-cases.json": "a595e67a201bd9c8d6bab653b146462f93561cb1d39396c9e66fdfc8fe30add6",
+            "parity/reports/artifacts/physics-full-path-20261114/runs/rest-metadata.json": "f913bd805252c0c8076cd03d528c92810c6009832d35b07c5fe3f9ecbd9de0d0",
+            "parity/reports/artifacts/physics-full-path-20261114/runs/steps.jsonl": "d6a68ddc6fa424dfeddae3bd0047490873d603056a6448733b0be40d18bdab7a",
+            "parity/reports/artifacts/physics-full-path-20261114/runs/trajectory.jsonl": "b85d50c3299ba33087622e9a4ac21b78abbbaf1e86c609af740f67813a4b9292",
+            "parity/reports/artifacts/physics-full-path-20261114/source-manifest.json": "691fc60003f5b261f137f3a0e737ba598799f28fe3abfdcf2a30bd8e71ef69b5",
+            "parity/reports/artifacts/physics-full-path-20261114/summary.json": "0f5c02c43f3d99f9d352374a6dabbd8e150b00ef69d6bccb2843d144811686f1",
+            "parity/reports/artifacts/physics-full-path-20261114/verify.py": "6efdfee1a1817a005065e6c1f75ff14a3ba8090ad9531521d2d79c90fd240be3",
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+            "fixtures/grain-shirt-drape.obj": "bbc8a32cc4984b6fb6399401c00e84cd2b02136add77e5501417fbffe930b8f9"
+          },
+          "path": "parity/reports/WF-20261114-PHYSICS-FULL-PATH-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Native anisotropic shirt: strain0.26930346 >0.15; seam5.55e-6m and avatar/ground error0 pass. No tolerance or material substitution was made."
+        "Native anisotropic shirt: strain0.26930346 >0.15; seam5.55e-6m and avatar/ground error0 pass. No tolerance or material substitution was made.",
+        "Full-path e342471 refinement retains failed strain screens:26.9303%control,27.1686%8/64,26.6987%16/32 at3s. At1s beforegravity,16/32 differs by0.005777 strain and11.087mm nodal displacement. No equilibrium/calibration/convergence conclusion is established."
       ],
       "contradictions": [],
       "blockers": [
@@ -4584,11 +4634,50 @@
             "parity/reports/artifacts/physics-refinement-20261114/verify.py": "38e2723cf6dd53cc2986bfeeaf6ddedd0529a9132eb9d4bd7c64089b23e1d36b"
           },
           "path": "parity/reports/WF-20261114-PHYSICS-REFINEMENT-001.json"
+        },
+        {
+          "id": "WF-20261114-PHYSICS-FULL-PATH-001",
+          "commit": "e342471b18bc5d636d8e869ba0d374710ea15da3",
+          "timestamp": "2026-11-14T15:14:21.007763Z",
+          "platform": "macOS 27.2 (26B123), aarch64, Apple M3 Max, Rust 1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/physics-full-path-20261114/MANIFEST.json": "c7c35bb91d043a39fdda91a38980d425595a73bb612c9be6e811a82e997fb186",
+            "parity/reports/artifacts/physics-full-path-20261114/README.txt": "60d2be1ff122bf44c059f5296f1f0a925051c7295a28966b682c0614bb29db8a",
+            "parity/reports/artifacts/physics-full-path-20261114/analysis.json": "3ef1d9134e011c9e54f28e94d3928ab1e77507e05577bfa9621285b014da62bd",
+            "parity/reports/artifacts/physics-full-path-20261114/analyze.py": "43987f2f557c57fa8f1a2b8aa577e36ea5c734c92204e0cad5effe1571ad2cc5",
+            "parity/reports/artifacts/physics-full-path-20261114/build.log": "ab64ed203bb443df5130f06f23ece5a783a24405441e02f19c5378ed9943d7f0",
+            "parity/reports/artifacts/physics-full-path-20261114/clippy.log": "2d89b79b889e5f3a124c735ad0215fc543729a57379444c6e793168fe276a9e5",
+            "parity/reports/artifacts/physics-full-path-20261114/conclusion.json": "577b1cac6b4146047c188862aa91a9374f488047eedb90c1cdc045af69e9f0b9",
+            "parity/reports/artifacts/physics-full-path-20261114/harness/Cargo.lock": "b8922d2d19d70c0c046569d99f0d00dda3c49b22e03a4f6e7dfe92531295cc36",
+            "parity/reports/artifacts/physics-full-path-20261114/harness/Cargo.toml": "5b2df30445b47f21ec87e434a94e172e9b56bfb60dae6e631a708a64b02c964a",
+            "parity/reports/artifacts/physics-full-path-20261114/harness/src/main.rs": "26dba23f0131ccd76a26937b76129fa6bca2e13efd468b9c643e6a4ef0582dd9",
+            "parity/reports/artifacts/physics-full-path-20261114/job-ledger.json": "f93157b636fc9079a3e9d681e373672ddc0f6214db7cbf89976a69ad8ac51d56",
+            "parity/reports/artifacts/physics-full-path-20261114/measure.py": "32f2d9fbb8ac82b85f9a438a31e73d4292cd08356ec06ed91c68e8cf40e41ce2",
+            "parity/reports/artifacts/physics-full-path-20261114/original-artifact-hashes.json": "5446514719884be368609700fff1ec3adee76fb3d2ee9125ff06daaacf2bd06e",
+            "parity/reports/artifacts/physics-full-path-20261114/plan.json": "c3e984a440fff1ce3b43c8059164221fa09392d0c368a703ac7c4a0dcfb642fb",
+            "parity/reports/artifacts/physics-full-path-20261114/plan.sha256": "87f04289f1c182f88de34d5c9de0ef6df7593c58eae71299d5690d8f569bb07f",
+            "parity/reports/artifacts/physics-full-path-20261114/process-confirmations.json": "c9c92d1f1924871801688616645042f6889781a0043f0a5d9b29a64eae57da3c",
+            "parity/reports/artifacts/physics-full-path-20261114/provenance.json": "ed3bba44abd7995c59c4575e84b722410e90f95984845d810171eef6c4c56cab",
+            "parity/reports/artifacts/physics-full-path-20261114/retained-inputs.json": "e0b3e133eba4f7eefc3dd8d814e84e34abaa878f1f73a9dd0fde9179cdd1adc0",
+            "parity/reports/artifacts/physics-full-path-20261114/run.log": "0347091cbcc2140869733372b96ca2664010942e615e48372816ef11f4aff0ee",
+            "parity/reports/artifacts/physics-full-path-20261114/run_job.py": "09739ff38e18615b375600458ff58a236a916b230d9f6638cabd404844f611b7",
+            "parity/reports/artifacts/physics-full-path-20261114/runs/completed-cases.json": "a595e67a201bd9c8d6bab653b146462f93561cb1d39396c9e66fdfc8fe30add6",
+            "parity/reports/artifacts/physics-full-path-20261114/runs/rest-metadata.json": "f913bd805252c0c8076cd03d528c92810c6009832d35b07c5fe3f9ecbd9de0d0",
+            "parity/reports/artifacts/physics-full-path-20261114/runs/steps.jsonl": "d6a68ddc6fa424dfeddae3bd0047490873d603056a6448733b0be40d18bdab7a",
+            "parity/reports/artifacts/physics-full-path-20261114/runs/trajectory.jsonl": "b85d50c3299ba33087622e9a4ac21b78abbbaf1e86c609af740f67813a4b9292",
+            "parity/reports/artifacts/physics-full-path-20261114/source-manifest.json": "691fc60003f5b261f137f3a0e737ba598799f28fe3abfdcf2a30bd8e71ef69b5",
+            "parity/reports/artifacts/physics-full-path-20261114/summary.json": "0f5c02c43f3d99f9d352374a6dabbd8e150b00ef69d6bccb2843d144811686f1",
+            "parity/reports/artifacts/physics-full-path-20261114/verify.py": "6efdfee1a1817a005065e6c1f75ff14a3ba8090ad9531521d2d79c90fd240be3",
+            "fixtures/grain-shirt.weftforge": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+            "fixtures/grain-shirt-drape.obj": "bbc8a32cc4984b6fb6399401c00e84cd2b02136add77e5501417fbffe930b8f9"
+          },
+          "path": "parity/reports/WF-20261114-PHYSICS-FULL-PATH-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Native anisotropic shirt: strain0.26930346 >0.15; seam5.55e-6m and avatar/ground error0 pass. No tolerance or material substitution was made."
+        "Native anisotropic shirt: strain0.26930346 >0.15; seam5.55e-6m and avatar/ground error0 pass. No tolerance or material substitution was made.",
+        "Full-path e342471 refinement retains failed strain screens:26.9303%control,27.1686%8/64,26.6987%16/32 at3s. At1s beforegravity,16/32 differs by0.005777 strain and11.087mm nodal displacement. No equilibrium/calibration/convergence conclusion is established."
       ],
       "contradictions": [],
       "blockers": [
@@ -5693,7 +5782,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "FILE-002",
@@ -6928,7 +7017,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/FILE-005-dxf-pattern-export.md": "b0373181a6ae79c148aa154c0c2269956c2fed3587b5c6d0aef929108e11dd73"
       }
@@ -7681,7 +7770,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "APP-002",

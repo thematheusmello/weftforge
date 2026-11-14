@@ -1,0 +1,2717 @@
+{
+  "kind": "implementation_only_full_path_diagnostic",
+  "source_commit": "e342471b18bc5d636d8e869ba0d374710ea15da3",
+  "plan_sha256": "c3e984a440fff1ce3b43c8059164221fa09392d0c368a703ac7c4a0dcfb642fb",
+  "all_support_contacts_enabled": true,
+  "source_clean_and_hashes_verified": true,
+  "input_project_exactly_matches_original_fixture": true,
+  "independent_mass_max_difference_kg": 0.0,
+  "sample_count": 39,
+  "step_count": 540,
+  "native_original_comparison": {
+    "artifact": "fixtures/grain-shirt-drape.obj",
+    "max_nodal_difference_m": 6.938893903907228e-18,
+    "mass_weighted_rms_nodal_difference_m": 2.171136829702342e-18,
+    "max_uv_component_difference_m": 6.938893903907228e-18,
+    "triangle_indices_match_exactly": true,
+    "native_independent_max_axis_strain": 0.2693034614657097,
+    "strain_difference": 0.0,
+    "declared_match": true
+  },
+  "historical_control_metadata_exact": {
+    "project": true,
+    "rest_positions_m": true,
+    "uv_m": true,
+    "triangles": true,
+    "piece_ids": true,
+    "masses_kg": true
+  },
+  "historical_control_shared_time_comparisons": [
+    {
+      "global_frame": 0,
+      "time_s": 0.0,
+      "strain_difference": 0.0,
+      "nodal_difference": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "velocity_difference": {
+        "max_m_per_s": 0.0,
+        "mass_weighted_rms_m_per_s": 0.0
+      },
+      "declared_match": true
+    },
+    {
+      "global_frame": 15,
+      "time_s": 0.25,
+      "strain_difference": 0.0,
+      "nodal_difference": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "velocity_difference": {
+        "max_m_per_s": 0.0,
+        "mass_weighted_rms_m_per_s": 0.0
+      },
+      "declared_match": true
+    },
+    {
+      "global_frame": 30,
+      "time_s": 0.5,
+      "strain_difference": 0.0,
+      "nodal_difference": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "velocity_difference": {
+        "max_m_per_s": 0.0,
+        "mass_weighted_rms_m_per_s": 0.0
+      },
+      "declared_match": true
+    },
+    {
+      "global_frame": 45,
+      "time_s": 0.75,
+      "strain_difference": 0.0,
+      "nodal_difference": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "velocity_difference": {
+        "max_m_per_s": 0.0,
+        "mass_weighted_rms_m_per_s": 0.0
+      },
+      "declared_match": true
+    },
+    {
+      "global_frame": 60,
+      "time_s": 1.0,
+      "strain_difference": 0.0,
+      "nodal_difference": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "velocity_difference": {
+        "max_m_per_s": 0.0,
+        "mass_weighted_rms_m_per_s": 0.0
+      },
+      "declared_match": true
+    },
+    {
+      "global_frame": 75,
+      "time_s": 1.25,
+      "strain_difference": 0.0,
+      "nodal_difference": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "velocity_difference": {
+        "max_m_per_s": 0.0,
+        "mass_weighted_rms_m_per_s": 0.0
+      },
+      "declared_match": true
+    },
+    {
+      "global_frame": 90,
+      "time_s": 1.5,
+      "strain_difference": 0.0,
+      "nodal_difference": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "velocity_difference": {
+        "max_m_per_s": 0.0,
+        "mass_weighted_rms_m_per_s": 0.0
+      },
+      "declared_match": true
+    },
+    {
+      "global_frame": 105,
+      "time_s": 1.75,
+      "strain_difference": 0.0,
+      "nodal_difference": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "velocity_difference": {
+        "max_m_per_s": 0.0,
+        "mass_weighted_rms_m_per_s": 0.0
+      },
+      "declared_match": true
+    },
+    {
+      "global_frame": 120,
+      "time_s": 2.0,
+      "strain_difference": 0.0,
+      "nodal_difference": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "velocity_difference": {
+        "max_m_per_s": 0.0,
+        "mass_weighted_rms_m_per_s": 0.0
+      },
+      "declared_match": true
+    },
+    {
+      "global_frame": 135,
+      "time_s": 2.25,
+      "strain_difference": 0.0,
+      "nodal_difference": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "velocity_difference": {
+        "max_m_per_s": 0.0,
+        "mass_weighted_rms_m_per_s": 0.0
+      },
+      "declared_match": true
+    },
+    {
+      "global_frame": 150,
+      "time_s": 2.5,
+      "strain_difference": 0.0,
+      "nodal_difference": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "velocity_difference": {
+        "max_m_per_s": 0.0,
+        "mass_weighted_rms_m_per_s": 0.0
+      },
+      "declared_match": true
+    },
+    {
+      "global_frame": 165,
+      "time_s": 2.75,
+      "strain_difference": 0.0,
+      "nodal_difference": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "velocity_difference": {
+        "max_m_per_s": 0.0,
+        "mass_weighted_rms_m_per_s": 0.0
+      },
+      "declared_match": true
+    },
+    {
+      "global_frame": 180,
+      "time_s": 3.0,
+      "strain_difference": 0.0,
+      "nodal_difference": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "velocity_difference": {
+        "max_m_per_s": 0.0,
+        "mass_weighted_rms_m_per_s": 0.0
+      },
+      "declared_match": true
+    }
+  ],
+  "cases": [
+    {
+      "assembly_wall_seconds": 7.478613666,
+      "case": "control_8x32",
+      "case_wall_seconds": 22.373049583,
+      "completed_frames": 180,
+      "drape_wall_seconds": 14.88897675,
+      "final_diagnostics": {
+        "contacts": 8008,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 1.4294770173998188e-06,
+        "max_contact_error": 0.0,
+        "max_seam_error": 5.54878287996357e-06,
+        "max_stretch_error": 0.26930346146570994,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.9999999999999942,
+        "step_seconds": 0.118970875
+      },
+      "initialization_wall_seconds": 0.000451541,
+      "measured_step_median_seconds": 0.12333545800000001,
+      "measured_step_p95_seconds": 0.129734292,
+      "simulated_seconds_per_wall_second": 0.1340899008367428
+    },
+    {
+      "assembly_wall_seconds": 14.6489555,
+      "case": "iteration_8x64",
+      "case_wall_seconds": 43.80950375,
+      "completed_frames": 180,
+      "drape_wall_seconds": 29.156045625,
+      "final_diagnostics": {
+        "contacts": 10291,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 1.6591797234338244e-06,
+        "max_contact_error": 0.0,
+        "max_seam_error": 1.0228878668273889e-08,
+        "max_stretch_error": 0.27168563440308535,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.9999999999999942,
+        "step_seconds": 0.256462292
+      },
+      "initialization_wall_seconds": 0.000368167,
+      "measured_step_median_seconds": 0.2418291875,
+      "measured_step_p95_seconds": 0.252302541,
+      "simulated_seconds_per_wall_second": 0.06847829222443544
+    },
+    {
+      "assembly_wall_seconds": 14.678173167,
+      "case": "substep_16x32",
+      "case_wall_seconds": 44.445843125,
+      "completed_frames": 180,
+      "drape_wall_seconds": 29.763206125,
+      "final_diagnostics": {
+        "contacts": 10860,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 8.646268806989671e-06,
+        "max_contact_error": 8.326672684688674e-17,
+        "max_seam_error": 8.76733204319867e-09,
+        "max_stretch_error": 0.2669874199190614,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.9999999999999942,
+        "step_seconds": 0.246780625
+      },
+      "initialization_wall_seconds": 0.000294833,
+      "measured_step_median_seconds": 0.2457518545,
+      "measured_step_p95_seconds": 0.25694475,
+      "simulated_seconds_per_wall_second": 0.06749787582075482
+    }
+  ],
+  "samples": [
+    {
+      "case": "control_8x32",
+      "global_frame": 0,
+      "phase": "assembly",
+      "case_wall_seconds": 0.0,
+      "diagnostics": {
+        "contacts": 0,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.0,
+        "max_contact_error": 0.0,
+        "max_seam_error": 0.44,
+        "max_stretch_error": 6.661338147750939e-16,
+        "seam_assembly_remaining": 0.44,
+        "simulation_time": 0.0,
+        "step_seconds": 0.0
+      },
+      "rms_speed_m_per_s": 0.0,
+      "max_speed_m_per_s": 0.0,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 18,
+        "piece_id": 2,
+        "axis": "weft",
+        "stiffness_N_per_m": 1000.0,
+        "vertices_0based": [
+          14,
+          79,
+          84
+        ],
+        "signed_strain": -6.661338147750939e-16,
+        "absolute_strain": 6.661338147750939e-16
+      },
+      "maximum_signed_extension": 6.661338147750939e-16,
+      "minimum_signed_compression": -6.661338147750939e-16,
+      "membrane_energy_J": {
+        "warp": 7.094120555466073e-32,
+        "weft": 2.8391671631614377e-30,
+        "shear": 2.312602079017062e-31,
+        "total": 3.1413685766178046e-30
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 0.44,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false
+    },
+    {
+      "case": "control_8x32",
+      "global_frame": 15,
+      "phase": "assembly",
+      "case_wall_seconds": 1.849143458,
+      "diagnostics": {
+        "contacts": 900,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.014461239212851446,
+        "max_contact_error": 0.0,
+        "max_seam_error": 0.1900000025389513,
+        "max_stretch_error": 0.03879644545328609,
+        "seam_assembly_remaining": 0.1900000000000009,
+        "simulation_time": 0.24999999999999997,
+        "step_seconds": 0.125374417
+      },
+      "rms_speed_m_per_s": 0.4332226116316252,
+      "max_speed_m_per_s": 0.730438103199932,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 152,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          151,
+          57,
+          58
+        ],
+        "signed_strain": 0.03879644545328609,
+        "absolute_strain": 0.03879644545328609
+      },
+      "maximum_signed_extension": 0.03879644545328609,
+      "minimum_signed_compression": -0.014621376589146862,
+      "membrane_energy_J": {
+        "warp": 0.0015835677553138652,
+        "weft": 0.0010333514383608832,
+        "shear": 0.0013237283840186627,
+        "total": 0.003940647577693411
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 0.1900000025389513,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.1427462257531569,
+        "mass_weighted_rms_m": 0.09608535417754074
+      }
+    },
+    {
+      "case": "control_8x32",
+      "global_frame": 30,
+      "phase": "assembly",
+      "case_wall_seconds": 3.705469708,
+      "diagnostics": {
+        "contacts": 8537,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.0022528173299607573,
+        "max_contact_error": 0.0,
+        "max_seam_error": 5.721116504625243e-06,
+        "max_stretch_error": 0.2647776694252755,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 0.49999999999999994,
+        "step_seconds": 0.122443167
+      },
+      "rms_speed_m_per_s": 0.17099025115575434,
+      "max_speed_m_per_s": 0.615634196458554,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.2647776694252755,
+        "absolute_strain": 0.2647776694252755
+      },
+      "maximum_signed_extension": 0.2647776694252755,
+      "minimum_signed_compression": -0.10901526140141105,
+      "membrane_energy_J": {
+        "warp": 0.08752365889877282,
+        "weft": 0.04689372510403101,
+        "shear": 0.09816515979403559,
+        "total": 0.23258254379683943
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 5.721116504625243e-06,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.17568818005505754,
+        "mass_weighted_rms_m": 0.08471153685399756
+      }
+    },
+    {
+      "case": "control_8x32",
+      "global_frame": 45,
+      "phase": "assembly",
+      "case_wall_seconds": 5.6186461659999996,
+      "diagnostics": {
+        "contacts": 8274,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.0002082651578206663,
+        "max_contact_error": 0.0,
+        "max_seam_error": 5.721116504616132e-06,
+        "max_stretch_error": 0.2593363590623332,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 0.7500000000000007,
+        "step_seconds": 0.119796833
+      },
+      "rms_speed_m_per_s": 0.05198962333068786,
+      "max_speed_m_per_s": 0.2171860089504035,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.2593363590623332,
+        "absolute_strain": 0.2593363590623332
+      },
+      "maximum_signed_extension": 0.2593363590623332,
+      "minimum_signed_compression": -0.11504446898390364,
+      "membrane_energy_J": {
+        "warp": 0.07738717017093379,
+        "weft": 0.04388055534748007,
+        "shear": 0.09805585147426693,
+        "total": 0.2193235769926808
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 5.721116504616132e-06,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.030494627232382006,
+        "mass_weighted_rms_m": 0.00550011026126923
+      }
+    },
+    {
+      "case": "control_8x32",
+      "global_frame": 60,
+      "phase": "assembly",
+      "case_wall_seconds": 7.470638625,
+      "diagnostics": {
+        "contacts": 7988,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 4.546401157632176e-05,
+        "max_contact_error": 0.0,
+        "max_seam_error": 5.5659824307055875e-06,
+        "max_stretch_error": 0.2596921305615896,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.0000000000000013,
+        "step_seconds": 0.140560791
+      },
+      "rms_speed_m_per_s": 0.02429082347181957,
+      "max_speed_m_per_s": 0.09132875751876841,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.2596921305615896,
+        "absolute_strain": 0.2596921305615896
+      },
+      "maximum_signed_extension": 0.2596921305615896,
+      "minimum_signed_compression": -0.11828639232462357,
+      "membrane_energy_J": {
+        "warp": 0.07540756591083198,
+        "weft": 0.0420208425603581,
+        "shear": 0.09753215772302977,
+        "total": 0.21496056619421985
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 5.5659824307055875e-06,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.01036322085175424,
+        "mass_weighted_rms_m": 0.0033050073583190172
+      }
+    },
+    {
+      "case": "control_8x32",
+      "global_frame": 75,
+      "phase": "drape",
+      "case_wall_seconds": 9.326236666,
+      "diagnostics": {
+        "contacts": 7963,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 5.4171077784753946e-05,
+        "max_contact_error": 0.0,
+        "max_seam_error": 5.565982430714318e-06,
+        "max_stretch_error": 0.25914230682148864,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.2500000000000004,
+        "step_seconds": 0.122725125
+      },
+      "rms_speed_m_per_s": 0.026515028560024103,
+      "max_speed_m_per_s": 0.16054901103955224,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.25914230682148864,
+        "absolute_strain": 0.25914230682148864
+      },
+      "maximum_signed_extension": 0.25914230682148864,
+      "minimum_signed_compression": -0.12296531819436218,
+      "membrane_energy_J": {
+        "warp": 0.07869504230463971,
+        "weft": 0.04064673201052619,
+        "shear": 0.09584792167118258,
+        "total": 0.2151896959863485
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 5.565982430714318e-06,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.005292276957132152,
+        "mass_weighted_rms_m": 0.0019136636688256152
+      }
+    },
+    {
+      "case": "control_8x32",
+      "global_frame": 90,
+      "phase": "drape",
+      "case_wall_seconds": 11.176788166,
+      "diagnostics": {
+        "contacts": 8010,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 6.076628269756377e-05,
+        "max_contact_error": 0.0,
+        "max_seam_error": 5.565982430703373e-06,
+        "max_stretch_error": 0.2593513353734205,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.4999999999999996,
+        "step_seconds": 0.123894667
+      },
+      "rms_speed_m_per_s": 0.02808275401863403,
+      "max_speed_m_per_s": 0.16998892818044067,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.2593513353734207,
+        "absolute_strain": 0.2593513353734207
+      },
+      "maximum_signed_extension": 0.2593513353734207,
+      "minimum_signed_compression": -0.12643009216340162,
+      "membrane_energy_J": {
+        "warp": 0.07995791679429061,
+        "weft": 0.040076903791603384,
+        "shear": 0.09596341327966486,
+        "total": 0.21599823386555886
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 5.565982430703373e-06,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.0053395505064939555,
+        "mass_weighted_rms_m": 0.0015098685174128703
+      }
+    },
+    {
+      "case": "control_8x32",
+      "global_frame": 105,
+      "phase": "drape",
+      "case_wall_seconds": 13.054652708,
+      "diagnostics": {
+        "contacts": 8050,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 3.423439310585192e-05,
+        "max_contact_error": 0.0,
+        "max_seam_error": 5.565982430700194e-06,
+        "max_stretch_error": 0.26597818745705104,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.7499999999999987,
+        "step_seconds": 0.127105959
+      },
+      "rms_speed_m_per_s": 0.0210784988137204,
+      "max_speed_m_per_s": 0.12856347552581532,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.2659781874570508,
+        "absolute_strain": 0.2659781874570508
+      },
+      "maximum_signed_extension": 0.2659781874570508,
+      "minimum_signed_compression": -0.12893460698010917,
+      "membrane_energy_J": {
+        "warp": 0.0801776532959355,
+        "weft": 0.03996544466150656,
+        "shear": 0.09609305089773648,
+        "total": 0.21623614885517856
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 5.565982430700194e-06,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.0038363334233685554,
+        "mass_weighted_rms_m": 0.0010915609582454696
+      }
+    },
+    {
+      "case": "control_8x32",
+      "global_frame": 120,
+      "phase": "drape",
+      "case_wall_seconds": 14.915988291,
+      "diagnostics": {
+        "contacts": 8028,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 1.3322122387214589e-05,
+        "max_contact_error": 0.0,
+        "max_seam_error": 5.565982430713978e-06,
+        "max_stretch_error": 0.2697864941025787,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.9999999999999978,
+        "step_seconds": 0.122767459
+      },
+      "rms_speed_m_per_s": 0.013149071006160007,
+      "max_speed_m_per_s": 0.09454519998019799,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.2697864941025787,
+        "absolute_strain": 0.2697864941025787
+      },
+      "maximum_signed_extension": 0.2697864941025787,
+      "minimum_signed_compression": -0.1285385626116442,
+      "membrane_energy_J": {
+        "warp": 0.07921774795541917,
+        "weft": 0.040208086885490955,
+        "shear": 0.09597668528527986,
+        "total": 0.21540252012619
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 5.565982430713978e-06,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.00476686363866416,
+        "mass_weighted_rms_m": 0.000815770270452595
+      }
+    },
+    {
+      "case": "control_8x32",
+      "global_frame": 135,
+      "phase": "drape",
+      "case_wall_seconds": 16.772884083,
+      "diagnostics": {
+        "contacts": 8041,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 8.177929086102407e-07,
+        "max_contact_error": 0.0,
+        "max_seam_error": 5.565982430738641e-06,
+        "max_stretch_error": 0.27021324422595017,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.249999999999997,
+        "step_seconds": 0.123357083
+      },
+      "rms_speed_m_per_s": 0.0032578420997565996,
+      "max_speed_m_per_s": 0.01675539661757829,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.27021324422595017,
+        "absolute_strain": 0.27021324422595017
+      },
+      "maximum_signed_extension": 0.27021324422595017,
+      "minimum_signed_compression": -0.12477438672245666,
+      "membrane_energy_J": {
+        "warp": 0.07692151762851084,
+        "weft": 0.039379021790800495,
+        "shear": 0.09391988387430353,
+        "total": 0.21022042329361484
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 5.565982430738641e-06,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.012271545249066741,
+        "mass_weighted_rms_m": 0.0011876395889907074
+      }
+    },
+    {
+      "case": "control_8x32",
+      "global_frame": 150,
+      "phase": "drape",
+      "case_wall_seconds": 18.642622791,
+      "diagnostics": {
+        "contacts": 8043,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 2.71655647758697e-06,
+        "max_contact_error": 0.0,
+        "max_seam_error": 5.565982430739693e-06,
+        "max_stretch_error": 0.2700091545278007,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.499999999999996,
+        "step_seconds": 0.120209792
+      },
+      "rms_speed_m_per_s": 0.005937692877660799,
+      "max_speed_m_per_s": 0.0316820288543226,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.27000915452780094,
+        "absolute_strain": 0.27000915452780094
+      },
+      "maximum_signed_extension": 0.27000915452780094,
+      "minimum_signed_compression": -0.12467695453745842,
+      "membrane_energy_J": {
+        "warp": 0.07662612406712029,
+        "weft": 0.039391265256813364,
+        "shear": 0.09373747150719611,
+        "total": 0.20975486083112976
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 5.565982430739693e-06,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.0008152818357111972,
+        "mass_weighted_rms_m": 0.0003201228079148426
+      }
+    },
+    {
+      "case": "control_8x32",
+      "global_frame": 165,
+      "phase": "drape",
+      "case_wall_seconds": 20.522064833,
+      "diagnostics": {
+        "contacts": 8033,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 3.1770417920282776e-06,
+        "max_contact_error": 0.0,
+        "max_seam_error": 5.558003231634306e-06,
+        "max_stretch_error": 0.26967210199196123,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.749999999999995,
+        "step_seconds": 0.122638042
+      },
+      "rms_speed_m_per_s": 0.00642125364013822,
+      "max_speed_m_per_s": 0.0370876032450191,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.269672101991961,
+        "absolute_strain": 0.269672101991961
+      },
+      "maximum_signed_extension": 0.269672101991961,
+      "minimum_signed_compression": -0.12469013479995561,
+      "membrane_energy_J": {
+        "warp": 0.0764300303990718,
+        "weft": 0.039442586453988744,
+        "shear": 0.09359021695007287,
+        "total": 0.2094628338031334
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 5.558003231634306e-06,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.0009408319605627769,
+        "mass_weighted_rms_m": 0.0002832341479660732
+      }
+    },
+    {
+      "case": "control_8x32",
+      "global_frame": 180,
+      "phase": "drape",
+      "case_wall_seconds": 22.368553083,
+      "diagnostics": {
+        "contacts": 8008,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 1.4294770173998188e-06,
+        "max_contact_error": 0.0,
+        "max_seam_error": 5.54878287996357e-06,
+        "max_stretch_error": 0.26930346146570994,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.9999999999999942,
+        "step_seconds": 0.118970875
+      },
+      "rms_speed_m_per_s": 0.004307218957845903,
+      "max_speed_m_per_s": 0.025163425579045166,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.2693034614657097,
+        "absolute_strain": 0.2693034614657097
+      },
+      "maximum_signed_extension": 0.2693034614657097,
+      "minimum_signed_compression": -0.12463724358954875,
+      "membrane_energy_J": {
+        "warp": 0.07624900230769688,
+        "weft": 0.03948881226412437,
+        "shear": 0.09343103942679566,
+        "total": 0.2091688539986169
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 5.54878287996357e-06,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.0005738089397241254,
+        "mass_weighted_rms_m": 0.0002477966226640764
+      }
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 0,
+      "phase": "assembly",
+      "case_wall_seconds": 0.0,
+      "diagnostics": {
+        "contacts": 0,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.0,
+        "max_contact_error": 0.0,
+        "max_seam_error": 0.44,
+        "max_stretch_error": 6.661338147750939e-16,
+        "seam_assembly_remaining": 0.44,
+        "simulation_time": 0.0,
+        "step_seconds": 0.0
+      },
+      "rms_speed_m_per_s": 0.0,
+      "max_speed_m_per_s": 0.0,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 18,
+        "piece_id": 2,
+        "axis": "weft",
+        "stiffness_N_per_m": 1000.0,
+        "vertices_0based": [
+          14,
+          79,
+          84
+        ],
+        "signed_strain": -6.661338147750939e-16,
+        "absolute_strain": 6.661338147750939e-16
+      },
+      "maximum_signed_extension": 6.661338147750939e-16,
+      "minimum_signed_compression": -6.661338147750939e-16,
+      "membrane_energy_J": {
+        "warp": 7.094120555466073e-32,
+        "weft": 2.8391671631614377e-30,
+        "shear": 2.312602079017062e-31,
+        "total": 3.1413685766178046e-30
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 0.44,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 15,
+      "phase": "assembly",
+      "case_wall_seconds": 3.6249805,
+      "diagnostics": {
+        "contacts": 1037,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.014460009977770957,
+        "max_contact_error": 0.0,
+        "max_seam_error": 0.1900000025381937,
+        "max_stretch_error": 0.03880551382582831,
+        "seam_assembly_remaining": 0.1900000000000009,
+        "simulation_time": 0.24999999999999997,
+        "step_seconds": 0.2419385
+      },
+      "rms_speed_m_per_s": 0.4332041988337622,
+      "max_speed_m_per_s": 0.7304146472304109,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 152,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          151,
+          57,
+          58
+        ],
+        "signed_strain": 0.03880551382582831,
+        "absolute_strain": 0.03880551382582831
+      },
+      "maximum_signed_extension": 0.03880551382582831,
+      "minimum_signed_compression": -0.014616961322345468,
+      "membrane_energy_J": {
+        "warp": 0.0015840102155697902,
+        "weft": 0.001035824842376953,
+        "shear": 0.0013237083577367689,
+        "total": 0.003943543415683512
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 0.1900000025381937,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.14272502922863609,
+        "mass_weighted_rms_m": 0.09608361076828155
+      }
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 30,
+      "phase": "assembly",
+      "case_wall_seconds": 7.28501375,
+      "diagnostics": {
+        "contacts": 11250,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.0022376367264274034,
+        "max_contact_error": 0.0,
+        "max_seam_error": 1.019352316478582e-08,
+        "max_stretch_error": 0.2652145745326824,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 0.49999999999999994,
+        "step_seconds": 0.243315083
+      },
+      "rms_speed_m_per_s": 0.17041316867097014,
+      "max_speed_m_per_s": 0.6134087867729654,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.2652145745326824,
+        "absolute_strain": 0.2652145745326824
+      },
+      "maximum_signed_extension": 0.2652145745326824,
+      "minimum_signed_compression": -0.10876647658658256,
+      "membrane_energy_J": {
+        "warp": 0.08753291294514365,
+        "weft": 0.047273621375939,
+        "shear": 0.0980103666167071,
+        "total": 0.23281690093778976
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 1.019352316478582e-08,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.17572645595362013,
+        "mass_weighted_rms_m": 0.08471504561181177
+      }
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 45,
+      "phase": "assembly",
+      "case_wall_seconds": 10.920697459,
+      "diagnostics": {
+        "contacts": 10818,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.00020507192821216655,
+        "max_contact_error": 0.0,
+        "max_seam_error": 8.991906951934749e-09,
+        "max_stretch_error": 0.2603050226179646,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 0.7500000000000007,
+        "step_seconds": 0.240141708
+      },
+      "rms_speed_m_per_s": 0.05158951779134036,
+      "max_speed_m_per_s": 0.21460311843183885,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.2603050226179646,
+        "absolute_strain": 0.2603050226179646
+      },
+      "maximum_signed_extension": 0.2603050226179646,
+      "minimum_signed_compression": -0.11484990598698464,
+      "membrane_energy_J": {
+        "warp": 0.07767359506992494,
+        "weft": 0.04411292527935117,
+        "shear": 0.09781736486962771,
+        "total": 0.2196038852189038
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 8.991906951934749e-09,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.030396535636276215,
+        "mass_weighted_rms_m": 0.005474135078486282
+      }
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 60,
+      "phase": "assembly",
+      "case_wall_seconds": 14.647415,
+      "diagnostics": {
+        "contacts": 10434,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 4.820048022634687e-05,
+        "max_contact_error": 0.0,
+        "max_seam_error": 8.906776914216048e-09,
+        "max_stretch_error": 0.26126437616387554,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.0000000000000013,
+        "step_seconds": 0.238510542
+      },
+      "rms_speed_m_per_s": 0.025011172046695555,
+      "max_speed_m_per_s": 0.08626954035275135,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.26126437616387554,
+        "absolute_strain": 0.26126437616387554
+      },
+      "maximum_signed_extension": 0.26126437616387554,
+      "minimum_signed_compression": -0.11777360651551894,
+      "membrane_energy_J": {
+        "warp": 0.07579746085250709,
+        "weft": 0.042120855393537306,
+        "shear": 0.0972029058524451,
+        "total": 0.2151212220984895
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 8.906776914216048e-09,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.01022833331624203,
+        "mass_weighted_rms_m": 0.003245131963537148
+      }
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 75,
+      "phase": "drape",
+      "case_wall_seconds": 18.299262875,
+      "diagnostics": {
+        "contacts": 10340,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 5.03101755932412e-05,
+        "max_contact_error": 0.0,
+        "max_seam_error": 9.288926536743958e-09,
+        "max_stretch_error": 0.2611600746690872,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.2500000000000004,
+        "step_seconds": 0.24708825
+      },
+      "rms_speed_m_per_s": 0.02555266948900871,
+      "max_speed_m_per_s": 0.15598297926266294,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.2611600746690874,
+        "absolute_strain": 0.2611600746690874
+      },
+      "maximum_signed_extension": 0.2611600746690874,
+      "minimum_signed_compression": -0.12232884275980904,
+      "membrane_energy_J": {
+        "warp": 0.07821960629318564,
+        "weft": 0.04082830474656391,
+        "shear": 0.09571924851484644,
+        "total": 0.214767159554596
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 9.288926536743958e-09,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.005386648893376478,
+        "mass_weighted_rms_m": 0.001984294574732161
+      }
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 90,
+      "phase": "drape",
+      "case_wall_seconds": 21.922937709,
+      "diagnostics": {
+        "contacts": 10344,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 5.8989347910942996e-05,
+        "max_contact_error": 0.0,
+        "max_seam_error": 9.626628185501436e-09,
+        "max_stretch_error": 0.26175001220600214,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.4999999999999996,
+        "step_seconds": 0.238025292
+      },
+      "rms_speed_m_per_s": 0.027669108013055523,
+      "max_speed_m_per_s": 0.16381908362236386,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.26175001220600214,
+        "absolute_strain": 0.26175001220600214
+      },
+      "maximum_signed_extension": 0.26175001220600214,
+      "minimum_signed_compression": -0.1254809871878424,
+      "membrane_energy_J": {
+        "warp": 0.07920972318914433,
+        "weft": 0.040331463599471006,
+        "shear": 0.09575473104967025,
+        "total": 0.21529591783828558
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 9.626628185501436e-09,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.005430645589620238,
+        "mass_weighted_rms_m": 0.0017258767552608874
+      }
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 105,
+      "phase": "drape",
+      "case_wall_seconds": 25.568480709,
+      "diagnostics": {
+        "contacts": 10367,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 4.1428774030976253e-05,
+        "max_contact_error": 0.0,
+        "max_seam_error": 9.874240941932962e-09,
+        "max_stretch_error": 0.26599611424115666,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.7499999999999987,
+        "step_seconds": 0.235605042
+      },
+      "rms_speed_m_per_s": 0.023187792317377675,
+      "max_speed_m_per_s": 0.12898415237248048,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.26599611424115666,
+        "absolute_strain": 0.26599611424115666
+      },
+      "maximum_signed_extension": 0.26599611424115666,
+      "minimum_signed_compression": -0.1270865617958743,
+      "membrane_energy_J": {
+        "warp": 0.07862990828808579,
+        "weft": 0.04042724779519197,
+        "shear": 0.09563643580508706,
+        "total": 0.21469359188836482
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 9.874240941932962e-09,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.005290056004805055,
+        "mass_weighted_rms_m": 0.0013034317972499259
+      }
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 120,
+      "phase": "drape",
+      "case_wall_seconds": 29.189721167,
+      "diagnostics": {
+        "contacts": 10358,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 8.881963009487915e-06,
+        "max_contact_error": 0.0,
+        "max_seam_error": 1.0056372038691274e-08,
+        "max_stretch_error": 0.26980319678881437,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.9999999999999978,
+        "step_seconds": 0.239951292
+      },
+      "rms_speed_m_per_s": 0.010736502785960505,
+      "max_speed_m_per_s": 0.06514939127183447,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.26980319678881437,
+        "absolute_strain": 0.26980319678881437
+      },
+      "maximum_signed_extension": 0.26980319678881437,
+      "minimum_signed_compression": -0.12367689186627584,
+      "membrane_energy_J": {
+        "warp": 0.07652899621946269,
+        "weft": 0.039427164634933204,
+        "shear": 0.09346538781056277,
+        "total": 0.20942154866495866
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 1.0056372038691274e-08,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.012681014714993494,
+        "mass_weighted_rms_m": 0.0013875776574168441
+      }
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 135,
+      "phase": "drape",
+      "case_wall_seconds": 32.836092084,
+      "diagnostics": {
+        "contacts": 10397,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 6.525340487564251e-07,
+        "max_contact_error": 0.0,
+        "max_seam_error": 1.0160467381411218e-08,
+        "max_stretch_error": 0.2714121814556205,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.249999999999997,
+        "step_seconds": 0.236987083
+      },
+      "rms_speed_m_per_s": 0.0029101136495158367,
+      "max_speed_m_per_s": 0.011822841976487392,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.2714121814556205,
+        "absolute_strain": 0.2714121814556205
+      },
+      "maximum_signed_extension": 0.2714121814556205,
+      "minimum_signed_compression": -0.12356969243403693,
+      "membrane_energy_J": {
+        "warp": 0.07640456341632798,
+        "weft": 0.03932308986630454,
+        "shear": 0.09328766886211375,
+        "total": 0.20901532214474627
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 1.0160467381411218e-08,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.0011675929296855398,
+        "mass_weighted_rms_m": 0.00045918928118830136
+      }
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 150,
+      "phase": "drape",
+      "case_wall_seconds": 36.4674115,
+      "diagnostics": {
+        "contacts": 10424,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 2.0814950570279505e-06,
+        "max_contact_error": 0.0,
+        "max_seam_error": 1.0200477532769331e-08,
+        "max_stretch_error": 0.2717241478756198,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.499999999999996,
+        "step_seconds": 0.244153875
+      },
+      "rms_speed_m_per_s": 0.005197518609818906,
+      "max_speed_m_per_s": 0.027111190159966738,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.2717241478756196,
+        "absolute_strain": 0.2717241478756196
+      },
+      "maximum_signed_extension": 0.2717241478756196,
+      "minimum_signed_compression": -0.12365370464759706,
+      "membrane_energy_J": {
+        "warp": 0.07634951448644943,
+        "weft": 0.03932889560690137,
+        "shear": 0.09314584952384111,
+        "total": 0.20882425961719192
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 1.0200477532769331e-08,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.0007422589914092324,
+        "mass_weighted_rms_m": 0.00031689021645572423
+      }
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 165,
+      "phase": "drape",
+      "case_wall_seconds": 40.13604325,
+      "diagnostics": {
+        "contacts": 10358,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 2.9978512608676306e-06,
+        "max_contact_error": 0.0,
+        "max_seam_error": 1.0218893970940433e-08,
+        "max_stretch_error": 0.27182159940658024,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.749999999999995,
+        "step_seconds": 0.245096417
+      },
+      "rms_speed_m_per_s": 0.006237540834324663,
+      "max_speed_m_per_s": 0.03581983676463491,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.27182159940658024,
+        "absolute_strain": 0.27182159940658024
+      },
+      "maximum_signed_extension": 0.27182159940658024,
+      "minimum_signed_compression": -0.12373587952092713,
+      "membrane_energy_J": {
+        "warp": 0.07634454813266636,
+        "weft": 0.03934512916998875,
+        "shear": 0.09295680402658661,
+        "total": 0.20864648132924174
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 1.0218893970940433e-08,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.0009302599032008002,
+        "mass_weighted_rms_m": 0.00027803750128727354
+      }
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 180,
+      "phase": "drape",
+      "case_wall_seconds": 43.804951792,
+      "diagnostics": {
+        "contacts": 10291,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 1.6591797234338244e-06,
+        "max_contact_error": 0.0,
+        "max_seam_error": 1.0228878668273889e-08,
+        "max_stretch_error": 0.27168563440308535,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.9999999999999942,
+        "step_seconds": 0.256462292
+      },
+      "rms_speed_m_per_s": 0.004640396353832219,
+      "max_speed_m_per_s": 0.027132918372318907,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 1,
+        "piece_id": 2,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          13,
+          84,
+          12
+        ],
+        "signed_strain": 0.27168563440308535,
+        "absolute_strain": 0.27168563440308535
+      },
+      "maximum_signed_extension": 0.27168563440308535,
+      "minimum_signed_compression": -0.12367710889930106,
+      "membrane_energy_J": {
+        "warp": 0.07632854204798502,
+        "weft": 0.03935552552212339,
+        "shear": 0.09273860019073069,
+        "total": 0.2084226677608391
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 1.0228878668273889e-08,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.0006510385498230229,
+        "mass_weighted_rms_m": 0.0002446418179239333
+      }
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 0,
+      "phase": "assembly",
+      "case_wall_seconds": 0.0,
+      "diagnostics": {
+        "contacts": 0,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.0,
+        "max_contact_error": 0.0,
+        "max_seam_error": 0.44,
+        "max_stretch_error": 6.661338147750939e-16,
+        "seam_assembly_remaining": 0.44,
+        "simulation_time": 0.0,
+        "step_seconds": 0.0
+      },
+      "rms_speed_m_per_s": 0.0,
+      "max_speed_m_per_s": 0.0,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 18,
+        "piece_id": 2,
+        "axis": "weft",
+        "stiffness_N_per_m": 1000.0,
+        "vertices_0based": [
+          14,
+          79,
+          84
+        ],
+        "signed_strain": -6.661338147750939e-16,
+        "absolute_strain": 6.661338147750939e-16
+      },
+      "maximum_signed_extension": 6.661338147750939e-16,
+      "minimum_signed_compression": -6.661338147750939e-16,
+      "membrane_energy_J": {
+        "warp": 7.094120555466073e-32,
+        "weft": 2.8391671631614377e-30,
+        "shear": 2.312602079017062e-31,
+        "total": 3.1413685766178046e-30
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 0.44,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 15,
+      "phase": "assembly",
+      "case_wall_seconds": 3.6193473750000003,
+      "diagnostics": {
+        "contacts": 833,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.014989349822632768,
+        "max_contact_error": 0.0,
+        "max_seam_error": 0.1900000026101792,
+        "max_stretch_error": 0.0381617201538611,
+        "seam_assembly_remaining": 0.1900000000000009,
+        "simulation_time": 0.24999999999999997,
+        "step_seconds": 0.236274667
+      },
+      "rms_speed_m_per_s": 0.44106211807951035,
+      "max_speed_m_per_s": 0.782525175559653,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 152,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          151,
+          57,
+          58
+        ],
+        "signed_strain": 0.0381617201538611,
+        "absolute_strain": 0.0381617201538611
+      },
+      "maximum_signed_extension": 0.0381617201538611,
+      "minimum_signed_compression": -0.017629633142943857,
+      "membrane_energy_J": {
+        "warp": 0.0016049990952145669,
+        "weft": 0.0010804810949531065,
+        "shear": 0.001398156891797114,
+        "total": 0.004083637081964788
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 0.1900000026101792,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.14414815364986583,
+        "mass_weighted_rms_m": 0.09620404452275545
+      }
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 30,
+      "phase": "assembly",
+      "case_wall_seconds": 7.278996208,
+      "diagnostics": {
+        "contacts": 10992,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.0034549453556438265,
+        "max_contact_error": 9.71445146547012e-17,
+        "max_seam_error": 1.0302457975812798e-08,
+        "max_stretch_error": 0.2760119906856824,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 0.49999999999999994,
+        "step_seconds": 0.238723
+      },
+      "rms_speed_m_per_s": 0.21175269798844748,
+      "max_speed_m_per_s": 0.8479752383644668,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.2760119906856824,
+        "absolute_strain": 0.2760119906856824
+      },
+      "maximum_signed_extension": 0.2760119906856824,
+      "minimum_signed_compression": -0.10075314755193499,
+      "membrane_energy_J": {
+        "warp": 0.08671766597582631,
+        "weft": 0.0509960241406138,
+        "shear": 0.09702088562537065,
+        "total": 0.23473457574181075
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 1.0302457975812798e-08,
+        "avatar_ground_penetration_m": 9.71445146547012e-17
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.17825332517148926,
+        "mass_weighted_rms_m": 0.08421802378391527
+      }
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 45,
+      "phase": "assembly",
+      "case_wall_seconds": 10.992900375,
+      "diagnostics": {
+        "contacts": 11036,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.00028598624892729773,
+        "max_contact_error": 9.71445146547012e-17,
+        "max_seam_error": 9.67927979832636e-09,
+        "max_stretch_error": 0.2677337983014334,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 0.7500000000000007,
+        "step_seconds": 0.242194833
+      },
+      "rms_speed_m_per_s": 0.060922951723338566,
+      "max_speed_m_per_s": 0.23034032846608737,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.2677337983014332,
+        "absolute_strain": 0.2677337983014332
+      },
+      "maximum_signed_extension": 0.2677337983014332,
+      "minimum_signed_compression": -0.10606951506879703,
+      "membrane_energy_J": {
+        "warp": 0.08214824322073663,
+        "weft": 0.04973083222890155,
+        "shear": 0.09763238147373737,
+        "total": 0.22951145692337555
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 9.67927979832636e-09,
+        "avatar_ground_penetration_m": 9.71445146547012e-17
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.013873885679061233,
+        "mass_weighted_rms_m": 0.002794327115355466
+      }
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 60,
+      "phase": "assembly",
+      "case_wall_seconds": 14.678147167,
+      "diagnostics": {
+        "contacts": 10971,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.00015295469773912452,
+        "max_contact_error": 1.5265566588595902e-16,
+        "max_seam_error": 8.80423239588193e-09,
+        "max_stretch_error": 0.2654693791532807,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.0000000000000013,
+        "step_seconds": 0.250595375
+      },
+      "rms_speed_m_per_s": 0.04455431501289638,
+      "max_speed_m_per_s": 0.20463948955591624,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.2654693791532807,
+        "absolute_strain": 0.2654693791532807
+      },
+      "maximum_signed_extension": 0.2654693791532807,
+      "minimum_signed_compression": -0.10703341412164324,
+      "membrane_energy_J": {
+        "warp": 0.07817325515112793,
+        "weft": 0.04807851961584746,
+        "shear": 0.09678814903466094,
+        "total": 0.22303992380163634
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 8.80423239588193e-09,
+        "avatar_ground_penetration_m": 1.5265566588595902e-16
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.013472539131423706,
+        "mass_weighted_rms_m": 0.0023591372905952855
+      }
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 75,
+      "phase": "drape",
+      "case_wall_seconds": 18.414957708,
+      "diagnostics": {
+        "contacts": 10839,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.0002168162195501868,
+        "max_contact_error": 2.7755575615628914e-17,
+        "max_seam_error": 9.082893215906228e-09,
+        "max_stretch_error": 0.26438956406944447,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.2500000000000004,
+        "step_seconds": 0.263365875
+      },
+      "rms_speed_m_per_s": 0.053046195912660715,
+      "max_speed_m_per_s": 0.310900204177553,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.26438956406944447,
+        "absolute_strain": 0.26438956406944447
+      },
+      "maximum_signed_extension": 0.26438956406944447,
+      "minimum_signed_compression": -0.11048564511253345,
+      "membrane_energy_J": {
+        "warp": 0.07923529291191356,
+        "weft": 0.0468453598277357,
+        "shear": 0.09524999494331943,
+        "total": 0.22133064768296867
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 9.082893215906228e-09,
+        "avatar_ground_penetration_m": 2.7755575615628914e-17
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.0074199263162241635,
+        "mass_weighted_rms_m": 0.0019781211298396236
+      }
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 90,
+      "phase": "drape",
+      "case_wall_seconds": 22.059856583,
+      "diagnostics": {
+        "contacts": 10776,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 0.00015128065058476317,
+        "max_contact_error": 0.0,
+        "max_seam_error": 9.025480032424994e-09,
+        "max_stretch_error": 0.2646253591195753,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.4999999999999996,
+        "step_seconds": 0.244525375
+      },
+      "rms_speed_m_per_s": 0.04430982683843142,
+      "max_speed_m_per_s": 0.25696857021109837,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.2646253591195753,
+        "absolute_strain": 0.2646253591195753
+      },
+      "maximum_signed_extension": 0.2646253591195753,
+      "minimum_signed_compression": -0.11195702640667538,
+      "membrane_energy_J": {
+        "warp": 0.0794934757942145,
+        "weft": 0.04603684850544637,
+        "shear": 0.09485653610526489,
+        "total": 0.22038686040492575
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 9.025480032424994e-09,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.006157829922730276,
+        "mass_weighted_rms_m": 0.0012169536456068783
+      }
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 105,
+      "phase": "drape",
+      "case_wall_seconds": 25.8551105,
+      "diagnostics": {
+        "contacts": 10865,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 6.298296127446197e-05,
+        "max_contact_error": 1.249000902703301e-16,
+        "max_seam_error": 9.041087989459566e-09,
+        "max_stretch_error": 0.26503339618683985,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.7499999999999987,
+        "step_seconds": 0.256155167
+      },
+      "rms_speed_m_per_s": 0.028590378116705523,
+      "max_speed_m_per_s": 0.1691110135961431,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.26503339618683985,
+        "absolute_strain": 0.26503339618683985
+      },
+      "maximum_signed_extension": 0.26503339618683985,
+      "minimum_signed_compression": -0.11318898977962066,
+      "membrane_energy_J": {
+        "warp": 0.0795387512810777,
+        "weft": 0.045405935958916184,
+        "shear": 0.09468817047400334,
+        "total": 0.2196328577139972
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 9.041087989459566e-09,
+        "avatar_ground_penetration_m": 1.249000902703301e-16
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.0032347110201168183,
+        "mass_weighted_rms_m": 0.0009054163260156969
+      }
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 120,
+      "phase": "drape",
+      "case_wall_seconds": 29.570413875,
+      "diagnostics": {
+        "contacts": 10822,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 1.9285341113637116e-05,
+        "max_contact_error": 1.3877787807814457e-17,
+        "max_seam_error": 8.99404021382798e-09,
+        "max_stretch_error": 0.26540903351261225,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 1.9999999999999978,
+        "step_seconds": 0.242527917
+      },
+      "rms_speed_m_per_s": 0.01582056624331185,
+      "max_speed_m_per_s": 0.08681753639822821,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.26540903351261225,
+        "absolute_strain": 0.26540903351261225
+      },
+      "maximum_signed_extension": 0.26540903351261225,
+      "minimum_signed_compression": -0.114277374133256,
+      "membrane_energy_J": {
+        "warp": 0.07978786250406908,
+        "weft": 0.04486709399827547,
+        "shear": 0.09471032382970851,
+        "total": 0.21936528033205305
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 8.99404021382798e-09,
+        "avatar_ground_penetration_m": 1.3877787807814457e-17
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.0012342930031180618,
+        "mass_weighted_rms_m": 0.0005619372173819398
+      }
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 135,
+      "phase": "drape",
+      "case_wall_seconds": 33.301507625,
+      "diagnostics": {
+        "contacts": 10815,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 1.2659418109761767e-05,
+        "max_contact_error": 1.3877787807814457e-17,
+        "max_seam_error": 8.94561021460507e-09,
+        "max_stretch_error": 0.26585539330106456,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.249999999999997,
+        "step_seconds": 0.247349417
+      },
+      "rms_speed_m_per_s": 0.012817851416018993,
+      "max_speed_m_per_s": 0.07336935836160088,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.26585539330106434,
+        "absolute_strain": 0.26585539330106434
+      },
+      "maximum_signed_extension": 0.26585539330106434,
+      "minimum_signed_compression": -0.11521043316671076,
+      "membrane_energy_J": {
+        "warp": 0.07991870222884029,
+        "weft": 0.04440782724434608,
+        "shear": 0.09479654411938754,
+        "total": 0.2191230735925739
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 8.94561021460507e-09,
+        "avatar_ground_penetration_m": 1.3877787807814457e-17
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.0013067939516621147,
+        "mass_weighted_rms_m": 0.0005069329451018272
+      }
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 150,
+      "phase": "drape",
+      "case_wall_seconds": 36.964610958,
+      "diagnostics": {
+        "contacts": 10797,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 1.5864071439857057e-05,
+        "max_contact_error": 6.938893903907228e-17,
+        "max_seam_error": 8.87954037164483e-09,
+        "max_stretch_error": 0.2662473869836568,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.499999999999996,
+        "step_seconds": 0.250912416
+      },
+      "rms_speed_m_per_s": 0.014348803544613173,
+      "max_speed_m_per_s": 0.08346166713423617,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.2662473869836566,
+        "absolute_strain": 0.2662473869836566
+      },
+      "maximum_signed_extension": 0.2662473869836566,
+      "minimum_signed_compression": -0.11603851050036706,
+      "membrane_energy_J": {
+        "warp": 0.08016235475086778,
+        "weft": 0.044009164730095474,
+        "shear": 0.0949603745615265,
+        "total": 0.21913189404248976
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 8.87954037164483e-09,
+        "avatar_ground_penetration_m": 6.938893903907228e-17
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.00132789738336686,
+        "mass_weighted_rms_m": 0.0004648066935925124
+      }
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 165,
+      "phase": "drape",
+      "case_wall_seconds": 40.706968667,
+      "diagnostics": {
+        "contacts": 10882,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 1.4181238210980899e-05,
+        "max_contact_error": 0.0,
+        "max_seam_error": 8.838598696413878e-09,
+        "max_stretch_error": 0.266616715853109,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.749999999999995,
+        "step_seconds": 0.24912175
+      },
+      "rms_speed_m_per_s": 0.013566425591132683,
+      "max_speed_m_per_s": 0.07577655984686837,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.26661671585310875,
+        "absolute_strain": 0.26661671585310875
+      },
+      "maximum_signed_extension": 0.26661671585310875,
+      "minimum_signed_compression": -0.11706389187729527,
+      "membrane_energy_J": {
+        "warp": 0.08040088301763501,
+        "weft": 0.043655849273906734,
+        "shear": 0.09510228555827203,
+        "total": 0.2191590178498138
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 8.838598696413878e-09,
+        "avatar_ground_penetration_m": 0.0
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.0013553459217416387,
+        "mass_weighted_rms_m": 0.00043652732917725265
+      }
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 180,
+      "phase": "drape",
+      "case_wall_seconds": 44.441213042,
+      "diagnostics": {
+        "contacts": 10860,
+        "finite": true,
+        "initial_intersections": 0,
+        "kinetic_energy": 8.646268806989671e-06,
+        "max_contact_error": 8.326672684688674e-17,
+        "max_seam_error": 8.76733204319867e-09,
+        "max_stretch_error": 0.2669874199190614,
+        "seam_assembly_remaining": 0.0,
+        "simulation_time": 2.9999999999999942,
+        "step_seconds": 0.246780625
+      },
+      "rms_speed_m_per_s": 0.01059309160061996,
+      "max_speed_m_per_s": 0.057446731097773845,
+      "total_mass_kg": 0.15410377358490573,
+      "peak": {
+        "triangle_index": 202,
+        "piece_id": 31,
+        "axis": "warp",
+        "stiffness_N_per_m": 50.0,
+        "vertices_0based": [
+          55,
+          149,
+          54
+        ],
+        "signed_strain": 0.2669874199190614,
+        "absolute_strain": 0.2669874199190614
+      },
+      "maximum_signed_extension": 0.2669874199190614,
+      "minimum_signed_compression": -0.11888215374171585,
+      "membrane_energy_J": {
+        "warp": 0.08071967215597935,
+        "weft": 0.043340071763239923,
+        "shear": 0.0952627920076465,
+        "total": 0.21932253592686576
+      },
+      "independent_geometric_residuals": {
+        "sampled_stitch_gap_m": 8.76733204319867e-09,
+        "avatar_ground_penetration_m": 8.326672684688674e-17
+      },
+      "quality_passed": false,
+      "nodal_drift_from_previous_sample": {
+        "max_m": 0.0008016718071321449,
+        "mass_weighted_rms_m": 0.0003838272584631415
+      }
+    }
+  ],
+  "same_time_refinement_comparisons": [
+    {
+      "case": "iteration_8x64",
+      "global_frame": 0,
+      "time_s": 0.0,
+      "max_axis_strain_difference_from_control": 0.0,
+      "nodal_difference_from_control": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.0,
+        "mass_weighted_rms_m_per_s": 0.0
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": false
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 0,
+      "time_s": 0.0,
+      "max_axis_strain_difference_from_control": 0.0,
+      "nodal_difference_from_control": {
+        "max_m": 0.0,
+        "mass_weighted_rms_m": 0.0
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.0,
+        "mass_weighted_rms_m_per_s": 0.0
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": false
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 15,
+      "time_s": 0.25,
+      "max_axis_strain_difference_from_control": 9.06837254222026e-06,
+      "nodal_difference_from_control": {
+        "max_m": 3.748833824822281e-05,
+        "mass_weighted_rms_m": 1.0821322864398298e-05
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.0016210026689554564,
+        "mass_weighted_rms_m_per_s": 0.0004205907860308898
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": false
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 15,
+      "time_s": 0.25,
+      "max_axis_strain_difference_from_control": -0.0006347252994249875,
+      "nodal_difference_from_control": {
+        "max_m": 0.0017632375989805446,
+        "mass_weighted_rms_m": 0.0005925181147701609
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.09697300383468348,
+        "mass_weighted_rms_m_per_s": 0.038703104901860984
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 30,
+      "time_s": 0.5,
+      "max_axis_strain_difference_from_control": 0.00043690510740690414,
+      "nodal_difference_from_control": {
+        "max_m": 0.0004353258812473095,
+        "mass_weighted_rms_m": 9.028460783915941e-05
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.010792575896254345,
+        "mass_weighted_rms_m_per_s": 0.00257810370801269
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": false
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 30,
+      "time_s": 0.5,
+      "max_axis_strain_difference_from_control": 0.01123432126040691,
+      "nodal_difference_from_control": {
+        "max_m": 0.007926057192947901,
+        "mass_weighted_rms_m": 0.0020682610474551584
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.6452980571231844,
+        "mass_weighted_rms_m_per_s": 0.10458834232287365
+      },
+      "strain_sensitivity_exceeded": true,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 45,
+      "time_s": 0.75,
+      "max_axis_strain_difference_from_control": 0.0009686635556314105,
+      "nodal_difference_from_control": {
+        "max_m": 0.0004125576552040228,
+        "mass_weighted_rms_m": 0.00016118687461846748
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.008378937974832775,
+        "mass_weighted_rms_m_per_s": 0.0021949280374496906
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": false
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 45,
+      "time_s": 0.75,
+      "max_axis_strain_difference_from_control": 0.008397439239099969,
+      "nodal_difference_from_control": {
+        "max_m": 0.017214293493298567,
+        "mass_weighted_rms_m": 0.0038674765698872727
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.2393134356418908,
+        "mass_weighted_rms_m_per_s": 0.05344747886490917
+      },
+      "strain_sensitivity_exceeded": true,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 60,
+      "time_s": 1.0,
+      "max_axis_strain_difference_from_control": 0.001572245602285971,
+      "nodal_difference_from_control": {
+        "max_m": 0.0004942930227903533,
+        "mass_weighted_rms_m": 0.0002216474899327821
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.05471064052439537,
+        "mass_weighted_rms_m_per_s": 0.006770389629991476
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": false
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 60,
+      "time_s": 1.0,
+      "max_axis_strain_difference_from_control": 0.005777248591691153,
+      "nodal_difference_from_control": {
+        "max_m": 0.011087088131404951,
+        "mass_weighted_rms_m": 0.005094042498334721
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.19703905263198893,
+        "mass_weighted_rms_m_per_s": 0.03972763639879653
+      },
+      "strain_sensitivity_exceeded": true,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 75,
+      "time_s": 1.25,
+      "max_axis_strain_difference_from_control": 0.0020177678475987726,
+      "nodal_difference_from_control": {
+        "max_m": 0.0011233045201855785,
+        "mass_weighted_rms_m": 0.0003705196295941707
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.007937014846972661,
+        "mass_weighted_rms_m_per_s": 0.002290988348549989
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 75,
+      "time_s": 1.25,
+      "max_axis_strain_difference_from_control": 0.005247257247955828,
+      "nodal_difference_from_control": {
+        "max_m": 0.011278529228923277,
+        "mass_weighted_rms_m": 0.005625668931582079
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.1504251795884109,
+        "mass_weighted_rms_m_per_s": 0.030707436070153735
+      },
+      "strain_sensitivity_exceeded": true,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 90,
+      "time_s": 1.5,
+      "max_axis_strain_difference_from_control": 0.0023986768325814367,
+      "nodal_difference_from_control": {
+        "max_m": 0.001966910724295193,
+        "mass_weighted_rms_m": 0.0006661963158771766
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.006181834257981179,
+        "mass_weighted_rms_m_per_s": 0.0015098009779945395
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 90,
+      "time_s": 1.5,
+      "max_axis_strain_difference_from_control": 0.005274023746154599,
+      "nodal_difference_from_control": {
+        "max_m": 0.01245236750690993,
+        "mass_weighted_rms_m": 0.00614712662701941
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.0910665735043087,
+        "mass_weighted_rms_m_per_s": 0.0180606059424807
+      },
+      "strain_sensitivity_exceeded": true,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 105,
+      "time_s": 1.75,
+      "max_axis_strain_difference_from_control": 1.7926784105837257e-05,
+      "nodal_difference_from_control": {
+        "max_m": 0.004633755651288335,
+        "mass_weighted_rms_m": 0.0009151739627589042
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.09805282162799747,
+        "mass_weighted_rms_m_per_s": 0.008986129080335435
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 105,
+      "time_s": 1.75,
+      "max_axis_strain_difference_from_control": -0.0009447912702109651,
+      "nodal_difference_from_control": {
+        "max_m": 0.013054149176567276,
+        "mass_weighted_rms_m": 0.006371864477785077
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.08090443979597638,
+        "mass_weighted_rms_m_per_s": 0.013209390880215648
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 120,
+      "time_s": 2.0,
+      "max_axis_strain_difference_from_control": 1.670268623565896e-05,
+      "nodal_difference_from_control": {
+        "max_m": 0.01254088607909142,
+        "mass_weighted_rms_m": 0.0014400650800690865
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.08791608896416381,
+        "mass_weighted_rms_m_per_s": 0.008204191155436491
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 120,
+      "time_s": 2.0,
+      "max_axis_strain_difference_from_control": -0.004377460589966464,
+      "nodal_difference_from_control": {
+        "max_m": 0.01408611550935313,
+        "mass_weighted_rms_m": 0.006441867418805171
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.09410856104989815,
+        "mass_weighted_rms_m_per_s": 0.012389476239019714
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 135,
+      "time_s": 2.25,
+      "max_axis_strain_difference_from_control": 0.0011989372296703493,
+      "nodal_difference_from_control": {
+        "max_m": 0.0026570904232898315,
+        "mass_weighted_rms_m": 0.0009458678377519121
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.006168959305973456,
+        "mass_weighted_rms_m_per_s": 0.001501198210975949
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 135,
+      "time_s": 2.25,
+      "max_axis_strain_difference_from_control": -0.004357850924885831,
+      "nodal_difference_from_control": {
+        "max_m": 0.02330884692424084,
+        "mass_weighted_rms_m": 0.006645256333076731
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.06471690675171969,
+        "mass_weighted_rms_m_per_s": 0.010408583461535295
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 150,
+      "time_s": 2.5,
+      "max_axis_strain_difference_from_control": 0.0017149933478186608,
+      "nodal_difference_from_control": {
+        "max_m": 0.0026789437198816686,
+        "mass_weighted_rms_m": 0.0009597211037693013
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.004574522128837646,
+        "mass_weighted_rms_m_per_s": 0.0008258128279695273
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 150,
+      "time_s": 2.5,
+      "max_axis_strain_difference_from_control": -0.0037617675441443676,
+      "nodal_difference_from_control": {
+        "max_m": 0.023593449496669715,
+        "mass_weighted_rms_m": 0.006556317072915986
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.06414742284621494,
+        "mass_weighted_rms_m_per_s": 0.011220703117368416
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 165,
+      "time_s": 2.75,
+      "max_axis_strain_difference_from_control": 0.002149497414619228,
+      "nodal_difference_from_control": {
+        "max_m": 0.0026397927216920214,
+        "mass_weighted_rms_m": 0.0009538044265959272
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.0012726830130039802,
+        "mass_weighted_rms_m_per_s": 0.0003054057731843358
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 165,
+      "time_s": 2.75,
+      "max_axis_strain_difference_from_control": -0.0030553861388522563,
+      "nodal_difference_from_control": {
+        "max_m": 0.0236935444099662,
+        "mass_weighted_rms_m": 0.0064785532871222285
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.0594913708724621,
+        "mass_weighted_rms_m_per_s": 0.010396804552419987
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "iteration_8x64",
+      "global_frame": 180,
+      "time_s": 3.0,
+      "max_axis_strain_difference_from_control": 0.0023821729373756373,
+      "nodal_difference_from_control": {
+        "max_m": 0.0025469160989273184,
+        "mass_weighted_rms_m": 0.0009343467832474042
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.0021356612332498978,
+        "mass_weighted_rms_m_per_s": 0.00044621171206599814
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "substep_16x32",
+      "global_frame": 180,
+      "time_s": 3.0,
+      "max_axis_strain_difference_from_control": -0.0023160415466483286,
+      "nodal_difference_from_control": {
+        "max_m": 0.023748383617866062,
+        "mass_weighted_rms_m": 0.006389249886044123
+      },
+      "velocity_difference_from_control": {
+        "max_m_per_s": 0.04901124140760313,
+        "mass_weighted_rms_m_per_s": 0.008972580877733094
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    }
+  ],
+  "historical_t4_continuation_only_comparisons": [
+    {
+      "case": "iteration_8x64",
+      "time_s": 4.0,
+      "scope": "historical continuation only from t=3s; different terminal time than new full-path experiment",
+      "independent_max_axis_strain": 0.26689260199894504,
+      "max_axis_strain_difference_from_control": -0.0008256797344323719,
+      "nodal_difference_from_control": {
+        "max_m": 0.0021115426407618157,
+        "mass_weighted_rms_m": 0.000665927440030127
+      },
+      "strain_sensitivity_exceeded": false,
+      "displacement_sensitivity_exceeded": true
+    },
+    {
+      "case": "substep_16x32",
+      "time_s": 4.0,
+      "scope": "historical continuation only from t=3s; different terminal time than new full-path experiment",
+      "independent_max_axis_strain": 0.26249175457553875,
+      "max_axis_strain_difference_from_control": -0.005226527157838667,
+      "nodal_difference_from_control": {
+        "max_m": 0.0038958967898920964,
+        "mass_weighted_rms_m": 0.0017153088101014848
+      },
+      "strain_sensitivity_exceeded": true,
+      "displacement_sensitivity_exceeded": true
+    }
+  ],
+  "limits": [
+    "No force-balance or static-equilibrium measurement",
+    "No general convergence from two resolutions in numerical parameters",
+    "Analytic avatar/ground checks and sampled-stitch checks do not establish full cloth self-contact/edge-edge/CCD correctness",
+    "Old continuation endpoints are t=4s; new full-path endpoints are t=3s",
+    "Both assembly and drape are refined, so post-assembly differences cannot isolate assembly alone",
+    "No calibrated fabric, reference execution or parity result"
+  ]
+}

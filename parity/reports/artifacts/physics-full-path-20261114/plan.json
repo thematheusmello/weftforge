@@ -1,0 +1,136 @@
+{
+  "declared_at": "2026-11-14T14:22:46.222162+00:00",
+  "kind": "prospective_private_implementation_only_full_path_diagnostic",
+  "source_commit": "e342471b18bc5d636d8e869ba0d374710ea15da3",
+  "source_manifest": "source-manifest.json",
+  "source_manifest_sha256": "691fc60003f5b261f137f3a0e737ba598799f28fe3abfdcf2a30bd8e71ef69b5",
+  "fixture": "fixtures/grain-shirt.weftforge",
+  "fixture_sha256": "82e7c6d398c7772d7e62c28196dcf11845020020d44fca9ac9113e615b9537e7",
+  "retained_input_manifest": "retained-inputs.json",
+  "retained_input_manifest_sha256": "e0b3e133eba4f7eefc3dd8d814e84e34abaa878f1f73a9dd0fde9179cdd1adc0",
+  "question": "Does numerical refinement through the full zero-gravity assembly and gravity drape path change the observed weak-warp strain sensitivity, compared with the retained continuation-only experiment?",
+  "cases": [
+    {
+      "name": "control_8x32",
+      "substeps": 8,
+      "iterations": 32,
+      "start": "separate fresh Cloth from identical original mesh positions, zero velocities, t=0 and original seam targets"
+    },
+    {
+      "name": "iteration_8x64",
+      "substeps": 8,
+      "iterations": 64,
+      "start": "separate fresh Cloth from identical original mesh positions, zero velocities, t=0 and original seam targets"
+    },
+    {
+      "name": "substep_16x32",
+      "substeps": 16,
+      "iterations": 32,
+      "start": "separate fresh Cloth from identical original mesh positions, zero velocities, t=0 and original seam targets"
+    }
+  ],
+  "protocol": {
+    "dt_s": 0.016666666666666666,
+    "assembly_frames": 60,
+    "assembly_gravity_m_per_s2": [
+      0,
+      0,
+      0
+    ],
+    "drape_frames": 120,
+    "drape_gravity_m_per_s2": [
+      0,
+      -9.81,
+      0
+    ],
+    "seam_closure_speed_m_per_s": 1,
+    "contact": "all supported collider/cloth contacts on; production bridge unchanged",
+    "wall_cap_per_case_phase_s": 120,
+    "overall_run_wrapper_cap_s": 600,
+    "serial_case_order": [
+      "control_8x32",
+      "iteration_8x64",
+      "substep_16x32"
+    ]
+  },
+  "preserve": [
+    "original editable geometry",
+    "mesh resolution",
+    "arrangement",
+    "material stiffness/density/damping/friction/thickness",
+    "piece grain angles",
+    "seams and closure",
+    "mannequin and ground",
+    "solver code",
+    "quality screen"
+  ],
+  "checks": {
+    "independent_measurement": "measure.py reconstructs deformation gradient from retained UV/triangle/position arrays, rotates by authored grain, measures signed warp/weft length strain with no solver calls; also calculates mass-weighted drift, sampled-stitch gaps and avatar/ground capsule penetration geometrically",
+    "independent_self_checks": "hand-derived 45-degree 1.2x U stretch, unrotated strain/energy, unequal-mass drift, weighted seam and capsule geometry passed before any solver output",
+    "baseline_native_comparison": {
+      "peak_strain_abs_difference_at_most": 1e-12,
+      "max_nodal_difference_m_at_most": 1e-12,
+      "exact_triangle_and_uv_index_correspondence_required": true,
+      "native_OBJ": "fixtures/grain-shirt-drape.obj",
+      "retained_baseline_max_axis_strain": 0.26930346146570994
+    },
+    "retained_control_sample_comparison": "compare independent strains, positions and velocities at every shared sampled simulated time 0..3 s; report differences without rewriting old outputs",
+    "sample_global_frames": [
+      0,
+      15,
+      30,
+      45,
+      60,
+      75,
+      90,
+      105,
+      120,
+      135,
+      150,
+      165,
+      180
+    ],
+    "state_sample_contains": [
+      "positions_m",
+      "velocities_m_per_s",
+      "actual diagnostics",
+      "actual elapsed time",
+      "step settings"
+    ],
+    "step_timing_every_frame": true,
+    "sensitivity_comparisons": "each refinement versus full-path control at identical global frames; absolute difference of independent max-axis strain, maximum and mass-weighted RMS nodal drift; also velocity differences",
+    "sensitivity_strain_difference_abs": 0.005,
+    "sensitivity_max_nodal_drift_m": 0.001,
+    "quality_criteria_unchanged": {
+      "finite": true,
+      "assembly_remaining_m": 0,
+      "max_axis_strain_below": 0.15,
+      "max_seam_gap_below_m": 0.005,
+      "max_supported_contact_penetration_below_m": 0.002
+    },
+    "prior_continuation_context": "Prior branches all start from t=3s baseline positions and velocities, so only their t=3s initial state is same-time comparable with new terminal outputs. Old t=4s sensitivity remains separately labeled continuation-only; new experiment stops at t=3s."
+  },
+  "build": {
+    "jobs": 1,
+    "incremental": false,
+    "offline": true,
+    "target": "<EXCLUSIVE_LOCAL_ROOT>/target",
+    "source_detached": true,
+    "no_network_installs": true
+  },
+  "frozen_code_sha256": {
+    "harness/Cargo.toml": "5b2df30445b47f21ec87e434a94e172e9b56bfb60dae6e631a708a64b02c964a",
+    "harness/Cargo.lock": "b8922d2d19d70c0c046569d99f0d00dda3c49b22e03a4f6e7dfe92531295cc36",
+    "harness/src/main.rs": "26dba23f0131ccd76a26937b76129fa6bca2e13efd468b9c643e6a4ef0582dd9",
+    "measure.py": "32f2d9fbb8ac82b85f9a438a31e73d4292cd08356ec06ed91c68e8cf40e41ce2"
+  },
+  "non_goals": [
+    "No force-balance or static-equilibrium claim",
+    "No convergence from one factor-of-two refinement",
+    "No mesh refinement or threshold/material/fixture tuning",
+    "No independent cloth self-contact/edge-edge/full-CCD proof",
+    "No native UI, proprietary research, reference calibration or parity claim",
+    "No production/source/registry/docs changes, CI or Pages",
+    "No broad sweep or extra continuation"
+  ]
+}
