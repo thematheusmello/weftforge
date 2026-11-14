@@ -7,11 +7,11 @@ end of the project. [parity/features.yaml](parity/features.yaml) is the status
 source of truth. [Generated progress](docs/progress.md) separates implementation
 coverage, reference observation, and verification.
 
-Current state: **Gate 1 in progress; no gate accepted and zero verified reference
-parity.** The official reference app is installed and its sign-in boundary
-observed. Terms acceptance/account activation block garment experiments. The
-[baseline](parity/reference.json) is provisional; menus, preferences, defaults,
-physical outputs, and complete workflows remain unaudited. Discovery is incomplete.
+Current state: **Gate 1 in progress; no delivery gate accepted.** The native app
+supports bounded construction, simulation, saving, recovery and export workflows.
+Complete garment fitting, distribution and end-to-end acceptance remain in
+progress. See [current status](STATUS.md) for tested builds, known failures and
+remaining work.
 
 ## Before and throughout every gate
 
