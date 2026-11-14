@@ -15,6 +15,9 @@ Its tree equals tested final head `0130bf76`. Earlier
 [PR33](https://github.com/thematheusmello/weftforge/pull/33), main `4a2c5568`,
 delivered ordered M:N sewing and strict v3 projects with preserved ancestry.
 [PR32](https://github.com/thematheusmello/weftforge/pull/32) delivered DXF.
+The tested visibility source/evidence is public at `2dc45007` in open
+[PR35](https://github.com/thematheusmello/weftforge/pull/35); final metadata and
+ordinary merge remain next.
 
 **Keep GitHub Actions and Pages disabled until the entire project is complete.**
 The user requested this to stop development costs. Repository `enabled:false`
@@ -132,8 +135,8 @@ remain unobserved. The one-click manual diagnosis question is pending. This is
 input noncompletion, not absence; preserve the earlier Rectangle observation.
 See [dated research notes](spec/features/SEW-002-runtime-notes-20261114.md).
 
-1. Commit the clean-checkout visibility receipts and final metadata, verify them
-   from a clean checkout, then publish the source/evidence PR.
+1. Verify final PR35 metadata from a clean checkout, then merge normally,
+   preserving the tested runtime/evidence and all source ancestry.
 2. Publish the strain-attribution increment preserving all source/evidence
    ancestry; verify Actions stays disabled and no head/merge workflows run.
 3. Follow the approved private observational overlay and single analytical case
