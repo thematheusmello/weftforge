@@ -10,7 +10,7 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 | Format | Import/read | Export/write | Editable construction | Static/animated | Current limits |
 | --- | --- | --- | --- | --- | --- |
 | `.weftforge` v2 | Yes | Yes | Supported authoring model including grain and orthotropy | Static authoring | JSON, 16 MiB limit; no embedded external assets or saved simulation frames |
-| `.weftforge` v1 | Yes, explicit migration | No | Original supported model | Static authoring | Old stretch maps to both axes; grain defaults to zero; saving writes v2; round-trip numeric decoding enabled; native revalidation pending |
+| `.weftforge` v1 | Yes, explicit migration | No | Original supported model | Static authoring | Old stretch maps to both axes; grain defaults to zero; saving writes v2; round-trip numeric decoding; tested native I/O subset |
 | `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1/v2 model | Static authoring | One prior saved document; no silent fallback |
 | `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1/v2 model | Static authoring | Dirty named documents only; no automatic recovery UI |
 | OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups; no MTL/textures |
@@ -98,8 +98,10 @@ stored fields, including IDs, names, geometry, seams, placement and revision.
 A native check found two coordinate changes of 1e-16 m while reading/saving v1;
 the source parser now enables round-trip numeric decoding, with independent
 v1/v2 bit regression tests in [issue26](https://github.com/thematheusmello/weftforge/issues/26). Those original deltas remain below
-that check's 1e-12 m geometric limit. The new source fix requires native revalidation
-and cannot restore values already saved after rounding.
+that check's 1e-12 m geometric limit. The corrected native I/O subset now preserves188 legacy and103 modern typed
+float fields exactly against an independent IEEE-bit oracle; see the
+[native I/O report](../parity/reports/WF-20261114-NATIVE-IEEE-001.json). It cannot
+restore values already saved after rounding, and is not complete format parity.
 Loading v1 does not rewrite it or create an authoring revision; the next explicit save writes v2.
 When saving over a valid v1 primary, recovery retains its exact original bytes.
 Older application builds cannot read v2, and there is no downgrade writer.

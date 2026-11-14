@@ -1,0 +1,354 @@
+{
+  "format": "weftforge",
+  "version": 2,
+  "project": {
+    "revision": 11,
+    "points": [
+      {
+        "id": 3,
+        "position": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "id": 4,
+        "position": [
+          0.2,
+          0.0
+        ]
+      },
+      {
+        "id": 5,
+        "position": [
+          0.2,
+          0.3
+        ]
+      },
+      {
+        "id": 6,
+        "position": [
+          0.0,
+          0.3
+        ]
+      },
+      {
+        "id": 12,
+        "position": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "id": 13,
+        "position": [
+          1.4,
+          0.0
+        ]
+      },
+      {
+        "id": 14,
+        "position": [
+          1.4,
+          0.6
+        ]
+      },
+      {
+        "id": 15,
+        "position": [
+          1.0,
+          0.6
+        ]
+      },
+      {
+        "id": 21,
+        "position": [
+          2.0,
+          0.0
+        ]
+      },
+      {
+        "id": 22,
+        "position": [
+          2.4,
+          0.0
+        ]
+      },
+      {
+        "id": 23,
+        "position": [
+          2.4,
+          0.6
+        ]
+      },
+      {
+        "id": 24,
+        "position": [
+          2.0,
+          0.6
+        ]
+      }
+    ],
+    "curves": [
+      {
+        "id": 7,
+        "start": 3,
+        "end": 4,
+        "controls": null
+      },
+      {
+        "id": 8,
+        "start": 4,
+        "end": 5,
+        "controls": null
+      },
+      {
+        "id": 9,
+        "start": 5,
+        "end": 6,
+        "controls": null
+      },
+      {
+        "id": 10,
+        "start": 6,
+        "end": 3,
+        "controls": null
+      },
+      {
+        "id": 16,
+        "start": 12,
+        "end": 13,
+        "controls": null
+      },
+      {
+        "id": 17,
+        "start": 13,
+        "end": 14,
+        "controls": null
+      },
+      {
+        "id": 18,
+        "start": 14,
+        "end": 15,
+        "controls": null
+      },
+      {
+        "id": 19,
+        "start": 15,
+        "end": 12,
+        "controls": null
+      },
+      {
+        "id": 25,
+        "start": 21,
+        "end": 22,
+        "controls": null
+      },
+      {
+        "id": 26,
+        "start": 22,
+        "end": 23,
+        "controls": null
+      },
+      {
+        "id": 27,
+        "start": 23,
+        "end": 24,
+        "controls": [
+          [
+            2.2666666666666666,
+            0.8
+          ],
+          [
+            2.1333333333333333,
+            0.8
+          ]
+        ]
+      },
+      {
+        "id": 28,
+        "start": 24,
+        "end": 21,
+        "controls": null
+      }
+    ],
+    "pieces": [
+      {
+        "id": 2,
+        "name": "Pattern 1",
+        "boundary": [
+          7,
+          8,
+          9,
+          10
+        ],
+        "placement": {
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "material": 1,
+        "grain_angle": 0.0
+      },
+      {
+        "id": 11,
+        "name": "Identity A",
+        "boundary": [
+          16,
+          17,
+          18,
+          19
+        ],
+        "placement": {
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "material": 1,
+        "grain_angle": 0.0
+      },
+      {
+        "id": 20,
+        "name": "Identity B",
+        "boundary": [
+          25,
+          26,
+          27,
+          28
+        ],
+        "placement": {
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "material": 1,
+        "grain_angle": 0.25
+      }
+    ],
+    "materials": [
+      {
+        "id": 1,
+        "name": "Cotton approximation (uncalibrated)",
+        "areal_density": 0.18000000000000002,
+        "warp_stiffness": 99999999.99999999,
+        "weft_stiffness": 1.0000000000000002,
+        "shear_stiffness": 100.0,
+        "bending_stiffness": 0.0030000000000000005,
+        "damping": 0.2,
+        "friction": 0.4,
+        "collision_thickness": 0.003,
+        "color": [
+          0.50000006,
+          0.22,
+          0.76
+        ]
+      }
+    ],
+    "seams": [],
+    "mannequin": {
+      "capsules": [
+        {
+          "a": [
+            0.0,
+            0.9,
+            0.0
+          ],
+          "b": [
+            0.0,
+            1.4,
+            0.0
+          ],
+          "radius": 0.18
+        },
+        {
+          "a": [
+            0.0,
+            1.53,
+            0.0
+          ],
+          "b": [
+            0.0,
+            1.65,
+            0.0
+          ],
+          "radius": 0.105
+        },
+        {
+          "a": [
+            -0.22,
+            1.4,
+            0.0
+          ],
+          "b": [
+            -0.55,
+            1.22,
+            0.0
+          ],
+          "radius": 0.065
+        },
+        {
+          "a": [
+            0.22,
+            1.4,
+            0.0
+          ],
+          "b": [
+            0.55,
+            1.22,
+            0.0
+          ],
+          "radius": 0.065
+        },
+        {
+          "a": [
+            -0.09,
+            0.88,
+            0.0
+          ],
+          "b": [
+            -0.09,
+            0.18,
+            0.0
+          ],
+          "radius": 0.085
+        },
+        {
+          "a": [
+            0.09,
+            0.88,
+            0.0
+          ],
+          "b": [
+            0.09,
+            0.18,
+            0.0
+          ],
+          "radius": 0.085
+        }
+      ]
+    },
+    "resolution": 0.07,
+    "next_id": 29
+  }
+}

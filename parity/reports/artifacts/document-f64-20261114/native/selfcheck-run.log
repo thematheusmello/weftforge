@@ -1,0 +1,89 @@
+{
+  "bundle_kind": "portable_public_evidence_copy",
+  "status": "passed_executed_subset_with_historical_failure_retained",
+  "overall_exit_code": 0,
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "ieee_document_oracle.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "stdout": "{\"status\": \"prepared_exact_expected_bits\", \"input_manifest_sha256\": \"3a3e8b6bf7cd76282eb18afef508650831154fbb752b95395777fca1ecc55c5f\", \"expected_bits_sha256\": \"2f471d3ef127f3057b1ed5d7085b5fc3b8e66e52a87506415aa29ee705c1903d\", \"oracle_sha256\": \"9e46dae6ababcb0066b01ec9864d5230c76b4daecd5a45a4378b952f5760a892\", \"field_counts\": {\"v1-original.weftforge\": 188, \"v1-extreme-stiffness.weftforge\": 188, \"v2-ieee-boundaries.weftforge\": 103}, \"negative_witnesses\": {\"one_ulp_point40\": {\"status\": \"rejected\", \"reason\": \"/project/points/22/position/0 binary64: expected0x3ff1eb851eb851eb, actual0x3ff1eb851eb851ec\"}, \"one_ulp_stiffness\": {\"status\": \"rejected\", \"reason\": \"/project/materials/0/warp_stiffness binary64: expected0x4197d783ffffffff, actual0x4197d78400000000\"}, \"wrong_f32_midpoint_color\": {\"status\": \"rejected\", \"reason\": \"/project/materials/0/color/0 binary32: expected0x3f000001, actual0x3f000000\"}}}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "verify_document_io.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "stdout": "{\"status\": \"passed_executed_native_io_subset\", \"full_contract_verified\": false, \"report\": \"independent-document-io-check.json\", \"report_sha256\": \"20224c4f1c98f921848ea84f5e29e29e719d5d97e39f9b98411ddbc53ea878a4\", \"evaluator_sha256\": \"f1303d55ed1935b482345b1afdf07afc98fb2c0d5521df90ac70e263ed64b24e\", \"negative_witnesses_rejected\": 5}\n",
+      "stderr": ""
+    }
+  ],
+  "frozen_expected_bits_unchanged": true,
+  "full_contract_verified": false,
+  "not_executed": [
+    "v1 invalid-load branch",
+    "v1 focused-field branch",
+    "v1 focused-quit/recovery branch"
+  ],
+  "negative_witnesses": {
+    "one_ulp_point40": {
+      "status": "rejected",
+      "reason": "/project/points/22/position/0 binary64: expected0x3ff1eb851eb851eb, actual0x3ff1eb851eb851ec"
+    },
+    "one_ulp_stiffness": {
+      "status": "rejected",
+      "reason": "/project/materials/0/warp_stiffness binary64: expected0x4197d783ffffffff, actual0x4197d78400000000"
+    },
+    "wrong_f32_midpoint_color": {
+      "status": "rejected",
+      "reason": "/project/materials/0/color/0 binary32: expected0x3f000001, actual0x3f000000"
+    },
+    "one_ulp_recovered_grain": {
+      "status": "rejected",
+      "reason": "/project/pieces/2/grain_angle binary64: expected0x3fbf9add3746f65f, actual0x3fbf9add3746f660"
+    },
+    "same_json_different_primary_bytes": {
+      "status": "rejected",
+      "reason": "Primary bytes changed despite equivalent JSON"
+    }
+  },
+  "all_five_negative_witnesses_rejected": true,
+  "historical_failed_candidate": {
+    "check": {
+      "status": "rejected_as_expected",
+      "reason": "/project/points/22/position/0 binary64: expected0x3ff1eb851eb851eb, actual0x3ff1eb851eb851ec",
+      "qualification": "Separate source359/3ed0 historical failure, never current candidate output."
+    },
+    "point_deltas": [
+      {
+        "point_id": 40,
+        "source_literal": "1.1199999999999999",
+        "historical_saved_literal": "1.12",
+        "source_expected_binary64": "0x3ff1eb851eb851eb",
+        "historical_actual_binary64": "0x3ff1eb851eb851ec",
+        "signed_decimal_delta_m": "1E-16"
+      },
+      {
+        "point_id": 41,
+        "source_literal": "1.0999999999999999",
+        "historical_saved_literal": "1.1",
+        "source_expected_binary64": "0x3ff1999999999999",
+        "historical_actual_binary64": "0x3ff199999999999a",
+        "signed_decimal_delta_m": "1E-16"
+      }
+    ]
+  },
+  "limits": [
+    "No native UI, Cargo, simulation, fitting, performance or reference-parity test is run here.",
+    "Native gestures/process/recovery observations remain parent evidence; only the declared executed subset passes.",
+    "Historical rounded values are retained unchanged; a parser cannot reconstruct values already saved after rounding."
+  ]
+}

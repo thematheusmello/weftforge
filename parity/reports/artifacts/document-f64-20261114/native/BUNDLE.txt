@@ -1,0 +1,19 @@
+Portable copy of UI-NATIVE-IEEE-ROUNDTRIP-001 (executed subset only).
+Run: python3 -B run_checks.py from any working directory. Expected exit: 0.
+
+The five original inputs, input manifest, exact expected bits, Fraction oracle,
+native outputs and original reports/evaluators retain their original bytes.
+Every expected numeric value was derived from frozen input decimals, not outputs.
+Colours round directly to binary32; other authoring floats round to binary64.
+There is no tolerance fitting or decimal-to-binary64-to-binary32 colour step.
+
+Completed: v1 load/save/reopen and extreme stiffness; modern focus/blur and invalid
+load preservation; modern focused grain Quit, recovery/save and reopen/save.
+NOT EXECUTED: v1 invalid-load, focused-field, or focused-Quit/recovery branches.
+Full contract verified: false. UI/process evidence remains parent-observed.
+
+Prior source 359/3ed0 snapshots remain historical evidence: point 40 and point 41
+had +1e-16 m deltas. The runner expects that prior snapshot to fail the exact
+oracle; it is separate from the current candidate pass. Nothing is normalized.
+A parser cannot reconstruct values already saved after rounding.
+No full workflow, fitting, simulation, performance or reference-parity claim.

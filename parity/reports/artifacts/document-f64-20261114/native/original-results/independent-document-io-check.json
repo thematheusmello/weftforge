@@ -1,0 +1,313 @@
+{
+  "scenario": "UI-NATIVE-IEEE-ROUNDTRIP-001",
+  "kind": "implementation_only",
+  "status": "passed_executed_native_io_subset",
+  "full_contract_verified": false,
+  "evaluator_sha256": "f1303d55ed1935b482345b1afdf07afc98fb2c0d5521df90ac70e263ed64b24e",
+  "oracle_sha256": "9e46dae6ababcb0066b01ec9864d5230c76b4daecd5a45a4378b952f5760a892",
+  "input_manifest_sha256": "3a3e8b6bf7cd76282eb18afef508650831154fbb752b95395777fca1ecc55c5f",
+  "expected_bits_sha256": "2f471d3ef127f3057b1ed5d7085b5fc3b8e66e52a87506415aa29ee705c1903d",
+  "candidate_source_commit": "1528e3662380a4a74c3b70d3ef9b11f2c607af5f",
+  "candidate_executable_sha256": "a16acde0fb010a34b1452881ca9865ac3a3ef58908ca50e2719177fb9ab3b838",
+  "all_five_input_files_unchanged": true,
+  "saved_outputs": [
+    {
+      "input": "v1-original.weftforge",
+      "output": "v1-saved-v2.weftforge",
+      "output_sha256": "75feeb35df50a9feaebc0b18cfba592c43c43fbd97848c021328adab44632b90",
+      "float_fields_bit_exact": 188,
+      "all_nonfloat_fields_and_schema_exact": true
+    },
+    {
+      "input": "v1-original.weftforge",
+      "output": "v1-reopened-v2.weftforge",
+      "output_sha256": "75feeb35df50a9feaebc0b18cfba592c43c43fbd97848c021328adab44632b90",
+      "float_fields_bit_exact": 188,
+      "all_nonfloat_fields_and_schema_exact": true
+    },
+    {
+      "input": "v1-extreme-stiffness.weftforge",
+      "output": "v1-extreme-saved-v2.weftforge",
+      "output_sha256": "543ca6bfb46a5cecd3499b6ed1f7f6f8e2589fb44b572035a101a2c755fe4f96",
+      "float_fields_bit_exact": 188,
+      "all_nonfloat_fields_and_schema_exact": true
+    },
+    {
+      "input": "v2-ieee-boundaries.weftforge",
+      "output": "v2-saved.weftforge",
+      "output_sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "float_fields_bit_exact": 103,
+      "all_nonfloat_fields_and_schema_exact": true
+    },
+    {
+      "input": "v2-ieee-boundaries.weftforge",
+      "output": "v2-after-focus.weftforge",
+      "output_sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "float_fields_bit_exact": 103,
+      "all_nonfloat_fields_and_schema_exact": true
+    },
+    {
+      "input": "v2-ieee-boundaries.weftforge",
+      "output": "after-invalid-number.weftforge",
+      "output_sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "float_fields_bit_exact": 103,
+      "all_nonfloat_fields_and_schema_exact": true
+    },
+    {
+      "input": "v2-ieee-boundaries.weftforge",
+      "output": "after-invalid-schema.weftforge",
+      "output_sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "float_fields_bit_exact": 103,
+      "all_nonfloat_fields_and_schema_exact": true
+    },
+    {
+      "input": "v2-ieee-boundaries.weftforge",
+      "output": "before-quit.weftforge",
+      "output_sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "float_fields_bit_exact": 103,
+      "all_nonfloat_fields_and_schema_exact": true
+    }
+  ],
+  "byte_identity_groups": [
+    {
+      "files": [
+        "v1-saved-v2.weftforge",
+        "v1-reopened-v2.weftforge"
+      ],
+      "bytes_identical": true,
+      "shared_sha256": "75feeb35df50a9feaebc0b18cfba592c43c43fbd97848c021328adab44632b90"
+    },
+    {
+      "files": [
+        "v2-saved.weftforge",
+        "v2-after-focus.weftforge",
+        "after-invalid-number.weftforge",
+        "after-invalid-schema.weftforge",
+        "before-quit.weftforge"
+      ],
+      "bytes_identical": true,
+      "shared_sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290"
+    },
+    {
+      "files": [
+        "before-quit.weftforge.autosave",
+        "quit-recovery-capture.weftforge",
+        "recovered-saved.weftforge",
+        "recovered-reopened.weftforge"
+      ],
+      "bytes_identical": true,
+      "shared_sha256": "7aca4d484193345549d9babb99138aa962f58711216c0f917aef82f7fb3a99a2"
+    }
+  ],
+  "modern_focused_quit_recovery": {
+    "checks": [
+      {
+        "output": "before-quit.weftforge.autosave",
+        "output_sha256": "7aca4d484193345549d9babb99138aa962f58711216c0f917aef82f7fb3a99a2",
+        "float_fields_bit_exact": 103,
+        "all_nonfloat_fields_and_schema_exact": true
+      },
+      {
+        "output": "quit-recovery-capture.weftforge",
+        "output_sha256": "7aca4d484193345549d9babb99138aa962f58711216c0f917aef82f7fb3a99a2",
+        "float_fields_bit_exact": 103,
+        "all_nonfloat_fields_and_schema_exact": true
+      },
+      {
+        "output": "recovered-saved.weftforge",
+        "output_sha256": "7aca4d484193345549d9babb99138aa962f58711216c0f917aef82f7fb3a99a2",
+        "float_fields_bit_exact": 103,
+        "all_nonfloat_fields_and_schema_exact": true
+      },
+      {
+        "output": "recovered-reopened.weftforge",
+        "output_sha256": "7aca4d484193345549d9babb99138aa962f58711216c0f917aef82f7fb3a99a2",
+        "float_fields_bit_exact": 103,
+        "all_nonfloat_fields_and_schema_exact": true
+      }
+    ],
+    "primary_unchanged": true,
+    "only_changes": [
+      "revision11->12",
+      "piece20.grain_angle .25->predeclared literal"
+    ],
+    "grain_expected_binary64": "0x3fbf9add3746f65f"
+  },
+  "negative_witnesses": {
+    "one_ulp_point40": {
+      "status": "rejected",
+      "reason": "/project/points/22/position/0 binary64: expected0x3ff1eb851eb851eb, actual0x3ff1eb851eb851ec"
+    },
+    "one_ulp_stiffness": {
+      "status": "rejected",
+      "reason": "/project/materials/0/warp_stiffness binary64: expected0x4197d783ffffffff, actual0x4197d78400000000"
+    },
+    "wrong_f32_midpoint_color": {
+      "status": "rejected",
+      "reason": "/project/materials/0/color/0 binary32: expected0x3f000001, actual0x3f000000"
+    },
+    "one_ulp_recovered_grain": {
+      "status": "rejected",
+      "reason": "/project/pieces/2/grain_angle binary64: expected0x3fbf9add3746f65f, actual0x3fbf9add3746f660"
+    },
+    "same_json_different_primary_bytes": {
+      "status": "rejected",
+      "reason": "Primary bytes changed despite equivalent JSON"
+    }
+  },
+  "completed_subset": [
+    "v1 load/save/reopen with explicit migration and188 exact typed float fields",
+    "v1 extreme-stiffness load/save",
+    "modern load/save, untouched material focus/blur, invalid number/schema state retention",
+    "modern focused-grain CmdQ recovery, explicit Recover/save and native reopen/save"
+  ],
+  "not_executed": [
+    "v1 invalid-load branch",
+    "v1 focused-field branch",
+    "v1 focused-quit/recovery branch"
+  ],
+  "artifacts": {
+    "v1-original.weftforge": {
+      "sha256": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+      "bytes": 11818
+    },
+    "v1-extreme-stiffness.weftforge": {
+      "sha256": "2463672f7c5bcdd38e87227821556b6475ba674e4e67e28b582a67e65019006a",
+      "bytes": 11830
+    },
+    "v2-ieee-boundaries.weftforge": {
+      "sha256": "f98aec962a3b7e4899bd67a1fafe5844b4aaaf4994ebb7984ec96116b92459bd",
+      "bytes": 5760
+    },
+    "invalid-number.weftforge": {
+      "sha256": "859b80389aa2906cd2705fe0b0171ec680b4697d5830d42d008e1f1cb1c63f21",
+      "bytes": 5748
+    },
+    "invalid-schema99.weftforge": {
+      "sha256": "542177c3e068296fab7e1f863884a890a506a06c5af50291dfd846d1da61b31e",
+      "bytes": 5761
+    },
+    "input-manifest.json": {
+      "sha256": "3a3e8b6bf7cd76282eb18afef508650831154fbb752b95395777fca1ecc55c5f",
+      "bytes": 2833
+    },
+    "expected-bits.json": {
+      "sha256": "2f471d3ef127f3057b1ed5d7085b5fc3b8e66e52a87506415aa29ee705c1903d",
+      "bytes": 135036
+    },
+    "ieee_document_oracle.py": {
+      "sha256": "9e46dae6ababcb0066b01ec9864d5230c76b4daecd5a45a4378b952f5760a892",
+      "bytes": 12348
+    },
+    "v1-saved-v2.weftforge": {
+      "sha256": "75feeb35df50a9feaebc0b18cfba592c43c43fbd97848c021328adab44632b90",
+      "bytes": 11904
+    },
+    "v1-reopened-v2.weftforge": {
+      "sha256": "75feeb35df50a9feaebc0b18cfba592c43c43fbd97848c021328adab44632b90",
+      "bytes": 11904
+    },
+    "v1-extreme-saved-v2.weftforge": {
+      "sha256": "543ca6bfb46a5cecd3499b6ed1f7f6f8e2589fb44b572035a101a2c755fe4f96",
+      "bytes": 11928
+    },
+    "v2-saved.weftforge": {
+      "sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "bytes": 5752
+    },
+    "v2-after-focus.weftforge": {
+      "sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "bytes": 5752
+    },
+    "after-invalid-number.weftforge": {
+      "sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "bytes": 5752
+    },
+    "after-invalid-schema.weftforge": {
+      "sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "bytes": 5752
+    },
+    "before-quit.weftforge": {
+      "sha256": "5003de76ad856ebe78d213241416c2e99dcdf1723b5e9f01d396f7996ee29290",
+      "bytes": 5752
+    },
+    "before-quit.weftforge.autosave": {
+      "sha256": "7aca4d484193345549d9babb99138aa962f58711216c0f917aef82f7fb3a99a2",
+      "bytes": 5767
+    },
+    "quit-recovery-capture.weftforge": {
+      "sha256": "7aca4d484193345549d9babb99138aa962f58711216c0f917aef82f7fb3a99a2",
+      "bytes": 5767
+    },
+    "recovered-saved.weftforge": {
+      "sha256": "7aca4d484193345549d9babb99138aa962f58711216c0f917aef82f7fb3a99a2",
+      "bytes": 5767
+    },
+    "recovered-reopened.weftforge": {
+      "sha256": "7aca4d484193345549d9babb99138aa962f58711216c0f917aef82f7fb3a99a2",
+      "bytes": 5767
+    },
+    "v1-saved-check.json": {
+      "sha256": "e1c59d2450e9987ce191c4f56e6f5cba79d212a400385724b11eb205f368ea2c",
+      "bytes": 496
+    },
+    "v1-reopened-check.json": {
+      "sha256": "19659c2a3e2939a53ec40875d0086cf8cc15dfd54463bbf143ddadd587de17eb",
+      "bytes": 499
+    },
+    "v1-extreme-check.json": {
+      "sha256": "e138ae99632e42086bd0f47ea08ebfcf6c7e8265132a070cbd2d5c790b8f97be",
+      "bytes": 513
+    },
+    "v2-saved-check.json": {
+      "sha256": "6a36c27cf99ed195ba6d517fa8937acc579cffa1721b358cac058f24e580e204",
+      "bytes": 500
+    },
+    "v2-after-focus-check.json": {
+      "sha256": "18ad6b01e5574a9ab3ecb5798ae5b5a42134c791f60e53836f0cd74d25714d02",
+      "bytes": 506
+    },
+    "after-invalid-number-check.json": {
+      "sha256": "1ce156cc70d7cef5f3383dc3f76144ff512bdea8298b766a7c27ea38a3ff9af2",
+      "bytes": 512
+    },
+    "after-invalid-schema-check.json": {
+      "sha256": "d2042c7c35dfd7c08ab86c0333acbde07758de39234495d27199ba8a923aa1d4",
+      "bytes": 512
+    },
+    "before-quit-check.json": {
+      "sha256": "a3a6451b428ed00f98abe5c30e8b5837ae41805b1dfd213bd6307708e09eb395",
+      "bytes": 503
+    },
+    "v2-quit-recovery-check.json": {
+      "sha256": "d5d9676c4601613b384672bd8cfc12d1236be87827735904e0a776c7eb4b7162",
+      "bytes": 1724
+    },
+    "declaration.json": {
+      "sha256": "f8ff15d010bc1eb6ffdc9c9a027b15ff51ed1fdbc79e43bb879316f0490d6f3d",
+      "bytes": 2261
+    },
+    "process.json": {
+      "sha256": "eb2602a9b5db71aecb0866c812e42c95114002dd263c85414948459f7172584f",
+      "bytes": 180
+    },
+    "restart-process.json": {
+      "sha256": "70f761a6d3407a2ce06130274040f413601a7575c04da04e4eaaab80939625b1",
+      "bytes": 290
+    },
+    "quit-precondition.json": {
+      "sha256": "4ccad23e5531c7e6cfde57565ce82ded47cd0f81170e5b9b20644e461e808499",
+      "bytes": 602
+    },
+    "quit-result.json": {
+      "sha256": "345b390b67496e5d412d27dd5d63aacdc6557407810984596a469507a44df531",
+      "bytes": 538
+    }
+  },
+  "limits": [
+    "Exact typed IEEE bits are compared; raw decimal token spelling need not remain identical after typed rounding/serialization.",
+    "UI gestures, errors, focused drafts, process identity and explicit recovery interaction are parent-observed evidence.",
+    "Parser cannot reconstruct values already saved after rounding; prior failed-candidate evidence remains historical.",
+    "Executed subset only; no full workflow, reference parity, fitting, simulation or performance claim."
+  ]
+}

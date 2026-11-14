@@ -1,0 +1,139 @@
+{
+  "scenario": "UI-BATCH-CANCEL-001",
+  "kind": "implementation_only",
+  "status": "passed_saved_snapshot_cancel_checks",
+  "evaluator_sha256": "dedccbf837d19d78a32d1b17e3379ea1909734689463923b867615f5756d3376",
+  "candidate_executable_sha256": "3ed0ab22b4e7335c8dff9a58350b7f68eb2aa9b5ba1c39059c9043a7210c6880",
+  "prepared_source": {
+    "raw_only_change": "project.resolution .12 -> .015",
+    "other_raw_source_fields_identical": true
+  },
+  "native_save_migration": {
+    "input_version": 1,
+    "saved_version": 2,
+    "explicit_changes": [
+      "version 1 -> 2",
+      "pieces gain grain_angle 0",
+      "stretch_stiffness copied to warp_stiffness and weft_stiffness"
+    ],
+    "source_field_comparison": {
+      "maximum_coordinate_error_m": "1E-16",
+      "coordinate_values_exactly_equal": false,
+      "coordinate_deltas": [
+        {
+          "point_id": 40,
+          "axis": 0,
+          "before_m": "1.1199999999999999",
+          "after_m": "1.12",
+          "signed_delta_m": "1E-16"
+        },
+        {
+          "point_id": 41,
+          "axis": 0,
+          "before_m": "1.0999999999999999",
+          "after_m": "1.1",
+          "signed_delta_m": "1E-16"
+        }
+      ],
+      "all_other_source_fields_identical_after_schema_mapping": true
+    },
+    "input_and_saved_bytes_equal": false
+  },
+  "cancel_preservation": {
+    "native_bytes_identical": true,
+    "obj_bytes_identical": true,
+    "revision_before": 13,
+    "revision_after": 13,
+    "native_shared_sha256": "6199bef4900b58c3500fa3c904cd19ef84763b9354698bdcbd363894e3517686",
+    "obj_shared_sha256": "22f9dd821391246ad69468283bd53a307a8961ca595dca5dff5991ace9468f2a"
+  },
+  "mesh": {
+    "vertices": 15459,
+    "uvs": 15459,
+    "normals": 15459,
+    "triangles": 30488,
+    "edges": 45945,
+    "components": 2,
+    "euler_characteristic_sum": 2,
+    "bounds_m": [
+      [
+        "-0.53000000000000003",
+        "0.53000000000000003"
+      ],
+      [
+        "1.02000000000000002",
+        "1.56000000000000005"
+      ],
+      [
+        "-0.22000000000000000",
+        "0.22000000000000000"
+      ]
+    ],
+    "minimum_twice_triangle_area_m2": "2.154181985293836397058823504E-7",
+    "finite_positive_faces_and_uvs": true,
+    "aligned_unit_normals": true
+  },
+  "negative_witnesses": {
+    "unintended_migration_material_change": {
+      "status": "rejected",
+      "reason": "Native migration changed source fields beyond explicit schema migration"
+    },
+    "same_json_but_changed_snapshot_bytes": {
+      "status": "rejected",
+      "reason": "Cancelled accepted snapshot bytes changed"
+    },
+    "source_point_exceeds_fixed_tolerance": {
+      "status": "rejected",
+      "reason": "Native source coordinate exceeds unchanged1e-12m tolerance"
+    },
+    "obj_repeated_corner": {
+      "status": "rejected",
+      "reason": "Repeated OBJ triangle corner"
+    }
+  },
+  "parent_ui_observation": {
+    "acknowledged": true,
+    "reported_ui_ack_ms": 890,
+    "timing_basis": "Parent native click plus subsequent AX acknowledgement; includes CUA/AX overhead."
+  },
+  "artifacts": {
+    "original-shirt.weftforge": {
+      "sha256": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060",
+      "bytes": 11818
+    },
+    "init-cancel-input.weftforge": {
+      "sha256": "533eafe8a4554b8d7955ca3279b467b4afd7ed350eb9820a5741da13297178cb",
+      "bytes": 11820
+    },
+    "init-before.weftforge": {
+      "sha256": "6199bef4900b58c3500fa3c904cd19ef84763b9354698bdcbd363894e3517686",
+      "bytes": 11876
+    },
+    "init-before.obj": {
+      "sha256": "22f9dd821391246ad69468283bd53a307a8961ca595dca5dff5991ace9468f2a",
+      "bytes": 4123903
+    },
+    "init-after.weftforge": {
+      "sha256": "6199bef4900b58c3500fa3c904cd19ef84763b9354698bdcbd363894e3517686",
+      "bytes": 11876
+    },
+    "init-after.obj": {
+      "sha256": "22f9dd821391246ad69468283bd53a307a8961ca595dca5dff5991ace9468f2a",
+      "bytes": 4123903
+    },
+    "cancel-declaration.json": {
+      "sha256": "465e54c101a687e3551093125faf193a4d4c2fcbc663be20b69e3e96602fdda5",
+      "bytes": 1933
+    },
+    "cancel-observation.json": {
+      "sha256": "3c9d472bb6b8256a9764d3dedf21c70849b7a10fe215e4651e346158e786de5d",
+      "bytes": 1150
+    }
+  },
+  "limits": [
+    "Exact initialization versus step phase and worker-thread termination latency are unmeasured.",
+    "UI acknowledgement and Rest arrangement observations are parent evidence; this checker verifies retained bytes and geometry only.",
+    "No constructor-only latency, live collision speed, garment quality, reference contract or parity claim.",
+    "Prepared original fixture is confined to this separate subcase, not empty-project authoring evidence."
+  ]
+}

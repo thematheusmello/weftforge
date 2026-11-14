@@ -1,0 +1,42 @@
+   Compiling xtask v0.1.0 (${WORKSPACE}/xtask)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.41s
+     Running `target/debug/xtask verify`
+Registry valid: 56 inventoried contracts; generated reports checked.
+PASS: 902 unique catalog IDs; preserved 902 entries/202 packets; 202 reviewed groups/packets; 52 source landmarks; catalog hashes, feature/source links and acyclic dependencies valid.
+................................................
+----------------------------------------------------------------------
+Ran 48 tests in 39.489s
+
+OK
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.005s
+
+OK
+   Compiling weftforge-core v0.1.0 (${WORKSPACE}/crates/weftforge-core)
+   Compiling weftforge-cli v0.1.0 (${WORKSPACE}/apps/weftforge-cli)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 4.51s
+     Running `target/debug/weftforge-cli --help`
+WeftForge CLI — offline editable garment tools
+
+mcp                                    local MCP stdio file authoring
+new PROJECT
+sample PROJECT                         original two-panel shirt (implementation fixture)
+inspect PROJECT
+rectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT
+resize INPUT OUTPUT PIECE_ID WIDTH HEIGHT
+curve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m
+curve-controls INPUT OUTPUT CURVE_ID straight
+split INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing
+grain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V
+stiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m
+export-obj PROJECT OUTPUT.obj
+export-svg PROJECT OUTPUT.svg
+simulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled
+benchmark PROJECT STEPS                JSON measurements for the same solver
+fit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape
+fit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass
+recover PROJECT OUTPUT                explicitly load last valid recovery
+
+Units: metres, kilograms, seconds; Y-up. Curve t is not arc length. All edits use the desktop command engine.
+Simulation is currently a rebuildable state; projects store editable construction.
