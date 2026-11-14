@@ -10,6 +10,8 @@ use std::io::{Read, Write};
 use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicU64, Ordering};
 
+mod dxf;
+
 pub const FORMAT_VERSION: u32 = 2;
 pub const MAX_PROJECT_BYTES: u64 = 16 * 1024 * 1024;
 static TEMP_ID: AtomicU64 = AtomicU64::new(0);
@@ -264,6 +266,15 @@ impl Project {
         svg.push_str("</svg>\n");
         StagedFile::write(path.as_ref(), svg.as_bytes())?.replace(path.as_ref())
     }
+
+    /// Exports authored pattern boundaries in millimetres, using the FILE-005-v1
+    /// ASCII R2000 profile. Sewing, materials, placement and simulation are omitted.
+    pub fn export_dxf(&self, path: impl AsRef<Path>) -> Result<()> {
+        export_path_guard(path.as_ref())?;
+        self.validate()?;
+        let dxf = dxf::render(self)?;
+        StagedFile::write(path.as_ref(), dxf.as_bytes())?.replace(path.as_ref())
+    }
 }
 
 impl Mesh {
@@ -514,17 +525,20 @@ mod tests {
             "old.weftforge.autosave.recovery",
             "project.obj",
             "project.svg",
+            "project.dxf",
             "unusual.native",
         ] {
             let path = directory.join(name);
             fs::write(&path, &native).unwrap();
             assert!(editor.project.export_svg(&path).is_err(), "{name}");
+            assert!(editor.project.export_dxf(&path).is_err(), "{name}");
             assert!(mesh.export_obj(&path).is_err(), "{name}");
             assert_eq!(fs::read(&path).unwrap(), native);
         }
         let protected = directory.join("ordinary.WeFtFoRgE");
         fs::write(&protected, b"invalid but native-named contents").unwrap();
         assert!(editor.project.export_svg(&protected).is_err());
+        assert!(editor.project.export_dxf(&protected).is_err());
         assert!(mesh.export_obj(&protected).is_err());
         assert_eq!(
             fs::read(&protected).unwrap(),
@@ -533,11 +547,13 @@ mod tests {
         let hardlink = directory.join("hardlink.svg");
         fs::hard_link(directory.join("unusual.native"), &hardlink).unwrap();
         assert!(editor.project.export_svg(&hardlink).is_err());
+        assert!(editor.project.export_dxf(&hardlink).is_err());
         assert!(mesh.export_obj(&hardlink).is_err());
         assert_eq!(fs::read(&hardlink).unwrap(), native);
         let folder = directory.join("folder.svg");
         fs::create_dir(&folder).unwrap();
         assert!(editor.project.export_svg(&folder).is_err());
+        assert!(editor.project.export_dxf(&folder).is_err());
         assert!(mesh.export_obj(&folder).is_err());
         assert!(folder.is_dir());
         #[cfg(unix)]
@@ -549,6 +565,7 @@ mod tests {
             std::os::unix::fs::symlink(directory.join(target), &path).unwrap();
             let previous = fs::read(&path).unwrap();
             assert!(editor.project.export_svg(&path).is_err());
+            assert!(editor.project.export_dxf(&path).is_err());
             assert!(mesh.export_obj(&path).is_err());
             assert_eq!(fs::read(&path).unwrap(), previous);
             assert!(
@@ -563,6 +580,7 @@ mod tests {
             let broken = directory.join("broken.svg");
             std::os::unix::fs::symlink(directory.join("absent"), &broken).unwrap();
             assert!(editor.project.export_svg(&broken).is_err());
+            assert!(editor.project.export_dxf(&broken).is_err());
             assert!(mesh.export_obj(&broken).is_err());
             assert!(
                 fs::symlink_metadata(&broken)
@@ -573,10 +591,14 @@ mod tests {
         }
         let svg = directory.join("patterns.svg");
         let obj = directory.join("rest.obj");
+        let dxf = directory.join("patterns.dxf");
         fs::write(&svg, b"old SVG").unwrap();
         fs::write(&obj, b"old OBJ").unwrap();
+        fs::write(&dxf, b"old DXF").unwrap();
         editor.project.export_svg(&svg).unwrap();
         mesh.export_obj(&obj).unwrap();
+        editor.project.export_dxf(&dxf).unwrap();
+        assert!(fs::read_to_string(dxf).unwrap().contains("AC1015"));
         assert!(fs::read_to_string(svg).unwrap().contains("<svg"));
         assert!(
             fs::read_to_string(obj)
