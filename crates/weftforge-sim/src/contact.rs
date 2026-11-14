@@ -504,8 +504,7 @@ mod tests {
     use crate::{ClothInput, Material, Pin};
     use std::cell::Cell;
 
-    #[test]
-    fn moving_contact_query_reaches_a_later_plane() {
+    fn planes_input(upper_y: f64) -> ClothInput {
         let positions = vec![
             [0.25, 0.004, 0.25],
             [0.25, 2., 0.25],
@@ -513,11 +512,11 @@ mod tests {
             [0., 0., 0.],
             [0., 0., 1.],
             [1., 0., 0.],
-            [0., 0.0116, 0.],
-            [0., 0.0116, 1.],
-            [1., 0.0116, 0.],
+            [0., upper_y, 0.],
+            [0., upper_y, 1.],
+            [1., upper_y, 0.],
         ];
-        let input = ClothInput {
+        ClothInput {
             pins: (1..positions.len())
                 .map(|vertex| Pin {
                     vertex,
@@ -537,7 +536,13 @@ mod tests {
             ],
             stitches: vec![],
             colliders: vec![],
-        };
+        }
+    }
+
+    #[test]
+    fn moving_contact_query_reaches_a_later_plane() {
+        let input = planes_input(0.0116);
+        let positions = input.positions.clone();
         let cloth = Cloth::new(input).unwrap();
         let mut x = positions.clone();
         assert_eq!(
@@ -545,6 +550,61 @@ mod tests {
             2
         );
         assert!((x[0][1] - 0.0056).abs() < 1e-14);
+        assert_eq!((x[0][0], x[0][2]), (0.25, 0.25));
+        assert_eq!(&x[1..], &positions[1..]);
+    }
+
+    #[test]
+    fn partitioned_queries_preserve_sequential_contact_order() {
+        let mut input = planes_input(0.009);
+        input.positions[6..].copy_from_slice(&[
+            [-1., 0.009, -1.],
+            [-1., 0.009, 2.],
+            [2., 0.009, -1.],
+        ]);
+        for pin in &mut input.pins {
+            pin.target = input.positions[pin.vertex];
+        }
+        for i in 0..16 {
+            let offset = input.positions.len();
+            let x = if i < 8 {
+                -10. - 4. * i as f64
+            } else {
+                10. + 4. * i as f64
+            };
+            let points = [[x, 0., 4.], [x + 1., 0., 4.], [x, 0., 5.]];
+            input.positions.extend(points);
+            input.material_uv.extend([[0., 0.], [1., 0.], [0., 1.]]);
+            input.triangles.push([offset, offset + 1, offset + 2]);
+            input.triangle_materials.push(input.triangle_materials[0]);
+            input
+                .pins
+                .extend(points.into_iter().enumerate().map(|(i, target)| Pin {
+                    vertex: offset + i,
+                    target,
+                }));
+        }
+        let positions = input.positions.clone();
+        let bounds =
+            triangle_bounds_cancellable(&input.triangles, &positions, &positions, 0.006, &|| false)
+                .unwrap();
+        let hierarchy = TriangleHierarchy::new(&bounds, &|| false).unwrap();
+        let mut candidates = Vec::new();
+        hierarchy
+            .visit(0, positions[0], &|| false, &mut |i| {
+                if overlaps(&bounds[i], positions[0], positions[0]) {
+                    candidates.push(i);
+                }
+            })
+            .unwrap();
+        assert!(candidates.iter().position(|i| *i == 2) < candidates.iter().position(|i| *i == 1));
+        let cloth = Cloth::new(input).unwrap();
+        let mut x = positions.clone();
+        assert_eq!(
+            cloth.project_cloth(&mut x, &positions, &|| false).unwrap(),
+            2
+        );
+        assert!((x[0][1] - 0.003).abs() < 1e-14);
         assert_eq!((x[0][0], x[0][2]), (0.25, 0.25));
         assert_eq!(&x[1..], &positions[1..]);
     }
