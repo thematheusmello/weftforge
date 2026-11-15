@@ -1,0 +1,38 @@
+{
+  "preliminary_comparison": "failed before any preparation or product call: root initially excluded functions only, while proof also normalizes path/source binding assignments and import",
+  "qualified_comparison": "passed",
+  "changes_to_frozen_files": false,
+  "normalizations": {
+    "evaluator.py": {
+      "functions": [
+        "authorization",
+        "verify_frozen",
+        "verify_preparation",
+        "verify_readonly_inputs"
+      ],
+      "simple_name_assignments": [
+        "EXPERIMENT",
+        "PLAN_SHA",
+        "PREVIOUS_PLAN_SHA",
+        "PRODUCER_BINDING_SHA",
+        "SOURCE"
+      ],
+      "import": "import bindings"
+    },
+    "runner.py": {
+      "functions": [
+        "verify_bindings"
+      ],
+      "simple_name_assignments": [
+        "DRIVER_SHA",
+        "EVALUATOR",
+        "INPUT_BINDING_SHA",
+        "PLAN_SHA",
+        "PRODUCER_BINDING_SHA",
+        "SOURCE"
+      ],
+      "import": "import bindings"
+    }
+  },
+  "five_whole_numerical_modules_byte_exact": true
+}

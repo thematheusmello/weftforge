@@ -1,0 +1,13 @@
+Diff in <operator-checkout>/crates/weftforge-sim/src/tests.rs:456:
+         ),
+     ] {
+         // For masses 2/4 kg and h=0.5 s, alpha=1/4 kg^-1 and D=1 kg^-1.
+-        for (angle, translation) in [
+-            (0_f64, [0.; 3]),
+-            (0., [8., -4., 2.]),
+-            (0.37, [8., -4., 2.]),
+-        ] {
++        for (angle, translation) in [(0_f64, [0.; 3]), (0., [8., -4., 2.]), (0.37, [8., -4., 2.])] {
+             let axis = unit([1., 2., 3.]);
+             let (sin, cos) = angle.sin_cos();
+             let rotate = |v| {

@@ -1,0 +1,79 @@
+{
+  "id": "SIM-CLOSED-STITCH-HARBOR-001",
+  "kind": "independently_checked_output",
+  "feature_ids": [
+    "SIM-001",
+    "SIM-003",
+    "SIM-005"
+  ],
+  "fixture_hashes": {
+    "fixtures/harbor-shirt.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+    "fixtures/harbor-shirt-height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+  },
+  "initial_conditions": "Original Harbor base revision20 then height revision17, unchanged authoring/arrangement/materials/mesh/capsules/ground/self-contact, no pins or ellipsoids, fresh zero velocities. One prospectively authorized attempt per case on one exact identified source; no retry, tuning, third case, reset or continuation.",
+  "settings": {
+    "dt_s": 0.016666666666666666,
+    "substeps": 8,
+    "iterations": 32,
+    "seam_closure_speed_m_per_s": 1.0,
+    "assembly_steps": 60,
+    "assembly_gravity_m_per_s2": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "drape_steps": 120,
+    "drape_gravity_m_per_s2": [
+      0.0,
+      -9.81,
+      0.0
+    ]
+  },
+  "required_capture": {
+    "boundary_states": 181,
+    "step_records": 180,
+    "positions_and_velocities_every_state": true,
+    "raw_diagnostics_and_settings_every_state": true,
+    "same_state_obj_frames": [
+      0,
+      60,
+      180
+    ],
+    "exact_rest_authoring_topology_uv_material_stitches_masses": true
+  },
+  "pass_criteria": {
+    "all_states_finite": true,
+    "material_axis_absolute_strain_strictly_below": 0.15,
+    "completed_fit_sampled_seam_gap_strictly_below_m": 0.005,
+    "physical_contact_upper_bound_strictly_below_m": 0.002,
+    "completed_stitch_target_exact_m": 0.0,
+    "targets_exactly_closed_at_frames": [
+      60,
+      180
+    ],
+    "independent_unknown_capsule_pairs_exact": 0,
+    "reported_conservative_capsule_pairs_exact": 0,
+    "exact_peak_triangle_axis_attribution": true,
+    "all_required_diagnostic_checks_agree": true,
+    "analysis_errors_exact": 0,
+    "strict_verdict": "All-frame physical screens, completed-fit quality, complete capture and every diagnostic/attribution check must pass; final producer flags are consistency-only."
+  },
+  "resource_caps": {
+    "whole_case_seconds": 420.0,
+    "clock_scope": "Before producer launch through numerical analysis, export, hashing, inspection and postbindings; no later calculation receives original-clock credit.",
+    "producer_peak_rss_bytes": 268435456,
+    "rss_measurement": "Exact Darwin wait4 producer peak; sampled monitoring may stop early.",
+    "aggregate_numerical_output_bytes": 268435456,
+    "output_scope": "Inputs, both preflights and every run path, counting duplicate logs/receipts per original path independently of public deduplication."
+  },
+  "operations": [
+    "Freeze exact source/input/producer/runner/evaluator and completed integrated gate identities before case authorization.",
+    "Execute base then height once; an operational/resource/binding failure stops, while arithmetic-complete quality failure permits only the declared height case.",
+    "Independently analyze all 181 retained boundary states per case without changing formulas, thresholds or workload.",
+    "Retain failures, accepted prefixes, raw counters and all frame lists; saved-state publication replay adds no physical execution."
+  ],
+  "expected_outcomes": "Pass only when the complete fixed saved-state protocol satisfies every declared physical, completed-fit, diagnostic, attribution, capture and resource criterion. Initial open arrangement seams are excluded only from completed-fit seam/target criteria; transient strain/contact failures remain failures. Observations belong in source-qualified reports, never in these prospective criteria.",
+  "complete_contract": false,
+  "reference_executed": false,
+  "limits": "Bounded static saved-state contact and cloth checks only; no complete CCD/contact contract, equilibrium, calibration, moving avatars, full garment/native/release gate or reference parity."
+}

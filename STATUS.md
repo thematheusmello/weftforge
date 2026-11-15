@@ -7,25 +7,93 @@ inventory, not a feature-completion denominator.
 
 ## Current continuation
 
-Public main is `224e7b44b2f40fa479397ae50443efa63550da9c` after PR39;
-the merged tree and all47 bound source/spec files match the reviewed head.
-Actions is disabled and the merge has zero workflow runs, confirmed in
-`.local/verification/published-224e7b44b2f4.json`.
+The next DXF build is `76be95d4d7928bcb703e1f52f4a5404bc955f567` in
+`.local/dxf-studio-fixed-integration-20261115`: all five gates passed with
+187 Rust tests and 54 Python checks. It fixes the observed numeric text-cache
+replay and canonical MCP document JSON. Its new headless case passed all 18
+cases and four exact inspections; the old 5950 native/inspection failures remain
+closed. New native acceptance is in progress with the unchanged frozen criteria;
+it has passed the decimal prelude, Cancel routes and history through revision9.
+No new native acceptance or public DXF delivery is claimed yet.
 
-The next isolated branch is `feat/closed-stitch-integration`, worktree
-`.local/closed-stitch-integration-20261115`. Source `afd44f0` cherry-picks reviewed
-candidate `c39401c173eb81111858e6b5ebfdfb165b27c365`: exactly-zero-target soft
-stitches use three-component XPBD multipliers; positive targets and hard stitches
-retain the prior radial path. All other solver algorithms and quality limits
-remain unchanged. Independent read-only review found no source/operator blocker;
-the candidate's51 solver tests and810 legacy bit comparisons remain bounded
-operator evidence. Integrated gates, packaging and a newly frozen physical
-protocol are pending. No new garment dynamics or native run is authorized yet.
+The solver increment is delivered through [PR40](https://github.com/thematheusmello/weftforge/pull/40).
+Its prior public main is `224e7b44b2f40fa479397ae50443efa63550da9c` after PR39.
+Actions and automated Pages deployments remain disabled; the existing static site
+is preserved. Its isolated branch is `feat/closed-stitch-integration` in
+`.local/closed-stitch-integration-20261115`.
 
-The previous SVG/diagnostic reports and UI-001/FILE-005/SIM-005 freshness are
-marked stale for this changed runtime. Their original results, captures and
-failure records remain unchanged. The following section describes the published
-PR39 build; it does not establish this solver candidate's native behavior.
+The tested solver source is `2e9795a3cb92c79ad3b406e675dcbdb49c60ce67`.
+Its 45 runtime files plus the prospective closed-stitch contract and physics
+notes are source-bound in
+[WF-20261115-CLOSED-STITCH-HARBOR-001](parity/reports/WF-20261115-CLOSED-STITCH-HARBOR-001.json).
+Exactly-zero-target soft stitches use vector XPBD multipliers; positive targets
+and hard stitches keep the prior radial arithmetic. The previously reviewed
+canonical diagnostic arithmetic is also present. Formatting, 177 Rust tests,
+strict workspace/all-target Clippy, xtask verification with 54 Python checks and
+unsigned packaging passed on this exact source (wrapper 90568/session 86752,
+all five jobs terminal 0). The separate
+[operator packet](parity/reports/artifacts/closed-stitch-operator-20261115/README.md)
+retains 51 solver tests, the N32 scalar failure/vector check and 810 bit-identical
+legacy radial projections. These checks establish neither full contract nor
+reference parity.
+
+The new [Harbor packet](parity/reports/artifacts/closed-stitch-harbor-20261115/README.md)
+contains the first actual A/base and B/height attempts for this source: 60
+zero-gravity assembly steps followed by 120 gravity steps, dt 1/60 s, eight
+substeps, 32 iterations and 1 m/s closure. Both are permanently closed and
+operationally complete. Controller invocation 2 (wrapper 27336/controller 27358,
+session 16060) exited 2 for the paired quality failure; no physical job remains
+active. Invocation 1 remains failed before any case because the authorization
+argument was resolved under the wrong relative directory. The corrected basename
+used the same immutable authorization before either first physical attempt.
+The failed initial function-only reuse assertion also remains qualified by the
+explicit five/six binding assignments and import normalization.
+
+**The pair remains failed.** A fails strain at frames 28–37, peaking at
+19.909194868993207% at frame 31. B peaks at 14.611754932547516% at frame 30 and
+passes this bounded strict protocol: all physical, completed-fit, diagnostic and
+exact attribution screens. Both retain all 181 states, with zero diagnostic or
+attribution failures, zero conservative/unknown capsule pairs and maximum
+recorded contact upper bounds below 5e-7 m. Initial open seams/targets at 0–28
+remain arrangement rows; B's all-frame quality flag stays false for those rows.
+A took 177.02696316700894 s with producer RSS 7,503,872 bytes; B took
+168.88270774995908 s with RSS 8,552,448 bytes. Final original aggregate numerical
+output was 36,368,696 bytes. These observations satisfy the original 420 s and
+separate 256 MiB caps, but do not establish convergence, calibration or improved
+physical fidelity. Both original source077 strict failures remain immutable.
+
+Independent source/public-packet review found no remaining content blocker after
+the generated README's absolute-path wording was corrected to the executed
+basename. Final packet manifest is `3dbc5befeb6bdfd96dfa4ae9733c58494f06c7818e025398b543601fbb436775`.
+The earlier 76.912-second preparation replay remains bound to its original
+`aa5371a7` manifest; no clock or replay credit is transferred. Clean tracked `7249579157a1e3a2647ea101069df28934e61a32` passes the default
+static replay in 80.42086208297405 s, reproducing all 362 states and eight adapter
+checks while retaining the failed pair. Registry and map checks are terminal 0
+(wrapper 96729/session 32718; replay PID 96875). All 3,049 referenced artifacts
+were tracked and hash-correct, with all 47 bound source/document files unchanged.
+The [closure](parity/reports/artifacts/closed-stitch-publication-20261115/ROOT-CLOSURE.json)
+records exact commands, exits, timeouts and scopes. Its receipt append receives
+final metadata-only clean checks before push, without another saved-state replay. Publication
+adds zero dynamics and distributes no executable, target or private inverse map.
+Only 26/107 frozen preparation attachments are supplied/referenced; 81 private
+auxiliary attachments are explicitly omitted. Previous SVG/diagnostic reports
+remain stale for this changed runtime. The new bounded SIM evidence is current,
+while the full control/reference contracts and native garment flow remain open.
+
+The next separate DXF checkpoint, source
+`5950c59073ff6a9c744699dd4bae52abb5794f72`, passed all five gates with 185 Rust
+and 54 Python checks. Its actual native case failed before import: the first
+`.11Return` produced revision 3 where the frozen case expected 2; 13 trace pairs
+are retained. Headless four-import/export and 14-negative checks passed, but
+exact MCP inspection differed in three f32 colour decimals. Both source5950
+cases are closed and will not be regraded. Native fix
+`2e403483c534ec167b9007bdf96b03e52c0a6c4d` and MCP fix
+`d400bd78a8475ba9dc972be4dc6793c3ab3dbcec` are prepared, reviewed and covered by
+focused checks; root is integrating them in a separate fresh worktree. No new
+DXF native acceptance is claimed here. The previous native2e and source5950
+states remain unchanged. The next actions are to publish this reviewed solver branch through a root-owned
+PR and finish that separate DXF source increment. Coarse reference
+parity remains 0/56 and no roadmap gate is accepted.
 
 ## Published SVG studio checkpoint
 

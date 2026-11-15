@@ -1,0 +1,48 @@
+{
+  "case": "height",
+  "case_clock_closed_status": "complete",
+  "case_receipt": {
+    "path": ".local/closed-stitch-garment-protocol-20261115/runs/height/case-receipt.json",
+    "sha256": "954cf25680c91ff988df61d3c9bcaca684e105d9f9eabe542df8ccb36efe48b4"
+  },
+  "integrity_only": true,
+  "no_new_numerical_acceptance_after_clock_close": true,
+  "operational_completion": true,
+  "post_write_elapsed_seconds": 168.88461674994323,
+  "post_write_numerical_output_bytes": 36368696,
+  "post_write_output_within_cap": true,
+  "post_write_wall_within_cap": true,
+  "quality_flags": {
+    "all_frame_quality_passed": false,
+    "completed_fit_all_frame_quality_passed": true,
+    "final_frame_quality_passed": true,
+    "quality_status": "passed",
+    "strict_delivery_passed": true,
+    "trajectory_physical_screens_passed": true
+  },
+  "scheduling": "next_case_allowed",
+  "schema": 1,
+  "validation_process": {
+    "argv": [
+      "OWN_PYTHON_EXECUTABLE",
+      "-B",
+      "OWN_WORKSPACE_ROOT/.local/closed-stitch-garment-protocol-20261115/evaluator.py",
+      "validate-receipt",
+      "--case",
+      "height",
+      "--authorization",
+      "OWN_WORKSPACE_ROOT/.local/closed-stitch-garment-protocol-20261115/execution-authorization.json",
+      "--receipt",
+      "OWN_WORKSPACE_ROOT/.local/closed-stitch-garment-protocol-20261115/runs/height/case-receipt.json",
+      "--output",
+      "OWN_WORKSPACE_ROOT/.local/closed-stitch-garment-protocol-20261115/runner-audits/height-validation.json"
+    ],
+    "end_monotonic_seconds": 840452.596969791,
+    "exit_code": 0,
+    "peak_rss_bytes": 50528256,
+    "pid": 38987,
+    "process_group": 38987,
+    "sampled_peak_rss_bytes": 0,
+    "stop_reason": null
+  }
+}

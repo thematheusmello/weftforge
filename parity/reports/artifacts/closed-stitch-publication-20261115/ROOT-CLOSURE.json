@@ -1,0 +1,131 @@
+{
+  "schema": 1,
+  "status": "clean_tracked_initial_publication_checks_passed",
+  "source_commit": "2e9795a3cb92c79ad3b406e675dcbdb49c60ce67",
+  "checked_head": "7249579157a1e3a2647ea101069df28934e61a32",
+  "checked_tree": "63270b2b6fea2f26ae1ac42cd3d05448fff627ce",
+  "terminal_session_id": 32718,
+  "wrapper_pid": 96729,
+  "started_utc": "2026-11-15T05:51:07.561716+00:00",
+  "completed_utc": "2026-11-15T05:52:52.442313+00:00",
+  "commands": [
+    {
+      "name": "saved-state-replay",
+      "command": [
+        "python3",
+        "-B",
+        "parity/reports/artifacts/closed-stitch-harbor-20261115/verify.py",
+        "--repo-root",
+        "."
+      ],
+      "cwd_role": "clean tracked solver worktree",
+      "timeout_seconds": 300,
+      "started_utc": "2026-11-15T05:51:07.611579+00:00",
+      "status": "completed",
+      "pid": 96875,
+      "process_group": 96875,
+      "exit_code": 0,
+      "elapsed_seconds": 80.42086208297405,
+      "completed_utc": "2026-11-15T05:52:28.033311+00:00",
+      "stdout_sha256": "6c88a4915bb81bf3e4ed74fa5e29279676152a273c18823e8f28e6b9b96d1b2e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "registry",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/progress.py",
+        "--check"
+      ],
+      "cwd_role": "clean tracked solver worktree",
+      "timeout_seconds": 180,
+      "started_utc": "2026-11-15T05:52:28.126290+00:00",
+      "status": "completed",
+      "pid": 98480,
+      "process_group": 98480,
+      "exit_code": 0,
+      "elapsed_seconds": 17.453164290986024,
+      "completed_utc": "2026-11-15T05:52:45.579855+00:00",
+      "stdout_sha256": "1f9b2cd3d90cae23eba2b811c4d4cfdbb1816721598ce827cc85456e609fffcb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "implementation-map",
+      "command": [
+        "python3",
+        "-B",
+        "spec/inventory/verify_implementation_map.py"
+      ],
+      "cwd_role": "clean tracked solver worktree",
+      "timeout_seconds": 180,
+      "started_utc": "2026-11-15T05:52:45.670184+00:00",
+      "status": "completed",
+      "pid": 99583,
+      "process_group": 99583,
+      "exit_code": 0,
+      "elapsed_seconds": 5.599243958014995,
+      "completed_utc": "2026-11-15T05:52:51.269786+00:00",
+      "stdout_sha256": "448808e48f5213aed0f1e43b747f17300652989fec03131b2fb9891e770971ca",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "tracked_artifact_audit": {
+    "head": "7249579157a1e3a2647ea101069df28934e61a32",
+    "tree": "63270b2b6fea2f26ae1ac42cd3d05448fff627ce",
+    "reports": 29,
+    "unique_report_artifacts_tracked_and_hash_correct": 3049,
+    "new_report_artifacts": 124,
+    "source_hashes_unchanged": 47,
+    "clean": true
+  },
+  "saved_state_replay": {
+    "status": "closed_saved_states_reproduced_paired_failure_retained",
+    "source_commit": "2e9795a3cb92c79ad3b406e675dcbdb49c60ce67",
+    "packet_files": 83,
+    "cases": {
+      "base": {
+        "saved_frames_reproduced": 181,
+        "deterministic_fields_exact": true,
+        "strict_delivery_passed": false,
+        "quality_status": "failed",
+        "original_whole_case_seconds": 177.02696316700894,
+        "original_producer_peak_rss_bytes": 7503872,
+        "original_numerical_output_bytes": 19086092
+      },
+      "height": {
+        "saved_frames_reproduced": 181,
+        "deterministic_fields_exact": true,
+        "strict_delivery_passed": true,
+        "quality_status": "passed",
+        "original_whole_case_seconds": 168.88270774995908,
+        "original_producer_peak_rss_bytes": 8552448,
+        "original_numerical_output_bytes": 36368696
+      }
+    },
+    "adapter_negative_checks": 8,
+    "qualified_AST_and_original_receipt_chains_verified": true,
+    "old077_strict_failures_retained": true,
+    "first_controller_refusal_retained": true,
+    "new_physical_executions": 0,
+    "new_timed_benchmarks": 0,
+    "tracked_clean_publication_certified": true,
+    "limits": "Static saved-state reproduction and archived resource audit; no new dynamics, original timing recertification, UI, full garment/release gate or reference parity."
+  },
+  "physical_packet_manifest_sha256": "3dbc5befeb6bdfd96dfa4ae9733c58494f06c7818e025398b543601fbb436775",
+  "verifier_sha256": "7c007cd22440632931f0a3c958518851b9d8349565d86a1e960d1089cf7d32f7",
+  "earlier_preparation_replay": {
+    "manifest_sha256": "aa5371a7619de67088ca047bcbf43b46f3df9ea5502abf5180030781e9f9d6cb",
+    "elapsed_seconds": 76.9120392089244,
+    "publication_certified": false,
+    "qualification": "Remains bound only to its original manifest; generated README alone was corrected before this new default clean tracked replay."
+  },
+  "original_physical_cases_remain_closed": true,
+  "original_source077_strict_failures_remain_failed": true,
+  "new_physical_executions": 0,
+  "new_builds_or_cargo_gates": 0,
+  "original_clock_or_resource_counters_recertified": false,
+  "receipt_append_requires_only_final_clean_registry_map_and_tracked_hash_checks": true,
+  "saved_state_replay_must_not_repeat_only_for_metadata": true,
+  "limits": "These are actual static publication/integrity checks. All source and original numeric/receipt bytes remain unchanged. A and the pair remain failed; B is a bounded strict pass. No native, full garment/contact, convergence, calibration, release or reference-parity acceptance."
+}

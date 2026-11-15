@@ -1,0 +1,56 @@
+base-constraints.rs sha256=54b83b92eab65c3fb0ca50ea81c18ba748f01adca1a4119c1c455bbc90be1490
+current-constraints.rs sha256=382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035
+math.rs sha256=4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424
+error[E0624]: method `position` is private
+   --> <operator-checks>/base-constraints.rs:193:30
+    |
+193 |     let difference = sub(s.a.position(x), s.b.position(x));
+    |                              ^^^^^^^^ private method
+    |
+   ::: crates/weftforge-sim/src/lib.rs:67:5
+    |
+ 67 |     fn position(self, x: &[Vec3]) -> Vec3 {
+    |     ------------------------------------- private method defined here
+
+error[E0624]: method `position` is private
+   --> <operator-checks>/base-constraints.rs:193:47
+    |
+193 |     let difference = sub(s.a.position(x), s.b.position(x));
+    |                                               ^^^^^^^^ private method
+    |
+   ::: crates/weftforge-sim/src/lib.rs:67:5
+    |
+ 67 |     fn position(self, x: &[Vec3]) -> Vec3 {
+    |     ------------------------------------- private method defined here
+
+error[E0624]: method `position` is private
+   --> <operator-checks>/current-constraints.rs:193:30
+    |
+193 |     let difference = sub(s.a.position(x), s.b.position(x));
+    |                              ^^^^^^^^ private method
+    |
+   ::: crates/weftforge-sim/src/lib.rs:67:5
+    |
+ 67 |     fn position(self, x: &[Vec3]) -> Vec3 {
+    |     ------------------------------------- private method defined here
+
+error[E0624]: method `position` is private
+   --> <operator-checks>/current-constraints.rs:193:47
+    |
+193 |     let difference = sub(s.a.position(x), s.b.position(x));
+    |                                               ^^^^^^^^ private method
+    |
+   ::: crates/weftforge-sim/src/lib.rs:67:5
+    |
+ 67 |     fn position(self, x: &[Vec3]) -> Vec3 {
+    |     ------------------------------------- private method defined here
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0624`.
+Traceback (most recent call last):
+  File "<stdin>", line 12, in <module>
+  File "<python-stdlib>/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['rustc', '--edition=2024', '--test', '<operator-checks>/radial_equality.rs', '--extern', 'weftforge_sim=<operator-target>/debug/deps/libweftforge_sim-615e5fd8ae29d29e.rlib', '-L', 'dependency=<operator-target>/debug/deps', '-o', '<operator-checks>/radial_equality']' returned non-zero exit status 1.

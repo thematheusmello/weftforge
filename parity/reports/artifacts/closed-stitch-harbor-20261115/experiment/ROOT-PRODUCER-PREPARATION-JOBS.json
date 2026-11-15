@@ -1,0 +1,65 @@
+[
+  {
+    "name": "lock-generation",
+    "command": [
+      "cargo",
+      "generate-lockfile",
+      "--offline",
+      "--manifest-path",
+      "harness/Cargo.toml"
+    ],
+    "started_utc": "2026-11-15T04:35:42.290191+00:00",
+    "wrapper_pid": 17126,
+    "child_pid": 17148,
+    "exit_code": 0,
+    "wall_seconds": 0.10380291694309562,
+    "status": "completed"
+  },
+  {
+    "name": "build-confirmation",
+    "command": [
+      "cargo",
+      "build",
+      "--release",
+      "--locked",
+      "--manifest-path",
+      "harness/Cargo.toml"
+    ],
+    "started_utc": "2026-11-15T04:35:42.394380+00:00",
+    "wrapper_pid": 17126,
+    "child_pid": 17152,
+    "exit_code": 0,
+    "wall_seconds": 7.545978084090166,
+    "status": "completed"
+  },
+  {
+    "name": "preflight-base",
+    "command": [
+      "candidate/harbor-public-driver",
+      "mesh",
+      "inputs/base.weftforge",
+      "preflight-base"
+    ],
+    "started_utc": "2026-11-15T04:35:49.941443+00:00",
+    "wrapper_pid": 17126,
+    "child_pid": 17456,
+    "exit_code": 0,
+    "wall_seconds": 0.604010000010021,
+    "status": "completed"
+  },
+  {
+    "name": "preflight-height",
+    "command": [
+      "candidate/harbor-public-driver",
+      "mesh",
+      "inputs/height.weftforge",
+      "preflight-height"
+    ],
+    "started_utc": "2026-11-15T04:35:50.545801+00:00",
+    "wrapper_pid": 17126,
+    "child_pid": 17457,
+    "exit_code": 0,
+    "wall_seconds": 0.4167587920092046,
+    "status": "completed"
+  }
+]
