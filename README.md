@@ -48,6 +48,13 @@ guides show the authored pair. The bounded native check includes invalid input,
 caret retention, history, saving and same-process reopen; internal sewing, full
 chain workflows and garment simulation acceptance remain open.
 
+**Internal line** adds straight annotations owned by a pattern piece, with a
+two-point tool, exact endpoint editing, selection/removal and applied length
+feedback. A valid endpoint edit and staged piece properties share one Undo step.
+These editable annotations are stored in strict native v4; cutting, holes,
+internal shapes, folds and internal sewing remain future work. See the
+[actual native annotation gallery](docs/studio-preview.md).
+
 **Transform pattern** translates or rotates one 2D piece, with numeric angle,
 translation and pivot controls plus canvas handles. This layout operation keeps
 the arranged 3D surface and world warp fixed. **New Empty**, available in File

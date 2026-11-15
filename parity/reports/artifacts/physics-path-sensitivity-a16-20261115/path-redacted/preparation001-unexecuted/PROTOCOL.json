@@ -1,0 +1,167 @@
+{
+  "schema": 1,
+  "experiment": "Harbor-A16x32-001",
+  "status": "frozen_preparation_only_root_GO_required",
+  "physical_attempts": 1,
+  "geometry_preflights": 1,
+  "cases": [
+    "base"
+  ],
+  "input_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+  "source_mode": "current ad7 core and identical source2e solver; owner-supplied commit identity backed by exact22-file source binding",
+  "source_binding": "SOURCE-BINDING.json",
+  "settings": {
+    "dt": 0.016666666666666666,
+    "substeps": 16,
+    "iterations": 32,
+    "seam_closure_speed": 1.0,
+    "assembly_steps": 60,
+    "assembly_gravity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "drape_steps": 120,
+    "drape_gravity": [
+      0.0,
+      -9.81,
+      0.0
+    ]
+  },
+  "sole_numerical_change": "8 to16 substeps; same per-substep iterations and all physical inputs",
+  "argv": {
+    "root_controller": [
+      "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+      "-B",
+      "run.py",
+      "--go",
+      "ROOT-GO.json",
+      "--go-sha256",
+      "<ROOT_GO_SHA256>"
+    ],
+    "geometry": [
+      "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001/harness/target/release/harbor-public-driver",
+      "mesh",
+      "inputs/base.weftforge",
+      "preflight-base"
+    ],
+    "producer": [
+      "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001/harness/target/release/harbor-public-driver",
+      "run",
+      "inputs/base.weftforge",
+      "runs/base"
+    ],
+    "consumer": [
+      "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+      "-B",
+      "analyze16.py",
+      "--deadline",
+      "<DEADLINE>"
+    ],
+    "comparison": [
+      "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+      "-B",
+      "compare_control.py",
+      "--deadline",
+      "<DEADLINE>"
+    ]
+  },
+  "all_cwds": "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001",
+  "clock": {
+    "seconds": 420.0,
+    "start": "After exact GO/freeze/source/input checks and exclusive ATTEMPT creation, immediately before geometry process launch",
+    "includes": [
+      "geometry preflight",
+      "full physical run",
+      "independent181-state analysis",
+      "comparison with retained8x32 data",
+      "output hashing",
+      "post-run frozen source/input/GO verification"
+    ],
+    "end": "final completed numerical inspection; final receipt serialization is integrity metadata only",
+    "before_GO_clock_or_candidate_execution": false
+  },
+  "resources": {
+    "checker": "resources.monitor, thirteen helper ASTs unchanged from retained runner; run.py uses fixed stage argv and callbacks",
+    "numerical_output_cap_bytes": 268435456,
+    "counted_directories": [
+      "inputs",
+      "expected",
+      "preflight-base",
+      "runs",
+      "runtime"
+    ],
+    "reserve_before_next_stage_bytes": 65536,
+    "peak_rss_cap_bytes_per_child": 268435456,
+    "rss_method": "sampled /bin/ps KiB*1024 during run; macOS wait4 ru_maxrss bytes at termination",
+    "process_policy": "new session for each child; monitor kills own process group on cap/error and always reaps it",
+    "poll_sleep_max_seconds": 0.02
+  },
+  "preflight": {
+    "complete_exact_data": [
+      "project after only two empty internal_curves additions",
+      "doc revision",
+      "rest positions metres",
+      "material UV metres",
+      "triangles and piece IDs",
+      "authored boundary associations",
+      "weighted stitch endpoint indices/weights and compliance",
+      "per-triangle materials/grain/physical thickness",
+      "pins",
+      "ground height",
+      "all mannequin capsules in original order",
+      "all-contact flag"
+    ],
+    "mass_policy": "No mass in geometry-only output. Identical UV/material/topology plus byte-identical bridge/solver establish the same mass construction; actual initialized masses must then match exactly before analysis/control comparison.",
+    "comparison": "same() type-sensitive and IEEE f64-bit equality; exact original rest OBJ bytes; no physical-field tolerances or normalizations"
+  },
+  "quality": {
+    "strain_strictly_below": 0.15,
+    "seam_gap_strictly_below_m": 0.005,
+    "physical_contact_strictly_below_m": 0.002,
+    "finite": true,
+    "closed_target_m": 0.0,
+    "reported_and_independent_uncertain_capsule_pairs": 0,
+    "all_181_state_checks": "Copied measure_frame/summarize unchanged; initial open-seam frames retained; all-frame strain/contact screens retained; no final-only pass substitution"
+  },
+  "comparison": {
+    "control": "Retained source2e8x32 A bytes, read-only; old evaluator not executed",
+    "per_frame_peak_strain_delta": true,
+    "per_frame_max_and_mass_weighted_RMS_nodal_difference": true,
+    "saved_energy_speed_and_attribution_values": true,
+    "transient_window": [
+      20,
+      45
+    ],
+    "absolute_strain_sensitivity_strictly_above": 0.005,
+    "max_nodal_sensitivity_strictly_above_m": 0.001,
+    "historical_A_and_pair": "failed unchanged regardless of candidate outcome"
+  },
+  "outputs": [
+    "preflight-base/mesh-metadata.json",
+    "preflight-base/rest.obj",
+    "runtime/rest-signature.json",
+    "runs/base/rest-metadata.json",
+    "runs/base/trajectory.jsonl (181 states)",
+    "runs/base/steps.jsonl (180 steps)",
+    "runs/base/stage-000.obj",
+    "runs/base/stage-060.obj",
+    "runs/base/stage-180.obj",
+    "runs/base/completed-case.json",
+    "runs/base/analysis16.json",
+    "runs/base/comparison.json",
+    "runtime stage stdout/stderr, start handles, wait4/resource receipts",
+    "runtime/ATTEMPT-001.json",
+    "runtime/FINAL.json including output hashes"
+  ],
+  "failure_policy": [
+    "Wrong/missing root GO or changed frozen input refuses before candidate launch; refusal retained under checks.",
+    "Once runtime/ATTEMPT-001 exists, no rerun/overwrite/retry.",
+    "Any geometry/signature mismatch stops before dynamics; do not add a fresh8x32 control case.",
+    "Any producer/resource/deadline failure retains incomplete output and stops before consumer; no prefix acceptance.",
+    "Independent arithmetic/attribution disagreement blocks comparison and acceptance. A completed physical quality failure remains explicit and still permits the declared comparison.",
+    "No consumer continuation, numerical work, tuning or extension after420s. Post-case integrity receipt records failure only.",
+    "No B case, reference/native setup, current worktree mutation, workspace checks, production/default changes or publication."
+  ],
+  "limits": "Numerical-path diagnostic only; no sufficient fix, convergence, force-equilibrium, full contact/CCD, native, reference or Gate1 acceptance."
+}

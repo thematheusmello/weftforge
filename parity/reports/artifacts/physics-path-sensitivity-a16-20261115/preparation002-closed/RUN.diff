@@ -1,0 +1,32 @@
+--- preparation-a16-001/run.py
++++ preparation-a16-002/run.py
+@@ -37,6 +37,14 @@
+     source = read(ROOT / "SOURCE-BINDING.json")
+     for name, digest in source["files"].items():
+         r.require(r.sha(r.safe_file(name, Path(source["root"])), deadline) == digest, "Current source changed: " + name)
++    origin = read(ROOT / "ORIGIN-BINDING.json")
++    origin_root = Path(origin["original_root"])
++    r.require(r.sha(r.safe_file("FREEZE.json", origin_root), deadline) == origin["original_freeze_sha256"], "Original unexecuted freeze changed")
++    for name, digest in origin["original_frozen_files"].items():
++        r.require(r.sha(r.safe_file(name, origin_root), deadline) == digest, "Original prepared artifact changed: " + name)
++    r.require(not any((origin_root / name).exists() for name in origin["original_no_execution_paths"]), "Original blocked packet acquired execution paths")
++    for name, digest in origin["review_files"].items():
++        r.require(r.sha(r.safe_file(name, Path(origin["review_root"])), deadline) == digest, "Original blocker review changed: " + name)
+     control = read(ROOT / "READONLY-BINDING.json")
+     for name, digest in control["files"].items():
+         r.require(r.sha(r.safe_file(name, Path(control["repo"])), deadline) == digest, "Retained read-only input changed: " + name)
+@@ -108,11 +116,12 @@
+         job.update(status="failed", strict_screen_passed=False, error=f"{type(error).__name__}: {error}",
+                    incomplete_or_failed_outputs_retained=True, continuation_allowed=False)
+     if deadline is not None:
++        final_numerical_bytes = r.numerical_bytes()
+         ended = time.monotonic()
+         job.update(final_monotonic_seconds=ended, whole_case_elapsed_seconds=ended-job["start_monotonic_seconds"],
+-                   numerical_output_bytes_before_final_receipt=r.numerical_bytes(),
++                   numerical_output_bytes_before_final_receipt=final_numerical_bytes,
+                    clock_scope="All geometry, physical run, independent analysis, comparison, output hashing and postbindings; final receipt is integrity metadata")
+-        if ended >= deadline or r.numerical_bytes() + len(r.encoded(job)) > r.CAP_BYTES:
++        if ended >= deadline or final_numerical_bytes + len(r.encoded(job)) > r.CAP_BYTES:
+             job.update(status="failed", strict_screen_passed=False, cap_failed_at_final_inspection=True)
+         r.write_new(ROOT / "runtime/FINAL.json", r.encoded(job))
+     else:

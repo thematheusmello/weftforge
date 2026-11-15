@@ -1,0 +1,154 @@
+{
+  "kind": "private_source_review_identity_not_execution_or_acceptance",
+  "integrated_commit": "f7b7a4e660f2a5085c23980a6bb6447e067e4c63",
+  "producer_core_commit": "e6910096943e8503eb9b5bfc07119fc51353fc1f",
+  "baseline_commit": "9b18fd1a4299db44a840aa2f53417f711aaea2da",
+  "approved_contract": {
+    "path": "spec/features/PAT-006-internal-segments.md",
+    "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+    "matches_expected": true
+  },
+  "producer_report": {
+    "path": ".local/internal-segments-implementation-20261115/CORE-CLI-CHECKS.json",
+    "sha256": "cfaac0e37367a0b666cfe8678d7acb815d380547be5534e95c963b14681c5ce9",
+    "read_as_scoped_report_only": true
+  },
+  "changed_core_cli_docs_match_producer_commit_and_hash_receipt": true,
+  "reviewed_changed_files": [
+    {
+      "path": "apps/weftforge-cli/src/main.rs",
+      "git_blob": "87474d91c74dcb517cbd12b3c03b1d14529c0663",
+      "sha256": "c425aab62ca8242266b9c27ee905f09dcc57098eac55eea75fc89540f7795012"
+    },
+    {
+      "path": "apps/weftforge-cli/src/mcp.rs",
+      "git_blob": "208ea628fdbda1fcf846128769f7393b281dfa38",
+      "sha256": "4b99ac812479d38937c786b44b6031460dae6ba6c24af65aadf72a57fff9257c"
+    },
+    {
+      "path": "apps/weftforge-cli/tests/mcp_stdio.rs",
+      "git_blob": "636c980bf11984e306fd4e08170177fe74fc3c12",
+      "sha256": "56f0c4077c04236062d9655307b6d827d2922dfbd90913574667efda652d866c"
+    },
+    {
+      "path": "crates/weftforge-core/src/document.rs",
+      "git_blob": "f7fa4d60e2fff9f4bafbafece903b1df9e0ecac1",
+      "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+    },
+    {
+      "path": "crates/weftforge-core/src/geometry.rs",
+      "git_blob": "2a273201c5a8ee79cf1243ba715a3c7502b5df1f",
+      "sha256": "4adc0bb4de9183437e9c1cc45c31a324d08dfca9baa8ac3bf2b0348efe9bb39b"
+    },
+    {
+      "path": "crates/weftforge-core/src/persistence.rs",
+      "git_blob": "25e0d7eb85a0aa521a5632f8156db535e32d1d95",
+      "sha256": "8a0072dcab625b12a358813f3706a41054a4a1f4a7f4fbabd3eb7cd0e5716ce8"
+    },
+    {
+      "path": "crates/weftforge-core/src/persistence/dxf.rs",
+      "git_blob": "b9f840c7ea6b95eae59fc9ed6ec69fff579ad90d",
+      "sha256": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338"
+    },
+    {
+      "path": "crates/weftforge-core/src/sewing.rs",
+      "git_blob": "ea9edc08d5a91741a1308c51a2194ff76b749fdb",
+      "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed"
+    },
+    {
+      "path": "crates/weftforge-core/tests/ellipse.rs",
+      "git_blob": "d787e07010ba570ca992e2797f39d3080c08ce3d",
+      "sha256": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78"
+    },
+    {
+      "path": "crates/weftforge-core/tests/internal_lines.rs",
+      "git_blob": "2e5d738b75354fbbd423d5f086a885071234eb19",
+      "sha256": "9a03b9c48878dd0d67b98859524d5323444d4cf4a88d426052cfde5064576fcf"
+    },
+    {
+      "path": "crates/weftforge-core/tests/joins.rs",
+      "git_blob": "55d9a3cea228777ad50a309a89812ea64d9fa5e6",
+      "sha256": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10"
+    },
+    {
+      "path": "crates/weftforge-core/tests/migration.rs",
+      "git_blob": "7754783995f10dd5090517262bca012c1c9a9573",
+      "sha256": "6778e1b29cc10513dcba97f060b57242bf65de438b0c06fbca8ad0e73d561175"
+    },
+    {
+      "path": "crates/weftforge-core/tests/pattern_transform.rs",
+      "git_blob": "97700563c62ec83758042df3e26af8f20b2231f6",
+      "sha256": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31"
+    },
+    {
+      "path": "crates/weftforge-core/tests/seam_reversal.rs",
+      "git_blob": "49ea794dea1fd9b676a0170c746f6fbb1963cc45",
+      "sha256": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d"
+    },
+    {
+      "path": "crates/weftforge-core/tests/sewing_groups.rs",
+      "git_blob": "fbb10c9f0806ab6584aa20ad30e8d264c7098203",
+      "sha256": "068c982f27bf74c085f23afd7d6ab7077d246225c0677a375109c44f1313363a"
+    },
+    {
+      "path": "crates/weftforge-core/tests/workflow.rs",
+      "git_blob": "20d456946ba4282f0a8f53f0732a394053d73b37",
+      "sha256": "3f7ad8f050b6f749e85e7c865cf35d0cdc31d3f86023a05d5db19d4bfec495c2"
+    },
+    {
+      "path": "docs/architecture.md",
+      "git_blob": "3f7e780306313d09d5511b463d9d48eeeebd2c00",
+      "sha256": "f3700ac78fd442f4d9fb50b6b7ba5ccd168a83eb465b1aa6386e8b37ae1a875e"
+    },
+    {
+      "path": "docs/automation.md",
+      "git_blob": "925c883dcc7177f0785be8f37b5ceba2623d4bea",
+      "sha256": "3dbeec3f4e7ec7780f1618c94c50c05bf008d3b475e738331370f7b9d720a65e"
+    },
+    {
+      "path": "docs/file-formats.md",
+      "git_blob": "734bd74fcfc0d2b160a8306c662cc7c33c65db77",
+      "sha256": "4a28924bc6c310668745dfbadfa81dc794f8f6d7507939b95dd1dc578a096af3"
+    }
+  ],
+  "reviewed_connected_files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "0fde4e1a0d3288dc0bb72c4f79b8517b942775223cc8b714c653260c5abe93a0"
+    },
+    {
+      "path": "README.md",
+      "sha256": "f988e4247dbb517cfb455320fcee93c7275471ca73381fc14545a8123cd986ea"
+    },
+    {
+      "path": "crates/weftforge-core/src/lib.rs",
+      "sha256": "157990183f20487c3b1494a837914e81fb98e3e4fb35a1f0dedc0542a1ec6661"
+    },
+    {
+      "path": "crates/weftforge-core/src/simulation.rs",
+      "sha256": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29"
+    },
+    {
+      "path": "crates/weftforge-core/src/persistence/svg.rs",
+      "sha256": "1f6792b629266a15200c1bdb543f0fb3ddb79360d09ec975693b7472a12811ae"
+    },
+    {
+      "path": "crates/weftforge-core/src/persistence/dxf_import.rs",
+      "sha256": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec"
+    }
+  ],
+  "review_executed": [
+    "immutable git source reads and diffs",
+    "source identity hashing only"
+  ],
+  "not_executed": [
+    "Cargo",
+    "tests",
+    "native process",
+    "independent evaluator",
+    "reference tools or analysis",
+    "CUA"
+  ],
+  "public_source_edits": false,
+  "git_mutations": false
+}

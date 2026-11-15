@@ -1,0 +1,59 @@
+{
+  "kind": "prospective_mapping_from_fresh_A003_observation_before_first_point_click",
+  "source_capture": "0054",
+  "raw_screenshot_px": [
+    1640,
+    1032
+  ],
+  "observed_unit_square_bounds_px": {
+    "left": 74,
+    "right": 668,
+    "top": 265,
+    "bottom": 859
+  },
+  "original_unit_square_m": {
+    "min": [
+      0,
+      0
+    ],
+    "max": [
+      1,
+      1
+    ]
+  },
+  "mapping": "Current A003 square: x=74+594*u, y=859-594*v; nearest click pixel followed by native5mm snap",
+  "points": [
+    {
+      "target_m": [
+        0.125,
+        0.25
+      ],
+      "mapped_raw_px": [
+        148.25,
+        710.5
+      ],
+      "click_px": [
+        148,
+        711
+      ]
+    },
+    {
+      "target_m": [
+        0.875,
+        0.75
+      ],
+      "mapped_raw_px": [
+        593.75,
+        413.5
+      ],
+      "click_px": [
+        594,
+        414
+      ]
+    }
+  ],
+  "coordinate_origin_policy": "fresh observed raw screenshot; no old target authority, corrective offset, fit, retry or rescue",
+  "snap_m": 0.005,
+  "utc": "2026-11-15T21:42:18.240Z",
+  "monotonic_ns": "901254081056000"
+}

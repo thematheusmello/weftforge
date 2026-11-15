@@ -1,0 +1,277 @@
+{
+  "construction": {
+    "curves": [
+      {
+        "controls": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.125,
+            0.0
+          ]
+        ],
+        "end": 4,
+        "id": 7,
+        "start": 3
+      },
+      {
+        "controls": null,
+        "end": 5,
+        "id": 8,
+        "start": 4
+      },
+      {
+        "controls": null,
+        "end": 6,
+        "id": 9,
+        "start": 5
+      },
+      {
+        "controls": null,
+        "end": 3,
+        "id": 10,
+        "start": 6
+      },
+      {
+        "controls": null,
+        "end": 13,
+        "id": 16,
+        "start": 12
+      },
+      {
+        "controls": null,
+        "end": 14,
+        "id": 17,
+        "start": 13
+      },
+      {
+        "controls": null,
+        "end": 15,
+        "id": 18,
+        "start": 14
+      },
+      {
+        "controls": null,
+        "end": 12,
+        "id": 19,
+        "start": 15
+      },
+      {
+        "controls": null,
+        "end": 23,
+        "id": 24,
+        "start": 22
+      }
+    ],
+    "points": [
+      {
+        "id": 3,
+        "position": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "id": 4,
+        "position": [
+          1.0,
+          0.0
+        ]
+      },
+      {
+        "id": 5,
+        "position": [
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": 6,
+        "position": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": 12,
+        "position": [
+          2.0,
+          0.0
+        ]
+      },
+      {
+        "id": 13,
+        "position": [
+          3.0,
+          0.0
+        ]
+      },
+      {
+        "id": 14,
+        "position": [
+          3.0,
+          1.0
+        ]
+      },
+      {
+        "id": 15,
+        "position": [
+          2.0,
+          1.0
+        ]
+      },
+      {
+        "id": 22,
+        "position": [
+          0.125,
+          0.25
+        ]
+      },
+      {
+        "id": 23,
+        "position": [
+          0.875,
+          0.75
+        ]
+      }
+    ]
+  },
+  "curves": 9,
+  "materials": [
+    {
+      "areal_density": 0.18,
+      "bending_stiffness": 0.003,
+      "collision_thickness": 0.003,
+      "color": [
+        0.2199999988079071,
+        0.550000011920929,
+        0.7599999904632568
+      ],
+      "damping": 0.2,
+      "friction": 0.4,
+      "id": 1,
+      "name": "Cotton approximation (uncalibrated)",
+      "shear_stiffness": 100.0,
+      "warp_stiffness": 400.0,
+      "weft_stiffness": 400.0
+    }
+  ],
+  "patterns": [
+    {
+      "boundary": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "grain_angle_radians": 0.0,
+      "id": 2,
+      "internal_curves": [
+        24
+      ],
+      "material": 1,
+      "name": "Original R"
+    },
+    {
+      "boundary": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "grain_angle_radians": 0.0,
+      "id": 11,
+      "internal_curves": [],
+      "material": 1,
+      "name": "Original S partner"
+    }
+  ],
+  "pieces": 2,
+  "revision": 5,
+  "seams": [
+    {
+      "id": 20,
+      "lengths_m": [
+        0.69873046875,
+        0.75
+      ],
+      "name": "Original reversed legacy t map"
+    }
+  ],
+  "sewing_group_geometry": [
+    {
+      "id": 21,
+      "lengths": [
+        0.75,
+        0.75
+      ],
+      "portions": [
+        {
+          "a": {
+            "curve": 8,
+            "t0": 0.125,
+            "t1": 0.5
+          },
+          "b": {
+            "curve": 17,
+            "t0": 0.875,
+            "t1": 0.3125
+          }
+        },
+        {
+          "a": {
+            "curve": 8,
+            "t0": 0.5,
+            "t1": 0.875
+          },
+          "b": {
+            "curve": 17,
+            "t0": 0.3125,
+            "t1": 0.125
+          }
+        }
+      ]
+    }
+  ],
+  "sewing_groups": [
+    {
+      "a": [
+        {
+          "curve": 8,
+          "t0": 0.125,
+          "t1": 0.875
+        }
+      ],
+      "b": [
+        {
+          "curve": 17,
+          "t0": 0.875,
+          "t1": 0.125
+        }
+      ],
+      "correspondence": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.5,
+          0.75
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "id": 21,
+      "name": "Original physical group"
+    }
+  ],
+  "stitches": 56,
+  "triangles": 2190,
+  "units": "m",
+  "up": "Y",
+  "vertices": 1160
+}

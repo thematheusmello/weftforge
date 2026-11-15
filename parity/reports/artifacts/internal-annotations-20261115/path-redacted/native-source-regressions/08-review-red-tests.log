@@ -1,0 +1,52 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/internal-segments-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.79s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 6 tests
+
+thread 'internal_line_tests::internal_line_review_coincident_endpoints_drag_only_the_selected_later_annotation' (63252597) panicked at apps/weftforge/src/main.rs:16324:9:
+assertion `left == right` failed: the unselected coincident annotation moved
+  left: Some(Point { id: 11, position: [0.25, 0.375] })
+ right: Some(Point { id: 11, position: [0.125, 0.25] })
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test internal_line_tests::internal_line_review_coincident_endpoints_drag_only_the_selected_later_annotation ... FAILED
+
+thread 'internal_line_tests::internal_line_review_rejected_drag_retains_boundary_draft_raw_caret_redo_and_outputs' (63252600) panicked at apps/weftforge/src/main.rs:16189:9:
+assertion `left == right` failed: drag start replaced the source selection
+  left: (Some(2), Some(13))
+ right: (Some(2), Some(7))
+test internal_line_tests::internal_line_review_rejected_drag_retains_boundary_draft_raw_caret_redo_and_outputs ... FAILED
+
+thread 'internal_line_tests::internal_line_review_cancelled_drag_retains_boundary_draft_raw_caret_redo_and_outputs' (63252596) panicked at apps/weftforge/src/main.rs:16189:9:
+assertion `left == right` failed: drag start replaced the source selection
+  left: (Some(2), Some(13))
+ right: (Some(2), Some(7))
+
+thread 'internal_line_tests::internal_line_review_accepted_drag_commits_source_boundary_control_and_endpoint_once' (63252595) panicked at apps/weftforge/src/main.rs:16189:9:
+assertion `left == right` failed: drag start replaced the source selection
+  left: (Some(2), Some(13))
+ right: (Some(2), Some(7))
+test internal_line_tests::internal_line_review_cancelled_drag_retains_boundary_draft_raw_caret_redo_and_outputs ... FAILED
+test internal_line_tests::internal_line_review_accepted_drag_commits_source_boundary_control_and_endpoint_once ... FAILED
+
+thread 'internal_line_tests::internal_line_review_compound_endpoints_and_staged_grain_commit_one_revision_and_undo' (63252599) panicked at apps/weftforge/src/main.rs:16044:13:
+valid compound edit rejected: Nested transactions are unsupported
+
+thread 'internal_line_tests::internal_line_review_compound_endpoint_geometry_failure_retains_pending_and_accepted_state' (63252598) panicked at apps/weftforge/src/main.rs:16059:13:
+wrong rejection: Nested transactions are unsupported
+test internal_line_tests::internal_line_review_compound_endpoints_and_staged_grain_commit_one_revision_and_undo ... FAILED
+test internal_line_tests::internal_line_review_compound_endpoint_geometry_failure_retains_pending_and_accepted_state ... FAILED
+
+failures:
+
+failures:
+    internal_line_tests::internal_line_review_accepted_drag_commits_source_boundary_control_and_endpoint_once
+    internal_line_tests::internal_line_review_cancelled_drag_retains_boundary_draft_raw_caret_redo_and_outputs
+    internal_line_tests::internal_line_review_coincident_endpoints_drag_only_the_selected_later_annotation
+    internal_line_tests::internal_line_review_compound_endpoint_geometry_failure_retains_pending_and_accepted_state
+    internal_line_tests::internal_line_review_compound_endpoints_and_staged_grain_commit_one_revision_and_undo
+    internal_line_tests::internal_line_review_rejected_drag_retains_boundary_draft_raw_caret_redo_and_outputs
+
+test result: FAILED. 0 passed; 6 failed; 0 ignored; 0 measured; 98 filtered out; finished in 0.25s
+
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

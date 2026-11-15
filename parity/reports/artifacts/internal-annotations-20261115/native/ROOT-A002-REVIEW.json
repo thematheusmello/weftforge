@@ -1,0 +1,29 @@
+{
+  "kind": "root_review_of_stopped_A002_native_case",
+  "utc": "2026-11-15T21:12:57.854775+00:00",
+  "outcome_sha256": "cbf327a50ec5c9e251b977dabfe088a82fd86e67f0c67b14bca93509c1d6f056",
+  "saved_grade_sha256": "1533408d434886fb4673cffd3c9194c375acf767e3ac8aecbcd9cf36482744a1",
+  "saved_grade_invocation_sha256": "14efdffd0a817c09791c1ce4b8f01ff4e28a917d2ab0773d8a76f2142a2fc65f",
+  "native_pairs_rechecked": 85,
+  "frozen_dependencies_rechecked": 523,
+  "source_inputs_rechecked": 65,
+  "raw_images_visually_reviewed": [
+    "captures/invalid-internal-edit-refused-0.jpg",
+    "captures/modal-background-undo-blocked-0.jpg"
+  ],
+  "raw_image_review_scope": "Two failure-relevant original frames only, not full36-capture UI acceptance. First shows raw1e- refusal with modal, second shows modal absent/unchangedR2/line13 and pendinggrain0.47e0.",
+  "source_context": {
+    "native_main_sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45",
+    "internal_line_window": "cancel || response.should_close routes through clear_numeric_fields and retained-input close_without_commit",
+    "dependency": "egui0.35.0 ModalResponse::should_close",
+    "dependency_file_sha256": "63f33d914cc1f0a3fbcbc63b9e894ebca633bf2499110a842bdb3f0d4c02f7ff",
+    "dependency_behavior": "Backdrop click returns true; Escape and explicit UI close can also close the modal."
+  },
+  "conclusion": "The observed dismissal is consistent with the explicitly used backdrop-cancellation policy. The frozenA procedure incorrectly assumed that modal would remain for its following explicitCancel. No production defect is established and no source change is justified by this observation.",
+  "original_result": "Stopped/unverified nativeA; unchanged single saved grader failed missingA03. Old outputs and criteria remain unchanged; no native-prefix or full-contract acceptance.",
+  "new_prospective_work": "Separate v2 procedure may expect backdropCancel, reopen the endpoint editor, reenter invalid raw text, then test explicitCancel/caret and remaining precise compound edit/history. Same original numbers/models/limits; never regradeA002.",
+  "cleanup_sha256": "1c219d53e56502ecaeeabff2c82270ef35daf34dd04a2dc5f6674b790d058f9b",
+  "cleanup_sidecar_appendix_sha256": "5904349941c6894132b12e5b7947505ffb4e8153326acb1e240734b583b8bad7",
+  "final_own_PID_absent": true,
+  "complete_feature_or_reference_verified": false
+}

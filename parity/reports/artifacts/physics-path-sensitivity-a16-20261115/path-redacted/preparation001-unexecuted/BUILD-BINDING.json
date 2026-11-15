@@ -1,0 +1,105 @@
+{
+  "kind": "actual_new_driver_build_association_no_execution",
+  "source_mode": "current ad7 core and sim via read-only path dependencies; no old source snapshot",
+  "owner_supplied_runtime": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+  "source_binding_sha256": "ba3e501fcd217d9f58b3397dc834b12fd3c80b2fea94d37b11462ad602d32b4b",
+  "source2e_solver_plus_bridge_match": {
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/capsule.rs": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7",
+    "crates/weftforge-sim/src/constraints.rs": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+    "crates/weftforge-sim/src/contact.rs": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655",
+    "crates/weftforge-sim/src/lib.rs": "5bfc996e6bf1067ac261358fdd043815adf304a5d8d512a0e6429c913e90fa76",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/strain.rs": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+    "crates/weftforge-sim/src/tests.rs": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+    "crates/weftforge-core/src/simulation.rs": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29"
+  },
+  "binary": {
+    "path": "harness/target/release/harbor-public-driver",
+    "sha256": "1d6caa60cd3c95b860332fb2d06f1dfee919f7fd035233e4aa21fd9e948a8067"
+  },
+  "dependency_record": {
+    "path": "harness/target/release/harbor-public-driver.d",
+    "sha256": "03692257f1ae32d78dfcb1476de4ed84ec8296374b05c57a5dffe28f5df7b1c2"
+  },
+  "compiled_current_dependencies": [
+    {
+      "reason": "compiler-artifact",
+      "package_id": "path+file://<WORKSPACE>/.local/internal-segments-20261115/crates/weftforge-sim#0.1.0",
+      "manifest_path": "<WORKSPACE>/.local/internal-segments-20261115/crates/weftforge-sim/Cargo.toml",
+      "target": {
+        "kind": [
+          "lib"
+        ],
+        "crate_types": [
+          "lib"
+        ],
+        "name": "weftforge_sim",
+        "src_path": "<WORKSPACE>/.local/internal-segments-20261115/crates/weftforge-sim/src/lib.rs",
+        "edition": "2024",
+        "doc": true,
+        "doctest": true,
+        "test": true
+      },
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": false
+      },
+      "features": [],
+      "filenames": [
+        "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001/harness/target/release/deps/libweftforge_sim-3a9b75287b41f620.rlib",
+        "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001/harness/target/release/deps/libweftforge_sim-3a9b75287b41f620.rmeta"
+      ],
+      "executable": null,
+      "fresh": false
+    },
+    {
+      "reason": "compiler-artifact",
+      "package_id": "path+file://<WORKSPACE>/.local/internal-segments-20261115/crates/weftforge-core#0.1.0",
+      "manifest_path": "<WORKSPACE>/.local/internal-segments-20261115/crates/weftforge-core/Cargo.toml",
+      "target": {
+        "kind": [
+          "lib"
+        ],
+        "crate_types": [
+          "lib"
+        ],
+        "name": "weftforge_core",
+        "src_path": "<WORKSPACE>/.local/internal-segments-20261115/crates/weftforge-core/src/lib.rs",
+        "edition": "2024",
+        "doc": true,
+        "doctest": true,
+        "test": true
+      },
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": false
+      },
+      "features": [],
+      "filenames": [
+        "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001/harness/target/release/deps/libweftforge_core-f8e70a89047d749b.rlib",
+        "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001/harness/target/release/deps/libweftforge_core-f8e70a89047d749b.rmeta"
+      ],
+      "executable": null,
+      "fresh": false
+    }
+  ],
+  "build_job_sha256": "87482cc72fa674694a33b624d9f33b9d2759eff1a472ef67131a199f4858fa78",
+  "tool_exec_session": 35890,
+  "tool_session_terminal": true,
+  "owned_handle_alive_observations": {
+    "95605": false,
+    "95747": false,
+    "96740": false,
+    "96882": false
+  },
+  "candidate_executions": 0,
+  "native_acceptance": false,
+  "source_binary_reproducibility_rebuild": false
+}

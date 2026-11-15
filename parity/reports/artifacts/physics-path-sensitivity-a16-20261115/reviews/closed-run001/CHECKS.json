@@ -1,0 +1,174 @@
+{
+  "kind": "saved_run_integrity_and_result_consistency_review",
+  "new_numerical_grade": false,
+  "issues": [],
+  "records": {
+    "runtime/FINAL.json": "9dbc231b433b539306d6229bed16bb056ab4920ece70d816bd3cb980da905397",
+    "ROOT-GO.json": "c76dfd8dde1565dee566821d06c930e75e4391bf22264b55e5e5a2e19e7d5181",
+    "runtime/ATTEMPT-001.json": "c443fc87c93c59065c3e07680c42e68f983553d8dd0d1660a651739ca361c8e3",
+    "FREEZE.json": "58733a8f994fee8fc866baa0e375b0b01c9032f9174ee409deba6cde747f33fe",
+    "ROOT-REVIEW.json": "54ed67539a44ab074dc562742e9243222a7c582ebf4a8936f4d64e3ab4516eb0",
+    "runs/base/analysis16.json": "a9ed4545060460bd13c6690bb6cea9a90de52d1a2a6daf2ca599ab5aceea4b65",
+    "runs/base/comparison.json": "8246483986fcf8a41e18db3898bc7d756a21dd39b6ff428b0be0adcc8aff5984",
+    "runs/base/completed-case.json": "a15c1c719d4b0ef4daae61807d1083cb5538d7642eef3da993a1913cc3b9bd3a",
+    "runs/base/trajectory.jsonl": "6590babd7d0c9f6f6acfddb327c8e9bfefb01d5e75aeb4f64a484bae5b6011bd",
+    "runs/base/steps.jsonl": "3249c1130e6d972287fed443305a054911d893f57dda2031a4d0580058de60fc",
+    "runs/base/rest-metadata.json": "846f681ed0c32635e335d3e18daef08fd784076ba6c7fd59be3e443b74bb948c",
+    "runtime/rest-signature.json": "f8bc57d4f0008b244b70a577f517c9c9ab78ea38ded2a57794c68e756760f9b4"
+  },
+  "hash_checks": {
+    "frozen": {
+      "checked": 30,
+      "mismatches": []
+    },
+    "source": {
+      "checked": 22,
+      "mismatches": []
+    },
+    "retained": {
+      "checked": 19,
+      "mismatches": []
+    },
+    "original": {
+      "checked": 38,
+      "mismatches": []
+    },
+    "original_review": {
+      "checked": 2,
+      "mismatches": []
+    },
+    "outputs": {
+      "checked": 31,
+      "mismatches": []
+    }
+  },
+  "driver_binary_sha256": "1d6caa60cd3c95b860332fb2d06f1dfee919f7fd035233e4aa21fd9e948a8067",
+  "stages": [
+    {
+      "name": "geometry",
+      "pid": 3006,
+      "exit_code": 0,
+      "peak_rss_bytes": 6897664,
+      "sampled_peak_rss_bytes": 6848512,
+      "stop_reason": null
+    },
+    {
+      "name": "producer",
+      "pid": 3031,
+      "exit_code": 0,
+      "peak_rss_bytes": 8880128,
+      "sampled_peak_rss_bytes": 8847360,
+      "stop_reason": null
+    },
+    {
+      "name": "consumer",
+      "pid": 12626,
+      "exit_code": 2,
+      "peak_rss_bytes": 34586624,
+      "sampled_peak_rss_bytes": 33193984,
+      "stop_reason": null
+    },
+    {
+      "name": "comparison",
+      "pid": 14286,
+      "exit_code": 0,
+      "peak_rss_bytes": 49070080,
+      "sampled_peak_rss_bytes": 49020928,
+      "stop_reason": null
+    }
+  ],
+  "resources": {
+    "whole_case_seconds": 285.18800870806444,
+    "cap_seconds": 420,
+    "producer_wall_seconds": 245.480860208,
+    "max_stage_peak_rss_bytes": 49070080,
+    "numerical_bytes_before_final": 19011398,
+    "numerical_bytes_including_final": 19018367,
+    "cap_bytes": 268435456
+  },
+  "rest_gate": {
+    "vertices": 654,
+    "triangles": 1172,
+    "stitches": 48,
+    "mass_count": 654,
+    "exact_initialized_metadata_after_two_empty_arrays": true,
+    "piece_names": {
+      "2": "Harbor front",
+      "31": "Harbor back"
+    },
+    "report": {
+      "exact_current_rest_metadata": true,
+      "original_physical_data_exact": true,
+      "serialization_extension": "two empty internal_curves arrays only",
+      "doc_revision": 20,
+      "vertices": 654,
+      "triangles": 1172,
+      "max_independent_mass_error_kg": 0,
+      "total_independent_mass_kg": 0.21322800000000003
+    }
+  },
+  "result_from_saved_rows": {
+    "states": 181,
+    "steps": 180,
+    "analysis_rows": 181,
+    "comparison_rows": 181,
+    "new_peak": {
+      "absolute_strain": 0.1654700550371433,
+      "axis": "warp",
+      "frame": 29,
+      "piece_id": 2,
+      "signed_strain": 0.1654700550371433,
+      "stiffness_N_per_m": 400,
+      "triangle_index": 79,
+      "vertices_0based": [
+        170,
+        35,
+        36
+      ]
+    },
+    "old_peak": {
+      "absolute_strain": 0.19909194868993207,
+      "axis": "weft",
+      "frame": 31,
+      "piece_id": 2,
+      "signed_strain": 0.19909194868993207,
+      "stiffness_N_per_m": 400,
+      "triangle_index": 216,
+      "vertices_0based": [
+        501,
+        500,
+        307
+      ]
+    },
+    "new_strain_failed_frames": [
+      29,
+      30
+    ],
+    "old_strain_failed_frames": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
+    ],
+    "max_same_frame_strain_delta": 0.08070415883928184,
+    "max_nodal_delta_m": 0.02490758863765885,
+    "transient_strain_sensitivity": true,
+    "nodal_sensitivity": true,
+    "strict_delivery_passed": false,
+    "final_frame_quality_passed": true
+  },
+  "review_executed_candidate_preflight_consumer_comparison_selfchecks_old_cases": false,
+  "status": "saved_record_integrity_verified_strict_quality_failed",
+  "outer_controller_exit": {
+    "reported": 0,
+    "provenance": "Producer/parent observed; no separate in-situ controller exit receipt found in the packet. Consistent with pinned run.py and saved FINAL status complete; not independently established from a saved terminal receipt.",
+    "consumer_exit_directly_retained": 2
+  },
+  "scope": "Read-only saved-row and receipt consistency review; no physics recalculation, new numerical grade, execution, output change or acceptance."
+}

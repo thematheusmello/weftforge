@@ -1,0 +1,26 @@
+{
+  "scope": "native source implementation checks only; no actual native app/reference/independent acceptance execution",
+  "source_commit": "f7b7a4e",
+  "passed": [
+    "cargo test -p weftforge internal_line_tests -- --nocapture (9 tests)",
+    "cargo test -p weftforge --no-fail-fast (98 tests)",
+    "cargo clippy -p weftforge --all-targets -- -D warnings",
+    "rustfmt --edition 2024 --check apps/weftforge/src/main.rs",
+    "git diff --check -- apps/weftforge/src/main.rs"
+  ],
+  "failed_runs_retained": [
+    "01-focused-native-tests.log (6 passed, 3 failed)",
+    "03-all-native-tests.log (97 passed, 1 failed)",
+    "04-snap-regression.log (targeted layout/selection regression)"
+  ],
+  "logs_sha256": {
+    "01-focused-native-tests.log": "6aa05f15e1608988692c70fbb759e193cdd5e7f2dbd77ffba7bfdfe4da6a9fb1",
+    "02-focused-native-tests.log": "bd7796f1c2d5349cdf6c598749f8fbd82bee931e77692e41a2bc5cb18e339778",
+    "03-all-native-tests.log": "762b330f920a4e26ef2c1ac3230acbbe94134861bbf93021c722af4edc7a11d9",
+    "04-snap-regression.log": "ea64fa009165f20631dc8fd362570817206e3267872021d4c88c908ccde68e3b",
+    "05-snap-regression.log": "27a390602b3d760eb854ac54da677090f2c0b9726248802dfb8baff1c316b685",
+    "06-all-native-tests.log": "b91cff940761d14fde5b293b445b2d782b0b73518c6ab07be6a8b073bad73508",
+    "07-native-clippy.log": "e1e45cacd294e47c81ea4a5611b56262e2a3cbb7b99d5130c0867571e466317f",
+    "commands.log": "dea26dd845193de95914c57631d843e45aafd24aced3b719f6d82c14e14d96b1"
+  }
+}

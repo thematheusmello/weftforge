@@ -1,0 +1,21 @@
+{
+  "kind": "observed_completion_tool_return_upper_bound",
+  "actual_completion_summary_calls": 1,
+  "completion_summary": "Completed native annotation test steps",
+  "completion_return_observed": true,
+  "conditional_lower_bound": {
+    "kind": "conditional_completion_lower_bound_not_an_attempted_summary",
+    "source_record": "before-planned-quit",
+    "utc": "2026-11-15T21:49:06.959Z",
+    "monotonic_ns": "901662797722583",
+    "qualification": "If next tool call is completion_summary, this is a lower bound only; no exact summary invocation time."
+  },
+  "return_upper_bound": {
+    "utc": "2026-11-15T21:49:32.160Z",
+    "monotonic_ns": "901687999652583"
+  },
+  "conservative_elapsed_upper_bound_s": 641.657843875,
+  "main_case_record_count": 142,
+  "total_count_with_one_completion": 143,
+  "qualification": "Lower marker is before planned Quit and precedes summary invocation; external upper receipt follows the returned summary. Neither is an exact summary invocation timestamp, and summary is not a native controller pair. Planned Quit0142 was final native observer."
+}

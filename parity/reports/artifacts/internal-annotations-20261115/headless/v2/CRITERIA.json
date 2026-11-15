@@ -1,0 +1,151 @@
+{
+  "status": "prospective_approved_engineering_criteria",
+  "contract_sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+  "contract_commit": "9b18fd1a4299db44a840aa2f53417f711aaea2da",
+  "baseline_commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+  "channels": [
+    "cli_execute",
+    "mcp_2026-07-28",
+    "mcp_2025-11-25"
+  ],
+  "line_length_tolerance_m": 1e-12,
+  "ordinary_transform_tolerance_m": 1e-10,
+  "transform_matrix_component_tolerance": 1e-12,
+  "large_scale_transform_tolerance_m": 1e-09,
+  "clearance_m": 1e-06,
+  "certificate_tube_m": 1e-07,
+  "rounding": "256*f64_epsilon*max(1,max_abs_coordinate)",
+  "depth_cap": 20,
+  "fine_contour_sample_cap": 20000,
+  "containment_work_cap": 1000000,
+  "containment_resolutions_m": [
+    0.005,
+    0.07,
+    0.5
+  ],
+  "exactness": "Authoring numeric inputs, dyadic resize, untouched fields and migration compare IEEE754 f64 bits (signed zero included); transform uses independent matrix/landmark budgets, not Euler equality.",
+  "geometry_oracles": {
+    "R": "Exact open unit rectangle; exact segment/edge distances",
+    "L": "Exact six straight edges and piecewise linear inside inequalities",
+    "C": "q(t)=(t,2t(1-t)); minimize quadratic y(s)-2x(s)(1-x(s)), with explicit boundary margins. Area2/3."
+  },
+  "stress": {
+    "boundary_edges": 512,
+    "distinct_segments": 2048,
+    "expected_objects": 7170,
+    "outcomes": [
+      "accepted_with_exact_supported_construction",
+      "refused_with_explicit_work_or_certificate_budget"
+    ],
+    "qualification": "Bounded observation, not a rejection oracle based on guessed loop count. Source-level explicit 1e6 exhaustion regression remains mandatory."
+  },
+  "adapter_process_cap": 500,
+  "adapter_elapsed_cap_s": 900,
+  "malformed_v4_cases": [
+    "missing_internal_list",
+    "missing_groups",
+    "missing_point",
+    "missing_curve",
+    "duplicate_ID",
+    "duplicate_ownership",
+    "both_roles",
+    "shared_endpoint",
+    "cross_piece_internal_owner",
+    "identical_endpoint_ids",
+    "orphan_point",
+    "internal_controls",
+    "invalid_next_id",
+    "unknown_piece_field"
+  ],
+  "migration_versions": [
+    1,
+    2,
+    3
+  ],
+  "unsupported_version": 5,
+  "writer_failure_cases": [
+    "invalid_existing_destination",
+    "destination_directory",
+    "destination_symlink",
+    "recovery_directory"
+  ],
+  "required_separate_gates": [
+    "Live Editor history/Redo/high-water branch table, cancellation and failed-load raw drafts",
+    "Old mesh rejected by create_cloth; fresh same-revision mesh accepted; mass/constraint separation",
+    "Deterministic source-level containment work/depth/sample exhaustion regressions and useful rejection",
+    "Injected late atomic-writer interruption: primary unchanged, recovery may advance to valid prior primary; no two-file atomicity claim",
+    "Real native creation/edit/drag/cancel/history/new/recover/process-restart/reopen and export omission; four local Rust gates; tracked clean registry/map validation"
+  ],
+  "history_table": [
+    {
+      "stage": "rectangle",
+      "revision": 1,
+      "next_id": 11,
+      "internal_curves": []
+    },
+    {
+      "stage": "add",
+      "revision": 2,
+      "next_id": 14,
+      "internal_curves": [
+        13
+      ]
+    },
+    {
+      "stage": "endpoint_swap",
+      "revision": 3,
+      "next_id": 14,
+      "internal_curves": [
+        13
+      ]
+    },
+    {
+      "stage": "remove",
+      "revision": 4,
+      "next_id": 14,
+      "internal_curves": []
+    },
+    {
+      "stage": "undo",
+      "revision": 5,
+      "next_id": 14,
+      "internal_curves": [
+        13
+      ]
+    },
+    {
+      "stage": "redo",
+      "revision": 6,
+      "next_id": 14,
+      "internal_curves": []
+    },
+    {
+      "stage": "undo_again",
+      "revision": 7,
+      "next_id": 14,
+      "internal_curves": [
+        13
+      ]
+    },
+    {
+      "stage": "new_branch_add",
+      "revision": 8,
+      "next_id": 17,
+      "internal_curves": [
+        13,
+        16
+      ]
+    }
+  ],
+  "limits": [
+    "Straight annotations only, exclusive endpoint IDs, flat ordered ownership list, no internal sewing/cubic/split/join/cut/hole/fold/mesh topology or reference claim",
+    "General native Save may commit inspector drafts before chooser/IO; this evaluator does not claim global draft atomicity",
+    "Adapter success and synthetic tests do not establish live history/mesh lifecycle/native acceptance",
+    "No candidate execution is authorized without separate root review, immutable source/binary binding and GO"
+  ],
+  "export_separation_comparison": {
+    "obj": "Full raw byte equality",
+    "svg": "Full raw byte equality",
+    "dxf": "Both raw files must contain exactly one group999 Source document revision: N comment equal to their own declared project revision. Normalize only that validated comment value in memory for byte comparison. Every other raw DXF byte remains exact; preserve both raw files unchanged."
+  }
+}

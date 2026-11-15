@@ -1,0 +1,48 @@
+{
+  "scope": "native implementation checks only; no actual GUI, reference or independent evaluator execution",
+  "source_commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+  "native_sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45",
+  "red": {
+    "production_commit": "703a8888526790e7ebe310a8df00907a154db5a5",
+    "identities": [
+      "14-live-cancel-red-identity.json",
+      "14b-live-cancel-focused-red-identity.json"
+    ],
+    "tests": 1,
+    "failed": 1,
+    "decisive": "Escape replaced new raw 1e- with old drag-start 0.3125"
+  },
+  "retained_diagnostics": [
+    "15-live-cancel-green-tests.log: finish-only did not retain a previously blurred source",
+    "15a-live-cancel-focus-diagnostic.log: diagnosed source focus navigation",
+    "15b-live-cancel-focused-sequence.log: focused and same-frame variants passed with finish-only",
+    "15c-live-cancel-all-focus-states.log: misplaced test input order failed before Escape"
+  ],
+  "green": {
+    "focused": "15d-live-cancel-green-all-cases.log (1 test, three focus/event cases)",
+    "cancellation_tests": 11,
+    "native_package_tests": 105,
+    "strict_native_clippy": "passed",
+    "owned_rustfmt": "passed",
+    "owned_diff_check": "passed"
+  },
+  "previous_f7_and_703_artifacts_unchanged": true,
+  "worktree_clean": true,
+  "artifacts_sha256": {
+    "14-live-cancel-red-identity.json": "e430a35361b6cd39557935becda2d893f6c1d294492b1066b74785bf4e9c067d",
+    "14-live-cancel-red-main.rs": "70f616c19cc9dde1fe2bdcd43b4b855b1f8978707c33358fb78a6cd50213b0af",
+    "14-live-cancel-red-tests.log": "0f6d1672ca2b2d398fb356072b1308626a74c4def491c6cf971bcabff54f66ae",
+    "14b-live-cancel-focused-red-identity.json": "2b5a26e9abc1252036233e9f94405a065ed3b390aead46007c83d43f072b4c01",
+    "14b-live-cancel-focused-red-main.rs": "e689550263d151074b5db5e9835174a8ddce5567525a064d0e9ff5dd8e76173b",
+    "14b-live-cancel-focused-red-tests.log": "2227e9b3a5b08b929973d626c48b5de8bcc72bb6a8bab5153a1a0e7dde532377",
+    "15-live-cancel-green-tests.log": "6f8ddf8515c3d3f087585525a5f9e1926b9914c2cf1dc168ec70226addd800b2",
+    "15a-live-cancel-focus-diagnostic.log": "3374d0b1cd48862812b37aa0e40fe969b9ad57cfb88a9dc700bcb2a41db78268",
+    "15b-live-cancel-focused-sequence.log": "7ec7e43c0114a4988bf9b6e424432fff06f96b1a2a5d1157abf4377c7222d3ec",
+    "15c-live-cancel-all-focus-states.log": "8fcbd2e9eff1b3a59dd885d45163a9acd549c6ff9ee1eb8ae82f54f445b27d63",
+    "15d-live-cancel-green-all-cases.log": "8d3d74ae82fac7b648f41b8ad03c0c4d040f36f79d5ccf3c07679d28adefede3",
+    "16-cancellation-regressions.log": "ae8a8eafb55a327b1985b650eda7de3b15daf1b1d8d6098b307afd2231e35e1b",
+    "17-live-cancel-all-native-tests.log": "16670d8b9c756038214e65b002f5e8652cf1afecdb2ee0e2c8f9df2c990d78f1",
+    "18-live-cancel-clippy.log": "48c5051acf99491275aebf1b81c8d4dd6dfadf14b508662faa5645805d2ba9d5",
+    "19-live-cancel-commands.log": "4b854b5dac8c53f75167e61097d5dfea0547ac35ab9ddc2fc4dee709c099deb2"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "kind": "independent_correction_only_static_review",
+  "status": "cleared_for_separate_root_GO_consideration",
+  "freeze_sha256": "58733a8f994fee8fc866baa0e375b0b01c9032f9174ee409deba6cde747f33fe",
+  "original_freeze_sha256": "f7c19b4295ae8ec9d4246d95eebc4f53b7306fe4f6071a67f26eb0c333cb1a84",
+  "hash_checks": {
+    "new_frozen_files": 30,
+    "original_frozen_files": 38,
+    "current_source_files": 22,
+    "retained_input_files": 19,
+    "original_review_files": 2,
+    "unchanged_copy_files": 18,
+    "mismatches": []
+  },
+  "driver_binary_sha256": "1d6caa60cd3c95b860332fb2d06f1dfee919f7fd035233e4aa21fd9e948a8067",
+  "run_sha256": "5b8531a9c0a407855aadf095b595a05df4927205a704e769393769a284a69a01",
+  "RUN_diff_sha256": "e66cad2f9207193a21a5a82d6083c599d19dad02bee438d7fadbb3c6a828a6ac",
+  "RUN_diff_exact": true,
+  "PROTOCOL_diff_exact": true,
+  "final_clock": {
+    "byte_scan_line": 119,
+    "closing_timestamp_line": 120,
+    "numerical_scan_after_timestamp": false,
+    "retained_count_reused_for_receipt_and_size_check": true,
+    "cap_test": "ended >= deadline sets failed and strict_screen_passed false"
+  },
+  "unchanged": {
+    "entire_original_frozen_map_guarded": true,
+    "source_helper_input_math_quality_bytes": true,
+    "GO_validation_AST": true,
+    "protocol_settings_resources_preflight_quality_comparison_failure_policy_argv": true,
+    "clock_other_than_end": true,
+    "driver_in_original_exclusive_target": true
+  },
+  "retained_synthetic_boundary_record": {
+    "bound_to_run_sha256": true,
+    "419_99s": "complete",
+    "420_01s": "failed and strict_screen_passed false",
+    "replayed_by_reviewer": false
+  },
+  "root_GO_and_execution_paths_absent_in_both_packets": true,
+  "new_target_absent": true,
+  "reviewer_executed_candidate_preflight_simulation_consumer_Cargo_or_test_replay": false,
+  "source_or_producer_files_changed_by_reviewer": false,
+  "remaining_scoped_blockers": [],
+  "root_GO_issued_by_reviewer": false,
+  "physical_native_reference_acceptance": false
+}

@@ -1,0 +1,153 @@
+{
+  "kind": "independent_internal_line_synthetic_selfcheck",
+  "status": "passed",
+  "product_CUA_or_Cargo_executed": false,
+  "analytic_decisions": 7,
+  "wrong_outputs_rejected": 29,
+  "mutants": [
+    {
+      "id": "endpoint_only_L_accepted",
+      "rejected": true
+    },
+    {
+      "id": "endpoint_only_C_accepted",
+      "rejected": true
+    },
+    {
+      "id": "internal_sewing_accepted",
+      "rejected": true
+    },
+    {
+      "id": "mixed_v3_accepted",
+      "rejected": true
+    },
+    {
+      "id": "v4_missing_list_accepted",
+      "rejected": true
+    },
+    {
+      "id": "failed_recovery_changed",
+      "rejected": true
+    },
+    {
+      "id": "failed_geometry_changed",
+      "rejected": true
+    },
+    {
+      "id": "resize_second_endpoint_omitted",
+      "rejected": true
+    },
+    {
+      "id": "remove_second_endpoint_orphaned",
+      "rejected": true
+    },
+    {
+      "id": "owner_remove_second_endpoint_orphaned",
+      "rejected": true
+    },
+    {
+      "id": "wrong_internal_ID",
+      "rejected": true
+    },
+    {
+      "id": "wrong_revision",
+      "rejected": true
+    },
+    {
+      "id": "allocator_consumed_extra",
+      "rejected": true
+    },
+    {
+      "id": "transform_second_endpoint_omitted",
+      "rejected": true
+    },
+    {
+      "id": "v1_signed_zero_lost",
+      "rejected": true
+    },
+    {
+      "id": "v2_signed_zero_lost",
+      "rejected": true
+    },
+    {
+      "id": "v3_signed_zero_lost",
+      "rejected": true
+    },
+    {
+      "id": "hard_decimal_one_ulp_loss",
+      "rejected": true
+    },
+    {
+      "id": "annotation_changed_positions",
+      "rejected": true
+    },
+    {
+      "id": "annotation_changed_uv",
+      "rejected": true
+    },
+    {
+      "id": "annotation_changed_triangles",
+      "rejected": true
+    },
+    {
+      "id": "annotation_changed_boundary",
+      "rejected": true
+    },
+    {
+      "id": "annotation_changed_stitches",
+      "rejected": true
+    },
+    {
+      "id": "old_mesh_retag_not_current",
+      "rejected": true
+    },
+    {
+      "id": "legacy_nonlinear_t_map_reinterpreted",
+      "rejected": true
+    },
+    {
+      "id": "legacy_stitch_paired_by_wrong_fraction",
+      "rejected": true
+    },
+    {
+      "id": "DXF_wrong_source_revision",
+      "rejected": true
+    },
+    {
+      "id": "DXF_duplicate_source_revision",
+      "rejected": true
+    },
+    {
+      "id": "DXF_nonrevision_content_changed",
+      "rejected": true
+    }
+  ],
+  "qualification": "Synthetic assertion checks only; no product or native acceptance.",
+  "bindings": {
+    "evaluate.py": "9762edcf355822a0a99b6c4a14391c425fcb0e09dab7ed91d7454bf7633d3606",
+    "protocol.py": "9eab1f8ffb2a51cb6c9a4180e18d6ab2d6d536c73f75072e240fbf0a3adff88a",
+    "prepare_inputs.py": "4a9d98e86edcb593d4cbc4533feb82d717fccbd1ffc2dfe8710e9284cd2e21ce",
+    "CASES.json": "e79fc87ad30b5b54ae1a9d807bdf5cd3d38b04400fd546af5b1f5819661514a1",
+    "CRITERIA.json": "5a3a176e7bc10d1f32ce08c079b74b0a7f81f0565a036c75ad4d64b743dd08cf",
+    "SOURCE-INPUTS.json": "54d7cf55024d6381642aab04dcd4177f4881fe6573739018aaada053f15ec986",
+    "PLAN.json": "076fe126093c075720a14622e2c866904546dd245b090a4e418824ddb376e924",
+    "METHOD.txt": "9b411612ac596bd8d3d4186904f8358233f8f168a25792d8a8bdd82098b7e306",
+    "PROSPECTIVE-CORRECTION.json": "2791e30a1f1cc844aacca5c5a07a5db7481df57fbe408fa2eb3e8f439b1ad1e3",
+    "STATIC-SUBPROCESS-COUNT.json": "50d7eb26cd5212f2c6ac90452572b7d7f05823cb8dbddc66234d611701c1ccfb"
+  },
+  "fixture_bindings": {
+    "fixtures/C.weftforge": "1511033a69ed12ce83a75d05c4b60ba8bdc641d1ad21b6508e0777853d663686",
+    "fixtures/L.weftforge": "cc3b3a1990ca78e55fecd6a9cda57cb228d922061edcd6ab0eaa1f5c68c2245e",
+    "fixtures/R.weftforge": "a00f9ac953ec09a07bfa7b01a93a2edb2269fc539d4da3bbc4d6abcec7f34ede",
+    "fixtures/R_bits.weftforge": "e7f552a1bc35b47ac000034baead9281642b17cf39d04e58a546d93ad425bbeb",
+    "fixtures/R_large_input.weftforge": "9ef417f6b7b452ea29accb90ba47060cde5787a58957be51a40f76ad6133b7d1",
+    "fixtures/R_line.weftforge": "7f848080608bcbeef1d927f795579c75d91dfb4671bd547734103cabaf7b8326",
+    "fixtures/R_transform_gimbal_input.weftforge": "0677427d18a66183d4ee71b643ff2e4ed9821c8b125ee5dc451e914fa0b674bc",
+    "fixtures/R_transform_tilted_input.weftforge": "8bb3d06d8c1eec22130c4ba1f9e501b15296b3f4ce53d75b14f764de1356bed5",
+    "fixtures/S.weftforge": "78ac643af3096b2d86cabee3cda8a55be505de4e977be0f6b4c07661431d5973",
+    "fixtures/S_line.weftforge": "696c21448e4a0ae070c0f64c4a1538331dca5dc5273c93ed3d8adfc3fe25747c",
+    "fixtures/legacy_v1.weftforge": "e2302c7a07da5cf7f940dbbc149baf7e391d3a73976bf66435f663fe695c1db4",
+    "fixtures/legacy_v2.weftforge": "6f597a3b8ae5f32ea5a55bb2574c55f9589224a42a3d5e9b30720ebc4d70a267",
+    "fixtures/legacy_v3.weftforge": "0fd213f390afff18b37d03c2ec0d3351e748a0a170e6c7185d693bae33dadd35"
+  }
+}

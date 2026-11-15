@@ -1,0 +1,22 @@
+--- retained-evaluator.py
++++ consumer16.py
+@@ -141,7 +141,7 @@
+ 
+ 
+ def settings(frame):
+-    return {"dt": 1/60, "substeps": 8, "iterations": 32, "seam_closure_speed": 1.,
++    return {"dt": 1/60, "substeps": 16, "iterations": 32, "seam_closure_speed": 1.,
+             "gravity": [0., 0., 0.] if frame <= 60 else [0., -9.81, 0.]}
+ 
+ 
+@@ -155,8 +155,8 @@
+ 
+ 
+ def target_step(targets):
+-    for _ in range(8):
+-        targets = [max(0., t-1.*((1/60)/8)) for t in targets]
++    for _ in range(16):
++        targets = [max(0., t-1.*((1/60)/16)) for t in targets]
+     return targets
+ 
+ 

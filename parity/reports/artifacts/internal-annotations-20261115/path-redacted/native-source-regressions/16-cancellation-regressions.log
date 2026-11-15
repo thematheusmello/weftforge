@@ -1,0 +1,19 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/internal-segments-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 6.00s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 11 tests
+test tests::cancelled_and_obsolete_jobs_do_not_replace_the_display_snapshot ... ok
+test tests::worker_failure_survives_late_cancel_and_revision_change ... ok
+test tests::numeric_rectangle_click_commits_once_and_cancel_or_errors_preserve_drafts_and_history ... ok
+test physical_sewing_tests::free_sewing_nonmodal_cancel_keeps_property_edit_made_after_accepting_a ... ok
+test pattern_import_tests::cancelled_invalid_and_failed_import_keep_pending_drafts_ids_and_redo ... ok
+test tests::ordered_sewing::rejected_create_and_group_edit_cancel_keep_numeric_drafts_and_redo ... ok
+test internal_line_tests::internal_line_review_cancelled_drag_retains_boundary_draft_raw_caret_redo_and_outputs ... ok
+test pattern_import_tests::pointer_cancel_retains_focused_numeric_draft_revision_and_history ... ok
+test internal_line_tests::internal_line_failure_cancel_and_unchanged_editor_preserve_raw_input_redo_and_outputs ... ok
+test pattern_transform_tests::transform_cancel_revision_tool_load_and_failed_release_never_commit_stale_previews ... ok
+test physical_sewing_tests::free_sewing_failure_and_cancel_retain_raw_text_carets_redo_and_accepted_state ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 94 filtered out; finished in 1.41s
+

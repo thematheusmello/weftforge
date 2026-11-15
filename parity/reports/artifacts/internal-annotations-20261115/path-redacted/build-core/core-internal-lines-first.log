@@ -1,0 +1,71 @@
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.27
+   Compiling quote v1.0.47
+   Compiling serde_core v1.0.229
+   Compiling libc v0.2.191
+   Compiling autocfg v1.5.1
+   Compiling zerocopy v0.8.63
+   Compiling zmij v1.0.23
+   Compiling getrandom v0.3.4
+   Compiling serde v1.0.229
+   Compiling version_check v0.9.5
+   Compiling serde_json v1.0.154
+   Compiling memchr v2.8.3
+   Compiling either v1.19.0
+   Compiling cfg-if v1.0.5
+   Compiling itoa v1.0.19
+   Compiling once_cell v1.21.4
+   Compiling itertools v0.14.0
+   Compiling ahash v0.8.12
+   Compiling num-traits v0.2.19
+   Compiling quick-xml v0.41.0
+   Compiling syn v3.0.10
+   Compiling earcutr v0.5.0
+   Compiling serde_derive v1.0.229
+   Compiling tobj v4.0.5
+   Compiling weftforge-sim v0.1.0 (<WORKSPACE>/.local/internal-segments-20261115/crates/weftforge-sim)
+   Compiling weftforge-core v0.1.0 (<WORKSPACE>/.local/internal-segments-20261115/crates/weftforge-core)
+error[E0616]: field `next_id` of struct `Project` is private
+  --> crates/weftforge-core/tests/internal_lines.rs:59:31
+   |
+59 |     assert_eq!(editor.project.next_id, 14);
+   |                               ^^^^^^^ private field
+
+error[E0616]: field `next_id` of struct `Project` is private
+   --> crates/weftforge-core/tests/internal_lines.rs:118:31
+    |
+118 |     assert_eq!(editor.project.next_id, 14);
+    |                               ^^^^^^^ private field
+
+error[E0616]: field `next_id` of struct `Project` is private
+   --> crates/weftforge-core/tests/internal_lines.rs:239:22
+    |
+239 |             _ => bad.next_id = 19,
+    |                      ^^^^^^^ private field
+
+error[E0616]: field `next_id` of struct `Project` is private
+   --> crates/weftforge-core/tests/internal_lines.rs:435:32
+    |
+435 |     let curve = editor.project.next_id + 2;
+    |                                ^^^^^^^ private field
+
+error[E0616]: field `next_id` of struct `Project` is private
+   --> crates/weftforge-core/tests/internal_lines.rs:593:26
+    |
+593 |         let id = limited.next_id;
+    |                          ^^^^^^^ private field
+
+error[E0616]: field `next_id` of struct `Project` is private
+   --> crates/weftforge-core/tests/internal_lines.rs:594:17
+    |
+594 |         limited.next_id += 1;
+    |                 ^^^^^^^ private field
+
+error[E0616]: field `next_id` of struct `Project` is private
+   --> crates/weftforge-core/tests/internal_lines.rs:623:13
+    |
+623 |     project.next_id = 14;
+    |             ^^^^^^^ private field
+
+For more information about this error, try `rustc --explain E0616`.
+error: could not compile `weftforge-core` (test "internal_lines") due to 7 previous errors

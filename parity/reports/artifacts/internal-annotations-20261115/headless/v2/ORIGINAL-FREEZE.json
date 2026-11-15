@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "status": "frozen_prospective_independent_internal_straight_annotation_acceptance_before_candidate_execution",
+  "frozen_at_utc": "2026-11-15T19:05:27.326321+00:00",
+  "approved_contract_commit": "9b18fd1a4299db44a840aa2f53417f711aaea2da",
+  "approved_contract_sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+  "root_approval_sha256": "b8c68d0dc140d79110f8befa63573b8c44b07a6d768387529c9046a6ff7e7ad7",
+  "product_CUA_or_Cargo_executed_for_this_preparation": false,
+  "original_geometry_models": [
+    "R",
+    "L",
+    "C",
+    "S"
+  ],
+  "frozen_fixture_files": 13,
+  "accepted_case_definitions": 26,
+  "rejected_command_definitions": 34,
+  "malformed_v4_definitions": 14,
+  "final_synthetic_report": "SELF-CHECK-005.json",
+  "wrong_synthetic_outputs_rejected": 26,
+  "historical_attempts": "SELF-CHECK-001/002/003/004 are retained passing intermediate synthetic runs with their original bindings. PREPARATION-FAILURE-001 and a verbatim historical source text retain the initial generator syntax error; no product ran.",
+  "stress_outcomes_fixed_before_outputs": {
+    "boundary_edges": 512,
+    "distinct_segments": 2048,
+    "expected_objects": 7170,
+    "outcomes": [
+      "accepted_with_exact_supported_construction",
+      "refused_with_explicit_work_or_certificate_budget"
+    ],
+    "qualification": "Bounded observation, not a rejection oracle based on guessed loop count. Source-level explicit 1e6 exhaustion regression remains mandatory."
+  },
+  "separate_required_gates": [
+    "Live Editor history/Redo/high-water branch table, cancellation and failed-load raw drafts",
+    "Old mesh rejected by create_cloth; fresh same-revision mesh accepted; mass/constraint separation",
+    "Deterministic source-level containment work/depth/sample exhaustion regressions and useful rejection",
+    "Injected late atomic-writer interruption: primary unchanged, recovery may advance to valid prior primary; no two-file atomicity claim",
+    "Real native creation/edit/drag/cancel/history/new/recover/process-restart/reopen and export omission; four local Rust gates; tracked clean registry/map validation"
+  ],
+  "candidate_authorization": "Root must review this exact freeze, independently selfcheck, and separately bind actual source_worktree/commit/file hashes and immutable CLI plus GO. No candidate execution has occurred in this preparation. Do not change criteria after seeing outputs.",
+  "prior_sewing_packets_and_cases_mutated_by_preparer": false,
+  "files": [
+    {
+      "path": "APPROVED-CONTRACT.md",
+      "bytes": 43508,
+      "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66"
+    },
+    {
+      "path": "CASES.json",
+      "bytes": 160983,
+      "sha256": "e79fc87ad30b5b54ae1a9d807bdf5cd3d38b04400fd546af5b1f5819661514a1"
+    },
+    {
+      "path": "CRITERIA.json",
+      "bytes": 4562,
+      "sha256": "f65f6b13c90e43100b382e0a34b9f54c8e917f3798ac0a3c44417dc52e6fbf3e"
+    },
+    {
+      "path": "METHOD.txt",
+      "bytes": 7621,
+      "sha256": "7fc4ce06aecf38d9e787373be17c3660d9966e247a9eadfa1d5f675d7ca260f3"
+    },
+    {
+      "path": "PLAN.json",
+      "bytes": 3535,
+      "sha256": "faa9dae22a2c20c3690d1dfc936f51f8d4fd1cd6a4dab74e55a78a0d8e3f3258"
+    },
+    {
+      "path": "PREPARATION-FAILURE-001.json",
+      "bytes": 285,
+      "sha256": "6dcaadf16167ce481b4d1f20907865b9c1f842d6aa574c9fbc084145ff5160d5"
+    },
+    {
+      "path": "SELF-CHECK-001.json",
+      "bytes": 2506,
+      "sha256": "3faa74aea6bdcebad2afeaad998c63fd76960cee57544a0466ba42ec6b0c8486"
+    },
+    {
+      "path": "SELF-CHECK-002.json",
+      "bytes": 2679,
+      "sha256": "ae11b5c49f946c01fa57b4ea8f3c9e2a35d1d6f83fb0fbae0249c967b2d1359c"
+    },
+    {
+      "path": "SELF-CHECK-003.json",
+      "bytes": 2768,
+      "sha256": "8c3c0743f61fbc70554e46fbf87eb08cb7f81cea2797afce651b3c3c60e06440"
+    },
+    {
+      "path": "SELF-CHECK-004.json",
+      "bytes": 4231,
+      "sha256": "aab00d764a487fe6c6f5838b518b76a4fe42abae670ee15e8dc98300f65719c2"
+    },
+    {
+      "path": "SELF-CHECK-005.json",
+      "bytes": 4231,
+      "sha256": "20ed9041617671f4715e047f491675c9d7fb600a6ce5e6387064c9128d254732"
+    },
+    {
+      "path": "SOURCE-INPUTS.json",
+      "bytes": 1938,
+      "sha256": "54d7cf55024d6381642aab04dcd4177f4881fe6573739018aaada053f15ec986"
+    },
+    {
+      "path": "evaluate.py",
+      "bytes": 36025,
+      "sha256": "45ff15c988cab807e207be762f1a827e82b45ab5a67cc177cd1f1e6b4fb7eafc"
+    },
+    {
+      "path": "fixtures/C.weftforge",
+      "bytes": 3382,
+      "sha256": "1511033a69ed12ce83a75d05c4b60ba8bdc641d1ad21b6508e0777853d663686"
+    },
+    {
+      "path": "fixtures/L.weftforge",
+      "bytes": 3618,
+      "sha256": "cc3b3a1990ca78e55fecd6a9cda57cb228d922061edcd6ab0eaa1f5c68c2245e"
+    },
+    {
+      "path": "fixtures/R.weftforge",
+      "bytes": 3200,
+      "sha256": "a00f9ac953ec09a07bfa7b01a93a2edb2269fc539d4da3bbc4d6abcec7f34ede"
+    },
+    {
+      "path": "fixtures/R_bits.weftforge",
+      "bytes": 3538,
+      "sha256": "e7f552a1bc35b47ac000034baead9281642b17cf39d04e58a546d93ad425bbeb"
+    },
+    {
+      "path": "fixtures/R_large_input.weftforge",
+      "bytes": 3566,
+      "sha256": "9ef417f6b7b452ea29accb90ba47060cde5787a58957be51a40f76ad6133b7d1"
+    },
+    {
+      "path": "fixtures/R_line.weftforge",
+      "bytes": 3520,
+      "sha256": "7f848080608bcbeef1d927f795579c75d91dfb4671bd547734103cabaf7b8326"
+    },
+    {
+      "path": "fixtures/R_transform_gimbal_input.weftforge",
+      "bytes": 3541,
+      "sha256": "0677427d18a66183d4ee71b643ff2e4ed9821c8b125ee5dc451e914fa0b674bc"
+    },
+    {
+      "path": "fixtures/R_transform_tilted_input.weftforge",
+      "bytes": 3530,
+      "sha256": "8bb3d06d8c1eec22130c4ba1f9e501b15296b3f4ce53d75b14f764de1356bed5"
+    },
+    {
+      "path": "fixtures/S.weftforge",
+      "bytes": 5591,
+      "sha256": "78ac643af3096b2d86cabee3cda8a55be505de4e977be0f6b4c07661431d5973"
+    },
+    {
+      "path": "fixtures/S_line.weftforge",
+      "bytes": 5911,
+      "sha256": "696c21448e4a0ae070c0f64c4a1538331dca5dc5273c93ed3d8adfc3fe25747c"
+    },
+    {
+      "path": "fixtures/legacy_v1.weftforge",
+      "bytes": 4937,
+      "sha256": "e2302c7a07da5cf7f940dbbc149baf7e391d3a73976bf66435f663fe695c1db4"
+    },
+    {
+      "path": "fixtures/legacy_v2.weftforge",
+      "bytes": 5028,
+      "sha256": "6f597a3b8ae5f32ea5a55bb2574c55f9589224a42a3d5e9b30720ebc4d70a267"
+    },
+    {
+      "path": "fixtures/legacy_v3.weftforge",
+      "bytes": 5594,
+      "sha256": "0fd213f390afff18b37d03c2ec0d3351e748a0a170e6c7185d693bae33dadd35"
+    },
+    {
+      "path": "prepare_inputs.py",
+      "bytes": 22238,
+      "sha256": "4a9d98e86edcb593d4cbc4533feb82d717fccbd1ffc2dfe8710e9284cd2e21ce"
+    },
+    {
+      "path": "protocol.py",
+      "bytes": 9381,
+      "sha256": "9eab1f8ffb2a51cb6c9a4180e18d6ab2d6d536c73f75072e240fbf0a3adff88a"
+    },
+    {
+      "path": "revisions/prepare-inputs-001.py.txt",
+      "bytes": 19100,
+      "sha256": "a402c5aa288a3e3843da44d0555c3390ee8284c313f55e3a5cfcd2a536f4ac49"
+    }
+  ]
+}

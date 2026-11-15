@@ -1,0 +1,36 @@
+{
+  "evidence_kind": "native_saved_bytes",
+  "case": "A",
+  "label": "A04-undo",
+  "revision": 4,
+  "primary_relative_path": "work/A.weftforge",
+  "primary_sha256": "35aea922e4236dcc99d7e7c18972ee720bf099a79de80784ea7cc74108fa69a9",
+  "snapshot_sha256": "35aea922e4236dcc99d7e7c18972ee720bf099a79de80784ea7cc74108fa69a9",
+  "bytes": 3518,
+  "native_save_record": "0132",
+  "clean_capture_record": "0133",
+  "previous_saved_label": "A03-edited",
+  "recovery_sha256": "5881d4194419e7b3031add176e2bae48114e5953e77585f59e798bbf3ec0c57d",
+  "sidecars": [
+    {
+      "suffix": ".recovery",
+      "snapshot": "snapshots/A04-undo.recovery",
+      "bytes": 3519,
+      "sha256": "5881d4194419e7b3031add176e2bae48114e5953e77585f59e798bbf3ec0c57d"
+    },
+    {
+      "suffix": ".autosave",
+      "snapshot": "snapshots/A04-undo.autosave",
+      "bytes": 3518,
+      "sha256": "35aea922e4236dcc99d7e7c18972ee720bf099a79de80784ea7cc74108fa69a9"
+    },
+    {
+      "suffix": ".autosave.recovery",
+      "snapshot": "snapshots/A04-undo.autosave.recovery",
+      "bytes": 3519,
+      "sha256": "5881d4194419e7b3031add176e2bae48114e5953e77585f59e798bbf3ec0c57d"
+    }
+  ],
+  "construction_graded": false,
+  "raw_bytes_unedited": true
+}

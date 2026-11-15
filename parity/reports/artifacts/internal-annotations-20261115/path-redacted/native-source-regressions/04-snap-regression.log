@@ -1,0 +1,19 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/internal-segments-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.38s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 1 test
+
+thread 'tests::position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule' (63193263) panicked at apps/weftforge/src/main.rs:6276:36:
+missing text "Close pattern (3 points)"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test tests::position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule ... FAILED
+
+failures:
+
+failures:
+    tests::position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 97 filtered out; finished in 0.18s
+
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

@@ -1,0 +1,106 @@
+{
+  "kind": "independent_internal_line_synthetic_selfcheck",
+  "status": "passed",
+  "product_CUA_or_Cargo_executed": false,
+  "analytic_decisions": 7,
+  "wrong_outputs_rejected": 22,
+  "mutants": [
+    {
+      "id": "endpoint_only_L_accepted",
+      "rejected": true
+    },
+    {
+      "id": "endpoint_only_C_accepted",
+      "rejected": true
+    },
+    {
+      "id": "internal_sewing_accepted",
+      "rejected": true
+    },
+    {
+      "id": "mixed_v3_accepted",
+      "rejected": true
+    },
+    {
+      "id": "v4_missing_list_accepted",
+      "rejected": true
+    },
+    {
+      "id": "failed_recovery_changed",
+      "rejected": true
+    },
+    {
+      "id": "failed_geometry_changed",
+      "rejected": true
+    },
+    {
+      "id": "resize_second_endpoint_omitted",
+      "rejected": true
+    },
+    {
+      "id": "remove_second_endpoint_orphaned",
+      "rejected": true
+    },
+    {
+      "id": "wrong_internal_ID",
+      "rejected": true
+    },
+    {
+      "id": "wrong_revision",
+      "rejected": true
+    },
+    {
+      "id": "allocator_consumed_extra",
+      "rejected": true
+    },
+    {
+      "id": "v1_signed_zero_lost",
+      "rejected": true
+    },
+    {
+      "id": "v2_signed_zero_lost",
+      "rejected": true
+    },
+    {
+      "id": "v3_signed_zero_lost",
+      "rejected": true
+    },
+    {
+      "id": "hard_decimal_one_ulp_loss",
+      "rejected": true
+    },
+    {
+      "id": "annotation_changed_positions",
+      "rejected": true
+    },
+    {
+      "id": "annotation_changed_uv",
+      "rejected": true
+    },
+    {
+      "id": "annotation_changed_triangles",
+      "rejected": true
+    },
+    {
+      "id": "annotation_changed_boundary",
+      "rejected": true
+    },
+    {
+      "id": "annotation_changed_stitches",
+      "rejected": true
+    },
+    {
+      "id": "old_mesh_retag_not_current",
+      "rejected": true
+    }
+  ],
+  "qualification": "Synthetic assertion checks only; no product or native acceptance.",
+  "bindings": {
+    "evaluate.py": "11b761e976a4e69f3ce026d6bc490ab1b8d9d06810ad2d3c560f8443e0d7ed69",
+    "protocol.py": "8d833283d2a4d95ff35eb6c32e05eb5905fb97ec0660c280a3aa6e77811828b2",
+    "prepare_inputs.py": "d505a0b9deb76b76084f2442f08e0a2c4ad1546475783326e873876d752fca3f",
+    "CASES.json": "a850f7c2d17ea5e2b58e8833348b86562569a0775e2af12153a5313ffd95747d",
+    "CRITERIA.json": "a1513fca8f79c0fab952232d42932bbc007d5a3feea8193b43bb96cf8669ea85",
+    "SOURCE-INPUTS.json": "247278f7e4683d9a5f465ed6850572ddce048b8bd48b488a6f155ba6396024d1"
+  }
+}

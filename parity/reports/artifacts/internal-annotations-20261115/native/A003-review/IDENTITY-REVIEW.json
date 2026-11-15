@@ -1,0 +1,62 @@
+{
+  "source_65": {
+    "checked_files": 65,
+    "issues": []
+  },
+  "freeze_143": {
+    "checked_files": 143,
+    "issues": []
+  },
+  "original_manifest_701": {
+    "checked_files": 701,
+    "issues": []
+  },
+  "old_frozen_provenance_523": {
+    "checked_files": 523,
+    "issues": []
+  },
+  "source_metadata": {
+    "source_commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+    "source_commit_input_files_compared": 65,
+    "source_commit_mismatches": [],
+    "current_metadata_head": "db8ee77f708a5088c3597030bd16de5d8912ca43",
+    "current_porcelain": ""
+  },
+  "pins": {
+    "OUTCOME.json": "d407c41b5e20f2cb3f942d5b9b6f8d2fae8cbe2e5feb08d29a16315d35bf7c63",
+    "POSTFLIGHT.json": "c17a722f8c8a928f6072cf3d83ee5e57e6d6dcfb18268782123de277ab3b893e",
+    "ROOT-BINDING.json": "3cb9795fc51b0ef23b7956f66618234b90c077025e781954d01d9d091b530c77",
+    "ARTIFACT-MANIFEST.json": "3a529287b1b50bd17ed6d632a82f06c1229cc3a1214a3aa5fb939cd72a3116f3",
+    "SAVED-GRADE-001-INVOCATION.json": "5b77bc52ef3d34346dcb968c4994b3a1786417ddfeca3b9dd8c8b9796eed343d",
+    "SAVED-GRADE-001.json": "bcbad234d7034694917836dd4a29bf0839022bfd47264a16502bb4815c9f2e0a",
+    "plan_FREEZE.json": "1694cae26e6fa88a62338b3a7636432c51185385324ad4c6490967ce742a2148"
+  },
+  "native_binary": {
+    "sha256": "a733c9952ff060a3ec96417467be50011a16039dbb0868fd8ac9890a2b5897c4",
+    "bytes": 61342152,
+    "matches_binding": true
+  },
+  "own_target_debug_binary": {
+    "sha256": "a733c9952ff060a3ec96417467be50011a16039dbb0868fd8ac9890a2b5897c4",
+    "matches_bound_native": true
+  },
+  "controller_and_recorder": {
+    "controller": {
+      "sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+      "matches_binding": true
+    },
+    "recorder": {
+      "sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+      "matches_binding": true
+    }
+  },
+  "additions_after_original_manifest": [
+    "NATIVE-LEASE-CLOSED.json",
+    "SAVED-GRADE-001-INVOCATION.json",
+    "SAVED-GRADE-001.json",
+    "SAVED-GRADE-001.stderr",
+    "SAVED-GRADE-001.stdout"
+  ],
+  "qualification": "Passive local reads, SHA256/size/mode comparisons and Git object reads only. No grader, evaluator, product, Cargo or UI was executed. Existing root saved grade was read, not repeated.",
+  "raw_snapshot_and_recovery_identity_issues": []
+}

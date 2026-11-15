@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "status": "corrected_preparation_frozen_pending_independent_review_and_separate_root_GO",
+  "experiment": "Harbor-A16x32-001",
+  "corrects_blocked_freeze_sha256": "f7c19b4295ae8ec9d4246d95eebc4f53b7306fe4f6071a67f26eb0c333cb1a84",
+  "new_garment_execution": false,
+  "geometry_preflights_executed": 0,
+  "candidate_consumer_executed": false,
+  "case_clock_started": false,
+  "new_builds": 0,
+  "files": {
+    "CONSUMER.diff": "57e2bb556327f8a24884e9004daea5629147010bf3b28050aaeac8c5ce482ef7",
+    "DRIVER.diff": "d9727ad880363aafd0be410c57ac0b7ddfe85ca94ec06a9cc352e33d30d7bd1c",
+    "GUARDS.json": "733bc60569341fda97a5298c70200af36f9b916025b8a2919a61c8d5c35e385f",
+    "ORIGIN-BINDING.json": "6ab7380fb8dfc8b26af0828e9cfa2f0fe9530affe081edda6f6fa0f72fb7ba93",
+    "PROTOCOL.diff": "dd44505f3152203a6e8ca4cfd1343a5e29e9de8cde4634172e9f421a4eb384bb",
+    "PROTOCOL.json": "b2c7c52add59900a87269a3327fdcc86e0cc5432a749d8d100ead52f241ce6b8",
+    "README.md": "1d9cdb07ef089b2df39180895cdf1bb6cc50417e81aac80bedd86a2a3be00235",
+    "READONLY-BINDING.json": "d458e88256750820e84fba8aef488b6734269c0274654d3ea57338c8eb3e3297",
+    "ROOT-GO.template.json": "86c1a1407cc0ffe35d18a7292638a125f2c1e73ade657975663cf2fb9439de47",
+    "RUN.diff": "e66cad2f9207193a21a5a82d6083c599d19dad02bee438d7fadbb3c6a828a6ac",
+    "SOURCE-BINDING.json": "ba3e501fcd217d9f58b3397dc834b12fd3c80b2fea94d37b11462ad602d32b4b",
+    "analyze16.py": "19d1d05f8960ea23d55f80387ac5000c960c7478201ba12a33d90881fc13fec1",
+    "bindings.py": "24f50503f2b6e36f2398caaab9e623516864a17b0f5af7282d89fcef5af7e1fc",
+    "capsule_geometry.py": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b",
+    "checks/final-clock-selfcheck-job.json": "0c953c5c64a6428c4bb918490cd3bc0b131ac9cf66df8d150220735774f08c51",
+    "checks/final-clock-selfcheck.json": "7bd17e8ef53cbd43659c91132d2a55738764072ec94455a8ca7eefc86f2fb91e",
+    "checks/final-clock-selfcheck.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "checks/final-clock-selfcheck.stdout": "986bca2015910b14510eb6ccf3f39df82a78af45bc95bef47ab8fdcbcbe67c51",
+    "compare_control.py": "591f7c2c0caf0f49bec5bb6549954691661d295bd8984f5f656e2698b9f6450e",
+    "consumer16.py": "c232a2e10c0cc64d19750cd096377198c29bc7be4c0a04c9285980fae9fd35b8",
+    "decimal_oracle.py": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d",
+    "expected/current-rest.json": "ca474d2c2ea38f6bb7ebb01dadc888fa82693ee565ddb1de59baea9dddfba489",
+    "final_clock_selfcheck.py": "f482e2358b5c23760e5ea17aad057f889cf2477ee15b9ddfbca15c61992134d8",
+    "geometry_math.py": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40",
+    "inputs/base.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+    "metrics.py": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+    "resources.py": "395bc0e948748ea4ade134919b1911abf2c51faa63a0a56b9554d8f3ab8842a7",
+    "run.py": "5b8531a9c0a407855aadf095b595a05df4927205a704e769393769a284a69a01",
+    "signatures.py": "b1d04c645b849b9a90654c2db10cb385f325d51f422ea6f86bd5354cb896869d",
+    "static_geometry.py": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34"
+  },
+  "python": {
+    "executable": "<HOME>/.pyenv/versions/3.13.0/bin/python3.13",
+    "binary_sha256": "dae804f93cd396de84720747c66218ff0aed9f74385f71dd9b3e62c49ce5b2ce",
+    "version": [
+      3,
+      13,
+      0
+    ],
+    "sum_probe": 1.0000000000000002
+  },
+  "external_artifact_guard": "ORIGIN-BINDING.json; all38 original frozen files including actual binary, original freeze hash and reviewer hashes are verified before/after execution",
+  "excluded": [
+    "original compiled target/cache; referenced in place and hash-guarded",
+    "future root GO",
+    "future execution outputs and integrity receipts"
+  ],
+  "scope_limit": "Deadline/path-binding correction only; no physical/native/reference acceptance."
+}

@@ -1,0 +1,14 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/internal-segments-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.27s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 6 tests
+test internal_line_tests::internal_line_review_coincident_endpoints_drag_only_the_selected_later_annotation ... ok
+test internal_line_tests::internal_line_review_accepted_drag_commits_source_boundary_control_and_endpoint_once ... ok
+test internal_line_tests::internal_line_review_compound_endpoints_and_staged_grain_commit_one_revision_and_undo ... ok
+test internal_line_tests::internal_line_review_compound_endpoint_geometry_failure_retains_pending_and_accepted_state ... ok
+test internal_line_tests::internal_line_review_rejected_drag_retains_boundary_draft_raw_caret_redo_and_outputs ... ok
+test internal_line_tests::internal_line_review_cancelled_drag_retains_boundary_draft_raw_caret_redo_and_outputs ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 98 filtered out; finished in 0.40s
+

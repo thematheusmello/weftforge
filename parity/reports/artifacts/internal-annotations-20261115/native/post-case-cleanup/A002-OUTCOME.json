@@ -1,0 +1,24 @@
+{
+  "kind": "separate_user_authorized_post_case_window_cleanup",
+  "utc": "2026-11-15T21:09:02.319617+00:00",
+  "case": "A002",
+  "native_case_outcome_unchanged": true,
+  "case_clock_reopened": false,
+  "root_preflight_sha256": "e0ac345781433a5a30ae892f5258de980a66711487b73bca42204cadbd6fe868",
+  "actions": [
+    "Select confirmed-running own A002 bundle",
+    "Documented super+q once",
+    "Global CUA inventory confirms own app absent",
+    "Immediate completion summary only"
+  ],
+  "CUA_calls_including_summary": 4,
+  "owned_pid": 93371,
+  "owned_pid_absent": true,
+  "retained_snapshot_and_primary_bytes_unchanged": true,
+  "changed_sidecars": [
+    "work/A.weftforge.autosave.recovery",
+    "work/A.weftforge.autosave"
+  ],
+  "new_sidecars": {},
+  "qualification": "Cleanup is outside the closed A002 native case and does not repair/continue its failed saved-grade or establish later UI behavior. New sidecars belong to this later event and are not silently added to original case evidence. No unrelated/reference app controlled."
+}

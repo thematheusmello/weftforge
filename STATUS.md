@@ -1,65 +1,124 @@
 # WeftForge status — active development, 2026-11-15
 
-The current internal-segment runtime is
-ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5. It retains the complete studio target:
-**0/56 coarse reference contracts verified**, **39 partial / 17 planned**,
-discovery incomplete and **no roadmap gate accepted**. The 949 entries / 205 packets
-remain a historical engineering inventory, not a complete product denominator.
+The current runtime is ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5. The source/evidence
+publication candidate retains **0/56 coarse reference contracts verified**,
+**39 partial / 17 planned**, discovery incomplete and **no roadmap gate accepted**.
+The historical 949 entries / 205 packets / 56 landmarks remain an engineering
+inventory, not a complete product denominator.
 
-## Current internal annotation checkpoint — private and unpublished
+## Current straight-annotation evidence — bounded headless and native A
 
-The source-review-clear increment implements straight editable annotations owned
-by an existing piece: two-point native creation, precise endpoint editing,
-selection/removal, applied authored length, one-command/transaction history and
-strict version 4 persistence with supported version 1/2/3 reads. Annotations remain
-separate from exterior topology, rest-mesh constraints and simulation. They do not
-cut cloth, create holes, fold or sew. PAT-007 remains partial/stale/not_run; the
-[approved engineering contract](spec/features/PAT-006-internal-segments.md) is not
-reference evidence. PAT-006 remains planned because its cutting/holes contract is
-not implemented by annotation infrastructure.
+The [implementation-only report](parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json)
+is passed/current only for the original 86-observation headless run and root-accepted
+native A003. PAT-007, UI-004 and APP-001 remain partial/not_run for their coarse
+contracts. APP-001 attribution covers the exercised shared-command/input/history
+adapters and A's empty launch; it supplies no native New/Recover, full automation
+or process-restart acceptance. PAT-006 stays wholly planned: straight annotations
+do not implement cutting or holes.
 
-All **65 runtime/build/test/contract/doc inputs** remain byte-identical to ad7
-through the public PR46 metadata merge and reviewed current-source-map follow-up.
-The private integrated manifest SHA is
-d47c3a7c35e89e8b9e0688703b8e3e97120e3fb3f3c14e48a4ea038eb643c872:
-formatting, **282 workspace Rust tests / zero failures**, strict workspace/all-target
-Clippy and native+CLI debug builds passed. Source runner PID 56057 completed.
-Those Rust gates and debug build are reused by all 65 exact hashes, not repeated
-for metadata. The final required `cargo xtask verify` gate is run separately from
-a clean metadata commit in this worktree's default target; its private receipt
-identifies the checked commit, result and before/after CLI build context.
+The source implements piece-owned straight annotations, native two-point creation,
+precise endpoint editing, selection/removal, applied lengths and one transaction
+with valid staged properties. Strict native v4 stores ownership; supported v1/v2/v3
+reads add empty internal lists. Annotations remain separate from exterior topology,
+sewing targets, mesh constraints and simulation. Internal cubics/shapes, notches,
+persistent measurements/constraints, folds, cuts and internal sewing remain open.
+The [approved engineering contract](spec/features/PAT-006-internal-segments.md)
+provides policy rather than reference behavior despite its PAT-006 filename.
 
-The private independent v2 run001 passed **86 observations** with **434 paired
-target processes**. Root's collection SHA
-3af4f7a515b6029fb184990c6d9a152aaf146e0e533e9ddcb4db36050797df7b
-verified 3,100 files, three relative symlinks and all 65 source pins. These are
-unpublished engineering checkpoints, not delivered/native/reference evidence;
-no new verification run or denominator is created from ignored local files.
+All **65 runtime/build/test/contract/doc inputs** remain byte-identical to ad7.
+Original formatting, **282 workspace Rust tests / zero failures**, strict
+workspace/all-target Clippy and native+CLI debug builds are reused by exact source
+identity. Their manifest SHA is
+d47c3a7c35e89e8b9e0688703b8e3e97120e3fb3f3c14e48a4ea038eb643c872.
+Source runner PID 56057 completed. The retained clean db8ee77 final local gate
+passed registry/maps, 48+6 Python tests and CLI help in 114.020357458 s; its
+original-worktree CLI feature-context change remains disclosed. Publication checks
+are recorded in a separate versioned append bound to their actual clean candidate;
+Rust/native/headless/saved-grader and physical consumers are not rerun for publication.
 
-The built native executable is
+The original independent v2 run001 passed **86 observations / 434 paired target
+processes**. Root collection verified all 3,100 original regular files, three
+relative link nodes and 65 source pins. All 868 raw target stdout/stderr files and
+link target bytes remain exact. The immutable evaluated CLI stays
+71ef84c7c90e9ffdf291f3dd2e031a476ff8b99097258256bf46e17afeb8b2bd, mode 0555.
+The separate original-worktree help-context CLI is
+8a370548e341e4c1a2fc760b276425f5900e7a137d37cadeb268d752d1fc3a41;
+it is not substituted for the accepted independent artifact.
+
+Native A003 uses executable
 a733c9952ff060a3ec96417467be50011a16039dbb0868fd8ac9890a2b5897c4.
-The debug CLI checkpoint is
-71ef84c7c90e9ffdf291f3dd2e031a476ff8b99097258256bf46e17afeb8b2bd;
-its separate immutable accepted copy is mode 0555. The metadata verification may
-build the workspace CLI in a different feature context; its private before/after
-receipt discloses that without replacing the immutable independent CLI. No new
-package, release, actual-native launch or cross-platform acceptance is claimed.
+The root [bounded acceptance](parity/reports/artifacts/internal-annotations-20261115/native/ROOT-ACCEPTANCE-A003.json)
+records 142 returned pairs plus one summary, a conservative elapsed upper bound
+641.657843875 s within 175+1 / 1200 caps, six exact native v4 saves and PID 13707
+absent after planned quit. Root directly checked fourteen keyframes; the separate
+independent review checked all 60 original images, 142 pairs/receipts, 701 original
+manifest entries, 65 source / 143 new-freeze / 523 old-provenance pins and snapshot/recovery identities.
+The unchanged saved grader ran once and passed all six states.
 
-Actual-native cases **A–E remain required**. Root owns source/freeze review,
-native execution and later publication. Published B657 sewing, DD Transform and
-older measurement/physics reports preserve their original results but are stale
-on changed scoped source. The unresolved Transform pointer case and garment
-physics failures below remain open. The reviewed current ad7 addendum has
-29 Rust command variants / 28 nontransaction schemas / nine MCP tools; this is
-source inventory only, never completed-feature credit. No current/pass claim is
-created from the private internal checkpoints.
+A starts empty, creates the unit square at R1 and curve #13 at R2; first-point
+state remains transient. Invalid `1e-` refusal, modal Save block, backdrop Cancel,
+explicit Cancel and `0.470e0` caret retention preserve R2. One compound endpoint
+and grain edit reaches R3, Undo R4 and Redo R5. Full initial getApp AX is missing;
+transient marker is partly cursor-occluded; immediate/exactly-once summary relies
+on actor/tool history and stored timing bounds. Full accessibility, held-state,
+strict same-frame, restart, B–E, full annotation, reference, physics and roadmap
+acceptance are not established. See the [actual UI gallery](docs/studio-preview.md).
+
+A001 remains a zero-execution setup error. A002 remains stopped/unaccepted after
+its old procedure missed intended backdrop cancellation, with its one failed
+saved grade unchanged. Neither is repaired or regraded. Later cleanup and changed
+mutable autosaves have separate receipts; exact pre-cleanup snapshot copies are
+retained and the later mutable sidecars excluded. The original native worktree
+remains untouched for independently bound B–E. Those cases remain required and are
+outside this publication packet’s coverage. Separate B001 is active on the original
+clean db8/ad7 worktree: actor clock 2026-11-15T22:33:46.268Z, owned PID 39198.
+Root’s initial checkpoint records six pairs / 47.767 s / zero errors, at R5 with
+one piece, line #13, 571 vertices and 10 mm snap before authoring. Its outcome is
+pending outside both reports; this is a confirmed handle, not a B result. Only a
+later root closure can mark it terminal.
+
+## Separate failed Harbor half-step diagnostic
+
+The [diagnostic-only report](parity/reports/WF-20261115-HARBOR-HALF-STEP-001.json)
+is failed/current solely for one declared A16×32 experiment. SIM-006 remains
+partial/failed; no convergence, calibration, sufficient fix or new defaults are
+established. The retained A8 control and failed A/pair results are unchanged.
+
+Corrected freeze 58733a8 / GO c76dfd8 bound one run; exact physical rest, initialized
+masses and unchanged inputs match the retained A control after only empty v4
+internal arrays. All 181 states / 180 steps and 31 FINAL-bound outputs were
+reviewed. Quality remains **failed**: peak 0.1654700550371433 (**16.5470055%**) at
+frame 29, front/piece 2, warp, triangle 79; strain failures 29–30. Both declared
+path-sensitivity triggers fire: maximum same-frame strain difference
+0.08070415883928184 and nodal difference 0.02490758863765885 m. These support this
+one path-sensitivity diagnosis, not convergence or a physics fix.
+
+Whole-case 285.18800870806444 s fits 420; stage exits are 0/0/2/0. Consumer 2 explicitly
+reports failed quality despite operational completion. FINAL original SHA
+9dbc231b433b539306d6229bed16bb056ab4920ece70d816bd3cb980da905397
+and the independent saved-record review remain bound in the
+[separate packet](parity/reports/artifacts/physics-path-sensitivity-a16-20261115/README.md). Controller 0 is producer/parent observed,
+consistent with FINAL/code; its later terminal copy is explicitly retrospective
+post-run-appendix-40084, not an in-situ receipt. Unexecuted preparation001/f7's
+deadline blocker and prospectively corrected preparation002 review remain.
+No driver binary or target/cache is published. Publication performs no new
+physical run and changes no production default.
+No native/reference/contact-completeness or sufficient-fix credit follows.
+
+The current source-only addendum records 29 command variants / 28 nontransaction
+schemas/nine MCP tools. Historical JSON remains unchanged. Old Transform pointer,
+New/recovery, garment-contact and physics gaps below remain visible. Keep only
+active test windows; close finished windows after retaining evidence and record
+post-case cleanup outside frozen clocks. Actions remain disabled and the existing
+static Pages site is preserved.
 
 ## Historical bounded physical sewing checkpoint (B657)
 
 The [implementation-only report](parity/reports/WF-20261115-PHYSICAL-LENGTH-SEWING-001.json)
 retains its original **passed** result for the original headless scope and
-root-accepted native v3 case002, and is now **stale** on ad7. SEW-002, APP-001 and
-UI-004 remain partial/not_run/stale for their coarse contracts. No full sewing,
+root-accepted native v3 case002, and is now **stale** on ad7. Its covered coarse
+contracts remain partial/not_run; current feature freshness is recorded separately
+in the registry, including the new bounded annotation scope above. No full sewing,
 New Empty, garment, physics, reference, process-restart or roadmap acceptance follows.
 
 The shared command resolves oriented intervals from exact Start t and positive
@@ -214,23 +273,18 @@ surface contact, full persistence and full garment acceptance remain open.
 
 ## Exact next work
 
-Root-review the clean metadata verification result, then prospectively freeze and
-execute the required actual-native internal annotation cases A–E on this exact
-source and native binary. Native A is next; source tests and private headless
-results do not substitute for that gate. Publish a curated tracked packet only
-after reviewed native results, source/artifact guards and clean registry/map
-checks. Keep closed old outcomes intact and require a fresh binding if source,
-inputs or criteria change.
+Root independently audits the clean tracked publication candidate, mappings,
+source65, scopes and check receipts before remote publication. Continue the
+original native annotation B–E work only under separate reviewed source/input/
+criteria bindings and GO; accepted A bytes are eligible inputs, not a generated
+model substitute. Do not repair/regrade closed A001/A002/A003 or physics cases.
 
-After accepted internal annotations/persistence/runtime evidence, propose a
-separate bounded topological cut with explicit ownership, relationships and
-atomic shared commands. PAT-006 remains planned: annotations do not cut cloth or
-create holes. Full internal shapes/constraints/notches, chain/internal sewing,
-easing, native remeshing, garment contact/physics, full New and reference workflows
-remain open. Keep only active test windows; retain outcomes before closing finished
-windows and record post-case cleanup outside frozen case clocks.
+After accepted annotation/persistence/runtime evidence, propose a separate bounded
+topological cut with explicit ownership, relationship and atomic-command policy.
+PAT-006 remains planned. Full internal shapes/constraints/notches, chain/internal
+sewing, easing, native remeshing, garment physics, full New/Recover and reference
+workflows remain open. No roadmap gate is completed by these engineering subsets.
 
-Keep Actions and automated Pages deployments disabled through development. PR46
-retains the prior physical source/evidence; this internal runtime and its local
-checkpoints are unpublished. No push/PR, package/release, cross-platform or Pages
-deployment claim is added by this metadata continuation.
+Keep Actions and automated Pages deployments disabled through development. This
+local preparation adds no push/PR/merge, package/release or deployment. Root owns
+publication; the existing static Pages site remains unchanged.

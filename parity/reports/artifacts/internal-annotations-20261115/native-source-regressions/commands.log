@@ -1,0 +1,10 @@
+cwd=.local/internal-segments-20261115
+cargo test -p weftforge internal_line_tests -- --nocapture
+cargo test -p weftforge internal_line_tests -- --nocapture
+cargo test -p weftforge --no-fail-fast
+cargo test -p weftforge position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule -- --nocapture
+cargo test -p weftforge position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule -- --nocapture
+cargo test -p weftforge --no-fail-fast
+cargo clippy -p weftforge --all-targets -- -D warnings
+rustfmt --edition 2024 --check apps/weftforge/src/main.rs
+git diff --check -- apps/weftforge/src/main.rs

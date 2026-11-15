@@ -1,0 +1,724 @@
+{
+  "kind": "bounded_original_internal_annotation_acceptance",
+  "freeze_sha256": "573e75789e9948e905fa44fc52872300c15de070e0d6747f77f53772e5ac9dac",
+  "binding_sha256": "33d997a959dc31e909353e9e1f82d2e227153006161e5973d8919acd93a7b998",
+  "cli_sha256": "71ef84c7c90e9ffdf291f3dd2e031a476ff8b99097258256bf46e17afeb8b2bd",
+  "observations": [
+    {
+      "id": "closed_schema_28_variants_9_tools",
+      "status": "passed",
+      "detail": 2
+    },
+    {
+      "id": "R_add",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "987af72b1544c765ee43838f567d2071a56c263ee0d326e75095fee4472f1d60"
+      }
+    },
+    {
+      "id": "L_add",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "d0c9d9cc51326dd78665a6ef32f844993169bbcf6d50a952892344411a3b76fa"
+      }
+    },
+    {
+      "id": "C_add",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "9b22acd6367606677a7404b275a4ffe26d6b733ecc73fe125d4716fc5187092e"
+      }
+    },
+    {
+      "id": "S_add",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "c528d79c379bd253f52cc8936bde945c9c653d53bd7f066a5a95ca9f92e04c9e"
+      }
+    },
+    {
+      "id": "R_clearance_safe",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "ad9261cccea8b1f0eff7a54e92130744726665feea025070aa18f5f8faf34efd"
+      }
+    },
+    {
+      "id": "R_crossing_independent",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "d1b0bfce0180972cfa6c6232a296550df183e56296d654d221d09155a31cbf71"
+      }
+    },
+    {
+      "id": "R_coincident_coordinates",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "9fdb4cf44694fc785483010c9c9ec60d24ff59624dc2132bef9a33e0ecba917f"
+      }
+    },
+    {
+      "id": "R_atomic_endpoint_swap",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "f90865f70d468ce773a3400a2124932a22765a8c906b8309b3cd88c3d4e95a60"
+      }
+    },
+    {
+      "id": "R_resize_both_endpoints",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "3bd2b035edde3b2015ca64246914965469117ee44ec6dc813407104fa06c42c7"
+      }
+    },
+    {
+      "id": "R_remove_line_both_points",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "606d2a4746b8f52fb0799b6ad7b94d2f03d8e2edadb95299c72b94d43b76b001"
+      }
+    },
+    {
+      "id": "R_remove_then_add_no_ID_reuse",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "c3488e8cf2a2881056238afdccab5cba4e3a215d8fad0acc2b83c22f1f68573a"
+      }
+    },
+    {
+      "id": "S_remove_owner_both_points_and_dependents",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "c5ea5005dde68e435071e76068d36d04b62b7cbb3eb985bb6df7cb9195613a70"
+      }
+    },
+    {
+      "id": "R_split_preserves_annotation",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "d979a33c4e13d8dab21e7f378d94c8da32d0ede78f48b2fd7f3cff018c2b1c08"
+      }
+    },
+    {
+      "id": "R_split_join_preserves_annotation",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "c066331d7919fac8f39463548ca743ba7f01871a8c79a55c8d7d14affe75ead6"
+      }
+    },
+    {
+      "id": "R_transform_tilted",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "0c2b0e5a2a6dda80c5f28322eb5d162eead5c1eb421311f4f80b570c5f59f8f6"
+      }
+    },
+    {
+      "id": "R_transform_gimbal",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "6141bb3ee8ce44fcad475974d5a5339869feb11d4e6dff3d520d6621b5a0e9c4"
+      }
+    },
+    {
+      "id": "R_transform_inverse",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "7247ee7279a6f8665827ba854ce92c121d49a1b86d94821b91fbd339448011ef"
+      }
+    },
+    {
+      "id": "R_transform_large_scale",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "6fc8d47d0cf0f895a6c7ab47db2f5419f10cf0126fccd5c3c8b6dc7275b6e371"
+      }
+    },
+    {
+      "id": "R_add_res0.005",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "45baf3ba94b57451d626be5920c1efd2b2d59f1bbceb03582fd7c8348db71ad7"
+      }
+    },
+    {
+      "id": "R_add_res0.5",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "0e9d1b81c3f04eb08b1959440e4c323ff6a24ffa93a28bd5510aaf20b69f62f9"
+      }
+    },
+    {
+      "id": "L_add_res0.005",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "a8f683ad6b67db583903f75c1eced83063a0f0a733aee0b9a41fa5ab21afc344"
+      }
+    },
+    {
+      "id": "L_add_res0.5",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "82dc9ef24583bff8b34df45180043f38a396cbd3644987d78dd8db77571648f6"
+      }
+    },
+    {
+      "id": "C_add_res0.005",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "018e8beff8ad66a2471c59792ea98e91695ffd380504be1302443b62e5086101"
+      }
+    },
+    {
+      "id": "C_add_res0.5",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "cf7683bb0ed598ad7b1900fd629c06c063a369946ae164d375199982c8f209ca"
+      }
+    },
+    {
+      "id": "R_clearance_safe_res0.005",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "dac1cb10ec73ff48eab6f572a02e31544690643b7ae0e2f32500f4839aea9cc0"
+      }
+    },
+    {
+      "id": "R_clearance_safe_res0.5",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "8d7f59c074de4868b70f8c33a7ea6e3fdf1945fc56f46cca89acd605b7e17979"
+      }
+    },
+    {
+      "id": "R_containment_5e-07_res0.005",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "R_containment_1.05e-06_res0.005",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "L_containment_0.8_res0.005",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "C_containment_0.2_res0.005",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "R_containment_5e-07_res0.07",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "R_containment_1.05e-06_res0.07",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "L_containment_0.8_res0.07",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "C_containment_0.2_res0.07",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "R_containment_5e-07_res0.5",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "R_containment_1.05e-06_res0.5",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "L_containment_0.8_res0.5",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "C_containment_0.2_res0.5",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "R_endpoint_on_boundary",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "R_boundary_overlap",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "R_outside_endpoint",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "R_zero_length",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "R_nearzero_length",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "R_coordinate_limit",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "missing_owner",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "remove_boundary_refused",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "internal_split_refused",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "internal_join_refused",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "internal_controls_refused",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "outer_edit_excludes_line",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "late_failure_atomic",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "add_seam_internal_refused",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "add_sewing_group_internal_refused",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "add_sewing_by_length_internal_refused",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "ID_partial_overflow",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "revision_overflow",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "unknown_side_field",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "missing_end",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "short_coordinate",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "zero_owner_ID",
+      "status": "passed",
+      "detail": {
+        "rejected": true,
+        "channels": 3
+      }
+    },
+    {
+      "id": "v4_missing_internal_list",
+      "status": "passed",
+      "detail": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "v4_missing_groups",
+      "status": "passed",
+      "detail": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "v4_missing_point",
+      "status": "passed",
+      "detail": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "v4_missing_curve",
+      "status": "passed",
+      "detail": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "v4_duplicate_ID",
+      "status": "passed",
+      "detail": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "v4_duplicate_ownership",
+      "status": "passed",
+      "detail": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "v4_both_roles",
+      "status": "passed",
+      "detail": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "v4_shared_endpoint",
+      "status": "passed",
+      "detail": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "v4_cross_piece_internal_owner",
+      "status": "passed",
+      "detail": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "v4_identical_endpoint_ids",
+      "status": "passed",
+      "detail": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "v4_orphan_point",
+      "status": "passed",
+      "detail": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "v4_internal_controls",
+      "status": "passed",
+      "detail": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "v4_invalid_next_id",
+      "status": "passed",
+      "detail": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "v4_unknown_piece_field",
+      "status": "passed",
+      "detail": [
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": "strict_legacy_migration_and_old_primary_recovery",
+      "status": "passed",
+      "detail": {
+        "versions": [
+          1,
+          2,
+          3
+        ],
+        "unchanged_read_revision": true,
+        "exact_bits": true
+      }
+    },
+    {
+      "id": "annotation_only_mesh_sewing_and_export_separation",
+      "status": "passed",
+      "detail": {
+        "annotation_stages": 3,
+        "compared": "all exposed mesh arrays/UV/ownership/weighted stitches; full OBJ/SVG bytes; DXF bytes except its validated own-revision group999 comment",
+        "limits": "mass/constraints/old-mesh lifecycle remain source gates"
+      }
+    },
+    {
+      "id": "nonfinite_duplicate_future_schema_refusal",
+      "status": "passed",
+      "detail": 4
+    },
+    {
+      "id": "v4_signed_zero_hard_decimal_roundtrip",
+      "status": "passed",
+      "detail": {
+        "signed_zero": true,
+        "hard_decimal": true
+      }
+    },
+    {
+      "id": "object_and_file_limits",
+      "status": "passed",
+      "detail": {
+        "objects": 20002,
+        "file_bytes": 16777217
+      }
+    },
+    {
+      "id": "invalid_existing_destination",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "primary_and_recovery_retained": true,
+        "qualification": "These cases fail before a late primary replacement; injected interruption semantics remain separate."
+      }
+    },
+    {
+      "id": "destination_directory",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "primary_and_recovery_retained": true,
+        "qualification": "These cases fail before a late primary replacement; injected interruption semantics remain separate."
+      }
+    },
+    {
+      "id": "destination_symlink",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "primary_and_recovery_retained": true,
+        "qualification": "These cases fail before a late primary replacement; injected interruption semantics remain separate."
+      }
+    },
+    {
+      "id": "recovery_directory",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "primary_and_recovery_retained": true,
+        "qualification": "These cases fail before a late primary replacement; injected interruption semantics remain separate."
+      }
+    },
+    {
+      "id": "bounded_stress_observation_not_workcap_proof",
+      "status": "passed",
+      "detail": {
+        "outcome": "refused_with_explicit_work_or_certificate_budget",
+        "qualification": "Bounded observation, not a rejection oracle based on guessed loop count. Source-level explicit 1e6 exhaustion regression remains mandatory."
+      }
+    },
+    {
+      "id": "immutable_source_and_binary_retained",
+      "status": "passed",
+      "detail": null
+    }
+  ],
+  "separate_required_gates": [
+    "Live Editor history/Redo/high-water branch table, cancellation and failed-load raw drafts",
+    "Old mesh rejected by create_cloth; fresh same-revision mesh accepted; mass/constraint separation",
+    "Deterministic source-level containment work/depth/sample exhaustion regressions and useful rejection",
+    "Injected late atomic-writer interruption: primary unchanged, recovery may advance to valid prior primary; no two-file atomicity claim",
+    "Real native creation/edit/drag/cancel/history/new/recover/process-restart/reopen and export omission; four local Rust gates; tracked clean registry/map validation"
+  ],
+  "limits": [
+    "Straight annotations only, exclusive endpoint IDs, flat ordered ownership list, no internal sewing/cubic/split/join/cut/hole/fold/mesh topology or reference claim",
+    "General native Save may commit inspector drafts before chooser/IO; this evaluator does not claim global draft atomicity",
+    "Adapter success and synthetic tests do not establish live history/mesh lifecycle/native acceptance",
+    "No candidate execution is authorized without separate root review, immutable source/binary binding and GO"
+  ]
+}

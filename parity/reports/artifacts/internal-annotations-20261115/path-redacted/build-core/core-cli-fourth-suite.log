@@ -1,0 +1,236 @@
+   Compiling weftforge-core v0.1.0 (<WORKSPACE>/.local/internal-segments-20261115/crates/weftforge-core)
+   Compiling weftforge-cli v0.1.0 (<WORKSPACE>/.local/internal-segments-20261115/apps/weftforge-cli)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.99s
+     Running unittests src/main.rs (target/debug/deps/weftforge_cli-454b21068a5f5fdf)
+
+running 3 tests
+test tests::fit_quality_requires_closed_seams_and_all_declared_bounds ... ok
+test tests::legacy_diagnostics_remain_readable_with_no_attribution ... ok
+test tests::shirt_is_editable_and_interval_sewn ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/curves.rs (target/debug/deps/curves-c79c575494a02edb)
+
+running 1 test
+test cli_edits_splits_and_joins_sewn_curves_and_preserves_outputs_on_failure ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.46s
+
+     Running tests/dxf_import.rs (target/debug/deps/dxf_import-54029e83bfe12330)
+
+running 1 test
+test cli_import_dxf_edits_once_reports_scale_and_preserves_files_after_failures ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+
+     Running tests/ellipse.rs (target/debug/deps/ellipse-8800652988b0694c)
+
+running 1 test
+test cli_ellipse_creates_inspects_and_preserves_files_after_invalid_input ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+
+     Running tests/grain.rs (target/debug/deps/grain-e88247f7cddafa8b)
+
+running 1 test
+test cli_authors_grain_and_orthotropy_and_preserves_output_on_invalid_values ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+     Running tests/mcp_stdio.rs (target/debug/deps/mcp_stdio-c4efc6d5e9e9ae35)
+
+running 15 tests
+test inspection_matches_saved_native_json_without_changing_f32_materials_or_f64_geometry ... ok
+test stdio_validates_protocol_lifecycle_modern_metadata_and_line_bounds ... ok
+test stdio_advertises_and_executes_join_atomically_without_overwriting_failed_output ... ok
+test stdio_ellipse_discovery_creation_inspection_and_failure_preservation ... ok
+test svg_import_stdio_discovers_shared_command_reports_physical_scale_and_is_atomic ... ok
+test cli_command_files_are_bounded_strict_and_do_not_replace_failed_destinations ... ok
+test dxf_import_stdio_discovers_shared_command_reports_physical_scale_and_is_atomic ... ok
+test sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constraints ... ok
+test stdio_authors_atomic_shared_commands_and_exports_physical_units ... ok
+test physical_length_sewing_schema_and_cli_mcp_use_the_shared_candidate_transaction ... ok
+test authored_lengths_match_cli_core_and_both_mcp_profiles_without_writes ... ok
+test stdio_errors_preserve_input_output_and_recovery_and_allow_retry ... ok
+test internal_annotations_share_closed_schema_cli_and_mcp_transactions_without_new_tools ... ok
+test stdio_transform_schema_cli_equivalence_and_strict_atomic_failures ... ok
+test physical_length_sewing_rejects_original_strict_payloads_and_preserves_same_file_bytes ... ok
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.49s
+
+     Running tests/svg_import.rs (target/debug/deps/svg_import-361ab3c50275ae93)
+
+running 1 test
+test cli_import_svg_edits_once_reports_scale_and_preserves_files_after_failures ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+
+     Running unittests src/lib.rs (target/debug/deps/weftforge_core-50eef958ab38b631)
+
+running 12 tests
+test sewing::tests::new_groups_do_not_snap_nearby_parameters_by_a_legacy_t_tolerance ... ok
+test geometry::quality_tests::cancellation_leaves_authoring_unchanged ... ok
+test sewing::tests::metric_limits_cancel_or_reject_without_an_approximate_fallback ... ok
+test geometry::quality_tests::interior_flip_preserves_boundary_and_area_while_improving_sliver ... ok
+test simulation::tests::rejects_stale_and_foreign_meshes_without_panicking ... ok
+test simulation::tests::cancellable_adapter_reaches_initial_contacts_and_retains_inputs ... ok
+test simulation::tests::strain_attribution_resolves_current_piece_and_rejects_stale_indices ... ok
+test persistence::tests::interrupted_save_and_invalid_inputs_preserve_the_previous_document ... ok
+test persistence::tests::saves_refuse_nonregular_destinations_without_changing_targets_or_recovery ... ok
+test persistence::tests::exports_preserve_native_projects_and_aliases_at_any_extension ... ok
+test simulation::tests::original_shirt_initial_contacts_match_full_scan_at_multiple_resolutions ... ok
+test geometry::quality_tests::fine_curved_panels_preserve_area_topology_and_sewing_within_mesh_limits ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 13.69s
+
+     Running tests/dxf.rs (target/debug/deps/dxf-4cdf0f8b28ba0261)
+
+running 4 tests
+test r2000_infrastructure_has_resolved_unique_handles_counts_and_layout_links ... ok
+test exact_authored_boundaries_and_piece_order_survive_ascii_mm_export ... ok
+test empty_project_is_valid_and_failed_exports_preserve_project_history_and_files ... ok
+test known_dimensions_and_geometry_ignore_placement_resolution_and_simulation ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+     Running tests/dxf_import.rs (target/debug/deps/dxf_import-9227c3d94fe82df1)
+
+running 6 tests
+test own_writer_round_trip_is_supplemental_and_keeps_cubics_and_f64_scale ... ok
+test command_wire_fields_are_strict_and_file_loading_is_bounded ... ok
+test original_drawing_adds_exact_editable_si_curves_layout_and_layer_names_in_one_undo ... ok
+test malformed_unsupported_or_unsafe_input_preserves_document_and_both_history_directions ... ok
+test entity_limit_accepts_4096_and_rejects_4097_before_authoring ... ok
+test full_import_and_later_batch_failure_leave_old_project_and_id_allocator_unchanged ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.18s
+
+     Running tests/ellipse.rs (target/debug/deps/ellipse-f2091ec341aaa703)
+
+running 4 tests
+test ellipse_radial_error_obeys_predeclared_independent_polynomial_bound ... ok
+test ellipse_has_declared_controls_ids_bounds_tangents_and_one_persistent_transaction ... ok
+test ellipse_rejects_bad_dimensions_coordinates_names_ids_and_resource_counts_atomically ... ok
+test ellipse_boundaries_keep_authored_ids_and_sewing_under_remeshing ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.30s
+
+     Running tests/grain.rs (target/debug/deps/grain-f0371f2053fb85e4)
+
+running 3 tests
+test invalid_grain_or_directional_stiffness_retains_document_and_history ... ok
+test grain_and_orthotropy_are_one_transaction_with_history_and_stale_mesh_rejection ... ok
+test authored_grain_rotates_real_cpu_response_while_color_preserves_physics ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+     Running tests/internal_lines.rs (target/debug/deps/internal_lines-1292ce1867109601)
+
+running 9 tests
+test standalone_owned_internal_curve_requires_both_actual_endpoint_objects ... ok
+test original_r_ids_analytic_length_history_and_endpoint_transaction ... ok
+test crossing_and_coincident_annotations_stay_independent_and_exclusive ... ok
+test v4_endpoint_bits_and_strict_annotation_input_round_trip ... ok
+test resize_rigid_transform_boundary_edits_and_owner_removal_keep_both_endpoints ... ok
+test original_l_c_and_clearance_are_whole_segment_and_resolution_independent ... ok
+test exterior_exports_omit_annotations_and_failed_native_save_keeps_both_files ... ok
+test actual_project_validation_exhausts_fixed_containment_budget_atomically ... ok
+test annotations_leave_every_mesh_and_physical_field_exterior_only ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.55s
+
+     Running tests/joins.rs (target/debug/deps/joins-3c0d65df8063550c)
+
+running 7 tests
+test join_rejects_placement_roundoff_above_the_physical_point_tolerance ... ok
+test join_rejects_numerically_ambiguous_or_extreme_parameter_reconstruction ... ok
+test incompatible_midpoint_invisible_cubics_mixed_controls_and_corners_reject_atomically ... ok
+test join_rejects_self_seams_tiny_remapped_intervals_and_failing_transactions ... ok
+test join_rejects_a_full_domain_roundoff_error_above_the_unchanged_tolerance ... ok
+test join_recovers_analytic_cubic_children_including_stationary_derivatives_and_wrap ... ok
+test join_preserves_both_children_sewn_pairs_in_all_orientations_and_v4_remesh ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+
+     Running tests/migration.rs (target/debug/deps/migration-019a4c5ebdd51c7b)
+
+running 10 tests
+test duplicate_fields_are_rejected_at_envelope_project_and_material_boundaries ... ok
+test nondefault_v1_material_values_are_mapped_instead_of_replaced_by_defaults ... ok
+test both_schema_readers_reject_nonfinite_and_out_of_range_numbers ... ok
+test version_dispatch_rejects_mixed_schemas_unknown_fields_and_unsupported_versions ... ok
+test v2_hard_decimals_and_large_authoring_values_keep_their_bits ... ok
+test original_v1_point_bits_survive_load_migration_save_and_reload ... ok
+test v1_hard_decimals_and_large_authoring_values_keep_their_bits ... ok
+test v4_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes ... ok
+test real_v1_fixtures_migrate_without_authored_geometry_or_physical_data_loss ... ok
+test original_v3_migrates_only_empty_internal_ownership_and_keeps_f64_bits ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+
+     Running tests/pattern_transform.rs (target/debug/deps/pattern_transform-e930dfff25b02dc7)
+
+running 8 tests
+test transform_json_requires_all_fields_fixed_arrays_and_original_strict_number_tokens ... ok
+test control_only_and_compensated_placement_overflow_reject_atomically ... ok
+test huge_existing_grain_is_rotated_as_a_unit_vector_without_addition_overflow ... ok
+test quarter_turn_has_independent_polynomial_order_grain_and_sewing_oracles ... ok
+test translation_uses_single_additions_and_keeps_zero_components_and_unrelated_bits ... ok
+test mesh_rebuild_uses_new_authored_uvs_and_revision_and_native_v4_round_trips ... ok
+test invalid_inputs_results_and_late_transactions_retain_every_history_branch ... ok
+test non_right_angle_inverse_and_pivot_preserve_tilted_gimbal_and_large_scale_surfaces ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+
+     Running tests/seam_reversal.rs (target/debug/deps/seam_reversal-ac26a5df301a719f)
+
+running 2 tests
+test rejected_staged_reversal_retains_document_and_redo ... ok
+test reversal_changes_endpoint_pairing_and_preserves_partial_nonlinear_construction ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.06s
+
+     Running tests/sewing_groups.rs (target/debug/deps/sewing_groups-c825520b62a02149)
+
+running 20 tests
+test physical_length_creation_reuses_same_curve_disjoint_and_unequal_length_group_rules ... ok
+test group_commands_reversal_history_branches_and_dependent_removal_are_atomic ... ok
+test authored_interval_lengths_match_straight_and_analytic_cubic_primitives ... ok
+test disjoint_same_curve_coverage_survives_split_join_but_overlaps_are_rejected ... ok
+test a_thousand_cubic_spans_share_one_absolute_path_budget ... ok
+test legacy_lengths_share_accurate_raw_metrics_without_changing_correspondence ... ok
+test strict_v4_and_legacy_v2_keep_authored_values_and_maps_without_reinterpretation ... ok
+test disconnected_two_to_three_keeps_both_one_sided_knots_and_real_constraints ... ok
+test physical_length_intervals_match_primitive_and_derivative_oracles_in_both_directions ... ok
+test physical_length_failures_preserve_document_allocator_and_both_history_stacks ... FAILED
+test physical_length_command_is_one_persistent_group_with_physical_correspondence_and_history ... ok
+test collinear_nonuniform_cubic_uses_physical_length_in_both_directions ... ok
+test geometry_edits_keep_attachments_recompute_lengths_and_reject_old_meshes ... ok
+test group_save_reopen_recovery_and_failed_metric_save_keep_existing_files ... ok
+test conditioned_short_spans_reject_global_parameter_rounding_before_commit_or_io ... ok
+test length_queries_are_read_only_validate_intervals_and_ignore_display_state ... ok
+test split_join_partial_cubics_keep_group_identity_maps_and_pair_locations ... ok
+test resource_precision_cancellation_and_invalid_preview_fail_without_mutation ... ok
+test split_at_partial_endpoints_and_authored_map_knots_keeps_all_positive_spans ... ok
+test asymmetric_cubic_metric_and_nonlinear_pairs_match_independent_integrals ... ok
+
+failures:
+
+---- physical_length_failures_preserve_document_allocator_and_both_history_stacks stdout ----
+
+thread 'physical_length_failures_preserve_document_allocator_and_both_history_stacks' (63156481) panicked at crates/weftforge-core/tests/sewing_groups.rs:1595:13:
+assertion failed: exhausted.execute(Command::AddSewingByLength {
+                    name: "Resolve before allocation".into(),
+                    a: valid_a,
+                    b: length_side(u64::MAX, 0., Forward, 0.1),
+                }).unwrap_err().0.contains("curve is missing")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    physical_length_failures_preserve_document_allocator_and_both_history_stacks
+
+test result: FAILED. 19 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+
+error: test failed, to rerun pass `-p weftforge-core --test sewing_groups`

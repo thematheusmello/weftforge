@@ -1,0 +1,23 @@
+--- old-ac65/A.steps
++++ prospective-v2/A.steps
+@@ -105,7 +105,19 @@
+     "macro": "button",
+     "times": 1,
+     "label": "modal-background-pointer-blocked",
+-    "procedure": "One observed visible background Undo pointer click must not author or change history. If a background AX authoring node is absent, record an AX coverage gap; do not invent an accessibility pass."
++    "procedure": "One observed visible background Undo pointer click must not author or change history. Expect backdrop Cancel: the modal closes and staged grain raw/focus restore at accepted R2, with no Undo revision. If a background AX authoring node is absent, record an AX coverage gap; do not invent an accessibility pass."
++  },
++  {
++    "macro": "button",
++    "times": 1,
++    "label": "reopen-after-backdrop",
++    "procedure": "Reopen the observed enabled Edit internal endpoints\u2026 exactly once after backdrop Cancel; capture the fresh edit modal. This is the one prescribed continuation, not an alternate route or retry."
++  },
++  {
++    "macro": "field",
++    "times": 1,
++    "label": "reenter-invalid-after-backdrop",
++    "procedure": "Reenter Start U raw 1e- exactly once in the fresh modal, with the original field-focus/type captures. Do NOT Apply again; the first invalid refusal was already observed. Continue to the original explicit Cancel internal line action."
+   },
+   {
+     "macro": "button",

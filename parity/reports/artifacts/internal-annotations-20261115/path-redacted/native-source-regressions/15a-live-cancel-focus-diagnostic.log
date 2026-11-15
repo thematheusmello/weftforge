@@ -1,0 +1,21 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/internal-segments-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.15s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 1 test
+
+thread 'internal_line_tests::internal_line_review_escape_preserves_latest_source_input_entered_during_drag' (63337338) panicked at apps/weftforge/src/main.rs:16263:13:
+assertion `left == right` failed: the source editor lost focus during the drag
+  left: None
+ right: Some(Id::new(4504368854553595396))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test internal_line_tests::internal_line_review_escape_preserves_latest_source_input_entered_during_drag ... FAILED
+
+failures:
+
+failures:
+    internal_line_tests::internal_line_review_escape_preserves_latest_source_input_entered_during_drag
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 104 filtered out; finished in 0.20s
+
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

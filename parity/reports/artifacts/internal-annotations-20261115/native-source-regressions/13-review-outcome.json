@@ -1,0 +1,31 @@
+{
+  "scope": "native Rust/egui/AccessKit implementation checks only; no actual GUI, reference or independent evaluator execution",
+  "source_commit": "703a8888526790e7ebe310a8df00907a154db5a5",
+  "owned_file": "apps/weftforge/src/main.rs",
+  "owned_source_sha256": "3b3e4328013bd1992a32fdf545ee5b0c6fe683ecad94b4b5013c27839c8b46e3",
+  "red": {
+    "production_commit": "f7b7a4e660f2a5085c23980a6bb6447e067e4c63",
+    "production_prefix_byte_identical": true,
+    "tests": 6,
+    "passed": 0,
+    "failed": 6
+  },
+  "green": {
+    "focused_tests": 6,
+    "native_package_tests": 104,
+    "clippy": "cargo clippy -p weftforge --all-targets -- -D warnings",
+    "owned_rustfmt_check": "passed",
+    "owned_diff_check": "passed"
+  },
+  "original_f7_logs_unchanged": true,
+  "worktree_clean": true,
+  "artifacts_sha256": {
+    "08-red-main.rs": "40f6417deacc043057b11dbe23667bd4dd42843f1c7f5e593748d02b17afe2f0",
+    "08-red-identity.json": "de00f1f48a9d668aeec99f27548b55aa07f661e967de3cf7d3622a33806051ab",
+    "08-review-red-tests.log": "e03b0b93f3a2afbd2cb7790b6701151e38ad8f76179ff2b42fff5c216180d0d9",
+    "09-review-green-tests.log": "26ff7d38595ecd5580ad64e849b39b4314d92fd457e5e52b759028c9618d206c",
+    "10-corrected-all-native-tests.log": "cb494c83258eb2820a53d4d6af92d0e287dff9db9dbad1bbad56d074a3016d11",
+    "11-corrected-native-clippy.log": "6de660af6cefc01e52aae113a5d00ed1210f0c2bf50266fee52d432cf20abac6",
+    "12-review-commands.log": "372413c469cb8f41f7a88b475f9e6acf59f7933d1f7261d4bb322f010a75c49c"
+  }
+}

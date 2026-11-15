@@ -1,0 +1,2427 @@
+diff --git a/apps/weftforge-cli/src/main.rs b/apps/weftforge-cli/src/main.rs
+index a61420f..87474d9 100644
+--- a/apps/weftforge-cli/src/main.rs
++++ b/apps/weftforge-cli/src/main.rs
+@@ -56,7 +56,7 @@ fn run() -> Result<()> {
+     let args: Vec<_> = std::env::args().skip(1).collect();
+     match args.first().map(String::as_str) {
+         None | Some("--help" | "-h" | "help") => println!(
+-            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nlengths PROJECT interval CURVE_ID T0 T1   authored/rest length, unrounded SI JSON\nlengths PROJECT seam SEAM_ID\nlengths PROJECT sewing-group GROUP_ID\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nimport-svg INPUT OUTPUT PATTERNS.svg   editable closed paths with physical mm scale\nimport-dxf INPUT OUTPUT PATTERNS.dxf   bounded R2000 LINE/cubic boundaries in mm\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj\nexport-svg PROJECT OUTPUT.svg\nexport-dxf PROJECT OUTPUT.dxf          exterior pattern boundaries in mm\nsimulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
++            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nlengths PROJECT interval CURVE_ID T0 T1   authored/rest length, unrounded SI JSON\nlengths PROJECT seam SEAM_ID\nlengths PROJECT sewing-group GROUP_ID\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nimport-svg INPUT OUTPUT PATTERNS.svg   editable closed paths with physical mm scale\nimport-dxf INPUT OUTPUT PATTERNS.dxf   bounded R2000 LINE/cubic boundaries in mm\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj          cloth surface only; omits internal annotations\nexport-svg PROJECT OUTPUT.svg          exterior only; omits internal annotations\nexport-dxf PROJECT OUTPUT.dxf          exterior boundaries in mm; omits internal annotations\nsimulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
+         ),
+         Some("mcp") => {
+             count(&args, 1)?;
+@@ -86,7 +86,7 @@ fn run() -> Result<()> {
+             println!(
+                 "{}",
+                 serde_json::to_string_pretty(
+-                    &serde_json::json!({"revision":p.revision,"units":"m","up":"Y","pieces":p.pieces.len(),"curves":p.curves.len(),"construction":{"points":p.points,"curves":p.curves},"vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"seams":seams,"sewing_groups":p.sewing_groups,"sewing_group_geometry":sewing_geometry(&mesh),"stitches":mesh.stitches.len(),"patterns":p.pieces.iter().map(|piece|serde_json::json!({"id":piece.id,"name":piece.name,"material":piece.material,"grain_angle_radians":piece.grain_angle})).collect::<Vec<_>>(),"materials":p.materials})
++                    &serde_json::json!({"revision":p.revision,"units":"m","up":"Y","pieces":p.pieces.len(),"curves":p.curves.len(),"construction":{"points":p.points,"curves":p.curves},"vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"seams":seams,"sewing_groups":p.sewing_groups,"sewing_group_geometry":sewing_geometry(&mesh),"stitches":mesh.stitches.len(),"patterns":p.pieces.iter().map(|piece|serde_json::json!({"id":piece.id,"name":piece.name,"material":piece.material,"grain_angle_radians":piece.grain_angle,"boundary":piece.boundary,"internal_curves":piece.internal_curves})).collect::<Vec<_>>(),"materials":p.materials})
+                 )?
+             );
+         }
+diff --git a/apps/weftforge-cli/src/mcp.rs b/apps/weftforge-cli/src/mcp.rs
+index 7c0a7f6..208ea62 100644
+--- a/apps/weftforge-cli/src/mcp.rs
++++ b/apps/weftforge-cli/src/mcp.rs
+@@ -613,6 +613,22 @@ fn command_schema() -> Value {
+                 &["name", "origin", "width", "height"],
+             ),
+         ),
++        (
++            "add_internal_segment",
++            object(
++                json!({"piece":{"type":"integer","minimum":1,"maximum":u64::MAX},
++                    "start":array(json!({"type":"number","minimum":-1000,"maximum":1000}),2),
++                    "end":array(json!({"type":"number","minimum":-1000,"maximum":1000}),2)}),
++                &["piece", "start", "end"],
++            ),
++        ),
++        (
++            "remove_internal_curve",
++            object(
++                json!({"curve":{"type":"integer","minimum":1,"maximum":u64::MAX}}),
++                &["curve"],
++            ),
++        ),
+         (
+             "move_point",
+             object(json!({"point":id,"position":xy}), &["point", "position"]),
+@@ -723,8 +739,8 @@ fn tools() -> Vec<Value> {
+         ("project_execute", "Load input, execute 1–1024 shared typed commands atomically as one document revision, then save output with native atomic/recovery handling. Input and output may be the same native file. Inspect stable IDs before edits; nested transactions are rejected.", object(json!({"input":path,"output":path,"commands":{"type":"array","minItems":1,"maxItems":MAX_COMMANDS,"items":command_schema()}}), &["input","output","commands"]), false),
+         ("project_import_svg", "Add closed straight/cubic SVG exterior patterns as one editable transaction. Require physical mm width/height and a uniform viewBox scale; retain the SVG user-space origin and invert Y. Import names with first material/default 3D placement; omit appearance, sewing, grain and simulation. Unsupported content fails the entire import; source SVG is preserved.", object(json!({"input":path,"output":path,"svg":path}), &["input","output","svg"]), false),
+         ("project_import_dxf", "Add the bounded FILE-005-v1 R2000 ASCII DXF LINE/clamped cubic SPLINE exterior patterns as one editable transaction. Require millimetres and exact closed ordered WF_PIECE layer contours; preserve WCS X/Y layout as U/V without inversion. Layer names become names with fresh IDs, first material and default 3D placement. Unsupported drawing content fails the entire import; source DXF is preserved.", object(json!({"input":path,"output":path,"dxf":path}), &["input","output","dxf"]), false),
+-        ("project_export_svg", "Export authored pattern curves at physical millimetre scale. Refuse replacement of the source or native project destinations.", files.clone(), false),
+-        ("project_export_obj", "Build and export a rest mesh in metres, Y-up, with source revision; no simulation. Refuse replacement of the source or native project destinations.", files.clone(), false),
+-        ("project_export_dxf", "Export authored exterior pattern boundaries as R2000 DXF LINE/SPLINE geometry in millimetres, without 3D placement. Sewing, materials and grain require the native project. Refuse replacement of source or native project destinations.", files, false),
++        ("project_export_svg", "Export authored exterior pattern curves at physical millimetre scale; omit internal annotations. Refuse replacement of the source or native project destinations.", files.clone(), false),
++        ("project_export_obj", "Build and export a rest mesh in metres, Y-up, with source revision; no simulation or annotation line primitives. Refuse replacement of the source or native project destinations.", files.clone(), false),
++        ("project_export_dxf", "Export authored exterior pattern boundaries as R2000 DXF LINE/SPLINE geometry in millimetres, without 3D placement. Internal annotations are omitted; sewing, materials, grain and editable annotations require the native project. Refuse replacement of source or native project destinations.", files, false),
+     ].into_iter().map(|(name,description,input,read_only)|json!({"name":name,"description":description,"inputSchema":input,"annotations":{"readOnlyHint":read_only,"destructiveHint":!read_only,"openWorldHint":false}})).collect()
+ }
+diff --git a/apps/weftforge-cli/tests/mcp_stdio.rs b/apps/weftforge-cli/tests/mcp_stdio.rs
+index 9f2818c..636c980 100644
+--- a/apps/weftforge-cli/tests/mcp_stdio.rs
++++ b/apps/weftforge-cli/tests/mcp_stdio.rs
+@@ -318,7 +318,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
+             .as_array()
+             .unwrap()
+             .len(),
+-        26
++        28
+     );
+     success(&server.call("project_create", json!({"output":project_path})));
+     let initial = server.call("project_inspect", json!({"path":project_path}));
+@@ -455,7 +455,7 @@ fn sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constrai
+         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
+         .as_array()
+         .unwrap();
+-    assert_eq!(variants.len(), 26);
++    assert_eq!(variants.len(), 28);
+     for name in [
+         "add_sewing_group",
+         "update_sewing_group",
+@@ -490,7 +490,7 @@ fn sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constrai
+     assert_eq!(group.a, intervals[..2]);
+     assert_eq!(group.b, intervals[2..]);
+     let saved: Value = serde_json::from_slice(&fs::read(&created).unwrap()).unwrap();
+-    assert_eq!(saved["version"], 3);
++    assert_eq!(saved["version"], weftforge_core::FORMAT_VERSION);
+ 
+     fs::write(&commands_file, serde_json::to_vec(&vec![command]).unwrap()).unwrap();
+     let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+@@ -680,7 +680,7 @@ fn physical_length_sewing_schema_and_cli_mcp_use_the_shared_candidate_transactio
+         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
+         .as_array()
+         .unwrap();
+-    assert_eq!(variants.len(), 26);
++    assert_eq!(variants.len(), 28);
+     let variant = variants
+         .iter()
+         .find(|variant| variant["properties"]["type"]["const"] == "add_sewing_by_length")
+@@ -741,7 +741,7 @@ fn physical_length_sewing_schema_and_cli_mcp_use_the_shared_candidate_transactio
+         native_project_json(&editor.project)
+     );
+     let saved: Value = serde_json::from_slice(&fs::read(&output).unwrap()).unwrap();
+-    assert_eq!(saved["version"], 3);
++    assert_eq!(saved["version"], weftforge_core::FORMAT_VERSION);
+     for side in ["a", "b"] {
+         assert_eq!(
+             saved["project"]["sewing_groups"][0][side][0]
+@@ -1159,7 +1159,7 @@ fn stdio_transform_schema_cli_equivalence_and_strict_atomic_failures() {
+     assert_eq!(success(&inspected)["project"], native_project_json(&saved));
+     assert_eq!(
+         serde_json::from_slice::<Value>(&fs::read(&output).unwrap()).unwrap()["version"],
+-        3
++        weftforge_core::FORMAT_VERSION
+     );
+     fs::write(
+         &commands_file,
+@@ -2067,3 +2067,213 @@ fn inspection_matches_saved_native_json_without_changing_f32_materials_or_f64_ge
+     assert_eq!(fs::read(&path).unwrap(), original);
+     server.finish();
+ }
++
++#[test]
++fn internal_annotations_share_closed_schema_cli_and_mcp_transactions_without_new_tools() {
++    let directory = Directory::new();
++    let empty = directory.path("empty.weftforge");
++    let cli_path = directory.path("cli.weftforge");
++    let mcp_path = directory.path("mcp.weftforge");
++    let commands_file = directory.path("commands.json");
++    Project::default().save(&empty).unwrap();
++    let commands = vec![
++        Command::AddRectangle {
++            name: "Original R".into(),
++            origin: [0., 0.],
++            width: 1.,
++            height: 1.,
++        },
++        Command::AddInternalSegment {
++            piece: 2,
++            start: [0.125, 0.25],
++            end: [0.875, 0.75],
++        },
++    ];
++    fs::write(&commands_file, serde_json::to_vec(&commands).unwrap()).unwrap();
++    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
++        .arg("execute")
++        .arg(&empty)
++        .arg(&cli_path)
++        .arg(&commands_file)
++        .output()
++        .unwrap();
++    assert!(
++        cli.status.success(),
++        "{}",
++        String::from_utf8_lossy(&cli.stderr)
++    );
++    assert_eq!(
++        serde_json::from_slice::<Value>(&cli.stdout).unwrap()["revision"],
++        1
++    );
++    let mut server = Server::start();
++    server.initialize("2025-11-25");
++    let listed = server.request("tools/list", json!({}));
++    let tools = listed["result"]["tools"].as_array().unwrap();
++    assert_eq!(tools.len(), 9);
++    let variants = tools
++        .iter()
++        .find(|tool| tool["name"] == "project_execute")
++        .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
++        .as_array()
++        .unwrap();
++    assert_eq!(variants.len(), 28);
++    for (name, required, id_field) in [
++        (
++            "add_internal_segment",
++            json!(["piece", "start", "end"]),
++            "piece",
++        ),
++        ("remove_internal_curve", json!(["curve"]), "curve"),
++    ] {
++        let variant = variants
++            .iter()
++            .find(|variant| variant["properties"]["type"]["const"] == name)
++            .unwrap();
++        assert_eq!(variant["additionalProperties"], false);
++        assert_eq!(variant["required"], json!(["type", "data"]));
++        let data = &variant["properties"]["data"];
++        assert_eq!(data["required"], required);
++        assert_eq!(data["additionalProperties"], false);
++        assert_eq!(data["properties"][id_field]["minimum"], 1);
++        assert_eq!(data["properties"][id_field]["maximum"], u64::MAX);
++        if name == "add_internal_segment" {
++            for field in ["start", "end"] {
++                assert_eq!(data["properties"][field]["minItems"], 2);
++                assert_eq!(data["properties"][field]["maxItems"], 2);
++                assert_eq!(data["properties"][field]["items"]["type"], "number");
++            }
++        }
++    }
++    let executed = server.call(
++        "project_execute",
++        json!({"input":empty,"output":mcp_path,"commands":commands}),
++    );
++    assert_eq!(success(&executed)["revision"], 1);
++    assert_eq!(fs::read(&cli_path).unwrap(), fs::read(&mcp_path).unwrap());
++    let saved = Project::load(&mcp_path).unwrap();
++    assert_eq!(saved.pieces[0].boundary, [7, 8, 9, 10]);
++    assert_eq!(saved.pieces[0].internal_curves, [13]);
++    assert_eq!(
++        serde_json::from_slice::<Value>(&fs::read(&mcp_path).unwrap()).unwrap()["version"],
++        4
++    );
++    let inspected = server.call("project_inspect", json!({"path":mcp_path}));
++    assert_eq!(success(&inspected)["project"], native_project_json(&saved));
++    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
++        .arg("inspect")
++        .arg(&cli_path)
++        .output()
++        .unwrap();
++    assert!(cli.status.success());
++    let inspected: Value = serde_json::from_slice(&cli.stdout).unwrap();
++    assert_eq!(inspected["patterns"][0]["boundary"], json!([7, 8, 9, 10]));
++    assert_eq!(inspected["patterns"][0]["internal_curves"], json!([13]));
++    let length = server.call(
++        "project_lengths",
++        json!({"path":mcp_path,"query":{"type":"interval","data":{"curve":13,"t0":0.,"t1":1.}}}),
++    );
++    assert!((success(&length)["length_m"].as_f64().unwrap() - 13_f64.sqrt() / 4.).abs() < 1e-12);
++    let edits = vec![
++        Command::MovePoint {
++            point: 11,
++            position: [0.875, 0.75],
++        },
++        Command::MovePoint {
++            point: 12,
++            position: [0.125, 0.25],
++        },
++    ];
++    let edited = server.call(
++        "project_execute",
++        json!({"input":mcp_path,"output":mcp_path,"commands":edits}),
++    );
++    assert_eq!(success(&edited)["revision"], 2);
++    fs::write(&commands_file, serde_json::to_vec(&edits).unwrap()).unwrap();
++    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
++        .arg("execute")
++        .arg(&cli_path)
++        .arg(&cli_path)
++        .arg(&commands_file)
++        .output()
++        .unwrap();
++    assert!(
++        cli.status.success(),
++        "{}",
++        String::from_utf8_lossy(&cli.stderr)
++    );
++    assert_eq!(fs::read(&cli_path).unwrap(), fs::read(&mcp_path).unwrap());
++    let primary = fs::read(&mcp_path).unwrap();
++    let recovery = fs::read(recovery_path(&mcp_path)).unwrap();
++    let failures = [
++        json!([{"type":"add_internal_segment","data":{"piece":2,"start":[0.2,0.2],"end":[0.7,0.7]}},{"type":"move_point","data":{"point":12,"position":[2.,2.]}}]),
++        json!([{"type":"add_internal_segment","data":{"piece":2,"start":[0.2],"end":[0.7,0.7]}}]),
++        json!([{"type":"add_internal_segment","data":{"piece":2,"start":[0.2,0.2],"end":[0.7,0.7],"unknown":true}}]),
++        json!([{"type":"remove_internal_curve","data":{"curve":7}}]),
++        json!([{"type":"remove_internal_curve","data":{"curve":0}}]),
++    ];
++    for commands in failures {
++        let response = server.call(
++            "project_execute",
++            json!({"input":mcp_path,"output":mcp_path,"commands":commands}),
++        );
++        tool_error(&response);
++        assert_eq!(fs::read(&mcp_path).unwrap(), primary);
++        assert_eq!(fs::read(recovery_path(&mcp_path)).unwrap(), recovery);
++        fs::write(&commands_file, serde_json::to_vec(&commands).unwrap()).unwrap();
++        let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
++            .arg("execute")
++            .arg(&mcp_path)
++            .arg(&mcp_path)
++            .arg(&commands_file)
++            .output()
++            .unwrap();
++        assert!(!cli.status.success());
++        assert_eq!(fs::read(&mcp_path).unwrap(), primary);
++        assert_eq!(fs::read(recovery_path(&mcp_path)).unwrap(), recovery);
++    }
++    let raw = json!({"jsonrpc":"2.0","id":"duplicate-internal","method":"tools/call","params":{"name":"project_execute","arguments":{"input":mcp_path,"output":mcp_path,"commands":[{"type":"remove_internal_curve","data":{"curve":13}}]}}}).to_string().replace("\"curve\":13","\"curve\":13,\"curve\":13");
++    server.send(&raw);
++    tool_error(&server.receive());
++    assert_eq!(fs::read(&mcp_path).unwrap(), primary);
++    assert_eq!(fs::read(recovery_path(&mcp_path)).unwrap(), recovery);
++    fs::write(
++        &commands_file,
++        r#"[{"type":"remove_internal_curve","data":{"curve":13,"curve":13}}]"#,
++    )
++    .unwrap();
++    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
++        .arg("execute")
++        .arg(&mcp_path)
++        .arg(&mcp_path)
++        .arg(&commands_file)
++        .output()
++        .unwrap();
++    assert!(!cli.status.success());
++    assert_eq!(fs::read(&mcp_path).unwrap(), primary);
++    assert_eq!(fs::read(recovery_path(&mcp_path)).unwrap(), recovery);
++    let removed = server.call("project_execute",json!({"input":mcp_path,"output":mcp_path,"commands":[{"type":"remove_internal_curve","data":{"curve":13}}]}));
++    assert_eq!(success(&removed)["revision"], 3);
++    fs::write(
++        &commands_file,
++        serde_json::to_vec(&vec![Command::RemoveInternalCurve { curve: 13 }]).unwrap(),
++    )
++    .unwrap();
++    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
++        .arg("execute")
++        .arg(&cli_path)
++        .arg(&cli_path)
++        .arg(&commands_file)
++        .output()
++        .unwrap();
++    assert!(
++        cli.status.success(),
++        "{}",
++        String::from_utf8_lossy(&cli.stderr)
++    );
++    assert_eq!(fs::read(&cli_path).unwrap(), fs::read(&mcp_path).unwrap());
++    let removed = Project::load(&mcp_path).unwrap();
++    assert!(removed.pieces[0].internal_curves.is_empty());
++    assert_eq!(removed.points.len(), 4);
++    server.finish();
++}
+diff --git a/crates/weftforge-core/src/document.rs b/crates/weftforge-core/src/document.rs
+index bd0a46f..f7fa4d6 100644
+--- a/crates/weftforge-core/src/document.rs
++++ b/crates/weftforge-core/src/document.rs
+@@ -174,6 +174,8 @@ pub struct Piece {
+     pub name: String,
+     /// Closed, ordered chain. Curves are traversed start to end.
+     pub boundary: Vec<Id>,
++    /// Independent straight annotations, each with two exclusive endpoint IDs.
++    pub internal_curves: Vec<Id>,
+     pub placement: Placement,
+     pub material: Id,
+     /// Warp axis in material UV: radians counterclockwise from +U toward +V.
+@@ -384,6 +386,16 @@ impl Project {
+         self.materials.iter().find(|item| item.id == id)
+     }
+ 
++    pub(crate) fn require_boundary_curve(&self, id: Id) -> Result<()> {
++        ensure(self.curve(id).is_some(), "Authored curve is missing")?;
++        ensure(
++            self.pieces.iter().any(|piece| piece.boundary.contains(&id)),
++            &format!(
++                "Curve {id} is not an outer boundary; internal annotations cannot be used here"
++            ),
++        )
++    }
++
+     pub fn piece_bounds(&self, id: Id) -> Result<[[f64; 2]; 2]> {
+         let piece = self
+             .piece(id)
+@@ -500,6 +512,7 @@ impl Project {
+         }
+         let mut used_curves = BTreeSet::new();
+         let mut used_points = BTreeSet::new();
++        let mut containment_work = crate::geometry::ContainmentWork::new();
+         for piece in &self.pieces {
+             validate_name(&piece.name)?;
+             ensure(
+@@ -527,7 +540,7 @@ impl Project {
+             for (index, id) in piece.boundary.iter().enumerate() {
+                 ensure(
+                     used_curves.insert(*id),
+-                    "Boundary curves cannot be shared between pieces",
++                    "Curves must have exactly one boundary or internal owner",
+                 )?;
+                 let curve = self
+                     .curve(*id)
+@@ -541,6 +554,30 @@ impl Project {
+                 )?;
+                 local_points.insert(curve.start);
+             }
++            for id in &piece.internal_curves {
++                ensure(
++                    used_curves.insert(*id),
++                    "Curves must have exactly one boundary or internal owner",
++                )?;
++                let curve = self
++                    .curve(*id)
++                    .ok_or_else(|| Error(format!("Missing internal curve {id}")))?;
++                ensure(
++                    curve.controls.is_none(),
++                    &format!("Internal curve {id} must be straight"),
++                )?;
++                for endpoint in [curve.start, curve.end] {
++                    ensure(
++                        local_points.insert(endpoint),
++                        &format!("Internal curve {id} endpoints must be exclusive"),
++                    )?;
++                }
++                let [a, b] = [curve.start, curve.end].map(|id| self.point(id).unwrap().position);
++                ensure(
++                    (a[0] - b[0]).hypot(a[1] - b[1]) > 1.0e-9,
++                    &format!("Internal curve {id} must exceed 1e-9 metres in length"),
++                )?;
++            }
+             for id in local_points {
+                 ensure(
+                     used_points.insert(id),
+@@ -548,6 +585,7 @@ impl Project {
+                 )?;
+             }
+             crate::geometry::validate_contour(self, piece)?;
++            crate::geometry::validate_internal_segments(self, piece, &mut containment_work)?;
+         }
+         ensure(
+             used_curves.len() == self.curves.len() && used_points.len() == self.points.len(),
+@@ -556,10 +594,7 @@ impl Project {
+         for seam in &self.seams {
+             validate_name(&seam.name)?;
+             for interval in [seam.a, seam.b] {
+-                ensure(
+-                    self.curve(interval.curve).is_some(),
+-                    "Seam curve is missing",
+-                )?;
++                self.require_boundary_curve(interval.curve)?;
+                 ensure(
+                     interval.t0.is_finite()
+                         && interval.t1.is_finite()
+@@ -607,10 +642,7 @@ impl Project {
+                     "A sewing group side needs 1 to 1024 intervals",
+                 )?;
+                 for interval in side {
+-                    ensure(
+-                        self.curve(interval.curve).is_some(),
+-                        "Sewing group curve is missing",
+-                    )?;
++                    self.require_boundary_curve(interval.curve)?;
+                     ensure(
+                         interval.t0.is_finite()
+                             && interval.t1.is_finite()
+@@ -735,6 +767,7 @@ impl Project {
+                     id,
+                     name,
+                     boundary,
++                    internal_curves: Vec::new(),
+                     placement: Placement::default(),
+                     material,
+                     grain_angle: 0.,
+@@ -789,6 +822,48 @@ impl Project {
+                     curve.controls = Some(controls);
+                 }
+             }
++            Command::AddInternalSegment { piece, start, end } => {
++                ensure(self.piece(piece).is_some(), "Unknown piece")?;
++                validate_coordinates(&start)?;
++                validate_coordinates(&end)?;
++                let start_id = self.allocate_id()?;
++                let end_id = self.allocate_id()?;
++                let curve = self.allocate_id()?;
++                self.points.push(Point {
++                    id: start_id,
++                    position: start,
++                });
++                self.points.push(Point {
++                    id: end_id,
++                    position: end,
++                });
++                self.curves.push(Curve {
++                    id: curve,
++                    start: start_id,
++                    end: end_id,
++                    controls: None,
++                });
++                self.pieces
++                    .iter_mut()
++                    .find(|item| item.id == piece)
++                    .unwrap()
++                    .internal_curves
++                    .push(curve);
++            }
++            Command::RemoveInternalCurve { curve } => {
++                let owner = self
++                    .pieces
++                    .iter_mut()
++                    .find(|piece| piece.internal_curves.contains(&curve))
++                    .ok_or_else(|| Error(format!("Curve {curve} is not an internal annotation")))?;
++                owner.internal_curves.retain(|&id| id != curve);
++                let original = self
++                    .curve(curve)
++                    .ok_or_else(|| Error(format!("Missing internal curve {curve}")))?;
++                let endpoints = [original.start, original.end];
++                self.curves.retain(|item| item.id != curve);
++                self.points.retain(|item| !endpoints.contains(&item.id));
++            }
+             Command::MovePoint { point, position } => {
+                 self.points
+                     .iter_mut()
+@@ -797,6 +872,7 @@ impl Project {
+                     .position = position;
+             }
+             Command::SetCurveControls { curve, controls } => {
++                self.require_boundary_curve(curve)?;
+                 self.curves
+                     .iter_mut()
+                     .find(|item| item.id == curve)
+@@ -804,6 +880,7 @@ impl Project {
+                     .controls = controls;
+             }
+             Command::SplitCurve { curve, t } => {
++                self.require_boundary_curve(curve)?;
+                 ensure(
+                     t.is_finite() && t > 1.0e-6 && t < 1.0 - 1.0e-6,
+                     "Split t must be strictly inside the curve",
+@@ -885,7 +962,12 @@ impl Project {
+                     .pieces
+                     .iter()
+                     .position(|piece| piece.boundary.contains(&curve))
+-                    .ok_or_else(|| Error("Curve has no piece".into()))?;
++                    .ok_or_else(|| {
++                        Error(
++                            "Curve has no piece boundary; internal annotations cannot be joined"
++                                .into(),
++                        )
++                    })?;
+                 let boundary = &self.pieces[piece_index].boundary;
+                 ensure(
+                     boundary.len() > 3,
+@@ -967,18 +1049,22 @@ impl Project {
+                 )?;
+                 let [min, max] = self.piece_bounds(piece)?;
+                 let scale = [width / (max[0] - min[0]), height / (max[1] - min[1])];
+-                let boundary = self
++                let owner = self
+                     .piece(piece)
+-                    .ok_or_else(|| Error("Unknown piece".into()))?
++                    .ok_or_else(|| Error("Unknown piece".into()))?;
++                let owned: BTreeSet<_> = owner
+                     .boundary
+-                    .clone();
++                    .iter()
++                    .chain(&owner.internal_curves)
++                    .copied()
++                    .collect();
+                 let mut point_ids = BTreeSet::new();
+                 for curve in self
+                     .curves
+                     .iter_mut()
+-                    .filter(|curve| boundary.contains(&curve.id))
++                    .filter(|curve| owned.contains(&curve.id))
+                 {
+-                    point_ids.insert(curve.start);
++                    point_ids.extend([curve.start, curve.end]);
+                     if let Some(controls) = &mut curve.controls {
+                         for control in controls {
+                             for axis in 0..2 {
+@@ -1034,12 +1120,11 @@ impl Project {
+                     }
+                 };
+                 let mut point_ids = BTreeSet::new();
+-                for curve in self
+-                    .curves
+-                    .iter_mut()
+-                    .filter(|curve| original.boundary.contains(&curve.id))
+-                {
+-                    point_ids.insert(curve.start);
++                for curve in self.curves.iter_mut().filter(|curve| {
++                    original.boundary.contains(&curve.id)
++                        || original.internal_curves.contains(&curve.id)
++                }) {
++                    point_ids.extend([curve.start, curve.end]);
+                     if let Some(controls) = &mut curve.controls {
+                         *controls = controls.map(transform);
+                     }
+@@ -1170,29 +1255,33 @@ impl Project {
+                 self.sewing_groups.retain(|item| item.id != group);
+             }
+             Command::RemovePiece { piece } => {
+-                let boundary = self
++                let owner = self
+                     .piece(piece)
+-                    .ok_or_else(|| Error("Unknown piece".into()))?
++                    .ok_or_else(|| Error("Unknown piece".into()))?;
++                let owned: BTreeSet<_> = owner
+                     .boundary
+-                    .clone();
++                    .iter()
++                    .chain(&owner.internal_curves)
++                    .copied()
++                    .collect();
+                 let points: BTreeSet<Id> = self
+                     .curves
+                     .iter()
+-                    .filter(|curve| boundary.contains(&curve.id))
+-                    .map(|curve| curve.start)
++                    .filter(|curve| owned.contains(&curve.id))
++                    .flat_map(|curve| [curve.start, curve.end])
+                     .collect();
+                 self.pieces.retain(|item| item.id != piece);
+-                self.curves.retain(|item| !boundary.contains(&item.id));
++                self.curves.retain(|item| !owned.contains(&item.id));
+                 self.points.retain(|item| !points.contains(&item.id));
+                 self.seams.retain(|item| {
+-                    !boundary.contains(&item.a.curve) && !boundary.contains(&item.b.curve)
++                    !owned.contains(&item.a.curve) && !owned.contains(&item.b.curve)
+                 });
+                 self.sewing_groups.retain(|group| {
+                     !group
+                         .a
+                         .iter()
+                         .chain(&group.b)
+-                        .any(|interval| boundary.contains(&interval.curve))
++                        .any(|interval| owned.contains(&interval.curve))
+                 });
+             }
+             Command::SetResolution { metres } => self.resolution = metres,
+@@ -1480,6 +1569,14 @@ pub enum Command {
+         width: f64,
+         height: f64,
+     },
++    AddInternalSegment {
++        piece: Id,
++        start: [f64; 2],
++        end: [f64; 2],
++    },
++    RemoveInternalCurve {
++        curve: Id,
++    },
+     MovePoint {
+         point: Id,
+         position: [f64; 2],
+diff --git a/crates/weftforge-core/src/geometry.rs b/crates/weftforge-core/src/geometry.rs
+index 5301bf0..2a27320 100644
+--- a/crates/weftforge-core/src/geometry.rs
++++ b/crates/weftforge-core/src/geometry.rs
+@@ -440,6 +440,210 @@ fn flatten_cubic(
+     )
+ }
+ 
++const INTERNAL_CLEARANCE: f64 = 1.0e-6;
++const INTERNAL_FLATNESS: f64 = 1.0e-7;
++const MAX_CONTAINMENT_WORK: usize = 1_000_000;
++
++pub(crate) struct ContainmentWork(usize);
++
++impl ContainmentWork {
++    pub(crate) fn new() -> Self {
++        Self(MAX_CONTAINMENT_WORK)
++    }
++
++    fn step(&mut self) -> Result<()> {
++        ensure(self.0 > 0, "Internal containment work budget exhausted")?;
++        self.0 -= 1;
++        Ok(())
++    }
++}
++
++pub(crate) fn validate_internal_segments(
++    project: &Project,
++    piece: &Piece,
++    work: &mut ContainmentWork,
++) -> Result<()> {
++    let Some(first) = piece.internal_curves.first() else {
++        return Ok(());
++    };
++    let mut validate = || -> Result<()> {
++        let scale = piece
++            .boundary
++            .iter()
++            .chain(&piece.internal_curves)
++            .map(|id| project.curve(*id).unwrap())
++            .flat_map(|curve| {
++                [
++                    project.point(curve.start).unwrap().position,
++                    project.point(curve.end).unwrap().position,
++                ]
++                .into_iter()
++                .chain(curve.controls.into_iter().flatten())
++            })
++            .flatten()
++            .map(f64::abs)
++            .fold(1.0, f64::max);
++        let reserve = (256.0 * f64::EPSILON * scale).next_up();
++        let clearance = (INTERNAL_CLEARANCE + INTERNAL_FLATNESS + reserve).next_up();
++        let mut polygon = Vec::new();
++        for id in &piece.boundary {
++            let curve = project.curve(*id).unwrap();
++            let a = project.point(curve.start).unwrap().position;
++            let b = project.point(curve.end).unwrap().position;
++            if polygon.is_empty() {
++                polygon.push(a);
++            }
++            if let Some([c, d]) = curve.controls {
++                flatten_internal_contour([a, c, d, b], 0, reserve, &mut polygon, work)?;
++            } else {
++                work.step()?;
++                ensure(
++                    polygon.len() < MAX_BOUNDARY_SAMPLES,
++                    "Internal containment boundary sample limit exceeded",
++                )?;
++                polygon.push(b);
++            }
++        }
++        polygon.pop(); // The ordered boundary repeats its first endpoint.
++        let n = polygon.len();
++        let tube = (2.0 * (INTERNAL_FLATNESS + reserve)).next_up();
++        let mut edges: Vec<_> = (0..n)
++            .map(|i| {
++                let a = polygon[i];
++                let b = polygon[(i + 1) % n];
++                (
++                    a[0].min(b[0]),
++                    a[0].max(b[0]),
++                    a[1].min(b[1]),
++                    a[1].max(b[1]),
++                    i,
++                )
++            })
++            .collect();
++        edges.sort_by(|a, b| a.0.total_cmp(&b.0));
++        for (position, edge) in edges.iter().enumerate() {
++            work.step()?;
++            let i = edge.4;
++            ensure(
++                distance(polygon[i], polygon[(i + 1) % n]) > reserve,
++                "Internal containment contour has a degenerate edge",
++            )?;
++            // Adjacent edges may share only their common endpoint, never backtrack.
++            ensure(
++                point_segment_distance(polygon[(i + 2) % n], polygon[i], polygon[(i + 1) % n])
++                    > reserve,
++                "Internal containment contour backtracks or touches itself",
++            )?;
++            for other in edges.iter().skip(position + 1) {
++                work.step()?;
++                if other.0 > edge.1 + tube {
++                    break;
++                }
++                let j = other.4;
++                if (i + 1) % n == j
++                    || (j + 1) % n == i
++                    || other.2 > edge.3 + tube
++                    || other.3 < edge.2 - tube
++                {
++                    continue;
++                }
++                ensure(
++                    segment_distance(
++                        polygon[i],
++                        polygon[(i + 1) % n],
++                        polygon[j],
++                        polygon[(j + 1) % n],
++                    ) > tube,
++                    "Internal containment fine contour self-intersects, touches or is uncertifiable",
++                )?;
++            }
++        }
++        for id in &piece.internal_curves {
++            let curve = project.curve(*id).unwrap();
++            let a = project.point(curve.start).unwrap().position;
++            let b = project.point(curve.end).unwrap().position;
++            let mut winding = 0_i32;
++            for i in 0..n {
++                work.step()
++                    .map_err(|error| Error(format!("Internal curve {id}: {error}")))?;
++                let (c, d) = (polygon[i], polygon[(i + 1) % n]);
++                ensure(
++                    segment_distance(a, b, c, d) > clearance,
++                    &format!(
++                        "Internal curve {id} must stay strictly inside with 1e-6 metre clearance"
++                    ),
++                )?;
++                work.step()
++                    .map_err(|error| Error(format!("Internal curve {id}: {error}")))?;
++                if c[1] <= a[1] && d[1] > a[1] && cross(c, d, a) > 0.0 {
++                    winding += 1;
++                } else if d[1] <= a[1] && c[1] > a[1] && cross(c, d, a) < 0.0 {
++                    winding -= 1;
++                }
++            }
++            ensure(
++                winding != 0,
++                &format!("Internal curve {id} is outside its owning contour"),
++            )?;
++        }
++        Ok(())
++    };
++    validate().map_err(|error| Error(format!("Internal curve {first} containment: {error}")))
++}
++
++fn flatten_internal_contour(
++    p: [[f64; 2]; 4],
++    depth: u32,
++    reserve: f64,
++    polygon: &mut Vec<[f64; 2]>,
++    work: &mut ContainmentWork,
++) -> Result<()> {
++    work.step()?;
++    ensure(
++        polygon.len() < MAX_BOUNDARY_SAMPLES,
++        "Internal containment boundary sample limit exceeded",
++    )?;
++    let flatness = p
++        .into_iter()
++        .map(|point| point_segment_distance(point, p[0], p[3]))
++        .fold(0.0, f64::max)
++        .next_up();
++    let chord = [p[3][0] - p[0][0], p[3][1] - p[0][1]];
++    let projection = |q: [f64; 2]| (q[0] - p[0][0]) * chord[0] + (q[1] - p[0][1]) * chord[1];
++    // A flat collinear cubic can still double back; require forward control projections.
++    if flatness + reserve <= INTERNAL_FLATNESS
++        && projection(p[1]) >= 0.0
++        && projection(p[2]) >= projection(p[1])
++        && projection(p[2]) <= projection(p[3])
++    {
++        polygon.push(p[3]);
++        return Ok(());
++    }
++    ensure(
++        depth < 20,
++        "Internal containment cubic depth limit exceeded",
++    )?;
++    let ab = midpoint(p[0], p[1]);
++    let bc = midpoint(p[1], p[2]);
++    let cd = midpoint(p[2], p[3]);
++    let abc = midpoint(ab, bc);
++    let bcd = midpoint(bc, cd);
++    let center = midpoint(abc, bcd);
++    flatten_internal_contour([p[0], ab, abc, center], depth + 1, reserve, polygon, work)?;
++    flatten_internal_contour([center, bcd, cd, p[3]], depth + 1, reserve, polygon, work)
++}
++
++fn segment_distance(a: [f64; 2], b: [f64; 2], c: [f64; 2], d: [f64; 2]) -> f64 {
++    if segments_intersect(a, b, c, d) {
++        0.0
++    } else {
++        point_segment_distance(a, c, d)
++            .min(point_segment_distance(b, c, d))
++            .min(point_segment_distance(c, a, b))
++            .min(point_segment_distance(d, a, b))
++    }
++}
++
+ pub(crate) fn validate_contour(project: &Project, piece: &Piece) -> Result<()> {
+     // shortcut: cubic intersections use bounded polyline tolerance; use exact curve predicates before precision CAD editing.
+     let mut polygon = Vec::new();
+diff --git a/crates/weftforge-core/src/persistence.rs b/crates/weftforge-core/src/persistence.rs
+index 182f4a7..25e0d7e 100644
+--- a/crates/weftforge-core/src/persistence.rs
++++ b/crates/weftforge-core/src/persistence.rs
+@@ -23,7 +23,7 @@ pub(crate) struct ImportedPattern {
+     pub controls: Vec<Option<[[f64; 2]; 2]>>,
+ }
+ 
+-pub const FORMAT_VERSION: u32 = 3;
++pub const FORMAT_VERSION: u32 = 4;
+ pub const MAX_PROJECT_BYTES: u64 = 16 * 1024 * 1024;
+ static TEMP_ID: AtomicU64 = AtomicU64::new(0);
+ 
+@@ -55,7 +55,7 @@ struct ProjectV2 {
+     revision: u64,
+     points: Vec<Point>,
+     curves: Vec<Curve>,
+-    pieces: Vec<Piece>,
++    pieces: Vec<PieceV2V3>,
+     materials: Vec<Material>,
+     seams: Vec<Seam>,
+     mannequin: Mannequin,
+@@ -69,7 +69,7 @@ impl From<ProjectV2> for Project {
+             revision: old.revision,
+             points: old.points,
+             curves: old.curves,
+-            pieces: old.pieces,
++            pieces: old.pieces.into_iter().map(Into::into).collect(),
+             materials: old.materials,
+             seams: old.seams,
+             sewing_groups: Vec::new(),
+@@ -80,6 +80,63 @@ impl From<ProjectV2> for Project {
+     }
+ }
+ 
++#[derive(Deserialize)]
++#[serde(deny_unknown_fields)]
++struct ProjectV3 {
++    revision: u64,
++    points: Vec<Point>,
++    curves: Vec<Curve>,
++    pieces: Vec<PieceV2V3>,
++    materials: Vec<Material>,
++    seams: Vec<Seam>,
++    sewing_groups: Vec<crate::SewingGroup>,
++    mannequin: Mannequin,
++    resolution: f64,
++    next_id: Id,
++}
++
++impl From<ProjectV3> for Project {
++    fn from(old: ProjectV3) -> Self {
++        Self {
++            revision: old.revision,
++            points: old.points,
++            curves: old.curves,
++            pieces: old.pieces.into_iter().map(Into::into).collect(),
++            materials: old.materials,
++            seams: old.seams,
++            sewing_groups: old.sewing_groups,
++            mannequin: old.mannequin,
++            resolution: old.resolution,
++            next_id: old.next_id,
++        }
++    }
++}
++
++#[derive(Deserialize)]
++#[serde(deny_unknown_fields)]
++struct PieceV2V3 {
++    id: Id,
++    name: String,
++    boundary: Vec<Id>,
++    placement: Placement,
++    material: Id,
++    grain_angle: f64,
++}
++
++impl From<PieceV2V3> for Piece {
++    fn from(old: PieceV2V3) -> Self {
++        Self {
++            id: old.id,
++            name: old.name,
++            boundary: old.boundary,
++            internal_curves: Vec::new(),
++            placement: old.placement,
++            material: old.material,
++            grain_angle: old.grain_angle,
++        }
++    }
++}
++
+ #[derive(Deserialize)]
+ #[serde(deny_unknown_fields)]
+ struct PieceV1 {
+@@ -118,6 +175,7 @@ impl From<ProjectV1> for Project {
+                     id: piece.id,
+                     name: piece.name,
+                     boundary: piece.boundary,
++                    internal_curves: Vec::new(),
+                     placement: piece.placement,
+                     material: piece.material,
+                     grain_angle: 0.0,
+@@ -186,6 +244,9 @@ impl Project {
+             2 => serde_json::from_slice::<Document<ProjectV2>>(bytes)?
+                 .project
+                 .into(),
++            3 => serde_json::from_slice::<Document<ProjectV3>>(bytes)?
++                .project
++                .into(),
+             FORMAT_VERSION => serde_json::from_slice::<Document>(bytes)?.project,
+             _ => {
+                 return Err(Error(
+@@ -251,26 +312,25 @@ impl Project {
+         self.validate()?;
+         let mut min = [0.0_f64; 2];
+         let mut max = [1.0_f64; 2];
+-        for point in &self.points {
+-            for axis in 0..2 {
+-                min[axis] = min[axis].min(point.position[axis]);
+-                max[axis] = max[axis].max(point.position[axis]);
+-            }
+-        }
+-        for curve in &self.curves {
+-            if let Some(controls) = curve.controls {
+-                for point in controls {
+-                    for axis in 0..2 {
+-                        min[axis] = min[axis].min(point[axis]);
+-                        max[axis] = max[axis].max(point[axis]);
+-                    }
++        for id in self.pieces.iter().flat_map(|piece| &piece.boundary) {
++            let curve = self.curve(*id).unwrap();
++            for point in [
++                self.point(curve.start).unwrap().position,
++                self.point(curve.end).unwrap().position,
++            ]
++            .into_iter()
++            .chain(curve.controls.into_iter().flatten())
++            {
++                for axis in 0..2 {
++                    min[axis] = min[axis].min(point[axis]);
++                    max[axis] = max[axis].max(point[axis]);
+                 }
+             }
+         }
+         let width = (max[0] - min[0]) * 1000.0;
+         let height = (max[1] - min[1]) * 1000.0;
+         let mut svg = format!(
+-            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width}mm\" height=\"{height}mm\" viewBox=\"{} {} {width} {height}\">\n<title>WeftForge editable pattern export</title>\n<desc>Scale: one SVG user unit is one millimetre. Pattern V points upward; SVG Y is inverted.</desc>\n",
++            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width}mm\" height=\"{height}mm\" viewBox=\"{} {} {width} {height}\">\n<title>WeftForge editable pattern export</title>\n<desc>Scale: one SVG user unit is one millimetre. Pattern V points upward; SVG Y is inverted. Exterior boundaries only; internal annotations are omitted.</desc>\n",
+             min[0] * 1000.0,
+             -max[1] * 1000.0
+         );
+diff --git a/crates/weftforge-core/src/persistence/dxf.rs b/crates/weftforge-core/src/persistence/dxf.rs
+index 4121b76..b9f840c 100644
+--- a/crates/weftforge-core/src/persistence/dxf.rs
++++ b/crates/weftforge-core/src/persistence/dxf.rs
+@@ -7,7 +7,12 @@ const FIRST_DYNAMIC_HANDLE: usize = 0x1c;
+ pub(super) fn render(project: &Project) -> Result<String> {
+     let mut pieces: Vec<_> = project.pieces.iter().collect();
+     pieces.sort_unstable_by_key(|piece| piece.id);
+-    let handseed = FIRST_DYNAMIC_HANDLE + pieces.len() + project.curves.len();
++    let handseed = FIRST_DYNAMIC_HANDLE
++        + pieces.len()
++        + pieces
++            .iter()
++            .map(|piece| piece.boundary.len())
++            .sum::<usize>();
+     let mut output = format!(
+         "0\nSECTION\n2\nHEADER\n999\nWeftForge FILE-005-v1: pattern boundaries in millimetres\n999\nSource document revision: {}\n999\nUV->XY; positive V->positive Y; Z=0; boundary-only\n9\n$ACADVER\n1\nAC1015\n9\n$INSUNITS\n70\n4\n9\n$MEASUREMENT\n70\n1\n9\n$LUNITS\n70\n2\n9\n$HANDSEED\n5\n{handseed:X}\n0\nENDSEC\n0\nSECTION\n2\nCLASSES\n0\nENDSEC\n0\nSECTION\n2\nTABLES\n",
+         project.revision
+diff --git a/crates/weftforge-core/src/sewing.rs b/crates/weftforge-core/src/sewing.rs
+index a430cd0..ea9edc0 100644
+--- a/crates/weftforge-core/src/sewing.rs
++++ b/crates/weftforge-core/src/sewing.rs
+@@ -400,6 +400,7 @@ impl PathMetric {
+         let intervals = intervals
+             .iter()
+             .map(|&interval| {
++                project.require_boundary_curve(interval.curve)?;
+                 IntervalMetric::new(project, interval, budget / intervals.len() as f64, work)
+             })
+             .collect::<Result<Vec<_>>>()?;
+@@ -607,6 +608,7 @@ impl GroupMetric {
+ 
+ impl Project {
+     pub fn interval_from_length(&self, side: SewingSideByLength) -> Result<CurveInterval> {
++        self.require_boundary_curve(side.curve)?;
+         ensure(
+             side.start_t.is_finite() && (0.0..=1.0).contains(&side.start_t),
+             "Sewing start t must be in [0,1]",
+diff --git a/crates/weftforge-core/tests/ellipse.rs b/crates/weftforge-core/tests/ellipse.rs
+index 35972d9..d787e07 100644
+--- a/crates/weftforge-core/tests/ellipse.rs
++++ b/crates/weftforge-core/tests/ellipse.rs
+@@ -101,7 +101,7 @@ fn ellipse_has_declared_controls_ids_bounds_tangents_and_one_persistent_transact
+     editor.project.save(&path).unwrap();
+     assert_eq!(Project::load(&path).unwrap(), editor.project);
+     let file: serde_json::Value = serde_json::from_slice(&fs::read(&path).unwrap()).unwrap();
+-    assert_eq!(file["version"], 3);
++    assert_eq!(file["version"], weftforge_core::FORMAT_VERSION);
+     fs::remove_dir_all(directory).unwrap();
+ }
+ 
+diff --git a/crates/weftforge-core/tests/internal_lines.rs b/crates/weftforge-core/tests/internal_lines.rs
+new file mode 100644
+index 0000000..2e5d738
+--- /dev/null
++++ b/crates/weftforge-core/tests/internal_lines.rs
+@@ -0,0 +1,710 @@
++use serde_json::json;
++use weftforge_core::{
++    Command, Curve, CurveInterval, Editor, Placement, Point, Project, SewingDirection,
++    SewingSideByLength, simulation::create_cloth,
++};
++
++fn square() -> Editor {
++    polygon(vec![[0., 0.], [1., 0.], [1., 1.], [0., 1.]])
++}
++
++fn polygon(vertices: Vec<[f64; 2]>) -> Editor {
++    let mut editor = Editor::default();
++    editor
++        .execute(Command::AddPolygon {
++            name: "Original contour".into(),
++            vertices,
++        })
++        .unwrap();
++    editor
++}
++
++fn add(start: [f64; 2], end: [f64; 2]) -> Command {
++    Command::AddInternalSegment {
++        piece: 2,
++        start,
++        end,
++    }
++}
++
++fn baseline() -> Editor {
++    let mut editor = square();
++    editor.execute(add([0.125, 0.25], [0.875, 0.75])).unwrap();
++    editor
++}
++
++fn next_id(project: &Project) -> u64 {
++    serde_json::to_value(project).unwrap()["next_id"]
++        .as_u64()
++        .unwrap()
++}
++
++fn endpoints(project: &Project, curve: u64) -> [[f64; 2]; 2] {
++    let curve = project.curve(curve).unwrap();
++    [curve.start, curve.end].map(|id| project.point(id).unwrap().position)
++}
++
++fn rejected(editor: &mut Editor, command: Command) -> String {
++    let before = editor.project.clone();
++    let undo = editor.can_undo();
++    let redo = editor.can_redo();
++    let error = editor.execute(command).unwrap_err().to_string();
++    assert_eq!(editor.project, before);
++    assert_eq!(editor.can_undo(), undo);
++    assert_eq!(editor.can_redo(), redo);
++    error
++}
++
++#[test]
++fn original_r_ids_analytic_length_history_and_endpoint_transaction() {
++    let mut editor = baseline();
++    assert_eq!(editor.project.pieces[0].boundary, [7, 8, 9, 10]);
++    assert_eq!(editor.project.pieces[0].internal_curves, [13]);
++    assert_eq!(editor.project.curve(13).unwrap().start, 11);
++    assert_eq!(editor.project.curve(13).unwrap().end, 12);
++    assert_eq!(next_id(&editor.project), 14);
++    assert_eq!(editor.project.revision, 2);
++    assert!(
++        (editor
++            .project
++            .interval_length(CurveInterval::full(13))
++            .unwrap()
++            - 13_f64.sqrt() / 4.)
++            .abs()
++            < 1e-12
++    );
++    // The first intermediate state is degenerate; the final two-endpoint edit is valid.
++    rejected(
++        &mut editor,
++        Command::MovePoint {
++            point: 11,
++            position: [0.875, 0.75],
++        },
++    );
++    editor
++        .execute(Command::Transaction(vec![
++            Command::MovePoint {
++                point: 11,
++                position: [0.875, 0.75],
++            },
++            Command::MovePoint {
++                point: 12,
++                position: [0.125, 0.25],
++            },
++        ]))
++        .unwrap();
++    assert_eq!(editor.project.revision, 3);
++    assert_eq!(
++        endpoints(&editor.project, 13),
++        [[0.875, 0.75], [0.125, 0.25]]
++    );
++    assert!(editor.undo());
++    assert_eq!(
++        endpoints(&editor.project, 13),
++        [[0.125, 0.25], [0.875, 0.75]]
++    );
++    assert_eq!(editor.project.revision, 4);
++    rejected(
++        &mut editor,
++        Command::Transaction(vec![
++            add([0.2, 0.2], [0.7, 0.3]),
++            Command::MovePoint {
++                point: 12,
++                position: [2., 2.],
++            },
++        ]),
++    );
++    assert!(editor.can_redo());
++    assert!(editor.redo());
++    editor
++        .execute(Command::RemoveInternalCurve { curve: 13 })
++        .unwrap();
++    assert_eq!(editor.project.points.len(), 4);
++    assert_eq!(editor.project.curves.len(), 4);
++    assert_eq!(next_id(&editor.project), 14);
++    assert!(editor.undo());
++    assert_eq!(editor.project.pieces[0].internal_curves, [13]);
++    assert!(editor.redo());
++    editor.execute(add([0.2, 0.2], [0.7, 0.3])).unwrap();
++    assert_eq!(editor.project.pieces[0].internal_curves, [16]);
++    assert!(editor.undo());
++    editor.execute(add([0.3, 0.2], [0.6, 0.3])).unwrap();
++    assert_eq!(editor.project.pieces[0].internal_curves, [19]);
++    assert!(!editor.can_redo());
++}
++
++#[test]
++fn original_l_c_and_clearance_are_whole_segment_and_resolution_independent() {
++    for resolution in [0.005, 0.07, 0.5] {
++        let mut l = polygon(vec![
++            [0., 0.],
++            [1., 0.],
++            [1., 0.4],
++            [0.4, 0.4],
++            [0.4, 1.],
++            [0., 1.],
++        ]);
++        l.execute(Command::SetResolution { metres: resolution })
++            .unwrap();
++        assert!(rejected(&mut l, add([0.2, 0.8], [0.8, 0.2])).contains("Internal curve"));
++        l.execute(add([0.2, 0.8], [0.2, 0.2])).unwrap();
++        let mut c = square();
++        c.execute(Command::SetCurveControls {
++            curve: 7,
++            controls: Some([[1. / 3., 2. / 3.], [2. / 3., 2. / 3.]]),
++        })
++        .unwrap();
++        c.execute(Command::SetResolution { metres: resolution })
++            .unwrap();
++        // q(t)=(t, 2t(1-t)); q(1/2).y=1/2, while q(0.1).y=q(0.9).y=0.18.
++        rejected(&mut c, add([0.1, 0.2], [0.9, 0.2]));
++        c.execute(add([0.1, 0.75], [0.9, 0.75])).unwrap();
++        let mut r = square();
++        r.execute(Command::SetResolution { metres: resolution })
++            .unwrap();
++        for (a, b) in [
++            ([0., 0.25], [0.75, 0.5]),
++            ([0.25, 0.], [0.75, 0.]),
++            ([0.25, 0.5e-6], [0.75, 0.5e-6]),
++            ([0.25, 1.05e-6], [0.75, 1.05e-6]),
++            ([0.25, 1.1e-6], [0.75, 1.1e-6]),
++            ([-0.2, 0.25], [-0.1, 0.75]),
++        ] {
++            rejected(&mut r, add(a, b));
++        }
++        r.execute(add([0.25, 2e-6], [0.75, 2e-6])).unwrap();
++    }
++}
++
++#[test]
++fn crossing_and_coincident_annotations_stay_independent_and_exclusive() {
++    let mut editor = baseline();
++    editor.execute(add([0.125, 0.75], [0.875, 0.25])).unwrap();
++    editor.execute(add([0.125, 0.25], [0.5, 0.5])).unwrap();
++    assert_eq!(editor.project.pieces[0].internal_curves, [13, 16, 19]);
++    assert_eq!(
++        endpoints(&editor.project, 19)[0],
++        endpoints(&editor.project, 13)[0]
++    );
++    assert_ne!(
++        editor.project.curve(19).unwrap().start,
++        editor.project.curve(13).unwrap().start
++    );
++    let others = [16, 19].map(|id| endpoints(&editor.project, id));
++    editor
++        .execute(Command::MovePoint {
++            point: 11,
++            position: [0.2, 0.3],
++        })
++        .unwrap();
++    editor
++        .execute(Command::RemoveInternalCurve { curve: 13 })
++        .unwrap();
++    assert_eq!([16, 19].map(|id| endpoints(&editor.project, id)), others);
++    assert_eq!(editor.project.pieces[0].internal_curves, [16, 19]);
++    for (a, b) in [([0.2, 0.2], [0.2, 0.2]), ([0.2, 0.2], [0.2 + 0.5e-9, 0.2])] {
++        rejected(&mut editor, add(a, b));
++    }
++    let original = editor.project;
++    for mutation in 0..10 {
++        let mut bad = original.clone();
++        match mutation {
++            0 => bad.pieces[0].internal_curves.push(16),
++            1 => bad.pieces[0].internal_curves.push(7),
++            2 => {
++                bad.curves
++                    .iter_mut()
++                    .find(|curve| curve.id == 16)
++                    .unwrap()
++                    .start = 3
++            }
++            3 => {
++                bad.curves
++                    .iter_mut()
++                    .find(|curve| curve.id == 19)
++                    .unwrap()
++                    .start = bad.curve(16).unwrap().start
++            }
++            4 => {
++                bad.curves
++                    .iter_mut()
++                    .find(|curve| curve.id == 16)
++                    .unwrap()
++                    .controls = Some([[0.2, 0.2], [0.4, 0.4]])
++            }
++            5 => bad.pieces[0].internal_curves.clear(),
++            6 => {
++                bad.curves
++                    .iter_mut()
++                    .find(|curve| curve.id == 16)
++                    .unwrap()
++                    .end = bad.curve(16).unwrap().start
++            }
++            7 => bad.pieces[0].internal_curves.push(u64::MAX),
++            8 => bad.points.retain(|point| point.id != 14),
++            _ => bad.points[0].id = 0,
++        }
++        assert!(bad.validate().is_err(), "mutation {mutation}");
++    }
++    let mut cross_piece = Editor::new(original).unwrap();
++    cross_piece
++        .execute(Command::AddRectangle {
++            name: "Other".into(),
++            origin: [2., 0.],
++            width: 1.,
++            height: 1.,
++        })
++        .unwrap();
++    cross_piece.project.pieces[1].internal_curves.push(16);
++    assert!(cross_piece.project.validate().is_err());
++}
++
++#[test]
++fn resize_rigid_transform_boundary_edits_and_owner_removal_keep_both_endpoints() {
++    let mut editor = baseline();
++    editor
++        .execute(Command::ResizePiece {
++            piece: 2,
++            width: 2.,
++            height: 0.5,
++        })
++        .unwrap();
++    assert_eq!(
++        endpoints(&editor.project, 13).map(|p| p.map(f64::to_bits)),
++        [[0.25_f64, 0.125], [1.75, 0.375]].map(|p| p.map(f64::to_bits))
++    );
++    let placement = Placement {
++        translation: [0.31, -0.47, 0.21],
++        rotation: [0.37, -0.42, 0.61],
++    };
++    editor
++        .execute(Command::SetPlacement {
++            piece: 2,
++            placement,
++        })
++        .unwrap();
++    let before = endpoints(&editor.project, 13);
++    let world = before.map(|p| placement.transform(p));
++    let (translation, angle, pivot) = ([0.19, -0.13], 0.43_f64, [0.4, 0.2]);
++    editor
++        .execute(Command::TransformPiece {
++            piece: 2,
++            translation,
++            angle,
++            pivot,
++        })
++        .unwrap();
++    for ((actual, expected_world), old) in endpoints(&editor.project, 13)
++        .into_iter()
++        .zip(world)
++        .zip(before)
++    {
++        let expected = [
++            pivot[0] + angle.cos() * (old[0] - pivot[0]) - angle.sin() * (old[1] - pivot[1])
++                + translation[0],
++            pivot[1]
++                + angle.sin() * (old[0] - pivot[0])
++                + angle.cos() * (old[1] - pivot[1])
++                + translation[1],
++        ];
++        for axis in 0..2 {
++            assert!((actual[axis] - expected[axis]).abs() < 1e-10);
++        }
++        let actual_world = editor.project.pieces[0].placement.transform(actual);
++        for axis in 0..3 {
++            assert!((actual_world[axis] - expected_world[axis]).abs() < 1e-10);
++        }
++    }
++    editor
++        .execute(Command::TransformPiece {
++            piece: 2,
++            translation: translation.map(|x| -x),
++            angle: -angle,
++            pivot: [pivot[0] + translation[0], pivot[1] + translation[1]],
++        })
++        .unwrap();
++    for (actual, expected) in endpoints(&editor.project, 13).into_iter().zip(before) {
++        for axis in 0..2 {
++            assert!((actual[axis] - expected[axis]).abs() < 1e-10);
++        }
++    }
++    let retained = endpoints(&editor.project, 13);
++    editor
++        .execute(Command::SplitCurve { curve: 7, t: 0.4 })
++        .unwrap();
++    editor.execute(Command::JoinCurve { curve: 7 }).unwrap();
++    assert_eq!(endpoints(&editor.project, 13), retained);
++    assert_eq!(editor.project.pieces[0].internal_curves, [13]);
++    for command in [
++        Command::SplitCurve { curve: 13, t: 0.5 },
++        Command::JoinCurve { curve: 13 },
++        Command::SetCurveControls {
++            curve: 13,
++            controls: None,
++        },
++        Command::RemoveInternalCurve { curve: 7 },
++    ] {
++        assert!(rejected(&mut editor, command).contains("internal"));
++    }
++    editor.execute(Command::RemovePiece { piece: 2 }).unwrap();
++    assert!(
++        editor.project.pieces.is_empty()
++            && editor.project.curves.is_empty()
++            && editor.project.points.is_empty()
++    );
++    assert!(editor.undo());
++    assert_eq!(endpoints(&editor.project, 13), retained);
++    let mut r = baseline();
++    rejected(
++        &mut r,
++        Command::SetCurveControls {
++            curve: 7,
++            controls: Some([[1. / 3., 1.], [2. / 3., 1.]]),
++        },
++    );
++    rejected(
++        &mut r,
++        Command::MovePoint {
++            point: 3,
++            position: [0.9, 0.9],
++        },
++    );
++}
++
++#[test]
++fn annotations_leave_every_mesh_and_physical_field_exterior_only() {
++    let mut editor = square();
++    editor
++        .execute(Command::AddRectangle {
++            name: "Second".into(),
++            origin: [2., 0.],
++            width: 1.,
++            height: 1.,
++        })
++        .unwrap();
++    editor
++        .execute(Command::Transaction(vec![
++            Command::AddSeam {
++                name: "Reversed partial legacy".into(),
++                a: CurveInterval {
++                    curve: 7,
++                    t0: 0.2,
++                    t1: 0.8,
++                },
++                b: CurveInterval {
++                    curve: 16,
++                    t0: 0.9,
++                    t1: 0.1,
++                },
++                correspondence: vec![[0., 0.], [0.3, 0.6], [1., 1.]],
++            },
++            Command::AddSewingGroup {
++                name: "Ordered group".into(),
++                a: vec![
++                    CurveInterval {
++                        curve: 8,
++                        t0: 0.,
++                        t1: 0.5,
++                    },
++                    CurveInterval {
++                        curve: 8,
++                        t0: 0.5,
++                        t1: 1.,
++                    },
++                ],
++                b: vec![
++                    CurveInterval {
++                        curve: 17,
++                        t0: 1.,
++                        t1: 0.5,
++                    },
++                    CurveInterval {
++                        curve: 17,
++                        t0: 0.5,
++                        t1: 0.,
++                    },
++                ],
++                correspondence: vec![[0., 0.], [1., 1.]],
++            },
++        ]))
++        .unwrap();
++    let mut mesh = editor.project.mesh().unwrap();
++    let masses = create_cloth(&editor.project, &mesh)
++        .unwrap()
++        .masses()
++        .to_vec();
++    let seams = editor.project.seams.clone();
++    let groups = editor.project.sewing_groups.clone();
++    let curve = next_id(&editor.project) + 2;
++    for command in [
++        add([0.125, 0.25], [0.875, 0.75]),
++        Command::MovePoint {
++            point: curve - 1,
++            position: [0.75, 0.7],
++        },
++        Command::RemoveInternalCurve { curve },
++    ] {
++        editor.execute(command).unwrap();
++        assert!(create_cloth(&editor.project, &mesh).is_err());
++        let next = editor.project.mesh().unwrap();
++        mesh.doc_revision = next.doc_revision;
++        assert_eq!(mesh, next);
++        assert_eq!(
++            create_cloth(&editor.project, &next).unwrap().masses(),
++            masses
++        );
++        assert_eq!(editor.project.seams, seams);
++        assert_eq!(editor.project.sewing_groups, groups);
++        mesh = next;
++    }
++    editor.execute(add([0.2, 0.2], [0.7, 0.7])).unwrap();
++    let internal = editor.project.pieces[0].internal_curves[0];
++    for command in [
++        Command::AddSeam {
++            name: "Invalid".into(),
++            a: CurveInterval::full(internal),
++            b: CurveInterval::full(7),
++            correspondence: vec![[0., 0.], [1., 1.]],
++        },
++        Command::AddSewingGroup {
++            name: "Invalid".into(),
++            a: vec![CurveInterval::full(internal)],
++            b: vec![CurveInterval::full(7)],
++            correspondence: vec![[0., 0.], [1., 1.]],
++        },
++        Command::AddSewingByLength {
++            name: "Invalid".into(),
++            a: SewingSideByLength {
++                curve: internal,
++                start_t: 0.,
++                direction: SewingDirection::Forward,
++                length_m: 0.1,
++            },
++            b: SewingSideByLength {
++                curve: 7,
++                start_t: 0.,
++                direction: SewingDirection::Forward,
++                length_m: 0.1,
++            },
++        },
++    ] {
++        assert!(rejected(&mut editor, command).contains("outer boundary"));
++    }
++    let mut bad = editor.project.clone();
++    bad.seams[0].a.curve = internal;
++    assert!(bad.to_json().is_err());
++    let mut bad = editor.project.clone();
++    bad.sewing_groups[0].a[0].curve = internal;
++    assert!(bad.to_json().is_err());
++    assert!(bad.sewing_group_geometry(bad.sewing_groups[0].id).is_err());
++}
++
++#[test]
++fn v4_endpoint_bits_and_strict_annotation_input_round_trip() {
++    let mut editor = polygon(vec![[-1., -1.], [1., -1.], [1., 1.], [-1., 1.]]);
++    let a = [
++        "-0.0".parse::<f64>().unwrap(),
++        "0.12345678901234566".parse().unwrap(),
++    ];
++    let b = [
++        "0.7199999999999999".parse::<f64>().unwrap(),
++        "-0.09999999999999999".parse().unwrap(),
++    ];
++    editor.execute(add(a, b)).unwrap();
++    let bytes = editor.project.to_json().unwrap();
++    let reopened = Project::from_json(&bytes).unwrap();
++    assert_eq!(
++        endpoints(&reopened, 13).map(|p| p.map(f64::to_bits)),
++        [a, b].map(|p| p.map(f64::to_bits))
++    );
++    let text = String::from_utf8(bytes.clone()).unwrap();
++    for text in [
++        text.replacen(
++            "\"internal_curves\":",
++            "\"internal_curves\":[],\"internal_curves\":",
++            1,
++        ),
++        text.replacen("-0.0", "1e309", 1),
++    ] {
++        assert!(Project::from_json(text.as_bytes()).is_err());
++    }
++    let value: serde_json::Value = serde_json::from_slice(&bytes).unwrap();
++    for mutation in 0..7 {
++        let mut bad = value.clone();
++        match mutation {
++            0 => bad["project"]["pieces"][0]
++                .as_object_mut()
++                .unwrap()
++                .remove("internal_curves")
++                .map(|_| ())
++                .unwrap(),
++            1 => bad["project"]["curves"][4]["controls"] = json!([[0.1, 0.1], [0.2, 0.2]]),
++            2 => bad["project"]["pieces"][0]["internal_curves"] = json!([13, 13]),
++            3 => bad["project"]["points"][4]["position"] = json!([1000.1, 0.2]),
++            4 => bad["project"]["points"][4]["id"] = json!(3),
++            5 => bad["project"]["pieces"][0]["unknown"] = json!(true),
++            _ => bad["project"]
++                .as_object_mut()
++                .unwrap()
++                .remove("sewing_groups")
++                .map(|_| ())
++                .unwrap(),
++        }
++        assert!(Project::from_json(&serde_json::to_vec(&bad).unwrap()).is_err());
++    }
++    for raw in [
++        r#"{"type":"add_internal_segment","data":{"piece":2,"start":[0.2,0.2],"end":[0.7,0.7],"extra":0}}"#,
++        r#"{"type":"add_internal_segment","data":{"piece":2,"piece":2,"start":[0.2,0.2],"end":[0.7,0.7]}}"#,
++        r#"{"type":"add_internal_segment","data":{"piece":2,"start":[0.2],"end":[0.7,0.7]}}"#,
++        r#"{"type":"remove_internal_curve","data":{"curve":13,"curve":13}}"#,
++    ] {
++        assert!(serde_json::from_str::<Command>(raw).is_err());
++    }
++}
++
++#[test]
++fn actual_project_validation_exhausts_fixed_containment_budget_atomically() {
++    // 600 exterior edges x 900 independent lines need over 1e6 edge/winding predicates.
++    let mut vertices = Vec::new();
++    for side in 0..4 {
++        for i in 0..150 {
++            let t = i as f64 / 150.;
++            vertices.push(match side {
++                0 => [t, 0.],
++                1 => [1., t],
++                2 => [1. - t, 1.],
++                _ => [0., 1. - t],
++            });
++        }
++    }
++    let mut editor = polygon(vertices);
++    let before = editor.project.clone();
++    let commands = (0..900).map(|_| add([0.25, 0.25], [0.75, 0.75])).collect();
++    let error = rejected(&mut editor, Command::Transaction(commands));
++    assert!(
++        error.contains("containment work budget exhausted"),
++        "{error}"
++    );
++    assert_eq!(editor.project, before);
++    let mut limited = baseline().project;
++    let mut unused_id = next_id(&limited);
++    while limited.points.len()
++        + limited.curves.len()
++        + limited.pieces.len()
++        + limited.materials.len()
++        <= 20_000
++    {
++        let id = unused_id;
++        unused_id += 1;
++        limited.points.push(Point {
++            id,
++            position: [0.2, 0.2],
++        });
++    }
++    assert!(
++        limited
++            .validate()
++            .unwrap_err()
++            .to_string()
++            .contains("object limit")
++    );
++}
++
++#[test]
++fn standalone_owned_internal_curve_requires_both_actual_endpoint_objects() {
++    let mut project = square().project;
++    project.curves.push(Curve {
++        id: 13,
++        start: 11,
++        end: 12,
++        controls: None,
++    });
++    project.pieces[0].internal_curves.push(13);
++    project.points.push(Point {
++        id: 11,
++        position: [0.2, 0.2],
++    });
++    let mut value = serde_json::to_value(&project).unwrap();
++    value["next_id"] = json!(14);
++    project = serde_json::from_value(value).unwrap();
++    assert!(project.validate().is_err());
++    project.points.push(Point {
++        id: 12,
++        position: [0.7, 0.7],
++    });
++    project.validate().unwrap();
++}
++
++#[test]
++fn exterior_exports_omit_annotations_and_failed_native_save_keeps_both_files() {
++    use std::{
++        fs,
++        time::{SystemTime, UNIX_EPOCH},
++    };
++    let directory = std::env::temp_dir().join(format!(
++        "weftforge-internal-io-{}-{}",
++        std::process::id(),
++        SystemTime::now()
++            .duration_since(UNIX_EPOCH)
++            .unwrap()
++            .as_nanos()
++    ));
++    fs::create_dir(&directory).unwrap();
++    let native = directory.join("construction.weftforge");
++    let before = square();
++    before.project.save(&native).unwrap();
++    let old_bytes = fs::read(&native).unwrap();
++    let mut after = baseline();
++    let mut exterior = before.project.clone();
++    exterior.revision = after.project.revision;
++    for (label, project) in [("before", &exterior), ("after", &after.project)] {
++        project
++            .export_svg(directory.join(format!("{label}.svg")))
++            .unwrap();
++        project
++            .export_dxf(directory.join(format!("{label}.dxf")))
++            .unwrap();
++        project
++            .mesh()
++            .unwrap()
++            .export_obj(directory.join(format!("{label}.obj")))
++            .unwrap();
++    }
++    for extension in ["svg", "dxf"] {
++        assert_eq!(
++            fs::read(directory.join(format!("before.{extension}"))).unwrap(),
++            fs::read(directory.join(format!("after.{extension}"))).unwrap()
++        );
++    }
++    let geometry = |label: &str| {
++        fs::read_to_string(directory.join(format!("{label}.obj")))
++            .unwrap()
++            .lines()
++            .filter(|line| !line.starts_with('#'))
++            .map(str::to_owned)
++            .collect::<Vec<_>>()
++    };
++    assert_eq!(geometry("before"), geometry("after"));
++    after.project.save(&native).unwrap();
++    assert_eq!(
++        fs::read(weftforge_core::recovery_path(&native)).unwrap(),
++        old_bytes
++    );
++    assert_eq!(Project::load(&native).unwrap(), after.project);
++    let primary = fs::read(&native).unwrap();
++    let recovery = fs::read(weftforge_core::recovery_path(&native)).unwrap();
++    after
++        .project
++        .points
++        .iter_mut()
++        .find(|point| point.id == 11)
++        .unwrap()
++        .position = [0., 0.];
++    assert!(after.project.save(&native).is_err());
++    assert_eq!(fs::read(&native).unwrap(), primary);
++    assert_eq!(
++        fs::read(weftforge_core::recovery_path(&native)).unwrap(),
++        recovery
++    );
++    fs::remove_dir_all(directory).unwrap();
++}
+diff --git a/crates/weftforge-core/tests/joins.rs b/crates/weftforge-core/tests/joins.rs
+index 575f213..55d9a3c 100644
+--- a/crates/weftforge-core/tests/joins.rs
++++ b/crates/weftforge-core/tests/joins.rs
+@@ -206,7 +206,7 @@ fn join_recovers_analytic_cubic_children_including_stationary_derivatives_and_wr
+ }
+ 
+ #[test]
+-fn join_preserves_both_children_sewn_pairs_in_all_orientations_and_v3_remesh() {
++fn join_preserves_both_children_sewn_pairs_in_all_orientations_and_v4_remesh() {
+     for straight in [false, true] {
+         for source in 0..2 {
+             for reverse_a in [false, true] {
+@@ -305,7 +305,7 @@ fn join_preserves_both_children_sewn_pairs_in_all_orientations_and_v3_remesh() {
+                         let json = editor.project.to_json().unwrap();
+                         assert_eq!(
+                             serde_json::from_slice::<serde_json::Value>(&json).unwrap()["version"],
+-                            3
++                            weftforge_core::FORMAT_VERSION
+                         );
+                         let reopened = Project::from_json(&json).unwrap();
+                         assert_eq!(reopened, editor.project);
+diff --git a/crates/weftforge-core/tests/migration.rs b/crates/weftforge-core/tests/migration.rs
+index 31842da..7754783 100644
+--- a/crates/weftforge-core/tests/migration.rs
++++ b/crates/weftforge-core/tests/migration.rs
+@@ -167,7 +167,7 @@ fn assert_lossless_v1(bytes: &[u8]) -> Project {
+     assert_eq!(old["version"], 1);
+     let project = Project::from_json(bytes).unwrap();
+     let mut current: Value = serde_json::from_slice(&project.to_json().unwrap()).unwrap();
+-    assert_eq!(current["version"], 3);
++    assert_eq!(current["version"], weftforge_core::FORMAT_VERSION);
+     assert_eq!(
+         current["project"]
+             .as_object_mut()
+@@ -176,6 +176,10 @@ fn assert_lossless_v1(bytes: &[u8]) -> Project {
+         Some(json!([]))
+     );
+     for piece in current["project"]["pieces"].as_array_mut().unwrap() {
++        assert_eq!(
++            piece.as_object_mut().unwrap().remove("internal_curves"),
++            Some(json!([]))
++        );
+         assert_eq!(
+             piece.as_object_mut().unwrap().remove("grain_angle"),
+             Some(json!(0.0))
+@@ -243,7 +247,7 @@ fn nondefault_v1_material_values_are_mapped_instead_of_replaced_by_defaults() {
+ }
+ 
+ #[test]
+-fn v3_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes() {
++fn v4_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes() {
+     let path = temp_path();
+     fs::write(&path, V1_FIXTURES[0]).unwrap();
+     let original = Project::load(&path).unwrap();
+@@ -262,7 +266,7 @@ fn v3_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes() {
+     let saved = fs::read(&path).unwrap();
+     assert_eq!(
+         serde_json::from_slice::<Value>(&saved).unwrap()["version"],
+-        3
++        weftforge_core::FORMAT_VERSION
+     );
+     assert_eq!(Project::load(&path).unwrap(), editor.project);
+     assert_eq!(fs::read(recovery_path(&path)).unwrap(), V1_FIXTURES[0]);
+@@ -286,13 +290,18 @@ fn v3_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes() {
+ #[test]
+ fn version_dispatch_rejects_mixed_schemas_unknown_fields_and_unsupported_versions() {
+     let old: Value = serde_json::from_slice(V1_FIXTURES[0]).unwrap();
+-    let v3: Value = serde_json::from_slice(
++    let v4: Value = serde_json::from_slice(
+         &Project::from_json(V1_FIXTURES[0])
+             .unwrap()
+             .to_json()
+             .unwrap(),
+     )
+     .unwrap();
++    let mut v3 = v4.clone();
++    v3["version"] = json!(3);
++    for piece in v3["project"]["pieces"].as_array_mut().unwrap() {
++        piece.as_object_mut().unwrap().remove("internal_curves");
++    }
+     let mut v2 = v3.clone();
+     v2["version"] = json!(2);
+     v2["project"]
+@@ -333,13 +342,26 @@ fn version_dispatch_rejects_mixed_schemas_unknown_fields_and_unsupported_version
+     bad["project"]["sewing_groups"] = json!([]);
+     reject(&bad);
+     for document in [&old, &v2, &v3] {
++        assert!(Project::from_json(&serde_json::to_vec(document).unwrap()).is_ok());
++        let mut bad = document.clone();
++        bad["project"]["pieces"][0]["internal_curves"] = json!([]);
++        reject(&bad);
++    }
++    let mut bad = v4.clone();
++    bad["project"]["pieces"][0]
++        .as_object_mut()
++        .unwrap()
++        .remove("internal_curves");
++    reject(&bad);
++    assert!(Project::from_json(&serde_json::to_vec(&v4).unwrap()).is_ok());
++    for document in [&old, &v2, &v3, &v4] {
+         let mut bad = document.clone();
+         bad["unknown"] = json!(0);
+         reject(&bad);
+         let mut bad = document.clone();
+         bad["project"]["unknown"] = json!(0);
+         reject(&bad);
+-        for version in [0, 4, 999] {
++        for version in [0, 5, 999] {
+             let mut bad = document.clone();
+             bad["version"] = json!(version);
+             reject(&bad);
+@@ -372,3 +394,38 @@ fn duplicate_fields_are_rejected_at_envelope_project_and_material_boundaries() {
+         assert!(Project::from_json(duplicate_density.as_bytes()).is_err());
+     }
+ }
++
++#[test]
++fn original_v3_migrates_only_empty_internal_ownership_and_keeps_f64_bits() {
++    let bytes = include_bytes!("fixtures/asymmetric-fine.weftforge");
++    let old: Value = serde_json::from_slice(bytes).unwrap();
++    assert_eq!(old["version"], 3);
++    assert_disk_roundtrip(bytes, |project| {
++        assert!(
++            project
++                .pieces
++                .iter()
++                .all(|piece| piece.internal_curves.is_empty())
++        );
++        let mut current: Value = serde_json::from_slice(&project.to_json().unwrap()).unwrap();
++        for piece in current["project"]["pieces"].as_array_mut().unwrap() {
++            assert_eq!(
++                piece.as_object_mut().unwrap().remove("internal_curves"),
++                Some(json!([]))
++            );
++        }
++        assert_eq!(current["project"], old["project"]);
++        for (point, saved) in project
++            .points
++            .iter()
++            .zip(old["project"]["points"].as_array().unwrap())
++        {
++            for axis in 0..2 {
++                assert_eq!(
++                    point.position[axis].to_bits(),
++                    saved["position"][axis].as_f64().unwrap().to_bits()
++                );
++            }
++        }
++    });
++}
+diff --git a/crates/weftforge-core/tests/pattern_transform.rs b/crates/weftforge-core/tests/pattern_transform.rs
+index 7d6ec0c..9770056 100644
+--- a/crates/weftforge-core/tests/pattern_transform.rs
++++ b/crates/weftforge-core/tests/pattern_transform.rs
+@@ -488,7 +488,7 @@ fn huge_existing_grain_is_rotated_as_a_unit_vector_without_addition_overflow() {
+ }
+ 
+ #[test]
+-fn mesh_rebuild_uses_new_authored_uvs_and_revision_and_native_v3_round_trips() {
++fn mesh_rebuild_uses_new_authored_uvs_and_revision_and_native_v4_round_trips() {
+     let mut editor = fixture();
+     let before = editor.project.clone();
+     let old_mesh = before.mesh().unwrap();
+@@ -561,7 +561,7 @@ fn mesh_rebuild_uses_new_authored_uvs_and_revision_and_native_v3_round_trips() {
+     let reopened = Project::load(&path).unwrap();
+     assert_eq!(reopened.to_json().unwrap(), after.to_json().unwrap());
+     let saved: serde_json::Value = serde_json::from_slice(&fs::read(&path).unwrap()).unwrap();
+-    assert_eq!(saved["version"], 3);
++    assert_eq!(saved["version"], weftforge_core::FORMAT_VERSION);
+     fs::remove_dir_all(directory).unwrap();
+ }
+ 
+diff --git a/crates/weftforge-core/tests/seam_reversal.rs b/crates/weftforge-core/tests/seam_reversal.rs
+index 0a2ede2..49ea794 100644
+--- a/crates/weftforge-core/tests/seam_reversal.rs
++++ b/crates/weftforge-core/tests/seam_reversal.rs
+@@ -122,7 +122,7 @@ fn reversal_changes_endpoint_pairing_and_preserves_partial_nonlinear_constructio
+             let saved = editor.project.to_json().unwrap();
+             assert_eq!(
+                 serde_json::from_slice::<serde_json::Value>(&saved).unwrap()["version"],
+-                3
++                weftforge_core::FORMAT_VERSION
+             );
+             let reopened = Project::from_json(&saved).unwrap();
+             assert_eq!(reopened, editor.project);
+diff --git a/crates/weftforge-core/tests/sewing_groups.rs b/crates/weftforge-core/tests/sewing_groups.rs
+index d806ff9..fbb10c9 100644
+--- a/crates/weftforge-core/tests/sewing_groups.rs
++++ b/crates/weftforge-core/tests/sewing_groups.rs
+@@ -869,7 +869,7 @@ fn disjoint_same_curve_coverage_survives_split_join_but_overlaps_are_rejected()
+ }
+ 
+ #[test]
+-fn strict_v3_and_legacy_v2_keep_authored_values_and_maps_without_reinterpretation() {
++fn strict_v4_and_legacy_v2_keep_authored_values_and_maps_without_reinterpretation() {
+     let (mut editor, a, b) = curved_scene(false);
+     editor
+         .execute(Command::AddSeam {
+@@ -879,12 +879,24 @@ fn strict_v3_and_legacy_v2_keep_authored_values_and_maps_without_reinterpretatio
+             correspondence: vec![[0., 0.], [0.3, 0.7199999999999999], [1., 1.]],
+         })
+         .unwrap();
+-    let v3 = editor.project.to_json().unwrap();
+-    let value: serde_json::Value = serde_json::from_slice(&v3).unwrap();
+-    assert_eq!(value["version"], 3);
+-    assert_eq!(Project::from_json(&v3).unwrap(), editor.project);
+-    let mut v2 = value.clone();
++    let v4 = editor.project.to_json().unwrap();
++    let value: serde_json::Value = serde_json::from_slice(&v4).unwrap();
++    assert_eq!(value["version"], weftforge_core::FORMAT_VERSION);
++    assert_eq!(Project::from_json(&v4).unwrap(), editor.project);
++    let mut v3 = value.clone();
++    v3["version"] = json!(3);
++    for piece in v3["project"]["pieces"].as_array_mut().unwrap() {
++        piece.as_object_mut().unwrap().remove("internal_curves");
++    }
++    assert_eq!(
++        Project::from_json(&serde_json::to_vec(&v3).unwrap()).unwrap(),
++        editor.project
++    );
++    let mut v2 = v3.clone();
+     v2["version"] = json!(2);
++    for piece in v2["project"]["pieces"].as_array_mut().unwrap() {
++        piece.as_object_mut().unwrap().remove("internal_curves");
++    }
+     v2["project"]
+         .as_object_mut()
+         .unwrap()
+@@ -913,11 +925,11 @@ fn strict_v3_and_legacy_v2_keep_authored_values_and_maps_without_reinterpretatio
+                 bad["project"]["sewing_groups"][0]["id"] = bad["project"]["seams"][0]["id"].clone()
+             }
+             3 => bad["project"]["sewing_groups"][0]["a"][0]["t0"] = json!(null),
+-            _ => bad["version"] = json!(4),
++            _ => bad["version"] = json!(5),
+         }
+         assert!(Project::from_json(&serde_json::to_vec(&bad).unwrap()).is_err());
+     }
+-    let text = String::from_utf8(v3).unwrap().replacen(
++    let text = String::from_utf8(v4).unwrap().replacen(
+         "\"sewing_groups\":",
+         "\"sewing_groups\":[],\"sewing_groups\":",
+         1,
+@@ -1385,7 +1397,7 @@ fn physical_length_command_is_one_persistent_group_with_physical_correspondence_
+     let encoded = editor.project.to_json().unwrap();
+     assert_eq!(
+         serde_json::from_slice::<serde_json::Value>(&encoded).unwrap()["version"],
+-        3
++        weftforge_core::FORMAT_VERSION
+     );
+     assert_eq!(Project::from_json(&encoded).unwrap(), editor.project);
+ 
+diff --git a/crates/weftforge-core/tests/workflow.rs b/crates/weftforge-core/tests/workflow.rs
+index 01ee60b..20d4569 100644
+--- a/crates/weftforge-core/tests/workflow.rs
++++ b/crates/weftforge-core/tests/workflow.rs
+@@ -380,7 +380,7 @@ fn sewn_splits_preserve_gathered_pairs_in_both_directions_at_breakpoints_and_int
+ }
+ 
+ #[test]
+-fn multiple_seams_survive_split_remesh_history_branching_and_v3_save_reopen() {
++fn multiple_seams_survive_split_remesh_history_branching_and_v4_save_reopen() {
+     let mut editor = seam_scene();
+     let curve = editor.project.seams[0].a.curve;
+     let mut extra = editor.project.seams[0].clone();
+@@ -447,7 +447,7 @@ fn multiple_seams_survive_split_remesh_history_branching_and_v3_save_reopen() {
+     editor.project.save(&path).unwrap();
+     assert_eq!(Project::load(&path).unwrap(), editor.project);
+     let json: serde_json::Value = serde_json::from_slice(&fs::read(&path).unwrap()).unwrap();
+-    assert_eq!(json["version"], 3);
++    assert_eq!(json["version"], weftforge_core::FORMAT_VERSION);
+     fs::remove_file(path).unwrap();
+     assert!(editor.undo());
+     assert!(editor.undo());
+diff --git a/docs/architecture.md b/docs/architecture.md
+index 40cd2e7..3f7e780 100644
+--- a/docs/architecture.md
++++ b/docs/architecture.md
+@@ -8,7 +8,7 @@ flips its vertical coordinate; OBJ uses metres/Y-up.
+ 
+ ## Present responsibility boundaries
+ 
+-- `weftforge-core`: stable ID document objects, authored straight/cubic boundaries,
++- `weftforge-core`: stable ID document objects, authored straight/cubic boundaries and straight internal annotations,
+   oriented seam intervals and ordered sewing groups, materials and
+   capsule mannequin; typed commands, transaction/history; meshing, project IO,
+   OBJ/SVG/DXF export and one document-to-solver adapter.
+@@ -19,7 +19,7 @@ flips its vertical coordinate; OBJ uses metres/Y-up.
+   first viewport implementation. It does not yet have a dedicated depth-buffered
+   garment shader, PBR, textures, shadows, animation timeline or GPU simulation.
+ - `weftforge-cli`: offline creation/inspect/edit/mesh/simulate/export/benchmark and
+-  explicit recovery through the same library commands. Six stateless local MCP
++  explicit recovery through the same library commands. Nine stateless local MCP
+   file tools expose the shared validated engine; live-GUI control remains open.
+ - `xtask`, `scripts/`: integration, independently parsed output, registry/evidence
+   validation, report/dashboard generation and unsigned package preparation.
+@@ -32,7 +32,25 @@ The libraries do not depend on egui, a browser, Python, REA, or commercial SDKs.
+ 
+ Every point, curve, piece, material, seam and sewing group has a stable integer ID. Curves
+ reference authored points and optional absolute Bezier control coordinates.
+-Piece boundaries are ordered closed chains. A seam stores two oriented [t0,t1]
++Piece boundaries are ordered closed chains. Each piece also owns an explicit
++`internal_curves` array of independent straight annotations backed by dedicated
++Point/Curve IDs. Both endpoints are exclusive to their annotation; crossings or
++coincident coordinates do not create shared topology. These lines are editable
++construction with no cut, hole, fold, sewing, mass or simulation effect. Boundary
++controls/split/join and every sewing route reject internal targets. Resize, rigid
++transform and removal traverse both endpoints, while bounds, mesh construction
++and SVG/DXF exports use the exterior only. OBJ contains no annotation primitives.
++
++Annotation validation establishes whole-segment separation from a certified
++curved-contour polyline, independently of mesh resolution: 1e-6 m clearance,
++1e-7 m maximum chord deviation and a conservative coordinate-scaled f64 reserve.
++The contour is built once per annotated piece; depth 20, 20,000 boundary samples
++and one million project-wide subdivision/predicate steps bound work. Uncertain,
++self-touching and exhausted cases fail atomically. These are WeftForge engineering
++policies under the [reviewed contract](../spec/features/PAT-006-internal-segments.md),
++with reference behavior and actual native acceptance recorded separately.
++
++A seam stores two oriented [t0,t1]
+ intervals and a monotone normalized parameter correspondence; it never refers to
+ simulation vertex indices. Unequal lengths are deliberate easing.
+ 
+@@ -41,7 +59,7 @@ normalized cumulative arc lengths. Each interval retains its curve t endpoints;
+ gaps between disconnected spans add no length. Both one-sided endpoints at a
+ path knot survive. Metric work is bounded, with a1e-8m authored-path budget and
+ explicit errors for exhausted work or unsupported floating-point precision.
+-Native v3 saves both legacy seams and groups; strict older-format migration
++Native v4 saves legacy seams, groups and owned internal annotations; strict older-format migration
+ does not reinterpret legacy correspondence.
+ 
+ The rebuildable rest mesh has material coordinates, physical arranged positions,
+diff --git a/docs/automation.md b/docs/automation.md
+index 22a02bd..925c883 100644
+--- a/docs/automation.md
++++ b/docs/automation.md
+@@ -91,7 +91,7 @@ are rejected. The tool names and arguments are:
+ 
+ | Tool | Required arguments | Result in `structuredContent` |
+ | --- | --- | --- |
+-| `project_inspect` | `path` | Complete validated `project`, SI `units`, `up: "Y"`; includes stable points, curves, piece boundaries, materials, placements, grain, legacy seams, sewing groups, mannequin, resolution, revision and next ID |
++| `project_inspect` | `path` | Complete validated `project`, SI `units`, `up: "Y"`; includes stable points, curves, piece boundaries/internal ownership, materials, placements, grain, legacy seams, sewing groups, mannequin, resolution, revision and next ID |
+ | `project_lengths` | `path`, `query` | Applied `source_revision`, `length_unit: "m"`, echoed query, and unrounded authored/rest length(s); pairs include signed `mismatch_b_minus_a_m` |
+ | `project_create` | `output` | Saved `output` and `revision`; existing output paths are refused |
+ | `project_execute` | `input`, `output`, `commands` | Saved paths, new `revision`, and `commands_applied` |
+@@ -104,13 +104,13 @@ are rejected. The tool names and arguments are:
+ Results include a text block containing the same JSON for older clients.
+ Inspection returns authoritative authored state without building a mesh.
+ Its `project` uses the native writer's JSON number representation, including f32
+-display colors and f64 authored values. For v3 files written by this version,
++display colors and f64 authored values. For v4 files written by this version,
+ parsed inspection and saved-project values agree exactly without changing stored
+ numeric precision. Legacy-file inspection returns the migrated current model.
+ DXF exports authored exterior curves directly, independently of mesh resolution
+ or 3D placement. Its [R2000 profile](../spec/features/FILE-005-dxf-pattern-export.md)
+ preserves straight/cubic geometry and stable piece layers. Sewing, materials,
+-grain, drape and native editing relationships require the `.weftforge` project.
++grain, internal annotations, drape and native editing relationships require the `.weftforge` project.
+ Each successful execute creates a single document revision through
+ `Editor::execute(Command::Transaction(commands))`, then uses native atomic save
+ and recovery handling. Commands may refer to stable IDs returned by inspection.
+@@ -131,7 +131,7 @@ The example's newly created default project assigns its first piece ID 2;
+ existing projects may assign different IDs. Current-profile calls use the same
+ arguments and additionally include the per-request `_meta` shown above.
+ 
+-The supported shared commands are `import_svg_patterns`, `import_dxf_patterns`, `add_polygon`, `add_rectangle`, `add_ellipse`, `move_point`,
++The supported shared commands are `import_svg_patterns`, `import_dxf_patterns`, `add_polygon`, `add_rectangle`, `add_ellipse`, `add_internal_segment`, `remove_internal_curve`, `move_point`,
+ `set_curve_controls`, `split_curve`, `join_curve`, `resize_piece`, `transform_piece`, `set_placement`, `set_grain`,
+ `set_material`, `add_material`, `update_material`, `add_seam`, `update_seam`,
+ `remove_seam`, `add_sewing_group`, `add_sewing_by_length`, `update_sewing_group`, `remove_sewing_group`,
+@@ -141,6 +141,29 @@ validation remains authoritative. Authoring uses f64 SI units, placement/grain
+ angles use radians, and membrane stiffness uses N/m. See
+ [file formats](file-formats.md) for the native representation and physical units.
+ 
++`add_internal_segment` takes one owner piece ID and two metre coordinate arrays;
++`remove_internal_curve` takes the annotation's stable curve ID:
++
++```json
++{"type":"add_internal_segment","data":{"piece":2,"start":[0.125,0.25],"end":[0.875,0.75]}}
++{"type":"remove_internal_curve","data":{"curve":13}}
++```
++
++The default unit square uses endpoint IDs 11/12 and curve ID 13; inspect existing
++projects rather than assuming IDs. Every field is required, IDs are nonzero u64s,
++coordinate arrays contain exactly two finite numbers, and extra/duplicate fields
++reject. Edit both endpoints with two `move_point` entries in one command array;
++only the final candidate is validated and the array creates one revision. Failed
++creation/removal/edit retains output and recovery, including allocator state.
++Each segment must remain wholly inside its owner with the fixed conservative
++clearance/certificate/work limits in the [engineering contract](../spec/features/PAT-006-internal-segments.md).
++Outer edits revalidate retained annotations. Boundary split/join/controls and all
++sewing commands reject internal targets. Existing read-only interval length queries
++can measure them. They do not affect triangulation, stitches, cloth or mass; an
++accepted edit still invalidates old derived revisions. CLI `inspect` exposes each
++pattern's `boundary` and `internal_curves`; MCP inspection returns full construction.
++These are two alternatives on the existing nine tools, with no new CLI verb.
++
+ `import_svg_patterns` takes `{"svg":"...original SVG XML..."}` and adds all
+ supported pieces as one typed authoring action. The dedicated CLI
+ `import-svg INPUT OUTPUT PATTERNS.svg` and MCP `project_import_svg` file tool read
+@@ -204,7 +227,7 @@ translation/pivot components within ±1000 m, and angle within ±1e6 rad. Result
+ coordinates, placement, contour and affected sewing metrics must also validate.
+ A rejected command leaves the entire command array and output/recovery bytes unchanged.
+ 
+-Native v3 fields and version stay unchanged. Remeshed UVs equal the new authored
++The layout command adds no native fields. Remeshed UVs equal the new authored
+ coordinates; SVG/DXF layouts and OBJ UVs change. The arranged continuous surface
+ is retained within the reviewed numeric limits, but a fresh revision invalidates
+ rest mesh, display and simulation state. Identical triangulation, solver paths or
+@@ -268,7 +291,7 @@ with reference numerical/rounding/selection behavior still unobserved.
+ lengths. Legacy seam maps retain their original normalized-t meaning. Different
+ pieces/disconnected spans are supported; gaps never add sewing length. Group
+ identity and map survive supported split/join/remesh operations. The native
+-writer saves v3; strict v1/v2 readers preserve legacy data and semantics.
++writer saves v4; strict v1/v2/v3 readers preserve legacy data and semantics.
+ 
+ `add_sewing_by_length` creates one ordinary sewing group with one interval per
+ side and the normalized physical arc-length map `[[0,0],[1,1]]`:
+@@ -288,7 +311,7 @@ errors reject the whole transaction and preserve existing output/recovery bytes.
+ Disjoint spans on one curve remain valid. Different side lengths use the existing
+ group's normalized proportional semantics. Only resolved t intervals are saved;
+ later geometry edits retain those attachments and recompute lengths, without
+-persistent length locks. Native v3, CLI `execute`, MCP `project_execute` and the
++persistent length locks. Native v4, CLI `execute`, MCP `project_execute` and the
+ nine-tool surface stay unchanged. This is bounded WeftForge engineering behavior;
+ reference easing, continuous correspondence and numeric parity remain unqualified.
+ See the [physical-length contract](../spec/features/SEW-002-physical-length.md).
+@@ -303,7 +326,7 @@ weftforge-cli inspect-sewing output.weftforge
+ `commands.json` is a strict JSON array of 1–1024 shared commands, at most 1 MiB.
+ Nested transactions and duplicate fields are rejected. CLI and MCP use the same
+ transaction/save function; a failed command batch never partially replaces its
+-output. Inspection reports the authoritative native-v3 source, group lengths,
++output. Inspection reports the authoritative native-v4 source, group lengths,
+ source-owned proportional portions, rest vertices/UVs/triangles, boundary
+ parameters and actual weighted stitches. It builds a rest mesh and performs no
+ simulation. Its native source uses native scalar serialization, including f32
+@@ -343,7 +366,9 @@ native projects at any extension. The shared core writers enforce these guards
+ for CLI and desktop exports too. Ordinary non-native export files can be
+ replaced atomically. SVG preserves authored boundary curves at mm scale; OBJ
+ contains the rebuilt arranged rest mesh, UVs, normals and piece groups in metres.
+-Neither is an editable native document or a saved simulation state.
++SVG and DXF omit internal annotations; OBJ emits no annotation line primitives.
++Native project saving is required to preserve editable internals. These exports
++are not editable native documents or saved simulation states.
+ 
+ There is no persistent cross-request undo, live selection/GUI control,
+ simulation job API, progress stream, active cancellation implementation, or
+diff --git a/docs/file-formats.md b/docs/file-formats.md
+index b32f75a..734bd74 100644
+--- a/docs/file-formats.md
++++ b/docs/file-formats.md
+@@ -9,15 +9,16 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
+ 
+ | Format | Import/read | Export/write | Editable construction | Static/animated | Current limits |
+ | --- | --- | --- | --- | --- | --- |
+-| `.weftforge` v3 | Yes | Yes | Patterns, grain, orthotropy, legacy seams and ordered sewing groups | Static authoring | JSON, 16 MiB limit; no embedded external assets or saved simulation frames |
+-| `.weftforge` v2 | Yes, explicit migration | No | Legacy grain/orthotropy model and parameter-based seams | Static authoring | Fields and seam metrics preserved; saving writes v3 with an empty group list |
+-| `.weftforge` v1 | Yes, explicit migration | No | Original supported model | Static authoring | Old stretch maps to both axes; grain defaults to zero; saving writes v3; round-trip numeric decoding; tested native I/O subset |
+-| `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1/v2/v3 model | Static authoring | One prior saved document; no silent fallback |
+-| `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1/v2/v3 model | Static authoring | Dirty named documents only; no automatic recovery UI |
+-| OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups; no MTL/textures |
++| `.weftforge` v4 | Yes | Yes | Patterns, owned straight internal annotations, grain, orthotropy, legacy seams and ordered sewing groups | Static authoring | Strict required ownership arrays, JSON, 16 MiB limit; no embedded external assets or saved simulation frames |
++| `.weftforge` v3 | Yes, explicit migration | No | Legacy patterns, grain, orthotropy, seams and ordered groups | Static authoring | Preserves all legacy fields; adds empty internal arrays; saving writes v4 |
++| `.weftforge` v2 | Yes, explicit migration | No | Legacy grain/orthotropy model and parameter-based seams | Static authoring | Fields and seam metrics preserved; saving writes v4 with empty group/internal lists |
++| `.weftforge` v1 | Yes, explicit migration | No | Original supported model | Static authoring | Old stretch maps to both axes; grain defaults to zero; saving writes v4; round-trip numeric decoding; tested native I/O subset |
++| `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1/v2/v3/v4 model | Static authoring | One prior saved document; no silent fallback |
++| `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1/v2/v3/v4 model | Static authoring | Dirty named documents only; no automatic recovery UI |
++| OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups; no annotation lines or MTL/textures |
+ | SVG | Bounded additive import | Yes | Editable exterior boundaries and names | Static 2D | Closed absolute `M/L/C/Z` paths, explicit mm and uniform viewBox; no sewing/materials/internal features/print tiling |
+ | glTF/GLB | No | No | None yet | None yet | Planned validated avatar/mesh/animation workflows |
+-| DXF R2000 | Bounded additive import | Yes | Editable exterior boundaries with layer names | Static 2D | Strict existing ASCII `LINE`/clamped cubic `SPLINE` profile, mm and `WF_PIECE` layers; no sewing, materials, grain, 3D placement, apparel conventions or print layout |
++| DXF R2000 | Bounded additive import | Yes | Editable exterior boundaries with layer names | Static 2D | Strict existing ASCII `LINE`/clamped cubic `SPLINE` profile, mm and `WF_PIECE` layers; no sewing, materials, grain, internal annotations, 3D placement, apparel conventions or print layout |
+ | Animation/cache formats | No | No | None yet | None yet | Timeline, frame caches and export not implemented |
+ | Marvelous Designer `.zprj` / `.zpac` | No | No | None | None | Separate FILE-006 research/compatibility workstream |
+ 
+@@ -26,14 +27,14 @@ avatar reader is wired into the project model; an installed parsing dependency
+ does not establish an import feature. Export validation with independent software
+ must be evidenced separately from our own writer/reader round trips.
+ 
+-## Native v3 representation
++## Native v4 representation
+ 
+ The UTF-8 JSON envelope is:
+ 
+ ```json
+ {
+   "format": "weftforge",
+-  "version": 3,
++  "version": 4,
+   "project": {
+     "revision": 0,
+     "points": [],
+@@ -51,12 +52,14 @@ The UTF-8 JSON envelope is:
+ 
+ This structural illustration omits a valid default material; generate a valid
+ empty project with `weftforge-cli new FILE.weftforge`. Treat the current Rust
+-serialized types and validation as authoritative for v3. The reader accepts v1
+-and v2 through the explicit migrations below. A different format marker, unsupported
++serialized types and validation as authoritative for v4. The reader accepts v1,
++v2 and v3 through the explicit migrations below. A different format marker, unsupported
+ version, unknown or duplicate field, malformed JSON or invalid construction is
+ rejected without replacing the open project. Schemas are strict: a v1 envelope
+ cannot contain newer fields, v2 cannot contain sewing_groups, and v3 requires
+-the explicit group array. Modern materials cannot retain the old stretch field.
++the explicit group array. V1/v2/v3 pieces reject `internal_curves`, including an
++empty array; v4 requires both the project group array and every piece's explicit
++internal array. Modern materials cannot retain the old stretch field.
+ 
+ Authoring coordinates use f64 metres. 3D is right-handed/Y-up; pattern coordinates
+ are material-space U/V with V upward. Placements store metre translations and XYZ
+@@ -64,7 +67,8 @@ Euler rotations in radians, applied in that order. Mass uses kilograms, time
+ seconds, density kg/m², membrane stiffness N/m, and bending rigidity N·m.
+ 
+ Points and straight/cubic curves retain stable IDs. A piece contains a name,
+-ordered closed boundary of curve IDs, placement, material ID and `grain_angle`.
++ordered closed `boundary` of curve IDs, independent `internal_curves` ownership
++array, placement, material ID and `grain_angle`.
+ The angle is f64 radians counterclockwise from material +U toward +V and identifies
+ the warp axis; weft is perpendicular. Zero points right in the V-up 2D canvas.
+ Placement changes the arranged orientation without changing the authored grain.
+@@ -74,9 +78,21 @@ unit grain direction canonically in `[-pi,pi]`, and compensates placement to
+ preserve the arranged surface and world warp/weft directions. A pure translation
+ retains grain and Euler field bits. The command rotates endpoints and absolute
+ controls about its explicit original U/V pivot, then translates; saved placement
+-Euler values can change although arrangement stays fixed. It introduces no v3
+-field or version change. Cubic controls
+-are absolute 2D coordinates; a null control array means a straight boundary.
++Euler values can change although arrangement stays fixed. The transform itself
++adds no saved fields. Cubic controls are absolute 2D coordinates; a null control
++array means a straight curve. Internal curves require null controls in v4.
++
++Each internal entry identifies one independent straight annotation with two
++exclusive Point IDs. The list preserves authored order and does not create a
++path, region, hole or physical relationship. Every curve has exactly one boundary
++or internal owner; unrelated orphan geometry and shared internal endpoints reject.
++The full segment must exceed 1e-9 m and stay strictly inside its owner's contour
++with at least 1e-6 m clearance. Certified 1e-7 m curve flattening, conservative
++f64 reserve, depth 20, 20,000 contour samples and a one-million-step project
++validation budget are fixed; uncertain/exhausted inputs reject. Mesh resolution
++cannot change that decision. See the [engineering contract](../spec/features/PAT-006-internal-segments.md).
++Future cubics, grouping, holes and cuts require an explicit supported-model/version
++decision; this reader never silently discards or straightens unsupported data.
+ Legacy `seams` store two oriented curve intervals (`curve`, `t0`, `t1`) plus strictly
+ increasing normalized correspondence pairs including `[0,0]` and `[1,1]`.
+ Decreasing interval endpoints encode reversed direction. Derived seam samples
+@@ -101,26 +117,28 @@ physical parameters. The mannequin stores
+ analytic capsule endpoints/radii. Resolution is a document-wide mesh setting.
+ The format does **not** yet store solver timestep/iterations, current drape or
+ velocities, undo history, selection/camera, pins,
+-attachments, holes/internal lines, external avatar assets, textures, animation,
++attachments, holes/cuts/internal cubic shapes, external avatar assets, textures, animation,
+ lighting or cache data. These are visible persistence gaps on the roadmap.
+ 
+-## Explicit v1 and v2 migration
++## Explicit v1, v2 and v3 migration
+ 
+ The version-1 schema stored `material.stretch_stiffness` and no per-piece grain.
+ Its reader uses the strict original field types, then maps:
+ 
+ ```text
+-v3.piece.grain_angle = 0 radians (v1 input)
+-v3.material.warp_stiffness = v1.material.stretch_stiffness
+-v3.material.weft_stiffness = v1.material.stretch_stiffness
+-v3.sewing_groups = [] (v1 and v2 input)
++v4.piece.grain_angle = 0 radians (v1 input)
++v4.material.warp_stiffness = v1.material.stretch_stiffness
++v4.material.weft_stiffness = v1.material.stretch_stiffness
++v4.sewing_groups = [] (v1 and v2 input)
++v4.piece.internal_curves = [] (v1, v2 and v3 input)
+ ```
+ 
+ These were the old document-to-solver inputs. The migration retains the other
+ stored fields, including IDs, names, geometry, seams, placement and revision.
+-The strict v2 reader preserves grain and distinct stiffness axes and adds only
+-an empty group vector. Legacy correspondence remains normalized curve t; it is
+-never silently reinterpreted as arc length.
++Frozen v2/v3 piece types preserve grain and distinct stiffness axes and add only
++empty internal arrays. V2 also gains an empty group vector; v3 retains every
++ordered group/map/list entry. Legacy correspondence remains normalized curve t;
++it is never silently reinterpreted as arc length.
+ A native check found two coordinate changes of 1e-16 m while reading/saving v1;
+ the source parser now enables round-trip numeric decoding, with independent
+ v1/v2 bit regression tests in [issue26](https://github.com/thematheusmello/weftforge/issues/26). Those original deltas remain below
+@@ -128,10 +146,10 @@ that check's 1e-12 m geometric limit. The corrected native I/O subset now preser
+ float fields exactly against an independent IEEE-bit oracle; see the
+ [native I/O report](../parity/reports/WF-20261114-NATIVE-IEEE-001.json). It cannot
+ restore values already saved after rounding, and is not complete format parity.
+-Loading v1/v2 does not rewrite it or create an authoring revision; the next
+-explicit save writes v3.
++Loading v1/v2/v3 does not rewrite it or create an authoring revision; the next
++explicit save writes v4.
+ When saving over a valid v1 primary, recovery retains its exact original bytes.
+-Older builds cannot read v3, and there is no downgrade writer.
++Older builds cannot read v4, and there is no downgrade writer.
+ 
+ The four existing v1 fixtures and retained snapshots stay byte-identical in the
+ repository. Migration tests compare every authored value, rest arrangement/mass,
+@@ -159,7 +177,13 @@ in the target directory, flushes its data, preserves an existing valid primary a
+ `<filename>.recovery`, then renames the staged file at the commit point. Directory
+ flush is best-effort where the OS supports it. Existing invalid or non-regular
+ primary files are refused; use a new destination instead of destroying them.
+-This is not a promise of identical crash durability on every filesystem/platform.
++Validation/schema/command failure starts no replacement and preserves primary
++and recovery bytes. A later IO failure can occur after recovery has been refreshed
++to the valid prior primary; the primary survives, but the older recovery bytes
++need not. This is not an atomic two-file transaction or a promise of identical
++crash durability on every filesystem/platform. Native general Save commits an
++ordinary inspector draft before chooser/IO; preservation of every uncommitted
++general draft on cancellation/failure is a separate known limitation.
+ 
+ Recovery is explicit:
+ 
+@@ -170,7 +194,7 @@ cargo run --release -p weftforge-cli -- recover garment.weftforge recovered.weft
+ The desktop writes dirty named documents to `<filename>.autosave` every 30 seconds
+ and also retains session autosaves for untitled work in the platform data directory.
+ The Recover window lists session files and current project sidecars; recovering
+-creates a dirty copy requiring Save As. Autosave writes v3 and recovery uses the
++creates a dirty copy requiring Save As. Autosave writes v4 and recovery uses the
+ same strict versioned reader;
+ failed recovery preserves the current document. A window-close request with
+ unsaved edits is blocked until save or an explicit discard action. macOS
+@@ -188,7 +212,8 @@ coordinates are metres with Y up. `vt` values retain material-space metres and
+ may lie outside `[0,1]`; `vn` values are computed vertex normals. Faces are
+ triangles and `g piece_ID` names separate pieces. No seam welding, rendered
+ thickness, texture images, material library, skeleton, animation, or editable
+-curves are encoded. OBJ itself has no authoritative unit field: its metre
++curves or internal annotation line primitives are encoded. Native saving retains
++editable annotations. OBJ itself has no authoritative unit field: its metre
+ convention is stated in the comment and this documentation.
+ 
+ Rigid 2D `transform_piece` layout edits therefore change SVG/DXF construction
+@@ -198,7 +223,7 @@ identical vertex ordering, solver trajectories and texture placement are outside
+ this increment. Every successful edit still invalidates derived revisions.
+ 
+ SVG exports each authored exterior boundary as a named path, retaining straight
+-segments and cubic Beziers. One user unit is one millimetre; physical width/height
++segments and cubic Beziers. Internal annotations are omitted. One user unit is one millimetre; physical width/height
+ are expressed in mm and V is converted to downward SVG Y. It does not reconstruct
+ the complete garment document when imported elsewhere. Printer scaling, page
+ layout/tiling, margins and units in third-party readers still
+@@ -218,7 +243,7 @@ or compound contours, DTDs and external resources reject the whole import.
+ Import is limited to 1 MiB, 64 pieces and 4096 total spans; native validation and
+ its bounded cubic contour predicate still apply. Appearance, descriptions,
+ sewing, grain, internal details and simulation are omitted explicitly. Imported
+-pieces use the first existing fabric and default 3D placement. Native documents
++pieces use the first existing fabric, empty internal arrays and default 3D placement. Native documents
+ remain necessary for the complete garment.
+ 
+ DXF writes the [FILE-005-v1 R2000 profile](../spec/features/FILE-005-dxf-pattern-export.md):
+@@ -229,7 +254,8 @@ one degree-3 nonrational `SPLINE` with four controls and the clamped knot vector
+ `[0,0,0,0,1,1,1,1]`. Curves retain direction and shared endpoints without sampled
+ replacement or extra closing edges. Layers `WF_PIECE_ID` group each piece, sorted
+ by stable ID. User piece names are omitted. Repeated export of the same document
+-revision is byte-identical across destination names.
++revision is byte-identical across destination names. Internal annotations are
++omitted; retain the native project to preserve them.
+ 
+ Choose **Export DXF** in the desktop toolbar or command search, or run:
+ 

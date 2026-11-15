@@ -1,0 +1,17 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/internal-segments-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.16s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 9 tests
+test internal_line_tests::internal_line_unfinished_creation_blocks_clean_new_and_escape_abandons_without_history ... ok
+test internal_line_tests::internal_line_endpoint_drag_retains_press_blur_and_commits_pending_properties_once ... ok
+test internal_line_tests::internal_line_failed_second_point_and_stale_tool_owner_revision_load_are_safe ... ok
+test internal_line_tests::internal_line_modal_shields_background_pointer_accesskit_and_shortcuts ... ok
+test internal_line_tests::internal_line_picking_delete_and_boundary_tools_keep_roles_separate ... ok
+test internal_line_tests::internal_line_search_rail_and_snapped_two_click_creation_are_atomic ... ok
+test internal_line_tests::internal_line_cross_piece_selection_and_incomplete_source_text_are_retained ... ok
+test internal_line_tests::internal_line_failure_cancel_and_unchanged_editor_preserve_raw_input_redo_and_outputs ... ok
+test internal_line_tests::internal_line_precise_creation_and_both_endpoint_edit_use_one_transaction ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 89 filtered out; finished in 1.12s
+

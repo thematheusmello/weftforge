@@ -1,0 +1,43 @@
+{
+  "contract": {
+    "commit": "9b18fd1a4299db44a840aa2f53417f711aaea2da",
+    "path": "spec/features/PAT-006-internal-segments.md",
+    "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66"
+  },
+  "approval_sha256": "b8c68d0dc140d79110f8befa63573b8c44b07a6d768387529c9046a6ff7e7ad7",
+  "immutable_baseline_sources": [
+    {
+      "commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "path": "crates/weftforge-core/src/document.rs",
+      "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+    },
+    {
+      "commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "path": "crates/weftforge-core/src/persistence.rs",
+      "sha256": "748eb06ae06bd348c49e5cc5bd716cbc19da06840d2b5a38a5caffbdd1283baf"
+    },
+    {
+      "commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "path": "crates/weftforge-core/tests/migration.rs",
+      "sha256": "577937ffbd5d0c42935a2a97772bc5aa53a7accca6e529efa4b86be9aa543099"
+    },
+    {
+      "commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "path": "spec/features/PAT-004-piece-rigid-transform.md",
+      "sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557"
+    },
+    {
+      "commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "path": "apps/weftforge-cli/src/main.rs",
+      "sha256": "88e09babfb9eaba9646a54ebb0de28ac3fccd318d50f7f2a92bda148e857310d"
+    },
+    {
+      "commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "path": "apps/weftforge-cli/src/mcp.rs",
+      "sha256": "21454eaa6f9737f66e2c043dba5e5f0a99024900c82d68aa053c7fc66e1d7a11"
+    }
+  ],
+  "reused_adapter_protocol_source_sha256": "ac252d08d820f7aedac771502486a54ec2dc4242017911588d5e39fcaa38a384",
+  "policy": "Serialization/adapter/command boundaries only; geometry expectations are original analytic formulas, not baseline or candidate tessellation/length outputs.",
+  "product_CUA_or_Cargo_executed": false
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "status": "prospective_approved_engineering_acceptance_before_candidate_execution",
+  "approved_contract_commit": "9b18fd1a4299db44a840aa2f53417f711aaea2da",
+  "approved_contract_sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+  "root_approval_sha256": "b8c68d0dc140d79110f8befa63573b8c44b07a6d768387529c9046a6ff7e7ad7",
+  "immutable_baseline_commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+  "product_CUA_or_Cargo_executed_for_preparation": false,
+  "original_models": [
+    "R exact square",
+    "L exact concave six-edge polygon",
+    "C analytic parabola",
+    "S original sewn two-square scene with nonuniform collinear legacy boundary"
+  ],
+  "fixture_files": 13,
+  "accepted_case_definitions": 26,
+  "rejected_command_case_definitions": 34,
+  "malformed_v4_definitions": 14,
+  "numeric_oracle": "Independent exact-line/quadratic analytic model and RzRyRx/world-landmark equations. No production geometry/length algorithm or candidate output.",
+  "fixed_criteria": "CRITERIA.json; no post-output changes",
+  "bounded_cases": "CASES.json; explicit expected native construction for each accepted command",
+  "supported_model": "Only exclusive-endpoint straight annotations, strict ownership and v4 with frozen v1/v2/v3 conversion; boundary-only physical sewing/topology and exterior exports remain explicit.",
+  "stress_supported_outcomes": [
+    "accepted_with_exact_supported_construction",
+    "refused_with_explicit_work_or_certificate_budget"
+  ],
+  "stress_limit": "Bounded observation, not a rejection oracle based on guessed loop count. Source-level explicit 1e6 exhaustion regression remains mandatory.",
+  "run_caps": {
+    "subprocesses": 500,
+    "elapsed_s": 900,
+    "individual_timeout_s": 120
+  },
+  "future_binding_required": [
+    "root_authorized",
+    "freeze_sha256",
+    "source_worktree",
+    "source_commit",
+    "source_hashes",
+    "cli",
+    "cli_sha256"
+  ],
+  "future_invocation": "python3 evaluate.py evaluate --binding ROOT-BINDING.json --out FRESH_RUN_DIRECTORY",
+  "saved_recovery_scope": "Schema/validation failures and tested early writer guards retain exact primary/recovery bytes. Late injected writer interruption may advance recovery to valid prior-primary; no two-file atomicity promise.",
+  "separate_required_gates": [
+    "Live Editor history/Redo/high-water branch table, cancellation and failed-load raw drafts",
+    "Old mesh rejected by create_cloth; fresh same-revision mesh accepted; mass/constraint separation",
+    "Deterministic source-level containment work/depth/sample exhaustion regressions and useful rejection",
+    "Injected late atomic-writer interruption: primary unchanged, recovery may advance to valid prior primary; no two-file atomicity claim",
+    "Real native creation/edit/drag/cancel/history/new/recover/process-restart/reopen and export omission; four local Rust gates; tracked clean registry/map validation"
+  ],
+  "limits": [
+    "Straight annotations only, exclusive endpoint IDs, flat ordered ownership list, no internal sewing/cubic/split/join/cut/hole/fold/mesh topology or reference claim",
+    "General native Save may commit inspector drafts before chooser/IO; this evaluator does not claim global draft atomicity",
+    "Adapter success and synthetic tests do not establish live history/mesh lifecycle/native acceptance",
+    "No candidate execution is authorized without separate root review, immutable source/binary binding and GO"
+  ],
+  "prior_sewing_packets_or_cases_mutated": false,
+  "proposal_version": 2,
+  "supersedes_original_freeze_sha256": "e08ddc6e3faee3684b8ee691558fc7adac34e916c6d1556bf51fb7766992dc00",
+  "prospective_correction": "Before any candidate evaluation, root static review identified the immutable B657 DXF source-revision comment. Validate exactly one own-revision group999 comment in each file, normalize only that value for DXF byte comparison, and keep all other assertions/caps/numeric fixtures unchanged. Original packet remains unexecuted and immutable; no candidate output caused this correction."
+}

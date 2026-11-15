@@ -1,0 +1,11 @@
+{
+  "status": "preserved_preparation_failure",
+  "native_or_candidate_executed": false,
+  "operation": "static source-block extraction",
+  "error": "AssertionError at expected AddPolygon internal_curves insertion count",
+  "cause": "Extractor selected the Rust match-pattern brace rather than the following => body brace",
+  "failed_script_copy": "revisions/review_final_source-001.py.txt",
+  "failed_script_sha256": "56d5abf6c4ef27e2b7a71ac49885d5e6bfd0eeb41bfa2531742148c5051c2f11",
+  "effect": "No report/freeze written and no numeric expectations or source changed",
+  "correction": "Select the body opening brace after => for Command match arms; retry only the static review into a fresh report name"
+}

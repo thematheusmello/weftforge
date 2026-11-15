@@ -1,0 +1,95 @@
+{
+  "kind": "actor_post-input-closure_identity_collection",
+  "utc": "2026-11-15T21:04:39.016276+00:00",
+  "source_inputs_unchanged": 65,
+  "frozen_dependencies_unchanged": 523,
+  "freeze_sha256": "ac65bff3ab3a9c5ab006d36fa2f4db7bd385b8a70f6010cbf53e9fa8154e3a28",
+  "binding_sha256": "4044faf299336f4ea4a9af0246817eaf3176924c5411f26f1cb54ce9ba664be7",
+  "native_binary_sha256": "a733c9952ff060a3ec96417467be50011a16039dbb0868fd8ac9890a2b5897c4",
+  "controller_sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+  "recorder_sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+  "clean_metadata_head": "db8ee77f708a5088c3597030bd16de5d8912ca43",
+  "git_status": "",
+  "returned_operation_pairs": 85,
+  "method_counts": {
+    "getState": 1,
+    "local-filesystem-proof": 1,
+    "external-open": 1,
+    "external-own-pid": 1,
+    "getApp": 1,
+    "getAXStateAndScreenshot": 36,
+    "click": 22,
+    "pressKey": 11,
+    "typeText": 7,
+    "setValue": 1,
+    "external-raw-snapshot": 3
+  },
+  "exception_pairs": 0,
+  "last_record": "0085",
+  "exact_owned_PID_after_closure": [
+    93371
+  ],
+  "work_files": [
+    {
+      "path": "work/A.weftforge",
+      "bytes": 3518,
+      "sha256": "37dc0eafe185702f85a7e9470ddbda2a11c50cf776bbab563642958d2be0f4a7",
+      "mode": "0o644",
+      "revision": 2,
+      "native_version": 4
+    },
+    {
+      "path": "work/A.weftforge.autosave",
+      "bytes": 3518,
+      "sha256": "37dc0eafe185702f85a7e9470ddbda2a11c50cf776bbab563642958d2be0f4a7",
+      "mode": "0o644",
+      "revision": 2,
+      "native_version": 4
+    },
+    {
+      "path": "work/A.weftforge.autosave.recovery",
+      "bytes": 3198,
+      "sha256": "0a6af9b7a4e81e269b1670d0f992536ead106ef0494ada3913f8a73480f6aed7",
+      "mode": "0o644",
+      "revision": 1,
+      "native_version": 4
+    },
+    {
+      "path": "work/A.weftforge.recovery",
+      "bytes": 3198,
+      "sha256": "0a6af9b7a4e81e269b1670d0f992536ead106ef0494ada3913f8a73480f6aed7",
+      "mode": "0o644",
+      "revision": 1,
+      "native_version": 4
+    }
+  ],
+  "first_saved_primary_snapshots": {
+    "A00-empty": {
+      "path": "snapshots/A00-empty.weftforge",
+      "bytes": 1977,
+      "sha256": "710697e3a4fc5287c315e6e906ed15046b969aa3b9d2cc09a604ba6d579d9555",
+      "mode": "0o444",
+      "revision": 0,
+      "native_version": 4
+    },
+    "A01-square": {
+      "path": "snapshots/A01-square.weftforge",
+      "bytes": 3198,
+      "sha256": "0a6af9b7a4e81e269b1670d0f992536ead106ef0494ada3913f8a73480f6aed7",
+      "mode": "0o444",
+      "revision": 1,
+      "native_version": 4
+    },
+    "A02-created": {
+      "path": "snapshots/A02-created.weftforge",
+      "bytes": 3518,
+      "sha256": "37dc0eafe185702f85a7e9470ddbda2a11c50cf776bbab563642958d2be0f4a7",
+      "mode": "0o444",
+      "revision": 2,
+      "native_version": 4
+    }
+  },
+  "own_PID_recovery_files": [],
+  "BOOTSTRAP_BEFORE_valid_JSON": true,
+  "qualification": "Post-closure filesystem/process snapshot only; no GUI or candidate execution, no formal saved grading, no whole-case sidecar immutability claim."
+}

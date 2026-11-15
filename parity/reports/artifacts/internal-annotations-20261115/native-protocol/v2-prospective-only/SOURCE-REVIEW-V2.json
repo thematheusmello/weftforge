@@ -1,0 +1,59 @@
+{
+  "status": "static_remaining_A_route_review_no_new_native_evidence",
+  "main_sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45",
+  "egui_modal_source_sha256": "63f33d914cc1f0a3fbcbc63b9e894ebca633bf2499110a842bdb3f0d4c02f7ff",
+  "dependency_version": "installed/pinned egui0.35.0; Cargo.lock source pin unchanged",
+  "reason_for_only_UI_flow_change": "internal_line_window uses cancel||response.should_close; egui ModalResponse::should_close includes backdrop_response.clicked. Background Undo must not author, but modal closure is expected Cancel, not an established app defect.",
+  "remaining_steps_review": [
+    {
+      "scope": "prefix through first invalid refusal",
+      "basis": "old A002 AX/outcome and source",
+      "finding": "The retained actor outcome reports this prefix and the read AX identifies its controls. This is historical route context, not independent acceptance of all36 captures or of the full old/new case."
+    },
+    {
+      "scope": "prescribed reopen and reenter",
+      "basis": "post-backdrop AX + source",
+      "finding": "Edit internal endpoints\u2026 is enabled and retained source grain0.47e0 focused after backdrop. Fresh selected line editor uses accepted endpoints; one reentry of1e- then explicit Cancel does not require another Apply."
+    },
+    {
+      "scope": "source raw/caret witness",
+      "basis": "open_internal_line, internal_line_window, RetainedInspectorInput helpers",
+      "finding": "Both backdrop and explicit Cancel clear only modal fields and call retained source-input close_without_commit. The next insertion0 remains the actual future caret witness; source alone does not prove focus delivery."
+    },
+    {
+      "scope": "four numeric fields/Tab/Apply",
+      "basis": "modal numeric widgets, apply_internal_line, apply_inspector_action",
+      "finding": "Modal fields can be screenshot-only. The final Apply combines changed endpoint commands with pending inspector grain in one transaction; no stale-modal survival is assumed after Apply."
+    },
+    {
+      "scope": "R3 save/Undo R4/save/Redo R5/save",
+      "basis": "success clears numeric buffers/rebuild; history and save source; prior AX File button/history labels",
+      "finding": "Sequential observed house actions remain suitable. File-menu entries may be screenshot-only. Exact native outputs/one-step history remain future observations and cannot be accepted from this review."
+    },
+    {
+      "scope": "Snap route wording",
+      "basis": "position_snap_control + old AX",
+      "finding": "Source/AX expose direct Off/1mm/5mm/10mm toggles, despite the old macro saying dropdown. The unchanged A step means select the currently observed5mm toggle; no extra action or cap change. Do not search for an absent dropdown."
+    },
+    {
+      "scope": "focus targeting",
+      "basis": "old trace and actual AX",
+      "finding": "One documented field-focus API may use its observed clickCount option; its API call is still one original focus operation. No constant AX indices, old screenshot pixels or modal AX presence may be reused."
+    },
+    {
+      "scope": "final ready/quit/summary",
+      "basis": "source save/history/retain_on_exit plus separate old cleanup receipt",
+      "finding": "Only clean accepted final save followed by planned quit is suitable. Do not getApp/AX after closed target. Summary receipt bounds must follow the template; actual new case still requires binding/GO."
+    }
+  ],
+  "concerns_remaining": [
+    "Retained focus/caret after both Cancel paths and later compound commit/history remain actual-native obligations.",
+    "Modal controls and File menu entries can be screenshot-only; disabled/background AX nodes are not an AX test pass.",
+    "Strict same-frame/held-pointer delivery and old transform pointer gate remain gaps."
+  ],
+  "product_source_changed": false,
+  "geometry_models_or_tolerances_changed": false,
+  "new_native_attempt_staged_or_run": false,
+  "root_review_sha256": "ec518e7c44bb089e3c7f19b4468c9a522b526dcd71d5926d4847eab4adb1243d",
+  "old_native_review_scope": "Root visually reviewed only two failure-relevant original images; no full36-capture prefix accepted."
+}

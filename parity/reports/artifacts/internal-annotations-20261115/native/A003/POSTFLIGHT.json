@@ -1,0 +1,122 @@
+{
+  "kind": "actor_post-planned-quit_identity_collection",
+  "utc": "2026-11-15T21:50:59.802769+00:00",
+  "source_inputs_unchanged": 65,
+  "new_frozen_dependencies_unchanged": 143,
+  "old_frozen_provenance_dependencies_unchanged": 523,
+  "freeze_sha256": "1694cae26e6fa88a62338b3a7636432c51185385324ad4c6490967ce742a2148",
+  "binding_sha256": "3cb9795fc51b0ef23b7956f66618234b90c077025e781954d01d9d091b530c77",
+  "native_binary_sha256": "a733c9952ff060a3ec96417467be50011a16039dbb0868fd8ac9890a2b5897c4",
+  "controller_sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+  "recorder_sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+  "immutable_independent_CLI_sha256": "71ef84c7c90e9ffdf291f3dd2e031a476ff8b99097258256bf46e17afeb8b2bd",
+  "workspace_CLI_sha256": "8a370548e341e4c1a2fc760b276425f5900e7a137d37cadeb268d752d1fc3a41",
+  "clean_metadata_head": "db8ee77f708a5088c3597030bd16de5d8912ca43",
+  "git_status": "",
+  "returned_operation_pairs": 142,
+  "method_counts": {
+    "getState": 1,
+    "local-filesystem-proof": 1,
+    "external-open": 1,
+    "external-own-pid": 1,
+    "getApp": 1,
+    "getAXStateAndScreenshot": 60,
+    "click": 39,
+    "pressKey": 18,
+    "typeText": 13,
+    "setValue": 1,
+    "external-raw-snapshot": 6
+  },
+  "exception_pairs": 0,
+  "last_record": "0142",
+  "last_pair_elapsed_s": 616.464607083,
+  "exact_owned_PIDs_after_quit": [],
+  "launched_PID_13707_absent": true,
+  "work_files": [
+    {
+      "path": "work/A.weftforge",
+      "bytes": 3519,
+      "sha256": "45c15e1c8c17ada10b9ff4aff45de22564e09091c63462e61c588f57d28877fd",
+      "mode": "0o644",
+      "revision": 5,
+      "native_version": 4
+    },
+    {
+      "path": "work/A.weftforge.autosave",
+      "bytes": 3519,
+      "sha256": "45c15e1c8c17ada10b9ff4aff45de22564e09091c63462e61c588f57d28877fd",
+      "mode": "0o644",
+      "revision": 5,
+      "native_version": 4
+    },
+    {
+      "path": "work/A.weftforge.autosave.recovery",
+      "bytes": 3519,
+      "sha256": "45c15e1c8c17ada10b9ff4aff45de22564e09091c63462e61c588f57d28877fd",
+      "mode": "0o644",
+      "revision": 5,
+      "native_version": 4
+    },
+    {
+      "path": "work/A.weftforge.recovery",
+      "bytes": 3518,
+      "sha256": "35aea922e4236dcc99d7e7c18972ee720bf099a79de80784ea7cc74108fa69a9",
+      "mode": "0o644",
+      "revision": 4,
+      "native_version": 4
+    }
+  ],
+  "first_saved_primary_snapshots": {
+    "A00-empty": {
+      "path": "snapshots/A00-empty.weftforge",
+      "bytes": 1977,
+      "sha256": "710697e3a4fc5287c315e6e906ed15046b969aa3b9d2cc09a604ba6d579d9555",
+      "mode": "0o444",
+      "revision": 0,
+      "native_version": 4
+    },
+    "A01-square": {
+      "path": "snapshots/A01-square.weftforge",
+      "bytes": 3198,
+      "sha256": "0a6af9b7a4e81e269b1670d0f992536ead106ef0494ada3913f8a73480f6aed7",
+      "mode": "0o444",
+      "revision": 1,
+      "native_version": 4
+    },
+    "A02-created": {
+      "path": "snapshots/A02-created.weftforge",
+      "bytes": 3518,
+      "sha256": "37dc0eafe185702f85a7e9470ddbda2a11c50cf776bbab563642958d2be0f4a7",
+      "mode": "0o444",
+      "revision": 2,
+      "native_version": 4
+    },
+    "A03-edited": {
+      "path": "snapshots/A03-edited.weftforge",
+      "bytes": 3519,
+      "sha256": "5881d4194419e7b3031add176e2bae48114e5953e77585f59e798bbf3ec0c57d",
+      "mode": "0o444",
+      "revision": 3,
+      "native_version": 4
+    },
+    "A04-undo": {
+      "path": "snapshots/A04-undo.weftforge",
+      "bytes": 3518,
+      "sha256": "35aea922e4236dcc99d7e7c18972ee720bf099a79de80784ea7cc74108fa69a9",
+      "mode": "0o444",
+      "revision": 4,
+      "native_version": 4
+    },
+    "A05-redo": {
+      "path": "snapshots/A05-redo.weftforge",
+      "bytes": 3519,
+      "sha256": "45c15e1c8c17ada10b9ff4aff45de22564e09091c63462e61c588f57d28877fd",
+      "mode": "0o444",
+      "revision": 5,
+      "native_version": 4
+    }
+  },
+  "own_PID_recovery_files": [],
+  "native_captures": 60,
+  "qualification": "Filesystem/process postflight after planned Quit and immediate summary. No getApp/AX or native observer after closing; no formal saved grading; no isolated-performance claim while separate physics diagnostic ran."
+}
