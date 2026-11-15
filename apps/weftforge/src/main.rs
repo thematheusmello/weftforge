@@ -1298,14 +1298,51 @@ impl Studio {
     }
 
     fn retain_inspector_input(&self, response: &egui::Response, open: bool) {
-        if response.is_pointer_button_down_on() || response.clicked() || open {
+        if open {
+            // Popup closes on Escape without consuming it; retain the numeric editor's text.
+            response
+                .ctx
+                .input_mut(|input| input.consume_key(egui::Modifiers::NONE, egui::Key::Escape));
+        }
+        let pointer = response.is_pointer_button_down_on()
+            || response.clicked_by(egui::PointerButton::Primary);
+        let key = response.id.with("retained-inspector-input");
+        let identity = (
+            self.editor.project.revision,
+            self.selected,
+            self.selected_curve,
+        );
+        let retained = response.ctx.data_mut(|data| {
             if open {
-                // Popup closes on Escape without consuming it; retain the numeric editor's text.
-                response
-                    .ctx
-                    .input_mut(|input| input.consume_key(egui::Modifiers::NONE, egui::Key::Escape));
+                data.get_temp::<((u64, Option<Id>, Option<Id>), egui::Id)>(key)
+                    .filter(|(stamp, _)| *stamp == identity)
+                    .map(|(_, id)| id)
+            } else {
+                data.remove::<((u64, Option<Id>, Option<Id>), egui::Id)>(key);
+                None
             }
-            let focused = self.inspector_focus(&response.ctx);
+        });
+        // A popup may suppress numeric focus; keyboard focus elsewhere ends that retention.
+        let current = numeric_focus(&response.ctx);
+        let focused = if pointer {
+            self.inspector_focus(&response.ctx)
+        } else if current.is_some() {
+            current
+        } else if response.ctx.memory(|memory| memory.focused()).is_none() {
+            retained
+        } else {
+            None
+        };
+        if open {
+            response.ctx.data_mut(|data| {
+                if let Some(id) = focused {
+                    data.insert_temp(key, (identity, id));
+                } else {
+                    data.remove::<((u64, Option<Id>, Option<Id>), egui::Id)>(key);
+                }
+            });
+        }
+        if pointer || ((response.clicked() || open) && focused.is_some()) {
             finish_numeric_action(&response.ctx, focused, false);
             let request = (
                 response.ctx.cumulative_frame_nr(),
@@ -1685,13 +1722,20 @@ impl Studio {
                                     egui::UiBuilder::new()
                                         .id(ui.make_persistent_id(("piece-row", piece.id))),
                                     |ui| {
-                                        let response = ui.add_sized(
-                                            [ui.available_width(), 25.0],
-                                            egui::Button::selectable(
-                                                self.selected == Some(piece.id),
-                                                &piece.name,
-                                            ),
-                                        );
+                                        let selected = self.selected == Some(piece.id);
+                                        let mut button = egui::Button::selectable(
+                                            selected,
+                                            egui::RichText::new(&piece.name)
+                                                .color(Color32::from_gray(222)),
+                                        )
+                                        .min_size(Vec2::new(ui.available_width(), 25.0))
+                                        .truncate();
+                                        if selected {
+                                            button = button.fill(Color32::from_gray(82)).stroke(
+                                                Stroke::new(1.0, Color32::from_rgb(74, 143, 208)),
+                                            );
+                                        }
+                                        let response = ui.add(button).on_hover_text(&piece.name);
                                         if response.clicked() {
                                             self.select(Some(piece.id));
                                         }
@@ -1996,7 +2040,7 @@ impl Studio {
                 PositionSnap::Mm5,
                 PositionSnap::Mm10,
             ] {
-                let response = ui.selectable_value(&mut self.position_snap, snap, snap.label())
+                let response = ui.selectable_value(&mut self.position_snap, snap, egui::RichText::new(snap.label()).color(Color32::from_gray(222)))
                     .on_hover_text("Pointer positions only. Hold Alt / Option when starting a drag or clicking to bypass.");
                 if response.is_pointer_button_down_on()
                     || response.clicked_by(egui::PointerButton::Primary)
@@ -2703,17 +2747,18 @@ impl eframe::App for Studio {
         self.poll_autosave();
         let authoring_modal =
             self.rectangle.is_some() || self.sewing_edit.is_some() || self.pattern_import.is_some();
-        if !authoring_modal
+        let global_shortcuts = !authoring_modal && !egui::Popup::is_any_open(&ctx);
+        if global_shortcuts
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::S))
         {
             self.save(false);
         }
-        if !authoring_modal
+        if global_shortcuts
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::O))
         {
             self.choose_open();
         }
-        if !authoring_modal
+        if global_shortcuts
             && !ctx.egui_wants_keyboard_input()
             && ctx.input_mut(|i| {
                 i.consume_key(
@@ -2723,18 +2768,18 @@ impl eframe::App for Studio {
             })
         {
             self.history(&ctx, true);
-        } else if !authoring_modal
+        } else if global_shortcuts
             && !ctx.egui_wants_keyboard_input()
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::Z))
         {
             self.history(&ctx, false);
         }
-        if !authoring_modal
+        if global_shortcuts
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::K))
         {
             self.search = !self.search;
         }
-        if !authoring_modal && !self.search && !ctx.egui_wants_keyboard_input() {
+        if global_shortcuts && !self.search && !ctx.egui_wants_keyboard_input() {
             if ctx.input(|i| i.key_pressed(egui::Key::Space)) {
                 self.playing = !self.playing;
                 self.pending_batch = None;
@@ -3800,6 +3845,258 @@ mod tests {
             }
             assert!(app.tool == Tool::Polygon);
         }
+    }
+
+    #[test]
+    fn studio_popup_keys_preserve_unfocused_canvas_gestures() {
+        for tool in [Tool::Polygon, Tool::SewingPaths] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            studio_style(&ctx);
+            let mut app = Studio::empty();
+            app.session_autosave = None;
+            app.editor
+                .execute(Command::AddRectangle {
+                    name: "Existing panel".into(),
+                    origin: [0.0, 0.0],
+                    width: 0.4,
+                    height: 0.6,
+                })
+                .unwrap();
+            app.mesh = Some(Arc::new(app.editor.project.mesh().unwrap()));
+            app.tool = tool;
+            let polygon = if tool == Tool::Polygon {
+                vec![[-0.3, 1.0], [-0.1, 1.4], [0.1, 1.0]]
+            } else {
+                vec![]
+            };
+            app.polygon = polygon.clone();
+            let span = CurveInterval {
+                curve: app.editor.project.pieces[0].boundary[0],
+                t0: 0.0,
+                t1: 1.0,
+            };
+            let spans = if tool == Tool::SewingPaths {
+                vec![span]
+            } else {
+                vec![]
+            };
+            app.sewing_draft.a = spans.clone();
+            let before = app.editor.clone();
+            let frame = |app: &mut Studio, events| {
+                ctx.run_ui(
+                    egui::RawInput {
+                        screen_rect: Some(Rect::from_min_size(
+                            Pos2::ZERO,
+                            Vec2::new(1640.0, 1032.0),
+                        )),
+                        events,
+                        ..Default::default()
+                    },
+                    |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+                )
+            };
+            let key = |key, pressed| egui::Event::Key {
+                key,
+                physical_key: None,
+                pressed,
+                repeat: false,
+                modifiers: egui::Modifiers::NONE,
+            };
+            frame(&mut app, vec![]);
+            let output = frame(&mut app, vec![]);
+            assert!(numeric_focus(&ctx).is_none());
+            assert!(!ctx.egui_wants_keyboard_input());
+            let (_, file) = output
+                .platform_output
+                .accesskit_update
+                .unwrap()
+                .nodes
+                .into_iter()
+                .find(|(_, node)| node.label() == Some("File"))
+                .unwrap();
+            let bounds = file.bounds().unwrap();
+            let pos = Pos2::new(
+                ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                ((bounds.y0 + bounds.y1) * 0.5) as f32,
+            );
+            for pressed in [true, false] {
+                frame(
+                    &mut app,
+                    vec![
+                        egui::Event::PointerMoved(pos),
+                        egui::Event::PointerButton {
+                            pos,
+                            button: egui::PointerButton::Primary,
+                            pressed,
+                            modifiers: egui::Modifiers::NONE,
+                        },
+                    ],
+                );
+            }
+            assert!(egui::Popup::is_any_open(&ctx));
+            for pressed in [
+                egui::Key::Enter,
+                egui::Key::Delete,
+                egui::Key::Backspace,
+                egui::Key::Space,
+                egui::Key::Escape,
+            ] {
+                frame(&mut app, vec![key(pressed, true)]);
+                assert_eq!(
+                    format!("{:?}", app.editor),
+                    format!("{before:?}"),
+                    "popup {pressed:?} must not author construction"
+                );
+                assert_eq!(
+                    app.polygon, polygon,
+                    "popup {pressed:?} must retain polygon vertices"
+                );
+                assert_eq!(
+                    app.sewing_draft.a, spans,
+                    "popup {pressed:?} must retain sewing spans"
+                );
+                assert!(app.sewing_draft.b.is_empty() && !app.sewing_draft.selecting_b);
+                assert!(
+                    !app.playing && app.pending_batch.is_none() && app.job.is_none(),
+                    "popup {pressed:?} must not start simulation"
+                );
+                frame(&mut app, vec![key(pressed, false)]);
+            }
+            assert!(!egui::Popup::is_any_open(&ctx));
+            frame(&mut app, vec![key(egui::Key::Space, true)]);
+            assert!(
+                app.playing && app.job.is_some(),
+                "canvas Space still starts simulation after dismissal"
+            );
+            app.playing = false;
+            app.cancel();
+            app.job = None;
+            frame(
+                &mut app,
+                vec![key(egui::Key::Space, false), key(egui::Key::Enter, true)],
+            );
+            if tool == Tool::Polygon {
+                let mut expected = before.clone();
+                expected
+                    .execute(Command::AddPolygon {
+                        name: app.name.clone(),
+                        vertices: polygon.clone(),
+                    })
+                    .unwrap();
+                assert_eq!(format!("{:?}", app.editor), format!("{expected:?}"));
+                assert_eq!(
+                    app.editor.project.pieces.len(),
+                    before.project.pieces.len() + 1
+                );
+                assert!(app.polygon.is_empty());
+                assert!(app.editor.undo());
+                assert!(expected.undo());
+                assert_eq!(format!("{:?}", app.editor), format!("{expected:?}"));
+            } else {
+                assert!(
+                    app.sewing_draft.selecting_b,
+                    "canvas Enter still confirms side A after dismissal"
+                );
+                frame(
+                    &mut app,
+                    vec![key(egui::Key::Enter, false), key(egui::Key::Delete, true)],
+                );
+                assert!(app.sewing_draft.a.is_empty() && !app.sewing_draft.selecting_b);
+            }
+            app.cancel();
+            app.job = None;
+            app.needs_mesh = false;
+            app.polygon = polygon;
+            app.sewing_draft.a = spans;
+            frame(
+                &mut app,
+                vec![
+                    key(egui::Key::Enter, false),
+                    key(egui::Key::Delete, false),
+                    key(egui::Key::Escape, true),
+                ],
+            );
+            assert!(
+                app.polygon.is_empty() && app.sewing_draft.a.is_empty(),
+                "canvas Escape still cancels gestures after dismissal"
+            );
+        }
+    }
+
+    #[test]
+    fn studio_keyboard_menu_activation_keeps_keyboard_focus() {
+        use egui::accesskit::{Action, ActionRequest, TreeId};
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        studio_style(&ctx);
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.set_tool(Tool::SewingPaths);
+        let before = format!("{:?}", app.editor);
+        let frame = |app: &mut Studio, events| {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1640.0, 1032.0))),
+                    events,
+                    ..Default::default()
+                },
+                |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+            )
+        };
+        let focus = |target_node| {
+            egui::Event::AccessKitActionRequest(ActionRequest {
+                action: Action::Focus,
+                target_tree: TreeId::ROOT,
+                target_node,
+                data: None,
+            })
+        };
+        frame(&mut app, vec![]);
+        let output = frame(&mut app, vec![]);
+        let nodes = output.platform_output.accesskit_update.unwrap().nodes;
+        let numeric = nodes
+            .iter()
+            .find(|(_, node)| node.numeric_value() == Some(0.07))
+            .unwrap()
+            .0;
+        let file = nodes
+            .iter()
+            .find(|(_, node)| node.label() == Some("File"))
+            .unwrap()
+            .0;
+        frame(&mut app, vec![focus(numeric)]);
+        frame(&mut app, vec![]);
+        assert!(numeric_focus(&ctx).is_some());
+        frame(&mut app, vec![focus(file)]);
+        frame(&mut app, vec![]);
+        assert_eq!(
+            ctx.memory(|memory| memory.focused())
+                .unwrap()
+                .accesskit_id(),
+            file
+        );
+        assert!(numeric_focus(&ctx).is_none());
+        frame(
+            &mut app,
+            vec![egui::Event::Key {
+                key: egui::Key::Enter,
+                physical_key: None,
+                pressed: true,
+                repeat: false,
+                modifiers: egui::Modifiers::NONE,
+            }],
+        );
+        assert!(egui::Popup::is_any_open(&ctx));
+        assert_eq!(
+            ctx.memory(|memory| memory.focused())
+                .unwrap()
+                .accesskit_id(),
+            file,
+            "keyboard File activation must not restore cached numeric focus"
+        );
+        assert!(numeric_focus(&ctx).is_none());
+        assert_eq!(format!("{:?}", app.editor), before);
     }
 
     #[test]
