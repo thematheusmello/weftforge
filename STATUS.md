@@ -1,17 +1,65 @@
 # WeftForge status — active development, 2026-11-15
 
-Physical-length Free sewing is implemented at runtime
-b657e6bf52aca6c0c76c5c51aaf76b4e812150f7. The [PR46 publication](https://github.com/thematheusmello/weftforge/pull/46) retains
-the full studio target: **0/56 coarse reference contracts verified**, **39 partial /
-17 planned**, discovery incomplete and **no roadmap gate accepted**. The 949
-entries / 205 packets are an engineering inventory, not a complete product denominator.
+The current internal-segment runtime is
+ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5. It retains the complete studio target:
+**0/56 coarse reference contracts verified**, **39 partial / 17 planned**,
+discovery incomplete and **no roadmap gate accepted**. The 949 entries / 205 packets
+remain a historical engineering inventory, not a complete product denominator.
 
-## Current bounded physical sewing checkpoint
+## Current internal annotation checkpoint — private and unpublished
+
+The source-review-clear increment implements straight editable annotations owned
+by an existing piece: two-point native creation, precise endpoint editing,
+selection/removal, applied authored length, one-command/transaction history and
+strict version 4 persistence with supported version 1/2/3 reads. Annotations remain
+separate from exterior topology, rest-mesh constraints and simulation. They do not
+cut cloth, create holes, fold or sew. PAT-007 remains partial/stale/not_run; the
+[approved engineering contract](spec/features/PAT-006-internal-segments.md) is not
+reference evidence. PAT-006 remains planned because its cutting/holes contract is
+not implemented by annotation infrastructure.
+
+All **65 runtime/build/test/contract/doc inputs** remain byte-identical to ad7
+through the public PR46 metadata merge and reviewed current-source-map follow-up.
+The private integrated manifest SHA is
+d47c3a7c35e89e8b9e0688703b8e3e97120e3fb3f3c14e48a4ea038eb643c872:
+formatting, **282 workspace Rust tests / zero failures**, strict workspace/all-target
+Clippy and native+CLI debug builds passed. Source runner PID 56057 completed.
+Those Rust gates and debug build are reused by all 65 exact hashes, not repeated
+for metadata. The final required `cargo xtask verify` gate is run separately from
+a clean metadata commit in this worktree's default target; its private receipt
+identifies the checked commit, result and before/after CLI build context.
+
+The private independent v2 run001 passed **86 observations** with **434 paired
+target processes**. Root's collection SHA
+3af4f7a515b6029fb184990c6d9a152aaf146e0e533e9ddcb4db36050797df7b
+verified 3,100 files, three relative symlinks and all 65 source pins. These are
+unpublished engineering checkpoints, not delivered/native/reference evidence;
+no new verification run or denominator is created from ignored local files.
+
+The built native executable is
+a733c9952ff060a3ec96417467be50011a16039dbb0868fd8ac9890a2b5897c4.
+The debug CLI checkpoint is
+71ef84c7c90e9ffdf291f3dd2e031a476ff8b99097258256bf46e17afeb8b2bd;
+its separate immutable accepted copy is mode 0555. The metadata verification may
+build the workspace CLI in a different feature context; its private before/after
+receipt discloses that without replacing the immutable independent CLI. No new
+package, release, actual-native launch or cross-platform acceptance is claimed.
+
+Actual-native cases **A–E remain required**. Root owns source/freeze review,
+native execution and later publication. Published B657 sewing, DD Transform and
+older measurement/physics reports preserve their original results but are stale
+on changed scoped source. The unresolved Transform pointer case and garment
+physics failures below remain open. The reviewed current ad7 addendum has
+29 Rust command variants / 28 nontransaction schemas / nine MCP tools; this is
+source inventory only, never completed-feature credit. No current/pass claim is
+created from the private internal checkpoints.
+
+## Historical bounded physical sewing checkpoint (B657)
 
 The [implementation-only report](parity/reports/WF-20261115-PHYSICAL-LENGTH-SEWING-001.json)
-is **passed/current only for the original headless scope and root-accepted native
-v3 case002**. SEW-002, APP-001 and UI-004 remain partial/not_run for their coarse
-contracts, with the bounded current evidence linked separately. No full sewing,
+retains its original **passed** result for the original headless scope and
+root-accepted native v3 case002, and is now **stale** on ad7. SEW-002, APP-001 and
+UI-004 remain partial/not_run/stale for their coarse contracts. No full sewing,
 New Empty, garment, physics, reference, process-restart or roadmap acceptance follows.
 
 The shared command resolves oriented intervals from exact Start t and positive
@@ -23,21 +71,21 @@ Length input chooses creation endpoints, not a persistent dimension lock.
 Legacy Sew edges and M:N behavior are retained; internal sewing, full chains,
 general native easing and sewn simulation remain open.
 
-All **60 runtime/build/test/contract inputs**, including four contracts, are
-byte-identical to B657 through the PR45 metadata merge, current source-map addendum
-and later window-policy change. The original build manifest SHA is
+At that publication, all **60 runtime/build/test/contract inputs**, including four
+contracts, were byte-identical to B657 through the PR45 metadata merge, then-current
+source-map addendum and later window-policy change. The original build manifest SHA is
 a42c5d9b88d678068a1ab804aa480f41600a93cbd03de847f48faaa5fbdcb0fc.
 Its six commands exited zero with **254 Rust / 54 Python** passes, four font-notice
 copies and twelve package files. The runner predicted 255: its prediction-match
 flag is **false** and retained. Zero exits do not mean every bookkeeping expectation
-passed. Those Rust/source gates are reused by exact identity, not rerun during
-publication. Fresh [clean-candidate verification](parity/reports/artifacts/physical-length-sewing-20261115/publication-checks-d670aa7/CHECKS.json) at d670aa7 passed registry, historical/current maps, 48 script tests, six evaluator tests and CLI help. The later receipt/metadata-only closure preserves those checked-commit attributions.
+passed. That publication reused those Rust/source gates by exact identity. Its
+[clean-candidate verification](parity/reports/artifacts/physical-length-sewing-20261115/publication-checks-d670aa7/CHECKS.json) at d670aa7 passed registry, historical/current maps, 48 script tests, six evaluator tests and CLI help. The later receipt/metadata-only closure preserves those checked-commit attributions.
 Debug/release CLI feature contexts remain disclosed; unsigned packaging is not
 packaged launch, signing, a new binary release or cross-platform acceptance.
 
 The original independent attempt002 passed **50 observations**: 36 positive
 adapter runs, 96 rejection preservations, 18 writer failures, ten mesh configurations
-and three same-file paths. Its **46** core/CLI inputs match B657 and accepted CLI
+and three same-file paths. Its **46** core/CLI inputs matched B657 and accepted CLI
 fa4add99646544a052b6fa534ad325f1528e0572e4ee9aae344d687b85ac5cc1 is a separate immutable
 artifact. Wrong-working-directory/source-context preflights stopped before candidate
 execution and remain retained. Three writer-output symlinks remain relative,
@@ -89,14 +137,14 @@ handles, not reusable input authority.
 [PR45](https://github.com/thematheusmello/weftforge/pull/45), merged as
 550825a1f2ccd390321f9d581f16ff880cb7a441, retains the DD
 [failed implementation-only A/B report](parity/reports/WF-20261115-PATTERN-TRANSFORM-001.json),
-now **stale** on changed B657 runtime. Root accepted bounded numeric A4; B remained
+now **stale** on later B657/ad7 runtimes. Root accepted bounded numeric A4; B remained
 at R40 after one declared drag, with no rotation/Save and unknown cause. No B pass
 or unexecuted B2 packet is imported. The original 59 source pins, build and native 216 identities,
 235 Rust/54 Python source gates, 93-case CLI/MCP run and all images/outcomes remain
-unchanged. Current physical sewing002 does not complete that Transform pointer plan.
+unchanged. B657 physical sewing002 does not complete that Transform pointer plan.
 
-The historical map remains 949 entries / 205 packets / 56 landmarks. The reviewed
-current B657 source addendum has 27 enum variants, 26 nontransaction schemas and
+The historical map remains 949 entries / 205 packets / 56 landmarks. The previous
+B657 source addendum has 27 enum variants, 26 nontransaction schemas and
 nine MCP tools; this is source inventory only. Neither map marks behavior or a
 roadmap gate complete. Actions remain disabled, head Actions runs are not enabled
 by this preparation, and the existing static Pages site is preserved.
@@ -166,13 +214,23 @@ surface contact, full persistence and full garment acceptance remain open.
 
 ## Exact next work
 
-Root reviewed the tracked source-bound packet and clean registry/current-map
-checks. All 1,043 regular artifacts, three relative symlink nodes and 60 runtime
-inputs were verified; original/public mappings and privacy checks passed. Continue internal construction
-lines and bounded topological cuts, with authored relationships and atomic shared
-commands. Retain complete chain/internal sewing, easing, native remeshing, garment
-contact/physics, full New and reference workflow gaps. New acceptance needs a fresh
-declared source/input/criteria binding; do not repair or regrade closed cases.
+Root-review the clean metadata verification result, then prospectively freeze and
+execute the required actual-native internal annotation cases A–E on this exact
+source and native binary. Native A is next; source tests and private headless
+results do not substitute for that gate. Publish a curated tracked packet only
+after reviewed native results, source/artifact guards and clean registry/map
+checks. Keep closed old outcomes intact and require a fresh binding if source,
+inputs or criteria change.
+
+After accepted internal annotations/persistence/runtime evidence, propose a
+separate bounded topological cut with explicit ownership, relationships and
+atomic shared commands. PAT-006 remains planned: annotations do not cut cloth or
+create holes. Full internal shapes/constraints/notches, chain/internal sewing,
+easing, native remeshing, garment contact/physics, full New and reference workflows
+remain open. Keep only active test windows; retain outcomes before closing finished
+windows and record post-case cleanup outside frozen case clocks.
 
 Keep Actions and automated Pages deployments disabled through development. PR46
-carries the source and evidence; no new binary release or deployment is included.
+retains the prior physical source/evidence; this internal runtime and its local
+checkpoints are unpublished. No push/PR, package/release, cross-platform or Pages
+deployment claim is added by this metadata continuation.

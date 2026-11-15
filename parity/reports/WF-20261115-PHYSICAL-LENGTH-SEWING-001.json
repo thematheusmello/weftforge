@@ -6,7 +6,7 @@
   "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
   "kind": "implementation_only",
   "status": "passed",
-  "freshness": "current",
+  "freshness": "stale",
   "feature_ids": [
     "SEW-002",
     "APP-001",
@@ -1369,5 +1369,6 @@
     "source60_and_protected_metadata6_unchanged": true,
     "native_and_immutable_independent_CLI_unchanged": true,
     "qualification": "Fresh metadata/registry/source-map/Python/CLI-help verification only; receipt-only closure follows the identified checked commit. Original B657 Rust gates, source review evidence, independent execution, saved grading and native cases are retained without rerun."
-  }
+  },
+  "freshness_reason": "Internal-segment runtime ad7cc8b changes native and CLI/MCP authoring, document geometry, strict v4 persistence and sewing ownership within this B657 report scope. The original headless/native002 pass, failed001, source/binary identities, clocks and artifact hashes remain unchanged; no acceptance transfers to changed runtime. Current internal checkpoints are private and unpublished, with no new qualifying native/reference run."
 }

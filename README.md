@@ -66,9 +66,10 @@ with a signed percentage for extension or compression.
 The solver is early; general garment convergence and contact robustness remain
 ongoing work.
 
-Version3 `.weftforge` JSON stores supported editable construction, including
-ordered sewing groups, and strictly migrates version1/2 projects. Older apps
-cannot open v3. OBJ mesh export and bounded SVG/DXF pattern import and export
+Version 4 `.weftforge` JSON uses a strict schema for supported editable
+construction, including ordered sewing groups and piece-owned straight internal
+annotations. The reader supports explicit version 1/2/3 migrations; older apps
+cannot open v4. OBJ mesh export and bounded SVG/DXF pattern import and export
 exist; [format details and gaps](docs/file-formats.md)
 explain what survives each path. Simulation frames/settings, imported avatars,
 textures, animation, advanced construction and third-party project formats

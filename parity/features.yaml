@@ -6669,13 +6669,14 @@
         "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
         "One-piece rigid 2D layout transforms preserve arranged rest surface/world grain via compensated placement, with atomic numeric/drag routes. This is an engineering policy; reference pivot/handles/3D/grain semantics remain unobserved. Mirroring, multiselection, pivot dragging and locks remain later work; derived mesh/cloth is rebuilt.",
         "Historical DD implementation-only checks pass 235 Rust/54 Python and the unchanged 93-case core/CLI evaluator. Root accepts bounded native A4 (121 pairs/542.54376275 s); frozen B stops after one documented drag at R40 rather than R41, with no rotation/Save and missing outputs. Overall A/B plan is failed/unverified; cause unknown, no complete feature or reference credit.",
-        "B657 passed the original 50-observation authored headless scope and root-accepted bounded physical sewing002 (162 total calls/748.816649s). First A stays transient; one physical group/history, four saves, clean NewR0/no-op UndoRedo and same-process reopen are observed. The coarse contract remains partial/not_run; no complete sewing/New/garment/physics/reference credit. DD Transform B remains unresolved and its old report stale."
+        "Historical B657 passed the original 50-observation authored headless scope and root-accepted bounded physical sewing002 (162 total calls/748.816649s). First A stays transient; one physical group/history, four saves, clean NewR0/no-op UndoRedo and same-process reopen are observed. The coarse contract remains partial/not_run; no complete sewing/New/garment/physics/reference credit. DD Transform B remains unresolved and its old report stale.",
+        "The B657 physical-sewing report is stale on the changed ad7 internal-segment runtime. Its original bounded pass and failed001 remain intact; private unpublished internal source/headless checks supply no current native, full-contract or reference acceptance."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/PAT-004-piece-rigid-transform.md": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
         "spec/features/PAT-004-native-transform-selection.md": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
@@ -10650,7 +10651,8 @@
       "evidence_ids": [
         "spec/features/PAT-007-line-length-runtime-20261115.md",
         "spec/observations/REF-UI-LENGTH-OBSERVATION-20261115.json",
-        "parity/reports/WF-20261115-AUTHORED-LENGTH-001.json"
+        "parity/reports/WF-20261115-AUTHORED-LENGTH-001.json",
+        "spec/features/PAT-006-internal-segments.md"
       ],
       "scenarios": [
         {
@@ -10688,7 +10690,12 @@
         "crates/weftforge-core/src/geometry.rs",
         "apps/weftforge/src/main.rs",
         "apps/weftforge-cli/src/main.rs",
-        "apps/weftforge-cli/src/mcp.rs"
+        "apps/weftforge-cli/src/mcp.rs",
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/persistence.rs",
+        "crates/weftforge-core/tests/internal_lines.rs",
+        "crates/weftforge-core/tests/migration.rs",
+        "apps/weftforge-cli/tests/mcp_stdio.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3"
@@ -10762,7 +10769,8 @@
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "The candidate adds applied selected-boundary length and raw seam/group A/B plus signed B\u2212A feedback. Arbitrary interval query is available through CLI/MCP; persistent measurements, angles, perimeters and complete native/reference behavior remain unverified.",
-        "A bounded reference canvas toggle labels unselected boundaries in literal mm with one fractional digit; Select All separately retains aggregate selected-line readouts. Our three-decimal selected-inspector readout is a different partial presentation. Exact arc/rounding/angle, general aggregation and complete measurement behavior remain unknown/unimplemented."
+        "A bounded reference canvas toggle labels unselected boundaries in literal mm with one fractional digit; Select All separately retains aggregate selected-line readouts. Our three-decimal selected-inspector readout is a different partial presentation. Exact arc/rounding/angle, general aggregation and complete measurement behavior remain unknown/unimplemented.",
+        "Ad7 implements bounded straight editable internal annotations owned by a piece, two-point and precise endpoint authoring, shared-command history, applied lengths and strict v4 persistence. The approved PAT-006-internal-segments contract is engineering policy for this annotation subset; it does not establish cuts/holes or reference behavior. Internal cubics and shapes, names/notches, persistent measurements/constraints, internal sewing/folds and topological cuts remain open. Current checks are private/unpublished; actual native A\u2013E and a tracked publication are still required, so existing evidence remains stale/not_run and no new qualifying run is added."
       ],
       "contradictions": [],
       "blockers": [
@@ -10770,7 +10778,8 @@
       ],
       "freshness": "stale",
       "contract_documents": {
-        "spec/features/PAT-007-authored-length-feedback.md": "4f79150ed28854b8a16760af07b1558808dcca2080bc1ee8e114d5b2682f851c"
+        "spec/features/PAT-007-authored-length-feedback.md": "4f79150ed28854b8a16760af07b1558808dcca2080bc1ee8e114d5b2682f851c",
+        "spec/features/PAT-006-internal-segments.md": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66"
       }
     },
     {
@@ -14646,13 +14655,14 @@
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "Ordered partial/reversed/disconnected groups, native creation/edit/history/reopen and shared-Editor relationships have bounded implementation acceptance. Full free canvas/internal sewing, native cubic precise editing, reference group behavior and physical gathering remain required. Reference constructor/input noncompletion is retained in the dated runtime notes.",
-        "B657 passed the original 50-observation authored headless scope and root-accepted bounded physical sewing002 (162 total calls/748.816649s). First A stays transient; one physical group/history, four saves, clean NewR0/no-op UndoRedo and same-process reopen are observed. The coarse contract remains partial/not_run; no complete sewing/New/garment/physics/reference credit. DD Transform B remains unresolved and its old report stale."
+        "Historical B657 passed the original 50-observation authored headless scope and root-accepted bounded physical sewing002 (162 total calls/748.816649s). First A stays transient; one physical group/history, four saves, clean NewR0/no-op UndoRedo and same-process reopen are observed. The coarse contract remains partial/not_run; no complete sewing/New/garment/physics/reference credit. DD Transform B remains unresolved and its old report stale.",
+        "The B657 physical-sewing report is stale on the changed ad7 internal-segment runtime. Its original bounded pass and failed001 remain intact; private unpublished internal source/headless checks supply no current native, full-contract or reference acceptance."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/SEW-002-ordered-paths.md": "9baedd713b5a8dd4f251d7f2c5d0c51b408ecdabb32813a07dae06d25dcae960",
         "spec/features/SEW-002-physical-length.md": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2"
@@ -31259,13 +31269,14 @@
         "Source76be shares bounded DXF import across typed commands, CLI and current MCP; four full native-project JSON inspections now match exactly without an epsilon. Source5950 four inspection failures remain unchanged. Live GUI automation, persistent MCP history/jobs/cancellation and the full adapter/reference contract remain open.",
         "DD adds deferred File/search New Empty with staged-input/gesture/dirty refusal and clean document/worker reset. A4 observes bounded numeric/history/New/same-process reopen; broader New/recovery and full adapter/native/reference contracts remain open.",
         "Historical DD implementation-only checks pass 235 Rust/54 Python and the unchanged 93-case core/CLI evaluator. Root accepts bounded native A4 (121 pairs/542.54376275 s); frozen B stops after one documented drag at R40 rather than R41, with no rotation/Save and missing outputs. Overall A/B plan is failed/unverified; cause unknown, no complete feature or reference credit.",
-        "B657 passed the original 50-observation authored headless scope and root-accepted bounded physical sewing002 (162 total calls/748.816649s). First A stays transient; one physical group/history, four saves, clean NewR0/no-op UndoRedo and same-process reopen are observed. The coarse contract remains partial/not_run; no complete sewing/New/garment/physics/reference credit. DD Transform B remains unresolved and its old report stale."
+        "Historical B657 passed the original 50-observation authored headless scope and root-accepted bounded physical sewing002 (162 total calls/748.816649s). First A stays transient; one physical group/history, four saves, clean NewR0/no-op UndoRedo and same-process reopen are observed. The coarse contract remains partial/not_run; no complete sewing/New/garment/physics/reference credit. DD Transform B remains unresolved and its old report stale.",
+        "The B657 physical-sewing report is stale on the changed ad7 internal-segment runtime. Its original bounded pass and failed001 remain intact; private unpublished internal source/headless checks supply no current native, full-contract or reference acceptance."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/APP-001-new-empty.md": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
         "spec/features/SEW-002-physical-length.md": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2"
