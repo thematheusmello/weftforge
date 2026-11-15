@@ -115,6 +115,18 @@ native inspector shows the pattern, direction and signed percentage; CLI reports
 include the same typed metric and pattern ID/name. This adds no physical force
 and changes no fitting threshold. See the [bounded contract](../spec/features/SIM-005-strain-attribution.md).
 
+For reproducible f64 reporting, diagnostics form both current F columns from
+relative current edges using the rest-UV difference-of-products and division,
+then rotate those columns to the stored grain angle without snapping it.
+Each squared norm uses Neumaier compensation over the three rounded component
+squares, then square root and subtraction of one. The maximum, signed value,
+triangle and axis come from the same candidate across every triangle and both
+axes. Non-finite candidates invalidate the diagnostic; squared-sum overflow stays
+non-finite. Constraint projection retains its own cached material weights and
+ordinary dot products. Nearly equal real strains can still select different
+triangles under other f64 conventions; this deterministic reporting rule supplies
+no unique real-arithmetic winner, physical acceptance or reference-parity claim.
+
 The authored numerical bridge regression loads a planar 0.2 m square against the
 ground, with density 0.2 kg/m², warp 50 N/m, weft 1000 N/m and damping 8 s^-1.
 After one second (dt=1/120 s, two substeps, 24 iterations), its top is

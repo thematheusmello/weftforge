@@ -116,7 +116,8 @@ fn membrane_affine_strain_follows_material_axes_under_arrangement_and_winding() 
                 };
                 let membrane = constraints::Membrane::new(tri, &uv, material);
                 assert!((membrane.area - 0.11).abs() < 1e-14);
-                let actual = membrane.signed_strains(&x);
+                let actual =
+                    strain::signed_strains(tri.map(|i| x[i]), tri.map(|i| uv[i]), grain_angle);
                 assert!((actual[0] - warp).abs() < 1e-13);
                 assert!((actual[1] - weft).abs() < 1e-13);
                 let cloth = Cloth::new(ClothInput {
@@ -174,6 +175,74 @@ fn peak_strain_uses_input_triangle_order_and_exact_ties_choose_warp() {
     check(&input, 1, MaterialAxis::Weft, 0.75);
     input.triangles.reverse();
     check(&input, 0, MaterialAxis::Weft, 0.75);
+}
+
+#[test]
+fn shared_edge_peak_preserves_exact_transforms_and_distinguishes_near_ties() {
+    let original = [[0., 0., 0.], [1.5, 0., 0.], [0., 1., 0.], [1.5, 1., 0.]];
+    for grain_angle in [0., std::f64::consts::FRAC_PI_2] {
+        let axis = if grain_angle == 0. {
+            MaterialAxis::Warp
+        } else {
+            MaterialAxis::Weft
+        };
+        let mut input = ClothInput {
+            material_uv: vec![[0., 0.], [1., 0.], [0., 1.], [1., 1.]],
+            triangles: vec![[0, 1, 2], [1, 3, 2]],
+            triangle_materials: vec![
+                Material {
+                    grain_angle,
+                    ..Default::default()
+                };
+                2
+            ],
+            ..Default::default()
+        };
+        let check = |input: &ClothInput, triangle, signed_strain| {
+            let diagnostics = Cloth::new(input.clone()).unwrap().diagnostics().clone();
+            assert_eq!(
+                diagnostics.peak_strain,
+                Some(StrainPeak {
+                    triangle,
+                    axis,
+                    signed_strain,
+                })
+            );
+            assert_eq!(diagnostics.max_stretch_error, signed_strain.abs());
+        };
+        for positions in [
+            original,
+            original.map(|[x, y, z]| [x + 8., y - 4., z + 2.]),
+            original.map(|[x, y, z]| [z, x, y]),
+            original.map(|[x, y, z]| [-x, y, z]),
+        ] {
+            input.positions = positions.to_vec();
+            check(&input, 0, 0.5);
+        }
+        input.positions = original.to_vec();
+        input.positions[3][0] += 2_f64.powi(-51);
+        check(&input, 1, 0.5 + 2_f64.powi(-51));
+        input.positions[3][0] = 1.625;
+        check(&input, 1, 0.625);
+    }
+}
+
+#[test]
+fn nonfinite_strain_after_a_finite_candidate_invalidates_diagnostics() {
+    let cloth = Cloth::new(square()).unwrap();
+    let mut positions = cloth.positions().to_vec();
+    for position in &mut positions {
+        position[0] = f64::MAX;
+    }
+    positions[3][0] = -f64::MAX;
+    let diagnostics = cloth.measure_errors_with_contact(
+        &positions,
+        cloth.velocities(),
+        contact::ContactErrors::default(),
+    );
+    assert!(diagnostics.max_stretch_error.is_finite());
+    assert!(diagnostics.peak_strain.unwrap().signed_strain.is_finite());
+    assert!(!diagnostics.finite);
 }
 
 #[test]
