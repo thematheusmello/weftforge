@@ -31,7 +31,7 @@ Its six commands exited zero with **254 Rust / 54 Python** passes, four font-not
 copies and twelve package files. The runner predicted 255: its prediction-match
 flag is **false** and retained. Zero exits do not mean every bookkeeping expectation
 passed. Those Rust/source gates are reused by exact identity, not rerun during
-publication. Fresh metadata/registry/current-map verification is recorded separately.
+publication. Fresh [clean-candidate verification](parity/reports/artifacts/physical-length-sewing-20261115/publication-checks-d670aa7/CHECKS.json) at d670aa7 passed registry, historical/current maps, 48 script tests, six evaluator tests and CLI help. The later receipt/metadata-only closure preserves those checked-commit attributions.
 Debug/release CLI feature contexts remain disclosed; unsigned packaging is not
 packaged launch, signing, a new binary release or cross-platform acceptance.
 

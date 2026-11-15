@@ -100,3 +100,14 @@ No native/headless/saved-grader execution is rerun during publication preparatio
 Actions/automated Pages remain disabled and the static site is preserved. The
 earlier DD Transform A4 result and failed/unverified B remain unchanged, now stale
 on changed B657 runtime; no native B pass or unexecuted B2 packet is imported.
+
+## Publication verification
+
+[Fresh clean-candidate checks](publication-checks-d670aa7/CHECKS.json) ran only
+`cargo xtask verify` at d670aa7562b068bf32f5385c0f8f10858dbf29f5 in this worktree's
+existing default target. Registry and historical/current source maps passed, as
+did 48 script tests, six evaluator tests and CLI help. Source60/protected metadata,
+all tracked artifact hashes/typed symlinks, native69af and the separate accepted
+independent CLI fa4 remained unchanged. The later receipt/metadata closure does
+not rerun Rust, native, independent evaluation or saved grading. Original B657
+254/54 gates and their 255 prediction mismatch remain separately attributed.

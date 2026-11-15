@@ -97,8 +97,8 @@
   ],
   "source_scope_description": "All 60 B657 runtime/build/test/contract inputs, including four reviewed contracts. The original independent execution is separately bound to 46 unchanged core/CLI inputs and its exact immutable CLI; no changed-GUI acceptance is borrowed from it.",
   "artifact_hashes": {
-    "parity/reports/artifacts/physical-length-sewing-20261115/PUBLICATION.json": "f53f99b9a3972b2584913bdf23a7045019d74c88ddf23543e3c130768951144c",
-    "parity/reports/artifacts/physical-length-sewing-20261115/README.md": "43ec5c68d52ada1e6cff98af25618cec4385d3ffbb44f9992578a9886d5fb274",
+    "parity/reports/artifacts/physical-length-sewing-20261115/PUBLICATION.json": "c7dc8e2fbbd2f057524eb3839b9c10d27c296d7bf265566094f07187d39b6b66",
+    "parity/reports/artifacts/physical-length-sewing-20261115/README.md": "bc27a78534e964f29be99326c9b5398abb1c604b1b107807475347907385e8a9",
     "parity/reports/artifacts/physical-length-sewing-20261115/SOURCE-GUARD.json": "ad22cf9ca53a66dcaf9af2cb683cd62dc2201bc11b2560b407ab8f54402ab576",
     "parity/reports/artifacts/physical-length-sewing-20261115/SYMLINK-NODES.json": "f69981d5a2a07656ec69fbbd925a616fbd4441386cdf71edf0a36cd3208c88df",
     "parity/reports/artifacts/physical-length-sewing-20261115/build/ROOT-INACTIVE-CACHE-CLEANUP.json": "b70068040a93c0404fb0c751aa57dbaf709b637828c3b8bcf7c6386cfd18e72a",
@@ -1133,6 +1133,9 @@
     "parity/reports/artifacts/physical-length-sewing-20261115/native-source-checks/native-physical-sewing-second.log": "126c1b8058279febef6f16889d880b1417b89321b5255253eefb0b7704d6381c",
     "parity/reports/artifacts/physical-length-sewing-20261115/native-source-checks/native-physical-sewing-third.log": "eb55bbe5142c1fced6673488ce038d305ca29083fccd8246645742c4477613f5",
     "parity/reports/artifacts/physical-length-sewing-20261115/post-case-cleanup/ROOT-OUTCOME.json": "f0ca31e5c60435ffcbd787d0ea01e2f84fdcf45fdc5f255883314e1ba450a24b",
+    "parity/reports/artifacts/physical-length-sewing-20261115/publication-checks-d670aa7/CHECKS.json": "59ebd881cce7497e193ac4279a6e1fe5fc084eba059fe5a5cc285e1f66e05057",
+    "parity/reports/artifacts/physical-length-sewing-20261115/publication-checks-d670aa7/verify.stderr": "50396db8658534bb32ed40187f4066bb915c1ba9bcdcf0ad698665aaf9c9e63f",
+    "parity/reports/artifacts/physical-length-sewing-20261115/publication-checks-d670aa7/verify.stdout": "ffc1920223bd7b4d595a745c1520ee92f476aaec73bcfc5ff0203bcdeada0a92",
     "parity/reports/artifacts/physical-length-sewing-20261115/recorder.cjs": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
     "parity/reports/artifacts/physical-length-sewing-20261115/source-reviews/FIX-REVIEW.md": "a9b1f7e47bc4127d346f3217e7654c055362fb9c8504ff36c2ff4c73b2710c87",
     "parity/reports/artifacts/physical-length-sewing-20261115/source-reviews/INTEGRATION-REVIEW.md": "5b8f4456caf2c0786c11c9f4ca80d1b4f8f5a4f37bcc9502a1dced8d112281a8",
@@ -1343,8 +1346,28 @@
     "No general pointer projection/snap/cancellation reference parity, unequal-length native easing, chains/internal sewing, sewn remeshing or simulation acceptance follows.",
     "The original source runner predicted 255 but observed 254 Rust passes; prediction_match is false. Six zero command exits do not make every bookkeeping expectation pass.",
     "Failed001 and filename calibration are closed and not repaired/regraded by002; normal autosaves are not substitutes for required primaries.",
-    "Only the approved cargo xtask verify metadata/source-map verification may be refreshed at closure; native/source tests, headless evaluation and saved grading are not rerun.",
+    "Publication refreshed only approved cargo xtask verify metadata/source-map/Python/CLI-help verification at the identified clean candidate; native/Rust source tests, headless evaluation and saved grading were not rerun.",
     "No new binary release, push, PR, Actions or Pages deployment is included in publication preparation."
   ],
-  "curation_qualification": "Selected image/project/sidecar files match closed manifests (001:8, 002:20). An extra current 001 autosave.recovery absent from its frozen manifest is not selected; it remains private with no creation-cause or acceptance attribution."
+  "curation_qualification": "Selected image/project/sidecar files match closed manifests (001:8, 002:20). An extra current 001 autosave.recovery absent from its frozen manifest is not selected; it remains private with no creation-cause or acceptance attribution.",
+  "publication_checks": {
+    "receipt": "parity/reports/artifacts/physical-length-sewing-20261115/publication-checks-d670aa7/CHECKS.json",
+    "checked_clean_commit": "d670aa7562b068bf32f5385c0f8f10858dbf29f5",
+    "command": [
+      "cargo",
+      "xtask",
+      "verify"
+    ],
+    "exit_code": 0,
+    "checkout_clean_before_and_after": true,
+    "default_worktree_target_existed": true,
+    "cross_worktree_cache_copied": false,
+    "historical_and_current_source_map_checks_passed": true,
+    "python_script_tests_passed": 48,
+    "python_evaluator_tests_passed": 6,
+    "CLI_help_passed": true,
+    "source60_and_protected_metadata6_unchanged": true,
+    "native_and_immutable_independent_CLI_unchanged": true,
+    "qualification": "Fresh metadata/registry/source-map/Python/CLI-help verification only; receipt-only closure follows the identified checked commit. Original B657 Rust gates, source review evidence, independent execution, saved grading and native cases are retained without rerun."
+  }
 }
