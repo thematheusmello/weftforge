@@ -121,6 +121,7 @@ fn rejected_svg_preserves_project_stable_ids_and_undo_redo_history() {
         valid.replacen("100mm", "200mm", 1), valid.replacen("100mm", "0mm", 1), valid.replacen("100mm", "-1mm", 1),
         valid.replace("viewBox=\"0 0 100 100\"", "viewBox=\"0 0 -100 100\""), valid.replace("viewBox=\"0 0 100 100\"", "viewBox=\"0 0 0 100\""),
         valid.replace("viewBox=\"0 0 100 100\"", "viewBox=\"0 0 100 100 5\""), valid.replace("viewBox=\"0 0 100 100\"", "viewBox=\"0 0 100 100,\""),
+        valid.replacen("100mm", "110mm", 1).replacen("100mm", "10mm", 1).replace("viewBox=\"0 0 100 100\"", "viewBox=\"0 0 1.1.1\""),
         valid.replace("http://www.w3.org/2000/svg", "http://invalid.example/svg"), valid.replace("xmlns=\"http://www.w3.org/2000/svg\"", ""),
         valid.replace("<path", "<path transform=\"translate(10)\""), valid.replace("<path", "<path style=\"display:none\""),
         valid.replace("<path", "<path href=\"http://invalid.example/asset\""), valid.replace("<path", "<path fill=\"url(http://invalid.example/asset)\""),
@@ -136,6 +137,8 @@ fn rejected_svg_preserves_project_stable_ids_and_undo_redo_history() {
         format!("<!DOCTYPE svg [<!ENTITY data 'anything'>]>{valid}"), format!("<?xml-stylesheet href=\"http://invalid.example/css\"?>{valid}"),
         format!("<?xml version=\"1.1\"?>{valid}"), format!("<?xml version=\"1.0\" encoding=\"UTF-16\"?>{valid}"),
         format!("<?xml version=\"1.0\" encoding=\"UTF-8\" encoding=\"UTF-8\"?>{valid}"),
+        format!("<?xml version=\"1.0\" standalone=\"yes\" encoding=\"UTF-8\"?>{valid}"),
+        format!("<?xml version=\"1.0\" encoding=\"UTF&#45;8\"?>{valid}"),
         valid.replace("<path", "<path data-name=\"A\" data-name=\"B\""),
         valid.replace("<path", &format!("<path {}", (0..64).map(|i| format!("a{i}=\"x\" ")).collect::<String>())),
     ];

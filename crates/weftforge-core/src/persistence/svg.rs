@@ -112,9 +112,17 @@ impl SvgPatternImport {
                 Event::Decl(declaration) => {
                     ensure(!declared && scale.is_none() && source.trim_start_matches('\u{feff}').starts_with("<?xml"), "SVG XML declaration must appear once at the start")?;
                     ensure(declaration.version().map_err(xml_error)?.as_ref() == b"1.0", "SVG requires XML 1.0")?;
+                    ensure(!declaration.contains(&b'&'), "SVG XML declaration cannot contain character/entity references")?;
                     let declaration = std::str::from_utf8(&declaration).map_err(xml_error)?;
-                    let values = attributes(&BytesStart::from_content(declaration, 3))?;
+                    let declaration = BytesStart::from_content(declaration, 3);
+                    let values = attributes(&declaration)?;
                     check_attributes(&values, &["version", "encoding", "standalone"])?;
+                    let mut previous = 0;
+                    for attribute in declaration.attributes() {
+                        let position = match attribute.map_err(xml_error)?.key.as_ref() { b"version" => 1, b"encoding" => 2, _ => 3 };
+                        ensure(position > previous, "SVG XML declaration attributes are out of order")?;
+                        previous = position;
+                    }
                     ensure(values.get("encoding").is_none_or(|value| value.eq_ignore_ascii_case("UTF-8")), "SVG encoding must be UTF-8")?;
                     ensure(values.get("standalone").is_none_or(|value| matches!(value.as_str(), "yes" | "no")), "Invalid SVG XML standalone declaration")?;
                     declared = true;
@@ -181,7 +189,15 @@ fn root_scale(attributes: &BTreeMap<String, String>) -> Result<f64> {
     let width = millimetres("width")?;
     let height = millimetres("height")?;
     let mut numbers = Numbers::new(required(attributes, "viewBox")?);
-    let view_box = [numbers.number()?, numbers.number()?, numbers.number()?, numbers.number()?];
+    let mut view_box = [0.0; 4];
+    for (index, value) in view_box.iter_mut().enumerate() {
+        if index > 0 {
+            let start = numbers.offset;
+            numbers.skip_whitespace();
+            ensure(numbers.offset > start || numbers.peek() == Some(b','), "SVG viewBox numbers need whitespace or comma separators")?;
+        }
+        *value = numbers.number()?;
+    }
     numbers.finish()?;
     ensure(view_box[2] > 0.0 && view_box[3] > 0.0, "SVG viewBox dimensions must be positive")?;
     let [x, y] = [width / view_box[2], height / view_box[3]];
