@@ -140,10 +140,15 @@
     "parity/reports/artifacts/native-studio-20261115/failed-native-harbor/trace/0255-after.json": "d70ff11edde67ec8eb2f8e044877a415b2d2b4fbafc8ef2ac9f06f32c210632a",
     "parity/reports/artifacts/native-studio-20261115/failed-native-harbor/trace/0255-before.json": "8a8a5fcac124cd0102caabf6024cfdfd823fbb96fdb5ebf326c4ed65ea4b2452",
     "parity/reports/artifacts/native-studio-20261115/failed-native-harbor/trace/0256-after.json": "c308c0e883b6fc035ee7524e1ac92cdf0f6ef695fb7fdb48bab278adf8d6a076",
-    "parity/reports/artifacts/native-studio-20261115/failed-native-harbor/trace/0256-before.json": "7736c68c761f4a90833296d08786fb2ee05819bd9df902ae0d5a59cc4366bf84"
+    "parity/reports/artifacts/native-studio-20261115/failed-native-harbor/trace/0256-before.json": "7736c68c761f4a90833296d08786fb2ee05819bd9df902ae0d5a59cc4366bf84",
+    "parity/reports/artifacts/native-studio-publication-20261115/ROOT-CLOSURE.json": "900493f3cdad61756719c9319d1525eb098f9c674287d05f45003c92f3aea33f"
   },
   "publication_checks": {
-    "status": "NOT_RUN_DRAFT_AWAITS_ROOT_REVIEW",
-    "git_tracked_delivery_certified": false
+    "status": "passed_at_external_clean_checkpoint",
+    "checked_commit": "088962387d32d076e08bbd46a1b0ec880aaa2746",
+    "closure": "parity/reports/artifacts/native-studio-publication-20261115/ROOT-CLOSURE.json",
+    "packet_and_source_gate": "All referenced artifacts tracked/hash-correct;109packetfiles and49runtime+2contracts match their bindings.",
+    "receipt_append_policy": "Final receiptcommit receives metadata-only registry/map/trackedhash/source checks before publication. Final head/exits are recorded externally; no report self-certifies its own receipt append.",
+    "product_Cargo_UI_consumer_or_replay_rerun": false
   }
 }

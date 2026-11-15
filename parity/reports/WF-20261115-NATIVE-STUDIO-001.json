@@ -286,10 +286,15 @@
     "parity/reports/artifacts/native-studio-20261115/studio002/trace/0005-after.json": "2925d015661b26bb479850777a3953ce6fb9c0cd8f622b2dc654b657ff0bf3c1",
     "parity/reports/artifacts/native-studio-20261115/studio002/trace/0005-before.json": "79292a11c01550b3782557a380153bcb6c25379453bae8d6f8478da801ad17a2",
     "parity/reports/artifacts/harbor-workflow-20261114/native-authoring/harbor-final-restored.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
-    "parity/scenarios/UI-NATIVE-STUDIO-001.json": "8958bba9680da33b8e7e529ea3c08ec137a1c01ffe0bc4a17a9bee4ec1256cfc"
+    "parity/scenarios/UI-NATIVE-STUDIO-001.json": "8958bba9680da33b8e7e529ea3c08ec137a1c01ffe0bc4a17a9bee4ec1256cfc",
+    "parity/reports/artifacts/native-studio-publication-20261115/ROOT-CLOSURE.json": "900493f3cdad61756719c9319d1525eb098f9c674287d05f45003c92f3aea33f"
   },
   "publication_checks": {
-    "status": "NOT_RUN_DRAFT_AWAITS_ROOT_REVIEW",
-    "git_tracked_delivery_certified": false
+    "status": "passed_at_external_clean_checkpoint",
+    "checked_commit": "088962387d32d076e08bbd46a1b0ec880aaa2746",
+    "closure": "parity/reports/artifacts/native-studio-publication-20261115/ROOT-CLOSURE.json",
+    "packet_and_source_gate": "All referenced artifacts tracked/hash-correct;109packetfiles and49runtime+2contracts match their bindings.",
+    "receipt_append_policy": "Final receiptcommit receives metadata-only registry/map/trackedhash/source checks before publication. Final head/exits are recorded externally; no report self-certifies its own receipt append.",
+    "product_Cargo_UI_consumer_or_replay_rerun": false
   }
 }

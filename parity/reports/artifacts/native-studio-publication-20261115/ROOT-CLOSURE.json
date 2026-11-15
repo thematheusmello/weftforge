@@ -1,0 +1,92 @@
+{
+  "kind": "External clean tracked metadata publication receipt",
+  "created_utc": "2026-11-15T11:25:18.880444+00:00",
+  "checked_clean_commit": "088962387d32d076e08bbd46a1b0ec880aaa2746",
+  "checked_tree": "2d839fc9378e11753d894adf221824ae9d2e7f0d",
+  "tested_source_commit": "21b9f5e76a77ca21357783240cef7506b3887fbc",
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/progress.py",
+        "--check"
+      ],
+      "cwd_role": "clean publication checkout root",
+      "terminal_session": 30336,
+      "exit_code": 0,
+      "stdout": "Registry valid: 56 inventoried contracts; generated reports checked.\n",
+      "timeout_qualification": "Finite read-only metadata session monitored to terminal0; no timeout or timing credit claimed."
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "spec/inventory/verify_implementation_map.py"
+      ],
+      "cwd_role": "clean publication checkout root",
+      "terminal_session": 49038,
+      "exit_code": 0,
+      "stdout": "PASS: 949 unique catalog IDs; preserved 949 entries/205 packets and original 928-entry expansion; 205 reviewed groups/packets; 56 source landmarks; catalog hashes, feature/source links and acyclic dependencies valid.\n",
+      "timeout_qualification": "Finite read-only metadata session monitored to terminal0; no timeout or timing credit claimed."
+    },
+    {
+      "argv": [
+        "python3",
+        "-B",
+        "-"
+      ],
+      "operation": "Inline audit of every report-referenced artifact tracked status/hash, finite packet manifest and all49runtime+2contracts againstGit21b9.",
+      "terminal_session": 41087,
+      "exit_code": 0,
+      "retained_private_command_sha256": "8ea6b9fc8ca840556c315f062ce1ae1d7798f72e5c0588fa040939911ca798f0",
+      "private_command_record_excluded_from_public_packet": true
+    }
+  ],
+  "audit": {
+    "status": "passed",
+    "checkpoint": "088962387d32d076e08bbd46a1b0ec880aaa2746",
+    "tree": "2d839fc9378e11753d894adf221824ae9d2e7f0d",
+    "git_clean": true,
+    "referenced_reports": 32,
+    "unique_referenced_artifacts": 4136,
+    "all_referenced_artifacts_tracked_hash_correct": true,
+    "packet_files": 109,
+    "packet_bytes": 1411208,
+    "manifest_sha256": "8e10b2b8fedcde421d7fd60e895282abb64922389d9d3a43a9b209876615e76a",
+    "runtime_files": 49,
+    "contracts": 2,
+    "source_commit": "21b9f5e76a77ca21357783240cef7506b3887fbc",
+    "source51_unchanged": true,
+    "publication_native_status": "failed_unaccepted",
+    "product_or_replay_execution": false,
+    "created_utc": "2026-11-15T11:22:30.632256+00:00"
+  },
+  "initial_checkpoint_report_sha256": {
+    "WF-20261115-NATIVE-STUDIO-001": "82b94042c45a6da77673a4ff0555a81143a0b19533c92a86506dbcd403de7b03",
+    "WF-20261115-NATIVE-HARBOR-FAILED-001": "b57262ad8b5c6adb8362c513d28fd7e42c23eb1449cbb5d039c58b62628f3b5b"
+  },
+  "review_qualification": {
+    "root_content_and_finite_artifact_review": "Approved before firstcommit;109packetfiles and allsource51 bytes checked.",
+    "root_original_public_mapping_review": {
+      "mappings": 102,
+      "exact_copies": 88,
+      "literal_reversible_derivatives": 14,
+      "scope": "Selected originals/public bytes only; inverse maps remain private. No whole-private-context certification."
+    },
+    "privacy": "No scoped personalpath/credential flags after explicit own-prefix substitution; known Cargo xtask hash token scan hit was a falsepositive. Selected own images reviewed; unselected context excluded.",
+    "force_adds": [],
+    "gitignore_changed": false
+  },
+  "source_reachability": {
+    "original_snap_ref": "evidence/native-position-snapping",
+    "original_snap_commit": "539635bc75f5e8a2d7b63061178e6c082a4b7c0c",
+    "root_confirmation": "Pushsession32063 terminal0; exactremoteID confirmed; Actionsfalse/zeroheadruns at2026-11-15T11:06:46Z.",
+    "telemetry": "Original contract/error/intent witnesses and fixes are ancestors of21b9."
+  },
+  "assembly_marker_qualification": "The immutable packet retains assembly-time draft/self-certification markers. This later external receipt records the actual clean/tracked gate; packet markers are not an additional acceptance result.",
+  "receipt_append_policy": "This receipt and publication qualifiers are metadata additions after the checked checkpoint. The final receiptcommit must pass the same existing registry/map and trackedhash/source51 checks before publication; finalhead/exits are retained externally to avoid self-referential receipt hashes.",
+  "self_certifies_final_receipt_commit": false,
+  "native_and_reference_scope": "Current combined report remainsfailed/unaccepted;001 setupfailed,002 focusunverified; no productdefect/pass inferred. Readonlypreview is separate display evidence only. All completecontract/reference/singleworkflow/fullnative flags remainfalse;0/56/noacceptedgate.",
+  "new_build_product_UI_consumer_static_replay_or_physics_execution": false
+}

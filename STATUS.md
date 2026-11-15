@@ -14,7 +14,7 @@ Public main is `91237fa16cc04486430c01392314dab67e20d71a` after merged
 [PR41](https://github.com/thematheusmello/weftforge/pull/41). Root confirmed its
 reviewed tree/source and zero merge workflows. GitHub Actions remains disabled;
 automated Pages deployments remain off and the existing static site is preserved.
-This publication draft is based on tested source
+This publication increment is based on tested source
 `21b9f5e76a77ca21357783240cef7506b3887fbc`, not a new runtime change.
 
 The source adds session-only Off / 1 / 5 / 10 mm pointer Snap choices and Alt/Option
@@ -84,9 +84,13 @@ The [packet](parity/reports/artifacts/native-studio-20261115/README.md) is a fin
 selected artifact set with exact original/public hashes. Only explicit own-path
 role substitutions are made. Private inverse maps, whole case directories,
 mutable live sidecars, OS/unrelated inventories and duplicate fixtures stay out.
-This is a draft pending root content review, commit and clean tracked registry/
-map/artifact audit; ignored or untracked files are not delivery. UI-001/UI-003/
-UI-005 remain partial/not_run despite current source-bound failed evidence.
+Root content review and the clean tracked checkpoint `0889623` passed registry,
+implementation-map and all-artifact/source checks: sessions 30336/49038/41087,
+all exit 0, with 4,136 artifacts tracked and hash-correct. The
+[external receipt](parity/reports/artifacts/native-studio-publication-20261115/ROOT-CLOSURE.json)
+records those commands and scopes. The receipt append receives a metadata-only
+recheck before publication. Ignored or untracked files are not delivery.
+UI-001/UI-003/UI-005 remain partial/not_run despite current source-bound failed evidence.
 Complete contract, reference, single workflow and full native plan flags remain false.
 
 Original Snap 539635bc, including 2950 and 7a1 ancestors, is publicly reachable at
@@ -158,11 +162,11 @@ interaction. Keep the earlier observed Rectangle facts and the
 Commercial/account/raw reference material stays private; fresh implementers use
 reviewed public behavior contracts, not proprietary pseudocode or extracts.
 
-1. Root reviews this finite draft, then authorizes the commit and one clean
-   metadata audit cycle: registry, implementation map, every referenced artifact
-   tracked/hash-correct, and 49+2 source bytes still matching 21b9. No Cargo,
-   old replay, UI or physical rerun is needed for metadata. Root owns PR42/push/
-   merge, exact remote source refs and final disabled-Actions confirmation.
+1. Complete the final receipt metadata recheck, then root reviews the exact
+   clean tree before PR42/push/merge. The initial registry/map/artifact/source
+   audit passed; the receipt append requires the same checks with all 49+2
+   source bytes still matching 21b9. No Cargo, old replay, UI or physical rerun
+   is needed. Root owns exact remote refs and final disabled-Actions confirmation.
 2. Resolve how a future prospective native method can witness numeric focus
    honestly before authorizing a new case or source change. 001/002 stay closed;
    no 003 is scheduled and no criterion is relaxed retrospectively. The old
