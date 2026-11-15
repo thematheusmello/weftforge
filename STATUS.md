@@ -115,7 +115,7 @@ temporary revision 2/.126 reached background autosave/recovery while input prima
 remained unchanged. Chooser basename, closure assertion and preparation/staging
 corrections remain retained. Source 76be packet manifest starts fe82650c; its
 single clean saved-output replay and later metadata checks are archival receipts,
-not newly executed acceptance. APP-001/FILE-005 remain stale/partial/not_run.
+not newly executed acceptance. That historical DXF attribution remains stale; current APP-001/FILE-005 feature states are recorded separately in the registry.
 
 The [closed-stitch report](parity/reports/WF-20261115-CLOSED-STITCH-HARBOR-001.json)
 remains stale because later authoring/adapters changed its full scoped source,

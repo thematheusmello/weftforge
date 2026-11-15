@@ -88,7 +88,7 @@
     "spec/features/PAT-004-native-transform-selection.md",
     "spec/features/APP-001-new-empty.md"
   ],
-  "source_scope_description": "All 59 DD runtime/build inputs and three reviewed contracts. The original independent evaluator and immutable outputs are artifact-bound; its separate 47-file core/CLI scope and accepted CLI identity remain unchanged.",
+  "source_scope_description": "All 59 DD runtime/build/test/contract inputs, including three reviewed contracts. The original independent evaluator and immutable outputs are artifact-bound; its separate 47-file core/CLI scope and accepted CLI identity remain unchanged.",
   "freshness": "current",
   "artifact_hashes": {
     "parity/reports/artifacts/pattern-transform-20261115/PREPARATION-ATTEMPTS.json": "c60255616aaf9ab1277c7a1946e5a456b0358ed65081c5facad27ba23f932d45",
@@ -538,6 +538,11 @@
     "parity/reports/artifacts/pattern-transform-20261115/offline-controller-only/offline-run-02/mock-unknown-method/trace/0001-after.json": "ca6b91645f9e0d1a2ea4f017c7b931969f98dc5fe268953fdef817ae72d66440",
     "parity/reports/artifacts/pattern-transform-20261115/offline-controller-only/offline-run-02/mock-unknown-method/trace/0001-before.json": "5554a32733ebbb528353da282c6c486eaec0c9d5dd7fe62d57b8533485755502",
     "parity/reports/artifacts/pattern-transform-20261115/offline-controller-only/revisions/controller-attempt-01.cjs": "14c20b2641fef709aab857c0acf424abed75fdf6093fc6cff5bc39b62e9bd943",
+    "parity/reports/artifacts/pattern-transform-20261115/publication-checks-eecc28a/CHECKS.json": "168b307d38e6d6b2d936d6b9eede27a20870bda38d13f99b24f901f5a30b5db8",
+    "parity/reports/artifacts/pattern-transform-20261115/publication-checks-eecc28a/implementation-map.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/pattern-transform-20261115/publication-checks-eecc28a/implementation-map.stdout": "448808e48f5213aed0f1e43b747f17300652989fec03131b2fb9891e770971ca",
+    "parity/reports/artifacts/pattern-transform-20261115/publication-checks-eecc28a/registry.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/pattern-transform-20261115/publication-checks-eecc28a/registry.stdout": "1f9b2cd3d90cae23eba2b811c4d4cfdbb1816721598ce827cc85456e609fffcb",
     "parity/reports/artifacts/pattern-transform-20261115/recorder.cjs": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
     "parity/reports/artifacts/pattern-transform-20261115/reviews/CORE-REVIEW.md": "db04647e16e76f0e2cb0e0f4ef7e87033f665a52245e830741eb2a0f08161ae4",
     "parity/reports/artifacts/pattern-transform-20261115/reviews/NEW-EMPTY-FIX-REVIEW.md": "90268380f1e8e51f4ebfc4570e50c28b2ef800da633a87a05ea94c9b5d7e13fe",
@@ -1137,10 +1142,11 @@
     "rust_tests": 235,
     "python_tests": 54,
     "all_six_commands_exit_zero": true,
-    "clean_same_worktree_target": true,
     "unsigned_packaging_only": true,
     "new_empty_and_transform_review_reds_and_corrections_retained": true,
-    "publication_does_not_rerun_or_replace_native_or_headless_cases": true
+    "publication_does_not_rerun_or_replace_native_or_headless_cases": true,
+    "worktree_isolated_target_no_cross_worktree_cache_copy": true,
+    "target_cache_qualification": "The original manifest binds the same-worktree target and per-command source guards. Clean refers to the Git checkout; fresh command execution does not claim an empty Cargo cache."
   },
   "binary_identities": {
     "target/debug/weftforge": {
@@ -1231,5 +1237,17 @@
     "Old 133 gates, source passes, controlled REDs and failed A/A2/A3 remain unchanged; later fixes do not regrade closed cases.",
     "No mirroring, multiselection, pivot dragging, locks, full New/recovery behavior, physics, export, packaged launch/signing, cross-platform or complete reference/roadmap acceptance.",
     "No executables or app bundles are published; unsigned local packaging and source checks are separate from native debug-case identity."
-  ]
+  ],
+  "publication_checks": {
+    "checked_clean_candidate_commit": "eecc28ab69ce4bcc034beeb25cf51cb4a7c5faab",
+    "commands": [
+      "python3 scripts/progress.py --check",
+      "python3 spec/inventory/verify_implementation_map.py"
+    ],
+    "both_exit_zero": true,
+    "artifacts_tracked_and_hash_verified_at_checked_commit": 1039,
+    "runtime_and_contract_files_unchanged": 59,
+    "receipt": "parity/reports/artifacts/pattern-transform-20261115/publication-checks-eecc28a/CHECKS.json",
+    "qualification": "Check commands/logs are attributed to clean eecc28a. The final closure adds these five receipt files and wording/hash-attribution metadata only; it changes no runtime, contract, original artifact or numerical/native outcome."
+  }
 }
