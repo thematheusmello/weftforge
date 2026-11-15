@@ -257,6 +257,7 @@ struct TransformGesture {
     start: [f64; 2],
     snap: PositionSnap,
     rotating: bool,
+    pointer_owner: Option<egui::Id>,
 }
 impl TransformGesture {
     fn update(&mut self, pointer: [f64; 2]) {
@@ -2465,8 +2466,13 @@ impl Studio {
     }
     fn open_transform(&mut self, ctx: &egui::Context) {
         let Some(edit) = self
-            .selected
-            .and_then(|piece| self.transform_edit(ctx, piece))
+            .transform_gesture
+            .take()
+            .map(|gesture| gesture.edit)
+            .or_else(|| {
+                self.selected
+                    .and_then(|piece| self.transform_edit(ctx, piece))
+            })
         else {
             self.message = "Select a pattern boundary to transform first.".into();
             return;
@@ -2757,7 +2763,30 @@ impl Studio {
         let pointer = response
             .interact_pointer_pos()
             .or_else(|| ui.input(|i| i.pointer.hover_pos()));
+        let owned_transform = self
+            .transform_gesture
+            .as_ref()
+            .and_then(|gesture| gesture.pointer_owner)
+            .and_then(|id| ui.ctx().read_response(id))
+            .is_some_and(|owner| {
+                owner.is_pointer_button_down_on()
+                    || owner.drag_stopped_by(egui::PointerButton::Primary)
+                    || owner.clicked_by(egui::PointerButton::Primary)
+            });
+        let released_transform = owned_transform
+            && ui.input(|input| input.pointer.button_released(egui::PointerButton::Primary));
+        if let Some(gesture) = &mut self.transform_gesture
+            && gesture.pointer_owner.is_some()
+            && (!owned_transform || (gesture_paused && released_transform))
+        {
+            // An ended capture must never rearm from a later press on this widget.
+            gesture.pointer_owner = None;
+            self.message =
+                "Transform drag interrupted; use Transform pattern… to finish or Escape to cancel."
+                    .into();
+        }
         if !gesture_paused
+            && owned_transform
             && let Some(position) =
                 pointer.map(|pointer| self.to_pattern(pointer, r, PositionSnap::Off))
             && let Some(gesture) = &mut self.transform_gesture
@@ -3050,7 +3079,7 @@ impl Studio {
                     ),
                 );
                 handle_clicked = handle_response.clicked();
-                Some(handle_rect)
+                Some((handle_rect, handle_response.id))
             })
         } else {
             None
@@ -3065,7 +3094,8 @@ impl Studio {
             && ui.input(|input| input.pointer.button_pressed(egui::PointerButton::Primary))
             && let Some(pointer) = pointer.filter(|pointer| r.contains(*pointer))
         {
-            let rotating = transform_controls.is_some_and(|handle| handle.contains(pointer));
+            let rotation_handle = transform_controls.filter(|(handle, _)| handle.contains(pointer));
+            let rotating = rotation_handle.is_some();
             let piece = if rotating {
                 self.selected
             } else {
@@ -3086,12 +3116,13 @@ impl Studio {
                     start: self.to_pattern(pointer, r, PositionSnap::Off),
                     snap,
                     rotating,
+                    pointer_owner: Some(rotation_handle.map_or(response.id, |(_, id)| id)),
                 });
             }
         }
         let mut transformed = false;
         if !gesture_paused
-            && ui.input(|input| input.pointer.button_released(egui::PointerButton::Primary))
+            && released_transform
             && let Some(mut gesture) = self.transform_gesture.take()
             && !gesture.edit.is_identity()
         {
@@ -10316,6 +10347,7 @@ mod new_empty_tests {
                     start: [0., 0.],
                     snap: PositionSnap::Mm1,
                     rotating: false,
+                    pointer_owner: None,
                 });
                 let before = format!("{:?}", app.editor);
                 let (id, pos) = route(&ctx, &mut app, search);
@@ -11768,6 +11800,160 @@ mod pattern_transform_tests {
         same_construction(&app.editor.project, &before);
         app.history(&ctx, true);
         same_construction(&app.editor.project, &after);
+    }
+
+    #[test]
+    fn transform_paused_release_cannot_rearm_from_unrelated_controls_or_a_new_canvas_press() {
+        let position = |output: &egui::FullOutput, id| {
+            let bounds = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(node, _)| *node == id)
+                .unwrap()
+                .1
+                .bounds()
+                .unwrap();
+            Pos2::new(
+                ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                ((bounds.y0 + bounds.y1) * 0.5) as f32,
+            )
+        };
+        for rotating in [false, true] {
+            for search in [false, true] {
+                for input in [false, true] {
+                    let ctx = egui::Context::default();
+                    ctx.enable_accesskit();
+                    let mut app = fixture();
+                    frame(&ctx, &mut app, vec![]);
+                    let output = frame(&ctx, &mut app, vec![]);
+                    let start = if rotating {
+                        position(
+                            &output,
+                            button(&output, "Rotate pattern around bounds-center pivot"),
+                        )
+                    } else {
+                        app.to_screen([-0.375, 0.75], canvas_rect(&ctx, &app))
+                    };
+                    let before = format!("{:?}", app.editor);
+                    pointer_frame(&ctx, &mut app, start, Some(true), false);
+                    pointer_frame(&ctx, &mut app, start + Vec2::new(50., 35.), None, false);
+                    let pending = app.transform_gesture.as_ref().unwrap().edit.command();
+                    let preview = app.transform_gesture.as_ref().unwrap().preview().unwrap();
+                    assert!(!app.transform_gesture.as_ref().unwrap().edit.is_identity());
+                    if search {
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![key(egui::Key::K, egui::Modifiers::COMMAND)],
+                        );
+                    } else {
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![action(button(&output, "File"), Action::Click, None)],
+                        );
+                    }
+                    let output = frame(&ctx, &mut app, vec![]);
+                    let new = button(&output, "New Empty");
+                    pointer_frame(&ctx, &mut app, position(&output, new), Some(false), false);
+                    frame(&ctx, &mut app, vec![action(new, Action::Click, None)]);
+                    assert!(app.message.contains("Finish or cancel"));
+                    assert_eq!(format!("{:?}", app.editor), before);
+                    assert_eq!(
+                        app.transform_gesture.as_ref().unwrap().edit.command(),
+                        pending
+                    );
+                    let output = frame(&ctx, &mut app, vec![]);
+                    let target = if input {
+                        output
+                            .platform_output
+                            .accesskit_update
+                            .as_ref()
+                            .unwrap()
+                            .nodes
+                            .iter()
+                            .find(|(_, node)| node.numeric_value() == Some(0.37))
+                            .unwrap()
+                            .0
+                    } else {
+                        button(&output, "5 mm")
+                    };
+                    let target = position(&output, target);
+                    pointer_frame(&ctx, &mut app, target, Some(true), false);
+                    pointer_frame(&ctx, &mut app, target, Some(false), false);
+                    for _ in 0..3 {
+                        frame(&ctx, &mut app, vec![]);
+                    }
+                    assert_eq!(
+                        format!("{:?}", app.editor),
+                        before,
+                        "rotating={rotating} search={search} input={input}"
+                    );
+                    assert_eq!(
+                        app.transform_gesture.as_ref().unwrap().edit.command(),
+                        pending
+                    );
+                    assert!(app.editor.can_redo());
+
+                    // The ended capture cannot restart just because this widget owns a later press.
+                    pointer_frame(&ctx, &mut app, start, Some(true), false);
+                    pointer_frame(&ctx, &mut app, start + Vec2::new(10., 5.), None, false);
+                    pointer_frame(
+                        &ctx,
+                        &mut app,
+                        start + Vec2::new(10., 5.),
+                        Some(false),
+                        false,
+                    );
+                    assert_eq!(format!("{:?}", app.editor), before);
+                    assert_eq!(
+                        app.transform_gesture.as_ref().unwrap().edit.command(),
+                        pending
+                    );
+                    if input {
+                        let output = frame(&ctx, &mut app, vec![]);
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![action(
+                                button(&output, "Transform pattern…"),
+                                Action::Click,
+                                None,
+                            )],
+                        );
+                        assert_eq!(app.transform.as_ref().unwrap().command(), pending);
+                        let output = frame(&ctx, &mut app, vec![]);
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![action(
+                                button(&output, "Apply transform"),
+                                Action::Click,
+                                None,
+                            )],
+                        );
+                        assert!(app.transform.is_none() && app.transform_gesture.is_none());
+                        assert_eq!(app.editor.project, preview);
+                    } else {
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+                        );
+                        for _ in 0..3 {
+                            frame(&ctx, &mut app, vec![]);
+                        }
+                        assert!(app.transform_gesture.is_none());
+                        assert_eq!(format!("{:?}", app.editor), before);
+                        assert!(app.editor.can_redo());
+                    }
+                }
+            }
+        }
     }
 
     #[test]
