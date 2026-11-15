@@ -1,0 +1,59 @@
+{
+  "status": "STATIC_ARTIFACT_CHECKS_PASSED",
+  "native_action_execution": "Requires separate native action trace review; not established by this static checker",
+  "frozen_utc": "2026-11-15T02:22:56.715178+00:00",
+  "evaluator_sha256": {
+    "check.py": "a015c01c864533d2f4e3b872da78c9fc72892b7b8f54a79aae9544fe5c984c6d",
+    "METHOD.txt": "3f1b1e67399173352800b6d41f0cb41afee8d76dab90162db208d2f88ab002aa",
+    "SELF_CHECKS.json": "ce71b56480397388f6d374fc11b8000aebc8bce1eaec65698f801b30d4b1fd97"
+  },
+  "original_input_sha256": {
+    "baseline.weftforge": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+    "original-editable-patterns.svg": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+    "unsupported-transform.svg": "a95bb5bbf2b14284029abe653fbf220e6d6b6d9563a731dd586bb517b8af78ac"
+  },
+  "actual_artifact_sha256": {
+    "REPOSITORY_ROOT/.local/native-svg-acceptance-v3-20261115/edited.weftforge": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c",
+    "REPOSITORY_ROOT/.local/native-svg-acceptance-v3-20261115/reopened.weftforge": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c",
+    "REPOSITORY_ROOT/.local/native-svg-acceptance-v3-20261115/edited.svg": "730c7ef93c34e0063e7ca2e21f4b7704cbe266486b828922be63ed8f85483cae"
+  },
+  "piece_names_in_order": [
+    "Existing baseline",
+    "Original & curved front",
+    "back-panel"
+  ],
+  "piece_count": 3,
+  "spans_per_piece": [
+    4,
+    4,
+    4
+  ],
+  "source_scale": {
+    "metres_per_user_unit": 0.002,
+    "view_box": [
+      -100.0,
+      -200.0,
+      300.0,
+      200.0
+    ],
+    "origin_policy": "user-space origin retained; no viewBox-min subtraction"
+  },
+  "export_scale": {
+    "metres_per_user_unit": 0.001,
+    "view_box": [
+      -160.0,
+      -1000.0,
+      1160.0,
+      1000.0
+    ],
+    "origin_policy": "user-space origin retained; no viewBox-min subtraction"
+  },
+  "endpoint_control_tolerance_m": 1e-12,
+  "sample_tolerance_m": 1e-08,
+  "samples_per_span": 17,
+  "saved_revision": 5,
+  "resaved_revision": 5,
+  "allowed_resave_revision_delta": 0,
+  "revision_note": null,
+  "preserved_fields": "All original authoring objects except declared anchored rectangle width; all saved/resaved fields exact except explicitly documented revision delta"
+}

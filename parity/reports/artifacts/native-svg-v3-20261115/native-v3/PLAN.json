@@ -1,0 +1,85 @@
+{
+  "kind": "Prospective third native SVG history/persistence acceptance; original case, no simulation",
+  "created_utc": "2026-11-15T02:49:40.563222+00:00",
+  "status": "finalized and authorized by root before native UI; exactly one prospective v3 case",
+  "source_commit": "32f9b3481c46e28a3b3acc49e6cf3908c7001b28",
+  "source_worktree_clean_at_preparation": true,
+  "runtime_files": 45,
+  "pretest_manifest_sha256": "600b8c6a7473ab778a5b741d5b8b709fec32dc4da0f535817682112a3eccc511",
+  "bundle": {
+    "name": "WeftForge SVG Studio 3.app",
+    "identifier": "org.weftforge.studio.svg.v3.20261115",
+    "modifications": "Info.plist identity only; standard package executable unchanged"
+  },
+  "binary_sha256": {
+    "standard_package": "ef4e1a0f9ca797669e549f407a234ad0a8295fadab281d791b9ab92158b76a4e",
+    "v2": "ef4e1a0f9ca797669e549f407a234ad0a8295fadab281d791b9ab92158b76a4e",
+    "v3": "ef4e1a0f9ca797669e549f407a234ad0a8295fadab281d791b9ab92158b76a4e"
+  },
+  "original_inputs_sha256": {
+    "baseline.weftforge": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+    "original-editable-patterns.svg": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+    "unsupported-transform.svg": "a95bb5bbf2b14284029abe653fbf220e6d6b6d9563a731dd586bb517b8af78ac"
+  },
+  "trace_helper": ".local/native-svg-trace-v2-20261115.mjs",
+  "trace_helper_sha256": "8d4f0f01bdb21a1670a6ff3e9fd30bd55a2d9cadd14644952bb378bd531de419",
+  "frozen_independent_v3_checker": {
+    "path": ".local/svg-native-history-v3-evaluator-20261115/check.py",
+    "sha256": "d890e405ea7708e7f451b3bc350b1fa69b31fcb94d496eaf66fb1b1fd4e304e2",
+    "method_path": ".local/svg-native-history-v3-evaluator-20261115/METHOD.txt",
+    "method_sha256": "abc7ad4ae88a753813cf78e573b8b19b978074cab14fed099c2f6b516e509c9e",
+    "freeze_path": ".local/svg-native-history-v3-evaluator-20261115/FROZEN.json",
+    "freeze_sha256": "9d8373f611bc14b8bacbe1270c37aeb350678c1a88696f3454ac28d5e0c7b564",
+    "original_checker_sha256": "a015c01c864533d2f4e3b872da78c9fc72892b7b8f54a79aae9544fe5c984c6d",
+    "original_freeze_sha256": "bb25bd15266c810ba2bc844f68595a586e5e202db9311f24926e2cd26002c24f"
+  },
+  "actions": [
+    "Record launch intent, launch new v3 bundle into fresh Empty rev0, and open original baseline rev1 via native chooser",
+    "Select Existing baseline, double-click width .100, type .125 without Enter; import original SVG via chooser, review two pieces / 2 mm per unit, Cancel; require rev1 / one piece / retained pending .125",
+    "Click Frame all; require view-only rev1 / one piece / retained pending .125",
+    "Import same original SVG via native review; require rev2 / three pieces / baseline width .125; Save As imported.weftforge",
+    "One Undo requires rev3 / one piece / baseline width .100 / next_id29; Save As after-undo.weftforge",
+    "One Redo requires rev4 / three pieces / baseline width .125 / next_id29; Save As after-redo.weftforge",
+    "Select Original & curved front and Boundary2 curve17; edit P1 control X .080 to .090 with Return; require rev5; Frame all; Save As edited.weftforge; Export SVG edited.svg",
+    "Reject unsupported-transform.svg via native Import SVG chooser; require explanatory rejection and rev5; Save As after-rejected.weftforge",
+    "Actual CmdQ; verify no matching v3 app; fresh same-bundle launch into Empty rev0; Open edited.weftforge rev5; Save As reopened.weftforge; Frame all and capture",
+    "Leave v3 app open paused in Rest; leave all other apps as found; static checker and publication belong to root"
+  ],
+  "criteria": {
+    "piece_count_before": 1,
+    "piece_count_after": 3,
+    "source_metres_per_unit": 0.002,
+    "baseline_width_before_m": 0.1,
+    "baseline_width_after_m": 0.125,
+    "cubic_control_x_before_m": 0.08,
+    "cubic_control_x_after_m": 0.09,
+    "endpoint_control_tolerance_m": 1e-12,
+    "independent_consumer_tolerance_m": 1e-08
+  },
+  "checkpoint_contract": {
+    "baseline_revision": 1,
+    "baseline_next_id": 11,
+    "imported_revision": 2,
+    "undo_revision": 3,
+    "redo_revision": 4,
+    "edited_revision": 5,
+    "rejected_revision": 5,
+    "reopened_revision": 5,
+    "next_id_after_first_import_including_undo": 29,
+    "next_id_derivation": "11 + 2 * (1 piece + 4 points + 4 curves) = 29; stable-ID high-water survives Undo",
+    "undo_equals_baseline": "All native fields/order exact except revision1 to3 and next_id11 to29",
+    "redo_equals_imported": "All native fields/allocator/order exact except revision2 to4",
+    "rejected_equals_edited": "All native fields exact including revision5 and next_id29",
+    "reopened_equals_edited": "All native fields exact including revision5 and next_id29"
+  },
+  "prior_attempt_policy": "Original v2 remains strict failed; this prospective v3 corrects only the declared allocator expectation before execution. No production fix or relaxed thresholds.",
+  "failure_policy": "Every executed native input has durable before/returned records via unchanged recorder. Keep raw receipts and any failures private/local. File-dialog AX truncation is not absence. Stop for any functional failure and retain evidence. No native result files through code or CLI.",
+  "excluded": [
+    "All simulation controls, Cloth, Play, Step, Assemble, Drape",
+    "Other existing apps and documents",
+    "Reference app or proprietary materials",
+    "Production source or evaluator edits",
+    "GitHub and publishing",
+    "Complete SVG, garment, parity, cross-platform or release acceptance"
+  ]
+}

@@ -43,6 +43,49 @@ still fail the declared criteria. A separate relaxed shirt passes the explicit
 substeps/32 iterations. See physics.md, STATUS.md and attributable run reports.
 Elementary cloth tests do not prove garment fitting quality.
 
+## Current SVG studio file workflow
+
+Runtime `32f9b348` passes168Rust tests,54Python checks, formatting, strict
+workspace/all-target Clippy, xtask verification and unsigned packaging. The
+native file workflow imports two original SVG boundaries with explicit2mm per
+user unit, preserves a pending width through Cancel, commits import once, uses
+one Undo/Redo, edits a cubic control and rejects an unsupported transform. Actual
+quit/fresh-launch/reopen/resave retains byte-identical editable construction.
+The baseline rectangle is a CLI-authored original fixture; this supplies a file
+workflow rather than complete empty-project garment acceptance.
+
+The original frozen consumer verifies endpoints/controls within1e-12m and17
+independent samples per span within1e-8m, physical SVG scale/origin, defaults,
+existing objects and exact native restart persistence. A separately frozen v3
+history supplement requires exact revisions1/2/3/4/5/5/5 and allocators11/29/29/
+29/29/29/29, preserving IDs across Undo. The native v3 record contains75 returned
+input calls, two actor input corrections and one failed premature quit observer
+assertion. Settled termination precedes fresh launch. Those failures remain
+visible; neither an error-free observer sequence nor reference parity is claimed.
+The earlier v1 Cancel defect and v2 incorrect allocator-rewind protocol remain
+failed in their original records.
+
+From the matching source checkout, replay the retained static output checks:
+
+```sh
+python3 parity/reports/artifacts/native-svg-v3-20261115/verify.py --repo-root .
+python3 parity/reports/artifacts/diagnostic-static-20261115/verify.py --repo-root .
+```
+
+These commands inspect saved data and frozen original checker sources. The SVG
+adapter rebinds only declared directories and one captured directory default;
+all numerical functions and tolerances stay unchanged. The diagnostic command
+compiles the exact private helper against saved f64 data and matches362 peaks
+and838,392 triangle-axis values. It constructs no Cloth and takes no integration
+steps; original physical/strict failures remain unchanged. Runtime source and
+packet bindings deliberately reject changed inputs. Run historical evidence
+from its matching source when later engine changes make a report stale.
+
+See [the native report](../parity/reports/WF-20261115-SVG-STUDIO-001.json),
+[diagnostic report](../parity/reports/WF-20261115-DIAGNOSTIC-STATIC-001.json)
+and [current gallery](studio-preview.md). Static replay establishes neither new
+UI execution nor physics, printing, signing or cross-platform acceptance.
+
 ## Numerical evidence
 
 See physics.md for equations, initial conditions, tolerances declared before

@@ -1,0 +1,107 @@
+Window: "WeftForge", App: WeftForge SVG Studio 3.
+0 standard window WeftForge, Secondary Actions: Raise
+	1 container (showing 0-100 of 120 items)
+		2 text (settable) WeftForge
+		3 text (settable) GARMENT STUDIO
+		4 button Open…
+		5 button Import SVG…
+		6 button Save
+		7 button Save as…
+		8 button Recover…
+		9 button Export OBJ
+		10 button Export SVG
+		11 button Export DXF
+		12 button Undo
+		13 button Redo
+		14 button Commands ⌘K
+		15 toggle button (settable, boolean) Select / edit, Value: on
+		16 toggle button (settable, boolean) Polygon, Value: off
+		17 toggle button (settable, boolean) Rectangle, Value: off
+		18 toggle button (settable, boolean) Sew edges, Value: off
+		19 toggle button (settable, boolean) M:N sewing, Value: off
+		20 button Frame all
+		21 text (settable) edited.weftforge
+		22 text (settable) rev 5
+		23 text (settable) SIMULATION
+		24 button Play
+		25 button Step
+		26 button Assemble (gravity off)
+		27 button Drape
+		28 button Reset
+		29 checkbox (settable, boolean) Wireframe, Value: off
+		30 text (settable) Stage: Rest arrangement
+		31 text (settable) Next step settings: dt 0.01667 s · 4 substeps · 8 iterations · gravity [0.0, -9.81, 0.0] m/s² · seam closure 0.50 m/s
+		32 text (settable) 3 pieces  ·  0 seams  ·  0 sewing groups  ·  62 vertices
+		33 text (settable) Saved editable project atomically.
+		34 text (settable) Properties
+		35 text (settable) Editable construction
+		36 text (settable) OBJECTS
+		37 toggle button (settable, boolean) Existing baseline, Value: off
+		38 toggle button (settable, boolean) Original & curved front, Value: on
+		39 toggle button (settable, boolean) back-panel, Value: off
+		40 text (settable) Boundary curve · select here or in 2D
+		41 pop up button (settable) Curve #17
+		42 text (settable) CREATE PATTERN
+		43 text (settable) Pattern name
+		44 text field (settable) Pattern 1
+		45 text (settable) W / H m
+		46 stepper (settable) 0.50
+		47 stepper (settable) 0.60
+		48 text (settable) X / Y m
+		49 stepper (settable) -0.25
+		50 stepper (settable) 1.00
+		51 button Add rectangle
+		52 button Add ellipse
+		53 button Add polygon point
+		54 button Close pattern (0 points)
+		55 text (settable) Original & curved front
+		56 text (settable) Selected curve #17
+		57 text (settable) P0 #13 · 0.040000 / 0.320000 m
+		58 text (settable) P3 #14 · 0.040000 / 0.200000 m
+		59 checkbox (settable, boolean) Cubic Bezier, Value: on
+		60 text (settable) P1 control X / Y m
+		61 stepper (settable) 0.090
+		62 stepper (settable) 0.320
+		63 text (settable) P2 control X / Y m
+		64 stepper (settable) 0.080
+		65 stepper (settable) 0.200
+		66 text (settable) Split parameter t
+		67 stepper (settable) 0.50
+		68 text (settable) Interior curve parameter, not arc length. Sewing is partitioned without changing point pairs.
+		69 button Split selected curve
+		70 button Join with next boundary
+		71 text (settable) Size m
+		72 stepper (settable) 0.23385
+		73 stepper (settable) 0.120
+		74 text (settable) Arrange X / Y / Z m
+		75 stepper (settable) 0.00
+		76 stepper (settable) 0.00
+		77 stepper (settable) 0.00
+		78 text (settable) Rotate X / Y / Z radians
+		79 stepper (settable) 0.00
+		80 stepper (settable) 0.00
+		81 stepper (settable) 0.00
+		82 text (settable) Warp angle radians
+		83 text (settable) 0 = +U (right); positive turns toward +V (up).
+		84 stepper (settable) 0.00
+		85 text (settable) Shared fabric · 3 pieces
+		86 text (settable) Changes affect every assigned piece. Uncalibrated approximation.
+		87 text (settable) Mass/area kg/m²
+		88 stepper (settable) 0.18
+		89 text (settable) Warp stiffness N/m
+		90 stepper (settable) 400
+		91 text (settable) Weft stiffness N/m
+		92 stepper (settable) 400
+		93 text (settable) Bend N·m
+		94 stepper (settable) 0.00300
+		95 color well
+		96 button Delete selected
+		97 text (settable) SEWING
+		98 checkbox (settable, boolean) Reverse paired edge, Value: on
+		99 text (settable) A interval / B interval (0–1)
+		100 stepper (settable) 0.00
+		101 stepper (settable) 1.00
+	102 text WeftForge
+	103 menu button Window sharing
+104 menu bar
+	105 WeftForge

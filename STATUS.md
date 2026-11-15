@@ -48,8 +48,8 @@ supplement passed, with exact revisions1/2/3/4/5/5/5 and allocators11/29/29/29/2
 29/29. Edited, rejected and fresh-reopened/resaved files are byte-identical.
 Two actor input corrections and one premature quit-inventory assertion remain
 retained; all observer assertions did NOT pass. Settled inventory confirmed
-actual exit before the fresh Empty0 launch. Independent raw-trace/privacy review
-and clean tracked publication closure are pending. The newv3app is open paused
+actual exit before the fresh Empty0 launch. Independent raw-trace/privacy review supports the bounded v3 flow and both
+frozen graders; clean tracked default-path replay/publication closure is pending. The newv3app is open paused
 in Rest with reopened revision5/three pieces. The v2app remains on the original
 Harbor rest preview; neither native case ran simulation.
 
@@ -553,3 +553,17 @@ Active increment evidence: `.local/svg-studio-integrated-checks-20261115`
 `.local/native-svg-acceptance-qualification-20261115.json`. The reviewed fix worktree is `.local/svg-import-modal-fix-20261115`; framing
 is on `feat/pattern-view-framing` at9471a66. Root owns integration/UI.
 No new garment simulation job is active.
+
+## Next solver increment, source-only handoff
+
+The separate branch `feat/balanced-closed-stitches-20261115` has clean candidate
+`c39401c173eb81111858e6b5ebfdfb165b27c365`. It reuses35af's closed soft-stitch
+vector coordinates on the current capsule/diagnostic implementation. Focused
+51solver tests, strict solver Clippy, formatting and810 exact legacy radial
+operator comparisons pass. The initial scalar N32 force-balance failure remains
+retained; updated transport residuals are below3e-16N under the unchanged1e-12N
+bound. This candidate is NOT integrated in the published/current SVG build;
+there are no new garment, CLI/native physics, full workspace or reference results.
+After the SVG publication, root must independently review this source and freeze
+any new bounded solver/garment protocol before execution. Do not retry old closed
+physical cases or change their limits.
