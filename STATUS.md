@@ -21,10 +21,21 @@ Harbor inputs, source snapshot and readonly driver are prepared in
 `.local/capsule-garment-20261115`. Planv2 retains420s whole-case,256MiB numerical
 output and a separate256MiB producer peak-RSS bound. Geometry-only preflights
 match both old rest meshes byte-for-byte. No physical case has run on this
-candidate. The independent evaluator and bounded runner agents are preparing
-their source, selfchecks and frozen receipts; root execution authorization has
-not been written. Do not start cases before reviewing both and binding their
-exact files. Keep the old contact/strain/trace failures visible.
+candidate before the registered cases below. The independent evaluator is frozen
+at4b22c710 with24 files; final root selfchecks passed9groups/83cases and the
+runner's12stub checks passed. Reviewed runner hash isb2269380; actual driver is
+7f01a335. Root authorization0c4671b4 was checked by both sides before launch.
+Controller session35986/PID87622 is executing the one registered base case,
+producerPID87644, then height only after structural completion. At the last
+passive check base had reached frame105; no independent new result yet. All
+old contact/strain/trace failures remain visible. Do not rerun, continue or tune
+these cases. Receipts will be under `.local/capsule-garment-20261115/runs`.
+
+An isolated agent is implementing bounded editable SVG pattern import under
+`.local/svg-pattern-import-20261115`/`feat/svg-pattern-import`; its prospective
+FILE-005 contract953328e9 predates code. Core/CLI/MCP/native paths and tests are
+being written, with all Cargo/GUI checks held until the timed cases close.
+No SVG import verification or integration is claimed yet.
 
 The completed7fe native workflow and its original closure inventories remain
 immutable. Its37 runtime/test files are separately archived from Git at
