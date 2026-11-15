@@ -1,0 +1,33 @@
+{
+  "status": "closed_saved_states_reproduced_paired_failure_retained",
+  "source_commit": "2e9795a3cb92c79ad3b406e675dcbdb49c60ce67",
+  "packet_files": 83,
+  "cases": {
+    "base": {
+      "saved_frames_reproduced": 181,
+      "deterministic_fields_exact": true,
+      "strict_delivery_passed": false,
+      "quality_status": "failed",
+      "original_whole_case_seconds": 177.02696316700894,
+      "original_producer_peak_rss_bytes": 7503872,
+      "original_numerical_output_bytes": 19086092
+    },
+    "height": {
+      "saved_frames_reproduced": 181,
+      "deterministic_fields_exact": true,
+      "strict_delivery_passed": true,
+      "quality_status": "passed",
+      "original_whole_case_seconds": 168.88270774995908,
+      "original_producer_peak_rss_bytes": 8552448,
+      "original_numerical_output_bytes": 36368696
+    }
+  },
+  "adapter_negative_checks": 8,
+  "qualified_AST_and_original_receipt_chains_verified": true,
+  "old077_strict_failures_retained": true,
+  "first_controller_refusal_retained": true,
+  "new_physical_executions": 0,
+  "new_timed_benchmarks": 0,
+  "tracked_clean_publication_certified": false,
+  "limits": "Static saved-state reproduction and archived resource audit; no new dynamics, original timing recertification, UI, full garment/release gate or reference parity."
+}

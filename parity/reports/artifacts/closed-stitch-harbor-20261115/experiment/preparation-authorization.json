@@ -1,0 +1,31 @@
+{
+  "cases": [
+    "base",
+    "height"
+  ],
+  "dynamics_authorized": false,
+  "explicit_root_preparation_authorization": true,
+  "gates": {
+    "path": ".local/closed-stitch-garment-protocol-20261115/GATES-BINDING.json",
+    "sha256": "7b9350148358b93b3731166eef29e824e2c1f42aaf25aa25bba08ac33220facf"
+  },
+  "geometry_only_executions": 2,
+  "locked_driver_build_authorized": true,
+  "physics_initializations_or_steps": 0,
+  "plan": {
+    "path": ".local/closed-stitch-garment-protocol-20261115/PROTOCOL.json",
+    "sha256": "83944a61756d5df0eab2656c87cd0626cabc3cc4968a6cd4b4eec770fa853591"
+  },
+  "preparation_freeze": {
+    "path": ".local/closed-stitch-garment-protocol-20261115/PREPARATION-FREEZE.json",
+    "sha256": "3f7b1d00bf29932baf07f06123ae5f8610bab25502ded674198147f6ba357d78"
+  },
+  "schema": 1,
+  "scope": "Root may authorize preparation only; no native/headless cloth initialization or step",
+  "source_commit": "2e9795a3cb92c79ad3b406e675dcbdb49c60ce67",
+  "source_input_binding": {
+    "path": ".local/closed-stitch-garment-protocol-20261115/SOURCE-BINDING.json",
+    "sha256": "655caa99716c35577d4964ee977aa6705acdafe607d824b35179d929e9d30f02"
+  },
+  "status": "authorized_preparation_only"
+}

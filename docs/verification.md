@@ -43,7 +43,40 @@ still fail the declared criteria. A separate relaxed shirt passes the explicit
 substeps/32 iterations. See physics.md, STATUS.md and attributable run reports.
 Elementary cloth tests do not prove garment fitting quality.
 
-## Current SVG studio file workflow
+## Closed soft stitch saved-state evidence
+
+Source `2e9795a3cb92c79ad3b406e675dcbdb49c60ce67` passes the original five
+integrated gates with 177 Rust and 54 Python checks. Its new original Harbor
+A/base and B/height attempts each ran the fixed 60 + 120-step protocol. A fails
+strain at frames 28–37; B passes the bounded strict protocol. Both have zero
+saved-state diagnostic/attribution errors and pass contact screens, but the pair
+remains failed. See the
+[source-qualified report](../parity/reports/WF-20261115-CLOSED-STITCH-HARBOR-001.json)
+and [reusable scenario](../parity/scenarios/SIM-CLOSED-STITCH-HARBOR-001.json),
+whose two original inputs and prospective criteria are separate from results.
+
+From a clean checkout containing the tracked packets and original CPython 3.13.0
+arithmetic environment, run the static replay:
+
+```sh
+python3 -B parity/reports/artifacts/closed-stitch-harbor-20261115/verify.py --repo-root .
+python3 -B scripts/progress.py --check
+python3 -B spec/inventory/verify_implementation_map.py
+```
+
+The replay reads every retained state using unchanged independent Python math;
+it executes no engine, native UI, producer or Cargo build. Exit 0 retains A's
+failure, B's bounded pass and the paired failure. Historical source077 failures,
+the first controller refusal and the qualified reuse assertion remain visible.
+Only 26 of 107 frozen preparation attachments are supplied/referenced. Original
+case clocks, producer RSS and numerical-output counters are archival evidence;
+later replay receives no original-budget credit. Final manifest `3dbc5bef` follows
+one generated README wording correction; the older `aa5371a7` preparation replay
+is separately qualified. This evidence supplies no complete garment/contact,
+convergence, calibration, release or reference-parity acceptance. Actions and
+automated Pages deployments remain disabled; the existing static site is retained.
+
+## Published SVG studio file workflow
 
 Runtime `32f9b348` passes168Rust tests,54Python checks, formatting, strict
 workspace/all-target Clippy, xtask verification and unsigned packaging. The

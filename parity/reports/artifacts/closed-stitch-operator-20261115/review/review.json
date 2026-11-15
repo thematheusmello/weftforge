@@ -1,0 +1,92 @@
+{
+  "review_date": "2026-11-15",
+  "verdict": "no_blocker_with_limits",
+  "candidate": "c39401c173eb81111858e6b5ebfdfb165b27c365",
+  "parent": "c17d303e099836f022fe8f8222bc61b1cb33c3cd",
+  "independent_read_only_checks": {
+    "clean_candidate_checkout": true,
+    "parent_runtime_matches_32f9b348": {
+      "files": 45,
+      "result": true,
+      "paths": [
+        ".cargo/config.toml",
+        "Cargo.lock",
+        "Cargo.toml",
+        "apps/weftforge-cli/Cargo.toml",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/src/mcp.rs",
+        "apps/weftforge-cli/tests/curves.rs",
+        "apps/weftforge-cli/tests/ellipse.rs",
+        "apps/weftforge-cli/tests/grain.rs",
+        "apps/weftforge-cli/tests/mcp_stdio.rs",
+        "apps/weftforge-cli/tests/svg_import.rs",
+        "apps/weftforge/Cargo.toml",
+        "apps/weftforge/src/main.rs",
+        "crates/weftforge-core/Cargo.toml",
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/geometry.rs",
+        "crates/weftforge-core/src/lib.rs",
+        "crates/weftforge-core/src/persistence.rs",
+        "crates/weftforge-core/src/persistence/dxf.rs",
+        "crates/weftforge-core/src/persistence/svg.rs",
+        "crates/weftforge-core/src/sewing.rs",
+        "crates/weftforge-core/src/simulation.rs",
+        "crates/weftforge-core/tests/dxf.rs",
+        "crates/weftforge-core/tests/ellipse.rs",
+        "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge",
+        "crates/weftforge-core/tests/fixtures/original-editable-patterns.svg",
+        "crates/weftforge-core/tests/grain.rs",
+        "crates/weftforge-core/tests/joins.rs",
+        "crates/weftforge-core/tests/migration.rs",
+        "crates/weftforge-core/tests/seam_reversal.rs",
+        "crates/weftforge-core/tests/sewing_groups.rs",
+        "crates/weftforge-core/tests/shirt.rs",
+        "crates/weftforge-core/tests/svg_import.rs",
+        "crates/weftforge-core/tests/workflow.rs",
+        "crates/weftforge-sim/Cargo.toml",
+        "crates/weftforge-sim/src/capsule.rs",
+        "crates/weftforge-sim/src/constraints.rs",
+        "crates/weftforge-sim/src/contact.rs",
+        "crates/weftforge-sim/src/lib.rs",
+        "crates/weftforge-sim/src/math.rs",
+        "crates/weftforge-sim/src/strain.rs",
+        "crates/weftforge-sim/src/tests.rs",
+        "rust-toolchain.toml",
+        "xtask/Cargo.toml",
+        "xtask/src/main.rs"
+      ]
+    },
+    "production_constraints_equal_base_after_removing_only_vector_dispatch_and_private_lambda_changes": true,
+    "lib_equal_base_after_normalizing_private_lambda_allocation": true,
+    "radial_harness_constraint_sources_match_candidate_and_parent": true,
+    "radial_harness_math_matches_candidate": true,
+    "changed_paths": [
+      "crates/weftforge-sim/src/constraints.rs",
+      "crates/weftforge-sim/src/lib.rs",
+      "crates/weftforge-sim/src/tests.rs",
+      "docs/physics.md",
+      "spec/features/SIM-001-closed-stitch-coordinates.md"
+    ]
+  },
+  "reviewed_supplied_evidence": {
+    "sim_tests_passed": 51,
+    "legacy_radial_bit_comparisons": 810,
+    "old_scalar_red_transport_N": [
+      0.3262304845504921,
+      0.09239588081082441
+    ],
+    "old_scalar_red_stationarity_N": [
+      0.1849692798866941,
+      0.3565047390259405,
+      0.0
+    ]
+  },
+  "not_run_by_reviewer": [
+    "cargo tests or clippy",
+    "workspace integration gates",
+    "garment cases",
+    "native UI",
+    "publication or parity checks"
+  ],
+  "acceptance_limit": "Private source/operator review only. No garment quality, physical convergence, calibration, reference parity, or integrated release acceptance."
+}

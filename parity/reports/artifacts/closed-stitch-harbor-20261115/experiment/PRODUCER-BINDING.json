@@ -1,0 +1,46 @@
+{
+  "build_confirmation_exit_code": 0,
+  "build_confirmation_log_sha256": "7ea7609baecf4ad21ae9a7621aef201d31dabb448290cdebff374f82920200be",
+  "cargo_target_dir": "target",
+  "command": [
+    "cargo",
+    "build",
+    "--release",
+    "--locked",
+    "--manifest-path",
+    "harness/Cargo.toml"
+  ],
+  "driver_path": "candidate/harbor-public-driver",
+  "driver_sha256": "9a7c07e855ddf9b0a92ff53316fe5a6f8ad6ee02a2222480e5c062ad129f057f",
+  "files": {
+    "harness/Cargo.lock": "397402752a6d2fc585695aa96da256d588aa3454511ef234b8a7feb60c7a1c3f",
+    "harness/Cargo.toml": "3734f63c33aafc9250b23f481710ab922285fc26c519871c6b8f5379d260dbcf",
+    "harness/src/main.rs": "0668f9aff8435b35298f309100583ec5f37cfcbd243eb089ebbef6ffabbf6216"
+  },
+  "gates_binding_sha256": "7b9350148358b93b3731166eef29e824e2c1f42aaf25aa25bba08ac33220facf",
+  "geometry_only_executions": 2,
+  "physics_initializations_or_steps": 0,
+  "preflight": {
+    "base": {
+      "metadata_sha256": "6cb8a5e65e48672746a4ba7cea1ef831b2f17bc33d20ae4ae7cab77c417a73e8",
+      "rest_obj_sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce"
+    },
+    "height": {
+      "metadata_sha256": "171f0487cfd3a2d3f23f3436c9e470a8f520acb5d180f6bcaeefe44f1f883fed",
+      "rest_obj_sha256": "095f0e7e7e25459b9a547f36515d53cfc36accd00cac3886cd00ee356f24e93b"
+    }
+  },
+  "preparation_authorization": {
+    "path": ".local/closed-stitch-garment-protocol-20261115/preparation-authorization.json",
+    "sha256": "8cf396a466684bfd32e6580cc59231d01c802a98b3150607ff940272f2cab001"
+  },
+  "preparation_freeze_sha256": "3f7b1d00bf29932baf07f06123ae5f8610bab25502ded674198147f6ba357d78",
+  "private_real_target_no_symlinks": true,
+  "protocol_sha256": "83944a61756d5df0eab2656c87cd0626cabc3cc4968a6cd4b4eec770fa853591",
+  "schema": 1,
+  "scope": "Measured root-authorized fresh locked build and exactly two geometry-only calls; zero physics initializations or steps.",
+  "source_binding_sha256": "655caa99716c35577d4964ee977aa6705acdafe607d824b35179d929e9d30f02",
+  "source_commit": "2e9795a3cb92c79ad3b406e675dcbdb49c60ce67",
+  "target_initially_empty": true,
+  "working_directory": ".local/closed-stitch-garment-protocol-20261115"
+}

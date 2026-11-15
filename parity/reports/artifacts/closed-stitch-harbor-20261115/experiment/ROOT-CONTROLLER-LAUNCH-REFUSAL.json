@@ -1,0 +1,22 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    ".local/closed-stitch-garment-protocol-20261115/runner.py",
+    "--authorization",
+    ".local/closed-stitch-garment-protocol-20261115/execution-authorization.json"
+  ],
+  "working_directory": "REPOSITORY_ROOT",
+  "exit_code": 1,
+  "original_result": {
+    "status": "refused_or_failed",
+    "error": "ValueError: Missing regular artifact: execution-authorization.json",
+    "no_resume_or_retry": true
+  },
+  "runs_directory_exists": false,
+  "runner_audits_directory_exists": false,
+  "execution_authorization_sha256": "469b8c96b284543b45eb31e7019c39ba5163905f4efe80d19bcd0eb5aa91f73a",
+  "frozen_files_unchanged": 107,
+  "recorded_utc": "2026-11-15T04:40:09.950112+00:00",
+  "status": "permanently_failed_controller_invocation_no_promotion"
+}

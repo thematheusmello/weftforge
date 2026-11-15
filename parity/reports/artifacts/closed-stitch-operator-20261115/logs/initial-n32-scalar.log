@@ -1,0 +1,34 @@
+   Compiling weftforge-sim v0.1.0 (<operator-checkout>/crates/weftforge-sim)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.93s
+     Running unittests src/lib.rs (<operator-target>/debug/deps/weftforge_sim-40f8b89cc1ad501d)
+
+running 1 test
+fixed_operator_N=32 h_s=1 c_m_per_N=1 free_mass_kg=1
+x_m=[[0.39498975996223135, 0.45216824634198016, 0.0], [1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+lambda_private_kg_m=[-0.7553102101458316, -0.6753788128088136]
+lambda_vector_kg_m=[[0.6050102400377687, -0.4521682463419803, -0.0], [-0.39498975996223135, 0.5478317536580198, -0.0]]
+residual_m=[[1.1102230246251565e-16, -1.1102230246251565e-16, 0.0], [0.0, 0.0, 0.0]]
+individual_action_N=[[0.7110165706955867, -0.14364112126135753, 0.0], [-0.31602681073335515, 0.595809367603338, 0.0]]
+individual_transport_N=[0.3262304845504921, 0.09239588081082441]
+energy_J=0.5133150271707912
+objective_J=0.6935515439082927
+stationarity_N=[0.1849692798866941, 0.3565047390259405, 0.0]
+expected_x_m=[0.3333333333333333, 0.3333333333333333, 0.0]
+expected_lambda_kg_m=[[0.6666666666666666, -0.3333333333333333, 0.0], [-0.3333333333333333, 0.6666666666666666, 0.0]]
+expected_residual_m=[[-5.421010862427522e-20, 1.0842021724855044e-19, 0.0], [0.0, 0.0, 0.0]]
+expected_energy_J=0.5555555555555556
+expected_objective_J=0.6666666666666666
+
+thread 'tests::closed_elastic_stitch_n32_matches_independent_quadratic_and_individual_actions' (56156180) panicked at crates/weftforge-sim/src/tests.rs:394:5:
+position: m
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test tests::closed_elastic_stitch_n32_matches_independent_quadratic_and_individual_actions ... FAILED
+
+failures:
+
+failures:
+    tests::closed_elastic_stitch_n32_matches_independent_quadratic_and_individual_actions
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 42 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p weftforge-sim --lib`

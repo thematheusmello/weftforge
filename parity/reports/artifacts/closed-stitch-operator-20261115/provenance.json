@@ -1,0 +1,426 @@
+{
+  "schema_version": 1,
+  "packet_scope": "Historical bounded closed-soft-stitch operator implementation records only.",
+  "source_commit": "c39401c173eb81111858e6b5ebfdfb165b27c365",
+  "base_commit": "c17d303e099836f022fe8f8222bc61b1cb33c3cd",
+  "reused_candidate_commit": "35afac604a93174fcdc2a5538799432aa6d69286",
+  "source_bindings": {
+    ".cargo/config.toml": {
+      "sha256": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+      "bytes": 34
+    },
+    "Cargo.toml": {
+      "sha256": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+      "bytes": 667
+    },
+    "Cargo.lock": {
+      "sha256": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c",
+      "bytes": 107166
+    },
+    "rust-toolchain.toml": {
+      "sha256": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+      "bytes": 86
+    },
+    "crates/weftforge-sim/Cargo.toml": {
+      "sha256": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+      "bytes": 205
+    },
+    "crates/weftforge-sim/src/capsule.rs": {
+      "sha256": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7",
+      "bytes": 18343
+    },
+    "crates/weftforge-sim/src/constraints.rs": {
+      "sha256": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+      "bytes": 7237
+    },
+    "crates/weftforge-sim/src/contact.rs": {
+      "sha256": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655",
+      "bytes": 31515
+    },
+    "crates/weftforge-sim/src/lib.rs": {
+      "sha256": "5bfc996e6bf1067ac261358fdd043815adf304a5d8d512a0e6429c913e90fa76",
+      "bytes": 26868
+    },
+    "crates/weftforge-sim/src/math.rs": {
+      "sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+      "bytes": 2391
+    },
+    "crates/weftforge-sim/src/strain.rs": {
+      "sha256": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+      "bytes": 1858
+    },
+    "crates/weftforge-sim/src/tests.rs": {
+      "sha256": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+      "bytes": 59354
+    },
+    "spec/features/SIM-001-closed-stitch-coordinates.md": {
+      "sha256": "06a6b17fbac6831f92552b733df919265f2dd11940172a6e80f0bb4549ae9d8b",
+      "bytes": 2907
+    }
+  },
+  "omitted_full_constraint_snapshots": [
+    {
+      "private_record_name": "base-constraints.rs",
+      "git_commit": "c17d303e099836f022fe8f8222bc61b1cb33c3cd",
+      "git_path": "crates/weftforge-sim/src/constraints.rs",
+      "sha256": "54b83b92eab65c3fb0ca50ea81c18ba748f01adca1a4119c1c455bbc90be1490",
+      "bytes": 6536,
+      "reason": "Avoid duplicate full snapshots; reconstruct byte-identically from the exact Git object."
+    },
+    {
+      "private_record_name": "current-constraints.rs",
+      "git_commit": "c39401c173eb81111858e6b5ebfdfb165b27c365",
+      "git_path": "crates/weftforge-sim/src/constraints.rs",
+      "sha256": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+      "bytes": 7237,
+      "reason": "Avoid duplicate full snapshots; reconstruct byte-identically from the exact Git object."
+    }
+  ],
+  "redaction_policy": {
+    "method": "Only the enumerated own-workspace/tmp/Python-file literals are substituted. No numeric fields, ordering, failure text or algorithm is edited.",
+    "mappings": [
+      {
+        "id": "operator-checkout",
+        "original_literal_sha256": "1a63a3db26da992804e6f31e47f2861108deae9c4b7df643c0a0a323ec344de7",
+        "original_literal_bytes": 56,
+        "public_literal": "<operator-checkout>",
+        "operation": "UTF-8 literal byte replacement, with private inverse retained by owner"
+      },
+      {
+        "id": "operator-target",
+        "original_literal_sha256": "5868976fa4c2b765adc68a8efafbe4ce0453d59997795e967e6871a48e713ee5",
+        "original_literal_bytes": 63,
+        "public_literal": "<operator-target>",
+        "operation": "UTF-8 literal byte replacement, with private inverse retained by owner"
+      },
+      {
+        "id": "operator-checks",
+        "original_literal_sha256": "74f043ac11644143fdfcd295c2dc9b2166c86bbcae041491c60d0fea1c612e33",
+        "original_literal_bytes": 63,
+        "public_literal": "<operator-checks>",
+        "operation": "UTF-8 literal byte replacement, with private inverse retained by owner"
+      },
+      {
+        "id": "python-stdlib",
+        "original_literal_sha256": "a08f813aa2b05582a88493c3d8b98c38b782510aa03c8ae459c2efdca82f0fa0",
+        "original_literal_bytes": 69,
+        "public_literal": "<python-stdlib>/subprocess.py",
+        "operation": "UTF-8 literal byte replacement, with private inverse retained by owner"
+      }
+    ],
+    "private_inverse": "Literal raw prefixes are retained only in the owner-held private sidecar outside this packet. Supply that mapping to invert the tokens; verify source hashes after reconstruction.",
+    "original_integrity": "Every retained private input, including omitted binary, was hashed before and after preparation and remained byte-identical."
+  },
+  "artifacts": [
+    {
+      "path": "logs/initial-n32-scalar.log",
+      "source_group": "operator-private-records",
+      "source_relative_path": "initial-n32-scalar.log",
+      "source_sha256": "344ac088ace654d9adb58f0800b472cb0abedaf08e8f67bec4852a43acc000c4",
+      "source_bytes": 2027,
+      "public_sha256": "81eac3b7efd45c7e5685dfda64e3eeedaa2b62fbe58a0579de268a68d7b33dd2",
+      "public_bytes": 1944,
+      "transformation": "literal-path-publication-derivative",
+      "replacements": [
+        {
+          "mapping_id": "operator-checkout",
+          "count": 1
+        },
+        {
+          "mapping_id": "operator-target",
+          "count": 1
+        }
+      ],
+      "inverse_reconstruction_checked": true,
+      "note": "Expected RED: c17 production solver plus the exact generic N32 observer only; exit 101 at position assertion."
+    },
+    {
+      "path": "logs/closed-soft-focused.log",
+      "source_group": "operator-private-records",
+      "source_relative_path": "closed-soft-focused.log",
+      "source_sha256": "02487e7f0e7a3bd1ca73cb793c6e446709ac07b32e60cc59b08e7b6a63122a50",
+      "source_bytes": 2187,
+      "public_sha256": "507da1e936499a3ced26e2488373edf8cfcb1d47c22b5f127fd1bd72cef23642",
+      "public_bytes": 2104,
+      "transformation": "literal-path-publication-derivative",
+      "replacements": [
+        {
+          "mapping_id": "operator-checkout",
+          "count": 1
+        },
+        {
+          "mapping_id": "operator-target",
+          "count": 1
+        }
+      ],
+      "inverse_reconstruction_checked": true,
+      "note": "Seven-test precommit GREEN observation. Production constraints and N32 observer match c394; later local variable rename and rustfmt changed tests before the final 51-test run."
+    },
+    {
+      "path": "logs/sim.log",
+      "source_group": "operator-private-records",
+      "source_relative_path": "sim.log",
+      "source_sha256": "2cb8608ceeaa2413e926102e928bb25056326fc85df125f1832532db7adec729",
+      "source_bytes": 4969,
+      "public_sha256": "de3efc371f1cc46f4e1d87ab6165c5d049a4e8dc368db3296cdae1f816b2b068",
+      "public_bytes": 4886,
+      "transformation": "literal-path-publication-derivative",
+      "replacements": [
+        {
+          "mapping_id": "operator-checkout",
+          "count": 1
+        },
+        {
+          "mapping_id": "operator-target",
+          "count": 1
+        }
+      ],
+      "inverse_reconstruction_checked": true,
+      "note": "Final 51-test solver suite, after final source/test edits; source-bound to c394 by retained author record and independent read-only review."
+    },
+    {
+      "path": "logs/clippy.log",
+      "source_group": "operator-private-records",
+      "source_relative_path": "clippy.log",
+      "source_sha256": "c6f91d1f53e322853cbbeaab0c6ca09fb5c0413d1e4294413ed37736d150f071",
+      "source_bytes": 247,
+      "public_sha256": "c1e35314c8943dadcc46893b88c0b6c1efa2733319f440bafe0faea64a5faa61",
+      "public_bytes": 210,
+      "transformation": "literal-path-publication-derivative",
+      "replacements": [
+        {
+          "mapping_id": "operator-checkout",
+          "count": 1
+        }
+      ],
+      "inverse_reconstruction_checked": true,
+      "note": "Strict solver/all-target Clippy only."
+    },
+    {
+      "path": "logs/initial-fmt-failure.log",
+      "source_group": "operator-private-records",
+      "source_relative_path": "fmt.log",
+      "source_sha256": "c3e6aed03b0224cf7f3bf60299e650539adeb604447478648936689d03704b3b",
+      "source_bytes": 577,
+      "public_sha256": "4e8d770fd30990e38a8e21725f3dbde888ef0b25f8f0dbf909607871428f730a",
+      "public_bytes": 540,
+      "transformation": "literal-path-publication-derivative",
+      "replacements": [
+        {
+          "mapping_id": "operator-checkout",
+          "count": 1
+        }
+      ],
+      "inverse_reconstruction_checked": true,
+      "note": "Initial formatting failure retained; no tolerance or numerical change."
+    },
+    {
+      "path": "logs/fmt-final.log",
+      "source_group": "operator-private-records",
+      "source_relative_path": "fmt-final.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_bytes": 0,
+      "transformation": "unchanged-byte-copy",
+      "replacements": [],
+      "inverse_reconstruction_checked": true,
+      "note": "Zero-byte successful formatting output; terminal exit 0 is recorded in the original summary, not proved by empty output alone."
+    },
+    {
+      "path": "logs/source-scope.log",
+      "source_group": "operator-private-records",
+      "source_relative_path": "source-scope.log",
+      "source_sha256": "38efc2e5c0d2ebd7e00e628d44fe54aea88eaa7fd7f6c025f49bebe8133319f8",
+      "source_bytes": 1377,
+      "public_sha256": "38efc2e5c0d2ebd7e00e628d44fe54aea88eaa7fd7f6c025f49bebe8133319f8",
+      "public_bytes": 1377,
+      "transformation": "unchanged-byte-copy",
+      "replacements": [],
+      "inverse_reconstruction_checked": true,
+      "note": "Read-only exact source normalization check. The initial overbroad failed audit has summary-only retention; its original log is empty and is excluded."
+    },
+    {
+      "path": "logs/radial-equality.log",
+      "source_group": "operator-private-records",
+      "source_relative_path": "radial-equality.log",
+      "source_sha256": "0f672570729f01f1ef1b48b0f406f87789f5d1dbdfdeafa4f9bc84fe4483e4df",
+      "source_bytes": 803,
+      "public_sha256": "0f672570729f01f1ef1b48b0f406f87789f5d1dbdfdeafa4f9bc84fe4483e4df",
+      "public_bytes": 803,
+      "transformation": "unchanged-byte-copy",
+      "replacements": [],
+      "inverse_reconstruction_checked": true,
+      "note": "810 original bit-identical direct radial projections, not an end-to-end garment run."
+    },
+    {
+      "path": "logs/initial-radial-equality-compile.log",
+      "source_group": "operator-private-records",
+      "source_relative_path": "initial-radial-equality.log",
+      "source_sha256": "02efbe501c41b2d13d07ef9dc23454ca9c63bb5db67b52294abb25d3578474c9",
+      "source_bytes": 3044,
+      "public_sha256": "3a36167557a06656ed524c4499b2b0249112463a32e2b80ca7f3995c951a799f",
+      "public_bytes": 2636,
+      "transformation": "literal-path-publication-derivative",
+      "replacements": [
+        {
+          "mapping_id": "operator-target",
+          "count": 2
+        },
+        {
+          "mapping_id": "operator-checks",
+          "count": 6
+        },
+        {
+          "mapping_id": "python-stdlib",
+          "count": 1
+        }
+      ],
+      "inverse_reconstruction_checked": true,
+      "note": "Initial E0624 harness compilation failure before the extracted local WeightedPoint/Stitch definitions were used."
+    },
+    {
+      "path": "records/operator-summary.json",
+      "source_group": "operator-private-records",
+      "source_relative_path": "check-summary.json",
+      "source_sha256": "1cc4126c625a3ca7967235d5f0b0e5cb1313cd33ba87456b00f4ee3ca7625fbb",
+      "source_bytes": 4074,
+      "public_sha256": "1e6060d9d373d5b45a0cbb7a5942513abd55e605cfd77603416215fcabdc30ac",
+      "public_bytes": 3991,
+      "transformation": "literal-path-publication-derivative",
+      "replacements": [
+        {
+          "mapping_id": "operator-checkout",
+          "count": 1
+        },
+        {
+          "mapping_id": "operator-target",
+          "count": 1
+        }
+      ],
+      "inverse_reconstruction_checked": true,
+      "note": "Original terminal handles and failure record; future-owner notes are historical, not fresh certification."
+    },
+    {
+      "path": "sources/source_scope.py",
+      "source_group": "operator-private-records",
+      "source_relative_path": "source_scope.py",
+      "source_sha256": "6e37f9f965c887240600a79e9ab110e29554df842f27b2ed5b9bc3a9dadf9600",
+      "source_bytes": 4203,
+      "public_sha256": "6e37f9f965c887240600a79e9ab110e29554df842f27b2ed5b9bc3a9dadf9600",
+      "public_bytes": 4203,
+      "transformation": "unchanged-byte-copy",
+      "replacements": [],
+      "inverse_reconstruction_checked": true,
+      "note": "Original read-only checker; requires a clean exact-c394 checkout with base and candidate Git objects."
+    },
+    {
+      "path": "sources/radial_equality.rs",
+      "source_group": "operator-private-records",
+      "source_relative_path": "radial_equality.rs",
+      "source_sha256": "49460e922db8d4b554b16d3771e58c41f7ea34f930e8ecbaef07696589bbf18e",
+      "source_bytes": 2729,
+      "public_sha256": "49460e922db8d4b554b16d3771e58c41f7ea34f930e8ecbaef07696589bbf18e",
+      "public_bytes": 2729,
+      "transformation": "unchanged-byte-copy",
+      "replacements": [],
+      "inverse_reconstruction_checked": true,
+      "note": "Original independently authored 810-comparison harness; unchanged."
+    },
+    {
+      "path": "sources/math.rs",
+      "source_group": "operator-private-records",
+      "source_relative_path": "math.rs",
+      "source_sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+      "source_bytes": 2391,
+      "public_sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+      "public_bytes": 2391,
+      "transformation": "unchanged-byte-copy",
+      "replacements": [],
+      "inverse_reconstruction_checked": true,
+      "note": "Small original frozen shared math source; matches base and c394."
+    },
+    {
+      "path": "sources/stitch-types.rs",
+      "source_group": "operator-private-records",
+      "source_relative_path": "stitch-types.rs",
+      "source_sha256": "edc4740b460fc683d18190404cae878ded77b583e9a6e26c54ff086933c5e915",
+      "source_bytes": 651,
+      "public_sha256": "edc4740b460fc683d18190404cae878ded77b583e9a6e26c54ff086933c5e915",
+      "public_bytes": 651,
+      "transformation": "unchanged-byte-copy",
+      "replacements": [],
+      "inverse_reconstruction_checked": true,
+      "note": "Original frozen WeightedPoint/Stitch extraction; only Serde derive metadata omitted for access within the harness crate."
+    },
+    {
+      "path": "review/review.json",
+      "source_group": "independent-read-only-review",
+      "source_relative_path": "review.json",
+      "source_sha256": "2e3f072166df57fd6977be8519c47d99c59ae821bcf329c2edb6182591298b5a",
+      "source_bytes": 3655,
+      "public_sha256": "2e3f072166df57fd6977be8519c47d99c59ae821bcf329c2edb6182591298b5a",
+      "public_bytes": 3655,
+      "transformation": "unchanged-byte-copy",
+      "replacements": [],
+      "inverse_reconstruction_checked": true,
+      "note": "Original review copied unchanged; reviewer inspected source/logs and did not rerun solver, harness or workspace gates."
+    },
+    {
+      "path": "review/review.txt",
+      "source_group": "independent-read-only-review",
+      "source_relative_path": "review.txt",
+      "source_sha256": "a84a5e90574e8e8a2762a3d35ea7e0db51ce210926ba60a5e6684ecfa933a0ee",
+      "source_bytes": 4359,
+      "public_sha256": "a84a5e90574e8e8a2762a3d35ea7e0db51ce210926ba60a5e6684ecfa933a0ee",
+      "public_bytes": 4359,
+      "transformation": "unchanged-byte-copy",
+      "replacements": [],
+      "inverse_reconstruction_checked": true,
+      "note": "Original review copied unchanged; reviewer inspected source/logs and did not rerun solver, harness or workspace gates."
+    },
+    {
+      "path": "sources/n32-observer.rs",
+      "source_group": "exact-git-fragment",
+      "source_commit": "c39401c173eb81111858e6b5ebfdfb165b27c365",
+      "source_path": "crates/weftforge-sim/src/tests.rs",
+      "source_blob_sha256": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+      "source_sha256": "ee0813a58f241632143c97ba2a7a05ae1683c9322cd1c71d89e326e5e667c1c9",
+      "public_sha256": "ee0813a58f241632143c97ba2a7a05ae1683c9322cd1c71d89e326e5e667c1c9",
+      "public_bytes": 3830,
+      "transformation": "exact-contiguous-byte-extraction",
+      "start_marker": "// This read-only adapter keeps the frozen N32 observer",
+      "end_marker_exclusive": "#[test]\nfn closed_elastic_stitch_preserves_isolated_energy_and_units()",
+      "also_byte_identical_at_commit": "35afac604a93174fcdc2a5538799432aa6d69286",
+      "note": "Exact generic observer inserted into base tests for the original RED run; no baseline solver arithmetic changes."
+    }
+  ],
+  "execution_limits": {
+    "original_reported_solver_tests_passed": 51,
+    "original_reported_radial_projections_bit_identical": 810,
+    "publication_prep_solver_or_harness_replay": "not_run",
+    "publication_prep_checks": [
+      "original/private byte hashes",
+      "reversible literal substitutions",
+      "exact Git fragment/source bindings",
+      "file inventory and privacy scan"
+    ],
+    "reviewer_reran_solver_or_harness": false,
+    "not_established": [
+      "integrated workspace gates or package",
+      "garment initialization or fit",
+      "native UI",
+      "general physics convergence",
+      "fabric calibration",
+      "reference parity",
+      "live replay certification"
+    ]
+  },
+  "known_retention_limits": [
+    "Baseline 42-pass run has a terminal-session summary but no standalone raw log in the retained directory.",
+    "Initial source-audit failure has an author-recorded traceback/cause in operator-summary.json; the empty original log is not promoted into raw failure evidence.",
+    "Focused seven-test GREEN log predates final local-variable naming/rustfmt; final 51-test log covers final source/test edits.",
+    "Git/source hashes bind inputs but do not recertify historical execution durations, host isolation or resource counters.",
+    "Initial failed harness source was not separately frozen; compile log and recorded correction are retained without inventing a frozen failed-source artifact."
+  ]
+}
