@@ -20,22 +20,32 @@ passing Rust tests and the reviewed static capsule contact fix. Its original
 Harbor inputs, source snapshot and readonly driver are prepared in
 `.local/capsule-garment-20261115`. Planv2 retains420s whole-case,256MiB numerical
 output and a separate256MiB producer peak-RSS bound. Geometry-only preflights
-match both old rest meshes byte-for-byte. No physical case has run on this
-candidate before the registered cases below. The independent evaluator is frozen
+match both old rest meshes byte-for-byte. The independent evaluator is frozen
 at4b22c710 with24 files; final root selfchecks passed9groups/83cases and the
 runner's12stub checks passed. Reviewed runner hash isb2269380; actual driver is
 7f01a335. Root authorization0c4671b4 was checked by both sides before launch.
-Controller session35986/PID87622 is executing the one registered base case,
-producerPID87644, then height only after structural completion. At the last
-passive check base had reached frame105; no independent new result yet. All
-old contact/strain/trace failures remain visible. Do not rerun, continue or tune
-these cases. Receipts will be under `.local/capsule-garment-20261115/runs`.
+Controller session35986/PID87622 ended with exit2 after both cases completed
+structurally and passed their receipt/resource checks. Base took167.268207s;
+height took162.048551s. Both passed the independent static contact screen at all
+181 saved states. Base still fails strain at frames28–37 (maximum19.9092% at31)
+and has33 exact peak-attribution failures; height passes all trajectory physical
+and completed-fit screens but has attribution failures at6/10/18. Overall strict
+delivery stays failed. Base final contact interval is approximately2.3071e-7m;
+height's maximum contact upper bound is3.78893e-7m. No oracle/policy count or
+initial-count uncertainty was hidden. All old contact/strain/trace failures remain
+visible. Do not retry or continue these closed cases. Receipts and immutable
+analysis are under `.local/capsule-garment-20261115/runs`; posthoc attribution
+review is separate. No owned solver process remains active.
 
 An isolated agent is implementing bounded editable SVG pattern import under
 `.local/svg-pattern-import-20261115`/`feat/svg-pattern-import`; its prospective
 FILE-005 contract953328e9 predates code. Core/CLI/MCP/native paths and tests are
-being written, with all Cargo/GUI checks held until the timed cases close.
-No SVG import verification or integration is claimed yet.
+written. After case closure, focused core5/5, CLI1/1 and MCP8/8 checks passed;
+the independent svgpathtools1.7.2/minidom consumer passed scale/geometry checks.
+Native focused checks exposed a modal-width issue, now being corrected with
+the first failure retained. Full gates, actual native import acceptance and
+integration remain pending. Root owns report freshness/registry updates before
+the agent's final full gates.
 
 The completed7fe native workflow and its original closure inventories remain
 immutable. Its37 runtime/test files are separately archived from Git at
