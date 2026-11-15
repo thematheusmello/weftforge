@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-11-15T16:37:01.068882+00:00",
+  "candidate_executed_once": true,
+  "evaluator_exit_code": 0,
+  "source_head_after": "26f88e0fc6975bb052a5fb7dc4ebe7016db65237",
+  "source_commit": "26f88e0fc6975bb052a5fb7dc4ebe7016db65237",
+  "source_hashes_after": {
+    ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "Cargo.lock": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c",
+    "Cargo.toml": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+    "apps/weftforge-cli/Cargo.toml": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+    "apps/weftforge-cli/src/main.rs": "88e09babfb9eaba9646a54ebb0de28ac3fccd318d50f7f2a92bda148e857310d",
+    "apps/weftforge-cli/src/mcp.rs": "21454eaa6f9737f66e2c043dba5e5f0a99024900c82d68aa053c7fc66e1d7a11",
+    "apps/weftforge-cli/tests/curves.rs": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+    "apps/weftforge-cli/tests/dxf_import.rs": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d",
+    "apps/weftforge-cli/tests/ellipse.rs": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+    "apps/weftforge-cli/tests/grain.rs": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+    "apps/weftforge-cli/tests/mcp_stdio.rs": "35b17aa9ff8da2b4254b45a6617b22a58328f295d9478a2e6aea322afc487723",
+    "apps/weftforge-cli/tests/svg_import.rs": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af",
+    "crates/weftforge-core/Cargo.toml": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+    "crates/weftforge-core/src/document.rs": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8",
+    "crates/weftforge-core/src/geometry.rs": "670ed0f261da770a3b8a887bebbdf08ec166e6d3362cdbeb19032a56d7e88cd8",
+    "crates/weftforge-core/src/lib.rs": "157990183f20487c3b1494a837914e81fb98e3e4fb35a1f0dedc0542a1ec6661",
+    "crates/weftforge-core/src/persistence.rs": "748eb06ae06bd348c49e5cc5bd716cbc19da06840d2b5a38a5caffbdd1283baf",
+    "crates/weftforge-core/src/persistence/dxf.rs": "49e56ab60030a640e49d3ce9b263d99dcce562a5616f1dada529603f074b7475",
+    "crates/weftforge-core/src/persistence/dxf_import.rs": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+    "crates/weftforge-core/src/persistence/svg.rs": "1f6792b629266a15200c1bdb543f0fb3ddb79360d09ec975693b7472a12811ae",
+    "crates/weftforge-core/src/sewing.rs": "b8d2ef4178e8dc3a56ce5136310b8f065f357d8ffb21b61b26e16d22d4626645",
+    "crates/weftforge-core/src/simulation.rs": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29",
+    "crates/weftforge-core/tests/dxf.rs": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+    "crates/weftforge-core/tests/dxf_import.rs": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+    "crates/weftforge-core/tests/ellipse.rs": "55e68e3a529d2ffe49412d8a225683e0d3478f8f380130925ad66d0f93a74cda",
+    "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+    "crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+    "crates/weftforge-core/tests/fixtures/original-editable-patterns.svg": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+    "crates/weftforge-core/tests/grain.rs": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+    "crates/weftforge-core/tests/joins.rs": "04334446a2408086541227b3ee149e12d9ca28da061e36268b33bb3502ad2334",
+    "crates/weftforge-core/tests/migration.rs": "577937ffbd5d0c42935a2a97772bc5aa53a7accca6e529efa4b86be9aa543099",
+    "crates/weftforge-core/tests/pattern_transform.rs": "0e6181a34a1fbe2ee51fc8fe6d1b6aec6efb6e61bc903624fd6e4c259af7f5b4",
+    "crates/weftforge-core/tests/seam_reversal.rs": "ae9ea4bee0b3ed5b80a1f6350b428db4a92f68a5f21bdc1b7bb1b2b02723b66a",
+    "crates/weftforge-core/tests/sewing_groups.rs": "a46b28a9f1db2c214688477d97e2317007bb64358c02a729ace6549ee6469fe6",
+    "crates/weftforge-core/tests/shirt.rs": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+    "crates/weftforge-core/tests/svg_import.rs": "3b9601a0023c1d91b96a309d0822439afa75e97f97a5e53c5104cbef3e6ed72e",
+    "crates/weftforge-core/tests/workflow.rs": "efb80806e4c355f44145332649ebcad1089d79dc078141a7a1f792edb6b17af0",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/capsule.rs": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7",
+    "crates/weftforge-sim/src/constraints.rs": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+    "crates/weftforge-sim/src/contact.rs": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655",
+    "crates/weftforge-sim/src/lib.rs": "5bfc996e6bf1067ac261358fdd043815adf304a5d8d512a0e6429c913e90fa76",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/strain.rs": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+    "crates/weftforge-sim/src/tests.rs": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51"
+  },
+  "scoped_source_hashes_unchanged": true,
+  "cli_sha256_after": "fa4add99646544a052b6fa534ad325f1528e0572e4ee9aae344d687b85ac5cc1",
+  "cli_mode_after": "0o555",
+  "binary_hash_unchanged": true,
+  "candidate_binding_sha256_after": "8fcc3fcb698afc3b901363e36a9c296e0a2b4e3d4a11b7bd8812cb3c03c0ecbd",
+  "freeze_sha256_after": "2c1cff8f852299abcba8156f62b2dfd9f98bd33ec2552b542b88fd8411e39467",
+  "frozen_files_after": [
+    {
+      "path": "README.md",
+      "sha256": "6f6e8af5e751e6727a289662dc4d05efe85163a05839bf47e5da0d6fd764c8b7",
+      "matches_frozen": true
+    },
+    {
+      "path": "prepare_acceptance.py",
+      "sha256": "dba9681d3ec7dc338ff43aba17f6da6e2b49ed3476fc088d53a75ca55f86a263",
+      "matches_frozen": true
+    },
+    {
+      "path": "fixture.weftforge",
+      "sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+      "matches_frozen": true
+    },
+    {
+      "path": "CRITERIA.json",
+      "sha256": "d748d52d5aee5bee2d57c02e81edd137c8e50ab5c9bea9f69afb1c27c31d2938",
+      "matches_frozen": true
+    },
+    {
+      "path": "SOURCE-INPUTS.json",
+      "sha256": "4bf85010fc8eed83ecfcd5ee47f3e266b4d39b0f67e4fee2c25d127d19dba627",
+      "matches_frozen": true
+    },
+    {
+      "path": "evaluate_physical_sewing.py",
+      "sha256": "ac252d08d820f7aedac771502486a54ec2dc4242017911588d5e39fcaa38a384",
+      "matches_frozen": true
+    },
+    {
+      "path": "self-check-001.json",
+      "sha256": "dd7906e80df74faf4b5af60d7d17ebac3656d257df558a4fe82fc30cea4ed4a3",
+      "matches_frozen": true
+    },
+    {
+      "path": "self-check-001-binding.json",
+      "sha256": "fbfc301eaef09446327171af7181a6c9abc077c406323867a563013985ba3277",
+      "matches_frozen": true
+    },
+    {
+      "path": "self-check-002.json",
+      "sha256": "bc37250af7892d005e34a19e8e3260a6a7f826da7c33183445e07164e3303a4b",
+      "matches_frozen": true
+    }
+  ]
+}

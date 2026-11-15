@@ -1,0 +1,1256 @@
+{
+  "native_calls": 83,
+  "all_native_paired": true,
+  "all_returned": true,
+  "trace_ids": [
+    {
+      "id": "0001",
+      "label": "os-open-owned-case001",
+      "method": "OS.open",
+      "status": "returned"
+    },
+    {
+      "id": "0002",
+      "label": "bootstrap-exact-owned-app",
+      "method": "getApp",
+      "status": "returned"
+    },
+    {
+      "id": "0003",
+      "label": "initial-r41",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0004",
+      "label": "frame-all-once",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0005",
+      "label": "framed-r41",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0006",
+      "label": "select-analytic-scene",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0007",
+      "label": "analytic-selected",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0008",
+      "label": "choose-free-sewing",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0009",
+      "label": "free-sewing-selected",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0010",
+      "label": "width-focus",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0011",
+      "label": "width-focus-observed",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0012",
+      "label": "width-select-all",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0013",
+      "label": "width-type-noop-sentinel",
+      "method": "typeText",
+      "status": "returned"
+    },
+    {
+      "id": "0014",
+      "label": "width-raw-sentinel",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0015",
+      "label": "width-caret-left-one",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0016",
+      "label": "width-caret-left-two",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0017",
+      "label": "width-caret-before-e",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0018",
+      "label": "invalid-open-create-line",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0019",
+      "label": "invalid-a-modal-open",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0020",
+      "label": "invalid-choose-forward",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0021",
+      "label": "invalid-forward-observed",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0022",
+      "label": "invalid-length-focus",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0023",
+      "label": "invalid-length-focus-observed",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0024",
+      "label": "invalid-length-select-all",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0025",
+      "label": "invalid-length-type",
+      "method": "typeText",
+      "status": "returned"
+    },
+    {
+      "id": "0026",
+      "label": "invalid-length-raw",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0027",
+      "label": "invalid-length-tab",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0028",
+      "label": "invalid-length-after-tab",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0029",
+      "label": "invalid-ok-once",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0030",
+      "label": "invalid-refusal-retained",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0031",
+      "label": "invalid-cancel-once",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0032",
+      "label": "invalid-cancel-width-restored",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0033",
+      "label": "width-insert-caret-witness",
+      "method": "typeText",
+      "status": "returned"
+    },
+    {
+      "id": "0034",
+      "label": "width-caret-witness",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0035",
+      "label": "width-noop-tab",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0036",
+      "label": "width-noop-committed",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0037",
+      "label": "canonical-a-start-click",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0038",
+      "label": "canonical-a-start-marker",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0039",
+      "label": "canonical-a-forward-rightclick",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0040",
+      "label": "canonical-a-modal",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0041",
+      "label": "canonical-a-length-focus",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0042",
+      "label": "canonical-a-length-focus-observed",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0043",
+      "label": "canonical-a-length-select-all",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0044",
+      "label": "canonical-a-length-100",
+      "method": "typeText",
+      "status": "returned"
+    },
+    {
+      "id": "0045",
+      "label": "canonical-a-length-raw100",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0046",
+      "label": "canonical-a-length-tab",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0047",
+      "label": "canonical-a-length-validated",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0048",
+      "label": "canonical-a-ok-once",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0049",
+      "label": "canonical-a-transient",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0050",
+      "label": "canonical-b-interior-click",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0051",
+      "label": "canonical-b-start-marker",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0052",
+      "label": "canonical-b-leftward-rightclick",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0053",
+      "label": "canonical-b-modal",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0054",
+      "label": "canonical-b-start-focus",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0055",
+      "label": "canonical-b-start-focus-observed",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0056",
+      "label": "canonical-b-start-select-all",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0057",
+      "label": "canonical-b-start-075",
+      "method": "typeText",
+      "status": "returned"
+    },
+    {
+      "id": "0058",
+      "label": "canonical-b-start-raw075",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0059",
+      "label": "canonical-b-start-tab",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0060",
+      "label": "canonical-b-start-validated",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0061",
+      "label": "canonical-b-length-select-all",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0062",
+      "label": "canonical-b-length-100",
+      "method": "typeText",
+      "status": "returned"
+    },
+    {
+      "id": "0063",
+      "label": "canonical-b-length-raw100",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0064",
+      "label": "canonical-b-length-tab",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0065",
+      "label": "canonical-b-final-before-ok",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0066",
+      "label": "canonical-b-ok-once",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0067",
+      "label": "canonical-pair-created-r42",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0068",
+      "label": "created-file-menu",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0069",
+      "label": "created-file-menu-observed",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0070",
+      "label": "created-save-as-click",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0071",
+      "label": "created-save-dialog",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0072",
+      "label": "created-go-folder-shortcut",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0073",
+      "label": "created-go-folder-field",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0074",
+      "label": "created-path-select-all",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0075",
+      "label": "created-path-type",
+      "method": "typeText",
+      "status": "returned"
+    },
+    {
+      "id": "0076",
+      "label": "created-path-typed",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0077",
+      "label": "created-path-return",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0078",
+      "label": "created-directory-observed",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0079",
+      "label": "created-name-focus",
+      "method": "click",
+      "status": "returned"
+    },
+    {
+      "id": "0080",
+      "label": "created-name-focus-observed",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    },
+    {
+      "id": "0081",
+      "label": "created-name-select-all",
+      "method": "pressKey",
+      "status": "returned"
+    },
+    {
+      "id": "0082",
+      "label": "created-name-type",
+      "method": "typeText",
+      "status": "returned"
+    },
+    {
+      "id": "0083",
+      "label": "created-name-typed",
+      "method": "getAXStateAndScreenshot",
+      "status": "returned"
+    }
+  ],
+  "last_native_record": "0083",
+  "elapsed_last_native_s": 331.733179042,
+  "native_call_cap": 219,
+  "completion_summary_calls": 1,
+  "total_calls": 84,
+  "total_cap": 220,
+  "elapsed_cap_s": 1200,
+  "capture_count": 37,
+  "all_capture_hashes_match": true,
+  "captures": [
+    {
+      "capture": "analytic-selected-capture.json",
+      "sourceRecord": "0007",
+      "artifacts": [
+        {
+          "file": "captures/analytic-selected.txt",
+          "expected_sha256": "1efc71e974ce129ef0282fab7748946a92c5c2ce8dd2e07b454dee1f27b696cc",
+          "actual_sha256": "1efc71e974ce129ef0282fab7748946a92c5c2ce8dd2e07b454dee1f27b696cc",
+          "bytes": 1421,
+          "matches": true
+        },
+        {
+          "file": "captures/analytic-selected-0.jpg",
+          "expected_sha256": "280c708f062fc9c97a4c1468822d47ef68811dbb0b95bf2dc265893782fffc23",
+          "actual_sha256": "280c708f062fc9c97a4c1468822d47ef68811dbb0b95bf2dc265893782fffc23",
+          "bytes": 163063,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "canonical-a-length-focus-observed-capture.json",
+      "sourceRecord": "0042",
+      "artifacts": [
+        {
+          "file": "captures/canonical-a-length-focus-observed.txt",
+          "expected_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "actual_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "bytes": 75,
+          "matches": true
+        },
+        {
+          "file": "captures/canonical-a-length-focus-observed-0.jpg",
+          "expected_sha256": "f8705db2f92c40363f9a33d5f74c86a1be0d66d73e32bf315cd201299d4389c2",
+          "actual_sha256": "f8705db2f92c40363f9a33d5f74c86a1be0d66d73e32bf315cd201299d4389c2",
+          "bytes": 144045,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "canonical-a-length-raw100-capture.json",
+      "sourceRecord": "0045",
+      "artifacts": [
+        {
+          "file": "captures/canonical-a-length-raw100.txt",
+          "expected_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "actual_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "bytes": 75,
+          "matches": true
+        },
+        {
+          "file": "captures/canonical-a-length-raw100-0.jpg",
+          "expected_sha256": "bb97a7a659039ff27389188a9f73dadf3c96d17be69040729e6582624aaf8fa3",
+          "actual_sha256": "bb97a7a659039ff27389188a9f73dadf3c96d17be69040729e6582624aaf8fa3",
+          "bytes": 143623,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "canonical-a-length-validated-capture.json",
+      "sourceRecord": "0047",
+      "artifacts": [
+        {
+          "file": "captures/canonical-a-length-validated.txt",
+          "expected_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "actual_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "bytes": 75,
+          "matches": true
+        },
+        {
+          "file": "captures/canonical-a-length-validated-0.jpg",
+          "expected_sha256": "bd0cbcd89d43eccb186e3269085e2b03c70ff033728a327a96a458924432841d",
+          "actual_sha256": "bd0cbcd89d43eccb186e3269085e2b03c70ff033728a327a96a458924432841d",
+          "bytes": 143690,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "canonical-a-modal-capture.json",
+      "sourceRecord": "0040",
+      "artifacts": [
+        {
+          "file": "captures/canonical-a-modal.txt",
+          "expected_sha256": "0ee478c8dc7c48433ab217707e4c991430d0ff7d3112687fb3c973b54f0bc1a0",
+          "actual_sha256": "0ee478c8dc7c48433ab217707e4c991430d0ff7d3112687fb3c973b54f0bc1a0",
+          "bytes": 3127,
+          "matches": true
+        },
+        {
+          "file": "captures/canonical-a-modal-0.jpg",
+          "expected_sha256": "fc1426db6d66f0ae5fe0174751b0351e86622b8d6f65c55657851d6ae70fd67e",
+          "actual_sha256": "fc1426db6d66f0ae5fe0174751b0351e86622b8d6f65c55657851d6ae70fd67e",
+          "bytes": 143741,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "canonical-a-start-marker-capture.json",
+      "sourceRecord": "0038",
+      "artifacts": [
+        {
+          "file": "captures/canonical-a-start-marker.txt",
+          "expected_sha256": "48df1414e87d84cdbb413c29f6f6af4e17d392ae31d68f9ecb302c4b1f36fa86",
+          "actual_sha256": "48df1414e87d84cdbb413c29f6f6af4e17d392ae31d68f9ecb302c4b1f36fa86",
+          "bytes": 619,
+          "matches": true
+        },
+        {
+          "file": "captures/canonical-a-start-marker-0.jpg",
+          "expected_sha256": "06b2a9dcdca2b82f6f780db4f29b1643780f3a5089fa80dcdd90105dba9193ad",
+          "actual_sha256": "06b2a9dcdca2b82f6f780db4f29b1643780f3a5089fa80dcdd90105dba9193ad",
+          "bytes": 171152,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "canonical-a-transient-capture.json",
+      "sourceRecord": "0049",
+      "artifacts": [
+        {
+          "file": "captures/canonical-a-transient.txt",
+          "expected_sha256": "7ee27b0525e843e8feca351860f33d14a7dd20c40b869288d06eb07fd5d90d77",
+          "actual_sha256": "7ee27b0525e843e8feca351860f33d14a7dd20c40b869288d06eb07fd5d90d77",
+          "bytes": 2921,
+          "matches": true
+        },
+        {
+          "file": "captures/canonical-a-transient-0.jpg",
+          "expected_sha256": "062720104e9632b9f8d9d7f84579c240cd49d581442f9da7c28049066d210605",
+          "actual_sha256": "062720104e9632b9f8d9d7f84579c240cd49d581442f9da7c28049066d210605",
+          "bytes": 171242,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "canonical-b-final-before-ok-capture.json",
+      "sourceRecord": "0065",
+      "artifacts": [
+        {
+          "file": "captures/canonical-b-final-before-ok.txt",
+          "expected_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "actual_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "bytes": 75,
+          "matches": true
+        },
+        {
+          "file": "captures/canonical-b-final-before-ok-0.jpg",
+          "expected_sha256": "24dca53555c61641b592c4dc227d60438aa8ca662ed1754e98623847a6eedd62",
+          "actual_sha256": "24dca53555c61641b592c4dc227d60438aa8ca662ed1754e98623847a6eedd62",
+          "bytes": 146113,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "canonical-b-length-raw100-capture.json",
+      "sourceRecord": "0063",
+      "artifacts": [
+        {
+          "file": "captures/canonical-b-length-raw100.txt",
+          "expected_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "actual_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "bytes": 75,
+          "matches": true
+        },
+        {
+          "file": "captures/canonical-b-length-raw100-0.jpg",
+          "expected_sha256": "1390bdb1e6d54cd229ae72fea2fe547c85d9f11ded0a34fe20481e7d3bade1d6",
+          "actual_sha256": "1390bdb1e6d54cd229ae72fea2fe547c85d9f11ded0a34fe20481e7d3bade1d6",
+          "bytes": 146094,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "canonical-b-modal-capture.json",
+      "sourceRecord": "0053",
+      "artifacts": [
+        {
+          "file": "captures/canonical-b-modal.txt",
+          "expected_sha256": "0ee478c8dc7c48433ab217707e4c991430d0ff7d3112687fb3c973b54f0bc1a0",
+          "actual_sha256": "0ee478c8dc7c48433ab217707e4c991430d0ff7d3112687fb3c973b54f0bc1a0",
+          "bytes": 3127,
+          "matches": true
+        },
+        {
+          "file": "captures/canonical-b-modal-0.jpg",
+          "expected_sha256": "8472833fc5cea984efa27172502594b6d929742fc4e79152bb9bd9a6b41f28d2",
+          "actual_sha256": "8472833fc5cea984efa27172502594b6d929742fc4e79152bb9bd9a6b41f28d2",
+          "bytes": 147648,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "canonical-b-start-focus-observed-capture.json",
+      "sourceRecord": "0055",
+      "artifacts": [
+        {
+          "file": "captures/canonical-b-start-focus-observed.txt",
+          "expected_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "actual_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "bytes": 75,
+          "matches": true
+        },
+        {
+          "file": "captures/canonical-b-start-focus-observed-0.jpg",
+          "expected_sha256": "c94067a67fc2d0dc821cad7a69c61be6d53cacfe0913b929a6bf3eb1c31c0193",
+          "actual_sha256": "c94067a67fc2d0dc821cad7a69c61be6d53cacfe0913b929a6bf3eb1c31c0193",
+          "bytes": 147775,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "canonical-b-start-marker-capture.json",
+      "sourceRecord": "0051",
+      "artifacts": [
+        {
+          "file": "captures/canonical-b-start-marker.txt",
+          "expected_sha256": "48df1414e87d84cdbb413c29f6f6af4e17d392ae31d68f9ecb302c4b1f36fa86",
+          "actual_sha256": "48df1414e87d84cdbb413c29f6f6af4e17d392ae31d68f9ecb302c4b1f36fa86",
+          "bytes": 619,
+          "matches": true
+        },
+        {
+          "file": "captures/canonical-b-start-marker-0.jpg",
+          "expected_sha256": "2f748c5db6f4f4ded55d6d2a7982a464f65112880db8f1a85854b2e43d3620e6",
+          "actual_sha256": "2f748c5db6f4f4ded55d6d2a7982a464f65112880db8f1a85854b2e43d3620e6",
+          "bytes": 173414,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "canonical-b-start-raw075-capture.json",
+      "sourceRecord": "0058",
+      "artifacts": [
+        {
+          "file": "captures/canonical-b-start-raw075.txt",
+          "expected_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "actual_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "bytes": 75,
+          "matches": true
+        },
+        {
+          "file": "captures/canonical-b-start-raw075-0.jpg",
+          "expected_sha256": "ec0ac9484586f448f0e96940f5d095ce7a982cb0d84617eede4f14f7658f47e5",
+          "actual_sha256": "ec0ac9484586f448f0e96940f5d095ce7a982cb0d84617eede4f14f7658f47e5",
+          "bytes": 146934,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "canonical-b-start-validated-capture.json",
+      "sourceRecord": "0060",
+      "artifacts": [
+        {
+          "file": "captures/canonical-b-start-validated.txt",
+          "expected_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "actual_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "bytes": 75,
+          "matches": true
+        },
+        {
+          "file": "captures/canonical-b-start-validated-0.jpg",
+          "expected_sha256": "8275dcef5a204c01d82d480e6df004e10df32ea4fc9e1d5e02c0c7d9d7a4d38b",
+          "actual_sha256": "8275dcef5a204c01d82d480e6df004e10df32ea4fc9e1d5e02c0c7d9d7a4d38b",
+          "bytes": 147045,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "canonical-pair-created-r42-capture.json",
+      "sourceRecord": "0067",
+      "artifacts": [
+        {
+          "file": "captures/canonical-pair-created-r42.txt",
+          "expected_sha256": "3bba107be8de0db9e41dfdfbebcbee4944ffd49a97f9a32e1aa6dc4688fb66bf",
+          "actual_sha256": "3bba107be8de0db9e41dfdfbebcbee4944ffd49a97f9a32e1aa6dc4688fb66bf",
+          "bytes": 3013,
+          "matches": true
+        },
+        {
+          "file": "captures/canonical-pair-created-r42-0.jpg",
+          "expected_sha256": "5d2de0e5ec50455cf7b47850a5bc4f9598373e89f4dca37754996bc11f27a468",
+          "actual_sha256": "5d2de0e5ec50455cf7b47850a5bc4f9598373e89f4dca37754996bc11f27a468",
+          "bytes": 174013,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "created-directory-observed-capture.json",
+      "sourceRecord": "0078",
+      "artifacts": [
+        {
+          "file": "captures/created-directory-observed.txt",
+          "expected_sha256": "938995210886ab3057fab33b0856481fcac9b6174ea4deae42350a92efcf8ff2",
+          "actual_sha256": "938995210886ab3057fab33b0856481fcac9b6174ea4deae42350a92efcf8ff2",
+          "bytes": 1092,
+          "matches": true
+        },
+        {
+          "file": "captures/created-directory-observed-0.jpg",
+          "expected_sha256": "d5103de4a0fd3e8a23955ff2c5600d4cf27cba10287264c9f263c7ff5cce5c50",
+          "actual_sha256": "d5103de4a0fd3e8a23955ff2c5600d4cf27cba10287264c9f263c7ff5cce5c50",
+          "bytes": 14364,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "created-file-menu-observed-capture.json",
+      "sourceRecord": "0069",
+      "artifacts": [
+        {
+          "file": "captures/created-file-menu-observed.txt",
+          "expected_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "actual_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "bytes": 75,
+          "matches": true
+        },
+        {
+          "file": "captures/created-file-menu-observed-0.jpg",
+          "expected_sha256": "43969960427e61377b6034947b5feb829052daddd58c6cd064ac7dcd91056fb7",
+          "actual_sha256": "43969960427e61377b6034947b5feb829052daddd58c6cd064ac7dcd91056fb7",
+          "bytes": 175931,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "created-go-folder-field-capture.json",
+      "sourceRecord": "0073",
+      "artifacts": [
+        {
+          "file": "captures/created-go-folder-field.txt",
+          "expected_sha256": "c8f1f4905bf942f21735d0beba52b445d32c240a5477db207e9f7600e771a397",
+          "actual_sha256": "c8f1f4905bf942f21735d0beba52b445d32c240a5477db207e9f7600e771a397",
+          "bytes": 2391,
+          "matches": true
+        },
+        {
+          "file": "captures/created-go-folder-field-0.jpg",
+          "expected_sha256": "6eccda6fe618f4ac73fefc4fee387c2bcd840fad71a145da60b6dded5606f078",
+          "actual_sha256": "6eccda6fe618f4ac73fefc4fee387c2bcd840fad71a145da60b6dded5606f078",
+          "bytes": 24781,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "created-name-focus-observed-capture.json",
+      "sourceRecord": "0080",
+      "artifacts": [
+        {
+          "file": "captures/created-name-focus-observed.txt",
+          "expected_sha256": "2fd56042d4f559aa9456102db02bd23d1dab9bc76f81c455256812e69585865f",
+          "actual_sha256": "2fd56042d4f559aa9456102db02bd23d1dab9bc76f81c455256812e69585865f",
+          "bytes": 315,
+          "matches": true
+        },
+        {
+          "file": "captures/created-name-focus-observed-0.jpg",
+          "expected_sha256": "e7150f658bab6951c3da5507ad3df5337af5876477842c6b3d21899cc138a486",
+          "actual_sha256": "e7150f658bab6951c3da5507ad3df5337af5876477842c6b3d21899cc138a486",
+          "bytes": 14612,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "created-name-typed-capture.json",
+      "sourceRecord": "0083",
+      "artifacts": [
+        {
+          "file": "captures/created-name-typed.txt",
+          "expected_sha256": "d494d0023d9be7cc9baed4c3865ac937c21c9abfb41b5e8658d92b4d5d4bbe38",
+          "actual_sha256": "d494d0023d9be7cc9baed4c3865ac937c21c9abfb41b5e8658d92b4d5d4bbe38",
+          "bytes": 385,
+          "matches": true
+        },
+        {
+          "file": "captures/created-name-typed-0.jpg",
+          "expected_sha256": "8e09a61584157d13519b3e70ff39a9d99cae9e1e40adb421160662d71e71ae0f",
+          "actual_sha256": "8e09a61584157d13519b3e70ff39a9d99cae9e1e40adb421160662d71e71ae0f",
+          "bytes": 15665,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "created-path-typed-capture.json",
+      "sourceRecord": "0076",
+      "artifacts": [
+        {
+          "file": "captures/created-path-typed.txt",
+          "expected_sha256": "670ea2595d1eba6023a332422b1c7fe7b2f3737821f23e27485f246b9e97a213",
+          "actual_sha256": "670ea2595d1eba6023a332422b1c7fe7b2f3737821f23e27485f246b9e97a213",
+          "bytes": 554,
+          "matches": true
+        },
+        {
+          "file": "captures/created-path-typed-0.jpg",
+          "expected_sha256": "0630926953248695bb8a04d3b2fb934db9c376f523b333d6a7cf89ed9f65eb67",
+          "actual_sha256": "0630926953248695bb8a04d3b2fb934db9c376f523b333d6a7cf89ed9f65eb67",
+          "bytes": 15999,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "created-save-dialog-capture.json",
+      "sourceRecord": "0071",
+      "artifacts": [
+        {
+          "file": "captures/created-save-dialog.txt",
+          "expected_sha256": "ebf5df28e76dc3771d34eaf03efce75d7aa43c005685040e65fba59ffd6ca9f1",
+          "actual_sha256": "ebf5df28e76dc3771d34eaf03efce75d7aa43c005685040e65fba59ffd6ca9f1",
+          "bytes": 1116,
+          "matches": true
+        },
+        {
+          "file": "captures/created-save-dialog-0.jpg",
+          "expected_sha256": "a1fa885293b66d670f6b72c3d2f3bbc64f286f78c374eb96ed034c50f487fdb5",
+          "actual_sha256": "a1fa885293b66d670f6b72c3d2f3bbc64f286f78c374eb96ed034c50f487fdb5",
+          "bytes": 14963,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "framed-r41-capture.json",
+      "sourceRecord": "0005",
+      "artifacts": [
+        {
+          "file": "captures/framed-r41.txt",
+          "expected_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "actual_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "bytes": 75,
+          "matches": true
+        },
+        {
+          "file": "captures/framed-r41-0.jpg",
+          "expected_sha256": "ff4d42fab7a0e0a4062b77b9ec07b235890bc82ac03b829745eb2c1ca871afc8",
+          "actual_sha256": "ff4d42fab7a0e0a4062b77b9ec07b235890bc82ac03b829745eb2c1ca871afc8",
+          "bytes": 163403,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "free-sewing-selected-capture.json",
+      "sourceRecord": "0009",
+      "artifacts": [
+        {
+          "file": "captures/free-sewing-selected.txt",
+          "expected_sha256": "eac80d518b4b0f7311b52f9dd1a93deaf086ed28a0a8642d060c9a75e33fd085",
+          "actual_sha256": "eac80d518b4b0f7311b52f9dd1a93deaf086ed28a0a8642d060c9a75e33fd085",
+          "bytes": 494,
+          "matches": true
+        },
+        {
+          "file": "captures/free-sewing-selected-0.jpg",
+          "expected_sha256": "bf7b92aabaa2b1730bcf878103dcc83897e1f9fd847439328ccfb513b6de6477",
+          "actual_sha256": "bf7b92aabaa2b1730bcf878103dcc83897e1f9fd847439328ccfb513b6de6477",
+          "bytes": 167555,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "initial-r41-capture.json",
+      "sourceRecord": "0003",
+      "artifacts": [
+        {
+          "file": "captures/initial-r41.txt",
+          "expected_sha256": "6a4b8c601d76a007ac23719336f60fda0c72cc71851f9a674a943a2f43520bc9",
+          "actual_sha256": "6a4b8c601d76a007ac23719336f60fda0c72cc71851f9a674a943a2f43520bc9",
+          "bytes": 276,
+          "matches": true
+        },
+        {
+          "file": "captures/initial-r41-0.jpg",
+          "expected_sha256": "c92f5b6ca746e9a81976de4bbaef13bae6e5ab7f06b3a887318587850cf937bd",
+          "actual_sha256": "c92f5b6ca746e9a81976de4bbaef13bae6e5ab7f06b3a887318587850cf937bd",
+          "bytes": 183658,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "invalid-a-modal-open-capture.json",
+      "sourceRecord": "0019",
+      "artifacts": [
+        {
+          "file": "captures/invalid-a-modal-open.txt",
+          "expected_sha256": "165518171ebc630046379c5624f510b7a2f3c89ef3717e53f81b53d282531d49",
+          "actual_sha256": "165518171ebc630046379c5624f510b7a2f3c89ef3717e53f81b53d282531d49",
+          "bytes": 3127,
+          "matches": true
+        },
+        {
+          "file": "captures/invalid-a-modal-open-0.jpg",
+          "expected_sha256": "68389841502108611d48d91ab6afca7049edeb7a2ed4bf2fe79821cbdf225f6e",
+          "actual_sha256": "68389841502108611d48d91ab6afca7049edeb7a2ed4bf2fe79821cbdf225f6e",
+          "bytes": 140116,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "invalid-cancel-width-restored-capture.json",
+      "sourceRecord": "0032",
+      "artifacts": [
+        {
+          "file": "captures/invalid-cancel-width-restored.txt",
+          "expected_sha256": "c13a4ce6a0dcf0061f9b1a4dba0cad8a730904283a37c28b52a1fcd0d19c6ef9",
+          "actual_sha256": "c13a4ce6a0dcf0061f9b1a4dba0cad8a730904283a37c28b52a1fcd0d19c6ef9",
+          "bytes": 2616,
+          "matches": true
+        },
+        {
+          "file": "captures/invalid-cancel-width-restored-0.jpg",
+          "expected_sha256": "b8991f38fc5459c2cfc4cd6bd81d74efa9cf0b5dff1493d8f4815518a876f500",
+          "actual_sha256": "b8991f38fc5459c2cfc4cd6bd81d74efa9cf0b5dff1493d8f4815518a876f500",
+          "bytes": 168220,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "invalid-forward-observed-capture.json",
+      "sourceRecord": "0021",
+      "artifacts": [
+        {
+          "file": "captures/invalid-forward-observed.txt",
+          "expected_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "actual_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "bytes": 75,
+          "matches": true
+        },
+        {
+          "file": "captures/invalid-forward-observed-0.jpg",
+          "expected_sha256": "865c815781acaf2526cc5e07d2b3cae4d6c9d2723e18f44f5a0d598c831453ee",
+          "actual_sha256": "865c815781acaf2526cc5e07d2b3cae4d6c9d2723e18f44f5a0d598c831453ee",
+          "bytes": 140218,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "invalid-length-after-tab-capture.json",
+      "sourceRecord": "0028",
+      "artifacts": [
+        {
+          "file": "captures/invalid-length-after-tab.txt",
+          "expected_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "actual_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "bytes": 75,
+          "matches": true
+        },
+        {
+          "file": "captures/invalid-length-after-tab-0.jpg",
+          "expected_sha256": "aabdaf6ca565373ff54ed66d646f5c69f8b35fd59203aba4bebd082e5656b9ed",
+          "actual_sha256": "aabdaf6ca565373ff54ed66d646f5c69f8b35fd59203aba4bebd082e5656b9ed",
+          "bytes": 142886,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "invalid-length-focus-observed-capture.json",
+      "sourceRecord": "0023",
+      "artifacts": [
+        {
+          "file": "captures/invalid-length-focus-observed.txt",
+          "expected_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "actual_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "bytes": 75,
+          "matches": true
+        },
+        {
+          "file": "captures/invalid-length-focus-observed-0.jpg",
+          "expected_sha256": "33ed8ffb67a0c14dd9f8845dfda1a163493ec6ebeff645c8ee13c81b872bd67d",
+          "actual_sha256": "33ed8ffb67a0c14dd9f8845dfda1a163493ec6ebeff645c8ee13c81b872bd67d",
+          "bytes": 140727,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "invalid-length-raw-capture.json",
+      "sourceRecord": "0026",
+      "artifacts": [
+        {
+          "file": "captures/invalid-length-raw.txt",
+          "expected_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "actual_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "bytes": 75,
+          "matches": true
+        },
+        {
+          "file": "captures/invalid-length-raw-0.jpg",
+          "expected_sha256": "33b7348b0aba1fbe513895be39d91498134a40b39fcfbdc91ba72451afae0da9",
+          "actual_sha256": "33b7348b0aba1fbe513895be39d91498134a40b39fcfbdc91ba72451afae0da9",
+          "bytes": 140856,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "invalid-refusal-retained-capture.json",
+      "sourceRecord": "0030",
+      "artifacts": [
+        {
+          "file": "captures/invalid-refusal-retained.txt",
+          "expected_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "actual_sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+          "bytes": 75,
+          "matches": true
+        },
+        {
+          "file": "captures/invalid-refusal-retained-0.jpg",
+          "expected_sha256": "0996e2b0662b0e2a55024d523d7e3289a63c73ee674006154aefd16b3cdbefd3",
+          "actual_sha256": "0996e2b0662b0e2a55024d523d7e3289a63c73ee674006154aefd16b3cdbefd3",
+          "bytes": 142458,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "width-caret-before-e-capture.json",
+      "sourceRecord": "0017",
+      "artifacts": [
+        {
+          "file": "captures/width-caret-before-e.txt",
+          "expected_sha256": "1639a9db9bf63e95774e6b46de2a4f79798caaae91e9b43e1617445a1fd9542f",
+          "actual_sha256": "1639a9db9bf63e95774e6b46de2a4f79798caaae91e9b43e1617445a1fd9542f",
+          "bytes": 129,
+          "matches": true
+        },
+        {
+          "file": "captures/width-caret-before-e-0.jpg",
+          "expected_sha256": "adbb4ede63046b8230f01ec26e1197a8f467263fe846ad04ead556c3ca47a70a",
+          "actual_sha256": "adbb4ede63046b8230f01ec26e1197a8f467263fe846ad04ead556c3ca47a70a",
+          "bytes": 168510,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "width-caret-witness-capture.json",
+      "sourceRecord": "0034",
+      "artifacts": [
+        {
+          "file": "captures/width-caret-witness.txt",
+          "expected_sha256": "3de7415cf145f06915e059343f7e8ca004426ea33da75155c10b68a281f0a211",
+          "actual_sha256": "3de7415cf145f06915e059343f7e8ca004426ea33da75155c10b68a281f0a211",
+          "bytes": 284,
+          "matches": true
+        },
+        {
+          "file": "captures/width-caret-witness-0.jpg",
+          "expected_sha256": "5007665fc021753ac01ba61f12152399f141ee0586abdbc027d91b26c2a17ff6",
+          "actual_sha256": "5007665fc021753ac01ba61f12152399f141ee0586abdbc027d91b26c2a17ff6",
+          "bytes": 168409,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "width-focus-observed-capture.json",
+      "sourceRecord": "0011",
+      "artifacts": [
+        {
+          "file": "captures/width-focus-observed.txt",
+          "expected_sha256": "502bf49d4acaa359d872bbed36f295a74e0cb5eb276818e9a6695b435dee788d",
+          "actual_sha256": "502bf49d4acaa359d872bbed36f295a74e0cb5eb276818e9a6695b435dee788d",
+          "bytes": 520,
+          "matches": true
+        },
+        {
+          "file": "captures/width-focus-observed-0.jpg",
+          "expected_sha256": "71a5ce1448e9aed798ad983dfd10b12320d01b60f9d49f3c367b4d2849e049d8",
+          "actual_sha256": "71a5ce1448e9aed798ad983dfd10b12320d01b60f9d49f3c367b4d2849e049d8",
+          "bytes": 168357,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "width-noop-committed-capture.json",
+      "sourceRecord": "0036",
+      "artifacts": [
+        {
+          "file": "captures/width-noop-committed.txt",
+          "expected_sha256": "23aaf9619bfbe26df7391c336075da5d427b13f8b4cac19ac63f5d15fae62f0a",
+          "actual_sha256": "23aaf9619bfbe26df7391c336075da5d427b13f8b4cac19ac63f5d15fae62f0a",
+          "bytes": 551,
+          "matches": true
+        },
+        {
+          "file": "captures/width-noop-committed-0.jpg",
+          "expected_sha256": "99a51f46a5835d3aca2f1476a4b4fa7127942d26488e3c19ab1f74557752b160",
+          "actual_sha256": "99a51f46a5835d3aca2f1476a4b4fa7127942d26488e3c19ab1f74557752b160",
+          "bytes": 168176,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "capture": "width-raw-sentinel-capture.json",
+      "sourceRecord": "0014",
+      "artifacts": [
+        {
+          "file": "captures/width-raw-sentinel.txt",
+          "expected_sha256": "f8727ed4f22b558e6db5cad6ec8f8efbf4b5d7b4dc803ce76f60d5bfccb6f46f",
+          "actual_sha256": "f8727ed4f22b558e6db5cad6ec8f8efbf4b5d7b4dc803ce76f60d5bfccb6f46f",
+          "bytes": 282,
+          "matches": true
+        },
+        {
+          "file": "captures/width-raw-sentinel-0.jpg",
+          "expected_sha256": "c5db2b65070453de075af313d60c7289355904eb4c202f744bde76affb3ac544",
+          "actual_sha256": "c5db2b65070453de075af313d60c7289355904eb4c202f744bde76affb3ac544",
+          "bytes": 168488,
+          "matches": true
+        }
+      ]
+    }
+  ]
+}

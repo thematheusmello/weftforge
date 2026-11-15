@@ -1,0 +1,20 @@
+RUNNER pid=1905 source=b657e6bf52aca6c0c76c5c51aaf76b4e812150f7 prefix=integrated-b657e6b-20261115T173706Z
+START 01-fmt 2026-11-15T17:37:59.228702+00:00
+CHILD 01-fmt pid=2074
+END 01-fmt exit=0 2026-11-15T17:37:59.724740+00:00
+START 02-workspace-tests 2026-11-15T17:37:59.783528+00:00
+CHILD 02-workspace-tests pid=2139
+END 02-workspace-tests exit=0 2026-11-15T17:39:09.933225+00:00
+START 03-workspace-clippy 2026-11-15T17:39:09.998778+00:00
+CHILD 03-workspace-clippy pid=4103
+END 03-workspace-clippy exit=0 2026-11-15T17:39:23.522813+00:00
+START 04-xtask-verify 2026-11-15T17:39:23.584755+00:00
+CHILD 04-xtask-verify pid=4603
+END 04-xtask-verify exit=0 2026-11-15T17:41:11.140832+00:00
+START 05-xtask-package 2026-11-15T17:41:11.205702+00:00
+CHILD 05-xtask-package pid=12281
+END 05-xtask-package exit=0 2026-11-15T17:41:46.662093+00:00
+START 06-debug-native 2026-11-15T17:41:46.725073+00:00
+CHILD 06-debug-native pid=13954
+END 06-debug-native exit=0 2026-11-15T17:42:02.554249+00:00
+MANIFEST <WORKSPACE>/.local/physical-sewing-implementation-20261115/integrated-b657e6b-20261115T173706Z-manifest.json

@@ -1,0 +1,127 @@
+{
+  "kind": "native_saved_file_grader_synthetic_selfcheck",
+  "status": "passed",
+  "product_CUA_or_Cargo_executed": false,
+  "wrong_outputs_rejected": 18,
+  "mutants": [
+    {
+      "id": "linear_t_curved_endpoint",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "number 0.004022846465611571 differs from independent 0.0 by more than 1e-08"
+    },
+    {
+      "id": "wrong_reverse_straight_endpoint",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "number 0.14999999999999997 differs from independent 0.0 by more than 1e-08"
+    },
+    {
+      "id": "transient_side_saved_as_legacy_seam",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "creation must store exactly one ordinary group"
+    },
+    {
+      "id": "wrong_source_policy_name",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "unrelated parsed construction, group semantics, revision or allocator changed"
+    },
+    {
+      "id": "double_commit_R43",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "unrelated parsed construction, group semantics, revision or allocator changed"
+    },
+    {
+      "id": "extra_ID_allocation",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "unrelated parsed construction, group semantics, revision or allocator changed"
+    },
+    {
+      "id": "unrelated_control_edit",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "unrelated parsed construction, group semantics, revision or allocator changed"
+    },
+    {
+      "id": "persistent_length_lock",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "unexpected keys: {'id': 20, 'name': 'Free sewing 1', 'a': [{'curve': 6, 't0': 0.0, 't1': 0.4819445564563284}], 'b': [{'curve': 15, 't0': 0.75, 't1': 0.25}], 'correspondence': [[0.0, 0.0], [1.0, 1.0]], 'length_m': 0.1}"
+    },
+    {
+      "id": "undo_reuses_allocator20",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "Undo must restore original parsed construction at R43 while retaining allocator21"
+    },
+    {
+      "id": "undo_stale_revision41",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "Undo must restore original parsed construction at R43 while retaining allocator21"
+    },
+    {
+      "id": "undo_retains_group",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "Undo must restore original parsed construction at R43 while retaining allocator21"
+    },
+    {
+      "id": "redo_reallocated_groupID",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "unrelated parsed construction, group semantics, revision or allocator changed"
+    },
+    {
+      "id": "redo_small_endpoint_drift_within_metric_budget",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "Redo changed created parsed fields/ID or lost fresh R44"
+    },
+    {
+      "id": "reopen_new_revision45",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "unrelated parsed construction, group semantics, revision or allocator changed"
+    },
+    {
+      "id": "reopen_small_endpoint_drift_within_metric_budget",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "reopened parsed construction differs from Redo R44"
+    },
+    {
+      "id": "modified_readonly_input_bytes",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "actor input is not byte-identical to frozen R41 fixture"
+    },
+    {
+      "id": "reopen_primary_bytes_differ_with_equal_parsed_fields",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "same-serializer native Redo/reopened primary bytes differ"
+    },
+    {
+      "id": "duplicate_native_field",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "duplicate JSON field revision"
+    }
+  ],
+  "oracle_maximum_crosscheck_error_m": 1.1102230246251565e-16,
+  "note": "Invented files exercise the prospective assertions; they are not native UI delivery evidence.",
+  "bindings": {
+    "grade_saved.py": "e6a5f5de762aef924c4aecd733d7cb4ccb00faa0ad50497f12d004f101670bc9",
+    "EXPECTED.json": "589a9400a916e9340d04ae77b332ea25d3a0abc6b06dee9b8ac9868ac80506ec",
+    "PLAN.json": "e268e40738f18d629bf92a0f1fabb8bd10cf0456965b891689bcbe093e6eb74d",
+    "SOURCE-INPUTS.json": "93944ac1150b493b3bd1de3b134b261b7f4f57fed6aa90de8b4709522a2488d3",
+    "fixture.weftforge": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+    "CRITERIA.json": "d748d52d5aee5bee2d57c02e81edd137c8e50ab5c9bea9f69afb1c27c31d2938",
+    "evaluate_physical_sewing.py": "ac252d08d820f7aedac771502486a54ec2dc4242017911588d5e39fcaa38a384"
+  }
+}

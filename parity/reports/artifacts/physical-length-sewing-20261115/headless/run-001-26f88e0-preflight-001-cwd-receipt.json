@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "status": "source_worktree_ambiguity_receipt",
+  "recorded_utc": "2026-11-15T16:34:47.430909+00:00",
+  "candidate_executed": false,
+  "actual_preflight_cwd": "<WORKSPACE>",
+  "actual_preflight_git_toplevel": "<WORKSPACE>",
+  "actual_preflight_git_head": "af79f596f247cc48e709b818bb70a30d1b716580",
+  "binding_001_omitted_source_worktree": true,
+  "wrong_current_tree_was_compared_to_candidate_commit": true,
+  "source_hashes_retained_in": "run-001-26f88e0-preflight-001-failed.json",
+  "preflight_record_sha256": "a3699fed5498e7aa774e893eb4ef7cf659bbce1f00ccd634fcbfc746aa7a3aab",
+  "candidate_binding_001_unchanged_sha256": "f8bdadc30ecd73a049c6c64e88eda5e8ab6bfb29f746a7995c76a33f198e726c",
+  "candidate_run_directory_exists": false,
+  "next_action": "Await corrected explicit source-worktree binding 002 and fresh execution authorization; no retry under binding 001."
+}

@@ -1,6 +1,66 @@
 # Native studio preview
 
-## One-piece transform and New Empty (DD)
+## Physical-length Free sewing (B657)
+
+These are actual unedited native002 images from source
+b657e6bf52aca6c0c76c5c51aaf76b4e812150f7 and executable
+69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0.
+Root accepted this bounded engineering workflow after reviewing twelve images,
+all 161 returned action pairs, source/freeze pins and the four saved primaries.
+This is partial Free sewing, not a complete sewing/New/garment/reference pass.
+
+![Invalid unfinished Length is retained without an accepted edit](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/invalid-refusal-retained-0.jpg)
+
+Length 1e- is rejected at R41. Cancel restores unrelated width/caret; the retained
+[0.20e0 witness](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/width-caret-witness-0.jpg)
+shows the insertion without a revision change. Full native AX/accessibility remains
+unqualified; modal field evidence here is in the raw images.
+
+![First 100 mm side remains a transient preview](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/canonical-a-transient-0.jpg)
+
+Side A uses curve #6, Forward, 100 mm. It remains pending at R41 with zero groups.
+
+![Second side has exact start and direction controls before acceptance](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/canonical-b-final-before-ok-0.jpg)
+
+Side B uses curve #15, exact Start t 0.75, Reverse and 100 mm. Boundary, exact t and
+direction controls complement pointer picking. Entered physical lengths choose
+creation endpoints; they are not persistent dimension locks. Reference picking,
+rounding, cancellation and unequal-length easing semantics remain unqualified.
+
+![Applied partial pair saved at revision 42](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/created-saved-r42-0.jpg)
+
+Accepting B creates one group 20 at R42 with two 100.0 mm labels and endpoint guides.
+One [Undo R43](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/undo-saved-r43-0.jpg)
+removes the pair; one [Redo R44](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/redo-saved-r44-0.jpg)
+restores it. All four required native primaries retain their first saved hashes.
+
+![New Empty shows zero authored construction at revision zero](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/new-empty-r0-0.jpg)
+
+File New Empty creates R0 with the default analytic mannequin; Undo and Redo each
+remain no-op R0. This one clean reset is not full New/recovery acceptance.
+
+![Same-process reopened pair saved at revision 44](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/reopened-saved-r44-0.jpg)
+
+The frozen saved-output grader ran once and passed parsed-field/metric checks
+at 1e-8 m. Redo/reopened bytes are identical. Root separately reviewed the native
+trace/images; a saved file alone does not prove caret, live history or New behavior.
+The case used 162 calls including summary / 748.816649 seconds within 220 / 1200
+caps and quit its own process. Same-process reopen is not a process restart.
+
+Failed001 remains stopped before Save at the wrong filename; its autosave is no
+replacement for four missing primaries. The intervening calibration observes
+filename entry/Cancel only. A later user-requested cleanup closed old unused GUI
+windows separately from every case clock and outcome. See the
+[scoped report](../parity/reports/WF-20261115-PHYSICAL-LENGTH-SEWING-001.json) and
+[retained packet](../parity/reports/artifacts/physical-length-sewing-20261115/README.md).
+
+The original B657 source gates retain 254 Rust/54 Python passes and six zero
+command exits; their predicted Rust total 255 / match=false bookkeeping remains
+visible. No source/native/headless acceptance was rerun for publication. The DD
+Transform images below retain their original A4 pass/B failure, now stale on changed
+B657 runtime. No native Transform B or unexecuted B2 success is inferred.
+
+## Historical one-piece transform and New Empty (DD)
 
 These are actual unedited A4 captures from source dd5a16826dafe0d4f32c251f7c351197ad0936af,
 using the separately bound native debug executable 216aa9e0b8968a1fe9033f32c89c9b4b93cdca15fac927c0538a5a091c848dd4.

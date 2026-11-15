@@ -1,0 +1,837 @@
+{
+  "kind": "bounded_independent_engineering_adapter_acceptance",
+  "freeze_sha256": "2c1cff8f852299abcba8156f62b2dfd9f98bd33ec2552b542b88fd8411e39467",
+  "cli_sha256": "fa4add99646544a052b6fa534ad325f1528e0572e4ee9aae344d687b85ac5cc1",
+  "contract_sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+  "immutable_source_inputs": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+  "observations": [
+    {
+      "id": "closed_MCP_schemas",
+      "status": "passed",
+      "detail": [
+        "modern",
+        "legacy"
+      ]
+    },
+    {
+      "id": "initial_asymmetric",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "b58a7ed57aa8959ea0df4e3491317a63b2cb8861945f0ac23885e1180b3bb2b2"
+      }
+    },
+    {
+      "id": "interior_reverse",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "588a31a0b04fec96167638f0f2dba54df1b4c80f19cb28b1515caba1c1c5414f"
+      }
+    },
+    {
+      "id": "interior_forward",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "60622e3231432bda5e7eb09f008028dd43281df272872a4f4a648e54a0e9f909"
+      }
+    },
+    {
+      "id": "near_full_forward",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "5e58efa306e9c88780b95f0e7d6eeff89e87441fed423e4a1cb39564f5b15cae"
+      }
+    },
+    {
+      "id": "near_full_reverse",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "b3e5e563b83afc2fac30518010d466a910cd44d1c26d3198587f7b4ec25427d6"
+      }
+    },
+    {
+      "id": "exact_forward",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "7aa072dfca6413da528d8dd8e9efa21bbe848d887a69ef95d0be3bd50030f12c"
+      }
+    },
+    {
+      "id": "exact_reverse",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "3d8ffa418fb567246935ec12706bd1cac5c2d9b9c7689cf57bf1b96fff64f63c"
+      }
+    },
+    {
+      "id": "disjoint_same_curve",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "08892595153f13beb2c361f0f2cd20df231685aa4dbffa7e476d9edbf0de8e70"
+      }
+    },
+    {
+      "id": "unequal_existing_proportional",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "30b7eae3a17dc4c3ee48e4f02c13c8b7d8bd63a298cedb8b39deace4fbc3553b"
+      }
+    },
+    {
+      "id": "nonuniform_collinear",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "b1d75b2fd75bfe25fd6ce587fb3dac89b8e5720a6cf24cd5aa17d2ce7d5277a0"
+      }
+    },
+    {
+      "id": "nonuniform_collinear_reverse",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "208414de99261bdf205e2c43bb5024e8ea59f88096874ecbc4b87390db6748d2"
+      }
+    },
+    {
+      "id": "legacy_nonlinear_preserved",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "native_sha256": "7555bc34fcc8da499cf7f4b28de2142856b832b85e8fede20fdc55ceba2ee7b7"
+      }
+    },
+    {
+      "id": "coarse_fine_authored_mapping_and_legacy_t_semantics",
+      "status": "passed",
+      "detail": {
+        "initial_asymmetric/0.09": 47,
+        "initial_asymmetric/0.035": 322,
+        "disjoint_same_curve/0.09": 47,
+        "disjoint_same_curve/0.035": 322,
+        "unequal_existing_proportional/0.09": 47,
+        "unequal_existing_proportional/0.035": 322,
+        "nonuniform_collinear/0.09": 48,
+        "nonuniform_collinear/0.035": 326,
+        "legacy_nonlinear_preserved/0.09": 47,
+        "legacy_nonlinear_preserved/0.035": 322
+      }
+    },
+    {
+      "id": "negative_start",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "validation"
+      }
+    },
+    {
+      "id": "past_end_start",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "validation"
+      }
+    },
+    {
+      "id": "zero_length",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "validation"
+      }
+    },
+    {
+      "id": "negative_length",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "validation"
+      }
+    },
+    {
+      "id": "enormous_length",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "validation"
+      }
+    },
+    {
+      "id": "missing_curve",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "cli_execute",
+            "same_file": true
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": true
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": true
+          }
+        ],
+        "category": "validation"
+      }
+    },
+    {
+      "id": "collapsed_parameter_span",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "validation"
+      }
+    },
+    {
+      "id": "unknown_direction",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "schema"
+      }
+    },
+    {
+      "id": "numeric_direction",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "schema"
+      }
+    },
+    {
+      "id": "null_start",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "schema"
+      }
+    },
+    {
+      "id": "forward_no_room",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "validation"
+      }
+    },
+    {
+      "id": "reverse_no_room",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "validation"
+      }
+    },
+    {
+      "id": "overlong_small_excess",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "cli_execute",
+            "same_file": true
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": true
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": true
+          }
+        ],
+        "category": "validation"
+      }
+    },
+    {
+      "id": "same_curve_overlap",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "validation"
+      }
+    },
+    {
+      "id": "invalid_name",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "validation"
+      }
+    },
+    {
+      "id": "id_overflow",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "validation"
+      }
+    },
+    {
+      "id": "revision_overflow",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "validation"
+      }
+    },
+    {
+      "id": "unknown_side_field",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "schema"
+      }
+    },
+    {
+      "id": "unknown_data_field",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "schema"
+      }
+    },
+    {
+      "id": "missing_direction",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "schema"
+      }
+    },
+    {
+      "id": "unknown_command_field",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "schema"
+      }
+    },
+    {
+      "id": "transaction_second_side_failure",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "cli_execute",
+            "same_file": true
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": true
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": true
+          }
+        ],
+        "category": "validation"
+      }
+    },
+    {
+      "id": "composed_group_metric_precision",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "cli_execute",
+            "same_file": true
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": true
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": true
+          }
+        ],
+        "category": "metric_precision_composition"
+      }
+    },
+    {
+      "id": "nan_start_token",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "raw_schema"
+      }
+    },
+    {
+      "id": "infinite_length_token",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "raw_schema"
+      }
+    },
+    {
+      "id": "overflowing_json_number",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "raw_schema"
+      }
+    },
+    {
+      "id": "duplicate_start_field",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "raw_schema"
+      }
+    },
+    {
+      "id": "duplicate_command_type",
+      "status": "passed",
+      "detail": {
+        "runs": [
+          {
+            "channel": "cli_execute",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2026-07-28",
+            "same_file": false
+          },
+          {
+            "channel": "mcp_2025-11-25",
+            "same_file": false
+          }
+        ],
+        "category": "raw_schema"
+      }
+    },
+    {
+      "id": "same_file_success_and_recovery_rotation",
+      "status": "passed",
+      "detail": "b58a7ed57aa8959ea0df4e3491317a63b2cb8861945f0ac23885e1180b3bb2b2"
+    },
+    {
+      "id": "invalid_existing_destination",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "preserved": true
+      }
+    },
+    {
+      "id": "destination_directory",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "preserved": true
+      }
+    },
+    {
+      "id": "destination_symlink",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "preserved": true
+      }
+    },
+    {
+      "id": "recovery_directory",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "preserved": true
+      }
+    },
+    {
+      "id": "absent_parent",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "preserved": true
+      }
+    },
+    {
+      "id": "invalid_input",
+      "status": "passed",
+      "detail": {
+        "channels": 3,
+        "preserved": true
+      }
+    },
+    {
+      "id": "immutable_cli_retained",
+      "status": "passed",
+      "detail": null
+    }
+  ],
+  "separate_required_gates": [
+    "Native first-side transient; second-side one command/transaction; Undo/Redo IDs and fields; save/new/reopen.",
+    "Real pointer workflow, exact endpoint picking/ties, controls, Tab/OK, labels/guides, keyboard accessibility and modal shielding.",
+    "Cancel/close/Escape/tool switch/reset/history/load/stale revision and raw text/caret/inspector preservation.",
+    "Source/unit checks: initial AddSewingByLength metric-failure injection, cancellation and work-budget exhaustion; atomic-writer pre-replace interruption.",
+    "All four required local Rust gates and clean tracked evidence registry/map validation."
+  ],
+  "claim_limits": [
+    "Independent authored engineering fixture; no reference metric, projection, cancellation, easing, solver or full sewing parity.",
+    "CLI/MCP are stateless files; this evaluator cannot observe live Editor history, GUI drafts, caches or solver state.",
+    "No candidate output generates a numerical expectation; candidate endpoints are reused only as input for the existing map-knot probe after independent endpoint validation.",
+    "Exact endpoint cases use independent straight arithmetic; analytic full-curved length may differ from a computed metric by ulps and is covered by near-full tests instead.",
+    "Metric precision composition is separately labelled; no large work saturation workload or disk-full claim."
+  ]
+}

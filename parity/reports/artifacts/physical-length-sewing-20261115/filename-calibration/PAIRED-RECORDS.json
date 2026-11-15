@@ -1,0 +1,333 @@
+{
+  "scope": "Review derivative of original paired native attempts. Full return bodies, including giant image arrays/global inventories, remain private under their original hashes. Actual action arguments, status/error and clock fields are retained; no native case is rerun or regraded.",
+  "paired_records": [
+    {
+      "before": {
+        "id": "0001",
+        "label": "os-open-owned-calibration001",
+        "method": "OS.open",
+        "arguments": {
+          "executable": "/usr/bin/open",
+          "args": [
+            "-n",
+            "<WORKSPACE>/.local/native-save-dialog-calibration-20261115/001/WeftForgeSaveDialogCalibration001.app",
+            "--args",
+            "<WORKSPACE>/.local/native-save-dialog-calibration-20261115/001/readonly-original.weftforge"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:21:35.225Z",
+        "monotonic_ns": "889211147525166"
+      },
+      "returned": {
+        "id": "0001",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:21:35.594Z",
+        "monotonic_ns": "889211516364500"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "18f9ba461103a10a27afcc911e4f71b5b7be3e7588c10ede7fbf8d4f913584e8",
+      "original_after_sha256": "2c29df44bd6439f398b5551b79b4a91e66a729290c18f69607ea30a3dc7e4124",
+      "original_after_bytes": 225
+    },
+    {
+      "before": {
+        "id": "0002",
+        "label": "bootstrap-exact-owned-calibration",
+        "method": "getApp",
+        "arguments": {
+          "args": [
+            "<WORKSPACE>/.local/native-save-dialog-calibration-20261115/001/WeftForgeSaveDialogCalibration001.app"
+          ],
+          "evidenceKind": "native",
+          "first_CUA_entry_only": true
+        },
+        "utc": "2026-11-15T18:21:35.594Z",
+        "monotonic_ns": "889211517092500"
+      },
+      "returned": {
+        "id": "0002",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:21:58.941Z",
+        "monotonic_ns": "889234864565541"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "55a837958dfdd290119e73379c427ef0c138b6a70240a3789e69c16a3719366a",
+      "original_after_sha256": "dd044cc1f18bdf3ad6480cce753b08733e3a21b1eb51df42c0fb430dbb4c41b6",
+      "original_after_bytes": 540
+    },
+    {
+      "before": {
+        "id": "0003",
+        "label": "initial-r41",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:21:58.945Z",
+        "monotonic_ns": "889234867699666"
+      },
+      "returned": {
+        "id": "0003",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:21:59.028Z",
+        "monotonic_ns": "889234951106166"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "55249c85f0e408431ed5c49ee37cda57f63e867fa918cb343748015f17f74a49",
+      "original_after_sha256": "f72f98151c28c4bd4f30cb5489b0c822df541340f1a5634ee5c6f9ce4a8211b3",
+      "original_after_bytes": 2290549
+    },
+    {
+      "before": {
+        "id": "0004",
+        "label": "file-menu",
+        "method": "click",
+        "arguments": {
+          "args": [
+            2
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:22:15.636Z",
+        "monotonic_ns": "889251558647500"
+      },
+      "returned": {
+        "id": "0004",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:22:15.890Z",
+        "monotonic_ns": "889251812229083"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "9643dd07816955396d7da302a5df582e8d6d9c0b24394fa5b4664b186ea408a1",
+      "original_after_sha256": "cf2e88a096c479fe88418475dc7a31762791bed0f90d53fb295711f960d5f377",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0005",
+        "label": "file-menu-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:22:15.890Z",
+        "monotonic_ns": "889251812830500"
+      },
+      "returned": {
+        "id": "0005",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:22:16.670Z",
+        "monotonic_ns": "889252592628833"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "43bc1516b673540bd4bbd208a4be778055944b1db246ab05fa7db3b8304a693e",
+      "original_after_sha256": "d0a74670a5d7e1388ac769fdca8a1cff92d5464623e2b4f681c4de37fd3b7447",
+      "original_after_bytes": 2307759
+    },
+    {
+      "before": {
+        "id": "0006",
+        "label": "save-as-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            90
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:22:21.458Z",
+        "monotonic_ns": "889257380372458"
+      },
+      "returned": {
+        "id": "0006",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:22:21.513Z",
+        "monotonic_ns": "889257435416291"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "bc3be9993298dfb52e86ecedc7e9fe64bd29ed168a275acbb28a32d52ca9ceee",
+      "original_after_sha256": "62b8c8b7a216d06d4cd6ad59c81a6d55d38c8f50461c5d351782d03005ef0166",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0007",
+        "label": "save-dialog-field-before-entry",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:22:21.513Z",
+        "monotonic_ns": "889257435843291"
+      },
+      "returned": {
+        "id": "0007",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:22:23.598Z",
+        "monotonic_ns": "889259519993000"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "ab9d3cd4666889d149bde03d33880fc9e08b8a96aca48ade2f4859761cbc695c",
+      "original_after_sha256": "7025b463954c4c78c1d98efa98c2855eeb154c4cf42861ab401e072f3d446bde",
+      "original_after_bytes": 166123
+    },
+    {
+      "before": {
+        "id": "0008",
+        "label": "filename-setValue-once",
+        "method": "setValue",
+        "arguments": {
+          "args": [
+            89,
+            "created.weftforge"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:22:28.806Z",
+        "monotonic_ns": "889264727941250"
+      },
+      "returned": {
+        "id": "0008",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:22:29.956Z",
+        "monotonic_ns": "889265878629500"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "0052d79145e1d20d53c9e3361593d8c2c9782f7bdcffa121d007d2665ba02992",
+      "original_after_sha256": "1714dc93e27b6d4e076d1e93648a5da414172a7397c1f44140c770ce0a010955",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0009",
+        "label": "filename-exact-after-setValue",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:22:29.957Z",
+        "monotonic_ns": "889265879123958"
+      },
+      "returned": {
+        "id": "0009",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:22:30.452Z",
+        "monotonic_ns": "889266374867375"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "34db50d5cb76bdf719afe51fdd09db204a6c1a5af1121192e12972abf753d626",
+      "original_after_sha256": "f9cd2f0920c0d2b4acee422ca2efd6cbd4681854775c1df1ad24798face947b7",
+      "original_after_bytes": 176414
+    },
+    {
+      "before": {
+        "id": "0010",
+        "label": "cancel-save-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            92
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:22:47.582Z",
+        "monotonic_ns": "889283503950041"
+      },
+      "returned": {
+        "id": "0010",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:22:48.007Z",
+        "monotonic_ns": "889283929116333"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "6a8dd9857c60a50c3632da63171908a5d6b42ce9323bfb4a1b4e37830d837839",
+      "original_after_sha256": "36862865f2cea0378d415adcfb2f5944a9b97fc27d9b646e45be8a128c63a88f",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0011",
+        "label": "cancelled-unchanged-r41",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:22:48.007Z",
+        "monotonic_ns": "889283929683833"
+      },
+      "returned": {
+        "id": "0011",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:22:48.505Z",
+        "monotonic_ns": "889284426808375"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "733f54302a8b21ceb4ab21ea18d53ee1742b3c325f26a2e0074eac09669aada6",
+      "original_after_sha256": "5752b2159c9ad37f03e1eef19f8bcd923fbaca80fc7d8a6332348c0159bc2110",
+      "original_after_bytes": 2297333
+    },
+    {
+      "before": {
+        "id": "0012",
+        "label": "planned-quit-final-observer",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+q"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:22:58.821Z",
+        "monotonic_ns": "889294743686625"
+      },
+      "returned": {
+        "id": "0012",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:22:59.004Z",
+        "monotonic_ns": "889294926428208"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "95f27680d1d01cc5cd1125025742c0e799570404afdca971f547795a90588b6f",
+      "original_after_sha256": "5ca635ed89e0d2fe406e790d3d00401b7af4be07e1cf0fee3eefa4411dfeba29",
+      "original_after_bytes": 152
+    }
+  ]
+}

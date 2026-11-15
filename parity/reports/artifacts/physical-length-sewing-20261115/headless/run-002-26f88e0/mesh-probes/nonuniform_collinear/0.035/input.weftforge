@@ -1,0 +1,209 @@
+{
+  "format": "weftforge",
+  "version": 3,
+  "project": {
+    "revision": 41,
+    "points": [
+      {
+        "id": 2,
+        "position": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "id": 3,
+        "position": [
+          0.2,
+          0.1
+        ]
+      },
+      {
+        "id": 4,
+        "position": [
+          0.2,
+          0.3
+        ]
+      },
+      {
+        "id": 5,
+        "position": [
+          0.0,
+          0.3
+        ]
+      },
+      {
+        "id": 11,
+        "position": [
+          0.4,
+          0.0
+        ]
+      },
+      {
+        "id": 12,
+        "position": [
+          0.6,
+          0.0
+        ]
+      },
+      {
+        "id": 13,
+        "position": [
+          0.6,
+          0.3
+        ]
+      },
+      {
+        "id": 14,
+        "position": [
+          0.4,
+          0.3
+        ]
+      }
+    ],
+    "curves": [
+      {
+        "id": 6,
+        "start": 2,
+        "end": 3,
+        "controls": [
+          [
+            0.06666666666666667,
+            0.0
+          ],
+          [
+            0.13333333333333333,
+            0.03333333333333333
+          ]
+        ]
+      },
+      {
+        "id": 7,
+        "start": 3,
+        "end": 4,
+        "controls": null
+      },
+      {
+        "id": 8,
+        "start": 4,
+        "end": 5,
+        "controls": null
+      },
+      {
+        "id": 9,
+        "start": 5,
+        "end": 2,
+        "controls": null
+      },
+      {
+        "id": 15,
+        "start": 11,
+        "end": 12,
+        "controls": [
+          [
+            0.4,
+            0.0
+          ],
+          [
+            0.41,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": 16,
+        "start": 12,
+        "end": 13,
+        "controls": null
+      },
+      {
+        "id": 17,
+        "start": 13,
+        "end": 14,
+        "controls": null
+      },
+      {
+        "id": 18,
+        "start": 14,
+        "end": 11,
+        "controls": null
+      }
+    ],
+    "pieces": [
+      {
+        "id": 10,
+        "name": "Original analytic panel",
+        "boundary": [
+          6,
+          7,
+          8,
+          9
+        ],
+        "placement": {
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "material": 1,
+        "grain_angle": 0.0
+      },
+      {
+        "id": 19,
+        "name": "Original straight panel",
+        "boundary": [
+          15,
+          16,
+          17,
+          18
+        ],
+        "placement": {
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "material": 1,
+        "grain_angle": 0.0
+      }
+    ],
+    "materials": [
+      {
+        "id": 1,
+        "name": "Original uncalibrated material",
+        "areal_density": 0.18,
+        "warp_stiffness": 400.0,
+        "weft_stiffness": 400.0,
+        "shear_stiffness": 100.0,
+        "bending_stiffness": 0.003,
+        "damping": 0.2,
+        "friction": 0.4,
+        "collision_thickness": 0.003,
+        "color": [
+          0.25,
+          0.5,
+          0.75
+        ]
+      }
+    ],
+    "seams": [],
+    "sewing_groups": [],
+    "mannequin": {
+      "capsules": []
+    },
+    "resolution": 0.035,
+    "next_id": 20
+  }
+}

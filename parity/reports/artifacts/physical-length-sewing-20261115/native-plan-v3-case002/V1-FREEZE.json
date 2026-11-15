@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_actual_native_Free_sewing_execution_pending_root_review_and_binding",
+  "frozen_at_utc": "2026-11-15T16:58:34.431402+00:00",
+  "preparation_only": true,
+  "product_CUA_or_Cargo_executed_for_this_preparation": false,
+  "required_before_execution": "Root protocol/grader review, merged New Empty/source gates, explicit source_worktree/native executable SHA/input/case binding and GO; this freeze does not authorize execution.",
+  "source_policy_snapshot_commit": "c4be919391efb8c39e035bb7c40e74ea52c592f4",
+  "source_policy_main_rs_sha256": "175be6c0aff0a3c252e64143871a04dd29845c68981c3b725ebd6cfd114bcb3c",
+  "files": [
+    {
+      "path": "METHOD.txt",
+      "bytes": 7168,
+      "sha256": "f5058d2391a3cc2b17d03fdd55fd40ac6515a21da1f647c0339f474b1d7289a5"
+    },
+    {
+      "path": "PLAN.json",
+      "bytes": 13967,
+      "sha256": "872f4199ff9e1603b9aa81c4e7dddb4f6b7fbbeb8631b082e258e58162ca0f91"
+    },
+    {
+      "path": "EXPECTED.json",
+      "bytes": 4544,
+      "sha256": "589a9400a916e9340d04ae77b332ea25d3a0abc6b06dee9b8ac9868ac80506ec"
+    },
+    {
+      "path": "SOURCE-INPUTS.json",
+      "bytes": 3838,
+      "sha256": "93944ac1150b493b3bd1de3b134b261b7f4f57fed6aa90de8b4709522a2488d3"
+    },
+    {
+      "path": "PREPARATION-NOTES.json",
+      "bytes": 1403,
+      "sha256": "9368bad22c94e5fd7935604a4f40d3caa05a81e0a27f3442aab487e280f68c63"
+    },
+    {
+      "path": "PREPARATION-SOURCE-CHECK-001.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "PREPARATION-SOURCE-CHECK-001.stderr",
+      "bytes": 88,
+      "sha256": "81b778b22133b7685619591490f39c61e00b0ef49e1ff12ca1ad9f165647a6c2"
+    },
+    {
+      "path": "prepare_plan.py",
+      "bytes": 20441,
+      "sha256": "8b712529164dabce56f935ef0a2599e1e69ddcf46a6e6f2a321e6aa4fbf0a675"
+    },
+    {
+      "path": "grade_saved.py",
+      "bytes": 10081,
+      "sha256": "e6a5f5de762aef924c4aecd733d7cb4ccb00faa0ad50497f12d004f101670bc9"
+    },
+    {
+      "path": "fixture.weftforge",
+      "bytes": 3289,
+      "sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831"
+    },
+    {
+      "path": "CRITERIA.json",
+      "bytes": 53615,
+      "sha256": "d748d52d5aee5bee2d57c02e81edd137c8e50ab5c9bea9f69afb1c27c31d2938"
+    },
+    {
+      "path": "evaluate_physical_sewing.py",
+      "bytes": 43330,
+      "sha256": "ac252d08d820f7aedac771502486a54ec2dc4242017911588d5e39fcaa38a384"
+    },
+    {
+      "path": "SELF-CHECK-001.json",
+      "bytes": 4832,
+      "sha256": "cb4eeba9ca6688fc16ded576f99f38c85bb0c087b00b25c7c098a65a0d4713d0"
+    }
+  ]
+}

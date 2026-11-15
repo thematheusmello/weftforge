@@ -134,7 +134,7 @@ arguments and additionally include the per-request `_meta` shown above.
 The supported shared commands are `import_svg_patterns`, `import_dxf_patterns`, `add_polygon`, `add_rectangle`, `add_ellipse`, `move_point`,
 `set_curve_controls`, `split_curve`, `join_curve`, `resize_piece`, `transform_piece`, `set_placement`, `set_grain`,
 `set_material`, `add_material`, `update_material`, `add_seam`, `update_seam`,
-`remove_seam`, `add_sewing_group`, `update_sewing_group`, `remove_sewing_group`,
+`remove_seam`, `add_sewing_group`, `add_sewing_by_length`, `update_sewing_group`, `remove_sewing_group`,
 `remove_piece`, `set_resolution`, and `set_mannequin`.
 Their exact data fields and nested types are in `tools/list`; the shared core
 validation remains authoritative. Authoring uses f64 SI units, placement/grain
@@ -269,6 +269,29 @@ lengths. Legacy seam maps retain their original normalized-t meaning. Different
 pieces/disconnected spans are supported; gaps never add sewing length. Group
 identity and map survive supported split/join/remesh operations. The native
 writer saves v3; strict v1/v2 readers preserve legacy data and semantics.
+
+`add_sewing_by_length` creates one ordinary sewing group with one interval per
+side and the normalized physical arc-length map `[[0,0],[1,1]]`:
+
+```json
+{"type":"add_sewing_by_length","data":{"name":"Free sewing","a":{"curve":7,"start_t":0,"direction":"forward","length_m":0.1},"b":{"curve":16,"start_t":0.75,"direction":"reverse","length_m":0.1}}}
+```
+
+Use inspected curve IDs. Each side requires finite `start_t` in `[0,1]`, closed
+`direction` (`forward` increases authored t; `reverse` decreases it), and positive
+finite `length_m` in SI metres. Both sides resolve against the same candidate
+construction before an ID is allocated. An exact full-remaining-length request
+retains the exact curve endpoint; excess length is rejected without clamping,
+wrapping or traversing another boundary. Missing curves, collapsed spans,
+overlapping same-curve coverage, invalid names and existing metric precision/work
+errors reject the whole transaction and preserve existing output/recovery bytes.
+Disjoint spans on one curve remain valid. Different side lengths use the existing
+group's normalized proportional semantics. Only resolved t intervals are saved;
+later geometry edits retain those attachments and recompute lengths, without
+persistent length locks. Native v3, CLI `execute`, MCP `project_execute` and the
+nine-tool surface stay unchanged. This is bounded WeftForge engineering behavior;
+reference easing, continuous correspondence and numeric parity remain unqualified.
+See the [physical-length contract](../spec/features/SEW-002-physical-length.md).
 
 The same atomic command array can be supplied without an MCP client:
 

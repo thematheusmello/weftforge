@@ -535,6 +535,12 @@ fn command_schema() -> Value {
         json!({"curve":id,"t0":number,"t1":number}),
         &["curve", "t0", "t1"],
     );
+    let side_by_length = object(
+        json!({"curve":id,"start_t":{"type":"number","minimum":0,"maximum":1},
+            "direction":{"type":"string","enum":["forward","reverse"]},
+            "length_m":{"type":"number","exclusiveMinimum":0,"description":"Positive authored arc length in metres, within the remaining oriented curve."}}),
+        &["curve", "start_t", "direction", "length_m"],
+    );
     let placement = object(
         json!({"translation":xyz,"rotation":xyz}),
         &["translation", "rotation"],
@@ -677,6 +683,13 @@ fn command_schema() -> Value {
             object(
                 json!({"name":text,"a":path,"b":path,"correspondence":correspondence}),
                 &["name", "a", "b", "correspondence"],
+            ),
+        ),
+        (
+            "add_sewing_by_length",
+            object(
+                json!({"name":text,"a":side_by_length,"b":side_by_length}),
+                &["name", "a", "b"],
             ),
         ),
         (

@@ -89,7 +89,7 @@
     "spec/features/APP-001-new-empty.md"
   ],
   "source_scope_description": "All 59 DD runtime/build/test/contract inputs, including three reviewed contracts. The original independent evaluator and immutable outputs are artifact-bound; its separate 47-file core/CLI scope and accepted CLI identity remain unchanged.",
-  "freshness": "current",
+  "freshness": "stale",
   "artifact_hashes": {
     "parity/reports/artifacts/pattern-transform-20261115/PREPARATION-ATTEMPTS.json": "c60255616aaf9ab1277c7a1946e5a456b0358ed65081c5facad27ba23f932d45",
     "parity/reports/artifacts/pattern-transform-20261115/PUBLICATION.json": "3c3bc88e5c6025f6116c5d267d4fa3fc3f46977e4c2f7d1811eb62e832ef3f9f",
@@ -1249,5 +1249,6 @@
     "runtime_and_contract_files_unchanged": 59,
     "receipt": "parity/reports/artifacts/pattern-transform-20261115/publication-checks-eecc28a/CHECKS.json",
     "qualification": "Check commands/logs are attributed to clean eecc28a. The final closure adds these five receipt files and wording/hash-attribution metadata only; it changes no runtime, contract, original artifact or numerical/native outcome."
-  }
+  },
+  "freshness_reason": "B657 changes core sewing/document handling, the shared command schema and native Free sewing/retention/modal/history routes within the DD report scope. DD A4 bounded acceptance and failed/unverified B, original source identities, clocks and all artifacts remain unchanged; no B pass or unexecuted B2 credit is transferred."
 }

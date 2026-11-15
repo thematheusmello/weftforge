@@ -41,6 +41,13 @@ physical stiffness, placement and derived meshes. Groups pair cumulative authore
 arc lengths across partial, reversed or disconnected spans, with editable easing
 maps; legacy single seams retain their curve-parameter correspondence.
 
+**Free sewing** creates partial boundary pairs from exact Start t, direction
+and a Length in millimetres. Confirming A keeps a pending preview; confirming B
+creates one physical-length group with one Undo step. Applied lengths and endpoint
+guides show the authored pair. The bounded native check includes invalid input,
+caret retention, history, saving and same-process reopen; internal sewing, full
+chain workflows and garment simulation acceptance remain open.
+
 **Transform pattern** translates or rotates one 2D piece, with numeric angle,
 translation and pivot controls plus canvas handles. This layout operation keeps
 the arranged 3D surface and world warp fixed. **New Empty**, available in File

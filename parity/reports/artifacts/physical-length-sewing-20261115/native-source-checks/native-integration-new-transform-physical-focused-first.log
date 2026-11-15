@@ -1,0 +1,35 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/physical-sewing-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.27s
+     Running unittests src/main.rs (.local/target-native-physical-sewing-20261115/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 13 tests
+test physical_sewing_tests::free_sewing_pick_preserves_endpoints_ties_and_unsnapped_chord_projection ... ok
+test physical_sewing_tests::free_sewing_invalid_property_and_tool_switch_preserve_unfinished_property_text ... ok
+test physical_sewing_tests::free_sewing_canvas_start_retains_unfinished_minus_and_redo ... ok
+test physical_sewing_tests::free_sewing_canvas_start_retains_unfinished_exponent_and_redo ... ok
+test physical_sewing_tests::free_sewing_nonmodal_cancel_keeps_property_edit_made_after_accepting_a ... ok
+test physical_sewing_tests::free_sewing_accessible_exact_controls_and_equal_click_require_direction ... ok
+test physical_sewing_tests::free_sewing_accessible_boundary_and_enter_resolve_against_pending_construction ... ok
+test physical_sewing_tests::free_sewing_modal_shields_background_and_rejects_overlap_without_history_loss ... ok
+test physical_sewing_tests::free_sewing_pointer_tab_ok_creates_one_physical_pair_and_two_applied_labels ... ok
+
+thread 'physical_sewing_tests::free_sewing_new_empty_background_action_is_shielded_by_both_side_modals' (62133614) panicked at apps/weftforge/src/main.rs:11769:32:
+missing enabled button New Empty
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test physical_sewing_tests::free_sewing_new_empty_background_action_is_shielded_by_both_side_modals ... FAILED
+test physical_sewing_tests::free_sewing_preview_cache_and_revision_reset_load_history_boundaries ... ok
+
+thread 'physical_sewing_tests::free_sewing_new_empty_refuses_pending_a_and_b_without_dropping_or_committing_them' (62133615) panicked at apps/weftforge/src/main.rs:11769:32:
+missing enabled button New Empty
+test physical_sewing_tests::free_sewing_new_empty_refuses_pending_a_and_b_without_dropping_or_committing_them ... FAILED
+test physical_sewing_tests::free_sewing_failure_and_cancel_retain_raw_text_carets_redo_and_accepted_state ... ok
+
+failures:
+
+failures:
+    physical_sewing_tests::free_sewing_new_empty_background_action_is_shielded_by_both_side_modals
+    physical_sewing_tests::free_sewing_new_empty_refuses_pending_a_and_b_without_dropping_or_committing_them
+
+test result: FAILED. 11 passed; 2 failed; 0 ignored; 0 measured; 76 filtered out; finished in 1.36s
+
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

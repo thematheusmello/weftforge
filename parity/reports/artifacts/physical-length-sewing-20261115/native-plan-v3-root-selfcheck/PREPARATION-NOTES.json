@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "product_CUA_or_Cargo_executed_for_preparation": false,
+  "initial_source_read_snapshot": {
+    "head": "5655fed545cb2033f2532b480bd432e16d40c8bc",
+    "main_rs_sha256": "ba3b9c7840adb40cd8c09363885f5c6989e708c10474401f68dfa9dc23e20402"
+  },
+  "final_preparation_source_snapshot": {
+    "head": "c4be919391efb8c39e035bb7c40e74ea52c592f4",
+    "main_rs_sha256": "175be6c0aff0a3c252e64143871a04dd29845c68981c3b725ebd6cfd114bcb3c",
+    "status": []
+  },
+  "source_read_sanity_failure_preserved": {
+    "status": "failed_wrong_preparation_assumption_no_product_run",
+    "cause": "A read-only assertion incorrectly required New Empty to already exist in current physical-sewing main.rs. The task and frozen plan correctly treat it as a separate APP-001 contract input pending root merge/gates/native binding. No numerical criterion, source, fixture or grader was changed.",
+    "stderr": "PREPARATION-SOURCE-CHECK-001.stderr",
+    "stdout": "PREPARATION-SOURCE-CHECK-001.stdout"
+  },
+  "selfcheck": "SELF-CHECK-001.json passed with 18 deliberately wrong outputs rejected; there were no failed grader selfcheck attempts.",
+  "source_qualification": "All numerical expectations come from the unchanged pre-candidate frozen analytic oracle. Current Free sewing source is used only for exposed labels/name policy and interface feasibility. New Empty code/native binary is unbound."
+}

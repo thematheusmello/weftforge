@@ -1,0 +1,74 @@
+{
+  "scope": "Fresh clean-candidate metadata/registry/historical-and-current-source-map/Python/CLI-help verification only. Original B657 Rust gates, independent execution, saved grader and native cases are retained without rerun.",
+  "candidate_commit": "d670aa7562b068bf32f5385c0f8f10858dbf29f5",
+  "source_runtime_commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+  "started_utc": "2026-11-15T19:58:06.864787+00:00",
+  "finished_utc": "2026-11-15T19:59:57.911724+00:00",
+  "elapsed_seconds": 111.04594883299433,
+  "command": [
+    "cargo",
+    "xtask",
+    "verify"
+  ],
+  "cwd": "<WORKSPACE>/.local/physical-sewing-20261115",
+  "default_worktree_target": true,
+  "CARGO_TARGET_DIR": null,
+  "cross_worktree_cache_copied": false,
+  "target_existed_before_this_metadata_check": true,
+  "exit_code": 0,
+  "checkout_clean_before": true,
+  "checkout_clean_after": true,
+  "git_status_after": "",
+  "before_audit": {
+    "source60_match": true,
+    "protected_metadata6_match": true,
+    "regular_artifacts_tracked_and_hashed": 1040,
+    "typed_symlinks_tracked_mode120000_target_bytes_match": 3,
+    "source60_map_sha256": "bc2c2b774e614bebfc065c717cb20bcea35df5288696927be07969dcba3f9d0e"
+  },
+  "after_audit": {
+    "source60_match": true,
+    "protected_metadata6_match": true,
+    "regular_artifacts_tracked_and_hashed": 1040,
+    "typed_symlinks_tracked_mode120000_target_bytes_match": 3,
+    "source60_map_sha256": "bc2c2b774e614bebfc065c717cb20bcea35df5288696927be07969dcba3f9d0e"
+  },
+  "binary_identities_before": {
+    "current_native": {
+      "sha256": "69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0",
+      "bytes": 60932600
+    },
+    "workspace_debug_cli": {
+      "sha256": "47011af81c0d4de78d976c39c64fb5cd5a1bfc37d9e517ff9ff6087e1d145b24",
+      "bytes": 9220736
+    },
+    "accepted_independent_cli": {
+      "sha256": "fa4add99646544a052b6fa534ad325f1528e0572e4ee9aae344d687b85ac5cc1",
+      "bytes": 9231168
+    }
+  },
+  "binary_identities_after": {
+    "current_native": {
+      "sha256": "69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0",
+      "bytes": 60932600
+    },
+    "workspace_debug_cli": {
+      "sha256": "47011af81c0d4de78d976c39c64fb5cd5a1bfc37d9e517ff9ff6087e1d145b24",
+      "bytes": 9220736
+    },
+    "accepted_independent_cli": {
+      "sha256": "fa4add99646544a052b6fa534ad325f1528e0572e4ee9aae344d687b85ac5cc1",
+      "bytes": 9231168
+    }
+  },
+  "stdout_sha256": "ffc1920223bd7b4d595a745c1520ee92f476aaec73bcfc5ff0203bcdeada0a92",
+  "stderr_sha256": "50396db8658534bb32ed40187f4066bb915c1ba9bcdcf0ad698665aaf9c9e63f",
+  "python_suite_counts": [
+    48,
+    6
+  ],
+  "source60_unchanged": true,
+  "native_binary_unchanged": true,
+  "accepted_independent_cli_unchanged": true,
+  "workspace_debug_cli_context_note": "xtask verify invokes cargo run -p weftforge-cli -- --help; workspace CLI feature/build context is independent of the immutable CLI used by the original accepted evaluator. No candidate evaluator or native app is executed."
+}
