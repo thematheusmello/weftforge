@@ -1,0 +1,55 @@
+{
+  "kind": "focused_source_fix_and_accessibility_diagnosis",
+  "checked_utc": "2026-11-15T02:28:04.780858+00:00",
+  "base": "bb6010a7d07b9f2c3167b71327e043ea60f3d237",
+  "commit": "cd3266c4a7b970e1b9ee0ff89aae9da3552c34db",
+  "branch": "fix/svg-import-modal-accessibility",
+  "changed_files": [
+    "apps/weftforge/src/main.rs"
+  ],
+  "native_source_sha256": "13202688c6891bcdce7bc8bfd9fe1aab8547cdade51ad6037bbd4fb731cfd9e9",
+  "target_real": true,
+  "target_nested_symlinks": [],
+  "CARGO_INCREMENTAL": "0",
+  "cancellation": {
+    "confirmed_red": "Pointer chooser and visible Cancel after focused width text reproduces an unintended project revision, width and pending grain commit on the first unguarded post-close blur.",
+    "first_guard_attempt": "Always stamping one frame suppresses the first post-close pass but still fails the second; retained in green.log and guard-diagnostic.log.",
+    "root_cause": "egui keeps the previous modal layer until the first post-dismissal pass ends; the restored background field loses focus on that pass, and lost_focus remains true through one further pass. The original helper omitted same-ID/current-none guards, while callers inconsistently stamped separately.",
+    "fix": "The shared action helper always stores an explicit expiry for affected numeric IDs: through the next frame normally, through the second post-action frame while a modal layer exists. Existing successful cache clearing/failure restoration stays; export/prepare duplicate stamps removed; sewing cancellation routes through this helper after its existing current-focus surrender.",
+    "regression_scope": "New real text focus and pointer press/release events; checks complete project including revision/IDs, full Undo/Redo snapshots and pending draft through three post-Cancel frames, then verifies later deliberate refocus/Tab commits exactly one expected transaction.",
+    "parser_transaction_error_validation_changed": false
+  },
+  "accessibility": {
+    "saved_snapshot_scope": "modal-full-ax.txt explicitly reports showing 0-100 of109 items; provider tail was not fetched.",
+    "diagnosis": "Unresolved native provider truncation, not an established source accessibility defect.",
+    "regression": "Actual emitted AccessKit tree root traversal through non-hidden ancestors reaches import heading, physical scale text and enabled Import/Cancel actions.",
+    "root_reachability_passed_before_and_after": true,
+    "product_accessibility_rendering_changed": false,
+    "actual_native_provider_retest_performed_by_this_agent": false
+  },
+  "checks": {
+    "SVG_tests": 4,
+    "focus_tests": 7,
+    "sewing_cancel_tests": 1,
+    "seam_reverse_tests": 1,
+    "all_final_focused_runs_exit_zero": true,
+    "cargo_fmt_all_check_passed": true,
+    "git_diff_check_passed": true
+  },
+  "log_sha256": {
+    "red.log": "cb778cc8b80e06633a1547268b1e4ac5ba39b5194b7d8e02a97617f779389734",
+    "green.log": "0190f59d9fe1c96bd08a35e0fcfcabc00ab908363f596918c7786ae757879334",
+    "guard-diagnostic.log": "591cc8ea9dd619f48aa7e46f70c3d86a61c4522198eb314f8bb9c3fcfd0cdf05",
+    "green-2.log": "a69af52b8a4ac87b0d922f33d76d375e3bc0157664b62041a9743327be300e23",
+    "focus.log": "692cf2386ae6b6dd69b6f2427973529a7da96e8f41effb8080bcbe2ef31d2f6a",
+    "sewing-cancel.log": "a3ef170fecd18853010fb8bee9506dbb89bd2d96d592b9729412b0f4756c6599",
+    "seam-reverse.log": "f6640559dccae579bb44d3b9d710ea181856f5466c20630480943111a1c64c38"
+  },
+  "not_performed": [
+    "No actual app/UI interaction",
+    "No physics/garment runs",
+    "No broad workspace test/Clippy/xtask gates",
+    "No GitHub/publication operation"
+  ],
+  "handoff": "Root owns merge with the separate Frame all change, complete composite gates and actual native cancellation retest."
+}

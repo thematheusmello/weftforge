@@ -1,0 +1,6 @@
+{
+  "kind": "Trace counter closure did not retain the latest primitive value across tool calls",
+  "error": "EEXIST trace/003-before.json",
+  "failed_before_ui_action": true,
+  "corrected_by": "Allocate next trace number from existing durable before records; reobserve AX indices before input"
+}

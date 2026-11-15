@@ -1,0 +1,143 @@
+{
+  "kind": "portable AFTER-CLOCK compiled diagnostic replay",
+  "status": "passed_all_362_frozen_peaks_and_838392_triangle_axes_exactly",
+  "source_commit": "2079411490512b3bdc13ae93774a2f48fb38cc1f",
+  "source_sha256": {
+    "crates/weftforge-sim/src/strain.rs": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+    "crates/weftforge-sim/src/lib.rs": "d3f3e040559c950d44a52bd18cb107cf3b4824cd2f985dca3d2636b52728a03e",
+    "crates/weftforge-sim/src/constraints.rs": "54b83b92eab65c3fb0ca50ea81c18ba748f01adca1a4119c1c455bbc90be1490",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/tests.rs": "f0bae1aaed07381cd663fa7100b6bd794a53f20f6884aaac4c8a52975be35e36"
+  },
+  "runtime_source_hashes_exact": true,
+  "unchanged_physics_function_sha256": {
+    "    fn deformation(": "d6a2d3998d424b93660c67cc9d94708717c19bdca01234e64efaa8f46f51b596",
+    "    pub fn solve(": "62986223457eb261c629bfd3228a227678fa76e1cdd9f20c0c8a88a2b6c264cc",
+    "pub(crate) fn dihedral(": "bbcd548267306048f13de8c41c077a38b25a26030a34936dfe8383fa6f5002de",
+    "fn project": "3f05b0c0eb793ba9333a475bc24b4068da660b289657c7a3325da5e07e0fc4b0",
+    "pub(crate) fn solve_stitch(": "126e326fea616a6811515905cd8ba84e36c790c3c2e02e15e906e362f69a287a",
+    "    pub fn step(": "ec66ea9f7f51b1827ddb9fded97e34683199d425f32334d1dd7b7598e9b67abc",
+    "    pub fn reset(": "867ea5209534b9a386960eb171548b5e09d4b9c8d314852172fbe5daae3c9365",
+    "fn validate(": "6a2394ec051f7dc1d02a9e687da6e7b6c5277ed733e087e94a48bf7de16cab04"
+  },
+  "states": 362,
+  "triangle_axes": 838392,
+  "peak_failures": [],
+  "axis_comparison": {
+    "mismatch_count": 0,
+    "first_mismatches": []
+  },
+  "new_cloth_initializations": 0,
+  "new_physics_steps": 0,
+  "new_timed_benchmarks": 0,
+  "comparator_self_checks": {
+    "peak_field_and_ulp_mutations_rejected": true,
+    "coherent_wrong_peak_rejected": true,
+    "axis_ulp_and_count_mutations_rejected": true
+  },
+  "strict_json_and_path_self_checks": "passed",
+  "harness_self_checks": [
+    {
+      "static_self_checks": 30,
+      "status": "passed"
+    },
+    {
+      "states": 362,
+      "triangle_axes": 838392,
+      "new_physics_steps": 0
+    }
+  ],
+  "cases": [
+    {
+      "case": "base",
+      "case_id": 0,
+      "states": 181,
+      "triangles": 1172,
+      "triangle_axes": 424264,
+      "original_exact_attribution_failed_frames_retained": [
+        9,
+        10,
+        15,
+        17,
+        24,
+        32,
+        34,
+        41,
+        46,
+        49,
+        56,
+        66,
+        69,
+        70,
+        72,
+        80,
+        95,
+        98,
+        114,
+        115,
+        116,
+        119,
+        126,
+        127,
+        141,
+        142,
+        144,
+        150,
+        155,
+        157,
+        158,
+        165,
+        180
+      ],
+      "original_quality_status_retained": "failed",
+      "original_strict_delivery_passed_retained": false
+    },
+    {
+      "case": "height",
+      "case_id": 1,
+      "states": 181,
+      "triangles": 1144,
+      "triangle_axes": 414128,
+      "original_exact_attribution_failed_frames_retained": [
+        6,
+        10,
+        18
+      ],
+      "original_quality_status_retained": "failed",
+      "original_strict_delivery_passed_retained": false
+    }
+  ],
+  "input_sha256": "4fc3b2ec3bbaa805668f4bf6b130889010de60b2ba5eacf263c92911194a6612",
+  "actual_axis_sha256": "715b6dd68f64ca1bfb2d811c7b500dd5b420d4fa021c3825af0278ddccba6533",
+  "expected_axis_sha256": "715b6dd68f64ca1bfb2d811c7b500dd5b420d4fa021c3825af0278ddccba6533",
+  "harness_sha256": "f344ceb7a9e5c6b05eec7547d67505f883e82e0583adc217ec7903038d9af50a",
+  "compiled_helper_sha256": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+  "scratch_executable_sha256": "f72972611a26eb6635b000d9d6addab600bf36cbbf714aed0b598e216ab8abde",
+  "compiler_version": "rustc 1.94.1 (e408947bf 2026-03-25)\nbinary: rustc\ncommit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1\ncommit-date: 2026-03-25\nhost: aarch64-apple-darwin\nrelease: 1.94.1\nLLVM version: 21.1.8\n",
+  "python_version": "3.13.0 (main, Nov 12 2025, 18:15:04) [Clang 17.0.0 (clang-1700.0.13.3)]",
+  "compile_command": [
+    "rustup",
+    "run",
+    "1.94.1",
+    "rustc",
+    "--edition=2024",
+    "--crate-name",
+    "diagnostic_static_check",
+    "-D",
+    "warnings",
+    "harness.rs",
+    "-o",
+    "diagnostic-static-check"
+  ],
+  "execution_command": [
+    "./diagnostic-static-check"
+  ],
+  "compile_exit_code": 0,
+  "execution_exit_code": 0,
+  "scratch_outside_repository": true,
+  "scratch_retained": false,
+  "limits": "Static arithmetic replay only. Original A physical strain failures at28..37, 33A+3B exact attribution failures and both strict false results remain unchanged. No calibration, convergence, native UI, release or reference-parity acceptance.",
+  "bindings_exact_before_and_after": true,
+  "scratch_removed": true,
+  "posthoc_wall_seconds": 4.54736533400137
+}

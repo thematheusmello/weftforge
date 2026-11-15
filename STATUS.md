@@ -7,15 +7,76 @@ inventory, not a feature-completion denominator.
 
 ## Current continuation
 
-Published main remains `d65f935aea54bb5d8cf882d8c212fee8dbe314cf` from
-[PR37](https://github.com/thematheusmello/weftforge/pull/37). This local checkpoint
-combines tested runtime `0770204a54abdf5f929b6626b01d7fcfb0e13ca4` with current
-metadata. All forty runtime/test files retain their exact tested bytes. The
-source-only [capsule packet](parity/reports/artifacts/capsule-surface-20261115/README.md)
-retains original authoring inputs, all362 saved boundary states/360 step records,
+The latest verified implementation is
+[PR39](https://github.com/thematheusmello/weftforge/pull/39), prepared on
+`feat/svg-studio-integration`, worktree `.local/svg-studio-integration-20261115`.
+Its prior main is `c0201a74933a4785aa454e7740420fcee54f504e` from
+[PR38](https://github.com/thematheusmello/weftforge/pull/38), with zero merge
+workflow runs. Actions remain disabled. Pages is configured for workflow builds;
+automated deployments are therefore disabled too, while the static site remains
+configured. The Pages builds API returned no build records at publication.
+Its tested runtime is `32f9b3481c46e28a3b3acc49e6cf3908c7001b28`: all45
+runtime/test files remain byte-identical through native verification and
+publication assembly. The packaged native SHA256 is
+`ef4e1a0f9ca797669e549f407a234ad0a8295fadab281d791b9ab92158b76a4e`.
+
+The build combines editable SVG pattern import (core, native, CLI and MCP),
+the shared numeric Cancel fix, view-only **Frame all**, full static capsule
+contact and diagnostic-only canonical strain reporting. No force, projection,
+material, physical quality threshold or original experiment changed in this
+SVG/diagnostic increment. Current screenshots are in the
+[native gallery](docs/studio-preview.md).
+
+The combined source passes formatting,168Rust tests, strict workspace/all-target
+Clippy, xtask verification with54Python checks and unsigned packaging. The real
+private target was initially empty at earlierbb6010a and reused only within this
+same worktree. All five latest jobs are terminal0 under
+`.local/svg-studio-integrated-checks-v2-20261115` (wrapper4460/session40202).
+The earlier165-test package and its original results remain retained separately.
+
+Nativev1 onbb6010a reproduced Cancel committing pending width/revision; the
+shared blur-guard fixcd3266c has native-like pointer/complete-history regressions.
+The initial accessibility defect claim is qualified: the provider clips at100
+nodes; emitted AccessKit root traversal reaches all enabled modal controls before
+and after. Nativev2 then exercised the functional import/history/edit/retention/
+quit/reopen flow with74 before/returned input records. Its independent final
+geometry/SVG/exact-reopen check passed. An extra root protocol incorrectly
+required Undo to rewind the ID allocator11 instead of retaining29; that original
+strict v2 result remains failed, with no retroactive promotion.
+
+A NEW prospectively frozen nativev3 case used the same binary and original
+fixtures, with analytically derived exact allocator29 after import and Undo.
+All75 native inputs000–074 have before/returned records. Both unchanged final
+geometry/SVG/reopen checking and the separately frozen seven-checkpoint history
+supplement passed, with exact revisions1/2/3/4/5/5/5 and allocators11/29/29/29/29/
+29/29. Edited, rejected and fresh-reopened/resaved files are byte-identical.
+Two actor input corrections and one premature quit-inventory assertion remain
+retained; all observer assertions did NOT pass. Settled inventory confirmed
+actual exit before the fresh Empty0 launch. Independent raw-trace/privacy review supports the bounded v3 flow and both
+frozen graders. Clean tracked12e9df passes both public default-path static
+replays, registry/map and all2,905 referenced artifact hashes. The tracked
+[publication closure](parity/reports/artifacts/svg-publication-20261115/ROOT-CLOSURE.json)
+keeps the results and qualifies a receipt-suffix encoding correction without
+changing command outcomes. Final clean3145145 registry/map checks pass with all
+2,925 referenced artifacts tracked and hash-correct; the subsequent PR-link and
+deployment-wording update changes metadata only. The newv3app is open paused
+in Rest with reopened revision5/three pieces. The v2app remains on the original
+Harbor rest preview; neither native case ran simulation.
+
+The new diagnostic helper2079411 matches all362 frozen peaks and838,392
+triangle-axis values in actual compiled static replay, without initialization or
+integration. Projection/step/reset/validation/common math remain byte-identical;
+original physical and strict results remain immutable. The portable29-file
+[diagnostic packet](parity/reports/artifacts/diagnostic-static-20261115/README.md)
+is tracked locally; its default-root replay passes at the integrated source.
+No new physical acceptance, calibration, convergence or reference parity follows.
+
+PR38 retains exact tested runtime `0770204a54abdf5f929b6626b01d7fcfb0e13ca4`.
+The [capsule packet](parity/reports/artifacts/capsule-surface-20261115/README.md)
+contains original authoring inputs, all362 saved boundary states/360 step records,
 rest metadata, six OBJ exports, frozen independent evaluator and full failures.
-The [current report](parity/reports/WF-20261115-CAPSULE-SURFACE-001.json) is
-implementation-only and **failed**, with no full garment gate or reference parity.
+Its [report](parity/reports/WF-20261115-CAPSULE-SURFACE-001.json) remains failed
+and is now source-qualified/stale after the importer and diagnostic changes.
 
 Both controlled original Harbor cases are closed: controller session35986,
 PID87622, exit2. A/base completed operationally in167.26820654096082s and B/height
@@ -50,7 +111,7 @@ The b760 studio report and UI-001/PAT-003 evidence freshness are now stale after
 changed runtime source; original gallery/capture/receipt bytes remain historical.
 The current native uncertainty count label has no live observation in this
 packet. All prior3aa strain/contact and7fe Save18/raw-metadata failures remain
-visible. The separate SVG import branch is excluded from this checkpoint.
+visible. SVG import and the new diagnostic arithmetic were excluded from that historical checkpoint.
 
 Clean tracked checkpoint `7637c372d4a9` passes the portable saved-state
 replay, registry/map and all2,288referenced artifact hashes. The200-file packet
@@ -62,9 +123,13 @@ Independent public-packet review at clean35cd5672 found no publication blockers.
 Root independently checked all2,294referenced artifacts and all40runtime bytes,
 and clean final registry/map checks passed. [PR38](https://github.com/thematheusmello/weftforge/pull/38)
 publishes this bounded increment; the original strict failures remain failed.
-Next: merge the reviewed source/evidence, then integrate SVG import and the
-diagnostic-only peak arithmetic follow-up in a fresh isolated build.
-GitHub Actions and Pages must remain disabled until the complete project is done.
+Independent public-packet review found no content, privacy or provenance blocker.
+All original copy/reversible path mappings, exclusions and exact-ID quit counts
+match; original13+history19 negative checks retain their frozen receipts.
+PR39 publishes this SVG/diagnostic increment. Next: review the separate
+balanced-stitch candidate before freezing any new physical protocol. No garment
+dynamics were run here. GitHub Actions and automated Pages deployments must
+remain disabled until the complete project is done.
 
 ## Native visual preview checkpoint
 
@@ -492,3 +557,24 @@ Keep35af separate from native7fe; further physics or integration needs a new
 reviewed step. All original failures and 57 retained local files remain intact.
 Reference inventory36748 and REA observation64096 are terminal0. Recheck actual
 handles before resuming; use separate Cargo targets.
+
+Active increment evidence: `.local/svg-studio-integrated-checks-20261115`
+(wrapper68622/session46552 terminal0), `.local/native-svg-acceptance-20261115`
+(closed failed attempt, inventory493a66ea), and separate
+`.local/native-svg-acceptance-qualification-20261115.json`. The reviewed fix worktree is `.local/svg-import-modal-fix-20261115`; framing
+is on `feat/pattern-view-framing` at9471a66. Root owns integration/UI.
+No new garment simulation job is active.
+
+## Next solver increment, source-only handoff
+
+The separate branch `feat/balanced-closed-stitches-20261115` has clean candidate
+`c39401c173eb81111858e6b5ebfdfb165b27c365`. It reuses35af's closed soft-stitch
+vector coordinates on the current capsule/diagnostic implementation. Focused
+51solver tests, strict solver Clippy, formatting and810 exact legacy radial
+operator comparisons pass. The initial scalar N32 force-balance failure remains
+retained; updated transport residuals are below3e-16N under the unchanged1e-12N
+bound. This candidate is NOT integrated in the published/current SVG build;
+there are no new garment, CLI/native physics, full workspace or reference results.
+After the SVG publication, root must independently review this source and freeze
+any new bounded solver/garment protocol before execution. Do not retry old closed
+physical cases or change their limits.

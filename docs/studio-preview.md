@@ -1,12 +1,50 @@
 # Native studio preview
 
-These are unedited captures of the running Rust desktop application on macOS,
-at 1640 × 1032 pixels. The tested UI source is
-`b760b990b142bb46b2481434fead9e7e0178ae0f`. PhotoCraft informed the compact
-charcoal workspace and teal accents; the garment documents and application
-implementation are original WeftForge work.
+These are unedited captures of the running Rust desktop application on macOS
+at 1640 × 1032 pixels. The current build is
+`32f9b3481c46e28a3b3acc49e6cf3908c7001b28`. PhotoCraft informed the charcoal
+workspace and teal accents; the application, documents and graphics are original
+WeftForge work.
 
-## Connected pattern and garment workspace
+## Current garment workspace
+
+![Current studio with connected 2D construction and 3D rest arrangement](../parity/reports/artifacts/native-svg-20261115/native-v2/captures/09-current-studio-harbor-rest.jpg)
+
+The current toolbar includes **Import SVG…** and **Frame all**, alongside file,
+history and construction tools. The shirt view shows rest arrangement with two
+editable panels and eight seams. Properties and simulation transport remain
+available beside and below the paired viewports.
+
+## SVG scale review and editable imported curves
+
+![Native import review with explicit physical scale and scope](../parity/reports/artifacts/native-svg-20261115/native-v2/captures/01-scale-review.jpg)
+
+Import reviews the piece count, physical scale, retained origin and omitted
+properties before adding anything. The bounded profile accepts closed absolute
+straight/cubic paths with explicit millimetres and uniform viewBox scale. It
+imports exterior boundaries and names; the [format profile](file-formats.md)
+describes the supported subset.
+
+![Imported cubic selected with editable control handles and numeric properties](../parity/reports/artifacts/native-svg-20261115/native-v2/captures/05-edited-cubic-framed.jpg)
+
+The selected imported cubic exposes its original control points. This actual
+native edit moves its first control X from 0.08 to 0.09 m. **Frame all** keeps the
+separated patterns visible using their authored curve bounds.
+
+![Reopened native project retains the imported pattern construction](../parity/reports/artifacts/native-svg-20261115/native-v2/captures/08-reopened-framed.jpg)
+
+The current workflow exercises cancellation with a pending numeric edit, atomic
+import, one-step Undo/Redo, control editing, invalid-input retention, SVG export
+and an actual quit/relaunch/reopen/resave. Independent checks verify geometry,
+physical scale, stable IDs and native persistence. The retained earlier v1/v2
+strict failures remain separate from the prospectively declared v3 verification;
+see the [evidence packet](../parity/reports/artifacts/native-svg-20261115/README.md)
+and [current status](../STATUS.md).
+
+## Earlier workspace capture (b760)
+
+The following four captures retain their original tested source
+`b760b990b142bb46b2481434fead9e7e0178ae0f` and evidence limitations.
 
 ![Editable shirt patterns beside the simulated garment](../parity/reports/artifacts/studio-preview-20261114/captures/current/workspace.jpg)
 
@@ -42,8 +80,8 @@ without changing the saved construction.
 
 ## What this preview establishes
 
-The gallery establishes the current native layout and the displayed authoring
-tools. The [retained preview receipt](../parity/reports/artifacts/studio-preview-20261114/PREVIEW-RECEIPT.json)
+The earlier gallery establishes the observed b760 layout and displayed authoring
+tools at that source. The [retained preview receipt](../parity/reports/artifacts/studio-preview-20261114/PREVIEW-RECEIPT.json)
 binds the images to the observed executable and records earlier failed layout
 attempts and an undeclared play event. The saved examples are available in the
 [document directory](../parity/reports/artifacts/studio-preview-20261114/documents).

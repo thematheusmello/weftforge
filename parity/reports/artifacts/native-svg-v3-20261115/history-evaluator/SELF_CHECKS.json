@@ -1,0 +1,28 @@
+{
+  "status": "SELF_CHECKS_PASSED",
+  "native_v3_acceptance": "NOT_RUN",
+  "synthetic_positive_case": true,
+  "synthetic_ids": "permuted fresh IDs, not predicted allocation order",
+  "rejected_cases": [
+    "undo incorrectly restores allocator to 11",
+    "wrong import allocator",
+    "wrong surviving original ID",
+    "redo changes imported stable ID",
+    "wrong imported scale",
+    "wrong edited cubic geometry",
+    "missing imported piece",
+    "rejected input changes material",
+    "reopen changes authoring",
+    "changed baseline revision",
+    "changed imported revision",
+    "changed undo revision",
+    "changed redo revision",
+    "changed edited revision",
+    "changed rejected revision",
+    "changed reopened revision",
+    "original source edit: baseline.weftforge",
+    "original source edit: original-editable-patterns.svg",
+    "original source edit: unsupported-transform.svg"
+  ],
+  "note": "No v2 or v3 native outputs read; these are synthetic checker tests only."
+}

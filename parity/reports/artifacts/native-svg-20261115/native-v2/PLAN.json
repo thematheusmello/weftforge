@@ -1,0 +1,62 @@
+{
+  "kind": "Prospective second native SVG workflow acceptance after confirmed Cancel fix; no simulation",
+  "created_utc": "2026-11-15T02:37:25.862601+00:00",
+  "source_commit": "32f9b3481c46e28a3b3acc49e6cf3908c7001b28",
+  "runtime_files": 45,
+  "pretest_manifest_sha256": "600b8c6a7473ab778a5b741d5b8b709fec32dc4da0f535817682112a3eccc511",
+  "binary_sha256": {
+    "native": "ef4e1a0f9ca797669e549f407a234ad0a8295fadab281d791b9ab92158b76a4e",
+    "cli": "e68c2f2b568bbf2a0cdeaee096180232262608bafef8a005713494dea231bae8"
+  },
+  "original_inputs_sha256": {
+    "baseline.weftforge": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+    "original-editable-patterns.svg": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+    "unsupported-transform.svg": "a95bb5bbf2b14284029abe653fbf220e6d6b6d9563a731dd586bb517b8af78ac"
+  },
+  "original_failed_attempt_inventory_sha256": "493a66ea20fc6177488a717cb8b9636816cfb07511a55d01d4e404978c666f14",
+  "original_failed_attempt_qualification_sha256": "c23ad07fdf604495929e5d3d9a4a4c51ca8e9c88cbdeec08f3501ae09e57daab",
+  "frozen_independent_checker_sha256": "bb25bd15266c810ba2bc844f68595a586e5e202db9311f24926e2cd26002c24f",
+  "trace_helper_sha256": "8d4f0f01bdb21a1670a6ff3e9fd30bd55a2d9cadd14644952bb378bd531de419",
+  "actions": [
+    "Launch unique new package into Empty and open byte-identical original baseline rev1 through native chooser",
+    "Enter .125m width without Enter; Import originalSVG,review2pieces/2mm-per-unit,Cancel; require rev1/1piece/retained pendingwidth",
+    "Frame all with pendingwidth; require view-only rev1/pendingvalue retained",
+    "Import sameSVG; require rev2/3pieces and width.125m. Save imported.weftforge",
+    "One Undo gives baseline geometry/width.1m/rev3; save after-undo.weftforge",
+    "One Redo restores imported geometry/width.125m/rev4; save after-redo.weftforge",
+    "Select original imported front second boundary; edit only first cubiccontrolX .08\u2192.09m; require rev5. Frame all; save edited.weftforge and export edited.svg",
+    "Select unsupported-transform.svg through native ImportSVG chooser; require explanatory rejection/currentrev5unchanged; save after-rejected.weftforge",
+    "Actual CmdQ and confirmed stopped; launch samebundle into Empty rev0, reopen edited.weftforge rev5, resave reopened.weftforge; allauthoringexact",
+    "Independent frozen static checker compares edited/reopened/SVG; separate exact checkpoint comparisons allow onlydeclaredrevisioncounterdifferences",
+    "After case data complete, optional visual-only preview opens existing public Harbor base in Rest and usesFrameall; no Cloth initialization/steps, no save into source"
+  ],
+  "criteria": {
+    "piece_count_before": 1,
+    "piece_count_after": 3,
+    "source_metres_per_unit": 0.002,
+    "baseline_width_before_m": 0.1,
+    "baseline_width_after_m": 0.125,
+    "cubic_control_x_before_m": 0.08,
+    "cubic_control_x_after_m": 0.09,
+    "endpoint_control_tolerance_m": 1e-12,
+    "independent_consumer_tolerance_m": 1e-08
+  },
+  "checkpoint_contract": {
+    "imported_revision": 2,
+    "undo_revision": 3,
+    "redo_revision": 4,
+    "edited_revision": 5,
+    "rejected_revision": 5,
+    "reopened_revision": 5,
+    "undo_equals_baseline": "All native fields/allocator/order exact exceptrevision1\u21923",
+    "redo_equals_imported": "All native fields/allocator/order exact exceptrevision2\u21924",
+    "rejected_equals_edited": "Allnative fields exact includingrevision5",
+    "reopened_equals_edited": "Allnative fields exact includingrevision5"
+  },
+  "failure_policy": "Every executed input gets durable before/returned records; retain original failures. Filechooser AX may truncate and contains private context; no absence claim from missingnodes. Source/dynamicmeasurements/thresholds/evaluator frozen; no benchmark or closedgarment retries.",
+  "excluded": [
+    "All simulation controls/Cloth initialization/integration",
+    "Referenceapp manipulation",
+    "CompleteSVG/garment/parity/crossplatform/releaseacceptance"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "recorded_utc": "2026-11-15T02:58:20.016Z",
+  "scope": "Read only revision/allocator/count assertions of native-saved files; complete independent checking remains root-owned",
+  "timing": "After Redo save, before cubic edit Return",
+  "checkpoints": [
+    {
+      "file": "imported.weftforge",
+      "revision": 2,
+      "next_id": 29,
+      "piece_count": 3,
+      "sha256": "b067e789e33cb350d449d1016e37b40562b74723c4e58e02685d19eba34a1484"
+    },
+    {
+      "file": "after-undo.weftforge",
+      "revision": 3,
+      "next_id": 29,
+      "piece_count": 1,
+      "sha256": "f1c1193f59b46e75bd1e847b8c7152048b5fd5d382f0b331a67da6d8c42cf604"
+    },
+    {
+      "file": "after-redo.weftforge",
+      "revision": 4,
+      "next_id": 29,
+      "piece_count": 3,
+      "sha256": "4ae70cba465adece15585ab48035cf88c651b7a869872bc5281360fd2671e946"
+    }
+  ]
+}

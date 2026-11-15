@@ -1,0 +1,902 @@
+{
+  "schema": 1,
+  "status": "V3_DECLARED_NATIVE_FLOW_SUPPORTED_WITH_RETAINED_RECOVERIES",
+  "case_path": ".local/native-svg-acceptance-v3-20261115",
+  "reviewed_utc": "2026-11-15T03:18:50.375674+00:00",
+  "closed_inventory_sha256": "b15fab894fc456addab9530e086ad200af1257a932a8f91589f5d6ff12d02d49",
+  "plan_sha256": "295687144d78469011af49cddef61550203eb6e2ddbd9b27b357c7e7212a878f",
+  "source_commit": "32f9b3481c46e28a3b3acc49e6cf3908c7001b28",
+  "root_postflight_sha256": "aaae442265de6e6a20b1f584dcb18ca6e591bd49668d51ead08666a1fff189f8",
+  "inventory": {
+    "payload_files": 275,
+    "verified_content_hashes_this_pass": 228,
+    "content_hash_failures": [],
+    "membership_exact": true,
+    "privacy_exclusions": [
+      {
+        "path": ".DS_Store",
+        "reason": "private metadata"
+      },
+      {
+        "path": "<private-colon-basename-artifact>",
+        "reason": "private colon-basename artifact"
+      },
+      {
+        "path": "captures/07-unsupported-file-chooser.jpg",
+        "reason": "unsafe chooser image"
+      },
+      {
+        "path": "captures/07-unsupported-file-chooser.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "captures/10-edited-open-chooser.jpg",
+        "reason": "unsafe chooser image"
+      },
+      {
+        "path": "captures/10-edited-open-chooser.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "quit-before-inventory.json",
+        "reason": "unrelated app inventory"
+      },
+      {
+        "path": "quit-confirmed.json",
+        "reason": "unrelated app inventory;required v3 fields already observed"
+      },
+      {
+        "path": "quit-settled-inventory.json",
+        "reason": "unrelated app inventory;required v3 fields already observed"
+      },
+      {
+        "path": "trace/001-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/002-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/003-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/004-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/009-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/014-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/015-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/016-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/017-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/021-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/022-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/023-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/024-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/028-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/029-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/030-ax.txt",
+        "reason": "personal colon filename caption"
+      },
+      {
+        "path": "trace/031-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/032-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/035-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/036-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/039-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/040-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/050-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/051-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/053-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/054-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/056-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/057-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/058-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/059-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/061-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/062-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/066-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/067-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/068-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/069-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/071-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      },
+      {
+        "path": "trace/072-ax.txt",
+        "reason": "OSchooser/blankGoTo;header-only"
+      }
+    ],
+    "excluded_count": 47,
+    "main_AX_bodies_read": 45,
+    "AX_header_counts": {
+      "main": 46,
+      "Open": 13,
+      "blank-GoTo": 10,
+      "Save": 16
+    },
+    "raw_apps_arrays_not_reread_for_closure": true,
+    "earlier_required_matching_v3_inventory_fields_bound_to_closed_hashes": {
+      "immediate": {
+        "timestamp": "2026-11-15T02:59:39.177Z",
+        "matching_v3_apps": 1,
+        "sha256": "7b659b827a1ac1182812abc2b701dd02ba26c49087d65f4b2b639fa4d0b48814"
+      },
+      "settled": {
+        "timestamp": "2026-11-15T02:59:53.217Z",
+        "matching_v3_apps": 0,
+        "sha256": "cc91499495027d7c1e4a89a7e9fa76afe2a418cc3e5b98d34b002bfa43c2141d"
+      }
+    },
+    "JPEGs_visually_reviewed": [
+      "captures/00-fresh-empty.jpg",
+      "captures/01-scale-review.jpg",
+      "captures/02-cancel-pending-revision-one.jpg",
+      "captures/03-frame-pending-revision-one.jpg",
+      "captures/04-import-ready.jpg",
+      "captures/05-boundary-menu.jpg",
+      "captures/06-edited-cubic-framed.jpg",
+      "captures/08-invalid-import-retained.jpg",
+      "captures/09-fresh-relaunch-empty.jpg",
+      "captures/11-reopened-framed-rest.jpg"
+    ],
+    "unsafe_chooser_JPEGs_not_viewed_or_hashed": [
+      "captures/07-unsupported-file-chooser.jpg",
+      "captures/10-edited-open-chooser.jpg"
+    ],
+    "sensitive_caption_AX_not_read_or_hashed": "trace/030-ax.txt"
+  },
+  "trace": {
+    "inputs": 75,
+    "ids": "000..074",
+    "before_and_returned_pairs_complete": true,
+    "timestamps_ordered": true,
+    "recorder_failures": 0,
+    "missing_declared_input_records": [],
+    "launch_inputs": [
+      "000",
+      "065"
+    ],
+    "CmdQ_inputs": [
+      "064"
+    ],
+    "only_SVG_import_commit": "026",
+    "Undo": "034",
+    "Redo": "038",
+    "cubic_Return": "048",
+    "simulation_or_reset_inputs": [],
+    "action_records": [
+      {
+        "id": "000",
+        "label": "Initial native v3 bundle selection and launch",
+        "started_utc": "2026-11-15T02:53:39.190723+00:00",
+        "completed_utc": "2026-11-15T02:54:06.902Z"
+      },
+      {
+        "id": "001",
+        "label": "Open baseline chooser",
+        "started_utc": "2026-11-15T02:54:07.044Z",
+        "completed_utc": "2026-11-15T02:54:07.073Z"
+      },
+      {
+        "id": "002",
+        "label": "Choose baseline path",
+        "started_utc": "2026-11-15T02:54:12.159Z",
+        "completed_utc": "2026-11-15T02:54:12.172Z"
+      },
+      {
+        "id": "003",
+        "label": "Set original baseline path",
+        "started_utc": "2026-11-15T02:54:16.649Z",
+        "completed_utc": "2026-11-15T02:54:17.125Z"
+      },
+      {
+        "id": "004",
+        "label": "Confirm baseline path",
+        "started_utc": "2026-11-15T02:54:17.671Z",
+        "completed_utc": "2026-11-15T02:54:17.676Z"
+      },
+      {
+        "id": "005",
+        "label": "Open original baseline",
+        "started_utc": "2026-11-15T02:54:21.654Z",
+        "completed_utc": "2026-11-15T02:54:22.099Z"
+      },
+      {
+        "id": "006",
+        "label": "Select Existing baseline",
+        "started_utc": "2026-11-15T02:54:25.894Z",
+        "completed_utc": "2026-11-15T02:54:25.914Z"
+      },
+      {
+        "id": "007",
+        "label": "Select pending width text",
+        "started_utc": "2026-11-15T02:54:30.359Z",
+        "completed_utc": "2026-11-15T02:54:30.535Z"
+      },
+      {
+        "id": "008",
+        "label": "Type uncommitted baseline width",
+        "started_utc": "2026-11-15T02:54:31.009Z",
+        "completed_utc": "2026-11-15T02:54:31.027Z"
+      },
+      {
+        "id": "009",
+        "label": "Open SVG chooser with pending width",
+        "started_utc": "2026-11-15T02:54:31.493Z",
+        "completed_utc": "2026-11-15T02:54:31.508Z"
+      },
+      {
+        "id": "010",
+        "label": "Cancel chooser to correct text selection",
+        "started_utc": "2026-11-15T02:55:04.171Z",
+        "completed_utc": "2026-11-15T02:55:04.512Z"
+      },
+      {
+        "id": "011",
+        "label": "Focus malformed pending width",
+        "started_utc": "2026-11-15T02:55:09.269Z",
+        "completed_utc": "2026-11-15T02:55:09.451Z"
+      },
+      {
+        "id": "012",
+        "label": "Select entire pending width",
+        "started_utc": "2026-11-15T02:55:09.856Z",
+        "completed_utc": "2026-11-15T02:55:09.861Z"
+      },
+      {
+        "id": "013",
+        "label": "Set corrected pending width without Enter",
+        "started_utc": "2026-11-15T02:55:10.298Z",
+        "completed_utc": "2026-11-15T02:55:10.319Z"
+      },
+      {
+        "id": "014",
+        "label": "Open original SVG chooser",
+        "started_utc": "2026-11-15T02:55:15.188Z",
+        "completed_utc": "2026-11-15T02:55:15.212Z"
+      },
+      {
+        "id": "015",
+        "label": "Navigate to original SVG path",
+        "started_utc": "2026-11-15T02:55:16.059Z",
+        "completed_utc": "2026-11-15T02:55:16.065Z"
+      },
+      {
+        "id": "016",
+        "label": "Set original SVG path",
+        "started_utc": "2026-11-15T02:55:21.225Z",
+        "completed_utc": "2026-11-15T02:55:21.681Z"
+      },
+      {
+        "id": "017",
+        "label": "Confirm original SVG path",
+        "started_utc": "2026-11-15T02:55:22.215Z",
+        "completed_utc": "2026-11-15T02:55:22.221Z"
+      },
+      {
+        "id": "018",
+        "label": "Review original SVG import",
+        "started_utc": "2026-11-15T02:55:25.988Z",
+        "completed_utc": "2026-11-15T02:55:26.383Z"
+      },
+      {
+        "id": "019",
+        "label": "Cancel reviewed SVG import",
+        "started_utc": "2026-11-15T02:55:33.330Z",
+        "completed_utc": "2026-11-15T02:55:33.968Z"
+      },
+      {
+        "id": "020",
+        "label": "Frame all with pending width",
+        "started_utc": "2026-11-15T02:55:38.469Z",
+        "completed_utc": "2026-11-15T02:55:38.491Z"
+      },
+      {
+        "id": "021",
+        "label": "Reopen original SVG chooser",
+        "started_utc": "2026-11-15T02:55:39.012Z",
+        "completed_utc": "2026-11-15T02:55:39.033Z"
+      },
+      {
+        "id": "022",
+        "label": "Navigate same original SVG",
+        "started_utc": "2026-11-15T02:55:40.040Z",
+        "completed_utc": "2026-11-15T02:55:40.044Z"
+      },
+      {
+        "id": "023",
+        "label": "Set same original SVG path",
+        "started_utc": "2026-11-15T02:55:44.108Z",
+        "completed_utc": "2026-11-15T02:55:44.902Z"
+      },
+      {
+        "id": "024",
+        "label": "Confirm same SVG path",
+        "started_utc": "2026-11-15T02:55:45.426Z",
+        "completed_utc": "2026-11-15T02:55:45.431Z"
+      },
+      {
+        "id": "025",
+        "label": "Review same original SVG for import",
+        "started_utc": "2026-11-15T02:56:01.123Z",
+        "completed_utc": "2026-11-15T02:56:01.646Z"
+      },
+      {
+        "id": "026",
+        "label": "Commit reviewed SVG import",
+        "started_utc": "2026-11-15T02:56:05.462Z",
+        "completed_utc": "2026-11-15T02:56:06.116Z"
+      },
+      {
+        "id": "027",
+        "label": "Inspect imported baseline width",
+        "started_utc": "2026-11-15T02:56:21.220Z",
+        "completed_utc": "2026-11-15T02:56:21.240Z"
+      },
+      {
+        "id": "028",
+        "label": "Save imported checkpoint as chooser",
+        "started_utc": "2026-11-15T02:56:26.196Z",
+        "completed_utc": "2026-11-15T02:56:26.214Z"
+      },
+      {
+        "id": "029",
+        "label": "Name imported checkpoint",
+        "started_utc": "2026-11-15T02:56:30.910Z",
+        "completed_utc": "2026-11-15T02:56:31.368Z"
+      },
+      {
+        "id": "030",
+        "label": "Write imported native checkpoint",
+        "started_utc": "2026-11-15T02:56:34.444Z",
+        "completed_utc": "2026-11-15T02:56:34.593Z"
+      },
+      {
+        "id": "031",
+        "label": "Correct imported checkpoint filename chooser",
+        "started_utc": "2026-11-15T02:56:59.354Z",
+        "completed_utc": "2026-11-15T02:56:59.974Z"
+      },
+      {
+        "id": "032",
+        "label": "Set correct imported basename",
+        "started_utc": "2026-11-15T02:57:05.467Z",
+        "completed_utc": "2026-11-15T02:57:05.512Z"
+      },
+      {
+        "id": "033",
+        "label": "Write correct imported checkpoint",
+        "started_utc": "2026-11-15T02:57:05.943Z",
+        "completed_utc": "2026-11-15T02:57:06.312Z"
+      },
+      {
+        "id": "034",
+        "label": "One Undo of import transaction",
+        "started_utc": "2026-11-15T02:57:13.509Z",
+        "completed_utc": "2026-11-15T02:57:13.570Z"
+      },
+      {
+        "id": "035",
+        "label": "Save Undo checkpoint chooser",
+        "started_utc": "2026-11-15T02:57:17.353Z",
+        "completed_utc": "2026-11-15T02:57:17.393Z"
+      },
+      {
+        "id": "036",
+        "label": "Name Undo checkpoint",
+        "started_utc": "2026-11-15T02:57:21.795Z",
+        "completed_utc": "2026-11-15T02:57:22.628Z"
+      },
+      {
+        "id": "037",
+        "label": "Write Undo native checkpoint",
+        "started_utc": "2026-11-15T02:57:23.088Z",
+        "completed_utc": "2026-11-15T02:57:23.284Z"
+      },
+      {
+        "id": "038",
+        "label": "One Redo of import transaction",
+        "started_utc": "2026-11-15T02:57:26.914Z",
+        "completed_utc": "2026-11-15T02:57:26.986Z"
+      },
+      {
+        "id": "039",
+        "label": "Save Redo checkpoint chooser",
+        "started_utc": "2026-11-15T02:57:32.493Z",
+        "completed_utc": "2026-11-15T02:57:32.577Z"
+      },
+      {
+        "id": "040",
+        "label": "Name Redo checkpoint",
+        "started_utc": "2026-11-15T02:57:37.929Z",
+        "completed_utc": "2026-11-15T02:57:38.506Z"
+      },
+      {
+        "id": "041",
+        "label": "Write Redo native checkpoint",
+        "started_utc": "2026-11-15T02:57:39.013Z",
+        "completed_utc": "2026-11-15T02:57:39.233Z"
+      },
+      {
+        "id": "042",
+        "label": "Select imported curved front",
+        "started_utc": "2026-11-15T02:57:43.052Z",
+        "completed_utc": "2026-11-15T02:57:43.081Z"
+      },
+      {
+        "id": "043",
+        "label": "Choose curved front boundary",
+        "started_utc": "2026-11-15T02:57:47.047Z",
+        "completed_utc": "2026-11-15T02:57:47.100Z"
+      },
+      {
+        "id": "044",
+        "label": "Select Boundary2 curve17",
+        "started_utc": "2026-11-15T02:57:52.969Z",
+        "completed_utc": "2026-11-15T02:57:53.436Z"
+      },
+      {
+        "id": "045",
+        "label": "Focus first cubic control X",
+        "started_utc": "2026-11-15T02:57:57.921Z",
+        "completed_utc": "2026-11-15T02:57:58.100Z"
+      },
+      {
+        "id": "046",
+        "label": "Select entire cubic control X",
+        "started_utc": "2026-11-15T02:57:58.534Z",
+        "completed_utc": "2026-11-15T02:57:58.538Z"
+      },
+      {
+        "id": "047",
+        "label": "Type edited cubic control X",
+        "started_utc": "2026-11-15T02:57:58.979Z",
+        "completed_utc": "2026-11-15T02:57:58.993Z"
+      },
+      {
+        "id": "048",
+        "label": "Commit cubic control edit",
+        "started_utc": "2026-11-15T02:58:20.017Z",
+        "completed_utc": "2026-11-15T02:58:20.038Z"
+      },
+      {
+        "id": "049",
+        "label": "Frame edited patterns",
+        "started_utc": "2026-11-15T02:58:29.826Z",
+        "completed_utc": "2026-11-15T02:58:29.843Z"
+      },
+      {
+        "id": "050",
+        "label": "Save edited checkpoint chooser",
+        "started_utc": "2026-11-15T02:58:30.346Z",
+        "completed_utc": "2026-11-15T02:58:30.370Z"
+      },
+      {
+        "id": "051",
+        "label": "Name edited native checkpoint",
+        "started_utc": "2026-11-15T02:58:34.928Z",
+        "completed_utc": "2026-11-15T02:58:35.384Z"
+      },
+      {
+        "id": "052",
+        "label": "Write edited native checkpoint",
+        "started_utc": "2026-11-15T02:58:35.804Z",
+        "completed_utc": "2026-11-15T02:58:35.964Z"
+      },
+      {
+        "id": "053",
+        "label": "Export edited SVG chooser",
+        "started_utc": "2026-11-15T02:58:39.818Z",
+        "completed_utc": "2026-11-15T02:58:39.858Z"
+      },
+      {
+        "id": "054",
+        "label": "Name edited SVG export",
+        "started_utc": "2026-11-15T02:58:44.152Z",
+        "completed_utc": "2026-11-15T02:58:44.648Z"
+      },
+      {
+        "id": "055",
+        "label": "Write native SVG export",
+        "started_utc": "2026-11-15T02:58:45.077Z",
+        "completed_utc": "2026-11-15T02:58:45.400Z"
+      },
+      {
+        "id": "056",
+        "label": "Open unsupported SVG chooser",
+        "started_utc": "2026-11-15T02:58:50.691Z",
+        "completed_utc": "2026-11-15T02:58:50.714Z"
+      },
+      {
+        "id": "057",
+        "label": "Navigate unsupported SVG path",
+        "started_utc": "2026-11-15T02:58:52.022Z",
+        "completed_utc": "2026-11-15T02:58:52.027Z"
+      },
+      {
+        "id": "058",
+        "label": "Set unsupported SVG path",
+        "started_utc": "2026-11-15T02:58:57.564Z",
+        "completed_utc": "2026-11-15T02:58:58.345Z"
+      },
+      {
+        "id": "059",
+        "label": "Confirm unsupported SVG path",
+        "started_utc": "2026-11-15T02:58:58.894Z",
+        "completed_utc": "2026-11-15T02:58:58.902Z"
+      },
+      {
+        "id": "060",
+        "label": "Attempt unsupported SVG import",
+        "started_utc": "2026-11-15T02:59:11.986Z",
+        "completed_utc": "2026-11-15T02:59:12.571Z"
+      },
+      {
+        "id": "061",
+        "label": "Save rejected-source checkpoint chooser",
+        "started_utc": "2026-11-15T02:59:17.243Z",
+        "completed_utc": "2026-11-15T02:59:17.258Z"
+      },
+      {
+        "id": "062",
+        "label": "Name rejected-source checkpoint",
+        "started_utc": "2026-11-15T02:59:21.261Z",
+        "completed_utc": "2026-11-15T02:59:21.750Z"
+      },
+      {
+        "id": "063",
+        "label": "Write retained native checkpoint",
+        "started_utc": "2026-11-15T02:59:22.223Z",
+        "completed_utc": "2026-11-15T02:59:22.541Z"
+      },
+      {
+        "id": "064",
+        "label": "Actual CmdQ of v3 app",
+        "started_utc": "2026-11-15T02:59:39.150Z",
+        "completed_utc": "2026-11-15T02:59:39.155Z"
+      },
+      {
+        "id": "065",
+        "label": "Fresh same-bundle relaunch",
+        "started_utc": "2026-11-15T03:00:22.677Z",
+        "completed_utc": "2026-11-15T03:00:24.211Z"
+      },
+      {
+        "id": "066",
+        "label": "Open edited project after fresh launch",
+        "started_utc": "2026-11-15T03:00:28.654Z",
+        "completed_utc": "2026-11-15T03:00:28.695Z"
+      },
+      {
+        "id": "067",
+        "label": "Navigate edited project path",
+        "started_utc": "2026-11-15T03:00:30.705Z",
+        "completed_utc": "2026-11-15T03:00:30.717Z"
+      },
+      {
+        "id": "068",
+        "label": "Set edited project path",
+        "started_utc": "2026-11-15T03:00:35.096Z",
+        "completed_utc": "2026-11-15T03:00:35.935Z"
+      },
+      {
+        "id": "069",
+        "label": "Confirm edited project path",
+        "started_utc": "2026-11-15T03:00:36.495Z",
+        "completed_utc": "2026-11-15T03:00:36.500Z"
+      },
+      {
+        "id": "070",
+        "label": "Reopen edited project after termination",
+        "started_utc": "2026-11-15T03:00:52.288Z",
+        "completed_utc": "2026-11-15T03:00:52.726Z"
+      },
+      {
+        "id": "071",
+        "label": "Save reopened checkpoint chooser",
+        "started_utc": "2026-11-15T03:00:57.067Z",
+        "completed_utc": "2026-11-15T03:00:57.083Z"
+      },
+      {
+        "id": "072",
+        "label": "Name reopened checkpoint",
+        "started_utc": "2026-11-15T03:01:01.242Z",
+        "completed_utc": "2026-11-15T03:01:01.704Z"
+      },
+      {
+        "id": "073",
+        "label": "Write reopened native checkpoint",
+        "started_utc": "2026-11-15T03:01:02.113Z",
+        "completed_utc": "2026-11-15T03:01:02.323Z"
+      },
+      {
+        "id": "074",
+        "label": "Frame reopened native patterns",
+        "started_utc": "2026-11-15T03:01:39.498Z",
+        "completed_utc": "2026-11-15T03:01:39.594Z"
+      }
+    ],
+    "counting_note": "Launches are identified by app_path arguments; the label for066 also mentions launch but is an Open button input."
+  },
+  "functional_flow": {
+    "Cancel": "019 rev1/onepiece/pending.125;source review2pieces/2mm per unit visible",
+    "FrameAll": "020 rev1/pending.125 retained,view visibly enlarged",
+    "Import": "026 rev2/threepieces/width.125 and allocator29",
+    "Undo": "034 rev3/onepiece/width.1/allocator29 per prospective plan",
+    "Redo": "038 rev4/threepieces/width.125/allocator29",
+    "Cubic": "048 curve17 controlX.08\u2192.09 only,revision5",
+    "InvalidTransform": "060 explanatoryrejection atrev5;retainedsaveexact",
+    "Persistence": "one064CmdQ;settledzero before065;freshEmpty0 then070open5/073resave5 exact",
+    "Final": "074/ownappcapture11 pausedRest,revision5,threepieces"
+  },
+  "saved_checkpoints": {
+    "baseline": {
+      "revision": 1,
+      "next_id": 11,
+      "pieces": 1,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+    },
+    "imported": {
+      "revision": 2,
+      "next_id": 29,
+      "pieces": 3,
+      "sha256": "b067e789e33cb350d449d1016e37b40562b74723c4e58e02685d19eba34a1484"
+    },
+    "after-undo": {
+      "revision": 3,
+      "next_id": 29,
+      "pieces": 1,
+      "sha256": "f1c1193f59b46e75bd1e847b8c7152048b5fd5d382f0b331a67da6d8c42cf604"
+    },
+    "after-redo": {
+      "revision": 4,
+      "next_id": 29,
+      "pieces": 3,
+      "sha256": "4ae70cba465adece15585ab48035cf88c651b7a869872bc5281360fd2671e946"
+    },
+    "edited": {
+      "revision": 5,
+      "next_id": 29,
+      "pieces": 3,
+      "sha256": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c"
+    },
+    "after-rejected": {
+      "revision": 5,
+      "next_id": 29,
+      "pieces": 3,
+      "sha256": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c"
+    },
+    "reopened": {
+      "revision": 5,
+      "next_id": 29,
+      "pieces": 3,
+      "sha256": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c"
+    }
+  },
+  "exact_saved_differences": {
+    "baseline -> after-undo": [
+      {
+        "path": "/project/revision",
+        "before": 1,
+        "after": 3
+      },
+      {
+        "path": "/project/next_id",
+        "before": 11,
+        "after": 29
+      }
+    ],
+    "imported -> after-redo": [
+      {
+        "path": "/project/revision",
+        "before": 2,
+        "after": 4
+      }
+    ],
+    "after-redo -> edited": [
+      {
+        "path": "/project/revision",
+        "before": 4,
+        "after": 5
+      },
+      {
+        "path": "/project/curves/5/controls/0/0",
+        "before": 0.08,
+        "after": 0.09
+      }
+    ],
+    "edited -> after-rejected": [],
+    "edited -> reopened": []
+  },
+  "retained_input_and_observer_failures": [
+    {
+      "kind": "actor text-selection recovery",
+      "trace": [
+        "007",
+        "008",
+        "009",
+        "010",
+        "011",
+        "012",
+        "013"
+      ],
+      "observed": "Malformed0.0.125 pending width;chooser canceled and wholetext corrected to.125 without Enter;revision1 retained",
+      "new_product_functional_failure": false
+    },
+    {
+      "kind": "actor SaveAs filename recovery",
+      "trace": [
+        "029",
+        "030",
+        "031",
+        "032",
+        "033"
+      ],
+      "observed": "Absolute filename text became personal colon basename;accidental native file retained,correct imported basename saved with revision2 unchanged",
+      "private_filename_omitted": true,
+      "new_product_functional_failure": false
+    },
+    {
+      "kind": "premature observer assertion",
+      "trace": "064",
+      "immediate_inventory": {
+        "timestamp": "2026-11-15T02:59:39.177Z",
+        "matching_v3_apps": 1,
+        "sha256": "7b659b827a1ac1182812abc2b701dd02ba26c49087d65f4b2b639fa4d0b48814"
+      },
+      "immediate_inventory_ms_after_CmdQ_return": 22.0,
+      "settled_inventory": {
+        "timestamp": "2026-11-15T02:59:53.217Z",
+        "matching_v3_apps": 0,
+        "sha256": "cc91499495027d7c1e4a89a7e9fa76afe2a418cc3e5b98d34b002bfa43c2141d"
+      },
+      "settled_before_freshlaunch": true,
+      "additional_quit_input": false,
+      "all_observer_assertions_passed": false,
+      "failure_marker_written_later_utc": "2026-11-15T03:01:39.497Z"
+    }
+  ],
+  "checkpoint_readback_timing": {
+    "recorded_utc": "2026-11-15T02:58:20.016Z",
+    "timing": "After Redo save, before cubic edit Return",
+    "after_Redo_save041": true,
+    "before_control_Return048": true,
+    "read_before_Undo_executed": false,
+    "qualification": "The late followup was not fulfilled before Undo and was not backdated. FrozenPLAN required postcheckpoint exact grader,not an extra pre-Undo read."
+  },
+  "bindings": {
+    "native_binary_sha256": "ef4e1a0f9ca797669e549f407a234ad0a8295fadab281d791b9ab92158b76a4e",
+    "original_three_inputs_exact": true,
+    "checker_freezes_predate_input000": true,
+    "geometry_report_sha256": "fb5fdf27538fd8b1c44c090218e8701ee612b2fa6b2d807eea74549e45216f9e",
+    "history_report_sha256": "45cd66972dc3759b297a2dfe8e8c88598722d3191917e9898831521098f9019e",
+    "geometry_status": "STATIC_ARTIFACT_CHECKS_PASSED",
+    "history_status": "STATIC_HISTORY_CHECKS_PASSED",
+    "recovery_note_sha256": {
+      "input-recovery.json": "fc73507e9ecebda40d5ff6f964234e436fa5bc91e5152ee538e5c6080021a612",
+      "input-recovery-verification.json": "ab3a74c5c44490ac4c32d6cf7860c8677dada8aeb08e7924c7cf127f999f607e",
+      "save-name-recovery.json": "731d79dce1ca6ce83d6df439e21c402942e523c6177334aaebdecb31e4a8025c",
+      "quit-immediate-assertion-failed.json": "58584d95e60167d89378931caf3dac9308d118a8156d87b5a71411fc4f6dbc0d",
+      "quit-observation-note.json": "6d6690c48c91c4dd5f8e4c1018f1b80eb271a7bef02bf76507fb30163ae685e9",
+      "checkpoint-basic-readback.json": "c0032864507609a1feac5254a7b3b03b5e3bc6c5349eadd4f76c8631085734f6"
+    },
+    "source45_unchanged": "Root prelaunch/postflight binding assertion;no source inspection/rebuild in this review"
+  },
+  "privacy": {
+    "raw_directory_publication_safe": false,
+    "excluded_chooser_bodies_images_and_colon_artifacts_not_read": true,
+    "unrelated_app_metadata_not_reproduced": true,
+    "images_edited": false,
+    "required_projection": "Immutable private raw evidence;separate public-safe projection omitting chooserAX/images,colon artifact/caption,.DS_Store and unrelated app arrays;redact personal paths and retain private digest links.",
+    "JPEG_metadata_not_inspected": true
+  },
+  "unsupported_claims_to_avoid": [
+    "All observer assertions passed: false;retain one premature quit assertion.",
+    "quit-confirmed.json proves termination: false;it lists v3;use settled inventory before fresh launch.",
+    "Allocator was read before Undo: false;actualreadback occurred after Redo save,before cubic Return.",
+    "No input recoveries: false;retain both corrections and accidentalfile.",
+    "Raw case safe for verbatimpublication: false.",
+    "Full SVG/native/physical/reference/release parity: unmeasured."
+  ],
+  "new_product_functional_mismatches_identified": [],
+  "v2_strict_failure_unchanged": true,
+  "v1_Cancel_failure_unchanged": true,
+  "review_no_UI_source_Cargo_physics_or_replay": true,
+  "verdict": "Newprospectivev3 planned native/history/persistenceflow supported,with bothinputrecoveries andoneobserverfailure retained. Both frozenstaticgraderspassed. This is no error-free-observation claim,no v2regrade,and no fullparity/release acceptance."
+}

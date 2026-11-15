@@ -1,0 +1,46 @@
+{
+  "kind": "Prospective real native SVG workflow acceptance; original fixtures; no simulation",
+  "created_utc": "2026-11-15T02:08:08.930499+00:00",
+  "source_commit": "bb6010a7d07b9f2c3167b71327e043ea60f3d237",
+  "pretest_manifest_sha256": "0fdd649c49bdd7d964ffa31ecc2fd2c06eff57fb2ee3532bda4824a7a4a46d1d",
+  "binary_sha256": {
+    "native": "6c39006f069a791af12a5e1b7f3c24b799d64fa7c60fa0bea55881b1d0f8a149",
+    "cli": "e68c2f2b568bbf2a0cdeaee096180232262608bafef8a005713494dea231bae8",
+    "app_native": "6c39006f069a791af12a5e1b7f3c24b799d64fa7c60fa0bea55881b1d0f8a149"
+  },
+  "original_inputs_sha256": {
+    "baseline.weftforge": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+    "original-editable-patterns.svg": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+    "unsupported-transform.svg": "a95bb5bbf2b14284029abe653fbf220e6d6b6d9563a731dd586bb517b8af78ac"
+  },
+  "fixture_origin": "Baseline rectangle generated with packaged shared CLI; two-path SVG is original independent predeclared core fixture, not authored in this native flow.",
+  "actions": [
+    "Launch unique copied bundle and open baseline through native chooser",
+    "Enter width .125 m without submitting, open SVG chooser/review 2 pieces and .002 m/user-unit, cancel; retain pending width, revision/history and baseline file",
+    "Reopen same SVG and Import; pending width + two named editable pieces commit once",
+    "Undo once restores baseline geometry/piece count; Redo restores width .125 and both pieces",
+    "Select imported cubic and edit first control X from .08 to .09 m; observe update",
+    "Save As new native project; export SVG through native chooser",
+    "Reject original unsupported transform through native chooser; preserve current state/source files",
+    "Quit actual process and launch same bundle into Empty; reopen saved project; resave separate file and compare editable authoring fields",
+    "Independently parse exported SVG and saved native files; verify physical scale, names, origin, endpoints/control and existing objects"
+  ],
+  "criteria": {
+    "piece_count_before": 1,
+    "piece_count_after": 3,
+    "source_metres_per_unit": 0.002,
+    "baseline_width_before_m": 0.1,
+    "baseline_width_after_m": 0.125,
+    "cubic_control_x_before_m": 0.08,
+    "cubic_control_x_after_m": 0.09,
+    "endpoint_control_tolerance_m": 1e-12,
+    "independent_consumer_tolerance_m": 1e-08
+  },
+  "failure_policy": "Record each action before execution and its raw result; retain failed attempts, actual observations and omissions; no reconstructed missing trace or parity claim.",
+  "excluded": [
+    "Simulation/Cloth creation, Play/Step/Assemble/Drape",
+    "Reference application manipulation",
+    "Full SVG/garment/native-project parity",
+    "Windows/Linux GUI, signing, performance or release acceptance"
+  ]
+}

@@ -1,0 +1,75 @@
+Independent original native SVG workflow static evaluator, prospectively frozen.
+
+Scope: only the original WeftForge workflow declared in the original PLAN.json
+and FILE-005-SVG-import-v1. No product/importer/exporter implementation is read.
+Python standard library XML and a separate strict absolute M/L/C/Z path consumer
+are used. Neither native app code nor its geometry/parser helpers are imported.
+The local Python environments lacked svgpathtools; no dependency was installed.
+
+Original inputs are byte-pinned to hashes declared before native execution.
+Each run verifies the baseline, original SVG and unsupported SVG hashes before
+and after checking artifacts. The prospective specification and evaluator code
+are hash-pinned by FROZEN.json. Missing actual artifacts are failures, and
+--self-check only reports checker self-tests, never native acceptance.
+
+Expected original SVG construction is derived analytically from absolute path
+coordinates and width/viewBox scale: U=x*.002, V=-y*.002. The negative viewBox
+minimum does not translate construction. Source paths are independently parsed
+and cross-checked against these analytic spans before actual files are read.
+
+Front, name "Original & curved front": endpoints in order
+(-.16,.32), (.04,.32), (.04,.20), (-.16,.20), close to first;
+one cubic from (.04,.32) to (.04,.20), original controls
+(.08,.32), (.08,.20). Only first control X changes .08 -> .09 m.
+Back, name "back-panel": endpoints in order
+(.12,.30), (.32,.30), (.32,.10), (.12,.10), close to first.
+Both contours have exactly four spans, original path and span order retained.
+
+Existing baseline rectangle keeps IDs, name, connectivity, placement, material
+and grain; its left edge stays X=.5 m, right edge changes .6 -> .625 m,
+Y=.1/.22 m. Every original point, curve and piece is preserved in order apart
+from the two declared right point X changes. No original objects may disappear.
+All materials, seams, sewing groups, mannequin and resolution are exact.
+No added unknown fields are accepted. Exactly eight points, eight curves and
+two pieces may be added. Fresh stable IDs are discovered from actual boundary
+references and validated for uniqueness/freshness; their values are not guessed.
+The allocator must be an integer greater than every stored object ID.
+Imported pieces use the first baseline material, grain angle 0.0, and zero
+translation/rotation. Boundaries must close by stable-ID connectivity and every
+point/curve must be accounted for; no hidden geometry objects are accepted.
+
+Endpoint/control Euclidean distance tolerance: 1e-12 m. Each line/cubic span is
+also compared at 17 uniformly spaced parameters t=0/16 through 16/16, using
+independent Bernstein evaluation, with Euclidean distance tolerance 1e-8 m.
+Native JSON and exported SVG are both checked against the analytic result.
+Exported SVG must have explicit mm width/height, a uniform positive viewBox
+scale, namespace, absolute M/L/C/Z paths and preserved names/order. Geometry
+uses the exported physical scale and preserved user-space origin; exported
+user units need not equal source user units. Transforms fail explicitly.
+
+Saved and actual quit/fresh-reopen/resaved native JSON are compared recursively
+with exact field sets, types, values, IDs, arrays, allocator and ordering. JSON
+formatting is ignored and signed zero compares equal. Revision must also match
+by default. A predeclared CLI option allows an exact integer revision delta only
+with a written reason in the result; no other authoring field is exempted.
+
+Self-checks use only synthetic artifacts with intentionally sparse fresh IDs.
+They accept the analytic result and reject incorrect scale, viewBox-origin
+subtraction, missing/wrong cubic edit, omitted original piece, material change,
+export scale corruption, reopen geometry change, changed original source bytes,
+relative commands and missing explicit closepath.
+
+Static checks cannot establish chooser/modal/Cancel behavior, one-action
+transaction semantics, actual Undo/Redo, actual quit/relaunch, or whether a native
+user action caused the artifacts. Those require independent raw native trace
+review. They establish no reference parity, simulation, printing, packaging,
+cross-platform acceptance or support outside this bounded SVG profile.
+
+Usage from workspace root:
+python3 .local/svg-native-evaluator-20261115/check.py --self-check
+python3 .local/svg-native-evaluator-20261115/check.py --saved PATH.weftforge --resaved REOPENED.weftforge --exported-svg PATH.svg
+Only if revision difference is explicitly justified:
+add --allowed-resave-revision-delta INTEGER --revision-note 'documented reason'
+All actual input paths must be distinct, and must not alias original fixtures.
+Outputs are JSON to stdout, nonzero exit on failure. Redirect reports only to
+new evaluator evidence files. No original or actual input is modified.

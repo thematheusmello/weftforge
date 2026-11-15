@@ -1,0 +1,53 @@
+{
+  "id": "FILE-SVG-NATIVE-001",
+  "kind": "independently_checked_output",
+  "initial_conditions": "Fresh native32f9 package ef4e opens original CLI-authored one-rectangle baseline revision1/allocator11. Original2path SVG has explicit2mm/user-unit scale and retained negative origin. No simulation or reference execution.",
+  "fixture_hashes": {
+    "parity/reports/artifacts/native-svg-v3-20261115/native-v3/baseline.weftforge": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+    "parity/reports/artifacts/native-svg-v3-20261115/native-v3/original-editable-patterns.svg": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+    "parity/reports/artifacts/native-svg-v3-20261115/native-v3/unsupported-transform.svg": "a95bb5bbf2b14284029abe653fbf220e6d6b6d9563a731dd586bb517b8af78ac",
+    "parity/reports/artifacts/native-svg-v3-20261115/native-v3/imported.weftforge": "b067e789e33cb350d449d1016e37b40562b74723c4e58e02685d19eba34a1484",
+    "parity/reports/artifacts/native-svg-v3-20261115/native-v3/after-undo.weftforge": "f1c1193f59b46e75bd1e847b8c7152048b5fd5d382f0b331a67da6d8c42cf604",
+    "parity/reports/artifacts/native-svg-v3-20261115/native-v3/after-redo.weftforge": "4ae70cba465adece15585ab48035cf88c651b7a869872bc5281360fd2671e946",
+    "parity/reports/artifacts/native-svg-v3-20261115/native-v3/edited.weftforge": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c",
+    "parity/reports/artifacts/native-svg-v3-20261115/native-v3/after-rejected.weftforge": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c",
+    "parity/reports/artifacts/native-svg-v3-20261115/native-v3/reopened.weftforge": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c",
+    "parity/reports/artifacts/native-svg-v3-20261115/native-v3/edited.svg": "730c7ef93c34e0063e7ca2e21f4b7704cbe266486b828922be63ed8f85483cae"
+  },
+  "operations": [
+    "Type pending width0.125m, review originalSVG, Cancel and Frame all without changing revision1.",
+    "Import both exterior boundaries and pending width once; save revision2/allocator29.",
+    "One Undo restores original objects at revision3 with allocator29; one Redo restores imported objects at revision4/allocator29.",
+    "Edit only first imported cubic controlX0.08\u21920.09m; save/export revision5.",
+    "Reject unsupported transform, retaining exact editable state.",
+    "Actually quit; observe settled zero matching apps; fresh same-binary Empty0 launch, reopen/save revision5.",
+    "Run unchanged independent geometry/SVG/reopen checker and prospectively frozen exact seven-checkpoint history supplement."
+  ],
+  "expected_outcomes": "Qualified bounded native file workflow and both frozen static graders pass. All75native input calls returned. Two actor input corrections and one premature22ms quit-inventory assertion remain retained; all observer assertions did not pass. Original v1 Cancel failure and v2 strict allocator-expectation failure remain failed.",
+  "quality_limits": {
+    "endpoint_control_tolerance_m": 1e-12,
+    "independent_sample_tolerance_m": 1e-08,
+    "samples_per_span": 17,
+    "checkpoint_revisions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      5,
+      5
+    ],
+    "checkpoint_allocators": [
+      11,
+      29,
+      29,
+      29,
+      29,
+      29,
+      29
+    ]
+  },
+  "status": "passed",
+  "complete_contract": false,
+  "reference_executed": false
+}

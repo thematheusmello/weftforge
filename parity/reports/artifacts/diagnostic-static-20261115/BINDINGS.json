@@ -1,0 +1,93 @@
+{
+  "source_commit": "2079411490512b3bdc13ae93774a2f48fb38cc1f",
+  "previous_source_commit": "0770204a54abdf5f929b6626b01d7fcfb0e13ca4",
+  "source_sha256": {
+    "crates/weftforge-sim/src/strain.rs": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+    "crates/weftforge-sim/src/lib.rs": "d3f3e040559c950d44a52bd18cb107cf3b4824cd2f985dca3d2636b52728a03e",
+    "crates/weftforge-sim/src/constraints.rs": "54b83b92eab65c3fb0ca50ea81c18ba748f01adca1a4119c1c455bbc90be1490",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/tests.rs": "f0bae1aaed07381cd663fa7100b6bd794a53f20f6884aaac4c8a52975be35e36"
+  },
+  "capsule_packet": "parity/reports/artifacts/capsule-surface-20261115",
+  "capsule_dependencies": {
+    "MANIFEST.json": "a8e23907df5c8a470aa276ea367af71395cdc7e4c16243d41e0ff7fbacdcf053",
+    "original-evaluator/FREEZE.json": "4b22c7109de54f10c3f133fd1c9eced52421c5dd753cf50ac6520f8140f5b4b3",
+    "original-evaluator/metrics.py": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+    "public-evaluator/metrics.py": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+    "experiment/runs/base/rest-metadata.json": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9",
+    "experiment/runs/base/trajectory.jsonl": "1c56fd1ac2e343a096b08fc301c5bacfefbe99e7148433f871ece8036a58af21",
+    "experiment/runs/base/analysis.json": "f8493ccccb4362ef794c239f414951d8b8e56044559d872fa8e10c4d51aaf5e1",
+    "experiment/runs/height/rest-metadata.json": "d7032bd7e87338e19138647a859a0c447c105868c5f5dfec1b4fa48037cbe4ac",
+    "experiment/runs/height/trajectory.jsonl": "a31ff1401a0e678fe4d367eacda5d3624ac834a693e12caa8b91b7129e02a437",
+    "experiment/runs/height/analysis.json": "e49cbed36f0a7eacf780ef8c488d15f2763fa00ff9de2d7a3cc679b244ce04a1",
+    "experiment/source/crates/weftforge-sim/src/lib.rs": "a13640ec2f1c4f6a2dc4d5f9d010fbbf87a551571373f6ef5dec03d80fd9634b",
+    "experiment/source/crates/weftforge-sim/src/constraints.rs": "0f0272335d23801c19810e6c9fd421ef434b397bb636a16bd9d4e066007e5ea7",
+    "experiment/source/crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424"
+  },
+  "original_static_manifest_sha256": "e62ec5e24fc38fcc31572e4f9135f264c1e2b096616bff3934e77d714d74a649",
+  "original_harness_sha256": "f344ceb7a9e5c6b05eec7547d67505f883e82e0583adc217ec7903038d9af50a",
+  "original_input_sha256": "4fc3b2ec3bbaa805668f4bf6b130889010de60b2ba5eacf263c92911194a6612",
+  "original_axis_values_sha256": "715b6dd68f64ca1bfb2d811c7b500dd5b420d4fa021c3825af0278ddccba6533",
+  "original_expected_peaks_sha256": "32dccb3851a6f15be396e4e4d77bb0b247a28c9a626b3040591e631666ffdae4",
+  "cases": [
+    {
+      "case": "base",
+      "case_id": 0,
+      "states": 181,
+      "triangles": 1172,
+      "triangle_axes": 424264,
+      "original_exact_attribution_failed_frames_retained": [
+        9,
+        10,
+        15,
+        17,
+        24,
+        32,
+        34,
+        41,
+        46,
+        49,
+        56,
+        66,
+        69,
+        70,
+        72,
+        80,
+        95,
+        98,
+        114,
+        115,
+        116,
+        119,
+        126,
+        127,
+        141,
+        142,
+        144,
+        150,
+        155,
+        157,
+        158,
+        165,
+        180
+      ],
+      "original_quality_status_retained": "failed",
+      "original_strict_delivery_passed_retained": false
+    },
+    {
+      "case": "height",
+      "case_id": 1,
+      "states": 181,
+      "triangles": 1144,
+      "triangle_axes": 414128,
+      "original_exact_attribution_failed_frames_retained": [
+        6,
+        10,
+        18
+      ],
+      "original_quality_status_retained": "failed",
+      "original_strict_delivery_passed_retained": false
+    }
+  ],
+  "scope": "AFTER-CLOCK diagnostic arithmetic only; no new Cloth initialization or integration; closed failure flags unchanged"
+}

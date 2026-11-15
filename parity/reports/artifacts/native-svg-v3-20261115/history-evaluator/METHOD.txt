@@ -1,0 +1,74 @@
+Prospective v3 native history checkpoint supplement.
+
+This is a NEW evaluator for a NEW native v3 attempt. It does not alter the
+original frozen SVG checker, any v2 artifact, or the v2 strict failed outcome.
+It reads no v2 outputs and no WeftForge product/importer/undo implementation.
+The high-water stable-ID history contract was supplied before v3 execution.
+
+The original independent evaluator check.py and its FROZEN.json are pinned to
+SHA256 a015c01c864533d2f4e3b872da78c9fc72892b7b8f54a79aae9544fe5c984c6d
+and bb25bd15266c810ba2bc844f68595a586e5e202db9311f24926e2cd26002c24f.
+Its independently parsed original source and analytic geometry checks are reused
+unchanged. Its own freeze, specification and original-source hashes are verified.
+Original baseline/SVG/unsupported-SVG bytes are verified before and after grading.
+
+Required v3 checkpoint documents and exact revisions:
+baseline 1, imported 2, undo 3, redo 4, edited 5, rejected 5, reopened 5.
+Every checkpoint must be a distinct path within the predeclared directory
+.local/native-svg-acceptance-v3-20261115. V2 inputs are refused rather than
+posthoc regraded. Missing actual files never pass. --self-check reports only
+synthetic tests and cannot be combined with native checkpoint paths.
+
+Allocator expectation is independently derived from the original fixture:
+baseline next_id 11 + two paths * (one piece + four points + four curves) = 29.
+The source parser derives actual unique endpoint/span counts and confirms this
+formula. Baseline next_id must be 11. Every other checkpoint next_id must be
+exactly 29. Undo removes imported objects but preserves the high-water allocator;
+surviving original IDs remain exact. No allocated ID sequence is guessed: actual
+references are discovered and checked for freshness, uniqueness and connectivity.
+
+Baseline is recursively exact original native JSON, including revision/allocator.
+Imported is checked against original source geometry, preserved origin/scale,
+names/order, defaults, original objects and the pending width .1 -> .125 m.
+At this checkpoint the original cubic first control X remains .08 m.
+Undo is recursively exact baseline except revision3 and next_id29.
+Redo is recursively exact imported except revision4, including all stable IDs.
+Edited is checked against final original-checker geometry, then required to be
+recursively exact imported except revision5 and the sole cubic first control
+X change of +.01 m. The native control is discovered through the front piece's
+second boundary curve reference; no native curve/point IDs are guessed.
+Rejected and reopened are recursively exact edited, including revision5 and
+allocator29. This detects unexpected source-rejection or reopen authoring changes.
+
+Reused endpoint/control tolerance is 1e-12 m and sampling is 17 uniformly spaced
+parameters/span with 1e-8 m tolerance. Existing authoring data, shared IDs,
+materials, sewing, placement, mannequin and resolution obey the original frozen
+checks; checkpoint equality uses exact JSON fields, types, values and arrays.
+JSON text formatting is ignored and signed zero compares equal.
+
+Self-checks use synthetic checkpoints with permuted fresh IDs to demonstrate
+that a particular new-ID order is not assumed. They reject allocator rollback
+to11, allocator30, changed surviving IDs, redo ID changes, wrong source scale,
+wrong cubic geometry, missing pieces, changed materials/reopen geometry, each
+wrong checkpoint revision, and edits to each original source file.
+
+The unchanged original checker must ALSO run on final v3 edited native project,
+fresh-reopened/resaved native project and exported SVG. This supplement's seven
+native JSON checks alone do not establish the final SVG export acceptance.
+Neither checker proves native actions occurred. Raw native traces separately
+establish Cancel/pending draft, its unchanged current allocator, one-action
+import, Undo/Redo, unsupported-source interaction and actual quit/relaunch.
+No reference parity, physics, printing or broader SVG support is established.
+
+Usage from workspace root (supply the actual planned checkpoint filenames):
+python3 .local/svg-native-history-v3-evaluator-20261115/check.py --self-check
+python3 .local/svg-native-history-v3-evaluator-20261115/check.py \
+  --baseline .local/native-svg-acceptance-v3-20261115/baseline.weftforge \
+  --imported .local/native-svg-acceptance-v3-20261115/imported.weftforge \
+  --undo .local/native-svg-acceptance-v3-20261115/undo.weftforge \
+  --redo .local/native-svg-acceptance-v3-20261115/redo.weftforge \
+  --edited .local/native-svg-acceptance-v3-20261115/edited.weftforge \
+  --rejected .local/native-svg-acceptance-v3-20261115/rejected.weftforge \
+  --reopened .local/native-svg-acceptance-v3-20261115/reopened.weftforge
+JSON is written only to stdout; failures exit nonzero. Redirect only to a new
+evaluator evidence report. The script does not modify any native input file.

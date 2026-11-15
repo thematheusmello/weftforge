@@ -1,0 +1,887 @@
+{
+  "schema": 1,
+  "status": "V2_NATIVE_FLOW_SUPPORTED_STRICT_CHECKPOINT_FAILURE_RETAINED",
+  "reviewed_utc": "2026-11-15T03:05:02.821966+00:00",
+  "case_path": ".local/native-svg-acceptance-v2-20261115",
+  "source_commit": "32f9b3481c46e28a3b3acc49e6cf3908c7001b28",
+  "closed_inventory_sha256": "ba543d9c0f051cf7da28ddc0d3f0f62e3e1e07c176046f3ead9ef2575767b839",
+  "review_scope": "Read-only closedv2 trace/captures/savedJSON/bindings;noUI,sourceinspection,Cargo,GitHub,physics orv3reads",
+  "inventory": {
+    "listed_files": 259,
+    "verified_content_hashes": 220,
+    "hash_failures": [],
+    "membership_exact_excluding_separately_bound_app_and_inventory": true,
+    "privacy_skipped_full_contents": [
+      "trace/002-ax.txt",
+      "trace/003-ax.txt",
+      "trace/004-ax.txt",
+      "trace/005-ax.txt",
+      "trace/011-ax.txt",
+      "trace/012-ax.txt",
+      "trace/013-ax.txt",
+      "trace/014-ax.txt",
+      "trace/018-ax.txt",
+      "trace/019-ax.txt",
+      "trace/020-ax.txt",
+      "trace/021-ax.txt",
+      "trace/025-ax.txt",
+      "trace/026-ax.txt",
+      "trace/029-ax.txt",
+      "trace/030-ax.txt",
+      "trace/033-ax.txt",
+      "trace/034-ax.txt",
+      "trace/044-ax.txt",
+      "trace/045-ax.txt",
+      "trace/047-ax.txt",
+      "trace/048-ax.txt",
+      "trace/050-ax.txt",
+      "trace/051-ax.txt",
+      "trace/052-ax.txt",
+      "trace/053-ax.txt",
+      "trace/055-ax.txt",
+      "trace/056-ax.txt",
+      "trace/060-ax.txt",
+      "trace/061-ax.txt",
+      "trace/062-ax.txt",
+      "trace/063-ax.txt",
+      "trace/065-ax.txt",
+      "trace/066-ax.txt",
+      "trace/069-ax.txt",
+      "trace/070-ax.txt",
+      "trace/071-ax.txt",
+      "trace/072-ax.txt",
+      ".DS_Store"
+    ],
+    "skipped_count": 39,
+    "OS_or_blank_AX_counts": {
+      "Open": 12,
+      "Save": 14,
+      "blank_GoTo_context": 12
+    },
+    "main_app_AX_files_read": 43,
+    "own_app_JPEGs_visually_reviewed": [
+      "captures/00-fresh-empty.jpg",
+      "captures/01-scale-review.jpg",
+      "captures/02-cancel-pending-revision-one.jpg",
+      "captures/03-import-ready.jpg",
+      "captures/04-boundary-menu.jpg",
+      "captures/05-edited-cubic-framed.jpg",
+      "captures/06-invalid-import-retained.jpg",
+      "captures/07-fresh-relaunch-empty.jpg",
+      "captures/08-reopened-framed.jpg",
+      "captures/09-current-studio-harbor-rest.jpg"
+    ]
+  },
+  "trace": {
+    "actions": 74,
+    "before_records": 74,
+    "returned_records": 74,
+    "ids_contiguous": true,
+    "ordered_timestamps": true,
+    "missing_declared_input_records": [],
+    "returned_status_failures": [],
+    "after_results": "all null;effects verified by subsequent own-app AX/captures/saved files",
+    "actions_without_trace_AX": [
+      "001",
+      "058",
+      "059"
+    ],
+    "lifecycle_observation_coverage": "initial/freshlaunch own-app captures and stored quit inventories",
+    "action_records": [
+      {
+        "id": "001",
+        "label": "getApp",
+        "started_utc": "2026-11-15T02:37:57.158Z",
+        "completed_utc": "2026-11-15T02:37:59.344Z",
+        "meaning": null
+      },
+      {
+        "id": "002",
+        "label": "click",
+        "started_utc": "2026-11-15T02:38:05.330Z",
+        "completed_utc": "2026-11-15T02:38:05.348Z",
+        "meaning": "Open original baseline"
+      },
+      {
+        "id": "003",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:38:07.835Z",
+        "completed_utc": "2026-11-15T02:38:07.848Z",
+        "meaning": null
+      },
+      {
+        "id": "004",
+        "label": "setValue",
+        "started_utc": "2026-11-15T02:38:14.251Z",
+        "completed_utc": "2026-11-15T02:38:15.044Z",
+        "meaning": null
+      },
+      {
+        "id": "005",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:38:15.570Z",
+        "completed_utc": "2026-11-15T02:38:15.576Z",
+        "meaning": null
+      },
+      {
+        "id": "006",
+        "label": "click",
+        "started_utc": "2026-11-15T02:38:19.954Z",
+        "completed_utc": "2026-11-15T02:38:20.300Z",
+        "meaning": "Open selected baseline"
+      },
+      {
+        "id": "007",
+        "label": "click",
+        "started_utc": "2026-11-15T02:38:24.773Z",
+        "completed_utc": "2026-11-15T02:38:24.788Z",
+        "meaning": "Select Existing baseline"
+      },
+      {
+        "id": "008",
+        "label": "click",
+        "started_utc": "2026-11-15T02:38:33.395Z",
+        "completed_utc": "2026-11-15T02:38:33.574Z",
+        "meaning": "Focus width"
+      },
+      {
+        "id": "009",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:38:34.038Z",
+        "completed_utc": "2026-11-15T02:38:34.043Z",
+        "meaning": null
+      },
+      {
+        "id": "010",
+        "label": "typeText",
+        "started_utc": "2026-11-15T02:38:34.479Z",
+        "completed_utc": "2026-11-15T02:38:34.494Z",
+        "meaning": null
+      },
+      {
+        "id": "011",
+        "label": "click",
+        "started_utc": "2026-11-15T02:38:34.929Z",
+        "completed_utc": "2026-11-15T02:38:34.942Z",
+        "meaning": "Import SVG with uncommitted width"
+      },
+      {
+        "id": "012",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:38:35.874Z",
+        "completed_utc": "2026-11-15T02:38:35.878Z",
+        "meaning": null
+      },
+      {
+        "id": "013",
+        "label": "setValue",
+        "started_utc": "2026-11-15T02:38:42.507Z",
+        "completed_utc": "2026-11-15T02:38:42.970Z",
+        "meaning": null
+      },
+      {
+        "id": "014",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:38:43.493Z",
+        "completed_utc": "2026-11-15T02:38:43.500Z",
+        "meaning": null
+      },
+      {
+        "id": "015",
+        "label": "click",
+        "started_utc": "2026-11-15T02:38:48.584Z",
+        "completed_utc": "2026-11-15T02:38:48.884Z",
+        "meaning": "Review source scale"
+      },
+      {
+        "id": "016",
+        "label": "click",
+        "started_utc": "2026-11-15T02:38:55.694Z",
+        "completed_utc": "2026-11-15T02:38:56.328Z",
+        "meaning": "Cancel visible SVG review"
+      },
+      {
+        "id": "017",
+        "label": "click",
+        "started_utc": "2026-11-15T02:39:04.304Z",
+        "completed_utc": "2026-11-15T02:39:04.328Z",
+        "meaning": "Frame all while width remains pending"
+      },
+      {
+        "id": "018",
+        "label": "click",
+        "started_utc": "2026-11-15T02:39:04.766Z",
+        "completed_utc": "2026-11-15T02:39:04.786Z",
+        "meaning": "Repeat original SVG import"
+      },
+      {
+        "id": "019",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:39:05.716Z",
+        "completed_utc": "2026-11-15T02:39:05.722Z",
+        "meaning": null
+      },
+      {
+        "id": "020",
+        "label": "setValue",
+        "started_utc": "2026-11-15T02:39:10.888Z",
+        "completed_utc": "2026-11-15T02:39:11.667Z",
+        "meaning": null
+      },
+      {
+        "id": "021",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:39:12.220Z",
+        "completed_utc": "2026-11-15T02:39:12.227Z",
+        "meaning": null
+      },
+      {
+        "id": "022",
+        "label": "click",
+        "started_utc": "2026-11-15T02:39:18.096Z",
+        "completed_utc": "2026-11-15T02:39:18.485Z",
+        "meaning": "Open original SVG for actual import"
+      },
+      {
+        "id": "023",
+        "label": "click",
+        "started_utc": "2026-11-15T02:39:23.611Z",
+        "completed_utc": "2026-11-15T02:39:24.246Z",
+        "meaning": "Import both editable paths with pending width as one transaction"
+      },
+      {
+        "id": "024",
+        "label": "click",
+        "started_utc": "2026-11-15T02:39:30.911Z",
+        "completed_utc": "2026-11-15T02:39:30.932Z",
+        "meaning": "Frame imported construction"
+      },
+      {
+        "id": "025",
+        "label": "click",
+        "started_utc": "2026-11-15T02:39:31.364Z",
+        "completed_utc": "2026-11-15T02:39:31.378Z",
+        "meaning": "Save imported checkpoint"
+      },
+      {
+        "id": "026",
+        "label": "setValue",
+        "started_utc": "2026-11-15T02:39:45.430Z",
+        "completed_utc": "2026-11-15T02:39:45.892Z",
+        "meaning": null
+      },
+      {
+        "id": "027",
+        "label": "click",
+        "started_utc": "2026-11-15T02:39:46.283Z",
+        "completed_utc": "2026-11-15T02:39:46.450Z",
+        "meaning": "Save new imported project"
+      },
+      {
+        "id": "028",
+        "label": "click",
+        "started_utc": "2026-11-15T02:39:54.955Z",
+        "completed_utc": "2026-11-15T02:39:54.972Z",
+        "meaning": "One Undo restores baseline before width+import"
+      },
+      {
+        "id": "029",
+        "label": "click",
+        "started_utc": "2026-11-15T02:39:55.401Z",
+        "completed_utc": "2026-11-15T02:39:55.417Z",
+        "meaning": "Save Undo checkpoint"
+      },
+      {
+        "id": "030",
+        "label": "setValue",
+        "started_utc": "2026-11-15T02:40:02.430Z",
+        "completed_utc": "2026-11-15T02:40:02.912Z",
+        "meaning": null
+      },
+      {
+        "id": "031",
+        "label": "click",
+        "started_utc": "2026-11-15T02:40:03.320Z",
+        "completed_utc": "2026-11-15T02:40:03.606Z",
+        "meaning": "Save restored baseline"
+      },
+      {
+        "id": "032",
+        "label": "click",
+        "started_utc": "2026-11-15T02:40:04.032Z",
+        "completed_utc": "2026-11-15T02:40:04.049Z",
+        "meaning": "One Redo restores width+both SVG pieces"
+      },
+      {
+        "id": "033",
+        "label": "click",
+        "started_utc": "2026-11-15T02:40:04.801Z",
+        "completed_utc": "2026-11-15T02:40:04.827Z",
+        "meaning": "Save Redo checkpoint"
+      },
+      {
+        "id": "034",
+        "label": "setValue",
+        "started_utc": "2026-11-15T02:40:11.747Z",
+        "completed_utc": "2026-11-15T02:40:12.213Z",
+        "meaning": null
+      },
+      {
+        "id": "035",
+        "label": "click",
+        "started_utc": "2026-11-15T02:40:12.625Z",
+        "completed_utc": "2026-11-15T02:40:12.858Z",
+        "meaning": "Save redone imported construction"
+      },
+      {
+        "id": "036",
+        "label": "click",
+        "started_utc": "2026-11-15T02:40:17.488Z",
+        "completed_utc": "2026-11-15T02:40:17.504Z",
+        "meaning": "Select imported curved front"
+      },
+      {
+        "id": "037",
+        "label": "click",
+        "started_utc": "2026-11-15T02:40:21.697Z",
+        "completed_utc": "2026-11-15T02:40:21.726Z",
+        "meaning": "Choose editable imported boundary"
+      },
+      {
+        "id": "038",
+        "label": "click",
+        "started_utc": "2026-11-15T02:40:34.144Z",
+        "completed_utc": "2026-11-15T02:40:34.511Z",
+        "meaning": "Select Boundary2 curve17 cubic"
+      },
+      {
+        "id": "039",
+        "label": "click",
+        "started_utc": "2026-11-15T02:40:43.119Z",
+        "completed_utc": "2026-11-15T02:40:43.293Z",
+        "meaning": "Focus first cubic control X"
+      },
+      {
+        "id": "040",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:40:43.730Z",
+        "completed_utc": "2026-11-15T02:40:43.737Z",
+        "meaning": null
+      },
+      {
+        "id": "041",
+        "label": "typeText",
+        "started_utc": "2026-11-15T02:40:44.176Z",
+        "completed_utc": "2026-11-15T02:40:44.190Z",
+        "meaning": "Set first control X in metres"
+      },
+      {
+        "id": "042",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:40:44.647Z",
+        "completed_utc": "2026-11-15T02:40:44.653Z",
+        "meaning": "Commit one cubic control edit"
+      },
+      {
+        "id": "043",
+        "label": "click",
+        "started_utc": "2026-11-15T02:40:52.300Z",
+        "completed_utc": "2026-11-15T02:40:52.314Z",
+        "meaning": "Frame final authored curves"
+      },
+      {
+        "id": "044",
+        "label": "click",
+        "started_utc": "2026-11-15T02:40:52.741Z",
+        "completed_utc": "2026-11-15T02:40:52.752Z",
+        "meaning": "Save edited native construction"
+      },
+      {
+        "id": "045",
+        "label": "setValue",
+        "started_utc": "2026-11-15T02:40:57.399Z",
+        "completed_utc": "2026-11-15T02:40:57.857Z",
+        "meaning": null
+      },
+      {
+        "id": "046",
+        "label": "click",
+        "started_utc": "2026-11-15T02:40:58.254Z",
+        "completed_utc": "2026-11-15T02:40:58.397Z",
+        "meaning": "Write edited project"
+      },
+      {
+        "id": "047",
+        "label": "click",
+        "started_utc": "2026-11-15T02:40:58.815Z",
+        "completed_utc": "2026-11-15T02:40:58.830Z",
+        "meaning": "Export edited SVG from actual native state"
+      },
+      {
+        "id": "048",
+        "label": "setValue",
+        "started_utc": "2026-11-15T02:41:06.227Z",
+        "completed_utc": "2026-11-15T02:41:06.693Z",
+        "meaning": null
+      },
+      {
+        "id": "049",
+        "label": "click",
+        "started_utc": "2026-11-15T02:41:07.095Z",
+        "completed_utc": "2026-11-15T02:41:07.246Z",
+        "meaning": "Write actual native SVG export"
+      },
+      {
+        "id": "050",
+        "label": "click",
+        "started_utc": "2026-11-15T02:41:18.656Z",
+        "completed_utc": "2026-11-15T02:41:18.677Z",
+        "meaning": "Test unsupported transform rejection"
+      },
+      {
+        "id": "051",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:41:19.874Z",
+        "completed_utc": "2026-11-15T02:41:19.878Z",
+        "meaning": null
+      },
+      {
+        "id": "052",
+        "label": "setValue",
+        "started_utc": "2026-11-15T02:41:30.252Z",
+        "completed_utc": "2026-11-15T02:41:30.724Z",
+        "meaning": null
+      },
+      {
+        "id": "053",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:41:31.255Z",
+        "completed_utc": "2026-11-15T02:41:31.264Z",
+        "meaning": null
+      },
+      {
+        "id": "054",
+        "label": "click",
+        "started_utc": "2026-11-15T02:41:37.638Z",
+        "completed_utc": "2026-11-15T02:41:38.017Z",
+        "meaning": "Reject unsupported transform atomically"
+      },
+      {
+        "id": "055",
+        "label": "click",
+        "started_utc": "2026-11-15T02:41:38.583Z",
+        "completed_utc": "2026-11-15T02:41:38.600Z",
+        "meaning": "Save after rejection for exact retention comparison"
+      },
+      {
+        "id": "056",
+        "label": "setValue",
+        "started_utc": "2026-11-15T02:41:53.447Z",
+        "completed_utc": "2026-11-15T02:41:53.902Z",
+        "meaning": null
+      },
+      {
+        "id": "057",
+        "label": "click",
+        "started_utc": "2026-11-15T02:41:54.313Z",
+        "completed_utc": "2026-11-15T02:41:54.465Z",
+        "meaning": "Save unchanged project after invalid SVG"
+      },
+      {
+        "id": "058",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:41:54.878Z",
+        "completed_utc": "2026-11-15T02:41:54.881Z",
+        "meaning": "Actual quit before persistence check"
+      },
+      {
+        "id": "059",
+        "label": "getApp",
+        "started_utc": "2026-11-15T02:42:21.628Z",
+        "completed_utc": "2026-11-15T02:42:22.692Z",
+        "meaning": "Fresh same-binary relaunch after confirmed exit"
+      },
+      {
+        "id": "060",
+        "label": "click",
+        "started_utc": "2026-11-15T02:42:29.577Z",
+        "completed_utc": "2026-11-15T02:42:29.597Z",
+        "meaning": "Open saved edited project after fresh launch"
+      },
+      {
+        "id": "061",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:42:32.165Z",
+        "completed_utc": "2026-11-15T02:42:32.174Z",
+        "meaning": null
+      },
+      {
+        "id": "062",
+        "label": "setValue",
+        "started_utc": "2026-11-15T02:42:37.125Z",
+        "completed_utc": "2026-11-15T02:42:37.935Z",
+        "meaning": null
+      },
+      {
+        "id": "063",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:42:38.471Z",
+        "completed_utc": "2026-11-15T02:42:38.481Z",
+        "meaning": null
+      },
+      {
+        "id": "064",
+        "label": "click",
+        "started_utc": "2026-11-15T02:42:43.443Z",
+        "completed_utc": "2026-11-15T02:42:43.880Z",
+        "meaning": "Open edited project after actual restart"
+      },
+      {
+        "id": "065",
+        "label": "click",
+        "started_utc": "2026-11-15T02:42:44.384Z",
+        "completed_utc": "2026-11-15T02:42:44.401Z",
+        "meaning": "Resave reopened authoring state separately"
+      },
+      {
+        "id": "066",
+        "label": "setValue",
+        "started_utc": "2026-11-15T02:42:50.426Z",
+        "completed_utc": "2026-11-15T02:42:50.460Z",
+        "meaning": null
+      },
+      {
+        "id": "067",
+        "label": "click",
+        "started_utc": "2026-11-15T02:42:50.860Z",
+        "completed_utc": "2026-11-15T02:42:51.007Z",
+        "meaning": "Write fresh-process resave"
+      },
+      {
+        "id": "068",
+        "label": "click",
+        "started_utc": "2026-11-15T02:42:51.408Z",
+        "completed_utc": "2026-11-15T02:42:51.421Z",
+        "meaning": "Frame reopened patterns"
+      },
+      {
+        "id": "069",
+        "label": "click",
+        "started_utc": "2026-11-15T02:43:36.984Z",
+        "completed_utc": "2026-11-15T02:43:37.004Z",
+        "meaning": "Visual-only Harbor rest preview after SVG case outputs complete"
+      },
+      {
+        "id": "070",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:43:38.110Z",
+        "completed_utc": "2026-11-15T02:43:38.117Z",
+        "meaning": null
+      },
+      {
+        "id": "071",
+        "label": "setValue",
+        "started_utc": "2026-11-15T02:43:45.143Z",
+        "completed_utc": "2026-11-15T02:43:45.605Z",
+        "meaning": "Existing original garment, visual-only Rest preview"
+      },
+      {
+        "id": "072",
+        "label": "pressKey",
+        "started_utc": "2026-11-15T02:43:46.147Z",
+        "completed_utc": "2026-11-15T02:43:46.153Z",
+        "meaning": null
+      },
+      {
+        "id": "073",
+        "label": "click",
+        "started_utc": "2026-11-15T02:43:51.725Z",
+        "completed_utc": "2026-11-15T02:43:52.072Z",
+        "meaning": "Open original Harbor in Rest without simulation"
+      },
+      {
+        "id": "074",
+        "label": "click",
+        "started_utc": "2026-11-15T02:43:52.636Z",
+        "completed_utc": "2026-11-15T02:43:52.652Z",
+        "meaning": "Frame original garment construction"
+      }
+    ]
+  },
+  "flow": [
+    {
+      "step": "Cancel pending width",
+      "actions": [
+        "010",
+        "011",
+        "015",
+        "016"
+      ],
+      "observed": "rev1,1piece,pending width.125 retained",
+      "evidence": [
+        "trace/016-ax.txt",
+        "captures/01-scale-review.jpg",
+        "captures/02-cancel-pending-revision-one.jpg"
+      ]
+    },
+    {
+      "step": "Frame all before Import",
+      "actions": [
+        "017"
+      ],
+      "observed": "rev1/pending.125 unchanged; view framing changed",
+      "evidence": [
+        "trace/017-ax.txt",
+        "captures/03-import-ready.jpg"
+      ]
+    },
+    {
+      "step": "Import/Undo/Redo",
+      "actions": [
+        "023",
+        "027",
+        "028",
+        "031",
+        "032",
+        "035"
+      ],
+      "observed": "saved revisions2/3/4;pieces3/1/3;width.125/.1/.125;Undo next_id29 retained",
+      "evidence": [
+        "imported.weftforge",
+        "after-undo.weftforge",
+        "after-redo.weftforge"
+      ]
+    },
+    {
+      "step": "Cubic control edit/export",
+      "actions": [
+        "038",
+        "039",
+        "040",
+        "041",
+        "042",
+        "046",
+        "049"
+      ],
+      "observed": "curve17 firstcontrolX.08\u2192.09 only;rev5;native export",
+      "evidence": [
+        "trace/038-ax.txt",
+        "trace/042-ax.txt",
+        "edited.weftforge",
+        "edited.svg",
+        "captures/05-edited-cubic-framed.jpg"
+      ]
+    },
+    {
+      "step": "Unsupported transform rejected",
+      "actions": [
+        "050",
+        "054",
+        "057"
+      ],
+      "observed": "explanatory native rejection;rev5;after-rejected byte-identical to edited",
+      "evidence": [
+        "trace/054-ax.txt",
+        "after-rejected.weftforge",
+        "captures/06-invalid-import-retained.jpg"
+      ]
+    },
+    {
+      "step": "Actual quit/fresh open/resave",
+      "actions": [
+        "058",
+        "059",
+        "064",
+        "067"
+      ],
+      "observed": "stored apps[]/closed confirmation precedes freshlaunchEmpty0;open/resave5 exact",
+      "evidence": [
+        "quit-first-inventory.json",
+        "quit-confirmed.json",
+        "captures/07-fresh-relaunch-empty.jpg",
+        "trace/064-ax.txt",
+        "reopened.weftforge",
+        "captures/08-reopened-framed.jpg"
+      ]
+    },
+    {
+      "step": "Harbor visual-only Rest preview",
+      "actions": [
+        "069",
+        "073",
+        "074"
+      ],
+      "observed": "rev20,2pieces,8seams,654vertices,Rest;no recorded simulation inputs",
+      "evidence": [
+        "trace/074-ax.txt",
+        "captures/09-current-studio-harbor-rest.jpg"
+      ]
+    }
+  ],
+  "saved_checkpoints": {
+    "baseline": {
+      "revision": 1,
+      "next_id": 11,
+      "piece_count": 1,
+      "baseline_width_m": 0.09999999999999998,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+    },
+    "imported": {
+      "revision": 2,
+      "next_id": 29,
+      "piece_count": 3,
+      "baseline_width_m": 0.125,
+      "sha256": "b067e789e33cb350d449d1016e37b40562b74723c4e58e02685d19eba34a1484"
+    },
+    "after-undo": {
+      "revision": 3,
+      "next_id": 29,
+      "piece_count": 1,
+      "baseline_width_m": 0.09999999999999998,
+      "sha256": "f1c1193f59b46e75bd1e847b8c7152048b5fd5d382f0b331a67da6d8c42cf604"
+    },
+    "after-redo": {
+      "revision": 4,
+      "next_id": 29,
+      "piece_count": 3,
+      "baseline_width_m": 0.125,
+      "sha256": "4ae70cba465adece15585ab48035cf88c651b7a869872bc5281360fd2671e946"
+    },
+    "edited": {
+      "revision": 5,
+      "next_id": 29,
+      "piece_count": 3,
+      "baseline_width_m": 0.125,
+      "sha256": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c"
+    },
+    "after-rejected": {
+      "revision": 5,
+      "next_id": 29,
+      "piece_count": 3,
+      "baseline_width_m": 0.125,
+      "sha256": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c"
+    },
+    "reopened": {
+      "revision": 5,
+      "next_id": 29,
+      "piece_count": 3,
+      "baseline_width_m": 0.125,
+      "sha256": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c"
+    }
+  },
+  "exact_saved_differences": {
+    "baseline -> after-undo": [
+      {
+        "path": "/project/revision",
+        "before": 1,
+        "after": 3
+      },
+      {
+        "path": "/project/next_id",
+        "before": 11,
+        "after": 29
+      }
+    ],
+    "imported -> after-redo": [
+      {
+        "path": "/project/revision",
+        "before": 2,
+        "after": 4
+      }
+    ],
+    "after-redo -> edited": [
+      {
+        "path": "/project/revision",
+        "before": 4,
+        "after": 5
+      },
+      {
+        "path": "/project/curves/5/controls/0/0",
+        "before": 0.08,
+        "after": 0.09
+      }
+    ],
+    "edited -> after-rejected": [],
+    "edited -> reopened": []
+  },
+  "bindings": {
+    "native_binary_sha256": "ef4e1a0f9ca797669e549f407a234ad0a8295fadab281d791b9ab92158b76a4e",
+    "native_matches_plan_and_result": true,
+    "original_three_input_hashes_exact": true,
+    "independent_receipt_sha256": "8464c67bf5c63cde33e6f628e57ddab655d78f2761a30020a9d4e25ad93ce89f",
+    "independent_receipt_byte_equal_original": true,
+    "independent_checker_freeze_sha256": "bb25bd15266c810ba2bc844f68595a586e5e202db9311f24926e2cd26002c24f",
+    "static_geometry_export_reopen_receipt_status": "STATIC_ARTIFACT_CHECKS_PASSED",
+    "source45_unchanged": "Root BINDING-CLOSURE assertion; source not inspected/rebuilt in this review",
+    "pretest_manifest_sha256_declared": "600b8c6a7473ab778a5b741d5b8b709fec32dc4da0f535817682112a3eccc511"
+  },
+  "strict_failure": {
+    "status": "FAILED unchanged",
+    "plan_sha256": "59fd63d2bb3234108ebb923bef0e827ea04d054eaf673297010a28f57beda979",
+    "failure_record_sha256": "3446d8c3d8b6bb7a92fbd1d11d79040739daee96218d5da1638f2b4a4ea22066",
+    "actual_extra_field_difference": {
+      "project.next_id": {
+        "baseline": 11,
+        "after_undo": 29
+      }
+    },
+    "classification": "Prospective root protocol expected allocator rewind; observed29 follows declared stable-ID highwater semantics. No new production bug identified.",
+    "original_later_assertions": "Not executed after first root assertion; this review and BINDING-CLOSURE are separate checks, not retroactive pass",
+    "v1_failure_retained_by_plan_hashes": {
+      "inventory": "493a66ea20fc6177488a717cb8b9636816cfb07511a55d01d4e404978c666f14",
+      "qualification": "c23ad07fdf604495929e5d3d9a4a4c51ca8e9c88cbdeec08f3501ae09e57daab"
+    }
+  },
+  "publication_privacy": {
+    "raw_closed_directory_safe_to_publish_verbatim": false,
+    "chooser_AX_full_contents_not_read_or_hashed": true,
+    "blank_window_AX_conservatively_skipped": true,
+    "DS_Store_not_read_or_hashed": true,
+    "personal_absolute_paths_found_in_JSON": {
+      "BINDING-CLOSURE.json": [
+        "/current_app_processes/0"
+      ],
+      "INDEPENDENT-EVALUATION.json": [
+        "/actual_artifact_sha256/<absolute-path-key>",
+        "/actual_artifact_sha256/<absolute-path-key>",
+        "/actual_artifact_sha256/<absolute-path-key>"
+      ],
+      "trace/001-before.json": [
+        "/args/path"
+      ],
+      "trace/004-before.json": [
+        "/args/value"
+      ],
+      "trace/013-before.json": [
+        "/args/value"
+      ],
+      "trace/020-before.json": [
+        "/args/value"
+      ],
+      "trace/052-before.json": [
+        "/args/value"
+      ],
+      "trace/059-before.json": [
+        "/args/path"
+      ],
+      "trace/062-before.json": [
+        "/args/value"
+      ],
+      "trace/071-before.json": [
+        "/args/value"
+      ]
+    },
+    "required_public_projection": "Keep raw originals private and immutable; omit chooser/blank AX and .DS_Store, redact personal paths in separately derived trace/receipt copies and retain private digest mapping. Review sanitized projection separately.",
+    "own_app_JPEG_pixels_reviewed": "All10 show task app only; this is no guarantee about uninspected embedded metadata."
+  },
+  "gaps_and_limits": [
+    "No missing record was found among74 declared inputs. AX is absent for lifecycle calls001/058/059 and supported by separate captures/quit records.",
+    "Review dialog scale/count is visually supported in own-app JPEGs; full main AX does not expose its custom modal text. No absence claim is made from provider clipping.",
+    "Source45 unchanged is root binding evidence; this task did not inspect source or replay builds.",
+    "Recorded state is Rest and there are no simulation inputs; no solver, physical, UI-uncertainty-label or full native/reference parity acceptance is established.",
+    "Original v1 Cancel failure and v2 strict failure remain failed. Live v3 was neither read nor controlled."
+  ],
+  "new_product_mismatches_identified": [],
+  "closed_inventory_unchanged_after_review": true,
+  "v3_accessed": false
+}

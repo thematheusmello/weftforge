@@ -15,7 +15,7 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 | `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1/v2/v3 model | Static authoring | One prior saved document; no silent fallback |
 | `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1/v2/v3 model | Static authoring | Dirty named documents only; no automatic recovery UI |
 | OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups; no MTL/textures |
-| SVG | No | Yes | Boundary curves only in output | Static 2D | `M/L/C/Z` paths; mm physical size; no sewing/materials/internal features/print tiling |
+| SVG | Bounded additive import | Yes | Editable exterior boundaries and names | Static 2D | Closed absolute `M/L/C/Z` paths, explicit mm and uniform viewBox; no sewing/materials/internal features/print tiling |
 | glTF/GLB | No | No | None yet | None yet | Planned validated avatar/mesh/animation workflows |
 | DXF R2000 | No | Yes | Exterior boundary curves only | Static 2D | ASCII `LINE`/cubic `SPLINE`, mm, stable piece layers; no sewing, materials, grain, 3D placement, apparel conventions or print layout |
 | Animation/cache formats | No | No | None yet | None yet | Timeline, frame caches and export not implemented |
@@ -190,6 +190,23 @@ are expressed in mm and V is converted to downward SVG Y. It does not reconstruc
 the complete garment document when imported elsewhere. Printer scaling, page
 layout/tiling, margins and units in third-party readers still
 need independent workflow validation.
+
+Choose **Import SVG…** in the desktop toolbar or command search to add editable
+exterior patterns, or run `weftforge-cli import-svg INPUT OUTPUT PATTERNS.svg`.
+The [bounded SVG import profile](../spec/features/FILE-005-svg-pattern-import.md)
+requires physical `mm` width/height and a uniformly scaled `viewBox`; it accepts
+direct, closed single-contour paths using absolute `M/L/C/Z` commands. Straight
+and cubic construction, names and relative layout survive as editable objects.
+The drawing's user-space origin is retained, without subtracting the viewBox
+minimum; SVG Y is inverted into upward pattern V. The native summary shows the
+physical scale before applying all pieces and pending edits as one undo step.
+Missing/other units, transforms, CSS, unsupported geometry/path commands, open
+or compound contours, DTDs and external resources reject the whole import.
+Import is limited to 1 MiB, 64 pieces and 4096 total spans; native validation and
+its bounded cubic contour predicate still apply. Appearance, descriptions,
+sewing, grain, internal details and simulation are omitted explicitly. Imported
+pieces use the first existing fabric and default 3D placement. Native documents
+remain necessary for the complete garment.
 
 DXF writes the [FILE-005-v1 R2000 profile](../spec/features/FILE-005-dxf-pattern-export.md):
 ASCII `AC1015`, numeric millimetres and `$INSUNITS=4`. Pattern U/V maps to DXF X/Y

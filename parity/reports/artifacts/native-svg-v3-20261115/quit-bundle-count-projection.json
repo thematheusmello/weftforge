@@ -1,0 +1,42 @@
+{
+  "kind": "Derived exact-bundle-only counts and timestamps; raw inventory arrays are not distributed",
+  "selector": {
+    "array": "apps",
+    "field": "id",
+    "exact_value": "org.weftforge.studio.svg.v3.20261115"
+  },
+  "count_method": "Count every apps row whose id exactly equals selector; running count additionally requires isRunning is true. No displayName or substring matching.",
+  "observations": [
+    {
+      "source_record": "quit-before-inventory.json",
+      "original_sha256": "cb3128924bff9a69880ca0720a9cae4184d3ab64ddba30120b4671049d12cf91",
+      "original_bytes": 8209,
+      "recorded_utc": "2026-11-15T02:59:39.149Z",
+      "matching_bundle_count": 1,
+      "matching_running_bundle_count": 1
+    },
+    {
+      "source_record": "quit-confirmed.json",
+      "original_sha256": "7b659b827a1ac1182812abc2b701dd02ba26c49087d65f4b2b639fa4d0b48814",
+      "original_bytes": 8373,
+      "recorded_utc": "2026-11-15T02:59:39.177Z",
+      "matching_bundle_count": 1,
+      "matching_running_bundle_count": 1
+    },
+    {
+      "source_record": "quit-settled-inventory.json",
+      "original_sha256": "cc91499495027d7c1e4a89a7e9fa76afe2a418cc3e5b98d34b002bfa43c2141d",
+      "original_bytes": 8222,
+      "recorded_utc": "2026-11-15T02:59:53.217Z",
+      "matching_bundle_count": 0,
+      "matching_running_bundle_count": 0
+    }
+  ],
+  "quit_input_completed_utc": "2026-11-15T02:59:39.155Z",
+  "quit_input_trace": "064",
+  "fresh_launch_started_utc": "2026-11-15T03:00:22.677Z",
+  "fresh_launch_trace": "065",
+  "settled_zero_match_before_fresh_launch": true,
+  "premature_assertion_failure": "native-v3/quit-immediate-assertion-failed.json remains separate and unchanged",
+  "projection_is_not_raw_inventory_or_ui_replay": true
+}

@@ -299,7 +299,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 6);
+    assert_eq!(tools.len(), 7);
     assert!(
         tools
             .iter()
@@ -314,7 +314,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
             .as_array()
             .unwrap()
             .len(),
-        22
+        23
     );
     success(&server.call("project_create", json!({"output":project_path})));
     let initial = server.call("project_inspect", json!({"path":project_path}));
@@ -445,7 +445,7 @@ fn sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constrai
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 22);
+    assert_eq!(variants.len(), 23);
     for name in [
         "add_sewing_group",
         "update_sewing_group",
@@ -943,7 +943,7 @@ fn stdio_validates_protocol_lifecycle_modern_metadata_and_line_bounds() {
         json!(["2026-07-28"])
     );
     let listed = server.request("tools/list", json!({"_meta":modern_metadata("2026-07-28")}));
-    assert_eq!(listed["result"]["tools"].as_array().unwrap().len(), 6);
+    assert_eq!(listed["result"]["tools"].as_array().unwrap().len(), 7);
     assert_eq!(listed["result"]["cacheScope"], "public");
     assert_eq!(listed["result"]["ttlMs"], 0);
     success(&server.request("tools/call", json!({"_meta":modern_metadata("2026-07-28"),"name":"project_create","arguments":{"output":path}})));
@@ -1030,5 +1030,94 @@ fn stdio_validates_protocol_lifecycle_modern_metadata_and_line_bounds() {
         .unwrap();
     server.input.take();
     assert_eq!(server.receive()["id"], "last");
+    server.finish();
+}
+
+#[test]
+fn svg_import_stdio_discovers_shared_command_reports_physical_scale_and_is_atomic() {
+    let directory = Directory::new();
+    let input = directory.path("input.weftforge");
+    let output = directory.path("output.weftforge");
+    let svg = directory.path("original.svg");
+    let original = include_bytes!(
+        "../../../crates/weftforge-core/tests/fixtures/original-editable-patterns.svg"
+    );
+    fs::write(&svg, original).unwrap();
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let listed = server.request("tools/list", json!({}));
+    let tools = listed["result"]["tools"].as_array().unwrap();
+    let tool = tools
+        .iter()
+        .find(|tool| tool["name"] == "project_import_svg")
+        .unwrap();
+    assert_eq!(
+        tool["inputSchema"]["required"],
+        json!(["input", "output", "svg"])
+    );
+    assert_eq!(tool["inputSchema"]["additionalProperties"], false);
+    let command = tools
+        .iter()
+        .find(|tool| tool["name"] == "project_execute")
+        .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|variant| variant["properties"]["type"]["const"] == "import_svg_patterns")
+        .unwrap();
+    assert_eq!(command["properties"]["data"]["required"], json!(["svg"]));
+    assert_eq!(command["properties"]["data"]["additionalProperties"], false);
+    assert_eq!(
+        command["properties"]["data"]["properties"]["svg"]["maxLength"],
+        weftforge_core::MAX_SVG_BYTES
+    );
+    success(&server.call("project_create", json!({"output":input})));
+    let result = server.call(
+        "project_import_svg",
+        json!({"input":input,"output":output,"svg":svg}),
+    );
+    let receipt = success(&result);
+    assert_eq!(receipt["revision"], 1);
+    assert_eq!(receipt["pieces_imported"], 2);
+    assert_eq!(receipt["metres_per_user_unit"], 0.002);
+    assert!(
+        receipt["scope"]
+            .as_str()
+            .unwrap()
+            .contains("exterior boundaries")
+    );
+    let saved = Project::load(&output).unwrap();
+    let mut expected = Editor::default();
+    expected
+        .execute(Command::ImportSvgPatterns {
+            svg: String::from_utf8(original.to_vec()).unwrap(),
+        })
+        .unwrap();
+    assert_eq!(saved, expected.project);
+    let before = fs::read(&output).unwrap();
+    let input_before = fs::read(&input).unwrap();
+    for arguments in [
+        json!({"input":input,"output":output,"svg":svg,"extra":true}),
+        json!({"input":input,"output":output}),
+        json!({"input":input,"output":output,"svg":null}),
+        json!({"input":input,"output":svg,"svg":svg}),
+    ] {
+        tool_error(&server.call("project_import_svg", arguments));
+        assert_eq!(fs::read(&output).unwrap(), before);
+        assert_eq!(fs::read(&input).unwrap(), input_before);
+        assert_eq!(fs::read(&svg).unwrap(), original);
+    }
+    fs::write(&svg, b"<svg>").unwrap();
+    tool_error(&server.call(
+        "project_import_svg",
+        json!({"input":input,"output":output,"svg":svg}),
+    ));
+    assert_eq!(fs::read(&output).unwrap(), before);
+    assert!(!recovery_path(&output).exists());
+    tool_error(&server.call("project_execute", json!({"input":input,"output":output,"commands":[{"type":"import_svg_patterns","data":{"svg":String::from_utf8(original.to_vec()).unwrap()}},{"type":"move_point","data":{"point":0,"position":[0,0]}}]})));
+    assert_eq!(fs::read(&output).unwrap(), before);
+    success(&server.call("project_execute", json!({"input":input,"output":output,"commands":[{"type":"import_svg_patterns","data":{"svg":String::from_utf8(original.to_vec()).unwrap()}}]})));
+    assert_eq!(Project::load(&output).unwrap(), saved);
+    assert_eq!(fs::read(recovery_path(&output)).unwrap(), before);
     server.finish();
 }

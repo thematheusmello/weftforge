@@ -1,0 +1,7356 @@
+{
+  "kind": "AFTER-CLOCK actual compiled unmodified diagnostic helper static replay",
+  "status": "passed_all_362_frozen_peaks_and_838392_triangle_axes_exactly",
+  "new_physics_steps": 0,
+  "states": 362,
+  "triangle_axis_length_minus_one_values": 838392,
+  "preflight": {
+    "utc": "2026-11-15T02:01:46.663099+00:00",
+    "plan_sha256": "c9affdb783015d5222fcfd2617ae37c7025972d41020e2536ac82dd21e0a94d2",
+    "runner_sha256": "f1d8839359d52d8cab246570eba6f15ef76868bb594070dd80b75e72ed354648",
+    "comparator_self_checks": {
+      "peak_field_and_ulp_mutations_rejected": true,
+      "coherent_wrong_peak_rejected": true,
+      "axis_ulp_and_count_mutations_rejected": true
+    },
+    "input_source_and_old_bindings_exact": true
+  },
+  "cases": [
+    {
+      "case": "base",
+      "case_id": 0,
+      "states": 181,
+      "triangles": 1172,
+      "triangle_axes": 424264,
+      "original_exact_attribution_failed_frames_retained": [
+        9,
+        10,
+        15,
+        17,
+        24,
+        32,
+        34,
+        41,
+        46,
+        49,
+        56,
+        66,
+        69,
+        70,
+        72,
+        80,
+        95,
+        98,
+        114,
+        115,
+        116,
+        119,
+        126,
+        127,
+        141,
+        142,
+        144,
+        150,
+        155,
+        157,
+        158,
+        165,
+        180
+      ],
+      "original_quality_status_retained": "failed",
+      "original_strict_delivery_passed_retained": false
+    },
+    {
+      "case": "height",
+      "case_id": 1,
+      "states": 181,
+      "triangles": 1144,
+      "triangle_axes": 414128,
+      "original_exact_attribution_failed_frames_retained": [
+        6,
+        10,
+        18
+      ],
+      "original_quality_status_retained": "failed",
+      "original_strict_delivery_passed_retained": false
+    }
+  ],
+  "failures": [],
+  "compilation": {
+    "command": [
+      "rustup",
+      "run",
+      "1.94.1",
+      "rustc",
+      "--edition=2024",
+      "--crate-name",
+      "diagnostic_static_check",
+      "-D",
+      "warnings",
+      "harness.rs",
+      "-o",
+      "diagnostic-static-check"
+    ],
+    "exit_code": 0,
+    "seconds": 0.7886278750374913
+  },
+  "executable_sha256": "f72972611a26eb6635b000d9d6addab600bf36cbbf714aed0b598e216ab8abde",
+  "execution": {
+    "command": [
+      "./diagnostic-static-check"
+    ],
+    "exit_code": 0,
+    "seconds": 0.8580835830653086
+  },
+  "peak_rows": [
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 0,
+        "maximum_bits": 4391431849151299584,
+        "triangle": 788,
+        "axis": 1,
+        "signed_bits": 13614803886006075392
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 0,
+        "maximum_bits": 4391431849151299584,
+        "triangle": 788,
+        "axis": 1,
+        "signed_bits": 13614803886006075392
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 1,
+        "maximum_bits": 4568478000107043328,
+        "triangle": 394,
+        "axis": 1,
+        "signed_bits": 4568478000107043328
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 1,
+        "maximum_bits": 4568478000107043328,
+        "triangle": 394,
+        "axis": 1,
+        "signed_bits": 4568478000107043328
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 2,
+        "maximum_bits": 4573644229170624000,
+        "triangle": 61,
+        "axis": 1,
+        "signed_bits": 4573644229170624000
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 2,
+        "maximum_bits": 4573644229170624000,
+        "triangle": 61,
+        "axis": 1,
+        "signed_bits": 4573644229170624000
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 3,
+        "maximum_bits": 4574431700768392192,
+        "triangle": 61,
+        "axis": 1,
+        "signed_bits": 4574431700768392192
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 3,
+        "maximum_bits": 4574431700768392192,
+        "triangle": 61,
+        "axis": 1,
+        "signed_bits": 4574431700768392192
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 4,
+        "maximum_bits": 4573357507851029504,
+        "triangle": 394,
+        "axis": 1,
+        "signed_bits": 4573357507851029504
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 4,
+        "maximum_bits": 4573357507851029504,
+        "triangle": 394,
+        "axis": 1,
+        "signed_bits": 4573357507851029504
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 5,
+        "maximum_bits": 4578084401165530368,
+        "triangle": 725,
+        "axis": 1,
+        "signed_bits": 4578084401165530368
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 5,
+        "maximum_bits": 4578084401165530368,
+        "triangle": 725,
+        "axis": 1,
+        "signed_bits": 4578084401165530368
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 6,
+        "maximum_bits": 4579650635725044736,
+        "triangle": 725,
+        "axis": 1,
+        "signed_bits": 4579650635725044736
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 6,
+        "maximum_bits": 4579650635725044736,
+        "triangle": 725,
+        "axis": 1,
+        "signed_bits": 4579650635725044736
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 7,
+        "maximum_bits": 4576900457250187648,
+        "triangle": 725,
+        "axis": 1,
+        "signed_bits": 4576900457250187648
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 7,
+        "maximum_bits": 4576900457250187648,
+        "triangle": 725,
+        "axis": 1,
+        "signed_bits": 4576900457250187648
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 8,
+        "maximum_bits": 4576505915155408512,
+        "triangle": 848,
+        "axis": 1,
+        "signed_bits": 4576505915155408512
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 8,
+        "maximum_bits": 4576505915155408512,
+        "triangle": 848,
+        "axis": 1,
+        "signed_bits": 4576505915155408512
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 9,
+        "maximum_bits": 4578670705854080832,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 13802042742708856640
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 9,
+        "maximum_bits": 4578670705854080832,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 13802042742708856640
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 10,
+        "maximum_bits": 4576648571031070208,
+        "triangle": 162,
+        "axis": 1,
+        "signed_bits": 13800020607885846016
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 10,
+        "maximum_bits": 4576648571031070208,
+        "triangle": 162,
+        "axis": 1,
+        "signed_bits": 13800020607885846016
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 11,
+        "maximum_bits": 4574841922129992704,
+        "triangle": 589,
+        "axis": 1,
+        "signed_bits": 4574841922129992704
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 11,
+        "maximum_bits": 4574841922129992704,
+        "triangle": 589,
+        "axis": 1,
+        "signed_bits": 4574841922129992704
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 12,
+        "maximum_bits": 4576410056918082048,
+        "triangle": 3,
+        "axis": 1,
+        "signed_bits": 4576410056918082048
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 12,
+        "maximum_bits": 4576410056918082048,
+        "triangle": 3,
+        "axis": 1,
+        "signed_bits": 4576410056918082048
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 13,
+        "maximum_bits": 4577029916829505920,
+        "triangle": 618,
+        "axis": 0,
+        "signed_bits": 4577029916829505920
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 13,
+        "maximum_bits": 4577029916829505920,
+        "triangle": 618,
+        "axis": 0,
+        "signed_bits": 4577029916829505920
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 14,
+        "maximum_bits": 4577765168072362624,
+        "triangle": 78,
+        "axis": 0,
+        "signed_bits": 4577765168072362624
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 14,
+        "maximum_bits": 4577765168072362624,
+        "triangle": 78,
+        "axis": 0,
+        "signed_bits": 4577765168072362624
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 15,
+        "maximum_bits": 4577164943813058368,
+        "triangle": 162,
+        "axis": 1,
+        "signed_bits": 13800536980667834176
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 15,
+        "maximum_bits": 4577164943813058368,
+        "triangle": 162,
+        "axis": 1,
+        "signed_bits": 13800536980667834176
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 16,
+        "maximum_bits": 4578263672761223040,
+        "triangle": 162,
+        "axis": 1,
+        "signed_bits": 13801635709615998848
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 16,
+        "maximum_bits": 4578263672761223040,
+        "triangle": 162,
+        "axis": 1,
+        "signed_bits": 13801635709615998848
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 17,
+        "maximum_bits": 4588595914627718432,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4588595914627718432
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 17,
+        "maximum_bits": 4588595914627718432,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4588595914627718432
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 18,
+        "maximum_bits": 4591450223817069632,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4591450223817069632
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 18,
+        "maximum_bits": 4591450223817069632,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4591450223817069632
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 19,
+        "maximum_bits": 4586962376185161184,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4586962376185161184
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 19,
+        "maximum_bits": 4586962376185161184,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4586962376185161184
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 20,
+        "maximum_bits": 4579456112328112640,
+        "triangle": 78,
+        "axis": 0,
+        "signed_bits": 4579456112328112640
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 20,
+        "maximum_bits": 4579456112328112640,
+        "triangle": 78,
+        "axis": 0,
+        "signed_bits": 4579456112328112640
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 21,
+        "maximum_bits": 4578541759448315776,
+        "triangle": 78,
+        "axis": 0,
+        "signed_bits": 4578541759448315776
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 21,
+        "maximum_bits": 4578541759448315776,
+        "triangle": 78,
+        "axis": 0,
+        "signed_bits": 4578541759448315776
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 22,
+        "maximum_bits": 4580190742451495104,
+        "triangle": 61,
+        "axis": 1,
+        "signed_bits": 4580190742451495104
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 22,
+        "maximum_bits": 4580190742451495104,
+        "triangle": 61,
+        "axis": 1,
+        "signed_bits": 4580190742451495104
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 23,
+        "maximum_bits": 4583183009414487424,
+        "triangle": 61,
+        "axis": 1,
+        "signed_bits": 4583183009414487424
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 23,
+        "maximum_bits": 4583183009414487424,
+        "triangle": 61,
+        "axis": 1,
+        "signed_bits": 4583183009414487424
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 24,
+        "maximum_bits": 4587687428821394272,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4587687428821394272
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 24,
+        "maximum_bits": 4587687428821394272,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4587687428821394272
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 25,
+        "maximum_bits": 4588135677731222272,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4588135677731222272
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 25,
+        "maximum_bits": 4588135677731222272,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4588135677731222272
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 26,
+        "maximum_bits": 4589994867138776096,
+        "triangle": 725,
+        "axis": 1,
+        "signed_bits": 4589994867138776096
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 26,
+        "maximum_bits": 4589994867138776096,
+        "triangle": 725,
+        "axis": 1,
+        "signed_bits": 4589994867138776096
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 27,
+        "maximum_bits": 4593691316716029864,
+        "triangle": 725,
+        "axis": 1,
+        "signed_bits": 4593691316716029864
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 27,
+        "maximum_bits": 4593691316716029864,
+        "triangle": 725,
+        "axis": 1,
+        "signed_bits": 4593691316716029864
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 28,
+        "maximum_bits": 4595709681835812896,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4595709681835812896
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 28,
+        "maximum_bits": 4595709681835812896,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4595709681835812896
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 29,
+        "maximum_bits": 4596328547236041792,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4596328547236041792
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 29,
+        "maximum_bits": 4596328547236041792,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4596328547236041792
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 30,
+        "maximum_bits": 4596191443083924248,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4596191443083924248
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 30,
+        "maximum_bits": 4596191443083924248,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4596191443083924248
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 31,
+        "maximum_bits": 4596341063736401696,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4596341063736401696
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 31,
+        "maximum_bits": 4596341063736401696,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4596341063736401696
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 32,
+        "maximum_bits": 4595429665978539048,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4595429665978539048
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 32,
+        "maximum_bits": 4595429665978539048,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4595429665978539048
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 33,
+        "maximum_bits": 4595094822195403232,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4595094822195403232
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 33,
+        "maximum_bits": 4595094822195403232,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4595094822195403232
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 34,
+        "maximum_bits": 4594816207442326944,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4594816207442326944
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 34,
+        "maximum_bits": 4594816207442326944,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4594816207442326944
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 35,
+        "maximum_bits": 4595015673939727184,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4595015673939727184
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 35,
+        "maximum_bits": 4595015673939727184,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4595015673939727184
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 36,
+        "maximum_bits": 4594941726029633584,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4594941726029633584
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 36,
+        "maximum_bits": 4594941726029633584,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4594941726029633584
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 37,
+        "maximum_bits": 4594676009261073784,
+        "triangle": 725,
+        "axis": 1,
+        "signed_bits": 4594676009261073784
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 37,
+        "maximum_bits": 4594676009261073784,
+        "triangle": 725,
+        "axis": 1,
+        "signed_bits": 4594676009261073784
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 38,
+        "maximum_bits": 4594427301318272624,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4594427301318272624
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 38,
+        "maximum_bits": 4594427301318272624,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4594427301318272624
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 39,
+        "maximum_bits": 4594267768631545128,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4594267768631545128
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 39,
+        "maximum_bits": 4594267768631545128,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4594267768631545128
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 40,
+        "maximum_bits": 4594136142043269848,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4594136142043269848
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 40,
+        "maximum_bits": 4594136142043269848,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4594136142043269848
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 41,
+        "maximum_bits": 4594011172288384688,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4594011172288384688
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 41,
+        "maximum_bits": 4594011172288384688,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4594011172288384688
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 42,
+        "maximum_bits": 4593930242204577840,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593930242204577840
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 42,
+        "maximum_bits": 4593930242204577840,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593930242204577840
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 43,
+        "maximum_bits": 4594006332981408680,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4594006332981408680
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 43,
+        "maximum_bits": 4594006332981408680,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4594006332981408680
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 44,
+        "maximum_bits": 4594079206887651664,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4594079206887651664
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 44,
+        "maximum_bits": 4594079206887651664,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4594079206887651664
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 45,
+        "maximum_bits": 4593961208312429432,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593961208312429432
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 45,
+        "maximum_bits": 4593961208312429432,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593961208312429432
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 46,
+        "maximum_bits": 4593894645147531288,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593894645147531288
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 46,
+        "maximum_bits": 4593894645147531288,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593894645147531288
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 47,
+        "maximum_bits": 4593788418322684960,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593788418322684960
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 47,
+        "maximum_bits": 4593788418322684960,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593788418322684960
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 48,
+        "maximum_bits": 4593722539018789040,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593722539018789040
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 48,
+        "maximum_bits": 4593722539018789040,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593722539018789040
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 49,
+        "maximum_bits": 4593686480567008376,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593686480567008376
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 49,
+        "maximum_bits": 4593686480567008376,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593686480567008376
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 50,
+        "maximum_bits": 4593628279255092736,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593628279255092736
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 50,
+        "maximum_bits": 4593628279255092736,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593628279255092736
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 51,
+        "maximum_bits": 4593733401858728304,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593733401858728304
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 51,
+        "maximum_bits": 4593733401858728304,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593733401858728304
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 52,
+        "maximum_bits": 4593748936421731632,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593748936421731632
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 52,
+        "maximum_bits": 4593748936421731632,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593748936421731632
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 53,
+        "maximum_bits": 4593680366803086888,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593680366803086888
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 53,
+        "maximum_bits": 4593680366803086888,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593680366803086888
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 54,
+        "maximum_bits": 4593665425746649520,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593665425746649520
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 54,
+        "maximum_bits": 4593665425746649520,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593665425746649520
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 55,
+        "maximum_bits": 4593568658879327168,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593568658879327168
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 55,
+        "maximum_bits": 4593568658879327168,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593568658879327168
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 56,
+        "maximum_bits": 4593458307698036256,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593458307698036256
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 56,
+        "maximum_bits": 4593458307698036256,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593458307698036256
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 57,
+        "maximum_bits": 4593378839451859952,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593378839451859952
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 57,
+        "maximum_bits": 4593378839451859952,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593378839451859952
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 58,
+        "maximum_bits": 4593451153789350656,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593451153789350656
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 58,
+        "maximum_bits": 4593451153789350656,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593451153789350656
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 59,
+        "maximum_bits": 4593523213041495824,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593523213041495824
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 59,
+        "maximum_bits": 4593523213041495824,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593523213041495824
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 60,
+        "maximum_bits": 4593467768064988624,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593467768064988624
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 60,
+        "maximum_bits": 4593467768064988624,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593467768064988624
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 61,
+        "maximum_bits": 4593864634985878744,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593864634985878744
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 61,
+        "maximum_bits": 4593864634985878744,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593864634985878744
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 62,
+        "maximum_bits": 4593847143652908656,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593847143652908656
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 62,
+        "maximum_bits": 4593847143652908656,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593847143652908656
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 63,
+        "maximum_bits": 4593821128513200808,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593821128513200808
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 63,
+        "maximum_bits": 4593821128513200808,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593821128513200808
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 64,
+        "maximum_bits": 4593821202799715480,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593821202799715480
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 64,
+        "maximum_bits": 4593821202799715480,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593821202799715480
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 65,
+        "maximum_bits": 4593810212627277032,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593810212627277032
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 65,
+        "maximum_bits": 4593810212627277032,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593810212627277032
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 66,
+        "maximum_bits": 4593782965888848888,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593782965888848888
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 66,
+        "maximum_bits": 4593782965888848888,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593782965888848888
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 67,
+        "maximum_bits": 4593754365054384040,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593754365054384040
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 67,
+        "maximum_bits": 4593754365054384040,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593754365054384040
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 68,
+        "maximum_bits": 4593743948727733920,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593743948727733920
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 68,
+        "maximum_bits": 4593743948727733920,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593743948727733920
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 69,
+        "maximum_bits": 4593733253291159792,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593733253291159792
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 69,
+        "maximum_bits": 4593733253291159792,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593733253291159792
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 70,
+        "maximum_bits": 4593715074890122008,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593715074890122008
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 70,
+        "maximum_bits": 4593715074890122008,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593715074890122008
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 71,
+        "maximum_bits": 4593705353081444336,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593705353081444336
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 71,
+        "maximum_bits": 4593705353081444336,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593705353081444336
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 72,
+        "maximum_bits": 4593712755291019232,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593712755291019232
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 72,
+        "maximum_bits": 4593712755291019232,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593712755291019232
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 73,
+        "maximum_bits": 4593740364545444512,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593740364545444512
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 73,
+        "maximum_bits": 4593740364545444512,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593740364545444512
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 74,
+        "maximum_bits": 4593768203908601824,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593768203908601824
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 74,
+        "maximum_bits": 4593768203908601824,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593768203908601824
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 75,
+        "maximum_bits": 4593779855910004312,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593779855910004312
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 75,
+        "maximum_bits": 4593779855910004312,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593779855910004312
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 76,
+        "maximum_bits": 4593758569563550232,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593758569563550232
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 76,
+        "maximum_bits": 4593758569563550232,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593758569563550232
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 77,
+        "maximum_bits": 4593716273999117776,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593716273999117776
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 77,
+        "maximum_bits": 4593716273999117776,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593716273999117776
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 78,
+        "maximum_bits": 4593691792378937280,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593691792378937280
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 78,
+        "maximum_bits": 4593691792378937280,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593691792378937280
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 79,
+        "maximum_bits": 4593683454398091144,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593683454398091144
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 79,
+        "maximum_bits": 4593683454398091144,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593683454398091144
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 80,
+        "maximum_bits": 4593680592884614696,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593680592884614696
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 80,
+        "maximum_bits": 4593680592884614696,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593680592884614696
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 81,
+        "maximum_bits": 4593693196847877912,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593693196847877912
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 81,
+        "maximum_bits": 4593693196847877912,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593693196847877912
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 82,
+        "maximum_bits": 4593707742684571792,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593707742684571792
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 82,
+        "maximum_bits": 4593707742684571792,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593707742684571792
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 83,
+        "maximum_bits": 4593700436471636560,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593700436471636560
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 83,
+        "maximum_bits": 4593700436471636560,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593700436471636560
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 84,
+        "maximum_bits": 4593687425447529656,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593687425447529656
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 84,
+        "maximum_bits": 4593687425447529656,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593687425447529656
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 85,
+        "maximum_bits": 4593690535100488984,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593690535100488984
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 85,
+        "maximum_bits": 4593690535100488984,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593690535100488984
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 86,
+        "maximum_bits": 4593698027944144640,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593698027944144640
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 86,
+        "maximum_bits": 4593698027944144640,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593698027944144640
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 87,
+        "maximum_bits": 4593703979787142400,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593703979787142400
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 87,
+        "maximum_bits": 4593703979787142400,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593703979787142400
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 88,
+        "maximum_bits": 4593722304836688344,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593722304836688344
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 88,
+        "maximum_bits": 4593722304836688344,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593722304836688344
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 89,
+        "maximum_bits": 4593728747304568872,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593728747304568872
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 89,
+        "maximum_bits": 4593728747304568872,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593728747304568872
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 90,
+        "maximum_bits": 4593711295725217512,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593711295725217512
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 90,
+        "maximum_bits": 4593711295725217512,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593711295725217512
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 91,
+        "maximum_bits": 4593690646294729680,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593690646294729680
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 91,
+        "maximum_bits": 4593690646294729680,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593690646294729680
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 92,
+        "maximum_bits": 4593683178987064160,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593683178987064160
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 92,
+        "maximum_bits": 4593683178987064160,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593683178987064160
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 93,
+        "maximum_bits": 4593682100423385976,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593682100423385976
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 93,
+        "maximum_bits": 4593682100423385976,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593682100423385976
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 94,
+        "maximum_bits": 4593680995288903272,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593680995288903272
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 94,
+        "maximum_bits": 4593680995288903272,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593680995288903272
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 95,
+        "maximum_bits": 4593682125282471000,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593682125282471000
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 95,
+        "maximum_bits": 4593682125282471000,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593682125282471000
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 96,
+        "maximum_bits": 4593683051260687680,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593683051260687680
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 96,
+        "maximum_bits": 4593683051260687680,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593683051260687680
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 97,
+        "maximum_bits": 4593682842792439320,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593682842792439320
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 97,
+        "maximum_bits": 4593682842792439320,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593682842792439320
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 98,
+        "maximum_bits": 4593685425575049776,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593685425575049776
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 98,
+        "maximum_bits": 4593685425575049776,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593685425575049776
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 99,
+        "maximum_bits": 4593689826163742816,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593689826163742816
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 99,
+        "maximum_bits": 4593689826163742816,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593689826163742816
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 100,
+        "maximum_bits": 4593696313863287784,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593696313863287784
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 100,
+        "maximum_bits": 4593696313863287784,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593696313863287784
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 101,
+        "maximum_bits": 4593704207414219936,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593704207414219936
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 101,
+        "maximum_bits": 4593704207414219936,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593704207414219936
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 102,
+        "maximum_bits": 4593697672919213304,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593697672919213304
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 102,
+        "maximum_bits": 4593697672919213304,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593697672919213304
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 103,
+        "maximum_bits": 4593686311855869680,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593686311855869680
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 103,
+        "maximum_bits": 4593686311855869680,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593686311855869680
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 104,
+        "maximum_bits": 4593677697176577384,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593677697176577384
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 104,
+        "maximum_bits": 4593677697176577384,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593677697176577384
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 105,
+        "maximum_bits": 4593674692265922568,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593674692265922568
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 105,
+        "maximum_bits": 4593674692265922568,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593674692265922568
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 106,
+        "maximum_bits": 4593676950197794664,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593676950197794664
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 106,
+        "maximum_bits": 4593676950197794664,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593676950197794664
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 107,
+        "maximum_bits": 4593682584667661264,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593682584667661264
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 107,
+        "maximum_bits": 4593682584667661264,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593682584667661264
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 108,
+        "maximum_bits": 4593686668991637768,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593686668991637768
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 108,
+        "maximum_bits": 4593686668991637768,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593686668991637768
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 109,
+        "maximum_bits": 4593688241327663712,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593688241327663712
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 109,
+        "maximum_bits": 4593688241327663712,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593688241327663712
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 110,
+        "maximum_bits": 4593690666336879496,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593690666336879496
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 110,
+        "maximum_bits": 4593690666336879496,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593690666336879496
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 111,
+        "maximum_bits": 4593696473657719328,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593696473657719328
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 111,
+        "maximum_bits": 4593696473657719328,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593696473657719328
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 112,
+        "maximum_bits": 4593705715359937184,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593705715359937184
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 112,
+        "maximum_bits": 4593705715359937184,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593705715359937184
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 113,
+        "maximum_bits": 4593715505808462432,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593715505808462432
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 113,
+        "maximum_bits": 4593715505808462432,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593715505808462432
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 114,
+        "maximum_bits": 4593716033790881720,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593716033790881720
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 114,
+        "maximum_bits": 4593716033790881720,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593716033790881720
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 115,
+        "maximum_bits": 4593703349827362808,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593703349827362808
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 115,
+        "maximum_bits": 4593703349827362808,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593703349827362808
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 116,
+        "maximum_bits": 4593691176355606264,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593691176355606264
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 116,
+        "maximum_bits": 4593691176355606264,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593691176355606264
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 117,
+        "maximum_bits": 4593685293953780112,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593685293953780112
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 117,
+        "maximum_bits": 4593685293953780112,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593685293953780112
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 118,
+        "maximum_bits": 4593684316876685256,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593684316876685256
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 118,
+        "maximum_bits": 4593684316876685256,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593684316876685256
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 119,
+        "maximum_bits": 4593685088994836720,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593685088994836720
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 119,
+        "maximum_bits": 4593685088994836720,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593685088994836720
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 120,
+        "maximum_bits": 4593687037291551368,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593687037291551368
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 120,
+        "maximum_bits": 4593687037291551368,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593687037291551368
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 121,
+        "maximum_bits": 4593690737994852616,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593690737994852616
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 121,
+        "maximum_bits": 4593690737994852616,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593690737994852616
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 122,
+        "maximum_bits": 4593693293734421400,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593693293734421400
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 122,
+        "maximum_bits": 4593693293734421400,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593693293734421400
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 123,
+        "maximum_bits": 4593695346117070504,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593695346117070504
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 123,
+        "maximum_bits": 4593695346117070504,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593695346117070504
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 124,
+        "maximum_bits": 4593700185326264896,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593700185326264896
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 124,
+        "maximum_bits": 4593700185326264896,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593700185326264896
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 125,
+        "maximum_bits": 4593706881059268352,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593706881059268352
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 125,
+        "maximum_bits": 4593706881059268352,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593706881059268352
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 126,
+        "maximum_bits": 4593712931360488232,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593712931360488232
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 126,
+        "maximum_bits": 4593712931360488232,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593712931360488232
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 127,
+        "maximum_bits": 4593712009008977520,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593712009008977520
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 127,
+        "maximum_bits": 4593712009008977520,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593712009008977520
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 128,
+        "maximum_bits": 4593706434287748272,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593706434287748272
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 128,
+        "maximum_bits": 4593706434287748272,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593706434287748272
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 129,
+        "maximum_bits": 4593700131476704232,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593700131476704232
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 129,
+        "maximum_bits": 4593700131476704232,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593700131476704232
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 130,
+        "maximum_bits": 4593694556626222080,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593694556626222080
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 130,
+        "maximum_bits": 4593694556626222080,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593694556626222080
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 131,
+        "maximum_bits": 4593691034432271000,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593691034432271000
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 131,
+        "maximum_bits": 4593691034432271000,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593691034432271000
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 132,
+        "maximum_bits": 4593692521228183720,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593692521228183720
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 132,
+        "maximum_bits": 4593692521228183720,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593692521228183720
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 133,
+        "maximum_bits": 4593696745196283384,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593696745196283384
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 133,
+        "maximum_bits": 4593696745196283384,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593696745196283384
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 134,
+        "maximum_bits": 4593702411079067920,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593702411079067920
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 134,
+        "maximum_bits": 4593702411079067920,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593702411079067920
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 135,
+        "maximum_bits": 4593705572281354072,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593705572281354072
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 135,
+        "maximum_bits": 4593705572281354072,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593705572281354072
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 136,
+        "maximum_bits": 4593707987267506296,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593707987267506296
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 136,
+        "maximum_bits": 4593707987267506296,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593707987267506296
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 137,
+        "maximum_bits": 4593710472031437488,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593710472031437488
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 137,
+        "maximum_bits": 4593710472031437488,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593710472031437488
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 138,
+        "maximum_bits": 4593711211002993136,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593711211002993136
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 138,
+        "maximum_bits": 4593711211002993136,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593711211002993136
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 139,
+        "maximum_bits": 4593713115987641040,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593713115987641040
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 139,
+        "maximum_bits": 4593713115987641040,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593713115987641040
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 140,
+        "maximum_bits": 4593710748073696960,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593710748073696960
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 140,
+        "maximum_bits": 4593710748073696960,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593710748073696960
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 141,
+        "maximum_bits": 4593704922635525712,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593704922635525712
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 141,
+        "maximum_bits": 4593704922635525712,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593704922635525712
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 142,
+        "maximum_bits": 4593698759780040872,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593698759780040872
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 142,
+        "maximum_bits": 4593698759780040872,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593698759780040872
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 143,
+        "maximum_bits": 4593696643518724096,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593696643518724096
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 143,
+        "maximum_bits": 4593696643518724096,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593696643518724096
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 144,
+        "maximum_bits": 4593699530986286360,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593699530986286360
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 144,
+        "maximum_bits": 4593699530986286360,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593699530986286360
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 145,
+        "maximum_bits": 4593703727546667088,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593703727546667088
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 145,
+        "maximum_bits": 4593703727546667088,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593703727546667088
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 146,
+        "maximum_bits": 4593708739327506488,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593708739327506488
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 146,
+        "maximum_bits": 4593708739327506488,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593708739327506488
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 147,
+        "maximum_bits": 4593711945069623688,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593711945069623688
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 147,
+        "maximum_bits": 4593711945069623688,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593711945069623688
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 148,
+        "maximum_bits": 4593714311299168176,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593714311299168176
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 148,
+        "maximum_bits": 4593714311299168176,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593714311299168176
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 149,
+        "maximum_bits": 4593716882625601136,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593716882625601136
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 149,
+        "maximum_bits": 4593716882625601136,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593716882625601136
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 150,
+        "maximum_bits": 4593720154458299280,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593720154458299280
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 150,
+        "maximum_bits": 4593720154458299280,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593720154458299280
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 151,
+        "maximum_bits": 4593722097224226976,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593722097224226976
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 151,
+        "maximum_bits": 4593722097224226976,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593722097224226976
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 152,
+        "maximum_bits": 4593720668180855808,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593720668180855808
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 152,
+        "maximum_bits": 4593720668180855808,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593720668180855808
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 153,
+        "maximum_bits": 4593716073797784848,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593716073797784848
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 153,
+        "maximum_bits": 4593716073797784848,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593716073797784848
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 154,
+        "maximum_bits": 4593711061813313848,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593711061813313848
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 154,
+        "maximum_bits": 4593711061813313848,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593711061813313848
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 155,
+        "maximum_bits": 4593704921409417248,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593704921409417248
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 155,
+        "maximum_bits": 4593704921409417248,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593704921409417248
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 156,
+        "maximum_bits": 4593701631246592624,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593701631246592624
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 156,
+        "maximum_bits": 4593701631246592624,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593701631246592624
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 157,
+        "maximum_bits": 4593701740837476488,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593701740837476488
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 157,
+        "maximum_bits": 4593701740837476488,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593701740837476488
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 158,
+        "maximum_bits": 4593703560811915320,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593703560811915320
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 158,
+        "maximum_bits": 4593703560811915320,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593703560811915320
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 159,
+        "maximum_bits": 4593707739900977008,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593707739900977008
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 159,
+        "maximum_bits": 4593707739900977008,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593707739900977008
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 160,
+        "maximum_bits": 4593710975156180080,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593710975156180080
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 160,
+        "maximum_bits": 4593710975156180080,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593710975156180080
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 161,
+        "maximum_bits": 4593714332012939416,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593714332012939416
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 161,
+        "maximum_bits": 4593714332012939416,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593714332012939416
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 162,
+        "maximum_bits": 4593717751858739512,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593717751858739512
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 162,
+        "maximum_bits": 4593717751858739512,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593717751858739512
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 163,
+        "maximum_bits": 4593722105923095144,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593722105923095144
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 163,
+        "maximum_bits": 4593722105923095144,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593722105923095144
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 164,
+        "maximum_bits": 4593724164557868696,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593724164557868696
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 164,
+        "maximum_bits": 4593724164557868696,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593724164557868696
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 165,
+        "maximum_bits": 4593723187190687128,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593723187190687128
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 165,
+        "maximum_bits": 4593723187190687128,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593723187190687128
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 166,
+        "maximum_bits": 4593720305040067496,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593720305040067496
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 166,
+        "maximum_bits": 4593720305040067496,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593720305040067496
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 167,
+        "maximum_bits": 4593715178281600424,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593715178281600424
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 167,
+        "maximum_bits": 4593715178281600424,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593715178281600424
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 168,
+        "maximum_bits": 4593712159016665192,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593712159016665192
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 168,
+        "maximum_bits": 4593712159016665192,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593712159016665192
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 169,
+        "maximum_bits": 4593709441752100408,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593709441752100408
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 169,
+        "maximum_bits": 4593709441752100408,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593709441752100408
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 170,
+        "maximum_bits": 4593709927291979856,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593709927291979856
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 170,
+        "maximum_bits": 4593709927291979856,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593709927291979856
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 171,
+        "maximum_bits": 4593711521701085272,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593711521701085272
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 171,
+        "maximum_bits": 4593711521701085272,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593711521701085272
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 172,
+        "maximum_bits": 4593713575096304824,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593713575096304824
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 172,
+        "maximum_bits": 4593713575096304824,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593713575096304824
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 173,
+        "maximum_bits": 4593716737516349832,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593716737516349832
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 173,
+        "maximum_bits": 4593716737516349832,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593716737516349832
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 174,
+        "maximum_bits": 4593718736730499872,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593718736730499872
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 174,
+        "maximum_bits": 4593718736730499872,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593718736730499872
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 175,
+        "maximum_bits": 4593720802700991272,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593720802700991272
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 175,
+        "maximum_bits": 4593720802700991272,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593720802700991272
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 176,
+        "maximum_bits": 4593723372617728968,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593723372617728968
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 176,
+        "maximum_bits": 4593723372617728968,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593723372617728968
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 177,
+        "maximum_bits": 4593723985152904104,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593723985152904104
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 177,
+        "maximum_bits": 4593723985152904104,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593723985152904104
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 178,
+        "maximum_bits": 4593722526164823376,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593722526164823376
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 178,
+        "maximum_bits": 4593722526164823376,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593722526164823376
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 179,
+        "maximum_bits": 4593720202201376704,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593720202201376704
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 179,
+        "maximum_bits": 4593720202201376704,
+        "triangle": 214,
+        "axis": 1,
+        "signed_bits": 4593720202201376704
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 0,
+        "frame": 180,
+        "maximum_bits": 4593717780793001560,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593717780793001560
+      },
+      "frozen": {
+        "case_id": 0,
+        "case": "base",
+        "frame": 180,
+        "maximum_bits": 4593717780793001560,
+        "triangle": 216,
+        "axis": 1,
+        "signed_bits": 4593717780793001560
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 0,
+        "maximum_bits": 4391431849151299584,
+        "triangle": 760,
+        "axis": 1,
+        "signed_bits": 13614803886006075392
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 0,
+        "maximum_bits": 4391431849151299584,
+        "triangle": 760,
+        "axis": 1,
+        "signed_bits": 13614803886006075392
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 1,
+        "maximum_bits": 4569461383206165504,
+        "triangle": 355,
+        "axis": 1,
+        "signed_bits": 4569461383206165504
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 1,
+        "maximum_bits": 4569461383206165504,
+        "triangle": 355,
+        "axis": 1,
+        "signed_bits": 4569461383206165504
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 2,
+        "maximum_bits": 4574376838019262464,
+        "triangle": 355,
+        "axis": 1,
+        "signed_bits": 4574376838019262464
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 2,
+        "maximum_bits": 4574376838019262464,
+        "triangle": 355,
+        "axis": 1,
+        "signed_bits": 4574376838019262464
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 3,
+        "maximum_bits": 4575109507432885504,
+        "triangle": 355,
+        "axis": 1,
+        "signed_bits": 4575109507432885504
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 3,
+        "maximum_bits": 4575109507432885504,
+        "triangle": 355,
+        "axis": 1,
+        "signed_bits": 4575109507432885504
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 4,
+        "maximum_bits": 4573882323264907520,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4573882323264907520
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 4,
+        "maximum_bits": 4573882323264907520,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4573882323264907520
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 5,
+        "maximum_bits": 4578017875761955456,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4578017875761955456
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 5,
+        "maximum_bits": 4578017875761955456,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4578017875761955456
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 6,
+        "maximum_bits": 4579483504715528064,
+        "triangle": 699,
+        "axis": 1,
+        "signed_bits": 4579483504715528064
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 6,
+        "maximum_bits": 4579483504715528064,
+        "triangle": 699,
+        "axis": 1,
+        "signed_bits": 4579483504715528064
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 7,
+        "maximum_bits": 4576235039394591360,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4576235039394591360
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 7,
+        "maximum_bits": 4576235039394591360,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4576235039394591360
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 8,
+        "maximum_bits": 4576944069570864640,
+        "triangle": 820,
+        "axis": 1,
+        "signed_bits": 4576944069570864640
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 8,
+        "maximum_bits": 4576944069570864640,
+        "triangle": 820,
+        "axis": 1,
+        "signed_bits": 4576944069570864640
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 9,
+        "maximum_bits": 4578387306436113280,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 13801759343290889088
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 9,
+        "maximum_bits": 4578387306436113280,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 13801759343290889088
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 10,
+        "maximum_bits": 4572931870950442368,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 13796303907805218176
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 10,
+        "maximum_bits": 4572931870950442368,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 13796303907805218176
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 11,
+        "maximum_bits": 4573801757077314560,
+        "triangle": 4,
+        "axis": 1,
+        "signed_bits": 4573801757077314560
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 11,
+        "maximum_bits": 4573801757077314560,
+        "triangle": 4,
+        "axis": 1,
+        "signed_bits": 4573801757077314560
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 12,
+        "maximum_bits": 4575715923647639040,
+        "triangle": 4,
+        "axis": 1,
+        "signed_bits": 4575715923647639040
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 12,
+        "maximum_bits": 4575715923647639040,
+        "triangle": 4,
+        "axis": 1,
+        "signed_bits": 4575715923647639040
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 13,
+        "maximum_bits": 4576242850874160512,
+        "triangle": 32,
+        "axis": 1,
+        "signed_bits": 4576242850874160512
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 13,
+        "maximum_bits": 4576242850874160512,
+        "triangle": 32,
+        "axis": 1,
+        "signed_bits": 4576242850874160512
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 14,
+        "maximum_bits": 4576728723870736384,
+        "triangle": 32,
+        "axis": 1,
+        "signed_bits": 4576728723870736384
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 14,
+        "maximum_bits": 4576728723870736384,
+        "triangle": 32,
+        "axis": 1,
+        "signed_bits": 4576728723870736384
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 15,
+        "maximum_bits": 4575803066701209856,
+        "triangle": 625,
+        "axis": 0,
+        "signed_bits": 4575803066701209856
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 15,
+        "maximum_bits": 4575803066701209856,
+        "triangle": 625,
+        "axis": 0,
+        "signed_bits": 4575803066701209856
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 16,
+        "maximum_bits": 4577248225889201152,
+        "triangle": 699,
+        "axis": 1,
+        "signed_bits": 13800620262743976960
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 16,
+        "maximum_bits": 4577248225889201152,
+        "triangle": 699,
+        "axis": 1,
+        "signed_bits": 13800620262743976960
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 17,
+        "maximum_bits": 4579952996221515520,
+        "triangle": 423,
+        "axis": 1,
+        "signed_bits": 4579952996221515520
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 17,
+        "maximum_bits": 4579952996221515520,
+        "triangle": 423,
+        "axis": 1,
+        "signed_bits": 4579952996221515520
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 18,
+        "maximum_bits": 4591251225250004192,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4591251225250004192
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 18,
+        "maximum_bits": 4591251225250004192,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4591251225250004192
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 19,
+        "maximum_bits": 4589265100409365456,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4589265100409365456
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 19,
+        "maximum_bits": 4589265100409365456,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4589265100409365456
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 20,
+        "maximum_bits": 4578671743462601216,
+        "triangle": 625,
+        "axis": 0,
+        "signed_bits": 4578671743462601216
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 20,
+        "maximum_bits": 4578671743462601216,
+        "triangle": 625,
+        "axis": 0,
+        "signed_bits": 4578671743462601216
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 21,
+        "maximum_bits": 4579976928960524928,
+        "triangle": 590,
+        "axis": 0,
+        "signed_bits": 4579976928960524928
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 21,
+        "maximum_bits": 4579976928960524928,
+        "triangle": 590,
+        "axis": 0,
+        "signed_bits": 4579976928960524928
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 22,
+        "maximum_bits": 4580271273038317568,
+        "triangle": 625,
+        "axis": 0,
+        "signed_bits": 4580271273038317568
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 22,
+        "maximum_bits": 4580271273038317568,
+        "triangle": 625,
+        "axis": 0,
+        "signed_bits": 4580271273038317568
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 23,
+        "maximum_bits": 4584245885278054400,
+        "triangle": 355,
+        "axis": 1,
+        "signed_bits": 4584245885278054400
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 23,
+        "maximum_bits": 4584245885278054400,
+        "triangle": 355,
+        "axis": 1,
+        "signed_bits": 4584245885278054400
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 24,
+        "maximum_bits": 4585557079704118656,
+        "triangle": 355,
+        "axis": 1,
+        "signed_bits": 4585557079704118656
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 24,
+        "maximum_bits": 4585557079704118656,
+        "triangle": 355,
+        "axis": 1,
+        "signed_bits": 4585557079704118656
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 25,
+        "maximum_bits": 4586497506248932576,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4586497506248932576
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 25,
+        "maximum_bits": 4586497506248932576,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4586497506248932576
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 26,
+        "maximum_bits": 4586175149006619968,
+        "triangle": 186,
+        "axis": 0,
+        "signed_bits": 4586175149006619968
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 26,
+        "maximum_bits": 4586175149006619968,
+        "triangle": 186,
+        "axis": 0,
+        "signed_bits": 4586175149006619968
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 27,
+        "maximum_bits": 4590011319514008224,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4590011319514008224
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 27,
+        "maximum_bits": 4590011319514008224,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4590011319514008224
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 28,
+        "maximum_bits": 4593900141414310216,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4593900141414310216
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 28,
+        "maximum_bits": 4593900141414310216,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4593900141414310216
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 29,
+        "maximum_bits": 4593884788739485640,
+        "triangle": 564,
+        "axis": 0,
+        "signed_bits": 4593884788739485640
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 29,
+        "maximum_bits": 4593884788739485640,
+        "triangle": 564,
+        "axis": 0,
+        "signed_bits": 4593884788739485640
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 30,
+        "maximum_bits": 4594432459898854608,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4594432459898854608
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 30,
+        "maximum_bits": 4594432459898854608,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4594432459898854608
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 31,
+        "maximum_bits": 4593738037107297584,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4593738037107297584
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 31,
+        "maximum_bits": 4593738037107297584,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4593738037107297584
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 32,
+        "maximum_bits": 4592160398985187472,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4592160398985187472
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 32,
+        "maximum_bits": 4592160398985187472,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4592160398985187472
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 33,
+        "maximum_bits": 4592303179608944416,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4592303179608944416
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 33,
+        "maximum_bits": 4592303179608944416,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4592303179608944416
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 34,
+        "maximum_bits": 4591790909947149232,
+        "triangle": 355,
+        "axis": 1,
+        "signed_bits": 4591790909947149232
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 34,
+        "maximum_bits": 4591790909947149232,
+        "triangle": 355,
+        "axis": 1,
+        "signed_bits": 4591790909947149232
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 35,
+        "maximum_bits": 4591479226363169616,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591479226363169616
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 35,
+        "maximum_bits": 4591479226363169616,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591479226363169616
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 36,
+        "maximum_bits": 4591474120480579200,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4591474120480579200
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 36,
+        "maximum_bits": 4591474120480579200,
+        "triangle": 697,
+        "axis": 1,
+        "signed_bits": 4591474120480579200
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 37,
+        "maximum_bits": 4591194017217901552,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591194017217901552
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 37,
+        "maximum_bits": 4591194017217901552,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591194017217901552
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 38,
+        "maximum_bits": 4591189399546010688,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591189399546010688
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 38,
+        "maximum_bits": 4591189399546010688,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591189399546010688
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 39,
+        "maximum_bits": 4591227930455372112,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591227930455372112
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 39,
+        "maximum_bits": 4591227930455372112,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591227930455372112
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 40,
+        "maximum_bits": 4591296887238346128,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591296887238346128
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 40,
+        "maximum_bits": 4591296887238346128,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591296887238346128
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 41,
+        "maximum_bits": 4591414710293991088,
+        "triangle": 400,
+        "axis": 1,
+        "signed_bits": 4591414710293991088
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 41,
+        "maximum_bits": 4591414710293991088,
+        "triangle": 400,
+        "axis": 1,
+        "signed_bits": 4591414710293991088
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 42,
+        "maximum_bits": 4591532619042582272,
+        "triangle": 400,
+        "axis": 1,
+        "signed_bits": 4591532619042582272
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 42,
+        "maximum_bits": 4591532619042582272,
+        "triangle": 400,
+        "axis": 1,
+        "signed_bits": 4591532619042582272
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 43,
+        "maximum_bits": 4591461107738053600,
+        "triangle": 400,
+        "axis": 1,
+        "signed_bits": 4591461107738053600
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 43,
+        "maximum_bits": 4591461107738053600,
+        "triangle": 400,
+        "axis": 1,
+        "signed_bits": 4591461107738053600
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 44,
+        "maximum_bits": 4591360399912939984,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591360399912939984
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 44,
+        "maximum_bits": 4591360399912939984,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591360399912939984
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 45,
+        "maximum_bits": 4591259854744418048,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591259854744418048
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 45,
+        "maximum_bits": 4591259854744418048,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591259854744418048
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 46,
+        "maximum_bits": 4591210752063978912,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591210752063978912
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 46,
+        "maximum_bits": 4591210752063978912,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591210752063978912
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 47,
+        "maximum_bits": 4591229440037944240,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591229440037944240
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 47,
+        "maximum_bits": 4591229440037944240,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591229440037944240
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 48,
+        "maximum_bits": 4591275514412463056,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591275514412463056
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 48,
+        "maximum_bits": 4591275514412463056,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591275514412463056
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 49,
+        "maximum_bits": 4591299581643831488,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591299581643831488
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 49,
+        "maximum_bits": 4591299581643831488,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591299581643831488
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 50,
+        "maximum_bits": 4591296449546473280,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591296449546473280
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 50,
+        "maximum_bits": 4591296449546473280,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591296449546473280
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 51,
+        "maximum_bits": 4591275376126747408,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591275376126747408
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 51,
+        "maximum_bits": 4591275376126747408,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591275376126747408
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 52,
+        "maximum_bits": 4591259540696880096,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591259540696880096
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 52,
+        "maximum_bits": 4591259540696880096,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591259540696880096
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 53,
+        "maximum_bits": 4591248555092542768,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591248555092542768
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 53,
+        "maximum_bits": 4591248555092542768,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591248555092542768
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 54,
+        "maximum_bits": 4591249472556127984,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591249472556127984
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 54,
+        "maximum_bits": 4591249472556127984,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591249472556127984
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 55,
+        "maximum_bits": 4591260224643434176,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591260224643434176
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 55,
+        "maximum_bits": 4591260224643434176,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591260224643434176
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 56,
+        "maximum_bits": 4591263597006770528,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591263597006770528
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 56,
+        "maximum_bits": 4591263597006770528,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591263597006770528
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 57,
+        "maximum_bits": 4591259845303594576,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591259845303594576
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 57,
+        "maximum_bits": 4591259845303594576,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591259845303594576
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 58,
+        "maximum_bits": 4591254842018917712,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591254842018917712
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 58,
+        "maximum_bits": 4591254842018917712,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591254842018917712
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 59,
+        "maximum_bits": 4591252996641005296,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591252996641005296
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 59,
+        "maximum_bits": 4591252996641005296,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591252996641005296
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 60,
+        "maximum_bits": 4591257699408048256,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591257699408048256
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 60,
+        "maximum_bits": 4591257699408048256,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591257699408048256
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 61,
+        "maximum_bits": 4591205558693047664,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591205558693047664
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 61,
+        "maximum_bits": 4591205558693047664,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591205558693047664
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 62,
+        "maximum_bits": 4591166593969262752,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591166593969262752
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 62,
+        "maximum_bits": 4591166593969262752,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591166593969262752
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 63,
+        "maximum_bits": 4591127840474261024,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591127840474261024
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 63,
+        "maximum_bits": 4591127840474261024,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591127840474261024
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 64,
+        "maximum_bits": 4591090094957528400,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090094957528400
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 64,
+        "maximum_bits": 4591090094957528400,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090094957528400
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 65,
+        "maximum_bits": 4591050699472412864,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591050699472412864
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 65,
+        "maximum_bits": 4591050699472412864,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591050699472412864
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 66,
+        "maximum_bits": 4591029175281091760,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591029175281091760
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 66,
+        "maximum_bits": 4591029175281091760,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591029175281091760
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 67,
+        "maximum_bits": 4591036636939636064,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591036636939636064
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 67,
+        "maximum_bits": 4591036636939636064,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591036636939636064
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 68,
+        "maximum_bits": 4591064145910411232,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591064145910411232
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 68,
+        "maximum_bits": 4591064145910411232,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591064145910411232
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 69,
+        "maximum_bits": 4591092503509575440,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092503509575440
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 69,
+        "maximum_bits": 4591092503509575440,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092503509575440
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 70,
+        "maximum_bits": 4591102946960894928,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591102946960894928
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 70,
+        "maximum_bits": 4591102946960894928,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591102946960894928
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 71,
+        "maximum_bits": 4591091469742123824,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091469742123824
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 71,
+        "maximum_bits": 4591091469742123824,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091469742123824
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 72,
+        "maximum_bits": 4591074781296042480,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591074781296042480
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 72,
+        "maximum_bits": 4591074781296042480,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591074781296042480
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 73,
+        "maximum_bits": 4591063349348233280,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591063349348233280
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 73,
+        "maximum_bits": 4591063349348233280,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591063349348233280
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 74,
+        "maximum_bits": 4591063738884160848,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591063738884160848
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 74,
+        "maximum_bits": 4591063738884160848,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591063738884160848
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 75,
+        "maximum_bits": 4591074001402921200,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591074001402921200
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 75,
+        "maximum_bits": 4591074001402921200,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591074001402921200
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 76,
+        "maximum_bits": 4591088012821070992,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591088012821070992
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 76,
+        "maximum_bits": 4591088012821070992,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591088012821070992
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 77,
+        "maximum_bits": 4591098353119423424,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591098353119423424
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 77,
+        "maximum_bits": 4591098353119423424,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591098353119423424
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 78,
+        "maximum_bits": 4591100166641159648,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591100166641159648
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 78,
+        "maximum_bits": 4591100166641159648,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591100166641159648
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 79,
+        "maximum_bits": 4591094027206751888,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094027206751888
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 79,
+        "maximum_bits": 4591094027206751888,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094027206751888
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 80,
+        "maximum_bits": 4591083675066395504,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591083675066395504
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 80,
+        "maximum_bits": 4591083675066395504,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591083675066395504
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 81,
+        "maximum_bits": 4591076352965195872,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591076352965195872
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 81,
+        "maximum_bits": 4591076352965195872,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591076352965195872
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 82,
+        "maximum_bits": 4591074436333524064,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591074436333524064
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 82,
+        "maximum_bits": 4591074436333524064,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591074436333524064
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 83,
+        "maximum_bits": 4591075354287946624,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591075354287946624
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 83,
+        "maximum_bits": 4591075354287946624,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591075354287946624
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 84,
+        "maximum_bits": 4591076286260106944,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591076286260106944
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 84,
+        "maximum_bits": 4591076286260106944,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591076286260106944
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 85,
+        "maximum_bits": 4591077832468520256,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591077832468520256
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 85,
+        "maximum_bits": 4591077832468520256,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591077832468520256
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 86,
+        "maximum_bits": 4591081204065438944,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591081204065438944
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 86,
+        "maximum_bits": 4591081204065438944,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591081204065438944
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 87,
+        "maximum_bits": 4591085351412249216,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591085351412249216
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 87,
+        "maximum_bits": 4591085351412249216,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591085351412249216
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 88,
+        "maximum_bits": 4591089012519078432,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591089012519078432
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 88,
+        "maximum_bits": 4591089012519078432,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591089012519078432
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 89,
+        "maximum_bits": 4591091692109147376,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091692109147376
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 89,
+        "maximum_bits": 4591091692109147376,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091692109147376
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 90,
+        "maximum_bits": 4591092153436143024,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092153436143024
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 90,
+        "maximum_bits": 4591092153436143024,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092153436143024
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 91,
+        "maximum_bits": 4591090219997350784,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090219997350784
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 91,
+        "maximum_bits": 4591090219997350784,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090219997350784
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 92,
+        "maximum_bits": 4591087444326618560,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591087444326618560
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 92,
+        "maximum_bits": 4591087444326618560,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591087444326618560
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 93,
+        "maximum_bits": 4591086635759894880,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591086635759894880
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 93,
+        "maximum_bits": 4591086635759894880,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591086635759894880
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 94,
+        "maximum_bits": 4591089147050317216,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591089147050317216
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 94,
+        "maximum_bits": 4591089147050317216,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591089147050317216
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 95,
+        "maximum_bits": 4591092439123763168,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092439123763168
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 95,
+        "maximum_bits": 4591092439123763168,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092439123763168
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 96,
+        "maximum_bits": 4591093434452492528,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093434452492528
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 96,
+        "maximum_bits": 4591093434452492528,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093434452492528
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 97,
+        "maximum_bits": 4591090932202289552,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090932202289552
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 97,
+        "maximum_bits": 4591090932202289552,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090932202289552
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 98,
+        "maximum_bits": 4591085572319731904,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591085572319731904
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 98,
+        "maximum_bits": 4591085572319731904,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591085572319731904
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 99,
+        "maximum_bits": 4591081027173970464,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591081027173970464
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 99,
+        "maximum_bits": 4591081027173970464,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591081027173970464
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 100,
+        "maximum_bits": 4591079159840083360,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591079159840083360
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 100,
+        "maximum_bits": 4591079159840083360,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591079159840083360
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 101,
+        "maximum_bits": 4591080896429363104,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591080896429363104
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 101,
+        "maximum_bits": 4591080896429363104,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591080896429363104
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 102,
+        "maximum_bits": 4591084652701802272,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591084652701802272
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 102,
+        "maximum_bits": 4591084652701802272,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591084652701802272
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 103,
+        "maximum_bits": 4591088553258194736,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591088553258194736
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 103,
+        "maximum_bits": 4591088553258194736,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591088553258194736
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 104,
+        "maximum_bits": 4591091909059969808,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091909059969808
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 104,
+        "maximum_bits": 4591091909059969808,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091909059969808
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 105,
+        "maximum_bits": 4591093887766256480,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093887766256480
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 105,
+        "maximum_bits": 4591093887766256480,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093887766256480
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 106,
+        "maximum_bits": 4591094220391524576,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094220391524576
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 106,
+        "maximum_bits": 4591094220391524576,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094220391524576
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 107,
+        "maximum_bits": 4591093487497666672,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093487497666672
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 107,
+        "maximum_bits": 4591093487497666672,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093487497666672
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 108,
+        "maximum_bits": 4591092601062921680,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092601062921680
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 108,
+        "maximum_bits": 4591092601062921680,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092601062921680
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 109,
+        "maximum_bits": 4591091991482093632,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091991482093632
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 109,
+        "maximum_bits": 4591091991482093632,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091991482093632
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 110,
+        "maximum_bits": 4591091673731792864,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091673731792864
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 110,
+        "maximum_bits": 4591091673731792864,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091673731792864
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 111,
+        "maximum_bits": 4591091436661166640,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091436661166640
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 111,
+        "maximum_bits": 4591091436661166640,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091436661166640
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 112,
+        "maximum_bits": 4591091312647982528,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091312647982528
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 112,
+        "maximum_bits": 4591091312647982528,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091312647982528
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 113,
+        "maximum_bits": 4591091261917249520,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091261917249520
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 113,
+        "maximum_bits": 4591091261917249520,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091261917249520
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 114,
+        "maximum_bits": 4591090473395566992,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090473395566992
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 114,
+        "maximum_bits": 4591090473395566992,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090473395566992
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 115,
+        "maximum_bits": 4591088792877739024,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591088792877739024
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 115,
+        "maximum_bits": 4591088792877739024,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591088792877739024
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 116,
+        "maximum_bits": 4591086498520547952,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591086498520547952
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 116,
+        "maximum_bits": 4591086498520547952,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591086498520547952
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 117,
+        "maximum_bits": 4591084659287280656,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591084659287280656
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 117,
+        "maximum_bits": 4591084659287280656,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591084659287280656
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 118,
+        "maximum_bits": 4591084289871449584,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591084289871449584
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 118,
+        "maximum_bits": 4591084289871449584,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591084289871449584
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 119,
+        "maximum_bits": 4591086076200795584,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591086076200795584
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 119,
+        "maximum_bits": 4591086076200795584,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591086076200795584
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 120,
+        "maximum_bits": 4591089328752422224,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591089328752422224
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 120,
+        "maximum_bits": 4591089328752422224,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591089328752422224
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 121,
+        "maximum_bits": 4591092364002182000,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092364002182000
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 121,
+        "maximum_bits": 4591092364002182000,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092364002182000
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 122,
+        "maximum_bits": 4591094000396181360,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094000396181360
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 122,
+        "maximum_bits": 4591094000396181360,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094000396181360
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 123,
+        "maximum_bits": 4591094178472910080,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094178472910080
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 123,
+        "maximum_bits": 4591094178472910080,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094178472910080
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 124,
+        "maximum_bits": 4591093320508955664,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093320508955664
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 124,
+        "maximum_bits": 4591093320508955664,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093320508955664
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 125,
+        "maximum_bits": 4591092799996609632,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092799996609632
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 125,
+        "maximum_bits": 4591092799996609632,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092799996609632
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 126,
+        "maximum_bits": 4591092830548295168,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092830548295168
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 126,
+        "maximum_bits": 4591092830548295168,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092830548295168
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 127,
+        "maximum_bits": 4591093338345551184,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093338345551184
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 127,
+        "maximum_bits": 4591093338345551184,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093338345551184
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 128,
+        "maximum_bits": 4591093845145540320,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093845145540320
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 128,
+        "maximum_bits": 4591093845145540320,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093845145540320
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 129,
+        "maximum_bits": 4591093404854350032,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093404854350032
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 129,
+        "maximum_bits": 4591093404854350032,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093404854350032
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 130,
+        "maximum_bits": 4591091839584221568,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091839584221568
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 130,
+        "maximum_bits": 4591091839584221568,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091839584221568
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 131,
+        "maximum_bits": 4591090109113702416,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090109113702416
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 131,
+        "maximum_bits": 4591090109113702416,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090109113702416
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 132,
+        "maximum_bits": 4591088505963514736,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591088505963514736
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 132,
+        "maximum_bits": 4591088505963514736,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591088505963514736
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 133,
+        "maximum_bits": 4591087857971676928,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591087857971676928
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 133,
+        "maximum_bits": 4591087857971676928,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591087857971676928
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 134,
+        "maximum_bits": 4591087814277335632,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591087814277335632
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 134,
+        "maximum_bits": 4591087814277335632,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591087814277335632
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 135,
+        "maximum_bits": 4591088391319752496,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591088391319752496
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 135,
+        "maximum_bits": 4591088391319752496,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591088391319752496
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 136,
+        "maximum_bits": 4591089350426653728,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591089350426653728
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 136,
+        "maximum_bits": 4591089350426653728,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591089350426653728
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 137,
+        "maximum_bits": 4591090629281664048,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090629281664048
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 137,
+        "maximum_bits": 4591090629281664048,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090629281664048
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 138,
+        "maximum_bits": 4591091857610272320,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091857610272320
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 138,
+        "maximum_bits": 4591091857610272320,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091857610272320
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 139,
+        "maximum_bits": 4591093008209795296,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093008209795296
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 139,
+        "maximum_bits": 4591093008209795296,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093008209795296
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 140,
+        "maximum_bits": 4591094129524422928,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094129524422928
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 140,
+        "maximum_bits": 4591094129524422928,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094129524422928
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 141,
+        "maximum_bits": 4591094518389543696,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094518389543696
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 141,
+        "maximum_bits": 4591094518389543696,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094518389543696
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 142,
+        "maximum_bits": 4591094560491949312,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094560491949312
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 142,
+        "maximum_bits": 4591094560491949312,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094560491949312
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 143,
+        "maximum_bits": 4591094202482420816,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094202482420816
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 143,
+        "maximum_bits": 4591094202482420816,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094202482420816
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 144,
+        "maximum_bits": 4591093481037670016,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093481037670016
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 144,
+        "maximum_bits": 4591093481037670016,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093481037670016
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 145,
+        "maximum_bits": 4591092769341827744,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092769341827744
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 145,
+        "maximum_bits": 4591092769341827744,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092769341827744
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 146,
+        "maximum_bits": 4591092206158396720,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092206158396720
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 146,
+        "maximum_bits": 4591092206158396720,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092206158396720
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 147,
+        "maximum_bits": 4591091726485893728,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091726485893728
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 147,
+        "maximum_bits": 4591091726485893728,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091726485893728
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 148,
+        "maximum_bits": 4591090914056233248,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090914056233248
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 148,
+        "maximum_bits": 4591090914056233248,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090914056233248
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 149,
+        "maximum_bits": 4591090099177770544,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090099177770544
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 149,
+        "maximum_bits": 4591090099177770544,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090099177770544
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 150,
+        "maximum_bits": 4591089586561200624,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591089586561200624
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 150,
+        "maximum_bits": 4591089586561200624,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591089586561200624
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 151,
+        "maximum_bits": 4591089612341005376,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591089612341005376
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 151,
+        "maximum_bits": 4591089612341005376,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591089612341005376
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 152,
+        "maximum_bits": 4591090326835664256,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090326835664256
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 152,
+        "maximum_bits": 4591090326835664256,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090326835664256
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 153,
+        "maximum_bits": 4591091540549798752,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091540549798752
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 153,
+        "maximum_bits": 4591091540549798752,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091540549798752
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 154,
+        "maximum_bits": 4591092778189195536,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092778189195536
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 154,
+        "maximum_bits": 4591092778189195536,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092778189195536
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 155,
+        "maximum_bits": 4591093676997839680,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093676997839680
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 155,
+        "maximum_bits": 4591093676997839680,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093676997839680
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 156,
+        "maximum_bits": 4591094115245556416,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094115245556416
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 156,
+        "maximum_bits": 4591094115245556416,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094115245556416
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 157,
+        "maximum_bits": 4591094108591821824,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094108591821824
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 157,
+        "maximum_bits": 4591094108591821824,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094108591821824
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 158,
+        "maximum_bits": 4591093794028614960,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093794028614960
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 158,
+        "maximum_bits": 4591093794028614960,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093794028614960
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 159,
+        "maximum_bits": 4591093336812750592,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093336812750592
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 159,
+        "maximum_bits": 4591093336812750592,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093336812750592
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 160,
+        "maximum_bits": 4591092842870147328,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092842870147328
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 160,
+        "maximum_bits": 4591092842870147328,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092842870147328
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 161,
+        "maximum_bits": 4591092321022436432,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092321022436432
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 161,
+        "maximum_bits": 4591092321022436432,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092321022436432
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 162,
+        "maximum_bits": 4591091731981911152,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091731981911152
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 162,
+        "maximum_bits": 4591091731981911152,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091731981911152
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 163,
+        "maximum_bits": 4591091115551868672,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091115551868672
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 163,
+        "maximum_bits": 4591091115551868672,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091115551868672
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 164,
+        "maximum_bits": 4591090675979522000,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090675979522000
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 164,
+        "maximum_bits": 4591090675979522000,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090675979522000
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 165,
+        "maximum_bits": 4591090530431201088,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090530431201088
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 165,
+        "maximum_bits": 4591090530431201088,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090530431201088
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 166,
+        "maximum_bits": 4591090705849643984,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090705849643984
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 166,
+        "maximum_bits": 4591090705849643984,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591090705849643984
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 167,
+        "maximum_bits": 4591091138298968352,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091138298968352
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 167,
+        "maximum_bits": 4591091138298968352,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091138298968352
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 168,
+        "maximum_bits": 4591091745385388720,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091745385388720
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 168,
+        "maximum_bits": 4591091745385388720,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091745385388720
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 169,
+        "maximum_bits": 4591092435756930608,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092435756930608
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 169,
+        "maximum_bits": 4591092435756930608,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092435756930608
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 170,
+        "maximum_bits": 4591093063563680384,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093063563680384
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 170,
+        "maximum_bits": 4591093063563680384,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093063563680384
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 171,
+        "maximum_bits": 4591093524227319632,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093524227319632
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 171,
+        "maximum_bits": 4591093524227319632,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093524227319632
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 172,
+        "maximum_bits": 4591093988766219936,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093988766219936
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 172,
+        "maximum_bits": 4591093988766219936,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093988766219936
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 173,
+        "maximum_bits": 4591094091362634832,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094091362634832
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 173,
+        "maximum_bits": 4591094091362634832,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591094091362634832
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 174,
+        "maximum_bits": 4591093977749806080,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093977749806080
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 174,
+        "maximum_bits": 4591093977749806080,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093977749806080
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 175,
+        "maximum_bits": 4591093594295552128,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093594295552128
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 175,
+        "maximum_bits": 4591093594295552128,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591093594295552128
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 176,
+        "maximum_bits": 4591092897891081088,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092897891081088
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 176,
+        "maximum_bits": 4591092897891081088,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092897891081088
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 177,
+        "maximum_bits": 4591092278071218144,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092278071218144
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 177,
+        "maximum_bits": 4591092278071218144,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591092278071218144
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 178,
+        "maximum_bits": 4591091838337682400,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091838337682400
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 178,
+        "maximum_bits": 4591091838337682400,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091838337682400
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 179,
+        "maximum_bits": 4591091470536107152,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091470536107152
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 179,
+        "maximum_bits": 4591091470536107152,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091470536107152
+      },
+      "failures": []
+    },
+    {
+      "actual": {
+        "case_id": 1,
+        "frame": 180,
+        "maximum_bits": 4591091098713647648,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091098713647648
+      },
+      "frozen": {
+        "case_id": 1,
+        "case": "height",
+        "frame": 180,
+        "maximum_bits": 4591091098713647648,
+        "triangle": 658,
+        "axis": 1,
+        "signed_bits": 4591091098713647648
+      },
+      "failures": []
+    }
+  ],
+  "all_triangle_axis_comparison": {
+    "mismatch_count": 0,
+    "first_mismatches": []
+  },
+  "actual_axes_sha256": "715b6dd68f64ca1bfb2d811c7b500dd5b420d4fa021c3825af0278ddccba6533",
+  "expected_axes_sha256": "715b6dd68f64ca1bfb2d811c7b500dd5b420d4fa021c3825af0278ddccba6533",
+  "postflight_input_source_and_old_bindings_exact": true,
+  "old_raw_33A_plus_3B_failures_and_strict_false_results_retained": true,
+  "limits": "Posthoc static arithmetic evidence only. No Cloth initialization, integration, garment/fit/UI run, physical threshold change, evaluator modification, calibration, release or reference-parity acceptance."
+}
