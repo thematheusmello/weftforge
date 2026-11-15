@@ -252,6 +252,9 @@ Confidently collinear/point triangles reduce to their closed edges/vertices.
 these conservative uncertain-geometry bounds, including separated pairs; exact
 closed-edge degeneracy is not counted. Such bounds can retain a small false
 positive penetration, and missing stable face arithmetic cannot certify clearance.
+The native inspector displays this count. CLI fitting conservatively requires
+zero uncertain pairs in addition to the existing strain, seam and penetration
+bounds, including when a conservative pair bound reports no penetration.
 
 At zero distance, a previously axis-separated triangle prefers the previous
 same-barycentric point's separation. If the previous triangle already crosses
@@ -399,10 +402,16 @@ make a failing result disappear:
 Both use original editable polygons, eight interval seams, 0.12 m requested mesh
 resolution, front/back arrangement Z=±0.22 m, the same uncalibrated material and
 analytic mannequin. The original body's two 0.48 m widths sum to 0.96 m, whereas
-the mannequin torso's 0.18 m radius has 1.131 m circumference. A horizontal body
-cross-section would therefore require about 17.8% circumferential extension;
-redistribution and diagonal drape can change the actual local strain. This
-geometric mismatch is a design issue separate from solver convergence.
+the mannequin torso's bare 0.18 m radius has 1.131 m circumference. Including the
+uniform 0.003 m physical offset gives radius0.183 m and circumference1.149823 m,
+which would require about19.77% circumferential extension for that horizontal
+cross-section. Redistribution and diagonal drape can change the actual local
+strain; this conditional bound does not explain the measured strain by itself.
+Harbor has different dimensions and must be assessed separately. Coarse cuff
+edges can also make an exterior wrap geometrically infeasible within the15%
+material-axis screen. A low vertex residual cannot establish that such edges
+stay outside the arm capsule. Keep geometric fit, contact coverage and numerical
+convergence as separately measured questions.
 
 Before evaluating the fitting matrix, the bounded acceptance criteria were set
 to finite state, completed assembly, max material-axis extension <15%, max seam

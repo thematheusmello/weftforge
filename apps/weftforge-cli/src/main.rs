@@ -341,6 +341,7 @@ fn fit_quality(d: &Diagnostics) -> bool {
         && d.max_stretch_error < 0.15
         && d.max_seam_error < 0.005
         && d.max_contact_error < 0.002
+        && d.capsule_surface_uncertain_pairs == 0
 }
 
 fn fit(project: &Project) -> Result<(Mesh, serde_json::Value, bool)> {
@@ -392,7 +393,7 @@ fn fit(project: &Project) -> Result<(Mesh, serde_json::Value, bool)> {
     let report = serde_json::json!({
         "kind":"implementation_only","protocol":"explicit-zero-gravity-assembly-then-drape-v1",
         "status":if passed {"passed"} else {"failed"},"solver_error":failure,
-        "criteria":{"finite":true,"seam_assembly_remaining_m":0.,"max_stretch_error_below":0.15,"max_seam_gap_below_m":0.005,"max_contact_penetration_below_m":0.002},
+        "criteria":{"finite":true,"seam_assembly_remaining_m":0.,"max_stretch_error_below":0.15,"max_seam_gap_below_m":0.005,"max_contact_penetration_below_m":0.002,"capsule_surface_uncertain_pairs":0},
         "platform":std::env::consts::OS,"architecture":std::env::consts::ARCH,
         "vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"phases":phases,
         "wall_seconds":seconds,"simulated_seconds":cloth.simulation_time(),"simulated_seconds_per_wall_second":cloth.simulation_time()/seconds,
@@ -470,10 +471,17 @@ mod tests {
         });
         let diagnostics: Diagnostics = serde_json::from_value(old.clone()).unwrap();
         assert!(diagnostics.peak_strain.is_none());
+        assert_eq!(diagnostics.capsule_surface_uncertain_pairs, 0);
         let mut new = serde_json::to_value(diagnostics).unwrap();
         assert_eq!(
             new.as_object_mut().unwrap().remove("peak_strain"),
             Some(serde_json::Value::Null)
+        );
+        assert_eq!(
+            new.as_object_mut()
+                .unwrap()
+                .remove("capsule_surface_uncertain_pairs"),
+            Some(serde_json::json!(0))
         );
         assert_eq!(new, old);
     }
@@ -496,6 +504,10 @@ mod tests {
         d.max_contact_error = 0.002;
         assert!(!fit_quality(&d));
         d.max_contact_error = 0.;
+        d.capsule_surface_uncertain_pairs = 1;
+        assert!(!fit_quality(&d));
+        d.capsule_surface_uncertain_pairs = 0;
+        assert!(fit_quality(&d));
         d.finite = false;
         assert!(!fit_quality(&d));
     }

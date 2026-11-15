@@ -10,8 +10,14 @@ report `diagnostics.peak_strain`: current zero-based solver triangle, `warp` or
 `weft`, and signed dimensionless length strain. `peak_strain_piece` resolves the
 current editable pattern's `id` and `name`; it is null when attribution cannot
 be resolved. Fitting reports include this at each phase and in the final result.
-The existing absolute maximum and quality limits remain unchanged. These are
-CLI reports; the MCP file tools below do not run simulation jobs.
+The existing strain, seam and penetration limits remain unchanged. Contact error
+now includes static triangle/capsule occupancy. The additive
+`diagnostics.capsule_surface_uncertain_pairs` counts pairs using conservative
+uncertain-geometry bounds; legacy diagnostic JSON defaults it to zero.
+`fit` and `fit-benchmark` also require this count to be zero, so uncertain
+geometry cannot produce a successful fit verdict. The native inspector displays
+the count. These are CLI reports; the MCP file tools below do not run simulation
+jobs and their authoring schemas are unchanged.
 
 Build with `cargo build --release -p weftforge-cli`. A client that launches MCP
 servers can use this configuration when the executable is on its PATH:
