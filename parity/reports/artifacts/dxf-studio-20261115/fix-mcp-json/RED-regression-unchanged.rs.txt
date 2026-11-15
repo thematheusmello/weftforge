@@ -1,0 +1,83 @@
+
+#[test]
+fn inspection_matches_saved_native_json_without_changing_f32_materials_or_f64_geometry() {
+    let directory = Directory::new();
+    let path = directory.path("canonical-inspection.weftforge");
+    let mut editor = Editor::default();
+    editor
+        .execute(Command::AddEllipse {
+            name: "Original decimal geometry".into(),
+            origin: [-0.12345678901234566, 0.2718281828459045],
+            width: 0.403210987654321,
+            height: 0.6543210987654321,
+        })
+        .unwrap();
+    let piece = editor.project.pieces[0].id;
+    editor
+        .execute(Command::SetPlacement {
+            piece,
+            placement: weftforge_core::Placement {
+                translation: [-0.0, 0.23456789012345678, -0.3456789012345679],
+                rotation: [
+                    0.12345678901234566,
+                    -0.23456789012345678,
+                    0.3456789012345679,
+                ],
+            },
+        })
+        .unwrap();
+    editor.project.materials[0].color = [0.22, 0.55, 0.76];
+    editor.project.materials[0].areal_density = 0.18000000000000002;
+    editor.project.save(&path).unwrap();
+    let original = fs::read(&path).unwrap();
+    let native: Value = serde_json::from_slice(&original).unwrap();
+    assert_eq!(
+        native["project"]["materials"][0]["color"],
+        json!([0.22, 0.55, 0.76])
+    );
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let response = server.call("project_inspect", json!({"path":path}));
+    // success also checks that the text and structured MCP results agree exactly.
+    let inspected = &success(&response)["project"];
+    assert_eq!(*inspected, native["project"]);
+    let typed: Project = serde_json::from_value(inspected.clone()).unwrap();
+    assert_eq!(typed, editor.project);
+    assert_eq!(typed.materials, editor.project.materials);
+    assert_eq!(
+        typed.materials[0].color.map(f32::to_bits),
+        editor.project.materials[0].color.map(f32::to_bits)
+    );
+    for (actual, expected) in typed.points.iter().zip(&editor.project.points) {
+        assert_eq!(
+            actual.position.map(f64::to_bits),
+            expected.position.map(f64::to_bits)
+        );
+    }
+    for (actual, expected) in typed.curves.iter().zip(&editor.project.curves) {
+        assert_eq!(
+            actual
+                .controls
+                .map(|controls| controls.map(|point| point.map(f64::to_bits))),
+            expected
+                .controls
+                .map(|controls| controls.map(|point| point.map(f64::to_bits)))
+        );
+    }
+    assert_eq!(
+        typed.pieces[0].placement.translation.map(f64::to_bits),
+        editor.project.pieces[0]
+            .placement
+            .translation
+            .map(f64::to_bits)
+    );
+    assert_eq!(
+        typed.pieces[0].placement.rotation.map(f64::to_bits),
+        editor.project.pieces[0]
+            .placement
+            .rotation
+            .map(f64::to_bits)
+    );
+    assert_eq!(fs::read(&path).unwrap(), original);
+    server.finish();
+}

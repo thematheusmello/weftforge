@@ -1,0 +1,107 @@
+Window: "WeftForge", App: WeftForge DXF Studio.
+0 standard window WeftForge, Secondary Actions: Raise
+	1 container (showing 0-100 of 104 items)
+		2 text (settable) WeftForge
+		3 text (settable) GARMENT STUDIO
+		4 button Open…
+		5 button Import SVG…
+		6 button Import DXF…
+		7 button Save
+		8 button Save as…
+		9 button Recover…
+		10 button Export OBJ
+		11 button Export SVG
+		12 button Export DXF
+		13 button Undo
+		14 button Redo
+		15 button Commands ⌘K
+		16 toggle button (settable, boolean) Select / edit, Value: on
+		17 toggle button (settable, boolean) Polygon, Value: off
+		18 toggle button (settable, boolean) Rectangle, Value: off
+		19 toggle button (settable, boolean) Sew edges, Value: off
+		20 toggle button (settable, boolean) M:N sewing, Value: off
+		21 button Frame all
+		22 text (settable) baseline.weftforge
+		23 text (settable) rev 1
+		24 text (settable) SIMULATION
+		25 button Play
+		26 button Step
+		27 button Assemble (gravity off)
+		28 button Drape
+		29 button Reset
+		30 checkbox (settable, boolean) Wireframe, Value: off
+		31 text (settable) Stage: Rest arrangement
+		32 text (settable) Next step settings: dt 0.01667 s · 4 substeps · 8 iterations · gravity [0.0, -9.81, 0.0] m/s² · seam closure 0.50 m/s
+		33 text (settable) 1 pieces  ·  0 seams  ·  0 sewing groups  ·  9 vertices
+		34 text (settable) Rest mesh rebuilt from editable construction.
+		35 text (settable) Properties
+		36 text (settable) Editable construction
+		37 text (settable) OBJECTS
+		38 toggle button (settable, boolean) Existing baseline, Value: on
+		39 text (settable) Boundary curve · select here or in 2D
+		40 pop up button (settable) Choose boundary
+		41 text (settable) CREATE PATTERN
+		42 text (settable) Pattern name
+		43 text field (settable) Pattern 1
+		44 text (settable) W / H m
+		45 stepper (settable) 0.50
+		46 stepper (settable) 0.60
+		47 text (settable) X / Y m
+		48 stepper (settable) -0.25
+		49 stepper (settable) 1.00
+		50 button Add rectangle
+		51 button Add ellipse
+		52 button Add polygon point
+		53 button Close pattern (0 points)
+		54 text (settable) Existing baseline
+		55 text (settable) Size m
+		56 stepper (settable) 0.100
+		57 stepper (settable) 0.120
+		58 text (settable) Arrange X / Y / Z m
+		59 stepper (settable) 0.00
+		60 stepper (settable) 0.00
+		61 stepper (settable) 0.00
+		62 text (settable) Rotate X / Y / Z radians
+		63 stepper (settable) 0.00
+		64 stepper (settable) 0.00
+		65 stepper (settable) 0.00
+		66 text (settable) Warp angle radians
+		67 text (settable) 0 = +U (right); positive turns toward +V (up).
+		68 stepper (settable) 0.00
+		69 text (settable) Shared fabric · 1 pieces
+		70 text (settable) Changes affect every assigned piece. Uncalibrated approximation.
+		71 text (settable) Mass/area kg/m²
+		72 stepper (settable) 0.18
+		73 text (settable) Warp stiffness N/m
+		74 stepper (settable) 400
+		75 text (settable) Weft stiffness N/m
+		76 stepper (settable) 400
+		77 text (settable) Bend N·m
+		78 stepper (settable) 0.00300
+		79 color well
+		80 button Delete selected
+		81 text (settable) SEWING
+		82 checkbox (settable, boolean) Reverse paired edge, Value: on
+		83 text (settable) A interval / B interval (0–1)
+		84 stepper (settable) 0.00
+		85 stepper (settable) 1.00
+		86 stepper (settable) 0.00
+		87 stepper (settable) 1.00
+		88 text (settable) Sew edges: click two 2D boundaries.
+		89 text (settable) Intervals use curve parameter t, not arc length. Reverse swaps B's direction and keeps the normalized mapping.
+		90 text (settable) Ordered sewing groups
+		91 text (settable) Pairing: total authored arc length in metres. Span endpoints use curve parameter t.
+		92 text (settable) Mesh edge length m
+		93 stepper (settable) 0.070
+		94 text (settable) Iterations / substeps
+		95 stepper (settable) 8
+		96 stepper (settable) 4
+		97 scroll bar
+		98 text (settable) 2D PATTERNS
+		99 text (settable) Construction
+		100 text (settable) Metres · 1 cm snap · scroll zoom · middle drag pan
+		101 unknown
+	102 text WeftForge
+	103 menu button Window sharing
+104 menu bar
+	105 WeftForge

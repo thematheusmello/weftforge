@@ -7,20 +7,136 @@ inventory, not a feature-completion denominator.
 
 ## Current continuation
 
-The next DXF build is `76be95d4d7928bcb703e1f52f4a5404bc955f567` in
-`.local/dxf-studio-fixed-integration-20261115`: all five gates passed with
-187 Rust tests and 54 Python checks. It fixes the observed numeric text-cache
-replay and canonical MCP document JSON. Its new headless case passed all 18
-cases and four exact inspections; the old 5950 native/inspection failures remain
-closed. New native acceptance is in progress with the unchanged frozen criteria;
-it has passed the decimal prelude, Cancel routes and history through revision9.
-No new native acceptance or public DXF delivery is claimed yet.
+Public main is `8752c9ecf4bb4b0607f48eab480e4fe43157bd92` after
+[PR40](https://github.com/thematheusmello/weftforge/pull/40). Its merged tree and
+all 47 bound source/spec files match the reviewed solver increment. Actions is
+disabled, with zero merge workflow runs confirmed in
+`.local/verification/published-8752c9ecf4bb.json`. Automated Pages deployments
+remain disabled and the existing static site is preserved.
 
-The solver increment is delivered through [PR40](https://github.com/thematheusmello/weftforge/pull/40).
-Its prior public main is `224e7b44b2f40fa479397ae50443efa63550da9c` after PR39.
-Actions and automated Pages deployments remain disabled; the existing static site
-is preserved. Its isolated branch is `feat/closed-stitch-integration` in
-`.local/closed-stitch-integration-20261115`.
+The DXF studio checkpoint is prepared through
+[PR41](https://github.com/thematheusmello/weftforge/pull/41), with tested source
+`76be95d4d7928bcb703e1f52f4a5404bc955f567`, isolated in
+`.local/dxf-studio-fixed-integration-20261115`. It combines the bounded editable
+DXF import with the successful-commit numeric text-cache fix
+`2e403483c534ec167b9007bdf96b03e52c0a6c4d` and canonical native JSON inspection
+fix `d400bd78a8475ba9dc972be4dc6793c3ab3dbcec`. The numeric fix evicts cached
+edit text only after a successful ordinary commit; the MCP fix keeps the native
+f32/f64 JSON representation without changing stored bits or adding an epsilon.
+Their focused regressions retain the original failing and corrected outcomes.
+
+All five integrated gates passed: formatting, 187 Rust tests, strict workspace/
+all-target Clippy, xtask verification with 54 Python checks and unsigned packaging.
+Receipts are under `.local/dxf-studio-fixed-integrated-checks-20261115`;
+wrapper 83493 and child jobs 83517/83576/86273/88605/89068 are all terminal 0.
+All 49 bound source files match. Native SHA256 is
+`232b19369bf966bfcaf7400aa829e3722b1c4011c7d011fbff0dee58d044cac7`;
+CLI SHA256 is
+`ba4bdaf4cbbcd1362156053145e899947d9e66996e42a71e1f8fd91deabf2b09`.
+
+The new closed headless case in `.local/dxf-headless-acceptance-v2-20261115`
+passed all 18 cases: four independently graded import/save/export paths and
+14 rejection/retention cases, plus four exact MCP/native project comparisons.
+It reused the original evaluator, analytic expectations and fixtures unchanged;
+there was no output normalization, retry or continuation. The hardlink case was
+retained through invalid-existing-native-output validation, not dedicated
+hardlink alias detection. The in-place case advanced a distinct valid recovery
+to the exact pre-save primary. This does not promise unchanged recovery after
+every save failure.
+
+The new native case in `.local/native-dxf-acceptance-v2-20261115` is closed.
+The unchanged independent native-file/export grader exited 0; ezdxf 1.4.5 reported
+zero audit errors/fixes. Nine saved checkpoints have revisions 4/5/6/7/8/9/10/10/10,
+with allocator 11 before import and 29 thereafter. Actual chooser/review Cancel,
+command-search Escape, one Import, two Undo/two Redo actions, P1 X editing,
+invalid-source retention, quit, fresh Empty launch, reopen/resave and SVG/DXF
+exports were observed. Edited, rejected and reopened native files share SHA256
+`b357133464e711dbd9df0c137d8c6132fb344b3ec8851c0c6fa635755261eb3f`.
+
+Independent raw review in `.local/dxf-import-native-review-20261115` supports
+**BOUNDED_NATIVE_WORKFLOW_SUPPORTED_WITH_REMAINING_GAPS**, not an all-plan,
+full-contract or reference-parity pass. All 160 before/returned input pairs are
+present. The old .12 Redo branch after Cancel was never invoked before a new
+Import; enabled accessibility buttons cannot establish that stack, so its
+runtime retention remains unknown, not an observed failure. The modal does not
+explicitly name printing. Phase B temporary revision 2/.126 reached background
+autosave and recovery sidecars, while all three original input primaries stayed
+unchanged. A SaveAs basename input correction and the closure script's initial
+000-versus-000-launch assertion failure remain retained. Zero CUA action/
+observation failures does not mean an error-free run. PIDs 7590→14754→21561
+represent Phase A, fresh reopen and final restoration after explicitly discarding
+the separate temporary document; the third launch was not a Phase A retry.
+
+The earlier source 5950 native case remains failed before import: one .11 Return
+produced revision 3 instead of the expected 2. Its original headless four geometry/
+export grades and 14 negative cases passed, but all four exact MCP inspections
+failed on f32 color JSON representation. Those cases are permanently closed and
+unchanged; the new 76be cases do not regrade them.
+
+The new [studio gallery](docs/studio-preview.md) leads with a separate read-only
+76be Harbor-rest preview: revision 20, two pieces, eight seams, 654 rest vertices,
+paused Rest arrangement. It made no authoring, save, import, history or simulation
+actions. Its raw 1640×1032 hero has SHA256
+`608dc9926df52e8034e5d822e7715020e2217ed5a75414028cac915b828d4826`;
+the local receipt is `.local/dxf-studio-preview-20261115/OUTCOME.json`.
+Older 32f9 SVG and b760 gallery images remain historical.
+
+No new physics was run for this DXF increment or preview. The published source 2e
+Harbor A/base and paired result remain failed at a 19.9092% peak strain; B/height
+passes only its bounded protocol at 14.6118%. Those original cases are closed.
+Cloth convergence, calibration, full persistence, all native-plan criteria,
+cross-platform acceptance and the complete roadmap remain open.
+
+The closed public [DXF packet](parity/reports/artifacts/dxf-studio-20261115/README.md)
+contains 956 files, manifest
+`fe82650c48297554506d873fec624e3d3743e2290476293f4eef14f10ee5bcd0`.
+[WF-20261115-DXF-STUDIO-001](parity/reports/WF-20261115-DXF-STUDIO-001.json)
+records passed components with `full_native_plan_accepted:false` and all three
+native gaps. UI-001/FILE-005/APP-001 remain partial/not_run; parity is 0/56.
+The two original TEMP2 sidecar force-add paths and 14 additional immutable
+headless recovery/sentinel fixtures have exact privacy/hash review and root
+supplemental authorization. The original two-path HANDOFF scope and this staging
+correction are retained without changing packet bytes or Git ignore rules.
+
+Clean tracked `641ed20c633c49144ab6685a2302368930fc4e86` passes the single default static replay
+in 1.103424250 s, preserving four headless geometry/export grades,
+four exact MCP comparisons, nine native checkpoints/export pairs, 13 frozen
+synthetic checks and three adapter negatives. The three native gaps and old
+failures remain unchanged. Registry/map are terminal 0; all 4,018 referenced
+artifacts are tracked and hash-correct, with source49 plus the bounded spec
+unchanged (session 2221, wrapper 2037, replay PID 2355).
+The [closure](parity/reports/artifacts/dxf-studio-publication-20261115/ROOT-CLOSURE.json)
+records actual commands, exits, timeouts, source-object refs and scopes. The
+unchanged entrypoint keeps its own publication flag false; the external wrapper
+proves the clean/tracked delivery gate separately. Receipt metadata receives
+final clean registry/map/hash checks without another static replay.
+
+The safe receipt append at `3d5938996a6a150599b1037c8e3707127b84091c` passes
+final metadata-only checks (session 56433, wrapper 19138, registry 19214/map
+20649), with all 4,026 unique report artifacts tracked/hash-correct and all 50
+runtime/spec files unchanged. Root independently reviewed those artifact hashes.
+Raw patch and SVG evidence retains original whitespace; source/docs/metadata
+diff checks pass without editing frozen bytes. Push session 97160 exited 0 and
+the exact remote head was confirmed. No static replay, product, UI, Cargo or
+physics run was repeated for receipt/PR-link metadata.
+
+Next: merge PR41 at its reviewed head and verify the resulting source/tree and
+disabled Actions setting. Then finish the separate native Snap candidate's
+unfinished numeric-text/caret fix and review the prepared
+`NATIVE-HARBOR-EMPTY-20261115-001` plan in `.local/native-garment-plan-20261115`.
+Its freeze is `8d1fb7386e6becab72e78865a3fe7baa79fec718c56918145c2cbf71af5ce021`;
+actual actor/PID, resource observer and execution release remain unbound. Full
+native-plan, printing, persistence/garment and reference acceptance remain open.
+No new UI/physics case is launched by this publication. Keep Actions and
+automated Pages deployments disabled; preserve the static site.
+
+## Published solver checkpoint (PR40; source 2e9795)
+
+These source-qualified original results remain immutable. On the new DXF source,
+the report and SIM-001/003/005 freshness are stale because the full 47-file scope
+includes changed authoring/adapters. Every solver-crate file remains unchanged;
+there was no physical rerun or regrading. A and the pair remain failed, with B's
+bounded strict pass retained.
 
 The tested solver source is `2e9795a3cb92c79ad3b406e675dcbdb49c60ce67`.
 Its 45 runtime files plus the prospective closed-stitch contract and physics
@@ -77,25 +193,10 @@ final metadata-only clean checks before push, without another saved-state replay
 adds zero dynamics and distributes no executable, target or private inverse map.
 Only 26/107 frozen preparation attachments are supplied/referenced; 81 private
 auxiliary attachments are explicitly omitted. Previous SVG/diagnostic reports
-remain stale for this changed runtime. The new bounded SIM evidence is current,
-while the full control/reference contracts and native garment flow remain open.
+remain stale for this changed runtime. The bounded SIM report was current at PR40. It is stale on the new DXF source;
+the full control/reference contracts and native garment flow remain open.
 
-The next separate DXF checkpoint, source
-`5950c59073ff6a9c744699dd4bae52abb5794f72`, passed all five gates with 185 Rust
-and 54 Python checks. Its actual native case failed before import: the first
-`.11Return` produced revision 3 where the frozen case expected 2; 13 trace pairs
-are retained. Headless four-import/export and 14-negative checks passed, but
-exact MCP inspection differed in three f32 colour decimals. Both source5950
-cases are closed and will not be regraded. Native fix
-`2e403483c534ec167b9007bdf96b03e52c0a6c4d` and MCP fix
-`d400bd78a8475ba9dc972be4dc6793c3ab3dbcec` are prepared, reviewed and covered by
-focused checks; root is integrating them in a separate fresh worktree. No new
-DXF native acceptance is claimed here. The previous native2e and source5950
-states remain unchanged. The next actions are to publish this reviewed solver branch through a root-owned
-PR and finish that separate DXF source increment. Coarse reference
-parity remains 0/56 and no roadmap gate is accepted.
-
-## Published SVG studio checkpoint
+## Historical published SVG studio checkpoint (PR39)
 
 The latest verified implementation is
 [PR39](https://github.com/thematheusmello/weftforge/pull/39), prepared on

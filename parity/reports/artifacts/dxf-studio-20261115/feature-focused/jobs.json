@@ -1,0 +1,56 @@
+{
+  "commit": "69e7e57",
+  "base": "224e7b44b2f40fa479397ae50443efa63550da9c",
+  "jobs": [
+    {
+      "session": 27825,
+      "kind": "core_import_tests",
+      "exit": 0,
+      "passed": 11,
+      "log": "core-tests-attempt-1.log"
+    },
+    {
+      "session": 12732,
+      "kind": "cli_and_mcp_tests_initial",
+      "exit": 101,
+      "passed": 9,
+      "failed": 1,
+      "cause": "Existing discovery count expected 23 shared commands; DXF adds the 24th.",
+      "log": "cli-mcp-tests-attempt-1.log"
+    },
+    {
+      "session": 2072,
+      "kind": "mcp_discovery_failed_test_retry",
+      "exit": 0,
+      "passed": 1,
+      "log": "cli-mcp-retest-discovery-count.log"
+    },
+    {
+      "session": 16298,
+      "kind": "native_pattern_import_tests",
+      "exit": 0,
+      "passed": 4,
+      "notes": "Each runs both SVG/DXF; pointer test runs chooser None Cancel and review Cancel.",
+      "log": "native-pattern-tests-attempt-1.log"
+    },
+    {
+      "session": 76054,
+      "kind": "cargo_fmt_all_check",
+      "exit": 0,
+      "log": "fmt-check.log"
+    },
+    {
+      "session": 36422,
+      "kind": "clippy_core_cli_native_all_targets_deny_warnings",
+      "exit": 0,
+      "log": "strict-clippy-attempt-1.log"
+    }
+  ],
+  "deferred": [
+    "workspace tests",
+    "workspace Clippy including xtask",
+    "xtask verification",
+    "GUI/native runtime acceptance",
+    "full DXF/reference parity"
+  ]
+}

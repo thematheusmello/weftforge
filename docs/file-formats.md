@@ -17,7 +17,7 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 | OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups; no MTL/textures |
 | SVG | Bounded additive import | Yes | Editable exterior boundaries and names | Static 2D | Closed absolute `M/L/C/Z` paths, explicit mm and uniform viewBox; no sewing/materials/internal features/print tiling |
 | glTF/GLB | No | No | None yet | None yet | Planned validated avatar/mesh/animation workflows |
-| DXF R2000 | No | Yes | Exterior boundary curves only | Static 2D | ASCII `LINE`/cubic `SPLINE`, mm, stable piece layers; no sewing, materials, grain, 3D placement, apparel conventions or print layout |
+| DXF R2000 | Bounded additive import | Yes | Editable exterior boundaries with layer names | Static 2D | Strict existing ASCII `LINE`/clamped cubic `SPLINE` profile, mm and `WF_PIECE` layers; no sewing, materials, grain, 3D placement, apparel conventions or print layout |
 | Animation/cache formats | No | No | None yet | None yet | Timeline, frame caches and export not implemented |
 | Marvelous Designer `.zprj` / `.zpac` | No | No | None | None | Separate FILE-006 research/compatibility workstream |
 
@@ -228,9 +228,43 @@ The CLI and local MCP return the source revision, millimetres and boundary-only
 scope. DXF contains editable CAD curves rather than a complete native garment:
 sewing/correspondence, physical materials, grain, placements, meshes/drape,
 internal features, labels, seam allowances, grading and printing remain outside
-this profile. ASTM/AAMA apparel interchange, import, printer scale and behavior
+this profile. ASTM/AAMA apparel interchange, general CAD import, printer scale and behavior
 in other CAD consumers are separate requirements. See [verification](verification.md)
 for consumer and actual desktop evidence; source support alone is insufficient.
+
+Choose **Import DXF…** in the toolbar or command search, or run
+`weftforge-cli import-dxf INPUT OUTPUT PATTERNS.dxf`. The
+[bounded DXF import profile](../spec/features/FILE-005-dxf-pattern-import.md)
+accepts only this R2000 ASCII structure with explicit millimetres and one exactly
+adjacent closed ordered `LINE`/clamped cubic `SPLINE` contour per `WF_PIECE_<id>`
+layer. It preserves physical X/Y as U/V without inversion, origin or layout
+changes. Source layer names become piece names with fresh native IDs; original
+names are absent from the export. New pieces use the first fabric, zero grain
+and default 3D placement. The native review shows scale, count and scope before
+one atomic import/Undo step; Cancel retains pending numeric drafts.
+
+The reader is limited to 1 MiB, 131072 group pairs, 64 pieces and 4096 boundary
+entities. Other units, versions, entities, flags, fields, nonzero Z, gaps,
+unsupported metadata or block/paper geometry reject the whole drawing. Native
+construction validation also applies. Rejected imports preserve the existing
+authored project; CLI/MCP source-path guards protect the DXF, and failed saves
+retain the existing output primary. Native saving copies the valid current
+primary to recovery before replacing the primary, so recovery may already have
+advanced to that valid snapshot if the final primary replacement fails. The two
+files are not one atomic transaction.
+
+On source `76be95d4d7928bcb703e1f52f4a5404bc955f567`, independent headless
+checks passed four import/save/export cases, fourteen rejection/retention cases
+and four exact MCP/native project comparisons. Independent native-file and
+export grading also passed after the observed chooser/review cancellation,
+single import, two Undo/two Redo actions, cubic-control edit, rejected source
+and actual quit/relaunch/reopen sequence. The [DXF studio evidence packet](../parity/reports/artifacts/dxf-studio-20261115/README.md)
+records the bounded workflow and remaining gaps: the old Redo branch after
+Cancel was not invoked before the new import, the modal did not explicitly
+mention printing, and temporary edits reached background autosave sidecars while
+original input primaries stayed unchanged. This does not establish every frozen
+native-plan criterion, full persistence acceptance, general DXF/CAD or apparel
+interchange, printing or reference parity.
 
 Future formats must specify what they preserve and reject unsupported important
 data explicitly. They must not accept a familiar extension without decoding it,

@@ -1,0 +1,21 @@
+{
+  "case": "save-nonregular-output",
+  "name": "import",
+  "command": [
+    "REPOSITORY_ROOT/.local/dxf-studio-fixed-integration-20261115/target/release/weftforge-cli",
+    "import-dxf",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/save-nonregular-output/data/baseline.weftforge",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/save-nonregular-output/data/output.weftforge",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/save-nonregular-output/data/patterns.dxf"
+  ],
+  "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/save-nonregular-output/data",
+  "wrapper_pid": 10054,
+  "started_utc": "2026-11-15T05:58:16.206301+00:00",
+  "status": "completed",
+  "expected": "exit_nonzero",
+  "child_pid": 10126,
+  "exit_code": 1,
+  "wall_seconds": 0.005755749996751547,
+  "completed_utc": "2026-11-15T05:58:16.212160+00:00",
+  "expected_exit_matched": true
+}

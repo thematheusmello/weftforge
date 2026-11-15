@@ -1,0 +1,35 @@
+{
+  "case": "ONE native DXF acceptance",
+  "frozen_utc": "2026-11-15T05:17:22.316348+00:00",
+  "evaluator": "../dxf-import-independent-evaluator-20261115/PLAN.json",
+  "binding": "ROOT-BINDING.json",
+  "no_product_execution_yet": true,
+  "CUA_only_UI": true,
+  "source_read_policy": "Hashes only; no implementation inspected",
+  "simulation": "Never Play/Step/Assemble/Drape/Reset; no physics",
+  "steps": [
+    "Exact app launch Empty0; open immutable baseline1 allocator11",
+    "Select Existing baseline; Return width .11 ->2; Return .12 ->3; Undo ->4 width .11 both history directions; save preimport",
+    "Enter pending width .125 without commit; chooser Cancel; original DXF review Cancel; command search import and Escape review; retain rev4 and both histories",
+    "Import same original DXF once ->5 allocator29 with width .125 plus two pieces; save imported",
+    "Undo ->6 save undo_import; Undo ->7 save undo_prior; Redo ->8 save redo_prior; Redo ->9 save redo_import",
+    "Select WF_PIECE_17 second curve; P1 X only -.01 ->0 Return ->10 save edited",
+    "Malformed late-gap import rejected rev10; save rejected",
+    "Export direct-final.svg and direct-final.dxf",
+    "One CmdQ; bounded inventory until exact bundle absent; fresh exact app Empty0; open edited10; save reopened; export FINAL.svg FINAL.dxf; leave paused framed cubic visible"
+  ],
+  "checkpoints": {
+    "preimport.weftforge": 4,
+    "imported.weftforge": 5,
+    "undo_import.weftforge": 6,
+    "undo_prior.weftforge": 7,
+    "redo_prior.weftforge": 8,
+    "redo_import.weftforge": 9,
+    "edited.weftforge": 10,
+    "rejected.weftforge": 10,
+    "reopened.weftforge": 10
+  },
+  "stop_on": "Unexpected authoring/history/software failure; preserve files/traces; no hidden retry",
+  "raw_trace": "before and returned persisted before after-AX; all failures retained; captures raw unedited JPEG and raw AX private",
+  "known_scope": "Root strong workflow omits separately pending malformed-source sequence; root notified before launch. No reference or parity claim."
+}

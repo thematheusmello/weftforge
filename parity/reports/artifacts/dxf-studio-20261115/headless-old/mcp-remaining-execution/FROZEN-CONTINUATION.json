@@ -1,0 +1,22 @@
+{
+  "frozen_utc": "2026-11-15T05:31:31.682953+00:00",
+  "runner_sha256": "9e737e4ef6dc1a4a8762a8d1f212d800afe4ace28a7fbf1dc3442596ca25b25b",
+  "original_actor_frozen_sha256": "19514295c107341c157f0c28f2f7e24d0bcccb08eaaf22355fbb3a1a3624bea5",
+  "original_plan_sha256": "58cb8e4a8beec747d63fc07a47bd3ff528026d6c1a59da45f6be7235fb5f1ea1",
+  "command": [
+    "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+    "mcp"
+  ],
+  "requests": {
+    "01-discover.jsonl": "70e421e40a8b51d218cd465be0a59934ff21d5ade2d7d17454004e66e18d2317",
+    "02-tools-list.jsonl": "bd1467d3c85966567a8d3b4ceec683dfc3309d4375f8576e9b290bee9802f5d8",
+    "05-inspect-cli-import.jsonl": "c2e44f889b88c509bdee882ec2c5d72fcede792320f07893e655fd4300376833",
+    "06-inspect-mcp-import.jsonl": "7831bfbe50d141a65b3c761e19f9d20dd6ee9c9d28f47534bb3f07ce6c1b1e38",
+    "07-inspect-in-place.jsonl": "f61b022a543f193916d43ae40250a7e686c134438d11429e977a5f5389ab57c4",
+    "08-project_export_svg.jsonl": "598d74b0cce4b3a96b46d8507991bea009b4a57a87c7904dd8cd3f795d1be3e6",
+    "09-project_export_dxf.jsonl": "375632a7368b0835a014f80d13ad7d14ae084aadc2714a1632233c3e3745c052",
+    "10-extra-file-argument.jsonl": "8e1fa021d70d976303b9d8bdf37a5e13fe8a7a3aaf23c8c56c1bc616f98108f2"
+  },
+  "reason": "First session stopped at exact project_inspect color JSON mismatch. Do not repeat imports, alter output/checker/thresholds, erase the failed result or grant the exact JSON check a pass. Complete only remaining frozen requests, recording every exact mismatch as failed.",
+  "already_failed_request": "mcp-session/04-response.json"
+}

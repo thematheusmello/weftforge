@@ -1,0 +1,16 @@
+{
+  "case": "alias-recovery-symlink",
+  "name": "import",
+  "command": [
+    "REPOSITORY_ROOT/.local/dxf-studio-fixed-integration-20261115/target/release/weftforge-cli",
+    "import-dxf",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/alias-recovery-symlink/data/baseline.weftforge",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/alias-recovery-symlink/data/output.weftforge",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/alias-recovery-symlink/data/patterns.dxf"
+  ],
+  "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/alias-recovery-symlink/data",
+  "wrapper_pid": 10054,
+  "started_utc": "2026-11-15T05:58:16.196514+00:00",
+  "status": "running",
+  "expected": "exit_nonzero"
+}

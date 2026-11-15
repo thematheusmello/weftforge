@@ -1,0 +1,33 @@
+{
+  "profile": "FILE-005-DXF-import-v1",
+  "kind": "implementation_only",
+  "metres_per_source_unit": 0.001,
+  "origin": "WCS X/Y becomes U/V without origin subtraction or Y inversion",
+  "additions": {"pieces": 2, "points": 8, "curves": 8, "lines": 7, "cubics": 1},
+  "baseline_revision": 1,
+  "baseline_next_id": 11,
+  "after_import_next_id": 29,
+  "default_placement": {"translation": [0.0, 0.0, 0.0], "rotation": [0.0, 0.0, 0.0]},
+  "default_grain_angle": 0.0,
+  "endpoint_control_tolerance_m": 1e-12,
+  "sample_tolerance_m": 1e-8,
+  "samples_per_span": 17,
+  "source_geometry": [
+    ["WF_PIECE_17", [
+      [[-0.25, 0.15], null, [-0.05, 0.15]],
+      [[-0.05, 0.15], [[-0.01, 0.18], [-0.005, 0.01]], [-0.05, 0.025]],
+      [[-0.05, 0.025], null, [-0.25, 0.025]],
+      [[-0.25, 0.025], null, [-0.25, 0.15]]
+    ]],
+    ["WF_PIECE_4", [
+      [[0.1, 0.1], null, [0.3, 0.1]],
+      [[0.3, 0.1], null, [0.3, -0.1]],
+      [[0.3, -0.1], null, [0.1, -0.1]],
+      [[0.1, -0.1], null, [0.1, 0.1]]
+    ]]
+  ],
+  "native_pending_width_m": 0.125,
+  "native_cubic_edit": {"piece_name": "WF_PIECE_17", "span_index": 1, "control_index": 0, "axis": 0, "before_m": -0.01, "after_m": 0.0},
+  "native_prelude": {"input_revision": 1, "first_width_commit_m": 0.11, "first_width_revision": 2, "second_width_commit_m": 0.12, "second_width_revision": 3, "undo_to_width_m": 0.11},
+  "native_revisions": {"preimport": 4, "imported": 5, "undo_import": 6, "undo_prior": 7, "redo_prior": 8, "redo_import": 9, "edited": 10, "rejected": 10, "reopened": 10}
+}

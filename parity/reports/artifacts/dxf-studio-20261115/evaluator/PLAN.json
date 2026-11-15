@@ -1,0 +1,54 @@
+{
+  "id": "DXF-import-independent-20261115",
+  "state": "PROSPECTIVE_NO_PRODUCT_EXECUTION",
+  "source_contract_commit": "e4236d1da4a34874e75f08cac7e5e4d1a23cf779",
+  "candidate_source_binary": "AWAITING_ROOT_BINDING",
+  "native_actions": [
+    "Open an untouched copy of original baseline.weftforge, revision1 allocator11. Opening must not be treated as restoring old Undo history.",
+    "Select Existing baseline, commit Width .11 m by Return: revision2. Commit Width .12 m by Return: revision3. Undo once: revision4 Width .11, with both Undo and Redo available.",
+    "Save preimport.weftforge at revision4 before entering pending Width .125. Capture exact native state, both history directions and dirty state. Enter pending .125 without Return or ordinary blur.",
+    "Open Import DXF using the toolbar and native chooser. Cancel chooser; pending draft, revision4, Undo/Redo and dirty state must persist. Reopen chooser and select original-editable-patterns.dxf.",
+    "Capture review BEFORE Import: count2, fixed millimetre scale .001m/unit, WCS X/Y origin/layout retained, literal layer-name convention, omitted names/native IDs/sewing/materials/grain/placement/drape/internal/print scope. Background authoring must be disabled.",
+    "Cancel review and reopen through command search; pending .125, revision4, dirty state and both history directions must still persist. Escape review must also preserve them. Reopen and select the same original source.",
+    "Accept Import once: revision5, 3 pieces, baseline width .125, imported source geometry, allocator29. Save imported.weftforge.",
+    "Undo once: revision6, one old rectangle width .11, allocator29; save undo_import.weftforge. Undo once again: revision7, width .1, allocator29; save undo_prior.weftforge.",
+    "Redo once: revision8 width .11; save redo_prior.weftforge. Redo once: revision9, imported pieces plus width .125 with identical IDs; save redo_import.weftforge.",
+    "Select WF_PIECE_17 second boundary cubic; change ONLY P1 U from -.01 to 0.0 m with Return: revision10. Save edited.weftforge.",
+    "Attempt native import of late-gap.dxf; no new pieces/history/revision or material change. Save rejected.weftforge without editing. Also review invalid-source rejection with a pending draft separately; retained draft may later commit on ordinary blur, so do not confuse that commit with failed import.",
+    "Export final direct SVG and DXF. Quit the native process, relaunch exact bound app, reopen edited.weftforge, resave as reopened.weftforge, and export direct final SVG/DXF. Record process identities and actual chooser/save steps. Reopened document must equal edited10 exactly.",
+    "Grade nine checkpoints and final export files with evaluate.py, then review raw native trace independently. No file-only native acceptance claim."
+  ],
+  "headless_success_attempts": [
+    {"adapter": "shared_typed_command_via_execute", "input": "original baseline", "command": {"type": "import_dxf_patterns", "data": {"dxf": "ORIGINAL_SOURCE_TEXT"}}, "expected_revision": 2, "expected_allocator": 29},
+    {"adapter": "CLI", "argv": ["import-dxf", "baseline.weftforge", "output.weftforge", "original-editable-patterns.dxf"], "expected_revision": 2, "expected_allocator": 29},
+    {"adapter": "MCP_current", "tool": "project_import_dxf", "arguments": {"input": "baseline.weftforge", "output": "output.weftforge", "dxf": "original-editable-patterns.dxf"}, "expected_revision": 2, "expected_allocator": 29}
+  ],
+  "headless_success_grading": [
+    "All original authoring exact, old width.1, exactly two new named pieces, no Y inversion/origin/arrangement change, defaults and fresh IDs/allocator29.",
+    "Summary count2, metres_per_user_unit .001, preserved WCS X/Y origin/layout convention and explicit construction-only scope. Adapter schema and strict shared-command variant agree.",
+    "Each native output plus direct SVG/DXF export is independently graded. Actual loaded output is inspected through MCP as a separate read; source bytes stay unchanged.",
+    "Run in-place import on valid baseline primary with a deliberately byte-distinct valid existing recovery. Success recovery equals exact pre-save primary bytes. No recovery expectation is inferred from suffix alone."
+  ],
+  "headless_failure_cases": [
+    {"case": "bad-units.dxf", "stage": "parse_before_save", "expected": "failure; source, existing native input/output primary and existing recovery unchanged"},
+    {"case": "late-gap.dxf", "stage": "all_piece_validation_before_save", "expected": "failure despite valid first piece; no partial piece commit and unchanged files/history"},
+    {"case": "unsupported-spline-flags.dxf", "stage": "parse_before_save", "expected": "failure; source/primary/recovery unchanged"},
+    {"case": "atomic_batch", "commands": ["valid import_dxf_patterns", "invalid late-gap import_dxf_patterns"], "expected": "whole execute fails; no output/primary/recovery replacement"},
+    {"case": "strict_deserialization", "mutations": ["extra property on import_dxf_patterns.data", "duplicate dxf JSON key", "wrong dxf value type", "extra MCP file-tool argument"], "expected": "rejection without mutations"},
+    {"case": "DXF_source_output_alias", "forms": ["same path", "symlink alias", "hardlink alias", "recovery destination symlink to source"], "expected": "refusal and source/primary retention; unchanged recovery only for this observed before-replacement guard"},
+    {"case": "save_failure_before_recovery_replacement", "forms": ["nonregular output destination", "blocked recovery replacement"], "expected": "existing primary unchanged; recovery unchanged for exercised stage; do not generalize to all save failures"}
+  ],
+  "MCP_protocol": {
+    "current_version": "2026-07-28",
+    "metadata": {"io.modelcontextprotocol/protocolVersion": "2026-07-28", "io.modelcontextprotocol/clientCapabilities": {}},
+    "read_before_calls": ["server/discover", "tools/list"],
+    "check": ["project_import_dxf required input/output/dxf fields and additionalProperties false", "project_execute shared command import_dxf_patterns with strict dxf string", "structuredContent and text result agree", "resultType complete on success", "errors are not accepted as success"]
+  },
+  "explicit_open_limits": [
+    "No source or binary supplied and no product execution yet.",
+    "No reference comparison, full DXF compatibility, full persistence/crash/final-rename failure acceptance, printing, apparel round trip or cross-platform acceptance.",
+    "Full malformed/field/handle/owner/external-reference/entity/piece/byte-bound matrix is not independently reproduced here; product implementation tests remain separate evidence.",
+    "Native actions require actual pointer/AX trace review; checkpoint files alone cannot prove them.",
+    "Publication requires tracked artifacts and clean-checkout registry/map checks by root."
+  ]
+}

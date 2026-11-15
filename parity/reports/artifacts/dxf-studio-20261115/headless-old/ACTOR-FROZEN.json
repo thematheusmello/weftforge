@@ -1,0 +1,23 @@
+{
+  "state": "FROZEN_BEFORE_DEDICATED_HEADLESS_PRODUCT_EXECUTION",
+  "frozen_utc": "2026-11-15T05:28:33.467668+00:00",
+  "source_commit": "5950c59073ff6a9c744699dd4bae52abb5794f72",
+  "binary_sha256": "eca8e3d6e404b1b823a343f378a38d48523269865b55d1b7eaa02f78118a320d",
+  "identity_sha256": "0c99924b3085839b33b1ba268fe870ec3c917704d33d2523c8815b76a1484ccc",
+  "actor_plan_sha256": "58cb8e4a8beec747d63fc07a47bd3ff528026d6c1a59da45f6be7235fb5f1ea1",
+  "runner_sha256": "80f85f72936bc0681426cd329df0b4b93c54510885153f15923e4141f09595ab",
+  "original_frozen_sha256": "d54a16252938f1e68a5a056bc3f9924182d15492d900f3db9a1bc8e3f52a02e7",
+  "files_sha256": {
+    "requests/01-discover.jsonl": "70e421e40a8b51d218cd465be0a59934ff21d5ade2d7d17454004e66e18d2317",
+    "requests/02-tools-list.jsonl": "bd1467d3c85966567a8d3b4ceec683dfc3309d4375f8576e9b290bee9802f5d8",
+    "requests/03-import.jsonl": "a95d80635321b0f9931911d0049291c0cfec612a5c544dab38d8ce2f438fdbd3",
+    "requests/04-inspect-typed-command.jsonl": "6ad3b41ac1a9265ef7db568cafecd5bdfb80d660d3ff9cea99379080076d2917",
+    "requests/05-inspect-cli-import.jsonl": "c2e44f889b88c509bdee882ec2c5d72fcede792320f07893e655fd4300376833",
+    "requests/06-inspect-mcp-import.jsonl": "7831bfbe50d141a65b3c761e19f9d20dd6ee9c9d28f47534bb3f07ce6c1b1e38",
+    "requests/07-inspect-in-place.jsonl": "f61b022a543f193916d43ae40250a7e686c134438d11429e977a5f5389ab57c4",
+    "requests/08-project_export_svg.jsonl": "598d74b0cce4b3a96b46d8507991bea009b4a57a87c7904dd8cd3f795d1be3e6",
+    "requests/09-project_export_dxf.jsonl": "375632a7368b0835a014f80d13ad7d14ae084aadc2714a1632233c3e3745c052",
+    "requests/10-extra-file-argument.jsonl": "8e1fa021d70d976303b9d8bdf37a5e13fe8a7a3aaf23c8c56c1bc616f98108f2"
+  },
+  "notes": "All mutable cases are independent writable disposable copies, including source aliases. Every original frozen input remains external and untouched."
+}

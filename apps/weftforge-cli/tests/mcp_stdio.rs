@@ -149,6 +149,10 @@ fn success(response: &Value) -> &Value {
     data
 }
 
+fn native_project_json(project: &Project) -> Value {
+    serde_json::from_slice::<Value>(&project.to_json().unwrap()).unwrap()["project"].clone()
+}
+
 fn tool_error(response: &Value) {
     assert_eq!(response["result"]["isError"], true, "{response}");
     assert!(
@@ -299,7 +303,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 7);
+    assert_eq!(tools.len(), 8);
     assert!(
         tools
             .iter()
@@ -314,11 +318,14 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
             .as_array()
             .unwrap()
             .len(),
-        23
+        24
     );
     success(&server.call("project_create", json!({"output":project_path})));
     let initial = server.call("project_inspect", json!({"path":project_path}));
-    assert_eq!(success(&initial)["project"], json!(Project::default()));
+    assert_eq!(
+        success(&initial)["project"],
+        native_project_json(&Project::default())
+    );
     let piece = initial["result"]["structuredContent"]["project"]["next_id"]
         .as_u64()
         .unwrap();
@@ -342,7 +349,10 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
     assert_eq!(Project::load(&project_path).unwrap(), expected.project);
     assert_eq!(Project::recover(&project_path).unwrap(), Project::default());
     let reopened = server.call("project_inspect", json!({"path":project_path}));
-    assert_eq!(success(&reopened)["project"], json!(expected.project));
+    assert_eq!(
+        success(&reopened)["project"],
+        native_project_json(&expected.project)
+    );
     assert_eq!(
         success(&reopened)["units"],
         json!({"length":"m","mass":"kg","time":"s"})
@@ -445,7 +455,7 @@ fn sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constrai
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 23);
+    assert_eq!(variants.len(), 24);
     for name in [
         "add_sewing_group",
         "update_sewing_group",
@@ -722,10 +732,7 @@ fn stdio_ellipse_discovery_creation_inspection_and_failure_preservation() {
     );
     assert!(saved.curves.iter().all(|c| c.controls.is_some()));
     let inspected = server.call("project_inspect", json!({"path":output}));
-    assert_eq!(
-        success(&inspected)["project"],
-        serde_json::to_value(&saved).unwrap()
-    );
+    assert_eq!(success(&inspected)["project"], native_project_json(&saved));
     success(&server.call(
         "project_execute",
         json!({"input":output,"output":output,"commands":[command]}),
@@ -901,7 +908,7 @@ fn stdio_errors_preserve_input_output_and_recovery_and_allow_retry() {
     assert_eq!(fs::read(recovery_path(&output)).unwrap(), previous_recovery);
     assert_eq!(
         success(&server.call("project_inspect", json!({"path":input})))["project"],
-        json!(editor.project)
+        native_project_json(&editor.project)
     );
     server.finish();
 }
@@ -943,12 +950,15 @@ fn stdio_validates_protocol_lifecycle_modern_metadata_and_line_bounds() {
         json!(["2026-07-28"])
     );
     let listed = server.request("tools/list", json!({"_meta":modern_metadata("2026-07-28")}));
-    assert_eq!(listed["result"]["tools"].as_array().unwrap().len(), 7);
+    assert_eq!(listed["result"]["tools"].as_array().unwrap().len(), 8);
     assert_eq!(listed["result"]["cacheScope"], "public");
     assert_eq!(listed["result"]["ttlMs"], 0);
     success(&server.request("tools/call", json!({"_meta":modern_metadata("2026-07-28"),"name":"project_create","arguments":{"output":path}})));
     let modern = server.request("tools/call", json!({"_meta":modern_metadata("2026-07-28"),"name":"project_inspect","arguments":{"path":path}}));
-    assert_eq!(success(&modern)["project"], json!(Project::default()));
+    assert_eq!(
+        success(&modern)["project"],
+        native_project_json(&Project::default())
+    );
     assert_eq!(modern["result"]["resultType"], "complete");
     assert_eq!(
         server.request("tools/list", json!({}))["error"]["code"],
@@ -1119,5 +1129,177 @@ fn svg_import_stdio_discovers_shared_command_reports_physical_scale_and_is_atomi
     success(&server.call("project_execute", json!({"input":input,"output":output,"commands":[{"type":"import_svg_patterns","data":{"svg":String::from_utf8(original.to_vec()).unwrap()}}]})));
     assert_eq!(Project::load(&output).unwrap(), saved);
     assert_eq!(fs::read(recovery_path(&output)).unwrap(), before);
+    server.finish();
+}
+
+#[test]
+fn dxf_import_stdio_discovers_shared_command_reports_physical_scale_and_is_atomic() {
+    let directory = Directory::new();
+    let input = directory.path("input.weftforge");
+    let output = directory.path("output.weftforge");
+    let dxf = directory.path("original.dxf");
+    let original = include_bytes!(
+        "../../../crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf"
+    );
+    fs::write(&dxf, original).unwrap();
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let listed = server.request("tools/list", json!({}));
+    let tools = listed["result"]["tools"].as_array().unwrap();
+    let tool = tools
+        .iter()
+        .find(|tool| tool["name"] == "project_import_dxf")
+        .unwrap();
+    assert_eq!(
+        tool["inputSchema"]["required"],
+        json!(["input", "output", "dxf"])
+    );
+    assert_eq!(tool["inputSchema"]["additionalProperties"], false);
+    let command = tools
+        .iter()
+        .find(|tool| tool["name"] == "project_execute")
+        .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|variant| variant["properties"]["type"]["const"] == "import_dxf_patterns")
+        .unwrap();
+    assert_eq!(command["properties"]["data"]["required"], json!(["dxf"]));
+    assert_eq!(command["properties"]["data"]["additionalProperties"], false);
+    assert_eq!(
+        command["properties"]["data"]["properties"]["dxf"]["maxLength"],
+        weftforge_core::MAX_DXF_BYTES
+    );
+    success(&server.call("project_create", json!({"output":input})));
+    let result = server.call(
+        "project_import_dxf",
+        json!({"input":input,"output":output,"dxf":dxf}),
+    );
+    let receipt = success(&result);
+    assert_eq!(receipt["revision"], 1);
+    assert_eq!(receipt["pieces_imported"], 2);
+    assert_eq!(receipt["metres_per_user_unit"], 0.001);
+    assert!(
+        receipt["scope"]
+            .as_str()
+            .unwrap()
+            .contains("exterior boundaries")
+    );
+    let saved = Project::load(&output).unwrap();
+    let mut expected = Editor::default();
+    expected
+        .execute(Command::ImportDxfPatterns {
+            dxf: String::from_utf8(original.to_vec()).unwrap(),
+        })
+        .unwrap();
+    assert_eq!(saved, expected.project);
+    let before = fs::read(&output).unwrap();
+    let input_before = fs::read(&input).unwrap();
+    for arguments in [
+        json!({"input":input,"output":output,"dxf":dxf,"extra":true}),
+        json!({"input":input,"output":output}),
+        json!({"input":input,"output":output,"dxf":null}),
+        json!({"input":input,"output":dxf,"dxf":dxf}),
+    ] {
+        tool_error(&server.call("project_import_dxf", arguments));
+        assert_eq!(fs::read(&output).unwrap(), before);
+        assert_eq!(fs::read(&input).unwrap(), input_before);
+        assert_eq!(fs::read(&dxf).unwrap(), original);
+    }
+    fs::write(&dxf, b"0\nSECTION").unwrap();
+    tool_error(&server.call(
+        "project_import_dxf",
+        json!({"input":input,"output":output,"dxf":dxf}),
+    ));
+    assert_eq!(fs::read(&output).unwrap(), before);
+    assert!(!recovery_path(&output).exists());
+    tool_error(&server.call("project_execute", json!({"input":input,"output":output,"commands":[{"type":"import_dxf_patterns","data":{"dxf":String::from_utf8(original.to_vec()).unwrap()}},{"type":"move_point","data":{"point":0,"position":[0,0]}}]})));
+    assert_eq!(fs::read(&output).unwrap(), before);
+    success(&server.call("project_execute", json!({"input":input,"output":output,"commands":[{"type":"import_dxf_patterns","data":{"dxf":String::from_utf8(original.to_vec()).unwrap()}}]})));
+    assert_eq!(Project::load(&output).unwrap(), saved);
+    assert_eq!(fs::read(recovery_path(&output)).unwrap(), before);
+    server.finish();
+}
+
+#[test]
+fn inspection_matches_saved_native_json_without_changing_f32_materials_or_f64_geometry() {
+    let directory = Directory::new();
+    let path = directory.path("canonical-inspection.weftforge");
+    let mut editor = Editor::default();
+    editor
+        .execute(Command::AddEllipse {
+            name: "Original decimal geometry".into(),
+            origin: [-0.12345678901234566, 0.2718281828459045],
+            width: 0.403210987654321,
+            height: 0.6543210987654321,
+        })
+        .unwrap();
+    let piece = editor.project.pieces[0].id;
+    editor
+        .execute(Command::SetPlacement {
+            piece,
+            placement: weftforge_core::Placement {
+                translation: [-0.0, 0.23456789012345678, -0.3456789012345679],
+                rotation: [
+                    0.12345678901234566,
+                    -0.23456789012345678,
+                    0.3456789012345679,
+                ],
+            },
+        })
+        .unwrap();
+    editor.project.materials[0].color = [0.22, 0.55, 0.76];
+    editor.project.materials[0].areal_density = 0.18000000000000002;
+    editor.project.save(&path).unwrap();
+    let original = fs::read(&path).unwrap();
+    let native: Value = serde_json::from_slice(&original).unwrap();
+    assert_eq!(
+        native["project"]["materials"][0]["color"],
+        json!([0.22, 0.55, 0.76])
+    );
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let response = server.call("project_inspect", json!({"path":path}));
+    // success also checks that the text and structured MCP results agree exactly.
+    let inspected = &success(&response)["project"];
+    assert_eq!(*inspected, native["project"]);
+    let typed: Project = serde_json::from_value(inspected.clone()).unwrap();
+    assert_eq!(typed, editor.project);
+    assert_eq!(typed.materials, editor.project.materials);
+    assert_eq!(
+        typed.materials[0].color.map(f32::to_bits),
+        editor.project.materials[0].color.map(f32::to_bits)
+    );
+    for (actual, expected) in typed.points.iter().zip(&editor.project.points) {
+        assert_eq!(
+            actual.position.map(f64::to_bits),
+            expected.position.map(f64::to_bits)
+        );
+    }
+    for (actual, expected) in typed.curves.iter().zip(&editor.project.curves) {
+        assert_eq!(
+            actual
+                .controls
+                .map(|controls| controls.map(|point| point.map(f64::to_bits))),
+            expected
+                .controls
+                .map(|controls| controls.map(|point| point.map(f64::to_bits)))
+        );
+    }
+    assert_eq!(
+        typed.pieces[0].placement.translation.map(f64::to_bits),
+        editor.project.pieces[0]
+            .placement
+            .translation
+            .map(f64::to_bits)
+    );
+    assert_eq!(
+        typed.pieces[0].placement.rotation.map(f64::to_bits),
+        editor.project.pieces[0]
+            .placement
+            .rotation
+            .map(f64::to_bits)
+    );
+    assert_eq!(fs::read(&path).unwrap(), original);
     server.finish();
 }

@@ -43,7 +43,41 @@ still fail the declared criteria. A separate relaxed shirt passes the explicit
 substeps/32 iterations. See physics.md, STATUS.md and attributable run reports.
 Elementary cloth tests do not prove garment fitting quality.
 
-## Closed soft stitch saved-state evidence
+## Bounded DXF studio components
+
+Source `76be95d4d7928bcb703e1f52f4a5404bc955f567` passed the original five
+gates with 187 Rust and 54 Python checks. Four headless native/SVG/DXF grades,
+14 archived rejection/retention cases, four exact MCP inspections and the nine
+native checkpoint/export checks pass within their declared scope. Independent
+trace review supports observed components with remaining gaps; it does not
+accept the full frozen native PLAN. Printing disclosure and old .12 Redo after
+Cancel remain unestablished. Temporary revision 2/.126 reached background
+autosave/recovery while the original input primaries stayed intact.
+
+From a clean tracked checkout with CPython 3.13.0 and the packet's pinned
+`ezdxf==1.4.5` consumer environment, run:
+
+```sh
+python3 -B parity/reports/artifacts/dxf-studio-20261115/verify.py --repo-root .
+python3 -B scripts/progress.py --check
+python3 -B spec/inventory/verify_implementation_map.py
+```
+
+The entrypoint checks saved files, transcript/snapshot records, unchanged frozen
+graders and current 49-source hashes. It invokes no native app, CLI, Cargo or
+physics. Its own publication-certification flag deliberately stays false;
+clean/tracked delivery is checked by the external publication wrapper. Source5950
+native and exact-inspection failures, preparation failures and source-successor/
+freeze qualifications remain visible. See the
+[scoped report](../parity/reports/WF-20261115-DXF-STUDIO-001.json) and
+[prospective two-input scenario](../parity/scenarios/FILE-DXF-STUDIO-001.json).
+No complete contract, DXF/CAD/apparel/printing, release or reference pass follows.
+
+## Historical closed soft stitch saved-state evidence
+
+The source2e report is stale on the DXF authoring/adapter source because its full
+47-file scope changed. All solver-crate bytes and original physical outcomes
+remain unchanged; no physics was rerun or regraded.
 
 Source `2e9795a3cb92c79ad3b406e675dcbdb49c60ce67` passes the original five
 integrated gates with 177 Rust and 54 Python checks. Its new original Harbor

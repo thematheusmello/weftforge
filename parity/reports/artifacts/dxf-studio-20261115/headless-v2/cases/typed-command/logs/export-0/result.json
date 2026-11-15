@@ -1,0 +1,20 @@
+{
+  "case": "typed-command",
+  "name": "export-0",
+  "command": [
+    "REPOSITORY_ROOT/.local/dxf-studio-fixed-integration-20261115/target/release/weftforge-cli",
+    "export-svg",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/typed-command/data/output.weftforge",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/typed-command/data/exported.svg"
+  ],
+  "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/typed-command/data",
+  "wrapper_pid": 10054,
+  "started_utc": "2026-11-15T05:58:15.177078+00:00",
+  "status": "completed",
+  "expected": "exit_zero",
+  "child_pid": 10101,
+  "exit_code": 0,
+  "wall_seconds": 0.020260000019334257,
+  "completed_utc": "2026-11-15T05:58:15.197522+00:00",
+  "expected_exit_matched": true
+}

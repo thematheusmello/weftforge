@@ -74,7 +74,7 @@
     "spec/features/SIM-001-closed-stitch-coordinates.md",
     "docs/physics.md"
   ],
-  "freshness": "current",
+  "freshness": "stale",
   "scope": "Exactly identified changed-source Harbor A/base and B/height one-attempt experiments, all 362 saved boundary states and original resource/diagnostic checks. Pair failed; bounded B strict pass does not complete any coarse contract or reference workflow.",
   "scenario": "parity/scenarios/SIM-CLOSED-STITCH-HARBOR-001.json",
   "results": "parity/reports/artifacts/closed-stitch-harbor-20261115/RESULTS.json",
@@ -516,5 +516,6 @@
     "source_hashes_unchanged": 47,
     "new_physical_executions": 0,
     "limits": "Original physical clocks are not recertified; the receipt append receives final metadata-only clean checks without another replay."
-  }
+  },
+  "freshness_reason": "DXF authoring and native/CLI/MCP adapter source changed after tested source2e. The full 47-file scope and runtime path inventory differ although solver-crate bytes are unchanged. Original A/pair failures, B bounded pass, clocks and all raw results remain immutable; no physical rerun or regrading."
 }

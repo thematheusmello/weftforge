@@ -1,3 +1,4 @@
+use super::ImportedPattern;
 use crate::{Command, Error, Result, ensure};
 use quick_xml::{
     Reader, XmlVersion,
@@ -20,14 +21,7 @@ pub const SVG_IMPORT_SCOPE: &str = "Imported editable exterior boundaries and na
 pub struct SvgPatternImport {
     pub metres_per_unit: f64,
     source: String,
-    pub(crate) patterns: Vec<SvgPattern>,
-}
-
-#[derive(Debug, Clone)]
-pub(crate) struct SvgPattern {
-    pub name: String,
-    pub vertices: Vec<[f64; 2]>,
-    pub controls: Vec<Option<[[f64; 2]; 2]>>,
+    pub(crate) patterns: Vec<ImportedPattern>,
 }
 
 impl SvgPatternImport {
@@ -293,7 +287,7 @@ fn root_scale(attributes: &BTreeMap<String, String>) -> Result<f64> {
     Ok(scale)
 }
 
-fn parse_path(data: &str, scale: f64) -> Result<SvgPattern> {
+fn parse_path(data: &str, scale: f64) -> Result<ImportedPattern> {
     let mut numbers = Numbers::new(data);
     ensure(
         numbers.command() == Some(b'M'),
@@ -319,7 +313,7 @@ fn parse_path(data: &str, scale: f64) -> Result<SvgPattern> {
                     controls.len() == vertices.len(),
                     "SVG path has an invalid closed boundary",
                 )?;
-                return Ok(SvgPattern {
+                return Ok(ImportedPattern {
                     name: String::new(),
                     vertices,
                     controls,

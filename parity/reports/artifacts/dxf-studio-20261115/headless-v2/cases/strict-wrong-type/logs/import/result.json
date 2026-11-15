@@ -1,0 +1,21 @@
+{
+  "case": "strict-wrong-type",
+  "name": "import",
+  "command": [
+    "REPOSITORY_ROOT/.local/dxf-studio-fixed-integration-20261115/target/release/weftforge-cli",
+    "execute",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/strict-wrong-type/data/baseline.weftforge",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/strict-wrong-type/data/output.weftforge",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/strict-wrong-type/data/commands.json"
+  ],
+  "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/strict-wrong-type/data",
+  "wrapper_pid": 10054,
+  "started_utc": "2026-11-15T05:58:16.149897+00:00",
+  "status": "completed",
+  "expected": "exit_nonzero",
+  "child_pid": 10121,
+  "exit_code": 1,
+  "wall_seconds": 0.007014333037659526,
+  "completed_utc": "2026-11-15T05:58:16.157042+00:00",
+  "expected_exit_matched": true
+}

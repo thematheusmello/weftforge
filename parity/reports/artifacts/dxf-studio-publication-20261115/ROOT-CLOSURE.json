@@ -1,0 +1,295 @@
+{
+  "schema": 1,
+  "status": "clean_tracked_initial_DXF_static_and_integrity_checks_passed",
+  "checked_head": "641ed20c633c49144ab6685a2302368930fc4e86",
+  "checked_tree": "c0aa3ba5f7222899933dabeef6f5663a65567e9d",
+  "source_commit": "76be95d4d7928bcb703e1f52f4a5404bc955f567",
+  "source_pretest_sha256": "5254f82df567f135a542533d9f7d291d9f1813a5ba03bf59ddecd57539880361",
+  "packet_manifest_sha256": "fe82650c48297554506d873fec624e3d3743e2290476293f4eef14f10ee5bcd0",
+  "static_entry_sha256": "e37d3092c501a91aca88006e06f9e35f4af3db5e17ed5a3eb2a6c4499df74f48",
+  "terminal_session_id": 2221,
+  "wrapper_pid": 2037,
+  "started_utc": "2026-11-15T08:13:22.052928+00:00",
+  "completed_utc": "2026-11-15T08:13:58.350711+00:00",
+  "commands": [
+    {
+      "name": "static-replay",
+      "command": [
+        "python3",
+        "-B",
+        "parity/reports/artifacts/dxf-studio-20261115/verify.py",
+        "--repo-root",
+        "."
+      ],
+      "cwd_role": "Clean tracked DXF worktree",
+      "timeout_seconds": 300,
+      "started_utc": "2026-11-15T08:13:22.105418+00:00",
+      "status": "completed",
+      "pid": 2355,
+      "exit_code": 0,
+      "completed_utc": "2026-11-15T08:13:23.213504+00:00",
+      "elapsed_seconds": 1.1034242500318214,
+      "stdout_sha256": "eeb76d06c2f31ea763926179e1bda70f27e320bc33b5366f92c0c2bf1a162d79",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "registry",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/progress.py",
+        "--check"
+      ],
+      "cwd_role": "Clean tracked DXF worktree",
+      "timeout_seconds": 180,
+      "started_utc": "2026-11-15T08:13:23.292988+00:00",
+      "status": "completed",
+      "pid": 2363,
+      "exit_code": 0,
+      "completed_utc": "2026-11-15T08:13:49.801341+00:00",
+      "elapsed_seconds": 26.50781837501563,
+      "stdout_sha256": "1f9b2cd3d90cae23eba2b811c4d4cfdbb1816721598ce827cc85456e609fffcb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "implementation-map",
+      "command": [
+        "python3",
+        "-B",
+        "spec/inventory/verify_implementation_map.py"
+      ],
+      "cwd_role": "Clean tracked DXF worktree",
+      "timeout_seconds": 180,
+      "started_utc": "2026-11-15T08:13:49.908612+00:00",
+      "status": "completed",
+      "pid": 4077,
+      "exit_code": 0,
+      "completed_utc": "2026-11-15T08:13:56.187222+00:00",
+      "elapsed_seconds": 6.27793554100208,
+      "stdout_sha256": "448808e48f5213aed0f1e43b747f17300652989fec03131b2fb9891e770971ca",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "python_environment_role": "Existing ezdxf1.4.5 environment for static replay; host Python for registry/map",
+  "saved_static_result": {
+    "status": "BOUNDED_STATIC_REPRODUCTION_PASSED",
+    "source_commit": "76be95d4d7928bcb703e1f52f4a5404bc955f567",
+    "source49_hashes_match": true,
+    "frozen_evaluator_and_support_function_code_bodies_defaults_globals_unchanged": true,
+    "directory_or_default_rebindings": [],
+    "new_headless_independent_grades": 4,
+    "new_headless_exact_full_MCP_inspections": 4,
+    "new_headless_archived_rejection_retention_cases": 14,
+    "new_actual_wire_request_response_pairs": {
+      "mcp-discovery": 2,
+      "mcp-session": 10
+    },
+    "native_nine_checkpoint_history": "passed",
+    "native_direct_and_final_export_pairs": "passed",
+    "old_exact_MCP_mismatches_preserved": {
+      "typed-command": [
+        {
+          "path": "/materials/0/color/0",
+          "kind": "value",
+          "actual": 0.2199999988079071,
+          "expected": 0.22
+        },
+        {
+          "path": "/materials/0/color/1",
+          "kind": "value",
+          "actual": 0.550000011920929,
+          "expected": 0.55
+        },
+        {
+          "path": "/materials/0/color/2",
+          "kind": "value",
+          "actual": 0.7599999904632568,
+          "expected": 0.76
+        }
+      ],
+      "cli-import": [
+        {
+          "path": "/materials/0/color/0",
+          "kind": "value",
+          "actual": 0.2199999988079071,
+          "expected": 0.22
+        },
+        {
+          "path": "/materials/0/color/1",
+          "kind": "value",
+          "actual": 0.550000011920929,
+          "expected": 0.55
+        },
+        {
+          "path": "/materials/0/color/2",
+          "kind": "value",
+          "actual": 0.7599999904632568,
+          "expected": 0.76
+        }
+      ],
+      "mcp-import": [
+        {
+          "path": "/materials/0/color/0",
+          "kind": "value",
+          "actual": 0.2199999988079071,
+          "expected": 0.22
+        },
+        {
+          "path": "/materials/0/color/1",
+          "kind": "value",
+          "actual": 0.550000011920929,
+          "expected": 0.55
+        },
+        {
+          "path": "/materials/0/color/2",
+          "kind": "value",
+          "actual": 0.7599999904632568,
+          "expected": 0.76
+        }
+      ],
+      "in-place": [
+        {
+          "path": "/materials/0/color/0",
+          "kind": "value",
+          "actual": 0.2199999988079071,
+          "expected": 0.22
+        },
+        {
+          "path": "/materials/0/color/1",
+          "kind": "value",
+          "actual": 0.550000011920929,
+          "expected": 0.55
+        },
+        {
+          "path": "/materials/0/color/2",
+          "kind": "value",
+          "actual": 0.7599999904632568,
+          "expected": 0.76
+        }
+      ]
+    },
+    "old_native_Return_expected2_observed3_preserved": true,
+    "old_case_grades_or_failures_reinterpreted": false,
+    "native_full_frozen_PLAN_or_contract_pass": false,
+    "remaining_native_qualifications": [
+      {
+        "id": "literal_print_disclosure",
+        "result": "NOT_ESTABLISHED",
+        "detail": "Review modal discloses substantial construction omissions but does not explicitly mention printing/print layout; no literal full-disclosure-compliance claim."
+      },
+      {
+        "id": "old_dot12_redo_after_cancel",
+        "result": "RUNTIME_NOT_ESTABLISHED_NO_OBSERVED_FAILURE",
+        "detail": "Old .12 Redo branch created by prelude is not invoked after Cancel before new Import clears it. Undo/Redo buttons also appear enabled with fresh empty history, so availability is insufficient proof. Later prior Undo and corresponding Redo are actually exercised."
+      },
+      {
+        "id": "phaseB_temporary_persistence",
+        "result": "PRIMARY_RETAINED_WITH_ACTUAL_BACKGROUND_SIDECAR_PERSISTENCE",
+        "detail": "No explicit original-primary Save/replacement; three input primary hashes unchanged. Baseline .autosave and .autosave.recovery contain temporary revision2/.126; do not claim no temporary persistence or unchanged sidecars."
+      }
+    ],
+    "sidecar_TEMP2_persistence_exact": true,
+    "native_action_pair_metadata": {
+      "old": 13,
+      "successor": 160
+    },
+    "inventory_return_content_reduced": {
+      "old": 1,
+      "successor": 5
+    },
+    "raw_inventory_or_process_arrays_distributed": false,
+    "archival_own_lifecycle_pids": {
+      "PROCESS-INITIAL.json": [
+        7590
+      ],
+      "PROCESS-ABSENT.json": [],
+      "PROCESS-FRESH.json": [
+        14754
+      ],
+      "PROCESS-TEMP-DISCARDED.json": [],
+      "PROCESS-FINAL.json": [
+        21561
+      ]
+    },
+    "terminal_tool_handles": {
+      "old": {
+        "session_id": 77420,
+        "exit_code": 0,
+        "state": "completed"
+      },
+      "successor": {
+        "session_id": 86138,
+        "exit_code": 0,
+        "state": "completed"
+      }
+    },
+    "frozen_synthetic_rejection_checks": 13,
+    "adapter_negative_checks": [
+      "exact color JSON mutation rejected",
+      "text/structured mutation rejected",
+      "parent traversal rejected"
+    ],
+    "ezdxf_version": "1.4.5",
+    "ordinary_consumer_audit_errors_and_fixes": 0,
+    "current_hero": "Harbor REST arrangement only; not new drape or quality acceptance",
+    "new_ui_product_physics_Cargo_network_runs": 0,
+    "new_saved_file_rejections_or_alias_guards_executed": 0,
+    "tracked_clean_publication_certified": false,
+    "reference_parity": "0/56",
+    "limits": "Only bound saved files and archived transcripts/snapshots are reproduced. No UI/product replay, full persistence/printing/DXF coverage, old.12 Redo-after-Cancel proof, all-plan/error-free native acceptance, original timing or reference parity."
+  },
+  "external_clean_tracking_audit": {
+    "checked_head": "641ed20c633c49144ab6685a2302368930fc4e86",
+    "checked_tree": "c0aa3ba5f7222899933dabeef6f5663a65567e9d",
+    "reports": 30,
+    "unique_artifacts_tracked_and_hash_correct": 4018,
+    "new_report_artifacts": 961,
+    "packet_members_tracked": 956,
+    "runtime_source_files_unchanged": 49,
+    "runtime_and_contract_files_unchanged": 50,
+    "prior_reports_preserved_except_source2e_freshness": 29,
+    "clean": true
+  },
+  "entrypoint_certification_flag_scope": "The unchanged entrypoint deliberately prints tracked_clean_publication_certified:false. The external wrapper separately proved clean HEAD, all956 packet members and all4018 report artifacts tracked/hash-correct; the entrypoint flag is not rewritten.",
+  "full_native_plan_accepted": false,
+  "native_plan_gaps": [
+    {
+      "id": "literal_print_disclosure",
+      "result": "NOT_ESTABLISHED",
+      "detail": "Review modal discloses substantial construction omissions but does not explicitly mention printing/print layout; no literal full-disclosure-compliance claim."
+    },
+    {
+      "id": "old_dot12_redo_after_cancel",
+      "result": "RUNTIME_NOT_ESTABLISHED_NO_OBSERVED_FAILURE",
+      "detail": "Old .12 Redo branch created by prelude is not invoked after Cancel before new Import clears it. Undo/Redo buttons also appear enabled with fresh empty history, so availability is insufficient proof. Later prior Undo and corresponding Redo are actually exercised."
+    },
+    {
+      "id": "phaseB_temporary_persistence",
+      "result": "PRIMARY_RETAINED_WITH_ACTUAL_BACKGROUND_SIDECAR_PERSISTENCE",
+      "detail": "No explicit original-primary Save/replacement; three input primary hashes unchanged. Baseline .autosave and .autosave.recovery contain temporary revision2/.126; do not claim no temporary persistence or unchanged sidecars."
+    }
+  ],
+  "source_successor_and_original_freeze_scope_qualification_retained": true,
+  "old5950_native_and_four_MCP_failures_retained": true,
+  "original_two_path_HANDOFF_preserved": true,
+  "staging_ignore_scope_correction": {
+    "original_native_sidecar_paths": 2,
+    "additional_declared_headless_fixture_paths": 14,
+    "only_exact_paths_force_added": 16,
+    "audit": "additional-ignored-fixtures.json",
+    "root_authorization": "ROOT-SUPPLEMENTAL-FORCE-ADD.json",
+    "packet_or_ignore_rules_changed": false
+  },
+  "delivery_corrections": "integration-attempts.json preserves frozen-evidence whitespace, premature cherry-pick refusal, ignore-scope guard and helper parse correction; no source/product/grader data changed.",
+  "root_confirmed_public_original_source_refs": {
+    "evidence/dxf-import-contract": "e4236d1da4a34874e75f08cac7e5e4d1a23cf779",
+    "evidence/dxf-numeric-return": "2e403483c534ec167b9007bdf96b03e52c0a6c4d",
+    "evidence/dxf-mcp-json": "d400bd78a8475ba9dc972be4dc6793c3ab3dbcec"
+  },
+  "source_object_publication_scope": "Root reports zero private-prefix/key hits in added source paths/lines and successful push session28206. Reviewer has not repeated remote queries.",
+  "new_product_Cargo_UI_physics_or_network_runs_by_static_checker": 0,
+  "full_contract_or_reference_promotion": false,
+  "receipt_append_requires_only_final_clean_registry_map_hash_source_checks": true,
+  "no_second_default_replay_for_receipt_metadata": true,
+  "limits": "Passed saved-file/transcript components and static integrity only. Full native PLAN, printing, old Redo-after-Cancel runtime, zero temporary persistence, whole DXF/persistence/garment/release and reference parity are unestablished. Original cases and clocks are not regraded."
+}

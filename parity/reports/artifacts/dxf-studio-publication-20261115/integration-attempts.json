@@ -1,0 +1,37 @@
+[
+  {
+    "phase": "main metadata merge whitespace check",
+    "command": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "exit_code": 2,
+    "reason": "Six incoming frozen evidence files retain original trailing blank lines. Immutable evidence bytes are preserved; editable-metadata whitespace check is scoped separately.",
+    "product_or_source_change": false
+  },
+  {
+    "phase": "cherry-pick before merge commit",
+    "command": [
+      "git",
+      "cherry-pick",
+      "24f431713f1c570831628ae1da90d181be359a27"
+    ],
+    "exit_code": 128,
+    "reason": "Refused safely because prior Python check stopped before the merge commit; no overwrite or source change.",
+    "product_or_source_change": false
+  },
+  {
+    "phase": "closed-packet ignore-scope guard",
+    "exit_code": 1,
+    "reason": "The two-path HANDOFF omitted 14 Git-ignored headless recovery/sentinel fixtures. Guard stopped before staging/replay. Finite hash/type/privacy review and explicit root supplemental authorization now cover the exact14 additional paths.",
+    "packet_source_or_criteria_changed": false
+  },
+  {
+    "phase": "metadata helper parsing",
+    "exit_code": 1,
+    "reason": "Unmatched closing bracket prevented the refresh helper from executing; corrected before any static replay or commit. No source, packet or grader change.",
+    "side_effects_before_failure": false
+  }
+]

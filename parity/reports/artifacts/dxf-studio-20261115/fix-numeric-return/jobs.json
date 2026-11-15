@@ -1,0 +1,61 @@
+{
+  "base": "5950c59073ff6a9c744699dd4bae52abb5794f72",
+  "branch": "work/numeric-single-return-20261115",
+  "cause": "Egui DragValue replays the retained committed String on the following lost-focus frame. After resizing the original baseline, f64 width 0.61-0.5 is 0.10999999999999999; replaying 0.11 into a new InspectorDraft emits a second ResizePiece and revision.",
+  "production_change": "After successful normal inspector commit, remove only the previously focused numeric String cache. Do not surrender the new Tab focus or clear pending/modal/failed-action state.",
+  "red_test_patch_sha256": "8973c70cb7b1976bf9719b1c25ed6fecd36be1b85c17ca6f09326f2d4896fc1c",
+  "unchanged_red_test_sha256": "7a563b99080b63533d4e513ba4f1e80d931ee14795b9aa2abef8b51bb8e07e39",
+  "jobs": [
+    {
+      "session": 84255,
+      "exit": 101,
+      "log": "RED-original-baseline-return.log",
+      "result": "Exact original-coordinate single Return reproduces revision3 vs expected2."
+    },
+    {
+      "session": 61041,
+      "exit": 101,
+      "log": "RED-command-bounds-diagnostic.log",
+      "result": "Two identical ResizePiece commands before revisions1 and2; diagnostics later removed."
+    },
+    {
+      "session": 92205,
+      "exit": 0,
+      "log": "GREEN-original-baseline-return.log",
+      "result": "Unchanged .11/.12 keyboard/pointer/idle/one-Undo-Redo regression passes."
+    },
+    {
+      "session": 73849,
+      "exit": 0,
+      "log": "all-native-tests.log",
+      "passed": 41
+    },
+    {
+      "session": null,
+      "exit": 0,
+      "log": "fmt-check.log",
+      "result": "cargo fmt --all --check"
+    },
+    {
+      "session": 15202,
+      "exit": 0,
+      "log": "strict-native-clippy.log",
+      "result": "cargo clippy -p weftforge --all-targets -- -D warnings"
+    }
+  ],
+  "scope": [
+    "apps/weftforge/src/main.rs"
+  ],
+  "deferred": [
+    "root integrated workspace gates",
+    "future changed-source native acceptance"
+  ],
+  "untouched": [
+    "5950 frozen native case FAIL",
+    "raw actor evidence",
+    "frozen checker",
+    "paused native app",
+    "core/physics",
+    "registry/STATUS"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "status": "INDEPENDENT_STATIC_CHECKS_PASSED",
+  "frozen_utc": "2026-11-15T05:04:57.852245+00:00",
+  "artifact_sha256": {
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/typed-command/data/exported.svg": "ccbb3922a6276ac33a609c01df09b32205ae15490d15ef954d3b32afa74dfd75",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/typed-command/data/exported.dxf": "d380a119ff08679380819e84decad42d327c1054058ed7487d34b9d25ef952e0",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/typed-command/data/output.weftforge": "c87692b5ade6cf99a3bb8debf1b5c33710fdbc62f799a855317819ee3ab6a19b"
+  },
+  "exports": {
+    "svg_scale": {
+      "metres_per_user_unit": 0.001,
+      "view_box": [
+        -250.0,
+        -1000.0,
+        1250.0,
+        1100.0
+      ],
+      "origin_policy": "user-space origin retained; no viewBox-min subtraction"
+    },
+    "dxf_consumer": {
+      "consumer": "ezdxf",
+      "version": "1.4.5",
+      "ordinary_readfile": true,
+      "audit_errors": 0,
+      "audit_fixes": 0,
+      "input_sha256": "d380a119ff08679380819e84decad42d327c1054058ed7487d34b9d25ef952e0"
+    }
+  },
+  "native_actions": "REQUIRE_SEPARATE_RAW_TRACE_REVIEW",
+  "reference_parity": "NOT_ESTABLISHED",
+  "full_DXF_profile": "PARTIAL",
+  "all_save_failure_recovery_retention": "NOT_CLAIMED"
+}

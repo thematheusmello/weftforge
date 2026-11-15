@@ -1,0 +1,16 @@
+{
+  "case": "strict-duplicate-dxf",
+  "name": "import",
+  "command": [
+    "REPOSITORY_ROOT/.local/dxf-studio-fixed-integration-20261115/target/release/weftforge-cli",
+    "execute",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/strict-duplicate-dxf/data/baseline.weftforge",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/strict-duplicate-dxf/data/output.weftforge",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/strict-duplicate-dxf/data/commands.json"
+  ],
+  "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/strict-duplicate-dxf/data",
+  "wrapper_pid": 10054,
+  "started_utc": "2026-11-15T05:58:16.138430+00:00",
+  "status": "running",
+  "expected": "exit_nonzero"
+}

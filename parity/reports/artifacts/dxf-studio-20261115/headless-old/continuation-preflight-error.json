@@ -1,0 +1,11 @@
+{
+  "utc": "2026-11-15T05:31:31.425026+00:00",
+  "script": "continue_remaining.py",
+  "script_sha256": "238b32c8b22dae274b09af48d0fec867df909195461dfe31c25c32c872f90a47",
+  "exit_code": 1,
+  "stage": "continuation binding before product launch",
+  "error": "FileNotFoundError: requests/06-inspect-in-place.jsonl did not exist; original frozen request 06 is inspect-mcp-import and 07 is inspect-in-place",
+  "product_process_spawned": false,
+  "empty_directory_retained": "mcp-remaining",
+  "correction": "New separately frozen continue_remaining_v2.py selects original exact request filenames and corresponding case labels; original script and actor bindings retained unchanged."
+}

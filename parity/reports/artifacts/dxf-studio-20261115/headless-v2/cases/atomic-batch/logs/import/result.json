@@ -1,0 +1,21 @@
+{
+  "case": "atomic-batch",
+  "name": "import",
+  "command": [
+    "REPOSITORY_ROOT/.local/dxf-studio-fixed-integration-20261115/target/release/weftforge-cli",
+    "execute",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/atomic-batch/data/baseline.weftforge",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/atomic-batch/data/output.weftforge",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/atomic-batch/data/commands.json"
+  ],
+  "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/atomic-batch/data",
+  "wrapper_pid": 10054,
+  "started_utc": "2026-11-15T05:58:16.115249+00:00",
+  "status": "completed",
+  "expected": "exit_nonzero",
+  "child_pid": 10118,
+  "exit_code": 1,
+  "wall_seconds": 0.005830083042383194,
+  "completed_utc": "2026-11-15T05:58:16.121175+00:00",
+  "expected_exit_matched": true
+}

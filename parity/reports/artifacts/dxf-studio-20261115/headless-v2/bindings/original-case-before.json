@@ -1,0 +1,4526 @@
+{
+  "snapshot_utc": "2026-11-15T05:57:26.164324+00:00",
+  "original_case": ".local/dxf-headless-acceptance-20261115",
+  "closed_sha256": "2271c4e610fd0e94c843ac4ae16d66d2bd751d015bee4d6f8dcbd015bab9070e",
+  "inventory_sha256": "f67118d152a00ff1d3d1ad793bf370419ba114044e4feb0b65014419423c103c",
+  "artifacts": {
+    "ACTOR-FROZEN.json": {
+      "kind": "file",
+      "size": 1911,
+      "sha256": "19514295c107341c157f0c28f2f7e24d0bcccb08eaaf22355fbb3a1a3624bea5",
+      "mode": 420,
+      "inode": 721350085,
+      "nlink": 1
+    },
+    "CLOSED.json": {
+      "kind": "file",
+      "size": 560,
+      "sha256": "2271c4e610fd0e94c843ac4ae16d66d2bd751d015bee4d6f8dcbd015bab9070e",
+      "mode": 292,
+      "inode": 721357310,
+      "nlink": 1
+    },
+    "RESULTS.json": {
+      "kind": "file",
+      "size": 20123,
+      "sha256": "9be913375c7e1348bb02f67dbff01fe0a157ec0addc7b7fa0468715942f16439",
+      "mode": 420,
+      "inode": 721357307,
+      "nlink": 1
+    },
+    "RESULTS.txt": {
+      "kind": "file",
+      "size": 2389,
+      "sha256": "7e9cf6815639cc9b464dffd5a076ed6151e7bd77f3f470d2ae0eee30079356a2",
+      "mode": 420,
+      "inode": 721357308,
+      "nlink": 1
+    },
+    "actor-plan.json": {
+      "kind": "file",
+      "size": 48533,
+      "sha256": "58cb8e4a8beec747d63fc07a47bd3ff528026d6c1a59da45f6be7235fb5f1ea1",
+      "mode": 420,
+      "inode": 721350084,
+      "nlink": 1
+    },
+    "bindings/EXPECTED.json": {
+      "kind": "file",
+      "size": 1537,
+      "sha256": "f21f8aab41c760c82b1b9ae8019ba3ca5a9cfaa04e219e7751247b32e50a1e60",
+      "mode": 420,
+      "inode": 721346430,
+      "nlink": 1
+    },
+    "bindings/FROZEN.json": {
+      "kind": "file",
+      "size": 1825,
+      "sha256": "d54a16252938f1e68a5a056bc3f9924182d15492d900f3db9a1bc8e3f52a02e7",
+      "mode": 420,
+      "inode": 721346431,
+      "nlink": 1
+    },
+    "bindings/METHOD.md": {
+      "kind": "file",
+      "size": 7658,
+      "sha256": "9a2ab91804f9ac86d69d8c5a4d022eed73227c5b6a7c49d7d53f4947a707746c",
+      "mode": 420,
+      "inode": 721346429,
+      "nlink": 1
+    },
+    "bindings/PLAN.json": {
+      "kind": "file",
+      "size": 6883,
+      "sha256": "764d16777c193817983e340e2efb8784a9f5bb5520d23fbc11be791807de89b9",
+      "mode": 420,
+      "inode": 721346428,
+      "nlink": 1
+    },
+    "bindings/ROOT-FREEZE-SCOPE-QUALIFICATION.json": {
+      "kind": "file",
+      "size": 810,
+      "sha256": "396828d9f3540d0332956485109977dfd64c480a6740f4a2c08e593ad39b103b",
+      "mode": 420,
+      "inode": 721346432,
+      "nlink": 1
+    },
+    "bindings/automation.md": {
+      "kind": "file",
+      "size": 17016,
+      "sha256": "447f2bd93b665eb3e76f1f297b057f568b4b741f05c4d18bed27f435403159f8",
+      "mode": 420,
+      "inode": 721346437,
+      "nlink": 1
+    },
+    "bindings/file-formats.md": {
+      "kind": "file",
+      "size": 17457,
+      "sha256": "bd45549308118bf058c57843a34c27e4567eb1d8f9e95387e5dd62ae87453d70",
+      "mode": 420,
+      "inode": 721346438,
+      "nlink": 1
+    },
+    "bindings/jobs.json": {
+      "kind": "file",
+      "size": 2152,
+      "sha256": "879bb0ed21321f11c2f00e667db832511477f8d707c76e6ae193ec1bab85cb91",
+      "mode": 420,
+      "inode": 721346436,
+      "nlink": 1
+    },
+    "bindings/package-binding.json": {
+      "kind": "file",
+      "size": 536,
+      "sha256": "ebcce3738bc8ddebb458aa79e301ce11fa92622ff3799fc4fd79e3251c168631",
+      "mode": 420,
+      "inode": 721346435,
+      "nlink": 1
+    },
+    "bindings/source-pretest.json": {
+      "kind": "file",
+      "size": 6131,
+      "sha256": "89f88b1a2a82edc1c0ae2b38410d15d610fd731a16bad396504f6f4e8e65e36b",
+      "mode": 420,
+      "inode": 721346434,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/checks.json": {
+      "kind": "file",
+      "size": 74,
+      "sha256": "5f8ca76b8740ffb2cbf2613326979fb257e344262645d6ce121cb7622fc8719b",
+      "mode": 420,
+      "inode": 721351194,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350042,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/data/output.weftforge": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350043,
+      "nlink": 2
+    },
+    "cases/alias-hardlink/data/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721350045,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350043,
+      "nlink": 2
+    },
+    "cases/alias-hardlink/logs/import/command.json": {
+      "kind": "file",
+      "size": 959,
+      "sha256": "75ba090e903b3ec871036d56b3a4b724940fdd3a9447b8a0194bcb0895cf8e39",
+      "mode": 420,
+      "inode": 721351182,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/logs/import/result.json": {
+      "kind": "file",
+      "size": 1129,
+      "sha256": "52163098b8ddac867ca57455d9cde436aa74bafcd3420141ca13d7c2533a9359",
+      "mode": 420,
+      "inode": 721351186,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 153,
+      "sha256": "d4d14cc95591a2420160b5e106714e6c8b0ddb5a95859738f6e1290062c27726",
+      "mode": 420,
+      "inode": 721351184,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721351183,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351189,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/snapshot-after-import/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351190,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/snapshot-after-import/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351191,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351192,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 926,
+      "sha256": "1fbca8aa4a2637ebbdfe44a9e754b7ca476306306e67f4b6f1e0682665c4258c",
+      "mode": 420,
+      "inode": 721351193,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351176,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/snapshot-before/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351177,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/snapshot-before/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351178,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351179,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 926,
+      "sha256": "1fbca8aa4a2637ebbdfe44a9e754b7ca476306306e67f4b6f1e0682665c4258c",
+      "mode": 420,
+      "inode": 721351180,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357278,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/snapshot-final/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357279,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/snapshot-final/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721357280,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357281,
+      "nlink": 1
+    },
+    "cases/alias-hardlink/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 926,
+      "sha256": "1fbca8aa4a2637ebbdfe44a9e754b7ca476306306e67f4b6f1e0682665c4258c",
+      "mode": 420,
+      "inode": 721357282,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/checks.json": {
+      "kind": "file",
+      "size": 74,
+      "sha256": "5f8ca76b8740ffb2cbf2613326979fb257e344262645d6ce121cb7622fc8719b",
+      "mode": 420,
+      "inode": 721351212,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350051,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/data/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350053,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/data/output.weftforge.recovery": {
+      "kind": "symlink",
+      "target": "patterns.dxf",
+      "mode": 493,
+      "inode": 721350055,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350052,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/logs/import/command.json": {
+      "kind": "file",
+      "size": 999,
+      "sha256": "1fa42f2f0a0495eee0bd693f00318ca88497bed8e95087d9fa186c5434aea66a",
+      "mode": 420,
+      "inode": 721351202,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/logs/import/result.json": {
+      "kind": "file",
+      "size": 1169,
+      "sha256": "312d11e65cb66cf2ab465795433d0cfd1f9151c02bd955ec14b1002b2d328930",
+      "mode": 420,
+      "inode": 721351205,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 86,
+      "sha256": "e3b8ded808cb27f5655e96f92394e8bdd5d6660806a72b7cbee5fb903bf16a5f",
+      "mode": 420,
+      "inode": 721351204,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721351203,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351208,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/snapshot-after-import/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351209,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351210,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 859,
+      "sha256": "2b518c9404295062f25db8d80cc057c761283de59d74af64be8e23a0568ba8a5",
+      "mode": 420,
+      "inode": 721351211,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351197,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/snapshot-before/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351198,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351199,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 859,
+      "sha256": "2b518c9404295062f25db8d80cc057c761283de59d74af64be8e23a0568ba8a5",
+      "mode": 420,
+      "inode": 721351200,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357285,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/snapshot-final/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357286,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357287,
+      "nlink": 1
+    },
+    "cases/alias-recovery-symlink/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 859,
+      "sha256": "2b518c9404295062f25db8d80cc057c761283de59d74af64be8e23a0568ba8a5",
+      "mode": 420,
+      "inode": 721357288,
+      "nlink": 1
+    },
+    "cases/alias-same-path/checks.json": {
+      "kind": "file",
+      "size": 74,
+      "sha256": "5f8ca76b8740ffb2cbf2613326979fb257e344262645d6ce121cb7622fc8719b",
+      "mode": 420,
+      "inode": 721351155,
+      "nlink": 1
+    },
+    "cases/alias-same-path/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350026,
+      "nlink": 1
+    },
+    "cases/alias-same-path/data/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350028,
+      "nlink": 1
+    },
+    "cases/alias-same-path/data/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721350029,
+      "nlink": 1
+    },
+    "cases/alias-same-path/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350027,
+      "nlink": 1
+    },
+    "cases/alias-same-path/data/patterns.dxf.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721350030,
+      "nlink": 1
+    },
+    "cases/alias-same-path/logs/import/command.json": {
+      "kind": "file",
+      "size": 960,
+      "sha256": "50376f22be6ac85aecedf442821d30d15a260a837acab1aea39c347fe670f57d",
+      "mode": 420,
+      "inode": 721351143,
+      "nlink": 1
+    },
+    "cases/alias-same-path/logs/import/result.json": {
+      "kind": "file",
+      "size": 1130,
+      "sha256": "7dd9320c62bd3cc4497eba519380f70322acd1b4d430cbcf93a461708d2d2b9b",
+      "mode": 420,
+      "inode": 721351146,
+      "nlink": 1
+    },
+    "cases/alias-same-path/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 86,
+      "sha256": "e3b8ded808cb27f5655e96f92394e8bdd5d6660806a72b7cbee5fb903bf16a5f",
+      "mode": 420,
+      "inode": 721351145,
+      "nlink": 1
+    },
+    "cases/alias-same-path/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721351144,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351149,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-after-import/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351150,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-after-import/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351151,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351152,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-after-import/bytes/patterns.dxf.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351153,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 1160,
+      "sha256": "361ec68e6aa3522f49ff261c455243bc5ec483da1dadf4540980451207c3d686",
+      "mode": 420,
+      "inode": 721351154,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351136,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-before/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351137,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-before/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351138,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351139,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-before/bytes/patterns.dxf.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351140,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 1160,
+      "sha256": "361ec68e6aa3522f49ff261c455243bc5ec483da1dadf4540980451207c3d686",
+      "mode": 420,
+      "inode": 721351141,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357264,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-final/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357265,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-final/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721357266,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357267,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-final/bytes/patterns.dxf.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721357268,
+      "nlink": 1
+    },
+    "cases/alias-same-path/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 1160,
+      "sha256": "361ec68e6aa3522f49ff261c455243bc5ec483da1dadf4540980451207c3d686",
+      "mode": 420,
+      "inode": 721357269,
+      "nlink": 1
+    },
+    "cases/alias-symlink/checks.json": {
+      "kind": "file",
+      "size": 74,
+      "sha256": "5f8ca76b8740ffb2cbf2613326979fb257e344262645d6ce121cb7622fc8719b",
+      "mode": 420,
+      "inode": 721351173,
+      "nlink": 1
+    },
+    "cases/alias-symlink/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350034,
+      "nlink": 1
+    },
+    "cases/alias-symlink/data/output.weftforge": {
+      "kind": "symlink",
+      "target": "patterns.dxf",
+      "mode": 493,
+      "inode": 721350038,
+      "nlink": 1
+    },
+    "cases/alias-symlink/data/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721350037,
+      "nlink": 1
+    },
+    "cases/alias-symlink/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350035,
+      "nlink": 1
+    },
+    "cases/alias-symlink/logs/import/command.json": {
+      "kind": "file",
+      "size": 954,
+      "sha256": "e4d501066a254149fac8cf9cde79d51fa8c0c194d5274eac2206d5671d03f775",
+      "mode": 420,
+      "inode": 721351163,
+      "nlink": 1
+    },
+    "cases/alias-symlink/logs/import/result.json": {
+      "kind": "file",
+      "size": 1124,
+      "sha256": "eac08e58d2a0a893f92a72e581a282d7b8de8c81e190d570d7bdb7c7aa9b13ac",
+      "mode": 420,
+      "inode": 721351166,
+      "nlink": 1
+    },
+    "cases/alias-symlink/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 86,
+      "sha256": "e3b8ded808cb27f5655e96f92394e8bdd5d6660806a72b7cbee5fb903bf16a5f",
+      "mode": 420,
+      "inode": 721351165,
+      "nlink": 1
+    },
+    "cases/alias-symlink/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721351164,
+      "nlink": 1
+    },
+    "cases/alias-symlink/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351169,
+      "nlink": 1
+    },
+    "cases/alias-symlink/snapshot-after-import/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351170,
+      "nlink": 1
+    },
+    "cases/alias-symlink/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351171,
+      "nlink": 1
+    },
+    "cases/alias-symlink/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 859,
+      "sha256": "23d7976788155604447d7238250aa5692d66a568a783b360c44601c4b1008f79",
+      "mode": 420,
+      "inode": 721351172,
+      "nlink": 1
+    },
+    "cases/alias-symlink/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351158,
+      "nlink": 1
+    },
+    "cases/alias-symlink/snapshot-before/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351159,
+      "nlink": 1
+    },
+    "cases/alias-symlink/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351160,
+      "nlink": 1
+    },
+    "cases/alias-symlink/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 859,
+      "sha256": "23d7976788155604447d7238250aa5692d66a568a783b360c44601c4b1008f79",
+      "mode": 420,
+      "inode": 721351161,
+      "nlink": 1
+    },
+    "cases/alias-symlink/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357272,
+      "nlink": 1
+    },
+    "cases/alias-symlink/snapshot-final/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721357273,
+      "nlink": 1
+    },
+    "cases/alias-symlink/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357274,
+      "nlink": 1
+    },
+    "cases/alias-symlink/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 859,
+      "sha256": "23d7976788155604447d7238250aa5692d66a568a783b360c44601c4b1008f79",
+      "mode": 420,
+      "inode": 721357275,
+      "nlink": 1
+    },
+    "cases/atomic-batch/checks.json": {
+      "kind": "file",
+      "size": 74,
+      "sha256": "5f8ca76b8740ffb2cbf2613326979fb257e344262645d6ce121cb7622fc8719b",
+      "mode": 420,
+      "inode": 721351067,
+      "nlink": 1
+    },
+    "cases/atomic-batch/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721349987,
+      "nlink": 1
+    },
+    "cases/atomic-batch/data/commands.json": {
+      "kind": "file",
+      "size": 10665,
+      "sha256": "6cdcdf283eabffab09edd82455bbe99ca3fe564831e287790f7cd7d61f046ca6",
+      "mode": 420,
+      "inode": 721349991,
+      "nlink": 1
+    },
+    "cases/atomic-batch/data/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721349989,
+      "nlink": 1
+    },
+    "cases/atomic-batch/data/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721349990,
+      "nlink": 1
+    },
+    "cases/atomic-batch/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721349988,
+      "nlink": 1
+    },
+    "cases/atomic-batch/logs/import/command.json": {
+      "kind": "file",
+      "size": 947,
+      "sha256": "bb513d292016e9f3382309cc9d3ee7842576a38a377f0c0ba660c5eb74bf1001",
+      "mode": 420,
+      "inode": 721351055,
+      "nlink": 1
+    },
+    "cases/atomic-batch/logs/import/result.json": {
+      "kind": "file",
+      "size": 1117,
+      "sha256": "b65a8bd09246575fcaf9f5db04a804111afdb1ae7b106b64436e85f17ddd60c1",
+      "mode": 420,
+      "inode": 721351058,
+      "nlink": 1
+    },
+    "cases/atomic-batch/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 88,
+      "sha256": "08ee29b915fe51998f187b4ba5920dc2a45d57e5e7984f3baa645a80b4e76b81",
+      "mode": 420,
+      "inode": 721351057,
+      "nlink": 1
+    },
+    "cases/atomic-batch/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721351056,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351061,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-after-import/bytes/commands.json": {
+      "kind": "file",
+      "size": 10665,
+      "sha256": "6cdcdf283eabffab09edd82455bbe99ca3fe564831e287790f7cd7d61f046ca6",
+      "mode": 420,
+      "inode": 721351062,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-after-import/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351063,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-after-import/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351064,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351065,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 1153,
+      "sha256": "14462c5ce07cd8d8e3188b876df1f6198100b9cf48e47714940089d7fb6878e5",
+      "mode": 420,
+      "inode": 721351066,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351048,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-before/bytes/commands.json": {
+      "kind": "file",
+      "size": 10665,
+      "sha256": "6cdcdf283eabffab09edd82455bbe99ca3fe564831e287790f7cd7d61f046ca6",
+      "mode": 420,
+      "inode": 721351049,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-before/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351050,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-before/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351051,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351052,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 1153,
+      "sha256": "14462c5ce07cd8d8e3188b876df1f6198100b9cf48e47714940089d7fb6878e5",
+      "mode": 420,
+      "inode": 721351053,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357225,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-final/bytes/commands.json": {
+      "kind": "file",
+      "size": 10665,
+      "sha256": "6cdcdf283eabffab09edd82455bbe99ca3fe564831e287790f7cd7d61f046ca6",
+      "mode": 420,
+      "inode": 721357226,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-final/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357227,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-final/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721357228,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357229,
+      "nlink": 1
+    },
+    "cases/atomic-batch/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 1153,
+      "sha256": "14462c5ce07cd8d8e3188b876df1f6198100b9cf48e47714940089d7fb6878e5",
+      "mode": 420,
+      "inode": 721357230,
+      "nlink": 1
+    },
+    "cases/bad-units/checks.json": {
+      "kind": "file",
+      "size": 74,
+      "sha256": "5f8ca76b8740ffb2cbf2613326979fb257e344262645d6ce121cb7622fc8719b",
+      "mode": 420,
+      "inode": 721351005,
+      "nlink": 1
+    },
+    "cases/bad-units/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721349966,
+      "nlink": 1
+    },
+    "cases/bad-units/data/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721349968,
+      "nlink": 1
+    },
+    "cases/bad-units/data/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721349969,
+      "nlink": 1
+    },
+    "cases/bad-units/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "e17630d3a2cb2ede3ab8076e4085f74acdcc16802f334d216c8d6d1cd98635d5",
+      "mode": 420,
+      "inode": 721349967,
+      "nlink": 1
+    },
+    "cases/bad-units/logs/import/command.json": {
+      "kind": "file",
+      "size": 934,
+      "sha256": "4375da5b71223724433a30e6060e7ae384638e0b5cc5b197ad8a2b3e019bc37d",
+      "mode": 420,
+      "inode": 721350994,
+      "nlink": 1
+    },
+    "cases/bad-units/logs/import/result.json": {
+      "kind": "file",
+      "size": 1104,
+      "sha256": "b134c7c3b58fe544266ea108a5e55490c6a797a4c5b3f10f5fb43f41529014d7",
+      "mode": 420,
+      "inode": 721350997,
+      "nlink": 1
+    },
+    "cases/bad-units/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 52,
+      "sha256": "2e007403bc5f76fad87093413bb2469d17bd4e9a475fe444e266a1a8d2e333be",
+      "mode": 420,
+      "inode": 721350996,
+      "nlink": 1
+    },
+    "cases/bad-units/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350995,
+      "nlink": 1
+    },
+    "cases/bad-units/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351000,
+      "nlink": 1
+    },
+    "cases/bad-units/snapshot-after-import/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351001,
+      "nlink": 1
+    },
+    "cases/bad-units/snapshot-after-import/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351002,
+      "nlink": 1
+    },
+    "cases/bad-units/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "e17630d3a2cb2ede3ab8076e4085f74acdcc16802f334d216c8d6d1cd98635d5",
+      "mode": 420,
+      "inode": 721351003,
+      "nlink": 1
+    },
+    "cases/bad-units/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 926,
+      "sha256": "10d2af7dbaac09143a6842e5965166db9f331a0520a385cf5388a9cb7b0edf76",
+      "mode": 420,
+      "inode": 721351004,
+      "nlink": 1
+    },
+    "cases/bad-units/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350988,
+      "nlink": 1
+    },
+    "cases/bad-units/snapshot-before/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350989,
+      "nlink": 1
+    },
+    "cases/bad-units/snapshot-before/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721350990,
+      "nlink": 1
+    },
+    "cases/bad-units/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "e17630d3a2cb2ede3ab8076e4085f74acdcc16802f334d216c8d6d1cd98635d5",
+      "mode": 420,
+      "inode": 721350991,
+      "nlink": 1
+    },
+    "cases/bad-units/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 926,
+      "sha256": "10d2af7dbaac09143a6842e5965166db9f331a0520a385cf5388a9cb7b0edf76",
+      "mode": 420,
+      "inode": 721350992,
+      "nlink": 1
+    },
+    "cases/bad-units/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357204,
+      "nlink": 1
+    },
+    "cases/bad-units/snapshot-final/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357205,
+      "nlink": 1
+    },
+    "cases/bad-units/snapshot-final/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721357206,
+      "nlink": 1
+    },
+    "cases/bad-units/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "e17630d3a2cb2ede3ab8076e4085f74acdcc16802f334d216c8d6d1cd98635d5",
+      "mode": 420,
+      "inode": 721357207,
+      "nlink": 1
+    },
+    "cases/bad-units/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 926,
+      "sha256": "10d2af7dbaac09143a6842e5965166db9f331a0520a385cf5388a9cb7b0edf76",
+      "mode": 420,
+      "inode": 721357208,
+      "nlink": 1
+    },
+    "cases/cli-import/checks.json": {
+      "kind": "file",
+      "size": 75,
+      "sha256": "15de3da56ec4b38d7b908e0b9c9ac5c36b7f850c217a744f2a336da083b0a816",
+      "mode": 420,
+      "inode": 721350947,
+      "nlink": 1
+    },
+    "cases/cli-import/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721349950,
+      "nlink": 1
+    },
+    "cases/cli-import/data/exported.dxf": {
+      "kind": "file",
+      "size": 4870,
+      "sha256": "d380a119ff08679380819e84decad42d327c1054058ed7487d34b9d25ef952e0",
+      "mode": 420,
+      "inode": 721350940,
+      "nlink": 1
+    },
+    "cases/cli-import/data/exported.svg": {
+      "kind": "file",
+      "size": 780,
+      "sha256": "ccbb3922a6276ac33a609c01df09b32205ae15490d15ef954d3b32afa74dfd75",
+      "mode": 420,
+      "inode": 721350934,
+      "nlink": 1
+    },
+    "cases/cli-import/data/output.weftforge": {
+      "kind": "file",
+      "size": 5717,
+      "sha256": "c87692b5ade6cf99a3bb8debf1b5c33710fdbc62f799a855317819ee3ab6a19b",
+      "mode": 420,
+      "inode": 721350922,
+      "nlink": 1
+    },
+    "cases/cli-import/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721349951,
+      "nlink": 1
+    },
+    "cases/cli-import/inspection-check.json": {
+      "kind": "file",
+      "size": 583,
+      "sha256": "ae9bb91e8db4a16088077505b67ccf982b0e48262bb4a6157d195c0c09b19c25",
+      "mode": 420,
+      "inode": 721356402,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/export-0/command.json": {
+      "kind": "file",
+      "size": 786,
+      "sha256": "0ff2fe040b16c6860fa307214187c56440c80cf8940eeed90c025d3ccce31c75",
+      "mode": 420,
+      "inode": 721350931,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/export-0/result.json": {
+      "kind": "file",
+      "size": 956,
+      "sha256": "a880975772f4f589631a433cecb6f627160f04870d1826466f46db77f0d23720",
+      "mode": 420,
+      "inode": 721350935,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/export-0/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350933,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/export-0/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350932,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/export-1/command.json": {
+      "kind": "file",
+      "size": 786,
+      "sha256": "c3bb10d65e8dc83259e44cf0dd125ee07e7286afffbf67ff0f0470bfe3956b30",
+      "mode": 420,
+      "inode": 721350937,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/export-1/result.json": {
+      "kind": "file",
+      "size": 956,
+      "sha256": "53b3e171d0f06ee9daafc0e214331d3010d0af095c78ba0db710b959107eb8d7",
+      "mode": 420,
+      "inode": 721350941,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/export-1/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350939,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/export-1/stdout.bin": {
+      "kind": "file",
+      "size": 328,
+      "sha256": "25f74b8eebf1a858999f98fcf03ed3f3dfc4261cea175490fca87d9080c2c430",
+      "mode": 420,
+      "inode": 721350938,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/import/command.json": {
+      "kind": "file",
+      "size": 936,
+      "sha256": "52d89655eb9e4a47b6879e5ddb67f4323aeea8fe2b006f441fdbb5ba8bc2adc0",
+      "mode": 420,
+      "inode": 721350919,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/import/result.json": {
+      "kind": "file",
+      "size": 1106,
+      "sha256": "37f61400dd91756202f6ab22a95b48b89ab8e141c5d8db16b866ba00fafc545b",
+      "mode": 420,
+      "inode": 721350923,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350921,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 872,
+      "sha256": "49798843124af34d13d1c44e257bbbc82ce9c878d9fbf0199a4bfe687bde6bac",
+      "mode": 420,
+      "inode": 721350920,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/independent-grade/command.json": {
+      "kind": "file",
+      "size": 1096,
+      "sha256": "442b614701823637b0c01769603f6985604db000309f0d0f87dadf2418ef9fcb",
+      "mode": 420,
+      "inode": 721350943,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/independent-grade/result.json": {
+      "kind": "file",
+      "size": 1265,
+      "sha256": "9296702fd2a331b70402fba9cef3392ed395f46a77091927dfc0061d9e9aedad",
+      "mode": 420,
+      "inode": 721350946,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/independent-grade/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350945,
+      "nlink": 1
+    },
+    "cases/cli-import/logs/independent-grade/stdout.bin": {
+      "kind": "file",
+      "size": 1471,
+      "sha256": "2fb8ebcba934d321ff9d3051c709de1389511da27a8497178ec9dfb8fbede092",
+      "mode": 420,
+      "inode": 721350944,
+      "nlink": 1
+    },
+    "cases/cli-import/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350926,
+      "nlink": 1
+    },
+    "cases/cli-import/snapshot-after-import/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 5717,
+      "sha256": "c87692b5ade6cf99a3bb8debf1b5c33710fdbc62f799a855317819ee3ab6a19b",
+      "mode": 420,
+      "inode": 721350927,
+      "nlink": 1
+    },
+    "cases/cli-import/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350928,
+      "nlink": 1
+    },
+    "cases/cli-import/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 688,
+      "sha256": "215e923c2aff326882991f183200c3c0db4ee431af69a0106b0a0c83cae82fe2",
+      "mode": 420,
+      "inode": 721350929,
+      "nlink": 1
+    },
+    "cases/cli-import/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350915,
+      "nlink": 1
+    },
+    "cases/cli-import/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350916,
+      "nlink": 1
+    },
+    "cases/cli-import/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 459,
+      "sha256": "be1d3cebfde49a575b9f1d8835c95dfe755f5e4256e120982e546be8caef06dc",
+      "mode": 420,
+      "inode": 721350917,
+      "nlink": 1
+    },
+    "cases/cli-import/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357180,
+      "nlink": 1
+    },
+    "cases/cli-import/snapshot-final/bytes/exported.dxf": {
+      "kind": "file",
+      "size": 4870,
+      "sha256": "d380a119ff08679380819e84decad42d327c1054058ed7487d34b9d25ef952e0",
+      "mode": 420,
+      "inode": 721357181,
+      "nlink": 1
+    },
+    "cases/cli-import/snapshot-final/bytes/exported.svg": {
+      "kind": "file",
+      "size": 780,
+      "sha256": "ccbb3922a6276ac33a609c01df09b32205ae15490d15ef954d3b32afa74dfd75",
+      "mode": 420,
+      "inode": 721357182,
+      "nlink": 1
+    },
+    "cases/cli-import/snapshot-final/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 5717,
+      "sha256": "c87692b5ade6cf99a3bb8debf1b5c33710fdbc62f799a855317819ee3ab6a19b",
+      "mode": 420,
+      "inode": 721357183,
+      "nlink": 1
+    },
+    "cases/cli-import/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357184,
+      "nlink": 1
+    },
+    "cases/cli-import/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 1137,
+      "sha256": "834a5a5c29a5cd470940419685cee54e8b82949bab15dbc2cf8ad5b1a988033a",
+      "mode": 420,
+      "inode": 721357185,
+      "nlink": 1
+    },
+    "cases/in-place/checks.json": {
+      "kind": "file",
+      "size": 183,
+      "sha256": "c7b44deda81840b6807e2e7e6352fa789698604922959d5c2ed67e560b36e034",
+      "mode": 420,
+      "inode": 721350985,
+      "nlink": 1
+    },
+    "cases/in-place/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 5717,
+      "sha256": "c87692b5ade6cf99a3bb8debf1b5c33710fdbc62f799a855317819ee3ab6a19b",
+      "mode": 420,
+      "inode": 721350958,
+      "nlink": 1
+    },
+    "cases/in-place/data/baseline.weftforge.recovery": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350959,
+      "nlink": 1
+    },
+    "cases/in-place/data/exported.dxf": {
+      "kind": "file",
+      "size": 4870,
+      "sha256": "d380a119ff08679380819e84decad42d327c1054058ed7487d34b9d25ef952e0",
+      "mode": 420,
+      "inode": 721350977,
+      "nlink": 1
+    },
+    "cases/in-place/data/exported.svg": {
+      "kind": "file",
+      "size": 780,
+      "sha256": "ccbb3922a6276ac33a609c01df09b32205ae15490d15ef954d3b32afa74dfd75",
+      "mode": 420,
+      "inode": 721350971,
+      "nlink": 1
+    },
+    "cases/in-place/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721349961,
+      "nlink": 1
+    },
+    "cases/in-place/inspection-check.json": {
+      "kind": "file",
+      "size": 583,
+      "sha256": "e7bb8e24ee74cedd8921af1c700ea3d9667c48d6d7de230e92a715a47a830175",
+      "mode": 420,
+      "inode": 721356408,
+      "nlink": 1
+    },
+    "cases/in-place/logs/export-0/command.json": {
+      "kind": "file",
+      "size": 780,
+      "sha256": "88b7b0e20ee9058e35e0bc4ee4723a372884f13f0f86785c4fa3a74735658709",
+      "mode": 420,
+      "inode": 721350968,
+      "nlink": 1
+    },
+    "cases/in-place/logs/export-0/result.json": {
+      "kind": "file",
+      "size": 949,
+      "sha256": "0d2c221b7785a35ccf0acd6b26b9073c827fb70fcf020bcbb1ec170cc8367072",
+      "mode": 420,
+      "inode": 721350972,
+      "nlink": 1
+    },
+    "cases/in-place/logs/export-0/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350970,
+      "nlink": 1
+    },
+    "cases/in-place/logs/export-0/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350969,
+      "nlink": 1
+    },
+    "cases/in-place/logs/export-1/command.json": {
+      "kind": "file",
+      "size": 780,
+      "sha256": "acce5c8d0a07c44348fcb6d255d3eb0741a31388aa9f0a2d2fa70d8773217af2",
+      "mode": 420,
+      "inode": 721350974,
+      "nlink": 1
+    },
+    "cases/in-place/logs/export-1/result.json": {
+      "kind": "file",
+      "size": 949,
+      "sha256": "5d74649402b4c94c906f7d743d804c7b4b016e626cfa6d5bb111031ccfe8d7c5",
+      "mode": 420,
+      "inode": 721350978,
+      "nlink": 1
+    },
+    "cases/in-place/logs/export-1/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350976,
+      "nlink": 1
+    },
+    "cases/in-place/logs/export-1/stdout.bin": {
+      "kind": "file",
+      "size": 326,
+      "sha256": "e6089dd2508ea652c1dd6b3b4d3e18c5b9fd1b02c7848ea3698a0511b8ad4387",
+      "mode": 420,
+      "inode": 721350975,
+      "nlink": 1
+    },
+    "cases/in-place/logs/import/command.json": {
+      "kind": "file",
+      "size": 928,
+      "sha256": "b8c910e72dbb00f46920fb9942b2f7ea755a39b7528141c365a05a74111f8a86",
+      "mode": 420,
+      "inode": 721350955,
+      "nlink": 1
+    },
+    "cases/in-place/logs/import/result.json": {
+      "kind": "file",
+      "size": 1098,
+      "sha256": "d33acaa90e38416bfc9d8981524dad296f6a911b603e36f8af32312ce8bf60d7",
+      "mode": 420,
+      "inode": 721350960,
+      "nlink": 1
+    },
+    "cases/in-place/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350957,
+      "nlink": 1
+    },
+    "cases/in-place/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 868,
+      "sha256": "637d33cdc03c11bca295f6a1ab4cdf202223b6a0d2b802ad52b5729eda1fd17e",
+      "mode": 420,
+      "inode": 721350956,
+      "nlink": 1
+    },
+    "cases/in-place/logs/independent-grade/command.json": {
+      "kind": "file",
+      "size": 1088,
+      "sha256": "957c0bbc306ca5e2acbe298cec531d7c128579a6c20c1b47ffb401d217c6aaad",
+      "mode": 420,
+      "inode": 721350980,
+      "nlink": 1
+    },
+    "cases/in-place/logs/independent-grade/result.json": {
+      "kind": "file",
+      "size": 1256,
+      "sha256": "ad875892e45eb58139ee977eaad7046319b3a5af3f2f7e7da90ca29c75503edd",
+      "mode": 420,
+      "inode": 721350984,
+      "nlink": 1
+    },
+    "cases/in-place/logs/independent-grade/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350982,
+      "nlink": 1
+    },
+    "cases/in-place/logs/independent-grade/stdout.bin": {
+      "kind": "file",
+      "size": 1467,
+      "sha256": "c9f401b81d406c54ad455869fabb5bd0a0e047a5394efabe271de01ce2237089",
+      "mode": 420,
+      "inode": 721350981,
+      "nlink": 1
+    },
+    "cases/in-place/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 5717,
+      "sha256": "c87692b5ade6cf99a3bb8debf1b5c33710fdbc62f799a855317819ee3ab6a19b",
+      "mode": 420,
+      "inode": 721350963,
+      "nlink": 1
+    },
+    "cases/in-place/snapshot-after-import/bytes/baseline.weftforge.recovery": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350964,
+      "nlink": 1
+    },
+    "cases/in-place/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350965,
+      "nlink": 1
+    },
+    "cases/in-place/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 699,
+      "sha256": "92fd77a67475dda30fbde395bf32b9a1d2a9a70d6b7f24699fc6694c76bd004a",
+      "mode": 420,
+      "inode": 721350966,
+      "nlink": 1
+    },
+    "cases/in-place/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350950,
+      "nlink": 1
+    },
+    "cases/in-place/snapshot-before/bytes/baseline.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721350951,
+      "nlink": 1
+    },
+    "cases/in-place/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350952,
+      "nlink": 1
+    },
+    "cases/in-place/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 699,
+      "sha256": "c6a4964b75027f06415bd8c8360b3f3971c971e6362baab54ee4625c0c8895d3",
+      "mode": 420,
+      "inode": 721350953,
+      "nlink": 1
+    },
+    "cases/in-place/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 5717,
+      "sha256": "c87692b5ade6cf99a3bb8debf1b5c33710fdbc62f799a855317819ee3ab6a19b",
+      "mode": 420,
+      "inode": 721357196,
+      "nlink": 1
+    },
+    "cases/in-place/snapshot-final/bytes/baseline.weftforge.recovery": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357197,
+      "nlink": 1
+    },
+    "cases/in-place/snapshot-final/bytes/exported.dxf": {
+      "kind": "file",
+      "size": 4870,
+      "sha256": "d380a119ff08679380819e84decad42d327c1054058ed7487d34b9d25ef952e0",
+      "mode": 420,
+      "inode": 721357198,
+      "nlink": 1
+    },
+    "cases/in-place/snapshot-final/bytes/exported.svg": {
+      "kind": "file",
+      "size": 780,
+      "sha256": "ccbb3922a6276ac33a609c01df09b32205ae15490d15ef954d3b32afa74dfd75",
+      "mode": 420,
+      "inode": 721357199,
+      "nlink": 1
+    },
+    "cases/in-place/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357200,
+      "nlink": 1
+    },
+    "cases/in-place/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 1148,
+      "sha256": "2164450ab044d5803b6c3d5d5e2f0e6057ecbe7b00d093cb5c1ae0cc49d1893f",
+      "mode": 420,
+      "inode": 721357201,
+      "nlink": 1
+    },
+    "cases/late-gap/checks.json": {
+      "kind": "file",
+      "size": 74,
+      "sha256": "5f8ca76b8740ffb2cbf2613326979fb257e344262645d6ce121cb7622fc8719b",
+      "mode": 420,
+      "inode": 721351025,
+      "nlink": 1
+    },
+    "cases/late-gap/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721349973,
+      "nlink": 1
+    },
+    "cases/late-gap/data/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721349975,
+      "nlink": 1
+    },
+    "cases/late-gap/data/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721349976,
+      "nlink": 1
+    },
+    "cases/late-gap/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "01f27504d9ae93a3c52eaaa57e5bd5469f590f5bee4c9bad1b9d045e8f0e9ca3",
+      "mode": 420,
+      "inode": 721349974,
+      "nlink": 1
+    },
+    "cases/late-gap/logs/import/command.json": {
+      "kind": "file",
+      "size": 929,
+      "sha256": "0595b68ee97a767e88b113ac0b4de1d7be071be6fbd13c1b9035e6b5252d4c2b",
+      "mode": 420,
+      "inode": 721351014,
+      "nlink": 1
+    },
+    "cases/late-gap/logs/import/result.json": {
+      "kind": "file",
+      "size": 1099,
+      "sha256": "023c982a160e3953b5de16dc0101e0d14d09126b463081296f39caeea93aa2c1",
+      "mode": 420,
+      "inode": 721351017,
+      "nlink": 1
+    },
+    "cases/late-gap/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 88,
+      "sha256": "08ee29b915fe51998f187b4ba5920dc2a45d57e5e7984f3baa645a80b4e76b81",
+      "mode": 420,
+      "inode": 721351016,
+      "nlink": 1
+    },
+    "cases/late-gap/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721351015,
+      "nlink": 1
+    },
+    "cases/late-gap/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351020,
+      "nlink": 1
+    },
+    "cases/late-gap/snapshot-after-import/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351021,
+      "nlink": 1
+    },
+    "cases/late-gap/snapshot-after-import/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351022,
+      "nlink": 1
+    },
+    "cases/late-gap/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "01f27504d9ae93a3c52eaaa57e5bd5469f590f5bee4c9bad1b9d045e8f0e9ca3",
+      "mode": 420,
+      "inode": 721351023,
+      "nlink": 1
+    },
+    "cases/late-gap/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 926,
+      "sha256": "2c95950253d5fe00329317287cb6d7b7cacc565dd7ab986dca612af74a9ceecf",
+      "mode": 420,
+      "inode": 721351024,
+      "nlink": 1
+    },
+    "cases/late-gap/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351008,
+      "nlink": 1
+    },
+    "cases/late-gap/snapshot-before/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351009,
+      "nlink": 1
+    },
+    "cases/late-gap/snapshot-before/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351010,
+      "nlink": 1
+    },
+    "cases/late-gap/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "01f27504d9ae93a3c52eaaa57e5bd5469f590f5bee4c9bad1b9d045e8f0e9ca3",
+      "mode": 420,
+      "inode": 721351011,
+      "nlink": 1
+    },
+    "cases/late-gap/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 926,
+      "sha256": "2c95950253d5fe00329317287cb6d7b7cacc565dd7ab986dca612af74a9ceecf",
+      "mode": 420,
+      "inode": 721351012,
+      "nlink": 1
+    },
+    "cases/late-gap/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357211,
+      "nlink": 1
+    },
+    "cases/late-gap/snapshot-final/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357212,
+      "nlink": 1
+    },
+    "cases/late-gap/snapshot-final/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721357213,
+      "nlink": 1
+    },
+    "cases/late-gap/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "01f27504d9ae93a3c52eaaa57e5bd5469f590f5bee4c9bad1b9d045e8f0e9ca3",
+      "mode": 420,
+      "inode": 721357214,
+      "nlink": 1
+    },
+    "cases/late-gap/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 926,
+      "sha256": "2c95950253d5fe00329317287cb6d7b7cacc565dd7ab986dca612af74a9ceecf",
+      "mode": 420,
+      "inode": 721357215,
+      "nlink": 1
+    },
+    "cases/mcp-import/checks-completion.json": {
+      "kind": "file",
+      "size": 112,
+      "sha256": "76b952789c9277a86f217e5c5de7add1207e34a75da46ba18771eece3efdb79e",
+      "mode": 420,
+      "inode": 721356438,
+      "nlink": 1
+    },
+    "cases/mcp-import/checks.json": {
+      "kind": "file",
+      "size": 128,
+      "sha256": "569321d9bd232487cc00aa07dec9c522d5580fadaca2cc9338622c7e51e9cefe",
+      "mode": 420,
+      "inode": 721351323,
+      "nlink": 1
+    },
+    "cases/mcp-import/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721349955,
+      "nlink": 1
+    },
+    "cases/mcp-import/data/exported.dxf": {
+      "kind": "file",
+      "size": 4870,
+      "sha256": "d380a119ff08679380819e84decad42d327c1054058ed7487d34b9d25ef952e0",
+      "mode": 420,
+      "inode": 721356412,
+      "nlink": 1
+    },
+    "cases/mcp-import/data/exported.svg": {
+      "kind": "file",
+      "size": 780,
+      "sha256": "ccbb3922a6276ac33a609c01df09b32205ae15490d15ef954d3b32afa74dfd75",
+      "mode": 420,
+      "inode": 721356409,
+      "nlink": 1
+    },
+    "cases/mcp-import/data/output.weftforge": {
+      "kind": "file",
+      "size": 5717,
+      "sha256": "c87692b5ade6cf99a3bb8debf1b5c33710fdbc62f799a855317819ee3ab6a19b",
+      "mode": 420,
+      "inode": 721351299,
+      "nlink": 1
+    },
+    "cases/mcp-import/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721349956,
+      "nlink": 1
+    },
+    "cases/mcp-import/inspection-check.json": {
+      "kind": "file",
+      "size": 583,
+      "sha256": "fe588824d689ea624e8fea4fa9f1c06ca5e2db07983456cc7ac0a9c20ea4cdf1",
+      "mode": 420,
+      "inode": 721356405,
+      "nlink": 1
+    },
+    "cases/mcp-import/logs/independent-grade/command.json": {
+      "kind": "file",
+      "size": 1096,
+      "sha256": "74b8e1aaf09ea8aa6f00c7d0c1e8d4b01541abc130fd4551805a2c4d392019b4",
+      "mode": 420,
+      "inode": 721356434,
+      "nlink": 1
+    },
+    "cases/mcp-import/logs/independent-grade/result.json": {
+      "kind": "file",
+      "size": 1264,
+      "sha256": "d8eaa99033204b6dbc3a896d84392e9801b27134efddd496c3b2f9f6da4e89ef",
+      "mode": 420,
+      "inode": 721356437,
+      "nlink": 1
+    },
+    "cases/mcp-import/logs/independent-grade/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721356436,
+      "nlink": 1
+    },
+    "cases/mcp-import/logs/independent-grade/stdout.bin": {
+      "kind": "file",
+      "size": 1471,
+      "sha256": "c2a531e96c17a0e7ebd99329dbc7ac12be31af2689f48c79ac5c53f1524d618f",
+      "mode": 420,
+      "inode": 721356435,
+      "nlink": 1
+    },
+    "cases/mcp-import/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351304,
+      "nlink": 1
+    },
+    "cases/mcp-import/snapshot-after-import/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 5717,
+      "sha256": "c87692b5ade6cf99a3bb8debf1b5c33710fdbc62f799a855317819ee3ab6a19b",
+      "mode": 420,
+      "inode": 721351305,
+      "nlink": 1
+    },
+    "cases/mcp-import/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351307,
+      "nlink": 1
+    },
+    "cases/mcp-import/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 688,
+      "sha256": "a5f0794206ab7a9066667cb31813f32fe037393f4e02c86d70c070af243db957",
+      "mode": 420,
+      "inode": 721351312,
+      "nlink": 1
+    },
+    "cases/mcp-import/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351296,
+      "nlink": 1
+    },
+    "cases/mcp-import/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351297,
+      "nlink": 1
+    },
+    "cases/mcp-import/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 459,
+      "sha256": "26868fe41d39ee84efe9d8c2c80083c1d133c54d33de3480e53ecec7a4a2f4df",
+      "mode": 420,
+      "inode": 721351298,
+      "nlink": 1
+    },
+    "cases/mcp-import/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357188,
+      "nlink": 1
+    },
+    "cases/mcp-import/snapshot-final/bytes/exported.dxf": {
+      "kind": "file",
+      "size": 4870,
+      "sha256": "d380a119ff08679380819e84decad42d327c1054058ed7487d34b9d25ef952e0",
+      "mode": 420,
+      "inode": 721357189,
+      "nlink": 1
+    },
+    "cases/mcp-import/snapshot-final/bytes/exported.svg": {
+      "kind": "file",
+      "size": 780,
+      "sha256": "ccbb3922a6276ac33a609c01df09b32205ae15490d15ef954d3b32afa74dfd75",
+      "mode": 420,
+      "inode": 721357190,
+      "nlink": 1
+    },
+    "cases/mcp-import/snapshot-final/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 5717,
+      "sha256": "c87692b5ade6cf99a3bb8debf1b5c33710fdbc62f799a855317819ee3ab6a19b",
+      "mode": 420,
+      "inode": 721357191,
+      "nlink": 1
+    },
+    "cases/mcp-import/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357192,
+      "nlink": 1
+    },
+    "cases/mcp-import/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 1137,
+      "sha256": "9527f64419caffdc2676e93a9d9c175920e881192284c4411ca01eb7a9a46ae4",
+      "mode": 420,
+      "inode": 721357193,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/checks.json": {
+      "kind": "file",
+      "size": 74,
+      "sha256": "5f8ca76b8740ffb2cbf2613326979fb257e344262645d6ce121cb7622fc8719b",
+      "mode": 420,
+      "inode": 721351258,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350068,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/data/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350070,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/data/output.weftforge.recovery/sentinel.bin": {
+      "kind": "file",
+      "size": 35,
+      "sha256": "b2c8683853ee70240b8dbfb164fd4ef60f20fab50cf30f61b7cde5a3cfffa971",
+      "mode": 420,
+      "inode": 721350073,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350069,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/logs/import/command.json": {
+      "kind": "file",
+      "size": 994,
+      "sha256": "60ebe019b7ee2722a12a7f89244199e7b7e20aff331bf83c6f61fa8edaf3c19f",
+      "mode": 420,
+      "inode": 721351244,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/logs/import/result.json": {
+      "kind": "file",
+      "size": 1163,
+      "sha256": "888712ac19d51595b861493108524229fd41d91de476c2f2200d0b9bae0b66fe",
+      "mode": 420,
+      "inode": 721351249,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 74,
+      "sha256": "57a22392406085192092234a10194f7f0017631408bdd15c904fe525adbeac03",
+      "mode": 420,
+      "inode": 721351246,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721351245,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351252,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/snapshot-after-import/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351253,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/snapshot-after-import/bytes/output.weftforge.recovery/sentinel.bin": {
+      "kind": "file",
+      "size": 35,
+      "sha256": "b2c8683853ee70240b8dbfb164fd4ef60f20fab50cf30f61b7cde5a3cfffa971",
+      "mode": 420,
+      "inode": 721351255,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351256,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 1080,
+      "sha256": "c6fba2c8e4327244fc7a7a3390cec2cb75137c0f8c4a256f472bf5ded9286fbb",
+      "mode": 420,
+      "inode": 721351257,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351237,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/snapshot-before/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351238,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/snapshot-before/bytes/output.weftforge.recovery/sentinel.bin": {
+      "kind": "file",
+      "size": 35,
+      "sha256": "b2c8683853ee70240b8dbfb164fd4ef60f20fab50cf30f61b7cde5a3cfffa971",
+      "mode": 420,
+      "inode": 721351240,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351241,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 1080,
+      "sha256": "c6fba2c8e4327244fc7a7a3390cec2cb75137c0f8c4a256f472bf5ded9286fbb",
+      "mode": 420,
+      "inode": 721351242,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357299,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/snapshot-final/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357300,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/snapshot-final/bytes/output.weftforge.recovery/sentinel.bin": {
+      "kind": "file",
+      "size": 35,
+      "sha256": "b2c8683853ee70240b8dbfb164fd4ef60f20fab50cf30f61b7cde5a3cfffa971",
+      "mode": 420,
+      "inode": 721357302,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357303,
+      "nlink": 1
+    },
+    "cases/save-blocked-recovery/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 1080,
+      "sha256": "c6fba2c8e4327244fc7a7a3390cec2cb75137c0f8c4a256f472bf5ded9286fbb",
+      "mode": 420,
+      "inode": 721357304,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/checks.json": {
+      "kind": "file",
+      "size": 74,
+      "sha256": "5f8ca76b8740ffb2cbf2613326979fb257e344262645d6ce121cb7622fc8719b",
+      "mode": 420,
+      "inode": 721351234,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350059,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/data/output.weftforge/sentinel.bin": {
+      "kind": "file",
+      "size": 36,
+      "sha256": "384a7b7cbc73f921d3f4169b66e8d796ab2fb4e42c20c975cfc373fc4bf61ec9",
+      "mode": 420,
+      "inode": 721350064,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/data/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721350062,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350060,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/logs/import/command.json": {
+      "kind": "file",
+      "size": 999,
+      "sha256": "7ea73a14574e1dbc35afb111a91c1e636bea8b5dc3b35e40d7942015c8d5217a",
+      "mode": 420,
+      "inode": 721351222,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/logs/import/result.json": {
+      "kind": "file",
+      "size": 1169,
+      "sha256": "3011732356eb556028d0ce69bd03914579acbcecbfd2ec7544d3e6a06a3e5631",
+      "mode": 420,
+      "inode": 721351225,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 62,
+      "sha256": "f9a72761dbf0f2f3ed38a5898fe239df304e428afdcc51ba967e9f8127d89d62",
+      "mode": 420,
+      "inode": 721351224,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721351223,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351228,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/snapshot-after-import/bytes/output.weftforge/sentinel.bin": {
+      "kind": "file",
+      "size": 36,
+      "sha256": "384a7b7cbc73f921d3f4169b66e8d796ab2fb4e42c20c975cfc373fc4bf61ec9",
+      "mode": 420,
+      "inode": 721351230,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/snapshot-after-import/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351231,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351232,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 1071,
+      "sha256": "e87bf8fbc71093cc2aae4e0cdb40fa5e2761279330cd3006f51c993711ecbff0",
+      "mode": 420,
+      "inode": 721351233,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351215,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/snapshot-before/bytes/output.weftforge/sentinel.bin": {
+      "kind": "file",
+      "size": 36,
+      "sha256": "384a7b7cbc73f921d3f4169b66e8d796ab2fb4e42c20c975cfc373fc4bf61ec9",
+      "mode": 420,
+      "inode": 721351217,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/snapshot-before/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351218,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351219,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 1071,
+      "sha256": "e87bf8fbc71093cc2aae4e0cdb40fa5e2761279330cd3006f51c993711ecbff0",
+      "mode": 420,
+      "inode": 721351220,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357291,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/snapshot-final/bytes/output.weftforge/sentinel.bin": {
+      "kind": "file",
+      "size": 36,
+      "sha256": "384a7b7cbc73f921d3f4169b66e8d796ab2fb4e42c20c975cfc373fc4bf61ec9",
+      "mode": 420,
+      "inode": 721357293,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/snapshot-final/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721357294,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357295,
+      "nlink": 1
+    },
+    "cases/save-nonregular-output/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 1071,
+      "sha256": "e87bf8fbc71093cc2aae4e0cdb40fa5e2761279330cd3006f51c993711ecbff0",
+      "mode": 420,
+      "inode": 721357296,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/checks.json": {
+      "kind": "file",
+      "size": 74,
+      "sha256": "5f8ca76b8740ffb2cbf2613326979fb257e344262645d6ce121cb7622fc8719b",
+      "mode": 420,
+      "inode": 721351111,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350003,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/data/commands.json": {
+      "kind": "file",
+      "size": 10562,
+      "sha256": "3b71c0f8c9e25330270767c43bd7cdf09b4ae3b5a28bbd1899750d031c415b7e",
+      "mode": 420,
+      "inode": 721350007,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/data/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350005,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/data/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721350006,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350004,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/logs/import/command.json": {
+      "kind": "file",
+      "size": 987,
+      "sha256": "1b05bf421390207262f96bdcbc38aae20c4edbce11f5031c3ab02b99596e891b",
+      "mode": 420,
+      "inode": 721351099,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/logs/import/result.json": {
+      "kind": "file",
+      "size": 1158,
+      "sha256": "bfd9a56bd81bfb7df09bd72c58678162b5937098cba3e7c3def320d9855f52bf",
+      "mode": 420,
+      "inode": 721351102,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 59,
+      "sha256": "1649a6f64d2745151f46292069ed0607ac1f0bbbad8a423c1ade989cf3693c7b",
+      "mode": 420,
+      "inode": 721351101,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721351100,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351105,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-after-import/bytes/commands.json": {
+      "kind": "file",
+      "size": 10562,
+      "sha256": "3b71c0f8c9e25330270767c43bd7cdf09b4ae3b5a28bbd1899750d031c415b7e",
+      "mode": 420,
+      "inode": 721351106,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-after-import/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351107,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-after-import/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351108,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351109,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 1153,
+      "sha256": "74f1b5f52498c95075e212c58a53a3080a64fd6b512252085fb19804df0d0af3",
+      "mode": 420,
+      "inode": 721351110,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351092,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-before/bytes/commands.json": {
+      "kind": "file",
+      "size": 10562,
+      "sha256": "3b71c0f8c9e25330270767c43bd7cdf09b4ae3b5a28bbd1899750d031c415b7e",
+      "mode": 420,
+      "inode": 721351093,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-before/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351094,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-before/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351095,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351096,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 1153,
+      "sha256": "74f1b5f52498c95075e212c58a53a3080a64fd6b512252085fb19804df0d0af3",
+      "mode": 420,
+      "inode": 721351097,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357241,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-final/bytes/commands.json": {
+      "kind": "file",
+      "size": 10562,
+      "sha256": "3b71c0f8c9e25330270767c43bd7cdf09b4ae3b5a28bbd1899750d031c415b7e",
+      "mode": 420,
+      "inode": 721357242,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-final/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357243,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-final/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721357244,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357245,
+      "nlink": 1
+    },
+    "cases/strict-duplicate-dxf/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 1153,
+      "sha256": "74f1b5f52498c95075e212c58a53a3080a64fd6b512252085fb19804df0d0af3",
+      "mode": 420,
+      "inode": 721357246,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/checks.json": {
+      "kind": "file",
+      "size": 74,
+      "sha256": "5f8ca76b8740ffb2cbf2613326979fb257e344262645d6ce121cb7622fc8719b",
+      "mode": 420,
+      "inode": 721351089,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721349995,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/data/commands.json": {
+      "kind": "file",
+      "size": 5360,
+      "sha256": "3a75f1d29f0bb57c13e1613e41f485b5f30f7e7cc4b8bb621e36a07be38e07e0",
+      "mode": 420,
+      "inode": 721349999,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/data/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721349997,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/data/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721349998,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721349996,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/logs/import/command.json": {
+      "kind": "file",
+      "size": 972,
+      "sha256": "cb893fc115af5aeedf6e723adf5d16b01f227134f4fe94ad6d3ded4a6cd0898b",
+      "mode": 420,
+      "inode": 721351077,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/logs/import/result.json": {
+      "kind": "file",
+      "size": 1142,
+      "sha256": "4446b29ea40a4829d58d122d7a396839eded12b47ef41afb5495776f4fedb06d",
+      "mode": 420,
+      "inode": 721351080,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 78,
+      "sha256": "7661c8d69c870cf32325f873f3d852608006f54f5f88c124565512f6d6cccdeb",
+      "mode": 420,
+      "inode": 721351079,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721351078,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351083,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-after-import/bytes/commands.json": {
+      "kind": "file",
+      "size": 5360,
+      "sha256": "3a75f1d29f0bb57c13e1613e41f485b5f30f7e7cc4b8bb621e36a07be38e07e0",
+      "mode": 420,
+      "inode": 721351084,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-after-import/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351085,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-after-import/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351086,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351087,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 1152,
+      "sha256": "95d0be36f0c7ec8a3ce5d7c5b28eac0693d481ecfe7b30c9eb89c93fd1ec5be4",
+      "mode": 420,
+      "inode": 721351088,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351070,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-before/bytes/commands.json": {
+      "kind": "file",
+      "size": 5360,
+      "sha256": "3a75f1d29f0bb57c13e1613e41f485b5f30f7e7cc4b8bb621e36a07be38e07e0",
+      "mode": 420,
+      "inode": 721351071,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-before/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351072,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-before/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351073,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351074,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 1152,
+      "sha256": "95d0be36f0c7ec8a3ce5d7c5b28eac0693d481ecfe7b30c9eb89c93fd1ec5be4",
+      "mode": 420,
+      "inode": 721351075,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357233,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-final/bytes/commands.json": {
+      "kind": "file",
+      "size": 5360,
+      "sha256": "3a75f1d29f0bb57c13e1613e41f485b5f30f7e7cc4b8bb621e36a07be38e07e0",
+      "mode": 420,
+      "inode": 721357234,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-final/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357235,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-final/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721357236,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357237,
+      "nlink": 1
+    },
+    "cases/strict-extra-data/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 1152,
+      "sha256": "95d0be36f0c7ec8a3ce5d7c5b28eac0693d481ecfe7b30c9eb89c93fd1ec5be4",
+      "mode": 420,
+      "inode": 721357238,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/checks.json": {
+      "kind": "file",
+      "size": 119,
+      "sha256": "bcc16a65ea1f6ef9927aeb03e10ab40c5fa4d63a9257522a4e406d62f8ebb814",
+      "mode": 420,
+      "inode": 721356431,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350019,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/data/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350021,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/data/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721350022,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350020,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721356426,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/snapshot-after-import/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721356427,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/snapshot-after-import/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721356428,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721356429,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 926,
+      "sha256": "0351a73689e1e29f12c2531a81f86cd70f4eb7acd4533c5eeddf90092b1d8b95",
+      "mode": 420,
+      "inode": 721356430,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721356417,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/snapshot-before/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721356418,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/snapshot-before/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721356419,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721356420,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 926,
+      "sha256": "0351a73689e1e29f12c2531a81f86cd70f4eb7acd4533c5eeddf90092b1d8b95",
+      "mode": 420,
+      "inode": 721356421,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357257,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/snapshot-final/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357258,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/snapshot-final/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721357259,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357260,
+      "nlink": 1
+    },
+    "cases/strict-extra-mcp-file-argument/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 926,
+      "sha256": "0351a73689e1e29f12c2531a81f86cd70f4eb7acd4533c5eeddf90092b1d8b95",
+      "mode": 420,
+      "inode": 721357261,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/checks.json": {
+      "kind": "file",
+      "size": 74,
+      "sha256": "5f8ca76b8740ffb2cbf2613326979fb257e344262645d6ce121cb7622fc8719b",
+      "mode": 420,
+      "inode": 721351133,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350011,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/data/commands.json": {
+      "kind": "file",
+      "size": 83,
+      "sha256": "23c2bf3504dbe57d6ac7022a96849fb10158e028cac85ec4a14c1ba0e023d2fb",
+      "mode": 420,
+      "inode": 721350015,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/data/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350013,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/data/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721350014,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350012,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/logs/import/command.json": {
+      "kind": "file",
+      "size": 972,
+      "sha256": "9a76df1e0168dc6857e6b1f54da96db2073a7b177da884f88ba4b807bee87677",
+      "mode": 420,
+      "inode": 721351121,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/logs/import/result.json": {
+      "kind": "file",
+      "size": 1141,
+      "sha256": "709959a1f3d9da5b5d74247dbb350a431939031fa0f94760a1c81af4f1380590",
+      "mode": 420,
+      "inode": 721351124,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 81,
+      "sha256": "cda24ff2033793f89b909c755c928c5eca0d5630b54ed2cf7e2534a95a87c332",
+      "mode": 420,
+      "inode": 721351123,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721351122,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351127,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-after-import/bytes/commands.json": {
+      "kind": "file",
+      "size": 83,
+      "sha256": "23c2bf3504dbe57d6ac7022a96849fb10158e028cac85ec4a14c1ba0e023d2fb",
+      "mode": 420,
+      "inode": 721351128,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-after-import/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351129,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-after-import/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351130,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351131,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 1150,
+      "sha256": "b8f7882f260c625c841204cea65e6e5e0066d19717875578688b62b82411bca7",
+      "mode": 420,
+      "inode": 721351132,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351114,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-before/bytes/commands.json": {
+      "kind": "file",
+      "size": 83,
+      "sha256": "23c2bf3504dbe57d6ac7022a96849fb10158e028cac85ec4a14c1ba0e023d2fb",
+      "mode": 420,
+      "inode": 721351115,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-before/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351116,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-before/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351117,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721351118,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 1150,
+      "sha256": "b8f7882f260c625c841204cea65e6e5e0066d19717875578688b62b82411bca7",
+      "mode": 420,
+      "inode": 721351119,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357249,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-final/bytes/commands.json": {
+      "kind": "file",
+      "size": 83,
+      "sha256": "23c2bf3504dbe57d6ac7022a96849fb10158e028cac85ec4a14c1ba0e023d2fb",
+      "mode": 420,
+      "inode": 721357250,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-final/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357251,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-final/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721357252,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357253,
+      "nlink": 1
+    },
+    "cases/strict-wrong-type/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 1150,
+      "sha256": "b8f7882f260c625c841204cea65e6e5e0066d19717875578688b62b82411bca7",
+      "mode": 420,
+      "inode": 721357254,
+      "nlink": 1
+    },
+    "cases/typed-command/checks.json": {
+      "kind": "file",
+      "size": 75,
+      "sha256": "15de3da56ec4b38d7b908e0b9c9ac5c36b7f850c217a744f2a336da083b0a816",
+      "mode": 420,
+      "inode": 721350912,
+      "nlink": 1
+    },
+    "cases/typed-command/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721349944,
+      "nlink": 1
+    },
+    "cases/typed-command/data/commands.json": {
+      "kind": "file",
+      "size": 5334,
+      "sha256": "3c7630761e820709a3d6d057a3877820745db11666ef086f96bc1bbed94a79e3",
+      "mode": 420,
+      "inode": 721349946,
+      "nlink": 1
+    },
+    "cases/typed-command/data/exported.dxf": {
+      "kind": "file",
+      "size": 4870,
+      "sha256": "d380a119ff08679380819e84decad42d327c1054058ed7487d34b9d25ef952e0",
+      "mode": 420,
+      "inode": 721350905,
+      "nlink": 1
+    },
+    "cases/typed-command/data/exported.svg": {
+      "kind": "file",
+      "size": 780,
+      "sha256": "ccbb3922a6276ac33a609c01df09b32205ae15490d15ef954d3b32afa74dfd75",
+      "mode": 420,
+      "inode": 721350899,
+      "nlink": 1
+    },
+    "cases/typed-command/data/output.weftforge": {
+      "kind": "file",
+      "size": 5717,
+      "sha256": "c87692b5ade6cf99a3bb8debf1b5c33710fdbc62f799a855317819ee3ab6a19b",
+      "mode": 420,
+      "inode": 721350886,
+      "nlink": 1
+    },
+    "cases/typed-command/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721349945,
+      "nlink": 1
+    },
+    "cases/typed-command/inspection-check.json": {
+      "kind": "file",
+      "size": 571,
+      "sha256": "a8f2a99b940f5e8307cfcb4ca0976c7019c25da7616469f99b6fb8c327a3eac3",
+      "mode": 420,
+      "inode": 721356391,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/export-0/command.json": {
+      "kind": "file",
+      "size": 798,
+      "sha256": "ea3822a4818c6bccd1360d7cfd9efd1316cb47a3b94583c924bff5f00d7e5ca0",
+      "mode": 420,
+      "inode": 721350896,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/export-0/result.json": {
+      "kind": "file",
+      "size": 968,
+      "sha256": "84ea365733dd535d42ce962b753c4e211becc10640cc96928d45c834da7946ec",
+      "mode": 420,
+      "inode": 721350900,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/export-0/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350898,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/export-0/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350897,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/export-1/command.json": {
+      "kind": "file",
+      "size": 798,
+      "sha256": "a82d62eeb9e343065c0fbf1be1bcf88eb5a857dccdc2c951c37e2e60ae0d552d",
+      "mode": 420,
+      "inode": 721350902,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/export-1/result.json": {
+      "kind": "file",
+      "size": 968,
+      "sha256": "51c9d48066125f4f176d0b3dd4239bd56e9508c7d1bae85e144a7422fecc222c",
+      "mode": 420,
+      "inode": 721350906,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/export-1/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350904,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/export-1/stdout.bin": {
+      "kind": "file",
+      "size": 331,
+      "sha256": "e3615ef59d5ec17add38f0ba852c88281e443d5641959d6d6c502ce4717b18e6",
+      "mode": 420,
+      "inode": 721350903,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/import/command.json": {
+      "kind": "file",
+      "size": 949,
+      "sha256": "b9ed74a818935929f0c5c027b374117f009d4d0e6dcb5790f34916a350bed9e3",
+      "mode": 420,
+      "inode": 721350883,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/import/result.json": {
+      "kind": "file",
+      "size": 1119,
+      "sha256": "f5191504f513db5f0747071ca3b100577d9f48dde8618a1e30080fcf341003d8",
+      "mode": 420,
+      "inode": 721350887,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350885,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 36,
+      "sha256": "6e17aa1549b256fe385d5c0a89ee6e4df4398af17e376a5b850717a123f9bf19",
+      "mode": 420,
+      "inode": 721350884,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/independent-grade/command.json": {
+      "kind": "file",
+      "size": 1111,
+      "sha256": "c4c5209218377f91d57109f01e8157eda5e12f996750bc26b08b042929426187",
+      "mode": 420,
+      "inode": 721350908,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/independent-grade/result.json": {
+      "kind": "file",
+      "size": 1279,
+      "sha256": "dd00bba7601fc9e89f8173bf08c97fa7dcf1a290e454bba58b178cdf0f1ff51a",
+      "mode": 420,
+      "inode": 721350911,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/independent-grade/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350910,
+      "nlink": 1
+    },
+    "cases/typed-command/logs/independent-grade/stdout.bin": {
+      "kind": "file",
+      "size": 1480,
+      "sha256": "69f5f1c6f4955c29a71517d308caeb78b887aaf858d1a4c391ad7f60a0242916",
+      "mode": 420,
+      "inode": 721350909,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350890,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-after-import/bytes/commands.json": {
+      "kind": "file",
+      "size": 5334,
+      "sha256": "3c7630761e820709a3d6d057a3877820745db11666ef086f96bc1bbed94a79e3",
+      "mode": 420,
+      "inode": 721350891,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-after-import/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 5717,
+      "sha256": "c87692b5ade6cf99a3bb8debf1b5c33710fdbc62f799a855317819ee3ab6a19b",
+      "mode": 420,
+      "inode": 721350892,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350893,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 914,
+      "sha256": "90590593ef614a76e0c43b3bcaf5df2f935f2db95f085a6615a1679a94fd58c5",
+      "mode": 420,
+      "inode": 721350894,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721350878,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-before/bytes/commands.json": {
+      "kind": "file",
+      "size": 5334,
+      "sha256": "3c7630761e820709a3d6d057a3877820745db11666ef086f96bc1bbed94a79e3",
+      "mode": 420,
+      "inode": 721350879,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721350880,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 685,
+      "sha256": "4f83d4f7156a1c3e3d7d930e1d802ea1555c2d8fd57b8a222e3e9519783f008f",
+      "mode": 420,
+      "inode": 721350881,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357171,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-final/bytes/commands.json": {
+      "kind": "file",
+      "size": 5334,
+      "sha256": "3c7630761e820709a3d6d057a3877820745db11666ef086f96bc1bbed94a79e3",
+      "mode": 420,
+      "inode": 721357172,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-final/bytes/exported.dxf": {
+      "kind": "file",
+      "size": 4870,
+      "sha256": "d380a119ff08679380819e84decad42d327c1054058ed7487d34b9d25ef952e0",
+      "mode": 420,
+      "inode": 721357173,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-final/bytes/exported.svg": {
+      "kind": "file",
+      "size": 780,
+      "sha256": "ccbb3922a6276ac33a609c01df09b32205ae15490d15ef954d3b32afa74dfd75",
+      "mode": 420,
+      "inode": 721357174,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-final/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 5717,
+      "sha256": "c87692b5ade6cf99a3bb8debf1b5c33710fdbc62f799a855317819ee3ab6a19b",
+      "mode": 420,
+      "inode": 721357175,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4289,
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "mode": 420,
+      "inode": 721357176,
+      "nlink": 1
+    },
+    "cases/typed-command/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 1363,
+      "sha256": "1a3eb822e2ac86073a0426feff5091451c6f8cd7778a011b535b6c937a685035",
+      "mode": 420,
+      "inode": 721357177,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/checks.json": {
+      "kind": "file",
+      "size": 74,
+      "sha256": "5f8ca76b8740ffb2cbf2613326979fb257e344262645d6ce121cb7622fc8719b",
+      "mode": 420,
+      "inode": 721351045,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/data/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721349980,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/data/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721349982,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/data/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721349983,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/data/patterns.dxf": {
+      "kind": "file",
+      "size": 4290,
+      "sha256": "4de5bf92355850dc349d84e91553578e8804c29ba464c29e3b70249e0331d88d",
+      "mode": 420,
+      "inode": 721349981,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/logs/import/command.json": {
+      "kind": "file",
+      "size": 974,
+      "sha256": "85c985c4f9a1b8350fbcd235613806b9f9c03d50f6d7ac4caeb1d3bf104f697b",
+      "mode": 420,
+      "inode": 721351034,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/logs/import/result.json": {
+      "kind": "file",
+      "size": 1144,
+      "sha256": "11cd853ae324ba88c853b840f2ca9fb869adead7b560794a85559ec9921c4210",
+      "mode": 420,
+      "inode": 721351037,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/logs/import/stderr.bin": {
+      "kind": "file",
+      "size": 52,
+      "sha256": "690fd166c265b76def96db71a7708f3aa4ab2ae69dd6861a155717244c3c9d25",
+      "mode": 420,
+      "inode": 721351036,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/logs/import/stdout.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721351035,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/snapshot-after-import/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351040,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/snapshot-after-import/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351041,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/snapshot-after-import/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351042,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/snapshot-after-import/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4290,
+      "sha256": "4de5bf92355850dc349d84e91553578e8804c29ba464c29e3b70249e0331d88d",
+      "mode": 420,
+      "inode": 721351043,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/snapshot-after-import/manifest.json": {
+      "kind": "file",
+      "size": 926,
+      "sha256": "b6acac70651a61366297af67eeee3fa20757d926c2fb2b052aa6d5ad1ef2ad55",
+      "mode": 420,
+      "inode": 721351044,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/snapshot-before/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351028,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/snapshot-before/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721351029,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/snapshot-before/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721351030,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/snapshot-before/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4290,
+      "sha256": "4de5bf92355850dc349d84e91553578e8804c29ba464c29e3b70249e0331d88d",
+      "mode": 420,
+      "inode": 721351031,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/snapshot-before/manifest.json": {
+      "kind": "file",
+      "size": 926,
+      "sha256": "b6acac70651a61366297af67eeee3fa20757d926c2fb2b052aa6d5ad1ef2ad55",
+      "mode": 420,
+      "inode": 721351032,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/snapshot-final/bytes/baseline.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357218,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/snapshot-final/bytes/output.weftforge": {
+      "kind": "file",
+      "size": 3177,
+      "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+      "mode": 420,
+      "inode": 721357219,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/snapshot-final/bytes/output.weftforge.recovery": {
+      "kind": "file",
+      "size": 1236,
+      "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc",
+      "mode": 420,
+      "inode": 721357220,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/snapshot-final/bytes/patterns.dxf": {
+      "kind": "file",
+      "size": 4290,
+      "sha256": "4de5bf92355850dc349d84e91553578e8804c29ba464c29e3b70249e0331d88d",
+      "mode": 420,
+      "inode": 721357221,
+      "nlink": 1
+    },
+    "cases/unsupported-flags/snapshot-final/manifest.json": {
+      "kind": "file",
+      "size": 926,
+      "sha256": "b6acac70651a61366297af67eeee3fa20757d926c2fb2b052aa6d5ad1ef2ad55",
+      "mode": 420,
+      "inode": 721357222,
+      "nlink": 1
+    },
+    "close_acceptance.py": {
+      "kind": "file",
+      "size": 11188,
+      "sha256": "fbeeb0619db6d5770c84b127e724aaceb75f35f48c20854011595cd14700264a",
+      "mode": 420,
+      "inode": 721357166,
+      "nlink": 1
+    },
+    "consumer-environment.json": {
+      "kind": "file",
+      "size": 375,
+      "sha256": "5df5cc9cbc0ebf29dbaedb412c6ef3e7bf525fc914c2beacbd70034eac05b964",
+      "mode": 420,
+      "inode": 721350790,
+      "nlink": 1
+    },
+    "continuation-preflight-error.json": {
+      "kind": "file",
+      "size": 682,
+      "sha256": "0d92fe19188057c9d46d8b1625e7e941bbdae11eb4b7873be8479304d29fa464",
+      "mode": 420,
+      "inode": 721356386,
+      "nlink": 1
+    },
+    "continue_remaining.py": {
+      "kind": "file",
+      "size": 6177,
+      "sha256": "238b32c8b22dae274b09af48d0fec867df909195461dfe31c25c32c872f90a47",
+      "mode": 420,
+      "inode": 721356211,
+      "nlink": 1
+    },
+    "continue_remaining_v2.py": {
+      "kind": "file",
+      "size": 6217,
+      "sha256": "9e737e4ef6dc1a4a8762a8d1f212d800afe4ace28a7fbf1dc3442596ca25b25b",
+      "mode": 420,
+      "inode": 721356385,
+      "nlink": 1
+    },
+    "identity-after.json": {
+      "kind": "file",
+      "size": 7566,
+      "sha256": "722e14b3a7c59395f53b93f62b236a6544bb5fae259f45b99689625baeb4904b",
+      "mode": 420,
+      "inode": 721357306,
+      "nlink": 1
+    },
+    "identity-before.json": {
+      "kind": "file",
+      "size": 8156,
+      "sha256": "0c99924b3085839b33b1ba268fe870ec3c917704d33d2523c8815b76a1484ccc",
+      "mode": 420,
+      "inode": 721346440,
+      "nlink": 1
+    },
+    "inventory.json": {
+      "kind": "file",
+      "size": 108119,
+      "sha256": "f67118d152a00ff1d3d1ad793bf370419ba114044e4feb0b65014419423c103c",
+      "mode": 292,
+      "inode": 721357309,
+      "nlink": 1
+    },
+    "jobs.jsonl": {
+      "kind": "file",
+      "size": 52991,
+      "sha256": "89f9d4560f03d39ced2ca7b26a7694c39e1de20b59da87da9babd344b6b93940",
+      "mode": 420,
+      "inode": 721350800,
+      "nlink": 1
+    },
+    "mcp-discovery/01-response.json": {
+      "kind": "file",
+      "size": 569,
+      "sha256": "9b3285bef06670e566fdf28971457ea3726ae054ac2acb26fe9ce15059ac3544",
+      "mode": 420,
+      "inode": 721350805,
+      "nlink": 1
+    },
+    "mcp-discovery/01-timing.json": {
+      "kind": "file",
+      "size": 143,
+      "sha256": "3e5469b1e394bfb7c2ee38c07b1f698cf8bef798a394786e97e91eed09acb402",
+      "mode": 420,
+      "inode": 721350806,
+      "nlink": 1
+    },
+    "mcp-discovery/02-response.json": {
+      "kind": "file",
+      "size": 52652,
+      "sha256": "1e8d251f4f337d397b876f3dadbf4dfdd252bcfd7ac1413942511accd9c58b28",
+      "mode": 420,
+      "inode": 721350807,
+      "nlink": 1
+    },
+    "mcp-discovery/02-timing.json": {
+      "kind": "file",
+      "size": 147,
+      "sha256": "a8b608343d5a9b045b38fa64fd3babb98f44254ffc9eb61b7224fd375642d3f6",
+      "mode": 420,
+      "inode": 721350808,
+      "nlink": 1
+    },
+    "mcp-discovery/command.json": {
+      "kind": "file",
+      "size": 415,
+      "sha256": "8975817c1f5525380338805c7e9c35aacb88cffab7f9948dd5298028a3f4e999",
+      "mode": 420,
+      "inode": 721350796,
+      "nlink": 1
+    },
+    "mcp-discovery/result.json": {
+      "kind": "file",
+      "size": 597,
+      "sha256": "d8e930378f29ca23e1f44cf6323c74f9523fad5a2fcaaead4adead66b613c7b5",
+      "mode": 420,
+      "inode": 721350809,
+      "nlink": 1
+    },
+    "mcp-discovery/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721350799,
+      "nlink": 1
+    },
+    "mcp-discovery/stdin.jsonl": {
+      "kind": "file",
+      "size": 347,
+      "sha256": "a1c7296fb2f0b6d6087e8040bc119dc28d7457e0e877050e7f31301588fc92ed",
+      "mode": 420,
+      "inode": 721350797,
+      "nlink": 1
+    },
+    "mcp-discovery/stdout.jsonl": {
+      "kind": "file",
+      "size": 16846,
+      "sha256": "53c397e921005071e77b1e2e6456da847d7eac898539a80b00163d567d552113",
+      "mode": 420,
+      "inode": 721350798,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/01-response.json": {
+      "kind": "file",
+      "size": 569,
+      "sha256": "9b3285bef06670e566fdf28971457ea3726ae054ac2acb26fe9ce15059ac3544",
+      "mode": 420,
+      "inode": 721356396,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/01-timing.json": {
+      "kind": "file",
+      "size": 190,
+      "sha256": "f76e5c5512443dbf7c67724c0c983d403f5b8484f29f0cd3017e253e6720f0a8",
+      "mode": 420,
+      "inode": 721356397,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/02-response.json": {
+      "kind": "file",
+      "size": 52652,
+      "sha256": "1e8d251f4f337d397b876f3dadbf4dfdd252bcfd7ac1413942511accd9c58b28",
+      "mode": 420,
+      "inode": 721356398,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/02-timing.json": {
+      "kind": "file",
+      "size": 192,
+      "sha256": "5c8714eb4b262965a2f170d8273f3c33f7402fb85e813fa431bfca14d0fb681f",
+      "mode": 420,
+      "inode": 721356399,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/05-response.json": {
+      "kind": "file",
+      "size": 10008,
+      "sha256": "473f0002e3279b42cc21a4b739dabeb2080302bb1ce23f618c4fc47ae3aba5be",
+      "mode": 420,
+      "inode": 721356400,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/05-timing.json": {
+      "kind": "file",
+      "size": 201,
+      "sha256": "31d259f57a6ed7f3c67ac6dc28f6968ee7d9a50923c42ed2c3ce929bb5eab834",
+      "mode": 420,
+      "inode": 721356401,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/06-response.json": {
+      "kind": "file",
+      "size": 10008,
+      "sha256": "c7b66ac573d2e3e846f3e250beb20224538c17bf63f99ddee6bf1b06cba8ebd7",
+      "mode": 420,
+      "inode": 721356403,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/06-timing.json": {
+      "kind": "file",
+      "size": 201,
+      "sha256": "7ec71796a163ebfe4b6630041d57c57aa324640078840405c705ab8c5fe49604",
+      "mode": 420,
+      "inode": 721356404,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/07-response.json": {
+      "kind": "file",
+      "size": 10008,
+      "sha256": "82e41a5bcff00844f190197f815ff88b65ae5a5a0000313174c53e8688a5c4b7",
+      "mode": 420,
+      "inode": 721356406,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/07-timing.json": {
+      "kind": "file",
+      "size": 198,
+      "sha256": "daf78f949f70dc91acc2da2c30fd95a788d08acc66d2650520fba4bb658866bb",
+      "mode": 420,
+      "inode": 721356407,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/08-response.json": {
+      "kind": "file",
+      "size": 1091,
+      "sha256": "b1b9f678d489bc784ff37a94f0e885a2b6d738a7e0a002e91ed8204c3e3fdd7e",
+      "mode": 420,
+      "inode": 721356410,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/08-timing.json": {
+      "kind": "file",
+      "size": 200,
+      "sha256": "b467b6c4f4423f18188863a7f003d0d364f47e12fcbed8a8079f9e8d1321c3bd",
+      "mode": 420,
+      "inode": 721356411,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/09-response.json": {
+      "kind": "file",
+      "size": 1335,
+      "sha256": "b141273ec72b11dfc3d649fff97b30414820b10858fb72f87afba6d847fa5121",
+      "mode": 420,
+      "inode": 721356413,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/09-timing.json": {
+      "kind": "file",
+      "size": 200,
+      "sha256": "a80bfa61e1b8f6dca80fee9784139239e188f76589657abd0afbc9a5273ebefd",
+      "mode": 420,
+      "inode": 721356414,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/10-response.json": {
+      "kind": "file",
+      "size": 433,
+      "sha256": "b7946ca694d630ab7ea3c99a59af5d31b7ff358eba38282c4583bf5db4dab704",
+      "mode": 420,
+      "inode": 721356422,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/10-timing.json": {
+      "kind": "file",
+      "size": 202,
+      "sha256": "52c2068016fda2eef620ff6a496651c39acb5c7c8b3e57903e08567b78dea853",
+      "mode": 420,
+      "inode": 721356423,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/FROZEN-CONTINUATION.json": {
+      "kind": "file",
+      "size": 1676,
+      "sha256": "b67216e1fc023d96c5841140cff91175795eca1d4739b59e0baf7c326075aa1f",
+      "mode": 420,
+      "inode": 721356390,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/command.json": {
+      "kind": "file",
+      "size": 425,
+      "sha256": "39aecc0cce6c69534b3dd54259102fcf68f839c3ae3546b250c50c368c00abd3",
+      "mode": 420,
+      "inode": 721356392,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/result.json": {
+      "kind": "file",
+      "size": 607,
+      "sha256": "8d27fb85573a038052862b934fcae94d019a5d88c2d3852184cc4ac41a75bbc8",
+      "mode": 420,
+      "inode": 721356432,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721356395,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/stdin.jsonl": {
+      "kind": "file",
+      "size": 3213,
+      "sha256": "d912fe41d24fa77bc4f938476f8c0f62cabaf742128f9fd2203be75ad342692a",
+      "mode": 420,
+      "inode": 721356393,
+      "nlink": 1
+    },
+    "mcp-remaining-execution/stdout.jsonl": {
+      "kind": "file",
+      "size": 34212,
+      "sha256": "9373d563d74723a980459ceb69a7d3097a7e80771f1aa9fef50fbbd1fe211ac4",
+      "mode": 420,
+      "inode": 721356394,
+      "nlink": 1
+    },
+    "mcp-session/01-response.json": {
+      "kind": "file",
+      "size": 569,
+      "sha256": "9b3285bef06670e566fdf28971457ea3726ae054ac2acb26fe9ce15059ac3544",
+      "mode": 420,
+      "inode": 721351290,
+      "nlink": 1
+    },
+    "mcp-session/01-timing.json": {
+      "kind": "file",
+      "size": 145,
+      "sha256": "dc5be61ec0b540794f6db7669df7564eaa79c5323a0c0a4efa607ca960aefb24",
+      "mode": 420,
+      "inode": 721351291,
+      "nlink": 1
+    },
+    "mcp-session/02-response.json": {
+      "kind": "file",
+      "size": 52652,
+      "sha256": "1e8d251f4f337d397b876f3dadbf4dfdd252bcfd7ac1413942511accd9c58b28",
+      "mode": 420,
+      "inode": 721351292,
+      "nlink": 1
+    },
+    "mcp-session/02-timing.json": {
+      "kind": "file",
+      "size": 147,
+      "sha256": "474415c8a6fd0ce85ace106c07b35681ec7f976fcfb45f9e03ba87b984f38e17",
+      "mode": 420,
+      "inode": 721351293,
+      "nlink": 1
+    },
+    "mcp-session/03-response.json": {
+      "kind": "file",
+      "size": 2051,
+      "sha256": "83c3e8c51853bdc444e137d8fe9ab192ecf71b97f42b40d7f55ed1e9afb44477",
+      "mode": 420,
+      "inode": 721351300,
+      "nlink": 1
+    },
+    "mcp-session/03-timing.json": {
+      "kind": "file",
+      "size": 141,
+      "sha256": "2debac721ad8455e1c0c4285fb1a68782b2a643a1c30e58c3292fbf067735af0",
+      "mode": 420,
+      "inode": 721351301,
+      "nlink": 1
+    },
+    "mcp-session/04-response.json": {
+      "kind": "file",
+      "size": 10008,
+      "sha256": "1cc664a81b2b0404a2196788b0f24f1056a766fe7290e87748129b95733c727e",
+      "mode": 420,
+      "inode": 721351316,
+      "nlink": 1
+    },
+    "mcp-session/04-timing.json": {
+      "kind": "file",
+      "size": 158,
+      "sha256": "873d2baa1d4e09a1ce847f4474445df9c6758f9bf1c1731c4ce2c78714ac0d1a",
+      "mode": 420,
+      "inode": 721351318,
+      "nlink": 1
+    },
+    "mcp-session/command.json": {
+      "kind": "file",
+      "size": 413,
+      "sha256": "7a6405f5a8159733b6f084d399b42ebd11b7fc9600b75998fcb47dbb94e9b026",
+      "mode": 420,
+      "inode": 721351286,
+      "nlink": 1
+    },
+    "mcp-session/result.json": {
+      "kind": "file",
+      "size": 645,
+      "sha256": "e239088b3297df40e6a98e2a745a9fdf7b0d806db23293fb4a59d124837d7a80",
+      "mode": 420,
+      "inode": 721351322,
+      "nlink": 1
+    },
+    "mcp-session/stderr.bin": {
+      "kind": "file",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420,
+      "inode": 721351289,
+      "nlink": 1
+    },
+    "mcp-session/stdin.jsonl": {
+      "kind": "file",
+      "size": 1381,
+      "sha256": "a644b1976373b4acfc63fcf4bdb671cc49744772a4dc7b0818295fc6d7d6772a",
+      "mode": 420,
+      "inode": 721351287,
+      "nlink": 1
+    },
+    "mcp-session/stdout.jsonl": {
+      "kind": "file",
+      "size": 23706,
+      "sha256": "8f0468cad900497edee89b787487b70cad66a3d58ec8584a846bcb082b5ad5c2",
+      "mode": 420,
+      "inode": 721351288,
+      "nlink": 1
+    },
+    "requests/01-discover.jsonl": {
+      "kind": "file",
+      "size": 176,
+      "sha256": "70e421e40a8b51d218cd465be0a59934ff21d5ade2d7d17454004e66e18d2317",
+      "mode": 420,
+      "inode": 721350074,
+      "nlink": 1
+    },
+    "requests/02-tools-list.jsonl": {
+      "kind": "file",
+      "size": 171,
+      "sha256": "bd1467d3c85966567a8d3b4ceec683dfc3309d4375f8576e9b290bee9802f5d8",
+      "mode": 420,
+      "inode": 721350075,
+      "nlink": 1
+    },
+    "requests/03-import.jsonl": {
+      "kind": "file",
+      "size": 669,
+      "sha256": "a95d80635321b0f9931911d0049291c0cfec612a5c544dab38d8ce2f438fdbd3",
+      "mode": 420,
+      "inode": 721350076,
+      "nlink": 1
+    },
+    "requests/04-inspect-typed-command.jsonl": {
+      "kind": "file",
+      "size": 365,
+      "sha256": "6ad3b41ac1a9265ef7db568cafecd5bdfb80d660d3ff9cea99379080076d2917",
+      "mode": 420,
+      "inode": 721350077,
+      "nlink": 1
+    },
+    "requests/05-inspect-cli-import.jsonl": {
+      "kind": "file",
+      "size": 362,
+      "sha256": "c2e44f889b88c509bdee882ec2c5d72fcede792320f07893e655fd4300376833",
+      "mode": 420,
+      "inode": 721350078,
+      "nlink": 1
+    },
+    "requests/06-inspect-mcp-import.jsonl": {
+      "kind": "file",
+      "size": 362,
+      "sha256": "7831bfbe50d141a65b3c761e19f9d20dd6ee9c9d28f47534bb3f07ce6c1b1e38",
+      "mode": 420,
+      "inode": 721350079,
+      "nlink": 1
+    },
+    "requests/07-inspect-in-place.jsonl": {
+      "kind": "file",
+      "size": 362,
+      "sha256": "f61b022a543f193916d43ae40250a7e686c134438d11429e977a5f5389ab57c4",
+      "mode": 420,
+      "inode": 721350080,
+      "nlink": 1
+    },
+    "requests/08-project_export_svg.jsonl": {
+      "kind": "file",
+      "size": 516,
+      "sha256": "598d74b0cce4b3a96b46d8507991bea009b4a57a87c7904dd8cd3f795d1be3e6",
+      "mode": 420,
+      "inode": 721350081,
+      "nlink": 1
+    },
+    "requests/09-project_export_dxf.jsonl": {
+      "kind": "file",
+      "size": 516,
+      "sha256": "375632a7368b0835a014f80d13ad7d14ae084aadc2714a1632233c3e3745c052",
+      "mode": 420,
+      "inode": 721350082,
+      "nlink": 1
+    },
+    "requests/10-extra-file-argument.jsonl": {
+      "kind": "file",
+      "size": 748,
+      "sha256": "8e1fa021d70d976303b9d8bdf37a5e13fe8a7a3aaf23c8c56c1bc616f98108f2",
+      "mode": 420,
+      "inode": 721350083,
+      "nlink": 1
+    },
+    "run_acceptance.py": {
+      "kind": "file",
+      "size": 18525,
+      "sha256": "80f85f72936bc0681426cd329df0b4b93c54510885153f15923e4141f09595ab",
+      "mode": 420,
+      "inode": 721349937,
+      "nlink": 1
+    },
+    "schema-check.json": {
+      "kind": "file",
+      "size": 220,
+      "sha256": "615bb7bd3b1506cc8f975b6819612b2275aeffcf5a4641bb533de830963d0a1b",
+      "mode": 420,
+      "inode": 721350874,
+      "nlink": 1
+    },
+    "terminal-jobs.json": {
+      "kind": "file",
+      "size": 33930,
+      "sha256": "53ca81f55cdef3200085ec13034514d9869119c985cfea74c1b5505792d66257",
+      "mode": 420,
+      "inode": 721357305,
+      "nlink": 1
+    }
+  }
+}
