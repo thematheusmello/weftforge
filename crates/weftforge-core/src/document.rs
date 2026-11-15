@@ -667,6 +667,35 @@ impl Project {
                     ],
                 })?;
             }
+            Command::AddEllipse {
+                name,
+                origin: [x, y],
+                width,
+                height,
+            } => {
+                ensure(
+                    width.is_finite() && height.is_finite() && width > 1.0e-6 && height > 1.0e-6,
+                    "Ellipse dimensions must be positive metres",
+                )?;
+                let [rx, ry] = [width * 0.5, height * 0.5];
+                let [cx, cy, right, top] = [x + rx, y + ry, x + width, y + height];
+                let first_curve = self.curves.len();
+                self.apply(Command::AddPolygon {
+                    name,
+                    vertices: vec![[cx, y], [right, cy], [cx, top], [x, cy]],
+                })?;
+                // shortcut: four cubics approximate a conic; use a conic relation for exact ellipse editing.
+                let k = 4.0 * (std::f64::consts::SQRT_2 - 1.0) / 3.0;
+                let controls = [
+                    [[cx + k * rx, y], [right, cy - k * ry]],
+                    [[right, cy + k * ry], [cx + k * rx, top]],
+                    [[cx - k * rx, top], [x, cy + k * ry]],
+                    [[x, cy - k * ry], [cx - k * rx, y]],
+                ];
+                for (curve, controls) in self.curves[first_curve..].iter_mut().zip(controls) {
+                    curve.controls = Some(controls);
+                }
+            }
             Command::MovePoint { point, position } => {
                 self.points
                     .iter_mut()
@@ -1264,6 +1293,12 @@ pub enum Command {
         vertices: Vec<[f64; 2]>,
     },
     AddRectangle {
+        name: String,
+        origin: [f64; 2],
+        width: f64,
+        height: f64,
+    },
+    AddEllipse {
         name: String,
         origin: [f64; 2],
         width: f64,

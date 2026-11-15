@@ -1,0 +1,98 @@
+Original numeric ellipse focused implementation checks — 2026-11-14
+Prospective contract commit: 921722f
+Scope: implementation tests and egui AccessKit harness; no observed native or reference parity claim.
+Cargo target is private to this worktree. Full integrated gates and registry/map source re-pin belong to root acceptance.
+
+$ CARGO_TARGET_DIR=target cargo fmt --all --check
+Exit status: 0
+
+$ CARGO_TARGET_DIR=target cargo test --quiet -p weftforge-core --test ellipse -- --nocapture
+
+running 4 tests
+Independent normalized radial error: sampled 0.0002725300074280; analytic maximum 0.0002725300074278; declared limit 0.001
+....
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.27s
+
+Exit status: 0
+
+$ CARGO_TARGET_DIR=target cargo test --quiet -p weftforge-cli --test ellipse --test mcp_stdio --test curves
+
+running 1 test
+.
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.28s
+
+
+running 1 test
+.
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+
+
+running 7 tests
+.......
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.19s
+
+Exit status: 0
+
+$ CARGO_TARGET_DIR=target cargo test --quiet -p weftforge ellipse_accessible -- --nocapture
+
+running 1 test
+.
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 33 filtered out; finished in 0.20s
+
+Exit status: 0
+
+$ CARGO_TARGET_DIR=target cargo test --quiet -p weftforge inspector_focus_does_not_reuse_edit_text_after_adding_or_selecting_pieces
+
+running 1 test
+.
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 33 filtered out; finished in 0.15s
+
+Exit status: 0
+
+$ CARGO_TARGET_DIR=target cargo test --quiet -p weftforge rectangle_modal_blocks_background_accesskit_actions_and_preserves_staged_edits
+
+running 1 test
+.
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 33 filtered out; finished in 0.25s
+
+Exit status: 0
+
+$ CARGO_TARGET_DIR=target cargo clippy --quiet -p weftforge-core -p weftforge-cli -p weftforge --all-targets -- -D warnings
+error: this call to `clone` can be replaced with `std::slice::from_ref`
+   --> crates/weftforge-core/tests/ellipse.rs:301:9
+    |
+301 |         assert_eq!(mesh.sewing_groups, [geometry.clone()]);
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.94.0/index.html#cloned_ref_to_slice_refs
+    = note: `-D clippy::cloned-ref-to-slice-refs` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::cloned_ref_to_slice_refs)]`
+    = note: this error originates in the macro `assert_eq` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: could not compile `weftforge-core` (test "ellipse") due to 1 previous error
+Exit status: 101
+
+Correction after first strict-Clippy failure: replace an unnecessary test clone with std::slice::from_ref; no lint override or criterion change. Extend the existing rectangle-modal regression to reject background Add ellipse actions too.
+
+$ CARGO_TARGET_DIR=target cargo fmt --all --check
+Exit status: 0
+
+$ CARGO_TARGET_DIR=target cargo test --quiet -p weftforge-core --test ellipse -- --nocapture
+
+running 4 tests
+Independent normalized radial error: sampled 0.0002725300074280; analytic maximum 0.0002725300074278; declared limit 0.001
+....
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.28s
+
+Exit status: 0
+
+$ CARGO_TARGET_DIR=target cargo test --quiet -p weftforge rectangle_modal_blocks_background_accesskit_actions_and_preserves_staged_edits
+
+running 1 test
+.
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 33 filtered out; finished in 0.40s
+
+Exit status: 0
+
+$ CARGO_TARGET_DIR=target cargo clippy --quiet -p weftforge-core -p weftforge-cli -p weftforge --all-targets -- -D warnings
+Exit status: 0

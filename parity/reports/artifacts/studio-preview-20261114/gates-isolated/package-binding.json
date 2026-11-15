@@ -1,0 +1,19 @@
+{
+  "source_commit": "b760b990b142bb46b2481434fead9e7e0178ae0f",
+  "observed_utc": "2026-11-15T00:19:00.586457+00:00",
+  "target_is_real": true,
+  "target_nested_symlinks": [],
+  "source_files_unchanged": 39,
+  "all_five_gates_exit_zero": true,
+  "files": {
+    "target/release/weftforge": "3f0e2388726c2768dfe1ddc3016f399b0f497acb13e9cfa70b9b031285dfd716",
+    "target/release/weftforge-cli": "78f40c58c37742434ba288ab82354cc59f70575e1b3219a4a0fd3be1229aadca",
+    "target/package/weftforge": "3f0e2388726c2768dfe1ddc3016f399b0f497acb13e9cfa70b9b031285dfd716",
+    "target/package/weftforge-cli": "78f40c58c37742434ba288ab82354cc59f70575e1b3219a4a0fd3be1229aadca",
+    "target/package/WeftForge.app/Contents/MacOS/weftforge": "3f0e2388726c2768dfe1ddc3016f399b0f497acb13e9cfa70b9b031285dfd716",
+    "target/package/WeftForge.app/Contents/Info.plist": "5ac9539a4fb95ced9cc9463a5840176f69b86a826c39be0f7971378d93c218b5"
+  },
+  "historically_observed_native_sha256": "3f0e2388726c2768dfe1ddc3016f399b0f497acb13e9cfa70b9b031285dfd716",
+  "fresh_package_native_matches_observed_preview": true,
+  "limits": "The repeated private-target build and executable byte equality qualify the build isolation finding; no new reference comparison, runtime input or physics run occurred."
+}

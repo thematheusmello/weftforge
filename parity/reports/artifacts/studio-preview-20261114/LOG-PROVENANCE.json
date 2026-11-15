@@ -1,0 +1,264 @@
+{
+  "policy": "Only declared literal host-prefix replacement; source, metrics, diagnostics and test output otherwise unchanged.",
+  "logs": [
+    {
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_path": "gates/fmt.public.log",
+      "literal_prefix_substitutions": []
+    },
+    {
+      "raw_log_sha256": "8099df3bd0c077cd9fe6bf1b29b430dda07c4ab9d4e4f034d9e7da6928acda4b",
+      "public_log_sha256": "b18779428723b27ae82670f5632769b7bd37509695c7548a618ce64b8e64fd2d",
+      "public_path": "gates/package.public.log",
+      "literal_prefix_substitutions": [
+        {
+          "original_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "WORKSPACE",
+          "count": 1
+        },
+        {
+          "original_prefix_sha256": "87293831c575259e5f460df8ecfc2030ea7057ca49b26d9e9eab897d4f3dffa6",
+          "replacement": "BUILD_CACHE",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "raw_log_sha256": "742ce60df72ed27b9ce27841d138647f264ca5f1905a197a5708884891f5566a",
+      "public_log_sha256": "62225c63834af84d7eb3948a671126d35d4adb04c719401532f309058549da2e",
+      "public_path": "gates/tests.public.log",
+      "literal_prefix_substitutions": [
+        {
+          "original_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "WORKSPACE",
+          "count": 1
+        },
+        {
+          "original_prefix_sha256": "87293831c575259e5f460df8ecfc2030ea7057ca49b26d9e9eab897d4f3dffa6",
+          "replacement": "BUILD_CACHE",
+          "count": 19
+        }
+      ]
+    },
+    {
+      "raw_log_sha256": "8215a72a94fc788fece950cbed4cc1eb3caa819a0bf9d539e842cff50a3248cb",
+      "public_log_sha256": "1d6bdf19098d5e22676486495b18324ec4eb6949b9c07febeb07e65c47dbb792",
+      "public_path": "gates/clippy.public.log",
+      "literal_prefix_substitutions": [
+        {
+          "original_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "WORKSPACE",
+          "count": 1
+        },
+        {
+          "original_prefix_sha256": "87293831c575259e5f460df8ecfc2030ea7057ca49b26d9e9eab897d4f3dffa6",
+          "replacement": "BUILD_CACHE",
+          "count": 21
+        }
+      ]
+    },
+    {
+      "raw_log_sha256": "b005d8c4daf52708b786f88844f9f6e290e880a149ae22efef76f0d754863277",
+      "public_log_sha256": "82bc55adca98221f8fdd4255ac06228f962f01424c088422d644bfddac40b8b4",
+      "public_path": "gates/xtask.public.log",
+      "literal_prefix_substitutions": [
+        {
+          "original_prefix_sha256": "87293831c575259e5f460df8ecfc2030ea7057ca49b26d9e9eab897d4f3dffa6",
+          "replacement": "BUILD_CACHE",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_path": "prior-attempts/55b/fmt.public.log",
+      "literal_prefix_substitutions": []
+    },
+    {
+      "raw_log_sha256": "0ce489d962c117b5b8a7c1eb9ed98f2995475e48a1feeca2f1c834c72b81db0a",
+      "public_log_sha256": "554200c2abfe40ed4daa9d3a3ec5aefab8110aec894127962e36dd52279ab3a7",
+      "public_path": "prior-attempts/55b/package.public.log",
+      "literal_prefix_substitutions": [
+        {
+          "original_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "WORKSPACE",
+          "count": 5
+        },
+        {
+          "original_prefix_sha256": "87293831c575259e5f460df8ecfc2030ea7057ca49b26d9e9eab897d4f3dffa6",
+          "replacement": "BUILD_CACHE",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "raw_log_sha256": "c05631113a20a1b2c15cbd591d66f028d6db4f4c0686da47cc312aea4fe2067a",
+      "public_log_sha256": "c6ba1bfe5e7ebe69a0bc7b7aedc5c17636fa43dc19aae2791916a54a58bff170",
+      "public_path": "prior-attempts/55b/tests.public.log",
+      "literal_prefix_substitutions": [
+        {
+          "original_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "WORKSPACE",
+          "count": 5
+        },
+        {
+          "original_prefix_sha256": "87293831c575259e5f460df8ecfc2030ea7057ca49b26d9e9eab897d4f3dffa6",
+          "replacement": "BUILD_CACHE",
+          "count": 19
+        }
+      ]
+    },
+    {
+      "raw_log_sha256": "75596141eb340c0106ec58af92d865892dda5fb029129640a6f0d221580921e9",
+      "public_log_sha256": "3756bf5c87c2dcda4c8fb5708664c43bd8920cf960b5cb9b2fdbb3f7a1955273",
+      "public_path": "prior-attempts/55b/weftforge-preview-check.public.log",
+      "literal_prefix_substitutions": [
+        {
+          "original_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "WORKSPACE",
+          "count": 3
+        },
+        {
+          "original_prefix_sha256": "87293831c575259e5f460df8ecfc2030ea7057ca49b26d9e9eab897d4f3dffa6",
+          "replacement": "BUILD_CACHE",
+          "count": 1
+        },
+        {
+          "original_prefix_sha256": "32b0fec3c5bef9bf08a8bdf2934e61d9bc332a7f690949ba31fe65df7083fa9a",
+          "replacement": "CARGO_HOME",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_path": "prior-attempts/9e/fmt.public.log",
+      "literal_prefix_substitutions": []
+    },
+    {
+      "raw_log_sha256": "3c39a41f460e1f313e552a975d14cbeb88732cf96c974d87d033b715c2eae295",
+      "public_log_sha256": "789d07122bbe86785331e19750afa07e257359028cb7bcec4d74b7c9c1716f52",
+      "public_path": "prior-attempts/9e/package.public.log",
+      "literal_prefix_substitutions": [
+        {
+          "original_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "WORKSPACE",
+          "count": 1
+        },
+        {
+          "original_prefix_sha256": "87293831c575259e5f460df8ecfc2030ea7057ca49b26d9e9eab897d4f3dffa6",
+          "replacement": "BUILD_CACHE",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "raw_log_sha256": "4b92feb578de73c66ddc67ea8090eaf650adf0004a73e74e0f1cdce465daf511",
+      "public_log_sha256": "41344f0353c8da654db2815c10eb01a2a0d8e30737feb73cf338526590465f91",
+      "public_path": "prior-attempts/9e/tests.public.log",
+      "literal_prefix_substitutions": [
+        {
+          "original_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "WORKSPACE",
+          "count": 1
+        },
+        {
+          "original_prefix_sha256": "87293831c575259e5f460df8ecfc2030ea7057ca49b26d9e9eab897d4f3dffa6",
+          "replacement": "BUILD_CACHE",
+          "count": 19
+        }
+      ]
+    },
+    {
+      "raw_log_sha256": "fa74921b70853409e72a81b4d442fbf8eeb73e1a1a9218ed580a32d60d105969",
+      "public_log_sha256": "3474961e05494bf259d0755a382f63b1252c803dad41a2979ebabc3ea0a4f6b6",
+      "public_path": "prior-attempts/9e/clippy.public.log",
+      "literal_prefix_substitutions": [
+        {
+          "original_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "WORKSPACE",
+          "count": 5
+        },
+        {
+          "original_prefix_sha256": "87293831c575259e5f460df8ecfc2030ea7057ca49b26d9e9eab897d4f3dffa6",
+          "replacement": "BUILD_CACHE",
+          "count": 21
+        }
+      ]
+    },
+    {
+      "raw_log_sha256": "9478c5573f390b93d399e361498f9b4196cbce3fb5adfbe8149a0238e251bcfd",
+      "public_log_sha256": "95edf5bb41ff01ba086d6fca04b67d32876f5958bb69e5c630ab5385e238fde9",
+      "public_path": "prior-attempts/9e/xtask.public.log",
+      "literal_prefix_substitutions": [
+        {
+          "original_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "WORKSPACE",
+          "count": 3
+        },
+        {
+          "original_prefix_sha256": "87293831c575259e5f460df8ecfc2030ea7057ca49b26d9e9eab897d4f3dffa6",
+          "replacement": "BUILD_CACHE",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_path": "gates-isolated/fmt.public.log",
+      "literal_prefix_substitutions": []
+    },
+    {
+      "raw_log_sha256": "1a7de628acca0275d40491f7021b6346e7d47eca89010c02fb1da95f1c6fb8ff",
+      "public_log_sha256": "b8f4c3cf402278b41794771e88bcd9ca2e894703f1e41c1786b977baaf47921e",
+      "public_path": "gates-isolated/package.public.log",
+      "literal_prefix_substitutions": [
+        {
+          "original_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "WORKSPACE",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "raw_log_sha256": "0c136769760dba8d7ea1ce0338beb16da46263f5d2eabdc4641ffce2b5c9be1f",
+      "public_log_sha256": "6dcd08be40d2f4636f0b74af53d86ee079bea6edf2f0d66dcdc2fc9c2b8191b4",
+      "public_path": "gates-isolated/tests.public.log",
+      "literal_prefix_substitutions": [
+        {
+          "original_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "WORKSPACE",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "raw_log_sha256": "a5c763fdbc034cd6d78a75e10450cdbdf795937913b196a19568dd35149edfd4",
+      "public_log_sha256": "599e49042f6bcac6d9b350a75bb72df7b6ed4266f407d72ad38e6499ac10171f",
+      "public_path": "gates-isolated/clippy.public.log",
+      "literal_prefix_substitutions": [
+        {
+          "original_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "WORKSPACE",
+          "count": 5
+        }
+      ]
+    },
+    {
+      "raw_log_sha256": "3c7e665ba5483db962912b12b1198a0b1c1b34024ea8e6c1c5c3f2f6dbe3ad4a",
+      "public_log_sha256": "6a2db83d6b058fa3ef1fc05b8cae3e20c1ca3ee57b825a3f23da4b8d8d70c65d",
+      "public_path": "gates-isolated/xtask.public.log",
+      "literal_prefix_substitutions": [
+        {
+          "original_prefix_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "WORKSPACE",
+          "count": 3
+        }
+      ]
+    }
+  ]
+}

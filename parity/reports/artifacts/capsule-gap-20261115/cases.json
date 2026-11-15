@@ -1,0 +1,55 @@
+{
+  "kind": "saved static geometric counterexamples, not a new simulation or exhaustive maximum",
+  "cases": [
+    {
+      "case": "A",
+      "source_commit": "3aa20b1597036e9f1dc9725b52cdc928ec1bae96",
+      "gold_manifest_sha256": "8aeb60086fd8b7f2927bf4b8f30bf9187a6b07985b07634b793b3737f14991ec",
+      "assets": {
+        "project": {
+          "path": "A.weftforge",
+          "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+        },
+        "obj": {
+          "path": "A-180.obj",
+          "sha256": "667b774590c8acaed2a5bd9f2ea8f68b2908ac5833f25b20d216757ad644de2b"
+        }
+      },
+      "triangle_index_0based": 1164,
+      "barycentric": [
+        0.5000000000017402,
+        0.4999999999982599,
+        0.0
+      ],
+      "capsule_index_0based": 2,
+      "expected_witness_penetration_m": 0.009009700546250624,
+      "static_check_tolerance_m": 1e-10,
+      "contact_screen_below_m": 0.002
+    },
+    {
+      "case": "B",
+      "source_commit": "3aa20b1597036e9f1dc9725b52cdc928ec1bae96",
+      "gold_manifest_sha256": "8aeb60086fd8b7f2927bf4b8f30bf9187a6b07985b07634b793b3737f14991ec",
+      "assets": {
+        "project": {
+          "path": "B.weftforge",
+          "sha256": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+        },
+        "obj": {
+          "path": "B-180.obj",
+          "sha256": "d7c1988ae80f3a1db0a74d79e56dd3646856f991ced19889f9475de08fb41b5b"
+        }
+      },
+      "triangle_index_0based": 678,
+      "barycentric": [
+        0.5002145460910506,
+        0.49978545390894935,
+        0.0
+      ],
+      "capsule_index_0based": 2,
+      "expected_witness_penetration_m": 0.010672413745369737,
+      "static_check_tolerance_m": 1e-10,
+      "contact_screen_below_m": 0.002
+    }
+  ]
+}

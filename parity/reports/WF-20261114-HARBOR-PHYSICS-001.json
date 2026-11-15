@@ -7,7 +7,7 @@
   "kind": "implementation_only",
   "complete_contract": false,
   "reference_executed": false,
-  "freshness": "current",
+  "freshness": "stale",
   "source_scope": [
     ".cargo",
     "Cargo.toml",
@@ -349,5 +349,6 @@
     "clean_saved_replay_head": "0eaf7aa674da23a2fe94943a4f6c2b51e38e447c",
     "new_product_or_physics_runs_for_publication": 0
   },
-  "pull_request": "https://github.com/thematheusmello/weftforge/pull/36"
+  "pull_request": "https://github.com/thematheusmello/weftforge/pull/36",
+  "freshness_reason": "Integrating conservative contact search and the native rest-stage reset changes the scoped simulation/UI source. Historical inputs, raw outputs, failures and source identities remain unchanged. Complete checks on the integrated source remain pending."
 }

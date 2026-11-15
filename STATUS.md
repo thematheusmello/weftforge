@@ -1,16 +1,119 @@
-# WeftForge status — active development, 2026-11-14
+# WeftForge status — active development, 2026-11-15
 
 The complete independent native garment studio remains the goal. Verified
 reference parity is **0/56** coarse contracts; discovery is incomplete and no
 roadmap gate is accepted. The 949 observed interface entries are an engineering
 inventory, not a feature-completion denominator.
 
+## Native visual preview checkpoint
+
+The user requested the latest running appearance and confirmed PhotoCraft as
+the visual direction. The isolated `feat/native-studio-preview` worktree at
+`.local/native-studio-preview-20261114` is committed at `b760b990` and includes
+the independently authored editable ellipse from `fab0f3b5`, charcoal styling,
+right Properties, larger paired viewports, and bottom simulation/status controls.
+Properties commands execute before canvas painting; independent triangle-edge
+strokes avoid acute wireframe joins. This is an implementation preview, not a
+new reference-parity or roadmap acceptance claim.
+
+All 35 focused native tests pass, including current-frame exact sewing guides,
+scoped command-search actions, retained export drafts, and actual canvas paint
+non-overlap at minimum/default sizes. Final `b760b990` passed formatting,
+141 workspace Rust tests, strict workspace/all-target Clippy, xtask verification
+(54 Python checks, registry/map and actual CLI help), and standard local unsigned
+packaging. All five jobs under `.local/native-preview-checks-v3-20261114` are
+terminal with exit0 (exec24713; wrapper28492). Those builds used nested target
+links to shared compiled outputs; their raw results retain that qualification.
+The preview target was preserved and replaced by an empty real directory.
+Fresh isolated formatting, all141Rust tests, strict Clippy, xtask verification
+and standard packaging passed under `.local/native-preview-isolated-checks-20261115`
+(wrapper19046, exec82428, all terminal0). The resulting native binary is
+byte-identical to the observed3f0 preview. See the tracked
+[gallery](docs/studio-preview.md) and
+[build qualification](parity/reports/artifacts/studio-preview-20261114/BUILD-ISOLATION-QUALIFICATION.json).
+Earlier55b checks failed four
+observer/layout cases;9e passed automated gates but its actual launch exposed
+transport overpainting. Both attempts and raw captures remain retained.
+
+The final native preview is open as **WeftForge Studio**, process32794, binary
+SHA256 `3f0e2388726c2768dfe1ddc3016f399b0f497acb13e9cfa70b9b031285dfd716`.
+Four raw1640x1032 JPEG captures under
+`.local/native-preview-20261114/captures/current` show the draped Harbor workspace,
+actual canvas selection of an editable ellipse quarter, ordered two-to-three
+sewing spans, and the four-knot easing map. The final canvas/transport layout was
+visually checked. The loaded Harbor demonstration accepted60 zero-gravity
+assembly steps plus120 drape steps at8 substeps/32 iterations and displays3.000s,
+8.67% final peak strain. This is a visual demonstration, not trajectory quality
+acceptance. Unplanned Manual Play on the ordered-sewing fixture, external-change
+driver refusals, and severe displayed strain were retained separately; input
+origin was not independently established. It was paused before loading Harbor.
+Faint AA artifacts on thin projected triangles remain; production rendering,
+advanced construction, animation and general garment convergence are unfinished.
+The complete local receipt is `.local/native-preview-20261114/PREVIEW-RECEIPT.json`
+(SHA256 `0f82373ff5164c33d5c0d81a9ce86e54dcb9af8b7602910a5f25b06e7140fc83`).
+
+The separate frozen7fe native workflow has authored both14-edge panels,
+placement/grain and all8seams, saved revision16, actually quit, launched a fresh
+empty process and reopened the identical source. Height/history revisions17–20
+match the predeclared fields exactly. CaseA20 completed60assembly+120drape steps
+in279.694913s, including exports and inspections, within the420s cap. Its0/60/180
+OBJ files are literally byte-identical to the frozen headless baseline. The
+independent final material-axis strain is8.6662644% and sampled seam gap is
+6.89445e-9m. These are native/headless equivalence checks, not reference parity.
+
+After Drape, the temporary edit21 produced640Rest with no time/strain state;
+Undo22 restored654Rest. The pending-mesh transient was unobserved. A second
+actual quit/relaunch/reopen preserved source bytes, and one height edit23
+produced the exact physical fields and restOBJ for caseB. B completed in
+207.261676542s with all three exports byte-identical to gold; final strain is
+6.8045029% and sampled seam gap6.08705e-9m. Independent curve/t measurements
+confirm the front changes0.04m at rest and0.029859952m at frame180. Process14668
+is saved at revision23, paused at Drape3.000s, with no active solver job.
+Root's37 frozen runtime/test files and the observed de81 executable remain
+unchanged. The closed private native inventory contains398payload files and48
+unedited JPEGs; full public preparation is still pending.
+
+The original workflow evaluator's revision sequence assumption fails across
+honest fresh-process opens0→16/22. A separately frozen strict lifecycle supplement
+preserves that failure and the raw action metadata defects. Save18's failed helper
+invocation lacks an on-disk original per-input trace; the later derivative is
+explicitly post hoc, and full action coverage is unproven. The unchanged
+supplement failed its honestfalse-completeness guard (exit2); later graph checks
+were not executed. No complete native workflow acceptance is claimed.
+
+Independent static geometry found full triangle/capsule penetration of at least
+9.0097005mm in HarborA180 and10.6724137mm inB180 despite zero supported vertex
+residual. Root reproduced the witnesses from the saved geometry; both exceed
+the unchanged2mm contact screen. GoldenA29 also retains15.3559% strain above15%.
+These failures prevent a contact or garment gate pass. A separate implementation
+at24dba771 adds static surface contact and conservative uncertainty diagnostics;
+39sim tests, strict sim Clippy and formatting pass. Independent source/static
+review found no bounded blocker across83oracle cases, including9conservative
+uncertain bounds. Root0770204 adds the CLI quality guard, legacy diagnostic
+decoding check and native uncertainty display. Formatting, all153Rust tests,
+strict workspace Clippy, xtask verification and standard unsigned packaging pass
+under `.local/capsule-integrated-checks-20261115` (exec93102/wrapper30000, all
+terminal0). Independent execution of the unchanged Rust detector also agrees
+with the original83oracle cases. No garment has run on that new solver.
+
+Preview evidence is under `.local/native-preview-20261114` and the staged public
+gallery; it cannot substitute for empty-project acceptance. Next publish the
+reviewed gallery/source and fixed contact counterexamples, then complete the contact increment's
+integration and prospective garment checks. GitHub Actions was rechecked
+`enabled:false` on2026-11-15; README branding remains product focused.
+
 ## Publication and cost policy
 
 Public repository: https://github.com/thematheusmello/weftforge.
-Last published main is `e6595ee787a30b3e8efa8502b42ce70536481d66`, merged
-[PR35](https://github.com/thematheusmello/weftforge/pull/35). Its tree equals tested
-final head `c8cdc3b0`; all37 runtime files match executed `6c45535c`.
+The native preview, ellipse and contact counterexamples are delivered through
+[PR37](https://github.com/thematheusmello/weftforge/pull/37). Clean0289553 checks
+validated all2,087 referenced artifacts and the unchanged39-fileb760 runtime;
+the registry records the PR without promoting reference parity.
+Previous published main is `3bc6317733d3dec6bed45dc056fdad669c369a1a`, merged
+[PR36](https://github.com/thematheusmello/weftforge/pull/36). Its tree equals tested
+final head `63963816`; all 37 runtime files match executed `6c45535c`.
+Earlier [PR35](https://github.com/thematheusmello/weftforge/pull/35), main
+`e6595ee7`, delivered strain attribution; its tree equals tested `c8cdc3b0`.
 Earlier [PR34](https://github.com/thematheusmello/weftforge/pull/34), main `2d65b9e`,
 retains the original cloth balance failure, 132-file bundle and four
 clean-publication receipts. Its tree equals tested final head `0130bf76`. Earlier
@@ -21,17 +124,19 @@ Visibility delivery is merged. Clean final `c8cdc3b0` checks all1,686 report
 artifacts and the unchanged37-file runtime. Publication audit is retained in
 `.local/verification/published-e6595ee787a3.json`.
 
-[PR36](https://github.com/thematheusmello/weftforge/pull/36) prepares the Harbor
+[PR36](https://github.com/thematheusmello/weftforge/pull/36) delivers the Harbor
 authoring/stopped-physics evidence and historical capture-encoding qualification.
 Clean `58190f75` validates all2,024 tracked report artifacts and the unchanged
 37-file runtime; its326-file closed bundle has strict saved replay,54Python
-checks, actualCLIhelp and independent publication review. Final PR metadata
-is being qualified locally; runtime optimization/native-stage candidates remain
-separate and are not advertised as integrated behavior.
+checks, actual CLI help and independent publication review. Final clean
+`63963816` repeats registry/map and all 2,024 artifact checks. Publication audit
+is `.local/verification/published-3bc6317733d3.json`. Runtime optimization and
+native-stage changes are now merged locally for integration checks; public main
+still has the earlier runtime.
 
 **Keep GitHub Actions and Pages disabled until the entire project is complete.**
 The user requested this to stop development costs. Repository `enabled:false`
-and all 54 historical runs terminal were rechecked after all three merges. PR33/34/35
+and all 54 historical runs terminal were rechecked after PR36. PR33/34/35/36
 final heads and merges each have zero workflow runs. Last CI/Pages runs
 43585595600/43585595609 belong to main `1343b0c46b5c4f097709996785fb55d5d23ac174`.
 Do not dispatch workflows at interim checkpoints. Required checks run locally;
@@ -43,9 +148,48 @@ and cross-platform launch/distribution acceptance remain open.
 
 ## Current material-strain increment
 
-Working branch: `research/force-balance-audit`; published visibility integration
-is `938b2670746fb97da70540912595637264b4bf1e`.
-All 37 scoped runtime/test files exactly match executed candidate
+Working branch: `feat/contact-native-workflow`; local integration is
+`c3fc77b4451ca4a86d9c1549c7ab9b09d9997516`. Its complete core/sim source matches
+qualified `3aa20b15`, and native/CLI source matches stage-fix `1ad6b8ed`. Only
+three runtime/test files differ from `6c45535c`; linear-stitch candidate `35afac60`
+is excluded. Candidate `7fe9e187d34ef6ce87184f502c87e01357f15b2f` now passes
+formatting, all 133 Rust tests, strict workspace Clippy, xtask's 54 Python checks,
+registry/map, actual CLI help and standard unsigned packaging. Root gate24823 /
+wrapper11621 and all five children are terminal0. Logs and source pretest are in
+`.local/contact-native-integration-20261114/`; pretest SHA is `a83f0e2e…da4d0`.
+The three earlier reports and their 13 feature freshness states
+are marked stale; source-bound outputs and failures remain intact.
+
+The eight-file private package is frozen read-only at
+`.local/candidates/7fe9e187d34e/`. Native SHA is
+`de81ef668998f016756492b94ef7786118f929e777cb73e2c9587cc94ba91996`;
+CLI SHA is `26a75925c69eb5cfc67fa9d3a4561a5e5de5a74b087a5e49234f2d5757c09aa9`.
+Binary binding SHA is `df7bca1fd682665575597f933048ce66c5f03d29c95821908945bb88f24e5003`.
+No new native launch/input/physics has occurred. The actor's frozen plan in
+`.local/harbor-native-integrated-20261114/native-acceptance-plan-v2.json`, SHA
+`cdf04026197c7d672deb978a03ab86d8529e54bd57d67f8532e6e02554745edf`,
+requires current-source empty UI creation, A20 simulation, edit21/Undo22 with
+actual Drape-to-Rest observation, save/real quit/reopen A22, then B23 simulation
+and export. Exactly two whole 420-second physical cases, no tuning/retry.
+
+The independent adapter in `.local/harbor-native-evaluator-20261114/` is frozen:
+`evaluator-freeze.json` SHA is
+`ad82440d9c697d39f55ee229669d28732343cae9b5173b9523f5996855e6e75a`.
+Eight selfcheck groups and all six gold-only OBJ checkpoints pass. Root reviewed
+its full code/interface, verified the 12 frozen files and issued
+`.local/harbor-native-integrated-20261114/execution-authorization.json`, SHA
+`91d700623e4ca866af97c69ddfb5c0d739401a39cc9ebf7c2c2592e2202b58d0`.
+Both root and evaluator independently validate that actual authorization.
+The native actor is now authorized to begin the fixed workflow; no new native
+outcome has yet been reported. Before each Assemble it must obtain an independent
+verified preflight for exact physical input except revision and exact rest OBJ.
+Point-design tolerance remains separate from physical identity; no normalization.
+On refusal, stop before physics and preserve it. Native0/60/180 will compare
+against immutable3aa gold with new binary/revision identities explicit.
+Pending-mesh race UI evidence is conditional on actual observation; unit coverage
+does not become a claimed native observation. The reference handoff stays pending.
+
+Published visibility integration is `938b2670`, with runtime candidate
 `6c45535cb312f7fed8ad872ee87b6ba5e5974e35`. Prospective contract
 `209a8fda72aaca90a08c330427354dd457224a6c` is
 [SIM-005 strain attribution](spec/features/SIM-005-strain-attribution.md).
@@ -249,7 +393,8 @@ strain failure remains. No production audit overlay has been integrated.
    clear-cloth transitions in3production lines. Frozen tests3RED→4GREEN,
    all33nativeunit tests, fmt and strictpackageClippy pass. Pending/cancelled/
    stale/failedjobs retain prioracceptedstage; acceptedmeshes preserve queued
-   batches/Play. NativeUI and full integrated checks remain pending.
+   batches/Play. Full integrated gates now pass at7fe9; current native UI remains
+   pending under the bound plan above.
 4. Publish reviewed Harbor/audit progress and the capture-encoding qualification
    only after tracked-clean registry/map/hash checks. Keep the reference manual
    click question pending; do not inject further reference input meanwhile.
@@ -265,5 +410,24 @@ preparation build78246/wrapper50333/release50596/Clippy50826 exits0. New fullA
 driver71641/analyzer72622 all0; compare-edit73370/child73512 exits0 within the
 originaldeadline. Postflight SHA86c1a903…347e, handoffda036754…a8fc, no owned
 physical jobs active. Root clean xtask66629 and replay/map85648/62189 are0.
+The new full130-file candidate and saved historical3aa replay are closed in
+`.local/harbor-contact-candidates-20261114/public-safe-candidate/`, manifest
+`8aeb60086fd8b7f2927bf4b8f30bf9187a6b07985b07634b793b3737f14991ec`.
+Read-only replay27868/wrapper97445/reader97587 exits0; all362 saved states pass.
+It remains ignored/unpublished until tracked-clean delivery checks.
+
+The single authorized original-shirt case on math candidate35af is terminal in
+`.local/closed-stitch-garment-20261114/`: session67094/wrapper39237,
+driver39382 exits0, frozen evaluator39561 exits1, all PIDs absent. All181 states
+complete in22.791s within420s/256MiB; final strain32.35191565% still fails15%.
+Mass/rest/settings/targets are exact; seam/contact/finite checks pass. The one
+attribution failure at frame6 is retained: independent competing peaks differ
+by2.220446049250313e-16, and candidate positions/velocities/diagnostic peak are
+bit-identical to frozen6c before first zero-target dispatch27/substep3. This
+supports observer ambiguity, not a newly established solver regression, while
+the frozen evaluator remains failed. No retry or garment-improvement claim.
+Terminal handoff SHA is `e85e4a5288b9e5dd26790b44d91d284a9ae7b258c407bfb96912b985bc282765`.
+Keep35af separate from native7fe; further physics or integration needs a new
+reviewed step. All original failures and 57 retained local files remain intact.
 Reference inventory36748 and REA observation64096 are terminal0. Recheck actual
 handles before resuming; use separate Cargo targets.

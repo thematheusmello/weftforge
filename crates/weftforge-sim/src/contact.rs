@@ -35,15 +35,42 @@ impl Cloth {
         cancelled: &impl Fn() -> bool,
     ) -> Result<usize, SimulationError> {
         let max_thickness = self.thickness.iter().copied().fold(0., f64::max);
-        let bounds = triangle_bounds(&self.input.triangles, x, previous, 2. * max_thickness);
+        let bounds = triangle_bounds_cancellable(
+            &self.input.triangles,
+            x,
+            previous,
+            2. * max_thickness,
+            cancelled,
+        )?;
+        let hierarchy = TriangleHierarchy::new(&bounds, cancelled)?;
+        let mut candidates = Vec::new();
         let mut contacts = 0;
         for v in 0..x.len() {
             if v % 32 == 0 && cancelled() {
                 return Err(SimulationError::Cancelled);
             }
-            for (&tri, bounds) in self.input.triangles.iter().zip(&bounds) {
+            candidates.clear();
+            hierarchy.visit_swept(0, x[v], previous[v], cancelled, &mut |i| {
+                if overlaps(&bounds[i], x[v], previous[v]) {
+                    candidates.push(i);
+                }
+            })?;
+            candidates.sort_unstable();
+            let (mut next, mut candidate, mut linear) = (0, 0, false);
+            while next < self.input.triangles.len() {
+                let i = if linear {
+                    next
+                } else {
+                    let Some(&i) = candidates.get(candidate) else {
+                        break;
+                    };
+                    candidate += 1;
+                    i
+                };
+                next = i + 1;
+                let tri = self.input.triangles[i];
                 if tri.iter().any(|i| self.excluded[v].contains(i))
-                    || !overlaps(bounds, x[v], previous[v])
+                    || !overlaps(&bounds[i], x[v], previous[v])
                 {
                     continue;
                 }
@@ -69,6 +96,7 @@ impl Cloth {
                 if denominator <= 1e-20 {
                     continue;
                 }
+                let before = x[v];
                 let impulse = depth / denominator;
                 x[v] = add(x[v], mul(normal, weights[0] * impulse));
                 for j in 0..3 {
@@ -93,14 +121,22 @@ impl Cloth {
                     }
                 }
                 contacts += 1;
+                // shortcut: moving queries finish the old scan; revisit if dense contact dominates.
+                // Later bounds may become reachable, and projection order must remain unchanged.
+                linear |= x[v] != before;
             }
         }
         Ok(contacts)
     }
 
     pub(crate) fn contact_errors(&self, x: &[Vec3]) -> (f64, usize) {
-        self.analyze_contacts(x, &|| false, false)
+        self.analyze_contacts(x, &|| false, true)
             .expect("A non-cancelling callback cannot interrupt contact analysis")
+    }
+
+    #[cfg(test)]
+    pub(crate) fn exhaustive_contact_errors(&self, x: &[Vec3]) -> (f64, usize) {
+        self.analyze_contacts(x, &|| false, false).unwrap()
     }
 
     pub(crate) fn initial_contact_errors_cancellable(
@@ -115,7 +151,7 @@ impl Cloth {
         &self,
         x: &[Vec3],
         cancelled: &impl Fn() -> bool,
-        initial: bool,
+        indexed: bool,
     ) -> Result<(f64, usize), SimulationError> {
         let mut max_thickness = 0_f64;
         for (i, &thickness) in self.thickness.iter().enumerate() {
@@ -131,7 +167,7 @@ impl Cloth {
             2. * max_thickness,
             cancelled,
         )?;
-        let hierarchy = if initial {
+        let hierarchy = if indexed {
             Some(TriangleHierarchy::new(&bounds, cancelled)?)
         } else {
             None
@@ -261,12 +297,23 @@ impl TriangleHierarchy {
         cancelled: &impl Fn() -> bool,
         consider: &mut impl FnMut(usize),
     ) -> Result<(), SimulationError> {
+        self.visit_swept(node, point, point, cancelled, consider)
+    }
+
+    fn visit_swept(
+        &self,
+        node: usize,
+        point: Vec3,
+        previous: Vec3,
+        cancelled: &impl Fn() -> bool,
+        consider: &mut impl FnMut(usize),
+    ) -> Result<(), SimulationError> {
         check_cancel(cancelled)?;
         let node = &self.nodes[node];
-        if overlaps(&node.bounds, point, point) {
+        if overlaps(&node.bounds, point, previous) {
             if let Some(children) = node.children {
                 for child in children {
-                    self.visit(child, point, cancelled, consider)?;
+                    self.visit_swept(child, point, previous, cancelled, consider)?;
                 }
             } else {
                 for &triangle in &self.indices[node.range.clone()] {
@@ -320,15 +367,6 @@ fn partition_triangles(
     Ok(())
 }
 
-fn triangle_bounds(
-    triangles: &[[usize; 3]],
-    x: &[Vec3],
-    previous: &[Vec3],
-    gap: f64,
-) -> Vec<Bounds> {
-    triangle_bounds_cancellable(triangles, x, previous, gap, &|| false)
-        .expect("A non-cancelling callback cannot interrupt bounds construction")
-}
 fn triangle_bounds_cancellable(
     triangles: &[[usize; 3]],
     x: &[Vec3],
@@ -463,7 +501,143 @@ pub(crate) fn collider_contact(collider: Collider, p: Vec3, thickness: f64) -> O
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::{ClothInput, Material, Pin};
     use std::cell::Cell;
+
+    fn planes_input(upper_y: f64) -> ClothInput {
+        let positions = vec![
+            [0.25, 0.004, 0.25],
+            [0.25, 2., 0.25],
+            [0.25, 0.004, 2.],
+            [0., 0., 0.],
+            [0., 0., 1.],
+            [1., 0., 0.],
+            [0., upper_y, 0.],
+            [0., upper_y, 1.],
+            [1., upper_y, 0.],
+        ];
+        ClothInput {
+            pins: (1..positions.len())
+                .map(|vertex| Pin {
+                    vertex,
+                    target: positions[vertex],
+                })
+                .collect(),
+            positions: positions.clone(),
+            triangles: vec![[0, 1, 2], [3, 4, 5], [6, 7, 8]],
+            material_uv: [[0., 0.], [1., 0.], [0., 1.]].repeat(3),
+            triangle_materials: vec![
+                Material {
+                    friction: 0.,
+                    collision_thickness: 0.003,
+                    ..Default::default()
+                };
+                3
+            ],
+            stitches: vec![],
+            colliders: vec![],
+        }
+    }
+
+    #[test]
+    fn moving_contact_query_reaches_a_later_plane() {
+        let input = planes_input(0.0116);
+        let positions = input.positions.clone();
+        let cloth = Cloth::new(input).unwrap();
+        let mut x = positions.clone();
+        assert_eq!(
+            cloth.project_cloth(&mut x, &positions, &|| false).unwrap(),
+            2
+        );
+        assert!((x[0][1] - 0.0056).abs() < 1e-14);
+        assert_eq!((x[0][0], x[0][2]), (0.25, 0.25));
+        assert_eq!(&x[1..], &positions[1..]);
+    }
+
+    #[test]
+    fn partitioned_queries_preserve_sequential_contact_order() {
+        let mut input = planes_input(0.009);
+        input.positions[6..].copy_from_slice(&[
+            [-1., 0.009, -1.],
+            [-1., 0.009, 2.],
+            [2., 0.009, -1.],
+        ]);
+        for pin in &mut input.pins {
+            pin.target = input.positions[pin.vertex];
+        }
+        for i in 0..16 {
+            let offset = input.positions.len();
+            let x = if i < 8 {
+                -10. - 4. * i as f64
+            } else {
+                10. + 4. * i as f64
+            };
+            let points = [[x, 0., 4.], [x + 1., 0., 4.], [x, 0., 5.]];
+            input.positions.extend(points);
+            input.material_uv.extend([[0., 0.], [1., 0.], [0., 1.]]);
+            input.triangles.push([offset, offset + 1, offset + 2]);
+            input.triangle_materials.push(input.triangle_materials[0]);
+            input
+                .pins
+                .extend(points.into_iter().enumerate().map(|(i, target)| Pin {
+                    vertex: offset + i,
+                    target,
+                }));
+        }
+        let positions = input.positions.clone();
+        let bounds =
+            triangle_bounds_cancellable(&input.triangles, &positions, &positions, 0.006, &|| false)
+                .unwrap();
+        let hierarchy = TriangleHierarchy::new(&bounds, &|| false).unwrap();
+        let mut candidates = Vec::new();
+        hierarchy
+            .visit(0, positions[0], &|| false, &mut |i| {
+                if overlaps(&bounds[i], positions[0], positions[0]) {
+                    candidates.push(i);
+                }
+            })
+            .unwrap();
+        assert!(candidates.iter().position(|i| *i == 2) < candidates.iter().position(|i| *i == 1));
+        let cloth = Cloth::new(input).unwrap();
+        let mut x = positions.clone();
+        assert_eq!(
+            cloth.project_cloth(&mut x, &positions, &|| false).unwrap(),
+            2
+        );
+        assert!((x[0][1] - 0.003).abs() < 1e-14);
+        assert_eq!((x[0][0], x[0][2]), (0.25, 0.25));
+        assert_eq!(&x[1..], &positions[1..]);
+    }
+
+    #[test]
+    fn swept_hierarchy_candidates_equal_exhaustive_inclusive_queries() {
+        let mut bounds = separated_bounds();
+        bounds.extend([[[0.; 3], [1.; 3]], [[-3.; 3], [-1.; 3]]]);
+        let hierarchy = TriangleHierarchy::new(&bounds, &|| false).unwrap();
+        for (a, b) in [
+            ([0.5; 3], [100.5, 0.5, 0.5]),
+            ([-4.; 3], [2.; 3]),
+            ([0.; 3], [0.; 3]),
+            ([1.; 3], [1.; 3]),
+            ([123.5, 0.5, 0.5], [12286., 1., 1.]),
+        ] {
+            let expected: Vec<_> = bounds
+                .iter()
+                .enumerate()
+                .filter_map(|(i, bounds)| overlaps(bounds, a, b).then_some(i))
+                .collect();
+            let mut actual = Vec::new();
+            hierarchy
+                .visit_swept(0, a, b, &|| false, &mut |i| {
+                    if overlaps(&bounds[i], a, b) {
+                        actual.push(i);
+                    }
+                })
+                .unwrap();
+            actual.sort_unstable();
+            assert_eq!(actual, expected);
+        }
+    }
 
     fn separated_bounds() -> Vec<Bounds> {
         (0..4096)

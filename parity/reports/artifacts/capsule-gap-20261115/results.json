@@ -1,0 +1,81 @@
+{
+  "kind": "independently checked static output",
+  "cases": [
+    {
+      "case": "A",
+      "source_commit": "3aa20b1597036e9f1dc9725b52cdc928ec1bae96",
+      "vertices": 654,
+      "triangles": 1172,
+      "triangle_index_0based": 1164,
+      "triangle_vertices_0based": [
+        237,
+        437,
+        444
+      ],
+      "barycentric": [
+        0.5000000000017402,
+        0.4999999999982599,
+        0.0
+      ],
+      "surface_point_m": [
+        -0.3514182778801368,
+        1.3086126956747433,
+        -0.05639693519729627
+      ],
+      "axis_point_m": [
+        -0.35970174336919425,
+        1.3237990490713485,
+        0.0
+      ],
+      "capsule_radius_m": 0.065,
+      "physical_offset_m": 0.003,
+      "witness_penetration_m": 0.009009700546250624,
+      "witness_vertex_penetration_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "contact_screen_below_m": 0.002,
+      "contact_screen": "failed",
+      "scope": "A single convex-combination point proves penetration at least this deep; no exhaustive maximum, trajectory or dynamics claim."
+    },
+    {
+      "case": "B",
+      "source_commit": "3aa20b1597036e9f1dc9725b52cdc928ec1bae96",
+      "vertices": 640,
+      "triangles": 1144,
+      "triangle_index_0based": 678,
+      "triangle_vertices_0based": [
+        472,
+        436,
+        231
+      ],
+      "barycentric": [
+        0.5002145460910506,
+        0.49978545390894935,
+        0.0
+      ],
+      "surface_point_m": [
+        -0.23191325396164847,
+        1.3653477563201664,
+        -0.05172575260735782
+      ],
+      "axis_point_m": [
+        -0.24374873765750624,
+        1.3870461430959056,
+        0.0
+      ],
+      "capsule_radius_m": 0.065,
+      "physical_offset_m": 0.003,
+      "witness_penetration_m": 0.010672413745369737,
+      "witness_vertex_penetration_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "contact_screen_below_m": 0.002,
+      "contact_screen": "failed",
+      "scope": "A single convex-combination point proves penetration at least this deep; no exhaustive maximum, trajectory or dynamics claim."
+    }
+  ]
+}

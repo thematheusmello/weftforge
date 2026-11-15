@@ -1,0 +1,115 @@
+Window: "WeftForge", App: WeftForge Studio.
+0 standard window WeftForge, Secondary Actions: Raise
+	1 container (showing 22-122 of 137 items)
+		2 button Assemble (gravity off)
+		3 button Drape
+		4 button Reset
+		5 checkbox (settable, boolean) Wireframe, Value: off
+		6 text (settable) Stage: Drape
+		7 text (settable) Next step settings: dt 0.01667 s · 8 substeps · 32 iterations · gravity [0.0, -9.81, 0.0] m/s² · seam closure 1.00 m/s
+		8 text (settable) 2 pieces  ·  8 seams  ·  0 sewing groups  ·  654 vertices
+		9 text (settable) 3.00 s  ·  peak strain 8.67%  ·  seam gap 0.000 mm
+		10 text (settable) Drape complete · 3.000 s · 128.1 ms/step · assembly remaining 0.0000 m
+		11 text (settable) Properties
+		12 text (settable) Editable construction
+		13 text (settable) OBJECTS
+		14 toggle button (settable, boolean) Harbor front, Value: on
+		15 toggle button (settable, boolean) Harbor back, Value: off
+		16 text (settable) Boundary curve · select here or in 2D
+		17 pop up button (settable) Choose boundary
+		18 text (settable) CREATE PATTERN
+		19 text (settable) Pattern name
+		20 text field (settable) Pattern 1
+		21 text (settable) W / H m
+		22 stepper (settable) 0.50
+		23 stepper (settable) 0.60
+		24 text (settable) X / Y m
+		25 stepper (settable) -0.25
+		26 stepper (settable) 1.00
+		27 button Add rectangle
+		28 button Add ellipse
+		29 button Add polygon point
+		30 button Close pattern (0 points)
+		31 text (settable) Harbor front
+		32 text (settable) Size m
+		33 stepper (settable) 1.320
+		34 stepper (settable) 0.640
+		35 text (settable) Arrange X / Y / Z m
+		36 stepper (settable) 0.72
+		37 stepper (settable) 0.00
+		38 stepper (settable) 0.24
+		39 text (settable) Rotate X / Y / Z radians
+		40 stepper (settable) 0.00
+		41 stepper (settable) 0.00
+		42 stepper (settable) 0.00
+		43 text (settable) Warp angle radians
+		44 text (settable) 0 = +U (right); positive turns toward +V (up).
+		45 stepper (settable) 1.5708
+		46 text (settable) Shared fabric · 2 pieces
+		47 text (settable) Changes affect every assigned piece. Uncalibrated approximation.
+		48 text (settable) Mass/area kg/m²
+		49 stepper (settable) 0.18
+		50 text (settable) Warp stiffness N/m
+		51 stepper (settable) 400
+		52 text (settable) Weft stiffness N/m
+		53 stepper (settable) 400
+		54 text (settable) Bend N·m
+		55 stepper (settable) 0.00300
+		56 color well
+		57 button Delete selected
+		58 text (settable) SEWING
+		59 checkbox (settable, boolean) Reverse paired edge, Value: on
+		60 text (settable) A interval / B interval (0–1)
+		61 stepper (settable) 0.00
+		62 stepper (settable) 1.00
+		63 stepper (settable) 0.00
+		64 stepper (settable) 1.00
+		65 text (settable) Sew edges: click two 2D boundaries.
+		66 text (settable) Intervals use curve parameter t, not arc length. Reverse swaps B's direction and keeps the normalized mapping.
+		67 text (settable) Seam 1 · #60
+		68 text (settable) A #18: t 0 → 1
+B #47: t 0 → 1
+		69 button Reverse
+		70 button Remove
+		71 text (settable) Seam 2 · #61
+		72 text (settable) A #19: t 0 → 1
+B #48: t 0 → 1
+		73 button Reverse
+		74 button Remove
+		75 text (settable) Seam 3 · #62
+		76 text (settable) A #21: t 0 → 1
+B #50: t 0 → 1
+		77 button Reverse
+		78 button Remove
+		79 text (settable) Seam 4 · #63
+		80 text (settable) A #22: t 0 → 1
+B #51: t 0 → 1
+		81 button (settable, unknown) Reverse
+		82 button (settable, unknown) Remove
+		83 text (settable) Seam 5 · #64
+		84 text (settable) A #26: t 0 → 1
+B #55: t 0 → 1
+		85 button (settable, unknown) Reverse
+		86 button (settable, unknown) Remove
+		87 text (settable) Seam 6 · #65
+		88 text (settable) A #27: t 0 → 1
+B #56: t 0 → 1
+		89 button (settable, unknown) Reverse
+		90 button (settable, unknown) Remove
+		91 text (settable) Seam 7 · #66
+		92 text (settable) A #29: t 0 → 1
+B #58: t 0 → 1
+		93 button (settable, unknown) Reverse
+		94 button (settable, unknown) Remove
+		95 text (settable) Seam 8 · #67
+		96 text (settable) A #30: t 0 → 1
+B #59: t 0 → 1
+		97 button (settable, unknown) Reverse
+		98 button (settable, unknown) Remove
+		99 text (settable) Ordered sewing groups
+		100 text (settable) Pairing: total authored arc length in metres. Span endpoints use curve parameter t.
+		101 text (settable) Mesh edge length m
+	102 text WeftForge
+	103 menu button Window sharing
+104 menu bar
+	105 WeftForge

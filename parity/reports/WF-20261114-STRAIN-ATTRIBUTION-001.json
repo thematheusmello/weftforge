@@ -12,7 +12,7 @@
   ],
   "complete_contract": false,
   "reference_executed": false,
-  "freshness": "current",
+  "freshness": "stale",
   "source_scope": [
     ".cargo",
     "Cargo.toml",
@@ -267,7 +267,7 @@
         "triangle": 186,
         "axis": "warp",
         "signed_strain": 0.24118490382884605,
-        "visible_label": "Candidate back · Warp +24.12%"
+        "visible_label": "Candidate back \u00b7 Warp +24.12%"
       },
       {
         "time_s": 3.0,
@@ -276,7 +276,7 @@
         "triangle": 31,
         "axis": "warp",
         "signed_strain": 0.32351913672966237,
-        "visible_label": "Candidate front · Warp +32.35%"
+        "visible_label": "Candidate front \u00b7 Warp +32.35%"
       }
     ],
     "native_OBJ_vertices": 150,
@@ -333,5 +333,6 @@
     "historical_misnamed_JPEG_captures": 8,
     "original_bytes_paths_and_manifests_unchanged": true,
     "qualification": "Historical PNG descriptions refer to .png suffixes; these original captured bytes are JPEG. No pixel conversion or new UI run occurred. The cited audit identifies exact hashes and actual formats."
-  }
+  },
+  "freshness_reason": "Integrating conservative contact search and the native rest-stage reset changes the scoped simulation/UI source. Historical inputs, raw outputs, failures and source identities remain unchanged. Complete checks on the integrated source remain pending."
 }

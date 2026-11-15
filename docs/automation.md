@@ -118,7 +118,7 @@ The example's newly created default project assigns its first piece ID 2;
 existing projects may assign different IDs. Current-profile calls use the same
 arguments and additionally include the per-request `_meta` shown above.
 
-The supported shared commands are `add_polygon`, `add_rectangle`, `move_point`,
+The supported shared commands are `add_polygon`, `add_rectangle`, `add_ellipse`, `move_point`,
 `set_curve_controls`, `split_curve`, `join_curve`, `resize_piece`, `set_placement`, `set_grain`,
 `set_material`, `add_material`, `update_material`, `add_seam`, `update_seam`,
 `remove_seam`, `add_sewing_group`, `update_sewing_group`, `remove_sewing_group`,
@@ -127,6 +127,16 @@ Their exact data fields and nested types are in `tools/list`; the shared core
 validation remains authoritative. Authoring uses f64 SI units, placement/grain
 angles use radians, and membrane stiffness uses N/m. See
 [file formats](file-formats.md) for the native representation and physical units.
+`add_ellipse` uses the same `name`, `origin`, `width`, and `height` fields as
+`add_rectangle`: origin is the bounding box's minimum X/Y in metres. It creates
+four editable cubic Bézier spans approximating an ellipse, with normalized
+radial error below 0.001; equal dimensions approximate a circle. The CLI form is
+`ellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT`; the native `Add ellipse` button
+and command-search action use the existing name, X/Y and W/H fields. Later
+point/control edits are ordinary cubic edits, without a persistent ellipse
+constraint. See the [original contract](../spec/features/PAT-003-original-ellipse-20261114.md)
+for validation limits and the independent numeric criterion. Reference ellipse
+semantics remain unobserved.
 `join_curve` takes `{"curve":CURVE_ID}` and joins that oriented boundary with
 its next boundary, including the closing pair. It retains the selected ID and
 sewing records; incompatible geometry or unsafe remapping fails atomically.
