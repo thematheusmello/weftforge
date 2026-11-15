@@ -1,0 +1,123 @@
+{
+  "status": "prospective_only_pending_root_review_and_native_source_binding",
+  "prepared_date": "2026-11-15",
+  "proposal_version": 2,
+  "prospective_correction": "Before any native UI execution or output, root static review found A potentially needs about 110 documented API calls. Raise only A paired-call cap from 90 to 130, retaining its 900 s cap, exact fixture/actions/criteria/tolerances/grader and B 600 s/60 calls. Original frozen v1 is preserved unexecuted; no case was run or regraded.",
+  "supersedes_unexecuted_freeze_sha256": "75440671525e0576c25ae1687eab13179ca60ecf1c37459c48d00e8c39ef0749",
+  "claim": "WeftForge implementation acceptance only; reference behavior remains unobserved",
+  "candidate_or_native_executed_by_preparer": false,
+  "provenance": {
+    "contract": "../pattern-transform-20261115/spec/features/PAT-004-piece-rigid-transform.md",
+    "contract_sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+    "selection_clarification": "../pattern-transform-contract-20261115/NATIVE-SELECTION-CLARIFICATION.md",
+    "selection_clarification_sha256": "87dd4f76cf811a0a948f397ea5b254eccbcacfe8b9bc6066fbf0023dbc4c09af",
+    "original_fixture": "../transform-independent-evaluation-20261115/fixture.weftforge",
+    "original_fixture_sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+    "fixture_revision": 37,
+    "frozen_evaluator": "../transform-independent-evaluation-20261115/evaluate.py",
+    "frozen_evaluator_sha256": "5dbb1e7299b38df921db4d2004017e5e62ddf9eb3275a5afbdc28d49d0c58e8f",
+    "recorder": "../native-length-readouts-v2-20261115/recorder.cjs",
+    "recorder_sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+    "expectations_derived_from": "original fixture, reviewed contract and clarification; no candidate output was read"
+  },
+  "root_binding_required_before_launch": {
+    "record_destination": "ROOT-BINDING.json supplied by root after reviewing FREEZE.json; do not edit the frozen PLAN",
+    "root_approved": null,
+    "reviewed_packet_freeze_sha256": null,
+    "source_commit": null,
+    "source_worktree_and_clean_state": null,
+    "native_binary": null,
+    "native_binary_sha256": null,
+    "worktree_specific_cargo_target": null
+  },
+  "common_protocol": {
+    "fresh_process_per_case": true,
+    "runtime_targets": "Only the bound WeftForge native binary and actor-owned disposable inputs/outputs",
+    "preflight": [
+      "Root binds and hashes the exact final source/native binary and this frozen packet before launch; verify the same hashes after the case.",
+      "Import the pinned recorder with createRequire from node:module; never assume require or process globals in CUA. Prove offline module load, one before/returned pair and raw-artifact SHA receipt before launch. Record that preflight separately from native calls.",
+      "The CUA first-invocation documentation rule still applies. Pair a mandatory bootstrap API externally if necessary; use only documented APIs and import the recorder into the actual actor runtime before launch. Unsupported module import is a stop, not an assumption.",
+      "Create actor-owned byte-identical read-only input copies; record original/input primary SHA and mode before and after. Leave their parent directories writable so normal authoring sidecars can be recorded.",
+      "Inventory actor-owned autosave/recovery sidecars before and after each saved state with path, size, SHA, native revision where parseable and originating step; sidecar creation is allowed. Never require no sidecars while authoring. Do not modify the original laboratory fixture.",
+      "Observe the current app/screen before choosing every UI target. Coordinates, selectors, file-dialog fields and rotation-handle positions are not predeclared guesses. Keep all screenshots unedited and hash their original bytes."
+    ],
+    "call_recording": "Pair every native API call, including bootstrap, launch, snapshots, waits, input, dialogs and quit, with before/returned UTC and monotonic records. Reserve enough calls/time for final saved-state evidence and quit. Do not issue a call that exceeds the cap.",
+    "clock": "Case elapsed time starts immediately before launch and includes observation, dialogs, captures and quit; offline preparation precedes this clock.",
+    "failure_policy": "Any unexpected error, ambiguous target/result, cap exhaustion or unmet criterion stops that case unverified. No retries, fixture edits, output repair, criteria relaxation, CLI substitutes or case merging. Predeclared invalid-input correction and Undo/Redo are planned actions, not retries.",
+    "decisive_evidence": "Native paired trace plus unedited screenshots prove UI actions/states; native saved files plus the frozen offline grader prove authored results. Passing saved-file grading alone never verifies UI behavior.",
+    "forbidden_scope": ["reference control", "Cargo/runtime tests during preparation", "source edits", "PR/push", "Actions", "physics", "exports", "unasked broad features"],
+    "shutdown_observer": "After all final captures/saves, quit once and use the documented expected close/termination outcome as the final native observer. Do not issue an extra getAX/read on a closed window. The next CUA call must contain only completion_summary, exactly once; perform private PID retention/accounting and final hash/sidecar accounting outside CUA afterward.",
+    "focus_gate": "No explicit OS focusedAXTextField property gate; retain observed raw text and available native focus/caret evidence without assuming an AX role. Do not alter old unrelated closed cases."
+  },
+  "tolerances": {
+    "geometry_and_world_m": 1e-10,
+    "rotation_matrix_component": 1e-12,
+    "grain_and_world_warp_component": 1e-12,
+    "unchanged_authored_f64_fields": "exact bits, including negative zero",
+    "history_and_reopen_fields": "exact authored fields after replacing only the declared revision",
+    "curve_samples_t": [0.0, 0.125, 0.25, 0.5, 0.75, 0.875, 1.0]
+  },
+  "cases": [
+    {
+      "id": "A-numeric-history-files",
+      "elapsed_cap_s": 900,
+      "paired_native_api_call_cap": 130,
+      "input": "actor-owned read-only exact original fixture copy, R37",
+      "steps": [
+        "Launch the bound app with the A input. Observe original piece 2 and partner 11, stopped simulation and native R37. Select Transform pattern and piece 2 through observed controls. Record the original analytic width 1.25 m.",
+        "Stage raw width text exactly 1e- on selected piece 2, without submitting it. Attempt to select piece 11 through its observed Scene entry. Require refusal/error, current piece 2, raw 1e- text and draft retained, no construction/history/revision change. Capture the refusal and text.",
+        "Correct that same original width to 1.25 and use Tab to leave it. Require no-op R37 and no unintended geometry change; subsequent quarter grading/revision is the saved-state check. Normal cross-piece selection is not claimed by this one refusal trial.",
+        "Open Transform pattern modal, change only modal translation U to 0.125, then Cancel/Escape. Require R37 with no construction change. Capture changed modal before cancellation and native state after cancellation.",
+        "Reopen Transform pattern modal. With angle 0, V 0 and displayed default pivot (0.125,0.625), type finite U 1000, using Tab between fields. Apply once. Require useful validation error because transformed endpoint U would exceed 1000 m, R37, modal still open and its exact attempted values/drafts retained.",
+        "Correct in that retained modal to U 0.5, V -0.25, angle 1.5707963267948966 rad, pivot U 0.25 and pivot V 0.5. Use Tab, never Enter, between fields: Enter may submit the modal. Capture all five final values before one final Apply. Require exactly one authoring transaction R38.",
+        "Native Save As to actor-owned quarter.weftforge, R38. Capture native result and path. Undo once to R39; native Save As undo.weftforge. Redo once to R40; native Save As redo.weftforge. Do not type or commit stale inspector values during history/save operations.",
+        "In the same process, invoke observed New Empty, capture the empty document, reopen that saved redo.weftforge and require R40. Native Save As reopened.weftforge. Capture reopened native state/path and quit within both caps. This is a same-process reopen claim only."
+      ],
+      "independent_expectations": {
+        "quarter_command": {"piece": 2, "translation": [0.5, -0.25], "angle": 1.5707963267948966, "pivot": [0.25, 0.5]},
+        "quarter_mapping": "(u,v) -> (1.25-v,u)",
+        "first_curve": "(1.25-0.75*t*t,0.75*t)",
+        "quarter_points": {"3": [1.25, 0.0], "4": [0.5, 0.75], "5": [0.0, -0.25], "6": [1.0, -0.5]},
+        "quarter_controls": [[1.25, 0.25], [1.0, 0.5]],
+        "revisions": {"quarter": 38, "undo": 39, "redo": 40, "reopened": 40},
+        "unchanged": "envelope, exact IDs/order/links/maps/materials/mannequin/resolution/allocator and all untouched piece fields",
+        "compensation": "Anew=Aold*Rz(-pi/2); new placement embeds all transformed samples at original world positions; rotated UV grain has unchanged world direction",
+        "history": "Undo equals every original authored field with only fresh revision 39; Redo equals every quarter field with only revision 40; reopened equals Redo exactly."
+      },
+      "grader": "python3 grade_saved.py grade-a A-readonly-input.weftforge quarter.weftforge undo.weftforge redo.weftforge reopened.weftforge",
+      "required_captures": ["initial R37 and piece 2", "Scene refusal retaining raw 1e- and R37", "corrected width no-op R37", "changed cancel modal and cancelled R37", "invalid U1000 modal/error/R37", "corrected five values before Apply", "quarter R38", "undo R39", "redo R40", "New Empty", "reopened R40"]
+    },
+    {
+      "id": "B-pointer-gestures",
+      "depends_on": "fully successful case A, including saved-file grade",
+      "elapsed_cap_s": 600,
+      "paired_native_api_call_cap": 60,
+      "input": "actor-owned read-only byte-identical copy of successful A redo.weftforge, R40; retain both hashes",
+      "steps": [
+        "In a fresh process, open the B input using the same bound native binary. Observe R40, select Transform pattern/piece 2 and set observed Snap control to 10 mm. Capture snap, selected piece, pivot and revision; do not enable Alt or run physics/export.",
+        "From observed boundary/canvas scale, perform one boundary drag targeting displacement +0.10 m U and +0.05 m V. Observe a single preview/release; native Save As translated.weftforge. Require exactly R41 and exact snapped single-addition displacement (0.10,0.05) on every selected endpoint/control. No second corrective drag.",
+        "Observe the displayed post-translation bounds-center pivot (0.725,0.175) and actual rotation handle. Perform one visible positive approximately 45 degree handle drag about that pivot, release once and native Save As rotated.weftforge. Require R42. Capture handle/pivot before, gesture evidence and native saved result; quit within caps. No numeric angle correction."
+      ],
+      "independent_expectations": {
+        "translation": [0.10, 0.05],
+        "translation_grading": "exact f64 additions to R40 source, unchanged Euler/grain bits and compensated world surface",
+        "rotation_pivot": [0.725, 0.175],
+        "positive_angle_window_degrees_inclusive": [43.0, 47.0],
+        "angle_fit": "Use only saved points 3 and 4: atan2(cross(before4-before3,after4-after3),dot(...)); require unchanged pair length. Never fit scale, pivot or translation.",
+        "rotation_grading": "Apply that proper rigid angle around the predeclared pivot with zero extra translation to every endpoint/control and seven samples of each boundary. Check represented placement right-composition, world surface and grain; exact invariant fields and revisions remain mandatory.",
+        "revisions": {"input": 40, "translated": 41, "rotated": 42},
+        "reject": ["wrong snapped displacement", "scale", "shear", "reflection", "extra translation", "wrong pivot", "angle outside 43..47 degrees", "changed unrelated fields", "extra revisions"]
+      },
+      "grader": "python3 grade_saved.py grade-b A-redo.weftforge B-readonly-input.weftforge translated.weftforge rotated.weftforge",
+      "coverage_limit": "Coarse real-device gesture check only. It does not prove fixed 1000 px/m, >=100 px-radius 2e-6 m/rad mapping; that strict mapping remains native event-test coverage.",
+      "required_captures": ["R40 Transform selection and Snap 10 mm", "boundary drag evidence and translated R41", "displayed bounds-center pivot and rotation handle", "rotation gesture evidence and rotated R42"]
+    }
+  ],
+  "coverage_limits": [
+    "Saved-output grading cannot prove raw text/caret retention, refusal, cancellation, transient preview revisions or the actual physical gesture; root reviews paired trace and unedited captures.",
+    "A does not separately exercise normal unstaged cross-piece selection or a pre-existing nonempty Redo branch during refusal; those remain native event-test coverage.",
+    "No process-restart persistence, fresh mesh/cloth/solver, physics/export, reference parity, pivot dragging or broad transform feature claim.",
+    "Observed native layout may make a case infeasible within its fixed caps; stop unverified rather than retrying or widening the plan.",
+    "Local ignored evidence is not published delivery; root owns eventual tracking and clean-checkout registry/map verification."
+  ]
+}

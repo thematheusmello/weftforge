@@ -1,0 +1,26 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/pattern-transform-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.89s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 4 tests
+test pattern_transform_tests::transform_search_and_tool_names_are_real_authoring_routes ... ok
+
+thread 'pattern_transform_tests::transform_cross_piece_refusal_retains_staged_or_invalid_raw_text_caret_and_redo' (60936287) panicked at apps/weftforge/src/main.rs:10640:46:
+property focus absent for "0.47": Some(Id::new(897211230193442400))
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test pattern_transform_tests::transform_cross_piece_refusal_retains_staged_or_invalid_raw_text_caret_and_redo ... FAILED
+
+thread 'pattern_transform_tests::transform_numeric_apply_and_return_use_explicit_units_pivot_and_one_transaction' (60936288) panicked at apps/weftforge/src/main.rs:10543:32:
+missing numeric field "Pivot V (m)": [(#16843086507612077060, Some(1.5707963267948966), None, [#12626279868267607838]), (#13163340040533302319, Some(0.37), None, []), (#9296267004753072688, Some(0.0), None, []), (#17043633184219050053, Some(0.2), None, []), (#7943779241998770758, Some(-0.1), None, []), (#18055059974093373044, Some(0.0), None, []), (#5679678368447026805, Some(1.0), None, []), (#17827128671123062907, Some(0.21), None, []), (#5885154953082498222, Some(400.0), None, []), (#4426728415933160640, Some(400.0), None, []), (#1878559491496548041, Some(0.5), None, []), (#15092846307461467375, Some(4.0), None, []), (#1124419434429153037, Some(1.0), None, []), (#1441015983115603214, Some(0.6), None, []), (#11310799660279342861, Some(1.0), None, []), (#15107838022294657825, Some(0.0), None, []), (#13245585014642899744, Some(0.625), None, [#17166063545073594738]), (#2463463083636358952, Some(-0.25), None, [#2008461177715156351]), (#10162693726115481386, Some(-0.47), None, []), (#15712188888000119595, Some(0.003), None, []), (#5385496156902957887, Some(1.25), None, []), (#47018362321053039, Some(-0.25), None, []), (#8453869225092844421, Some(0.5), None, []), (#5171231406338657182, Some(8.0), None, []), (#13661094643439317405, Some(0.25), None, [#6100304624684879444]), (#1420181544299882919, Some(0.31), None, []), (#8839817543884365742, Some(1.25), None, []), (#13003960075152055727, Some(0.5), None, []), (#13089954593961213365, Some(0.3), None, []), (#7712335282879343050, Some(0.25), None, []), (#10339133596885600229, Some(0.25), None, []), (#9223342950631757803, Some(0.18), None, []), (#4551888012497213413, Some(0.5), None, [#15054030679834643101]), (#14760344001993896958, Some(0.18), None, [])]
+test pattern_transform_tests::transform_numeric_apply_and_return_use_explicit_units_pivot_and_one_transaction ... FAILED
+test pattern_transform_tests::transform_pointer_translation_and_rotation_capture_original_geometry_and_snap_once ... ok
+
+failures:
+
+failures:
+    pattern_transform_tests::transform_cross_piece_refusal_retains_staged_or_invalid_raw_text_caret_and_redo
+    pattern_transform_tests::transform_numeric_apply_and_return_use_explicit_units_pivot_and_one_transaction
+
+test result: FAILED. 2 passed; 2 failed; 0 ignored; 0 measured; 55 filtered out; finished in 0.47s
+
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

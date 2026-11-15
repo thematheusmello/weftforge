@@ -1,0 +1,52 @@
+{
+  "status": "stopped_unverified",
+  "case": "A2, fresh authorized attempt with unchanged v2 actions/criteria/caps",
+  "stop_reason": "Required pre-Apply five-value barrier not met: screenshot retains U1000.000 and pivotV0.625, with pivotU0.500. No final Apply or repair attempted.",
+  "observed_values_actor_visual_interpretation": {
+    "translation_U_display": "1000.000",
+    "translation_V_display": "-0.250",
+    "angle_display": "1.57080",
+    "pivot_U_display": "0.500",
+    "pivot_V_selected_raw_text": "0.625"
+  },
+  "expected_values": {
+    "translation_U": 0.5,
+    "translation_V": -0.25,
+    "angle": 1.5707963267948966,
+    "pivot_U": 0.25,
+    "pivot_V": 0.5
+  },
+  "stop_capture": {
+    "file": "captures/five-final-transform-values-before-Apply-0.jpg",
+    "sha256": "ef69e24a648d67dc5c1722c37ba4da7c86fdfb8a78148f8f8b76102e627c1ddb",
+    "unedited": true
+  },
+  "calls": 51,
+  "baseline_calls": 0,
+  "all_api_calls_paired": true,
+  "all_api_returns_without_exception": true,
+  "elapsed_launch_clock_to_last_native_return_s": 147.647612125,
+  "caps": {
+    "calls": 130,
+    "seconds": 900
+  },
+  "observed_native_revision_at_stop": 37,
+  "planned_final_Apply_attempted": false,
+  "saved_outputs": [],
+  "workflow_completed_before_stop": [
+    "Initial R37, paused; Transform/piece2 selected; analytic width1.250m",
+    "Raw width1e- staged; Scene partner11 refused; piece2 and focused raw text retained at R37",
+    "Original width corrected1.25 with Tab; R37 no-op",
+    "Modal U changed0.125, cancelled; R37",
+    "Finite U1000 Apply rejected with useful error; modal retained U1000/V0/angle0/pivot0.125,0.625/R37"
+  ],
+  "controller_worked": "Native captures and authoritative count/clock succeeded; no helper ReferenceError or native API exception occurred.",
+  "modal_accessibility_limit": "Modal fields/buttons were visible in screenshots but absent from AX; observed coordinates and Tab were used. AX captures preserved their actual returned diffs.",
+  "actions_source": "trace/*-before.json contains each actual target, argument, label and timestamp; paired after files contain returns.",
+  "completion_summary": "Stopped transform case before Apply; immediate next CUA call after failed screenshot barrier; no further native or CUA action",
+  "actor_pid_retained": 14336,
+  "hashes_unchanged": true,
+  "grade_returncode": 1,
+  "grade_limitation": "Missing quarter output prevents saved-file grading; no feature success/failure inferred from missing files.",
+  "no_B": true
+}

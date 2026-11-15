@@ -1,6 +1,56 @@
 # Native studio preview
 
-## Current authored-length readouts (be8)
+## One-piece transform and New Empty (DD)
+
+These are actual unedited A4 captures from source dd5a16826dafe0d4f32c251f7c351197ad0936af,
+using the separately bound native debug executable 216aa9e0b8968a1fe9033f32c89c9b4b93cdca15fac927c0538a5a091c848dd4.
+Root accepted this bounded numeric/history/New/same-process reopen case after
+reviewing twelve product-UI images and the paired records. The overall frozen
+A/B native plan remains failed/unverified because pointer case B did not reach
+its required first translation revision. The PhotoCraft reference below is visual
+inspiration, not behavior or parity evidence.
+
+![Numeric transform values before Apply](../parity/reports/artifacts/pattern-transform-20261115/native-A4/captures/five-final-transform-values-before-Apply-0.jpg)
+
+The original asymmetric piece uses translation 0.5 / -0.25 m, a quarter-turn
+angle and pivot 0.25 / 0.5 m. This image is a pending dialog, not applied construction.
+The separate exact-angle capture is retained in the packet. Modal numeric values
+were reviewed in images; full modal AX accessibility is still unqualified.
+
+![Applied quarter-turn saved at revision 38](../parity/reports/artifacts/pattern-transform-20261115/native-A4/captures/quarter-native-saved-R38-0.jpg)
+
+The saved grader passed the frozen coordinate/curve, arranged-world, grain and
+history checks. One Undo and Redo were saved separately. The layout transform
+keeps arranged 3D geometry/world warp fixed under the declared engineering policy;
+reference semantics remain unknown.
+
+![New Empty at revision zero with no pattern pieces](../parity/reports/artifacts/pattern-transform-20261115/native-A4/captures/New-Empty-native-R0-zero-pieces-0.jpg)
+
+New Empty creates a fresh editable document. Source checks also cover refusal
+when accepted changes, staged/invalid properties or unfinished construction need
+attention, and prevent old worker results from entering the new document.
+
+![Same-process reopened Redo result saved at revision 40](../parity/reports/artifacts/pattern-transform-20261115/native-A4/captures/reopened-native-saved-R40-0.jpg)
+
+A4 completed 121 pairs in 542.54376275 seconds within its unchanged 130 / 900 caps;
+its grader ran once. Redo and reopened saved bytes are identical. This is a
+same-process reopen, not a process restart, physics, export or full-feature pass.
+
+B is retained separately: after a pre-authoring root hold, one documented drag
+returned but both reviewed checkpoints still showed R40, not required R41.
+Its filename ending R41 describes intent. The case stopped with 11 pairs in
+204.564500916 seconds, without a corrective drag, rotation or Save; grading failed
+on missing translated/rotated outputs. No mid-drag/OS-button witness establishes
+the cause. Source tests or ideal content-space input cannot prove actual OS delivery
+or a product defect. See the [failed overall scoped report](../parity/reports/WF-20261115-PATTERN-TRANSFORM-001.json)
+and [retained packet](../parity/reports/artifacts/pattern-transform-20261115/README.md).
+
+Fresh source gates pass 235 Rust and 54 Python tests plus formatting, strict
+Clippy, registry/map checks and unsigned packaging. They do not complete the
+native A/B plan or any reference/garment/roadmap gate. Earlier A/A2/A3 failures,
+source-review REDs and historical images below keep their original outcomes.
+
+## Historical authored-length readouts (be8)
 
 Actual unedited 1640 × 1032 captures from source `be8a031b5f8342d0857f3bed34f52dd165fa86da`
 show the new measurement subset on an original analytic fixture. Its deliberate

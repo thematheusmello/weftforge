@@ -1,0 +1,20 @@
+{
+  "command": [
+    "python3",
+    "<WORKSPACE>/.local/native-transform-plan-v2-20261115/grade_saved.py",
+    "grade-b",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A4/redo.weftforge",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/B/B-readonly-input.weftforge",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/B/translated.weftforge",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/B/rotated.weftforge"
+  ],
+  "executions": 1,
+  "returncode": 1,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "cc5429b4ba263a986b1641f65d47b6bf1bd895222c0fd99b09a57ab5595288c0",
+  "outputs_exist": {
+    "translated.weftforge": false,
+    "rotated.weftforge": false
+  },
+  "outcome": "unverified; stopped at first drag R41 barrier, no native output saved"
+}

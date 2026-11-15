@@ -1,0 +1,90 @@
+{
+  "recorded_at": "2026-11-15T16:50:40.269882+00:00",
+  "commit": "133c6d3fd91601b897f584e03c92765f79f97993",
+  "base_commit": "417de0b1f5b3e3e7a508b297ddee940996c4837f",
+  "worktree_clean": true,
+  "changed_files": [
+    "apps/weftforge/src/main.rs"
+  ],
+  "main_rs_sha256": "9999dc266948fd6a42b0655ed82c6ec2de982c48cdc6174d300a0e3f4d988d03",
+  "contract": "spec/features/APP-001-new-empty.md",
+  "contract_sha256": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+  "checks": [
+    {
+      "receipt": "new-empty-red-attempt-1.json",
+      "receipt_sha256": "5b21cfebf43614ae8710385761713e1a63eab08405cf28240ec7cbac7034d3d8",
+      "log": "new-empty-red-attempt-1.log",
+      "log_sha256": "c507e8c75bad340eaf6d885e053de586842c28e610cdd81c8a6b5c285cd6bee8",
+      "exit_code": 101
+    },
+    {
+      "receipt": "new-empty-focused-attempt-1.json",
+      "receipt_sha256": "5515461a10260f2cb4ea1b0da5c8767b867046532faa33311c33af5d0ff672fc",
+      "log": "new-empty-focused-attempt-1.log",
+      "log_sha256": "1111eacd290ec30bfc9a715bdb48b344502535359e8b1020a456062f35899236",
+      "exit_code": 101
+    },
+    {
+      "receipt": "new-empty-focused-attempt-2.json",
+      "receipt_sha256": "f8565d010b21fb1795d03114db4f87b56847a97b7562cb62069497ac6037e362",
+      "log": "new-empty-focused-attempt-2.log",
+      "log_sha256": "449facc7749c34f6aaf7b4039b6c7d5ec0d52cdceecda317e25f12ae966a8a34",
+      "exit_code": 0
+    },
+    {
+      "receipt": "new-empty-transform-gesture-red-attempt-1.json",
+      "receipt_sha256": "6dd225d0e9886b2c7f52bf8ade1ef2ba54927919957a8eedce9931615aea5706",
+      "log": "new-empty-transform-gesture-red-attempt-1.log",
+      "log_sha256": "ac63c0dfafdbd0362f034e52df7a081735d98bf24c899df42176fa115c3d01a6",
+      "exit_code": 101
+    },
+    {
+      "receipt": "new-empty-focused-attempt-3.json",
+      "receipt_sha256": "7f25f7f73ceb55c3c4e876bb4339518aeed2045a4f108bf598d36de2304d87e4",
+      "log": "new-empty-focused-attempt-3.log",
+      "log_sha256": "68754d643afbeecc3b46f443899b598bf7699625b26975e14cab781533ace7f3",
+      "exit_code": 0
+    },
+    {
+      "receipt": "native-suite-attempt-1.json",
+      "receipt_sha256": "abb965a8be8cbb1ea67175d50d1663e66b3c3ef47815d740d3dc9be5a266df92",
+      "log": "native-suite-attempt-1.log",
+      "log_sha256": "ca34a096201f8b3b723dfee3d6a074951efe99089357cb868fdf434d9a95e8be",
+      "exit_code": 0
+    },
+    {
+      "receipt": "native-clippy-attempt-1.json",
+      "receipt_sha256": "b5f784a7ce7aa6904b61c5fcdcd947567df0b39942a5b51c61eb074886658e69",
+      "log": "native-clippy-attempt-1.log",
+      "log_sha256": "486edfbba82833283d20ba9cf030d599fcab9b7450d18d1c7fa02185145a5efb",
+      "exit_code": 0
+    },
+    {
+      "receipt": "native-format-check-attempt-1.json",
+      "receipt_sha256": "92a67833c505f157c9f1f6423080426c249ddc9f2a3719eaec6ae69597018a54",
+      "log": "native-format-check-attempt-1.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code": 0
+    }
+  ],
+  "preserved_failures": {
+    "new-empty-red-attempt-1": "Both exposed route tests failed because New Empty did not exist, before production edits.",
+    "new-empty-focused-attempt-1": "Overstrict test fixture expected NaN input to produce no staged command; corrected only the setup assertion and NaN equality comparison.",
+    "new-empty-transform-gesture-red-attempt-1": "Existing patterns() discarded an unfinished TransformGesture when File opened; fixed by pausing gesture update/release while menus/search/New Empty are active."
+  },
+  "final_results": {
+    "new_empty_tests": "9 passed",
+    "native_suite": "73 passed",
+    "native_all_targets_clippy": "passed with -D warnings",
+    "native_rustfmt_check": "passed"
+  },
+  "additional_visual_change": "Pivot label moved above-right (9,-9), LEFT_BOTTOM; geometry/handle/accessibility unchanged.",
+  "not_executed": [
+    "whole-workspace gates",
+    "new native executable build/binding",
+    "native CUA acceptance",
+    "independent fixture grader",
+    "publication/GitHub Actions"
+  ],
+  "integration_note": "When merged with physical Free Sewing UI, root must add free_sewing.is_some() to the unfinished gesture guard."
+}

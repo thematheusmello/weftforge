@@ -1,0 +1,316 @@
+{
+  "scope": "Root review derivative of paired recorder attempts; not raw transport or a replacement for observed images/saved files. Original full returns, including binary image arrays and system inventories, remain private with these hashes. Exact-once CUA completion remains actor-reported.",
+  "paired_records": [
+    {
+      "before": {
+        "id": "0001",
+        "label": "prelaunch-readonly-bootstrap",
+        "method": "cua.getState",
+        "arguments": {
+          "emit": false
+        },
+        "utc": "2026-11-15T17:45:21.021Z",
+        "monotonic_ns": "887036958794250"
+      },
+      "returned": {
+        "id": "0001",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T17:45:21.310Z",
+        "monotonic_ns": "887037247398458"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "4fe845069b0f0e4b574e789f0f21ab7df9ab3d5a3dc7ac68bff175a6338b4cd9",
+      "original_after_sha256": "0351b84251260334b79f3ba4b47b143a7695a31b15c3967d405e02474a604736",
+      "original_after_bytes": 11075
+    },
+    {
+      "before": {
+        "id": "0002",
+        "label": "launch-B-unique-bundle",
+        "method": "exec_command:/usr/bin/open",
+        "arguments": {
+          "executable": "/usr/bin/open",
+          "args": [
+            "-n",
+            "<WORKSPACE>/.local/native-transform-acceptance-20261115/B/WeftForgeTransformAcceptanceB001.app",
+            "--args",
+            "<WORKSPACE>/.local/native-transform-acceptance-20261115/B/B-readonly-input.weftforge"
+          ]
+        },
+        "utc": "2026-11-15T17:45:27.207Z",
+        "monotonic_ns": "887043144670000"
+      },
+      "returned": {
+        "id": "0002",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T17:45:27.285Z",
+        "monotonic_ns": "887043222733708"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "0da89828cb93d26b927e7ef4a5ad61d5379565a7a2211ab01f36a3ad2b0844fd",
+      "original_after_sha256": "a707cdc8ddd5866e5788cefdc3db08057e4220fd8ccf260ac153e174509fd999",
+      "original_after_bytes": 244
+    },
+    {
+      "before": {
+        "id": "0003",
+        "label": "bind-launched-B-app",
+        "method": "getApp",
+        "arguments": {
+          "args": [
+            "<WORKSPACE>/.local/native-transform-acceptance-20261115/B/WeftForgeTransformAcceptanceB001.app"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T17:45:34.002Z",
+        "monotonic_ns": "887049939136125"
+      },
+      "returned": {
+        "id": "0003",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T17:45:34.166Z",
+        "monotonic_ns": "887050103015791"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "f854a4261a730def03420db46fc2849b5bf12ef48177b30ba97eb5ce7da5c2cd",
+      "original_after_sha256": "e27484ab771670305960e15ebd276d9bd9f4444f332d3f4f78f668a8552f58e8",
+      "original_after_bytes": 150
+    },
+    {
+      "before": {
+        "id": "0004",
+        "label": "initial-R40",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T17:45:34.166Z",
+        "monotonic_ns": "887050103426083"
+      },
+      "returned": {
+        "id": "0004",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T17:45:34.313Z",
+        "monotonic_ns": "887050250387875"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "8bbf07146c5ffaff420b2db047554413e62c52461c4fe8502fc704cd6e2454d2",
+      "original_after_sha256": "4e83b99d45076205ab2448effe24cfa06f50752bc819c009487d876935be9f84",
+      "original_after_bytes": 2583338
+    },
+    {
+      "before": {
+        "id": "0005",
+        "label": "select-Transform-tool",
+        "method": "click",
+        "arguments": {
+          "args": [
+            29
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T17:45:52.083Z",
+        "monotonic_ns": "887068020264041"
+      },
+      "returned": {
+        "id": "0005",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T17:45:52.147Z",
+        "monotonic_ns": "887068084621208"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "55b9a32554eb376604be08f0425b73683ed4f698cc76745c420d89430fdeebb7",
+      "original_after_sha256": "0af90bac40423fe0e1f02f6c1f9f1906ec4d25b1a26a7248ceb2b92d1f0ee946",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0006",
+        "label": "select-piece2-Scene",
+        "method": "click",
+        "arguments": {
+          "args": [
+            36
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T17:45:52.148Z",
+        "monotonic_ns": "887068085183375"
+      },
+      "returned": {
+        "id": "0006",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T17:45:52.256Z",
+        "monotonic_ns": "887068193368083"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "56e75e0fa9853fdb34247d2014728ff9ef498168f56fe5e971514726d5e1cb4b",
+      "original_after_sha256": "d3b4e4b6e5a4edfa80ed1aa6a48e6f32235b24ed39e2fa42e278ce2052004dcb",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0007",
+        "label": "set-observed-Snap10mm",
+        "method": "click",
+        "arguments": {
+          "args": [
+            15
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T17:45:52.256Z",
+        "monotonic_ns": "887068193802958"
+      },
+      "returned": {
+        "id": "0007",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T17:45:52.372Z",
+        "monotonic_ns": "887068309788708"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "954207216cd647c3893f261ea806bca8ac79d9ef172b5011baf8ba24d3cea672",
+      "original_after_sha256": "b8ebe05abbc558f6df1025fa2c40b411a4914dab1f19a50af4e32b94d2871c71",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0008",
+        "label": "R40-Transform-piece2-Snap10mm",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T17:45:52.373Z",
+        "monotonic_ns": "887068310279791"
+      },
+      "returned": {
+        "id": "0008",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T17:45:52.852Z",
+        "monotonic_ns": "887068789730833"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "fe6b6c086ed8e472389cc50b6963aa9cff7715795e85f4a49e3e38b08e2f7b51",
+      "original_after_sha256": "930681dc93dd6a768ec7b96efeb4000bba47a2d7c95627ecc287494ca56cda43",
+      "original_after_bytes": 2737155
+    },
+    {
+      "before": {
+        "id": "0009",
+        "label": "pre-boundary-drag-after-root-hold",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T17:48:16.272Z",
+        "monotonic_ns": "887212208837416"
+      },
+      "returned": {
+        "id": "0009",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T17:48:16.400Z",
+        "monotonic_ns": "887212336170166"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "d1a93d2cbd5d33b9865179aee89307cea2be480c24c324136b13c0ee753bf340",
+      "original_after_sha256": "f7d206aff32fcb01ae500e67969053b5f2174ba7b96606c283b5c85f9525acba",
+      "original_after_bytes": 2735913
+    },
+    {
+      "before": {
+        "id": "0010",
+        "label": "one-snapped-boundary-translation-drag",
+        "method": "drag",
+        "arguments": {
+          "args": [
+            [
+              501,
+              920
+            ],
+            [
+              527,
+              907
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T17:48:49.710Z",
+        "monotonic_ns": "887245646474625"
+      },
+      "returned": {
+        "id": "0010",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T17:48:51.053Z",
+        "monotonic_ns": "887246988734875"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "eacf271b843f4e79a2a48d87fe483df27b789acd2222abc2484c2742fdc5320c",
+      "original_after_sha256": "0a0cd229974b988f37f54e5928b95d67997382e6b064fca8aac17c02810a6cac",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0011",
+        "label": "one-boundary-drag-released-R41",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T17:48:51.054Z",
+        "monotonic_ns": "887246989847833"
+      },
+      "returned": {
+        "id": "0011",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T17:48:51.773Z",
+        "monotonic_ns": "887247708871166"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "95cdf8898603cf3e4a03ec9cd21b38f38dba31a9542d772e49588a3cffee54b5",
+      "original_after_sha256": "27a18f06ce08dd87fea61e34d125b8d7bc69fe5dbf5a5268b9eab6ab2f3f01df",
+      "original_after_bytes": 2737435
+    }
+  ],
+  "owned_process_identity": {
+    "actor_pid": 17316,
+    "utc": "2026-11-15T17:45:44.225105+00:00",
+    "packaged_binary_sha256": "216aa9e0b8968a1fe9033f32c89c9b4b93cdca15fac927c0538a5a091c848dd4",
+    "owned_executable_text_mapping": [
+      "n<WORKSPACE>/.local/native-transform-acceptance-20261115/B/WeftForgeTransformAcceptanceB001.app/Contents/MacOS/weftforge"
+    ],
+    "original_private_inventory_sha256": "cadf07585f03eb7dae9e1171a2f1908fef0ba0fb9d2d2af7a1196f87bb02eff7",
+    "qualification": "Only owned app executable identity is selected; unrelated system mappings remain private."
+  }
+}

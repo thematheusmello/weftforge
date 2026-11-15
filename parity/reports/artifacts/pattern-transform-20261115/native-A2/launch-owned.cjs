@@ -1,0 +1,16 @@
+const fs=require('node:fs'),path=require('node:path'),child=require('node:child_process');
+const root=__dirname;
+const binding=JSON.parse(fs.readFileSync(path.resolve(root,'../../native-transform-plan-v2-20261115/ROOT-BINDING-A2.json'),'utf8'));
+const config=JSON.parse(fs.readFileSync(path.join(root,'CONTROLLER-CONFIG.json'),'utf8'));
+const controller=require(binding.controller).createController(config);
+const recorder=require(config.recorderPath).createRecorder(root);
+if(controller.status().calls!==1||controller.status().elapsedS!==null)throw new Error('Expected exactly one prelaunch bootstrap and no clock');
+const args=['-n',path.join(root,'WeftForgeTransformAcceptanceA002.app'),'--args',binding.input];
+controller.startClock();
+const id=recorder.before('launch-A2-unique-bundle','exec_command:/usr/bin/open',{executable:'/usr/bin/open',args});
+const result=child.spawnSync('/usr/bin/open',args,{encoding:'utf8'});
+const actual={status:result.status,signal:result.signal,stdout:result.stdout,stderr:result.stderr,error:result.error?{name:result.error.name,message:result.error.message}:null};
+recorder.returned(id,actual,result.error||null);
+fs.writeFileSync(path.join(root,'LAUNCH.json'),JSON.stringify({sourceRecord:id,actual,status:controller.status()},null,2)+'\n',{flag:'wx',mode:0o600});
+if(result.error||result.status!==0)process.exit(1);
+process.stdout.write(JSON.stringify({launched:true,sourceRecord:id,status:controller.status()})+'\n');

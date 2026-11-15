@@ -1,0 +1,17 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/pattern-transform-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.16s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 9 tests
+test new_empty_tests::new_empty_waits_for_existing_autosave_worker_without_dropping_it ... ok
+test new_empty_tests::new_empty_search_route_replaces_clean_document_and_retains_files_and_preferences ... ok
+test new_empty_tests::new_empty_file_route_replaces_clean_document_and_retains_files_and_preferences ... ok
+test new_empty_tests::new_empty_decision_observes_current_inspector_pass_without_committing_it ... ok
+test new_empty_tests::new_empty_authoring_modal_keeps_background_accesskit_action_shielded ... ok
+test new_empty_tests::new_empty_dirty_refusal_preserves_primary_recovery_autosave_and_redo ... ok
+test new_empty_tests::new_empty_refusal_keeps_transform_gesture_across_menu_search_and_pointer_release ... ok
+test new_empty_tests::new_empty_refusals_keep_numeric_text_caret_drafts_redo_and_accepted_display_across_frames ... ok
+test new_empty_tests::new_empty_refuses_unfinished_construction_gestures_without_resetting_them ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 64 filtered out; finished in 1.73s
+

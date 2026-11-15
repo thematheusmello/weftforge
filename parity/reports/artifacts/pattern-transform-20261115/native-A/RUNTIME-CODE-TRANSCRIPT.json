@@ -1,0 +1,33 @@
+{
+  "provenance": "Manually transcribed from the actual submitted CUA tool-input source in this conversation; this file is not a raw transport capture.",
+  "ordered_relevant_cells": [
+    {
+      "cell": "preflight before app binding",
+      "code": "var transformARecorder=transformACreateRecorder(transformARoot); var transformACalls=1; var transformAStarted=null; var transformALastId=null; var transformACall=async function(label,method,args,invoke){ if(transformACalls>=130) throw new Error('A call cap reached'); if(transformAStarted!==null && Number(transformAProcess.hrtime.bigint()-transformAStarted)/1e9>=900) throw new Error('A elapsed cap reached'); transformACalls++; transformALastId=transformARecorder.before(label,method,args); try{var value=await invoke(); transformARecorder.returned(transformALastId,value); return value;} catch(error){transformARecorder.returned(transformALastId,null,error);throw error;} };"
+    },
+    {
+      "cell": "observation helper created before app binding",
+      "code": "var transformAObserve=async function(label){var result=await transformACall(label,'app.getAXStateAndScreenshot',{emit:false},()=>transformAApp.getAXStateAndScreenshot({emit:false}));var sourceId=transformALastId;transformARecorder.artifact(label+'.txt',result.state,sourceId);if(result.screenshot){transformASaveRaw(label,result.screenshot,sourceId);await nodeRepl.emitImage(result.screenshot);}if(result.screenshots){for(var i=0;i<result.screenshots.length;i++){var region=result.screenshots[i];transformASaveRaw(label+'-'+i,region.bytes,sourceId);await nodeRepl.emitImage(region.bytes);}}nodeRepl.write(result.state);nodeRepl.write({calls:transformACalls,elapsed_s:transformAStarted===null?0:Number(transformAProcess.hrtime.bigint()-transformAStarted)/1e9});return result;};"
+    },
+    {
+      "cell": "actual launch binding and failing helper invocation",
+      "code": "var transformALaunch=JSON.parse(transformAFs.readFileSync(transformAPath.join(transformARoot,'LAUNCH.json'),'utf8'));var transformALaunchBefore=JSON.parse(transformAFs.readFileSync(transformAPath.join(transformARoot,'trace/'+transformALaunch.source_record+'-before.json'),'utf8'));transformAStarted=BigInt(transformALaunchBefore.monotonic_ns);transformACalls=2;var transformAAppPath=transformAPath.join(transformARoot,'WeftForgeTransformAcceptanceA001.app');var transformAApp=await transformACall('select already launched A app','cua.getApp',{target:transformAAppPath},()=>cua.getApp(transformAAppPath));await transformAObserve('initial-R37');"
+    },
+    {
+      "cell": "one quit before late root steering arrived",
+      "code": "await transformACall('final quit after unexpected recorder helper error','app.pressKey',{key:'super+q'},()=>transformAApp.pressKey('super+q'));nodeRepl.write({final_action:'quit once',case_status:'stopped_unverified',calls_counted:transformACalls,elapsed_s:Number(transformAProcess.hrtime.bigint()-transformAStarted)/1e9});"
+    },
+    {
+      "cell": "immediate next CUA call",
+      "completion_summary": "Stopped native case before authoring"
+    }
+  ],
+  "actual_error_source": "trace/0003-after.json",
+  "actual_error": {
+    "name": "ReferenceError",
+    "message": "transformAApp is not defined"
+  },
+  "stack": "Unavailable: CUA tool result displayed only transformAApp is not defined, and the SHA-pinned recorder retains error name/message but no stack. No raw stack was returned or reconstructed.",
+  "counter_limitation": "Final direct output was calls_counted:2 while the filesystem trace contains launch/getApp/failed snapshot attempt/quit and bootstrap is externally paired. Do not trust mutable bindings captured by earlier CUA cells for cap enforcement in a future case. No further runtime experiment was made after stopping.",
+  "late_root_instruction": "Root requested leave-app-as-is after quit/completion_summary/accounting had already completed. No CUA call followed that steering."
+}

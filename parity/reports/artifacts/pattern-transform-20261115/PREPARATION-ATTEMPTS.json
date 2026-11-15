@@ -1,0 +1,17 @@
+{
+  "scope": "Publication preparation only; no native, headless, numerical or source acceptance was rerun or regraded.",
+  "attempts": [
+    {
+      "step": "pre-copy private-path audit",
+      "status": "refused_before_public_copy",
+      "reason": "Eight text selections contained unrelated process inventory rows or private kernel-stack paths.",
+      "correction": "Keep original private bytes; publish clearly named owned-only/stack-omitted derivatives with original hashes and omitted-field lists. Literal WORKSPACE/HOME normalization stays unchanged."
+    },
+    {
+      "step": "metadata implementation-location assertion",
+      "status": "refused_before_registry_write",
+      "reason": "The new metadata generator named nonexistent crates/weftforge-core/tests/curves.rs.",
+      "correction": "Use the existing crates/weftforge-core/tests/pattern_transform.rs. Runtime/contracts and original evidence unchanged."
+    }
+  ]
+}

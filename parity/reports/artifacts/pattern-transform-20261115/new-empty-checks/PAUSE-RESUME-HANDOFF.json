@@ -1,0 +1,77 @@
+{
+  "recorded_at": "2026-11-15T17:06:55.565880+00:00",
+  "commit": "bc599b13548d8ffb843968f12d2dc63cff412357",
+  "base_commit": "133c6d3fd91601b897f584e03c92765f79f97993",
+  "worktree_clean": true,
+  "changed_files": [
+    "apps/weftforge/src/main.rs"
+  ],
+  "main_rs_sha256": "7c9e07ff6444acfdae47a9d5db96f46294e5427c02e431e03ca23a8201924374",
+  "original_review_sha256": "c2894c039ffb840127312c1001325d79ee2418e7fb91d4e33c0b86c681c6280e",
+  "source_before_receipt_sha256": "a1044ee5caf9d76660900a5395d1931266d912615c701d04cf29164a4c5ce793",
+  "source_after_receipt_sha256": "c50e752d2f84c287bb799b5fbcd9c61f8bada988727676b46e74989811bf50bf",
+  "checks": [
+    {
+      "receipt": "pause-resume-red-attempt-1.json",
+      "receipt_sha256": "8c88906d474f77765843eda6f417166225042a3048bd3abc7ed748c6cccdb84b",
+      "log": "pause-resume-red-attempt-1.log",
+      "log_sha256": "f5f45e60746e51f634b69ba24090424c99a8a118b878d4d42abb070e2a206e8f",
+      "exit_code": 101
+    },
+    {
+      "receipt": "pause-resume-focused-attempt-1.json",
+      "receipt_sha256": "f0e5b8bde8a70764d48cce09da06fb9805cae56416b020098ea2eaab15fc574f",
+      "log": "pause-resume-focused-attempt-1.log",
+      "log_sha256": "7bc23b287615952f8089e6d48f4efbb73bacccf9627e13d3cbb3d98dbdbbed7c",
+      "exit_code": 0
+    },
+    {
+      "receipt": "pause-resume-native-suite-attempt-1.json",
+      "receipt_sha256": "053a330a4cc60e316f418a8eeb7c93288a785b530e9cca41b3e96c1b19860a59",
+      "log": "pause-resume-native-suite-attempt-1.log",
+      "log_sha256": "89399b2a4f0ac9d67c37411eeddace87d5beb2881777a1ac15e3116cb522ef24",
+      "exit_code": 0
+    },
+    {
+      "receipt": "pause-resume-native-clippy-attempt-1.json",
+      "receipt_sha256": "6cd1793278594cc340e6db2ca57470e540c9c6dad99e66cbb8efcd21e0c32bbd",
+      "log": "pause-resume-native-clippy-attempt-1.log",
+      "log_sha256": "cd8796a9e83476d27da32705e2952bbdb6475337f32f884cf74086b2e40af332",
+      "exit_code": 0
+    },
+    {
+      "receipt": "pause-resume-native-format-check-attempt-1.json",
+      "receipt_sha256": "3dffce15946eb2ac2afd6293f135146ca91b9410d6075b7ba613a661d3c2f0e2",
+      "log": "pause-resume-native-format-check-attempt-1.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code": 0
+    }
+  ],
+  "reproduced_failure": "Boundary transform paused through File; original release in popup; New Empty refusal; later Snap click committed unexpectedly from R8 to R9 on old source. Full RED log retained.",
+  "fix": "Capture original canvas/rotation-handle widget ID and use egui owned response for transform updates/releases. Detach owner permanently on capture loss or release while paused; retain pending preview. Later unrelated/canvas presses cannot rearm it. Explicit existing Transform pattern action opens retained numeric values; Escape cancels.",
+  "regression_matrix": [
+    "boundary and rotation handle",
+    "File and command-search pause",
+    "original release while paused",
+    "New Empty refusal retains pending transform",
+    "later Snap and numeric-input press/release",
+    "later new canvas press/move/release cannot restart",
+    "idle frames",
+    "Escape cancels without changing accepted editor/Redo",
+    "explicit existing numeric transform editor applies the retained attempt once"
+  ],
+  "final_results": {
+    "focused_matrix": "passed all 8 combinations",
+    "native_tests": "74 passed including all original 9 New Empty tests",
+    "native_clippy": "all targets passed with -D warnings",
+    "native_rustfmt_check": "passed"
+  },
+  "not_run": [
+    "whole-workspace integrated gates",
+    "new executable build/binding",
+    "CUA/native A4 acceptance",
+    "independent fixture grader",
+    "push or GitHub Actions"
+  ],
+  "immutable_prior_evidence": "Prior HANDOFF.json, all earlier logs/receipts, original source review, contracts and criteria remain unchanged."
+}

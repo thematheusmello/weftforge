@@ -1,63 +1,86 @@
 # WeftForge status — active development, 2026-11-15
 
-The PhotoCraft-inspired native shell is merged in [PR43](https://github.com/thematheusmello/weftforge/pull/43),
-prior main `351382875b389188d19170a1854a25096207787a`. The measurement source checkpoint
-`be8a031b5f8342d0857f3bed34f52dd165fa86da` adds authored/rest boundary lengths,
-raw seam/group A/B and signed B−A in the native inspector and strict CLI/MCP queries.
-All creation remains native Rust; no dependency, solver or document-format change.
+One-piece layout transforms and New Empty are implemented at source
+dd5a16826dafe0d4f32c251f7c351197ad0936af. This local publication candidate preserves
+the complete studio target: **0/56 coarse reference contracts verified**,
+**39 partial / 17 planned**, discovery incomplete and **no roadmap gate accepted**.
+The 949 observed entries / 205 packets remain an engineering inventory.
 
-The complete garment studio remains the goal: **0/56 coarse reference contracts
-verified**, **39 partial / 17 planned**, discovery incomplete and **no roadmap gate
-accepted**. The 949 observed entries / 205 packets are an engineering inventory.
+## Current transform and New Empty checkpoint
 
-## Current measurement delivery
+The [scoped implementation-only report](parity/reports/WF-20261115-PATTERN-TRANSFORM-001.json)
+is **failed/current for the overall frozen native A/B plan**. Root accepted bounded
+numeric case A4; pointer case B remains unverified after its first documented drag
+left the observed document at R40 rather than required R41. The cause is unknown;
+this does not prove a product defect. PAT-004/UI-004/APP-001 remain partial, with
+current failed verification and no complete-contract/reference/full-native-plan credit.
 
-Delivery: [PR44](https://github.com/thematheusmello/weftforge/pull/44).
+The shared rigid transform updates authored points/cubic controls while stable
+IDs and compensated placement preserve arranged rest geometry and world warp.
+Native numeric and drag routes use the same command transaction. Pivot/handles,
+3D/grain behavior and New refusal/reset are declared engineering policies, not
+observed reference equivalence. Mirroring, multiselection, pivot dragging and
+locks remain later work. File/search New Empty is deferred until the current
+inspector pass; dirty, staged/invalid and unfinished work is refused without
+committing it, and a clean reset cancels/detaches old document work.
 
-The [scoped report](parity/reports/WF-20261115-AUTHORED-LENGTH-001.json) is a
-bounded implementation-only pass. All five clean same-worktree gates pass:
-205 Rust tests,54 Python tests, formatting, strict workspace/all-target Clippy,
-xtask registry/map verification and unsigned packaging. Both font OFLs match in
-both regular/app package destinations. Debug and release identities are separate;
-no new signed/published binary or other-platform acceptance is claimed.
+Fresh DD checks passed all six commands: formatting, workspace tests (**235 Rust**),
+strict workspace/all-target Clippy, xtask verification (**54 Python** checks plus
+registry/map), unsigned packaging and the debug native build. The original manifest
+SHA is cf958b0edd33590fba4612974c39b4098660ba6bba83f8d352d2902259aeb1f2;
+all **59 runtime/build/contract identities** remain pinned. Actual native A4/B uses
+216aa9e0b8968a1fe9033f32c89c9b4b93cdca15fac927c0538a5a091c848dd4.
+Debug and release/package identities remain separate; no new binary release,
+packaged launch, signing or other-platform acceptance is claimed.
 
-The independent frozen analytic case runs 46 processes:30 CLI successes/12 expected
-errors and 4 MCP sessions with 44 length successes / 76 tool errors / 12 RPC errors / 8 setup
-checks. Unrounded SI, query/revision, signed B−A, schema and file preservation pass;
-CLI/MCP structured/text JSON are exactly equal. Length/mismatch tolerances stay
-1e-8 / 2e-8 m. The accepted a820/eed0 CLI source and executable remain byte-identical
-at be8 after the native-only fix. The CLI-only xtask feature context and restored
-multi-package context are both disclosed in the build binding.
+The original independent 02b evaluation passed **93 cases**, 31 each via CLI,
+current MCP and legacy MCP. All 47 scoped core/CLI inputs and accepted executable
+80921d0947c4f6f1c91e9a5bef18e5b607c67323ac80e3177833f499acd360a5 are unchanged at DD.
+Its analytic geometry/world/grain and atomic-history/failure outputs are retained;
+the headless execution is not a rerun of changed GUI source or native acceptance.
 
-Native 001 permanently stopped before input/screenshots on recorder import. After
-offline createRequire preflight, separate native 002 retained the same criteria,
-fixture and caps. Three actual unedited 1640 × 1032 images show 1478.943 mm curved
-length, 861.752/400.000/−461.752mm legacy pair and 880.196/900.000/+19.804mm group,
-revision 137 and draft qualifiers. Root directly reviewed those readouts. Full
-trace/completion compliance remains actor reported. No authoring, numeric input,
-Save, history, physics or export ran. See the [gallery](docs/studio-preview.md).
+A4 completed **121 pairs / 542.54376275 s** within unchanged 130 / 900 caps.
+Root directly reviewed twelve unedited refusal/cancel/error/final-value/history/
+New/reopen images and accepted the bounded workflow. Its saved grader ran once
+and passed; Redo/reopened bytes are identical. The original actor report still says
+pending root review; ROOT-A4-ACCEPTANCE supplies the later qualification without
+rewriting it. Same-process reopen is not process restart. Modal AX omission and
+exact-once/process-history limits remain explicit in the [gallery](docs/studio-preview.md).
 
-Independent source review found a real scrolling-layout defect in a820. The
-controlled RED changed height 2198→2290px; be8 holds 3787→3787→3787px while measuring
-only 2 of 25 pairs. Fixed row footprints, lazy visible computation, partial clipping,
-errors, revision replacement and numeric text/caret preservation are covered.
-Initial exact-float/AX-helper test mistakes were corrected to the frozen criteria,
-not by widening production tolerance. [Retained packet](parity/reports/artifacts/authored-length-20261115/README.md).
+B used A4 Redo as a read-only input, paused after a root pre-authoring hold and
+attempted exactly one declared translation drag. It stopped at unchanged R40,
+with **11 pairs / 204.564500916 s** inside its 60 / 600 caps. The optional read-only
+pivot observation was not used; rotation and Save did not run. The one grader
+failed on missing translated/rotated outputs. No corrected gesture or ideal
+content-space test can stand in for actual OS delivery or a native B pass.
 
-Fresh REA observation separately confirms unselected one-decimal mm canvas labels
-and Select All aggregate readouts in the reference. Exact arc/rounding/angle and
-general selection semantics remain unknown. Our three-decimal selected inspector
-is a different partial presentation; all-edge overlays/aggregate/angles and
-persistent measurements remain pending. See the
-[reviewed observation](spec/features/PAT-007-line-length-runtime-20261115.md).
+Older A stopped on helper setup before authoring; A2 stopped at the five-value
+barrier; A3 stopped after saved quarter/Undo/Redo because New Empty was absent.
+Source 133 full gates passed before later reviews found the corrected New/Transform
+pause, ownership and input-retention issues. Every old pass, RED, failed case,
+saved project and selected sidecar keeps its original hashes/outcome in the
+[tracked packet](parity/reports/artifacts/pattern-transform-20261115/README.md).
+Only literal workspace/home paths are normalized in selected text; named review
+derivatives exclude global process inventories/kernel stacks. Images and saved
+construction/sidecars are byte-identical. No proprietary material or app binaries
+are included.
 
-PAT-007/SEW-004/UI-001 stay partial/not_run with current bounded evidence. The 7ab
-visual report is stale on this changed source and retains its original results.
-Older native/garment/physics failures stay unchanged. All complete-contract,
-reference-comparison, single-workflow and full-native-plan flags remain false.
-Actions and automated Pages deployments stay disabled; preserve the existing
-static site. All build/CUA/physical jobs for this checkpoint are terminal; own
-preview PID 14269 was left paused at its last observation, not a reusable authority.
+Confirmed terminal handles: DD gate runner 82460 completed successfully; A4 actor
+92536 terminated after its case; B case is closed/unverified and its last final
+accounting retained own PID 17316 running. These are historical handles, not a
+reusable authority. Actions and automated Pages deployment remain disabled and
+the existing static site is preserved. No push/PR or binary release is part of
+this local publication candidate.
+
+## Prior measurement delivery
+
+[PR44](https://github.com/thematheusmello/weftforge/pull/44) and the
+[be8 report](parity/reports/WF-20261115-AUTHORED-LENGTH-001.json) retain the bounded
+205 Rust/54 Python gates, 46-process analytic CLI/MCP run and read-only native002
+length displays. Native001 stopped before input on recorder setup. Be8 and the
+earlier 7ab PhotoCraft-inspired shell evidence are stale on changed runtime source;
+their original outcomes are unchanged and no new authoring, reference or garment
+credit is transferred. PhotoCraft informs visual structure only.
 
 ## Failures and historical checkpoints
 
@@ -114,16 +137,14 @@ surface contact, full persistence and full garment acceptance remain open.
 
 ## Exact next work
 
-Publish only tracked, source-bound evidence after clean registry/map checks.
-One-piece 2D translation/rotation implementation is underway in the isolated
-`feat/pattern-transform` worktree, with separate core/UI agents and independent
-analytic acceptance preparation: preserve stable geometry/sewing IDs, one atomic undo, explicit
-pivot and grain/3D-arrangement policy. Current coordinates directly feed UV/3D
-placement, so compensation must be explicit; reference behavior is still unknown.
-Do not silently change existing MovePoint/ResizePiece/SetPlacement semantics.
+Root-review this tracked, source-bound publication candidate and its clean
+registry/map receipts before any publication. Continue physical-length partial
+Free Sewing on its separately bound source and native case; this DD packet does
+not contain or accept that later runtime. Follow with internal lines and bounded
+topological cuts. Preserve the full parity target, unfinished native pointer-B
+acceptance and reference unknowns; future acceptance requires a fresh declared
+case/source/input/criteria binding rather than reopening or repairing closed cases.
 
-Follow with physical-length partial Free Sewing, internal lines and bounded
-topological cuts. Keep the full roadmap and unknown reference semantics visible.
-The old Rectangle manual handoff has no inferred outcome; no old closed case is
-restarted or regraded. Raw commercial/account material stays private. Full garment
-contact/physics acceptance requires new source/input/criteria bindings.
+Keep Actions/automated Pages disabled through development. Full garment contact,
+physics, exports and reference workflow acceptance remain required; no source-map
+entry or implementation-only test closes a roadmap gate.

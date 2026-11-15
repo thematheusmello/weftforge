@@ -1,0 +1,97 @@
+{
+  "status": "stopped_unverified",
+  "case": "original frozen v2 B, no retry",
+  "reason": "First declared boundary drag returned but native R40/geometry/pivot remained unchanged; required translation R41 barrier failed.",
+  "calls": 11,
+  "caps": {
+    "calls": 60,
+    "seconds": 600
+  },
+  "elapsed_launch_clock_to_last_native_return_s": 204.564500916,
+  "all_API_calls_paired": true,
+  "all_API_returns_without_exception": true,
+  "actor_pid_retained": 17316,
+  "observed_initial": "R40 paused; Transform/piece2 selected; Snap10mm enabled; initial displayed pivot/rotationhandle visible.",
+  "translation_drag_attempts": 1,
+  "translation_API_record": {
+    "source_record": "0010",
+    "method": "app.drag",
+    "actual_arguments": {
+      "args": [
+        [
+          501,
+          920
+        ],
+        [
+          527,
+          907
+        ]
+      ],
+      "evidenceKind": "native"
+    },
+    "before_utc": "2026-11-15T17:48:49.710Z",
+    "after_utc": "2026-11-15T17:48:51.053Z",
+    "before_monotonic_ns": "887245646474625",
+    "after_monotonic_ns": "887246988734875",
+    "duration_ms": 1342.26025,
+    "actual_return": null,
+    "API_status": "returned",
+    "API_error": null,
+    "planned_target_UV_m": [
+      0.1,
+      0.05
+    ],
+    "actor_visual_postcondition": "R40 still displayed; selected geometry/pivot remains at pre-drag positions; required R41 not reached.",
+    "cause": "Unknown; supportedAPI returned without exception, no corrective input or backend probing performed."
+  },
+  "required_translation_revision": 41,
+  "observed_post_drag_revision": 40,
+  "no_corrective_drag": true,
+  "rotation_drag_attempts": 0,
+  "numeric_gesture_edits": 0,
+  "modal_pivot_observation_executed": false,
+  "native_saves": [],
+  "captures": [
+    {
+      "id": "0004",
+      "label_is_intent": "initial-R40",
+      "actual_state": "There has been no change in the accessibility tree for Window: \"WeftForge\".",
+      "file": "captures/initial-R40-0.jpg",
+      "sha256": "0814aa31b57e0db778449c9664b879a99d8f27359b119c91e874d9fadd304c93",
+      "unedited": true
+    },
+    {
+      "id": "0008",
+      "label_is_intent": "R40-Transform-piece2-Snap10mm",
+      "actual_state": "The following is a diff from the previous accessibility tree for Window: \"WeftForge\" with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.\nRemoved element IDs: 72-103\n~\t\t10 text (settable) Transform pattern\n+\t\t106 button Transform pattern\u2026\n~\t\t28 toggle button (settable, boolean) Select / edit, Value: off\n~\t\t29 toggle button (settable, boolean) Transform pattern, Value: on\n~\t\t36 toggle button (settable, boolean) Original asymmetric parabola, Value: on\n+\t\t107 text (settable) Boundary curve \u00b7 select here or in 2D\n+\t\t108 pop up button (settable) Choose boundary\n+\t\t109 text (settable) Original asymmetric parabola\n+\t\t110 text (settable) Size m\n+\t\t111 stepper (settable) 1.250\n+\t\t112 stepper (settable) 1.250\n+\t\t113 text (settable) Arrange X / Y / Z m\n+\t\t114 stepper (settable) -0.2921\n+\t\t115 stepper (settable) 2.5033\n+\t\t116 stepper (settable) -0.2850\n+\t\t117 text (settable) Rotate X / Y / Z radians\n+\t\t118 stepper (settable) 0.4900\n+\t\t119 stepper (settable) 0.2755\n+\t\t120 stepper (settable) -1.2167\n+\t\t121 text (settable) Warp angle radians\n+\t\t122 text (settable) 0 = +U (right); positive turns toward +V (up).\n+\t\t123 stepper (settable) 1.9408\n+\t\t124 text (settable) Shared fabric \u00b7 2 pieces\n+\t\t125 text (settable) Changes affect every assigned piece. Uncalibrated approximation.\n+\t\t126 text (settable) Mass/area kg/m\u00b2\n+\t\t127 stepper (settable) 0.18\n+\t\t128 text (settable) Warp stiffness N/m\n+\t\t129 stepper (settable) 520\n+\t\t130 text (settable) Weft stiffness N/m\n+\t\t131 stepper (settable) 260\n+\t\t132 text (settable) Bend N\u00b7m\n+\t\t133 stepper (settable) 0.00300\n+\t\t134 color well\n+\t\t135 button Delete selected\n+\t136 text WeftForge\n+\t137 menu button Window sharing",
+      "file": "captures/R40-Transform-piece2-Snap10mm-0.jpg",
+      "sha256": "0753ddedc0e29412a0a43e2a6baa24ccc1d9977fde9d5e0a4ef8fc4bd2263f48",
+      "unedited": true
+    },
+    {
+      "id": "0009",
+      "label_is_intent": "pre-boundary-drag-after-root-hold",
+      "actual_state": "There has been no change in the accessibility tree for Window: \"WeftForge\".",
+      "file": "captures/pre-boundary-drag-after-root-hold-0.jpg",
+      "sha256": "eed3627ca44804c72b7db294f78b19ef16dbd06fb1cb26a6d8c1e71fe9305735",
+      "unedited": true
+    },
+    {
+      "id": "0011",
+      "label_is_intent": "one-boundary-drag-released-R41",
+      "actual_state": "There has been no change in the accessibility tree for Window: \"WeftForge\".",
+      "file": "captures/one-boundary-drag-released-R41-0.jpg",
+      "sha256": "e217cddd4226136ed345e6c1ea3a5ca707acc9d39f5909deb5335400476b6356",
+      "unedited": true
+    }
+  ],
+  "capture_label_limit": "Filename one-boundary-drag-released-R41 names the intended checkpoint; actual raw screenshot showsR40. No R41 is claimed.",
+  "preview_and_release_limit": "One documented app.drag call was paired. No mid-gesture image/OSbutton-state witness was returned; no transient preview/release behavior is independently established.",
+  "root_hold": "After first8initialcalls/noauthoring, root held; resumed with pinned displayed-pivot observation detail before firstgesture. Allholdtime stayed in original600s clock. Detail was never used because firstdrag failed.",
+  "pivot_detail_sha256": "d9358dbdd7c9d1d3f5435a27fbb02286aa3cf1b7c5653b0a4076dd57b606be29",
+  "completion_summary": "Stopped B at unchanged drag result; immediate next CUA call after failed capture; no extra native/quit/AX call.",
+  "hashes_unchanged": true,
+  "grade_returncode": 1,
+  "grade_status": "unverified; missing translated/rotated; originalgrade-b executed once",
+  "acceptance": "NoBnative or saved-output success claimed; no reference/physics/export claim."
+}

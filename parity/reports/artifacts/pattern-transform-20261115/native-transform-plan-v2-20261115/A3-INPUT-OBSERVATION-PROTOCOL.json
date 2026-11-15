@@ -1,0 +1,20 @@
+{
+  "status": "prospective input-observation protocol for fresh A3 only; frozen before launch",
+  "prepared_utc": "2026-11-15T16:19:10.943996+00:00",
+  "underlying_plan_freeze_sha256": "0e952e2621d173ed091b8552dad8408e12c8d8f35b5eb88c7056489d9ecf6b95",
+  "unchanged": "Original fixture, all authored values, all numerical/history/save expectations, grader, source/native binary, A130calls/900s and B60calls/600s. Old A/A2 outcomes are immutable and not regraded.",
+  "observation_protocol": [
+    "After the initial click/doubleclick into a numeric field, capture once and inspect visible field/caret/selection before sending Cmd+A/type. Do not infer keyboard focus from an intended label.",
+    "After every typeText that edits an A numeric field, take and inspect a screenshot before sending Tab or another focus-changing input. The raw/current value must visibly correspond to the intended field. This separates the typing and focus transition with an observed native frame.",
+    "After each Tab used between the five transform fields, capture and inspect the next field selection/current value before issuing its next input. Tab remains the only inter-field navigation route; Enter may submit.",
+    "In particular, after correcting retained U1000, require visible U0.5 before Tab, then observe V selected. Continue the same predeclared five values and one final Apply only after the full pre-Apply barrier.",
+    "Capture calls count toward the same130call/900s caps. No added retry, corrective drag, fixture edit, numeric tolerance change, case combination or failed-value repair. If any barrier fails or new ambiguity/error occurs, stop unverified and next CUA call only completion_summary; no additional native call or quit."
+  ],
+  "diagnostic_qualification": "A2 has no per-field focus/frame observations and adjacent commands were 6\u201380ms apart. Installed egui0.35 DragValue processes editing according to focus in a UI pass and focus transfers through framework input. This supports testing event batching as a hypothesis; source reading does not establish the exact A2 cause or rule out a product bug.",
+  "source_read_only": [
+    "apps/weftforge/src/main.rs:2425-2525",
+    "egui0.35.0/src/widgets/drag_value.rs:448-595",
+    "egui0.35.0/src/widgets/text_edit/builder.rs:1065-1110"
+  ],
+  "native_accessibility_limit": "A2 modal fields/buttons were visually present but absent from returned AX. Use actual screenshots without an invented full AX/focused role witness. This protocol does not qualify native modal accessibility."
+}

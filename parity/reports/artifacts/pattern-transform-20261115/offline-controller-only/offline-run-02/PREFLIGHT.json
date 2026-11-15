@@ -1,0 +1,99 @@
+{
+  "status": "passed_offline_mock_only",
+  "runtime": "actual cua_repl; six separate evaluation cells",
+  "controller_sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+  "recorder_sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+  "evidenceKind": "offline_mock",
+  "native_api_calls": 0,
+  "new_native_launches": 0,
+  "mock_images_emitted": 0,
+  "failed_A_all_manifest_hashes_unchanged": true,
+  "complete_observation_paths": {
+    "jpeg": {
+      "source_record": "0001",
+      "bytes": 633,
+      "sha256": "8f4e008b7ede6e0f1165dd1dc9333e5fea862339cf708b032f43ef018d90c908",
+      "extension": "jpg",
+      "raw_bytes_match_fixture": true
+    },
+    "png": {
+      "source_record": "0002",
+      "bytes": 72,
+      "sha256": "10d5819f1542a4b3629445c99467edf267f4b81d8e7a297bd651722812691699",
+      "extension": "png",
+      "raw_bytes_match_fixture": true,
+      "separate_receipt": true
+    }
+  },
+  "count_sequence_across_cells": [
+    1,
+    2,
+    3,
+    3
+  ],
+  "filesystem_counter_survives_new_controller_instance": true,
+  "clock_files_unchanged_across_cells": true,
+  "time_cap_rejected_before_target": true,
+  "call_cap_rejected_before_target": true,
+  "unknown_method_paired_and_stopped": true,
+  "cross_realm_target_exception_paired_and_stopped": true,
+  "unknown_image_paired_and_stopped": true,
+  "stop_persists_across_later_cell_and_new_instance": true,
+  "blocked_fake_target_calls": 0,
+  "paired_attempts": [
+    {
+      "mock_case": "mock-main-callcap",
+      "id": "0001",
+      "status": "returned",
+      "method": "getAXStateAndScreenshot",
+      "error": null
+    },
+    {
+      "mock_case": "mock-main-callcap",
+      "id": "0002",
+      "status": "returned",
+      "method": "getAXStateAndScreenshot",
+      "error": null
+    },
+    {
+      "mock_case": "mock-unknown-method",
+      "id": "0001",
+      "status": "exception",
+      "method": "unsupportedMethod",
+      "error": {
+        "name": "Error",
+        "message": "Unknown target method: unsupportedMethod"
+      }
+    },
+    {
+      "mock_case": "mock-target-error",
+      "id": "0001",
+      "status": "exception",
+      "method": "getAXStateAndScreenshot",
+      "error": {
+        "name": "Error",
+        "message": "OFFLINE MOCK target exception"
+      }
+    },
+    {
+      "mock_case": "mock-unknown-image",
+      "id": "0001",
+      "status": "exception",
+      "method": "getAXStateAndScreenshot",
+      "error": {
+        "name": "Error",
+        "message": "Unknown raw screenshot format"
+      }
+    }
+  ],
+  "original_failed_A_stack": "Unavailable; not reconstructed. New offline mock exception stacks were captured at occurrence.",
+  "preserved_prior_offline_failure": "../OFFLINE-ATTEMPT-01.json",
+  "native_plan_caps_unchanged": {
+    "calls": 130,
+    "seconds": 900
+  },
+  "limitations": [
+    "Mock evidence only; no native target, launch, selector, screenshot or action was tested.",
+    "Controller and actor-side observation emission still require root review before a new bound native case."
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "scope": "Selected review derivative; omitted private inventory or kernel-stack fields are not public delivery. Numerical results and status fields are unchanged.",
+  "original_private_sha256": "29bc81a571acdc43f958ff7953ec1c352213b014cbf4cac41475593dcc690598",
+  "omitted_private_fields": [
+    "old_target_processes_retained"
+  ],
+  "record": {
+    "utc": "2026-11-15T15:46:15.871012+00:00",
+    "actor_pid": 95556,
+    "owned_pid_terminated": true,
+    "owned_pid_ps_result": {
+      "returncode": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    "old_target_processes_missing": [],
+    "source_hash_mismatches": [],
+    "source_head_after": "699c4608ff68af132ec90b1ffb80ba354c70435f",
+    "native_sha256_after": "4406006ab19c52b98d83fe3c8e8115b16fe61492120611d2d06a496dd9b69757",
+    "packaged_native_sha256_after": "4406006ab19c52b98d83fe3c8e8115b16fe61492120611d2d06a496dd9b69757",
+    "original_fixture_sha256_after": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+    "readonly_input_sha256_after": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+    "readonly_input_mode_after": "0o400",
+    "owned_primary_and_sidecars_after": [
+      {
+        "path": "<WORKSPACE>/.local/native-transform-acceptance-20261115/A/A-readonly-input.weftforge",
+        "bytes": 5068,
+        "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+        "mode": "0o400",
+        "revision": 37
+      }
+    ]
+  }
+}

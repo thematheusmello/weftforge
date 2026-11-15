@@ -1,0 +1,70 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/pattern-transform-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.71s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 62 tests
+test authored_length_tests::partially_clipped_legacy_feedback_is_measured_once ... ok
+test authored_length_tests::revisions_and_same_identity_document_replacement_invalidate_lengths ... ok
+test authored_length_tests::legacy_queries_are_lazy_errors_cached_and_groups_wait_for_matching_mesh_jobs ... ok
+test authored_length_tests::scrolling_legacy_feedback_preserves_content_height_without_measuring_hidden_rows ... ok
+test pattern_transform_tests::transform_modal_blocks_background_accesskit_pointer_and_shortcut_authoring ... ok
+test pattern_transform_tests::transform_search_and_tool_names_are_real_authoring_routes ... ok
+test tests::cancelled_and_obsolete_jobs_do_not_replace_the_display_snapshot ... ok
+test tests::canvas_picking ... ok
+test tests::bounded_fit_phases_queue_without_rebuild_and_continue_accepted_cloth_state ... ok
+test pattern_import_tests::import_modal_controls_are_reachable_from_the_accessibility_root ... ok
+test authored_length_tests::applied_lengths_are_formatted_cached_and_ignore_drafts_preview_and_simulation ... ok
+test tests::export_guard_preserves_source_projects_and_symlink_aliases ... ok
+test tests::exit_retains_last_valid_geometry_and_reports_when_all_recovery_paths_fail ... ok
+test pattern_import_tests::original_baseline_decimal_width_return_commits_once_and_history_is_exact ... ok
+test pattern_import_tests::cancelled_invalid_and_failed_import_keep_pending_drafts_ids_and_redo ... ok
+test tests::exit_preserves_primary_clean_and_discarded_states_and_uses_unique_fallback ... ok
+test tests::exit_retains_last_second_drafts_after_an_older_autosave_then_recovers_exactly ... ok
+test tests::inspector_updates_commit_once_and_undo_as_one_transaction ... ok
+test tests::inspecting_and_recoloring_preserves_valid_imported_dimensions_and_physics ... ok
+test tests::numeric_fields_preserve_unedited_bits_and_accept_text_steps_and_drags ... ok
+test tests::ellipse_accessible_button_and_search_commit_once_and_preserve_failed_drafts ... ok
+test authored_length_tests::feedback_state_changes_preserve_focused_numeric_text_caret_and_pending_edits ... ok
+test pattern_transform_tests::transform_numeric_apply_and_return_use_explicit_units_pivot_and_one_transaction ... ok
+test pattern_import_tests::chooser_modal_import_commits_pending_edits_and_all_pieces_as_one_undo ... ok
+test pattern_framing_tests::frame_all_fits_authored_outlines_without_changing_document_or_pending_edits ... ok
+test tests::inspector_focus_does_not_reuse_edit_text_after_adding_or_selecting_pieces ... ok
+test pattern_transform_tests::transform_cross_piece_refusal_retains_staged_or_invalid_raw_text_caret_and_redo ... ok
+test tests::ordered_sewing::all_portion_guides_use_the_current_mesh_revision_and_authoritative_source ... ok
+test tests::focusing_small_and_large_piece_sizes_preserves_document_and_history ... ok
+test tests::numeric_rectangle_click_commits_once_and_cancel_or_errors_preserve_drafts_and_history ... ok
+test tests::position_snapping_rounds_scaled_ties_away_from_zero_and_off_preserves_bits ... ok
+test tests::focused_numeric_history_restore_survives_blur_and_retains_redo ... ok
+test pattern_import_tests::pointer_cancel_retains_focused_numeric_draft_revision_and_history ... ok
+test tests::obj_export_uses_ready_rest_or_current_drape_without_changing_construction ... ok
+test pattern_transform_tests::transform_pointer_translation_and_rotation_capture_original_geometry_and_snap_once ... ok
+test tests::selected_curve_controls_and_split_use_fresh_drafts_atomic_history_and_invalidation ... ok
+test tests::stage_and_snapshot_survive_unaccepted_jobs ... ok
+test tests::ordered_sewing::accesskit_only_two_to_three_creation_keeps_drafts_outside_document_until_one_commit ... ok
+test tests::stage_resets_when_accepting_mesh_and_preserves_queued_work ... ok
+test tests::stage_resets_when_construction_becomes_empty ... ok
+test pattern_transform_tests::transform_numeric_failure_retains_text_caret_drafts_history_and_accepted_output ... ok
+test tests::selected_join_button_commits_one_revision_and_rejects_pending_edits_atomically ... ok
+test tests::stage_resets_only_on_successful_document_load ... ok
+test tests::ordered_sewing::group_controls_edit_all_fields_reverse_remove_and_preserve_one_step_history ... ok
+test tests::ordered_sewing::canvas_enter_sides_delete_escape_history_and_load_are_atomic ... ok
+test tests::untitled_autosave_recovers_editable_work_and_failed_recovery_retains_it ... ok
+test tests::worker_failure_survives_late_cancel_and_revision_change ... ok
+test tests::ordered_sewing::rejected_create_and_group_edit_cancel_keep_numeric_drafts_and_redo ... ok
+test tests::studio_keyboard_menu_activation_keeps_keyboard_focus ... ok
+test tests::task_progress_correlates_real_workers_and_retains_unaccepted_snapshots ... ok
+test tests::ordered_sewing::pointer_reverse_b_clears_all_reordered_row_buffers_and_preserves_pending_edits ... ok
+test pattern_transform_tests::transform_cancel_revision_tool_load_and_failed_release_never_commit_stale_previews ... ok
+test tests::tabbing_over_unedited_curve_control_preserves_saved_f64_precision ... ok
+test tests::rectangle_modal_blocks_background_accesskit_actions_and_preserves_staged_edits ... ok
+test tests::position_snapping_inline_choices_preserve_unfinished_numeric_text_and_caret ... ok
+test tests::studio_popup_keys_preserve_unfocused_canvas_gestures ... ok
+test tests::studio_workspace_keeps_creation_and_transport_visible ... ok
+test tests::position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule ... ok
+test tests::join_focus_keeps_failed_drafts_and_clears_successful_control_text_before_tab ... ok
+test tests::seam_reverse_button_keeps_focused_drafts_atomic_and_draws_endpoint_pairs ... ok
+test tests::studio_menus_and_tool_rail_preserve_numeric_drafts_text_and_caret ... ok
+test tests::focused_export_keeps_failed_drafts_and_history_until_output_is_written ... ok
+
+test result: ok. 62 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.14s
+
