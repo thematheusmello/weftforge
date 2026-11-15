@@ -5,7 +5,9 @@ use std::{
     path::{Path, PathBuf},
     time::Instant,
 };
-use weftforge_core::{Command, CurveInterval, Editor, Mesh, Placement, Project, SvgPatternImport};
+use weftforge_core::{
+    Command, CurveInterval, DxfPatternImport, Editor, Mesh, Placement, Project, SvgPatternImport,
+};
 use weftforge_sim::{Diagnostics, StepSettings};
 mod mcp;
 type Result<T> = std::result::Result<T, Box<dyn Error>>;
@@ -22,7 +24,7 @@ fn run() -> Result<()> {
     let args: Vec<_> = std::env::args().skip(1).collect();
     match args.first().map(String::as_str) {
         None | Some("--help" | "-h" | "help") => println!(
-            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nimport-svg INPUT OUTPUT PATTERNS.svg   editable closed paths with physical mm scale\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj\nexport-svg PROJECT OUTPUT.svg\nexport-dxf PROJECT OUTPUT.dxf          exterior pattern boundaries in mm\nsimulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
+            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nimport-svg INPUT OUTPUT PATTERNS.svg   editable closed paths with physical mm scale\nimport-dxf INPUT OUTPUT PATTERNS.dxf   bounded R2000 LINE/cubic boundaries in mm\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj\nexport-svg PROJECT OUTPUT.svg\nexport-dxf PROJECT OUTPUT.dxf          exterior pattern boundaries in mm\nsimulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
         ),
         Some("mcp") => {
             count(&args, 1)?;
@@ -91,11 +93,16 @@ fn run() -> Result<()> {
                 serde_json::json!({"revision":revision,"commands_applied":commands_applied})
             );
         }
-        Some("import-svg") => {
+        Some("import-svg" | "import-dxf") => {
             count(&args, 4)?;
+            let import = if args[0] == "import-dxf" {
+                import_dxf
+            } else {
+                import_svg
+            };
             println!(
                 "{}",
-                import_svg(
+                import(
                     Path::new(&args[1]),
                     Path::new(&args[2]),
                     Path::new(&args[3])
@@ -312,7 +319,31 @@ fn execute_commands(input: &Path, output: &Path, commands: Vec<Command>) -> Resu
 }
 
 fn import_svg(input: &Path, output: &Path, svg: &Path) -> Result<serde_json::Value> {
-    let source = svg.canonicalize()?;
+    preserve_import_source(output, svg)?;
+    let imported = SvgPatternImport::load(svg)?;
+    let (revision, _) = execute_commands(input, output, vec![imported.command()])?;
+    Ok(serde_json::json!({
+        "input":input,"output":output,"svg":svg,"revision":revision,
+        "pieces_imported":imported.piece_count(),"metres_per_user_unit":imported.metres_per_unit,
+        "origin":"SVG user-space origin retained; pattern U right, V up (SVG Y inverted)",
+        "scope":weftforge_core::SVG_IMPORT_SCOPE
+    }))
+}
+
+fn import_dxf(input: &Path, output: &Path, dxf: &Path) -> Result<serde_json::Value> {
+    preserve_import_source(output, dxf)?;
+    let imported = DxfPatternImport::load(dxf)?;
+    let (revision, _) = execute_commands(input, output, vec![imported.command()])?;
+    Ok(serde_json::json!({
+        "input":input,"output":output,"dxf":dxf,"revision":revision,
+        "pieces_imported":imported.piece_count(),"metres_per_user_unit":0.001,
+        "origin":"DXF WCS origin and relative layout retained; X/Y maps to U/V without inversion",
+        "scope":weftforge_core::DXF_IMPORT_SCOPE
+    }))
+}
+
+fn preserve_import_source(output: &Path, source: &Path) -> Result<()> {
+    let source = source.canonicalize()?;
     for destination in [output.to_owned(), weftforge_core::recovery_path(output)] {
         let destination = if destination.exists() {
             destination.canonicalize()?
@@ -324,21 +355,16 @@ fn import_svg(input: &Path, output: &Path, svg: &Path) -> Result<serde_json::Val
             parent.canonicalize()?.join(
                 destination
                     .file_name()
-                    .ok_or("SVG import output needs a filename")?,
+                    .ok_or("Pattern import output needs a filename")?,
             )
         };
         if source == destination {
-            return Err("SVG import output and recovery must not replace the SVG source".into());
+            return Err(
+                "Pattern import output and recovery must not replace the source drawing".into(),
+            );
         }
     }
-    let imported = SvgPatternImport::load(svg)?;
-    let (revision, _) = execute_commands(input, output, vec![imported.command()])?;
-    Ok(serde_json::json!({
-        "input":input,"output":output,"svg":svg,"revision":revision,
-        "pieces_imported":imported.piece_count(),"metres_per_user_unit":imported.metres_per_unit,
-        "origin":"SVG user-space origin retained; pattern U right, V up (SVG Y inverted)",
-        "scope":weftforge_core::SVG_IMPORT_SCOPE
-    }))
+    Ok(())
 }
 fn count(args: &[String], expected: usize) -> Result<()> {
     if args.len() != expected {

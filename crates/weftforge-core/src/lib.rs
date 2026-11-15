@@ -12,7 +12,8 @@ pub mod simulation;
 pub use document::*;
 pub use geometry::*;
 pub use persistence::{
-    FORMAT_VERSION, MAX_SVG_BYTES, SVG_IMPORT_SCOPE, SvgPatternImport, recovery_path,
+    DXF_IMPORT_SCOPE, DxfPatternImport, FORMAT_VERSION, MAX_DXF_BYTES, MAX_SVG_BYTES,
+    SVG_IMPORT_SCOPE, SvgPatternImport, recovery_path,
 };
 pub use sewing::*;
 

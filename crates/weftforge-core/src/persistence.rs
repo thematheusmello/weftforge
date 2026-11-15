@@ -11,8 +11,17 @@ use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicU64, Ordering};
 
 mod dxf;
+mod dxf_import;
 mod svg;
+pub use dxf_import::{DXF_IMPORT_SCOPE, DxfPatternImport, MAX_DXF_BYTES};
 pub use svg::{MAX_SVG_BYTES, SVG_IMPORT_SCOPE, SvgPatternImport};
+
+#[derive(Debug, Clone)]
+pub(crate) struct ImportedPattern {
+    pub name: String,
+    pub vertices: Vec<[f64; 2]>,
+    pub controls: Vec<Option<[[f64; 2]; 2]>>,
+}
 
 pub const FORMAT_VERSION: u32 = 3;
 pub const MAX_PROJECT_BYTES: u64 = 16 * 1024 * 1024;
