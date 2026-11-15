@@ -7351,8 +7351,11 @@
         "https://support.marvelousdesigner.com/",
         "https://www.marvelousdesigner.com/products/releases"
       ],
-      "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "reference_observation_status": "observed",
+      "evidence_ids": [
+        "spec/features/PAT-007-line-length-runtime-20261115.md",
+        "spec/observations/REF-UI-LENGTH-OBSERVATION-20261115.json"
+      ],
       "scenarios": [],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
@@ -7381,7 +7384,8 @@
       "verification_runs": [],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "The candidate adds applied selected-boundary length and raw seam/group A/B plus signed B\u2212A feedback. Arbitrary interval query is available through CLI/MCP; persistent measurements, angles, perimeters and complete native/reference behavior remain unverified."
+        "The candidate adds applied selected-boundary length and raw seam/group A/B plus signed B\u2212A feedback. Arbitrary interval query is available through CLI/MCP; persistent measurements, angles, perimeters and complete native/reference behavior remain unverified.",
+        "A bounded reference canvas toggle labels unselected boundaries in literal mm with one fractional digit; Select All separately retains aggregate selected-line readouts. Our three-decimal selected-inspector readout is a different partial presentation. Exact arc/rounding/angle, general aggregation and complete measurement behavior remain unknown/unimplemented."
       ],
       "contradictions": [],
       "blockers": [

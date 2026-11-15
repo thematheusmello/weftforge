@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "case_id": "REF-UI-LENGTH-OBSERVATION-20261115",
+  "recorded_at": "2026-11-15T14:01:32.449016+00:00",
+  "tool": "REA 6.9.0 CLI and CUA native macOS",
+  "baseline_id": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "executable_sha256": "e7696388a5a5b8ca89bec40f7ab9016096610cd20f7ab50f21348ac73723c76e",
+  "reference_pid": 75035,
+  "reference_window_id": 68981,
+  "reference_process_launches": 1,
+  "source_and_copy_hash_unchanged": true,
+  "baseline_status": "provisional_unfrozen",
+  "status": "bounded_canvas_toggle_and_select_all_readouts_observed",
+  "source_fixture_sha256": "6d2280542cdccb84c09f46ef709c4c20e3152a01cf1fc42e775aff7b10edcffd",
+  "source_fixture_bytes": 62298,
+  "observed": {
+    "toggle": "Display > 2D Information > Show Line Length / Angle",
+    "unselected_boundaries_labeled": true,
+    "literal_canvas_labels": [
+      "206.9 mm",
+      "200.0 mm",
+      "300.0 mm"
+    ],
+    "fractional_digits_at_these_values": 1,
+    "select_all_readouts": {
+      "Selected Line / 2D Line Length": "2006.9mm",
+      "Selected Line / 3D Line Length": "2006.9mm"
+    },
+    "second_toggle": "Canvas labels removed; Select All highlights and aggregate readouts retained."
+  },
+  "evidence": [
+    {
+      "state": "fixture-opened",
+      "evidence_id": "ev_04a1d0c17ba672c0900af8f942303abe86cbe44922a3c6492cdf3945ce4c65bb",
+      "raw_sha256": "8102170513777c3fdf8728ad7348ff1128bb9b6857f785cfacc30e2ed4d98203",
+      "png_sha256": "5ff0224764c41e3d08744449823f89b35eb9708baa8e8767cf6fc8c36e2a2718",
+      "truncated": false,
+      "gaps": []
+    },
+    {
+      "state": "toggle-1",
+      "evidence_id": "ev_57de3af4efecdd8b136fe2910a4a302e59b4f3338a4c0a9e38fe25f76b834d7b",
+      "raw_sha256": "d7bd5611e5ac01f90d6dc59fc9268d6ceadb9cc6a0e1634717c5a70e555d2f5d",
+      "png_sha256": "83d22253ef6549dde6714e799bd1974fb194cba6adad604fe628766f509b7f3e",
+      "truncated": false,
+      "gaps": []
+    },
+    {
+      "state": "all-selected",
+      "evidence_id": "ev_65487e6acfebeee02c5bdb92d66872843bb085095934bcb36016193e5148a76d",
+      "raw_sha256": "62af1aa37037c3b84de645b99b1c2e5f3e27dc3bc2a38e1b493975401be6a196",
+      "png_sha256": "0664799a3d539ae30c69666efead3132c97e412f6662b4922fabc5a765f19d1a",
+      "truncated": false,
+      "gaps": []
+    },
+    {
+      "state": "display-off-selected",
+      "evidence_id": "ev_9894e6fc06190c2a0e0bad85feb463df91d9e3b9ae1c1113c6908c9eb8323f06",
+      "raw_sha256": "e5b66d74bcd02b4b721bfee6de0012ba76e0d0cf3bfc70d359c0af65d36c6764",
+      "png_sha256": "895c24550f7e2b645779dd65d68add8f61d1db211d1a4a92c934635d8e41e67e",
+      "truncated": false,
+      "gaps": []
+    }
+  ],
+  "failed_route": {
+    "single_boundary_coordinate_click": "CUA returned -10005:noWindowsAvailable; no retry or fallback, no cause inferred.",
+    "before_after_REF_records": "Identical raw/PNG hashes and same evidence ID; mechanism internal effects not established."
+  },
+  "unchanged_actions": [
+    "No geometry/material/sewing edit or numeric authoring",
+    "No Save, history, simulation or export",
+    "No account, terms, permission or foreign-window action"
+  ],
+  "closure": "Canvas toggle restored off; own reference process remains open with Select All and simulation off. Actor reported exact-once CUA completion after its final screenshot.",
+  "unknown": [
+    "Individual straight/curved edge selection behavior",
+    "Point/angle labels",
+    "Exact controls, continuous arc length and any length algorithm",
+    "Rounding/truncation/tie rules, alternative units, other settings",
+    "General aggregation rule, hover/tool-specific scope and restart persistence"
+  ],
+  "private_manifest_sha256": "0d582ded2b8d964ca4cf8129a24931a79bf56ec2123b32c4feaebeffa2c3e683",
+  "public_boundary": "Reviewed factual summary and evidence identities only. Commercial/account UI, native files, path/process inventories and raw actions remain private.",
+  "root_review_scope": "Reviewed behavior handoff, pinned manifest and snapshot hash checks; did not independently reinterpret all raw screenshots or audit the full runtime/CUA trace.",
+  "implementation_comparison": false,
+  "full_feature_parity": false
+}
