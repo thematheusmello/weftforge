@@ -1,0 +1,60 @@
+{
+  "status": "stopped_unverified",
+  "reason": "Unexpected ReferenceError: precreated snapshot helper could not resolve later-declared transformAApp in actual CUA runtime. No retry. No authoring action was attempted.",
+  "paired_api_attempts_in_trace": 4,
+  "mandatory_external_bootstrap_pairs": 1,
+  "conservative_count_including_failed_pre_API_attempt": 5,
+  "actual_native_calls_including_external_bootstrap": 4,
+  "elapsed_launch_to_quit_s": 53.555943708,
+  "cap_calls": 130,
+  "cap_seconds": 900,
+  "pairs": [
+    {
+      "id": "0001",
+      "label": "launch unique A bundle",
+      "method": "exec_command:/usr/bin/open",
+      "before_monotonic_ns": "879782186297208",
+      "after_monotonic_ns": "879782266246333",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "id": "0002",
+      "label": "select already launched A app",
+      "method": "cua.getApp",
+      "before_monotonic_ns": "879788281552041",
+      "after_monotonic_ns": "879788435620333",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "id": "0003",
+      "label": "initial-R37",
+      "method": "app.getAXStateAndScreenshot",
+      "before_monotonic_ns": "879788435953125",
+      "after_monotonic_ns": "879788436131125",
+      "status": "exception",
+      "error": {
+        "name": "ReferenceError",
+        "message": "transformAApp is not defined"
+      }
+    },
+    {
+      "id": "0004",
+      "label": "final quit after unexpected recorder helper error",
+      "method": "app.pressKey",
+      "before_monotonic_ns": "879835697061375",
+      "after_monotonic_ns": "879835742240916",
+      "status": "returned",
+      "error": null
+    }
+  ],
+  "ui_observed": "getApp automatically returned R37, input filename, Play stopped, Scene entries; its return handle was serialized without copying emitted AX text. No screenshot capture was completed.",
+  "helper_limit": "Function closures in separately evaluated CUA cells did not see later variables. Displayed outer call counter remained stale at 2; filesystem paired trace is authoritative for accounting. Clock from launch-before to quit-after remains within cap.",
+  "authoring_actions": 0,
+  "native_saved_outputs": [],
+  "grade": "frozen grade-a executed; missing quarter output prevents grading; stdout/stderr retained",
+  "completion_summary_sent_once_immediately_after_quit_cua": true,
+  "hashes_unchanged": true,
+  "owned_pid_terminated": true
+}

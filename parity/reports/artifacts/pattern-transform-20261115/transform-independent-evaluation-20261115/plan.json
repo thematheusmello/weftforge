@@ -1,0 +1,635 @@
+{
+  "kind": "independent_implementation_acceptance_only",
+  "reviewed_contract_sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+  "schema_and_protocol_commit": "be8a031b5f8342d0857f3bed34f52dd165fa86da",
+  "routes": [
+    "cli",
+    "mcp-current",
+    "mcp-legacy"
+  ],
+  "tolerances": {
+    "geometry_m": 1e-10,
+    "extreme_geometry_m": 1e-09,
+    "rotation_matrix_component": 1e-12,
+    "grain_component": 1e-12,
+    "world_warp_component": 1e-12,
+    "analytic_length_m": 1e-08,
+    "before_after_length_m": 2e-08
+  },
+  "gimbal_threshold": {
+    "declared_implementation_branch_threshold": 7.105427357601002e-15,
+    "acceptance": "rotation matrices and world points, never Euler field equality"
+  },
+  "independent_expected": {
+    "original_first_curve": "offset + 0.75 * (t,t*t)",
+    "quarter_mapping": "(u,v) -> (1.25-v,u)",
+    "quarter_points": {
+      "3": [
+        1.25,
+        0.0
+      ],
+      "4": [
+        0.5,
+        0.75
+      ],
+      "5": [
+        0.0,
+        -0.25
+      ],
+      "6": [
+        1.0,
+        -0.5
+      ]
+    },
+    "quarter_controls": [
+      [
+        1.25,
+        0.25
+      ],
+      [
+        1.0,
+        0.5
+      ]
+    ],
+    "quarter_first_curve": "(1.25-0.75*t*t,0.75*t)",
+    "length_primitive": "F(t)=(3/8)*t*sqrt(1+4*t*t)+(3/16)*asinh(2*t)",
+    "placement": "Anew=Aold*Rz(-angle); tnew=Told(pivot)-Anew*(pivot+translation,0)",
+    "warp": "rotate the old unit grain vector by angle; canonical atan2 only for nonzero angle",
+    "exact_fields": "all authored fields except selected coordinates/controls/placement/grain and revision; preserve object ordering, links/maps, next_id; translation zero axes and grain bits exact"
+  },
+  "sample_t": [
+    0.0,
+    0.125,
+    0.25,
+    0.5,
+    0.75,
+    0.875,
+    1.0
+  ],
+  "success": [
+    {
+      "name": "translate_uv",
+      "command": {
+        "piece": 2,
+        "translation": [
+          0.5,
+          -0.25
+        ],
+        "angle": 0.0,
+        "pivot": [
+          0.25,
+          0.5
+        ]
+      }
+    },
+    {
+      "name": "translate_u_bypass_pivot",
+      "command": {
+        "piece": 2,
+        "translation": [
+          0.5,
+          0.0
+        ],
+        "angle": 0.0,
+        "pivot": [
+          1000.0,
+          -1000.0
+        ]
+      }
+    },
+    {
+      "name": "quarter_noncommuting",
+      "command": {
+        "piece": 2,
+        "translation": [
+          0.5,
+          -0.25
+        ],
+        "angle": 1.5707963267948966,
+        "pivot": [
+          0.25,
+          0.5
+        ]
+      },
+      "oracle": "quarter",
+      "mesh": true
+    },
+    {
+      "name": "nonright",
+      "command": {
+        "piece": 2,
+        "translation": [
+          -0.125,
+          0.375
+        ],
+        "angle": 0.613,
+        "pivot": [
+          -0.125,
+          0.625
+        ]
+      },
+      "inverse": true
+    },
+    {
+      "name": "quarter_identity_placement",
+      "command": {
+        "piece": 2,
+        "translation": [
+          0.5,
+          -0.25
+        ],
+        "angle": 1.5707963267948966,
+        "pivot": [
+          0.25,
+          0.5
+        ]
+      },
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "oracle": "quarter"
+    },
+    {
+      "name": "input_gimbal_plus",
+      "command": {
+        "piece": 2,
+        "translation": [
+          0.5,
+          -0.25
+        ],
+        "angle": 1.5707963267948966,
+        "pivot": [
+          0.25,
+          0.5
+        ]
+      },
+      "rotation": [
+        0.31,
+        1.5707963267948966,
+        0.21
+      ],
+      "oracle": "quarter"
+    },
+    {
+      "name": "output_gimbal_plus",
+      "command": {
+        "piece": 2,
+        "translation": [
+          0.5,
+          -0.25
+        ],
+        "angle": 1.5707963267948966,
+        "pivot": [
+          0.25,
+          0.5
+        ]
+      },
+      "rotation": [
+        1.5707963267948966,
+        0.0,
+        0.21
+      ],
+      "oracle": "quarter"
+    },
+    {
+      "name": "output_near_gimbal_outside_plus",
+      "command": {
+        "piece": 2,
+        "translation": [
+          0.5,
+          -0.25
+        ],
+        "angle": 1.5707963267948966,
+        "pivot": [
+          0.25,
+          0.5
+        ]
+      },
+      "rotation": [
+        1.5707963267947966,
+        0.0,
+        0.21
+      ],
+      "oracle": "quarter"
+    },
+    {
+      "name": "output_near_gimbal_inside_plus",
+      "command": {
+        "piece": 2,
+        "translation": [
+          0.5,
+          -0.25
+        ],
+        "angle": 1.5707963267948966,
+        "pivot": [
+          0.25,
+          0.5
+        ]
+      },
+      "rotation": [
+        1.5707963267948957,
+        0.0,
+        0.21
+      ],
+      "oracle": "quarter"
+    },
+    {
+      "name": "input_gimbal_minus",
+      "command": {
+        "piece": 2,
+        "translation": [
+          0.5,
+          -0.25
+        ],
+        "angle": 1.5707963267948966,
+        "pivot": [
+          0.25,
+          0.5
+        ]
+      },
+      "rotation": [
+        0.31,
+        -1.5707963267948966,
+        0.21
+      ],
+      "oracle": "quarter"
+    },
+    {
+      "name": "output_gimbal_minus",
+      "command": {
+        "piece": 2,
+        "translation": [
+          0.5,
+          -0.25
+        ],
+        "angle": 1.5707963267948966,
+        "pivot": [
+          0.25,
+          0.5
+        ]
+      },
+      "rotation": [
+        -1.5707963267948966,
+        0.0,
+        0.21
+      ],
+      "oracle": "quarter"
+    },
+    {
+      "name": "output_near_gimbal_outside_minus",
+      "command": {
+        "piece": 2,
+        "translation": [
+          0.5,
+          -0.25
+        ],
+        "angle": 1.5707963267948966,
+        "pivot": [
+          0.25,
+          0.5
+        ]
+      },
+      "rotation": [
+        -1.5707963267947966,
+        0.0,
+        0.21
+      ],
+      "oracle": "quarter"
+    },
+    {
+      "name": "output_near_gimbal_inside_minus",
+      "command": {
+        "piece": 2,
+        "translation": [
+          0.5,
+          -0.25
+        ],
+        "angle": 1.5707963267948966,
+        "pivot": [
+          0.25,
+          0.5
+        ]
+      },
+      "rotation": [
+        -1.5707963267948957,
+        0.0,
+        0.21
+      ],
+      "oracle": "quarter"
+    },
+    {
+      "name": "quarter_extreme_supported_scale",
+      "command": {
+        "piece": 2,
+        "translation": [
+          -0.125,
+          -0.25
+        ],
+        "angle": 1.5707963267948966,
+        "pivot": [
+          0.0,
+          0.0
+        ]
+      },
+      "coordinate_offset": [
+        999.25,
+        -999.5
+      ],
+      "geometry_tolerance_m": 1e-09,
+      "oracle": "quarter_general"
+    },
+    {
+      "name": "quarter_large_grain",
+      "command": {
+        "piece": 2,
+        "translation": [
+          0.5,
+          -0.25
+        ],
+        "angle": 1.5707963267948966,
+        "pivot": [
+          0.25,
+          0.5
+        ]
+      },
+      "grain_angle": 1e+300,
+      "oracle": "quarter"
+    },
+    {
+      "name": "translate_large_grain",
+      "command": {
+        "piece": 2,
+        "translation": [
+          0.5,
+          0.0
+        ],
+        "angle": 0.0,
+        "pivot": [
+          1000.0,
+          -1000.0
+        ]
+      },
+      "grain_angle": 1e+300
+    },
+    {
+      "name": "angle_upper_limit",
+      "command": {
+        "piece": 2,
+        "translation": [
+          0.0,
+          0.0
+        ],
+        "angle": 1000000.0,
+        "pivot": [
+          0.25,
+          0.5
+        ]
+      }
+    }
+  ],
+  "invalid": [
+    {
+      "name": "unknown_piece",
+      "commands": [
+        {
+          "piece": 9999,
+          "translation": [
+            0.5,
+            -0.25
+          ],
+          "angle": 1.5707963267948966,
+          "pivot": [
+            0.25,
+            0.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "translation_out_of_bounds",
+      "commands": [
+        {
+          "piece": 2,
+          "translation": [
+            1000.0000001,
+            0.0
+          ],
+          "angle": 1.5707963267948966,
+          "pivot": [
+            0.25,
+            0.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pivot_out_of_bounds",
+      "commands": [
+        {
+          "piece": 2,
+          "translation": [
+            0.5,
+            -0.25
+          ],
+          "angle": 1.5707963267948966,
+          "pivot": [
+            -1000.0000001,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "angle_out_of_bounds",
+      "commands": [
+        {
+          "piece": 2,
+          "translation": [
+            0.5,
+            -0.25
+          ],
+          "angle": 1000000.0001,
+          "pivot": [
+            0.25,
+            0.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "endpoint_result_out_of_bounds",
+      "commands": [
+        {
+          "piece": 2,
+          "translation": [
+            1000.0,
+            0.0
+          ],
+          "angle": 0.0,
+          "pivot": [
+            0.25,
+            0.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "control_only_result_out_of_bounds",
+      "commands": [
+        {
+          "piece": 2,
+          "translation": [
+            999.875,
+            0.0
+          ],
+          "angle": 0.7853981633974483,
+          "pivot": [
+            0.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    {
+      "name": "compensated_placement_out_of_bounds",
+      "placement_translation": [
+        -999.75,
+        0.0,
+        0.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "commands": [
+        {
+          "piece": 2,
+          "translation": [
+            0.5,
+            0.0
+          ],
+          "angle": 0.0,
+          "pivot": [
+            0.25,
+            0.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "late_transaction_unknown_piece",
+      "commands": [
+        {
+          "piece": 2,
+          "translation": [
+            0.5,
+            -0.25
+          ],
+          "angle": 0.0,
+          "pivot": [
+            0.25,
+            0.5
+          ]
+        },
+        {
+          "piece": 9999,
+          "translation": [
+            0.5,
+            -0.25
+          ],
+          "angle": 1.5707963267948966,
+          "pivot": [
+            0.25,
+            0.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "unknown_data_field",
+      "commands": [
+        {
+          "piece": 2,
+          "translation": [
+            0.5,
+            -0.25
+          ],
+          "angle": 1.5707963267948966,
+          "pivot": [
+            0.25,
+            0.5
+          ],
+          "extra": true
+        }
+      ]
+    },
+    {
+      "name": "missing_pivot",
+      "commands": [
+        {
+          "piece": 2,
+          "translation": [
+            0.5,
+            -0.25
+          ],
+          "angle": 1.5707963267948966
+        }
+      ]
+    },
+    {
+      "name": "wrong_translation_length",
+      "commands": [
+        {
+          "piece": 2,
+          "translation": [
+            0.0
+          ],
+          "angle": 1.5707963267948966,
+          "pivot": [
+            0.25,
+            0.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "zero_piece",
+      "commands": [
+        {
+          "piece": 0,
+          "translation": [
+            0.5,
+            -0.25
+          ],
+          "angle": 1.5707963267948966,
+          "pivot": [
+            0.25,
+            0.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "overflow_numeric_token",
+      "raw_commands": "[{\"type\":\"transform_piece\",\"data\":{\"piece\":2,\"translation\":[0,0],\"angle\":1e400,\"pivot\":[0,0]}}]"
+    },
+    {
+      "name": "duplicate_translation_field",
+      "raw_commands": "[{\"type\":\"transform_piece\",\"data\":{\"piece\":2,\"translation\":[0,0],\"translation\":[0.5,0],\"angle\":0,\"pivot\":[0,0]}}]"
+    }
+  ],
+  "success_file_policy": "preexisting valid output deliberately advances; output.recovery must become exact old output; read-only input, its recovery, commands and unrelated bytes unchanged",
+  "failure_file_policy": "preexisting output, output.recovery, read-only input, input.recovery, commands and unrelated bytes unchanged; inspect remains usable after MCP rejection",
+  "fixture_policy": "one frozen original; only declared deterministic placement/grain/coordinate-offset rows, no automatic repair or tolerance changes",
+  "out_of_scope": [
+    "reference runtime and parity",
+    "native UI/drafts/focus/history acceptance (root owns)",
+    "typed nonfinite values not representable in strict JSON",
+    "stale create_cloth API rejection (not exposed by CLI/MCP)",
+    "Cargo and source tests",
+    "publishing/push/Actions"
+  ]
+}

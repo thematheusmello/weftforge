@@ -1,0 +1,31 @@
+{
+  "source_record": "0010",
+  "method": "app.drag",
+  "actual_arguments": {
+    "args": [
+      [
+        501,
+        920
+      ],
+      [
+        527,
+        907
+      ]
+    ],
+    "evidenceKind": "native"
+  },
+  "before_utc": "2026-11-15T17:48:49.710Z",
+  "after_utc": "2026-11-15T17:48:51.053Z",
+  "before_monotonic_ns": "887245646474625",
+  "after_monotonic_ns": "887246988734875",
+  "duration_ms": 1342.26025,
+  "actual_return": null,
+  "API_status": "returned",
+  "API_error": null,
+  "planned_target_UV_m": [
+    0.1,
+    0.05
+  ],
+  "actor_visual_postcondition": "R40 still displayed; selected geometry/pivot remains at pre-drag positions; required R41 not reached.",
+  "cause": "Unknown; supportedAPI returned without exception, no corrective input or backend probing performed."
+}

@@ -1,0 +1,485 @@
+{
+  "status": "completed_native_workflow_pending_root_review",
+  "case": "A4; complete unchanged frozen v2 A scenario with pinned prospective per-entry/per-Tab observations",
+  "calls": 121,
+  "baseline_calls": 0,
+  "all_API_calls_paired": true,
+  "all_API_returns_without_exception": true,
+  "elapsed_launch_clock_to_quit_return_s": 542.54376275,
+  "caps": {
+    "calls": 130,
+    "seconds": 900
+  },
+  "single_planned_final_quit_returned": true,
+  "owned_pid_terminated": true,
+  "completion_summary": "Completed native transform history workflow; immediate next CUA call after planned final quit; no post-close AX/native call",
+  "numeric_observation_protocol_sha256": "da03c2b05c9d07a5977fe585b1e1100251062e9c9907c2d444c95cca5ac9015c",
+  "native_observed_barriers": [
+    "InitialR37 paused/2pieces/Sceneoriginal+partner, Transform/piece2, analyticwidth1.250",
+    "Rawwidth1e- staged; Scene partner11 refused; originalpiece2/raw/focusedfield retained/R37",
+    "Originalwidth1.25 corrected, observed beforeTab; Tab no-opR37",
+    "ModalU0.125 changed and observed, thenCancel/R37",
+    "FiniteU1000 invalidApply retained modal/error/U1000/V0/angle0/pivot0.125,0.625/R37",
+    "Allfive final typed values/Tab selection transitions observed; exactangle1.5707963267948966 captured",
+    "One final Apply/R38; nativeSaveAsquarterR38",
+    "Undo once/R39; nativeSaveAsundoR39",
+    "Redo once/R40; nativeSaveAsredoR40",
+    "Observed FileNewEmpty; nativeUntitledR0/0pieces/0seams/0groups/0vertices; analyticdefaultmannequin visible",
+    "NativeOpen exactA4redo path, sameprocessR40; nativeSaveAsreopenedR40",
+    "Plannedquitonce returned; nextCUAcompletion_summary; privatePIDterminated"
+  ],
+  "same_process_retained": true,
+  "New_Empty_default_mannequin_limit": "Default analytic mannequin was visible atR0; no garment pieces/cloth were present.",
+  "saved_file_identities": [
+    {
+      "file": "A4-readonly-input.weftforge",
+      "revision": 37,
+      "bytes": 5068,
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "mode": "0o400"
+    },
+    {
+      "file": "quarter.weftforge",
+      "revision": 38,
+      "bytes": 5210,
+      "sha256": "e15c3cca488b67220e32c3d63ebf9880765245560f4ba11bb5830ee55677503d",
+      "mode": "0o644"
+    },
+    {
+      "file": "undo.weftforge",
+      "revision": 39,
+      "bytes": 5067,
+      "sha256": "1e4cae40d5754a2ff366fb1a523b3d45d62114a6da3857fb8b75a3d01df08962",
+      "mode": "0o644"
+    },
+    {
+      "file": "redo.weftforge",
+      "revision": 40,
+      "bytes": 5210,
+      "sha256": "7dd536522487e752bbb6e855d753423596f12344b61c22aeefcf8686517c07d5",
+      "mode": "0o644"
+    },
+    {
+      "file": "reopened.weftforge",
+      "revision": 40,
+      "bytes": 5210,
+      "sha256": "7dd536522487e752bbb6e855d753423596f12344b61c22aeefcf8686517c07d5",
+      "mode": "0o644"
+    }
+  ],
+  "all_capture_identities": [
+    {
+      "id": "0004",
+      "label": "initial-R37",
+      "file": "captures/initial-R37-0.jpg",
+      "sha256": "82086dc307d5476eb44740f7bf678ca6834c921212654940fb3d1a695e414e6a",
+      "unedited": true
+    },
+    {
+      "id": "0007",
+      "label": "selected-piece2-original-width",
+      "file": "captures/selected-piece2-original-width-0.jpg",
+      "sha256": "d55e13a8178e8c0aeab0dba5f68a2665b3ee03a92429b006abe365e2c11ddd9a",
+      "unedited": true
+    },
+    {
+      "id": "0009",
+      "label": "original-width-focused-before-typing",
+      "file": "captures/original-width-focused-before-typing-0.jpg",
+      "sha256": "89f0833e617f3ab37bb2e24302d7f44ae9166e7b2182691e9235c3682f03ff5a",
+      "unedited": true
+    },
+    {
+      "id": "0012",
+      "label": "staged-width-1e-minus-R37",
+      "file": "captures/staged-width-1e-minus-R37-0.jpg",
+      "sha256": "49f85eec22fdc3e2e9d422832212f307fa0ca15195d39b56fe083003ffb512de",
+      "unedited": true
+    },
+    {
+      "id": "0014",
+      "label": "Scene-refusal-raw-width-R37",
+      "file": "captures/Scene-refusal-raw-width-R37-0.jpg",
+      "sha256": "934853fb9884efcfcbffe3534874d9c6d5fd4d73c54a6cc771f3e32a58461653",
+      "unedited": true
+    },
+    {
+      "id": "0017",
+      "label": "corrected-width-before-Tab",
+      "file": "captures/corrected-width-before-Tab-0.jpg",
+      "sha256": "7136e88f1029033e622d470be7b8447c6e3fa6fcbdb0831f27b2e7f0168117fa",
+      "unedited": true
+    },
+    {
+      "id": "0019",
+      "label": "corrected-width-noop-R37",
+      "file": "captures/corrected-width-noop-R37-0.jpg",
+      "sha256": "bae9066513ba0ba31e131367f70116ec5748eb6118c037b62e19bf7dc9be2442",
+      "unedited": true
+    },
+    {
+      "id": "0021",
+      "label": "cancel-modal-defaults",
+      "file": "captures/cancel-modal-defaults-0.jpg",
+      "sha256": "3107a959a5f34b684ce15e268f68a046acb74cd2057637311efee1ee855634fa",
+      "unedited": true
+    },
+    {
+      "id": "0023",
+      "label": "cancel-modal-U-focus",
+      "file": "captures/cancel-modal-U-focus-0.jpg",
+      "sha256": "cf9f96427223887add31dc16474ec6b2000e9cd8404efc59f55be58524434f49",
+      "unedited": true
+    },
+    {
+      "id": "0026",
+      "label": "cancel-modal-U-0point125-before-Tab",
+      "file": "captures/cancel-modal-U-0point125-before-Tab-0.jpg",
+      "sha256": "ce6fd6750cda1912323ffcf8bd264dbc9652e1169d2c95d40b2a1d33cca7e4fc",
+      "unedited": true
+    },
+    {
+      "id": "0028",
+      "label": "changed-cancel-modal-after-Tab",
+      "file": "captures/changed-cancel-modal-after-Tab-0.jpg",
+      "sha256": "f59ea43343375db0c317eae86a6d7599884cb84723631384887b6f6ac8b7ac76",
+      "unedited": true
+    },
+    {
+      "id": "0030",
+      "label": "cancelled-modal-R37",
+      "file": "captures/cancelled-modal-R37-0.jpg",
+      "sha256": "47e8588d3e52b062c1fba1fda53331bfbe4ce626f3eae5b5bc56ff13ec22d8ac",
+      "unedited": true
+    },
+    {
+      "id": "0032",
+      "label": "finite-invalid-modal-defaults",
+      "file": "captures/finite-invalid-modal-defaults-0.jpg",
+      "sha256": "ffb8f5f43dfb05e2d79f429795535b651f40aa6719e3b71d276ca56940fc5c98",
+      "unedited": true
+    },
+    {
+      "id": "0034",
+      "label": "finite-invalid-U-focus",
+      "file": "captures/finite-invalid-U-focus-0.jpg",
+      "sha256": "223836895e8d0c432268003b98fdc210a988a62a5a16bce7e5672a30eb0a3f7d",
+      "unedited": true
+    },
+    {
+      "id": "0037",
+      "label": "finite-U1000-before-Tab",
+      "file": "captures/finite-U1000-before-Tab-0.jpg",
+      "sha256": "dd0f2490c554bf0bf9f90f3e7658572f23c70e9acbd64d45d03e41bd1bb4600e",
+      "unedited": true
+    },
+    {
+      "id": "0039",
+      "label": "finite-U1000-after-Tab-before-Apply",
+      "file": "captures/finite-U1000-after-Tab-before-Apply-0.jpg",
+      "sha256": "dc08e676478504741c02d6da3033a266eddd9ab6246ffd154ba7d9ec94230ba8",
+      "unedited": true
+    },
+    {
+      "id": "0041",
+      "label": "finite-U1000-rejected-R37",
+      "file": "captures/finite-U1000-rejected-R37-0.jpg",
+      "sha256": "80f4fc548c896121c15220e7b8855ebffe8ad54ed7a1456ddd40dc14b6eb68d6",
+      "unedited": true
+    },
+    {
+      "id": "0043",
+      "label": "retained-U1000-correction-focus",
+      "file": "captures/retained-U1000-correction-focus-0.jpg",
+      "sha256": "da39f7c9e7ff1e858ee652298f09ce40e016543fa71a5caa78180a9fb09118ad",
+      "unedited": true
+    },
+    {
+      "id": "0046",
+      "label": "final-U-0point5-before-Tab",
+      "file": "captures/final-U-0point5-before-Tab-0.jpg",
+      "sha256": "fe2038b8c63ef3177aa80a8982b92a8be252e862e73ce50fc9510a7b4aec73d9",
+      "unedited": true
+    },
+    {
+      "id": "0048",
+      "label": "final-U-accepted-V-selected",
+      "file": "captures/final-U-accepted-V-selected-0.jpg",
+      "sha256": "483e467c7a14ffa09be20c53cbdb0dc628ea3996ba4c37a587824a1d14fd7c0c",
+      "unedited": true
+    },
+    {
+      "id": "0051",
+      "label": "final-V-minus0point25-before-Tab",
+      "file": "captures/final-V-minus0point25-before-Tab-0.jpg",
+      "sha256": "a93f4186663bd5ab26901c6bfd0db8deae9b4a9d2ab6dff8f0e77336a83539c2",
+      "unedited": true
+    },
+    {
+      "id": "0053",
+      "label": "final-V-accepted-angle-selected",
+      "file": "captures/final-V-accepted-angle-selected-0.jpg",
+      "sha256": "6f9a53e5db2c8085b500e12c38ec36ff44ddda59f6a348947e2459f8e7af05cc",
+      "unedited": true
+    },
+    {
+      "id": "0056",
+      "label": "final-angle-exact-before-Tab",
+      "file": "captures/final-angle-exact-before-Tab-0.jpg",
+      "sha256": "a54e98dce4596a6e6e73cf12fd0b51058c28d76394f2fc7b2db8aaf090796fa7",
+      "unedited": true
+    },
+    {
+      "id": "0058",
+      "label": "final-angle-accepted-pivotU-selected",
+      "file": "captures/final-angle-accepted-pivotU-selected-0.jpg",
+      "sha256": "c18e3ed1b41dbe67bb5004ad9684705b255ed3a4704e7d6f38c59549ee3c709f",
+      "unedited": true
+    },
+    {
+      "id": "0061",
+      "label": "final-pivotU-0point25-before-Tab",
+      "file": "captures/final-pivotU-0point25-before-Tab-0.jpg",
+      "sha256": "a1ff611911b30167dc62b3cc8620aa45f2580d324e6d273ad177d77b4dafa9d8",
+      "unedited": true
+    },
+    {
+      "id": "0063",
+      "label": "final-pivotU-accepted-pivotV-selected",
+      "file": "captures/final-pivotU-accepted-pivotV-selected-0.jpg",
+      "sha256": "1bec34541eaf5225da790f54904fd43ee495815b5c5faa975f4b23efa7635a1b",
+      "unedited": true
+    },
+    {
+      "id": "0066",
+      "label": "final-pivotV-0point5-before-Tab",
+      "file": "captures/final-pivotV-0point5-before-Tab-0.jpg",
+      "sha256": "70bc92182fa417ad1f7e29abbd33140983e2374d9d5ed1cb712cab2918b1633f",
+      "unedited": true
+    },
+    {
+      "id": "0068",
+      "label": "five-final-transform-values-before-Apply",
+      "file": "captures/five-final-transform-values-before-Apply-0.jpg",
+      "sha256": "e81d409c9d691a5f6a0770b3a26efe20b9fcaf733f7efe08be7d5a7063aecccc",
+      "unedited": true
+    },
+    {
+      "id": "0070",
+      "label": "quarter-transform-R38-before-save",
+      "file": "captures/quarter-transform-R38-before-save-0.jpg",
+      "sha256": "8032b25eff0bb6f4b4c1ce036638d59ea457d930986310c3ca958c36d77cf85a",
+      "unedited": true
+    },
+    {
+      "id": "0072",
+      "label": "quarter-save-File-menu",
+      "file": "captures/quarter-save-File-menu-0.jpg",
+      "sha256": "bc23d252f655c4af3d987c0cdb17269d7c24b862b9d26465e7b2964f4a98a98f",
+      "unedited": true
+    },
+    {
+      "id": "0074",
+      "label": "quarter-native-SaveAs-dialog",
+      "file": "captures/quarter-native-SaveAs-dialog-0.jpg",
+      "sha256": "a1fa885293b66d670f6b72c3d2f3bbc64f286f78c374eb96ed034c50f487fdb5",
+      "unedited": true
+    },
+    {
+      "id": "0076",
+      "label": "quarter-save-go-to-folder",
+      "file": "captures/quarter-save-go-to-folder-0.jpg",
+      "sha256": "74f3c1beeada38b0a6679ce34b83872c32d3b742a48e5934f0f91367cec6449a",
+      "unedited": true
+    },
+    {
+      "id": "0079",
+      "label": "quarter-save-owned-folder-selected",
+      "file": "captures/quarter-save-owned-folder-selected-0.jpg",
+      "sha256": "4e8d74821e31818be0147b933aef11dd5b5d1e6326efd21f96fb8b792bdc783f",
+      "unedited": true
+    },
+    {
+      "id": "0081",
+      "label": "quarter-filename-before-native-Save",
+      "file": "captures/quarter-filename-before-native-Save-0.jpg",
+      "sha256": "503dcb38149924f6fb8d4d656b06bf58d47bf965a08edf42b987647a5c11d575",
+      "unedited": true
+    },
+    {
+      "id": "0083",
+      "label": "quarter-native-saved-R38",
+      "file": "captures/quarter-native-saved-R38-0.jpg",
+      "sha256": "bc42a5e56b42ecc361bbfc1c7a7a1f9280a518519c43f828e69b9546768d312e",
+      "unedited": true
+    },
+    {
+      "id": "0085",
+      "label": "undo-native-R39-before-save",
+      "file": "captures/undo-native-R39-before-save-0.jpg",
+      "sha256": "8e57a5939df377f1c3285fe7a5b39a5b5e1c19fef0de84b87020ad7725c5e298",
+      "unedited": true
+    },
+    {
+      "id": "0087",
+      "label": "undo-save-File-menu",
+      "file": "captures/undo-save-File-menu-0.jpg",
+      "sha256": "73ecf11541cf1895c15f710c1756298f43097807702c73b213accd534ba5a27d",
+      "unedited": true
+    },
+    {
+      "id": "0089",
+      "label": "undo-native-SaveAs-dialog",
+      "file": "captures/undo-native-SaveAs-dialog-0.jpg",
+      "sha256": "4014e82d4b5840d04934434bc357fea6c9ff01e036b7a6ef3d3047676b40d4b9",
+      "unedited": true
+    },
+    {
+      "id": "0092",
+      "label": "undo-native-saved-R39",
+      "file": "captures/undo-native-saved-R39-0.jpg",
+      "sha256": "c26e5a9c48af70fd03e69fb3ec0a38a38bd9eef386fb5e8dfc0ab05d6e0e3865",
+      "unedited": true
+    },
+    {
+      "id": "0094",
+      "label": "redo-native-R40-before-save",
+      "file": "captures/redo-native-R40-before-save-0.jpg",
+      "sha256": "8fd7dc1b0633eb8a44b9181d98550c8d7cbe85a8cec0b4dc47a60b9833737237",
+      "unedited": true
+    },
+    {
+      "id": "0096",
+      "label": "redo-save-File-menu",
+      "file": "captures/redo-save-File-menu-0.jpg",
+      "sha256": "c04f55a339b5c3aae0a43552b5b2ca87a7cb0f2e650ca82e9bcca79151e6cac9",
+      "unedited": true
+    },
+    {
+      "id": "0098",
+      "label": "redo-native-SaveAs-dialog",
+      "file": "captures/redo-native-SaveAs-dialog-0.jpg",
+      "sha256": "4014e82d4b5840d04934434bc357fea6c9ff01e036b7a6ef3d3047676b40d4b9",
+      "unedited": true
+    },
+    {
+      "id": "0101",
+      "label": "redo-native-saved-R40",
+      "file": "captures/redo-native-saved-R40-0.jpg",
+      "sha256": "453dbd427df6e1ad47b905ba339bdac3ed325ddf9f6921dc4c376b4839697176",
+      "unedited": true
+    },
+    {
+      "id": "0103",
+      "label": "New-Empty-observed-File-item",
+      "file": "captures/New-Empty-observed-File-item-0.jpg",
+      "sha256": "2741ef9477354d2a66e4ba501b959902f9bc14827bcc9ffe571f8d6217cf2d50",
+      "unedited": true
+    },
+    {
+      "id": "0105",
+      "label": "New-Empty-native-R0-zero-pieces",
+      "file": "captures/New-Empty-native-R0-zero-pieces-0.jpg",
+      "sha256": "8eddad26c24fe4ec708cbf112dbb6c4aad1a6e90db3e4a5c82b4e34d2da21cee",
+      "unedited": true
+    },
+    {
+      "id": "0107",
+      "label": "reopen-redo-File-menu",
+      "file": "captures/reopen-redo-File-menu-0.jpg",
+      "sha256": "895beb2dc78751fad7d25cfbd1849a44992da6955a093891daf49dcc8d51a467",
+      "unedited": true
+    },
+    {
+      "id": "0109",
+      "label": "reopen-redo-native-Open-dialog",
+      "file": "captures/reopen-redo-native-Open-dialog-0.jpg",
+      "sha256": "21e4a2699584d2731e9f048ea28d46ac22382e2775ef24c9ef2faaca556e8f6d",
+      "unedited": true
+    },
+    {
+      "id": "0111",
+      "label": "reopen-exact-redo-file-selected",
+      "file": "captures/reopen-exact-redo-file-selected-0.jpg",
+      "sha256": "ef620b8860b0cf09b31a5e5bcd57d16feef8365e762dec40aa787a396480131d",
+      "unedited": true
+    },
+    {
+      "id": "0113",
+      "label": "same-process-reopened-redo-R40",
+      "file": "captures/same-process-reopened-redo-R40-0.jpg",
+      "sha256": "bd8cf12505ef3e75b7f3ccc2dea409ac5a98df27fed996147ba3ec566958f5e6",
+      "unedited": true
+    },
+    {
+      "id": "0115",
+      "label": "reopened-save-File-menu",
+      "file": "captures/reopened-save-File-menu-0.jpg",
+      "sha256": "2df7493dd2d8991017bf7195ec69157a27b42f4cfb551ffe5c48b250390dd1ce",
+      "unedited": true
+    },
+    {
+      "id": "0117",
+      "label": "reopened-native-SaveAs-dialog",
+      "file": "captures/reopened-native-SaveAs-dialog-0.jpg",
+      "sha256": "4014e82d4b5840d04934434bc357fea6c9ff01e036b7a6ef3d3047676b40d4b9",
+      "unedited": true
+    },
+    {
+      "id": "0120",
+      "label": "reopened-native-saved-R40",
+      "file": "captures/reopened-native-saved-R40-0.jpg",
+      "sha256": "ee8b6acc7d98f12e978b4b7cf9b0933e5010f4f68501efc32e296ea03bd742e5",
+      "unedited": true
+    }
+  ],
+  "extra_observation": "One additional filename snapshot before quarterSave confirmed enabled nativeSave after earlier transient disabledAX; still within unchanged caps. No retries or output repair.",
+  "snapshot_AX_limit": "Actual AX diffs retained; modal numeric selection/value evidence is in unedited screenshots. No full modal AX/focused role witness claimed.",
+  "hashes_unchanged": true,
+  "grade_returncode": 0,
+  "grade_result": {
+    "status": "passed_saved_output_only",
+    "ui_verified": false,
+    "result": {
+      "quarter": {
+        "coordinate_m": 5.551115123125783e-17,
+        "polynomial_m": 5.551115123125783e-17,
+        "world_m": 2.220446049250313e-16,
+        "rotation_matrix": 1.6653345369377348e-16,
+        "grain": 1.1102230246251565e-16,
+        "world_warp": 2.220446049250313e-16
+      },
+      "redo": {
+        "coordinate_m": 5.551115123125783e-17,
+        "polynomial_m": 5.551115123125783e-17,
+        "world_m": 2.220446049250313e-16,
+        "rotation_matrix": 1.6653345369377348e-16,
+        "grain": 1.1102230246251565e-16,
+        "world_warp": 2.220446049250313e-16
+      },
+      "reopened": {
+        "coordinate_m": 5.551115123125783e-17,
+        "polynomial_m": 5.551115123125783e-17,
+        "world_m": 2.220446049250313e-16,
+        "rotation_matrix": 1.6653345369377348e-16,
+        "grain": 1.1102230246251565e-16,
+        "world_warp": 2.220446049250313e-16
+      }
+    },
+    "sha256": {
+      "<WORKSPACE>/.local/native-transform-acceptance-20261115/A4/A4-readonly-input.weftforge": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "<WORKSPACE>/.local/native-transform-acceptance-20261115/A4/quarter.weftforge": "e15c3cca488b67220e32c3d63ebf9880765245560f4ba11bb5830ee55677503d",
+      "<WORKSPACE>/.local/native-transform-acceptance-20261115/A4/undo.weftforge": "1e4cae40d5754a2ff366fb1a523b3d45d62114a6da3857fb8b75a3d01df08962",
+      "<WORKSPACE>/.local/native-transform-acceptance-20261115/A4/redo.weftforge": "7dd536522487e752bbb6e855d753423596f12344b61c22aeefcf8686517c07d5",
+      "<WORKSPACE>/.local/native-transform-acceptance-20261115/A4/reopened.weftforge": "7dd536522487e752bbb6e855d753423596f12344b61c22aeefcf8686517c07d5"
+    }
+  },
+  "native_acceptance": "pending root review; saved-file pass alone is narrower than native UI acceptance",
+  "B_authorized_or_run": false,
+  "claim_limits": [
+    "same-process reopen only; no process-restart claim",
+    "no physics/export/reference behavior",
+    "no ordinary unstaged crosspiece selection/nonempty Redo refusal claim",
+    "local ignored evidence is not published delivery"
+  ]
+}

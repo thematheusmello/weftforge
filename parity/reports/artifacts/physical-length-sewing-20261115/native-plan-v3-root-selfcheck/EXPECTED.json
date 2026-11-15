@@ -1,0 +1,182 @@
+{
+  "status": "prospective_parsed_authored_expectations_not_candidate_outputs",
+  "fixture_sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+  "original_revision": 41,
+  "original_next_id": 20,
+  "native_command": {
+    "type": "add_sewing_by_length",
+    "data": {
+      "name": "Free sewing 1",
+      "a": {
+        "curve": 6,
+        "start_t": 0.0,
+        "direction": "forward",
+        "length_m": 0.1
+      },
+      "b": {
+        "curve": 15,
+        "start_t": 0.75,
+        "direction": "reverse",
+        "length_m": 0.1
+      }
+    }
+  },
+  "independent_intervals_and_locations": {
+    "a": {
+      "curve": 6,
+      "t0": 0.0,
+      "t1": 0.4819445564563284,
+      "length_m": 0.1,
+      "exact_end": null,
+      "samples": [
+        {
+          "fraction": 0.0,
+          "t": 0.0,
+          "point_m": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "fraction": 0.25,
+          "t": 0.12467773934834009,
+          "point_m": [
+            0.02493554786966802,
+            0.0015544538689012631
+          ]
+        },
+        {
+          "fraction": 0.5,
+          "t": 0.2474960238665148,
+          "point_m": [
+            0.04949920477330297,
+            0.006125428182973448
+          ]
+        },
+        {
+          "fraction": 0.75,
+          "t": 0.36692531773989645,
+          "point_m": [
+            0.07338506354797929,
+            0.013463418879852397
+          ]
+        },
+        {
+          "fraction": 1.0,
+          "t": 0.4819445564563284,
+          "point_m": [
+            0.09638891129126569,
+            0.02322705554978871
+          ]
+        }
+      ]
+    },
+    "b": {
+      "curve": 15,
+      "t0": 0.75,
+      "t1": 0.25,
+      "length_m": 0.1,
+      "exact_end": null,
+      "samples": [
+        {
+          "fraction": 0.0,
+          "t": 0.75,
+          "point_m": [
+            0.55,
+            0.0
+          ]
+        },
+        {
+          "fraction": 0.25,
+          "t": 0.625,
+          "point_m": [
+            0.525,
+            0.0
+          ]
+        },
+        {
+          "fraction": 0.5,
+          "t": 0.5,
+          "point_m": [
+            0.5,
+            0.0
+          ]
+        },
+        {
+          "fraction": 0.75,
+          "t": 0.375,
+          "point_m": [
+            0.47500000000000003,
+            0.0
+          ]
+        },
+        {
+          "fraction": 1.0,
+          "t": 0.25,
+          "point_m": [
+            0.45,
+            0.0
+          ]
+        }
+      ]
+    }
+  },
+  "snapshots": {
+    "created.weftforge": {
+      "revision": 42,
+      "next_id": 21,
+      "group_count": 1,
+      "group_id": 20
+    },
+    "undo.weftforge": {
+      "revision": 43,
+      "next_id": 21,
+      "group_count": 0,
+      "note": "Allocator high-water survives Undo; require 21, never original 20."
+    },
+    "redo.weftforge": {
+      "revision": 44,
+      "next_id": 21,
+      "group_count": 1,
+      "group_id": 20
+    },
+    "reopened.weftforge": {
+      "revision": 44,
+      "next_id": 21,
+      "group_count": 1,
+      "group_id": 20
+    }
+  },
+  "new_empty": "UI-only checkpoint: fresh Project/Editor R0, no path/selection/history/groups/seams/pieces; saved-output grader does not claim to observe this step.",
+  "unchanged": "Envelope/version; every original point/curve/piece/material/mannequin/resolution/legacy-seam field and order. Native group is exactly Free sewing 1, one interval per side and [[0,0],[1,1]]. Entered lengths are not persisted locks.",
+  "history": "Undo is original parsed construction with only revision43 and next_id21 changed. Redo is created parsed construction with only revision44 changed. Reopened is exactly Redo parsed construction. Native Redo/reopened saved primary bytes must be identical under the same serializer.",
+  "tolerances": {
+    "length_and_evaluated_location_m": 1e-08,
+    "straight_endpoint_t": 2e-14,
+    "oracle_crosscheck_m": 2e-12
+  },
+  "primitive": "F(t)=0.1*(t*sqrt(1+t*t)+asinh(t)); C(t)=(0.2t,0.1t^2). Separate frozen derivative quadrature/inverse remains unchanged.",
+  "guides": {
+    "start_to_start_m": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.55,
+        0.0
+      ]
+    ],
+    "end_to_end_m": [
+      [
+        0.09638891129126569,
+        0.02322705554978871
+      ],
+      [
+        0.45,
+        0.0
+      ]
+    ]
+  },
+  "parsed_value_limit": "Parsed equality does not distinguish signed-zero bits or JSON numeric spelling. Byte hashes prove primary preservation; no stronger authored bit guarantee is inferred."
+}

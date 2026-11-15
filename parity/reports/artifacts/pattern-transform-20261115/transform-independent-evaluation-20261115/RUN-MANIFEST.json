@@ -1,0 +1,2332 @@
+{
+  "source_commit": "02bcd8c833376d2ba7c007c7dcd2516337d8a02f",
+  "binary_sha256": "80921d0947c4f6f1c91e9a5bef18e5b607c67323ac80e3177833f499acd360a5",
+  "freeze_sha256": "1151298e3df06f57c5c2f1048e7c112006ad13e798dff3455ed981890b6ab257",
+  "files": {
+    "FREEZE.json": {
+      "sha256": "1151298e3df06f57c5c2f1048e7c112006ad13e798dff3455ed981890b6ab257",
+      "bytes": 1104
+    },
+    "fixture.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "plan.json": {
+      "sha256": "968ba802e404e731d5159638122993c22ca0f0f7d4ac4b254d5aab286a05aea9",
+      "bytes": 12710
+    },
+    "evaluate.py": {
+      "sha256": "5dbb1e7299b38df921db4d2004017e5e62ddf9eb3275a5afbdc28d49d0c58e8f",
+      "bytes": 37743
+    },
+    "METHOD.md": {
+      "sha256": "c92561252da57511a311f1a46b6aabf3feee9849bb230c4cfdb839a31da604d5",
+      "bytes": 3877
+    },
+    "selfcheck.json": {
+      "sha256": "62297b9c3671f2fd20c7521fe8e4ffec5af8a880de168a348f79cdfa6ee99e0b",
+      "bytes": 730
+    },
+    "ROOT-REVIEW.json": {
+      "sha256": "1b9554d25d86eefd3edc17707d0d9505b8ec87f9dc3be41a7ee6038fb8dee860",
+      "bytes": 799
+    },
+    "candidate-binding.json": {
+      "sha256": "2d0bdcd27a47d54136167ca0f3d8927dd6da84ca71940fb00cc54c59a0f82665",
+      "bytes": 6276
+    },
+    "candidate/weftforge-cli": {
+      "sha256": "80921d0947c4f6f1c91e9a5bef18e5b607c67323ac80e3177833f499acd360a5",
+      "bytes": 9115408
+    },
+    "execution.stdout": {
+      "sha256": "7feaa8b3ec8c45e3a02e3e6cd960a1d985066ba4ddfffc1b3cf360679062da52",
+      "bytes": 58
+    },
+    "execution.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "SUMMARY.json": {
+      "sha256": "8538329c3107db412825e84559f35b04a9f3ce0410dccbea8d64b4a63f240d3f",
+      "bytes": 4545
+    },
+    "run-output/RESULT.json": {
+      "sha256": "cfcb88327313bcb28315a583b04ff73c340e649aa044e13f3cd547182e6ecbc5",
+      "bytes": 200021
+    },
+    "run-output/cli/angle_out_of_bounds/commands.json": {
+      "sha256": "b6b9ba9361079a81d1a0c16f06859509f086e4ed26367d923ac1b92b0cfb3f82",
+      "bytes": 114
+    },
+    "run-output/cli/angle_out_of_bounds/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/angle_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/angle_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/angle_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/cli/angle_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/angle_upper_limit/commands.json": {
+      "sha256": "a7958209a2810214a8b38e5e3497d1de35efdb38d3d6046c9fbc73b1dc6e4542",
+      "bytes": 109
+    },
+    "run-output/cli/angle_upper_limit/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/angle_upper_limit/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/angle_upper_limit/output.weftforge": {
+      "sha256": "b38fd994a781c840e84e82003aedb32a0b8c0ad567a925234a72a894f02f8364",
+      "bytes": 5343
+    },
+    "run-output/cli/angle_upper_limit/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/angle_upper_limit/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/compensated_placement_out_of_bounds/commands.json": {
+      "sha256": "ac738f8a51d97aa0293ab12cc3b8d1ee543e90abe947643ce587fb722fdb7a69",
+      "bytes": 103
+    },
+    "run-output/cli/compensated_placement_out_of_bounds/input.weftforge": {
+      "sha256": "83c8fec76c0b563629c19a6d94a32bae762a3f4d96f573d3072831a105987499",
+      "bytes": 5061
+    },
+    "run-output/cli/compensated_placement_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/compensated_placement_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/compensated_placement_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/cli/compensated_placement_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/control_only_result_out_of_bounds/commands.json": {
+      "sha256": "b004d8ed0298f69fee50ef7eba397697bfa9f0db0bfffaff9db2a04f52b06256",
+      "bytes": 121
+    },
+    "run-output/cli/control_only_result_out_of_bounds/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/control_only_result_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/control_only_result_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/control_only_result_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/cli/control_only_result_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/duplicate_translation_field/commands.json": {
+      "sha256": "8b3039a7634afdf1070ac6d4c9201b41289fa3e012c9f8ffe12a414b38488b6d",
+      "bytes": 114
+    },
+    "run-output/cli/duplicate_translation_field/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/duplicate_translation_field/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/duplicate_translation_field/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/duplicate_translation_field/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/cli/duplicate_translation_field/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/endpoint_result_out_of_bounds/commands.json": {
+      "sha256": "ed48caa8219c2ce3f803ce27b4af8bc31ff3127cd97b9d523c830eab23f18ad1",
+      "bytes": 106
+    },
+    "run-output/cli/endpoint_result_out_of_bounds/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/endpoint_result_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/endpoint_result_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/endpoint_result_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/cli/endpoint_result_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/input_gimbal_minus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/cli/input_gimbal_minus/input.weftforge": {
+      "sha256": "7bad11c666486f3209d2d8800243877a21ae96d1428e263f2c47b07f2045022d",
+      "bytes": 5082
+    },
+    "run-output/cli/input_gimbal_minus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/input_gimbal_minus/output.weftforge": {
+      "sha256": "9f5612d06c4b6831093449e127097039c449fb0fd088f6d6a725db37dd6c8cef",
+      "bytes": 5201
+    },
+    "run-output/cli/input_gimbal_minus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/input_gimbal_minus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/input_gimbal_plus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/cli/input_gimbal_plus/input.weftforge": {
+      "sha256": "d3f4e095463b07388af2c25093b45c1f7e1fd8e92521c2843e7b523991b00fc5",
+      "bytes": 5081
+    },
+    "run-output/cli/input_gimbal_plus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/input_gimbal_plus/output.weftforge": {
+      "sha256": "f8c11a161b9ac8404aed08645d24e3b8def9eae54dda9ac3f18a31e098a1f776",
+      "bytes": 5199
+    },
+    "run-output/cli/input_gimbal_plus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/input_gimbal_plus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/late_transaction_unknown_piece/commands.json": {
+      "sha256": "c99793f32946e09d4a069244882dd907e8a47140e6bb0881ba88c744b1b6a390",
+      "bytes": 226
+    },
+    "run-output/cli/late_transaction_unknown_piece/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/late_transaction_unknown_piece/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/late_transaction_unknown_piece/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/late_transaction_unknown_piece/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/cli/late_transaction_unknown_piece/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/missing_pivot/commands.json": {
+      "sha256": "abd27ef539e78262ceed88600618b3597073a068369dbbca652d8eb50c66d495",
+      "bytes": 101
+    },
+    "run-output/cli/missing_pivot/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/missing_pivot/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/missing_pivot/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/missing_pivot/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/cli/missing_pivot/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/nonright/commands.json": {
+      "sha256": "55e4e5dd466b55fb092759037b037a3d6e79752e425c3303263ebd74fe05de5e",
+      "bytes": 114
+    },
+    "run-output/cli/nonright/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/nonright/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/nonright/inverse.commands.json": {
+      "sha256": "b7a34df3ea881d551fe3cdbcd97078d4b14c26d5766e7ca234bc8e3cc6cd5b55",
+      "bytes": 154
+    },
+    "run-output/cli/nonright/inverse.weftforge": {
+      "sha256": "0138397c65e29b08e82bdd2b91dd6b3ebc4ed669b4a22c265a473e5d10f1ff67",
+      "bytes": 5290
+    },
+    "run-output/cli/nonright/output.weftforge": {
+      "sha256": "25cf874def66490bb39057f981565a65bfa5abb72065b6973a191e0bcaf9e30f",
+      "bytes": 5341
+    },
+    "run-output/cli/nonright/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/nonright/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/output_gimbal_minus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/cli/output_gimbal_minus/input.weftforge": {
+      "sha256": "514f62a2e10a763641e99f618e24af0322032cd303b484900bfd62eca67e2864",
+      "bytes": 5081
+    },
+    "run-output/cli/output_gimbal_minus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/output_gimbal_minus/output.weftforge": {
+      "sha256": "4a970d7ab4cf5e02ebefc1c5c594e28ae2a165198a2ab1dc7beb3d55d772864d",
+      "bytes": 5170
+    },
+    "run-output/cli/output_gimbal_minus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/output_gimbal_minus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/output_gimbal_plus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/cli/output_gimbal_plus/input.weftforge": {
+      "sha256": "a27a6be1310e2c9c40244068c7b9d07021a018bd404111ca768cd67bc4d84325",
+      "bytes": 5080
+    },
+    "run-output/cli/output_gimbal_plus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/output_gimbal_plus/output.weftforge": {
+      "sha256": "66aa88eb2e7719f1e6fd4ce2e1667e9986271d790fb589e01b80828aa937096e",
+      "bytes": 5168
+    },
+    "run-output/cli/output_gimbal_plus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/output_gimbal_plus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/output_near_gimbal_inside_minus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/cli/output_near_gimbal_inside_minus/input.weftforge": {
+      "sha256": "70cb29a8fca82de229c3048d662066530e791f9fa12780ccdfc3da9fb837fa62",
+      "bytes": 5081
+    },
+    "run-output/cli/output_near_gimbal_inside_minus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/output_near_gimbal_inside_minus/output.weftforge": {
+      "sha256": "a08a80c6bf2f4f8346366734aec231a3e688662d631ea674ef7edec3efb9d472",
+      "bytes": 5182
+    },
+    "run-output/cli/output_near_gimbal_inside_minus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/output_near_gimbal_inside_minus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/output_near_gimbal_inside_plus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/cli/output_near_gimbal_inside_plus/input.weftforge": {
+      "sha256": "0dea0ef9945f7f0d791534834f55250d6de660bd47e8e1db88c1f5c00074cfd3",
+      "bytes": 5080
+    },
+    "run-output/cli/output_near_gimbal_inside_plus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/output_near_gimbal_inside_plus/output.weftforge": {
+      "sha256": "998d75ecbf29cece5f2b7ba5ed5797c866f9c85692874b03890d78d74e93e38a",
+      "bytes": 5180
+    },
+    "run-output/cli/output_near_gimbal_inside_plus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/output_near_gimbal_inside_plus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/output_near_gimbal_outside_minus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/cli/output_near_gimbal_outside_minus/input.weftforge": {
+      "sha256": "3fb8eae02fcfa09c6b7b0f466b10496ed11ba853bd6a8404be0a24434cae956a",
+      "bytes": 5081
+    },
+    "run-output/cli/output_near_gimbal_outside_minus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/output_near_gimbal_outside_minus/output.weftforge": {
+      "sha256": "79c78b9cd52c214d8df4db7d22ab72c88cffb5426291c5a2fb6b095a36397613",
+      "bytes": 5202
+    },
+    "run-output/cli/output_near_gimbal_outside_minus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/output_near_gimbal_outside_minus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/output_near_gimbal_outside_plus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/cli/output_near_gimbal_outside_plus/input.weftforge": {
+      "sha256": "a3bc9c9538a68529dd8a426a39a61b1ff4747a3895411165013afa8ea68d94cc",
+      "bytes": 5080
+    },
+    "run-output/cli/output_near_gimbal_outside_plus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/output_near_gimbal_outside_plus/output.weftforge": {
+      "sha256": "dd8ea670975d8d9bde524edd3eb61c14a7d28980cd11baf2bc5295feab4d0965",
+      "bytes": 5199
+    },
+    "run-output/cli/output_near_gimbal_outside_plus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/output_near_gimbal_outside_plus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/overflow_numeric_token/commands.json": {
+      "sha256": "405a9218a4719ac3a245a1d7da9a1515269a797bbd4e1564a360b73aeac10090",
+      "bytes": 96
+    },
+    "run-output/cli/overflow_numeric_token/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/overflow_numeric_token/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/overflow_numeric_token/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/overflow_numeric_token/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/cli/overflow_numeric_token/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/pivot_out_of_bounds/commands.json": {
+      "sha256": "4fe9846b498936ee4f45b6655f855c4f1d33aab2c9f94134b8bf4692935f9c18",
+      "bytes": 129
+    },
+    "run-output/cli/pivot_out_of_bounds/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/pivot_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/pivot_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/pivot_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/cli/pivot_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/quarter_extreme_supported_scale/commands.json": {
+      "sha256": "30ed4c009e5f481ffe49f379c928dd69d5431456a9c822b8ff4c1a5ad05f767e",
+      "bytes": 122
+    },
+    "run-output/cli/quarter_extreme_supported_scale/input.weftforge": {
+      "sha256": "887cc935fceb38c2b35b052249ccff72536c0781941bcde88c90adf51747d816",
+      "bytes": 5096
+    },
+    "run-output/cli/quarter_extreme_supported_scale/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/quarter_extreme_supported_scale/output.weftforge": {
+      "sha256": "a3196865a88ccf853a3ab9968bc52bc54f75d4e27cd5e5d1f4f1d2d01a37e498",
+      "bytes": 5320
+    },
+    "run-output/cli/quarter_extreme_supported_scale/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/quarter_extreme_supported_scale/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/quarter_identity_placement/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/cli/quarter_identity_placement/input.weftforge": {
+      "sha256": "eea654889aa630be5cd69dc303871af1d62c564f145832d98a3215caa8e2c582",
+      "bytes": 5064
+    },
+    "run-output/cli/quarter_identity_placement/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/quarter_identity_placement/output.weftforge": {
+      "sha256": "ffe490d7400597471388a2fdef298e7aa5ebe73b7225425cfb4fb65d963d7c40",
+      "bytes": 5155
+    },
+    "run-output/cli/quarter_identity_placement/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/quarter_identity_placement/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/quarter_large_grain/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/cli/quarter_large_grain/input.weftforge": {
+      "sha256": "3c604a2f4cd85b3b5872b270e36d52e2e58235a5b56b60acb6cb492486c191dd",
+      "bytes": 5070
+    },
+    "run-output/cli/quarter_large_grain/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/quarter_large_grain/output.weftforge": {
+      "sha256": "d533bdaf83d455df626a545ea7cd52fc0d929014c6cb3092f3de356dd55cc7c9",
+      "bytes": 5210
+    },
+    "run-output/cli/quarter_large_grain/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/quarter_large_grain/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/quarter_noncommuting/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/cli/quarter_noncommuting/fresh-mesh.json": {
+      "sha256": "40d7f2aaa1ded570c829eb7ad85fe50e01003d5f93e60fc5e2b0db1c307b53d0",
+      "bytes": 99463
+    },
+    "run-output/cli/quarter_noncommuting/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/quarter_noncommuting/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/quarter_noncommuting/output.weftforge": {
+      "sha256": "e15c3cca488b67220e32c3d63ebf9880765245560f4ba11bb5830ee55677503d",
+      "bytes": 5210
+    },
+    "run-output/cli/quarter_noncommuting/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/quarter_noncommuting/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/translate_large_grain/commands.json": {
+      "sha256": "6b628697f9e2f835bbd07483f254846530335648ef42589c00f57b03525ddebe",
+      "bytes": 109
+    },
+    "run-output/cli/translate_large_grain/input.weftforge": {
+      "sha256": "3c604a2f4cd85b3b5872b270e36d52e2e58235a5b56b60acb6cb492486c191dd",
+      "bytes": 5070
+    },
+    "run-output/cli/translate_large_grain/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/translate_large_grain/output.weftforge": {
+      "sha256": "e36dcf1bc1f06869350e658d3ecbdcad50d31df91dd20ac4c50d70a30ef7c470",
+      "bytes": 5108
+    },
+    "run-output/cli/translate_large_grain/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/translate_large_grain/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/translate_u_bypass_pivot/commands.json": {
+      "sha256": "6b628697f9e2f835bbd07483f254846530335648ef42589c00f57b03525ddebe",
+      "bytes": 109
+    },
+    "run-output/cli/translate_u_bypass_pivot/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/translate_u_bypass_pivot/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/translate_u_bypass_pivot/output.weftforge": {
+      "sha256": "bb44c2e38381c0210a1c8e9a024c1a9db6bbf31591b49668475a511fbbf5eb50",
+      "bytes": 5106
+    },
+    "run-output/cli/translate_u_bypass_pivot/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/translate_u_bypass_pivot/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/translate_uv/commands.json": {
+      "sha256": "4bcb1104c0094f6055b7fb713380ba0d30a2b2da16ce3217074f59a63181c095",
+      "bytes": 105
+    },
+    "run-output/cli/translate_uv/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/translate_uv/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/translate_uv/output.weftforge": {
+      "sha256": "098ec08c3aed95ce5869b66a39f420d39b7e507da24d2dba7f47c8f41a12f044",
+      "bytes": 5104
+    },
+    "run-output/cli/translate_uv/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/translate_uv/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/translation_out_of_bounds/commands.json": {
+      "sha256": "314d5a6965482c9393a2a48951f2f48741218535cc6a4a96415e639a22cb13d6",
+      "bytes": 127
+    },
+    "run-output/cli/translation_out_of_bounds/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/translation_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/translation_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/translation_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/cli/translation_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/unknown_data_field/commands.json": {
+      "sha256": "0857acb126efd3fd1bc4053250dfa161a6a01d7481ef122c3f677d24a8dfd9f0",
+      "bytes": 133
+    },
+    "run-output/cli/unknown_data_field/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/unknown_data_field/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/unknown_data_field/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/unknown_data_field/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/cli/unknown_data_field/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/unknown_piece/commands.json": {
+      "sha256": "dffcda3fe84f27569806a638212644d9e39360029a86d747f7e792d571bfe9d1",
+      "bytes": 123
+    },
+    "run-output/cli/unknown_piece/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/unknown_piece/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/unknown_piece/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/unknown_piece/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/cli/unknown_piece/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/wrong_translation_length/commands.json": {
+      "sha256": "caac2146a12eb54c6e134fb03782f34adc48e68d49db7cd1ef120a13d7064d20",
+      "bytes": 114
+    },
+    "run-output/cli/wrong_translation_length/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/wrong_translation_length/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/wrong_translation_length/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/wrong_translation_length/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/cli/wrong_translation_length/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/cli/zero_piece/commands.json": {
+      "sha256": "728c0459478bc88b2224d0aef01039ceffb8f9fec712d04f83fe41e30982a972",
+      "bytes": 120
+    },
+    "run-output/cli/zero_piece/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/cli/zero_piece/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/cli/zero_piece/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/cli/zero_piece/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/cli/zero_piece/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/journal.jsonl": {
+      "sha256": "1985eefe635a652c698127e95577760e2ac7740dfc1f3f8e2b548bf643074008",
+      "bytes": 1299025
+    },
+    "run-output/mcp-current/angle_out_of_bounds/commands.json": {
+      "sha256": "b6b9ba9361079a81d1a0c16f06859509f086e4ed26367d923ac1b92b0cfb3f82",
+      "bytes": 114
+    },
+    "run-output/mcp-current/angle_out_of_bounds/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/angle_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/angle_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/angle_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-current/angle_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/angle_upper_limit/commands.json": {
+      "sha256": "a7958209a2810214a8b38e5e3497d1de35efdb38d3d6046c9fbc73b1dc6e4542",
+      "bytes": 109
+    },
+    "run-output/mcp-current/angle_upper_limit/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/angle_upper_limit/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/angle_upper_limit/output.weftforge": {
+      "sha256": "b38fd994a781c840e84e82003aedb32a0b8c0ad567a925234a72a894f02f8364",
+      "bytes": 5343
+    },
+    "run-output/mcp-current/angle_upper_limit/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/angle_upper_limit/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/compensated_placement_out_of_bounds/commands.json": {
+      "sha256": "ac738f8a51d97aa0293ab12cc3b8d1ee543e90abe947643ce587fb722fdb7a69",
+      "bytes": 103
+    },
+    "run-output/mcp-current/compensated_placement_out_of_bounds/input.weftforge": {
+      "sha256": "83c8fec76c0b563629c19a6d94a32bae762a3f4d96f573d3072831a105987499",
+      "bytes": 5061
+    },
+    "run-output/mcp-current/compensated_placement_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/compensated_placement_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/compensated_placement_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-current/compensated_placement_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/control_only_result_out_of_bounds/commands.json": {
+      "sha256": "b004d8ed0298f69fee50ef7eba397697bfa9f0db0bfffaff9db2a04f52b06256",
+      "bytes": 121
+    },
+    "run-output/mcp-current/control_only_result_out_of_bounds/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/control_only_result_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/control_only_result_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/control_only_result_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-current/control_only_result_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/duplicate_translation_field/commands.json": {
+      "sha256": "8b3039a7634afdf1070ac6d4c9201b41289fa3e012c9f8ffe12a414b38488b6d",
+      "bytes": 114
+    },
+    "run-output/mcp-current/duplicate_translation_field/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/duplicate_translation_field/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/duplicate_translation_field/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/duplicate_translation_field/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-current/duplicate_translation_field/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/endpoint_result_out_of_bounds/commands.json": {
+      "sha256": "ed48caa8219c2ce3f803ce27b4af8bc31ff3127cd97b9d523c830eab23f18ad1",
+      "bytes": 106
+    },
+    "run-output/mcp-current/endpoint_result_out_of_bounds/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/endpoint_result_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/endpoint_result_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/endpoint_result_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-current/endpoint_result_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/input_gimbal_minus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-current/input_gimbal_minus/input.weftforge": {
+      "sha256": "7bad11c666486f3209d2d8800243877a21ae96d1428e263f2c47b07f2045022d",
+      "bytes": 5082
+    },
+    "run-output/mcp-current/input_gimbal_minus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/input_gimbal_minus/output.weftforge": {
+      "sha256": "9f5612d06c4b6831093449e127097039c449fb0fd088f6d6a725db37dd6c8cef",
+      "bytes": 5201
+    },
+    "run-output/mcp-current/input_gimbal_minus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/input_gimbal_minus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/input_gimbal_plus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-current/input_gimbal_plus/input.weftforge": {
+      "sha256": "d3f4e095463b07388af2c25093b45c1f7e1fd8e92521c2843e7b523991b00fc5",
+      "bytes": 5081
+    },
+    "run-output/mcp-current/input_gimbal_plus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/input_gimbal_plus/output.weftforge": {
+      "sha256": "f8c11a161b9ac8404aed08645d24e3b8def9eae54dda9ac3f18a31e098a1f776",
+      "bytes": 5199
+    },
+    "run-output/mcp-current/input_gimbal_plus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/input_gimbal_plus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/late_transaction_unknown_piece/commands.json": {
+      "sha256": "c99793f32946e09d4a069244882dd907e8a47140e6bb0881ba88c744b1b6a390",
+      "bytes": 226
+    },
+    "run-output/mcp-current/late_transaction_unknown_piece/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/late_transaction_unknown_piece/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/late_transaction_unknown_piece/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/late_transaction_unknown_piece/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-current/late_transaction_unknown_piece/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/missing_pivot/commands.json": {
+      "sha256": "abd27ef539e78262ceed88600618b3597073a068369dbbca652d8eb50c66d495",
+      "bytes": 101
+    },
+    "run-output/mcp-current/missing_pivot/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/missing_pivot/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/missing_pivot/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/missing_pivot/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-current/missing_pivot/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/nonright/commands.json": {
+      "sha256": "55e4e5dd466b55fb092759037b037a3d6e79752e425c3303263ebd74fe05de5e",
+      "bytes": 114
+    },
+    "run-output/mcp-current/nonright/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/nonright/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/nonright/inverse.commands.json": {
+      "sha256": "b7a34df3ea881d551fe3cdbcd97078d4b14c26d5766e7ca234bc8e3cc6cd5b55",
+      "bytes": 154
+    },
+    "run-output/mcp-current/nonright/inverse.weftforge": {
+      "sha256": "0138397c65e29b08e82bdd2b91dd6b3ebc4ed669b4a22c265a473e5d10f1ff67",
+      "bytes": 5290
+    },
+    "run-output/mcp-current/nonright/output.weftforge": {
+      "sha256": "25cf874def66490bb39057f981565a65bfa5abb72065b6973a191e0bcaf9e30f",
+      "bytes": 5341
+    },
+    "run-output/mcp-current/nonright/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/nonright/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/output_gimbal_minus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-current/output_gimbal_minus/input.weftforge": {
+      "sha256": "514f62a2e10a763641e99f618e24af0322032cd303b484900bfd62eca67e2864",
+      "bytes": 5081
+    },
+    "run-output/mcp-current/output_gimbal_minus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/output_gimbal_minus/output.weftforge": {
+      "sha256": "4a970d7ab4cf5e02ebefc1c5c594e28ae2a165198a2ab1dc7beb3d55d772864d",
+      "bytes": 5170
+    },
+    "run-output/mcp-current/output_gimbal_minus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/output_gimbal_minus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/output_gimbal_plus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-current/output_gimbal_plus/input.weftforge": {
+      "sha256": "a27a6be1310e2c9c40244068c7b9d07021a018bd404111ca768cd67bc4d84325",
+      "bytes": 5080
+    },
+    "run-output/mcp-current/output_gimbal_plus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/output_gimbal_plus/output.weftforge": {
+      "sha256": "66aa88eb2e7719f1e6fd4ce2e1667e9986271d790fb589e01b80828aa937096e",
+      "bytes": 5168
+    },
+    "run-output/mcp-current/output_gimbal_plus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/output_gimbal_plus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/output_near_gimbal_inside_minus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-current/output_near_gimbal_inside_minus/input.weftforge": {
+      "sha256": "70cb29a8fca82de229c3048d662066530e791f9fa12780ccdfc3da9fb837fa62",
+      "bytes": 5081
+    },
+    "run-output/mcp-current/output_near_gimbal_inside_minus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/output_near_gimbal_inside_minus/output.weftforge": {
+      "sha256": "a08a80c6bf2f4f8346366734aec231a3e688662d631ea674ef7edec3efb9d472",
+      "bytes": 5182
+    },
+    "run-output/mcp-current/output_near_gimbal_inside_minus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/output_near_gimbal_inside_minus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/output_near_gimbal_inside_plus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-current/output_near_gimbal_inside_plus/input.weftforge": {
+      "sha256": "0dea0ef9945f7f0d791534834f55250d6de660bd47e8e1db88c1f5c00074cfd3",
+      "bytes": 5080
+    },
+    "run-output/mcp-current/output_near_gimbal_inside_plus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/output_near_gimbal_inside_plus/output.weftforge": {
+      "sha256": "998d75ecbf29cece5f2b7ba5ed5797c866f9c85692874b03890d78d74e93e38a",
+      "bytes": 5180
+    },
+    "run-output/mcp-current/output_near_gimbal_inside_plus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/output_near_gimbal_inside_plus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/output_near_gimbal_outside_minus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-current/output_near_gimbal_outside_minus/input.weftforge": {
+      "sha256": "3fb8eae02fcfa09c6b7b0f466b10496ed11ba853bd6a8404be0a24434cae956a",
+      "bytes": 5081
+    },
+    "run-output/mcp-current/output_near_gimbal_outside_minus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/output_near_gimbal_outside_minus/output.weftforge": {
+      "sha256": "79c78b9cd52c214d8df4db7d22ab72c88cffb5426291c5a2fb6b095a36397613",
+      "bytes": 5202
+    },
+    "run-output/mcp-current/output_near_gimbal_outside_minus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/output_near_gimbal_outside_minus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/output_near_gimbal_outside_plus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-current/output_near_gimbal_outside_plus/input.weftforge": {
+      "sha256": "a3bc9c9538a68529dd8a426a39a61b1ff4747a3895411165013afa8ea68d94cc",
+      "bytes": 5080
+    },
+    "run-output/mcp-current/output_near_gimbal_outside_plus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/output_near_gimbal_outside_plus/output.weftforge": {
+      "sha256": "dd8ea670975d8d9bde524edd3eb61c14a7d28980cd11baf2bc5295feab4d0965",
+      "bytes": 5199
+    },
+    "run-output/mcp-current/output_near_gimbal_outside_plus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/output_near_gimbal_outside_plus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/overflow_numeric_token/commands.json": {
+      "sha256": "405a9218a4719ac3a245a1d7da9a1515269a797bbd4e1564a360b73aeac10090",
+      "bytes": 96
+    },
+    "run-output/mcp-current/overflow_numeric_token/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/overflow_numeric_token/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/overflow_numeric_token/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/overflow_numeric_token/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-current/overflow_numeric_token/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/pivot_out_of_bounds/commands.json": {
+      "sha256": "4fe9846b498936ee4f45b6655f855c4f1d33aab2c9f94134b8bf4692935f9c18",
+      "bytes": 129
+    },
+    "run-output/mcp-current/pivot_out_of_bounds/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/pivot_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/pivot_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/pivot_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-current/pivot_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/quarter_extreme_supported_scale/commands.json": {
+      "sha256": "30ed4c009e5f481ffe49f379c928dd69d5431456a9c822b8ff4c1a5ad05f767e",
+      "bytes": 122
+    },
+    "run-output/mcp-current/quarter_extreme_supported_scale/input.weftforge": {
+      "sha256": "887cc935fceb38c2b35b052249ccff72536c0781941bcde88c90adf51747d816",
+      "bytes": 5096
+    },
+    "run-output/mcp-current/quarter_extreme_supported_scale/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/quarter_extreme_supported_scale/output.weftforge": {
+      "sha256": "a3196865a88ccf853a3ab9968bc52bc54f75d4e27cd5e5d1f4f1d2d01a37e498",
+      "bytes": 5320
+    },
+    "run-output/mcp-current/quarter_extreme_supported_scale/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/quarter_extreme_supported_scale/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/quarter_identity_placement/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-current/quarter_identity_placement/input.weftforge": {
+      "sha256": "eea654889aa630be5cd69dc303871af1d62c564f145832d98a3215caa8e2c582",
+      "bytes": 5064
+    },
+    "run-output/mcp-current/quarter_identity_placement/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/quarter_identity_placement/output.weftforge": {
+      "sha256": "ffe490d7400597471388a2fdef298e7aa5ebe73b7225425cfb4fb65d963d7c40",
+      "bytes": 5155
+    },
+    "run-output/mcp-current/quarter_identity_placement/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/quarter_identity_placement/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/quarter_large_grain/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-current/quarter_large_grain/input.weftforge": {
+      "sha256": "3c604a2f4cd85b3b5872b270e36d52e2e58235a5b56b60acb6cb492486c191dd",
+      "bytes": 5070
+    },
+    "run-output/mcp-current/quarter_large_grain/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/quarter_large_grain/output.weftforge": {
+      "sha256": "d533bdaf83d455df626a545ea7cd52fc0d929014c6cb3092f3de356dd55cc7c9",
+      "bytes": 5210
+    },
+    "run-output/mcp-current/quarter_large_grain/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/quarter_large_grain/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/quarter_noncommuting/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-current/quarter_noncommuting/fresh-mesh.json": {
+      "sha256": "40d7f2aaa1ded570c829eb7ad85fe50e01003d5f93e60fc5e2b0db1c307b53d0",
+      "bytes": 99463
+    },
+    "run-output/mcp-current/quarter_noncommuting/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/quarter_noncommuting/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/quarter_noncommuting/output.weftforge": {
+      "sha256": "e15c3cca488b67220e32c3d63ebf9880765245560f4ba11bb5830ee55677503d",
+      "bytes": 5210
+    },
+    "run-output/mcp-current/quarter_noncommuting/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/quarter_noncommuting/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/translate_large_grain/commands.json": {
+      "sha256": "6b628697f9e2f835bbd07483f254846530335648ef42589c00f57b03525ddebe",
+      "bytes": 109
+    },
+    "run-output/mcp-current/translate_large_grain/input.weftforge": {
+      "sha256": "3c604a2f4cd85b3b5872b270e36d52e2e58235a5b56b60acb6cb492486c191dd",
+      "bytes": 5070
+    },
+    "run-output/mcp-current/translate_large_grain/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/translate_large_grain/output.weftforge": {
+      "sha256": "e36dcf1bc1f06869350e658d3ecbdcad50d31df91dd20ac4c50d70a30ef7c470",
+      "bytes": 5108
+    },
+    "run-output/mcp-current/translate_large_grain/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/translate_large_grain/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/translate_u_bypass_pivot/commands.json": {
+      "sha256": "6b628697f9e2f835bbd07483f254846530335648ef42589c00f57b03525ddebe",
+      "bytes": 109
+    },
+    "run-output/mcp-current/translate_u_bypass_pivot/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/translate_u_bypass_pivot/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/translate_u_bypass_pivot/output.weftforge": {
+      "sha256": "bb44c2e38381c0210a1c8e9a024c1a9db6bbf31591b49668475a511fbbf5eb50",
+      "bytes": 5106
+    },
+    "run-output/mcp-current/translate_u_bypass_pivot/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/translate_u_bypass_pivot/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/translate_uv/commands.json": {
+      "sha256": "4bcb1104c0094f6055b7fb713380ba0d30a2b2da16ce3217074f59a63181c095",
+      "bytes": 105
+    },
+    "run-output/mcp-current/translate_uv/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/translate_uv/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/translate_uv/output.weftforge": {
+      "sha256": "098ec08c3aed95ce5869b66a39f420d39b7e507da24d2dba7f47c8f41a12f044",
+      "bytes": 5104
+    },
+    "run-output/mcp-current/translate_uv/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/translate_uv/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/translation_out_of_bounds/commands.json": {
+      "sha256": "314d5a6965482c9393a2a48951f2f48741218535cc6a4a96415e639a22cb13d6",
+      "bytes": 127
+    },
+    "run-output/mcp-current/translation_out_of_bounds/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/translation_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/translation_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/translation_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-current/translation_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/unknown_data_field/commands.json": {
+      "sha256": "0857acb126efd3fd1bc4053250dfa161a6a01d7481ef122c3f677d24a8dfd9f0",
+      "bytes": 133
+    },
+    "run-output/mcp-current/unknown_data_field/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/unknown_data_field/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/unknown_data_field/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/unknown_data_field/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-current/unknown_data_field/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/unknown_piece/commands.json": {
+      "sha256": "dffcda3fe84f27569806a638212644d9e39360029a86d747f7e792d571bfe9d1",
+      "bytes": 123
+    },
+    "run-output/mcp-current/unknown_piece/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/unknown_piece/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/unknown_piece/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/unknown_piece/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-current/unknown_piece/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/wrong_translation_length/commands.json": {
+      "sha256": "caac2146a12eb54c6e134fb03782f34adc48e68d49db7cd1ef120a13d7064d20",
+      "bytes": 114
+    },
+    "run-output/mcp-current/wrong_translation_length/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/wrong_translation_length/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/wrong_translation_length/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/wrong_translation_length/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-current/wrong_translation_length/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-current/zero_piece/commands.json": {
+      "sha256": "728c0459478bc88b2224d0aef01039ceffb8f9fec712d04f83fe41e30982a972",
+      "bytes": 120
+    },
+    "run-output/mcp-current/zero_piece/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-current/zero_piece/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-current/zero_piece/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-current/zero_piece/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-current/zero_piece/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/angle_out_of_bounds/commands.json": {
+      "sha256": "b6b9ba9361079a81d1a0c16f06859509f086e4ed26367d923ac1b92b0cfb3f82",
+      "bytes": 114
+    },
+    "run-output/mcp-legacy/angle_out_of_bounds/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/angle_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/angle_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/angle_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-legacy/angle_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/angle_upper_limit/commands.json": {
+      "sha256": "a7958209a2810214a8b38e5e3497d1de35efdb38d3d6046c9fbc73b1dc6e4542",
+      "bytes": 109
+    },
+    "run-output/mcp-legacy/angle_upper_limit/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/angle_upper_limit/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/angle_upper_limit/output.weftforge": {
+      "sha256": "b38fd994a781c840e84e82003aedb32a0b8c0ad567a925234a72a894f02f8364",
+      "bytes": 5343
+    },
+    "run-output/mcp-legacy/angle_upper_limit/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/angle_upper_limit/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/compensated_placement_out_of_bounds/commands.json": {
+      "sha256": "ac738f8a51d97aa0293ab12cc3b8d1ee543e90abe947643ce587fb722fdb7a69",
+      "bytes": 103
+    },
+    "run-output/mcp-legacy/compensated_placement_out_of_bounds/input.weftforge": {
+      "sha256": "83c8fec76c0b563629c19a6d94a32bae762a3f4d96f573d3072831a105987499",
+      "bytes": 5061
+    },
+    "run-output/mcp-legacy/compensated_placement_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/compensated_placement_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/compensated_placement_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-legacy/compensated_placement_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/control_only_result_out_of_bounds/commands.json": {
+      "sha256": "b004d8ed0298f69fee50ef7eba397697bfa9f0db0bfffaff9db2a04f52b06256",
+      "bytes": 121
+    },
+    "run-output/mcp-legacy/control_only_result_out_of_bounds/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/control_only_result_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/control_only_result_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/control_only_result_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-legacy/control_only_result_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/duplicate_translation_field/commands.json": {
+      "sha256": "8b3039a7634afdf1070ac6d4c9201b41289fa3e012c9f8ffe12a414b38488b6d",
+      "bytes": 114
+    },
+    "run-output/mcp-legacy/duplicate_translation_field/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/duplicate_translation_field/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/duplicate_translation_field/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/duplicate_translation_field/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-legacy/duplicate_translation_field/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/endpoint_result_out_of_bounds/commands.json": {
+      "sha256": "ed48caa8219c2ce3f803ce27b4af8bc31ff3127cd97b9d523c830eab23f18ad1",
+      "bytes": 106
+    },
+    "run-output/mcp-legacy/endpoint_result_out_of_bounds/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/endpoint_result_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/endpoint_result_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/endpoint_result_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-legacy/endpoint_result_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/input_gimbal_minus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-legacy/input_gimbal_minus/input.weftforge": {
+      "sha256": "7bad11c666486f3209d2d8800243877a21ae96d1428e263f2c47b07f2045022d",
+      "bytes": 5082
+    },
+    "run-output/mcp-legacy/input_gimbal_minus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/input_gimbal_minus/output.weftforge": {
+      "sha256": "9f5612d06c4b6831093449e127097039c449fb0fd088f6d6a725db37dd6c8cef",
+      "bytes": 5201
+    },
+    "run-output/mcp-legacy/input_gimbal_minus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/input_gimbal_minus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/input_gimbal_plus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-legacy/input_gimbal_plus/input.weftforge": {
+      "sha256": "d3f4e095463b07388af2c25093b45c1f7e1fd8e92521c2843e7b523991b00fc5",
+      "bytes": 5081
+    },
+    "run-output/mcp-legacy/input_gimbal_plus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/input_gimbal_plus/output.weftforge": {
+      "sha256": "f8c11a161b9ac8404aed08645d24e3b8def9eae54dda9ac3f18a31e098a1f776",
+      "bytes": 5199
+    },
+    "run-output/mcp-legacy/input_gimbal_plus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/input_gimbal_plus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/late_transaction_unknown_piece/commands.json": {
+      "sha256": "c99793f32946e09d4a069244882dd907e8a47140e6bb0881ba88c744b1b6a390",
+      "bytes": 226
+    },
+    "run-output/mcp-legacy/late_transaction_unknown_piece/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/late_transaction_unknown_piece/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/late_transaction_unknown_piece/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/late_transaction_unknown_piece/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-legacy/late_transaction_unknown_piece/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/missing_pivot/commands.json": {
+      "sha256": "abd27ef539e78262ceed88600618b3597073a068369dbbca652d8eb50c66d495",
+      "bytes": 101
+    },
+    "run-output/mcp-legacy/missing_pivot/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/missing_pivot/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/missing_pivot/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/missing_pivot/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-legacy/missing_pivot/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/nonright/commands.json": {
+      "sha256": "55e4e5dd466b55fb092759037b037a3d6e79752e425c3303263ebd74fe05de5e",
+      "bytes": 114
+    },
+    "run-output/mcp-legacy/nonright/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/nonright/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/nonright/inverse.commands.json": {
+      "sha256": "b7a34df3ea881d551fe3cdbcd97078d4b14c26d5766e7ca234bc8e3cc6cd5b55",
+      "bytes": 154
+    },
+    "run-output/mcp-legacy/nonright/inverse.weftforge": {
+      "sha256": "0138397c65e29b08e82bdd2b91dd6b3ebc4ed669b4a22c265a473e5d10f1ff67",
+      "bytes": 5290
+    },
+    "run-output/mcp-legacy/nonright/output.weftforge": {
+      "sha256": "25cf874def66490bb39057f981565a65bfa5abb72065b6973a191e0bcaf9e30f",
+      "bytes": 5341
+    },
+    "run-output/mcp-legacy/nonright/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/nonright/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/output_gimbal_minus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-legacy/output_gimbal_minus/input.weftforge": {
+      "sha256": "514f62a2e10a763641e99f618e24af0322032cd303b484900bfd62eca67e2864",
+      "bytes": 5081
+    },
+    "run-output/mcp-legacy/output_gimbal_minus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/output_gimbal_minus/output.weftforge": {
+      "sha256": "4a970d7ab4cf5e02ebefc1c5c594e28ae2a165198a2ab1dc7beb3d55d772864d",
+      "bytes": 5170
+    },
+    "run-output/mcp-legacy/output_gimbal_minus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/output_gimbal_minus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/output_gimbal_plus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-legacy/output_gimbal_plus/input.weftforge": {
+      "sha256": "a27a6be1310e2c9c40244068c7b9d07021a018bd404111ca768cd67bc4d84325",
+      "bytes": 5080
+    },
+    "run-output/mcp-legacy/output_gimbal_plus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/output_gimbal_plus/output.weftforge": {
+      "sha256": "66aa88eb2e7719f1e6fd4ce2e1667e9986271d790fb589e01b80828aa937096e",
+      "bytes": 5168
+    },
+    "run-output/mcp-legacy/output_gimbal_plus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/output_gimbal_plus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/output_near_gimbal_inside_minus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-legacy/output_near_gimbal_inside_minus/input.weftforge": {
+      "sha256": "70cb29a8fca82de229c3048d662066530e791f9fa12780ccdfc3da9fb837fa62",
+      "bytes": 5081
+    },
+    "run-output/mcp-legacy/output_near_gimbal_inside_minus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/output_near_gimbal_inside_minus/output.weftforge": {
+      "sha256": "a08a80c6bf2f4f8346366734aec231a3e688662d631ea674ef7edec3efb9d472",
+      "bytes": 5182
+    },
+    "run-output/mcp-legacy/output_near_gimbal_inside_minus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/output_near_gimbal_inside_minus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/output_near_gimbal_inside_plus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-legacy/output_near_gimbal_inside_plus/input.weftforge": {
+      "sha256": "0dea0ef9945f7f0d791534834f55250d6de660bd47e8e1db88c1f5c00074cfd3",
+      "bytes": 5080
+    },
+    "run-output/mcp-legacy/output_near_gimbal_inside_plus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/output_near_gimbal_inside_plus/output.weftforge": {
+      "sha256": "998d75ecbf29cece5f2b7ba5ed5797c866f9c85692874b03890d78d74e93e38a",
+      "bytes": 5180
+    },
+    "run-output/mcp-legacy/output_near_gimbal_inside_plus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/output_near_gimbal_inside_plus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/output_near_gimbal_outside_minus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-legacy/output_near_gimbal_outside_minus/input.weftforge": {
+      "sha256": "3fb8eae02fcfa09c6b7b0f466b10496ed11ba853bd6a8404be0a24434cae956a",
+      "bytes": 5081
+    },
+    "run-output/mcp-legacy/output_near_gimbal_outside_minus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/output_near_gimbal_outside_minus/output.weftforge": {
+      "sha256": "79c78b9cd52c214d8df4db7d22ab72c88cffb5426291c5a2fb6b095a36397613",
+      "bytes": 5202
+    },
+    "run-output/mcp-legacy/output_near_gimbal_outside_minus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/output_near_gimbal_outside_minus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/output_near_gimbal_outside_plus/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-legacy/output_near_gimbal_outside_plus/input.weftforge": {
+      "sha256": "a3bc9c9538a68529dd8a426a39a61b1ff4747a3895411165013afa8ea68d94cc",
+      "bytes": 5080
+    },
+    "run-output/mcp-legacy/output_near_gimbal_outside_plus/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/output_near_gimbal_outside_plus/output.weftforge": {
+      "sha256": "dd8ea670975d8d9bde524edd3eb61c14a7d28980cd11baf2bc5295feab4d0965",
+      "bytes": 5199
+    },
+    "run-output/mcp-legacy/output_near_gimbal_outside_plus/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/output_near_gimbal_outside_plus/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/overflow_numeric_token/commands.json": {
+      "sha256": "405a9218a4719ac3a245a1d7da9a1515269a797bbd4e1564a360b73aeac10090",
+      "bytes": 96
+    },
+    "run-output/mcp-legacy/overflow_numeric_token/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/overflow_numeric_token/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/overflow_numeric_token/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/overflow_numeric_token/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-legacy/overflow_numeric_token/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/pivot_out_of_bounds/commands.json": {
+      "sha256": "4fe9846b498936ee4f45b6655f855c4f1d33aab2c9f94134b8bf4692935f9c18",
+      "bytes": 129
+    },
+    "run-output/mcp-legacy/pivot_out_of_bounds/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/pivot_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/pivot_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/pivot_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-legacy/pivot_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/quarter_extreme_supported_scale/commands.json": {
+      "sha256": "30ed4c009e5f481ffe49f379c928dd69d5431456a9c822b8ff4c1a5ad05f767e",
+      "bytes": 122
+    },
+    "run-output/mcp-legacy/quarter_extreme_supported_scale/input.weftforge": {
+      "sha256": "887cc935fceb38c2b35b052249ccff72536c0781941bcde88c90adf51747d816",
+      "bytes": 5096
+    },
+    "run-output/mcp-legacy/quarter_extreme_supported_scale/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/quarter_extreme_supported_scale/output.weftforge": {
+      "sha256": "a3196865a88ccf853a3ab9968bc52bc54f75d4e27cd5e5d1f4f1d2d01a37e498",
+      "bytes": 5320
+    },
+    "run-output/mcp-legacy/quarter_extreme_supported_scale/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/quarter_extreme_supported_scale/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/quarter_identity_placement/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-legacy/quarter_identity_placement/input.weftforge": {
+      "sha256": "eea654889aa630be5cd69dc303871af1d62c564f145832d98a3215caa8e2c582",
+      "bytes": 5064
+    },
+    "run-output/mcp-legacy/quarter_identity_placement/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/quarter_identity_placement/output.weftforge": {
+      "sha256": "ffe490d7400597471388a2fdef298e7aa5ebe73b7225425cfb4fb65d963d7c40",
+      "bytes": 5155
+    },
+    "run-output/mcp-legacy/quarter_identity_placement/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/quarter_identity_placement/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/quarter_large_grain/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-legacy/quarter_large_grain/input.weftforge": {
+      "sha256": "3c604a2f4cd85b3b5872b270e36d52e2e58235a5b56b60acb6cb492486c191dd",
+      "bytes": 5070
+    },
+    "run-output/mcp-legacy/quarter_large_grain/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/quarter_large_grain/output.weftforge": {
+      "sha256": "d533bdaf83d455df626a545ea7cd52fc0d929014c6cb3092f3de356dd55cc7c9",
+      "bytes": 5210
+    },
+    "run-output/mcp-legacy/quarter_large_grain/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/quarter_large_grain/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/quarter_noncommuting/commands.json": {
+      "sha256": "3a5968cff11bba32804ac33f07412db830a35faf5f7f3c858b8a369474eb1efb",
+      "bytes": 120
+    },
+    "run-output/mcp-legacy/quarter_noncommuting/fresh-mesh.json": {
+      "sha256": "40d7f2aaa1ded570c829eb7ad85fe50e01003d5f93e60fc5e2b0db1c307b53d0",
+      "bytes": 99463
+    },
+    "run-output/mcp-legacy/quarter_noncommuting/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/quarter_noncommuting/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/quarter_noncommuting/output.weftforge": {
+      "sha256": "e15c3cca488b67220e32c3d63ebf9880765245560f4ba11bb5830ee55677503d",
+      "bytes": 5210
+    },
+    "run-output/mcp-legacy/quarter_noncommuting/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/quarter_noncommuting/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/translate_large_grain/commands.json": {
+      "sha256": "6b628697f9e2f835bbd07483f254846530335648ef42589c00f57b03525ddebe",
+      "bytes": 109
+    },
+    "run-output/mcp-legacy/translate_large_grain/input.weftforge": {
+      "sha256": "3c604a2f4cd85b3b5872b270e36d52e2e58235a5b56b60acb6cb492486c191dd",
+      "bytes": 5070
+    },
+    "run-output/mcp-legacy/translate_large_grain/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/translate_large_grain/output.weftforge": {
+      "sha256": "e36dcf1bc1f06869350e658d3ecbdcad50d31df91dd20ac4c50d70a30ef7c470",
+      "bytes": 5108
+    },
+    "run-output/mcp-legacy/translate_large_grain/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/translate_large_grain/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/translate_u_bypass_pivot/commands.json": {
+      "sha256": "6b628697f9e2f835bbd07483f254846530335648ef42589c00f57b03525ddebe",
+      "bytes": 109
+    },
+    "run-output/mcp-legacy/translate_u_bypass_pivot/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/translate_u_bypass_pivot/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/translate_u_bypass_pivot/output.weftforge": {
+      "sha256": "bb44c2e38381c0210a1c8e9a024c1a9db6bbf31591b49668475a511fbbf5eb50",
+      "bytes": 5106
+    },
+    "run-output/mcp-legacy/translate_u_bypass_pivot/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/translate_u_bypass_pivot/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/translate_uv/commands.json": {
+      "sha256": "4bcb1104c0094f6055b7fb713380ba0d30a2b2da16ce3217074f59a63181c095",
+      "bytes": 105
+    },
+    "run-output/mcp-legacy/translate_uv/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/translate_uv/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/translate_uv/output.weftforge": {
+      "sha256": "098ec08c3aed95ce5869b66a39f420d39b7e507da24d2dba7f47c8f41a12f044",
+      "bytes": 5104
+    },
+    "run-output/mcp-legacy/translate_uv/output.weftforge.recovery": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/translate_uv/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/translation_out_of_bounds/commands.json": {
+      "sha256": "314d5a6965482c9393a2a48951f2f48741218535cc6a4a96415e639a22cb13d6",
+      "bytes": 127
+    },
+    "run-output/mcp-legacy/translation_out_of_bounds/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/translation_out_of_bounds/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/translation_out_of_bounds/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/translation_out_of_bounds/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-legacy/translation_out_of_bounds/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/unknown_data_field/commands.json": {
+      "sha256": "0857acb126efd3fd1bc4053250dfa161a6a01d7481ef122c3f677d24a8dfd9f0",
+      "bytes": 133
+    },
+    "run-output/mcp-legacy/unknown_data_field/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/unknown_data_field/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/unknown_data_field/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/unknown_data_field/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-legacy/unknown_data_field/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/unknown_piece/commands.json": {
+      "sha256": "dffcda3fe84f27569806a638212644d9e39360029a86d747f7e792d571bfe9d1",
+      "bytes": 123
+    },
+    "run-output/mcp-legacy/unknown_piece/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/unknown_piece/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/unknown_piece/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/unknown_piece/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-legacy/unknown_piece/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/wrong_translation_length/commands.json": {
+      "sha256": "caac2146a12eb54c6e134fb03782f34adc48e68d49db7cd1ef120a13d7064d20",
+      "bytes": 114
+    },
+    "run-output/mcp-legacy/wrong_translation_length/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/wrong_translation_length/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/wrong_translation_length/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/wrong_translation_length/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-legacy/wrong_translation_length/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    },
+    "run-output/mcp-legacy/zero_piece/commands.json": {
+      "sha256": "728c0459478bc88b2224d0aef01039ceffb8f9fec712d04f83fe41e30982a972",
+      "bytes": 120
+    },
+    "run-output/mcp-legacy/zero_piece/input.weftforge": {
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "bytes": 5068
+    },
+    "run-output/mcp-legacy/zero_piece/input.weftforge.recovery": {
+      "sha256": "705bc733505f94109d845fe71f60614c0507be27d96af6a3c72698d4a2e5c253",
+      "bytes": 33
+    },
+    "run-output/mcp-legacy/zero_piece/output.weftforge": {
+      "sha256": "da369e36620850d398885d2c76e0fd13e046a5e04fe47ac6bd5add0b73274a48",
+      "bytes": 5069
+    },
+    "run-output/mcp-legacy/zero_piece/output.weftforge.recovery": {
+      "sha256": "5e435afe794c61eb65214abaec2c8700477c1e1c9d4842f22909346c22c754b3",
+      "bytes": 29
+    },
+    "run-output/mcp-legacy/zero_piece/unrelated.destination": {
+      "sha256": "6f0cf76b012d1166f95be28df858d64b516c6a66d8a1c5e8af5e54d31bf54d22",
+      "bytes": 40
+    }
+  },
+  "qualification": "Local exact original-run inventory; publication and private-path handling remain the root agent responsibility."
+}

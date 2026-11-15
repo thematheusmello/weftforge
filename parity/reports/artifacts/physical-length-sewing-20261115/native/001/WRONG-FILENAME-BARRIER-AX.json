@@ -1,0 +1,27 @@
+{
+  "scope": "Selected wrong-filename AX barrier only. The full OS chooser and private paths remain private; stopped001 is not repaired or promoted by later calibration/002.",
+  "original_private_sha256": "d494d0023d9be7cc9baed4c3865ac937c21c9abfb41b5e8658d92b4d5d4bbe38",
+  "omitted_private_fields": [
+    "all other OS save-sheet AX fields",
+    "raw OS chooser screenshot"
+  ],
+  "record": {
+    "case": "NATIVE-PHYSICAL-SEWING-001",
+    "stage": "First Save As typed filename screenshot barrier",
+    "expected": "created.weftforge",
+    "observed": "garmentcreated.weftforge",
+    "selected_filename_field_AX": [
+      "~\t\t89 text field (settable) Value: garmentcreated.weftforge, ID: saveAsNameTextField",
+      "The focused UI element is 89 text field (settable) Value: garmentcreated.weftforge, ID: saveAsNameTextField"
+    ],
+    "trace_records": [
+      "0081",
+      "0082",
+      "0083"
+    ],
+    "original_outcome_sha256": "de00ceddca469185f9c0c2b9caab079b81c8f2098309b157570fc27fb545ebbf",
+    "original_private_image_sha256": "8e09a61584157d13519b3e70ff39a9d99cae9e1e40adb421160662d71e71ae0f",
+    "no_Save_or_required_primaries": true,
+    "cause": "Observed name mismatch after planned super+a and typeText; no conclusion about whether OS shortcut delivery or product dialog caused it."
+  }
+}

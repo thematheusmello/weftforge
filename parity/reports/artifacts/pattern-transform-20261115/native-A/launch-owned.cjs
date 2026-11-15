@@ -1,0 +1,16 @@
+'use strict';
+const fs=require('node:fs');
+const path=require('node:path');
+const child=require('node:child_process');
+const process=require('node:process');
+const root=__dirname;
+const recorder=require("<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs").createRecorder(root);
+const app=path.join(root,'WeftForgeTransformAcceptanceA001.app');
+const args=['-n',app,'--args',path.join(root,'A-readonly-input.weftforge')];
+const id=recorder.before('launch unique A bundle','exec_command:/usr/bin/open',{executable:'/usr/bin/open',arguments:args});
+const result=child.spawnSync('/usr/bin/open',args,{encoding:'utf8'});
+const actual={status:result.status,signal:result.signal,stdout:result.stdout,stderr:result.stderr,error:result.error?{name:result.error.name,message:result.error.message}:null};
+recorder.returned(id,actual,result.error||null);
+fs.writeFileSync(path.join(root,'LAUNCH.json'),JSON.stringify({source_record:id,native_api_calls_including_bootstrap:2,actual_result:actual},null,2)+'\n',{flag:'wx',mode:0o600});
+if(result.error||result.status!==0)process.exit(1);
+process.stdout.write(JSON.stringify({launch:'returned',record:id,status:result.status})+'\n');

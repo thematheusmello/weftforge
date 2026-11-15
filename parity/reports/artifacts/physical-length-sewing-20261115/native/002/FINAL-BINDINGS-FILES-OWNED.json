@@ -1,0 +1,2456 @@
+{
+  "scope": "Selected owned-only review derivative. Unrelated process inventories, raw kernel mappings and stacks remain private. Source, numeric, clock, status and saved-file values in retained fields are unchanged.",
+  "original_private_sha256": "fa148f935f29712270238bfd154d67948d5e9fdbabeae9422a39e8ccc7cc9053",
+  "omitted_private_fields": [
+    "processes.all_weftforge"
+  ],
+  "record": {
+    "utc": "2026-11-15T18:49:56.650Z",
+    "source_head": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+    "source_git_status": "",
+    "source_pins": [
+      {
+        "file": ".cargo/config.toml",
+        "expected": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+        "actual": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+        "matches": true
+      },
+      {
+        "file": "Cargo.lock",
+        "expected": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c",
+        "actual": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c",
+        "matches": true
+      },
+      {
+        "file": "Cargo.toml",
+        "expected": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+        "actual": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge-cli/Cargo.toml",
+        "expected": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+        "actual": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge-cli/src/main.rs",
+        "expected": "88e09babfb9eaba9646a54ebb0de28ac3fccd318d50f7f2a92bda148e857310d",
+        "actual": "88e09babfb9eaba9646a54ebb0de28ac3fccd318d50f7f2a92bda148e857310d",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge-cli/src/mcp.rs",
+        "expected": "21454eaa6f9737f66e2c043dba5e5f0a99024900c82d68aa053c7fc66e1d7a11",
+        "actual": "21454eaa6f9737f66e2c043dba5e5f0a99024900c82d68aa053c7fc66e1d7a11",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge-cli/tests/curves.rs",
+        "expected": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+        "actual": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge-cli/tests/dxf_import.rs",
+        "expected": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d",
+        "actual": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge-cli/tests/ellipse.rs",
+        "expected": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+        "actual": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge-cli/tests/grain.rs",
+        "expected": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+        "actual": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge-cli/tests/mcp_stdio.rs",
+        "expected": "35b17aa9ff8da2b4254b45a6617b22a58328f295d9478a2e6aea322afc487723",
+        "actual": "35b17aa9ff8da2b4254b45a6617b22a58328f295d9478a2e6aea322afc487723",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge-cli/tests/svg_import.rs",
+        "expected": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af",
+        "actual": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge/Cargo.toml",
+        "expected": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+        "actual": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge/assets/fonts/Inter-Regular.ttf",
+        "expected": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82",
+        "actual": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge/assets/fonts/Inter-SemiBold.ttf",
+        "expected": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3",
+        "actual": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf",
+        "expected": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1",
+        "actual": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge/assets/fonts/OFL-Inter.txt",
+        "expected": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "actual": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt",
+        "expected": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+        "actual": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge/assets/fonts/SOURCES.json",
+        "expected": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c",
+        "actual": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c",
+        "matches": true
+      },
+      {
+        "file": "apps/weftforge/src/main.rs",
+        "expected": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e",
+        "actual": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/Cargo.toml",
+        "expected": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+        "actual": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/src/document.rs",
+        "expected": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8",
+        "actual": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/src/geometry.rs",
+        "expected": "670ed0f261da770a3b8a887bebbdf08ec166e6d3362cdbeb19032a56d7e88cd8",
+        "actual": "670ed0f261da770a3b8a887bebbdf08ec166e6d3362cdbeb19032a56d7e88cd8",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/src/lib.rs",
+        "expected": "157990183f20487c3b1494a837914e81fb98e3e4fb35a1f0dedc0542a1ec6661",
+        "actual": "157990183f20487c3b1494a837914e81fb98e3e4fb35a1f0dedc0542a1ec6661",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/src/persistence.rs",
+        "expected": "748eb06ae06bd348c49e5cc5bd716cbc19da06840d2b5a38a5caffbdd1283baf",
+        "actual": "748eb06ae06bd348c49e5cc5bd716cbc19da06840d2b5a38a5caffbdd1283baf",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/src/persistence/dxf.rs",
+        "expected": "49e56ab60030a640e49d3ce9b263d99dcce562a5616f1dada529603f074b7475",
+        "actual": "49e56ab60030a640e49d3ce9b263d99dcce562a5616f1dada529603f074b7475",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/src/persistence/dxf_import.rs",
+        "expected": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+        "actual": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/src/persistence/svg.rs",
+        "expected": "1f6792b629266a15200c1bdb543f0fb3ddb79360d09ec975693b7472a12811ae",
+        "actual": "1f6792b629266a15200c1bdb543f0fb3ddb79360d09ec975693b7472a12811ae",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/src/sewing.rs",
+        "expected": "b8d2ef4178e8dc3a56ce5136310b8f065f357d8ffb21b61b26e16d22d4626645",
+        "actual": "b8d2ef4178e8dc3a56ce5136310b8f065f357d8ffb21b61b26e16d22d4626645",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/src/simulation.rs",
+        "expected": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29",
+        "actual": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/tests/dxf.rs",
+        "expected": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+        "actual": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/tests/dxf_import.rs",
+        "expected": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+        "actual": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/tests/ellipse.rs",
+        "expected": "55e68e3a529d2ffe49412d8a225683e0d3478f8f380130925ad66d0f93a74cda",
+        "actual": "55e68e3a529d2ffe49412d8a225683e0d3478f8f380130925ad66d0f93a74cda",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge",
+        "expected": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+        "actual": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf",
+        "expected": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+        "actual": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/tests/fixtures/original-editable-patterns.svg",
+        "expected": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+        "actual": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/tests/grain.rs",
+        "expected": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+        "actual": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/tests/joins.rs",
+        "expected": "04334446a2408086541227b3ee149e12d9ca28da061e36268b33bb3502ad2334",
+        "actual": "04334446a2408086541227b3ee149e12d9ca28da061e36268b33bb3502ad2334",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/tests/migration.rs",
+        "expected": "577937ffbd5d0c42935a2a97772bc5aa53a7accca6e529efa4b86be9aa543099",
+        "actual": "577937ffbd5d0c42935a2a97772bc5aa53a7accca6e529efa4b86be9aa543099",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/tests/pattern_transform.rs",
+        "expected": "0e6181a34a1fbe2ee51fc8fe6d1b6aec6efb6e61bc903624fd6e4c259af7f5b4",
+        "actual": "0e6181a34a1fbe2ee51fc8fe6d1b6aec6efb6e61bc903624fd6e4c259af7f5b4",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/tests/seam_reversal.rs",
+        "expected": "ae9ea4bee0b3ed5b80a1f6350b428db4a92f68a5f21bdc1b7bb1b2b02723b66a",
+        "actual": "ae9ea4bee0b3ed5b80a1f6350b428db4a92f68a5f21bdc1b7bb1b2b02723b66a",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/tests/sewing_groups.rs",
+        "expected": "a46b28a9f1db2c214688477d97e2317007bb64358c02a729ace6549ee6469fe6",
+        "actual": "a46b28a9f1db2c214688477d97e2317007bb64358c02a729ace6549ee6469fe6",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/tests/shirt.rs",
+        "expected": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+        "actual": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/tests/svg_import.rs",
+        "expected": "3b9601a0023c1d91b96a309d0822439afa75e97f97a5e53c5104cbef3e6ed72e",
+        "actual": "3b9601a0023c1d91b96a309d0822439afa75e97f97a5e53c5104cbef3e6ed72e",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-core/tests/workflow.rs",
+        "expected": "efb80806e4c355f44145332649ebcad1089d79dc078141a7a1f792edb6b17af0",
+        "actual": "efb80806e4c355f44145332649ebcad1089d79dc078141a7a1f792edb6b17af0",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-sim/Cargo.toml",
+        "expected": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+        "actual": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-sim/src/capsule.rs",
+        "expected": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7",
+        "actual": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-sim/src/constraints.rs",
+        "expected": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+        "actual": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-sim/src/contact.rs",
+        "expected": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655",
+        "actual": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-sim/src/lib.rs",
+        "expected": "5bfc996e6bf1067ac261358fdd043815adf304a5d8d512a0e6429c913e90fa76",
+        "actual": "5bfc996e6bf1067ac261358fdd043815adf304a5d8d512a0e6429c913e90fa76",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-sim/src/math.rs",
+        "expected": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+        "actual": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-sim/src/strain.rs",
+        "expected": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+        "actual": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+        "matches": true
+      },
+      {
+        "file": "crates/weftforge-sim/src/tests.rs",
+        "expected": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+        "actual": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+        "matches": true
+      },
+      {
+        "file": "rust-toolchain.toml",
+        "expected": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+        "actual": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+        "matches": true
+      },
+      {
+        "file": "spec/features/APP-001-new-empty.md",
+        "expected": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+        "actual": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+        "matches": true
+      },
+      {
+        "file": "spec/features/PAT-004-native-transform-selection.md",
+        "expected": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
+        "actual": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
+        "matches": true
+      },
+      {
+        "file": "spec/features/PAT-004-piece-rigid-transform.md",
+        "expected": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+        "actual": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+        "matches": true
+      },
+      {
+        "file": "spec/features/SEW-002-physical-length.md",
+        "expected": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+        "actual": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+        "matches": true
+      },
+      {
+        "file": "xtask/Cargo.toml",
+        "expected": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+        "actual": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+        "matches": true
+      },
+      {
+        "file": "xtask/src/main.rs",
+        "expected": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709",
+        "actual": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709",
+        "matches": true
+      }
+    ],
+    "frozen_files": [
+      {
+        "path": "CLARIFICATION.json",
+        "bytes": 3100,
+        "sha256": "2cac6ce32c3d06a17fef9b443dee18b31ed5ec3e57e80ad51f16e397b140c11f",
+        "actual": "2cac6ce32c3d06a17fef9b443dee18b31ed5ec3e57e80ad51f16e397b140c11f",
+        "matches": true
+      },
+      {
+        "path": "CRITERIA.json",
+        "bytes": 53615,
+        "sha256": "d748d52d5aee5bee2d57c02e81edd137c8e50ab5c9bea9f69afb1c27c31d2938",
+        "actual": "d748d52d5aee5bee2d57c02e81edd137c8e50ab5c9bea9f69afb1c27c31d2938",
+        "matches": true
+      },
+      {
+        "path": "EXPECTED.json",
+        "bytes": 4544,
+        "sha256": "589a9400a916e9340d04ae77b332ea25d3a0abc6b06dee9b8ac9868ac80506ec",
+        "actual": "589a9400a916e9340d04ae77b332ea25d3a0abc6b06dee9b8ac9868ac80506ec",
+        "matches": true
+      },
+      {
+        "path": "METHOD.txt",
+        "bytes": 8887,
+        "sha256": "0cd9c7374cfcd2dea422fa515a0283031d953490330a4025df7a502c29492fed",
+        "actual": "0cd9c7374cfcd2dea422fa515a0283031d953490330a4025df7a502c29492fed",
+        "matches": true
+      },
+      {
+        "path": "PLAN.json",
+        "bytes": 15919,
+        "sha256": "c648e93bbcf2e6cf2ad24cd583b3416207cc20f412f41106a806cef2559e20da",
+        "actual": "c648e93bbcf2e6cf2ad24cd583b3416207cc20f412f41106a806cef2559e20da",
+        "matches": true
+      },
+      {
+        "path": "PREPARATION-NOTES.json",
+        "bytes": 1403,
+        "sha256": "9368bad22c94e5fd7935604a4f40d3caa05a81e0a27f3442aab487e280f68c63",
+        "actual": "9368bad22c94e5fd7935604a4f40d3caa05a81e0a27f3442aab487e280f68c63",
+        "matches": true
+      },
+      {
+        "path": "PREPARATION-SOURCE-CHECK-001.stderr",
+        "bytes": 88,
+        "sha256": "81b778b22133b7685619591490f39c61e00b0ef49e1ff12ca1ad9f165647a6c2",
+        "actual": "81b778b22133b7685619591490f39c61e00b0ef49e1ff12ca1ad9f165647a6c2",
+        "matches": true
+      },
+      {
+        "path": "PREPARATION-SOURCE-CHECK-001.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "matches": true
+      },
+      {
+        "path": "SELF-CHECK-001.json",
+        "bytes": 4832,
+        "sha256": "cb4eeba9ca6688fc16ded576f99f38c85bb0c087b00b25c7c098a65a0d4713d0",
+        "actual": "cb4eeba9ca6688fc16ded576f99f38c85bb0c087b00b25c7c098a65a0d4713d0",
+        "matches": true
+      },
+      {
+        "path": "SELF-CHECK-002.json",
+        "bytes": 4832,
+        "sha256": "6c663c66782ec2eef11cc1d5aab8e459cdbecf3af6ee5547a58217570e843a7b",
+        "actual": "6c663c66782ec2eef11cc1d5aab8e459cdbecf3af6ee5547a58217570e843a7b",
+        "matches": true
+      },
+      {
+        "path": "SELF-CHECK-003.json",
+        "bytes": 5286,
+        "sha256": "2a60a62e092e088fc5925ec90a5ba45a77f9867872fa214743a04fe54cdf9a85",
+        "actual": "2a60a62e092e088fc5925ec90a5ba45a77f9867872fa214743a04fe54cdf9a85",
+        "matches": true
+      },
+      {
+        "path": "SOURCE-INPUTS.json",
+        "bytes": 3838,
+        "sha256": "93944ac1150b493b3bd1de3b134b261b7f4f57fed6aa90de8b4709522a2488d3",
+        "actual": "93944ac1150b493b3bd1de3b134b261b7f4f57fed6aa90de8b4709522a2488d3",
+        "matches": true
+      },
+      {
+        "path": "TOOLING-CORRECTION-V3.json",
+        "bytes": 4431,
+        "sha256": "bb2b770260054dd57e0e0571d84a90c851c805974fcaa4696d6754470ccaca9e",
+        "actual": "bb2b770260054dd57e0e0571d84a90c851c805974fcaa4696d6754470ccaca9e",
+        "matches": true
+      },
+      {
+        "path": "V1-FREEZE.json",
+        "bytes": 2679,
+        "sha256": "efabfcfbe9a851dcfa12b6d026fce847c37080f664788d05537961ee7e4ade29",
+        "actual": "efabfcfbe9a851dcfa12b6d026fce847c37080f664788d05537961ee7e4ade29",
+        "matches": true
+      },
+      {
+        "path": "V2-FREEZE.json",
+        "bytes": 3726,
+        "sha256": "2ba92e4355844299332fbc2e04da24171f522313e5a299ff657e21d42fe05e89",
+        "actual": "2ba92e4355844299332fbc2e04da24171f522313e5a299ff657e21d42fe05e89",
+        "matches": true
+      },
+      {
+        "path": "evaluate_physical_sewing.py",
+        "bytes": 43330,
+        "sha256": "ac252d08d820f7aedac771502486a54ec2dc4242017911588d5e39fcaa38a384",
+        "actual": "ac252d08d820f7aedac771502486a54ec2dc4242017911588d5e39fcaa38a384",
+        "matches": true
+      },
+      {
+        "path": "fixture.weftforge",
+        "bytes": 3289,
+        "sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+        "actual": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+        "matches": true
+      },
+      {
+        "path": "grade_saved.py",
+        "bytes": 10081,
+        "sha256": "e6a5f5de762aef924c4aecd733d7cb4ccb00faa0ad50497f12d004f101670bc9",
+        "actual": "e6a5f5de762aef924c4aecd733d7cb4ccb00faa0ad50497f12d004f101670bc9",
+        "matches": true
+      },
+      {
+        "path": "prepare_plan.py",
+        "bytes": 20441,
+        "sha256": "8b712529164dabce56f935ef0a2599e1e69ddcf46a6e6f2a321e6aa4fbf0a675",
+        "actual": "8b712529164dabce56f935ef0a2599e1e69ddcf46a6e6f2a321e6aa4fbf0a675",
+        "matches": true
+      },
+      {
+        "path": "selfcheck_v3.py",
+        "bytes": 1947,
+        "sha256": "5276bdb38aabdfa52ecf9ad975676c96f11baadb65ddf4fd6c23739fc95a8dc5",
+        "actual": "5276bdb38aabdfa52ecf9ad975676c96f11baadb65ddf4fd6c23739fc95a8dc5",
+        "matches": true
+      }
+    ],
+    "native_binary_sha256": "69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0",
+    "owned_executable_sha256": "69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0",
+    "input_sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+    "original_fixture_sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+    "controller_sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+    "recorder_sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+    "binding_sha256": "0596295c116f09f02ce42633e417e91f10b4d9355cedd90cf915b95cae2fe896",
+    "freeze_sha256": "6ee119713ffffeb2bc3a69f1fdffb195f3136b2ff0644cdc261199273161a3e8",
+    "root_protocol_review_sha256": "bcd68b765bf7ecb496b5e9779ca8863932e1102a92f45c69ecdc8b9dcfb21eac",
+    "retained_primaries": [
+      {
+        "file": "created.weftforge",
+        "first_receipt": "CREATED-SAVE-FILES.json",
+        "first_sha256": "6ec524363a346b32fa482057d1ea3b68ef0cbd2271f8498db092190579146626",
+        "final_sha256": "6ec524363a346b32fa482057d1ea3b68ef0cbd2271f8498db092190579146626",
+        "unchanged": true
+      },
+      {
+        "file": "undo.weftforge",
+        "first_receipt": "UNDO-SAVE-FILES.json",
+        "first_sha256": "e8aaeca3e1bc6783c7fad1fa289c79a88c90929652ecf606bf7276bd2fecd6ad",
+        "final_sha256": "e8aaeca3e1bc6783c7fad1fa289c79a88c90929652ecf606bf7276bd2fecd6ad",
+        "unchanged": true
+      },
+      {
+        "file": "redo.weftforge",
+        "first_receipt": "REDO-SAVE-FILES.json",
+        "first_sha256": "3d0aa9cd93300ecfe69a0798363c9ace70bf2e4e36fd4ba68499de822348c08f",
+        "final_sha256": "3d0aa9cd93300ecfe69a0798363c9ace70bf2e4e36fd4ba68499de822348c08f",
+        "unchanged": true
+      },
+      {
+        "file": "reopened.weftforge",
+        "first_receipt": "REOPENED-SAVE-FILES.json",
+        "first_sha256": "3d0aa9cd93300ecfe69a0798363c9ace70bf2e4e36fd4ba68499de822348c08f",
+        "final_sha256": "3d0aa9cd93300ecfe69a0798363c9ace70bf2e4e36fd4ba68499de822348c08f",
+        "unchanged": true
+      }
+    ],
+    "files": [
+      {
+        "file": "created.weftforge",
+        "bytes": 3783,
+        "sha256": "6ec524363a346b32fa482057d1ea3b68ef0cbd2271f8498db092190579146626",
+        "mode": "644",
+        "origin": "case002 actor-owned native input/primary/normal authoring sidecar",
+        "revision": 42,
+        "next_id": 21,
+        "groups": 1,
+        "parse_error": null,
+        "parsed": {
+          "format": "weftforge",
+          "version": 3,
+          "project": {
+            "revision": 42,
+            "points": [
+              {
+                "id": 2,
+                "position": [
+                  0,
+                  0
+                ]
+              },
+              {
+                "id": 3,
+                "position": [
+                  0.2,
+                  0.1
+                ]
+              },
+              {
+                "id": 4,
+                "position": [
+                  0.2,
+                  0.3
+                ]
+              },
+              {
+                "id": 5,
+                "position": [
+                  0,
+                  0.3
+                ]
+              },
+              {
+                "id": 11,
+                "position": [
+                  0.4,
+                  0
+                ]
+              },
+              {
+                "id": 12,
+                "position": [
+                  0.6,
+                  0
+                ]
+              },
+              {
+                "id": 13,
+                "position": [
+                  0.6,
+                  0.3
+                ]
+              },
+              {
+                "id": 14,
+                "position": [
+                  0.4,
+                  0.3
+                ]
+              }
+            ],
+            "curves": [
+              {
+                "id": 6,
+                "start": 2,
+                "end": 3,
+                "controls": [
+                  [
+                    0.06666666666666667,
+                    0
+                  ],
+                  [
+                    0.13333333333333333,
+                    0.03333333333333333
+                  ]
+                ]
+              },
+              {
+                "id": 7,
+                "start": 3,
+                "end": 4,
+                "controls": null
+              },
+              {
+                "id": 8,
+                "start": 4,
+                "end": 5,
+                "controls": null
+              },
+              {
+                "id": 9,
+                "start": 5,
+                "end": 2,
+                "controls": null
+              },
+              {
+                "id": 15,
+                "start": 11,
+                "end": 12,
+                "controls": null
+              },
+              {
+                "id": 16,
+                "start": 12,
+                "end": 13,
+                "controls": null
+              },
+              {
+                "id": 17,
+                "start": 13,
+                "end": 14,
+                "controls": null
+              },
+              {
+                "id": 18,
+                "start": 14,
+                "end": 11,
+                "controls": null
+              }
+            ],
+            "pieces": [
+              {
+                "id": 10,
+                "name": "Original analytic panel",
+                "boundary": [
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              },
+              {
+                "id": 19,
+                "name": "Original straight panel",
+                "boundary": [
+                  15,
+                  16,
+                  17,
+                  18
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              }
+            ],
+            "materials": [
+              {
+                "id": 1,
+                "name": "Original uncalibrated material",
+                "areal_density": 0.18,
+                "warp_stiffness": 400,
+                "weft_stiffness": 400,
+                "shear_stiffness": 100,
+                "bending_stiffness": 0.003,
+                "damping": 0.2,
+                "friction": 0.4,
+                "collision_thickness": 0.003,
+                "color": [
+                  0.25,
+                  0.5,
+                  0.75
+                ]
+              }
+            ],
+            "seams": [],
+            "sewing_groups": [
+              {
+                "id": 20,
+                "name": "Free sewing 1",
+                "a": [
+                  {
+                    "curve": 6,
+                    "t0": 0,
+                    "t1": 0.4819445563480258
+                  }
+                ],
+                "b": [
+                  {
+                    "curve": 15,
+                    "t0": 0.75,
+                    "t1": 0.2499999999999999
+                  }
+                ],
+                "correspondence": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    1,
+                    1
+                  ]
+                ]
+              }
+            ],
+            "mannequin": {
+              "capsules": []
+            },
+            "resolution": 0.07,
+            "next_id": 21
+          }
+        }
+      },
+      {
+        "file": "created.weftforge.autosave",
+        "bytes": 3288,
+        "sha256": "e8aaeca3e1bc6783c7fad1fa289c79a88c90929652ecf606bf7276bd2fecd6ad",
+        "mode": "644",
+        "origin": "case002 actor-owned native input/primary/normal authoring sidecar",
+        "revision": 43,
+        "next_id": 21,
+        "groups": 0,
+        "parse_error": null,
+        "parsed": {
+          "format": "weftforge",
+          "version": 3,
+          "project": {
+            "revision": 43,
+            "points": [
+              {
+                "id": 2,
+                "position": [
+                  0,
+                  0
+                ]
+              },
+              {
+                "id": 3,
+                "position": [
+                  0.2,
+                  0.1
+                ]
+              },
+              {
+                "id": 4,
+                "position": [
+                  0.2,
+                  0.3
+                ]
+              },
+              {
+                "id": 5,
+                "position": [
+                  0,
+                  0.3
+                ]
+              },
+              {
+                "id": 11,
+                "position": [
+                  0.4,
+                  0
+                ]
+              },
+              {
+                "id": 12,
+                "position": [
+                  0.6,
+                  0
+                ]
+              },
+              {
+                "id": 13,
+                "position": [
+                  0.6,
+                  0.3
+                ]
+              },
+              {
+                "id": 14,
+                "position": [
+                  0.4,
+                  0.3
+                ]
+              }
+            ],
+            "curves": [
+              {
+                "id": 6,
+                "start": 2,
+                "end": 3,
+                "controls": [
+                  [
+                    0.06666666666666667,
+                    0
+                  ],
+                  [
+                    0.13333333333333333,
+                    0.03333333333333333
+                  ]
+                ]
+              },
+              {
+                "id": 7,
+                "start": 3,
+                "end": 4,
+                "controls": null
+              },
+              {
+                "id": 8,
+                "start": 4,
+                "end": 5,
+                "controls": null
+              },
+              {
+                "id": 9,
+                "start": 5,
+                "end": 2,
+                "controls": null
+              },
+              {
+                "id": 15,
+                "start": 11,
+                "end": 12,
+                "controls": null
+              },
+              {
+                "id": 16,
+                "start": 12,
+                "end": 13,
+                "controls": null
+              },
+              {
+                "id": 17,
+                "start": 13,
+                "end": 14,
+                "controls": null
+              },
+              {
+                "id": 18,
+                "start": 14,
+                "end": 11,
+                "controls": null
+              }
+            ],
+            "pieces": [
+              {
+                "id": 10,
+                "name": "Original analytic panel",
+                "boundary": [
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              },
+              {
+                "id": 19,
+                "name": "Original straight panel",
+                "boundary": [
+                  15,
+                  16,
+                  17,
+                  18
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              }
+            ],
+            "materials": [
+              {
+                "id": 1,
+                "name": "Original uncalibrated material",
+                "areal_density": 0.18,
+                "warp_stiffness": 400,
+                "weft_stiffness": 400,
+                "shear_stiffness": 100,
+                "bending_stiffness": 0.003,
+                "damping": 0.2,
+                "friction": 0.4,
+                "collision_thickness": 0.003,
+                "color": [
+                  0.25,
+                  0.5,
+                  0.75
+                ]
+              }
+            ],
+            "seams": [],
+            "sewing_groups": [],
+            "mannequin": {
+              "capsules": []
+            },
+            "resolution": 0.07,
+            "next_id": 21
+          }
+        }
+      },
+      {
+        "file": "physical-readonly-input.weftforge",
+        "bytes": 3289,
+        "sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+        "mode": "400",
+        "origin": "case002 actor-owned native input/primary/normal authoring sidecar",
+        "revision": 41,
+        "next_id": 20,
+        "groups": 0,
+        "parse_error": null,
+        "parsed": {
+          "format": "weftforge",
+          "version": 3,
+          "project": {
+            "revision": 41,
+            "points": [
+              {
+                "id": 2,
+                "position": [
+                  0,
+                  0
+                ]
+              },
+              {
+                "id": 3,
+                "position": [
+                  0.2,
+                  0.1
+                ]
+              },
+              {
+                "id": 4,
+                "position": [
+                  0.2,
+                  0.3
+                ]
+              },
+              {
+                "id": 5,
+                "position": [
+                  0,
+                  0.3
+                ]
+              },
+              {
+                "id": 11,
+                "position": [
+                  0.4,
+                  0
+                ]
+              },
+              {
+                "id": 12,
+                "position": [
+                  0.6,
+                  0
+                ]
+              },
+              {
+                "id": 13,
+                "position": [
+                  0.6,
+                  0.3
+                ]
+              },
+              {
+                "id": 14,
+                "position": [
+                  0.4,
+                  0.3
+                ]
+              }
+            ],
+            "curves": [
+              {
+                "id": 6,
+                "start": 2,
+                "end": 3,
+                "controls": [
+                  [
+                    0.06666666666666667,
+                    0
+                  ],
+                  [
+                    0.13333333333333333,
+                    0.03333333333333333
+                  ]
+                ]
+              },
+              {
+                "id": 7,
+                "start": 3,
+                "end": 4,
+                "controls": null
+              },
+              {
+                "id": 8,
+                "start": 4,
+                "end": 5,
+                "controls": null
+              },
+              {
+                "id": 9,
+                "start": 5,
+                "end": 2,
+                "controls": null
+              },
+              {
+                "id": 15,
+                "start": 11,
+                "end": 12,
+                "controls": null
+              },
+              {
+                "id": 16,
+                "start": 12,
+                "end": 13,
+                "controls": null
+              },
+              {
+                "id": 17,
+                "start": 13,
+                "end": 14,
+                "controls": null
+              },
+              {
+                "id": 18,
+                "start": 14,
+                "end": 11,
+                "controls": null
+              }
+            ],
+            "pieces": [
+              {
+                "id": 10,
+                "name": "Original analytic panel",
+                "boundary": [
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              },
+              {
+                "id": 19,
+                "name": "Original straight panel",
+                "boundary": [
+                  15,
+                  16,
+                  17,
+                  18
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              }
+            ],
+            "materials": [
+              {
+                "id": 1,
+                "name": "Original uncalibrated material",
+                "areal_density": 0.18,
+                "warp_stiffness": 400,
+                "weft_stiffness": 400,
+                "shear_stiffness": 100,
+                "bending_stiffness": 0.003,
+                "damping": 0.2,
+                "friction": 0.4,
+                "collision_thickness": 0.003,
+                "color": [
+                  0.25,
+                  0.5,
+                  0.75
+                ]
+              }
+            ],
+            "seams": [],
+            "sewing_groups": [],
+            "mannequin": {
+              "capsules": []
+            },
+            "resolution": 0.07,
+            "next_id": 20
+          }
+        }
+      },
+      {
+        "file": "physical-readonly-input.weftforge.autosave",
+        "bytes": 3783,
+        "sha256": "6ec524363a346b32fa482057d1ea3b68ef0cbd2271f8498db092190579146626",
+        "mode": "644",
+        "origin": "case002 actor-owned native input/primary/normal authoring sidecar",
+        "revision": 42,
+        "next_id": 21,
+        "groups": 1,
+        "parse_error": null,
+        "parsed": {
+          "format": "weftforge",
+          "version": 3,
+          "project": {
+            "revision": 42,
+            "points": [
+              {
+                "id": 2,
+                "position": [
+                  0,
+                  0
+                ]
+              },
+              {
+                "id": 3,
+                "position": [
+                  0.2,
+                  0.1
+                ]
+              },
+              {
+                "id": 4,
+                "position": [
+                  0.2,
+                  0.3
+                ]
+              },
+              {
+                "id": 5,
+                "position": [
+                  0,
+                  0.3
+                ]
+              },
+              {
+                "id": 11,
+                "position": [
+                  0.4,
+                  0
+                ]
+              },
+              {
+                "id": 12,
+                "position": [
+                  0.6,
+                  0
+                ]
+              },
+              {
+                "id": 13,
+                "position": [
+                  0.6,
+                  0.3
+                ]
+              },
+              {
+                "id": 14,
+                "position": [
+                  0.4,
+                  0.3
+                ]
+              }
+            ],
+            "curves": [
+              {
+                "id": 6,
+                "start": 2,
+                "end": 3,
+                "controls": [
+                  [
+                    0.06666666666666667,
+                    0
+                  ],
+                  [
+                    0.13333333333333333,
+                    0.03333333333333333
+                  ]
+                ]
+              },
+              {
+                "id": 7,
+                "start": 3,
+                "end": 4,
+                "controls": null
+              },
+              {
+                "id": 8,
+                "start": 4,
+                "end": 5,
+                "controls": null
+              },
+              {
+                "id": 9,
+                "start": 5,
+                "end": 2,
+                "controls": null
+              },
+              {
+                "id": 15,
+                "start": 11,
+                "end": 12,
+                "controls": null
+              },
+              {
+                "id": 16,
+                "start": 12,
+                "end": 13,
+                "controls": null
+              },
+              {
+                "id": 17,
+                "start": 13,
+                "end": 14,
+                "controls": null
+              },
+              {
+                "id": 18,
+                "start": 14,
+                "end": 11,
+                "controls": null
+              }
+            ],
+            "pieces": [
+              {
+                "id": 10,
+                "name": "Original analytic panel",
+                "boundary": [
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              },
+              {
+                "id": 19,
+                "name": "Original straight panel",
+                "boundary": [
+                  15,
+                  16,
+                  17,
+                  18
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              }
+            ],
+            "materials": [
+              {
+                "id": 1,
+                "name": "Original uncalibrated material",
+                "areal_density": 0.18,
+                "warp_stiffness": 400,
+                "weft_stiffness": 400,
+                "shear_stiffness": 100,
+                "bending_stiffness": 0.003,
+                "damping": 0.2,
+                "friction": 0.4,
+                "collision_thickness": 0.003,
+                "color": [
+                  0.25,
+                  0.5,
+                  0.75
+                ]
+              }
+            ],
+            "seams": [],
+            "sewing_groups": [
+              {
+                "id": 20,
+                "name": "Free sewing 1",
+                "a": [
+                  {
+                    "curve": 6,
+                    "t0": 0,
+                    "t1": 0.4819445563480258
+                  }
+                ],
+                "b": [
+                  {
+                    "curve": 15,
+                    "t0": 0.75,
+                    "t1": 0.2499999999999999
+                  }
+                ],
+                "correspondence": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    1,
+                    1
+                  ]
+                ]
+              }
+            ],
+            "mannequin": {
+              "capsules": []
+            },
+            "resolution": 0.07,
+            "next_id": 21
+          }
+        }
+      },
+      {
+        "file": "redo.weftforge",
+        "bytes": 3783,
+        "sha256": "3d0aa9cd93300ecfe69a0798363c9ace70bf2e4e36fd4ba68499de822348c08f",
+        "mode": "644",
+        "origin": "case002 actor-owned native input/primary/normal authoring sidecar",
+        "revision": 44,
+        "next_id": 21,
+        "groups": 1,
+        "parse_error": null,
+        "parsed": {
+          "format": "weftforge",
+          "version": 3,
+          "project": {
+            "revision": 44,
+            "points": [
+              {
+                "id": 2,
+                "position": [
+                  0,
+                  0
+                ]
+              },
+              {
+                "id": 3,
+                "position": [
+                  0.2,
+                  0.1
+                ]
+              },
+              {
+                "id": 4,
+                "position": [
+                  0.2,
+                  0.3
+                ]
+              },
+              {
+                "id": 5,
+                "position": [
+                  0,
+                  0.3
+                ]
+              },
+              {
+                "id": 11,
+                "position": [
+                  0.4,
+                  0
+                ]
+              },
+              {
+                "id": 12,
+                "position": [
+                  0.6,
+                  0
+                ]
+              },
+              {
+                "id": 13,
+                "position": [
+                  0.6,
+                  0.3
+                ]
+              },
+              {
+                "id": 14,
+                "position": [
+                  0.4,
+                  0.3
+                ]
+              }
+            ],
+            "curves": [
+              {
+                "id": 6,
+                "start": 2,
+                "end": 3,
+                "controls": [
+                  [
+                    0.06666666666666667,
+                    0
+                  ],
+                  [
+                    0.13333333333333333,
+                    0.03333333333333333
+                  ]
+                ]
+              },
+              {
+                "id": 7,
+                "start": 3,
+                "end": 4,
+                "controls": null
+              },
+              {
+                "id": 8,
+                "start": 4,
+                "end": 5,
+                "controls": null
+              },
+              {
+                "id": 9,
+                "start": 5,
+                "end": 2,
+                "controls": null
+              },
+              {
+                "id": 15,
+                "start": 11,
+                "end": 12,
+                "controls": null
+              },
+              {
+                "id": 16,
+                "start": 12,
+                "end": 13,
+                "controls": null
+              },
+              {
+                "id": 17,
+                "start": 13,
+                "end": 14,
+                "controls": null
+              },
+              {
+                "id": 18,
+                "start": 14,
+                "end": 11,
+                "controls": null
+              }
+            ],
+            "pieces": [
+              {
+                "id": 10,
+                "name": "Original analytic panel",
+                "boundary": [
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              },
+              {
+                "id": 19,
+                "name": "Original straight panel",
+                "boundary": [
+                  15,
+                  16,
+                  17,
+                  18
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              }
+            ],
+            "materials": [
+              {
+                "id": 1,
+                "name": "Original uncalibrated material",
+                "areal_density": 0.18,
+                "warp_stiffness": 400,
+                "weft_stiffness": 400,
+                "shear_stiffness": 100,
+                "bending_stiffness": 0.003,
+                "damping": 0.2,
+                "friction": 0.4,
+                "collision_thickness": 0.003,
+                "color": [
+                  0.25,
+                  0.5,
+                  0.75
+                ]
+              }
+            ],
+            "seams": [],
+            "sewing_groups": [
+              {
+                "id": 20,
+                "name": "Free sewing 1",
+                "a": [
+                  {
+                    "curve": 6,
+                    "t0": 0,
+                    "t1": 0.4819445563480258
+                  }
+                ],
+                "b": [
+                  {
+                    "curve": 15,
+                    "t0": 0.75,
+                    "t1": 0.2499999999999999
+                  }
+                ],
+                "correspondence": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    1,
+                    1
+                  ]
+                ]
+              }
+            ],
+            "mannequin": {
+              "capsules": []
+            },
+            "resolution": 0.07,
+            "next_id": 21
+          }
+        }
+      },
+      {
+        "file": "reopened.weftforge",
+        "bytes": 3783,
+        "sha256": "3d0aa9cd93300ecfe69a0798363c9ace70bf2e4e36fd4ba68499de822348c08f",
+        "mode": "644",
+        "origin": "case002 actor-owned native input/primary/normal authoring sidecar",
+        "revision": 44,
+        "next_id": 21,
+        "groups": 1,
+        "parse_error": null,
+        "parsed": {
+          "format": "weftforge",
+          "version": 3,
+          "project": {
+            "revision": 44,
+            "points": [
+              {
+                "id": 2,
+                "position": [
+                  0,
+                  0
+                ]
+              },
+              {
+                "id": 3,
+                "position": [
+                  0.2,
+                  0.1
+                ]
+              },
+              {
+                "id": 4,
+                "position": [
+                  0.2,
+                  0.3
+                ]
+              },
+              {
+                "id": 5,
+                "position": [
+                  0,
+                  0.3
+                ]
+              },
+              {
+                "id": 11,
+                "position": [
+                  0.4,
+                  0
+                ]
+              },
+              {
+                "id": 12,
+                "position": [
+                  0.6,
+                  0
+                ]
+              },
+              {
+                "id": 13,
+                "position": [
+                  0.6,
+                  0.3
+                ]
+              },
+              {
+                "id": 14,
+                "position": [
+                  0.4,
+                  0.3
+                ]
+              }
+            ],
+            "curves": [
+              {
+                "id": 6,
+                "start": 2,
+                "end": 3,
+                "controls": [
+                  [
+                    0.06666666666666667,
+                    0
+                  ],
+                  [
+                    0.13333333333333333,
+                    0.03333333333333333
+                  ]
+                ]
+              },
+              {
+                "id": 7,
+                "start": 3,
+                "end": 4,
+                "controls": null
+              },
+              {
+                "id": 8,
+                "start": 4,
+                "end": 5,
+                "controls": null
+              },
+              {
+                "id": 9,
+                "start": 5,
+                "end": 2,
+                "controls": null
+              },
+              {
+                "id": 15,
+                "start": 11,
+                "end": 12,
+                "controls": null
+              },
+              {
+                "id": 16,
+                "start": 12,
+                "end": 13,
+                "controls": null
+              },
+              {
+                "id": 17,
+                "start": 13,
+                "end": 14,
+                "controls": null
+              },
+              {
+                "id": 18,
+                "start": 14,
+                "end": 11,
+                "controls": null
+              }
+            ],
+            "pieces": [
+              {
+                "id": 10,
+                "name": "Original analytic panel",
+                "boundary": [
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              },
+              {
+                "id": 19,
+                "name": "Original straight panel",
+                "boundary": [
+                  15,
+                  16,
+                  17,
+                  18
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              }
+            ],
+            "materials": [
+              {
+                "id": 1,
+                "name": "Original uncalibrated material",
+                "areal_density": 0.18,
+                "warp_stiffness": 400,
+                "weft_stiffness": 400,
+                "shear_stiffness": 100,
+                "bending_stiffness": 0.003,
+                "damping": 0.2,
+                "friction": 0.4,
+                "collision_thickness": 0.003,
+                "color": [
+                  0.25,
+                  0.5,
+                  0.75
+                ]
+              }
+            ],
+            "seams": [],
+            "sewing_groups": [
+              {
+                "id": 20,
+                "name": "Free sewing 1",
+                "a": [
+                  {
+                    "curve": 6,
+                    "t0": 0,
+                    "t1": 0.4819445563480258
+                  }
+                ],
+                "b": [
+                  {
+                    "curve": 15,
+                    "t0": 0.75,
+                    "t1": 0.2499999999999999
+                  }
+                ],
+                "correspondence": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    1,
+                    1
+                  ]
+                ]
+              }
+            ],
+            "mannequin": {
+              "capsules": []
+            },
+            "resolution": 0.07,
+            "next_id": 21
+          }
+        }
+      },
+      {
+        "file": "undo.weftforge",
+        "bytes": 3288,
+        "sha256": "e8aaeca3e1bc6783c7fad1fa289c79a88c90929652ecf606bf7276bd2fecd6ad",
+        "mode": "644",
+        "origin": "case002 actor-owned native input/primary/normal authoring sidecar",
+        "revision": 43,
+        "next_id": 21,
+        "groups": 0,
+        "parse_error": null,
+        "parsed": {
+          "format": "weftforge",
+          "version": 3,
+          "project": {
+            "revision": 43,
+            "points": [
+              {
+                "id": 2,
+                "position": [
+                  0,
+                  0
+                ]
+              },
+              {
+                "id": 3,
+                "position": [
+                  0.2,
+                  0.1
+                ]
+              },
+              {
+                "id": 4,
+                "position": [
+                  0.2,
+                  0.3
+                ]
+              },
+              {
+                "id": 5,
+                "position": [
+                  0,
+                  0.3
+                ]
+              },
+              {
+                "id": 11,
+                "position": [
+                  0.4,
+                  0
+                ]
+              },
+              {
+                "id": 12,
+                "position": [
+                  0.6,
+                  0
+                ]
+              },
+              {
+                "id": 13,
+                "position": [
+                  0.6,
+                  0.3
+                ]
+              },
+              {
+                "id": 14,
+                "position": [
+                  0.4,
+                  0.3
+                ]
+              }
+            ],
+            "curves": [
+              {
+                "id": 6,
+                "start": 2,
+                "end": 3,
+                "controls": [
+                  [
+                    0.06666666666666667,
+                    0
+                  ],
+                  [
+                    0.13333333333333333,
+                    0.03333333333333333
+                  ]
+                ]
+              },
+              {
+                "id": 7,
+                "start": 3,
+                "end": 4,
+                "controls": null
+              },
+              {
+                "id": 8,
+                "start": 4,
+                "end": 5,
+                "controls": null
+              },
+              {
+                "id": 9,
+                "start": 5,
+                "end": 2,
+                "controls": null
+              },
+              {
+                "id": 15,
+                "start": 11,
+                "end": 12,
+                "controls": null
+              },
+              {
+                "id": 16,
+                "start": 12,
+                "end": 13,
+                "controls": null
+              },
+              {
+                "id": 17,
+                "start": 13,
+                "end": 14,
+                "controls": null
+              },
+              {
+                "id": 18,
+                "start": 14,
+                "end": 11,
+                "controls": null
+              }
+            ],
+            "pieces": [
+              {
+                "id": 10,
+                "name": "Original analytic panel",
+                "boundary": [
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              },
+              {
+                "id": 19,
+                "name": "Original straight panel",
+                "boundary": [
+                  15,
+                  16,
+                  17,
+                  18
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              }
+            ],
+            "materials": [
+              {
+                "id": 1,
+                "name": "Original uncalibrated material",
+                "areal_density": 0.18,
+                "warp_stiffness": 400,
+                "weft_stiffness": 400,
+                "shear_stiffness": 100,
+                "bending_stiffness": 0.003,
+                "damping": 0.2,
+                "friction": 0.4,
+                "collision_thickness": 0.003,
+                "color": [
+                  0.25,
+                  0.5,
+                  0.75
+                ]
+              }
+            ],
+            "seams": [],
+            "sewing_groups": [],
+            "mannequin": {
+              "capsules": []
+            },
+            "resolution": 0.07,
+            "next_id": 21
+          }
+        }
+      },
+      {
+        "file": "undo.weftforge.autosave",
+        "bytes": 3783,
+        "sha256": "3d0aa9cd93300ecfe69a0798363c9ace70bf2e4e36fd4ba68499de822348c08f",
+        "mode": "644",
+        "origin": "case002 actor-owned native input/primary/normal authoring sidecar",
+        "revision": 44,
+        "next_id": 21,
+        "groups": 1,
+        "parse_error": null,
+        "parsed": {
+          "format": "weftforge",
+          "version": 3,
+          "project": {
+            "revision": 44,
+            "points": [
+              {
+                "id": 2,
+                "position": [
+                  0,
+                  0
+                ]
+              },
+              {
+                "id": 3,
+                "position": [
+                  0.2,
+                  0.1
+                ]
+              },
+              {
+                "id": 4,
+                "position": [
+                  0.2,
+                  0.3
+                ]
+              },
+              {
+                "id": 5,
+                "position": [
+                  0,
+                  0.3
+                ]
+              },
+              {
+                "id": 11,
+                "position": [
+                  0.4,
+                  0
+                ]
+              },
+              {
+                "id": 12,
+                "position": [
+                  0.6,
+                  0
+                ]
+              },
+              {
+                "id": 13,
+                "position": [
+                  0.6,
+                  0.3
+                ]
+              },
+              {
+                "id": 14,
+                "position": [
+                  0.4,
+                  0.3
+                ]
+              }
+            ],
+            "curves": [
+              {
+                "id": 6,
+                "start": 2,
+                "end": 3,
+                "controls": [
+                  [
+                    0.06666666666666667,
+                    0
+                  ],
+                  [
+                    0.13333333333333333,
+                    0.03333333333333333
+                  ]
+                ]
+              },
+              {
+                "id": 7,
+                "start": 3,
+                "end": 4,
+                "controls": null
+              },
+              {
+                "id": 8,
+                "start": 4,
+                "end": 5,
+                "controls": null
+              },
+              {
+                "id": 9,
+                "start": 5,
+                "end": 2,
+                "controls": null
+              },
+              {
+                "id": 15,
+                "start": 11,
+                "end": 12,
+                "controls": null
+              },
+              {
+                "id": 16,
+                "start": 12,
+                "end": 13,
+                "controls": null
+              },
+              {
+                "id": 17,
+                "start": 13,
+                "end": 14,
+                "controls": null
+              },
+              {
+                "id": 18,
+                "start": 14,
+                "end": 11,
+                "controls": null
+              }
+            ],
+            "pieces": [
+              {
+                "id": 10,
+                "name": "Original analytic panel",
+                "boundary": [
+                  6,
+                  7,
+                  8,
+                  9
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              },
+              {
+                "id": 19,
+                "name": "Original straight panel",
+                "boundary": [
+                  15,
+                  16,
+                  17,
+                  18
+                ],
+                "placement": {
+                  "translation": [
+                    0,
+                    0,
+                    0
+                  ],
+                  "rotation": [
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                "material": 1,
+                "grain_angle": 0
+              }
+            ],
+            "materials": [
+              {
+                "id": 1,
+                "name": "Original uncalibrated material",
+                "areal_density": 0.18,
+                "warp_stiffness": 400,
+                "weft_stiffness": 400,
+                "shear_stiffness": 100,
+                "bending_stiffness": 0.003,
+                "damping": 0.2,
+                "friction": 0.4,
+                "collision_thickness": 0.003,
+                "color": [
+                  0.25,
+                  0.5,
+                  0.75
+                ]
+              }
+            ],
+            "seams": [],
+            "sewing_groups": [
+              {
+                "id": 20,
+                "name": "Free sewing 1",
+                "a": [
+                  {
+                    "curve": 6,
+                    "t0": 0,
+                    "t1": 0.4819445563480258
+                  }
+                ],
+                "b": [
+                  {
+                    "curve": 15,
+                    "t0": 0.75,
+                    "t1": 0.2499999999999999
+                  }
+                ],
+                "correspondence": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    1,
+                    1
+                  ]
+                ]
+              }
+            ],
+            "mannequin": {
+              "capsules": []
+            },
+            "resolution": 0.07,
+            "next_id": 21
+          }
+        }
+      }
+    ],
+    "old_actor_files": [
+      {
+        "root": "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/001",
+        "file": "MANIFEST.json",
+        "sha256": "ce52cb295afd6ed1bcbb51bff60085b1e68770144603a70b3c1f0f7578671ffe",
+        "bytes": 63745,
+        "final_sha256": "ce52cb295afd6ed1bcbb51bff60085b1e68770144603a70b3c1f0f7578671ffe",
+        "unchanged": true
+      },
+      {
+        "root": "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/001",
+        "file": "OUTCOME.json",
+        "sha256": "de00ceddca469185f9c0c2b9caab079b81c8f2098309b157570fc27fb545ebbf",
+        "bytes": 9645,
+        "final_sha256": "de00ceddca469185f9c0c2b9caab079b81c8f2098309b157570fc27fb545ebbf",
+        "unchanged": true
+      },
+      {
+        "root": "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/001",
+        "file": "physical-readonly-input.weftforge",
+        "sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+        "bytes": 3289,
+        "final_sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+        "unchanged": true
+      },
+      {
+        "root": "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/001",
+        "file": "physical-readonly-input.weftforge.autosave",
+        "sha256": "6ec524363a346b32fa482057d1ea3b68ef0cbd2271f8498db092190579146626",
+        "bytes": 3783,
+        "final_sha256": "6ec524363a346b32fa482057d1ea3b68ef0cbd2271f8498db092190579146626",
+        "unchanged": true
+      },
+      {
+        "root": "<WORKSPACE>/.local/native-save-dialog-calibration-20261115/001",
+        "file": "MANIFEST.json",
+        "sha256": "501a4760988cff0b73d78b464644c5d11936bf9692e545518bbba48e045f5a79",
+        "bytes": 12369,
+        "final_sha256": "501a4760988cff0b73d78b464644c5d11936bf9692e545518bbba48e045f5a79",
+        "unchanged": true
+      },
+      {
+        "root": "<WORKSPACE>/.local/native-save-dialog-calibration-20261115/001",
+        "file": "OUTCOME.json",
+        "sha256": "3d90c34dce5aafe7e6ce0490b2501f997ae528886ebb757703d2f7114d21b130",
+        "bytes": 1811,
+        "final_sha256": "3d90c34dce5aafe7e6ce0490b2501f997ae528886ebb757703d2f7114d21b130",
+        "unchanged": true
+      },
+      {
+        "root": "<WORKSPACE>/.local/native-save-dialog-calibration-20261115/001",
+        "file": "readonly-original.weftforge",
+        "sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+        "bytes": 3289,
+        "final_sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+        "unchanged": true
+      }
+    ],
+    "processes": {
+      "owned_pid": 56803,
+      "owned_process_absent": true,
+      "owned_matches": [],
+      "prior_process_pids_preserved": true,
+      "old_physical_dialog_pid34507_preserved": true,
+      "after_success_control": "No native calls or signals after single planned quit and immediate summary."
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "evidenceKind": "offline_mock",
+  "cell": 5,
+  "result": "passed",
+  "unknown_method": {
+    "error": "Unknown target method: unsupportedMethod",
+    "post_stop_error": "Controller stopped; no further target calls allowed",
+    "target_calls": 0,
+    "status": {
+      "evidenceKind": "offline_mock",
+      "calls": 2,
+      "elapsedS": 0.004909541,
+      "stopped": true
+    }
+  },
+  "cross_realm_target_error": {
+    "error": "OFFLINE MOCK target exception",
+    "post_stop_error": "Controller stopped; no further target calls allowed",
+    "target_calls": 1,
+    "status": {
+      "evidenceKind": "offline_mock",
+      "calls": 2,
+      "elapsedS": 0.00317925,
+      "stopped": true
+    },
+    "actual_stack_retained": true
+  },
+  "unknown_raw_image": {
+    "error": "Unknown raw screenshot format",
+    "post_stop_error": "Controller stopped; no further target calls allowed",
+    "target_calls": 1,
+    "status": {
+      "evidenceKind": "offline_mock",
+      "calls": 2,
+      "elapsedS": 0.001513083,
+      "stopped": true
+    },
+    "artifacts_written": 0
+  },
+  "all_errors_paired": true,
+  "native_api_calls": 0,
+  "mock_images_emitted": 0
+}

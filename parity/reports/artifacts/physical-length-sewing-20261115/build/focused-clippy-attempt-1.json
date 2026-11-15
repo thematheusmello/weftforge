@@ -1,0 +1,22 @@
+{
+  "name": "focused-clippy-attempt-1",
+  "command": [
+    "cargo",
+    "clippy",
+    "-p",
+    "weftforge-core",
+    "-p",
+    "weftforge-cli",
+    "--all-targets",
+    "--",
+    "-D",
+    "warnings"
+  ],
+  "cwd": "<WORKSPACE>/.local/physical-sewing-20261115",
+  "cargo_target_dir": "<WORKSPACE>/.local/physical-sewing-20261115/.local/target-core-cli-20261115",
+  "started_at": "2026-11-15T16:29:23.302975+00:00",
+  "finished_at": "2026-11-15T16:29:26.548293+00:00",
+  "elapsed_seconds": 3.245140542043373,
+  "exit_code": 0,
+  "log": "focused-clippy-attempt-1.log"
+}

@@ -1,0 +1,325 @@
+{
+  "case_id": "NATIVE-PHYSICAL-SEWING-001",
+  "status": "stopped_unverified",
+  "scope": "Bounded actual-native original physical Free sewing case; no reference, physics, full Free sewing or New Empty acceptance.",
+  "failure": {
+    "stage": "First Save As typed filename screenshot barrier",
+    "expected": "created.weftforge",
+    "observed": "garmentcreated.weftforge",
+    "trace_records": [
+      "0081",
+      "0082",
+      "0083"
+    ],
+    "capture": "captures/created-name-typed-capture.json",
+    "raw_image": "captures/created-name-typed-0.jpg",
+    "raw_AX": "captures/created-name-typed.txt",
+    "attribution": "Observed name mismatch after planned super+a and typeText; no conclusion about whether OS shortcut delivery or product dialog caused it."
+  },
+  "observed_before_stop": [
+    "R41 original fixture; Frame all; Original analytic panel; Free sewing",
+    "No-op width0.2e0 sentinel and two Left keys",
+    "Single unfinished Length1e- Tab and one OK retained sideA/raw text with useful error at R41/0groups",
+    "Cancel restored raw width0.2e0/focus; planned0 insertion produced0.20e0; Tab stayed R41/no dirty",
+    "Canonical physical A endpoint/rightclick: curve6/exactt0/Forward; Length100/Tab/OKonce; A pending100.0mm at R41/0groups, input preserved, no sidecars",
+    "Canonical physical B interior/leftward rightclick: curve15/Reverse; planned exactStart0.75/Tab/Length100/Tab/OKonce",
+    "R42/one Free sewing1 group#20; two applied100.0mm labels, two guides and matching rebuilt rest mesh",
+    "Native Save As dialog and owned directory path observed; filename barrier then failed"
+  ],
+  "not_executed": [
+    "No Save click; no created/undo/redo/reopened primary",
+    "Undo/Redo saving journey",
+    "New Empty and R0 no-op Undo/Redo",
+    "Reopen and Save As reopened",
+    "Success quit"
+  ],
+  "stop_handling": {
+    "no_repair_retry_or_alternative": true,
+    "no_additional_native_calls": true,
+    "no_quit_or_signal": true,
+    "immediate_next_CUA_completion_summary_once": true,
+    "owned_pid": 34507,
+    "owned_app_remains_running_in_unsaved_dialog": true
+  },
+  "counts": {
+    "native_calls": 83,
+    "completion_summary_calls": 1,
+    "total_calls": 84,
+    "elapsed_last_native_return_s": 331.733179042,
+    "native_cap": 219,
+    "total_cap": 220,
+    "elapsed_cap_s": 1200
+  },
+  "trace_artifacts": {
+    "all_native_paired": true,
+    "all_native_returned": true,
+    "raw_captures": 37,
+    "all_capture_hashes_match": true
+  },
+  "saved_grader": {
+    "runs": 1,
+    "status": "failed",
+    "error": "FileNotFoundError: [Errno 2] No such file or directory: '.local/native-physical-sewing-acceptance-20261115/001/created.weftforge'",
+    "report": "SAVED-GRADE-001.json",
+    "meaning": "Missing outputs from stopped run; no numerical saved-output verdict."
+  },
+  "bindings": {
+    "source_commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+    "source_clean": true,
+    "source_pins": 60,
+    "source_pins_unchanged": true,
+    "native_binary_sha256": "69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0",
+    "owned_executable_sha256": "69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0",
+    "input_sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+    "original_fixture_sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+    "controller_sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+    "recorder_sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+    "binding_sha256": "4fd448d0104835c54cd33828cb8b3a1200542fbb2f45c312ea3df947d8049902",
+    "freeze_sha256": "2ba92e4355844299332fbc2e04da24171f522313e5a299ff657e21d42fe05e89"
+  },
+  "files": {
+    "readonly_input_preserved": true,
+    "created_undo_redo_reopened_absent": true,
+    "normal_owned_autosave": {
+      "file": "physical-readonly-input.weftforge.autosave",
+      "sha256": "6ec524363a346b32fa482057d1ea3b68ef0cbd2271f8498db092190579146626",
+      "parse_error": null,
+      "parsed": {
+        "format": "weftforge",
+        "version": 3,
+        "project": {
+          "revision": 42,
+          "points": [
+            {
+              "id": 2,
+              "position": [
+                0,
+                0
+              ]
+            },
+            {
+              "id": 3,
+              "position": [
+                0.2,
+                0.1
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                0.2,
+                0.3
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                0,
+                0.3
+              ]
+            },
+            {
+              "id": 11,
+              "position": [
+                0.4,
+                0
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                0.6,
+                0
+              ]
+            },
+            {
+              "id": 13,
+              "position": [
+                0.6,
+                0.3
+              ]
+            },
+            {
+              "id": 14,
+              "position": [
+                0.4,
+                0.3
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 6,
+              "start": 2,
+              "end": 3,
+              "controls": [
+                [
+                  0.06666666666666667,
+                  0
+                ],
+                [
+                  0.13333333333333333,
+                  0.03333333333333333
+                ]
+              ]
+            },
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 2,
+              "controls": null
+            },
+            {
+              "id": 15,
+              "start": 11,
+              "end": 12,
+              "controls": null
+            },
+            {
+              "id": 16,
+              "start": 12,
+              "end": 13,
+              "controls": null
+            },
+            {
+              "id": 17,
+              "start": 13,
+              "end": 14,
+              "controls": null
+            },
+            {
+              "id": 18,
+              "start": 14,
+              "end": 11,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 10,
+              "name": "Original analytic panel",
+              "boundary": [
+                6,
+                7,
+                8,
+                9
+              ],
+              "placement": {
+                "translation": [
+                  0,
+                  0,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0
+            },
+            {
+              "id": 19,
+              "name": "Original straight panel",
+              "boundary": [
+                15,
+                16,
+                17,
+                18
+              ],
+              "placement": {
+                "translation": [
+                  0,
+                  0,
+                  0
+                ],
+                "rotation": [
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0
+            }
+          ],
+          "materials": [
+            {
+              "id": 1,
+              "name": "Original uncalibrated material",
+              "areal_density": 0.18,
+              "warp_stiffness": 400,
+              "weft_stiffness": 400,
+              "shear_stiffness": 100,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.25,
+                0.5,
+                0.75
+              ]
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [
+            {
+              "id": 20,
+              "name": "Free sewing 1",
+              "a": [
+                {
+                  "curve": 6,
+                  "t0": 0,
+                  "t1": 0.4819445563480258
+                }
+              ],
+              "b": [
+                {
+                  "curve": 15,
+                  "t0": 0.75,
+                  "t1": 0.2499999999999999
+                }
+              ],
+              "correspondence": [
+                [
+                  0,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ]
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": []
+          },
+          "resolution": 0.07,
+          "next_id": 21
+        }
+      }
+    },
+    "post_stop_inventory": "FINAL-BINDINGS-FILES.json"
+  },
+  "limitations": [
+    "Root independently reviews actual tool trace/captures and all visible evidence.",
+    "Autosave is retained only as normal authoring state; it substitutes for no required saved primary.",
+    "Initial getApp AX auto-emission is in actual tool transcript; later captures retain raw AX diffs and raw native screenshots.",
+    "Local ignored evidence is not delivery; no registry/map/publication claim."
+  ]
+}

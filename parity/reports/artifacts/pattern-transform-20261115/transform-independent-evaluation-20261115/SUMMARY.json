@@ -1,0 +1,159 @@
+{
+  "status": "passed",
+  "acceptance": "bounded implementation acceptance only; reference policy unobserved",
+  "source_commit": "02bcd8c833376d2ba7c007c7dcd2516337d8a02f",
+  "binary_sha256": "80921d0947c4f6f1c91e9a5bef18e5b607c67323ac80e3177833f499acd360a5",
+  "freeze_sha256": "1151298e3df06f57c5c2f1048e7c112006ad13e798dff3455ed981890b6ab257",
+  "result_sha256": "cfcb88327313bcb28315a583b04ff73c340e649aa044e13f3cd547182e6ecbc5",
+  "journal_sha256": "1985eefe635a652c698127e95577760e2ac7740dfc1f3f8e2b548bf643074008",
+  "counts": {
+    "primary_cases": 93,
+    "primary_success": 51,
+    "expected_rejections": 42,
+    "inverse_cases": 3,
+    "fresh_mesh_checks": 3,
+    "per_route": {
+      "cli": {
+        "success": 17,
+        "rejection": 14
+      },
+      "mcp-current": {
+        "success": 17,
+        "rejection": 14
+      },
+      "mcp-legacy": {
+        "success": 17,
+        "rejection": 14
+      }
+    }
+  },
+  "maxima": {
+    "geometry": {
+      "coordinate_m": {
+        "value": 1.1368683772161603e-13,
+        "route": "cli",
+        "case": "quarter_extreme_supported_scale"
+      },
+      "polynomial_m": {
+        "value": 2.2737367544323206e-13,
+        "route": "cli",
+        "case": "quarter_extreme_supported_scale"
+      },
+      "world_m": {
+        "value": 4.547473508864641e-13,
+        "route": "cli",
+        "case": "quarter_extreme_supported_scale"
+      },
+      "rotation_matrix": {
+        "value": 1.6653345369377348e-16,
+        "route": "cli",
+        "case": "quarter_noncommuting"
+      },
+      "grain": {
+        "value": 1.1102230246251565e-16,
+        "route": "cli",
+        "case": "quarter_noncommuting"
+      },
+      "world_warp": {
+        "value": 2.220446049250313e-16,
+        "route": "cli",
+        "case": "quarter_noncommuting"
+      }
+    },
+    "length_errors_m": {
+      "before_analytic": {
+        "value": 7.210898544940392e-13,
+        "route": "cli",
+        "case": "translate_uv"
+      },
+      "after_analytic": {
+        "value": 7.210898544940392e-13,
+        "route": "cli",
+        "case": "translate_uv"
+      },
+      "before_after": {
+        "value": 4.440892098500626e-16,
+        "route": "cli",
+        "case": "nonright"
+      }
+    },
+    "inverse": {
+      "coordinate_m": {
+        "value": 0.0,
+        "route": "cli",
+        "case": "nonright"
+      },
+      "polynomial_m": {
+        "value": 4.440892098500626e-16,
+        "route": "cli",
+        "case": "nonright"
+      },
+      "world_m": {
+        "value": 4.440892098500626e-16,
+        "route": "cli",
+        "case": "nonright"
+      },
+      "rotation_matrix": {
+        "value": 1.1102230246251565e-16,
+        "route": "cli",
+        "case": "nonright"
+      },
+      "grain": {
+        "value": 5.551115123125783e-17,
+        "route": "cli",
+        "case": "nonright"
+      },
+      "world_warp": {
+        "value": 1.1102230246251565e-16,
+        "route": "cli",
+        "case": "nonright"
+      }
+    }
+  },
+  "normal_world_max_error_m": 4.440892098500626e-16,
+  "fresh_meshes": [
+    {
+      "route": "cli",
+      "vertices": 254,
+      "triangles": 434,
+      "world_error_m": 8.881784197001252e-16
+    },
+    {
+      "route": "mcp-current",
+      "vertices": 254,
+      "triangles": 434,
+      "world_error_m": 8.881784197001252e-16
+    },
+    {
+      "route": "mcp-legacy",
+      "vertices": 254,
+      "triangles": 434,
+      "world_error_m": 8.881784197001252e-16
+    }
+  ],
+  "retention": {
+    "case_file_entries_checked": 558,
+    "unchanged_entries": 456,
+    "deliberately_advanced_success_primary_recovery_entries": 102,
+    "read_only_inputs_retained": 93,
+    "input_recoveries_retained": 93,
+    "command_files_retained": 93,
+    "unrelated_destinations_retained": 93,
+    "failed_output_primary_recovery_pairs_retained": 42,
+    "successful_recovery_equals_old_primary": 51,
+    "all_31_case_outputs_byte_identical_across_three_adapters": true,
+    "inverse_input_primary_recovery_retained": 3,
+    "new_inverse_output_recoveries_absent": 3
+  },
+  "frozen_artifacts_unchanged": true,
+  "binary_unchanged": true,
+  "candidate_runs": 1,
+  "failures": [],
+  "qualifications": [
+    "No source inspection or candidate-dependent fixture/grader/tolerance adjustment.",
+    "Native UI/drafts/focus/history and stale create_cloth rejection remain outside this adapter packet.",
+    "No reference execution or parity claim.",
+    "No Cargo, CUA, PR/push or Actions.",
+    "Local evidence requires root tracking and clean-checkout registry/map checks before publication."
+  ]
+}

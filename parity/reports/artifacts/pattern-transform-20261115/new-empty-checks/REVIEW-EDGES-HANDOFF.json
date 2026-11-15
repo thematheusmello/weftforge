@@ -1,0 +1,83 @@
+{
+  "recorded_at": "2026-11-15T17:15:24.400707+00:00",
+  "commit": "dd5a16826dafe0d4f32c251f7c351197ad0936af",
+  "base_commit": "bc599b13548d8ffb843968f12d2dc63cff412357",
+  "worktree_clean": true,
+  "changed_files": [
+    "apps/weftforge/src/main.rs"
+  ],
+  "main_rs_sha256": "7ba6b482cfcf20f00b2734159f8c44ee56138fae2665b9c31b50020435d59589",
+  "source_before_receipt_sha256": "e2fc6a96b52bac74dabd4dfe12241f2539baa7863b7dace44acbc451ea64aa98",
+  "source_after_receipt_sha256": "3cd68bb2143ff901bc0e973d63cb96a937f9fadaa4bd6f935b515c31187aedcb",
+  "checks": [
+    {
+      "receipt": "review-edges-red-attempt-1.json",
+      "receipt_sha256": "916bc83e59820ab37b7f9f1332f726803126c15aa446591126dc8b9333b17e96",
+      "log": "review-edges-red-attempt-1.log",
+      "log_sha256": "d6ea0b8db18ae26de4a1ef080c034a59939b19911e1d6ff59b0af1539cffb284",
+      "exit_code": 101
+    },
+    {
+      "receipt": "review-edges-focused-attempt-1.json",
+      "receipt_sha256": "5df4acc7e3c7f93754c69a7c83bfcceaa522047920008f6a7c57a5bec8e193cc",
+      "log": "review-edges-focused-attempt-1.log",
+      "log_sha256": "d4d7253d59cbcb54a17926a3867b007b19e09b90b8aba13981ccb9a881ccafd3",
+      "exit_code": 0
+    },
+    {
+      "receipt": "review-edges-focused-clean-attempt-1.json",
+      "receipt_sha256": "8d0c9301321c3a6af3d5fedf0cd94450fa4ae8c6548c09c33d571ec700f75a22",
+      "log": "review-edges-focused-clean-attempt-1.log",
+      "log_sha256": "0c628a73ae1b4fbbf5da01744bf52e9a142376eaf50b8b27256fc6439f1a207e",
+      "exit_code": 0
+    },
+    {
+      "receipt": "review-edges-native-suite-attempt-1.json",
+      "receipt_sha256": "45c690c79e4be56cee3f531f8daf1594c3c9e710f529cab435422fa610e9bc8a",
+      "log": "review-edges-native-suite-attempt-1.log",
+      "log_sha256": "317044c90b54ce1a819d23a5f104bc429369ca9a97e7ee60da3357dcf021395a",
+      "exit_code": 0
+    },
+    {
+      "receipt": "review-edges-native-clippy-attempt-1.json",
+      "receipt_sha256": "4cda26fcf4d464fb32358d35adefdace017394c4259762533a7a7e986370a384",
+      "log": "review-edges-native-clippy-attempt-1.log",
+      "log_sha256": "4a849942164192aee46d32858c48a2c3379b752d2e4dc592350190a01cea6c06",
+      "exit_code": 0
+    },
+    {
+      "receipt": "review-edges-native-format-check-attempt-1.json",
+      "receipt_sha256": "05f661a6e72eadb6ef97b7aa837c3bd30440c414ca751e5b504a19716d9f346b",
+      "log": "review-edges-native-format-check-attempt-1.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_code": 0
+    }
+  ],
+  "reproduced_failures": [
+    "Same-pass primary press/release boundary click left a false unfinished identity transform.",
+    "Explicit retained-transform opening restored raw0.47 over newer raw0.57."
+  ],
+  "fix": [
+    "Start pointer gesture only while primary remains down; coalesced clicks use existing selection/handle-click paths.",
+    "Use existing stale-discard and fresh transform_edit snapshot at explicit adoption, copying only retained translation/angle/pivot. Current inspector commands, raw text/caret and fresh modal metadata remain authoritative."
+  ],
+  "final_results": {
+    "new_focused_tests": "2 passed from clean commit",
+    "full_native_suite": "76 passed from clean commit; original9 New Empty tests and prior paused-release matrix included",
+    "native_all_targets_clippy": "passed with -D warnings from clean commit",
+    "rustfmt_check": "passed"
+  },
+  "input_retention_checks": [
+    "0.47 at drag start ->0.57 or1e- after detachment",
+    "Current raw text, caret and staged commands retained on opening, failed Apply, Cancel and later frames",
+    "Corrected valid Apply combines current0.57 property and retained transform as one revision; one Undo removes both"
+  ],
+  "not_run": [
+    "new root integrated gates",
+    "new executable build/binding",
+    "native/CUA A4 acceptance",
+    "independent fixture grader",
+    "push/GitHub Actions"
+  ],
+  "prior_reports_contracts_receipts": "Unchanged; earlier133/bc passes remain archival with recorded source findings."
+}

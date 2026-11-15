@@ -1,0 +1,237 @@
+{
+  "recorded_at": "2026-11-15T17:43:44.067461+00:00",
+  "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+  "source_tree": "0365c79a44d6b3bd1e81c1c3e298823cc05000c5",
+  "status": "passed",
+  "process_exit_code": 0,
+  "runner_pid": 1905,
+  "exec_session": 20967,
+  "manifest": "integrated-b657e6b-20261115T173706Z-manifest.json",
+  "manifest_binding": {
+    "sha256": "a42c5d9b88d678068a1ab804aa480f41600a93cbd03de847f48faaa5fbdcb0fc",
+    "bytes": 26384
+  },
+  "runner": "integrated-b657e6b-20261115T173706Z.py",
+  "runner_binding": {
+    "sha256": "5b37ab94255de4bd5ef23a131dd3cdef169dae91064c909bb86a4690347a0932",
+    "bytes": 10299
+  },
+  "runner_log": "integrated-b657e6b-20261115T173706Z-runner.log",
+  "runner_log_binding": {
+    "sha256": "9a29edbb82ba137f6bec50d0de7b7a5b945aec08c1cacda3fa9de2137f8dd52b",
+    "bytes": 1152
+  },
+  "all_six_step_exit_codes": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "source_guard_count": 14,
+  "runtime_and_contract_file_count": 60,
+  "accepted_core_cli_source_comparison": {
+    "source": "26f88e0fc6975bb052a5fb7dc4ebe7016db65237",
+    "file_count": 46,
+    "changed_files": []
+  },
+  "default_target_initially_absent": true,
+  "rust_totals": {
+    "passed": 254,
+    "failed": 0,
+    "ignored": 0,
+    "measured": 0,
+    "filtered_out": 0,
+    "harness_summary_count": 25,
+    "expected_passed": 255,
+    "expected_passed_matches": false
+  },
+  "rust_running_counts_cross_check": [
+    89,
+    3,
+    1,
+    1,
+    1,
+    1,
+    14,
+    1,
+    12,
+    4,
+    6,
+    4,
+    3,
+    7,
+    9,
+    8,
+    2,
+    20,
+    1,
+    5,
+    10,
+    51,
+    1,
+    0,
+    0
+  ],
+  "rust_passed_summary_cross_check_total": 254,
+  "python_totals": {
+    "suites": [
+      48,
+      6
+    ],
+    "ran": 54,
+    "expected": 54,
+    "expected_matches": true
+  },
+  "package_file_count": 12,
+  "font_notice_copy_count": 4,
+  "all_font_notice_copies_match_source": true,
+  "release_package_native_equal": true,
+  "release_package_cli_equal": true,
+  "final_binaries": {
+    "target/debug/weftforge": {
+      "sha256": "69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0",
+      "bytes": 60932600
+    },
+    "target/debug/weftforge-cli": {
+      "sha256": "47011af81c0d4de78d976c39c64fb5cd5a1bfc37d9e517ff9ff6087e1d145b24",
+      "bytes": 9220736
+    },
+    "target/release/weftforge": {
+      "sha256": "0cb80c8625f24afe2e2bb1443c4c878a110f8c16adb730eb86dfeb35666beac8",
+      "bytes": 15418288
+    },
+    "target/release/weftforge-cli": {
+      "sha256": "d2234d2329de6f83ea055e6e278df0086fcef6fedde3eecccde84032f5daa086",
+      "bytes": 2286384
+    },
+    "target/package/weftforge": {
+      "sha256": "0cb80c8625f24afe2e2bb1443c4c878a110f8c16adb730eb86dfeb35666beac8",
+      "bytes": 15418288
+    },
+    "target/package/weftforge-cli": {
+      "sha256": "d2234d2329de6f83ea055e6e278df0086fcef6fedde3eecccde84032f5daa086",
+      "bytes": 2286384
+    },
+    "target/package/WeftForge.app/Contents/MacOS/weftforge": {
+      "sha256": "0cb80c8625f24afe2e2bb1443c4c878a110f8c16adb730eb86dfeb35666beac8",
+      "bytes": 15418288
+    }
+  },
+  "cli_feature_contexts": [
+    {
+      "step": "01-fmt",
+      "command": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "debug_cli_before": null,
+      "debug_cli_after": null,
+      "release_cli_after": null
+    },
+    {
+      "step": "02-workspace-tests",
+      "command": [
+        "cargo",
+        "test",
+        "--workspace"
+      ],
+      "debug_cli_before": null,
+      "debug_cli_after": {
+        "sha256": "f5cd43d374ed22aaa0029d07f63a9b829b4e6cd7ed1ad26c0e7f4e4015cac03c",
+        "bytes": 9217920
+      },
+      "release_cli_after": null
+    },
+    {
+      "step": "03-workspace-clippy",
+      "command": [
+        "cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "debug_cli_before": {
+        "sha256": "f5cd43d374ed22aaa0029d07f63a9b829b4e6cd7ed1ad26c0e7f4e4015cac03c",
+        "bytes": 9217920
+      },
+      "debug_cli_after": {
+        "sha256": "f5cd43d374ed22aaa0029d07f63a9b829b4e6cd7ed1ad26c0e7f4e4015cac03c",
+        "bytes": 9217920
+      },
+      "release_cli_after": null
+    },
+    {
+      "step": "04-xtask-verify",
+      "command": [
+        "cargo",
+        "xtask",
+        "verify"
+      ],
+      "debug_cli_before": {
+        "sha256": "f5cd43d374ed22aaa0029d07f63a9b829b4e6cd7ed1ad26c0e7f4e4015cac03c",
+        "bytes": 9217920
+      },
+      "debug_cli_after": {
+        "sha256": "47011af81c0d4de78d976c39c64fb5cd5a1bfc37d9e517ff9ff6087e1d145b24",
+        "bytes": 9220736
+      },
+      "release_cli_after": null
+    },
+    {
+      "step": "05-xtask-package",
+      "command": [
+        "cargo",
+        "xtask",
+        "package"
+      ],
+      "debug_cli_before": {
+        "sha256": "47011af81c0d4de78d976c39c64fb5cd5a1bfc37d9e517ff9ff6087e1d145b24",
+        "bytes": 9220736
+      },
+      "debug_cli_after": {
+        "sha256": "47011af81c0d4de78d976c39c64fb5cd5a1bfc37d9e517ff9ff6087e1d145b24",
+        "bytes": 9220736
+      },
+      "release_cli_after": {
+        "sha256": "d2234d2329de6f83ea055e6e278df0086fcef6fedde3eecccde84032f5daa086",
+        "bytes": 2286384
+      }
+    },
+    {
+      "step": "06-debug-native",
+      "command": [
+        "cargo",
+        "build",
+        "-p",
+        "weftforge"
+      ],
+      "debug_cli_before": {
+        "sha256": "47011af81c0d4de78d976c39c64fb5cd5a1bfc37d9e517ff9ff6087e1d145b24",
+        "bytes": 9220736
+      },
+      "debug_cli_after": {
+        "sha256": "47011af81c0d4de78d976c39c64fb5cd5a1bfc37d9e517ff9ff6087e1d145b24",
+        "bytes": 9220736
+      },
+      "release_cli_after": {
+        "sha256": "d2234d2329de6f83ea055e6e278df0086fcef6fedde3eecccde84032f5daa086",
+        "bytes": 2286384
+      }
+    }
+  ],
+  "accepted_physical_cli_unchanged": true,
+  "accepted_physical_cli_mode": "0o555",
+  "not_run": [
+    "CUA/native case control",
+    "new independent numerical evaluation",
+    "push/GitHub Actions"
+  ],
+  "authorization_boundary": "Root owns merge-review acceptance and binding the subsequent physical native case; these source checks do not establish native/reference parity."
+}

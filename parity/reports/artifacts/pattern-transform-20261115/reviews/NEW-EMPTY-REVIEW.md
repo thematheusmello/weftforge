@@ -1,0 +1,17 @@
+What this change does: It exposes New Empty through File and command search, refuses replacement when document work is pending, and otherwise installs a fresh default editor while dropping old workers and derived state. It also preserves and pauses Transform gestures under search, popups and a deferred New request, and moves the Pivot label above/right.
+
+Independent read-only source review of immutable `133c6d3fd91601b897f584e03c92765f79f97993`, against contract `417de0b`, `spec/features/APP-001-new-empty.md` SHA-256 `ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7`. Assumed load: one local native desktop user. No tests or native runtime were executed by this reviewer.
+
+**Must fix**
+
+1. **[P2] A paused Transform can commit when the user next clicks unrelated controls** (`apps/weftforge/src/main.rs:2717`, `:2760`, `:3093`).
+   - **What this is:** `gesture_paused` now preserves a Transform gesture while search/popups/New are active. A pointer release during that pause is skipped, leaving `transform_gesture` alive after its original drag has ended.
+   - **Problem / repro:** Start a Transform drag, open command search with Command-K while the pointer is held, release over search, then choose New Empty. It correctly refuses and closes search while retaining the gesture. Now click an inline Snap control in the toolbar. `patterns` obtains global `hover_pos` even outside its canvas (`:2757`–`:2759`), updates the retained transform on that new press (`:2760`–`:2769`), and commits it on that unrelated release (`:3093`–`:3101`). A snap preference click therefore moves/rotates the pattern and creates history/clears Redo. The new refusal test (`:10303`) checks only idle frames after refusal, so it does not cover this next interaction.
+   - **Fix:** Preserve the pending transform after an interrupted release without leaving it armed for arbitrary future primary events. Require an explicit canvas resume before updating/committing it (or reuse the existing Transform editor to finish/cancel it), and extend the pause/refusal test with a subsequent Snap press/release that must leave accepted construction and history unchanged.
+   - **If we skip it:** A refused New operation can leave an old gesture that later turns an unrelated UI click into an unexpected authoring transaction. This is source-traced; runtime reproduction remains for the producer.
+
+No additional concrete findings in the shared deferred File/search action, dirty/staged/invalid numeric text refusals, same-pass inspector decision, numeric action-blur retention, modal shielding, default-editor/history reset, worker cancellation plus receiver drop before revision reuse, active-autosave refusal, derived-state reset, preference retention, or Pivot label adjustment. Read the changed production paths, every New Empty caller, adjacent Select/Transform drag handlers, worker/poll/autosave/reset helpers and all nine new test bodies.
+
+Verdict: fix 1 first.
+
+Not checked: Cargo/full gates, live native/CUA, OS accessibility, filesystem runtime outcomes or reference parity. The producer's reported nine new/73 native test passes and root's running gates are separate evidence, not rerun or counted here. The older physical-sewing review remains unchanged; its first raw-input loss timing is qualified by producer reproduction (loss at secondary-direction press, rather than the original primary-release hypothesis).

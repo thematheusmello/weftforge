@@ -1,0 +1,1860 @@
+{
+  "schema_version": 1,
+  "purpose": "Additive source-only rechecks of later implementation candidates. The complete historical catalog map remains byte-identical; this addendum is neither a status registry nor a claim that all groups were re-reviewed at the new source.",
+  "historical_map_commit": "af79f596f247cc48e709b818bb70a30d1b716580",
+  "historical_map_sha256": "9323eb803af6d07d6178fd6e808fd61f87e5da71e3b07ab4b279b3141b11c8ec",
+  "historical_source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
+  "source_commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+  "source_pins": [
+    {
+      "commit": "af79f596f247cc48e709b818bb70a30d1b716580",
+      "scope": "Public source ancestor with native studio shell, bounded import/ellipse and authored-length feedback."
+    },
+    {
+      "commit": "dd5a16826dafe0d4f32c251f7c351197ad0936af",
+      "scope": "Later immutable candidate with one-piece transform and New Empty; native evidence is separate."
+    },
+    {
+      "commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "scope": "Later physical-length Free Sewing/retention candidate; source inspection here supplies no native acceptance."
+    }
+  ],
+  "historical_invariants": {
+    "catalog_ids": 949,
+    "packets": 205,
+    "source_landmark_identities": 56,
+    "command_variants_including_transaction": 22
+  },
+  "command_variants": [
+    "AddEllipse",
+    "AddMaterial",
+    "AddPolygon",
+    "AddRectangle",
+    "AddSeam",
+    "AddSewingByLength",
+    "AddSewingGroup",
+    "ImportDxfPatterns",
+    "ImportSvgPatterns",
+    "JoinCurve",
+    "MovePoint",
+    "RemovePiece",
+    "RemoveSeam",
+    "RemoveSewingGroup",
+    "ResizePiece",
+    "SetCurveControls",
+    "SetGrain",
+    "SetMannequin",
+    "SetMaterial",
+    "SetPlacement",
+    "SetResolution",
+    "SplitCurve",
+    "Transaction",
+    "TransformPiece",
+    "UpdateMaterial",
+    "UpdateSeam",
+    "UpdateSewingGroup"
+  ],
+  "schema_nontransaction_commands": [
+    "add_ellipse",
+    "add_material",
+    "add_polygon",
+    "add_rectangle",
+    "add_seam",
+    "add_sewing_by_length",
+    "add_sewing_group",
+    "import_dxf_patterns",
+    "import_svg_patterns",
+    "join_curve",
+    "move_point",
+    "remove_piece",
+    "remove_seam",
+    "remove_sewing_group",
+    "resize_piece",
+    "set_curve_controls",
+    "set_grain",
+    "set_mannequin",
+    "set_material",
+    "set_placement",
+    "set_resolution",
+    "split_curve",
+    "transform_piece",
+    "update_material",
+    "update_seam",
+    "update_sewing_group"
+  ],
+  "mcp_tools": [
+    "project_inspect",
+    "project_lengths",
+    "project_create",
+    "project_execute",
+    "project_import_svg",
+    "project_import_dxf",
+    "project_export_svg",
+    "project_export_obj",
+    "project_export_dxf"
+  ],
+  "command_boundary": "27 Rust variants = 26 nontransaction commands + the Transaction definition. The JSON command oneOf has 26; no transaction payload is advertised. execute accepts 1–1024 nontransaction commands and wraps them once. New Empty, view/session changes and read-only length queries add no authoring command. Counts describe this immutable API surface, never features completed.",
+  "source_landmark_rechecks": [
+    {
+      "source_id": "snap",
+      "reason": "Current session snapping moved the private arithmetic from the old helper to PositionSnap::apply. Preserve the old identity/path and historical signature.",
+      "changed_fields": [
+        "anchor"
+      ],
+      "previous_anchor": "fn snap(",
+      "current_anchor": "fn apply(self, value: f64) -> f64 {"
+    },
+    {
+      "source_id": "initial_contacts",
+      "reason": "Initial-only diagnostics were generalized to cancellable static contact diagnostics. The historical initial-only scope remains historical; current behavior is described in the simulate/statistics rechecks.",
+      "changed_fields": [
+        "anchor"
+      ],
+      "previous_anchor": "pub(crate) fn initial_contact_errors_cancellable(",
+      "current_anchor": "pub(crate) fn contact_errors_cancellable("
+    }
+  ],
+  "source_rechecks": [
+    {
+      "group_id": "project-new",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "project",
+        "ui_load",
+        "ui_recovery",
+        "history",
+        "ui_field_state",
+        "cli",
+        "mcp"
+      ],
+      "current": {
+        "candidate_behavior": "File > New Empty and the New Empty command-search row queue the same post-inspector replacement action. A clean replacement creates Editor::default at revision 0 with no file path, selection, history or derived mesh/cloth, cancels the old worker and retains session view/snap settings. Dirty accepted work, pending or invalid numeric input, unfinished construction and an active autosave cause a retained-state refusal. This native session action is distinct from CLI new/MCP project_create file creation and adds no Command variant.",
+        "missing_functionality": [
+          "Reference New Project/New Garment initial-state, discard/confirmation, option and session semantics remain unknown. Read actual native qualification only from the registry/reports at the reported revision.",
+          "New Empty deliberately refuses replacement until edits/gestures are applied or cancelled and saved; no discard option or new shortcut is supplied."
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn new_empty_button(",
+          "line": 941,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn new_empty(",
+          "line": 958,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn new_empty_file_route_replaces_clean_document_and_retains_files_and_preferences",
+          "line": 10690,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn new_empty_search_route_replaces_clean_document_and_retains_files_and_preferences",
+          "line": 10695,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "workspace-panels",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "ui_shortcuts",
+        "ui_tools",
+        "ui_toolbar",
+        "ui_properties",
+        "ui_pattern",
+        "ui_garment",
+        "ui_field_state",
+        "ui_modal_tests"
+      ],
+      "current": {
+        "candidate_behavior": "The fixed native studio shell has File/Edit/View/Help menus, an icon tool rail, a context toolbar, document tab/revision, equal 2D Pattern and 3D Garment canvases, Properties with a Scene list, simulation transport and a status/message bar. The existing action/focus path protects numeric drafts while menus, tool choices and command search are used; authoring modals shield background input. Source layout and focus checks are implementation candidates only.",
+        "missing_functionality": [
+          "Docking, arbitrary panel/tab visibility, independent windows, asset/material/timeline browsers and full context/accessibility contracts remain open. Source layout assertions do not qualify an actual native window."
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn menu_bar(",
+          "line": 1772,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn tool_rail(",
+          "line": 1907,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn document_tab(",
+          "line": 1931,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn studio_workspace_keeps_creation_and_transport_visible",
+          "line": 5046,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn studio_menus_and_tool_rail_preserve_numeric_drafts_text_and_caret",
+          "line": 5158,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "workspace-layout",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "ui_shortcuts"
+      ],
+      "current": {
+        "candidate_behavior": "A source-defined fixed native layout keeps menu/context rows, paired canvases, right Properties/Scene panel, simulation transport and status row visible. This is one original workspace arrangement, with no saved layout presets or docking model."
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn studio_workspace_keeps_creation_and_transport_visible",
+          "line": 5046,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "appearance-preferences",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "ui_shortcuts",
+        "ui_properties",
+        "ui_rgb_buffer"
+      ],
+      "current": {
+        "candidate_behavior": "The native shell uses a fixed dark theme, original icon drawing, bundled licensed Inter/JetBrains Mono typography and distinct selection/status colors through studio_style. Material RGB editing remains an authoring field. No user palette/theme/typography preference interface is implemented."
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn studio_style(",
+          "line": 4927,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn tool_button(",
+          "line": 4425,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "help-resources",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "ui_shortcuts"
+      ],
+      "current": {
+        "candidate_behavior": "The native Help menu supplies static original interaction guidance for 2D pan/zoom/snap, whole-piece transform policy, 3D navigation, play/pause and construction confirmation/cancellation. This is discoverable local guidance, with no complete documentation browser, locale routing or community/release-link model."
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn menu_bar(",
+          "line": 1772,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "selection",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "ui_properties",
+        "ui_pattern",
+        "ui_garment",
+        "ui_tools",
+        "ui_field_state"
+      ],
+      "current": {
+        "candidate_behavior": "A piece and boundary selection connect 2D, 3D picking, Scene rows and Properties. Transform mode refuses a cross-piece selection while the current inspector has staged commands or incomplete/nonfinite numeric text; it retains selection, text/caret and history. Normal clean selection still proceeds. This is an original one-piece rule, not observed reference selection semantics.",
+        "missing_functionality": [
+          "Multi-object/subobject selection, select-all/invert/sewn traversal, modifier rules and 3D manipulation gizmos remain open."
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn select(",
+          "line": 1024,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn transform_cross_piece_refusal_retains_staged_or_invalid_raw_text_caret_and_redo",
+          "line": 13981,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn transform_scene_row_selection_preserves_staged_and_raw_edits_through_real_ui_actions",
+          "line": 14039,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "ellipse",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality",
+        "shared_commands"
+      ],
+      "source_refs": [
+        "project",
+        "commands",
+        "ui_properties",
+        "cli",
+        "mcp_schema",
+        "mcp_tests"
+      ],
+      "current": {
+        "candidate_behavior": "AddEllipse creates four editable cubic boundary spans with stable authored points/curves from a name, origin and SI width/height. Properties > Add ellipse and command search use the same shared command, combined with pending inspector edits as one transaction. CLI ellipse and CLI/MCP command arrays expose the same construction; this bounded cubic representation is not an exact analytic conic or a new persistent ellipse primitive.",
+        "missing_functionality": [
+          "Reference ellipse gestures, modifiers, constructors/defaults/limits and exact semantic equivalence remain unqualified; no dedicated ellipse tool mode or internal ellipse is implemented."
+        ],
+        "shared_commands": [
+          "AddEllipse",
+          "Transaction"
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "Command::AddEllipse {",
+          "line": 763,
+          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn add_ellipse(",
+          "line": 830,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "crates/weftforge-core/tests/ellipse.rs",
+          "anchor": "fn ellipse_has_declared_controls_ids_bounds_tangents_and_one_persistent_transaction",
+          "line": 32,
+          "sha256": "55e68e3a529d2ffe49412d8a225683e0d3478f8f380130925ad66d0f93a74cda"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn ellipse_accessible_button_and_search_commit_once_and_preserve_failed_drafts",
+          "line": 7190,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "pattern-transform-tool",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality",
+        "shared_commands"
+      ],
+      "source_refs": [
+        "commands",
+        "project",
+        "curves",
+        "ui_tools",
+        "ui_toolbar",
+        "ui_pattern",
+        "ui_properties",
+        "ui_field_state",
+        "cli",
+        "mcp_schema"
+      ],
+      "current": {
+        "candidate_behavior": "TransformPiece performs one-piece rigid 2D translation/rotation about an explicit authored pivot, transforms endpoints and absolute cubic controls once, rotates grain and compensates the existing 3D placement to keep the arranged continuous surface and world warp fixed. IDs, boundary/sewing records and interval attachments remain authored; derived mesh/simulation are invalidated. Native Transform pattern rail/search routes expose a five-field SI modal plus boundary-translation/rotation-handle previews; a gesture combines pending inspector commands and the transform in one transaction. CLI execute/MCP project_execute reuse the shared command. ResizePiece retains its separate existing scaling behavior.",
+        "missing_functionality": [
+          "Scaling/mirroring, multiselection, pivot dragging, alignment, angle/axis locks and multi-turn gestures remain open. Reference transform behavior and numerical/gesture equivalence remain unknown.",
+          "Pointer translation/rotation usability and any native evidence qualification must be read from current registry/reports; source tests do not qualify that route."
+        ],
+        "shared_commands": [
+          "ResizePiece",
+          "TransformPiece",
+          "Transaction"
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "Command::TransformPiece {",
+          "line": 1002,
+          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn transform_window(",
+          "line": 2930,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn apply_transform(",
+          "line": 2909,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "crates/weftforge-core/tests/pattern_transform.rs",
+          "anchor": "fn invalid_inputs_results_and_late_transactions_retain_every_history_branch",
+          "line": 569,
+          "sha256": "0e6181a34a1fbe2ee51fc8fe6d1b6aec6efb6e61bc903624fd6e4c259af7f5b4"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn transform_pointer_translation_and_rotation_capture_original_geometry_and_snap_once",
+          "line": 13484,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "pattern-rotate",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality",
+        "shared_commands"
+      ],
+      "source_refs": [
+        "commands",
+        "project",
+        "curves",
+        "ui_pattern",
+        "ui_properties"
+      ],
+      "current": {
+        "candidate_behavior": "The one-piece TransformPiece candidate exposes an explicit radians angle and authored U/V pivot in the native modal, plus a bounds-center rotation handle. Arrangement compensation and grain rotation are deliberate WeftForge layout policy. The source relationship does not establish aliases to the inventoried Rotate/Parallel/Axis commands.",
+        "missing_functionality": [
+          "Reference rotate/axis/parallel-target entry routes, selection scope, angle snapping/locks, multi-turn gestures and broader relation/pivot behavior remain open."
+        ],
+        "shared_commands": [
+          "TransformPiece",
+          "Transaction"
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "TransformPiece {",
+          "line": 1002,
+          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn transform_window(",
+          "line": 2930,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "grid-snap",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "snap",
+        "ui_toolbar",
+        "ui_pattern",
+        "ui_field_state"
+      ],
+      "current": {
+        "candidate_behavior": "The native toolbar offers visible session choices Off, 1 mm, 5 mm and 10 mm. PositionSnap applies independent f64 origin-centred coordinate rounding; a gesture captures its preference and Alt/Option bypass once. Existing point/rectangle/polygon positions use that rule, while transform translation snaps displacement. Numeric dimensions, sewing picks and curve controls are not position-snapped. The visual 0.1 m guide grid is separate, and no snap field is serialized.",
+        "missing_functionality": [
+          "Reference snap origin/ties/distance/modifier/persistence and preference/menu equivalence remain unknown. This original session control supplies no adaptive, tangent or smart-snap inference."
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "enum PositionSnap {",
+          "line": 43,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn position_snap_control(",
+          "line": 2537,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule",
+          "line": 5595,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn position_snapping_inline_choices_preserve_unfinished_numeric_text_and_caret",
+          "line": 5930,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "pattern-smart-snap",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "snap",
+        "ui_pattern"
+      ],
+      "current": {
+        "candidate_behavior": "The later PositionSnap selector is an original fixed position-grid candidate. It does not supply curve/point/tangent/angle candidate priorities, smart guides or a reference-equivalent Smart Snap preference. Those requirements remain planned."
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "enum PositionSnap {",
+          "line": 43,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "pattern-view-extents",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "ui_pattern",
+        "ui_toolbar",
+        "ui_shortcuts",
+        "curves"
+      ],
+      "current": {
+        "candidate_behavior": "Frame all in View and the context toolbar fits all applied authored exterior outlines using analytic cubic-extrema bounds and 28 logical-pixel padding in the actual 2D canvas. It changes only center/scale, retains drafts/history/selection, disables for an empty document and handles degenerate/invalid canvas bounds. Pan/zoom remain separate view operations.",
+        "missing_functionality": [
+          "Reference Zoom Extents All hidden/selected/object-scope, padding, shortcuts, high-DPI behavior and saved-camera semantics remain unknown; the original Frame all source is a candidate relationship only."
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn frame_patterns_button(",
+          "line": 2567,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn frame_patterns(",
+          "line": 2582,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "pattern-snapshot-print",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality",
+        "shared_commands"
+      ],
+      "source_refs": [
+        "commands",
+        "project",
+        "native_io",
+        "atomic_save",
+        "svg",
+        "ui_toolbar",
+        "ui_properties",
+        "ui_export",
+        "cli",
+        "mcp",
+        "mcp_schema",
+        "mcp_tests"
+      ],
+      "current": {
+        "candidate_behavior": "Existing SVG and boundary-only R2000 DXF exports remain. Additive Import SVG/Import DXF File/search routes now choose a bounded source and show count, physical scale, origin/layout and omitted content before Import/Cancel. Shared ImportSvgPatterns/ImportDxfPatterns validate editable exterior lines/cubics and names with fresh IDs/default material/placement, then combine all pieces and pending inspector edits in one transaction. SVG requires explicit physical mm dimensions and uniform viewBox scale, mapping display Y to authored -Y; the strict DXF writer profile maps WCS X/Y to U/V without inversion. CLI import-svg/import-dxf, dedicated MCP file tools and command arrays reuse the same implementation. This FILE-005 engineering bucket does not invent a reference import catalog entry or equate import with printing.",
+        "missing_functionality": [
+          "General SVG/CAD compatibility, apparel conventions, internal features, sewing/material/arrangement round trip, calibrated printing, page tiling and reference semantics remain open.",
+          "Native save retains the primary on failed replacement under inherited guarantees; recovery may already have advanced to the prior valid primary. Primary and recovery are not one atomic two-file transaction. Actual chooser/modal/edit/history/reopen qualification comes only from registry/reports."
+        ],
+        "shared_commands": [
+          "ImportSvgPatterns",
+          "ImportDxfPatterns",
+          "Transaction"
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn choose_import(",
+          "line": 1315,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn pattern_import_window(",
+          "line": 1359,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "crates/weftforge-core/src/persistence/svg.rs",
+          "anchor": "pub fn from_bytes(bytes: &[u8]) -> Result<Self>",
+          "line": 54,
+          "sha256": "1f6792b629266a15200c1bdb543f0fb3ddb79360d09ec975693b7472a12811ae"
+        },
+        {
+          "path": "crates/weftforge-core/src/persistence/dxf_import.rs",
+          "anchor": "pub fn from_bytes(bytes: &[u8]) -> Result<Self>",
+          "line": 50,
+          "sha256": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn chooser_modal_import_commits_pending_edits_and_all_pieces_as_one_undo",
+          "line": 11551,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "automation-scripts",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality",
+        "shared_commands"
+      ],
+      "source_refs": [
+        "commands",
+        "cli",
+        "mcp",
+        "mcp_schema",
+        "mcp_tests"
+      ],
+      "current": {
+        "candidate_behavior": "The current Rust enum has 27 variants: 26 nontransaction authoring commands plus Transaction. The MCP command_schema oneOf contains the 26 nontransaction commands; CLI execute/MCP project_execute accept strict original-byte arrays of 1–1024, reject nested Transaction, and commit/save through one shared Transaction. The five additions after the historical snapshot are ImportSvgPatterns, ImportDxfPatterns, AddEllipse, TransformPiece and AddSewingByLength. Nine stateless MCP tools include the two bounded import tools and read-only project_lengths; no tool was added specifically for TransformPiece or physical-length sewing. CLI lengths and project_lengths return unrounded SI authored metrics and source revision. No live GUI control, script runtime, persistent undo or simulation-job API is provided.",
+        "missing_functionality": [
+          "Broader scripting/editing/reporting and observed scripting semantics remain open. The nine file tools are not reference scripting parity and do not control an active studio session."
+        ],
+        "shared_commands": [
+          "ImportSvgPatterns",
+          "ImportDxfPatterns",
+          "AddEllipse",
+          "TransformPiece",
+          "AddSewingByLength",
+          "Transaction"
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "pub enum Command {",
+          "line": 1460,
+          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+        },
+        {
+          "path": "apps/weftforge-cli/src/main.rs",
+          "anchor": "fn execute_commands(",
+          "line": 365,
+          "sha256": "88e09babfb9eaba9646a54ebb0de28ac3fccd318d50f7f2a92bda148e857310d"
+        },
+        {
+          "path": "apps/weftforge-cli/src/mcp.rs",
+          "anchor": "fn command_schema()",
+          "line": 528,
+          "sha256": "21454eaa6f9737f66e2c043dba5e5f0a99024900c82d68aa053c7fc66e1d7a11"
+        },
+        {
+          "path": "apps/weftforge-cli/src/mcp.rs",
+          "anchor": "fn tools()",
+          "line": 716,
+          "sha256": "21454eaa6f9737f66e2c043dba5e5f0a99024900c82d68aa053c7fc66e1d7a11"
+        },
+        {
+          "path": "docs/automation.md",
+          "anchor": "The supported shared commands are",
+          "line": 134,
+          "sha256": "a4f0f16c72684d126d2e14787abb5f8ea48c0bd5f36d6d1469c3b69ab0143000"
+        }
+      ]
+    },
+    {
+      "group_id": "line-measure-display",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "commands",
+        "seam_lengths",
+        "mesh",
+        "ui_properties",
+        "cli",
+        "mcp",
+        "mcp_schema"
+      ],
+      "current": {
+        "candidate_behavior": "Applied rest length feedback uses the existing bounded authored interval metric, independent of 3D placement, tessellation and cloth positions. Selected full boundaries and visible legacy seam pairs are cached by applied revision; group rows use matching-revision rest-mesh geometry. Native text uses three-decimal mm and signed B − A, with applied revision and draft/preview exclusion. Missing/error/rebuilding data is explicit. CLI lengths and MCP project_lengths query intervals, legacy seams or groups in unrounded metres without writing or building a mesh. Legacy curve-t correspondence remains unchanged.",
+        "missing_functionality": [
+          "Angle/perimeter/persistent measurements, selected-chain aggregation, current deformed 3D lengths and configurable units/precision remain open. Reference length selection/rounding/diagnostic policy is unqualified."
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/sewing.rs",
+          "anchor": "pub fn interval_length(",
+          "line": 634,
+          "sha256": "b8d2ef4178e8dc3a56ce5136310b8f065f357d8ffb21b61b26e16d22d4626645"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn applied_length_heading(",
+          "line": 566,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge-cli/src/main.rs",
+          "anchor": "fn length_report(",
+          "line": 31,
+          "sha256": "88e09babfb9eaba9646a54ebb0de28ac3fccd318d50f7f2a92bda148e857310d"
+        },
+        {
+          "path": "apps/weftforge-cli/src/mcp.rs",
+          "anchor": "fn length_query_schema()",
+          "line": 511,
+          "sha256": "21454eaa6f9737f66e2c043dba5e5f0a99024900c82d68aa053c7fc66e1d7a11"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn applied_lengths_are_formatted_cached_and_ignore_drafts_preview_and_simulation",
+          "line": 14699,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "selected-line-lengths",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "commands",
+        "seam_lengths",
+        "mesh",
+        "ui_properties",
+        "cli",
+        "mcp",
+        "mcp_schema"
+      ],
+      "current": {
+        "candidate_behavior": "Applied rest length feedback uses the existing bounded authored interval metric, independent of 3D placement, tessellation and cloth positions. Selected full boundaries and visible legacy seam pairs are cached by applied revision; group rows use matching-revision rest-mesh geometry. Native text uses three-decimal mm and signed B − A, with applied revision and draft/preview exclusion. Missing/error/rebuilding data is explicit. CLI lengths and MCP project_lengths query intervals, legacy seams or groups in unrounded metres without writing or building a mesh. Legacy curve-t correspondence remains unchanged.",
+        "missing_functionality": [
+          "Angle/perimeter/persistent measurements, selected-chain aggregation, current deformed 3D lengths and configurable units/precision remain open. Reference length selection/rounding/diagnostic policy is unqualified."
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/sewing.rs",
+          "anchor": "pub fn interval_length(",
+          "line": 634,
+          "sha256": "b8d2ef4178e8dc3a56ce5136310b8f065f357d8ffb21b61b26e16d22d4626645"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn applied_length_heading(",
+          "line": 566,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge-cli/src/main.rs",
+          "anchor": "fn length_report(",
+          "line": 31,
+          "sha256": "88e09babfb9eaba9646a54ebb0de28ac3fccd318d50f7f2a92bda148e857310d"
+        },
+        {
+          "path": "apps/weftforge-cli/src/mcp.rs",
+          "anchor": "fn length_query_schema()",
+          "line": 511,
+          "sha256": "21454eaa6f9737f66e2c043dba5e5f0a99024900c82d68aa053c7fc66e1d7a11"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn applied_lengths_are_formatted_cached_and_ignore_drafts_preview_and_simulation",
+          "line": 14699,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "sewing-length-check",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "commands",
+        "seam_lengths",
+        "mesh",
+        "ui_properties",
+        "cli",
+        "mcp",
+        "mcp_schema"
+      ],
+      "current": {
+        "candidate_behavior": "Applied rest length feedback uses the existing bounded authored interval metric, independent of 3D placement, tessellation and cloth positions. Selected full boundaries and visible legacy seam pairs are cached by applied revision; group rows use matching-revision rest-mesh geometry. Native text uses three-decimal mm and signed B − A, with applied revision and draft/preview exclusion. Missing/error/rebuilding data is explicit. CLI lengths and MCP project_lengths query intervals, legacy seams or groups in unrounded metres without writing or building a mesh. Legacy curve-t correspondence remains unchanged.",
+        "missing_functionality": [
+          "Angle/perimeter/persistent measurements, selected-chain aggregation, current deformed 3D lengths and configurable units/precision remain open. Reference length selection/rounding/diagnostic policy is unqualified."
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/sewing.rs",
+          "anchor": "pub fn interval_length(",
+          "line": 634,
+          "sha256": "b8d2ef4178e8dc3a56ce5136310b8f065f357d8ffb21b61b26e16d22d4626645"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn applied_length_heading(",
+          "line": 566,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge-cli/src/main.rs",
+          "anchor": "fn length_report(",
+          "line": 31,
+          "sha256": "88e09babfb9eaba9646a54ebb0de28ac3fccd318d50f7f2a92bda148e857310d"
+        },
+        {
+          "path": "apps/weftforge-cli/src/mcp.rs",
+          "anchor": "fn length_query_schema()",
+          "line": 511,
+          "sha256": "21454eaa6f9737f66e2c043dba5e5f0a99024900c82d68aa053c7fc66e1d7a11"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn applied_lengths_are_formatted_cached_and_ignore_drafts_preview_and_simulation",
+          "line": 14699,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "free-chain-sewing",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality",
+        "shared_commands"
+      ],
+      "source_refs": [
+        "commands",
+        "project",
+        "seam_fields",
+        "seam_lengths",
+        "ui_tools",
+        "ui_toolbar",
+        "ui_properties",
+        "ui_pattern",
+        "ui_field_state",
+        "cli",
+        "mcp_schema",
+        "native_io"
+      ],
+      "current": {
+        "candidate_behavior": "A separate native Free sewing tool/search route owns revision-stamped transient A/B drafts. Canvas start/direction and accessible Boundary, exact Start t, Direction and Length (mm) controls feed Create Sewing Line; Tab validates, first-side OK advances without authoring, and second-side OK sends AddSewingByLength through the shared inspector transaction. Project::interval_from_length reuses the bounded metric/inversion for forward/reverse physical length on one curve. The command resolves both sides before allocation and creates one ordinary SewingGroup with one interval per side and normalized physical arc-length correspondence, rather than a legacy curve-t Seam. It rejects overflow, insufficient remaining distance, invalid/overlapping/precision-limited input without clamping. Both pending previews, raw text/caret and applied labels/guides remain distinct; Cancel/tool/load/history/revision rules retain the existing accepted construction. Legacy Sew edges and ordered M:N sewing remain separate routes.",
+        "missing_functionality": [
+          "Reference continuous curved endpoints/correspondence, picking and initial values, cancellation/limits, unequal-length easing, M:N execution and physical sewing acceptance remain unqualified.",
+          "Internal/boundary-traversing/automatic sewing and broader editing/selection remain in scope. Entered lengths choose creation endpoints; they are not persistent dimension locks. Actual native qualification must come from registry/reports, not these source anchors."
+        ],
+        "shared_commands": [
+          "AddSeam",
+          "Transaction",
+          "AddSewingGroup",
+          "UpdateSewingGroup",
+          "RemoveSewingGroup",
+          "AddSewingByLength"
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/sewing.rs",
+          "anchor": "pub fn interval_from_length(",
+          "line": 609,
+          "sha256": "b8d2ef4178e8dc3a56ce5136310b8f065f357d8ffb21b61b26e16d22d4626645"
+        },
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "Command::AddSewingByLength {",
+          "line": 1147,
+          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn free_sewing_window(",
+          "line": 2677,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn free_sewing_failure_and_cancel_retain_raw_text_carets_redo_and_accepted_state",
+          "line": 12497,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn free_sewing_new_empty_refuses_pending_a_and_b_without_dropping_or_committing_them",
+          "line": 12680,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "crates/weftforge-core/tests/sewing_groups.rs",
+          "anchor": "fn physical_length_command_is_one_persistent_group_with_physical_correspondence_and_history",
+          "line": 1353,
+          "sha256": "a46b28a9f1db2c214688477d97e2317007bb64358c02a729ace6549ee6469fe6"
+        }
+      ]
+    },
+    {
+      "group_id": "free-sewing-length-preview",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality",
+        "shared_commands"
+      ],
+      "source_refs": [
+        "commands",
+        "project",
+        "seam_fields",
+        "seam_lengths",
+        "ui_tools",
+        "ui_toolbar",
+        "ui_properties",
+        "ui_pattern",
+        "ui_field_state",
+        "cli",
+        "mcp_schema",
+        "native_io"
+      ],
+      "current": {
+        "candidate_behavior": "A separate native Free sewing tool/search route owns revision-stamped transient A/B drafts. Canvas start/direction and accessible Boundary, exact Start t, Direction and Length (mm) controls feed Create Sewing Line; Tab validates, first-side OK advances without authoring, and second-side OK sends AddSewingByLength through the shared inspector transaction. Project::interval_from_length reuses the bounded metric/inversion for forward/reverse physical length on one curve. The command resolves both sides before allocation and creates one ordinary SewingGroup with one interval per side and normalized physical arc-length correspondence, rather than a legacy curve-t Seam. It rejects overflow, insufficient remaining distance, invalid/overlapping/precision-limited input without clamping. Both pending previews, raw text/caret and applied labels/guides remain distinct; Cancel/tool/load/history/revision rules retain the existing accepted construction. Legacy Sew edges and ordered M:N sewing remain separate routes.",
+        "missing_functionality": [
+          "Reference continuous curved endpoints/correspondence, picking and initial values, cancellation/limits, unequal-length easing, M:N execution and physical sewing acceptance remain unqualified.",
+          "Internal/boundary-traversing/automatic sewing and broader editing/selection remain in scope. Entered lengths choose creation endpoints; they are not persistent dimension locks. Actual native qualification must come from registry/reports, not these source anchors."
+        ],
+        "shared_commands": [
+          "AddSewingByLength",
+          "Transaction"
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/sewing.rs",
+          "anchor": "pub fn interval_from_length(",
+          "line": 609,
+          "sha256": "b8d2ef4178e8dc3a56ce5136310b8f065f357d8ffb21b61b26e16d22d4626645"
+        },
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "Command::AddSewingByLength {",
+          "line": 1147,
+          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn free_sewing_window(",
+          "line": 2677,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn free_sewing_failure_and_cancel_retain_raw_text_carets_redo_and_accepted_state",
+          "line": 12497,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn free_sewing_new_empty_refuses_pending_a_and_b_without_dropping_or_committing_them",
+          "line": 12680,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "crates/weftforge-core/tests/sewing_groups.rs",
+          "anchor": "fn physical_length_command_is_one_persistent_group_with_physical_correspondence_and_history",
+          "line": 1353,
+          "sha256": "a46b28a9f1db2c214688477d97e2317007bb64358c02a729ace6549ee6469fe6"
+        }
+      ]
+    },
+    {
+      "group_id": "undo-redo",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "history",
+        "commands",
+        "ui_numeric_history",
+        "ui_field_state",
+        "ui_history_tests",
+        "ui_modal_tests"
+      ],
+      "current": {
+        "candidate_behavior": "The shared Editor transaction still owns atomic history. Later ellipse, bounded drawing imports, one-piece transforms and completed physical-length sewing combine pending inspector edits with one command into one history entry. First-side sewing and drag previews are transient. New Empty refuses dirty/pending/unfinished work and resets history only for accepted clean replacement; load/history/revision changes clear stale preview and metric state. Numeric text/caret and redo retention checks are implementation evidence only.",
+        "missing_functionality": [
+          "Full observed gesture/history/coalescing semantics, native route qualification, all rejection paths and reference parity remain open; use registry/reports for the exact accepted runtime scope."
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "pub fn execute(&mut self, command: Command)",
+          "line": 1596,
+          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn apply_inspector_action(",
+          "line": 796,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn free_sewing_new_empty_refuses_pending_a_and_b_without_dropping_or_committing_them",
+          "line": 12680,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "simulate",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "ui_jobs",
+        "ui_shortcuts",
+        "solver",
+        "adapter",
+        "contact",
+        "initial_contacts",
+        "live_contacts",
+        "sim_tests"
+      ],
+      "current": {
+        "candidate_behavior": "The native transport exposes Play/Pause, Step, Assemble (gravity off), Drape, Reset and Cancel job. Current workers carry process-session task IDs/input revision, count only successful simulation steps and distinguish actual worker outcome from cancellation request/obsolete input before accepting a matching-revision result. Previous accepted display state survives failed/cancelled/obsolete workers. Live cloth contact now uses conservative swept hierarchy candidates in ascending original order, with a retained linear remainder after projection moves the query; static diagnostic contact queries also use the hierarchy. The exact zero-target positive-compliance stitch branch uses vector coordinates, retaining the old hard/positive-target radial branch. These source candidates establish no garment-quality/calibration/reference acceptance.",
+        "missing_functionality": [
+          "Full physical garment protocols, equilibrium/calibration, complete deforming collision coverage, representative performance and reference simulation behavior remain open. Dense contact can return to the original scan; no general speedup follows from the hierarchy.",
+          "A full worker step count is not accepted cloth or garment quality. Retained failures and actual runtime qualification remain authoritative in the registry/reports."
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn simulation_bar(",
+          "line": 1984,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn task_details(",
+          "line": 2074,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn task_progress_correlates_real_workers_and_retains_unaccepted_snapshots",
+          "line": 9264,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "crates/weftforge-sim/src/contact.rs",
+          "anchor": "pub(crate) fn project_cloth(",
+          "line": 108,
+          "sha256": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655"
+        },
+        {
+          "path": "crates/weftforge-sim/src/contact.rs",
+          "anchor": "pub(crate) fn contact_errors_cancellable(",
+          "line": 219,
+          "sha256": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655"
+        },
+        {
+          "path": "crates/weftforge-sim/src/constraints.rs",
+          "anchor": "pub(crate) fn solve_stitch(",
+          "line": 164,
+          "sha256": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035"
+        }
+      ]
+    },
+    {
+      "group_id": "workspace-statistics",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "ui_properties",
+        "ui_jobs",
+        "ui_shortcuts",
+        "contact",
+        "initial_contacts",
+        "live_contacts",
+        "solver"
+      ],
+      "current": {
+        "candidate_behavior": "The status bar reports applied revision, authored piece/legacy seam/group counts, accepted mesh vertices, dirty/autosave and current messages. Task details correlate process-session IDs, input revisions, successful simulation steps and terminal outcome. Inspector cloth diagnostics include assembly remaining, strain/seam/contact errors, initial intersections and uncertain capsule pairs. Current static/live hierarchy behavior is distinct from the historical initial-only BVH note; these values supply no accepted benchmark or quality result by themselves.",
+        "missing_functionality": [
+          "Representative declared-hardware performance/memory/viewport/cancel/save measurements, broad overlays and reference counter semantics remain open. Mesh vertex counts are derived from the current accepted snapshot, not authoritative construction."
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn status_bar(",
+          "line": 1946,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn task_details(",
+          "line": 2074,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "crates/weftforge-sim/src/contact.rs",
+          "anchor": "fn analyze_contacts(",
+          "line": 227,
+          "sha256": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655"
+        }
+      ]
+    },
+    {
+      "group_id": "fit-maps",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "ui_properties",
+        "ui_garment",
+        "adapter",
+        "solver",
+        "sim_tests"
+      ],
+      "current": {
+        "candidate_behavior": "The inspector now attributes the maximum absolute material-axis length strain to a matching-rest-mesh pattern and warp/weft signed percentage; CLI simulation/benchmark/fitting reports expose the typed attribution. This read-only diagnostic is not a per-element colored stress/strain/pressure map, a principal/shear bound, calibration or a changed fitting acceptance limit.",
+        "missing_functionality": [
+          "Per-element dimensional definitions, map shaders, legends/ranges/no-data policy and actual reference Stress/Strain/Pressure behavior remain open. Existing original garment-quality failures are not repaired by adding attribution."
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "if let Some(peak)=diagnostics.peak_strain",
+          "line": 2446,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "spec/features/SIM-005-strain-attribution.md",
+          "anchor": "The existing maximum absolute material-axis length strain keeps its definition",
+          "line": 7,
+          "sha256": "71bbea48b09a3f07cc516625e1506ae07a73a79f3db35fcf59564dc44cc23700"
+        }
+      ]
+    },
+    {
+      "group_id": "pattern-name-property",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "piece_fields",
+        "commands",
+        "ui_properties"
+      ],
+      "current": {
+        "candidate_behavior": "Piece names remain authored native data. Creation now accepts names through AddPolygon/AddRectangle/AddEllipse and bounded SVG/DXF imports; imported names follow their explicit profiles. The native Pattern name field configures creation and is not a selected-piece rename command."
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "ui.strong(\"Create pattern\")",
+          "line": 2330,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "AddEllipse {",
+          "line": 763,
+          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+        }
+      ]
+    },
+    {
+      "group_id": "unit-display-preferences",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "project",
+        "ui_properties",
+        "ui_rectangle",
+        "cli",
+        "mcp"
+      ],
+      "current": {
+        "candidate_behavior": "Core/CPU remain f64 SI. Native creation/transform/placement fields retain explicit metres/radians; rectangle and Free sewing dialogs convert millimetres once, and applied length feedback formats mm while CLI/MCP metric JSON stays unrounded metres. These are fixed engineering presentation choices, with no global unit/precision/locale preference model."
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn length_mm(",
+          "line": 538,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn free_sewing_window(",
+          "line": 2677,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn transform_window(",
+          "line": 2930,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "group_id": "shortcut-preferences",
+      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "ui_shortcuts",
+        "ui_tools",
+        "ui_export",
+        "ui_field_state"
+      ],
+      "current": {
+        "candidate_behavior": "Fixed command search reaches New Empty, native save/open/recover, bounded SVG/DXF import and vector/mesh exports, Undo/Redo/Reset, Select/Transform/Polygon/Rectangle/Add ellipse and three distinct sewing routes. Fixed global shortcuts are modal/popup/focus guarded; this is not an editable keymap preferences implementation or proof of reference keyboard bindings."
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "egui::Window::new(\"Command search\")",
+          "line": 4296,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "let global_shortcuts = !authoring_modal",
+          "line": 4100,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    }
+  ],
+  "ui_surfaces": [
+    {
+      "surface": "File menu",
+      "controls": [
+        "New Empty",
+        "Open…",
+        "Import SVG…",
+        "Import DXF…",
+        "Save",
+        "Save as…",
+        "Recover…",
+        "Export OBJ",
+        "Export SVG",
+        "Export DXF"
+      ],
+      "group_ids": [
+        "project-new",
+        "project-load-save",
+        "pattern-snapshot-print",
+        "obj-interchange"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn menu_bar(",
+          "line": 1772,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "Edit/menu-right actions and search",
+      "controls": [
+        "Undo",
+        "Redo",
+        "Commands ⌘K",
+        "Command search text/filter and fixed action rows"
+      ],
+      "group_ids": [
+        "undo-redo",
+        "shortcut-preferences"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "egui::Window::new(\"Command search\")",
+          "line": 4296,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "View/Help menus",
+      "controls": [
+        "Frame all",
+        "Wireframe",
+        "Static original interaction help"
+      ],
+      "group_ids": [
+        "pattern-view-extents",
+        "wireframe",
+        "help-resources"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn menu_bar(",
+          "line": 1772,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "Tool rail",
+      "controls": [
+        "Select / edit",
+        "Transform pattern",
+        "Polygon",
+        "Rectangle",
+        "Sew edges",
+        "Free sewing",
+        "M:N sewing"
+      ],
+      "group_ids": [
+        "selection",
+        "pattern-transform-tool",
+        "polygon",
+        "rectangle",
+        "segment-sewing",
+        "free-chain-sewing"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn tool_rail(",
+          "line": 1907,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "Context toolbar",
+      "controls": [
+        "Off / 1 mm / 5 mm / 10 mm Snap",
+        "Frame all",
+        "Transform pattern…",
+        "Ordered A/B draft summary",
+        "Create Sewing Line",
+        "Cancel free sewing"
+      ],
+      "group_ids": [
+        "grid-snap",
+        "pattern-view-extents",
+        "pattern-transform-tool",
+        "free-chain-sewing"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn toolbar(",
+          "line": 1876,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "Document tab and status",
+      "controls": [
+        "Document name/dirty marker",
+        "Revision",
+        "Piece/seam/group/vertex counts",
+        "Worker/autosave messages",
+        "Discard and close"
+      ],
+      "group_ids": [
+        "workspace-panels",
+        "workspace-statistics",
+        "application-quit"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn status_bar(",
+          "line": 1946,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "Properties and Scene",
+      "controls": [
+        "Piece selection rows",
+        "Selected boundary endpoints",
+        "Cubic Bezier and absolute controls",
+        "Split t / Split / Join",
+        "Applied boundary length",
+        "Size",
+        "Placement translation/rotation",
+        "Warp angle",
+        "Shared fabric mass/stiffness/bend/RGB",
+        "Delete selected"
+      ],
+      "group_ids": [
+        "selection",
+        "curve-tools",
+        "split-boundary",
+        "selected-line-lengths",
+        "pattern-transform-tool",
+        "arrangement",
+        "grain-alignment",
+        "fabric-assignment",
+        "delete-selection"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn inspector(",
+          "line": 2135,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "Create pattern",
+      "controls": [
+        "Pattern name",
+        "W/H m",
+        "X/Y m",
+        "Add rectangle",
+        "Add ellipse",
+        "Add polygon point",
+        "Close pattern"
+      ],
+      "group_ids": [
+        "polygon",
+        "rectangle",
+        "ellipse",
+        "pattern-name-property"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "ui.strong(\"Create pattern\")",
+          "line": 2330,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "Legacy sewing and ordered groups",
+      "controls": [
+        "Reverse paired edge",
+        "A/B t intervals",
+        "Legacy Reverse / Remove",
+        "Applied lengths and signed mismatch",
+        "Ordered A/B span controls",
+        "Confirm A / Create group / Delete last / Cancel",
+        "Edit group / Reverse B / Remove group"
+      ],
+      "group_ids": [
+        "segment-sewing",
+        "sewing-editor",
+        "reverse-sewing",
+        "free-chain-sewing",
+        "sewing-length-check"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "ui.strong(\"Ordered sewing groups\")",
+          "line": 2375,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "Rectangle modal",
+      "controls": [
+        "Width (mm)",
+        "Height (mm)",
+        "OK",
+        "Cancel"
+      ],
+      "group_ids": [
+        "rectangle",
+        "undo-redo"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn rectangle_window(",
+          "line": 3064,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "Transform modal",
+      "controls": [
+        "Translation U/V (m)",
+        "Angle (radians)",
+        "Pivot U/V (m)",
+        "Apply transform / Return",
+        "Cancel transform"
+      ],
+      "group_ids": [
+        "pattern-transform-tool",
+        "pattern-rotate",
+        "undo-redo"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn transform_window(",
+          "line": 2930,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "Free sewing modal",
+      "controls": [
+        "Boundary",
+        "Start t",
+        "Length (mm)",
+        "Forward / Reverse",
+        "Tab validation",
+        "OK / Enter",
+        "Cancel / Close"
+      ],
+      "group_ids": [
+        "free-sewing-length-preview",
+        "free-chain-sewing",
+        "undo-redo"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn free_sewing_window(",
+          "line": 2677,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "Structured group modal",
+      "controls": [
+        "Name",
+        "A/B ordered intervals",
+        "Reverse B order and directions",
+        "Easing knot A/B controls",
+        "Add easing knot / Remove knot",
+        "Apply group",
+        "Cancel group edit"
+      ],
+      "group_ids": [
+        "sewing-editor",
+        "free-chain-sewing"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn sewing_group_window(",
+          "line": 3872,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "Pattern import review",
+      "controls": [
+        "Piece count",
+        "Physical scale/origin/layout",
+        "Explicit omissions",
+        "Import",
+        "Cancel"
+      ],
+      "group_ids": [
+        "pattern-snapshot-print",
+        "undo-redo"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn pattern_import_window(",
+          "line": 1359,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "Recovery window",
+      "controls": [
+        "Discovered recovery choices",
+        "Refresh",
+        "Choose project…",
+        "Choose recovery file…",
+        "Recover copy",
+        "Close"
+      ],
+      "group_ids": [
+        "project-load-save",
+        "autosave-preferences"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn recovery_window(",
+          "line": 1579,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "2D/3D canvases",
+      "controls": [
+        "Applied outlines/points/controls",
+        "Draft and sewing guides/labels",
+        "One-piece transform pivot/handle",
+        "2D pan/zoom",
+        "3D orbit/zoom/picking",
+        "Wireframe"
+      ],
+      "group_ids": [
+        "point-pattern-edit",
+        "curve-tools",
+        "sewing-display",
+        "pattern-transform-tool",
+        "viewpoints",
+        "selection",
+        "wireframe"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn patterns(",
+          "line": 3127,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "Simulation transport",
+      "controls": [
+        "Play / Pause",
+        "Step",
+        "Assemble (gravity off)",
+        "Drape",
+        "Reset",
+        "Cancel job",
+        "Wireframe",
+        "Stage/step progress",
+        "Task details"
+      ],
+      "group_ids": [
+        "simulate",
+        "workspace-statistics",
+        "wireframe"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn simulation_bar(",
+          "line": 1984,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    },
+    {
+      "surface": "Mesh/simulation/diagnostic properties",
+      "controls": [
+        "Mesh edge length m",
+        "Iterations / substeps",
+        "Assembly/strain/seam/contact/intersection diagnostics",
+        "Peak pattern and material axis"
+      ],
+      "group_ids": [
+        "resolution",
+        "simulation-properties",
+        "workspace-statistics",
+        "fit-maps"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "ui.make_persistent_id(\"mesh-settings\")",
+          "line": 2437,
+          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+        }
+      ]
+    }
+  ],
+  "reviewed_contract_sources": [
+    {
+      "path": "spec/features/APP-001-new-empty.md",
+      "sha256": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+      "scope": "Original clean replacement/refusal contract; no reference New semantics or acceptance implied."
+    },
+    {
+      "path": "spec/features/PAT-003-original-ellipse-20261114.md",
+      "sha256": "347938c4844a4c99f3f29f96ecdeb5b2e4d406ffc8ee45172f62bb4efba2b241",
+      "scope": "Four-cubic original creation representation and bounded invariants; separate from reference ellipse semantics."
+    },
+    {
+      "path": "spec/features/PAT-004-piece-rigid-transform.md",
+      "sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+      "scope": "One-piece rigid layout policy, arrangement/grain compensation and frozen numeric/gesture requirements."
+    },
+    {
+      "path": "spec/features/PAT-004-native-transform-selection.md",
+      "sha256": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
+      "scope": "Explicit original cross-piece staged-input refusal rule."
+    },
+    {
+      "path": "spec/features/PAT-007-authored-length-feedback.md",
+      "sha256": "4f79150ed28854b8a16760af07b1558808dcca2080bc1ee8e114d5b2682f851c",
+      "scope": "Applied metric/report/cache API and units; implementation acceptance requirements, not current delivery status."
+    },
+    {
+      "path": "spec/features/PAT-007-line-length-runtime-20261115.md",
+      "sha256": "97fb24f7b238dbb9d8723494f8cd6f3939b7b91194dec6d94d5e8447c2e9d608",
+      "scope": "Reviewed bounded original reference length display context with explicit unknowns; no parity promotion."
+    },
+    {
+      "path": "spec/features/SEW-002-physical-length.md",
+      "sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+      "scope": "Reviewed physical-length original API/UI contract and retained reference unknowns; prospective criteria are not execution evidence."
+    },
+    {
+      "path": "spec/features/FILE-005-svg-pattern-import.md",
+      "sha256": "953328e9cb6a4d74c1d2235435f33adef52b6bcfd5a182ee30602341e622af13",
+      "scope": "Explicit-mm bounded closed exterior SVG profile, transactional/native/adapter scope and omissions."
+    },
+    {
+      "path": "spec/features/FILE-005-dxf-pattern-import.md",
+      "sha256": "06cff6f3d1a6d62fceeb93e94a2037f28136b69adfa5507b8a780e8864b0512b",
+      "scope": "Strict R2000 writer-profile boundary import and primary/recovery ordering qualification."
+    },
+    {
+      "path": "spec/features/UI-001-pattern-framing.md",
+      "sha256": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b",
+      "scope": "Original applied-outline Frame all behavior; source tests do not establish actual native usability."
+    },
+    {
+      "path": "spec/features/UI-003-original-position-snapping.md",
+      "sha256": "0d19a5cfa9886757390b735137171a2c9c88beb2f7f5fe8d8eb47c475d948ce7",
+      "scope": "Original session position snapping/bypass policy, separated from smart/reference snapping."
+    },
+    {
+      "path": "spec/features/UI-native-task-progress.md",
+      "sha256": "25f69dfc3b4c427515f8d7a70d56b58221b2e11c7e8fb7e7f5c12b33d8dda02c",
+      "scope": "Worker IDs, successful steps and actual outcome/cancel/obsolete distinction; no quality inference."
+    },
+    {
+      "path": "spec/features/SIM-001-closed-stitch-coordinates.md",
+      "sha256": "06a6b17fbac6831f92552b733df919265f2dd11940172a6e80f0bb4549ae9d8b",
+      "scope": "Exact zero-target positive-compliance coordinate scope; no garment/calibration result."
+    },
+    {
+      "path": "spec/features/SIM-004-contact-candidates.md",
+      "sha256": "a3649f0ceeec3b88fa568b73b2f63a16ef046cbf2637d4dbf55f91355af8b1c7",
+      "scope": "Conservative candidate order and movement fallback; no measured speedup inference."
+    },
+    {
+      "path": "spec/features/SIM-005-strain-attribution.md",
+      "sha256": "71bbea48b09a3f07cc516625e1506ae07a73a79f3db35fcf59564dc44cc23700",
+      "scope": "Read-only material-axis attribution, unchanged quality limits and retained failure requirements."
+    },
+    {
+      "path": "docs/automation.md",
+      "sha256": "a4f0f16c72684d126d2e14787abb5f8ea48c0bd5f36d6d1469c3b69ab0143000",
+      "scope": "Current shared command/query/file-tool syntax and limits; no live studio control."
+    }
+  ],
+  "limits": [
+    "All 949 catalog entry records, 205 packet definitions/dependencies, 56 historical landmark identities/paths, the first three queued slices and historical command count stay unchanged. Existing planned/mapping labels describe only their historical source; these additive rows are source candidates, not feature status changes.",
+    "Current implementation/reference/verification/freshness and retained failures must be joined from parity/features.yaml and reports at the revision reported. No such status/evidence fields are copied here.",
+    "No new reference/catalog IDs or aliases are invented for original WeftForge controls. FILE-005 imports use an existing engineering bucket without implying that a reference import menu was observed.",
+    "Internal lines/primitives and internal sewing remain planned. The current exterior-boundary command/model snapshot supplies no internal-line implementation; a future contract is not implementation evidence.",
+    "This draft performed static immutable-source/map checks only. Source test definitions are anchors, not a statement that those tests or native workflows were executed. Transform pointer and physical-length native qualification remain independent integration work.",
+    "Unlisted groups retain only the historical source review. Do not silently describe the complete 205-group map as current at this newer pin."
+  ]
+}

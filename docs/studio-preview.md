@@ -1,6 +1,116 @@
 # Native studio preview
 
-## Current authored-length readouts (be8)
+## Physical-length Free sewing (B657)
+
+These are actual unedited native002 images from source
+b657e6bf52aca6c0c76c5c51aaf76b4e812150f7 and executable
+69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0.
+Root accepted this bounded engineering workflow after reviewing twelve images,
+all 161 returned action pairs, source/freeze pins and the four saved primaries.
+This is partial Free sewing, not a complete sewing/New/garment/reference pass.
+
+![Invalid unfinished Length is retained without an accepted edit](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/invalid-refusal-retained-0.jpg)
+
+Length 1e- is rejected at R41. Cancel restores unrelated width/caret; the retained
+[0.20e0 witness](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/width-caret-witness-0.jpg)
+shows the insertion without a revision change. Full native AX/accessibility remains
+unqualified; modal field evidence here is in the raw images.
+
+![First 100 mm side remains a transient preview](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/canonical-a-transient-0.jpg)
+
+Side A uses curve #6, Forward, 100 mm. It remains pending at R41 with zero groups.
+
+![Second side has exact start and direction controls before acceptance](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/canonical-b-final-before-ok-0.jpg)
+
+Side B uses curve #15, exact Start t 0.75, Reverse and 100 mm. Boundary, exact t and
+direction controls complement pointer picking. Entered physical lengths choose
+creation endpoints; they are not persistent dimension locks. Reference picking,
+rounding, cancellation and unequal-length easing semantics remain unqualified.
+
+![Applied partial pair saved at revision 42](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/created-saved-r42-0.jpg)
+
+Accepting B creates one group 20 at R42 with two 100.0 mm labels and endpoint guides.
+One [Undo R43](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/undo-saved-r43-0.jpg)
+removes the pair; one [Redo R44](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/redo-saved-r44-0.jpg)
+restores it. All four required native primaries retain their first saved hashes.
+
+![New Empty shows zero authored construction at revision zero](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/new-empty-r0-0.jpg)
+
+File New Empty creates R0 with the default analytic mannequin; Undo and Redo each
+remain no-op R0. This one clean reset is not full New/recovery acceptance.
+
+![Same-process reopened pair saved at revision 44](../parity/reports/artifacts/physical-length-sewing-20261115/native/002/captures/reopened-saved-r44-0.jpg)
+
+The frozen saved-output grader ran once and passed parsed-field/metric checks
+at 1e-8 m. Redo/reopened bytes are identical. Root separately reviewed the native
+trace/images; a saved file alone does not prove caret, live history or New behavior.
+The case used 162 calls including summary / 748.816649 seconds within 220 / 1200
+caps and quit its own process. Same-process reopen is not a process restart.
+
+Failed001 remains stopped before Save at the wrong filename; its autosave is no
+replacement for four missing primaries. The intervening calibration observes
+filename entry/Cancel only. A later user-requested cleanup closed old unused GUI
+windows separately from every case clock and outcome. See the
+[scoped report](../parity/reports/WF-20261115-PHYSICAL-LENGTH-SEWING-001.json) and
+[retained packet](../parity/reports/artifacts/physical-length-sewing-20261115/README.md).
+
+The original B657 source gates retain 254 Rust/54 Python passes and six zero
+command exits; their predicted Rust total 255 / match=false bookkeeping remains
+visible. No source/native/headless acceptance was rerun for publication. The DD
+Transform images below retain their original A4 pass/B failure, now stale on changed
+B657 runtime. No native Transform B or unexecuted B2 success is inferred.
+
+## Historical one-piece transform and New Empty (DD)
+
+These are actual unedited A4 captures from source dd5a16826dafe0d4f32c251f7c351197ad0936af,
+using the separately bound native debug executable 216aa9e0b8968a1fe9033f32c89c9b4b93cdca15fac927c0538a5a091c848dd4.
+Root accepted this bounded numeric/history/New/same-process reopen case after
+reviewing twelve product-UI images and the paired records. The overall frozen
+A/B native plan remains failed/unverified because pointer case B did not reach
+its required first translation revision. The PhotoCraft reference below is visual
+inspiration, not behavior or parity evidence.
+
+![Numeric transform values before Apply](../parity/reports/artifacts/pattern-transform-20261115/native-A4/captures/five-final-transform-values-before-Apply-0.jpg)
+
+The original asymmetric piece uses translation 0.5 / -0.25 m, a quarter-turn
+angle and pivot 0.25 / 0.5 m. This image is a pending dialog, not applied construction.
+The separate exact-angle capture is retained in the packet. Modal numeric values
+were reviewed in images; full modal AX accessibility is still unqualified.
+
+![Applied quarter-turn saved at revision 38](../parity/reports/artifacts/pattern-transform-20261115/native-A4/captures/quarter-native-saved-R38-0.jpg)
+
+The saved grader passed the frozen coordinate/curve, arranged-world, grain and
+history checks. One Undo and Redo were saved separately. The layout transform
+keeps arranged 3D geometry/world warp fixed under the declared engineering policy;
+reference semantics remain unknown.
+
+![New Empty at revision zero with no pattern pieces](../parity/reports/artifacts/pattern-transform-20261115/native-A4/captures/New-Empty-native-R0-zero-pieces-0.jpg)
+
+New Empty creates a fresh editable document. Source checks also cover refusal
+when accepted changes, staged/invalid properties or unfinished construction need
+attention, and prevent old worker results from entering the new document.
+
+![Same-process reopened Redo result saved at revision 40](../parity/reports/artifacts/pattern-transform-20261115/native-A4/captures/reopened-native-saved-R40-0.jpg)
+
+A4 completed 121 pairs in 542.54376275 seconds within its unchanged 130 / 900 caps;
+its grader ran once. Redo and reopened saved bytes are identical. This is a
+same-process reopen, not a process restart, physics, export or full-feature pass.
+
+B is retained separately: after a pre-authoring root hold, one documented drag
+returned but both reviewed checkpoints still showed R40, not required R41.
+Its filename ending R41 describes intent. The case stopped with 11 pairs in
+204.564500916 seconds, without a corrective drag, rotation or Save; grading failed
+on missing translated/rotated outputs. No mid-drag/OS-button witness establishes
+the cause. Source tests or ideal content-space input cannot prove actual OS delivery
+or a product defect. See the [failed overall scoped report](../parity/reports/WF-20261115-PATTERN-TRANSFORM-001.json)
+and [retained packet](../parity/reports/artifacts/pattern-transform-20261115/README.md).
+
+Fresh source gates pass 235 Rust and 54 Python tests plus formatting, strict
+Clippy, registry/map checks and unsigned packaging. They do not complete the
+native A/B plan or any reference/garment/roadmap gate. Earlier A/A2/A3 failures,
+source-review REDs and historical images below keep their original outcomes.
+
+## Historical authored-length readouts (be8)
 
 Actual unedited 1640 × 1032 captures from source `be8a031b5f8342d0857f3bed34f52dd165fa86da`
 show the new measurement subset on an original analytic fixture. Its deliberate

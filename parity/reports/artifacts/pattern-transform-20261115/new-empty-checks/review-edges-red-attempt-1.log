@@ -1,0 +1,26 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/pattern-transform-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.08s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 2 tests
+
+thread 'pattern_transform_tests::transform_review_edges_same_pass_boundary_click_leaves_no_gesture_or_history_change' (61922268) panicked at apps/weftforge/src/main.rs:11970:13:
+a same-pass selection click is not an unfinished drag
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test pattern_transform_tests::transform_review_edges_same_pass_boundary_click_leaves_no_gesture_or_history_change ... FAILED
+
+thread 'pattern_transform_tests::transform_review_edges_adoption_captures_newer_property_text_caret_and_one_apply_transaction' (61922267) panicked at apps/weftforge/src/main.rs:12012:13:
+assertion `left == right` failed: opening must retain the current "0.57", not its drag-start snapshot
+  left: Some("0.47")
+ right: Some("0.57")
+test pattern_transform_tests::transform_review_edges_adoption_captures_newer_property_text_caret_and_one_apply_transaction ... FAILED
+
+failures:
+
+failures:
+    pattern_transform_tests::transform_review_edges_adoption_captures_newer_property_text_caret_and_one_apply_transaction
+    pattern_transform_tests::transform_review_edges_same_pass_boundary_click_leaves_no_gesture_or_history_change
+
+test result: FAILED. 0 passed; 2 failed; 0 ignored; 0 measured; 74 filtered out; finished in 0.19s
+
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "kind": "prospective_clarification_only_before_actual_native_execution",
+  "supersedes_unexecuted_v1_freeze_sha256": "efabfcfbe9a851dcfa12b6d026fce847c37080f664788d05537961ee7e4ade29",
+  "native_product_CUA_or_Cargo_executed": false,
+  "reason": "Project::default retains Mannequin::default with six original analytic capsules. garment() draws those capsules independently before its optional mesh branch. Therefore New Empty R0 must not require literally empty canvases. Require no authored pattern/sewing/cloth/rest-mesh geometry and allow default mannequin in 3D without a broad scene/rendering claim.",
+  "immutable_source_inputs": [
+    {
+      "commit": "c4be919391efb8c39e035bb7c40e74ea52c592f4",
+      "path": "crates/weftforge-core/src/document.rs",
+      "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8",
+      "source_markers": [
+        {
+          "text": "impl Default for Mannequin",
+          "line": 301
+        },
+        {
+          "text": "impl Default for Project",
+          "line": 356
+        }
+      ]
+    },
+    {
+      "commit": "c4be919391efb8c39e035bb7c40e74ea52c592f4",
+      "path": "apps/weftforge/src/main.rs",
+      "sha256": "175be6c0aff0a3c252e64143871a04dd29845c68981c3b725ebd6cfd114bcb3c",
+      "source_markers": [
+        {
+          "text": "fn garment(",
+          "line": 3816
+        },
+        {
+          "text": "for capsule in &self.editor.project.mannequin.capsules",
+          "line": 3841
+        },
+        {
+          "text": "if let Some(mesh) = &self.mesh",
+          "line": 3850
+        }
+      ]
+    }
+  ],
+  "unchanged": {
+    "fixture_sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+    "criteria_sha256": "d748d52d5aee5bee2d57c02e81edd137c8e50ab5c9bea9f69afb1c27c31d2938",
+    "independent_oracle_sha256": "ac252d08d820f7aedac771502486a54ec2dc4242017911588d5e39fcaa38a384",
+    "native_saved_grader_sha256": "e6a5f5de762aef924c4aecd733d7cb4ccb00faa0ad50497f12d004f101670bc9",
+    "expected_sha256": "589a9400a916e9340d04ae77b332ea25d3a0abc6b06dee9b8ac9868ac80506ec",
+    "all_call_cap": 220,
+    "elapsed_cap_s": 1200,
+    "actions_added_or_removed": 0
+  },
+  "v1_selfcheck_qualification": "Copied SELF-CHECK-001.json is the historical v1 synthetic run with its original v1 PLAN binding; it does not assert a v2 PLAN hash. Run SELF-CHECK-002.json for current v2 bindings. V1 packet and every prior failed preparation receipt remain unchanged.",
+  "historical_generator_qualification": "prepare_plan.py is copied unchanged as v1 preparation provenance, not a v2 generator; it was not run. Numerical inputs and expectations were copied, not regenerated.",
+  "binding_status": "Root still must independently review v2 and separately bind final merged source/native executable and GO before execution.",
+  "historical_manifest_qualification": "V1-FREEZE.json is a byte-identical copy of the original v1 manifest. Its relative artifact paths refer to the original v1 packet, not the clarified v2 PLAN/METHOD. Use the new v2 FREEZE for this sibling packet."
+}

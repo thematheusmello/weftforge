@@ -1,0 +1,45 @@
+{
+  "scope": "Original entry/Cancel-only calibration outcome; no Save/write or sewing acceptance. Full private inventory, OS chooser and return bodies remain private under original hashes.",
+  "original_private_sha256": "3d90c34dce5aafe7e6ce0490b2501f997ae528886ebb757703d2f7114d21b130",
+  "omitted_private_fields": [
+    "raw OS chooser screenshots/AX/return bodies are not selected"
+  ],
+  "record": {
+    "kind": "isolated_native_filename_entry_calibration",
+    "status": "observed_calibration_pass_pending_root_review",
+    "root_plan_sha256": "7f1dabe5d6a1884a6c1b0a571fcf1e0830c8ebf55c4a40b2401836c610369c60",
+    "observations": [
+      "Loaded clean R41/2pieces/0groups/no dirty",
+      "Actual returned native docs: setValue(elementIndex: number, value: string): Promise<void>",
+      "Observed exact filename AX89 text field(settable), IDsaveAsNameTextField, initialgarment",
+      "Exactly one setValue(89,created.weftforge), without click/selectall/typing",
+      "Captured literalcreated.weftforge in AX and unedited screenshot; AXSave93 remains enabled",
+      "Cancelled once withoutSave; captured unchangedR41/2pieces/0groups/no dirty",
+      "Single planned Cmd+Q final native call returned; owned PID absent in outside-CUA accounting",
+      "Next CUA exactly one completion_summary; no post-close AX"
+    ],
+    "evidence": {
+      "before_entry": "captures/save-dialog-field-before-entry-capture.json",
+      "exact_filename": "captures/filename-exact-after-setValue-capture.json",
+      "cancelled_R41": "captures/cancelled-unchanged-r41-capture.json",
+      "trace": "trace",
+      "bindings": "FINAL-BINDINGS-FILES.json",
+      "audit": "TRACE-ARTIFACT-AUDIT.json"
+    },
+    "native_calls": 12,
+    "total_calls": 13,
+    "elapsed_through_quit_s": 83.779425875,
+    "captures": 5,
+    "owned_pid": 41664,
+    "owned_pid_absent": true,
+    "prior_cases_unchanged": true,
+    "no_saved_primary_or_sidecar_created": true,
+    "source_pins_verified": 60,
+    "limitations": [
+      "Filename entry only; no actual Save/write calibration.",
+      "Does not promote or repair stopped physical sewing001.",
+      "No sewing/history/NewEmpty/reopen/reference/physics claim.",
+      "Local ignored evidence is not delivery; root reviews actual trace/captures."
+    ]
+  }
+}

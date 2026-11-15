@@ -1,0 +1,118 @@
+{
+  "scope": "Root review derivative of paired recorder attempts; not raw transport or a replacement for observed images/saved files. Original full returns, including binary image arrays and system inventories, remain private with these hashes. Exact-once CUA completion remains actor-reported.",
+  "paired_records": [
+    {
+      "before": {
+        "id": "0001",
+        "label": "launch unique A bundle",
+        "method": "exec_command:/usr/bin/open",
+        "arguments": {
+          "executable": "/usr/bin/open",
+          "arguments": [
+            "-n",
+            "<WORKSPACE>/.local/native-transform-acceptance-20261115/A/WeftForgeTransformAcceptanceA001.app",
+            "--args",
+            "<WORKSPACE>/.local/native-transform-acceptance-20261115/A/A-readonly-input.weftforge"
+          ]
+        },
+        "utc": "2026-11-15T15:44:26.201Z",
+        "monotonic_ns": "879782186297208"
+      },
+      "returned": {
+        "id": "0001",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T15:44:26.281Z",
+        "monotonic_ns": "879782266246333"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "b55d1ce2e4c40a3b853fd388fa9e879007f0605d1bc724e212341cfddf61c06b",
+      "original_after_sha256": "4b11f9634ee5c69b1d6d9374f35574555823f856dbdf570886dc3f5b947cd1b0",
+      "original_after_bytes": 244
+    },
+    {
+      "before": {
+        "id": "0002",
+        "label": "select already launched A app",
+        "method": "cua.getApp",
+        "arguments": {
+          "target": "<WORKSPACE>/.local/native-transform-acceptance-20261115/A/WeftForgeTransformAcceptanceA001.app"
+        },
+        "utc": "2026-11-15T15:44:32.297Z",
+        "monotonic_ns": "879788281552041"
+      },
+      "returned": {
+        "id": "0002",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T15:44:32.451Z",
+        "monotonic_ns": "879788435620333"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "2f3ff24fb9cbf6b0181404726731f2b13f614d3d94e5a6dc5f89ce94be64c093",
+      "original_after_sha256": "0b6c447833b2d991ab8b358301768e13deb172a2b93fb8ac6051c5bd1bf10daf",
+      "original_after_bytes": 150
+    },
+    {
+      "before": {
+        "id": "0003",
+        "label": "initial-R37",
+        "method": "app.getAXStateAndScreenshot",
+        "arguments": {
+          "emit": false
+        },
+        "utc": "2026-11-15T15:44:32.451Z",
+        "monotonic_ns": "879788435953125"
+      },
+      "returned": {
+        "id": "0003",
+        "status": "exception",
+        "error": {
+          "name": "ReferenceError",
+          "message": "transformAApp is not defined"
+        },
+        "utc": "2026-11-15T15:44:32.451Z",
+        "monotonic_ns": "879788436131125"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "b88ab607e037bf3d5629a763e4e194eef512b7eac06e2feb4e0abecbafe8b5cf",
+      "original_after_sha256": "3e8dda88a138fa1ea3ea08ef00547fc143c9e9497ece7cc25c30ff1d050e41d5",
+      "original_after_bytes": 230
+    },
+    {
+      "before": {
+        "id": "0004",
+        "label": "final quit after unexpected recorder helper error",
+        "method": "app.pressKey",
+        "arguments": {
+          "key": "super+q"
+        },
+        "utc": "2026-11-15T15:45:19.713Z",
+        "monotonic_ns": "879835697061375"
+      },
+      "returned": {
+        "id": "0004",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T15:45:19.758Z",
+        "monotonic_ns": "879835742240916"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "5e2e93eaadc2069be835772f5b6f7c6a7469ed8d1d189afd9f617b65175db277",
+      "original_after_sha256": "6b4ed2b8064b23105588879e93c86f06bf78703cec523076141cc470a38e27b6",
+      "original_after_bytes": 152
+    }
+  ],
+  "owned_process_identity": {
+    "utc": "2026-11-15T15:45:10.008906+00:00",
+    "actor_pid": 95556,
+    "binary_sha256": "4406006ab19c52b98d83fe3c8e8115b16fe61492120611d2d06a496dd9b69757",
+    "native_main_window_observed": "WeftForge, R37 A-readonly-input.weftforge, initial getApp returned",
+    "frozen_case_stopped": "ReferenceError in precreated observation helper before snapshot API call; no authoring",
+    "owned_executable_text_mapping": [
+      "n<WORKSPACE>/.local/native-transform-acceptance-20261115/A/WeftForgeTransformAcceptanceA001.app/Contents/MacOS/weftforge"
+    ],
+    "original_private_inventory_sha256": "37d787dfb1630e79d7518bb3fa91fabc35b17981b50472524f47d785256ef92f",
+    "qualification": "Only owned app executable identity is selected; unrelated system mappings remain private."
+  }
+}

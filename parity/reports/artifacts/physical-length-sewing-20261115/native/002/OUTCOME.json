@@ -1,0 +1,325 @@
+{
+  "case_id": "NATIVE-PHYSICAL-SEWING-002",
+  "status": "executed_pending_root_actual_UI_review",
+  "saved_output_status": "passed_saved_output_only",
+  "native_workflow_verdict": "Root independent actual UI/trace review required; actor does not promote native pass.",
+  "scope": "One bounded original actual-native engineering journey; no reference/full sewing/New Empty/physics acceptance.",
+  "counts": {
+    "native_calls": 161,
+    "completion_summary_calls": 1,
+    "total_calls": 162,
+    "native_cap": 219,
+    "total_cap": 220,
+    "elapsed_through_quit_s": 748.816649,
+    "elapsed_cap_s": 1200
+  },
+  "native_stages": [
+    {
+      "stage": "Fresh original source/process/input",
+      "captures": [
+        "initial-r41",
+        "framed-r41",
+        "analytic-scene-selected",
+        "free-sewing-selected"
+      ],
+      "observed": "Clean R41/2pieces/0seams/0groups/paused; ownPID56803 bound to exact approved executable."
+    },
+    {
+      "stage": "No-op raw width draft/caret",
+      "captures": [
+        "width-focus-observed",
+        "width-raw-sentinel",
+        "width-caret-before-e"
+      ],
+      "observed": "Raw0.2e0 then Left twice before modal."
+    },
+    {
+      "stage": "One invalid unfinished Length refusal",
+      "captures": [
+        "invalid-modal-observed",
+        "invalid-forward-observed",
+        "invalid-length-focus-observed",
+        "invalid-length-raw",
+        "invalid-length-after-tab",
+        "invalid-refusal-retained"
+      ],
+      "observed": "Curve6/t0/Forward,raw1e-,Tab/usefulpositive-finite-Lengtherror,oneOKretainsmodalandrawinput/R41/0groups."
+    },
+    {
+      "stage": "Cancel and planned caret witness",
+      "captures": [
+        "invalid-cancel-width-restored",
+        "width-caret-witness",
+        "width-noop-r41"
+      ],
+      "observed": "Cancelrestoresraw0.2e0/focus; insertion0produces0.20e0;Tabno-opR41/no dirty;filesPOST-CANCELunchanged."
+    },
+    {
+      "stage": "Canonical physical A",
+      "captures": [
+        "canonical-a-start-marker",
+        "canonical-a-modal",
+        "canonical-a-length-focus-observed",
+        "canonical-a-length-raw100",
+        "canonical-a-length-validated",
+        "canonical-a-transient"
+      ],
+      "observed": "Actualendpointpickthenrightclickforward;Curve6/exactt0/Forward;Length100/Tab/OKonce;A pending100.0mm/sideB/R41/0groups;A-onlyfileinventoryoriginalR41/next20/nosidecars."
+    },
+    {
+      "stage": "Canonical physical B/one-pair commit",
+      "captures": [
+        "canonical-b-start-marker",
+        "canonical-b-modal",
+        "canonical-b-start-focus-observed",
+        "canonical-b-start-raw075",
+        "canonical-b-start-validated",
+        "canonical-b-length-raw100",
+        "canonical-b-final-before-ok",
+        "canonical-pair-created-r42"
+      ],
+      "observed": "Interiorpick/leftwardrightclickCurve15/Reverse;plannedexactStart0.75/Tab/Length100/Tab/OKonce;R42/Free sewing1#20/twoapplied100.0mmlabels/guides/matchingrebuiltmesh."
+    },
+    {
+      "stage": "Native created Save As",
+      "captures": [
+        "created-save-dialog",
+        "created-directory-field",
+        "created-path-typed",
+        "created-directory-observed",
+        "created-name-exact-before-save",
+        "created-saved-r42"
+      ],
+      "observed": "CurrentobservededitableNamefieldsetValuecreated.weftforgeonce/exactnameandSaveenabled;oneSavecleanR42."
+    },
+    {
+      "stage": "Undo and Undo Save As",
+      "captures": [
+        "undo-edit-menu-observed",
+        "undo-r43",
+        "undo-save-dialog",
+        "undo-directory-field",
+        "undo-path-typed",
+        "undo-directory-observed",
+        "undo-name-exact-before-save",
+        "undo-saved-r43"
+      ],
+      "observed": "OneEditUndo removeswholepair/labels/guides;R43/0groups;oneobservedName-setValue/exactnameenabledSave/oneSave;allocator21fromprimary."
+    },
+    {
+      "stage": "Redo and Redo Save As",
+      "captures": [
+        "redo-edit-menu-observed",
+        "redo-r44",
+        "redo-save-dialog",
+        "redo-directory-field",
+        "redo-path-typed",
+        "redo-directory-observed",
+        "redo-name-exact-before-save",
+        "redo-saved-r44"
+      ],
+      "observed": "OneEditRedo restoresamegroup20/intervals/labels/guidesatR44;oneName-setValue/exactnameenabledSave/oneSave."
+    },
+    {
+      "stage": "Actual New Empty and planned R0 history no-ops",
+      "captures": [
+        "new-empty-menu-observed",
+        "new-empty-r0",
+        "new-empty-undo-menu",
+        "new-empty-after-undo-r0",
+        "new-empty-redo-menu",
+        "new-empty-after-redo-r0"
+      ],
+      "observed": "FileNewEmptyonce/Untitled.weftforge/R0/0pieces/seams/groups/vertices/noauthoredgarment;alloweddefaultanalyticmannequinvisible;oneUndoandoneRedoremainR0/no dirty. ExistingFree sewingtool/PendingSideApromptremains;thatpromptaloneisnotadraftperfrozenprotocol."
+    },
+    {
+      "stage": "Same-process saved Redo reopen",
+      "captures": [
+        "reopen-dialog",
+        "reopen-path-field",
+        "reopen-redo-path-typed",
+        "reopen-redo-selected-before-open",
+        "reopened-redo-r44"
+      ],
+      "observed": "Typedplannedredo primaryfullpathinobservedGoToFolder;Returnselectedexactredo;capturedselection+enabledOpen;onecurrentOpenbuttonclick;cleanR44/samegroup/labels/guides/rebuiltmesh."
+    },
+    {
+      "stage": "Native reopened Save As",
+      "captures": [
+        "reopened-save-dialog",
+        "reopened-directory-field",
+        "reopened-path-typed",
+        "reopened-directory-observed",
+        "reopened-name-exact-before-save",
+        "reopened-saved-r44"
+      ],
+      "observed": "OnecurrentobservedName-setValuereopened.weftforge/exactnameenabledSave/oneSave;cleanR44;Redo/reopenedbytesidentical."
+    },
+    {
+      "stage": "Single successful planned quit/summary",
+      "record": "0161",
+      "observed": "Cmd+Qreturnedasthefinalnativecall;immediatenextCUAonlycompletion_summaryexactlyonce;noAXonclosedwindow;outsideCUAownPIDabsent."
+    }
+  ],
+  "file_checkpoints": [
+    "INITIAL-PROCESS-FILES.json",
+    "POST-CANCEL-FILES.json",
+    "A-ONLY-FILES.json",
+    "CREATED-SAVE-FILES.json",
+    "UNDO-SAVE-FILES.json",
+    "REDO-SAVE-FILES.json",
+    "NEW-EMPTY-FILES.json",
+    "REOPENED-REDO-FILES.json",
+    "REOPENED-SAVE-FILES.json",
+    "FINAL-BINDINGS-FILES.json"
+  ],
+  "primaries": [
+    {
+      "file": "created.weftforge",
+      "revision": 42,
+      "next_id": 21,
+      "groups": 1,
+      "group_ids": [
+        20
+      ],
+      "sha256": "6ec524363a346b32fa482057d1ea3b68ef0cbd2271f8498db092190579146626",
+      "bytes": 3783
+    },
+    {
+      "file": "undo.weftforge",
+      "revision": 43,
+      "next_id": 21,
+      "groups": 0,
+      "group_ids": [],
+      "sha256": "e8aaeca3e1bc6783c7fad1fa289c79a88c90929652ecf606bf7276bd2fecd6ad",
+      "bytes": 3288
+    },
+    {
+      "file": "redo.weftforge",
+      "revision": 44,
+      "next_id": 21,
+      "groups": 1,
+      "group_ids": [
+        20
+      ],
+      "sha256": "3d0aa9cd93300ecfe69a0798363c9ace70bf2e4e36fd4ba68499de822348c08f",
+      "bytes": 3783
+    },
+    {
+      "file": "reopened.weftforge",
+      "revision": 44,
+      "next_id": 21,
+      "groups": 1,
+      "group_ids": [
+        20
+      ],
+      "sha256": "3d0aa9cd93300ecfe69a0798363c9ace70bf2e4e36fd4ba68499de822348c08f",
+      "bytes": 3783
+    }
+  ],
+  "all_four_primaries_retained_first_saved_hash": true,
+  "redo_reopened_primary_bytes_identical": true,
+  "all_owned_sidecars_parseable": true,
+  "normal_sidecars": [
+    {
+      "file": "created.weftforge.autosave",
+      "revision": 43,
+      "next_id": 21,
+      "groups": 0,
+      "sha256": "e8aaeca3e1bc6783c7fad1fa289c79a88c90929652ecf606bf7276bd2fecd6ad"
+    },
+    {
+      "file": "physical-readonly-input.weftforge.autosave",
+      "revision": 42,
+      "next_id": 21,
+      "groups": 1,
+      "sha256": "6ec524363a346b32fa482057d1ea3b68ef0cbd2271f8498db092190579146626"
+    },
+    {
+      "file": "undo.weftforge.autosave",
+      "revision": 44,
+      "next_id": 21,
+      "groups": 1,
+      "sha256": "3d0aa9cd93300ecfe69a0798363c9ace70bf2e4e36fd4ba68499de822348c08f"
+    }
+  ],
+  "audit": {
+    "all_native_paired": true,
+    "all_native_returned": true,
+    "raw_captures": 74,
+    "all_capture_hashes_match": true,
+    "Name_setValue_calls": [
+      {
+        "id": "0079",
+        "label": "created-name-setValue-once",
+        "args": [
+          89,
+          "created.weftforge"
+        ]
+      },
+      {
+        "id": "0098",
+        "label": "undo-name-setValue-once",
+        "args": [
+          89,
+          "undo.weftforge"
+        ]
+      },
+      {
+        "id": "0117",
+        "label": "redo-name-setValue-once",
+        "args": [
+          89,
+          "redo.weftforge"
+        ]
+      },
+      {
+        "id": "0157",
+        "label": "reopened-name-setValue-once",
+        "args": [
+          89,
+          "reopened.weftforge"
+        ]
+      }
+    ],
+    "observation_only_pending_mesh_captures_used": 0,
+    "no_authoring_retry_repair_or_fallback": true
+  },
+  "bindings": {
+    "source_head": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+    "source_clean": true,
+    "source_pins_verified": 60,
+    "all_source_pins_unchanged": true,
+    "all_frozen_files_unchanged": true,
+    "native_binary_sha256": "69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0",
+    "owned_executable_sha256": "69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0",
+    "input_sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+    "original_fixture_sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+    "controller_sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+    "recorder_sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+    "binding_sha256": "0596295c116f09f02ce42633e417e91f10b4d9355cedd90cf915b95cae2fe896",
+    "freeze_sha256": "6ee119713ffffeb2bc3a69f1fdffb195f3136b2ff0644cdc261199273161a3e8",
+    "root_protocol_review_sha256": "bcd68b765bf7ecb496b5e9779ca8863932e1102a92f45c69ecdc8b9dcfb21eac"
+  },
+  "processes": {
+    "owned_pid": 56803,
+    "owned_process_absent": true,
+    "prior_processes_preserved": true,
+    "old_physical_dialog_pid34507_preserved": true,
+    "old_actor_files_preserved": true
+  },
+  "saved_grader": {
+    "runs": 1,
+    "report": "SAVED-GRADE-002.json",
+    "status": "passed_saved_output_only",
+    "native_workflow_verdict": "not_established_by_saved_files",
+    "sha256": "39f418ce9f689c09535e44188777d6f1a2406e001099b48276225205e791cbfc"
+  },
+  "limits": [
+    "ActualUIacceptanceremainsrootreviewofrawtooltrace/screenshots; savedfilepassaloneisnotnativeacceptance.",
+    "No full reference parity, arbitrary pointer-projection/snap semantics, physics, process restart or completefeaturegate.",
+    "No source/Cargo/publicmetadata/Actions/Pages/push changes.",
+    "InitialgetAppAXandactualAPIdocsareinautomaticallyemittedtooltranscript;subsequentrawAXdiffs/screenshotsarepreserved.",
+    "Localignoredevidenceisnotdelivery; noGittracking/cleanregistry/mappublicationclaim."
+  ]
+}

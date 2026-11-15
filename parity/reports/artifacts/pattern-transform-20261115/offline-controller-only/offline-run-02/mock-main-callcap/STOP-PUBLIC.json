@@ -1,0 +1,24 @@
+{
+  "scope": "Selected review derivative; omitted private inventory or kernel-stack fields are not public delivery. Numerical results and status fields are unchanged.",
+  "original_private_sha256": "7e0c9f42a3defe1dd6a892d7bbcc303420840424cf20d89f7cbd7037e2bdaa3c",
+  "omitted_private_fields": [
+    "error.stack"
+  ],
+  "record": {
+    "utc": "2026-11-15T15:59:20.200Z",
+    "monotonic_ns": "880676179205083",
+    "context": {
+      "phase": "before-target-call"
+    },
+    "error": {
+      "name": "Error",
+      "message": "API call cap reached"
+    },
+    "status": {
+      "evidenceKind": "offline_mock",
+      "calls": 3,
+      "elapsedS": 56.627107792,
+      "stopped": false
+    }
+  }
+}
