@@ -1,0 +1,19 @@
+{
+  "id": "SIM-CAPSULE-GAP-001",
+  "kind": "independently_checked_output",
+  "initial_conditions": "Unchanged saved3aa Harbor A/B frame180 OBJ exports and native project inputs; no simulation executed by this static probe.",
+  "fixture_hashes": {
+    "parity/reports/artifacts/capsule-gap-20261115/A.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+    "parity/reports/artifacts/capsule-gap-20261115/B-180.obj": "d7c1988ae80f3a1db0a74d79e56dd3646856f991ced19889f9475de08fb41b5b",
+    "parity/reports/artifacts/capsule-gap-20261115/A-180.obj": "667b774590c8acaed2a5bd9f2ea8f68b2908ac5833f25b20d216757ad644de2b",
+    "parity/reports/artifacts/capsule-gap-20261115/B.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+  },
+  "operations": [
+    "Verify asset hashes.",
+    "Use each fixed barycentric surface point and the closed capsule axis from the saved project to calculate radius+physicaloffset-distance.",
+    "Confirm witness triangle vertices stay outside while its interior/edge exceeds the unchanged2mm penetration screen."
+  ],
+  "expected_outcomes": "Reproduce A9.009700546mm and B10.672413745mm penetration witnesses within1e-10m; both fail2mm. No exhaustive maximum or dynamics claim.",
+  "static_reproduction_tolerance_m": 1e-10,
+  "contact_penetration_below_m": 0.002
+}

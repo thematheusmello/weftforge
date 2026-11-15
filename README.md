@@ -15,12 +15,20 @@ See [current status](STATUS.md), [generated progress](docs/progress.md), [dashbo
 Original sample projects are available in [fixtures](fixtures). See
 [verification](docs/verification.md) for tested workflows and current limits.
 
+![WeftForge native workspace with editable shirt patterns and a simulated garment](parity/reports/artifacts/studio-preview-20261114/captures/current/workspace.jpg)
+
+The updated studio uses a charcoal workspace, teal editing accents, compact
+document controls, connected 2D/3D views, a properties inspector and a persistent
+simulation transport. [PhotoCraft](https://github.com/storytold/photocraft)
+informed the visual direction. See the [native preview gallery](docs/studio-preview.md)
+for editable ellipses, ordered sewing, easing controls and the build's limits.
+
 ## Current capabilities
 
 The source implements a native eframe/wgpu workspace with a 2D pattern canvas,
 basic 3D garment preview, piece selection, numeric properties, command search,
-and undo/redo. Rectangle/polygon construction feeds the same Rust document engine
-as the CLI. The core retains straight/cubic boundaries, oriented seam intervals,
+and undo/redo. Rectangle, polygon and editable four-cubic ellipse construction
+feed the same Rust document engine as the CLI. The core retains straight/cubic boundaries, oriented seam intervals,
 ordered M:N sewing groups, authored warp direction per piece, separate warp/weft
 physical stiffness, placement and derived meshes. Groups pair cumulative authored
 arc lengths across partial, reversed or disconnected spans, with editable easing
@@ -115,5 +123,3 @@ and [physics](docs/physics.md). Use original or appropriately licensed assets.
 
 Original WeftForge code is licensed **MIT OR Apache-2.0**. Dependency and asset
 licenses retain their own terms; see the [third-party notices](THIRD_PARTY.md).
-
-![Actual native WeftForge on macOS, original edited shirt](docs/images/studio-single-candidate.png)

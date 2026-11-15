@@ -1,0 +1,12 @@
+   Compiling xtask v0.1.0 (WORKSPACE/.local/native-studio-preview-20261114/xtask)
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `BUILD_CACHE/debug/incremental/xtask-3n81cjri4fn7f/s-ho5zkrwgx5-1z09bvq-working`
+
+warning: `xtask` (bin "xtask") generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 7.94s
+     Running `target/debug/xtask package`
+   Compiling weftforge-sim v0.1.0 (WORKSPACE/.local/native-studio-preview-20261114/crates/weftforge-sim)
+   Compiling weftforge-core v0.1.0 (WORKSPACE/.local/native-studio-preview-20261114/crates/weftforge-core)
+   Compiling weftforge v0.1.0 (WORKSPACE/.local/native-studio-preview-20261114/apps/weftforge)
+   Compiling weftforge-cli v0.1.0 (WORKSPACE/.local/native-studio-preview-20261114/apps/weftforge-cli)
+    Finished `release` profile [optimized] target(s) in 58.15s
+Packaged unsigned binaries at target/package; see tested-platform limitations.

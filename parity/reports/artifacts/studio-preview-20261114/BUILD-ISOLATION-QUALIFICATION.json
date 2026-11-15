@@ -1,0 +1,13 @@
+{
+  "source_commit": "b760b990b142bb46b2481434fead9e7e0178ae0f",
+  "finding": "Prior Cargo target roots contained nested debug/release symlinks to a shared compiled-output location. Different target_directory metadata did not establish isolation.",
+  "discovery_record_sha256": "81a62646b39cfff0fae754197ed0c7b7e5c31d72b72068fa04efdf9c7cc3c9ac",
+  "preservation": "Original preview target tree and raw results retained privately; external symlink destinations untouched.",
+  "correction": "Own target tree renamed; empty real default target used with CARGO_INCREMENTAL=0, checked for no symlinks before/after each job.",
+  "fresh_checks": "gates-isolated/jobs.json",
+  "fresh_package_binding": "gates-isolated/package-binding.json",
+  "fresh_package_native_matches_observed_preview": true,
+  "native_sha256": "3f0e2388726c2768dfe1ddc3016f399b0f497acb13e9cfa70b9b031285dfd716",
+  "status": "isolated_requalification_passed",
+  "limits": "No new UI inputs, reference comparison or physics acceptance. Prior failures and undeclared play observation remain unchanged."
+}

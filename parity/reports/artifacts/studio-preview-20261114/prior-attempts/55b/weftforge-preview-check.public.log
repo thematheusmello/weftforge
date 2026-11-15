@@ -1,0 +1,32 @@
+    Checking weftforge-sim v0.1.0 (WORKSPACE/.local/native-studio-preview-20261114/crates/weftforge-sim)
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `BUILD_CACHE/debug/incremental/weftforge_sim-1kv8xxygedit7/s-ho5zcn6hdi-1eujy2g-working`
+
+warning: `weftforge-sim` (lib) generated 1 warning
+    Checking weftforge-core v0.1.0 (WORKSPACE/.local/native-studio-preview-20261114/crates/weftforge-core)
+    Checking weftforge v0.1.0 (WORKSPACE/.local/native-studio-preview-20261114/apps/weftforge)
+error[E0599]: no method named `style` found for reference `&eframe::egui::Context` in the current scope
+    --> apps/weftforge/src/main.rs:2603:27
+     |
+2603 |     let mut style = (*ctx.style()).clone();
+     |                           ^^^^^
+     |
+help: there is a method `style_of` with a similar name, but with different arguments
+    --> CARGO_HOME/registry/src/index.crates.io-1949cf8c6b5b557f/egui-0.35.0/src/context.rs:2153:5
+     |
+2153 |     pub fn style_of(&self, theme: Theme) -> Arc<Style> {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0599]: no method named `set_style` found for reference `&eframe::egui::Context` in the current scope
+    --> apps/weftforge/src/main.rs:2636:9
+     |
+2636 |     ctx.set_style(style);
+     |         ^^^^^^^^^
+     |
+help: there is a method `set_style_of` with a similar name, but with different arguments
+    --> CARGO_HOME/registry/src/index.crates.io-1949cf8c6b5b557f/egui-0.35.0/src/context.rs:2182:5
+     |
+2182 |     pub fn set_style_of(&self, theme: Theme, style: impl Into<Arc<Style>>) {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0599`.
+error: could not compile `weftforge` (bin "weftforge") due to 2 previous errors

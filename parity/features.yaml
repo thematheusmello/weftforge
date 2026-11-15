@@ -13,7 +13,9 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "parity/scenarios/UI-STUDIO-PREVIEW-001.json"
+      ],
       "scenarios": [
         {
           "id": "UI-SHIRT-001",
@@ -42,6 +44,17 @@
           "initial_conditions": "Actual no-argument native empty document; original14-point front/back created through numeric polygon staging. Fixed0.07m resolution/default physicalCotton, arrangement/grain and8full same-direction seams; predeclared frontheight0.64to0.68m aboutminY0.96m, width1.32m.",
           "expected_outcomes": "Authoring agrees with frozen geometry/IDs and1e-12m affine tolerance; onecommand history and reopen preserve construction. Complete physical protocol must meet strict15%strain/5mmseam/2mmcontact, finite/closedtargets; incomplete or failed runs never qualify the garment gate.",
           "path": "parity/scenarios/UI-HARBOR-001.json"
+        },
+        {
+          "id": "UI-STUDIO-PREVIEW-001",
+          "path": "parity/scenarios/UI-STUDIO-PREVIEW-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/studio-preview-20261114/documents/Harbor.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "parity/reports/artifacts/studio-preview-20261114/documents/Ellipse-study.weftforge": "75db2598c8360575e08a50a2e76f0b72f4e578ac33e8b2122a7c8fbb8984bbdf",
+            "parity/reports/artifacts/studio-preview-20261114/documents/Ordered-sewing.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2"
+          },
+          "initial_conditions": "Actual native macOS app with original sample projects; final build reopens the ellipse and loads sewing/Harbor examples. Ellipse was created and saved on prior55b, whose shared core command is unchanged. This is not empty-project garment acceptance.",
+          "expected_outcomes": "Four unedited1640x1032 screenshots bound to the actual native binary; editable sample construction retained; no reference, full-contact or complete-workflow claim."
         }
       ],
       "comparison_criteria": {
@@ -284,17 +297,80 @@
             "parity/reports/artifacts/harbor-publication-20261114/xtask.public.log": "01adf358a30c66130670687b1c442b4fd0179a51dd45c195e90b9360bc5ac0fd"
           },
           "path": "parity/reports/WF-20261114-HARBOR-AUTHORING-001.json"
+        },
+        {
+          "id": "WF-20261115-STUDIO-PREVIEW-001",
+          "commit": "b760b990b142bb46b2481434fead9e7e0178ae0f",
+          "timestamp": "2026-11-15T00:23:18.445439Z",
+          "platform": "macOS27.2 (26B123), aarch64, Apple M3 Max, Rust1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/studio-preview-20261114/preview-binding-final.json": "3f5cc3a3175f82888cb6b1103cbda385e85efd2dd50c6e3243981ceccaf6fdb8",
+            "parity/reports/artifacts/studio-preview-20261114/preview-binding-current.json": "53b8eb8af58907603f1f3021f4305ee88b79cfb4a81b0147e178fb7ccd1646d8",
+            "parity/reports/artifacts/studio-preview-20261114/PREVIEW-RECEIPT.json": "0f82373ff5164c33d5c0d81a9ce86e54dcb9af8b7602910a5f25b06e7140fc83",
+            "parity/reports/artifacts/studio-preview-20261114/preview-binding.json": "54d78fdfbe50fd4bfc1023f3840d541ffc927933217e131d8d8605dd142d0756",
+            "parity/reports/artifacts/studio-preview-20261114/LOG-PROVENANCE.json": "ea61c780003cb50a33514b3bdc1a90b1a1ac367b2865b045f292151dad6c36fc",
+            "parity/reports/artifacts/studio-preview-20261114/BUILD-ISOLATION-QUALIFICATION.json": "77404ab61125050dc0f3c0031135376ed1e1a20ff90335bf7ede6969484eeb44",
+            "parity/reports/artifacts/studio-preview-20261114/gates/clippy.public.log": "1d6bdf19098d5e22676486495b18324ec4eb6949b9c07febeb07e65c47dbb792",
+            "parity/reports/artifacts/studio-preview-20261114/gates/current-job.json": "d19d67a1f9c20a250d9fd0aaa2b7c253f78f0aef2f970fe3eadec03afee40402",
+            "parity/reports/artifacts/studio-preview-20261114/gates/fmt.public.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/studio-preview-20261114/gates/package.public.log": "b18779428723b27ae82670f5632769b7bd37509695c7548a618ce64b8e64fd2d",
+            "parity/reports/artifacts/studio-preview-20261114/gates/xtask.public.log": "82bc55adca98221f8fdd4255ac06228f962f01424c088422d644bfddac40b8b4",
+            "parity/reports/artifacts/studio-preview-20261114/gates/tests.public.log": "62225c63834af84d7eb3948a671126d35d4adb04c719401532f309058549da2e",
+            "parity/reports/artifacts/studio-preview-20261114/gates/source-pretest.json": "7d7e26bd41193224d02ecdad4db0f2fc52541c379d4ff2102228d3daaecc0aff",
+            "parity/reports/artifacts/studio-preview-20261114/gates/jobs.json": "7835b2419ecfcdd1c01256943f9bc8d0ace808144ca8ffe5bd338064ae9d7034",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/clippy.public.log": "599e49042f6bcac6d9b350a75bb72df7b6ed4266f407d72ad38e6499ac10171f",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/current-job.json": "d19d67a1f9c20a250d9fd0aaa2b7c253f78f0aef2f970fe3eadec03afee40402",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/fmt.public.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/package-binding.json": "2b7f1715e2ae96fcd5db51347f2732128cbad4b45e597ef20feb0d0422e47827",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/package.public.log": "b8f4c3cf402278b41794771e88bcd9ca2e894703f1e41c1786b977baaf47921e",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/xtask.public.log": "6a2db83d6b058fa3ef1fc05b8cae3e20c1ca3ee57b825a3f23da4b8d8d70c65d",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/tests.public.log": "6dcd08be40d2f4636f0b74af53d86ee079bea6edf2f0d66dcdc2fc9c2b8191b4",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/source-pretest.json": "03f3c44158b28d472c30667f72c1089e107950ac48948c324c56290cfdee1333",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/jobs.json": "29b458b0afcde28f580278bd4ab4d9958c7d94e480b01250acd4c457af289e2c",
+            "parity/reports/artifacts/studio-preview-20261114/documents/Harbor.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "parity/reports/artifacts/studio-preview-20261114/documents/Ellipse-study.weftforge": "75db2598c8360575e08a50a2e76f0b72f4e578ac33e8b2122a7c8fbb8984bbdf",
+            "parity/reports/artifacts/studio-preview-20261114/documents/Ordered-sewing.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/live-layout-refusal.json": "188e14b09d0e4c8f658c49066f1bca9357869d1cac44df34ce347ba995b0c55a",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/clippy.public.log": "3474961e05494bf259d0755a382f63b1252c803dad41a2979ebabc3ea0a4f6b6",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/fmt.public.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/package.public.log": "789d07122bbe86785331e19750afa07e257359028cb7bcec4d74b7c9c1716f52",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/xtask.public.log": "95edf5bb41ff01ba086d6fca04b67d32876f5958bb69e5c630ab5385e238fde9",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/tests.public.log": "41344f0353c8da654db2815c10eb01a2a0d8e30737feb73cf338526590465f91",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/source-pretest.json": "5477715f547413396c6d0c915e98d000481ad7b49e703bf9bf5f99b91d2be607",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/jobs.json": "12450d8dcf2e2a0af209ec891f80d365e1a719c14b6066af2874be8184e5b884",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/55b/fmt.public.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/55b/package.public.log": "554200c2abfe40ed4daa9d3a3ec5aefab8110aec894127962e36dd52279ab3a7",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/55b/tests.public.log": "c6ba1bfe5e7ebe69a0bc7b7aedc5c17636fa43dc19aae2791916a54a58bff170",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/55b/weftforge-preview-check.public.log": "3756bf5c87c2dcda4c8fb5708664c43bd8920cf960b5cb9b2fdbb3f7a1955273",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/55b/source-pretest.json": "244e9e620f809495db91db2f2f69f7042dac59b1c07daec0d8417ea1b4805aa8",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/55b/jobs.json": "a7663ede8a1dfacc765bcaa7be3bd907dc43c543f380bf6993187be8a53b46e7",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/layout-footer-refusal.jpg": "f57d50984ed89fb6e936867b61b18aece86183364c9d34ebd966a2f4c0043b32",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/ellipse.jpg": "855a65e297f326e52c961223e82d60c95827b2c76d4ee55968eda43f43225cd2",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/unplanned-play.ax.txt": "3894a6d960027db350d2926e204bbfba8b12043626da62bafac6387a1676d711",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/sewing.ax.txt": "49911f16c539fae96c3250736e03e815dd9bd90036d6056ceb065279f7fff4a9",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/easing.ax.txt": "49911f16c539fae96c3250736e03e815dd9bd90036d6056ceb065279f7fff4a9",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/layout-footer-refusal.ax.txt": "ce5d42dd7fddf7ed7ea78733d43338ae3960a8b274fd2fb46e264d91de91b2d8",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/sewing.jpg": "ff1630316fc2396964c7418faad85e0b213d802621aae3eb8b689f0656f262c7",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/ellipse.ax.txt": "4265d6e9d11759f379b646300c3ab1b15d62e96c2ad029010f35b2f31d530be6",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/workspace.jpg": "d92707b9d023d0602013663a0145f76487d8758376546e7895dcd57e112f67ac",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/easing.jpg": "c1e2837a5a4de7ddf8e65111bab2bc8dc4b4685d37abb577acac9b0c70b09fdb",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/workspace.ax.txt": "e2a199058fabbf3bdd7b0b1e2e2e351774072ed34e2ff7496ec239093612822a",
+            "spec/features/PAT-003-original-ellipse-20261114.md": "347938c4844a4c99f3f29f96ecdeb5b2e4d406ffc8ee45172f62bb4efba2b241",
+            "spec/features/PAT-003-original-ellipse-checks-20261114.txt": "ac0ecc72a0afbc21b9790146197a4b0558c03f9a3ef77d7e58460e7ad899a773",
+            "parity/scenarios/UI-STUDIO-PREVIEW-001.json": "ea8ac6bcce29fbed7720f82c7e0896fa5d575a01355d4c30158c977b10628860"
+          },
+          "path": "parity/reports/WF-20261115-STUDIO-PREVIEW-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Harbor authoring checks pass, but fixed420s physical attempts remain incomplete; nativeBnot_run and Atransient15.3559% strain retained. No completecontract/referenceparity claim."
+        "Separate7fe native A/B export equivalence completed, but strict interaction trace is incomplete at Save18; broader capsule surface contact and goldenA29 strain fail. No complete workflow/reference gate pass."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "UI-002",
@@ -3556,7 +3632,9 @@
       ],
       "reference_observation_status": "documentation_only",
       "evidence_ids": [
-        "spec/features/PAT-003-rectangles.md"
+        "spec/features/PAT-003-rectangles.md",
+        "parity/scenarios/UI-STUDIO-PREVIEW-001.json",
+        "spec/features/PAT-003-original-ellipse-20261114.md"
       ],
       "scenarios": [
         {
@@ -3577,6 +3655,17 @@
           },
           "initial_conditions": "Empty native project; no garment file loaded. Create two original 0.4 x 0.6 metre rectangles at [0,0] and [1,0], named Curve A and Curve B, through native inspector fields and Add rectangle.",
           "expected_outcomes": "Preserve authored cubic/sewn correspondence, history, failed-edit state, supported exports and focused-draft shutdown recovery within the declared bounded criteria."
+        },
+        {
+          "id": "UI-STUDIO-PREVIEW-001",
+          "path": "parity/scenarios/UI-STUDIO-PREVIEW-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/studio-preview-20261114/documents/Harbor.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "parity/reports/artifacts/studio-preview-20261114/documents/Ellipse-study.weftforge": "75db2598c8360575e08a50a2e76f0b72f4e578ac33e8b2122a7c8fbb8984bbdf",
+            "parity/reports/artifacts/studio-preview-20261114/documents/Ordered-sewing.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2"
+          },
+          "initial_conditions": "Actual native macOS app with original sample projects; final build reopens the ellipse and loads sewing/Harbor examples. Ellipse was created and saved on prior55b, whose shared core command is unchanged. This is not empty-project garment acceptance.",
+          "expected_outcomes": "Four unedited1640x1032 screenshots bound to the actual native binary; editable sample construction retained; no reference, full-contact or complete-workflow claim."
         }
       ],
       "comparison_criteria": {
@@ -3589,7 +3678,14 @@
       },
       "dependencies": [],
       "implementation_locations": [
-        "crates/weftforge-core/src/lib.rs"
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/lib.rs",
+        "crates/weftforge-core/tests/ellipse.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/src/mcp.rs",
+        "apps/weftforge-cli/tests/ellipse.rs",
+        "apps/weftforge-cli/tests/mcp_stdio.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3"
@@ -3807,16 +3903,80 @@
             "parity/reports/artifacts/numeric-rectangle-20261114/passed-3ed0/verify_initial_numeric.py": "41f44cdb721b352f75e5518d2c9a3f14dfbe6eafae762c62e903191479784bce"
           },
           "path": "parity/reports/WF-20261114-NUMERIC-RECTANGLE-002.json"
+        },
+        {
+          "id": "WF-20261115-STUDIO-PREVIEW-001",
+          "commit": "b760b990b142bb46b2481434fead9e7e0178ae0f",
+          "timestamp": "2026-11-15T00:23:18.445439Z",
+          "platform": "macOS27.2 (26B123), aarch64, Apple M3 Max, Rust1.94.1",
+          "artifact_hashes": {
+            "parity/reports/artifacts/studio-preview-20261114/preview-binding-final.json": "3f5cc3a3175f82888cb6b1103cbda385e85efd2dd50c6e3243981ceccaf6fdb8",
+            "parity/reports/artifacts/studio-preview-20261114/preview-binding-current.json": "53b8eb8af58907603f1f3021f4305ee88b79cfb4a81b0147e178fb7ccd1646d8",
+            "parity/reports/artifacts/studio-preview-20261114/PREVIEW-RECEIPT.json": "0f82373ff5164c33d5c0d81a9ce86e54dcb9af8b7602910a5f25b06e7140fc83",
+            "parity/reports/artifacts/studio-preview-20261114/preview-binding.json": "54d78fdfbe50fd4bfc1023f3840d541ffc927933217e131d8d8605dd142d0756",
+            "parity/reports/artifacts/studio-preview-20261114/LOG-PROVENANCE.json": "ea61c780003cb50a33514b3bdc1a90b1a1ac367b2865b045f292151dad6c36fc",
+            "parity/reports/artifacts/studio-preview-20261114/BUILD-ISOLATION-QUALIFICATION.json": "77404ab61125050dc0f3c0031135376ed1e1a20ff90335bf7ede6969484eeb44",
+            "parity/reports/artifacts/studio-preview-20261114/gates/clippy.public.log": "1d6bdf19098d5e22676486495b18324ec4eb6949b9c07febeb07e65c47dbb792",
+            "parity/reports/artifacts/studio-preview-20261114/gates/current-job.json": "d19d67a1f9c20a250d9fd0aaa2b7c253f78f0aef2f970fe3eadec03afee40402",
+            "parity/reports/artifacts/studio-preview-20261114/gates/fmt.public.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/studio-preview-20261114/gates/package.public.log": "b18779428723b27ae82670f5632769b7bd37509695c7548a618ce64b8e64fd2d",
+            "parity/reports/artifacts/studio-preview-20261114/gates/xtask.public.log": "82bc55adca98221f8fdd4255ac06228f962f01424c088422d644bfddac40b8b4",
+            "parity/reports/artifacts/studio-preview-20261114/gates/tests.public.log": "62225c63834af84d7eb3948a671126d35d4adb04c719401532f309058549da2e",
+            "parity/reports/artifacts/studio-preview-20261114/gates/source-pretest.json": "7d7e26bd41193224d02ecdad4db0f2fc52541c379d4ff2102228d3daaecc0aff",
+            "parity/reports/artifacts/studio-preview-20261114/gates/jobs.json": "7835b2419ecfcdd1c01256943f9bc8d0ace808144ca8ffe5bd338064ae9d7034",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/clippy.public.log": "599e49042f6bcac6d9b350a75bb72df7b6ed4266f407d72ad38e6499ac10171f",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/current-job.json": "d19d67a1f9c20a250d9fd0aaa2b7c253f78f0aef2f970fe3eadec03afee40402",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/fmt.public.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/package-binding.json": "2b7f1715e2ae96fcd5db51347f2732128cbad4b45e597ef20feb0d0422e47827",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/package.public.log": "b8f4c3cf402278b41794771e88bcd9ca2e894703f1e41c1786b977baaf47921e",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/xtask.public.log": "6a2db83d6b058fa3ef1fc05b8cae3e20c1ca3ee57b825a3f23da4b8d8d70c65d",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/tests.public.log": "6dcd08be40d2f4636f0b74af53d86ee079bea6edf2f0d66dcdc2fc9c2b8191b4",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/source-pretest.json": "03f3c44158b28d472c30667f72c1089e107950ac48948c324c56290cfdee1333",
+            "parity/reports/artifacts/studio-preview-20261114/gates-isolated/jobs.json": "29b458b0afcde28f580278bd4ab4d9958c7d94e480b01250acd4c457af289e2c",
+            "parity/reports/artifacts/studio-preview-20261114/documents/Harbor.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "parity/reports/artifacts/studio-preview-20261114/documents/Ellipse-study.weftforge": "75db2598c8360575e08a50a2e76f0b72f4e578ac33e8b2122a7c8fbb8984bbdf",
+            "parity/reports/artifacts/studio-preview-20261114/documents/Ordered-sewing.weftforge": "6ef126f40fbd5254549c93e1d2b6fb9b1225199cc3bf42e299facc984c2de2b2",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/live-layout-refusal.json": "188e14b09d0e4c8f658c49066f1bca9357869d1cac44df34ce347ba995b0c55a",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/clippy.public.log": "3474961e05494bf259d0755a382f63b1252c803dad41a2979ebabc3ea0a4f6b6",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/fmt.public.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/package.public.log": "789d07122bbe86785331e19750afa07e257359028cb7bcec4d74b7c9c1716f52",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/xtask.public.log": "95edf5bb41ff01ba086d6fca04b67d32876f5958bb69e5c630ab5385e238fde9",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/tests.public.log": "41344f0353c8da654db2815c10eb01a2a0d8e30737feb73cf338526590465f91",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/source-pretest.json": "5477715f547413396c6d0c915e98d000481ad7b49e703bf9bf5f99b91d2be607",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/9e/jobs.json": "12450d8dcf2e2a0af209ec891f80d365e1a719c14b6066af2874be8184e5b884",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/55b/fmt.public.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/55b/package.public.log": "554200c2abfe40ed4daa9d3a3ec5aefab8110aec894127962e36dd52279ab3a7",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/55b/tests.public.log": "c6ba1bfe5e7ebe69a0bc7b7aedc5c17636fa43dc19aae2791916a54a58bff170",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/55b/weftforge-preview-check.public.log": "3756bf5c87c2dcda4c8fb5708664c43bd8920cf960b5cb9b2fdbb3f7a1955273",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/55b/source-pretest.json": "244e9e620f809495db91db2f2f69f7042dac59b1c07daec0d8417ea1b4805aa8",
+            "parity/reports/artifacts/studio-preview-20261114/prior-attempts/55b/jobs.json": "a7663ede8a1dfacc765bcaa7be3bd907dc43c543f380bf6993187be8a53b46e7",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/layout-footer-refusal.jpg": "f57d50984ed89fb6e936867b61b18aece86183364c9d34ebd966a2f4c0043b32",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/ellipse.jpg": "855a65e297f326e52c961223e82d60c95827b2c76d4ee55968eda43f43225cd2",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/unplanned-play.ax.txt": "3894a6d960027db350d2926e204bbfba8b12043626da62bafac6387a1676d711",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/sewing.ax.txt": "49911f16c539fae96c3250736e03e815dd9bd90036d6056ceb065279f7fff4a9",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/easing.ax.txt": "49911f16c539fae96c3250736e03e815dd9bd90036d6056ceb065279f7fff4a9",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/layout-footer-refusal.ax.txt": "ce5d42dd7fddf7ed7ea78733d43338ae3960a8b274fd2fb46e264d91de91b2d8",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/sewing.jpg": "ff1630316fc2396964c7418faad85e0b213d802621aae3eb8b689f0656f262c7",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/ellipse.ax.txt": "4265d6e9d11759f379b646300c3ab1b15d62e96c2ad029010f35b2f31d530be6",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/workspace.jpg": "d92707b9d023d0602013663a0145f76487d8758376546e7895dcd57e112f67ac",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/easing.jpg": "c1e2837a5a4de7ddf8e65111bab2bc8dc4b4685d37abb577acac9b0c70b09fdb",
+            "parity/reports/artifacts/studio-preview-20261114/captures/current/workspace.ax.txt": "e2a199058fabbf3bdd7b0b1e2e2e351774072ed34e2ff7496ec239093612822a",
+            "spec/features/PAT-003-original-ellipse-20261114.md": "347938c4844a4c99f3f29f96ecdeb5b2e4d406ffc8ee45172f62bb4efba2b241",
+            "spec/features/PAT-003-original-ellipse-checks-20261114.txt": "ac0ecc72a0afbc21b9790146197a4b0558c03f9a3ef77d7e58460e7ad899a773",
+            "parity/scenarios/UI-STUDIO-PREVIEW-001.json": "ea8ac6bcce29fbed7720f82c7e0896fa5d575a01355d4c30158c977b10628860"
+          },
+          "path": "parity/reports/WF-20261115-STUDIO-PREVIEW-001.json"
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Independent four-cubic ellipse and numeric adapters are implemented/tested; reference ellipse gestures, defaults, exact representation and later-edit semantics remain unobserved. No persistent conic constraint."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "PAT-004",
@@ -11611,8 +11771,23 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
-      "scenarios": [],
+      "evidence_ids": [
+        "parity/reports/WF-20261115-CAPSULE-GAP-001.json"
+      ],
+      "scenarios": [
+        {
+          "id": "SIM-CAPSULE-GAP-001",
+          "path": "parity/scenarios/SIM-CAPSULE-GAP-001.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/capsule-gap-20261115/A.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "parity/reports/artifacts/capsule-gap-20261115/B-180.obj": "d7c1988ae80f3a1db0a74d79e56dd3646856f991ced19889f9475de08fb41b5b",
+            "parity/reports/artifacts/capsule-gap-20261115/A-180.obj": "667b774590c8acaed2a5bd9f2ea8f68b2908ac5833f25b20d216757ad644de2b",
+            "parity/reports/artifacts/capsule-gap-20261115/B.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+          },
+          "initial_conditions": "Unchanged saved3aa Harbor A/B frame180 OBJ exports and native project inputs; no simulation executed by this static probe.",
+          "expected_outcomes": "Reproduce A9.009700546mm and B10.672413745mm penetration witnesses within1e-10m; both fail2mm. No exhaustive maximum or dynamics claim."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -11661,10 +11836,29 @@
             "parity/reports/artifacts/relaxed-fit.json": "a8dcbf1ed6e5a8001d02221ca51cb71140ac66decc6da37a2198ceef966daacc",
             "parity/reports/artifacts/independent-relaxed-fit.json": "9ae29f6e0cb9fe64284f16a3cfc1e0b8db8568883058b5ff0076a08468c0807b"
           }
+        },
+        {
+          "id": "WF-20261115-CAPSULE-GAP-001",
+          "commit": "3aa20b1597036e9f1dc9725b52cdc928ec1bae96",
+          "timestamp": "2026-11-15T00:23:18.445439Z",
+          "platform": "Saved f64 metre-scale OBJ data; independent Python3 standard-library geometry on macOS arm64",
+          "artifact_hashes": {
+            "parity/reports/artifacts/capsule-gap-20261115/A.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+            "parity/reports/artifacts/capsule-gap-20261115/results.json": "5dfb2f0dd25df70dd2916dbe001d35b0e3bbfa9ddd7bf700da9cb92ec79a8476",
+            "parity/reports/artifacts/capsule-gap-20261115/README.md": "dc10ffd23a00089761452a7a6587bc0279aa248ec3618fa2be100a8d9c8d1b50",
+            "parity/reports/artifacts/capsule-gap-20261115/B-180.obj": "d7c1988ae80f3a1db0a74d79e56dd3646856f991ced19889f9475de08fb41b5b",
+            "parity/reports/artifacts/capsule-gap-20261115/probe.py": "f0aa4e1a9f0bd253cc52facebe2dc094ec5c796b8ccb6d19f87f5ca08aa37fb0",
+            "parity/reports/artifacts/capsule-gap-20261115/cases.json": "ec2a6c58a6a5e5261433c0116d1b78bc2902d1b4def2ac3a6f7e184e8a453f0d",
+            "parity/reports/artifacts/capsule-gap-20261115/A-180.obj": "667b774590c8acaed2a5bd9f2ea8f68b2908ac5833f25b20d216757ad644de2b",
+            "parity/reports/artifacts/capsule-gap-20261115/B.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5",
+            "parity/scenarios/SIM-CAPSULE-GAP-001.json": "0c23a3c7adc6f7488c43563c32964b538dc31b259914ae426a80f93cd6a59989"
+          },
+          "path": "parity/reports/WF-20261115-CAPSULE-GAP-001.json"
         }
       ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Static Harbor A/B surface witnesses penetrate analytic arm capsules by at least9.0097/10.6724mm although all witness vertices are outside; both fail2mm. Vertex-only contact is incomplete. Historical3aa outputs retained; prospective surface fix is separate."
       ],
       "contradictions": [],
       "blockers": [
@@ -15406,7 +15600,7 @@
           "fixture_hashes": {
             "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
           },
-          "initial_conditions": "Original shirt with expected x±0.53,y1.02..1.56,z±0.22m; distinct destinations.",
+          "initial_conditions": "Original shirt with expected x\u00b10.53,y1.02..1.56,z\u00b10.22m; distinct destinations.",
           "expected_outcomes": "Physical scale, axes, UVs, unit normals, groups and closed physical pattern paths; material/animation attributes remain unsupported."
         },
         {
@@ -16121,7 +16315,7 @@
           "fixture_hashes": {
             "fixtures/original-shirt.weftforge": "34bbc74a5ff78265fd503c2b586db859a56b9e985295f399673342aa304cb060"
           },
-          "initial_conditions": "Original shirt with expected x±0.53,y1.02..1.56,z±0.22m; distinct destinations.",
+          "initial_conditions": "Original shirt with expected x\u00b10.53,y1.02..1.56,z\u00b10.22m; distinct destinations.",
           "expected_outcomes": "Physical scale, axes, UVs, unit normals, groups and closed physical pattern paths; material/animation attributes remain unsupported."
         },
         {

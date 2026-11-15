@@ -1,0 +1,51 @@
+[
+  {
+    "name": "fmt",
+    "source_commit": "55b1187acad08bee9bb6ec58e42f23695ed76ff1",
+    "wrapper_pid": 94147,
+    "started_utc": "2026-11-14T22:26:03.590845+00:00",
+    "command": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--check"
+    ],
+    "status": "completed",
+    "child_pid": 94196,
+    "exit_code": 0,
+    "wall_seconds": 0.47298804100137204,
+    "completed_utc": "2026-11-14T22:26:04.064059+00:00"
+  },
+  {
+    "name": "package",
+    "source_commit": "55b1187acad08bee9bb6ec58e42f23695ed76ff1",
+    "wrapper_pid": 94147,
+    "started_utc": "2026-11-14T22:26:04.108856+00:00",
+    "command": [
+      "cargo",
+      "xtask",
+      "package"
+    ],
+    "status": "completed",
+    "child_pid": 94280,
+    "exit_code": 0,
+    "wall_seconds": 66.66464541701134,
+    "completed_utc": "2026-11-14T22:27:10.773970+00:00"
+  },
+  {
+    "name": "tests",
+    "source_commit": "55b1187acad08bee9bb6ec58e42f23695ed76ff1",
+    "wrapper_pid": 94147,
+    "started_utc": "2026-11-14T22:27:10.819202+00:00",
+    "command": [
+      "cargo",
+      "test",
+      "--workspace"
+    ],
+    "status": "failed",
+    "child_pid": 95129,
+    "exit_code": 101,
+    "wall_seconds": 195.29004112503026,
+    "completed_utc": "2026-11-14T22:30:26.111672+00:00"
+  }
+]

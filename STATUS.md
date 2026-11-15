@@ -1,4 +1,4 @@
-# WeftForge status — active development, 2026-11-14
+# WeftForge status — active development, 2026-11-15
 
 The complete independent native garment studio remains the goal. Verified
 reference parity is **0/56** coarse contracts; discovery is incomplete and no
@@ -22,7 +22,16 @@ non-overlap at minimum/default sizes. Final `b760b990` passed formatting,
 141 workspace Rust tests, strict workspace/all-target Clippy, xtask verification
 (54 Python checks, registry/map and actual CLI help), and standard local unsigned
 packaging. All five jobs under `.local/native-preview-checks-v3-20261114` are
-terminal with exit0 (exec24713; wrapper28492). Earlier55b checks failed four
+terminal with exit0 (exec24713; wrapper28492). Those builds used nested target
+links to shared compiled outputs; their raw results retain that qualification.
+The preview target was preserved and replaced by an empty real directory.
+Fresh isolated formatting, all141Rust tests, strict Clippy, xtask verification
+and standard packaging passed under `.local/native-preview-isolated-checks-20261115`
+(wrapper19046, exec82428, all terminal0). The resulting native binary is
+byte-identical to the observed3f0 preview. See the tracked
+[gallery](docs/studio-preview.md) and
+[build qualification](parity/reports/artifacts/studio-preview-20261114/BUILD-ISOLATION-QUALIFICATION.json).
+Earlier55b checks failed four
 observer/layout cases;9e passed automated gates but its actual launch exposed
 transport overpainting. Both attempts and raw captures remain retained.
 
@@ -43,17 +52,55 @@ advanced construction, animation and general garment convergence are unfinished.
 The complete local receipt is `.local/native-preview-20261114/PREVIEW-RECEIPT.json`
 (SHA256 `0f82373ff5164c33d5c0d81a9ce86e54dcb9af8b7602910a5f25b06e7140fc83`).
 
-The original frozen7fe authoring process47555 is saved at revision1: one14-edge
-front piece,327 rest vertices,zero draft points. Its v00/v01 saves independently
-match the frozen authoring expectations. Remaining authoring and both physical
-cases are unrun. Root's37 frozen source files remain unchanged; the preview uses
-a separate worktree/bundle and loaded original fixtures for demonstration.
-Preview evidence is under `.local/native-preview-20261114`; it cannot substitute
-for the empty-project acceptance. The preview branch and screenshots are local;
-publication still requires tracked artifacts and registry/freshness updates.
-Next resume the saved frozen authoring workflow, then integrate/publish the
-qualified runtime, ellipse and visual changes with their accurate evidence.
-GitHub Actions remains disabled; README branding was rechecked clean.
+The separate frozen7fe native workflow has authored both14-edge panels,
+placement/grain and all8seams, saved revision16, actually quit, launched a fresh
+empty process and reopened the identical source. Height/history revisions17–20
+match the predeclared fields exactly. CaseA20 completed60assembly+120drape steps
+in279.694913s, including exports and inspections, within the420s cap. Its0/60/180
+OBJ files are literally byte-identical to the frozen headless baseline. The
+independent final material-axis strain is8.6662644% and sampled seam gap is
+6.89445e-9m. These are native/headless equivalence checks, not reference parity.
+
+After Drape, the temporary edit21 produced640Rest with no time/strain state;
+Undo22 restored654Rest. The pending-mesh transient was unobserved. A second
+actual quit/relaunch/reopen preserved source bytes, and one height edit23
+produced the exact physical fields and restOBJ for caseB. B completed in
+207.261676542s with all three exports byte-identical to gold; final strain is
+6.8045029% and sampled seam gap6.08705e-9m. Independent curve/t measurements
+confirm the front changes0.04m at rest and0.029859952m at frame180. Process14668
+is saved at revision23, paused at Drape3.000s, with no active solver job.
+Root's37 frozen runtime/test files and the observed de81 executable remain
+unchanged. The closed private native inventory contains398payload files and48
+unedited JPEGs; full public preparation is still pending.
+
+The original workflow evaluator's revision sequence assumption fails across
+honest fresh-process opens0→16/22. A separately frozen strict lifecycle supplement
+preserves that failure and the raw action metadata defects. Save18's failed helper
+invocation lacks an on-disk original per-input trace; the later derivative is
+explicitly post hoc, and full action coverage is unproven. The unchanged
+supplement failed its honestfalse-completeness guard (exit2); later graph checks
+were not executed. No complete native workflow acceptance is claimed.
+
+Independent static geometry found full triangle/capsule penetration of at least
+9.0097005mm in HarborA180 and10.6724137mm inB180 despite zero supported vertex
+residual. Root reproduced the witnesses from the saved geometry; both exceed
+the unchanged2mm contact screen. GoldenA29 also retains15.3559% strain above15%.
+These failures prevent a contact or garment gate pass. A separate implementation
+at24dba771 adds static surface contact and conservative uncertainty diagnostics;
+39sim tests, strict sim Clippy and formatting pass. Independent source/static
+review found no bounded blocker across83oracle cases, including9conservative
+uncertain bounds. Root0770204 adds the CLI quality guard, legacy diagnostic
+decoding check and native uncertainty display. Formatting, all153Rust tests,
+strict workspace Clippy, xtask verification and standard unsigned packaging pass
+under `.local/capsule-integrated-checks-20261115` (exec93102/wrapper30000, all
+terminal0). Independent execution of the unchanged Rust detector also agrees
+with the original83oracle cases. No garment has run on that new solver.
+
+Preview evidence is under `.local/native-preview-20261114` and the staged public
+gallery; it cannot substitute for empty-project acceptance. Next publish the
+reviewed gallery/source and fixed contact counterexamples, then complete the contact increment's
+integration and prospective garment checks. GitHub Actions was rechecked
+`enabled:false` on2026-11-15; README branding remains product focused.
 
 ## Publication and cost policy
 

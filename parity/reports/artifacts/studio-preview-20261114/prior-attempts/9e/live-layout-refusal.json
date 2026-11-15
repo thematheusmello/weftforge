@@ -1,0 +1,12 @@
+{
+  "source_commit": "9e117ee2b0f961672baaf98f285817ad4122771a",
+  "native_sha256": "4e6eead2b5dfccadeeb3280817ab45dead19faf0274babb49b09f993d81c5274",
+  "observed_utc": "2026-11-14T22:56:48.046139+00:00",
+  "status": "failed_live_layout",
+  "finding": "Unbounded Ui::columns uses max_rect bottom and paints over reserved transport area. Automated button window-bounds checks do not establish non-occlusion.",
+  "capture": {
+    "path": "captures/current/layout-footer-refusal.jpg",
+    "sha256": "f57d50984ed89fb6e936867b61b18aece86183364c9d34ebd966a2f4c0043b32"
+  },
+  "next": "Bound canvas child UI to remaining body height and require canvas/transport non-overlap; retain inspector-before-canvas edit order."
+}

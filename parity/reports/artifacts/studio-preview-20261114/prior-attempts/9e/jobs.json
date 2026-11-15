@@ -1,0 +1,87 @@
+[
+  {
+    "name": "fmt",
+    "source_commit": "9e117ee2b0f961672baaf98f285817ad4122771a",
+    "wrapper_pid": 16987,
+    "started_utc": "2026-11-14T22:50:46.034749+00:00",
+    "command": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--check"
+    ],
+    "status": "completed",
+    "child_pid": 17039,
+    "exit_code": 0,
+    "wall_seconds": 0.6033554999157786,
+    "completed_utc": "2026-11-14T22:50:46.638343+00:00"
+  },
+  {
+    "name": "package",
+    "source_commit": "9e117ee2b0f961672baaf98f285817ad4122771a",
+    "wrapper_pid": 16987,
+    "started_utc": "2026-11-14T22:50:46.687380+00:00",
+    "command": [
+      "cargo",
+      "xtask",
+      "package"
+    ],
+    "status": "completed",
+    "child_pid": 17099,
+    "exit_code": 0,
+    "wall_seconds": 40.68708658404648,
+    "completed_utc": "2026-11-14T22:51:27.374750+00:00"
+  },
+  {
+    "name": "tests",
+    "source_commit": "9e117ee2b0f961672baaf98f285817ad4122771a",
+    "wrapper_pid": 16987,
+    "started_utc": "2026-11-14T22:51:27.416760+00:00",
+    "command": [
+      "cargo",
+      "test",
+      "--workspace"
+    ],
+    "status": "completed",
+    "child_pid": 17255,
+    "exit_code": 0,
+    "wall_seconds": 116.40036237495951,
+    "completed_utc": "2026-11-14T22:53:23.817924+00:00"
+  },
+  {
+    "name": "clippy",
+    "source_commit": "9e117ee2b0f961672baaf98f285817ad4122771a",
+    "wrapper_pid": 16987,
+    "started_utc": "2026-11-14T22:53:23.862721+00:00",
+    "command": [
+      "cargo",
+      "clippy",
+      "--workspace",
+      "--all-targets",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "status": "completed",
+    "child_pid": 18255,
+    "exit_code": 0,
+    "wall_seconds": 29.315841750008985,
+    "completed_utc": "2026-11-14T22:53:53.178784+00:00"
+  },
+  {
+    "name": "xtask",
+    "source_commit": "9e117ee2b0f961672baaf98f285817ad4122771a",
+    "wrapper_pid": 16987,
+    "started_utc": "2026-11-14T22:53:53.221572+00:00",
+    "command": [
+      "cargo",
+      "xtask",
+      "verify"
+    ],
+    "status": "completed",
+    "child_pid": 18538,
+    "exit_code": 0,
+    "wall_seconds": 121.88980875001289,
+    "completed_utc": "2026-11-14T22:55:55.112215+00:00"
+  }
+]
