@@ -2564,8 +2564,8 @@ impl Studio {
         finish_numeric_action(ctx, draft.input.focus, false);
     }
     fn cancel_free_sewing(&mut self, ctx: &egui::Context) {
-        if let Some(draft) = self.free_sewing.take() {
-            draft.input.close_without_commit(ctx);
+        if self.free_sewing.take().is_some() {
+            self.free_sewing_input(ctx).close_without_commit(ctx);
             self.message = "Free sewing cancelled; construction unchanged.".into();
         }
     }
@@ -3033,6 +3033,9 @@ impl Studio {
         pane_heading(ui, "2D Pattern").on_hover_text("Editable construction in metres. Alt / Option bypasses snap; scroll zooms; middle drag pans.");
         let (response, painter) = ui.allocate_painter(ui.available_size(), Sense::click_and_drag());
         self.pattern_canvas = Some(response.id);
+        if self.tool == Tool::FreeSewing {
+            self.retain_inspector_input(&response, false);
+        }
         let r = response.rect;
         if ui
             .ctx()
