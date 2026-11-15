@@ -251,9 +251,20 @@ authored project; CLI/MCP source-path guards protect the DXF, and failed saves
 retain the existing output primary. Native saving copies the valid current
 primary to recovery before replacing the primary, so recovery may already have
 advanced to that valid snapshot if the final primary replacement fails. The two
-files are not one atomic transaction. This is source support for a narrow
-profile; full persistence acceptance, native runtime acceptance, full DXF
-interchange and reference parity remain separate requirements.
+files are not one atomic transaction.
+
+On source `76be95d4d7928bcb703e1f52f4a5404bc955f567`, independent headless
+checks passed four import/save/export cases, fourteen rejection/retention cases
+and four exact MCP/native project comparisons. Independent native-file and
+export grading also passed after the observed chooser/review cancellation,
+single import, two Undo/two Redo actions, cubic-control edit, rejected source
+and actual quit/relaunch/reopen sequence. The [DXF studio evidence packet](../parity/reports/artifacts/dxf-studio-20261115/README.md)
+records the bounded workflow and remaining gaps: the old Redo branch after
+Cancel was not invoked before the new import, the modal did not explicitly
+mention printing, and temporary edits reached background autosave sidecars while
+original input primaries stayed unchanged. This does not establish every frozen
+native-plan criterion, full persistence acceptance, general DXF/CAD or apparel
+interchange, printing or reference parity.
 
 Future formats must specify what they preserve and reject unsupported important
 data explicitly. They must not accept a familiar extension without decoding it,

@@ -15,20 +15,22 @@ See [current status](STATUS.md), [generated progress](docs/progress.md), [dashbo
 Original sample projects are available in [fixtures](fixtures). See
 [verification](docs/verification.md) for tested workflows and current limits.
 
-![Current WeftForge studio with editable shirt patterns and rest arrangement](parity/reports/artifacts/native-svg-20261115/native-v2/captures/09-current-studio-harbor-rest.jpg)
+![Current WeftForge studio with SVG and DXF import, editable shirt patterns and rest arrangement](parity/reports/artifacts/dxf-studio-20261115/preview/Harbor-current-studio-rest-hero.jpg)
 
 The updated studio uses a charcoal workspace, teal editing accents, compact
 document controls, connected 2D/3D views, a properties inspector and a persistent
 simulation transport. [PhotoCraft](https://github.com/storytold/photocraft)
 informed the visual direction. See the [native preview gallery](docs/studio-preview.md)
-for SVG import, editable cubic controls, framing, ellipses, sewing and the build's limits.
+for SVG/DXF import, editable cubic controls, framing, ellipses, sewing and the build's limits.
 
 ## Current capabilities
 
 The source implements a native eframe/wgpu workspace with a 2D pattern canvas,
 basic 3D garment preview, piece selection, numeric properties, command search,
-and undo/redo. **Import SVG…** adds supported closed straight/cubic pattern
-boundaries at their explicit millimetre scale, with a review before importing.
+and undo/redo. **Import SVG…** and **Import DXF…** add supported closed
+straight/cubic pattern boundaries at physical millimetre scale, with a review
+before importing. SVG requires explicit dimensions and a uniform viewBox;
+DXF accepts a bounded R2000 `LINE`/clamped cubic `SPLINE` profile.
 Imported boundaries remain editable; **Frame all** fits authored outlines in the
 2D view while preserving pending numeric edits. Rectangle, polygon and editable
 four-cubic ellipse construction feed the same Rust document engine as the CLI. The core retains straight/cubic boundaries, oriented seam intervals,
@@ -47,8 +49,8 @@ ongoing work.
 
 Version3 `.weftforge` JSON stores supported editable construction, including
 ordered sewing groups, and strictly migrates version1/2 projects. Older apps
-cannot open v3. OBJ mesh,
-bounded SVG pattern import plus SVG and DXF pattern export exist; [format details and gaps](docs/file-formats.md)
+cannot open v3. OBJ mesh export and bounded SVG/DXF pattern import and export
+exist; [format details and gaps](docs/file-formats.md)
 explain what survives each path. Simulation frames/settings, imported avatars,
 textures, animation, advanced construction and third-party project formats
 remain planned. The 3D preview is basic shaded geometry;

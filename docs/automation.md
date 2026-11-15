@@ -40,7 +40,7 @@ its input. Concurrent desktop/file writers are not coordinated by this adapter.
 
 The official specifications were checked on 2026-11-13. The adapter supports the
 current **2026-07-28** request metadata profile and the **2025-11-25** legacy
-initialization profile. They share the seven tools below. Only `tools: {}` is
+initialization profile. They share the eight tools below. Only `tools: {}` is
 advertised; no resources, prompts, subscriptions, tasks, logging, sampling, or
 elicitation capabilities are advertised.
 
@@ -102,6 +102,10 @@ are rejected. The tool names and arguments are:
 
 Results include a text block containing the same JSON for older clients.
 Inspection returns authoritative authored state without building a mesh.
+Its `project` uses the native writer's JSON number representation, including f32
+display colors and f64 authored values. For v3 files written by this version,
+parsed inspection and saved-project values agree exactly without changing stored
+numeric precision. Legacy-file inspection returns the migrated current model.
 DXF exports authored exterior curves directly, independently of mesh resolution
 or 3D placement. Its [R2000 profile](../spec/features/FILE-005-dxf-pattern-export.md)
 preserves straight/cubic geometry and stable piece layers. Sewing, materials,
