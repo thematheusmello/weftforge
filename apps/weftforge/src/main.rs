@@ -2465,18 +2465,19 @@ impl Studio {
         })
     }
     fn open_transform(&mut self, ctx: &egui::Context) {
-        let Some(edit) = self
-            .transform_gesture
-            .take()
-            .map(|gesture| gesture.edit)
-            .or_else(|| {
-                self.selected
-                    .and_then(|piece| self.transform_edit(ctx, piece))
-            })
+        self.discard_stale_transform();
+        let Some(mut edit) = self
+            .selected
+            .and_then(|piece| self.transform_edit(ctx, piece))
         else {
             self.message = "Select a pattern boundary to transform first.".into();
             return;
         };
+        if let Some(gesture) = self.transform_gesture.take() {
+            edit.translation = gesture.edit.translation;
+            edit.angle = gesture.edit.angle;
+            edit.pivot = gesture.edit.pivot;
+        }
         self.set_tool(Tool::Transform);
         self.transform_gesture = None;
         finish_numeric_action(ctx, edit.focus, false);
@@ -3091,7 +3092,10 @@ impl Studio {
             && !egui::Popup::is_any_open(ui.ctx())
             && ui.is_enabled()
             && ui.rect_contains_pointer(r)
-            && ui.input(|input| input.pointer.button_pressed(egui::PointerButton::Primary))
+            && ui.input(|input| {
+                input.pointer.primary_down()
+                    && input.pointer.button_pressed(egui::PointerButton::Primary)
+            })
             && let Some(pointer) = pointer.filter(|pointer| r.contains(*pointer))
         {
             let rotation_handle = transform_controls.filter(|(handle, _)| handle.contains(pointer));
@@ -11951,6 +11955,218 @@ mod pattern_transform_tests {
                         assert_eq!(format!("{:?}", app.editor), before);
                         assert!(app.editor.can_redo());
                     }
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn transform_review_edges_same_pass_boundary_click_leaves_no_gesture_or_history_change() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture();
+        frame(&ctx, &mut app, vec![]);
+        frame(&ctx, &mut app, vec![]);
+        let before = format!("{:?}", app.editor);
+        let start = app.to_screen([-0.375, 0.75], canvas_rect(&ctx, &app));
+        frame(
+            &ctx,
+            &mut app,
+            vec![
+                egui::Event::PointerMoved(start),
+                pointer(start, true, false),
+                pointer(start, false, false),
+            ],
+        );
+        for _ in 0..4 {
+            assert!(
+                app.transform_gesture.is_none(),
+                "a same-pass selection click is not an unfinished drag"
+            );
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert!(app.editor.can_redo());
+            frame(&ctx, &mut app, vec![]);
+        }
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(button(&output, "File"), Action::Click, None)],
+        );
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(button(&output, "New Empty"), Action::Click, None)],
+        );
+        assert_eq!(app.editor.project, Project::default());
+        assert!(app.transform_gesture.is_none());
+    }
+
+    #[test]
+    fn transform_review_edges_adoption_captures_newer_property_text_caret_and_one_apply_transaction()
+     {
+        for (text, commit) in [("0.57", false), ("1e-", false), ("0.57", true)] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let property = focus_property(&ctx, &mut app, "0.47");
+            let before_project = app.editor.project.clone();
+            let before = format!("{:?}", app.editor);
+            let start = app.to_screen([-0.375, 0.75], canvas_rect(&ctx, &app));
+            pointer_frame(&ctx, &mut app, start, Some(true), false);
+            pointer_frame(&ctx, &mut app, start + Vec2::new(50., 35.), None, false);
+            let retained = app.transform_gesture.as_ref().unwrap().edit.command();
+            let translation = app.transform_gesture.as_ref().unwrap().edit.translation;
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::K, egui::Modifiers::COMMAND)],
+            );
+            pointer_frame(
+                &ctx,
+                &mut app,
+                start + Vec2::new(50., 35.),
+                Some(false),
+                false,
+            );
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(button(&output, "New Empty"), Action::Click, None)],
+            );
+            assert!(
+                app.transform_gesture
+                    .as_ref()
+                    .unwrap()
+                    .pointer_owner
+                    .is_none()
+            );
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(property.accesskit_id(), Action::Focus, None)],
+            );
+            frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text(text.into()),
+                    key(egui::Key::ArrowLeft, egui::Modifiers::NONE),
+                ],
+            );
+            let raw = ctx.data_mut(|data| data.get_temp::<String>(property));
+            let caret = egui::TextEdit::load_state(&ctx, property)
+                .unwrap()
+                .cursor
+                .char_range();
+            assert_eq!(raw.as_deref(), Some(text));
+            let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(
+                    button(&output, "Transform pattern…"),
+                    Action::Click,
+                    None,
+                )],
+            );
+            assert_eq!(app.transform.as_ref().unwrap().command(), retained);
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(property)),
+                raw,
+                "opening must retain the current {text:?}, not its drag-start snapshot"
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, property)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            set_field(&ctx, &mut app, "Translation U (m)", 1000.);
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(
+                    button(&output, "Apply transform"),
+                    Action::Click,
+                    None,
+                )],
+            );
+            assert!(app.transform.as_ref().unwrap().error.is_some());
+            for _ in 0..3 {
+                frame(&ctx, &mut app, vec![]);
+                assert_eq!(format!("{:?}", app.editor), before);
+                assert_eq!(
+                    app.draft.as_ref().unwrap().commands(&app.editor.project),
+                    pending
+                );
+                assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(property)), raw);
+                assert_eq!(
+                    egui::TextEdit::load_state(&ctx, property)
+                        .unwrap()
+                        .cursor
+                        .char_range(),
+                    caret
+                );
+                assert!(app.editor.can_redo());
+            }
+            if commit {
+                set_field(&ctx, &mut app, "Translation U (m)", translation[0]);
+                let mut expected = app.editor.clone();
+                let mut commands = pending;
+                commands.push(retained);
+                expected.execute(Command::Transaction(commands)).unwrap();
+                let output = frame(&ctx, &mut app, vec![]);
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![action(
+                        button(&output, "Apply transform"),
+                        Action::Click,
+                        None,
+                    )],
+                );
+                assert_eq!(app.editor.project, expected.project);
+                assert_eq!(app.editor.project.revision, before_project.revision + 1);
+                assert_eq!(app.editor.project.pieces[0].grain_angle, 0.57);
+                app.history(&ctx, false);
+                same_construction(&app.editor.project, &before_project);
+            } else {
+                let output = frame(&ctx, &mut app, vec![]);
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![action(
+                        button(&output, "Cancel transform"),
+                        Action::Click,
+                        None,
+                    )],
+                );
+                for _ in 0..4 {
+                    frame(&ctx, &mut app, vec![]);
+                    assert!(app.transform.is_none() && app.transform_gesture.is_none());
+                    assert_eq!(format!("{:?}", app.editor), before);
+                    assert_eq!(
+                        app.draft.as_ref().unwrap().commands(&app.editor.project),
+                        pending
+                    );
+                    assert_eq!(numeric_focus(&ctx), Some(property));
+                    assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(property)), raw);
+                    assert_eq!(
+                        egui::TextEdit::load_state(&ctx, property)
+                            .unwrap()
+                            .cursor
+                            .char_range(),
+                        caret
+                    );
+                    assert!(app.editor.can_redo());
                 }
             }
         }
