@@ -614,9 +614,8 @@ impl Project {
                         name: pattern.name,
                         vertices: pattern.vertices,
                     })?;
-                    for (curve, controls) in self.curves[first_curve..]
-                        .iter_mut()
-                        .zip(pattern.controls)
+                    for (curve, controls) in
+                        self.curves[first_curve..].iter_mut().zip(pattern.controls)
                     {
                         curve.controls = controls;
                     }

@@ -1,6 +1,14 @@
 use crate::{Command, Error, Result, ensure};
-use quick_xml::{Reader, XmlVersion, events::{BytesStart, Event}};
-use std::{collections::BTreeMap, fs::{self, File}, io::Read, path::Path};
+use quick_xml::{
+    Reader, XmlVersion,
+    events::{BytesStart, Event},
+};
+use std::{
+    collections::BTreeMap,
+    fs::{self, File},
+    io::Read,
+    path::Path,
+};
 
 pub const MAX_SVG_BYTES: usize = 1024 * 1024;
 const MAX_SVG_PIECES: usize = 64;
@@ -28,15 +36,24 @@ impl SvgPatternImport {
     }
 
     pub fn command(&self) -> Command {
-        Command::ImportSvgPatterns { svg: self.source.clone() }
+        Command::ImportSvgPatterns {
+            svg: self.source.clone(),
+        }
     }
 
     pub fn load(path: impl AsRef<Path>) -> Result<Self> {
-        ensure(fs::metadata(path.as_ref())?.is_file(), "SVG input must be a regular file")?;
+        ensure(
+            fs::metadata(path.as_ref())?.is_file(),
+            "SVG input must be a regular file",
+        )?;
         let file = File::open(path)?;
-        ensure(file.metadata()?.is_file(), "SVG input must be a regular file")?;
+        ensure(
+            file.metadata()?.is_file(),
+            "SVG input must be a regular file",
+        )?;
         let mut bytes = Vec::new();
-        file.take((MAX_SVG_BYTES + 1) as u64).read_to_end(&mut bytes)?;
+        file.take((MAX_SVG_BYTES + 1) as u64)
+            .read_to_end(&mut bytes)?;
         Self::from_bytes(&bytes)
     }
 
@@ -134,8 +151,15 @@ impl SvgPatternImport {
             }
         }
         ensure(closed && stack.is_empty(), "SVG document is incomplete")?;
-        ensure(!patterns.is_empty(), "SVG contains no supported pattern paths")?;
-        Ok(Self { metres_per_unit: scale.expect("closed root"), source: source.to_owned(), patterns })
+        ensure(
+            !patterns.is_empty(),
+            "SVG contains no supported pattern paths",
+        )?;
+        Ok(Self {
+            metres_per_unit: scale.expect("closed root"),
+            source: source.to_owned(),
+            patterns,
+        })
     }
 }
 
@@ -148,40 +172,86 @@ fn validate_xml_chars(value: &str) -> Result<()> {
 }
 
 fn descriptive(stack: &[String]) -> bool {
-    stack.last().is_some_and(|name| matches!(name.as_str(), "title" | "desc"))
+    stack
+        .last()
+        .is_some_and(|name| matches!(name.as_str(), "title" | "desc"))
 }
 
 fn attributes(element: &BytesStart<'_>) -> Result<BTreeMap<String, String>> {
-    element.attributes().enumerate().map(|(index, attribute)| {
-        ensure(index < 8, "SVG element exceeds the supported attribute limit")?;
-        let attribute = attribute.map_err(xml_error)?;
-        ensure(!attribute.value.contains(&b'<'), "SVG XML attributes must escape less-than characters")?;
-        let key = std::str::from_utf8(attribute.key.as_ref()).map_err(xml_error)?.to_owned();
-        let value = attribute.normalized_value(XmlVersion::Explicit1_0).map_err(xml_error)?.into_owned();
-        validate_xml_chars(&value)?;
-        Ok((key, value))
-    }).collect()
+    element
+        .attributes()
+        .enumerate()
+        .map(|(index, attribute)| {
+            ensure(
+                index < 8,
+                "SVG element exceeds the supported attribute limit",
+            )?;
+            let attribute = attribute.map_err(xml_error)?;
+            ensure(
+                !attribute.value.contains(&b'<'),
+                "SVG XML attributes must escape less-than characters",
+            )?;
+            let key = std::str::from_utf8(attribute.key.as_ref())
+                .map_err(xml_error)?
+                .to_owned();
+            let value = attribute
+                .normalized_value(XmlVersion::Explicit1_0)
+                .map_err(xml_error)?
+                .into_owned();
+            validate_xml_chars(&value)?;
+            Ok((key, value))
+        })
+        .collect()
 }
 
 fn required<'a>(attributes: &'a BTreeMap<String, String>, name: &str) -> Result<&'a str> {
-    attributes.get(name).map(String::as_str).ok_or_else(|| Error(format!("SVG requires {name}")))
+    attributes
+        .get(name)
+        .map(String::as_str)
+        .ok_or_else(|| Error(format!("SVG requires {name}")))
 }
 
 fn check_attributes(attributes: &BTreeMap<String, String>, allowed: &[&str]) -> Result<()> {
     for name in attributes.keys() {
-        ensure(allowed.contains(&name.as_str()), &format!("Unsupported SVG attribute: {name}; transforms, CSS and external resources are not imported"))?;
+        ensure(
+            allowed.contains(&name.as_str()),
+            &format!(
+                "Unsupported SVG attribute: {name}; transforms, CSS and external resources are not imported"
+            ),
+        )?;
     }
     Ok(())
 }
 
 fn root_scale(attributes: &BTreeMap<String, String>) -> Result<f64> {
-    check_attributes(attributes, &["xmlns", "width", "height", "viewBox", "version"])?;
-    ensure(required(attributes, "xmlns")? == "http://www.w3.org/2000/svg", "SVG requires the standard default SVG namespace")?;
-    ensure(attributes.get("version").is_none_or(|value| matches!(value.as_str(), "1.1" | "2.0")), "Unsupported SVG version")?;
+    check_attributes(
+        attributes,
+        &["xmlns", "width", "height", "viewBox", "version"],
+    )?;
+    ensure(
+        required(attributes, "xmlns")? == "http://www.w3.org/2000/svg",
+        "SVG requires the standard default SVG namespace",
+    )?;
+    ensure(
+        attributes
+            .get("version")
+            .is_none_or(|value| matches!(value.as_str(), "1.1" | "2.0")),
+        "Unsupported SVG version",
+    )?;
     let millimetres = |name| -> Result<f64> {
         let value = required(attributes, name)?.trim();
-        let number = value.strip_suffix("mm").ok_or_else(|| Error(format!("SVG {name} must declare physical mm units; no DPI is inferred")))?;
-        ensure(!number.as_bytes().last().is_some_and(|&byte| whitespace(byte)), "SVG mm units must immediately follow their number")?;
+        let number = value.strip_suffix("mm").ok_or_else(|| {
+            Error(format!(
+                "SVG {name} must declare physical mm units; no DPI is inferred"
+            ))
+        })?;
+        ensure(
+            !number
+                .as_bytes()
+                .last()
+                .is_some_and(|&byte| whitespace(byte)),
+            "SVG mm units must immediately follow their number",
+        )?;
         let number = single_number(number)?;
         ensure(number > 0.0, "SVG physical dimensions must be positive")?;
         Ok(number)
@@ -194,22 +264,41 @@ fn root_scale(attributes: &BTreeMap<String, String>) -> Result<f64> {
         if index > 0 {
             let start = numbers.offset;
             numbers.skip_whitespace();
-            ensure(numbers.offset > start || numbers.peek() == Some(b','), "SVG viewBox numbers need whitespace or comma separators")?;
+            ensure(
+                numbers.offset > start || numbers.peek() == Some(b','),
+                "SVG viewBox numbers need whitespace or comma separators",
+            )?;
         }
         *value = numbers.number()?;
     }
     numbers.finish()?;
-    ensure(view_box[2] > 0.0 && view_box[3] > 0.0, "SVG viewBox dimensions must be positive")?;
+    ensure(
+        view_box[2] > 0.0 && view_box[3] > 0.0,
+        "SVG viewBox dimensions must be positive",
+    )?;
     let [x, y] = [width / view_box[2], height / view_box[3]];
-    ensure(x.is_finite() && y.is_finite() && x > 0.0 && y > 0.0 && (x-y).abs() <= x.abs().max(y.abs()) * 1e-12, "SVG width/height and viewBox must define a finite uniform physical scale")?;
+    ensure(
+        x.is_finite()
+            && y.is_finite()
+            && x > 0.0
+            && y > 0.0
+            && (x - y).abs() <= x.abs().max(y.abs()) * 1e-12,
+        "SVG width/height and viewBox must define a finite uniform physical scale",
+    )?;
     let scale = x / 1000.0;
-    ensure(scale.is_finite() && scale > 0.0, "SVG physical scale is outside supported precision")?;
+    ensure(
+        scale.is_finite() && scale > 0.0,
+        "SVG physical scale is outside supported precision",
+    )?;
     Ok(scale)
 }
 
 fn parse_path(data: &str, scale: f64) -> Result<SvgPattern> {
     let mut numbers = Numbers::new(data);
-    ensure(numbers.command() == Some(b'M'), "SVG path must begin with one absolute M moveto")?;
+    ensure(
+        numbers.command() == Some(b'M'),
+        "SVG path must begin with one absolute M moveto",
+    )?;
     let mut vertices = vec![numbers.point(scale)?];
     let mut controls = Vec::new();
     let mut command = b'L';
@@ -222,19 +311,42 @@ fn parse_path(data: &str, scale: f64) -> Result<SvgPattern> {
                 } else {
                     controls.push(None);
                 }
-                ensure((3..=MAX_SVG_SPANS).contains(&vertices.len()), "SVG boundary needs 3 to 4096 spans")?;
-                ensure(controls.len() == vertices.len(), "SVG path has an invalid closed boundary")?;
-                return Ok(SvgPattern { name: String::new(), vertices, controls });
+                ensure(
+                    (3..=MAX_SVG_SPANS).contains(&vertices.len()),
+                    "SVG boundary needs 3 to 4096 spans",
+                )?;
+                ensure(
+                    controls.len() == vertices.len(),
+                    "SVG path has an invalid closed boundary",
+                )?;
+                return Ok(SvgPattern {
+                    name: String::new(),
+                    vertices,
+                    controls,
+                });
             }
-            ensure(matches!(next, b'L' | b'C'), "SVG supports only one closed contour using absolute M/L/C/Z commands")?;
+            ensure(
+                matches!(next, b'L' | b'C'),
+                "SVG supports only one closed contour using absolute M/L/C/Z commands",
+            )?;
             command = next;
         }
-        let control = if command == b'C' { Some([numbers.point(scale)?, numbers.point(scale)?]) } else { None };
+        let control = if command == b'C' {
+            Some([numbers.point(scale)?, numbers.point(scale)?])
+        } else {
+            None
+        };
         let point = numbers.point(scale)?;
-        ensure(vertices.last() != Some(&point), "SVG boundary has a repeated or degenerate endpoint")?;
+        ensure(
+            vertices.last() != Some(&point),
+            "SVG boundary has a repeated or degenerate endpoint",
+        )?;
         vertices.push(point);
         controls.push(control);
-        ensure(controls.len() <= MAX_SVG_SPANS, "SVG exceeds the 4096-span limit")?;
+        ensure(
+            controls.len() <= MAX_SVG_SPANS,
+            "SVG exceeds the 4096-span limit",
+        )?;
     }
 }
 
@@ -249,11 +361,21 @@ struct Numbers<'a> {
 }
 
 impl<'a> Numbers<'a> {
-    fn new(source: &'a str) -> Self { Self { source, offset: 0, comma_allowed: false } }
-    fn skip_whitespace(&mut self) {
-        while self.peek().is_some_and(whitespace) { self.offset += 1; }
+    fn new(source: &'a str) -> Self {
+        Self {
+            source,
+            offset: 0,
+            comma_allowed: false,
+        }
     }
-    fn peek(&self) -> Option<u8> { self.source.as_bytes().get(self.offset).copied() }
+    fn skip_whitespace(&mut self) {
+        while self.peek().is_some_and(whitespace) {
+            self.offset += 1;
+        }
+    }
+    fn peek(&self) -> Option<u8> {
+        self.source.as_bytes().get(self.offset).copied()
+    }
     fn command(&mut self) -> Option<u8> {
         self.skip_whitespace();
         let command = self.peek().filter(u8::is_ascii_alphabetic)?;
@@ -263,24 +385,40 @@ impl<'a> Numbers<'a> {
     }
     fn number(&mut self) -> Result<f64> {
         self.skip_whitespace();
-        if self.comma_allowed && self.peek() == Some(b',') { self.offset += 1; self.skip_whitespace(); }
+        if self.comma_allowed && self.peek() == Some(b',') {
+            self.offset += 1;
+            self.skip_whitespace();
+        }
         let start = self.offset;
-        if matches!(self.peek(), Some(b'+' | b'-')) { self.offset += 1; }
+        if matches!(self.peek(), Some(b'+' | b'-')) {
+            self.offset += 1;
+        }
         let digits = self.offset;
-        while self.peek().is_some_and(|byte| byte.is_ascii_digit()) { self.offset += 1; }
+        while self.peek().is_some_and(|byte| byte.is_ascii_digit()) {
+            self.offset += 1;
+        }
         let mut has_digits = self.offset > digits;
         if self.peek() == Some(b'.') {
             self.offset += 1;
             let digits = self.offset;
-            while self.peek().is_some_and(|byte| byte.is_ascii_digit()) { self.offset += 1; }
+            while self.peek().is_some_and(|byte| byte.is_ascii_digit()) {
+                self.offset += 1;
+            }
             has_digits |= self.offset > digits;
         }
-        ensure(has_digits, "SVG path requires finite numbers and an explicit final Z")?;
+        ensure(
+            has_digits,
+            "SVG path requires finite numbers and an explicit final Z",
+        )?;
         if matches!(self.peek(), Some(b'e' | b'E')) {
             self.offset += 1;
-            if matches!(self.peek(), Some(b'+' | b'-')) { self.offset += 1; }
+            if matches!(self.peek(), Some(b'+' | b'-')) {
+                self.offset += 1;
+            }
             let digits = self.offset;
-            while self.peek().is_some_and(|byte| byte.is_ascii_digit()) { self.offset += 1; }
+            while self.peek().is_some_and(|byte| byte.is_ascii_digit()) {
+                self.offset += 1;
+            }
             ensure(self.offset > digits, "SVG number has an invalid exponent")?;
         }
         let value: f64 = self.source[start..self.offset].parse().map_err(xml_error)?;
@@ -295,7 +433,10 @@ impl<'a> Numbers<'a> {
     }
     fn finish(&mut self) -> Result<()> {
         self.skip_whitespace();
-        ensure(self.offset == self.source.len(), "SVG contains trailing or unsupported path/number data")
+        ensure(
+            self.offset == self.source.len(),
+            "SVG contains trailing or unsupported path/number data",
+        )
     }
 }
 

@@ -93,7 +93,14 @@ fn run() -> Result<()> {
         }
         Some("import-svg") => {
             count(&args, 4)?;
-            println!("{}", import_svg(Path::new(&args[1]), Path::new(&args[2]), Path::new(&args[3]))?);
+            println!(
+                "{}",
+                import_svg(
+                    Path::new(&args[1]),
+                    Path::new(&args[2]),
+                    Path::new(&args[3])
+                )?
+            );
         }
         Some("rectangle" | "ellipse") => {
             count(&args, 8)?;
@@ -310,8 +317,15 @@ fn import_svg(input: &Path, output: &Path, svg: &Path) -> Result<serde_json::Val
         let destination = if destination.exists() {
             destination.canonicalize()?
         } else {
-            let parent = destination.parent().filter(|path| !path.as_os_str().is_empty()).unwrap_or(Path::new("."));
-            parent.canonicalize()?.join(destination.file_name().ok_or("SVG import output needs a filename")?)
+            let parent = destination
+                .parent()
+                .filter(|path| !path.as_os_str().is_empty())
+                .unwrap_or(Path::new("."));
+            parent.canonicalize()?.join(
+                destination
+                    .file_name()
+                    .ok_or("SVG import output needs a filename")?,
+            )
         };
         if source == destination {
             return Err("SVG import output and recovery must not replace the SVG source".into());

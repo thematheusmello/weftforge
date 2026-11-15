@@ -421,7 +421,11 @@ fn call(line: &[u8]) -> Result<Value, String> {
             }
             "project_import_svg" => {
                 let args: ImportSvgArgs = arguments(line)?;
-                super::import_svg(Path::new(&args.input), Path::new(&args.output), Path::new(&args.svg))
+                super::import_svg(
+                    Path::new(&args.input),
+                    Path::new(&args.output),
+                    Path::new(&args.svg),
+                )
             }
             "project_export_svg" | "project_export_obj" | "project_export_dxf" => {
                 let args: FileArgs = arguments(line)?;
@@ -521,7 +525,10 @@ fn command_schema() -> Value {
     let variants = [
         (
             "import_svg_patterns",
-            object(json!({"svg":{"type":"string","maxLength":weftforge_core::MAX_SVG_BYTES}}), &["svg"]),
+            object(
+                json!({"svg":{"type":"string","maxLength":weftforge_core::MAX_SVG_BYTES}}),
+                &["svg"],
+            ),
         ),
         (
             "add_polygon",
