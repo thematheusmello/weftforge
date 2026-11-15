@@ -23,7 +23,9 @@ The existing simulation transport shows the active phase and successful-step
 count over its total, using the existing repaint and cancellation paths. An
 optional, initially closed Task details disclosure shows the running task's ID,
 kind and input revision and the most recently terminated task with its terminal
-status. These are session diagnostics, not network telemetry or file logging.
+status. Its collapsed row remains present while idle so starting or retiring a
+task does not resize the viewports. These are session diagnostics, not network
+telemetry or file logging.
 
 Only a successful result from an uncancelled task at the current document
 revision is Accepted. Cancelled, Failed and Discarded (obsolete input revision)

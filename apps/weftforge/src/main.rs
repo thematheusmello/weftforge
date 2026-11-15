@@ -1435,53 +1435,51 @@ impl Studio {
             ui.label(format!("{}: dt {:.5} s · {} substeps · {} iterations · gravity {:?} m/s² · seam closure {:.2} m/s",if active.is_some() { "Active settings" } else { "Next step settings" },settings.dt,settings.substeps,settings.iterations,settings.gravity,settings.seam_closure_speed));
             if let Some(batch)=self.pending_batch { ui.colored_label(Color32::GOLD,format!("Queued: {} · {} steps",batch.stage,batch.steps)); }
         });
-        if self.job.is_some() || self.last_job.is_some() {
-            ui.collapsing("Task details", |ui| {
-                ui.weak(
-                    "Application task IDs identify workers in this session, not OS thread handles.",
-                );
-                if let Some(job) = &self.job {
-                    ui.label(format!(
-                        "Current: task {} · {:?} · input rev {} · {}",
-                        job.id,
-                        job.kind,
-                        job.revision,
-                        if job.cancel.load(Ordering::Relaxed) {
-                            "Cancelling…"
-                        } else {
-                            "Running"
-                        },
-                    ));
+        ui.collapsing("Task details", |ui| {
+            ui.weak(
+                "Application task IDs identify workers in this session, not OS thread handles.",
+            );
+            if let Some(job) = &self.job {
+                ui.label(format!(
+                    "Current: task {} · {:?} · input rev {} · {}",
+                    job.id,
+                    job.kind,
+                    job.revision,
+                    if job.cancel.load(Ordering::Relaxed) {
+                        "Cancelling…"
+                    } else {
+                        "Running"
+                    },
+                ));
+            }
+            if let Some(job) = &self.last_job {
+                ui.label(format!(
+                    "Last: task {} · {:?} · input rev {} · {}",
+                    job.id,
+                    job.kind,
+                    job.revision,
+                    job.status.label(),
+                ));
+                if let Some((completed, total)) = job.progress {
+                    ui.weak(format!("Successful worker steps: {completed}/{total}"));
                 }
-                if let Some(job) = &self.last_job {
-                    ui.label(format!(
-                        "Last: task {} · {:?} · input rev {} · {}",
-                        job.id,
-                        job.kind,
-                        job.revision,
-                        job.status.label(),
-                    ));
-                    if let Some((completed, total)) = job.progress {
-                        ui.weak(format!("Successful worker steps: {completed}/{total}"));
+                ui.weak(format!(
+                    "Cancel requested: {} · obsolete input: {}",
+                    job.cancel_requested, job.obsolete,
+                ));
+                match &job.outcome {
+                    Ok(()) => {
+                        ui.weak("Worker outcome: succeeded");
                     }
-                    ui.weak(format!(
-                        "Cancel requested: {} · obsolete input: {}",
-                        job.cancel_requested, job.obsolete,
-                    ));
-                    match &job.outcome {
-                        Ok(()) => {
-                            ui.weak("Worker outcome: succeeded");
-                        }
-                        Err(JobError::Cancelled) => {
-                            ui.weak("Worker outcome: cancelled");
-                        }
-                        Err(JobError::Failed(error)) => {
-                            ui.label(format!("Worker failure: {error}"));
-                        }
+                    Err(JobError::Cancelled) => {
+                        ui.weak("Worker outcome: cancelled");
+                    }
+                    Err(JobError::Failed(error)) => {
+                        ui.label(format!("Worker failure: {error}"));
                     }
                 }
-            });
-        }
+            }
+        });
     }
     fn inspector(&mut self, ui: &mut egui::Ui) {
         ui.heading("Properties");
