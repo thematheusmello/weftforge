@@ -14,7 +14,8 @@ disabled, with zero merge workflow runs confirmed in
 `.local/verification/published-8752c9ecf4bb.json`. Automated Pages deployments
 remain disabled and the existing static site is preserved.
 
-The next DXF studio checkpoint is source
+The DXF studio checkpoint is prepared through
+[PR41](https://github.com/thematheusmello/weftforge/pull/41), with tested source
 `76be95d4d7928bcb703e1f52f4a5404bc955f567`, isolated in
 `.local/dxf-studio-fixed-integration-20261115`. It combines the bounded editable
 DXF import with the successful-commit numeric text-cache fix
@@ -110,10 +111,24 @@ unchanged entrypoint keeps its own publication flag false; the external wrapper
 proves the clean/tracked delivery gate separately. Receipt metadata receives
 final clean registry/map/hash checks without another static replay.
 
-Next: root review and publish this source49 checkpoint through a root-owned PR.
-Full native-plan, printing, whole persistence/garment and reference acceptance
-remain open. No product, UI, Cargo or physics rerun was added for publication.
-Keep Actions and automated Pages deployments disabled; preserve the static site.
+The safe receipt append at `3d5938996a6a150599b1037c8e3707127b84091c` passes
+final metadata-only checks (session 56433, wrapper 19138, registry 19214/map
+20649), with all 4,026 unique report artifacts tracked/hash-correct and all 50
+runtime/spec files unchanged. Root independently reviewed those artifact hashes.
+Raw patch and SVG evidence retains original whitespace; source/docs/metadata
+diff checks pass without editing frozen bytes. Push session 97160 exited 0 and
+the exact remote head was confirmed. No static replay, product, UI, Cargo or
+physics run was repeated for receipt/PR-link metadata.
+
+Next: merge PR41 at its reviewed head and verify the resulting source/tree and
+disabled Actions setting. Then finish the separate native Snap candidate's
+unfinished numeric-text/caret fix and review the prepared
+`NATIVE-HARBOR-EMPTY-20261115-001` plan in `.local/native-garment-plan-20261115`.
+Its freeze is `8d1fb7386e6becab72e78865a3fe7baa79fec718c56918145c2cbf71af5ce021`;
+actual actor/PID, resource observer and execution release remain unbound. Full
+native-plan, printing, persistence/garment and reference acceptance remain open.
+No new UI/physics case is launched by this publication. Keep Actions and
+automated Pages deployments disabled; preserve the static site.
 
 ## Published solver checkpoint (PR40; source 2e9795)
 
