@@ -7,10 +7,20 @@ inventory, not a feature-completion denominator.
 
 ## Current continuation
 
-Public main is `224e7b44b2f40fa479397ae50443efa63550da9c` after PR39.
+The next DXF build is `76be95d4d7928bcb703e1f52f4a5404bc955f567` in
+`.local/dxf-studio-fixed-integration-20261115`: all five gates passed with
+187 Rust tests and 54 Python checks. It fixes the observed numeric text-cache
+replay and canonical MCP document JSON. Its new headless case passed all 18
+cases and four exact inspections; the old 5950 native/inspection failures remain
+closed. New native acceptance is in progress with the unchanged frozen criteria;
+it has passed the decimal prelude, Cancel routes and history through revision9.
+No new native acceptance or public DXF delivery is claimed yet.
+
+The solver increment is delivered through [PR40](https://github.com/thematheusmello/weftforge/pull/40).
+Its prior public main is `224e7b44b2f40fa479397ae50443efa63550da9c` after PR39.
 Actions and automated Pages deployments remain disabled; the existing static site
-is preserved. This solver increment is prepared on `feat/closed-stitch-integration`
-in `.local/closed-stitch-integration-20261115`; it has not been merged into main.
+is preserved. Its isolated branch is `feat/closed-stitch-integration` in
+`.local/closed-stitch-integration-20261115`.
 
 The tested solver source is `2e9795a3cb92c79ad3b406e675dcbdb49c60ce67`.
 Its 45 runtime files plus the prospective closed-stitch contract and physics
