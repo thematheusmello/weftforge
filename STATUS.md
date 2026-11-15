@@ -52,9 +52,14 @@ The current native uncertainty count label has no live observation in this
 packet. All prior3aa strain/contact and7fe Save18/raw-metadata failures remain
 visible. The separate SVG import branch is excluded from this checkpoint.
 
-Next: obtain a separate public-packet review, validate registry/map and every
-formal artifact from a clean tracked checkout, then let root handle integration
-and publication. The publication agent owns no GitHub/push/CI operations.
+Clean tracked checkpoint `7637c372d4a9` passes the portable saved-state
+replay, registry/map and all2,288referenced artifact hashes. The200-file packet
+contains no binary/NUL or personal absolute path prefix; nine literal-path
+redaction derivatives carry provenance. See the tracked
+[publication closure](parity/reports/artifacts/capsule-surface-publication-20261115/receipt.json).
+
+Next: obtain a separate public-packet review, recheck final metadata from a clean
+tracked checkout, then let root handle integration and publication. The publication agent owns no GitHub/push/CI operations.
 GitHub Actions and Pages must remain disabled until the complete project is done.
 
 ## Native visual preview checkpoint
