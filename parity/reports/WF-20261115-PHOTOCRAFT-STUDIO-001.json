@@ -95,7 +95,7 @@
     "crates",
     "xtask"
   ],
-  "freshness": "current",
+  "freshness": "stale",
   "scope": "Bounded native visual layout/readability and successful local source/package checks only; not complete UI, authoring, garment, physics, interoperability or reference acceptance.",
   "checks": {
     "rust_tests": 195,
@@ -115,5 +115,6 @@
     "No numeric authoring, Save, history, simulation or reference UI ran in this preview.",
     "Source21b native001/002 stops and original garment/physics failures stay unchanged and stale."
   ],
-  "github_pr": "https://github.com/thematheusmello/weftforge/pull/43"
+  "github_pr": "https://github.com/thematheusmello/weftforge/pull/43",
+  "freshness_reason": "Authored length feedback changes the core metric, adapters and native inspector. The7ab visual/source check retains its original observations and artifacts; it is not transferred to this new runtime source."
 }

@@ -2185,7 +2185,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b"
       }
@@ -7365,22 +7365,32 @@
       "dependencies": [
         "PAT-002"
       ],
-      "implementation_locations": [],
+      "implementation_locations": [
+        "crates/weftforge-core/src/sewing.rs",
+        "crates/weftforge-core/src/geometry.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/src/mcp.rs"
+      ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3"
       ],
       "prs": [],
-      "implementation_status": "planned",
+      "implementation_status": "partial",
       "verification_status": "not_run",
       "verification_runs": [],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "The candidate adds applied selected-boundary length and raw seam/group A/B plus signed B\u2212A feedback. Arbitrary interval query is available through CLI/MCP; persistent measurements, angles, perimeters and complete native/reference behavior remain unverified."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "missing"
+      "freshness": "missing",
+      "contract_documents": {
+        "spec/features/PAT-007-authored-length-feedback.md": "4f79150ed28854b8a16760af07b1558808dcca2080bc1ee8e114d5b2682f851c"
+      }
     },
     {
       "id": "PAT-008",
@@ -11302,7 +11312,11 @@
       "implementation_locations": [
         "crates/weftforge-core/src/lib.rs",
         "apps/weftforge/src/main.rs",
-        "crates/weftforge-core/src/document.rs"
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/geometry.rs",
+        "crates/weftforge-core/src/sewing.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/src/mcp.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3",
@@ -12287,7 +12301,8 @@
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Native structured group span/map editing, identity, directions, lengths/mismatch, guides and ReverseB twice have bounded acceptance. Rich diagnostics, broad editing and reference/physical equivalence remain incomplete."
+        "Native structured group span/map editing, identity, directions, lengths/mismatch, guides and ReverseB twice have bounded acceptance. Rich diagnostics, broad editing and reference/physical equivalence remain incomplete.",
+        "Raw authored A/B lengths and signed B\u2212A are a bounded measurement increment. No mismatch warning threshold, gathered-seam policy, simulation outcome or reference equivalence is inferred."
       ],
       "contradictions": [],
       "blockers": [
@@ -12295,7 +12310,8 @@
       ],
       "freshness": "stale",
       "contract_documents": {
-        "spec/features/SEW-002-native-reversal.md": "0df0735180daed956d9f37cd00f66a20c01c13b6557bf51b4f7559d8fd30557f"
+        "spec/features/SEW-002-native-reversal.md": "0df0735180daed956d9f37cd00f66a20c01c13b6557bf51b4f7559d8fd30557f",
+        "spec/features/PAT-007-authored-length-feedback.md": "4f79150ed28854b8a16760af07b1558808dcca2080bc1ee8e114d5b2682f851c"
       }
     },
     {
