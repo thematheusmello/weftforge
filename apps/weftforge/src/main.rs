@@ -4713,7 +4713,15 @@ impl eframe::App for Studio {
             self.preview = None;
             self.drag_piece = None;
             if let Some(input) = self.drag_input.take() {
-                input.close_without_commit(&ctx);
+                if input
+                    .focus
+                    .is_some_and(|id| ctx.memory(|memory| memory.had_focus_last_frame(id)))
+                {
+                    finish_numeric_action(&ctx, input.focus, false);
+                } else {
+                    // Refocusing a blurred DragValue clears its raw cache; retain its current input.
+                    self.free_sewing_input(&ctx).close_without_commit(&ctx);
+                }
             }
         }
         if global_shortcuts
@@ -16164,15 +16172,15 @@ mod internal_line_tests {
             ],
         );
         let focused = numeric_focus(&ctx).unwrap();
-        let raw = ctx.data_mut(|data| data.get_temp::<String>(focused));
-        let caret = egui::TextEdit::load_state(&ctx, focused)
+        let mut raw = ctx.data_mut(|data| data.get_temp::<String>(focused));
+        let mut caret = egui::TextEdit::load_state(&ctx, focused)
             .unwrap()
             .cursor
             .char_range();
         let before = app.editor.project.clone();
         let history = format!("{:?}", app.editor);
         let selection = (app.selected, app.selected_curve);
-        let pending = app.draft.as_ref().unwrap().commands(&before);
+        let mut pending = app.draft.as_ref().unwrap().commands(&before);
         if text == "0.3125" {
             assert_eq!(
                 pending,
@@ -16231,19 +16239,77 @@ mod internal_line_tests {
             rect,
         );
         pointer_frame(&ctx, &mut app, finish, None, false);
-        if outcome == "cancel" {
+        if matches!(
+            outcome,
+            "live cancel" | "same-frame cancel" | "unfocused cancel"
+        ) {
             frame(
                 &ctx,
                 &mut app,
-                vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text("0.4375".into()),
+                ],
             );
+            pending = vec![Command::SetCurveControls {
+                curve: source,
+                controls: Some([[0.4375, 0.], controls[1]]),
+            }];
+            assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+            let mut events = vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("1e-".into()),
+            ];
+            if outcome == "unfocused cancel" {
+                events.push(key(egui::Key::ArrowLeft, egui::Modifiers::NONE));
+            }
+            frame(&ctx, &mut app, events);
+            raw = Some("1e-".into());
+            caret = egui::TextEdit::load_state(&ctx, focused)
+                .unwrap()
+                .cursor
+                .char_range();
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), raw);
+            assert_eq!(
+                numeric_focus(&ctx),
+                (outcome != "unfocused cancel").then_some(focused)
+            );
+            assert!(app.drag_point.is_some());
+        }
+        if matches!(
+            outcome,
+            "cancel" | "live cancel" | "same-frame cancel" | "unfocused cancel"
+        ) {
+            let mut events = Vec::new();
+            if outcome == "same-frame cancel" {
+                events.push(egui::Event::Text("x".into()));
+                events.push(key(egui::Key::ArrowLeft, egui::Modifiers::NONE));
+                raw = Some("1e-x".into());
+            }
+            events.push(key(egui::Key::Escape, egui::Modifiers::NONE));
+            frame(&ctx, &mut app, events);
             assert!(
                 app.drag_point.is_none(),
                 "Escape left the endpoint gesture armed"
             );
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(focused)),
+                raw,
+                "Escape replaced newer source text"
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, focused)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret,
+                "Escape replaced the newer source caret"
+            );
         }
         pointer_frame(&ctx, &mut app, finish, Some(false), false);
-        frame(&ctx, &mut app, vec![]);
+        for _ in 0..4 {
+            frame(&ctx, &mut app, vec![]);
+        }
         if outcome == "accepted" {
             assert_eq!(app.editor.project.revision, before.revision + 1);
             assert_eq!(app.selected_internal_curve(), Some(target));
@@ -16305,6 +16371,13 @@ mod internal_line_tests {
     fn internal_line_review_cancelled_drag_retains_boundary_draft_raw_caret_redo_and_outputs() {
         boundary_control_drag("cancel", "0.3125");
         boundary_control_drag("cancel", "1e-");
+    }
+
+    #[test]
+    fn internal_line_review_escape_preserves_latest_source_input_entered_during_drag() {
+        boundary_control_drag("live cancel", "0.3125");
+        boundary_control_drag("same-frame cancel", "0.3125");
+        boundary_control_drag("unfocused cancel", "0.3125");
     }
 
     #[test]
