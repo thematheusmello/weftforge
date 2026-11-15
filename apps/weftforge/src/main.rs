@@ -837,8 +837,10 @@ impl Studio {
                 }
                 Err(JobError::Failed(e)) => {
                     self.message = e;
-                    self.playing = false;
-                    self.pending_batch = None;
+                    if can_accept {
+                        self.playing = false;
+                        self.pending_batch = None;
+                    }
                 }
                 _ => {}
             }
