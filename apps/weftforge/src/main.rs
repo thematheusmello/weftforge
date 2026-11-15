@@ -848,7 +848,10 @@ impl Studio {
             .as_ref()
             .filter(|draft| draft.revision == self.editor.project.revision)
             .map_or_else(Vec::new, |draft| draft.commands(&self.editor.project));
-        commands.push(command);
+        match command {
+            Command::Transaction(actions) => commands.extend(actions),
+            command => commands.push(command),
+        }
         let command = if commands.len() == 1 {
             commands.pop().unwrap()
         } else {
@@ -4143,14 +4146,22 @@ impl Studio {
             }
             if self.tool == Tool::Select {
                 let press = ui.input(|input| input.pointer.press_origin()).unwrap_or(p);
+                let selected_endpoints = self
+                    .selected_internal_curve()
+                    .and_then(|curve| doc.curve(curve))
+                    .map(|curve| [curve.start, curve.end]);
                 let point = doc
                     .points
                     .iter()
                     .filter_map(|point| {
                         let d = self.to_screen(point.position, r).distance(press);
-                        (d < 12.).then_some((point.id, d))
+                        (d < 12.).then_some((
+                            point.id,
+                            d,
+                            selected_endpoints.is_some_and(|points| points.contains(&point.id)),
+                        ))
                     })
-                    .min_by(|a, b| a.1.total_cmp(&b.1))
+                    .min_by(|a, b| a.1.total_cmp(&b.1).then(b.2.cmp(&a.2)))
                     .map(|p| p.0);
                 if let Some(point) = point {
                     let owner = doc.pieces.iter().find_map(|piece| {
@@ -4170,30 +4181,10 @@ impl Studio {
                                 .piece(piece)
                                 .is_some_and(|piece| piece.internal_curves.contains(&curve))
                             || self.allow_piece_selection(ui.ctx()))
-                        && (!doc
-                            .piece(piece)
-                            .is_some_and(|piece| piece.internal_curves.contains(&curve))
-                            || self.selected == Some(piece)
-                            || self.select(ui.ctx(), Some(piece)))
                     {
                         self.drag_point = Some(point);
                         self.drag_piece = self.selected;
                         self.drag_input = Some(self.free_sewing_input(ui.ctx()));
-                        if doc
-                            .piece(piece)
-                            .is_some_and(|piece| piece.internal_curves.contains(&curve))
-                        {
-                            self.selected_curve = Some(curve);
-                            if let Some(draft) = &mut self.draft {
-                                draft.curve = self.editor.project.curve(curve).cloned();
-                                draft.applied_length = Some(
-                                    self.editor
-                                        .project
-                                        .interval_length(CurveInterval::full(curve))
-                                        .map_err(|error| error.to_string()),
-                                );
-                            }
-                        }
                     }
                 }
             }
@@ -4230,11 +4221,27 @@ impl Studio {
                     .point(point)
                     .is_some_and(|point| point.position != position)
                 {
-                    self.apply_inspector_action(
+                    let target = self.editor.project.pieces.iter().find_map(|piece| {
+                        piece
+                            .internal_curves
+                            .iter()
+                            .find(|id| {
+                                self.editor
+                                    .project
+                                    .curve(**id)
+                                    .is_some_and(|curve| curve.start == point || curve.end == point)
+                            })
+                            .map(|curve| (piece.id, *curve))
+                    });
+                    if self.apply_inspector_action(
                         ui.ctx(),
                         Command::MovePoint { point, position },
                         focused,
-                    );
+                    ) && let Some((piece, curve)) = target
+                    {
+                        self.selected = Some(piece);
+                        self.selected_curve = Some(curve);
+                    }
                 }
             }
             if let (Some(start), Some(p)) = (self.drag_start.take(), pointer) {
@@ -4697,6 +4704,17 @@ impl eframe::App for Studio {
                 .take()
                 .and_then(|gesture| gesture.edit.focus);
             finish_numeric_action(&ctx, focused, false);
+        }
+        if global_shortcuts
+            && self.drag_point.is_some()
+            && ctx.input_mut(|input| input.consume_key(egui::Modifiers::NONE, egui::Key::Escape))
+        {
+            self.drag_point = None;
+            self.preview = None;
+            self.drag_piece = None;
+            if let Some(input) = self.drag_input.take() {
+                input.close_without_commit(&ctx);
+            }
         }
         if global_shortcuts
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::S))
@@ -15990,6 +16008,357 @@ mod internal_line_tests {
         assert!(app.editor.can_redo());
         app.new_empty(&ctx, None);
         assert_eq!(app.editor.project, Project::default());
+    }
+
+    fn compound_endpoint_property_edit(valid: bool) {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture(true);
+        let property = focus_property(&ctx, &mut app, "0.47");
+        let before = app.editor.project.clone();
+        let history = format!("{:?}", app.editor);
+        let pending = app.draft.as_ref().unwrap().commands(&before);
+        let raw = ctx.data_mut(|data| data.get_temp::<String>(property));
+        let caret = egui::TextEdit::load_state(&ctx, property)
+            .unwrap()
+            .cursor
+            .char_range();
+        let mesh = Arc::new(before.mesh().unwrap());
+        let cloth = Arc::new(weftforge_core::simulation::create_cloth(&before, &mesh).unwrap());
+        app.mesh = Some(mesh.clone());
+        app.cloth = Some(cloth.clone());
+        let (_sender, receiver) = mpsc::channel();
+        let cancel = Arc::new(AtomicBool::new(false));
+        app.job = Some(Job {
+            id: 902,
+            revision: before.revision,
+            kind: JobKind::Simulation,
+            batch: None,
+            completed_steps: Arc::new(AtomicU64::new(0)),
+            cancel: cancel.clone(),
+            receiver,
+        });
+        open_editor(&ctx, &mut app);
+        let expected = [[0.25, 0.375], [0.75, if valid { 0.625 } else { 1.125 }]];
+        for (label, value) in [
+            ("Start U (m)", expected[0][0]),
+            ("Start V (m)", expected[0][1]),
+            ("End U (m)", expected[1][0]),
+            ("End V (m)", expected[1][1]),
+        ] {
+            set_field(&ctx, &mut app, label, value);
+        }
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(
+                button(&output, "Apply internal line"),
+                Action::Click,
+                None,
+            )],
+        );
+        if valid {
+            assert!(
+                app.internal_line.is_none(),
+                "valid compound edit rejected: {}",
+                app.message
+            );
+            assert_eq!(app.editor.project.revision, before.revision + 1);
+            assert_eq!(app.editor.project.pieces[0].grain_angle, 0.47);
+            assert_eq!(endpoints(&app), expected);
+            assert!(cancel.load(Ordering::Relaxed));
+            app.history(&ctx, false);
+            let mut restored = app.editor.project.clone();
+            restored.revision = before.revision;
+            assert_eq!(restored, before);
+            assert!(app.editor.can_redo());
+        } else {
+            assert!(
+                app.internal_line
+                    .as_ref()
+                    .unwrap()
+                    .error
+                    .as_ref()
+                    .unwrap()
+                    .starts_with("Internal curve 13"),
+                "wrong rejection: {}",
+                app.message
+            );
+            assert_eq!(format!("{:?}", app.editor), history);
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                pending
+            );
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(property)), raw);
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, property)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            assert!(
+                Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh)
+                    && Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth)
+            );
+            assert!(
+                !cancel.load(Ordering::Relaxed)
+                    && app.job.as_ref().unwrap().id == 902
+                    && !app.dirty
+                    && app.editor.can_redo()
+            );
+        }
+    }
+
+    #[test]
+    fn internal_line_review_compound_endpoints_and_staged_grain_commit_one_revision_and_undo() {
+        compound_endpoint_property_edit(true);
+    }
+
+    #[test]
+    fn internal_line_review_compound_endpoint_geometry_failure_retains_pending_and_accepted_state()
+    {
+        compound_endpoint_property_edit(false);
+    }
+
+    fn boundary_control_drag(outcome: &str, text: &str) {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture(true);
+        let target = app.selected_internal_curve().unwrap();
+        let source = app.editor.project.pieces[0].boundary[0];
+        let controls = [[1. / 3., 0.], [2. / 3., 0.]];
+        app.editor
+            .execute(Command::SetCurveControls {
+                curve: source,
+                controls: Some(controls),
+            })
+            .unwrap();
+        app.editor
+            .execute(Command::SetResolution { metres: 0.15 })
+            .unwrap();
+        assert!(app.editor.undo());
+        app.selected_curve = Some(source);
+        frame(&ctx, &mut app, vec![]);
+        let output = frame(&ctx, &mut app, vec![]);
+        let control = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| node.numeric_value() == Some(1. / 3.))
+            .unwrap()
+            .0;
+        frame(&ctx, &mut app, vec![action(control, Action::Focus, None)]);
+        frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text(text.into()),
+                key(egui::Key::ArrowLeft, egui::Modifiers::NONE),
+            ],
+        );
+        let focused = numeric_focus(&ctx).unwrap();
+        let raw = ctx.data_mut(|data| data.get_temp::<String>(focused));
+        let caret = egui::TextEdit::load_state(&ctx, focused)
+            .unwrap()
+            .cursor
+            .char_range();
+        let before = app.editor.project.clone();
+        let history = format!("{:?}", app.editor);
+        let selection = (app.selected, app.selected_curve);
+        let pending = app.draft.as_ref().unwrap().commands(&before);
+        if text == "0.3125" {
+            assert_eq!(
+                pending,
+                vec![Command::SetCurveControls {
+                    curve: source,
+                    controls: Some([[0.3125, 0.], controls[1]])
+                }]
+            );
+        } else {
+            assert!(pending.is_empty());
+        }
+        assert!(app.editor.can_redo());
+        let mesh = Arc::new(before.mesh().unwrap());
+        let cloth = Arc::new(weftforge_core::simulation::create_cloth(&before, &mesh).unwrap());
+        app.mesh = Some(mesh.clone());
+        app.cloth = Some(cloth.clone());
+        let (_sender, receiver) = mpsc::channel();
+        let cancel = Arc::new(AtomicBool::new(false));
+        app.job = Some(Job {
+            id: 903,
+            revision: before.revision,
+            kind: JobKind::Simulation,
+            batch: None,
+            completed_steps: Arc::new(AtomicU64::new(0)),
+            cancel: cancel.clone(),
+            receiver,
+        });
+        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        let start = app.to_screen([0.875, 0.75], rect);
+        pointer_frame(&ctx, &mut app, start, Some(true), false);
+        pointer_frame(&ctx, &mut app, start + Vec2::new(-10., 0.), None, false);
+        assert_eq!(
+            (app.selected, app.selected_curve),
+            selection,
+            "drag start replaced the source selection"
+        );
+        assert_eq!(
+            app.draft.as_ref().unwrap().commands(&app.editor.project),
+            pending,
+            "drag start lost the boundary control edit"
+        );
+        assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), raw);
+        assert_eq!(
+            egui::TextEdit::load_state(&ctx, focused)
+                .unwrap()
+                .cursor
+                .char_range(),
+            caret
+        );
+        let finish = app.to_screen(
+            if outcome == "outside" {
+                [1.125, 0.625]
+            } else {
+                [0.75, 0.625]
+            },
+            rect,
+        );
+        pointer_frame(&ctx, &mut app, finish, None, false);
+        if outcome == "cancel" {
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+            );
+            assert!(
+                app.drag_point.is_none(),
+                "Escape left the endpoint gesture armed"
+            );
+        }
+        pointer_frame(&ctx, &mut app, finish, Some(false), false);
+        frame(&ctx, &mut app, vec![]);
+        if outcome == "accepted" {
+            assert_eq!(app.editor.project.revision, before.revision + 1);
+            assert_eq!(app.selected_internal_curve(), Some(target));
+            assert_eq!(
+                app.editor.project.curve(source).unwrap().controls,
+                Some([[0.3125, 0.], controls[1]])
+            );
+            assert_eq!(endpoints(&app)[1], [0.75, 0.63]);
+            assert!(cancel.load(Ordering::Relaxed) && app.dirty);
+            assert!(
+                ctx.data_mut(|data| data.get_temp::<String>(focused))
+                    .is_none()
+            );
+            app.history(&ctx, false);
+            let mut restored = app.editor.project.clone();
+            restored.revision = before.revision;
+            assert_eq!(restored, before);
+            assert!(app.editor.can_redo());
+        } else {
+            assert_eq!(format!("{:?}", app.editor), history);
+            assert_eq!((app.selected, app.selected_curve), selection);
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                pending
+            );
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), raw);
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, focused)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            assert!(
+                Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh)
+                    && Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth)
+            );
+            assert!(
+                !cancel.load(Ordering::Relaxed)
+                    && app.job.as_ref().unwrap().id == 903
+                    && !app.dirty
+                    && app.editor.can_redo()
+            );
+        }
+    }
+
+    #[test]
+    fn internal_line_review_accepted_drag_commits_source_boundary_control_and_endpoint_once() {
+        boundary_control_drag("accepted", "0.3125");
+    }
+
+    #[test]
+    fn internal_line_review_rejected_drag_retains_boundary_draft_raw_caret_redo_and_outputs() {
+        boundary_control_drag("outside", "0.3125");
+        boundary_control_drag("invalid raw", "1e-");
+    }
+
+    #[test]
+    fn internal_line_review_cancelled_drag_retains_boundary_draft_raw_caret_redo_and_outputs() {
+        boundary_control_drag("cancel", "0.3125");
+        boundary_control_drag("cancel", "1e-");
+    }
+
+    #[test]
+    fn internal_line_review_coincident_endpoints_drag_only_the_selected_later_annotation() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture(true);
+        let piece = app.selected.unwrap();
+        let first = app.selected_internal_curve().unwrap();
+        app.editor
+            .execute(Command::AddInternalSegment {
+                piece,
+                start: [0.125, 0.25],
+                end: [0.625, 0.75],
+            })
+            .unwrap();
+        let second = *app.editor.project.pieces[0].internal_curves.last().unwrap();
+        app.select_curve(&ctx, Some((piece, second)));
+        app.position_snap = PositionSnap::Off;
+        let a = app.editor.project.curve(first).unwrap().clone();
+        let b = app.editor.project.curve(second).unwrap().clone();
+        assert_ne!(a.start, b.start);
+        assert_eq!(
+            app.editor.project.point(a.start).unwrap().position,
+            app.editor.project.point(b.start).unwrap().position
+        );
+        let before = app.editor.project.clone();
+        frame(&ctx, &mut app, vec![]);
+        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        let start = app.to_screen([0.125, 0.25], rect);
+        let finish = app.to_screen([0.25, 0.375], rect);
+        pointer_frame(&ctx, &mut app, start, Some(true), false);
+        pointer_frame(&ctx, &mut app, finish, None, false);
+        pointer_frame(&ctx, &mut app, finish, Some(false), false);
+        assert_eq!(
+            app.editor.project.point(a.start),
+            before.point(a.start),
+            "the unselected coincident annotation moved"
+        );
+        assert_eq!(app.editor.project.point(a.end), before.point(a.end));
+        assert_eq!(app.editor.project.point(b.end), before.point(b.end));
+        for (actual, expected) in app
+            .editor
+            .project
+            .point(b.start)
+            .unwrap()
+            .position
+            .into_iter()
+            .zip([0.25, 0.375])
+        {
+            assert!((actual - expected).abs() < 2e-6);
+        }
+        assert_eq!(app.selected_internal_curve(), Some(second));
+        assert_eq!(app.editor.project.revision, before.revision + 1);
     }
 }
 
