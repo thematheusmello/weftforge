@@ -600,3 +600,17 @@ there are no new garment, CLI/native physics, full workspace or reference result
 After the SVG publication, root must independently review this source and freeze
 any new bounded solver/garment protocol before execution. Do not retry old closed
 physical cases or change their limits.
+
+## Local DXF integration continuation
+
+The next isolated worktree is `.local/dxf-studio-integration-20261115` on
+`feat/dxf-studio-integration`. It combines the reviewed bounded DXF importer
+`69e7e57a7175977dcffa159ecb6e83944f04259e` and docs-only recovery clarification
+`e4236d1da4a34874e75f08cac7e5e4d1a23cf779` with unchanged closed-stitch runtime2e.
+Core/CLI/MCP/native handler checks, formatting and focused strict Clippy passed
+on the feature branch; source review found no outstanding blocker. Full combined
+workspace gates and unsigned packaging are next in
+`.local/dxf-studio-integrated-checks-20261115`, followed by independently frozen
+format/history checks and a real native import workflow. No live DXF UI or
+reference-parity pass is claimed. Both source2e physical cases remain closed;
+DXF integration does not authorize a physical retry.
