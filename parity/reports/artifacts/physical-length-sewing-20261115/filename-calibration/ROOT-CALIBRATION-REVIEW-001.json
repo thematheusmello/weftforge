@@ -1,0 +1,23 @@
+{
+  "kind": "root_review_of_filename_entry_calibration",
+  "utc": "2026-11-15T18:32:17.837682+00:00",
+  "status": "accepted_filename_entry_only",
+  "manifest_sha256": "501a4760988cff0b73d78b464644c5d11936bf9692e545518bbba48e045f5a79",
+  "verified_manifest_entries": 72,
+  "paired_native_calls_reviewed": 12,
+  "native_call_errors": 0,
+  "reviewed_raw_images": [
+    "001/captures/filename-exact-after-setValue-0.jpg",
+    "001/captures/cancelled-unchanged-r41-0.jpg"
+  ],
+  "observations": [
+    "One documented setValue on observed filename field produced literal created.weftforge; Save enabled.",
+    "One Cancel returned clean R41 with two pieces and zero seams/groups.",
+    "No Save click or authoring in calibration; final traced native call was Cmd+Q."
+  ],
+  "qualifications": [
+    "Completion-summary ordering and final PID absence retain actor-reported qualification.",
+    "Only filename entry and Cancel observed; actual Save/write is not calibrated.",
+    "Failed physical sewing001 remains failed/unverified."
+  ]
+}

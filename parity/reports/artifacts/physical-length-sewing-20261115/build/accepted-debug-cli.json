@@ -1,0 +1,51 @@
+{
+  "recorded_at": "2026-11-15T16:30:24.189766+00:00",
+  "source_commit": "26f88e0fc6975bb052a5fb7dc4ebe7016db65237",
+  "scoped_source_manifest_sha256": "eb5f2c0f56ac834abb1854d7c798a7327c1592759f7d448a0d5e04236e164b99",
+  "scoped_source_file_count": 46,
+  "source_before_receipt_sha256": "cb647b4935de8357b38f48aae025aea62abaa9e89debbc6c72b82c3e8a3a0f94",
+  "source_after_receipt_sha256": "0526ec71eb339721ae339761d24536cde57cc760d64323b472672fc8b9a9884b",
+  "authorization_root_review_sha256": "84508686220f80ef8c63cb6ec3d9998d4144715d2c80d570443afb41a8bcffe0",
+  "artifact": "artifacts/weftforge-cli-26f88e0-debug",
+  "binary_sha256": "fa4add99646544a052b6fa534ad325f1528e0572e4ee9aae344d687b85ac5cc1",
+  "size_bytes": 9231168,
+  "file_mode": "0o555",
+  "cargo_target_dir": "<WORKSPACE>/.local/physical-sewing-20261115/.local/target-core-cli-20261115",
+  "toolchain": {
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)\nbinary: rustc\ncommit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1\ncommit-date: 2026-03-25\nhost: aarch64-apple-darwin\nrelease: 1.94.1\nLLVM version: 21.1.8",
+    "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+    "clippy": "clippy 0.1.94 (e408947bfd 2026-03-25)"
+  },
+  "checks": [
+    {
+      "receipt": "core-sewing-groups-attempt-1.json",
+      "receipt_sha256": "0a094883fb2658bef24e6f875cbacb5d7a649999540622cfa535cfcca5ecdcf3",
+      "log": "core-sewing-groups-attempt-1.log",
+      "log_sha256": "3b308c905ccbfc69158976ff484e6b14bbabc30132dac9cb65431b59c3739ffb",
+      "exit_code": 0
+    },
+    {
+      "receipt": "cli-mcp-stdio-attempt-1.json",
+      "receipt_sha256": "6848d94cd0e0a5d492e75f949683f8df9f8f87c0edeaed293602f28d397a62e2",
+      "log": "cli-mcp-stdio-attempt-1.log",
+      "log_sha256": "fcd7704f02231ce4d519ccdc1575a458b94e047a37941f1d7bcd688a0eba1c7c",
+      "exit_code": 0
+    },
+    {
+      "receipt": "focused-clippy-attempt-1.json",
+      "receipt_sha256": "240c134b5d40b7fda6de4db676ff94467117bcef1af81fbd0043299fd48caf4d",
+      "log": "focused-clippy-attempt-1.log",
+      "log_sha256": "0a1e836b7d57aa38fce4eeac1442aeb033d226ae19ad8a580e053aa012071f2e",
+      "exit_code": 0
+    },
+    {
+      "receipt": "debug-cli-build-attempt-1.json",
+      "receipt_sha256": "05beafbb96fb25f83640d142f53f27a2bbc2002e03d8117eed2a818100507668",
+      "log": "debug-cli-build-attempt-1.log",
+      "log_sha256": "4cf86278c1e6d659943a46a3d7e3da429ac15be90f0f17742e24ef85228e7d3e",
+      "exit_code": 0
+    }
+  ],
+  "excluded_native_wip": "apps/weftforge/src/main.rs",
+  "acceptance_scope": "Focused implementation regressions only; independent evaluator, native runtime and whole-workspace gates not executed here."
+}

@@ -1,0 +1,2196 @@
+{
+  "schema_version": 1,
+  "status": "prospective_frozen_engineering_acceptance",
+  "contract_sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+  "immutable_source_commit": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+  "metric_tolerance_m": 1e-08,
+  "oracle_crosscheck_tolerance_m": 2e-12,
+  "straight_t_tolerance": 2e-14,
+  "oracle_methods": [
+    "analytic primitive and 64-step bisection",
+    "independent derivative composite Simpson at 2048/4096 steps and 56-step bisection"
+  ],
+  "primitive": "F(t)=0.1*(t*sqrt(1+t*t)+asinh(t)); C(t)=(0.2t,0.1t^2)",
+  "full_curved_length_m": 0.22955871493926383,
+  "fractions": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "positive_cases": [
+    {
+      "id": "initial_asymmetric",
+      "command": {
+        "type": "add_sewing_by_length",
+        "data": {
+          "name": "Original physical pair",
+          "a": {
+            "curve": 6,
+            "start_t": 0.0,
+            "direction": "forward",
+            "length_m": 0.1
+          },
+          "b": {
+            "curve": 15,
+            "start_t": 0.75,
+            "direction": "reverse",
+            "length_m": 0.1
+          }
+        }
+      },
+      "variant": {},
+      "expected": {
+        "a": {
+          "curve": 6,
+          "t0": 0.0,
+          "t1": 0.4819445564563284,
+          "length_m": 0.1,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.0,
+              "point_m": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.12467773934834009,
+              "point_m": [
+                0.02493554786966802,
+                0.0015544538689012631
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.2474960238665148,
+              "point_m": [
+                0.04949920477330297,
+                0.006125428182973448
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.36692531773989645,
+              "point_m": [
+                0.07338506354797929,
+                0.013463418879852397
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.4819445564563284,
+              "point_m": [
+                0.09638891129126569,
+                0.02322705554978871
+              ]
+            }
+          ]
+        },
+        "b": {
+          "curve": 15,
+          "t0": 0.75,
+          "t1": 0.25,
+          "length_m": 0.1,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.75,
+              "point_m": [
+                0.55,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.625,
+              "point_m": [
+                0.525,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.5,
+              "point_m": [
+                0.5,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.375,
+              "point_m": [
+                0.47500000000000003,
+                0.0
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.25,
+              "point_m": [
+                0.45,
+                0.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "interior_reverse",
+      "command": {
+        "type": "add_sewing_by_length",
+        "data": {
+          "name": "Original physical pair",
+          "a": {
+            "curve": 6,
+            "start_t": 0.8,
+            "direction": "reverse",
+            "length_m": 0.1
+          },
+          "b": {
+            "curve": 15,
+            "start_t": 0.1,
+            "direction": "forward",
+            "length_m": 0.1
+          }
+        }
+      },
+      "variant": {},
+      "expected": {
+        "a": {
+          "curve": 6,
+          "t0": 0.8,
+          "t1": 0.3702881984991444,
+          "length_m": 0.1,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.8,
+              "point_m": [
+                0.16000000000000003,
+                0.06400000000000002
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.7000174802282757,
+              "point_m": [
+                0.14000349604565515,
+                0.04900244726251444
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.5951194835708524,
+              "point_m": [
+                0.11902389671417049,
+                0.035416719972563813
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.4851711826097923,
+              "point_m": [
+                0.09703423652195847,
+                0.023539107643498446
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.3702881984991444,
+              "point_m": [
+                0.07405763969982888,
+                0.013711334994774177
+              ]
+            }
+          ]
+        },
+        "b": {
+          "curve": 15,
+          "t0": 0.1,
+          "t1": 0.6000000000000001,
+          "length_m": 0.1,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.1,
+              "point_m": [
+                0.42000000000000004,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.22499999999999998,
+              "point_m": [
+                0.445,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.35,
+              "point_m": [
+                0.47000000000000003,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.475,
+              "point_m": [
+                0.495,
+                0.0
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.6000000000000001,
+              "point_m": [
+                0.52,
+                0.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "interior_forward",
+      "command": {
+        "type": "add_sewing_by_length",
+        "data": {
+          "name": "Original physical pair",
+          "a": {
+            "curve": 6,
+            "start_t": 0.2,
+            "direction": "forward",
+            "length_m": 0.1
+          },
+          "b": {
+            "curve": 15,
+            "start_t": 0.9,
+            "direction": "reverse",
+            "length_m": 0.1
+          }
+        }
+      },
+      "variant": {},
+      "expected": {
+        "a": {
+          "curve": 6,
+          "t0": 0.2,
+          "t1": 0.6567727750785732,
+          "length_m": 0.1,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.2,
+              "point_m": [
+                0.04000000000000001,
+                0.004000000000000001
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.32089999426454574,
+              "point_m": [
+                0.06417999885290915,
+                0.01029768063189855
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.4377238601513773,
+              "point_m": [
+                0.08754477203027547,
+                0.019160217774582253
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.5497683484380436,
+              "point_m": [
+                0.10995366968760872,
+                0.03022452369442941
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.6567727750785732,
+              "point_m": [
+                0.13135455501571466,
+                0.04313504780844102
+              ]
+            }
+          ]
+        },
+        "b": {
+          "curve": 15,
+          "t0": 0.9,
+          "t1": 0.4,
+          "length_m": 0.1,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.9,
+              "point_m": [
+                0.5800000000000001,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.7749999999999999,
+              "point_m": [
+                0.555,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.6499999999999999,
+              "point_m": [
+                0.53,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.5249999999999999,
+              "point_m": [
+                0.505,
+                0.0
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.4,
+              "point_m": [
+                0.48000000000000004,
+                0.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "near_full_forward",
+      "command": {
+        "type": "add_sewing_by_length",
+        "data": {
+          "name": "Original physical pair",
+          "a": {
+            "curve": 6,
+            "start_t": 0.0,
+            "direction": "forward",
+            "length_m": 0.22955771493926383
+          },
+          "b": {
+            "curve": 15,
+            "start_t": 0.0,
+            "direction": "forward",
+            "length_m": 0.19
+          }
+        }
+      },
+      "variant": {},
+      "expected": {
+        "a": {
+          "curve": 6,
+          "t0": 0.0,
+          "t1": 0.9999964644629691,
+          "length_m": 0.22955771493926383,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.0,
+              "point_m": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.2832056608621015,
+              "point_m": [
+                0.05664113217242031,
+                0.008020544634433966
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.5476369627097517,
+              "point_m": [
+                0.10952739254195035,
+                0.0299906242925962
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.7860983607768586,
+              "point_m": [
+                0.15721967215537172,
+                0.06179506328160641
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.9999964644629691,
+              "point_m": [
+                0.19999929289259383,
+                0.09999929289384382
+              ]
+            }
+          ]
+        },
+        "b": {
+          "curve": 15,
+          "t0": 0.0,
+          "t1": 0.95,
+          "length_m": 0.19,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.0,
+              "point_m": [
+                0.4,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.2375,
+              "point_m": [
+                0.4475,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.475,
+              "point_m": [
+                0.495,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.7124999999999999,
+              "point_m": [
+                0.5425,
+                0.0
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.95,
+              "point_m": [
+                0.5900000000000001,
+                0.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "near_full_reverse",
+      "command": {
+        "type": "add_sewing_by_length",
+        "data": {
+          "name": "Original physical pair",
+          "a": {
+            "curve": 6,
+            "start_t": 1.0,
+            "direction": "reverse",
+            "length_m": 0.22955771493926383
+          },
+          "b": {
+            "curve": 15,
+            "start_t": 1.0,
+            "direction": "reverse",
+            "length_m": 0.19
+          }
+        }
+      },
+      "variant": {},
+      "expected": {
+        "a": {
+          "curve": 6,
+          "t0": 1.0,
+          "t1": 4.999999999984157e-06,
+          "length_m": 0.22955771493926383,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 1.0,
+              "point_m": [
+                0.2,
+                0.1
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.7861022916312477,
+              "point_m": [
+                0.15722045832624953,
+                0.06179568129078992
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.547641348153941,
+              "point_m": [
+                0.10952826963078821,
+                0.029991104620786607
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.28321047165375846,
+              "point_m": [
+                0.056642094330751694,
+                0.008020817125434433
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 4.999999999984157e-06,
+              "point_m": [
+                9.999999999968314e-07,
+                2.499999999984157e-12
+              ]
+            }
+          ]
+        },
+        "b": {
+          "curve": 15,
+          "t0": 1.0,
+          "t1": 0.05000000000000003,
+          "length_m": 0.19,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 1.0,
+              "point_m": [
+                0.6000000000000001,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.7625,
+              "point_m": [
+                0.5525,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.5249999999999999,
+              "point_m": [
+                0.505,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.2875,
+              "point_m": [
+                0.4575,
+                0.0
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.05000000000000003,
+              "point_m": [
+                0.41000000000000003,
+                0.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "exact_forward",
+      "command": {
+        "type": "add_sewing_by_length",
+        "data": {
+          "name": "Original physical pair",
+          "a": {
+            "curve": 8,
+            "start_t": 0.0,
+            "direction": "forward",
+            "length_m": 0.2
+          },
+          "b": {
+            "curve": 15,
+            "start_t": 0.0,
+            "direction": "forward",
+            "length_m": 0.19999999999999996
+          }
+        }
+      },
+      "variant": {},
+      "expected": {
+        "a": {
+          "curve": 8,
+          "t0": 0.0,
+          "t1": 1.0,
+          "length_m": 0.2,
+          "exact_end": 1.0,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.0,
+              "point_m": [
+                0.2,
+                0.3
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.25,
+              "point_m": [
+                0.15000000000000002,
+                0.3
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.5,
+              "point_m": [
+                0.1,
+                0.3
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.75,
+              "point_m": [
+                0.05,
+                0.3
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 1.0,
+              "point_m": [
+                0.0,
+                0.3
+              ]
+            }
+          ]
+        },
+        "b": {
+          "curve": 15,
+          "t0": 0.0,
+          "t1": 1.0,
+          "length_m": 0.19999999999999996,
+          "exact_end": 1.0,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.0,
+              "point_m": [
+                0.4,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.2499999999999999,
+              "point_m": [
+                0.45,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.4999999999999998,
+              "point_m": [
+                0.5,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.7499999999999998,
+              "point_m": [
+                0.55,
+                0.0
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 1.0,
+              "point_m": [
+                0.6000000000000001,
+                0.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "exact_reverse",
+      "command": {
+        "type": "add_sewing_by_length",
+        "data": {
+          "name": "Original physical pair",
+          "a": {
+            "curve": 8,
+            "start_t": 1.0,
+            "direction": "reverse",
+            "length_m": 0.2
+          },
+          "b": {
+            "curve": 15,
+            "start_t": 1.0,
+            "direction": "reverse",
+            "length_m": 0.19999999999999996
+          }
+        }
+      },
+      "variant": {},
+      "expected": {
+        "a": {
+          "curve": 8,
+          "t0": 1.0,
+          "t1": 0.0,
+          "length_m": 0.2,
+          "exact_end": 0.0,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 1.0,
+              "point_m": [
+                0.0,
+                0.3
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.75,
+              "point_m": [
+                0.05,
+                0.3
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.5,
+              "point_m": [
+                0.1,
+                0.3
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.2499999999999999,
+              "point_m": [
+                0.15000000000000002,
+                0.3
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.0,
+              "point_m": [
+                0.2,
+                0.3
+              ]
+            }
+          ]
+        },
+        "b": {
+          "curve": 15,
+          "t0": 1.0,
+          "t1": 0.0,
+          "length_m": 0.19999999999999996,
+          "exact_end": 0.0,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 1.0,
+              "point_m": [
+                0.6000000000000001,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.75,
+              "point_m": [
+                0.55,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.5,
+              "point_m": [
+                0.5,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.2500000000000002,
+              "point_m": [
+                0.45000000000000007,
+                0.0
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.0,
+              "point_m": [
+                0.4,
+                0.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "disjoint_same_curve",
+      "command": {
+        "type": "add_sewing_by_length",
+        "data": {
+          "name": "Original physical pair",
+          "a": {
+            "curve": 6,
+            "start_t": 0.0,
+            "direction": "forward",
+            "length_m": 0.04
+          },
+          "b": {
+            "curve": 6,
+            "start_t": 1.0,
+            "direction": "reverse",
+            "length_m": 0.04
+          }
+        }
+      },
+      "variant": {},
+      "expected": {
+        "a": {
+          "curve": 6,
+          "t0": 0.0,
+          "t1": 0.19870013167992318,
+          "length_m": 0.04,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.0,
+              "point_m": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.049979200444613986,
+              "point_m": [
+                0.009995840088922799,
+                0.0002497920477082903
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.09983440698672832,
+              "point_m": [
+                0.019966881397345666,
+                0.0009966908818391709
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.14944556329124825,
+              "point_m": [
+                0.02988911265824965,
+                0.002233397638743849
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.19870013167992318,
+              "point_m": [
+                0.03974002633598464,
+                0.003948174232961881
+              ]
+            }
+          ]
+        },
+        "b": {
+          "curve": 6,
+          "t0": 1.0,
+          "t1": 0.8533403726030317,
+          "length_m": 0.04,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 1.0,
+              "point_m": [
+                0.2,
+                0.1
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.9643284631496234,
+              "point_m": [
+                0.1928656926299247,
+                0.09299293848405146
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.9280096436088383,
+              "point_m": [
+                0.18560192872176767,
+                0.08612018986310031
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.8910210871390949,
+              "point_m": [
+                0.178204217427819,
+                0.07939185777265347
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.8533403726030317,
+              "point_m": [
+                0.17066807452060637,
+                0.07281897915142811
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unequal_existing_proportional",
+      "command": {
+        "type": "add_sewing_by_length",
+        "data": {
+          "name": "Original physical pair",
+          "a": {
+            "curve": 6,
+            "start_t": 0.0,
+            "direction": "forward",
+            "length_m": 0.1
+          },
+          "b": {
+            "curve": 15,
+            "start_t": 0.9,
+            "direction": "reverse",
+            "length_m": 0.15
+          }
+        }
+      },
+      "variant": {},
+      "expected": {
+        "a": {
+          "curve": 6,
+          "t0": 0.0,
+          "t1": 0.4819445564563284,
+          "length_m": 0.1,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.0,
+              "point_m": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.12467773934834009,
+              "point_m": [
+                0.02493554786966802,
+                0.0015544538689012631
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.2474960238665148,
+              "point_m": [
+                0.04949920477330297,
+                0.006125428182973448
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.36692531773989645,
+              "point_m": [
+                0.07338506354797929,
+                0.013463418879852397
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.4819445564563284,
+              "point_m": [
+                0.09638891129126569,
+                0.02322705554978871
+              ]
+            }
+          ]
+        },
+        "b": {
+          "curve": 15,
+          "t0": 0.9,
+          "t1": 0.15000000000000013,
+          "length_m": 0.15,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.9,
+              "point_m": [
+                0.5800000000000001,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.7124999999999999,
+              "point_m": [
+                0.5425,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.5250000000000001,
+              "point_m": [
+                0.5050000000000001,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.33750000000000013,
+              "point_m": [
+                0.4675,
+                0.0
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.15000000000000013,
+              "point_m": [
+                0.43000000000000005,
+                0.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "nonuniform_collinear",
+      "command": {
+        "type": "add_sewing_by_length",
+        "data": {
+          "name": "Original physical pair",
+          "a": {
+            "curve": 6,
+            "start_t": 0.0,
+            "direction": "forward",
+            "length_m": 0.1
+          },
+          "b": {
+            "curve": 15,
+            "start_t": 0.0,
+            "direction": "forward",
+            "length_m": 0.1
+          }
+        }
+      },
+      "variant": {
+        "collinear_b": true
+      },
+      "expected": {
+        "a": {
+          "curve": 6,
+          "t0": 0.0,
+          "t1": 0.4819445564563284,
+          "length_m": 0.1,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.0,
+              "point_m": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.12467773934834009,
+              "point_m": [
+                0.02493554786966802,
+                0.0015544538689012631
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.2474960238665148,
+              "point_m": [
+                0.04949920477330297,
+                0.006125428182973448
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.36692531773989645,
+              "point_m": [
+                0.07338506354797929,
+                0.013463418879852397
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.4819445564563284,
+              "point_m": [
+                0.09638891129126569,
+                0.02322705554978871
+              ]
+            }
+          ]
+        },
+        "b": {
+          "curve": 15,
+          "t0": 0.0,
+          "t1": 0.7829973674995521,
+          "length_m": 0.1,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.0,
+              "point_m": [
+                0.4,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.4750837880011365,
+              "point_m": [
+                0.42500000000000004,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.6111035616904732,
+              "point_m": [
+                0.45,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.7067566970458554,
+              "point_m": [
+                0.47500000000000003,
+                0.0
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.7829973674995521,
+              "point_m": [
+                0.5,
+                0.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "nonuniform_collinear_reverse",
+      "command": {
+        "type": "add_sewing_by_length",
+        "data": {
+          "name": "Original physical pair",
+          "a": {
+            "curve": 6,
+            "start_t": 0.0,
+            "direction": "forward",
+            "length_m": 0.1
+          },
+          "b": {
+            "curve": 15,
+            "start_t": 1.0,
+            "direction": "reverse",
+            "length_m": 0.1
+          }
+        }
+      },
+      "variant": {
+        "collinear_b": true
+      },
+      "expected": {
+        "a": {
+          "curve": 6,
+          "t0": 0.0,
+          "t1": 0.4819445564563284,
+          "length_m": 0.1,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.0,
+              "point_m": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.12467773934834009,
+              "point_m": [
+                0.02493554786966802,
+                0.0015544538689012631
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.2474960238665148,
+              "point_m": [
+                0.04949920477330297,
+                0.006125428182973448
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.36692531773989645,
+              "point_m": [
+                0.07338506354797929,
+                0.013463418879852397
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.4819445564563284,
+              "point_m": [
+                0.09638891129126569,
+                0.02322705554978871
+              ]
+            }
+          ]
+        },
+        "b": {
+          "curve": 15,
+          "t0": 1.0,
+          "t1": 0.7829973674995521,
+          "length_m": 0.1,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 1.0,
+              "point_m": [
+                0.6000000000000001,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.9541800738792336,
+              "point_m": [
+                0.5750000000000001,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.9037744048394158,
+              "point_m": [
+                0.55,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.8474269845317703,
+              "point_m": [
+                0.525,
+                0.0
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.7829973674995521,
+              "point_m": [
+                0.5,
+                0.0
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "legacy_nonlinear_preserved",
+      "command": {
+        "type": "add_sewing_by_length",
+        "data": {
+          "name": "Original physical pair",
+          "a": {
+            "curve": 6,
+            "start_t": 0.0,
+            "direction": "forward",
+            "length_m": 0.1
+          },
+          "b": {
+            "curve": 15,
+            "start_t": 0.75,
+            "direction": "reverse",
+            "length_m": 0.1
+          }
+        }
+      },
+      "variant": {
+        "legacy_seam": true
+      },
+      "expected": {
+        "a": {
+          "curve": 6,
+          "t0": 0.0,
+          "t1": 0.4819445564563284,
+          "length_m": 0.1,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.0,
+              "point_m": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.12467773934834009,
+              "point_m": [
+                0.02493554786966802,
+                0.0015544538689012631
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.2474960238665148,
+              "point_m": [
+                0.04949920477330297,
+                0.006125428182973448
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.36692531773989645,
+              "point_m": [
+                0.07338506354797929,
+                0.013463418879852397
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.4819445564563284,
+              "point_m": [
+                0.09638891129126569,
+                0.02322705554978871
+              ]
+            }
+          ]
+        },
+        "b": {
+          "curve": 15,
+          "t0": 0.75,
+          "t1": 0.25,
+          "length_m": 0.1,
+          "exact_end": null,
+          "samples": [
+            {
+              "fraction": 0.0,
+              "t": 0.75,
+              "point_m": [
+                0.55,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.25,
+              "t": 0.625,
+              "point_m": [
+                0.525,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.5,
+              "t": 0.5,
+              "point_m": [
+                0.5,
+                0.0
+              ]
+            },
+            {
+              "fraction": 0.75,
+              "t": 0.375,
+              "point_m": [
+                0.47500000000000003,
+                0.0
+              ]
+            },
+            {
+              "fraction": 1.0,
+              "t": 0.25,
+              "point_m": [
+                0.45,
+                0.0
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "negative_cases": [
+    {
+      "id": "negative_start",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": -1e-12,
+              "direction": "forward",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "validation"
+    },
+    {
+      "id": "past_end_start",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 1.000000000001,
+              "direction": "forward",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "validation"
+    },
+    {
+      "id": "zero_length",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": 0.0
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "validation"
+    },
+    {
+      "id": "negative_length",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": -0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "validation"
+    },
+    {
+      "id": "enormous_length",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": 1e+308
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "validation"
+    },
+    {
+      "id": "missing_curve",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 999,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": true,
+      "category": "validation"
+    },
+    {
+      "id": "collapsed_parameter_span",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": 1e-12
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "validation"
+    },
+    {
+      "id": "unknown_direction",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "sideways",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "schema"
+    },
+    {
+      "id": "numeric_direction",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": -1,
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "schema"
+    },
+    {
+      "id": "null_start",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": null,
+              "direction": "forward",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "schema"
+    },
+    {
+      "id": "forward_no_room",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 1.0,
+              "direction": "forward",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "validation"
+    },
+    {
+      "id": "reverse_no_room",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "reverse",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "validation"
+    },
+    {
+      "id": "overlong_small_excess",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.5,
+              "direction": "forward",
+              "length_m": 0.100000000001
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": true,
+      "category": "validation"
+    },
+    {
+      "id": "same_curve_overlap",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 6,
+              "start_t": 0.2,
+              "direction": "forward",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "validation"
+    },
+    {
+      "id": "invalid_name",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": " \t ",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "validation"
+    },
+    {
+      "id": "id_overflow",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {
+        "next_id": 18446744073709551615
+      },
+      "same_file": false,
+      "category": "validation"
+    },
+    {
+      "id": "revision_overflow",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {
+        "revision": 18446744073709551615
+      },
+      "same_file": false,
+      "category": "validation"
+    },
+    {
+      "id": "unknown_side_field",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": 0.1,
+              "unexpected": true
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "schema"
+    },
+    {
+      "id": "unknown_data_field",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            },
+            "unexpected": true
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "schema"
+    },
+    {
+      "id": "missing_direction",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "schema"
+    },
+    {
+      "id": "unknown_command_field",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          },
+          "unexpected": true
+        }
+      ],
+      "variant": {},
+      "same_file": false,
+      "category": "schema"
+    },
+    {
+      "id": "transaction_second_side_failure",
+      "commands": [
+        {
+          "type": "set_resolution",
+          "data": {
+            "metres": 0.035
+          }
+        },
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 1.0,
+              "direction": "forward",
+              "length_m": 0.1
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": true,
+      "category": "validation"
+    },
+    {
+      "id": "composed_group_metric_precision",
+      "commands": [
+        {
+          "type": "add_sewing_by_length",
+          "data": {
+            "name": "Original physical pair",
+            "a": {
+              "curve": 6,
+              "start_t": 0.0,
+              "direction": "forward",
+              "length_m": 0.1
+            },
+            "b": {
+              "curve": 15,
+              "start_t": 0.75,
+              "direction": "reverse",
+              "length_m": 0.1
+            }
+          }
+        },
+        {
+          "type": "update_sewing_group",
+          "data": {
+            "group": {
+              "id": 20,
+              "name": "Original metric precision probe",
+              "a": [
+                {
+                  "curve": 6,
+                  "t0": 0.0,
+                  "t1": 0.4819445564563284
+                }
+              ],
+              "b": [
+                {
+                  "curve": 15,
+                  "t0": 0.75,
+                  "t1": 0.25
+                }
+              ],
+              "correspondence": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  1e-18,
+                  0.5
+                ],
+                [
+                  1.0,
+                  1.0
+                ]
+              ]
+            }
+          }
+        }
+      ],
+      "variant": {},
+      "same_file": true,
+      "category": "metric_precision_composition"
+    }
+  ],
+  "raw_schema_cases": [
+    {
+      "id": "nan_start_token",
+      "raw": "[{\"type\":\"add_sewing_by_length\",\"data\":{\"name\":\"Original physical pair\",\"a\":{\"curve\":6,\"start_t\":NaN,\"direction\":\"forward\",\"length_m\":0.1},\"b\":{\"curve\":15,\"start_t\":0.75,\"direction\":\"reverse\",\"length_m\":0.1}}}]"
+    },
+    {
+      "id": "infinite_length_token",
+      "raw": "[{\"type\":\"add_sewing_by_length\",\"data\":{\"name\":\"Original physical pair\",\"a\":{\"curve\":6,\"start_t\":0.0,\"direction\":\"forward\",\"length_m\":Infinity},\"b\":{\"curve\":15,\"start_t\":0.75,\"direction\":\"reverse\",\"length_m\":0.1}}}]"
+    },
+    {
+      "id": "overflowing_json_number",
+      "raw": "[{\"type\":\"add_sewing_by_length\",\"data\":{\"name\":\"Original physical pair\",\"a\":{\"curve\":6,\"start_t\":0.0,\"direction\":\"forward\",\"length_m\":1e400},\"b\":{\"curve\":15,\"start_t\":0.75,\"direction\":\"reverse\",\"length_m\":0.1}}}]"
+    },
+    {
+      "id": "duplicate_start_field",
+      "raw": "[{\"type\":\"add_sewing_by_length\",\"data\":{\"name\":\"Original physical pair\",\"a\":{\"curve\":6,\"start_t\":0.0,\"start_t\":0.2,\"direction\":\"forward\",\"length_m\":0.1},\"b\":{\"curve\":15,\"start_t\":0.75,\"direction\":\"reverse\",\"length_m\":0.1}}}]"
+    },
+    {
+      "id": "duplicate_command_type",
+      "raw": "[{\"type\":\"add_sewing_by_length\",\"type\":\"add_sewing_by_length\",\"data\":{\"name\":\"Original physical pair\",\"a\":{\"curve\":6,\"start_t\":0.0,\"direction\":\"forward\",\"length_m\":0.1},\"b\":{\"curve\":15,\"start_t\":0.75,\"direction\":\"reverse\",\"length_m\":0.1}}}]"
+    }
+  ],
+  "channels": [
+    "cli_execute",
+    "mcp_2026-07-28",
+    "mcp_2025-11-25"
+  ],
+  "coarse_fine_resolutions_m": [
+    0.09,
+    0.035
+  ],
+  "writer_failure_cases": [
+    "invalid_existing_destination",
+    "destination_directory",
+    "destination_symlink",
+    "recovery_directory",
+    "absent_parent",
+    "invalid_input"
+  ],
+  "separate_required_gates": [
+    "Native first-side transient; second-side one command/transaction; Undo/Redo IDs and fields; save/new/reopen.",
+    "Real pointer workflow, exact endpoint picking/ties, controls, Tab/OK, labels/guides, keyboard accessibility and modal shielding.",
+    "Cancel/close/Escape/tool switch/reset/history/load/stale revision and raw text/caret/inspector preservation.",
+    "Source/unit checks: initial AddSewingByLength metric-failure injection, cancellation and work-budget exhaustion; atomic-writer pre-replace interruption.",
+    "All four required local Rust gates and clean tracked evidence registry/map validation."
+  ],
+  "claim_limits": [
+    "Independent authored engineering fixture; no reference metric, projection, cancellation, easing, solver or full sewing parity.",
+    "CLI/MCP are stateless files; this evaluator cannot observe live Editor history, GUI drafts, caches or solver state.",
+    "No candidate output generates a numerical expectation; candidate endpoints are reused only as input for the existing map-knot probe after independent endpoint validation.",
+    "Exact endpoint cases use independent straight arithmetic; analytic full-curved length may differ from a computed metric by ulps and is covered by near-full tests instead.",
+    "Metric precision composition is separately labelled; no large work saturation workload or disk-full claim."
+  ]
+}

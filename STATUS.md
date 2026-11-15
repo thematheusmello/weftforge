@@ -1,76 +1,105 @@
 # WeftForge status — active development, 2026-11-15
 
-One-piece layout transforms and New Empty are implemented at source
-dd5a16826dafe0d4f32c251f7c351197ad0936af. The [PR45 publication](https://github.com/thematheusmello/weftforge/pull/45) preserves
-the complete studio target: **0/56 coarse reference contracts verified**,
-**39 partial / 17 planned**, discovery incomplete and **no roadmap gate accepted**.
-The 949 observed entries / 205 packets remain an engineering inventory.
+Physical-length Free sewing is implemented at runtime
+b657e6bf52aca6c0c76c5c51aaf76b4e812150f7. This local publication candidate retains
+the full studio target: **0/56 coarse reference contracts verified**, **39 partial /
+17 planned**, discovery incomplete and **no roadmap gate accepted**. The 949
+entries / 205 packets are an engineering inventory, not a complete product denominator.
 
-## Current transform and New Empty checkpoint
+## Current bounded physical sewing checkpoint
 
-The [scoped implementation-only report](parity/reports/WF-20261115-PATTERN-TRANSFORM-001.json)
-is **failed/current for the overall frozen native A/B plan**. Root accepted bounded
-numeric case A4; pointer case B remains unverified after its first documented drag
-left the observed document at R40 rather than required R41. The cause is unknown;
-this does not prove a product defect. PAT-004/UI-004/APP-001 remain partial, with
-current failed verification and no complete-contract/reference/full-native-plan credit.
+The [implementation-only report](parity/reports/WF-20261115-PHYSICAL-LENGTH-SEWING-001.json)
+is **passed/current only for the original headless scope and root-accepted native
+v3 case002**. SEW-002, APP-001 and UI-004 remain partial/not_run for their coarse
+contracts, with the bounded current evidence linked separately. No full sewing,
+New Empty, garment, physics, reference, process-restart or roadmap acceptance follows.
 
-The shared rigid transform updates authored points/cubic controls while stable
-IDs and compensated placement preserve arranged rest geometry and world warp.
-Native numeric and drag routes use the same command transaction. Pivot/handles,
-3D/grain behavior and New refusal/reset are declared engineering policies, not
-observed reference equivalence. Mirroring, multiselection, pivot dragging and
-locks remain later work. File/search New Empty is deferred until the current
-inspector pass; dirty, staged/invalid and unfinished work is refused without
-committing it, and a clean reset cancels/detaches old document work.
+The shared command resolves oriented intervals from exact Start t and positive
+physical length using the existing authored metric, then stores an ordinary
+physical-arc-length group. A stays transient; B and valid staged property edits
+commit as one transaction. Native boundary/Start t/direction/Length controls,
+revision-bound previews and failure/cancel text/caret retention are implemented.
+Length input chooses creation endpoints, not a persistent dimension lock.
+Legacy Sew edges and M:N behavior are retained; internal sewing, full chains,
+general native easing and sewn simulation remain open.
 
-Fresh DD checks passed all six commands: formatting, workspace tests (**235 Rust**),
-strict workspace/all-target Clippy, xtask verification (**54 Python** checks plus
-registry/map), unsigned packaging and the debug native build. The original manifest
-SHA is cf958b0edd33590fba4612974c39b4098660ba6bba83f8d352d2902259aeb1f2;
-all **59 runtime/build/contract identities** remain pinned. Actual native A4/B uses
-216aa9e0b8968a1fe9033f32c89c9b4b93cdca15fac927c0538a5a091c848dd4.
-Debug and release/package identities remain separate; no new binary release,
-packaged launch, signing or other-platform acceptance is claimed.
+All **60 runtime/build/test/contract inputs**, including four contracts, are
+byte-identical to B657 through the PR45 metadata merge, current source-map addendum
+and later window-policy change. The original build manifest SHA is
+a42c5d9b88d678068a1ab804aa480f41600a93cbd03de847f48faaa5fbdcb0fc.
+Its six commands exited zero with **254 Rust / 54 Python** passes, four font-notice
+copies and twelve package files. The runner predicted 255: its prediction-match
+flag is **false** and retained. Zero exits do not mean every bookkeeping expectation
+passed. Those Rust/source gates are reused by exact identity, not rerun during
+publication. Fresh metadata/registry/current-map verification is recorded separately.
+Debug/release CLI feature contexts remain disclosed; unsigned packaging is not
+packaged launch, signing, a new binary release or cross-platform acceptance.
 
-The original independent 02b evaluation passed **93 cases**, 31 each via CLI,
-current MCP and legacy MCP. All 47 scoped core/CLI inputs and accepted executable
-80921d0947c4f6f1c91e9a5bef18e5b607c67323ac80e3177833f499acd360a5 are unchanged at DD.
-Its analytic geometry/world/grain and atomic-history/failure outputs are retained;
-the headless execution is not a rerun of changed GUI source or native acceptance.
+The original independent attempt002 passed **50 observations**: 36 positive
+adapter runs, 96 rejection preservations, 18 writer failures, ten mesh configurations
+and three same-file paths. Its **46** core/CLI inputs match B657 and accepted CLI
+fa4add99646544a052b6fa534ad325f1528e0572e4ee9aae344d687b85ac5cc1 is a separate immutable
+artifact. Wrong-working-directory/source-context preflights stopped before candidate
+execution and remain retained. Three writer-output symlinks remain relative,
+typed mode120000 nodes with exact target strings, not flattened fixture copies.
+No headless evidence is borrowed as changed-GUI acceptance.
 
-A4 completed **121 pairs / 542.54376275 s** within unchanged 130 / 900 caps.
-Root directly reviewed twelve unedited refusal/cancel/error/final-value/history/
-New/reopen images and accepted the bounded workflow. Its saved grader ran once
-and passed; Redo/reopened bytes are identical. The original actor report still says
-pending root review; ROOT-A4-ACCEPTANCE supplies the later qualification without
-rewriting it. Same-process reopen is not process restart. Modal AX omission and
-exact-once/process-history limits remain explicit in the [gallery](docs/studio-preview.md).
+Native002 uses executable
+69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0.
+Root verified 732 original manifest entries, all 161 returned pairs/action arguments
+with zero errors, 60 source and 20 frozen pins, twelve raw UI images and final PID
+absence. Including summary, **162 calls / 748.816649 s** fit unchanged 220 / 1200
+caps. The actor OUTCOME remains pending root review; the later ROOT-ACCEPTANCE-002
+records bounded acceptance without rewriting it.
 
-B used A4 Redo as a read-only input, paused after a root pre-authoring hold and
-attempted exactly one declared translation drag. It stopped at unchanged R40,
-with **11 pairs / 204.564500916 s** inside its 60 / 600 caps. The optional read-only
-pivot observation was not used; rotation and Save did not run. The one grader
-failed on missing translated/rotated outputs. No corrected gesture or ideal
-content-space test can stand in for actual OS delivery or a native B pass.
+Length 1e- refusal and Cancel retained R41; the unrelated width/caret witness became
+0.20e0 without an accepted change. Curve #6, Forward, 100 mm alone stayed transient at R41;
+curve #15, Reverse, Start t 0.75 and 100 mm completed group 20 at R42 with two 100.0 mm labels/guides.
+One Undo at R43 removed it and Redo at R44 restored it. File → New Empty produced R0/zero authored
+construction and no-op Undo/Redo, then same-process reopen restored R44/group 20.
+The single frozen saved-output grader passed its unchanged 1e-8 m parsed-field/metric
+scope. All four native primaries retain first saved hashes; Redo and reopened are
+byte-identical (3d0aa9cd93300ecfe69a0798363c9ace70bf2e4e36fd4ba68499de822348c08f).
+Full AX accessibility, general source picking/reference behavior and full New are
+not established. See the [actual UI gallery](docs/studio-preview.md).
 
-Older A stopped on helper setup before authoring; A2 stopped at the five-value
-barrier; A3 stopped after saved quarter/Undo/Redo because New Empty was absent.
-Source 133 full gates passed before later reviews found the corrected New/Transform
-pause, ownership and input-retention issues. Every old pass, RED, failed case,
-saved project and selected sidecar keeps its original hashes/outcome in the
-[tracked packet](parity/reports/artifacts/pattern-transform-20261115/README.md).
-Only literal workspace/home paths are normalized in selected text; named review
-derivatives exclude global process inventories/kernel stacks. Images and saved
-construction/sidecars are byte-identical. No proprietary material or app binaries
-are included.
+Failed001 remains stopped before Save at garmentcreated.weftforge, with none of
+four required primaries. Its autosave is not an acceptance substitute. The isolated
+filename calibration accepted only one documented setValue/Cancel, without Save or
+sewing credit. Frozen v1 is unexecuted; v2 belongs to failed001 and prospectively
+corrected tooling v3 to fresh002. Original math/grader and all old outcomes remain
+unchanged in the [tracked packet](parity/reports/artifacts/physical-length-sewing-20261115/README.md).
+Original 5655 source-review findings, separate REDs/C4be fixes and B657 integration
+checks are retained. Publication selects exact JPEG/project/sidecar bytes and only
+literal workspace/home normalization in text; named owned/pair derivatives exclude
+raw global/kernel/chooser material. No executable/app bundle is included.
 
-Confirmed terminal handles: DD gate runner 82460 completed successfully; A4 actor
-92536 terminated after its case; B case is closed/unverified and its last final
-accounting retained own PID 17316 running. These are historical handles, not a
-reusable authority. Actions and automated Pages deployment remain disabled and
-the existing static site is preserved. PR45 carries the source and tracked evidence;
-no binary release or deployment is included.
+Confirmed historical handles: source runner 1905 completed; native002 PID 56803 and
+filename-calibration PID 41664 were absent after their planned quits. Failed001
+PID 34507 was originally left at its frozen failure barrier. The later explicit
+user-requested cleanup closed all ten old owned WeftForge GUI windows, including
+that throwaway editor, while preserving project files/reference app and unrelated
+browser tabs. This separate post-case event ends prior left-running PID states;
+it is outside every frozen clock and rewrites no outcome. Future unused finished
+test windows close after retaining evidence, per AGENTS. These are historical
+handles, not reusable input authority.
+
+## Historical Transform and New Empty checkpoint
+
+[PR45](https://github.com/thematheusmello/weftforge/pull/45), merged as
+550825a1f2ccd390321f9d581f16ff880cb7a441, retains the DD
+[failed implementation-only A/B report](parity/reports/WF-20261115-PATTERN-TRANSFORM-001.json),
+now **stale** on changed B657 runtime. Root accepted bounded numeric A4; B remained
+at R40 after one declared drag, with no rotation/Save and unknown cause. No B pass
+or unexecuted B2 packet is imported. The original 59 source pins, build and native 216 identities,
+235 Rust/54 Python source gates, 93-case CLI/MCP run and all images/outcomes remain
+unchanged. Current physical sewing002 does not complete that Transform pointer plan.
+
+The historical map remains 949 entries / 205 packets / 56 landmarks. The reviewed
+current B657 source addendum has 27 enum variants, 26 nontransaction schemas and
+nine MCP tools; this is source inventory only. Neither map marks behavior or a
+roadmap gate complete. Actions remain disabled, head Actions runs are not enabled
+by this preparation, and the existing static Pages site is preserved.
 
 ## Prior measurement delivery
 
@@ -137,15 +166,12 @@ surface contact, full persistence and full garment acceptance remain open.
 
 ## Exact next work
 
-Root reviewed the tracked source-bound packet and final clean registry/map checks;
-all 1,044 report artifacts are tracked and hashed, and the 59 runtime inputs are
-unchanged. Integrate physical-length partial Free Sewing with its own separately
-bound source and evidence; this DD packet does not contain or accept that later
-runtime. Continue internal lines and bounded
-topological cuts. Preserve the full parity target, unfinished native pointer-B
-acceptance and reference unknowns; future acceptance requires a fresh declared
-case/source/input/criteria binding rather than reopening or repairing closed cases.
+Root-review this tracked, source-bound physical publication candidate and clean
+registry/current-map receipts before publishing. Continue internal construction
+lines and bounded topological cuts, with authored relationships and atomic shared
+commands. Retain complete chain/internal sewing, easing, native remeshing, garment
+contact/physics, full New and reference workflow gaps. New acceptance needs a fresh
+declared source/input/criteria binding; do not repair or regrade closed cases.
 
-Keep Actions/automated Pages disabled through development. Full garment contact,
-physics, exports and reference workflow acceptance remain required; no source-map
-entry or implementation-only test closes a roadmap gate.
+Keep Actions and automated Pages deployments disabled through development. No
+push/PR, new binary release or deployment is part of this local preparation.

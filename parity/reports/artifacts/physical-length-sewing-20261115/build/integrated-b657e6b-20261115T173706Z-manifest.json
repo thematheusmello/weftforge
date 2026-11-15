@@ -1,0 +1,716 @@
+{
+  "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+  "tree": "0365c79a44d6b3bd1e81c1c3e298823cc05000c5",
+  "checkout": "<WORKSPACE>/.local/physical-sewing-20261115",
+  "cargo_target": "<WORKSPACE>/.local/physical-sewing-20261115/target",
+  "started_at": "2026-11-15T17:37:59.033170+00:00",
+  "runner_pid": 1905,
+  "adapted_from": {
+    "path": "<WORKSPACE>/.local/pattern-transform-implementation-20261115/integrated-dd5a168-20261115T1716Z.py",
+    "binding": {
+      "sha256": "ea429b3436942f57812f8edeaecf3b51333374666d6eb2c803c52abda806aa65",
+      "bytes": 7890
+    }
+  },
+  "status": "passed",
+  "completion_scope": "Fresh fmt/workspace tests/workspace-all-target Clippy/xtask verify/package/debug run on cleanb657e6b; no prior-gate component reuse.",
+  "runner_script_binding": {
+    "sha256": "5b37ab94255de4bd5ef23a131dd3cdef169dae91064c909bb86a4690347a0932",
+    "bytes": 10299
+  },
+  "runtime_and_contract_file_count": 60,
+  "runtime_and_contract_files": {
+    ".cargo/config.toml": {
+      "sha256": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+      "bytes": 34
+    },
+    "Cargo.lock": {
+      "sha256": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c",
+      "bytes": 107166
+    },
+    "Cargo.toml": {
+      "sha256": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+      "bytes": 667
+    },
+    "apps/weftforge-cli/Cargo.toml": {
+      "sha256": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+      "bytes": 347
+    },
+    "apps/weftforge-cli/src/main.rs": {
+      "sha256": "88e09babfb9eaba9646a54ebb0de28ac3fccd318d50f7f2a92bda148e857310d",
+      "bytes": 28295
+    },
+    "apps/weftforge-cli/src/mcp.rs": {
+      "sha256": "21454eaa6f9737f66e2c043dba5e5f0a99024900c82d68aa053c7fc66e1d7a11",
+      "bytes": 28442
+    },
+    "apps/weftforge-cli/tests/curves.rs": {
+      "sha256": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+      "bytes": 5513
+    },
+    "apps/weftforge-cli/tests/dxf_import.rs": {
+      "sha256": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d",
+      "bytes": 5338
+    },
+    "apps/weftforge-cli/tests/ellipse.rs": {
+      "sha256": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+      "bytes": 4339
+    },
+    "apps/weftforge-cli/tests/grain.rs": {
+      "sha256": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+      "bytes": 3098
+    },
+    "apps/weftforge-cli/tests/mcp_stdio.rs": {
+      "sha256": "35b17aa9ff8da2b4254b45a6617b22a58328f295d9478a2e6aea322afc487723",
+      "bytes": 79817
+    },
+    "apps/weftforge-cli/tests/svg_import.rs": {
+      "sha256": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af",
+      "bytes": 5336
+    },
+    "apps/weftforge/Cargo.toml": {
+      "sha256": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+      "bytes": 365
+    },
+    "apps/weftforge/assets/fonts/Inter-Regular.ttf": {
+      "sha256": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82",
+      "bytes": 411640
+    },
+    "apps/weftforge/assets/fonts/Inter-SemiBold.ttf": {
+      "sha256": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3",
+      "bytes": 419744
+    },
+    "apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf": {
+      "sha256": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1",
+      "bytes": 270224
+    },
+    "apps/weftforge/assets/fonts/OFL-Inter.txt": {
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "bytes": 4380
+    },
+    "apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt": {
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "bytes": 4399
+    },
+    "apps/weftforge/assets/fonts/SOURCES.json": {
+      "sha256": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c",
+      "bytes": 1445
+    },
+    "apps/weftforge/src/main.rs": {
+      "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e",
+      "bytes": 614613
+    },
+    "crates/weftforge-core/Cargo.toml": {
+      "sha256": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+      "bytes": 341
+    },
+    "crates/weftforge-core/src/document.rs": {
+      "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8",
+      "bytes": 61835
+    },
+    "crates/weftforge-core/src/geometry.rs": {
+      "sha256": "670ed0f261da770a3b8a887bebbdf08ec166e6d3362cdbeb19032a56d7e88cd8",
+      "bytes": 34362
+    },
+    "crates/weftforge-core/src/lib.rs": {
+      "sha256": "157990183f20487c3b1494a837914e81fb98e3e4fb35a1f0dedc0542a1ec6661",
+      "bytes": 1288
+    },
+    "crates/weftforge-core/src/persistence.rs": {
+      "sha256": "748eb06ae06bd348c49e5cc5bd716cbc19da06840d2b5a38a5caffbdd1283baf",
+      "bytes": 25686
+    },
+    "crates/weftforge-core/src/persistence/dxf.rs": {
+      "sha256": "49e56ab60030a640e49d3ce9b263d99dcce562a5616f1dada529603f074b7475",
+      "bytes": 7036
+    },
+    "crates/weftforge-core/src/persistence/dxf_import.rs": {
+      "sha256": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+      "bytes": 18713
+    },
+    "crates/weftforge-core/src/persistence/svg.rs": {
+      "sha256": "1f6792b629266a15200c1bdb543f0fb3ddb79360d09ec975693b7472a12811ae",
+      "bytes": 17856
+    },
+    "crates/weftforge-core/src/sewing.rs": {
+      "sha256": "b8d2ef4178e8dc3a56ce5136310b8f065f357d8ffb21b61b26e16d22d4626645",
+      "bytes": 28264
+    },
+    "crates/weftforge-core/src/simulation.rs": {
+      "sha256": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29",
+      "bytes": 9490
+    },
+    "crates/weftforge-core/tests/dxf.rs": {
+      "sha256": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+      "bytes": 16900
+    },
+    "crates/weftforge-core/tests/dxf_import.rs": {
+      "sha256": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+      "bytes": 14935
+    },
+    "crates/weftforge-core/tests/ellipse.rs": {
+      "sha256": "55e68e3a529d2ffe49412d8a225683e0d3478f8f380130925ad66d0f93a74cda",
+      "bytes": 12138
+    },
+    "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge": {
+      "sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+      "bytes": 8107
+    },
+    "crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf": {
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "bytes": 4289
+    },
+    "crates/weftforge-core/tests/fixtures/original-editable-patterns.svg": {
+      "sha256": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+      "bytes": 729
+    },
+    "crates/weftforge-core/tests/grain.rs": {
+      "sha256": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+      "bytes": 5015
+    },
+    "crates/weftforge-core/tests/joins.rs": {
+      "sha256": "04334446a2408086541227b3ee149e12d9ca28da061e36268b33bb3502ad2334",
+      "bytes": 19832
+    },
+    "crates/weftforge-core/tests/migration.rs": {
+      "sha256": "577937ffbd5d0c42935a2a97772bc5aa53a7accca6e529efa4b86be9aa543099",
+      "bytes": 13776
+    },
+    "crates/weftforge-core/tests/pattern_transform.rs": {
+      "sha256": "0e6181a34a1fbe2ee51fc8fe6d1b6aec6efb6e61bc903624fd6e4c259af7f5b4",
+      "bytes": 24190
+    },
+    "crates/weftforge-core/tests/seam_reversal.rs": {
+      "sha256": "ae9ea4bee0b3ed5b80a1f6350b428db4a92f68a5f21bdc1b7bb1b2b02723b66a",
+      "bytes": 6202
+    },
+    "crates/weftforge-core/tests/sewing_groups.rs": {
+      "sha256": "a46b28a9f1db2c214688477d97e2317007bb64358c02a729ace6549ee6469fe6",
+      "bytes": 56732
+    },
+    "crates/weftforge-core/tests/shirt.rs": {
+      "sha256": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+      "bytes": 2949
+    },
+    "crates/weftforge-core/tests/svg_import.rs": {
+      "sha256": "3b9601a0023c1d91b96a309d0822439afa75e97f97a5e53c5104cbef3e6ed72e",
+      "bytes": 14807
+    },
+    "crates/weftforge-core/tests/workflow.rs": {
+      "sha256": "efb80806e4c355f44145332649ebcad1089d79dc078141a7a1f792edb6b17af0",
+      "bytes": 23857
+    },
+    "crates/weftforge-sim/Cargo.toml": {
+      "sha256": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+      "bytes": 205
+    },
+    "crates/weftforge-sim/src/capsule.rs": {
+      "sha256": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7",
+      "bytes": 18343
+    },
+    "crates/weftforge-sim/src/constraints.rs": {
+      "sha256": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+      "bytes": 7237
+    },
+    "crates/weftforge-sim/src/contact.rs": {
+      "sha256": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655",
+      "bytes": 31515
+    },
+    "crates/weftforge-sim/src/lib.rs": {
+      "sha256": "5bfc996e6bf1067ac261358fdd043815adf304a5d8d512a0e6429c913e90fa76",
+      "bytes": 26868
+    },
+    "crates/weftforge-sim/src/math.rs": {
+      "sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+      "bytes": 2391
+    },
+    "crates/weftforge-sim/src/strain.rs": {
+      "sha256": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+      "bytes": 1858
+    },
+    "crates/weftforge-sim/src/tests.rs": {
+      "sha256": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+      "bytes": 59354
+    },
+    "rust-toolchain.toml": {
+      "sha256": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+      "bytes": 86
+    },
+    "spec/features/APP-001-new-empty.md": {
+      "sha256": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+      "bytes": 2422
+    },
+    "spec/features/PAT-004-native-transform-selection.md": {
+      "sha256": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
+      "bytes": 1051
+    },
+    "spec/features/PAT-004-piece-rigid-transform.md": {
+      "sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+      "bytes": 22481
+    },
+    "spec/features/SEW-002-physical-length.md": {
+      "sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+      "bytes": 14576
+    },
+    "xtask/Cargo.toml": {
+      "sha256": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+      "bytes": 241
+    },
+    "xtask/src/main.rs": {
+      "sha256": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709",
+      "bytes": 7562
+    }
+  },
+  "target_existed_initially": false,
+  "accepted_core_cli_source_comparison": {
+    "source": "26f88e0fc6975bb052a5fb7dc4ebe7016db65237",
+    "file_count": 46,
+    "changed_files": []
+  },
+  "reviewed_contracts": {
+    "spec/features/SEW-002-physical-length.md": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+    "spec/features/APP-001-new-empty.md": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+    "spec/features/PAT-004-piece-rigid-transform.md": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+    "spec/features/PAT-004-native-transform-selection.md": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7"
+  },
+  "independent_evaluation_cli": {
+    "path": "<WORKSPACE>/.local/physical-sewing-implementation-20261115/artifacts/weftforge-cli-26f88e0-debug",
+    "sha256": "fa4add99646544a052b6fa534ad325f1528e0572e4ee9aae344d687b85ac5cc1",
+    "bytes": 9231168
+  },
+  "toolchain": {
+    "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+    "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)"
+  },
+  "guards": [
+    {
+      "label": "initial-clean-frozen-source",
+      "at": "2026-11-15T17:37:59.168271+00:00",
+      "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "git_status": "",
+      "changed_frozen_files": [],
+      "independent_cli_unchanged": true
+    },
+    {
+      "label": "before-01-fmt",
+      "at": "2026-11-15T17:37:59.228157+00:00",
+      "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "git_status": "",
+      "changed_frozen_files": [],
+      "independent_cli_unchanged": true
+    },
+    {
+      "label": "after-01-fmt",
+      "at": "2026-11-15T17:37:59.724230+00:00",
+      "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "git_status": "",
+      "changed_frozen_files": [],
+      "independent_cli_unchanged": true
+    },
+    {
+      "label": "before-02-workspace-tests",
+      "at": "2026-11-15T17:37:59.782979+00:00",
+      "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "git_status": "",
+      "changed_frozen_files": [],
+      "independent_cli_unchanged": true
+    },
+    {
+      "label": "after-02-workspace-tests",
+      "at": "2026-11-15T17:39:09.932610+00:00",
+      "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "git_status": "",
+      "changed_frozen_files": [],
+      "independent_cli_unchanged": true
+    },
+    {
+      "label": "before-03-workspace-clippy",
+      "at": "2026-11-15T17:39:09.993614+00:00",
+      "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "git_status": "",
+      "changed_frozen_files": [],
+      "independent_cli_unchanged": true
+    },
+    {
+      "label": "after-03-workspace-clippy",
+      "at": "2026-11-15T17:39:23.522360+00:00",
+      "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "git_status": "",
+      "changed_frozen_files": [],
+      "independent_cli_unchanged": true
+    },
+    {
+      "label": "before-04-xtask-verify",
+      "at": "2026-11-15T17:39:23.580103+00:00",
+      "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "git_status": "",
+      "changed_frozen_files": [],
+      "independent_cli_unchanged": true
+    },
+    {
+      "label": "after-04-xtask-verify",
+      "at": "2026-11-15T17:41:11.140010+00:00",
+      "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "git_status": "",
+      "changed_frozen_files": [],
+      "independent_cli_unchanged": true
+    },
+    {
+      "label": "before-05-xtask-package",
+      "at": "2026-11-15T17:41:11.200810+00:00",
+      "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "git_status": "",
+      "changed_frozen_files": [],
+      "independent_cli_unchanged": true
+    },
+    {
+      "label": "after-05-xtask-package",
+      "at": "2026-11-15T17:41:46.661371+00:00",
+      "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "git_status": "",
+      "changed_frozen_files": [],
+      "independent_cli_unchanged": true
+    },
+    {
+      "label": "before-06-debug-native",
+      "at": "2026-11-15T17:41:46.720221+00:00",
+      "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "git_status": "",
+      "changed_frozen_files": [],
+      "independent_cli_unchanged": true
+    },
+    {
+      "label": "after-06-debug-native",
+      "at": "2026-11-15T17:42:02.553196+00:00",
+      "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "git_status": "",
+      "changed_frozen_files": [],
+      "independent_cli_unchanged": true
+    },
+    {
+      "label": "final-clean-frozen-source",
+      "at": "2026-11-15T17:42:02.793259+00:00",
+      "source": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "git_status": "",
+      "changed_frozen_files": [],
+      "independent_cli_unchanged": true
+    }
+  ],
+  "steps": [
+    {
+      "name": "01-fmt",
+      "command": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "log": "<WORKSPACE>/.local/physical-sewing-implementation-20261115/integrated-b657e6b-20261115T173706Z-01-fmt.log",
+      "started_at": "2026-11-15T17:37:59.228673+00:00",
+      "status": "passed",
+      "cli_before": null,
+      "child_pid": 2074,
+      "exit_code": 0,
+      "ended_at": "2026-11-15T17:37:59.663687+00:00",
+      "duration_seconds": 0.4349703330080956,
+      "log_binding": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "cli_after": null,
+      "release_cli_after": null
+    },
+    {
+      "name": "02-workspace-tests",
+      "command": [
+        "cargo",
+        "test",
+        "--workspace"
+      ],
+      "log": "<WORKSPACE>/.local/physical-sewing-implementation-20261115/integrated-b657e6b-20261115T173706Z-02-workspace-tests.log",
+      "started_at": "2026-11-15T17:37:59.783504+00:00",
+      "status": "passed",
+      "cli_before": null,
+      "child_pid": 2139,
+      "exit_code": 0,
+      "ended_at": "2026-11-15T17:39:09.802805+00:00",
+      "duration_seconds": 70.0188812080305,
+      "log_binding": {
+        "sha256": "6e9b93431f11e3bb03990af320cb7409155faf9bdd5e99239db3c5abc79dfb18",
+        "bytes": 34245
+      },
+      "cli_after": {
+        "sha256": "f5cd43d374ed22aaa0029d07f63a9b829b4e6cd7ed1ad26c0e7f4e4015cac03c",
+        "bytes": 9217920
+      },
+      "release_cli_after": null
+    },
+    {
+      "name": "03-workspace-clippy",
+      "command": [
+        "cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "log": "<WORKSPACE>/.local/physical-sewing-implementation-20261115/integrated-b657e6b-20261115T173706Z-03-workspace-clippy.log",
+      "started_at": "2026-11-15T17:39:09.994206+00:00",
+      "status": "passed",
+      "cli_before": {
+        "sha256": "f5cd43d374ed22aaa0029d07f63a9b829b4e6cd7ed1ad26c0e7f4e4015cac03c",
+        "bytes": 9217920
+      },
+      "child_pid": 4103,
+      "exit_code": 0,
+      "ended_at": "2026-11-15T17:39:23.452961+00:00",
+      "duration_seconds": 13.454107417026535,
+      "log_binding": {
+        "sha256": "0f65742729f230ce62ae3550f308c31b8ea99566be285816aa0f125c98d0c1fb",
+        "bytes": 6404
+      },
+      "cli_after": {
+        "sha256": "f5cd43d374ed22aaa0029d07f63a9b829b4e6cd7ed1ad26c0e7f4e4015cac03c",
+        "bytes": 9217920
+      },
+      "release_cli_after": null
+    },
+    {
+      "name": "04-xtask-verify",
+      "command": [
+        "cargo",
+        "xtask",
+        "verify"
+      ],
+      "log": "<WORKSPACE>/.local/physical-sewing-implementation-20261115/integrated-b657e6b-20261115T173706Z-04-xtask-verify.log",
+      "started_at": "2026-11-15T17:39:23.580571+00:00",
+      "status": "passed",
+      "cli_before": {
+        "sha256": "f5cd43d374ed22aaa0029d07f63a9b829b4e6cd7ed1ad26c0e7f4e4015cac03c",
+        "bytes": 9217920
+      },
+      "child_pid": 4603,
+      "exit_code": 0,
+      "ended_at": "2026-11-15T17:41:11.055044+00:00",
+      "duration_seconds": 107.46962079196237,
+      "log_binding": {
+        "sha256": "9dbab8847708b40644e8c7d07153561c6e2eea6e2e181e180c7ed5b1aba293be",
+        "bytes": 3699
+      },
+      "cli_after": {
+        "sha256": "47011af81c0d4de78d976c39c64fb5cd5a1bfc37d9e517ff9ff6087e1d145b24",
+        "bytes": 9220736
+      },
+      "release_cli_after": null
+    },
+    {
+      "name": "05-xtask-package",
+      "command": [
+        "cargo",
+        "xtask",
+        "package"
+      ],
+      "log": "<WORKSPACE>/.local/physical-sewing-implementation-20261115/integrated-b657e6b-20261115T173706Z-05-xtask-package.log",
+      "started_at": "2026-11-15T17:41:11.201419+00:00",
+      "status": "passed",
+      "cli_before": {
+        "sha256": "47011af81c0d4de78d976c39c64fb5cd5a1bfc37d9e517ff9ff6087e1d145b24",
+        "bytes": 9220736
+      },
+      "child_pid": 12281,
+      "exit_code": 0,
+      "ended_at": "2026-11-15T17:41:46.584532+00:00",
+      "duration_seconds": 35.37857429205906,
+      "log_binding": {
+        "sha256": "6092b2366a898ef78b72606289518665b48ba3f6f2a179cbd4a3a71931cdc37a",
+        "bytes": 6561
+      },
+      "cli_after": {
+        "sha256": "47011af81c0d4de78d976c39c64fb5cd5a1bfc37d9e517ff9ff6087e1d145b24",
+        "bytes": 9220736
+      },
+      "release_cli_after": {
+        "sha256": "d2234d2329de6f83ea055e6e278df0086fcef6fedde3eecccde84032f5daa086",
+        "bytes": 2286384
+      }
+    },
+    {
+      "name": "06-debug-native",
+      "command": [
+        "cargo",
+        "build",
+        "-p",
+        "weftforge"
+      ],
+      "log": "<WORKSPACE>/.local/physical-sewing-implementation-20261115/integrated-b657e6b-20261115T173706Z-06-debug-native.log",
+      "started_at": "2026-11-15T17:41:46.720712+00:00",
+      "status": "passed",
+      "cli_before": {
+        "sha256": "47011af81c0d4de78d976c39c64fb5cd5a1bfc37d9e517ff9ff6087e1d145b24",
+        "bytes": 9220736
+      },
+      "child_pid": 13954,
+      "exit_code": 0,
+      "ended_at": "2026-11-15T17:42:02.482228+00:00",
+      "duration_seconds": 15.75698379194364,
+      "log_binding": {
+        "sha256": "b17db1130352cda3e107e6dbb71c15cde3b98f5d89f61e4f952c460c9f485d5f",
+        "bytes": 388
+      },
+      "cli_after": {
+        "sha256": "47011af81c0d4de78d976c39c64fb5cd5a1bfc37d9e517ff9ff6087e1d145b24",
+        "bytes": 9220736
+      },
+      "release_cli_after": {
+        "sha256": "d2234d2329de6f83ea055e6e278df0086fcef6fedde3eecccde84032f5daa086",
+        "bytes": 2286384
+      }
+    }
+  ],
+  "notes": [
+    "The accepted independent-evaluation CLI artifact is read-only for this run and is never replaced or relabeled.",
+    "Cargo feature contexts may produce different CLI executables; each gate records current CLI identities.",
+    "Packaging is unsigned and all outputs remain local pending root review and tracked publication."
+  ],
+  "rust_test_totals": {
+    "passed": 254,
+    "failed": 0,
+    "ignored": 0,
+    "measured": 0,
+    "filtered_out": 0,
+    "harness_summary_count": 25,
+    "expected_passed": 255,
+    "expected_passed_matches": false
+  },
+  "python_test_totals": {
+    "suites": [
+      48,
+      6
+    ],
+    "ran": 54,
+    "expected": 54,
+    "expected_matches": true
+  },
+  "package_artifacts": {
+    "target/package/LICENSE-APACHE": {
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    "target/package/LICENSE-MIT": {
+      "sha256": "5a79a5be6e18069ea095bcb13f724f90cee6a70b1fd6b5e2b1f505f050c25b0d",
+      "bytes": 1079
+    },
+    "target/package/README.md": {
+      "sha256": "f988e4247dbb517cfb455320fcee93c7275471ca73381fc14545a8123cd986ea",
+      "bytes": 8177
+    },
+    "target/package/THIRD_PARTY.md": {
+      "sha256": "ecdffb79d4abdd810451f60151469c9bdd914428ee197d9855ac6a1b1d9a3868",
+      "bytes": 2705
+    },
+    "target/package/WeftForge.app/Contents/Info.plist": {
+      "sha256": "5ac9539a4fb95ced9cc9463a5840176f69b86a826c39be0f7971378d93c218b5",
+      "bytes": 557
+    },
+    "target/package/WeftForge.app/Contents/MacOS/weftforge": {
+      "sha256": "0cb80c8625f24afe2e2bb1443c4c878a110f8c16adb730eb86dfeb35666beac8",
+      "bytes": 15418288
+    },
+    "target/package/WeftForge.app/Contents/Resources/licenses/OFL-Inter.txt": {
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "bytes": 4380
+    },
+    "target/package/WeftForge.app/Contents/Resources/licenses/OFL-JetBrainsMono.txt": {
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "bytes": 4399
+    },
+    "target/package/licenses/OFL-Inter.txt": {
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "bytes": 4380
+    },
+    "target/package/licenses/OFL-JetBrainsMono.txt": {
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "bytes": 4399
+    },
+    "target/package/weftforge": {
+      "sha256": "0cb80c8625f24afe2e2bb1443c4c878a110f8c16adb730eb86dfeb35666beac8",
+      "bytes": 15418288
+    },
+    "target/package/weftforge-cli": {
+      "sha256": "d2234d2329de6f83ea055e6e278df0086fcef6fedde3eecccde84032f5daa086",
+      "bytes": 2286384
+    }
+  },
+  "package_file_count": 12,
+  "final_binaries": {
+    "target/debug/weftforge": {
+      "sha256": "69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0",
+      "bytes": 60932600
+    },
+    "target/debug/weftforge-cli": {
+      "sha256": "47011af81c0d4de78d976c39c64fb5cd5a1bfc37d9e517ff9ff6087e1d145b24",
+      "bytes": 9220736
+    },
+    "target/release/weftforge": {
+      "sha256": "0cb80c8625f24afe2e2bb1443c4c878a110f8c16adb730eb86dfeb35666beac8",
+      "bytes": 15418288
+    },
+    "target/release/weftforge-cli": {
+      "sha256": "d2234d2329de6f83ea055e6e278df0086fcef6fedde3eecccde84032f5daa086",
+      "bytes": 2286384
+    },
+    "target/package/weftforge": {
+      "sha256": "0cb80c8625f24afe2e2bb1443c4c878a110f8c16adb730eb86dfeb35666beac8",
+      "bytes": 15418288
+    },
+    "target/package/weftforge-cli": {
+      "sha256": "d2234d2329de6f83ea055e6e278df0086fcef6fedde3eecccde84032f5daa086",
+      "bytes": 2286384
+    },
+    "target/package/WeftForge.app/Contents/MacOS/weftforge": {
+      "sha256": "0cb80c8625f24afe2e2bb1443c4c878a110f8c16adb730eb86dfeb35666beac8",
+      "bytes": 15418288
+    }
+  },
+  "font_notice_comparisons": [
+    {
+      "name": "OFL-Inter.txt",
+      "source": {
+        "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "bytes": 4380
+      },
+      "regular": {
+        "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "bytes": 4380
+      },
+      "app": {
+        "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "bytes": 4380
+      },
+      "equal": true
+    },
+    {
+      "name": "OFL-JetBrainsMono.txt",
+      "source": {
+        "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+        "bytes": 4399
+      },
+      "regular": {
+        "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+        "bytes": 4399
+      },
+      "app": {
+        "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+        "bytes": 4399
+      },
+      "equal": true
+    }
+  ],
+  "ended_at": "2026-11-15T17:42:02.794344+00:00",
+  "independent_evaluation_cli_after": {
+    "sha256": "fa4add99646544a052b6fa534ad325f1528e0572e4ee9aae344d687b85ac5cc1",
+    "bytes": 9231168
+  }
+}

@@ -1,0 +1,28 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/physical-sewing-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.41s
+     Running unittests src/main.rs (.local/target-native-physical-sewing-20261115/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 2 tests
+
+thread 'physical_sewing_tests::free_sewing_canvas_start_retains_unfinished_exponent_and_redo' (61660774) panicked at apps/weftforge/src/main.rs:11571:13:
+assertion `left == right` failed: "1e-": direction press raw text
+  left: None
+ right: Some("1e-")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test physical_sewing_tests::free_sewing_canvas_start_retains_unfinished_exponent_and_redo ... FAILED
+
+thread 'physical_sewing_tests::free_sewing_canvas_start_retains_unfinished_minus_and_redo' (61660775) panicked at apps/weftforge/src/main.rs:11571:13:
+assertion `left == right` failed: "-": direction press raw text
+  left: None
+ right: Some("-")
+test physical_sewing_tests::free_sewing_canvas_start_retains_unfinished_minus_and_redo ... FAILED
+
+failures:
+
+failures:
+    physical_sewing_tests::free_sewing_canvas_start_retains_unfinished_exponent_and_redo
+    physical_sewing_tests::free_sewing_canvas_start_retains_unfinished_minus_and_redo
+
+test result: FAILED. 0 passed; 2 failed; 0 ignored; 0 measured; 73 filtered out; finished in 0.14s
+
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

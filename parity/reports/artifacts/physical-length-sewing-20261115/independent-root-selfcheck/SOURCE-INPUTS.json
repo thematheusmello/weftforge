@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "commit": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+      "path": "spec/features/SEW-002-physical-length.md",
+      "sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2"
+    },
+    {
+      "commit": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+      "path": "spec/features/SEW-002-ordered-paths.md",
+      "sha256": "9baedd713b5a8dd4f251d7f2c5d0c51b408ecdabb32813a07dae06d25dcae960"
+    },
+    {
+      "commit": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+      "path": "spec/features/SEW-002-paired-runtime-20261114.md",
+      "sha256": "8bcabb89b3dfe49afe8852a4799bf106c3e7062c8a67968368dddfc36da8ce4e"
+    },
+    {
+      "commit": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+      "path": "spec/features/SEW-002-reverse-runtime-20261114.md",
+      "sha256": "5c9ff13804080b5216d48ed5cad02b816636f4f7b2e9b480cd7176ddfe2c32fa"
+    },
+    {
+      "commit": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+      "path": "spec/features/SEW-002-runtime-20261114.md",
+      "sha256": "a617ade897e851e013193b78c44463b1b500dacc04346d38e67605017cb81aec"
+    },
+    {
+      "commit": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+      "path": "spec/observations/REF-SEW-002-FREE-PARTIAL-001.json",
+      "sha256": "53e3a2e706845eaa2079ed62758f6c8ea83636222d27584f8d49b4a051762e26"
+    },
+    {
+      "commit": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+      "path": "spec/observations/REF-SEW-002-PAIR-002.json",
+      "sha256": "88835256bc434692a3a33578d2e6316cfb56d795aec9c64f9e66f523b451400a"
+    },
+    {
+      "commit": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+      "path": "spec/observations/REF-SEW-002-REVERSE-003.json",
+      "sha256": "63ede576ad0130d6705bbdd1e71008561e351a6702ffe1698b900800f615e8b9"
+    },
+    {
+      "commit": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+      "path": "crates/weftforge-core/src/document.rs",
+      "sha256": "682472bad43b0b3481d5aee17d4b74fc29cc438e96d95f6d2eb1c82661bab335"
+    },
+    {
+      "commit": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+      "path": "crates/weftforge-core/src/persistence.rs",
+      "sha256": "748eb06ae06bd348c49e5cc5bd716cbc19da06840d2b5a38a5caffbdd1283baf"
+    },
+    {
+      "commit": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+      "path": "crates/weftforge-core/src/sewing.rs",
+      "sha256": "344dfaacb6ae325e8534e5c3c7b844209b7e3714625383740eef47f8557ef93d"
+    },
+    {
+      "commit": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+      "path": "crates/weftforge-core/tests/sewing_groups.rs",
+      "sha256": "6b9cce35e0c99d33d4b9a7de8dad08a6de1b8f1f54cd3b4b6e1471f94ecc1572"
+    },
+    {
+      "commit": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+      "path": "apps/weftforge-cli/src/main.rs",
+      "sha256": "88e09babfb9eaba9646a54ebb0de28ac3fccd318d50f7f2a92bda148e857310d"
+    },
+    {
+      "commit": "e8dede8f949dd8ebbdfead4f17d86c5eb09fefc2",
+      "path": "apps/weftforge-cli/src/mcp.rs",
+      "sha256": "546d7f3d2a480c1df52cd8c48855cdd432cebfee5f4547a67d3c5a437ad8303b"
+    }
+  ],
+  "use": "Public reviewed behavior records bound observations; immutable baseline provides serialization, adapter and validation boundaries only. Original arithmetic is independently authored.",
+  "excluded": "No candidate implementation or binary, product execution, live application, private reference container, screenshot, assembly or proprietary extract."
+}

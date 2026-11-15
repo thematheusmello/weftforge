@@ -1,0 +1,41 @@
+{
+  "scope": "Selected owned-only review derivative. Unrelated process inventories, raw kernel mappings and stacks remain private. Source, numeric, clock, status and saved-file values in retained fields are unchanged.",
+  "original_private_sha256": "2272df5ca0194e613d3069c59efeda1c451f959c762870167541bf96118fc16d",
+  "omitted_private_fields": [
+    "prior_weftforge_processes"
+  ],
+  "record": {
+    "status": "external_preflight_pass",
+    "utc": "2026-11-15T18:08:06.307Z",
+    "binding_sha256": "4fd448d0104835c54cd33828cb8b3a1200542fbb2f45c312ea3df947d8049902",
+    "freeze_sha256": "2ba92e4355844299332fbc2e04da24171f522313e5a299ff657e21d42fe05e89",
+    "source_commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+    "source_pins_verified": 60,
+    "native_binary_sha256": "69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0",
+    "input_sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+    "input_mode": "400",
+    "controller_sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+    "recorder_sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+    "loader": "node:module createRequire actual external runtime",
+    "offline_receipt": {
+      "file": "captures/binding-raw.json",
+      "bytes": 10318,
+      "sha256": "4fd448d0104835c54cd33828cb8b3a1200542fbb2f45c312ea3df947d8049902",
+      "source_record": "0001",
+      "unedited": true,
+      "utc": "2026-11-15T18:08:05.716Z",
+      "monotonic_ns": "888401644265375"
+    },
+    "owned_app": "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/001/WeftForgePhysicalSewing001.app",
+    "owned_bundle_id": "org.weftforge.preview.physicalsewing20261115.case001",
+    "owned_executable": "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/001/WeftForgePhysicalSewing001.app/Contents/MacOS/weftforge",
+    "owned_executable_sha256": "69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0",
+    "owned_plist_sha256": "0169f5ed3d674a66ca98e81dfa1d6b20eca3d980485e87f75f7c244e976a9269",
+    "controller_status": {
+      "evidenceKind": "native",
+      "calls": 0,
+      "elapsedS": null,
+      "stopped": false
+    }
+  }
+}

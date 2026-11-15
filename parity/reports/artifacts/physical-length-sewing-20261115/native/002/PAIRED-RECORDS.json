@@ -1,0 +1,4414 @@
+{
+  "scope": "Review derivative of original paired native attempts. Full return bodies, including giant image arrays/global inventories, remain private under their original hashes. Actual action arguments, status/error and clock fields are retained; no native case is rerun or regraded.",
+  "paired_records": [
+    {
+      "before": {
+        "id": "0001",
+        "label": "os-open-owned-case002",
+        "method": "OS.open",
+        "arguments": {
+          "executable": "/usr/bin/open",
+          "args": [
+            "-n",
+            "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/002/WeftForgePhysicalSewing002.app",
+            "--args",
+            "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/002/physical-readonly-input.weftforge"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:36:20.993Z",
+        "monotonic_ns": "890096909440291"
+      },
+      "returned": {
+        "id": "0001",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:36:21.289Z",
+        "monotonic_ns": "890097205022791"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "90f0ae4fc3167240bc7f81222d771aa79913af88766dd5f1d8326394d0d87411",
+      "original_after_sha256": "06ce49d77bb3a0b46792246d196d7c06a54ba9d8a9402ab3408f96d1f6f8856d",
+      "original_after_bytes": 225
+    },
+    {
+      "before": {
+        "id": "0002",
+        "label": "bootstrap-exact-owned-case002",
+        "method": "getApp",
+        "arguments": {
+          "args": [
+            "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/002/WeftForgePhysicalSewing002.app"
+          ],
+          "first_CUA_entry_only": true,
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:36:21.290Z",
+        "monotonic_ns": "890097206178791"
+      },
+      "returned": {
+        "id": "0002",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:36:45.765Z",
+        "monotonic_ns": "890121693382750"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "48a9344cbb8bf71572b43813808cdf03149708ba29f3a38d86d6671aacbaddf3",
+      "original_after_sha256": "f19bbf0367809b4351086db8bdc01975acc122017f8a6dc15881e5da01974365",
+      "original_after_bytes": 539
+    },
+    {
+      "before": {
+        "id": "0003",
+        "label": "initial-r41",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:36:45.781Z",
+        "monotonic_ns": "890121697386291"
+      },
+      "returned": {
+        "id": "0003",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:36:46.052Z",
+        "monotonic_ns": "890121967980500"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "ff952145299939c8023d94613185449c46e3d48e9d5f54b11e7ff7b0e0a3f663",
+      "original_after_sha256": "d68f57c0d898f62cb7ca3ab06c313cf446c38e229ac99130d041da63734ddf6f",
+      "original_after_bytes": 2303026
+    },
+    {
+      "before": {
+        "id": "0004",
+        "label": "frame-all-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            16
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:04.054Z",
+        "monotonic_ns": "890139969918375"
+      },
+      "returned": {
+        "id": "0004",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:04.157Z",
+        "monotonic_ns": "890140073113583"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "b03dc513919378328aecd46dd2264fd215e8264e92023d11cecf1a0ddd5d1351",
+      "original_after_sha256": "143c8c94e6feff7e6698097b675cf0ddb2901f4c195d16cc0ea75a64ea05353f",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0005",
+        "label": "framed-r41",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:04.158Z",
+        "monotonic_ns": "890140073529000"
+      },
+      "returned": {
+        "id": "0005",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:04.751Z",
+        "monotonic_ns": "890140666499000"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "d41275c931a61b8cb7966002fd4e64cb570a1e18f0dffcd2f2e15a9dd5bb68a0",
+      "original_after_sha256": "dbc4c2a259adc2e90cdb4e96cdde3c7ecd1e0f2d4fdbed9042b68c3fca0d645c",
+      "original_after_bytes": 2043478
+    },
+    {
+      "before": {
+        "id": "0006",
+        "label": "select-analytic-scene",
+        "method": "click",
+        "arguments": {
+          "args": [
+            37
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:09.874Z",
+        "monotonic_ns": "890145789680666"
+      },
+      "returned": {
+        "id": "0006",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:09.915Z",
+        "monotonic_ns": "890145831131500"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "1e8def894d3bae5c60be22b03c21f70016fa4a5baa09319153b277afd5dfb04a",
+      "original_after_sha256": "ba04d45c442574a522e2d7c3995039974d93db0f8d3fa576301bcfe208ec40ac",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0007",
+        "label": "analytic-scene-selected",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:09.916Z",
+        "monotonic_ns": "890145831533958"
+      },
+      "returned": {
+        "id": "0007",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:10.532Z",
+        "monotonic_ns": "890146448135500"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "cc7ac086eb624eb7cbf931f5649188aa597141310fc8db8e7a9b6410a571770c",
+      "original_after_sha256": "befdd5ddf6f2538fd569c362c4ef398f57a52136f82518b092b2e5ba9c21f78a",
+      "original_after_bytes": 2041511
+    },
+    {
+      "before": {
+        "id": "0008",
+        "label": "free-sewing-tool",
+        "method": "click",
+        "arguments": {
+          "args": [
+            33
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:15.382Z",
+        "monotonic_ns": "890151298220583"
+      },
+      "returned": {
+        "id": "0008",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:15.455Z",
+        "monotonic_ns": "890151370744291"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "d11ed3095e30a4f459df3c06b17b5d79f44660cd2171a1770ca9da88796c7522",
+      "original_after_sha256": "9666914e46e39bcee6f84d8a6666e7e5555004a33f33a33aeeb6ecca29a3d185",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0009",
+        "label": "free-sewing-selected",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:15.455Z",
+        "monotonic_ns": "890151371210375"
+      },
+      "returned": {
+        "id": "0009",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:16.050Z",
+        "monotonic_ns": "890151965871708"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "66bf2f2aab6fe2eb917a7e8f80b651d316be793a6211923a7cbc1bc7c83c782a",
+      "original_after_sha256": "330d502bac43cdfb0c9f4a7cfde8befe4e21ef9726ab417931bf289136a4ac45",
+      "original_after_bytes": 2097006
+    },
+    {
+      "before": {
+        "id": "0010",
+        "label": "width-focus",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              1427,
+              216
+            ],
+            {
+              "clickCount": 2
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:22.561Z",
+        "monotonic_ns": "890158477204250"
+      },
+      "returned": {
+        "id": "0010",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:23.797Z",
+        "monotonic_ns": "890159713174500"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "1e979a094dc01763bac178a9c134d37ca027a0f93cce7c7fcbaa1633a5536478",
+      "original_after_sha256": "f8c0e004d099c83ecc59e13b2c56864335bcfa0129382ed78ba8cf1f9d4061b9",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0011",
+        "label": "width-focus-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:23.798Z",
+        "monotonic_ns": "890159713664041"
+      },
+      "returned": {
+        "id": "0011",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:24.280Z",
+        "monotonic_ns": "890160196144500"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "50772414238ad3e972d732c8c75119daadeb5a91ce93b19d20463bf74a0e130a",
+      "original_after_sha256": "07f95c40766c6c95482860f1ae24047018139db36d5ba2e490975230aef94a78",
+      "original_after_bytes": 2107543
+    },
+    {
+      "before": {
+        "id": "0012",
+        "label": "width-select-all",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+a"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:29.141Z",
+        "monotonic_ns": "890165056589875"
+      },
+      "returned": {
+        "id": "0012",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:29.150Z",
+        "monotonic_ns": "890165065420541"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "dec893fedc451bccd6aeccecb85550aa4202ec0ecccdbe7872f94da90c62082a",
+      "original_after_sha256": "8cc7c93a6a09ac3b7f9ad1892fbd031cb0b8733d70c4a24dc22eafddce54572e",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0013",
+        "label": "width-type-sentinel",
+        "method": "typeText",
+        "arguments": {
+          "args": [
+            "0.2e0"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:29.150Z",
+        "monotonic_ns": "890165066100666"
+      },
+      "returned": {
+        "id": "0013",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:29.169Z",
+        "monotonic_ns": "890165084521333"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "29ab346ba3c993c4877110f22bcb63f1239bf410bd2b30b40777d1b7d2d8ff24",
+      "original_after_sha256": "880d04a056467058f111fe2de5103b144ece934a00bc2fea675353e58c6bdb66",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0014",
+        "label": "width-raw-sentinel",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:29.169Z",
+        "monotonic_ns": "890165085209916"
+      },
+      "returned": {
+        "id": "0014",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:29.740Z",
+        "monotonic_ns": "890165655330666"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "b4c1720ecc7320d37a1732d21a3b1100befcf52c74f7f0e87325f2b3bf11a7c2",
+      "original_after_sha256": "ccb501e2bdffd44796623a8a83746365db5561fed72b8969e9029e89a346cbca",
+      "original_after_bytes": 2109719
+    },
+    {
+      "before": {
+        "id": "0015",
+        "label": "width-caret-left-one",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "Left"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:37.557Z",
+        "monotonic_ns": "890173473031208"
+      },
+      "returned": {
+        "id": "0015",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:37.566Z",
+        "monotonic_ns": "890173481231000"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "d651c9db9a75ec832d73e4565e39c1e65a539c85919e1dd1eb46abc9e5b661e8",
+      "original_after_sha256": "ca0b21223788d3b9a3bb063c6d356001eef842c50a6011c79526ef6e18f2681f",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0016",
+        "label": "width-caret-left-two",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "Left"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:37.566Z",
+        "monotonic_ns": "890173481797333"
+      },
+      "returned": {
+        "id": "0016",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:37.573Z",
+        "monotonic_ns": "890173488513958"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "c301dc62b42567962a7e19aa4be48528b8328d009647cd437983298b1ce18212",
+      "original_after_sha256": "9f13903b2b86fe4f9eabf390959254886d872e60efbc4ff2aa129cd87c36f4a3",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0017",
+        "label": "width-caret-before-e",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:37.574Z",
+        "monotonic_ns": "890173489199958"
+      },
+      "returned": {
+        "id": "0017",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:38.091Z",
+        "monotonic_ns": "890174006781625"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "e63336a9bd61077bbd056e85e72ef9ef575c545e4e63eeea5e521363ed73bd8d",
+      "original_after_sha256": "8e1ab8c4fafcb96f990774760db31eac445e4d155a9d44754dfb2f7af65afa14",
+      "original_after_bytes": 2109074
+    },
+    {
+      "before": {
+        "id": "0018",
+        "label": "invalid-modal-open",
+        "method": "click",
+        "arguments": {
+          "args": [
+            114
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:43.172Z",
+        "monotonic_ns": "890179087620333"
+      },
+      "returned": {
+        "id": "0018",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:43.231Z",
+        "monotonic_ns": "890179146743958"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "9a8e9f44003baabf38c7df71c5366179141f469e2c4cfb5daf71886f1f5918a6",
+      "original_after_sha256": "20384444dc07124d811850f2761ea30dc9d774463321f315c570a9d4c38ef771",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0019",
+        "label": "invalid-modal-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:43.232Z",
+        "monotonic_ns": "890179147291250"
+      },
+      "returned": {
+        "id": "0019",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:43.867Z",
+        "monotonic_ns": "890179782412916"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "a16eb679209fac256113121eb0bf9e9162c4769e558891ba1fd52a62d539939e",
+      "original_after_sha256": "6962d9bae62bca1107c414b667a0a18dc40aadca1d8cdeea0ec424f243dd030d",
+      "original_after_bytes": 1754266
+    },
+    {
+      "before": {
+        "id": "0020",
+        "label": "invalid-forward-select",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              612,
+              590
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:49.111Z",
+        "monotonic_ns": "890185026942500"
+      },
+      "returned": {
+        "id": "0020",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:50.094Z",
+        "monotonic_ns": "890186009658541"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "8abc1fa4156ab427d18bff577f4d9957e3fca36e8b44c02ec913f053cae24ee0",
+      "original_after_sha256": "4b13d90cab20f8f600028ffadeb38176171036f29359ff01700594e89351326c",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0021",
+        "label": "invalid-forward-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:50.095Z",
+        "monotonic_ns": "890186010490583"
+      },
+      "returned": {
+        "id": "0021",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:50.669Z",
+        "monotonic_ns": "890186584173083"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "a68de76c79097735dd69b089f5abf74ebfb3b2c76307fd7bfee8ad3ca939bdc9",
+      "original_after_sha256": "af23a26d76af5ce5f0d33b77e4243b2f33e39c084759394f1b632481c563205d",
+      "original_after_bytes": 1752458
+    },
+    {
+      "before": {
+        "id": "0022",
+        "label": "invalid-length-focus",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              731,
+              545
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:57.498Z",
+        "monotonic_ns": "890193413942666"
+      },
+      "returned": {
+        "id": "0022",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:57.972Z",
+        "monotonic_ns": "890193887575500"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "52dbb94a7fc0a87e491d9f701c874f2d811ee9a5be086fba6333a95620fcc224",
+      "original_after_sha256": "151937051c8b3109cc6ce5bc0efa22d85e4804468870919a162b4c898a791f50",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0023",
+        "label": "invalid-length-focus-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:37:57.973Z",
+        "monotonic_ns": "890193888398416"
+      },
+      "returned": {
+        "id": "0023",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:37:58.575Z",
+        "monotonic_ns": "890194490847875"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "1a6f69d2ab7d8fe14a3b071a71cfa1418ca118601ca66f882243bb11756e59fb",
+      "original_after_sha256": "9a14c6e4f8169d02e75d558ebc578fd0ffda2623119b84efc494ddb46a2bc916",
+      "original_after_bytes": 1757865
+    },
+    {
+      "before": {
+        "id": "0024",
+        "label": "invalid-length-select-all",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+a"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:38:05.504Z",
+        "monotonic_ns": "890201419125791"
+      },
+      "returned": {
+        "id": "0024",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:38:05.511Z",
+        "monotonic_ns": "890201426226000"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "acb751a2e62f1ad76e240279c2a9d28af5a7564c63f1b61ce22d6012be5cfc05",
+      "original_after_sha256": "f1697db68b170a6ce6051662356b0f3b5d75351d5f5fbe9e9885a6c0c10092a4",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0025",
+        "label": "invalid-length-type",
+        "method": "typeText",
+        "arguments": {
+          "args": [
+            "1e-"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:38:05.511Z",
+        "monotonic_ns": "890201426851916"
+      },
+      "returned": {
+        "id": "0025",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:38:05.523Z",
+        "monotonic_ns": "890201438108458"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "efa304af649bf02d41f56b1a8795bf0b3e2a1dda32b7c264690421010b277a3b",
+      "original_after_sha256": "d68a9fe5803ed1082c9300611306eb914be1ad6369570507f7c623370d280476",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0026",
+        "label": "invalid-length-raw",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:38:05.523Z",
+        "monotonic_ns": "890201438749458"
+      },
+      "returned": {
+        "id": "0026",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:38:06.077Z",
+        "monotonic_ns": "890201992239250"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "55d28d4582614efc7fe296ffd1ab852084b8834b90c8bc2e0997a9a1e36ea375",
+      "original_after_sha256": "aeba68c81a337bac3d9f7ba8e6fc9277969b294ee97fe042203c40cf19252d2c",
+      "original_after_bytes": 1761486
+    },
+    {
+      "before": {
+        "id": "0027",
+        "label": "invalid-length-tab",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "Tab"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:38:11.585Z",
+        "monotonic_ns": "890207500656208"
+      },
+      "returned": {
+        "id": "0027",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:38:11.593Z",
+        "monotonic_ns": "890207508277500"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "46d1c065056f5b7cde57f6fbbdc43174b855ef4b9478bc222b9f8db2f78da4dc",
+      "original_after_sha256": "974de39c87b76bb598012421f04fc0abcc4291e7d96e1eab16c1fd57801e518e",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0028",
+        "label": "invalid-length-after-tab",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:38:11.594Z",
+        "monotonic_ns": "890207509001958"
+      },
+      "returned": {
+        "id": "0028",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:38:12.107Z",
+        "monotonic_ns": "890208022494500"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "0ab61e481c2f7555760ee5f908135e0a91cdafe0217568db0889f6eb7f91a9cf",
+      "original_after_sha256": "9fe60c44f3f72e8d7379554ce892084bcb90a0ca1ed1f2aa637e5fcdff1f3e28",
+      "original_after_bytes": 1786664
+    },
+    {
+      "before": {
+        "id": "0029",
+        "label": "invalid-ok-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              620,
+              646
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:38:17.848Z",
+        "monotonic_ns": "890213763848583"
+      },
+      "returned": {
+        "id": "0029",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:38:18.382Z",
+        "monotonic_ns": "890214297657916"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "91c838841ccffba93e2c0ad622055d0e11ea9d82e1109343bc8c8e4975ffb3e3",
+      "original_after_sha256": "562924edf2445c3b5eb273e5b3b913508233a0484e84d464048ff55a156a14b7",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0030",
+        "label": "invalid-refusal-retained",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:38:18.384Z",
+        "monotonic_ns": "890214298952916"
+      },
+      "returned": {
+        "id": "0030",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:38:18.932Z",
+        "monotonic_ns": "890214847623125"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "a5d2d89fb3d3722435e293065797e8f01771ed2c273fd87db59465fe6a54b626",
+      "original_after_sha256": "533646f568379e8ae260c680132793827f7603e9779adc28a961719629404a09",
+      "original_after_bytes": 1780925
+    },
+    {
+      "before": {
+        "id": "0031",
+        "label": "invalid-cancel-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              669,
+              646
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:38:26.643Z",
+        "monotonic_ns": "890222558285875"
+      },
+      "returned": {
+        "id": "0031",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:38:27.080Z",
+        "monotonic_ns": "890222995803125"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "f040ad0af11e736bad5f999c25342931b93a8bca710c82e78ed45d1a69f8d868",
+      "original_after_sha256": "ee0a611dab744281c0c08dbfe94a111c394287767818d3dcaff8a0b2efa1077a",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0032",
+        "label": "invalid-cancel-width-restored",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:38:27.082Z",
+        "monotonic_ns": "890222996955916"
+      },
+      "returned": {
+        "id": "0032",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:38:27.629Z",
+        "monotonic_ns": "890223544690875"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "569e12d88d72dad9ad0b0968241ed63574776b46ed5e35c74752ed87bb9dd409",
+      "original_after_sha256": "c3a3964d2032fd23a97ad5063f31485d63330185376723039dc5f6209220e90e",
+      "original_after_bytes": 2108397
+    },
+    {
+      "before": {
+        "id": "0033",
+        "label": "width-insert-caret-witness",
+        "method": "typeText",
+        "arguments": {
+          "args": [
+            "0"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:38:33.349Z",
+        "monotonic_ns": "890229264725333"
+      },
+      "returned": {
+        "id": "0033",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:38:33.366Z",
+        "monotonic_ns": "890229281802666"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "fb7b7ea6138fbbb6ca9cd557647502b89bc0ecf58970f15d000197f567ee73f1",
+      "original_after_sha256": "bc8b8d3ae47a95d1ec943ef34d87779e666314c67d992e7790e0fc337369d1a6",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0034",
+        "label": "width-caret-witness",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:38:33.369Z",
+        "monotonic_ns": "890229284258666"
+      },
+      "returned": {
+        "id": "0034",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:38:33.931Z",
+        "monotonic_ns": "890229846137083"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "d919b60f3176b69d421c30d5b0ab857251c832960f09a3568f65083b0d311a3f",
+      "original_after_sha256": "46dd9b7a597b0e2d64e4b88233d2c2a685067e009f140b32dc4f4ae3f298a592",
+      "original_after_bytes": 2108129
+    },
+    {
+      "before": {
+        "id": "0035",
+        "label": "width-noop-tab",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "Tab"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:38:40.721Z",
+        "monotonic_ns": "890236636748166"
+      },
+      "returned": {
+        "id": "0035",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:38:40.753Z",
+        "monotonic_ns": "890236668242750"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "9c6b5c6a383ca1d041167c9d1b7a3cc3590455dabb2ddd607d86fa2d186dfefd",
+      "original_after_sha256": "f4284b233b1c265d45221e27628b460c6f8bddd97c6da861bc941c73a86bb5f2",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0036",
+        "label": "width-noop-r41",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:38:40.754Z",
+        "monotonic_ns": "890236669201625"
+      },
+      "returned": {
+        "id": "0036",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:38:41.400Z",
+        "monotonic_ns": "890237315582375"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "0b88d044903998c7bd26f9a3f6ccd95be04d92aeeac69a9c29d3aa7c9e72497c",
+      "original_after_sha256": "77c37f94c4dd65f62a98e76ade2a62f3a96f4019f0bc058dc6965aeff1c6192e",
+      "original_after_bytes": 2105644
+    },
+    {
+      "before": {
+        "id": "0037",
+        "label": "canonical-a-start-click",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              74,
+              711
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:38:56.383Z",
+        "monotonic_ns": "890252297698250"
+      },
+      "returned": {
+        "id": "0037",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:38:57.216Z",
+        "monotonic_ns": "890253131082291"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "3b54efa7721a440e71c5b515bca64eb7831509c86cba197dbea75ac6aa8d0670",
+      "original_after_sha256": "e102b5fd5dc406f1e96583c06cb60d4dddfab3b38eaac32d98a04705eab405c6",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0038",
+        "label": "canonical-a-start-marker",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:38:57.217Z",
+        "monotonic_ns": "890253132513416"
+      },
+      "returned": {
+        "id": "0038",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:38:57.903Z",
+        "monotonic_ns": "890253817713833"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "7b745207c85619c2a80e03fe0ce49490f1682a570566d6ace311b2c2a0e42534",
+      "original_after_sha256": "bb8af3e15e84e1d9d7942acea30d06ab5a6dc001bd2514788839354ef1a7fbc7",
+      "original_after_bytes": 2142954
+    },
+    {
+      "before": {
+        "id": "0039",
+        "label": "canonical-a-forward-rightclick",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              124,
+              705
+            ],
+            {
+              "mouseButton": "right"
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:39:03.931Z",
+        "monotonic_ns": "890259845895125"
+      },
+      "returned": {
+        "id": "0039",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:39:04.369Z",
+        "monotonic_ns": "890260284575208"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "6929360992e93da3efc6d256cf32b307d748a252bd82c491bcba90c45b8f4170",
+      "original_after_sha256": "03abfe3af334615d6084411f1cc16637d140741b8ec51a58250f34e701110cfd",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0040",
+        "label": "canonical-a-modal",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:39:04.370Z",
+        "monotonic_ns": "890260285489750"
+      },
+      "returned": {
+        "id": "0040",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:39:05.046Z",
+        "monotonic_ns": "890260960907666"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "c56a929e5298fbb432b0cd82df772045fdf2068d726a32132f6616b03db4c0cd",
+      "original_after_sha256": "01b40122d1a7bba5cbbae46beb7fc8a188e94049c4486cb1e756af5319350fb4",
+      "original_after_bytes": 1799873
+    },
+    {
+      "before": {
+        "id": "0041",
+        "label": "canonical-a-length-focus",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              732,
+              545
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:39:10.539Z",
+        "monotonic_ns": "890266453770166"
+      },
+      "returned": {
+        "id": "0041",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:39:11.560Z",
+        "monotonic_ns": "890267475056750"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "895e6cf1067e0ea4f4c095ab91ac5c0ce2f5251366b7b9925afdbfe9ae78c848",
+      "original_after_sha256": "f0a98bbe14612795a641a68e483ceb3bce21e6275b36ff00ac582a0e3ee578dc",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0042",
+        "label": "canonical-a-length-focus-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:39:11.561Z",
+        "monotonic_ns": "890267475829125"
+      },
+      "returned": {
+        "id": "0042",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:39:12.162Z",
+        "monotonic_ns": "890268076783458"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "ba5078a792fdaf8d1820ed12ba61852238f313198cd3c7590088775fcb377056",
+      "original_after_sha256": "03e557aa1a0a36be7ed3ba4202b9ecf45b6f3bb6d65382afde74b7112cad7759",
+      "original_after_bytes": 1800866
+    },
+    {
+      "before": {
+        "id": "0043",
+        "label": "canonical-a-length-select-all",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+a"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:39:20.360Z",
+        "monotonic_ns": "890276275484833"
+      },
+      "returned": {
+        "id": "0043",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:39:20.370Z",
+        "monotonic_ns": "890276284533416"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "bb2a6072a18ae68d14ba687b320e32ec0fb9a21baf66ca78aacf42c7c31aeee5",
+      "original_after_sha256": "a6a8ab39eae37984d1a4dd44e318ed9475663e8eeadcc57cdec9f729524edfa5",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0044",
+        "label": "canonical-a-length100",
+        "method": "typeText",
+        "arguments": {
+          "args": [
+            "100"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:39:20.370Z",
+        "monotonic_ns": "890276285425083"
+      },
+      "returned": {
+        "id": "0044",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:39:20.387Z",
+        "monotonic_ns": "890276301685875"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "d73895745736a4e761d211855fa02e390dc7137c86115baf4a83490770d2dbf0",
+      "original_after_sha256": "dfb979c38232fad144f02744ebbbd3612d16a0b9162875079359104290bafae7",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0045",
+        "label": "canonical-a-length-raw100",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:39:20.387Z",
+        "monotonic_ns": "890276302336125"
+      },
+      "returned": {
+        "id": "0045",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:39:20.970Z",
+        "monotonic_ns": "890276884879833"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "259e0f38205b04ef8653512540442e567c825e55682f903e1c7e26a5c8966a96",
+      "original_after_sha256": "bafcab1bd98c44b5a09f68b13d2d68a820632bfb8a58f8b787052013fd9b2940",
+      "original_after_bytes": 1794057
+    },
+    {
+      "before": {
+        "id": "0046",
+        "label": "canonical-a-length-tab",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "Tab"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:39:26.802Z",
+        "monotonic_ns": "890282716825250"
+      },
+      "returned": {
+        "id": "0046",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:39:26.809Z",
+        "monotonic_ns": "890282724218333"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "b32bb3fe0f4132ec5723becd807bc7aa175f00c3ced21f0892c9ddf8b5d019bc",
+      "original_after_sha256": "319b4b1b5d32ebc9a4e5ec569be0bd111d457c2f0828e201a822ffa622e621ae",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0047",
+        "label": "canonical-a-length-validated",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:39:26.810Z",
+        "monotonic_ns": "890282725145416"
+      },
+      "returned": {
+        "id": "0047",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:39:27.352Z",
+        "monotonic_ns": "890283267347541"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "062b19fd8ea384650a89c0bb71f50c442a1b3c0138f914acf07dfab642f73628",
+      "original_after_sha256": "b59feb4c6c00ad7aed8d775070201b8919d0a266459eb915f1965b48008f3238",
+      "original_after_bytes": 1795943
+    },
+    {
+      "before": {
+        "id": "0048",
+        "label": "canonical-a-ok-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              620,
+              637
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:39:32.917Z",
+        "monotonic_ns": "890288832023833"
+      },
+      "returned": {
+        "id": "0048",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:39:33.426Z",
+        "monotonic_ns": "890289341375625"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "6cc5cd922b9ea9be2431b79a47a333a949b1b560c2886056795a889f84a599ad",
+      "original_after_sha256": "f7ee0c1d2ee0fa898e2ea8df84341e0fad1aa79a2fed9d0ec21c31ccba370a2b",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0049",
+        "label": "canonical-a-transient",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:39:33.427Z",
+        "monotonic_ns": "890289342261500"
+      },
+      "returned": {
+        "id": "0049",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:39:33.959Z",
+        "monotonic_ns": "890289874365166"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "9cbc02662eb1c60434c482b630776ad3d90ddd41aa2f5bd0565ee2c56cadaa32",
+      "original_after_sha256": "773e8d097fd51eb145713e8a3e1fbf3e1d8d1457aa4768a546ae10ca4b9907d8",
+      "original_after_bytes": 2148734
+    },
+    {
+      "before": {
+        "id": "0050",
+        "label": "canonical-b-interior-click",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              619,
+              711
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:39:52.668Z",
+        "monotonic_ns": "890308582364500"
+      },
+      "returned": {
+        "id": "0050",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:39:53.165Z",
+        "monotonic_ns": "890309079518000"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "c09a0fe7220c698f9d9876efd0a07404db4f81395ebf056dd98718deaf7e9b03",
+      "original_after_sha256": "9f0e1a816056c43cc3e98e815a31aebfd46130b1104361fd4757b4ed7793afcc",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0051",
+        "label": "canonical-b-start-marker",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:39:53.166Z",
+        "monotonic_ns": "890309080560750"
+      },
+      "returned": {
+        "id": "0051",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:39:53.704Z",
+        "monotonic_ns": "890309618698708"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "e45d0a7047b6d7f92f5bc32e70b335b74eb363d993bafb18d533dc8aedea1872",
+      "original_after_sha256": "ac85bbfbf8068e95adb00bc5ddfff994e40fecd5cc856b5345dfb938bd821183",
+      "original_after_bytes": 2169574
+    },
+    {
+      "before": {
+        "id": "0052",
+        "label": "canonical-b-leftward-rightclick",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              569,
+              711
+            ],
+            {
+              "mouseButton": "right"
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:00.127Z",
+        "monotonic_ns": "890316041318291"
+      },
+      "returned": {
+        "id": "0052",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:00.626Z",
+        "monotonic_ns": "890316540511333"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "55787418e7cff551a0004f1f573fa6a847dbe3cced240ab230622c62ebae9ab3",
+      "original_after_sha256": "d6d9023d9cab3603870f2311e25ade1bc67227668e994b12b3dceb4f8d3a5a12",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0053",
+        "label": "canonical-b-modal",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:00.627Z",
+        "monotonic_ns": "890316541290916"
+      },
+      "returned": {
+        "id": "0053",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:01.248Z",
+        "monotonic_ns": "890317163190875"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "b4788da9cdb45fac99bf36e587677b7954d4f649e79f6e465cb1b6cf0434f654",
+      "original_after_sha256": "852b8216e6dea02f929b1b21b2022cc4874fb21d695796c46ed489c9105a65f4",
+      "original_after_bytes": 1849545
+    },
+    {
+      "before": {
+        "id": "0054",
+        "label": "canonical-b-start-focus",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              730,
+              519
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:07.152Z",
+        "monotonic_ns": "890323066921708"
+      },
+      "returned": {
+        "id": "0054",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:07.851Z",
+        "monotonic_ns": "890323765469666"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "e490053db593e0a17ab1b1753ee29970ee3670b524d93af3b9543d61b52701a2",
+      "original_after_sha256": "0c2010ebcba6aa5f42cbeb2bd2f16e19fd5a34bd5f66138184ae8a45c914fbd5",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0055",
+        "label": "canonical-b-start-focus-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:07.852Z",
+        "monotonic_ns": "890323766441500"
+      },
+      "returned": {
+        "id": "0055",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:08.453Z",
+        "monotonic_ns": "890324367862000"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "b66747fc3650d808ac75a07926fe878ee4d8495d1793109682c16e0e23d9b8da",
+      "original_after_sha256": "024a843d64d8edd79adccf17ad0a70ed17b31f3ca170896c1d3542deda99d53e",
+      "original_after_bytes": 1847471
+    },
+    {
+      "before": {
+        "id": "0056",
+        "label": "canonical-b-start-select-all",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+a"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:14.501Z",
+        "monotonic_ns": "890330415720125"
+      },
+      "returned": {
+        "id": "0056",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:14.508Z",
+        "monotonic_ns": "890330422676208"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "48f074fe73ea9843102b90f799efc2229088a0ba8f942a38226d5ecef4bf8472",
+      "original_after_sha256": "41d009dec864a41d87d632af5354e4a01b51494a22037e28449c1125dd15d070",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0057",
+        "label": "canonical-b-start075",
+        "method": "typeText",
+        "arguments": {
+          "args": [
+            "0.75"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:14.509Z",
+        "monotonic_ns": "890330423791666"
+      },
+      "returned": {
+        "id": "0057",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:14.579Z",
+        "monotonic_ns": "890330493807291"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "24352f686754de45faa1549d4746de6d318cdf57fc2c05b72b2824b01087844a",
+      "original_after_sha256": "d147c2dea288d5b7925f34477c7f19a32d9ec881835618e798a8ad44668ba263",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0058",
+        "label": "canonical-b-start-raw075",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:14.580Z",
+        "monotonic_ns": "890330494631750"
+      },
+      "returned": {
+        "id": "0058",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:15.116Z",
+        "monotonic_ns": "890331030758458"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "399604bbf3ab6e6cf3437f54b5144373e5cc69538509b33affb2e1b62f67a78d",
+      "original_after_sha256": "11d61daa1c16573f9f5f34d524de44665e9bbfccdb6d1228c3a64b50f278c0cd",
+      "original_after_bytes": 1837177
+    },
+    {
+      "before": {
+        "id": "0059",
+        "label": "canonical-b-start-tab",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "Tab"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:20.886Z",
+        "monotonic_ns": "890336800924833"
+      },
+      "returned": {
+        "id": "0059",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:20.893Z",
+        "monotonic_ns": "890336807836458"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "f700932459ceb2d15e2aa27267a7271180882ba833d6bd24ecc19c6527f4dcb9",
+      "original_after_sha256": "d9fcc5221853f6c40177b4770c218643c16a6b638a81e7fa03f85aab02629b55",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0060",
+        "label": "canonical-b-start-validated",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:20.894Z",
+        "monotonic_ns": "890336808640708"
+      },
+      "returned": {
+        "id": "0060",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:21.491Z",
+        "monotonic_ns": "890337405157541"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "ecb20ecae72bc5d61a1656ab50717468e923f6d6cdab420c9f9a7ef8246c3b64",
+      "original_after_sha256": "86ec06b8dd83393224a6406b89c52b52922eb28d11eaf4cb57582ab4a1210702",
+      "original_after_bytes": 1836822
+    },
+    {
+      "before": {
+        "id": "0061",
+        "label": "canonical-b-length-select-all",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+a"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:28.040Z",
+        "monotonic_ns": "890343954805083"
+      },
+      "returned": {
+        "id": "0061",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:28.047Z",
+        "monotonic_ns": "890343962000416"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "8ff27452cbc6f5d58a9c4e5e5572ed9bb6476777e88c1fb23e94950b630acc6b",
+      "original_after_sha256": "660ca92157c748d333be0606c5e0819b507450fa04188d72029ff823a4038ee2",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0062",
+        "label": "canonical-b-length100",
+        "method": "typeText",
+        "arguments": {
+          "args": [
+            "100"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:28.048Z",
+        "monotonic_ns": "890343962916250"
+      },
+      "returned": {
+        "id": "0062",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:28.062Z",
+        "monotonic_ns": "890343976473666"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "0c05d3a82a7f4edb2aa00e6e892cb73c5770a693e576dd4038b7d92b8400ae8a",
+      "original_after_sha256": "8c4ea0ac3c384535f336360c1cf13fea2dd54815a021466934c6738265f465bb",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0063",
+        "label": "canonical-b-length-raw100",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:28.063Z",
+        "monotonic_ns": "890343977593083"
+      },
+      "returned": {
+        "id": "0063",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:28.663Z",
+        "monotonic_ns": "890344577717208"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "7c6769b63798753a4654debf38b9874f055e92e0d85c01637de4cd3c9c0ba16b",
+      "original_after_sha256": "170f5f6eae21065d2de476d12b85e14298053c5c52533377bc6ca72acbf2cb57",
+      "original_after_bytes": 1825279
+    },
+    {
+      "before": {
+        "id": "0064",
+        "label": "canonical-b-length-tab",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "Tab"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:33.383Z",
+        "monotonic_ns": "890349297147958"
+      },
+      "returned": {
+        "id": "0064",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:33.389Z",
+        "monotonic_ns": "890349303882708"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "e79e516831a2d6ffa96731924cf684a50e43b3688402cbaaf3badab753632ffd",
+      "original_after_sha256": "daa0e143bbe1c5e66c20cbbee021c65f4f5501939c1d2d98af8e36e637868610",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0065",
+        "label": "canonical-b-final-before-ok",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:33.391Z",
+        "monotonic_ns": "890349305010416"
+      },
+      "returned": {
+        "id": "0065",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:33.918Z",
+        "monotonic_ns": "890349832539833"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "eb31ee28877331d6e919f0534f321976b3f1ed54461f507040354358793cd5aa",
+      "original_after_sha256": "2eef52d3b728084ae149854011f9211a48c231953d90807423e39aca0ca4990b",
+      "original_after_bytes": 1826777
+    },
+    {
+      "before": {
+        "id": "0066",
+        "label": "canonical-b-ok-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              620,
+              637
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:39.809Z",
+        "monotonic_ns": "890355723259708"
+      },
+      "returned": {
+        "id": "0066",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:40.365Z",
+        "monotonic_ns": "890356279207875"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "b5cf5df1ac3b66d67e84848bc7a158fce6aaa7db20350fb8866a8eaf1a4f4c9e",
+      "original_after_sha256": "54f9edcd11f57bf700d09488efcdcb0d199f6133b4a3ee3be56ec154225f2622",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0067",
+        "label": "canonical-pair-created-r42",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:40.366Z",
+        "monotonic_ns": "890356280091083"
+      },
+      "returned": {
+        "id": "0067",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:40.950Z",
+        "monotonic_ns": "890356864158791"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "5967773024112d2d0462ca4c7fae63ef3189b0bf0089f1598b793d6297b6a913",
+      "original_after_sha256": "aeee1ef3281a9b2f40e2900ffa8f20faacccd0ca57ef5b922fbeed6faebcf94a",
+      "original_after_bytes": 2181489
+    },
+    {
+      "before": {
+        "id": "0068",
+        "label": "created-file-menu",
+        "method": "click",
+        "arguments": {
+          "args": [
+            2
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:47.478Z",
+        "monotonic_ns": "890363392646625"
+      },
+      "returned": {
+        "id": "0068",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:47.519Z",
+        "monotonic_ns": "890363433210583"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "c6cfffa7adc7f2c3258a9c9fde0d9051b9a99af1eacaa9c28080e25878e645db",
+      "original_after_sha256": "e9496cc993425c83c466c2c9b57c1199c9aefdd9abbd2dc585c79db221586ead",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0069",
+        "label": "created-file-menu-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:47.520Z",
+        "monotonic_ns": "890363434149708"
+      },
+      "returned": {
+        "id": "0069",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:48.125Z",
+        "monotonic_ns": "890364039128791"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "8634427bfe6c39603760e6b61168d9abb8f70a90bdcd97517907c752a2fd7f0e",
+      "original_after_sha256": "50dc422c8c19130ae6e4d690258b08868a5b070b518da890126782d112d1f4d2",
+      "original_after_bytes": 2199523
+    },
+    {
+      "before": {
+        "id": "0070",
+        "label": "created-save-as",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              48,
+              213
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:56.779Z",
+        "monotonic_ns": "890372693818833"
+      },
+      "returned": {
+        "id": "0070",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:57.290Z",
+        "monotonic_ns": "890373204113958"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "6dca6e2ff3d0d83363baef653f51a9c22ea91f865de7b8c158bfd862eccc9467",
+      "original_after_sha256": "35c5ff47f26f4f23f1423804b106da8214d9722bd3cb5ea737c15b0385f90c2a",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0071",
+        "label": "created-save-dialog",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:40:57.292Z",
+        "monotonic_ns": "890373205863333"
+      },
+      "returned": {
+        "id": "0071",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:40:59.985Z",
+        "monotonic_ns": "890375899751833"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "4286f296a4ed7f09501804824fcc293e9b04227b1b8d6cac265e2c1b8b0a432d",
+      "original_after_sha256": "44b412402d38b277d4afd2562646e82e767237a05a2e6533025cae68c882a169",
+      "original_after_bytes": 187108
+    },
+    {
+      "before": {
+        "id": "0072",
+        "label": "created-go-folder",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+shift+g"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:41:07.749Z",
+        "monotonic_ns": "890383663030791"
+      },
+      "returned": {
+        "id": "0072",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:41:07.782Z",
+        "monotonic_ns": "890383696613041"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "e5970713b621aa6c919295957e8d5c076ef776c96c002f582a9eca7c37a45376",
+      "original_after_sha256": "87d0b4cf72da259e145384df04136efe23086633a79f89f411a1f03f8e827dba",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0073",
+        "label": "created-directory-field",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:41:07.785Z",
+        "monotonic_ns": "890383699592875"
+      },
+      "returned": {
+        "id": "0073",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:41:08.840Z",
+        "monotonic_ns": "890384754290166"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "c6ba1c67feba728278231eef9bf3826545639f7e913feeeb0c21c43045001748",
+      "original_after_sha256": "fa44e697277af4c77538fbc85dd74a50ebf56e6cd329db553bc6b44ff1ddd551",
+      "original_after_bytes": 327417
+    },
+    {
+      "before": {
+        "id": "0074",
+        "label": "created-path-select-all",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+a"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:41:14.596Z",
+        "monotonic_ns": "890390510216791"
+      },
+      "returned": {
+        "id": "0074",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:41:14.604Z",
+        "monotonic_ns": "890390518451583"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "d5a9fa1b577281ec318f172e8223efd53c923e041ba02bf9946bf790b1072af1",
+      "original_after_sha256": "c2890cd04f2cc7fda563ec83987310ffeb3eb9a4d64fd9410da854c56b05b74c",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0075",
+        "label": "created-path-type",
+        "method": "typeText",
+        "arguments": {
+          "args": [
+            "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/002"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:41:14.605Z",
+        "monotonic_ns": "890390519371666"
+      },
+      "returned": {
+        "id": "0075",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:41:14.911Z",
+        "monotonic_ns": "890390825579625"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "d070bbd9a650293b4545aca487b798459fdee16e1debb6158a31b4800d1d23d8",
+      "original_after_sha256": "edcb005d0df78f1a8e79c639b036ba9bd69392eebb4c486fa415904591f6da52",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0076",
+        "label": "created-path-typed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:41:14.913Z",
+        "monotonic_ns": "890390826846958"
+      },
+      "returned": {
+        "id": "0076",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:41:17.216Z",
+        "monotonic_ns": "890393129987666"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "e678c63863c5ddbe530fe6cff8abca42ecdb180c2534b79cfbb8416c2dc36e9d",
+      "original_after_sha256": "886375f276a2affa6dec6413df2b5d2327b5e31a6aaef401f099b62108c75f4e",
+      "original_after_bytes": 308995
+    },
+    {
+      "before": {
+        "id": "0077",
+        "label": "created-directory-return",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "Return"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:41:22.759Z",
+        "monotonic_ns": "890398673275000"
+      },
+      "returned": {
+        "id": "0077",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:41:22.767Z",
+        "monotonic_ns": "890398680732583"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "54381909fe2a9c7930287506495825361e3586f1891e7aaeabc05d813222374c",
+      "original_after_sha256": "0c5dc6d10deb8dd30a1488cce6d2b48d6e7b1f45db3ff6918614aded52d3b403",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0078",
+        "label": "created-directory-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:41:22.768Z",
+        "monotonic_ns": "890398681687250"
+      },
+      "returned": {
+        "id": "0078",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:41:23.551Z",
+        "monotonic_ns": "890399465539291"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "35619a319d14888f7de8b400f5e9cfbe42baa7cd36441e6732466ca5d9da0967",
+      "original_after_sha256": "ecfd4c8fa61d82556e0aeaedc6f565664165eaad8a6b2ece75b2daf4fdefe063",
+      "original_after_bytes": 180675
+    },
+    {
+      "before": {
+        "id": "0079",
+        "label": "created-name-setValue-once",
+        "method": "setValue",
+        "arguments": {
+          "args": [
+            89,
+            "created.weftforge"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:41:30.898Z",
+        "monotonic_ns": "890406811853375"
+      },
+      "returned": {
+        "id": "0079",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:41:31.727Z",
+        "monotonic_ns": "890407641209291"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "59e861e90826b883f01eaaeb4bb0430b8eeb7d4f1634ab648ac3910b34858b2e",
+      "original_after_sha256": "f441ce060a29c41acf1e9a79c34ddbc0a612b121065e9f9038a64db28d94cb66",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0080",
+        "label": "created-name-exact-before-save",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:41:31.728Z",
+        "monotonic_ns": "890407642263500"
+      },
+      "returned": {
+        "id": "0080",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:41:32.237Z",
+        "monotonic_ns": "890408150858583"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "b6d0161dbcb46a455e85dcad1992ea81cf6a2748e08b12abd38425c7577bc2a1",
+      "original_after_sha256": "92389eeeecde86177dd5b7f00ec3aa6f0355294ea25c40e05e309690ef7cf514",
+      "original_after_bytes": 189678
+    },
+    {
+      "before": {
+        "id": "0081",
+        "label": "created-save-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            93
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:41:37.033Z",
+        "monotonic_ns": "890412947325833"
+      },
+      "returned": {
+        "id": "0081",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:41:37.625Z",
+        "monotonic_ns": "890413538760625"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "7073a0b30509ab4ef3e163054b1c992247e8421cededf248341d3c3c8fc4dde6",
+      "original_after_sha256": "6f22c4e0e5be160d2add01aca00b8010eb5444081c9eb647d5de9b29f5d94a6f",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0082",
+        "label": "created-saved-r42",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:41:37.627Z",
+        "monotonic_ns": "890413540794625"
+      },
+      "returned": {
+        "id": "0082",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:41:38.173Z",
+        "monotonic_ns": "890414087567333"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "3920a1553c74b27131d5e682231510908aec6b25eb7fd3b027d762cb827f01f5",
+      "original_after_sha256": "cf9bf65d53db4b87c4edb5bb1909f878937c4af46a31121c6f28e5a3435c8b64",
+      "original_after_bytes": 2129027
+    },
+    {
+      "before": {
+        "id": "0083",
+        "label": "undo-edit-menu",
+        "method": "click",
+        "arguments": {
+          "args": [
+            85
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:04.071Z",
+        "monotonic_ns": "890439984573625"
+      },
+      "returned": {
+        "id": "0083",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:42:04.123Z",
+        "monotonic_ns": "890440037350666"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "9708d0846703742d41dc8f280bf4f0097fc5fea2470f45ecd055c29a9faa62e3",
+      "original_after_sha256": "d5894a858a2218dcfd2e811a96eb23f075e94be974973dd4df5e27909d026578",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0084",
+        "label": "undo-edit-menu-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:04.125Z",
+        "monotonic_ns": "890440038881208"
+      },
+      "returned": {
+        "id": "0084",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:42:04.810Z",
+        "monotonic_ns": "890440724155458"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "bb8bf1f5c08ad4f2293df9717adcf01bbc7a27fc337a3bfc3dc0c6528359a4ba",
+      "original_after_sha256": "87b6dce3a83f799d657ec9533891799cb87bc133bdd2e909ed39d579e226a21a",
+      "original_after_bytes": 2095001
+    },
+    {
+      "before": {
+        "id": "0085",
+        "label": "undo-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              65,
+              73
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:10.231Z",
+        "monotonic_ns": "890446144690458"
+      },
+      "returned": {
+        "id": "0085",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:42:10.642Z",
+        "monotonic_ns": "890446556079958"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "9ca99284a0ec2e74e018c07f9e39ef58fa0cedbd996be717a783edb93e8e9c22",
+      "original_after_sha256": "8ef0dce33ddf8dd5e3244679bfe8dad1388de8c1baddd505e67c2be4eda479b3",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0086",
+        "label": "undo-r43",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:10.644Z",
+        "monotonic_ns": "890446558288333"
+      },
+      "returned": {
+        "id": "0086",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:42:11.252Z",
+        "monotonic_ns": "890447166333208"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "b78a71ea9bf3fa0ae3cd4cba2328494d7d425f9771a59e18c0e13f090fe58abb",
+      "original_after_sha256": "56ce045841388a6b51fc4711c7232fd13be7454ba17e173f43a32cbc24b9bbe3",
+      "original_after_bytes": 2089626
+    },
+    {
+      "before": {
+        "id": "0087",
+        "label": "undo-file-menu",
+        "method": "click",
+        "arguments": {
+          "args": [
+            84
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:19.000Z",
+        "monotonic_ns": "890454914105208"
+      },
+      "returned": {
+        "id": "0087",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:42:19.059Z",
+        "monotonic_ns": "890454973158291"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "ed7fb6ae5422381a0dc79fbc1c8754783507dcfa860155bba2d18d8f903f2085",
+      "original_after_sha256": "f85749645451c28399f818ce8b9a741c0112b431a93233891678c48ec9d5899c",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0088",
+        "label": "undo-file-menu-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:19.061Z",
+        "monotonic_ns": "890454974775166"
+      },
+      "returned": {
+        "id": "0088",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:42:19.612Z",
+        "monotonic_ns": "890455525392541"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "b966b7959f6dd872a1a53888b36b13204a7814e5f58bebb1b6793bae91cea21a",
+      "original_after_sha256": "9ab8d1be4ab07781d579497ee2168fba47d690761852a78db5f2e0651e50a923",
+      "original_after_bytes": 2121529
+    },
+    {
+      "before": {
+        "id": "0089",
+        "label": "undo-save-as",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              47,
+              213
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:25.670Z",
+        "monotonic_ns": "890461584169916"
+      },
+      "returned": {
+        "id": "0089",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:42:26.168Z",
+        "monotonic_ns": "890462081496333"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "2335884404983452c6613facfca665caeba215cf657038bfd3a81f32839f39a2",
+      "original_after_sha256": "9b52706fe99f0fef59ad29ece16cf32ccb0545a277291d450b9e4cfb1dfd1a0f",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0090",
+        "label": "undo-save-dialog",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:26.169Z",
+        "monotonic_ns": "890462082997125"
+      },
+      "returned": {
+        "id": "0090",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:42:27.272Z",
+        "monotonic_ns": "890463185902875"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "b486b71c60ad898c8803346d0b7b73540ec41b39019a2017a238561637fd06ff",
+      "original_after_sha256": "05f8aebcdd85198055e3b879f51290b17731f1e93a87ae8fc27d306e5bd2d6f2",
+      "original_after_bytes": 191118
+    },
+    {
+      "before": {
+        "id": "0091",
+        "label": "undo-go-folder",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+shift+g"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:34.717Z",
+        "monotonic_ns": "890470630718333"
+      },
+      "returned": {
+        "id": "0091",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:42:34.723Z",
+        "monotonic_ns": "890470636698333"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "47b489da2f755ad982689455432d258c5e2b5278a1b55f2c156a3de3bc41557b",
+      "original_after_sha256": "8dbb7bd2c96403a958e710af5fe153750d9dc591e98e23e435a1f33422c6969c",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0092",
+        "label": "undo-directory-field",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:34.724Z",
+        "monotonic_ns": "890470637725958"
+      },
+      "returned": {
+        "id": "0092",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:42:35.539Z",
+        "monotonic_ns": "890471452837333"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "fde195f138d705759a7a12ce42db311eb613168b7f75202d71d511fdceb1ccbf",
+      "original_after_sha256": "6a0ff14f0c955f378696186409f24442f17bf6d74c54548d5a0481d31b9176af",
+      "original_after_bytes": 255191
+    },
+    {
+      "before": {
+        "id": "0093",
+        "label": "undo-path-select-all",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+a"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:40.809Z",
+        "monotonic_ns": "890476722212291"
+      },
+      "returned": {
+        "id": "0093",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:42:40.816Z",
+        "monotonic_ns": "890476729491541"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "81eed15787bd3b7f8ea108b5fbf8424615ab3ef2dcc02e48274d861f662b4ff7",
+      "original_after_sha256": "c3d775cf192524cf9b4c8018281976087600b7366c9fffb9f026cd19d7a4b29a",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0094",
+        "label": "undo-path-type",
+        "method": "typeText",
+        "arguments": {
+          "args": [
+            "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/002"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:40.817Z",
+        "monotonic_ns": "890476730574125"
+      },
+      "returned": {
+        "id": "0094",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:42:41.118Z",
+        "monotonic_ns": "890477031952458"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "0f67710c36dcff24d7cb5b5031767f2f9741cfb6af6280d1243b9b35db8ecde1",
+      "original_after_sha256": "5d733d068f2146889156f007c97b223d03cf722bde8443e098b6f9e52e38d244",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0095",
+        "label": "undo-path-typed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:41.120Z",
+        "monotonic_ns": "890477033147083"
+      },
+      "returned": {
+        "id": "0095",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:42:43.295Z",
+        "monotonic_ns": "890479208232083"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "8ecdda87348db5551284d99bf473375fc080fcf4f01e6b70c4915a42688535d4",
+      "original_after_sha256": "ac3aa1f54d3cfe98b0cd4efa61fa80e9afd6296197af10f4d4cf693d67f03e2b",
+      "original_after_bytes": 243608
+    },
+    {
+      "before": {
+        "id": "0096",
+        "label": "undo-directory-return",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "Return"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:51.264Z",
+        "monotonic_ns": "890487177390875"
+      },
+      "returned": {
+        "id": "0096",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:42:51.270Z",
+        "monotonic_ns": "890487184016166"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "170a77e5990e37dea2093888527a531f0a980853748a18a22f3bc319347ef3e3",
+      "original_after_sha256": "8c4a289f527a852d06878e05454f6f3b834c27808690407251e22f28c4f54b3f",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0097",
+        "label": "undo-directory-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:51.272Z",
+        "monotonic_ns": "890487185177083"
+      },
+      "returned": {
+        "id": "0097",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:42:52.100Z",
+        "monotonic_ns": "890488013149916"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "e01f94c9769206bd0a59f72827dc47c1e5a855756379af38c4107cd75e76fb77",
+      "original_after_sha256": "e024481a86ad311d1898fc814221ef2005fb1a80562bf3dcdfa46b1beb6a3979",
+      "original_after_bytes": 190813
+    },
+    {
+      "before": {
+        "id": "0098",
+        "label": "undo-name-setValue-once",
+        "method": "setValue",
+        "arguments": {
+          "args": [
+            89,
+            "undo.weftforge"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:42:59.538Z",
+        "monotonic_ns": "890495451083583"
+      },
+      "returned": {
+        "id": "0098",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:43:00.030Z",
+        "monotonic_ns": "890495943054708"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "619b7c69cf9c1d21af352ee28004e1bd81aa24149c997d75b1b092f6f4f5ae6e",
+      "original_after_sha256": "dc530aa6b00a0b44d33617ebe6afe24d79183f6889b01b713b5226777b9ec2e4",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0099",
+        "label": "undo-name-exact-before-save",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:43:00.031Z",
+        "monotonic_ns": "890495944179875"
+      },
+      "returned": {
+        "id": "0099",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:43:00.595Z",
+        "monotonic_ns": "890496508138333"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "fc78ff8b5ee88d07210f4d63f03a73129d95570e08abfb13a872c9eb0fe0ca05",
+      "original_after_sha256": "28d8b5122516ebe2357244051d1da7f299af49d8fda286d2ee0fbf3b4b0d0191",
+      "original_after_bytes": 189035
+    },
+    {
+      "before": {
+        "id": "0100",
+        "label": "undo-save-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            93
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:43:07.490Z",
+        "monotonic_ns": "890503403815375"
+      },
+      "returned": {
+        "id": "0100",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:43:08.020Z",
+        "monotonic_ns": "890503933044375"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "62a2531a05e32d8e6b634d4a887f9448a30c66cc6f60c3a6eea18afc4086b366",
+      "original_after_sha256": "12ed1120431b7feaf1143fa7304b0c314031245c3342293de7ed3e1f899f1466",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0101",
+        "label": "undo-saved-r43",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:43:08.021Z",
+        "monotonic_ns": "890503934279666"
+      },
+      "returned": {
+        "id": "0101",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:43:08.634Z",
+        "monotonic_ns": "890504546968000"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "9b8b69b57c07c0d65c00bde0cfdfef4aca9fcde22e194c618301685ff02e10e8",
+      "original_after_sha256": "1c4f135bafc8f5a2cf78279b650912afdde53585c3df114dae14a57bb139c6e9",
+      "original_after_bytes": 2069211
+    },
+    {
+      "before": {
+        "id": "0102",
+        "label": "redo-edit-menu",
+        "method": "click",
+        "arguments": {
+          "args": [
+            85
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:43:25.480Z",
+        "monotonic_ns": "890521393297125"
+      },
+      "returned": {
+        "id": "0102",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:43:25.565Z",
+        "monotonic_ns": "890521478160125"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "4952ad148e869758c80706a88dfb47668fe9aa269d2be3b90cf9a904f283dab9",
+      "original_after_sha256": "9f1522c705c651d2554d960265856523214643a4ca667bb1531309dfa611b74c",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0103",
+        "label": "redo-edit-menu-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:43:25.567Z",
+        "monotonic_ns": "890521480203041"
+      },
+      "returned": {
+        "id": "0103",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:43:26.355Z",
+        "monotonic_ns": "890522267910708"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "ca7df3f6eb52123ef6422acd753e531a8086a5b67650a33cf7fc2eb0a6023b18",
+      "original_after_sha256": "780d93a9bef12cf8954f3fd6e2ef814f5160c48ae0898c117cca66a47e44a213",
+      "original_after_bytes": 2035453
+    },
+    {
+      "before": {
+        "id": "0104",
+        "label": "redo-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              65,
+              99
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:43:32.231Z",
+        "monotonic_ns": "890528144247208"
+      },
+      "returned": {
+        "id": "0104",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:43:32.646Z",
+        "monotonic_ns": "890528559668583"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "1a90a2b0a1b64d895f218d81f7041a1486811ed8a7900d8c8dc4490c1ccd4f87",
+      "original_after_sha256": "c90dbcb70b081a041f7a96e8a71a9402e4a7ae26d6c4b757f7d45f43df083bdf",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0105",
+        "label": "redo-r44",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:43:32.648Z",
+        "monotonic_ns": "890528560925250"
+      },
+      "returned": {
+        "id": "0105",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:43:33.316Z",
+        "monotonic_ns": "890529229267583"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "407b30aa1d8b3032bd02780205fac0252f7822859226f3ae9fde0b68693e4b73",
+      "original_after_sha256": "43993df55b075debabd90831fd008a7e9b88d31110addff552cb9fdd02aba543",
+      "original_after_bytes": 2138968
+    },
+    {
+      "before": {
+        "id": "0106",
+        "label": "redo-file-menu",
+        "method": "click",
+        "arguments": {
+          "args": [
+            84
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:43:45.701Z",
+        "monotonic_ns": "890541614131541"
+      },
+      "returned": {
+        "id": "0106",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:43:45.777Z",
+        "monotonic_ns": "890541689738750"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "d41f6c481ddbab9ac3003a71734f411985564b6bb23e42a9b7591576649ce4a2",
+      "original_after_sha256": "7562ea2b781a6626c02ca4eab9c5f97397809904e4a947458a223f2ddf7c7e48",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0107",
+        "label": "redo-file-menu-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:43:45.778Z",
+        "monotonic_ns": "890541691485958"
+      },
+      "returned": {
+        "id": "0107",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:43:46.411Z",
+        "monotonic_ns": "890542324076791"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "530e843afa977d31f27c7b7544483a42d6ed6be1944655eab539b468689f8a69",
+      "original_after_sha256": "e088393975976dea182f7635edf4ca76bb1ac51041b1dcf98c36c3ec92205aef",
+      "original_after_bytes": 2167198
+    },
+    {
+      "before": {
+        "id": "0108",
+        "label": "redo-save-as",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              47,
+              213
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:43:51.318Z",
+        "monotonic_ns": "890547231544708"
+      },
+      "returned": {
+        "id": "0108",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:43:51.827Z",
+        "monotonic_ns": "890547740000750"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "9574138138bd4ed55516cda32bd7a88f2906b8b6725bf4d2ed6ecb24e39a4c90",
+      "original_after_sha256": "fb4bbc4b1e7832dd4cc381ff597997ac0028f7f8fd816ed410e7303a2fa83e71",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0109",
+        "label": "redo-save-dialog",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:43:51.829Z",
+        "monotonic_ns": "890547742539500"
+      },
+      "returned": {
+        "id": "0109",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:43:52.716Z",
+        "monotonic_ns": "890548629125666"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "d12b9f44f683ffa64c95e47c87c620b3cf0472061675e2d53cd16837fa257138",
+      "original_after_sha256": "62d8b64af621e90f23cc910ed9c309c3bda94b4642208591efe48f19e66cbe0d",
+      "original_after_bytes": 191118
+    },
+    {
+      "before": {
+        "id": "0110",
+        "label": "redo-go-folder",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+shift+g"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:44:00.064Z",
+        "monotonic_ns": "890555976682250"
+      },
+      "returned": {
+        "id": "0110",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:44:00.070Z",
+        "monotonic_ns": "890555983260125"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "bc478cdfb5e32c935590c60fddc84e63fdd73efa2851cc79f90347f96dc0b38e",
+      "original_after_sha256": "6bc89abdca957232fd43b44071d145f82443ba80c34df1cf8881dd437df0dfad",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0111",
+        "label": "redo-directory-field",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:44:00.071Z",
+        "monotonic_ns": "890555984545708"
+      },
+      "returned": {
+        "id": "0111",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:44:00.879Z",
+        "monotonic_ns": "890556792503666"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "1248f0f19b23ea92fd46b4dd114e574a421a88c9a8d2d0bbeaf779e84cda98b8",
+      "original_after_sha256": "d6ffadb96e7394c0d1628a122a06886977b4e4a496db7ae822a6fdc3e4e6db14",
+      "original_after_bytes": 258497
+    },
+    {
+      "before": {
+        "id": "0112",
+        "label": "redo-path-select-all",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+a"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:44:07.135Z",
+        "monotonic_ns": "890563047728833"
+      },
+      "returned": {
+        "id": "0112",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:44:07.141Z",
+        "monotonic_ns": "890563053847208"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "f52b6fd3ceaf4e3862c84d21d1a31a74e72d40d4923e3b7c5fe8408d1ce3cd8e",
+      "original_after_sha256": "62b04b35afd9df1b1b6f5c6d2ed08f23f5408184d66d4b7c9f55216d8f5d31a3",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0113",
+        "label": "redo-path-type",
+        "method": "typeText",
+        "arguments": {
+          "args": [
+            "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/002"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:44:07.142Z",
+        "monotonic_ns": "890563054970166"
+      },
+      "returned": {
+        "id": "0113",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:44:07.433Z",
+        "monotonic_ns": "890563346425166"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "69878060d433e985f7e5c013cbd7c6da29fe94ea0482a5c8ca65d80022a518f1",
+      "original_after_sha256": "ec0acf2bbd5ca640e00034680f2df1d35be011f95fcf886f475350104bc6c211",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0114",
+        "label": "redo-path-typed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:44:07.435Z",
+        "monotonic_ns": "890563348039125"
+      },
+      "returned": {
+        "id": "0114",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:44:09.471Z",
+        "monotonic_ns": "890565384288250"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "a74fad953103923f4a98fc485b8343eeae5eb5f0ea86b517dfc3f0170875af1b",
+      "original_after_sha256": "5a7b04220b8c506f58f3a5ce5c6baf4040bda082188031addd101ef922a4cae2",
+      "original_after_bytes": 246587
+    },
+    {
+      "before": {
+        "id": "0115",
+        "label": "redo-directory-return",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "Return"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:44:14.832Z",
+        "monotonic_ns": "890570745353333"
+      },
+      "returned": {
+        "id": "0115",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:44:14.840Z",
+        "monotonic_ns": "890570752892583"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "c7bda997c7ede8f3709e2321ac66c0c5a3f1ebc95b6dcb8147ae3ce4af80cda2",
+      "original_after_sha256": "1214804e62937594598d9dd77e88b720d0fb87d73b3687a882731ef61778f6a7",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0116",
+        "label": "redo-directory-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:44:14.841Z",
+        "monotonic_ns": "890570754062916"
+      },
+      "returned": {
+        "id": "0116",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:44:15.470Z",
+        "monotonic_ns": "890571382983375"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "54132e49e24b14b227c3ce92703a8a0c47ba36d699b94eb78727b851487197c7",
+      "original_after_sha256": "277f7e085ce444a78ed7ea744cd53da89666d8437a36d5002226a3bd32786672",
+      "original_after_bytes": 190813
+    },
+    {
+      "before": {
+        "id": "0117",
+        "label": "redo-name-setValue-once",
+        "method": "setValue",
+        "arguments": {
+          "args": [
+            89,
+            "redo.weftforge"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:44:21.684Z",
+        "monotonic_ns": "890577597452833"
+      },
+      "returned": {
+        "id": "0117",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:44:22.148Z",
+        "monotonic_ns": "890578061012125"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "be0adecc52435e44257a80d784f9ef8a2ed6311d55d7572411d2c8f47447b4b2",
+      "original_after_sha256": "8406acf2ae4a216bf41f9e2a695d80e3d7622e9c2f3f2e9edfed03380e067b22",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0118",
+        "label": "redo-name-exact-before-save",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:44:22.151Z",
+        "monotonic_ns": "890578063884208"
+      },
+      "returned": {
+        "id": "0118",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:44:22.705Z",
+        "monotonic_ns": "890578617667625"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "926fffab5509d242f32fb5ea48bffbb8da5f46d210f22ef8039e325d6a819062",
+      "original_after_sha256": "47e437fd46a6acd2f6122e77cd2d3ee1d4c753762b84278c284ba388e1a81047",
+      "original_after_bytes": 189132
+    },
+    {
+      "before": {
+        "id": "0119",
+        "label": "redo-save-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            93
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:44:29.068Z",
+        "monotonic_ns": "890584980747500"
+      },
+      "returned": {
+        "id": "0119",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:44:29.509Z",
+        "monotonic_ns": "890585422360625"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "613c58e798787b97796e22f7a55500ea30619428cc6373e203d5a3044891d45c",
+      "original_after_sha256": "dd5c0985a890091afa13874efbaa35d6a4d1961a9e7f442e122b0ab7c48ac316",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0120",
+        "label": "redo-saved-r44",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:44:29.511Z",
+        "monotonic_ns": "890585423615708"
+      },
+      "returned": {
+        "id": "0120",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:44:30.128Z",
+        "monotonic_ns": "890586041280625"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "7cb3a6e73a59809a64a906619fd1210d13dfb5eeecfe93504866111b16c6f28d",
+      "original_after_sha256": "ab6514a8dd73b7222c28a257ab901b815bd71cb1511781ef0cf994a7916efe69",
+      "original_after_bytes": 2122796
+    },
+    {
+      "before": {
+        "id": "0121",
+        "label": "new-empty-file-menu",
+        "method": "click",
+        "arguments": {
+          "args": [
+            84
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:44:54.456Z",
+        "monotonic_ns": "890610368830458"
+      },
+      "returned": {
+        "id": "0121",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:44:54.513Z",
+        "monotonic_ns": "890610425395500"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "0bbad60ebb2e2d8aeba5a36316ced7008809001afaee3ef0c79146fcbb96e651",
+      "original_after_sha256": "dc2a5f3270d047dbc6f0eb35892db2aede183bf5d8200971fddb0f1befc1c3f1",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0122",
+        "label": "new-empty-menu-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:44:54.514Z",
+        "monotonic_ns": "890610426578500"
+      },
+      "returned": {
+        "id": "0122",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:44:55.148Z",
+        "monotonic_ns": "890611060667750"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "4a31030d47dd2fe66372c55e43852c1eb5a72ffb1c457f4affba64b824d02fc6",
+      "original_after_sha256": "5ecdd955ca7b4357b9cc6848636b316e61a92c11cb01492385951acdbf607384",
+      "original_after_bytes": 2140240
+    },
+    {
+      "before": {
+        "id": "0123",
+        "label": "new-empty-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            [
+              52,
+              73
+            ]
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:45:01.355Z",
+        "monotonic_ns": "890617267729166"
+      },
+      "returned": {
+        "id": "0123",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:45:01.815Z",
+        "monotonic_ns": "890617727351833"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "7d25dae9def5d702c1fe8af5206ae2840fda4c86b5a15a06f316192fab7b0a24",
+      "original_after_sha256": "4ff556bc3b4663171731cdcdd9470c543a14047b36e93a7e107903ef721c1231",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0124",
+        "label": "new-empty-r0",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:45:01.817Z",
+        "monotonic_ns": "890617729623958"
+      },
+      "returned": {
+        "id": "0124",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:45:02.357Z",
+        "monotonic_ns": "890618269528500"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "f9c45a68355f37b5385b3df6a056c2ad041ccdea78df8f6b3f329f7444492f28",
+      "original_after_sha256": "bf372965e35200f41171fe062a757ddf89ef683c082e85b2dd84b7227499b9fa",
+      "original_after_bytes": 1943856
+    },
+    {
+      "before": {
+        "id": "0125",
+        "label": "new-empty-undo-edit-menu",
+        "method": "click",
+        "arguments": {
+          "args": [
+            85
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:45:08.863Z",
+        "monotonic_ns": "890624775413625"
+      },
+      "returned": {
+        "id": "0125",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:45:08.924Z",
+        "monotonic_ns": "890624836718000"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "2b81cd2bcc10901ad19fa9bf309aa7694241e3f4607e7200680f170496fec317",
+      "original_after_sha256": "e2c6bdc336e6a03a0f0af6220e6e1bb262679d6a198abdd4f8a2f52583e3f377",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0126",
+        "label": "new-empty-undo-menu",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:45:08.926Z",
+        "monotonic_ns": "890624839034583"
+      },
+      "returned": {
+        "id": "0126",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:45:09.560Z",
+        "monotonic_ns": "890625472217791"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "01fdb098e80e7030ebf900a3bfb1874aac66cf34c0a97444cf228665a6e5c761",
+      "original_after_sha256": "341a3d7c476e47b32164d507a139b1be8e51b2129ca6da2c0910e93ce593e718",
+      "original_after_bytes": 1924448
+    },
+    {
+      "before": {
+        "id": "0127",
+        "label": "new-empty-undo-noop-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            199
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:45:15.267Z",
+        "monotonic_ns": "890631179354041"
+      },
+      "returned": {
+        "id": "0127",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:45:15.293Z",
+        "monotonic_ns": "890631205396916"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "07850f3b613edb170c206a19548f7d4f812232c030b22b68feb3fb66d0cfff52",
+      "original_after_sha256": "b51acdc49b73753f4901ac46381182de86e03a51acd9b97c378027e0063fa076",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0128",
+        "label": "new-empty-after-undo-r0",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:45:15.294Z",
+        "monotonic_ns": "890631206968625"
+      },
+      "returned": {
+        "id": "0128",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:45:15.859Z",
+        "monotonic_ns": "890631771934750"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "015d9ed6a8d24dff24ebfe26ee066c8c23fbe50ffc3796fc1c4bd8e75757fb5e",
+      "original_after_sha256": "07b5f7271d1b18fa30085c471477a3f1bf8c04c89ce16c88be18fd439c7cb0d5",
+      "original_after_bytes": 1943119
+    },
+    {
+      "before": {
+        "id": "0129",
+        "label": "new-empty-redo-edit-menu",
+        "method": "click",
+        "arguments": {
+          "args": [
+            85
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:45:20.879Z",
+        "monotonic_ns": "890636791339875"
+      },
+      "returned": {
+        "id": "0129",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:45:20.942Z",
+        "monotonic_ns": "890636854255875"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "7b21facc7768130e750883886d172359ac06eadf05748b6de3965cae04adbd34",
+      "original_after_sha256": "fb3909182bc513cade8472bebae69375c5a5d549fe8785184addbb9f0ea36cc0",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0130",
+        "label": "new-empty-redo-menu",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:45:20.944Z",
+        "monotonic_ns": "890636856410208"
+      },
+      "returned": {
+        "id": "0130",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:45:21.577Z",
+        "monotonic_ns": "890637489597750"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "1427d4eb20f1b1e2ad88caf1d393541f6c9f0063f0e230e3f52477b1dedad41e",
+      "original_after_sha256": "0f6bff562709742643969b08335b3804f96a0f4271f971b424a8fe53332faaf9",
+      "original_after_bytes": 1922148
+    },
+    {
+      "before": {
+        "id": "0131",
+        "label": "new-empty-redo-noop-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            200
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:45:27.722Z",
+        "monotonic_ns": "890643634107875"
+      },
+      "returned": {
+        "id": "0131",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:45:27.789Z",
+        "monotonic_ns": "890643701808208"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "41d680879aaaf01c5eecdc85ecd3d34fc27c080e1076003d997a593008810c9e",
+      "original_after_sha256": "a0553cf737f96a313dc73852afba432c1964738750f7401ec5ab8f5fa5900fda",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0132",
+        "label": "new-empty-after-redo-r0",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:45:27.791Z",
+        "monotonic_ns": "890643703239208"
+      },
+      "returned": {
+        "id": "0132",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:45:28.387Z",
+        "monotonic_ns": "890644299137958"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "4b1313063de9c51cb47b5719182687af52d099d82fdd7013c5d5881fa792de4e",
+      "original_after_sha256": "a85c1669aa30adf256671b678f76aba31c99ad911b96e5d02199c6941856c7bd",
+      "original_after_bytes": 1942495
+    },
+    {
+      "before": {
+        "id": "0133",
+        "label": "reopen-file-menu",
+        "method": "click",
+        "arguments": {
+          "args": [
+            84
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:46:07.288Z",
+        "monotonic_ns": "890683199795000"
+      },
+      "returned": {
+        "id": "0133",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:46:07.382Z",
+        "monotonic_ns": "890683294061833"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "9e8e440dd78f68b74bf3772813b3c4f6963411414c9c5433a553a9dd0fcdcd9f",
+      "original_after_sha256": "2454951936507dd861b1ac6197ac9d1fbc3d387c5aa554fb4a544e1c2bad6dc0",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0134",
+        "label": "reopen-file-menu-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:46:07.384Z",
+        "monotonic_ns": "890683296025125"
+      },
+      "returned": {
+        "id": "0134",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:46:08.001Z",
+        "monotonic_ns": "890683913160041"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "7d4ff90f3c02420a7d44d84a0253965a407d1901dbee213746e90d390a36e074",
+      "original_after_sha256": "e59a1a2d77cea38ef99c5898cdd48451007c55551eec65fce9599d59c2e914af",
+      "original_after_bytes": 1973859
+    },
+    {
+      "before": {
+        "id": "0135",
+        "label": "reopen-open-dialog",
+        "method": "click",
+        "arguments": {
+          "args": [
+            200
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:46:14.288Z",
+        "monotonic_ns": "890690200158791"
+      },
+      "returned": {
+        "id": "0135",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:46:14.358Z",
+        "monotonic_ns": "890690269996833"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "e462522891a0fa00d6f6a1b9e2829b07c06a53561c690a4c177d6d90c9f4e262",
+      "original_after_sha256": "9892b4f2aa9707403a481d4e249c663719242886beec1c3a8bc603a37b7273cc",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0136",
+        "label": "reopen-dialog",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:46:14.359Z",
+        "monotonic_ns": "890690271193000"
+      },
+      "returned": {
+        "id": "0136",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:46:15.877Z",
+        "monotonic_ns": "890691788671541"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "0034f71b3cdee3a30f05ed2286dd5b99c47c1af41f6722519a76a2425746c6e5",
+      "original_after_sha256": "f8f1dc2980ab810c4b30b6ce2ea70c34287e521794a25978219452a35a5d5681",
+      "original_after_bytes": 935265
+    },
+    {
+      "before": {
+        "id": "0137",
+        "label": "reopen-go-folder",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+shift+g"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:46:23.400Z",
+        "monotonic_ns": "890699311978750"
+      },
+      "returned": {
+        "id": "0137",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:46:23.409Z",
+        "monotonic_ns": "890699320357333"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "e83190715856e9dd3033f314c3b8198fd0b7a6f52404810480789ffcedee243b",
+      "original_after_sha256": "1a6f73e0ed61df23a9ee99f71558dd70ad4bae918de051ac13b0a81e4e9d55d0",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0138",
+        "label": "reopen-path-field",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:46:23.410Z",
+        "monotonic_ns": "890699321858750"
+      },
+      "returned": {
+        "id": "0138",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:46:24.198Z",
+        "monotonic_ns": "890700109818416"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "04ee01d1ba09a9d260f80fe39ad4dfe660542bcae22d957447ad13444280472b",
+      "original_after_sha256": "347f47aeaef488e7c606ccfba30c8a101a5c08625cf24bcb683c204608d23b3b",
+      "original_after_bytes": 273973
+    },
+    {
+      "before": {
+        "id": "0139",
+        "label": "reopen-path-select-all",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+a"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:46:31.154Z",
+        "monotonic_ns": "890707066121708"
+      },
+      "returned": {
+        "id": "0139",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:46:31.162Z",
+        "monotonic_ns": "890707073475916"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "67b9943dbd76d5710d7eb688e99ca25772e77d07f3b16b0ca629d275246f5c5a",
+      "original_after_sha256": "17909dc5657e8448cf4e93d3d131c1f6bf5c9ff938a2f9897c46f5653a303fb0",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0140",
+        "label": "reopen-redo-primary-path-type",
+        "method": "typeText",
+        "arguments": {
+          "args": [
+            "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/002/redo.weftforge"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:46:31.164Z",
+        "monotonic_ns": "890707075353625"
+      },
+      "returned": {
+        "id": "0140",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:46:31.499Z",
+        "monotonic_ns": "890707410899083"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "573749a37e01c4ddd9bc5bd2d4fb8e94ec23ed0746735a7fd7a61c28ec636d01",
+      "original_after_sha256": "937349a64cdac331ee358438a2abd7ffb3c53462308d394a8b82f6a72087c215",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0141",
+        "label": "reopen-redo-path-typed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:46:31.501Z",
+        "monotonic_ns": "890707412396541"
+      },
+      "returned": {
+        "id": "0141",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:46:33.858Z",
+        "monotonic_ns": "890709769385083"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "49be0e4fa1f7fee21516456ba3e7426d1b25f830b5415113bfc551ab84065e17",
+      "original_after_sha256": "007b5f5a93a91fd22af4b851c67505a4bd88e45503c3e2a3a7a3e29889cb4a88",
+      "original_after_bytes": 255921
+    },
+    {
+      "before": {
+        "id": "0142",
+        "label": "reopen-path-return",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "Return"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:46:39.675Z",
+        "monotonic_ns": "890715586609166"
+      },
+      "returned": {
+        "id": "0142",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:46:39.681Z",
+        "monotonic_ns": "890715592809416"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "c8bd906b6f98a44eafd28634892c9014d16fbf0cc9f92f3bd0a9d1a3c09f0b9f",
+      "original_after_sha256": "b3d74f6f4ff7e3ffb76ce1875f267ec9e11e1a4d6ac011341a0da43e69c19c03",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0143",
+        "label": "reopen-redo-selected-before-open",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:46:39.683Z",
+        "monotonic_ns": "890715594217625"
+      },
+      "returned": {
+        "id": "0143",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:46:41.002Z",
+        "monotonic_ns": "890716913984041"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "dae9a13d2fa60e203fffe2e3626edd7586c9f076afd283d9c7f41de3448bfcb6",
+      "original_after_sha256": "7dfe1bd0f3e9bac208f00739a7e67b745ed7a2ab13a058d084d14012157229d9",
+      "original_after_bytes": 1002882
+    },
+    {
+      "before": {
+        "id": "0144",
+        "label": "reopen-open-redo-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            435
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:47:18.870Z",
+        "monotonic_ns": "890754781536208"
+      },
+      "returned": {
+        "id": "0144",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:47:19.848Z",
+        "monotonic_ns": "890755759331625"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "c01f8b469fe6958314d8f17d02e761aa5504db1277bf421ba8acc2467ce9a3f8",
+      "original_after_sha256": "7c4e4ef3f41d9b643f777d292fa18cedafe1045a8ac41fcf3606dd1eac7ed931",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0145",
+        "label": "reopened-redo-r44",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:47:19.851Z",
+        "monotonic_ns": "890755761928791"
+      },
+      "returned": {
+        "id": "0145",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:47:20.844Z",
+        "monotonic_ns": "890756755655791"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "f7a1960ef5e2f266f9be199081d24b2ba7ef5c91b73275d8548b36e510c8d7d4",
+      "original_after_sha256": "02e67be457a852531e61d93106322c4ed16fb4a583e04fbe6b84f8d5bfb1c3e3",
+      "original_after_bytes": 2208472
+    },
+    {
+      "before": {
+        "id": "0146",
+        "label": "reopened-file-menu",
+        "method": "click",
+        "arguments": {
+          "args": [
+            84
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:47:47.244Z",
+        "monotonic_ns": "890783155606125"
+      },
+      "returned": {
+        "id": "0146",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:47:47.316Z",
+        "monotonic_ns": "890783227497791"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "4465d0927a5fed5ec4b0f9ae42b1baf609fa199529367c8498530242b6d99717",
+      "original_after_sha256": "0571c3422ee8d4c6f1f7e9a04fd77ef4dd5f03e7151817396dbcef6b5b0c0182",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0147",
+        "label": "reopened-file-menu-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:47:47.318Z",
+        "monotonic_ns": "890783228783083"
+      },
+      "returned": {
+        "id": "0147",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:47:47.954Z",
+        "monotonic_ns": "890783865093041"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "258919daebb43a23aecd79b67a2f7eab8952eede9f170a1eb0e134fd6ffda6cf",
+      "original_after_sha256": "9c274062ca454c2fe5b5d3a67c8fde5fde8817007671baff9e450416215b3ece",
+      "original_after_bytes": 2228758
+    },
+    {
+      "before": {
+        "id": "0148",
+        "label": "reopened-save-as",
+        "method": "click",
+        "arguments": {
+          "args": [
+            181
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:47:53.088Z",
+        "monotonic_ns": "890788998671416"
+      },
+      "returned": {
+        "id": "0148",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:47:53.122Z",
+        "monotonic_ns": "890789033613541"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "6168f824e4e481c773a3f1ab1168c6714820c4259ebe0158e3a2229220eabe75",
+      "original_after_sha256": "cc951628d45aa2d972059280bfa0388d0290cad29acb39dff2aa34b74f6bf786",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0149",
+        "label": "reopened-save-dialog",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:47:53.124Z",
+        "monotonic_ns": "890789035344416"
+      },
+      "returned": {
+        "id": "0149",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:47:53.860Z",
+        "monotonic_ns": "890789770842708"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "e4384fb59eea6bc87fd9bdd293bfd1e1ddfc7da0d86641973d57c0bef03159e2",
+      "original_after_sha256": "25ce73a7da3c23b59cfc33774b3268f89e2227ec608bfbf10a5cc6de97e15ae8",
+      "original_after_bytes": 191091
+    },
+    {
+      "before": {
+        "id": "0150",
+        "label": "reopened-go-folder",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+shift+g"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:47:58.291Z",
+        "monotonic_ns": "890794202166750"
+      },
+      "returned": {
+        "id": "0150",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:47:58.297Z",
+        "monotonic_ns": "890794208249166"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "6447831f5db56ed661865e055e462e1071b2e656841f69ac09110a6eea9f7eb6",
+      "original_after_sha256": "3a49b9be0c3a919dda2010fbf26cc16607a0d024eb28bec57b58a89a9b74c8d4",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0151",
+        "label": "reopened-directory-field",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:47:58.299Z",
+        "monotonic_ns": "890794209962458"
+      },
+      "returned": {
+        "id": "0151",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:47:59.076Z",
+        "monotonic_ns": "890794987376875"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "028c6ed5005c4784a8fd0ea52772c06f92a3eaacfef567207169da277caa76c1",
+      "original_after_sha256": "c974034b62db6c5018ee3c76dc3a629eda32bfdf941c7448222c57d7923dcb9d",
+      "original_after_bytes": 233239
+    },
+    {
+      "before": {
+        "id": "0152",
+        "label": "reopened-path-select-all",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+a"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:48:04.464Z",
+        "monotonic_ns": "890800374987125"
+      },
+      "returned": {
+        "id": "0152",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:48:04.471Z",
+        "monotonic_ns": "890800382037416"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "d2aca93fef53443ca8527bb3fd309565ee10b78a4e5b8effe3aadd03e80deb55",
+      "original_after_sha256": "06724430c31cd78e3a43b2ac5ccde0ad2de5aeaac30af5474da828791ffe2abd",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0153",
+        "label": "reopened-path-type",
+        "method": "typeText",
+        "arguments": {
+          "args": [
+            "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/002"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:48:04.474Z",
+        "monotonic_ns": "890800385515250"
+      },
+      "returned": {
+        "id": "0153",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:48:04.773Z",
+        "monotonic_ns": "890800684345916"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "91b05f9d74619b7af72f6f5298924c08082825ba77fadabaa6b00aee8caab773",
+      "original_after_sha256": "90297b3a93f1e4f9cd059101543f84f062865f8a37fc80b00f8079d6f4e94338",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0154",
+        "label": "reopened-path-typed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:48:04.776Z",
+        "monotonic_ns": "890800687450083"
+      },
+      "returned": {
+        "id": "0154",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:48:06.752Z",
+        "monotonic_ns": "890802662552750"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "dc5c3b1c4a20095c7216dcf51524a50194ac3a0192f43a727191ce536725c40e",
+      "original_after_sha256": "78faf20bfca2d5dc78ed7ec3dda79b6d5d5d174a88e611a78d182f06c20bda2d",
+      "original_after_bytes": 219950
+    },
+    {
+      "before": {
+        "id": "0155",
+        "label": "reopened-directory-return",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "Return"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:48:11.773Z",
+        "monotonic_ns": "890807683571708"
+      },
+      "returned": {
+        "id": "0155",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:48:11.778Z",
+        "monotonic_ns": "890807689411166"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "d3b67de30f14021dd5cb039337f6c6d5de0c8e139596748feaa20f0fab681631",
+      "original_after_sha256": "499035396c480de2216a3c93c64eb78f5ca5e5b09895bbc1309189d39ee5e7e7",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0156",
+        "label": "reopened-directory-observed",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:48:11.780Z",
+        "monotonic_ns": "890807690972458"
+      },
+      "returned": {
+        "id": "0156",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:48:12.457Z",
+        "monotonic_ns": "890808368034333"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "e1435be6ad24d28e3a7ed48e66ef6ad7f8b6e1d1708b5d3e784ed9b56c6b9193",
+      "original_after_sha256": "ca7ff0a09ababd5d33f1f08a3b5f46316319081b2b6ab3a5a13f450d22a5b6a8",
+      "original_after_bytes": 190813
+    },
+    {
+      "before": {
+        "id": "0157",
+        "label": "reopened-name-setValue-once",
+        "method": "setValue",
+        "arguments": {
+          "args": [
+            89,
+            "reopened.weftforge"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:48:18.514Z",
+        "monotonic_ns": "890814425109750"
+      },
+      "returned": {
+        "id": "0157",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:48:18.978Z",
+        "monotonic_ns": "890814888859458"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "e8da727978417df360976ca27c38ee7b5025e67364e84cd90ae07e5a489fcc34",
+      "original_after_sha256": "0f8c8988aab2f538903ae5dce36b39b5829fde37fba8e1b6c9cdd55f446becef",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0158",
+        "label": "reopened-name-exact-before-save",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:48:18.979Z",
+        "monotonic_ns": "890814890279041"
+      },
+      "returned": {
+        "id": "0158",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:48:19.481Z",
+        "monotonic_ns": "890815391774958"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "ba96ad134259aff3076aba3e00923c44311de42d007ea57f0ed4aa0b31d209a5",
+      "original_after_sha256": "405a0dd34b8bc7533dd10083f7b2b9531ce857eafc60e251580810f9d84c2ec5",
+      "original_after_bytes": 190234
+    },
+    {
+      "before": {
+        "id": "0159",
+        "label": "reopened-save-once",
+        "method": "click",
+        "arguments": {
+          "args": [
+            93
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:48:25.537Z",
+        "monotonic_ns": "890821447436291"
+      },
+      "returned": {
+        "id": "0159",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:48:25.911Z",
+        "monotonic_ns": "890821822230333"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "81a3e2adc6bb566a9dca084fdf44636b1ebbd552e0c097649357006680aa5420",
+      "original_after_sha256": "8d77ababc75a5df0a79dda18122c8424d9be4c8d16965cccf7a170ac1de05622",
+      "original_after_bytes": 152
+    },
+    {
+      "before": {
+        "id": "0160",
+        "label": "reopened-saved-r44",
+        "method": "getAXStateAndScreenshot",
+        "arguments": {
+          "args": [
+            {
+              "emit": false
+            }
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:48:25.914Z",
+        "monotonic_ns": "890821824510000"
+      },
+      "returned": {
+        "id": "0160",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:48:26.448Z",
+        "monotonic_ns": "890822358671541"
+      },
+      "result_type": "dict",
+      "original_before_sha256": "7bb281d743a989ae250054d3d48c64be2f3714326a3578daff721d7ad2544909",
+      "original_after_sha256": "ddf1817bda16ffe9cfcf84f3a511f753e9b1186fe5c0f9f697fd4cba1677554f",
+      "original_after_bytes": 2215015
+    },
+    {
+      "before": {
+        "id": "0161",
+        "label": "planned-quit-final-observer",
+        "method": "pressKey",
+        "arguments": {
+          "args": [
+            "super+q"
+          ],
+          "evidenceKind": "native"
+        },
+        "utc": "2026-11-15T18:48:49.810Z",
+        "monotonic_ns": "890845720793000"
+      },
+      "returned": {
+        "id": "0161",
+        "status": "returned",
+        "error": null,
+        "utc": "2026-11-15T18:48:49.814Z",
+        "monotonic_ns": "890845725186416"
+      },
+      "result_type": "NoneType",
+      "original_before_sha256": "193cfcd14cecd86b5c6d42b9658e7c2d42289fb7a78021c613802ef2a3e83d7b",
+      "original_after_sha256": "8665fd29fd97bd2975402a4189367060b1ceead6ace2c34878a877cdad4a4e65",
+      "original_after_bytes": 152
+    }
+  ]
+}

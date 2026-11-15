@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "proposal_version": 3,
+  "kind": "prospective_native_Save_As_filename_tooling_correction_only",
+  "supersedes_v2_freeze_sha256": "2ba92e4355844299332fbc2e04da24171f522313e5a299ff657e21d42fe05e89",
+  "case_to_be_separately_bound": "NATIVE-PHYSICAL-SEWING-002",
+  "product_CUA_or_Cargo_executed_for_this_preparation": false,
+  "old_case001": {
+    "outcome_sha256": "de00ceddca469185f9c0c2b9caab079b81c8f2098309b157570fc27fb545ebbf",
+    "manifest_sha256": "ce52cb295afd6ed1bcbb51bff60085b1e68770144603a70b3c1f0f7578671ffe",
+    "status": "stopped_unverified_at_first_filename_barrier",
+    "expected_basename": "created.weftforge",
+    "observed_basename": "garmentcreated.weftforge",
+    "prior_observation_qualified": "Reached R42 pair/two 100.0 mm labels, then stopped before Save. No required primary, history/New Empty/reopen completion or native pass. No attribution of keyboard-name mismatch cause. Do not resume/control/repair its running app.",
+    "artifacts_relative_to_repo": ".local/native-physical-sewing-acceptance-20261115/001"
+  },
+  "separate_calibration001": {
+    "outcome_sha256": "3d90c34dce5aafe7e6ce0490b2501f997ae528886ebb757703d2f7114d21b130",
+    "manifest_sha256": "501a4760988cff0b73d78b464644c5d11936bf9692e545518bbba48e045f5a79",
+    "artifacts_relative_to_repo": ".local/native-save-dialog-calibration-20261115/001",
+    "observed": "Documented app.setValue(elementIndex:number,value:string) once on observed settable Name AX89 -> literal created.weftforge and enabled Save; Cancel/R41/quit. 12 native calls plus one completion summary, 83.779425875 s.",
+    "qualification": "Observed filename-entry calibration only, pending root review. No actual Save/write calibration; no sewing/history/New Empty/reopen or parity claim. Never hardcode AX89 in the full case."
+  },
+  "new_filename_protocol": "For four existing Save As steps only: observe current editable/settable Name field, setValue once with exact declared basename, capture literal value and enabled Save, then one Save. Missing/unsupported/mismatched/disabled => stop without fallback, keyboard filename entry or repair. Directory navigation and barriers remain unchanged.",
+  "unchanged_inputs": {
+    "fixture.weftforge": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+    "CRITERIA.json": "d748d52d5aee5bee2d57c02e81edd137c8e50ab5c9bea9f69afb1c27c31d2938",
+    "EXPECTED.json": "589a9400a916e9340d04ae77b332ea25d3a0abc6b06dee9b8ac9868ac80506ec",
+    "grade_saved.py": "e6a5f5de762aef924c4aecd733d7cb4ccb00faa0ad50497f12d004f101670bc9",
+    "evaluate_physical_sewing.py": "ac252d08d820f7aedac771502486a54ec2dc4242017911588d5e39fcaa38a384"
+  },
+  "unchanged_authoring_case": {
+    "commands_values_revisions_and_action_quantities": "identical seven-step authoring/history/New Empty/reopen sequence; four Save As snapshots unchanged",
+    "native_call_cap": 219,
+    "completion_calls": 1,
+    "total_call_cap": 220,
+    "elapsed_cap_s": 1200,
+    "invalid_Length_and_caret": "unchanged",
+    "A_B_pointer_and_B_exact_Start_t": "unchanged",
+    "no_new_actions_or_retries": true
+  },
+  "source_policy_confirmation": {
+    "commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+    "path": "apps/weftforge/src/main.rs",
+    "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e",
+    "policy": "Default source name remains Free sewing {sewing_groups.len()+1}, hence Free sewing 1. Native Save As still seeds garment.weftforge. This source confirmation changes no numerical expectation. Root must separately bind actual executable/source for fresh002."
+  },
+  "prior_root_review_scope": {
+    "path_relative_to_repo": ".local/native-physical-sewing-plan-v2-20261115/ROOT-REVIEW.json",
+    "sha256": "d9940b517cd12f87439cb7f09dee82be952a1e1c2be2e75a21d14a1aacac7efb",
+    "qualification": "Root previously reviewed all v2 math, grader, action/budget and limits. This is provenance, not automatic v3/case002 approval. New filename protocol/source/binary binding remain pending root review."
+  },
+  "historical_packet_qualification": "Copied v1/v2 manifests, SELF-CHECK-001/002 and prepare_plan.py/CLARIFICATION.json are historical. Their relative paths and bindings belong to their original packets. They are not current v3 assertions. No old report is regraded or promoted. New SELF-CHECK-003 will bind current PLAN and METHOD while invoking the unchanged saved grader."
+}

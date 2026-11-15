@@ -1,0 +1,19 @@
+{
+  "kind": "root_prospective_v3_protocol_review",
+  "utc": "2026-11-15T18:34:47.695844+00:00",
+  "status": "accepted_for_fresh_case002_only",
+  "freeze_sha256": "6ee119713ffffeb2bc3a69f1fdffb195f3136b2ff0644cdc261199273161a3e8",
+  "frozen_files_verified": 20,
+  "v2_numeric_fixture_expected_criteria_grader_and_oracle_byte_identical": true,
+  "v2_to_v3_plan_and_method_diff_reviewed": true,
+  "only_UI_procedure_change": "For each of four Save As Name fields, one documented setValue on current observed field; literal basename and enabled Save capture before one Save. No keyboard name entry/fallback/repair.",
+  "calibration_review_sha256": "7e432c6e926a892dcadfc906b1d0170347fe63aa97e3bb2d7b3f28a2dfaed06f",
+  "root_synthetic_selfcheck_sha256": "2a60a62e092e088fc5925ec90a5ba45a77f9867872fa214743a04fe54cdf9a85",
+  "wrong_outputs_rejected": 18,
+  "limits": [
+    "Calibration proves entry/Cancel only, actualSave/write uncalibrated.",
+    "Original v1/v2 and failed001 remain immutable and unverified.",
+    "No numeric/tolerance/fixture/authoring action/call cap widening.",
+    "Saved grader cannot establish UI behavior; root separately reviews actual trace/captures."
+  ]
+}

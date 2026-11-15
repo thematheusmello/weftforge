@@ -1,0 +1,156 @@
+{
+  "kind": "synthetic_evaluator_self_check",
+  "status": "passed",
+  "product_executed": false,
+  "oracle_maximum_crosscheck_error_m": 1.1102230246251565e-16,
+  "wrong_outputs_rejected": 23,
+  "mutants": [
+    {
+      "id": "curve_linear_t_endpoint",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "number 0.004022846465611571 differs from independent 0.0 by more than 1e-08"
+    },
+    {
+      "id": "straight_wrong_direction",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "number 0.14999999999999997 differs from independent 0.0 by more than 1e-08"
+    },
+    {
+      "id": "legacy_seam_substitution",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "creation must store exactly one ordinary group"
+    },
+    {
+      "id": "wrong_revision",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "unrelated parsed construction, group semantics, revision or allocator changed"
+    },
+    {
+      "id": "allocator_leak",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "unrelated parsed construction, group semantics, revision or allocator changed"
+    },
+    {
+      "id": "persistent_length_lock",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "unexpected keys: {'id': 20, 'name': 'Original physical pair', 'a': [{'curve': 6, 't0': 0.0, 't1': 0.4819445564563284}], 'b': [{'curve': 15, 't0': 0.75, 't1': 0.25}], 'correspondence': [[0.0, 0.0], [1.0, 1.0]], 'length_m': 0.1}"
+    },
+    {
+      "id": "unrelated_construction_changed",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "unrelated parsed construction, group semantics, revision or allocator changed"
+    },
+    {
+      "id": "stale_length_report",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "stale/unit length report"
+    },
+    {
+      "id": "millimetres_reported_as_metres",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "number 100.0 differs from independent 0.1 by more than 1e-08"
+    },
+    {
+      "id": "nonfinite_length",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "number nan differs from independent 0.1 by more than 1e-08"
+    },
+    {
+      "id": "wrong_mismatch",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "number 0.01 differs from independent 0.0 by more than 1e-08"
+    },
+    {
+      "id": "linear_t_midpoint_portion",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "number 0.0013430998545898379 differs from independent 0.0 by more than 1e-08"
+    },
+    {
+      "id": "wrong_stitch_correspondence",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "number 0.02499999999999998 differs from independent 0.0 by more than 1e-08"
+    },
+    {
+      "id": "stale_rest_mesh",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "stale mesh"
+    },
+    {
+      "id": "detached_boundary_geometry",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "number 0.06050079522669704 differs from independent 0.0 by more than 1e-08"
+    },
+    {
+      "id": "MCP_false_success",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "MCP tool success/error flag"
+    },
+    {
+      "id": "MCP_text_disagrees",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "MCP text differs from structured output"
+    },
+    {
+      "id": "MCP_wrong_id",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "JSON-RPC binding failed"
+    },
+    {
+      "id": "MCP_missing_modern_complete",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "modern response lacks complete resultType"
+    },
+    {
+      "id": "open_side_schema",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "sewing side schema is open"
+    },
+    {
+      "id": "recovery_bytes_changed",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "failed operation changed input, destination, recovery or left a temporary file"
+    },
+    {
+      "id": "duplicate_output_JSON",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "duplicate JSON field revision"
+    },
+    {
+      "id": "nonfinite_output_JSON",
+      "deliberately_wrong": true,
+      "rejected": true,
+      "diagnosis": "nonfinite JSON NaN"
+    }
+  ],
+  "limits": [
+    "Invented structural outputs test assertions; no executable adapter invocation or actual mesh/GUI/solver acceptance."
+  ],
+  "bindings": {
+    "evaluate_physical_sewing.py": "ac252d08d820f7aedac771502486a54ec2dc4242017911588d5e39fcaa38a384",
+    "fixture.weftforge": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+    "CRITERIA.json": "d748d52d5aee5bee2d57c02e81edd137c8e50ab5c9bea9f69afb1c27c31d2938",
+    "SOURCE-INPUTS.json": "4bf85010fc8eed83ecfcd5ee47f3e266b4d39b0f67e4fee2c25d127d19dba627"
+  }
+}

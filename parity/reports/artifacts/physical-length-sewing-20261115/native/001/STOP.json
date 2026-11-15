@@ -1,0 +1,18 @@
+{
+  "status": "stopped_unverified",
+  "recorded_utc": "2026-11-15T18:15:28.855Z",
+  "context": {
+    "phase": "created-save-as-name-typed-barrier",
+    "sourceRecord": "0083",
+    "label": "created-name-typed",
+    "expected": "created.weftforge",
+    "observed": "garmentcreated.weftforge"
+  },
+  "reason": "Unexpected filename after planned Select All and type; frozen protocol forbids corrective typing, Save, retries or quit.",
+  "native_calls": 83,
+  "elapsed_at_last_native_return_s": 331.733179042,
+  "completion_summary_calls": 1,
+  "total_calls": 84,
+  "app_left_running": true,
+  "planned_success_quit_executed": false
+}

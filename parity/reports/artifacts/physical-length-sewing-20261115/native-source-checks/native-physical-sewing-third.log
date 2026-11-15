@@ -1,0 +1,16 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/physical-sewing-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.38s
+     Running unittests src/main.rs (.local/target-native-physical-sewing-20261115/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 8 tests
+test physical_sewing_tests::free_sewing_pick_preserves_endpoints_ties_and_unsnapped_chord_projection ... ok
+test physical_sewing_tests::free_sewing_invalid_property_and_tool_switch_preserve_unfinished_property_text ... ok
+test physical_sewing_tests::free_sewing_accessible_exact_controls_and_equal_click_require_direction ... ok
+test physical_sewing_tests::free_sewing_accessible_boundary_and_enter_resolve_against_pending_construction ... ok
+test physical_sewing_tests::free_sewing_modal_shields_background_and_rejects_overlap_without_history_loss ... ok
+test physical_sewing_tests::free_sewing_pointer_tab_ok_creates_one_physical_pair_and_two_applied_labels ... ok
+test physical_sewing_tests::free_sewing_preview_cache_and_revision_reset_load_history_boundaries ... ok
+test physical_sewing_tests::free_sewing_failure_and_cancel_retain_raw_text_carets_redo_and_accepted_state ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 64 filtered out; finished in 1.32s
+

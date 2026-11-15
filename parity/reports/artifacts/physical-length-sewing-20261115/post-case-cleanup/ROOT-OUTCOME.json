@@ -1,0 +1,26 @@
+{
+  "utc": "2026-11-15T19:15:18.984687+00:00",
+  "user_requested_post_case_cleanup": true,
+  "closed_owned_app_ids": [
+    "org.weftforge.studio.photovisual20261115",
+    "org.weftforge.studio.photocontrast20261115",
+    "org.weftforge.studio.photofinal20261115",
+    "org.weftforge.studio.focusdiag20261115",
+    "org.weftforge.preview.lengthreadouts20261115",
+    "org.weftforge.preview.lengthreadouts20261115.case002",
+    "org.weftforge.transformacceptance20261115.a002",
+    "org.weftforge.transformacceptance20261115.a003",
+    "org.weftforge.transformacceptance20261115.b001",
+    "org.weftforge.preview.physicalsewing20261115.case001"
+  ],
+  "verification": "CUA finalinventory remainingWeftForge empty; ownapp-executable ps checkempty. Browserlist containsnoWeftForgetabs; unrelatedtabsuntouched.",
+  "preserved_reference_app": true,
+  "preserved_project_files": true,
+  "closed_result_receipts_unchanged": {
+    ".local/native-transform-acceptance-20261115/B/CASE-RESULT.json": "d15ff5c23cb316ef1d37a4fbb9b576259061b10a8e6144c620b961babc029271",
+    ".local/native-physical-sewing-acceptance-20261115/001/OUTCOME.json": "de00ceddca469185f9c0c2b9caab079b81c8f2098309b157570fc27fb545ebbf",
+    ".local/native-physical-sewing-acceptance-20261115/002/OUTCOME.json": "072913866cefcb1b87c408fc6b304b739420513eef8c0f246b05372d2231bed7"
+  },
+  "qualification": "Postcasecleanup explicitlyauthorizedbyuser afterclosedcases. Originalcaseoutcomes/savedgrades arenotresumed,repairedorrewritten. Physical001 oldSaveAs Cancel thenDiscardandclose closesonlythrowawayliveeditor; originalautosave/pins retained. Thiscleanup ends priorleft-runningPIDstate and isnotpartofanyoldnativeacceptanceclock.",
+  "future_policy": "Closeunusedtestwindowsafterpreservingoutcome/evidence, and recordcleanupseparately; keepactivewindowsonly. Frozenfailurecompletionorderingstillappliesbeforeaseparatecleanup."
+}

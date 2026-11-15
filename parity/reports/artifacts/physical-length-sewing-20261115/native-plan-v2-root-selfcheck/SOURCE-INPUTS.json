@@ -1,0 +1,76 @@
+{
+  "status": "preparation_snapshot_not_native_source_or_binary_binding",
+  "sources": [
+    {
+      "path_relative_to_repo": ".local/physical-sewing-20261115/spec/features/SEW-002-physical-length.md",
+      "sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+      "bytes": 14576
+    },
+    {
+      "path_relative_to_repo": ".local/pattern-transform-20261115/spec/features/APP-001-new-empty.md",
+      "sha256": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+      "bytes": 2422
+    },
+    {
+      "path_relative_to_repo": ".local/physical-sewing-20261115/apps/weftforge/src/main.rs",
+      "sha256": "175be6c0aff0a3c252e64143871a04dd29845c68981c3b725ebd6cfd114bcb3c",
+      "bytes": 564511
+    },
+    {
+      "path_relative_to_repo": ".local/physical-sewing-20261115/crates/weftforge-core/src/document.rs",
+      "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8",
+      "bytes": 61835
+    },
+    {
+      "path_relative_to_repo": ".local/native-transform-controller-20261115/controller.cjs",
+      "sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+      "bytes": 8012
+    },
+    {
+      "path_relative_to_repo": ".local/native-length-readouts-v2-20261115/recorder.cjs",
+      "sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+      "bytes": 2460
+    },
+    {
+      "path_relative_to_repo": ".local/transform-publication-stage-20261115/native-transform-plan-v2-20261115/A3-INPUT-OBSERVATION-PROTOCOL.json",
+      "sha256": "22a045fa9b96e9a9a939c77b4c8ee775365250d3ab70a18d4bbd20496e6326bb",
+      "bytes": 2550
+    },
+    {
+      "path_relative_to_repo": ".local/physical-sewing-independent-20261115/FREEZE.json",
+      "sha256": "2c1cff8f852299abcba8156f62b2dfd9f98bd33ec2552b542b88fd8411e39467",
+      "bytes": 1857
+    },
+    {
+      "path_relative_to_repo": ".local/physical-sewing-independent-20261115/run-002-26f88e0-manifest.json",
+      "sha256": "4d1c779f1c003597cd1f8d308d0e1df219d68820e205b997fa4aba63a7d886a2",
+      "bytes": 197609
+    },
+    {
+      "path_relative_to_repo": ".local/physical-sewing-independent-20261115/run-002-26f88e0/RESULT.json",
+      "sha256": "a140f5643ee2778f92b1be093917eb9022f6d3f53b13feb7cb6187d4f5ae9143",
+      "bytes": 19959
+    }
+  ],
+  "copied_oracle_files": [
+    {
+      "path": "fixture.weftforge",
+      "sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831"
+    },
+    {
+      "path": "CRITERIA.json",
+      "sha256": "d748d52d5aee5bee2d57c02e81edd137c8e50ab5c9bea9f69afb1c27c31d2938"
+    },
+    {
+      "path": "evaluate_physical_sewing.py",
+      "sha256": "ac252d08d820f7aedac771502486a54ec2dc4242017911588d5e39fcaa38a384"
+    }
+  ],
+  "ui_source_worktree_relative_to_repo": ".local/physical-sewing-20261115",
+  "ui_source_head_at_preparation": "c4be919391efb8c39e035bb7c40e74ea52c592f4",
+  "ui_source_status_at_preparation": [],
+  "ui_policy_snapshot": "Free sewing; Create Sewing Line; Boundary; Start t; Length/mm; Forward (increasing t); Reverse (decreasing t); OK/Cancel/Close. Name = Free sewing {sewing_groups.len()+1}, therefore Free sewing 1 on the original empty-group fixture.",
+  "new_empty": "APP-001 contract is an input. New Empty is being implemented separately; final merged native source, labels and all gates must be bound by root before launch.",
+  "prior_outputs_disclosure": "Preparer previously evaluated headless candidate 26f88e0: 50/50 bounded observations. Native numerical expectations copy the earlier pre-candidate frozen oracle, not those outputs. Headless success supplies no actual-native workflow evidence.",
+  "excluded": "No product/Cargo/CUA execution for this preparation, reference application, private reference container, vendor raw material, account data, binary or product source edit."
+}

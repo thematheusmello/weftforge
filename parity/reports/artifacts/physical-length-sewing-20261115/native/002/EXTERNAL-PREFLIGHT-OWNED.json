@@ -1,0 +1,80 @@
+{
+  "scope": "Selected owned-only review derivative. Unrelated process inventories, raw kernel mappings and stacks remain private. Source, numeric, clock, status and saved-file values in retained fields are unchanged.",
+  "original_private_sha256": "d8c478029f3a799d7504826be14a54e228da4d5688953f7395ccdcf2a45882bd",
+  "omitted_private_fields": [
+    "prior_processes"
+  ],
+  "record": {
+    "status": "pass",
+    "utc": "2026-11-15T18:36:03.669Z",
+    "binding_sha256": "0596295c116f09f02ce42633e417e91f10b4d9355cedd90cf915b95cae2fe896",
+    "freeze_sha256": "6ee119713ffffeb2bc3a69f1fdffb195f3136b2ff0644cdc261199273161a3e8",
+    "source_commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+    "source_pins": 60,
+    "frozen_files": 20,
+    "input_mode": "400",
+    "owned_app": "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/002/WeftForgePhysicalSewing002.app",
+    "owned_executable": "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/002/WeftForgePhysicalSewing002.app/Contents/MacOS/weftforge",
+    "owned_bundle_id": "org.weftforge.preview.physicalsewing20261115.case002",
+    "owned_executable_sha256": "69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0",
+    "external_createRequire_fs_receipt": {
+      "file": "captures/root-binding-raw.json",
+      "bytes": 10437,
+      "sha256": "0596295c116f09f02ce42633e417e91f10b4d9355cedd90cf915b95cae2fe896",
+      "source_record": "0001",
+      "unedited": true,
+      "utc": "2026-11-15T18:36:03.061Z",
+      "monotonic_ns": "890078977730666"
+    },
+    "old_actor_files": [
+      {
+        "root": "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/001",
+        "file": "MANIFEST.json",
+        "sha256": "ce52cb295afd6ed1bcbb51bff60085b1e68770144603a70b3c1f0f7578671ffe",
+        "bytes": 63745
+      },
+      {
+        "root": "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/001",
+        "file": "OUTCOME.json",
+        "sha256": "de00ceddca469185f9c0c2b9caab079b81c8f2098309b157570fc27fb545ebbf",
+        "bytes": 9645
+      },
+      {
+        "root": "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/001",
+        "file": "physical-readonly-input.weftforge",
+        "sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+        "bytes": 3289
+      },
+      {
+        "root": "<WORKSPACE>/.local/native-physical-sewing-acceptance-20261115/001",
+        "file": "physical-readonly-input.weftforge.autosave",
+        "sha256": "6ec524363a346b32fa482057d1ea3b68ef0cbd2271f8498db092190579146626",
+        "bytes": 3783
+      },
+      {
+        "root": "<WORKSPACE>/.local/native-save-dialog-calibration-20261115/001",
+        "file": "MANIFEST.json",
+        "sha256": "501a4760988cff0b73d78b464644c5d11936bf9692e545518bbba48e045f5a79",
+        "bytes": 12369
+      },
+      {
+        "root": "<WORKSPACE>/.local/native-save-dialog-calibration-20261115/001",
+        "file": "OUTCOME.json",
+        "sha256": "3d90c34dce5aafe7e6ce0490b2501f997ae528886ebb757703d2f7114d21b130",
+        "bytes": 1811
+      },
+      {
+        "root": "<WORKSPACE>/.local/native-save-dialog-calibration-20261115/001",
+        "file": "readonly-original.weftforge",
+        "sha256": "239009c6ae23da35d4e6fd12e53dfc07df12b721f9eb841a841f9cc30ec39831",
+        "bytes": 3289
+      }
+    ],
+    "controller_status": {
+      "evidenceKind": "native",
+      "calls": 0,
+      "elapsedS": null,
+      "stopped": false
+    }
+  }
+}
