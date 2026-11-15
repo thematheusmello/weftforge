@@ -1546,8 +1546,15 @@ impl Studio {
                 .and_then(|id| ui.ctx().read_response(id))
                 .is_some_and(|response| response.clicked());
         // Keep pending edits staged while the numeric constructor opens or remains open.
-        if commit && !acting && self.rectangle.is_none() && !opening_rectangle {
-            self.commit_draft();
+        if commit
+            && !acting
+            && self.rectangle.is_none()
+            && !opening_rectangle
+            && self.commit_draft()
+            && let Some(id) = action_focus
+        {
+            // egui replays committed text on next-frame blur; rebuilt f64 bounds may differ.
+            ui.ctx().data_mut(|data| data.remove::<String>(id));
         }
         if !acting
             && !ui.input(|input| input.pointer.any_down())
@@ -7324,6 +7331,152 @@ mod pattern_import_tests {
         )
         .unwrap();
         path
+    }
+
+    #[test]
+    fn original_baseline_decimal_width_return_commits_once_and_history_is_exact() {
+        fn key(key: egui::Key, modifiers: egui::Modifiers, pressed: bool) -> egui::Event {
+            egui::Event::Key {
+                key,
+                physical_key: None,
+                pressed,
+                repeat: false,
+                modifiers,
+            }
+        }
+        fn same_geometry(actual: &Project, expected: &Project) {
+            assert_eq!(actual.points, expected.points);
+            assert_eq!(actual.curves, expected.curves);
+            assert_eq!(actual.pieces, expected.pieces);
+        }
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Existing baseline".into(),
+                origin: [0.5, 0.1],
+                width: 0.1,
+                height: 0.12,
+            })
+            .unwrap();
+        let baseline = app.editor.project.clone();
+        let piece = baseline.pieces[0].id;
+        // Opening the original baseline starts at revision 1 with empty history.
+        app.editor = Editor::new(baseline.clone()).unwrap();
+        app.selected = Some(piece);
+        let mut expected = Editor::new(baseline.clone()).unwrap();
+        let mut authored = Vec::new();
+        for (text, width) in [("0.11", 0.11), ("0.12", 0.12)] {
+            let before = app.editor.project.clone();
+            let output = frame(&ctx, &mut app, vec![]);
+            let bounds = before.piece_bounds(piece).unwrap();
+            let width_before = bounds[1][0] - bounds[0][0];
+            let field = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(_, node)| node.numeric_value() == Some(width_before))
+                .unwrap()
+                .1
+                .bounds()
+                .unwrap();
+            let pos = Pos2::new(
+                ((field.x0 + field.x1) * 0.5) as f32,
+                ((field.y0 + field.y1) * 0.5) as f32,
+            );
+            for pressed in [true, false] {
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![
+                        egui::Event::PointerMoved(pos),
+                        egui::Event::PointerButton {
+                            pos,
+                            button: egui::PointerButton::Primary,
+                            pressed,
+                            modifiers: egui::Modifiers::NONE,
+                        },
+                    ],
+                );
+            }
+            frame(
+                &ctx,
+                &mut app,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND, true),
+                    egui::Event::Text(text.into()),
+                ],
+            );
+            for _ in 0..3 {
+                frame(&ctx, &mut app, vec![]);
+            }
+            assert_eq!(
+                app.editor.project, before,
+                "typing {text} must stay pending"
+            );
+            assert_eq!(app.draft.as_ref().unwrap().dimensions.unwrap()[0], width);
+            expected
+                .execute(Command::ResizePiece {
+                    piece,
+                    width,
+                    height: 0.12,
+                })
+                .unwrap();
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Enter, egui::Modifiers::NONE, true)],
+            );
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Enter, egui::Modifiers::NONE, false)],
+            );
+            for idle in 0..8 {
+                frame(&ctx, &mut app, vec![]);
+                assert_eq!(
+                    app.editor.project.revision,
+                    before.revision + 1,
+                    "{text} Return idle frame {idle}: one gesture must be one revision"
+                );
+                assert_eq!(
+                    app.editor.project, expected.project,
+                    "{text} Return idle frame {idle}"
+                );
+            }
+            authored.push(app.editor.project.clone());
+        }
+        for (redo, target, more_history) in [
+            (false, &authored[0], true),
+            (false, &baseline, false),
+            (true, &authored[0], true),
+            (true, &authored[1], false),
+        ] {
+            app.history(&ctx, redo);
+            let revision = app.editor.project.revision;
+            same_geometry(&app.editor.project, target);
+            for idle in 0..8 {
+                frame(&ctx, &mut app, vec![]);
+                assert_eq!(
+                    app.editor.project.revision, revision,
+                    "history replay at idle frame {idle}"
+                );
+                same_geometry(&app.editor.project, target);
+                assert_eq!(
+                    if redo {
+                        app.editor.can_redo()
+                    } else {
+                        app.editor.can_undo()
+                    },
+                    more_history
+                );
+            }
+        }
     }
 
     #[test]
