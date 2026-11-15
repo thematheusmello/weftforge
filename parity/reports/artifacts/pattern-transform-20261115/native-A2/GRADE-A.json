@@ -1,0 +1,22 @@
+{
+  "command": [
+    "python3",
+    "<WORKSPACE>/.local/native-transform-plan-v2-20261115/grade_saved.py",
+    "grade-a",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A2/A2-readonly-input.weftforge",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A2/quarter.weftforge",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A2/undo.weftforge",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A2/redo.weftforge",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A2/reopened.weftforge"
+  ],
+  "returncode": 1,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "9ef265d2241784cffd50bf74d7cc23b9f571adef4015d0be3e81d420f788258a",
+  "saved_outputs_exist": {
+    "quarter.weftforge": false,
+    "undo.weftforge": false,
+    "redo.weftforge": false,
+    "reopened.weftforge": false
+  },
+  "outcome": "unverified; stopped at visible five-field barrier before final Apply; no saved native outputs"
+}

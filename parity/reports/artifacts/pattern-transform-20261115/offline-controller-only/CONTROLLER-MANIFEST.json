@@ -1,0 +1,286 @@
+{
+  "status": "private offline mock preparation only; root review pending before native launch",
+  "utc": "2026-11-15T16:02:46.779776+00:00",
+  "files": [
+    {
+      "file": "CELL-01.json",
+      "bytes": 752,
+      "sha256": "71a295fe2babef46c1bb734adf8303c092ce5a56b1135a547a2c13ba56c9f0d4"
+    },
+    {
+      "file": "OFFLINE-ATTEMPT-01.json",
+      "bytes": 1332,
+      "sha256": "1233ed8d10fefbe67b611beae1ed472017b98b44ccf2e6d404f46c4c5d40167e"
+    },
+    {
+      "file": "OFFLINE-PREFLIGHT.json",
+      "bytes": 3065,
+      "sha256": "5efbe591aae1419e5711883f88e5267bdd2f212b46256423556361b324116d76"
+    },
+    {
+      "file": "PREPARATION.json",
+      "bytes": 869,
+      "sha256": "3d73c5a147a8d14876ddd4f8015cdfb1d6808e122002aa50a60a34be6eb21771"
+    },
+    {
+      "file": "controller.cjs",
+      "bytes": 8012,
+      "sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b"
+    },
+    {
+      "file": "mock-elapsed-cap/CONTEXT.json",
+      "bytes": 329,
+      "sha256": "6e52c89625d27eb165d083ecde69e6c0c809a51d8976e450a3d856b3702377f7"
+    },
+    {
+      "file": "mock-elapsed-cap/LAUNCH-CLOCK.json",
+      "bytes": 111,
+      "sha256": "959a7ae0033872f74fb91a41ae130cddb0e5d012fd5c990e41d3608394499c50"
+    },
+    {
+      "file": "mock-fixtures/OFFLINE-MOCK.jpg",
+      "bytes": 633,
+      "sha256": "8f4e008b7ede6e0f1165dd1dc9333e5fea862339cf708b032f43ef018d90c908"
+    },
+    {
+      "file": "mock-fixtures/OFFLINE-MOCK.png",
+      "bytes": 72,
+      "sha256": "10d5819f1542a4b3629445c99467edf267f4b81d8e7a297bd651722812691699"
+    },
+    {
+      "file": "mock-main-callcap/CONTEXT.json",
+      "bytes": 325,
+      "sha256": "8fe9c226b68d69c38bd2daf09e5a8ee452816a933403802cb93e1719a4eaa0ed"
+    },
+    {
+      "file": "mock-main-callcap/LAUNCH-CLOCK.json",
+      "bytes": 111,
+      "sha256": "c5fba339d27cb630746dc4f57250fde7cb7657adaf9226d71654b25f45f69ae4"
+    },
+    {
+      "file": "mock-main-callcap/STOP.json",
+      "bytes": 1324,
+      "sha256": "22bd051918e59f51e4cbcdff78ae9d9a111d79c9d0922c038951440a861051e0"
+    },
+    {
+      "file": "mock-main-callcap/trace/0001-after.json",
+      "bytes": 11046,
+      "sha256": "96cac1c7ab0a2bf5f268c75eafc4e00d362a3fdb5bdfcfa768897f9681c1afd9"
+    },
+    {
+      "file": "mock-main-callcap/trace/0001-before.json",
+      "bytes": 286,
+      "sha256": "ca064be9358422bb0b51c63293063735fd84d5292f8325050a49596199b93b9b"
+    },
+    {
+      "file": "offline-run-02/CELL-01.json",
+      "bytes": 751,
+      "sha256": "d763af0e6a20a61337a2b03366ae8155b66d165a771623a180653a861ded8e69"
+    },
+    {
+      "file": "offline-run-02/CELL-02.json",
+      "bytes": 794,
+      "sha256": "c9f7bec976e7012b4dc51a2b316ed371342e0f10464864d2813992f8eb94d2a3"
+    },
+    {
+      "file": "offline-run-02/CELL-03.json",
+      "bytes": 835,
+      "sha256": "8aec56a408b6762f3d38f36c671a86beef5f8e9014fffcc8b62aab36de58bf4e"
+    },
+    {
+      "file": "offline-run-02/CELL-04.json",
+      "bytes": 919,
+      "sha256": "2cec0bfdf18794ea905f945a7e463903711ac03f8ef1028fe38eae5259fb4438"
+    },
+    {
+      "file": "offline-run-02/CELL-05.json",
+      "bytes": 1155,
+      "sha256": "568863bb33671ae4d842281bbb585cd6244a43b29751ac635e6590edc2725bc5"
+    },
+    {
+      "file": "offline-run-02/PREFLIGHT.json",
+      "bytes": 3065,
+      "sha256": "5efbe591aae1419e5711883f88e5267bdd2f212b46256423556361b324116d76"
+    },
+    {
+      "file": "offline-run-02/mock-elapsed-cap/CONTEXT.json",
+      "bytes": 329,
+      "sha256": "6e52c89625d27eb165d083ecde69e6c0c809a51d8976e450a3d856b3702377f7"
+    },
+    {
+      "file": "offline-run-02/mock-elapsed-cap/LAUNCH-CLOCK.json",
+      "bytes": 111,
+      "sha256": "1e5b4650a0d93884da01315d5ba183d4ac0a4bcd2ff53a18ff4b13574b4c8d58"
+    },
+    {
+      "file": "offline-run-02/mock-elapsed-cap/STOP.json",
+      "bytes": 1010,
+      "sha256": "0afe26244c382a2aaf0f8b3b7e4542225a083920f3ad2f1fa45a6b2c1fa72d0d"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/CONTEXT.json",
+      "bytes": 325,
+      "sha256": "8fe9c226b68d69c38bd2daf09e5a8ee452816a933403802cb93e1719a4eaa0ed"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/LAUNCH-CLOCK.json",
+      "bytes": 111,
+      "sha256": "f37c7c1b0bb9fbc64693d5b73482f7d3e957dbe3fb5720eb17f09cbf50ce0cef"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/STOP.json",
+      "bytes": 1373,
+      "sha256": "7e0c9f42a3defe1dd6a892d7bbcc303420840424cf20d89f7cbd7037e2bdaa3c"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/captures/OFFLINE-MOCK-jpeg-cell2-0.jpg",
+      "bytes": 633,
+      "sha256": "8f4e008b7ede6e0f1165dd1dc9333e5fea862339cf708b032f43ef018d90c908"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/captures/OFFLINE-MOCK-jpeg-cell2-0.jpg.sha256.json",
+      "bytes": 272,
+      "sha256": "68df95a138318184eea4257b52a7e17166d3166225c2ade718a162247a7f8eaf"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/captures/OFFLINE-MOCK-jpeg-cell2-capture.json",
+      "bytes": 693,
+      "sha256": "3dcb058e681f17a031521be3b37ee0f583749d77eddace9d36f5c0bb27dee64e"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/captures/OFFLINE-MOCK-jpeg-cell2.txt",
+      "bytes": 59,
+      "sha256": "fde443d0460b4e65fc3864eebc08a68bf874923184b390a5d7ba3c54bbfdef64"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/captures/OFFLINE-MOCK-jpeg-cell2.txt.sha256.json",
+      "bytes": 269,
+      "sha256": "b01e327feb0780033d68c182207a796b04a4bb959c4f6e3765f3c5ea584db80c"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/captures/OFFLINE-MOCK-png-cell3-0.png",
+      "bytes": 72,
+      "sha256": "10d5819f1542a4b3629445c99467edf267f4b81d8e7a297bd651722812691699"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/captures/OFFLINE-MOCK-png-cell3-0.png.sha256.json",
+      "bytes": 304,
+      "sha256": "98d03d9b0be3bb66fbcb5c2c3275dfd7c0f49d8088c781686c5e6b689d4307f9"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/captures/OFFLINE-MOCK-png-cell3-capture.json",
+      "bytes": 728,
+      "sha256": "ac3d343089a9b2a7eab873af7583e15dcfeb57c607c5f6e145d2cf44c24685e2"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/captures/OFFLINE-MOCK-png-cell3.txt",
+      "bytes": 47,
+      "sha256": "2aa26a2f5ab4fa92c2a4904dedfd657f5d89ed543d25de4a676f4709c37b0397"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/captures/OFFLINE-MOCK-png-cell3.txt.sha256.json",
+      "bytes": 268,
+      "sha256": "0468fdd89bdfcc0735a5ab7a1090cf65edaec0f7c342804ae882a8d63f709bba"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/trace/0001-after.json",
+      "bytes": 10974,
+      "sha256": "c365141f1e837d9710280a8e8aa3907b3559e46e2b6e5ca070aaf8ec47855edc"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/trace/0001-before.json",
+      "bytes": 286,
+      "sha256": "332e71c18fb39c73b9cddd9324c46c28f0630ba34edd4438ef76b36e16f0a899"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/trace/0002-after.json",
+      "bytes": 1850,
+      "sha256": "4a437ab1b8ef6bb1e742f6674464302cb24e25c20136d212c3a78064b4758bcd"
+    },
+    {
+      "file": "offline-run-02/mock-main-callcap/trace/0002-before.json",
+      "bytes": 285,
+      "sha256": "90f99417df3b105703da89745344dc7ecac16699730c8e8ebcb8dcc943b6311b"
+    },
+    {
+      "file": "offline-run-02/mock-target-error/CONTEXT.json",
+      "bytes": 326,
+      "sha256": "9e50f87583d02830263729efa5e0d2140162bb85cd3d80b06b859dc3e5a9eab2"
+    },
+    {
+      "file": "offline-run-02/mock-target-error/LAUNCH-CLOCK.json",
+      "bytes": 111,
+      "sha256": "eb5bdba3b51e007fd920697b51f2f73825ad825f8af6340c7ced8b3e3a35e036"
+    },
+    {
+      "file": "offline-run-02/mock-target-error/STOP.json",
+      "bytes": 1126,
+      "sha256": "678d960bbeabaec0cab3e70f33baf95163d035babb49995872b2fedd116191c4"
+    },
+    {
+      "file": "offline-run-02/mock-target-error/trace/0001-after.json",
+      "bytes": 222,
+      "sha256": "66c0766c7faa3834e0a38a26782e03e202cbfb1daada087def597a6f5e42bb05"
+    },
+    {
+      "file": "offline-run-02/mock-target-error/trace/0001-before.json",
+      "bytes": 288,
+      "sha256": "a25427bf748a96ab51f291dc29769d4a2b9a0c7e4218983471508f950cb1afd0"
+    },
+    {
+      "file": "offline-run-02/mock-unknown-image/CONTEXT.json",
+      "bytes": 326,
+      "sha256": "9e50f87583d02830263729efa5e0d2140162bb85cd3d80b06b859dc3e5a9eab2"
+    },
+    {
+      "file": "offline-run-02/mock-unknown-image/LAUNCH-CLOCK.json",
+      "bytes": 111,
+      "sha256": "a5fbd33d13061016e2b2802ef29e4783098c80fc153d5aba0306c50b947860f7"
+    },
+    {
+      "file": "offline-run-02/mock-unknown-image/STOP.json",
+      "bytes": 1324,
+      "sha256": "bba8bb7069f4d5337eb8afa5363dfc805f3874fa139715e7b21d8d3709867abd"
+    },
+    {
+      "file": "offline-run-02/mock-unknown-image/trace/0001-after.json",
+      "bytes": 347,
+      "sha256": "a79667d26c67efa9a8d6b3f052bd238c82023dd6438306fa35413a6ce46cbc49"
+    },
+    {
+      "file": "offline-run-02/mock-unknown-image/trace/0001-before.json",
+      "bytes": 289,
+      "sha256": "d5544361ce7747c6cfdef5cfb51a8d8b0e744fd3955cfdf7e8c1041a8be83361"
+    },
+    {
+      "file": "offline-run-02/mock-unknown-method/CONTEXT.json",
+      "bytes": 326,
+      "sha256": "9e50f87583d02830263729efa5e0d2140162bb85cd3d80b06b859dc3e5a9eab2"
+    },
+    {
+      "file": "offline-run-02/mock-unknown-method/LAUNCH-CLOCK.json",
+      "bytes": 111,
+      "sha256": "a9819c9edbb16465af0dd6af125a437e77a6db34d2da98d1c76d2deca7ecbdf2"
+    },
+    {
+      "file": "offline-run-02/mock-unknown-method/STOP.json",
+      "bytes": 1377,
+      "sha256": "9a0d8c55a119f2ca214936c54ca0f6c11a62346d02e378e0a6c935ed14b3a91c"
+    },
+    {
+      "file": "offline-run-02/mock-unknown-method/trace/0001-after.json",
+      "bytes": 233,
+      "sha256": "ca6b91645f9e0d1a2ea4f017c7b931969f98dc5fe268953fdef817ae72d66440"
+    },
+    {
+      "file": "offline-run-02/mock-unknown-method/trace/0001-before.json",
+      "bytes": 241,
+      "sha256": "5554a32733ebbb528353da282c6c486eaec0c9d5dd7fe62d57b8533485755502"
+    },
+    {
+      "file": "revisions/controller-attempt-01.cjs",
+      "bytes": 7970,
+      "sha256": "14c20b2641fef709aab857c0acf424abed75fdf6093fc6cff5bc39b62e9bd943"
+    }
+  ]
+}

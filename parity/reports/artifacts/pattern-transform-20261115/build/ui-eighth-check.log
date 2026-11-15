@@ -1,0 +1,29 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/pattern-transform-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.56s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 7 tests
+test pattern_transform_tests::transform_search_and_tool_names_are_real_authoring_routes ... ok
+test pattern_transform_tests::transform_numeric_apply_and_return_use_explicit_units_pivot_and_one_transaction ... ok
+test pattern_transform_tests::transform_pointer_translation_and_rotation_capture_original_geometry_and_snap_once ... ok
+test pattern_transform_tests::transform_cross_piece_refusal_retains_staged_or_invalid_raw_text_caret_and_redo ... ok
+test pattern_transform_tests::transform_cancel_revision_tool_load_and_failed_release_never_commit_stale_previews ... ok
+
+thread 'pattern_transform_tests::transform_modal_blocks_background_accesskit_pointer_and_shortcut_authoring' (60975229) panicked at <HOME>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/epaint-0.35.0/src/mutex.rs:81:17:
+DEBUG PANIC: Failed to acquire RwLock read after 10s. Deadlock?
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test pattern_transform_tests::transform_modal_blocks_background_accesskit_pointer_and_shortcut_authoring ... FAILED
+
+thread 'pattern_transform_tests::transform_numeric_failure_retains_text_caret_drafts_history_and_accepted_output' (60975231) panicked at <HOME>/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/epaint-0.35.0/src/mutex.rs:81:17:
+DEBUG PANIC: Failed to acquire RwLock read after 10s. Deadlock?
+test pattern_transform_tests::transform_numeric_failure_retains_text_caret_drafts_history_and_accepted_output ... FAILED
+
+failures:
+
+failures:
+    pattern_transform_tests::transform_modal_blocks_background_accesskit_pointer_and_shortcut_authoring
+    pattern_transform_tests::transform_numeric_failure_retains_text_caret_drafts_history_and_accepted_output
+
+test result: FAILED. 5 passed; 2 failed; 0 ignored; 0 measured; 55 filtered out; finished in 10.21s
+
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

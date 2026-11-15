@@ -1,0 +1,73 @@
+{
+  "utc": "2026-11-15T17:33:45.639579+00:00",
+  "actor_pid": 92536,
+  "owned_pid_terminated": true,
+  "owned_pid_ps_result": {
+    "returncode": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "same_process_retained_through_New_Empty_and_reopen": true,
+  "old_target_processes_missing": [],
+  "source_hash_mismatches": [],
+  "source_head_after": "dd5a16826dafe0d4f32c251f7c351197ad0936af",
+  "source_clean_after": true,
+  "native_binary_sha256_after": "216aa9e0b8968a1fe9033f32c89c9b4b93cdca15fac927c0538a5a091c848dd4",
+  "packaged_binary_sha256_after": "216aa9e0b8968a1fe9033f32c89c9b4b93cdca15fac927c0538a5a091c848dd4",
+  "controller_sha256_after": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+  "original_fixture_sha256_after": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+  "readonly_input_sha256_after": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+  "readonly_input_mode_after": "0o400",
+  "old_cases_unchanged": {
+    "A": {
+      "manifest_sha256_matches": true,
+      "changed_files": []
+    },
+    "A2": {
+      "manifest_sha256_matches": true,
+      "changed_files": []
+    },
+    "A3": {
+      "manifest_sha256_matches": true,
+      "changed_files": []
+    }
+  },
+  "saved_file_identities": [
+    {
+      "file": "A4-readonly-input.weftforge",
+      "revision": 37,
+      "bytes": 5068,
+      "sha256": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+      "mode": "0o400"
+    },
+    {
+      "file": "quarter.weftforge",
+      "revision": 38,
+      "bytes": 5210,
+      "sha256": "e15c3cca488b67220e32c3d63ebf9880765245560f4ba11bb5830ee55677503d",
+      "mode": "0o644"
+    },
+    {
+      "file": "undo.weftforge",
+      "revision": 39,
+      "bytes": 5067,
+      "sha256": "1e4cae40d5754a2ff366fb1a523b3d45d62114a6da3857fb8b75a3d01df08962",
+      "mode": "0o644"
+    },
+    {
+      "file": "redo.weftforge",
+      "revision": 40,
+      "bytes": 5210,
+      "sha256": "7dd536522487e752bbb6e855d753423596f12344b61c22aeefcf8686517c07d5",
+      "mode": "0o644"
+    },
+    {
+      "file": "reopened.weftforge",
+      "revision": 40,
+      "bytes": 5210,
+      "sha256": "7dd536522487e752bbb6e855d753423596f12344b61c22aeefcf8686517c07d5",
+      "mode": "0o644"
+    }
+  ],
+  "post_quit_inventory": "sidecars-after-quit.json"
+}

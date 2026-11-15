@@ -1,0 +1,77 @@
+{
+  "status": "passed",
+  "candidate_executed": false,
+  "native_executed": false,
+  "checks": [
+    "accepted synthetic numeric/history/reopen and 45-degree pointer documents",
+    {
+      "rejected": "quarter_control_not_rotated",
+      "reason": "authored endpoint/control: 1.0 > 1e-10"
+    },
+    {
+      "rejected": "quarter_missing_placement_compensation",
+      "reason": "arranged curve sample: 1.0899766855534008 > 1e-10"
+    },
+    {
+      "rejected": "quarter_unchanged_grain",
+      "reason": "material warp: 1.2939427775709964 > 1e-12"
+    },
+    {
+      "rejected": "wrong_transaction_revision",
+      "reason": "expected quarter revision"
+    },
+    {
+      "rejected": "undo_lost_signed_zero",
+      "reason": "undo_restores_every_authored_bit.project.points[0].position[1]: f64 bits changed"
+    },
+    {
+      "rejected": "redo_changed_map",
+      "reason": "authored_invariants.seams[0].correspondence[1][1]: f64 bits changed"
+    },
+    {
+      "rejected": "redo_changed_allocator",
+      "reason": "authored_invariants.next_id: value changed"
+    },
+    {
+      "rejected": "redo_changed_material",
+      "reason": "authored_invariants.materials[0].damping: f64 bits changed"
+    },
+    {
+      "rejected": "reopen_lost_one_bit",
+      "reason": "same_process_reopen_exact_fields.project.points[1].position[0]: f64 bits changed"
+    },
+    {
+      "rejected": "wrong_snapped_displacement",
+      "reason": "single-addition coordinate[0]: f64 bits changed"
+    },
+    {
+      "rejected": "rotation_50_degrees",
+      "reason": "rotation outside fixed 43..47 degree window"
+    },
+    {
+      "rejected": "wrong_rotation_pivot",
+      "reason": "authored endpoint/control: 0.017677669529663653 > 1e-10"
+    },
+    {
+      "rejected": "extra_rotation_translation",
+      "reason": "authored endpoint/control: 0.010000000000000009 > 1e-10"
+    },
+    {
+      "rejected": "scale",
+      "reason": "fit endpoints retain span: 0.010606601717798148 > 1e-10"
+    },
+    {
+      "rejected": "shear",
+      "reason": "authored endpoint/control: 0.005285533905932782 > 1e-10"
+    },
+    {
+      "rejected": "reflection",
+      "reason": "rotation outside fixed 43..47 degree window"
+    },
+    {
+      "rejected": "extra_pointer_revision",
+      "reason": "exactly one transaction revision"
+    }
+  ],
+  "rejected_bad_outputs": 17
+}

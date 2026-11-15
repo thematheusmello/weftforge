@@ -1,0 +1,24 @@
+{
+  "kind": "offline_mock_only",
+  "fixtures": [
+    {
+      "file": "mock-fixtures/OFFLINE-MOCK.jpg",
+      "evidence_kind": "offline_mock",
+      "bytes": 633,
+      "sha256": "8f4e008b7ede6e0f1165dd1dc9333e5fea862339cf708b032f43ef018d90c908",
+      "format": "JPEG"
+    },
+    {
+      "file": "mock-fixtures/OFFLINE-MOCK.png",
+      "evidence_kind": "offline_mock",
+      "bytes": 72,
+      "sha256": "10d5819f1542a4b3629445c99467edf267f4b81d8e7a297bd651722812691699",
+      "format": "PNG"
+    }
+  ],
+  "failed_A_manifest_sha256": "d9210ce3989b77ebdeea1733d0e31ad61b1e45bf7eb11a64adb52e364249d776",
+  "failed_A_all_manifest_hashes_match_before": true,
+  "controller_sha256_before": "14c20b2641fef709aab857c0acf424abed75fdf6093fc6cff5bc39b62e9bd943",
+  "recorder_sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+  "native_api_calls": 0
+}

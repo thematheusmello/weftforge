@@ -1,0 +1,182 @@
+{
+  "source": "699c4608ff68af132ec90b1ffb80ba354c70435f",
+  "tree": "695b03c28b7bbbe0b611229f8d4a9eda48e45b60",
+  "status": "passed",
+  "completion_scope": "Qualified component completion: reuse exact-source fmt/223 workspace tests/strict Clippy from failed 5d run; fresh corrected-metadata verify/package/debug only. This is not a fresh five-gate run.",
+  "manifest": {
+    "path": "<WORKSPACE>/.local/pattern-transform-implementation-20261115/continuation-699c460-20261115T1536Z-manifest.json",
+    "sha256": "059e41c404912d3c64988ef54a5a847d869eaa6a1e77ddfb18bc3b8714477842",
+    "bytes": 24436
+  },
+  "preserved_failed_manifest": {
+    "path": "<WORKSPACE>/.local/pattern-transform-implementation-20261115/integrated-5d0cadb-20261115T1530Z-manifest.json",
+    "sha256": "e1a3516806eaceda301d0f439c137f532b14dfc514703b9629dcc227ed7d9ddf",
+    "bytes": 17393
+  },
+  "runtime_and_contract_files": 58,
+  "final_guard": {
+    "label": "final-clean-frozen-source",
+    "at": "2026-11-15T15:38:32.207741+00:00",
+    "source": "699c4608ff68af132ec90b1ffb80ba354c70435f",
+    "git_status": "",
+    "changed_frozen_files": [],
+    "independent_cli_unchanged": true
+  },
+  "reused_components": [
+    {
+      "name": "01-fmt",
+      "source": "5d0cadbe5ac1b3d388acd97f56fc8065ee58f6df",
+      "exit_code": 0,
+      "pid": 77673,
+      "log_binding": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "02-workspace-tests",
+      "source": "5d0cadbe5ac1b3d388acd97f56fc8065ee58f6df",
+      "exit_code": 0,
+      "pid": 77737,
+      "log_binding": {
+        "sha256": "f3eb649db829d98074e6366817edd66558afa119f1df5ed7ea9a923fc3ee2f27",
+        "bytes": 25434
+      }
+    },
+    {
+      "name": "03-workspace-clippy",
+      "source": "5d0cadbe5ac1b3d388acd97f56fc8065ee58f6df",
+      "exit_code": 0,
+      "pid": 78525,
+      "log_binding": {
+        "sha256": "5dae64bbcf59e44781ac1356e4f8bcff770fc21e09589504c0a7a8c7041a0bcc",
+        "bytes": 1041
+      }
+    }
+  ],
+  "fresh_components": [
+    {
+      "name": "04-xtask-verify",
+      "exit_code": 0,
+      "pid": 84505,
+      "duration_seconds": 88.55607129191048,
+      "log_binding": {
+        "sha256": "61ab425cf561dbea4206614938030b477b06da3f73e405dbd5833553abcf11a3",
+        "bytes": 2841
+      }
+    },
+    {
+      "name": "05-xtask-package",
+      "exit_code": 0,
+      "pid": 91441,
+      "duration_seconds": 31.912255457951687,
+      "log_binding": {
+        "sha256": "014260b16e5aff5f9a2a8d7e9bc86900d91017b0d5b14489133d96b95719f1b0",
+        "bytes": 6569
+      }
+    },
+    {
+      "name": "06-debug-native",
+      "exit_code": 0,
+      "pid": 92776,
+      "duration_seconds": 2.95736304204911,
+      "log_binding": {
+        "sha256": "6532bcc8e3c0d5732e9941499c9ee4fa286f8abfb35524b1d7dbd8e99597bdc4",
+        "bytes": 217
+      }
+    }
+  ],
+  "rust_tests": {
+    "passed": 223,
+    "failed": 0,
+    "ignored": 0
+  },
+  "python_tests": {
+    "passed": 54,
+    "groups": [
+      48,
+      6
+    ]
+  },
+  "binaries": {
+    "target/debug/weftforge": {
+      "sha256": "4406006ab19c52b98d83fe3c8e8115b16fe61492120611d2d06a496dd9b69757",
+      "bytes": 60706344
+    },
+    "target/debug/weftforge-cli": {
+      "sha256": "80921d0947c4f6f1c91e9a5bef18e5b607c67323ac80e3177833f499acd360a5",
+      "bytes": 9115408
+    },
+    "target/release/weftforge": {
+      "sha256": "f4eb34989edc1a192f7738e0c01cdae5de1f6b08576cce8b6df82594ad9a353f",
+      "bytes": 15379616
+    },
+    "target/release/weftforge-cli": {
+      "sha256": "e2bb5679413f5c9098b46f26cd2bc1d07f949b8517dd17450035cf7165677ee2",
+      "bytes": 2248336
+    },
+    "target/package/weftforge": {
+      "sha256": "f4eb34989edc1a192f7738e0c01cdae5de1f6b08576cce8b6df82594ad9a353f",
+      "bytes": 15379616
+    },
+    "target/package/weftforge-cli": {
+      "sha256": "e2bb5679413f5c9098b46f26cd2bc1d07f949b8517dd17450035cf7165677ee2",
+      "bytes": 2248336
+    },
+    "target/package/WeftForge.app/Contents/MacOS/weftforge": {
+      "sha256": "f4eb34989edc1a192f7738e0c01cdae5de1f6b08576cce8b6df82594ad9a353f",
+      "bytes": 15379616
+    }
+  },
+  "font_notices": [
+    {
+      "name": "OFL-Inter.txt",
+      "source": {
+        "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "bytes": 4380
+      },
+      "regular": {
+        "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "bytes": 4380
+      },
+      "app": {
+        "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "bytes": 4380
+      },
+      "equal": true
+    },
+    {
+      "name": "OFL-JetBrainsMono.txt",
+      "source": {
+        "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+        "bytes": 4399
+      },
+      "regular": {
+        "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+        "bytes": 4399
+      },
+      "app": {
+        "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+        "bytes": 4399
+      },
+      "equal": true
+    }
+  ],
+  "independent_evaluation_cli": {
+    "sha256": "80921d0947c4f6f1c91e9a5bef18e5b607c67323ac80e3177833f499acd360a5",
+    "bytes": 9115408
+  },
+  "terminal_handles": {
+    "runner_pid": 84332,
+    "checked_pids": [
+      84332,
+      84505,
+      91441,
+      92776
+    ],
+    "ps_stdout": "",
+    "ps_exit_code": 1,
+    "tool_session": 81944,
+    "tool_exit_code": 0
+  }
+}

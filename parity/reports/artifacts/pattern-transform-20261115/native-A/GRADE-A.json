@@ -1,0 +1,22 @@
+{
+  "command": [
+    "python3",
+    "<WORKSPACE>/.local/native-transform-plan-v2-20261115/grade_saved.py",
+    "grade-a",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A/A-readonly-input.weftforge",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A/quarter.weftforge",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A/undo.weftforge",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A/redo.weftforge",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A/reopened.weftforge"
+  ],
+  "returncode": 1,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "fb52fe0cb43b346d2e27e22c7ac5307d1e8b95721da2e9053e58ce4bf5430a87",
+  "saved_outputs_exist": {
+    "quarter.weftforge": false,
+    "undo.weftforge": false,
+    "redo.weftforge": false,
+    "reopened.weftforge": false
+  },
+  "outcome": "unverified; stopped before authoring, missing native outputs"
+}

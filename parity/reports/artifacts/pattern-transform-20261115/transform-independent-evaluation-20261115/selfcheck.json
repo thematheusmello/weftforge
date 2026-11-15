@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "candidate_executed": false,
+  "checks": [
+    "independent XYZ axis and composition checks",
+    "accepted independent exact quarter oracle",
+    "rejected wrong_quarter_turn",
+    "rejected missing_placement_compensation",
+    "rejected unchanged_grain",
+    "rejected millimetre_units",
+    "rejected changed_map",
+    "rejected extra_revision",
+    "rejected naive Z-only compensation on a tilted piece",
+    "accepted both signs of exact/near output gimbal matrices",
+    "rejected lost signed-zero bits on an unchanged translation axis",
+    "non-right-angle inverse oracle",
+    "control-only overflow precondition"
+  ],
+  "success_rows": 17,
+  "invalid_rows": 14,
+  "planned_primary_cases": 93
+}

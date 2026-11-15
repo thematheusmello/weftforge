@@ -1,0 +1,22 @@
+{
+  "command": [
+    "python3",
+    "<WORKSPACE>/.local/native-transform-plan-v2-20261115/grade_saved.py",
+    "grade-a",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A3/A3-readonly-input.weftforge",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A3/quarter.weftforge",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A3/undo.weftforge",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A3/redo.weftforge",
+    "<WORKSPACE>/.local/native-transform-acceptance-20261115/A3/reopened.weftforge"
+  ],
+  "returncode": 1,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "58d3bb0d606b4cc67d0c38a13a5c4c11dbb4a9bcf2aed787658bad6159678709",
+  "saved_outputs_exist": {
+    "quarter.weftforge": true,
+    "undo.weftforge": true,
+    "redo.weftforge": true,
+    "reopened.weftforge": false
+  },
+  "outcome": "unverified; declared New Empty route unavailable, no reopen/substitute performed; missing reopened output"
+}

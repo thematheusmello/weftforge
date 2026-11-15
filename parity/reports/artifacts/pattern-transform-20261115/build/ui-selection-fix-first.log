@@ -1,0 +1,9 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/pattern-transform-20261115/apps/weftforge)
+error[E0425]: cannot find value `ctx` in this scope
+    --> apps/weftforge/src/main.rs:7322:27
+     |
+7322 |         app.select_curve(&ctx, Some((piece, curve)));
+     |                           ^^^ not found in this scope
+
+For more information about this error, try `rustc --explain E0425`.
+error: could not compile `weftforge` (bin "weftforge" test) due to 1 previous error

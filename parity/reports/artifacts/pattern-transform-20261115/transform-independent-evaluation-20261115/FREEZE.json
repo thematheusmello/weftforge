@@ -1,0 +1,24 @@
+{
+  "status": "frozen_before_candidate_execution",
+  "prepared_date": "2026-11-15",
+  "candidate_executed": false,
+  "reference_policy": "unobserved",
+  "reviewed_contract_sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+  "schema_and_protocol_commit": "be8a031b5f8342d0857f3bed34f52dd165fa86da",
+  "sha256": {
+    "fixture.weftforge": "a7c7a096f1b1db531a3fb4a2770352f65643856450b52b1856a7db61ef20bc59",
+    "plan.json": "968ba802e404e731d5159638122993c22ca0f0f7d4ac4b254d5aab286a05aea9",
+    "evaluate.py": "5dbb1e7299b38df921db4d2004017e5e62ddf9eb3275a5afbdc28d49d0c58e8f",
+    "METHOD.md": "c92561252da57511a311f1a46b6aabf3feee9849bb230c4cfdb839a31da604d5",
+    "selfcheck.json": "62297b9c3671f2fd20c7521fe8e4ffec5af8a880de168a348f79cdfa6ee99e0b"
+  },
+  "counts": {
+    "success_rows": 17,
+    "invalid_rows": 14,
+    "routes": 3,
+    "primary_cases": 93,
+    "additional_inverse_cases": 3,
+    "fresh_mesh_checks": 3
+  },
+  "execution_gate": "Root must review this exact freeze and supply an authorized source/binary/hash binding. No candidate binary has been invoked."
+}

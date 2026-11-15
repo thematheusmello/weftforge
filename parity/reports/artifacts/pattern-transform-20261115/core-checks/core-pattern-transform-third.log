@@ -1,0 +1,29 @@
+   Compiling weftforge-core v0.1.0 (<WORKSPACE>/.local/pattern-transform-20261115/crates/weftforge-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.47s
+     Running tests/pattern_transform.rs (target/debug/deps/pattern_transform-e930dfff25b02dc7)
+
+running 8 tests
+test transform_json_requires_all_fields_fixed_arrays_and_original_strict_number_tokens ... ok
+test control_only_and_compensated_placement_overflow_reject_atomically ... ok
+test huge_existing_grain_is_rotated_as_a_unit_vector_without_addition_overflow ... ok
+test quarter_turn_has_independent_polynomial_order_grain_and_sewing_oracles ... ok
+test translation_uses_single_additions_and_keeps_zero_components_and_unrelated_bits ... ok
+test mesh_rebuild_uses_new_authored_uvs_and_revision_and_native_v3_round_trips ... ok
+test invalid_inputs_results_and_late_transactions_retain_every_history_branch ... ok
+test non_right_angle_inverse_and_pivot_preserve_tilted_gimbal_and_large_scale_surfaces ... FAILED
+
+failures:
+
+---- non_right_angle_inverse_and_pivot_preserve_tilted_gimbal_and_large_scale_surfaces stdout ----
+
+thread 'non_right_angle_inverse_and_pivot_preserve_tilted_gimbal_and_large_scale_surfaces' (60895548) panicked at crates/weftforge-core/tests/pattern_transform.rs:460:10:
+called `Result::unwrap()` on an `Err` value: Error("Cubic tessellation sample limit exceeded")
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    non_right_angle_inverse_and_pivot_preserve_tilted_gimbal_and_large_scale_surfaces
+
+test result: FAILED. 7 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+
+error: test failed, to rerun pass `-p weftforge-core --test pattern_transform`

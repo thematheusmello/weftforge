@@ -1,0 +1,39 @@
+{
+  "evidenceKind": "offline_mock",
+  "cell": 4,
+  "result": "passed",
+  "synthetic_baseline_calls": 1,
+  "count_sequence_across_cells": [
+    1,
+    2,
+    3,
+    3
+  ],
+  "call_cap_error": "API call cap reached",
+  "call_cap_stop_error": "Controller stopped; no further target calls allowed",
+  "call_cap_status": {
+    "evidenceKind": "offline_mock",
+    "calls": 3,
+    "elapsedS": 56.628781125,
+    "stopped": true
+  },
+  "elapsed_cap_error": "Elapsed time cap reached",
+  "elapsed_cap_stop_error": "Controller stopped; no further target calls allowed",
+  "elapsed_status": {
+    "evidenceKind": "offline_mock",
+    "calls": 1,
+    "elapsedS": 56.6284375,
+    "stopped": true
+  },
+  "fake_target_calls": 0,
+  "mock_caps_only": {
+    "main_calls": 3,
+    "elapsed_seconds": 0.001
+  },
+  "native_plan_caps_unchanged": {
+    "calls": 130,
+    "seconds": 900
+  },
+  "native_api_calls": 0,
+  "mock_images_emitted": 0
+}

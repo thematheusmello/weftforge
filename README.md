@@ -41,6 +41,14 @@ physical stiffness, placement and derived meshes. Groups pair cumulative authore
 arc lengths across partial, reversed or disconnected spans, with editable easing
 maps; legacy single seams retain their curve-parameter correspondence.
 
+**Transform pattern** translates or rotates one 2D piece, with numeric angle,
+translation and pivot controls plus canvas handles. This layout operation keeps
+the arranged 3D surface and world warp fixed. **New Empty**, available in File
+and command search, starts a fresh editable document while protecting unsaved,
+staged and unfinished work. Numeric transform/history/New/reopen have a bounded
+native check; the full pointer workflow remains unverified. See the
+[native gallery and limits](docs/studio-preview.md).
+
 An f64 CPU cloth solver provides membrane/bending constraints, sewn boundaries,
 gravity, ground/analytic mannequin contact, and self-contact. Simulation runs in
 cancelable background batches; material values are uncalibrated approximations.

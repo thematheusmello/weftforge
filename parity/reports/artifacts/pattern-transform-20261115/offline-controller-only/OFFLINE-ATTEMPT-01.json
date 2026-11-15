@@ -1,0 +1,12 @@
+{
+  "status": "offline_mock_failed_preserved",
+  "module_sha256": "14c20b2641fef709aab857c0acf424abed75fdf6093fc6cff5bc39b62e9bd943",
+  "actual_error_record": "mock-main-callcap/STOP.json",
+  "actual_error": {
+    "name": "Error",
+    "message": "Screenshot is not raw byte data",
+    "stack": "Error: Screenshot is not raw byte data\n    at <WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs:117:67\n    at Array.map (<anonymous>)\n    at imagesFrom (<WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs:116:19)\n    at run (<WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs:96:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async Object.capture (<WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs:147:20)\n    at async <WORKSPACE>/.node_repl_cell_6.mjs:50:495"
+  },
+  "native_api_calls": 0,
+  "cause": "Cross-realm Uint8Array rejected by instanceof; fixed prospectively for a new offline run, without changing failed A or native criteria."
+}
