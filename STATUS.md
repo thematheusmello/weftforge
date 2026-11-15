@@ -20,7 +20,8 @@ Exactly-zero-target soft stitches use vector XPBD multipliers; positive targets
 and hard stitches keep the prior radial arithmetic. The previously reviewed
 canonical diagnostic arithmetic is also present. Formatting, 177 Rust tests,
 strict workspace/all-target Clippy, xtask verification with 54 Python checks and
-unsigned packaging passed on this exact source. The separate
+unsigned packaging passed on this exact source (wrapper 90568/session 86752,
+all five jobs terminal 0). The separate
 [operator packet](parity/reports/artifacts/closed-stitch-operator-20261115/README.md)
 retains 51 solver tests, the N32 scalar failure/vector check and 810 bit-identical
 legacy radial projections. These checks establish neither full contract nor
@@ -55,8 +56,14 @@ Independent source/public-packet review found no remaining content blocker after
 the generated README's absolute-path wording was corrected to the executed
 basename. Final packet manifest is `3dbc5befeb6bdfd96dfa4ae9733c58494f06c7818e025398b543601fbb436775`.
 The earlier 76.912-second preparation replay remains bound to its original
-`aa5371a7` manifest; no clock or replay credit is transferred. The final tracked
-clean-checkout static replay and registry/map closure are pending. Publication
+`aa5371a7` manifest; no clock or replay credit is transferred. Clean tracked `7249579157a1e3a2647ea101069df28934e61a32` passes the default
+static replay in 80.42086208297405 s, reproducing all 362 states and eight adapter
+checks while retaining the failed pair. Registry and map checks are terminal 0
+(wrapper 96729/session 32718; replay PID 96875). All 3,049 referenced artifacts
+were tracked and hash-correct, with all 47 bound source/document files unchanged.
+The [closure](parity/reports/artifacts/closed-stitch-publication-20261115/ROOT-CLOSURE.json)
+records exact commands, exits, timeouts and scopes. Its receipt append receives
+final metadata-only clean checks before push, without another saved-state replay. Publication
 adds zero dynamics and distributes no executable, target or private inverse map.
 Only 26/107 frozen preparation attachments are supplied/referenced; 81 private
 auxiliary attachments are explicitly omitted. Previous SVG/diagnostic reports
@@ -74,8 +81,8 @@ cases are closed and will not be regraded. Native fix
 `d400bd78a8475ba9dc972be4dc6793c3ab3dbcec` are prepared, reviewed and covered by
 focused checks; root is integrating them in a separate fresh worktree. No new
 DXF native acceptance is claimed here. The previous native2e and source5950
-states remain unchanged. The next actions are to close this solver publication's
-clean checks and finish that separate DXF source increment. Coarse reference
+states remain unchanged. The next actions are to publish this reviewed solver branch through a root-owned
+PR and finish that separate DXF source increment. Coarse reference
 parity remains 0/56 and no roadmap gate is accepted.
 
 ## Published SVG studio checkpoint
