@@ -1,7 +1,7 @@
 # WeftForge status — active development, 2026-11-15
 
 The PhotoCraft-inspired native shell is merged in [PR43](https://github.com/thematheusmello/weftforge/pull/43),
-main `351382875b389188d19170a1854a25096207787a`. The next source checkpoint
+prior main `351382875b389188d19170a1854a25096207787a`. The measurement source checkpoint
 `be8a031b5f8342d0857f3bed34f52dd165fa86da` adds authored/rest boundary lengths,
 raw seam/group A/B and signed B−A in the native inspector and strict CLI/MCP queries.
 All creation remains native Rust; no dependency, solver or document-format change.
@@ -11,6 +11,8 @@ verified**, **39 partial / 17 planned**, discovery incomplete and **no roadmap g
 accepted**. The 949 observed entries / 205 packets are an engineering inventory.
 
 ## Current measurement delivery
+
+Delivery: [PR44](https://github.com/thematheusmello/weftforge/pull/44).
 
 The [scoped report](parity/reports/WF-20261115-AUTHORED-LENGTH-001.json) is a
 bounded implementation-only pass. All five clean same-worktree gates pass:
@@ -113,8 +115,9 @@ surface contact, full persistence and full garment acceptance remain open.
 ## Exact next work
 
 Publish only tracked, source-bound evidence after clean registry/map checks.
-Then implement one-piece 2D translation/rotation from the reviewed proposal in an
-isolated worktree: preserve stable geometry/sewing IDs, one atomic undo, explicit
+One-piece 2D translation/rotation implementation is underway in the isolated
+`feat/pattern-transform` worktree, with separate core/UI agents and independent
+analytic acceptance preparation: preserve stable geometry/sewing IDs, one atomic undo, explicit
 pivot and grain/3D-arrangement policy. Current coordinates directly feed UV/3D
 placement, so compensation must be explicit; reference behavior is still unknown.
 Do not silently change existing MovePoint/ResizePiece/SetPlacement semantics.
