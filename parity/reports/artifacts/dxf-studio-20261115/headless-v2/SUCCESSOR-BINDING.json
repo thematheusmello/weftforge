@@ -1,0 +1,21 @@
+{
+  "state": "PROSPECTIVE_SUCCESSOR_BEFORE_ANY_PRODUCT_CALL",
+  "created_utc": "2026-11-15T05:57:26.254815+00:00",
+  "reason": "Root authorized a fresh acceptance case after changed source fixes; original case/outcome and every original artifact remain unchanged.",
+  "actual_source_commit": "76be95d4d7928bcb703e1f52f4a5404bc955f567",
+  "actual_cli_sha256": "ba4bdaf4cbbcd1362156053145e899947d9e66996e42a71e1f8fd91deabf2b09",
+  "source_pretest_sha256": "5254f82df567f135a542533d9f7d291d9f1813a5ba03bf59ddecd57539880361",
+  "original_frozen_intended_source": "5950c59073ff6a9c744699dd4bae52abb5794f72",
+  "original_frozen_sha256": "d54a16252938f1e68a5a056bc3f9924182d15492d900f3db9a1bc8e3f52a02e7",
+  "oracles_and_fixtures": "UNCHANGED",
+  "original_case_before_sha256": "1c0603820170d31fa7bc4d04d51ab3265942ccd8b826d8ec6e209d0dc2dcfa67",
+  "original_runner_sha256": "80f85f72936bc0681426cd329df0b4b93c54510885153f15923e4141f09595ab",
+  "successor_runner_sha256": "99a2fda0768bbf06aa3aed1998bc30e8fac952fe26fa13b292ad7d864a2caa8e",
+  "only_runner_changes": {
+    "SOURCE worktree": ".local/dxf-studio-integration-20261115 -> .local/dxf-studio-fixed-integration-20261115",
+    "source commit": "5950c59073ff6a9c744699dd4bae52abb5794f72 -> 76be95d4d7928bcb703e1f52f4a5404bc955f567"
+  },
+  "exact_original_full_JSON_inspection_asserts_retained": true,
+  "new_mutable_case_copies_required": true,
+  "original_case_not_regraded": true
+}

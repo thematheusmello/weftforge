@@ -86,13 +86,22 @@ passes only its bounded protocol at 14.6118%. Those original cases are closed.
 Cloth convergence, calibration, full persistence, all native-plan criteria,
 cross-platform acceptance and the complete roadmap remain open.
 
-Next: assemble the reviewed public
-[DXF studio packet](parity/reports/artifacts/dxf-studio-20261115/README.md) with
-these product docs and the published-main metadata. Track every referenced
-artifact, then run registry/map and artifact-hash checks from a clean checkout
-before a root-owned publication PR. Ignored local evidence is not delivery;
-publication and full-contract acceptance are not claimed at this checkpoint.
-Keep Actions and automated Pages deployments disabled.
+The closed public [DXF packet](parity/reports/artifacts/dxf-studio-20261115/README.md)
+contains 956 files, manifest
+`fe82650c48297554506d873fec624e3d3743e2290476293f4eef14f10ee5bcd0`.
+[WF-20261115-DXF-STUDIO-001](parity/reports/WF-20261115-DXF-STUDIO-001.json)
+records passed components with `full_native_plan_accepted:false` and all three
+native gaps. UI-001/FILE-005/APP-001 remain partial/not_run; parity is 0/56.
+The two original TEMP2 sidecar force-add paths and 14 additional immutable
+headless recovery/sentinel fixtures have exact privacy/hash review and root
+supplemental authorization. The original two-path HANDOFF scope and this staging
+correction are retained without changing packet bytes or Git ignore rules.
+
+Next: commit every selected artifact, run the single default static replay and
+registry/map/hash/source checks from a clean tracked checkout, then append safe
+closure receipts and repeat metadata checks before a root-owned publication PR.
+No new product, UI, Cargo or physics call is authorized for delivery metadata.
+Keep Actions and automated Pages deployments disabled; preserve the static site.
 
 ## Published solver checkpoint (PR40; source 2e9795)
 

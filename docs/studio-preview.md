@@ -43,6 +43,30 @@ printing. Background autosaves retained temporary edits even though all original
 input primaries remained unchanged. The complete frozen native plan, full
 persistence behavior, printing and reference parity remain unestablished.
 
+### Current DXF review, editing and restoration
+
+![DXF review before import, showing count, millimetre scale and construction scope](../parity/reports/artifacts/dxf-studio-20261115/native-v2/captures/04-original-dxf-review-before-import.jpg)
+
+The review shows the bounded construction import. Its text did not explicitly
+name printing; the full disclosure criterion remains unestablished.
+
+![Accepted DXF patterns remain editable beside the original piece](../parity/reports/artifacts/dxf-studio-20261115/native-v2/captures/11-imported-three-pieces-revision5.jpg)
+
+One accepted import produces revision 5 and three editable pieces. The pending
+width and both added patterns belong to the same transaction.
+
+![Imported cubic after the single P1 X edit](../parity/reports/artifacts/dxf-studio-20261115/native-v2/captures/17-edited-cubic-controls-revision10.jpg)
+
+Saved revision 10 changes P1 X from −0.01 to 0 m while retaining the other controls.
+This establishes construction editing, not simulated garment quality.
+
+![Already-saved revision 10 restored in paused Rest after the temporary-document phase](../parity/reports/artifacts/dxf-studio-20261115/native-v2/captures/29-final-reopened10-paused-cubic-visible.jpg)
+
+This view follows the third launch used to restore saved revision 10 after the
+separate temporary document was explicitly discarded. Phase A quit/fresh-open/
+resave is separately recorded; this restoration is not a retry. The Harbor hero
+above is a different read-only Rest preview.
+
 ## Historical SVG workflow (32f9)
 
 The following captures belong to source

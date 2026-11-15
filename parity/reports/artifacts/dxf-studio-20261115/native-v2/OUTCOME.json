@@ -1,0 +1,154 @@
+{
+  "state": "NATIVE_WORKFLOW_EXECUTED_AWAITING_INDEPENDENT_GRADING_AND_TRACE_REVIEW",
+  "completed_utc": "2026-11-15T06:14:22.844113+00:00",
+  "source_commit": "76be95d4d7928bcb703e1f52f4a5404bc955f567",
+  "native_sha256": "232b19369bf966bfcaf7400aa829e3722b1c4011c7d011fbff0dee58d044cac7",
+  "phase_A": {
+    "all_nine_saved_files": {
+      "preimport.weftforge": "32cb5e1f608b871747072392070228d21472609386ce89f8d16116c753ee55d2",
+      "imported.weftforge": "96deac7310238d69aa03f1f8e0fdf3661ebbdd1f9c8f1f7147cd1bcd44ea458f",
+      "undo_import.weftforge": "8997ddd807bc84998f2f0a807d4ee1d0877dd03754b2d6356bc769a959b33cf1",
+      "undo_prior.weftforge": "b6a3af548f2d0d482f2c4db10d9a91521aae8edd2749e652927cea98e152ca57",
+      "redo_prior.weftforge": "3d36e461fd397f9eabd87c44dfb2860cea8a43fa93bc1975fdf57ef754bd9379",
+      "redo_import.weftforge": "d05ba90ea8198dbe6bffde0d000dd715a8f59d2c89aad0c03e9e2d373bc3b079",
+      "edited.weftforge": "b357133464e711dbd9df0c137d8c6132fb344b3ec8851c0c6fa635755261eb3f",
+      "rejected.weftforge": "b357133464e711dbd9df0c137d8c6132fb344b3ec8851c0c6fa635755261eb3f",
+      "reopened.weftforge": "b357133464e711dbd9df0c137d8c6132fb344b3ec8851c0c6fa635755261eb3f"
+    },
+    "four_saved_exports": {
+      "direct-final.svg": "24bd5476c8f20ee2c0eb48b2b7ca1aaa5e38dd606487d857167ef1eda0e0c9c6",
+      "direct-final.dxf": "4b35ac1d164410afe8c19e6d571b0cb943b49e0af603af96c7e9e809b1fada6f",
+      "FINAL.svg": "24bd5476c8f20ee2c0eb48b2b7ca1aaa5e38dd606487d857167ef1eda0e0c9c6",
+      "FINAL.dxf": "4b35ac1d164410afe8c19e6d571b0cb943b49e0af603af96c7e9e809b1fada6f"
+    },
+    "checkpoint_revisions": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      10,
+      10
+    ],
+    "allocator_preimport": 11,
+    "allocator_after_import": 29,
+    "single_accept_trace": 54,
+    "undo_redo_traces": [
+      63,
+      67,
+      71,
+      75
+    ],
+    "only_cubic_P1X_edit_trace": 85,
+    "malformed_rejection_trace": 94,
+    "actual_quit_trace": 108,
+    "inventory_poll_present": 109,
+    "inventory_poll_absent": 110,
+    "fresh_launch_trace": 111,
+    "fresh_open_edited10_trace": 117,
+    "fresh_resave10_trace": 121,
+    "phase_complete_trace": 127,
+    "initial_pid": 7590,
+    "fresh_pid": 14754
+  },
+  "phase_B": {
+    "temporary_baseline_open_trace": 133,
+    "pending126_trace": 137,
+    "rejection_trace": 143,
+    "rejection_revision": 1,
+    "rejection_pending_width": ".126",
+    "error_ui": "Inline status, no modal dismissal",
+    "later_separate_ordinary_Open_blur_trace": 144,
+    "later_temporary_revision": 2,
+    "Open_guard_trace": 145,
+    "Open_guard": "Save current edits before opening another project.",
+    "own_temp_discard_close_trace": 146,
+    "own_bundle_absent_trace": 148,
+    "restore_only_launch_trace": 149,
+    "restore_saved_reopened10_trace": 155,
+    "final_visible_cubic_trace": 159,
+    "no_original_input_save": true,
+    "original_input_hashes_unchanged": true
+  },
+  "final_view": {
+    "document": "reopened.weftforge",
+    "revision": 10,
+    "pieces": 3,
+    "paused": true,
+    "stage": "Rest arrangement",
+    "selected_piece": "WF_PIECE_17",
+    "selected_curve": 17,
+    "P1": [
+      0.0,
+      0.18
+    ],
+    "P2": [
+      -0.005,
+      0.01
+    ],
+    "raw_capture": "captures/29-final-reopened10-paused-cubic-visible.jpg",
+    "pid": 21561
+  },
+  "raw_trace": {
+    "before_after_pairs": 160,
+    "raw_AX_action_observations": 150,
+    "raw_AX_capture_observations": 30,
+    "raw_JPEG_count": 30,
+    "all_returned": true,
+    "action_or_observation_failed_records": 0,
+    "OS_and_AX_private": true,
+    "unedited_images": true,
+    "first_trace": "000-launch",
+    "last_trace": "159"
+  },
+  "actor_mistakes_and_qualifications": [
+    {
+      "traces": [
+        19,
+        20,
+        21,
+        26
+      ],
+      "event": "First SaveAs filename CmdA/type appended garment prefix; observed before Save; setValue corrected to preimport.weftforge. No wrong filename file was saved."
+    },
+    {
+      "traces": [
+        144,
+        145,
+        146,
+        148,
+        149,
+        155
+      ],
+      "event": "PhaseB post-rejection ordinary Open blur committed temporary draft as prospectively allowed; Open then refused dirty document with inline save instruction, so own temporary edits were discarded through Discard and close, process absence confirmed and same app launched solely to restore final saved view. No temporary primary save or PhaseA replay."
+    },
+    {
+      "event": "Native chooser/save resolution sometimes first returned disabled Open/Save while resolving. Fresh recorded raw captures confirmed enabled destination before clicks; no double input to compensate."
+    },
+    {
+      "event": "AX app containers truncate first100 children; modal/menu controls were confirmed by raw screenshots before coordinate actions. No absence claim from truncated AX."
+    },
+    {
+      "event": "First closure script asserted ID000 instead of manually named000-launch. Script stopped before writing inventory. CLOSURE-CHECK-ATTEMPT-01.json preserves that bookkeeping failure and confirms no hash/artifact mismatch; corrected expected filename set then passed, no UI or product repeat."
+    }
+  ],
+  "CUA_completion_summary": "Completed native DXF checkpoint workflow",
+  "CUA_completion_sent_exactly_once_after_final_observation": true,
+  "CUA_ownership_released": true,
+  "simulation_actions": 0,
+  "reference_app_actions": 0,
+  "old_case_actions": 0,
+  "terminal_jobs": [],
+  "not_claimed": [
+    "Independent evaluator pass",
+    "Independent raw trace acceptance",
+    "Whole reference parity",
+    "General DXF compatibility",
+    "Simulation or physical-case validation",
+    "Cross-platform acceptance",
+    "Publication readiness"
+  ],
+  "publication": "PRIVATE ignored evidence only; no public artifact edits"
+}

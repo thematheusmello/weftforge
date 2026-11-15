@@ -1,0 +1,19 @@
+{
+  "case": "cli-import",
+  "name": "independent-grade",
+  "command": [
+    "REPOSITORY_ROOT/.local/dxf-acceptance-20261114/venv/bin/python",
+    "REPOSITORY_ROOT/.local/dxf-import-independent-evaluator-20261115/evaluate.py",
+    "--imported",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/cli-import/data/output.weftforge",
+    "--exported-svg",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/cli-import/data/exported.svg",
+    "--exported-dxf",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/cli-import/data/exported.dxf"
+  ],
+  "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/cli-import/data",
+  "wrapper_pid": 10054,
+  "started_utc": "2026-11-15T05:58:15.521232+00:00",
+  "status": "running",
+  "expected": "exit_zero"
+}

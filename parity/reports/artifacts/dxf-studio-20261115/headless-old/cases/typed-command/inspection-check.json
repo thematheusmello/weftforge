@@ -1,0 +1,26 @@
+{
+  "status": "MISMATCH",
+  "expected_saved_project_json_exact": false,
+  "differences": [
+    {
+      "path": "/materials/0/color/0",
+      "kind": "value",
+      "actual": 0.2199999988079071,
+      "expected": 0.22
+    },
+    {
+      "path": "/materials/0/color/1",
+      "kind": "value",
+      "actual": 0.550000011920929,
+      "expected": 0.55
+    },
+    {
+      "path": "/materials/0/color/2",
+      "kind": "value",
+      "actual": 0.7599999904632568,
+      "expected": 0.76
+    }
+  ],
+  "response": "mcp-session/04-response.json",
+  "thresholds_changed": false
+}

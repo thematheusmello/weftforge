@@ -1,0 +1,1069 @@
+{
+  "actor": "dedicated_headless_acceptance",
+  "created_utc": "2026-11-15T05:28:33.444909+00:00",
+  "original_plan_sha256": "764d16777c193817983e340e2efb8784a9f5bb5520d23fbc11be791807de89b9",
+  "source_commit": "5950c59073ff6a9c744699dd4bae52abb5794f72",
+  "binary_sha256": "eca8e3d6e404b1b823a343f378a38d48523269865b55d1b7eaa02f78118a320d",
+  "cases": [
+    {
+      "case": "typed-command",
+      "kind": "success",
+      "adapter": "execute",
+      "data": "cases/typed-command/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "execute",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/commands.json"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721349944,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "commands.json": {
+          "mode": 420,
+          "inode": 721349946,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 5334,
+          "sha256": "3c7630761e820709a3d6d057a3877820745db11666ef086f96bc1bbed94a79e3"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721349945,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        }
+      },
+      "exports": [
+        [
+          "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+          "export-svg",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/output.weftforge",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/exported.svg"
+        ],
+        [
+          "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+          "export-dxf",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/output.weftforge",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/exported.dxf"
+        ]
+      ],
+      "grade": [
+        "REPOSITORY_ROOT/.local/dxf-acceptance-20261114/venv/bin/python",
+        "REPOSITORY_ROOT/.local/dxf-import-independent-evaluator-20261115/evaluate.py",
+        "--imported",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/output.weftforge",
+        "--exported-svg",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/exported.svg",
+        "--exported-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/exported.dxf"
+      ]
+    },
+    {
+      "case": "cli-import",
+      "kind": "success",
+      "adapter": "import-dxf",
+      "data": "cases/cli-import/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/patterns.dxf"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721349950,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721349951,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        }
+      },
+      "exports": [
+        [
+          "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+          "export-svg",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/output.weftforge",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/exported.svg"
+        ],
+        [
+          "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+          "export-dxf",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/output.weftforge",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/exported.dxf"
+        ]
+      ],
+      "grade": [
+        "REPOSITORY_ROOT/.local/dxf-acceptance-20261114/venv/bin/python",
+        "REPOSITORY_ROOT/.local/dxf-import-independent-evaluator-20261115/evaluate.py",
+        "--imported",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/output.weftforge",
+        "--exported-svg",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/exported.svg",
+        "--exported-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/exported.dxf"
+      ]
+    },
+    {
+      "case": "mcp-import",
+      "kind": "success",
+      "adapter": "mcp",
+      "data": "cases/mcp-import/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/mcp-import/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/mcp-import/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/mcp-import/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/mcp-import/data/patterns.dxf"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721349955,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721349956,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        }
+      },
+      "exports": [
+        [
+          "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+          "export-svg",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/mcp-import/data/output.weftforge",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/mcp-import/data/exported.svg"
+        ],
+        [
+          "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+          "export-dxf",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/mcp-import/data/output.weftforge",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/mcp-import/data/exported.dxf"
+        ]
+      ],
+      "grade": [
+        "REPOSITORY_ROOT/.local/dxf-acceptance-20261114/venv/bin/python",
+        "REPOSITORY_ROOT/.local/dxf-import-independent-evaluator-20261115/evaluate.py",
+        "--imported",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/mcp-import/data/output.weftforge",
+        "--exported-svg",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/mcp-import/data/exported.svg",
+        "--exported-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/mcp-import/data/exported.dxf"
+      ]
+    },
+    {
+      "case": "in-place",
+      "kind": "success",
+      "adapter": "import-dxf",
+      "data": "cases/in-place/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/baseline.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/patterns.dxf"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721349960,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "baseline.weftforge.recovery": {
+          "mode": 420,
+          "inode": 721349962,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 1236,
+          "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721349961,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        }
+      },
+      "exports": [
+        [
+          "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+          "export-svg",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/baseline.weftforge",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/exported.svg"
+        ],
+        [
+          "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+          "export-dxf",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/baseline.weftforge",
+          "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/exported.dxf"
+        ]
+      ],
+      "grade": [
+        "REPOSITORY_ROOT/.local/dxf-acceptance-20261114/venv/bin/python",
+        "REPOSITORY_ROOT/.local/dxf-import-independent-evaluator-20261115/evaluate.py",
+        "--imported",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/baseline.weftforge",
+        "--exported-svg",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/exported.svg",
+        "--exported-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/exported.dxf"
+      ]
+    },
+    {
+      "case": "bad-units",
+      "kind": "rejection",
+      "adapter": "import-dxf",
+      "data": "cases/bad-units/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/bad-units/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/bad-units/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/bad-units/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/bad-units/data/patterns.dxf"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721349966,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge": {
+          "mode": 420,
+          "inode": 721349968,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge.recovery": {
+          "mode": 420,
+          "inode": 721349969,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 1236,
+          "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721349967,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "e17630d3a2cb2ede3ab8076e4085f74acdcc16802f334d216c8d6d1cd98635d5"
+        }
+      }
+    },
+    {
+      "case": "late-gap",
+      "kind": "rejection",
+      "adapter": "import-dxf",
+      "data": "cases/late-gap/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/late-gap/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/late-gap/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/late-gap/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/late-gap/data/patterns.dxf"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721349973,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge": {
+          "mode": 420,
+          "inode": 721349975,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge.recovery": {
+          "mode": 420,
+          "inode": 721349976,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 1236,
+          "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721349974,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "01f27504d9ae93a3c52eaaa57e5bd5469f590f5bee4c9bad1b9d045e8f0e9ca3"
+        }
+      }
+    },
+    {
+      "case": "unsupported-flags",
+      "kind": "rejection",
+      "adapter": "import-dxf",
+      "data": "cases/unsupported-flags/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/unsupported-flags/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/unsupported-flags/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/unsupported-flags/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/unsupported-flags/data/patterns.dxf"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721349980,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge": {
+          "mode": 420,
+          "inode": 721349982,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge.recovery": {
+          "mode": 420,
+          "inode": 721349983,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 1236,
+          "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721349981,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4290,
+          "sha256": "4de5bf92355850dc349d84e91553578e8804c29ba464c29e3b70249e0331d88d"
+        }
+      }
+    },
+    {
+      "case": "atomic-batch",
+      "kind": "rejection",
+      "adapter": "execute",
+      "data": "cases/atomic-batch/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/atomic-batch/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "execute",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/atomic-batch/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/atomic-batch/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/atomic-batch/data/commands.json"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721349987,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "commands.json": {
+          "mode": 420,
+          "inode": 721349991,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 10665,
+          "sha256": "6cdcdf283eabffab09edd82455bbe99ca3fe564831e287790f7cd7d61f046ca6"
+        },
+        "output.weftforge": {
+          "mode": 420,
+          "inode": 721349989,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge.recovery": {
+          "mode": 420,
+          "inode": 721349990,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 1236,
+          "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721349988,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        }
+      }
+    },
+    {
+      "case": "strict-extra-data",
+      "kind": "rejection",
+      "adapter": "execute",
+      "data": "cases/strict-extra-data/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-extra-data/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "execute",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-extra-data/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-extra-data/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-extra-data/data/commands.json"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721349995,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "commands.json": {
+          "mode": 420,
+          "inode": 721349999,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 5360,
+          "sha256": "3a75f1d29f0bb57c13e1613e41f485b5f30f7e7cc4b8bb621e36a07be38e07e0"
+        },
+        "output.weftforge": {
+          "mode": 420,
+          "inode": 721349997,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge.recovery": {
+          "mode": 420,
+          "inode": 721349998,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 1236,
+          "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721349996,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        }
+      }
+    },
+    {
+      "case": "strict-duplicate-dxf",
+      "kind": "rejection",
+      "adapter": "execute",
+      "data": "cases/strict-duplicate-dxf/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-duplicate-dxf/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "execute",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-duplicate-dxf/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-duplicate-dxf/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-duplicate-dxf/data/commands.json"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721350003,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "commands.json": {
+          "mode": 420,
+          "inode": 721350007,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 10562,
+          "sha256": "3b71c0f8c9e25330270767c43bd7cdf09b4ae3b5a28bbd1899750d031c415b7e"
+        },
+        "output.weftforge": {
+          "mode": 420,
+          "inode": 721350005,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge.recovery": {
+          "mode": 420,
+          "inode": 721350006,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 1236,
+          "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721350004,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        }
+      }
+    },
+    {
+      "case": "strict-wrong-type",
+      "kind": "rejection",
+      "adapter": "execute",
+      "data": "cases/strict-wrong-type/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-wrong-type/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "execute",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-wrong-type/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-wrong-type/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-wrong-type/data/commands.json"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721350011,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "commands.json": {
+          "mode": 420,
+          "inode": 721350015,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 83,
+          "sha256": "23c2bf3504dbe57d6ac7022a96849fb10158e028cac85ec4a14c1ba0e023d2fb"
+        },
+        "output.weftforge": {
+          "mode": 420,
+          "inode": 721350013,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge.recovery": {
+          "mode": 420,
+          "inode": 721350014,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 1236,
+          "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721350012,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        }
+      }
+    },
+    {
+      "case": "strict-extra-mcp-file-argument",
+      "kind": "rejection",
+      "adapter": "mcp",
+      "data": "cases/strict-extra-mcp-file-argument/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-extra-mcp-file-argument/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-extra-mcp-file-argument/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-extra-mcp-file-argument/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-extra-mcp-file-argument/data/patterns.dxf"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721350019,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge": {
+          "mode": 420,
+          "inode": 721350021,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge.recovery": {
+          "mode": 420,
+          "inode": 721350022,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 1236,
+          "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721350020,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        }
+      }
+    },
+    {
+      "case": "alias-same-path",
+      "kind": "rejection",
+      "adapter": "import-dxf",
+      "data": "cases/alias-same-path/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-same-path/data/patterns.dxf",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-same-path/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-same-path/data/patterns.dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-same-path/data/patterns.dxf"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721350026,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge": {
+          "mode": 420,
+          "inode": 721350028,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge.recovery": {
+          "mode": 420,
+          "inode": 721350029,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 1236,
+          "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721350027,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        },
+        "patterns.dxf.recovery": {
+          "mode": 420,
+          "inode": 721350030,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 1236,
+          "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc"
+        }
+      }
+    },
+    {
+      "case": "alias-symlink",
+      "kind": "rejection",
+      "adapter": "import-dxf",
+      "data": "cases/alias-symlink/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-symlink/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-symlink/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-symlink/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-symlink/data/patterns.dxf"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721350034,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge": {
+          "mode": 493,
+          "inode": 721350038,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "symlink",
+          "target": "patterns.dxf"
+        },
+        "output.weftforge.recovery": {
+          "mode": 420,
+          "inode": 721350037,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 1236,
+          "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721350035,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        }
+      }
+    },
+    {
+      "case": "alias-hardlink",
+      "kind": "rejection",
+      "adapter": "import-dxf",
+      "data": "cases/alias-hardlink/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-hardlink/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-hardlink/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-hardlink/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-hardlink/data/patterns.dxf"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721350042,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge": {
+          "mode": 420,
+          "inode": 721350043,
+          "device": 16777231,
+          "nlink": 2,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        },
+        "output.weftforge.recovery": {
+          "mode": 420,
+          "inode": 721350045,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 1236,
+          "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721350043,
+          "device": 16777231,
+          "nlink": 2,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        }
+      }
+    },
+    {
+      "case": "alias-recovery-symlink",
+      "kind": "rejection",
+      "adapter": "import-dxf",
+      "data": "cases/alias-recovery-symlink/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-recovery-symlink/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-recovery-symlink/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-recovery-symlink/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-recovery-symlink/data/patterns.dxf"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721350051,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge": {
+          "mode": 420,
+          "inode": 721350053,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge.recovery": {
+          "mode": 493,
+          "inode": 721350055,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "symlink",
+          "target": "patterns.dxf"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721350052,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        }
+      }
+    },
+    {
+      "case": "save-nonregular-output",
+      "kind": "rejection",
+      "adapter": "import-dxf",
+      "data": "cases/save-nonregular-output/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-nonregular-output/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-nonregular-output/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-nonregular-output/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-nonregular-output/data/patterns.dxf"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721350059,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge": {
+          "mode": 493,
+          "inode": 721350063,
+          "device": 16777231,
+          "nlink": 3,
+          "kind": "directory"
+        },
+        "output.weftforge/sentinel.bin": {
+          "mode": 420,
+          "inode": 721350064,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 36,
+          "sha256": "384a7b7cbc73f921d3f4169b66e8d796ab2fb4e42c20c975cfc373fc4bf61ec9"
+        },
+        "output.weftforge.recovery": {
+          "mode": 420,
+          "inode": 721350062,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 1236,
+          "sha256": "588e0761c5e9d51e22c0b2770b9fb3d0687547fde4171f0afd52e5fec4e248bc"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721350060,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        }
+      }
+    },
+    {
+      "case": "save-blocked-recovery",
+      "kind": "rejection",
+      "adapter": "import-dxf",
+      "data": "cases/save-blocked-recovery/data",
+      "output": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-blocked-recovery/data/output.weftforge",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-blocked-recovery/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-blocked-recovery/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-blocked-recovery/data/patterns.dxf"
+      ],
+      "before": {
+        "baseline.weftforge": {
+          "mode": 420,
+          "inode": 721350068,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge": {
+          "mode": 420,
+          "inode": 721350070,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 3177,
+          "sha256": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f"
+        },
+        "output.weftforge.recovery": {
+          "mode": 493,
+          "inode": 721350072,
+          "device": 16777231,
+          "nlink": 3,
+          "kind": "directory"
+        },
+        "output.weftforge.recovery/sentinel.bin": {
+          "mode": 420,
+          "inode": 721350073,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 35,
+          "sha256": "b2c8683853ee70240b8dbfb164fd4ef60f20fab50cf30f61b7cde5a3cfffa971"
+        },
+        "patterns.dxf": {
+          "mode": 420,
+          "inode": 721350069,
+          "device": 16777231,
+          "nlink": 1,
+          "kind": "file",
+          "size": 4289,
+          "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+        }
+      }
+    }
+  ],
+  "prospective_checks": [
+    "Independent frozen evaluator unchanged for each successful output and direct SVG/DXF exports",
+    "MCP server/discover then tools/list before tool calls, current metadata on every request; required input/output/dxf, additionalProperties false, strict typed import variant",
+    "MCP success resultType complete, structuredContent equals JSON in text; separate project_inspect equals actual saved authored project",
+    "Negative command rejects; all existing files/links and source retained exactly; no residual staged files",
+    "In-place success revision2 allocator29; recovery equals exact pre-save primary, not byte-distinct existing recovery",
+    "Only frozen scope; no native/history/reference/full-DXF/whole-persistence/physics claim"
+  ],
+  "runner_self_checks": "Input JSON whitespace variant parses identically and differs in bytes; actual source49/binary/frozen hashes checked before product execution; snapshots retain raw bytes and link identities.",
+  "mcp_command": [
+    "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+    "mcp"
+  ],
+  "mcp_requests": {
+    "requests/01-discover.jsonl": "70e421e40a8b51d218cd465be0a59934ff21d5ade2d7d17454004e66e18d2317",
+    "requests/02-tools-list.jsonl": "bd1467d3c85966567a8d3b4ceec683dfc3309d4375f8576e9b290bee9802f5d8",
+    "requests/03-import.jsonl": "a95d80635321b0f9931911d0049291c0cfec612a5c544dab38d8ce2f438fdbd3",
+    "requests/04-inspect-typed-command.jsonl": "6ad3b41ac1a9265ef7db568cafecd5bdfb80d660d3ff9cea99379080076d2917",
+    "requests/05-inspect-cli-import.jsonl": "c2e44f889b88c509bdee882ec2c5d72fcede792320f07893e655fd4300376833",
+    "requests/06-inspect-mcp-import.jsonl": "7831bfbe50d141a65b3c761e19f9d20dd6ee9c9d28f47534bb3f07ce6c1b1e38",
+    "requests/07-inspect-in-place.jsonl": "f61b022a543f193916d43ae40250a7e686c134438d11429e977a5f5389ab57c4",
+    "requests/08-project_export_svg.jsonl": "598d74b0cce4b3a96b46d8507991bea009b4a57a87c7904dd8cd3f795d1be3e6",
+    "requests/09-project_export_dxf.jsonl": "375632a7368b0835a014f80d13ad7d14ae084aadc2714a1632233c3e3745c052",
+    "requests/10-extra-file-argument.jsonl": "8e1fa021d70d976303b9d8bdf37a5e13fe8a7a3aaf23c8c56c1bc616f98108f2"
+  }
+}

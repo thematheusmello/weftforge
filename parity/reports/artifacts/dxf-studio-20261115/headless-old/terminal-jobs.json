@@ -1,0 +1,636 @@
+{
+  "state": "ALL_TERMINAL",
+  "product_and_grader_child_process_count": 29,
+  "jobs": [
+    {
+      "case": "mcp-discovery",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "mcp"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115",
+      "wrapper_pid": 70462,
+      "started_utc": "2026-11-15T05:28:50.184710+00:00",
+      "status": "completed",
+      "child_pid": 70487,
+      "exit_code": 0,
+      "wall_seconds": 0.19837241701316088,
+      "completed_utc": "2026-11-15T05:28:50.383074+00:00",
+      "responses": 2,
+      "unexpected_error": null
+    },
+    {
+      "case": "typed-command",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "execute",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/commands.json"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:03.826285+00:00",
+      "status": "completed",
+      "expected": "exit_zero",
+      "child_pid": 70709,
+      "exit_code": 0,
+      "wall_seconds": 0.024385040975175798,
+      "completed_utc": "2026-11-15T05:29:03.851166+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "typed-command",
+      "name": "export-0",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "export-svg",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/exported.svg"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:03.853272+00:00",
+      "status": "completed",
+      "expected": "exit_zero",
+      "child_pid": 70710,
+      "exit_code": 0,
+      "wall_seconds": 0.023662583902478218,
+      "completed_utc": "2026-11-15T05:29:03.877054+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "typed-command",
+      "name": "export-1",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "export-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/exported.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:03.877764+00:00",
+      "status": "completed",
+      "expected": "exit_zero",
+      "child_pid": 70711,
+      "exit_code": 0,
+      "wall_seconds": 0.024808667018078268,
+      "completed_utc": "2026-11-15T05:29:03.902767+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "typed-command",
+      "name": "independent-grade",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-acceptance-20261114/venv/bin/python",
+        "REPOSITORY_ROOT/.local/dxf-import-independent-evaluator-20261115/evaluate.py",
+        "--imported",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/output.weftforge",
+        "--exported-svg",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/exported.svg",
+        "--exported-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data/exported.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/typed-command/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:03.903289+00:00",
+      "status": "completed",
+      "expected": "exit_zero",
+      "child_pid": 70712,
+      "exit_code": 0,
+      "wall_seconds": 0.2627046250272542,
+      "completed_utc": "2026-11-15T05:29:04.166131+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "cli-import",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/patterns.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.168583+00:00",
+      "status": "completed",
+      "expected": "exit_zero",
+      "child_pid": 70713,
+      "exit_code": 0,
+      "wall_seconds": 0.025157166994176805,
+      "completed_utc": "2026-11-15T05:29:04.193900+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "cli-import",
+      "name": "export-0",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "export-svg",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/exported.svg"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.195781+00:00",
+      "status": "completed",
+      "expected": "exit_zero",
+      "child_pid": 70714,
+      "exit_code": 0,
+      "wall_seconds": 0.024074916960671544,
+      "completed_utc": "2026-11-15T05:29:04.219971+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "cli-import",
+      "name": "export-1",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "export-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/exported.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.220644+00:00",
+      "status": "completed",
+      "expected": "exit_zero",
+      "child_pid": 70715,
+      "exit_code": 0,
+      "wall_seconds": 0.022237792029045522,
+      "completed_utc": "2026-11-15T05:29:04.243009+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "cli-import",
+      "name": "independent-grade",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-acceptance-20261114/venv/bin/python",
+        "REPOSITORY_ROOT/.local/dxf-import-independent-evaluator-20261115/evaluate.py",
+        "--imported",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/output.weftforge",
+        "--exported-svg",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/exported.svg",
+        "--exported-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data/exported.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/cli-import/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.243540+00:00",
+      "status": "completed",
+      "expected": "exit_zero",
+      "child_pid": 70716,
+      "exit_code": 0,
+      "wall_seconds": 0.25077462499029934,
+      "completed_utc": "2026-11-15T05:29:04.494441+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "in-place",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/patterns.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.497916+00:00",
+      "status": "completed",
+      "expected": "exit_zero",
+      "child_pid": 70719,
+      "exit_code": 0,
+      "wall_seconds": 0.045101750059984624,
+      "completed_utc": "2026-11-15T05:29:04.543178+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "in-place",
+      "name": "export-0",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "export-svg",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/exported.svg"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.544782+00:00",
+      "status": "completed",
+      "expected": "exit_zero",
+      "child_pid": 70720,
+      "exit_code": 0,
+      "wall_seconds": 0.02407749998383224,
+      "completed_utc": "2026-11-15T05:29:04.568980+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "in-place",
+      "name": "export-1",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "export-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/exported.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.569664+00:00",
+      "status": "completed",
+      "expected": "exit_zero",
+      "child_pid": 70721,
+      "exit_code": 0,
+      "wall_seconds": 0.02133508399128914,
+      "completed_utc": "2026-11-15T05:29:04.591157+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "in-place",
+      "name": "independent-grade",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-acceptance-20261114/venv/bin/python",
+        "REPOSITORY_ROOT/.local/dxf-import-independent-evaluator-20261115/evaluate.py",
+        "--imported",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/baseline.weftforge",
+        "--exported-svg",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/exported.svg",
+        "--exported-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data/exported.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/in-place/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.591697+00:00",
+      "status": "completed",
+      "expected": "exit_zero",
+      "child_pid": 70722,
+      "exit_code": 0,
+      "wall_seconds": 0.2582327499985695,
+      "completed_utc": "2026-11-15T05:29:04.850056+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "bad-units",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/bad-units/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/bad-units/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/bad-units/data/patterns.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/bad-units/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.853231+00:00",
+      "status": "completed",
+      "expected": "exit_nonzero",
+      "child_pid": 70723,
+      "exit_code": 1,
+      "wall_seconds": 0.007128291996195912,
+      "completed_utc": "2026-11-15T05:29:04.860505+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "late-gap",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/late-gap/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/late-gap/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/late-gap/data/patterns.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/late-gap/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.864422+00:00",
+      "status": "completed",
+      "expected": "exit_nonzero",
+      "child_pid": 70724,
+      "exit_code": 1,
+      "wall_seconds": 0.006802957970649004,
+      "completed_utc": "2026-11-15T05:29:04.871331+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "unsupported-flags",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/unsupported-flags/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/unsupported-flags/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/unsupported-flags/data/patterns.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/unsupported-flags/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.875277+00:00",
+      "status": "completed",
+      "expected": "exit_nonzero",
+      "child_pid": 70725,
+      "exit_code": 1,
+      "wall_seconds": 0.006779166986234486,
+      "completed_utc": "2026-11-15T05:29:04.882196+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "atomic-batch",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "execute",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/atomic-batch/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/atomic-batch/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/atomic-batch/data/commands.json"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/atomic-batch/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.885594+00:00",
+      "status": "completed",
+      "expected": "exit_nonzero",
+      "child_pid": 70726,
+      "exit_code": 1,
+      "wall_seconds": 0.007014999981038272,
+      "completed_utc": "2026-11-15T05:29:04.892705+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "strict-extra-data",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "execute",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-extra-data/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-extra-data/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-extra-data/data/commands.json"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-extra-data/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.898045+00:00",
+      "status": "completed",
+      "expected": "exit_nonzero",
+      "child_pid": 70727,
+      "exit_code": 1,
+      "wall_seconds": 0.006881417008116841,
+      "completed_utc": "2026-11-15T05:29:04.905046+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "strict-duplicate-dxf",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "execute",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-duplicate-dxf/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-duplicate-dxf/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-duplicate-dxf/data/commands.json"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-duplicate-dxf/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.909550+00:00",
+      "status": "completed",
+      "expected": "exit_nonzero",
+      "child_pid": 70728,
+      "exit_code": 1,
+      "wall_seconds": 0.0066647500498220325,
+      "completed_utc": "2026-11-15T05:29:04.916424+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "strict-wrong-type",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "execute",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-wrong-type/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-wrong-type/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-wrong-type/data/commands.json"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/strict-wrong-type/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.921050+00:00",
+      "status": "completed",
+      "expected": "exit_nonzero",
+      "child_pid": 70729,
+      "exit_code": 1,
+      "wall_seconds": 0.00597433396615088,
+      "completed_utc": "2026-11-15T05:29:04.927142+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "alias-same-path",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-same-path/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-same-path/data/patterns.dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-same-path/data/patterns.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-same-path/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.932495+00:00",
+      "status": "completed",
+      "expected": "exit_nonzero",
+      "child_pid": 70730,
+      "exit_code": 1,
+      "wall_seconds": 0.006693082978017628,
+      "completed_utc": "2026-11-15T05:29:04.939357+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "alias-symlink",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-symlink/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-symlink/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-symlink/data/patterns.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-symlink/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.942761+00:00",
+      "status": "completed",
+      "expected": "exit_nonzero",
+      "child_pid": 70731,
+      "exit_code": 1,
+      "wall_seconds": 0.006733792019076645,
+      "completed_utc": "2026-11-15T05:29:04.949597+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "alias-hardlink",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-hardlink/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-hardlink/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-hardlink/data/patterns.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-hardlink/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.953315+00:00",
+      "status": "completed",
+      "expected": "exit_nonzero",
+      "child_pid": 70732,
+      "exit_code": 1,
+      "wall_seconds": 0.011840875027701259,
+      "completed_utc": "2026-11-15T05:29:04.965277+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "alias-recovery-symlink",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-recovery-symlink/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-recovery-symlink/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-recovery-symlink/data/patterns.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/alias-recovery-symlink/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.968740+00:00",
+      "status": "completed",
+      "expected": "exit_nonzero",
+      "child_pid": 70733,
+      "exit_code": 1,
+      "wall_seconds": 0.007210208103060722,
+      "completed_utc": "2026-11-15T05:29:04.976065+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "save-nonregular-output",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-nonregular-output/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-nonregular-output/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-nonregular-output/data/patterns.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-nonregular-output/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.979589+00:00",
+      "status": "completed",
+      "expected": "exit_nonzero",
+      "child_pid": 70734,
+      "exit_code": 1,
+      "wall_seconds": 0.006926457979716361,
+      "completed_utc": "2026-11-15T05:29:04.986680+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "save-blocked-recovery",
+      "name": "import",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "import-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-blocked-recovery/data/baseline.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-blocked-recovery/data/output.weftforge",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-blocked-recovery/data/patterns.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/save-blocked-recovery/data",
+      "wrapper_pid": 70663,
+      "started_utc": "2026-11-15T05:29:04.991454+00:00",
+      "status": "completed",
+      "expected": "exit_nonzero",
+      "child_pid": 70735,
+      "exit_code": 1,
+      "wall_seconds": 0.02330541703850031,
+      "completed_utc": "2026-11-15T05:29:05.014889+00:00",
+      "expected_exit_matched": true
+    },
+    {
+      "case": "mcp-session",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "mcp"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115",
+      "wrapper_pid": 70761,
+      "started_utc": "2026-11-15T05:29:12.181632+00:00",
+      "status": "completed",
+      "child_pid": 70785,
+      "exit_code": 0,
+      "wall_seconds": 0.028220041072927415,
+      "completed_utc": "2026-11-15T05:29:12.209845+00:00",
+      "responses": 4,
+      "unexpected_error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "case": "mcp-remaining-execution",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-studio-integration-20261115/target/release/weftforge-cli",
+        "mcp"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115",
+      "wrapper_pid": 73313,
+      "started_utc": "2026-11-15T05:31:31.685037+00:00",
+      "status": "completed",
+      "child_pid": 73359,
+      "exit_code": 0,
+      "completed_utc": "2026-11-15T05:31:31.731116+00:00",
+      "wall_seconds": 0.04595520789735019,
+      "responses": 8,
+      "unexpected_error": null
+    },
+    {
+      "case": "mcp-import",
+      "name": "independent-grade",
+      "command": [
+        "REPOSITORY_ROOT/.local/dxf-acceptance-20261114/venv/bin/python",
+        "REPOSITORY_ROOT/.local/dxf-import-independent-evaluator-20261115/evaluate.py",
+        "--imported",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/mcp-import/data/output.weftforge",
+        "--exported-svg",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/mcp-import/data/exported.svg",
+        "--exported-dxf",
+        "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/mcp-import/data/exported.dxf"
+      ],
+      "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-20261115/cases/mcp-import/data",
+      "wrapper_pid": 73313,
+      "started_utc": "2026-11-15T05:31:31.731371+00:00",
+      "status": "completed",
+      "expected": "exit_zero",
+      "child_pid": 73360,
+      "exit_code": 0,
+      "wall_seconds": 0.4059042090084404,
+      "completed_utc": "2026-11-15T05:31:32.137379+00:00",
+      "expected_exit_matched": true
+    }
+  ],
+  "wrapper_exits": [
+    {
+      "case": "mcp-session",
+      "wrapper_pid": 70761,
+      "exit_code": 1,
+      "reason": "Exact MCP inspection JSON assertion mismatch; product server child70785 exited0; failed response retained."
+    },
+    {
+      "case": "continuation-preflight",
+      "exit_code": 1,
+      "product_child_spawned": false,
+      "evidence": "continuation-preflight-error.json"
+    },
+    {
+      "case": "mcp-remaining-execution",
+      "wrapper_pid": 73313,
+      "exit_code": 0
+    }
+  ],
+  "tool_exec_session": {
+    "session_id": 77420,
+    "exit_code": 0,
+    "state": "completed"
+  }
+}

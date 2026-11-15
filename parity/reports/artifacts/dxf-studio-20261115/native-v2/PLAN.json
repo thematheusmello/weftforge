@@ -1,0 +1,43 @@
+{
+  "case": "ONE successor native DXF acceptance v2 on changed source; old case remains failed and untouched",
+  "frozen_utc": "2026-11-15T05:56:26.877847+00:00",
+  "evaluator": "../dxf-import-independent-evaluator-20261115/PLAN.json",
+  "binding": "ROOT-BINDING.json",
+  "no_product_execution_yet": true,
+  "CUA_only_UI": true,
+  "source_read_policy": "Hashes only; implementation and product tests not inspected",
+  "simulation": "Never Play/Step/Assemble/Drape/Reset; no physics",
+  "phase_A": [
+    "Launch exact new app Empty0; open immutable baseline1 allocator11",
+    "Select Existing baseline; SelectAll/type .11/Return ->2; SelectAll/type .12/Return ->3; Undo ->4 width .11 with both history directions; save preimport",
+    "Enter pending width .125 without commit. Toolbar chooser Cancel. Reopen original DXF review, capture complete disclosures/background authoring disabled; review Cancel. Command search reopen original review then Escape; retain rev4/draft/both histories/dirty state",
+    "Reopen same original DXF and accept exactly once ->5 allocator29 with old width .125 plus two imported pieces; save imported",
+    "Undo ->6 width .11 save undo_import; Undo ->7 width .1 save undo_prior; Redo ->8 width .11 save redo_prior; Redo ->9 three pieces width .125 save redo_import",
+    "Select WF_PIECE_17 second boundary cubic; only P1 X -.01 ->0/Return ->10; save edited",
+    "Import malformed late-gap; reject at revision10 with no mutation; save rejected",
+    "Export direct-final.svg and direct-final.dxf",
+    "Single CmdQ; bounded inventory polling until exact own bundle absent. Fresh launch same binary Empty0; open edited10; save reopened; export FINAL.svg FINAL.dxf"
+  ],
+  "phase_B": {
+    "starts": "ONLY after all nine checkpoints, exports, actual quit/fresh reopen/resave10 complete",
+    "temporary_document": "Open readonly inputs/baseline.weftforge again, revision1; select Existing baseline. SelectAll/type width .126 without Return, no ordinary blur",
+    "malformed_attempt": "Toolbar Import DXF chooser select immutable late-gap.dxf; record errors and dismissal. Failed import must preserve revision1, draft .126, authoring/history; no save of original input",
+    "later_blur": "Any subsequent ordinary blur commit is explicitly separate from failed import and recorded as own event; do not attribute it to rejected import",
+    "finish": "Open already-saved reopened.weftforge10; discard ONLY own temporary draft if prompted. Frame all/select WF_PIECE_17 second curve; leave paused at revision10. Do not save temporary input."
+  },
+  "checkpoints": {
+    "preimport.weftforge": 4,
+    "imported.weftforge": 5,
+    "undo_import.weftforge": 6,
+    "undo_prior.weftforge": 7,
+    "redo_prior.weftforge": 8,
+    "redo_import.weftforge": 9,
+    "edited.weftforge": 10,
+    "rejected.weftforge": 10,
+    "reopened.weftforge": 10
+  },
+  "stop_on": "Unexpected authoring/history/output/software failure; preserve all raw records; no reset/retry/hidden new case",
+  "raw_trace": "Filesystem counter before/returned persisted before after-AX; all input/observation failures retained; unedited raw JPEG and raw AX/OS private",
+  "save_UI": "Basename only; CmdShiftG for directory; no input editing/synthetic native JSON",
+  "claims": "Independent root grading/raw trace review later. No whole parity/error-free/reference claim."
+}

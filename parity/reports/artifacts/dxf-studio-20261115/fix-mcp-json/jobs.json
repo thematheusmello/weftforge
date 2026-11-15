@@ -1,0 +1,55 @@
+{
+  "base": "5950c59073ff6a9c744699dd4bae52abb5794f72",
+  "commit": "d400bd78a8475ba9dc972be4dc6793c3ab3dbcec",
+  "cause": "serde_json generic Value projection promotes typed f32 material colors to f64, whereas native JSON writes shortest round-trippable f32 decimals. The original saved/inspect mismatch is confined to those three color numbers.",
+  "production_fix": "project_inspect serializes validated typed Project to JSON bytes, then parses Value; existing inspect-sewing already uses the same pattern. Both MCP protocol profiles share this call path.",
+  "semantic_evidence": "Real-stdio test compares actual saved native JSON exactly; f32 material bits and f64 point/cubic-control/placement bits including negative zero are unchanged; text and structured results agree; source file remains unchanged.",
+  "red_patch_sha256": "ac0513d7814ac972b8eb67b172a9df6e8b88736b7290f58039cf283e4ddc4a27",
+  "unchanged_red_test_sha256": "93c21bb36792f06e8340aa1169e587664c03e61ae893c66476de5f9cecfebdbf",
+  "jobs": [
+    {
+      "session": 91417,
+      "exit": 101,
+      "log": "RED-canonical-inspection.log"
+    },
+    {
+      "session": 19691,
+      "exit": 0,
+      "log": "GREEN-canonical-inspection.log"
+    },
+    {
+      "session": 91286,
+      "exit": 0,
+      "log": "focused-cli-mcp-tests.log",
+      "passed": 12
+    },
+    {
+      "session": null,
+      "exit": 0,
+      "log": "fmt-check.log",
+      "command": "cargo fmt --all --check"
+    },
+    {
+      "session": 57120,
+      "exit": 0,
+      "log": "strict-cli-clippy.log",
+      "command": "cargo clippy -p weftforge-cli --all-targets -- -D warnings"
+    }
+  ],
+  "scope": [
+    "apps/weftforge-cli/src/mcp.rs",
+    "apps/weftforge-cli/tests/mcp_stdio.rs"
+  ],
+  "unchanged": [
+    "native UI/numeric fix",
+    "core/physics",
+    "project files",
+    "persistence guarantees",
+    "schemas",
+    "5950 frozen headless/native evidence and evaluators"
+  ],
+  "deferred": [
+    "root full integrated gates",
+    "future changed-source acceptance"
+  ]
+}

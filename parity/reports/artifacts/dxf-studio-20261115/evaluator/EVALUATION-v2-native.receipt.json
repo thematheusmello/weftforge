@@ -1,0 +1,18 @@
+{
+  "command": [
+    "REPOSITORY_ROOT/.local/dxf-acceptance-20261114/venv/bin/python",
+    "REPOSITORY_ROOT/.local/dxf-import-independent-evaluator-20261115/evaluate.py",
+    "--native-checkpoints",
+    "REPOSITORY_ROOT/.local/native-dxf-acceptance-v2-20261115",
+    "--exported-svg",
+    "REPOSITORY_ROOT/.local/native-dxf-acceptance-v2-20261115/FINAL.svg",
+    "--exported-dxf",
+    "REPOSITORY_ROOT/.local/native-dxf-acceptance-v2-20261115/FINAL.dxf"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 0.4063266250304878,
+  "source_commit": "76be95d4d7928bcb703e1f52f4a5404bc955f567",
+  "frozen_sha256": "d54a16252938f1e68a5a056bc3f9924182d15492d900f3db9a1bc8e3f52a02e7",
+  "closed_actor_inventory_sha256": "d2fb471d962fd2b4c5432fb05c7d3263fc0c2d85c1cc36cff1c48139451626fa",
+  "recorded_utc": "2026-11-15T06:15:41.924784+00:00"
+}

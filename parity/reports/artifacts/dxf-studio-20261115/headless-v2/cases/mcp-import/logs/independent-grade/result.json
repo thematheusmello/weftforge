@@ -1,0 +1,24 @@
+{
+  "case": "mcp-import",
+  "name": "independent-grade",
+  "command": [
+    "REPOSITORY_ROOT/.local/dxf-acceptance-20261114/venv/bin/python",
+    "REPOSITORY_ROOT/.local/dxf-import-independent-evaluator-20261115/evaluate.py",
+    "--imported",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/mcp-import/data/output.weftforge",
+    "--exported-svg",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/mcp-import/data/exported.svg",
+    "--exported-dxf",
+    "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/mcp-import/data/exported.dxf"
+  ],
+  "cwd": "REPOSITORY_ROOT/.local/dxf-headless-acceptance-v2-20261115/cases/mcp-import/data",
+  "wrapper_pid": 10152,
+  "started_utc": "2026-11-15T05:58:24.103832+00:00",
+  "status": "completed",
+  "expected": "exit_zero",
+  "child_pid": 10177,
+  "exit_code": 0,
+  "wall_seconds": 0.23784199997317046,
+  "completed_utc": "2026-11-15T05:58:24.341788+00:00",
+  "expected_exit_matched": true
+}
