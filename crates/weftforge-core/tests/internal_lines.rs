@@ -177,6 +177,27 @@ fn original_l_c_and_clearance_are_whole_segment_and_resolution_independent() {
 }
 
 #[test]
+fn collinear_backtracking_inside_flatness_tube_is_refused_atomically() {
+    let mut editor = baseline();
+    let control = 1.0 + 5.0e-8;
+    assert!(control - 1.0 < 1.0e-7);
+    // The cubic's endpoint derivative is 3 * (end - last control), hence negative.
+    assert!(3.0 * (1.0 - control) < 0.0);
+    let error = rejected(
+        &mut editor,
+        Command::SetCurveControls {
+            curve: 7,
+            controls: Some([[control, 0.0], [control, 0.0]]),
+        },
+    );
+    assert!(error.contains("Internal curve 13 containment"), "{error}");
+    assert!(
+        error.contains("fine contour self-intersects, touches or is uncertifiable"),
+        "{error}"
+    );
+}
+
+#[test]
 fn crossing_and_coincident_annotations_stay_independent_and_exclusive() {
     let mut editor = baseline();
     editor.execute(add([0.125, 0.75], [0.875, 0.25])).unwrap();
