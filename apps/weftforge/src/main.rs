@@ -23,6 +23,32 @@ enum Tool {
     Sew,
     SewingPaths,
 }
+#[derive(Clone, Copy, Debug, PartialEq)]
+enum PositionSnap {
+    Off,
+    Mm1,
+    Mm5,
+    Mm10,
+}
+impl PositionSnap {
+    fn label(self) -> &'static str {
+        match self {
+            Self::Off => "Off",
+            Self::Mm1 => "1 mm",
+            Self::Mm5 => "5 mm",
+            Self::Mm10 => "10 mm",
+        }
+    }
+    fn apply(self, value: f64) -> f64 {
+        let factor = match self {
+            Self::Off => return value,
+            Self::Mm1 => 1000.0,
+            Self::Mm5 => 200.0,
+            Self::Mm10 => 100.0,
+        };
+        (value * factor).round() / factor
+    }
+}
 #[derive(Clone, Copy)]
 enum ExportFormat {
     Obj,
@@ -275,6 +301,8 @@ struct Studio {
     selected_curve: Option<Id>,
     split_t: f64,
     tool: Tool,
+    position_snap: PositionSnap,
+    drag_snap: PositionSnap,
     polygon: Vec<[f64; 2]>,
     pattern_canvas: Option<egui::Id>,
     drag_start: Option<[f64; 2]>,
@@ -343,6 +371,8 @@ impl Studio {
             selected_curve: None,
             split_t: 0.5,
             tool: Tool::Select,
+            position_snap: PositionSnap::Mm10,
+            drag_snap: PositionSnap::Mm10,
             polygon: vec![],
             pattern_canvas: None,
             drag_start: None,
@@ -1219,6 +1249,7 @@ impl Studio {
             }
             ui.separator();
             self.frame_patterns_button(ui);
+            self.position_snap_control(ui);
             ui.separator();
             let name = self
                 .path
@@ -1579,12 +1610,54 @@ impl Studio {
                 -(p[1] - self.center[1]) as f32,
             ) * self.scale
     }
-    fn to_pattern(&self, p: Pos2, r: Rect) -> [f64; 2] {
+    fn to_pattern(&self, p: Pos2, r: Rect, snap: PositionSnap) -> [f64; 2] {
         let d = (p - r.center()) / self.scale;
         [
-            snap(self.center[0] + d.x as f64),
-            snap(self.center[1] - d.y as f64),
+            snap.apply(self.center[0] + d.x as f64),
+            snap.apply(self.center[1] - d.y as f64),
         ]
+    }
+    fn position_snap_control(&mut self, ui: &mut egui::Ui) {
+        let focus_key = egui::Id::new((
+            "snap-input-focus",
+            self.editor.project.revision,
+            self.selected,
+            self.selected_curve,
+        ));
+        let restoring = ui
+            .ctx()
+            .data_mut(|data| data.get_temp::<egui::Id>(focus_key));
+        let focused = self.inspector_focus(ui.ctx()).or(restoring);
+        let response = egui::ComboBox::from_label("Snap")
+            .width(64.0)
+            .selected_text(self.position_snap.label())
+            .show_ui(ui, |ui| {
+                for snap in [
+                    PositionSnap::Off,
+                    PositionSnap::Mm1,
+                    PositionSnap::Mm5,
+                    PositionSnap::Mm10,
+                ] {
+                    ui.selectable_value(&mut self.position_snap, snap, snap.label());
+                }
+            });
+        let popup_visible = response.inner.is_some();
+        let response = response.response.on_hover_text(
+            "Pointer positions only. Hold Alt / Option when starting a drag or clicking to bypass.",
+        );
+        if popup_visible || response.is_pointer_button_down_on() || response.clicked() {
+            if let Some(focused) = focused {
+                ui.ctx()
+                    .data_mut(|data| data.insert_temp(focus_key, focused));
+            }
+            finish_numeric_action(ui.ctx(), focused, false);
+        } else if let Some(focused) = restoring {
+            // A popup blocks inspector focus through the frame after it closes.
+            if ui.ctx().memory(|memory| memory.top_modal_layer().is_none()) {
+                ui.ctx().data_mut(|data| data.remove::<egui::Id>(focus_key));
+            }
+            finish_numeric_action(ui.ctx(), Some(focused), false);
+        }
     }
     fn frame_patterns_button(&self, ui: &mut egui::Ui) {
         let focused = self.inspector_focus(ui.ctx());
@@ -1698,7 +1771,7 @@ impl Studio {
             );
             ui.weak("Construction");
         });
-        ui.small("Metres · 1 cm snap · scroll zoom · middle drag pan");
+        ui.small("Metres · Alt / Option bypasses snap · scroll zoom · middle drag pan");
         ui.add_space(4.0);
         let (response, painter) = ui.allocate_painter(ui.available_size(), Sense::click_and_drag());
         self.pattern_canvas = Some(response.id);
@@ -1738,6 +1811,11 @@ impl Studio {
         let pointer = response
             .interact_pointer_pos()
             .or_else(|| ui.input(|i| i.pointer.hover_pos()));
+        let snap = if ui.input(|input| input.modifiers.alt) {
+            PositionSnap::Off
+        } else {
+            self.position_snap
+        };
         let mut nearest = None;
         let mut distance = 12_f32;
         for piece in &doc.pieces {
@@ -1916,7 +1994,10 @@ impl Studio {
             && self.tool == Tool::Rectangle
         {
             painter.rect_stroke(
-                Rect::from_two_pos(self.to_screen(start, r), pointer),
+                Rect::from_two_pos(
+                    self.to_screen(start, r),
+                    self.to_screen(self.to_pattern(pointer, r, self.drag_snap), r),
+                ),
                 0.,
                 Stroke::new(1., Color32::GOLD),
                 egui::StrokeKind::Inside,
@@ -1925,8 +2006,9 @@ impl Studio {
         if response.drag_started_by(egui::PointerButton::Primary)
             && let Some(p) = pointer
         {
+            self.drag_snap = snap;
             if self.tool == Tool::Rectangle {
-                self.drag_start = Some(self.to_pattern(p, r));
+                self.drag_start = Some(self.to_pattern(p, r, self.drag_snap));
             }
             if self.tool == Tool::Select {
                 self.drag_point = doc
@@ -1941,14 +2023,14 @@ impl Studio {
             }
         }
         if response.dragged_by(egui::PointerButton::Primary) && self.drag_point.is_some() {
-            self.preview = pointer.map(|p| self.to_pattern(p, r));
+            self.preview = pointer.map(|p| self.to_pattern(p, r, self.drag_snap));
         }
         if response.drag_stopped_by(egui::PointerButton::Primary) {
             if let (Some(point), Some(position)) = (self.drag_point.take(), self.preview.take()) {
                 self.execute(Command::MovePoint { point, position });
             }
             if let (Some(start), Some(p)) = (self.drag_start.take(), pointer) {
-                let end = self.to_pattern(p, r);
+                let end = self.to_pattern(p, r, self.drag_snap);
                 self.execute(Command::AddRectangle {
                     name: self.name.clone(),
                     origin: [start[0].min(end[0]), start[1].min(end[1])],
@@ -1963,7 +2045,7 @@ impl Studio {
                 Tool::Select => self.select_curve(nearest),
                 Tool::Polygon => {
                     if let Some(p) = pointer {
-                        self.polygon.push(self.to_pattern(p, r));
+                        self.polygon.push(self.to_pattern(p, r, snap));
                     }
                 }
                 Tool::Sew => {
@@ -2018,7 +2100,7 @@ impl Studio {
                     if let Some(p) = pointer {
                         // shortcut: existing snapped lower-left anchor; reference equivalence needs observation.
                         self.rectangle = Some(RectangleDraft {
-                            origin: self.to_pattern(p, r),
+                            origin: self.to_pattern(p, r, snap),
                             dimensions_mm: ["500".into(), "500".into()],
                             error: None,
                         });
@@ -2838,9 +2920,6 @@ fn choose_export_path(_ctx: &egui::Context, format: ExportFormat) -> Option<Path
         .set_file_name(format!("garment.{ext}"))
         .save_file()
 }
-fn snap(v: f64) -> f64 {
-    (v * 100.).round() / 100.
-}
 fn segment_distance(p: Pos2, a: Pos2, b: Pos2) -> f32 {
     let ab = b - a;
     let t = ((p - a).dot(ab) / ab.length_sq().max(1e-9)).clamp(0., 1.);
@@ -3049,7 +3128,6 @@ mod tests {
 
     #[test]
     fn canvas_picking() {
-        assert_eq!(snap(0.214), 0.21);
         let t = [Pos2::ZERO, Pos2::new(1., 0.), Pos2::new(0., 1.)];
         assert!(point_in_triangle(Pos2::new(0.2, 0.2), t));
         assert!(!point_in_triangle(Pos2::new(2., 2.), t));
@@ -3057,6 +3135,366 @@ mod tests {
         assert!(
             (segment_distance(Pos2::new(0.5, 1.), Pos2::ZERO, Pos2::new(1., 0.)) - 1.).abs() < 1e-6
         );
+    }
+
+    #[test]
+    fn position_snapping_rounds_scaled_ties_away_from_zero_and_off_preserves_bits() {
+        for (snap, half_step) in [
+            (PositionSnap::Mm1, 0.0005),
+            (PositionSnap::Mm5, 0.0025),
+            (PositionSnap::Mm10, 0.005),
+        ] {
+            for sign in [-1.0, 1.0] {
+                assert_eq!(snap.apply(sign * half_step), sign * half_step * 2.0);
+                assert_eq!(snap.apply(sign * half_step * 0.9), sign * 0.0);
+                assert_eq!(snap.apply(sign * half_step * 2.9), sign * half_step * 2.0);
+            }
+        }
+        for value in [-0.0, -0.123_456_789_012_345, 0.123_456_789_012_345] {
+            assert_eq!(PositionSnap::Off.apply(value).to_bits(), value.to_bits());
+        }
+    }
+
+    #[test]
+    fn position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule() {
+        fn frame(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            modifiers: egui::Modifiers,
+            events: Vec<egui::Event>,
+        ) -> egui::FullOutput {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1200., 800.))),
+                    modifiers,
+                    events,
+                    ..Default::default()
+                },
+                |ui| {
+                    ui.scope(|ui| {
+                        if app.rectangle.is_some() {
+                            ui.disable();
+                        }
+                        app.toolbar(ui);
+                        ui.columns(2, |columns| {
+                            app.inspector(&mut columns[0]);
+                            app.patterns(&mut columns[1]);
+                        });
+                    });
+                    app.rectangle_window(ui.ctx());
+                },
+            )
+        }
+        fn button(pos: Pos2, pressed: bool, modifiers: egui::Modifiers) -> egui::Event {
+            egui::Event::PointerButton {
+                pos,
+                button: egui::PointerButton::Primary,
+                pressed,
+                modifiers,
+            }
+        }
+        fn click(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            pos: Pos2,
+            modifiers: egui::Modifiers,
+        ) -> egui::FullOutput {
+            frame(
+                ctx,
+                app,
+                modifiers,
+                vec![egui::Event::PointerMoved(pos), button(pos, true, modifiers)],
+            );
+            frame(ctx, app, modifiers, vec![button(pos, false, modifiers)])
+        }
+        fn text_position(output: &egui::FullOutput, text: &str) -> Pos2 {
+            output
+                .shapes
+                .iter()
+                .filter_map(|clipped| match &clipped.shape {
+                    egui::Shape::Text(shape)
+                        if shape.galley.text() == text
+                            || text.parse::<f64>().ok().is_some_and(|value| {
+                                shape.galley.text().parse::<f64>().ok() == Some(value)
+                            }) =>
+                    {
+                        Some(shape.pos + shape.galley.size() * 0.5)
+                    }
+                    _ => None,
+                })
+                .next_back()
+                .unwrap_or_else(|| panic!("missing text {text:?}"))
+        }
+        fn choose_snap(ctx: &egui::Context, app: &mut Studio, snap: PositionSnap) {
+            let output = frame(ctx, app, egui::Modifiers::NONE, vec![]);
+            click(
+                ctx,
+                app,
+                text_position(&output, app.position_snap.label()),
+                egui::Modifiers::NONE,
+            );
+            let output = frame(ctx, app, egui::Modifiers::NONE, vec![]);
+            click(
+                ctx,
+                app,
+                text_position(&output, snap.label()),
+                egui::Modifiers::NONE,
+            );
+            frame(ctx, app, egui::Modifiers::NONE, vec![]);
+        }
+        fn assert_position(actual: [f64; 2], expected: [f64; 2]) {
+            for axis in 0..2 {
+                assert!(
+                    (actual[axis] - expected[axis]).abs() < 2.0e-8,
+                    "{actual:?} != {expected:?}"
+                );
+            }
+        }
+        for (snap, bypass, start, end, moved) in [
+            (
+                PositionSnap::Off,
+                false,
+                [-0.276, -0.246],
+                [-0.146, -0.384],
+                [-0.157, -0.333],
+            ),
+            (
+                PositionSnap::Mm1,
+                false,
+                [-0.276, -0.246],
+                [-0.146, -0.384],
+                [-0.157, -0.333],
+            ),
+            (
+                PositionSnap::Mm5,
+                false,
+                [-0.275, -0.245],
+                [-0.145, -0.385],
+                [-0.155, -0.335],
+            ),
+            (
+                PositionSnap::Mm10,
+                false,
+                [-0.28, -0.25],
+                [-0.15, -0.38],
+                [-0.16, -0.33],
+            ),
+            (
+                PositionSnap::Mm10,
+                true,
+                [-0.276, -0.246],
+                [-0.146, -0.384],
+                [-0.157, -0.333],
+            ),
+        ] {
+            let ctx = egui::Context::default();
+            studio_style(&ctx);
+            let mut app = Studio::empty();
+            app.session_autosave = None;
+            app.center = [-0.2, -0.3];
+            app.scale = 1000.;
+            assert_eq!(app.position_snap, PositionSnap::Mm10);
+            if snap == PositionSnap::Off {
+                let output = frame(&ctx, &mut app, egui::Modifiers::NONE, vec![]);
+                click(
+                    &ctx,
+                    &mut app,
+                    text_position(&output, "0.07"),
+                    egui::Modifiers::NONE,
+                );
+                frame(
+                    &ctx,
+                    &mut app,
+                    egui::Modifiers::NONE,
+                    vec![
+                        egui::Event::Key {
+                            key: egui::Key::A,
+                            physical_key: None,
+                            pressed: true,
+                            repeat: false,
+                            modifiers: egui::Modifiers::COMMAND,
+                        },
+                        egui::Event::Text("0.073456789012345".into()),
+                    ],
+                );
+                let focused = numeric_focus(&ctx).unwrap();
+                let editor = format!("{:?}", app.editor);
+                choose_snap(&ctx, &mut app, snap);
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, egui::Modifiers::NONE, vec![]);
+                }
+                assert_eq!(format!("{:?}", app.editor), editor);
+                assert_eq!(app.draft.as_ref().unwrap().resolution, 0.073456789012345);
+                assert_eq!(numeric_focus(&ctx), Some(focused));
+                finish_numeric_action(&ctx, Some(focused), true);
+                app.draft = None;
+            } else {
+                choose_snap(&ctx, &mut app, snap);
+            }
+            assert!(!app.dirty && !app.editor.can_undo());
+            app.set_tool(Tool::Rectangle);
+            frame(&ctx, &mut app, egui::Modifiers::NONE, vec![]);
+            let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+            let center = rect.center();
+            let modifiers = if bypass {
+                egui::Modifiers::ALT
+            } else {
+                egui::Modifiers::NONE
+            };
+            let press = center + Vec2::new(-84., -54.);
+            frame(
+                &ctx,
+                &mut app,
+                modifiers,
+                vec![
+                    egui::Event::PointerMoved(press),
+                    button(press, true, modifiers),
+                ],
+            );
+            frame(
+                &ctx,
+                &mut app,
+                modifiers,
+                vec![egui::Event::PointerMoved(center + Vec2::new(-76., -54.))],
+            );
+            assert_position(app.drag_start.unwrap(), start);
+            assert_eq!(app.editor.project.revision, 0);
+            // Modifier changes after drag recognition must not mix snapped and raw corners.
+            let released_modifiers = if bypass {
+                egui::Modifiers::NONE
+            } else {
+                egui::Modifiers::ALT
+            };
+            let finish = center + Vec2::new(54., 84.);
+            frame(
+                &ctx,
+                &mut app,
+                released_modifiers,
+                vec![egui::Event::PointerMoved(finish)],
+            );
+            frame(
+                &ctx,
+                &mut app,
+                released_modifiers,
+                vec![button(finish, false, released_modifiers)],
+            );
+            assert_eq!(app.editor.project.revision, 1);
+            let bounds = app
+                .editor
+                .project
+                .piece_bounds(app.editor.project.pieces[0].id)
+                .unwrap();
+            assert_position(bounds[0], [start[0], end[1]]);
+            assert_position(bounds[1], [end[0], start[1]]);
+            let rectangle = app.editor.project.clone();
+            app.history(&ctx, false);
+            assert!(
+                app.editor.project.pieces.is_empty()
+                    && !app.editor.can_undo()
+                    && app.editor.can_redo()
+            );
+            app.history(&ctx, true);
+            assert_eq!(app.editor.project.points, rectangle.points);
+            assert_eq!(app.editor.project.curves, rectangle.curves);
+
+            app.set_tool(Tool::Select);
+            frame(&ctx, &mut app, egui::Modifiers::NONE, vec![]);
+            let point = app.editor.project.points[0].id;
+            let press = app.to_screen(app.editor.project.point(point).unwrap().position, rect);
+            let revision = app.editor.project.revision;
+            frame(
+                &ctx,
+                &mut app,
+                modifiers,
+                vec![
+                    egui::Event::PointerMoved(press),
+                    button(press, true, modifiers),
+                ],
+            );
+            frame(
+                &ctx,
+                &mut app,
+                modifiers,
+                vec![egui::Event::PointerMoved(press + Vec2::new(8., 0.))],
+            );
+            let finish = center + Vec2::new(43., 33.);
+            frame(
+                &ctx,
+                &mut app,
+                released_modifiers,
+                vec![egui::Event::PointerMoved(finish)],
+            );
+            assert_position(app.preview.unwrap(), moved);
+            assert_eq!(app.editor.project.points, rectangle.points);
+            frame(
+                &ctx,
+                &mut app,
+                released_modifiers,
+                vec![button(finish, false, released_modifiers)],
+            );
+            assert_eq!(app.editor.project.revision, revision + 1);
+            assert_position(app.editor.project.point(point).unwrap().position, moved);
+            let after_move = app.editor.project.clone();
+            app.history(&ctx, false);
+            assert_eq!(app.editor.project.points, rectangle.points);
+            app.history(&ctx, true);
+            assert_eq!(app.editor.project.points, after_move.points);
+            let mut history = app.editor.clone();
+            assert!(history.undo() && history.undo());
+            assert!(history.project.pieces.is_empty() && !history.can_undo());
+
+            app.set_tool(Tool::Polygon);
+            let revision = app.editor.project.revision;
+            for (index, offset) in [
+                Vec2::new(-76., -54.),
+                Vec2::new(54., 84.),
+                Vec2::new(43., 33.),
+            ]
+            .into_iter()
+            .enumerate()
+            {
+                click(&ctx, &mut app, center + offset, modifiers);
+                assert_position(app.polygon[index], [start, end, moved][index]);
+                assert_eq!(app.editor.project.revision, revision);
+            }
+            let output = frame(&ctx, &mut app, egui::Modifiers::NONE, vec![]);
+            click(
+                &ctx,
+                &mut app,
+                text_position(&output, "Close pattern (3 points)"),
+                egui::Modifiers::NONE,
+            );
+            assert_eq!(app.editor.project.revision, revision + 1);
+            assert_eq!(app.editor.project.pieces.len(), 2);
+            app.history(&ctx, false);
+            assert_eq!(app.editor.project.points, after_move.points);
+            assert_eq!(app.editor.project.pieces, after_move.pieces);
+            assert_eq!(app.position_snap, snap);
+
+            app.set_tool(Tool::Rectangle);
+            click(&ctx, &mut app, center + Vec2::new(-76., -54.), modifiers);
+            assert_position(app.rectangle.as_ref().unwrap().origin, start);
+            app.rectangle.as_mut().unwrap().dimensions_mm =
+                ["123.456789".into(), "234.567891".into()];
+            let output = frame(&ctx, &mut app, egui::Modifiers::NONE, vec![]);
+            click(
+                &ctx,
+                &mut app,
+                text_position(&output, "OK"),
+                egui::Modifiers::NONE,
+            );
+            let piece = app.editor.project.pieces.last().unwrap().id;
+            let [min, max] = app.editor.project.piece_bounds(piece).unwrap();
+            assert_position(min, start);
+            assert!((max[0] - min[0] - 0.123456789).abs() < 1.0e-15);
+            assert!((max[1] - min[1] - 0.234567891).abs() < 1.0e-15);
+            let dir = exit_test_directory("position-snapping");
+            let path = dir.join("session.weftforge");
+            app.editor.project.save(&path).unwrap();
+            app.open(path);
+            assert_eq!(app.position_snap, snap);
+            fs::remove_dir_all(dir).unwrap();
+        }
     }
 
     #[test]
