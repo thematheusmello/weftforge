@@ -92,8 +92,9 @@ and easing-map edits. `weftforge-cli inspect-sewing PROJECT` exposes the authore
 groups, derived portions and weighted rest-mesh stitches for headless inspection.
 
 CLI dimensions use metres, kilograms, seconds, radians, and Y-up 3D. The desktop
-currently snaps canvas gestures to 1 cm. Fine numeric editing and modifier support
-remain partial.
+**Snap** selector offers Off, 1 mm, 5 mm, or 10 mm (default) for existing pointer
+positions. Hold Alt / Option when starting a drag or clicking to bypass. This
+session preference survives opening projects; numeric edits stay exact.
 
 Select a boundary in 2D or in the inspector's boundary list to edit absolute
 cubic controls or make it straight. The selected edge and controls are gold;
