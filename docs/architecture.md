@@ -8,7 +8,7 @@ flips its vertical coordinate; OBJ uses metres/Y-up.
 
 ## Present responsibility boundaries
 
-- `weftforge-core`: stable ID document objects, authored straight/cubic boundaries,
+- `weftforge-core`: stable ID document objects, authored straight/cubic boundaries and straight internal annotations,
   oriented seam intervals and ordered sewing groups, materials and
   capsule mannequin; typed commands, transaction/history; meshing, project IO,
   OBJ/SVG/DXF export and one document-to-solver adapter.
@@ -19,7 +19,7 @@ flips its vertical coordinate; OBJ uses metres/Y-up.
   first viewport implementation. It does not yet have a dedicated depth-buffered
   garment shader, PBR, textures, shadows, animation timeline or GPU simulation.
 - `weftforge-cli`: offline creation/inspect/edit/mesh/simulate/export/benchmark and
-  explicit recovery through the same library commands. Six stateless local MCP
+  explicit recovery through the same library commands. Nine stateless local MCP
   file tools expose the shared validated engine; live-GUI control remains open.
 - `xtask`, `scripts/`: integration, independently parsed output, registry/evidence
   validation, report/dashboard generation and unsigned package preparation.
@@ -32,7 +32,25 @@ The libraries do not depend on egui, a browser, Python, REA, or commercial SDKs.
 
 Every point, curve, piece, material, seam and sewing group has a stable integer ID. Curves
 reference authored points and optional absolute Bezier control coordinates.
-Piece boundaries are ordered closed chains. A seam stores two oriented [t0,t1]
+Piece boundaries are ordered closed chains. Each piece also owns an explicit
+`internal_curves` array of independent straight annotations backed by dedicated
+Point/Curve IDs. Both endpoints are exclusive to their annotation; crossings or
+coincident coordinates do not create shared topology. These lines are editable
+construction with no cut, hole, fold, sewing, mass or simulation effect. Boundary
+controls/split/join and every sewing route reject internal targets. Resize, rigid
+transform and removal traverse both endpoints, while bounds, mesh construction
+and SVG/DXF exports use the exterior only. OBJ contains no annotation primitives.
+
+Annotation validation establishes whole-segment separation from a certified
+curved-contour polyline, independently of mesh resolution: 1e-6 m clearance,
+1e-7 m maximum chord deviation and a conservative coordinate-scaled f64 reserve.
+The contour is built once per annotated piece; depth 20, 20,000 boundary samples
+and one million project-wide subdivision/predicate steps bound work. Uncertain,
+self-touching and exhausted cases fail atomically. These are WeftForge engineering
+policies under the [reviewed contract](../spec/features/PAT-006-internal-segments.md),
+with reference behavior and actual native acceptance recorded separately.
+
+A seam stores two oriented [t0,t1]
 intervals and a monotone normalized parameter correspondence; it never refers to
 simulation vertex indices. Unequal lengths are deliberate easing.
 
@@ -41,7 +59,7 @@ normalized cumulative arc lengths. Each interval retains its curve t endpoints;
 gaps between disconnected spans add no length. Both one-sided endpoints at a
 path knot survive. Metric work is bounded, with a1e-8m authored-path budget and
 explicit errors for exhausted work or unsupported floating-point precision.
-Native v3 saves both legacy seams and groups; strict older-format migration
+Native v4 saves legacy seams, groups and owned internal annotations; strict older-format migration
 does not reinterpret legacy correspondence.
 
 The rebuildable rest mesh has material coordinates, physical arranged positions,

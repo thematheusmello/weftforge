@@ -318,7 +318,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
             .as_array()
             .unwrap()
             .len(),
-        26
+        28
     );
     success(&server.call("project_create", json!({"output":project_path})));
     let initial = server.call("project_inspect", json!({"path":project_path}));
@@ -455,7 +455,7 @@ fn sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constrai
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 26);
+    assert_eq!(variants.len(), 28);
     for name in [
         "add_sewing_group",
         "update_sewing_group",
@@ -490,7 +490,7 @@ fn sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constrai
     assert_eq!(group.a, intervals[..2]);
     assert_eq!(group.b, intervals[2..]);
     let saved: Value = serde_json::from_slice(&fs::read(&created).unwrap()).unwrap();
-    assert_eq!(saved["version"], 3);
+    assert_eq!(saved["version"], weftforge_core::FORMAT_VERSION);
 
     fs::write(&commands_file, serde_json::to_vec(&vec![command]).unwrap()).unwrap();
     let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
@@ -680,7 +680,7 @@ fn physical_length_sewing_schema_and_cli_mcp_use_the_shared_candidate_transactio
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 26);
+    assert_eq!(variants.len(), 28);
     let variant = variants
         .iter()
         .find(|variant| variant["properties"]["type"]["const"] == "add_sewing_by_length")
@@ -741,7 +741,7 @@ fn physical_length_sewing_schema_and_cli_mcp_use_the_shared_candidate_transactio
         native_project_json(&editor.project)
     );
     let saved: Value = serde_json::from_slice(&fs::read(&output).unwrap()).unwrap();
-    assert_eq!(saved["version"], 3);
+    assert_eq!(saved["version"], weftforge_core::FORMAT_VERSION);
     for side in ["a", "b"] {
         assert_eq!(
             saved["project"]["sewing_groups"][0][side][0]
@@ -1159,7 +1159,7 @@ fn stdio_transform_schema_cli_equivalence_and_strict_atomic_failures() {
     assert_eq!(success(&inspected)["project"], native_project_json(&saved));
     assert_eq!(
         serde_json::from_slice::<Value>(&fs::read(&output).unwrap()).unwrap()["version"],
-        3
+        weftforge_core::FORMAT_VERSION
     );
     fs::write(
         &commands_file,
@@ -2065,5 +2065,215 @@ fn inspection_matches_saved_native_json_without_changing_f32_materials_or_f64_ge
             .map(f64::to_bits)
     );
     assert_eq!(fs::read(&path).unwrap(), original);
+    server.finish();
+}
+
+#[test]
+fn internal_annotations_share_closed_schema_cli_and_mcp_transactions_without_new_tools() {
+    let directory = Directory::new();
+    let empty = directory.path("empty.weftforge");
+    let cli_path = directory.path("cli.weftforge");
+    let mcp_path = directory.path("mcp.weftforge");
+    let commands_file = directory.path("commands.json");
+    Project::default().save(&empty).unwrap();
+    let commands = vec![
+        Command::AddRectangle {
+            name: "Original R".into(),
+            origin: [0., 0.],
+            width: 1.,
+            height: 1.,
+        },
+        Command::AddInternalSegment {
+            piece: 2,
+            start: [0.125, 0.25],
+            end: [0.875, 0.75],
+        },
+    ];
+    fs::write(&commands_file, serde_json::to_vec(&commands).unwrap()).unwrap();
+    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+        .arg("execute")
+        .arg(&empty)
+        .arg(&cli_path)
+        .arg(&commands_file)
+        .output()
+        .unwrap();
+    assert!(
+        cli.status.success(),
+        "{}",
+        String::from_utf8_lossy(&cli.stderr)
+    );
+    assert_eq!(
+        serde_json::from_slice::<Value>(&cli.stdout).unwrap()["revision"],
+        1
+    );
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let listed = server.request("tools/list", json!({}));
+    let tools = listed["result"]["tools"].as_array().unwrap();
+    assert_eq!(tools.len(), 9);
+    let variants = tools
+        .iter()
+        .find(|tool| tool["name"] == "project_execute")
+        .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
+        .as_array()
+        .unwrap();
+    assert_eq!(variants.len(), 28);
+    for (name, required, id_field) in [
+        (
+            "add_internal_segment",
+            json!(["piece", "start", "end"]),
+            "piece",
+        ),
+        ("remove_internal_curve", json!(["curve"]), "curve"),
+    ] {
+        let variant = variants
+            .iter()
+            .find(|variant| variant["properties"]["type"]["const"] == name)
+            .unwrap();
+        assert_eq!(variant["additionalProperties"], false);
+        assert_eq!(variant["required"], json!(["type", "data"]));
+        let data = &variant["properties"]["data"];
+        assert_eq!(data["required"], required);
+        assert_eq!(data["additionalProperties"], false);
+        assert_eq!(data["properties"][id_field]["minimum"], 1);
+        assert_eq!(data["properties"][id_field]["maximum"], u64::MAX);
+        if name == "add_internal_segment" {
+            for field in ["start", "end"] {
+                assert_eq!(data["properties"][field]["minItems"], 2);
+                assert_eq!(data["properties"][field]["maxItems"], 2);
+                assert_eq!(data["properties"][field]["items"]["type"], "number");
+            }
+        }
+    }
+    let executed = server.call(
+        "project_execute",
+        json!({"input":empty,"output":mcp_path,"commands":commands}),
+    );
+    assert_eq!(success(&executed)["revision"], 1);
+    assert_eq!(fs::read(&cli_path).unwrap(), fs::read(&mcp_path).unwrap());
+    let saved = Project::load(&mcp_path).unwrap();
+    assert_eq!(saved.pieces[0].boundary, [7, 8, 9, 10]);
+    assert_eq!(saved.pieces[0].internal_curves, [13]);
+    assert_eq!(
+        serde_json::from_slice::<Value>(&fs::read(&mcp_path).unwrap()).unwrap()["version"],
+        4
+    );
+    let inspected = server.call("project_inspect", json!({"path":mcp_path}));
+    assert_eq!(success(&inspected)["project"], native_project_json(&saved));
+    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+        .arg("inspect")
+        .arg(&cli_path)
+        .output()
+        .unwrap();
+    assert!(cli.status.success());
+    let inspected: Value = serde_json::from_slice(&cli.stdout).unwrap();
+    assert_eq!(inspected["patterns"][0]["boundary"], json!([7, 8, 9, 10]));
+    assert_eq!(inspected["patterns"][0]["internal_curves"], json!([13]));
+    let length = server.call(
+        "project_lengths",
+        json!({"path":mcp_path,"query":{"type":"interval","data":{"curve":13,"t0":0.,"t1":1.}}}),
+    );
+    assert!((success(&length)["length_m"].as_f64().unwrap() - 13_f64.sqrt() / 4.).abs() < 1e-12);
+    let edits = vec![
+        Command::MovePoint {
+            point: 11,
+            position: [0.875, 0.75],
+        },
+        Command::MovePoint {
+            point: 12,
+            position: [0.125, 0.25],
+        },
+    ];
+    let edited = server.call(
+        "project_execute",
+        json!({"input":mcp_path,"output":mcp_path,"commands":edits}),
+    );
+    assert_eq!(success(&edited)["revision"], 2);
+    fs::write(&commands_file, serde_json::to_vec(&edits).unwrap()).unwrap();
+    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+        .arg("execute")
+        .arg(&cli_path)
+        .arg(&cli_path)
+        .arg(&commands_file)
+        .output()
+        .unwrap();
+    assert!(
+        cli.status.success(),
+        "{}",
+        String::from_utf8_lossy(&cli.stderr)
+    );
+    assert_eq!(fs::read(&cli_path).unwrap(), fs::read(&mcp_path).unwrap());
+    let primary = fs::read(&mcp_path).unwrap();
+    let recovery = fs::read(recovery_path(&mcp_path)).unwrap();
+    let failures = [
+        json!([{"type":"add_internal_segment","data":{"piece":2,"start":[0.2,0.2],"end":[0.7,0.7]}},{"type":"move_point","data":{"point":12,"position":[2.,2.]}}]),
+        json!([{"type":"add_internal_segment","data":{"piece":2,"start":[0.2],"end":[0.7,0.7]}}]),
+        json!([{"type":"add_internal_segment","data":{"piece":2,"start":[0.2,0.2],"end":[0.7,0.7],"unknown":true}}]),
+        json!([{"type":"remove_internal_curve","data":{"curve":7}}]),
+        json!([{"type":"remove_internal_curve","data":{"curve":0}}]),
+    ];
+    for commands in failures {
+        let response = server.call(
+            "project_execute",
+            json!({"input":mcp_path,"output":mcp_path,"commands":commands}),
+        );
+        tool_error(&response);
+        assert_eq!(fs::read(&mcp_path).unwrap(), primary);
+        assert_eq!(fs::read(recovery_path(&mcp_path)).unwrap(), recovery);
+        fs::write(&commands_file, serde_json::to_vec(&commands).unwrap()).unwrap();
+        let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+            .arg("execute")
+            .arg(&mcp_path)
+            .arg(&mcp_path)
+            .arg(&commands_file)
+            .output()
+            .unwrap();
+        assert!(!cli.status.success());
+        assert_eq!(fs::read(&mcp_path).unwrap(), primary);
+        assert_eq!(fs::read(recovery_path(&mcp_path)).unwrap(), recovery);
+    }
+    let raw = json!({"jsonrpc":"2.0","id":"duplicate-internal","method":"tools/call","params":{"name":"project_execute","arguments":{"input":mcp_path,"output":mcp_path,"commands":[{"type":"remove_internal_curve","data":{"curve":13}}]}}}).to_string().replace("\"curve\":13","\"curve\":13,\"curve\":13");
+    server.send(&raw);
+    tool_error(&server.receive());
+    assert_eq!(fs::read(&mcp_path).unwrap(), primary);
+    assert_eq!(fs::read(recovery_path(&mcp_path)).unwrap(), recovery);
+    fs::write(
+        &commands_file,
+        r#"[{"type":"remove_internal_curve","data":{"curve":13,"curve":13}}]"#,
+    )
+    .unwrap();
+    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+        .arg("execute")
+        .arg(&mcp_path)
+        .arg(&mcp_path)
+        .arg(&commands_file)
+        .output()
+        .unwrap();
+    assert!(!cli.status.success());
+    assert_eq!(fs::read(&mcp_path).unwrap(), primary);
+    assert_eq!(fs::read(recovery_path(&mcp_path)).unwrap(), recovery);
+    let removed = server.call("project_execute",json!({"input":mcp_path,"output":mcp_path,"commands":[{"type":"remove_internal_curve","data":{"curve":13}}]}));
+    assert_eq!(success(&removed)["revision"], 3);
+    fs::write(
+        &commands_file,
+        serde_json::to_vec(&vec![Command::RemoveInternalCurve { curve: 13 }]).unwrap(),
+    )
+    .unwrap();
+    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+        .arg("execute")
+        .arg(&cli_path)
+        .arg(&cli_path)
+        .arg(&commands_file)
+        .output()
+        .unwrap();
+    assert!(
+        cli.status.success(),
+        "{}",
+        String::from_utf8_lossy(&cli.stderr)
+    );
+    assert_eq!(fs::read(&cli_path).unwrap(), fs::read(&mcp_path).unwrap());
+    let removed = Project::load(&mcp_path).unwrap();
+    assert!(removed.pieces[0].internal_curves.is_empty());
+    assert_eq!(removed.points.len(), 4);
     server.finish();
 }

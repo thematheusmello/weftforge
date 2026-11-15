@@ -23,7 +23,7 @@ pub(crate) struct ImportedPattern {
     pub controls: Vec<Option<[[f64; 2]; 2]>>,
 }
 
-pub const FORMAT_VERSION: u32 = 3;
+pub const FORMAT_VERSION: u32 = 4;
 pub const MAX_PROJECT_BYTES: u64 = 16 * 1024 * 1024;
 static TEMP_ID: AtomicU64 = AtomicU64::new(0);
 
@@ -55,7 +55,7 @@ struct ProjectV2 {
     revision: u64,
     points: Vec<Point>,
     curves: Vec<Curve>,
-    pieces: Vec<Piece>,
+    pieces: Vec<PieceV2V3>,
     materials: Vec<Material>,
     seams: Vec<Seam>,
     mannequin: Mannequin,
@@ -69,13 +69,70 @@ impl From<ProjectV2> for Project {
             revision: old.revision,
             points: old.points,
             curves: old.curves,
-            pieces: old.pieces,
+            pieces: old.pieces.into_iter().map(Into::into).collect(),
             materials: old.materials,
             seams: old.seams,
             sewing_groups: Vec::new(),
             mannequin: old.mannequin,
             resolution: old.resolution,
             next_id: old.next_id,
+        }
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct ProjectV3 {
+    revision: u64,
+    points: Vec<Point>,
+    curves: Vec<Curve>,
+    pieces: Vec<PieceV2V3>,
+    materials: Vec<Material>,
+    seams: Vec<Seam>,
+    sewing_groups: Vec<crate::SewingGroup>,
+    mannequin: Mannequin,
+    resolution: f64,
+    next_id: Id,
+}
+
+impl From<ProjectV3> for Project {
+    fn from(old: ProjectV3) -> Self {
+        Self {
+            revision: old.revision,
+            points: old.points,
+            curves: old.curves,
+            pieces: old.pieces.into_iter().map(Into::into).collect(),
+            materials: old.materials,
+            seams: old.seams,
+            sewing_groups: old.sewing_groups,
+            mannequin: old.mannequin,
+            resolution: old.resolution,
+            next_id: old.next_id,
+        }
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct PieceV2V3 {
+    id: Id,
+    name: String,
+    boundary: Vec<Id>,
+    placement: Placement,
+    material: Id,
+    grain_angle: f64,
+}
+
+impl From<PieceV2V3> for Piece {
+    fn from(old: PieceV2V3) -> Self {
+        Self {
+            id: old.id,
+            name: old.name,
+            boundary: old.boundary,
+            internal_curves: Vec::new(),
+            placement: old.placement,
+            material: old.material,
+            grain_angle: old.grain_angle,
         }
     }
 }
@@ -118,6 +175,7 @@ impl From<ProjectV1> for Project {
                     id: piece.id,
                     name: piece.name,
                     boundary: piece.boundary,
+                    internal_curves: Vec::new(),
                     placement: piece.placement,
                     material: piece.material,
                     grain_angle: 0.0,
@@ -186,6 +244,9 @@ impl Project {
             2 => serde_json::from_slice::<Document<ProjectV2>>(bytes)?
                 .project
                 .into(),
+            3 => serde_json::from_slice::<Document<ProjectV3>>(bytes)?
+                .project
+                .into(),
             FORMAT_VERSION => serde_json::from_slice::<Document>(bytes)?.project,
             _ => {
                 return Err(Error(
@@ -251,26 +312,25 @@ impl Project {
         self.validate()?;
         let mut min = [0.0_f64; 2];
         let mut max = [1.0_f64; 2];
-        for point in &self.points {
-            for axis in 0..2 {
-                min[axis] = min[axis].min(point.position[axis]);
-                max[axis] = max[axis].max(point.position[axis]);
-            }
-        }
-        for curve in &self.curves {
-            if let Some(controls) = curve.controls {
-                for point in controls {
-                    for axis in 0..2 {
-                        min[axis] = min[axis].min(point[axis]);
-                        max[axis] = max[axis].max(point[axis]);
-                    }
+        for id in self.pieces.iter().flat_map(|piece| &piece.boundary) {
+            let curve = self.curve(*id).unwrap();
+            for point in [
+                self.point(curve.start).unwrap().position,
+                self.point(curve.end).unwrap().position,
+            ]
+            .into_iter()
+            .chain(curve.controls.into_iter().flatten())
+            {
+                for axis in 0..2 {
+                    min[axis] = min[axis].min(point[axis]);
+                    max[axis] = max[axis].max(point[axis]);
                 }
             }
         }
         let width = (max[0] - min[0]) * 1000.0;
         let height = (max[1] - min[1]) * 1000.0;
         let mut svg = format!(
-            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width}mm\" height=\"{height}mm\" viewBox=\"{} {} {width} {height}\">\n<title>WeftForge editable pattern export</title>\n<desc>Scale: one SVG user unit is one millimetre. Pattern V points upward; SVG Y is inverted.</desc>\n",
+            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width}mm\" height=\"{height}mm\" viewBox=\"{} {} {width} {height}\">\n<title>WeftForge editable pattern export</title>\n<desc>Scale: one SVG user unit is one millimetre. Pattern V points upward; SVG Y is inverted. Exterior boundaries only; internal annotations are omitted.</desc>\n",
             min[0] * 1000.0,
             -max[1] * 1000.0
         );

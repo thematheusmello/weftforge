@@ -614,6 +614,22 @@ fn command_schema() -> Value {
             ),
         ),
         (
+            "add_internal_segment",
+            object(
+                json!({"piece":{"type":"integer","minimum":1,"maximum":u64::MAX},
+                    "start":array(json!({"type":"number","minimum":-1000,"maximum":1000}),2),
+                    "end":array(json!({"type":"number","minimum":-1000,"maximum":1000}),2)}),
+                &["piece", "start", "end"],
+            ),
+        ),
+        (
+            "remove_internal_curve",
+            object(
+                json!({"curve":{"type":"integer","minimum":1,"maximum":u64::MAX}}),
+                &["curve"],
+            ),
+        ),
+        (
             "move_point",
             object(json!({"point":id,"position":xy}), &["point", "position"]),
         ),
@@ -723,8 +739,8 @@ fn tools() -> Vec<Value> {
         ("project_execute", "Load input, execute 1–1024 shared typed commands atomically as one document revision, then save output with native atomic/recovery handling. Input and output may be the same native file. Inspect stable IDs before edits; nested transactions are rejected.", object(json!({"input":path,"output":path,"commands":{"type":"array","minItems":1,"maxItems":MAX_COMMANDS,"items":command_schema()}}), &["input","output","commands"]), false),
         ("project_import_svg", "Add closed straight/cubic SVG exterior patterns as one editable transaction. Require physical mm width/height and a uniform viewBox scale; retain the SVG user-space origin and invert Y. Import names with first material/default 3D placement; omit appearance, sewing, grain and simulation. Unsupported content fails the entire import; source SVG is preserved.", object(json!({"input":path,"output":path,"svg":path}), &["input","output","svg"]), false),
         ("project_import_dxf", "Add the bounded FILE-005-v1 R2000 ASCII DXF LINE/clamped cubic SPLINE exterior patterns as one editable transaction. Require millimetres and exact closed ordered WF_PIECE layer contours; preserve WCS X/Y layout as U/V without inversion. Layer names become names with fresh IDs, first material and default 3D placement. Unsupported drawing content fails the entire import; source DXF is preserved.", object(json!({"input":path,"output":path,"dxf":path}), &["input","output","dxf"]), false),
-        ("project_export_svg", "Export authored pattern curves at physical millimetre scale. Refuse replacement of the source or native project destinations.", files.clone(), false),
-        ("project_export_obj", "Build and export a rest mesh in metres, Y-up, with source revision; no simulation. Refuse replacement of the source or native project destinations.", files.clone(), false),
-        ("project_export_dxf", "Export authored exterior pattern boundaries as R2000 DXF LINE/SPLINE geometry in millimetres, without 3D placement. Sewing, materials and grain require the native project. Refuse replacement of source or native project destinations.", files, false),
+        ("project_export_svg", "Export authored exterior pattern curves at physical millimetre scale; omit internal annotations. Refuse replacement of the source or native project destinations.", files.clone(), false),
+        ("project_export_obj", "Build and export a rest mesh in metres, Y-up, with source revision; no simulation or annotation line primitives. Refuse replacement of the source or native project destinations.", files.clone(), false),
+        ("project_export_dxf", "Export authored exterior pattern boundaries as R2000 DXF LINE/SPLINE geometry in millimetres, without 3D placement. Internal annotations are omitted; sewing, materials, grain and editable annotations require the native project. Refuse replacement of source or native project destinations.", files, false),
     ].into_iter().map(|(name,description,input,read_only)|json!({"name":name,"description":description,"inputSchema":input,"annotations":{"readOnlyHint":read_only,"destructiveHint":!read_only,"openWorldHint":false}})).collect()
 }

@@ -488,7 +488,7 @@ fn huge_existing_grain_is_rotated_as_a_unit_vector_without_addition_overflow() {
 }
 
 #[test]
-fn mesh_rebuild_uses_new_authored_uvs_and_revision_and_native_v3_round_trips() {
+fn mesh_rebuild_uses_new_authored_uvs_and_revision_and_native_v4_round_trips() {
     let mut editor = fixture();
     let before = editor.project.clone();
     let old_mesh = before.mesh().unwrap();
@@ -561,7 +561,7 @@ fn mesh_rebuild_uses_new_authored_uvs_and_revision_and_native_v3_round_trips() {
     let reopened = Project::load(&path).unwrap();
     assert_eq!(reopened.to_json().unwrap(), after.to_json().unwrap());
     let saved: serde_json::Value = serde_json::from_slice(&fs::read(&path).unwrap()).unwrap();
-    assert_eq!(saved["version"], 3);
+    assert_eq!(saved["version"], weftforge_core::FORMAT_VERSION);
     fs::remove_dir_all(directory).unwrap();
 }
 

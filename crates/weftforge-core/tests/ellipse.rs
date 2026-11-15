@@ -101,7 +101,7 @@ fn ellipse_has_declared_controls_ids_bounds_tangents_and_one_persistent_transact
     editor.project.save(&path).unwrap();
     assert_eq!(Project::load(&path).unwrap(), editor.project);
     let file: serde_json::Value = serde_json::from_slice(&fs::read(&path).unwrap()).unwrap();
-    assert_eq!(file["version"], 3);
+    assert_eq!(file["version"], weftforge_core::FORMAT_VERSION);
     fs::remove_dir_all(directory).unwrap();
 }
 

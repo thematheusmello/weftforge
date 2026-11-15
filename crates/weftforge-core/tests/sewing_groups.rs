@@ -869,7 +869,7 @@ fn disjoint_same_curve_coverage_survives_split_join_but_overlaps_are_rejected() 
 }
 
 #[test]
-fn strict_v3_and_legacy_v2_keep_authored_values_and_maps_without_reinterpretation() {
+fn strict_v4_and_legacy_v2_keep_authored_values_and_maps_without_reinterpretation() {
     let (mut editor, a, b) = curved_scene(false);
     editor
         .execute(Command::AddSeam {
@@ -879,12 +879,24 @@ fn strict_v3_and_legacy_v2_keep_authored_values_and_maps_without_reinterpretatio
             correspondence: vec![[0., 0.], [0.3, 0.7199999999999999], [1., 1.]],
         })
         .unwrap();
-    let v3 = editor.project.to_json().unwrap();
-    let value: serde_json::Value = serde_json::from_slice(&v3).unwrap();
-    assert_eq!(value["version"], 3);
-    assert_eq!(Project::from_json(&v3).unwrap(), editor.project);
-    let mut v2 = value.clone();
+    let v4 = editor.project.to_json().unwrap();
+    let value: serde_json::Value = serde_json::from_slice(&v4).unwrap();
+    assert_eq!(value["version"], weftforge_core::FORMAT_VERSION);
+    assert_eq!(Project::from_json(&v4).unwrap(), editor.project);
+    let mut v3 = value.clone();
+    v3["version"] = json!(3);
+    for piece in v3["project"]["pieces"].as_array_mut().unwrap() {
+        piece.as_object_mut().unwrap().remove("internal_curves");
+    }
+    assert_eq!(
+        Project::from_json(&serde_json::to_vec(&v3).unwrap()).unwrap(),
+        editor.project
+    );
+    let mut v2 = v3.clone();
     v2["version"] = json!(2);
+    for piece in v2["project"]["pieces"].as_array_mut().unwrap() {
+        piece.as_object_mut().unwrap().remove("internal_curves");
+    }
     v2["project"]
         .as_object_mut()
         .unwrap()
@@ -913,11 +925,11 @@ fn strict_v3_and_legacy_v2_keep_authored_values_and_maps_without_reinterpretatio
                 bad["project"]["sewing_groups"][0]["id"] = bad["project"]["seams"][0]["id"].clone()
             }
             3 => bad["project"]["sewing_groups"][0]["a"][0]["t0"] = json!(null),
-            _ => bad["version"] = json!(4),
+            _ => bad["version"] = json!(5),
         }
         assert!(Project::from_json(&serde_json::to_vec(&bad).unwrap()).is_err());
     }
-    let text = String::from_utf8(v3).unwrap().replacen(
+    let text = String::from_utf8(v4).unwrap().replacen(
         "\"sewing_groups\":",
         "\"sewing_groups\":[],\"sewing_groups\":",
         1,
@@ -1385,7 +1397,7 @@ fn physical_length_command_is_one_persistent_group_with_physical_correspondence_
     let encoded = editor.project.to_json().unwrap();
     assert_eq!(
         serde_json::from_slice::<serde_json::Value>(&encoded).unwrap()["version"],
-        3
+        weftforge_core::FORMAT_VERSION
     );
     assert_eq!(Project::from_json(&encoded).unwrap(), editor.project);
 

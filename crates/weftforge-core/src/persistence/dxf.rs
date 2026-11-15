@@ -7,7 +7,12 @@ const FIRST_DYNAMIC_HANDLE: usize = 0x1c;
 pub(super) fn render(project: &Project) -> Result<String> {
     let mut pieces: Vec<_> = project.pieces.iter().collect();
     pieces.sort_unstable_by_key(|piece| piece.id);
-    let handseed = FIRST_DYNAMIC_HANDLE + pieces.len() + project.curves.len();
+    let handseed = FIRST_DYNAMIC_HANDLE
+        + pieces.len()
+        + pieces
+            .iter()
+            .map(|piece| piece.boundary.len())
+            .sum::<usize>();
     let mut output = format!(
         "0\nSECTION\n2\nHEADER\n999\nWeftForge FILE-005-v1: pattern boundaries in millimetres\n999\nSource document revision: {}\n999\nUV->XY; positive V->positive Y; Z=0; boundary-only\n9\n$ACADVER\n1\nAC1015\n9\n$INSUNITS\n70\n4\n9\n$MEASUREMENT\n70\n1\n9\n$LUNITS\n70\n2\n9\n$HANDSEED\n5\n{handseed:X}\n0\nENDSEC\n0\nSECTION\n2\nCLASSES\n0\nENDSEC\n0\nSECTION\n2\nTABLES\n",
         project.revision

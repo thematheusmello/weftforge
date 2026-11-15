@@ -91,7 +91,7 @@ are rejected. The tool names and arguments are:
 
 | Tool | Required arguments | Result in `structuredContent` |
 | --- | --- | --- |
-| `project_inspect` | `path` | Complete validated `project`, SI `units`, `up: "Y"`; includes stable points, curves, piece boundaries, materials, placements, grain, legacy seams, sewing groups, mannequin, resolution, revision and next ID |
+| `project_inspect` | `path` | Complete validated `project`, SI `units`, `up: "Y"`; includes stable points, curves, piece boundaries/internal ownership, materials, placements, grain, legacy seams, sewing groups, mannequin, resolution, revision and next ID |
 | `project_lengths` | `path`, `query` | Applied `source_revision`, `length_unit: "m"`, echoed query, and unrounded authored/rest length(s); pairs include signed `mismatch_b_minus_a_m` |
 | `project_create` | `output` | Saved `output` and `revision`; existing output paths are refused |
 | `project_execute` | `input`, `output`, `commands` | Saved paths, new `revision`, and `commands_applied` |
@@ -104,13 +104,13 @@ are rejected. The tool names and arguments are:
 Results include a text block containing the same JSON for older clients.
 Inspection returns authoritative authored state without building a mesh.
 Its `project` uses the native writer's JSON number representation, including f32
-display colors and f64 authored values. For v3 files written by this version,
+display colors and f64 authored values. For v4 files written by this version,
 parsed inspection and saved-project values agree exactly without changing stored
 numeric precision. Legacy-file inspection returns the migrated current model.
 DXF exports authored exterior curves directly, independently of mesh resolution
 or 3D placement. Its [R2000 profile](../spec/features/FILE-005-dxf-pattern-export.md)
 preserves straight/cubic geometry and stable piece layers. Sewing, materials,
-grain, drape and native editing relationships require the `.weftforge` project.
+grain, internal annotations, drape and native editing relationships require the `.weftforge` project.
 Each successful execute creates a single document revision through
 `Editor::execute(Command::Transaction(commands))`, then uses native atomic save
 and recovery handling. Commands may refer to stable IDs returned by inspection.
@@ -131,7 +131,7 @@ The example's newly created default project assigns its first piece ID 2;
 existing projects may assign different IDs. Current-profile calls use the same
 arguments and additionally include the per-request `_meta` shown above.
 
-The supported shared commands are `import_svg_patterns`, `import_dxf_patterns`, `add_polygon`, `add_rectangle`, `add_ellipse`, `move_point`,
+The supported shared commands are `import_svg_patterns`, `import_dxf_patterns`, `add_polygon`, `add_rectangle`, `add_ellipse`, `add_internal_segment`, `remove_internal_curve`, `move_point`,
 `set_curve_controls`, `split_curve`, `join_curve`, `resize_piece`, `transform_piece`, `set_placement`, `set_grain`,
 `set_material`, `add_material`, `update_material`, `add_seam`, `update_seam`,
 `remove_seam`, `add_sewing_group`, `add_sewing_by_length`, `update_sewing_group`, `remove_sewing_group`,
@@ -140,6 +140,29 @@ Their exact data fields and nested types are in `tools/list`; the shared core
 validation remains authoritative. Authoring uses f64 SI units, placement/grain
 angles use radians, and membrane stiffness uses N/m. See
 [file formats](file-formats.md) for the native representation and physical units.
+
+`add_internal_segment` takes one owner piece ID and two metre coordinate arrays;
+`remove_internal_curve` takes the annotation's stable curve ID:
+
+```json
+{"type":"add_internal_segment","data":{"piece":2,"start":[0.125,0.25],"end":[0.875,0.75]}}
+{"type":"remove_internal_curve","data":{"curve":13}}
+```
+
+The default unit square uses endpoint IDs 11/12 and curve ID 13; inspect existing
+projects rather than assuming IDs. Every field is required, IDs are nonzero u64s,
+coordinate arrays contain exactly two finite numbers, and extra/duplicate fields
+reject. Edit both endpoints with two `move_point` entries in one command array;
+only the final candidate is validated and the array creates one revision. Failed
+creation/removal/edit retains output and recovery, including allocator state.
+Each segment must remain wholly inside its owner with the fixed conservative
+clearance/certificate/work limits in the [engineering contract](../spec/features/PAT-006-internal-segments.md).
+Outer edits revalidate retained annotations. Boundary split/join/controls and all
+sewing commands reject internal targets. Existing read-only interval length queries
+can measure them. They do not affect triangulation, stitches, cloth or mass; an
+accepted edit still invalidates old derived revisions. CLI `inspect` exposes each
+pattern's `boundary` and `internal_curves`; MCP inspection returns full construction.
+These are two alternatives on the existing nine tools, with no new CLI verb.
 
 `import_svg_patterns` takes `{"svg":"...original SVG XML..."}` and adds all
 supported pieces as one typed authoring action. The dedicated CLI
@@ -204,7 +227,7 @@ translation/pivot components within ±1000 m, and angle within ±1e6 rad. Result
 coordinates, placement, contour and affected sewing metrics must also validate.
 A rejected command leaves the entire command array and output/recovery bytes unchanged.
 
-Native v3 fields and version stay unchanged. Remeshed UVs equal the new authored
+The layout command adds no native fields. Remeshed UVs equal the new authored
 coordinates; SVG/DXF layouts and OBJ UVs change. The arranged continuous surface
 is retained within the reviewed numeric limits, but a fresh revision invalidates
 rest mesh, display and simulation state. Identical triangulation, solver paths or
@@ -268,7 +291,7 @@ with reference numerical/rounding/selection behavior still unobserved.
 lengths. Legacy seam maps retain their original normalized-t meaning. Different
 pieces/disconnected spans are supported; gaps never add sewing length. Group
 identity and map survive supported split/join/remesh operations. The native
-writer saves v3; strict v1/v2 readers preserve legacy data and semantics.
+writer saves v4; strict v1/v2/v3 readers preserve legacy data and semantics.
 
 `add_sewing_by_length` creates one ordinary sewing group with one interval per
 side and the normalized physical arc-length map `[[0,0],[1,1]]`:
@@ -288,7 +311,7 @@ errors reject the whole transaction and preserve existing output/recovery bytes.
 Disjoint spans on one curve remain valid. Different side lengths use the existing
 group's normalized proportional semantics. Only resolved t intervals are saved;
 later geometry edits retain those attachments and recompute lengths, without
-persistent length locks. Native v3, CLI `execute`, MCP `project_execute` and the
+persistent length locks. Native v4, CLI `execute`, MCP `project_execute` and the
 nine-tool surface stay unchanged. This is bounded WeftForge engineering behavior;
 reference easing, continuous correspondence and numeric parity remain unqualified.
 See the [physical-length contract](../spec/features/SEW-002-physical-length.md).
@@ -303,7 +326,7 @@ weftforge-cli inspect-sewing output.weftforge
 `commands.json` is a strict JSON array of 1–1024 shared commands, at most 1 MiB.
 Nested transactions and duplicate fields are rejected. CLI and MCP use the same
 transaction/save function; a failed command batch never partially replaces its
-output. Inspection reports the authoritative native-v3 source, group lengths,
+output. Inspection reports the authoritative native-v4 source, group lengths,
 source-owned proportional portions, rest vertices/UVs/triangles, boundary
 parameters and actual weighted stitches. It builds a rest mesh and performs no
 simulation. Its native source uses native scalar serialization, including f32
@@ -343,7 +366,9 @@ native projects at any extension. The shared core writers enforce these guards
 for CLI and desktop exports too. Ordinary non-native export files can be
 replaced atomically. SVG preserves authored boundary curves at mm scale; OBJ
 contains the rebuilt arranged rest mesh, UVs, normals and piece groups in metres.
-Neither is an editable native document or a saved simulation state.
+SVG and DXF omit internal annotations; OBJ emits no annotation line primitives.
+Native project saving is required to preserve editable internals. These exports
+are not editable native documents or saved simulation states.
 
 There is no persistent cross-request undo, live selection/GUI control,
 simulation job API, progress stream, active cancellation implementation, or

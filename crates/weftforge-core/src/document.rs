@@ -174,6 +174,8 @@ pub struct Piece {
     pub name: String,
     /// Closed, ordered chain. Curves are traversed start to end.
     pub boundary: Vec<Id>,
+    /// Independent straight annotations, each with two exclusive endpoint IDs.
+    pub internal_curves: Vec<Id>,
     pub placement: Placement,
     pub material: Id,
     /// Warp axis in material UV: radians counterclockwise from +U toward +V.
@@ -384,6 +386,16 @@ impl Project {
         self.materials.iter().find(|item| item.id == id)
     }
 
+    pub(crate) fn require_boundary_curve(&self, id: Id) -> Result<()> {
+        ensure(self.curve(id).is_some(), "Authored curve is missing")?;
+        ensure(
+            self.pieces.iter().any(|piece| piece.boundary.contains(&id)),
+            &format!(
+                "Curve {id} is not an outer boundary; internal annotations cannot be used here"
+            ),
+        )
+    }
+
     pub fn piece_bounds(&self, id: Id) -> Result<[[f64; 2]; 2]> {
         let piece = self
             .piece(id)
@@ -500,6 +512,7 @@ impl Project {
         }
         let mut used_curves = BTreeSet::new();
         let mut used_points = BTreeSet::new();
+        let mut containment_work = crate::geometry::ContainmentWork::new();
         for piece in &self.pieces {
             validate_name(&piece.name)?;
             ensure(
@@ -527,7 +540,7 @@ impl Project {
             for (index, id) in piece.boundary.iter().enumerate() {
                 ensure(
                     used_curves.insert(*id),
-                    "Boundary curves cannot be shared between pieces",
+                    "Curves must have exactly one boundary or internal owner",
                 )?;
                 let curve = self
                     .curve(*id)
@@ -541,6 +554,30 @@ impl Project {
                 )?;
                 local_points.insert(curve.start);
             }
+            for id in &piece.internal_curves {
+                ensure(
+                    used_curves.insert(*id),
+                    "Curves must have exactly one boundary or internal owner",
+                )?;
+                let curve = self
+                    .curve(*id)
+                    .ok_or_else(|| Error(format!("Missing internal curve {id}")))?;
+                ensure(
+                    curve.controls.is_none(),
+                    &format!("Internal curve {id} must be straight"),
+                )?;
+                for endpoint in [curve.start, curve.end] {
+                    ensure(
+                        local_points.insert(endpoint),
+                        &format!("Internal curve {id} endpoints must be exclusive"),
+                    )?;
+                }
+                let [a, b] = [curve.start, curve.end].map(|id| self.point(id).unwrap().position);
+                ensure(
+                    (a[0] - b[0]).hypot(a[1] - b[1]) > 1.0e-9,
+                    &format!("Internal curve {id} must exceed 1e-9 metres in length"),
+                )?;
+            }
             for id in local_points {
                 ensure(
                     used_points.insert(id),
@@ -548,6 +585,7 @@ impl Project {
                 )?;
             }
             crate::geometry::validate_contour(self, piece)?;
+            crate::geometry::validate_internal_segments(self, piece, &mut containment_work)?;
         }
         ensure(
             used_curves.len() == self.curves.len() && used_points.len() == self.points.len(),
@@ -556,10 +594,7 @@ impl Project {
         for seam in &self.seams {
             validate_name(&seam.name)?;
             for interval in [seam.a, seam.b] {
-                ensure(
-                    self.curve(interval.curve).is_some(),
-                    "Seam curve is missing",
-                )?;
+                self.require_boundary_curve(interval.curve)?;
                 ensure(
                     interval.t0.is_finite()
                         && interval.t1.is_finite()
@@ -607,10 +642,7 @@ impl Project {
                     "A sewing group side needs 1 to 1024 intervals",
                 )?;
                 for interval in side {
-                    ensure(
-                        self.curve(interval.curve).is_some(),
-                        "Sewing group curve is missing",
-                    )?;
+                    self.require_boundary_curve(interval.curve)?;
                     ensure(
                         interval.t0.is_finite()
                             && interval.t1.is_finite()
@@ -735,6 +767,7 @@ impl Project {
                     id,
                     name,
                     boundary,
+                    internal_curves: Vec::new(),
                     placement: Placement::default(),
                     material,
                     grain_angle: 0.,
@@ -789,6 +822,48 @@ impl Project {
                     curve.controls = Some(controls);
                 }
             }
+            Command::AddInternalSegment { piece, start, end } => {
+                ensure(self.piece(piece).is_some(), "Unknown piece")?;
+                validate_coordinates(&start)?;
+                validate_coordinates(&end)?;
+                let start_id = self.allocate_id()?;
+                let end_id = self.allocate_id()?;
+                let curve = self.allocate_id()?;
+                self.points.push(Point {
+                    id: start_id,
+                    position: start,
+                });
+                self.points.push(Point {
+                    id: end_id,
+                    position: end,
+                });
+                self.curves.push(Curve {
+                    id: curve,
+                    start: start_id,
+                    end: end_id,
+                    controls: None,
+                });
+                self.pieces
+                    .iter_mut()
+                    .find(|item| item.id == piece)
+                    .unwrap()
+                    .internal_curves
+                    .push(curve);
+            }
+            Command::RemoveInternalCurve { curve } => {
+                let owner = self
+                    .pieces
+                    .iter_mut()
+                    .find(|piece| piece.internal_curves.contains(&curve))
+                    .ok_or_else(|| Error(format!("Curve {curve} is not an internal annotation")))?;
+                owner.internal_curves.retain(|&id| id != curve);
+                let original = self
+                    .curve(curve)
+                    .ok_or_else(|| Error(format!("Missing internal curve {curve}")))?;
+                let endpoints = [original.start, original.end];
+                self.curves.retain(|item| item.id != curve);
+                self.points.retain(|item| !endpoints.contains(&item.id));
+            }
             Command::MovePoint { point, position } => {
                 self.points
                     .iter_mut()
@@ -797,6 +872,7 @@ impl Project {
                     .position = position;
             }
             Command::SetCurveControls { curve, controls } => {
+                self.require_boundary_curve(curve)?;
                 self.curves
                     .iter_mut()
                     .find(|item| item.id == curve)
@@ -804,6 +880,7 @@ impl Project {
                     .controls = controls;
             }
             Command::SplitCurve { curve, t } => {
+                self.require_boundary_curve(curve)?;
                 ensure(
                     t.is_finite() && t > 1.0e-6 && t < 1.0 - 1.0e-6,
                     "Split t must be strictly inside the curve",
@@ -885,7 +962,12 @@ impl Project {
                     .pieces
                     .iter()
                     .position(|piece| piece.boundary.contains(&curve))
-                    .ok_or_else(|| Error("Curve has no piece".into()))?;
+                    .ok_or_else(|| {
+                        Error(
+                            "Curve has no piece boundary; internal annotations cannot be joined"
+                                .into(),
+                        )
+                    })?;
                 let boundary = &self.pieces[piece_index].boundary;
                 ensure(
                     boundary.len() > 3,
@@ -967,18 +1049,22 @@ impl Project {
                 )?;
                 let [min, max] = self.piece_bounds(piece)?;
                 let scale = [width / (max[0] - min[0]), height / (max[1] - min[1])];
-                let boundary = self
+                let owner = self
                     .piece(piece)
-                    .ok_or_else(|| Error("Unknown piece".into()))?
+                    .ok_or_else(|| Error("Unknown piece".into()))?;
+                let owned: BTreeSet<_> = owner
                     .boundary
-                    .clone();
+                    .iter()
+                    .chain(&owner.internal_curves)
+                    .copied()
+                    .collect();
                 let mut point_ids = BTreeSet::new();
                 for curve in self
                     .curves
                     .iter_mut()
-                    .filter(|curve| boundary.contains(&curve.id))
+                    .filter(|curve| owned.contains(&curve.id))
                 {
-                    point_ids.insert(curve.start);
+                    point_ids.extend([curve.start, curve.end]);
                     if let Some(controls) = &mut curve.controls {
                         for control in controls {
                             for axis in 0..2 {
@@ -1034,12 +1120,11 @@ impl Project {
                     }
                 };
                 let mut point_ids = BTreeSet::new();
-                for curve in self
-                    .curves
-                    .iter_mut()
-                    .filter(|curve| original.boundary.contains(&curve.id))
-                {
-                    point_ids.insert(curve.start);
+                for curve in self.curves.iter_mut().filter(|curve| {
+                    original.boundary.contains(&curve.id)
+                        || original.internal_curves.contains(&curve.id)
+                }) {
+                    point_ids.extend([curve.start, curve.end]);
                     if let Some(controls) = &mut curve.controls {
                         *controls = controls.map(transform);
                     }
@@ -1170,29 +1255,33 @@ impl Project {
                 self.sewing_groups.retain(|item| item.id != group);
             }
             Command::RemovePiece { piece } => {
-                let boundary = self
+                let owner = self
                     .piece(piece)
-                    .ok_or_else(|| Error("Unknown piece".into()))?
+                    .ok_or_else(|| Error("Unknown piece".into()))?;
+                let owned: BTreeSet<_> = owner
                     .boundary
-                    .clone();
+                    .iter()
+                    .chain(&owner.internal_curves)
+                    .copied()
+                    .collect();
                 let points: BTreeSet<Id> = self
                     .curves
                     .iter()
-                    .filter(|curve| boundary.contains(&curve.id))
-                    .map(|curve| curve.start)
+                    .filter(|curve| owned.contains(&curve.id))
+                    .flat_map(|curve| [curve.start, curve.end])
                     .collect();
                 self.pieces.retain(|item| item.id != piece);
-                self.curves.retain(|item| !boundary.contains(&item.id));
+                self.curves.retain(|item| !owned.contains(&item.id));
                 self.points.retain(|item| !points.contains(&item.id));
                 self.seams.retain(|item| {
-                    !boundary.contains(&item.a.curve) && !boundary.contains(&item.b.curve)
+                    !owned.contains(&item.a.curve) && !owned.contains(&item.b.curve)
                 });
                 self.sewing_groups.retain(|group| {
                     !group
                         .a
                         .iter()
                         .chain(&group.b)
-                        .any(|interval| boundary.contains(&interval.curve))
+                        .any(|interval| owned.contains(&interval.curve))
                 });
             }
             Command::SetResolution { metres } => self.resolution = metres,
@@ -1479,6 +1568,14 @@ pub enum Command {
         origin: [f64; 2],
         width: f64,
         height: f64,
+    },
+    AddInternalSegment {
+        piece: Id,
+        start: [f64; 2],
+        end: [f64; 2],
+    },
+    RemoveInternalCurve {
+        curve: Id,
     },
     MovePoint {
         point: Id,
