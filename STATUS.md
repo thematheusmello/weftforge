@@ -105,7 +105,11 @@ integration and prospective garment checks. GitHub Actions was rechecked
 ## Publication and cost policy
 
 Public repository: https://github.com/thematheusmello/weftforge.
-Last published main is `3bc6317733d3dec6bed45dc056fdad669c369a1a`, merged
+The native preview, ellipse and contact counterexamples are delivered through
+[PR37](https://github.com/thematheusmello/weftforge/pull/37). Clean0289553 checks
+validated all2,087 referenced artifacts and the unchanged39-fileb760 runtime;
+the registry records the PR without promoting reference parity.
+Previous published main is `3bc6317733d3dec6bed45dc056fdad669c369a1a`, merged
 [PR36](https://github.com/thematheusmello/weftforge/pull/36). Its tree equals tested
 final head `63963816`; all 37 runtime files match executed `6c45535c`.
 Earlier [PR35](https://github.com/thematheusmello/weftforge/pull/35), main
