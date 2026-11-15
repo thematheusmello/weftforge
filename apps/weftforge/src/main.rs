@@ -6688,6 +6688,50 @@ mod tests {
     }
 
     #[test]
+    fn worker_failure_survives_late_cancel_and_revision_change() {
+        let error = "Worker diagnostic must survive a later UI action.";
+        let mut outcomes = Vec::new();
+        for action in ["cancel", "edit"] {
+            let mut app = accepted_drape_studio();
+            let mesh = app.mesh.clone().unwrap();
+            let cloth = app.cloth.clone().unwrap();
+            let (sender, receiver) = mpsc::channel();
+            app.job = Some(Job {
+                id: 41,
+                revision: app.editor.project.revision,
+                kind: JobKind::Simulation,
+                batch: Some(SimulationBatch::assemble()),
+                completed_steps: Arc::new(AtomicU64::new(0)),
+                cancel: Arc::new(AtomicBool::new(false)),
+                receiver,
+            });
+            sender.send(Err(error.into())).ok().unwrap();
+            if action == "cancel" {
+                app.cancel();
+            } else {
+                app.editor
+                    .execute(Command::SetResolution { metres: 0.025 })
+                    .unwrap();
+            }
+            app.poll();
+            let job = app.last_job.unwrap();
+            assert_eq!(job.id, 41);
+            assert_eq!(job.progress, Some((0, 60)));
+            assert_eq!(app.last_stage, "Drape");
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+            outcomes.push((action, job.status, app.message));
+        }
+        assert_eq!(
+            outcomes,
+            vec![
+                ("cancel", JobStatus::Failed, error.into()),
+                ("edit", JobStatus::Failed, error.into()),
+            ],
+        );
+    }
+
+    #[test]
     fn stage_resets_only_on_successful_document_load() {
         let dir = exit_test_directory("stage-load");
         let valid = dir.join("valid.weftforge");
