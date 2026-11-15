@@ -149,6 +149,10 @@ fn success(response: &Value) -> &Value {
     data
 }
 
+fn native_project_json(project: &Project) -> Value {
+    serde_json::from_slice::<Value>(&project.to_json().unwrap()).unwrap()["project"].clone()
+}
+
 fn tool_error(response: &Value) {
     assert_eq!(response["result"]["isError"], true, "{response}");
     assert!(
@@ -318,7 +322,10 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
     );
     success(&server.call("project_create", json!({"output":project_path})));
     let initial = server.call("project_inspect", json!({"path":project_path}));
-    assert_eq!(success(&initial)["project"], json!(Project::default()));
+    assert_eq!(
+        success(&initial)["project"],
+        native_project_json(&Project::default())
+    );
     let piece = initial["result"]["structuredContent"]["project"]["next_id"]
         .as_u64()
         .unwrap();
@@ -342,7 +349,10 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
     assert_eq!(Project::load(&project_path).unwrap(), expected.project);
     assert_eq!(Project::recover(&project_path).unwrap(), Project::default());
     let reopened = server.call("project_inspect", json!({"path":project_path}));
-    assert_eq!(success(&reopened)["project"], json!(expected.project));
+    assert_eq!(
+        success(&reopened)["project"],
+        native_project_json(&expected.project)
+    );
     assert_eq!(
         success(&reopened)["units"],
         json!({"length":"m","mass":"kg","time":"s"})
@@ -722,10 +732,7 @@ fn stdio_ellipse_discovery_creation_inspection_and_failure_preservation() {
     );
     assert!(saved.curves.iter().all(|c| c.controls.is_some()));
     let inspected = server.call("project_inspect", json!({"path":output}));
-    assert_eq!(
-        success(&inspected)["project"],
-        serde_json::to_value(&saved).unwrap()
-    );
+    assert_eq!(success(&inspected)["project"], native_project_json(&saved));
     success(&server.call(
         "project_execute",
         json!({"input":output,"output":output,"commands":[command]}),
@@ -901,7 +908,7 @@ fn stdio_errors_preserve_input_output_and_recovery_and_allow_retry() {
     assert_eq!(fs::read(recovery_path(&output)).unwrap(), previous_recovery);
     assert_eq!(
         success(&server.call("project_inspect", json!({"path":input})))["project"],
-        json!(editor.project)
+        native_project_json(&editor.project)
     );
     server.finish();
 }
@@ -948,7 +955,10 @@ fn stdio_validates_protocol_lifecycle_modern_metadata_and_line_bounds() {
     assert_eq!(listed["result"]["ttlMs"], 0);
     success(&server.request("tools/call", json!({"_meta":modern_metadata("2026-07-28"),"name":"project_create","arguments":{"output":path}})));
     let modern = server.request("tools/call", json!({"_meta":modern_metadata("2026-07-28"),"name":"project_inspect","arguments":{"path":path}}));
-    assert_eq!(success(&modern)["project"], json!(Project::default()));
+    assert_eq!(
+        success(&modern)["project"],
+        native_project_json(&Project::default())
+    );
     assert_eq!(modern["result"]["resultType"], "complete");
     assert_eq!(
         server.request("tools/list", json!({}))["error"]["code"],
@@ -1208,5 +1218,88 @@ fn dxf_import_stdio_discovers_shared_command_reports_physical_scale_and_is_atomi
     success(&server.call("project_execute", json!({"input":input,"output":output,"commands":[{"type":"import_dxf_patterns","data":{"dxf":String::from_utf8(original.to_vec()).unwrap()}}]})));
     assert_eq!(Project::load(&output).unwrap(), saved);
     assert_eq!(fs::read(recovery_path(&output)).unwrap(), before);
+    server.finish();
+}
+
+#[test]
+fn inspection_matches_saved_native_json_without_changing_f32_materials_or_f64_geometry() {
+    let directory = Directory::new();
+    let path = directory.path("canonical-inspection.weftforge");
+    let mut editor = Editor::default();
+    editor
+        .execute(Command::AddEllipse {
+            name: "Original decimal geometry".into(),
+            origin: [-0.12345678901234566, 0.2718281828459045],
+            width: 0.403210987654321,
+            height: 0.6543210987654321,
+        })
+        .unwrap();
+    let piece = editor.project.pieces[0].id;
+    editor
+        .execute(Command::SetPlacement {
+            piece,
+            placement: weftforge_core::Placement {
+                translation: [-0.0, 0.23456789012345678, -0.3456789012345679],
+                rotation: [
+                    0.12345678901234566,
+                    -0.23456789012345678,
+                    0.3456789012345679,
+                ],
+            },
+        })
+        .unwrap();
+    editor.project.materials[0].color = [0.22, 0.55, 0.76];
+    editor.project.materials[0].areal_density = 0.18000000000000002;
+    editor.project.save(&path).unwrap();
+    let original = fs::read(&path).unwrap();
+    let native: Value = serde_json::from_slice(&original).unwrap();
+    assert_eq!(
+        native["project"]["materials"][0]["color"],
+        json!([0.22, 0.55, 0.76])
+    );
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let response = server.call("project_inspect", json!({"path":path}));
+    // success also checks that the text and structured MCP results agree exactly.
+    let inspected = &success(&response)["project"];
+    assert_eq!(*inspected, native["project"]);
+    let typed: Project = serde_json::from_value(inspected.clone()).unwrap();
+    assert_eq!(typed, editor.project);
+    assert_eq!(typed.materials, editor.project.materials);
+    assert_eq!(
+        typed.materials[0].color.map(f32::to_bits),
+        editor.project.materials[0].color.map(f32::to_bits)
+    );
+    for (actual, expected) in typed.points.iter().zip(&editor.project.points) {
+        assert_eq!(
+            actual.position.map(f64::to_bits),
+            expected.position.map(f64::to_bits)
+        );
+    }
+    for (actual, expected) in typed.curves.iter().zip(&editor.project.curves) {
+        assert_eq!(
+            actual
+                .controls
+                .map(|controls| controls.map(|point| point.map(f64::to_bits))),
+            expected
+                .controls
+                .map(|controls| controls.map(|point| point.map(f64::to_bits)))
+        );
+    }
+    assert_eq!(
+        typed.pieces[0].placement.translation.map(f64::to_bits),
+        editor.project.pieces[0]
+            .placement
+            .translation
+            .map(f64::to_bits)
+    );
+    assert_eq!(
+        typed.pieces[0].placement.rotation.map(f64::to_bits),
+        editor.project.pieces[0]
+            .placement
+            .rotation
+            .map(f64::to_bits)
+    );
+    assert_eq!(fs::read(&path).unwrap(), original);
     server.finish();
 }
