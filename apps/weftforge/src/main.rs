@@ -13,7 +13,7 @@ use weftforge_core::{
     Command, Curve, CurveInterval, DxfPatternImport, Editor, Id, Material, Mesh, Placement,
     Project, SewingGroup, SvgPatternImport,
 };
-use weftforge_sim::{Cloth, MaterialAxis, StepSettings};
+use weftforge_sim::{Cloth, MaterialAxis, SimulationError, StepSettings};
 
 #[derive(Clone, Copy, PartialEq)]
 enum Tool {
@@ -77,13 +77,21 @@ impl JobStatus {
         }
     }
 }
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
+enum JobError {
+    Cancelled,
+    Failed(String),
+}
+#[derive(Clone, Debug, PartialEq)]
 struct FinishedJob {
     id: u64,
     revision: u64,
     kind: JobKind,
     progress: Option<(u64, usize)>,
     status: JobStatus,
+    outcome: Result<(), JobError>,
+    cancel_requested: bool,
+    obsolete: bool,
 }
 enum JobOutput {
     Mesh(Arc<Mesh>),
@@ -127,14 +135,14 @@ struct Job {
     batch: Option<SimulationBatch>,
     completed_steps: Arc<AtomicU64>,
     cancel: Arc<AtomicBool>,
-    receiver: mpsc::Receiver<Result<JobOutput, String>>,
+    receiver: mpsc::Receiver<Result<JobOutput, JobError>>,
 }
 impl Job {
     fn spawn(
         ctx: &egui::Context,
         revision: u64,
         kind: JobKind,
-        work: impl FnOnce(&AtomicBool, &AtomicU64) -> Result<JobOutput, String> + Send + 'static,
+        work: impl FnOnce(&AtomicBool, &AtomicU64) -> Result<JobOutput, JobError> + Send + 'static,
     ) -> Self {
         static NEXT_TASK_ID: AtomicU64 = AtomicU64::new(1);
         let id = NEXT_TASK_ID.fetch_add(1, Ordering::Relaxed);
@@ -704,9 +712,8 @@ impl Studio {
             project.revision,
             JobKind::Mesh,
             move |cancel, _| {
-                let mesh = project
-                    .mesh_cancellable(|| cancel.load(Ordering::Relaxed))
-                    .map_err(|error| error.to_string())?;
+                let mesh =
+                    cancellable_core_job(cancel, |cancelled| project.mesh_cancellable(cancelled))?;
                 Ok(JobOutput::Mesh(Arc::new(mesh)))
             },
         ));
@@ -750,18 +757,20 @@ impl Studio {
             move |cancel, progress| {
                 let mut state = match cloth {
                     Some(state) => (*state).clone(),
-                    None => {
-                        weftforge_core::simulation::create_cloth_cancellable(&project, &mesh, || {
-                            cancel.load(Ordering::Relaxed)
-                        })
-                        .map_err(|error| error.to_string())?
-                    }
+                    None => cancellable_core_job(cancel, |cancelled| {
+                        weftforge_core::simulation::create_cloth_cancellable(
+                            &project, &mesh, cancelled,
+                        )
+                    })?,
                 };
                 check_cancelled(cancel)?;
                 for _ in 0..batch.steps {
                     state
                         .step(settings, || cancel.load(Ordering::Relaxed))
-                        .map_err(|e| e.to_string())?;
+                        .map_err(|error| match error {
+                            SimulationError::Cancelled => JobError::Cancelled,
+                            error => JobError::Failed(error.to_string()),
+                        })?;
                     progress.fetch_add(1, Ordering::Relaxed);
                 }
                 Ok(JobOutput::Simulation(Arc::new(state)))
@@ -777,21 +786,26 @@ impl Studio {
             .and_then(|job| match job.receiver.try_recv() {
                 Ok(r) => Some(r),
                 Err(mpsc::TryRecvError::Empty) => None,
-                Err(_) => Some(Err("Worker stopped; previous state retained.".into())),
+                Err(_) => Some(Err(JobError::Failed(
+                    "Worker stopped; previous state retained.".into(),
+                ))),
             });
         if let Some(result) = result {
             let job = self.job.take().expect("finished job");
+            let cancel_requested = job.cancel.load(Ordering::Relaxed);
+            let obsolete = job.revision != self.editor.project.revision;
             let can_accept = job.accepts(self.editor.project.revision);
-            let status = if !can_accept {
-                if job.cancel.load(Ordering::Relaxed) {
-                    JobStatus::Cancelled
-                } else {
-                    JobStatus::Discarded
+            let status = match &result {
+                Err(JobError::Failed(_)) => JobStatus::Failed,
+                Err(JobError::Cancelled) => JobStatus::Cancelled,
+                Ok(_) if !can_accept => {
+                    if cancel_requested {
+                        JobStatus::Cancelled
+                    } else {
+                        JobStatus::Discarded
+                    }
                 }
-            } else if result.is_err() {
-                JobStatus::Failed
-            } else {
-                JobStatus::Accepted
+                Ok(_) => JobStatus::Accepted,
             };
             self.last_job = Some(FinishedJob {
                 id: job.id,
@@ -799,18 +813,18 @@ impl Studio {
                 kind: job.kind,
                 progress: job.progress(),
                 status,
+                outcome: result.as_ref().map(|_| ()).map_err(Clone::clone),
+                cancel_requested,
+                obsolete,
             });
-            if !can_accept {
-                return;
-            }
             match result {
-                Ok(JobOutput::Mesh(mesh)) => {
+                Ok(JobOutput::Mesh(mesh)) if can_accept => {
                     self.mesh = Some(mesh);
                     self.cloth = None;
                     self.last_stage = "Rest arrangement";
                     self.message = "Rest mesh rebuilt from editable construction.".into();
                 }
-                Ok(JobOutput::Simulation(state)) => {
+                Ok(JobOutput::Simulation(state)) if can_accept => {
                     self.last_stage = job.batch.map_or("Manual simulation", |batch| batch.stage);
                     self.message = format!(
                         "{} complete · {:.3} s · {:.1} ms/step · assembly remaining {:.4} m",
@@ -821,11 +835,12 @@ impl Studio {
                     );
                     self.cloth = Some(state);
                 }
-                Err(e) => {
+                Err(JobError::Failed(e)) => {
                     self.message = e;
                     self.playing = false;
                     self.pending_batch = None;
                 }
+                _ => {}
             }
         }
     }
@@ -1397,7 +1412,8 @@ impl Studio {
                 self.cancel();
                 self.playing = false;
                 self.pending_batch = None;
-                self.message = "Cancelling phase; previous accepted snapshot retained.".into();
+                self.message =
+                    "Cancellation requested; previous accepted snapshot retained.".into();
             }
             ui.checkbox(&mut self.wireframe, "Wireframe");
         });
@@ -1437,13 +1453,31 @@ impl Studio {
                         },
                     ));
                 }
-                if let Some(job) = self.last_job {
+                if let Some(job) = &self.last_job {
                     ui.label(format!(
                         "Last: task {} · {:?} · input rev {} · {}",
-                        job.id, job.kind, job.revision, job.status.label(),
+                        job.id,
+                        job.kind,
+                        job.revision,
+                        job.status.label(),
                     ));
                     if let Some((completed, total)) = job.progress {
                         ui.weak(format!("Successful worker steps: {completed}/{total}"));
+                    }
+                    ui.weak(format!(
+                        "Cancel requested: {} · obsolete input: {}",
+                        job.cancel_requested, job.obsolete,
+                    ));
+                    match &job.outcome {
+                        Ok(()) => {
+                            ui.weak("Worker outcome: succeeded");
+                        }
+                        Err(JobError::Cancelled) => {
+                            ui.weak("Worker outcome: cancelled");
+                        }
+                        Err(JobError::Failed(error)) => {
+                            ui.label(format!("Worker failure: {error}"));
+                        }
                     }
                 }
             });
@@ -2924,12 +2958,33 @@ fn numeric_commit(response: &egui::Response) -> bool {
         || (response.lost_focus() && !action_blur)
         || (response.changed() && !response.is_pointer_button_down_on() && !response.has_focus())
 }
-fn check_cancelled(cancel: &AtomicBool) -> Result<(), String> {
+fn check_cancelled(cancel: &AtomicBool) -> Result<(), JobError> {
     if cancel.load(Ordering::Relaxed) {
-        Err("Operation cancelled; previous snapshot retained.".into())
+        Err(JobError::Cancelled)
     } else {
         Ok(())
     }
+}
+fn cancellable_core_job<T>(
+    cancel: &AtomicBool,
+    work: impl FnOnce(&dyn Fn() -> bool) -> weftforge_core::Result<T>,
+) -> Result<T, JobError> {
+    // Core errors flatten cancellation; record only the operation's own stopping callback.
+    let stopped = std::cell::Cell::new(false);
+    work(&|| {
+        let requested = cancel.load(Ordering::Relaxed);
+        if requested {
+            stopped.set(true);
+        }
+        requested
+    })
+    .map_err(|error| {
+        if stopped.get() {
+            JobError::Cancelled
+        } else {
+            JobError::Failed(error.to_string())
+        }
+    })
 }
 fn append_suffix(path: &Path, suffix: &str) -> PathBuf {
     let mut name = path.file_name().unwrap_or_default().to_os_string();
@@ -6667,7 +6722,9 @@ mod tests {
                 assert_eq!(app.last_stage, "Drape");
                 assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
                 let output = if outcome == "failed" {
-                    Err("Worker failed; previous state retained.".into())
+                    Err(JobError::Failed(
+                        "Worker failed; previous state retained.".into(),
+                    ))
                 } else {
                     Ok(match kind {
                         JobKind::Mesh => JobOutput::Mesh(Arc::new((*mesh).clone())),
@@ -6705,7 +6762,10 @@ mod tests {
                 cancel: Arc::new(AtomicBool::new(false)),
                 receiver,
             });
-            sender.send(Err(error.into())).ok().unwrap();
+            sender
+                .send(Err(JobError::Failed(error.into())))
+                .ok()
+                .unwrap();
             if action == "cancel" {
                 app.cancel();
             } else {
@@ -6714,9 +6774,12 @@ mod tests {
                     .unwrap();
             }
             app.poll();
-            let job = app.last_job.unwrap();
+            let job = app.last_job.as_ref().unwrap();
             assert_eq!(job.id, 41);
             assert_eq!(job.progress, Some((0, 60)));
+            assert_eq!(job.outcome, Err(JobError::Failed(error.into())));
+            assert_eq!(job.cancel_requested, action == "cancel");
+            assert_eq!(job.obsolete, action == "edit");
             assert_eq!(app.last_stage, "Drape");
             assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
             assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
@@ -6729,6 +6792,12 @@ mod tests {
                 ("edit", JobStatus::Failed, error.into()),
             ],
         );
+        let cancel = AtomicBool::new(false);
+        let result: Result<(), JobError> = cancellable_core_job(&cancel, |_| {
+            cancel.store(true, Ordering::Relaxed);
+            Err(weftforge_core::Error(error.into()))
+        });
+        assert_eq!(result, Err(JobError::Failed(error.into())));
     }
 
     #[test]
@@ -6790,9 +6859,10 @@ mod tests {
         assert!(!job.accepts(8));
         job.cancel.store(true, Ordering::Relaxed);
         release_sender.send(()).unwrap();
-        assert!(
-            matches!(job.receiver.recv_timeout(Duration::from_secs(2)).unwrap(),Err(message) if message.contains("cancelled"))
-        );
+        assert!(matches!(
+            job.receiver.recv_timeout(Duration::from_secs(2)).unwrap(),
+            Err(JobError::Cancelled)
+        ));
         let mut app = Studio::empty();
         let old = Arc::new(Mesh::default());
         app.mesh = Some(old.clone());
@@ -6893,7 +6963,7 @@ mod tests {
                 app.poll();
                 std::thread::yield_now();
             }
-            app.last_job.unwrap()
+            app.last_job.clone().unwrap()
         }
 
         let ctx = egui::Context::default();
@@ -6905,7 +6975,7 @@ mod tests {
             steps: 2,
             ..SimulationBatch::assemble()
         };
-        let previous = app.last_job;
+        let previous = app.last_job.clone();
         app.queue_batch(batch);
         assert_eq!(app.last_job, previous);
         app.start_batch(&ctx, batch);
@@ -6927,7 +6997,11 @@ mod tests {
         assert!(!Arc::ptr_eq(&cloth, &old_cloth));
         assert!((cloth.simulation_time() - old_cloth.simulation_time() - 2.0 / 60.0).abs() < 1e-12);
 
-        for status in [JobStatus::Failed, JobStatus::Cancelled, JobStatus::Discarded] {
+        for status in [
+            JobStatus::Failed,
+            JobStatus::Cancelled,
+            JobStatus::Discarded,
+        ] {
             let mut attempt = batch;
             if status == JobStatus::Failed {
                 attempt.settings.dt = 0.0;
@@ -6963,7 +7037,7 @@ mod tests {
             assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
         }
 
-        let discarded = app.last_job;
+        let discarded = app.last_job.clone();
         app.queue_batch(batch);
         app.rebuild();
         assert_eq!(app.last_job, discarded);

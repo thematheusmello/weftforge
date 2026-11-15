@@ -33,6 +33,17 @@ Cancellation takes precedence when a task is also obsolete. The last terminal
 record survives queued phases, new mesh scheduling, construction edits, clearing,
 document load and Reset. It is replaced only when another task terminates.
 
+Lifecycle correction, 2026-11-15: preserve the actual worker outcome separately
+from the cancellation request and obsolete-input facts. A genuine worker failure
+remains Failed and its diagnostic stays visible in the message and last-task
+details even if Cancel, Reset or an edit happens before the UI collects it. A
+later request flag cannot turn that failure into harmless cancellation. Local
+typed cancellation comes from the worker's actual cancellation checks, including
+the core operation's own stopping callback, without parsing error text. A worker
+that succeeds before a late cancellation request still records that successful
+worker outcome while rejecting its result. No rejected result replaces accepted
+cloth.
+
 Worker failure, cancellation and stale results retain the previous accepted
 cloth and mesh. Existing explicit Reset/document-clear behavior still clears
 simulation state, and accepted replacement meshing still resets cloth. No step
