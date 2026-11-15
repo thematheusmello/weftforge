@@ -493,6 +493,7 @@ struct Studio {
     drag_snap: PositionSnap,
     polygon: Vec<[f64; 2]>,
     pattern_canvas: Option<egui::Id>,
+    garment_canvas: Option<egui::Id>,
     drag_start: Option<[f64; 2]>,
     rectangle: Option<RectangleDraft>,
     transform: Option<TransformDraft>,
@@ -569,6 +570,7 @@ impl Studio {
             drag_snap: PositionSnap::Mm10,
             polygon: vec![],
             pattern_canvas: None,
+            garment_canvas: None,
             drag_start: None,
             rectangle: None,
             transform: None,
@@ -689,7 +691,7 @@ impl Studio {
             },
             focused,
         ) {
-            self.select(self.editor.project.pieces.last().map(|piece| piece.id));
+            self.select(ctx, self.editor.project.pieces.last().map(|piece| piece.id));
         }
     }
 
@@ -789,15 +791,50 @@ impl Studio {
         }
         clicked
     }
-    fn select(&mut self, selected: Option<Id>) {
-        if (self.selected != selected || self.selected_curve.is_some()) && self.commit_draft() {
+    fn select(&mut self, ctx: &egui::Context, selected: Option<Id>) -> bool {
+        if self.tool == Tool::Transform {
+            let focus = self.inspector_focus(ctx);
+            let invalid_text = focus
+                .and_then(|id| ctx.data_mut(|data| data.get_temp::<String>(id)))
+                .is_some_and(|text| {
+                    text.trim()
+                        .parse::<f64>()
+                        .ok()
+                        .is_none_or(|value| !value.is_finite())
+                });
+            if self.selected != selected {
+                // shortcut: one staged piece at a time; add cross-piece staging only with multiselection.
+                if invalid_text
+                    || self
+                        .draft
+                        .as_ref()
+                        .is_some_and(|draft| !draft.commands(&self.editor.project).is_empty())
+                {
+                    self.message = "Apply or cancel the current property edit before selecting another pattern.".into();
+                    finish_numeric_action(ctx, focus, false);
+                    return false;
+                }
+                self.selected = selected;
+                self.selected_curve = None;
+                self.draft = None;
+            }
+            return true;
+        }
+        if self.selected != selected || self.selected_curve.is_some() {
+            if !self.commit_draft() {
+                return false;
+            }
             self.selected = selected;
             self.selected_curve = None;
         }
+        true
     }
-    fn select_curve(&mut self, selected: Option<(Id, Id)>) {
+    fn select_curve(&mut self, ctx: &egui::Context, selected: Option<(Id, Id)>) {
         let piece = selected.map(|(piece, _)| piece);
         let curve = selected.map(|(_, curve)| curve);
+        if self.tool == Tool::Transform && self.selected != piece && !self.select(ctx, piece) {
+            return;
+        }
         if (self.selected != piece || self.selected_curve != curve) && self.commit_draft() {
             self.selected = piece;
             self.selected_curve = curve;
@@ -1137,7 +1174,7 @@ impl Studio {
         if accept {
             if self.apply_inspector_action(ctx, import.drawing.command(), import.focused) {
                 self.reset_gestures();
-                self.select(self.editor.project.pieces.last().map(|piece| piece.id));
+                self.select(ctx, self.editor.project.pieces.last().map(|piece| piece.id));
                 self.message = format!(
                     "Imported {} editable {} patterns at physical scale. {}",
                     import.drawing.piece_count(),
@@ -1895,8 +1932,11 @@ impl Studio {
                                             );
                                         }
                                         let response = ui.add(button).on_hover_text(&piece.name);
+                                        if self.tool == Tool::Transform {
+                                            self.retain_inspector_input(&response, false);
+                                        }
                                         if response.clicked() {
-                                            self.select(Some(piece.id));
+                                            self.select(ui.ctx(), Some(piece.id));
                                         }
                                     },
                                 );
@@ -1913,8 +1953,10 @@ impl Studio {
                 && ui.input(|input| input.pointer.any_down() || input.pointer.any_released())
                 && self
                     .pattern_canvas
-                    .and_then(|id| ui.ctx().read_response(id))
-                    .is_some_and(|response| {
+                    .into_iter()
+                    .chain(self.garment_canvas)
+                    .filter_map(|id| ui.ctx().read_response(id))
+                    .any(|response| {
                         ui.input(|input| input.pointer.interact_pos())
                             .is_some_and(|pointer| response.rect.contains(pointer))
                     }))
@@ -1947,7 +1989,7 @@ impl Studio {
                     .selected_text(self.selected_curve.map_or("Choose boundary".into(),|id|format!("Curve #{id}")))
                     .show_ui(ui,|ui| {
                         for (index,id) in piece.boundary.iter().enumerate() {
-                            if ui.selectable_label(self.selected_curve==Some(*id),format!("Boundary {} · curve #{id}",index+1)).clicked() { self.select_curve(Some((piece.id,*id))); }
+                            if ui.selectable_label(self.selected_curve==Some(*id),format!("Boundary {} · curve #{id}",index+1)).clicked() { self.select_curve(ui.ctx(), Some((piece.id,*id))); }
                         }
                     });
             }
@@ -2159,7 +2201,7 @@ impl Studio {
             self.draft=Some(draft);
             if add_rectangle {
                 self.execute(Command::AddRectangle { name:self.name.clone(),origin:self.coordinate,width:self.size[0],height:self.size[1] });
-                self.select(self.editor.project.pieces.last().map(|piece|piece.id));
+                self.select(ui.ctx(), self.editor.project.pieces.last().map(|piece|piece.id));
             }
             if add_ellipse { self.add_ellipse(ui.ctx(),action_focus); }
             if close_polygon { self.finish_polygon(); }
@@ -2340,36 +2382,6 @@ impl Studio {
         self.transform_gesture = None;
         finish_numeric_action(ctx, edit.focus, false);
         self.transform = Some(edit);
-    }
-    fn select_transform_piece(&mut self, ctx: &egui::Context, piece: Id) -> bool {
-        let focus = self.inspector_focus(ctx);
-        let invalid_text = focus
-            .and_then(|id| ctx.data_mut(|data| data.get_temp::<String>(id)))
-            .is_some_and(|text| {
-                text.trim()
-                    .parse::<f64>()
-                    .ok()
-                    .is_none_or(|value| !value.is_finite())
-            });
-        if self.selected != Some(piece) {
-            // shortcut: one staged piece at a time; add cross-piece staging only with multiselection.
-            if invalid_text
-                || self
-                    .draft
-                    .as_ref()
-                    .is_some_and(|draft| !draft.commands(&self.editor.project).is_empty())
-            {
-                self.message =
-                    "Apply or cancel the current property edit before selecting another pattern."
-                        .into();
-                finish_numeric_action(ctx, focus, false);
-                return false;
-            }
-            self.selected = Some(piece);
-            self.selected_curve = None;
-            self.draft = None;
-        }
-        true
     }
     fn discard_stale_transform(&mut self) {
         let stale = |edit: &TransformDraft| {
@@ -2597,7 +2609,7 @@ impl Studio {
                     Command::Transaction(commands)
                 };
                 if self.apply_command(command) {
-                    self.select(self.editor.project.pieces.last().map(|piece| piece.id));
+                    self.select(ctx, self.editor.project.pieces.last().map(|piece| piece.id));
                     return;
                 }
                 rectangle.error = Some(self.message.clone());
@@ -2959,7 +2971,7 @@ impl Studio {
                 nearest.map(|(piece, _)| piece)
             };
             if let Some(piece) = piece
-                && self.select_transform_piece(ui.ctx(), piece)
+                && self.select(ui.ctx(), Some(piece))
                 && let Some(edit) = self.transform_edit(ui.ctx(), piece)
             {
                 finish_numeric_action(ui.ctx(), edit.focus, false);
@@ -3024,15 +3036,15 @@ impl Studio {
                     width: (end[0] - start[0]).abs(),
                     height: (end[1] - start[1]).abs(),
                 });
-                self.select(self.editor.project.pieces.last().map(|p| p.id));
+                self.select(ui.ctx(), self.editor.project.pieces.last().map(|p| p.id));
             }
         }
         if response.clicked() {
             match self.tool {
-                Tool::Select => self.select_curve(nearest),
+                Tool::Select => self.select_curve(ui.ctx(), nearest),
                 Tool::Transform => {
                     if let Some((piece, _)) = nearest {
-                        self.select_transform_piece(ui.ctx(), piece);
+                        self.select(ui.ctx(), Some(piece));
                     }
                 }
                 Tool::Polygon => {
@@ -3214,6 +3226,7 @@ impl Studio {
     fn garment(&mut self, ui: &mut egui::Ui) {
         pane_heading(ui, "3D Garment").on_hover_text("Y up · metres. Drag to orbit; scroll to zoom; click a triangle to select its pattern piece.");
         let (response, painter) = ui.allocate_painter(ui.available_size(), Sense::click_and_drag());
+        self.garment_canvas = Some(response.id);
         let r = response.rect;
         painter.rect_filled(r, 0., Color32::from_gray(37));
         if response.dragged() {
@@ -3302,7 +3315,7 @@ impl Studio {
                 }
             }
             if picked.is_some() {
-                self.select(picked);
+                self.select(ui.ctx(), picked);
             }
         }
         painter.text(
@@ -5495,7 +5508,7 @@ mod tests {
             .unwrap();
         let piece = app.editor.project.pieces[0].id;
         let curve = app.editor.project.pieces[0].boundary[2];
-        app.select_curve(Some((piece, curve)));
+        app.select_curve(&ctx, Some((piece, curve)));
         let output = frame(&ctx, &mut app, vec![]);
         let cubic = output
             .platform_output
@@ -6419,7 +6432,7 @@ mod tests {
                 })
                 .unwrap();
             let selected = app.editor.project.pieces[0].id;
-            app.select(Some(selected));
+            app.select(&ctx, Some(selected));
             let before = app.editor.project.clone();
             let mut draft = InspectorDraft::new(&before, app.selected, app.selected_curve);
             draft.resolution = 0.09;
@@ -6644,7 +6657,7 @@ mod tests {
             vec![action(&output, "Curve A", Action::Click)],
         );
         let curve = app.editor.project.piece(first).unwrap().boundary[2];
-        app.select_curve(Some((first, curve)));
+        app.select_curve(&ctx, Some((first, curve)));
         let output = frame(&ctx, &mut app, vec![]);
         frame(
             &ctx,
@@ -6668,10 +6681,10 @@ mod tests {
         let before_selection = app.editor.project.clone();
         let width_field = numeric_field(&output, "Size m", 0);
         frame(&ctx, &mut app, vec![request(width_field, Action::Focus)]);
-        app.select(Some(first));
+        app.select(&ctx, Some(first));
         let output = frame(&ctx, &mut app, vec![]);
         assert_eq!(numeric_field(&output, "Size m", 0), width_field);
-        app.select_curve(Some((first, curve)));
+        app.select_curve(&ctx, Some((first, curve)));
         let output = frame(&ctx, &mut app, vec![]);
         assert_eq!(numeric_field(&output, "Size m", 0), width_field);
         assert_eq!(app.editor.project, before_selection);
@@ -6709,7 +6722,7 @@ mod tests {
                 .controls
                 .is_none()
         );
-        app.select_curve(Some((second, other_curve)));
+        app.select_curve(&ctx, Some((second, other_curve)));
         let output = frame(&ctx, &mut app, vec![]);
         frame(
             &ctx,
@@ -6727,14 +6740,14 @@ mod tests {
         frame(&ctx, &mut app, vec![request(mesh_field, Action::Focus)]);
         frame(&ctx, &mut app, vec![]);
         replace(&ctx, &mut app, "0.085", false);
-        app.select(Some(second));
+        app.select(&ctx, Some(second));
         let output = frame(&ctx, &mut app, vec![]);
         assert_eq!(numeric_field(&output, "Mesh edge length m", 0), mesh_field);
         assert_eq!(
             focused(&output),
             (mesh_field, Some("0.085".into()), Some(0.085))
         );
-        app.select(Some(first));
+        app.select(&ctx, Some(first));
         let output = frame(&ctx, &mut app, vec![]);
         assert_eq!(numeric_field(&output, "Mesh edge length m", 0), mesh_field);
         assert_eq!(app.editor.project.resolution, 0.085);
@@ -6743,7 +6756,7 @@ mod tests {
             other_controls
         );
 
-        app.select_curve(Some((first, curve)));
+        app.select_curve(&ctx, Some((first, curve)));
         let output = frame(&ctx, &mut app, vec![]);
         let split_field = numeric_field(&output, "Split parameter t", 0);
         frame(&ctx, &mut app, vec![request(split_field, Action::Focus)]);
@@ -7176,6 +7189,7 @@ mod tests {
 
     #[test]
     fn selected_curve_controls_and_split_use_fresh_drafts_atomic_history_and_invalidation() {
+        let ctx = egui::Context::default();
         let mut app = Studio::empty();
         app.editor
             .execute(Command::AddRectangle {
@@ -7187,9 +7201,8 @@ mod tests {
             .unwrap();
         let piece = app.editor.project.pieces[0].id;
         let curve = app.editor.project.pieces[0].boundary[2];
-        app.select_curve(Some((piece, curve)));
+        app.select_curve(&ctx, Some((piece, curve)));
         let before = app.editor.project.clone();
-        let ctx = egui::Context::default();
         let _ = ctx.run_ui(egui::RawInput::default(), |ui| app.inspector(ui));
         assert_eq!(app.editor.project, before);
         let mut draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
@@ -7236,10 +7249,10 @@ mod tests {
         assert!(app.commit_draft());
         assert_eq!(app.editor.project.curve(curve).unwrap().controls, None);
         let next = app.editor.project.pieces[0].boundary[0];
-        app.select_curve(Some((piece, next)));
+        app.select_curve(&ctx, Some((piece, next)));
         let draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
         assert_eq!(draft.curve.unwrap().id, next);
-        app.select(Some(piece));
+        app.select(&ctx, Some(piece));
         assert_eq!(app.selected_curve, None);
     }
 
@@ -7285,6 +7298,7 @@ mod tests {
                 })],
             );
         }
+        let ctx = egui::Context::default();
         let mut app = Studio::empty();
         app.editor
             .execute(Command::AddRectangle {
@@ -7306,7 +7320,7 @@ mod tests {
             .execute(Command::SplitCurve { curve, t: 0.4 })
             .unwrap();
         let right = app.editor.project.curves.last().unwrap().id;
-        app.select_curve(Some((piece, curve)));
+        app.select_curve(&ctx, Some((piece, curve)));
         let before = app.editor.project.clone();
         let mut draft = InspectorDraft::new(&before, app.selected, app.selected_curve);
         draft.resolution = 0.09;
@@ -7323,7 +7337,6 @@ mod tests {
             receiver,
         });
         app.pending_batch = Some(SimulationBatch::drape());
-        let ctx = egui::Context::default();
         ctx.enable_accesskit();
         click_join(&ctx, &mut app);
         assert_eq!(app.editor.project.revision, before.revision + 1);
@@ -7340,7 +7353,7 @@ mod tests {
         app.rebuild();
         assert_eq!(app.editor.project.curves, before.curves);
         assert_eq!(app.editor.project.resolution, before.resolution);
-        app.select_curve(Some((piece, right)));
+        app.select_curve(&ctx, Some((piece, right)));
         let before_invalid = app.editor.project.clone();
         let mut draft = InspectorDraft::new(&before_invalid, app.selected, app.selected_curve);
         draft.resolution = 0.08;
@@ -7468,7 +7481,7 @@ mod tests {
                     })
                     .unwrap();
                 assert!(app.editor.undo());
-                app.select_curve(Some((piece, selected)));
+                app.select_curve(&ctx, Some((piece, selected)));
                 let before = app.editor.project.clone();
                 let original_x = before.curve(selected).unwrap().controls.unwrap()[0][0];
                 let draft = InspectorDraft::new(&before, app.selected, app.selected_curve);
@@ -7833,7 +7846,7 @@ mod tests {
                     .unwrap();
                 assert!(app.editor.undo());
                 assert!(app.editor.can_redo());
-                app.select_curve(Some((piece, a)));
+                app.select_curve(&ctx, Some((piece, a)));
                 let before = app.editor.project.clone();
                 frame(&ctx, &mut app, vec![]); // Settle the measured footer before caching screen positions.
                 let output = frame(&ctx, &mut app, vec![]);
@@ -8618,7 +8631,7 @@ mod tests {
         let piece = app.editor.project.pieces[0].id;
         let curve = app.editor.project.pieces[0].boundary[2];
         app.execute(Command::SetGrain { piece, angle: 0.37 });
-        app.select_curve(Some((piece, curve)));
+        app.select_curve(&egui::Context::default(), Some((piece, curve)));
         let mut draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
         draft.curve.as_mut().unwrap().controls = Some([[0.3, 0.8], [0.1, 0.8]]);
         app.draft = Some(draft);
@@ -9165,7 +9178,7 @@ mod tests {
             ctx.enable_accesskit();
             let (mut app, curves) = fixture(true);
             let piece = app.editor.project.pieces[0].id;
-            app.select(Some(piece));
+            app.select(&ctx, Some(piece));
             let before = app.editor.project.clone();
             let (output, focused) = stage_inspector(&ctx, &mut app);
             let output = click(&ctx, &mut app, &output, "Edit group");
@@ -9268,7 +9281,7 @@ mod tests {
                 })
                 .unwrap();
             assert!(app.editor.undo());
-            app.select(Some(piece));
+            app.select(&ctx, Some(piece));
             let before = app.editor.project.clone();
             let (output, focused) = stage_inspector(&ctx, &mut app);
             let output = click(&ctx, &mut app, &output, "M:N sewing");
@@ -9472,7 +9485,7 @@ mod tests {
                 ctx.enable_accesskit();
                 let (mut app, curves) = fixture(true);
                 let piece = app.editor.project.pieces[0].id;
-                app.select(Some(piece));
+                app.select(&ctx, Some(piece));
                 let before = app.editor.project.clone();
                 let (output, inspector_focus) = stage_inspector(&ctx, &mut app);
                 let output = pointer_click_label(&ctx, &mut app, &output, "Edit group");
@@ -9591,7 +9604,7 @@ mod tests {
             ctx.enable_accesskit();
             let (mut app, curves) = fixture(false);
             let piece = app.editor.project.pieces[0].id;
-            app.select_curve(Some((piece, curves[0])));
+            app.select_curve(&ctx, Some((piece, curves[0])));
             app.intervals = [[0.2, 0.8], [0.1, 0.9]];
             let before = app.editor.project.clone();
             let (output, _) = stage_inspector(&ctx, &mut app);
@@ -10680,6 +10693,45 @@ mod pattern_transform_tests {
     fn canvas_rect(ctx: &egui::Context, app: &Studio) -> Rect {
         ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect
     }
+    fn garment_pick_position(output: &egui::FullOutput, app: &Studio, piece: Id) -> Pos2 {
+        let rect = output
+            .shapes
+            .iter()
+            .filter_map(|clipped| match &clipped.shape {
+                egui::Shape::Rect(shape) if shape.fill == Color32::from_gray(37) => {
+                    Some(shape.rect)
+                }
+                _ => None,
+            })
+            .next_back()
+            .unwrap();
+        let mesh = app.mesh.as_ref().unwrap();
+        let triangles: Vec<_> = mesh
+            .triangles
+            .iter()
+            .map(|triangle| {
+                (
+                    mesh.piece_ids[triangle[0]],
+                    triangle.map(|index| app.project3(mesh.positions[index], rect).0),
+                )
+            })
+            .collect();
+        triangles
+            .iter()
+            .filter(|(id, _)| *id == piece)
+            .find_map(|(_, triangle)| {
+                let position = Pos2::new(
+                    triangle.iter().map(|point| point.x).sum::<f32>() / 3.,
+                    triangle.iter().map(|point| point.y).sum::<f32>() / 3.,
+                );
+                (rect.contains(position)
+                    && triangles.iter().all(|(id, triangle)| {
+                        *id == piece || !point_in_triangle(position, *triangle)
+                    }))
+                .then_some(position)
+            })
+            .expect("second piece has an isolated rendered triangle to pick")
+    }
     fn same_construction(actual: &Project, expected: &Project) {
         let mut actual = actual.clone();
         actual.revision = expected.revision;
@@ -11087,6 +11139,166 @@ mod pattern_transform_tests {
         assert_eq!(app.selected, Some(second));
         assert_eq!(app.editor.project, before);
         assert!(app.editor.can_redo());
+    }
+
+    #[test]
+    fn transform_scene_row_selection_preserves_staged_and_raw_edits_through_real_ui_actions() {
+        for pointer in [false, true] {
+            for text in ["0.47", "1e-", "NaN"] {
+                let ctx = egui::Context::default();
+                ctx.enable_accesskit();
+                let mut app = fixture();
+                let focused = focus_property(&ctx, &mut app, text);
+                let raw = ctx.data_mut(|data| data.get_temp::<String>(focused));
+                let caret = egui::TextEdit::load_state(&ctx, focused)
+                    .unwrap()
+                    .cursor
+                    .char_range();
+                let before = format!("{:?}", app.editor);
+                let selected = (app.selected, app.selected_curve);
+                let pending = format!(
+                    "{:?}",
+                    app.draft.as_ref().unwrap().commands(&app.editor.project)
+                );
+                let output = frame(&ctx, &mut app, vec![]);
+                let row = button(&output, "Separate panel");
+                if pointer {
+                    let bounds = output
+                        .platform_output
+                        .accesskit_update
+                        .as_ref()
+                        .unwrap()
+                        .nodes
+                        .iter()
+                        .find(|(id, _)| *id == row)
+                        .unwrap()
+                        .1
+                        .bounds()
+                        .unwrap();
+                    let position = Pos2::new(
+                        ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                        ((bounds.y0 + bounds.y1) * 0.5) as f32,
+                    );
+                    pointer_frame(&ctx, &mut app, position, Some(true), false);
+                    assert_eq!(
+                        format!("{:?}", app.editor),
+                        before,
+                        "Scene row press must retain {text:?}"
+                    );
+                    pointer_frame(&ctx, &mut app, position, Some(false), false);
+                } else {
+                    frame(&ctx, &mut app, vec![action(row, Action::Click, None)]);
+                }
+                frame(&ctx, &mut app, vec![]);
+                frame(&ctx, &mut app, vec![]);
+                assert_eq!(
+                    format!("{:?}", app.editor),
+                    before,
+                    "Scene selection pointer={pointer}, text={text:?}"
+                );
+                assert_eq!((app.selected, app.selected_curve), selected);
+                assert_eq!(
+                    format!(
+                        "{:?}",
+                        app.draft.as_ref().unwrap().commands(&app.editor.project)
+                    ),
+                    pending
+                );
+                assert_eq!(numeric_focus(&ctx), Some(focused));
+                assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), raw);
+                assert_eq!(
+                    egui::TextEdit::load_state(&ctx, focused)
+                        .unwrap()
+                        .cursor
+                        .char_range(),
+                    caret
+                );
+                assert!(app.editor.can_redo());
+                assert!(app.message.contains("Apply or cancel"));
+                assert!(!app.dirty);
+            }
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let before = format!("{:?}", app.editor);
+            frame(&ctx, &mut app, vec![]);
+            let output = frame(&ctx, &mut app, vec![]);
+            let row = button(&output, "Separate panel");
+            frame(&ctx, &mut app, vec![action(row, Action::Click, None)]);
+            assert_eq!(app.selected, Some(app.editor.project.pieces[1].id));
+            assert_eq!(format!("{:?}", app.editor), before);
+        }
+    }
+
+    #[test]
+    fn transform_garment_pick_preserves_edits_before_press_blur_and_on_release() {
+        for text in ["0.47", "1e-", "NaN"] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let mesh = Arc::new(app.editor.project.mesh().unwrap());
+            app.mesh = Some(mesh.clone());
+            let focused = focus_property(&ctx, &mut app, text);
+            let raw = ctx.data_mut(|data| data.get_temp::<String>(focused));
+            let caret = egui::TextEdit::load_state(&ctx, focused)
+                .unwrap()
+                .cursor
+                .char_range();
+            let before = format!("{:?}", app.editor);
+            let selected = (app.selected, app.selected_curve);
+            let pending = format!(
+                "{:?}",
+                app.draft.as_ref().unwrap().commands(&app.editor.project)
+            );
+            let output = frame(&ctx, &mut app, vec![]);
+            let position = garment_pick_position(&output, &app, app.editor.project.pieces[1].id);
+            pointer_frame(&ctx, &mut app, position, Some(true), false);
+            assert_eq!(
+                format!("{:?}", app.editor),
+                before,
+                "3D press must retain {text:?}"
+            );
+            pointer_frame(&ctx, &mut app, position, Some(false), false);
+            frame(&ctx, &mut app, vec![]);
+            frame(&ctx, &mut app, vec![]);
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!((app.selected, app.selected_curve), selected);
+            assert_eq!(
+                format!(
+                    "{:?}",
+                    app.draft.as_ref().unwrap().commands(&app.editor.project)
+                ),
+                pending
+            );
+            assert_eq!(numeric_focus(&ctx), Some(focused));
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), raw);
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, focused)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert!(app.editor.can_redo());
+            assert!(!app.dirty);
+            assert!(app.message.contains("Apply or cancel"));
+        }
+        for tool in [Tool::Transform, Tool::Select] {
+            let ctx = egui::Context::default();
+            let mut app = fixture();
+            app.set_tool(tool);
+            app.mesh = Some(Arc::new(app.editor.project.mesh().unwrap()));
+            let before = format!("{:?}", app.editor);
+            frame(&ctx, &mut app, vec![]);
+            let output = frame(&ctx, &mut app, vec![]);
+            let second = app.editor.project.pieces[1].id;
+            let position = garment_pick_position(&output, &app, second);
+            pointer_frame(&ctx, &mut app, position, Some(true), false);
+            pointer_frame(&ctx, &mut app, position, Some(false), false);
+            assert_eq!(app.selected, Some(second));
+            assert_eq!(format!("{:?}", app.editor), before);
+        }
     }
 
     #[test]
