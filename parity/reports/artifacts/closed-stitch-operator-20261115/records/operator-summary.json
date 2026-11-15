@@ -1,0 +1,58 @@
+{
+  "commit": "c39401c173eb81111858e6b5ebfdfb165b27c365",
+  "base": "c17d303e099836f022fe8f8222bc61b1cb33c3cd",
+  "reused_candidate": "35afac604a93174fcdc2a5538799432aa6d69286",
+  "branch": "feat/balanced-closed-stitches-20261115",
+  "worktree": "<operator-checkout>",
+  "private_cargo_target": "<operator-target>",
+  "source_worktree_clean": true,
+  "terminal_sessions": [
+    {"session": 7402, "check": "baseline cargo test -p weftforge-sim", "exit": 0, "tests_passed": 42},
+    {"session": 39613, "check": "unchanged N32 observer on base scalar solver", "exit": 101},
+    {"session": 14610, "check": "closed_elastic_stitch focused tests", "exit": 0, "tests_passed": 7},
+    {"session": 84637, "check": "cargo test -p weftforge-sim", "exit": 0, "tests_passed": 51},
+    {"session": 15999, "check": "cargo clippy -p weftforge-sim --all-targets -- -D warnings", "exit": 0},
+    {"session": 79504, "check": "direct old/current radial source harness", "exit": 0, "bit_identical_projections": 810}
+  ],
+  "other_final_checks": [
+    {"check": "cargo fmt --all --check", "exit": 0},
+    {"check": "git diff --cached --check before commit", "exit": 0},
+    {"check": "source_scope.py before and after commit", "exit": 0}
+  ],
+  "initial_failures": [
+    {
+      "check": "N32 observer against base scalar solver",
+      "expected_failure": true,
+      "first_assertion": "position: m",
+      "individual_transport_N": [0.3262304845504921, 0.09239588081082441],
+      "stationarity_N": [0.1849692798866941, 0.3565047390259405, 0.0],
+      "log": "initial-n32-scalar.log"
+    },
+    {
+      "check": "first cargo fmt --all --check",
+      "exit": 1,
+      "cause": "New rigid-transform case array needed rustfmt's one-line formatting.",
+      "resolution": "cargo fmt --all, then final format check passed.",
+      "log": "fmt.log"
+    },
+    {
+      "check": "first source audit",
+      "exit": 1,
+      "cause": "Overbroad assertion compared all constraints.rs against old candidate 35af, which still contained the obsolete Membrane::signed_strains helper. The initial normalization-to-current-base assertion had passed.",
+      "resolution": "Bound candidate equality to owned solve_stitch; separately prove all remaining constraints.rs bytes equal current base. No solver source change.",
+      "raw_output": "Traceback (most recent call last): File <stdin>, line 15, in <module>; AssertionError"
+    },
+    {
+      "check": "first direct radial harness compile",
+      "exit": 1,
+      "cause": "Imported WeightedPoint::position is private across Rust crate boundaries (E0624).",
+      "resolution": "Extract the unchanged current/base WeightedPoint and Stitch definitions into the harness crate, omitting only Serde derive metadata. No solver source change.",
+      "log": "initial-radial-equality.log"
+    }
+  ],
+  "final_n32_transport_N": [2.220446049250313e-16, 2.7755575615628914e-16],
+  "source_equality_scope": "solve_stitch byte-identical to 35af. Remove only new vector branch and normalize lambda signature/index to recover base constraints.rs exactly. lib.rs differs only in seam-lambda allocation. All other sim Rust files and existing tests except two private lambda variables are byte-identical to base. Candidate analytic tests/tolerances retained except complete current capsule diagnostic state; one unequal-two-mass/overlap/rigid-transform test added.",
+  "not_run": ["garment initialization or fit", "CLI simulate", "native UI", "timed physics", "workspace tests or workspace Clippy", "xtask verification", "GitHub or CI", "publication"],
+  "acceptance": "source-ready bounded operator implementation only; no garment-quality, physical convergence, calibration or reference-parity acceptance",
+  "next_owner_step": "Root may review/cherry-pick source commit, maintain STATUS and evidence freshness, and run integrated workspace gates before any separately authorized future garment protocol. Local check files are private working records, not tracked published evidence."
+}
