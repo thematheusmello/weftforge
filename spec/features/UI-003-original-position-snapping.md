@@ -4,12 +4,18 @@ Prospective implementation-only contract, written before product changes on
 2026-11-15. This is original WeftForge behavior; no reference observation or
 parity is claimed.
 
-The native studio toolbar offers one compact **Snap** selector with **Off**,
+The native studio toolbar offers one compact inline **Snap** selector with **Off**,
 **1 mm**, **5 mm**, and **10 mm**. A new studio defaults to **10 mm**, preserving
 the previous 1 cm snap. The preference belongs to the current studio session,
 survives project open/recovery, and is never stored in `.weftforge` or autosaves.
 Changing it does not edit construction, history, selection, simulation state or
 pending numeric input. Existing authoring modals disable the toolbar.
+
+Interaction amendment, 2026-11-15: all four choices remain visible together using
+the existing toolbar selectable-label pattern, with one highlighted choice and
+normal keyboard focus/activation. Choosing a mode retains unfinished numeric raw
+text, caret/selection and parsed draft as well as document/history. For example,
+typing `1e-`, choosing a mode, then typing `2` must complete `1e-2` to 0.01 m.
 
 Convert the pointer through the existing view-to-pattern path in SI metres.
 For 1, 5 and 10 mm, independently compute each coordinate as
@@ -40,7 +46,8 @@ numeric millimetres converted to metres; only its clicked anchor is snapped.
 The visible 0.1 m guide grid does not change with this position preference.
 
 Focused checks will drive the native studio's egui pointer path to exercise
-selector changes, snapped/bypassed geometry, retained drafts, and exact history
+selector changes, snapped/bypassed geometry, retained raw text/caret and drafts,
+and exact history
 boundaries. A small arithmetic check covers all spacings, negative values and
 half-way ties. These implementation tests establish neither actual window-level
 usability nor reference parity. Workspace gates and previous acceptance cases
