@@ -1,0 +1,147 @@
+{
+  "review": "NATIVE-STUDIO-INDEPENDENT-REVIEW-20261115",
+  "case": "NATIVE-STUDIO-CHECK-20261115-002",
+  "created_utc": "2026-11-15T10:57:21.919511+00:00",
+  "status": "CLOSED_STOP_BEFORE_TYPING_REQUIRED_FOCUS_WITNESS_UNVERIFIED",
+  "classification": {
+    "product_failure_established": false,
+    "product_pass_established": false,
+    "old_lost_decimal_cause": "unresolved",
+    "Gate1_or_reference_credit": false
+  },
+  "independently_inspected": {
+    ".local/native-studio-acceptance-v2-20261115/captures/0005-ax.txt": {
+      "bytes": 3640,
+      "sha256": "e47b7243738d1309d9864a90021cf41f77d5c8331fc8ac0b9e680ae7d7dd5999",
+      "verification": "selected bytes independently hash-checked; no full bundle claim"
+    },
+    ".local/native-studio-acceptance-v2-20261115/captures/0005-native.jpg": {
+      "bytes": 190948,
+      "sha256": "47bfefef73078b9573076b79de8e4e37d40e380b2d9af7da8be8184308956a36",
+      "verification": "selected bytes independently hash-checked; no full bundle claim"
+    },
+    ".local/native-studio-check-plan-v2-20261115/METHOD-PLAN.md": {
+      "bytes": 11732,
+      "sha256": "431f3aa0c5984b4636612b58537aeac72df79365c34547d109e219e774745ce6",
+      "verification": "selected bytes independently hash-checked; no full bundle claim"
+    },
+    ".local/native-studio-check-plan-v2-20261115/FREEZE.json": {
+      "bytes": 6207,
+      "sha256": "bf034a198b4985202df91943d49d9eb906ea8aef54b04414f4621656cb08ae85",
+      "verification": "selected bytes independently hash-checked; no full bundle claim"
+    },
+    ".local/native-studio-acceptance-20261115/OUTCOME.json": {
+      "bytes": 2776,
+      "sha256": "264d82428e0649e709ea7a7a490cd0054f572bd7f324ba6ce7698ed17803bbc1",
+      "verification": "selected bytes independently hash-checked; no full bundle claim"
+    },
+    ".local/native-studio-acceptance-v2-20261115/OUTCOME.json": {
+      "bytes": 5184,
+      "sha256": "1c0a73546604bae8dd34737720c163b7d203cbc9c6acedf3cf60f18a741434b0",
+      "verification": "selected bytes independently hash-checked; no full bundle claim"
+    }
+  },
+  "raw_0005_findings": {
+    "creation_X": {
+      "AX_id": 51,
+      "role": "stepper",
+      "displayed_value": "-0.25",
+      "TextField_role_present": false
+    },
+    "global_selected_text": "-0.25",
+    "explicit_focused_AX_field_identity_or_flag_present": false,
+    "image_observation": "X selection/teal outline visible; no inference about internal focus.",
+    "other_TextField": "Pattern name AX46 exists, unrelated to creation X focus gate.",
+    "initial_visible_state": "rev0;0pieces;0seams;0groups;0vertices;.070mesh;Snap10mm;Rest arrangement;Taskdetailscollapsed",
+    "frozen_required_gate": "intended focused TextField + full selection; image alternative requires selection plus focused AX field",
+    "decision": "STOP; missing focused AX field/TextField witness cannot be replaced by selected-text footer or image outline after observation."
+  },
+  "closed_002_actor_outcome_claims": {
+    "outcome_sha256": "1c0a73546604bae8dd34737720c163b7d203cbc9c6acedf3cf60f18a741434b0",
+    "counts": {
+      "paired_calls": 5,
+      "focus_click": 1,
+      "typeText": 0,
+      "pressKey": 0,
+      "construction_commits": 0,
+      "native_saves": 0,
+      "geometry_consumers": 0,
+      "physics_jobs": 0,
+      "retries": 0
+    },
+    "stopped_utc": "2026-11-15T10:53:29.151063+00:00",
+    "elapsed_s_including_setup_review_closure": 248.023822042,
+    "elapsed_qualification": "actor reported, not independently timed or benchmarked",
+    "source_commit": "21b9f5e76a77ca21357783240cef7506b3887fbc",
+    "native_sha256": "116755960fb0d1c15c531568976417490d88da2ccdb48d3b5f48639e2aba66c7",
+    "PID": 71312,
+    "runtime_qualification": "actor/root binding claims; executable and full source manifest were not rehashed by this review",
+    "app_state": "actor reports own app left empty revision0 with Xselected; no Close/Quit/Save afterstop",
+    "own_primary_outputs": "actor reports absent; not independently searched",
+    "completion": {
+      "actor_reports_called_once": true,
+      "actor_reports_no_CUA_ownership": true,
+      "platform_trace_inspected": false,
+      "independent_exact_once_claim": false,
+      "not_inferred_from_pair_count": true
+    },
+    "actor_inventory_sha256_root_supplied_not_read": "4f7d58cc515313e550245f2f0f0905fd965c32c2e04c209283bfc425483b1653"
+  },
+  "remaining_criteria": {
+    "four verified X transitions and raw/Return/committed numeric barriers": "NOTEXERCISED",
+    "Entrycheck authoring and native Save": "NOTEXERCISED",
+    "pending1e- Snap retention and .01commit": "NOTEXERCISED",
+    "Snap mode/history checks": "NOTEXERCISED",
+    "sameP Off5mm pair": "NOTEXERCISED",
+    "final savedgeometry consumer": "NOTEXERCISED",
+    "taskdetails observation": "NOTEXERCISED",
+    "nativeMNkeyboard": "NOTEXERCISED",
+    "hero and readonlypreview": "NOTEXERCISED",
+    "physics and garment quality": "NOTEXERCISED"
+  },
+  "closed_001": {
+    "outcome_sha256": "264d82428e0649e709ea7a7a490cd0054f572bd7f324ba6ce7698ed17803bbc1",
+    "classification": "closed setup failure before input; neither product failure nor product pass",
+    "reason_attribution": "actor outcome reports binder one-own-layer0 assertion rejected main studio plus auxiliary sharing window",
+    "underlying_binder_pairs_inspected": false,
+    "credit_transferred_to_002": false,
+    "completion_exact_once": "actor claim only; platform trace not inspected here"
+  },
+  "old_Harbor_disposition": "permanently failed/stopped; original scalar-loss cause unresolved; no retry/regrade/continuation",
+  "not_inspected": [
+    "raw0005 before/after pair files",
+    "other002captures and complete five-pair trace",
+    "raw001binder/preflight and three-pair trace",
+    "ACTOR-INVENTORY bytes",
+    "whole runtime/source/gates",
+    "platformcompletion records",
+    "full privatecontext"
+  ],
+  "no_execution": [
+    "livequeries/CUA",
+    "tests/Cargo/product/source",
+    "consumer/numericregrade",
+    "physics/replay",
+    "publication"
+  ],
+  "report_sha256": "1d2f09faf39d597e96a8243718789aade65b1a4ef7a0d52e330e24dadfc5e778",
+  "finite_public_candidate_selection": [
+    {
+      "path": ".local/native-studio-independent-review-20261115/REPORT.md",
+      "sha256": "1d2f09faf39d597e96a8243718789aade65b1a4ef7a0d52e330e24dadfc5e778"
+    },
+    {
+      "path": ".local/native-studio-independent-review-20261115/EVIDENCE.json",
+      "sha256": "recorded externally after serialization; self hash deliberately excluded"
+    },
+    {
+      "path": ".local/native-studio-acceptance-v2-20261115/captures/0005-ax.txt",
+      "sha256": "e47b7243738d1309d9864a90021cf41f77d5c8331fc8ac0b9e680ae7d7dd5999"
+    },
+    {
+      "path": ".local/native-studio-acceptance-v2-20261115/captures/0005-native.jpg",
+      "sha256": "47bfefef73078b9573076b79de8e4e37d40e380b2d9af7da8be8184308956a36"
+    }
+  ],
+  "publication_status": "No publication authorization or tracked delivery. Exclude all other actor/private artifacts. Root must review chosen bytes, Git-track every retained artifact and run registry/map checks from clean checkout before publishing."
+}

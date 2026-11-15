@@ -1,0 +1,40 @@
+{
+  "basis": "Declared design decimals converted to exact rational values; no grader, product command, mesh or solver run.",
+  "declared": [
+    {
+      "name": "Harbor front",
+      "vertices": 14,
+      "nonadjacent_intersections_or_touches": [],
+      "signed_area_exact": "100691/160000",
+      "signed_area_m2": 0.62931875
+    },
+    {
+      "name": "Harbor back",
+      "vertices": 14,
+      "nonadjacent_intersections_or_touches": [],
+      "signed_area_exact": "5923/10000",
+      "signed_area_m2": 0.5923
+    }
+  ],
+  "conditional_reconstruction": {
+    "assumption": "Only back point7 X is 84; every other coordinate equals the declared target. The unsaved staged vector was not directly available.",
+    "nonadjacent_crossing_one_based_edges": [
+      [
+        5,
+        7
+      ]
+    ],
+    "intersection_exact": [
+      "9914/8337",
+      "62546/41685"
+    ],
+    "intersection_m": [
+      1.189156771020751,
+      1.5004438047259205
+    ],
+    "edge5_t_exact": "4187/8337",
+    "edge7_t_exact": "8300/8337",
+    "status": "consistent with native rejection, not proof of internal staged vector or input mechanism"
+  },
+  "self_checks": "proper crossing, endpoint touch, separated collinear segments, positive declared areas and exact expected conditional crossing asserted"
+}

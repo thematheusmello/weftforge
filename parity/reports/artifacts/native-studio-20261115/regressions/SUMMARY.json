@@ -1,0 +1,115 @@
+{
+  "snap_raw_text": {
+    "candidate": "2950d545ada7b838a008850a7e37c32f49f67584",
+    "result": "RED9/9 unfinished raw text/caret cases in private headless driver; exit101.",
+    "identity": {
+      "commit": "2950d545ada7b838a008850a7e37c32f49f67584",
+      "source_sha256": "7b297ff3ba418d81b9412c5af7d3378b4efb1b3960b63cf8438994a60f495bd2",
+      "log_sha256": "6ce8339dcc4c484274672ec35faf91f9903ba74944ef59290ee789b87e46f8eb",
+      "note": "Source copied from Git after corrective candidate arrived; frozen-wrapper changes only include path to this identical historical source. Original runtime log is preserved without rerun."
+    }
+  },
+  "snap_keyboard": {
+    "candidate_commit": "7a1ef8f7a9fbda9b8b1400d7a05723268153b360",
+    "production_sha256": "1231d5ccd0d1e97b091d1e59fc8f4676e8067ed9b86a0ba78773223584e1fb88",
+    "log_sha256": "25d25fad2339aec20110820539accaa557e1c22e3207c978d25bc550e3ad8cac",
+    "command": [
+      "cargo",
+      "run",
+      "--offline",
+      "--target-dir",
+      "target",
+      "--bin",
+      "keyboard-review"
+    ],
+    "exit_code": 101,
+    "note": "Includes exact corrective main.rs in a private headless driver. Own review target reused; no candidate target shared. First attempt needed taller test viewport to expose mesh field in SewingPaths; final recorded run contains the confirmed assertion failure."
+  },
+  "snap_final": "539635bc75f5e8a2d7b63061178e6c082a4b7c0c; original Snap fixes are cherry-picked into source466b. Final integration192 includes the native source/tests.",
+  "telemetry_error_and_layout": [
+    {
+      "name": "regression-red",
+      "source": "a6f77cf4cf54789ce67e29282ef6b8f33165828d",
+      "production": "35b14dbda586dc7c044bbeb8a1e3743f9af8dac1",
+      "session": 70175,
+      "exit": 101,
+      "command": "cargo test -p weftforge tests::worker_failure_survives_late_cancel_and_revision_change -- --exact --nocapture",
+      "result": "0 passed; 1 failed as expected",
+      "original_log_member": "red.log",
+      "original_log_sha256": "d19e26f97513051fcc9739359377424715d7179d707dab001aef67da98ff0fdc",
+      "public_log": "regressions/telemetry-error-red.log",
+      "public_log_sha256": "fef16daffe39d0e0f93ec4108fb6f0dd1a3a3efe062e7863f7e0537c9a223e94"
+    },
+    {
+      "name": "regression-green",
+      "source": "5ab5f81f3ced9f4af5de46ad75ac4cfc369a9784",
+      "session": 61809,
+      "exit": 0,
+      "command": "cargo test -p weftforge tests::worker_failure_survives_late_cancel_and_revision_change -- --exact --nocapture",
+      "result": "1 passed; 0 failed",
+      "original_log_member": "green.log",
+      "original_log_sha256": "9600a652065be7429c41bb96a79b2a7e3bc5c44504ae89474696f1ac1ff158bf",
+      "public_log": "regressions/telemetry-error-green.log",
+      "public_log_sha256": "319ae5956a3b57ef47eb562b490c56e414a0ff0ec91b5bae66e82995a73225f7"
+    },
+    {
+      "name": "native-initial",
+      "source": "5ab5f81f3ced9f4af5de46ad75ac4cfc369a9784",
+      "session": 15197,
+      "exit": 101,
+      "command": "cargo test -p weftforge --all-targets",
+      "result": "45 passed; 1 failed on changing transport height",
+      "original_log_member": "native-tests.log",
+      "original_log_sha256": "b92bf162dbf3e498179c1a81e8d9fc33596f037b05766e777e3e93a18bb00e49",
+      "public_log": "regressions/telemetry-layout-red.log",
+      "public_log_sha256": "b92bf162dbf3e498179c1a81e8d9fc33596f037b05766e777e3e93a18bb00e49"
+    },
+    {
+      "name": "layout-green",
+      "source": "221fdb0658ba5a63a6f2759709d53b19cab2dddc",
+      "session": 20432,
+      "exit": 0,
+      "command": "cargo test -p weftforge tests::seam_reverse_button_keeps_focused_drafts_atomic_and_draws_endpoint_pairs -- --exact",
+      "result": "1 passed; 0 failed",
+      "original_log_member": "layout-green.log",
+      "original_log_sha256": "fc35915306c485553c26b722a2a77953d6cfa58a71cd51583927a6145820ae77",
+      "public_log": "regressions/telemetry-layout-green.log",
+      "public_log_sha256": "4cae70136481f4e940378b0bf0b4008d803f7dfd9df44c8945d8328df8859f47"
+    }
+  ],
+  "telemetry_late_intent": [
+    {
+      "name": "intent-red",
+      "source": "c493b22140f0b1526828b94a66c1e86d3cc87e01",
+      "production": "221fdb0658ba5a63a6f2759709d53b19cab2dddc",
+      "session": 57102,
+      "exit": 101,
+      "command": "cargo test -p weftforge tests::worker_failure_survives_late_cancel_and_revision_change -- --exact --nocapture",
+      "result": "0 passed; 1 failed as expected: lost Step replacement and resumed Play",
+      "original_log_member": "intent-red.log",
+      "original_log_sha256": "30ba56ccc174f87cb4e378f9dde7aa154cfc5f1a8326406f18667a64743d9b5e",
+      "public_log": "regressions/telemetry-intent-red.log",
+      "public_log_sha256": "f041be4c1854478aa22683c142d60b2c248c3449669c712a43eef71b68e5126c"
+    },
+    {
+      "name": "intent-green",
+      "source": "21b9f5e76a77ca21357783240cef7506b3887fbc",
+      "session": 34489,
+      "exit": 0,
+      "command": "cargo test -p weftforge tests::worker_failure_survives_late_cancel_and_revision_change -- --exact --nocapture",
+      "result": "1 passed; 0 failed",
+      "original_log_member": "intent-green.log",
+      "original_log_sha256": "df3f0fdb89a00e766cb6593c8a34f64bf5cbfc4a8c3935e7c226556de62a8aad",
+      "public_log": "regressions/telemetry-intent-green.log",
+      "public_log_sha256": "753309005ac35fc349664b61c2746ddbc3d65fea173964d6769cc9b1cd1c9a37"
+    }
+  ],
+  "source_reachability": "Original Snap539635bc (including2950/7a1 ancestors) is publicly reachable at evidence/native-position-snapping, exact ID confirmed by root. Telemetry witnesses/fixes are ancestors of21b9.",
+  "qualifications": [
+    "These are original retained implementation records, not new executions or native-window observations.",
+    "2950 source snapshot was copied retrospectively after the corrective candidate; no cryptographic pre-edit freeze claim.",
+    "Snap driver setup/text-lookup and keyboard viewport corrections preceded the final retained RED runs.",
+    "The10.5px layout failure and superseded-failure intent regression remain visible; no all-green history.",
+    "Private full driver/source snapshots and target are omitted; this is not a turnkey historical RED replay."
+  ]
+}

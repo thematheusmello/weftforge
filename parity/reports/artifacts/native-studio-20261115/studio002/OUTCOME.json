@@ -1,0 +1,105 @@
+{
+  "case": "NATIVE-STUDIO-CHECK-20261115-002",
+  "status": "STOPPED_UNVERIFIED_FOCUS_OBSERVABILITY",
+  "reason": "Frozen plan requires intended focused AX TextField witness plus full selection before numeric replacement.005 exposes creationX as Stepper51 plus globalSelectedtext -0.25 and nativevisualoutline/selection, without focusedElement/flag or numeric TextFieldrole. Independentrootreview ruledrequiredwitness unavailable. Stopped beforefirsttyping withoutrelaxation/retry.",
+  "classification": "Missing required focus observability; neither productfailure nor productpass; olddecimal-loss cause unresolved.",
+  "stopped_utc": "2026-11-15T10:53:29.151063+00:00",
+  "conservative_elapsed_s": 248.023822042,
+  "clock_note": "Same system monotonic clock includinglaunch/setup/rootinterpretationwait/closure; no reset/subtraction.",
+  "source_commit": "21b9f5e76a77ca21357783240cef7506b3887fbc",
+  "source_tree": "ada23bc049230817a6884c94b332d95eb40f5c7e",
+  "native_sha256": "116755960fb0d1c15c531568976417490d88da2ccdb48d3b5f48639e2aba66c7",
+  "pid": 71312,
+  "initial_observation": "003 ownEmptyrev0/0pieces/0seams/0groups/0vertices/.070mesh/Snap10mm/Restpaused; Taskdetailscollapsed.",
+  "viewport_binding": "process/VIEWPORT-INITIAL.json passed: uniqueownPID/layer0mainWeftForge bounds460,106,1640,1032 vsactualimage1640x1032; sharingaux66x20 separatelyretained; OSscale1 reportedDPI108.000001622.",
+  "last_observation": "005 rawAX/image: creationXStepper51 -0.25, fullglobalSelectedtext -0.25, visibleoutlinededitfield; requiredfocusedAXTextFieldwitnessunavailable",
+  "focus_witness": {
+    "AX": "captures/0005-ax.txt",
+    "AX_sha256": "e47b7243738d1309d9864a90021cf41f77d5c8331fc8ac0b9e680ae7d7dd5999",
+    "native_image": "captures/0005-native.jpg",
+    "native_image_sha256": "47bfefef73078b9573076b79de8e4e37d40e380b2d9af7da8be8184308956a36",
+    "explicit_focusedElement_or_numeric_TextField_role": false
+  },
+  "UI_action_counts": {
+    "own_OS_launch": 1,
+    "own_getApp": 1,
+    "AX_plus_image_observations": 2,
+    "focus_click": 1,
+    "typeText": 0,
+    "pressKey": 0,
+    "construction_commits": 0,
+    "native_saves": 0,
+    "geometry_consumers": 0,
+    "physics_jobs": 0,
+    "retries": 0
+  },
+  "feature_checks": {
+    "four_X_transitions": "NOTEXERCISED beforetyping",
+    "pending_numeric_Snap": "NOTEXERCISED",
+    "same_P_pair": "NOTEXERCISED",
+    "task_details": "NOTEXERCISED",
+    "native_M_N_keyboard": "NOTEXERCISED"
+  },
+  "hero": "NOTCAPTURED; initial/focusdiagnosticimagesonly; optionalreadonlyHarbornotopened",
+  "completion_summary": {
+    "called_once": true,
+    "text": "Stopped the numeric focus check",
+    "immediate_next_tool_after_rootSTOP": true,
+    "no_CUA_ownership_retained": true
+  },
+  "trace_pairs": [
+    {
+      "id": "0001",
+      "label": "Own new studio launch once",
+      "method": "/usr/bin/open",
+      "status": "returned",
+      "before_sha256": "f55cff319588447ec1988f3d0726cdfb976f2f2156a25cb5a66b9f64c00c4cec",
+      "after_sha256": "2e7f36d0a30b1fde0bfd8b1ceeb7a0306912ddc192356579068884f3f0f76169"
+    },
+    {
+      "id": "0002",
+      "label": "Select own alreadylaunched native studio002",
+      "method": "cua.getApp",
+      "status": "returned",
+      "before_sha256": "e6115cc87cc6be5d007c0582374425191fe4d50fb319814e1899a62b0a9b4e91",
+      "after_sha256": "210dfcbbaf5f19c23bb5c38740a5c73a8c40c61df235e66d61d5ff891e665898"
+    },
+    {
+      "id": "0003",
+      "label": "Observe fresh002 Empty and actual main capture",
+      "method": "app.getAXStateAndScreenshot",
+      "status": "returned",
+      "before_sha256": "4be19a6d57f857c99970caebae862e2da0f5d05d9c535fd43ffd91f72bb6eeef",
+      "after_sha256": "5b866aa3e68fc55cc9bbbf98881b96b033f8fe989f2d84653a32de6dd2e6dde8"
+    },
+    {
+      "id": "0004",
+      "label": "Focus and select creation X via observed control",
+      "method": "app.click",
+      "status": "returned",
+      "before_sha256": "d3e14a0b45de6b0f2f255d546f4ab9ea2fe0f127d377f48181634820739a1413",
+      "after_sha256": "cd235207eaa15a8d57d9f3ebf8c360e0ab2d144ad81b4d959854ee44cc672102"
+    },
+    {
+      "id": "0005",
+      "label": "Verify creation X TextField and full selection before first numeric input",
+      "method": "app.getAXStateAndScreenshot",
+      "status": "returned",
+      "before_sha256": "79292a11c01550b3782557a380153bcb6c25379453bae8d6f8478da801ad17a2",
+      "after_sha256": "2925d015661b26bb479850777a3953ce6fb9c0cd8f622b2dc654b657ff0bf3c1"
+    }
+  ],
+  "all49runtime_and2contracts_unchanged": true,
+  "all22frozen_artifacts_unchanged": true,
+  "current_worktree_HEAD": "21b9f5e76a77ca21357783240cef7506b3887fbc",
+  "current_worktree_porcelain": "",
+  "optional_preview_original_unchanged": true,
+  "optional_preview_copy_unchanged": true,
+  "own_primary_and_two_outputs_absent": true,
+  "actual_own_session_recovery_files": {},
+  "selected_capture_bytes": 386965,
+  "no_old_app_control": true,
+  "app_state": "OwnPID71312 leftEmptyrev0withXselected; no Close/Quit/Saveorotherinputafterstop",
+  "physics_garment_reference_claim": false,
+  "next": "No003preparation or numericcase. Root may separatelyperform readonlypreviewonly undernewscope."
+}

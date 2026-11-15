@@ -1,0 +1,128 @@
+{
+  "case": "NATIVE-STUDIO-CHECK-20261115-002",
+  "status": "prepared_frozen_runtime_unbound_not_executed",
+  "frozen_utc": "2026-11-15T10:45:03.298618+00:00",
+  "runtime_binding": null,
+  "execution_authorized_by_preparation": false,
+  "actual_actor_pid_job_handles": null,
+  "original_private_preparation": {
+    "path": ".local/native-studio-check-plan-20261115/FREEZE.json",
+    "sha256": "aa1cba2b26ac941819fc26202e4bf509ae0634eb7350d005da0ce8a19876d463",
+    "unchanged": true
+  },
+  "changes_only": [
+    "case ID 001 to 002",
+    "runtime remains unbound and closed-001 setup provenance is explicit",
+    "prospective PID/layer/name/observed-capture-bounds main-window binding with separately reported auxiliary sharing capsule and retained-raw-001 static preflight"
+  ],
+  "unchanged_criteria": "Criteria objects are equal after removing only case ID; checker is byte-identical. All original inputs, mathematical criteria, caps, focus barriers, same-P requirement and mismatch STOP/no-retry policy remain unchanged.",
+  "ui_contract_sha256_reused_from_original_freeze": {
+    ".local/native-snapping-integration-20261115/spec/features/UI-003-original-position-snapping.md": "0d19a5cfa9886757390b735137171a2c9c88beb2f7f5fe8d8eb47c475d948ce7",
+    ".local/native-job-telemetry-20261115/spec/features/UI-native-task-progress.md": "25f69dfc3b4c427515f8d7a70d56b58221b2e11c7e8fb7e7f5c12b33d8dda02c"
+  },
+  "closed_001_root_supplied_provenance": {
+    "classification": "closed setup failure before feature input; neither product failure nor product pass",
+    "outcome_path": ".local/native-studio-acceptance-20261115/OUTCOME.json",
+    "outcome_sha256": "264d82428e0649e709ea7a7a490cd0054f572bd7f324ba6ce7698ed17803bbc1",
+    "reason": "Binder wrongly asserted exactly one own-PID layer-0 window; observed main WeftForge 1640x1032 plus separate 66x20 sharing capsule.",
+    "paired_calls": 3,
+    "observations_only": "initial empty revision 0, Snap10mm, resolution .07m",
+    "authoring_saves_featurechecks_consumer_physics": false,
+    "CUA_completion": "root reports exactly once, no owner",
+    "independently_read_or_graded_here": false
+  },
+  "old_Harbor_case": "permanently failed/stopped; cause unresolved; no retry/regrade/continuation",
+  "fixed_workload": {
+    "creation_X_literal_transitions": [
+      [
+        "1.0",
+        "0.84"
+      ],
+      [
+        "1.0",
+        "0.84"
+      ],
+      [
+        "0.82",
+        "0.84"
+      ],
+      [
+        "0.82",
+        "0.84"
+      ]
+    ],
+    "native_authoring_commands": [
+      "Entrycheck Add rectangle once: R0 to R1",
+      "Mesh edge length .07 to .01 once: R1 to R2",
+      "Snap Off rectangle-click 12x20 mm at P once: R2 to R3",
+      "Snap 5mm rectangle-click 12x20 mm at identical P once: R3 to R4"
+    ],
+    "native_checkpoints": [
+      "verified-entry.weftforge",
+      "studio-final.weftforge"
+    ],
+    "native_window_M_N_keyboard": "not exercised; no observed focus route; source tests do not substitute",
+    "physics_actions": 0,
+    "retries": 0,
+    "whole_workflow_seconds": 900,
+    "observation_barrier_seconds": 5,
+    "optional_readonly_preview_latest_start_seconds": 780,
+    "current_hero_count": 1,
+    "selected_capture_bytes_cap": 67108864,
+    "native_file_bytes_cap": 1048576
+  },
+  "checker": "check_geometry.py",
+  "checker_scope": "Saved geometry only; canonical unique A/B assignment; actual focus/selection/raw/AX input order/same pixel+viewport/runtime require root witness review. No garment/physics/reference claim.",
+  "synthetic_receipt_reuse": {
+    "file": "reused-original-synthetic-receipt.json",
+    "sha256": "0b214d0afbf84bdfd9e52778d9a5d066e95074bd3fa934d740d4532dba8a14cb",
+    "original_file": "self-check-attempt-02.json",
+    "counts": {
+      "analytic_positive": 1,
+      "necessary_negative": 3
+    },
+    "receipt_byte_identical": true,
+    "new_selfcheck_executed": false,
+    "basis": "Only case/provenance/window setup changed; existing numeric checker/criteria unchanged.",
+    "product_credit_transferred": false
+  },
+  "failed_new_preparation_attempts": [],
+  "required_before_UI": [
+    "root binds exact integrated source/native/full-gate evidence to this new freeze and unchanged checker hash",
+    "corrected binder passes static preflight on retained raw001 CG metadata before a fresh002 launch; record binder identity and receipt",
+    "fresh002 main window is uniquely matched by ownPID+layer0+observed name+observed native capture/frame bounds with units/DPI; separately report known sharing capsule, never require total layer0 count1",
+    "root binds fresh actor/process, owned destinations, initial file/protocol effects and unchanged900s start; actual focus/numeric/sameP observations remain mandatory"
+  ],
+  "optional_before_UI": "Only if readonly Harbor hero option is chosen: prebind original licensed source/read-only-copy paths and hashes; no edits/saves/simulation, hash unchanged. Otherwise use one own-final hero.",
+  "remaining_unresolved": [
+    "native-window M:N keyboard observation",
+    "old scalar-loss cause",
+    "hidden full history contents",
+    "native task lifecycle beyond optional current/last mesh observation",
+    "physics/garment/full Gate1/reference parity"
+  ],
+  "preparation_execution_only": [
+    "read/copy exact original private plan/checker/criteria/synthetic receipt",
+    "write only new assigned002 preparation folder",
+    "add root-supplied closed001 provenance and prospective windowbinding procedure",
+    "compare/check preparation bytes and criteria; no selfcheck/product/CUA/source/new002outputs execution or read"
+  ],
+  "artifacts": {
+    "METHOD-PLAN.md": {
+      "bytes": 11732,
+      "sha256": "431f3aa0c5984b4636612b58537aeac72df79365c34547d109e219e774745ce6"
+    },
+    "check_geometry.py": {
+      "bytes": 11345,
+      "sha256": "4f12db94961500cc63ce7f57528f439e6d0a9a02f8e03e87660a16207e1484ab"
+    },
+    "criteria.json": {
+      "bytes": 1492,
+      "sha256": "cc2af33ca6a1bc8da09b375348a39e7fdc8cf3d7c89523aa7a4f99168cd6ac50"
+    },
+    "reused-original-synthetic-receipt.json": {
+      "bytes": 338,
+      "sha256": "0b214d0afbf84bdfd9e52778d9a5d066e95074bd3fa934d740d4532dba8a14cb"
+    }
+  }
+}

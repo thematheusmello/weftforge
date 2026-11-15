@@ -1,0 +1,21 @@
+   Compiling weftforge v0.1.0 (WORKSPACE_ROOT/.local/native-job-telemetry-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.62s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 1 test
+
+thread 'tests::worker_failure_survives_late_cancel_and_revision_change' (58819336) panicked at apps/weftforge/src/main.rs:6801:9:
+assertion `left == right` failed
+  left: [("current_play", Failed, "Worker diagnostic must survive a later UI action.", false, None), ("current_queue", Failed, "Worker diagnostic must survive a later UI action.", false, None), ("cancel", Failed, "Worker diagnostic must survive a later UI action.", false, None), ("edit", Failed, "Worker diagnostic must survive a later UI action.", false, None)]
+ right: [("current_play", Failed, "Worker diagnostic must survive a later UI action.", false, None), ("current_queue", Failed, "Worker diagnostic must survive a later UI action.", false, None), ("cancel", Failed, "Worker diagnostic must survive a later UI action.", false, Some((1, "Manual step"))), ("edit", Failed, "Worker diagnostic must survive a later UI action.", true, None)]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test tests::worker_failure_survives_late_cancel_and_revision_change ... FAILED
+
+failures:
+
+failures:
+    tests::worker_failure_survives_late_cancel_and_revision_change
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 45 filtered out; finished in 0.14s
+
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

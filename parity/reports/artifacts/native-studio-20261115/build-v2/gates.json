@@ -1,0 +1,102 @@
+[
+  {
+    "name": "fmt",
+    "source_commit": "21b9f5e76a77ca21357783240cef7506b3887fbc",
+    "wrapper_pid": 51798,
+    "started_utc": "2026-11-15T10:27:27.217475+00:00",
+    "command": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--check"
+    ],
+    "timeout_seconds": 300,
+    "status": "completed",
+    "child_pid": 51826,
+    "process_group": 51826,
+    "exit_code": 0,
+    "wall_seconds": 0.6020125419599935,
+    "completed_utc": "2026-11-15T10:27:27.819517+00:00",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "package",
+    "source_commit": "21b9f5e76a77ca21357783240cef7506b3887fbc",
+    "wrapper_pid": 51798,
+    "started_utc": "2026-11-15T10:27:27.952858+00:00",
+    "command": [
+      "cargo",
+      "xtask",
+      "package"
+    ],
+    "timeout_seconds": 1200,
+    "status": "completed",
+    "child_pid": 51893,
+    "process_group": 51893,
+    "exit_code": 0,
+    "wall_seconds": 19.326706290943548,
+    "completed_utc": "2026-11-15T10:27:47.279735+00:00",
+    "log_sha256": "edd5ac48d37c844fc73b693ec07ac46211446c83547c45fd47de9108d5809293"
+  },
+  {
+    "name": "tests",
+    "source_commit": "21b9f5e76a77ca21357783240cef7506b3887fbc",
+    "wrapper_pid": 51798,
+    "started_utc": "2026-11-15T10:27:47.412744+00:00",
+    "command": [
+      "cargo",
+      "test",
+      "--workspace"
+    ],
+    "timeout_seconds": 1200,
+    "status": "completed",
+    "child_pid": 52424,
+    "process_group": 52424,
+    "exit_code": 0,
+    "wall_seconds": 32.30228495807387,
+    "completed_utc": "2026-11-15T10:28:19.715291+00:00",
+    "log_sha256": "7b2c5567241d5d1534bd076e779c0d4c9d9286dae1c56e3d17290ab5d668191f"
+  },
+  {
+    "name": "clippy",
+    "source_commit": "21b9f5e76a77ca21357783240cef7506b3887fbc",
+    "wrapper_pid": 51798,
+    "started_utc": "2026-11-15T10:28:19.840304+00:00",
+    "command": [
+      "cargo",
+      "clippy",
+      "--workspace",
+      "--all-targets",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "timeout_seconds": 1200,
+    "status": "completed",
+    "child_pid": 53183,
+    "process_group": 53183,
+    "exit_code": 0,
+    "wall_seconds": 1.932082207989879,
+    "completed_utc": "2026-11-15T10:28:21.772422+00:00",
+    "log_sha256": "5e845e6fe83c3322e9a91111f095b685a19f0518050b3fb7ae86f2eaadb62640"
+  },
+  {
+    "name": "xtask",
+    "source_commit": "21b9f5e76a77ca21357783240cef7506b3887fbc",
+    "wrapper_pid": 51798,
+    "started_utc": "2026-11-15T10:28:21.894458+00:00",
+    "command": [
+      "cargo",
+      "xtask",
+      "verify"
+    ],
+    "timeout_seconds": 1200,
+    "status": "completed",
+    "child_pid": 53194,
+    "process_group": 53194,
+    "exit_code": 0,
+    "wall_seconds": 97.15305850002915,
+    "completed_utc": "2026-11-15T10:29:59.048268+00:00",
+    "log_sha256": "07dd4c3a83009b77f3a203a5d1d2dc22fd711c902bb2eaccb47da0f13f41f304"
+  }
+]

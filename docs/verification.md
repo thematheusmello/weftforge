@@ -13,7 +13,7 @@ reviewed behavior documents.
 cargo fmt --all --check
 cargo test --workspace
 cargo clippy --workspace --all-targets -- -D warnings
-python3 -m pip install -r requirements-dev.txt
+python 3 -m pip install -r requirements-dev.txt
 cargo xtask progress
 cargo xtask verify
 cargo xtask scenario
@@ -43,7 +43,31 @@ still fail the declared criteria. A separate relaxed shirt passes the explicit
 substeps/32 iterations. See physics.md, STATUS.md and attributable run reports.
 Elementary cloth tests do not prove garment fitting quality.
 
-## Bounded DXF studio components
+## Current native studio: gated source, unaccepted native checks
+
+Source `21b9f5e76a77ca21357783240cef7506b3887fbc` passes all five integrated
+gates with 192 Rust and 54 Python checks. The report binds 49 runtime files plus
+the Snap and task UI contracts; its combined status remains **failed** because
+the frozen native checks were not accepted. 001 stopped before input on a window
+binder assumption. 002 stopped before typing when the mandatory explicit
+focused AX TextField witness was unavailable. These are setup/observability
+stops, not demonstrated product defects. All subsequent numeric, pending-Snap,
+same-pixel, Save, geometry-consumer and lifecycle checks remain unexercised.
+
+The separate read-only current Harbor preview shows the workspace and one
+Accepted/succeeded Mesh task. It performs no numeric/authoring/Save/physics action
+and supplies no acceptance credit to the closed cases. Historical source REDs,
+the source 76be failed garment attempt and unresolved scalar-loss cause remain.
+See the [current report](../parity/reports/WF-20261115-NATIVE-STUDIO-001.json),
+[retained criteria](../parity/scenarios/UI-NATIVE-STUDIO-001.json) and
+[finite evidence](../parity/reports/artifacts/native-studio-20261115/README.md).
+
+Publication uses the existing registry and implementation-map checks from a
+clean tracked checkout; no old native/physics/static replay is needed for these
+metadata changes. No checker was reached in 001/002, and no complete contract,
+full native plan, whole workflow or reference gate passes.
+
+## Historical bounded DXF studio components
 
 Source `76be95d4d7928bcb703e1f52f4a5404bc955f567` passed the original five
 gates with 187 Rust and 54 Python checks. Four headless native/SVG/DXF grades,
@@ -54,13 +78,15 @@ accept the full frozen native PLAN. Printing disclosure and old .12 Redo after
 Cancel remain unestablished. Temporary revision 2/.126 reached background
 autosave/recovery while the original input primaries stayed intact.
 
-From a clean tracked checkout with CPython 3.13.0 and the packet's pinned
+The DXF report is stale after the later native source changes. Its saved replay
+belongs to the matching source 76be checkout. From that clean tracked checkout
+with CPython 3.13.0 and the packet's pinned
 `ezdxf==1.4.5` consumer environment, run:
 
 ```sh
-python3 -B parity/reports/artifacts/dxf-studio-20261115/verify.py --repo-root .
-python3 -B scripts/progress.py --check
-python3 -B spec/inventory/verify_implementation_map.py
+python 3 -B parity/reports/artifacts/dxf-studio-20261115/verify.py --repo-root .
+python 3 -B scripts/progress.py --check
+python 3 -B spec/inventory/verify_implementation_map.py
 ```
 
 The entrypoint checks saved files, transcript/snapshot records, unchanged frozen
@@ -93,9 +119,9 @@ From a clean checkout containing the tracked packets and original CPython 3.13.0
 arithmetic environment, run the static replay:
 
 ```sh
-python3 -B parity/reports/artifacts/closed-stitch-harbor-20261115/verify.py --repo-root .
-python3 -B scripts/progress.py --check
-python3 -B spec/inventory/verify_implementation_map.py
+python 3 -B parity/reports/artifacts/closed-stitch-harbor-20261115/verify.py --repo-root .
+python 3 -B scripts/progress.py --check
+python 3 -B spec/inventory/verify_implementation_map.py
 ```
 
 The replay reads every retained state using unchanged independent Python math;
@@ -135,8 +161,8 @@ failed in their original records.
 From the matching source checkout, replay the retained static output checks:
 
 ```sh
-python3 parity/reports/artifacts/native-svg-v3-20261115/verify.py --repo-root .
-python3 parity/reports/artifacts/diagnostic-static-20261115/verify.py --repo-root .
+python 3 parity/reports/artifacts/native-svg-v3-20261115/verify.py --repo-root .
+python 3 parity/reports/artifacts/diagnostic-static-20261115/verify.py --repo-root .
 ```
 
 These commands inspect saved data and frozen original checker sources. The SVG
@@ -217,7 +243,7 @@ have different scopes from production failures. No fixture, precision budget or
 resource limit was weakened. The report and portable retained-output replays are
 in [WF-20261114-ORDERED-SEWING-001](../parity/reports/WF-20261114-ORDERED-SEWING-001.json).
 This supplies no physical gathering, reference-equivalence or complete-roadmap
-acceptance. Local fmt,122Rust tests, strict Clippy and54Python/map checks pass;
+acceptance. Local fmt,122Rust tests, strict Clippy and 54Python/map checks pass;
 Actions and Pages remain disabled until the complete project is done.
 
 ### Material strain attribution
@@ -514,7 +540,7 @@ has seven LINEs and one exact cubic, with maximum sampled error
 5.684341886080802e-14mm. Exact controls/knots and adjacency are also required;
 sample agreement alone is insufficient.
 
-The actual native run starts at revision20/resolution0.04m. A focused pending
+The actual native run starts at revision 20/resolution0.04m. A focused pending
 0.045m edit commits once, to revision21, only after successful toolbar DXF output.
 The command-search repeat produces identical bytes, SHA
 `ca94b0235ba944c0879b51b260b600ee3a10c6bd539112b213f6b59f9a719ca7`,
