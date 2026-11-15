@@ -7,6 +7,28 @@ inventory, not a feature-completion denominator.
 
 ## Current continuation
 
+Public main is `224e7b44b2f40fa479397ae50443efa63550da9c` after PR39;
+the merged tree and all47 bound source/spec files match the reviewed head.
+Actions is disabled and the merge has zero workflow runs, confirmed in
+`.local/verification/published-224e7b44b2f4.json`.
+
+The next isolated branch is `feat/closed-stitch-integration`, worktree
+`.local/closed-stitch-integration-20261115`. Source `afd44f0` cherry-picks reviewed
+candidate `c39401c173eb81111858e6b5ebfdfb165b27c365`: exactly-zero-target soft
+stitches use three-component XPBD multipliers; positive targets and hard stitches
+retain the prior radial path. All other solver algorithms and quality limits
+remain unchanged. Independent read-only review found no source/operator blocker;
+the candidate's51 solver tests and810 legacy bit comparisons remain bounded
+operator evidence. Integrated gates, packaging and a newly frozen physical
+protocol are pending. No new garment dynamics or native run is authorized yet.
+
+The previous SVG/diagnostic reports and UI-001/FILE-005/SIM-005 freshness are
+marked stale for this changed runtime. Their original results, captures and
+failure records remain unchanged. The following section describes the published
+PR39 build; it does not establish this solver candidate's native behavior.
+
+## Published SVG studio checkpoint
+
 The latest verified implementation is
 [PR39](https://github.com/thematheusmello/weftforge/pull/39), prepared on
 `feat/svg-studio-integration`, worktree `.local/svg-studio-integration-20261115`.
