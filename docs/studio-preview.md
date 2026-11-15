@@ -13,7 +13,7 @@ This separate read-only preview loads the existing original Harbor project at
 revision 20: two pieces, eight seams and 654 rest vertices. Snap remains 10 mm.
 It makes no numeric input, construction edit, Save, history, Snap change or physics
 action. It shows the current workspace, not completed garment or snapping quality.
-The session-only Off / 1 / 5 / 10 mm preference and Alt/Option bypass are implemented;
+The session-only Off / 1 / 5 / 10 mm preference and Alt/Option bypass are implemented.
 The preference applies to pointer positions while numeric edits stay exact.
 
 ## Current task details

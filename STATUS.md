@@ -10,11 +10,11 @@ percentage. See the [roadmap](ROADMAP.md) and [registry](parity/features.yaml).
 
 ## Current continuation
 
-Public main is `91237fa16cc04486430c01392314dab67e20d71a` after merged
-[PR41](https://github.com/thematheusmello/weftforge/pull/41). Root confirmed its
-reviewed tree/source and zero merge workflows. GitHub Actions remains disabled;
+The studio checkpoint is [PR42](https://github.com/thematheusmello/weftforge/pull/42),
+following [PR41](https://github.com/thematheusmello/weftforge/pull/41) at
+`91237fa16cc04486430c01392314dab67e20d71a`. GitHub Actions remains disabled;
 automated Pages deployments remain off and the existing static site is preserved.
-This publication increment is based on tested source
+This increment is based on tested source
 `21b9f5e76a77ca21357783240cef7506b3887fbc`, not a new runtime change.
 
 The source adds session-only Off / 1 / 5 / 10 mm pointer Snap choices and Alt/Option
@@ -162,13 +162,15 @@ interaction. Keep the earlier observed Rectangle facts and the
 Commercial/account/raw reference material stays private; fresh implementers use
 reviewed public behavior contracts, not proprietary pseudocode or extracts.
 
-1. Complete the final receipt metadata recheck, then root reviews the exact
-   clean tree before PR42/push/merge. The initial registry/map/artifact/source
-   audit passed; the receipt append requires the same checks with all 49+2
-   source bytes still matching 21b9. No Cargo, old replay, UI or physical rerun
-   is needed. Root owns exact remote refs and final disabled-Actions confirmation.
+1. Retain PR42's merged-tree/source and disabled-Actions confirmation before
+   continuing. Clean `94ce87810ff99e04f7bb185c7af7eeff6d85cb0f` passes the final
+   registry/map audit with all 4,137 artifacts tracked/hash-correct and all 49+2
+   source files unchanged. PR backlinks change metadata only.
 2. Resolve how a future prospective native method can witness numeric focus
-   honestly before authorizing a new case or source change. 001/002 stay closed;
+   honestly before authorizing a new case or source change. A private read-only
+   SDK probe compiled and passed conversion checks, but its target PID was absent
+   at preflight, so no app query ran and widget support remains unverified.
+   Fresh process binding and a prospective method are required. 001/002 stay closed;
    no 003 is scheduled and no criterion is relaxed retrospectively. The old
    lost-decimal cause remains unresolved.
 3. Future separately frozen work must observe native raw-input/Snap/same-pixel/
