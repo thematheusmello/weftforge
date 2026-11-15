@@ -167,7 +167,7 @@ intentionally disables that material's bending energy, not collision.
 
 A stitch constrains the distance between two convex weighted points. Each point
 lies on a mesh segment through two vertex indices and weights summing to one.
-The scalar distance constraint uses compliance in m/N. Repeated indices are
+The stitch uses compliance in m/N. Repeated indices are
 combined before computing the effective inverse mass. The public
 constraint therefore works with different segment samplings and does not depend
 on matching vertex counts. It does not itself choose curve correspondence; the
@@ -181,9 +181,17 @@ L_next = max(0, L_previous - seam_closure_speed*h)
 C_seam = length(weighted_a - weighted_b) - L_next
 ```
 
-This explicitly models assembly, separate from fabric stiffness. At zero target
-the stitch enforces coincidence. The default speed is 0.5 m/s; zero pauses the
-target reduction while allowing cloth dynamics. `seam_assembly_remaining` reports
+At exactly zero target with positive compliance c, projection uses the vector
+constraint `weighted_a - weighted_b`, preserving energy `|C|²/(2c)` with a
+three-component multiplier. Positive targets and hard stitches retain the scalar
+radial update above. The [closed soft stitch contract](../spec/features/SIM-001-closed-stitch-coordinates.md)
+defines the bounded analytic checks; garment quality and reference parity remain
+unmeasured for this change.
+
+This explicitly models assembly, separate from fabric stiffness. A zero target
+requests coincidence; finite compliance can leave a gap. The default speed is
+0.5 m/s; zero pauses the target reduction while allowing cloth dynamics.
+`seam_assembly_remaining` reports
 the maximum temporary target, while `max_seam_error` reports the actual gap.
 Changing speed cannot reopen a closed stitch. Reset restores the original targets.
 The candidate target state participates in the same transactional cancellation
