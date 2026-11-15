@@ -1,7 +1,7 @@
 # WeftForge status — active development, 2026-11-15
 
 Physical-length Free sewing is implemented at runtime
-b657e6bf52aca6c0c76c5c51aaf76b4e812150f7. This local publication candidate retains
+b657e6bf52aca6c0c76c5c51aaf76b4e812150f7. The [PR46 publication](https://github.com/thematheusmello/weftforge/pull/46) retains
 the full studio target: **0/56 coarse reference contracts verified**, **39 partial /
 17 planned**, discovery incomplete and **no roadmap gate accepted**. The 949
 entries / 205 packets are an engineering inventory, not a complete product denominator.
@@ -166,12 +166,13 @@ surface contact, full persistence and full garment acceptance remain open.
 
 ## Exact next work
 
-Root-review this tracked, source-bound physical publication candidate and clean
-registry/current-map receipts before publishing. Continue internal construction
+Root reviewed the tracked source-bound packet and clean registry/current-map
+checks. All 1,043 regular artifacts, three relative symlink nodes and 60 runtime
+inputs were verified; original/public mappings and privacy checks passed. Continue internal construction
 lines and bounded topological cuts, with authored relationships and atomic shared
 commands. Retain complete chain/internal sewing, easing, native remeshing, garment
 contact/physics, full New and reference workflow gaps. New acceptance needs a fresh
 declared source/input/criteria binding; do not repair or regrade closed cases.
 
-Keep Actions and automated Pages deployments disabled through development. No
-push/PR, new binary release or deployment is part of this local preparation.
+Keep Actions and automated Pages deployments disabled through development. PR46
+carries the source and evidence; no new binary release or deployment is included.
