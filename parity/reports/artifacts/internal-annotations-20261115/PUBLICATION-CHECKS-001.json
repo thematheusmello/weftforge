@@ -1,0 +1,53 @@
+{
+  "scope": "Versioned publication-check append only. Original curator payloads/indices, product outcomes and clocks remain unchanged. This is not a Rust/native/headless/grading/physics rerun.",
+  "checked_clean_commit": "af69ed287776345aa6da09566b1ca4f1f32a3c95",
+  "checked_tree": "c50e8fb97a7c1601112e3f60a5d2d0bf129ae48f",
+  "command": [
+    "cargo",
+    "xtask",
+    "verify"
+  ],
+  "exit_code": 0,
+  "checked_checkout_clean_before_and_after": true,
+  "elapsed_seconds": 123.40031679207459,
+  "source65_path_hash_map_sha256": "e9400112de2de58f5e3802b729d296fa2f5c5ee5c44f3bacdfc8a49f4995ff80",
+  "checked_inventory_sha256_before_append": "c1090a3a53446e9645586f1d8a4c014b45d6115dcaaef9b0d3e61ead1fde1595",
+  "checked_packet_regular_files_before_append": 4664,
+  "checked_packet_link_nodes": 3,
+  "fresh_default_target_without_copied_cache": true,
+  "native_not_built_and_original_native_unchanged": true,
+  "immutable_independent_CLI_unchanged": true,
+  "files": {
+    "publication-checks-af69ed2/CHECKS.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "content_kind": "exact_original_metadata_bytes",
+      "original_private_sha256": "cd97090801804f4281fab31b442c793a5b15c208f64aba814fb255d756d1254d",
+      "original_bytes": 16034,
+      "public_sha256": "cd97090801804f4281fab31b442c793a5b15c208f64aba814fb255d756d1254d",
+      "public_bytes": 16034,
+      "normalization": null
+    },
+    "publication-checks-af69ed2/verify.stdout": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "content_kind": "exact_original_metadata_bytes",
+      "original_private_sha256": "c7f3ae10ec31645fd201af8649f833f3444940f99851c9a4e971afdc23b453d1",
+      "original_bytes": 2686,
+      "public_sha256": "c7f3ae10ec31645fd201af8649f833f3444940f99851c9a4e971afdc23b453d1",
+      "public_bytes": 2686,
+      "normalization": null
+    },
+    "publication-checks-af69ed2/verify.stderr": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "content_kind": "path_only_build_metadata_derivative",
+      "original_private_sha256": "aa710a3194651c74103c54f2327d57d7104308fcc1ddb68e172e907ecffd3cc0",
+      "original_bytes": 1710,
+      "public_sha256": "e29b9fe7258d5188bb62a310c599857fcfd6d8025c98aa812cf39a77fbd9c6ca",
+      "public_bytes": 1502,
+      "normalization": "Only literal workspace/home prefixes; no status, source, numerical or clock values changed."
+    }
+  },
+  "closure_qualification": "The later closure adds these receipts and updates only new authored inventory/report/registry/status metadata. The checked C1 inventory hash names the historical inventory version in that exact commit, not the expanded current inventory. No original scientific evidence is modified or recertified."
+}

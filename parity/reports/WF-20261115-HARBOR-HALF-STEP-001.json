@@ -105,10 +105,11 @@
   "publication_pending_root_review": true,
   "scope": "One declared Harbor-A16x32-001 half-step/path-sensitivity diagnostic against immutable retained A8 control, with exact physical rest/input equality. Failed quality is current only for this diagnostic; no convergence, calibration or sufficient-fix claim.",
   "artifact_hashes": {
-    "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/ARTIFACT-INVENTORY-001.json": "3b900a6bb486ea88d9f1657c6e0f243e56657a1ec1146e066b2f1f1d8c5d6bfb",
+    "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/ARTIFACT-INVENTORY-001.json": "d3dce4aab8c449d0b5f2b3059146f41bce006e24529446e51f703fa24e44e3b7",
     "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/PUBLICATION.json": "d41fd2594bc7da10aa7dd1fc3086a1a8866bf2d735dc9c493dab0179a64cf9db",
     "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/PUBLICATION-METADATA-001.json": "e43368738eddbb7a91e239079c86afd8eca4982941d6573ebc33450174258cdd",
     "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/PUBLICATION-SOURCE-GUARD.json": "188403852faef0ef3c70549dc44d314c24e688379e715b6539c0f7c9622b5450",
+    "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/PUBLICATION-CHECKS-001.json": "d9dc232a66be8cfd03de6aa06a0226bb37552f1a0548e36bee1d21c17aa2fc01",
     "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/path-redacted/preparation002-closed/runtime/FINAL.json": "7ab1f265a21b76954efe98f76d15c3d2982f2ef5c23061ce23dbe56c6e1431b0",
     "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/path-redacted/preparation002-closed/FREEZE.json": "7f8d19aee066ff58328d29b81ec1ff02b4a72943e658b95a7ebc26a8f0dbcf26",
     "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/preparation002-closed/ROOT-GO.json": "c76dfd8dde1565dee566821d06c930e75e4391bf22264b55e5e5a2e19e7d5181",
@@ -218,13 +219,38 @@
     "Original preparation001 remains unexecuted and blocked; corrected002/GO/run artifacts are separate immutable history. No driver binary/target/cache is distributed or rebuilt, and no source/physical input/default is changed."
   ],
   "publication_checks": {
-    "status": "pending_clean_publication_candidate",
-    "qualification": "Fresh metadata/registry/map/Python/CLI-help check will be separately attributed to a clean publication commit, never a physics or saved-output replay."
+    "status": "passed_on_identified_clean_publication_candidate",
+    "checked_clean_commit": "af69ed287776345aa6da09566b1ca4f1f32a3c95",
+    "checked_tree": "c50e8fb97a7c1601112e3f60a5d2d0bf129ae48f",
+    "receipt": "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/publication-checks-af69ed2/CHECKS.json",
+    "versioned_append": "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/PUBLICATION-CHECKS-001.json",
+    "command": [
+      "cargo",
+      "xtask",
+      "verify"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 123.40031679207459,
+    "source65_and_metadata_unchanged_during_check": true,
+    "full_indexed_regular_blob_and_link_audits_before_after": true,
+    "historical_and_current_source_map_checks": "passed_source_inventory_only",
+    "python_script_tests_passed": 48,
+    "python_evaluator_tests_passed": 6,
+    "CLI_help_passed": true,
+    "fresh_own_default_target": true,
+    "copied_compiled_cache_or_target": false,
+    "native_not_built": true,
+    "original_native_and_immutable_CLI_unchanged": true,
+    "publication_help_CLI_sha256": "0e537ecad1de86d05593d1c40e0276b0b32ef064ba0786040cb254b53f14d44d",
+    "publication_help_CLI_bytes": 9563440,
+    "publication_help_CLI_is_accepted_independent_artifact": false,
+    "closure_metadata_only": true,
+    "qualification": "The gate belongs to the exact checked af69ed2 commit; later receipt/metadata closure retains that attribution. Original fmt/282 Rust/strict Clippy/debug build are reused by exact65 identity. Native/headless/saved grading/physics runs are not replayed."
   },
   "artifact_inventory": {
     "path": "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/ARTIFACT-INVENTORY-001.json",
     "scope": "Every packet node except the named inventory itself; its own hash is in artifact_hashes. Complete inventory is not repeated in feature runs.",
-    "regular_artifacts_including_inventory": 118,
+    "regular_artifacts_including_inventory": 122,
     "typed_relative_links": 0,
     "full_indexed_byte_link_audit_required": true
   }

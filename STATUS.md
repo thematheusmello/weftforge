@@ -32,9 +32,15 @@ identity. Their manifest SHA is
 d47c3a7c35e89e8b9e0688703b8e3e97120e3fb3f3c14e48a4ea038eb643c872.
 Source runner PID 56057 completed. The retained clean db8ee77 final local gate
 passed registry/maps, 48+6 Python tests and CLI help in 114.020357458 s; its
-original-worktree CLI feature-context change remains disclosed. Publication checks
-are recorded in a separate versioned append bound to their actual clean candidate;
-Rust/native/headless/saved-grader and physical consumers are not rerun for publication.
+original-worktree CLI feature-context change remains disclosed. The fresh
+[publication gate](parity/reports/artifacts/internal-annotations-20261115/publication-checks-af69ed2/CHECKS.json)
+on clean af69ed287776345aa6da09566b1ca4f1f32a3c95 passed registry/maps, 48+6 Python
+tests and CLI help in 123.400316792 s. It used this publication worktree's fresh
+default target, with no copied cache/target or native build. The new CLI-help
+context is 0e537ecad1de86d05593d1c40e0276b0b32ef064ba0786040cb254b53f14d44d;
+it does not replace the evaluated immutable CLI. The later versioned receipt and
+metadata-only closure keeps that checked-commit attribution. Rust/native/headless/
+saved-grader and physical consumers are not rerun for publication.
 
 The original independent v2 run001 passed **86 observations / 434 paired target
 processes**. Root collection verified all 3,100 original regular files, three
@@ -69,13 +75,23 @@ its old procedure missed intended backdrop cancellation, with its one failed
 saved grade unchanged. Neither is repaired or regraded. Later cleanup and changed
 mutable autosaves have separate receipts; exact pre-cleanup snapshot copies are
 retained and the later mutable sidecars excluded. The original native worktree
-remains untouched for independently bound B–E. Those cases remain required and are
-outside this publication packet’s coverage. Separate B001 is active on the original
-clean db8/ad7 worktree: actor clock 2026-11-15T22:33:46.268Z, owned PID 39198.
-Root’s initial checkpoint records six pairs / 47.767 s / zero errors, at R5 with
-one piece, line #13, 571 vertices and 10 mm snap before authoring. Its outcome is
-pending outside both reports; this is a confirmed handle, not a B result. Only a
-later root closure can mark it terminal.
+remains untouched for separately bound native checks. B–E coverage remains
+outside this publication packet. Historical B001 initial checkpoint: actor clock
+2026-11-15T22:33:46.268Z, owned PID 39198, six pairs / 47.767 s / zero errors, at R5
+with one piece, line #13, 571 vertices and 10 mm snap before authoring.
+
+Root later confirmed B001 terminal after planned Quit: PID 39198 absent, one
+formal saved-state grade passed all nine states. Separate bounded B acceptance
+is private, receipt SHA
+2bba3c58feea568aeebd269d3bdca5c7cf2a21f6fe2f4aeab93cf275387a93db,
+after direct fourteen-keyframe review and independent review of all 67 images /
+155 pairs, plus 65-source/native/clean-worktree/save/grade/PID checks. None of that B evidence or
+acceptance is imported into either current report or artifact packet; C–E remain
+open. A separate desktop inventory found no running WeftForge app, while browser
+inventory was unavailable. Raise002 timed out during compaction before any Raise
+or authoring. These are separate post-case/tooling facts that rewrite no frozen clock or
+original outcome; no active UI lease is implied and no new publication run or
+grader is registered.
 
 ## Separate failed Harbor half-step diagnostic
 
@@ -275,9 +291,10 @@ surface contact, full persistence and full garment acceptance remain open.
 
 Root independently audits the clean tracked publication candidate, mappings,
 source65, scopes and check receipts before remote publication. Continue the
-original native annotation B–E work only under separate reviewed source/input/
-criteria bindings and GO; accepted A bytes are eligible inputs, not a generated
-model substitute. Do not repair/regrade closed A001/A002/A003 or physics cases.
+remaining native C–E work under separate reviewed source/input/criteria bindings
+and GO, preserving the separately accepted private B checkpoint. Actual accepted
+native bytes may become bound inputs; never synthesize a model substitute. Do not
+repair/regrade closed A001/A002/A003/B001 or physics cases.
 
 After accepted annotation/persistence/runtime evidence, propose a separate bounded
 topological cut with explicit ownership, relationship and atomic-command policy.
