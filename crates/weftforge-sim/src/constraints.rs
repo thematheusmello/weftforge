@@ -49,10 +49,6 @@ impl Membrane {
             add(mul(b, self.weft[1]), mul(c, self.weft[2])),
         )
     }
-    pub fn signed_strains(&self, x: &[Vec3]) -> [f64; 2] {
-        let (w, f) = self.deformation(x);
-        [length(w) - 1., length(f) - 1.]
-    }
     pub fn solve(&self, x: &mut [Vec3], inverse_mass: &[f64], dt: f64, lambda: &mut [f64; 3]) {
         for (kind, lambda) in lambda.iter_mut().enumerate() {
             let (w, f) = self.deformation(x);

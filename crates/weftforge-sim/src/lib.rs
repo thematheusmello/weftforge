@@ -3,6 +3,7 @@ mod capsule;
 mod constraints;
 mod contact;
 mod math;
+mod strain;
 
 use constraints::{Bend, Membrane};
 use math::*;
@@ -554,16 +555,20 @@ impl Cloth {
             self.seam_remaining.iter().copied().fold(0., f64::max);
         diagnostics.max_stretch_error = 0.;
         diagnostics.peak_strain = None;
-        for (triangle, membrane) in self.membrane.iter().enumerate() {
-            let [warp, weft] = membrane.signed_strains(positions);
-            diagnostics.max_stretch_error = diagnostics
-                .max_stretch_error
-                .max(warp.abs().max(weft.abs()));
+        let mut finite_strains = true;
+        for (triangle, &vertices) in self.input.triangles.iter().enumerate() {
+            let [warp, weft] = strain::signed_strains(
+                vertices.map(|v| positions[v]),
+                vertices.map(|v| self.input.material_uv[v]),
+                self.input.triangle_materials[triangle].grain_angle,
+            );
+            finite_strains &= warp.is_finite() && weft.is_finite();
             for (axis, signed_strain) in [(MaterialAxis::Warp, warp), (MaterialAxis::Weft, weft)] {
                 if diagnostics
                     .peak_strain
                     .is_none_or(|peak| signed_strain.abs() > peak.signed_strain.abs())
                 {
+                    diagnostics.max_stretch_error = signed_strain.abs();
                     diagnostics.peak_strain = Some(StrainPeak {
                         triangle,
                         axis,
@@ -586,7 +591,8 @@ impl Cloth {
             .zip(velocities)
             .map(|(m, v)| 0.5 * m * dot(*v, *v))
             .sum();
-        diagnostics.finite = positions.iter().chain(velocities).copied().all(finite)
+        diagnostics.finite = finite_strains
+            && positions.iter().chain(velocities).copied().all(finite)
             && diagnostics
                 .peak_strain
                 .is_none_or(|peak| peak.signed_strain.is_finite())

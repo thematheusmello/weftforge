@@ -7,15 +7,27 @@ inventory, not a feature-completion denominator.
 
 ## Current continuation
 
-Published main remains `d65f935aea54bb5d8cf882d8c212fee8dbe314cf` from
-[PR37](https://github.com/thematheusmello/weftforge/pull/37). This local checkpoint
-combines tested runtime `0770204a54abdf5f929b6626b01d7fcfb0e13ca4` with current
-metadata. All forty runtime/test files retain their exact tested bytes. The
-source-only [capsule packet](parity/reports/artifacts/capsule-surface-20261115/README.md)
-retains original authoring inputs, all362 saved boundary states/360 step records,
+Latest public main is `c0201a74933a4785aa454e7740420fcee54f504e` from
+[PR38](https://github.com/thematheusmello/weftforge/pull/38). Actions remain disabled
+and the merge has zero workflow runs. This isolated integration combines the
+bounded editable SVG importer (`a27f2e4`) with diagnostic-only strain arithmetic
+(`2079411`) on the published full static capsule-contact implementation. No force,
+constraint projection, material, quality threshold or original experiment changed.
+
+SVG import has individual full gates, unsigned packaging and an independent
+svgpathtools consumer check. The actual native chooser/modal/import/edit/undo/
+save/reopen/export acceptance and combined workspace gates are pending. The
+compiled new diagnostic helper exactly matches all362 frozen peaks and all838,392
+triangle-axis values from the unchanged evaluator, with30 static analytic checks;
+its42 simulator tests, formatting and strict simulator Clippy pass. This supplies
+no new physical acceptance. Original strict failures remain immutable.
+
+PR38 retains exact tested runtime `0770204a54abdf5f929b6626b01d7fcfb0e13ca4`.
+The [capsule packet](parity/reports/artifacts/capsule-surface-20261115/README.md)
+contains original authoring inputs, all362 saved boundary states/360 step records,
 rest metadata, six OBJ exports, frozen independent evaluator and full failures.
-The [current report](parity/reports/WF-20261115-CAPSULE-SURFACE-001.json) is
-implementation-only and **failed**, with no full garment gate or reference parity.
+Its [report](parity/reports/WF-20261115-CAPSULE-SURFACE-001.json) remains failed
+and is now source-qualified/stale after the importer and diagnostic changes.
 
 Both controlled original Harbor cases are closed: controller session35986,
 PID87622, exit2. A/base completed operationally in167.26820654096082s and B/height
@@ -50,7 +62,7 @@ The b760 studio report and UI-001/PAT-003 evidence freshness are now stale after
 changed runtime source; original gallery/capture/receipt bytes remain historical.
 The current native uncertainty count label has no live observation in this
 packet. All prior3aa strain/contact and7fe Save18/raw-metadata failures remain
-visible. The separate SVG import branch is excluded from this checkpoint.
+visible. SVG import and the new diagnostic arithmetic were excluded from that historical checkpoint.
 
 Clean tracked checkpoint `7637c372d4a9` passes the portable saved-state
 replay, registry/map and all2,288referenced artifact hashes. The200-file packet
@@ -62,8 +74,10 @@ Independent public-packet review at clean35cd5672 found no publication blockers.
 Root independently checked all2,294referenced artifacts and all40runtime bytes,
 and clean final registry/map checks passed. [PR38](https://github.com/thematheusmello/weftforge/pull/38)
 publishes this bounded increment; the original strict failures remain failed.
-Next: merge the reviewed source/evidence, then integrate SVG import and the
-diagnostic-only peak arithmetic follow-up in a fresh isolated build.
+Next: run combined formatting, workspace tests, strict Clippy, xtask verification
+and unsigned packaging in an empty real target, then execute the original SVG
+fixture through the real native chooser/import/edit/undo/save/reopen/export flow.
+Publish only tracked, reviewed evidence; no new garment dynamics are planned here.
 GitHub Actions and Pages must remain disabled until the complete project is done.
 
 ## Native visual preview checkpoint
