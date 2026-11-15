@@ -1,102 +1,48 @@
 # WeftForge status — active development, 2026-11-15
 
-WeftForge has a native editable-pattern workspace, shared typed authoring commands,
-SVG/DXF import and export, background meshing/simulation and a visible task panel.
-The current view shows the original Harbor construction in paused Rest.
-The complete native garment studio remains the goal: verified reference parity is
-**0/56** coarse contracts, discovery is incomplete and **no roadmap gate is accepted**.
-The 949 observed interface entries are an engineering inventory, not a completion
-percentage. See the [roadmap](ROADMAP.md) and [registry](parity/features.yaml).
+The native workspace now follows PhotoCraft’s compact charcoal editor structure:
+menus, left tools, context controls, document tab, paired 2D/3D canvases,
+Properties/Scene docks and slim simulation/status rows. The complete garment
+studio remains the goal: **0/56 coarse reference contracts verified**, discovery
+incomplete, and **no roadmap gate accepted**. The 949 observed interface entries
+are an engineering inventory. See [roadmap](ROADMAP.md) and [registry](parity/features.yaml).
 
-## Current continuation
+## Current UI delivery
 
-The studio checkpoint is [PR42](https://github.com/thematheusmello/weftforge/pull/42),
-following [PR41](https://github.com/thematheusmello/weftforge/pull/41) at
-`91237fa16cc04486430c01392314dab67e20d71a`. GitHub Actions remains disabled;
-automated Pages deployments remain off and the existing static site is preserved.
-This increment is based on tested source
-`21b9f5e76a77ca21357783240cef7506b3887fbc`, not a new runtime change.
+Runtime source is `7ab2107aaa51f2c0fa9c9fd2ada972a08c433882`, after
+[PR42](https://github.com/thematheusmello/weftforge/pull/42) main `f8be9b7`.
+The [gallery](docs/studio-preview.md) shows actual unedited 1640 × 1032 captures.
+The original Harbor fixture stays paused in Rest at revision 20: two pieces,
+eight seams, 654 rest vertices. Only framing, selection and dropdown actions ran.
+Selected Scene, Snap and boundary dropdown text is readable; Scene rows are
+left aligned. No authoring, numeric entry, Save, history or physics ran here.
 
-The source adds session-only Off / 1 / 5 / 10 mm pointer Snap choices and Alt/Option
-bypass, preserving exact numeric edits and captured drag settings. Task details
-shows current/last job identity, input revision, progress where available, actual
-worker outcome and cancel/obsolete flags. Source and controlled regressions cover
-unfinished text/caret preservation, keyboard focus, real late failures and queued
-successor intent. These implementation results do not prove the native method.
+The [scoped UI report](parity/reports/WF-20261115-PHOTOCRAFT-STUDIO-001.json)
+is a bounded implementation-only pass. All five final local gates pass from a
+clean source checkpoint using that worktree’s own target:195Rust tests
+(49 native), 54 Python tests, formatting, strict workspace/all-target Clippy,
+xtask registry/map verification and unsigned packaging. Both embedded font OFLs
+match in regular and app-bundle package locations. Debug capture and release
+package identities are separate; there is no new binary release. Smaller windows,
+other platforms and screen-reader use remain unverified.
 
-The [current gallery](docs/studio-preview.md) leads with actual source 21b9 images:
-revision 20, two pieces, eight seams, 654 rest vertices and Snap 10 mm. A separately
-authorized read-only preview loaded the already-public original Harbor project;
-it made no numeric input, authoring, Save, history, Snap change or physics action.
-The expanded panel shows Mesh task 1 / input revision 20, Accepted/succeeded,
-cancel=false/obsolete=false. This is one displayed rest-mesh outcome, not active
-progress, cancellation/error lifecycle, responsiveness or physical acceptance.
-The inline process ReferenceError and late initial getApp receipt remain retained.
+Two reproduced popup regressions were fixed: open menus no longer dispatch
+canvas/transport shortcuts, and keyboard menu activation no longer restores stale
+numeric focus. Pointer text/caret retention and ordinary canvas shortcuts remain
+covered. Independent source review found one remaining dropdown contrast issue;
+the shared light selection stroke fix is followed by final gates and actual
+dropdown capture. See the [packet](parity/reports/artifacts/photocraft-studio-20261115/README.md).
 
-The [combined report](parity/reports/WF-20261115-NATIVE-STUDIO-001.json) is
-**failed/unaccepted**, with successful build components kept explicit. Two native
-checks permanently stopped before typing; a visual preview does not rescue them:
+Source 21b’s [native 001/002 report](parity/reports/WF-20261115-NATIVE-STUDIO-001.json)
+remains failed/unaccepted and is now stale. Its setup and focus-witness stops are
+unchanged, as are all original garment/physics failures. This visual increment
+does not rerun or transfer them. UI-001 stays partial/not_run with current bounded
+visual evidence; UI-003/UI-005 retain stale prior evidence. All complete-contract,
+reference, single-workflow and full-native-plan flags remain false.
 
-- **001 setup failure:** the binder wrongly required one own PID/layer 0 window.
-  The main 1640 × 1032 studio plus 66 × 20 sharing capsule violated that assumption.
-  Three pairs and Empty revision 0 / Snap 10 mm / 0.07 m were reported; no feature input followed.
-- **002 focus observability unverified:** creation X appeared as Stepper 51 with
-  selected -0.25 text and a visible outline, but the frozen required explicit
-  focused AX TextField witness was absent. The independent reviewer upheld STOP.
-  Five pairs/one focus click were reported; no type, Return, construction, Save,
-  consumer, Snap change, task-details action, hero or physics occurred in 002.
-
-Neither stop establishes a product pass or product defect. The independent
-review inspects selected 005 AX/JPEG, frozen criteria and actor outcomes; it does
-not certify the complete trace/runtime/completion context. Numeric transitions,
-pending-text Snap, same-pixel Off / 5 mm, final geometry, native M:N keyboard and
-active task lifecycle remain unexercised. **No 003 ran.** The original criteria,
-barriers, tolerances and caps remain unchanged; 002 only corrected the prospective
-window binder and case bindings. See the
-[scenario](parity/scenarios/UI-NATIVE-STUDIO-001.json) and
-[independent review](parity/reports/artifacts/native-studio-20261115/studio-review/REPORT.md).
-
-## Tested build and delivery boundary
-
-Source 21b9 passes the five required local gates once: formatting, 192 Rust tests,
-strict workspace/all-target Clippy, xtask verification with 54 Python tests, and
-unsigned packaging. Session 30604/wrapper 51798 and child groups
-51826/51893/52424/53183/53194 are terminal 0; all groups were confirmed stopped
-at 10:30:21 UTC before the native checks. No Cargo was repeated for this publication.
-
-The actual pre-gate freeze binds 49 runtime files and two UI contracts, SHA256
-`c61f5b7fcc066bfb667978e8a76c7b9fd7770f1363492e58992daec4d817613c`.
-The [source manifest](parity/reports/artifacts/native-studio-20261115/SOURCE-SCOPE.json)
-and [gate receipts](parity/reports/artifacts/native-studio-20261115/build-v2/gates.json)
-retain exact command, source, timeout and terminal identities. Native/app SHA256:
-`116755960fb0d1c15c531568976417490d88da2ccdb48d3b5f48639e2aba66c7`.
-CLI SHA256:
-`b2c9919869e02c4ab35f9a2e65c689bfcda04c01505e6f71082f045f2aa45a05`.
-
-The prior clean Snap checkpoint 466b passed 190 Rust/54 Python; its receipts and
-86a4 native/b2c9 CLI binaries remain privately preserved. Final 21b9 reuses only
-that same isolated worktree's own real target, never another worktree's compiled
-cache. Public evidence includes identities and logs, not executable/target copies.
-Core, solver, adapters, dependencies and document schema are unchanged by Snap
-and native task telemetry.
-
-The [packet](parity/reports/artifacts/native-studio-20261115/README.md) is a finite
-selected artifact set with exact original/public hashes. Only explicit own-path
-role substitutions are made. Private inverse maps, whole case directories,
-mutable live sidecars, OS/unrelated inventories and duplicate fixtures stay out.
-Root content review and the clean tracked checkpoint `0889623` passed registry,
-implementation-map and all-artifact/source checks: sessions 30336/49038/41087,
-all exit 0, with 4,136 artifacts tracked and hash-correct. The
-[external receipt](parity/reports/artifacts/native-studio-publication-20261115/ROOT-CLOSURE.json)
-records those commands and scopes. The receipt append receives a metadata-only
-recheck before publication. Ignored or untracked files are not delivery.
-UI-001/UI-003/UI-005 remain partial/not_run despite current source-bound failed evidence.
-Complete contract, reference, single workflow and full native plan flags remain false.
-
-Original Snap 539635bc, including 2950 and 7a1 ancestors, is publicly reachable at
-`evidence/native-position-snapping`; root confirmed the exact ID and disabled
-Actions with zero head runs. Telemetry's original contract, error/intent witnesses
-and fixes are ancestors of 21b9. Original failures are not rewritten as all green.
+GitHub Actions and automated Pages deployments stay disabled until the complete
+project is done. The existing static Pages site is preserved. Local gates are
+terminal; no Cargo, CUA or physical acceptance job from this UI pass remains active.
 
 ## Failures and historical checkpoints
 
@@ -151,34 +97,29 @@ quality pass follows. Later 7fe strict-trace incompleteness, A29 strain and 9–
 contact failures remain in the physics evidence. General convergence, calibration,
 surface contact, full persistence and full garment acceptance remain open.
 
-## Reference handoff and exact next steps
+## Next implementation and reference questions
 
-The legitimate reference baseline remains provisional. The guarded Rectangle
-attempt did not complete input or create geometry, so constructor/M:N proportions,
-history and files remain unobserved. The pending one-click manual diagnosis has
-no inferred outcome. Passive observations are not product absence or completed
-interaction. Keep the earlier observed Rectangle facts and the
-[dated runtime notes](spec/features/SEW-002-runtime-notes-20261114.md).
-Commercial/account/raw reference material stays private; fresh implementers use
-reviewed public behavior contracts, not proprietary pseudocode or extracts.
+UI/visual work takes priority over the old focus diagnostics. The reviewed next
+feature is precise authored/rest boundary and sewing-length feedback: reuse the
+existing bounded arc metric, report raw A/B lengths and signed B−A in explicit
+units, and expose the same read-only query through CLI/MCP. Preserve drafts,
+geometry/history and revision-aware display. Source implementation is assigned
+to a separate worktree; its results are not yet accepted or published.
 
-1. Retain PR42's merged-tree/source and disabled-Actions confirmation before
-   continuing. Clean `94ce87810ff99e04f7bb185c7af7eeff6d85cb0f` passes the final
-   registry/map audit with all 4,137 artifacts tracked/hash-correct and all 49+2
-   source files unchanged. PR backlinks change metadata only.
-2. Resolve how a future prospective native method can witness numeric focus
-   honestly before authorizing a new case or source change. A private read-only
-   SDK probe compiled and passed conversion checks, but its target PID was absent
-   at preflight, so no app query ran and widget support remains unverified.
-   Fresh process binding and a prospective method are required. 001/002 stay closed;
-   no 003 is scheduled and no criterion is relaxed retrospectively. The old
-   lost-decimal cause remains unresolved.
-3. Future separately frozen work must observe native raw-input/Snap/same-pixel/
-   keyboard behavior and active task progress/cancellation/error/stale-result
-   lifecycle. Source tests and the read-only task display do not replace it.
-4. Continue the reviewed reference handoff and bounded garment/physics work only
-   under new source/input/criteria/resource bindings. Never retry old closed
-   cases, weaken their limits or infer complete/reference parity from unit tests.
+Then implement 2D piece translation/rotation, physical-length partial Free Sewing,
+internal straight lines and a bounded topological cut. Their remaining reference
+semantics stay explicit. Presence of a reference menu item alone is not executed
+behavior or parity. The executed 100 mm Free Sewing pair is recorded in the
+[reviewed behavior contract](spec/features/SEW-002-paired-runtime-20261114.md).
 
-GitHub Actions and automated Pages deployments remain disabled at the user's
-request until the full project is done. Preserve the existing static site.
+The legitimate reference baseline is provisional. The old Rectangle manual
+handoff has no inferred outcome. Keep the
+[dated runtime notes](spec/features/SEW-002-runtime-notes-20261114.md). Raw
+commercial/account material stays private; fresh implementers receive reviewed
+public behavior contracts. Old closed cases are not restarted or regraded.
+
+Next checks: review length implementation and independent analytic/adapter
+outcomes, run the required integrated gates, inspect its actual native readout,
+and publish only source-bound tracked evidence. Continue full garment/contact
+work under new explicit source/input/criteria bindings after these authoring
+increments. No roadmap gate is accepted by a screenshot or unit-test count.
