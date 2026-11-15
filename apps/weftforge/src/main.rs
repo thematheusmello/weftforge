@@ -316,11 +316,26 @@ fn length_mm(length: f64) -> String {
 
 fn pair_lengths_mm([a, b]: [f64; 2]) -> String {
     format!(
-        "A {} · B {}\nB − A {:+.3} mm",
+        "A {}\nB {}\nB − A {:+.3} mm",
         length_mm(a),
         length_mm(b),
         1000. * (b - a)
     )
+}
+
+fn pair_length_feedback(ui: &mut egui::Ui, lengths: Option<Result<[f64; 2], &str>>) {
+    // Keep three rows for unknown, error and measured values so lazy results do not move the scroll content.
+    let text = match lengths {
+        Some(Ok(lengths)) => pair_lengths_mm(lengths),
+        Some(Err(error)) => format!(
+            "Lengths unavailable:\n{}\n ",
+            error.replace(['\r', '\n'], " ")
+        ),
+        None => "A — mm\nB — mm\nB − A — mm".into(),
+    };
+    for line in text.split('\n') {
+        ui.add(egui::Label::new(egui::RichText::new(line).small()).truncate());
+    }
 }
 
 fn applied_length_heading(ui: &mut egui::Ui, revision: u64) {
@@ -1816,7 +1831,7 @@ impl Studio {
         let focus_key = egui::Id::new("inspector-input-focus");
         let action_focus = self.inspector_focus(ui.ctx());
         egui::Frame::new().inner_margin(8).show(ui, |ui| {
-        egui::ScrollArea::vertical().id_salt("inspector").show(ui,|ui| {
+        let _scroll=egui::ScrollArea::vertical().id_salt("inspector").show(ui,|ui| {
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
                 ui.label("Boundary curve · select here or in 2D");
                 egui::ComboBox::from_id_salt(("boundary-curve",piece.id))
@@ -1937,20 +1952,17 @@ impl Studio {
                         }
                         if ui.small_button("Remove").clicked() { remove=Some(seam.id); }
                     });
-                    ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("applied-length")),|ui| {
-                        if ui.is_rect_visible(ui.min_rect()) {
-                            let lengths=self.legacy_lengths.values.entry(seam.id).or_insert_with(|| {
-                                #[cfg(test)]
-                                authored_length_tests::record_query();
-                                self.editor.project.seam_lengths(seam.id).map_err(|error|error.to_string())
-                            });
-                            applied_length_heading(ui,self.editor.project.revision);
-                            match lengths {
-                                Ok(lengths)=>{ ui.small(pair_lengths_mm(*lengths)); }
-                                Err(error)=>{ ui.small(format!("Lengths unavailable: {error}")); }
-                            }
-                        }
+                    let feedback=ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("applied-length")),|ui| {
+                        applied_length_heading(ui,self.editor.project.revision);
+                        pair_length_feedback(ui,self.legacy_lengths.values.get(&seam.id).map(|lengths|lengths.as_ref().copied().map_err(String::as_str)));
                     });
+                    if ui.is_rect_visible(feedback.response.rect)
+                        && let std::collections::btree_map::Entry::Vacant(entry)=self.legacy_lengths.values.entry(seam.id) {
+                        #[cfg(test)]
+                        authored_length_tests::record_query();
+                        entry.insert(self.editor.project.seam_lengths(seam.id).map_err(|error|error.to_string()));
+                        ui.ctx().request_repaint();
+                    }
                 });
             }
             });
@@ -1989,10 +2001,12 @@ impl Studio {
                         ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("applied-length")),|ui| {
                             applied_length_heading(ui,self.editor.project.revision);
                             if let Some(geometry)=mesh.and_then(|mesh|mesh.sewing_groups.iter().find(|geometry|geometry.id==group.id)) {
-                                ui.small(pair_lengths_mm(geometry.lengths));
+                                pair_length_feedback(ui,Some(Ok(geometry.lengths)));
                                 ui.small(format!("{} paired portions",geometry.portions.len()));
-                            } else if let Some(error)=mesh_error { ui.small(format!("Lengths unavailable: {error}")); }
-                            else { ui.small("Lengths and guides rebuilding for this revision…"); }
+                            } else {
+                                pair_length_feedback(ui,mesh_error.map(Err));
+                                ui.add(egui::Label::new(egui::RichText::new(if mesh_error.is_some() { "Paired portions unavailable" } else { "Lengths and guides rebuilding for this revision…" }).small()).truncate());
+                            }
                         });
                         ui.horizontal(|ui| {
                             let edit=ui.small_button("Edit group");
@@ -2047,6 +2061,8 @@ impl Studio {
             if let Some(command)=group_action { acting=true; self.apply_inspector_action(ui.ctx(),command,action_focus); }
             if confirm_side { acting=true; self.confirm_sewing_side(ui.ctx()); }
         });
+        #[cfg(test)]
+        ui.ctx().data_mut(|data|data.insert_temp(egui::Id::new("authored-length-scroll"),(_scroll.id,_scroll.content_size,_scroll.inner_rect,_scroll.state.offset)));
         });
         let opening_rectangle = self.tool == Tool::Rectangle
             && self
@@ -10047,11 +10063,11 @@ mod authored_length_tests {
         assert_eq!(length_mm(0.0000016), "0.002 mm");
         assert_eq!(
             pair_lengths_mm([0.3, 0.5]),
-            "A 300.000 mm · B 500.000 mm\nB − A +200.000 mm"
+            "A 300.000 mm\nB 500.000 mm\nB − A +200.000 mm"
         );
         assert_eq!(
             pair_lengths_mm([0.5, 0.3]),
-            "A 500.000 mm · B 300.000 mm\nB − A -200.000 mm"
+            "A 500.000 mm\nB 300.000 mm\nB − A -200.000 mm"
         );
         let ctx = egui::Context::default();
         ctx.enable_accesskit();
@@ -10307,6 +10323,146 @@ mod authored_length_tests {
     }
 
     #[test]
+    fn scrolling_legacy_feedback_preserves_content_height_without_measuring_hidden_rows() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = scene();
+        app.selected = None;
+        app.selected_curve = None;
+        let seam = app.editor.project.seams[0].clone();
+        for index in 0..24 {
+            app.editor
+                .execute(Command::AddSeam {
+                    name: format!("Original repeated pair {index}"),
+                    a: seam.a,
+                    b: seam.b,
+                    correspondence: seam.correspondence.clone(),
+                })
+                .unwrap();
+        }
+        let snapshot = |ctx: &egui::Context| {
+            ctx.data_mut(|data| {
+                data.get_temp::<(egui::Id, Vec2, Rect, Vec2)>(egui::Id::new(
+                    "authored-length-scroll",
+                ))
+            })
+            .unwrap()
+        };
+        QUERIES.set(0);
+        frame(&ctx, &mut app, 420., vec![]);
+        let output = frame(&ctx, &mut app, 420., vec![]);
+        let (id, initial_size, viewport, _) = snapshot(&ctx);
+        let first = output
+            .platform_output
+            .accesskit_update
+            .unwrap()
+            .nodes
+            .into_iter()
+            .find(|(_, node)| {
+                node.role() == egui::accesskit::Role::Label
+                    && node
+                        .value()
+                        .or_else(|| node.label())
+                        .is_some_and(|text| text.starts_with("Original legacy pair ·"))
+            })
+            .unwrap()
+            .1
+            .bounds()
+            .unwrap();
+        let initial_queries = QUERIES.get();
+        assert!(initial_queries < app.editor.project.seams.len());
+        let mut state = egui::scroll_area::State::load(&ctx, id).unwrap();
+        state.offset.y = first.y0 as f32 - viewport.top();
+        state.store(&ctx, id);
+        frame(&ctx, &mut app, 420., vec![]);
+        frame(&ctx, &mut app, 420., vec![]);
+        let (_, scrolled_size, _, offset) = snapshot(&ctx);
+        assert!(offset.y > 1., "the inspector must actually scroll");
+        assert!(QUERIES.get() > initial_queries && QUERIES.get() < app.editor.project.seams.len());
+        assert!(
+            (initial_size.y - scrolled_size.y).abs() <= 0.01,
+            "scrolling changed content height: {} -> {}",
+            initial_size.y,
+            scrolled_size.y
+        );
+        let queries = QUERIES.get();
+        for _ in 0..3 {
+            frame(&ctx, &mut app, 420., vec![]);
+        }
+        assert_eq!(QUERIES.get(), queries);
+        let mut state = egui::scroll_area::State::load(&ctx, id).unwrap();
+        state.offset.y = 0.;
+        state.store(&ctx, id);
+        frame(&ctx, &mut app, 420., vec![]);
+        frame(&ctx, &mut app, 420., vec![]);
+        assert!((snapshot(&ctx).1.y - initial_size.y).abs() <= 0.01);
+        assert_eq!(QUERIES.get(), queries);
+        for value in app.legacy_lengths.values.values_mut() {
+            *value = Err("Original long metric error for the full hover reason. ".repeat(20));
+        }
+        frame(&ctx, &mut app, 420., vec![]);
+        assert!(
+            (snapshot(&ctx).1.y - initial_size.y).abs() <= 0.01,
+            "errors must reserve the same row height"
+        );
+        assert_eq!(QUERIES.get(), queries);
+        eprintln!(
+            "legacy scroll content height: initial={} scrolled={} returned={} px; measured {queries}/{} legacy pairs",
+            initial_size.y,
+            scrolled_size.y,
+            snapshot(&ctx).1.y,
+            app.editor.project.seams.len()
+        );
+    }
+
+    #[test]
+    fn partially_clipped_legacy_feedback_is_measured_once() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = scene();
+        app.selected = None;
+        app.selected_curve = None;
+        QUERIES.set(0);
+        frame(&ctx, &mut app, 300., vec![]);
+        let output = frame(&ctx, &mut app, 300., vec![]);
+        assert!(app.legacy_lengths.values.is_empty());
+        let (id, _, viewport, _) = ctx
+            .data_mut(|data| {
+                data.get_temp::<(egui::Id, Vec2, Rect, Vec2)>(egui::Id::new(
+                    "authored-length-scroll",
+                ))
+            })
+            .unwrap();
+        let row = output
+            .platform_output
+            .accesskit_update
+            .unwrap()
+            .nodes
+            .into_iter()
+            .find(|(_, node)| {
+                node.role() == egui::accesskit::Role::Label
+                    && node.value().or_else(|| node.label()) == Some("A — mm")
+            })
+            .unwrap()
+            .1
+            .bounds()
+            .unwrap();
+        let mut state = egui::scroll_area::State::load(&ctx, id).unwrap();
+        // The value row is at the top while the block's heading is clipped above it.
+        state.offset.y = row.y0 as f32 - viewport.top();
+        state.store(&ctx, id);
+        for _ in 0..4 {
+            frame(&ctx, &mut app, 300., vec![]);
+        }
+        assert!(
+            app.legacy_lengths
+                .values
+                .contains_key(&app.editor.project.seams[0].id)
+        );
+        assert_eq!(QUERIES.get(), 1);
+    }
+
+    #[test]
     fn legacy_queries_are_lazy_errors_cached_and_groups_wait_for_matching_mesh_jobs() {
         let ctx = egui::Context::default();
         ctx.enable_accesskit();
@@ -10368,10 +10524,10 @@ mod authored_length_tests {
                 outcome == "obsolete"
             );
             if outcome == "failed" {
-                assert!(labels.contains("Lengths unavailable: Original test failure"));
+                assert!(labels.contains("Original test failure"));
             }
             if outcome == "cancelled" {
-                assert!(labels.contains("Lengths unavailable: Rest mesh job cancelled"));
+                assert!(labels.contains("Rest mesh job cancelled"));
             }
             assert_eq!(
                 labels.matches("B − A +200.000 mm").count(),
