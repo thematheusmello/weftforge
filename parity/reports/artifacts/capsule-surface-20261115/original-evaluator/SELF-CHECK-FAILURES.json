@@ -1,0 +1,14 @@
+{
+  "kind": "Retained preparation-only evaluator selfcheck failure before freeze",
+  "new_garment_execution": false,
+  "attempt": 1,
+  "case": "parallel_1e-10",
+  "assertion": "Distance interval width must not exceed four times the unchanged retained oracle tolerance",
+  "independent_interval_m": [0.0, 1.0287607477749272e-10],
+  "retained_100digit_distance_m": 1e-10,
+  "retained_tolerance_m": 1.5e-11,
+  "cause": "Near-zero separation gave a weak dual normal; the certificate was safe but insufficiently tight for the predeclared oracle selfcheck",
+  "correction": "Tightened the allowed f64 certificate width from64 to8 error envelopes; unresolved pairs use the existing100digit feasible-primal/dual fallback",
+  "thresholds_or_physics_settings_changed": false,
+  "prior_evidence_changed": false
+}

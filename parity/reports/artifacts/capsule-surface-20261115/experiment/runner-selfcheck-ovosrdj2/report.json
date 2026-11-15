@@ -1,0 +1,252 @@
+{
+  "checks": [
+    {
+      "name": "successful_child_exact_reap",
+      "observations": {
+        "actual_output_bytes": 42,
+        "argv": [
+          "${PRIVATE_ACCOUNT_HOME}/.pyenv/versions/3.13.0/bin/python3",
+          "-B",
+          "-c",
+          "import sys; print('accepted stub stdout'); print('accepted stub stderr',file=sys.stderr)",
+          "${PRIVATE_WEFTFORGE_ROOT}/.local/capsule-garment-20261115/runner-selfcheck-ovosrdj2/success"
+        ],
+        "end_monotonic_seconds": 827041.049514,
+        "exit_code": 0,
+        "peak_rss_bytes": 14237696,
+        "pid": 82338,
+        "process_group": 82338,
+        "sampled_peak_rss_bytes": 12206080,
+        "stop_reason": null
+      },
+      "status": "passed"
+    },
+    {
+      "name": "nonzero_exit_retained_stderr",
+      "observations": {
+        "actual_output_bytes": 17,
+        "argv": [
+          "${PRIVATE_ACCOUNT_HOME}/.pyenv/versions/3.13.0/bin/python3",
+          "-B",
+          "-c",
+          "import sys; print('retained failure',file=sys.stderr); sys.exit(7)",
+          "${PRIVATE_WEFTFORGE_ROOT}/.local/capsule-garment-20261115/runner-selfcheck-ovosrdj2/exit-seven"
+        ],
+        "end_monotonic_seconds": 827041.079430708,
+        "exit_code": 7,
+        "peak_rss_bytes": 14303232,
+        "pid": 82340,
+        "process_group": 82340,
+        "sampled_peak_rss_bytes": 1753088,
+        "stop_reason": null
+      },
+      "status": "passed"
+    },
+    {
+      "name": "wall_stop_kills_whole_group",
+      "observations": {
+        "actual_output_bytes": 17,
+        "argv": [
+          "${PRIVATE_ACCOUNT_HOME}/.pyenv/versions/3.13.0/bin/python3",
+          "-B",
+          "-c",
+          "import os,time; pid=os.fork(); print('grandchild='+str(pid),flush=True) if pid else None; time.sleep(5)",
+          "${PRIVATE_WEFTFORGE_ROOT}/.local/capsule-garment-20261115/runner-selfcheck-ovosrdj2/wall-group"
+        ],
+        "end_monotonic_seconds": 827041.338249083,
+        "exit_code": -9,
+        "grandchild_pid": 82346,
+        "grandchild_terminal_state": "absent",
+        "peak_rss_bytes": 14106624,
+        "pid": 82344,
+        "process_group": 82344,
+        "sampled_peak_rss_bytes": 14106624,
+        "stop_reason": "whole_case_wall_cap"
+      },
+      "status": "passed"
+    },
+    {
+      "name": "sampled_rss_early_stop",
+      "observations": {
+        "actual_output_bytes": 0,
+        "argv": [
+          "${PRIVATE_ACCOUNT_HOME}/.pyenv/versions/3.13.0/bin/python3",
+          "-B",
+          "-c",
+          "import time; memory=bytearray(64*1024*1024); time.sleep(2)",
+          "${PRIVATE_WEFTFORGE_ROOT}/.local/capsule-garment-20261115/runner-selfcheck-ovosrdj2/sampled-rss"
+        ],
+        "end_monotonic_seconds": 827041.386256583,
+        "exit_code": -9,
+        "peak_rss_bytes": 81461248,
+        "pid": 82355,
+        "process_group": 82355,
+        "sampled_peak_rss_bytes": 81461248,
+        "stop_reason": "sampled_producer_rss_cap"
+      },
+      "status": "passed"
+    },
+    {
+      "name": "exact_wait4_rss_rejects_even_when_samples_low",
+      "observations": {
+        "actual_output_bytes": 0,
+        "argv": [
+          "${PRIVATE_ACCOUNT_HOME}/.pyenv/versions/3.13.0/bin/python3",
+          "-B",
+          "-c",
+          "import time; memory=bytearray(64*1024*1024); time.sleep(.1)",
+          "${PRIVATE_WEFTFORGE_ROOT}/.local/capsule-garment-20261115/runner-selfcheck-ovosrdj2/exact-rss"
+        ],
+        "end_monotonic_seconds": 827041.547986916,
+        "exit_code": 0,
+        "peak_rss_bytes": 81379328,
+        "pid": 82358,
+        "process_group": 82358,
+        "sampled_peak_rss_bytes": 1024,
+        "stop_reason": "exact_producer_peak_rss_cap"
+      },
+      "status": "passed"
+    },
+    {
+      "name": "output_overshoot_retained_and_rejected",
+      "observations": {
+        "actual_output_bytes": 100000,
+        "argv": [
+          "${PRIVATE_ACCOUNT_HOME}/.pyenv/versions/3.13.0/bin/python3",
+          "-B",
+          "-c",
+          "from pathlib import Path; import sys,time; Path(sys.argv[1],'numeric-rows.jsonl').write_bytes(b'x'*100000); time.sleep(2)",
+          "${PRIVATE_WEFTFORGE_ROOT}/.local/capsule-garment-20261115/runner-selfcheck-ovosrdj2/output-stop"
+        ],
+        "end_monotonic_seconds": 827041.580653416,
+        "exit_code": -9,
+        "overshoot_retained_and_rejected": true,
+        "peak_rss_bytes": 16367616,
+        "pid": 82359,
+        "process_group": 82359,
+        "sampled_peak_rss_bytes": 4718592,
+        "stop_reason": "numerical_output_cap_stop_budget"
+      },
+      "status": "passed"
+    },
+    {
+      "name": "prelaunch_cap_and_deadline_refusal",
+      "observations": {
+        "clock_refusal": {
+          "argv": [
+            "${PRIVATE_ACCOUNT_HOME}/.pyenv/versions/3.13.0/bin/python3",
+            "-B",
+            "-c",
+            "raise AssertionError('must not launch')"
+          ],
+          "end_monotonic_seconds": 827041.581918666,
+          "exit_code": null,
+          "peak_rss_bytes": null,
+          "pid": null,
+          "process_group": null,
+          "sampled_peak_rss_bytes": 0,
+          "stop_reason": "monitor_error:ValueError:Whole-case deadline closed; no numerical continuation"
+        },
+        "volume_refusal": {
+          "argv": [
+            "${PRIVATE_ACCOUNT_HOME}/.pyenv/versions/3.13.0/bin/python3",
+            "-B",
+            "-c",
+            "raise AssertionError('must not launch')"
+          ],
+          "end_monotonic_seconds": 827041.581896916,
+          "exit_code": null,
+          "peak_rss_bytes": null,
+          "pid": null,
+          "process_group": null,
+          "sampled_peak_rss_bytes": 0,
+          "stop_reason": "monitor_error:ValueError:Numerical output stop budget reached before launch"
+        }
+      },
+      "status": "passed"
+    },
+    {
+      "name": "nonoverwrite_before_spawn",
+      "observations": {
+        "monitor_refused_without_spawn": true,
+        "original_sha256": "1a142cbaaba0fbef5f87c0c1d61107412b6bce8fc6fdd74e670587aa4308dfb2"
+      },
+      "status": "passed"
+    },
+    {
+      "name": "aggregate_scope_and_unsafe_entries",
+      "observations": {
+        "analysis_rows_counted": true,
+        "exact_count": 20,
+        "hardlinks_counted_per_path": true,
+        "source_excluded": true,
+        "symlinks_and_nonregular_refused": true
+      },
+      "status": "passed"
+    },
+    {
+      "name": "receipt_self_size_fixed_point",
+      "observations": [
+        {
+          "counted_bytes": 98,
+          "existing_bytes": 0,
+          "receipt_bytes": 98
+        },
+        {
+          "counted_bytes": 189,
+          "existing_bytes": 90,
+          "receipt_bytes": 99
+        },
+        {
+          "counted_bytes": 1099,
+          "existing_bytes": 999,
+          "receipt_bytes": 100
+        },
+        {
+          "counted_bytes": 65636,
+          "existing_bytes": 65535,
+          "receipt_bytes": 101
+        },
+        {
+          "counted_bytes": 268435461,
+          "existing_bytes": 268435356,
+          "receipt_bytes": 105
+        },
+        {
+          "actual_write_total_bytes": 102,
+          "exclusive_receipt_preserved": true
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "name": "strict_authorization_and_json_refusal",
+      "observations": {
+        "invalid_scopes_refused": 8,
+        "malformed_numeric_json_refused": 3,
+        "missing_authorization_refused": true,
+        "valid_scope_only_has_no_execution_authority_without_bindings": true
+      },
+      "status": "passed"
+    },
+    {
+      "name": "quality_failure_scheduling",
+      "observations": {
+        "operational_stop_disallows_height": true,
+        "quality_failure_retained_and_allows_height": true
+      },
+      "status": "passed"
+    }
+  ],
+  "error": null,
+  "evaluator_launches": 0,
+  "method_sha256": "83873f9b5f21e72fa75ca9903be7ab68831e7758ff18f72c67a44e895d18e148",
+  "new_garment_execution": false,
+  "outputs": "runner-selfcheck-ovosrdj2",
+  "real_driver_launches": 0,
+  "runner_sha256": "b2269380034c66aff703a1755e82deab9cfb533c9ef4aab4f795013ac0476a65",
+  "schema": 1,
+  "scope": "Python stub children and pure runner helpers only",
+  "selfchecks_sha256": "516ecc4fc7e18f4bd93f52db09aa03a1b3de57c08d1baa905e88ab2eea1934a4",
+  "status": "passed"
+}

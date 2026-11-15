@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "source_commit": "0770204a54abdf5f929b6626b01d7fcfb0e13ca4",
+  "created_utc": "2026-11-15T00:41:07.861717+00:00",
+  "source_input_binding_sha256": "d313af247e05b1e331c6982d3201079a13a9bf1890fb9ad02cb60f1d4944e055",
+  "plan_sha256": "d76f668d21d2837b41574b2d403f7ed6ed24f873265e56cbcbb5e666280034e6",
+  "private_real_target_no_symlinks": true,
+  "command": [
+    "cargo",
+    "build",
+    "--release",
+    "--locked",
+    "--manifest-path",
+    "harness/Cargo.toml"
+  ],
+  "build_confirmation_exit_code": 0,
+  "build_confirmation_log_sha256": "85c8dbac64ed6a362d668bf3988686e26e947620bb15cfdbe2e999a0ff8261b2",
+  "driver_path": "candidate/harbor-public-driver",
+  "driver_sha256": "7f01a3355385af0ed8df2accf2c2a6fbf9cebc2af71f391f259ed44a9db48f34",
+  "files": {
+    "harness/Cargo.toml": "3734f63c33aafc9250b23f481710ab922285fc26c519871c6b8f5379d260dbcf",
+    "harness/Cargo.lock": "23ec60426352f2274ede6c242e4c7fcca4d34ad7d1b3469754eda39c83e7995e",
+    "harness/src/main.rs": "0668f9aff8435b35298f309100583ec5f37cfcbd243eb089ebbef6ffabbf6216",
+    "HARNESS-CHANGES.diff": "14c7f3bfc297837797782829b7d665e7efcd84e620a156cf7d514d811e1bd4c1"
+  },
+  "preflight": {
+    "base": {
+      "metadata_sha256": "6cb8a5e65e48672746a4ba7cea1ef831b2f17bc33d20ae4ae7cab77c417a73e8",
+      "rest_obj_sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+      "rest_obj_byte_equal_old_gold": true,
+      "all_metadata_fields_exact_old_serialized_values": true,
+      "vertices": 654,
+      "triangles": 1172,
+      "source_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+    },
+    "height": {
+      "metadata_sha256": "171f0487cfd3a2d3f23f3436c9e470a8f520acb5d180f6bcaeefe44f1f883fed",
+      "rest_obj_sha256": "095f0e7e7e25459b9a547f36515d53cfc36accd00cac3886cd00ee356f24e93b",
+      "rest_obj_byte_equal_old_gold": true,
+      "all_metadata_fields_exact_old_serialized_values": true,
+      "vertices": 640,
+      "triangles": 1144,
+      "source_sha256": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+    }
+  },
+  "geometry_only_executions": 2,
+  "physics_initializations_or_steps": 0,
+  "preparation_lookup_error_record_sha256": "55e8729ab88becae041bb85563b9d0f898416cdc3473338bc0cfe7652033004d",
+  "changes_from_old_harness": [
+    "Capture stage000 OBJ.",
+    "Distinguish producer clock from fullcase clock.",
+    "Failed step records lastaccepted settings.",
+    "Final-only quality flag includes zero uncertaincapsulepairs."
+  ],
+  "limits": "Producer instrumentation and geometry preflight, not execution authorization or garment acceptance.",
+  "supersedes_producer_binding_sha256": "0af05ea376215eb1372e0693b670f7641079dee9c7633541a311030c49b19a75",
+  "note": "Only adds prospective output-volume stop; all40source/input/driver/preflight bytes unchanged."
+}

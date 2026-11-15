@@ -7,55 +7,55 @@ inventory, not a feature-completion denominator.
 
 ## Current continuation
 
-Published main is `d65f935aea54bb5d8cf882d8c212fee8dbe314cf`, merged through
-[PR37](https://github.com/thematheusmello/weftforge/pull/37). The primary checkout
-has fast-forwarded cleanly; its39 runtime/test files equal testedb760. Final
-clean85577d0 registry/map checks passed and all2,087 referenced artifacts are
-tracked and hash-correct. The merge tree equals that reviewed head. Actions is
-still `enabled:false`; both head and merge have zero workflow runs. Publication
-receipt: `.local/verification/published-d65f935aea54.json`.
+Published main remains `d65f935aea54bb5d8cf882d8c212fee8dbe314cf` from
+[PR37](https://github.com/thematheusmello/weftforge/pull/37). This local checkpoint
+combines tested runtime `0770204a54abdf5f929b6626b01d7fcfb0e13ca4` with current
+metadata. All forty runtime/test files retain their exact tested bytes. The
+source-only [capsule packet](parity/reports/artifacts/capsule-surface-20261115/README.md)
+retains original authoring inputs, all362 saved boundary states/360 step records,
+rest metadata, six OBJ exports, frozen independent evaluator and full failures.
+The [current report](parity/reports/WF-20261115-CAPSULE-SURFACE-001.json) is
+implementation-only and **failed**, with no full garment gate or reference parity.
 
-The next candidate is private0770204, with40 frozen runtime/test files,153
-passing Rust tests and the reviewed static capsule contact fix. Its original
-Harbor inputs, source snapshot and readonly driver are prepared in
-`.local/capsule-garment-20261115`. Planv2 retains420s whole-case,256MiB numerical
-output and a separate256MiB producer peak-RSS bound. Geometry-only preflights
-match both old rest meshes byte-for-byte. The independent evaluator is frozen
-at4b22c710 with24 files; final root selfchecks passed9groups/83cases and the
-runner's12stub checks passed. Reviewed runner hash isb2269380; actual driver is
-7f01a335. Root authorization0c4671b4 was checked by both sides before launch.
-Controller session35986/PID87622 ended with exit2 after both cases completed
-structurally and passed their receipt/resource checks. Base took167.268207s;
-height took162.048551s. Both passed the independent static contact screen at all
-181 saved states. Base still fails strain at frames28–37 (maximum19.9092% at31)
-and has33 exact peak-attribution failures; height passes all trajectory physical
-and completed-fit screens but has attribution failures at6/10/18. Overall strict
-delivery stays failed. Base final contact interval is approximately2.3071e-7m;
-height's maximum contact upper bound is3.78893e-7m. No oracle/policy count or
-initial-count uncertainty was hidden. All old contact/strain/trace failures remain
-visible. Do not retry or continue these closed cases. Receipts and immutable
-analysis are under `.local/capsule-garment-20261115/runs`; posthoc attribution
-review is separate. No owned solver process remains active.
+Both controlled original Harbor cases are closed: controller session35986,
+PID87622, exit2. A/base completed operationally in167.26820654096082s and B/height
+in162.04855137504637s, under420s whole-case and separate256MiB producerRSS and
+aggregate numerical-output limits. Both pass independent full static
+triangle/capsule and supported contact below2mm at every one of181 saved states,
+with zero independent unknown pairs/raw conservative-policy counts and no blocked
+required diagnostic verification. A still fails15% strain at28–37, reaching
+19.9092%at31, plus33 exact peak-attribution mismatches. B passes trajectory
+physical and completed-fit screens but fails exact attribution at6/10/18. Their
+final-only producer pass flags never qualify strict delivery. Initial open
+seams/targets0–28 describe arrangement rather than completed fit. No owned
+physical job remains active; do not retry or continue either closed case.
 
-An isolated agent is implementing bounded editable SVG pattern import under
-`.local/svg-pattern-import-20261115`/`feat/svg-pattern-import`; its prospective
-FILE-005 contract953328e9 predates code. Core/CLI/MCP/native paths and tests are
-written. After case closure, focused core5/5, CLI1/1 and MCP8/8 checks passed;
-the independent svgpathtools1.7.2/minidom consumer passed scale/geometry checks.
-Native focused checks exposed a modal-width issue, now being corrected with
-the first failure retained. Full gates, actual native import acceptance and
-integration remain pending. Root owns report freshness/registry updates before
-the agent's final full gates.
+Original evaluator freeze4b22c710, runnerb2269380, driver7f01a335 and root
+execution authorization0c4671b4 remain immutable. Base final receipt isa679df1d;
+height is871e4fb5. The packet preserves original raw receipt/analysis values and
+separates the portable path-remap replay from the24 frozen evaluator files.
+Literal personal-path redactions in logs/audits have raw/public hash and
+substitution provenance; they are explicitly publication derivatives. No binary,
+Cargo target, proprietary data or release package is distributed. Saved-state
+replay performs independent math only, outside the original closed clocks.
 
-The completed7fe native workflow and its original closure inventories remain
-immutable. Its37 runtime/test files are separately archived from Git at
-`.local/harbor-native-source-7fe9e187-20261115`; the old evaluator's live-checkout
-guard is intentionally historical after this fast-forward. Original7fe process
-14668 and preview32794 were rechecked live in their separate copied bundles;
-both are paused and no solver job is active. The primary and preview target
-trees with inherited shared links were preserved under ignored local storage;
-their replacements are real private directories. External cache destinations
-were untouched. Keep using isolated targets for new work.
+Runtime077 already passed formatting,153Rust tests, strict workspace/all-target
+Clippy, xtask verification with54Python checks and unsigned local packaging.
+Those exact-source original logs and package binding11d246a7 are retained; no
+heavy gate or physical/timed benchmark was repeated for publication. Independent
+source/static review and actual unmodified Rust execution each covered83static
+cases; neither establishes general garment clearance or physical convergence.
+
+The b760 studio report and UI-001/PAT-003 evidence freshness are now stale after
+changed runtime source; original gallery/capture/receipt bytes remain historical.
+The current native uncertainty count label has no live observation in this
+packet. All prior3aa strain/contact and7fe Save18/raw-metadata failures remain
+visible. The separate SVG import branch is excluded from this checkpoint.
+
+Next: obtain a separate public-packet review, validate registry/map and every
+formal artifact from a clean tracked checkout, then let root handle integration
+and publication. The publication agent owns no GitHub/push/CI operations.
+GitHub Actions and Pages must remain disabled until the complete project is done.
 
 ## Native visual preview checkpoint
 
@@ -146,12 +146,12 @@ decoding check and native uncertainty display. Formatting, all153Rust tests,
 strict workspace Clippy, xtask verification and standard unsigned packaging pass
 under `.local/capsule-integrated-checks-20261115` (exec93102/wrapper30000, all
 terminal0). Independent execution of the unchanged Rust detector also agrees
-with the original83oracle cases. No garment has run on that new solver.
+with the original83oracle cases. The two closed headless cases above now exercise that solver; both strict results remain failed.
 
 Preview evidence is under `.local/native-preview-20261114` and the published
 gallery; it cannot substitute for empty-project acceptance. Next finish the
-contact increment's independent evaluator/runner review and prospective garment
-checks, then integrate its qualified results. GitHub Actions was rechecked
+contact increment's public saved-state packet review and clean-checkout registry/map
+checks, then integrate its qualified failed results. GitHub Actions was rechecked
 `enabled:false` on2026-11-15; README branding remains product focused.
 
 ## Publication and cost policy

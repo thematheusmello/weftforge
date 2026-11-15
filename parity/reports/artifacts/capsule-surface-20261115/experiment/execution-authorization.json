@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "status": "authorized",
+  "explicit_root_authorization": true,
+  "authorized_utc": "2026-11-15T01:11:43.972821+00:00",
+  "source_commit": "0770204a54abdf5f929b6626b01d7fcfb0e13ca4",
+  "cases": [
+    "base",
+    "height"
+  ],
+  "attempts_per_case": 1,
+  "plan": {
+    "path": ".local/capsule-garment-20261115/PREPARATION-PLAN-v2.json",
+    "sha256": "d76f668d21d2837b41574b2d403f7ed6ed24f873265e56cbcbb5e666280034e6"
+  },
+  "source_input_binding": {
+    "path": ".local/capsule-garment-20261115/SOURCE-INPUT-BINDING.json",
+    "sha256": "d313af247e05b1e331c6982d3201079a13a9bf1890fb9ad02cb60f1d4944e055"
+  },
+  "producer_binding": {
+    "path": ".local/capsule-garment-20261115/PRODUCER-BINDING-v2.json",
+    "sha256": "68ca7dcd05f4a443fe71f76fbd0accef9c60249befec4e1638c9065e77534c9a"
+  },
+  "evaluator_freeze": {
+    "path": ".local/capsule-garment-evaluator-20261115/FREEZE.json",
+    "sha256": "4b22c7109de54f10c3f133fd1c9eced52421c5dd753cf50ac6520f8140f5b4b3"
+  },
+  "runner": {
+    "path": ".local/capsule-garment-20261115/runner.py",
+    "sha256": "b2269380034c66aff703a1755e82deab9cfb533c9ef4aab4f795013ac0476a65"
+  },
+  "root_review": {
+    "path": ".local/capsule-garment-20261115/ROOT-REVIEW.json",
+    "sha256": "70f90ac62e126ea192b119abe8f295005be82a443a0d4d32b39e97bd072de845"
+  },
+  "scope": "Exactly base thenheight, oneattempt each, fixed60+120/8sub32/1over60/closure1,420swholecase,256MiBproducerRSS and256MiBnumericoutput. No parameter/input changes,retry,continuation or thirdcase. Structural/resourcefailure stops; arithmeticcomplete qualityfail preserved and permitsheight.",
+  "quality_limits_unchanged": true,
+  "reference_comparison": false,
+  "roadmap_gate_acceptance": false
+}

@@ -1,0 +1,1620 @@
+{
+  "kind": "actual_unmodified_rust_static_capsule_comparison",
+  "commit": "24dba7715233a7423088772d49c32a632d901a0c",
+  "preflight": {
+    "utc": "2026-11-15T00:27:45.210969+00:00",
+    "plan_sha256": "a3e2f0304ce6dc810550ac8f4ca24f59ee5e07eb5eefcc2e2d5cc39ce8a09bcb",
+    "runner_sha256": "f62d525051aef90ea70f9250efb8b061891a77134b61b2389e7091cfbb0e3844",
+    "all_bindings_exact": true,
+    "comparator_self_checks": "passed"
+  },
+  "compilation": {
+    "command": [
+      "rustup",
+      "run",
+      "1.94.1",
+      "rustc",
+      "--edition=2024",
+      "--crate-name",
+      "capsule_static_check",
+      "harness.rs",
+      "-o",
+      "capsule-static-check"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.8085404169978574
+  },
+  "status": "passed_all_83_static_cases",
+  "case_results": [
+    {
+      "label": "ordinary_0",
+      "actual": {
+        "label": "ordinary_0",
+        "distance": 1.0329785246278063,
+        "uncertain": false,
+        "bary": [
+          0.8250701586859572,
+          0.0,
+          0.17492984131404277
+        ],
+        "axis_fraction": 0.5556017731390714
+      },
+      "independent_qp_distance": 1.0329785246278065,
+      "original_tolerance": 9.565035035254063e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 2.220446049250313e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_1",
+      "actual": {
+        "label": "ordinary_1",
+        "distance": 0.49464310014575397,
+        "uncertain": false,
+        "bary": [
+          0.9112944800639595,
+          0.08870551993604046,
+          0.0
+        ],
+        "axis_fraction": 0.24085279943985088
+      },
+      "independent_qp_distance": 0.4946431001457539,
+      "original_tolerance": 9.784844252385732e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 5.551115123125783e-17,
+      "failures": []
+    },
+    {
+      "label": "ordinary_2",
+      "actual": {
+        "label": "ordinary_2",
+        "distance": 0.30855937108444165,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "axis_fraction": 0.38558574721891503
+      },
+      "independent_qp_distance": 0.30855937108444165,
+      "original_tolerance": 1.1276620337864102e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_3",
+      "actual": {
+        "label": "ordinary_3",
+        "distance": 0.4363839455484412,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "axis_fraction": 0.12871656363578343
+      },
+      "independent_qp_distance": 0.43638394554844134,
+      "original_tolerance": 7.340713838889316e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.6653345369377348e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_4",
+      "actual": {
+        "label": "ordinary_4",
+        "distance": 0.19490454378562858,
+        "uncertain": false,
+        "bary": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_fraction": 0.15792408146113066
+      },
+      "independent_qp_distance": 0.19490454378562863,
+      "original_tolerance": 1.0424103347854006e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 5.551115123125783e-17,
+      "failures": []
+    },
+    {
+      "label": "ordinary_5",
+      "actual": {
+        "label": "ordinary_5",
+        "distance": 1.2304452535118906,
+        "uncertain": false,
+        "bary": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_fraction": 0.7483450063959953
+      },
+      "independent_qp_distance": 1.2304452535118908,
+      "original_tolerance": 1.3313962372617961e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 2.220446049250313e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_6",
+      "actual": {
+        "label": "ordinary_6",
+        "distance": 0.790044571287869,
+        "uncertain": false,
+        "bary": [
+          0.6334630086203664,
+          0.0,
+          0.3665369913796336
+        ],
+        "axis_fraction": 0.30606896322655697
+      },
+      "independent_qp_distance": 0.7900445712878691,
+      "original_tolerance": 7.079457842576831e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.1102230246251565e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_7",
+      "actual": {
+        "label": "ordinary_7",
+        "distance": 0.9094305227124893,
+        "uncertain": false,
+        "bary": [
+          0.16801422952465614,
+          0.0,
+          0.8319857704753438
+        ],
+        "axis_fraction": 1.0
+      },
+      "independent_qp_distance": 0.9094305227124893,
+      "original_tolerance": 8.471138973656727e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_8",
+      "actual": {
+        "label": "ordinary_8",
+        "distance": 0.014743994262364321,
+        "uncertain": false,
+        "bary": [
+          0.9622785346121034,
+          0.03772146538789651,
+          0.0
+        ],
+        "axis_fraction": 0.5467759937539006
+      },
+      "independent_qp_distance": 0.014743994262364345,
+      "original_tolerance": 7.835072823016612e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 2.42861286636753e-17,
+      "failures": []
+    },
+    {
+      "label": "ordinary_9",
+      "actual": {
+        "label": "ordinary_9",
+        "distance": 0.8300869366076303,
+        "uncertain": false,
+        "bary": [
+          0.5172055411213814,
+          0.4827944588786186,
+          0.0
+        ],
+        "axis_fraction": 0.5425198069282219
+      },
+      "independent_qp_distance": 0.8300869366076304,
+      "original_tolerance": 8.46814837779255e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.1102230246251565e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_10",
+      "actual": {
+        "label": "ordinary_10",
+        "distance": 1.1019201549297108,
+        "uncertain": false,
+        "bary": [
+          0.5993933316841954,
+          0.0,
+          0.4006066683158046
+        ],
+        "axis_fraction": 0.7517717292975687
+      },
+      "independent_qp_distance": 1.1019201549297108,
+      "original_tolerance": 7.464262507573707e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_11",
+      "actual": {
+        "label": "ordinary_11",
+        "distance": 0.48759585646093206,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          0.6388089516063071,
+          0.3611910483936928
+        ],
+        "axis_fraction": 0.542867290647268
+      },
+      "independent_qp_distance": 0.4875958564609321,
+      "original_tolerance": 1.1981076095944692e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 5.551115123125783e-17,
+      "failures": []
+    },
+    {
+      "label": "ordinary_12",
+      "actual": {
+        "label": "ordinary_12",
+        "distance": 1.3867676977180106,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 1.3867676977180106,
+      "original_tolerance": 1.3519495048589337e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_13",
+      "actual": {
+        "label": "ordinary_13",
+        "distance": 0.28865052891207277,
+        "uncertain": false,
+        "bary": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_fraction": 0.6456750829613441
+      },
+      "independent_qp_distance": 0.2886505289120727,
+      "original_tolerance": 8.058767228507844e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 5.551115123125783e-17,
+      "failures": []
+    },
+    {
+      "label": "ordinary_14",
+      "actual": {
+        "label": "ordinary_14",
+        "distance": 0.4161206707027988,
+        "uncertain": false,
+        "bary": [
+          0.0037996756314182746,
+          0.0,
+          0.9962003243685817
+        ],
+        "axis_fraction": 0.5389604877609951
+      },
+      "independent_qp_distance": 0.41612067070279873,
+      "original_tolerance": 1.0277265096135485e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 5.551115123125783e-17,
+      "failures": []
+    },
+    {
+      "label": "ordinary_15",
+      "actual": {
+        "label": "ordinary_15",
+        "distance": 0.8821474671193136,
+        "uncertain": false,
+        "bary": [
+          0.737128038807168,
+          0.0,
+          0.26287196119283196
+        ],
+        "axis_fraction": 1.0
+      },
+      "independent_qp_distance": 0.8821474671193136,
+      "original_tolerance": 7.600634628607291e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_16",
+      "actual": {
+        "label": "ordinary_16",
+        "distance": 1.517168236186647,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          0.704028272516286,
+          0.29597172748371403
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 1.5171682361866468,
+      "original_tolerance": 1.0438213930596704e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 2.220446049250313e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_17",
+      "actual": {
+        "label": "ordinary_17",
+        "distance": 1.0508231832870079,
+        "uncertain": false,
+        "bary": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_fraction": 0.822256348887252
+      },
+      "independent_qp_distance": 1.050823183287008,
+      "original_tolerance": 1.0464361421257977e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 2.220446049250313e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_18",
+      "actual": {
+        "label": "ordinary_18",
+        "distance": 1.4623800939993823e-16,
+        "uncertain": false,
+        "bary": [
+          0.487412382657245,
+          0.2343225730341484,
+          0.2782650443086066
+        ],
+        "axis_fraction": 0.3041058133908999
+      },
+      "independent_qp_distance": 7.27512307897799e-99,
+      "original_tolerance": 1.0332926836389613e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.4623800939993823e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_19",
+      "actual": {
+        "label": "ordinary_19",
+        "distance": 1.0496499844629386,
+        "uncertain": false,
+        "bary": [
+          0.637933583925927,
+          0.0,
+          0.36206641607407297
+        ],
+        "axis_fraction": 0.3112741172399102
+      },
+      "independent_qp_distance": 1.0496499844629386,
+      "original_tolerance": 1.1959000934005387e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_20",
+      "actual": {
+        "label": "ordinary_20",
+        "distance": 0.4313649951363064,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "axis_fraction": 0.5871086311403789
+      },
+      "independent_qp_distance": 0.4313649951363064,
+      "original_tolerance": 1.3487413863685873e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_21",
+      "actual": {
+        "label": "ordinary_21",
+        "distance": 0.49235327268874035,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "axis_fraction": 0.4185858327156145
+      },
+      "independent_qp_distance": 0.49235327268874046,
+      "original_tolerance": 7.0580494546664315e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.1102230246251565e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_22",
+      "actual": {
+        "label": "ordinary_22",
+        "distance": 0.0,
+        "uncertain": false,
+        "bary": [
+          0.13255166345941388,
+          0.4685258146119855,
+          0.3989225219286006
+        ],
+        "axis_fraction": 0.786508276459337
+      },
+      "independent_qp_distance": 3.737083372906005e-99,
+      "original_tolerance": 8.367078167144621e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 3.737083372906005e-99,
+      "failures": []
+    },
+    {
+      "label": "ordinary_23",
+      "actual": {
+        "label": "ordinary_23",
+        "distance": 0.16217414958750156,
+        "uncertain": false,
+        "bary": [
+          0.8052655379841122,
+          0.0,
+          0.19473446201588784
+        ],
+        "axis_fraction": 0.4995894117524163
+      },
+      "independent_qp_distance": 0.1621741495875016,
+      "original_tolerance": 8.719500759020903e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 2.7755575615628914e-17,
+      "failures": []
+    },
+    {
+      "label": "ordinary_24",
+      "actual": {
+        "label": "ordinary_24",
+        "distance": 0.9194029882967262,
+        "uncertain": false,
+        "bary": [
+          0.24470891359759916,
+          0.7552910864024008,
+          0.0
+        ],
+        "axis_fraction": 0.3618214402593653
+      },
+      "independent_qp_distance": 0.9194029882967262,
+      "original_tolerance": 1.3110898800206282e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_25",
+      "actual": {
+        "label": "ordinary_25",
+        "distance": 1.540665645123079,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "axis_fraction": 0.423451294581513
+      },
+      "independent_qp_distance": 1.540665645123079,
+      "original_tolerance": 1.2264679769222275e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_26",
+      "actual": {
+        "label": "ordinary_26",
+        "distance": 0.9550960713203165,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "axis_fraction": 0.7887591173691512
+      },
+      "independent_qp_distance": 0.9550960713203164,
+      "original_tolerance": 1.0012284289153439e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.1102230246251565e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_27",
+      "actual": {
+        "label": "ordinary_27",
+        "distance": 1.2011814117729538,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "axis_fraction": 1.0
+      },
+      "independent_qp_distance": 1.201181411772954,
+      "original_tolerance": 9.824153366394253e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 2.220446049250313e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_28",
+      "actual": {
+        "label": "ordinary_28",
+        "distance": 1.1463191534159947,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "axis_fraction": 1.0
+      },
+      "independent_qp_distance": 1.1463191534159947,
+      "original_tolerance": 1.416552949673043e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_29",
+      "actual": {
+        "label": "ordinary_29",
+        "distance": 3.0029349970837297e-16,
+        "uncertain": false,
+        "bary": [
+          0.4347971949668382,
+          0.4770734234395555,
+          0.0881293815936063
+        ],
+        "axis_fraction": 0.8633676487323846
+      },
+      "independent_qp_distance": 3.849003164941487e-99,
+      "original_tolerance": 1.3120223600246132e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 3.0029349970837297e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_30",
+      "actual": {
+        "label": "ordinary_30",
+        "distance": 0.5806056180499827,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          0.6841593092667766,
+          0.31584069073322335
+        ],
+        "axis_fraction": 0.7495422075679149
+      },
+      "independent_qp_distance": 0.5806056180499826,
+      "original_tolerance": 9.152852077781643e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.1102230246251565e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_31",
+      "actual": {
+        "label": "ordinary_31",
+        "distance": 0.5124035789711336,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "axis_fraction": 1.0
+      },
+      "independent_qp_distance": 0.5124035789711335,
+      "original_tolerance": 9.926121605056067e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.1102230246251565e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_32",
+      "actual": {
+        "label": "ordinary_32",
+        "distance": 0.7403983871929861,
+        "uncertain": false,
+        "bary": [
+          0.045710977347311825,
+          0.0,
+          0.9542890226526882
+        ],
+        "axis_fraction": 0.8165016069600528
+      },
+      "independent_qp_distance": 0.7403983871929863,
+      "original_tolerance": 8.167902732920785e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 2.220446049250313e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_33",
+      "actual": {
+        "label": "ordinary_33",
+        "distance": 0.8770725819927374,
+        "uncertain": false,
+        "bary": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 0.8770725819927374,
+      "original_tolerance": 1.087572598213271e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_34",
+      "actual": {
+        "label": "ordinary_34",
+        "distance": 1.6517736408937438,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          0.6923277696273185,
+          0.3076722303726816
+        ],
+        "axis_fraction": 0.7351157212304631
+      },
+      "independent_qp_distance": 1.6517736408937438,
+      "original_tolerance": 1.1263520050446928e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_35",
+      "actual": {
+        "label": "ordinary_35",
+        "distance": 0.77887730823816,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "axis_fraction": 0.7229924213518639
+      },
+      "independent_qp_distance": 0.77887730823816,
+      "original_tolerance": 1.2453269204714771e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_36",
+      "actual": {
+        "label": "ordinary_36",
+        "distance": 0.851272431539878,
+        "uncertain": false,
+        "bary": [
+          0.8834841849268614,
+          0.0,
+          0.11651581507313857
+        ],
+        "axis_fraction": 1.0
+      },
+      "independent_qp_distance": 0.851272431539878,
+      "original_tolerance": 1.1808130080304102e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_37",
+      "actual": {
+        "label": "ordinary_37",
+        "distance": 0.8604866912996578,
+        "uncertain": false,
+        "bary": [
+          0.6264494346477978,
+          0.3735505653522022,
+          0.0
+        ],
+        "axis_fraction": 0.4418183160040978
+      },
+      "independent_qp_distance": 0.8604866912996579,
+      "original_tolerance": 7.355178789533913e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.1102230246251565e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_38",
+      "actual": {
+        "label": "ordinary_38",
+        "distance": 0.4362863900314053,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          0.9880324688272608,
+          0.011967531172739172
+        ],
+        "axis_fraction": 1.0
+      },
+      "independent_qp_distance": 0.43628639003140535,
+      "original_tolerance": 1.0156645986022416e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 5.551115123125783e-17,
+      "failures": []
+    },
+    {
+      "label": "ordinary_39",
+      "actual": {
+        "label": "ordinary_39",
+        "distance": 1.0131739607315349,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "axis_fraction": 0.23553964337006333
+      },
+      "independent_qp_distance": 1.013173960731535,
+      "original_tolerance": 8.274211031187931e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 2.220446049250313e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_40",
+      "actual": {
+        "label": "ordinary_40",
+        "distance": 0.8646554944456972,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 0.8646554944456971,
+      "original_tolerance": 1.1209717649809305e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.1102230246251565e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_41",
+      "actual": {
+        "label": "ordinary_41",
+        "distance": 1.1223741302045682,
+        "uncertain": false,
+        "bary": [
+          0.22225494394148237,
+          0.7777450560585176,
+          0.0
+        ],
+        "axis_fraction": 0.7161224835012219
+      },
+      "independent_qp_distance": 1.1223741302045682,
+      "original_tolerance": 8.573666561575894e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_42",
+      "actual": {
+        "label": "ordinary_42",
+        "distance": 1.588432040879227e-16,
+        "uncertain": false,
+        "bary": [
+          0.2142436561931791,
+          0.19588969069742018,
+          0.5898666531094008
+        ],
+        "axis_fraction": 0.5829066420510354
+      },
+      "independent_qp_distance": 3.735119739730395e-99,
+      "original_tolerance": 1.2796859521964537e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.588432040879227e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_43",
+      "actual": {
+        "label": "ordinary_43",
+        "distance": 0.6263089243264786,
+        "uncertain": false,
+        "bary": [
+          0.7230975094417743,
+          0.0,
+          0.2769024905582257
+        ],
+        "axis_fraction": 0.5220221186914623
+      },
+      "independent_qp_distance": 0.6263089243264786,
+      "original_tolerance": 8.197575390393132e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_44",
+      "actual": {
+        "label": "ordinary_44",
+        "distance": 1.7629303575938566,
+        "uncertain": false,
+        "bary": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_fraction": 0.6077066638486507
+      },
+      "independent_qp_distance": 1.7629303575938564,
+      "original_tolerance": 7.268590895630554e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 2.220446049250313e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_45",
+      "actual": {
+        "label": "ordinary_45",
+        "distance": 1.7336721549614975,
+        "uncertain": false,
+        "bary": [
+          0.6786387415394639,
+          0.0,
+          0.3213612584605361
+        ],
+        "axis_fraction": 0.9834915276005779
+      },
+      "independent_qp_distance": 1.7336721549614977,
+      "original_tolerance": 8.51738400382688e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 2.220446049250313e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_46",
+      "actual": {
+        "label": "ordinary_46",
+        "distance": 0.8943543211099976,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "axis_fraction": 0.49530897732077445
+      },
+      "independent_qp_distance": 0.8943543211099977,
+      "original_tolerance": 1.1005090963956486e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.1102230246251565e-16,
+      "failures": []
+    },
+    {
+      "label": "ordinary_47",
+      "actual": {
+        "label": "ordinary_47",
+        "distance": 1.3017971964509314,
+        "uncertain": false,
+        "bary": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_fraction": 0.6258972846755468
+      },
+      "independent_qp_distance": 1.3017971964509314,
+      "original_tolerance": 7.277117995190808e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "skinny_-5_0.0",
+      "actual": {
+        "label": "skinny_-5_0.0",
+        "distance": 0.0,
+        "uncertain": false,
+        "bary": [
+          0.25,
+          0.25,
+          0.5
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 0.0,
+      "original_tolerance": 1e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "skinny_-5_1e-06",
+      "actual": {
+        "label": "skinny_-5_1e-06",
+        "distance": 1e-06,
+        "uncertain": false,
+        "bary": [
+          0.25,
+          0.25,
+          0.5
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 1e-06,
+      "original_tolerance": 1e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "skinny_-5_0.1",
+      "actual": {
+        "label": "skinny_-5_0.1",
+        "distance": 0.1,
+        "uncertain": false,
+        "bary": [
+          0.25,
+          0.25,
+          0.5
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 0.1,
+      "original_tolerance": 1e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "skinny_-7_0.0",
+      "actual": {
+        "label": "skinny_-7_0.0",
+        "distance": 0.0,
+        "uncertain": true,
+        "bary": [
+          0.0,
+          4.884981308350689e-15,
+          0.9999999999999951
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 0.0,
+      "original_tolerance": 1e-11,
+      "expected_uncertain": true,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "skinny_-7_1e-06",
+      "actual": {
+        "label": "skinny_-7_1e-06",
+        "distance": 9.012492197250391e-07,
+        "uncertain": true,
+        "bary": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 1e-06,
+      "original_tolerance": 1e-11,
+      "expected_uncertain": true,
+      "absolute_oracle_difference": 9.875078027496085e-08,
+      "failures": []
+    },
+    {
+      "label": "skinny_-7_0.1",
+      "actual": {
+        "label": "skinny_-7_0.1",
+        "distance": 0.0999999000000125,
+        "uncertain": true,
+        "bary": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 0.1,
+      "original_tolerance": 1e-11,
+      "expected_uncertain": true,
+      "absolute_oracle_difference": 9.999998749898875e-08,
+      "failures": []
+    },
+    {
+      "label": "skinny_-9_0.0",
+      "actual": {
+        "label": "skinny_-9_0.0",
+        "distance": 0.0,
+        "uncertain": true,
+        "bary": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 1.9999999999999998e-91,
+      "original_tolerance": 1e-11,
+      "expected_uncertain": true,
+      "absolute_oracle_difference": 1.9999999999999998e-91,
+      "failures": []
+    },
+    {
+      "label": "skinny_-9_1e-06",
+      "actual": {
+        "label": "skinny_-9_1e-06",
+        "distance": 9.99000124999992e-07,
+        "uncertain": true,
+        "bary": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 1e-06,
+      "original_tolerance": 1e-11,
+      "expected_uncertain": true,
+      "absolute_oracle_difference": 9.998750000079861e-10,
+      "failures": []
+    },
+    {
+      "label": "skinny_-9_0.1",
+      "actual": {
+        "label": "skinny_-9_0.1",
+        "distance": 0.099999999,
+        "uncertain": true,
+        "bary": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 0.1,
+      "original_tolerance": 1e-11,
+      "expected_uncertain": true,
+      "absolute_oracle_difference": 9.999999994736442e-10,
+      "failures": []
+    },
+    {
+      "label": "skinny_-12_0.0",
+      "actual": {
+        "label": "skinny_-12_0.0",
+        "distance": 0.0,
+        "uncertain": true,
+        "bary": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 0.0,
+      "original_tolerance": 1e-11,
+      "expected_uncertain": true,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "skinny_-12_1e-06",
+      "actual": {
+        "label": "skinny_-12_1e-06",
+        "distance": 9.999990000001249e-07,
+        "uncertain": true,
+        "bary": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 1e-06,
+      "original_tolerance": 1e-11,
+      "expected_uncertain": true,
+      "absolute_oracle_difference": 9.99999875090244e-13,
+      "failures": []
+    },
+    {
+      "label": "skinny_-12_0.1",
+      "actual": {
+        "label": "skinny_-12_0.1",
+        "distance": 0.099999999999,
+        "uncertain": true,
+        "bary": [
+          0.5,
+          0.5,
+          0.0
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 0.1,
+      "original_tolerance": 1e-11,
+      "expected_uncertain": true,
+      "absolute_oracle_difference": 1.0000056338554941e-12,
+      "failures": []
+    },
+    {
+      "label": "parallel_0.0",
+      "actual": {
+        "label": "parallel_0.0",
+        "distance": 8.326672684688674e-17,
+        "uncertain": false,
+        "bary": [
+          0.5,
+          0.0,
+          0.5
+        ],
+        "axis_fraction": 0.375
+      },
+      "independent_qp_distance": 0.0,
+      "original_tolerance": 1.5e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 8.326672684688674e-17,
+      "failures": []
+    },
+    {
+      "label": "near_parallel_0.0",
+      "actual": {
+        "label": "near_parallel_0.0",
+        "distance": 1.01e-09,
+        "uncertain": false,
+        "bary": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_fraction": 0.25
+      },
+      "independent_qp_distance": 1.01e-09,
+      "original_tolerance": 1.5e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "parallel_1e-10",
+      "actual": {
+        "label": "parallel_1e-10",
+        "distance": 1.0000000000003467e-10,
+        "uncertain": false,
+        "bary": [
+          0.5,
+          0.0,
+          0.5
+        ],
+        "axis_fraction": 0.375
+      },
+      "independent_qp_distance": 1e-10,
+      "original_tolerance": 1.5e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 3.4664037544800316e-23,
+      "failures": []
+    },
+    {
+      "label": "near_parallel_1e-10",
+      "actual": {
+        "label": "near_parallel_1e-10",
+        "distance": 1.0149384217774002e-09,
+        "uncertain": false,
+        "bary": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_fraction": 0.25
+      },
+      "independent_qp_distance": 1.0149384217774002e-09,
+      "original_tolerance": 1.5e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "parallel_0.1",
+      "actual": {
+        "label": "parallel_0.1",
+        "distance": 0.1,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          0.5,
+          0.5
+        ],
+        "axis_fraction": 0.6250000000000001
+      },
+      "independent_qp_distance": 0.1,
+      "original_tolerance": 1.5e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "near_parallel_0.1",
+      "actual": {
+        "label": "near_parallel_0.1",
+        "distance": 0.10000000000000002,
+        "uncertain": false,
+        "bary": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_fraction": 0.25
+      },
+      "independent_qp_distance": 0.1,
+      "original_tolerance": 1.5e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.3877787807814457e-17,
+      "failures": []
+    },
+    {
+      "label": "line",
+      "actual": {
+        "label": "line",
+        "distance": 1.0,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 1.0,
+      "original_tolerance": 1e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "point",
+      "actual": {
+        "label": "point",
+        "distance": 1.0,
+        "uncertain": false,
+        "bary": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_fraction": 0.0
+      },
+      "independent_qp_distance": 1.0,
+      "original_tolerance": 1e-11,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "original_grain180",
+      "actual": {
+        "label": "original_grain180",
+        "distance": 0.024313094771862043,
+        "uncertain": false,
+        "bary": [
+          0.5548510193398076,
+          0.0,
+          0.4451489806601924
+        ],
+        "axis_fraction": 0.10926893159455299
+      },
+      "independent_qp_distance": 0.02431309477186204,
+      "original_tolerance": 1.5156757320925142e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 3.469446951953614e-18,
+      "failures": []
+    },
+    {
+      "label": "Harbor_A180_gold",
+      "actual": {
+        "label": "Harbor_A180_gold",
+        "distance": 0.05899029945374944,
+        "uncertain": false,
+        "bary": [
+          0.5000000000017399,
+          0.4999999999982601,
+          0.0
+        ],
+        "axis_fraction": 0.4233386162702857
+      },
+      "independent_qp_distance": 0.05899029945374943,
+      "original_tolerance": 9.250498914506325e-13,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 6.938893903907228e-18,
+      "failures": []
+    },
+    {
+      "label": "Harbor_B180_gold",
+      "actual": {
+        "label": "Harbor_B180_gold",
+        "distance": 0.057327586254630226,
+        "uncertain": false,
+        "bary": [
+          0.5002145460910503,
+          0.49978545390894963,
+          0.0
+        ],
+        "axis_fraction": 0.07196587168941271
+      },
+      "independent_qp_distance": 0.057327586254630226,
+      "original_tolerance": 1.5456180054754814e-12,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_0_scaled_1e-10",
+      "actual": {
+        "label": "ordinary_0_scaled_1e-10",
+        "distance": 1.0329785246278064e-10,
+        "uncertain": false,
+        "bary": [
+          0.8250701586859572,
+          0.0,
+          0.17492984131404277
+        ],
+        "axis_fraction": 0.5556017731390713
+      },
+      "independent_qp_distance": 1.0329785246278065e-10,
+      "original_tolerance": 9.565035035254065e-22,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.2924697071141057e-26,
+      "failures": []
+    },
+    {
+      "label": "ordinary_1_scaled_1e-10",
+      "actual": {
+        "label": "ordinary_1_scaled_1e-10",
+        "distance": 4.9464310014575384e-11,
+        "uncertain": false,
+        "bary": [
+          0.9112944800639595,
+          0.08870551993604049,
+          0.0
+        ],
+        "axis_fraction": 0.24085279943985097
+      },
+      "independent_qp_distance": 4.94643100145754e-11,
+      "original_tolerance": 9.784844252385732e-22,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.2924697071141057e-26,
+      "failures": []
+    },
+    {
+      "label": "ordinary_2_scaled_1e-10",
+      "actual": {
+        "label": "ordinary_2_scaled_1e-10",
+        "distance": 3.0855937108444164e-11,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "axis_fraction": 0.38558574721891503
+      },
+      "independent_qp_distance": 3.085593710844417e-11,
+      "original_tolerance": 1.1276620337864103e-21,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 6.462348535570529e-27,
+      "failures": []
+    },
+    {
+      "label": "ordinary_3_scaled_1e-10",
+      "actual": {
+        "label": "ordinary_3_scaled_1e-10",
+        "distance": 4.3638394554844134e-11,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "axis_fraction": 0.12871656363578343
+      },
+      "independent_qp_distance": 4.363839455484414e-11,
+      "original_tolerance": 7.340713838889316e-22,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 6.462348535570529e-27,
+      "failures": []
+    },
+    {
+      "label": "ordinary_4_scaled_1e-10",
+      "actual": {
+        "label": "ordinary_4_scaled_1e-10",
+        "distance": 1.9490454378562867e-11,
+        "uncertain": false,
+        "bary": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_fraction": 0.15792408146113068
+      },
+      "independent_qp_distance": 1.9490454378562864e-11,
+      "original_tolerance": 1.0424103347854004e-21,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 3.2311742677852644e-27,
+      "failures": []
+    },
+    {
+      "label": "ordinary_5_scaled_1e-10",
+      "actual": {
+        "label": "ordinary_5_scaled_1e-10",
+        "distance": 1.2304452535118908e-10,
+        "uncertain": false,
+        "bary": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_fraction": 0.7483450063959953
+      },
+      "independent_qp_distance": 1.2304452535118908e-10,
+      "original_tolerance": 1.3313962372617964e-21,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    },
+    {
+      "label": "ordinary_0_scaled_10000000000.0",
+      "actual": {
+        "label": "ordinary_0_scaled_10000000000.0",
+        "distance": 10329785246.278063,
+        "uncertain": false,
+        "bary": [
+          0.8250701586859572,
+          0.0,
+          0.17492984131404277
+        ],
+        "axis_fraction": 0.5556017731390713
+      },
+      "independent_qp_distance": 10329785246.278065,
+      "original_tolerance": 0.09565035035254064,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 1.9073486328125e-06,
+      "failures": []
+    },
+    {
+      "label": "ordinary_1_scaled_10000000000.0",
+      "actual": {
+        "label": "ordinary_1_scaled_10000000000.0",
+        "distance": 4946431001.45754,
+        "uncertain": false,
+        "bary": [
+          0.9112944800639595,
+          0.08870551993604052,
+          0.0
+        ],
+        "axis_fraction": 0.24085279943985102
+      },
+      "independent_qp_distance": 4946431001.457539,
+      "original_tolerance": 0.0978484425238573,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 9.5367431640625e-07,
+      "failures": []
+    },
+    {
+      "label": "ordinary_2_scaled_10000000000.0",
+      "actual": {
+        "label": "ordinary_2_scaled_10000000000.0",
+        "distance": 3085593710.844419,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "axis_fraction": 0.38558574721891503
+      },
+      "independent_qp_distance": 3085593710.8444185,
+      "original_tolerance": 0.112766203378641,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 4.76837158203125e-07,
+      "failures": []
+    },
+    {
+      "label": "ordinary_3_scaled_10000000000.0",
+      "actual": {
+        "label": "ordinary_3_scaled_10000000000.0",
+        "distance": 4363839455.484412,
+        "uncertain": false,
+        "bary": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "axis_fraction": 0.12871656363578338
+      },
+      "independent_qp_distance": 4363839455.484413,
+      "original_tolerance": 0.07340713838889315,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 9.5367431640625e-07,
+      "failures": []
+    },
+    {
+      "label": "ordinary_4_scaled_10000000000.0",
+      "actual": {
+        "label": "ordinary_4_scaled_10000000000.0",
+        "distance": 1949045437.856286,
+        "uncertain": false,
+        "bary": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_fraction": 0.15792408146113066
+      },
+      "independent_qp_distance": 1949045437.8562863,
+      "original_tolerance": 0.10424103347854005,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 2.384185791015625e-07,
+      "failures": []
+    },
+    {
+      "label": "ordinary_5_scaled_10000000000.0",
+      "actual": {
+        "label": "ordinary_5_scaled_10000000000.0",
+        "distance": 12304452535.118908,
+        "uncertain": false,
+        "bary": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "axis_fraction": 0.7483450063959953
+      },
+      "independent_qp_distance": 12304452535.118908,
+      "original_tolerance": 0.1331396237261796,
+      "expected_uncertain": false,
+      "absolute_oracle_difference": 0.0,
+      "failures": []
+    }
+  ],
+  "failures": [],
+  "executable_sha256": "73c0178e95f9aa9032a9a6658d84591580abe6ce5ac3a53f89d57e353aac6031",
+  "execution": {
+    "command": [
+      "./capsule-static-check"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.24383541592396796
+  },
+  "postflight_bindings_exact": true,
+  "prior_report_unchanged": true,
+  "actual_stdout_sha256": "ea523d2287b248ea925c8fc08df93f87f1a18f9e3d0964f8574001a1beda05b5",
+  "limits": "No garment, response stepping, Cargo, workspace build, GUI, convergence or parity claim."
+}

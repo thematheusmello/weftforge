@@ -1,0 +1,23 @@
+{
+  "kind": "Saved-gold benchmark source qualification after root final semantic review",
+  "benchmark_sha256": "9559f8cd67a569597d44353af9311dfa83c2e4e870b33c9f78dd34316d1ee0c5",
+  "changes_since_benchmark_source_selfcheck": {
+    "METHOD.md": {
+      "old_sha256": "665094735886e6af155fe353912bb87591f4ebdfffe5de8acfb0017971982cc9",
+      "new_sha256": "bef13c995006aea85166d5355647143470557c986f985671ff28df239bdbc25b"
+    },
+    "evaluator.py": {
+      "old_sha256": "acdad15c2765a454512fd5abcef2819172b6b4ba2df5d321a396325740032a71",
+      "new_sha256": "ba8ec17c943ccfcf986ff66347e117747486d68b97350e8100cd495bbb854362"
+    },
+    "selfcheck.py": {
+      "old_sha256": "b020dfd02d04dd2f85b36d1221360973448f0873809f4ba596a927516aa2c7ae",
+      "new_sha256": "2d21af9ebf18305614d1eda00c40c2b227c5dce6c7465597044ed9fb76962333"
+    }
+  },
+  "all_numeric_geometry_and_benchmark_functions_unchanged": true,
+  "qualifying_observation": "Both old trajectories proved ordinary zero-policy for every frame. Final evaluator change only guards initial-count mismatch labeling when that proof is false; all measured old benchmark numeric arithmetic and ordinary proof-true comparison paths remain unchanged.",
+  "new_static_selfcheck_sha256": "d76b43bbf59fef766833c3f72b1855f05c30efd309f71e96515c9fece7dee47d",
+  "new_garment_execution": false,
+  "wall_cap_seconds_unchanged": 420.0
+}

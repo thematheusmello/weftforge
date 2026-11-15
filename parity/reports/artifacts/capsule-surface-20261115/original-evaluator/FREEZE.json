@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "status": "frozen_preparation_no_garment_execution",
+  "created_utc": "2026-11-15 01:08:31 UTC",
+  "source_commit": "0770204a54abdf5f929b6626b01d7fcfb0e13ca4",
+  "new_garment_execution": false,
+  "plan": {
+    "path": ".local/capsule-garment-20261115/PREPARATION-PLAN-v2.json",
+    "sha256": "d76f668d21d2837b41574b2d403f7ed6ed24f873265e56cbcbb5e666280034e6"
+  },
+  "source_input_binding": {
+    "path": ".local/capsule-garment-20261115/SOURCE-INPUT-BINDING.json",
+    "sha256": "d313af247e05b1e331c6982d3201079a13a9bf1890fb9ad02cb60f1d4944e055"
+  },
+  "producer_binding": {
+    "path": ".local/capsule-garment-20261115/PRODUCER-BINDING-v2.json",
+    "sha256": "68ca7dcd05f4a443fe71f76fbd0accef9c60249befec4e1638c9065e77534c9a"
+  },
+  "readonly_input_binding": {
+    "path": ".local/capsule-garment-evaluator-20261115/READONLY-INPUT-BINDING.json",
+    "sha256": "88c897a19767fae77fd8cf5e2cd7e2bead4f04a30f71aa0a0d8fbd0b545c460a"
+  },
+  "selfchecks": {
+    "path": ".local/capsule-garment-evaluator-20261115/selfchecks-final-v3.json",
+    "sha256": "5069312e4766f2623f1be0834bded37695b22f3370558b7f71850b71b84ca5e3"
+  },
+  "benchmark": {
+    "path": ".local/capsule-garment-evaluator-20261115/old-gold-benchmark.json",
+    "sha256": "9559f8cd67a569597d44353af9311dfa83c2e4e870b33c9f78dd34316d1ee0c5"
+  },
+  "benchmark_qualification": {
+    "path": ".local/capsule-garment-evaluator-20261115/BENCHMARK-QUALIFICATION-v3.json",
+    "sha256": "7f7c5f797569ed66d21ab6a48826b886756c8118c45b3542d4ac3ca8027c8e8b"
+  },
+  "source_review": {
+    "reviewer": "root",
+    "approved_scope": "Freeze preparation only; separate physical execution authorization required",
+    "reviewed_files": 24
+  },
+  "files": {
+    "BENCHMARK-QUALIFICATION-v3.json": "7f7c5f797569ed66d21ab6a48826b886756c8118c45b3542d4ac3ca8027c8e8b",
+    "BENCHMARK-QUALIFICATION.json": "cef043e27f3880fda96ebdf56e1273438b14237178859fa2650a73a006b5363a",
+    "METHOD.md": "d10c931de882915af325ce1d75a4f50ebf3ee954b3b6776b51190c01933b1097",
+    "NUMERIC-PROVENANCE.json": "f40ff9dbfb1644f9d43c894871999017d5c099889cba8e9355fcb5c8d9edef0f",
+    "README.md": "ddcc0c5d43acc6f92204daaabf7d9f78441b4aa9d58e047013e152f51a11bfe7",
+    "READONLY-INPUT-BINDING.json": "88c897a19767fae77fd8cf5e2cd7e2bead4f04a30f71aa0a0d8fbd0b545c460a",
+    "REST-BINDING.json": "359a4af0862ca9ec423b08ad2a053ad6fcd082591bbe0ea09354e86261c96118",
+    "SELF-CHECK-FAILURES.json": "d187431de2993a6c8516b640464b2dcc0da7d074c41c93b6e16940409431eed6",
+    "STATUS.md": "110901db3e81512bfbc4d43e240a06390c006db770887532fe3d680875937bd0",
+    "benchmark.py": "ef263cda9d827a9bc9d5977172ce86ce804128181b2c5c4e49832e519695616c",
+    "capsule_geometry.py": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b",
+    "decimal_oracle.py": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d",
+    "evaluator.py": "423aa79290d155f69374ba9653763838da671a44e0aadb69424250a93942abef",
+    "geometry_math.py": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40",
+    "metrics.py": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+    "old-gold-base-analysis.json": "b2bae0024d2b7283aed2063da3e8cc9d8553786b5dd28e8741f339ecca2f2347",
+    "old-gold-benchmark.json": "9559f8cd67a569597d44353af9311dfa83c2e4e870b33c9f78dd34316d1ee0c5",
+    "old-gold-height-analysis.json": "fc855717275501901416f971b9c2d76541ca5da151d6ecaf8ecb53c64891184d",
+    "selfcheck.py": "38586029c34421f3eb415be72f0c19125b36b70886f391b83497ec546d487cb1",
+    "selfchecks-final-v2.json": "d76b43bbf59fef766833c3f72b1855f05c30efd309f71e96515c9fece7dee47d",
+    "selfchecks-final-v3.json": "5069312e4766f2623f1be0834bded37695b22f3370558b7f71850b71b84ca5e3",
+    "selfchecks-final.json": "f5220f4e4090d2fefb238365e51a886df09ea7fcebff1bb1e78252e339542909",
+    "selfchecks-pre-review.json": "2a963ef47485a710e3e97732b15e2c1adba56e240d6c78139c25a24f1037705a",
+    "static_geometry.py": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34"
+  },
+  "remaining_limits": "Implementation-only static boundary-state evidence; no equilibrium, calibration, moving avatars, self edge-edge, ellipsoid surface, full CCD, UI acceptance or reference parity.",
+  "historical_failures_retained": {
+    "base_frame29_strain": 0.1535589019880823,
+    "base_frame180_capsule_surface_m": 0.009009700546250568,
+    "height_frame180_capsule_surface_m": 0.010672413745369775,
+    "status": "Historical failures retained, never replaced by new final-state flags"
+  },
+  "preparation_bindings_verified": {
+    "plan_sha256": "d76f668d21d2837b41574b2d403f7ed6ed24f873265e56cbcbb5e666280034e6",
+    "source_commit": "0770204a54abdf5f929b6626b01d7fcfb0e13ca4",
+    "source_files": 40,
+    "source_input_binding_sha256": "d313af247e05b1e331c6982d3201079a13a9bf1890fb9ad02cb60f1d4944e055",
+    "producer_binding_sha256": "68ca7dcd05f4a443fe71f76fbd0accef9c60249befec4e1638c9065e77534c9a",
+    "driver_sha256": "7f01a3355385af0ed8df2accf2c2a6fbf9cebc2af71f391f259ed44a9db48f34",
+    "all_hashes_exact": true
+  },
+  "prior_immutable_bindings_verified": {
+    "files": 141,
+    "all_hashes_exact": true
+  }
+}

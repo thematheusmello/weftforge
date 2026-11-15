@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "created_utc": "2026-11-15T00:31:22.650494+00:00",
+  "status": "preparation_only_no_garment_execution_authorized_yet",
+  "source_commit": "0770204a54abdf5f929b6626b01d7fcfb0e13ca4",
+  "source_hashes": {
+    ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "Cargo.lock": "6dd461ec03d344bc37acb7ff49a52cfabf4d0f60f723e86541bf8c979c7b29ba",
+    "Cargo.toml": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+    "apps/weftforge-cli/Cargo.toml": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+    "apps/weftforge-cli/src/main.rs": "1fb1f2aab3f317acc1bd9d1f44c5a2615bb923799b6815462e19e18d78cbb776",
+    "apps/weftforge-cli/src/mcp.rs": "46940a2d8b67d8bc815daeb630d8e4dc92c9c14f4991843f4129b9ce10825781",
+    "apps/weftforge-cli/tests/curves.rs": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+    "apps/weftforge-cli/tests/ellipse.rs": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+    "apps/weftforge-cli/tests/grain.rs": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+    "apps/weftforge-cli/tests/mcp_stdio.rs": "1d4875fa6e3e9258bd9db613676ad2a0b10284706055887eb5f4d7de5ec8c0fd",
+    "apps/weftforge/Cargo.toml": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+    "apps/weftforge/src/main.rs": "c9fa44e28c4c9d58b2c7bc464728b0777156af2bb1f4d2b6ee06a78d72547eea",
+    "crates/weftforge-core/Cargo.toml": "eac1be8f249f92f0b98686099bac5e11cfeeed064a7da944c3e331a2c09ff56e",
+    "crates/weftforge-core/src/document.rs": "3dffa0b7eb75633f5764cb21008a3a5511af47e47e5b97f7e13b533a2f2ddd6f",
+    "crates/weftforge-core/src/geometry.rs": "66d094f631997e5b737960cd9a5d834bcbad05c2ccf4c117bdd5a8c903c578ce",
+    "crates/weftforge-core/src/lib.rs": "2029a2b759e008dc987ba46cc850a89122fba321407e8168ebd2071998031afd",
+    "crates/weftforge-core/src/persistence.rs": "fccc18f5aafee7328202848dbc0bfd70c15f8865c5e6c06adc442baafa4ded4b",
+    "crates/weftforge-core/src/persistence/dxf.rs": "49e56ab60030a640e49d3ce9b263d99dcce562a5616f1dada529603f074b7475",
+    "crates/weftforge-core/src/sewing.rs": "344dfaacb6ae325e8534e5c3c7b844209b7e3714625383740eef47f8557ef93d",
+    "crates/weftforge-core/src/simulation.rs": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29",
+    "crates/weftforge-core/tests/dxf.rs": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+    "crates/weftforge-core/tests/ellipse.rs": "55e68e3a529d2ffe49412d8a225683e0d3478f8f380130925ad66d0f93a74cda",
+    "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+    "crates/weftforge-core/tests/grain.rs": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+    "crates/weftforge-core/tests/joins.rs": "04334446a2408086541227b3ee149e12d9ca28da061e36268b33bb3502ad2334",
+    "crates/weftforge-core/tests/migration.rs": "577937ffbd5d0c42935a2a97772bc5aa53a7accca6e529efa4b86be9aa543099",
+    "crates/weftforge-core/tests/seam_reversal.rs": "ae9ea4bee0b3ed5b80a1f6350b428db4a92f68a5f21bdc1b7bb1b2b02723b66a",
+    "crates/weftforge-core/tests/sewing_groups.rs": "db0c8ae6d0af688137aa7034663f3223899da05347e4bb9e3ee2592430a7480c",
+    "crates/weftforge-core/tests/shirt.rs": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+    "crates/weftforge-core/tests/workflow.rs": "efb80806e4c355f44145332649ebcad1089d79dc078141a7a1f792edb6b17af0",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/capsule.rs": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7",
+    "crates/weftforge-sim/src/constraints.rs": "0f0272335d23801c19810e6c9fd421ef434b397bb636a16bd9d4e066007e5ea7",
+    "crates/weftforge-sim/src/contact.rs": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655",
+    "crates/weftforge-sim/src/lib.rs": "a13640ec2f1c4f6a2dc4d5f9d010fbbf87a551571373f6ef5dec03d80fd9634b",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/tests.rs": "8e54a02d11b297b60cf228e7554f1dd0c33f0a4704c95465b4146851d892c8fe",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+    "xtask/Cargo.toml": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+    "xtask/src/main.rs": "a65250e8f24f54f737a673d52f7bf75b76a9a9f4a453678bb90ccfd776e64a2a"
+  },
+  "integrated_gate_binding_sha256": "11d246a79642dfd3e678fd16da83d614368d1cd419df4df200b7257a1682e1f0",
+  "native_sha256": "077f8fcfc1f659d16865b5df58c737501d29d9057e3eebaefb8a1d338f95699e",
+  "cli_sha256": "993dbb484a222077edf3750b8cdf2df23514304e6611e9236a29bd5bd52c52b5",
+  "inputs_sha256": {
+    "inputs/base.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+    "inputs/height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5"
+  },
+  "cases": [
+    "base",
+    "height"
+  ],
+  "attempts_per_case": 1,
+  "steps": 180,
+  "assembly_steps": 60,
+  "drape_steps": 120,
+  "settings": {
+    "dt": 0.016666666666666666,
+    "substeps": 8,
+    "iterations": 32,
+    "seam_closure_speed_m_per_s": 1.0,
+    "assembly_gravity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "drape_gravity": [
+      0.0,
+      -9.81,
+      0.0
+    ]
+  },
+  "whole_case_cap_seconds": 420.0,
+  "whole_case_clock": "Before first process launch through final independent analysis/export/hash/inspection; no restart or continuation after cap.",
+  "producer_peak_rss_cap_bytes": 268435456,
+  "capture": "Actual initial plus every accepted boundary state0..180 withpositions/velocities/rawdiagnostics/settings, restmetadata/masses/boundary/stitches andOBJ0/60/180. Durable failure/last accepted state on anyerror/cap.",
+  "quality": {
+    "finite": true,
+    "closed_assembly_target_m": 0.0,
+    "strain_below": 0.15,
+    "seam_gap_below_m": 0.005,
+    "physical_contact_penetration_below_m": 0.002,
+    "capsule_surface_uncertain_pairs": 0
+  },
+  "independent_checks": "Before freeze, evaluator declares all-frame checks for authored source/rest mesh/scale, finite state, settings/time/target recurrence, material-axis strain and attribution, seamgap, ground/vertex collider contact, supported static self-contact and full static triangle/capsule surface occupancy. Compare actual0/60/180OBJ tokens/axes/UVs/normals against saved states, not old answer geometry. Conservative uncertain bounds stay visible. No new reference answer is generated by the product.",
+  "screen_interpretation": "Record all per-frame failures/maxima and exact frames. Initial unclosed seams are arrangement, not closed-fit success. Never claim full trajectory/garment acceptance from final narrow screens; preserve goldenA29 andhistoricalA/Bcontactfailures. Original frozen evaluators/reports/protocols remain unchanged.",
+  "stops": [
+    "Numerical failure preserves acceptedstate andends case.",
+    "Wall/RSS stop ends case with partial outputs retained.",
+    "No parameter tuning, extraReset/Step/Play,garment modification,retry,third case,stale continuation or cutoff relaxation."
+  ],
+  "remaining_limits": "Static capsule fix does not add selfedge-edge,ellipsoid surface completeness,fullCCD,movingavatars,calibration,convergence or reference parity. Full UI acceptance including original Save18 trace gap remainsopen.",
+  "required_before_execution": [
+    "Independent evaluator method/source frozen with analytic and retained-witness selfchecks.",
+    "Root reviews producer/evaluator source/contract, hashes actual driverbuiltfromexact40source, inputs/restgeometry preflight, private real target with no nestedlinks.",
+    "Root writes a separate execution authorization after binding; this preparation plan alone is not authorization."
+  ]
+}

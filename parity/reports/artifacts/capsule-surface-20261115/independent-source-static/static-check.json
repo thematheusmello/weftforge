@@ -1,0 +1,1265 @@
+{
+  "kind": "bounded_independent_static_implementation_review",
+  "commit": "24dba7715233a7423088772d49c32a632d901a0c",
+  "source_sha256": {
+    "crates/weftforge-sim/src/capsule.rs": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7",
+    "crates/weftforge-sim/src/contact.rs": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655",
+    "crates/weftforge-sim/src/lib.rs": "a13640ec2f1c4f6a2dc4d5f9d010fbbf87a551571373f6ef5dec03d80fd9634b",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/tests.rs": "8e54a02d11b297b60cf228e7554f1dd0c33f0a4704c95465b4146851d892c8fe"
+  },
+  "method_sha256": "f16a5305ed4d76dd9d37efe467348856bdcda6527183a89c063fc226076e5260",
+  "script_sha256": "5725a70f6153691a160d7a0a4ee3bf4cbd51320b2792623508ac0871e46ac521",
+  "case_count": 83,
+  "failures": [],
+  "rows": [
+    {
+      "label": "ordinary_0",
+      "distance_transcribed_f64": 1.0329785246278063,
+      "independent_qp_distance": 1.0329785246278065,
+      "uncertain": false,
+      "bary": [
+        0.8250701586859572,
+        0.0,
+        0.17492984131404277
+      ],
+      "axis_fraction": 0.5556017731390714,
+      "scale": 1.913007007050813,
+      "tolerance": 9.565035035254063e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_1",
+      "distance_transcribed_f64": 0.49464310014575397,
+      "independent_qp_distance": 0.4946431001457539,
+      "uncertain": false,
+      "bary": [
+        0.9112944800639595,
+        0.0887055199360405,
+        0.0
+      ],
+      "axis_fraction": 0.24085279943985102,
+      "scale": 1.9569688504771465,
+      "tolerance": 9.784844252385732e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_2",
+      "distance_transcribed_f64": 0.30855937108444165,
+      "independent_qp_distance": 0.30855937108444165,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "axis_fraction": 0.38558574721891503,
+      "scale": 2.2553240675728206,
+      "tolerance": 1.1276620337864102e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_3",
+      "distance_transcribed_f64": 0.4363839455484412,
+      "independent_qp_distance": 0.43638394554844134,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "axis_fraction": 0.1287165636357834,
+      "scale": 1.4681427677778631,
+      "tolerance": 7.340713838889316e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_4",
+      "distance_transcribed_f64": 0.1949045437856286,
+      "independent_qp_distance": 0.19490454378562863,
+      "uncertain": false,
+      "bary": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axis_fraction": 0.15792408146113066,
+      "scale": 2.084820669570801,
+      "tolerance": 1.0424103347854006e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_5",
+      "distance_transcribed_f64": 1.2304452535118906,
+      "independent_qp_distance": 1.2304452535118908,
+      "uncertain": false,
+      "bary": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axis_fraction": 0.7483450063959953,
+      "scale": 2.6627924745235925,
+      "tolerance": 1.3313962372617961e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_6",
+      "distance_transcribed_f64": 0.790044571287869,
+      "independent_qp_distance": 0.7900445712878691,
+      "uncertain": false,
+      "bary": [
+        0.6334630086203664,
+        0.0,
+        0.3665369913796336
+      ],
+      "axis_fraction": 0.30606896322655697,
+      "scale": 1.4158915685153663,
+      "tolerance": 7.079457842576831e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_7",
+      "distance_transcribed_f64": 0.9094305227124893,
+      "independent_qp_distance": 0.9094305227124893,
+      "uncertain": false,
+      "bary": [
+        0.16801422952465614,
+        0.0,
+        0.8319857704753438
+      ],
+      "axis_fraction": 1.0,
+      "scale": 1.6942277947313453,
+      "tolerance": 8.471138973656727e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_8",
+      "distance_transcribed_f64": 0.014743994262364325,
+      "independent_qp_distance": 0.014743994262364345,
+      "uncertain": false,
+      "bary": [
+        0.9622785346121034,
+        0.03772146538789651,
+        0.0
+      ],
+      "axis_fraction": 0.5467759937539006,
+      "scale": 1.5670145646033224,
+      "tolerance": 7.835072823016612e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_9",
+      "distance_transcribed_f64": 0.8300869366076304,
+      "independent_qp_distance": 0.8300869366076304,
+      "uncertain": false,
+      "bary": [
+        0.5172055411213814,
+        0.4827944588786186,
+        0.0
+      ],
+      "axis_fraction": 0.5425198069282219,
+      "scale": 1.6936296755585099,
+      "tolerance": 8.46814837779255e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_10",
+      "distance_transcribed_f64": 1.1019201549297108,
+      "independent_qp_distance": 1.1019201549297108,
+      "uncertain": false,
+      "bary": [
+        0.5993933316841954,
+        0.0,
+        0.4006066683158046
+      ],
+      "axis_fraction": 0.7517717292975687,
+      "scale": 1.4928525015147414,
+      "tolerance": 7.464262507573707e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_11",
+      "distance_transcribed_f64": 0.48759585646093206,
+      "independent_qp_distance": 0.4875958564609321,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        0.6388089516063071,
+        0.3611910483936928
+      ],
+      "axis_fraction": 0.542867290647268,
+      "scale": 2.3962152191889383,
+      "tolerance": 1.1981076095944692e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_12",
+      "distance_transcribed_f64": 1.3867676977180106,
+      "independent_qp_distance": 1.3867676977180106,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.7038990097178677,
+      "tolerance": 1.3519495048589337e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_13",
+      "distance_transcribed_f64": 0.2886505289120727,
+      "independent_qp_distance": 0.2886505289120727,
+      "uncertain": false,
+      "bary": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axis_fraction": 0.6456750829613441,
+      "scale": 1.611753445701569,
+      "tolerance": 8.058767228507844e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_14",
+      "distance_transcribed_f64": 0.41612067070279873,
+      "independent_qp_distance": 0.41612067070279873,
+      "uncertain": false,
+      "bary": [
+        0.003799675631418272,
+        0.0,
+        0.9962003243685817
+      ],
+      "axis_fraction": 0.5389604877609951,
+      "scale": 2.0554530192270972,
+      "tolerance": 1.0277265096135485e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_15",
+      "distance_transcribed_f64": 0.8821474671193136,
+      "independent_qp_distance": 0.8821474671193136,
+      "uncertain": false,
+      "bary": [
+        0.7371280388071679,
+        0.0,
+        0.26287196119283207
+      ],
+      "axis_fraction": 1.0,
+      "scale": 1.5201269257214585,
+      "tolerance": 7.600634628607291e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_16",
+      "distance_transcribed_f64": 1.5171682361866468,
+      "independent_qp_distance": 1.5171682361866468,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        0.704028272516286,
+        0.29597172748371403
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.087642786119341,
+      "tolerance": 1.0438213930596704e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_17",
+      "distance_transcribed_f64": 1.0508231832870079,
+      "independent_qp_distance": 1.050823183287008,
+      "uncertain": false,
+      "bary": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axis_fraction": 0.822256348887252,
+      "scale": 2.0928722842515954,
+      "tolerance": 1.0464361421257977e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_18",
+      "distance_transcribed_f64": 1.4623800939993823e-16,
+      "independent_qp_distance": 7.27512307897799e-99,
+      "uncertain": false,
+      "bary": [
+        0.487412382657245,
+        0.2343225730341484,
+        0.2782650443086066
+      ],
+      "axis_fraction": 0.3041058133908999,
+      "scale": 2.0665853672779226,
+      "tolerance": 1.0332926836389613e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_19",
+      "distance_transcribed_f64": 1.0496499844629386,
+      "independent_qp_distance": 1.0496499844629386,
+      "uncertain": false,
+      "bary": [
+        0.6379335839259271,
+        0.0,
+        0.36206641607407286
+      ],
+      "axis_fraction": 0.3112741172399102,
+      "scale": 2.3918001868010776,
+      "tolerance": 1.1959000934005387e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_20",
+      "distance_transcribed_f64": 0.4313649951363064,
+      "independent_qp_distance": 0.4313649951363064,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "axis_fraction": 0.5871086311403789,
+      "scale": 2.6974827727371746,
+      "tolerance": 1.3487413863685873e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_21",
+      "distance_transcribed_f64": 0.49235327268874035,
+      "independent_qp_distance": 0.49235327268874046,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "axis_fraction": 0.4185858327156145,
+      "scale": 1.4116098909332864,
+      "tolerance": 7.0580494546664315e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_22",
+      "distance_transcribed_f64": 1.9150429609280758e-16,
+      "independent_qp_distance": 3.737083372906005e-99,
+      "uncertain": false,
+      "bary": [
+        0.13255166345941394,
+        0.46852581461198545,
+        0.39892252192860056
+      ],
+      "axis_fraction": 0.786508276459337,
+      "scale": 1.6734156334289243,
+      "tolerance": 8.367078167144621e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_23",
+      "distance_transcribed_f64": 0.16217414958750156,
+      "independent_qp_distance": 0.1621741495875016,
+      "uncertain": false,
+      "bary": [
+        0.8052655379841122,
+        0.0,
+        0.19473446201588784
+      ],
+      "axis_fraction": 0.4995894117524163,
+      "scale": 1.7439001518041808,
+      "tolerance": 8.719500759020903e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_24",
+      "distance_transcribed_f64": 0.9194029882967262,
+      "independent_qp_distance": 0.9194029882967262,
+      "uncertain": false,
+      "bary": [
+        0.24470891359759916,
+        0.7552910864024008,
+        0.0
+      ],
+      "axis_fraction": 0.36182144025936536,
+      "scale": 2.6221797600412566,
+      "tolerance": 1.3110898800206282e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_25",
+      "distance_transcribed_f64": 1.540665645123079,
+      "independent_qp_distance": 1.540665645123079,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "axis_fraction": 0.423451294581513,
+      "scale": 2.452935953844455,
+      "tolerance": 1.2264679769222275e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_26",
+      "distance_transcribed_f64": 0.9550960713203165,
+      "independent_qp_distance": 0.9550960713203164,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "axis_fraction": 0.7887591173691512,
+      "scale": 2.002456857830688,
+      "tolerance": 1.0012284289153439e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_27",
+      "distance_transcribed_f64": 1.2011814117729538,
+      "independent_qp_distance": 1.201181411772954,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "axis_fraction": 1.0,
+      "scale": 1.9648306732788505,
+      "tolerance": 9.824153366394253e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_28",
+      "distance_transcribed_f64": 1.1463191534159947,
+      "independent_qp_distance": 1.1463191534159947,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "axis_fraction": 1.0,
+      "scale": 2.8331058993460863,
+      "tolerance": 1.416552949673043e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_29",
+      "distance_transcribed_f64": 2.522970042028234e-16,
+      "independent_qp_distance": 3.849003164941487e-99,
+      "uncertain": false,
+      "bary": [
+        0.434797194966838,
+        0.47707342343955544,
+        0.08812938159360653
+      ],
+      "axis_fraction": 0.8633676487323845,
+      "scale": 2.6240447200492265,
+      "tolerance": 1.3120223600246132e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_30",
+      "distance_transcribed_f64": 0.5806056180499827,
+      "independent_qp_distance": 0.5806056180499826,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        0.6841593092667766,
+        0.31584069073322335
+      ],
+      "axis_fraction": 0.7495422075679149,
+      "scale": 1.830570415556329,
+      "tolerance": 9.152852077781643e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_31",
+      "distance_transcribed_f64": 0.5124035789711336,
+      "independent_qp_distance": 0.5124035789711335,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "axis_fraction": 1.0,
+      "scale": 1.9852243210112137,
+      "tolerance": 9.926121605056067e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_32",
+      "distance_transcribed_f64": 0.7403983871929865,
+      "independent_qp_distance": 0.7403983871929863,
+      "uncertain": false,
+      "bary": [
+        0.04571097734731182,
+        0.0,
+        0.9542890226526882
+      ],
+      "axis_fraction": 0.8165016069600529,
+      "scale": 1.6335805465841573,
+      "tolerance": 8.167902732920785e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_33",
+      "distance_transcribed_f64": 0.8770725819927374,
+      "independent_qp_distance": 0.8770725819927374,
+      "uncertain": false,
+      "bary": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.1751451964265422,
+      "tolerance": 1.087572598213271e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_34",
+      "distance_transcribed_f64": 1.6517736408937438,
+      "independent_qp_distance": 1.6517736408937438,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        0.6923277696273186,
+        0.30767223037268143
+      ],
+      "axis_fraction": 0.7351157212304628,
+      "scale": 2.252704010089386,
+      "tolerance": 1.1263520050446928e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_35",
+      "distance_transcribed_f64": 0.77887730823816,
+      "independent_qp_distance": 0.77887730823816,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "axis_fraction": 0.7229924213518639,
+      "scale": 2.4906538409429544,
+      "tolerance": 1.2453269204714771e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_36",
+      "distance_transcribed_f64": 0.851272431539878,
+      "independent_qp_distance": 0.851272431539878,
+      "uncertain": false,
+      "bary": [
+        0.8834841849268614,
+        0.0,
+        0.11651581507313857
+      ],
+      "axis_fraction": 1.0,
+      "scale": 2.3616260160608205,
+      "tolerance": 1.1808130080304102e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_37",
+      "distance_transcribed_f64": 0.8604866912996578,
+      "independent_qp_distance": 0.8604866912996579,
+      "uncertain": false,
+      "bary": [
+        0.6264494346477978,
+        0.3735505653522022,
+        0.0
+      ],
+      "axis_fraction": 0.4418183160040978,
+      "scale": 1.4710357579067828,
+      "tolerance": 7.355178789533913e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_38",
+      "distance_transcribed_f64": 0.4362863900314053,
+      "independent_qp_distance": 0.43628639003140535,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        0.9880324688272608,
+        0.011967531172739177
+      ],
+      "axis_fraction": 1.0,
+      "scale": 2.0313291972044833,
+      "tolerance": 1.0156645986022416e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_39",
+      "distance_transcribed_f64": 1.0131739607315349,
+      "independent_qp_distance": 1.013173960731535,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "axis_fraction": 0.23553964337006333,
+      "scale": 1.6548422062375863,
+      "tolerance": 8.274211031187931e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_40",
+      "distance_transcribed_f64": 0.8646554944456972,
+      "independent_qp_distance": 0.8646554944456971,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.241943529961861,
+      "tolerance": 1.1209717649809305e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_41",
+      "distance_transcribed_f64": 1.1223741302045682,
+      "independent_qp_distance": 1.1223741302045682,
+      "uncertain": false,
+      "bary": [
+        0.22225494394148237,
+        0.7777450560585176,
+        0.0
+      ],
+      "axis_fraction": 0.7161224835012219,
+      "scale": 1.7147333123151791,
+      "tolerance": 8.573666561575894e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_42",
+      "distance_transcribed_f64": 2.0092252630272183e-16,
+      "independent_qp_distance": 3.735119739730395e-99,
+      "uncertain": false,
+      "bary": [
+        0.2142436561931792,
+        0.19588969069742018,
+        0.5898666531094007
+      ],
+      "axis_fraction": 0.5829066420510354,
+      "scale": 2.5593719043929077,
+      "tolerance": 1.2796859521964537e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_43",
+      "distance_transcribed_f64": 0.6263089243264786,
+      "independent_qp_distance": 0.6263089243264786,
+      "uncertain": false,
+      "bary": [
+        0.7230975094417742,
+        0.0,
+        0.2769024905582258
+      ],
+      "axis_fraction": 0.5220221186914623,
+      "scale": 1.6395150780786263,
+      "tolerance": 8.197575390393132e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_44",
+      "distance_transcribed_f64": 1.7629303575938566,
+      "independent_qp_distance": 1.7629303575938564,
+      "uncertain": false,
+      "bary": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axis_fraction": 0.6077066638486507,
+      "scale": 1.453718179126111,
+      "tolerance": 7.268590895630554e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_45",
+      "distance_transcribed_f64": 1.7336721549614975,
+      "independent_qp_distance": 1.7336721549614977,
+      "uncertain": false,
+      "bary": [
+        0.6786387415394639,
+        0.0,
+        0.3213612584605361
+      ],
+      "axis_fraction": 0.9834915276005779,
+      "scale": 1.7034768007653762,
+      "tolerance": 8.51738400382688e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_46",
+      "distance_transcribed_f64": 0.8943543211099976,
+      "independent_qp_distance": 0.8943543211099977,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "axis_fraction": 0.4953089773207745,
+      "scale": 2.2010181927912975,
+      "tolerance": 1.1005090963956486e-11,
+      "passed": true
+    },
+    {
+      "label": "ordinary_47",
+      "distance_transcribed_f64": 1.3017971964509314,
+      "independent_qp_distance": 1.3017971964509314,
+      "uncertain": false,
+      "bary": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axis_fraction": 0.6258972846755471,
+      "scale": 1.4554235990381617,
+      "tolerance": 7.277117995190808e-12,
+      "passed": true
+    },
+    {
+      "label": "skinny_-5_0.0",
+      "distance_transcribed_f64": 0.0,
+      "independent_qp_distance": 0.0,
+      "uncertain": false,
+      "bary": [
+        0.25,
+        0.25,
+        0.5
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "label": "skinny_-5_1e-06",
+      "distance_transcribed_f64": 1e-06,
+      "independent_qp_distance": 1e-06,
+      "uncertain": false,
+      "bary": [
+        0.25,
+        0.25,
+        0.5
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "label": "skinny_-5_0.1",
+      "distance_transcribed_f64": 0.1,
+      "independent_qp_distance": 0.1,
+      "uncertain": false,
+      "bary": [
+        0.25,
+        0.25,
+        0.5
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "label": "skinny_-7_0.0",
+      "distance_transcribed_f64": 0.0,
+      "independent_qp_distance": 0.0,
+      "uncertain": true,
+      "bary": [
+        0.0,
+        4.884981308350689e-15,
+        0.9999999999999951
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "label": "skinny_-7_1e-06",
+      "distance_transcribed_f64": 9.012492197250391e-07,
+      "independent_qp_distance": 1e-06,
+      "uncertain": true,
+      "bary": [
+        0.5,
+        0.5,
+        0.0
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "label": "skinny_-7_0.1",
+      "distance_transcribed_f64": 0.0999999000000125,
+      "independent_qp_distance": 0.1,
+      "uncertain": true,
+      "bary": [
+        0.5,
+        0.5,
+        0.0
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "label": "skinny_-9_0.0",
+      "distance_transcribed_f64": 0.0,
+      "independent_qp_distance": 1.9999999999999998e-91,
+      "uncertain": true,
+      "bary": [
+        0.5,
+        0.5,
+        0.0
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "label": "skinny_-9_1e-06",
+      "distance_transcribed_f64": 9.99000124999992e-07,
+      "independent_qp_distance": 1e-06,
+      "uncertain": true,
+      "bary": [
+        0.5,
+        0.5,
+        0.0
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "label": "skinny_-9_0.1",
+      "distance_transcribed_f64": 0.099999999,
+      "independent_qp_distance": 0.1,
+      "uncertain": true,
+      "bary": [
+        0.5,
+        0.5,
+        0.0
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "label": "skinny_-12_0.0",
+      "distance_transcribed_f64": 0.0,
+      "independent_qp_distance": 0.0,
+      "uncertain": true,
+      "bary": [
+        0.5,
+        0.5,
+        0.0
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "label": "skinny_-12_1e-06",
+      "distance_transcribed_f64": 9.999990000001249e-07,
+      "independent_qp_distance": 1e-06,
+      "uncertain": true,
+      "bary": [
+        0.5,
+        0.5,
+        0.0
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "label": "skinny_-12_0.1",
+      "distance_transcribed_f64": 0.099999999999,
+      "independent_qp_distance": 0.1,
+      "uncertain": true,
+      "bary": [
+        0.5,
+        0.5,
+        0.0
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "label": "parallel_0.0",
+      "distance_transcribed_f64": 8.326672684688674e-17,
+      "independent_qp_distance": 0.0,
+      "uncertain": false,
+      "bary": [
+        0.5,
+        0.0,
+        0.5
+      ],
+      "axis_fraction": 0.375,
+      "scale": 3.0,
+      "tolerance": 1.5e-11,
+      "passed": true
+    },
+    {
+      "label": "near_parallel_0.0",
+      "distance_transcribed_f64": 1.01e-09,
+      "independent_qp_distance": 1.01e-09,
+      "uncertain": false,
+      "bary": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axis_fraction": 0.25,
+      "scale": 3.0,
+      "tolerance": 1.5e-11,
+      "passed": true
+    },
+    {
+      "label": "parallel_1e-10",
+      "distance_transcribed_f64": 1.0000000000003467e-10,
+      "independent_qp_distance": 1e-10,
+      "uncertain": false,
+      "bary": [
+        0.5,
+        0.0,
+        0.5
+      ],
+      "axis_fraction": 0.375,
+      "scale": 3.0,
+      "tolerance": 1.5e-11,
+      "passed": true
+    },
+    {
+      "label": "near_parallel_1e-10",
+      "distance_transcribed_f64": 1.0149384217774002e-09,
+      "independent_qp_distance": 1.0149384217774002e-09,
+      "uncertain": false,
+      "bary": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axis_fraction": 0.25,
+      "scale": 3.0,
+      "tolerance": 1.5e-11,
+      "passed": true
+    },
+    {
+      "label": "parallel_0.1",
+      "distance_transcribed_f64": 0.1,
+      "independent_qp_distance": 0.1,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        0.5,
+        0.5
+      ],
+      "axis_fraction": 0.6250000000000001,
+      "scale": 3.0,
+      "tolerance": 1.5e-11,
+      "passed": true
+    },
+    {
+      "label": "near_parallel_0.1",
+      "distance_transcribed_f64": 0.1,
+      "independent_qp_distance": 0.1,
+      "uncertain": false,
+      "bary": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axis_fraction": 0.25,
+      "scale": 3.0,
+      "tolerance": 1.5e-11,
+      "passed": true
+    },
+    {
+      "label": "line",
+      "distance_transcribed_f64": 1.0,
+      "independent_qp_distance": 1.0,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "label": "point",
+      "distance_transcribed_f64": 1.0,
+      "independent_qp_distance": 1.0,
+      "uncertain": false,
+      "bary": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axis_fraction": 0.0,
+      "scale": 2.0,
+      "tolerance": 1e-11,
+      "passed": true
+    },
+    {
+      "label": "original_grain180",
+      "distance_transcribed_f64": 0.024313094771862043,
+      "independent_qp_distance": 0.02431309477186204,
+      "uncertain": false,
+      "bary": [
+        0.5548510193398075,
+        0.0,
+        0.4451489806601925
+      ],
+      "axis_fraction": 0.10926893159455299,
+      "scale": 0.30313514641850287,
+      "tolerance": 1.5156757320925142e-12,
+      "passed": true
+    },
+    {
+      "label": "Harbor_A180_gold",
+      "distance_transcribed_f64": 0.05899029945374943,
+      "independent_qp_distance": 0.05899029945374943,
+      "uncertain": false,
+      "bary": [
+        0.5000000000017399,
+        0.4999999999982601,
+        0.0
+      ],
+      "axis_fraction": 0.4233386162702857,
+      "scale": 0.1850099782901265,
+      "tolerance": 9.250498914506325e-13,
+      "passed": true
+    },
+    {
+      "label": "Harbor_B180_gold",
+      "distance_transcribed_f64": 0.057327586254630226,
+      "independent_qp_distance": 0.057327586254630226,
+      "uncertain": false,
+      "bary": [
+        0.5002145460910503,
+        0.49978545390894963,
+        0.0
+      ],
+      "axis_fraction": 0.07196587168941271,
+      "scale": 0.3091236010950963,
+      "tolerance": 1.5456180054754814e-12,
+      "passed": true
+    },
+    {
+      "label": "ordinary_0_scaled_1e-10",
+      "distance_transcribed_f64": 1.0329785246278064e-10,
+      "independent_qp_distance": 1.0329785246278065e-10,
+      "uncertain": false,
+      "bary": [
+        0.8250701586859572,
+        0.0,
+        0.17492984131404277
+      ],
+      "axis_fraction": 0.5556017731390713,
+      "scale": 1.913007007050813e-10,
+      "tolerance": 9.565035035254065e-22,
+      "passed": true
+    },
+    {
+      "label": "ordinary_1_scaled_1e-10",
+      "distance_transcribed_f64": 4.9464310014575384e-11,
+      "independent_qp_distance": 4.94643100145754e-11,
+      "uncertain": false,
+      "bary": [
+        0.9112944800639595,
+        0.08870551993604049,
+        0.0
+      ],
+      "axis_fraction": 0.24085279943985097,
+      "scale": 1.9569688504771466e-10,
+      "tolerance": 9.784844252385732e-22,
+      "passed": true
+    },
+    {
+      "label": "ordinary_2_scaled_1e-10",
+      "distance_transcribed_f64": 3.0855937108444164e-11,
+      "independent_qp_distance": 3.085593710844417e-11,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "axis_fraction": 0.38558574721891503,
+      "scale": 2.2553240675728207e-10,
+      "tolerance": 1.1276620337864103e-21,
+      "passed": true
+    },
+    {
+      "label": "ordinary_3_scaled_1e-10",
+      "distance_transcribed_f64": 4.363839455484415e-11,
+      "independent_qp_distance": 4.363839455484414e-11,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "axis_fraction": 0.1287165636357834,
+      "scale": 1.4681427677778632e-10,
+      "tolerance": 7.340713838889316e-22,
+      "passed": true
+    },
+    {
+      "label": "ordinary_4_scaled_1e-10",
+      "distance_transcribed_f64": 1.9490454378562864e-11,
+      "independent_qp_distance": 1.9490454378562864e-11,
+      "uncertain": false,
+      "bary": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axis_fraction": 0.15792408146113068,
+      "scale": 2.084820669570801e-10,
+      "tolerance": 1.0424103347854004e-21,
+      "passed": true
+    },
+    {
+      "label": "ordinary_5_scaled_1e-10",
+      "distance_transcribed_f64": 1.2304452535118906e-10,
+      "independent_qp_distance": 1.2304452535118908e-10,
+      "uncertain": false,
+      "bary": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axis_fraction": 0.7483450063959953,
+      "scale": 2.662792474523593e-10,
+      "tolerance": 1.3313962372617964e-21,
+      "passed": true
+    },
+    {
+      "label": "ordinary_0_scaled_10000000000.0",
+      "distance_transcribed_f64": 10329785246.278063,
+      "independent_qp_distance": 10329785246.278065,
+      "uncertain": false,
+      "bary": [
+        0.8250701586859571,
+        0.0,
+        0.17492984131404288
+      ],
+      "axis_fraction": 0.5556017731390713,
+      "scale": 19130070070.50813,
+      "tolerance": 0.09565035035254064,
+      "passed": true
+    },
+    {
+      "label": "ordinary_1_scaled_10000000000.0",
+      "distance_transcribed_f64": 4946431001.45754,
+      "independent_qp_distance": 4946431001.457539,
+      "uncertain": false,
+      "bary": [
+        0.9112944800639595,
+        0.08870551993604052,
+        0.0
+      ],
+      "axis_fraction": 0.24085279943985102,
+      "scale": 19569688504.77146,
+      "tolerance": 0.0978484425238573,
+      "passed": true
+    },
+    {
+      "label": "ordinary_2_scaled_10000000000.0",
+      "distance_transcribed_f64": 3085593710.844419,
+      "independent_qp_distance": 3085593710.8444185,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "axis_fraction": 0.38558574721891503,
+      "scale": 22553240675.728203,
+      "tolerance": 0.112766203378641,
+      "passed": true
+    },
+    {
+      "label": "ordinary_3_scaled_10000000000.0",
+      "distance_transcribed_f64": 4363839455.484413,
+      "independent_qp_distance": 4363839455.484413,
+      "uncertain": false,
+      "bary": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "axis_fraction": 0.12871656363578338,
+      "scale": 14681427677.778631,
+      "tolerance": 0.07340713838889315,
+      "passed": true
+    },
+    {
+      "label": "ordinary_4_scaled_10000000000.0",
+      "distance_transcribed_f64": 1949045437.856286,
+      "independent_qp_distance": 1949045437.8562863,
+      "uncertain": false,
+      "bary": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axis_fraction": 0.15792408146113066,
+      "scale": 20848206695.70801,
+      "tolerance": 0.10424103347854005,
+      "passed": true
+    },
+    {
+      "label": "ordinary_5_scaled_10000000000.0",
+      "distance_transcribed_f64": 12304452535.118904,
+      "independent_qp_distance": 12304452535.118908,
+      "uncertain": false,
+      "bary": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "axis_fraction": 0.7483450063959953,
+      "scale": 26627924745.235924,
+      "tolerance": 0.1331396237261796,
+      "passed": true
+    }
+  ],
+  "self_checks": "passed",
+  "underflow_conservative_zero_check": "passed",
+  "limits": "Python transcription is not executable Rust validation. No garment dynamics, Cargo, compile or full parity claim."
+}

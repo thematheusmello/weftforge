@@ -1,0 +1,53 @@
+{
+  "analysis": {
+    "path": ".local/capsule-garment-20261115/runs/height/analysis.json",
+    "sha256": "e49cbed36f0a7eacf780ef8c488d15f2763fa00ff9de2d7a3cc679b244ce04a1"
+  },
+  "analysis_exit_code": 2,
+  "artifact_hashes_complete": true,
+  "artifacts": {
+    "completed-case.json": "e18352cec97e02518aa2e9f6a5ed05c0307f88b6687b998fa919807fcca5ccd2",
+    "producer.stderr": "766bd91e8a6c96970275da32d0a0a5b84f589b74e773dd3c66c036c0d45423fd",
+    "producer.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rest-metadata.json": "d7032bd7e87338e19138647a859a0c447c105868c5f5dfec1b4fa48037cbe4ac",
+    "stage-000.obj": "095f0e7e7e25459b9a547f36515d53cfc36accd00cac3886cd00ee356f24e93b",
+    "stage-060.obj": "4f2ea84eb3f302239e81a050dead7d8f3a1896ffcc3a4513d1ff369845d50810",
+    "stage-180.obj": "27131d009e157879c8df5d4dcf8858d8209890a6265e68893e584221946c33e7",
+    "steps.jsonl": "390bcd770a47374c9c51f6acd049ab7355e3738a0b22268033cb089e1f1db085",
+    "trajectory.jsonl": "a31ff1401a0e678fe4d367eacda5d3624ac834a693e12caa8b91b7129e02a437"
+  },
+  "attempt": 1,
+  "authorization_sha256": "0c4671b4af0339c4a667d95b223dffed12fed8a4d9d176605bdefc61c6028c8d",
+  "case": "height",
+  "clock_close_scope": "All numerical analysis/export/hash/inspection/postbindings; final receipt serialization and audit are integrity metadata only",
+  "driver_sha256": "7f01a3355385af0ed8df2accf2c2a6fbf9cebc2af71f391f259ed44a9db48f34",
+  "evaluator_freeze_sha256": "4b22c7109de54f10c3f133fd1c9eced52421c5dd753cf50ac6520f8140f5b4b3",
+  "failure": null,
+  "final_monotonic_seconds": 827750.553894083,
+  "input_sha256": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5",
+  "inspection": {
+    "path": ".local/capsule-garment-20261115/runs/height/inspection.json",
+    "sha256": "3629a883a72f530a0676c2cd49596ba9e0db64bb4ef7be22e10b735661a879b2"
+  },
+  "no_new_numerical_acceptance_after_clock_close": true,
+  "numerical_output_bytes": 36371202,
+  "producer_end_monotonic_seconds": 827712.833347625,
+  "producer_exit_code": 0,
+  "producer_peak_rss_bytes": 8585216,
+  "producer_sampled_peak_rss_bytes": 8585216,
+  "producer_status": "producer_complete",
+  "quality_flags": {
+    "all_frame_quality_passed": false,
+    "completed_fit_all_frame_quality_passed": true,
+    "final_frame_quality_passed": true,
+    "quality_status": "failed",
+    "strict_delivery_passed": false,
+    "trajectory_physical_screens_passed": true
+  },
+  "schema": 1,
+  "source_commit": "0770204a54abdf5f929b6626b01d7fcfb0e13ca4",
+  "start_monotonic_seconds": 827588.505342708,
+  "status": "complete",
+  "stop_reason": null,
+  "whole_case_elapsed_seconds": 162.04855137504637
+}

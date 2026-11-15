@@ -554,3 +554,45 @@ Independent conservative force gradients omit contact/friction reactions and
 per-substep impulses, so full force balance, convergence and calibration remain
 open. All three original runs, 423 saved states, 420 timings and pre-run plans
 are retained with separate independent review and read-only replay.
+
+## Static capsule surface checkpoint, 2026-11-15
+
+Runtime `0770204a54ab` retains the static surface-contact model described above
+and exposes conservative uncertainty in CLI fitting rejection and native
+diagnostics. Independent source/static review and an actual unmodified Rust
+detector run each cover83original static cases, including9conservative uncertain
+cases. These checks establish their bounded static scope only.
+
+The [closed original Harbor experiment](../parity/reports/WF-20261115-CAPSULE-SURFACE-001.json)
+retains unchanged base revision20 and height revision17, with181saved states and
+180steps each. Both use60zero-gravity assembly steps then120gravity steps,
+dt1/60s,8substeps/32iterations and1m/s seam closure. All saved positions,
+velocities, raw diagnostics/settings, rest metadata and0/60/180OBJ exports are
+publicly hash-bound. No new physics or timed benchmark runs during publication.
+
+Both cases pass independent full static triangle/capsule and supported contact
+below2mm at all181saved boundaries. Maximum contact upper bounds are
+4.552257086565259e-7m for base and3.7889283330261314e-7m for height, both at29.
+All independent unresolved-pair and raw conservative-policy counts are zero;
+initial-intersection counts are independently verified. Their original whole-case
+times167.26820654096082s and162.04855137504637s include numerical analysis,
+export/hash/inspection and remain below420s, with producerRSS and aggregate
+numerical-output each separately below256MiB.
+
+**Both overall strict results remain failed.** Base exceeds15% material-axis
+strain at28–37, reaching19.90919497559327%at31, and has33 exact peak triangle/axis
+attribution failures. Height passes all trajectory physical and completed-fit
+screens, with14.611755162261497% maximum strain at30, but fails exact attribution
+at6,10,18. Open seams/targets at0–28 describe initial arrangement; exact zero
+targets begin at29. Final-only producer pass flags do not qualify delivery.
+Every failure list and per-frame diagnostic disagreement remains in the packet.
+
+The separate public saved-state replay changes only evaluator directory mapping;
+all numerical functions, thresholds and cutoffs match the frozen original, and
+every deterministic analysis field must match the original saved reports. The
+original24-file evaluator freeze remains separately archived. Public replay
+does not execute binaries or recertify historical clocks/resource counters.
+Prior3aa strain/contact failures, native7fe Save18/raw metadata failures, full
+garment acceptance, edge-edge/continuous contact, convergence, calibration and
+reference parity remain open. No current native uncertainty-label observation
+is supplied by these headless cases.

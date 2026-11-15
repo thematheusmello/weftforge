@@ -1,0 +1,38 @@
+{
+  "id": "SIM-CAPSULE-SURFACE-001",
+  "kind": "independently_checked_output",
+  "initial_conditions": "Two closed headless cases on exact077source and original Harbor base revision20 / height revision17; oneattempt each,60zeroG assembly+120gravity frames,dt1/60,8substeps/32iterations,1m/s closure. No new dynamics during public replay.",
+  "fixture_hashes": {
+    "parity/reports/artifacts/capsule-surface-20261115/experiment/inputs/base.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+    "parity/reports/artifacts/capsule-surface-20261115/experiment/inputs/height.weftforge": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5",
+    "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/base/rest-metadata.json": "d96697949c686fbf15f19b99b6d7551b35d3449b17157009aceb75649fbaeeb9",
+    "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/base/trajectory.jsonl": "1c56fd1ac2e343a096b08fc301c5bacfefbe99e7148433f871ece8036a58af21",
+    "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/base/steps.jsonl": "261dfd2e0401f58864857031a4952c29cc197ddac5f6495a2829c0ae534c2c08",
+    "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/base/stage-000.obj": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce",
+    "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/base/stage-060.obj": "5eb10a6d24cb09bcb3456ce63a190f03a5898b083ca96b3a826b00e91490ba7e",
+    "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/base/stage-180.obj": "7fafe0e104f3919babf50a7730b3aa3746e5dab260a09a48d39826b64b34789b",
+    "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/height/rest-metadata.json": "d7032bd7e87338e19138647a859a0c447c105868c5f5dfec1b4fa48037cbe4ac",
+    "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/height/trajectory.jsonl": "a31ff1401a0e678fe4d367eacda5d3624ac834a693e12caa8b91b7129e02a437",
+    "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/height/steps.jsonl": "390bcd770a47374c9c51f6acd049ab7355e3738a0b22268033cb089e1f1db085",
+    "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/height/stage-000.obj": "095f0e7e7e25459b9a547f36515d53cfc36accd00cac3886cd00ee356f24e93b",
+    "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/height/stage-060.obj": "4f2ea84eb3f302239e81a050dead7d8f3a1896ffcc3a4513d1ff369845d50810",
+    "parity/reports/artifacts/capsule-surface-20261115/experiment/runs/height/stage-180.obj": "27131d009e157879c8df5d4dcf8858d8209890a6265e68893e584221946c33e7"
+  },
+  "operations": [
+    "Verify tracked packet/source/input/frozen-evaluator and closed-receipt bindings.",
+    "Replay unchanged independent numerical functions over all181actual saved states per case and compare every deterministic analysis field.",
+    "Retain raw diagnostics, full failed frame lists, exact attribution disagreements, uncertainty/initial-count status and original resource/timing scopes."
+  ],
+  "expected_outcomes": "Both strict results remain failed. Static capsule/supported contact below2mm passes all181saved states in eachcase. Base strain fails28..37,peak19.90919497559327%at31,with33exactattributionfailures; height physical/completed-fit screenspass butexactattributionfails6/10/18. Openarrangement0..28 isnotcompletedfit. No fullgarmentgate/referenceparity.",
+  "quality_limits": {
+    "material_axis_absolute_strain_below": 0.15,
+    "sampled_seam_gap_below_m": 0.005,
+    "physical_contact_penetration_below_m": 0.002,
+    "completed_stitch_target_exact_m": 0.0,
+    "independent_unknown_capsule_pairs_exact": 0,
+    "reported_conservative_capsule_pairs_exact": 0
+  },
+  "status": "failed",
+  "complete_contract": false,
+  "reference_executed": false
+}
