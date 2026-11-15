@@ -132,7 +132,7 @@ existing projects may assign different IDs. Current-profile calls use the same
 arguments and additionally include the per-request `_meta` shown above.
 
 The supported shared commands are `import_svg_patterns`, `import_dxf_patterns`, `add_polygon`, `add_rectangle`, `add_ellipse`, `move_point`,
-`set_curve_controls`, `split_curve`, `join_curve`, `resize_piece`, `set_placement`, `set_grain`,
+`set_curve_controls`, `split_curve`, `join_curve`, `resize_piece`, `transform_piece`, `set_placement`, `set_grain`,
 `set_material`, `add_material`, `update_material`, `add_seam`, `update_seam`,
 `remove_seam`, `add_sewing_group`, `update_sewing_group`, `remove_sewing_group`,
 `remove_piece`, `set_resolution`, and `set_mannequin`.
@@ -183,6 +183,35 @@ point/control edits are ordinary cubic edits, without a persistent ellipse
 constraint. See the [original contract](../spec/features/PAT-003-original-ellipse-20261114.md)
 for validation limits and the independent numeric criterion. Reference ellipse
 semantics remain unobserved.
+
+`transform_piece` changes one piece's 2D layout through the existing CLI `execute`
+and MCP `project_execute` adapters:
+
+```json
+{"type":"transform_piece","data":{"piece":2,"translation":[0.5,-0.25],"angle":1.5707963267948966,"pivot":[0.25,0.5]}}
+```
+
+All four data fields are required. Translation and pivot are authored U/V metres;
+the pivot is in the original coordinates. Angle is counterclockwise radians in
+the V-up canvas. Rotation occurs about the explicit pivot before translation.
+Endpoints and absolute cubic controls move together; IDs, links and sewing maps
+remain unchanged. The command compensates existing 3D placement and rotates the
+UV grain direction to retain the arranged surface and world warp/weft directions.
+The saved Euler placement values can consequently change. Nonzero rotation stores
+canonical grain in `[-pi,pi]`; pure translation retains grain and Euler bits and
+uses a single addition per changed authoring component. Inputs must be finite,
+translation/pivot components within ±1000 m, and angle within ±1e6 rad. Resulting
+coordinates, placement, contour and affected sewing metrics must also validate.
+A rejected command leaves the entire command array and output/recovery bytes unchanged.
+
+Native v3 fields and version stay unchanged. Remeshed UVs equal the new authored
+coordinates; SVG/DXF layouts and OBJ UVs change. The arranged continuous surface
+is retained within the reviewed numeric limits, but a fresh revision invalidates
+rest mesh, display and simulation state. Identical triangulation, solver paths or
+texture placement are not promised. This is an explicit WeftForge layout policy;
+reference transform behavior remains unobserved. See the
+[rigid-transform contract](../spec/features/PAT-004-piece-rigid-transform.md).
+
 `join_curve` takes `{"curve":CURVE_ID}` and joins that oriented boundary with
 its next boundary, including the closing pair. It retains the selected ID and
 sewing records; incompatible geometry or unsafe remapping fails atomically.

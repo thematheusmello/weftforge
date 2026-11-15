@@ -1,0 +1,26 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/pattern-transform-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.39s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 4 tests
+test pattern_transform_tests::transform_search_and_tool_names_are_real_authoring_routes ... ok
+
+thread 'pattern_transform_tests::transform_cross_piece_refusal_retains_staged_or_invalid_raw_text_caret_and_redo' (60932238) panicked at apps/weftforge/src/main.rs:10640:28:
+called `Option::unwrap()` on a `None` value
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test pattern_transform_tests::transform_cross_piece_refusal_retains_staged_or_invalid_raw_text_caret_and_redo ... FAILED
+
+thread 'pattern_transform_tests::transform_numeric_apply_and_return_use_explicit_units_pivot_and_one_transaction' (60932239) panicked at apps/weftforge/src/main.rs:10543:32:
+missing numeric field "Pivot V (m)"
+test pattern_transform_tests::transform_numeric_apply_and_return_use_explicit_units_pivot_and_one_transaction ... FAILED
+test pattern_transform_tests::transform_pointer_translation_and_rotation_capture_original_geometry_and_snap_once ... ok
+
+failures:
+
+failures:
+    pattern_transform_tests::transform_cross_piece_refusal_retains_staged_or_invalid_raw_text_caret_and_redo
+    pattern_transform_tests::transform_numeric_apply_and_return_use_explicit_units_pivot_and_one_transaction
+
+test result: FAILED. 2 passed; 2 failed; 0 ignored; 0 measured; 55 filtered out; finished in 0.47s
+
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

@@ -1,0 +1,21 @@
+{
+  "utc": "2026-11-15T16:00:18.684Z",
+  "monotonic_ns": "880734662837375",
+  "context": {
+    "phase": "target-call-or-result",
+    "sourceRecord": "0001",
+    "label": "OFFLINE-MOCK-target-error",
+    "method": "getAXStateAndScreenshot"
+  },
+  "error": {
+    "name": "Error",
+    "message": "OFFLINE MOCK target exception",
+    "stack": "Error: OFFLINE MOCK target exception\n    at Object.getAXStateAndScreenshot (<WORKSPACE>/.node_repl_cell_11.mjs:89:3041)\n    at run (<WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs:96:35)\n    at Object.capture (<WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs:148:26)\n    at <WORKSPACE>/.node_repl_cell_11.mjs:89:3458\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+  },
+  "status": {
+    "evidenceKind": "offline_mock",
+    "calls": 2,
+    "elapsedS": 0.001020083,
+    "stopped": false
+  }
+}

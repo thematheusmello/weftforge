@@ -1,0 +1,500 @@
+{
+  "created_utc": "2026-11-15T16:16:50.941394+00:00",
+  "status": "frozen stopped A2; read-only extraction of existing trace/captures",
+  "no_new_native_actions": true,
+  "snapshot_api_arguments": {
+    "emit": false
+  },
+  "disableDiffing_was_requested": false,
+  "documented_but_unrequested_option": "StateOptions disableDiffing:true; no new AX read was attempted after stop.",
+  "full_state_besides_diff": "No additional full AX state was present in snapshot results. getApp return handle at0003 serialized as{}; initial full AX was tool-auto-emitted, not copied into a raw artifact.",
+  "focus_evidence": [
+    {
+      "source_record": "0034",
+      "source": "actor interpretation of unedited screenshot",
+      "observation": "Translation V raw0 selected; U1000.000, angle0.000, pivotU0.125, pivotV0.625 visible; underlying R37."
+    },
+    {
+      "source_record": "0035-0050",
+      "observation": "No intermediate AX/screenshot/focus observations. Labels U/V/angle/pivots describe intention; actual targeted focus for each typing call is not independently established."
+    },
+    {
+      "source_record": "0051",
+      "source": "actor interpretation of unedited screenshot",
+      "observation": "Pivot V raw0.625 selected; U1000.000,V-0.250,angle1.57080,pivotU0.500 visible; R37 remains behind retained error modal."
+    }
+  ],
+  "coordinates": {
+    "0035": [
+      745,
+      484
+    ],
+    "provenance": "Chosen from observed0034 screenshot for visible U field; no separate post-click focus observation."
+  },
+  "waits": "None between0035-0050. Each controller.call was awaited sequentially; no explicit sleep/wait or intermediate snapshot.",
+  "cause": "Unknown. API timing/frame batching and focus/targeting are hypotheses requiring independent investigation; no cause established by A2.",
+  "snapshots": [
+    {
+      "id": "0034",
+      "actual_result_keys": [
+        "state",
+        "screenshot"
+      ],
+      "actual_state": "The following is a diff from the previous accessibility tree for Window: \"WeftForge\" with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.\n~\t\t18 text (settable) Coordinates must be finite and within 1000 metres",
+      "state_utf8_bytes": 269,
+      "image": "captures/finite-U1000-rejected-R37-0.jpg",
+      "image_sha256": "9d399e4d2ebe8e44f1279acfbaa53284646e7ec296b687cc125d0e5c4661afae",
+      "full_image": true,
+      "unedited": true
+    },
+    {
+      "id": "0051",
+      "actual_result_keys": [
+        "state",
+        "screenshot"
+      ],
+      "actual_state": "There has been no change in the accessibility tree for Window: \"WeftForge\".",
+      "state_utf8_bytes": 75,
+      "image": "captures/five-final-transform-values-before-Apply-0.jpg",
+      "image_sha256": "ef69e24a648d67dc5c1722c37ba4da7c86fdfb8a78148f8f8b76102e627c1ddb",
+      "full_image": true,
+      "unedited": true
+    }
+  ],
+  "exact_actions_and_raw_timings": [
+    {
+      "id": "0029",
+      "label_is_actor_intent": "edit-finite-invalid-U",
+      "method": "click",
+      "actual_arguments": {
+        "args": [
+          [
+            735,
+            494
+          ],
+          {
+            "clickCount": 2
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:12:57.829Z",
+      "after_utc": "2026-11-15T16:12:59.019Z",
+      "before_monotonic_ns": "881493802302875",
+      "after_monotonic_ns": "881494992191208",
+      "duration_ms": 1189.888333,
+      "gap_from_previous_after_ms": null,
+      "api_status": "returned"
+    },
+    {
+      "id": "0030",
+      "label_is_actor_intent": "select-finite-invalid-U",
+      "method": "pressKey",
+      "actual_arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:12:59.019Z",
+      "after_utc": "2026-11-15T16:12:59.072Z",
+      "before_monotonic_ns": "881494993052166",
+      "after_monotonic_ns": "881495045452541",
+      "duration_ms": 52.400375,
+      "gap_from_previous_after_ms": 0.860958,
+      "api_status": "returned"
+    },
+    {
+      "id": "0031",
+      "label_is_actor_intent": "type-finite-invalid-U1000",
+      "method": "typeText",
+      "actual_arguments": {
+        "args": [
+          "1000"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:12:59.072Z",
+      "after_utc": "2026-11-15T16:12:59.156Z",
+      "before_monotonic_ns": "881495046101250",
+      "after_monotonic_ns": "881495130063125",
+      "duration_ms": 83.961875,
+      "gap_from_previous_after_ms": 0.648709,
+      "api_status": "returned"
+    },
+    {
+      "id": "0032",
+      "label_is_actor_intent": "leave-finite-invalid-U-Tab",
+      "method": "pressKey",
+      "actual_arguments": {
+        "args": [
+          "Tab"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:12:59.158Z",
+      "after_utc": "2026-11-15T16:12:59.241Z",
+      "before_monotonic_ns": "881495131846208",
+      "after_monotonic_ns": "881495214406208",
+      "duration_ms": 82.56,
+      "gap_from_previous_after_ms": 1.783083,
+      "api_status": "returned"
+    },
+    {
+      "id": "0033",
+      "label_is_actor_intent": "apply-finite-invalid-transform-once",
+      "method": "click",
+      "actual_arguments": {
+        "args": [
+          [
+            655,
+            644
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:12:59.242Z",
+      "after_utc": "2026-11-15T16:12:59.698Z",
+      "before_monotonic_ns": "881495215184625",
+      "after_monotonic_ns": "881495672087083",
+      "duration_ms": 456.902458,
+      "gap_from_previous_after_ms": 0.778417,
+      "api_status": "returned"
+    },
+    {
+      "id": "0034",
+      "label_is_actor_intent": "finite-U1000-rejected-R37",
+      "method": "getAXStateAndScreenshot",
+      "actual_arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:12:59.699Z",
+      "after_utc": "2026-11-15T16:13:00.216Z",
+      "before_monotonic_ns": "881495672949791",
+      "after_monotonic_ns": "881496189457916",
+      "duration_ms": 516.508125,
+      "gap_from_previous_after_ms": 0.862708,
+      "api_status": "returned"
+    },
+    {
+      "id": "0035",
+      "label_is_actor_intent": "correct-retained-modal-U",
+      "method": "click",
+      "actual_arguments": {
+        "args": [
+          [
+            745,
+            484
+          ],
+          {
+            "clickCount": 2
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:28.113Z",
+      "after_utc": "2026-11-15T16:13:28.781Z",
+      "before_monotonic_ns": "881524086475375",
+      "after_monotonic_ns": "881524754852875",
+      "duration_ms": 668.3775,
+      "gap_from_previous_after_ms": 27897.017459,
+      "api_status": "returned"
+    },
+    {
+      "id": "0036",
+      "label_is_actor_intent": "select-final-U",
+      "method": "pressKey",
+      "actual_arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:28.782Z",
+      "after_utc": "2026-11-15T16:13:28.814Z",
+      "before_monotonic_ns": "881524755676666",
+      "after_monotonic_ns": "881524786994208",
+      "duration_ms": 31.317542,
+      "gap_from_previous_after_ms": 0.823791,
+      "api_status": "returned"
+    },
+    {
+      "id": "0037",
+      "label_is_actor_intent": "type-final-U-0point5",
+      "method": "typeText",
+      "actual_arguments": {
+        "args": [
+          "0.5"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:28.814Z",
+      "after_utc": "2026-11-15T16:13:28.826Z",
+      "before_monotonic_ns": "881524787640125",
+      "after_monotonic_ns": "881524799071833",
+      "duration_ms": 11.431708,
+      "gap_from_previous_after_ms": 0.645917,
+      "api_status": "returned"
+    },
+    {
+      "id": "0038",
+      "label_is_actor_intent": "Tab-U-to-V",
+      "method": "pressKey",
+      "actual_arguments": {
+        "args": [
+          "Tab"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:28.826Z",
+      "after_utc": "2026-11-15T16:13:28.831Z",
+      "before_monotonic_ns": "881524799814083",
+      "after_monotonic_ns": "881524804346833",
+      "duration_ms": 4.53275,
+      "gap_from_previous_after_ms": 0.74225,
+      "api_status": "returned"
+    },
+    {
+      "id": "0039",
+      "label_is_actor_intent": "select-final-V",
+      "method": "pressKey",
+      "actual_arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:28.832Z",
+      "after_utc": "2026-11-15T16:13:28.835Z",
+      "before_monotonic_ns": "881524804968666",
+      "after_monotonic_ns": "881524808915083",
+      "duration_ms": 3.946417,
+      "gap_from_previous_after_ms": 0.621833,
+      "api_status": "returned"
+    },
+    {
+      "id": "0040",
+      "label_is_actor_intent": "type-final-V-minus0point25",
+      "method": "typeText",
+      "actual_arguments": {
+        "args": [
+          "-0.25"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:28.836Z",
+      "after_utc": "2026-11-15T16:13:28.853Z",
+      "before_monotonic_ns": "881524809864083",
+      "after_monotonic_ns": "881524826766833",
+      "duration_ms": 16.90275,
+      "gap_from_previous_after_ms": 0.949,
+      "api_status": "returned"
+    },
+    {
+      "id": "0041",
+      "label_is_actor_intent": "Tab-V-to-angle",
+      "method": "pressKey",
+      "actual_arguments": {
+        "args": [
+          "Tab"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:28.854Z",
+      "after_utc": "2026-11-15T16:13:28.911Z",
+      "before_monotonic_ns": "881524827650208",
+      "after_monotonic_ns": "881524884558375",
+      "duration_ms": 56.908167,
+      "gap_from_previous_after_ms": 0.883375,
+      "api_status": "returned"
+    },
+    {
+      "id": "0042",
+      "label_is_actor_intent": "select-final-angle",
+      "method": "pressKey",
+      "actual_arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:28.912Z",
+      "after_utc": "2026-11-15T16:13:28.946Z",
+      "before_monotonic_ns": "881524885409250",
+      "after_monotonic_ns": "881524919925916",
+      "duration_ms": 34.516666,
+      "gap_from_previous_after_ms": 0.850875,
+      "api_status": "returned"
+    },
+    {
+      "id": "0043",
+      "label_is_actor_intent": "type-final-angle-pi-over2",
+      "method": "typeText",
+      "actual_arguments": {
+        "args": [
+          "1.5707963267948966"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:28.948Z",
+      "after_utc": "2026-11-15T16:13:28.997Z",
+      "before_monotonic_ns": "881524921003875",
+      "after_monotonic_ns": "881524970299250",
+      "duration_ms": 49.295375,
+      "gap_from_previous_after_ms": 1.077959,
+      "api_status": "returned"
+    },
+    {
+      "id": "0044",
+      "label_is_actor_intent": "Tab-angle-to-pivotU",
+      "method": "pressKey",
+      "actual_arguments": {
+        "args": [
+          "Tab"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:28.998Z",
+      "after_utc": "2026-11-15T16:13:29.043Z",
+      "before_monotonic_ns": "881524970982916",
+      "after_monotonic_ns": "881525016501625",
+      "duration_ms": 45.518709,
+      "gap_from_previous_after_ms": 0.683666,
+      "api_status": "returned"
+    },
+    {
+      "id": "0045",
+      "label_is_actor_intent": "select-final-pivotU",
+      "method": "pressKey",
+      "actual_arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:29.044Z",
+      "after_utc": "2026-11-15T16:13:29.048Z",
+      "before_monotonic_ns": "881525017250333",
+      "after_monotonic_ns": "881525021184791",
+      "duration_ms": 3.934458,
+      "gap_from_previous_after_ms": 0.748708,
+      "api_status": "returned"
+    },
+    {
+      "id": "0046",
+      "label_is_actor_intent": "type-final-pivotU-0point25",
+      "method": "typeText",
+      "actual_arguments": {
+        "args": [
+          "0.25"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:29.050Z",
+      "after_utc": "2026-11-15T16:13:29.069Z",
+      "before_monotonic_ns": "881525023656000",
+      "after_monotonic_ns": "881525042040500",
+      "duration_ms": 18.3845,
+      "gap_from_previous_after_ms": 2.471209,
+      "api_status": "returned"
+    },
+    {
+      "id": "0047",
+      "label_is_actor_intent": "Tab-pivotU-to-pivotV",
+      "method": "pressKey",
+      "actual_arguments": {
+        "args": [
+          "Tab"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:29.070Z",
+      "after_utc": "2026-11-15T16:13:29.074Z",
+      "before_monotonic_ns": "881525043018333",
+      "after_monotonic_ns": "881525047108416",
+      "duration_ms": 4.090083,
+      "gap_from_previous_after_ms": 0.977833,
+      "api_status": "returned"
+    },
+    {
+      "id": "0048",
+      "label_is_actor_intent": "select-final-pivotV",
+      "method": "pressKey",
+      "actual_arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:29.074Z",
+      "after_utc": "2026-11-15T16:13:29.080Z",
+      "before_monotonic_ns": "881525047685541",
+      "after_monotonic_ns": "881525053679541",
+      "duration_ms": 5.994,
+      "gap_from_previous_after_ms": 0.577125,
+      "api_status": "returned"
+    },
+    {
+      "id": "0049",
+      "label_is_actor_intent": "type-final-pivotV-0point5",
+      "method": "typeText",
+      "actual_arguments": {
+        "args": [
+          "0.5"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:29.081Z",
+      "after_utc": "2026-11-15T16:13:29.143Z",
+      "before_monotonic_ns": "881525054430916",
+      "after_monotonic_ns": "881525116424791",
+      "duration_ms": 61.993875,
+      "gap_from_previous_after_ms": 0.751375,
+      "api_status": "returned"
+    },
+    {
+      "id": "0050",
+      "label_is_actor_intent": "Tab-leave-pivotV",
+      "method": "pressKey",
+      "actual_arguments": {
+        "args": [
+          "Tab"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:29.144Z",
+      "after_utc": "2026-11-15T16:13:29.189Z",
+      "before_monotonic_ns": "881525117319833",
+      "after_monotonic_ns": "881525162864833",
+      "duration_ms": 45.545,
+      "gap_from_previous_after_ms": 0.895042,
+      "api_status": "returned"
+    },
+    {
+      "id": "0051",
+      "label_is_actor_intent": "five-final-transform-values-before-Apply",
+      "method": "getAXStateAndScreenshot",
+      "actual_arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_utc": "2026-11-15T16:13:29.190Z",
+      "after_utc": "2026-11-15T16:13:29.672Z",
+      "before_monotonic_ns": "881525163460166",
+      "after_monotonic_ns": "881525645628875",
+      "duration_ms": 482.168709,
+      "gap_from_previous_after_ms": 0.595333,
+      "api_status": "returned"
+    }
+  ],
+  "clarification_of_CASE_RESULT_modal_AX_limit": "Only returned AX diffs lacked modal fields/buttons. No full modal AX tree was requested, so absence from a hypothetical full tree is not established."
+}

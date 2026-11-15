@@ -19,6 +19,7 @@ use weftforge_sim::{Cloth, MaterialAxis, SimulationError, StepSettings};
 #[derive(Clone, Copy, PartialEq)]
 enum Tool {
     Select,
+    Transform,
     Polygon,
     Rectangle,
     Sew,
@@ -28,6 +29,7 @@ impl Tool {
     fn label(self) -> &'static str {
         match self {
             Self::Select => "Select / edit",
+            Self::Transform => "Transform pattern",
             Self::Polygon => "Polygon",
             Self::Rectangle => "Rectangle",
             Self::Sew => "Sew edges",
@@ -197,6 +199,86 @@ struct RectangleDraft {
     origin: [f64; 2],
     dimensions_mm: [String; 2],
     error: Option<String>,
+}
+
+#[derive(Clone)]
+struct TransformDraft {
+    piece: Id,
+    revision: u64,
+    translation: [f64; 2],
+    angle: f64,
+    pivot: [f64; 2],
+    focus: Option<egui::Id>,
+    inspector_text: Option<(String, Option<egui::text_edit::TextEditState>)>,
+    field_focus: Option<egui::Id>,
+    invalid_text: [Option<String>; 5],
+    epoch: u64,
+    error: Option<String>,
+}
+impl TransformDraft {
+    fn command(&self) -> Command {
+        Command::TransformPiece {
+            piece: self.piece,
+            translation: self.translation,
+            angle: self.angle,
+            pivot: self.pivot,
+        }
+    }
+    fn is_identity(&self) -> bool {
+        self.translation == [0.; 2] && self.angle == 0.
+    }
+    fn restore_inspector_text(&self, ctx: &egui::Context) {
+        if let (Some(id), Some((text, state))) = (self.focus, &self.inspector_text) {
+            ctx.data_mut(|data| data.insert_temp(id, text.clone()));
+            if let Some(state) = state {
+                state.clone().store(ctx, id);
+            }
+        }
+    }
+    fn close_without_commit(&self, ctx: &egui::Context) {
+        self.restore_inspector_text(ctx);
+        finish_numeric_action(ctx, self.focus, false);
+        if self.inspector_text.is_some() {
+            let closed = ctx.cumulative_frame_nr();
+            ctx.data_mut(|data| {
+                data.insert_temp(
+                    egui::Id::new("transform-cancel-input"),
+                    (closed, self.clone()),
+                )
+            });
+        }
+    }
+}
+
+struct TransformGesture {
+    original: Project,
+    pending: Vec<Command>,
+    edit: TransformDraft,
+    start: [f64; 2],
+    snap: PositionSnap,
+    rotating: bool,
+    pointer_owner: Option<egui::Id>,
+}
+impl TransformGesture {
+    fn update(&mut self, pointer: [f64; 2]) {
+        if self.rotating {
+            let a: [f64; 2] = std::array::from_fn(|axis| self.start[axis] - self.edit.pivot[axis]);
+            let b: [f64; 2] = std::array::from_fn(|axis| pointer[axis] - self.edit.pivot[axis]);
+            self.edit.angle = (a[0] * b[1] - a[1] * b[0]).atan2(a[0] * b[0] + a[1] * b[1]);
+        } else {
+            self.edit.translation =
+                std::array::from_fn(|axis| self.snap.apply(pointer[axis] - self.start[axis]));
+        }
+    }
+    fn preview(&self) -> Result<Project, String> {
+        let mut editor = Editor::new(self.original.clone()).map_err(|error| error.to_string())?;
+        let mut commands = self.pending.clone();
+        commands.push(self.edit.command());
+        editor
+            .execute(Command::Transaction(commands))
+            .map_err(|error| error.to_string())?;
+        Ok(editor.project)
+    }
 }
 
 #[derive(Default)]
@@ -412,8 +494,11 @@ struct Studio {
     drag_snap: PositionSnap,
     polygon: Vec<[f64; 2]>,
     pattern_canvas: Option<egui::Id>,
+    garment_canvas: Option<egui::Id>,
     drag_start: Option<[f64; 2]>,
     rectangle: Option<RectangleDraft>,
+    transform: Option<TransformDraft>,
+    transform_gesture: Option<TransformGesture>,
     pattern_import: Option<PatternImportDraft>,
     drag_point: Option<Id>,
     preview: Option<[f64; 2]>,
@@ -486,8 +571,11 @@ impl Studio {
             drag_snap: PositionSnap::Mm10,
             polygon: vec![],
             pattern_canvas: None,
+            garment_canvas: None,
             drag_start: None,
             rectangle: None,
+            transform: None,
+            transform_gesture: None,
             pattern_import: None,
             drag_point: None,
             preview: None,
@@ -590,6 +678,8 @@ impl Studio {
         self.preview = None;
         self.drag_start = None;
         self.rectangle = None;
+        self.transform = None;
+        self.transform_gesture = None;
     }
     fn add_ellipse(&mut self, ctx: &egui::Context, focused: Option<egui::Id>) {
         if self.apply_inspector_action(
@@ -602,7 +692,7 @@ impl Studio {
             },
             focused,
         ) {
-            self.select(self.editor.project.pieces.last().map(|piece| piece.id));
+            self.select(ctx, self.editor.project.pieces.last().map(|piece| piece.id));
         }
     }
 
@@ -702,15 +792,132 @@ impl Studio {
         }
         clicked
     }
-    fn select(&mut self, selected: Option<Id>) {
-        if (self.selected != selected || self.selected_curve.is_some()) && self.commit_draft() {
+    fn new_empty_button(&self, ui: &mut egui::Ui) -> bool {
+        let focused = self.inspector_focus(ui.ctx());
+        let response = ui.button("New Empty");
+        let clicked = response.clicked();
+        if response.is_pointer_button_down_on() || clicked {
+            finish_numeric_action(ui.ctx(), focused, false);
+            let frame = ui.ctx().cumulative_frame_nr();
+            ui.ctx().data_mut(|data| {
+                data.insert_temp(
+                    egui::Id::new("new-empty-request"),
+                    (frame, clicked, focused),
+                )
+            });
+        }
+        clicked
+    }
+
+    fn new_empty(&mut self, ctx: &egui::Context, focused: Option<egui::Id>) {
+        let pending_text = focused
+            .and_then(|id| ctx.data_mut(|data| data.get_temp::<String>(id)))
+            .is_some_and(|text| {
+                text.trim()
+                    .parse::<f64>()
+                    .ok()
+                    .is_none_or(|value| !value.is_finite())
+            });
+        let pending_commands = self
+            .draft
+            .as_ref()
+            .filter(|draft| draft.revision == self.editor.project.revision)
+            .is_some_and(|draft| !draft.commands(&self.editor.project).is_empty());
+        let gesture = !self.polygon.is_empty()
+            || self.seam_start.is_some()
+            || !self.sewing_draft.a.is_empty()
+            || !self.sewing_draft.b.is_empty()
+            || self.sewing_draft.selecting_b
+            || self.drag_point.is_some()
+            || self.preview.is_some()
+            || self.drag_start.is_some()
+            || self.rectangle.is_some()
+            || self.transform.is_some()
+            || self.transform_gesture.is_some()
+            || self.sewing_edit.is_some()
+            || self.pattern_import.is_some();
+        let refusal = if pending_text || pending_commands {
+            Some("Apply or cancel the current property edit, then save before creating New Empty.")
+        } else if gesture {
+            Some("Finish or cancel the current construction gesture before creating New Empty.")
+        } else if self.dirty {
+            Some("Save current edits before creating New Empty.")
+        } else if self.autosave_job.is_some() {
+            Some("Wait for the current autosave to finish before creating New Empty.")
+        } else {
+            None
+        };
+        if let Some(message) = refusal {
+            self.message = message.into();
+            finish_numeric_action(ctx, focused, false);
+            return;
+        }
+        self.cancel();
+        self.job = None;
+        self.last_job = None;
+        self.editor = Editor::default();
+        self.path = None;
+        self.dirty = false;
+        self.discard_on_exit = false;
+        self.selected = None;
+        self.selected_curve = None;
+        self.reset_gestures();
+        self.sewing_edit = None;
+        self.pattern_import = None;
+        self.show_recovery = false;
+        self.mesh = None;
+        self.reset_simulation();
+        self.rebuild();
+        self.autosave = Instant::now();
+        self.message =
+            "New empty editable project · draw a pattern or enter dimensions in metres.".into();
+        finish_numeric_action(ctx, focused, true);
+    }
+
+    fn select(&mut self, ctx: &egui::Context, selected: Option<Id>) -> bool {
+        if self.tool == Tool::Transform {
+            let focus = self.inspector_focus(ctx);
+            let invalid_text = focus
+                .and_then(|id| ctx.data_mut(|data| data.get_temp::<String>(id)))
+                .is_some_and(|text| {
+                    text.trim()
+                        .parse::<f64>()
+                        .ok()
+                        .is_none_or(|value| !value.is_finite())
+                });
+            if self.selected != selected {
+                // shortcut: one staged piece at a time; add cross-piece staging only with multiselection.
+                if invalid_text
+                    || self
+                        .draft
+                        .as_ref()
+                        .is_some_and(|draft| !draft.commands(&self.editor.project).is_empty())
+                {
+                    self.message = "Apply or cancel the current property edit before selecting another pattern.".into();
+                    finish_numeric_action(ctx, focus, false);
+                    return false;
+                }
+                self.selected = selected;
+                self.selected_curve = None;
+                self.draft = None;
+            }
+            return true;
+        }
+        if self.selected != selected || self.selected_curve.is_some() {
+            if !self.commit_draft() {
+                return false;
+            }
             self.selected = selected;
             self.selected_curve = None;
         }
+        true
     }
-    fn select_curve(&mut self, selected: Option<(Id, Id)>) {
+    fn select_curve(&mut self, ctx: &egui::Context, selected: Option<(Id, Id)>) {
         let piece = selected.map(|(piece, _)| piece);
         let curve = selected.map(|(_, curve)| curve);
+        if self.tool == Tool::Transform && self.selected != piece && !self.select(ctx, piece) {
+            return;
+        }
         if (self.selected != piece || self.selected_curve != curve) && self.commit_draft() {
             self.selected = piece;
             self.selected_curve = curve;
@@ -735,6 +942,8 @@ impl Studio {
         self.cloth = None;
     }
     fn rebuild(&mut self) {
+        self.transform = None;
+        self.transform_gesture = None;
         self.playing = false;
         self.pending_batch = None;
         self.cancel();
@@ -1048,7 +1257,7 @@ impl Studio {
         if accept {
             if self.apply_inspector_action(ctx, import.drawing.command(), import.focused) {
                 self.reset_gestures();
-                self.select(self.editor.project.pieces.last().map(|piece| piece.id));
+                self.select(ctx, self.editor.project.pieces.last().map(|piece| piece.id));
                 self.message = format!(
                     "Imported {} editable {} patterns at physical scale. {}",
                     import.drawing.piece_count(),
@@ -1224,7 +1433,7 @@ impl Studio {
             return;
         }
         let mut open = true;
-        egui::Window::new("Recover editable construction").enabled(self.rectangle.is_none() && self.sewing_edit.is_none() && self.pattern_import.is_none()).open(&mut open).default_width(520.0).show(ctx,|ui| {
+        egui::Window::new("Recover editable construction").enabled(self.rectangle.is_none() && self.transform.is_none() && self.sewing_edit.is_none() && self.pattern_import.is_none()).open(&mut open).default_width(520.0).show(ctx,|ui| {
             ui.label("Recovery opens a copy. Save current edits before replacing the document.");
             ui.horizontal(|ui| {
                 if ui.button("Refresh").clicked() { self.refresh_recovery(); }
@@ -1415,6 +1624,9 @@ impl Studio {
     fn menu_bar(&mut self, ui: &mut egui::Ui) {
         egui::MenuBar::new().ui(ui, |ui| {
             let (response, menu) = egui::menu::MenuButton::new("File").ui(ui, |ui| {
+                if self.new_empty_button(ui) {
+                    ui.close();
+                }
                 if ui.button("Open…").clicked() {
                     self.choose_open();
                     ui.close();
@@ -1477,6 +1689,8 @@ impl Studio {
                 ui.separator();
                 ui.label("2D: scroll to zoom; middle drag to pan.");
                 ui.label("Hold Alt / Option to bypass position snapping.");
+                ui.label("Transform pattern: drag a boundary to translate or its handle to rotate.");
+                ui.label("Transform keeps the arranged 3D surface and world warp fixed; placement rotation values may change.");
                 ui.label("3D: drag to orbit; scroll to zoom.");
                 ui.label("Space plays or pauses simulation.");
                 ui.label("Enter confirms polygon or sewing; Escape cancels.");
@@ -1518,6 +1732,12 @@ impl Studio {
             self.position_snap_control(ui);
             ui.separator();
             self.frame_patterns_button(ui);
+            if self.tool == Tool::Transform {
+                ui.separator();
+                let response = ui.add_enabled(self.selected.is_some(), egui::Button::new("Transform pattern…"));
+                self.retain_inspector_input(&response, false);
+                if response.clicked() { self.open_transform(ui.ctx()); }
+            }
             if self.tool == Tool::SewingPaths {
                 ui.separator();
                 ui.label(format!("Side {} · A {} / B {}", if self.sewing_draft.selecting_b { "B" } else { "A" }, self.sewing_draft.a.len(), self.sewing_draft.b.len()))
@@ -1530,6 +1750,7 @@ impl Studio {
         ui.add_space(6.0);
         for tool in [
             Tool::Select,
+            Tool::Transform,
             Tool::Polygon,
             Tool::Rectangle,
             Tool::Sew,
@@ -1797,8 +2018,11 @@ impl Studio {
                                             );
                                         }
                                         let response = ui.add(button).on_hover_text(&piece.name);
+                                        if self.tool == Tool::Transform {
+                                            self.retain_inspector_input(&response, false);
+                                        }
                                         if response.clicked() {
-                                            self.select(Some(piece.id));
+                                            self.select(ui.ctx(), Some(piece.id));
                                         }
                                     },
                                 );
@@ -1809,9 +2033,30 @@ impl Studio {
         pane_heading(ui, "Properties");
         let mut commit = false;
         let mut acting = self.search
+            || self.transform.is_some()
+            || self.transform_gesture.is_some()
+            || (self.tool == Tool::Transform
+                && ui.input(|input| input.pointer.any_down() || input.pointer.any_released())
+                && self
+                    .pattern_canvas
+                    .into_iter()
+                    .chain(self.garment_canvas)
+                    .filter_map(|id| ui.ctx().read_response(id))
+                    .any(|response| {
+                        ui.input(|input| input.pointer.interact_pos())
+                            .is_some_and(|pointer| response.rect.contains(pointer))
+                    }))
             || self.tool == Tool::SewingPaths
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some()
+            || ui
+                .ctx()
+                .data_mut(|data| {
+                    data.get_temp::<(u64, bool, Option<egui::Id>)>(egui::Id::new(
+                        "new-empty-request",
+                    ))
+                })
+                .is_some_and(|(frame, _, _)| frame == ui.ctx().cumulative_frame_nr())
             || ui
                 .ctx()
                 .data_mut(|data| {
@@ -1838,7 +2083,7 @@ impl Studio {
                     .selected_text(self.selected_curve.map_or("Choose boundary".into(),|id|format!("Curve #{id}")))
                     .show_ui(ui,|ui| {
                         for (index,id) in piece.boundary.iter().enumerate() {
-                            if ui.selectable_label(self.selected_curve==Some(*id),format!("Boundary {} · curve #{id}",index+1)).clicked() { self.select_curve(Some((piece.id,*id))); }
+                            if ui.selectable_label(self.selected_curve==Some(*id),format!("Boundary {} · curve #{id}",index+1)).clicked() { self.select_curve(ui.ctx(), Some((piece.id,*id))); }
                         }
                     });
             }
@@ -2050,7 +2295,7 @@ impl Studio {
             self.draft=Some(draft);
             if add_rectangle {
                 self.execute(Command::AddRectangle { name:self.name.clone(),origin:self.coordinate,width:self.size[0],height:self.size[1] });
-                self.select(self.editor.project.pieces.last().map(|piece|piece.id));
+                self.select(ui.ctx(), self.editor.project.pieces.last().map(|piece|piece.id));
             }
             if add_ellipse { self.add_ellipse(ui.ctx(),action_focus); }
             if close_polygon { self.finish_polygon(); }
@@ -2073,6 +2318,8 @@ impl Studio {
         if commit
             && !acting
             && self.rectangle.is_none()
+            && self.transform.is_none()
+            && self.transform_gesture.is_none()
             && !opening_rectangle
             && self.commit_draft()
             && let Some(id) = action_focus
@@ -2197,6 +2444,218 @@ impl Studio {
             self.scale = scale;
         }
     }
+    fn transform_edit(&self, ctx: &egui::Context, piece: Id) -> Option<TransformDraft> {
+        let [min, max] = self.editor.project.piece_bounds(piece).ok()?;
+        let focus = self.inspector_focus(ctx);
+        Some(TransformDraft {
+            piece,
+            revision: self.editor.project.revision,
+            translation: [0.; 2],
+            angle: 0.,
+            pivot: std::array::from_fn(|axis| (min[axis] + max[axis]) * 0.5),
+            focus,
+            inspector_text: focus.and_then(|id| {
+                ctx.data_mut(|data| data.get_temp::<String>(id))
+                    .map(|text| (text, egui::TextEdit::load_state(ctx, id)))
+            }),
+            field_focus: None,
+            invalid_text: std::array::from_fn(|_| None),
+            epoch: ctx.cumulative_frame_nr(),
+            error: None,
+        })
+    }
+    fn open_transform(&mut self, ctx: &egui::Context) {
+        self.discard_stale_transform();
+        let Some(mut edit) = self
+            .selected
+            .and_then(|piece| self.transform_edit(ctx, piece))
+        else {
+            self.message = "Select a pattern boundary to transform first.".into();
+            return;
+        };
+        if let Some(gesture) = self.transform_gesture.take() {
+            edit.translation = gesture.edit.translation;
+            edit.angle = gesture.edit.angle;
+            edit.pivot = gesture.edit.pivot;
+        }
+        self.set_tool(Tool::Transform);
+        self.transform_gesture = None;
+        finish_numeric_action(ctx, edit.focus, false);
+        self.transform = Some(edit);
+    }
+    fn discard_stale_transform(&mut self) {
+        let stale = |edit: &TransformDraft| {
+            self.tool != Tool::Transform
+                || edit.revision != self.editor.project.revision
+                || self.selected != Some(edit.piece)
+                || self.editor.project.piece(edit.piece).is_none()
+        };
+        if self.transform.as_ref().is_some_and(stale) {
+            self.transform = None;
+        }
+        if self
+            .transform_gesture
+            .as_ref()
+            .is_some_and(|gesture| stale(&gesture.edit))
+        {
+            self.transform_gesture = None;
+        }
+    }
+    fn apply_transform(&mut self, ctx: &egui::Context, edit: &TransformDraft) -> bool {
+        if edit.revision != self.editor.project.revision {
+            self.message = "Transform cancelled: construction revision changed.".into();
+            return false;
+        }
+        let invalid_draft_text = edit
+            .focus
+            .and_then(|id| ctx.data_mut(|data| data.get_temp::<String>(id)))
+            .is_some_and(|text| {
+                text.trim()
+                    .parse::<f64>()
+                    .ok()
+                    .is_none_or(|value| !value.is_finite())
+            });
+        if invalid_draft_text {
+            self.message = "Correct the pending property value before transforming.".into();
+            finish_numeric_action(ctx, edit.focus, false);
+            return false;
+        }
+        self.apply_inspector_action(ctx, edit.command(), edit.focus)
+    }
+    fn transform_window(&mut self, ctx: &egui::Context) {
+        self.discard_stale_transform();
+        let Some(mut edit) = self.transform.take() else {
+            return;
+        };
+        let prior_text = edit
+            .field_focus
+            .and_then(|id| ctx.data_mut(|data| data.get_temp::<String>(id)))
+            .map(|text| (edit.field_focus.unwrap(), text));
+        let enter = ctx.input(|input| input.key_pressed(egui::Key::Enter));
+        let mut accept = false;
+        let mut cancel = false;
+        let mut fields = Vec::new();
+        let response = egui::Modal::new(egui::Id::new(("transform-pattern", edit.piece, edit.revision, edit.epoch))).show(ctx, |ui| {
+            ui.set_width(440.);
+            ui.heading("Transform pattern");
+            ui.label("Rotate counterclockwise around the original U/V pivot, then translate.");
+            ui.small("Arranged 3D surface and world warp stay fixed. Placement rotation values may change; rest mesh and simulation rebuild.");
+            let [translation_u, translation_v] = &mut edit.translation;
+            let [pivot_u, pivot_v] = &mut edit.pivot;
+            for (index, (label, value)) in [
+                ("Translation U (m)", translation_u),
+                ("Translation V (m)", translation_v),
+                ("Angle (radians)", &mut edit.angle),
+                ("Pivot U (m)", pivot_u),
+                ("Pivot V (m)", pivot_v),
+            ].into_iter().enumerate() {
+                ui.horizontal(|ui| {
+                    let label = ui.label(label);
+                    let old_bits = value.to_bits();
+                    let raw = edit.invalid_text[index].clone();
+                    let mut widget = numeric_value(ui, value).speed(0.001);
+                    if let Some(text) = raw.clone() { widget = widget.custom_formatter(move |_, _| text.clone()); }
+                    let response = ui.add(widget).labelled_by(label.id);
+                    let text = ctx.data_mut(|data| data.get_temp::<String>(response.id));
+                    edit.invalid_text[index] = match text {
+                        Some(text) if text.trim().parse::<f64>().ok().is_none_or(|value| !value.is_finite()) => Some(text),
+                        Some(_) => None,
+                        None if value.to_bits() != old_bits => None,
+                        None => raw,
+                    };
+                    fields.push(response.id);
+                });
+            }
+            ui.small("Default pivot: analytic bounds center. Enter another pivot above to use it.");
+            if let Some(id) = numeric_focus(ctx).filter(|id| fields.contains(id)) {
+                edit.field_focus = Some(id);
+            }
+            if let Some(error) = &edit.error { ui.colored_label(Color32::LIGHT_RED, error); }
+            ui.horizontal(|ui| {
+                let apply = ui.button("Apply transform");
+                if apply.is_pointer_button_down_on() || apply.clicked() {
+                    finish_numeric_action(ctx, edit.field_focus, false);
+                }
+                accept = apply.clicked();
+                cancel = ui.button("Cancel transform").clicked();
+            });
+        });
+        if cancel || response.should_close() {
+            if let Some(id) = edit.field_focus {
+                ctx.memory_mut(|memory| memory.surrender_focus(id));
+            }
+            edit.close_without_commit(ctx);
+            return;
+        }
+        if accept || enter {
+            let text = edit
+                .field_focus
+                .and_then(|id| {
+                    ctx.data_mut(|data| data.get_temp::<String>(id))
+                        .map(|text| (id, text))
+                })
+                .or(prior_text);
+            let invalid_text = edit.invalid_text.iter().any(Option::is_some)
+                || text.as_ref().is_some_and(|(_, text)| {
+                    text.trim()
+                        .parse::<f64>()
+                        .ok()
+                        .is_none_or(|value| !value.is_finite())
+                });
+            if invalid_text {
+                self.message = "Enter numeric translation, angle and pivot values.".into();
+            } else if edit.is_identity()
+                && edit
+                    .pivot
+                    .iter()
+                    .all(|value| value.is_finite() && value.abs() <= weftforge_core::MAX_COORDINATE)
+            {
+                clear_numeric_fields(ctx, &fields);
+                edit.close_without_commit(ctx);
+                return;
+            } else if self.apply_transform(ctx, &edit) {
+                clear_numeric_fields(ctx, &fields);
+                return;
+            }
+            edit.error = Some(self.message.clone());
+            if let Some((id, text)) = text {
+                ctx.data_mut(|data| data.insert_temp(id, text));
+            }
+            finish_numeric_action(ctx, edit.field_focus, false);
+        }
+        edit.restore_inspector_text(ctx);
+        self.transform = Some(edit);
+    }
+    fn restore_cancelled_transform_input(&self, ctx: &egui::Context) {
+        let key = egui::Id::new("transform-cancel-input");
+        if let Some((closed, edit)) = ctx.data_mut(|data| {
+            let retained = data.get_temp::<(u64, TransformDraft)>(key);
+            data.remove::<(u64, TransformDraft)>(key);
+            retained
+        }) && edit.revision == self.editor.project.revision
+            && self.selected == Some(edit.piece)
+        {
+            let new_input = ctx.cumulative_frame_nr() > closed
+                && ctx.input(|input| {
+                    input.events.iter().any(|event| {
+                        matches!(
+                            event,
+                            egui::Event::Key { pressed: true, .. }
+                                | egui::Event::PointerButton { pressed: true, .. }
+                                | egui::Event::AccessKitActionRequest(_)
+                        )
+                    })
+                });
+            if !new_input && ctx.cumulative_frame_nr() <= closed + 3 {
+                // A closing modal blocks background focus for a pass, then DragValue gains focus again.
+                edit.restore_inspector_text(ctx);
+                finish_numeric_action(ctx, edit.focus, false);
+                if ctx.cumulative_frame_nr() < closed + 3 {
+                    ctx.data_mut(|data| data.insert_temp(key, (closed, edit)));
+                }
+            }
+        }
+    }
     fn rectangle_window(&mut self, ctx: &egui::Context) {
         let Some(mut rectangle) = self.rectangle.take() else {
             return;
@@ -2250,7 +2709,7 @@ impl Studio {
                     Command::Transaction(commands)
                 };
                 if self.apply_command(command) {
-                    self.select(self.editor.project.pieces.last().map(|piece| piece.id));
+                    self.select(ctx, self.editor.project.pieces.last().map(|piece| piece.id));
                     return;
                 }
                 rectangle.error = Some(self.message.clone());
@@ -2261,6 +2720,17 @@ impl Studio {
         self.rectangle = Some(rectangle);
     }
     fn patterns(&mut self, ui: &mut egui::Ui) {
+        self.discard_stale_transform();
+        let gesture_paused = self.search
+            || egui::Popup::is_any_open(ui.ctx())
+            || ui
+                .ctx()
+                .data_mut(|data| {
+                    data.get_temp::<(u64, bool, Option<egui::Id>)>(egui::Id::new(
+                        "new-empty-request",
+                    ))
+                })
+                .is_some_and(|(frame, _, _)| frame == ui.ctx().cumulative_frame_nr());
         pane_heading(ui, "2D Pattern").on_hover_text("Editable construction in metres. Alt / Option bypasses snap; scroll zooms; middle drag pans.");
         let (response, painter) = ui.allocate_painter(ui.available_size(), Sense::click_and_drag());
         self.pattern_canvas = Some(response.id);
@@ -2291,15 +2761,53 @@ impl Studio {
                 );
             }
         }
-        let mut doc = self.editor.project.clone();
+        let pointer = response
+            .interact_pointer_pos()
+            .or_else(|| ui.input(|i| i.pointer.hover_pos()));
+        let owned_transform = self
+            .transform_gesture
+            .as_ref()
+            .and_then(|gesture| gesture.pointer_owner)
+            .and_then(|id| ui.ctx().read_response(id))
+            .is_some_and(|owner| {
+                owner.is_pointer_button_down_on()
+                    || owner.drag_stopped_by(egui::PointerButton::Primary)
+                    || owner.clicked_by(egui::PointerButton::Primary)
+            });
+        let released_transform = owned_transform
+            && ui.input(|input| input.pointer.button_released(egui::PointerButton::Primary));
+        if let Some(gesture) = &mut self.transform_gesture
+            && gesture.pointer_owner.is_some()
+            && (!owned_transform || (gesture_paused && released_transform))
+        {
+            // An ended capture must never rearm from a later press on this widget.
+            gesture.pointer_owner = None;
+            self.message =
+                "Transform drag interrupted; use Transform pattern… to finish or Escape to cancel."
+                    .into();
+        }
+        if !gesture_paused
+            && owned_transform
+            && let Some(position) =
+                pointer.map(|pointer| self.to_pattern(pointer, r, PositionSnap::Off))
+            && let Some(gesture) = &mut self.transform_gesture
+            && ui.input(|input| {
+                input.pointer.primary_down()
+                    || input.pointer.button_released(egui::PointerButton::Primary)
+            })
+        {
+            gesture.update(position);
+        }
+        let mut doc = self
+            .transform_gesture
+            .as_ref()
+            .and_then(|gesture| gesture.preview().ok())
+            .unwrap_or_else(|| self.editor.project.clone());
         if let (Some(id), Some(position)) = (self.drag_point, self.preview)
             && let Some(point) = doc.points.iter_mut().find(|p| p.id == id)
         {
             point.position = position;
         }
-        let pointer = response
-            .interact_pointer_pos()
-            .or_else(|| ui.input(|i| i.pointer.hover_pos()));
         let snap = if ui.input(|input| input.modifiers.alt) {
             PositionSnap::Off
         } else {
@@ -2414,25 +2922,26 @@ impl Studio {
             .as_ref()
             .filter(|mesh| mesh.doc_revision == self.editor.project.revision)
         {
+            let guide_project = if self.transform_gesture.is_some() {
+                &doc
+            } else {
+                &self.editor.project
+            };
             for geometry in &mesh.sewing_groups {
                 for portion in &geometry.portions {
                     for (interval, color) in [
                         (&portion.a, Color32::from_rgb(100, 200, 255)),
                         (&portion.b, Color32::from_rgb(235, 145, 240)),
                     ] {
-                        self.paint_sewing_interval(&painter, interval, r, color);
+                        self.paint_sewing_interval(guide_project, &painter, interval, r, color);
                     }
                     for fraction in [0., 1.] {
                         let endpoint = |interval: &CurveInterval| {
-                            self.editor
-                                .project
+                            guide_project
                                 .curve(interval.curve)
                                 .and_then(|curve| {
                                     curve
-                                        .evaluate(
-                                            &self.editor.project,
-                                            interval.parameter(fraction),
-                                        )
+                                        .evaluate(guide_project, interval.parameter(fraction))
                                         .ok()
                                 })
                                 .map(|point| self.to_screen(point, r))
@@ -2453,7 +2962,7 @@ impl Studio {
                 ("B", &self.sewing_draft.b, Color32::from_rgb(235, 145, 240)),
             ] {
                 for (index, interval) in spans.iter().enumerate() {
-                    self.paint_sewing_interval(&painter, interval, r, color);
+                    self.paint_sewing_interval(&self.editor.project, &painter, interval, r, color);
                     if let Some(point) =
                         self.editor.project.curve(interval.curve).and_then(|curve| {
                             curve.evaluate(&self.editor.project, interval.t0).ok()
@@ -2492,6 +3001,144 @@ impl Studio {
                 egui::StrokeKind::Inside,
             );
         }
+        let mut handle_clicked = false;
+        let transform_controls = if self.tool == Tool::Transform {
+            self.selected.and_then(|piece| {
+                let source = self
+                    .transform_gesture
+                    .as_ref()
+                    .map_or(&self.editor.project, |gesture| &gesture.original);
+                let [min, max] = source.piece_bounds(piece).ok()?;
+                let pivot: [f64; 2] = std::array::from_fn(|axis| (min[axis] + max[axis]) * 0.5);
+                let (translation, angle) = self
+                    .transform_gesture
+                    .as_ref()
+                    .map_or(([0.; 2], 0.), |gesture| {
+                        (gesture.edit.translation, gesture.edit.angle)
+                    });
+                let origin = self.to_screen(
+                    std::array::from_fn(|axis| pivot[axis] + translation[axis]),
+                    r,
+                );
+                let radius = (((max[1] - min[1]) * 0.5) as f32 * self.scale + 28.).max(100.);
+                let handle = origin + Vec2::new(-angle.sin() as f32, -angle.cos() as f32) * radius;
+                painter.line_segment([origin, handle], Stroke::new(1., Color32::GOLD));
+                painter.circle_stroke(origin, 5., Stroke::new(1.5, Color32::GOLD));
+                painter.line_segment(
+                    [origin - Vec2::new(8., 0.), origin + Vec2::new(8., 0.)],
+                    Stroke::new(1., Color32::GOLD),
+                );
+                painter.line_segment(
+                    [origin - Vec2::new(0., 8.), origin + Vec2::new(0., 8.)],
+                    Stroke::new(1., Color32::GOLD),
+                );
+                painter.text(
+                    origin + Vec2::new(9., -9.),
+                    egui::Align2::LEFT_BOTTOM,
+                    "Pivot",
+                    egui::FontId::proportional(11.),
+                    Color32::GOLD,
+                );
+                let pivot_response = ui.interact(
+                    Rect::from_center_size(origin, Vec2::splat(16.)),
+                    response.id.with("transform-pivot"),
+                    Sense::hover(),
+                );
+                pivot_response.widget_info(|| {
+                    egui::WidgetInfo::labeled(
+                        egui::WidgetType::Label,
+                        ui.is_enabled(),
+                        format!("Transform pivot U {} m, V {} m", pivot[0], pivot[1]),
+                    )
+                });
+                let handle_rect = Rect::from_center_size(handle, Vec2::splat(24.));
+                let handle_response = ui.interact(
+                    handle_rect,
+                    response
+                        .id
+                        .with(("rotation-handle", piece, self.editor.project.revision)),
+                    Sense::click_and_drag(),
+                );
+                handle_response.widget_info(|| {
+                    egui::WidgetInfo::labeled(
+                        egui::WidgetType::Button,
+                        ui.is_enabled(),
+                        "Rotate pattern around bounds-center pivot",
+                    )
+                });
+                painter.circle_filled(handle, 7., Color32::from_gray(37));
+                painter.circle_stroke(
+                    handle,
+                    7.,
+                    Stroke::new(
+                        if handle_response.hovered() || handle_response.has_focus() {
+                            2.5
+                        } else {
+                            1.5
+                        },
+                        Color32::GOLD,
+                    ),
+                );
+                handle_clicked = handle_response.clicked();
+                Some((handle_rect, handle_response.id))
+            })
+        } else {
+            None
+        };
+        if self.tool == Tool::Transform
+            && self.transform.is_none()
+            && self.transform_gesture.is_none()
+            && !self.search
+            && !egui::Popup::is_any_open(ui.ctx())
+            && ui.is_enabled()
+            && ui.rect_contains_pointer(r)
+            && ui.input(|input| {
+                input.pointer.primary_down()
+                    && input.pointer.button_pressed(egui::PointerButton::Primary)
+            })
+            && let Some(pointer) = pointer.filter(|pointer| r.contains(*pointer))
+        {
+            let rotation_handle = transform_controls.filter(|(handle, _)| handle.contains(pointer));
+            let rotating = rotation_handle.is_some();
+            let piece = if rotating {
+                self.selected
+            } else {
+                nearest.map(|(piece, _)| piece)
+            };
+            if let Some(piece) = piece
+                && self.select(ui.ctx(), Some(piece))
+                && let Some(edit) = self.transform_edit(ui.ctx(), piece)
+            {
+                finish_numeric_action(ui.ctx(), edit.focus, false);
+                self.transform_gesture = Some(TransformGesture {
+                    original: self.editor.project.clone(),
+                    pending: self
+                        .draft
+                        .as_ref()
+                        .map_or_else(Vec::new, |draft| draft.commands(&self.editor.project)),
+                    edit,
+                    start: self.to_pattern(pointer, r, PositionSnap::Off),
+                    snap,
+                    rotating,
+                    pointer_owner: Some(rotation_handle.map_or(response.id, |(_, id)| id)),
+                });
+            }
+        }
+        let mut transformed = false;
+        if !gesture_paused
+            && released_transform
+            && let Some(mut gesture) = self.transform_gesture.take()
+            && !gesture.edit.is_identity()
+        {
+            transformed = true;
+            if !self.apply_transform(ui.ctx(), &gesture.edit) {
+                gesture.edit.error = Some(self.message.clone());
+                self.transform = Some(gesture.edit);
+            }
+        }
+        if handle_clicked && !transformed && self.transform.is_none() {
+            self.open_transform(ui.ctx());
+        }
         if response.drag_started_by(egui::PointerButton::Primary)
             && let Some(p) = pointer
         {
@@ -2511,10 +3158,13 @@ impl Studio {
                     .map(|p| p.0);
             }
         }
-        if response.dragged_by(egui::PointerButton::Primary) && self.drag_point.is_some() {
+        if !gesture_paused
+            && response.dragged_by(egui::PointerButton::Primary)
+            && self.drag_point.is_some()
+        {
             self.preview = pointer.map(|p| self.to_pattern(p, r, self.drag_snap));
         }
-        if response.drag_stopped_by(egui::PointerButton::Primary) {
+        if !gesture_paused && response.drag_stopped_by(egui::PointerButton::Primary) {
             if let (Some(point), Some(position)) = (self.drag_point.take(), self.preview.take()) {
                 self.execute(Command::MovePoint { point, position });
             }
@@ -2526,12 +3176,17 @@ impl Studio {
                     width: (end[0] - start[0]).abs(),
                     height: (end[1] - start[1]).abs(),
                 });
-                self.select(self.editor.project.pieces.last().map(|p| p.id));
+                self.select(ui.ctx(), self.editor.project.pieces.last().map(|p| p.id));
             }
         }
         if response.clicked() {
             match self.tool {
-                Tool::Select => self.select_curve(nearest),
+                Tool::Select => self.select_curve(ui.ctx(), nearest),
+                Tool::Transform => {
+                    if let Some((piece, _)) = nearest {
+                        self.select(ui.ctx(), Some(piece));
+                    }
+                }
                 Tool::Polygon => {
                     if let Some(p) = pointer {
                         self.polygon.push(self.to_pattern(p, r, snap));
@@ -2600,18 +3255,19 @@ impl Studio {
     }
     fn paint_sewing_interval(
         &self,
+        project: &Project,
         painter: &egui::Painter,
         interval: &CurveInterval,
         rect: Rect,
         color: Color32,
     ) {
-        let Some(curve) = self.editor.project.curve(interval.curve) else {
+        let Some(curve) = project.curve(interval.curve) else {
             return;
         };
         let points: Vec<_> = (0..=24)
             .filter_map(|index| {
                 curve
-                    .evaluate(&self.editor.project, interval.parameter(index as f64 / 24.))
+                    .evaluate(project, interval.parameter(index as f64 / 24.))
                     .ok()
             })
             .map(|point| self.to_screen(point, rect))
@@ -2710,6 +3366,7 @@ impl Studio {
     fn garment(&mut self, ui: &mut egui::Ui) {
         pane_heading(ui, "3D Garment").on_hover_text("Y up · metres. Drag to orbit; scroll to zoom; click a triangle to select its pattern piece.");
         let (response, painter) = ui.allocate_painter(ui.available_size(), Sense::click_and_drag());
+        self.garment_canvas = Some(response.id);
         let r = response.rect;
         painter.rect_filled(r, 0., Color32::from_gray(37));
         if response.dragged() {
@@ -2798,7 +3455,7 @@ impl Studio {
                 }
             }
             if picked.is_some() {
-                self.select(picked);
+                self.select(ui.ctx(), picked);
             }
         }
         painter.text(
@@ -2842,9 +3499,22 @@ impl eframe::App for Studio {
         let ctx = ui.ctx().clone();
         self.poll();
         self.poll_autosave();
-        let authoring_modal =
-            self.rectangle.is_some() || self.sewing_edit.is_some() || self.pattern_import.is_some();
+        self.discard_stale_transform();
+        let authoring_modal = self.rectangle.is_some()
+            || self.transform.is_some()
+            || self.sewing_edit.is_some()
+            || self.pattern_import.is_some();
         let global_shortcuts = !authoring_modal && !egui::Popup::is_any_open(&ctx);
+        if global_shortcuts
+            && self.transform_gesture.is_some()
+            && ctx.input_mut(|input| input.consume_key(egui::Modifiers::NONE, egui::Key::Escape))
+        {
+            let focused = self
+                .transform_gesture
+                .take()
+                .and_then(|gesture| gesture.edit.focus);
+            finish_numeric_action(&ctx, focused, false);
+        }
         if global_shortcuts
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::S))
         {
@@ -3034,6 +3704,7 @@ impl eframe::App for Studio {
                 .show(&ctx, |ui| {
                     ui.text_edit_singleline(&mut self.query);
                     for label in [
+                        "New Empty",
                         "Save project",
                         "Open project",
                         "Import SVG…",
@@ -3046,6 +3717,7 @@ impl eframe::App for Studio {
                         "Redo",
                         "Reset simulation",
                         "Select",
+                        "Transform pattern",
                         "Polygon",
                         "Rectangle",
                         "Add ellipse",
@@ -3056,6 +3728,7 @@ impl eframe::App for Studio {
                             continue;
                         }
                         let clicked = match label {
+                            "New Empty" => self.new_empty_button(ui),
                             "Import SVG…" => self.import_button(ui, PatternFormat::Svg, label),
                             "Import DXF…" => self.import_button(ui, PatternFormat::Dxf, label),
                             "Export OBJ" => self.export_button(ui, ExportFormat::Obj, label),
@@ -3065,6 +3738,7 @@ impl eframe::App for Studio {
                         };
                         if clicked {
                             match label {
+                                "New Empty" => {}
                                 "Save project" => self.save(false),
                                 "Open project" => self.choose_open(),
                                 "Import SVG…" | "Import DXF…" => {}
@@ -3079,6 +3753,7 @@ impl eframe::App for Studio {
                                     self.reset_simulation();
                                 }
                                 "Select" => self.set_tool(Tool::Select),
+                                "Transform pattern" => self.set_tool(Tool::Transform),
                                 "Polygon" => self.set_tool(Tool::Polygon),
                                 "Rectangle" => self.set_tool(Tool::Rectangle),
                                 "Add ellipse" => {
@@ -3100,6 +3775,7 @@ impl eframe::App for Studio {
             ctx.input_mut(|input| input.events = events);
         }
         self.rectangle_window(&ctx);
+        self.transform_window(&ctx);
         self.sewing_group_window(&ctx);
         self.pattern_import_window(&ctx);
         if let Some((_, Some(format), focused)) = ctx
@@ -3123,6 +3799,17 @@ impl eframe::App for Studio {
         {
             self.choose_import(&ctx, format, focused);
         }
+        if let Some((_, true, focused)) = ctx
+            .data_mut(|data| {
+                data.remove_temp::<(u64, bool, Option<egui::Id>)>(egui::Id::new(
+                    "new-empty-request",
+                ))
+            })
+            .filter(|(frame, _, _)| *frame == ctx.cumulative_frame_nr())
+        {
+            self.new_empty(&ctx, focused);
+        }
+        self.restore_cancelled_transform_input(&ctx);
     }
 }
 fn pane_heading(ui: &mut egui::Ui, title: &str) -> egui::Response {
@@ -3183,6 +3870,16 @@ fn tool_button(ui: &mut egui::Ui, tool: Tool, selected: bool) -> egui::Response 
                 ],
                 stroke,
             ));
+        }
+        Tool::Transform => {
+            painter.rect_stroke(
+                Rect::from_center_size(c, Vec2::splat(10.)),
+                0.,
+                stroke,
+                egui::StrokeKind::Inside,
+            );
+            painter.arrow(point(-9., 0.), Vec2::new(18., 0.), stroke);
+            painter.arrow(point(0., 9.), Vec2::new(0., -18.), stroke);
         }
         Tool::Polygon => {
             let points = [
@@ -4964,7 +5661,7 @@ mod tests {
             .unwrap();
         let piece = app.editor.project.pieces[0].id;
         let curve = app.editor.project.pieces[0].boundary[2];
-        app.select_curve(Some((piece, curve)));
+        app.select_curve(&ctx, Some((piece, curve)));
         let output = frame(&ctx, &mut app, vec![]);
         let cubic = output
             .platform_output
@@ -5888,7 +6585,7 @@ mod tests {
                 })
                 .unwrap();
             let selected = app.editor.project.pieces[0].id;
-            app.select(Some(selected));
+            app.select(&ctx, Some(selected));
             let before = app.editor.project.clone();
             let mut draft = InspectorDraft::new(&before, app.selected, app.selected_curve);
             draft.resolution = 0.09;
@@ -6113,7 +6810,7 @@ mod tests {
             vec![action(&output, "Curve A", Action::Click)],
         );
         let curve = app.editor.project.piece(first).unwrap().boundary[2];
-        app.select_curve(Some((first, curve)));
+        app.select_curve(&ctx, Some((first, curve)));
         let output = frame(&ctx, &mut app, vec![]);
         frame(
             &ctx,
@@ -6137,10 +6834,10 @@ mod tests {
         let before_selection = app.editor.project.clone();
         let width_field = numeric_field(&output, "Size m", 0);
         frame(&ctx, &mut app, vec![request(width_field, Action::Focus)]);
-        app.select(Some(first));
+        app.select(&ctx, Some(first));
         let output = frame(&ctx, &mut app, vec![]);
         assert_eq!(numeric_field(&output, "Size m", 0), width_field);
-        app.select_curve(Some((first, curve)));
+        app.select_curve(&ctx, Some((first, curve)));
         let output = frame(&ctx, &mut app, vec![]);
         assert_eq!(numeric_field(&output, "Size m", 0), width_field);
         assert_eq!(app.editor.project, before_selection);
@@ -6178,7 +6875,7 @@ mod tests {
                 .controls
                 .is_none()
         );
-        app.select_curve(Some((second, other_curve)));
+        app.select_curve(&ctx, Some((second, other_curve)));
         let output = frame(&ctx, &mut app, vec![]);
         frame(
             &ctx,
@@ -6196,14 +6893,14 @@ mod tests {
         frame(&ctx, &mut app, vec![request(mesh_field, Action::Focus)]);
         frame(&ctx, &mut app, vec![]);
         replace(&ctx, &mut app, "0.085", false);
-        app.select(Some(second));
+        app.select(&ctx, Some(second));
         let output = frame(&ctx, &mut app, vec![]);
         assert_eq!(numeric_field(&output, "Mesh edge length m", 0), mesh_field);
         assert_eq!(
             focused(&output),
             (mesh_field, Some("0.085".into()), Some(0.085))
         );
-        app.select(Some(first));
+        app.select(&ctx, Some(first));
         let output = frame(&ctx, &mut app, vec![]);
         assert_eq!(numeric_field(&output, "Mesh edge length m", 0), mesh_field);
         assert_eq!(app.editor.project.resolution, 0.085);
@@ -6212,7 +6909,7 @@ mod tests {
             other_controls
         );
 
-        app.select_curve(Some((first, curve)));
+        app.select_curve(&ctx, Some((first, curve)));
         let output = frame(&ctx, &mut app, vec![]);
         let split_field = numeric_field(&output, "Split parameter t", 0);
         frame(&ctx, &mut app, vec![request(split_field, Action::Focus)]);
@@ -6645,6 +7342,7 @@ mod tests {
 
     #[test]
     fn selected_curve_controls_and_split_use_fresh_drafts_atomic_history_and_invalidation() {
+        let ctx = egui::Context::default();
         let mut app = Studio::empty();
         app.editor
             .execute(Command::AddRectangle {
@@ -6656,9 +7354,8 @@ mod tests {
             .unwrap();
         let piece = app.editor.project.pieces[0].id;
         let curve = app.editor.project.pieces[0].boundary[2];
-        app.select_curve(Some((piece, curve)));
+        app.select_curve(&ctx, Some((piece, curve)));
         let before = app.editor.project.clone();
-        let ctx = egui::Context::default();
         let _ = ctx.run_ui(egui::RawInput::default(), |ui| app.inspector(ui));
         assert_eq!(app.editor.project, before);
         let mut draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
@@ -6705,10 +7402,10 @@ mod tests {
         assert!(app.commit_draft());
         assert_eq!(app.editor.project.curve(curve).unwrap().controls, None);
         let next = app.editor.project.pieces[0].boundary[0];
-        app.select_curve(Some((piece, next)));
+        app.select_curve(&ctx, Some((piece, next)));
         let draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
         assert_eq!(draft.curve.unwrap().id, next);
-        app.select(Some(piece));
+        app.select(&ctx, Some(piece));
         assert_eq!(app.selected_curve, None);
     }
 
@@ -6754,6 +7451,7 @@ mod tests {
                 })],
             );
         }
+        let ctx = egui::Context::default();
         let mut app = Studio::empty();
         app.editor
             .execute(Command::AddRectangle {
@@ -6775,7 +7473,7 @@ mod tests {
             .execute(Command::SplitCurve { curve, t: 0.4 })
             .unwrap();
         let right = app.editor.project.curves.last().unwrap().id;
-        app.select_curve(Some((piece, curve)));
+        app.select_curve(&ctx, Some((piece, curve)));
         let before = app.editor.project.clone();
         let mut draft = InspectorDraft::new(&before, app.selected, app.selected_curve);
         draft.resolution = 0.09;
@@ -6792,7 +7490,6 @@ mod tests {
             receiver,
         });
         app.pending_batch = Some(SimulationBatch::drape());
-        let ctx = egui::Context::default();
         ctx.enable_accesskit();
         click_join(&ctx, &mut app);
         assert_eq!(app.editor.project.revision, before.revision + 1);
@@ -6809,7 +7506,7 @@ mod tests {
         app.rebuild();
         assert_eq!(app.editor.project.curves, before.curves);
         assert_eq!(app.editor.project.resolution, before.resolution);
-        app.select_curve(Some((piece, right)));
+        app.select_curve(&ctx, Some((piece, right)));
         let before_invalid = app.editor.project.clone();
         let mut draft = InspectorDraft::new(&before_invalid, app.selected, app.selected_curve);
         draft.resolution = 0.08;
@@ -6937,7 +7634,7 @@ mod tests {
                     })
                     .unwrap();
                 assert!(app.editor.undo());
-                app.select_curve(Some((piece, selected)));
+                app.select_curve(&ctx, Some((piece, selected)));
                 let before = app.editor.project.clone();
                 let original_x = before.curve(selected).unwrap().controls.unwrap()[0][0];
                 let draft = InspectorDraft::new(&before, app.selected, app.selected_curve);
@@ -7302,7 +7999,7 @@ mod tests {
                     .unwrap();
                 assert!(app.editor.undo());
                 assert!(app.editor.can_redo());
-                app.select_curve(Some((piece, a)));
+                app.select_curve(&ctx, Some((piece, a)));
                 let before = app.editor.project.clone();
                 frame(&ctx, &mut app, vec![]); // Settle the measured footer before caching screen positions.
                 let output = frame(&ctx, &mut app, vec![]);
@@ -8087,7 +8784,7 @@ mod tests {
         let piece = app.editor.project.pieces[0].id;
         let curve = app.editor.project.pieces[0].boundary[2];
         app.execute(Command::SetGrain { piece, angle: 0.37 });
-        app.select_curve(Some((piece, curve)));
+        app.select_curve(&egui::Context::default(), Some((piece, curve)));
         let mut draft = InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
         draft.curve.as_mut().unwrap().controls = Some([[0.3, 0.8], [0.1, 0.8]]);
         app.draft = Some(draft);
@@ -8634,7 +9331,7 @@ mod tests {
             ctx.enable_accesskit();
             let (mut app, curves) = fixture(true);
             let piece = app.editor.project.pieces[0].id;
-            app.select(Some(piece));
+            app.select(&ctx, Some(piece));
             let before = app.editor.project.clone();
             let (output, focused) = stage_inspector(&ctx, &mut app);
             let output = click(&ctx, &mut app, &output, "Edit group");
@@ -8737,7 +9434,7 @@ mod tests {
                 })
                 .unwrap();
             assert!(app.editor.undo());
-            app.select(Some(piece));
+            app.select(&ctx, Some(piece));
             let before = app.editor.project.clone();
             let (output, focused) = stage_inspector(&ctx, &mut app);
             let output = click(&ctx, &mut app, &output, "M:N sewing");
@@ -8941,7 +9638,7 @@ mod tests {
                 ctx.enable_accesskit();
                 let (mut app, curves) = fixture(true);
                 let piece = app.editor.project.pieces[0].id;
-                app.select(Some(piece));
+                app.select(&ctx, Some(piece));
                 let before = app.editor.project.clone();
                 let (output, inspector_focus) = stage_inspector(&ctx, &mut app);
                 let output = pointer_click_label(&ctx, &mut app, &output, "Edit group");
@@ -9060,7 +9757,7 @@ mod tests {
             ctx.enable_accesskit();
             let (mut app, curves) = fixture(false);
             let piece = app.editor.project.pieces[0].id;
-            app.select_curve(Some((piece, curves[0])));
+            app.select_curve(&ctx, Some((piece, curves[0])));
             app.intervals = [[0.2, 0.8], [0.1, 0.9]];
             let before = app.editor.project.clone();
             let (output, _) = stage_inspector(&ctx, &mut app);
@@ -9127,6 +9824,576 @@ mod tests {
 }
 
 #[cfg(test)]
+mod new_empty_tests {
+    use super::*;
+    use egui::accesskit::{Action, ActionData, ActionRequest, NodeId, TreeId};
+
+    fn frame(ctx: &egui::Context, app: &mut Studio, events: Vec<egui::Event>) -> egui::FullOutput {
+        ctx.run_ui(
+            egui::RawInput {
+                screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1640., 1800.))),
+                events,
+                ..Default::default()
+            },
+            |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+        )
+    }
+
+    fn action(id: NodeId, action: Action, data: Option<ActionData>) -> egui::Event {
+        egui::Event::AccessKitActionRequest(ActionRequest {
+            action,
+            target_tree: TreeId::ROOT,
+            target_node: id,
+            data,
+        })
+    }
+
+    fn button(output: &egui::FullOutput, label: &str) -> (NodeId, Pos2) {
+        let (id, node) = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| {
+                node.label() == Some(label)
+                    && node.supports_action(Action::Click)
+                    && !node.is_disabled()
+            })
+            .unwrap_or_else(|| panic!("missing accessible {label:?}"));
+        let bounds = node.bounds().unwrap();
+        (
+            *id,
+            Pos2::new(
+                ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                ((bounds.y0 + bounds.y1) * 0.5) as f32,
+            ),
+        )
+    }
+
+    fn route(ctx: &egui::Context, app: &mut Studio, search: bool) -> (NodeId, Pos2) {
+        if search {
+            app.search = true;
+            app.query = "New Empty".into();
+        }
+        frame(ctx, app, vec![]);
+        let mut output = frame(ctx, app, vec![]);
+        if !search {
+            frame(
+                ctx,
+                app,
+                vec![action(button(&output, "File").0, Action::Click, None)],
+            );
+            output = frame(ctx, app, vec![]);
+        }
+        button(&output, "New Empty")
+    }
+
+    fn fixture() -> Studio {
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Saved original panel".into(),
+                origin: [0., 0.],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+        let piece = app.editor.project.pieces[0].id;
+        app.editor
+            .execute(Command::SetGrain { piece, angle: 0.37 })
+            .unwrap();
+        app.editor
+            .execute(Command::SetResolution { metres: 0.08 })
+            .unwrap();
+        assert!(app.editor.undo());
+        app.selected = Some(piece);
+        let mesh = Arc::new(app.editor.project.mesh().unwrap());
+        app.cloth = Some(Arc::new(
+            weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap(),
+        ));
+        app.mesh = Some(mesh);
+        app.position_snap = PositionSnap::Mm1;
+        app.center = [0.3, 0.4];
+        app.scale = 233.;
+        app.yaw = 0.7;
+        app.pitch = -0.2;
+        app.camera_scale = 350.;
+        app.wireframe = true;
+        app
+    }
+
+    fn clean_route(search: bool) {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture();
+        let directory = std::env::temp_dir().join(format!(
+            "weftforge-new-empty-{}-{}-{search}",
+            std::process::id(),
+            SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        fs::create_dir(&directory).unwrap();
+        let path = directory.join("saved.weftforge");
+        app.editor.project.save(&path).unwrap();
+        app.editor.project.save(&path).unwrap();
+        let autosave = append_suffix(&path, ".autosave");
+        fs::write(&autosave, b"existing autosave retained").unwrap();
+        app.path = Some(path.clone());
+        let original = app.editor.project.clone();
+        let primary = fs::read(&path).unwrap();
+        let recovery = fs::read(weftforge_core::recovery_path(&path)).unwrap();
+        let (sender, receiver) = mpsc::channel();
+        let cancel = Arc::new(AtomicBool::new(false));
+        app.job = Some(Job {
+            id: 91,
+            revision: 0,
+            kind: JobKind::Mesh,
+            batch: None,
+            completed_steps: Arc::new(AtomicU64::new(0)),
+            cancel: cancel.clone(),
+            receiver,
+        });
+        app.last_job = Some(FinishedJob {
+            id: 90,
+            revision: original.revision,
+            kind: JobKind::Mesh,
+            progress: None,
+            status: JobStatus::Accepted,
+            outcome: Ok(()),
+            cancel_requested: false,
+            obsolete: false,
+        });
+        app.playing = true;
+        app.pending_batch = Some(SimulationBatch::drape());
+        let route = route(&ctx, &mut app, search);
+        frame(&ctx, &mut app, vec![action(route.0, Action::Click, None)]);
+        for _ in 0..3 {
+            frame(&ctx, &mut app, vec![]);
+        }
+        assert_eq!(app.editor.project, Project::default());
+        assert!(!app.editor.can_undo() && !app.editor.can_redo());
+        assert!(app.path.is_none() && app.selected.is_none() && app.selected_curve.is_none());
+        assert!(
+            app.mesh.is_none()
+                && app.cloth.is_none()
+                && app.job.is_none()
+                && app.last_job.is_none()
+        );
+        assert!(!app.dirty && !app.needs_mesh && !app.playing && app.pending_batch.is_none());
+        assert_eq!(app.last_stage, "Rest arrangement");
+        assert!(cancel.load(Ordering::Relaxed));
+        assert!(
+            sender
+                .send(Ok(JobOutput::Mesh(Arc::new(Mesh::default()))))
+                .is_err()
+        );
+        app.poll();
+        assert!(app.mesh.is_none());
+        assert_eq!(app.position_snap, PositionSnap::Mm1);
+        assert_eq!(app.center, [0.3, 0.4]);
+        assert_eq!(
+            (
+                app.scale,
+                app.yaw,
+                app.pitch,
+                app.camera_scale,
+                app.wireframe
+            ),
+            (233., 0.7, -0.2, 350., true)
+        );
+        assert_eq!(fs::read(&path).unwrap(), primary);
+        assert_eq!(
+            fs::read(weftforge_core::recovery_path(&path)).unwrap(),
+            recovery
+        );
+        assert_eq!(fs::read(&autosave).unwrap(), b"existing autosave retained");
+        app.open(path);
+        assert_eq!(app.editor.project, original);
+        assert_eq!(fs::read(&autosave).unwrap(), b"existing autosave retained");
+        fs::remove_dir_all(directory).unwrap();
+    }
+
+    #[test]
+    fn new_empty_file_route_replaces_clean_document_and_retains_files_and_preferences() {
+        clean_route(false);
+    }
+
+    #[test]
+    fn new_empty_search_route_replaces_clean_document_and_retains_files_and_preferences() {
+        clean_route(true);
+    }
+
+    fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+        egui::Event::Key {
+            key,
+            physical_key: None,
+            pressed: true,
+            repeat: false,
+            modifiers,
+        }
+    }
+
+    fn focus_property(ctx: &egui::Context, app: &mut Studio, text: &str) -> egui::Id {
+        frame(ctx, app, vec![]);
+        let output = frame(ctx, app, vec![]);
+        let id = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| node.numeric_value() == Some(0.37))
+            .unwrap()
+            .0;
+        frame(ctx, app, vec![action(id, Action::Focus, None)]);
+        frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text(text.into()),
+                key(egui::Key::ArrowLeft, egui::Modifiers::NONE),
+            ],
+        );
+        numeric_focus(ctx).unwrap()
+    }
+
+    #[test]
+    fn new_empty_refusals_keep_numeric_text_caret_drafts_redo_and_accepted_display_across_frames() {
+        for search in [false, true] {
+            for pointer in [false, true] {
+                for text in ["0.47", "1e-", "NaN"] {
+                    let ctx = egui::Context::default();
+                    ctx.enable_accesskit();
+                    let mut app = fixture();
+                    let focused = focus_property(&ctx, &mut app, text);
+                    let raw = ctx.data_mut(|data| data.get_temp::<String>(focused));
+                    let caret = egui::TextEdit::load_state(&ctx, focused)
+                        .unwrap()
+                        .cursor
+                        .char_range();
+                    let before = format!("{:?}", app.editor);
+                    let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+                    if text == "1e-" {
+                        assert!(pending.is_empty(), "{text}: {pending:?}");
+                    }
+                    let pending = format!("{pending:?}");
+                    let mesh = app.mesh.clone().unwrap();
+                    let cloth = app.cloth.clone().unwrap();
+                    let selection = (app.selected, app.selected_curve);
+                    let (id, pos) = route(&ctx, &mut app, search);
+                    if pointer {
+                        for pressed in [true, false] {
+                            frame(
+                                &ctx,
+                                &mut app,
+                                vec![
+                                    egui::Event::PointerMoved(pos),
+                                    egui::Event::PointerButton {
+                                        pos,
+                                        button: egui::PointerButton::Primary,
+                                        pressed,
+                                        modifiers: egui::Modifiers::NONE,
+                                    },
+                                ],
+                            );
+                            assert_eq!(
+                                format!("{:?}", app.editor),
+                                before,
+                                "press/release {search} {text}"
+                            );
+                        }
+                    } else {
+                        frame(&ctx, &mut app, vec![action(id, Action::Click, None)]);
+                    }
+                    assert!(app.message.contains("Apply or cancel"), "{}", app.message);
+                    for _ in 0..4 {
+                        frame(&ctx, &mut app, vec![]);
+                        assert_eq!(
+                            format!("{:?}", app.editor),
+                            before,
+                            "later frame {search} {pointer} {text}"
+                        );
+                        assert_eq!(
+                            format!(
+                                "{:?}",
+                                app.draft.as_ref().unwrap().commands(&app.editor.project)
+                            ),
+                            pending
+                        );
+                        assert_eq!((app.selected, app.selected_curve), selection);
+                        assert_eq!(numeric_focus(&ctx), Some(focused));
+                        assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), raw);
+                        assert_eq!(
+                            egui::TextEdit::load_state(&ctx, focused)
+                                .unwrap()
+                                .cursor
+                                .char_range(),
+                            caret
+                        );
+                        assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+                        assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+                        assert!(!app.dirty && !app.needs_mesh && app.job.is_none());
+                        assert!(app.editor.can_redo());
+                    }
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn new_empty_decision_observes_current_inspector_pass_without_committing_it() {
+        for search in [false, true] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let route = route(&ctx, &mut app, search);
+            let output = frame(&ctx, &mut app, vec![]);
+            let field = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(_, node)| node.numeric_value() == Some(0.37))
+                .unwrap()
+                .0;
+            let before = format!("{:?}", app.editor);
+            frame(
+                &ctx,
+                &mut app,
+                vec![
+                    action(
+                        field,
+                        Action::SetValue,
+                        Some(ActionData::NumericValue(0.47)),
+                    ),
+                    action(route.0, Action::Click, None),
+                ],
+            );
+            assert!(app.message.contains("Apply or cancel"));
+            for _ in 0..3 {
+                frame(&ctx, &mut app, vec![]);
+                assert_eq!(format!("{:?}", app.editor), before);
+                assert_eq!(app.draft.as_ref().unwrap().grain_angle, Some(0.47));
+                assert!(app.editor.can_redo());
+            }
+        }
+    }
+
+    #[test]
+    fn new_empty_dirty_refusal_preserves_primary_recovery_autosave_and_redo() {
+        for search in [false, true] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let directory = std::env::temp_dir().join(format!(
+                "weftforge-new-empty-dirty-{}-{}-{search}",
+                std::process::id(),
+                SystemTime::now()
+                    .duration_since(UNIX_EPOCH)
+                    .unwrap()
+                    .as_nanos()
+            ));
+            fs::create_dir(&directory).unwrap();
+            let path = directory.join("saved.weftforge");
+            app.editor.project.save(&path).unwrap();
+            app.editor.project.save(&path).unwrap();
+            let primary = fs::read(&path).unwrap();
+            let recovery = fs::read(weftforge_core::recovery_path(&path)).unwrap();
+            let autosave = append_suffix(&path, ".autosave");
+            fs::write(&autosave, b"older autosave").unwrap();
+            app.path = Some(path.clone());
+            app.dirty = true;
+            let before = format!("{:?}", app.editor);
+            let route = route(&ctx, &mut app, search);
+            frame(&ctx, &mut app, vec![action(route.0, Action::Click, None)]);
+            for _ in 0..3 {
+                frame(&ctx, &mut app, vec![]);
+            }
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert!(app.message.contains("Save current edits"));
+            assert_eq!(app.path.as_ref(), Some(&path));
+            assert!(app.dirty && app.editor.can_redo());
+            assert_eq!(fs::read(&path).unwrap(), primary);
+            assert_eq!(
+                fs::read(weftforge_core::recovery_path(&path)).unwrap(),
+                recovery
+            );
+            assert_eq!(fs::read(&autosave).unwrap(), b"older autosave");
+            fs::remove_dir_all(directory).unwrap();
+        }
+    }
+
+    #[test]
+    fn new_empty_refuses_unfinished_construction_gestures_without_resetting_them() {
+        for search in [false, true] {
+            for gesture in 0..7 {
+                let ctx = egui::Context::default();
+                ctx.enable_accesskit();
+                let mut app = fixture();
+                let curve = app.editor.project.pieces[0].boundary[0];
+                match gesture {
+                    0 => app.polygon = vec![[0.1, 0.2]],
+                    1 => app.seam_start = Some(curve),
+                    2 => app.sewing_draft.a = vec![CurveInterval::full(curve)],
+                    3 => app.sewing_draft.b = vec![CurveInterval::reversed(curve)],
+                    4 => app.drag_point = Some(app.editor.project.points[0].id),
+                    5 => app.drag_start = Some([0.1, 0.2]),
+                    _ => app.preview = Some([0.1, 0.2]),
+                }
+                let before = format!("{:?}", app.editor);
+                let state = (
+                    app.polygon.clone(),
+                    app.seam_start,
+                    app.sewing_draft.a.clone(),
+                    app.sewing_draft.b.clone(),
+                    app.drag_point,
+                    app.drag_start,
+                    app.preview,
+                );
+                let route = route(&ctx, &mut app, search);
+                frame(&ctx, &mut app, vec![action(route.0, Action::Click, None)]);
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, vec![]);
+                }
+                assert!(
+                    app.message.contains("Finish or cancel"),
+                    "gesture {gesture}: {}",
+                    app.message
+                );
+                assert_eq!(format!("{:?}", app.editor), before);
+                assert_eq!(
+                    (
+                        app.polygon.clone(),
+                        app.seam_start,
+                        app.sewing_draft.a.clone(),
+                        app.sewing_draft.b.clone(),
+                        app.drag_point,
+                        app.drag_start,
+                        app.preview
+                    ),
+                    state
+                );
+                assert!(app.editor.can_redo());
+            }
+        }
+    }
+
+    #[test]
+    fn new_empty_authoring_modal_keeps_background_accesskit_action_shielded() {
+        for search in [false, true] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let route = route(&ctx, &mut app, search);
+            let before = format!("{:?}", app.editor);
+            app.rectangle = Some(RectangleDraft {
+                origin: [0., 0.],
+                dimensions_mm: ["1e-".into(), "100".into()],
+                error: None,
+            });
+            frame(&ctx, &mut app, vec![action(route.0, Action::Click, None)]);
+            for _ in 0..3 {
+                frame(&ctx, &mut app, vec![]);
+            }
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!(
+                app.rectangle.as_ref().unwrap().dimensions_mm,
+                ["1e-", "100"]
+            );
+            assert!(app.editor.can_redo());
+        }
+    }
+
+    #[test]
+    fn new_empty_waits_for_existing_autosave_worker_without_dropping_it() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture();
+        let (sender, receiver) = mpsc::channel();
+        app.autosave_job = Some(AutosaveJob { receiver });
+        let before = format!("{:?}", app.editor);
+        let target = route(&ctx, &mut app, false);
+        frame(&ctx, &mut app, vec![action(target.0, Action::Click, None)]);
+        assert!(app.message.contains("Wait for the current autosave"));
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert!(app.autosave_job.is_some());
+        sender.send(Ok(())).unwrap();
+        frame(&ctx, &mut app, vec![]);
+        let target = route(&ctx, &mut app, false);
+        frame(&ctx, &mut app, vec![action(target.0, Action::Click, None)]);
+        assert_eq!(app.editor.project, Project::default());
+    }
+
+    #[test]
+    fn new_empty_refusal_keeps_transform_gesture_across_menu_search_and_pointer_release() {
+        for search in [false, true] {
+            for pointer in [false, true] {
+                let ctx = egui::Context::default();
+                ctx.enable_accesskit();
+                let mut app = fixture();
+                app.tool = Tool::Transform;
+                let mut edit = app.transform_edit(&ctx, app.selected.unwrap()).unwrap();
+                edit.translation = [0.1, 0.2];
+                app.transform_gesture = Some(TransformGesture {
+                    original: app.editor.project.clone(),
+                    pending: vec![],
+                    edit,
+                    start: [0., 0.],
+                    snap: PositionSnap::Mm1,
+                    rotating: false,
+                    pointer_owner: None,
+                });
+                let before = format!("{:?}", app.editor);
+                let (id, pos) = route(&ctx, &mut app, search);
+                assert!(
+                    app.transform_gesture.is_some(),
+                    "opening route search={search}"
+                );
+                if pointer {
+                    for pressed in [true, false] {
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![
+                                egui::Event::PointerMoved(pos),
+                                egui::Event::PointerButton {
+                                    pos,
+                                    button: egui::PointerButton::Primary,
+                                    pressed,
+                                    modifiers: egui::Modifiers::NONE,
+                                },
+                            ],
+                        );
+                        assert_eq!(format!("{:?}", app.editor), before);
+                    }
+                } else {
+                    frame(&ctx, &mut app, vec![action(id, Action::Click, None)]);
+                }
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, vec![]);
+                }
+                assert!(app.message.contains("Finish or cancel"));
+                assert_eq!(format!("{:?}", app.editor), before);
+                let gesture = app.transform_gesture.as_ref().unwrap();
+                assert_eq!(gesture.edit.translation, [0.1, 0.2]);
+                assert_eq!(gesture.original, app.editor.project);
+                assert!(app.editor.can_redo());
+            }
+        }
+    }
+}
+
+#[cfg(test)]
 mod pattern_import_tests {
     use super::*;
     use egui::accesskit::{Action, ActionData, ActionRequest, NodeId, TreeId};
@@ -9186,6 +10453,7 @@ mod pattern_import_tests {
             })
             .0
     }
+
     fn click(ctx: &egui::Context, app: &mut Studio, label: &str) -> egui::FullOutput {
         frame(ctx, app, vec![]);
         let mut output = frame(ctx, app, vec![]);
@@ -9977,6 +11245,1567 @@ mod pattern_framing_tests {
                     .nodes
                     .iter()
                     .any(|(_, node)| node.label() == Some("Frame all") && node.is_disabled())
+            );
+        }
+    }
+}
+
+#[cfg(test)]
+mod pattern_transform_tests {
+    use super::*;
+    use egui::accesskit::{Action, ActionData, ActionRequest, NodeId, TreeId};
+
+    fn frame(ctx: &egui::Context, app: &mut Studio, events: Vec<egui::Event>) -> egui::FullOutput {
+        app.needs_mesh = false;
+        ctx.run_ui(
+            egui::RawInput {
+                screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(3600., 1800.))),
+                events,
+                ..Default::default()
+            },
+            |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+        )
+    }
+    fn action(id: NodeId, action: Action, data: Option<ActionData>) -> egui::Event {
+        egui::Event::AccessKitActionRequest(ActionRequest {
+            action,
+            target_tree: TreeId::ROOT,
+            target_node: id,
+            data,
+        })
+    }
+    fn button(output: &egui::FullOutput, label: &str) -> NodeId {
+        output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| {
+                node.label() == Some(label)
+                    && node.supports_action(Action::Click)
+                    && !node.is_disabled()
+            })
+            .unwrap_or_else(|| panic!("missing accessible {label:?}"))
+            .0
+    }
+
+    fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+        egui::Event::Key {
+            key,
+            physical_key: None,
+            pressed: true,
+            repeat: false,
+            modifiers,
+        }
+    }
+    fn pointer(pos: Pos2, pressed: bool, alt: bool) -> egui::Event {
+        egui::Event::PointerButton {
+            pos,
+            button: egui::PointerButton::Primary,
+            pressed,
+            modifiers: egui::Modifiers {
+                alt,
+                ..Default::default()
+            },
+        }
+    }
+    fn pointer_frame(
+        ctx: &egui::Context,
+        app: &mut Studio,
+        pos: Pos2,
+        pressed: Option<bool>,
+        alt: bool,
+    ) -> egui::FullOutput {
+        app.needs_mesh = false;
+        let mut events = vec![egui::Event::PointerMoved(pos)];
+        if let Some(pressed) = pressed {
+            events.push(pointer(pos, pressed, alt));
+        }
+        ctx.run_ui(
+            egui::RawInput {
+                screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(3600., 1800.))),
+                modifiers: egui::Modifiers {
+                    alt,
+                    ..Default::default()
+                },
+                events,
+                ..Default::default()
+            },
+            |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+        )
+    }
+    fn field(output: &egui::FullOutput, label: &str) -> NodeId {
+        let nodes = &output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes;
+        let labels: Vec<_> = nodes
+            .iter()
+            .filter(|(_, node)| node.label() == Some(label) || node.value() == Some(label))
+            .map(|(id, _)| *id)
+            .collect();
+        nodes
+            .iter()
+            .find(|(_, node)| {
+                node.numeric_value().is_some()
+                    && node.labelled_by().iter().any(|id| labels.contains(id))
+            })
+            .unwrap_or_else(|| panic!("missing numeric field {label:?}"))
+            .0
+    }
+
+    fn set_field(ctx: &egui::Context, app: &mut Studio, label: &str, value: f64) {
+        let output = frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![action(
+                field(&output, label),
+                Action::SetValue,
+                Some(ActionData::NumericValue(value)),
+            )],
+        );
+    }
+    fn fixture() -> Studio {
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.editor
+            .execute(Command::AddPolygon {
+                name: "Asymmetric cubic panel".into(),
+                vertices: vec![[0., 0.], [0.75, 0.75], [-0.25, 1.25], [-0.5, 0.25]],
+            })
+            .unwrap();
+        let piece = app.editor.project.pieces[0].id;
+        let curve = app.editor.project.pieces[0].boundary[0];
+        for command in [
+            Command::SetCurveControls {
+                curve,
+                controls: Some([[0.25, 0.], [0.5, 0.25]]),
+            },
+            Command::SetPlacement {
+                piece,
+                placement: Placement {
+                    translation: [0.2, 0.3, -0.1],
+                    rotation: [0.31, -0.47, 0.21],
+                },
+            },
+            Command::SetGrain { piece, angle: 0.37 },
+            Command::AddRectangle {
+                name: "Separate panel".into(),
+                origin: [0.85, 0.25],
+                width: 0.2,
+                height: 0.4,
+            },
+            Command::SetResolution { metres: 0.2 },
+            Command::SetResolution { metres: 0.22 },
+        ] {
+            app.editor.execute(command).unwrap();
+        }
+        assert!(app.editor.undo());
+        app.selected = Some(piece);
+        app.selected_curve = Some(curve);
+        app.tool = Tool::Transform;
+        app.center = [0.125, 0.625];
+        app.scale = 1000.;
+        app
+    }
+    fn canvas_rect(ctx: &egui::Context, app: &Studio) -> Rect {
+        ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect
+    }
+    fn garment_pick_position(output: &egui::FullOutput, app: &Studio, piece: Id) -> Pos2 {
+        let rect = output
+            .shapes
+            .iter()
+            .filter_map(|clipped| match &clipped.shape {
+                egui::Shape::Rect(shape) if shape.fill == Color32::from_gray(37) => {
+                    Some(shape.rect)
+                }
+                _ => None,
+            })
+            .next_back()
+            .unwrap();
+        let mesh = app.mesh.as_ref().unwrap();
+        let triangles: Vec<_> = mesh
+            .triangles
+            .iter()
+            .map(|triangle| {
+                (
+                    mesh.piece_ids[triangle[0]],
+                    triangle.map(|index| app.project3(mesh.positions[index], rect).0),
+                )
+            })
+            .collect();
+        triangles
+            .iter()
+            .filter(|(id, _)| *id == piece)
+            .find_map(|(_, triangle)| {
+                let position = Pos2::new(
+                    triangle.iter().map(|point| point.x).sum::<f32>() / 3.,
+                    triangle.iter().map(|point| point.y).sum::<f32>() / 3.,
+                );
+                (rect.contains(position)
+                    && triangles.iter().all(|(id, triangle)| {
+                        *id == piece || !point_in_triangle(position, *triangle)
+                    }))
+                .then_some(position)
+            })
+            .expect("second piece has an isolated rendered triangle to pick")
+    }
+    fn same_construction(actual: &Project, expected: &Project) {
+        let mut actual = actual.clone();
+        actual.revision = expected.revision;
+        assert_eq!(&actual, expected);
+    }
+    fn assert_near(actual: [f64; 2], expected: [f64; 2], tolerance: f64) {
+        for axis in 0..2 {
+            assert!(
+                (actual[axis] - expected[axis]).abs() <= tolerance,
+                "{actual:?} != {expected:?}"
+            );
+        }
+    }
+    fn focus_property(ctx: &egui::Context, app: &mut Studio, text: &str) -> egui::Id {
+        frame(ctx, app, vec![]);
+        let output = frame(ctx, app, vec![]);
+        let id = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| node.numeric_value() == Some(0.37))
+            .unwrap()
+            .0;
+        frame(ctx, app, vec![action(id, Action::Focus, None)]);
+        frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text(text.into()),
+                key(egui::Key::ArrowLeft, egui::Modifiers::NONE),
+            ],
+        );
+        numeric_focus(ctx).unwrap_or_else(|| {
+            panic!(
+                "property focus absent for {text:?}: {:?}",
+                ctx.memory(|memory| memory.focused())
+            )
+        })
+    }
+    #[test]
+    fn transform_search_and_tool_names_are_real_authoring_routes() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.search = true;
+        app.query = "Transform".into();
+        let before = format!("{:?}", app.editor);
+        frame(&ctx, &mut app, vec![]);
+        let output = frame(&ctx, &mut app, vec![]);
+        let route = button(&output, "Transform pattern");
+        frame(&ctx, &mut app, vec![action(route, Action::Click, None)]);
+        assert_eq!(app.tool.label(), "Transform pattern");
+        assert!(!app.search);
+        assert_eq!(format!("{:?}", app.editor), before);
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(
+                button(&output, "Select / edit"),
+                Action::Click,
+                None,
+            )],
+        );
+        assert!(app.tool == Tool::Select);
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(
+                button(&output, "Transform pattern"),
+                Action::Click,
+                None,
+            )],
+        );
+        assert!(app.tool == Tool::Transform);
+        assert_eq!(format!("{:?}", app.editor), before);
+    }
+
+    #[test]
+    fn transform_numeric_apply_and_return_use_explicit_units_pivot_and_one_transaction() {
+        for enter in [false, true] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let before = app.editor.project.clone();
+            let mut draft = InspectorDraft::new(&before, app.selected, app.selected_curve);
+            draft.resolution = 0.18;
+            app.draft = Some(draft);
+            frame(&ctx, &mut app, vec![]);
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(
+                    button(
+                        &output,
+                        if enter {
+                            "Rotate pattern around bounds-center pivot"
+                        } else {
+                            "Transform pattern…"
+                        },
+                    ),
+                    Action::Click,
+                    None,
+                )],
+            );
+            let edit = app.transform.as_ref().unwrap();
+            assert_eq!(edit.pivot, [0.125, 0.625]);
+            assert_eq!(app.editor.project, before);
+            for (label, value) in [
+                ("Translation U (m)", 0.5),
+                ("Translation V (m)", -0.25),
+                ("Angle (radians)", std::f64::consts::FRAC_PI_2),
+                ("Pivot U (m)", 0.25),
+                ("Pivot V (m)", 0.5),
+            ] {
+                set_field(&ctx, &mut app, label, value);
+            }
+            let output = frame(&ctx, &mut app, vec![]);
+            let event = if enter {
+                key(egui::Key::Enter, egui::Modifiers::NONE)
+            } else {
+                action(button(&output, "Apply transform"), Action::Click, None)
+            };
+            frame(&ctx, &mut app, vec![event]);
+            assert!(app.transform.is_none());
+            assert_eq!(app.editor.project.revision, before.revision + 1);
+            assert_eq!(app.editor.project.resolution, 0.18);
+            let selected = before.piece(app.selected.unwrap()).unwrap();
+            for curve in &selected.boundary {
+                let original = before.curve(*curve).unwrap();
+                let transformed = app.editor.project.curve(*curve).unwrap();
+                for t in [0., 0.125, 0.25, 0.5, 0.75, 0.875, 1.] {
+                    let p = original.evaluate(&before, t).unwrap();
+                    let q = transformed.evaluate(&app.editor.project, t).unwrap();
+                    assert_near(q, [1.25 - p[1], p[0]], 1e-10);
+                    let old_world = selected.placement.transform(p);
+                    let new_world = app
+                        .editor
+                        .project
+                        .piece(selected.id)
+                        .unwrap()
+                        .placement
+                        .transform(q);
+                    for axis in 0..3 {
+                        assert!((old_world[axis] - new_world[axis]).abs() <= 1e-10);
+                    }
+                }
+            }
+            let after = app.editor.project.clone();
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+            );
+            frame(&ctx, &mut app, vec![]);
+            assert_eq!(
+                app.editor.project, after,
+                "modal blur must not replay old text"
+            );
+            app.history(&ctx, false);
+            same_construction(&app.editor.project, &before);
+            app.history(&ctx, true);
+            same_construction(&app.editor.project, &after);
+            let unchanged = format!("{:?}", app.editor);
+            let mut draft =
+                InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
+            draft.resolution = 0.19;
+            let pending = draft.commands(&app.editor.project);
+            app.draft = Some(draft);
+            app.open_transform(&ctx);
+            let pivot_u = app.transform.as_ref().unwrap().pivot[0];
+            frame(&ctx, &mut app, vec![]);
+            set_field(&ctx, &mut app, "Pivot U (m)", 1001.);
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(
+                    button(&output, "Apply transform"),
+                    Action::Click,
+                    None,
+                )],
+            );
+            assert!(
+                app.transform.as_ref().unwrap().error.is_some(),
+                "identity still validates its explicit pivot"
+            );
+            assert_eq!(format!("{:?}", app.editor), unchanged);
+            set_field(&ctx, &mut app, "Pivot U (m)", pivot_u);
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(
+                    button(&output, "Apply transform"),
+                    Action::Click,
+                    None,
+                )],
+            );
+            assert!(app.transform.is_none());
+            assert_eq!(
+                format!("{:?}", app.editor),
+                unchanged,
+                "identity sends no command"
+            );
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                pending
+            );
+        }
+    }
+
+    #[test]
+    fn transform_pointer_translation_and_rotation_capture_original_geometry_and_snap_once() {
+        for (snap, bypass, expected) in [
+            (PositionSnap::Mm10, false, [0.12, -0.23]),
+            (PositionSnap::Mm10, true, [0.1234, -0.2344]),
+            (PositionSnap::Off, false, [0.1234, -0.2344]),
+        ] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            app.position_snap = snap;
+            let mut draft =
+                InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
+            draft.resolution = 0.18;
+            app.draft = Some(draft);
+            frame(&ctx, &mut app, vec![]);
+            frame(&ctx, &mut app, vec![]);
+            let before = app.editor.project.clone();
+            let rect = canvas_rect(&ctx, &app);
+            let start = app.to_screen([-0.375, 0.75], rect);
+            pointer_frame(&ctx, &mut app, start, Some(true), bypass);
+            assert!(app.transform_gesture.is_some());
+            for displacement in [Vec2::new(70., 40.), Vec2::new(123.4, 234.4)] {
+                app.position_snap = PositionSnap::Mm1;
+                pointer_frame(&ctx, &mut app, start + displacement, None, !bypass);
+                assert_eq!(app.editor.project, before, "preview is disposable");
+                assert!(app.editor.can_redo());
+            }
+            let preview = app.transform_gesture.as_ref().unwrap().preview().unwrap();
+            let first = before.points[0].position;
+            assert_near(
+                preview.points[0].position,
+                [first[0] + expected[0], first[1] + expected[1]],
+                2e-6,
+            );
+            pointer_frame(
+                &ctx,
+                &mut app,
+                start + Vec2::new(123.4, 234.4),
+                Some(false),
+                !bypass,
+            );
+            assert_eq!(app.editor.project.revision, before.revision + 1);
+            assert_eq!(app.editor.project.resolution, 0.18);
+            for (old, new) in before.points.iter().zip(&app.editor.project.points) {
+                let owned = before
+                    .piece(app.selected.unwrap())
+                    .unwrap()
+                    .boundary
+                    .iter()
+                    .any(|curve| {
+                        let curve = before.curve(*curve).unwrap();
+                        curve.start == old.id || curve.end == old.id
+                    });
+                if owned {
+                    assert_near(
+                        new.position,
+                        [old.position[0] + expected[0], old.position[1] + expected[1]],
+                        2e-6,
+                    );
+                } else {
+                    assert_eq!(new, old);
+                }
+            }
+            let after = app.editor.project.clone();
+            app.history(&ctx, false);
+            same_construction(&app.editor.project, &before);
+            app.history(&ctx, true);
+            same_construction(&app.editor.project, &after);
+        }
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture();
+        frame(&ctx, &mut app, vec![]);
+        let output = frame(&ctx, &mut app, vec![]);
+        let handle = button(&output, "Rotate pattern around bounds-center pivot");
+        let bounds = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(id, _)| *id == handle)
+            .unwrap()
+            .1
+            .bounds()
+            .unwrap();
+        let start = Pos2::new(
+            ((bounds.x0 + bounds.x1) * 0.5) as f32,
+            ((bounds.y0 + bounds.y1) * 0.5) as f32,
+        );
+        let pivot = app.to_screen([0.125, 0.625], canvas_rect(&ctx, &app));
+        let radius = pivot.distance(start);
+        assert!(radius >= 100.);
+        let before = app.editor.project.clone();
+        pointer_frame(&ctx, &mut app, start, Some(true), false);
+        let end = pivot + Vec2::new(-radius, 0.);
+        pointer_frame(
+            &ctx,
+            &mut app,
+            pivot + Vec2::new(-radius * 0.5, -radius * 0.8660254),
+            None,
+            true,
+        );
+        pointer_frame(&ctx, &mut app, end, None, true);
+        assert_eq!(app.editor.project, before);
+        assert!(
+            (app.transform_gesture.as_ref().unwrap().edit.angle - std::f64::consts::FRAC_PI_2)
+                .abs()
+                <= 2e-6
+        );
+        pointer_frame(&ctx, &mut app, end, Some(false), true);
+        assert_eq!(app.editor.project.revision, before.revision + 1);
+        for (old, new) in before.points[..4]
+            .iter()
+            .zip(&app.editor.project.points[..4])
+        {
+            assert_near(
+                new.position,
+                [0.75 - old.position[1], old.position[0] + 0.5],
+                2e-6,
+            );
+        }
+        let after = app.editor.project.clone();
+        app.history(&ctx, false);
+        same_construction(&app.editor.project, &before);
+        app.history(&ctx, true);
+        same_construction(&app.editor.project, &after);
+    }
+
+    #[test]
+    fn transform_paused_release_cannot_rearm_from_unrelated_controls_or_a_new_canvas_press() {
+        let position = |output: &egui::FullOutput, id| {
+            let bounds = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(node, _)| *node == id)
+                .unwrap()
+                .1
+                .bounds()
+                .unwrap();
+            Pos2::new(
+                ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                ((bounds.y0 + bounds.y1) * 0.5) as f32,
+            )
+        };
+        for rotating in [false, true] {
+            for search in [false, true] {
+                for input in [false, true] {
+                    let ctx = egui::Context::default();
+                    ctx.enable_accesskit();
+                    let mut app = fixture();
+                    frame(&ctx, &mut app, vec![]);
+                    let output = frame(&ctx, &mut app, vec![]);
+                    let start = if rotating {
+                        position(
+                            &output,
+                            button(&output, "Rotate pattern around bounds-center pivot"),
+                        )
+                    } else {
+                        app.to_screen([-0.375, 0.75], canvas_rect(&ctx, &app))
+                    };
+                    let before = format!("{:?}", app.editor);
+                    pointer_frame(&ctx, &mut app, start, Some(true), false);
+                    pointer_frame(&ctx, &mut app, start + Vec2::new(50., 35.), None, false);
+                    let pending = app.transform_gesture.as_ref().unwrap().edit.command();
+                    let preview = app.transform_gesture.as_ref().unwrap().preview().unwrap();
+                    assert!(!app.transform_gesture.as_ref().unwrap().edit.is_identity());
+                    if search {
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![key(egui::Key::K, egui::Modifiers::COMMAND)],
+                        );
+                    } else {
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![action(button(&output, "File"), Action::Click, None)],
+                        );
+                    }
+                    let output = frame(&ctx, &mut app, vec![]);
+                    let new = button(&output, "New Empty");
+                    pointer_frame(&ctx, &mut app, position(&output, new), Some(false), false);
+                    frame(&ctx, &mut app, vec![action(new, Action::Click, None)]);
+                    assert!(app.message.contains("Finish or cancel"));
+                    assert_eq!(format!("{:?}", app.editor), before);
+                    assert_eq!(
+                        app.transform_gesture.as_ref().unwrap().edit.command(),
+                        pending
+                    );
+                    let output = frame(&ctx, &mut app, vec![]);
+                    let target = if input {
+                        output
+                            .platform_output
+                            .accesskit_update
+                            .as_ref()
+                            .unwrap()
+                            .nodes
+                            .iter()
+                            .find(|(_, node)| node.numeric_value() == Some(0.37))
+                            .unwrap()
+                            .0
+                    } else {
+                        button(&output, "5 mm")
+                    };
+                    let target = position(&output, target);
+                    pointer_frame(&ctx, &mut app, target, Some(true), false);
+                    pointer_frame(&ctx, &mut app, target, Some(false), false);
+                    for _ in 0..3 {
+                        frame(&ctx, &mut app, vec![]);
+                    }
+                    assert_eq!(
+                        format!("{:?}", app.editor),
+                        before,
+                        "rotating={rotating} search={search} input={input}"
+                    );
+                    assert_eq!(
+                        app.transform_gesture.as_ref().unwrap().edit.command(),
+                        pending
+                    );
+                    assert!(app.editor.can_redo());
+
+                    // The ended capture cannot restart just because this widget owns a later press.
+                    pointer_frame(&ctx, &mut app, start, Some(true), false);
+                    pointer_frame(&ctx, &mut app, start + Vec2::new(10., 5.), None, false);
+                    pointer_frame(
+                        &ctx,
+                        &mut app,
+                        start + Vec2::new(10., 5.),
+                        Some(false),
+                        false,
+                    );
+                    assert_eq!(format!("{:?}", app.editor), before);
+                    assert_eq!(
+                        app.transform_gesture.as_ref().unwrap().edit.command(),
+                        pending
+                    );
+                    if input {
+                        let output = frame(&ctx, &mut app, vec![]);
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![action(
+                                button(&output, "Transform pattern…"),
+                                Action::Click,
+                                None,
+                            )],
+                        );
+                        assert_eq!(app.transform.as_ref().unwrap().command(), pending);
+                        let output = frame(&ctx, &mut app, vec![]);
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![action(
+                                button(&output, "Apply transform"),
+                                Action::Click,
+                                None,
+                            )],
+                        );
+                        assert!(app.transform.is_none() && app.transform_gesture.is_none());
+                        assert_eq!(app.editor.project, preview);
+                    } else {
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+                        );
+                        for _ in 0..3 {
+                            frame(&ctx, &mut app, vec![]);
+                        }
+                        assert!(app.transform_gesture.is_none());
+                        assert_eq!(format!("{:?}", app.editor), before);
+                        assert!(app.editor.can_redo());
+                    }
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn transform_review_edges_same_pass_boundary_click_leaves_no_gesture_or_history_change() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture();
+        frame(&ctx, &mut app, vec![]);
+        frame(&ctx, &mut app, vec![]);
+        let before = format!("{:?}", app.editor);
+        let start = app.to_screen([-0.375, 0.75], canvas_rect(&ctx, &app));
+        frame(
+            &ctx,
+            &mut app,
+            vec![
+                egui::Event::PointerMoved(start),
+                pointer(start, true, false),
+                pointer(start, false, false),
+            ],
+        );
+        for _ in 0..4 {
+            assert!(
+                app.transform_gesture.is_none(),
+                "a same-pass selection click is not an unfinished drag"
+            );
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert!(app.editor.can_redo());
+            frame(&ctx, &mut app, vec![]);
+        }
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(button(&output, "File"), Action::Click, None)],
+        );
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(button(&output, "New Empty"), Action::Click, None)],
+        );
+        assert_eq!(app.editor.project, Project::default());
+        assert!(app.transform_gesture.is_none());
+    }
+
+    #[test]
+    fn transform_review_edges_adoption_captures_newer_property_text_caret_and_one_apply_transaction()
+     {
+        for (text, commit) in [("0.57", false), ("1e-", false), ("0.57", true)] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let property = focus_property(&ctx, &mut app, "0.47");
+            let before_project = app.editor.project.clone();
+            let before = format!("{:?}", app.editor);
+            let start = app.to_screen([-0.375, 0.75], canvas_rect(&ctx, &app));
+            pointer_frame(&ctx, &mut app, start, Some(true), false);
+            pointer_frame(&ctx, &mut app, start + Vec2::new(50., 35.), None, false);
+            let retained = app.transform_gesture.as_ref().unwrap().edit.command();
+            let translation = app.transform_gesture.as_ref().unwrap().edit.translation;
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::K, egui::Modifiers::COMMAND)],
+            );
+            pointer_frame(
+                &ctx,
+                &mut app,
+                start + Vec2::new(50., 35.),
+                Some(false),
+                false,
+            );
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(button(&output, "New Empty"), Action::Click, None)],
+            );
+            assert!(
+                app.transform_gesture
+                    .as_ref()
+                    .unwrap()
+                    .pointer_owner
+                    .is_none()
+            );
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(property.accesskit_id(), Action::Focus, None)],
+            );
+            frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text(text.into()),
+                    key(egui::Key::ArrowLeft, egui::Modifiers::NONE),
+                ],
+            );
+            let raw = ctx.data_mut(|data| data.get_temp::<String>(property));
+            let caret = egui::TextEdit::load_state(&ctx, property)
+                .unwrap()
+                .cursor
+                .char_range();
+            assert_eq!(raw.as_deref(), Some(text));
+            let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(
+                    button(&output, "Transform pattern…"),
+                    Action::Click,
+                    None,
+                )],
+            );
+            assert_eq!(app.transform.as_ref().unwrap().command(), retained);
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(property)),
+                raw,
+                "opening must retain the current {text:?}, not its drag-start snapshot"
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, property)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            set_field(&ctx, &mut app, "Translation U (m)", 1000.);
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(
+                    button(&output, "Apply transform"),
+                    Action::Click,
+                    None,
+                )],
+            );
+            assert!(app.transform.as_ref().unwrap().error.is_some());
+            for _ in 0..3 {
+                frame(&ctx, &mut app, vec![]);
+                assert_eq!(format!("{:?}", app.editor), before);
+                assert_eq!(
+                    app.draft.as_ref().unwrap().commands(&app.editor.project),
+                    pending
+                );
+                assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(property)), raw);
+                assert_eq!(
+                    egui::TextEdit::load_state(&ctx, property)
+                        .unwrap()
+                        .cursor
+                        .char_range(),
+                    caret
+                );
+                assert!(app.editor.can_redo());
+            }
+            if commit {
+                set_field(&ctx, &mut app, "Translation U (m)", translation[0]);
+                let mut expected = app.editor.clone();
+                let mut commands = pending;
+                commands.push(retained);
+                expected.execute(Command::Transaction(commands)).unwrap();
+                let output = frame(&ctx, &mut app, vec![]);
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![action(
+                        button(&output, "Apply transform"),
+                        Action::Click,
+                        None,
+                    )],
+                );
+                assert_eq!(app.editor.project, expected.project);
+                assert_eq!(app.editor.project.revision, before_project.revision + 1);
+                assert_eq!(app.editor.project.pieces[0].grain_angle, 0.57);
+                app.history(&ctx, false);
+                same_construction(&app.editor.project, &before_project);
+            } else {
+                let output = frame(&ctx, &mut app, vec![]);
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![action(
+                        button(&output, "Cancel transform"),
+                        Action::Click,
+                        None,
+                    )],
+                );
+                for _ in 0..4 {
+                    frame(&ctx, &mut app, vec![]);
+                    assert!(app.transform.is_none() && app.transform_gesture.is_none());
+                    assert_eq!(format!("{:?}", app.editor), before);
+                    assert_eq!(
+                        app.draft.as_ref().unwrap().commands(&app.editor.project),
+                        pending
+                    );
+                    assert_eq!(numeric_focus(&ctx), Some(property));
+                    assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(property)), raw);
+                    assert_eq!(
+                        egui::TextEdit::load_state(&ctx, property)
+                            .unwrap()
+                            .cursor
+                            .char_range(),
+                        caret
+                    );
+                    assert!(app.editor.can_redo());
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn transform_cross_piece_refusal_retains_staged_or_invalid_raw_text_caret_and_redo() {
+        for text in ["0.47", "1e-", "NaN"] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let focused = focus_property(&ctx, &mut app, text);
+            let raw = ctx.data_mut(|data| data.get_temp::<String>(focused));
+            let caret = egui::TextEdit::load_state(&ctx, focused)
+                .unwrap()
+                .cursor
+                .char_range();
+            let before = format!("{:?}", app.editor);
+            let selection = (app.selected, app.selected_curve);
+            let pending = format!(
+                "{:?}",
+                app.draft.as_ref().unwrap().commands(&app.editor.project)
+            );
+            let target = app.to_screen([0.85, 0.45], canvas_rect(&ctx, &app));
+            pointer_frame(&ctx, &mut app, target, Some(true), false);
+            pointer_frame(&ctx, &mut app, target, Some(false), false);
+            frame(&ctx, &mut app, vec![]);
+            assert_eq!((app.selected, app.selected_curve), selection);
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!(
+                format!(
+                    "{:?}",
+                    app.draft.as_ref().unwrap().commands(&app.editor.project)
+                ),
+                pending
+            );
+            assert_eq!(numeric_focus(&ctx), Some(focused));
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), raw);
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, focused)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            assert!(app.editor.can_redo());
+            assert!(app.transform_gesture.is_none());
+            assert!(app.message.contains("Apply or cancel"));
+        }
+        let ctx = egui::Context::default();
+        let mut app = fixture();
+        frame(&ctx, &mut app, vec![]);
+        frame(&ctx, &mut app, vec![]);
+        let second = app.editor.project.pieces[1].id;
+        let before = app.editor.project.clone();
+        let target = app.to_screen([0.85, 0.45], canvas_rect(&ctx, &app));
+        pointer_frame(&ctx, &mut app, target, Some(true), false);
+        pointer_frame(&ctx, &mut app, target, Some(false), false);
+        assert_eq!(app.selected, Some(second));
+        assert_eq!(app.editor.project, before);
+        assert!(app.editor.can_redo());
+    }
+
+    #[test]
+    fn transform_scene_row_selection_preserves_staged_and_raw_edits_through_real_ui_actions() {
+        for pointer in [false, true] {
+            for text in ["0.47", "1e-", "NaN"] {
+                let ctx = egui::Context::default();
+                ctx.enable_accesskit();
+                let mut app = fixture();
+                let focused = focus_property(&ctx, &mut app, text);
+                let raw = ctx.data_mut(|data| data.get_temp::<String>(focused));
+                let caret = egui::TextEdit::load_state(&ctx, focused)
+                    .unwrap()
+                    .cursor
+                    .char_range();
+                let before = format!("{:?}", app.editor);
+                let selected = (app.selected, app.selected_curve);
+                let pending = format!(
+                    "{:?}",
+                    app.draft.as_ref().unwrap().commands(&app.editor.project)
+                );
+                let output = frame(&ctx, &mut app, vec![]);
+                let row = button(&output, "Separate panel");
+                if pointer {
+                    let bounds = output
+                        .platform_output
+                        .accesskit_update
+                        .as_ref()
+                        .unwrap()
+                        .nodes
+                        .iter()
+                        .find(|(id, _)| *id == row)
+                        .unwrap()
+                        .1
+                        .bounds()
+                        .unwrap();
+                    let position = Pos2::new(
+                        ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                        ((bounds.y0 + bounds.y1) * 0.5) as f32,
+                    );
+                    pointer_frame(&ctx, &mut app, position, Some(true), false);
+                    assert_eq!(
+                        format!("{:?}", app.editor),
+                        before,
+                        "Scene row press must retain {text:?}"
+                    );
+                    pointer_frame(&ctx, &mut app, position, Some(false), false);
+                } else {
+                    frame(&ctx, &mut app, vec![action(row, Action::Click, None)]);
+                }
+                frame(&ctx, &mut app, vec![]);
+                frame(&ctx, &mut app, vec![]);
+                assert_eq!(
+                    format!("{:?}", app.editor),
+                    before,
+                    "Scene selection pointer={pointer}, text={text:?}"
+                );
+                assert_eq!((app.selected, app.selected_curve), selected);
+                assert_eq!(
+                    format!(
+                        "{:?}",
+                        app.draft.as_ref().unwrap().commands(&app.editor.project)
+                    ),
+                    pending
+                );
+                assert_eq!(numeric_focus(&ctx), Some(focused));
+                assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), raw);
+                assert_eq!(
+                    egui::TextEdit::load_state(&ctx, focused)
+                        .unwrap()
+                        .cursor
+                        .char_range(),
+                    caret
+                );
+                assert!(app.editor.can_redo());
+                assert!(app.message.contains("Apply or cancel"));
+                assert!(!app.dirty);
+            }
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let before = format!("{:?}", app.editor);
+            frame(&ctx, &mut app, vec![]);
+            let output = frame(&ctx, &mut app, vec![]);
+            let row = button(&output, "Separate panel");
+            frame(&ctx, &mut app, vec![action(row, Action::Click, None)]);
+            assert_eq!(app.selected, Some(app.editor.project.pieces[1].id));
+            assert_eq!(format!("{:?}", app.editor), before);
+        }
+    }
+
+    #[test]
+    fn transform_garment_pick_preserves_edits_before_press_blur_and_on_release() {
+        for text in ["0.47", "1e-", "NaN"] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let mesh = Arc::new(app.editor.project.mesh().unwrap());
+            app.mesh = Some(mesh.clone());
+            let focused = focus_property(&ctx, &mut app, text);
+            let raw = ctx.data_mut(|data| data.get_temp::<String>(focused));
+            let caret = egui::TextEdit::load_state(&ctx, focused)
+                .unwrap()
+                .cursor
+                .char_range();
+            let before = format!("{:?}", app.editor);
+            let selected = (app.selected, app.selected_curve);
+            let pending = format!(
+                "{:?}",
+                app.draft.as_ref().unwrap().commands(&app.editor.project)
+            );
+            let output = frame(&ctx, &mut app, vec![]);
+            let position = garment_pick_position(&output, &app, app.editor.project.pieces[1].id);
+            pointer_frame(&ctx, &mut app, position, Some(true), false);
+            assert_eq!(
+                format!("{:?}", app.editor),
+                before,
+                "3D press must retain {text:?}"
+            );
+            pointer_frame(&ctx, &mut app, position, Some(false), false);
+            frame(&ctx, &mut app, vec![]);
+            frame(&ctx, &mut app, vec![]);
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!((app.selected, app.selected_curve), selected);
+            assert_eq!(
+                format!(
+                    "{:?}",
+                    app.draft.as_ref().unwrap().commands(&app.editor.project)
+                ),
+                pending
+            );
+            assert_eq!(numeric_focus(&ctx), Some(focused));
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), raw);
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, focused)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert!(app.editor.can_redo());
+            assert!(!app.dirty);
+            assert!(app.message.contains("Apply or cancel"));
+        }
+        for tool in [Tool::Transform, Tool::Select] {
+            let ctx = egui::Context::default();
+            let mut app = fixture();
+            app.set_tool(tool);
+            app.mesh = Some(Arc::new(app.editor.project.mesh().unwrap()));
+            let before = format!("{:?}", app.editor);
+            frame(&ctx, &mut app, vec![]);
+            let output = frame(&ctx, &mut app, vec![]);
+            let second = app.editor.project.pieces[1].id;
+            let position = garment_pick_position(&output, &app, second);
+            pointer_frame(&ctx, &mut app, position, Some(true), false);
+            pointer_frame(&ctx, &mut app, position, Some(false), false);
+            assert_eq!(app.selected, Some(second));
+            assert_eq!(format!("{:?}", app.editor), before);
+        }
+    }
+
+    #[test]
+    fn transform_numeric_failure_retains_text_caret_drafts_history_and_accepted_output() {
+        for entered in ["1000", "1e-", "NaN"] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let property = focus_property(&ctx, &mut app, "0.47");
+            let property_text = ctx.data_mut(|data| data.get_temp::<String>(property));
+            let property_caret = egui::TextEdit::load_state(&ctx, property)
+                .unwrap()
+                .cursor
+                .char_range();
+            let before = format!("{:?}", app.editor);
+            let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+            let mesh = Arc::new(app.editor.project.mesh().unwrap());
+            let cloth = Arc::new(
+                weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap(),
+            );
+            app.mesh = Some(mesh.clone());
+            app.cloth = Some(cloth.clone());
+            let (_sender, receiver) = mpsc::channel();
+            let cancel = Arc::new(AtomicBool::new(false));
+            app.job = Some(Job {
+                id: 91,
+                revision: app.editor.project.revision,
+                kind: JobKind::Simulation,
+                batch: None,
+                completed_steps: Arc::new(AtomicU64::new(0)),
+                cancel: cancel.clone(),
+                receiver,
+            });
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(
+                    button(&output, "Transform pattern…"),
+                    Action::Click,
+                    None,
+                )],
+            );
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(
+                    field(&output, "Translation U (m)"),
+                    Action::Focus,
+                    None,
+                )],
+            );
+            frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text(entered.into()),
+                    key(egui::Key::ArrowLeft, egui::Modifiers::NONE),
+                ],
+            );
+            let focused = numeric_focus(&ctx).unwrap();
+            let raw = ctx.data_mut(|data| data.get_temp::<String>(focused));
+            let caret = egui::TextEdit::load_state(&ctx, focused)
+                .unwrap()
+                .cursor
+                .char_range();
+            let output = frame(&ctx, &mut app, vec![]);
+            let event = if entered == "1e-" {
+                key(egui::Key::Enter, egui::Modifiers::NONE)
+            } else {
+                action(button(&output, "Apply transform"), Action::Click, None)
+            };
+            frame(&ctx, &mut app, vec![event]);
+            frame(&ctx, &mut app, vec![]);
+            assert!(app.transform.as_ref().unwrap().error.is_some());
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                pending
+            );
+            assert_eq!(numeric_focus(&ctx), Some(focused));
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), raw);
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, focused)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(property)),
+                property_text
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, property)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                property_caret
+            );
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+            assert!(!cancel.load(Ordering::Relaxed));
+            assert_eq!(app.job.as_ref().unwrap().id, 91);
+            assert!(!app.dirty);
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+            );
+            let output = frame(&ctx, &mut app, vec![]);
+            assert_eq!(format!("{:?}", app.editor), before);
+            if entered != "1000" {
+                assert!(
+                    app.transform.as_ref().unwrap().invalid_text[0].as_deref() == Some(entered)
+                );
+            }
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(
+                    button(&output, "Cancel transform"),
+                    Action::Click,
+                    None,
+                )],
+            );
+            frame(&ctx, &mut app, vec![]);
+            frame(&ctx, &mut app, vec![]);
+            assert!(app.transform.is_none());
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                pending
+            );
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(property)),
+                property_text
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, property)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                property_caret
+            );
+            assert!(!app.dirty);
+            assert!(!cancel.load(Ordering::Relaxed));
+        }
+    }
+
+    #[test]
+    fn transform_modal_blocks_background_accesskit_pointer_and_shortcut_authoring() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture();
+        let property = focus_property(&ctx, &mut app, "0.47");
+        let output = frame(&ctx, &mut app, vec![]);
+        let background = ["Add rectangle", "Add ellipse", "Undo", "Select / edit"]
+            .map(|label| button(&output, label));
+        let numeric = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| node.numeric_value() == Some(0.47))
+            .unwrap()
+            .0;
+        let before = format!("{:?}", app.editor);
+        let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(
+                button(&output, "Transform pattern…"),
+                Action::Click,
+                None,
+            )],
+        );
+        for target in background {
+            frame(&ctx, &mut app, vec![action(target, Action::Click, None)]);
+        }
+        for event in [
+            action(
+                numeric,
+                Action::SetValue,
+                Some(ActionData::NumericValue(0.95)),
+            ),
+            action(numeric, Action::Increment, None),
+            key(egui::Key::Z, egui::Modifiers::COMMAND),
+            key(
+                egui::Key::Z,
+                egui::Modifiers::COMMAND | egui::Modifiers::SHIFT,
+            ),
+            key(egui::Key::Space, egui::Modifiers::NONE),
+            key(egui::Key::K, egui::Modifiers::COMMAND),
+        ] {
+            frame(&ctx, &mut app, vec![event]);
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                pending
+            );
+            assert!(app.transform.is_some());
+            assert!(app.tool == Tool::Transform);
+            assert!(!app.playing && !app.search);
+        }
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+        );
+        frame(&ctx, &mut app, vec![]);
+        frame(&ctx, &mut app, vec![]);
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert_eq!(
+            app.draft.as_ref().unwrap().commands(&app.editor.project),
+            pending
+        );
+        assert_eq!(
+            ctx.data_mut(|data| data.get_temp::<String>(property))
+                .as_deref(),
+            Some("0.47")
+        );
+        // A backdrop click may cancel the modal, but must not press the background authoring button.
+        let output = frame(&ctx, &mut app, vec![]);
+        let target = button(&output, "Add rectangle");
+        let bounds = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(id, _)| *id == target)
+            .unwrap()
+            .1
+            .bounds()
+            .unwrap();
+        let position = Pos2::new(
+            ((bounds.x0 + bounds.x1) * 0.5) as f32,
+            ((bounds.y0 + bounds.y1) * 0.5) as f32,
+        );
+        app.open_transform(&ctx);
+        frame(&ctx, &mut app, vec![]);
+        pointer_frame(&ctx, &mut app, position, Some(true), false);
+        pointer_frame(&ctx, &mut app, position, Some(false), false);
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert_eq!(
+            app.draft.as_ref().unwrap().commands(&app.editor.project),
+            pending
+        );
+        assert!(!app.dirty);
+    }
+
+    #[test]
+    fn transform_cancel_revision_tool_load_and_failed_release_never_commit_stale_previews() {
+        for cancel in ["escape", "tool", "revision", "history", "load"] {
+            let ctx = egui::Context::default();
+            let mut app = fixture();
+            frame(&ctx, &mut app, vec![]);
+            frame(&ctx, &mut app, vec![]);
+            let before = format!("{:?}", app.editor);
+            let rect = canvas_rect(&ctx, &app);
+            let start = app.to_screen([-0.375, 0.75], rect);
+            let end = start + Vec2::new(125., 150.);
+            pointer_frame(&ctx, &mut app, start, Some(true), false);
+            pointer_frame(&ctx, &mut app, end, None, false);
+            assert!(app.transform_gesture.is_some());
+            assert_eq!(format!("{:?}", app.editor), before);
+            match cancel {
+                "escape" => {
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+                    );
+                }
+                "tool" => app.set_tool(Tool::Select),
+                "revision" => {
+                    app.editor
+                        .execute(Command::SetResolution { metres: 0.19 })
+                        .unwrap();
+                }
+                "history" => app.history(&ctx, false),
+                "load" => {
+                    let path = std::env::temp_dir().join(format!(
+                        "weftforge-native-transform-{}.weftforge",
+                        std::process::id()
+                    ));
+                    app.editor.project.save(&path).unwrap();
+                    app.load_document(path.clone(), false);
+                    fs::remove_file(path).unwrap();
+                }
+                _ => unreachable!(),
+            }
+            let after = format!("{:?}", app.editor);
+            pointer_frame(&ctx, &mut app, end, Some(false), false);
+            frame(&ctx, &mut app, vec![]);
+            assert!(app.transform_gesture.is_none());
+            assert!(app.transform.is_none());
+            assert_eq!(format!("{:?}", app.editor), after);
+            if cancel == "escape" || cancel == "tool" {
+                assert_eq!(after, before);
+            }
+        }
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture();
+        let property = focus_property(&ctx, &mut app, "0.47");
+        let raw = ctx.data_mut(|data| data.get_temp::<String>(property));
+        let caret = egui::TextEdit::load_state(&ctx, property)
+            .unwrap()
+            .cursor
+            .char_range();
+        let before = app.editor.project.clone();
+        let history = format!("{:?}", app.editor);
+        let pending = app.draft.as_ref().unwrap().commands(&before);
+        let start = app.to_screen([-0.375, 0.75], canvas_rect(&ctx, &app));
+        pointer_frame(&ctx, &mut app, start, Some(true), false);
+        let end = start + Vec2::new(1_001_000., 0.);
+        pointer_frame(&ctx, &mut app, end, None, false);
+        pointer_frame(&ctx, &mut app, end, Some(false), false);
+        assert_eq!(format!("{:?}", app.editor), history);
+        assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+        let edit = app.transform.as_ref().unwrap();
+        assert!(edit.error.is_some());
+        assert_eq!(edit.translation, [1001., 0.]);
+        assert_eq!(edit.revision, before.revision);
+        assert!(app.transform_gesture.is_none());
+        assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(property)), raw);
+        assert_eq!(
+            egui::TextEdit::load_state(&ctx, property)
+                .unwrap()
+                .cursor
+                .char_range(),
+            caret
+        );
+        set_field(&ctx, &mut app, "Translation U (m)", 0.5);
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+        );
+        assert!(app.transform.is_none());
+        assert_eq!(app.editor.project.revision, before.revision + 1);
+        assert!(
+            (app.editor.project.points[0].position[0] - before.points[0].position[0] - 0.5).abs()
+                <= 1e-10
+        );
+        for raw in ["1e-", "NaN"] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let property = focus_property(&ctx, &mut app, raw);
+            let caret = egui::TextEdit::load_state(&ctx, property)
+                .unwrap()
+                .cursor
+                .char_range();
+            let before = format!("{:?}", app.editor);
+            let pending = format!(
+                "{:?}",
+                app.draft.as_ref().unwrap().commands(&app.editor.project)
+            );
+            let start = app.to_screen([-0.375, 0.75], canvas_rect(&ctx, &app));
+            pointer_frame(&ctx, &mut app, start, Some(true), false);
+            pointer_frame(&ctx, &mut app, start + Vec2::new(100., 0.), None, false);
+            pointer_frame(
+                &ctx,
+                &mut app,
+                start + Vec2::new(100., 0.),
+                Some(false),
+                false,
+            );
+            assert!(app.transform.as_ref().unwrap().error.is_some());
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!(
+                format!(
+                    "{:?}",
+                    app.draft.as_ref().unwrap().commands(&app.editor.project)
+                ),
+                pending
+            );
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(property))
+                    .as_deref(),
+                Some(raw)
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, property)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+            );
+            frame(&ctx, &mut app, vec![]);
+            frame(&ctx, &mut app, vec![]);
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(property))
+                    .as_deref(),
+                Some(raw)
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, property)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
             );
         }
     }

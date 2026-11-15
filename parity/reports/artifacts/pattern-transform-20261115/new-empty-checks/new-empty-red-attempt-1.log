@@ -1,0 +1,24 @@
+   Compiling weftforge v0.1.0 (<WORKSPACE>/.local/pattern-transform-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.47s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 2 tests
+
+thread 'new_empty_tests::new_empty_search_route_replaces_clean_document_and_retains_files_and_preferences' (61594440) panicked at apps/weftforge/src/main.rs:9701:32:
+missing accessible "New Empty"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test new_empty_tests::new_empty_search_route_replaces_clean_document_and_retains_files_and_preferences ... FAILED
+
+thread 'new_empty_tests::new_empty_file_route_replaces_clean_document_and_retains_files_and_preferences' (61594439) panicked at apps/weftforge/src/main.rs:9701:32:
+missing accessible "New Empty"
+test new_empty_tests::new_empty_file_route_replaces_clean_document_and_retains_files_and_preferences ... FAILED
+
+failures:
+
+failures:
+    new_empty_tests::new_empty_file_route_replaces_clean_document_and_retains_files_and_preferences
+    new_empty_tests::new_empty_search_route_replaces_clean_document_and_retains_files_and_preferences
+
+test result: FAILED. 0 passed; 2 failed; 0 ignored; 0 measured; 64 filtered out; finished in 0.20s
+
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

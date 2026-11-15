@@ -1,0 +1,18 @@
+{
+  "utc": "2026-11-15T15:59:20.202Z",
+  "monotonic_ns": "880676180621333",
+  "context": {
+    "phase": "before-target-call"
+  },
+  "error": {
+    "name": "Error",
+    "message": "Elapsed time cap reached",
+    "stack": "Error: Elapsed time cap reached\n    at gate (<WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs:71:21)\n    at run (<WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs:85:5)\n    at Object.capture (<WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs:148:26)\n    at <WORKSPACE>/.node_repl_cell_10.mjs:82:1875\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)"
+  },
+  "status": {
+    "evidenceKind": "offline_mock",
+    "calls": 1,
+    "elapsedS": 56.627990292,
+    "stopped": false
+  }
+}

@@ -68,7 +68,14 @@ ordered closed boundary of curve IDs, placement, material ID and `grain_angle`.
 The angle is f64 radians counterclockwise from material +U toward +V and identifies
 the warp axis; weft is perpendicular. Zero points right in the V-up 2D canvas.
 Placement changes the arranged orientation without changing the authored grain.
-Angles must be finite and are retained without normalization. Cubic controls
+Angles must be finite; explicit grain edits and native reads retain them without
+normalization. A nonzero `transform_piece` layout rotation stores the rotated
+unit grain direction canonically in `[-pi,pi]`, and compensates placement to
+preserve the arranged surface and world warp/weft directions. A pure translation
+retains grain and Euler field bits. The command rotates endpoints and absolute
+controls about its explicit original U/V pivot, then translates; saved placement
+Euler values can change although arrangement stays fixed. It introduces no v3
+field or version change. Cubic controls
 are absolute 2D coordinates; a null control array means a straight boundary.
 Legacy `seams` store two oriented curve intervals (`curve`, `t0`, `t1`) plus strictly
 increasing normalized correspondence pairs including `[0,0]` and `[1,1]`.
@@ -183,6 +190,12 @@ triangles and `g piece_ID` names separate pieces. No seam welding, rendered
 thickness, texture images, material library, skeleton, animation, or editable
 curves are encoded. OBJ itself has no authoritative unit field: its metre
 convention is stated in the comment and this documentation.
+
+Rigid 2D `transform_piece` layout edits therefore change SVG/DXF construction
+and OBJ UV coordinates while compensating placement to preserve the continuous
+arranged surface within numeric limits. Remeshing may change triangulation;
+identical vertex ordering, solver trajectories and texture placement are outside
+this increment. Every successful edit still invalidates derived revisions.
 
 SVG exports each authored exterior boundary as a named path, retaining straight
 segments and cubic Beziers. One user unit is one millimetre; physical width/height

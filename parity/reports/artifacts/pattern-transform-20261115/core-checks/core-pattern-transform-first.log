@@ -1,0 +1,37 @@
+   Compiling libc v0.2.191
+   Compiling zerocopy v0.8.63
+   Compiling getrandom v0.3.4
+   Compiling once_cell v1.21.4
+   Compiling ahash v0.8.12
+   Compiling num-traits v0.2.19
+   Compiling serde v1.0.229
+   Compiling weftforge-sim v0.1.0 (<WORKSPACE>/.local/pattern-transform-20261115/crates/weftforge-sim)
+   Compiling earcutr v0.5.0
+   Compiling weftforge-core v0.1.0 (<WORKSPACE>/.local/pattern-transform-20261115/crates/weftforge-core)
+   Compiling tobj v4.0.5
+error[E0616]: field `next_id` of struct `Project` is private
+   --> crates/weftforge-core/tests/pattern_transform.rs:210:26
+    |
+210 |         assert_eq!(after.next_id, before.next_id);
+    |                          ^^^^^^^ private field
+
+error[E0616]: field `next_id` of struct `Project` is private
+   --> crates/weftforge-core/tests/pattern_transform.rs:210:42
+    |
+210 |         assert_eq!(after.next_id, before.next_id);
+    |                                          ^^^^^^^ private field
+
+error[E0616]: field `next_id` of struct `Project` is private
+   --> crates/weftforge-core/tests/pattern_transform.rs:286:22
+    |
+286 |     assert_eq!(after.next_id, before.next_id);
+    |                      ^^^^^^^ private field
+
+error[E0616]: field `next_id` of struct `Project` is private
+   --> crates/weftforge-core/tests/pattern_transform.rs:286:38
+    |
+286 |     assert_eq!(after.next_id, before.next_id);
+    |                                      ^^^^^^^ private field
+
+For more information about this error, try `rustc --explain E0616`.
+error: could not compile `weftforge-core` (test "pattern_transform") due to 4 previous errors

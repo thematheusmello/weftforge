@@ -631,6 +631,16 @@ fn command_schema() -> Value {
             ),
         ),
         (
+            "transform_piece",
+            object(
+                json!({"piece":{"type":"integer","minimum":1,"maximum":u64::MAX},
+                    "translation":array(json!({"type":"number","minimum":-1000,"maximum":1000,"description":"Metres in authored U/V; rotation is applied before translation."}),2),
+                    "angle":{"type":"number","minimum":-1e6,"maximum":1e6,"description":"Counterclockwise radians; placement is compensated and grain rotates to preserve world arrangement."},
+                    "pivot":array(json!({"type":"number","minimum":-1000,"maximum":1000,"description":"Explicit pivot in original authored U/V metres."}),2)}),
+                &["piece", "translation", "angle", "pivot"],
+            ),
+        ),
+        (
             "set_placement",
             object(
                 json!({"piece":id,"placement":placement}),

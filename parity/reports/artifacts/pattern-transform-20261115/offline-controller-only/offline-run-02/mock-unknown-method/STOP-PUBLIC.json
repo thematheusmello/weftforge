@@ -1,0 +1,27 @@
+{
+  "scope": "Selected review derivative; omitted private inventory or kernel-stack fields are not public delivery. Numerical results and status fields are unchanged.",
+  "original_private_sha256": "9a0d8c55a119f2ca214936c54ca0f6c11a62346d02e378e0a6c935ed14b3a91c",
+  "omitted_private_fields": [
+    "error.stack"
+  ],
+  "record": {
+    "utc": "2026-11-15T16:00:18.683Z",
+    "monotonic_ns": "880734661168833",
+    "context": {
+      "phase": "target-call-or-result",
+      "sourceRecord": "0001",
+      "label": "OFFLINE-MOCK-unknown-method",
+      "method": "unsupportedMethod"
+    },
+    "error": {
+      "name": "Error",
+      "message": "Unknown target method: unsupportedMethod"
+    },
+    "status": {
+      "evidenceKind": "offline_mock",
+      "calls": 2,
+      "elapsedS": 0.001309583,
+      "stopped": false
+    }
+  }
+}
