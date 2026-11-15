@@ -58,8 +58,12 @@ contains no binary/NUL or personal absolute path prefix; nine literal-path
 redaction derivatives carry provenance. See the tracked
 [publication closure](parity/reports/artifacts/capsule-surface-publication-20261115/receipt.json).
 
-Next: obtain a separate public-packet review, recheck final metadata from a clean
-tracked checkout, then let root handle integration and publication. The publication agent owns no GitHub/push/CI operations.
+Independent public-packet review at clean35cd5672 found no publication blockers.
+Root independently checked all2,294referenced artifacts and all40runtime bytes,
+and clean final registry/map checks passed. [PR38](https://github.com/thematheusmello/weftforge/pull/38)
+publishes this bounded increment; the original strict failures remain failed.
+Next: merge the reviewed source/evidence, then integrate SVG import and the
+diagnostic-only peak arithmetic follow-up in a fresh isolated build.
 GitHub Actions and Pages must remain disabled until the complete project is done.
 
 ## Native visual preview checkpoint
