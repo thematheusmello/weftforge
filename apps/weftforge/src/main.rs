@@ -758,9 +758,7 @@ impl Studio {
             Ok(None) => "SVG import cancelled; pending edits retained.".into(),
             Err(error) => format!("SVG import failed; current document retained: {error}"),
         };
-        let ids = finish_numeric_action(ctx, focused, false);
-        let frame = ctx.cumulative_frame_nr();
-        ctx.data_mut(|data| data.insert_temp(egui::Id::new("inspector-action-blur"), (frame, ids)));
+        finish_numeric_action(ctx, focused, false);
         prepared
     }
     fn svg_import_window(&mut self, ctx: &egui::Context) {
@@ -888,10 +886,7 @@ impl Studio {
             Ok(true)
         })();
         let written = matches!(result, Ok(true));
-        let ids = finish_numeric_action(ctx, focused, written);
-        // A chooser or pointer press can report this same blur on the next frame.
-        let frame = ctx.cumulative_frame_nr();
-        ctx.data_mut(|data| data.insert_temp(egui::Id::new("inspector-action-blur"), (frame, ids)));
+        finish_numeric_action(ctx, focused, written);
         self.message = match result {
             Ok(false) => "Export cancelled; pending edits retained.".into(),
             Ok(true) => match format {
@@ -1975,9 +1970,7 @@ impl Studio {
             if let Some(id) = numeric_focus(ctx) {
                 ctx.memory_mut(|memory| memory.surrender_focus(id));
             }
-            if let Some(id) = edit.focus {
-                ctx.memory_mut(|memory| memory.request_focus(id));
-            }
+            finish_numeric_action(ctx, edit.focus, false);
             return;
         }
         if apply {
@@ -2547,12 +2540,13 @@ fn clear_numeric_fields(ctx: &egui::Context, fields: &[egui::Id]) {
         ctx.memory_mut(|memory| memory.surrender_focus(id));
     }
 }
-fn finish_numeric_action(
-    ctx: &egui::Context,
-    focused: Option<egui::Id>,
-    succeeded: bool,
-) -> [Option<egui::Id>; 2] {
-    let frame = ctx.cumulative_frame_nr();
+fn finish_numeric_action(ctx: &egui::Context, focused: Option<egui::Id>, succeeded: bool) {
+    let guard_until = ctx.cumulative_frame_nr()
+        + if ctx.memory(|memory| memory.top_modal_layer().is_some()) {
+            2
+        } else {
+            1
+        };
     let current = numeric_focus(ctx);
     if succeeded {
         for id in focused.into_iter().chain(current) {
@@ -2560,24 +2554,16 @@ fn finish_numeric_action(
             ctx.data_mut(|data| data.remove::<String>(id));
             ctx.memory_mut(|memory| memory.surrender_focus(id));
         }
-        ctx.data_mut(|data| {
-            data.insert_temp(
-                egui::Id::new("inspector-action-blur"),
-                (frame, [focused, current]),
-            )
-        });
     } else if let Some(id) = current.or(focused) {
         ctx.memory_mut(|memory| memory.request_focus(id));
-        if focused.is_some() && current.is_some() && focused != current {
-            ctx.data_mut(|data| {
-                data.insert_temp(
-                    egui::Id::new("inspector-action-blur"),
-                    (frame, [focused, None]),
-                )
-            });
-        }
     }
-    [focused, current]
+    // A closing modal blocks restored focus for one pass, then blur persists for another.
+    ctx.data_mut(|data| {
+        data.insert_temp(
+            egui::Id::new("inspector-action-blur"),
+            (guard_until, [focused, current]),
+        )
+    });
 }
 fn numeric_value<'a>(ui: &egui::Ui, value: &'a mut f64) -> egui::DragValue<'a> {
     let id = ui.next_auto_id();
@@ -2599,9 +2585,8 @@ fn numeric_commit(response: &egui::Response) -> bool {
         .data_mut(|data| {
             data.get_temp::<(u64, [Option<egui::Id>; 2])>(egui::Id::new("inspector-action-blur"))
         })
-        .is_some_and(|(frame, ids)| {
-            response.ctx.cumulative_frame_nr().saturating_sub(frame) <= 1
-                && ids.contains(&Some(response.id))
+        .is_some_and(|(guard_until, ids)| {
+            response.ctx.cumulative_frame_nr() <= guard_until && ids.contains(&Some(response.id))
         });
     response.drag_stopped()
         || (response.lost_focus() && !action_blur)
@@ -7187,6 +7172,195 @@ mod svg_import_tests {
         ));
         fs::write(&path, ORIGINAL).unwrap();
         path
+    }
+
+    #[test]
+    fn import_modal_controls_are_reachable_from_the_accessibility_root() {
+        use std::collections::{HashMap, HashSet};
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture();
+        app.svg_import = Some(SvgImportDraft {
+            drawing: SvgPatternImport::from_bytes(ORIGINAL).unwrap(),
+            focused: None,
+            error: None,
+        });
+        for _ in 0..3 {
+            frame(&ctx, &mut app, vec![]);
+        }
+        let output = frame(&ctx, &mut app, vec![]);
+        let tree = output.platform_output.accesskit_update.unwrap();
+        let nodes: HashMap<_, _> = tree.nodes.iter().map(|(id, node)| (*id, node)).collect();
+        let mut pending = vec![tree.tree.unwrap().root];
+        let mut visible = HashSet::new();
+        while let Some(id) = pending.pop() {
+            let node = nodes[&id];
+            if !node.is_hidden() && visible.insert(id) {
+                pending.extend(node.children());
+            }
+        }
+        for label in [
+            "Import SVG patterns",
+            "Physical scale: 2 mm per SVG unit.",
+            "Import",
+            "Cancel",
+        ] {
+            let (id, node) = tree
+                .nodes
+                .iter()
+                .find(|(_, node)| node.label() == Some(label) || node.value() == Some(label))
+                .unwrap_or_else(|| panic!("missing modal node {label}"));
+            assert!(visible.contains(id), "modal node is unreachable: {label}");
+            assert!(!node.is_disabled(), "modal node is disabled: {label}");
+        }
+    }
+
+    #[test]
+    fn pointer_cancel_retains_focused_numeric_draft_revision_and_history() {
+        fn pointer_click(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            output: &egui::FullOutput,
+            label: &str,
+        ) {
+            let id = button(output, label);
+            let bounds = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(node, _)| *node == id)
+                .unwrap()
+                .1
+                .bounds()
+                .unwrap();
+            let pos = Pos2::new(
+                ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                ((bounds.y0 + bounds.y1) * 0.5) as f32,
+            );
+            for pressed in [true, false] {
+                frame(
+                    ctx,
+                    app,
+                    vec![
+                        egui::Event::PointerMoved(pos),
+                        egui::Event::PointerButton {
+                            pos,
+                            button: egui::PointerButton::Primary,
+                            pressed,
+                            modifiers: egui::Modifiers::NONE,
+                        },
+                    ],
+                );
+            }
+        }
+        fn history(editor: &Editor) -> [Vec<Project>; 2] {
+            std::array::from_fn(|direction| {
+                let mut editor = editor.clone();
+                let mut states = Vec::new();
+                while if direction == 0 {
+                    editor.undo()
+                } else {
+                    editor.redo()
+                } {
+                    states.push(editor.project.clone());
+                }
+                states
+            })
+        }
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture();
+        let before = app.editor.clone();
+        let old_history = history(&before);
+        let path = source();
+        frame(&ctx, &mut app, vec![]);
+        let output = frame(&ctx, &mut app, vec![]);
+        let numeric = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| node.numeric_value() == Some(0.4))
+            .unwrap()
+            .0;
+        frame(&ctx, &mut app, vec![action(numeric, Action::Focus, None)]);
+        frame(&ctx, &mut app, vec![]);
+        let output = frame(
+            &ctx,
+            &mut app,
+            vec![
+                egui::Event::Key {
+                    key: egui::Key::A,
+                    physical_key: None,
+                    pressed: true,
+                    repeat: false,
+                    modifiers: egui::Modifiers::COMMAND,
+                },
+                egui::Event::Text("0.125".into()),
+            ],
+        );
+        assert_eq!(app.editor.project, before.project);
+        assert_eq!(app.draft.as_ref().unwrap().dimensions.unwrap()[0], 0.125);
+        ctx.data_mut(|data| {
+            data.insert_temp(egui::Id::new("test-svg-import-source"), Some(path.clone()))
+        });
+        pointer_click(&ctx, &mut app, &output, "Import SVG…");
+        assert!(app.svg_import.is_some());
+        for _ in 0..3 {
+            frame(&ctx, &mut app, vec![]);
+        }
+        let output = frame(&ctx, &mut app, vec![]);
+        assert_eq!(app.editor.project, before.project);
+        pointer_click(&ctx, &mut app, &output, "Cancel");
+        assert!(app.svg_import.is_none());
+        assert_eq!(app.editor.project, before.project, "Cancel release");
+        for offset in 0..3 {
+            frame(&ctx, &mut app, vec![]);
+            assert_eq!(
+                app.editor.project, before.project,
+                "post-Cancel frame {offset}"
+            );
+            assert_eq!(history(&app.editor), old_history);
+            assert_eq!(app.draft.as_ref().unwrap().dimensions.unwrap()[0], 0.125);
+        }
+        let mut expected = before;
+        expected
+            .execute(Command::Transaction(
+                app.draft.as_ref().unwrap().commands(&expected.project),
+            ))
+            .unwrap();
+        let output = frame(&ctx, &mut app, vec![]);
+        let numeric = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| node.numeric_value() == Some(0.125))
+            .unwrap()
+            .0;
+        frame(&ctx, &mut app, vec![action(numeric, Action::Focus, None)]);
+        frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![egui::Event::Key {
+                key: egui::Key::Tab,
+                physical_key: None,
+                pressed: true,
+                repeat: false,
+                modifiers: egui::Modifiers::NONE,
+            }],
+        );
+        assert_eq!(app.editor.project, expected.project);
+        assert_eq!(history(&app.editor), history(&expected));
+        fs::remove_file(path).unwrap();
     }
 
     #[test]
