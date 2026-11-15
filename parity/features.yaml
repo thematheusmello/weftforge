@@ -17,7 +17,8 @@
         "parity/scenarios/UI-STUDIO-PREVIEW-001.json",
         "parity/reports/WF-20261115-SVG-STUDIO-001.json",
         "parity/scenarios/FILE-DXF-STUDIO-001.json",
-        "parity/reports/WF-20261115-DXF-STUDIO-001.json"
+        "parity/reports/WF-20261115-DXF-STUDIO-001.json",
+        "parity/reports/WF-20261115-PHOTOCRAFT-STUDIO-001.json"
       ],
       "scenarios": [
         {
@@ -101,7 +102,8 @@
         "https://github.com/thematheusmello/weftforge/pull/36",
         "https://github.com/thematheusmello/weftforge/pull/37",
         "https://github.com/thematheusmello/weftforge/pull/39",
-        "https://github.com/thematheusmello/weftforge/pull/42"
+        "https://github.com/thematheusmello/weftforge/pull/42",
+        "https://github.com/thematheusmello/weftforge/pull/43"
       ],
       "implementation_status": "partial",
       "verification_status": "not_run",
@@ -2146,6 +2148,29 @@
             "parity/reports/artifacts/native-studio-publication-20261115/ROOT-CLOSURE.json": "900493f3cdad61756719c9319d1525eb098f9c674287d05f45003c92f3aea33f"
           },
           "path": "parity/reports/WF-20261115-NATIVE-HARBOR-FAILED-001.json"
+        },
+        {
+          "id": "WF-20261115-PHOTOCRAFT-STUDIO-001",
+          "commit": "7ab2107aaa51f2c0fa9c9fd2ada972a08c433882",
+          "timestamp": "2026-11-15T13:40:37Z",
+          "platform": "macOS27.2 arm64; Rust1.94.1; native1640x1032 debug preview",
+          "artifact_hashes": {
+            "parity/reports/artifacts/photocraft-studio-20261115/PREVIEW.json": "621fca4feebb6bc9bff33eee5ac153c188d83924738ecf68666c739fc75a5e12",
+            "parity/reports/artifacts/photocraft-studio-20261115/PUBLICATION.json": "fcbfba30d4c762a8fca39f28909266eb8abdb78d25f412329d8687b8f9f4a4ab",
+            "parity/reports/artifacts/photocraft-studio-20261115/README.md": "7fa631c7d22dd8904bc5434900d99e527d903b25e965afc5f62a86563eff1306",
+            "parity/reports/artifacts/photocraft-studio-20261115/REVIEW.md": "62a2dfb874b193f60ffc169a796aaa66aaa72146c38ede63e198c4b4bed317aa",
+            "parity/reports/artifacts/photocraft-studio-20261115/SOURCE.json": "8429a835b514d2bd43848d099857a7ad92970d14e49c752eea7c6c3dc09a1960",
+            "parity/reports/artifacts/photocraft-studio-20261115/build/clippy.log": "89047a2f49d795f6342b94114434b36fb78c4e69fb4491a89b73776b1c3a9237",
+            "parity/reports/artifacts/photocraft-studio-20261115/build/fmt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/photocraft-studio-20261115/build/gates.json": "062543d12d84b4a9e4d575b4be1b4cc00f188a27319e13de31b81c52611fbf0d",
+            "parity/reports/artifacts/photocraft-studio-20261115/build/package.log": "cd734e900e2654c4e0c98a60375012167ec7f409fb1395eb2f528d9d798169c6",
+            "parity/reports/artifacts/photocraft-studio-20261115/build/workspace-tests.log": "68d8829302c94f16446d83b33d752adc6719e7e839ec2fdcc23c578413d254ed",
+            "parity/reports/artifacts/photocraft-studio-20261115/build/xtask-verify.log": "4cb7295543d78b96e76ae1210738ed81d253248563379fa445d15e5b576648b0",
+            "parity/reports/artifacts/photocraft-studio-20261115/captures/overview.jpg": "3135010d7acb6bceb06f67bc7b1be9ba084eb646f779bfebcf4f61ec23f3324d",
+            "parity/reports/artifacts/photocraft-studio-20261115/captures/selected-boundary-dropdown.jpg": "40a24e431740a69148dca272a605590fb95764632df8de0187ac89a5f2a988f0",
+            "parity/reports/artifacts/photocraft-studio-20261115/captures/selected-boundary.jpg": "4a2ee45beaa2bb309d48cd1dbf45883ed7c24cd3707483afc5b15969228f2a53"
+          },
+          "path": "parity/reports/WF-20261115-PHOTOCRAFT-STUDIO-001.json"
         }
       ],
       "known_gaps": [
@@ -2153,13 +2178,14 @@
         "Separate7fe native A/B export equivalence completed, but strict interaction trace is incomplete at Save18; broader capsule surface contact and goldenA29 strain fail. No complete workflow/reference gate pass.",
         "Historical32f9 native SVG file workflow and Frame all are independently observed; v1/v2 failures and v3 input/observer corrections remain retained. Full UI/reference contract and complete garment acceptance remain open.",
         "Source76be observed DXF chooser/review cancellation, import/history/control edit and actual fresh reopen support bounded components. The full native plan is not accepted: printing disclosure is not explicit; old .12 Redo after Cancel is runtime-unverified, not failed; TEMP2 persisted in background sidecars. No whole workspace/garment or reference pass follows.",
-        "Source 21b9 passes the full gates with 192 Rust and 54 Python tests, while native checks 001 and 002 stop before typing on setup and focus observability. Neither establishes a product defect or pass. Native numeric entry, pending text during Snap changes, same-pixel snapping, history, Save, geometry-consumer and M:N keyboard checks remain unexercised. A separate read-only Harbor preview shows the layout and one accepted Mesh outcome. The full native and reference contracts remain open."
+        "Source 21b9 passes the full gates with 192 Rust and 54 Python tests, while native checks 001 and 002 stop before typing on setup and focus observability. Neither establishes a product defect or pass. Native numeric entry, pending text during Snap changes, same-pixel snapping, history, Save, geometry-consumer and M:N keyboard checks remain unexercised. A separate read-only Harbor preview shows the layout and one accepted Mesh outcome. The full native and reference contracts remain open.",
+        "PhotoCraft-inspired shell and selected-dropdown readability are checked at7ab; full native interaction and the complete UI contract remain unverified."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
         "spec/features/UI-001-pattern-framing.md": "1f2d52ccba6f1070990badc96ef4ec1ec893da6b7d1a51a147f8b93a6ad38b5b"
       }
