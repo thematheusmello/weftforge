@@ -1,5 +1,6 @@
 use eframe::egui::{self, Color32, Pos2, Rect, Sense, Stroke, Vec2};
 use std::{
+    collections::BTreeMap,
     fs,
     path::{Path, PathBuf},
     sync::{
@@ -217,6 +218,7 @@ struct InspectorDraft {
     revision: u64,
     selected: Option<Id>,
     curve: Option<Curve>,
+    applied_length: Option<Result<f64, String>>,
     dimensions: Option<[f64; 2]>,
     placement: Option<Placement>,
     grain_angle: Option<f64>,
@@ -231,6 +233,13 @@ impl InspectorDraft {
             revision: project.revision,
             selected,
             curve: selected_curve.and_then(|id| project.curve(id)).cloned(),
+            applied_length: selected_curve.map(|curve| {
+                #[cfg(test)]
+                authored_length_tests::record_query();
+                project
+                    .interval_length(CurveInterval::full(curve))
+                    .map_err(|error| error.to_string())
+            }),
             dimensions: piece
                 .and_then(|piece| project.piece_bounds(piece.id).ok())
                 .map(|[min, max]| std::array::from_fn(|axis| max[axis] - min[axis])),
@@ -294,6 +303,31 @@ impl InspectorDraft {
         commands
     }
 }
+
+#[derive(Default)]
+struct LegacyLengthSnapshot {
+    revision: u64,
+    values: BTreeMap<Id, Result<[f64; 2], String>>,
+}
+
+fn length_mm(length: f64) -> String {
+    format!("{:.3} mm", 1000. * length)
+}
+
+fn pair_lengths_mm([a, b]: [f64; 2]) -> String {
+    format!(
+        "A {} · B {}\nB − A {:+.3} mm",
+        length_mm(a),
+        length_mm(b),
+        1000. * (b - a)
+    )
+}
+
+fn applied_length_heading(ui: &mut egui::Ui, revision: u64) {
+    ui.small(format!("Applied rest length · revision {revision}"));
+    ui.small("Draft/preview edits are not included.");
+}
+
 #[derive(Clone, Copy)]
 enum PatternFormat {
     Svg,
@@ -353,6 +387,7 @@ struct Studio {
     pending_batch: Option<SimulationBatch>,
     last_stage: &'static str,
     draft: Option<InspectorDraft>,
+    legacy_lengths: LegacyLengthSnapshot,
     playing: bool,
     selected: Option<Id>,
     selected_curve: Option<Id>,
@@ -426,6 +461,7 @@ impl Studio {
             pending_batch: None,
             last_stage: "Rest arrangement",
             draft: None,
+            legacy_lengths: LegacyLengthSnapshot::default(),
             playing: false,
             selected: None,
             selected_curve: None,
@@ -688,6 +724,10 @@ impl Studio {
         self.pending_batch = None;
         self.cancel();
         self.draft = None;
+        self.legacy_lengths = LegacyLengthSnapshot {
+            revision: self.editor.project.revision,
+            values: BTreeMap::new(),
+        };
         self.needs_mesh = !self.editor.project.pieces.is_empty();
         if !self.needs_mesh {
             self.mesh = None;
@@ -1698,6 +1738,12 @@ impl Studio {
         }
     }
     fn inspector(&mut self, ui: &mut egui::Ui) {
+        if self.legacy_lengths.revision != self.editor.project.revision {
+            self.legacy_lengths = LegacyLengthSnapshot {
+                revision: self.editor.project.revision,
+                values: BTreeMap::new(),
+            };
+        }
         let scene_height = (ui.available_height() * 0.30).clamp(136.0, 260.0);
         egui::Panel::bottom("studio-scene")
             .exact_size(scene_height)
@@ -1814,6 +1860,15 @@ impl Studio {
                     let response=ui.button("Join with next boundary").on_hover_text("Preserve compatible straight or cubic geometry and sewing. The selected curve ID survives; unsafe joins are rejected.");
                     acting|=response.is_pointer_button_down_on();
                     if response.clicked() { join=Some(curve.id); }
+                    ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("applied-length")),|ui| {
+                        applied_length_heading(ui,draft.revision);
+                        if let Some(length)=&draft.applied_length {
+                            match length {
+                                Ok(length)=>{ ui.small(length_mm(*length)); }
+                                Err(error)=>{ ui.small(format!("Length unavailable: {error}")); }
+                            }
+                        }
+                    });
                     ui.separator();
                     });
                 }
@@ -1882,6 +1937,20 @@ impl Studio {
                         }
                         if ui.small_button("Remove").clicked() { remove=Some(seam.id); }
                     });
+                    ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("applied-length")),|ui| {
+                        if ui.is_rect_visible(ui.min_rect()) {
+                            let lengths=self.legacy_lengths.values.entry(seam.id).or_insert_with(|| {
+                                #[cfg(test)]
+                                authored_length_tests::record_query();
+                                self.editor.project.seam_lengths(seam.id).map_err(|error|error.to_string())
+                            });
+                            applied_length_heading(ui,self.editor.project.revision);
+                            match lengths {
+                                Ok(lengths)=>{ ui.small(pair_lengths_mm(*lengths)); }
+                                Err(error)=>{ ui.small(format!("Lengths unavailable: {error}")); }
+                            }
+                        }
+                    });
                 });
             }
             });
@@ -1903,6 +1972,13 @@ impl Studio {
                     if ui.small_button("Cancel sewing (Escape)").clicked() { self.sewing_draft=OrderedSewingDraft::default(); }
                 }
                 let mesh=self.mesh.as_ref().filter(|mesh|mesh.doc_revision==self.editor.project.revision);
+                let mesh_error=self.last_job.as_ref()
+                    .filter(|job|job.kind==JobKind::Mesh && job.revision==self.editor.project.revision && self.job.is_none() && !self.needs_mesh)
+                    .and_then(|job|match &job.outcome {
+                        Err(JobError::Failed(error))=>Some(error.as_str()),
+                        _ if job.status==JobStatus::Cancelled=>Some("Rest mesh job cancelled"),
+                        _=>None,
+                    });
                 for group in &self.editor.project.sewing_groups {
                     ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("sewing-group",group.id))),|ui| {
                         ui.strong(format!("{} · group #{}",group.name,group.id));
@@ -1910,9 +1986,14 @@ impl Studio {
                         for (side,spans) in [("A",&group.a),("B",&group.b)] {
                             for (index,span) in spans.iter().enumerate() { ui.small(format!("{side}{} · #{} · t {} → {}",index+1,span.curve,span.t0,span.t1)); }
                         }
-                        if let Some(geometry)=mesh.and_then(|mesh|mesh.sewing_groups.iter().find(|geometry|geometry.id==group.id)) {
-                            ui.small(format!("A {:.8} m · B {:.8} m\nMismatch {:+.8} m · {} paired portions",geometry.lengths[0],geometry.lengths[1],geometry.lengths[1]-geometry.lengths[0],geometry.portions.len()));
-                        } else { ui.small("Lengths and guides rebuilding for this revision…"); }
+                        ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("applied-length")),|ui| {
+                            applied_length_heading(ui,self.editor.project.revision);
+                            if let Some(geometry)=mesh.and_then(|mesh|mesh.sewing_groups.iter().find(|geometry|geometry.id==group.id)) {
+                                ui.small(pair_lengths_mm(geometry.lengths));
+                                ui.small(format!("{} paired portions",geometry.portions.len()));
+                            } else if let Some(error)=mesh_error { ui.small(format!("Lengths unavailable: {error}")); }
+                            else { ui.small("Lengths and guides rebuilding for this revision…"); }
+                        });
                         ui.horizontal(|ui| {
                             let edit=ui.small_button("Edit group");
                             acting|=edit.is_pointer_button_down_on();
@@ -3695,7 +3776,7 @@ mod tests {
     #[test]
     fn studio_menus_and_tool_rail_preserve_numeric_drafts_text_and_caret() {
         use egui::accesskit::{Action, ActionRequest, TreeId};
-        for text in ["0.450", "1e-"] {
+        for text in ["0.450", "1e-", "NaN"] {
             let ctx = egui::Context::default();
             ctx.enable_accesskit();
             studio_style(&ctx);
@@ -3710,6 +3791,7 @@ mod tests {
                 })
                 .unwrap();
             app.selected = Some(app.editor.project.pieces[0].id);
+            app.selected_curve = Some(app.editor.project.pieces[0].boundary[0]);
             let frame = |app: &mut Studio, events| {
                 ctx.run_ui(
                     egui::RawInput {
@@ -9879,6 +9961,421 @@ mod pattern_framing_tests {
                     .nodes
                     .iter()
                     .any(|(_, node)| node.label() == Some("Frame all") && node.is_disabled())
+            );
+        }
+    }
+}
+
+#[cfg(test)]
+mod authored_length_tests {
+    use super::*;
+    use std::cell::Cell;
+
+    thread_local! { static QUERIES: Cell<usize> = const { Cell::new(0) }; }
+    pub(super) fn record_query() {
+        QUERIES.set(QUERIES.get() + 1);
+    }
+
+    fn scene() -> Studio {
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        for (index, width) in [0.3, 0.5].into_iter().enumerate() {
+            app.editor
+                .execute(Command::AddRectangle {
+                    name: format!("Original panel {index}"),
+                    origin: [index as f64, 0.],
+                    width,
+                    height: 0.2,
+                })
+                .unwrap();
+        }
+        let a = CurveInterval::full(app.editor.project.pieces[0].boundary[0]);
+        let b = CurveInterval::reversed(app.editor.project.pieces[1].boundary[0]);
+        app.editor
+            .execute(Command::AddSeam {
+                name: "Original legacy pair".into(),
+                a,
+                b,
+                correspondence: vec![[0., 0.], [1., 1.]],
+            })
+            .unwrap();
+        app.editor
+            .execute(Command::AddSewingGroup {
+                name: "Original ordered pair".into(),
+                a: vec![a],
+                b: vec![b],
+                correspondence: vec![[0., 0.], [1., 1.]],
+            })
+            .unwrap();
+        app.selected = Some(app.editor.project.pieces[0].id);
+        app.selected_curve = Some(a.curve);
+        app
+    }
+
+    fn frame(
+        ctx: &egui::Context,
+        app: &mut Studio,
+        height: f32,
+        events: Vec<egui::Event>,
+    ) -> egui::FullOutput {
+        ctx.run_ui(
+            egui::RawInput {
+                screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(520., height))),
+                events,
+                ..Default::default()
+            },
+            |ui| app.inspector(ui),
+        )
+    }
+
+    fn text(output: &egui::FullOutput) -> String {
+        output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .filter(|(_, node)| node.role() == egui::accesskit::Role::Label)
+            .filter_map(|(_, node)| node.value().or_else(|| node.label()))
+            .collect::<Vec<_>>()
+            .join("\n")
+    }
+
+    #[test]
+    fn applied_lengths_are_formatted_cached_and_ignore_drafts_preview_and_simulation() {
+        assert_eq!(length_mm(0.0000016), "0.002 mm");
+        assert_eq!(
+            pair_lengths_mm([0.3, 0.5]),
+            "A 300.000 mm · B 500.000 mm\nB − A +200.000 mm"
+        );
+        assert_eq!(
+            pair_lengths_mm([0.5, 0.3]),
+            "A 500.000 mm · B 300.000 mm\nB − A -200.000 mm"
+        );
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = scene();
+        let mesh = Arc::new(app.editor.project.mesh().unwrap());
+        let mut simulated =
+            weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap();
+        simulated.step(Default::default(), || false).unwrap();
+        let cloth = Arc::new(simulated);
+        app.mesh = Some(mesh.clone());
+        app.cloth = Some(cloth.clone());
+        let (sender, receiver) = mpsc::channel();
+        app.job = Some(Job {
+            id: 71,
+            revision: app.editor.project.revision,
+            kind: JobKind::Simulation,
+            batch: None,
+            completed_steps: Arc::new(AtomicU64::new(0)),
+            cancel: Arc::new(AtomicBool::new(false)),
+            receiver,
+        });
+        let original = format!("{:?}", app.editor);
+        QUERIES.set(0);
+        frame(&ctx, &mut app, 3000., vec![]);
+        for _ in 0..5 {
+            let output = frame(&ctx, &mut app, 3000., vec![]);
+            let labels = text(&output);
+            assert!(labels.contains(&format!(
+                "Applied rest length · revision {}",
+                app.editor.project.revision
+            )));
+            assert!(labels.contains("300.000 mm"));
+            assert_eq!(labels.matches("B − A +200.000 mm").count(), 2);
+            assert!(labels.contains("Draft/preview edits are not included."));
+        }
+        assert_eq!(
+            QUERIES.get(),
+            2,
+            "one selected curve and one visible legacy seam; groups use the mesh"
+        );
+        app.draft.as_mut().unwrap().curve.as_mut().unwrap().controls =
+            Some([[0.1, -0.4], [0.2, -0.4]]);
+        app.preview = Some([4., 5.]);
+        app.drag_point = Some(app.editor.project.curves[0].start);
+        let mut draft_group = app.editor.project.sewing_groups[0].clone();
+        draft_group.a[0].t1 = 0.5;
+        app.sewing_edit = Some(SewingGroupEdit {
+            group: draft_group,
+            focus: None,
+            epoch: 0,
+            error: None,
+        });
+        for _ in 0..4 {
+            let output = frame(&ctx, &mut app, 3000., vec![]);
+            assert_eq!(text(&output).matches("B − A +200.000 mm").count(), 2);
+        }
+        assert_eq!(QUERIES.get(), 2);
+        assert_eq!(app.draft.as_ref().unwrap().applied_length, Some(Ok(0.3)));
+        app.sewing_edit = None;
+        frame(&ctx, &mut app, 3000., vec![]);
+        assert_eq!(QUERIES.get(), 2);
+        assert_eq!(format!("{:?}", app.editor), original);
+        assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+        assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+        assert_eq!(app.job.as_ref().unwrap().id, 71);
+        assert!(!app.job.as_ref().unwrap().cancel.load(Ordering::Relaxed));
+        assert!(!app.dirty && !app.needs_mesh);
+        drop(sender);
+    }
+
+    #[test]
+    fn feedback_state_changes_preserve_focused_numeric_text_caret_and_pending_edits() {
+        use egui::accesskit::{Action, ActionRequest, TreeId};
+        for input in ["0.450", "1e-", "NaN"] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = scene();
+            let mesh = Arc::new(app.editor.project.mesh().unwrap());
+            frame(&ctx, &mut app, 3000., vec![]);
+            let output = frame(&ctx, &mut app, 3000., vec![]);
+            let field = output
+                .platform_output
+                .accesskit_update
+                .unwrap()
+                .nodes
+                .into_iter()
+                .find(|(_, node)| node.numeric_value() == Some(0.3))
+                .unwrap()
+                .0;
+            frame(
+                &ctx,
+                &mut app,
+                3000.,
+                vec![egui::Event::AccessKitActionRequest(ActionRequest {
+                    action: Action::Focus,
+                    target_tree: TreeId::ROOT,
+                    target_node: field,
+                    data: None,
+                })],
+            );
+            frame(&ctx, &mut app, 3000., vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                3000.,
+                vec![
+                    egui::Event::Key {
+                        key: egui::Key::A,
+                        physical_key: None,
+                        pressed: true,
+                        repeat: false,
+                        modifiers: egui::Modifiers::COMMAND,
+                    },
+                    egui::Event::Text(input.into()),
+                ],
+            );
+            let focused = numeric_focus(&ctx).unwrap();
+            let caret = egui::TextEdit::load_state(&ctx, focused)
+                .unwrap()
+                .cursor
+                .char_range();
+            let original = format!("{:?}", app.editor);
+            let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+            app.drag_point = Some(app.editor.project.curves[0].start);
+            app.preview = Some([0.1, -0.2]);
+            app.sewing_edit = Some(SewingGroupEdit {
+                group: app.editor.project.sewing_groups[0].clone(),
+                focus: Some(focused),
+                epoch: 0,
+                error: None,
+            });
+            for matching in [true, false, true] {
+                app.mesh = matching.then(|| mesh.clone());
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, 3000., vec![]);
+                }
+                assert_eq!(numeric_focus(&ctx), Some(focused));
+                assert_eq!(
+                    ctx.data_mut(|data| data.get_temp::<String>(focused))
+                        .as_deref(),
+                    Some(input)
+                );
+                assert_eq!(
+                    egui::TextEdit::load_state(&ctx, focused)
+                        .unwrap()
+                        .cursor
+                        .char_range(),
+                    caret
+                );
+                assert_eq!(format!("{:?}", app.editor), original);
+                assert_eq!(
+                    app.draft.as_ref().unwrap().commands(&app.editor.project),
+                    pending
+                );
+                assert!(!app.dirty && !app.needs_mesh && app.job.is_none());
+            }
+            app.sewing_edit = None;
+            for _ in 0..3 {
+                frame(&ctx, &mut app, 3000., vec![]);
+            }
+            assert_eq!(numeric_focus(&ctx), Some(focused));
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(focused))
+                    .as_deref(),
+                Some(input)
+            );
+            assert_eq!(format!("{:?}", app.editor), original);
+        }
+    }
+
+    #[test]
+    fn revisions_and_same_identity_document_replacement_invalidate_lengths() {
+        let ctx = egui::Context::default();
+        let mut app = scene();
+        frame(&ctx, &mut app, 3000., vec![]);
+        let original = app.draft.as_ref().unwrap().applied_length.clone();
+        let curve = app.selected_curve.unwrap();
+        let revision = app.editor.project.revision;
+        app.execute(Command::SetCurveControls {
+            curve,
+            controls: Some([[0.1, -0.1], [0.2, -0.1]]),
+        });
+        assert_eq!(app.editor.project.revision, revision + 1);
+        assert!(app.draft.is_none() && app.legacy_lengths.values.is_empty());
+        frame(&ctx, &mut app, 3000., vec![]);
+        let edited = app.draft.as_ref().unwrap().applied_length.clone();
+        assert!(edited.as_ref().unwrap().as_ref().unwrap() > &0.3);
+        assert!(app.editor.undo());
+        app.rebuild();
+        frame(&ctx, &mut app, 3000., vec![]);
+        assert_eq!(app.draft.as_ref().unwrap().applied_length, original);
+        assert!(app.editor.project.revision > revision + 1);
+        assert!(app.editor.redo());
+        app.rebuild();
+        frame(&ctx, &mut app, 3000., vec![]);
+        assert_eq!(app.draft.as_ref().unwrap().applied_length, edited);
+        let revision = app.editor.project.revision;
+        let selected = app.selected;
+        let mut replacement = Editor::new(app.editor.project.clone()).unwrap();
+        replacement
+            .execute(Command::SetCurveControls {
+                curve,
+                controls: None,
+            })
+            .unwrap();
+        replacement
+            .execute(Command::ResizePiece {
+                piece: selected.unwrap(),
+                width: 0.45,
+                height: 0.2,
+            })
+            .unwrap();
+        replacement.project.revision = revision;
+        let path = std::env::temp_dir().join(format!(
+            "weftforge-length-replacement-{}-{}.weftforge",
+            std::process::id(),
+            SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        replacement.project.save(&path).unwrap();
+        for recovered in [false, true] {
+            app.load_document(path.clone(), recovered);
+            assert_eq!(app.editor.project.revision, revision);
+            assert!(app.draft.is_none() && app.legacy_lengths.values.is_empty());
+            app.selected = selected;
+            app.selected_curve = Some(curve);
+            frame(&ctx, &mut app, 3000., vec![]);
+            assert!(
+                (app.draft
+                    .as_ref()
+                    .unwrap()
+                    .applied_length
+                    .as_ref()
+                    .unwrap()
+                    .as_ref()
+                    .unwrap()
+                    - 0.45)
+                    .abs()
+                    < 1e-12
+            );
+            assert!(
+                (app.legacy_lengths.values[&app.editor.project.seams[0].id]
+                    .as_ref()
+                    .unwrap()[0]
+                    - 0.45)
+                    .abs()
+                    < 1e-12
+            );
+        }
+        fs::remove_file(path).unwrap();
+    }
+
+    #[test]
+    fn legacy_queries_are_lazy_errors_cached_and_groups_wait_for_matching_mesh_jobs() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = scene();
+        app.selected = None;
+        app.selected_curve = None;
+        QUERIES.set(0);
+        for _ in 0..3 {
+            frame(&ctx, &mut app, 180., vec![]);
+        }
+        assert!(app.legacy_lengths.values.is_empty());
+        assert_eq!(QUERIES.get(), 0);
+        frame(&ctx, &mut app, 3000., vec![]);
+        assert_eq!(QUERIES.get(), 1);
+        let seam = app.editor.project.seams[0].id;
+        app.editor.project.seams[0].a.t1 = app.editor.project.seams[0].a.t0;
+        app.rebuild();
+        frame(&ctx, &mut app, 3000., vec![]);
+        let queries = QUERIES.get();
+        for _ in 0..3 {
+            let output = frame(&ctx, &mut app, 3000., vec![]);
+            assert!(text(&output).contains("Lengths unavailable:"));
+            assert!(app.legacy_lengths.values[&seam].is_err());
+        }
+        assert_eq!(QUERIES.get(), queries);
+        for outcome in ["failed", "cancelled", "obsolete", "accepted"] {
+            let mut app = scene();
+            let current = Arc::new(app.editor.project.mesh().unwrap());
+            let mut old = (*current).clone();
+            old.doc_revision -= 1;
+            app.mesh = Some(Arc::new(old));
+            let (sender, receiver) = mpsc::channel();
+            app.job = Some(Job {
+                id: 72,
+                revision: app.editor.project.revision + u64::from(outcome == "obsolete"),
+                kind: JobKind::Mesh,
+                batch: None,
+                completed_steps: Arc::new(AtomicU64::new(0)),
+                cancel: Arc::new(AtomicBool::new(outcome == "cancelled")),
+                receiver,
+            });
+            app.poll();
+            frame(&ctx, &mut app, 3000., vec![]);
+            let pending = frame(&ctx, &mut app, 3000., vec![]);
+            assert!(text(&pending).contains("Lengths and guides rebuilding for this revision…"));
+            sender
+                .send(if outcome == "failed" {
+                    Err(JobError::Failed("Original test failure".into()))
+                } else {
+                    Ok(JobOutput::Mesh(current))
+                })
+                .ok()
+                .unwrap();
+            app.poll();
+            let output = frame(&ctx, &mut app, 3000., vec![]);
+            let labels = text(&output);
+            assert_eq!(
+                labels.contains("Lengths and guides rebuilding for this revision…"),
+                outcome == "obsolete"
+            );
+            if outcome == "failed" {
+                assert!(labels.contains("Lengths unavailable: Original test failure"));
+            }
+            if outcome == "cancelled" {
+                assert!(labels.contains("Lengths unavailable: Rest mesh job cancelled"));
+            }
+            assert_eq!(
+                labels.matches("B − A +200.000 mm").count(),
+                if outcome == "accepted" { 2 } else { 1 }
             );
         }
     }

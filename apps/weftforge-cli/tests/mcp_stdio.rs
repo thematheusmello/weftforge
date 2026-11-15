@@ -303,7 +303,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
     server.initialize("2025-11-25");
     let listed = server.request("tools/list", json!({}));
     let tools = listed["result"]["tools"].as_array().unwrap();
-    assert_eq!(tools.len(), 8);
+    assert_eq!(tools.len(), 9);
     assert!(
         tools
             .iter()
@@ -918,6 +918,272 @@ fn modern_metadata(version: &str) -> Value {
 }
 
 #[test]
+fn authored_lengths_match_cli_core_and_both_mcp_profiles_without_writes() {
+    use weftforge_core::CurveInterval;
+    let directory = Directory::new();
+    let path = directory.path("original.weftforge");
+    let unrelated = directory.path("unrelated.weftforge");
+    let invalid_project = directory.path("invalid.weftforge");
+    let mut editor = Editor::default();
+    editor
+        .execute(Command::AddPolygon {
+            name: "Original analytic parabola".into(),
+            vertices: vec![[0., 0.], [1., 1.], [0., 1.]],
+        })
+        .unwrap();
+    let a = editor.project.pieces[0].boundary[0];
+    let extra = editor.project.pieces[0].boundary[2];
+    editor
+        .execute(Command::SetCurveControls {
+            curve: a,
+            controls: Some([[1. / 3., 0.], [2. / 3., 1. / 3.]]),
+        })
+        .unwrap();
+    editor
+        .execute(Command::AddRectangle {
+            name: "Original paired panel".into(),
+            origin: [2., 0.],
+            width: 1.7,
+            height: 0.5,
+        })
+        .unwrap();
+    let b = editor.project.pieces[1].boundary[0];
+    let side_a = CurveInterval {
+        curve: a,
+        t0: 0.8,
+        t1: 0.2,
+    };
+    let side_b = CurveInterval {
+        curve: b,
+        t0: 0.1,
+        t1: 0.9,
+    };
+    editor
+        .execute(Command::AddSeam {
+            name: "Original legacy pair".into(),
+            a: side_a,
+            b: side_b,
+            correspondence: vec![[0., 0.], [0.3, 0.7], [1., 1.]],
+        })
+        .unwrap();
+    editor
+        .execute(Command::AddSewingGroup {
+            name: "Original disconnected pair".into(),
+            a: vec![side_a, CurveInterval::full(extra)],
+            b: vec![side_b],
+            correspondence: vec![[0., 0.], [0.4, 0.8], [1., 1.]],
+        })
+        .unwrap();
+    let project = &editor.project;
+    Project::default().save(&path).unwrap();
+    project.save(&path).unwrap();
+    fs::write(&unrelated, b"retained unrelated destination").unwrap();
+    fs::write(&invalid_project, b"{invalid native input").unwrap();
+    let retained = fs::read(&path).unwrap();
+    let recovery = fs::read(recovery_path(&path)).unwrap();
+    let primitive = |t: f64| t * (1. + 4. * t * t).sqrt() / 2. + (2. * t).asinh() / 4.;
+    let expected_a = primitive(0.8) - primitive(0.2);
+    let requests = [
+        (
+            json!({"type":"interval","data":{"curve":a,"t0":0.8,"t1":0.2}}),
+            vec![
+                "interval".to_string(),
+                a.to_string(),
+                "0.8".into(),
+                "0.2".into(),
+            ],
+            vec![project.interval_length(side_a).unwrap()],
+            vec![expected_a],
+        ),
+        (
+            json!({"type":"seam","data":{"id":project.seams[0].id}}),
+            vec!["seam".to_string(), project.seams[0].id.to_string()],
+            project.seam_lengths(project.seams[0].id).unwrap().to_vec(),
+            vec![expected_a, 1.36],
+        ),
+        (
+            json!({"type":"sewing_group","data":{"id":project.sewing_groups[0].id}}),
+            vec![
+                "sewing-group".to_string(),
+                project.sewing_groups[0].id.to_string(),
+            ],
+            project
+                .sewing_group_geometry(project.sewing_groups[0].id)
+                .unwrap()
+                .lengths
+                .to_vec(),
+            vec![expected_a + 1., 1.36],
+        ),
+    ];
+    for modern in [false, true] {
+        let mut server = Server::start();
+        if !modern {
+            server.initialize("2025-11-25");
+        }
+        let metadata = modern_metadata("2026-07-28");
+        let profile_params = |mut params: Value| {
+            if modern {
+                params["_meta"] = metadata.clone();
+            }
+            params
+        };
+        let listed = server.request("tools/list", profile_params(json!({})));
+        let tool = listed["result"]["tools"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|tool| tool["name"] == "project_lengths")
+            .unwrap();
+        assert_eq!(
+            tool["annotations"],
+            json!({"readOnlyHint":true,"destructiveHint":false,"openWorldHint":false})
+        );
+        assert_eq!(tool["inputSchema"]["required"], json!(["path", "query"]));
+        assert_eq!(tool["inputSchema"]["additionalProperties"], false);
+        let variants = tool["inputSchema"]["properties"]["query"]["oneOf"]
+            .as_array()
+            .unwrap();
+        assert_eq!(variants.len(), 3);
+        for variant in variants {
+            assert_eq!(variant["additionalProperties"], false);
+            assert_eq!(variant["properties"]["data"]["additionalProperties"], false);
+            let properties = &variant["properties"]["data"]["properties"];
+            if variant["properties"]["type"]["const"] == "interval" {
+                assert_eq!(properties["curve"]["minimum"], 1);
+                assert_eq!(
+                    properties["t0"],
+                    json!({"type":"number","minimum":0,"maximum":1})
+                );
+                assert_eq!(properties["t1"], properties["t0"]);
+            } else {
+                assert_eq!(properties["id"]["minimum"], 1);
+            }
+        }
+        for (query, args, core, expected) in &requests {
+            let output = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+                .arg("lengths")
+                .arg(&path)
+                .args(args)
+                .output()
+                .unwrap();
+            assert!(
+                output.status.success(),
+                "{}",
+                String::from_utf8_lossy(&output.stderr)
+            );
+            assert!(output.stderr.is_empty());
+            let cli: Value = serde_json::from_slice(&output.stdout).unwrap();
+            let response = server.request(
+                "tools/call",
+                profile_params(
+                    json!({"name":"project_lengths","arguments":{"path":path,"query":query}}),
+                ),
+            );
+            assert_eq!(success(&response), &cli);
+            assert_eq!(cli["source_revision"], project.revision);
+            assert_eq!(cli["length_unit"], "m");
+            assert_eq!(cli["query"], *query);
+            let actual = if core.len() == 1 {
+                vec![cli["length_m"].as_f64().unwrap()]
+            } else {
+                cli["lengths_m"]
+                    .as_array()
+                    .unwrap()
+                    .iter()
+                    .map(|v| v.as_f64().unwrap())
+                    .collect()
+            };
+            assert_eq!(&actual, core);
+            for (a, e) in actual.iter().zip(expected) {
+                assert!((a - e).abs() <= 1e-8, "{a} != {e}");
+            }
+            if actual.len() == 2 {
+                assert_eq!(
+                    cli["mismatch_b_minus_a_m"].as_f64().unwrap(),
+                    actual[1] - actual[0]
+                );
+                assert!(((actual[1] - actual[0]) - (expected[1] - expected[0])).abs() <= 2e-8);
+            }
+        }
+        let invalid_queries = [
+            json!({"type":"interval","data":{"curve":u64::MAX,"t0":0.,"t1":1.}}),
+            json!({"type":"seam","data":{"id":u64::MAX}}),
+            json!({"type":"sewing_group","data":{"id":u64::MAX}}),
+            json!({"type":"interval","data":{"curve":a,"t0":0.2,"t1":0.2}}),
+            json!({"type":"interval","data":{"curve":a,"t0":0.,"t1":1e-8}}),
+            json!({"type":"interval","data":{"curve":a,"t0":-0.1,"t1":1.}}),
+            json!({"type":"interval","data":{"curve":a,"t0":0.,"t1":1.1}}),
+            json!({"type":"interval","data":{"curve":a,"t0":0.,"t1":null}}),
+            json!({"type":"interval","data":{"curve":a,"t0":0.}}),
+            json!({"type":"seam","data":{"id":project.seams[0].id,"unknown":true}}),
+            json!({"type":"seam","data":{"id":project.seams[0].id},"unknown":true}),
+            json!({"type":"seam","data":null}),
+            json!({"type":"unknown","data":{}}),
+            Value::Null,
+        ];
+        for query in invalid_queries {
+            tool_error(&server.request(
+                "tools/call",
+                profile_params(
+                    json!({"name":"project_lengths","arguments":{"path":path,"query":query}}),
+                ),
+            ));
+        }
+        for replacement in ["\"t0\":0.8,\"t0\":0.6", "\"t0\":null", "\"t0\":NaN"] {
+            let raw=json!({"jsonrpc":"2.0","id":"raw-query","method":"tools/call","params":profile_params(json!({"name":"project_lengths","arguments":{"path":path,"query":requests[0].0}}))}).to_string().replace("\"t0\":0.8",replacement);
+            server.send(&raw);
+            let response = server.receive();
+            if replacement.contains("NaN") {
+                assert_eq!(response["error"]["code"], -32700);
+            } else {
+                tool_error(&response);
+            }
+        }
+        let raw=json!({"jsonrpc":"2.0","id":"duplicate-tag","method":"tools/call","params":profile_params(json!({"name":"project_lengths","arguments":{"path":path,"query":requests[0].0}}))}).to_string().replace("\"type\":\"interval\"","\"type\":\"interval\",\"type\":\"seam\"");
+        server.send(&raw);
+        tool_error(&server.receive());
+        tool_error(&server.request("tools/call",profile_params(json!({"name":"project_lengths","arguments":{"path":invalid_project,"query":requests[0].0}}))));
+        success(&server.request(
+            "tools/call",
+            profile_params(
+                json!({"name":"project_lengths","arguments":{"path":path,"query":requests[0].0}}),
+            ),
+        ));
+        server.finish();
+    }
+    for args in [
+        vec!["interval".into(), a.to_string(), "NaN".into(), "1".into()],
+        vec!["interval".into(), a.to_string(), "0".into(), "inf".into()],
+        vec!["seam".into()],
+        vec![
+            "seam".into(),
+            project.seams[0].id.to_string(),
+            "extra".into(),
+        ],
+        vec!["unknown".into()],
+    ] {
+        let output = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+            .arg("lengths")
+            .arg(&path)
+            .args(args)
+            .output()
+            .unwrap();
+        assert!(!output.status.success());
+        assert!(output.stdout.is_empty());
+    }
+    assert_eq!(fs::read(&path).unwrap(), retained);
+    assert_eq!(fs::read(recovery_path(&path)).unwrap(), recovery);
+    assert_eq!(
+        fs::read(&unrelated).unwrap(),
+        b"retained unrelated destination"
+    );
+    assert_eq!(
+        fs::read(&invalid_project).unwrap(),
+        b"{invalid native input"
+    );
+}
+
+#[test]
 fn stdio_validates_protocol_lifecycle_modern_metadata_and_line_bounds() {
     let directory = Directory::new();
     let path = directory.path("modern.weftforge");
@@ -950,7 +1216,7 @@ fn stdio_validates_protocol_lifecycle_modern_metadata_and_line_bounds() {
         json!(["2026-07-28"])
     );
     let listed = server.request("tools/list", json!({"_meta":modern_metadata("2026-07-28")}));
-    assert_eq!(listed["result"]["tools"].as_array().unwrap().len(), 8);
+    assert_eq!(listed["result"]["tools"].as_array().unwrap().len(), 9);
     assert_eq!(listed["result"]["cacheScope"], "public");
     assert_eq!(listed["result"]["ttlMs"], 0);
     success(&server.request("tools/call", json!({"_meta":modern_metadata("2026-07-28"),"name":"project_create","arguments":{"output":path}})));

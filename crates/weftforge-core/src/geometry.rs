@@ -295,19 +295,7 @@ impl Project {
             .iter()
             .find(|seam| seam.id == id)
             .ok_or_else(|| Error("Unknown seam".into()))?;
-        let mut lengths = [0.0; 2];
-        for (side, interval) in [seam.a, seam.b].into_iter().enumerate() {
-            let curve = self
-                .curve(interval.curve)
-                .ok_or_else(|| Error("Missing seam curve".into()))?;
-            let mut previous = curve.evaluate(self, interval.t0)?;
-            for step in 1..=128 {
-                let next = curve.evaluate(self, interval.parameter(f64::from(step) / 128.0))?;
-                lengths[side] += distance(previous, next);
-                previous = next;
-            }
-        }
-        Ok(lengths)
+        Ok([self.interval_length(seam.a)?, self.interval_length(seam.b)?])
     }
 }
 

@@ -147,6 +147,13 @@ struct InspectArgs {
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
+struct LengthArgs {
+    path: String,
+    query: super::LengthQuery,
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
 struct CreateArgs {
     output: String,
 }
@@ -385,6 +392,7 @@ fn call(line: &[u8]) -> Result<Value, String> {
     if !matches!(
         header.name.as_str(),
         "project_inspect"
+            | "project_lengths"
             | "project_create"
             | "project_execute"
             | "project_import_svg"
@@ -397,6 +405,11 @@ fn call(line: &[u8]) -> Result<Value, String> {
     }
     let operation = || -> super::Result<Value> {
         match header.name.as_str() {
+            "project_lengths" => {
+                let args: LengthArgs = arguments(line)?;
+                let project = Project::load(Path::new(&args.path))?;
+                super::length_report(&project, args.query)
+            }
             "project_inspect" => {
                 let args: InspectArgs = arguments(line)?;
                 let project = Project::load(Path::new(&args.path))?;
@@ -493,6 +506,23 @@ fn object(properties: Value, required: &[&str]) -> Value {
 
 fn array(items: Value, length: usize) -> Value {
     json!({"type":"array","items":items,"minItems":length,"maxItems":length})
+}
+
+fn length_query_schema() -> Value {
+    let id = json!({"type":"integer","minimum":1,"maximum":u64::MAX});
+    let parameter = json!({"type":"number","minimum":0,"maximum":1});
+    let variants = [
+        (
+            "interval",
+            object(
+                json!({"curve":id,"t0":parameter,"t1":parameter}),
+                &["curve", "t0", "t1"],
+            ),
+        ),
+        ("seam", object(json!({"id":id}), &["id"])),
+        ("sewing_group", object(json!({"id":id}), &["id"])),
+    ];
+    json!({"oneOf":variants.into_iter().map(|(name,data)|object(json!({"type":{"const":name},"data":data}), &["type","data"])).collect::<Vec<_>>()})
 }
 
 fn command_schema() -> Value {
@@ -665,6 +695,7 @@ fn tools() -> Vec<Value> {
     let files = object(json!({"input":path,"output":path}), &["input", "output"]);
     [
         ("project_inspect", "Load a validated native project; return every authored object and stable relationship in SI units, without building a mesh.", object(json!({"path":path}), &["path"]), true),
+        ("project_lengths", "Read authored/rest interval, legacy seam or ordered sewing-group lengths in unrounded SI metres, with source revision and signed B minus A. No mesh, simulation, history or file writes.", object(json!({"path":path,"query":length_query_schema()}), &["path","query"]), true),
         ("project_create", "Save an empty native project to a new path. Existing files are refused.", object(json!({"output":path}), &["output"]), false),
         ("project_execute", "Load input, execute 1–1024 shared typed commands atomically as one document revision, then save output with native atomic/recovery handling. Input and output may be the same native file. Inspect stable IDs before edits; nested transactions are rejected.", object(json!({"input":path,"output":path,"commands":{"type":"array","minItems":1,"maxItems":MAX_COMMANDS,"items":command_schema()}}), &["input","output","commands"]), false),
         ("project_import_svg", "Add closed straight/cubic SVG exterior patterns as one editable transaction. Require physical mm width/height and a uniform viewBox scale; retain the SVG user-space origin and invert Y. Import names with first material/default 3D placement; omit appearance, sewing, grain and simulation. Unsupported content fails the entire import; source SVG is preserved.", object(json!({"input":path,"output":path,"svg":path}), &["input","output","svg"]), false),
