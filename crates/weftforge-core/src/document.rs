@@ -604,22 +604,32 @@ impl Project {
         Ok(id)
     }
 
+    fn import_patterns(
+        &mut self,
+        patterns: Vec<crate::persistence::ImportedPattern>,
+    ) -> Result<()> {
+        for pattern in patterns {
+            let first_curve = self.curves.len();
+            self.apply(Command::AddPolygon {
+                name: pattern.name,
+                vertices: pattern.vertices,
+            })?;
+            for (curve, controls) in self.curves[first_curve..].iter_mut().zip(pattern.controls) {
+                curve.controls = controls;
+            }
+        }
+        Ok(())
+    }
+
     fn apply(&mut self, command: Command) -> Result<()> {
         match command {
             Command::ImportSvgPatterns { svg } => {
                 let imported = crate::SvgPatternImport::from_bytes(svg.as_bytes())?;
-                for pattern in imported.patterns {
-                    let first_curve = self.curves.len();
-                    self.apply(Command::AddPolygon {
-                        name: pattern.name,
-                        vertices: pattern.vertices,
-                    })?;
-                    for (curve, controls) in
-                        self.curves[first_curve..].iter_mut().zip(pattern.controls)
-                    {
-                        curve.controls = controls;
-                    }
-                }
+                self.import_patterns(imported.patterns)?;
+            }
+            Command::ImportDxfPatterns { dxf } => {
+                let imported = crate::DxfPatternImport::from_bytes(dxf.as_bytes())?;
+                self.import_patterns(imported.patterns)?;
             }
             Command::AddPolygon { name, vertices } => {
                 ensure(
@@ -1305,6 +1315,9 @@ pub(crate) fn validate_coordinates<const N: usize>(point: &[f64; N]) -> Result<(
 pub enum Command {
     ImportSvgPatterns {
         svg: String,
+    },
+    ImportDxfPatterns {
+        dxf: String,
     },
     AddPolygon {
         name: String,

@@ -174,6 +174,14 @@ struct ImportSvgArgs {
     svg: String,
 }
 
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct ImportDxfArgs {
+    input: String,
+    output: String,
+    dxf: String,
+}
+
 #[derive(Default)]
 enum LegacyState {
     #[default]
@@ -380,6 +388,7 @@ fn call(line: &[u8]) -> Result<Value, String> {
             | "project_create"
             | "project_execute"
             | "project_import_svg"
+            | "project_import_dxf"
             | "project_export_svg"
             | "project_export_obj"
             | "project_export_dxf"
@@ -425,6 +434,14 @@ fn call(line: &[u8]) -> Result<Value, String> {
                     Path::new(&args.input),
                     Path::new(&args.output),
                     Path::new(&args.svg),
+                )
+            }
+            "project_import_dxf" => {
+                let args: ImportDxfArgs = arguments(line)?;
+                super::import_dxf(
+                    Path::new(&args.input),
+                    Path::new(&args.output),
+                    Path::new(&args.dxf),
                 )
             }
             "project_export_svg" | "project_export_obj" | "project_export_dxf" => {
@@ -523,6 +540,13 @@ fn command_schema() -> Value {
         &["capsules"],
     );
     let variants = [
+        (
+            "import_dxf_patterns",
+            object(
+                json!({"dxf":{"type":"string","maxLength":weftforge_core::MAX_DXF_BYTES}}),
+                &["dxf"],
+            ),
+        ),
         (
             "import_svg_patterns",
             object(
@@ -642,6 +666,7 @@ fn tools() -> Vec<Value> {
         ("project_create", "Save an empty native project to a new path. Existing files are refused.", object(json!({"output":path}), &["output"]), false),
         ("project_execute", "Load input, execute 1–1024 shared typed commands atomically as one document revision, then save output with native atomic/recovery handling. Input and output may be the same native file. Inspect stable IDs before edits; nested transactions are rejected.", object(json!({"input":path,"output":path,"commands":{"type":"array","minItems":1,"maxItems":MAX_COMMANDS,"items":command_schema()}}), &["input","output","commands"]), false),
         ("project_import_svg", "Add closed straight/cubic SVG exterior patterns as one editable transaction. Require physical mm width/height and a uniform viewBox scale; retain the SVG user-space origin and invert Y. Import names with first material/default 3D placement; omit appearance, sewing, grain and simulation. Unsupported content fails the entire import; source SVG is preserved.", object(json!({"input":path,"output":path,"svg":path}), &["input","output","svg"]), false),
+        ("project_import_dxf", "Add the bounded FILE-005-v1 R2000 ASCII DXF LINE/clamped cubic SPLINE exterior patterns as one editable transaction. Require millimetres and exact closed ordered WF_PIECE layer contours; preserve WCS X/Y layout as U/V without inversion. Layer names become names with fresh IDs, first material and default 3D placement. Unsupported drawing content fails the entire import; source DXF is preserved.", object(json!({"input":path,"output":path,"dxf":path}), &["input","output","dxf"]), false),
         ("project_export_svg", "Export authored pattern curves at physical millimetre scale. Refuse replacement of the source or native project destinations.", files.clone(), false),
         ("project_export_obj", "Build and export a rest mesh in metres, Y-up, with source revision; no simulation. Refuse replacement of the source or native project destinations.", files.clone(), false),
         ("project_export_dxf", "Export authored exterior pattern boundaries as R2000 DXF LINE/SPLINE geometry in millimetres, without 3D placement. Sewing, materials and grain require the native project. Refuse replacement of source or native project destinations.", files, false),
