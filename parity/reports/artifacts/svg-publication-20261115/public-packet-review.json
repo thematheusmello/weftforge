@@ -1,0 +1,144 @@
+{
+  "schema": 1,
+  "kind": "Independent read-only review of prospective original native SVG public evidence packet",
+  "status": "NO_CONTENT_PRIVACY_PROVENANCE_BLOCKER_FOUND_WITHIN_REVIEWED_SCOPE",
+  "packet": "parity/reports/artifacts/native-svg-v3-20261115",
+  "checkout": ".local/svg-studio-integration-20261115",
+  "reviewed_source_commit": "32f9b3481c46e28a3b3acc49e6cf3908c7001b28",
+  "manifest_checks": {
+    "native-svg-v3-20261115": {
+      "manifest_sha256": "6cc1798e2c7017df241a14c0783ec85785d7521302ea04bfc0f9f6b4a8ad5262",
+      "files": 251,
+      "all_member_hashes_and_inventory_exact": true,
+      "symlinks": 0,
+      "private_prefix_account_or_absolute_path_hits": 0,
+      "compiled_product_binary_hits": 0
+    },
+    "native-svg-20261115": {
+      "manifest_sha256": "8405d19c1f52c79a53cc8d950aef3f339e8074a858724193dabc1b8494d207b3",
+      "files": 328,
+      "all_member_hashes_and_inventory_exact": true,
+      "symlinks": 0,
+      "private_prefix_account_or_absolute_path_hits": 0,
+      "compiled_product_binary_hits": 0
+    }
+  },
+  "provenance_checks": {
+    "copied_artifacts": 242,
+    "copy_categories": {
+      "byte_identical": 231,
+      "literal_JSON_derivative": 11
+    },
+    "all_declared_substitution_counts_and_reverse_bytes_exact": true,
+    "private_prefix_rules_verified": 2,
+    "private_literals_disclosed": false,
+    "case_payload_partition": {
+      "covered": 229,
+      "omitted": 46,
+      "total": 275
+    },
+    "bundle_omission_additional_record": true,
+    "exclusion_records": 47,
+    "omission_digests_and_sizes_match_closed_metadata": true,
+    "omitted_GUI_contents_not_read": true,
+    "accidental_save_alias_exact": true,
+    "exact_ID_projection_counts": [
+      1,
+      1,
+      0
+    ],
+    "exact_ID_running_counts": [
+      1,
+      1,
+      0
+    ],
+    "projection_timestamps_and_settled_interval_exact": true,
+    "unrelated_application_details_not_reproduced": true
+  },
+  "adapter_and_record_checks": {
+    "adapter_sha256": "33c25ae92335e05fdd0b7497edd9e42d2267da0b332de5f563cb87a282fc13a4",
+    "all_observer_assertions_passed": false,
+    "archived_package_sha256": "ef4e1a0f9ca797669e549f407a234ad0a8295fadab281d791b9ab92158b76a4e",
+    "history_checker_and_freeze_exact": true,
+    "history_fixed_to_v3_only": true,
+    "input_recoveries_retained": 2,
+    "module_attribute_assignments": [
+      "sys.dont_write_bytecode",
+      "checker.HERE",
+      "checker.ROOT",
+      "checker.ORIGINALS",
+      "checker.SPEC",
+      "checker.originals.__defaults__"
+    ],
+    "no_native_physics_or_build_invocation_in_adapter": true,
+    "original_checker_and_freeze_exact": true,
+    "premature_observer_assertion_retained": 1,
+    "recorded_cases": [
+      "v2_final_geometry",
+      "v3_final_geometry",
+      "v3_history"
+    ],
+    "recorded_history_negative_cases_exact": 19,
+    "recorded_original_negative_cases_exact": 13,
+    "recorded_portable_replay_sha256": "5ce4d3f7b59c1e346d016ad986e5b7d33ea25c7cacbcb5e9cc986e02b5bbe837",
+    "reference_parity": "0/56",
+    "replay_executed_by_reviewer": false,
+    "root_grade_and_checkpoint_digest_sets_exact": true,
+    "safe_main_AX_files": 45,
+    "safe_own_app_JPEG_files": 10,
+    "source_commit": "32f9b3481c46e28a3b3acc49e6cf3908c7001b28",
+    "source_files_hashed_exact": 45,
+    "spec_hash_exact": true,
+    "trace_before_records": 75,
+    "trace_returned_records": 75,
+    "tracked_clean_publication_certified_by_reviewer": false,
+    "unapproved_default_guard": "tuple value equality, not identity; no unapproved assignment observed",
+    "v2_strict_failure_retained": true
+  },
+  "unchanged_after_review": true,
+  "findings": [
+    {
+      "severity": "qualification",
+      "topic": "Default preservation guard",
+      "finding": "verify.py compares unapproved function default tuples by value equality, not object identity. Source review found no assignment to any unapproved default; the only default rebound is originals' captured fixture directory. Do not describe this guard as default-object identity checking.",
+      "publication_content_blocker": false
+    }
+  ],
+  "preserved_limits": {
+    "prior_v1_real_Cancel_failure_retained": true,
+    "prior_v2_strict_checkpoint_failure_retained": true,
+    "v3_qualifies_as_separate_prospective_case": true,
+    "v3_input_recoveries": 2,
+    "v3_premature_observer_assertion": 1,
+    "all_observer_assertions_passed": false,
+    "portable_result_scope": "Recorded bounded final-SVG static checks for v2/v3 plus prospective v3-only static history checks",
+    "reference_parity": "0/56",
+    "full_native_parity_claim": false,
+    "error_free_run_claim": false
+  },
+  "scope": {
+    "performed": [
+      "Read-only hash/inventory/privacy scans of both public packets",
+      "Literal forward/reverse comparison of all declared original copies and JSON derivatives",
+      "Metadata-only accounting for excluded private chooser/OS material",
+      "Exact bundle-ID projection recomputation from private inventories without reproducing unrelated applications",
+      "Source-pin, frozen-checker, recorded receipt, checkpoint and static adapter review"
+    ],
+    "excluded_private_contents_not_read": [
+      "OS file-chooser AX bodies",
+      "Unsafe file-chooser JPEGs",
+      "Sensitive caption AX"
+    ],
+    "not_performed": [
+      "Adapter or checker replay",
+      "Native actions",
+      "Builds",
+      "Physics or cloth initialization",
+      "Git mutations",
+      "Publication"
+    ],
+    "tracking_and_clean_checkout_not_certified": true,
+    "required_root_final_steps": "Track all 251 intended packet files, including the two safe autosave JSON files; run the default portable command and registry/map checks from a clean checkout."
+  },
+  "private_literals_reproduced": false
+}

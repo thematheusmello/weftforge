@@ -1,0 +1,17 @@
+The reviewed 251-file v3 working packet has no content, privacy or provenance blocker within this review's scope. Its manifest is `6cc1798e2c7017df241a14c0783ec85785d7521302ea04bfc0f9f6b4a8ad5262`; the prior 328-file packet remains exact at `8405d19c1f52c79a53cc8d950aef3f339e8074a858724193dabc1b8494d207b3`. Every listed member hash and the complete inventories matched before and after review.
+
+All 242 declared copies were checked against private originals: 231 are byte-identical and 11 are exact literal-prefix JSON derivatives. Declared replacement counts match; reversing both private prefix mappings reconstructs the original bytes and hashes. No JSON reserialization or image editing was observed. The accidental native Save As payload survives under its declared safe alias.
+
+The closed case's 275 payload files partition exactly into 229 covered originals and 46 omissions; the app bundle adds the 47th exclusion record. Exclusion hashes and sizes match closed metadata. Unsafe chooser JPEGs, OS/blank chooser AX, sensitive caption AX, raw app inventories, bundle and filesystem metadata are absent. Public files contain no tested private prefix/account token, personal absolute-path pattern, symlink or compiled product binary. Excluded chooser AX bodies and unsafe images were not opened for this review.
+
+The public quit projection uses exact bundle ID equality. Independent counting of the three private inventories reproduces total and running counts `[1,1,0]`; the zero observation occurs strictly after quit input completion and before fresh-launch input start. Unrelated app details are not reproduced. All 75 before/returned input pairs, 45 safe main-app AX files and 10 safe own-app JPEGs remain bound to their originals.
+
+The current 45 runtime source hashes, spec, package identity, original checker/freeze, history supplement/freeze and saved checkpoint digests match their declared bindings. Static adapter review found only the four declared original directory globals and the captured fixture-directory default rebound; numerical functions and thresholds remain those of the archived checkers. The recorded 13 original and 19 history negative cases match their frozen receipts. History paths are fixed to the seven v3 checkpoints; v2 receives final geometry checks only.
+
+One wording qualification: `verify.py` checks unapproved function default tuples with value equality, not object identity. I found no unapproved default assignment. Its function/code-object identity guards are separate. Describe the default guard accurately; this is not an observed checker mutation.
+
+The v1 Cancel failure and v2 strict checkpoint failure remain visible. V3 is a separately declared case with two input recoveries and one premature quit observer assertion; `all_observer_assertions_passed` remains false. The recorded portable result is bounded static evidence and retains `0/56` reference parity. It establishes neither an error-free run nor full native, physical or release parity.
+
+This review ran small read/hash/JSON/AST checks only. No adapter/checker replay, native action, source/packet edit, Git mutation, build or physical step was performed. Tracking and clean-checkout publication are not certified here. Root must track all 251 intended files, including the two safe autosave JSON files, then run the public default command and required registry/map checks from a clean checkout.
+
+Skipped: replay and clean-checkout publication gates remain root-owned. Risk: publication must retain the scoped claims and observer failures above.

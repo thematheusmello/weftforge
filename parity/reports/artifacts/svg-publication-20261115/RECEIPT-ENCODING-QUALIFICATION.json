@@ -1,0 +1,37 @@
+{
+  "kind": "Root publication wrapper receipt encoding correction; underlying command stdout/stderr unchanged",
+  "corrections": [
+    {
+      "name": "svg_static",
+      "original_filename": "svg_static.receipt.raw-encoding.txt",
+      "original_sha256": "601ff747ba8d997fd8c51344e742e0ebaa34b3bdbbd935bfc5badd8cc4a08d71",
+      "corrected_filename": "svg_static.receipt.json",
+      "corrected_sha256": "b2e807c14f913975bdfc53b35cbc46fcdb4d80b70273634a6eee8a2b01cdcb47",
+      "change": "Only replace final literal backslash+n suffix (5c6e) with one newline(0a); JSON values unchanged."
+    },
+    {
+      "name": "diagnostic_static",
+      "original_filename": "diagnostic_static.receipt.raw-encoding.txt",
+      "original_sha256": "1fd8331b0361eac7a645b6a03cf1c35c38d95d084f42c3d91313130b8cb522e6",
+      "corrected_filename": "diagnostic_static.receipt.json",
+      "corrected_sha256": "1c799849dd4dcefcb34c1e01a860e8ecea7dea6a193c9383330c8e119da82a52",
+      "change": "Only replace final literal backslash+n suffix (5c6e) with one newline(0a); JSON values unchanged."
+    },
+    {
+      "name": "registry",
+      "original_filename": "registry.receipt.raw-encoding.txt",
+      "original_sha256": "217dd86548a446c5c2d8c609f99911909836ce76feee55fdcc639fe237e171ea",
+      "corrected_filename": "registry.receipt.json",
+      "corrected_sha256": "ad6c6e121ef59fc6756ab1ca93ca89245ae3f6c8793c6f4157808e280bc85e95",
+      "change": "Only replace final literal backslash+n suffix (5c6e) with one newline(0a); JSON values unchanged."
+    },
+    {
+      "name": "map",
+      "original_filename": "map.receipt.raw-encoding.txt",
+      "original_sha256": "accea3223c6b70117c99419dda8ce4e0e9cf9aefb51b0577045ad605f2c95cc7",
+      "corrected_filename": "map.receipt.json",
+      "corrected_sha256": "33cd9e1d865c1213ce488e3f9f247003824c89f9f44095c73e61666330f94728",
+      "change": "Only replace final literal backslash+n suffix (5c6e) with one newline(0a); JSON values unchanged."
+    }
+  ]
+}

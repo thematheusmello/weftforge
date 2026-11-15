@@ -1,0 +1,176 @@
+{
+  "kind": "Portable static replay of unchanged final-SVG checker and prospective v3 history supplement",
+  "status": "BOUNDED_STATIC_CHECKS_PASSED",
+  "cases": {
+    "v2_final_geometry": {
+      "status": "STATIC_ARTIFACT_CHECKS_PASSED",
+      "saved_sha256": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c",
+      "reopened_sha256": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c",
+      "exported_svg_sha256": "730c7ef93c34e0063e7ca2e21f4b7704cbe266486b828922be63ed8f85483cae",
+      "saved_revision": 5,
+      "reopened_revision": 5,
+      "allowed_resave_revision_delta": 0,
+      "source_scale": {
+        "metres_per_user_unit": 0.002,
+        "view_box": [
+          -100.0,
+          -200.0,
+          300.0,
+          200.0
+        ],
+        "origin_policy": "user-space origin retained; no viewBox-min subtraction"
+      },
+      "export_scale": {
+        "metres_per_user_unit": 0.001,
+        "view_box": [
+          -160.0,
+          -1000.0,
+          1160.0,
+          1000.0
+        ],
+        "origin_policy": "user-space origin retained; no viewBox-min subtraction"
+      }
+    },
+    "v3_final_geometry": {
+      "status": "STATIC_ARTIFACT_CHECKS_PASSED",
+      "saved_sha256": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c",
+      "reopened_sha256": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c",
+      "exported_svg_sha256": "730c7ef93c34e0063e7ca2e21f4b7704cbe266486b828922be63ed8f85483cae",
+      "saved_revision": 5,
+      "reopened_revision": 5,
+      "allowed_resave_revision_delta": 0,
+      "source_scale": {
+        "metres_per_user_unit": 0.002,
+        "view_box": [
+          -100.0,
+          -200.0,
+          300.0,
+          200.0
+        ],
+        "origin_policy": "user-space origin retained; no viewBox-min subtraction"
+      },
+      "export_scale": {
+        "metres_per_user_unit": 0.001,
+        "view_box": [
+          -160.0,
+          -1000.0,
+          1160.0,
+          1000.0
+        ],
+        "origin_policy": "user-space origin retained; no viewBox-min subtraction"
+      }
+    },
+    "v3_history": {
+      "status": "STATIC_HISTORY_CHECKS_PASSED",
+      "actual_checkpoint_sha256": {
+        "baseline": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+        "imported": "b067e789e33cb350d449d1016e37b40562b74723c4e58e02685d19eba34a1484",
+        "undo": "f1c1193f59b46e75bd1e847b8c7152048b5fd5d382f0b331a67da6d8c42cf604",
+        "redo": "4ae70cba465adece15585ab48035cf88c651b7a869872bc5281360fd2671e946",
+        "edited": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c",
+        "rejected": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c",
+        "reopened": "37ddcb52789271eb64bb2e58f8f7b1925bbadecab695a92edbbb6150b1082a3c"
+      },
+      "declared_revisions": {
+        "baseline": 1,
+        "imported": 2,
+        "undo": 3,
+        "redo": 4,
+        "edited": 5,
+        "rejected": 5,
+        "reopened": 5
+      },
+      "allocator_baseline": 11,
+      "allocator_after_import_and_history": 29,
+      "analytic_allocation": [
+        {
+          "name": "Original & curved front",
+          "pieces": 1,
+          "points": 4,
+          "curves": 4
+        },
+        {
+          "name": "back-panel",
+          "pieces": 1,
+          "points": 4,
+          "curves": 4
+        }
+      ],
+      "fixed_v3_paths_enforced": true,
+      "v2_history_not_graded": true
+    }
+  },
+  "original_checker_sha256": "a015c01c864533d2f4e3b872da78c9fc72892b7b8f54a79aae9544fe5c984c6d",
+  "history_checker_sha256": "d890e405ea7708e7f451b3bc350b1fa69b31fcb94d496eaf66fb1b1fd4e304e2",
+  "original_synthetic_negatives": {
+    "status": "SELF_CHECKS_PASSED",
+    "native_workflow_acceptance": "NOT_RUN",
+    "synthetic_positive_case": true,
+    "rejected_cases": [
+      "wrong import scale",
+      "viewBox origin subtraction",
+      "missing cubic edit",
+      "wrong cubic control",
+      "omitted original piece",
+      "hidden material change",
+      "wrong export physical scale",
+      "reopen authoring change",
+      "original byte edit: baseline.weftforge",
+      "original byte edit: original-editable-patterns.svg",
+      "original byte edit: unsupported-transform.svg",
+      "relative SVG command",
+      "unclosed SVG path"
+    ],
+    "note": "Only checker self-tests; no actual native output was read or graded."
+  },
+  "history_synthetic_negatives": {
+    "status": "SELF_CHECKS_PASSED",
+    "native_v3_acceptance": "NOT_RUN",
+    "synthetic_positive_case": true,
+    "synthetic_ids": "permuted fresh IDs, not predicted allocation order",
+    "rejected_cases": [
+      "undo incorrectly restores allocator to 11",
+      "wrong import allocator",
+      "wrong surviving original ID",
+      "redo changes imported stable ID",
+      "wrong imported scale",
+      "wrong edited cubic geometry",
+      "missing imported piece",
+      "rejected input changes material",
+      "reopen changes authoring",
+      "changed baseline revision",
+      "changed imported revision",
+      "changed undo revision",
+      "changed redo revision",
+      "changed edited revision",
+      "changed rejected revision",
+      "changed reopened revision",
+      "original source edit: baseline.weftforge",
+      "original source edit: original-editable-patterns.svg",
+      "original source edit: unsupported-transform.svg"
+    ],
+    "note": "No v2 or v3 native outputs read; these are synthetic checker tests only."
+  },
+  "function_sources_code_objects_and_all_unapproved_defaults_unchanged": true,
+  "original_directory_globals_only": [
+    "HERE",
+    "ROOT",
+    "ORIGINALS",
+    "SPEC"
+  ],
+  "single_directory_default_mapping": "originals.__defaults__ = (public original-fixture directory,)",
+  "all_numerical_functions_constants_and_tolerances_unchanged": true,
+  "source45_hashes_and_archived_package_binding_match": true,
+  "both_original_root_grading_receipt_hash_sets_reproduced": true,
+  "public_quit_projection_timestamps_and_matching_counts_checked": true,
+  "packet_prior_and_source_bindings_exact_before_after": true,
+  "prior_v2_strict_status": "failed_strict_checkpoint_expectation",
+  "all_v3_observer_assertions_passed": false,
+  "new_ui_actions": 0,
+  "new_physical_steps": 0,
+  "new_cloth_initializations": 0,
+  "scratch_scope": "Only original synthetic checker temporary directories outside packet/repository",
+  "tracked_clean_publication_certified": false,
+  "reference_parity": "0/56",
+  "limits": "Exit0 reproduces bounded static artifact/history checks. It does not replay native actions, erase observer failures, regrade v2 history, certify original timing, or establish physical, release or reference parity."
+}

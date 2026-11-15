@@ -49,7 +49,11 @@ supplement passed, with exact revisions1/2/3/4/5/5/5 and allocators11/29/29/29/2
 Two actor input corrections and one premature quit-inventory assertion remain
 retained; all observer assertions did NOT pass. Settled inventory confirmed
 actual exit before the fresh Empty0 launch. Independent raw-trace/privacy review supports the bounded v3 flow and both
-frozen graders; clean tracked default-path replay/publication closure is pending. The newv3app is open paused
+frozen graders. Clean tracked12e9df passes both public default-path static
+replays, registry/map and all2,905 referenced artifact hashes. The tracked
+[publication closure](parity/reports/artifacts/svg-publication-20261115/ROOT-CLOSURE.json)
+keeps the results and qualifies a receipt-suffix encoding correction without
+changing command outcomes. Final metadata checks and GitHub publication remain. The newv3app is open paused
 in Rest with reopened revision5/three pieces. The v2app remains on the original
 Harbor rest preview; neither native case ran simulation.
 
@@ -113,11 +117,12 @@ Independent public-packet review at clean35cd5672 found no publication blockers.
 Root independently checked all2,294referenced artifacts and all40runtime bytes,
 and clean final registry/map checks passed. [PR38](https://github.com/thematheusmello/weftforge/pull/38)
 publishes this bounded increment; the original strict failures remain failed.
-Next: rerun required combined gates
-for the changed source, then execute the original SVG fixture through the real
-native chooser/import/edit/undo/save/reopen/export flow against the frozen
-independent geometry checker.
-Publish only tracked, reviewed evidence; no new garment dynamics are planned here.
+Independent public-packet review found no content, privacy or provenance blocker.
+All original copy/reversible path mappings, exclusions and exact-ID quit counts
+match; original13+history19 negative checks retain their frozen receipts.
+Next: check final metadata from a clean tracked checkout and publish this SVG/
+diagnostic increment, then review the separate balanced-stitch candidate before
+freezing any new physical protocol. No garment dynamics were run here.
 GitHub Actions and Pages must remain disabled until the complete project is done.
 
 ## Native visual preview checkpoint
