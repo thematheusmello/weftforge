@@ -371,7 +371,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "UI-002",
@@ -3979,7 +3979,7 @@
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current"
+      "freshness": "stale"
     },
     {
       "id": "PAT-004",
@@ -16312,7 +16312,9 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "spec/features/FILE-005-svg-pattern-import.md"
+      ],
       "scenarios": [
         {
           "id": "EXPORT-INDEPENDENT-001",
@@ -16368,7 +16370,8 @@
         "crates/weftforge-core/src/persistence/dxf.rs",
         "apps/weftforge/src/main.rs",
         "apps/weftforge-cli/src/main.rs",
-        "apps/weftforge-cli/src/mcp.rs"
+        "apps/weftforge-cli/src/mcp.rs",
+        "crates/weftforge-core/src/persistence/svg.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/6"
@@ -16807,7 +16810,8 @@
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Bounded R2000 pattern-boundary export in millimetres passes frozen raw geometry/structure and ordinary ezdxf1.4.5 audit with no errors or fixes. Native toolbar/search, CLI and official legacy SDK produce identical bytes for one original mixed fixture; import, apparel conventions, other consumers, printing and full garment round trips remain open."
+        "Bounded R2000 pattern-boundary export in millimetres passes frozen raw geometry/structure and ordinary ezdxf1.4.5 audit with no errors or fixes. Native toolbar/search, CLI and official legacy SDK produce identical bytes for one original mixed fixture; DXF import, apparel conventions, other consumers, printing and full garment round trips remain open.",
+        "Bounded editable SVG import has focused core/CLI/MCP/native-handler and independent consumer checks; full integrated gates and actual native chooser/import/edit/undo/save acceptance remain pending. No complete SVG/reference/printing claim."
       ],
       "contradictions": [],
       "blockers": [
