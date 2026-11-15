@@ -97,10 +97,22 @@ headless recovery/sentinel fixtures have exact privacy/hash review and root
 supplemental authorization. The original two-path HANDOFF scope and this staging
 correction are retained without changing packet bytes or Git ignore rules.
 
-Next: commit every selected artifact, run the single default static replay and
-registry/map/hash/source checks from a clean tracked checkout, then append safe
-closure receipts and repeat metadata checks before a root-owned publication PR.
-No new product, UI, Cargo or physics call is authorized for delivery metadata.
+Clean tracked `641ed20c633c49144ab6685a2302368930fc4e86` passes the single default static replay
+in 1.103424250 s, preserving four headless geometry/export grades,
+four exact MCP comparisons, nine native checkpoints/export pairs, 13 frozen
+synthetic checks and three adapter negatives. The three native gaps and old
+failures remain unchanged. Registry/map are terminal 0; all 4,018 referenced
+artifacts are tracked and hash-correct, with source49 plus the bounded spec
+unchanged (session 2221, wrapper 2037, replay PID 2355).
+The [closure](parity/reports/artifacts/dxf-studio-publication-20261115/ROOT-CLOSURE.json)
+records actual commands, exits, timeouts, source-object refs and scopes. The
+unchanged entrypoint keeps its own publication flag false; the external wrapper
+proves the clean/tracked delivery gate separately. Receipt metadata receives
+final clean registry/map/hash checks without another static replay.
+
+Next: root review and publish this source49 checkpoint through a root-owned PR.
+Full native-plan, printing, whole persistence/garment and reference acceptance
+remain open. No product, UI, Cargo or physics rerun was added for publication.
 Keep Actions and automated Pages deployments disabled; preserve the static site.
 
 ## Published solver checkpoint (PR40; source 2e9795)
