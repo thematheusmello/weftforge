@@ -448,3 +448,37 @@ bundle verification, all nine original DXFs through the pinned ordinary consumer
 native snapshot/Cancel-Redo and saved SDK replay. Historical physics replay
 reproduces the five failed quality screens. Later status/report metadata changes
 preserve all34 scoped runtime/test files and all113 artifact hashes.
+
+### Static capsule surface publication
+
+The [capsule surface packet](../parity/reports/artifacts/capsule-surface-20261115/README.md)
+binds the exact40runtime/test files from tested `0770204a54ab` and records its
+existing153Rust/54Python, formatting, strict Clippy, xtask and unsigned-package
+passes. It includes original source/harness/inputs, all362saved states and360
+step records, six actual OBJ exports, frozen independent methods and complete
+failed-frame lists. Source, authoring/rest, state and display exports remain
+distinct artifacts.
+
+Run the packet's `verify.py` from a Git checkout to verify its tracked manifest,
+source/input identities, original closed receipt chains and unchanged independent
+numerical replay. Exit0 means reproducibility of **two strict failures**, not
+garment acceptance. Both cases pass181/181static contact screens; base fails
+strain and33exact peak-attribution checks, and height fails attribution at6/10/18.
+All per-frame failures and uncertainty/initial-count verification stay visible.
+
+The original evaluator's24frozen files and private relative bindings remain
+byte-identical in `original-evaluator`; it is archival, with some historical
+private dependencies and original executables intentionally undistributed.
+The separate public derivative changes three module directory assignments and
+rest-binding path prefixes only. The replay checks all other evaluator AST and
+numerical bytes, then every deterministic saved analysis field. Closed execution
+times/resource counters are retained verbatim and audited as historical records;
+publication replay performs no new solver/UI execution or timed benchmark.
+Personal-path redaction is literal, with raw/public hashes and substitution
+provenance; derived files are never labelled frozen originals.
+
+The current report is implementation-only, failed and incomplete-contract;
+reference execution and single identified native workflow are false. b760 preview
+evidence and UI-001/PAT-003 freshness become stale after changed source while
+their original screenshots/receipt bytes remain unchanged. Verified parity stays
+0/56, no fullgarment gate is accepted, and Actions/Pages remain disabled.

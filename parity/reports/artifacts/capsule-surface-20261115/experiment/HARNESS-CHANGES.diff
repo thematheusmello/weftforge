@@ -1,0 +1,49 @@
+--- historical-harness/src/main.rs
++++ harness/src/main.rs
+@@ -35,7 +35,7 @@
+ }
+ 
+ fn snapshot(cloth: &Cloth, frame: usize, settings: StepSettings, wall: f64) -> Value {
+-    json!({"global_frame":frame,"settings_last_step":settings,"phase":if frame<=60 {"assembly"} else {"drape"},"case_wall_seconds":wall,"diagnostics":cloth.diagnostics(),"positions_m":cloth.positions(),"velocities_m_per_s":cloth.velocities()})
++    json!({"global_frame":frame,"settings_last_step":settings,"phase":if frame<=60 {"assembly"} else {"drape"},"producer_wall_seconds":wall,"diagnostics":cloth.diagnostics(),"positions_m":cloth.positions(),"velocities_m_per_s":cloth.velocities()})
+ }
+ 
+ fn main() -> Result<()> {
+@@ -72,6 +72,7 @@
+     assert_eq!(cloth.simulation_time(), 0.);
+     meta["masses_kg"] = json!(cloth.masses());
+     serde_json::to_writer_pretty(create(&output.join("rest-metadata.json"))?, &meta)?;
++    mesh.export_obj(output.join("stage-000.obj"))?;
+     let mut states = create(&output.join("trajectory.jsonl"))?;
+     let mut steps = create(&output.join("steps.jsonl"))?;
+     let settings = StepSettings {
+@@ -85,6 +86,7 @@
+         &mut states,
+         &snapshot(&cloth, 0, settings, start.elapsed().as_secs_f64()),
+     )?;
++    let mut last_settings = settings;
+     for frame in 1..=180 {
+         let settings = StepSettings {
+             gravity: if frame <= 60 {
+@@ -98,10 +100,11 @@
+         if let Err(error) = cloth.step(settings, || start.elapsed().as_secs_f64() >= 420.) {
+             write_json(
+                 &mut create(&output.join("failed-step.json"))?,
+-                &json!({"attempted_frame":frame,"last_retained_frame":frame-1,"settings":settings,"error":error.to_string(),"case_wall_seconds":start.elapsed().as_secs_f64(),"retained_state":snapshot(&cloth,frame-1,settings,start.elapsed().as_secs_f64())}),
++                &json!({"attempted_frame":frame,"last_retained_frame":frame-1,"settings":settings,"error":error.to_string(),"producer_wall_seconds":start.elapsed().as_secs_f64(),"retained_state":snapshot(&cloth,frame-1,last_settings,start.elapsed().as_secs_f64())}),
+             )?;
+             return Err(error.into());
+         }
++        last_settings = settings;
+         write_json(
+             &mut steps,
+             &json!({"global_frame":frame,"settings":settings,"measured_step_seconds":step_start.elapsed().as_secs_f64(),"diagnostics":cloth.diagnostics()}),
+@@ -128,7 +131,7 @@
+     let d = cloth.diagnostics();
+     serde_json::to_writer_pretty(
+         create(&output.join("completed-case.json"))?,
+-        &json!({"completed_frames":180,"case_wall_seconds":start.elapsed().as_secs_f64(),"final_diagnostics":d,"original_quality_passed":d.finite && d.seam_assembly_remaining==0. && d.max_stretch_error<0.15 && d.max_seam_error<0.005 && d.max_contact_error<0.002,"equilibrium_claim":false,"reference_parity":"not measured"}),
++        &json!({"completed_frames":180,"producer_wall_seconds":start.elapsed().as_secs_f64(),"final_diagnostics":d,"final_quality_passed":d.finite && d.seam_assembly_remaining==0. && d.max_stretch_error<0.15 && d.max_seam_error<0.005 && d.max_contact_error<0.002 && d.capsule_surface_uncertain_pairs==0,"equilibrium_claim":false,"reference_parity":"not measured"}),
+     )?;
+     Ok(())
+ }

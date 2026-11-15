@@ -1,0 +1,48 @@
+{
+  "metrics.py": {
+    "source": ".local/harbor-native-evaluator-20261114/metrics.py",
+    "source_sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610",
+    "exact_functions": "whole file",
+    "copy_sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610"
+  },
+  "geometry_math.py": {
+    "source": ".local/garment-fit-bound-review-20261114/analyze.py",
+    "source_sha256": "874dc956348904326014f2d783b44e9d4331d310b88cd5aead5d4ab93bccd1ca",
+    "exact_functions": [
+      "sub",
+      "dot",
+      "norm",
+      "cross",
+      "lerp",
+      "clamp",
+      "closest_segments"
+    ],
+    "copy_sha256": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40"
+  },
+  "static_geometry.py": {
+    "source": ".local/garment-fit-bound-review-20261114/static_witnesses.py",
+    "source_sha256": "503da5b6d6c8dc8dfab29fc44a125a727f45917ea69466f3b88b2892c03f9961",
+    "exact_functions": [
+      "barycentric",
+      "interpolate",
+      "point_triangle",
+      "triangle_axis"
+    ],
+    "copy_sha256": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34"
+  },
+  "decimal_oracle.py": {
+    "source": ".local/capsule-independent-review-20261115/check_static.py",
+    "source_sha256": "5725a70f6153691a160d7a0a4ee3bf4cbd51320b2792623508ac0871e46ac521",
+    "exact_functions": [
+      "add",
+      "sub",
+      "mul",
+      "dot",
+      "cross",
+      "norm",
+      "solve",
+      "independent_qp"
+    ],
+    "copy_sha256": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d"
+  }
+}

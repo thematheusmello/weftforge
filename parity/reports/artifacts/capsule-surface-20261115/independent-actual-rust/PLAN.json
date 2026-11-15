@@ -1,0 +1,36 @@
+{
+  "commit": "24dba7715233a7423088772d49c32a632d901a0c",
+  "case_count": 83,
+  "compile_command": [
+    "rustup",
+    "run",
+    "1.94.1",
+    "rustc",
+    "--edition=2024",
+    "--crate-name",
+    "capsule_static_check",
+    "harness.rs",
+    "-o",
+    "capsule-static-check"
+  ],
+  "execution_command": [
+    "./capsule-static-check"
+  ],
+  "working_directory": ".",
+  "rustc_sha256": "b69cbcffa5e990057035d53ccc8163e8392ce784f6abb114c19ceb61528ba9f6",
+  "engine_sha256": {
+    "sources/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "sources/capsule.rs": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7"
+  },
+  "prior_manifest_sha256": "1041f3bcee5c3c313c72c590b455fc124bcba2ef268251ccef5e406c91ca4e8a",
+  "source_factory_sha256": "febbfd391171243a642fd4feee0c17313950d6b7cf38d4e963fd8b50565f5cb4",
+  "frozen_files": {
+    "METHOD.md": "f72c71486425c135a4774169c30008519176ef70a7075e5d323b81b200bdbecf",
+    "prepare.py": "dfd5782110f862e0e05bd7bfb40725466c857eccb4a87381fd1bfa1c0bee421b",
+    "case-factory.py.txt": "febbfd391171243a642fd4feee0c17313950d6b7cf38d4e963fd8b50565f5cb4",
+    "inputs.json": "6ab7b275df6bc0966feeda0538c9e88cc08cea81b7e1f19238b9042cb0790121",
+    "expected.json": "39365c2f42c286cb7ccd565fbc34ea7c2c9cf914de2b67935808c70da136697e",
+    "harness.rs": "ed15519d991bdc7c160f7551165e7703533f7804aa783f713825836d54a3759e",
+    "compiler-version.txt": "a323109dfabfd30645bdf92aa834b93f71294c582ab67b977485d7f355ceba9a"
+  }
+}

@@ -1,0 +1,28 @@
+cases = []
+rng = random.Random(20261115)
+for i in range(48):
+    tri = [[rng.uniform(-1., 1.) for k in range(3)] for j in range(3)]
+    a, b = [[rng.uniform(-2., 2.) for k in range(3)] for j in range(2)]
+    cases.append(('ordinary_' + str(i), tri, a, b))
+for exponent in [-5, -7, -9, -12]:
+    height = 10. ** exponent
+    for z in [0., 1e-6, .1]:
+        tri = [[-1., 0., 0.], [1., 0., 0.], [0., height, 0.]]
+        cases.append((f'skinny_{exponent}_{z}', tri, [0., height / 2, z], [0., height / 2, z]))
+for shift in [0., 1e-10, .1]:
+    cases.append(('parallel_' + str(shift), [[-1., -1., 0.], [1., -1., 0.], [0., 1., 0.]], [-2., 0., shift], [2., 0., shift]))
+    cases.append(('near_parallel_' + str(shift), [[-1., 0., shift], [1., 1e-11, shift], [0., -1., shift]], [-2., 1e-9, 0.], [2., 1.04e-9, 0.]))
+cases += [('line', [[-1., 0., 0.], [0., 0., 0.], [1., 0., 0.]], [0., 1., 0.], [0., 1., 0.]),
+          ('point', [[0., 0., 0.]] * 3, [0., 1., 0.], [0., 2., 0.])]
+witness_path = ROOT / '.local/garment-fit-bound-review-20261114/static-witnesses.json'
+witnesses = json.loads(witness_path.read_text())
+for case in witnesses['cases']:
+    if case['label'] not in ['original_grain180', 'Harbor_A180_gold', 'Harbor_B180_gold']:
+        continue
+    w = case['worst_edge_capsule_witness']
+    cases.append((case['label'], w['triangle_positions_m'], w['capsule_axis_a_m'], w['capsule_axis_b_m']))
+for scale in [1e-10, 1e10]:
+    for label, tri, a, b in cases[:6]:
+        transform = lambda p: [scale * p[2], scale * p[0], scale * p[1]]
+        cases.append((label + '_scaled_' + str(scale), list(map(transform, tri)), transform(a), transform(b)))
+assert len(cases) <= 128

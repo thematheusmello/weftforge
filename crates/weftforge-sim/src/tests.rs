@@ -788,13 +788,16 @@ fn constructor_cancels_inside_initial_contact_query_without_publishing_state() {
     assert!(complete.diagnostics().finite);
 
     let analysis = Cell::new(0_usize);
-    let (_, intersections) = complete
-        .initial_contact_errors_cancellable(complete.positions(), &|| {
+    let analysis_errors = complete
+        .contact_errors_cancellable(complete.positions(), &|| {
             analysis.set(analysis.get() + 1);
             false
         })
         .unwrap();
-    assert_eq!(intersections, complete.diagnostics().initial_intersections);
+    assert_eq!(
+        analysis_errors.intersections,
+        complete.diagnostics().initial_intersections
+    );
     assert!(
         analysis.get() > 2 * input.positions.len(),
         "candidate-loop polling must occur inside each vertex, not only outside it"
@@ -837,12 +840,19 @@ fn initial_hierarchy_matches_brute_force_for_contacts_thickness_and_sewing_filte
         let cloth = Cloth::new(input.clone()).unwrap();
         // Keep an exhaustive diagnostic oracle independent of the hierarchy.
         let expected = cloth.exhaustive_contact_errors(&input.positions);
-        assert_eq!(cloth.diagnostics().max_contact_error, expected.0);
-        assert_eq!(cloth.diagnostics().initial_intersections, expected.1);
+        assert_eq!(cloth.diagnostics().max_contact_error, expected.maximum);
+        assert_eq!(
+            cloth.diagnostics().initial_intersections,
+            expected.intersections
+        );
+        assert_eq!(
+            cloth.diagnostics().capsule_surface_uncertain_pairs,
+            expected.uncertain_capsule_pairs
+        );
         assert_eq!(cloth.positions(), input.positions);
         assert_eq!(cloth.simulation_time(), 0.);
         assert!(cloth.diagnostics().finite);
-        expected.1
+        expected.intersections
     };
     assert_eq!(compare(square()), 0); // Adjacent triangles are excluded.
     for separation in [0., 0.001, 0.004, 0.02, 0.02000001, 1.] {
@@ -943,4 +953,284 @@ fn cancellable_constructor_keeps_invalid_input_checks_and_honors_early_cancel() 
         Err(SimulationError::Cancelled)
     ));
     assert_eq!(calls.get(), 1);
+}
+
+fn capsule_triangle_input(
+    triangle: [Vec3; 3],
+    thickness: f64,
+    colliders: Vec<Collider>,
+) -> ClothInput {
+    ClothInput {
+        positions: triangle.to_vec(),
+        material_uv: triangle.map(|p| [p[0], p[1]]).to_vec(),
+        triangles: vec![[0, 1, 2]],
+        triangle_materials: vec![Material {
+            damping: 0.,
+            friction: 0.,
+            bending_stiffness: 0.,
+            collision_thickness: thickness,
+            ..Default::default()
+        }],
+        colliders,
+        ..Default::default()
+    }
+}
+
+fn edge_capsule_input() -> ClothInput {
+    capsule_triangle_input(
+        [[-1., 0., 0.1], [1., 0., 0.1], [0., 2., 0.1]],
+        0.05,
+        vec![Collider::Capsule {
+            a: [0., -1., 0.],
+            b: [0., 1., 0.],
+            radius: 0.2,
+        }],
+    )
+}
+
+#[test]
+fn capsule_surface_projection_uses_barycentric_inverse_masses_and_existing_friction() {
+    let input = edge_capsule_input();
+    for &p in &input.positions {
+        assert!(contact::collider_contact(input.colliders[0], p, 0.05).is_none());
+    }
+    for friction in [0., 0.5] {
+        let mut cloth = Cloth::new(input.clone()).unwrap();
+        cloth.inverse_masses = vec![1., 3., 0.];
+        cloth.friction.fill(friction);
+        let mut x = input.positions.clone();
+        let previous: Vec<_> = x.iter().map(|&p| sub(p, [0.1, 0., 0.])).collect();
+        assert_eq!(
+            cloth
+                .project_colliders(&mut x, &previous, &|| false)
+                .unwrap(),
+            1
+        );
+        // beta=(1/2,1/2,0), sum(w*beta²)=1, depth=.15 m.
+        for (j, weight) in [1., 3., 0.].into_iter().enumerate() {
+            assert!((x[j][2] - input.positions[j][2] - weight * 0.5 * 0.15).abs() < 1e-14);
+            assert!(
+                (x[j][0] - input.positions[j][0] + weight * 0.5 * friction * 0.15).abs() < 1e-14
+            );
+            assert_eq!(x[j][1], input.positions[j][1]);
+        }
+        assert_eq!(x[2], input.positions[2]);
+    }
+}
+
+#[test]
+fn capsule_surface_fixed_nodes_report_conflict_and_reset_restores_full_occupancy() {
+    let mut input = edge_capsule_input();
+    input.pins = input
+        .positions
+        .iter()
+        .enumerate()
+        .map(|(vertex, &target)| Pin { vertex, target })
+        .collect();
+    let rest = input.positions.clone();
+    let mut cloth = Cloth::new(input).unwrap();
+    assert_eq!(cloth.diagnostics().initial_intersections, 1);
+    assert!((cloth.diagnostics().max_contact_error - 0.15).abs() < 1e-14);
+    let result = cloth.step(settings(), || false).unwrap();
+    assert!(result.finite);
+    assert_eq!(result.contacts, 0);
+    assert!((result.max_contact_error - 0.15).abs() < 1e-14);
+    assert_eq!(cloth.positions(), rest);
+    cloth.reset();
+    assert_eq!(cloth.diagnostics().initial_intersections, 1);
+    assert!((cloth.diagnostics().max_contact_error - 0.15).abs() < 1e-14);
+    assert_eq!(cloth.diagnostics().capsule_surface_uncertain_pairs, 0);
+}
+
+#[test]
+fn final_capsule_surface_residual_rechecks_contacts_undone_by_a_later_capsule() {
+    let triangle = [[-1., -1., 0.], [1., -1., 0.], [0., 2., 0.]];
+    let input = capsule_triangle_input(
+        triangle,
+        0.01,
+        [-0.2, 0.2]
+            .map(|z| Collider::Capsule {
+                a: [0., 0., z],
+                b: [0., 0., z],
+                radius: 0.25,
+            })
+            .to_vec(),
+    );
+    let mut cloth = Cloth::new(input).unwrap();
+    assert_eq!(cloth.diagnostics().initial_intersections, 2);
+    assert!((cloth.diagnostics().max_contact_error - 0.06).abs() < 1e-14);
+    let result = cloth
+        .step(
+            StepSettings {
+                iterations: 1,
+                ..settings()
+            },
+            || false,
+        )
+        .unwrap();
+    assert!(result.finite);
+    assert_eq!(result.contacts, 2);
+    // Equal beta and masses translate the whole face: +.06 m then -.12 m.
+    for p in cloth.positions() {
+        assert!((p[2] + 0.06).abs() < 1e-14);
+    }
+    assert!((result.max_contact_error - 0.12).abs() < 1e-14);
+    cloth.reset();
+    assert_eq!(cloth.positions(), triangle);
+    assert!((cloth.diagnostics().max_contact_error - 0.06).abs() < 1e-14);
+    assert_eq!(cloth.diagnostics().initial_intersections, 2);
+    assert_eq!(cloth.simulation_time(), 0.);
+}
+
+#[test]
+fn capsule_axis_face_crossing_has_finite_deterministic_recovery_and_honest_residual() {
+    let triangle = [[-2., -2., 0.], [2., -2., 0.], [0., 2., 0.]];
+    let a = [0., 0., -1.];
+    let b = [0., 0., 1.];
+    let input = capsule_triangle_input(
+        triangle,
+        0.05,
+        vec![Collider::Capsule { a, b, radius: 0.2 }],
+    );
+    for &p in &input.positions {
+        assert!(contact::collider_contact(input.colliders[0], p, 0.05).is_none());
+    }
+    let mut cloth = Cloth::new(input).unwrap();
+    assert_eq!(cloth.diagnostics().initial_intersections, 1);
+    assert!((cloth.diagnostics().max_contact_error - 0.25).abs() < 1e-14);
+    let mut repeat = cloth.clone();
+    let settings = StepSettings {
+        iterations: 2,
+        ..settings()
+    };
+    let result = cloth.step(settings, || false).unwrap();
+    repeat.step(settings, || false).unwrap();
+    assert!(result.finite);
+    assert!(result.contacts > 0);
+    assert_eq!(cloth.positions(), repeat.positions());
+    assert_ne!(cloth.positions(), triangle);
+    let current = cloth.positions();
+    let feature = capsule::closest([current[0], current[1], current[2]], a, b);
+    assert!(result.max_contact_error >= (0.25 - feature.distance).max(0.) - 1e-14);
+    assert!(cloth.positions().iter().copied().all(finite));
+}
+
+#[test]
+fn conservative_skinny_capsule_pairs_remain_visible_and_exact_collapsed_faces_are_not_dropped() {
+    let triangle = [[-1., 0., 0.], [1., 0., 0.], [0., 1e-8, 0.]];
+    let mut input = capsule_triangle_input(
+        triangle,
+        1e-4,
+        vec![Collider::Capsule {
+            a: [0., 0.5e-8, 1e-3],
+            b: [0., 0.5e-8, 1e-3],
+            radius: 2e-3,
+        }],
+    );
+    input.pins = triangle
+        .into_iter()
+        .enumerate()
+        .map(|(vertex, target)| Pin { vertex, target })
+        .collect();
+    let mut cloth = Cloth::new(input).unwrap();
+    assert_eq!(cloth.diagnostics().capsule_surface_uncertain_pairs, 1);
+    assert!(cloth.diagnostics().max_contact_error >= 0.0011);
+    let result = cloth.step(settings(), || false).unwrap();
+    assert!(result.finite);
+    assert_eq!(result.capsule_surface_uncertain_pairs, 1);
+    assert!(result.max_contact_error >= 0.0011);
+    cloth.reset();
+    assert_eq!(cloth.diagnostics().capsule_surface_uncertain_pairs, 1);
+
+    let mut input = edge_capsule_input();
+    input.pins = input
+        .positions
+        .iter()
+        .enumerate()
+        .map(|(vertex, &target)| Pin {
+            vertex,
+            target: if vertex == 2 { [0., 0., 0.1] } else { target },
+        })
+        .collect();
+    let mut collapsed = Cloth::new(input).unwrap();
+    let result = collapsed.step(settings(), || false).unwrap();
+    assert!(result.finite);
+    assert_eq!(result.capsule_surface_uncertain_pairs, 0);
+    assert!((result.max_contact_error - 0.15).abs() < 1e-14);
+    assert_eq!(result.contacts, 0);
+}
+
+#[test]
+fn capsule_projection_and_final_surface_analysis_cancellation_preserve_the_accepted_step() {
+    use std::cell::Cell;
+    let mut input = edge_capsule_input();
+    let second: Vec<_> = input
+        .positions
+        .iter()
+        .map(|&p| add(p, [5., 0., 0.]))
+        .collect();
+    input.positions.extend(second);
+    input.material_uv.extend([[4., 0.], [6., 0.], [5., 2.]]);
+    input.triangles.push([3, 4, 5]);
+    input.triangle_materials.push(input.triangle_materials[0]);
+    input.stitches.push(Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(3),
+        compliance: 1e-8,
+    });
+    let mut accepted = Cloth::new(input).unwrap();
+    accepted.step(settings(), || false).unwrap();
+    let mut complete = accepted.clone();
+    let total = Cell::new(0);
+    complete
+        .step(settings(), || {
+            total.set(total.get() + 1);
+            false
+        })
+        .unwrap();
+    let collider_calls = Cell::new(0);
+    let previous = accepted.input.positions.clone();
+    let mut candidate = previous.clone();
+    accepted
+        .project_colliders(&mut candidate, &previous, &|| {
+            collider_calls.set(collider_calls.get() + 1);
+            false
+        })
+        .unwrap();
+    assert_ne!(candidate, previous);
+    let calls = Cell::new(0);
+    let mut partial = previous.clone();
+    assert!(matches!(
+        accepted.project_colliders(&mut partial, &previous, &|| {
+            calls.set(calls.get() + 1);
+            calls.get() == collider_calls.get()
+        }),
+        Err(SimulationError::Cancelled)
+    ));
+    assert_ne!(partial, previous);
+    let old_positions = accepted.positions().to_vec();
+    let old_velocities = accepted.velocities().to_vec();
+    let old_targets = accepted.seam_remaining.clone();
+    let old_diagnostics = format!("{:?}", accepted.diagnostics());
+    // The first iteration's last collider poll follows a projected first triangle;
+    // the complete call's penultimate poll is inside the final surface residual scan.
+    for stop_at in [3 + collider_calls.get(), total.get() - 1] {
+        let calls = Cell::new(0);
+        let error = accepted
+            .step(settings(), || {
+                calls.set(calls.get() + 1);
+                calls.get() == stop_at
+            })
+            .unwrap_err();
+        assert_eq!(error, SimulationError::Cancelled);
+        assert_eq!(calls.get(), stop_at);
+        assert_eq!(accepted.positions(), old_positions);
+        assert_eq!(accepted.velocities(), old_velocities);
+        assert_eq!(accepted.seam_remaining, old_targets);
+        assert_eq!(format!("{:?}", accepted.diagnostics()), old_diagnostics);
+    }
+    accepted.step(settings(), || false).unwrap();
+    assert_eq!(accepted.positions(), complete.positions());
+    assert_eq!(accepted.velocities(), complete.velocities());
+    assert_eq!(accepted.seam_remaining, complete.seam_remaining);
 }

@@ -223,20 +223,70 @@ model detects them and are retained in diagnostics; the constructor permits such
 arrangements so contact can attempt recovery. An undetected edge/edge crossing
 cannot be interpreted as an intersection-free scene.
 
-Ground is an exact horizontal offset plane. Capsules use exact closest distance
-to their axis segment, plus radius and cloth thickness; a zero-length capsule is
-a sphere. The original torso collider is an ellipsoid with inflated radii and
-radial projection, an approximation to a constant signed-distance offset. No
+Ground is an exact horizontal offset plane: a linear triangle's minimum Y is at
+a vertex. Capsules retain the existing vertex projection and additionally test
+every complete cloth triangle against the closed capsule axis segment. The
+closest-feature search covers edges, axis endpoints projected onto faces, and
+face/axis crossings, including parallel and coplanar axes; a zero-length capsule
+is a sphere. It uses f64 in a scaled local frame. The excluded radius is the
+capsule radius plus the maximum existing incident vertex physical offset on the
+triangle. This conservative material-boundary policy agrees with a uniform
+offset; rendered thickness does not enter contact.
+
+For a closest triangle point with barycentric weights beta and node inverse
+masses w, the normal correction uses denominator sum(w_i beta_i²) and moves
+each node by w_i beta_i times depth/denominator. A zero denominator leaves a
+reported conflict. Tangential motion at that same barycentric point uses the
+existing Coulomb-style correction and its barycentrically interpolated physical
+friction coefficient. A surface pair already separated by vertex projections
+gets no additional normal or friction correction. Features are recomputed at
+each pair projection and solver iteration. The capsule phase currently scans
+all triangle/capsule pairs without a broad phase.
+
+Skinny faces (cross-product magnitude at most 1e-7 times the longest squared
+edge length) use a conservative lower distance bound: closed-boundary distance
+minus the face altitude to its longest edge, including a rounding allowance.
+Arithmetic underflow retains the trivial conservative lower distance bound zero.
+Confidently collinear/point triangles reduce to their closed edges/vertices.
+`capsule_surface_uncertain_pairs` counts current triangle/capsule pairs using
+these conservative uncertain-geometry bounds, including separated pairs; exact
+closed-edge degeneracy is not counted. Such bounds can retain a small false
+positive penetration, and missing stable face arithmetic cannot certify clearance.
+The native inspector displays this count. CLI fitting conservatively requires
+zero uncertain pairs in addition to the existing strain, seam and penetration
+bounds, including when a conservative pair bound reports no penetration.
+
+At zero distance, a previously axis-separated triangle prefers the previous
+same-barycentric point's separation. If the previous triangle already crosses
+the axis, that point has no consistent previous side as closest features change;
+recovery instead anchors to the previous face/axis geometry for the substep.
+The face winding chooses its normal when usable. An interior-axis fallback has
+a radial component; an unusable face normal falls back to the cross product of
+the axis and its least-aligned coordinate basis (ties X, Y, Z). A point axis with
+no usable direction falls back to +X. These finite deterministic side/tie rules
+are engineering recovery, not continuum contact-normal or convergence proofs.
+Pins and finite iteration budgets can leave explicitly reported penetration.
+Capsule surface contact is static: between-step tunnelling remains possible.
+
+The original torso collider remains a vertex-tested ellipsoid with inflated
+radii and radial projection, an approximation to a constant signed-distance offset. No
 proprietary avatar is bundled. Arbitrary triangle-mesh avatars and animated or
 moving collider trajectories are not supported by this crate yet. Collider
 contact friction uses the cloth's physical friction coefficient.
 
 Because contacts are sequential and pins are authoritative, the final projection
 can leave a previously resolved contact slightly penetrated or conflict with a
-pin. `max_contact_error` recomputes the supported current contact residual after
-the complete step; `contacts` counts projections including repeated iterations,
-not unique colliding pairs. An exact zero residual in a small fixture does not
-establish production collision robustness.
+pin. Construction, reset and final `max_contact_error` evaluate current full
+static triangle/capsule occupancy as well as all existing vertex collider and
+particle/triangle residuals. `initial_intersections` counts those supported
+vertex/collider, triangle/capsule and nonexcluded particle/triangle pairs with
+depth above 1e-8 m, including conservative uncertain pairs; overlapping vertex
+and surface coverage is counted separately. `contacts` counts projections
+including repeated iterations, not unique colliding pairs. Historical zero
+vertex-only capsule residuals retain their original narrower scope. Ellipsoid
+surface coverage, self edge/edge contact and continuous collision remain open.
+An exact zero residual in a small fixture does not establish production
+collision robustness.
 
 ## Failure, cancellation and recovery
 
@@ -257,18 +307,19 @@ inside the initial triangle-candidate loop; actual native cancellation interacti
 and measured latency still require separate acceptance.
 
 A step builds candidate positions/velocities locally. Cancellation is checked at
-substeps, iterations, hierarchy work and every 32 particles of the cloth contact
-loop. Poll counts are implementation details. A failed or
+substeps, iterations, hierarchy work, bounded intervals in vertex/capsule surface
+work, every 32 particles of the cloth contact loop, and inside final contact
+analysis. Poll counts are implementation details. A failed or
 cancelled call preserves positions, velocities, time and diagnostics from the
 last successful call. The caller receives the explicit error. Non-finite state or
 derived diagnostics, displacement above 100 m in one substep, or material-axis
 extension above 500% rejects the complete call as unstable. These are runaway
 guards, not a complete inversion or energy-stability detector. Large finite seam
 or contact residuals are returned without disguising them as successful fitting.
-Reset remains available after errors. The final stepped residual pass and direct
-reset still use the non-cancelling contact-analysis path. Cancellation latency in
-those phases depends on mesh size; background worker ownership is required by the
-application.
+Reset remains available after errors and uses non-cancelling contact analysis.
+Final linear strain/energy aggregation retains before/after cancellation checks;
+latency in that phase and direct reset depends on mesh size. Background worker
+ownership is required by the application.
 
 ## Numerical evidence
 
@@ -289,6 +340,19 @@ cargo clippy -p weftforge-sim --all-targets -- -D warnings
 The following original fixtures passed locally on 2026-11-13. They are analytic
 or independently justified implementation checks, **not reference comparisons**.
 Assertions remain in `crates/weftforge-sim/src/tests.rs`.
+
+The static capsule surface increment adds analytic cap/face/edge/vertex cases,
+parallel and coplanar segments, spheres, tiny/degenerate faces, rigid transforms,
+and central-difference barycentric gradients (error below 1e-8). Saved original
+triangle140 and Harbor A1164/B678 witness gaps reproduce within the prospectively
+declared 1e-10 m tolerance; all three saved centroid occupancies are also retained
+in the primitive tests. Response checks cover unequal inverse masses, physical
+friction, pinned conflicts, sequential capsules undoing prior separation, initial/
+reset/final residuals, visible conservative uncertainty, and cancellation during
+projection and final analysis preserving every accepted state field. The original
+30-iteration capsule exterior test keeps its original <1e-6 m requirement. These
+checks establish the bounded implementation contract, not garment clearance,
+calibration, convergence, continuous contact or reference parity.
 
 | Check | Declared criterion | Observed |
 | --- | --- | --- |
@@ -338,10 +402,16 @@ make a failing result disappear:
 Both use original editable polygons, eight interval seams, 0.12 m requested mesh
 resolution, front/back arrangement Z=±0.22 m, the same uncalibrated material and
 analytic mannequin. The original body's two 0.48 m widths sum to 0.96 m, whereas
-the mannequin torso's 0.18 m radius has 1.131 m circumference. A horizontal body
-cross-section would therefore require about 17.8% circumferential extension;
-redistribution and diagonal drape can change the actual local strain. This
-geometric mismatch is a design issue separate from solver convergence.
+the mannequin torso's bare 0.18 m radius has 1.131 m circumference. Including the
+uniform 0.003 m physical offset gives radius0.183 m and circumference1.149823 m,
+which would require about19.77% circumferential extension for that horizontal
+cross-section. Redistribution and diagonal drape can change the actual local
+strain; this conditional bound does not explain the measured strain by itself.
+Harbor has different dimensions and must be assessed separately. Coarse cuff
+edges can also make an exterior wrap geometrically infeasible within the15%
+material-axis screen. A low vertex residual cannot establish that such edges
+stay outside the arm capsule. Keep geometric fit, contact coverage and numerical
+convergence as separately measured questions.
 
 Before evaluating the fitting matrix, the bounded acceptance criteria were set
 to finite state, completed assembly, max material-axis extension <15%, max seam
@@ -484,3 +554,45 @@ Independent conservative force gradients omit contact/friction reactions and
 per-substep impulses, so full force balance, convergence and calibration remain
 open. All three original runs, 423 saved states, 420 timings and pre-run plans
 are retained with separate independent review and read-only replay.
+
+## Static capsule surface checkpoint, 2026-11-15
+
+Runtime `0770204a54ab` retains the static surface-contact model described above
+and exposes conservative uncertainty in CLI fitting rejection and native
+diagnostics. Independent source/static review and an actual unmodified Rust
+detector run each cover83original static cases, including9conservative uncertain
+cases. These checks establish their bounded static scope only.
+
+The [closed original Harbor experiment](../parity/reports/WF-20261115-CAPSULE-SURFACE-001.json)
+retains unchanged base revision20 and height revision17, with181saved states and
+180steps each. Both use60zero-gravity assembly steps then120gravity steps,
+dt1/60s,8substeps/32iterations and1m/s seam closure. All saved positions,
+velocities, raw diagnostics/settings, rest metadata and0/60/180OBJ exports are
+publicly hash-bound. No new physics or timed benchmark runs during publication.
+
+Both cases pass independent full static triangle/capsule and supported contact
+below2mm at all181saved boundaries. Maximum contact upper bounds are
+4.552257086565259e-7m for base and3.7889283330261314e-7m for height, both at29.
+All independent unresolved-pair and raw conservative-policy counts are zero;
+initial-intersection counts are independently verified. Their original whole-case
+times167.26820654096082s and162.04855137504637s include numerical analysis,
+export/hash/inspection and remain below420s, with producerRSS and aggregate
+numerical-output each separately below256MiB.
+
+**Both overall strict results remain failed.** Base exceeds15% material-axis
+strain at28–37, reaching19.90919497559327%at31, and has33 exact peak triangle/axis
+attribution failures. Height passes all trajectory physical and completed-fit
+screens, with14.611755162261497% maximum strain at30, but fails exact attribution
+at6,10,18. Open seams/targets at0–28 describe initial arrangement; exact zero
+targets begin at29. Final-only producer pass flags do not qualify delivery.
+Every failure list and per-frame diagnostic disagreement remains in the packet.
+
+The separate public saved-state replay changes only evaluator directory mapping;
+all numerical functions, thresholds and cutoffs match the frozen original, and
+every deterministic analysis field must match the original saved reports. The
+original24-file evaluator freeze remains separately archived. Public replay
+does not execute binaries or recertify historical clocks/resource counters.
+Prior3aa strain/contact failures, native7fe Save18/raw metadata failures, full
+garment acceptance, edge-edge/continuous contact, convergence, calibration and
+reference parity remain open. No current native uncertainty-label observation
+is supplied by these headless cases.

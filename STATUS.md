@@ -5,6 +5,67 @@ reference parity is **0/56** coarse contracts; discovery is incomplete and no
 roadmap gate is accepted. The 949 observed interface entries are an engineering
 inventory, not a feature-completion denominator.
 
+## Current continuation
+
+Published main remains `d65f935aea54bb5d8cf882d8c212fee8dbe314cf` from
+[PR37](https://github.com/thematheusmello/weftforge/pull/37). This local checkpoint
+combines tested runtime `0770204a54abdf5f929b6626b01d7fcfb0e13ca4` with current
+metadata. All forty runtime/test files retain their exact tested bytes. The
+source-only [capsule packet](parity/reports/artifacts/capsule-surface-20261115/README.md)
+retains original authoring inputs, all362 saved boundary states/360 step records,
+rest metadata, six OBJ exports, frozen independent evaluator and full failures.
+The [current report](parity/reports/WF-20261115-CAPSULE-SURFACE-001.json) is
+implementation-only and **failed**, with no full garment gate or reference parity.
+
+Both controlled original Harbor cases are closed: controller session35986,
+PID87622, exit2. A/base completed operationally in167.26820654096082s and B/height
+in162.04855137504637s, under420s whole-case and separate256MiB producerRSS and
+aggregate numerical-output limits. Both pass independent full static
+triangle/capsule and supported contact below2mm at every one of181 saved states,
+with zero independent unknown pairs/raw conservative-policy counts and no blocked
+required diagnostic verification. A still fails15% strain at28–37, reaching
+19.9092%at31, plus33 exact peak-attribution mismatches. B passes trajectory
+physical and completed-fit screens but fails exact attribution at6/10/18. Their
+final-only producer pass flags never qualify strict delivery. Initial open
+seams/targets0–28 describe arrangement rather than completed fit. No owned
+physical job remains active; do not retry or continue either closed case.
+
+Original evaluator freeze4b22c710, runnerb2269380, driver7f01a335 and root
+execution authorization0c4671b4 remain immutable. Base final receipt isa679df1d;
+height is871e4fb5. The packet preserves original raw receipt/analysis values and
+separates the portable path-remap replay from the24 frozen evaluator files.
+Literal personal-path redactions in logs/audits have raw/public hash and
+substitution provenance; they are explicitly publication derivatives. No binary,
+Cargo target, proprietary data or release package is distributed. Saved-state
+replay performs independent math only, outside the original closed clocks.
+
+Runtime077 already passed formatting,153Rust tests, strict workspace/all-target
+Clippy, xtask verification with54Python checks and unsigned local packaging.
+Those exact-source original logs and package binding11d246a7 are retained; no
+heavy gate or physical/timed benchmark was repeated for publication. Independent
+source/static review and actual unmodified Rust execution each covered83static
+cases; neither establishes general garment clearance or physical convergence.
+
+The b760 studio report and UI-001/PAT-003 evidence freshness are now stale after
+changed runtime source; original gallery/capture/receipt bytes remain historical.
+The current native uncertainty count label has no live observation in this
+packet. All prior3aa strain/contact and7fe Save18/raw-metadata failures remain
+visible. The separate SVG import branch is excluded from this checkpoint.
+
+Clean tracked checkpoint `7637c372d4a9` passes the portable saved-state
+replay, registry/map and all2,288referenced artifact hashes. The200-file packet
+contains no binary/NUL or personal absolute path prefix; nine literal-path
+redaction derivatives carry provenance. See the tracked
+[publication closure](parity/reports/artifacts/capsule-surface-publication-20261115/receipt.json).
+
+Independent public-packet review at clean35cd5672 found no publication blockers.
+Root independently checked all2,294referenced artifacts and all40runtime bytes,
+and clean final registry/map checks passed. [PR38](https://github.com/thematheusmello/weftforge/pull/38)
+publishes this bounded increment; the original strict failures remain failed.
+Next: merge the reviewed source/evidence, then integrate SVG import and the
+diagnostic-only peak arithmetic follow-up in a fresh isolated build.
+GitHub Actions and Pages must remain disabled until the complete project is done.
+
 ## Native visual preview checkpoint
 
 The user requested the latest running appearance and confirmed PhotoCraft as
@@ -69,8 +130,8 @@ produced the exact physical fields and restOBJ for caseB. B completed in
 6.8045029% and sampled seam gap6.08705e-9m. Independent curve/t measurements
 confirm the front changes0.04m at rest and0.029859952m at frame180. Process14668
 is saved at revision23, paused at Drape3.000s, with no active solver job.
-Root's37 frozen runtime/test files and the observed de81 executable remain
-unchanged. The closed private native inventory contains398payload files and48
+The37 frozen runtime/test files stayed unchanged through closure, and the
+observed de81 executable is retained. The closed private native inventory contains398payload files and48
 unedited JPEGs; full public preparation is still pending.
 
 The original workflow evaluator's revision sequence assumption fails across
@@ -94,12 +155,12 @@ decoding check and native uncertainty display. Formatting, all153Rust tests,
 strict workspace Clippy, xtask verification and standard unsigned packaging pass
 under `.local/capsule-integrated-checks-20261115` (exec93102/wrapper30000, all
 terminal0). Independent execution of the unchanged Rust detector also agrees
-with the original83oracle cases. No garment has run on that new solver.
+with the original83oracle cases. The two closed headless cases above now exercise that solver; both strict results remain failed.
 
-Preview evidence is under `.local/native-preview-20261114` and the staged public
-gallery; it cannot substitute for empty-project acceptance. Next publish the
-reviewed gallery/source and fixed contact counterexamples, then complete the contact increment's
-integration and prospective garment checks. GitHub Actions was rechecked
+Preview evidence is under `.local/native-preview-20261114` and the published
+gallery; it cannot substitute for empty-project acceptance. Next finish the
+contact increment's public saved-state packet review and clean-checkout registry/map
+checks, then integrate its qualified failed results. GitHub Actions was rechecked
 `enabled:false` on2026-11-15; README branding remains product focused.
 
 ## Publication and cost policy

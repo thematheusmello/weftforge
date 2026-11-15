@@ -1,0 +1,32 @@
+{
+  "kind": "Latest saved-gold benchmark source qualification before evaluator freeze",
+  "benchmark_sha256": "9559f8cd67a569597d44353af9311dfa83c2e4e870b33c9f78dd34316d1ee0c5",
+  "changes_since_benchmark_source_selfcheck": {
+    "METHOD.md": {
+      "old_sha256": "665094735886e6af155fe353912bb87591f4ebdfffe5de8acfb0017971982cc9",
+      "new_sha256": "d10c931de882915af325ce1d75a4f50ebf3ee954b3b6776b51190c01933b1097"
+    },
+    "README.md": {
+      "old_sha256": "0521298e28288ba622c5fdf37449549db928c737f3bae3849136cc188ddb080d",
+      "new_sha256": "ddcc0c5d43acc6f92204daaabf7d9f78441b4aa9d58e047013e152f51a11bfe7"
+    },
+    "capsule_geometry.py": {
+      "old_sha256": "dd06fc7c2d5c8d66bae34479c0f817db6fe12eee0626075b37906b11680ffa6b",
+      "new_sha256": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b"
+    },
+    "evaluator.py": {
+      "old_sha256": "acdad15c2765a454512fd5abcef2819172b6b4ba2df5d321a396325740032a71",
+      "new_sha256": "423aa79290d155f69374ba9653763838da671a44e0aadb69424250a93942abef"
+    },
+    "selfcheck.py": {
+      "old_sha256": "b020dfd02d04dd2f85b36d1221360973448f0873809f4ba596a927516aa2c7ae",
+      "new_sha256": "38586029c34421f3eb415be72f0c19125b36b70886f391b83497ec546d487cb1"
+    }
+  },
+  "copied_numeric_routines_and_benchmark_script_unchanged": true,
+  "qualifying_observation": "Both old trajectories proved ordinary zero-policy for every frame. This implies a finite roundoff envelope in the common normalization, so the new nonfinite-envelope fallback branch never executes for those saved frames. The initial-count guard only changes labeling when zero-policy proof is false. The new runner auth descriptor check is outside analyze_saved used by the benchmark. All measured old benchmark arithmetic and ordinary branch paths remain unchanged.",
+  "new_static_selfcheck_sha256": "5069312e4766f2623f1be0834bded37695b22f3370558b7f71850b71b84ca5e3",
+  "huge_common_offset_selfcheck": "Finite huge-common-offset/tiny-geometry case remains UNKNOWN with fallback disabled and gets finite100digit interval with fallback; no nonfinite certified output",
+  "new_garment_execution": false,
+  "wall_cap_seconds_unchanged": 420.0
+}

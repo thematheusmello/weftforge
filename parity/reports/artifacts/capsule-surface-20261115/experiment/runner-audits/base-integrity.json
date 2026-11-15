@@ -1,0 +1,48 @@
+{
+  "case": "base",
+  "case_clock_closed_status": "complete",
+  "case_receipt": {
+    "path": ".local/capsule-garment-20261115/runs/base/case-receipt.json",
+    "sha256": "a679df1d198a62582582ad61b9b839b5f8fb7ccd63463d5abc83ae1ab925f3e9"
+  },
+  "integrity_only": true,
+  "no_new_numerical_acceptance_after_clock_close": true,
+  "operational_completion": true,
+  "post_write_elapsed_seconds": 167.2696512909606,
+  "post_write_numerical_output_bytes": 19088601,
+  "post_write_output_within_cap": true,
+  "post_write_wall_within_cap": true,
+  "quality_flags": {
+    "all_frame_quality_passed": false,
+    "completed_fit_all_frame_quality_passed": false,
+    "final_frame_quality_passed": true,
+    "quality_status": "failed",
+    "strict_delivery_passed": false,
+    "trajectory_physical_screens_passed": false
+  },
+  "scheduling": "next_case_allowed",
+  "schema": 1,
+  "validation_process": {
+    "argv": [
+      "${PRIVATE_ACCOUNT_HOME}/.pyenv/versions/3.13.0/bin/python3",
+      "-B",
+      "${PRIVATE_WEFTFORGE_ROOT}/.local/capsule-garment-evaluator-20261115/evaluator.py",
+      "validate-receipt",
+      "--case",
+      "base",
+      "--authorization",
+      "${PRIVATE_WEFTFORGE_ROOT}/.local/capsule-garment-20261115/execution-authorization.json",
+      "--receipt",
+      "${PRIVATE_WEFTFORGE_ROOT}/.local/capsule-garment-20261115/runs/base/case-receipt.json",
+      "--output",
+      "${PRIVATE_WEFTFORGE_ROOT}/.local/capsule-garment-20261115/runner-audits/base-validation.json"
+    ],
+    "end_monotonic_seconds": 827588.458907375,
+    "exit_code": 0,
+    "peak_rss_bytes": 64274432,
+    "pid": 92990,
+    "process_group": 92990,
+    "sampled_peak_rss_bytes": 0,
+    "stop_reason": null
+  }
+}
