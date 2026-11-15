@@ -28,7 +28,19 @@ truncates at0–100 of109nodes, so an actual software accessibility defect is
 unproven. Original captures/traces and after-closure qualification remain separate.
 The unique SVG app was actually quit and is no longer running. Native import/
 edit/Undo/save/reopen/export acceptance remains unrun after that failing Cancel.
-A scoped fix and true focused-input regression are being prepared separately. The
+The shared Cancel fix `cd3266c4` is integrated. Its native-like pointer regression
+reproduces the old failure and preserves the complete editor/history after the
+fix; later deliberate refocus/Tab still commits once. Ordinary export/focus and
+sewing cancellation regressions also pass. AccessKit root traversal reaches the
+visible/enabled modal controls both before and after; no accessibility rendering
+change was necessary. Actual fixed-source native acceptance is still pending.
+
+A view-only **Frame all** toolbar action (`9471a66`) is also integrated. It uses
+existing exact cubic bounds and28px padding in the current2Dcanvas, preserving
+pending drafts, selection, project/history and work queues. Its analytic/pointer
+regression covers normal/minimum windows, negative origin, cubic extrema and the
+full valid coordinate range. These latest source changes still need root's
+combined local gates and packaged native workflow acceptance. The
 compiled new diagnostic helper exactly matches all362 frozen peaks and all838,392
 triangle-axis values from the unchanged evaluator, with30 static analytic checks;
 its42 simulator tests, formatting and strict simulator Clippy pass. This supplies
@@ -86,7 +98,7 @@ Independent public-packet review at clean35cd5672 found no publication blockers.
 Root independently checked all2,294referenced artifacts and all40runtime bytes,
 and clean final registry/map checks passed. [PR38](https://github.com/thematheusmello/weftforge/pull/38)
 publishes this bounded increment; the original strict failures remain failed.
-Next: integrate the focused numeric Cancel fix, rerun required combined gates
+Next: rerun required combined gates
 for the changed source, then execute the original SVG fixture through the real
 native chooser/import/edit/undo/save/reopen/export flow against the frozen
 independent geometry checker.
@@ -523,6 +535,6 @@ handles before resuming; use separate Cargo targets.
 Active increment evidence: `.local/svg-studio-integrated-checks-20261115`
 (wrapper68622/session46552 terminal0), `.local/native-svg-acceptance-20261115`
 (closed failed attempt, inventory493a66ea), and separate
-`.local/native-svg-acceptance-qualification-20261115.json`. The proposed source
-fix worktree is `.local/svg-import-modal-fix-20261115`; root owns integration/UI.
+`.local/native-svg-acceptance-qualification-20261115.json`. The reviewed fix worktree is `.local/svg-import-modal-fix-20261115`; framing
+is on `feat/pattern-view-framing` at9471a66. Root owns integration/UI.
 No new garment simulation job is active.
