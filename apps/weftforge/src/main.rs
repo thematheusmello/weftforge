@@ -3511,7 +3511,7 @@ fn studio_style(ctx: &egui::Context) {
     visuals.widgets.active.bg_fill = Color32::from_gray(72);
     visuals.widgets.active.bg_stroke = Stroke::new(1.0, Color32::from_rgb(74, 143, 208));
     visuals.selection.bg_fill = Color32::from_rgb(53, 73, 93);
-    visuals.selection.stroke = Stroke::new(1.0, Color32::from_rgb(74, 143, 208));
+    visuals.selection.stroke = Stroke::new(1.0, Color32::from_gray(222));
     visuals.hyperlink_color = Color32::from_rgb(74, 143, 208);
     visuals.window_corner_radius = egui::CornerRadius::same(3);
     visuals.menu_corner_radius = egui::CornerRadius::same(2);
