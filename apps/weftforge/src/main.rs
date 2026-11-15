@@ -1646,7 +1646,9 @@ impl Studio {
             ] {
                 let response = ui.selectable_value(&mut self.position_snap, snap, snap.label())
                     .on_hover_text("Pointer positions only. Hold Alt / Option when starting a drag or clicking to bypass.");
-                if response.is_pointer_button_down_on() || response.clicked() {
+                if response.is_pointer_button_down_on()
+                    || response.clicked_by(egui::PointerButton::Primary)
+                {
                     finish_numeric_action(ui.ctx(), focused, false);
                     let request = (
                         ui.ctx().cumulative_frame_nr(),
@@ -3502,7 +3504,7 @@ mod tests {
         ) -> egui::FullOutput {
             ctx.run_ui(
                 egui::RawInput {
-                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1200., 800.))),
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1200., 1800.))),
                     events,
                     ..Default::default()
                 },
@@ -3624,40 +3626,60 @@ mod tests {
             assert_eq!(format!("{:?}", app.editor), editor_before);
         }
 
-        let ctx = egui::Context::default();
-        ctx.enable_accesskit();
-        studio_style(&ctx);
-        let mut app = Studio::empty();
-        app.session_autosave = None;
-        let output = frame(&ctx, &mut app, vec![]);
-        let off = output
-            .platform_output
-            .accesskit_update
-            .unwrap()
-            .nodes
-            .into_iter()
-            .find(|(_, node)| node.label() == Some("Off"))
-            .unwrap()
-            .0;
-        frame(
-            &ctx,
-            &mut app,
-            vec![egui::Event::AccessKitActionRequest(
-                egui::accesskit::ActionRequest {
-                    action: egui::accesskit::Action::Focus,
-                    target_tree: egui::accesskit::TreeId::ROOT,
-                    target_node: off,
-                    data: None,
-                },
-            )],
-        );
-        frame(
-            &ctx,
-            &mut app,
-            vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
-        );
-        assert_eq!(app.position_snap, PositionSnap::Off);
-        assert!(!app.dirty && !app.editor.can_undo());
+        for tool in [Tool::Select, Tool::SewingPaths] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            studio_style(&ctx);
+            let mut app = Studio::empty();
+            app.session_autosave = None;
+            app.set_tool(tool);
+            let output = frame(&ctx, &mut app, vec![]);
+            click(&ctx, &mut app, text_position(&output, "0.07"));
+            frame(
+                &ctx,
+                &mut app,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text("1e-".into()),
+                ],
+            );
+            let numeric = numeric_focus(&ctx).expect("prior numeric focus");
+            let output = frame(&ctx, &mut app, vec![]);
+            let off = output
+                .platform_output
+                .accesskit_update
+                .unwrap()
+                .nodes
+                .into_iter()
+                .find(|(_, node)| node.label() == Some("Off"))
+                .unwrap()
+                .0;
+            frame(
+                &ctx,
+                &mut app,
+                vec![egui::Event::AccessKitActionRequest(
+                    egui::accesskit::ActionRequest {
+                        action: egui::accesskit::Action::Focus,
+                        target_tree: egui::accesskit::TreeId::ROOT,
+                        target_node: off,
+                        data: None,
+                    },
+                )],
+            );
+            let focused = ctx.memory(|memory| memory.focused()).unwrap();
+            assert_eq!(focused.accesskit_id(), off);
+            assert_ne!(focused, numeric);
+            let editor = format!("{:?}", app.editor);
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+            );
+            assert_eq!(app.position_snap, PositionSnap::Off);
+            assert_eq!(ctx.memory(|memory| memory.focused()), Some(focused));
+            assert_eq!(format!("{:?}", app.editor), editor);
+            assert!(!app.dirty && !app.editor.can_undo());
+        }
     }
 
     #[test]
