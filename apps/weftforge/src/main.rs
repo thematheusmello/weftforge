@@ -12665,6 +12665,7 @@ mod physical_sewing_tests {
         if search {
             app.search = true;
             app.query = "New Empty".into();
+            frame(ctx, app, vec![]);
         } else {
             click(ctx, app, "File");
         }
