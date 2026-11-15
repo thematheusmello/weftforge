@@ -1,0 +1,61 @@
+[
+  {
+    "label": "format",
+    "command": [
+      "cargo",
+      "fmt",
+      "--all"
+    ],
+    "exit_code": 0,
+    "seconds": 0.25688612507656217
+  },
+  {
+    "label": "sim-tests",
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "weftforge-sim",
+      "--lib"
+    ],
+    "exit_code": 0,
+    "seconds": 5.818395082955249
+  },
+  {
+    "label": "format-check",
+    "command": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--check"
+    ],
+    "exit_code": 0,
+    "seconds": 0.34693674999289215
+  },
+  {
+    "label": "final-sim-tests",
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "weftforge-sim"
+    ],
+    "exit_code": 0,
+    "seconds": 2.488007750012912
+  },
+  {
+    "label": "sim-clippy",
+    "command": [
+      "cargo",
+      "clippy",
+      "-p",
+      "weftforge-sim",
+      "--all-targets",
+      "--",
+      "-D",
+      "warnings"
+    ],
+    "exit_code": 0,
+    "seconds": 1.6706704170210287
+  }
+]

@@ -15,7 +15,7 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 | `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1/v2/v3 model | Static authoring | One prior saved document; no silent fallback |
 | `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1/v2/v3 model | Static authoring | Dirty named documents only; no automatic recovery UI |
 | OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups; no MTL/textures |
-| SVG | No | Yes | Boundary curves only in output | Static 2D | `M/L/C/Z` paths; mm physical size; no sewing/materials/internal features/print tiling |
+| SVG | Bounded additive import | Yes | Editable exterior boundaries and names | Static 2D | Closed absolute `M/L/C/Z` paths, explicit mm and uniform viewBox; no sewing/materials/internal features/print tiling |
 | glTF/GLB | No | No | None yet | None yet | Planned validated avatar/mesh/animation workflows |
 | DXF R2000 | No | Yes | Exterior boundary curves only | Static 2D | ASCII `LINE`/cubic `SPLINE`, mm, stable piece layers; no sewing, materials, grain, 3D placement, apparel conventions or print layout |
 | Animation/cache formats | No | No | None yet | None yet | Timeline, frame caches and export not implemented |

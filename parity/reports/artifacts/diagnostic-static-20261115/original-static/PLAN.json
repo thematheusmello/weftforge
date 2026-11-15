@@ -1,0 +1,108 @@
+{
+  "base_commit": "0770204a54abdf5f929b6626b01d7fcfb0e13ca4",
+  "kind": "AFTER-CLOCK static compiled diagnostic-only arithmetic verification",
+  "new_physics_steps": 0,
+  "cases": [
+    {
+      "case": "base",
+      "case_id": 0,
+      "states": 181,
+      "triangles": 1172,
+      "triangle_axes": 424264,
+      "original_exact_attribution_failed_frames_retained": [
+        9,
+        10,
+        15,
+        17,
+        24,
+        32,
+        34,
+        41,
+        46,
+        49,
+        56,
+        66,
+        69,
+        70,
+        72,
+        80,
+        95,
+        98,
+        114,
+        115,
+        116,
+        119,
+        126,
+        127,
+        141,
+        142,
+        144,
+        150,
+        155,
+        157,
+        158,
+        165,
+        180
+      ],
+      "original_quality_status_retained": "failed",
+      "original_strict_delivery_passed_retained": false
+    },
+    {
+      "case": "height",
+      "case_id": 1,
+      "states": 181,
+      "triangles": 1144,
+      "triangle_axes": 414128,
+      "original_exact_attribution_failed_frames_retained": [
+        6,
+        10,
+        18
+      ],
+      "original_quality_status_retained": "failed",
+      "original_strict_delivery_passed_retained": false
+    }
+  ],
+  "states": 362,
+  "triangle_axes": 838392,
+  "source_sha256": {
+    "crates/weftforge-sim/src/strain.rs": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+    "crates/weftforge-sim/src/lib.rs": "d3f3e040559c950d44a52bd18cb107cf3b4824cd2f985dca3d2636b52728a03e",
+    "crates/weftforge-sim/src/constraints.rs": "54b83b92eab65c3fb0ca50ea81c18ba748f01adca1a4119c1c455bbc90be1490",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/tests.rs": "f0bae1aaed07381cd663fa7100b6bd794a53f20f6884aaac4c8a52975be35e36"
+  },
+  "rustc_sha256": "b69cbcffa5e990057035d53ccc8163e8392ce784f6abb114c19ceb61528ba9f6",
+  "compile_command": [
+    "rustup",
+    "run",
+    "1.94.1",
+    "rustc",
+    "--edition=2024",
+    "--crate-name",
+    "diagnostic_static_check",
+    "-D",
+    "warnings",
+    "harness.rs",
+    "-o",
+    "diagnostic-static-check"
+  ],
+  "execution_command": [
+    "./diagnostic-static-check"
+  ],
+  "frozen_files": {
+    "METHOD.md": "dee4e0a531403cb36e44cbe44457aaa4040eee6ee129f5bc16bee48b60a86476",
+    "OLD-INPUT-BINDING.json": "812aee47422c0248138e3c5322ccfeeefa324a72d9bb7f8f085884851818165d",
+    "UNCHANGED-PHYSICS.json": "fdebee0821561faeef5e35cf2c680b4ed68d233231b33cb634578ac6a933ebb8",
+    "prepare.py": "4881fb844ca8abeb3c7062a8f97a963706fa47ee75ff8d326bdff2c4fd8ad08b",
+    "harness.rs": "f344ceb7a9e5c6b05eec7547d67505f883e82e0583adc217ec7903038d9af50a",
+    "inputs.bin": "4fc3b2ec3bbaa805668f4bf6b130889010de60b2ba5eacf263c92911194a6612",
+    "expected-axes.bin": "715b6dd68f64ca1bfb2d811c7b500dd5b420d4fa021c3825af0278ddccba6533",
+    "expected-peaks.json": "32dccb3851a6f15be396e4e4d77bb0b247a28c9a626b3040591e631666ffdae4",
+    "compiler-version.txt": "a323109dfabfd30645bdf92aa834b93f71294c582ab67b977485d7f355ceba9a",
+    "sources/strain.rs": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+    "sources/lib.rs": "d3f3e040559c950d44a52bd18cb107cf3b4824cd2f985dca3d2636b52728a03e",
+    "sources/constraints.rs": "54b83b92eab65c3fb0ca50ea81c18ba748f01adca1a4119c1c455bbc90be1490",
+    "sources/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "sources/tests.rs": "f0bae1aaed07381cd663fa7100b6bd794a53f20f6884aaac4c8a52975be35e36"
+  }
+}

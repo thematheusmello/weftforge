@@ -1,0 +1,74 @@
+{
+  "kind": "public diagnostic-static packet preparation receipt",
+  "prepared_utc": "2026-11-15T02:12:43.994509+00:00",
+  "publication_status": "prepared privately for root review; not Git-tracked publication",
+  "source_commit": "2079411490512b3bdc13ae93774a2f48fb38cc1f",
+  "intended_public_path": "parity/reports/artifacts/diagnostic-static-20261115",
+  "portable_capture": {
+    "adapter_sha256": "7dec965b295b9904a10303363ef57834ed19ee3be34ec85e2bf5dc7992419239",
+    "receipt_sha256": "d1376f3a748d5aefda0ff8c82aedd967d1cb93d5a6c077f88b094fc631307b3c",
+    "command": [
+      "python3",
+      "packet/verify.py",
+      "--repo-root",
+      "REPOSITORY_ROOT",
+      "--runtime-root",
+      "EXACT_2079411_CHECKOUT_ROOT"
+    ],
+    "exact_runtime_source_hashes": {
+      "crates/weftforge-sim/src/strain.rs": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+      "crates/weftforge-sim/src/lib.rs": "d3f3e040559c950d44a52bd18cb107cf3b4824cd2f985dca3d2636b52728a03e",
+      "crates/weftforge-sim/src/constraints.rs": "54b83b92eab65c3fb0ca50ea81c18ba748f01adca1a4119c1c455bbc90be1490",
+      "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+      "crates/weftforge-sim/src/tests.rs": "f0bae1aaed07381cd663fa7100b6bd794a53f20f6884aaac4c8a52975be35e36"
+    },
+    "status": "passed_all_362_frozen_peaks_and_838392_triangle_axes_exactly",
+    "states": 362,
+    "triangle_axes": 838392,
+    "new_cloth_initializations": 0,
+    "new_physics_steps": 0,
+    "scratch_outside_repository": true,
+    "scratch_removed": true
+  },
+  "old_closed_diagnostic_manifest_sha256": "e62ec5e24fc38fcc31572e4f9135f264c1e2b096616bff3934e77d714d74a649",
+  "old_closed_diagnostic_artifacts_all_exact_before_and_after": true,
+  "selected_originals_byte_identical": true,
+  "copies_of_saved_states": 0,
+  "binary_artifacts_distributed": 0,
+  "packet_text_only": true,
+  "personal_path_scan": "passed",
+  "runtime_or_main_source_edits": false,
+  "github_operations": 0,
+  "original_failures_retained": {
+    "base_exact_attribution_failures": 33,
+    "height_exact_attribution_failed_frames": [
+      6,
+      10,
+      18
+    ],
+    "base_physical_strain_failed_frames": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37
+    ],
+    "strict_delivery_passed": {
+      "base": false,
+      "height": false
+    }
+  },
+  "root_remaining": [
+    "formal report and registry integration",
+    "Git-tracked clean-checkout verification",
+    "combined workspace gates",
+    "native GUI acceptance",
+    "any GitHub publication"
+  ],
+  "limits": "Portable static arithmetic evidence only. Original execution clocks, physical screens and failures unchanged; no new dynamics, fit, calibration, convergence, release or reference parity."
+}

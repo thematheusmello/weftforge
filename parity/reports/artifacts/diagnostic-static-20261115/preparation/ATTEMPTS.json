@@ -1,0 +1,21 @@
+[
+  {
+    "attempt": 1,
+    "phase": "packet inventory preflight",
+    "exit_code": 1,
+    "reason": "Preparation manifest generator excluded the archived original MANIFEST.json by basename; corrected generator to exclude only the packet root manifest. No Rust compilation or execution occurred.",
+    "stdout": "empty; no Rust invocation occurred",
+    "stderr": "preparation/preflight-01.failed.stderr"
+  },
+  {
+    "attempt": 2,
+    "phase": "portable static replay",
+    "exit_code": 0,
+    "states": 362,
+    "triangle_axes": 838392,
+    "receipt": "portable-replay.json",
+    "new_cloth_initializations": 0,
+    "new_physics_steps": 0,
+    "scratch_outside_repository_and_removed": true
+  }
+]

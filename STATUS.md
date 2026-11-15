@@ -14,9 +14,21 @@ bounded editable SVG importer (`a27f2e4`) with diagnostic-only strain arithmetic
 (`2079411`) on the published full static capsule-contact implementation. No force,
 constraint projection, material, quality threshold or original experiment changed.
 
-SVG import has individual full gates, unsigned packaging and an independent
-svgpathtools consumer check. The actual native chooser/modal/import/edit/undo/
-save/reopen/export acceptance and combined workspace gates are pending. The
+The combined `bb6010a7` runtime passed all5 local gates from a fresh real target:
+formatting,165Rust tests, strict workspace/all-target Clippy, xtask verification
+with54Python checks, and unsigned native packaging. No source bytes changed during
+validation. The packaged native hash is `6c39006f069a791af12a5e1b7f3c24b799d64fa7c60fa0bea55881b1d0f8a149`.
+
+SVG import also has an independent svgpathtools consumer check. The first actual
+native attempt opened the original baseline, staged width.125m, and reviewed the
+correct2piece/2mm-per-unit summary. Clicking Cancel incorrectly committed that
+width, advancing revision1→2; no SVG was imported. This is a confirmed failure.
+An initial missing-accessibility claim is qualified: the native inspector snapshot
+truncates at0–100 of109nodes, so an actual software accessibility defect is
+unproven. Original captures/traces and after-closure qualification remain separate.
+The unique SVG app was actually quit and is no longer running. Native import/
+edit/Undo/save/reopen/export acceptance remains unrun after that failing Cancel.
+A scoped fix and true focused-input regression are being prepared separately. The
 compiled new diagnostic helper exactly matches all362 frozen peaks and all838,392
 triangle-axis values from the unchanged evaluator, with30 static analytic checks;
 its42 simulator tests, formatting and strict simulator Clippy pass. This supplies
@@ -74,9 +86,10 @@ Independent public-packet review at clean35cd5672 found no publication blockers.
 Root independently checked all2,294referenced artifacts and all40runtime bytes,
 and clean final registry/map checks passed. [PR38](https://github.com/thematheusmello/weftforge/pull/38)
 publishes this bounded increment; the original strict failures remain failed.
-Next: run combined formatting, workspace tests, strict Clippy, xtask verification
-and unsigned packaging in an empty real target, then execute the original SVG
-fixture through the real native chooser/import/edit/undo/save/reopen/export flow.
+Next: integrate the focused numeric Cancel fix, rerun required combined gates
+for the changed source, then execute the original SVG fixture through the real
+native chooser/import/edit/undo/save/reopen/export flow against the frozen
+independent geometry checker.
 Publish only tracked, reviewed evidence; no new garment dynamics are planned here.
 GitHub Actions and Pages must remain disabled until the complete project is done.
 
@@ -506,3 +519,10 @@ Keep35af separate from native7fe; further physics or integration needs a new
 reviewed step. All original failures and 57 retained local files remain intact.
 Reference inventory36748 and REA observation64096 are terminal0. Recheck actual
 handles before resuming; use separate Cargo targets.
+
+Active increment evidence: `.local/svg-studio-integrated-checks-20261115`
+(wrapper68622/session46552 terminal0), `.local/native-svg-acceptance-20261115`
+(closed failed attempt, inventory493a66ea), and separate
+`.local/native-svg-acceptance-qualification-20261115.json`. The proposed source
+fix worktree is `.local/svg-import-modal-fix-20261115`; root owns integration/UI.
+No new garment simulation job is active.
