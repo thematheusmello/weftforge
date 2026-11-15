@@ -19,9 +19,9 @@ def check():
     assert re.fullmatch(r'[0-9a-f]{40}', commit)
     subprocess.run(['git', 'merge-base', '--is-ancestor', commit, 'HEAD'], cwd=ROOT, check=True)
 
-    def pinned(path):
+    def pinned(path, at=commit):
         assert not Path(path).is_absolute() and '..' not in Path(path).parts, path
-        return subprocess.check_output(['git', 'show', f'{commit}:{path}'], cwd=ROOT)
+        return subprocess.check_output(['git', 'show', f'{at}:{path}'], cwd=ROOT)
 
     catalogs = {}
     for source in data['inputs']:
@@ -305,6 +305,88 @@ def check():
                 no_status_copy(item)
 
     no_status_copy(data)
+    addendum_path = MAP.with_name('weftforge-current-source-addendum.json')
+    assert addendum_path.is_file() or 'weftforge-current-source-addendum.md' not in MAP.with_suffix('.md').read_text()
+    if addendum_path.is_file():
+        addendum = json.loads(addendum_path.read_text())
+        assert addendum['schema_version'] == 1
+        current_commit = addendum['source_commit']
+        assert re.fullmatch(r'[0-9a-f]{40}', current_commit)
+        subprocess.run(['git', 'merge-base', '--is-ancestor', commit, current_commit], cwd=ROOT, check=True)
+        subprocess.run(['git', 'merge-base', '--is-ancestor', current_commit, 'HEAD'], cwd=ROOT, check=True)
+        assert addendum['historical_source_commit'] == commit
+        assert re.fullmatch(r'[0-9a-f]{40}', addendum['historical_map_commit'])
+        subprocess.run(['git', 'merge-base', '--is-ancestor', addendum['historical_map_commit'], current_commit], cwd=ROOT, check=True)
+        historical = pinned('spec/inventory/weftforge-implementation-map.json', addendum['historical_map_commit'])
+        assert historical == MAP.read_bytes()
+        assert hashlib.sha256(historical).hexdigest() == addendum['historical_map_sha256']
+        assert addendum['historical_invariants'] == {
+            'catalog_ids': len(entries), 'packets': len(packets),
+            'source_landmark_identities': len(sources), 'command_variants_including_transaction': len(commands),
+        }
+        for pin in addendum['source_pins']:
+            assert re.fullmatch(r'[0-9a-f]{40}', pin['commit']) and pin['scope']
+            subprocess.run(['git', 'merge-base', '--is-ancestor', pin['commit'], current_commit], cwd=ROOT, check=True)
+        current_document = pinned('crates/weftforge-core/src/document.rs', current_commit).decode()
+        current_enum = current_document.split('pub enum Command {', 1)[1].split('#[derive', 1)[0]
+        current_commands = set(re.findall(r'^    ([A-Z]\w*)\s*[({]', current_enum, re.MULTILINE))
+        assert sorted(current_commands) == addendum['command_variants']
+        current_mcp = pinned('apps/weftforge-cli/src/mcp.rs', current_commit).decode()
+        schema = current_mcp.split('fn command_schema()', 1)[1].split('fn tools()', 1)[0].split('let variants = [', 1)[1]
+        schema_commands = sorted(re.findall(r'\(\s*"([a-z_]+)"\s*,', schema))
+        assert schema_commands == addendum['schema_nontransaction_commands']
+        assert set(schema_commands) == {re.sub(r'(?<!^)(?=[A-Z])', '_', name).lower()
+                                        for name in current_commands if name != 'Transaction'}
+        assert re.findall(r'^        \("([a-z_]+)",', current_mcp.split('fn tools()', 1)[1], re.MULTILINE) == addendum['mcp_tools']
+        anchor_reviews = {review['source_id']: review for review in addendum['source_landmark_rechecks']}
+        assert len(anchor_reviews) == len(addendum['source_landmark_rechecks'])
+        assert set(anchor_reviews) <= sources.keys()
+        for source_id, source in sources.items():
+            review = anchor_reviews.get(source_id)
+            anchor = source['anchor']
+            if review:
+                assert review['reason'] and review['changed_fields'] == ['anchor']
+                assert review['previous_anchor'] == anchor and review['current_anchor'] != anchor
+                anchor = review['current_anchor']
+            assert anchor in pinned(source['path'], current_commit).decode(), source_id
+
+        def current_source_anchors(anchors):
+            assert anchors
+            for anchor in anchors:
+                raw = pinned(anchor['path'], current_commit)
+                assert hashlib.sha256(raw).hexdigest() == anchor['sha256']
+                text = raw.decode()
+                assert anchor['anchor'] in text, anchor
+                assert text[:text.index(anchor['anchor'])].count('\n') + 1 == anchor['line'], anchor
+
+        current_rechecks = {review['group_id']: review for review in addendum['source_rechecks']}
+        assert len(current_rechecks) == len(addendum['source_rechecks']) and set(current_rechecks) <= groups.keys()
+        for group_id, review in current_rechecks.items():
+            assert review['reason'] and review['source_refs'] and set(review['source_refs']) <= sources.keys()
+            assert set(review['changed_fields']) == review['current'].keys()
+            assert review['changed_fields'] and set(review['changed_fields']) <= {'candidate_behavior', 'missing_functionality', 'shared_commands'}
+            assert all(value and value != groups[group_id][field] for field, value in review['current'].items())
+            assert set(review['current'].get('shared_commands', [])) <= current_commands
+            assert any(pinned(sources[key]['path']) != pinned(sources[key]['path'], current_commit)
+                       for key in review['source_refs']), group_id
+            current_source_anchors(review['source_anchors'])
+        for surface in addendum['ui_surfaces']:
+            assert surface['surface'] and surface['controls'] and surface['group_ids']
+            assert set(surface['group_ids']) <= groups.keys()
+            current_source_anchors(surface['source_anchors'])
+        for contract in addendum['reviewed_contract_sources']:
+            assert contract['scope']
+            raw = pinned(contract['path'], current_commit)
+            assert raw == (ROOT / contract['path']).read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == contract['sha256']
+        no_status_copy(addendum)
+        readable_addendum = addendum_path.with_suffix('.md').read_text()
+        assert commit in readable_addendum and current_commit in readable_addendum
+        assert all(f'`{group_id}`' in readable_addendum for group_id in current_rechecks)
+        print(f'PASS: additive source {current_commit}; {len(current_rechecks)} candidate rechecks; '
+              f'{len(current_commands)} Rust variants / {len(schema_commands)} schema commands / '
+              f'{len(addendum["mcp_tools"])} MCP tools; historical snapshot unchanged. No behavior/parity verification.')
+
     readable = (MAP.with_suffix('.md')).read_text()
     assert all(f'`{packet_id}`' in readable for packet_id in packets)
     assert commit in readable and '949 unique IDs' in readable

@@ -2,15 +2,18 @@
 
 This source-pinned engineering map assigns every entry in the reviewed menu and component catalogs. It preserves the complete target and prepares bounded implementation handoffs. It does not establish feature completion or reference parity.
 
-Source pin: `3eddef067c8a1f03f192c8e6822a8da2a94f9bf9`. Reference build: `2026.1.237 (r58920)`. [Machine-readable map](weftforge-implementation-map.json).
+Historical source pin: `3eddef067c8a1f03f192c8e6822a8da2a94f9bf9`. Reference build: `2026.1.237 (r58920)`. [Machine-readable map](weftforge-implementation-map.json).
 
 Coverage: **949 unique IDs** = 593 menu nodes + 356 component-catalog records; classifications are 502 action candidates, 355 in-scope components, 86 containers, 3 provisional headings and 3 excluded vendor administration entries. The menu union contains 17 roots, 576 nonroot entries and 509 leaf-like nodes across the initial empty-workspace and later selected-seam states. **These counts are not a feature denominator.**
 
 Current implementation, reference observation, verification and evidence freshness come only from [parity/features.yaml](../../parity/features.yaml). Join each group’s feature IDs to that registry at the revision being reported. The map copies no feature status fields. Candidate source relationships describe only the pinned code and must be re-reviewed after relevant source/catalog changes.
 
+
+A later [source-only addendum](weftforge-current-source-addendum.md) rechecks bounded native studio, import/ellipse, length, transform/New Empty and physical-length sewing candidates at an explicit newer source. This historical map, its 22-command snapshot, all 949 entry records, 205 packets and 56 landmark identities remain unchanged; unlisted groups have not been re-reviewed at the addendum pin.
+
 ## Scope and source interpretation
 
-The native code has 22 Command variants, including Transaction, bounded JoinCurve and three SewingGroup commands. Its five tool modes are Select, Polygon, Rectangle, legacy Sew and ordered SewingPaths (M:N sewing). Existing related paths include strict native v3 projects/recovery with v1/v2 migration, editable polygons/cubics, exact split and bounded inverse join/relationship remapping, piece resizing/placement, grain/physical fabric editing, legacy parameter-based seams, ordered arc-length groups, triangle meshing, a cancellable CPU solver, shared selection, native sewing editors, bounded DXF boundary export and shared CLI/MCP file authoring. These are candidates for comparison, not established semantic matches.
+At that historical source pin, the native code has 22 Command variants, including Transaction, bounded JoinCurve and three SewingGroup commands. Its five tool modes are Select, Polygon, Rectangle, legacy Sew and ordered SewingPaths (M:N sewing). Existing related paths include strict native v3 projects/recovery with v1/v2 migration, editable polygons/cubics, exact split and bounded inverse join/relationship remapping, piece resizing/placement, grain/physical fabric editing, legacy parameter-based seams, ordered arc-length groups, triangle meshing, a cancellable CPU solver, shared selection, native sewing editors, bounded DXF boundary export and shared CLI/MCP file authoring. These are candidates for comparison, not established semantic matches.
 
 The 205 engineering groups have 54 source-backed partial candidates, 128 planned missing mappings and 23 unresolved mappings. Groups combine candidate aliases and engineering variants; they do not collapse differing format directions, selection scopes, parameter semantics or entry paths. Every retained path remains in the JSON. Similar names do not establish behavior equivalence.
 
