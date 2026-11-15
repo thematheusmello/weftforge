@@ -11217,7 +11217,7 @@ mod physical_sewing_tests {
         frame(ctx, app, vec![action(combo, Action::Click, None)]);
         click(ctx, app, &format!("Straight panel · boundary 1 · #{to}"));
     }
-    fn property_text(ctx: &egui::Context, app: &mut Studio, text: &str) -> egui::Id {
+    fn property_text(ctx: &egui::Context, app: &mut Studio, current: f64, text: &str) -> egui::Id {
         let output = frame(ctx, app, vec![]);
         let id = output
             .platform_output
@@ -11226,7 +11226,7 @@ mod physical_sewing_tests {
             .unwrap()
             .nodes
             .iter()
-            .find(|(_, node)| node.numeric_value() == Some(0.37))
+            .find(|(_, node)| node.numeric_value() == Some(current))
             .unwrap()
             .0;
         frame(ctx, app, vec![action(id, Action::Focus, None)]);
@@ -11511,7 +11511,7 @@ mod physical_sewing_tests {
     fn free_sewing_invalid_property_and_tool_switch_preserve_unfinished_property_text() {
         let ctx = new_context();
         let mut app = fixture();
-        let property = property_text(&ctx, &mut app, "-");
+        let property = property_text(&ctx, &mut app, 0.37, "-");
         let before = format!("{:?}", app.editor);
         let raw = ctx.data_mut(|data| data.get_temp::<String>(property));
         let caret = egui::TextEdit::load_state(&ctx, property)
@@ -11553,6 +11553,219 @@ mod physical_sewing_tests {
         assert!(app.tool == Tool::Select && app.editor.can_redo() && !app.dirty);
     }
 
+    fn canvas_start_retains_unfinished_property(text: &str) {
+        let ctx = new_context();
+        let mut app = fixture();
+        let property = property_text(&ctx, &mut app, 0.37, text);
+        let raw = ctx.data_mut(|data| data.get_temp::<String>(property));
+        assert_eq!(raw.as_deref(), Some(text));
+        let caret = egui::TextEdit::load_state(&ctx, property)
+            .unwrap()
+            .cursor
+            .char_range();
+        let before = format!("{:?}", app.editor);
+        let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+        let mesh = app.mesh.as_ref().unwrap().clone();
+        let cloth = app.cloth.as_ref().unwrap().clone();
+        let assert_retained = |app: &Studio, stage: &str| {
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(property)),
+                raw,
+                "{text:?}: {stage} raw text"
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, property)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret,
+                "{text:?}: {stage} caret"
+            );
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                pending,
+                "{text:?}: {stage} pending commands"
+            );
+            assert_eq!(
+                format!("{:?}", app.editor),
+                before,
+                "{text:?}: {stage} accepted editor/history"
+            );
+            assert!(
+                app.editor.can_redo() && !app.dirty && !app.needs_mesh,
+                "{text:?}: {stage} Redo/accepted state"
+            );
+            assert!(
+                Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh)
+                    && Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth)
+            );
+        };
+        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        let start = app.to_screen([0., 0.], rect);
+        for pressed in [true, false] {
+            pointer(&ctx, &mut app, start, egui::PointerButton::Primary, pressed);
+            assert_retained(
+                &app,
+                if pressed {
+                    "start press"
+                } else {
+                    "start release"
+                },
+            );
+        }
+        let end = app.to_screen([0.16, 0.064], rect);
+        for pressed in [true, false] {
+            pointer(&ctx, &mut app, end, egui::PointerButton::Secondary, pressed);
+            assert_retained(
+                &app,
+                if pressed {
+                    "direction press"
+                } else {
+                    "direction release"
+                },
+            );
+        }
+        assert!(app.free_sewing.as_ref().unwrap().modal);
+        type_field(&ctx, &mut app, "Length", "100");
+        let output = frame(&ctx, &mut app, vec![]);
+        let ok = button_position(&output, "OK");
+        for pressed in [true, false] {
+            pointer(&ctx, &mut app, ok, egui::PointerButton::Primary, pressed);
+            assert_retained(
+                &app,
+                if pressed {
+                    "failed OK press"
+                } else {
+                    "failed OK release"
+                },
+            );
+        }
+        assert!(
+            app.free_sewing
+                .as_ref()
+                .unwrap()
+                .error
+                .as_ref()
+                .unwrap()
+                .contains("pending property")
+        );
+        for _ in 0..3 {
+            frame(&ctx, &mut app, vec![]);
+            assert_retained(&app, "after failed OK");
+        }
+        let output = frame(&ctx, &mut app, vec![]);
+        let cancel = button_position(&output, "Cancel");
+        for pressed in [true, false] {
+            pointer(
+                &ctx,
+                &mut app,
+                cancel,
+                egui::PointerButton::Primary,
+                pressed,
+            );
+            assert_retained(
+                &app,
+                if pressed {
+                    "Cancel press"
+                } else {
+                    "Cancel release"
+                },
+            );
+        }
+        assert!(app.free_sewing.is_none());
+        for _ in 0..4 {
+            frame(&ctx, &mut app, vec![]);
+            assert_retained(&app, "after Cancel");
+        }
+    }
+
+    #[test]
+    fn free_sewing_canvas_start_retains_unfinished_exponent_and_redo() {
+        canvas_start_retains_unfinished_property("1e-");
+    }
+
+    #[test]
+    fn free_sewing_canvas_start_retains_unfinished_minus_and_redo() {
+        canvas_start_retains_unfinished_property("-");
+    }
+
+    #[test]
+    fn free_sewing_nonmodal_cancel_keeps_property_edit_made_after_accepting_a() {
+        let ctx = new_context();
+        let mut app = fixture();
+        property_text(&ctx, &mut app, 0.37, "0.47");
+        accept_a(&ctx, &mut app);
+        assert!(
+            app.free_sewing
+                .as_ref()
+                .is_some_and(|draft| draft.selecting_b && !draft.modal)
+        );
+        let property = property_text(&ctx, &mut app, 0.47, "0.57");
+        let raw = ctx.data_mut(|data| data.get_temp::<String>(property));
+        assert_eq!(raw.as_deref(), Some("0.57"));
+        let caret = egui::TextEdit::load_state(&ctx, property)
+            .unwrap()
+            .cursor
+            .char_range();
+        let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+        assert!(
+            pending.iter().any(
+                |command| matches!(command, Command::SetGrain { angle, .. } if *angle == 0.57)
+            )
+        );
+        let before = format!("{:?}", app.editor);
+        let assert_retained = |app: &Studio, stage: &str| {
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(property)),
+                raw,
+                "{stage}: newer raw text"
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, property)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret,
+                "{stage}: newer caret"
+            );
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                pending,
+                "{stage}: newer pending commands"
+            );
+            assert_eq!(
+                format!("{:?}", app.editor),
+                before,
+                "{stage}: accepted editor/history"
+            );
+            assert!(app.editor.can_redo() && !app.dirty && !app.needs_mesh);
+        };
+        let output = frame(&ctx, &mut app, vec![]);
+        let cancel = button_position(&output, "Cancel free sewing");
+        for pressed in [true, false] {
+            pointer(
+                &ctx,
+                &mut app,
+                cancel,
+                egui::PointerButton::Primary,
+                pressed,
+            );
+            assert_retained(
+                &app,
+                if pressed {
+                    "toolbar Cancel press"
+                } else {
+                    "toolbar Cancel release"
+                },
+            );
+        }
+        assert!(app.free_sewing.is_none());
+        for _ in 0..4 {
+            frame(&ctx, &mut app, vec![]);
+            assert_retained(&app, "after toolbar Cancel");
+        }
+    }
+
     #[test]
     fn free_sewing_failure_and_cancel_retain_raw_text_carets_redo_and_accepted_state() {
         for stage_b in [false, true] {
@@ -11562,7 +11775,7 @@ mod physical_sewing_tests {
                 if stage_b {
                     accept_a(&ctx, &mut app);
                 }
-                let property = property_text(&ctx, &mut app, "0.47");
+                let property = property_text(&ctx, &mut app, 0.37, "0.47");
                 let raw = ctx.data_mut(|data| data.get_temp::<String>(property));
                 let caret = egui::TextEdit::load_state(&ctx, property)
                     .unwrap()
