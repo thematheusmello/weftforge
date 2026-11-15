@@ -55,10 +55,35 @@ enum ExportFormat {
     Svg,
     Dxf,
 }
-#[derive(Clone, Copy, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 enum JobKind {
     Mesh,
     Simulation,
+}
+#[derive(Clone, Copy, Debug, PartialEq)]
+enum JobStatus {
+    Accepted,
+    Cancelled,
+    Discarded,
+    Failed,
+}
+impl JobStatus {
+    fn label(self) -> &'static str {
+        match self {
+            Self::Accepted => "Accepted",
+            Self::Cancelled => "Cancelled · result discarded",
+            Self::Discarded => "Discarded · obsolete input revision",
+            Self::Failed => "Failed · previous state retained",
+        }
+    }
+}
+#[derive(Clone, Copy, Debug, PartialEq)]
+struct FinishedJob {
+    id: u64,
+    revision: u64,
+    kind: JobKind,
+    progress: Option<(u64, usize)>,
+    status: JobStatus,
 }
 enum JobOutput {
     Mesh(Arc<Mesh>),
@@ -96,9 +121,11 @@ impl SimulationBatch {
     }
 }
 struct Job {
+    id: u64,
     revision: u64,
     kind: JobKind,
     batch: Option<SimulationBatch>,
+    completed_steps: Arc<AtomicU64>,
     cancel: Arc<AtomicBool>,
     receiver: mpsc::Receiver<Result<JobOutput, String>>,
 }
@@ -107,26 +134,36 @@ impl Job {
         ctx: &egui::Context,
         revision: u64,
         kind: JobKind,
-        work: impl FnOnce(&AtomicBool) -> Result<JobOutput, String> + Send + 'static,
+        work: impl FnOnce(&AtomicBool, &AtomicU64) -> Result<JobOutput, String> + Send + 'static,
     ) -> Self {
+        static NEXT_TASK_ID: AtomicU64 = AtomicU64::new(1);
+        let id = NEXT_TASK_ID.fetch_add(1, Ordering::Relaxed);
         let cancel = Arc::new(AtomicBool::new(false));
         let flag = cancel.clone();
+        let completed_steps = Arc::new(AtomicU64::new(0));
+        let progress = completed_steps.clone();
         let ctx = ctx.clone();
         let (sender, receiver) = mpsc::channel();
         std::thread::spawn(move || {
             let result = check_cancelled(&flag)
-                .and_then(|()| work(&flag))
+                .and_then(|()| work(&flag, &progress))
                 .and_then(|output| check_cancelled(&flag).map(|()| output));
             let _ = sender.send(result);
             ctx.request_repaint();
         });
         Self {
+            id,
             revision,
             kind,
             batch: None,
+            completed_steps,
             cancel,
             receiver,
         }
+    }
+    fn progress(&self) -> Option<(u64, usize)> {
+        self.batch
+            .map(|batch| (self.completed_steps.load(Ordering::Relaxed), batch.steps))
     }
     fn accepts(&self, revision: u64) -> bool {
         self.revision == revision && !self.cancel.load(Ordering::Relaxed)
@@ -292,6 +329,7 @@ struct Studio {
     mesh: Option<Arc<Mesh>>,
     cloth: Option<Arc<Cloth>>,
     job: Option<Job>,
+    last_job: Option<FinishedJob>,
     needs_mesh: bool,
     pending_batch: Option<SimulationBatch>,
     last_stage: &'static str,
@@ -362,6 +400,7 @@ impl Studio {
             mesh: None,
             cloth: None,
             job: None,
+            last_job: None,
             needs_mesh: false,
             pending_batch: None,
             last_stage: "Rest arrangement",
@@ -664,7 +703,7 @@ impl Studio {
             ctx,
             project.revision,
             JobKind::Mesh,
-            move |cancel| {
+            move |cancel, _| {
                 let mesh = project
                     .mesh_cancellable(|| cancel.load(Ordering::Relaxed))
                     .map_err(|error| error.to_string())?;
@@ -704,24 +743,30 @@ impl Studio {
         let cloth = self.cloth.clone();
         let settings = batch.settings;
         self.pending_batch = None;
-        let mut job = Job::spawn(ctx, project.revision, JobKind::Simulation, move |cancel| {
-            let mut state = match cloth {
-                Some(state) => (*state).clone(),
-                None => {
-                    weftforge_core::simulation::create_cloth_cancellable(&project, &mesh, || {
-                        cancel.load(Ordering::Relaxed)
-                    })
-                    .map_err(|error| error.to_string())?
+        let mut job = Job::spawn(
+            ctx,
+            project.revision,
+            JobKind::Simulation,
+            move |cancel, progress| {
+                let mut state = match cloth {
+                    Some(state) => (*state).clone(),
+                    None => {
+                        weftforge_core::simulation::create_cloth_cancellable(&project, &mesh, || {
+                            cancel.load(Ordering::Relaxed)
+                        })
+                        .map_err(|error| error.to_string())?
+                    }
+                };
+                check_cancelled(cancel)?;
+                for _ in 0..batch.steps {
+                    state
+                        .step(settings, || cancel.load(Ordering::Relaxed))
+                        .map_err(|e| e.to_string())?;
+                    progress.fetch_add(1, Ordering::Relaxed);
                 }
-            };
-            check_cancelled(cancel)?;
-            for _ in 0..batch.steps {
-                state
-                    .step(settings, || cancel.load(Ordering::Relaxed))
-                    .map_err(|e| e.to_string())?;
-            }
-            Ok(JobOutput::Simulation(Arc::new(state)))
-        });
+                Ok(JobOutput::Simulation(Arc::new(state)))
+            },
+        );
         job.batch = Some(batch);
         self.job = Some(job);
     }
@@ -736,7 +781,26 @@ impl Studio {
             });
         if let Some(result) = result {
             let job = self.job.take().expect("finished job");
-            if !job.accepts(self.editor.project.revision) {
+            let can_accept = job.accepts(self.editor.project.revision);
+            let status = if !can_accept {
+                if job.cancel.load(Ordering::Relaxed) {
+                    JobStatus::Cancelled
+                } else {
+                    JobStatus::Discarded
+                }
+            } else if result.is_err() {
+                JobStatus::Failed
+            } else {
+                JobStatus::Accepted
+            };
+            self.last_job = Some(FinishedJob {
+                id: job.id,
+                revision: job.revision,
+                kind: job.kind,
+                progress: job.progress(),
+                status,
+            });
+            if !can_accept {
                 return;
             }
             match result {
@@ -1333,17 +1397,57 @@ impl Studio {
                 self.cancel();
                 self.playing = false;
                 self.pending_batch = None;
-                self.message = "Cancelled phase; previous accepted snapshot retained.".into();
+                self.message = "Cancelling phase; previous accepted snapshot retained.".into();
             }
             ui.checkbox(&mut self.wireframe, "Wireframe");
         });
         ui.horizontal_wrapped(|ui| {
             let active=self.job.as_ref().and_then(|job|job.batch);
             let settings=active.map_or(self.settings,|batch|batch.settings);
-            ui.label(format!("Stage: {}{}",active.map_or(self.last_stage,|batch|batch.stage),active.map_or(String::new(),|batch|format!(" · {} steps",batch.steps))));
+            if let Some(job) = &self.job {
+                if let Some((completed, total)) = job.progress() {
+                    ui.label(format!(
+                        "Stage: {} · {completed}/{total} steps",
+                        active.map_or(self.last_stage, |batch| batch.stage),
+                    ));
+                } else {
+                    ui.label(format!("Stage: {:?} · progress indeterminate", job.kind));
+                }
+            } else {
+                ui.label(format!("Stage: {}", self.last_stage));
+            }
             ui.label(format!("{}: dt {:.5} s · {} substeps · {} iterations · gravity {:?} m/s² · seam closure {:.2} m/s",if active.is_some() { "Active settings" } else { "Next step settings" },settings.dt,settings.substeps,settings.iterations,settings.gravity,settings.seam_closure_speed));
             if let Some(batch)=self.pending_batch { ui.colored_label(Color32::GOLD,format!("Queued: {} · {} steps",batch.stage,batch.steps)); }
         });
+        if self.job.is_some() || self.last_job.is_some() {
+            ui.collapsing("Task details", |ui| {
+                ui.weak(
+                    "Application task IDs identify workers in this session, not OS thread handles.",
+                );
+                if let Some(job) = &self.job {
+                    ui.label(format!(
+                        "Current: task {} · {:?} · input rev {} · {}",
+                        job.id,
+                        job.kind,
+                        job.revision,
+                        if job.cancel.load(Ordering::Relaxed) {
+                            "Cancelling…"
+                        } else {
+                            "Running"
+                        },
+                    ));
+                }
+                if let Some(job) = self.last_job {
+                    ui.label(format!(
+                        "Last: task {} · {:?} · input rev {} · {}",
+                        job.id, job.kind, job.revision, job.status.label(),
+                    ));
+                    if let Some((completed, total)) = job.progress {
+                        ui.weak(format!("Successful worker steps: {completed}/{total}"));
+                    }
+                }
+            });
+        }
     }
     fn inspector(&mut self, ui: &mut egui::Ui) {
         ui.heading("Properties");
@@ -3044,9 +3148,11 @@ mod tests {
                 if busy {
                     app.dirty = true;
                     app.job = Some(Job {
+                        id: 0,
                         revision: 0,
                         kind: JobKind::Simulation,
                         batch: Some(SimulationBatch::assemble()),
+                        completed_steps: Arc::new(AtomicU64::new(0)),
                         cancel: Arc::new(AtomicBool::new(false)),
                         receiver,
                     });
@@ -5710,9 +5816,11 @@ mod tests {
         let (_sender, receiver) = mpsc::channel();
         let cancel = Arc::new(AtomicBool::new(false));
         app.job = Some(Job {
+            id: 0,
             revision: before.revision,
             kind: JobKind::Mesh,
             batch: None,
+            completed_steps: Arc::new(AtomicU64::new(0)),
             cancel: cancel.clone(),
             receiver,
         });
@@ -6472,9 +6580,11 @@ mod tests {
         app.mesh = Some(mesh);
         let (sender, receiver) = mpsc::channel();
         app.job = Some(Job {
+            id: 0,
             revision: app.editor.project.revision,
             kind: JobKind::Simulation,
             batch: Some(SimulationBatch::drape()),
+            completed_steps: Arc::new(AtomicU64::new(0)),
             cancel: Arc::new(AtomicBool::new(false)),
             receiver,
         });
@@ -6500,9 +6610,11 @@ mod tests {
             let mesh = Arc::new(app.editor.project.mesh().unwrap());
             let (sender, receiver) = mpsc::channel();
             app.job = Some(Job {
+                id: 0,
                 revision: app.editor.project.revision,
                 kind: JobKind::Mesh,
                 batch: None,
+                completed_steps: Arc::new(AtomicU64::new(0)),
                 cancel: Arc::new(AtomicBool::new(false)),
                 receiver,
             });
@@ -6540,9 +6652,11 @@ mod tests {
                 }
                 let (sender, receiver) = mpsc::channel();
                 app.job = Some(Job {
+                    id: 0,
                     revision: app.editor.project.revision + u64::from(outcome == "stale"),
                     kind,
                     batch: (kind == JobKind::Simulation).then(SimulationBatch::assemble),
+                    completed_steps: Arc::new(AtomicU64::new(0)),
                     cancel: Arc::new(AtomicBool::new(false)),
                     receiver,
                 });
@@ -6618,7 +6732,7 @@ mod tests {
         let ctx = egui::Context::default();
         let (entered_sender, entered_receiver) = mpsc::channel();
         let (release_sender, release_receiver) = mpsc::channel();
-        let job = Job::spawn(&ctx, 7, JobKind::Mesh, move |_| {
+        let job = Job::spawn(&ctx, 7, JobKind::Mesh, move |_, _| {
             entered_sender.send(()).unwrap();
             release_receiver
                 .recv_timeout(Duration::from_secs(2))
@@ -6640,9 +6754,11 @@ mod tests {
         app.mesh = Some(old.clone());
         let (sender, receiver) = mpsc::channel();
         app.job = Some(Job {
+            id: 0,
             revision: 1,
             kind: JobKind::Mesh,
             batch: None,
+            completed_steps: Arc::new(AtomicU64::new(0)),
             cancel: Arc::new(AtomicBool::new(false)),
             receiver,
         });
@@ -6722,6 +6838,112 @@ mod tests {
         app.reset_simulation();
         assert!(app.pending_batch.is_none());
         assert!(app.cloth.is_none());
+    }
+
+    #[test]
+    fn task_progress_correlates_real_workers_and_retains_unaccepted_snapshots() {
+        fn finish(app: &mut Studio) -> FinishedJob {
+            let deadline = Instant::now() + Duration::from_secs(3);
+            while app.job.is_some() {
+                assert!(Instant::now() < deadline, "bounded worker did not finish");
+                app.poll();
+                std::thread::yield_now();
+            }
+            app.last_job.unwrap()
+        }
+
+        let ctx = egui::Context::default();
+        let mut app = accepted_drape_studio();
+        let mesh = app.mesh.clone().unwrap();
+        let old_cloth = app.cloth.clone().unwrap();
+        let revision = app.editor.project.revision;
+        let batch = SimulationBatch {
+            steps: 2,
+            ..SimulationBatch::assemble()
+        };
+        let previous = app.last_job;
+        app.queue_batch(batch);
+        assert_eq!(app.last_job, previous);
+        app.start_batch(&ctx, batch);
+        let job = app.job.as_ref().unwrap();
+        let mut id = job.id;
+        assert!(id > 0);
+        assert_eq!(job.revision, revision);
+        assert_eq!(job.kind, JobKind::Simulation);
+        assert_eq!(job.progress().unwrap().1, batch.steps);
+        assert!(job.progress().unwrap().0 <= batch.steps as u64);
+        assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &old_cloth));
+        let accepted = finish(&mut app);
+        assert_eq!(accepted.id, id);
+        assert_eq!(accepted.revision, revision);
+        assert_eq!(accepted.kind, JobKind::Simulation);
+        assert_eq!(accepted.progress, Some((2, 2)));
+        assert_eq!(accepted.status, JobStatus::Accepted);
+        let cloth = app.cloth.clone().unwrap();
+        assert!(!Arc::ptr_eq(&cloth, &old_cloth));
+        assert!((cloth.simulation_time() - old_cloth.simulation_time() - 2.0 / 60.0).abs() < 1e-12);
+
+        for status in [JobStatus::Failed, JobStatus::Cancelled, JobStatus::Discarded] {
+            let mut attempt = batch;
+            if status == JobStatus::Failed {
+                attempt.settings.dt = 0.0;
+            }
+            app.start_batch(&ctx, attempt);
+            let job = app.job.as_ref().unwrap();
+            assert!(job.id > id);
+            id = job.id;
+            assert_eq!(job.revision, revision);
+            if status == JobStatus::Cancelled {
+                app.cancel();
+            } else if status == JobStatus::Discarded {
+                // Change only the revision eligibility; let the real worker finish its batch.
+                app.editor
+                    .execute(Command::SetResolution { metres: 0.025 })
+                    .unwrap();
+            }
+            let finished = finish(&mut app);
+            assert_eq!(finished.id, id);
+            assert_eq!(finished.revision, revision);
+            assert_eq!(finished.kind, JobKind::Simulation);
+            assert_eq!(finished.status, status);
+            let (completed, total) = finished.progress.unwrap();
+            assert_eq!(total, 2);
+            match status {
+                JobStatus::Failed => assert_eq!(completed, 0),
+                JobStatus::Discarded => assert_eq!(completed, 2),
+                JobStatus::Cancelled => assert!(completed <= 2),
+                JobStatus::Accepted => unreachable!(),
+            }
+            assert_eq!(app.last_stage, batch.stage);
+            assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+        }
+
+        let discarded = app.last_job;
+        app.queue_batch(batch);
+        app.rebuild();
+        assert_eq!(app.last_job, discarded);
+        app.start_mesh(&ctx);
+        let job = app.job.as_ref().unwrap();
+        assert!(job.id > id);
+        id = job.id;
+        assert_eq!(job.kind, JobKind::Mesh);
+        assert!(job.progress().is_none());
+        assert_eq!(app.last_job, discarded);
+        app.reset_simulation();
+        assert_eq!(app.last_job, discarded);
+        assert!(app.cloth.is_none());
+        let meshed = finish(&mut app);
+        assert_eq!(meshed.id, id);
+        assert_eq!(meshed.revision, app.editor.project.revision);
+        assert_eq!(meshed.kind, JobKind::Mesh);
+        assert_eq!(meshed.status, JobStatus::Accepted);
+        assert!(meshed.progress.is_none());
+        app.execute(Command::RemovePiece {
+            piece: app.editor.project.pieces[0].id,
+        });
+        assert!(app.editor.project.pieces.is_empty());
+        assert_eq!(app.last_job, Some(meshed));
     }
 
     #[test]
