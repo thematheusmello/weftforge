@@ -1,7 +1,7 @@
 # WeftForge status — active development, 2026-11-15
 
 One-piece layout transforms and New Empty are implemented at source
-dd5a16826dafe0d4f32c251f7c351197ad0936af. This local publication candidate preserves
+dd5a16826dafe0d4f32c251f7c351197ad0936af. The [PR45 publication](https://github.com/thematheusmello/weftforge/pull/45) preserves
 the complete studio target: **0/56 coarse reference contracts verified**,
 **39 partial / 17 planned**, discovery incomplete and **no roadmap gate accepted**.
 The 949 observed entries / 205 packets remain an engineering inventory.
@@ -69,8 +69,8 @@ Confirmed terminal handles: DD gate runner 82460 completed successfully; A4 acto
 92536 terminated after its case; B case is closed/unverified and its last final
 accounting retained own PID 17316 running. These are historical handles, not a
 reusable authority. Actions and automated Pages deployment remain disabled and
-the existing static site is preserved. No push/PR or binary release is part of
-this local publication candidate.
+the existing static site is preserved. PR45 carries the source and tracked evidence;
+no binary release or deployment is included.
 
 ## Prior measurement delivery
 
@@ -137,10 +137,11 @@ surface contact, full persistence and full garment acceptance remain open.
 
 ## Exact next work
 
-Root-review this tracked, source-bound publication candidate and its clean
-registry/map receipts before any publication. Continue physical-length partial
-Free Sewing on its separately bound source and native case; this DD packet does
-not contain or accept that later runtime. Follow with internal lines and bounded
+Root reviewed the tracked source-bound packet and final clean registry/map checks;
+all 1,044 report artifacts are tracked and hashed, and the 59 runtime inputs are
+unchanged. Integrate physical-length partial Free Sewing with its own separately
+bound source and evidence; this DD packet does not contain or accept that later
+runtime. Continue internal lines and bounded
 topological cuts. Preserve the full parity target, unfinished native pointer-B
 acceptance and reference unknowns; future acceptance requires a fresh declared
 case/source/input/criteria binding rather than reopening or repairing closed cases.
