@@ -6746,7 +6746,7 @@ mod tests {
     fn worker_failure_survives_late_cancel_and_revision_change() {
         let error = "Worker diagnostic must survive a later UI action.";
         let mut outcomes = Vec::new();
-        for action in ["cancel", "edit"] {
+        for action in ["current_play", "current_queue", "cancel", "edit"] {
             let mut app = accepted_drape_studio();
             let mesh = app.mesh.clone().unwrap();
             let cloth = app.cloth.clone().unwrap();
@@ -6766,10 +6766,19 @@ mod tests {
                 .unwrap();
             if action == "cancel" {
                 app.cancel();
-            } else {
+            } else if action == "edit" {
                 app.editor
                     .execute(Command::SetResolution { metres: 0.025 })
                     .unwrap();
+            }
+            if ["current_play", "edit"].contains(&action) {
+                app.playing = true;
+            } else {
+                app.queue_batch(SimulationBatch {
+                    steps: 1,
+                    settings: app.settings,
+                    stage: "Manual step",
+                });
             }
             app.poll();
             let job = app.last_job.as_ref().unwrap();
@@ -6781,13 +6790,33 @@ mod tests {
             assert_eq!(app.last_stage, "Drape");
             assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
             assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
-            outcomes.push((action, job.status, app.message));
+            outcomes.push((
+                action,
+                job.status,
+                app.message,
+                app.playing,
+                app.pending_batch.map(|batch| (batch.steps, batch.stage)),
+            ));
         }
         assert_eq!(
             outcomes,
             vec![
-                ("cancel", JobStatus::Failed, error.into()),
-                ("edit", JobStatus::Failed, error.into()),
+                ("current_play", JobStatus::Failed, error.into(), false, None),
+                (
+                    "current_queue",
+                    JobStatus::Failed,
+                    error.into(),
+                    false,
+                    None
+                ),
+                (
+                    "cancel",
+                    JobStatus::Failed,
+                    error.into(),
+                    false,
+                    Some((1, "Manual step")),
+                ),
+                ("edit", JobStatus::Failed, error.into(), true, None),
             ],
         );
         let cancel = AtomicBool::new(false);
