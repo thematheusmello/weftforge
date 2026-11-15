@@ -1,0 +1,106 @@
+Window: "WeftForge", App: WeftForge Studio.
+0 standard window WeftForge, Secondary Actions: Raise
+	1 container
+		2 text (settable) WeftForge
+		3 text (settable) GARMENT STUDIO
+		4 button Open…
+		5 button Save
+		6 button Save as…
+		7 button Recover…
+		8 button Export OBJ
+		9 button Export SVG
+		10 button Export DXF
+		11 button Undo
+		12 button Redo
+		13 button Commands ⌘K
+		14 toggle button (settable, boolean) Select / edit, Value: on
+		15 toggle button (settable, boolean) Polygon, Value: off
+		16 toggle button (settable, boolean) Rectangle, Value: off
+		17 toggle button (settable, boolean) Sew edges, Value: off
+		18 toggle button (settable, boolean) M:N sewing, Value: off
+		19 text (settable) Ordered-sewing.weftforge
+		20 text (settable) rev 73
+		21 text (settable) SIMULATION
+		22 button Pause
+		23 button Step
+		24 button Assemble (gravity off)
+		25 button Drape
+		26 button Reset
+		27 button Cancel job
+		28 checkbox (settable, boolean) Wireframe, Value: off
+		29 text (settable) Stage: Manual play · 2 steps
+		30 text (settable) Active settings: dt 0.01667 s · 4 substeps · 8 iterations · gravity [0.0, -9.81, 0.0] m/s² · seam closure 0.50 m/s
+		31 text (settable) 5 pieces  ·  0 seams  ·  1 sewing groups  ·  851 vertices
+		32 text (settable) 14.90 s  ·  peak strain 325.57%  ·  seam gap 23.049 mm
+		33 text (settable) Manual play complete · 14.900 s · 76.7 ms/step · assembly remaining 0.0000 m
+		34 progress indicator
+		35 text (settable) Simulating…
+		36 text (settable) Properties
+		37 text (settable) Editable construction
+		38 text (settable) OBJECTS
+		39 toggle button (settable, boolean) Original disconnected panel 1, Value: off
+		40 toggle button (settable, boolean) Original disconnected panel 2, Value: off
+		41 toggle button (settable, boolean) Original disconnected panel 3, Value: off
+		42 toggle button (settable, boolean) Original disconnected panel 4, Value: off
+		43 toggle button (settable, boolean) Original disconnected panel 5, Value: off
+		44 text (settable) CREATE PATTERN
+		45 text (settable) Pattern name
+		46 text field (settable) Pattern 1
+		47 text (settable) W / H m
+		48 stepper (settable) 0.50
+		49 stepper (settable) 0.60
+		50 text (settable) X / Y m
+		51 stepper (settable) -0.25
+		52 stepper (settable) 1.00
+		53 button Add rectangle
+		54 button Add ellipse
+		55 button Add polygon point
+		56 button Close pattern (0 points)
+		57 text (settable) SEWING
+		58 checkbox (settable, boolean) Reverse paired edge, Value: on
+		59 text (settable) A interval / B interval (0–1)
+		60 stepper (settable) 0.00
+		61 stepper (settable) 1.00
+		62 stepper (settable) 0.00
+		63 stepper (settable) 1.00
+		64 text (settable) Sew edges: click two 2D boundaries.
+		65 text (settable) Intervals use curve parameter t, not arc length. Reverse swaps B's direction and keeps the normalized mapping.
+		66 text (settable) Ordered sewing groups
+		67 text (settable) Pairing: total authored arc length in metres. Span endpoints use curve parameter t.
+		68 text (settable) Asymmetric cubic two to three · group #1000
+		69 text (settable) A 2 spans → B 3 spans
+		70 text (settable) A1 · #7 · t 0.13 → 0.87
+		71 text (settable) A2 · #16 · t 0.8 → 0.25
+		72 text (settable) B1 · #25 · t 0.94 → 0.17
+		73 text (settable) B2 · #34 · t 0.2 → 0.7
+		74 text (settable) B3 · #43 · t 0.83 → 0.29
+		75 text (settable) A 1.40716966 m · B 1.77537051 m
+Mismatch +0.36820085 m · 6 paired portions
+		76 button Edit group
+		77 button Reverse B
+		78 button Remove group
+		79 text (settable) Mesh edge length m
+		80 stepper (settable) 0.110
+		81 text (settable) Iterations / substeps
+		82 stepper (settable) 8
+		83 stepper (settable) 4
+		84 text (settable) Time 14.900 s
+Assembly remaining 0.0000 m
+Peak material strain 325.57%
+Seam gap 0.0230 m
+Contact error 0.0038 m
+Initial intersections 40
+		85 text (settable) Original disconnected panel 3 · Warp +325.57%
+		86 scroll bar
+		87 text (settable) 2D PATTERNS
+		88 text (settable) Construction
+		89 text (settable) Metres · 1 cm snap · scroll zoom · middle drag pan
+		90 unknown
+		91 text (settable) 3D GARMENT
+		92 text (settable) Fitting
+		93 text (settable) Drag orbit · scroll zoom · triangle selection
+		94 unknown
+	95 text WeftForge
+	96 menu button Window sharing
+97 menu bar
+	98 WeftForge

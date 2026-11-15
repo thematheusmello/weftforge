@@ -1,14 +1,167 @@
-# WeftForge status — active development, 2026-11-14
+# WeftForge status — active development, 2026-11-15
 
 The complete independent native garment studio remains the goal. Verified
 reference parity is **0/56** coarse contracts; discovery is incomplete and no
 roadmap gate is accepted. The 949 observed interface entries are an engineering
 inventory, not a feature-completion denominator.
 
+## Current continuation
+
+Published main is `d65f935aea54bb5d8cf882d8c212fee8dbe314cf`, merged through
+[PR37](https://github.com/thematheusmello/weftforge/pull/37). The primary checkout
+has fast-forwarded cleanly; its39 runtime/test files equal testedb760. Final
+clean85577d0 registry/map checks passed and all2,087 referenced artifacts are
+tracked and hash-correct. The merge tree equals that reviewed head. Actions is
+still `enabled:false`; both head and merge have zero workflow runs. Publication
+receipt: `.local/verification/published-d65f935aea54.json`.
+
+The next candidate is private0770204, with40 frozen runtime/test files,153
+passing Rust tests and the reviewed static capsule contact fix. Its original
+Harbor inputs, source snapshot and readonly driver are prepared in
+`.local/capsule-garment-20261115`. Planv2 retains420s whole-case,256MiB numerical
+output and a separate256MiB producer peak-RSS bound. Geometry-only preflights
+match both old rest meshes byte-for-byte. The independent evaluator is frozen
+at4b22c710 with24 files; final root selfchecks passed9groups/83cases and the
+runner's12stub checks passed. Reviewed runner hash isb2269380; actual driver is
+7f01a335. Root authorization0c4671b4 was checked by both sides before launch.
+Controller session35986/PID87622 ended with exit2 after both cases completed
+structurally and passed their receipt/resource checks. Base took167.268207s;
+height took162.048551s. Both passed the independent static contact screen at all
+181 saved states. Base still fails strain at frames28–37 (maximum19.9092% at31)
+and has33 exact peak-attribution failures; height passes all trajectory physical
+and completed-fit screens but has attribution failures at6/10/18. Overall strict
+delivery stays failed. Base final contact interval is approximately2.3071e-7m;
+height's maximum contact upper bound is3.78893e-7m. No oracle/policy count or
+initial-count uncertainty was hidden. All old contact/strain/trace failures remain
+visible. Do not retry or continue these closed cases. Receipts and immutable
+analysis are under `.local/capsule-garment-20261115/runs`; posthoc attribution
+review is separate. No owned solver process remains active.
+
+An isolated agent is implementing bounded editable SVG pattern import under
+`.local/svg-pattern-import-20261115`/`feat/svg-pattern-import`; its prospective
+FILE-005 contract953328e9 predates code. Core/CLI/MCP/native paths and tests are
+written. After case closure, focused core5/5, CLI1/1 and MCP8/8 checks passed;
+the independent svgpathtools1.7.2/minidom consumer passed scale/geometry checks.
+Native focused checks exposed a modal-width issue, now being corrected with
+the first failure retained. Full gates, actual native import acceptance and
+integration remain pending. Root owns report freshness/registry updates before
+the agent's final full gates.
+
+The completed7fe native workflow and its original closure inventories remain
+immutable. Its37 runtime/test files are separately archived from Git at
+`.local/harbor-native-source-7fe9e187-20261115`; the old evaluator's live-checkout
+guard is intentionally historical after this fast-forward. Original7fe process
+14668 and preview32794 were rechecked live in their separate copied bundles;
+both are paused and no solver job is active. The primary and preview target
+trees with inherited shared links were preserved under ignored local storage;
+their replacements are real private directories. External cache destinations
+were untouched. Keep using isolated targets for new work.
+
+## Native visual preview checkpoint
+
+The user requested the latest running appearance and confirmed PhotoCraft as
+the visual direction. The isolated `feat/native-studio-preview` worktree at
+`.local/native-studio-preview-20261114` is committed at `b760b990` and includes
+the independently authored editable ellipse from `fab0f3b5`, charcoal styling,
+right Properties, larger paired viewports, and bottom simulation/status controls.
+Properties commands execute before canvas painting; independent triangle-edge
+strokes avoid acute wireframe joins. This is an implementation preview, not a
+new reference-parity or roadmap acceptance claim.
+
+All 35 focused native tests pass, including current-frame exact sewing guides,
+scoped command-search actions, retained export drafts, and actual canvas paint
+non-overlap at minimum/default sizes. Final `b760b990` passed formatting,
+141 workspace Rust tests, strict workspace/all-target Clippy, xtask verification
+(54 Python checks, registry/map and actual CLI help), and standard local unsigned
+packaging. All five jobs under `.local/native-preview-checks-v3-20261114` are
+terminal with exit0 (exec24713; wrapper28492). Those builds used nested target
+links to shared compiled outputs; their raw results retain that qualification.
+The preview target was preserved and replaced by an empty real directory.
+Fresh isolated formatting, all141Rust tests, strict Clippy, xtask verification
+and standard packaging passed under `.local/native-preview-isolated-checks-20261115`
+(wrapper19046, exec82428, all terminal0). The resulting native binary is
+byte-identical to the observed3f0 preview. See the tracked
+[gallery](docs/studio-preview.md) and
+[build qualification](parity/reports/artifacts/studio-preview-20261114/BUILD-ISOLATION-QUALIFICATION.json).
+Earlier55b checks failed four
+observer/layout cases;9e passed automated gates but its actual launch exposed
+transport overpainting. Both attempts and raw captures remain retained.
+
+The final native preview is open as **WeftForge Studio**, process32794, binary
+SHA256 `3f0e2388726c2768dfe1ddc3016f399b0f497acb13e9cfa70b9b031285dfd716`.
+Four raw1640x1032 JPEG captures under
+`.local/native-preview-20261114/captures/current` show the draped Harbor workspace,
+actual canvas selection of an editable ellipse quarter, ordered two-to-three
+sewing spans, and the four-knot easing map. The final canvas/transport layout was
+visually checked. The loaded Harbor demonstration accepted60 zero-gravity
+assembly steps plus120 drape steps at8 substeps/32 iterations and displays3.000s,
+8.67% final peak strain. This is a visual demonstration, not trajectory quality
+acceptance. Unplanned Manual Play on the ordered-sewing fixture, external-change
+driver refusals, and severe displayed strain were retained separately; input
+origin was not independently established. It was paused before loading Harbor.
+Faint AA artifacts on thin projected triangles remain; production rendering,
+advanced construction, animation and general garment convergence are unfinished.
+The complete local receipt is `.local/native-preview-20261114/PREVIEW-RECEIPT.json`
+(SHA256 `0f82373ff5164c33d5c0d81a9ce86e54dcb9af8b7602910a5f25b06e7140fc83`).
+
+The separate frozen7fe native workflow has authored both14-edge panels,
+placement/grain and all8seams, saved revision16, actually quit, launched a fresh
+empty process and reopened the identical source. Height/history revisions17–20
+match the predeclared fields exactly. CaseA20 completed60assembly+120drape steps
+in279.694913s, including exports and inspections, within the420s cap. Its0/60/180
+OBJ files are literally byte-identical to the frozen headless baseline. The
+independent final material-axis strain is8.6662644% and sampled seam gap is
+6.89445e-9m. These are native/headless equivalence checks, not reference parity.
+
+After Drape, the temporary edit21 produced640Rest with no time/strain state;
+Undo22 restored654Rest. The pending-mesh transient was unobserved. A second
+actual quit/relaunch/reopen preserved source bytes, and one height edit23
+produced the exact physical fields and restOBJ for caseB. B completed in
+207.261676542s with all three exports byte-identical to gold; final strain is
+6.8045029% and sampled seam gap6.08705e-9m. Independent curve/t measurements
+confirm the front changes0.04m at rest and0.029859952m at frame180. Process14668
+is saved at revision23, paused at Drape3.000s, with no active solver job.
+The37 frozen runtime/test files stayed unchanged through closure, and the
+observed de81 executable is retained. The closed private native inventory contains398payload files and48
+unedited JPEGs; full public preparation is still pending.
+
+The original workflow evaluator's revision sequence assumption fails across
+honest fresh-process opens0→16/22. A separately frozen strict lifecycle supplement
+preserves that failure and the raw action metadata defects. Save18's failed helper
+invocation lacks an on-disk original per-input trace; the later derivative is
+explicitly post hoc, and full action coverage is unproven. The unchanged
+supplement failed its honestfalse-completeness guard (exit2); later graph checks
+were not executed. No complete native workflow acceptance is claimed.
+
+Independent static geometry found full triangle/capsule penetration of at least
+9.0097005mm in HarborA180 and10.6724137mm inB180 despite zero supported vertex
+residual. Root reproduced the witnesses from the saved geometry; both exceed
+the unchanged2mm contact screen. GoldenA29 also retains15.3559% strain above15%.
+These failures prevent a contact or garment gate pass. A separate implementation
+at24dba771 adds static surface contact and conservative uncertainty diagnostics;
+39sim tests, strict sim Clippy and formatting pass. Independent source/static
+review found no bounded blocker across83oracle cases, including9conservative
+uncertain bounds. Root0770204 adds the CLI quality guard, legacy diagnostic
+decoding check and native uncertainty display. Formatting, all153Rust tests,
+strict workspace Clippy, xtask verification and standard unsigned packaging pass
+under `.local/capsule-integrated-checks-20261115` (exec93102/wrapper30000, all
+terminal0). Independent execution of the unchanged Rust detector also agrees
+with the original83oracle cases. No garment has run on that new solver.
+
+Preview evidence is under `.local/native-preview-20261114` and the published
+gallery; it cannot substitute for empty-project acceptance. Next finish the
+contact increment's independent evaluator/runner review and prospective garment
+checks, then integrate its qualified results. GitHub Actions was rechecked
+`enabled:false` on2026-11-15; README branding remains product focused.
+
 ## Publication and cost policy
 
 Public repository: https://github.com/thematheusmello/weftforge.
-Last published main is `3bc6317733d3dec6bed45dc056fdad669c369a1a`, merged
+The native preview, ellipse and contact counterexamples are delivered through
+[PR37](https://github.com/thematheusmello/weftforge/pull/37). Clean0289553 checks
+validated all2,087 referenced artifacts and the unchanged39-fileb760 runtime;
+the registry records the PR without promoting reference parity.
+Previous published main is `3bc6317733d3dec6bed45dc056fdad669c369a1a`, merged
 [PR36](https://github.com/thematheusmello/weftforge/pull/36). Its tree equals tested
 final head `63963816`; all 37 runtime files match executed `6c45535c`.
 Earlier [PR35](https://github.com/thematheusmello/weftforge/pull/35), main

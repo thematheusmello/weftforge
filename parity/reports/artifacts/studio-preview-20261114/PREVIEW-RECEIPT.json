@@ -1,0 +1,88 @@
+{
+  "scope": "Actual native implementation visual preview with original sample documents; no reference parity or empty-project acceptance",
+  "source_commit": "b760b990b142bb46b2481434fead9e7e0178ae0f",
+  "native_binary_sha256": "3f0e2388726c2768dfe1ddc3016f399b0f497acb13e9cfa70b9b031285dfd716",
+  "native_pid": 32794,
+  "observed_utc": "2026-11-14T23:11:09.957208+00:00",
+  "screenshots": {
+    "workspace": {
+      "path": "captures/current/workspace.jpg",
+      "sha256": "d92707b9d023d0602013663a0145f76487d8758376546e7895dcd57e112f67ac",
+      "format": "JPEG",
+      "pixels": [
+        1640,
+        1032
+      ],
+      "pixel_edits": false
+    },
+    "ellipse": {
+      "path": "captures/current/ellipse.jpg",
+      "sha256": "855a65e297f326e52c961223e82d60c95827b2c76d4ee55968eda43f43225cd2",
+      "format": "JPEG",
+      "pixels": [
+        1640,
+        1032
+      ],
+      "pixel_edits": false
+    },
+    "sewing": {
+      "path": "captures/current/sewing.jpg",
+      "sha256": "ff1630316fc2396964c7418faad85e0b213d802621aae3eb8b689f0656f262c7",
+      "format": "JPEG",
+      "pixels": [
+        1640,
+        1032
+      ],
+      "pixel_edits": false
+    },
+    "easing": {
+      "path": "captures/current/easing.jpg",
+      "sha256": "c1e2837a5a4de7ddf8e65111bab2bc8dc4b4685d37abb577acac9b0c70b09fdb",
+      "format": "JPEG",
+      "pixels": [
+        1640,
+        1032
+      ],
+      "pixel_edits": false
+    }
+  },
+  "checks": {
+    "fmt": "passed",
+    "workspace_rust_tests": 141,
+    "strict_workspace_all_targets_clippy": "passed",
+    "xtask_verify": "passed",
+    "python_checks": 54,
+    "standard_unsigned_local_package": "passed",
+    "all_jobs_terminal": true
+  },
+  "actual_ui": [
+    "Created and saved one four-cubic ellipse in55b; reopened unchanged in finalbuild; actualcanvasclick selectedcurve7 and displayeditscontrols.",
+    "Loaded original five-piece fixture; inspected2-to-3span group and four-knot easing map; cancelledwithoutauthoringchanges.",
+    "Loaded Harbor rev20 with2pieces/8seams/654vertices; accepted60zero-gravityassemblysteps then120gravitydrapesteps at8substeps/32iterations; finaldisplay3.000s/8.67percentpeakstrain.",
+    "Verified finalnativefooter isvisible, canvasesdo notcovertransport, and revisedtriangle strokes."
+  ],
+  "unplanned_activity": {
+    "state_file": "captures/current/unplanned-play.ax.txt",
+    "observation": "UI reported external changes and Manualplay on ordered-sewing fixture. Pausedafter19.600s displayed; authoredrevision stayed73. This was not a declared physics acceptance case; its severe strain remains retained.",
+    "input_origin": "Not independently established."
+  },
+  "prior_attempts": [
+    {
+      "source": "55b1187acad08bee9bb6ec58e42f23695ed76ff1",
+      "automated_native": "31passed/4failed; prior logs and captures retained"
+    },
+    {
+      "source": "9e117ee2b0f961672baaf98f285817ad4122771a",
+      "automated_gates": "allpassed",
+      "live_native": "failed footer occlusion; captured and retained in checks-v2/live-layout-refusal.json"
+    }
+  ],
+  "remaining_limits": [
+    "No new reference comparison or roadmap gate acceptance.",
+    "Not a replacement for frozen7fe empty-project authoring and A/B protocol.",
+    "Projected egui triangle renderer still shows occasional faint AA artifacts on thin faces; production renderer pending.",
+    "Advanced construction, avatar import, animation and robust general garment convergence remain incomplete."
+  ],
+  "github_actions_enabled": false,
+  "public_release": false
+}

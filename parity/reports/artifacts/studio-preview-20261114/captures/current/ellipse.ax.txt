@@ -1,0 +1,107 @@
+Window: "WeftForge", App: WeftForge Studio.
+0 standard window WeftForge, Secondary Actions: Raise
+	1 container (showing 0-100 of 116 items)
+		2 text (settable) WeftForge
+		3 text (settable) GARMENT STUDIO
+		4 button Open…
+		5 button Save
+		6 button Save as…
+		7 button Recover…
+		8 button Export OBJ
+		9 button Export SVG
+		10 button Export DXF
+		11 button Undo
+		12 button Redo
+		13 button Commands ⌘K
+		14 toggle button (settable, boolean) Select / edit, Value: on
+		15 toggle button (settable, boolean) Polygon, Value: off
+		16 toggle button (settable, boolean) Rectangle, Value: off
+		17 toggle button (settable, boolean) Sew edges, Value: off
+		18 toggle button (settable, boolean) M:N sewing, Value: off
+		19 text (settable) Ellipse-study.weftforge
+		20 text (settable) rev 1
+		21 text (settable) SIMULATION
+		22 button Play
+		23 button Step
+		24 button Assemble (gravity off)
+		25 button Drape
+		26 button Reset
+		27 checkbox (settable, boolean) Wireframe, Value: off
+		28 text (settable) Stage: Rest arrangement
+		29 text (settable) Next step settings: dt 0.01667 s · 4 substeps · 8 iterations · gravity [0.0, -9.81, 0.0] m/s² · seam closure 0.50 m/s
+		30 text (settable) 1 pieces  ·  0 seams  ·  0 sewing groups  ·  353 vertices
+		31 text (settable) Rest mesh rebuilt from editable construction.
+		32 text (settable) Properties
+		33 text (settable) Editable construction
+		34 text (settable) OBJECTS
+		35 toggle button (settable, boolean) Pattern 1, Value: on
+		36 text (settable) Boundary curve · select here or in 2D
+		37 pop up button (settable) Curve #7
+		38 text (settable) CREATE PATTERN
+		39 text (settable) Pattern name
+		40 text field (settable) Pattern 1
+		41 text (settable) W / H m
+		42 stepper (settable) 0.50
+		43 stepper (settable) 0.60
+		44 text (settable) X / Y m
+		45 stepper (settable) -0.25
+		46 stepper (settable) 1.00
+		47 button Add rectangle
+		48 button Add ellipse
+		49 button Add polygon point
+		50 button Close pattern (0 points)
+		51 text (settable) Pattern 1
+		52 text (settable) Selected curve #7
+		53 text (settable) P0 #3 · 0.000000 / 1.000000 m
+		54 text (settable) P3 #4 · 0.250000 / 1.300000 m
+		55 checkbox (settable, boolean) Cubic Bezier, Value: on
+		56 text (settable) P1 control X / Y m
+		57 stepper (settable) 0.13807
+		58 stepper (settable) 1.000
+		59 text (settable) P2 control X / Y m
+		60 stepper (settable) 0.250
+		61 stepper (settable) 1.13431
+		62 text (settable) Split parameter t
+		63 stepper (settable) 0.50
+		64 text (settable) Interior curve parameter, not arc length. Sewing is partitioned without changing point pairs.
+		65 button Split selected curve
+		66 button Join with next boundary
+		67 text (settable) Size m
+		68 stepper (settable) 0.500
+		69 stepper (settable) 0.600
+		70 text (settable) Arrange X / Y / Z m
+		71 stepper (settable) 0.00
+		72 stepper (settable) 0.00
+		73 stepper (settable) 0.00
+		74 text (settable) Rotate X / Y / Z radians
+		75 stepper (settable) 0.00
+		76 stepper (settable) 0.00
+		77 stepper (settable) 0.00
+		78 text (settable) Warp angle radians
+		79 text (settable) 0 = +U (right); positive turns toward +V (up).
+		80 stepper (settable) 0.00
+		81 text (settable) Shared fabric · 1 pieces
+		82 text (settable) Changes affect every assigned piece. Uncalibrated approximation.
+		83 text (settable) Mass/area kg/m²
+		84 stepper (settable) 0.18
+		85 text (settable) Warp stiffness N/m
+		86 stepper (settable) 400
+		87 text (settable) Weft stiffness N/m
+		88 stepper (settable) 400
+		89 text (settable) Bend N·m
+		90 stepper (settable) 0.00300
+		91 color well
+		92 button Delete selected
+		93 text (settable) SEWING
+		94 checkbox (settable, boolean) Reverse paired edge, Value: on
+		95 text (settable) A interval / B interval (0–1)
+		96 stepper (settable) 0.00
+		97 stepper (settable) 1.00
+		98 stepper (settable) 0.00
+		99 stepper (settable) 1.00
+		100 text (settable) Sew edges: click two 2D boundaries.
+		101 text (settable) Intervals use curve parameter t, not arc length. Reverse swaps B's direction and keeps the normalized mapping.
+	102 text WeftForge
+	103 menu button Window sharing
+104 menu bar
+	105 WeftForge
