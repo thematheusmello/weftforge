@@ -6,6 +6,10 @@ existing [FILE-005-v1 writer subset](FILE-005-dxf-pattern-export.md). It establi
 no reference parity, general CAD compatibility, apparel interchange or full
 garment round trip.
 
+The post-implementation review corrected the save-failure wording below to match
+inherited native primary/recovery ordering. The original prospective wording is
+retained in Git; no stronger two-file save transaction is implemented here.
+
 ## Accepted drawing and construction
 
 Accept ASCII group-code/value pairs with LF or CRLF line endings, optional ASCII
@@ -71,10 +75,15 @@ Expose one shared typed `import_dxf_patterns { dxf }` command, CLI
 **Import DXF…** toolbar/search action. Report the fixed physical scale, origin
 convention, count and explicit construction-only scope. Schema/discovery and
 adapters must agree. Validate all pieces before one atomic authoring transaction;
-all pieces and accepted pending inspector edits consume one Undo step. Failed
-parsing, validation, execution or save preserves old project and output/recovery
-files. CLI/MCP refuse output or recovery paths that replace the source DXF,
-including aliases handled by existing native save protection.
+all pieces and accepted pending inspector edits consume one Undo step. Parsing,
+validation and execution failures preserve the existing authored project and
+history. CLI/MCP save failures retain the existing output primary under the
+inherited native-save guarantees. Saving copies the valid current primary to
+recovery before the final primary replacement; if that replacement fails,
+recovery may already have advanced to that valid current-primary snapshot.
+Primary and recovery are not one atomic two-file transaction. Separately,
+CLI/MCP refuse output or recovery paths that replace the source DXF, including
+aliases handled by existing native save protection.
 
 The native review shows count, millimetre scale, preserved layout, layer-name
 convention and omitted content before Import/Cancel. Opening either chooser or
@@ -92,8 +101,11 @@ Own-writer round trips are supplemental checks only. Exercise malformed pairs,
 missing/other units, open/gapped/reordered contours, unsupported entities/flags/
 weights/fields, paper/block geometry, duplicate handles/fields, wrong references,
 extreme/nonfinite values and byte/entity/piece bounds. Test atomic batch failure,
-CLI/MCP discovery/schema/strict deserialization, source/output/recovery retention
-and native pointer/accessibility review/Cancel/accept behavior.
+CLI/MCP discovery/schema/strict deserialization, source/primary retention,
+unchanged recovery for the exercised failures before recovery replacement, and
+native pointer/accessibility review/Cancel/accept behavior. Those checks do not
+establish unchanged recovery after every save failure; full persistence
+acceptance remains open.
 
 Tests establish bounded implementation behavior only. Actual native chooser/
 editing/history/save acceptance, independent consumer checks and any reference
