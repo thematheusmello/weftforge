@@ -34,7 +34,7 @@ its input. Concurrent desktop/file writers are not coordinated by this adapter.
 
 The official specifications were checked on 2026-11-13. The adapter supports the
 current **2026-07-28** request metadata profile and the **2025-11-25** legacy
-initialization profile. They share the six tools below. Only `tools: {}` is
+initialization profile. They share the seven tools below. Only `tools: {}` is
 advertised; no resources, prompts, subscriptions, tasks, logging, sampling, or
 elicitation capabilities are advertised.
 
@@ -88,6 +88,7 @@ are rejected. The tool names and arguments are:
 | `project_inspect` | `path` | Complete validated `project`, SI `units`, `up: "Y"`; includes stable points, curves, piece boundaries, materials, placements, grain, legacy seams, sewing groups, mannequin, resolution, revision and next ID |
 | `project_create` | `output` | Saved `output` and `revision`; existing output paths are refused |
 | `project_execute` | `input`, `output`, `commands` | Saved paths, new `revision`, and `commands_applied` |
+| `project_import_svg` | `input`, `output`, `svg` | Added `pieces_imported`, new `revision`, `metres_per_user_unit`, preserved-origin convention and explicit construction-only `scope` |
 | `project_export_svg` | `input`, `output` | Paths, `source_revision`, `kind: "authored_svg"`, `length_unit: "mm"`, pattern/SVG axis convention |
 | `project_export_obj` | `input`, `output` | Paths, `source_revision`, `kind: "rest_obj"`, `length_unit: "m"`, `up: "Y"` |
 | `project_export_dxf` | `input`, `output` | Paths, `source_revision`, `kind: "authored_dxf"`, `length_unit: "mm"`, pattern U/V to XY axes, and boundary-only `scope` |
@@ -118,7 +119,7 @@ The example's newly created default project assigns its first piece ID 2;
 existing projects may assign different IDs. Current-profile calls use the same
 arguments and additionally include the per-request `_meta` shown above.
 
-The supported shared commands are `add_polygon`, `add_rectangle`, `add_ellipse`, `move_point`,
+The supported shared commands are `import_svg_patterns`, `add_polygon`, `add_rectangle`, `add_ellipse`, `move_point`,
 `set_curve_controls`, `split_curve`, `join_curve`, `resize_piece`, `set_placement`, `set_grain`,
 `set_material`, `add_material`, `update_material`, `add_seam`, `update_seam`,
 `remove_seam`, `add_sewing_group`, `update_sewing_group`, `remove_sewing_group`,
@@ -127,6 +128,22 @@ Their exact data fields and nested types are in `tools/list`; the shared core
 validation remains authoritative. Authoring uses f64 SI units, placement/grain
 angles use radians, and membrane stiffness uses N/m. See
 [file formats](file-formats.md) for the native representation and physical units.
+
+`import_svg_patterns` takes `{"svg":"...original SVG XML..."}` and adds all
+supported pieces as one typed authoring action. The dedicated CLI
+`import-svg INPUT OUTPUT PATTERNS.svg` and MCP `project_import_svg` file tool read
+the SVG with the same 1 MiB bound, execute this shared command and save the native
+output atomically. `input` and `output` may identify the same native project;
+the SVG source cannot alias output or its recovery destination. A failed import
+leaves the existing document and files intact under the native-save guarantees.
+The [SVG profile](../spec/features/FILE-005-svg-pattern-import.md) requires physical
+mm dimensions with uniform viewBox scale and direct closed absolute `M/L/C/Z`
+paths. It preserves editable straight/cubic geometry, names, user-space origin
+and relative layout, inverting SVG Y into upward pattern V. The response states
+the scale and omitted content; imported pieces use the first fabric and default
+3D placement. Unsupported content rejects the entire drawing. The inline shared
+command remains subject to the command file/MCP line-size bounds, including JSON
+escaping; the file tool can read the full SVG byte allowance.
 `add_ellipse` uses the same `name`, `origin`, `width`, and `height` fields as
 `add_rectangle`: origin is the bounding box's minimum X/Y in metres. It creates
 four editable cubic Bézier spans approximating an ellipse, with normalized

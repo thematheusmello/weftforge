@@ -11,6 +11,7 @@ use std::{
 };
 use weftforge_core::{
     Command, Curve, CurveInterval, Editor, Id, Material, Mesh, Placement, Project, SewingGroup,
+    SvgPatternImport,
 };
 use weftforge_sim::{Cloth, MaterialAxis, StepSettings};
 
@@ -211,6 +212,12 @@ impl InspectorDraft {
         commands
     }
 }
+struct SvgImportDraft {
+    drawing: SvgPatternImport,
+    focused: Option<egui::Id>,
+    error: Option<String>,
+}
+
 struct Studio {
     editor: Editor,
     mesh: Option<Arc<Mesh>>,
@@ -229,6 +236,7 @@ struct Studio {
     pattern_canvas: Option<egui::Id>,
     drag_start: Option<[f64; 2]>,
     rectangle: Option<RectangleDraft>,
+    svg_import: Option<SvgImportDraft>,
     drag_point: Option<Id>,
     preview: Option<[f64; 2]>,
     seam_start: Option<Id>,
@@ -296,6 +304,7 @@ impl Studio {
             pattern_canvas: None,
             drag_start: None,
             rectangle: None,
+            svg_import: None,
             drag_point: None,
             preview: None,
             seam_start: None,
@@ -490,6 +499,17 @@ impl Studio {
                     (frame, clicked.then_some(format), focused),
                 )
             });
+        }
+        clicked
+    }
+    fn import_svg_button(&self, ui: &mut egui::Ui, label: &str) -> bool {
+        let focused = self.inspector_focus(ui.ctx());
+        let response = ui.button(label);
+        let clicked = response.clicked();
+        if response.is_pointer_button_down_on() || clicked {
+            finish_numeric_action(ui.ctx(), focused, false);
+            let frame = ui.ctx().cumulative_frame_nr();
+            ui.ctx().data_mut(|data| data.insert_temp(egui::Id::new("svg-import-request"), (frame, clicked, focused)));
         }
         clicked
     }
@@ -709,6 +729,58 @@ impl Studio {
             self.open(path);
         }
     }
+    fn choose_import_svg(&mut self, ctx: &egui::Context, focused: Option<egui::Id>) {
+        let path = choose_svg_import_path(ctx);
+        self.prepare_svg_import(ctx, path.as_deref(), focused);
+    }
+    fn prepare_svg_import(&mut self, ctx: &egui::Context, path: Option<&Path>, focused: Option<egui::Id>) -> bool {
+        let result = path.map(SvgPatternImport::load).transpose();
+        let prepared = matches!(result, Ok(Some(_)));
+        self.message = match result {
+            Ok(Some(drawing)) => {
+                self.svg_import = Some(SvgImportDraft { drawing, focused, error: None });
+                "Review SVG pattern scale before importing.".into()
+            }
+            Ok(None) => "SVG import cancelled; pending edits retained.".into(),
+            Err(error) => format!("SVG import failed; current document retained: {error}"),
+        };
+        let ids = finish_numeric_action(ctx, focused, false);
+        let frame = ctx.cumulative_frame_nr();
+        ctx.data_mut(|data| data.insert_temp(egui::Id::new("inspector-action-blur"), (frame, ids)));
+        prepared
+    }
+    fn svg_import_window(&mut self, ctx: &egui::Context) {
+        let Some(mut import) = self.svg_import.take() else { return; };
+        let mut accept = false;
+        let mut cancel = false;
+        let response = egui::Modal::new(egui::Id::new("import-svg-patterns")).show(ctx, |ui| {
+            ui.heading("Import SVG patterns");
+            ui.label(format!("Add {} editable patterns to this project.", import.drawing.piece_count()));
+            ui.label(format!("Physical scale: {} mm per SVG unit.", import.drawing.metres_per_unit * 1000.0));
+            ui.label("Keep the drawing's coordinate origin and piece layout; pattern Y points upward.");
+            ui.label("Import exterior boundaries and names. Appearance, sewing, grain and simulation are omitted. New pieces use the first fabric and default 3D placement.");
+            if let Some(error) = &import.error { ui.colored_label(Color32::LIGHT_RED, error); }
+            ui.horizontal(|ui| {
+                accept = ui.button("Import").clicked();
+                cancel = ui.button("Cancel").clicked();
+            });
+        });
+        if cancel || response.should_close() {
+            finish_numeric_action(ctx, import.focused, false);
+            self.message = "SVG import cancelled; pending edits retained.".into();
+            return;
+        }
+        if accept {
+            if self.apply_inspector_action(ctx, import.drawing.command(), import.focused) {
+                self.reset_gestures();
+                self.select(self.editor.project.pieces.last().map(|piece| piece.id));
+                self.message = format!("Imported {} editable SVG patterns at physical scale. {}", import.drawing.piece_count(), weftforge_core::SVG_IMPORT_SCOPE);
+                return;
+            }
+            import.error = Some(self.message.clone());
+        }
+        self.svg_import = Some(import);
+    }
     fn save(&mut self, choose: bool) {
         if !self.commit_draft() {
             return;
@@ -875,7 +947,7 @@ impl Studio {
             return;
         }
         let mut open = true;
-        egui::Window::new("Recover editable construction").enabled(self.rectangle.is_none()).open(&mut open).default_width(520.0).show(ctx,|ui| {
+        egui::Window::new("Recover editable construction").enabled(self.rectangle.is_none() && self.sewing_edit.is_none() && self.svg_import.is_none()).open(&mut open).default_width(520.0).show(ctx,|ui| {
             ui.label("Recovery opens a copy. Save current edits before replacing the document.");
             ui.horizontal(|ui| {
                 if ui.button("Refresh").clicked() { self.refresh_recovery(); }
@@ -1006,6 +1078,7 @@ impl Studio {
             if ui.button("Open…").clicked() {
                 self.choose_open();
             }
+            self.import_svg_button(ui, "Import SVG…");
             if ui.button("Save").clicked() {
                 self.save(false);
             }
@@ -1147,6 +1220,8 @@ impl Studio {
         let mut acting = self.search
             || self.tool == Tool::SewingPaths
             || self.sewing_edit.is_some()
+            || self.svg_import.is_some()
+            || ui.ctx().data_mut(|data| data.get_temp::<(u64, bool, Option<egui::Id>)>(egui::Id::new("svg-import-request"))).is_some_and(|(frame, _, _)| frame == ui.ctx().cumulative_frame_nr())
             || ui
                 .ctx()
                 .data_mut(|data| {
@@ -2045,21 +2120,18 @@ impl eframe::App for Studio {
         let ctx = ui.ctx().clone();
         self.poll();
         self.poll_autosave();
-        let editing_group = self.sewing_edit.is_some();
-        if self.rectangle.is_none()
-            && !editing_group
+        let authoring_modal = self.rectangle.is_some() || self.sewing_edit.is_some() || self.svg_import.is_some();
+        if !authoring_modal
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::S))
         {
             self.save(false);
         }
-        if self.rectangle.is_none()
-            && !editing_group
+        if !authoring_modal
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::O))
         {
             self.choose_open();
         }
-        if self.rectangle.is_none()
-            && !editing_group
+        if !authoring_modal
             && !ctx.egui_wants_keyboard_input()
             && ctx.input_mut(|i| {
                 i.consume_key(
@@ -2069,21 +2141,18 @@ impl eframe::App for Studio {
             })
         {
             self.history(&ctx, true);
-        } else if self.rectangle.is_none()
-            && !editing_group
+        } else if !authoring_modal
             && !ctx.egui_wants_keyboard_input()
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::Z))
         {
             self.history(&ctx, false);
         }
-        if self.rectangle.is_none()
-            && !editing_group
+        if !authoring_modal
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::K))
         {
             self.search = !self.search;
         }
-        if self.rectangle.is_none()
-            && !editing_group
+        if !authoring_modal
             && !self.search
             && !ctx.egui_wants_keyboard_input()
         {
@@ -2147,10 +2216,10 @@ impl eframe::App for Studio {
             self.message = "Save before closing, or explicitly discard edits.".into();
         }
         // Disabled DragValue still handles AccessKit value actions in egui 0.35.
-        let modal_events = (self.rectangle.is_some() || self.sewing_edit.is_some())
+        let modal_events = authoring_modal
             .then(|| ctx.input_mut(|input| std::mem::take(&mut input.events)));
         egui::Frame::central_panel(ui.style()).show(ui, |ui| {
-            if self.rectangle.is_some() || self.sewing_edit.is_some() {
+            if authoring_modal {
                 ui.disable();
             }
             self.toolbar(ui);
@@ -2231,7 +2300,7 @@ impl eframe::App for Studio {
         if self.search {
             let mut open = true;
             egui::Window::new("Command search")
-                .enabled(self.rectangle.is_none() && self.sewing_edit.is_none())
+                .enabled(!authoring_modal)
                 .open(&mut open)
                 .collapsible(false)
                 .show(&ctx, |ui| {
@@ -2239,6 +2308,7 @@ impl eframe::App for Studio {
                     for label in [
                         "Save project",
                         "Open project",
+                        "Import SVG…",
                         "Recover project",
                         "Export OBJ",
                         "Export SVG",
@@ -2257,6 +2327,7 @@ impl eframe::App for Studio {
                             continue;
                         }
                         let clicked = match label {
+                            "Import SVG…" => self.import_svg_button(ui, label),
                             "Export OBJ" => self.export_button(ui, ExportFormat::Obj, label),
                             "Export SVG" => self.export_button(ui, ExportFormat::Svg, label),
                             "Export DXF" => self.export_button(ui, ExportFormat::Dxf, label),
@@ -2266,6 +2337,7 @@ impl eframe::App for Studio {
                             match label {
                                 "Save project" => self.save(false),
                                 "Open project" => self.choose_open(),
+                                "Import SVG…" => {}
                                 "Recover project" => {
                                     self.refresh_recovery();
                                     self.show_recovery = true;
@@ -2299,6 +2371,7 @@ impl eframe::App for Studio {
         }
         self.rectangle_window(&ctx);
         self.sewing_group_window(&ctx);
+        self.svg_import_window(&ctx);
         if let Some((_, Some(format), focused)) = ctx
             .data_mut(|data| {
                 data.remove_temp::<(u64, Option<ExportFormat>, Option<egui::Id>)>(egui::Id::new(
@@ -2309,6 +2382,9 @@ impl eframe::App for Studio {
         {
             // Read numeric input before opening a blocking native chooser.
             self.export(&ctx, format, focused);
+        }
+        if let Some((_, true, focused)) = ctx.data_mut(|data| data.remove_temp::<(u64, bool, Option<egui::Id>)>(egui::Id::new("svg-import-request"))).filter(|(frame, _, _)| *frame == ctx.cumulative_frame_nr()) {
+            self.choose_import_svg(&ctx, focused);
         }
     }
 }
@@ -2567,6 +2643,14 @@ fn export_path_guard(project: Option<&Path>, output: &Path) -> Result<(), String
         Ok(())
     }
 }
+fn choose_svg_import_path(_ctx: &egui::Context) -> Option<PathBuf> {
+    #[cfg(test)]
+    if let Some(path) = _ctx.data_mut(|data| data.remove_temp::<Option<PathBuf>>(egui::Id::new("test-svg-import-source"))) {
+        return path;
+    }
+    rfd::FileDialog::new().add_filter("SVG patterns", &["svg"]).pick_file()
+}
+
 fn choose_export_path(_ctx: &egui::Context, format: ExportFormat) -> Option<PathBuf> {
     #[cfg(test)]
     if let Some(path) = _ctx.data_mut(|data| {
@@ -6965,5 +7049,114 @@ mod tests {
             assert_construction(&app.editor.project, &before);
             assert!(!app.editor.can_undo() && app.editor.can_redo());
         }
+    }
+}
+
+#[cfg(test)]
+mod svg_import_tests {
+    use super::*;
+    use egui::accesskit::{Action, ActionData, ActionRequest, NodeId, TreeId};
+    const ORIGINAL: &[u8] = include_bytes!("../../../crates/weftforge-core/tests/fixtures/original-editable-patterns.svg");
+
+    fn frame(ctx: &egui::Context, app: &mut Studio, events: Vec<egui::Event>) -> egui::FullOutput {
+        app.needs_mesh = false;
+        ctx.run_ui(egui::RawInput { screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1600., 1800.))), events, ..Default::default() }, |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()))
+    }
+    fn action(id: NodeId, action: Action, data: Option<ActionData>) -> egui::Event {
+        egui::Event::AccessKitActionRequest(ActionRequest { action, target_tree: TreeId::ROOT, target_node: id, data })
+    }
+    fn button(output: &egui::FullOutput, label: &str) -> NodeId {
+        output.platform_output.accesskit_update.as_ref().unwrap().nodes.iter().find(|(_, node)| node.label() == Some(label) && node.supports_action(Action::Click) && !node.is_disabled()).unwrap_or_else(|| panic!("missing {label}")).0
+    }
+    fn click(ctx: &egui::Context, app: &mut Studio, label: &str) -> egui::FullOutput {
+        let output = frame(ctx, app, vec![]);
+        let id = button(&output, label);
+        frame(ctx, app, vec![action(id, Action::Click, None)]);
+        frame(ctx, app, vec![])
+    }
+    fn fixture() -> Studio {
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.editor.execute(Command::AddRectangle { name: "Existing panel".into(), origin: [0.,0.], width: 0.4, height: 0.6 }).unwrap();
+        let piece = app.editor.project.pieces[0].id;
+        app.editor.execute(Command::SetGrain { piece, angle: 0.25 }).unwrap();
+        assert!(app.editor.undo());
+        app.selected = Some(piece);
+        let mut draft = InspectorDraft::new(&app.editor.project, app.selected, None);
+        draft.grain_angle = Some(0.375);
+        app.draft = Some(draft);
+        app
+    }
+    fn source() -> PathBuf {
+        let path = std::env::temp_dir().join(format!("weftforge-native-svg-{}-{}.svg", std::process::id(), SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_nanos()));
+        fs::write(&path, ORIGINAL).unwrap(); path
+    }
+
+    #[test]
+    fn chooser_modal_import_commits_pending_edits_and_all_pieces_as_one_undo() {
+        let ctx = egui::Context::default(); ctx.enable_accesskit();
+        let mut app = fixture();
+        let before = app.editor.project.clone();
+        let path = source();
+        ctx.data_mut(|data| data.insert_temp(egui::Id::new("test-svg-import-source"), Some(path.clone())));
+        let prior = frame(&ctx, &mut app, vec![]);
+        let background = button(&prior, "Add ellipse");
+        let numeric = prior.platform_output.accesskit_update.as_ref().unwrap().nodes.iter().find(|(_, node)| node.numeric_value() == Some(0.4)).unwrap().0;
+        click(&ctx, &mut app, "Import SVG…");
+        assert!(app.svg_import.is_some());
+        assert_eq!(app.editor.project, before);
+        let summary = frame(&ctx, &mut app, vec![action(background, Action::Click, None), action(numeric, Action::SetValue, Some(ActionData::NumericValue(0.9)))]);
+        assert!(summary.platform_output.accesskit_update.as_ref().unwrap().nodes.iter().any(|(_, node)| node.label().is_some_and(|label| label.contains("Physical scale: 2 mm per SVG unit"))));
+        assert_eq!(app.editor.project, before);
+        assert_eq!(app.draft.as_ref().unwrap().grain_angle, Some(0.375));
+        click(&ctx, &mut app, "Import");
+        assert!(app.svg_import.is_none());
+        assert_eq!(app.editor.project.revision, before.revision + 1);
+        assert_eq!(app.editor.project.pieces.len(), before.pieces.len() + 2);
+        assert_eq!(app.editor.project.pieces[1].name, "Original & curved front");
+        assert_eq!(app.editor.project.points[4].position, [-0.16,0.32]);
+        assert_eq!(app.editor.project.pieces[0].grain_angle, 0.375);
+        assert!(app.dirty && !app.playing && app.pending_batch.is_none());
+        assert!(app.draft.is_none() || app.draft.as_ref().unwrap().commands(&app.editor.project).is_empty());
+        assert_eq!(fs::read(&path).unwrap(), ORIGINAL);
+        app.history(&ctx, false);
+        assert_eq!(app.editor.project.pieces, before.pieces);
+        assert_eq!(app.editor.project.points, before.points);
+        assert_eq!(app.editor.project.curves, before.curves);
+        assert_eq!(app.editor.project.resolution, before.resolution);
+        assert_eq!(app.editor.project.pieces[0].grain_angle, before.pieces[0].grain_angle);
+        fs::remove_file(path).unwrap();
+    }
+
+    #[test]
+    fn cancelled_invalid_and_failed_import_keep_pending_drafts_ids_and_redo() {
+        let ctx = egui::Context::default(); ctx.enable_accesskit();
+        let mut app = fixture();
+        let before = app.editor.project.clone();
+        let path = source();
+        assert!(!app.prepare_svg_import(&ctx, None, None));
+        fs::write(&path, b"<svg>").unwrap();
+        assert!(!app.prepare_svg_import(&ctx, Some(&path), None));
+        assert_eq!(app.editor.project, before);
+        assert!(app.editor.can_redo());
+        assert_eq!(app.draft.as_ref().unwrap().grain_angle, Some(0.375));
+        fs::write(&path, ORIGINAL).unwrap();
+        assert!(app.prepare_svg_import(&ctx, Some(&path), None));
+        click(&ctx, &mut app, "Cancel");
+        assert!(app.svg_import.is_none());
+        assert_eq!(app.editor.project, before);
+        assert!(app.editor.can_redo());
+        assert_eq!(app.draft.as_ref().unwrap().grain_angle, Some(0.375));
+        app.draft.as_mut().unwrap().material.as_mut().unwrap().warp_stiffness = -1.0;
+        assert!(app.prepare_svg_import(&ctx, Some(&path), None));
+        click(&ctx, &mut app, "Import");
+        assert!(app.svg_import.as_ref().unwrap().error.is_some());
+        assert_eq!(app.editor.project, before);
+        assert!(app.editor.can_redo());
+        assert_eq!(app.draft.as_ref().unwrap().material.as_ref().unwrap().warp_stiffness, -1.0);
+        assert_eq!(fs::read(&path).unwrap(), ORIGINAL);
+        click(&ctx, &mut app, "Cancel");
+        assert_eq!(app.editor.project, before);
+        fs::remove_file(path).unwrap();
     }
 }

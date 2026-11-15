@@ -606,6 +606,22 @@ impl Project {
 
     fn apply(&mut self, command: Command) -> Result<()> {
         match command {
+            Command::ImportSvgPatterns { svg } => {
+                let imported = crate::SvgPatternImport::from_bytes(svg.as_bytes())?;
+                for pattern in imported.patterns {
+                    let first_curve = self.curves.len();
+                    self.apply(Command::AddPolygon {
+                        name: pattern.name,
+                        vertices: pattern.vertices,
+                    })?;
+                    for (curve, controls) in self.curves[first_curve..]
+                        .iter_mut()
+                        .zip(pattern.controls)
+                    {
+                        curve.controls = controls;
+                    }
+                }
+            }
             Command::AddPolygon { name, vertices } => {
                 ensure(
                     (3..=4096).contains(&vertices.len()),
@@ -1264,14 +1280,14 @@ fn split_seam(seam: Seam, curve: Id, second: Id, t: f64) -> Vec<Seam> {
         .collect()
 }
 
-fn validate_name(name: &str) -> Result<()> {
+pub(crate) fn validate_name(name: &str) -> Result<()> {
     ensure(
         !name.trim().is_empty() && name.len() <= 256 && !name.chars().any(char::is_control),
         "Names must be nonempty, at most 256 bytes, with no control characters",
     )
 }
 
-fn validate_coordinates<const N: usize>(point: &[f64; N]) -> Result<()> {
+pub(crate) fn validate_coordinates<const N: usize>(point: &[f64; N]) -> Result<()> {
     ensure(
         point
             .iter()
@@ -1288,6 +1304,9 @@ fn validate_coordinates<const N: usize>(point: &[f64; N]) -> Result<()> {
     deny_unknown_fields
 )]
 pub enum Command {
+    ImportSvgPatterns {
+        svg: String,
+    },
     AddPolygon {
         name: String,
         vertices: Vec<[f64; 2]>,
