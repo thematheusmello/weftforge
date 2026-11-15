@@ -9,6 +9,7 @@ are an engineering inventory. See [roadmap](ROADMAP.md) and [registry](parity/fe
 
 ## Current UI delivery
 
+The visual delivery is [PR43](https://github.com/thematheusmello/weftforge/pull/43).
 Runtime source is `7ab2107aaa51f2c0fa9c9fd2ada972a08c433882`, after
 [PR42](https://github.com/thematheusmello/weftforge/pull/42) main `f8be9b7`.
 The [gallery](docs/studio-preview.md) shows actual unedited 1640 × 1032 captures.
