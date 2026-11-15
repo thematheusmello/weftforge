@@ -1,0 +1,42 @@
+{
+  "attempts_per_case": 1,
+  "cases": [
+    "base",
+    "height"
+  ],
+  "evaluator_freeze": {
+    "path": ".local/closed-stitch-garment-protocol-20261115/FREEZE.json",
+    "sha256": "94e6f33aa2518e3f1277d1e0f4bddb8ed96c8c75f531a29df003467da4a587a6"
+  },
+  "explicit_root_authorization": true,
+  "gates": {
+    "path": ".local/closed-stitch-garment-protocol-20261115/GATES-BINDING.json",
+    "sha256": "7b9350148358b93b3731166eef29e824e2c1f42aaf25aa25bba08ac33220facf"
+  },
+  "plan": {
+    "path": ".local/closed-stitch-garment-protocol-20261115/PROTOCOL.json",
+    "sha256": "83944a61756d5df0eab2656c87cd0626cabc3cc4968a6cd4b4eec770fa853591"
+  },
+  "preparation_freeze": {
+    "path": ".local/closed-stitch-garment-protocol-20261115/PREPARATION-FREEZE.json",
+    "sha256": "3f7b1d00bf29932baf07f06123ae5f8610bab25502ded674198147f6ba357d78"
+  },
+  "producer_binding": {
+    "path": ".local/closed-stitch-garment-protocol-20261115/PRODUCER-BINDING.json",
+    "sha256": "54026d1b5c4de400ca761cc596e94a98d850cdc5a295958f12230b36c7a05f83"
+  },
+  "reference_comparison": false,
+  "roadmap_gate_acceptance": false,
+  "runner": {
+    "path": ".local/closed-stitch-garment-protocol-20261115/runner.py",
+    "sha256": "bd021ecc99ebc9f7470174d1a580e7e3276900a90408e2cbd772be099b78545e"
+  },
+  "schema": 1,
+  "scope": "Exactly base then height once; unchanged60+120/dt1over60/8sub32/closure1,420swholecase,256MiBRSS+256MiBoveralloutput; no retry/tuning/thirdcase/reset/continuation; all failures retained",
+  "source_commit": "2e9795a3cb92c79ad3b406e675dcbdb49c60ce67",
+  "source_input_binding": {
+    "path": ".local/closed-stitch-garment-protocol-20261115/SOURCE-BINDING.json",
+    "sha256": "655caa99716c35577d4964ee977aa6705acdafe607d824b35179d929e9d30f02"
+  },
+  "status": "authorized"
+}

@@ -1,0 +1,35 @@
+{
+  "status": "root_authorized_prelaunch_argument_correction",
+  "original_controller_invocation": 1,
+  "original_result_remains_failed": true,
+  "original_no_resume_or_retry_flag_retained": true,
+  "original_refusal": {
+    "path": ".local/closed-stitch-garment-protocol-20261115/ROOT-CONTROLLER-LAUNCH-REFUSAL.json",
+    "sha256": "c14f3715f0c0b08850e559144144ed5e39540cc51c4fbe7d8e1abc5d2cedbb4e"
+  },
+  "corrected_controller_invocation": 2,
+  "corrected_command": [
+    "python3",
+    "-B",
+    ".local/closed-stitch-garment-protocol-20261115/runner.py",
+    "--authorization",
+    "execution-authorization.json"
+  ],
+  "argument_scope": "Basename resolved under frozen protocol ROOT; exact same regular authorization file",
+  "physical_attempts_before_correction": 0,
+  "case_directories_and_attempt_markers_absent": true,
+  "source_commit": "2e9795a3cb92c79ad3b406e675dcbdb49c60ce67",
+  "authorization_sha256": "469b8c96b284543b45eb31e7019c39ba5163905f4efe80d19bcd0eb5aa91f73a",
+  "freeze_sha256": "94e6f33aa2518e3f1277d1e0f4bddb8ed96c8c75f531a29df003467da4a587a6",
+  "driver_sha256": "9a7c07e855ddf9b0a92ff53316fe5a6f8ad6ee02a2222480e5c062ad129f057f",
+  "cases": [
+    "base",
+    "height"
+  ],
+  "physical_attempts_per_case": 1,
+  "no_change_to_code_inputs_workload_thresholds_caps_or_authorization": true,
+  "not_a_case_retry_reset_continuation_or_regrade": true,
+  "independent_readonly_audit_confirmed": true,
+  "root_explicit_correction_authorization": true,
+  "recorded_utc": "2026-11-15T04:43:08.696527+00:00"
+}
