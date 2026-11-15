@@ -318,7 +318,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
             .as_array()
             .unwrap()
             .len(),
-        24
+        25
     );
     success(&server.call("project_create", json!({"output":project_path})));
     let initial = server.call("project_inspect", json!({"path":project_path}));
@@ -455,7 +455,7 @@ fn sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constrai
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 24);
+    assert_eq!(variants.len(), 25);
     for name in [
         "add_sewing_group",
         "update_sewing_group",
@@ -771,6 +771,220 @@ fn stdio_ellipse_discovery_creation_inspection_and_failure_preservation() {
     ));
     assert_eq!(fs::read(&output).unwrap(), previous_output);
     assert_eq!(fs::read(recovery_path(&output)).unwrap(), previous_recovery);
+    server.finish();
+}
+
+#[test]
+fn stdio_transform_schema_cli_equivalence_and_strict_atomic_failures() {
+    use weftforge_core::Placement;
+    let directory = Directory::new();
+    let input = directory.path("transform-input.weftforge");
+    let output = directory.path("transform-output.weftforge");
+    let cli_output = directory.path("transform-cli.weftforge");
+    let commands_file = directory.path("transform-commands.json");
+    let mut editor = Editor::default();
+    editor
+        .execute(Command::AddPolygon {
+            name: "Asymmetric transform".into(),
+            vertices: vec![[0., 0.], [0.75, 0.75], [-0.25, 1.25], [-0.5, 0.25]],
+        })
+        .unwrap();
+    let piece = editor.project.pieces[0].id;
+    editor
+        .execute(Command::Transaction(vec![
+            Command::SetCurveControls {
+                curve: editor.project.pieces[0].boundary[0],
+                controls: Some([[0.25, 0.], [0.5, 0.25]]),
+            },
+            Command::SetGrain { piece, angle: 0.37 },
+            Command::SetPlacement {
+                piece,
+                placement: Placement {
+                    translation: [0.2, 0.4, -0.3],
+                    rotation: [0.31, -0.47, 0.21],
+                },
+            },
+        ]))
+        .unwrap();
+    editor.project.save(&input).unwrap();
+    Project::default().save(&output).unwrap();
+    editor.project.save(&output).unwrap();
+    let original_input = fs::read(&input).unwrap();
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let listed = server.request("tools/list", json!({}));
+    let tools = listed["result"]["tools"].as_array().unwrap();
+    assert_eq!(tools.len(), 9);
+    let variant = tools
+        .iter()
+        .find(|tool| tool["name"] == "project_execute")
+        .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .find(|variant| variant["properties"]["type"]["const"] == "transform_piece")
+        .unwrap();
+    assert_eq!(variant["additionalProperties"], false);
+    let data = &variant["properties"]["data"];
+    assert_eq!(
+        data["required"],
+        json!(["piece", "translation", "angle", "pivot"])
+    );
+    assert_eq!(data["additionalProperties"], false);
+    let properties = &data["properties"];
+    assert_eq!(properties["piece"]["minimum"], 1);
+    assert_eq!(properties["angle"]["minimum"], -1e6);
+    assert_eq!(properties["angle"]["maximum"], 1e6);
+    for field in ["translation", "pivot"] {
+        assert_eq!(properties[field]["minItems"], 2);
+        assert_eq!(properties[field]["maxItems"], 2);
+        assert_eq!(properties[field]["items"]["minimum"], -1000);
+        assert_eq!(properties[field]["items"]["maximum"], 1000);
+    }
+    let command = Command::TransformPiece {
+        piece,
+        translation: [0.5, -0.25],
+        angle: std::f64::consts::FRAC_PI_2,
+        pivot: [0.25, 0.5],
+    };
+    let response = server.call(
+        "project_execute",
+        json!({"input":input,"output":output,"commands":[command]}),
+    );
+    assert_eq!(success(&response)["revision"], editor.project.revision + 1);
+    assert_eq!(success(&response)["commands_applied"], 1);
+    let saved = Project::load(&output).unwrap();
+    for (old, new) in editor.project.points.iter().zip(&saved.points) {
+        for (actual, expected) in new
+            .position
+            .into_iter()
+            .zip([1.25 - old.position[1], old.position[0]])
+        {
+            assert!((actual - expected).abs() <= 1e-10);
+        }
+        let old_world = editor.project.pieces[0].placement.transform(old.position);
+        let new_world = saved.pieces[0].placement.transform(new.position);
+        assert!(
+            old_world
+                .into_iter()
+                .zip(new_world)
+                .all(|(a, b)| (a - b).abs() <= 1e-10)
+        );
+    }
+    let inspected = server.call("project_inspect", json!({"path":output}));
+    assert_eq!(success(&inspected)["project"], native_project_json(&saved));
+    assert_eq!(
+        serde_json::from_slice::<Value>(&fs::read(&output).unwrap()).unwrap()["version"],
+        3
+    );
+    fs::write(
+        &commands_file,
+        serde_json::to_vec(&vec![command.clone()]).unwrap(),
+    )
+    .unwrap();
+    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+        .arg("execute")
+        .arg(&input)
+        .arg(&cli_output)
+        .arg(&commands_file)
+        .output()
+        .unwrap();
+    assert!(
+        cli.status.success(),
+        "{}",
+        String::from_utf8_lossy(&cli.stderr)
+    );
+    assert_eq!(
+        serde_json::from_slice::<Value>(&cli.stdout).unwrap()["revision"],
+        saved.revision
+    );
+    assert_eq!(fs::read(&cli_output).unwrap(), fs::read(&output).unwrap());
+    let previous_output = fs::read(&output).unwrap();
+    let previous_recovery = fs::read(recovery_path(&output)).unwrap();
+    let valid = json!(command);
+    let mut failures = vec![
+        json!([valid.clone(), {"type":"transform_piece","data":{"piece":0,"translation":[0,0],"angle":0,"pivot":[0,0]}}]),
+    ];
+    for field in ["piece", "translation", "angle", "pivot"] {
+        let mut missing = valid.clone();
+        missing["data"].as_object_mut().unwrap().remove(field);
+        failures.push(json!([missing]));
+    }
+    for (field, value) in [
+        ("piece", json!(0)),
+        ("piece", json!(9999)),
+        ("translation", json!([0])),
+        ("translation", json!([0, 0, 0])),
+        ("pivot", json!([0])),
+        ("pivot", json!([0, 0, 0])),
+        ("translation", json!([1000.1, 0])),
+        ("translation", json!([1000, 0])),
+        ("pivot", json!([0, -1000.1])),
+        ("pivot", json!([1000, -1000])),
+        ("angle", json!(1e6 + 1.)),
+        ("angle", json!("NaN")),
+        ("extra", json!(true)),
+    ] {
+        let mut invalid = valid.clone();
+        invalid["data"][field] = value;
+        failures.push(json!([invalid]));
+    }
+    for commands in failures {
+        let result = server.call(
+            "project_execute",
+            json!({"input":input,"output":output,"commands":commands}),
+        );
+        assert!(
+            result.get("error").is_some() || result["result"]["isError"] == true,
+            "{result}"
+        );
+        fs::write(&commands_file, serde_json::to_vec(&commands).unwrap()).unwrap();
+        let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+            .arg("execute")
+            .arg(&input)
+            .arg(&output)
+            .arg(&commands_file)
+            .output()
+            .unwrap();
+        assert!(!cli.status.success());
+        assert_eq!(fs::read(&input).unwrap(), original_input);
+        assert_eq!(fs::read(&output).unwrap(), previous_output);
+        assert_eq!(fs::read(recovery_path(&output)).unwrap(), previous_recovery);
+    }
+    let raw = json!({"jsonrpc":"2.0","id":"strict-transform","method":"tools/call","params":{"name":"project_execute","arguments":{"input":input,"output":output,"commands":[valid]}}}).to_string();
+    let angle_token = format!("\"angle\":{}", std::f64::consts::FRAC_PI_2);
+    for replacement in [
+        "\"angle\":1e400",
+        "\"angle\":0,\"angle\":1",
+        "\"angle\":0,\"piece\":9999",
+    ] {
+        let request = raw.replace(&angle_token, replacement);
+        assert_ne!(request, raw);
+        server.send(&request);
+        let result = server.receive();
+        assert!(
+            result.get("error").is_some() || result["result"]["isError"] == true,
+            "{result}"
+        );
+        let commands = format!(
+            "[{}]",
+            serde_json::to_string(&command)
+                .unwrap()
+                .replace(&angle_token, replacement)
+        );
+        fs::write(&commands_file, commands).unwrap();
+        let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+            .arg("execute")
+            .arg(&input)
+            .arg(&output)
+            .arg(&commands_file)
+            .output()
+            .unwrap();
+        assert!(!cli.status.success());
+        assert_eq!(fs::read(&input).unwrap(), original_input);
+        assert_eq!(fs::read(&output).unwrap(), previous_output);
+        assert_eq!(fs::read(recovery_path(&output)).unwrap(), previous_recovery);
+    }
     server.finish();
 }
 

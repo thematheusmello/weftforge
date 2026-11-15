@@ -113,6 +113,58 @@ impl Placement {
             z + self.translation[2],
         ]
     }
+
+    fn compensate_pattern_transform(
+        self,
+        translation: [f64; 2],
+        angle: f64,
+        pivot: [f64; 2],
+    ) -> Self {
+        let basis = Self {
+            translation: [0.; 3],
+            ..self
+        };
+        if angle == 0.0 {
+            let delta = basis.transform(translation);
+            return Self {
+                translation: std::array::from_fn(|axis| {
+                    if delta[axis] == 0.0 {
+                        self.translation[axis]
+                    } else {
+                        self.translation[axis] - delta[axis]
+                    }
+                }),
+                ..self
+            };
+        }
+        let old_u = basis.transform([1., 0.]);
+        let old_v = basis.transform([0., 1.]);
+        let (sin, cos) = angle.sin_cos();
+        let u: [f64; 3] = std::array::from_fn(|i| cos * old_u[i] - sin * old_v[i]);
+        let v: [f64; 3] = std::array::from_fn(|i| sin * old_u[i] + cos * old_v[i]);
+        let w: [f64; 3] = std::array::from_fn(|i| {
+            u[(i + 1) % 3] * v[(i + 2) % 3] - u[(i + 2) % 3] * v[(i + 1) % 3]
+        });
+        // Reconstruct the perpendicular column so near-singular Euler phases share rounding.
+        let v: [f64; 3] = std::array::from_fn(|i| {
+            w[(i + 1) % 3] * u[(i + 2) % 3] - w[(i + 2) % 3] * u[(i + 1) % 3]
+        });
+        let cos_y = u[0].hypot(u[1]);
+        // The fixed singular threshold is part of the reviewed transform contract.
+        let (x, z) = if cos_y > 32.0 * f64::EPSILON {
+            (v[2].atan2(w[2]), u[1].atan2(u[0]))
+        } else {
+            (0.0, (-v[0]).atan2(v[1]))
+        };
+        let mut result = Self {
+            rotation: [x, (-u[2]).atan2(cos_y), z],
+            translation: [0.; 3],
+        };
+        let old_pivot = self.transform(pivot);
+        let new_pivot = result.transform(std::array::from_fn(|i| pivot[i] + translation[i]));
+        result.translation = std::array::from_fn(|i| old_pivot[i] - new_pivot[i]);
+        result
+    }
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -931,6 +983,73 @@ impl Project {
                     }
                 }
             }
+            Command::TransformPiece {
+                piece,
+                translation,
+                angle,
+                pivot,
+            } => {
+                let original = self
+                    .piece(piece)
+                    .ok_or_else(|| Error("Unknown piece".into()))?
+                    .clone();
+                validate_coordinates(&translation)?;
+                validate_coordinates(&pivot)?;
+                ensure(
+                    angle.is_finite() && angle.abs() <= 1.0e6,
+                    "Transform angle must be finite and within 1000000 radians",
+                )?;
+                let (sin, cos) = angle.sin_cos();
+                let transform = |point: [f64; 2]| {
+                    if angle == 0.0 {
+                        std::array::from_fn(|i| {
+                            if translation[i] == 0.0 {
+                                point[i]
+                            } else {
+                                point[i] + translation[i]
+                            }
+                        })
+                    } else {
+                        let [u, v] = std::array::from_fn(|i| point[i] - pivot[i]);
+                        [
+                            pivot[0] + cos * u - sin * v + translation[0],
+                            pivot[1] + sin * u + cos * v + translation[1],
+                        ]
+                    }
+                };
+                let mut point_ids = BTreeSet::new();
+                for curve in self
+                    .curves
+                    .iter_mut()
+                    .filter(|curve| original.boundary.contains(&curve.id))
+                {
+                    point_ids.insert(curve.start);
+                    if let Some(controls) = &mut curve.controls {
+                        *controls = controls.map(transform);
+                    }
+                }
+                for point in self
+                    .points
+                    .iter_mut()
+                    .filter(|point| point_ids.contains(&point.id))
+                {
+                    point.position = transform(point.position);
+                }
+                let transformed = self
+                    .pieces
+                    .iter_mut()
+                    .find(|item| item.id == piece)
+                    .unwrap();
+                transformed.placement =
+                    original
+                        .placement
+                        .compensate_pattern_transform(translation, angle, pivot);
+                if angle != 0.0 {
+                    let (grain_sin, grain_cos) = original.grain_angle.sin_cos();
+                    transformed.grain_angle = (sin * grain_cos + cos * grain_sin)
+                        .atan2(cos * grain_cos - sin * grain_sin);
+                }
+            }
             Command::SetPlacement { piece, placement } => {
                 self.pieces
                     .iter_mut()
@@ -1354,6 +1473,13 @@ pub enum Command {
         piece: Id,
         width: f64,
         height: f64,
+    },
+    /// Rigid 2D layout edit; compensates placement and rotates grain to retain world arrangement.
+    TransformPiece {
+        piece: Id,
+        translation: [f64; 2],
+        angle: f64,
+        pivot: [f64; 2],
     },
     SetPlacement {
         piece: Id,

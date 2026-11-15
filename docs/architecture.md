@@ -57,6 +57,22 @@ lengths and paired source portions for native guides; rendering does not
 integrate curve lengths every frame. These rest constraints do not establish
 physical gathering quality or a converged sewn garment.
 
+`TransformPiece` is a rigid 2D layout edit of every owned endpoint and absolute
+cubic control. It rotates about an explicit authored pivot, then translates.
+Placement compensation right-composes the existing XYZ rotation basis with the
+inverse in-plane rotation and adjusts its translation; the continuous arranged
+surface stays fixed. Grain rotates with the authored coordinates so physical
+warp/weft directions remain fixed. A private basis-to-Euler helper uses a fixed
+32-f64-epsilon singular threshold; pure translation bypasses that decomposition
+and preserves Euler/grain bits. Other authoring commands retain their existing
+semantics. No persistent layout frame or document version is introduced.
+
+UVs continue to be authored metres. A transformed document requires fresh rest,
+display and simulation revisions even when its arranged surface is unchanged;
+triangulation and later solver trajectories may differ. The
+[reviewed contract](../spec/features/PAT-004-piece-rigid-transform.md) fixes numeric
+bounds and describes the engineering policy; reference behavior is unobserved.
+
 Convex/concave boundaries are tessellated then triangulated and refined with
 shared midpoint vertices. Cubic bounds use analytic derivative roots. Polygon
 validity uses a bounded polyline approximation for curves: intersections below
