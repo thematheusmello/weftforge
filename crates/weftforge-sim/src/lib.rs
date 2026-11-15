@@ -464,7 +464,7 @@ impl Cloth {
             }
             let mut membrane_lambda = vec![[0.; 3]; self.membrane.len()];
             let mut bend_lambda = vec![0.; self.bends.len()];
-            let mut seam_lambda = vec![0.; self.input.stitches.len()];
+            let mut seam_lambda = vec![[0.; 3]; self.input.stitches.len()];
             for _ in 0..settings.iterations {
                 if cancelled() {
                     return Err(SimulationError::Cancelled);

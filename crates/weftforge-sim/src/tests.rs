@@ -306,7 +306,7 @@ fn weighted_stitch_closes_unequal_samples_and_preserves_momentum() {
     };
     let mut x = vec![[0., 0., 0.], [1., 0., 0.], [2., 0.3, 0.], [3., 0.3, 0.]];
     let before = x.iter().copied().fold([0.; 3], add);
-    constraints::solve_stitch(stitch, 0., &mut x, &[1.; 4], 0.01, &mut 0.);
+    constraints::solve_stitch(stitch, 0., &mut x, &[1.; 4], 0.01, &mut [0.; 3]);
     assert!(length(sub(stitch.a.position(&x), stitch.b.position(&x))) < 1e-12);
     assert!(length(sub(x.iter().copied().fold([0.; 3], add), before)) < 1e-12);
     // A repeated endpoint must be treated as one degree of freedom.
@@ -315,8 +315,426 @@ fn weighted_stitch_closes_unequal_samples_and_preserves_momentum() {
         b: WeightedPoint::vertex(2),
         compliance: 0.,
     };
-    constraints::solve_stitch(s, 0., &mut x, &[1.; 4], 0.01, &mut 0.);
+    constraints::solve_stitch(s, 0., &mut x, &[1.; 4], 0.01, &mut [0.; 3]);
     assert!(length(sub(x[0], x[2])) < 1e-12);
+}
+
+// This read-only adapter keeps the frozen N32 observer identical for scalar RED and vector GREEN.
+trait ObservedStitchMultiplier: Copy + Default + std::fmt::Debug {
+    fn endpoint_vector(self, difference: Vec3) -> Vec3;
+    fn is_scalar(self) -> bool;
+}
+impl ObservedStitchMultiplier for f64 {
+    fn endpoint_vector(self, difference: Vec3) -> Vec3 {
+        mul(difference, self / length(difference))
+    }
+    fn is_scalar(self) -> bool {
+        true
+    }
+}
+impl ObservedStitchMultiplier for Vec3 {
+    fn endpoint_vector(self, _: Vec3) -> Vec3 {
+        self
+    }
+    fn is_scalar(self) -> bool {
+        false
+    }
+}
+
+#[test]
+fn closed_elastic_stitch_n32_matches_independent_quadratic_and_individual_actions() {
+    let anchors = [[1., 0., 0.], [0., 1., 0.]];
+    let mut x = [[0.; 3], anchors[0], anchors[1]];
+    let stitches = [1, 2].map(|anchor| Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(anchor),
+        compliance: 1.,
+    });
+    let mut lambda = [Default::default(); 2];
+    let mut individual_action = [[0.; 3]; 2];
+    for _ in 0..32 {
+        for i in 0..2 {
+            let before = x[0];
+            constraints::solve_stitch(stitches[i], 0., &mut x, &[1., 0., 0.], 1., &mut lambda[i]);
+            individual_action[i] = add(individual_action[i], sub(x[0], before));
+        }
+    }
+    let q = stitches.map(|s| sub(s.a.position(&x), s.b.position(&x)));
+    let lambda_vector = std::array::from_fn::<_, 2, _>(|i| lambda[i].endpoint_vector(q[i]));
+    let residual = std::array::from_fn::<_, 2, _>(|i| add(q[i], lambda_vector[i]));
+    let transport =
+        std::array::from_fn::<_, 2, _>(|i| length(sub(individual_action[i], lambda_vector[i])));
+    let energy = (dot(q[0], q[0]) + dot(q[1], q[1])) / 2.;
+    let objective = dot(x[0], x[0]) / 2. + energy;
+    // The gradient of Phi=3(x²+y²)/2-x-y+1 is independent of the multiplier ledger.
+    let stationarity = add(x[0], add(q[0], q[1]));
+    let u = 2_f64.powi(-64);
+    let expected_x = [(1. - u) / 3., (1. + 2. * u) / 3., 0.];
+    let expected_lambda = [
+        [(2. - 2. * u) / 3., (-1. + 4. * u) / 3., 0.],
+        [(-1. + u) / 3., (2. - 2. * u) / 3., 0.],
+    ];
+    let expected_residual = [[-u, 2. * u, 0.], [0.; 3]];
+    let expected_energy = (5. - u + 5. * u * u) / 9.;
+    let expected_objective = 2. / 3. + 5. * u * u / 6.;
+    println!(
+        "fixed_operator_N=32 h_s=1 c_m_per_N=1 free_mass_kg=1\n\
+         x_m={x:?}\nlambda_private_kg_m={lambda:?}\nlambda_vector_kg_m={lambda_vector:?}\n\
+         residual_m={residual:?}\nindividual_action_N={individual_action:?}\n\
+         individual_transport_N={transport:?}\nenergy_J={energy:?}\n\
+         objective_J={objective:?}\nstationarity_N={stationarity:?}\n\
+         expected_x_m={expected_x:?}\nexpected_lambda_kg_m={expected_lambda:?}\n\
+         expected_residual_m={expected_residual:?}\nexpected_energy_J={expected_energy:?}\n\
+         expected_objective_J={expected_objective:?}"
+    );
+    if lambda[0].is_scalar() {
+        assert!(transport[0] > 0.01, "legacy stitch1 RED witness: N");
+    }
+    assert_eq!(&x[1..], &anchors);
+    assert!(length(sub(x[0], expected_x)) <= 1e-12, "position: m");
+    for i in 0..2 {
+        assert!(
+            length(sub(lambda_vector[i], expected_lambda[i])) <= 1e-12,
+            "stitch{i} multiplier: kg m"
+        );
+        assert!(
+            length(sub(residual[i], expected_residual[i])) <= 1e-12,
+            "stitch{i} constitutive residual: m"
+        );
+        assert!(transport[i] <= 1e-12, "stitch{i} individual transport: N");
+    }
+    assert!((energy - expected_energy).abs() <= 1e-12, "energy: J");
+    assert!(
+        (objective - expected_objective).abs() <= 1e-12,
+        "incremental objective: J"
+    );
+    assert!(length(stationarity) <= 1e-12, "stationarity: N");
+}
+
+#[test]
+fn closed_elastic_stitch_preserves_isolated_energy_and_units() {
+    let stitch = Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(1),
+        compliance: 0.125,
+    };
+    let predictor = [1., 2., 0.];
+    let mut x = [predictor, [0.; 3]];
+    let mut lambda = [0.; 3];
+    constraints::solve_stitch(stitch, 0., &mut x, &[0.5, 0.], 0.5, &mut lambda);
+    assert_eq!(lambda, [-1., -2., 0.]);
+    assert_eq!(x, [[0.5, 1., 0.], [0.; 3]]);
+    let q = sub(stitch.a.position(&x), stitch.b.position(&x));
+    let force = [-4., -8., 0.];
+    assert_eq!(mul(q, -1. / stitch.compliance), force);
+    assert_eq!(mul(lambda, 1. / 0.5_f64.powi(2)), force);
+    assert_eq!(mul(sub(x[0], predictor), 2. / 0.5_f64.powi(2)), force);
+    assert_eq!(dot(q, q) / (2. * stitch.compliance), 5.);
+}
+
+#[test]
+fn closed_elastic_stitch_two_free_masses_preserve_reactions_under_rigid_transforms() {
+    let stitch = Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(1),
+        compliance: 0.0625,
+    };
+    for (predictor, initial_lambda, expected_x, expected_lambda, expected_energy) in [
+        (
+            [[1., 2., 0.], [0.; 3]],
+            [0.; 3],
+            [[0.5, 1., 0.], [0.25, 0.5, 0.]],
+            [-1., -2., 0.],
+            2.5,
+        ),
+        (
+            [[0.; 3]; 2],
+            [2., -4., 1.],
+            [[-0.25, 0.5, -0.125], [0.125, -0.25, 0.0625]],
+            [1.5, -3., 0.75],
+            5.90625,
+        ),
+    ] {
+        // For masses 2/4 kg and h=0.5 s, alpha=1/4 kg^-1 and D=1 kg^-1.
+        for (angle, translation) in [(0_f64, [0.; 3]), (0., [8., -4., 2.]), (0.37, [8., -4., 2.])] {
+            let axis = unit([1., 2., 3.]);
+            let (sin, cos) = angle.sin_cos();
+            let rotate = |v| {
+                add(
+                    add(mul(v, cos), mul(cross(axis, v), sin)),
+                    mul(axis, dot(axis, v) * (1. - cos)),
+                )
+            };
+            let transform = |v| add(rotate(v), translation);
+            let before = predictor.map(transform);
+            let mut x = before;
+            let initial_lambda = rotate(initial_lambda);
+            let mut lambda = initial_lambda;
+            constraints::solve_stitch(stitch, 0., &mut x, &[0.5, 0.25], 0.5, &mut lambda);
+            for (actual, expected) in x.into_iter().zip(expected_x.map(transform)) {
+                assert!(length(sub(actual, expected)) <= 1e-12, "position: m");
+            }
+            assert!(length(sub(lambda, rotate(expected_lambda))) <= 1e-12);
+            let action = mul(sub(lambda, initial_lambda), 4.);
+            assert!(length(sub(mul(sub(x[0], before[0]), 8.), action)) <= 1e-12);
+            assert!(length(add(mul(sub(x[1], before[1]), 16.), action)) <= 1e-12);
+            let difference = sub(x[0], x[1]);
+            assert!(length(add(mul(difference, 16.), mul(lambda, 4.))) <= 1e-12);
+            assert!(
+                (dot(difference, difference) / (2. * stitch.compliance) - expected_energy).abs()
+                    <= 1e-12,
+                "energy: J"
+            );
+            let mass_moment = |x: [Vec3; 2]| add(mul(x[0], 2.), mul(x[1], 4.));
+            assert!(length(sub(mass_moment(x), mass_moment(before))) <= 1e-12);
+        }
+    }
+}
+
+#[test]
+fn closed_elastic_stitch_merges_repeated_and_cross_side_vertices() {
+    let stitch = Stitch {
+        a: WeightedPoint {
+            vertices: [0, 0],
+            weights: [0.25, 0.75],
+        },
+        b: WeightedPoint {
+            vertices: [0, 1],
+            weights: [0.25, 0.75],
+        },
+        compliance: 1.,
+    };
+    let mut x = [[0.; 3], [1., 0., 0.]];
+    let mut lambda = [0.; 3];
+    constraints::solve_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut lambda);
+    assert!(length(sub(lambda, [12. / 25., 0., 0.])) <= 1e-14);
+    assert!(length(sub(x[0], [9. / 25., 0., 0.])) <= 1e-14);
+    assert_eq!(x[1], [1., 0., 0.]);
+    assert!(
+        length(add(
+            sub(stitch.a.position(&x), stitch.b.position(&x)),
+            lambda
+        )) <= 1e-14
+    );
+}
+
+#[test]
+fn closed_elastic_stitch_keeps_accepted_weights_and_endpoint_arithmetic() {
+    let beta = 0.75 + 1e-11;
+    let stitch = Stitch {
+        a: WeightedPoint {
+            vertices: [0, 1],
+            weights: [0.25, beta],
+        },
+        b: WeightedPoint {
+            vertices: [0, 2],
+            weights: [0.25, 0.75],
+        },
+        compliance: 1.,
+    };
+    let mut input = square();
+    input.stitches.push(stitch);
+    validate(&input, &|| false).unwrap();
+    let mut x = [[1e8, -2e8, 3e8]; 3];
+    let before = x;
+    let q = sub(
+        add(mul(x[0], 0.25), mul(x[1], beta)),
+        add(mul(x[0], 0.25), mul(x[2], 0.75)),
+    );
+    assert!(length(q) > 0.001);
+    let expected_lambda = q.map(|value| -value / (beta * beta + 1.));
+    let expected_free = add(before[1], mul(expected_lambda, beta));
+    let mut lambda = [0.; 3];
+    constraints::solve_stitch(stitch, 0., &mut x, &[0., 1., 0.], 1., &mut lambda);
+    assert_eq!(lambda, expected_lambda);
+    assert_eq!(x, [before[0], expected_free, before[2]]);
+    assert_eq!(stitch.a.weights, [0.25, beta]);
+}
+
+#[test]
+fn closed_elastic_stitch_handles_zero_gap_pins_and_denominator_guard() {
+    let stitch = Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(1),
+        compliance: 1.,
+    };
+    let mut x = [[0.; 3]; 2];
+    let mut lambda = [0.; 3];
+    constraints::solve_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut lambda);
+    assert_eq!(x, [[0.; 3]; 2]);
+    assert_eq!(lambda, [0.; 3]);
+    assert_eq!(dot(x[0], x[0]) / (2. * stitch.compliance), 0.);
+    lambda = [2., -4., 1.];
+    constraints::solve_stitch(stitch, 0., &mut x, &[1., 0.], 1., &mut lambda);
+    assert_eq!(lambda, [1., -2., 0.5]);
+    assert_eq!(x, [[-1., 2., -0.5], [0.; 3]]);
+    assert_eq!(add(sub(x[0], x[1]), lambda), [0.; 3]);
+
+    let stitch = Stitch {
+        compliance: 0.125,
+        ..stitch
+    };
+    let pinned = [[1., 2., 3.], [0.; 3]];
+    x = pinned;
+    lambda = [0.; 3];
+    constraints::solve_stitch(stitch, 0., &mut x, &[0.; 2], 0.5, &mut lambda);
+    assert_eq!(x, pinned);
+    assert_eq!(lambda, [-2., -4., -6.]);
+    assert_eq!(mul(lambda, 4.), [-8., -16., -24.]);
+    assert_eq!(mul(sub(x[0], x[1]), -8.), [-8., -16., -24.]);
+
+    for (compliance, dt) in [(1e-21, 1.), (1., 1e-200)] {
+        let stitch = Stitch {
+            compliance,
+            ..stitch
+        };
+        let before_lambda = lambda;
+        constraints::solve_stitch(stitch, 0., &mut x, &[0.; 2], dt, &mut lambda);
+        assert_eq!(x, pinned);
+        assert_eq!(lambda, before_lambda);
+    }
+}
+
+#[test]
+fn positive_targets_and_hard_stitches_keep_radial_updates() {
+    // Reciprocal normalization rounds the 3-4-5 direction's squared length above one.
+    let r = 1.0_f64 / 5.;
+    let d = 0.5 * ((3. * r).powi(2) + (4. * r).powi(2));
+    let hard_expected = 0.25 - 5. / d;
+    assert!((hard_expected + 9.75).abs() <= 1e-14);
+    for (target, compliance, expected_x, expected_lambda) in [
+        (1., 0.125, [1.7625, 2.35, 0.], -3.875),
+        (f64::from_bits(1), 0.125, [1.4625, 1.95, 0.], -4.875),
+        (0., 0., [0.; 3], hard_expected),
+    ] {
+        let stitch = Stitch {
+            a: WeightedPoint::vertex(0),
+            b: WeightedPoint::vertex(1),
+            compliance,
+        };
+        let mut x = [[3., 4., 0.], [0.; 3]];
+        let mut lambda = [0.25, 7., -8.];
+        constraints::solve_stitch(stitch, target, &mut x, &[0.5, 0.], 0.5, &mut lambda);
+        assert!(length(sub(x[0], expected_x)) <= 1e-14);
+        assert_eq!(x[1], [0.; 3]);
+        assert_eq!(lambda, [expected_lambda, 7., -8.]);
+    }
+    let hard = Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(1),
+        compliance: 0.,
+    };
+    let pinned = [[1., 0., 0.], [0.; 3]];
+    let mut x = pinned;
+    let mut lambda = [2., 3., 4.];
+    constraints::solve_stitch(hard, 0., &mut x, &[0.; 2], 1., &mut lambda);
+    assert_eq!(x, pinned);
+    assert_eq!(lambda, [2., 3., 4.]);
+    x = [[0.; 3]; 2];
+    constraints::solve_stitch(hard, 1., &mut x, &[1.; 2], 1., &mut lambda);
+    assert_eq!(x, [[0.; 3]; 2]);
+    assert_eq!(lambda, [2., 3., 4.]);
+}
+
+#[test]
+fn elastic_stitch_substeps_reset_multipliers_when_target_reaches_zero() {
+    let mut input = square();
+    input.stitches.push(Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(1),
+        compliance: 1.,
+    });
+    let mut combined = Cloth::new(input).unwrap();
+    let mut split = combined.clone();
+    let settings = StepSettings {
+        dt: 0.2,
+        substeps: 2,
+        seam_closure_speed: 5.,
+        ..settings()
+    };
+    combined.step(settings, || false).unwrap();
+    let settings = StepSettings {
+        dt: 0.1,
+        substeps: 1,
+        ..settings
+    };
+    split.step(settings, || false).unwrap();
+    assert_eq!(split.seam_remaining, [0.5]);
+    split.step(settings, || false).unwrap();
+    assert_eq!(combined.seam_remaining, [0.]);
+    assert_eq!(combined.seam_remaining, split.seam_remaining);
+    assert_eq!(combined.positions, split.positions);
+    assert_eq!(combined.velocities, split.velocities);
+    assert_eq!(combined.simulation_time(), split.simulation_time());
+}
+
+#[test]
+fn closed_elastic_stitch_cancellation_and_failure_retain_whole_call_state() {
+    let mut input = square();
+    input.stitches.push(Stitch {
+        a: WeightedPoint::vertex(0),
+        b: WeightedPoint::vertex(1),
+        compliance: 1.,
+    });
+    let mut cloth = Cloth::new(input).unwrap();
+    let before = cloth.clone();
+    let diagnostics = |d: &Diagnostics| {
+        (
+            d.simulation_time,
+            d.step_seconds,
+            d.max_stretch_error,
+            d.peak_strain,
+            d.max_seam_error,
+            d.seam_assembly_remaining,
+            d.max_contact_error,
+            d.kinetic_energy,
+            d.contacts,
+            d.initial_intersections,
+            d.capsule_surface_uncertain_pairs,
+            d.finite,
+        )
+    };
+    let assert_retained = |cloth: &Cloth| {
+        assert_eq!(cloth.positions, before.positions);
+        assert_eq!(cloth.velocities, before.velocities);
+        assert_eq!(cloth.seam_remaining, before.seam_remaining);
+        assert_eq!(
+            diagnostics(&cloth.diagnostics),
+            diagnostics(&before.diagnostics)
+        );
+    };
+    let settings = StepSettings {
+        dt: 0.1,
+        substeps: 2,
+        seam_closure_speed: 100.,
+        ..settings()
+    };
+    let calls = std::cell::Cell::new(0);
+    assert_eq!(
+        cloth
+            .step(settings, || {
+                calls.set(calls.get() + 1);
+                calls.get() == 4
+            })
+            .unwrap_err(),
+        SimulationError::Cancelled
+    );
+    assert_eq!(calls.get(), 4);
+    assert_retained(&cloth);
+    assert!(matches!(
+        cloth.step(
+            StepSettings {
+                gravity: [0., -1e100, 0.],
+                ..settings
+            },
+            || false
+        ),
+        Err(SimulationError::Unstable(_))
+    ));
+    assert_retained(&cloth);
+    cloth.step(settings, || false).unwrap();
+    assert_eq!(cloth.seam_remaining, [0.]);
+    assert!(cloth.diagnostics.finite);
 }
 
 #[test]
