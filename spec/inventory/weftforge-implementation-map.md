@@ -9,7 +9,7 @@ Coverage: **949 unique IDs** = 593 menu nodes + 356 component-catalog records; c
 Current implementation, reference observation, verification and evidence freshness come only from [parity/features.yaml](../../parity/features.yaml). Join each group’s feature IDs to that registry at the revision being reported. The map copies no feature status fields. Candidate source relationships describe only the pinned code and must be re-reviewed after relevant source/catalog changes.
 
 
-A later [source-only addendum](weftforge-current-source-addendum.md) rechecks bounded native studio, import/ellipse, length, transform/New Empty and physical-length sewing candidates at an explicit newer source. This historical map, its 22-command snapshot, all 949 entry records, 205 packets and 56 landmark identities remain unchanged; unlisted groups have not been re-reviewed at the addendum pin.
+A later [source-only addendum](weftforge-current-source-addendum.md) rechecks bounded native studio, import/ellipse, length, transform/New Empty and physical-length sewing and bounded straight internal-annotation candidates at explicit newer sources. This historical map, its 22-command snapshot, all 949 entry records, 205 packets and 56 landmark identities remain unchanged; unlisted groups have not been re-reviewed at the addendum pin.
 
 ## Scope and source interpretation
 
