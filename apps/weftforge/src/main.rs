@@ -1587,6 +1587,23 @@ impl Studio {
             // egui replays committed text on next-frame blur; rebuilt f64 bounds may differ.
             ui.ctx().data_mut(|data| data.remove::<String>(id));
         }
+        if let Some((_, _, _, _, focused)) = ui
+            .ctx()
+            .data_mut(|data| {
+                data.remove_temp::<(u64, u64, Option<Id>, Option<Id>, Option<egui::Id>)>(
+                    egui::Id::new("snap-input-focus"),
+                )
+            })
+            .filter(|(frame, revision, selected, curve, _)| {
+                *frame == ui.ctx().cumulative_frame_nr()
+                    && *revision == self.editor.project.revision
+                    && *selected == self.selected
+                    && *curve == self.selected_curve
+            })
+        {
+            // egui surrenders outside-click focus during rendering; restore before next-frame blur.
+            finish_numeric_action(ui.ctx(), focused, false);
+        }
         if !acting
             && !ui.input(|input| input.pointer.any_down())
             && !ui
@@ -1618,46 +1635,32 @@ impl Studio {
         ]
     }
     fn position_snap_control(&mut self, ui: &mut egui::Ui) {
-        let focus_key = egui::Id::new((
-            "snap-input-focus",
-            self.editor.project.revision,
-            self.selected,
-            self.selected_curve,
-        ));
-        let restoring = ui
-            .ctx()
-            .data_mut(|data| data.get_temp::<egui::Id>(focus_key));
-        let focused = self.inspector_focus(ui.ctx()).or(restoring);
-        let response = egui::ComboBox::from_label("Snap")
-            .width(64.0)
-            .selected_text(self.position_snap.label())
-            .show_ui(ui, |ui| {
-                for snap in [
-                    PositionSnap::Off,
-                    PositionSnap::Mm1,
-                    PositionSnap::Mm5,
-                    PositionSnap::Mm10,
-                ] {
-                    ui.selectable_value(&mut self.position_snap, snap, snap.label());
+        let focused = self.inspector_focus(ui.ctx());
+        ui.horizontal(|ui| {
+            ui.label("Snap");
+            for snap in [
+                PositionSnap::Off,
+                PositionSnap::Mm1,
+                PositionSnap::Mm5,
+                PositionSnap::Mm10,
+            ] {
+                let response = ui.selectable_value(&mut self.position_snap, snap, snap.label())
+                    .on_hover_text("Pointer positions only. Hold Alt / Option when starting a drag or clicking to bypass.");
+                if response.is_pointer_button_down_on() || response.clicked() {
+                    finish_numeric_action(ui.ctx(), focused, false);
+                    let request = (
+                        ui.ctx().cumulative_frame_nr(),
+                        self.editor.project.revision,
+                        self.selected,
+                        self.selected_curve,
+                        focused,
+                    );
+                    ui.ctx().data_mut(|data| {
+                        data.insert_temp(egui::Id::new("snap-input-focus"), request)
+                    });
                 }
-            });
-        let popup_visible = response.inner.is_some();
-        let response = response.response.on_hover_text(
-            "Pointer positions only. Hold Alt / Option when starting a drag or clicking to bypass.",
-        );
-        if popup_visible || response.is_pointer_button_down_on() || response.clicked() {
-            if let Some(focused) = focused {
-                ui.ctx()
-                    .data_mut(|data| data.insert_temp(focus_key, focused));
             }
-            finish_numeric_action(ui.ctx(), focused, false);
-        } else if let Some(focused) = restoring {
-            // A popup blocks inspector focus through the frame after it closes.
-            if ui.ctx().memory(|memory| memory.top_modal_layer().is_none()) {
-                ui.ctx().data_mut(|data| data.remove::<egui::Id>(focus_key));
-            }
-            finish_numeric_action(ui.ctx(), Some(focused), false);
-        }
+        });
     }
     fn frame_patterns_button(&self, ui: &mut egui::Ui) {
         let focused = self.inspector_focus(ui.ctx());
@@ -3230,13 +3233,6 @@ mod tests {
             click(
                 ctx,
                 app,
-                text_position(&output, app.position_snap.label()),
-                egui::Modifiers::NONE,
-            );
-            let output = frame(ctx, app, egui::Modifiers::NONE, vec![]);
-            click(
-                ctx,
-                app,
                 text_position(&output, snap.label()),
                 egui::Modifiers::NONE,
             );
@@ -3495,6 +3491,173 @@ mod tests {
             assert_eq!(app.position_snap, snap);
             fs::remove_dir_all(dir).unwrap();
         }
+    }
+
+    #[test]
+    fn position_snapping_inline_choices_preserve_unfinished_numeric_text_and_caret() {
+        fn frame(
+            ctx: &egui::Context,
+            app: &mut Studio,
+            events: Vec<egui::Event>,
+        ) -> egui::FullOutput {
+            ctx.run_ui(
+                egui::RawInput {
+                    screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1200., 800.))),
+                    events,
+                    ..Default::default()
+                },
+                |ui| {
+                    app.toolbar(ui);
+                    ui.columns(2, |columns| {
+                        app.inspector(&mut columns[0]);
+                        app.patterns(&mut columns[1]);
+                    });
+                },
+            )
+        }
+        fn text_position(output: &egui::FullOutput, text: &str) -> Pos2 {
+            output
+                .shapes
+                .iter()
+                .filter_map(|clipped| match &clipped.shape {
+                    egui::Shape::Text(shape)
+                        if shape.galley.text() == text
+                            || text.parse::<f64>().ok().is_some_and(|value| {
+                                shape.galley.text().parse::<f64>().ok() == Some(value)
+                            }) =>
+                    {
+                        Some(shape.pos + shape.galley.size() * 0.5)
+                    }
+                    _ => None,
+                })
+                .next_back()
+                .unwrap_or_else(|| panic!("missing text {text:?}"))
+        }
+        fn click(ctx: &egui::Context, app: &mut Studio, pos: Pos2) {
+            for pressed in [true, false] {
+                frame(
+                    ctx,
+                    app,
+                    vec![
+                        egui::Event::PointerMoved(pos),
+                        egui::Event::PointerButton {
+                            pos,
+                            button: egui::PointerButton::Primary,
+                            pressed,
+                            modifiers: egui::Modifiers::NONE,
+                        },
+                    ],
+                );
+            }
+        }
+        fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+            egui::Event::Key {
+                key,
+                physical_key: None,
+                pressed: true,
+                repeat: false,
+                modifiers,
+            }
+        }
+        for (entered, completed, resolution) in [
+            ("1e-", "1e-2", 0.01),
+            ("-", "-2", 0.005),
+            ("0.", "0.2", 0.2),
+        ] {
+            let ctx = egui::Context::default();
+            studio_style(&ctx);
+            let mut app = Studio::empty();
+            app.session_autosave = None;
+            let output = frame(&ctx, &mut app, vec![]);
+            click(&ctx, &mut app, text_position(&output, "0.07"));
+            frame(
+                &ctx,
+                &mut app,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text(entered.into()),
+                ],
+            );
+            let id = numeric_focus(&ctx).expect("numeric field retains focus");
+            let raw_before = ctx.data_mut(|data| data.get_temp::<String>(id));
+            assert_eq!(raw_before.as_deref(), Some(entered));
+            let caret_before = egui::TextEdit::load_state(&ctx, id)
+                .unwrap()
+                .cursor
+                .char_range();
+            let draft_before = app.draft.as_ref().unwrap().commands(&app.editor.project);
+            let editor_before = format!("{:?}", app.editor);
+            for snap in [
+                PositionSnap::Off,
+                PositionSnap::Mm1,
+                PositionSnap::Mm5,
+                PositionSnap::Mm10,
+            ] {
+                let output = frame(&ctx, &mut app, vec![]);
+                click(&ctx, &mut app, text_position(&output, snap.label()));
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, vec![]);
+                }
+                assert_eq!(app.position_snap, snap);
+                assert_eq!(numeric_focus(&ctx), Some(id));
+                assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(id)), raw_before);
+                assert_eq!(
+                    egui::TextEdit::load_state(&ctx, id)
+                        .unwrap()
+                        .cursor
+                        .char_range(),
+                    caret_before
+                );
+                assert_eq!(
+                    app.draft.as_ref().unwrap().commands(&app.editor.project),
+                    draft_before
+                );
+                assert_eq!(format!("{:?}", app.editor), editor_before);
+                assert!(!app.dirty);
+            }
+            frame(&ctx, &mut app, vec![egui::Event::Text("2".into())]);
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(id)).as_deref(),
+                Some(completed)
+            );
+            assert_eq!(app.draft.as_ref().unwrap().resolution, resolution);
+            assert_eq!(format!("{:?}", app.editor), editor_before);
+        }
+
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        studio_style(&ctx);
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        let output = frame(&ctx, &mut app, vec![]);
+        let off = output
+            .platform_output
+            .accesskit_update
+            .unwrap()
+            .nodes
+            .into_iter()
+            .find(|(_, node)| node.label() == Some("Off"))
+            .unwrap()
+            .0;
+        frame(
+            &ctx,
+            &mut app,
+            vec![egui::Event::AccessKitActionRequest(
+                egui::accesskit::ActionRequest {
+                    action: egui::accesskit::Action::Focus,
+                    target_tree: egui::accesskit::TreeId::ROOT,
+                    target_node: off,
+                    data: None,
+                },
+            )],
+        );
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+        );
+        assert_eq!(app.position_snap, PositionSnap::Off);
+        assert!(!app.dirty && !app.editor.can_undo());
     }
 
     #[test]
