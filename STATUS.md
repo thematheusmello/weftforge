@@ -7,10 +7,14 @@ inventory, not a feature-completion denominator.
 
 ## Current continuation
 
-Latest public main is `c0201a74933a4785aa454e7740420fcee54f504e` from
-[PR38](https://github.com/thematheusmello/weftforge/pull/38). Actions remain disabled
-and that merge has zero workflow runs. The active isolated branch is
+The latest verified implementation is
+[PR39](https://github.com/thematheusmello/weftforge/pull/39), prepared on
 `feat/svg-studio-integration`, worktree `.local/svg-studio-integration-20261115`.
+Its prior main is `c0201a74933a4785aa454e7740420fcee54f504e` from
+[PR38](https://github.com/thematheusmello/weftforge/pull/38), with zero merge
+workflow runs. Actions remain disabled. Pages is configured for workflow builds;
+automated deployments are therefore disabled too, while the static site remains
+configured. The Pages builds API returned no build records at publication.
 Its tested runtime is `32f9b3481c46e28a3b3acc49e6cf3908c7001b28`: all45
 runtime/test files remain byte-identical through native verification and
 publication assembly. The packaged native SHA256 is
@@ -53,7 +57,9 @@ frozen graders. Clean tracked12e9df passes both public default-path static
 replays, registry/map and all2,905 referenced artifact hashes. The tracked
 [publication closure](parity/reports/artifacts/svg-publication-20261115/ROOT-CLOSURE.json)
 keeps the results and qualifies a receipt-suffix encoding correction without
-changing command outcomes. Final metadata checks and GitHub publication remain. The newv3app is open paused
+changing command outcomes. Final clean3145145 registry/map checks pass with all
+2,925 referenced artifacts tracked and hash-correct; the subsequent PR-link and
+deployment-wording update changes metadata only. The newv3app is open paused
 in Rest with reopened revision5/three pieces. The v2app remains on the original
 Harbor rest preview; neither native case ran simulation.
 
@@ -120,10 +126,10 @@ publishes this bounded increment; the original strict failures remain failed.
 Independent public-packet review found no content, privacy or provenance blocker.
 All original copy/reversible path mappings, exclusions and exact-ID quit counts
 match; original13+history19 negative checks retain their frozen receipts.
-Next: check final metadata from a clean tracked checkout and publish this SVG/
-diagnostic increment, then review the separate balanced-stitch candidate before
-freezing any new physical protocol. No garment dynamics were run here.
-GitHub Actions and Pages must remain disabled until the complete project is done.
+PR39 publishes this SVG/diagnostic increment. Next: review the separate
+balanced-stitch candidate before freezing any new physical protocol. No garment
+dynamics were run here. GitHub Actions and automated Pages deployments must
+remain disabled until the complete project is done.
 
 ## Native visual preview checkpoint
 
