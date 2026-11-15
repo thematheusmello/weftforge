@@ -400,6 +400,8 @@ fn call(line: &[u8]) -> Result<Value, String> {
             "project_inspect" => {
                 let args: InspectArgs = arguments(line)?;
                 let project = Project::load(Path::new(&args.path))?;
+                // Preserve native f32 JSON formatting instead of promoting colors to f64.
+                let project: Value = serde_json::from_slice(&serde_json::to_vec(&project)?)?;
                 Ok(
                     json!({"project":project,"units":{"length":"m","mass":"kg","time":"s"},"up":"Y"}),
                 )
