@@ -1,0 +1,54 @@
+{
+  "case": "A",
+  "attempt": "A003",
+  "status": "completed_prescribed_steps_pending_root_saved_grade_and_UI_review",
+  "actor_native_input_lease_closed": true,
+  "final_native_record": "0142",
+  "final_native_action": "planned Quit returned; no subsequent native observer",
+  "returned_case_operation_pairs": 142,
+  "actual_completion_summary_calls": 1,
+  "operation_count_with_one_reserved_summary": 143,
+  "frozen_operation_cap": 175,
+  "total_cap_with_summary": 176,
+  "elapsed_cap_s": 1200,
+  "conservative_elapsed_upper_bound_s": 641.657843875,
+  "observed_native_sequence": [
+    "R0 zero authored construction; one observed Name setValue saved A.weftforge",
+    "Four numeric fields authored R1 unit square; saved raw",
+    "Observed5mm toggle and two prospectively mapped clicks authored line13/P0[.125,.25]/P3[.875,.75] atR2,901.388mm; saved raw",
+    "Pendinggrain0.47e0/caret beforee remained atR2",
+    "One invalid1e-Apply refusal, Save blocked, backdropUndo click cancelled modal without Undo revision; raw/focus restored",
+    "Reopened once/reentered1e- without Apply; explicit Cancel restored pending raw/focus/caret; insertion0 produced0.470e0 atR2",
+    "Four precise endpoint fields plus stagedgrain committed together atR3; displayedP0[.25,.375]/P3[.75,.625],559.017mm,grain.47; saved raw",
+    "One Undo atR4 restored both original endpoints/grain0; saved raw",
+    "One Redo atR5 restored complete compound edit; saved raw",
+    "Clean saved R5/Rest arrangement observed in capture0140; no wait or scrolling was needed; planned Quit0142 returned"
+  ],
+  "saved_snapshot_sha256": {
+    "A00-empty": "710697e3a4fc5287c315e6e906ed15046b969aa3b9d2cc09a604ba6d579d9555",
+    "A01-square": "0a6af9b7a4e81e269b1670d0f992536ead106ef0494ada3913f8a73480f6aed7",
+    "A02-created": "37dc0eafe185702f85a7e9470ddbda2a11c50cf776bbab563642958d2be0f4a7",
+    "A03-edited": "5881d4194419e7b3031add176e2bae48114e5953e77585f59e798bbf3ec0c57d",
+    "A04-undo": "35aea922e4236dcc99d7e7c18972ee720bf099a79de80784ea7cc74108fa69a9",
+    "A05-redo": "45c15e1c8c17ada10b9ff4aff45de22564e09091c63462e61c588f57d28877fd"
+  },
+  "required_primary_states_missing": [],
+  "postflight_sha256": "c17a722f8c8a928f6072cf3d83ee5e57e6d6dcfb18268782123de277ab3b893e",
+  "completion_bounds_sha256": "d3e88790fd641cc0c72f7d28481434239ed1695f2dd3eef6e9dedd323e125a97",
+  "no_retry_or_output_repair": true,
+  "formal_saved_grader_run": false,
+  "root_UI_review": "pending",
+  "reference_verified": false,
+  "full_contract_or_feature_accepted": false,
+  "AX_limits": [
+    "Modal fields and actions were screenshot-only; background controls appeared disabled",
+    "Later File menu entries were screenshot-only; observed Save coordinates used",
+    "Initial getApp full AX was emitted in tool output; following retained capture AX is a no-change diff"
+  ],
+  "unsupported_native_gaps": [
+    "Same-frameAXfocus+Apply and held-drag Escape/history remain untested",
+    "Old Transform pointer gate/B2 not addressed; B\u2013E still required and ungranted"
+  ],
+  "PID_13707_absent_after_planned_quit": true,
+  "cleanup": "No owned window/process remains; no post-case UI cleanup was needed."
+}

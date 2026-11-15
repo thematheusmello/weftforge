@@ -2802,7 +2802,10 @@
         "parity/reports/WF-20261115-PHYSICAL-LENGTH-SEWING-001.json",
         "parity/reports/artifacts/physical-length-sewing-20261115/README.md",
         "parity/reports/artifacts/physical-length-sewing-20261115/PUBLICATION.json",
-        "parity/reports/artifacts/physical-length-sewing-20261115/SYMLINK-NODES.json"
+        "parity/reports/artifacts/physical-length-sewing-20261115/SYMLINK-NODES.json",
+        "parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json",
+        "parity/reports/artifacts/internal-annotations-20261115/README.md",
+        "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-METADATA-001.json"
       ],
       "scenarios": [
         {
@@ -2907,6 +2910,15 @@
           },
           "initial_conditions": "Prospectively frozen v3 tooling plan; original analytic R41/next20/2panels, no group and simulation off, sourceB657/native69af. Math/grader unchanged from prior plan; caps220total/1200s.",
           "expected_outcomes": "Bounded invalid-text/caret/A-only/pair/history/four-save/NewR0/no-op UndoRedo/same-process reopen/quit checks and unchanged 1e-8m saved grade. Root accepted002; failed001 and entry/Cancel-only calibration remain separate. No full coarse sewing/New/garment/reference acceptance."
+        },
+        {
+          "id": "NATIVE-INTERNAL-ANNOTATIONS-A003",
+          "path": "parity/reports/artifacts/internal-annotations-20261115/native-protocol/v2-prospective-only/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/internal-annotations-20261115/native-protocol/v2-prospective-only/EXPECTATIONS.json": "4cf6cc79c0da2045e9ffeaedbe8732711ed957c54bceeb5b425848c5079702e2"
+          },
+          "initial_conditions": "Original fresh empty native launch; ad7/source65/nativea733, no preauthored launch input. Prospective v2 A protocol; B\u2013E outside report coverage.",
+          "expected_outcomes": "Bounded unit-square/straight-line/refusal/modal/caret/one compound edit/history/six native v4 saves/quit. Root accepted A003 only; caps175+1/1200 and one frozen saved grade. No New/Recover/restart/full automation/reference credit."
         }
       ],
       "comparison_criteria": {
@@ -6661,6 +6673,34 @@
             "parity/reports/artifacts/physical-length-sewing-20261115/source-reviews/REVIEW.md": "f608bb40807d28a3e0a2406b50e2578c6c1d2d1b79d0601ad99176aa5253003d"
           },
           "path": "parity/reports/WF-20261115-PHYSICAL-LENGTH-SEWING-001.json"
+        },
+        {
+          "id": "WF-20261115-INTERNAL-ANNOTATIONS-001",
+          "commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+          "timestamp": "2026-11-15T22:36:27.021097Z",
+          "platform": "macOS27.2 arm64; Rust1.94.1; immutable CLI/native debug identities; independent CPython3.13 saved-record consumers where declared",
+          "artifact_hashes": {
+            "parity/reports/artifacts/internal-annotations-20261115/ARTIFACT-INVENTORY-001.json": "17bd0bdd5e039ccc14b5c19164b3ba4787fa9019c859377744f10e59accd939e",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION.json": "33d9010743fb4041d0787e98714d7ce9c0cab624f026a7efd6bb52c04d7fece0",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-METADATA-001.json": "59c59ef1da8cb6e3e6e3bd46b7403203ea81da96a1575fdc4b44dadc667336b0",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-SOURCE-GUARD.json": "9df3e001f02be3c0451e7decbc6228dbcf7a16238f04b8be2039e51974d3234c",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-APPENDIX-001.json": "d4e7b6fedbf0376bb7be3b9b4c1921d20da6591ec1b57193a73e51d49204b001",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-APPENDIX-002.json": "704b2410ad43befd78188599d52811dee69357a2f9b198b752520c4e9ec5a6db",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-APPENDIX-003.json": "d948fe3fdd417bcdc441e45bde3fefdd208abdea30804e83583863e0879b5eab",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-CHECKS-001.json": "b9695dbdc913551c44e16a94c3605f25b24ec63eb324c4386300a991dc137980",
+            "parity/reports/artifacts/internal-annotations-20261115/SOURCE-GUARD.json": "00f93fd57b545b48ec25635020977009ff0fae75018723de2542ab42ceb20b69",
+            "parity/reports/artifacts/internal-annotations-20261115/SYMLINK-NODES.json": "26a540099cf607845023eca2028007dfc233806324e3284f109e362afb383fe8",
+            "parity/reports/artifacts/internal-annotations-20261115/native/ROOT-ACCEPTANCE-A003.json": "34727612d46311e10abfadf72a3890e82578f29c058d134a948637b6f1615fa6",
+            "parity/reports/artifacts/internal-annotations-20261115/native/A003/SAVED-GRADE-001.json": "bcbad234d7034694917836dd4a29bf0839022bfd47264a16502bb4815c9f2e0a",
+            "parity/reports/artifacts/internal-annotations-20261115/path-redacted/native/A003/SAVED-GRADE-001-INVOCATION.json": "046800420b6aba7b471c51babc35f8b203f21e6a508c1bd058d36e9d8f717715",
+            "parity/reports/artifacts/internal-annotations-20261115/path-redacted/build-core/integrated-ad7cc8b-20261115T2004Z-manifest.json": "c8d3ade13a4af0a5e9a2eb0f5c7e242d798e5208ff9b45ff83929af41d104dad",
+            "parity/reports/artifacts/internal-annotations-20261115/final-verify/clean-db8ee77-verify-001/CHECKS.json": "647fe7b66c1247595a280baedfa8d11c20f6976c97b6207958976e4a844de8d4",
+            "parity/reports/artifacts/internal-annotations-20261115/headless/v2/run-001-ad7cc8b/RESULT.json": "30f5958441e6dfb620ce06f3f7c59445a166a54926025259b9281582b7588e47",
+            "parity/reports/artifacts/internal-annotations-20261115/headless/v2/run-001-ad7cc8b/SUMMARY.json": "2cda141d397622df3e6db7aad6648b7d650857b15debdaa39820b730d72481a8",
+            "parity/reports/artifacts/internal-annotations-20261115/native/A003/snapshots/A00-empty.weftforge": "710697e3a4fc5287c315e6e906ed15046b969aa3b9d2cc09a604ba6d579d9555",
+            "parity/reports/artifacts/internal-annotations-20261115/native/A003/snapshots/A05-redo.weftforge": "45c15e1c8c17ada10b9ff4aff45de22564e09091c63462e61c588f57d28877fd"
+          },
+          "path": "parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json"
         }
       ],
       "known_gaps": [
@@ -6669,7 +6709,9 @@
         "Separate frozen7fe A/B exports now match headless baselines; full trace remains incomplete at Save18, and A29 strain plus9\u201311mm surface contact fail. No garment gate or reference parity.",
         "One-piece rigid 2D layout transforms preserve arranged rest surface/world grain via compensated placement, with atomic numeric/drag routes. This is an engineering policy; reference pivot/handles/3D/grain semantics remain unobserved. Mirroring, multiselection, pivot dragging and locks remain later work; derived mesh/cloth is rebuilt.",
         "Historical DD implementation-only checks pass 235 Rust/54 Python and the unchanged 93-case core/CLI evaluator. Root accepts bounded native A4 (121 pairs/542.54376275 s); frozen B stops after one documented drag at R40 rather than R41, with no rotation/Save and missing outputs. Overall A/B plan is failed/unverified; cause unknown, no complete feature or reference credit.",
-        "B657 passed the original 50-observation authored headless scope and root-accepted bounded physical sewing002 (162 total calls/748.816649s). First A stays transient; one physical group/history, four saves, clean NewR0/no-op UndoRedo and same-process reopen are observed. The coarse contract remains partial/not_run; no complete sewing/New/garment/physics/reference credit. DD Transform B remains unresolved and its old report stale."
+        "Historical B657 passed the original 50-observation authored headless scope and root-accepted bounded physical sewing002 (162 total calls/748.816649s). First A stays transient; one physical group/history, four saves, clean NewR0/no-op UndoRedo and same-process reopen are observed. The coarse contract remains partial/not_run; no complete sewing/New/garment/physics/reference credit. DD Transform B remains unresolved and its old report stale.",
+        "The B657 physical-sewing report is stale on the changed ad7 internal-segment runtime. Its original bounded pass and failed001 remain intact; At the earlier db8 metadata checkpoint, private unpublished internal checks supplied no current native, full-contract or reference acceptance; current bounded A003 attribution is separate.",
+        "Ad7 passes the original 86-observation/434-pair headless scope and root-accepted native A003 only (142 operations + one summary; conservative 641.657843875 s upper bound). A observes empty launch, one straight annotation, invalid/modal/caret retention, one compound edit, history and six v4 saves. B\u2013E/full annotation remain outside this packet; no native New/Recover, process restart, full automation, cuts/holes, physics or reference completion. Coarse feature remains partial/not_run; old failures and stale reports keep their original outcomes."
       ],
       "contradictions": [],
       "blockers": [
@@ -10650,7 +10692,11 @@
       "evidence_ids": [
         "spec/features/PAT-007-line-length-runtime-20261115.md",
         "spec/observations/REF-UI-LENGTH-OBSERVATION-20261115.json",
-        "parity/reports/WF-20261115-AUTHORED-LENGTH-001.json"
+        "parity/reports/WF-20261115-AUTHORED-LENGTH-001.json",
+        "spec/features/PAT-006-internal-segments.md",
+        "parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json",
+        "parity/reports/artifacts/internal-annotations-20261115/README.md",
+        "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-METADATA-001.json"
       ],
       "scenarios": [
         {
@@ -10670,6 +10716,15 @@
           },
           "initial_conditions": "Original native-v3 revision137; two pieces, one legacy seam and one ordered group; no simulation. Frozen independent analytic primitive and tolerances before execution.",
           "expected_outcomes": "1e-8m lengths,2e-8m independent B\u2212A; exact SI/revision/query echo and CLI/MCP structured/text equality; strict errors and unchanged primary/recovery/unrelated bytes."
+        },
+        {
+          "id": "NATIVE-INTERNAL-ANNOTATIONS-A003",
+          "path": "parity/reports/artifacts/internal-annotations-20261115/native-protocol/v2-prospective-only/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/internal-annotations-20261115/native-protocol/v2-prospective-only/EXPECTATIONS.json": "4cf6cc79c0da2045e9ffeaedbe8732711ed957c54bceeb5b425848c5079702e2"
+          },
+          "initial_conditions": "Original fresh empty native launch; ad7/source65/nativea733, no preauthored launch input. Prospective v2 A protocol; B\u2013E outside report coverage.",
+          "expected_outcomes": "Bounded unit-square/straight-line/refusal/modal/caret/one compound edit/history/six native v4 saves/quit. Root accepted A003 only; caps175+1/1200 and one frozen saved grade. No New/Recover/restart/full automation/reference credit."
         }
       ],
       "comparison_criteria": {
@@ -10688,7 +10743,12 @@
         "crates/weftforge-core/src/geometry.rs",
         "apps/weftforge/src/main.rs",
         "apps/weftforge-cli/src/main.rs",
-        "apps/weftforge-cli/src/mcp.rs"
+        "apps/weftforge-cli/src/mcp.rs",
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/persistence.rs",
+        "crates/weftforge-core/tests/internal_lines.rs",
+        "crates/weftforge-core/tests/migration.rs",
+        "apps/weftforge-cli/tests/mcp_stdio.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3"
@@ -10757,20 +10817,51 @@
             "parity/reports/artifacts/authored-length-20261115/native-002/recorder.cjs": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc"
           },
           "path": "parity/reports/WF-20261115-AUTHORED-LENGTH-001.json"
+        },
+        {
+          "id": "WF-20261115-INTERNAL-ANNOTATIONS-001",
+          "commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+          "timestamp": "2026-11-15T22:36:27.021097Z",
+          "platform": "macOS27.2 arm64; Rust1.94.1; immutable CLI/native debug identities; independent CPython3.13 saved-record consumers where declared",
+          "artifact_hashes": {
+            "parity/reports/artifacts/internal-annotations-20261115/ARTIFACT-INVENTORY-001.json": "17bd0bdd5e039ccc14b5c19164b3ba4787fa9019c859377744f10e59accd939e",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION.json": "33d9010743fb4041d0787e98714d7ce9c0cab624f026a7efd6bb52c04d7fece0",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-METADATA-001.json": "59c59ef1da8cb6e3e6e3bd46b7403203ea81da96a1575fdc4b44dadc667336b0",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-SOURCE-GUARD.json": "9df3e001f02be3c0451e7decbc6228dbcf7a16238f04b8be2039e51974d3234c",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-APPENDIX-001.json": "d4e7b6fedbf0376bb7be3b9b4c1921d20da6591ec1b57193a73e51d49204b001",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-APPENDIX-002.json": "704b2410ad43befd78188599d52811dee69357a2f9b198b752520c4e9ec5a6db",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-APPENDIX-003.json": "d948fe3fdd417bcdc441e45bde3fefdd208abdea30804e83583863e0879b5eab",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-CHECKS-001.json": "b9695dbdc913551c44e16a94c3605f25b24ec63eb324c4386300a991dc137980",
+            "parity/reports/artifacts/internal-annotations-20261115/SOURCE-GUARD.json": "00f93fd57b545b48ec25635020977009ff0fae75018723de2542ab42ceb20b69",
+            "parity/reports/artifacts/internal-annotations-20261115/SYMLINK-NODES.json": "26a540099cf607845023eca2028007dfc233806324e3284f109e362afb383fe8",
+            "parity/reports/artifacts/internal-annotations-20261115/native/ROOT-ACCEPTANCE-A003.json": "34727612d46311e10abfadf72a3890e82578f29c058d134a948637b6f1615fa6",
+            "parity/reports/artifacts/internal-annotations-20261115/native/A003/SAVED-GRADE-001.json": "bcbad234d7034694917836dd4a29bf0839022bfd47264a16502bb4815c9f2e0a",
+            "parity/reports/artifacts/internal-annotations-20261115/path-redacted/native/A003/SAVED-GRADE-001-INVOCATION.json": "046800420b6aba7b471c51babc35f8b203f21e6a508c1bd058d36e9d8f717715",
+            "parity/reports/artifacts/internal-annotations-20261115/path-redacted/build-core/integrated-ad7cc8b-20261115T2004Z-manifest.json": "c8d3ade13a4af0a5e9a2eb0f5c7e242d798e5208ff9b45ff83929af41d104dad",
+            "parity/reports/artifacts/internal-annotations-20261115/final-verify/clean-db8ee77-verify-001/CHECKS.json": "647fe7b66c1247595a280baedfa8d11c20f6976c97b6207958976e4a844de8d4",
+            "parity/reports/artifacts/internal-annotations-20261115/headless/v2/run-001-ad7cc8b/RESULT.json": "30f5958441e6dfb620ce06f3f7c59445a166a54926025259b9281582b7588e47",
+            "parity/reports/artifacts/internal-annotations-20261115/headless/v2/run-001-ad7cc8b/SUMMARY.json": "2cda141d397622df3e6db7aad6648b7d650857b15debdaa39820b730d72481a8",
+            "parity/reports/artifacts/internal-annotations-20261115/native/A003/snapshots/A00-empty.weftforge": "710697e3a4fc5287c315e6e906ed15046b969aa3b9d2cc09a604ba6d579d9555",
+            "parity/reports/artifacts/internal-annotations-20261115/native/A003/snapshots/A05-redo.weftforge": "45c15e1c8c17ada10b9ff4aff45de22564e09091c63462e61c588f57d28877fd"
+          },
+          "path": "parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "The candidate adds applied selected-boundary length and raw seam/group A/B plus signed B\u2212A feedback. Arbitrary interval query is available through CLI/MCP; persistent measurements, angles, perimeters and complete native/reference behavior remain unverified.",
-        "A bounded reference canvas toggle labels unselected boundaries in literal mm with one fractional digit; Select All separately retains aggregate selected-line readouts. Our three-decimal selected-inspector readout is a different partial presentation. Exact arc/rounding/angle, general aggregation and complete measurement behavior remain unknown/unimplemented."
+        "A bounded reference canvas toggle labels unselected boundaries in literal mm with one fractional digit; Select All separately retains aggregate selected-line readouts. Our three-decimal selected-inspector readout is a different partial presentation. Exact arc/rounding/angle, general aggregation and complete measurement behavior remain unknown/unimplemented.",
+        "Ad7 implements bounded straight editable internal annotations owned by a piece, two-point and precise endpoint authoring, shared-command history, applied lengths and strict v4 persistence. The approved PAT-006-internal-segments contract is engineering policy for this annotation subset; it does not establish cuts/holes or reference behavior. Internal cubics and shapes, names/notches, persistent measurements/constraints, internal sewing/folds and topological cuts remain open. The bounded headless/A003 engineering report is current; native B\u2013E and full annotation/reference contracts remain required outside its scope.",
+        "Ad7 passes the original 86-observation/434-pair headless scope and root-accepted native A003 only (142 operations + one summary; conservative 641.657843875 s upper bound). A observes empty launch, one straight annotation, invalid/modal/caret retention, one compound edit, history and six v4 saves. B\u2013E/full annotation remain outside this packet; no native New/Recover, process restart, full automation, cuts/holes, physics or reference completion. Coarse feature remains partial/not_run; old failures and stale reports keep their original outcomes."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
-        "spec/features/PAT-007-authored-length-feedback.md": "4f79150ed28854b8a16760af07b1558808dcca2080bc1ee8e114d5b2682f851c"
+        "spec/features/PAT-007-authored-length-feedback.md": "4f79150ed28854b8a16760af07b1558808dcca2080bc1ee8e114d5b2682f851c",
+        "spec/features/PAT-006-internal-segments.md": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66"
       }
     },
     {
@@ -14646,13 +14737,14 @@
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "Ordered partial/reversed/disconnected groups, native creation/edit/history/reopen and shared-Editor relationships have bounded implementation acceptance. Full free canvas/internal sewing, native cubic precise editing, reference group behavior and physical gathering remain required. Reference constructor/input noncompletion is retained in the dated runtime notes.",
-        "B657 passed the original 50-observation authored headless scope and root-accepted bounded physical sewing002 (162 total calls/748.816649s). First A stays transient; one physical group/history, four saves, clean NewR0/no-op UndoRedo and same-process reopen are observed. The coarse contract remains partial/not_run; no complete sewing/New/garment/physics/reference credit. DD Transform B remains unresolved and its old report stale."
+        "Historical B657 passed the original 50-observation authored headless scope and root-accepted bounded physical sewing002 (162 total calls/748.816649s). First A stays transient; one physical group/history, four saves, clean NewR0/no-op UndoRedo and same-process reopen are observed. The coarse contract remains partial/not_run; no complete sewing/New/garment/physics/reference credit. DD Transform B remains unresolved and its old report stale.",
+        "The B657 physical-sewing report is stale on the changed ad7 internal-segment runtime. Its original bounded pass and failed001 remain intact; At the earlier db8 metadata checkpoint, private unpublished internal checks supplied no current native, full-contract or reference acceptance; current bounded A003 attribution is separate."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "current",
+      "freshness": "stale",
       "contract_documents": {
         "spec/features/SEW-002-ordered-paths.md": "9baedd713b5a8dd4f251d7f2c5d0c51b408ecdabb32813a07dae06d25dcae960",
         "spec/features/SEW-002-physical-length.md": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2"
@@ -20298,7 +20390,11 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "parity/reports/WF-20261115-HARBOR-HALF-STEP-001.json",
+        "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/README.md",
+        "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/PUBLICATION-METADATA-001.json"
+      ],
       "scenarios": [
         {
           "id": "FABRIC-REFINE-001",
@@ -20326,6 +20422,15 @@
           "initial_conditions": "Unchanged original grain-shirt construction, fresh arranged state and zero velocities; 8 substeps/32 iterations, dt1/60s, closure1m/s; ground/self/avatar contact enabled. Two separately preregistered diagnostic branches retain the same cloth inputs.",
           "expected_outcomes": "Retain original 15percent-strain/5mm-seam/2mm-supported-contact/finite/closed-assembly quality screen and every trajectory/failure. Compare an exact shared assembly prefix and fixed zero-G continuation. Mannequin omission is a counterfactual with quality null, never a replacement acceptance scene. Full force equilibrium/convergence require separate evidence.",
           "path": "parity/scenarios/SIM-BALANCE-001.json"
+        },
+        {
+          "id": "HARBOR-A16X32-DIAGNOSTIC-001",
+          "path": "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/path-redacted/preparation002-closed/PROTOCOL.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/preparation002-closed/inputs/base.weftforge": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+          },
+          "initial_conditions": "One A16\u00d732 attempt against retained A8\u00d732 control; exact physical rest/masses/inputs, currentad7 core and pinned unchanged driver; corrected freeze/GO,420s cap.",
+          "expected_outcomes": "Complete181-state/180-step analysis with unchanged15%/5mm/2mm/finite/uncertainty screens. Quality FAILED at29\u201330; both path-sensitivity triggers true. No convergence, sufficient fix, new defaults or native/reference credit."
         }
       ],
       "comparison_criteria": {
@@ -20624,19 +20729,40 @@
             "parity/scenarios/SIM-BALANCE-001.json": "8c834e5f9b47a8f6a2c16ff7b4223aef8bffb58b32dde597028a6b8a7285f4b0"
           },
           "path": "parity/reports/WF-20261114-PHYSICS-BALANCE-001.json"
+        },
+        {
+          "id": "WF-20261115-HARBOR-HALF-STEP-001",
+          "commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+          "timestamp": "2026-11-15T22:36:28.562503Z",
+          "platform": "macOS27.2 arm64; Rust1.94.1 pinned release diagnostic driver; independent CPython3.13.0 saved-record consumers. No native GUI or CLI execution in this diagnostic.",
+          "artifact_hashes": {
+            "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/ARTIFACT-INVENTORY-001.json": "d3dce4aab8c449d0b5f2b3059146f41bce006e24529446e51f703fa24e44e3b7",
+            "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/PUBLICATION.json": "d41fd2594bc7da10aa7dd1fc3086a1a8866bf2d735dc9c493dab0179a64cf9db",
+            "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/PUBLICATION-METADATA-001.json": "e43368738eddbb7a91e239079c86afd8eca4982941d6573ebc33450174258cdd",
+            "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/PUBLICATION-SOURCE-GUARD.json": "188403852faef0ef3c70549dc44d314c24e688379e715b6539c0f7c9622b5450",
+            "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/PUBLICATION-CHECKS-001.json": "d9dc232a66be8cfd03de6aa06a0226bb37552f1a0548e36bee1d21c17aa2fc01",
+            "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/path-redacted/preparation002-closed/runtime/FINAL.json": "7ab1f265a21b76954efe98f76d15c3d2982f2ef5c23061ce23dbe56c6e1431b0",
+            "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/path-redacted/preparation002-closed/FREEZE.json": "7f8d19aee066ff58328d29b81ec1ff02b4a72943e658b95a7ebc26a8f0dbcf26",
+            "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/preparation002-closed/ROOT-GO.json": "c76dfd8dde1565dee566821d06c930e75e4391bf22264b55e5e5a2e19e7d5181",
+            "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/reviews/closed-run001/REVIEW.md": "f194f5fb0704c5bc09b3ca5f0863d6c9ef52446e27e0951aac8a827737de707b",
+            "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/path-redacted/preparation002-closed/runtime/consumer-receipt.json": "d3d2c4e6d0d1ccb83501f28575a59a2473f5c4a0916813c5b046571e994504d9",
+            "parity/reports/artifacts/physics-path-sensitivity-a16-20261115/preparation002-closed/runs/base/comparison.json": "8246483986fcf8a41e18db3898bc7d756a21dd39b6ff428b0be0adcc8aff5984"
+          },
+          "path": "parity/reports/WF-20261115-HARBOR-HALF-STEP-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
         "Native anisotropic shirt: strain0.26930346 >0.15; seam5.55e-6m and avatar/ground error0 pass. No tolerance or material substitution was made.",
         "Full-path e342471 refinement retains failed strain screens:26.9303%control,27.1686%8/64,26.6987%16/32 at3s. At1s beforegravity,16/32 differs by0.005777 strain and11.087mm nodal displacement. No equilibrium/calibration/convergence conclusion is established.",
-        "Current3eddef original control fails unchanged strain screen:24.1185%after1s assembly,32.3519%after3s. Fixed zero-G continuation reaches32.1699%and still evolves. No-avatar probe is causal only, quality null; full force balance/convergence/calibration remain unknown."
+        "Current3eddef original control fails unchanged strain screen:24.1185%after1s assembly,32.3519%after3s. Fixed zero-G continuation reaches32.1699%and still evolves. No-avatar probe is causal only, quality null; full force balance/convergence/calibration remain unknown.",
+        "Current ad7 A16\u00d732 diagnostic remains failed: peak 0.1654700550371433 at frame 29/front piece 2/warp/triangle 79, strain failures 29\u201330; both frozen path-sensitivity triggers fire. Exact control rest/physical inputs and all 181 states hold, but no convergence, calibrated default, sufficient fix, native/reference or full garment acceptance follows. Historical A8/pair remain failed; controller exit 0 is parent-observed and its terminal copy explicitly retrospective."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale"
+      "freshness": "current"
     },
     {
       "id": "SIM-007",
@@ -25997,7 +26123,10 @@
         "parity/reports/WF-20261115-PHYSICAL-LENGTH-SEWING-001.json",
         "parity/reports/artifacts/physical-length-sewing-20261115/README.md",
         "parity/reports/artifacts/physical-length-sewing-20261115/PUBLICATION.json",
-        "parity/reports/artifacts/physical-length-sewing-20261115/SYMLINK-NODES.json"
+        "parity/reports/artifacts/physical-length-sewing-20261115/SYMLINK-NODES.json",
+        "parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json",
+        "parity/reports/artifacts/internal-annotations-20261115/README.md",
+        "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-METADATA-001.json"
       ],
       "scenarios": [
         {
@@ -26094,6 +26223,15 @@
           },
           "initial_conditions": "Prospectively frozen v3 tooling plan; original analytic R41/next20/2panels, no group and simulation off, sourceB657/native69af. Math/grader unchanged from prior plan; caps220total/1200s.",
           "expected_outcomes": "Bounded invalid-text/caret/A-only/pair/history/four-save/NewR0/no-op UndoRedo/same-process reopen/quit checks and unchanged 1e-8m saved grade. Root accepted002; failed001 and entry/Cancel-only calibration remain separate. No full coarse sewing/New/garment/reference acceptance."
+        },
+        {
+          "id": "NATIVE-INTERNAL-ANNOTATIONS-A003",
+          "path": "parity/reports/artifacts/internal-annotations-20261115/native-protocol/v2-prospective-only/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/internal-annotations-20261115/native-protocol/v2-prospective-only/EXPECTATIONS.json": "4cf6cc79c0da2045e9ffeaedbe8732711ed957c54bceeb5b425848c5079702e2"
+          },
+          "initial_conditions": "Original fresh empty native launch; ad7/source65/nativea733, no preauthored launch input. Prospective v2 A protocol; B\u2013E outside report coverage.",
+          "expected_outcomes": "Bounded unit-square/straight-line/refusal/modal/caret/one compound edit/history/six native v4 saves/quit. Root accepted A003 only; caps175+1/1200 and one frozen saved grade. No New/Recover/restart/full automation/reference credit."
         }
       ],
       "comparison_criteria": {
@@ -31249,6 +31387,34 @@
             "parity/reports/artifacts/physical-length-sewing-20261115/source-reviews/REVIEW.md": "f608bb40807d28a3e0a2406b50e2578c6c1d2d1b79d0601ad99176aa5253003d"
           },
           "path": "parity/reports/WF-20261115-PHYSICAL-LENGTH-SEWING-001.json"
+        },
+        {
+          "id": "WF-20261115-INTERNAL-ANNOTATIONS-001",
+          "commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+          "timestamp": "2026-11-15T22:36:27.021097Z",
+          "platform": "macOS27.2 arm64; Rust1.94.1; immutable CLI/native debug identities; independent CPython3.13 saved-record consumers where declared",
+          "artifact_hashes": {
+            "parity/reports/artifacts/internal-annotations-20261115/ARTIFACT-INVENTORY-001.json": "17bd0bdd5e039ccc14b5c19164b3ba4787fa9019c859377744f10e59accd939e",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION.json": "33d9010743fb4041d0787e98714d7ce9c0cab624f026a7efd6bb52c04d7fece0",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-METADATA-001.json": "59c59ef1da8cb6e3e6e3bd46b7403203ea81da96a1575fdc4b44dadc667336b0",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-SOURCE-GUARD.json": "9df3e001f02be3c0451e7decbc6228dbcf7a16238f04b8be2039e51974d3234c",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-APPENDIX-001.json": "d4e7b6fedbf0376bb7be3b9b4c1921d20da6591ec1b57193a73e51d49204b001",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-APPENDIX-002.json": "704b2410ad43befd78188599d52811dee69357a2f9b198b752520c4e9ec5a6db",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-APPENDIX-003.json": "d948fe3fdd417bcdc441e45bde3fefdd208abdea30804e83583863e0879b5eab",
+            "parity/reports/artifacts/internal-annotations-20261115/PUBLICATION-CHECKS-001.json": "b9695dbdc913551c44e16a94c3605f25b24ec63eb324c4386300a991dc137980",
+            "parity/reports/artifacts/internal-annotations-20261115/SOURCE-GUARD.json": "00f93fd57b545b48ec25635020977009ff0fae75018723de2542ab42ceb20b69",
+            "parity/reports/artifacts/internal-annotations-20261115/SYMLINK-NODES.json": "26a540099cf607845023eca2028007dfc233806324e3284f109e362afb383fe8",
+            "parity/reports/artifacts/internal-annotations-20261115/native/ROOT-ACCEPTANCE-A003.json": "34727612d46311e10abfadf72a3890e82578f29c058d134a948637b6f1615fa6",
+            "parity/reports/artifacts/internal-annotations-20261115/native/A003/SAVED-GRADE-001.json": "bcbad234d7034694917836dd4a29bf0839022bfd47264a16502bb4815c9f2e0a",
+            "parity/reports/artifacts/internal-annotations-20261115/path-redacted/native/A003/SAVED-GRADE-001-INVOCATION.json": "046800420b6aba7b471c51babc35f8b203f21e6a508c1bd058d36e9d8f717715",
+            "parity/reports/artifacts/internal-annotations-20261115/path-redacted/build-core/integrated-ad7cc8b-20261115T2004Z-manifest.json": "c8d3ade13a4af0a5e9a2eb0f5c7e242d798e5208ff9b45ff83929af41d104dad",
+            "parity/reports/artifacts/internal-annotations-20261115/final-verify/clean-db8ee77-verify-001/CHECKS.json": "647fe7b66c1247595a280baedfa8d11c20f6976c97b6207958976e4a844de8d4",
+            "parity/reports/artifacts/internal-annotations-20261115/headless/v2/run-001-ad7cc8b/RESULT.json": "30f5958441e6dfb620ce06f3f7c59445a166a54926025259b9281582b7588e47",
+            "parity/reports/artifacts/internal-annotations-20261115/headless/v2/run-001-ad7cc8b/SUMMARY.json": "2cda141d397622df3e6db7aad6648b7d650857b15debdaa39820b730d72481a8",
+            "parity/reports/artifacts/internal-annotations-20261115/native/A003/snapshots/A00-empty.weftforge": "710697e3a4fc5287c315e6e906ed15046b969aa3b9d2cc09a604ba6d579d9555",
+            "parity/reports/artifacts/internal-annotations-20261115/native/A003/snapshots/A05-redo.weftforge": "45c15e1c8c17ada10b9ff4aff45de22564e09091c63462e61c588f57d28877fd"
+          },
+          "path": "parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json"
         }
       ],
       "known_gaps": [
@@ -31259,7 +31425,10 @@
         "Source76be shares bounded DXF import across typed commands, CLI and current MCP; four full native-project JSON inspections now match exactly without an epsilon. Source5950 four inspection failures remain unchanged. Live GUI automation, persistent MCP history/jobs/cancellation and the full adapter/reference contract remain open.",
         "DD adds deferred File/search New Empty with staged-input/gesture/dirty refusal and clean document/worker reset. A4 observes bounded numeric/history/New/same-process reopen; broader New/recovery and full adapter/native/reference contracts remain open.",
         "Historical DD implementation-only checks pass 235 Rust/54 Python and the unchanged 93-case core/CLI evaluator. Root accepts bounded native A4 (121 pairs/542.54376275 s); frozen B stops after one documented drag at R40 rather than R41, with no rotation/Save and missing outputs. Overall A/B plan is failed/unverified; cause unknown, no complete feature or reference credit.",
-        "B657 passed the original 50-observation authored headless scope and root-accepted bounded physical sewing002 (162 total calls/748.816649s). First A stays transient; one physical group/history, four saves, clean NewR0/no-op UndoRedo and same-process reopen are observed. The coarse contract remains partial/not_run; no complete sewing/New/garment/physics/reference credit. DD Transform B remains unresolved and its old report stale."
+        "Historical B657 passed the original 50-observation authored headless scope and root-accepted bounded physical sewing002 (162 total calls/748.816649s). First A stays transient; one physical group/history, four saves, clean NewR0/no-op UndoRedo and same-process reopen are observed. The coarse contract remains partial/not_run; no complete sewing/New/garment/physics/reference credit. DD Transform B remains unresolved and its old report stale.",
+        "The B657 physical-sewing report is stale on the changed ad7 internal-segment runtime. Its original bounded pass and failed001 remain intact; At the earlier db8 metadata checkpoint, private unpublished internal checks supplied no current native, full-contract or reference acceptance; current bounded A003 attribution is separate.",
+        "Ad7 passes the original 86-observation/434-pair headless scope and root-accepted native A003 only (142 operations + one summary; conservative 641.657843875 s upper bound). A observes empty launch, one straight annotation, invalid/modal/caret retention, one compound edit, history and six v4 saves. B\u2013E/full annotation remain outside this packet; no native New/Recover, process restart, full automation, cuts/holes, physics or reference completion. Coarse feature remains partial/not_run; old failures and stale reports keep their original outcomes.",
+        "The new APP-001 attribution is limited to exercised shared-command/input/history adapters and A\u2019s empty launch. It adds no native New/Recover/full automation/restart acceptance."
       ],
       "contradictions": [],
       "blockers": [

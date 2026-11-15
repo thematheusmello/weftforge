@@ -1,0 +1,11 @@
+{
+  "status": "preserved_preparation_failure",
+  "native_or_candidate_executed": false,
+  "operation": "static Placement Default attribute check",
+  "error": "AssertionError at assumed derive attribute ordering",
+  "cause": "The real unchanged declaration lists Default last, not fourth",
+  "failed_script_copy": "revisions/review_final_source-002.py.txt",
+  "failed_script_sha256": "29d3a9783a7beac3cbd43239d4468320a00f55364cb8d3476503d54fb9195dab",
+  "effect": "No report/freeze written and no numeric expectations or source changed",
+  "correction": "Require exact observed byte-identical old/final Placement derive attributes including Default; make no order assumption"
+}

@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "purpose": "Additive source-only rechecks of later implementation candidates. The complete historical catalog map remains byte-identical; this addendum is neither a status registry nor a claim that all groups were re-reviewed at the new source.",
+  "purpose": "Additive source-only rechecks of later implementation candidates, explicitly repinned for owned straight internal annotations. The historical catalog map remains byte-identical; the previous B657 addendum is preserved by immutable provenance. This is neither a status registry nor a claim that every historical group was re-reviewed at this source.",
   "historical_map_commit": "af79f596f247cc48e709b818bb70a30d1b716580",
   "historical_map_sha256": "9323eb803af6d07d6178fd6e808fd61f87e5da71e3b07ab4b279b3141b11c8ec",
   "historical_source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
-  "source_commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+  "source_commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
   "source_pins": [
     {
       "commit": "af79f596f247cc48e709b818bb70a30d1b716580",
@@ -17,6 +17,10 @@
     {
       "commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
       "scope": "Later physical-length Free Sewing/retention candidate; source inspection here supplies no native acceptance."
+    },
+    {
+      "commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+      "scope": "Original straight internal-annotation, role-aware UI and strict-v4 candidate. Static mapping only; no source-test, product, native or reference execution is claimed."
     }
   ],
   "historical_invariants": {
@@ -27,6 +31,7 @@
   },
   "command_variants": [
     "AddEllipse",
+    "AddInternalSegment",
     "AddMaterial",
     "AddPolygon",
     "AddRectangle",
@@ -37,6 +42,7 @@
     "ImportSvgPatterns",
     "JoinCurve",
     "MovePoint",
+    "RemoveInternalCurve",
     "RemovePiece",
     "RemoveSeam",
     "RemoveSewingGroup",
@@ -56,6 +62,7 @@
   ],
   "schema_nontransaction_commands": [
     "add_ellipse",
+    "add_internal_segment",
     "add_material",
     "add_polygon",
     "add_rectangle",
@@ -66,6 +73,7 @@
     "import_svg_patterns",
     "join_curve",
     "move_point",
+    "remove_internal_curve",
     "remove_piece",
     "remove_seam",
     "remove_sewing_group",
@@ -93,7 +101,7 @@
     "project_export_obj",
     "project_export_dxf"
   ],
-  "command_boundary": "27 Rust variants = 26 nontransaction commands + the Transaction definition. The JSON command oneOf has 26; no transaction payload is advertised. execute accepts 1–1024 nontransaction commands and wraps them once. New Empty, view/session changes and read-only length queries add no authoring command. Counts describe this immutable API surface, never features completed.",
+  "command_boundary": "Current Rust defines 29 variants = 28 nontransaction commands plus Transaction(Vec<Command>). The JSON command oneOf advertises the 28 nontransaction commands; execute accepts 1–1024, rejects nested Transaction and wraps once. AddInternalSegment and RemoveInternalCurve are the two additions since the separately preserved B657 27/26/nine-tool review. Endpoint editing reuses MovePoint/Transaction, ownership inspection and authored length queries reuse existing routes, and no new CLI verb or MCP tool is added. New Empty and view/session changes add no authoring command. These API counts are never completed-feature counts; the original 22-command historical snapshot remains untouched.",
   "source_landmark_rechecks": [
     {
       "source_id": "snap",
@@ -117,7 +125,7 @@
   "source_rechecks": [
     {
       "group_id": "project-new",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -132,7 +140,7 @@
         "mcp"
       ],
       "current": {
-        "candidate_behavior": "File > New Empty and the New Empty command-search row queue the same post-inspector replacement action. A clean replacement creates Editor::default at revision 0 with no file path, selection, history or derived mesh/cloth, cancels the old worker and retains session view/snap settings. Dirty accepted work, pending or invalid numeric input, unfinished construction and an active autosave cause a retained-state refusal. This native session action is distinct from CLI new/MCP project_create file creation and adds no Command variant.",
+        "candidate_behavior": "File > New Empty and the New Empty command-search row queue the same post-inspector replacement action. A clean replacement creates Editor::default at revision 0 with no file path, selection, history or derived mesh/cloth, cancels the old worker and retains session view/snap settings. Dirty accepted work, pending or invalid numeric input, unfinished construction and an active autosave cause a retained-state refusal. This native session action is distinct from CLI new/MCP project_create file creation and adds no Command variant. Unfinished internal-line creation/endpoint state also blocks clean New Empty; successful replacement clears those revision/owner/target-bound previews.",
         "missing_functionality": [
           "Reference New Project/New Garment initial-state, discard/confirmation, option and session semantics remain unknown. Read actual native qualification only from the registry/reports at the reported revision.",
           "New Empty deliberately refuses replacement until edits/gestures are applied or cancelled and saved; no discard option or new shortcut is supplied."
@@ -142,32 +150,38 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn new_empty_button(",
-          "line": 941,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 994,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn new_empty(",
-          "line": 958,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 1011,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn new_empty_file_route_replaces_clean_document_and_retains_files_and_preferences",
-          "line": 10690,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 11334,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn new_empty_search_route_replaces_clean_document_and_retains_files_and_preferences",
-          "line": 10695,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 11339,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn internal_line_unfinished_creation_blocks_clean_new_and_escape_abandons_without_history",
+          "line": 15999,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
     {
       "group_id": "workspace-panels",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -183,7 +197,7 @@
         "ui_modal_tests"
       ],
       "current": {
-        "candidate_behavior": "The fixed native studio shell has File/Edit/View/Help menus, an icon tool rail, a context toolbar, document tab/revision, equal 2D Pattern and 3D Garment canvases, Properties with a Scene list, simulation transport and a status/message bar. The existing action/focus path protects numeric drafts while menus, tool choices and command search are used; authoring modals shield background input. Source layout and focus checks are implementation candidates only.",
+        "candidate_behavior": "The fixed native studio shell has File/Create 2D/Edit/View/Help menus, an icon tool rail, a context toolbar, document tab/revision, equal 2D Pattern and 3D Garment canvases, Properties with a Scene list, simulation transport and a status/message bar. The existing action/focus path protects numeric drafts while menus, tool choices and command search are used; authoring modals shield background input. Source layout and focus checks are implementation candidates only. The tool rail, Create 2D menu, search, Scene/Properties owner lists and precise endpoint modal now expose the original Internal line annotation route.",
         "missing_functionality": [
           "Docking, arbitrary panel/tab visibility, independent windows, asset/material/timeline browsers and full context/accessibility contracts remain open. Source layout assertions do not qualify an actual native window."
         ]
@@ -192,38 +206,50 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn menu_bar(",
-          "line": 1772,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 1871,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn tool_rail(",
-          "line": 1907,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2027,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn document_tab(",
-          "line": 1931,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2052,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn studio_workspace_keeps_creation_and_transport_visible",
-          "line": 5046,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 5690,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn studio_menus_and_tool_rail_preserve_numeric_drafts_text_and_caret",
-          "line": 5158,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 5802,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn internal_line_window(",
+          "line": 3194,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn selected_internal_curve(",
+          "line": 3028,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
     {
       "group_id": "workspace-layout",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -237,14 +263,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn studio_workspace_keeps_creation_and_transport_visible",
-          "line": 5046,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 5690,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
     {
       "group_id": "appearance-preferences",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -260,20 +286,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn studio_style(",
-          "line": 4927,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 5571,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn tool_button(",
-          "line": 4425,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 5056,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
     {
       "group_id": "help-resources",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -281,20 +307,26 @@
         "ui_shortcuts"
       ],
       "current": {
-        "candidate_behavior": "The native Help menu supplies static original interaction guidance for 2D pan/zoom/snap, whole-piece transform policy, 3D navigation, play/pause and construction confirmation/cancellation. This is discoverable local guidance, with no complete documentation browser, locale routing or community/release-link model."
+        "candidate_behavior": "The native Help menu supplies static original interaction guidance for 2D pan/zoom/snap, whole-piece transform policy, 3D navigation, play/pause and construction confirmation/cancellation. This is discoverable local guidance, with no complete documentation browser, locale routing or community/release-link model. Help also explains owner-first internal-line creation and the omission of annotations from SVG/DXF/OBJ exports."
       },
       "source_anchors": [
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn menu_bar(",
-          "line": 1772,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 1871,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "Internal line: select an owner, then click start/end or enter precise endpoints.",
+          "line": 1950,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
     {
       "group_id": "selection",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -307,7 +339,7 @@
         "ui_field_state"
       ],
       "current": {
-        "candidate_behavior": "A piece and boundary selection connect 2D, 3D picking, Scene rows and Properties. Transform mode refuses a cross-piece selection while the current inspector has staged commands or incomplete/nonfinite numeric text; it retains selection, text/caret and history. Normal clean selection still proceeds. This is an original one-piece rule, not observed reference selection semantics.",
+        "candidate_behavior": "One selected owner piece and selected curve connect 2D, Scene/Properties and existing 3D piece picking. The selected curve can now be an exterior boundary or an owned straight annotation; separate selected_internal_curve/selected_boundary_curve helpers retain the role. Select draws/picks both open endpoints, and internal endpoint drags capture the selected annotation so coincident coordinates do not choose an unrelated earlier line. Cross-piece selection while Transform/Internal line or an internal selection has staged commands/incomplete numeric text refuses and retains text/caret/history through the house selection guard. Sewing/free-sewing/ordered groups and Transform handles continue to use boundary-only picking. This is original one-piece policy, not observed reference selection semantics.",
         "missing_functionality": [
           "Multi-object/subobject selection, select-all/invert/sewn traversal, modifier rules and 3D manipulation gizmos remain open."
         ]
@@ -316,26 +348,50 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn select(",
-          "line": 1024,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 1078,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_cross_piece_refusal_retains_staged_or_invalid_raw_text_caret_and_redo",
-          "line": 13981,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 14629,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_scene_row_selection_preserves_staged_and_raw_edits_through_real_ui_actions",
-          "line": 14039,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 14687,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn select_curve(",
+          "line": 1109,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn selected_boundary_curve(",
+          "line": 3035,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn internal_line_review_coincident_endpoints_drag_only_the_selected_later_annotation",
+          "line": 16384,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn internal_line_cross_piece_selection_and_incomplete_source_text_are_retained",
+          "line": 15900,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
     {
       "group_id": "ellipse",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -350,7 +406,7 @@
         "mcp_tests"
       ],
       "current": {
-        "candidate_behavior": "AddEllipse creates four editable cubic boundary spans with stable authored points/curves from a name, origin and SI width/height. Properties > Add ellipse and command search use the same shared command, combined with pending inspector edits as one transaction. CLI ellipse and CLI/MCP command arrays expose the same construction; this bounded cubic representation is not an exact analytic conic or a new persistent ellipse primitive.",
+        "candidate_behavior": "AddEllipse creates four editable cubic boundary spans with stable authored points/curves from a name, origin and SI width/height. Properties > Add ellipse and command search use the same shared command, combined with pending inspector edits as one transaction. CLI ellipse and CLI/MCP command arrays expose the same construction; this bounded cubic representation is not an exact analytic conic or a new persistent ellipse primitive. Current creation initializes an empty internal ownership list under strict v4; this does not add an internal ellipse or persistent analytic conic.",
         "missing_functionality": [
           "Reference ellipse gestures, modifiers, constructors/defaults/limits and exact semantic equivalence remain unqualified; no dedicated ellipse tool mode or internal ellipse is implemented."
         ],
@@ -363,32 +419,32 @@
         {
           "path": "crates/weftforge-core/src/document.rs",
           "anchor": "Command::AddEllipse {",
-          "line": 763,
-          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+          "line": 796,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn add_ellipse(",
-          "line": 830,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 880,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "crates/weftforge-core/tests/ellipse.rs",
           "anchor": "fn ellipse_has_declared_controls_ids_bounds_tangents_and_one_persistent_transaction",
           "line": 32,
-          "sha256": "55e68e3a529d2ffe49412d8a225683e0d3478f8f380130925ad66d0f93a74cda"
+          "sha256": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn ellipse_accessible_button_and_search_commit_once_and_preserve_failed_drafts",
-          "line": 7190,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 7834,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
     {
       "group_id": "pattern-transform-tool",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -407,7 +463,7 @@
         "mcp_schema"
       ],
       "current": {
-        "candidate_behavior": "TransformPiece performs one-piece rigid 2D translation/rotation about an explicit authored pivot, transforms endpoints and absolute cubic controls once, rotates grain and compensates the existing 3D placement to keep the arranged continuous surface and world warp fixed. IDs, boundary/sewing records and interval attachments remain authored; derived mesh/simulation are invalidated. Native Transform pattern rail/search routes expose a five-field SI modal plus boundary-translation/rotation-handle previews; a gesture combines pending inspector commands and the transform in one transaction. CLI execute/MCP project_execute reuse the shared command. ResizePiece retains its separate existing scaling behavior.",
+        "candidate_behavior": "TransformPiece performs one-piece rigid 2D translation/rotation about an explicit authored pivot, transforms endpoints and absolute cubic controls once, rotates grain and compensates the existing 3D placement to keep the arranged continuous surface and world warp fixed. IDs, boundary/sewing records and interval attachments remain authored; derived mesh/simulation are invalidated. Native Transform pattern rail/search routes expose a five-field SI modal plus boundary-translation/rotation-handle previews; a gesture combines pending inspector commands and the transform in one transaction. CLI execute/MCP project_execute reuse the shared command. ResizePiece retains its separate existing scaling behavior. Both owned endpoints of every straight internal annotation now participate in the same original-coordinate transform/resize traversal. Outer-only bounds still define the pivot/resize frame; annotation ownership/IDs remain, clearance is revalidated, and annotations do not become mesh/cloth constraints.",
         "missing_functionality": [
           "Scaling/mirroring, multiselection, pivot dragging, alignment, angle/axis locks and multi-turn gestures remain open. Reference transform behavior and numerical/gesture equivalence remain unknown.",
           "Pointer translation/rotation usability and any native evidence qualification must be read from current registry/reports; source tests do not qualify that route."
@@ -422,38 +478,50 @@
         {
           "path": "crates/weftforge-core/src/document.rs",
           "anchor": "Command::TransformPiece {",
-          "line": 1002,
-          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+          "line": 1088,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_window(",
-          "line": 2930,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 3360,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn apply_transform(",
-          "line": 2909,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 3339,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "crates/weftforge-core/tests/pattern_transform.rs",
           "anchor": "fn invalid_inputs_results_and_late_transactions_retain_every_history_branch",
           "line": 569,
-          "sha256": "0e6181a34a1fbe2ee51fc8fe6d1b6aec6efb6e61bc903624fd6e4c259af7f5b4"
+          "sha256": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_pointer_translation_and_rotation_capture_original_geometry_and_snap_once",
-          "line": 13484,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 14132,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "original.internal_curves.contains(&curve.id)",
+          "line": 1125,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn resize_rigid_transform_boundary_edits_and_owner_removal_keep_both_endpoints",
+          "line": 284,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
         }
       ]
     },
     {
       "group_id": "pattern-rotate",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -467,7 +535,7 @@
         "ui_properties"
       ],
       "current": {
-        "candidate_behavior": "The one-piece TransformPiece candidate exposes an explicit radians angle and authored U/V pivot in the native modal, plus a bounds-center rotation handle. Arrangement compensation and grain rotation are deliberate WeftForge layout policy. The source relationship does not establish aliases to the inventoried Rotate/Parallel/Axis commands.",
+        "candidate_behavior": "The one-piece TransformPiece candidate exposes an explicit radians angle and authored U/V pivot in the native modal, plus a bounds-center rotation handle. Arrangement compensation and grain rotation are deliberate WeftForge layout policy. The source relationship does not establish aliases to the inventoried Rotate/Parallel/Axis commands. The existing rigid rotation carries both annotation endpoints under the same arrangement/grain compensation; the pivot still derives from the exterior analytic bounds.",
         "missing_functionality": [
           "Reference rotate/axis/parallel-target entry routes, selection scope, angle snapping/locks, multi-turn gestures and broader relation/pivot behavior remain open."
         ],
@@ -480,20 +548,26 @@
         {
           "path": "crates/weftforge-core/src/document.rs",
           "anchor": "TransformPiece {",
-          "line": 1002,
-          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+          "line": 1088,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_window(",
-          "line": 2930,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 3360,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn resize_rigid_transform_boundary_edits_and_owner_removal_keep_both_endpoints",
+          "line": 284,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
         }
       ]
     },
     {
       "group_id": "grid-snap",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -505,7 +579,7 @@
         "ui_field_state"
       ],
       "current": {
-        "candidate_behavior": "The native toolbar offers visible session choices Off, 1 mm, 5 mm and 10 mm. PositionSnap applies independent f64 origin-centred coordinate rounding; a gesture captures its preference and Alt/Option bypass once. Existing point/rectangle/polygon positions use that rule, while transform translation snaps displacement. Numeric dimensions, sewing picks and curve controls are not position-snapped. The visual 0.1 m guide grid is separate, and no snap field is serialized.",
+        "candidate_behavior": "The native toolbar offers visible session choices Off, 1 mm, 5 mm and 10 mm. PositionSnap applies independent f64 origin-centred coordinate rounding; a gesture captures its preference and Alt/Option bypass once. Existing point/rectangle/polygon positions use that rule, while transform translation snaps displacement. Numeric dimensions, sewing picks and curve controls are not position-snapped. The visual 0.1 m guide grid is separate, and no snap field is serialized. Each click of the two-point Internal line tool captures its current position-snap/Alt rule; the precise start/end metre fields bypass snap.",
         "missing_functionality": [
           "Reference snap origin/ties/distance/modifier/persistence and preference/menu equivalence remain unknown. This original session control supplies no adaptive, tangent or smart-snap inference."
         ]
@@ -514,32 +588,38 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "enum PositionSnap {",
-          "line": 43,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 45,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn position_snap_control(",
-          "line": 2537,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2713,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule",
-          "line": 5595,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 6239,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn position_snapping_inline_choices_preserve_unfinished_numeric_text_and_caret",
-          "line": 5930,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 6574,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn internal_line_search_rail_and_snapped_two_click_creation_are_atomic",
+          "line": 15358,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
     {
       "group_id": "pattern-smart-snap",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -554,14 +634,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "enum PositionSnap {",
-          "line": 43,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 45,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
     {
       "group_id": "pattern-view-extents",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -582,20 +662,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn frame_patterns_button(",
-          "line": 2567,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2743,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn frame_patterns(",
-          "line": 2582,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2758,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
     {
       "group_id": "pattern-snapshot-print",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -616,10 +696,11 @@
         "mcp_tests"
       ],
       "current": {
-        "candidate_behavior": "Existing SVG and boundary-only R2000 DXF exports remain. Additive Import SVG/Import DXF File/search routes now choose a bounded source and show count, physical scale, origin/layout and omitted content before Import/Cancel. Shared ImportSvgPatterns/ImportDxfPatterns validate editable exterior lines/cubics and names with fresh IDs/default material/placement, then combine all pieces and pending inspector edits in one transaction. SVG requires explicit physical mm dimensions and uniform viewBox scale, mapping display Y to authored -Y; the strict DXF writer profile maps WCS X/Y to U/V without inversion. CLI import-svg/import-dxf, dedicated MCP file tools and command arrays reuse the same implementation. This FILE-005 engineering bucket does not invent a reference import catalog entry or equate import with printing.",
+        "candidate_behavior": "Existing SVG and boundary-only R2000 DXF exports remain. Additive Import SVG/Import DXF File/search routes now choose a bounded source and show count, physical scale, origin/layout and omitted content before Import/Cancel. Shared ImportSvgPatterns/ImportDxfPatterns validate editable exterior lines/cubics and names with fresh IDs/default material/placement, then combine all pieces and pending inspector edits in one transaction. SVG requires explicit physical mm dimensions and uniform viewBox scale, mapping display Y to authored -Y; the strict DXF writer profile maps WCS X/Y to U/V without inversion. CLI import-svg/import-dxf, dedicated MCP file tools and command arrays reuse the same implementation. This FILE-005 engineering bucket does not invent a reference import catalog entry or equate import with printing. Strict v4 native saving retains internal annotations, while SVG/DXF remain exterior-boundary-only and OBJ emits only rest/current cloth surfaces without annotation line primitives. Native export help/messages, CLI help and MCP descriptions explicitly disclose the omission. Bounded SVG/DXF imports initialize empty internal arrays; they do not import annotation roles.",
         "missing_functionality": [
           "General SVG/CAD compatibility, apparel conventions, internal features, sewing/material/arrangement round trip, calibrated printing, page tiling and reference semantics remain open.",
-          "Native save retains the primary on failed replacement under inherited guarantees; recovery may already have advanced to the prior valid primary. Primary and recovery are not one atomic two-file transaction. Actual chooser/modal/edit/history/reopen qualification comes only from registry/reports."
+          "Native save retains the primary on failed replacement under inherited guarantees; recovery may already have advanced to the prior valid primary. Primary and recovery are not one atomic two-file transaction. Actual chooser/modal/edit/history/reopen qualification comes only from registry/reports.",
+          "The annotation endpoint modal blocks background Save; ordinary native Save still commits a general inspector draft before chooser/IO. No global failed/cancelled-Save draft-atomicity result follows from this increment."
         ],
         "shared_commands": [
           "ImportSvgPatterns",
@@ -631,14 +712,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn choose_import(",
-          "line": 1315,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 1409,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn pattern_import_window(",
-          "line": 1359,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 1453,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "crates/weftforge-core/src/persistence/svg.rs",
@@ -655,14 +736,32 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn chooser_modal_import_commits_pending_edits_and_all_pieces_as_one_undo",
-          "line": 11551,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 12195,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "Exterior boundaries only; internal annotations stay in the native project.",
+          "line": 962,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "crates/weftforge-core/src/persistence.rs",
+          "anchor": "Exterior boundaries only; internal annotations are omitted.",
+          "line": 333,
+          "sha256": "8a0072dcab625b12a358813f3706a41054a4a1f4a7f4fbabd3eb7cd0e5716ce8"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn exterior_exports_omit_annotations_and_failed_native_save_keeps_both_files",
+          "line": 660,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
         }
       ]
     },
     {
       "group_id": "automation-scripts",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -676,7 +775,7 @@
         "mcp_tests"
       ],
       "current": {
-        "candidate_behavior": "The current Rust enum has 27 variants: 26 nontransaction authoring commands plus Transaction. The MCP command_schema oneOf contains the 26 nontransaction commands; CLI execute/MCP project_execute accept strict original-byte arrays of 1–1024, reject nested Transaction, and commit/save through one shared Transaction. The five additions after the historical snapshot are ImportSvgPatterns, ImportDxfPatterns, AddEllipse, TransformPiece and AddSewingByLength. Nine stateless MCP tools include the two bounded import tools and read-only project_lengths; no tool was added specifically for TransformPiece or physical-length sewing. CLI lengths and project_lengths return unrounded SI authored metrics and source revision. No live GUI control, script runtime, persistent undo or simulation-job API is provided.",
+        "candidate_behavior": "Current Rust defines 29 Command variants: 28 nontransaction commands plus Transaction. The MCP command_schema oneOf exposes exactly those 28 nontransaction commands. AddInternalSegment and RemoveInternalCurve are the two additions since the preserved B657 27/26/nine-tool review; endpoint edits reuse MovePoint commands in one Transaction. Strict CLI execute/MCP project_execute arrays still accept 1–1024, reject nested transactions and commit/save once. The nine stateless MCP tools and CLI verbs are unchanged. CLI inspect now reports per-piece boundary/internal_curves ownership; project_inspect returns strict native v4 construction. Existing lengths/project_lengths can measure an annotation in unrounded authored metres without making it a sewing target. Bounded import/export profiles disclose empty imported internal arrays and omitted annotation exports. No live GUI control, script runtime, persistent undo or simulation-job API is introduced.",
         "missing_functionality": [
           "Broader scripting/editing/reporting and observed scripting semantics remain open. The nine file tools are not reference scripting parity and do not control an active studio session."
         ],
@@ -686,45 +785,66 @@
           "AddEllipse",
           "TransformPiece",
           "AddSewingByLength",
-          "Transaction"
+          "Transaction",
+          "AddInternalSegment",
+          "RemoveInternalCurve",
+          "MovePoint"
         ]
       },
       "source_anchors": [
         {
           "path": "crates/weftforge-core/src/document.rs",
           "anchor": "pub enum Command {",
-          "line": 1460,
-          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+          "line": 1549,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
         },
         {
           "path": "apps/weftforge-cli/src/main.rs",
           "anchor": "fn execute_commands(",
           "line": 365,
-          "sha256": "88e09babfb9eaba9646a54ebb0de28ac3fccd318d50f7f2a92bda148e857310d"
+          "sha256": "c425aab62ca8242266b9c27ee905f09dcc57098eac55eea75fc89540f7795012"
         },
         {
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "fn command_schema()",
           "line": 528,
-          "sha256": "21454eaa6f9737f66e2c043dba5e5f0a99024900c82d68aa053c7fc66e1d7a11"
+          "sha256": "4b99ac812479d38937c786b44b6031460dae6ba6c24af65aadf72a57fff9257c"
         },
         {
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "fn tools()",
-          "line": 716,
-          "sha256": "21454eaa6f9737f66e2c043dba5e5f0a99024900c82d68aa053c7fc66e1d7a11"
+          "line": 732,
+          "sha256": "4b99ac812479d38937c786b44b6031460dae6ba6c24af65aadf72a57fff9257c"
         },
         {
           "path": "docs/automation.md",
           "anchor": "The supported shared commands are",
           "line": 134,
-          "sha256": "a4f0f16c72684d126d2e14787abb5f8ea48c0bd5f36d6d1469c3b69ab0143000"
+          "sha256": "3dbeec3f4e7ec7780f1618c94c50c05bf008d3b475e738331370f7b9d720a65e"
+        },
+        {
+          "path": "apps/weftforge-cli/src/mcp.rs",
+          "anchor": "\"add_internal_segment\"",
+          "line": 617,
+          "sha256": "4b99ac812479d38937c786b44b6031460dae6ba6c24af65aadf72a57fff9257c"
+        },
+        {
+          "path": "apps/weftforge-cli/src/mcp.rs",
+          "anchor": "\"remove_internal_curve\"",
+          "line": 626,
+          "sha256": "4b99ac812479d38937c786b44b6031460dae6ba6c24af65aadf72a57fff9257c"
+        },
+        {
+          "path": "apps/weftforge-cli/src/main.rs",
+          "anchor": "\"internal_curves\":piece.internal_curves",
+          "line": 89,
+          "sha256": "c425aab62ca8242266b9c27ee905f09dcc57098eac55eea75fc89540f7795012"
         }
       ]
     },
     {
       "group_id": "line-measure-display",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -739,7 +859,7 @@
         "mcp_schema"
       ],
       "current": {
-        "candidate_behavior": "Applied rest length feedback uses the existing bounded authored interval metric, independent of 3D placement, tessellation and cloth positions. Selected full boundaries and visible legacy seam pairs are cached by applied revision; group rows use matching-revision rest-mesh geometry. Native text uses three-decimal mm and signed B − A, with applied revision and draft/preview exclusion. Missing/error/rebuilding data is explicit. CLI lengths and MCP project_lengths query intervals, legacy seams or groups in unrounded metres without writing or building a mesh. Legacy curve-t correspondence remains unchanged.",
+        "candidate_behavior": "Applied rest length feedback uses the existing bounded authored interval metric, independent of 3D placement, tessellation and cloth positions. Selected full boundaries and visible legacy seam pairs are cached by applied revision; group rows use matching-revision rest-mesh geometry. Native text uses three-decimal mm and signed B − A, with applied revision and draft/preview exclusion. Missing/error/rebuilding data is explicit. CLI lengths and MCP project_lengths query intervals, legacy seams or groups in unrounded metres without writing or building a mesh. Legacy curve-t correspondence remains unchanged. Selected full internal annotations also reuse the applied authored interval-length feedback. A read-only interval metric is distinct from physical sewability: every seam/group/length-based sewing target must still belong to an exterior boundary.",
         "missing_functionality": [
           "Angle/perimeter/persistent measurements, selected-chain aggregation, current deformed 3D lengths and configurable units/precision remain open. Reference length selection/rounding/diagnostic policy is unqualified."
         ]
@@ -748,38 +868,50 @@
         {
           "path": "crates/weftforge-core/src/sewing.rs",
           "anchor": "pub fn interval_length(",
-          "line": 634,
-          "sha256": "b8d2ef4178e8dc3a56ce5136310b8f065f357d8ffb21b61b26e16d22d4626645"
+          "line": 636,
+          "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_length_heading(",
-          "line": 566,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 604,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge-cli/src/main.rs",
           "anchor": "fn length_report(",
           "line": 31,
-          "sha256": "88e09babfb9eaba9646a54ebb0de28ac3fccd318d50f7f2a92bda148e857310d"
+          "sha256": "c425aab62ca8242266b9c27ee905f09dcc57098eac55eea75fc89540f7795012"
         },
         {
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "fn length_query_schema()",
           "line": 511,
-          "sha256": "21454eaa6f9737f66e2c043dba5e5f0a99024900c82d68aa053c7fc66e1d7a11"
+          "sha256": "4b99ac812479d38937c786b44b6031460dae6ba6c24af65aadf72a57fff9257c"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_lengths_are_formatted_cached_and_ignore_drafts_preview_and_simulation",
-          "line": 14699,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 16518,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "pub(crate) fn require_boundary_curve(",
+          "line": 389,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn original_r_ids_analytic_length_history_and_endpoint_transaction",
+          "line": 59,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
         }
       ]
     },
     {
       "group_id": "selected-line-lengths",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -794,7 +926,7 @@
         "mcp_schema"
       ],
       "current": {
-        "candidate_behavior": "Applied rest length feedback uses the existing bounded authored interval metric, independent of 3D placement, tessellation and cloth positions. Selected full boundaries and visible legacy seam pairs are cached by applied revision; group rows use matching-revision rest-mesh geometry. Native text uses three-decimal mm and signed B − A, with applied revision and draft/preview exclusion. Missing/error/rebuilding data is explicit. CLI lengths and MCP project_lengths query intervals, legacy seams or groups in unrounded metres without writing or building a mesh. Legacy curve-t correspondence remains unchanged.",
+        "candidate_behavior": "Applied rest length feedback uses the existing bounded authored interval metric, independent of 3D placement, tessellation and cloth positions. Selected full boundaries and visible legacy seam pairs are cached by applied revision; group rows use matching-revision rest-mesh geometry. Native text uses three-decimal mm and signed B − A, with applied revision and draft/preview exclusion. Missing/error/rebuilding data is explicit. CLI lengths and MCP project_lengths query intervals, legacy seams or groups in unrounded metres without writing or building a mesh. Legacy curve-t correspondence remains unchanged. Selected full internal annotations also reuse the applied authored interval-length feedback. A read-only interval metric is distinct from physical sewability: every seam/group/length-based sewing target must still belong to an exterior boundary.",
         "missing_functionality": [
           "Angle/perimeter/persistent measurements, selected-chain aggregation, current deformed 3D lengths and configurable units/precision remain open. Reference length selection/rounding/diagnostic policy is unqualified."
         ]
@@ -803,38 +935,50 @@
         {
           "path": "crates/weftforge-core/src/sewing.rs",
           "anchor": "pub fn interval_length(",
-          "line": 634,
-          "sha256": "b8d2ef4178e8dc3a56ce5136310b8f065f357d8ffb21b61b26e16d22d4626645"
+          "line": 636,
+          "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_length_heading(",
-          "line": 566,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 604,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge-cli/src/main.rs",
           "anchor": "fn length_report(",
           "line": 31,
-          "sha256": "88e09babfb9eaba9646a54ebb0de28ac3fccd318d50f7f2a92bda148e857310d"
+          "sha256": "c425aab62ca8242266b9c27ee905f09dcc57098eac55eea75fc89540f7795012"
         },
         {
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "fn length_query_schema()",
           "line": 511,
-          "sha256": "21454eaa6f9737f66e2c043dba5e5f0a99024900c82d68aa053c7fc66e1d7a11"
+          "sha256": "4b99ac812479d38937c786b44b6031460dae6ba6c24af65aadf72a57fff9257c"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_lengths_are_formatted_cached_and_ignore_drafts_preview_and_simulation",
-          "line": 14699,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 16518,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "pub(crate) fn require_boundary_curve(",
+          "line": 389,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn original_r_ids_analytic_length_history_and_endpoint_transaction",
+          "line": 59,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
         }
       ]
     },
     {
       "group_id": "sewing-length-check",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -849,7 +993,7 @@
         "mcp_schema"
       ],
       "current": {
-        "candidate_behavior": "Applied rest length feedback uses the existing bounded authored interval metric, independent of 3D placement, tessellation and cloth positions. Selected full boundaries and visible legacy seam pairs are cached by applied revision; group rows use matching-revision rest-mesh geometry. Native text uses three-decimal mm and signed B − A, with applied revision and draft/preview exclusion. Missing/error/rebuilding data is explicit. CLI lengths and MCP project_lengths query intervals, legacy seams or groups in unrounded metres without writing or building a mesh. Legacy curve-t correspondence remains unchanged.",
+        "candidate_behavior": "Applied rest length feedback uses the existing bounded authored interval metric, independent of 3D placement, tessellation and cloth positions. Selected full boundaries and visible legacy seam pairs are cached by applied revision; group rows use matching-revision rest-mesh geometry. Native text uses three-decimal mm and signed B − A, with applied revision and draft/preview exclusion. Missing/error/rebuilding data is explicit. CLI lengths and MCP project_lengths query intervals, legacy seams or groups in unrounded metres without writing or building a mesh. Legacy curve-t correspondence remains unchanged. Selected full internal annotations also reuse the applied authored interval-length feedback. A read-only interval metric is distinct from physical sewability: every seam/group/length-based sewing target must still belong to an exterior boundary.",
         "missing_functionality": [
           "Angle/perimeter/persistent measurements, selected-chain aggregation, current deformed 3D lengths and configurable units/precision remain open. Reference length selection/rounding/diagnostic policy is unqualified."
         ]
@@ -858,38 +1002,50 @@
         {
           "path": "crates/weftforge-core/src/sewing.rs",
           "anchor": "pub fn interval_length(",
-          "line": 634,
-          "sha256": "b8d2ef4178e8dc3a56ce5136310b8f065f357d8ffb21b61b26e16d22d4626645"
+          "line": 636,
+          "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_length_heading(",
-          "line": 566,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 604,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge-cli/src/main.rs",
           "anchor": "fn length_report(",
           "line": 31,
-          "sha256": "88e09babfb9eaba9646a54ebb0de28ac3fccd318d50f7f2a92bda148e857310d"
+          "sha256": "c425aab62ca8242266b9c27ee905f09dcc57098eac55eea75fc89540f7795012"
         },
         {
           "path": "apps/weftforge-cli/src/mcp.rs",
           "anchor": "fn length_query_schema()",
           "line": 511,
-          "sha256": "21454eaa6f9737f66e2c043dba5e5f0a99024900c82d68aa053c7fc66e1d7a11"
+          "sha256": "4b99ac812479d38937c786b44b6031460dae6ba6c24af65aadf72a57fff9257c"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_lengths_are_formatted_cached_and_ignore_drafts_preview_and_simulation",
-          "line": 14699,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 16518,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "pub(crate) fn require_boundary_curve(",
+          "line": 389,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn original_r_ids_analytic_length_history_and_endpoint_transaction",
+          "line": 59,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
         }
       ]
     },
     {
       "group_id": "free-chain-sewing",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -910,7 +1066,7 @@
         "native_io"
       ],
       "current": {
-        "candidate_behavior": "A separate native Free sewing tool/search route owns revision-stamped transient A/B drafts. Canvas start/direction and accessible Boundary, exact Start t, Direction and Length (mm) controls feed Create Sewing Line; Tab validates, first-side OK advances without authoring, and second-side OK sends AddSewingByLength through the shared inspector transaction. Project::interval_from_length reuses the bounded metric/inversion for forward/reverse physical length on one curve. The command resolves both sides before allocation and creates one ordinary SewingGroup with one interval per side and normalized physical arc-length correspondence, rather than a legacy curve-t Seam. It rejects overflow, insufficient remaining distance, invalid/overlapping/precision-limited input without clamping. Both pending previews, raw text/caret and applied labels/guides remain distinct; Cancel/tool/load/history/revision rules retain the existing accepted construction. Legacy Sew edges and ordered M:N sewing remain separate routes.",
+        "candidate_behavior": "A separate native Free sewing tool/search route owns revision-stamped transient A/B drafts. Canvas start/direction and accessible Boundary, exact Start t, Direction and Length (mm) controls feed Create Sewing Line; Tab validates, first-side OK advances without authoring, and second-side OK sends AddSewingByLength through the shared inspector transaction. Project::interval_from_length reuses the bounded metric/inversion for forward/reverse physical length on one curve. The command resolves both sides before allocation and creates one ordinary SewingGroup with one interval per side and normalized physical arc-length correspondence, rather than a legacy curve-t Seam. It rejects overflow, insufficient remaining distance, invalid/overlapping/precision-limited input without clamping. Both pending previews, raw text/caret and applied labels/guides remain distinct; Cancel/tool/load/history/revision rules retain the existing accepted construction. Legacy Sew edges and ordered M:N sewing remain separate routes. Current core role validation and native boundary-only pick/control paths explicitly reject internal annotation targets for legacy seams, ordered groups and AddSewingByLength. Straight annotation creation is not internal sewing.",
         "missing_functionality": [
           "Reference continuous curved endpoints/correspondence, picking and initial values, cancellation/limits, unequal-length easing, M:N execution and physical sewing acceptance remain unqualified.",
           "Internal/boundary-traversing/automatic sewing and broader editing/selection remain in scope. Entered lengths choose creation endpoints; they are not persistent dimension locks. Actual native qualification must come from registry/reports, not these source anchors."
@@ -928,44 +1084,56 @@
         {
           "path": "crates/weftforge-core/src/sewing.rs",
           "anchor": "pub fn interval_from_length(",
-          "line": 609,
-          "sha256": "b8d2ef4178e8dc3a56ce5136310b8f065f357d8ffb21b61b26e16d22d4626645"
+          "line": 610,
+          "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed"
         },
         {
           "path": "crates/weftforge-core/src/document.rs",
           "anchor": "Command::AddSewingByLength {",
-          "line": 1147,
-          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+          "line": 1232,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_window(",
-          "line": 2677,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2853,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_failure_and_cancel_retain_raw_text_carets_redo_and_accepted_state",
-          "line": 12497,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 13141,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_new_empty_refuses_pending_a_and_b_without_dropping_or_committing_them",
-          "line": 12680,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 13324,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "crates/weftforge-core/tests/sewing_groups.rs",
           "anchor": "fn physical_length_command_is_one_persistent_group_with_physical_correspondence_and_history",
-          "line": 1353,
-          "sha256": "a46b28a9f1db2c214688477d97e2317007bb64358c02a729ace6549ee6469fe6"
+          "line": 1365,
+          "sha256": "068c982f27bf74c085f23afd7d6ab7077d246225c0677a375109c44f1313363a"
+        },
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "pub(crate) fn require_boundary_curve(",
+          "line": 389,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "crates/weftforge-core/src/sewing.rs",
+          "anchor": "self.require_boundary_curve(side.curve)?;",
+          "line": 611,
+          "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed"
         }
       ]
     },
     {
       "group_id": "free-sewing-length-preview",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -986,7 +1154,7 @@
         "native_io"
       ],
       "current": {
-        "candidate_behavior": "A separate native Free sewing tool/search route owns revision-stamped transient A/B drafts. Canvas start/direction and accessible Boundary, exact Start t, Direction and Length (mm) controls feed Create Sewing Line; Tab validates, first-side OK advances without authoring, and second-side OK sends AddSewingByLength through the shared inspector transaction. Project::interval_from_length reuses the bounded metric/inversion for forward/reverse physical length on one curve. The command resolves both sides before allocation and creates one ordinary SewingGroup with one interval per side and normalized physical arc-length correspondence, rather than a legacy curve-t Seam. It rejects overflow, insufficient remaining distance, invalid/overlapping/precision-limited input without clamping. Both pending previews, raw text/caret and applied labels/guides remain distinct; Cancel/tool/load/history/revision rules retain the existing accepted construction. Legacy Sew edges and ordered M:N sewing remain separate routes.",
+        "candidate_behavior": "A separate native Free sewing tool/search route owns revision-stamped transient A/B drafts. Canvas start/direction and accessible Boundary, exact Start t, Direction and Length (mm) controls feed Create Sewing Line; Tab validates, first-side OK advances without authoring, and second-side OK sends AddSewingByLength through the shared inspector transaction. Project::interval_from_length reuses the bounded metric/inversion for forward/reverse physical length on one curve. The command resolves both sides before allocation and creates one ordinary SewingGroup with one interval per side and normalized physical arc-length correspondence, rather than a legacy curve-t Seam. It rejects overflow, insufficient remaining distance, invalid/overlapping/precision-limited input without clamping. Both pending previews, raw text/caret and applied labels/guides remain distinct; Cancel/tool/load/history/revision rules retain the existing accepted construction. Legacy Sew edges and ordered M:N sewing remain separate routes. Current core role validation and native boundary-only pick/control paths explicitly reject internal annotation targets for legacy seams, ordered groups and AddSewingByLength. Straight annotation creation is not internal sewing.",
         "missing_functionality": [
           "Reference continuous curved endpoints/correspondence, picking and initial values, cancellation/limits, unequal-length easing, M:N execution and physical sewing acceptance remain unqualified.",
           "Internal/boundary-traversing/automatic sewing and broader editing/selection remain in scope. Entered lengths choose creation endpoints; they are not persistent dimension locks. Actual native qualification must come from registry/reports, not these source anchors."
@@ -1000,44 +1168,56 @@
         {
           "path": "crates/weftforge-core/src/sewing.rs",
           "anchor": "pub fn interval_from_length(",
-          "line": 609,
-          "sha256": "b8d2ef4178e8dc3a56ce5136310b8f065f357d8ffb21b61b26e16d22d4626645"
+          "line": 610,
+          "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed"
         },
         {
           "path": "crates/weftforge-core/src/document.rs",
           "anchor": "Command::AddSewingByLength {",
-          "line": 1147,
-          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+          "line": 1232,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_window(",
-          "line": 2677,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2853,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_failure_and_cancel_retain_raw_text_carets_redo_and_accepted_state",
-          "line": 12497,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 13141,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_new_empty_refuses_pending_a_and_b_without_dropping_or_committing_them",
-          "line": 12680,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 13324,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "crates/weftforge-core/tests/sewing_groups.rs",
           "anchor": "fn physical_length_command_is_one_persistent_group_with_physical_correspondence_and_history",
-          "line": 1353,
-          "sha256": "a46b28a9f1db2c214688477d97e2317007bb64358c02a729ace6549ee6469fe6"
+          "line": 1365,
+          "sha256": "068c982f27bf74c085f23afd7d6ab7077d246225c0677a375109c44f1313363a"
+        },
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "pub(crate) fn require_boundary_curve(",
+          "line": 389,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "crates/weftforge-core/src/sewing.rs",
+          "anchor": "self.require_boundary_curve(side.curve)?;",
+          "line": 611,
+          "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed"
         }
       ]
     },
     {
       "group_id": "undo-redo",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -1051,7 +1231,7 @@
         "ui_modal_tests"
       ],
       "current": {
-        "candidate_behavior": "The shared Editor transaction still owns atomic history. Later ellipse, bounded drawing imports, one-piece transforms and completed physical-length sewing combine pending inspector edits with one command into one history entry. First-side sewing and drag previews are transient. New Empty refuses dirty/pending/unfinished work and resets history only for accepted clean replacement; load/history/revision changes clear stale preview and metric state. Numeric text/caret and redo retention checks are implementation evidence only.",
+        "candidate_behavior": "The shared Editor transaction still owns atomic history. Later ellipse, bounded drawing imports, one-piece transforms and completed physical-length sewing combine pending inspector edits with one command into one history entry. First-side sewing and drag previews are transient. New Empty refuses dirty/pending/unfinished work and resets history only for accepted clean replacement; load/history/revision changes clear stale preview and metric state. Numeric text/caret and redo retention checks are implementation evidence only. Internal two-click creation, endpoint drag/removal and changed endpoint MovePoint arrays use the same combined inspector-action transaction. Unchanged/cancelled endpoint editing creates no history entry; stale revision/owner/target previews are discarded. General Save draft atomicity remains outside this source increment.",
         "missing_functionality": [
           "Full observed gesture/history/coalescing semantics, native route qualification, all rejection paths and reference parity remain open; use registry/reports for the exact accepted runtime scope."
         ]
@@ -1060,26 +1240,44 @@
         {
           "path": "crates/weftforge-core/src/document.rs",
           "anchor": "pub fn execute(&mut self, command: Command)",
-          "line": 1596,
-          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+          "line": 1693,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn apply_inspector_action(",
-          "line": 796,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 840,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_new_empty_refuses_pending_a_and_b_without_dropping_or_committing_them",
-          "line": 12680,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 13324,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn apply_internal_line(",
+          "line": 3138,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn internal_line_review_compound_endpoints_and_staged_grain_commit_one_revision_and_undo",
+          "line": 16123,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn internal_line_review_accepted_drag_commits_source_boundary_control_and_endpoint_once",
+          "line": 16360,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
     {
       "group_id": "simulate",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -1095,7 +1293,7 @@
         "sim_tests"
       ],
       "current": {
-        "candidate_behavior": "The native transport exposes Play/Pause, Step, Assemble (gravity off), Drape, Reset and Cancel job. Current workers carry process-session task IDs/input revision, count only successful simulation steps and distinguish actual worker outcome from cancellation request/obsolete input before accepting a matching-revision result. Previous accepted display state survives failed/cancelled/obsolete workers. Live cloth contact now uses conservative swept hierarchy candidates in ascending original order, with a retained linear remainder after projection moves the query; static diagnostic contact queries also use the hierarchy. The exact zero-target positive-compliance stitch branch uses vector coordinates, retaining the old hard/positive-target radial branch. These source candidates establish no garment-quality/calibration/reference acceptance.",
+        "candidate_behavior": "The native transport exposes Play/Pause, Step, Assemble (gravity off), Drape, Reset and Cancel job. Current workers carry process-session task IDs/input revision, count only successful simulation steps and distinguish actual worker outcome from cancellation request/obsolete input before accepting a matching-revision result. Previous accepted display state survives failed/cancelled/obsolete workers. Live cloth contact now uses conservative swept hierarchy candidates in ascending original order, with a retained linear remainder after projection moves the query; static diagnostic contact queries also use the hierarchy. The exact zero-target positive-compliance stitch branch uses vector coordinates, retaining the old hard/positive-target radial branch. These source candidates establish no garment-quality/calibration/reference acceptance. Internal annotations are authoritative construction but are excluded from mesh vertices/triangles/boundary samples, stitches, cloth mass and constraints. An accepted annotation edit still advances the document revision and invalidates derived jobs/state; an annotation-only rebuild uses a fresh revision without adding physical effects.",
         "missing_functionality": [
           "Full physical garment protocols, equilibrium/calibration, complete deforming collision coverage, representative performance and reference simulation behavior remain open. Dense contact can return to the original scan; no general speedup follows from the hierarchy.",
           "A full worker step count is not accepted cloth or garment quality. Retained failures and actual runtime qualification remain authoritative in the registry/reports."
@@ -1105,20 +1303,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn simulation_bar(",
-          "line": 1984,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2105,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn task_details(",
-          "line": 2074,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2195,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn task_progress_correlates_real_workers_and_retains_unaccepted_snapshots",
-          "line": 9264,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 9908,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "crates/weftforge-sim/src/contact.rs",
@@ -1137,12 +1335,18 @@
           "anchor": "pub(crate) fn solve_stitch(",
           "line": 164,
           "sha256": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn annotations_leave_every_mesh_and_physical_field_exterior_only",
+          "line": 396,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
         }
       ]
     },
     {
       "group_id": "workspace-statistics",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -1166,14 +1370,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn status_bar(",
-          "line": 1946,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2067,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn task_details(",
-          "line": 2074,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2195,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "crates/weftforge-sim/src/contact.rs",
@@ -1185,7 +1389,7 @@
     },
     {
       "group_id": "fit-maps",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -1207,8 +1411,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "if let Some(peak)=diagnostics.peak_strain",
-          "line": 2446,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2617,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "spec/features/SIM-005-strain-attribution.md",
@@ -1220,7 +1424,7 @@
     },
     {
       "group_id": "pattern-name-property",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -1230,26 +1434,26 @@
         "ui_properties"
       ],
       "current": {
-        "candidate_behavior": "Piece names remain authored native data. Creation now accepts names through AddPolygon/AddRectangle/AddEllipse and bounded SVG/DXF imports; imported names follow their explicit profiles. The native Pattern name field configures creation and is not a selected-piece rename command."
+        "candidate_behavior": "Piece names remain authored native data. Creation now accepts names through AddPolygon/AddRectangle/AddEllipse and bounded SVG/DXF imports; imported names follow their explicit profiles. The native Pattern name field configures creation and is not a selected-piece rename command. Internal annotations have stable curve IDs and owner labels, with no new authored line-name or rename field."
       },
       "source_anchors": [
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "ui.strong(\"Create pattern\")",
-          "line": 2330,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2496,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "crates/weftforge-core/src/document.rs",
           "anchor": "AddEllipse {",
-          "line": 763,
-          "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+          "line": 796,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
         }
       ]
     },
     {
       "group_id": "unit-display-preferences",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -1261,32 +1465,38 @@
         "mcp"
       ],
       "current": {
-        "candidate_behavior": "Core/CPU remain f64 SI. Native creation/transform/placement fields retain explicit metres/radians; rectangle and Free sewing dialogs convert millimetres once, and applied length feedback formats mm while CLI/MCP metric JSON stays unrounded metres. These are fixed engineering presentation choices, with no global unit/precision/locale preference model."
+        "candidate_behavior": "Core/CPU remain f64 SI. Native creation/transform/placement fields retain explicit metres/radians; rectangle and Free sewing dialogs convert millimetres once, and applied length feedback formats mm while CLI/MCP metric JSON stays unrounded metres. These are fixed engineering presentation choices, with no global unit/precision/locale preference model. The internal endpoint modal labels Start U/V and End U/V in metres and does not introduce locale or unit preferences."
       },
       "source_anchors": [
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn length_mm(",
-          "line": 538,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 576,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_window(",
-          "line": 2677,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2853,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_window(",
-          "line": 2930,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 3360,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn internal_line_window(",
+          "line": 3194,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
     {
       "group_id": "shortcut-preferences",
-      "reason": "Source-only recheck of the later native/core/adapter increment; retain the historical catalog assignment, packet and all unresolved reference requirements.",
+      "reason": "Explicit current-source recheck at ad7 after internal ownership/schema/UI changes; the prior B657 review remains preserved by source_update_origin. Retain historical catalog assignments/packets and prior native/reference qualifications and unknowns.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -1297,20 +1507,565 @@
         "ui_field_state"
       ],
       "current": {
-        "candidate_behavior": "Fixed command search reaches New Empty, native save/open/recover, bounded SVG/DXF import and vector/mesh exports, Undo/Redo/Reset, Select/Transform/Polygon/Rectangle/Add ellipse and three distinct sewing routes. Fixed global shortcuts are modal/popup/focus guarded; this is not an editable keymap preferences implementation or proof of reference keyboard bindings."
+        "candidate_behavior": "Fixed command search reaches New Empty, native save/open/recover, bounded SVG/DXF import and vector/mesh exports, Undo/Redo/Reset, Select/Transform/Polygon/Rectangle/Add ellipse and three distinct sewing routes. Fixed global shortcuts are modal/popup/focus guarded; this is not an editable keymap preferences implementation or proof of reference keyboard bindings. The fixed search also reaches Internal line and Create 2D supplies the owner-aware action; no reference G shortcut is inferred. Select-mode Delete/Backspace removes a selected internal annotation, not its owner."
       },
       "source_anchors": [
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "egui::Window::new(\"Command search\")",
-          "line": 4296,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 4924,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "let global_shortcuts = !authoring_modal",
-          "line": 4100,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 4697,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "if self.tool == Tool::Select",
+          "line": 4147,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn selected_internal_curve(",
+          "line": 3028,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        }
+      ]
+    },
+    {
+      "group_id": "internal-primitives",
+      "reason": "Explicit source-only internal-annotation recheck at ad7. This existing group/packet is retained; bounded construction supplies no native/reference execution, feature completion or parity.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality",
+        "shared_commands"
+      ],
+      "source_refs": [
+        "project",
+        "commands",
+        "curves",
+        "mesh",
+        "ui_tools",
+        "ui_toolbar",
+        "ui_properties",
+        "ui_pattern",
+        "ui_field_state",
+        "history",
+        "native_io",
+        "cli",
+        "mcp_schema"
+      ],
+      "current": {
+        "candidate_behavior": "Piece.internal_curves now owns independent straight annotations using ordinary stable-ID curves and two exclusive endpoint points. AddInternalSegment allocates both points/curve; RemoveInternalCurve removes only that owned annotation, and MovePoint/Transaction edit its endpoints. Whole-segment containment uses certified bounded exterior flattening, 1e-6 m clearance, 1e-7 m curve-tube reserve plus conservative f64 reserve, and a fixed one-million-work cap; uncertain/outside/degenerate/shared/cubic-internal input rejects atomically. The native Internal line rail/Create 2D/search routes provide two-click creation, correctable preview and precise start/end metre editing with role-aware selection/deletion and retained-input/modal guards. Native v4 retains ownership and endpoints. This is a straight annotation candidate, not an internal shape, cloth/topology operation or reference contract.",
+        "missing_functionality": [
+          "Full open/closed internal paths, grouped shapes and primitive parameters/constraints independent from the exterior boundary; the current independent straight segment supplies none of those grouping/shape semantics.",
+          "Only independent straight inside segments are source candidates. Full internal paths/groups/cubics, rectangle/ellipse shapes, boundary attachment, holes, cuts/cut-and-sew, folds and internal sewing remain absent.",
+          "No actual native or reference acceptance was executed by this mapping task. Bounded containment can honestly refuse difficult geometry; no reference clearance/picking/grouping/cancellation behavior is inferred."
+        ],
+        "shared_commands": [
+          "AddInternalSegment",
+          "RemoveInternalCurve",
+          "MovePoint",
+          "Transaction"
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "pub internal_curves: Vec<Id>",
+          "line": 178,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "Command::AddInternalSegment {",
+          "line": 825,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "Command::RemoveInternalCurve {",
+          "line": 853,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "crates/weftforge-core/src/geometry.rs",
+          "anchor": "pub(crate) fn validate_internal_segments(",
+          "line": 461,
+          "sha256": "4adc0bb4de9183437e9c1cc45c31a324d08dfca9baa8ac3bf2b0348efe9bb39b"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn internal_line_window(",
+          "line": 3194,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn internal_line_search_rail_and_snapped_two_click_creation_are_atomic",
+          "line": 15358,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn original_l_c_and_clearance_are_whole_segment_and_resolution_independent",
+          "line": 137,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
+        }
+      ]
+    },
+    {
+      "group_id": "project-load-save",
+      "reason": "Explicit source-only internal-annotation recheck at ad7. This existing group/packet is retained; bounded construction supplies no native/reference execution, feature completion or parity.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "native_io",
+        "atomic_save",
+        "ui_load",
+        "ui_save",
+        "project",
+        "commands",
+        "migration_tests",
+        "json_bit_tests",
+        "cli",
+        "mcp"
+      ],
+      "current": {
+        "candidate_behavior": "Strict native v4 requires each piece internal_curves array and the project sewing_groups array; annotation ownership, straightness, containment and existing bounded validation apply before accepting input. Explicit frozen PieceV2V3/ProjectV3 and retained v1/v2 readers reject mixed schemas and add only empty internal arrays (and groups for v1/v2), preserving supported legacy IDs/order/maps/numeric fields without an authoring transaction. Saving an accepted old input writes v4; old fixtures/evidence retain their original bytes. Failed load retains the old editor; native primary/recovery staging retains its established ordering, not a two-file atomic guarantee. Ordinary Save commits a general inspector draft before chooser/IO; the annotation modal shields background Save rather than fixing that broader behavior.",
+        "missing_functionality": [
+          "Reference native decoding research; metadata preservation; exact open/save option contracts and unsupported-data reporting.",
+          "Show Option to Save Metadata and Save with Thumbnail preferences are configured read-only; native thumbnail/metadata contents and future-save/default/reset behavior are not implemented by current native JSON IO.",
+          "Qualify exact authored f64 fields through the real native load/save/reopen path for the current runtime source. Retained runs do not automatically qualify later source changes, and round-trip decoding cannot restore values already saved after rounding.",
+          "V4 is a bounded supported-model format with no downgrade writer; full future internal roles/shapes/cuts need a reviewed schema decision. Core/schema definitions do not establish current native save/reopen or universal pending-draft preservation."
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/persistence.rs",
+          "anchor": "pub const FORMAT_VERSION: u32 = 4;",
+          "line": 26,
+          "sha256": "8a0072dcab625b12a358813f3706a41054a4a1f4a7f4fbabd3eb7cd0e5716ce8"
+        },
+        {
+          "path": "crates/weftforge-core/src/persistence.rs",
+          "anchor": "struct PieceV2V3 {",
+          "line": 117,
+          "sha256": "8a0072dcab625b12a358813f3706a41054a4a1f4a7f4fbabd3eb7cd0e5716ce8"
+        },
+        {
+          "path": "crates/weftforge-core/src/persistence.rs",
+          "anchor": "struct ProjectV3 {",
+          "line": 85,
+          "sha256": "8a0072dcab625b12a358813f3706a41054a4a1f4a7f4fbabd3eb7cd0e5716ce8"
+        },
+        {
+          "path": "crates/weftforge-core/tests/migration.rs",
+          "anchor": "fn original_v3_migrates_only_empty_internal_ownership_and_keeps_f64_bits",
+          "line": 399,
+          "sha256": "6778e1b29cc10513dcba97f060b57242bf65de438b0c06fbca8ad0e73d561175"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn v4_endpoint_bits_and_strict_annotation_input_round_trip",
+          "line": 524,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
+        }
+      ]
+    },
+    {
+      "group_id": "delete-selection",
+      "reason": "Explicit source-only internal-annotation recheck at ad7. This existing group/packet is retained; bounded construction supplies no native/reference execution, feature completion or parity.",
+      "changed_fields": [
+        "candidate_behavior",
+        "shared_commands"
+      ],
+      "source_refs": [
+        "commands",
+        "project",
+        "ui_properties",
+        "ui_pattern",
+        "ui_shortcuts",
+        "history"
+      ],
+      "current": {
+        "candidate_behavior": "Native piece/legacy-seam/group removal uses shared transactions. Removing a piece removes the whole ordered group if any span depends on it, reports the dependent-group count and preserves unrelated groups; Undo restores the relationship. This independent policy is not a reference deletion finding. Generic selection deletion and dependency previews remain absent. Select-mode Delete/Backspace and Remove internal line now dispatch RemoveInternalCurve for a selected annotation. The separate Delete owner piece label explicitly dispatches RemovePiece, whose traversal removes both endpoints and all internal curves with that owner. Role-aware deletion preserves unrelated construction and keeps the monotonic allocator; no generic multi-selection deletion model is added.",
+        "shared_commands": [
+          "RemovePiece",
+          "RemoveSeam",
+          "RemoveSewingGroup",
+          "RemoveInternalCurve",
+          "Transaction"
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "Command::RemoveInternalCurve {",
+          "line": 853,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "\"Delete owner piece\"",
+          "line": 2487,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn internal_line_picking_delete_and_boundary_tools_keep_roles_separate",
+          "line": 15768,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        }
+      ]
+    },
+    {
+      "group_id": "point-pattern-edit",
+      "reason": "Explicit source-only internal-annotation recheck at ad7. This existing group/packet is retained; bounded construction supplies no native/reference execution, feature completion or parity.",
+      "changed_fields": [
+        "candidate_behavior",
+        "shared_commands"
+      ],
+      "source_refs": [
+        "commands",
+        "ui_pattern",
+        "ui_properties",
+        "ui_field_state",
+        "history",
+        "ui_numeric_history"
+      ],
+      "current": {
+        "candidate_behavior": "One authored point can drag-preview and commit once; boundary selection and numeric curve controls exist, but multi-point/segment transforms do not. Internal annotations expose both endpoint IDs/positions. Selected-line endpoint drags preview on cloned construction and commit MovePoint with valid pending inspector edits once; precise editing combines changed endpoint commands in one Transaction. Revision/owner/target-bound input, coincident-line selection and press/blur/cancel guards retain rejected or unfinished source drafts. This supplies no generalized multi-point/segment transform.",
+        "shared_commands": [
+          "MovePoint",
+          "Transaction"
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "struct InternalLineDraft {",
+          "line": 405,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn internal_line_edit(",
+          "line": 3042,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn apply_internal_line(",
+          "line": 3138,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn internal_line_review_rejected_drag_retains_boundary_draft_raw_caret_redo_and_outputs",
+          "line": 16365,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        }
+      ]
+    },
+    {
+      "group_id": "curve-tools",
+      "reason": "Explicit source-only internal-annotation recheck at ad7. This existing group/packet is retained; bounded construction supplies no native/reference execution, feature completion or parity.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "commands",
+        "curves",
+        "ui_properties",
+        "ui_pattern",
+        "project"
+      ],
+      "current": {
+        "candidate_behavior": "Absolute cubic Bezier handles are authorable numerically and displayed; tangent/curvature point/smoothing tools are absent. SetCurveControls, SplitCurve and JoinCurve are explicitly exterior-boundary-only. Internal annotations currently require controls: None; native cubic/split/join controls are hidden for an internal selection. Reusing Curve/Point identity does not implement internal cubic editing or smoothing."
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "pub(crate) fn require_boundary_curve(",
+          "line": 389,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "if internal {",
+          "line": 2413,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn resize_rigid_transform_boundary_edits_and_owner_removal_keep_both_endpoints",
+          "line": 284,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
+        }
+      ]
+    },
+    {
+      "group_id": "split-boundary",
+      "reason": "Explicit source-only internal-annotation recheck at ad7. This existing group/packet is retained; bounded construction supplies no native/reference execution, feature completion or parity.",
+      "changed_fields": [
+        "candidate_behavior",
+        "missing_functionality"
+      ],
+      "source_refs": [
+        "commands",
+        "curves",
+        "project",
+        "ui_properties",
+        "native_io",
+        "history"
+      ],
+      "current": {
+        "candidate_behavior": "Exact parameter-t split remaps authored seams with stable IDs; bounded JoinCurve joins the selected boundary to its consecutive oriented neighbor, including the closing pair, and retains the selected curve ID. It accepts only compatible straight/cubic inverse constructions within a placement-aware 1e-12 m control-plus-f64 bound, remaps both seam sides affinely and preserves separate seam IDs/maps. Native inspector, CLI join and MCP join_curve use the shared typed command. Native joins include pending drafts in one transaction; rejection preserves document/history/draft/current numeric input, and success clears superseded text/focus. These source routes and in-process checks do not themselves qualify native execution or reference behavior. Read the declared native join subset and its current qualification in the authoritative registry/reports; broader reference join semantics remain unknown. Ordered groups are rewritten separately: split expands each affected span in traversal order, including reversed/endpoint cases; join transforms every occurrence while retaining individual list entries, group ID/name/map/order. Current authored arc lengths/pairing are rederived within the declared group metric budget. Legacy parameter correspondence and tighter inverse-geometry tests remain distinct. The new annotation ownership list and both endpoint coordinates remain unchanged through supported boundary split/join. Internal targets are rejected explicitly, and final candidate validation rechecks retained annotation clearance after boundary edits.",
+        "missing_functionality": [
+          "Reference gesture/numeric/arc-length-versus-parameter contracts, selection/snapping/failure/history semantics and independent comparison remain unknown. Bounded JoinCurve is inverse construction, not arbitrary curve fitting, corner removal, mixed straight/cubic merging or trim.",
+          "Broader native invalid-split/control branches, split Undo/Redo, large-placement and coalesced-event cases require their own declared execution. Read the UI-BOUNDED-JOIN-001 native subset and its source/executable identity, independent checks and current qualification in the authoritative registry/reports; source/in-process/CLI/MCP tests do not supply reference parity.",
+          "Internal splitting/joining and topological cuts remain future work; the exterior inverse-construction policy is not extended by annotation support."
+        ]
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "Curve has no piece boundary; internal annotations cannot be joined",
+          "line": 967,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn resize_rigid_transform_boundary_edits_and_owner_removal_keep_both_endpoints",
+          "line": 284,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
+        }
+      ]
+    },
+    {
+      "group_id": "resolution",
+      "reason": "Explicit source-only internal-annotation recheck at ad7. This existing group/packet is retained; bounded construction supplies no native/reference execution, feature completion or parity.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "commands",
+        "mesh",
+        "piece_fields",
+        "ui_properties",
+        "ui_jobs",
+        "project"
+      ],
+      "current": {
+        "candidate_behavior": "One document-wide edge-length resolution rebuilds conforming rest mesh and invalidates simulation; no high/low presets or per-piece resolution/subdivision mode exists. Ordered group construction remains unchanged across remeshing; lengths/portions and weighted stitches are rebuilt for the new revision using authored arc length rather than the mesh chord metric. The final refinement schedule improves slivers before subdivision and retains an exact original fine-fixture regression; it does not define reference tessellation or change global/per-pattern scope. Annotation containment is independent of mesh resolution; internals remain excluded from the exterior-only mesher. Annotation-only edits invalidate the old revision even when freshly rebuilt mesh/topology/UV/sewing fields are identical apart from doc_revision."
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/geometry.rs",
+          "anchor": "pub(crate) fn validate_internal_segments(",
+          "line": 461,
+          "sha256": "4adc0bb4de9183437e9c1cc45c31a324d08dfca9baa8ac3bf2b0348efe9bb39b"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn annotations_leave_every_mesh_and_physical_field_exterior_only",
+          "line": 396,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
+        }
+      ]
+    },
+    {
+      "group_id": "segment-sewing",
+      "reason": "Explicit source-only internal-annotation recheck at ad7. This existing group/packet is retained; bounded construction supplies no native/reference execution, feature completion or parity.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "commands",
+        "seam_fields",
+        "ui_properties",
+        "ui_pattern",
+        "project",
+        "mcp_schema"
+      ],
+      "current": {
+        "candidate_behavior": "Legacy single-curve AddSeam retains oriented intervals, normalized curve-parameter correspondence and weighted mesh stitches. Native legacy edge-pair creation remains distinct from new ordered SewingGroup arc-length pairing. Both derive revision-tagged constraints independently of the display mesh; the new representation does not reinterpret old v1/v2 nonlinear maps or establish reference correspondence. Current ownership validation requires all seam/group targets to be exterior boundaries. Native sewing controls and pick paths retain boundary-only roles even when internal annotations are selectable/measurable. Internal annotations do not become sewable, folded or physical through existing seam/group commands."
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "pub(crate) fn require_boundary_curve(",
+          "line": 389,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn selected_boundary_curve(",
+          "line": 3035,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn annotations_leave_every_mesh_and_physical_field_exterior_only",
+          "line": 396,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
+        }
+      ]
+    },
+    {
+      "group_id": "sewing-editor",
+      "reason": "Explicit source-only internal-annotation recheck at ad7. This existing group/packet is retained; bounded construction supplies no native/reference execution, feature completion or parity.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "commands",
+        "seam_fields",
+        "ui_properties",
+        "ui_pattern",
+        "project",
+        "mcp_schema"
+      ],
+      "current": {
+        "candidate_behavior": "Legacy seam ID/name/curve/parameter rows retain Reverse/Remove. New ordered group rows identify every span and direction, report current revision-derived arc lengths/mismatch/paired portions, and expose Edit group, Reverse B and Remove group. The structured modal edits name, ordered curve-ID/t intervals and explicit nonlinear easing knots; accessible boundary-add controls and row comboboxes support precise paths. Shared commands combine pending inspector edits and one completed action into one transaction; rejection retains draft/input/history and Cancel commits nothing. Full canvas seam picking, general legacy interval/name/property editing, multi-selection and reference-equivalent preflight remain absent. Current ownership validation requires all seam/group targets to be exterior boundaries. Native sewing controls and pick paths retain boundary-only roles even when internal annotations are selectable/measurable. Internal annotations do not become sewable, folded or physical through existing seam/group commands."
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "pub(crate) fn require_boundary_curve(",
+          "line": 389,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn selected_boundary_curve(",
+          "line": 3035,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn annotations_leave_every_mesh_and_physical_field_exterior_only",
+          "line": 396,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
+        }
+      ]
+    },
+    {
+      "group_id": "reverse-sewing",
+      "reason": "Explicit source-only internal-annotation recheck at ad7. This existing group/packet is retained; bounded construction supplies no native/reference execution, feature completion or parity.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "commands",
+        "seam_fields",
+        "ui_properties",
+        "ui_pattern",
+        "project",
+        "mcp_schema"
+      ],
+      "current": {
+        "candidate_behavior": "Legacy per-seam Reverse still swaps only side B t0/t1 through UpdateSeam, preserving its normalized parameter map and duplicate-name ID rows. Ordered group Reverse B uses UpdateSewingGroup to reverse B span order and swap every span direction while retaining identity/name/A/map; two reversals restore all group fields. Native rows/modal share transactional pending-draft and numeric-buffer guards and revision-derived portion/endpoint guides. Source/in-process tests describe implementation behavior; historical legacy reversal execution does not qualify the new group workflow, continuous reference equivalence, easing or physical twist. Current ownership validation requires all seam/group targets to be exterior boundaries. Native sewing controls and pick paths retain boundary-only roles even when internal annotations are selectable/measurable. Internal annotations do not become sewable, folded or physical through existing seam/group commands."
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "pub(crate) fn require_boundary_curve(",
+          "line": 389,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn selected_boundary_curve(",
+          "line": 3035,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn annotations_leave_every_mesh_and_physical_field_exterior_only",
+          "line": 396,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
+        }
+      ]
+    },
+    {
+      "group_id": "internal-line-display",
+      "reason": "Explicit source-only internal-annotation recheck at ad7. This existing group/packet is retained; bounded construction supplies no native/reference execution, feature completion or parity.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "project",
+        "ui_pattern",
+        "ui_properties",
+        "ui_garment",
+        "ui_tools"
+      ],
+      "current": {
+        "candidate_behavior": "The 2D authored canvas draws owned straight annotations in a distinct annotation style, both endpoint marks, selected identity and transient creation/endpoint previews. Scene/Properties list each internal curve under its owner and reuse applied authored length feedback. This current source relationship supplies 2D construction display/picking only; it adds no draped-cloth-following 3D internal display, fold display or visibility-preference model."
+      },
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "for id in &piece.internal_curves {",
+          "line": 3741,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "Internal annotations · owned by this pattern",
+          "line": 2391,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn internal_line_picking_delete_and_boundary_tools_keep_roles_separate",
+          "line": 15768,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        }
+      ]
+    },
+    {
+      "group_id": "cut-and-sew",
+      "reason": "Explicit source-only internal-annotation recheck at ad7. This existing group/packet is retained; bounded construction supplies no native/reference execution, feature completion or parity.",
+      "changed_fields": [
+        "candidate_behavior"
+      ],
+      "source_refs": [
+        "project",
+        "curves",
+        "commands",
+        "mesh",
+        "native_io"
+      ],
+      "current": {
+        "candidate_behavior": "The bounded straight internal annotation is editable construction and a dependency candidate only; it leaves the exterior contour, cloth triangulation, mass and sewing constraints unchanged. No cut command, hole, source-to-output piece remapping, generated seam or automatic layout offset is implemented. PAT-006 describes a prospective follow-on cut separately from this candidate."
+      },
+      "source_anchors": [
+        {
+          "path": "crates/weftforge-core/src/document.rs",
+          "anchor": "pub enum Command {",
+          "line": 1549,
+          "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+        },
+        {
+          "path": "crates/weftforge-core/tests/internal_lines.rs",
+          "anchor": "fn annotations_leave_every_mesh_and_physical_field_exterior_only",
+          "line": 396,
+          "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
+        },
+        {
+          "path": "spec/features/PAT-006-internal-segments.md",
+          "anchor": "## Follow-on cut boundary, after the first increment",
+          "line": 444,
+          "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66"
         }
       ]
     }
@@ -1328,7 +2083,8 @@
         "Recover…",
         "Export OBJ",
         "Export SVG",
-        "Export DXF"
+        "Export DXF",
+        "Export help explicitly discloses omitted annotations; native v4 retains them"
       ],
       "group_ids": [
         "project-new",
@@ -1340,8 +2096,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn menu_bar(",
-          "line": 1772,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 1871,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1351,18 +2107,20 @@
         "Undo",
         "Redo",
         "Commands ⌘K",
-        "Command search text/filter and fixed action rows"
+        "Command search text/filter and fixed action rows",
+        "Internal line search action"
       ],
       "group_ids": [
         "undo-redo",
-        "shortcut-preferences"
+        "shortcut-preferences",
+        "internal-primitives"
       ],
       "source_anchors": [
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "egui::Window::new(\"Command search\")",
-          "line": 4296,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 4924,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1382,8 +2140,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn menu_bar(",
-          "line": 1772,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 1871,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1394,6 +2152,7 @@
         "Transform pattern",
         "Polygon",
         "Rectangle",
+        "Internal line",
         "Sew edges",
         "Free sewing",
         "M:N sewing"
@@ -1404,14 +2163,15 @@
         "polygon",
         "rectangle",
         "segment-sewing",
-        "free-chain-sewing"
+        "free-chain-sewing",
+        "internal-primitives"
       ],
       "source_anchors": [
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn tool_rail(",
-          "line": 1907,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2027,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1423,20 +2183,24 @@
         "Transform pattern…",
         "Ordered A/B draft summary",
         "Create Sewing Line",
-        "Cancel free sewing"
+        "Cancel free sewing",
+        "Internal line…",
+        "Cancel internal line",
+        "Owner-first/start/end annotation state"
       ],
       "group_ids": [
         "grid-snap",
         "pattern-view-extents",
         "pattern-transform-tool",
-        "free-chain-sewing"
+        "free-chain-sewing",
+        "internal-primitives"
       ],
       "source_anchors": [
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn toolbar(",
-          "line": 1876,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 1986,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1458,8 +2222,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn status_bar(",
-          "line": 1946,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2067,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1475,7 +2239,12 @@
         "Placement translation/rotation",
         "Warp angle",
         "Shared fabric mass/stiffness/bend/RGB",
-        "Delete selected"
+        "Delete selected",
+        "Internal annotation owner lists",
+        "Internal endpoint IDs/positions/applied length",
+        "Edit internal endpoints…",
+        "Remove internal line",
+        "Explicit Delete owner piece"
       ],
       "group_ids": [
         "selection",
@@ -1486,14 +2255,15 @@
         "arrangement",
         "grain-alignment",
         "fabric-assignment",
-        "delete-selection"
+        "delete-selection",
+        "internal-primitives"
       ],
       "source_anchors": [
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn inspector(",
-          "line": 2135,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2256,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1506,20 +2276,22 @@
         "Add rectangle",
         "Add ellipse",
         "Add polygon point",
-        "Close pattern"
+        "Close pattern",
+        "Internal line… (selected owner)"
       ],
       "group_ids": [
         "polygon",
         "rectangle",
         "ellipse",
-        "pattern-name-property"
+        "pattern-name-property",
+        "internal-primitives"
       ],
       "source_anchors": [
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "ui.strong(\"Create pattern\")",
-          "line": 2330,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2496,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1545,8 +2317,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "ui.strong(\"Ordered sewing groups\")",
-          "line": 2375,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2546,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1566,8 +2338,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn rectangle_window(",
-          "line": 3064,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 3494,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1589,8 +2361,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_window(",
-          "line": 2930,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 3360,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1614,8 +2386,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_window(",
-          "line": 2677,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2853,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1638,8 +2410,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn sewing_group_window(",
-          "line": 3872,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 4467,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1650,18 +2422,20 @@
         "Physical scale/origin/layout",
         "Explicit omissions",
         "Import",
-        "Cancel"
+        "Cancel",
+        "Exterior-only profile; imported pieces start with empty internal arrays"
       ],
       "group_ids": [
         "pattern-snapshot-print",
-        "undo-redo"
+        "undo-redo",
+        "project-load-save"
       ],
       "source_anchors": [
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn pattern_import_window(",
-          "line": 1359,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 1453,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1683,8 +2457,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn recovery_window(",
-          "line": 1579,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 1678,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1696,7 +2470,9 @@
         "One-piece transform pivot/handle",
         "2D pan/zoom",
         "3D orbit/zoom/picking",
-        "Wireframe"
+        "Wireframe",
+        "Distinct 2D straight annotation/preview and both endpoint marks",
+        "Role-aware annotation selection/endpoint drag; sewing/Transform handles stay boundary-only"
       ],
       "group_ids": [
         "point-pattern-edit",
@@ -1705,14 +2481,16 @@
         "pattern-transform-tool",
         "viewpoints",
         "selection",
-        "wireframe"
+        "wireframe",
+        "internal-line-display",
+        "internal-primitives"
       ],
       "source_anchors": [
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn patterns(",
-          "line": 3127,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 3557,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1738,8 +2516,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn simulation_bar(",
-          "line": 1984,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2105,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     },
@@ -1761,8 +2539,53 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "ui.make_persistent_id(\"mesh-settings\")",
-          "line": 2437,
-          "sha256": "fece6170af560fb3b56e430f4e0bdef1ca23cb70c73a0f5741f0f1288e091f9e"
+          "line": 2608,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        }
+      ]
+    },
+    {
+      "surface": "Create 2D menu",
+      "controls": [
+        "Internal line",
+        "Disabled/missing-owner explanation"
+      ],
+      "group_ids": [
+        "internal-primitives",
+        "selection"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "egui::menu::MenuButton::new(\"Create 2D\")",
+          "line": 1913,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+        }
+      ]
+    },
+    {
+      "surface": "Internal annotation endpoint modal",
+      "controls": [
+        "Create internal line / Edit internal line",
+        "Start U (m)",
+        "Start V (m)",
+        "End U (m)",
+        "End V (m)",
+        "Apply internal line / Return",
+        "Cancel internal line",
+        "Explicit no cut/fold/sewing effect"
+      ],
+      "group_ids": [
+        "internal-primitives",
+        "point-pattern-edit",
+        "undo-redo"
+      ],
+      "source_anchors": [
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn internal_line_window(",
+          "line": 3194,
+          "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
         }
       ]
     }
@@ -1845,16 +2668,40 @@
     },
     {
       "path": "docs/automation.md",
-      "sha256": "a4f0f16c72684d126d2e14787abb5f8ea48c0bd5f36d6d1469c3b69ab0143000",
-      "scope": "Current shared command/query/file-tool syntax and limits; no live studio control."
+      "sha256": "3dbeec3f4e7ec7780f1618c94c50c05bf008d3b475e738331370f7b9d720a65e",
+      "scope": "Current shared command/query/file-tool syntax and limits; no live studio control. Explicitly re-reviewed at ad7 for the two internal commands, ownership inspection, strict v4 and annotation-omitting exterior exports; nine file tools remain."
+    },
+    {
+      "path": "spec/features/PAT-006-internal-segments.md",
+      "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+      "scope": "Approved original straight-annotation representation/containment/commands/UI/input/strict-v4 contract. Prospective criteria and follow-on cuts are requirements, not executed implementation/native/reference results."
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "f3700ac78fd442f4d9fb50b6b7ba5ccd168a83eb465b1aa6386e8b37ae1a875e",
+      "scope": "Current ownership/annotation-versus-physical boundary, unchanged GUI-independent libraries and explicit source responsibilities."
+    },
+    {
+      "path": "docs/file-formats.md",
+      "sha256": "4a28924bc6c310668745dfbadfa81dc794f8f6d7507939b95dd1dc578a096af3",
+      "scope": "Strict v4, frozen v1/v2/v3 migrations, supported ownership, failed-save recovery qualification and exterior-only annotation-omitting interchange profiles."
     }
   ],
   "limits": [
     "All 949 catalog entry records, 205 packet definitions/dependencies, 56 historical landmark identities/paths, the first three queued slices and historical command count stay unchanged. Existing planned/mapping labels describe only their historical source; these additive rows are source candidates, not feature status changes.",
     "Current implementation/reference/verification/freshness and retained failures must be joined from parity/features.yaml and reports at the revision reported. No such status/evidence fields are copied here.",
     "No new reference/catalog IDs or aliases are invented for original WeftForge controls. FILE-005 imports use an existing engineering bucket without implying that a reference import menu was observed.",
-    "Internal lines/primitives and internal sewing remain planned. The current exterior-boundary command/model snapshot supplies no internal-line implementation; a future contract is not implementation evidence.",
+    "Only owned independent straight internal annotations are now bounded source candidates. Full internal shapes/paths/cubics/holes, cuts/cut-and-sew, folds and internal sewing remain missing. The historical planned mapping at 3eddef stays untouched; neither PAT-006/PAT-007 nor a roadmap gate is completed by this source update. A future cut contract is not cut implementation evidence.",
     "This draft performed static immutable-source/map checks only. Source test definitions are anchors, not a statement that those tests or native workflows were executed. Transform pointer and physical-length native qualification remain independent integration work.",
-    "Unlisted groups retain only the historical source review. Do not silently describe the complete 205-group map as current at this newer pin."
-  ]
+    "Unlisted groups retain only the historical source review. Do not silently describe the complete 205-group map as current at this newer pin.",
+    "B657 remains an immutable prior review, not an execution claim at ad7. All current source anchors/hashes/lines and changed automation/format/architecture inputs are explicitly repinned/reviewed. This task ran only Python mapping checks; reported core/CLI/native test counts and four UI fixes are not execution evidence supplied by this map.",
+    "General Save commits an ordinary inspector draft before chooser/IO; this source increment does not establish global Save-cancel/failure draft atomicity. Accepted primary/recovery staging keeps its existing ordering and may advance recovery before failed primary replacement."
+  ],
+  "source_update_origin": {
+    "previous_addendum_commit": "d670aa7562b068bf32f5385c0f8f10858dbf29f5",
+    "previous_addendum_sha256": "89d13a8471f8035a9c9a67863eb0051767085b8ef40c1d842239ba593c453af2",
+    "previous_markdown_sha256": "ab5e634e2da89582dad1fde3f182c9b7de84f181af106df0e116f199858949fc",
+    "previous_source_commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+    "preservation_rule": "Preserve the exact previous B657 addendum in Git, all its source pins, every prior candidate group and its qualification/unknown wording. Explicitly re-review affected descriptions and every current source anchor/hash/line at ad7; do not imply the prior review executed at the new source. Preserve the historical 949/205/56/22 snapshot byte-for-byte."
+  }
 }

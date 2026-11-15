@@ -1,0 +1,21 @@
+{
+  "kind": "observed_completion_tool_return_upper_bound",
+  "actual_completion_summary_calls": 1,
+  "completion_summary": "Stopped at modal dismissal",
+  "completion_return_observed": true,
+  "conditional_lower_bound": {
+    "kind": "conditional_completion_lower_bound_not_an_attempted_summary",
+    "source_record": "0085",
+    "utc": "2026-11-15T21:02:08.958Z",
+    "monotonic_ns": "898844816007791",
+    "qualification": "If next tool call is completion_summary, this is a lower bound only; no exact summary invocation time."
+  },
+  "return_upper_bound": {
+    "utc": "2026-11-15T21:03:43.784Z",
+    "monotonic_ns": "898939641581500"
+  },
+  "conservative_elapsed_upper_bound_s": 509.109270875,
+  "main_case_record_count": 85,
+  "total_count_with_one_completion": 86,
+  "qualification": "Lower marker precedes summary invocation; external upper receipt follows returned summary. Neither is an exact invocation timestamp, and summary is not a native controller pair. No further native observer/input followed final0085."
+}

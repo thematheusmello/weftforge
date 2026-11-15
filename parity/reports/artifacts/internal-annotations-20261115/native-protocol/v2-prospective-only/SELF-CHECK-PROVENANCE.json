@@ -1,0 +1,19 @@
+{
+  "status": "unchanged_tested_logic_and_models_historical_selfchecks_not_rerun",
+  "old_packet_freeze_sha256": "ac65bff3ab3a9c5ab006d36fa2f4db7bd385b8a70f6010cbf53e9fa8154e3a28",
+  "old_packet_relative": "../internal-native-plan-20261115",
+  "copied_exact_reports": [
+    "SELF-CHECK-DRAFT-005.json",
+    "SELF-CHECK-FILES-001.json",
+    "SELF-CHECK-SNAPSHOT-001.json"
+  ],
+  "reports_describe": "Original synthetic selfcheck artifacts remain in the OLD packet; copied reports retain those historical paths/provenance. No current native run or old-output regrade is implied.",
+  "unchanged_cases": {
+    "original_state_models": 24,
+    "wrong_construction_export_outputs_refused": 42,
+    "file_provenance_missing_output_or_cap_counterexamples_refused": 8
+  },
+  "new_validation": "STATIC-VALIDATION-001.json performs only source/hash/budget/canonical-state/template invariants.",
+  "new_product_or_GUI_or_Cargo_or_candidate_execution": false,
+  "A003_staged_or_run": false
+}

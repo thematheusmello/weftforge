@@ -167,7 +167,7 @@ fn assert_lossless_v1(bytes: &[u8]) -> Project {
     assert_eq!(old["version"], 1);
     let project = Project::from_json(bytes).unwrap();
     let mut current: Value = serde_json::from_slice(&project.to_json().unwrap()).unwrap();
-    assert_eq!(current["version"], 3);
+    assert_eq!(current["version"], weftforge_core::FORMAT_VERSION);
     assert_eq!(
         current["project"]
             .as_object_mut()
@@ -176,6 +176,10 @@ fn assert_lossless_v1(bytes: &[u8]) -> Project {
         Some(json!([]))
     );
     for piece in current["project"]["pieces"].as_array_mut().unwrap() {
+        assert_eq!(
+            piece.as_object_mut().unwrap().remove("internal_curves"),
+            Some(json!([]))
+        );
         assert_eq!(
             piece.as_object_mut().unwrap().remove("grain_angle"),
             Some(json!(0.0))
@@ -243,7 +247,7 @@ fn nondefault_v1_material_values_are_mapped_instead_of_replaced_by_defaults() {
 }
 
 #[test]
-fn v3_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes() {
+fn v4_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes() {
     let path = temp_path();
     fs::write(&path, V1_FIXTURES[0]).unwrap();
     let original = Project::load(&path).unwrap();
@@ -262,7 +266,7 @@ fn v3_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes() {
     let saved = fs::read(&path).unwrap();
     assert_eq!(
         serde_json::from_slice::<Value>(&saved).unwrap()["version"],
-        3
+        weftforge_core::FORMAT_VERSION
     );
     assert_eq!(Project::load(&path).unwrap(), editor.project);
     assert_eq!(fs::read(recovery_path(&path)).unwrap(), V1_FIXTURES[0]);
@@ -286,13 +290,18 @@ fn v3_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes() {
 #[test]
 fn version_dispatch_rejects_mixed_schemas_unknown_fields_and_unsupported_versions() {
     let old: Value = serde_json::from_slice(V1_FIXTURES[0]).unwrap();
-    let v3: Value = serde_json::from_slice(
+    let v4: Value = serde_json::from_slice(
         &Project::from_json(V1_FIXTURES[0])
             .unwrap()
             .to_json()
             .unwrap(),
     )
     .unwrap();
+    let mut v3 = v4.clone();
+    v3["version"] = json!(3);
+    for piece in v3["project"]["pieces"].as_array_mut().unwrap() {
+        piece.as_object_mut().unwrap().remove("internal_curves");
+    }
     let mut v2 = v3.clone();
     v2["version"] = json!(2);
     v2["project"]
@@ -333,13 +342,26 @@ fn version_dispatch_rejects_mixed_schemas_unknown_fields_and_unsupported_version
     bad["project"]["sewing_groups"] = json!([]);
     reject(&bad);
     for document in [&old, &v2, &v3] {
+        assert!(Project::from_json(&serde_json::to_vec(document).unwrap()).is_ok());
+        let mut bad = document.clone();
+        bad["project"]["pieces"][0]["internal_curves"] = json!([]);
+        reject(&bad);
+    }
+    let mut bad = v4.clone();
+    bad["project"]["pieces"][0]
+        .as_object_mut()
+        .unwrap()
+        .remove("internal_curves");
+    reject(&bad);
+    assert!(Project::from_json(&serde_json::to_vec(&v4).unwrap()).is_ok());
+    for document in [&old, &v2, &v3, &v4] {
         let mut bad = document.clone();
         bad["unknown"] = json!(0);
         reject(&bad);
         let mut bad = document.clone();
         bad["project"]["unknown"] = json!(0);
         reject(&bad);
-        for version in [0, 4, 999] {
+        for version in [0, 5, 999] {
             let mut bad = document.clone();
             bad["version"] = json!(version);
             reject(&bad);
@@ -371,4 +393,39 @@ fn duplicate_fields_are_rejected_at_envelope_project_and_material_boundaries() {
         );
         assert!(Project::from_json(duplicate_density.as_bytes()).is_err());
     }
+}
+
+#[test]
+fn original_v3_migrates_only_empty_internal_ownership_and_keeps_f64_bits() {
+    let bytes = include_bytes!("fixtures/asymmetric-fine.weftforge");
+    let old: Value = serde_json::from_slice(bytes).unwrap();
+    assert_eq!(old["version"], 3);
+    assert_disk_roundtrip(bytes, |project| {
+        assert!(
+            project
+                .pieces
+                .iter()
+                .all(|piece| piece.internal_curves.is_empty())
+        );
+        let mut current: Value = serde_json::from_slice(&project.to_json().unwrap()).unwrap();
+        for piece in current["project"]["pieces"].as_array_mut().unwrap() {
+            assert_eq!(
+                piece.as_object_mut().unwrap().remove("internal_curves"),
+                Some(json!([]))
+            );
+        }
+        assert_eq!(current["project"], old["project"]);
+        for (point, saved) in project
+            .points
+            .iter()
+            .zip(old["project"]["points"].as_array().unwrap())
+        {
+            for axis in 0..2 {
+                assert_eq!(
+                    point.position[axis].to_bits(),
+                    saved["position"][axis].as_f64().unwrap().to_bits()
+                );
+            }
+        }
+    });
 }

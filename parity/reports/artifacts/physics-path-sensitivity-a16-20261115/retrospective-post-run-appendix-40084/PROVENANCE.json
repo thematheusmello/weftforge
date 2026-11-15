@@ -1,0 +1,38 @@
+{
+  "kind": "retrospective_copy_of_producer_observed_terminal_tool_result",
+  "source": "Assistant conversation tool history; terminal functions.exec output carrying tools.write_stdin result",
+  "method": "Retrospective transcription of the already observed result; not an execution-time filesystem receipt or a new session query",
+  "session_id": 40084,
+  "request": {
+    "session_id": 40084,
+    "chars": "",
+    "yield_time_ms": 30000,
+    "max_output_tokens": 6000
+  },
+  "observed_terminal_chunk_id": "523720",
+  "observed_exit_code": 0,
+  "controller_pid": 2879,
+  "execution_time_receipt_saved_separately": false,
+  "closed_session_repolled": false,
+  "controller_or_candidate_rerun": false,
+  "GUI_actions": false,
+  "original_timestamps_utc": {
+    "terminal_poll_invoked": null,
+    "terminal_poll_returned": null,
+    "controller_OS_exit": null
+  },
+  "timestamp_qualification": "UTC timestamps were not separately retained and are left unknown. wall_time_seconds is the terminal write_stdin call duration, not whole-case duration or an OS exit timestamp.",
+  "qualification": "Controller0 is producer-observed in terminal tool history and consistent with FINAL status complete; it was not independently saved as an outer-controller execution-time receipt. Consumer exit2 and failed physical quality remain unchanged.",
+  "copied_result": {
+    "path": "terminal-tool-result.json",
+    "sha256": "c89ea5b3086b409177fb309ee3aaed98d0432ac44f4900554599a80869908ad2"
+  },
+  "finalized_output_reference": {
+    "path": ".local/garment-physics-next-20261115/preparation-a16-002/runtime/FINAL.json",
+    "sha256": "9dbc231b433b539306d6229bed16bb056ab4920ece70d816bd3cb980da905397",
+    "listed_output_hashes_checked": 31,
+    "all_listed_outputs_unchanged_before_copy": true,
+    "all_listed_outputs_unchanged_after_copy": true
+  },
+  "appendix_location_scope": "Outside preparation-a16-002 and its finalized output/clock/hash set; no backdated insertion into FINAL."
+}

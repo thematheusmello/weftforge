@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "kind": "static_subprocess_budget_from_frozen_loops_not_product_execution",
+  "worst_case_target_CLI_subprocesses": 434,
+  "unchanged_existing_adapter_process_cap": 500,
+  "remaining_target_process_capacity": 66,
+  "unchanged_elapsed_cap_s": 900,
+  "unchanged_individual_timeout_s": 120,
+  "components": [
+    {
+      "stage": "schema_discovery",
+      "subprocesses": 2,
+      "reason": "One current and one legacy tools/list process"
+    },
+    {
+      "stage": "positive_execute",
+      "subprocesses": 78,
+      "reason": "26 accepted cases x3 channels"
+    },
+    {
+      "stage": "positive_length_queries",
+      "subprocesses": 54,
+      "reason": "Each declared length query once per channel"
+    },
+    {
+      "stage": "positive_MCP_inspect",
+      "subprocesses": 52,
+      "reason": "One inspect for each accepted current/legacy MCP result"
+    },
+    {
+      "stage": "positive_CLI_ownership_inspect",
+      "subprocesses": 6,
+      "reason": "R_add and S_add CLI inspect in each channel workdir"
+    },
+    {
+      "stage": "negative_commands",
+      "subprocesses": 108,
+      "reason": "Separate destination plus declared same-file repetitions"
+    },
+    {
+      "stage": "malformed_v4",
+      "subprocesses": 42,
+      "reason": "14 malformed inputs x3 channels"
+    },
+    {
+      "stage": "legacy_migration",
+      "subprocesses": 27,
+      "reason": "Per version: recover +2 MCP reads +3 same-file edits +3 mixed-schema failures"
+    },
+    {
+      "stage": "mesh_export_separation",
+      "subprocesses": 25,
+      "reason": "Initial inspect; each of3 stages executes, inspects, then before/after OBJ/SVG/DXF"
+    },
+    {
+      "stage": "raw_and_future_schema",
+      "subprocesses": 24,
+      "reason": "4 malformed commands, version5 and3 malformed native files"
+    },
+    {
+      "stage": "v4_bits",
+      "subprocesses": 1,
+      "reason": "One no-op command transaction"
+    },
+    {
+      "stage": "object_and_file_limits",
+      "subprocesses": 2,
+      "reason": "Two CLI failure invocations"
+    },
+    {
+      "stage": "writer_failures",
+      "subprocesses": 12,
+      "reason": "4 writer cases x3 channels"
+    },
+    {
+      "stage": "bounded_stress",
+      "subprocesses": 1,
+      "reason": "Exactly one CLI invocation for either frozen supported outcome"
+    }
+  ],
+  "counting": "A current or legacy MCP invocation is one CLI subprocess; legacy initialize/notification/tool-call lines share it. Failures can shorten paths; there is no retry loop. DXF metadata validation adds no subprocess.",
+  "binding_preflight_git_reads": "The existing source preflight separately invokes git show once per bound source_hashes entry, outside the unchanged adapter counter. Full OS subprocess total is434+N for N bound source files; N<=66 also keeps that total<=500. No counter or cap was widened."
+}

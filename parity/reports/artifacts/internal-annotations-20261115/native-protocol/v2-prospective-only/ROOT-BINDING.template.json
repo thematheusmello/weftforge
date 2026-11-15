@@ -1,0 +1,60 @@
+{
+  "status": "template_only_no_runtime_binding_no_execution_grant",
+  "root_authorized_for_case": false,
+  "case": "A",
+  "freeze_sha256": null,
+  "source_commit": null,
+  "clean_source_snapshot_and_hashes": null,
+  "native_binary": null,
+  "native_binary_sha256": null,
+  "own_target_directory": null,
+  "os_architecture": null,
+  "display_scale_and_window_geometry": null,
+  "owned_app_bundle_and_launch_arguments": null,
+  "process_window_identity_and_confirmed_handles": null,
+  "integrated_local_gate_logs": null,
+  "inputs": {},
+  "accepted_A_dependency": null,
+  "preflight_and_postflight_hash_receipts": null,
+  "controller_configuration": {
+    "root": null,
+    "recorderPath": null,
+    "evidenceKind": "native",
+    "callCap": 175,
+    "elapsedCapS": 1200,
+    "baselineCalls": 0
+  },
+  "controller_constructor_requirements": {
+    "required_keys": [
+      "root",
+      "recorderPath",
+      "evidenceKind",
+      "callCap",
+      "elapsedCapS",
+      "baselineCalls"
+    ],
+    "invocation": "createController(binding.controller_configuration)",
+    "must_pass_complete_object": true,
+    "root": "Replace null with the fresh owned case absolute directory before any grant; no existing old case path.",
+    "recorderPath": "Replace null INSIDE controller_configuration with the absolute pinned recorder file. A separate top-level recorder field is not passed implicitly.",
+    "recorder_sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+    "controller_sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+    "actual_actor_runtime_proof_still_required": true
+  },
+  "completion_summary_bounds_policy": {
+    "actual_completion_tool_calls": 1,
+    "reserved_outside_native_controller_trace": true,
+    "mandatory_order": "The very next tool call after final actual native outcome must be CUA completion_summary only, exactly once. No intervening timestamp tool. Success has one planned quit as last native observer; failure has no extra input/observer/quit.",
+    "receipt_method": "Conditional filesystem markers may be retained after observations and before planned Quit. Pair only the final applicable lower marker with the one immediate actual completion_summary return. Earlier conditional markers stay unpaired bookkeeping and are not attempted summary calls.",
+    "timestamp_truth": "The conditional marker is a conservative lower bound preceding invocation; external returned receipt is an upper bound. Neither is an exact invocation timestamp. The summary bounds are NOT a native controller API pair; native/external operation trace pairs remain exact.",
+    "bounds_and_caps": {
+      "case_operations_max": 175,
+      "actual_summary_max": 1,
+      "total_actual_calls_max": 176,
+      "conservative_elapsed_upper_bound_through_summary_return_s": 1200
+    },
+    "clock": "Original filesystem clock starts before first case-relevant getState/bootstrap, includes proof/launch/input/waits/observations, and never resets.",
+    "preclock_failure": "If no case clock/native operation/launch exists, retain immediate summary tool return without fabricating a native pair, invocation timestamp, elapsed-case value or cap-pass claim.",
+    "bookkeeping": "Conditional markers do not add target operations or reset/hide the clock. Preserve exact actual call count and independently record the returned summary upper bound only after that immediate tool return."
+  }
+}

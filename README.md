@@ -48,6 +48,13 @@ guides show the authored pair. The bounded native check includes invalid input,
 caret retention, history, saving and same-process reopen; internal sewing, full
 chain workflows and garment simulation acceptance remain open.
 
+**Internal line** adds straight annotations owned by a pattern piece, with a
+two-point tool, exact endpoint editing, selection/removal and applied length
+feedback. A valid endpoint edit and staged piece properties share one Undo step.
+These editable annotations are stored in strict native v4; cutting, holes,
+internal shapes, folds and internal sewing remain future work. See the
+[actual native annotation gallery](docs/studio-preview.md).
+
 **Transform pattern** translates or rotates one 2D piece, with numeric angle,
 translation and pivot controls plus canvas handles. This layout operation keeps
 the arranged 3D surface and world warp fixed. **New Empty**, available in File
@@ -66,9 +73,10 @@ with a signed percentage for extension or compression.
 The solver is early; general garment convergence and contact robustness remain
 ongoing work.
 
-Version3 `.weftforge` JSON stores supported editable construction, including
-ordered sewing groups, and strictly migrates version1/2 projects. Older apps
-cannot open v3. OBJ mesh export and bounded SVG/DXF pattern import and export
+Version 4 `.weftforge` JSON uses a strict schema for supported editable
+construction, including ordered sewing groups and piece-owned straight internal
+annotations. The reader supports explicit version 1/2/3 migrations; older apps
+cannot open v4. OBJ mesh export and bounded SVG/DXF pattern import and export
 exist; [format details and gaps](docs/file-formats.md)
 explain what survives each path. Simulation frames/settings, imported avatars,
 textures, animation, advanced construction and third-party project formats

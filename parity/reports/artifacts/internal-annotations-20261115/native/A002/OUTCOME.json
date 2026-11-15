@@ -1,0 +1,50 @@
+{
+  "case": "A",
+  "attempt": "A002",
+  "status": "stopped_at_unexpected_modal_dismissal_pending_root_review",
+  "actor_native_input_lease_closed": true,
+  "final_native_record": "0085",
+  "last_native_elapsed_s": 414.283670583,
+  "returned_case_operation_pairs": 85,
+  "actual_completion_summary_calls": 1,
+  "completion_summary": "Stopped at modal dismissal",
+  "conservative_elapsed_upper_bound_s": 509.109270875,
+  "operation_count_with_one_reserved_summary": 86,
+  "frozen_operation_cap": 175,
+  "total_cap_with_summary": 176,
+  "elapsed_cap_s": 1200,
+  "barrier": "One prospectively planned background Undo pointer click at the currently observed [1468,43] dismissed the internal edit modal. Revision remained2 and original line remained; pending rawgrain0.47e0 was restored. The next required explicit Cancel target was absent, so no further action/observer occurred.",
+  "observed_prefix": [
+    "NativeemptyR0 and exactSaveAsName via one documented setValue",
+    "Four numeric fields created unit square R1; saved raw",
+    "5mm toggle selected; two original singleclicks created line13 with displayedP0[.125,.25]/P3[.875,.75] and901.388mm atR2; saved raw",
+    "Pending grain0.47e0/caret beforee staged atR2",
+    "Modal screenshot-only raw1e- refusal retained R2; Save shortcut kept modal open",
+    "Background Undo pointer dismissed modal without an observed history revision"
+  ],
+  "AX_limits": [
+    "Modal fields/actions were screenshot-only; all background controls appeared disabled while modal open",
+    "Later File menu entries were screenshot-only; observed Save coordinate route used",
+    "Initial getApp emitted full AX in tool output; following retained capture AX was a no-change diff"
+  ],
+  "required_primary_states_missing": [
+    "A03-edited",
+    "A04-undo",
+    "A05-redo"
+  ],
+  "saved_snapshot_sha256": {
+    "A00-empty": "710697e3a4fc5287c315e6e906ed15046b969aa3b9d2cc09a604ba6d579d9555",
+    "A01-square": "0a6af9b7a4e81e269b1670d0f992536ead106ef0494ada3913f8a73480f6aed7",
+    "A02-created": "37dc0eafe185702f85a7e9470ddbda2a11c50cf776bbab563642958d2be0f4a7"
+  },
+  "postflight_sha256": "25f98bc3ca0648e0ec0b3873605715a43743626f4321ceb1777877ab18d7e0ae",
+  "completion_bounds_sha256": "89fd1cdcb3e5d3d8dd6f6fadda2d4492463a31fdd1d43ed30c7c96d03181883d",
+  "no_retry_or_output_repair": true,
+  "no_post_failure_quit_or_native_observer": true,
+  "PID_left_running": 93371,
+  "post_case_cleanup": "Separate root-authorized cleanup required after retaining outcome; outside this frozen case.",
+  "formal_saved_grader_run": false,
+  "root_UI_review": "pending",
+  "reference_verified": false,
+  "full_contract_or_feature_accepted": false
+}

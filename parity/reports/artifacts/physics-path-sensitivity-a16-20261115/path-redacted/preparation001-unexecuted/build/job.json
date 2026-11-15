@@ -1,0 +1,78 @@
+{
+  "kind": "isolated_build_only",
+  "wrapper_pid": 95605,
+  "argv": [
+    "<HOME>/.cargo/bin/cargo",
+    "build",
+    "--release",
+    "--locked",
+    "--offline",
+    "-j",
+    "1",
+    "--message-format=json"
+  ],
+  "cwd": "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001/harness",
+  "default_target": "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001/harness/target",
+  "target_initially_absent": true,
+  "removed_environment": {
+    "CARGO_TARGET_DIR": null,
+    "CARGO_BUILD_TARGET_DIR": null,
+    "RUSTC_WRAPPER": null,
+    "RUSTC_WORKSPACE_WRAPPER": null,
+    "CARGO_BUILD_RUSTC_WRAPPER": null
+  },
+  "compiled_cache_copied": false,
+  "input_hashes": {
+    "harness/Cargo.toml": "56fb8883268ce1a5d0738eb55bf966017198d888ef32b90fb967919a89f15f66",
+    "harness/Cargo.lock": "397402752a6d2fc585695aa96da256d588aa3454511ef234b8a7feb60c7a1c3f",
+    "harness/src/main.rs": "f0d2d4b1d71a90fa1018e452439efe8ecb59ef71f4b5a5fb36cb916f58f6b6df"
+  },
+  "status": "completed",
+  "candidate_executions": 0,
+  "cargo_pid": 95747,
+  "exit_code": 0,
+  "elapsed_seconds": 27.754189917002805,
+  "source_hashes_still_match": true,
+  "build_inputs_still_match": true,
+  "actual_artifact_messages": [
+    {
+      "reason": "compiler-artifact",
+      "package_id": "path+file://<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001/harness#harbor-public-driver@0.0.0",
+      "manifest_path": "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001/harness/Cargo.toml",
+      "target": {
+        "kind": [
+          "bin"
+        ],
+        "crate_types": [
+          "bin"
+        ],
+        "name": "harbor-public-driver",
+        "src_path": "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001/harness/src/main.rs",
+        "edition": "2024",
+        "doc": true,
+        "doctest": false,
+        "test": true
+      },
+      "profile": {
+        "opt_level": "3",
+        "debuginfo": 0,
+        "debug_assertions": false,
+        "overflow_checks": false,
+        "test": false
+      },
+      "features": [],
+      "filenames": [
+        "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001/harness/target/release/harbor-public-driver"
+      ],
+      "executable": "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001/harness/target/release/harbor-public-driver",
+      "fresh": false
+    }
+  ],
+  "driver_sha256": "1d6caa60cd3c95b860332fb2d06f1dfee919f7fd035233e4aa21fd9e948a8067",
+  "driver_path": "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001/harness/target/release/harbor-public-driver",
+  "target_bytes": 68147194,
+  "log_hashes": {
+    "cargo.jsonl": "570de8b3f93612b5e09f7a9d722f6229c288c8e87850c394827b16edd7352dd2",
+    "cargo.stderr": "29c168dfbc0f8a870823d4d7a08212e44fcee2217232979cd14d180ca63f9024"
+  }
+}

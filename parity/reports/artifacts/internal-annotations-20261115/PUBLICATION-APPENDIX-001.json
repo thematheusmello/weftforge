@@ -1,0 +1,92 @@
+{
+  "status": "private_append_only_stage_not_Git_tracked_or_delivery",
+  "prior_index": "PUBLICATION.json",
+  "prior_index_sha256": "33d9010743fb4041d0787e98714d7ce9c0cab624f026a7efd6bb52c04d7fece0",
+  "scope": "Closed final cargo xtask verify and separate root review. This supersedes only the prior staging index\u2019s pending-final-verify statement; native gate, publication tracking, clean-checkout registry/map checks and delivery remain pending.",
+  "normalization": "Same path-only derivative policy as original index; path-redacted/ names identify transformed copies. Original acceptance and prepared-stage artifacts remain untouched.",
+  "files": {
+    "final-verify/clean-db8ee77-verify-001/CHECKS.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "content_kind": "exact_original_bytes",
+      "artifact_role": "final_local_gate_log_or_receipt_not_target_acceptance_stdio",
+      "logical_evidence_path": "final-verify/clean-db8ee77-verify-001/CHECKS.json",
+      "original_sha256": "647fe7b66c1247595a280baedfa8d11c20f6976c97b6207958976e4a844de8d4",
+      "original_bytes": 28027,
+      "public_sha256": "647fe7b66c1247595a280baedfa8d11c20f6976c97b6207958976e4a844de8d4",
+      "public_bytes": 28027,
+      "normalization": null
+    },
+    "final-verify/clean-db8ee77-verify-001/RUNNING.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "content_kind": "exact_original_bytes",
+      "artifact_role": "final_local_gate_log_or_receipt_not_target_acceptance_stdio",
+      "logical_evidence_path": "final-verify/clean-db8ee77-verify-001/RUNNING.json",
+      "original_sha256": "6c2d885ef4c874b42fb5b82c5c9d6e6a1208d59ae4161601b09eba19f7eb5264",
+      "original_bytes": 390,
+      "public_sha256": "6c2d885ef4c874b42fb5b82c5c9d6e6a1208d59ae4161601b09eba19f7eb5264",
+      "public_bytes": 390,
+      "normalization": null
+    },
+    "final-verify/clean-db8ee77-verify-001/TOOL-RETURN.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "content_kind": "exact_original_bytes",
+      "artifact_role": "final_local_gate_log_or_receipt_not_target_acceptance_stdio",
+      "logical_evidence_path": "final-verify/clean-db8ee77-verify-001/TOOL-RETURN.json",
+      "original_sha256": "3720e5f495036666b4171759db151791deee7b8c2a31d633fb36df71ec59ba97",
+      "original_bytes": 3140,
+      "public_sha256": "3720e5f495036666b4171759db151791deee7b8c2a31d633fb36df71ec59ba97",
+      "public_bytes": 3140,
+      "normalization": null
+    },
+    "path-redacted/final-verify/clean-db8ee77-verify-001/verify.stderr": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "content_kind": "path_only_redacted_derivative",
+      "artifact_role": "final_local_gate_log_or_receipt_not_target_acceptance_stdio",
+      "logical_evidence_path": "final-verify/clean-db8ee77-verify-001/verify.stderr",
+      "original_sha256": "976e65d67be79dc57eb259b7f7a0bb8753b46902855e0b35343fcb706d24cde4",
+      "original_bytes": 678,
+      "public_sha256": "7d2b96aae1f8ac30d636acb42ffa38513192c641d483e0559655024605cca36a",
+      "public_bytes": 626,
+      "normalization": "literal workspace/home path prefixes only; all other bytes unchanged"
+    },
+    "final-verify/clean-db8ee77-verify-001/verify.stdout": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "content_kind": "exact_original_bytes",
+      "artifact_role": "final_local_gate_log_or_receipt_not_target_acceptance_stdio",
+      "logical_evidence_path": "final-verify/clean-db8ee77-verify-001/verify.stdout",
+      "original_sha256": "c7f3ae10ec31645fd201af8649f833f3444940f99851c9a4e971afdc23b453d1",
+      "original_bytes": 2686,
+      "public_sha256": "c7f3ae10ec31645fd201af8649f833f3444940f99851c9a4e971afdc23b453d1",
+      "public_bytes": 2686,
+      "normalization": null
+    },
+    "final-verify/ROOT-REVIEW.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "content_kind": "exact_original_bytes",
+      "artifact_role": "final_local_gate_log_or_receipt_not_target_acceptance_stdio",
+      "logical_evidence_path": "final-verify/ROOT-REVIEW.json",
+      "original_sha256": "be7355086098bd0da6b36ca37f62be60c2766a3f5931f209b1a7e6713be46e3d",
+      "original_bytes": 1235,
+      "public_sha256": "be7355086098bd0da6b36ca37f62be60c2766a3f5931f209b1a7e6713be46e3d",
+      "public_bytes": 1235,
+      "normalization": null
+    },
+    "FINAL-LOCAL-GATE.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "content_kind": "exact_original_bytes",
+      "logical_evidence_path": "FINAL-LOCAL-GATE.json",
+      "original_sha256": "11d8fbff210928bb89446065d49672895e2a44c0a8934634bdd97c4ccfa5057d",
+      "original_bytes": 1246,
+      "public_sha256": "11d8fbff210928bb89446065d49672895e2a44c0a8934634bdd97c4ccfa5057d",
+      "public_bytes": 1246,
+      "normalization": null
+    }
+  }
+}

@@ -1,0 +1,32 @@
+--- preparation-a16-001/PROTOCOL.json
++++ preparation-a16-002/PROTOCOL.json
+@@ -66,7 +66,7 @@
+       "<DEADLINE>"
+     ]
+   },
+-  "all_cwds": "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-001",
++  "all_cwds": "<WORKSPACE>/.local/garment-physics-next-20261115/preparation-a16-002",
+   "clock": {
+     "seconds": 420.0,
+     "start": "After exact GO/freeze/source/input checks and exclusive ATTEMPT creation, immediately before geometry process launch",
+@@ -78,7 +78,7 @@
+       "output hashing",
+       "post-run frozen source/input/GO verification"
+     ],
+-    "end": "final completed numerical inspection; final receipt serialization is integrity metadata only",
++    "end": "After every numerical-byte traversal, output hash and source/input/GO/origin inspection; retained final byte count is reused after this timestamp. Only final receipt serialization/writing follows.",
+     "before_GO_clock_or_candidate_execution": false
+   },
+   "resources": {
+@@ -163,5 +163,10 @@
+     "No consumer continuation, numerical work, tuning or extension after420s. Post-case integrity receipt records failure only.",
+     "No B case, reference/native setup, current worktree mutation, workspace checks, production/default changes or publication."
+   ],
+-  "limits": "Numerical-path diagnostic only; no sufficient fix, convergence, force-equilibrium, full contact/CCD, native, reference or Gate1 acceptance."
++  "limits": "Numerical-path diagnostic only; no sufficient fix, convergence, force-equilibrium, full contact/CCD, native, reference or Gate1 acceptance.",
++  "preparation_correction": {
++    "original_blocked_freeze_sha256": "f7c19b4295ae8ec9d4246d95eebc4f53b7306fe4f6071a67f26eb0c333cb1a84",
++    "review": "ORIGIN-BINDING.json",
++    "change": "Final numerical byte traversal occurs before closing timestamp and its retained value is reused; unchanged executable is referenced in its original exclusive target."
++  }
+ }

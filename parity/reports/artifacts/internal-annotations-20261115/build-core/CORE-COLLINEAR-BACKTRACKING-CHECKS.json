@@ -1,0 +1,47 @@
+{
+  "kind": "appended_private_implementation_followup_check_not_acceptance",
+  "author": "/root/internal_segments_core",
+  "utc": "2026-11-15T19:30:27.325154+00:00",
+  "source_commit": "114de7796dda8d1f66db3b0c5a85b21c5d3c961e",
+  "baseline": "f7b7a4e660f2a5085c23980a6bb6447e067e4c63",
+  "source_review": "root .local/internal-segments-source-review-20261115/CORE-REVIEW.md, finding 1",
+  "changed_files": [
+    "crates/weftforge-core/tests/internal_lines.rs"
+  ],
+  "test_source_sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786",
+  "production_unchanged_from_baseline": true,
+  "original_fixture": "Unit-square [0,0]->[1,0] bottom cubic with both controls [1+5e-8,0] and retained ordinary R annotation; controls fit within 1e-7 chord tube while endpoint derivative 3*(1-control) is negative.",
+  "checks": [
+    {
+      "command": "cargo test -p weftforge-core --test internal_lines collinear_backtracking_inside_flatness_tube_is_refused_atomically -- --exact",
+      "initial_result": "Test prediction mismatch only: actual useful certificate refused by fine contour self-touch/uncertifiability, but initial test expected depth exhaustion. First log/source retained; no production mutation.",
+      "final_result": "passed: 1 test, 9 filtered; actual owning-annotation command fails atomically with retained project/history/allocator"
+    },
+    {
+      "command": "rustfmt --edition 2024 --check crates/weftforge-core/tests/internal_lines.rs",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --check -- crates/weftforge-core/tests/internal_lines.rs",
+      "result": "passed"
+    }
+  ],
+  "logs": [
+    {
+      "path": "core-collinear-backtracking-followup.log",
+      "sha256": "cae526917e0bbe82f595de0c51dc6ce3b1de75229676db04ce2a4399a26f36fe"
+    },
+    {
+      "path": "core-collinear-backtracking-followup-green.log",
+      "sha256": "7ad5b5fadcc1dea97d142ca4ed5b0a9e385f1c807199f27a5aeb72ba89d16ec8"
+    }
+  ],
+  "cargo_window": "Explicitly returned to /root/internal_segments_ui after focused test and owned formatting check",
+  "unrun": [
+    "full integrated workspace gates",
+    "independent frozen evaluator",
+    "actual native GUI/CUA",
+    "reference behavior"
+  ],
+  "boundary": "One regression only; numeric thresholds and production policies unchanged. Prior CORE-CLI-CHECKS.json and all earlier receipts/logs preserved."
+}

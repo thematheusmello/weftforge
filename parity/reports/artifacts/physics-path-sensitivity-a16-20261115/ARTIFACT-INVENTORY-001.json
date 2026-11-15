@@ -1,0 +1,738 @@
+{
+  "schema_version": 1,
+  "scope": "Complete current publication-packet node/hash inventory, excluding only this inventory file itself. Its own byte hash is directly anchored by identical report/run artifact_hashes. All nodes remain subject to the separate exhaustive indexed-Git-blob/link-target audit.",
+  "packet_path": "parity/reports/artifacts/physics-path-sensitivity-a16-20261115",
+  "runtime_commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+  "self_path": "ARTIFACT-INVENTORY-001.json",
+  "self_excluded_to_avoid_circular_hash": true,
+  "regular_nodes_excluding_self": 121,
+  "relative_link_nodes": 0,
+  "nodes": {
+    "PHYSICS-SELECTION.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 1611,
+      "sha256": "9570185db2e27f707d8c2151fde721eed0ebf8721f2f22414c7dfaf08bb75800"
+    },
+    "PUBLICATION-CHECKS-001.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2733,
+      "sha256": "d9dc232a66be8cfd03de6aa06a0226bb37552f1a0548e36bee1d21c17aa2fc01"
+    },
+    "PUBLICATION-METADATA-001.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 967,
+      "sha256": "e43368738eddbb7a91e239079c86afd8eca4982941d6573ebc33450174258cdd"
+    },
+    "PUBLICATION-SOURCE-GUARD.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 10246,
+      "sha256": "188403852faef0ef3c70549dc44d314c24e688379e715b6539c0f7c9622b5450"
+    },
+    "PUBLICATION.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 61164,
+      "sha256": "d41fd2594bc7da10aa7dd1fc3086a1a8866bf2d735dc9c493dab0179a64cf9db"
+    },
+    "README.md": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2657,
+      "sha256": "55cfe86b6e473f4cc78142fcc207c8e03588593713edeebd10a2d6cd6f3d0e04"
+    },
+    "path-redacted/preparation001-unexecuted/BUILD-BINDING.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 4486,
+      "sha256": "b91747e16fdb7d636c43a95f3fe8a16fb5b206a249b8f1a4541ed4453a35a665"
+    },
+    "path-redacted/preparation001-unexecuted/FREEZE.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 4457,
+      "sha256": "7b3ced07140472ce8ec5c468786e71478d9a79f62ca408fb99b391a93dc5985d"
+    },
+    "path-redacted/preparation001-unexecuted/PROTOCOL.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 6619,
+      "sha256": "e59f69f3214588ab4259eb736f5c454a2d75229f68f12960888e4860467a03ff"
+    },
+    "path-redacted/preparation001-unexecuted/READONLY-BINDING.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2978,
+      "sha256": "4204c3037466683a568380447146aff99a57faf3f5792d95f3c9588b15df0c63"
+    },
+    "path-redacted/preparation001-unexecuted/SOURCE-BINDING.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2697,
+      "sha256": "eac3344d9ef5ec459242f49b50d96839a541167d04b8e0067f223d0ab7fd2b0b"
+    },
+    "path-redacted/preparation001-unexecuted/build/cargo.jsonl": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 25541,
+      "sha256": "5e68b171ce91fd6dc514dbd70ac4168f3f57a523a8f845c46734694862afc174"
+    },
+    "path-redacted/preparation001-unexecuted/build/cargo.stderr": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 898,
+      "sha256": "7efd52a380c90dd283f807f09f8ed039e622c7e3c1059f5894bce441f2197dc3"
+    },
+    "path-redacted/preparation001-unexecuted/build/job.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2854,
+      "sha256": "5e88467162484b21ce9c803041bff086d6447e34a521c36e19d368494de83f34"
+    },
+    "path-redacted/preparation001-unexecuted/checks/selfcheck-job.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 227,
+      "sha256": "fb164657e9ab0a8aa7618d4644bbbe270f00c53e0dc4fef2d12e260ce01a3387"
+    },
+    "path-redacted/preparation002-closed/FREEZE.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 3960,
+      "sha256": "7f8d19aee066ff58328d29b81ec1ff02b4a72943e658b95a7ebc26a8f0dbcf26"
+    },
+    "path-redacted/preparation002-closed/ORIGIN-BINDING.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 6639,
+      "sha256": "ec92fabf22c9ae75c63b1b2570833fdbcb8ba05c04e393ed1e0c48c6f6b99c14"
+    },
+    "path-redacted/preparation002-closed/PROTOCOL.diff": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 1940,
+      "sha256": "84341ab74b32889ef6415b27571d359865859279d73f875a40b949fb3a5cd4ec"
+    },
+    "path-redacted/preparation002-closed/PROTOCOL.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 7083,
+      "sha256": "6367fb3dd90a1749693289fba7b15ae2e2d32a0376e2087fefa2b01e8dcf90c2"
+    },
+    "path-redacted/preparation002-closed/READONLY-BINDING.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2978,
+      "sha256": "4204c3037466683a568380447146aff99a57faf3f5792d95f3c9588b15df0c63"
+    },
+    "path-redacted/preparation002-closed/SOURCE-BINDING.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2697,
+      "sha256": "eac3344d9ef5ec459242f49b50d96839a541167d04b8e0067f223d0ab7fd2b0b"
+    },
+    "path-redacted/preparation002-closed/checks/final-clock-selfcheck-job.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 300,
+      "sha256": "2afcc824ce1b9fd56de5a5781a7682393fd5595af90d6438ddf6426bb4707082"
+    },
+    "path-redacted/preparation002-closed/runtime/FINAL.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 6843,
+      "sha256": "7ab1f265a21b76954efe98f76d15c3d2982f2ef5c23061ce23dbe56c6e1431b0"
+    },
+    "path-redacted/preparation002-closed/runtime/comparison-receipt.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 345,
+      "sha256": "a3808d9d840715c46e8c8c1652d619056accf41a38159490137d5d393130c4e9"
+    },
+    "path-redacted/preparation002-closed/runtime/comparison-started.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 292,
+      "sha256": "2dfd8fb39cb87760424022b092abdb9ee9df6c3b0b57267c68dc5eb192e41a95"
+    },
+    "path-redacted/preparation002-closed/runtime/consumer-receipt.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 339,
+      "sha256": "d3d2c4e6d0d1ccb83501f28575a59a2473f5c4a0916813c5b046571e994504d9"
+    },
+    "path-redacted/preparation002-closed/runtime/consumer-started.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 286,
+      "sha256": "2d1854dcc6ad77bf10e700a5dcdb4a6fcdcceb0c4d802417fca370aba51d56a9"
+    },
+    "path-redacted/preparation002-closed/runtime/geometry-receipt.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 394,
+      "sha256": "3ad9d3c05a622e56c076c78b4ed4ff760858bc52303c8a64dad33167c7041039"
+    },
+    "path-redacted/preparation002-closed/runtime/geometry-started.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 343,
+      "sha256": "1851b6c3812b53f93ad3a4adb338f77fcef5cc00546ce1e494da9e4699096988"
+    },
+    "path-redacted/preparation002-closed/runtime/producer-receipt.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 388,
+      "sha256": "be054f4c27f69125e87872c1afde01a7f28b25e2e75c73d971236a8b0e452ced"
+    },
+    "path-redacted/preparation002-closed/runtime/producer-started.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 337,
+      "sha256": "c33ddfa0576d0c5099cd21958b935590cc5df40720e471243844325029bf5623"
+    },
+    "path-redacted/retrospective-post-run-appendix-40084/terminal-tool-result.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 6267,
+      "sha256": "c23c84df5911fbc5c0eea2b235ce3c9d32c470665d981455c8a9f036934afd56"
+    },
+    "preparation001-unexecuted/CONSUMER.diff": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 588,
+      "sha256": "57e2bb556327f8a24884e9004daea5629147010bf3b28050aaeac8c5ce482ef7"
+    },
+    "preparation001-unexecuted/DRIVER.diff": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 321,
+      "sha256": "d9727ad880363aafd0be410c57ac0b7ddfe85ca94ec06a9cc352e33d30d7bd1c"
+    },
+    "preparation001-unexecuted/POSTFLIGHT.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 458,
+      "sha256": "1acb48c718de15d4ee481e88d11afd2483c3a3fcd3b96d48b6d0899cf6d34d80"
+    },
+    "preparation001-unexecuted/README.md": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 4218,
+      "sha256": "a57419801e22223fcd8b980f5d2d8fd06a99b2c7ecc35f26d502b20c4c0d27c9"
+    },
+    "preparation001-unexecuted/ROOT-GO.template.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 286,
+      "sha256": "86c1a1407cc0ffe35d18a7292638a125f2c1e73ade657975663cf2fb9439de47"
+    },
+    "preparation001-unexecuted/analyze16.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 1408,
+      "sha256": "19d1d05f8960ea23d55f80387ac5000c960c7478201ba12a33d90881fc13fec1"
+    },
+    "preparation001-unexecuted/bindings.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 349,
+      "sha256": "24f50503f2b6e36f2398caaab9e623516864a17b0f5af7282d89fcef5af7e1fc"
+    },
+    "preparation001-unexecuted/build_driver.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 3725,
+      "sha256": "a197088e292af77e053325716664bbb642336e2600eb8e708a900b28f3cc7e92"
+    },
+    "preparation001-unexecuted/capsule_geometry.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 11717,
+      "sha256": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b"
+    },
+    "preparation001-unexecuted/checks/final-static.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 407,
+      "sha256": "e44bd8d58520e808883b94617967b2b371dcdafa0853e46eb9f43b6b42d2a5a2"
+    },
+    "preparation001-unexecuted/checks/selfcheck.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 681,
+      "sha256": "0c579b7925bb8b643b4c8ea34493df9eccb3004bc6bdf3de1b59721d0a9e5bf0"
+    },
+    "preparation001-unexecuted/checks/selfcheck.stderr": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "preparation001-unexecuted/checks/selfcheck.stdout": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 651,
+      "sha256": "001f024f85885485f14e3f814cb188824ddbdb3b7d3ecb867baf0dd538a7e0dd"
+    },
+    "preparation001-unexecuted/compare_control.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 5339,
+      "sha256": "591f7c2c0caf0f49bec5bb6549954691661d295bd8984f5f656e2698b9f6450e"
+    },
+    "preparation001-unexecuted/consumer16.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 33342,
+      "sha256": "c232a2e10c0cc64d19750cd096377198c29bc7be4c0a04c9285980fae9fd35b8"
+    },
+    "preparation001-unexecuted/decimal_oracle.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2959,
+      "sha256": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d"
+    },
+    "preparation001-unexecuted/expected/current-rest.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 590823,
+      "sha256": "ca474d2c2ea38f6bb7ebb01dadc888fa82693ee565ddb1de59baea9dddfba489"
+    },
+    "preparation001-unexecuted/geometry_math.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 1443,
+      "sha256": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40"
+    },
+    "preparation001-unexecuted/harness/Cargo.lock": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 4226,
+      "sha256": "397402752a6d2fc585695aa96da256d588aa3454511ef234b8a7feb60c7a1c3f"
+    },
+    "preparation001-unexecuted/harness/Cargo.toml": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 380,
+      "sha256": "56fb8883268ce1a5d0738eb55bf966017198d888ef32b90fb967919a89f15f66"
+    },
+    "preparation001-unexecuted/harness/src/main.rs": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 6378,
+      "sha256": "f0d2d4b1d71a90fa1018e452439efe8ecb59ef71f4b5a5fb36cb916f58f6b6df"
+    },
+    "preparation001-unexecuted/inputs/base.weftforge": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 11808,
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+    },
+    "preparation001-unexecuted/metrics.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 18354,
+      "sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610"
+    },
+    "preparation001-unexecuted/resources.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 6728,
+      "sha256": "395bc0e948748ea4ade134919b1911abf2c51faa63a0a56b9554d8f3ab8842a7"
+    },
+    "preparation001-unexecuted/run.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 7396,
+      "sha256": "4366df2d44692627896a766a307f935321284bf10c5a30500900690c432675d4"
+    },
+    "preparation001-unexecuted/selfcheck.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 4166,
+      "sha256": "dc8bde96fa2c314d71a9265e3ed0d4d74a02e44b66c6f89da0c07da432a584e8"
+    },
+    "preparation001-unexecuted/signatures.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2924,
+      "sha256": "b1d04c645b849b9a90654c2db10cb385f325d51f422ea6f86bd5354cb896869d"
+    },
+    "preparation001-unexecuted/static_geometry.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2388,
+      "sha256": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34"
+    },
+    "preparation002-closed/CONSUMER.diff": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 588,
+      "sha256": "57e2bb556327f8a24884e9004daea5629147010bf3b28050aaeac8c5ce482ef7"
+    },
+    "preparation002-closed/DRIVER.diff": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 321,
+      "sha256": "d9727ad880363aafd0be410c57ac0b7ddfe85ca94ec06a9cc352e33d30d7bd1c"
+    },
+    "preparation002-closed/GUARDS.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 985,
+      "sha256": "733bc60569341fda97a5298c70200af36f9b916025b8a2919a61c8d5c35e385f"
+    },
+    "preparation002-closed/POSTFLIGHT.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 672,
+      "sha256": "c5c91cc69562a810d13263d978b35b9e288f937caf7f12367334ec3a67879756"
+    },
+    "preparation002-closed/README.md": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 3628,
+      "sha256": "1d9cdb07ef089b2df39180895cdf1bb6cc50417e81aac80bedd86a2a3be00235"
+    },
+    "preparation002-closed/ROOT-GO.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 313,
+      "sha256": "c76dfd8dde1565dee566821d06c930e75e4391bf22264b55e5e5a2e19e7d5181"
+    },
+    "preparation002-closed/ROOT-GO.template.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 286,
+      "sha256": "86c1a1407cc0ffe35d18a7292638a125f2c1e73ade657975663cf2fb9439de47"
+    },
+    "preparation002-closed/ROOT-REVIEW.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 1086,
+      "sha256": "54ed67539a44ab074dc562742e9243222a7c582ebf4a8936f4d64e3ab4516eb0"
+    },
+    "preparation002-closed/RUN.diff": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2483,
+      "sha256": "e66cad2f9207193a21a5a82d6083c599d19dad02bee438d7fadbb3c6a828a6ac"
+    },
+    "preparation002-closed/analyze16.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 1408,
+      "sha256": "19d1d05f8960ea23d55f80387ac5000c960c7478201ba12a33d90881fc13fec1"
+    },
+    "preparation002-closed/bindings.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 349,
+      "sha256": "24f50503f2b6e36f2398caaab9e623516864a17b0f5af7282d89fcef5af7e1fc"
+    },
+    "preparation002-closed/capsule_geometry.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 11717,
+      "sha256": "f5dc3581caf3aa4f2ba2aab9ee743d641ca2313262119c55157d88170df0a39b"
+    },
+    "preparation002-closed/checks/final-clock-selfcheck.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 839,
+      "sha256": "7bd17e8ef53cbd43659c91132d2a55738764072ec94455a8ca7eefc86f2fb91e"
+    },
+    "preparation002-closed/checks/final-clock-selfcheck.stderr": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "preparation002-closed/checks/final-clock-selfcheck.stdout": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 663,
+      "sha256": "986bca2015910b14510eb6ccf3f39df82a78af45bc95bef47ab8fdcbcbe67c51"
+    },
+    "preparation002-closed/compare_control.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 5339,
+      "sha256": "591f7c2c0caf0f49bec5bb6549954691661d295bd8984f5f656e2698b9f6450e"
+    },
+    "preparation002-closed/consumer16.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 33342,
+      "sha256": "c232a2e10c0cc64d19750cd096377198c29bc7be4c0a04c9285980fae9fd35b8"
+    },
+    "preparation002-closed/decimal_oracle.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2959,
+      "sha256": "7aaf8916b53747bdc6af3056e9d8f711913d260c47841d1d63763213a670fa8d"
+    },
+    "preparation002-closed/expected/current-rest.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 590823,
+      "sha256": "ca474d2c2ea38f6bb7ebb01dadc888fa82693ee565ddb1de59baea9dddfba489"
+    },
+    "preparation002-closed/final_clock_selfcheck.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 3137,
+      "sha256": "f482e2358b5c23760e5ea17aad057f889cf2477ee15b9ddfbca15c61992134d8"
+    },
+    "preparation002-closed/geometry_math.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 1443,
+      "sha256": "5f83dd7ad4a322d5fdd9d8e62e66a1e67688f834f7c6ed7cb912ff0cc1a69a40"
+    },
+    "preparation002-closed/inputs/base.weftforge": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 11808,
+      "sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7"
+    },
+    "preparation002-closed/metrics.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 18354,
+      "sha256": "e4b0bf5034fa0670f39c2115e996e679316891235a3b4eb8e1240b58f3411610"
+    },
+    "preparation002-closed/preflight-base/mesh-metadata.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 572899,
+      "sha256": "ea5e640dd27b4c9e37263bf6c53a473e7a134cdd32bed2ced5724cb3538e9ff7"
+    },
+    "preparation002-closed/preflight-base/rest.obj": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 154152,
+      "sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce"
+    },
+    "preparation002-closed/resources.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 6728,
+      "sha256": "395bc0e948748ea4ade134919b1911abf2c51faa63a0a56b9554d8f3ab8842a7"
+    },
+    "preparation002-closed/run.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 8232,
+      "sha256": "5b8531a9c0a407855aadf095b595a05df4927205a704e769393769a284a69a01"
+    },
+    "preparation002-closed/runs/base/analysis16.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 999798,
+      "sha256": "a9ed4545060460bd13c6690bb6cea9a90de52d1a2a6daf2ca599ab5aceea4b65"
+    },
+    "preparation002-closed/runs/base/comparison.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 240116,
+      "sha256": "8246483986fcf8a41e18db3898bc7d756a21dd39b6ff428b0be0adcc8aff5984"
+    },
+    "preparation002-closed/runs/base/completed-case.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 724,
+      "sha256": "a15c1c719d4b0ef4daae61807d1083cb5538d7642eef3da993a1913cc3b9bd3a"
+    },
+    "preparation002-closed/runs/base/rest-metadata.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 590798,
+      "sha256": "846f681ed0c32635e335d3e18daef08fd784076ba6c7fd59be3e443b74bb948c"
+    },
+    "preparation002-closed/runs/base/stage-000.obj": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 154152,
+      "sha256": "aa6f0ecb460b57e651ec0f49a683d3d8d002fcf8cd900f8ce3809d3b3dc8d1ce"
+    },
+    "preparation002-closed/runs/base/stage-060.obj": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 154807,
+      "sha256": "4f1dd8d2be6817414560b5383c9eb9fedde89a8adaa830912abe9e8127c7d863"
+    },
+    "preparation002-closed/runs/base/stage-180.obj": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 154817,
+      "sha256": "789bdd4f818c648d71d0f9c74ff68924afd376af8310d2535339268a7111076f"
+    },
+    "preparation002-closed/runs/base/steps.jsonl": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 111322,
+      "sha256": "3249c1130e6d972287fed443305a054911d893f57dda2031a4d0580058de60fc"
+    },
+    "preparation002-closed/runs/base/trajectory.jsonl": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 15268911,
+      "sha256": "6590babd7d0c9f6f6acfddb327c8e9bfefb01d5e75aeb4f64a484bae5b6011bd"
+    },
+    "preparation002-closed/runtime/ATTEMPT-001.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 341,
+      "sha256": "c443fc87c93c59065c3e07680c42e68f983553d8dd0d1660a651739ca361c8e3"
+    },
+    "preparation002-closed/runtime/comparison.stderr": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "preparation002-closed/runtime/comparison.stdout": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 516,
+      "sha256": "3789b1194cf273b4f8f9ee166d805234c7926d14f11b2a2b739b4a406e2ebb95"
+    },
+    "preparation002-closed/runtime/consumer.stderr": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "preparation002-closed/runtime/consumer.stdout": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 601,
+      "sha256": "217f202aa5760508348301224d2189278ee0f474091b8b753b648faa0bd54cf7"
+    },
+    "preparation002-closed/runtime/geometry.stderr": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "preparation002-closed/runtime/geometry.stdout": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 72,
+      "sha256": "381f362e2f5c61f04a206e9a24e8bf7c0a81911dd7211de82041c6c3af232b08"
+    },
+    "preparation002-closed/runtime/producer.stderr": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 1359,
+      "sha256": "31c98989c4a093e3db7e0ac4a9b0b20287d02588dede51c7628bfcca6a608e23"
+    },
+    "preparation002-closed/runtime/producer.stdout": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "preparation002-closed/runtime/rest-signature.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 406,
+      "sha256": "f8bc57d4f0008b244b70a577f517c9c9ab78ea38ded2a57794c68e756760f9b4"
+    },
+    "preparation002-closed/signatures.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2924,
+      "sha256": "b1d04c645b849b9a90654c2db10cb385f325d51f422ea6f86bd5354cb896869d"
+    },
+    "preparation002-closed/static_geometry.py": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2388,
+      "sha256": "c4583bbda9250cfa32cdc305c1b21563c26ca46ddb75032f5c2ae4d128299b34"
+    },
+    "publication-checks-af69ed2/CHECKS.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 16034,
+      "sha256": "cd97090801804f4281fab31b442c793a5b15c208f64aba814fb255d756d1254d"
+    },
+    "publication-checks-af69ed2/verify.stderr": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 1502,
+      "sha256": "e29b9fe7258d5188bb62a310c599857fcfd6d8025c98aa812cf39a77fbd9c6ca"
+    },
+    "publication-checks-af69ed2/verify.stdout": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2686,
+      "sha256": "c7f3ae10ec31645fd201af8649f833f3444940f99851c9a4e971afdc23b453d1"
+    },
+    "retrospective-post-run-appendix-40084/PROVENANCE.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 1975,
+      "sha256": "d50871b6c844698e0d246a4e636dae5f3a2012b7d49f26c520c3aad1bc0fadfe"
+    },
+    "reviews/closed-run001/CHECKS.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 5327,
+      "sha256": "8b16a3c76256adcb14ec6431f498fde388ef00d5519265492bb2516752549cb8"
+    },
+    "reviews/closed-run001/REVIEW.md": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 3067,
+      "sha256": "f194f5fb0704c5bc09b3ca5f0863d6c9ef52446e27e0951aac8a827737de707b"
+    },
+    "reviews/closed-run001/SHA256SUMS": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 154,
+      "sha256": "0d92ba3d6ba469b49a9a95e0e80724413a819afac3e23965955246e88c0ebc55"
+    },
+    "reviews/preparation001/CHECKS.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2135,
+      "sha256": "20d90c55e8a1fab393a85d85bdd76ca73019665159fc008205a4b942fbda4912"
+    },
+    "reviews/preparation001/REVIEW.md": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2817,
+      "sha256": "fa720ad05d411ef124fed0268ec82fbf3cbf1aa9cb1ec6e1ca6bbc6c1cbf182a"
+    },
+    "reviews/preparation001/SHA256SUMS": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 154,
+      "sha256": "1507c7ab7e817139f4b42d426e0efb9ccdfcf2ccb2565a8ac8332344d561dc5f"
+    },
+    "reviews/preparation002/CHECKS.json": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2013,
+      "sha256": "face2bf7bea806a9e3745673019be1b4feccd908dee6c7eace7563029010e911"
+    },
+    "reviews/preparation002/REVIEW.md": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 2168,
+      "sha256": "cb5c65ae89eb7fd2dfa0ddf437e600f2154dc276f00c88b85f3f5e24bfae77f0"
+    },
+    "reviews/preparation002/SHA256SUMS": {
+      "node_type": "file",
+      "git_mode": "100644",
+      "bytes": 154,
+      "sha256": "411a056646a36f6731b6bb23c12eec4983b9bd7c79f400b1de6f69f26fdb5f38"
+    }
+  }
+}

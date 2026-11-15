@@ -1,0 +1,2643 @@
+{
+  "kind": "independent_read_only_native_A003_trace_review",
+  "paired_records": 142,
+  "method_counts": {
+    "getState": 1,
+    "local-filesystem-proof": 1,
+    "external-open": 1,
+    "external-own-pid": 1,
+    "getApp": 1,
+    "getAXStateAndScreenshot": 60,
+    "click": 39,
+    "pressKey": 18,
+    "typeText": 13,
+    "setValue": 1,
+    "external-raw-snapshot": 6
+  },
+  "pair_issues": [],
+  "capture_issues": [],
+  "capture_count": 60,
+  "raw_AX_bytes_reviewed": 41494,
+  "plan_ordered_items": 34,
+  "static_max_operations": 164,
+  "actual_operations": 142,
+  "paired_cap": 175,
+  "summary_reserved": 1,
+  "total_cap": 176,
+  "quit_return_elapsed_s": 616.464607083,
+  "reported_summary_return_upper_bound_elapsed_s": 641.657843875,
+  "summary_claim_qualification": "142 is the final retained native record; bounds retain one returned completion claim. The actual immediate single completion tool call and absence of unrecorded calls require tool-history corroboration, not these filesystem records alone.",
+  "step_map": [
+    {
+      "label": "start-empty",
+      "first": 1,
+      "last": 6,
+      "actual_operations": 6,
+      "static_max_operations": 12
+    },
+    {
+      "label": "save-as-A00",
+      "first": 7,
+      "last": 21,
+      "actual_operations": 15,
+      "static_max_operations": 15
+    },
+    {
+      "label": "four-square-fields",
+      "first": 22,
+      "last": 41,
+      "actual_operations": 20,
+      "static_max_operations": 20
+    },
+    {
+      "label": "add-square",
+      "first": 42,
+      "last": 43,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "frame-square",
+      "first": 44,
+      "last": 45,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "save-A01",
+      "first": 46,
+      "last": 50,
+      "actual_operations": 5,
+      "static_max_operations": 5
+    },
+    {
+      "label": "choose-internal",
+      "first": 51,
+      "last": 52,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "snap5mm",
+      "first": 53,
+      "last": 54,
+      "actual_operations": 2,
+      "static_max_operations": 4
+    },
+    {
+      "label": "line-start",
+      "first": 55,
+      "last": 56,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "line-end",
+      "first": 57,
+      "last": 58,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "save-A02",
+      "first": 59,
+      "last": 63,
+      "actual_operations": 5,
+      "static_max_operations": 5
+    },
+    {
+      "label": "stage-grain",
+      "first": 64,
+      "last": 68,
+      "actual_operations": 5,
+      "static_max_operations": 5
+    },
+    {
+      "label": "two-Left-caret",
+      "first": 69,
+      "last": 72,
+      "actual_operations": 4,
+      "static_max_operations": 4
+    },
+    {
+      "label": "open-invalid",
+      "first": 73,
+      "last": 74,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "enter-invalid",
+      "first": 75,
+      "last": 79,
+      "actual_operations": 5,
+      "static_max_operations": 5
+    },
+    {
+      "label": "one-invalid-Apply",
+      "first": 80,
+      "last": 81,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "modal-Save",
+      "first": 82,
+      "last": 83,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "backdrop-Undo-pointer",
+      "first": 84,
+      "last": 85,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "prescribed-reopen",
+      "first": 86,
+      "last": 87,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "prescribed-reentry",
+      "first": 88,
+      "last": 92,
+      "actual_operations": 5,
+      "static_max_operations": 5
+    },
+    {
+      "label": "explicit-Cancel",
+      "first": 93,
+      "last": 94,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "no-refocus-insertion",
+      "first": 95,
+      "last": 96,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "open-compound",
+      "first": 97,
+      "last": 98,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "four-precise-fields",
+      "first": 99,
+      "last": 118,
+      "actual_operations": 20,
+      "static_max_operations": 20
+    },
+    {
+      "label": "separate-Tab",
+      "first": 119,
+      "last": 120,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "one-compound-Apply",
+      "first": 121,
+      "last": 122,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "save-A03",
+      "first": 123,
+      "last": 127,
+      "actual_operations": 5,
+      "static_max_operations": 5
+    },
+    {
+      "label": "one-Undo",
+      "first": 128,
+      "last": 129,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "save-A04",
+      "first": 130,
+      "last": 134,
+      "actual_operations": 5,
+      "static_max_operations": 5
+    },
+    {
+      "label": "one-Redo",
+      "first": 135,
+      "last": 136,
+      "actual_operations": 2,
+      "static_max_operations": 2
+    },
+    {
+      "label": "save-A05",
+      "first": 137,
+      "last": 141,
+      "actual_operations": 5,
+      "static_max_operations": 5
+    },
+    {
+      "label": "scroll-reserve-unused",
+      "first": null,
+      "last": null,
+      "actual_operations": 0,
+      "static_max_operations": 8
+    },
+    {
+      "label": "final-ready-reuses0140",
+      "first": null,
+      "last": null,
+      "actual_operations": 0,
+      "static_max_operations": 6
+    },
+    {
+      "label": "planned-Quit",
+      "first": 142,
+      "last": 142,
+      "actual_operations": 1,
+      "static_max_operations": 1
+    }
+  ],
+  "trace": [
+    {
+      "record": "0001",
+      "method": "getState",
+      "label": "bootstrap-inventory",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native",
+        "purpose": "documentation/inventory only; no target app control"
+      },
+      "before_sha256": "8d250d4ab1b5fa4ea02029b909be0c1441b75c78dfe162196001c5fefcadd22c",
+      "after_sha256": "1efbdb9b391e9a118c62dc4fcfeb7425c823f557457be86b1c24c6251d592224",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0002",
+      "method": "local-filesystem-proof",
+      "label": "actual-runtime-proof",
+      "arguments": {
+        "evidenceKind": "native",
+        "ui_calls": 0
+      },
+      "before_sha256": "20678d8899973a8840f8a50bb5525191b2aacae9cbebdb5c71fe38d82adb43d7",
+      "after_sha256": "a29c091d0c170722cabf7c4ad7e61974b4a9008883eeac15c303e19324e542e3",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0003",
+      "method": "external-open",
+      "label": "external-launch",
+      "arguments": {
+        "args": [
+          "/usr/bin/open",
+          "-n",
+          "<CASE>/WeftForgeInternalA003.app"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "5965ff9f2a86ade1af5f828320e18067efcf64ea23dd0a862fd11b6967b6c97c",
+      "after_sha256": "ce22acc5069151e4053cf659448a14ba3dcb3abbb56f7386293dab1b675f625b",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0004",
+      "method": "external-own-pid",
+      "label": "own-pid-accounting",
+      "arguments": {
+        "args": [
+          "<CASE>/WeftForgeInternalA003.app/Contents/MacOS/weftforge"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "ad62a9a8c309f1f2db70285b5df06294a1694d9701e464ed19456d56f8bf2945",
+      "after_sha256": "935c93fb6126eb134b631fee2e420632460c4cdc3b6626077d3da24fc0d7f342",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0005",
+      "method": "getApp",
+      "label": "bind-owned-app",
+      "arguments": {
+        "args": [
+          "<CASE>/WeftForgeInternalA003.app"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "27d3cc1b2dd0632ea11edd2fee9d45d794c9e4eae3bcd61c7f337243153f4e46",
+      "after_sha256": "f126089bfaac61c44fa47d8b370dfca530cb0c43245a350cf75c2ef31053079a",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0006",
+      "method": "getAXStateAndScreenshot",
+      "label": "initial-empty",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "9288b743990a50836dde0a808838e2d1859b701e3760b5a994722cbd3669f315",
+      "after_sha256": "f8f1c7a589c7c4084b0eb75a7446d3d6c63f1af54c83720bb7da8c41ed7f5734",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0007",
+      "method": "click",
+      "label": "open-file-menu-empty",
+      "arguments": {
+        "args": [
+          2
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "bfccc76246d0bf7370eaa1bb32d3d798a9b2466543e8860f4561a8c7bc449fcc",
+      "after_sha256": "b439608954a5fd056c28907366407f3923ae9ec19ec658ec3616d67f774dffe5",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0008",
+      "method": "getAXStateAndScreenshot",
+      "label": "file-menu-empty",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "d6493df10613ad800f753a5ff4617668cd72f7752672981c8dbab1cc525a8231",
+      "after_sha256": "81adb63b92bc1fd56dafedb579e5086c327ebf6737ad244ef5073658f9d42f71",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0009",
+      "method": "click",
+      "label": "save-as-empty",
+      "arguments": {
+        "args": [
+          88
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "d99389696dba596320504043e1f8520a550003165b49f9ef9dbc5e51c730d3c0",
+      "after_sha256": "c2ab2a9be094171c969bc4a7222e6d290b4d3a0d76f344d990b878c74379efc7",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0010",
+      "method": "getAXStateAndScreenshot",
+      "label": "save-as-empty-dialog",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "57ac0c01f4c0b81629f79520b25ae39630b3bbae9225b4fda31377e7c015d03b",
+      "after_sha256": "ed646d332f7e06ecd149ee96ba2d473e82cc6f1dea798c760d8eb5b6d3cf6b1c",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0011",
+      "method": "pressKey",
+      "label": "save-folder-route",
+      "arguments": {
+        "args": [
+          "super+shift+g"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "8fbe4f6344a76d4aa0015fc5f1fbd231a9155b892fcd73ca2e59207eea0c1f4f",
+      "after_sha256": "b772ab4c1181d7038200e3f356e78652b9a9bac7049bc91d2acf389eef851603",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0012",
+      "method": "getAXStateAndScreenshot",
+      "label": "save-folder-field",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "59acb78ac5f20d5118297fc1224a66cae5af2484f5355c34e1c88bd8ce54c814",
+      "after_sha256": "350370d0d33ab463c5e8c64d64cfd05fe9a896862bd134d6e1262ca9052c3611",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0013",
+      "method": "typeText",
+      "label": "type-owned-save-folder",
+      "arguments": {
+        "args": [
+          "<CASE>/work"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "933704cc17b6f72477e1353c46676cf140a6852bf6431e2add2db1290de58257",
+      "after_sha256": "b582e4095a377c89c6cfff8d44a92af2cb406a36b340758dcc6d7581be44942c",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0014",
+      "method": "getAXStateAndScreenshot",
+      "label": "owned-save-folder-literal",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "ec84030e70f63d00da53940fc3030c151245b800346cd381c5f57c4e67f1ae94",
+      "after_sha256": "fdffc4d8e1c78bc1086b7a12970ff1d042ca085baff08c36a6552ca3484b0522",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0015",
+      "method": "pressKey",
+      "label": "confirm-owned-save-folder",
+      "arguments": {
+        "args": [
+          "Return"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "98794657d837665f1fffac969e9d5916f806595761c149d6a78b452183d4ad42",
+      "after_sha256": "8cd33203527f1265bc332b4fbc97096d0231d904bb6a32cb879d3b931f20edcf",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0016",
+      "method": "getAXStateAndScreenshot",
+      "label": "owned-save-folder-selected",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "e15d4d4cdfa1bc7c1a37235ee4fbd9af801860bd639c5ef6fcc712c70cd0de3f",
+      "after_sha256": "41d9de322ecaef6b24fae3d42d02c732bd0a55937dacc1e0ec70660ec7339088",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0017",
+      "method": "setValue",
+      "label": "set-save-as-name-once",
+      "arguments": {
+        "args": [
+          89,
+          "A.weftforge"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "af1b02af271337c25e10e4e08c317544bb26b4ce400aaad02b385754eb0356c8",
+      "after_sha256": "3fbb732c9bd97b2854fac87f036e2e12fa4c4531b83592ecbfcb53fe2bf2e8e8",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0018",
+      "method": "getAXStateAndScreenshot",
+      "label": "save-as-exact-basename",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "f6420385be591c1d518e0db45e42d38cdba534ca8cdedd6557f652ab5a595bee",
+      "after_sha256": "45480ec0869337d8c9f5c744a055cc9c7c73b67345d455047aec3acb1d5f8994",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0019",
+      "method": "click",
+      "label": "save-empty-primary",
+      "arguments": {
+        "args": [
+          93
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "41e2a16a5f993bbe87543466d7c40307efcb794f98d71d116cfc691f4e450006",
+      "after_sha256": "f3637bcdaa3fa8881077d6bf6707cfa3f9b23065a03e37c900f419824ff4707b",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0020",
+      "method": "getAXStateAndScreenshot",
+      "label": "empty-primary-saved",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "3e0feabadf324c7ea92558e643749573558d95d3d76743456c81f426d798e612",
+      "after_sha256": "29ba5412b9f6f91fe5d655e5b9220bc088e01bd523678b4a9757d691a0297812",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0021",
+      "method": "external-raw-snapshot",
+      "label": "retain-A00-empty",
+      "arguments": {
+        "args": [
+          "<PLAN>/retain_saved.py",
+          "copy",
+          "--run",
+          "<CASE>",
+          "--case",
+          "A",
+          "--label",
+          "A00-empty",
+          "--save-record",
+          "0019",
+          "--capture-record",
+          "0020"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "9db753bda48a9c3b5622d02113ccfc1b60d7c2a83cff0d77e2eaff79720effaf",
+      "after_sha256": "c1dbea07ee958345a5f1cac8ddb9f58fe8b900b9fbdc1331789139f0b0cbc873",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0022",
+      "method": "click",
+      "label": "focus-create-width",
+      "arguments": {
+        "args": [
+          126
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "1583a82b2ce678bc7ff5bbf77ce9f640cef935be992506ccb286ee0400f7c328",
+      "after_sha256": "6bcf05c371e397397a99d66ca1a916e84ffbbc3673bb1617be8012ab834a95e6",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0023",
+      "method": "getAXStateAndScreenshot",
+      "label": "create-width-focused",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "05b041f9c13f24bfa919223e86f96b2a6d05c4f9447c20c8ec1d860fb3ccb7c7",
+      "after_sha256": "b02a7683dd70e0316385a77824055fde6e6ff31afa36d52532232cdcb0c56190",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0024",
+      "method": "pressKey",
+      "label": "select-create-width",
+      "arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "aa6c5ce932c5363d56beb5f50ce507ca47134c0a216af6316fb93fecb9c1bd54",
+      "after_sha256": "7e0026b132ad247057f5fab9f6716775aad737d1ff3e47df5a0a24a4b8f3d128",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0025",
+      "method": "typeText",
+      "label": "type-create-width",
+      "arguments": {
+        "args": [
+          "1"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "553904cffab09345dcfd2b8869763f79203ddddc740f3e9b809e16ab99768552",
+      "after_sha256": "ce669ae0dfb94fa8a796a7459755c1a059eda635c496ccffa2f4b64c98dbfddc",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0026",
+      "method": "getAXStateAndScreenshot",
+      "label": "create-width-raw",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "8b2911806555f3085e26130bcd0f6d39b071ca07b78f9327168263b3511d5173",
+      "after_sha256": "054f0c2bdd4c18700401e32e659cf8c2b6114c264d66cbcbf61e609f3ae7c3b9",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0027",
+      "method": "click",
+      "label": "focus-create-height",
+      "arguments": {
+        "args": [
+          127
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "b52f9c19d38a77861c41774c0c104b5fa58d3abd8c85333e383166ba968ac843",
+      "after_sha256": "a582c80e47c3d1d90da81a7e8754e558cf294c82dd2ccc4a8df636da438a89af",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0028",
+      "method": "getAXStateAndScreenshot",
+      "label": "create-height-focused",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "c9826ff5091f7a4e1af0e22a153597eff92f9263331773575a107efae18a9e83",
+      "after_sha256": "753299817b01c2561fc1c3450666280029d49167ab54fe7ca48b79ac067fbf7f",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0029",
+      "method": "pressKey",
+      "label": "select-create-height",
+      "arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "326a3d664656fdfb30c6c1584b446b55eca54833f6c84defc8342ba74eea5fdf",
+      "after_sha256": "fdf149ab4c886521bf9fb583096276bacf0457f86ca51d7dfb2a76ba55327aca",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0030",
+      "method": "typeText",
+      "label": "type-create-height",
+      "arguments": {
+        "args": [
+          "1"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "7240bbbb8276aac2e65f6c0022ebb288e1c105f14ab30f0fa2bb93a23784b8e3",
+      "after_sha256": "d3b787444e18081790f6bee98985b222efe60faf29c9744eba33385dddbfd573",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0031",
+      "method": "getAXStateAndScreenshot",
+      "label": "create-height-raw",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "3b903f67a9618ed8b61a8976fc3bf721e82a831d2245c64f34b9f26e7904e751",
+      "after_sha256": "ce6d75e69c0bc44ef426aadcd93fa2b3d78d9bec215b702a0383f6db424e95b2",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0032",
+      "method": "click",
+      "label": "focus-create-x",
+      "arguments": {
+        "args": [
+          129
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "9fa9986b6d6d5f009307b4554d9ac04cc2b0a4f6201571b845f7e4b73f897974",
+      "after_sha256": "1990764ac00b56e37eb07b927e46fcddd2273de8fd0fbbebe1bd5bb5017c2c67",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0033",
+      "method": "getAXStateAndScreenshot",
+      "label": "create-x-focused",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "10933a444fd564796d609196f9291991a3abea4b320b15fac55d08732407365d",
+      "after_sha256": "11e95a0370d25dd4f81dde9cfea7107e73162d350f89d4841c5d33f1673f90c3",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0034",
+      "method": "pressKey",
+      "label": "select-create-x",
+      "arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "4e2d368ef5b4d154925693a17d7b0dee342dca4ef57ad4dc47f683068f80c9d7",
+      "after_sha256": "803cbbba6059cb9b358f6f51b9d15486b369b8f4d3b01b09dcc23e3d3ac2ceb2",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0035",
+      "method": "typeText",
+      "label": "type-create-x",
+      "arguments": {
+        "args": [
+          "0"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "350d3653a344aa1accec785a5b33931d08bb7164436780c69810c07b81b1be35",
+      "after_sha256": "f4681008a8bf21682dff905ca33886c4b0cd5547520f564368815fc293ded419",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0036",
+      "method": "getAXStateAndScreenshot",
+      "label": "create-x-raw",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "b15a5554cb004244ec68db930e8041da5adf3881759949463499bd072125e94c",
+      "after_sha256": "2788ce207cbc1ce51fb7a6c10fc34b52491a5742bf83844383fa361fac22634e",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0037",
+      "method": "click",
+      "label": "focus-create-y",
+      "arguments": {
+        "args": [
+          130
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "3ee4c2dc014e370ea7b102424b1b99cf0b7007f0a56dddff1a6701c0dc0cd0e7",
+      "after_sha256": "1512d24462ba4e69907a5950f7fb656ced493b049d11840760a7767accd2d8d2",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0038",
+      "method": "getAXStateAndScreenshot",
+      "label": "create-y-focused",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "fd08542875d5d5474bddb0e9a5448e89efa0d34a88762da2b233e8c0d85ea5c0",
+      "after_sha256": "168567d606120d339d32064ef34f043315fd2a2737a1d06acef1e7a1fd64e48b",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0039",
+      "method": "pressKey",
+      "label": "select-create-y",
+      "arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "87fb77d7d1686dc2b9d96bcedefe77b0a90b83c90f9b78371f4e00e04322bb87",
+      "after_sha256": "091f7e5fc78ec322d4cb2d77285767950b2b3be934c28315242860dab04e6b75",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0040",
+      "method": "typeText",
+      "label": "type-create-y",
+      "arguments": {
+        "args": [
+          "0"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "e185bf4f9462957ffd7fde4638a03ce48dbadd94d7443da1e84fa939c8490ec9",
+      "after_sha256": "e167a512c139eac9e34735e7458c400bdcd0eafb35e4add620f56e5bcfcf950b",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0041",
+      "method": "getAXStateAndScreenshot",
+      "label": "create-y-raw",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "801cdfa29586425181c60cce7489a6a9a9e03e9c742548a92d3a7a4e21e2e37b",
+      "after_sha256": "61230cf79bb25674b091024ec3d914d80a71a8ba368e3e7b805d49038412a81b",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0042",
+      "method": "click",
+      "label": "add-unit-square",
+      "arguments": {
+        "args": [
+          131
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "76e467cc15400bd19eb6940e29097894f97ff9b13e5dfd70ea0bd3ff61bb6ae6",
+      "after_sha256": "a281befa91b186d7a9076c96df850490c3e70cb442b3aaac69eedc006ab07413",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0043",
+      "method": "getAXStateAndScreenshot",
+      "label": "unit-square-created",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "19815aed615fe3914e92f4d4bd100655c84a4111ce84dd9230e648fd1fa223ca",
+      "after_sha256": "27752bfc1c1d4611274476764d64eb7c2a3a2613227a402272b17daf2cad5c25",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0044",
+      "method": "click",
+      "label": "frame-unit-square",
+      "arguments": {
+        "args": [
+          99
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "45b3622e061f2d3f08a642d79efa1170ef43e445c61db6e00fb142f1c89e319d",
+      "after_sha256": "eb748d5d68877263e05b49d14dc28da684ac7ac9e4857cd60d91343acc37f621",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0045",
+      "method": "getAXStateAndScreenshot",
+      "label": "unit-square-framed",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "09f48888df7a74175329ec07f5171668d517f86c54dca71971579ffd83b5bf17",
+      "after_sha256": "47058e5d76d9f3cf7cb5eddf9bc8e5a1ad0e5e10bec6ef775cf167310a36c8ff",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0046",
+      "method": "click",
+      "label": "file-menu-square",
+      "arguments": {
+        "args": [
+          84
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "6ee996c08d77be3e2f04e58208b2d443948483d3e06a4bf78881aa9105a2083e",
+      "after_sha256": "c378af6d494edb9ceb7226d07a9c14091c3e25e929b774ef71cc6bfc4b906500",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0047",
+      "method": "getAXStateAndScreenshot",
+      "label": "file-menu-square",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "dc785d02446516ee3cb80fa810901033ce2d4ace0f4478f2555fa89cf9634998",
+      "after_sha256": "2f3c8c88c9c66eca9d2a27d8c52da08c49e844dd65081daeecb6e6786e638948",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0048",
+      "method": "click",
+      "label": "save-square-primary",
+      "arguments": {
+        "args": [
+          [
+            32,
+            187
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "ecdb70bdf35b2c1e8e28342e37adab5f675e13f898755acad65e40b2aaa15d5c",
+      "after_sha256": "d6fc339294f8763ad0c426160fc86731f0b67157ae3421a8091b7b09c472c63a",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0049",
+      "method": "getAXStateAndScreenshot",
+      "label": "square-primary-saved",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "08f3aa1f76d60a6e3aab74e5f74b0700c04bdb3dc51ed1346ded050f64584652",
+      "after_sha256": "3ea7595c4655f4a0a57f48629276e9d8dfca333702ff429da78ab16404f842af",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0050",
+      "method": "external-raw-snapshot",
+      "label": "retain-A01-square",
+      "arguments": {
+        "args": [
+          "<PLAN>/retain_saved.py",
+          "copy",
+          "--run",
+          "<CASE>",
+          "--case",
+          "A",
+          "--label",
+          "A01-square",
+          "--save-record",
+          "0048",
+          "--capture-record",
+          "0049"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "52fb7bb98df902793c74b855c02c0037bb3a9179548d0e483a19ca56fcb80ae6",
+      "after_sha256": "b6a5a332c513bddb5b6e8d89861580ea000cebc7ae43ac0d169b87af4d5354a7",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0051",
+      "method": "click",
+      "label": "choose-internal-tool",
+      "arguments": {
+        "args": [
+          115
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "b04da9e9709a79771c8d83f9f0fc08fb1f2c4511965f32d86fd5191e0bfbe368",
+      "after_sha256": "ec1271ea8ebb8039dd2f532756313f2b9cf4aa78d4298d74fc28ee22d0fe04c1",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0052",
+      "method": "getAXStateAndScreenshot",
+      "label": "internal-tool-selected",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "1a31fa9fbabe311db2c3fcfc54a157e555aedf8e631862e3c2af3c823c1e9fa0",
+      "after_sha256": "b12003a0e8008dbd4a2115a6b802837de359ec913b3336231cadd684987fec4f",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0053",
+      "method": "click",
+      "label": "set-snap-five-mm",
+      "arguments": {
+        "args": [
+          97
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "6e38e288d1051a655c02057bd86738d605361f850b7341baa42715d6ff6ddcee",
+      "after_sha256": "af3b165525bca3b17f388d839012af89e673e6bcc195500780c5ad07615ad673",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0054",
+      "method": "getAXStateAndScreenshot",
+      "label": "snap-five-mm-selected",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "240be6c7bf870fddf0b0febb705476006d668f9f13ee5460c8604c1d9ab473bf",
+      "after_sha256": "788c983d9a26b8a1baac0483c8a71a62e4ba89ae64046ed730e912e892b20921",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0055",
+      "method": "click",
+      "label": "internal-line-start",
+      "arguments": {
+        "args": [
+          [
+            148,
+            711
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "6e3ba3ce6dbbf3e0301bea999b404230630cb6adc9dbc96e0e29966902eae706",
+      "after_sha256": "c9c4f8f724d2b06efe2e1cba5a90877880d1642cb26262840f6eda51317c5714",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0056",
+      "method": "getAXStateAndScreenshot",
+      "label": "internal-line-start-transient",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "a2bdb352b4dbbf03549242d2e4b82d8d9118ab987a7c99449a23ceda045e1efb",
+      "after_sha256": "95a120787794ff3377dd2d2880fd27d2500aac29f612f0916c62016c3b467a7c",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0057",
+      "method": "click",
+      "label": "internal-line-end",
+      "arguments": {
+        "args": [
+          [
+            594,
+            414
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "5443a159740d166c6c7b18db0f60caa06277fe9a97b0a382c46defb6c1ec89ad",
+      "after_sha256": "bc2808a3fc95f49274a4624794517dfcfb425cb269126ee12f5da60b80f207d7",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0058",
+      "method": "getAXStateAndScreenshot",
+      "label": "internal-line-created",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "b79b2ff262ac1b49f50b5680e305737b4b48dd6fd30eaeb80efc11a59086ed08",
+      "after_sha256": "8fb028a913c3e90ab7691e59423566e92abb4b1bb18fba8d5dd322dfd3e38be5",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0059",
+      "method": "click",
+      "label": "file-menu-created-line",
+      "arguments": {
+        "args": [
+          84
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "7a919bc2ec65e12781c87f7b60cb9e70efb7d9aab8d9c18bb22675011c6a6742",
+      "after_sha256": "e56e89f67f4e0a76bb2a9594ee231929243104db3a79dbc5bb331b8fca4a0654",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0060",
+      "method": "getAXStateAndScreenshot",
+      "label": "file-menu-created-line",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "50aff9a8b79362d19c964f93460abacad4023907c3bd6a53e9818f4149c1c4d1",
+      "after_sha256": "b62b32c61cde2230cff799382e6ca6b29e5e58760ebe8339d11279e0ff2c2c89",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0061",
+      "method": "click",
+      "label": "save-created-line-primary",
+      "arguments": {
+        "args": [
+          [
+            31,
+            187
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "d7cdd4bf693d532d348988c5bf4c4dc1b98b87e58e9a6a38b06bd422d96ce772",
+      "after_sha256": "8238f8c1eadaf6a12ba6a9b733263db60207719579ed272e18f9442d232496c6",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0062",
+      "method": "getAXStateAndScreenshot",
+      "label": "created-line-primary-saved",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "39d8e0a8e39abcccb13fb7aaf2d5c70a6184c9617761eda66204a3487dd036b5",
+      "after_sha256": "7e0b0d54d356abf14b7fa54dfc6b50c39e1e66c7026f4187e01a241a36ead514",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0063",
+      "method": "external-raw-snapshot",
+      "label": "retain-A02-created",
+      "arguments": {
+        "args": [
+          "<PLAN>/retain_saved.py",
+          "copy",
+          "--run",
+          "<CASE>",
+          "--case",
+          "A",
+          "--label",
+          "A02-created",
+          "--save-record",
+          "0061",
+          "--capture-record",
+          "0062"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "7307192e0e9ac5e12c0d0dbb9b1d8fd607107e505b790ab4acff634ed9326288",
+      "after_sha256": "c86b9220d0583277e636457fb52cad48de3daa1281943ca64f8556bd8ef0bf39",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0064",
+      "method": "click",
+      "label": "focus-staged-grain",
+      "arguments": {
+        "args": [
+          182
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "d519d62334710d228a0248f7f9d4412d38876ddd0911d7a9a532f5b927d96630",
+      "after_sha256": "f7c13bc392992f652b72183abdb1278b548305745139b4bdb4d74801e1d123ea",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0065",
+      "method": "getAXStateAndScreenshot",
+      "label": "grain-focused",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "f99af9d4cde4a1e30c22f380e36240a5496389a978fd82452c67be18a6591db4",
+      "after_sha256": "af70454abef06ac617082a173a48f38c488844e5b8701634e8d6aeadf62b6968",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0066",
+      "method": "pressKey",
+      "label": "select-staged-grain",
+      "arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "73b6a78a828c6cffb9c0ec2319a6d310b8bd5b104ec08ca671327960d18e425b",
+      "after_sha256": "4145cfc414db34a54d46e46773ac6fddad9f73f9819284fc46f648443bfc8b40",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0067",
+      "method": "typeText",
+      "label": "type-staged-grain",
+      "arguments": {
+        "args": [
+          "0.47e0"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "77f153e00e2858c37ae898a87b04c448db7640b338695c87fef1568edf0a53c9",
+      "after_sha256": "f7e15849cc5b0f536df2ba859d8dbd3794ccb85117cf24bd9896419c027527e8",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0068",
+      "method": "getAXStateAndScreenshot",
+      "label": "grain-raw-pending",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "29f7ee7d70001a98424bd1616685490e6da3b3168ae1d8fa6217722baab73909",
+      "after_sha256": "34a26d3587e1db8083b8f87ef22632ebf1124a1671f16bb2c08f37c31633cced",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0069",
+      "method": "pressKey",
+      "label": "grain-caret-left-one",
+      "arguments": {
+        "args": [
+          "Left"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "bf93b8a8c11f3b2f3031834a74ec6e9bf63016925b5f284ff24e80487d49dcda",
+      "after_sha256": "9b9ff98c4fa18ecffe3174e1eca3c07f637b98b92b65e4f904f284c9cbf576d1",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0070",
+      "method": "getAXStateAndScreenshot",
+      "label": "grain-caret-left-one",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "d7f11b555da9c546325810d1f336c44ea4c77ad989c0ca363c70db8d45393f7b",
+      "after_sha256": "9fac20818c92ec1b7af29bf4bde6e27859441c45b689864d59539ce1bd6379ee",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0071",
+      "method": "pressKey",
+      "label": "grain-caret-left-two",
+      "arguments": {
+        "args": [
+          "Left"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "b0fff75d2bda3bec81bd6cff5e063325a1cbcbdcf75b03c6677cb348acd17ecd",
+      "after_sha256": "b08e6ff7418aac995347564e9ab1795adf73f2e366733b02e23a1c185c6cc317",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0072",
+      "method": "getAXStateAndScreenshot",
+      "label": "grain-caret-before-exponent",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "09e5002ae8e89a2aa2161cdcd2d6220a9d93503220b38c24753d50a23a68179e",
+      "after_sha256": "531baf1c3b4f0f2398788b15e6f548f08345e6c00840b4ac9932e24f944eb842",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0073",
+      "method": "click",
+      "label": "open-invalid-endpoint-edit",
+      "arguments": {
+        "args": [
+          212
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "41f9cf29f7a6378061f1a9ce7c00ea9bbdd0d6c974ca61984247c1dbfc681336",
+      "after_sha256": "9028bf84e1aa06551c91a5061934c38fd260811defc3fc1c03c43463ac33c7b3",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0074",
+      "method": "getAXStateAndScreenshot",
+      "label": "internal-edit-modal",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "dec2e20dd0c58a0022fdebfdf482eb4d928ba99472ad40ff8b498fc54ff02eb2",
+      "after_sha256": "0c903b142c18321772dccae4f588bc92400f880abc53acd5550e30cd98da3fca",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0075",
+      "method": "click",
+      "label": "focus-invalid-start-u",
+      "arguments": {
+        "args": [
+          [
+            720,
+            509
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "0bfecd2aebb3c3c08060d71d92a01102306a5f1946e421589a49030c7ece58cf",
+      "after_sha256": "1733c7938c7d0c0a2f9693e9c5699e4c634f2ecbbeadf8fb8412ea76b2329e75",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0076",
+      "method": "getAXStateAndScreenshot",
+      "label": "invalid-start-u-focused",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "593163ef4718500e989348280fa65195ebee0f40ae4509aa35b87490a21a91da",
+      "after_sha256": "477ea4c9fcee91addccae81db8b0137eab7fa8179df15a22c1cc568444fb494b",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0077",
+      "method": "pressKey",
+      "label": "select-invalid-start-u",
+      "arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "896bf84ffe586107c3638110bdcd6756a17d527dd90d67c7bf9e0e5214ca3a5c",
+      "after_sha256": "f564e5838f527e32f5bcec638225e727fba21f4ea98e5127422b48900bc5bbc6",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0078",
+      "method": "typeText",
+      "label": "type-invalid-start-u",
+      "arguments": {
+        "args": [
+          "1e-"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "5d7addf4d8ed5a7be51cfbddb89ac62788549c409ab4dc5ca305b8cf97bd2237",
+      "after_sha256": "cbf237210940e8b40be09987815495fa0110dcbe806f3705fb9e9bec606d2f0b",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0079",
+      "method": "getAXStateAndScreenshot",
+      "label": "invalid-start-u-raw",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "793b546d2fc31a2d7ffa965eb1390d0499afb90f188084033ce9893ebe5697eb",
+      "after_sha256": "8e65c5d6179c0080535f3a0aae19f9b4356ebb9a2714d45985fa64a74d3c7503",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0080",
+      "method": "click",
+      "label": "reject-invalid-internal-edit",
+      "arguments": {
+        "args": [
+          [
+            684,
+            613
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "6217a93e6e895a0b22a16bf4566c03d11ead7bdbb35a1161f057adb12920bedb",
+      "after_sha256": "0bbc13daafa7eb3a4e94b0224d611637e79f1d7fd4910d688ab4eb7c3c4d3b5d",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0081",
+      "method": "getAXStateAndScreenshot",
+      "label": "invalid-internal-edit-refused",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "142d91e920d6e758f7ad2aca669d86a1a511a928195a4c2fbaee2551780bf2d4",
+      "after_sha256": "0dda0fb43ab8223b19e68eaa410ab7c00a3e3fd14276fec215947a07aa9feaf2",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0082",
+      "method": "pressKey",
+      "label": "attempt-save-under-modal",
+      "arguments": {
+        "args": [
+          "super+s"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "cecf737dbbd98e6c8d2839dc764176f8ad43e9dd478d3ff7d8b5a97d51add082",
+      "after_sha256": "11ae361d3e96a33d93cea8b1faed51905e6c5f45b5c8a56f14ecdc7f2fbfb6ce",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0083",
+      "method": "getAXStateAndScreenshot",
+      "label": "modal-save-blocked",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "c4427cd41401aee61a669c76663c6449729a512398f5f021226e56aa599fb43e",
+      "after_sha256": "b1dfdcc14891e2ff4944ae3bb3a860732402db64e7962181ba6d3f3d7d26d5b1",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0084",
+      "method": "click",
+      "label": "attempt-background-undo",
+      "arguments": {
+        "args": [
+          [
+            1468,
+            43
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "7431c09633f82a86beeb721afccb3d7a694c754fee7eb03676d9dbd4e4711f36",
+      "after_sha256": "9a82ed3e9a4cfe0793cf56efccf4f690424fbdc61ae2653056c63dc711eff2c8",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0085",
+      "method": "getAXStateAndScreenshot",
+      "label": "modal-backdrop-cancel",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "81d1fb7fa16a233c84b22e2e02bdc0ebba338e075541a7ead2fa5674bc054a30",
+      "after_sha256": "55e76ef68f169411227221380faeb657a24888bc7673e7efdc4c17421ee411ac",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0086",
+      "method": "click",
+      "label": "reopen-after-backdrop",
+      "arguments": {
+        "args": [
+          212
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "0b7937ead8882e537761527dd603f3b2e603abf9ebd00f658fc6994db50e4149",
+      "after_sha256": "eb2aba853e2fa0c9303e51c6fad87ba60e1277bf1ab0047952d320d768ebbc65",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0087",
+      "method": "getAXStateAndScreenshot",
+      "label": "reopened-internal-edit-modal",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "99551a21ab3c723976754a5492b6d4febb364a119f4c5a19b5e8497c0afc0929",
+      "after_sha256": "b643732f7c26463759e7aad9bd8d2421ce9046ba0ad7ae1e6fb111bfe65bd93a",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0088",
+      "method": "click",
+      "label": "focus-reentered-invalid-start-u",
+      "arguments": {
+        "args": [
+          [
+            720,
+            509
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "5cf397e5515c2fd8911b9e8b7d0b94e2028fb12c9a380809259c1ddf0fe03b54",
+      "after_sha256": "f5d066534d821aa952df223810cba6b1cd5fbbb72f5e838cad9baa24d4c9fc12",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0089",
+      "method": "getAXStateAndScreenshot",
+      "label": "reentered-invalid-start-u-focused",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "e19d56bb8dda162f74a886c830523564e53bc965fa22d2039b4847fddf8a3688",
+      "after_sha256": "25e5ba8f3ca57f862b64ea62f9b97b21d936b81dc61bd55e0516745e1d9ebb39",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0090",
+      "method": "pressKey",
+      "label": "select-reentered-invalid-start-u",
+      "arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "623d7258953f4e25a84ea34ebe70090729958f9036ee82d76a666df8a1acc6bb",
+      "after_sha256": "6b2bd2fc818de6cebb33534e93795f07286095d060eb1682abb97934bfa16136",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0091",
+      "method": "typeText",
+      "label": "type-reentered-invalid-start-u",
+      "arguments": {
+        "args": [
+          "1e-"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "f0c27f1bd340613ba2d5042e6839324367d95cf271609c427984ff3def96c9d9",
+      "after_sha256": "b9712b0f65dc9f3a3f82f5a3c6eacefdb90855b29e83da29994c1ef2e4b8ed14",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0092",
+      "method": "getAXStateAndScreenshot",
+      "label": "reentered-invalid-start-u-raw",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "097ebc172e16a8c3f0f61b6bd51f1dc58392b41e64e74c15558a091b3f43bdd7",
+      "after_sha256": "1a26f590d64c6c1695e2795a510de455b182df4b3fd3ff6773a444f5af466a00",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0093",
+      "method": "click",
+      "label": "cancel-invalid-explicitly",
+      "arguments": {
+        "args": [
+          [
+            817,
+            613
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "67ef89a483882c91212b9bfa94a7d8b6196f6fcc5e5762b2e34d027c1a26d9bd",
+      "after_sha256": "bc0552f6632a5aeec7eff30a010d40c65afbf2d26df9a9b44665688750f75b19",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0094",
+      "method": "getAXStateAndScreenshot",
+      "label": "explicit-cancel-restored-grain",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "03cf284eccdff968d5ecc698bf98427256fa74ad423068dd1c70e9824bbf29e2",
+      "after_sha256": "55d38e75bd56871d5428b0d2d912462ab86abe5a4b50f4db84b1d4ffc464ca1a",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0095",
+      "method": "typeText",
+      "label": "grain-caret-insertion-witness",
+      "arguments": {
+        "args": [
+          "0"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "57878b2cafbabd25a6f6fa42e5b14085cf2df331fc82d54b6c1c05dd28fd0042",
+      "after_sha256": "43e9deb5f2db8e0714ce7b18a0adf55607319d84bba2860a5a619b173744bb27",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0096",
+      "method": "getAXStateAndScreenshot",
+      "label": "grain-caret-witness",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "9e85d61e9407f5add711c5b9c9a2b4f0c69c2b965bfb5b3f7bd5c9713b8786a4",
+      "after_sha256": "75252f3f0286452cab3c2ac1727a297a7943572fd9519f4d27c40d484c8f6c8b",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0097",
+      "method": "click",
+      "label": "open-compound-endpoint-edit",
+      "arguments": {
+        "args": [
+          212
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "0f90da881cb04b96b1313e0322b13271b6b571a8c5d0d59cdce42d9b4121fa14",
+      "after_sha256": "f04cc06d8ad87301d2b44c34c3f09aab405f9004f74b942de6ed0a016ab37000",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0098",
+      "method": "getAXStateAndScreenshot",
+      "label": "compound-edit-modal",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "2e8dde58f5ad334e9a85d53b8d590b92322ccd7a13d0077d4904fd3b13997364",
+      "after_sha256": "d34cfcaff27bee77e310f70eaa47869e267dc2fd15bf860330d4b5d34c20febc",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0099",
+      "method": "click",
+      "label": "focus-precise-start-u",
+      "arguments": {
+        "args": [
+          [
+            720,
+            509
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "2bf89fafcd59a5f7ef57a700d7dcbeaf0022aadb505e86b5e3a65ad16ba74d43",
+      "after_sha256": "d823fdcb671fb41289bdd946af63f1aced283726ee641e75c9e618d975dfbb75",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0100",
+      "method": "getAXStateAndScreenshot",
+      "label": "precise-start-u-focused",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "1a80082391aed5f6396d7f3e8c7c82e680fc5da736e6e029e10421ad2f6d3b74",
+      "after_sha256": "8b2753c4a5294662b730eb0c83c8f17c8d52d5e4a38fb7810ee6212f91ff6771",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0101",
+      "method": "pressKey",
+      "label": "select-precise-start-u",
+      "arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "11b4ea91c2ada496297e5eed0db52cac04ab6c652f674bdc022e788d86b79f14",
+      "after_sha256": "83b4998621eacc471c49033c5662b9dc091d328e72018c00d746db3b122fb297",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0102",
+      "method": "typeText",
+      "label": "type-precise-start-u",
+      "arguments": {
+        "args": [
+          ".25"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "4667cc6b1603267dfaa4f822463d215d82eab594ceb22077082a0252b8eb0bfb",
+      "after_sha256": "74a835d18ef639d6f6b898f2522903d3043746fc4309f901a7c027b4640e3f33",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0103",
+      "method": "getAXStateAndScreenshot",
+      "label": "precise-start-u-raw",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "2ed1423f77437cd139adcecda60039b9a0526b1ab0058970db7a4cc4b6290c47",
+      "after_sha256": "2860055010686aae704bf853d494e446b8897f1e86ebe9d2df64847147eb5a0c",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0104",
+      "method": "click",
+      "label": "focus-precise-start-v",
+      "arguments": {
+        "args": [
+          [
+            720,
+            535
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "9a1506a270ef88b665824fbd13a36c95a3ea10b62a37454faa3db7769d7287b8",
+      "after_sha256": "b4f08a5780903d65a3febda4691c4ae115cb666ab2e64dd1e2695b11a7b4e4dc",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0105",
+      "method": "getAXStateAndScreenshot",
+      "label": "precise-start-v-focused",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "dbfdaad2acbb6d437e2903027f69f263be8b906da2df7e04e55bb9b6e5e2305d",
+      "after_sha256": "521341842580a6ae6026e21e129c1b6d1fcac591bf45d11de04f6da7902c4ac8",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0106",
+      "method": "pressKey",
+      "label": "select-precise-start-v",
+      "arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "1291dcd551bfdf706d1be670a77514ce7ec77fa5f2b58b63c8db1d33b089e4b3",
+      "after_sha256": "6debc703e3b71eef3b2b7ae6ac3046119c1f7daae726559e76e427fda88d0b33",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0107",
+      "method": "typeText",
+      "label": "type-precise-start-v",
+      "arguments": {
+        "args": [
+          ".375"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "663ba767675e90bc17f447401d70014601c08c757651cbaa942f2aff4d6776c8",
+      "after_sha256": "0514d21d75b7490f967bec10c2d9705964f8e43e03aeeef1e1bd8bae3c73e213",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0108",
+      "method": "getAXStateAndScreenshot",
+      "label": "precise-start-v-raw",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "195d847fd777ea16e936092fcaf0cfc4415f0d2bdaa9ddc7a57df33d0d9a78f9",
+      "after_sha256": "233a5746badce910377f900e167a38cbb2f53b232798922cf390dfb274d04e25",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0109",
+      "method": "click",
+      "label": "focus-precise-end-u",
+      "arguments": {
+        "args": [
+          [
+            717,
+            561
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "a2d5cd199bd49af99d4931985d0a6482dd8fd3cb7a1b61f1efbc0445c48e05c0",
+      "after_sha256": "4ea40d545c2ae72879ca4ff58aeb320d61b8c348a4c8f51e9e0d1fa28a427de4",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0110",
+      "method": "getAXStateAndScreenshot",
+      "label": "precise-end-u-focused",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "447abd8cd6da744a4219af7ccbe03b85a6e220ad82086e80c0da8eb89e06da38",
+      "after_sha256": "8621c9d958333d6d3769c8eef241298e177dcf2d6bdbbf81d72ccf08caa5f612",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0111",
+      "method": "pressKey",
+      "label": "select-precise-end-u",
+      "arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "f183fbc99c231e246a0b7c8e017a4ad493acdee43fb0a09144c993339f3ae1ec",
+      "after_sha256": "a1f713c98ef8fb969c3f8adb548f2145a748e9bdf7da985097c60d4b76205606",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0112",
+      "method": "typeText",
+      "label": "type-precise-end-u",
+      "arguments": {
+        "args": [
+          ".75"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "ef42e28b250bccdfe298a884a179d435dfdcabf5484c351fd90256443d1d6e6f",
+      "after_sha256": "28f080c33d63effc004aaae86da810650841cc4c92203733d472eea6e62d7bd2",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0113",
+      "method": "getAXStateAndScreenshot",
+      "label": "precise-end-u-raw",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "60a774366c734d8801f6e43ba85705e9a1620e0909d631cd0a79269ddf446203",
+      "after_sha256": "035a7ad71b757b5a917cfc59c88100ced0829d5ddd5961940854fb51ac7d540a",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0114",
+      "method": "click",
+      "label": "focus-precise-end-v",
+      "arguments": {
+        "args": [
+          [
+            716,
+            586
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "6b2e07a519c01b4734c017fba2008709b85898e693dea59c97b5fd05e5016ef2",
+      "after_sha256": "c2bb475d045b977ab934d9f264308950535b44b4749be566c914ed6b6fb64962",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0115",
+      "method": "getAXStateAndScreenshot",
+      "label": "precise-end-v-focused",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "dc055881d6b7b994151b21eecdaa52d6c8d3ab78ea8090f1d75f8941113f2485",
+      "after_sha256": "37a8173750903afe493cda0118e3013610e0054dcd787251aa8101c08a39f4cc",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0116",
+      "method": "pressKey",
+      "label": "select-precise-end-v",
+      "arguments": {
+        "args": [
+          "super+a"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "d18ab916b2ab9411231bd0784437a62b5c63501d09bbaf23a4f7a35f66c61689",
+      "after_sha256": "8bb99ec7d7461d985c99ba66a64cba15caa31810913af26cdcce565ab8e89f0b",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0117",
+      "method": "typeText",
+      "label": "type-precise-end-v",
+      "arguments": {
+        "args": [
+          ".625"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "18ad3a5071640e21b0a6cc33c6c5a2eab4a0bcde335d729e2cc8677b7e878f35",
+      "after_sha256": "b35945a4c7b941fc1d8fc47645434a1b2397f87eb7d2a2bf3dfdf96f51a94f3f",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0118",
+      "method": "getAXStateAndScreenshot",
+      "label": "precise-end-v-raw",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "f0f5a102aa3e91d5d18d11747486e61acb4321fa0f60b88ba903894801c03c30",
+      "after_sha256": "9207f5457d544c96e04566c8ef3379f27a260cdc7ad31682589104fa74dc4f45",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0119",
+      "method": "pressKey",
+      "label": "tab-before-compound-apply",
+      "arguments": {
+        "args": [
+          "Tab"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "6b88ddb4af9ef83fb864c708c56cab3bc25d749c981b5f6641dd5ece540b0ed6",
+      "after_sha256": "5c95e6bbd5797b7b8052be5a291fb56a513783bd563a70a5e7e77c99878506da",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0120",
+      "method": "getAXStateAndScreenshot",
+      "label": "compound-edit-tabbed",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "b480e6c45981978d9811582823b3e29c5eb564d360a5698ab31f1b67ab17502a",
+      "after_sha256": "ef9cb89767e37620e64202dfab6b7e78296e4d81544a8decf0c02b8c2c859696",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0121",
+      "method": "click",
+      "label": "apply-compound-endpoint-edit",
+      "arguments": {
+        "args": [
+          [
+            684,
+            613
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "60df2c8a7815cceaabb3e1e8b84b32bfecfc79ff5cef6db43e8d70a5f5b10f24",
+      "after_sha256": "8a936746488f04fd5de68f95f8608c1028fe6ede45727d8bb2ce4a223b00f030",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0122",
+      "method": "getAXStateAndScreenshot",
+      "label": "compound-edit-applied",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "147d4893edb5baf6fed3bc735306084663a21ceebb95465e8273e00a987abd92",
+      "after_sha256": "41382ab3d97cf69b2a9a0c358e85b9259edfb491fe540be15c3a575195244c79",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0123",
+      "method": "click",
+      "label": "file-menu-compound-edit",
+      "arguments": {
+        "args": [
+          84
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "f3e7a4850a0d6486245b920fb649cc25e2d0356c64ab53e4f49d60fd24f4d9e5",
+      "after_sha256": "c8c972b767b36e9f08f3aa147a745ae825601f4069738e4d0f1aff4850128bf1",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0124",
+      "method": "getAXStateAndScreenshot",
+      "label": "file-menu-compound-edit",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "606b55137c5e67e3b8d6bb32a880ec3c75e755dc3f818994b1085b0dce343617",
+      "after_sha256": "3ef5311296cf1394d215826b704c44f32362ff43218530c85bc4434ade18543a",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0125",
+      "method": "click",
+      "label": "save-compound-edit-primary",
+      "arguments": {
+        "args": [
+          [
+            32,
+            187
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "8599a8ad43f76e2f680594eff5901e4bc1783d60391d988272197678fdb004df",
+      "after_sha256": "eb8100495161abfce68dac18b405d4c2036cb42d8adf19e6a27234725beb0a6c",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0126",
+      "method": "getAXStateAndScreenshot",
+      "label": "compound-edit-primary-saved",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "8e9e2096339e62e28d63f4a0ae184b75bc53ea665eb7add9fe1f35e924205c42",
+      "after_sha256": "d90e34a4eac3e4efced51b224c8775b00c8e4fa76710a893ea25d9157421ade9",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0127",
+      "method": "external-raw-snapshot",
+      "label": "retain-A03-edited",
+      "arguments": {
+        "args": [
+          "<PLAN>/retain_saved.py",
+          "copy",
+          "--run",
+          "<CASE>",
+          "--case",
+          "A",
+          "--label",
+          "A03-edited",
+          "--save-record",
+          "0125",
+          "--capture-record",
+          "0126"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "66320ab9149f2a891a0f3c6c11385a831da9f5175e3b9d24d2055bee227a6707",
+      "after_sha256": "297db381822eb7a8d815dfab8b96348f57c0cf2358fb753a99c7a04808232226",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0128",
+      "method": "click",
+      "label": "undo-compound-edit-once",
+      "arguments": {
+        "args": [
+          91
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "3f9da57a7eded12928da0927077157d5bec8b3a641d57336eb470f9b68e8cde9",
+      "after_sha256": "5f991bc68cd4def3c35e09a492a9a2428f746301610eeba5bda69416f8a8e057",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0129",
+      "method": "getAXStateAndScreenshot",
+      "label": "compound-edit-undone",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "acc0aec3543059c936d5f381361b67496d0aecdccad85c18f8cdf70f20b061da",
+      "after_sha256": "1ab6fb181328dd3350dbfd51dc29cae4ec9be11b3db860f0b959fc27083daf32",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0130",
+      "method": "click",
+      "label": "file-menu-undo-state",
+      "arguments": {
+        "args": [
+          84
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "0420d2200764a279ed0db165746fb6e5eed2e17f79af54aa6ed134678fe30fca",
+      "after_sha256": "1968a5d87f159225c14c555f18f00998267fff41f0239b0d90918dbdcda5b3ae",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0131",
+      "method": "getAXStateAndScreenshot",
+      "label": "file-menu-undo-state",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "ae3585a34dc33cfc19cc175ac0912f06f24edc3d42bec243deab3aa0051f9803",
+      "after_sha256": "fdf54d7ccddb2e19e711ca0b3c7bdbbf81d81c4a1838aa684de4f35ffa8c42a0",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0132",
+      "method": "click",
+      "label": "save-undo-primary",
+      "arguments": {
+        "args": [
+          [
+            32,
+            187
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "01e562c35aefca924345799f1e2df638e01f991940d7469ad012c722f921ce4c",
+      "after_sha256": "4f43c3c98c83deb414c9623010a630637280ef23539eab2439e9319e4b0f54e7",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0133",
+      "method": "getAXStateAndScreenshot",
+      "label": "undo-primary-saved",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "3e7a0b72c95c7790e9c6b7d840447f2b08408218af22364ff6022ae9523907ca",
+      "after_sha256": "554dfa17242ffbeb11aea9b701d6630f19d345ed781f717e925bebde6a998fdd",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0134",
+      "method": "external-raw-snapshot",
+      "label": "retain-A04-undo",
+      "arguments": {
+        "args": [
+          "<PLAN>/retain_saved.py",
+          "copy",
+          "--run",
+          "<CASE>",
+          "--case",
+          "A",
+          "--label",
+          "A04-undo",
+          "--save-record",
+          "0132",
+          "--capture-record",
+          "0133"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "b28a369b2d4303a5d4755a99120ec58ee4da67feaac03a471c522bce556289cc",
+      "after_sha256": "9bd1431ae4426b206c60fc368398969e77403d2df3f5e82fc32bbc77142f9e6b",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0135",
+      "method": "click",
+      "label": "redo-compound-edit-once",
+      "arguments": {
+        "args": [
+          90
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "4dcd2ef652ac0907110cd9c04a977cb97832765d325ae4536fc6729b10a4df11",
+      "after_sha256": "a13e0c8480e9370b0265a84949ecda7c897359e102a3967a9533429413e7411d",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0136",
+      "method": "getAXStateAndScreenshot",
+      "label": "compound-edit-redone",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "6d9dd4d781a5bfe63875a805f6e47dc026723879e3c11310237f24711f9a0e1e",
+      "after_sha256": "e82ca914128a099ca879d0d79cd512359078868c65bf3a68cb477f06615a3ee3",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0137",
+      "method": "click",
+      "label": "file-menu-redo-state",
+      "arguments": {
+        "args": [
+          84
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "ff9a61f5aee51cba504a62428fafd4bc6aa50eef44162c5e65a0426b7d6a74ab",
+      "after_sha256": "c44089b30464e01841e6e93a48b23c8188cff8e19c846430b4fc365918acd971",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0138",
+      "method": "getAXStateAndScreenshot",
+      "label": "file-menu-redo-state",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "17f6d965684594f70cabef7023c8b5aa3295dfa9eb0af1a71664749bac6483ec",
+      "after_sha256": "aaa13fc9fb472de99c1423e858854e579ecc4b7baacea18f4802e133fa870618",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0139",
+      "method": "click",
+      "label": "save-redo-primary",
+      "arguments": {
+        "args": [
+          [
+            32,
+            187
+          ]
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "c79ba7e980847ee674ca825c939d64c85a7b14ca0841a5ea6c19195439a30e7b",
+      "after_sha256": "0fafc85de6be4bf9f1e2bf832f5adb0f24929c1afa6221613a993cf44b46088f",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0140",
+      "method": "getAXStateAndScreenshot",
+      "label": "redo-primary-saved",
+      "arguments": {
+        "args": [
+          {
+            "emit": false
+          }
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "40e98885077059fd6c99903cb8ac94150e5ea3379e920a7b134cf07c9d7c9bc0",
+      "after_sha256": "2ba561d0280df6c1b5e1fbf5966480658cea5fa7fce0078701af33995b2538ce",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0141",
+      "method": "external-raw-snapshot",
+      "label": "retain-A05-redo",
+      "arguments": {
+        "args": [
+          "<PLAN>/retain_saved.py",
+          "copy",
+          "--run",
+          "<CASE>",
+          "--case",
+          "A",
+          "--label",
+          "A05-redo",
+          "--save-record",
+          "0139",
+          "--capture-record",
+          "0140"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "287f0b4f6b99173f73ed04df35b727ef7b9e23fb9b35bcbeb0cc508c514279b2",
+      "after_sha256": "01d3f2780bfeae704dc2cc9985fe008dc0d4b0bd9035cd9951a0462075555821",
+      "status": "returned",
+      "error": null
+    },
+    {
+      "record": "0142",
+      "method": "pressKey",
+      "label": "planned-final-quit",
+      "arguments": {
+        "args": [
+          "super+q"
+        ],
+        "evidenceKind": "native"
+      },
+      "before_sha256": "efebeae65de6bf727425a838d9a9d9aca34383fff62f8923c677f9c26e1e0a65",
+      "after_sha256": "ae30e3fa70e1ed287327f68587e6980bf8f3cbdd87820d53a8b11ff77baee414",
+      "status": "returned",
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "utc": "2026-11-15T19:34:03.894984+00:00",
+  "status": "prospective_review_requires_DXF_revision_metadata_correction_before_candidate_execution",
+  "original_freeze_sha256": "e08ddc6e3faee3684b8ee691558fc7adac34e916c6d1556bf51fb7766992dc00",
+  "frozen_files_verified": 29,
+  "approved_contract_sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+  "root_reviewed": [
+    "PLAN/METHOD and independent analytic R/L/C containment, line length, matrix/world-grain, f64 bit comparator, native ownership expectations, migration, role/schema/failure preservation and adapter evaluation loops.",
+    "Original fixture/CASES and numeric criteria remain fixed. No WeftForge candidate or native execution was performed by root for this review."
+  ],
+  "finding": "Raw DXF byte comparison overlooks mandatory source-document-revision group999 header already present in immutable B657 writer. BaselineR4 and expected annotationR5/R6/R7 must truthfully differ in that metadata only.",
+  "required_prospective_fix": "Require exactly one matching declared revision header in each raw DXF, normalize only its validated value for comparison, preserve all other bytes; SVG/OBJ remain exact. Add synthetic bad headers/content. Preserve original unexecuted packet and create separately frozen v2 before any candidate run.",
+  "full_contract_acceptance": false
+}

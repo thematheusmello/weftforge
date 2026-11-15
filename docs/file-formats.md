@@ -9,15 +9,16 @@ established. Never infer it from the `.weftforge` extension or a mesh export.
 
 | Format | Import/read | Export/write | Editable construction | Static/animated | Current limits |
 | --- | --- | --- | --- | --- | --- |
-| `.weftforge` v3 | Yes | Yes | Patterns, grain, orthotropy, legacy seams and ordered sewing groups | Static authoring | JSON, 16 MiB limit; no embedded external assets or saved simulation frames |
-| `.weftforge` v2 | Yes, explicit migration | No | Legacy grain/orthotropy model and parameter-based seams | Static authoring | Fields and seam metrics preserved; saving writes v3 with an empty group list |
-| `.weftforge` v1 | Yes, explicit migration | No | Original supported model | Static authoring | Old stretch maps to both axes; grain defaults to zero; saving writes v3; round-trip numeric decoding; tested native I/O subset |
-| `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1/v2/v3 model | Static authoring | One prior saved document; no silent fallback |
-| `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1/v2/v3 model | Static authoring | Dirty named documents only; no automatic recovery UI |
-| OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups; no MTL/textures |
+| `.weftforge` v4 | Yes | Yes | Patterns, owned straight internal annotations, grain, orthotropy, legacy seams and ordered sewing groups | Static authoring | Strict required ownership arrays, JSON, 16 MiB limit; no embedded external assets or saved simulation frames |
+| `.weftforge` v3 | Yes, explicit migration | No | Legacy patterns, grain, orthotropy, seams and ordered groups | Static authoring | Preserves all legacy fields; adds empty internal arrays; saving writes v4 |
+| `.weftforge` v2 | Yes, explicit migration | No | Legacy grain/orthotropy model and parameter-based seams | Static authoring | Fields and seam metrics preserved; saving writes v4 with empty group/internal lists |
+| `.weftforge` v1 | Yes, explicit migration | No | Original supported model | Static authoring | Old stretch maps to both axes; grain defaults to zero; saving writes v4; round-trip numeric decoding; tested native I/O subset |
+| `.weftforge.recovery` | Explicit recovery | Prior valid primary on save | Same supported v1/v2/v3/v4 model | Static authoring | One prior saved document; no silent fallback |
+| `.weftforge.autosave` | Same project reader | Desktop named-document autosave | Same supported v1/v2/v3/v4 model | Static authoring | Dirty named documents only; no automatic recovery UI |
+| OBJ | No application import yet | Yes | Mesh only | Static | Thin, unwelded triangles; metre positions, normals, pattern-space UVs, piece groups; no annotation lines or MTL/textures |
 | SVG | Bounded additive import | Yes | Editable exterior boundaries and names | Static 2D | Closed absolute `M/L/C/Z` paths, explicit mm and uniform viewBox; no sewing/materials/internal features/print tiling |
 | glTF/GLB | No | No | None yet | None yet | Planned validated avatar/mesh/animation workflows |
-| DXF R2000 | Bounded additive import | Yes | Editable exterior boundaries with layer names | Static 2D | Strict existing ASCII `LINE`/clamped cubic `SPLINE` profile, mm and `WF_PIECE` layers; no sewing, materials, grain, 3D placement, apparel conventions or print layout |
+| DXF R2000 | Bounded additive import | Yes | Editable exterior boundaries with layer names | Static 2D | Strict existing ASCII `LINE`/clamped cubic `SPLINE` profile, mm and `WF_PIECE` layers; no sewing, materials, grain, internal annotations, 3D placement, apparel conventions or print layout |
 | Animation/cache formats | No | No | None yet | None yet | Timeline, frame caches and export not implemented |
 | Marvelous Designer `.zprj` / `.zpac` | No | No | None | None | Separate FILE-006 research/compatibility workstream |
 
@@ -26,14 +27,14 @@ avatar reader is wired into the project model; an installed parsing dependency
 does not establish an import feature. Export validation with independent software
 must be evidenced separately from our own writer/reader round trips.
 
-## Native v3 representation
+## Native v4 representation
 
 The UTF-8 JSON envelope is:
 
 ```json
 {
   "format": "weftforge",
-  "version": 3,
+  "version": 4,
   "project": {
     "revision": 0,
     "points": [],
@@ -51,12 +52,14 @@ The UTF-8 JSON envelope is:
 
 This structural illustration omits a valid default material; generate a valid
 empty project with `weftforge-cli new FILE.weftforge`. Treat the current Rust
-serialized types and validation as authoritative for v3. The reader accepts v1
-and v2 through the explicit migrations below. A different format marker, unsupported
+serialized types and validation as authoritative for v4. The reader accepts v1,
+v2 and v3 through the explicit migrations below. A different format marker, unsupported
 version, unknown or duplicate field, malformed JSON or invalid construction is
 rejected without replacing the open project. Schemas are strict: a v1 envelope
 cannot contain newer fields, v2 cannot contain sewing_groups, and v3 requires
-the explicit group array. Modern materials cannot retain the old stretch field.
+the explicit group array. V1/v2/v3 pieces reject `internal_curves`, including an
+empty array; v4 requires both the project group array and every piece's explicit
+internal array. Modern materials cannot retain the old stretch field.
 
 Authoring coordinates use f64 metres. 3D is right-handed/Y-up; pattern coordinates
 are material-space U/V with V upward. Placements store metre translations and XYZ
@@ -64,7 +67,8 @@ Euler rotations in radians, applied in that order. Mass uses kilograms, time
 seconds, density kg/m², membrane stiffness N/m, and bending rigidity N·m.
 
 Points and straight/cubic curves retain stable IDs. A piece contains a name,
-ordered closed boundary of curve IDs, placement, material ID and `grain_angle`.
+ordered closed `boundary` of curve IDs, independent `internal_curves` ownership
+array, placement, material ID and `grain_angle`.
 The angle is f64 radians counterclockwise from material +U toward +V and identifies
 the warp axis; weft is perpendicular. Zero points right in the V-up 2D canvas.
 Placement changes the arranged orientation without changing the authored grain.
@@ -74,9 +78,21 @@ unit grain direction canonically in `[-pi,pi]`, and compensates placement to
 preserve the arranged surface and world warp/weft directions. A pure translation
 retains grain and Euler field bits. The command rotates endpoints and absolute
 controls about its explicit original U/V pivot, then translates; saved placement
-Euler values can change although arrangement stays fixed. It introduces no v3
-field or version change. Cubic controls
-are absolute 2D coordinates; a null control array means a straight boundary.
+Euler values can change although arrangement stays fixed. The transform itself
+adds no saved fields. Cubic controls are absolute 2D coordinates; a null control
+array means a straight curve. Internal curves require null controls in v4.
+
+Each internal entry identifies one independent straight annotation with two
+exclusive Point IDs. The list preserves authored order and does not create a
+path, region, hole or physical relationship. Every curve has exactly one boundary
+or internal owner; unrelated orphan geometry and shared internal endpoints reject.
+The full segment must exceed 1e-9 m and stay strictly inside its owner's contour
+with at least 1e-6 m clearance. Certified 1e-7 m curve flattening, conservative
+f64 reserve, depth 20, 20,000 contour samples and a one-million-step project
+validation budget are fixed; uncertain/exhausted inputs reject. Mesh resolution
+cannot change that decision. See the [engineering contract](../spec/features/PAT-006-internal-segments.md).
+Future cubics, grouping, holes and cuts require an explicit supported-model/version
+decision; this reader never silently discards or straightens unsupported data.
 Legacy `seams` store two oriented curve intervals (`curve`, `t0`, `t1`) plus strictly
 increasing normalized correspondence pairs including `[0,0]` and `[1,1]`.
 Decreasing interval endpoints encode reversed direction. Derived seam samples
@@ -101,26 +117,28 @@ physical parameters. The mannequin stores
 analytic capsule endpoints/radii. Resolution is a document-wide mesh setting.
 The format does **not** yet store solver timestep/iterations, current drape or
 velocities, undo history, selection/camera, pins,
-attachments, holes/internal lines, external avatar assets, textures, animation,
+attachments, holes/cuts/internal cubic shapes, external avatar assets, textures, animation,
 lighting or cache data. These are visible persistence gaps on the roadmap.
 
-## Explicit v1 and v2 migration
+## Explicit v1, v2 and v3 migration
 
 The version-1 schema stored `material.stretch_stiffness` and no per-piece grain.
 Its reader uses the strict original field types, then maps:
 
 ```text
-v3.piece.grain_angle = 0 radians (v1 input)
-v3.material.warp_stiffness = v1.material.stretch_stiffness
-v3.material.weft_stiffness = v1.material.stretch_stiffness
-v3.sewing_groups = [] (v1 and v2 input)
+v4.piece.grain_angle = 0 radians (v1 input)
+v4.material.warp_stiffness = v1.material.stretch_stiffness
+v4.material.weft_stiffness = v1.material.stretch_stiffness
+v4.sewing_groups = [] (v1 and v2 input)
+v4.piece.internal_curves = [] (v1, v2 and v3 input)
 ```
 
 These were the old document-to-solver inputs. The migration retains the other
 stored fields, including IDs, names, geometry, seams, placement and revision.
-The strict v2 reader preserves grain and distinct stiffness axes and adds only
-an empty group vector. Legacy correspondence remains normalized curve t; it is
-never silently reinterpreted as arc length.
+Frozen v2/v3 piece types preserve grain and distinct stiffness axes and add only
+empty internal arrays. V2 also gains an empty group vector; v3 retains every
+ordered group/map/list entry. Legacy correspondence remains normalized curve t;
+it is never silently reinterpreted as arc length.
 A native check found two coordinate changes of 1e-16 m while reading/saving v1;
 the source parser now enables round-trip numeric decoding, with independent
 v1/v2 bit regression tests in [issue26](https://github.com/thematheusmello/weftforge/issues/26). Those original deltas remain below
@@ -128,10 +146,10 @@ that check's 1e-12 m geometric limit. The corrected native I/O subset now preser
 float fields exactly against an independent IEEE-bit oracle; see the
 [native I/O report](../parity/reports/WF-20261114-NATIVE-IEEE-001.json). It cannot
 restore values already saved after rounding, and is not complete format parity.
-Loading v1/v2 does not rewrite it or create an authoring revision; the next
-explicit save writes v3.
+Loading v1/v2/v3 does not rewrite it or create an authoring revision; the next
+explicit save writes v4.
 When saving over a valid v1 primary, recovery retains its exact original bytes.
-Older builds cannot read v3, and there is no downgrade writer.
+Older builds cannot read v4, and there is no downgrade writer.
 
 The four existing v1 fixtures and retained snapshots stay byte-identical in the
 repository. Migration tests compare every authored value, rest arrangement/mass,
@@ -159,7 +177,13 @@ in the target directory, flushes its data, preserves an existing valid primary a
 `<filename>.recovery`, then renames the staged file at the commit point. Directory
 flush is best-effort where the OS supports it. Existing invalid or non-regular
 primary files are refused; use a new destination instead of destroying them.
-This is not a promise of identical crash durability on every filesystem/platform.
+Validation/schema/command failure starts no replacement and preserves primary
+and recovery bytes. A later IO failure can occur after recovery has been refreshed
+to the valid prior primary; the primary survives, but the older recovery bytes
+need not. This is not an atomic two-file transaction or a promise of identical
+crash durability on every filesystem/platform. Native general Save commits an
+ordinary inspector draft before chooser/IO; preservation of every uncommitted
+general draft on cancellation/failure is a separate known limitation.
 
 Recovery is explicit:
 
@@ -170,7 +194,7 @@ cargo run --release -p weftforge-cli -- recover garment.weftforge recovered.weft
 The desktop writes dirty named documents to `<filename>.autosave` every 30 seconds
 and also retains session autosaves for untitled work in the platform data directory.
 The Recover window lists session files and current project sidecars; recovering
-creates a dirty copy requiring Save As. Autosave writes v3 and recovery uses the
+creates a dirty copy requiring Save As. Autosave writes v4 and recovery uses the
 same strict versioned reader;
 failed recovery preserves the current document. A window-close request with
 unsaved edits is blocked until save or an explicit discard action. macOS
@@ -188,7 +212,8 @@ coordinates are metres with Y up. `vt` values retain material-space metres and
 may lie outside `[0,1]`; `vn` values are computed vertex normals. Faces are
 triangles and `g piece_ID` names separate pieces. No seam welding, rendered
 thickness, texture images, material library, skeleton, animation, or editable
-curves are encoded. OBJ itself has no authoritative unit field: its metre
+curves or internal annotation line primitives are encoded. Native saving retains
+editable annotations. OBJ itself has no authoritative unit field: its metre
 convention is stated in the comment and this documentation.
 
 Rigid 2D `transform_piece` layout edits therefore change SVG/DXF construction
@@ -198,7 +223,7 @@ identical vertex ordering, solver trajectories and texture placement are outside
 this increment. Every successful edit still invalidates derived revisions.
 
 SVG exports each authored exterior boundary as a named path, retaining straight
-segments and cubic Beziers. One user unit is one millimetre; physical width/height
+segments and cubic Beziers. Internal annotations are omitted. One user unit is one millimetre; physical width/height
 are expressed in mm and V is converted to downward SVG Y. It does not reconstruct
 the complete garment document when imported elsewhere. Printer scaling, page
 layout/tiling, margins and units in third-party readers still
@@ -218,7 +243,7 @@ or compound contours, DTDs and external resources reject the whole import.
 Import is limited to 1 MiB, 64 pieces and 4096 total spans; native validation and
 its bounded cubic contour predicate still apply. Appearance, descriptions,
 sewing, grain, internal details and simulation are omitted explicitly. Imported
-pieces use the first existing fabric and default 3D placement. Native documents
+pieces use the first existing fabric, empty internal arrays and default 3D placement. Native documents
 remain necessary for the complete garment.
 
 DXF writes the [FILE-005-v1 R2000 profile](../spec/features/FILE-005-dxf-pattern-export.md):
@@ -229,7 +254,8 @@ one degree-3 nonrational `SPLINE` with four controls and the clamped knot vector
 `[0,0,0,0,1,1,1,1]`. Curves retain direction and shared endpoints without sampled
 replacement or extra closing edges. Layers `WF_PIECE_ID` group each piece, sorted
 by stable ID. User piece names are omitted. Repeated export of the same document
-revision is byte-identical across destination names.
+revision is byte-identical across destination names. Internal annotations are
+omitted; retain the native project to preserve them.
 
 Choose **Export DXF** in the desktop toolbar or command search, or run:
 

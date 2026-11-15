@@ -1,0 +1,110 @@
+{
+  "status": "frozen_prospective_dependencies_not_runtime_binding",
+  "source_and_binary_bound": false,
+  "native_or_candidate_executed": false,
+  "contract_sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+  "original_v2_freeze_sha256": "573e75789e9948e905fa44fc52872300c15de070e0d6747f77f53772e5ac9dac",
+  "original_fixtures": [
+    {
+      "path": "fixtures/R.weftforge",
+      "sha256": "a00f9ac953ec09a07bfa7b01a93a2edb2269fc539d4da3bbc4d6abcec7f34ede",
+      "original_v2_freeze_verified": true
+    },
+    {
+      "path": "fixtures/R_line.weftforge",
+      "sha256": "7f848080608bcbeef1d927f795579c75d91dfb4671bd547734103cabaf7b8326",
+      "original_v2_freeze_verified": true
+    },
+    {
+      "path": "fixtures/L.weftforge",
+      "sha256": "cc3b3a1990ca78e55fecd6a9cda57cb228d922061edcd6ab0eaa1f5c68c2245e",
+      "original_v2_freeze_verified": true
+    },
+    {
+      "path": "fixtures/C.weftforge",
+      "sha256": "1511033a69ed12ce83a75d05c4b60ba8bdc641d1ad21b6508e0777853d663686",
+      "original_v2_freeze_verified": true
+    },
+    {
+      "path": "fixtures/S_line.weftforge",
+      "sha256": "696c21448e4a0ae070c0f64c4a1538331dca5dc5273c93ed3d8adfc3fe25747c",
+      "original_v2_freeze_verified": true
+    }
+  ],
+  "pinned_recording_modules": [
+    {
+      "relative_to_packet": "../native-transform-controller-20261115/controller.cjs",
+      "sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b"
+    },
+    {
+      "relative_to_packet": "../native-length-readouts-v2-20261115/recorder.cjs",
+      "sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc"
+    }
+  ],
+  "immutable_source_context": [
+    {
+      "commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "source_path": "crates/weftforge-core/src/document.rs",
+      "private_copy": ".local/internal-native-plan-20261115/source-context/B657-document.rs",
+      "bytes": 61835,
+      "sha256": "64ee6d0c8ef27697eb841028c9d36e3af20ffe1073075db7b0a876aa7988cea8"
+    },
+    {
+      "commit": "703a8888526790e7ebe310a8df00907a154db5a5",
+      "source_path": "apps/weftforge/src/main.rs",
+      "private_copy": ".local/internal-native-plan-20261115/source-context/703a-main.rs",
+      "bytes": 686413,
+      "sha256": "3b3e4328013bd1992a32fdf545ee5b0c6fe683ecad94b4b5013c27839c8b46e3"
+    },
+    {
+      "commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+      "source_path": "crates/weftforge-core/src/persistence.rs",
+      "private_copy": ".local/internal-native-plan-20261115/source-context/B657-persistence.rs",
+      "bytes": 25686,
+      "sha256": "748eb06ae06bd348c49e5cc5bd716cbc19da06840d2b5a38a5caffbdd1283baf"
+    },
+    {
+      "commit": "703a8888526790e7ebe310a8df00907a154db5a5",
+      "source_path": "crates/weftforge-core/src/persistence/svg.rs",
+      "private_copy": ".local/internal-native-plan-20261115/source-context/703a-svg.rs",
+      "bytes": 17856,
+      "sha256": "1f6792b629266a15200c1bdb543f0fb3ddb79360d09ec975693b7472a12811ae"
+    },
+    {
+      "commit": "703a8888526790e7ebe310a8df00907a154db5a5",
+      "source_path": "crates/weftforge-core/src/persistence/dxf.rs",
+      "private_copy": ".local/internal-native-plan-20261115/source-context/703a-dxf.rs",
+      "bytes": 7133,
+      "sha256": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338"
+    }
+  ],
+  "read_only_driver_manifest_review": {
+    "sha256": "f81b0b93503cc3cebb38b32e2a6a4993d3a59484fecd11a3608373f8e15b80bb",
+    "action": "read manifest only; no driver/source/commercial artifact execution or adaptation",
+    "capability_gap": "whole click/drag only; no held keyboard mode; identity guard targets another app"
+  },
+  "final_immutable_source_context": [
+    {
+      "commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+      "source_path": "apps/weftforge/src/main.rs",
+      "private_copy": "source-context/ad7-main.rs",
+      "bytes": 689374,
+      "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+    },
+    {
+      "commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+      "source_path": "crates/weftforge-core/src/document.rs",
+      "private_copy": "source-context/ad7-document.rs",
+      "bytes": 66104,
+      "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+    },
+    {
+      "commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+      "source_path": "crates/weftforge-core/src/persistence.rs",
+      "private_copy": "source-context/ad7-persistence.rs",
+      "bytes": 27327,
+      "sha256": "8a0072dcab625b12a358813f3706a41054a4a1f4a7f4fbabd3eb7cd0e5716ce8"
+    }
+  ],
+  "source_comparison_report": "FINAL-SOURCE-REVIEW.json"
+}

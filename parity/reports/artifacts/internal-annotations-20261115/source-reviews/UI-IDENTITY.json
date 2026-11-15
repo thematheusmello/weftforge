@@ -1,0 +1,30 @@
+{
+  "review_date": "2026-11-15",
+  "review_kind": "source_only",
+  "integrated_commit": "f7b7a4e660f2a5085c23980a6bb6447e067e4c63",
+  "integrated_tree": "564d3590b56feabf70d7fb325d2bcf3c3fc8d936",
+  "core_baseline": "e6910096943e8503eb9b5bfc07119fc51353fc1f",
+  "worktree_head_matched": true,
+  "tracked_worktree_status_empty": true,
+  "source_objects": {
+    "apps/weftforge/src/main.rs": {
+      "git_blob": "d120e50b9c3b76ec40651432e7f9d8db0635f16c",
+      "sha256": "c687ddb6b93bf90f2b49eaf443f5d192c291a39cd408077aceb26eb4c1908e44"
+    },
+    "crates/weftforge-core/src/document.rs": {
+      "git_blob": "f7fa4d60e2fff9f4bafbafece903b1df9e0ecac1",
+      "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544",
+      "matches_core_baseline_blob": true
+    },
+    "spec/features/PAT-006-internal-segments.md": {
+      "git_blob": "fc1a4cd78c83abe716e1edad1e7ff8c0bb0c6c98",
+      "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+      "approved_hash_matched": true
+    }
+  },
+  "runtime_or_tests_executed": false,
+  "product_or_git_mutations": false,
+  "reference_material_accessed": false,
+  "finding_count": 3,
+  "verdict": "fix_1_2_3_before_native_acceptance"
+}

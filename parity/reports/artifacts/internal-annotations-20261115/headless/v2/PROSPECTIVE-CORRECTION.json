@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "status": "prospective_before_any_candidate_evaluation_or_output",
+  "supersedes_original_freeze_sha256": "e08ddc6e3faee3684b8ee691558fc7adac34e916c6d1556bf51fb7766992dc00",
+  "original_packet_unexecuted_and_all_files_verified_unchanged": true,
+  "reason": "Root static caller review found DXF contains truthful changing revision metadata. Literal R4 versus R5/R6/R7 DXF comparison would fail despite unchanged exterior geometry. This is not a candidate-driven threshold adjustment.",
+  "immutable_source": {
+    "commit": "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7",
+    "path": "crates/weftforge-core/src/persistence/dxf.rs",
+    "sha256": "49e56ab60030a640e49d3ce9b263d99dcce562a5616f1dada529603f074b7475",
+    "fact": "render emits exactly one group999 Source document revision: {project.revision} comment in HEADER."
+  },
+  "only_export_change": "Validate exactly one own-revision source comment in both raw files; normalize only that already validated comment value in memory. Every other DXF byte, including handles/header/entity data, must match. Raw outputs remain unmodified. SVG and OBJ remain full byte equality.",
+  "unchanged": {
+    "all_13_fixture_files": true,
+    "CASES_sha256": "e79fc87ad30b5b54ae1a9d807bdf5cd3d38b04400fd546af5b1f5819661514a1",
+    "protocol_sha256": "9eab1f8ffb2a51cb6c9a4180e18d6ab2d6d536c73f75072e240fbf0a3adff88a",
+    "all_other_assertions_and_numeric_thresholds": true,
+    "accepted_case_definitions": 26,
+    "rejected_command_definitions": 34,
+    "malformed_v4_definitions": 14,
+    "process_cap": 500,
+    "elapsed_cap_s": 900
+  },
+  "historical_records": "Copied original SELF-CHECK-001..005, generator/revision, original freeze and provenance keep their original bindings; current v2 synthetic report will bind corrected evaluator/method/criteria/plan. ORIGINAL-FREEZE relative paths belong to the original packet.",
+  "product_CUA_or_Cargo_executed": false
+}

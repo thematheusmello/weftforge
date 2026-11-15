@@ -1,0 +1,24 @@
+{
+  "id": "0050",
+  "label": "retain-A01-square",
+  "method": "external-raw-snapshot",
+  "arguments": {
+    "args": [
+      ".local/internal-native-plan-20261115/retain_saved.py",
+      "copy",
+      "--run",
+      "<WORKSPACE>/.local/native-internal-annotations-20261115/A002",
+      "--case",
+      "A",
+      "--label",
+      "A01-square",
+      "--save-record",
+      "0048",
+      "--capture-record",
+      "0049"
+    ],
+    "evidenceKind": "native"
+  },
+  "utc": "2026-11-15T20:59:44.875Z",
+  "monotonic_ns": "898700734165625"
+}

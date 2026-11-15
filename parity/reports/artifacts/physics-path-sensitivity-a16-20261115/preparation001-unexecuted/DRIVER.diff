@@ -1,0 +1,11 @@
+--- retained-driver/src/main.rs
++++ harness/src/main.rs
+@@ -77,7 +77,7 @@
+     let mut steps = create(&output.join("steps.jsonl"))?;
+     let settings = StepSettings {
+         dt: 1. / 60.,
+-        substeps: 8,
++        substeps: 16,
+         iterations: 32,
+         seam_closure_speed: 1.,
+         gravity: [0.; 3],

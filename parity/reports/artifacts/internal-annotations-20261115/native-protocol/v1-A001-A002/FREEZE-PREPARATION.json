@@ -1,0 +1,57 @@
+{
+  "status": "passed_prefreeze_metadata_only_invariants",
+  "source_commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+  "A_step_count": 32,
+  "A_steps_byte_identical_semantics_sha256": "6025ad19457af1828b6b27c3cc858f45ad809d19456516fcd922b1bfda5d6ebe",
+  "A_states_sha256": "0353cc9dac5331af5d5565f4ddd0e3bf9f3a5eec6c92a98d5fb9db6ffa011126",
+  "all_states_sha256": "af145edb2ace49a7ffe102d043b39460ef1749f326a7e15e283390efb1f6e377",
+  "all_24_states_unchanged": true,
+  "A_steps_unchanged": true,
+  "caps_and_tolerances_unchanged": true,
+  "original_fixtures_unchanged": true,
+  "executable_grader_and_snapshot_helper_unchanged": true,
+  "selfchecks_not_repeated": "Only source/status metadata and review documentation changed; original tested executable and numeric state bytes unchanged",
+  "preserved_preparation_failures": [
+    "PREPARATION-FAILURE-001.json",
+    "PREPARATION-FAILURE-002.json"
+  ],
+  "metadata_changes": {
+    "PLAN.json": {
+      "old_sha256": "0961c878b453fbca6f7e309497b2fc68593da3995d47717732b2098100c7191b",
+      "new_sha256": "95ba3bada58d10cb06a51d154722e043e93131de7fc5c01fe28e9fa04bb5b06f",
+      "preserved_copy": "revisions/pre-freeze/PLAN.json"
+    },
+    "EXPECTATIONS.json": {
+      "old_sha256": "11ce4e8de375d7b66e630728af9630ccaf0087fd54cafa35267c620e0135be54",
+      "new_sha256": "4cf6cc79c0da2045e9ffeaedbe8732711ed957c54bceeb5b425848c5079702e2",
+      "preserved_copy": "revisions/pre-freeze/EXPECTATIONS.json"
+    },
+    "METHOD.md": {
+      "old_sha256": "b2c502b47ae34837f183cc51c43cf0c8c7ac9c4073d89587e1a41486c0c69e16",
+      "new_sha256": "bb0c733c2adf69ab4e498a62d163eecfd57e03cade2177333e50a1fe0d08bad5",
+      "preserved_copy": "revisions/pre-freeze/METHOD.md"
+    },
+    "UI-ROUTES.md": {
+      "old_sha256": "bbc4506bdc34583fa063801e2750943d038effa9b1ca4e7db903af6bd2042fcc",
+      "new_sha256": "426b7b9ac4a530a7bf998d1f39262eea0ac427566f35a35f56b5af1b258f5a14",
+      "preserved_copy": "revisions/pre-freeze/UI-ROUTES.md"
+    },
+    "PROPOSAL-v2.md": {
+      "old_sha256": "0e6a8533e2dfcaee6162ddfe80f34450d49404efb2fde21a5d574cc6fa8c0b30",
+      "new_sha256": "cb83835bd9a6997a375a863cfc91e65226fca9063e54df99892e13229dc773bc",
+      "preserved_copy": "revisions/pre-freeze/PROPOSAL-v2.md"
+    },
+    "DEPENDENCIES.json": {
+      "old_sha256": "87fdeded6161e23f03c1184f529038fd186de920458b4d12bec9efe90ffb6cf2",
+      "new_sha256": "63674cc2a00c730f98f1c57786997e14f3f1255f5917b22c88d8470981230591",
+      "preserved_copy": "revisions/pre-freeze/DEPENDENCIES.json"
+    },
+    "DRAFT-REVISIONS.md": {
+      "old_sha256": "89022be6e6bcbd645819fa5dfce3cbf291709ec42451c1c20dc7ef93760c1a79",
+      "new_sha256": "2e6434a83889911c7afc8f8e3f026a3712070b659ace63218129c4fd00dac171",
+      "preserved_copy": "revisions/pre-freeze/DRAFT-REVISIONS.md"
+    }
+  },
+  "runtime_binding_and_GO_present": false,
+  "native_Cargo_candidate_or_Git_mutation_performed": false
+}

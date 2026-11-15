@@ -1,0 +1,313 @@
+#!/usr/bin/env python3
+"""Author original analytic inputs/expectations without invoking WeftForge."""
+import ast
+import copy
+import hashlib
+import json
+import math
+from pathlib import Path
+import subprocess
+
+ROOT = Path(__file__).resolve().parent
+REPO = ROOT.parent.parent
+SOURCE = REPO / ".local/internal-segments-20261115"
+BASELINE = "b657e6bf52aca6c0c76c5c51aaf76b4e812150f7"
+CONTRACT_COMMIT = "9b18fd1a4299db44a840aa2f53417f711aaea2da"
+CONTRACT_SHA = "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66"
+
+
+def encoded(value):
+    return json.dumps(value, indent=2, allow_nan=False).encode() + b"\n"
+
+
+def write(name, value):
+    (ROOT / name).parent.mkdir(parents=True, exist_ok=True)
+    (ROOT / name).write_bytes(encoded(value))
+
+
+def base():
+    return dict(format="weftforge", version=4, project=dict(
+        revision=0, points=[], curves=[], pieces=[], seams=[], sewing_groups=[], resolution=0.07, next_id=2,
+        materials=[dict(id=1, name="Cotton approximation (uncalibrated)", areal_density=0.18,
+                        warp_stiffness=400.0, weft_stiffness=400.0, shear_stiffness=100.0,
+                        bending_stiffness=0.003, damping=0.2, friction=0.4,
+                        collision_thickness=0.003, color=[0.22, 0.55, 0.76])],
+        mannequin=dict(capsules=[dict(a=a, b=b, radius=r) for a, b, r in [
+            ([0.0, 0.90, 0.0], [0.0, 1.40, 0.0], 0.18),
+            ([0.0, 1.53, 0.0], [0.0, 1.65, 0.0], 0.105),
+            ([-0.22, 1.40, 0.0], [-0.55, 1.22, 0.0], 0.065),
+            ([0.22, 1.40, 0.0], [0.55, 1.22, 0.0], 0.065),
+            ([-0.09, 0.88, 0.0], [-0.09, 0.18, 0.0], 0.085),
+            ([0.09, 0.88, 0.0], [0.09, 0.18, 0.0], 0.085),
+        ]])))
+
+
+def polygon(doc, name, vertices, controls=None):
+    p = doc["project"]
+    piece = p["next_id"]
+    ids = list(range(piece + 1, piece + 1 + len(vertices)))
+    curves = list(range(ids[-1] + 1, ids[-1] + 1 + len(vertices)))
+    p["points"] += [dict(id=i, position=q) for i, q in zip(ids, vertices)]
+    p["curves"] += [dict(id=c, start=ids[i], end=ids[(i + 1) % len(ids)], controls=controls if i == 0 else None)
+                    for i, c in enumerate(curves)]
+    p["pieces"].append(dict(id=piece, name=name, boundary=curves, internal_curves=[],
+                            placement=dict(translation=[0.0] * 3, rotation=[0.0] * 3), material=1, grain_angle=0.0))
+    p["next_id"] = curves[-1] + 1
+    p["revision"] += 1
+
+
+def add(doc, a, b, piece=2):
+    p = doc["project"]
+    i = p["next_id"]
+    p["points"] += [dict(id=i, position=a), dict(id=i + 1, position=b)]
+    p["curves"].append(dict(id=i + 2, start=i, end=i + 1, controls=None))
+    next(x for x in p["pieces"] if x["id"] == piece)["internal_curves"].append(i + 2)
+    p["next_id"] += 3
+    return i + 2
+
+
+def cmd(kind, **data):
+    return dict(type=kind, data=data)
+
+
+def main():
+    contract = subprocess.check_output(["git", "show", f"{CONTRACT_COMMIT}:spec/features/PAT-006-internal-segments.md"], cwd=SOURCE)
+    assert hashlib.sha256(contract).hexdigest() == CONTRACT_SHA
+    approval = REPO / ".local/internal-line-contract-20261115/ROOT-APPROVAL.json"
+    assert hashlib.sha256(approval.read_bytes()).hexdigest() == "b8c68d0dc140d79110f8befa63573b8c44b07a6d768387529c9046a6ff7e7ad7"
+    (ROOT / "APPROVED-CONTRACT.md").write_bytes(contract)
+    R = base()
+    polygon(R, "Original R", [[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]])
+    L = base()
+    polygon(L, "Original L", [[0.0, 0.0], [1.0, 0.0], [1.0, 0.4], [0.4, 0.4], [0.4, 1.0], [0.0, 1.0]])
+    C = base()
+    polygon(C, "Original C", [[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]],
+            [[1 / 3, 2 / 3], [2 / 3, 2 / 3]])
+    C["project"]["revision"] = 2
+    S = copy.deepcopy(R)
+    polygon(S, "Original S partner", [[2.0, 0.0], [3.0, 0.0], [3.0, 1.0], [2.0, 1.0]])
+    # Same exact straight outline, deliberately nonlinear authored t parameter.
+    S["project"]["curves"][0]["controls"] = [[0.0, 0.0], [0.125, 0.0]]
+    iv = lambda curve, t0, t1: dict(curve=curve, t0=t0, t1=t1)
+    S["project"]["seams"] = [dict(id=20, name="Original reversed legacy t map", a=iv(7, 0.125, 0.875), b=iv(16, 0.875, 0.125),
+                                 correspondence=[[0.0, 0.0], [0.25, 0.625], [1.0, 1.0]])]
+    S["project"].update(revision=3, next_id=21)
+    oldS = copy.deepcopy(S)
+    S["project"]["sewing_groups"] = [dict(id=21, name="Original physical group", a=[iv(8, 0.125, 0.875)], b=[iv(17, 0.875, 0.125)],
+                                        correspondence=[[0.0, 0.0], [0.5, 0.75], [1.0, 1.0]])]
+    S["project"].update(revision=4, next_id=22)
+    fixtures = dict(R=R, L=L, C=C, S=S)
+    a, b = [0.125, 0.25], [0.875, 0.75]
+    for name in ["R", "S"]:
+        line = copy.deepcopy(fixtures[name])
+        add(line, a, b)
+        line["project"]["revision"] += 1
+        fixtures[name + "_line"] = line
+    bits = copy.deepcopy(R)
+    for pt in bits["project"]["points"]:
+        pt["position"] = [x - 0.5 for x in pt["position"]]
+    add(bits, [-0.0, 0.12345678901234566], [0.375, -0.0])
+    bits["project"]["revision"] += 1
+    fixtures["R_bits"] = bits
+    for version in [1, 2, 3]:
+        legacy = copy.deepcopy(S if version == 3 else oldS)
+        legacy["version"] = version
+        for pc in legacy["project"]["pieces"]:
+            pc.pop("internal_curves")
+            pc["placement"] = dict(translation=[-0.0, 0.125, 0.25], rotation=[0.31, -0.47, 0.21])
+            pc["grain_angle"] = -0.0 if pc["id"] == 2 else 0.12345678901234566
+        legacy["project"]["points"][0]["position"][0] = -0.0
+        legacy["project"]["resolution"] = 0.015000000000000001
+        legacy["project"]["materials"][0]["damping"] = 51.248178375505404
+        if version < 3:
+            legacy["project"].pop("sewing_groups")
+        if version == 1:
+            for pc in legacy["project"]["pieces"]:
+                pc.pop("grain_angle")
+            mat = legacy["project"]["materials"][0]
+            mat["stretch_stiffness"] = 99999999.99999999
+            mat.pop("warp_stiffness"); mat.pop("weft_stiffness")
+        fixtures[f"legacy_v{version}"] = legacy
+    for name, doc in fixtures.items():
+        write(f"fixtures/{name}.weftforge", doc)
+    positives, negatives = [], []
+
+    def positive(ident, source, commands, expected, **extra):
+        expected = copy.deepcopy(expected)
+        expected["project"]["revision"] = fixtures[source]["project"]["revision"] + 1
+        positives.append(dict(id=ident, input=source, commands=commands, expected=expected, **extra))
+
+    def reject(ident, source, commands, **extra):
+        negatives.append(dict(id=ident, input=source, commands=commands, **extra))
+
+    for name, start, end in [("R", a, b), ("L", [0.2, 0.8], [0.2, 0.2]), ("C", [0.1, 0.75], [0.9, 0.75]), ("S", a, b)]:
+        expected = copy.deepcopy(fixtures[name]); curve = add(expected, start, end)
+        positive(name + "_add", name, [cmd("add_internal_segment", piece=2, start=start, end=end)], expected,
+                 length_queries=[dict(curve=curve, length_m=math.dist(start, end))], containment_model=name if name != "S" else "R")
+    for ident, start, end in [("R_clearance_safe", [0.25, 2e-6], [0.75, 2e-6]),
+                              ("R_crossing_independent", [0.125, 0.75], [0.875, 0.25]),
+                              ("R_coincident_coordinates", a, [0.125, 0.75])]:
+        source = "R" if ident == "R_clearance_safe" else "R_line"
+        expected = copy.deepcopy(fixtures[source]); curve = add(expected, start, end)
+        positive(ident, source, [cmd("add_internal_segment", piece=2, start=start, end=end)], expected,
+                 length_queries=[dict(curve=curve, length_m=math.dist(start, end))])
+    swap = copy.deepcopy(fixtures["R_line"])
+    swap["project"]["points"][-2]["position"] = b
+    swap["project"]["points"][-1]["position"] = a
+    positive("R_atomic_endpoint_swap", "R_line", [cmd("move_point", point=11, position=b), cmd("move_point", point=12, position=a)], swap,
+             length_queries=[dict(curve=13, length_m=math.sqrt(13) / 4)])
+    resized = copy.deepcopy(fixtures["R_line"])
+    for pt in resized["project"]["points"]:
+        pt["position"] = [pt["position"][0] * 2, pt["position"][1] * 0.5]
+    positive("R_resize_both_endpoints", "R_line", [cmd("resize_piece", piece=2, width=2.0, height=0.5)], resized,
+             length_queries=[dict(curve=13, length_m=math.sqrt(37) / 4)])
+    removed = copy.deepcopy(fixtures["R_line"])
+    removed["project"]["points"] = removed["project"]["points"][:-2]
+    removed["project"]["curves"] = removed["project"]["curves"][:-1]
+    removed["project"]["pieces"][0]["internal_curves"] = []
+    positive("R_remove_line_both_points", "R_line", [cmd("remove_internal_curve", curve=13)], removed)
+    readd = copy.deepcopy(removed); newcurve = add(readd, b, a)
+    positive("R_remove_then_add_no_ID_reuse", "R_line", [cmd("remove_internal_curve", curve=13), cmd("add_internal_segment", piece=2, start=b, end=a)], readd,
+             length_queries=[dict(curve=newcurve, length_m=math.sqrt(13) / 4)])
+    owner_removed = copy.deepcopy(fixtures["S_line"])
+    p = owner_removed["project"]
+    p["points"] = [x for x in p["points"] if x["id"] in [12, 13, 14, 15]]
+    p["curves"] = [x for x in p["curves"] if x["id"] in [16, 17, 18, 19]]
+    p["pieces"] = [p["pieces"][1]]; p["seams"] = []; p["sewing_groups"] = []
+    positive("S_remove_owner_both_points_and_dependents", "S_line", [cmd("remove_piece", piece=2)], owner_removed)
+    split = copy.deepcopy(fixtures["R_line"])
+    split["project"]["points"].append(dict(id=14, position=[0.5, 0.0]))
+    split["project"]["curves"][0]["end"] = 14
+    split["project"]["curves"].append(dict(id=15, start=14, end=4, controls=None))
+    split["project"]["pieces"][0]["boundary"] = [7, 15, 8, 9, 10]
+    split["project"]["next_id"] = 16
+    positive("R_split_preserves_annotation", "R_line", [cmd("split_curve", curve=7, t=0.5)], split)
+    joined = copy.deepcopy(fixtures["R_line"]); joined["project"]["next_id"] = 16
+    positive("R_split_join_preserves_annotation", "R_line", [cmd("split_curve", curve=7, t=0.5), cmd("join_curve", curve=7)], joined)
+    for ident, rotation in [("R_transform_tilted", [0.31, -0.47, 0.21]), ("R_transform_gimbal", [0.5, math.pi / 2, 0.0])]:
+        source = ident + "_input"; doc = copy.deepcopy(fixtures["R_line"])
+        doc["project"]["pieces"][0]["placement"] = dict(translation=[0.125, -0.25, 0.375], rotation=rotation)
+        doc["project"]["pieces"][0]["grain_angle"] = 0.3
+        fixtures[source] = doc; write(f"fixtures/{source}.weftforge", doc)
+        command = cmd("transform_piece", piece=2, translation=[0.125, -0.25], angle=0.37, pivot=[0.5, 0.5])
+        positive(ident, source, [command], doc, transform=command["data"])
+    source = "R_transform_tilted_input"
+    forward = cmd("transform_piece", piece=2, translation=[0.125, -0.25], angle=0.37, pivot=[0.5, 0.5])
+    c, s = math.cos(0.37), math.sin(0.37)
+    inverse = cmd("transform_piece", piece=2, translation=[-c * 0.125 + s * 0.25, s * 0.125 + c * 0.25], angle=-0.37, pivot=[0.5, 0.5])
+    positive("R_transform_inverse", source, [forward, inverse], fixtures[source],
+             transform=dict(piece=2, translation=[0.0, 0.0], angle=0.0, pivot=[0.0, 0.0]))
+    large = copy.deepcopy(fixtures[source])
+    for point in large["project"]["points"]:
+        point["position"] = [v - 999.5 for v in point["position"]]
+    fixtures["R_large_input"] = large; write("fixtures/R_large_input.weftforge", large)
+    command = cmd("transform_piece", piece=2, translation=[0.125, -0.25], angle=0.37, pivot=[-999.0, -999.0])
+    positive("R_transform_large_scale", "R_large_input", [command], large, transform=command["data"], transform_tolerance_m=1e-9)
+    for original in list(positives):
+        if original["id"] in ["R_add", "L_add", "C_add", "R_clearance_safe"]:
+            for metres in [0.005, 0.5]:
+                repeated = copy.deepcopy(original); repeated["id"] += "_res" + str(metres)
+                repeated["input_resolution"] = metres; repeated["expected"]["project"]["resolution"] = metres
+                positives.append(repeated)
+    for metres in [0.005, 0.07, 0.5]:
+        for name, start, end, accepted in [
+            ("R", [0.25, 0.5e-6], [0.75, 0.5e-6], False),
+            ("R", [0.25, 1.05e-6], [0.75, 1.05e-6], False),
+            ("L", [0.2, 0.8], [0.8, 0.2], False),
+            ("C", [0.1, 0.2], [0.9, 0.2], False),
+        ]:
+            reject(f"{name}_containment_{start[1]}_res{metres}", name,
+                   [cmd("add_internal_segment", piece=2, start=start, end=end)], resolution=metres,
+                   analytic=dict(model=name, start=start, end=end, accepted=accepted))
+    for ident, start, end in [("R_endpoint_on_boundary", [0.0, 0.5], [0.5, 0.5]),
+                              ("R_boundary_overlap", [0.25, 0.0], [0.75, 0.0]),
+                              ("R_outside_endpoint", [-0.1, 0.5], [0.5, 0.5]),
+                              ("R_zero_length", a, a), ("R_nearzero_length", a, [a[0] + 0.5e-9, a[1]]),
+                              ("R_coordinate_limit", a, [1000.000001, 0.5])]:
+        reject(ident, "R", [cmd("add_internal_segment", piece=2, start=start, end=end)])
+    reject("missing_owner", "R", [cmd("add_internal_segment", piece=999, start=a, end=b)])
+    reject("remove_boundary_refused", "R_line", [cmd("remove_internal_curve", curve=7)])
+    reject("internal_split_refused", "R_line", [cmd("split_curve", curve=13, t=0.5)])
+    reject("internal_join_refused", "R_line", [cmd("join_curve", curve=13)])
+    reject("internal_controls_refused", "R_line", [cmd("set_curve_controls", curve=13, controls=[[0.2, 0.3], [0.7, 0.6]])])
+    reject("outer_edit_excludes_line", "R_line", [cmd("move_point", point=4, position=[0.1, 0.0])], same_file=True)
+    reject("late_failure_atomic", "R", [cmd("add_internal_segment", piece=2, start=a, end=b), cmd("move_point", point=12, position=[1.5, 0.5])], same_file=True)
+    for kind, data in [
+        ("add_seam", dict(name="Forbidden internal seam", a=iv(24, 0.0, 1.0), b=iv(16, 1.0, 0.0), correspondence=[[0.0, 0.0], [1.0, 1.0]])),
+        ("add_sewing_group", dict(name="Forbidden internal group", a=[iv(24, 0.0, 1.0)], b=[iv(16, 1.0, 0.0)], correspondence=[[0.0, 0.0], [1.0, 1.0]])),
+        ("add_sewing_by_length", dict(name="Forbidden internal length sewing", a=dict(curve=24, start_t=0.0, direction="forward", length_m=0.1), b=dict(curve=16, start_t=1.0, direction="reverse", length_m=0.1))),
+    ]:
+        reject(kind + "_internal_refused", "S_line", [dict(type=kind, data=data)])
+    reject("ID_partial_overflow", "R", [cmd("add_internal_segment", piece=2, start=a, end=b)], next_id=18446744073709551614)
+    reject("revision_overflow", "R", [cmd("add_internal_segment", piece=2, start=a, end=b)], revision=18446744073709551615)
+    schema_bad = []
+    for ident, mutate in [
+        ("unknown_side_field", lambda c: c["data"].update(unexpected=0)),
+        ("missing_end", lambda c: c["data"].pop("end")),
+        ("short_coordinate", lambda c: c["data"].update(start=[0.25])),
+        ("zero_owner_ID", lambda c: c["data"].update(piece=0)),
+    ]:
+        c = cmd("add_internal_segment", piece=2, start=a, end=b); mutate(c)
+        schema_bad.append(dict(id=ident, input="R", commands=[c], category="schema"))
+    negatives += schema_bad
+    write("CASES.json", dict(positive=positives, negative=negatives))
+    write("CRITERIA.json", dict(
+        status="prospective_approved_engineering_criteria", contract_sha256=CONTRACT_SHA, contract_commit=CONTRACT_COMMIT,
+        baseline_commit=BASELINE, channels=["cli_execute", "mcp_2026-07-28", "mcp_2025-11-25"],
+        line_length_tolerance_m=1e-12, ordinary_transform_tolerance_m=1e-10, transform_matrix_component_tolerance=1e-12,
+        large_scale_transform_tolerance_m=1e-9, clearance_m=1e-6, certificate_tube_m=1e-7,
+        rounding="256*f64_epsilon*max(1,max_abs_coordinate)", depth_cap=20, fine_contour_sample_cap=20000, containment_work_cap=1000000,
+        containment_resolutions_m=[0.005, 0.07, 0.5], exactness="Authoring numeric inputs, dyadic resize, untouched fields and migration compare IEEE754 f64 bits (signed zero included); transform uses independent matrix/landmark budgets, not Euler equality.",
+        geometry_oracles=dict(R="Exact open unit rectangle; exact segment/edge distances", L="Exact six straight edges and piecewise linear inside inequalities", C="q(t)=(t,2t(1-t)); minimize quadratic y(s)-2x(s)(1-x(s)), with explicit boundary margins. Area2/3."),
+        stress=dict(boundary_edges=512, distinct_segments=2048, expected_objects=7170, outcomes=["accepted_with_exact_supported_construction", "refused_with_explicit_work_or_certificate_budget"], qualification="Bounded observation, not a rejection oracle based on guessed loop count. Source-level explicit 1e6 exhaustion regression remains mandatory."),
+        adapter_process_cap=500, adapter_elapsed_cap_s=900,
+        malformed_v4_cases=["missing_internal_list", "missing_groups", "missing_point", "missing_curve", "duplicate_ID", "duplicate_ownership", "both_roles", "shared_endpoint", "cross_piece_internal_owner", "identical_endpoint_ids", "orphan_point", "internal_controls", "invalid_next_id", "unknown_piece_field"],
+        migration_versions=[1, 2, 3], unsupported_version=5,
+        writer_failure_cases=["invalid_existing_destination", "destination_directory", "destination_symlink", "recovery_directory"],
+        required_separate_gates=["Live Editor history/Redo/high-water branch table, cancellation and failed-load raw drafts", "Old mesh rejected by create_cloth; fresh same-revision mesh accepted; mass/constraint separation", "Deterministic source-level containment work/depth/sample exhaustion regressions and useful rejection", "Injected late atomic-writer interruption: primary unchanged, recovery may advance to valid prior primary; no two-file atomicity claim", "Real native creation/edit/drag/cancel/history/new/recover/process-restart/reopen and export omission; four local Rust gates; tracked clean registry/map validation"],
+        history_table=[dict(stage=s, revision=r, next_id=n, internal_curves=ids) for s, r, n, ids in [
+            ("rectangle", 1, 11, []), ("add", 2, 14, [13]), ("endpoint_swap", 3, 14, [13]),
+            ("remove", 4, 14, []), ("undo", 5, 14, [13]), ("redo", 6, 14, []), ("undo_again", 7, 14, [13]), ("new_branch_add", 8, 17, [13, 16])]],
+        limits=["Straight annotations only, exclusive endpoint IDs, flat ordered ownership list, no internal sewing/cubic/split/join/cut/hole/fold/mesh topology or reference claim", "General native Save may commit inspector drafts before chooser/IO; this evaluator does not claim global draft atomicity", "Adapter success and synthetic tests do not establish live history/mesh lifecycle/native acceptance", "No candidate execution is authorized without separate root review, immutable source/binary binding and GO"],
+    ))
+    # Reuse only already-frozen adapter protocol functions, never its numerical oracle.
+    prior = REPO / ".local/physical-sewing-independent-20261115/evaluate_physical_sewing.py"
+    raw = prior.read_bytes(); assert hashlib.sha256(raw).hexdigest() == "ac252d08d820f7aedac771502486a54ec2dc4242017911588d5e39fcaa38a384"
+    text = raw.decode(); tree = ast.parse(text)
+    names = {"require", "finite", "close", "keys", "loads", "encoded", "sha", "meta", "request", "unwrap", "run_process", "mcp", "execute", "snapshot", "preserved", "weighted_t"}
+    bodies = [ast.get_source_segment(text, node) for node in tree.body if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name in names]
+    assert len(bodies) == len(names)
+    audit = '''
+_unrecorded_process = run_process
+AUDIT_ROOT = None
+AUDIT_STARTED = None
+def run_process(cli, args, cwd, stdin=None):
+    if AUDIT_ROOT is None:
+        return _unrecorded_process(cli, args, cwd, stdin)
+    import time
+    count = len(list(AUDIT_ROOT.glob("*-before.json")))
+    require(count < 500 and time.monotonic() - AUDIT_STARTED < 900, "Prospective process/time cap reached")
+    stem = AUDIT_ROOT / str(count + 1).zfill(4)
+    Path(str(stem) + "-before.json").write_bytes(encoded(dict(args=args, cwd=cwd.relative_to(AUDIT_ROOT.parent).as_posix())))
+    try:
+        result = _unrecorded_process(cli, args, cwd, stdin)
+    except subprocess.TimeoutExpired as error:
+        Path(str(stem) + ".stdout").write_bytes(error.stdout or b"")
+        Path(str(stem) + ".stderr").write_bytes(error.stderr or b"")
+        Path(str(stem) + "-after.json").write_bytes(encoded(dict(status="timeout")))
+        raise
+    Path(str(stem) + ".stdout").write_bytes(result.stdout)
+    Path(str(stem) + ".stderr").write_bytes(result.stderr)
+    Path(str(stem) + "-after.json").write_bytes(encoded(dict(returncode=result.returncode)))
+    return result
+'''
+    (ROOT / "protocol.py").write_text('"""Frozen independent adapter protocol reuse, plus bounded raw-process recording; no production geometry."""\nimport copy, hashlib, json, math, subprocess\nfrom pathlib import Path\nMODERN="2026-07-28"\nLEGACY="2025-11-25"\nTOL=1e-12\n\n' + "\n\n".join(bodies) + "\n" + audit)
+    sources = []
+    for path in ["crates/weftforge-core/src/document.rs", "crates/weftforge-core/src/persistence.rs", "crates/weftforge-core/tests/migration.rs", "spec/features/PAT-004-piece-rigid-transform.md", "apps/weftforge-cli/src/main.rs", "apps/weftforge-cli/src/mcp.rs"]:
+        data = subprocess.check_output(["git", "show", BASELINE + ":" + path], cwd=SOURCE)
+        sources.append(dict(commit=BASELINE, path=path, sha256=hashlib.sha256(data).hexdigest()))
+    write("SOURCE-INPUTS.json", dict(contract=dict(commit=CONTRACT_COMMIT, path="spec/features/PAT-006-internal-segments.md", sha256=CONTRACT_SHA), approval_sha256=hashlib.sha256(approval.read_bytes()).hexdigest(), immutable_baseline_sources=sources, reused_adapter_protocol_source_sha256=hashlib.sha256(raw).hexdigest(), policy="Serialization/adapter/command boundaries only; geometry expectations are original analytic formulas, not baseline or candidate tessellation/length outputs.", product_CUA_or_Cargo_executed=False))
+
+
+if __name__ == "__main__":
+    main()

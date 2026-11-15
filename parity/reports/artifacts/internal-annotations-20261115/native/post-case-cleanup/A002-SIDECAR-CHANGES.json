@@ -1,0 +1,42 @@
+{
+  "kind": "post_case_cleanup_sidecar_change_identity_appendix",
+  "utc": "2026-11-15T21:09:48.182310+00:00",
+  "case": "A002",
+  "cleanup_receipt_sha256": "1c219d53e56502ecaeeabff2c82270ef35daf34dd04a2dc5f6674b790d058f9b",
+  "changed": {
+    "work/A.weftforge.autosave.recovery": {
+      "before": {
+        "sha256": "0a6af9b7a4e81e269b1670d0f992536ead106ef0494ada3913f8a73480f6aed7",
+        "bytes": 3198
+      },
+      "after": {
+        "sha256": "37dc0eafe185702f85a7e9470ddbda2a11c50cf776bbab563642958d2be0f4a7",
+        "bytes": 3518
+      },
+      "exact_before_bytes_already_retained_at": [
+        "snapshots/A02-created.autosave.recovery",
+        "snapshots/A01-square.autosave",
+        "snapshots/A02-created.recovery",
+        "snapshots/A01-square.autosave.recovery",
+        "snapshots/A01-square.weftforge"
+      ],
+      "work_file_not_rewritten_to_old_output": true
+    },
+    "work/A.weftforge.autosave": {
+      "before": {
+        "sha256": "37dc0eafe185702f85a7e9470ddbda2a11c50cf776bbab563642958d2be0f4a7",
+        "bytes": 3518
+      },
+      "after": {
+        "sha256": "9c2dd45ebd4105a926b54e982f55767d646af035862b227b1a5bfcdccf547c50",
+        "bytes": 3519
+      },
+      "exact_before_bytes_already_retained_at": [
+        "snapshots/A02-created.autosave",
+        "snapshots/A02-created.weftforge"
+      ],
+      "work_file_not_rewritten_to_old_output": true
+    }
+  },
+  "qualification": "The original failed case manifest stays unchanged. These mutable sidecars changed during the later user-authorized cleanup interval. Only precleanup bytes already retained in immutable snapshots may be selected as original case evidence; no reconstruction or replacing current files."
+}

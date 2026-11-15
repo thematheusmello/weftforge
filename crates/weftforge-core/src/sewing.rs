@@ -400,6 +400,7 @@ impl PathMetric {
         let intervals = intervals
             .iter()
             .map(|&interval| {
+                project.require_boundary_curve(interval.curve)?;
                 IntervalMetric::new(project, interval, budget / intervals.len() as f64, work)
             })
             .collect::<Result<Vec<_>>>()?;
@@ -607,6 +608,7 @@ impl GroupMetric {
 
 impl Project {
     pub fn interval_from_length(&self, side: SewingSideByLength) -> Result<CurveInterval> {
+        self.require_boundary_curve(side.curve)?;
         ensure(
             side.start_t.is_finite() && (0.0..=1.0).contains(&side.start_t),
             "Sewing start t must be in [0,1]",

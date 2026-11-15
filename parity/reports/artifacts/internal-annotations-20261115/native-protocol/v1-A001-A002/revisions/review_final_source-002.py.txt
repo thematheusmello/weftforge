@@ -1,0 +1,108 @@
+#!/usr/bin/env python3
+"""Static immutable public-source comparison only; no product imports/execution."""
+import hashlib
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+SOURCE = ROOT / 'source-context'
+
+
+def sha(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def block(text, token):
+    start = text.index(token)
+    opening = text.index('{', text.index('=>', start) if token.startswith('Command::') else start)
+    depth = 1
+    cursor = opening + 1
+    while depth:
+        depth += (text[cursor] == '{') - (text[cursor] == '}')
+        cursor += 1
+    return text[start:cursor]
+
+
+def main():
+    old = (SOURCE / 'B657-document.rs').read_text()
+    final = (SOURCE / 'ad7-document.rs').read_text()
+    old_ui = (SOURCE / '703a-main.rs').read_text()
+    final_ui = (SOURCE / 'ad7-main.rs').read_text()
+    comparisons = []
+    tokens = [
+        'impl Default for Material', 'impl Default for Mannequin',
+        'impl Default for Project', 'impl Default for Editor',
+        'pub struct Material', 'pub struct Placement',
+        'fn allocate_id(&mut self)', 'pub fn new(project: Project)',
+        'Command::AddRectangle {\n                name,',
+    ]
+    for token in tokens:
+        before, after = block(old, token), block(final, token)
+        assert before == after, token + ' changed'
+        comparisons.append({'block': token, 'status': 'byte_identical_B657_to_ad7',
+                            'sha256': sha(after.encode())})
+    polygon_token = 'Command::AddPolygon { name, vertices } =>'
+    before, after = block(old, polygon_token), block(final, polygon_token)
+    addition = '                    internal_curves: Vec::new(),\n'
+    assert after.count(addition) == 1
+    assert after.replace(addition, '', 1) == before
+    comparisons.append({'block': polygon_token, 'status': 'identical_except_required_empty_internal_curves_list',
+                        'old_sha256': sha(before.encode()), 'final_sha256': sha(after.encode()),
+                        'ids_and_order': 'piece then four points then four boundary curves; original allocator unchanged'})
+    for token in ('fn empty() -> Self', "fn new(cc: &eframe::CreationContext<'_>)"):
+        before, after = block(old_ui, token), block(final_ui, token)
+        assert before == after
+        comparisons.append({'block': 'Studio::' + token, 'status': 'byte_identical_703_to_ad7',
+                            'sha256': sha(after.encode())})
+    marker = '#[cfg(test)]\nmod tests'
+    before, after = old_ui.split(marker, 1)[0], final_ui.split(marker, 1)[0]
+    original_fix = '                input.close_without_commit(&ctx);'
+    final_fix = '''                if input
+                    .focus
+                    .is_some_and(|id| ctx.memory(|memory| memory.had_focus_last_frame(id)))
+                {
+                    finish_numeric_action(&ctx, input.focus, false);
+                } else {
+                    // Refocusing a blurred DragValue clears its raw cache; retain its current input.
+                    self.free_sewing_input(&ctx).close_without_commit(&ctx);
+                }'''
+    assert after.count(final_fix) == 1
+    assert after.replace(final_fix, original_fix, 1) == before
+    # Placement still derives zero Default, and authoring/material precision remains explicit.
+    assert '#[derive(Debug, Clone, Copy, Default, PartialEq, Serialize, Deserialize)]\n#[serde(deny_unknown_fields)]\npub struct Placement' in final
+    assert 'pub color: [f32; 3]' in block(final, 'pub struct Material')
+    assert 'pub grain_angle: f64' in block(final, 'pub struct Piece')
+    assert 'pub const FORMAT_VERSION: u32 = 4;' in (SOURCE / 'ad7-persistence.rs').read_text()
+    models = json.loads((ROOT / 'EXPECTATIONS.json').read_text())
+    result = {
+        'status': 'passed_static_immutable_source_comparison_only',
+        'source_commit': 'ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5',
+        'native_or_candidate_executed': False,
+        'A_numeric_oracle_generated_from_candidate': False,
+        'source_context': json.loads((SOURCE / 'FINAL-SOURCES.json').read_text()),
+        'comparisons': comparisons,
+        'UI_production_delta_from_703': {
+            'status': 'all_production_bytes_identical_after_reversing_exact_one_Escape_input_retention_change',
+            'old_block_sha256': sha(original_fix.encode()), 'final_block_sha256': sha(final_fix.encode()),
+            'route_labels_creation_fields_dialogs_save_history_numeric_helpers': 'unchanged',
+            'native_scope_limit': 'incorporated source fix is not held-drag native evidence; held-state gap remains',
+        },
+        'A_defaults_unchanged': {
+            'project_revision': 0, 'next_id': 2, 'authored_points_curves_pieces_seams_groups': 'empty',
+            'material_count': 1, 'mannequin_capsule_count': 6, 'resolution_m': 0.07,
+            'material_RGB': 'unchanged f32; other authoring/material scalar fields f64',
+            'placement': 'unchanged derived zero translation/rotation',
+            'native_ui_defaults': 'Pattern 1; W/H .5/.6; X/Y -.25/1; Select; Snap10mm; all unchanged',
+            'square_native_schema': 'v4; required empty internal_curves, original ID allocation and vertex order',
+        },
+        'A_states_sha256': sha(json.dumps(models['states']['A'], sort_keys=True, separators=(',', ':')).encode()),
+        'all_original_states_sha256': sha(json.dumps(models['states'], sort_keys=True, separators=(',', ':')).encode()),
+    }
+    with (ROOT / 'FINAL-SOURCE-REVIEW.json').open('x') as stream:
+        json.dump(result, stream, indent=2)
+        stream.write('\n')
+    print(json.dumps({key: result[key] for key in ('status','source_commit','A_states_sha256','all_original_states_sha256')}))
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,53 @@
+{
+  "kind": "independent_read_only_static_review",
+  "status": "blocked_as_frozen_no_root_GO",
+  "frozen_packet": "preparation-a16-001",
+  "freeze_sha256": "f7c19b4295ae8ec9d4246d95eebc4f53b7306fe4f6071a67f26eb0c333cb1a84",
+  "hash_checks": {
+    "frozen_files": 38,
+    "current_source_files": 22,
+    "retained_input_files": 19,
+    "mismatches": []
+  },
+  "exact_static_claims": {
+    "driver_one_substeps_8_to_16_replacement": true,
+    "consumer_three_8_to_16_replacements": true,
+    "driver_and_consumer_diff_files_exact": true,
+    "five_numerical_helper_files_byte_identical": true,
+    "thirteen_resource_function_ASTs_identical": true,
+    "nine_solver_and_bridge_bindings_match_retained_source_binding": true,
+    "expected_metadata_equals_old_metadata_plus_only_two_empty_internal_curves_arrays": true
+  },
+  "input_sha256": "fc494974955d440aacbfde49c332a50218bd3a9354d06f4fbbf0596e5da8eda7",
+  "driver_binary_sha256": "1d6caa60cd3c95b860332fb2d06f1dfee919f7fd035233e4aa21fd9e948a8067",
+  "target_bytes": 68147194,
+  "root_GO_present": false,
+  "execution_directories_present": {
+    "runtime": false,
+    "runs": false,
+    "preflight-base": false
+  },
+  "reviewer_execution": {
+    "Cargo": false,
+    "geometry_preflight": false,
+    "candidate": false,
+    "simulation": false,
+    "consumer": false,
+    "selfcheck_replay": false,
+    "old_case_or_evaluator": false,
+    "GUI_or_REA": false,
+    "Git": false,
+    "publication": false
+  },
+  "blocker": {
+    "file": "preparation-a16-001/run.py",
+    "lines": [
+      111,
+      113,
+      115
+    ],
+    "reason": "Final cap timestamp precedes two numerical output-byte traversals; completion can be reported within 420s when the final numerical inspection crosses the deadline.",
+    "minimal_correction": "Perform and retain the final numerical byte count before sampling the final cap timestamp; reuse the retained count for receipt and cap decisions. All protocol-included numerical inspections must precede that timestamp. Only receipt serialization may follow it. Re-freeze and re-review before root GO."
+  },
+  "physical_native_reference_acceptance": false
+}

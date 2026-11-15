@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "proposal_version": 2,
+  "status": "frozen_prospective_DXF_metadata_correction_before_any_candidate_evaluation_or_output",
+  "frozen_at_utc": "2026-11-15T19:38:14.039111+00:00",
+  "supersedes_original_freeze_sha256": "e08ddc6e3faee3684b8ee691558fc7adac34e916c6d1556bf51fb7766992dc00",
+  "original_packet_all_frozen_files_verified_unchanged": true,
+  "original_packet_candidate_evaluation_not_run": true,
+  "modified_original_file_paths": [
+    "CRITERIA.json",
+    "METHOD.txt",
+    "PLAN.json",
+    "evaluate.py"
+  ],
+  "correction_only": "Validate exactly one group999 own-source-revision comment in each raw DXF, then normalize only that validated value in memory for byte comparison. Preserve raw files; all other DXF bytes exact. OBJ/SVG remain full byte equality.",
+  "all_13_fixtures_and_CASES_byte_identical": true,
+  "all_other_original_criteria_and_plan_fields_unchanged": true,
+  "current_synthetic_report": "SELF-CHECK-006.json",
+  "wrong_synthetic_outputs_rejected": 29,
+  "synthetic_additions": [
+    "wrong DXF source revision",
+    "duplicate DXF source-revision comment",
+    "changed nonrevision DXF content"
+  ],
+  "static_target_CLI_subprocess_count": 434,
+  "unchanged_adapter_process_cap": 500,
+  "target_process_headroom": 66,
+  "binding_preflight_process_qualification": "The existing source preflight separately invokes git show once per bound source_hashes entry, outside the unchanged adapter counter. Full OS subprocess total is434+N for N bound source files; N<=66 also keeps that total<=500. No counter or cap was widened.",
+  "product_CUA_or_Cargo_executed_for_this_preparation": false,
+  "historical_records": "Original SELF-CHECK-001..005, generator/revision and ORIGINAL-FREEZE retain original packet bindings; they are not current v2 assertions. No old result was regraded as delivery.",
+  "required_before_candidate_execution": "Root review/current synthetic validation and separate explicit actual source_worktree/commit/file hashes and immutable CLI binding plus GO; this freeze authorizes no candidate execution.",
+  "files": [
+    {
+      "path": "APPROVED-CONTRACT.md",
+      "bytes": 43508,
+      "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66"
+    },
+    {
+      "path": "CASES.json",
+      "bytes": 160983,
+      "sha256": "e79fc87ad30b5b54ae1a9d807bdf5cd3d38b04400fd546af5b1f5819661514a1"
+    },
+    {
+      "path": "CRITERIA.json",
+      "bytes": 4971,
+      "sha256": "5a3a176e7bc10d1f32ce08c079b74b0a7f81f0565a036c75ad4d64b743dd08cf"
+    },
+    {
+      "path": "METHOD.txt",
+      "bytes": 8411,
+      "sha256": "9b411612ac596bd8d3d4186904f8358233f8f168a25792d8a8bdd82098b7e306"
+    },
+    {
+      "path": "ORIGINAL-FREEZE.json",
+      "bytes": 7087,
+      "sha256": "e08ddc6e3faee3684b8ee691558fc7adac34e916c6d1556bf51fb7766992dc00"
+    },
+    {
+      "path": "PLAN.json",
+      "bytes": 4082,
+      "sha256": "076fe126093c075720a14622e2c866904546dd245b090a4e418824ddb376e924"
+    },
+    {
+      "path": "PREPARATION-FAILURE-001.json",
+      "bytes": 285,
+      "sha256": "6dcaadf16167ce481b4d1f20907865b9c1f842d6aa574c9fbc084145ff5160d5"
+    },
+    {
+      "path": "PROSPECTIVE-CORRECTION.json",
+      "bytes": 1937,
+      "sha256": "2791e30a1f1cc844aacca5c5a07a5db7481df57fbe408fa2eb3e8f439b1ad1e3"
+    },
+    {
+      "path": "SELF-CHECK-001.json",
+      "bytes": 2506,
+      "sha256": "3faa74aea6bdcebad2afeaad998c63fd76960cee57544a0466ba42ec6b0c8486"
+    },
+    {
+      "path": "SELF-CHECK-002.json",
+      "bytes": 2679,
+      "sha256": "ae11b5c49f946c01fa57b4ea8f3c9e2a35d1d6f83fb0fbae0249c967b2d1359c"
+    },
+    {
+      "path": "SELF-CHECK-003.json",
+      "bytes": 2768,
+      "sha256": "8c3c0743f61fbc70554e46fbf87eb08cb7f81cea2797afce651b3c3c60e06440"
+    },
+    {
+      "path": "SELF-CHECK-004.json",
+      "bytes": 4231,
+      "sha256": "aab00d764a487fe6c6f5838b518b76a4fe42abae670ee15e8dc98300f65719c2"
+    },
+    {
+      "path": "SELF-CHECK-005.json",
+      "bytes": 4231,
+      "sha256": "20ed9041617671f4715e047f491675c9d7fb600a6ce5e6387064c9128d254732"
+    },
+    {
+      "path": "SELF-CHECK-006.json",
+      "bytes": 4850,
+      "sha256": "24f138380f9d7c16f96c9da62a0e5c80aa17f9af271982f91a79998427e77c2c"
+    },
+    {
+      "path": "SOURCE-INPUTS.json",
+      "bytes": 1938,
+      "sha256": "54d7cf55024d6381642aab04dcd4177f4881fe6573739018aaada053f15ec986"
+    },
+    {
+      "path": "STATIC-SUBPROCESS-COUNT.json",
+      "bytes": 2855,
+      "sha256": "50d7eb26cd5212f2c6ac90452572b7d7f05823cb8dbddc66234d611701c1ccfb"
+    },
+    {
+      "path": "evaluate.py",
+      "bytes": 38205,
+      "sha256": "9762edcf355822a0a99b6c4a14391c425fcb0e09dab7ed91d7454bf7633d3606"
+    },
+    {
+      "path": "fixtures/C.weftforge",
+      "bytes": 3382,
+      "sha256": "1511033a69ed12ce83a75d05c4b60ba8bdc641d1ad21b6508e0777853d663686"
+    },
+    {
+      "path": "fixtures/L.weftforge",
+      "bytes": 3618,
+      "sha256": "cc3b3a1990ca78e55fecd6a9cda57cb228d922061edcd6ab0eaa1f5c68c2245e"
+    },
+    {
+      "path": "fixtures/R.weftforge",
+      "bytes": 3200,
+      "sha256": "a00f9ac953ec09a07bfa7b01a93a2edb2269fc539d4da3bbc4d6abcec7f34ede"
+    },
+    {
+      "path": "fixtures/R_bits.weftforge",
+      "bytes": 3538,
+      "sha256": "e7f552a1bc35b47ac000034baead9281642b17cf39d04e58a546d93ad425bbeb"
+    },
+    {
+      "path": "fixtures/R_large_input.weftforge",
+      "bytes": 3566,
+      "sha256": "9ef417f6b7b452ea29accb90ba47060cde5787a58957be51a40f76ad6133b7d1"
+    },
+    {
+      "path": "fixtures/R_line.weftforge",
+      "bytes": 3520,
+      "sha256": "7f848080608bcbeef1d927f795579c75d91dfb4671bd547734103cabaf7b8326"
+    },
+    {
+      "path": "fixtures/R_transform_gimbal_input.weftforge",
+      "bytes": 3541,
+      "sha256": "0677427d18a66183d4ee71b643ff2e4ed9821c8b125ee5dc451e914fa0b674bc"
+    },
+    {
+      "path": "fixtures/R_transform_tilted_input.weftforge",
+      "bytes": 3530,
+      "sha256": "8bb3d06d8c1eec22130c4ba1f9e501b15296b3f4ce53d75b14f764de1356bed5"
+    },
+    {
+      "path": "fixtures/S.weftforge",
+      "bytes": 5591,
+      "sha256": "78ac643af3096b2d86cabee3cda8a55be505de4e977be0f6b4c07661431d5973"
+    },
+    {
+      "path": "fixtures/S_line.weftforge",
+      "bytes": 5911,
+      "sha256": "696c21448e4a0ae070c0f64c4a1538331dca5dc5273c93ed3d8adfc3fe25747c"
+    },
+    {
+      "path": "fixtures/legacy_v1.weftforge",
+      "bytes": 4937,
+      "sha256": "e2302c7a07da5cf7f940dbbc149baf7e391d3a73976bf66435f663fe695c1db4"
+    },
+    {
+      "path": "fixtures/legacy_v2.weftforge",
+      "bytes": 5028,
+      "sha256": "6f597a3b8ae5f32ea5a55bb2574c55f9589224a42a3d5e9b30720ebc4d70a267"
+    },
+    {
+      "path": "fixtures/legacy_v3.weftforge",
+      "bytes": 5594,
+      "sha256": "0fd213f390afff18b37d03c2ec0d3351e748a0a170e6c7185d693bae33dadd35"
+    },
+    {
+      "path": "prepare_inputs.py",
+      "bytes": 22238,
+      "sha256": "4a9d98e86edcb593d4cbc4533feb82d717fccbd1ffc2dfe8710e9284cd2e21ce"
+    },
+    {
+      "path": "protocol.py",
+      "bytes": 9381,
+      "sha256": "9eab1f8ffb2a51cb6c9a4180e18d6ab2d6d536c73f75072e240fbf0a3adff88a"
+    },
+    {
+      "path": "revisions/prepare-inputs-001.py.txt",
+      "bytes": 19100,
+      "sha256": "a402c5aa288a3e3843da44d0555c3390ee8284c313f55e3a5cfcd2a536f4ac49"
+    }
+  ]
+}

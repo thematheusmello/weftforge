@@ -1,0 +1,26 @@
+{
+  "kind": "root_review_of_clean_internal_metadata_and_final_verify",
+  "utc": "2026-11-15T20:40:24.361245+00:00",
+  "runtime_source": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+  "metadata_head": "db8ee77f708a5088c3597030bd16de5d8912ca43",
+  "source_inputs_rechecked": 65,
+  "old_report_result_objects_preserved": 36,
+  "historical_inventory_unchanged": true,
+  "PAT006_exactly_unchanged_and_planned": true,
+  "PAT007": "partial/not_run; existing stale evidence retained; no new qualifying run",
+  "implementation_counts": {
+    "partial": 39,
+    "planned": 17
+  },
+  "verify_receipt_sha256": "647fe7b66c1247595a280baedfa8d11c20f6976c97b6207958976e4a844de8d4",
+  "verify_exit_code": 0,
+  "verify_command": [
+    "cargo",
+    "xtask",
+    "verify"
+  ],
+  "native_sha256": "a733c9952ff060a3ec96417467be50011a16039dbb0868fd8ac9890a2b5897c4",
+  "immutable_independent_CLI_sha256": "71ef84c7c90e9ffdf291f3dd2e031a476ff8b99097258256bf46e17afeb8b2bd",
+  "workspace_CLI_sha256": "8a370548e341e4c1a2fc760b276425f5900e7a137d37cadeb268d752d1fc3a41",
+  "qualification": "Existing four Rust/build gates and closed headless run reused by byte identity. This is root metadata/receipt review only; no native/evaluator rerun or public delivery."
+}

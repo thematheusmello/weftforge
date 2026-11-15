@@ -327,6 +327,21 @@ def check():
         for pin in addendum['source_pins']:
             assert re.fullmatch(r'[0-9a-f]{40}', pin['commit']) and pin['scope']
             subprocess.run(['git', 'merge-base', '--is-ancestor', pin['commit'], current_commit], cwd=ROOT, check=True)
+        update = addendum.get('source_update_origin')
+        if update:
+            assert re.fullmatch(r'[0-9a-f]{40}', update['previous_addendum_commit'])
+            previous_raw = pinned('spec/inventory/weftforge-current-source-addendum.json', update['previous_addendum_commit'])
+            assert hashlib.sha256(previous_raw).hexdigest() == update['previous_addendum_sha256']
+            previous_addendum = json.loads(previous_raw)
+            previous_markdown = pinned('spec/inventory/weftforge-current-source-addendum.md', update['previous_addendum_commit'])
+            assert hashlib.sha256(previous_markdown).hexdigest() == update['previous_markdown_sha256']
+            assert previous_addendum['source_commit'] == update['previous_source_commit'] != current_commit
+            assert previous_addendum['historical_map_sha256'] == addendum['historical_map_sha256']
+            assert previous_addendum['historical_invariants'] == addendum['historical_invariants']
+            assert addendum['source_pins'][:len(previous_addendum['source_pins'])] == previous_addendum['source_pins']
+            assert {review['group_id'] for review in previous_addendum['source_rechecks']} <= {
+                review['group_id'] for review in addendum['source_rechecks']}
+            assert update['preservation_rule']
         current_document = pinned('crates/weftforge-core/src/document.rs', current_commit).decode()
         current_enum = current_document.split('pub enum Command {', 1)[1].split('#[derive', 1)[0]
         current_commands = set(re.findall(r'^    ([A-Z]\w*)\s*[({]', current_enum, re.MULTILINE))

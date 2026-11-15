@@ -22,6 +22,7 @@ enum Tool {
     Transform,
     Polygon,
     Rectangle,
+    InternalLine,
     Sew,
     FreeSewing,
     SewingPaths,
@@ -33,6 +34,7 @@ impl Tool {
             Self::Transform => "Transform pattern",
             Self::Polygon => "Polygon",
             Self::Rectangle => "Rectangle",
+            Self::InternalLine => "Internal line",
             Self::Sew => "Sew edges",
             Self::FreeSewing => "Free sewing",
             Self::SewingPaths => "M:N sewing",
@@ -398,6 +400,42 @@ struct TransformGesture {
     rotating: bool,
     pointer_owner: Option<egui::Id>,
 }
+
+#[derive(Clone)]
+struct InternalLineDraft {
+    piece: Id,
+    curve: Option<Id>,
+    revision: u64,
+    endpoints: [[f64; 2]; 2],
+    modal: bool,
+    input: RetainedInspectorInput,
+    field_focus: Option<egui::Id>,
+    invalid_text: [Option<String>; 4],
+    epoch: u64,
+    error: Option<String>,
+}
+impl InternalLineDraft {
+    fn commands(&self, project: &Project) -> Vec<Command> {
+        if let Some(curve) = self.curve.and_then(|id| project.curve(id)) {
+            [curve.start, curve.end]
+                .into_iter()
+                .zip(self.endpoints)
+                .filter(|(point, position)| {
+                    project
+                        .point(*point)
+                        .is_some_and(|p| p.position.map(f64::to_bits) != position.map(f64::to_bits))
+                })
+                .map(|(point, position)| Command::MovePoint { point, position })
+                .collect()
+        } else {
+            vec![Command::AddInternalSegment {
+                piece: self.piece,
+                start: self.endpoints[0],
+                end: self.endpoints[1],
+            }]
+        }
+    }
+}
 impl TransformGesture {
     fn update(&mut self, pointer: [f64; 2]) {
         if self.rotating {
@@ -642,6 +680,9 @@ struct Studio {
     rectangle: Option<RectangleDraft>,
     transform: Option<TransformDraft>,
     transform_gesture: Option<TransformGesture>,
+    internal_line: Option<InternalLineDraft>,
+    drag_input: Option<RetainedInspectorInput>,
+    drag_piece: Option<Id>,
     pattern_import: Option<PatternImportDraft>,
     drag_point: Option<Id>,
     preview: Option<[f64; 2]>,
@@ -720,6 +761,9 @@ impl Studio {
             rectangle: None,
             transform: None,
             transform_gesture: None,
+            internal_line: None,
+            drag_input: None,
+            drag_piece: None,
             pattern_import: None,
             drag_point: None,
             preview: None,
@@ -804,7 +848,10 @@ impl Studio {
             .as_ref()
             .filter(|draft| draft.revision == self.editor.project.revision)
             .map_or_else(Vec::new, |draft| draft.commands(&self.editor.project));
-        commands.push(command);
+        match command {
+            Command::Transaction(actions) => commands.extend(actions),
+            command => commands.push(command),
+        }
         let command = if commands.len() == 1 {
             commands.pop().unwrap()
         } else {
@@ -826,6 +873,9 @@ impl Studio {
         self.rectangle = None;
         self.transform = None;
         self.transform_gesture = None;
+        self.internal_line = None;
+        self.drag_input = None;
+        self.drag_piece = None;
     }
     fn add_ellipse(&mut self, ctx: &egui::Context, focused: Option<egui::Id>) {
         if self.apply_inspector_action(
@@ -908,7 +958,10 @@ impl Studio {
     }
     fn export_button(&self, ui: &mut egui::Ui, format: ExportFormat, label: &str) -> bool {
         let focused = self.inspector_focus(ui.ctx());
-        let response = ui.button(label);
+        let response = ui.button(label).on_hover_text(match format {
+            ExportFormat::Svg | ExportFormat::Dxf => "Exterior boundaries only; internal annotations stay in the native project.",
+            ExportFormat::Obj => "Rest/current cloth surface only; no annotation line primitives. Save the native project to keep editable internal lines.",
+        });
         let clicked = response.clicked();
         if response.is_pointer_button_down_on() || clicked {
             finish_numeric_action(ui.ctx(), focused, false);
@@ -980,6 +1033,7 @@ impl Studio {
             || self.rectangle.is_some()
             || self.transform.is_some()
             || self.transform_gesture.is_some()
+            || self.internal_line.is_some()
             || self.free_sewing.is_some()
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some();
@@ -1022,32 +1076,25 @@ impl Studio {
     }
 
     fn select(&mut self, ctx: &egui::Context, selected: Option<Id>) -> bool {
-        if self.tool == Tool::Transform {
-            let focus = self.inspector_focus(ctx);
-            let invalid_text = focus
-                .and_then(|id| ctx.data_mut(|data| data.get_temp::<String>(id)))
-                .is_some_and(|text| {
-                    text.trim()
-                        .parse::<f64>()
-                        .ok()
-                        .is_none_or(|value| !value.is_finite())
-                });
-            if self.selected != selected {
-                // shortcut: one staged piece at a time; add cross-piece staging only with multiselection.
-                if invalid_text
-                    || self
-                        .draft
-                        .as_ref()
-                        .is_some_and(|draft| !draft.commands(&self.editor.project).is_empty())
-                {
-                    self.message = "Apply or cancel the current property edit before selecting another pattern.".into();
-                    finish_numeric_action(ctx, focus, false);
-                    return false;
-                }
-                self.selected = selected;
-                self.selected_curve = None;
-                self.draft = None;
+        if self.tool == Tool::Transform
+            || self.tool == Tool::InternalLine
+            || self.selected_internal_curve().is_some()
+        {
+            if self.selected == selected {
+                return true;
             }
+            // shortcut: one staged piece at a time; add cross-piece staging only with multiselection.
+            if !self.allow_piece_selection(ctx) {
+                return false;
+            }
+            self.selected = selected;
+            self.selected_curve = None;
+            self.draft = None;
+            self.internal_line = None;
+            self.drag_point = None;
+            self.preview = None;
+            self.drag_input = None;
+            self.drag_piece = None;
             return true;
         }
         if self.selected != selected || self.selected_curve.is_some() {
@@ -1062,13 +1109,53 @@ impl Studio {
     fn select_curve(&mut self, ctx: &egui::Context, selected: Option<(Id, Id)>) {
         let piece = selected.map(|(piece, _)| piece);
         let curve = selected.map(|(_, curve)| curve);
-        if self.tool == Tool::Transform && self.selected != piece && !self.select(ctx, piece) {
+        if self.selected != piece
+            && selected.is_some_and(|(piece, curve)| {
+                self.editor
+                    .project
+                    .piece(piece)
+                    .is_some_and(|piece| piece.internal_curves.contains(&curve))
+            })
+            && !self.allow_piece_selection(ctx)
+        {
+            return;
+        }
+        if self.selected != piece
+            && (self.tool == Tool::Transform
+                || self.tool == Tool::InternalLine
+                || self.selected_internal_curve().is_some())
+            && !self.select(ctx, piece)
+        {
             return;
         }
         if (self.selected != piece || self.selected_curve != curve) && self.commit_draft() {
+            self.internal_line = None;
             self.selected = piece;
             self.selected_curve = curve;
         }
+    }
+    fn allow_piece_selection(&mut self, ctx: &egui::Context) -> bool {
+        let focus = self.inspector_focus(ctx);
+        if focus
+            .and_then(|id| ctx.data_mut(|data| data.get_temp::<String>(id)))
+            .is_some_and(|text| {
+                text.trim()
+                    .parse::<f64>()
+                    .ok()
+                    .is_none_or(|value| !value.is_finite())
+            })
+            || self
+                .draft
+                .as_ref()
+                .is_some_and(|draft| !draft.commands(&self.editor.project).is_empty())
+        {
+            self.message =
+                "Apply or cancel the current property edit before selecting another pattern."
+                    .into();
+            finish_numeric_action(ctx, focus, false);
+            return false;
+        }
+        true
     }
     fn cancel(&mut self) {
         if let Some(job) = &self.job {
@@ -1091,6 +1178,11 @@ impl Studio {
     fn rebuild(&mut self) {
         self.transform = None;
         self.transform_gesture = None;
+        self.internal_line = None;
+        self.drag_point = None;
+        self.preview = None;
+        self.drag_input = None;
+        self.drag_piece = None;
         self.playing = false;
         self.pending_batch = None;
         self.cancel();
@@ -1114,7 +1206,9 @@ impl Studio {
             !self
                 .selected
                 .and_then(|id| self.editor.project.piece(id))
-                .is_some_and(|piece| piece.boundary.contains(&curve))
+                .is_some_and(|piece| {
+                    piece.boundary.contains(&curve) || piece.internal_curves.contains(&curve)
+                })
         }) {
             self.selected_curve = None;
         }
@@ -1507,9 +1601,9 @@ impl Studio {
         self.message = match result {
             Ok(false) => "Export cancelled; pending edits retained.".into(),
             Ok(true) => match format {
-                ExportFormat::Dxf => "Exported DXF pattern boundaries in millimetres; sewing and materials stay in .weftforge.".into(),
-                ExportFormat::Svg => "Exported SVG pattern boundaries in millimetres.".into(),
-                ExportFormat::Obj => "Exported OBJ in metres.".into(),
+                ExportFormat::Dxf => "Exported exterior DXF boundaries in millimetres; internal annotations, sewing and materials stay in .weftforge.".into(),
+                ExportFormat::Svg => "Exported exterior SVG boundaries in millimetres; internal annotations stay in .weftforge.".into(),
+                ExportFormat::Obj => "Exported OBJ cloth surface in metres; internal annotations stay in .weftforge.".into(),
             },
             Err(error) => error,
         };
@@ -1517,6 +1611,11 @@ impl Studio {
     }
     fn history(&mut self, ctx: &egui::Context, redo: bool) {
         self.free_sewing = None;
+        self.internal_line = None;
+        self.drag_point = None;
+        self.preview = None;
+        self.drag_input = None;
+        self.drag_piece = None;
         if !self.commit_draft() {
             return;
         }
@@ -1811,6 +1910,15 @@ impl Studio {
                 }
             });
             self.retain_inspector_input(&response, menu.is_some());
+            let (response, menu) = egui::menu::MenuButton::new("Create 2D").ui(ui, |ui| {
+                let response = ui.add_enabled(self.selected.is_some(), egui::Button::new("Internal line"));
+                if response.clicked() {
+                    self.set_tool(Tool::InternalLine);
+                    ui.close();
+                }
+                if self.selected.is_none() { ui.small("Select an owner pattern first."); }
+            });
+            self.retain_inspector_input(&response, menu.is_some());
             let (response, menu) = egui::menu::MenuButton::new("Edit").ui(ui, |ui| {
                 if ui.button("Undo").clicked() {
                     self.history(ui.ctx(), false);
@@ -1839,6 +1947,8 @@ impl Studio {
                 ui.label("Hold Alt / Option to bypass position snapping.");
                 ui.label("Transform pattern: drag a boundary to translate or its handle to rotate.");
                 ui.label("Transform keeps the arranged 3D surface and world warp fixed; placement rotation values may change.");
+                ui.label("Internal line: select an owner, then click start/end or enter precise endpoints.");
+                ui.label("SVG and DXF export exterior boundaries only; OBJ exports cloth surfaces. Internal annotations stay in the native project.");
                 ui.label("3D: drag to orbit; scroll to zoom.");
                 ui.label("Space plays or pauses simulation.");
                 ui.label("Enter confirms polygon or sewing; Escape cancels.");
@@ -1886,6 +1996,16 @@ impl Studio {
                 self.retain_inspector_input(&response, false);
                 if response.clicked() { self.open_transform(ui.ctx()); }
             }
+            if self.tool == Tool::InternalLine {
+                ui.separator();
+                ui.label(if self.selected.is_none() { "Select an owner pattern first." } else if self.internal_line.is_some() { "Click end · editable annotation" } else { "Click start · editable annotation" });
+                let response = ui.add_enabled(self.selected.is_some(), egui::Button::new("Internal line…"));
+                self.retain_inspector_input(&response, false);
+                if response.clicked() { self.open_internal_line(ui.ctx(), None); }
+                let response = ui.button("Cancel internal line");
+                self.retain_inspector_input(&response, false);
+                if response.clicked() { self.cancel_internal_line(ui.ctx()); }
+            }
             if self.tool == Tool::SewingPaths {
                 ui.separator();
                 ui.label(format!("Side {} · A {} / B {}", if self.sewing_draft.selecting_b { "B" } else { "A" }, self.sewing_draft.a.len(), self.sewing_draft.b.len()))
@@ -1911,6 +2031,7 @@ impl Studio {
             Tool::Transform,
             Tool::Polygon,
             Tool::Rectangle,
+            Tool::InternalLine,
             Tool::Sew,
             Tool::FreeSewing,
             Tool::SewingPaths,
@@ -2177,11 +2298,28 @@ impl Studio {
                                             );
                                         }
                                         let response = ui.add(button).on_hover_text(&piece.name);
-                                        if self.tool == Tool::Transform {
+                                        if self.tool == Tool::Transform
+                                            || self.tool == Tool::InternalLine
+                                            || self.selected_internal_curve().is_some()
+                                        {
                                             self.retain_inspector_input(&response, false);
                                         }
                                         if response.clicked() {
                                             self.select(ui.ctx(), Some(piece.id));
+                                        }
+                                        for curve in &piece.internal_curves {
+                                            let response = ui.selectable_label(
+                                                self.selected == Some(piece.id)
+                                                    && self.selected_curve == Some(*curve),
+                                                format!("  Internal line #{curve}"),
+                                            );
+                                            self.retain_inspector_input(&response, false);
+                                            if response.clicked() {
+                                                self.select_curve(
+                                                    ui.ctx(),
+                                                    Some((piece.id, *curve)),
+                                                );
+                                            }
                                         }
                                     },
                                 );
@@ -2192,9 +2330,12 @@ impl Studio {
         pane_heading(ui, "Properties");
         let mut commit = false;
         let mut acting = self.search
+            || self.internal_line.is_some()
             || self.transform.is_some()
             || self.transform_gesture.is_some()
-            || (self.tool == Tool::Transform
+            || ((self.tool == Tool::Transform
+                || self.tool == Tool::Select
+                || self.tool == Tool::InternalLine)
                 && ui.input(|input| input.pointer.any_down() || input.pointer.any_released())
                 && self
                     .pattern_canvas
@@ -2240,27 +2381,49 @@ impl Studio {
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
                 ui.label("Boundary curve · select here or in 2D");
                 egui::ComboBox::from_id_salt(("boundary-curve",piece.id))
-                    .selected_text(self.selected_curve.map_or("Choose boundary".into(),|id|format!("Curve #{id}")))
+                    .selected_text(self.selected_boundary_curve().map_or("Choose boundary".into(),|id|format!("Curve #{id}")))
                     .show_ui(ui,|ui| {
                         for (index,id) in piece.boundary.iter().enumerate() {
                             if ui.selectable_label(self.selected_curve==Some(*id),format!("Boundary {} · curve #{id}",index+1)).clicked() { self.select_curve(ui.ctx(), Some((piece.id,*id))); }
                         }
                     });
+                if !piece.internal_curves.is_empty() {
+                    ui.label("Internal annotations · owned by this pattern");
+                    for curve in &piece.internal_curves {
+                        let response=ui.selectable_label(self.selected_curve==Some(*curve),format!("Internal line #{curve}"));
+                        self.retain_inspector_input(&response,false);
+                        if response.clicked() { self.select_curve(ui.ctx(),Some((piece.id,*curve))); }
+                    }
+                }
             }
             let mut draft=self.draft.take().filter(|draft|draft.revision==self.editor.project.revision && draft.selected==self.selected && draft.curve.as_ref().map(|curve|curve.id)==self.selected_curve)
                 .unwrap_or_else(||InspectorDraft::new(&self.editor.project,self.selected,self.selected_curve));
             let mut split=None;
             let mut join=None;
             let mut reverse=None;
+            let mut edit_internal=None;
+            let mut create_internal=false;
+            let mut remove_internal=None;
+            let mut remove_piece=None;
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
                 ui.separator(); ui.strong(&piece.name);
                 if let Some(curve)=&mut draft.curve {
                     ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("curve",curve.id))),|ui| {
-                    ui.strong(format!("Selected curve #{}",curve.id));
+                    let internal=piece.internal_curves.contains(&curve.id);
+                    ui.strong(if internal { format!("Internal line #{}",curve.id) } else { format!("Selected curve #{}",curve.id) });
                     let start=self.editor.project.point(curve.start).expect("validated curve start").position;
                     let end=self.editor.project.point(curve.end).expect("validated curve end").position;
                     ui.label(format!("P0 #{} · {:.6} / {:.6} m",curve.start,start[0],start[1]));
                     ui.label(format!("P3 #{} · {:.6} / {:.6} m",curve.end,end[0],end[1]));
+                    if internal {
+                        ui.small("Editable annotation · no cut, fold, sewing or cloth effect.");
+                        let response=ui.button("Edit internal endpoints…");
+                        acting|=response.is_pointer_button_down_on() || response.clicked();
+                        if response.clicked() { edit_internal=Some(curve.id); }
+                        let response=ui.button("Remove internal line");
+                        acting|=response.is_pointer_button_down_on() || response.clicked();
+                        if response.clicked() { remove_internal=Some(curve.id); }
+                    } else {
                     let mut cubic=curve.controls.is_some();
                     if ui.checkbox(&mut cubic,"Cubic Bezier").changed() {
                         curve.controls=cubic.then(||[1.0/3.0,2.0/3.0].map(|t|std::array::from_fn(|axis|start[axis]+(end[axis]-start[axis])*t)));
@@ -2280,6 +2443,7 @@ impl Studio {
                     let response=ui.button("Join with next boundary").on_hover_text("Preserve compatible straight or cubic geometry and sewing. The selected curve ID survives; unsafe joins are rejected.");
                     acting|=response.is_pointer_button_down_on();
                     if response.clicked() { join=Some(curve.id); }
+                    }
                     ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("applied-length")),|ui| {
                         applied_length_heading(ui,draft.revision);
                         if let Some(length)=&draft.applied_length {
@@ -2320,7 +2484,9 @@ impl Studio {
                     commit|=draft.color_pending && ui.input(|input|input.pointer.any_released());
                 }
                 });
-                if ui.button("Delete selected").clicked() { self.draft=Some(draft); self.execute(Command::RemovePiece { piece:piece.id }); return; }
+                let response=ui.button(if self.selected_internal_curve().is_some() { "Delete owner piece" } else { "Delete selected" });
+                acting|=response.is_pointer_button_down_on() || response.clicked();
+                if response.clicked() { remove_piece=Some(piece.id); }
             }
             let mut add_rectangle = false;
             let mut add_ellipse = false;
@@ -2332,6 +2498,11 @@ impl Studio {
             ui.horizontal(|ui| { ui.label("X / Y m"); for value in &mut self.coordinate { ui.add(numeric_value(ui,value).speed(0.01)); } });
             if ui.button("Add rectangle").clicked() { acting=true; add_rectangle=true; }
             if ui.button("Add ellipse").clicked() { acting=true; add_ellipse=true; }
+            if self.selected.is_some() {
+                let response=ui.button("Internal line…");
+                acting|=response.is_pointer_button_down_on() || response.clicked();
+                if response.clicked() { create_internal=true; }
+            }
             if ui.button("Add polygon point").clicked() { self.set_tool(Tool::Polygon); self.polygon.push(self.coordinate); }
             if ui.button(format!("Close pattern ({} points)",self.polygon.len())).clicked() { acting=true; close_polygon=true; }
             });
@@ -2453,6 +2624,10 @@ impl Studio {
             }
             });
             self.draft=Some(draft);
+            if create_internal { self.open_internal_line(ui.ctx(),None); }
+            if let Some(curve)=edit_internal { self.open_internal_line(ui.ctx(),Some(curve)); }
+            if let Some(curve)=remove_internal { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemoveInternalCurve { curve },action_focus); }
+            if let Some(piece)=remove_piece { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemovePiece { piece },action_focus); }
             if add_rectangle {
                 self.execute(Command::AddRectangle { name:self.name.clone(),origin:self.coordinate,width:self.size[0],height:self.size[1] });
                 self.select(ui.ctx(), self.editor.project.pieces.last().map(|piece|piece.id));
@@ -2480,6 +2655,7 @@ impl Studio {
             && self.rectangle.is_none()
             && self.transform.is_none()
             && self.transform_gesture.is_none()
+            && self.internal_line.is_none()
             && !opening_rectangle
             && self.commit_draft()
             && let Some(id) = action_focus
@@ -2618,7 +2794,7 @@ impl Studio {
     }
     fn begin_free_sewing(&mut self, ctx: &egui::Context) {
         if self.free_sewing.is_none() {
-            let curve = self.selected_curve.or_else(|| {
+            let curve = self.selected_boundary_curve().or_else(|| {
                 self.editor
                     .project
                     .pieces
@@ -2848,6 +3024,260 @@ impl Studio {
         }
         draft.input.restore(ctx);
         self.free_sewing = Some(draft);
+    }
+    fn selected_internal_curve(&self) -> Option<Id> {
+        self.selected_curve.filter(|curve| {
+            self.selected
+                .and_then(|piece| self.editor.project.piece(piece))
+                .is_some_and(|piece| piece.internal_curves.contains(curve))
+        })
+    }
+    fn selected_boundary_curve(&self) -> Option<Id> {
+        self.selected_curve.filter(|curve| {
+            self.selected
+                .and_then(|piece| self.editor.project.piece(piece))
+                .is_some_and(|piece| piece.boundary.contains(curve))
+        })
+    }
+    fn internal_line_edit(
+        &self,
+        ctx: &egui::Context,
+        curve: Option<Id>,
+    ) -> Option<InternalLineDraft> {
+        let piece = self.selected.and_then(|id| self.editor.project.piece(id))?;
+        let endpoints = if let Some(id) = curve {
+            if !piece.internal_curves.contains(&id) {
+                return None;
+            }
+            let curve = self.editor.project.curve(id)?;
+            [curve.start, curve.end].map(|point| {
+                self.editor
+                    .project
+                    .point(point)
+                    .expect("validated internal endpoint")
+                    .position
+            })
+        } else {
+            let [min, max] = self.editor.project.piece_bounds(piece.id).ok()?;
+            [0.25, 0.75].map(|t| [min[0] + t * (max[0] - min[0]), (min[1] + max[1]) * 0.5])
+        };
+        Some(InternalLineDraft {
+            piece: piece.id,
+            curve,
+            revision: self.editor.project.revision,
+            endpoints,
+            modal: false,
+            input: self.free_sewing_input(ctx),
+            field_focus: None,
+            invalid_text: std::array::from_fn(|_| None),
+            epoch: ctx.cumulative_frame_nr(),
+            error: None,
+        })
+    }
+    fn open_internal_line(&mut self, ctx: &egui::Context, curve: Option<Id>) {
+        self.discard_stale_internal_line();
+        let edit = self
+            .internal_line
+            .take()
+            .filter(|edit| edit.curve == curve)
+            .or_else(|| self.internal_line_edit(ctx, curve));
+        let Some(mut edit) = edit else {
+            self.message = "Select an owner pattern before creating an internal line.".into();
+            return;
+        };
+        self.set_tool(if curve.is_some() {
+            Tool::Select
+        } else {
+            Tool::InternalLine
+        });
+        edit.input = self.free_sewing_input(ctx);
+        edit.modal = true;
+        finish_numeric_action(ctx, edit.input.focus, false);
+        self.internal_line = Some(edit);
+    }
+    fn cancel_internal_line(&mut self, ctx: &egui::Context) {
+        if let Some(edit) = self.internal_line.take() {
+            if edit.revision == self.editor.project.revision && self.selected == Some(edit.piece) {
+                edit.input.close_without_commit(ctx);
+            }
+            self.message = "Internal line cancelled; construction unchanged.".into();
+        }
+    }
+    fn discard_stale_internal_line(&mut self) {
+        if self.internal_line.as_ref().is_some_and(|edit| {
+            edit.revision != self.editor.project.revision
+                || self.selected != Some(edit.piece)
+                || self.tool
+                    != if edit.curve.is_some() {
+                        Tool::Select
+                    } else {
+                        Tool::InternalLine
+                    }
+                || !self.editor.project.piece(edit.piece).is_some_and(|piece| {
+                    edit.curve.is_none_or(|curve| {
+                        self.selected_curve == Some(curve) && piece.internal_curves.contains(&curve)
+                    })
+                })
+        }) {
+            self.internal_line = None;
+        }
+        if self.drag_input.as_ref().is_some_and(|input| {
+            input.revision != self.editor.project.revision
+                || self.tool != Tool::Select
+                || self.selected != self.drag_piece
+                || self
+                    .drag_point
+                    .is_none_or(|point| self.editor.project.point(point).is_none())
+        }) {
+            self.drag_point = None;
+            self.preview = None;
+            self.drag_input = None;
+            self.drag_piece = None;
+        }
+    }
+    fn apply_internal_line(&mut self, ctx: &egui::Context, edit: &InternalLineDraft) -> bool {
+        if edit.revision != self.editor.project.revision
+            || self.selected != Some(edit.piece)
+            || self.tool
+                != if edit.curve.is_some() {
+                    Tool::Select
+                } else {
+                    Tool::InternalLine
+                }
+            || !self.editor.project.piece(edit.piece).is_some_and(|piece| {
+                edit.curve.is_none_or(|curve| {
+                    self.selected_curve == Some(curve) && piece.internal_curves.contains(&curve)
+                })
+            })
+        {
+            self.message =
+                "Internal line cancelled: owner, selection or construction revision changed."
+                    .into();
+            return false;
+        }
+        if edit
+            .input
+            .focus
+            .and_then(|id| ctx.data_mut(|data| data.get_temp::<String>(id)))
+            .is_some_and(|text| {
+                text.trim()
+                    .parse::<f64>()
+                    .ok()
+                    .is_none_or(|value| !value.is_finite())
+            })
+        {
+            self.message =
+                "Correct the pending property value before applying an internal line.".into();
+            finish_numeric_action(ctx, edit.input.focus, false);
+            return false;
+        }
+        let mut commands = edit.commands(&self.editor.project);
+        if commands.is_empty() {
+            return true;
+        }
+        let command = if commands.len() == 1 {
+            commands.pop().unwrap()
+        } else {
+            Command::Transaction(commands)
+        };
+        if self.apply_inspector_action(ctx, command, edit.input.focus) {
+            self.selected_curve = edit.curve.or_else(|| {
+                self.editor
+                    .project
+                    .piece(edit.piece)
+                    .and_then(|piece| piece.internal_curves.last().copied())
+            });
+            return true;
+        }
+        false
+    }
+    fn internal_line_window(&mut self, ctx: &egui::Context) {
+        self.discard_stale_internal_line();
+        let Some(mut edit) = self.internal_line.take() else {
+            return;
+        };
+        if !edit.modal {
+            self.internal_line = Some(edit);
+            return;
+        }
+        let prior_text = edit.field_focus.and_then(|id| {
+            ctx.data_mut(|data| data.get_temp::<String>(id))
+                .map(|text| (id, text))
+        });
+        let enter = ctx.input(|input| input.key_pressed(egui::Key::Enter));
+        let mut accept = false;
+        let mut cancel = false;
+        let mut fields = Vec::new();
+        let response = egui::Modal::new(egui::Id::new(("internal-line", edit.piece, edit.curve, edit.revision, edit.epoch))).show(ctx, |ui| {
+            ui.set_width(390.);
+            ui.heading(if edit.curve.is_some() { "Edit internal line" } else { "Create internal line" });
+            ui.label("Straight editable annotation, strictly inside its owner. No cut, fold or sewing effect.");
+            let [[start_u, start_v], [end_u, end_v]] = &mut edit.endpoints;
+            for (index, (label, value)) in [("Start U (m)", start_u), ("Start V (m)", start_v), ("End U (m)", end_u), ("End V (m)", end_v)].into_iter().enumerate() {
+                ui.horizontal(|ui| {
+                    let label = ui.label(label);
+                    let old_bits = value.to_bits();
+                    let raw = edit.invalid_text[index].clone();
+                    let mut widget = numeric_value(ui, value).speed(0.001);
+                    if let Some(text) = raw.clone() { widget = widget.custom_formatter(move |_, _| text.clone()); }
+                    let response = ui.add(widget).labelled_by(label.id);
+                    edit.invalid_text[index] = match ctx.data_mut(|data| data.get_temp::<String>(response.id)) {
+                        Some(text) if text.trim().parse::<f64>().ok().is_none_or(|value| !value.is_finite()) => Some(text),
+                        Some(_) => None,
+                        None if value.to_bits() != old_bits => None,
+                        None => raw,
+                    };
+                    fields.push(response.id);
+                });
+            }
+            if let Some(id) = numeric_focus(ctx).filter(|id| fields.contains(id)) { edit.field_focus = Some(id); }
+            if let Some(error) = &edit.error { ui.colored_label(Color32::LIGHT_RED, error); }
+            ui.horizontal(|ui| {
+                let apply = ui.button("Apply internal line");
+                if apply.is_pointer_button_down_on() || apply.clicked() { finish_numeric_action(ctx, edit.field_focus, false); }
+                accept = apply.clicked();
+                cancel = ui.button("Cancel internal line").clicked();
+            });
+        });
+        if cancel || response.should_close() {
+            clear_numeric_fields(ctx, &fields);
+            edit.input.close_without_commit(ctx);
+            return;
+        }
+        if accept || enter {
+            let text = edit
+                .field_focus
+                .and_then(|id| {
+                    ctx.data_mut(|data| data.get_temp::<String>(id))
+                        .map(|text| (id, text))
+                })
+                .or(prior_text);
+            let unchanged = edit.commands(&self.editor.project).is_empty();
+            if edit.invalid_text.iter().any(Option::is_some)
+                || text.as_ref().is_some_and(|(_, text)| {
+                    text.trim()
+                        .parse::<f64>()
+                        .ok()
+                        .is_none_or(|value| !value.is_finite())
+                })
+            {
+                self.message = "Enter finite numeric start and end coordinates in metres.".into();
+            } else if unchanged {
+                clear_numeric_fields(ctx, &fields);
+                edit.input.close_without_commit(ctx);
+                return;
+            } else if self.apply_internal_line(ctx, &edit) {
+                clear_numeric_fields(ctx, &fields);
+                return;
+            }
+            edit.error = Some(self.message.clone());
+            if let Some((id, text)) = text {
+                ctx.data_mut(|data| data.insert_temp(id, text));
+            }
+            finish_numeric_action(ctx, edit.field_focus, false);
+        }
+        edit.input.restore(ctx);
+        self.internal_line = Some(edit);
     }
     fn transform_edit(&self, ctx: &egui::Context, piece: Id) -> Option<TransformDraft> {
         let [min, max] = self.editor.project.piece_bounds(piece).ok()?;
@@ -3126,6 +3556,7 @@ impl Studio {
     }
     fn patterns(&mut self, ui: &mut egui::Ui) {
         self.discard_stale_transform();
+        self.discard_stale_internal_line();
         self.discard_stale_free_sewing();
         self.refresh_free_sewing();
         let gesture_paused = self.search
@@ -3141,7 +3572,10 @@ impl Studio {
         pane_heading(ui, "2D Pattern").on_hover_text("Editable construction in metres. Alt / Option bypasses snap; scroll zooms; middle drag pans.");
         let (response, painter) = ui.allocate_painter(ui.available_size(), Sense::click_and_drag());
         self.pattern_canvas = Some(response.id);
-        if self.tool == Tool::FreeSewing {
+        if matches!(
+            self.tool,
+            Tool::FreeSewing | Tool::Select | Tool::InternalLine
+        ) {
             self.retain_inspector_input(&response, false);
         }
         let r = response.rect;
@@ -3240,6 +3674,8 @@ impl Studio {
         };
         let mut nearest = None;
         let mut distance = 12_f32;
+        let mut boundary_nearest = None;
+        let mut boundary_distance = 12_f32;
         for piece in &doc.pieces {
             let selected = self.selected == Some(piece.id);
             let color = if selected {
@@ -3256,6 +3692,10 @@ impl Studio {
                     if let Some(p) = pointer {
                         for s in samples.windows(2) {
                             let d = segment_distance(p, s[0], s[1]);
+                            if d < boundary_distance {
+                                boundary_distance = d;
+                                boundary_nearest = Some((piece.id, *id));
+                            }
                             if d < distance {
                                 distance = d;
                                 nearest = Some((piece.id, *id));
@@ -3295,6 +3735,40 @@ impl Studio {
                     }
                     if let Some(point) = doc.point(curve.start) {
                         painter.circle_filled(self.to_screen(point.position, r), 3.5, color);
+                    }
+                }
+            }
+            for id in &piece.internal_curves {
+                if let Some(curve) = doc.curve(*id)
+                    && let (Some(start), Some(end)) = (doc.point(curve.start), doc.point(curve.end))
+                {
+                    let points =
+                        [start.position, end.position].map(|point| self.to_screen(point, r));
+                    if let Some(pointer) = pointer {
+                        let d = segment_distance(pointer, points[0], points[1]);
+                        if d < distance {
+                            distance = d;
+                            nearest = Some((piece.id, *id));
+                        }
+                    }
+                    let color = if self.selected_curve == Some(*id) {
+                        Color32::GOLD
+                    } else {
+                        Color32::from_rgb(184, 145, 224)
+                    };
+                    painter.line_segment(
+                        points,
+                        Stroke::new(
+                            if self.selected_curve == Some(*id) {
+                                3.
+                            } else {
+                                1.5
+                            },
+                            color,
+                        ),
+                    );
+                    for point in points {
+                        painter.circle_stroke(point, 4., Stroke::new(1.5, color));
                     }
                 }
             }
@@ -3507,6 +3981,24 @@ impl Studio {
                 egui::StrokeKind::Inside,
             );
         }
+        if let Some(edit) = &self.internal_line {
+            let mut endpoints = edit.endpoints;
+            if !edit.modal
+                && edit.error.is_none()
+                && let Some(pointer) = pointer.filter(|pointer| r.contains(*pointer))
+            {
+                endpoints[1] = self.to_pattern(pointer, r, snap);
+            }
+            let points = endpoints.map(|point| self.to_screen(point, r));
+            painter.line_segment(points, Stroke::new(2., Color32::from_rgb(211, 167, 246)));
+            for point in points {
+                painter.circle_stroke(
+                    point,
+                    5.,
+                    Stroke::new(1.5, Color32::from_rgb(211, 167, 246)),
+                );
+            }
+        }
         let mut handle_clicked = false;
         let transform_controls = if self.tool == Tool::Transform {
             self.selected.and_then(|piece| {
@@ -3609,7 +4101,7 @@ impl Studio {
             let piece = if rotating {
                 self.selected
             } else {
-                nearest.map(|(piece, _)| piece)
+                boundary_nearest.map(|(piece, _)| piece)
             };
             if let Some(piece) = piece
                 && self.select(ui.ctx(), Some(piece))
@@ -3653,15 +4145,48 @@ impl Studio {
                 self.drag_start = Some(self.to_pattern(p, r, self.drag_snap));
             }
             if self.tool == Tool::Select {
-                self.drag_point = doc
+                let press = ui.input(|input| input.pointer.press_origin()).unwrap_or(p);
+                let selected_endpoints = self
+                    .selected_internal_curve()
+                    .and_then(|curve| doc.curve(curve))
+                    .map(|curve| [curve.start, curve.end]);
+                let point = doc
                     .points
                     .iter()
                     .filter_map(|point| {
-                        let d = self.to_screen(point.position, r).distance(p);
-                        (d < 12.).then_some((point.id, d))
+                        let d = self.to_screen(point.position, r).distance(press);
+                        (d < 12.).then_some((
+                            point.id,
+                            d,
+                            selected_endpoints.is_some_and(|points| points.contains(&point.id)),
+                        ))
                     })
-                    .min_by(|a, b| a.1.total_cmp(&b.1))
+                    .min_by(|a, b| a.1.total_cmp(&b.1).then(b.2.cmp(&a.2)))
                     .map(|p| p.0);
+                if let Some(point) = point {
+                    let owner = doc.pieces.iter().find_map(|piece| {
+                        piece
+                            .boundary
+                            .iter()
+                            .chain(&piece.internal_curves)
+                            .find_map(|curve| {
+                                doc.curve(*curve)
+                                    .filter(|curve| curve.start == point || curve.end == point)
+                                    .map(|_| (piece.id, *curve))
+                            })
+                    });
+                    if let Some((piece, curve)) = owner
+                        && (self.selected == Some(piece)
+                            || !doc
+                                .piece(piece)
+                                .is_some_and(|piece| piece.internal_curves.contains(&curve))
+                            || self.allow_piece_selection(ui.ctx()))
+                    {
+                        self.drag_point = Some(point);
+                        self.drag_piece = self.selected;
+                        self.drag_input = Some(self.free_sewing_input(ui.ctx()));
+                    }
+                }
             }
         }
         if !gesture_paused
@@ -3672,7 +4197,52 @@ impl Studio {
         }
         if !gesture_paused && response.drag_stopped_by(egui::PointerButton::Primary) {
             if let (Some(point), Some(position)) = (self.drag_point.take(), self.preview.take()) {
-                self.execute(Command::MovePoint { point, position });
+                let input = self.drag_input.take();
+                self.drag_piece = None;
+                let focused = input
+                    .as_ref()
+                    .and_then(|input| input.focus)
+                    .or_else(|| self.inspector_focus(ui.ctx()));
+                if focused
+                    .and_then(|id| ui.ctx().data_mut(|data| data.get_temp::<String>(id)))
+                    .is_some_and(|text| {
+                        text.trim()
+                            .parse::<f64>()
+                            .ok()
+                            .is_none_or(|value| !value.is_finite())
+                    })
+                {
+                    self.message =
+                        "Correct the pending property value before moving this endpoint.".into();
+                    finish_numeric_action(ui.ctx(), focused, false);
+                } else if self
+                    .editor
+                    .project
+                    .point(point)
+                    .is_some_and(|point| point.position != position)
+                {
+                    let target = self.editor.project.pieces.iter().find_map(|piece| {
+                        piece
+                            .internal_curves
+                            .iter()
+                            .find(|id| {
+                                self.editor
+                                    .project
+                                    .curve(**id)
+                                    .is_some_and(|curve| curve.start == point || curve.end == point)
+                            })
+                            .map(|curve| (piece.id, *curve))
+                    });
+                    if self.apply_inspector_action(
+                        ui.ctx(),
+                        Command::MovePoint { point, position },
+                        focused,
+                    ) && let Some((piece, curve)) = target
+                    {
+                        self.selected = Some(piece);
+                        self.selected_curve = Some(curve);
+                    }
+                }
             }
             if let (Some(start), Some(p)) = (self.drag_start.take(), pointer) {
                 let end = self.to_pattern(p, r, self.drag_snap);
@@ -3685,11 +4255,17 @@ impl Studio {
                 self.select(ui.ctx(), self.editor.project.pieces.last().map(|p| p.id));
             }
         }
+        if gesture_paused && response.drag_stopped_by(egui::PointerButton::Primary) {
+            self.drag_point = None;
+            self.preview = None;
+            self.drag_input = None;
+            self.drag_piece = None;
+        }
         if response.clicked() {
             match self.tool {
                 Tool::Select => self.select_curve(ui.ctx(), nearest),
                 Tool::Transform => {
-                    if let Some((piece, _)) = nearest {
+                    if let Some((piece, _)) = boundary_nearest {
                         self.select(ui.ctx(), Some(piece));
                     }
                 }
@@ -3699,7 +4275,7 @@ impl Studio {
                     }
                 }
                 Tool::Sew => {
-                    if let Some((_, curve)) = nearest {
+                    if let Some((_, curve)) = boundary_nearest {
                         if let Some(a) = self.seam_start.take() {
                             let b = if self.reversed {
                                 [self.intervals[1][1], self.intervals[1][0]]
@@ -3726,7 +4302,7 @@ impl Studio {
                     }
                 }
                 Tool::SewingPaths => {
-                    if let Some((_, curve)) = nearest {
+                    if let Some((_, curve)) = boundary_nearest {
                         let draft = &mut self.sewing_draft;
                         let side = usize::from(draft.selecting_b);
                         let [t0, t1] = self.intervals[side];
@@ -3777,6 +4353,25 @@ impl Studio {
                             dimensions_mm: ["500".into(), "500".into()],
                             error: None,
                         });
+                    }
+                }
+                Tool::InternalLine => {
+                    if let Some(pointer) = pointer {
+                        let position = self.to_pattern(pointer, r, snap);
+                        if let Some(mut edit) = self.internal_line.take() {
+                            edit.endpoints[1] = position;
+                            if !self.apply_internal_line(ui.ctx(), &edit) {
+                                edit.error = Some(self.message.clone());
+                                self.internal_line = Some(edit);
+                            }
+                        } else if let Some(mut edit) = self.internal_line_edit(ui.ctx(), None) {
+                            edit.endpoints = [position; 2];
+                            finish_numeric_action(ui.ctx(), edit.input.focus, false);
+                            self.internal_line = Some(edit);
+                        } else {
+                            self.message =
+                                "Select an owner pattern before creating an internal line.".into();
+                        }
                     }
                 }
             }
@@ -4092,8 +4687,10 @@ impl eframe::App for Studio {
         self.poll_autosave();
         self.discard_stale_transform();
         self.discard_stale_free_sewing();
+        self.discard_stale_internal_line();
         let authoring_modal = self.rectangle.is_some()
             || self.transform.is_some()
+            || self.internal_line.as_ref().is_some_and(|edit| edit.modal)
             || self.free_sewing.as_ref().is_some_and(|draft| draft.modal)
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some();
@@ -4107,6 +4704,25 @@ impl eframe::App for Studio {
                 .take()
                 .and_then(|gesture| gesture.edit.focus);
             finish_numeric_action(&ctx, focused, false);
+        }
+        if global_shortcuts
+            && self.drag_point.is_some()
+            && ctx.input_mut(|input| input.consume_key(egui::Modifiers::NONE, egui::Key::Escape))
+        {
+            self.drag_point = None;
+            self.preview = None;
+            self.drag_piece = None;
+            if let Some(input) = self.drag_input.take() {
+                if input
+                    .focus
+                    .is_some_and(|id| ctx.memory(|memory| memory.had_focus_last_frame(id)))
+                {
+                    finish_numeric_action(&ctx, input.focus, false);
+                } else {
+                    // Refocusing a blurred DragValue clears its raw cache; retain its current input.
+                    self.free_sewing_input(&ctx).close_without_commit(&ctx);
+                }
+            }
         }
         if global_shortcuts
             && ctx.input_mut(|i| i.consume_key(egui::Modifiers::COMMAND, egui::Key::S))
@@ -4157,6 +4773,8 @@ impl eframe::App for Studio {
                     self.confirm_sewing_side(&ctx);
                 } else if self.tool == Tool::FreeSewing {
                     self.open_free_sewing(&ctx);
+                } else if self.tool == Tool::InternalLine {
+                    self.open_internal_line(&ctx, None);
                 } else {
                     self.finish_polygon();
                 }
@@ -4168,7 +4786,17 @@ impl eframe::App for Studio {
             {
                 self.delete_sewing_span();
             }
+            if self.tool == Tool::Select
+                && ctx.input(|i| {
+                    i.key_pressed(egui::Key::Delete) || i.key_pressed(egui::Key::Backspace)
+                })
+                && let Some(curve) = self.selected_internal_curve()
+            {
+                let focused = self.inspector_focus(&ctx);
+                self.apply_inspector_action(&ctx, Command::RemoveInternalCurve { curve }, focused);
+            }
             if ctx.input(|i| i.key_pressed(egui::Key::Escape)) {
+                self.cancel_internal_line(&ctx);
                 self.cancel_free_sewing(&ctx);
                 self.reset_gestures();
             }
@@ -4316,6 +4944,7 @@ impl eframe::App for Studio {
                         "Transform pattern",
                         "Polygon",
                         "Rectangle",
+                        "Internal line",
                         "Add ellipse",
                         "Sew edges",
                         "Free sewing",
@@ -4353,6 +4982,7 @@ impl eframe::App for Studio {
                                 "Transform pattern" => self.set_tool(Tool::Transform),
                                 "Polygon" => self.set_tool(Tool::Polygon),
                                 "Rectangle" => self.set_tool(Tool::Rectangle),
+                                "Internal line" => self.set_tool(Tool::InternalLine),
                                 "Add ellipse" => {
                                     let focused = self.inspector_focus(&ctx);
                                     self.add_ellipse(&ctx, focused);
@@ -4374,6 +5004,7 @@ impl eframe::App for Studio {
         }
         self.rectangle_window(&ctx);
         self.transform_window(&ctx);
+        self.internal_line_window(&ctx);
         self.free_sewing_window(&ctx);
         self.sewing_group_window(&ctx);
         self.pattern_import_window(&ctx);
@@ -4505,6 +5136,12 @@ fn tool_button(ui: &mut egui::Ui, tool: Tool, selected: bool) -> egui::Response 
                 egui::StrokeKind::Inside,
             );
         }
+        Tool::InternalLine => {
+            painter.line_segment([point(-7., 5.), point(7., -5.)], stroke);
+            for p in [point(-7., 5.), point(7., -5.)] {
+                painter.circle_stroke(p, 2.5, stroke);
+            }
+        }
         Tool::Sew | Tool::FreeSewing | Tool::SewingPaths => {
             painter.line_segment([point(-7.0, -8.0), point(-7.0, 8.0)], stroke);
             painter.line_segment([point(7.0, -8.0), point(7.0, 8.0)], stroke);
@@ -4624,12 +5261,19 @@ fn sewing_span_controls(
             spans.remove(index);
         }
         if let Some([t0, t1]) = append_range {
-            let curve = selected_curve.or_else(|| {
-                project
-                    .pieces
-                    .iter()
-                    .find_map(|piece| piece.boundary.first().copied())
-            });
+            let curve = selected_curve
+                .filter(|curve| {
+                    project
+                        .pieces
+                        .iter()
+                        .any(|piece| piece.boundary.contains(curve))
+                })
+                .or_else(|| {
+                    project
+                        .pieces
+                        .iter()
+                        .find_map(|piece| piece.boundary.first().copied())
+                });
             if ui
                 .add_enabled(
                     curve.is_some(),
@@ -13060,7 +13704,11 @@ mod pattern_transform_tests {
     use super::*;
     use egui::accesskit::{Action, ActionData, ActionRequest, NodeId, TreeId};
 
-    fn frame(ctx: &egui::Context, app: &mut Studio, events: Vec<egui::Event>) -> egui::FullOutput {
+    pub(super) fn frame(
+        ctx: &egui::Context,
+        app: &mut Studio,
+        events: Vec<egui::Event>,
+    ) -> egui::FullOutput {
         app.needs_mesh = false;
         ctx.run_ui(
             egui::RawInput {
@@ -13071,7 +13719,7 @@ mod pattern_transform_tests {
             |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
         )
     }
-    fn action(id: NodeId, action: Action, data: Option<ActionData>) -> egui::Event {
+    pub(super) fn action(id: NodeId, action: Action, data: Option<ActionData>) -> egui::Event {
         egui::Event::AccessKitActionRequest(ActionRequest {
             action,
             target_tree: TreeId::ROOT,
@@ -13079,7 +13727,7 @@ mod pattern_transform_tests {
             data,
         })
     }
-    fn button(output: &egui::FullOutput, label: &str) -> NodeId {
+    pub(super) fn button(output: &egui::FullOutput, label: &str) -> NodeId {
         output
             .platform_output
             .accesskit_update
@@ -13096,7 +13744,7 @@ mod pattern_transform_tests {
             .0
     }
 
-    fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+    pub(super) fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
         egui::Event::Key {
             key,
             physical_key: None,
@@ -13116,7 +13764,7 @@ mod pattern_transform_tests {
             },
         }
     }
-    fn pointer_frame(
+    pub(super) fn pointer_frame(
         ctx: &egui::Context,
         app: &mut Studio,
         pos: Pos2,
@@ -13141,7 +13789,7 @@ mod pattern_transform_tests {
             |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
         )
     }
-    fn field(output: &egui::FullOutput, label: &str) -> NodeId {
+    pub(super) fn field(output: &egui::FullOutput, label: &str) -> NodeId {
         let nodes = &output
             .platform_output
             .accesskit_update
@@ -13163,7 +13811,7 @@ mod pattern_transform_tests {
             .0
     }
 
-    fn set_field(ctx: &egui::Context, app: &mut Studio, label: &str, value: f64) {
+    pub(super) fn set_field(ctx: &egui::Context, app: &mut Studio, label: &str, value: f64) {
         let output = frame(ctx, app, vec![]);
         frame(
             ctx,
@@ -13273,7 +13921,7 @@ mod pattern_transform_tests {
             );
         }
     }
-    fn focus_property(ctx: &egui::Context, app: &mut Studio, text: &str) -> egui::Id {
+    pub(super) fn focus_property(ctx: &egui::Context, app: &mut Studio, text: &str) -> egui::Id {
         frame(ctx, app, vec![]);
         let output = frame(ctx, app, vec![]);
         let id = output
@@ -14613,6 +15261,1177 @@ mod pattern_transform_tests {
                 caret
             );
         }
+    }
+}
+
+#[cfg(test)]
+mod internal_line_tests {
+    use super::pattern_transform_tests::{
+        action, button, field, focus_property, frame, key, pointer_frame, set_field,
+    };
+    use super::*;
+    use egui::accesskit::{Action, ActionData};
+
+    fn fixture(line: bool) -> Studio {
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Owner panel".into(),
+                origin: [0.; 2],
+                width: 1.,
+                height: 1.,
+            })
+            .unwrap();
+        let piece = app.editor.project.pieces[0].id;
+        if line {
+            app.editor
+                .execute(Command::AddInternalSegment {
+                    piece,
+                    start: [0.125, 0.25],
+                    end: [0.875, 0.75],
+                })
+                .unwrap();
+            app.selected_curve = Some(app.editor.project.pieces[0].internal_curves[0]);
+        }
+        app.editor
+            .execute(Command::SetGrain { piece, angle: 0.37 })
+            .unwrap();
+        app.editor
+            .execute(Command::SetResolution { metres: 0.2 })
+            .unwrap();
+        assert!(app.editor.undo());
+        app.selected = Some(piece);
+        app.center = [0.5; 2];
+        app.scale = 1000.;
+        app
+    }
+    fn endpoints(app: &Studio) -> [[f64; 2]; 2] {
+        let curve = app
+            .editor
+            .project
+            .curve(app.selected_internal_curve().unwrap())
+            .unwrap();
+        [curve.start, curve.end].map(|point| app.editor.project.point(point).unwrap().position)
+    }
+    fn click_pattern(ctx: &egui::Context, app: &mut Studio, position: [f64; 2], alt: bool) {
+        frame(ctx, app, vec![]);
+        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        let position = app.to_screen(position, rect);
+        pointer_frame(ctx, app, position, Some(true), alt);
+        pointer_frame(ctx, app, position, Some(false), alt);
+    }
+    fn position(output: &egui::FullOutput, label: &str) -> Pos2 {
+        let id = button(output, label);
+        let bounds = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(node, _)| *node == id)
+            .unwrap()
+            .1
+            .bounds()
+            .unwrap();
+        Pos2::new(
+            ((bounds.x0 + bounds.x1) * 0.5) as f32,
+            ((bounds.y0 + bounds.y1) * 0.5) as f32,
+        )
+    }
+    fn open_editor(ctx: &egui::Context, app: &mut Studio) {
+        let output = frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![action(
+                button(&output, "Edit internal endpoints…"),
+                Action::Click,
+                None,
+            )],
+        );
+        assert!(app.internal_line.as_ref().unwrap().modal);
+    }
+
+    #[test]
+    fn internal_line_search_rail_and_snapped_two_click_creation_are_atomic() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut empty = Studio::empty();
+        empty.session_autosave = None;
+        empty.search = true;
+        empty.query = "Internal line".into();
+        frame(&ctx, &mut empty, vec![]);
+        let output = frame(&ctx, &mut empty, vec![]);
+        let command = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .rev()
+            .find(|(_, node)| {
+                node.label() == Some("Internal line") && node.supports_action(Action::Click)
+            })
+            .unwrap()
+            .0;
+        frame(&ctx, &mut empty, vec![action(command, Action::Click, None)]);
+        assert!(empty.tool == Tool::InternalLine && !empty.search);
+        empty.open_internal_line(&ctx, None);
+        assert!(empty.internal_line.is_none());
+        assert!(empty.message.contains("owner"));
+
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture(false);
+        let property = focus_property(&ctx, &mut app, "0.47");
+        let before = app.editor.project.clone();
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(
+                button(&output, "Internal line"),
+                Action::Click,
+                None,
+            )],
+        );
+        click_pattern(&ctx, &mut app, [0.126, 0.247], false);
+        assert_eq!(app.editor.project, before);
+        assert!(app.editor.can_redo());
+        assert_eq!(
+            app.internal_line.as_ref().unwrap().endpoints[0],
+            [0.13, 0.25]
+        );
+        click_pattern(&ctx, &mut app, [0.876, 0.754], true);
+        assert!(app.internal_line.is_none());
+        assert_eq!(app.editor.project.revision, before.revision + 1);
+        assert_eq!(app.editor.project.pieces[0].grain_angle, 0.47);
+        assert_eq!(app.editor.project.pieces[0].internal_curves, vec![13]);
+        assert_eq!(endpoints(&app)[0], [0.13, 0.25]);
+        for (actual, expected) in endpoints(&app)[1].into_iter().zip([0.876, 0.754]) {
+            assert!((actual - expected).abs() < 2e-6);
+        }
+        assert!(
+            ctx.data_mut(|data| data.get_temp::<String>(property))
+                .is_none()
+        );
+        let created = endpoints(&app);
+        app.history(&ctx, false);
+        assert!(app.editor.project.pieces[0].internal_curves.is_empty());
+        assert_eq!(app.editor.project.pieces[0].grain_angle, 0.37);
+        app.history(&ctx, true);
+        assert_eq!(app.selected_internal_curve(), None);
+        let curve = app.editor.project.pieces[0].internal_curves[0];
+        app.selected_curve = Some(curve);
+        assert_eq!(endpoints(&app), created);
+    }
+
+    #[test]
+    fn internal_line_precise_creation_and_both_endpoint_edit_use_one_transaction() {
+        for route in [
+            "apply",
+            "unfocused return",
+            "focus apply",
+            "tab apply",
+            "pointer",
+        ] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture(false);
+            let before = app.editor.project.clone();
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(
+                    button(&output, "Internal line…"),
+                    Action::Click,
+                    None,
+                )],
+            );
+            for (label, value) in [
+                ("Start U (m)", 0.125),
+                ("Start V (m)", 0.25),
+                ("End U (m)", 0.875),
+                ("End V (m)", 0.75),
+            ] {
+                set_field(&ctx, &mut app, label, value);
+            }
+            let output = frame(&ctx, &mut app, vec![]);
+            match route {
+                "unfocused return" => {
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+                    );
+                }
+                "focus apply" => {
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![
+                            action(field(&output, "End V (m)"), Action::Focus, None),
+                            action(button(&output, "Apply internal line"), Action::Click, None),
+                        ],
+                    );
+                }
+                "tab apply" => {
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![
+                            key(egui::Key::Tab, egui::Modifiers::NONE),
+                            action(button(&output, "Apply internal line"), Action::Click, None),
+                        ],
+                    );
+                }
+                "pointer" => {
+                    let apply = position(&output, "Apply internal line");
+                    pointer_frame(&ctx, &mut app, apply, Some(true), false);
+                    assert_eq!(app.editor.project, before);
+                    pointer_frame(&ctx, &mut app, apply, Some(false), false);
+                }
+                _ => {
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![action(
+                            button(&output, "Apply internal line"),
+                            Action::Click,
+                            None,
+                        )],
+                    );
+                }
+            }
+            assert!(app.internal_line.is_none(), "{route}");
+            assert_eq!(app.editor.project.revision, before.revision + 1, "{route}");
+            assert_eq!(endpoints(&app), [[0.125, 0.25], [0.875, 0.75]], "{route}");
+            let curve = app.selected_internal_curve().unwrap();
+            let ids = app.editor.project.curve(curve).unwrap().clone();
+            open_editor(&ctx, &mut app);
+            for (label, value) in [
+                ("Start U (m)", 0.875),
+                ("Start V (m)", 0.75),
+                ("End U (m)", 0.125),
+                ("End V (m)", 0.25),
+            ] {
+                set_field(&ctx, &mut app, label, value);
+            }
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(
+                    button(&output, "Apply internal line"),
+                    Action::Click,
+                    None,
+                )],
+            );
+            assert_eq!(app.editor.project.revision, before.revision + 2);
+            assert_eq!(endpoints(&app), [[0.875, 0.75], [0.125, 0.25]]);
+            assert_eq!(app.editor.project.curve(curve).unwrap(), &ids);
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+            );
+            assert_eq!(app.editor.project.revision, before.revision + 2);
+            app.history(&ctx, false);
+            assert_eq!(endpoints(&app), [[0.125, 0.25], [0.875, 0.75]]);
+            app.history(&ctx, true);
+            assert_eq!(endpoints(&app), [[0.875, 0.75], [0.125, 0.25]]);
+        }
+    }
+
+    #[test]
+    fn internal_line_endpoint_drag_retains_press_blur_and_commits_pending_properties_once() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture(true);
+        let property = focus_property(&ctx, &mut app, "0.47");
+        let before = app.editor.project.clone();
+        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        let start = app.to_screen(endpoints(&app)[1], rect);
+        pointer_frame(&ctx, &mut app, start, Some(true), false);
+        assert_eq!(app.editor.project, before);
+        pointer_frame(&ctx, &mut app, start + Vec2::new(-55., 50.), None, false);
+        assert_eq!(app.editor.project, before);
+        assert!(app.drag_point.is_some());
+        pointer_frame(
+            &ctx,
+            &mut app,
+            start + Vec2::new(-55., 50.),
+            Some(false),
+            false,
+        );
+        assert_eq!(app.editor.project.revision, before.revision + 1);
+        assert_eq!(app.editor.project.pieces[0].grain_angle, 0.47);
+        assert_eq!(endpoints(&app)[0], [0.125, 0.25]);
+        assert_eq!(endpoints(&app)[1], [0.82, 0.7]);
+        assert!(
+            ctx.data_mut(|data| data.get_temp::<String>(property))
+                .is_none()
+        );
+        app.history(&ctx, false);
+        assert_eq!(endpoints(&app), [[0.125, 0.25], [0.875, 0.75]]);
+        assert_eq!(app.editor.project.pieces[0].grain_angle, 0.37);
+    }
+
+    #[test]
+    fn internal_line_failure_cancel_and_unchanged_editor_preserve_raw_input_redo_and_outputs() {
+        for entered in ["1000", "1e-", "NaN"] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture(true);
+            let property = focus_property(&ctx, &mut app, "0.47");
+            let property_text = ctx.data_mut(|data| data.get_temp::<String>(property));
+            let property_caret = egui::TextEdit::load_state(&ctx, property)
+                .unwrap()
+                .cursor
+                .char_range();
+            let before = format!("{:?}", app.editor);
+            let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+            let mesh = Arc::new(app.editor.project.mesh().unwrap());
+            let cloth = Arc::new(
+                weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap(),
+            );
+            app.mesh = Some(mesh.clone());
+            app.cloth = Some(cloth.clone());
+            let (_sender, receiver) = mpsc::channel();
+            let cancel = Arc::new(AtomicBool::new(false));
+            app.job = Some(Job {
+                id: 901,
+                revision: app.editor.project.revision,
+                kind: JobKind::Simulation,
+                batch: None,
+                completed_steps: Arc::new(AtomicU64::new(0)),
+                cancel: cancel.clone(),
+                receiver,
+            });
+            open_editor(&ctx, &mut app);
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(field(&output, "Start U (m)"), Action::Focus, None)],
+            );
+            frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text(entered.into()),
+                    key(egui::Key::ArrowLeft, egui::Modifiers::NONE),
+                ],
+            );
+            let focused = numeric_focus(&ctx).unwrap();
+            let raw = ctx.data_mut(|data| data.get_temp::<String>(focused));
+            let caret = egui::TextEdit::load_state(&ctx, focused)
+                .unwrap()
+                .cursor
+                .char_range();
+            let output = frame(&ctx, &mut app, vec![]);
+            let apply = position(&output, "Apply internal line");
+            pointer_frame(&ctx, &mut app, apply, Some(true), false);
+            assert_eq!(format!("{:?}", app.editor), before);
+            pointer_frame(&ctx, &mut app, apply, Some(false), false);
+            frame(&ctx, &mut app, vec![]);
+            assert!(app.internal_line.as_ref().unwrap().error.is_some());
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), raw);
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, focused)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                pending
+            );
+            assert!(
+                Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh)
+                    && Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth)
+            );
+            assert!(
+                !cancel.load(Ordering::Relaxed)
+                    && app.job.as_ref().unwrap().id == 901
+                    && !app.dirty
+            );
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+            );
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(
+                    button(&output, "Cancel internal line"),
+                    Action::Click,
+                    None,
+                )],
+            );
+            for _ in 0..3 {
+                frame(&ctx, &mut app, vec![]);
+            }
+            assert!(app.internal_line.is_none());
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(property)),
+                property_text
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, property)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                property_caret
+            );
+            open_editor(&ctx, &mut app);
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(
+                    button(&output, "Apply internal line"),
+                    Action::Click,
+                    None,
+                )],
+            );
+            assert!(app.internal_line.is_none());
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                pending
+            );
+        }
+    }
+
+    #[test]
+    fn internal_line_modal_shields_background_pointer_accesskit_and_shortcuts() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture(true);
+        focus_property(&ctx, &mut app, "0.47");
+        let output = frame(&ctx, &mut app, vec![]);
+        let background =
+            ["Add rectangle", "Undo", "Internal line"].map(|label| button(&output, label));
+        let background_position = position(&output, "Add rectangle");
+        let numeric = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| node.numeric_value() == Some(0.47))
+            .unwrap()
+            .0;
+        let before = format!("{:?}", app.editor);
+        open_editor(&ctx, &mut app);
+        frame(
+            &ctx,
+            &mut app,
+            background
+                .into_iter()
+                .map(|id| action(id, Action::Click, None))
+                .chain([
+                    action(
+                        numeric,
+                        Action::SetValue,
+                        Some(ActionData::NumericValue(0.9)),
+                    ),
+                    key(egui::Key::S, egui::Modifiers::COMMAND),
+                    key(egui::Key::Z, egui::Modifiers::COMMAND),
+                    key(egui::Key::Delete, egui::Modifiers::NONE),
+                    key(egui::Key::Space, egui::Modifiers::NONE),
+                ])
+                .collect(),
+        );
+        assert!(!app.playing && !app.dirty && app.internal_line.is_some());
+        pointer_frame(&ctx, &mut app, background_position, Some(true), false);
+        pointer_frame(&ctx, &mut app, background_position, Some(false), false);
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert_eq!(app.draft.as_ref().unwrap().grain_angle, Some(0.47));
+        assert!(!app.playing && !app.dirty);
+    }
+
+    #[test]
+    fn internal_line_picking_delete_and_boundary_tools_keep_roles_separate() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture(true);
+        app.selected_curve = None;
+        click_pattern(&ctx, &mut app, [0.5; 2], false);
+        let curve = app.selected_internal_curve().unwrap();
+        let before = app.editor.project.clone();
+        let output = frame(&ctx, &mut app, vec![]);
+        let nodes = &output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes;
+        assert!(
+            nodes
+                .iter()
+                .any(|(_, node)| node.label() == Some("Edit internal endpoints…"))
+        );
+        assert!(!nodes.iter().any(|(_, node)| matches!(
+            node.label(),
+            Some("Cubic Bezier" | "Split selected curve" | "Join with next boundary")
+        )));
+        for tool in [
+            Tool::Sew,
+            Tool::SewingPaths,
+            Tool::FreeSewing,
+            Tool::Transform,
+        ] {
+            app.set_tool(tool);
+            click_pattern(&ctx, &mut app, [0.5; 2], false);
+            assert_eq!(app.editor.project, before);
+            assert!(
+                app.seam_start.is_none()
+                    && app.sewing_draft.a.is_empty()
+                    && app.transform_gesture.is_none()
+            );
+            if tool == Tool::FreeSewing {
+                app.begin_free_sewing(&ctx);
+                assert!(
+                    app.free_sewing
+                        .as_ref()
+                        .unwrap()
+                        .sides
+                        .iter()
+                        .all(|side| side.curve != Some(curve))
+                );
+            }
+        }
+        app.set_tool(Tool::Select);
+        app.selected_curve = Some(curve);
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Delete, egui::Modifiers::NONE)],
+        );
+        assert_eq!(app.editor.project.pieces.len(), 1);
+        assert!(app.editor.project.pieces[0].internal_curves.is_empty());
+        assert_eq!(
+            app.editor.project.pieces[0].boundary,
+            before.pieces[0].boundary
+        );
+        app.history(&ctx, false);
+        assert_eq!(app.editor.project.pieces[0].internal_curves, vec![curve]);
+        app.selected_curve = Some(curve);
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(
+                button(&output, "Delete owner piece"),
+                Action::Click,
+                None,
+            )],
+        );
+        assert!(app.editor.project.pieces.is_empty() && app.editor.project.points.is_empty());
+    }
+
+    #[test]
+    fn internal_line_failed_second_point_and_stale_tool_owner_revision_load_are_safe() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture(false);
+        app.set_tool(Tool::InternalLine);
+        let before = format!("{:?}", app.editor);
+        click_pattern(&ctx, &mut app, [0.125, 0.25], true);
+        click_pattern(&ctx, &mut app, [1.1, 0.75], true);
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert!(app.internal_line.as_ref().unwrap().error.is_some());
+        let failed = app.internal_line.as_ref().unwrap().endpoints;
+        app.load_document(
+            PathBuf::from("/nonexistent-weftforge-internal-line-test"),
+            false,
+        );
+        assert_eq!(app.internal_line.as_ref().unwrap().endpoints, failed);
+        assert_eq!(format!("{:?}", app.editor), before);
+        click_pattern(&ctx, &mut app, [0.875, 0.75], true);
+        assert!(app.internal_line.is_none());
+        let before = app.editor.project.clone();
+        for event in ["tool", "owner", "revision", "history", "open", "recover"] {
+            app.tool = Tool::InternalLine;
+            app.selected = Some(before.pieces[0].id);
+            app.internal_line = app.internal_line_edit(&ctx, None);
+            let edit = app.internal_line.as_ref().unwrap().clone();
+            match event {
+                "tool" => app.set_tool(Tool::Select),
+                "owner" => app.selected = None,
+                "revision" => app
+                    .editor
+                    .execute(Command::SetResolution { metres: 0.15 })
+                    .unwrap(),
+                "history" => app.history(&ctx, false),
+                _ => {
+                    let path = std::env::temp_dir().join(format!(
+                        "weftforge-internal-line-{}-{event}.weftforge",
+                        std::process::id()
+                    ));
+                    before.save(&path).unwrap();
+                    app.load_document(path.clone(), event == "recover");
+                    fs::remove_file(path).unwrap();
+                }
+            }
+            app.discard_stale_internal_line();
+            assert!(app.internal_line.is_none(), "{event}");
+            let after = format!("{:?}", app.editor);
+            assert!(!app.apply_internal_line(&ctx, &edit), "{event}");
+            assert_eq!(format!("{:?}", app.editor), after);
+        }
+    }
+
+    #[test]
+    fn internal_line_cross_piece_selection_and_incomplete_source_text_are_retained() {
+        for text in ["0.47", "1e-", "NaN"] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture(true);
+            app.editor
+                .execute(Command::AddRectangle {
+                    name: "Other owner".into(),
+                    origin: [1.2, 0.],
+                    width: 0.6,
+                    height: 1.,
+                })
+                .unwrap();
+            app.center = [0.9, 0.5];
+            app.scale = 600.;
+            let property = focus_property(&ctx, &mut app, text);
+            let before = format!("{:?}", app.editor);
+            let selected = (app.selected, app.selected_curve);
+            let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+            let raw = ctx.data_mut(|data| data.get_temp::<String>(property));
+            let caret = egui::TextEdit::load_state(&ctx, property)
+                .unwrap()
+                .cursor
+                .char_range();
+            let output = frame(&ctx, &mut app, vec![]);
+            let other = position(&output, "Other owner");
+            pointer_frame(&ctx, &mut app, other, Some(true), false);
+            pointer_frame(&ctx, &mut app, other, Some(false), false);
+            assert_eq!((app.selected, app.selected_curve), selected);
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![action(button(&output, "Other owner"), Action::Click, None)],
+            );
+            click_pattern(&ctx, &mut app, [1.5, 0.], false);
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!((app.selected, app.selected_curve), selected);
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                pending
+            );
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(property)), raw);
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, property)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            if text != "0.47" {
+                open_editor(&ctx, &mut app);
+                set_field(&ctx, &mut app, "End U (m)", 0.8);
+                let output = frame(&ctx, &mut app, vec![]);
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![action(
+                        button(&output, "Apply internal line"),
+                        Action::Click,
+                        None,
+                    )],
+                );
+                assert!(
+                    app.internal_line
+                        .as_ref()
+                        .unwrap()
+                        .error
+                        .as_deref()
+                        .unwrap()
+                        .contains("pending property")
+                );
+                assert_eq!(format!("{:?}", app.editor), before);
+                let output = frame(&ctx, &mut app, vec![]);
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![action(
+                        button(&output, "Cancel internal line"),
+                        Action::Click,
+                        None,
+                    )],
+                );
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, vec![]);
+                }
+                assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(property)), raw);
+                assert_eq!(
+                    egui::TextEdit::load_state(&ctx, property)
+                        .unwrap()
+                        .cursor
+                        .char_range(),
+                    caret
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn internal_line_unfinished_creation_blocks_clean_new_and_escape_abandons_without_history() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture(false);
+        app.set_tool(Tool::InternalLine);
+        click_pattern(&ctx, &mut app, [0.125, 0.25], true);
+        let before = format!("{:?}", app.editor);
+        app.new_empty(&ctx, None);
+        assert!(app.message.contains("construction gesture"));
+        assert_eq!(format!("{:?}", app.editor), before);
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+        );
+        assert!(app.internal_line.is_none());
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert!(app.editor.can_redo());
+        app.new_empty(&ctx, None);
+        assert_eq!(app.editor.project, Project::default());
+    }
+
+    fn compound_endpoint_property_edit(valid: bool) {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture(true);
+        let property = focus_property(&ctx, &mut app, "0.47");
+        let before = app.editor.project.clone();
+        let history = format!("{:?}", app.editor);
+        let pending = app.draft.as_ref().unwrap().commands(&before);
+        let raw = ctx.data_mut(|data| data.get_temp::<String>(property));
+        let caret = egui::TextEdit::load_state(&ctx, property)
+            .unwrap()
+            .cursor
+            .char_range();
+        let mesh = Arc::new(before.mesh().unwrap());
+        let cloth = Arc::new(weftforge_core::simulation::create_cloth(&before, &mesh).unwrap());
+        app.mesh = Some(mesh.clone());
+        app.cloth = Some(cloth.clone());
+        let (_sender, receiver) = mpsc::channel();
+        let cancel = Arc::new(AtomicBool::new(false));
+        app.job = Some(Job {
+            id: 902,
+            revision: before.revision,
+            kind: JobKind::Simulation,
+            batch: None,
+            completed_steps: Arc::new(AtomicU64::new(0)),
+            cancel: cancel.clone(),
+            receiver,
+        });
+        open_editor(&ctx, &mut app);
+        let expected = [[0.25, 0.375], [0.75, if valid { 0.625 } else { 1.125 }]];
+        for (label, value) in [
+            ("Start U (m)", expected[0][0]),
+            ("Start V (m)", expected[0][1]),
+            ("End U (m)", expected[1][0]),
+            ("End V (m)", expected[1][1]),
+        ] {
+            set_field(&ctx, &mut app, label, value);
+        }
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(
+                button(&output, "Apply internal line"),
+                Action::Click,
+                None,
+            )],
+        );
+        if valid {
+            assert!(
+                app.internal_line.is_none(),
+                "valid compound edit rejected: {}",
+                app.message
+            );
+            assert_eq!(app.editor.project.revision, before.revision + 1);
+            assert_eq!(app.editor.project.pieces[0].grain_angle, 0.47);
+            assert_eq!(endpoints(&app), expected);
+            assert!(cancel.load(Ordering::Relaxed));
+            app.history(&ctx, false);
+            let mut restored = app.editor.project.clone();
+            restored.revision = before.revision;
+            assert_eq!(restored, before);
+            assert!(app.editor.can_redo());
+        } else {
+            assert!(
+                app.internal_line
+                    .as_ref()
+                    .unwrap()
+                    .error
+                    .as_ref()
+                    .unwrap()
+                    .starts_with("Internal curve 13"),
+                "wrong rejection: {}",
+                app.message
+            );
+            assert_eq!(format!("{:?}", app.editor), history);
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                pending
+            );
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(property)), raw);
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, property)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            assert!(
+                Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh)
+                    && Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth)
+            );
+            assert!(
+                !cancel.load(Ordering::Relaxed)
+                    && app.job.as_ref().unwrap().id == 902
+                    && !app.dirty
+                    && app.editor.can_redo()
+            );
+        }
+    }
+
+    #[test]
+    fn internal_line_review_compound_endpoints_and_staged_grain_commit_one_revision_and_undo() {
+        compound_endpoint_property_edit(true);
+    }
+
+    #[test]
+    fn internal_line_review_compound_endpoint_geometry_failure_retains_pending_and_accepted_state()
+    {
+        compound_endpoint_property_edit(false);
+    }
+
+    fn boundary_control_drag(outcome: &str, text: &str) {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture(true);
+        let target = app.selected_internal_curve().unwrap();
+        let source = app.editor.project.pieces[0].boundary[0];
+        let controls = [[1. / 3., 0.], [2. / 3., 0.]];
+        app.editor
+            .execute(Command::SetCurveControls {
+                curve: source,
+                controls: Some(controls),
+            })
+            .unwrap();
+        app.editor
+            .execute(Command::SetResolution { metres: 0.15 })
+            .unwrap();
+        assert!(app.editor.undo());
+        app.selected_curve = Some(source);
+        frame(&ctx, &mut app, vec![]);
+        let output = frame(&ctx, &mut app, vec![]);
+        let control = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| node.numeric_value() == Some(1. / 3.))
+            .unwrap()
+            .0;
+        frame(&ctx, &mut app, vec![action(control, Action::Focus, None)]);
+        frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text(text.into()),
+                key(egui::Key::ArrowLeft, egui::Modifiers::NONE),
+            ],
+        );
+        let focused = numeric_focus(&ctx).unwrap();
+        let mut raw = ctx.data_mut(|data| data.get_temp::<String>(focused));
+        let mut caret = egui::TextEdit::load_state(&ctx, focused)
+            .unwrap()
+            .cursor
+            .char_range();
+        let before = app.editor.project.clone();
+        let history = format!("{:?}", app.editor);
+        let selection = (app.selected, app.selected_curve);
+        let mut pending = app.draft.as_ref().unwrap().commands(&before);
+        if text == "0.3125" {
+            assert_eq!(
+                pending,
+                vec![Command::SetCurveControls {
+                    curve: source,
+                    controls: Some([[0.3125, 0.], controls[1]])
+                }]
+            );
+        } else {
+            assert!(pending.is_empty());
+        }
+        assert!(app.editor.can_redo());
+        let mesh = Arc::new(before.mesh().unwrap());
+        let cloth = Arc::new(weftforge_core::simulation::create_cloth(&before, &mesh).unwrap());
+        app.mesh = Some(mesh.clone());
+        app.cloth = Some(cloth.clone());
+        let (_sender, receiver) = mpsc::channel();
+        let cancel = Arc::new(AtomicBool::new(false));
+        app.job = Some(Job {
+            id: 903,
+            revision: before.revision,
+            kind: JobKind::Simulation,
+            batch: None,
+            completed_steps: Arc::new(AtomicU64::new(0)),
+            cancel: cancel.clone(),
+            receiver,
+        });
+        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        let start = app.to_screen([0.875, 0.75], rect);
+        pointer_frame(&ctx, &mut app, start, Some(true), false);
+        pointer_frame(&ctx, &mut app, start + Vec2::new(-10., 0.), None, false);
+        assert_eq!(
+            (app.selected, app.selected_curve),
+            selection,
+            "drag start replaced the source selection"
+        );
+        assert_eq!(
+            app.draft.as_ref().unwrap().commands(&app.editor.project),
+            pending,
+            "drag start lost the boundary control edit"
+        );
+        assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), raw);
+        assert_eq!(
+            egui::TextEdit::load_state(&ctx, focused)
+                .unwrap()
+                .cursor
+                .char_range(),
+            caret
+        );
+        let finish = app.to_screen(
+            if outcome == "outside" {
+                [1.125, 0.625]
+            } else {
+                [0.75, 0.625]
+            },
+            rect,
+        );
+        pointer_frame(&ctx, &mut app, finish, None, false);
+        if matches!(
+            outcome,
+            "live cancel" | "same-frame cancel" | "unfocused cancel"
+        ) {
+            frame(
+                &ctx,
+                &mut app,
+                vec![
+                    key(egui::Key::A, egui::Modifiers::COMMAND),
+                    egui::Event::Text("0.4375".into()),
+                ],
+            );
+            pending = vec![Command::SetCurveControls {
+                curve: source,
+                controls: Some([[0.4375, 0.], controls[1]]),
+            }];
+            assert_eq!(app.draft.as_ref().unwrap().commands(&before), pending);
+            let mut events = vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("1e-".into()),
+            ];
+            if outcome == "unfocused cancel" {
+                events.push(key(egui::Key::ArrowLeft, egui::Modifiers::NONE));
+            }
+            frame(&ctx, &mut app, events);
+            raw = Some("1e-".into());
+            caret = egui::TextEdit::load_state(&ctx, focused)
+                .unwrap()
+                .cursor
+                .char_range();
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), raw);
+            assert_eq!(
+                numeric_focus(&ctx),
+                (outcome != "unfocused cancel").then_some(focused)
+            );
+            assert!(app.drag_point.is_some());
+        }
+        if matches!(
+            outcome,
+            "cancel" | "live cancel" | "same-frame cancel" | "unfocused cancel"
+        ) {
+            let mut events = Vec::new();
+            if outcome == "same-frame cancel" {
+                events.push(egui::Event::Text("x".into()));
+                events.push(key(egui::Key::ArrowLeft, egui::Modifiers::NONE));
+                raw = Some("1e-x".into());
+            }
+            events.push(key(egui::Key::Escape, egui::Modifiers::NONE));
+            frame(&ctx, &mut app, events);
+            assert!(
+                app.drag_point.is_none(),
+                "Escape left the endpoint gesture armed"
+            );
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(focused)),
+                raw,
+                "Escape replaced newer source text"
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, focused)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret,
+                "Escape replaced the newer source caret"
+            );
+        }
+        pointer_frame(&ctx, &mut app, finish, Some(false), false);
+        for _ in 0..4 {
+            frame(&ctx, &mut app, vec![]);
+        }
+        if outcome == "accepted" {
+            assert_eq!(app.editor.project.revision, before.revision + 1);
+            assert_eq!(app.selected_internal_curve(), Some(target));
+            assert_eq!(
+                app.editor.project.curve(source).unwrap().controls,
+                Some([[0.3125, 0.], controls[1]])
+            );
+            assert_eq!(endpoints(&app)[1], [0.75, 0.63]);
+            assert!(cancel.load(Ordering::Relaxed) && app.dirty);
+            assert!(
+                ctx.data_mut(|data| data.get_temp::<String>(focused))
+                    .is_none()
+            );
+            app.history(&ctx, false);
+            let mut restored = app.editor.project.clone();
+            restored.revision = before.revision;
+            assert_eq!(restored, before);
+            assert!(app.editor.can_redo());
+        } else {
+            assert_eq!(format!("{:?}", app.editor), history);
+            assert_eq!((app.selected, app.selected_curve), selection);
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                pending
+            );
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), raw);
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, focused)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            assert!(
+                Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh)
+                    && Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth)
+            );
+            assert!(
+                !cancel.load(Ordering::Relaxed)
+                    && app.job.as_ref().unwrap().id == 903
+                    && !app.dirty
+                    && app.editor.can_redo()
+            );
+        }
+    }
+
+    #[test]
+    fn internal_line_review_accepted_drag_commits_source_boundary_control_and_endpoint_once() {
+        boundary_control_drag("accepted", "0.3125");
+    }
+
+    #[test]
+    fn internal_line_review_rejected_drag_retains_boundary_draft_raw_caret_redo_and_outputs() {
+        boundary_control_drag("outside", "0.3125");
+        boundary_control_drag("invalid raw", "1e-");
+    }
+
+    #[test]
+    fn internal_line_review_cancelled_drag_retains_boundary_draft_raw_caret_redo_and_outputs() {
+        boundary_control_drag("cancel", "0.3125");
+        boundary_control_drag("cancel", "1e-");
+    }
+
+    #[test]
+    fn internal_line_review_escape_preserves_latest_source_input_entered_during_drag() {
+        boundary_control_drag("live cancel", "0.3125");
+        boundary_control_drag("same-frame cancel", "0.3125");
+        boundary_control_drag("unfocused cancel", "0.3125");
+    }
+
+    #[test]
+    fn internal_line_review_coincident_endpoints_drag_only_the_selected_later_annotation() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture(true);
+        let piece = app.selected.unwrap();
+        let first = app.selected_internal_curve().unwrap();
+        app.editor
+            .execute(Command::AddInternalSegment {
+                piece,
+                start: [0.125, 0.25],
+                end: [0.625, 0.75],
+            })
+            .unwrap();
+        let second = *app.editor.project.pieces[0].internal_curves.last().unwrap();
+        app.select_curve(&ctx, Some((piece, second)));
+        app.position_snap = PositionSnap::Off;
+        let a = app.editor.project.curve(first).unwrap().clone();
+        let b = app.editor.project.curve(second).unwrap().clone();
+        assert_ne!(a.start, b.start);
+        assert_eq!(
+            app.editor.project.point(a.start).unwrap().position,
+            app.editor.project.point(b.start).unwrap().position
+        );
+        let before = app.editor.project.clone();
+        frame(&ctx, &mut app, vec![]);
+        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        let start = app.to_screen([0.125, 0.25], rect);
+        let finish = app.to_screen([0.25, 0.375], rect);
+        pointer_frame(&ctx, &mut app, start, Some(true), false);
+        pointer_frame(&ctx, &mut app, finish, None, false);
+        pointer_frame(&ctx, &mut app, finish, Some(false), false);
+        assert_eq!(
+            app.editor.project.point(a.start),
+            before.point(a.start),
+            "the unselected coincident annotation moved"
+        );
+        assert_eq!(app.editor.project.point(a.end), before.point(a.end));
+        assert_eq!(app.editor.project.point(b.end), before.point(b.end));
+        for (actual, expected) in app
+            .editor
+            .project
+            .point(b.start)
+            .unwrap()
+            .position
+            .into_iter()
+            .zip([0.25, 0.375])
+        {
+            assert!((actual - expected).abs() < 2e-6);
+        }
+        assert_eq!(app.selected_internal_curve(), Some(second));
+        assert_eq!(app.editor.project.revision, before.revision + 1);
     }
 }
 

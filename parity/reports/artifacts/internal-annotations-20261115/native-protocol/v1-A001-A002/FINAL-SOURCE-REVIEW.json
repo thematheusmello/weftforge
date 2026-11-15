@@ -1,0 +1,114 @@
+{
+  "status": "passed_static_immutable_source_comparison_only",
+  "source_commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+  "native_or_candidate_executed": false,
+  "A_numeric_oracle_generated_from_candidate": false,
+  "source_context": [
+    {
+      "commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+      "source_path": "apps/weftforge/src/main.rs",
+      "private_copy": "source-context/ad7-main.rs",
+      "bytes": 689374,
+      "sha256": "16f92de909c94b9103612ce363c52390858dfc9f96004f13e4ae2351da195d45"
+    },
+    {
+      "commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+      "source_path": "crates/weftforge-core/src/document.rs",
+      "private_copy": "source-context/ad7-document.rs",
+      "bytes": 66104,
+      "sha256": "b19b927c7c7332b865f8f9d6f4aec8d53dc3e3ee8c2996b80b9fb8418525a544"
+    },
+    {
+      "commit": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5",
+      "source_path": "crates/weftforge-core/src/persistence.rs",
+      "private_copy": "source-context/ad7-persistence.rs",
+      "bytes": 27327,
+      "sha256": "8a0072dcab625b12a358813f3706a41054a4a1f4a7f4fbabd3eb7cd0e5716ce8"
+    }
+  ],
+  "comparisons": [
+    {
+      "block": "impl Default for Material",
+      "status": "byte_identical_B657_to_ad7",
+      "sha256": "92a07f25cc414d09e8274f71042dca6eda6a1e5a9a3a4aa15a9cb1c55fb9bf89"
+    },
+    {
+      "block": "impl Default for Mannequin",
+      "status": "byte_identical_B657_to_ad7",
+      "sha256": "6938db90d07c101e1caffdedf9790aada4527610b72582aae4a34ecee67259fd"
+    },
+    {
+      "block": "impl Default for Project",
+      "status": "byte_identical_B657_to_ad7",
+      "sha256": "59428f04ff0b55ff5689791155707e6128ad858b704217f094e98b43449f77e8"
+    },
+    {
+      "block": "impl Default for Editor",
+      "status": "byte_identical_B657_to_ad7",
+      "sha256": "597ef0f6a8ad5694970ec73a189da3a147d2517bccfe44662eefd67e2b5fbf48"
+    },
+    {
+      "block": "pub struct Material",
+      "status": "byte_identical_B657_to_ad7",
+      "sha256": "138f435550d8850a896b9593ce3f259991e311417afccd2db04ae9edc3ce7ba6"
+    },
+    {
+      "block": "pub struct Placement",
+      "status": "byte_identical_B657_to_ad7",
+      "sha256": "3e93336ba91560262b50eac4db401362c8f39a142a688cbe74873185d82448fc"
+    },
+    {
+      "block": "fn allocate_id(&mut self)",
+      "status": "byte_identical_B657_to_ad7",
+      "sha256": "702e289d18f4e2beb7e8772a56e2fbd2aa241a3bb3cc44bef38c3c15088c6b9f"
+    },
+    {
+      "block": "pub fn new(project: Project)",
+      "status": "byte_identical_B657_to_ad7",
+      "sha256": "28220f67e069f8e242e7c2a39c687250c0c27883d8621f8098da5133382a9365"
+    },
+    {
+      "block": "Command::AddRectangle {\n                name,",
+      "status": "byte_identical_B657_to_ad7",
+      "sha256": "deb5a6a3de8c1cb6a942406fdfb666ee9859067c890ed02d0d76ad8b70a079e3"
+    },
+    {
+      "block": "Command::AddPolygon { name, vertices } =>",
+      "status": "identical_except_required_empty_internal_curves_list",
+      "old_sha256": "41580a0fdbadb1c52ef38bf8b72682e75c3be78c594cb2b4c14e26a28f4145f1",
+      "final_sha256": "a15dc37bf6c67575393022fff632bd198bb41cc072782a299a7527f1c79c70e4",
+      "ids_and_order": "piece then four points then four boundary curves; original allocator unchanged"
+    },
+    {
+      "block": "Studio::fn empty() -> Self",
+      "status": "byte_identical_703_to_ad7",
+      "sha256": "8fa669d41c526fa166afc16e969be01d99083f98dbc8fad92ae06697682e3da7"
+    },
+    {
+      "block": "Studio::fn new(cc: &eframe::CreationContext<'_>)",
+      "status": "byte_identical_703_to_ad7",
+      "sha256": "a844c0cce9ca7389ebe6ba81efd7bd2a84a50d3ded12df48a32b8e851e4c02fc"
+    }
+  ],
+  "UI_production_delta_from_703": {
+    "status": "all_production_bytes_identical_after_reversing_exact_one_Escape_input_retention_change",
+    "old_block_sha256": "8cf16beb340c443859c787505c22df55331fdc664cb0d30e7db98c4a863f3d0b",
+    "final_block_sha256": "db7e6cd562646311dccb740585799a26672670232376cf407245bda47f4cb492",
+    "route_labels_creation_fields_dialogs_save_history_numeric_helpers": "unchanged",
+    "native_scope_limit": "incorporated source fix is not held-drag native evidence; held-state gap remains"
+  },
+  "A_defaults_unchanged": {
+    "project_revision": 0,
+    "next_id": 2,
+    "authored_points_curves_pieces_seams_groups": "empty",
+    "material_count": 1,
+    "mannequin_capsule_count": 6,
+    "resolution_m": 0.07,
+    "material_RGB": "unchanged f32; other authoring/material scalar fields f64",
+    "placement": "unchanged derived zero translation/rotation",
+    "native_ui_defaults": "Pattern 1; W/H .5/.6; X/Y -.25/1; Select; Snap10mm; all unchanged",
+    "square_native_schema": "v4; required empty internal_curves, original ID allocation and vertex order"
+  },
+  "A_states_sha256": "0353cc9dac5331af5d5565f4ddd0e3bf9f3a5eec6c92a98d5fb9db6ffa011126",
+  "all_original_states_sha256": "af145edb2ace49a7ffe102d043b39460ef1749f326a7e15e283390efb1f6e377"
+}

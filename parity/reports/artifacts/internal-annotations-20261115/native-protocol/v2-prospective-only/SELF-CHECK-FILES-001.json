@@ -1,0 +1,18 @@
+{
+  "status": "passed_synthetic_file_plumbing_only",
+  "candidate_executed": false,
+  "native_executed": false,
+  "accepted_synthetic_native_save_copies": 6,
+  "rejected_bad_output_or_provenance_cases": 8,
+  "checks": [
+    "missing-final-native-output",
+    "missing-returned-trace",
+    "changed-final-primary",
+    "wrong-recovery-bytes",
+    "wrong-snapshot-hash",
+    "reused-save-origin",
+    "wrong-plan-binding",
+    "elapsed-cap-overrun"
+  ],
+  "all_synthetic_cases_retained": "SYNTHETIC-FILE-GRADE-001"
+}

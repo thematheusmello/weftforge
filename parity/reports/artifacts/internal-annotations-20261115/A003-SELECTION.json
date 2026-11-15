@@ -1,0 +1,52 @@
+{
+  "scope": "Root-accepted bounded native A003 only; earlier failed/unaccepted A001/A002 remain unchanged.",
+  "root_receipt_sha256": "34727612d46311e10abfadf72a3890e82578f29c058d134a948637b6f1615fa6",
+  "independent_review_sha256": "cd1f90a01315fe14cfd72e4a2e2952be5442a1005889b90a172ccc9a48dc528b",
+  "original_manifest_sha256": "3a529287b1b50bd17ed6d632a82f06c1229cc3a1214a3aa5fb939cd72a3116f3",
+  "single_grade_sha256": "bcbad234d7034694917836dd4a29bf0839022bfd47264a16502bb4815c9f2e0a",
+  "single_grade_invocation_sha256": "5b77bc52ef3d34346dcb968c4994b3a1786417ddfeca3b9dd8c8b9796eed343d",
+  "trace_pairs": 142,
+  "response_bodies_omitted": 142,
+  "images": {
+    "empty-primary-saved-0.jpg": "19bcc12c51d4465ea51aaffc1649b55d15579d69786fe1bf1f20ade49ac5cd2f",
+    "unit-square-created-0.jpg": "7d004cb628847637e140e51a3246f6b2aeef39453931aecd68decc93f7001f22",
+    "internal-line-start-transient-0.jpg": "1d20e49aa589376f389d5be3804a9270a66bd38d74e0f6ebed305c876951efab",
+    "internal-line-created-0.jpg": "05d685a5d06825b795f40f591542cc4b68a683c45cc3ca25c8a076e3fa0340f8",
+    "invalid-internal-edit-refused-0.jpg": "9e44e343f9ba1ef0f1b6c2a3d412871c6877511d48fb58fc511d47179f1489cb",
+    "modal-save-blocked-0.jpg": "9e44e343f9ba1ef0f1b6c2a3d412871c6877511d48fb58fc511d47179f1489cb",
+    "modal-backdrop-cancel-0.jpg": "8b958c570796efe3ba65653a3bf4b59f08d52d61c846a4732bce55fefab17e8e",
+    "explicit-cancel-restored-grain-0.jpg": "351a451d211cc3889f58c6b62ad2a4ae8083f09523b0668595910bf5121ee81a",
+    "grain-caret-witness-0.jpg": "7028d1fa710a7dda60965056eecb58febeb7e29d1afb12ed90c689b88fcd863e",
+    "compound-edit-tabbed-0.jpg": "40babf96d733e2ba8e9d416f2838fc810f6c7654404a6598ab25b18b226d4913",
+    "compound-edit-applied-0.jpg": "c1b00e7b033c310cc196840f39e2e44dacef4ae1ab4f818d0b9427eb9ed2d5fc",
+    "compound-edit-undone-0.jpg": "1910cd1f1471368d82850ba5026e42b13e3eb7d77103471b13aa86a2d7027ba4",
+    "compound-edit-redone-0.jpg": "5322eb755bd93f11d5ac7324988dccb9475e6d27be07a441ccd27bf4c311be4d",
+    "redo-primary-saved-0.jpg": "c41d6fe832ac2fa8fb11f6d9023ff16ea092fe7f0c6c798a3e5dc230ce712dc8"
+  },
+  "image_selection_basis": "Fourteen root-directly-reviewed originals, all without publication exclusion. Twelve are flagged independent key candidates; two additional own-app creation frames were directly reviewed by root. Curator binds the existing reviews and does not claim a new full UI/image review.",
+  "actual_operations_plus_summary": "142+1, within175+1; summary exact-once/immediacy relies on tool history and stored timing bounds.",
+  "elapsed_upper_bound_s": 641.657843875,
+  "elapsed_cap_s": 1200,
+  "saved_states": {
+    "A00-empty": "710697e3a4fc5287c315e6e906ed15046b969aa3b9d2cc09a604ba6d579d9555",
+    "A01-square": "0a6af9b7a4e81e269b1670d0f992536ead106ef0494ada3913f8a73480f6aed7",
+    "A02-created": "37dc0eafe185702f85a7e9470ddbda2a11c50cf776bbab563642958d2be0f4a7",
+    "A03-edited": "5881d4194419e7b3031add176e2bae48114e5953e77585f59e798bbf3ec0c57d",
+    "A04-undo": "35aea922e4236dcc99d7e7c18972ee720bf099a79de80784ea7cc74108fa69a9",
+    "A05-redo": "45c15e1c8c17ada10b9ff4aff45de22564e09091c63462e61c588f57d28877fd"
+  },
+  "qualifications": [
+    "Initial full getApp AX is not retained; the first complete raw initial-state capture precedes authoring.",
+    "Transient start is supported by R1/Clickend and no committed internal entity; cursor partly occludes its marker.",
+    "Immediate/exactly-once summary assertion uses actor/tool history; stored marker and return are timing bounds, not exact invocation timestamps or a native API pair.",
+    "No complete modal AX accessibility, strict same-frame input, held-drag, process-restart, B\u2013E, old Transform pointer, full annotation contract, cut/hole/fold/sewing/physics/reference or roadmap acceptance."
+  ],
+  "window": "PID13707 absent after planned case quit; no later cleanup or closed-target AX/getApp used.",
+  "omissions": [
+    "Compiled app/binary",
+    "Raw response bodies including global inventory and duplicated embedded images",
+    "Forty-six unselected JPEGs including five chooser/private-folder images",
+    "No missing initial full getApp AX is manufactured"
+  ],
+  "remaining": "B\u2013E, restart, held-state/full accessibility, old pointer gate, full annotation/feature/reference/physics acceptance remain open."
+}

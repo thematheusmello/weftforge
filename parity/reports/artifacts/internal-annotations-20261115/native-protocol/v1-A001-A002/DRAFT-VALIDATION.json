@@ -1,0 +1,34 @@
+{
+  "status": "draft_validation_index_only_not_a_freeze",
+  "root_scope_review_pending": true,
+  "final_source_and_binary_bound": false,
+  "native_product_or_candidate_evaluator_executed": false,
+  "frozen": false,
+  "current_code_models_plan_reports": {
+    "prepare_expectations.py": "7ea11016eb07783d057b652c80fb8c10bc59e4cf62d8aa9dd8a123111bf5d5e7",
+    "prepare_procedures.py": "90c641ee921c754c8d092901f692b9f1939966f8be0e04eb413e67f9c23875b0",
+    "grade_saved.py": "6b3aefcca60fcc12d78a75e967f63c582d76e7a2d134975393a72a3a9c184c78",
+    "retain_saved.py": "6cc6224724ce74cb15f7674e3b3198e065ef0670c6dae03357c6229fec54a588",
+    "selfcheck_saved_files.py": "eb847d816f842835b9eab4d0b736aaac17bf0533bd58fbc3f88dc289ebe85bb9",
+    "EXPECTATIONS.json": "11ce4e8de375d7b66e630728af9630ccaf0087fd54cafa35267c620e0135be54",
+    "PLAN.json": "0961c878b453fbca6f7e309497b2fc68593da3995d47717732b2098100c7191b",
+    "STATIC-BUDGET.json": "e0222be617550438a9b66d0de81676b23980218d8206803bbe49d76422240a75",
+    "METHOD.md": "b2c502b47ae34837f183cc51c43cf0c8c7ac9c4073d89587e1a41486c0c69e16",
+    "PROPOSAL-v2.md": "0e6a8533e2dfcaee6162ddfe80f34450d49404efb2fde21a5d574cc6fa8c0b30",
+    "DEPENDENCIES.json": "87fdeded6161e23f03c1184f529038fd186de920458b4d12bec9efe90ffb6cf2",
+    "SELF-CHECK-DRAFT-005.json": "cb74f1a543386099d03b89d121cab363d39329ad04d84815dfac52d99bb55770",
+    "SELF-CHECK-FILES-001.json": "5495fb31a9ce72b47655119e167005b8bc63980b01f281e2cc3c9613b000d77a",
+    "SELF-CHECK-SNAPSHOT-001.json": "51860d8313eca1fdc3b9817313a0ef1cebbef9085fa72454b6693130bed69c02",
+    "UI-ROUTES.md": "bbc4506bdc34583fa063801e2750943d038effa9b1ca4e7db903af6bd2042fcc"
+  },
+  "current_synthetic_validation": {
+    "original_state_models": 24,
+    "wrong_construction_export_outputs_refused": 42,
+    "file_provenance_missing_output_or_cap_counterexamples_refused": 8,
+    "exact_primary_recovery_copy_readonly_no_overwrite_check": "passed"
+  },
+  "root_review_entrypoint": "PROPOSAL-v2.md",
+  "execution_first_candidate": "A_only_after_later_review_freeze_final_binding_and_GO",
+  "no_preparation_failures": "No executed preparation command/check failed; static draft corrections preserved in DRAFT-REVISIONS.md",
+  "required_before_freeze": "Root review of complete scope/caps/procedures plus final Escape/live-input fix source recheck; no final source/binary/input binding exists here."
+}

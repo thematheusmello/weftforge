@@ -1,0 +1,13 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const root=path.resolve('.local/native-internal-annotations-20261115/A002');
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+const binding=JSON.parse(fs.readFileSync(path.join(root,'ROOT-BINDING.json')));
+if(hash(fs.readFileSync(path.join(root,'ROOT-BINDING.json')))!=='4044faf299336f4ea4a9af0246817eaf3176924c5411f26f1cb54ce9ba664be7')throw Error('binding mismatch');
+const required=['root','recorderPath','evidenceKind','callCap','elapsedCapS','baselineCalls'].sort();
+if(JSON.stringify(Object.keys(binding.controller_configuration).sort())!==JSON.stringify(required))throw Error('incomplete configuration');
+const controller=require(binding.controller).createController(binding.controller_configuration);
+const recorder=require(binding.recorder).createRecorder(root);
+const clock=controller.startClock();
+const id=recorder.before('bootstrap-inventory','getState',{args:[{emit:false}],evidenceKind:'native',purpose:'documentation/inventory only; no target app control'});
+fs.writeFileSync(path.join(root,'BOOTSTRAP-BEFORE.json'),JSON.stringify({id,clock,status:controller.status()},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({id,clock,status:controller.status()}));

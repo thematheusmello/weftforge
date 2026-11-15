@@ -440,6 +440,210 @@ fn flatten_cubic(
     )
 }
 
+const INTERNAL_CLEARANCE: f64 = 1.0e-6;
+const INTERNAL_FLATNESS: f64 = 1.0e-7;
+const MAX_CONTAINMENT_WORK: usize = 1_000_000;
+
+pub(crate) struct ContainmentWork(usize);
+
+impl ContainmentWork {
+    pub(crate) fn new() -> Self {
+        Self(MAX_CONTAINMENT_WORK)
+    }
+
+    fn step(&mut self) -> Result<()> {
+        ensure(self.0 > 0, "Internal containment work budget exhausted")?;
+        self.0 -= 1;
+        Ok(())
+    }
+}
+
+pub(crate) fn validate_internal_segments(
+    project: &Project,
+    piece: &Piece,
+    work: &mut ContainmentWork,
+) -> Result<()> {
+    let Some(first) = piece.internal_curves.first() else {
+        return Ok(());
+    };
+    let mut validate = || -> Result<()> {
+        let scale = piece
+            .boundary
+            .iter()
+            .chain(&piece.internal_curves)
+            .map(|id| project.curve(*id).unwrap())
+            .flat_map(|curve| {
+                [
+                    project.point(curve.start).unwrap().position,
+                    project.point(curve.end).unwrap().position,
+                ]
+                .into_iter()
+                .chain(curve.controls.into_iter().flatten())
+            })
+            .flatten()
+            .map(f64::abs)
+            .fold(1.0, f64::max);
+        let reserve = (256.0 * f64::EPSILON * scale).next_up();
+        let clearance = (INTERNAL_CLEARANCE + INTERNAL_FLATNESS + reserve).next_up();
+        let mut polygon = Vec::new();
+        for id in &piece.boundary {
+            let curve = project.curve(*id).unwrap();
+            let a = project.point(curve.start).unwrap().position;
+            let b = project.point(curve.end).unwrap().position;
+            if polygon.is_empty() {
+                polygon.push(a);
+            }
+            if let Some([c, d]) = curve.controls {
+                flatten_internal_contour([a, c, d, b], 0, reserve, &mut polygon, work)?;
+            } else {
+                work.step()?;
+                ensure(
+                    polygon.len() < MAX_BOUNDARY_SAMPLES,
+                    "Internal containment boundary sample limit exceeded",
+                )?;
+                polygon.push(b);
+            }
+        }
+        polygon.pop(); // The ordered boundary repeats its first endpoint.
+        let n = polygon.len();
+        let tube = (2.0 * (INTERNAL_FLATNESS + reserve)).next_up();
+        let mut edges: Vec<_> = (0..n)
+            .map(|i| {
+                let a = polygon[i];
+                let b = polygon[(i + 1) % n];
+                (
+                    a[0].min(b[0]),
+                    a[0].max(b[0]),
+                    a[1].min(b[1]),
+                    a[1].max(b[1]),
+                    i,
+                )
+            })
+            .collect();
+        edges.sort_by(|a, b| a.0.total_cmp(&b.0));
+        for (position, edge) in edges.iter().enumerate() {
+            work.step()?;
+            let i = edge.4;
+            ensure(
+                distance(polygon[i], polygon[(i + 1) % n]) > reserve,
+                "Internal containment contour has a degenerate edge",
+            )?;
+            // Adjacent edges may share only their common endpoint, never backtrack.
+            ensure(
+                point_segment_distance(polygon[(i + 2) % n], polygon[i], polygon[(i + 1) % n])
+                    > reserve,
+                "Internal containment contour backtracks or touches itself",
+            )?;
+            for other in edges.iter().skip(position + 1) {
+                work.step()?;
+                if other.0 > edge.1 + tube {
+                    break;
+                }
+                let j = other.4;
+                if (i + 1) % n == j
+                    || (j + 1) % n == i
+                    || other.2 > edge.3 + tube
+                    || other.3 < edge.2 - tube
+                {
+                    continue;
+                }
+                ensure(
+                    segment_distance(
+                        polygon[i],
+                        polygon[(i + 1) % n],
+                        polygon[j],
+                        polygon[(j + 1) % n],
+                    ) > tube,
+                    "Internal containment fine contour self-intersects, touches or is uncertifiable",
+                )?;
+            }
+        }
+        for id in &piece.internal_curves {
+            let curve = project.curve(*id).unwrap();
+            let a = project.point(curve.start).unwrap().position;
+            let b = project.point(curve.end).unwrap().position;
+            let mut winding = 0_i32;
+            for i in 0..n {
+                work.step()
+                    .map_err(|error| Error(format!("Internal curve {id}: {error}")))?;
+                let (c, d) = (polygon[i], polygon[(i + 1) % n]);
+                ensure(
+                    segment_distance(a, b, c, d) > clearance,
+                    &format!(
+                        "Internal curve {id} must stay strictly inside with 1e-6 metre clearance"
+                    ),
+                )?;
+                work.step()
+                    .map_err(|error| Error(format!("Internal curve {id}: {error}")))?;
+                if c[1] <= a[1] && d[1] > a[1] && cross(c, d, a) > 0.0 {
+                    winding += 1;
+                } else if d[1] <= a[1] && c[1] > a[1] && cross(c, d, a) < 0.0 {
+                    winding -= 1;
+                }
+            }
+            ensure(
+                winding != 0,
+                &format!("Internal curve {id} is outside its owning contour"),
+            )?;
+        }
+        Ok(())
+    };
+    validate().map_err(|error| Error(format!("Internal curve {first} containment: {error}")))
+}
+
+fn flatten_internal_contour(
+    p: [[f64; 2]; 4],
+    depth: u32,
+    reserve: f64,
+    polygon: &mut Vec<[f64; 2]>,
+    work: &mut ContainmentWork,
+) -> Result<()> {
+    work.step()?;
+    ensure(
+        polygon.len() < MAX_BOUNDARY_SAMPLES,
+        "Internal containment boundary sample limit exceeded",
+    )?;
+    let flatness = p
+        .into_iter()
+        .map(|point| point_segment_distance(point, p[0], p[3]))
+        .fold(0.0, f64::max)
+        .next_up();
+    let chord = [p[3][0] - p[0][0], p[3][1] - p[0][1]];
+    let projection = |q: [f64; 2]| (q[0] - p[0][0]) * chord[0] + (q[1] - p[0][1]) * chord[1];
+    // A flat collinear cubic can still double back; require forward control projections.
+    if flatness + reserve <= INTERNAL_FLATNESS
+        && projection(p[1]) >= 0.0
+        && projection(p[2]) >= projection(p[1])
+        && projection(p[2]) <= projection(p[3])
+    {
+        polygon.push(p[3]);
+        return Ok(());
+    }
+    ensure(
+        depth < 20,
+        "Internal containment cubic depth limit exceeded",
+    )?;
+    let ab = midpoint(p[0], p[1]);
+    let bc = midpoint(p[1], p[2]);
+    let cd = midpoint(p[2], p[3]);
+    let abc = midpoint(ab, bc);
+    let bcd = midpoint(bc, cd);
+    let center = midpoint(abc, bcd);
+    flatten_internal_contour([p[0], ab, abc, center], depth + 1, reserve, polygon, work)?;
+    flatten_internal_contour([center, bcd, cd, p[3]], depth + 1, reserve, polygon, work)
+}
+
+fn segment_distance(a: [f64; 2], b: [f64; 2], c: [f64; 2], d: [f64; 2]) -> f64 {
+    if segments_intersect(a, b, c, d) {
+        0.0
+    } else {
+        point_segment_distance(a, c, d)
+            .min(point_segment_distance(b, c, d))
+            .min(point_segment_distance(c, a, b))
+            .min(point_segment_distance(d, a, b))
+    }
+}
+
 pub(crate) fn validate_contour(project: &Project, piece: &Piece) -> Result<()> {
     // shortcut: cubic intersections use bounded polyline tolerance; use exact curve predicates before precision CAD editing.
     let mut polygon = Vec::new();

@@ -1,0 +1,14 @@
+{
+  "kind": "root_pre_execution_tool_receipt_clarification",
+  "utc": "2026-11-15T20:50:05.201730+00:00",
+  "binding_sha256": "ff8a6fd50d101fd6ad5c119194184a32410b9f0e3b01d337f07a3c7b7e00312e",
+  "freeze_sha256": "ac65bff3ab3a9c5ab006d36fa2f4db7bd385b8a70f6010cbf53e9fa8154e3a28",
+  "native_started": false,
+  "reason": "The next tool call after the observed final native outcome must be CUA completion_summary alone; no intervening external timestamp tool can run.",
+  "receipt_method": "Actor may record conditional filesystem completion markers after each observation and before planned Quit. Pair only the final applicable marker with the one immediate completion_summary return. Earlier markers remain unpaired conditional bookkeeping, never counted as attempted summary calls.",
+  "timing_qualification": "Conditional marker is a conservative lower bound preceding summary invocation; external returned receipt is an upper bound. Do not call these exact summary invocation timestamps or a native controller pair. Native/external operation trace pairs remain exact.",
+  "counts_and_caps": "Exactly one actual completion CUA call, separately reserved outside native trace counter; no new observer or procedure. Keep total<=176 and conservative elapsed upper bound through summary return<=1200 seconds from original case clock. Bookkeeping markers do not introduce additional target operations.",
+  "mandatory_order": "Any unexpected outcome: very next tool call CUA completion_summary only, once. On success planned quit is last native observer, then next tool call same completion-only rule. No corrective action/quit/extra capture on failure.",
+  "criteria_unchanged": true,
+  "native_clock_start_reset_or_hidden_operation_allowed": false
+}

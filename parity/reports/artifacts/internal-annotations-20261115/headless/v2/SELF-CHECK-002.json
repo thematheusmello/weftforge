@@ -1,0 +1,114 @@
+{
+  "kind": "independent_internal_line_synthetic_selfcheck",
+  "status": "passed",
+  "product_CUA_or_Cargo_executed": false,
+  "analytic_decisions": 7,
+  "wrong_outputs_rejected": 24,
+  "mutants": [
+    {
+      "id": "endpoint_only_L_accepted",
+      "rejected": true
+    },
+    {
+      "id": "endpoint_only_C_accepted",
+      "rejected": true
+    },
+    {
+      "id": "internal_sewing_accepted",
+      "rejected": true
+    },
+    {
+      "id": "mixed_v3_accepted",
+      "rejected": true
+    },
+    {
+      "id": "v4_missing_list_accepted",
+      "rejected": true
+    },
+    {
+      "id": "failed_recovery_changed",
+      "rejected": true
+    },
+    {
+      "id": "failed_geometry_changed",
+      "rejected": true
+    },
+    {
+      "id": "resize_second_endpoint_omitted",
+      "rejected": true
+    },
+    {
+      "id": "remove_second_endpoint_orphaned",
+      "rejected": true
+    },
+    {
+      "id": "wrong_internal_ID",
+      "rejected": true
+    },
+    {
+      "id": "wrong_revision",
+      "rejected": true
+    },
+    {
+      "id": "allocator_consumed_extra",
+      "rejected": true
+    },
+    {
+      "id": "transform_second_endpoint_omitted",
+      "rejected": true
+    },
+    {
+      "id": "v1_signed_zero_lost",
+      "rejected": true
+    },
+    {
+      "id": "v2_signed_zero_lost",
+      "rejected": true
+    },
+    {
+      "id": "v3_signed_zero_lost",
+      "rejected": true
+    },
+    {
+      "id": "hard_decimal_one_ulp_loss",
+      "rejected": true
+    },
+    {
+      "id": "annotation_changed_positions",
+      "rejected": true
+    },
+    {
+      "id": "annotation_changed_uv",
+      "rejected": true
+    },
+    {
+      "id": "annotation_changed_triangles",
+      "rejected": true
+    },
+    {
+      "id": "annotation_changed_boundary",
+      "rejected": true
+    },
+    {
+      "id": "annotation_changed_stitches",
+      "rejected": true
+    },
+    {
+      "id": "old_mesh_retag_not_current",
+      "rejected": true
+    },
+    {
+      "id": "legacy_nonlinear_t_map_reinterpreted",
+      "rejected": true
+    }
+  ],
+  "qualification": "Synthetic assertion checks only; no product or native acceptance.",
+  "bindings": {
+    "evaluate.py": "3416aa54a928031370529ef7b2238e1be26a9658606b5767276b976a82f37b84",
+    "protocol.py": "3c326b2749d916746e7f1d537ed622a8f48e301e06047867459f44f9a4e8ba47",
+    "prepare_inputs.py": "9dea8a766c3e5d7edbb5b7a61210ab06824c6d98244f91cc44353bc6fafedf36",
+    "CASES.json": "81a8fc8a711fc367acdf08aee4214918a5b00baa39e92034bbde00b230e551ef",
+    "CRITERIA.json": "b022a01407f4fb45361014c1d972833ab90562a3e823ad3514866c023b796376",
+    "SOURCE-INPUTS.json": "247278f7e4683d9a5f465ed6850572ddce048b8bd48b488a6f155ba6396024d1"
+  }
+}

@@ -1,0 +1,22 @@
+   Compiling weftforge-core v0.1.0 (<WORKSPACE>/.local/internal-segments-20261115/crates/weftforge-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.33s
+     Running tests/internal_lines.rs (target/debug/deps/internal_lines-1292ce1867109601)
+
+running 1 test
+test collinear_backtracking_inside_flatness_tube_is_refused_atomically ... FAILED
+
+failures:
+
+---- collinear_backtracking_inside_flatness_tube_is_refused_atomically stdout ----
+
+thread 'collinear_backtracking_inside_flatness_tube_is_refused_atomically' (63241682) panicked at crates/weftforge-core/tests/internal_lines.rs:194:5:
+Internal curve 13 containment: Internal containment fine contour self-intersects, touches or is uncertifiable
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    collinear_backtracking_inside_flatness_tube_is_refused_atomically
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `-p weftforge-core --test internal_lines`

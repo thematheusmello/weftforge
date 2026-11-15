@@ -1,0 +1,5866 @@
+{
+  "status": "frozen_prospective_original_expectations_not_native_evidence",
+  "default_basis": "B657 document.rs constructors, byte-identical defaults rechecked at ad7; exactly six analytic mannequin capsules",
+  "route_basis": "Immutable 703a route provenance; final ad7 production routes rechecked unchanged except Escape input retention; runtime binding remains separate",
+  "native_color_policy": "Material.color is f32: compare f32 bits, not widened f64 wire bits",
+  "states": {
+    "A": {
+      "A00-empty": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 0,
+          "points": [],
+          "curves": [],
+          "pieces": [],
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          },
+          "resolution": 0.07,
+          "next_id": 2
+        }
+      },
+      "A01-square": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 1,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Pattern 1",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 11,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "A02-created": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 2,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 11,
+              "position": [
+                0.125,
+                0.25
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                0.875,
+                0.75
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 13,
+              "start": 11,
+              "end": 12,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Pattern 1",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                13
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 14,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "A03-edited": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 3,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 11,
+              "position": [
+                0.25,
+                0.375
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                0.75,
+                0.625
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 13,
+              "start": 11,
+              "end": 12,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Pattern 1",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                13
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.47
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 14,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "A04-undo": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 4,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 11,
+              "position": [
+                0.125,
+                0.25
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                0.875,
+                0.75
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 13,
+              "start": 11,
+              "end": 12,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Pattern 1",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                13
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 14,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "A05-redo": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 5,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 11,
+              "position": [
+                0.25,
+                0.375
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                0.75,
+                0.625
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 13,
+              "start": 11,
+              "end": 12,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Pattern 1",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                13
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.47
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 14,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      }
+    },
+    "B": {
+      "B06-reedited": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 6,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 11,
+              "position": [
+                0.25,
+                0.375
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                0.75,
+                0.6875
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 13,
+              "start": 11,
+              "end": 12,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Pattern 1",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                13
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.47
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 14,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "B07-undo": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 7,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 11,
+              "position": [
+                0.25,
+                0.375
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                0.75,
+                0.625
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 13,
+              "start": 11,
+              "end": 12,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Pattern 1",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                13
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.47
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 14,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "B08-redo": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 8,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 11,
+              "position": [
+                0.25,
+                0.375
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                0.75,
+                0.6875
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 13,
+              "start": 11,
+              "end": 12,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Pattern 1",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                13
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.47
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 14,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "B09-wide": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 9,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                2.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                2.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 11,
+              "position": [
+                0.5,
+                0.375
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                1.5,
+                0.6875
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 13,
+              "start": 11,
+              "end": 12,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Pattern 1",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                13
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.47
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 14,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "B10-resized": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 10,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                2.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                2.0,
+                0.5
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                0.5
+              ]
+            },
+            {
+              "id": 11,
+              "position": [
+                0.5,
+                0.1875
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                1.5,
+                0.34375
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 13,
+              "start": 11,
+              "end": 12,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Pattern 1",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                13
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.47
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 14,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "B11-turned": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 11,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                -0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                -0.0,
+                2.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                -0.5,
+                2.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                -0.5,
+                0.0
+              ]
+            },
+            {
+              "id": 11,
+              "position": [
+                -0.1875,
+                0.5
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                -0.34375,
+                1.5
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 13,
+              "start": 11,
+              "end": 12,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Pattern 1",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                13
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.47
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 14,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "B12-line-removed": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 12,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                -0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                -0.0,
+                2.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                -0.5,
+                2.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                -0.5,
+                0.0
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Pattern 1",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.47
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 14,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "B14-owner-removed": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 14,
+          "points": [],
+          "curves": [],
+          "pieces": [],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 14,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "B15-owner-restored": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 15,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                -0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                -0.0,
+                2.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                -0.5,
+                2.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                -0.5,
+                0.0
+              ]
+            },
+            {
+              "id": 11,
+              "position": [
+                -0.1875,
+                0.5
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                -0.34375,
+                1.5
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 13,
+              "start": 11,
+              "end": 12,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Pattern 1",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                13
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.47
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 14,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      }
+    },
+    "C": {
+      "C07-selected-identity": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 7,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                2.0,
+                0.0
+              ]
+            },
+            {
+              "id": 13,
+              "position": [
+                3.0,
+                0.0
+              ]
+            },
+            {
+              "id": 14,
+              "position": [
+                3.0,
+                1.0
+              ]
+            },
+            {
+              "id": 15,
+              "position": [
+                2.0,
+                1.0
+              ]
+            },
+            {
+              "id": 22,
+              "position": [
+                0.125,
+                0.25
+              ]
+            },
+            {
+              "id": 23,
+              "position": [
+                0.875,
+                0.75
+              ]
+            },
+            {
+              "id": 25,
+              "position": [
+                0.25,
+                0.375
+              ]
+            },
+            {
+              "id": 26,
+              "position": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.125,
+                  0.0
+                ]
+              ]
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 16,
+              "start": 12,
+              "end": 13,
+              "controls": null
+            },
+            {
+              "id": 17,
+              "start": 13,
+              "end": 14,
+              "controls": null
+            },
+            {
+              "id": 18,
+              "start": 14,
+              "end": 15,
+              "controls": null
+            },
+            {
+              "id": 19,
+              "start": 15,
+              "end": 12,
+              "controls": null
+            },
+            {
+              "id": 24,
+              "start": 22,
+              "end": 23,
+              "controls": null
+            },
+            {
+              "id": 27,
+              "start": 25,
+              "end": 26,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Original R",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                24,
+                27
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            },
+            {
+              "id": 11,
+              "name": "Original S partner",
+              "boundary": [
+                16,
+                17,
+                18,
+                19
+              ],
+              "internal_curves": [],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            }
+          ],
+          "seams": [
+            {
+              "id": 20,
+              "name": "Original reversed legacy t map",
+              "a": {
+                "curve": 7,
+                "t0": 0.125,
+                "t1": 0.875
+              },
+              "b": {
+                "curve": 16,
+                "t0": 0.875,
+                "t1": 0.125
+              },
+              "correspondence": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.25,
+                  0.625
+                ],
+                [
+                  1.0,
+                  1.0
+                ]
+              ]
+            }
+          ],
+          "sewing_groups": [
+            {
+              "id": 21,
+              "name": "Original physical group",
+              "a": [
+                {
+                  "curve": 8,
+                  "t0": 0.125,
+                  "t1": 0.875
+                }
+              ],
+              "b": [
+                {
+                  "curve": 17,
+                  "t0": 0.875,
+                  "t1": 0.125
+                }
+              ],
+              "correspondence": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.5,
+                  0.75
+                ],
+                [
+                  1.0,
+                  1.0
+                ]
+              ]
+            }
+          ],
+          "resolution": 0.07,
+          "next_id": 28,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "C08-control-and-drag": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 8,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                2.0,
+                0.0
+              ]
+            },
+            {
+              "id": 13,
+              "position": [
+                3.0,
+                0.0
+              ]
+            },
+            {
+              "id": 14,
+              "position": [
+                3.0,
+                1.0
+              ]
+            },
+            {
+              "id": 15,
+              "position": [
+                2.0,
+                1.0
+              ]
+            },
+            {
+              "id": 22,
+              "position": [
+                0.125,
+                0.25
+              ]
+            },
+            {
+              "id": 23,
+              "position": [
+                0.75,
+                0.625
+              ]
+            },
+            {
+              "id": 25,
+              "position": [
+                0.25,
+                0.375
+              ]
+            },
+            {
+              "id": 26,
+              "position": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.25,
+                  0.0
+                ]
+              ]
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 16,
+              "start": 12,
+              "end": 13,
+              "controls": null
+            },
+            {
+              "id": 17,
+              "start": 13,
+              "end": 14,
+              "controls": null
+            },
+            {
+              "id": 18,
+              "start": 14,
+              "end": 15,
+              "controls": null
+            },
+            {
+              "id": 19,
+              "start": 15,
+              "end": 12,
+              "controls": null
+            },
+            {
+              "id": 24,
+              "start": 22,
+              "end": 23,
+              "controls": null
+            },
+            {
+              "id": 27,
+              "start": 25,
+              "end": 26,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Original R",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                24,
+                27
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            },
+            {
+              "id": 11,
+              "name": "Original S partner",
+              "boundary": [
+                16,
+                17,
+                18,
+                19
+              ],
+              "internal_curves": [],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            }
+          ],
+          "seams": [
+            {
+              "id": 20,
+              "name": "Original reversed legacy t map",
+              "a": {
+                "curve": 7,
+                "t0": 0.125,
+                "t1": 0.875
+              },
+              "b": {
+                "curve": 16,
+                "t0": 0.875,
+                "t1": 0.125
+              },
+              "correspondence": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.25,
+                  0.625
+                ],
+                [
+                  1.0,
+                  1.0
+                ]
+              ]
+            }
+          ],
+          "sewing_groups": [
+            {
+              "id": 21,
+              "name": "Original physical group",
+              "a": [
+                {
+                  "curve": 8,
+                  "t0": 0.125,
+                  "t1": 0.875
+                }
+              ],
+              "b": [
+                {
+                  "curve": 17,
+                  "t0": 0.875,
+                  "t1": 0.125
+                }
+              ],
+              "correspondence": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.5,
+                  0.75
+                ],
+                [
+                  1.0,
+                  1.0
+                ]
+              ]
+            }
+          ],
+          "resolution": 0.07,
+          "next_id": 28,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "C09-undo": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 9,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                2.0,
+                0.0
+              ]
+            },
+            {
+              "id": 13,
+              "position": [
+                3.0,
+                0.0
+              ]
+            },
+            {
+              "id": 14,
+              "position": [
+                3.0,
+                1.0
+              ]
+            },
+            {
+              "id": 15,
+              "position": [
+                2.0,
+                1.0
+              ]
+            },
+            {
+              "id": 22,
+              "position": [
+                0.125,
+                0.25
+              ]
+            },
+            {
+              "id": 23,
+              "position": [
+                0.875,
+                0.75
+              ]
+            },
+            {
+              "id": 25,
+              "position": [
+                0.25,
+                0.375
+              ]
+            },
+            {
+              "id": 26,
+              "position": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.125,
+                  0.0
+                ]
+              ]
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 16,
+              "start": 12,
+              "end": 13,
+              "controls": null
+            },
+            {
+              "id": 17,
+              "start": 13,
+              "end": 14,
+              "controls": null
+            },
+            {
+              "id": 18,
+              "start": 14,
+              "end": 15,
+              "controls": null
+            },
+            {
+              "id": 19,
+              "start": 15,
+              "end": 12,
+              "controls": null
+            },
+            {
+              "id": 24,
+              "start": 22,
+              "end": 23,
+              "controls": null
+            },
+            {
+              "id": 27,
+              "start": 25,
+              "end": 26,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Original R",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                24,
+                27
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            },
+            {
+              "id": 11,
+              "name": "Original S partner",
+              "boundary": [
+                16,
+                17,
+                18,
+                19
+              ],
+              "internal_curves": [],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            }
+          ],
+          "seams": [
+            {
+              "id": 20,
+              "name": "Original reversed legacy t map",
+              "a": {
+                "curve": 7,
+                "t0": 0.125,
+                "t1": 0.875
+              },
+              "b": {
+                "curve": 16,
+                "t0": 0.875,
+                "t1": 0.125
+              },
+              "correspondence": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.25,
+                  0.625
+                ],
+                [
+                  1.0,
+                  1.0
+                ]
+              ]
+            }
+          ],
+          "sewing_groups": [
+            {
+              "id": 21,
+              "name": "Original physical group",
+              "a": [
+                {
+                  "curve": 8,
+                  "t0": 0.125,
+                  "t1": 0.875
+                }
+              ],
+              "b": [
+                {
+                  "curve": 17,
+                  "t0": 0.875,
+                  "t1": 0.125
+                }
+              ],
+              "correspondence": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.5,
+                  0.75
+                ],
+                [
+                  1.0,
+                  1.0
+                ]
+              ]
+            }
+          ],
+          "resolution": 0.07,
+          "next_id": 28,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "C10-redo": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 10,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                2.0,
+                0.0
+              ]
+            },
+            {
+              "id": 13,
+              "position": [
+                3.0,
+                0.0
+              ]
+            },
+            {
+              "id": 14,
+              "position": [
+                3.0,
+                1.0
+              ]
+            },
+            {
+              "id": 15,
+              "position": [
+                2.0,
+                1.0
+              ]
+            },
+            {
+              "id": 22,
+              "position": [
+                0.125,
+                0.25
+              ]
+            },
+            {
+              "id": 23,
+              "position": [
+                0.75,
+                0.625
+              ]
+            },
+            {
+              "id": 25,
+              "position": [
+                0.25,
+                0.375
+              ]
+            },
+            {
+              "id": 26,
+              "position": [
+                0.5,
+                0.5
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.25,
+                  0.0
+                ]
+              ]
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 16,
+              "start": 12,
+              "end": 13,
+              "controls": null
+            },
+            {
+              "id": 17,
+              "start": 13,
+              "end": 14,
+              "controls": null
+            },
+            {
+              "id": 18,
+              "start": 14,
+              "end": 15,
+              "controls": null
+            },
+            {
+              "id": 19,
+              "start": 15,
+              "end": 12,
+              "controls": null
+            },
+            {
+              "id": 24,
+              "start": 22,
+              "end": 23,
+              "controls": null
+            },
+            {
+              "id": 27,
+              "start": 25,
+              "end": 26,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Original R",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                24,
+                27
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            },
+            {
+              "id": 11,
+              "name": "Original S partner",
+              "boundary": [
+                16,
+                17,
+                18,
+                19
+              ],
+              "internal_curves": [],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            }
+          ],
+          "seams": [
+            {
+              "id": 20,
+              "name": "Original reversed legacy t map",
+              "a": {
+                "curve": 7,
+                "t0": 0.125,
+                "t1": 0.875
+              },
+              "b": {
+                "curve": 16,
+                "t0": 0.875,
+                "t1": 0.125
+              },
+              "correspondence": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.25,
+                  0.625
+                ],
+                [
+                  1.0,
+                  1.0
+                ]
+              ]
+            }
+          ],
+          "sewing_groups": [
+            {
+              "id": 21,
+              "name": "Original physical group",
+              "a": [
+                {
+                  "curve": 8,
+                  "t0": 0.125,
+                  "t1": 0.875
+                }
+              ],
+              "b": [
+                {
+                  "curve": 17,
+                  "t0": 0.875,
+                  "t1": 0.125
+                }
+              ],
+              "correspondence": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.5,
+                  0.75
+                ],
+                [
+                  1.0,
+                  1.0
+                ]
+              ]
+            }
+          ],
+          "resolution": 0.07,
+          "next_id": 28,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      }
+    },
+    "D": {
+      "D03-after-io": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 3,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 11,
+              "position": [
+                0.125,
+                0.25
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                0.875,
+                0.75
+              ]
+            },
+            {
+              "id": 14,
+              "position": [
+                0.25,
+                0.25
+              ]
+            },
+            {
+              "id": 15,
+              "position": [
+                0.75,
+                0.75
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 13,
+              "start": 11,
+              "end": 12,
+              "controls": null
+            },
+            {
+              "id": 16,
+              "start": 14,
+              "end": 15,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Original R",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                13,
+                16
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 17,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "D00-new-empty": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 0,
+          "points": [],
+          "curves": [],
+          "pieces": [],
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          },
+          "resolution": 0.07,
+          "next_id": 2
+        }
+      },
+      "D05-recovered": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 5,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                2.0,
+                0.0
+              ]
+            },
+            {
+              "id": 13,
+              "position": [
+                3.0,
+                0.0
+              ]
+            },
+            {
+              "id": 14,
+              "position": [
+                3.0,
+                1.0
+              ]
+            },
+            {
+              "id": 15,
+              "position": [
+                2.0,
+                1.0
+              ]
+            },
+            {
+              "id": 22,
+              "position": [
+                0.125,
+                0.25
+              ]
+            },
+            {
+              "id": 23,
+              "position": [
+                0.875,
+                0.75
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.125,
+                  0.0
+                ]
+              ]
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 16,
+              "start": 12,
+              "end": 13,
+              "controls": null
+            },
+            {
+              "id": 17,
+              "start": 13,
+              "end": 14,
+              "controls": null
+            },
+            {
+              "id": 18,
+              "start": 14,
+              "end": 15,
+              "controls": null
+            },
+            {
+              "id": 19,
+              "start": 15,
+              "end": 12,
+              "controls": null
+            },
+            {
+              "id": 24,
+              "start": 22,
+              "end": 23,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Original R",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                24
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            },
+            {
+              "id": 11,
+              "name": "Original S partner",
+              "boundary": [
+                16,
+                17,
+                18,
+                19
+              ],
+              "internal_curves": [],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            }
+          ],
+          "seams": [
+            {
+              "id": 20,
+              "name": "Original reversed legacy t map",
+              "a": {
+                "curve": 7,
+                "t0": 0.125,
+                "t1": 0.875
+              },
+              "b": {
+                "curve": 16,
+                "t0": 0.875,
+                "t1": 0.125
+              },
+              "correspondence": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.25,
+                  0.625
+                ],
+                [
+                  1.0,
+                  1.0
+                ]
+              ]
+            }
+          ],
+          "sewing_groups": [
+            {
+              "id": 21,
+              "name": "Original physical group",
+              "a": [
+                {
+                  "curve": 8,
+                  "t0": 0.125,
+                  "t1": 0.875
+                }
+              ],
+              "b": [
+                {
+                  "curve": 17,
+                  "t0": 0.875,
+                  "t1": 0.125
+                }
+              ],
+              "correspondence": [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.5,
+                  0.75
+                ],
+                [
+                  1.0,
+                  1.0
+                ]
+              ]
+            }
+          ],
+          "resolution": 0.07,
+          "next_id": 25,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      }
+    },
+    "E": {
+      "E02-L-accepted": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 2,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                0.4
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.4,
+                0.4
+              ]
+            },
+            {
+              "id": 7,
+              "position": [
+                0.4,
+                1.0
+              ]
+            },
+            {
+              "id": 8,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 15,
+              "position": [
+                0.2,
+                0.8
+              ]
+            },
+            {
+              "id": 16,
+              "position": [
+                0.2,
+                0.2
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 9,
+              "start": 3,
+              "end": 4,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 11,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 12,
+              "start": 6,
+              "end": 7,
+              "controls": null
+            },
+            {
+              "id": 13,
+              "start": 7,
+              "end": 8,
+              "controls": null
+            },
+            {
+              "id": 14,
+              "start": 8,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 17,
+              "start": 15,
+              "end": 16,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Original L",
+              "boundary": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14
+              ],
+              "internal_curves": [
+                17
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 18,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      },
+      "E03-C-accepted": {
+        "format": "weftforge",
+        "version": 4,
+        "project": {
+          "revision": 3,
+          "points": [
+            {
+              "id": 3,
+              "position": [
+                0.0,
+                0.0
+              ]
+            },
+            {
+              "id": 4,
+              "position": [
+                1.0,
+                0.0
+              ]
+            },
+            {
+              "id": 5,
+              "position": [
+                1.0,
+                1.0
+              ]
+            },
+            {
+              "id": 6,
+              "position": [
+                0.0,
+                1.0
+              ]
+            },
+            {
+              "id": 11,
+              "position": [
+                0.1,
+                0.75
+              ]
+            },
+            {
+              "id": 12,
+              "position": [
+                0.9,
+                0.75
+              ]
+            }
+          ],
+          "curves": [
+            {
+              "id": 7,
+              "start": 3,
+              "end": 4,
+              "controls": [
+                [
+                  0.3333333333333333,
+                  0.6666666666666666
+                ],
+                [
+                  0.6666666666666666,
+                  0.6666666666666666
+                ]
+              ]
+            },
+            {
+              "id": 8,
+              "start": 4,
+              "end": 5,
+              "controls": null
+            },
+            {
+              "id": 9,
+              "start": 5,
+              "end": 6,
+              "controls": null
+            },
+            {
+              "id": 10,
+              "start": 6,
+              "end": 3,
+              "controls": null
+            },
+            {
+              "id": 13,
+              "start": 11,
+              "end": 12,
+              "controls": null
+            }
+          ],
+          "pieces": [
+            {
+              "id": 2,
+              "name": "Original C",
+              "boundary": [
+                7,
+                8,
+                9,
+                10
+              ],
+              "internal_curves": [
+                13
+              ],
+              "placement": {
+                "translation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "rotation": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              "material": 1,
+              "grain_angle": 0.0
+            }
+          ],
+          "seams": [],
+          "sewing_groups": [],
+          "resolution": 0.07,
+          "next_id": 14,
+          "materials": [
+            {
+              "id": 1,
+              "name": "Cotton approximation (uncalibrated)",
+              "areal_density": 0.18,
+              "warp_stiffness": 400.0,
+              "weft_stiffness": 400.0,
+              "shear_stiffness": 100.0,
+              "bending_stiffness": 0.003,
+              "damping": 0.2,
+              "friction": 0.4,
+              "collision_thickness": 0.003,
+              "color": [
+                0.22,
+                0.55,
+                0.76
+              ]
+            }
+          ],
+          "mannequin": {
+            "capsules": [
+              {
+                "a": [
+                  0.0,
+                  0.9,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.4,
+                  0.0
+                ],
+                "radius": 0.18
+              },
+              {
+                "a": [
+                  0.0,
+                  1.53,
+                  0.0
+                ],
+                "b": [
+                  0.0,
+                  1.65,
+                  0.0
+                ],
+                "radius": 0.105
+              },
+              {
+                "a": [
+                  -0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  -0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  0.22,
+                  1.4,
+                  0.0
+                ],
+                "b": [
+                  0.55,
+                  1.22,
+                  0.0
+                ],
+                "radius": 0.065
+              },
+              {
+                "a": [
+                  -0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  -0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              },
+              {
+                "a": [
+                  0.09,
+                  0.88,
+                  0.0
+                ],
+                "b": [
+                  0.09,
+                  0.18,
+                  0.0
+                ],
+                "radius": 0.085
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "previous_saved": {
+    "A": {
+      "A00-empty": null,
+      "A01-square": "A00-empty",
+      "A02-created": "A01-square",
+      "A03-edited": "A02-created",
+      "A04-undo": "A03-edited",
+      "A05-redo": "A04-undo"
+    },
+    "B": {
+      "B06-reedited": null,
+      "B07-undo": "B06-reedited",
+      "B08-redo": "B07-undo",
+      "B09-wide": "B08-redo",
+      "B10-resized": "B09-wide",
+      "B11-turned": "B10-resized",
+      "B12-line-removed": "B11-turned",
+      "B14-owner-removed": "B12-line-removed",
+      "B15-owner-restored": "B14-owner-removed"
+    },
+    "C": {
+      "C07-selected-identity": null,
+      "C08-control-and-drag": "C07-selected-identity",
+      "C09-undo": "C08-control-and-drag",
+      "C10-redo": "C09-undo"
+    },
+    "D": {
+      "D03-after-io": null,
+      "D00-new-empty": null,
+      "D05-recovered": null
+    },
+    "E": {
+      "E02-L-accepted": null,
+      "E03-C-accepted": null
+    }
+  },
+  "primary_paths": {
+    "A": {
+      "A00-empty": "work/A.weftforge",
+      "A01-square": "work/A.weftforge",
+      "A02-created": "work/A.weftforge",
+      "A03-edited": "work/A.weftforge",
+      "A04-undo": "work/A.weftforge",
+      "A05-redo": "work/A.weftforge"
+    },
+    "B": {
+      "B06-reedited": "work/B.weftforge",
+      "B07-undo": "work/B.weftforge",
+      "B08-redo": "work/B.weftforge",
+      "B09-wide": "work/B.weftforge",
+      "B10-resized": "work/B.weftforge",
+      "B11-turned": "work/B.weftforge",
+      "B12-line-removed": "work/B.weftforge",
+      "B14-owner-removed": "work/B.weftforge",
+      "B15-owner-restored": "work/B.weftforge"
+    },
+    "C": {
+      "C07-selected-identity": "work/C.weftforge",
+      "C08-control-and-drag": "work/C.weftforge",
+      "C09-undo": "work/C.weftforge",
+      "C10-redo": "work/C.weftforge"
+    },
+    "D": {
+      "D03-after-io": "work/D03-after-io.weftforge",
+      "D00-new-empty": "work/D00-new-empty.weftforge",
+      "D05-recovered": "work/D05-recovered.weftforge"
+    },
+    "E": {
+      "E02-L-accepted": "work/E02-L-accepted.weftforge",
+      "E03-C-accepted": "work/E03-C-accepted.weftforge"
+    }
+  },
+  "transform": {
+    "case": "B",
+    "from_state": "B10-resized",
+    "affected_states": [
+      "B11-turned",
+      "B12-line-removed",
+      "B15-owner-restored"
+    ],
+    "angle_rad": 1.5707963267948966,
+    "pivot_m": [
+      0.0,
+      0.0
+    ],
+    "translation_m": [
+      0.0,
+      0.0
+    ],
+    "geometry_tolerance_m": 1e-10,
+    "orientation_tolerance": 1e-12,
+    "grain_tolerance": 1e-12,
+    "world_landmark_tolerance_m": 1e-10
+  },
+  "exports": {
+    "case": "E",
+    "baseline_revision": 2,
+    "annotated_revision": 3,
+    "names": [
+      "C-before.svg",
+      "C-after.svg",
+      "C-before.dxf",
+      "C-after.dxf",
+      "C-before.obj",
+      "C-after.obj"
+    ],
+    "policy": "Actual SVG/OBJ raw bytes equal; DXF validate exactly one own-revision group999 comment, normalize only its value. No OBJ line primitives."
+  }
+}

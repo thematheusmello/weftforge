@@ -1,8 +1,59 @@
 # Native studio preview
 
-## Physical-length Free sewing (B657)
+## Straight internal annotations (ad7, native A only)
 
-These are actual unedited native002 images from source
+These are untouched product-UI images from runtime
+ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5 and native debug executable
+a733c9952ff060a3ec96417467be50011a16039dbb0868fd8ac9890a2b5897c4.
+Root accepted bounded A003 after a separate review of all 60 original images and
+142 returned pairs; root directly reviewed fourteen keyframes. The saved grader
+ran once and passed six native v4 states. B–E remain required and are outside this
+packet’s coverage. Full annotation, accessibility, reference and garment acceptance remain open.
+
+![Straight internal line selected inside its owning unit-square piece](../parity/reports/artifacts/internal-annotations-20261115/native/A003/captures/internal-line-created-0.jpg)
+
+Two clicks create internal curve #13 at R2, owned by Pattern 1. Its endpoints are
+[0.125, 0.25] and [0.875, 0.75] metres; applied length reads 901.388 mm.
+The first click stayed transient at R1. Its separate capture is retained, with the
+qualification that the cursor partly obscures the anchor marker. The line is an
+editable annotation; the 3D rest preview does not establish a cloth constraint,
+cut, fold or sewing effect.
+
+![Invalid unfinished endpoint text is refused without committing an edit](../parity/reports/artifacts/internal-annotations-20261115/native/A003/captures/invalid-internal-edit-refused-0.jpg)
+
+Start U `1e-` remains visible after refusal at R2. The case separately observes
+modal Save blocking, backdrop cancellation and explicit cancellation. Its
+[grain caret witness](../parity/reports/artifacts/internal-annotations-20261115/native/A003/captures/grain-caret-witness-0.jpg)
+retains `0.470e0` without an accepted revision change. These observations do not
+establish full modal AX accessibility, held input or strict same-frame delivery.
+
+![Endpoint and grain changes applied as one revision](../parity/reports/artifacts/internal-annotations-20261115/native/A003/captures/compound-edit-applied-0.jpg)
+
+One Apply changes endpoints to [0.25, 0.375] / [0.75, 0.625] metres and grain to
+0.47 radians at R3. Applied length reads 559.017 mm. One
+[Undo at R4](../parity/reports/artifacts/internal-annotations-20261115/native/A003/captures/compound-edit-undone-0.jpg)
+and [Redo at R5](../parity/reports/artifacts/internal-annotations-20261115/native/A003/captures/compound-edit-redone-0.jpg)
+retain the declared state/history checks. Six exact native saves and previous
+primary/recovery bytes are retained separately; this is no native Recover, New,
+process-restart or full automation acceptance.
+
+A003 used 142 operations plus one summary, with a conservative elapsed upper bound
+641.657843875 s within 175+1 / 1200 caps, and quit its owned process. The initial
+full getApp AX is missing; the first complete raw initial-state capture precedes
+authoring. Immediate/exactly-once completion relies on tool history and stored
+bounds. A001's zero-execution setup error and A002's stopped/unaccepted procedure
+and single failed saved grade remain unchanged, with later cleanup recorded
+separately. See the [scoped report](../parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json)
+and [tracked packet](../parity/reports/artifacts/internal-annotations-20261115/README.md).
+
+The separate [half-step physics diagnostic](../parity/reports/WF-20261115-HARBOR-HALF-STEP-001.json)
+remains failed: 16.5470055% peak strain at frame 29, despite completing all 181 saved
+states. It supplies no physics, convergence or native credit to these annotations.
+
+## Historical physical-length Free sewing (B657)
+
+These historical native002 images retain their original bounded acceptance;
+the B657 report is stale on changed ad7 source. They are actual unedited images from source
 b657e6bf52aca6c0c76c5c51aaf76b4e812150f7 and executable
 69af2254e9f1346dbd9abf018d66ff731eea4660b2efd71df195916c8b195cd0.
 Root accepted this bounded engineering workflow after reviewing twelve images,

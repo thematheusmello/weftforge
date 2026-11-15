@@ -1,0 +1,30 @@
+{
+  "case": "A",
+  "attempt": "A001",
+  "status": "stopped_local_prelaunch_preflight_before_clock",
+  "native_UI_acceptance": "not_executed_pending_root_review",
+  "failure": "Actor omitted separately bound recorderPath when constructing controller_configuration; path.resolve(undefined) threw before context, clock, trace or app launch. Product was never executed.",
+  "failed_external_prelaunch_invocations": 1,
+  "paired_case_operations": 0,
+  "actual_CUA_entry_or_native_calls": 0,
+  "actual_completion_summary_calls": 1,
+  "completion_summary_text": "Stopped native test preflight",
+  "completion_summary_return_observed": true,
+  "completion_receipt_qualification": "No conditional native marker or case clock existed; the immediate completion-only tool return is retained by tool history. No exact invocation timestamp, native pair, elapsed-case or cap-pass claim.",
+  "no_retry": true,
+  "app_was_never_launched": true,
+  "no_window_cleanup_required": true,
+  "saved_states": [],
+  "required_states_missing": [
+    "A00-empty",
+    "A01-square",
+    "A02-created",
+    "A03-edited",
+    "A04-undo",
+    "A05-redo"
+  ],
+  "postflight_sha256": "84cddf9634755a1b988be68ae85b17bc6d051d96dda9566843c9f46548adbe93",
+  "failed_script_sha256": "0bdcdb7694446fe21b60eacc3e85ef23563153c4c749e1ff91d63d2d107affe7",
+  "failed_tool_result_sha256": "831e00909abe247c45480f6d6b4cc068db84c7c73225b12f055e0f8e391bd7b9",
+  "qualification": "Local orchestration preflight failure, not a product failure or native feature acceptance. Root alone may write formal lease closure and grade once; no formal grading by actor."
+}

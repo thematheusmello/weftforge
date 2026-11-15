@@ -1,0 +1,13 @@
+cwd=.local/internal-segments-20261115
+cargo test -p weftforge internal_line_review_escape_preserves_latest_source_input_entered_during_drag -- --nocapture
+cargo test -p weftforge internal_line_review_escape_preserves_latest_source_input_entered_during_drag -- --nocapture
+cargo test -p weftforge internal_line_review_escape_preserves_latest_source_input_entered_during_drag -- --nocapture
+cargo test -p weftforge internal_line_review_escape_preserves_latest_source_input_entered_during_drag -- --nocapture
+cargo test -p weftforge internal_line_review_escape_preserves_latest_source_input_entered_during_drag -- --nocapture
+cargo test -p weftforge internal_line_review_escape_preserves_latest_source_input_entered_during_drag -- --nocapture
+cargo test -p weftforge internal_line_review_escape_preserves_latest_source_input_entered_during_drag -- --nocapture
+cargo test -p weftforge cancel -- --nocapture
+cargo test -p weftforge --no-fail-fast
+cargo clippy -p weftforge --all-targets -- -D warnings
+rustfmt --edition 2024 --check apps/weftforge/src/main.rs
+git diff --check -- apps/weftforge/src/main.rs
