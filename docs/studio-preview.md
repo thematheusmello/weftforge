@@ -1,11 +1,38 @@
 # Native studio preview
 
+## Current authored-length readouts (be8)
+
+Actual unedited 1640 × 1032 captures from source `be8a031b5f8342d0857f3bed34f52dd165fa86da`
+show the new measurement subset on an original analytic fixture. Its deliberate
+3D placements are outside the default camera; these are readout checks, not a
+3D garment/rendering acceptance. The PhotoCraft-inspired shell remains below.
+
+![Selected curved boundary shows its applied rest length](../parity/reports/artifacts/authored-length-20261115/native-002/captures/02-curve15.jpg)
+
+The independent parabola gives 1478.943 mm. The label identifies applied revision 137
+and explicitly excludes drafts/previews.
+
+![Legacy seam shows both raw lengths and signed difference](../parity/reports/artifacts/authored-length-20261115/native-002/captures/04-seam31-group32.jpg)
+
+![Ordered sewing group shows its raw side lengths and positive difference](../parity/reports/artifacts/authored-length-20261115/native-002/captures/03-sewing-readouts.jpg)
+
+The seam reads 861.752/400.000/−461.752mm; the group reads 880.196/900.000/+19.804mm.
+No error threshold is inferred. This read-only case performs no numeric input,
+authoring, Save, history, physics or export. See the
+[scoped report](../parity/reports/WF-20261115-AUTHORED-LENGTH-001.json).
+Native 001 remains stopped on recorder setup; 002 uses the same criteria after the
+loader correction. Full source gates pass205 Rust/54 Python checks; the separate
+46-process analytic CLI/MCP run preserves files. No complete reference/native
+workflow or roadmap acceptance is implied.
+
+## PhotoCraft-inspired shell (7ab)
+
 These are actual native Rust/egui captures. The current images use source
 `7ab2107aaa51f2c0fa9c9fd2ada972a08c433882` on macOS arm64 at 1640 × 1032.
 [PhotoCraft](https://github.com/storytold/photocraft) informed the compact charcoal
 editor structure. WeftForge uses its own garment graphics and working tools.
 
-## Current compact workspace
+### Compact workspace at 7ab
 
 ![Compact native workspace with menus, tool rail, document tab and Properties/Scene docks](../parity/reports/artifacts/photocraft-studio-20261115/captures/overview.jpg)
 
@@ -19,7 +46,7 @@ The existing original Harbor project is paused in Rest at revision 20: two piece
 eight seams and 654 rest vertices. This read-only preview frames and selects
 construction; it performs no numeric authoring, Save, history or simulation.
 
-## Current boundary selection
+### Boundary selection at 7ab
 
 ![Selected boundary remains readable in its dropdown](../parity/reports/artifacts/photocraft-studio-20261115/captures/selected-boundary-dropdown.jpg)
 

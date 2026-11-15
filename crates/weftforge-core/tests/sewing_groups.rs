@@ -203,6 +203,257 @@ fn paired(u: f64) -> f64 {
     }
 }
 
+fn analytic_scene() -> (Editor, u64) {
+    let mut editor = Editor::default();
+    editor
+        .execute(Command::AddPolygon {
+            name: "Original analytic parabola".into(),
+            vertices: vec![[0., 0.], [1., 1.], [0., 1.]],
+        })
+        .unwrap();
+    let curve = editor.project.pieces[0].boundary[0];
+    editor
+        .execute(Command::SetCurveControls {
+            curve,
+            controls: Some([[1. / 3., 0.], [2. / 3., 1. / 3.]]),
+        })
+        .unwrap();
+    (editor, curve)
+}
+
+#[test]
+fn authored_interval_lengths_match_straight_and_analytic_cubic_primitives() {
+    let mut straight = Editor::default();
+    straight
+        .execute(Command::AddPolygon {
+            name: "Original 3-4-5 edge".into(),
+            vertices: vec![[0., 0.], [0.3, 0.4], [0., 0.4]],
+        })
+        .unwrap();
+    let line = straight.project.pieces[0].boundary[0];
+    for (t0, t1) in [(0., 1.), (0.2, 0.8), (0.8, 0.2)] {
+        close(
+            straight
+                .project
+                .interval_length(interval(line, t0, t1))
+                .unwrap(),
+            0.5 * (t1 - t0).abs(),
+        );
+    }
+    let (mut editor, curve) = analytic_scene();
+    let primitive = |t: f64| t * (1. + 4. * t * t).sqrt() / 2. + (2. * t).asinh() / 4.;
+    for (t0, t1) in [(0., 1.), (0.2, 0.8), (0.8, 0.2), (0., 0.37), (0.37, 1.)] {
+        close(
+            editor
+                .project
+                .interval_length(interval(curve, t0, t1))
+                .unwrap(),
+            (primitive(t1) - primitive(t0)).abs(),
+        );
+    }
+    close(
+        editor
+            .project
+            .interval_length(interval(curve, 0., 0.37))
+            .unwrap()
+            + editor
+                .project
+                .interval_length(interval(curve, 0.37, 1.))
+                .unwrap(),
+        primitive(1.),
+    );
+    let original = editor.project.clone();
+    editor
+        .execute(Command::SetCurveControls {
+            curve,
+            controls: None,
+        })
+        .unwrap();
+    let changed_revision = editor.project.revision;
+    close(
+        editor
+            .project
+            .interval_length(CurveInterval::full(curve))
+            .unwrap(),
+        2_f64.sqrt(),
+    );
+    assert!(editor.undo());
+    assert!(editor.project.revision > changed_revision);
+    close(
+        editor
+            .project
+            .interval_length(CurveInterval::full(curve))
+            .unwrap(),
+        primitive(1.),
+    );
+    let undo_revision = editor.project.revision;
+    assert!(editor.redo());
+    assert!(editor.project.revision > undo_revision);
+    close(
+        editor
+            .project
+            .interval_length(CurveInterval::full(curve))
+            .unwrap(),
+        2_f64.sqrt(),
+    );
+    let mut replacement = original;
+    replacement
+        .curves
+        .iter_mut()
+        .find(|item| item.id == curve)
+        .unwrap()
+        .controls = None;
+    close(
+        replacement
+            .interval_length(CurveInterval::full(curve))
+            .unwrap(),
+        2_f64.sqrt(),
+    );
+}
+
+#[test]
+fn legacy_lengths_share_accurate_raw_metrics_without_changing_correspondence() {
+    let (mut editor, _, _) = curved_scene(true);
+    let group = editor.project.sewing_groups[0].clone();
+    editor
+        .execute(Command::AddSeam {
+            name: "Original raw legacy pair".into(),
+            a: group.a[0],
+            b: group.b[0],
+            correspondence: group.correspondence.clone(),
+        })
+        .unwrap();
+    let seam = editor.project.seams[0].clone();
+    let expected = [
+        oracle_length(&editor.project, seam.a, seam.a.t1),
+        oracle_length(&editor.project, seam.b, seam.b.t1),
+    ];
+    let lengths = editor.project.seam_lengths(seam.id).unwrap();
+    for (actual, expected) in lengths.into_iter().zip(expected) {
+        close(actual, expected);
+    }
+    assert!(((lengths[1] - lengths[0]) - (expected[1] - expected[0])).abs() <= 2e-8);
+    for (actual, expected) in editor
+        .project
+        .sewing_group_geometry(group.id)
+        .unwrap()
+        .lengths
+        .into_iter()
+        .zip(lengths)
+    {
+        close(actual, expected);
+    }
+    let mut changed_seam = seam.clone();
+    changed_seam.correspondence = vec![[0., 0.], [0.4, 0.8], [1., 1.]];
+    let mut changed_group = group.clone();
+    changed_group.correspondence = changed_seam.correspondence.clone();
+    editor
+        .execute(Command::Transaction(vec![
+            Command::UpdateSeam { seam: changed_seam },
+            Command::UpdateSewingGroup {
+                group: changed_group,
+            },
+        ]))
+        .unwrap();
+    assert_eq!(editor.project.seam_lengths(seam.id).unwrap(), lengths);
+    for (actual, expected) in editor
+        .project
+        .sewing_group_geometry(group.id)
+        .unwrap()
+        .lengths
+        .into_iter()
+        .zip(lengths)
+    {
+        close(actual, expected);
+    }
+    assert_eq!(editor.project.seams[0].a, seam.a);
+    assert_eq!(editor.project.sewing_groups[0].a, group.a);
+    assert_eq!(editor.project.sewing_groups[0].b, group.b);
+}
+
+#[test]
+fn length_queries_are_read_only_validate_intervals_and_ignore_display_state() {
+    let (mut editor, curves) = line_scene();
+    editor
+        .execute(Command::SetResolution { metres: 0.04 })
+        .unwrap();
+    assert!(editor.undo());
+    let unchanged = format!("{editor:?}");
+    let bytes = editor.project.to_json().unwrap();
+    let mesh = editor.project.mesh().unwrap();
+    let mut cloth = weftforge_core::simulation::create_cloth(&editor.project, &mesh).unwrap();
+    cloth
+        .step(weftforge_sim::StepSettings::default(), || false)
+        .unwrap();
+    let positions = cloth.positions().to_vec();
+    let time = cloth.simulation_time();
+    let curve = curves[0];
+    let group = editor.project.sewing_groups[0].id;
+    for resolution in [0.09, 0.025] {
+        let mut project = editor.project.clone();
+        project.resolution = resolution;
+        project.pieces[0].placement.translation = [1., 2., 3.];
+        project.pieces[0].placement.rotation = [0.1, 0.2, 0.3];
+        close(
+            project.interval_length(CurveInterval::full(curve)).unwrap(),
+            0.1,
+        );
+        for (actual, expected) in project
+            .sewing_group_geometry(group)
+            .unwrap()
+            .lengths
+            .into_iter()
+            .zip([0.4, 0.6])
+        {
+            close(actual, expected);
+        }
+    }
+    for (t0, t1) in [
+        (0.2, 0.2),
+        (0., 1e-8),
+        (0., 1e-9),
+        (-0.1, 1.),
+        (0., 1.1),
+        (f64::NAN, 1.),
+        (0., f64::INFINITY),
+    ] {
+        assert!(
+            editor
+                .project
+                .interval_length(interval(curve, t0, t1))
+                .is_err()
+        );
+    }
+    assert!(
+        editor
+            .project
+            .interval_length(CurveInterval::full(u64::MAX))
+            .is_err()
+    );
+    assert!(editor.project.seam_lengths(u64::MAX).is_err());
+    assert!(editor.project.sewing_group_geometry(u64::MAX).is_err());
+    let mut invalid = editor.project.sewing_groups[0].clone();
+    invalid.a[0].t1 = invalid.a[0].t0;
+    assert!(
+        editor
+            .execute(Command::UpdateSewingGroup { group: invalid })
+            .is_err()
+    );
+    close(
+        editor
+            .project
+            .interval_length(interval(curve, 0.8, 0.2))
+            .unwrap(),
+        0.06,
+    );
+    assert_eq!(format!("{editor:?}"), unchanged);
+    assert_eq!(editor.project.to_json().unwrap(), bytes);
+    assert!(editor.can_redo());
+    assert_eq!(cloth.positions(), positions);
+    assert_eq!(cloth.simulation_time(), time);
+    assert_eq!(mesh, editor.project.mesh().unwrap());
+}
+
 #[test]
 fn asymmetric_cubic_metric_and_nonlinear_pairs_match_independent_integrals() {
     for reverse in [false, true] {

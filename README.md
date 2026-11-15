@@ -112,6 +112,15 @@ while preserving sewing. Unsupported corners or exhausted precision budgets
 produce a validation error. See the
 [bounded curve-editing contract](spec/features/PAT-005-sewn-curve-editing.md).
 
+Selected boundaries show their **applied rest length** in Properties, in
+millimetres with the source revision. Legacy seams and M:N groups show A/B side
+lengths and signed **B − A**. Unapplied numeric drafts and point previews are
+excluded. These measure authored construction independently of cloth positions.
+`weftforge-cli lengths PROJECT interval CURVE_ID T0 T1` (or `seam ID` /
+`sewing-group ID`) and MCP `project_lengths` return unrounded SI values without
+writing files. See [automation](docs/automation.md) and the
+[native readouts](docs/studio-preview.md).
+
 ## Verify and contribute
 
 ```bash

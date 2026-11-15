@@ -1,0 +1,245 @@
+{
+  "format": "weftforge",
+  "version": 3,
+  "project": {
+    "revision": 137,
+    "points": [
+      {
+        "id": 12,
+        "position": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "id": 13,
+        "position": [
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "id": 14,
+        "position": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "id": 22,
+        "position": [
+          2.0,
+          0.0
+        ]
+      },
+      {
+        "id": 23,
+        "position": [
+          2.3,
+          0.4
+        ]
+      },
+      {
+        "id": 24,
+        "position": [
+          2.0,
+          0.4
+        ]
+      }
+    ],
+    "curves": [
+      {
+        "id": 15,
+        "start": 12,
+        "end": 13,
+        "controls": [
+          [
+            0.3333333333333333,
+            0.0
+          ],
+          [
+            0.6666666666666666,
+            0.3333333333333333
+          ]
+        ]
+      },
+      {
+        "id": 16,
+        "start": 13,
+        "end": 14,
+        "controls": null
+      },
+      {
+        "id": 17,
+        "start": 14,
+        "end": 12,
+        "controls": null
+      },
+      {
+        "id": 25,
+        "start": 22,
+        "end": 23,
+        "controls": null
+      },
+      {
+        "id": 26,
+        "start": 23,
+        "end": 24,
+        "controls": null
+      },
+      {
+        "id": 27,
+        "start": 24,
+        "end": 22,
+        "controls": null
+      }
+    ],
+    "pieces": [
+      {
+        "id": 11,
+        "name": "Original parabola panel",
+        "boundary": [
+          15,
+          16,
+          17
+        ],
+        "placement": {
+          "translation": [
+            2.25,
+            -1.75,
+            0.9
+          ],
+          "rotation": [
+            0.41,
+            -0.27,
+            1.09
+          ]
+        },
+        "material": 1,
+        "grain_angle": 0.17
+      },
+      {
+        "id": 21,
+        "name": "Original 3-4-5 panel",
+        "boundary": [
+          25,
+          26,
+          27
+        ],
+        "placement": {
+          "translation": [
+            -0.6,
+            2.7,
+            -1.4
+          ],
+          "rotation": [
+            -0.52,
+            0.67,
+            -0.81
+          ]
+        },
+        "material": 1,
+        "grain_angle": -0.23
+      }
+    ],
+    "materials": [
+      {
+        "id": 1,
+        "name": "Independent analytic cotton",
+        "areal_density": 0.18,
+        "warp_stiffness": 400.0,
+        "weft_stiffness": 400.0,
+        "shear_stiffness": 100.0,
+        "bending_stiffness": 0.003,
+        "damping": 0.2,
+        "friction": 0.4,
+        "collision_thickness": 0.003,
+        "color": [
+          0.25,
+          0.5,
+          0.75
+        ]
+      }
+    ],
+    "seams": [
+      {
+        "id": 31,
+        "name": "Original unequal reversed analytic seam",
+        "a": {
+          "curve": 15,
+          "t0": 0.8,
+          "t1": 0.2
+        },
+        "b": {
+          "curve": 25,
+          "t0": 0.1,
+          "t1": 0.9
+        },
+        "correspondence": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.23,
+            0.71
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      }
+    ],
+    "sewing_groups": [
+      {
+        "id": 32,
+        "name": "Original disconnected unequal analytic group",
+        "a": [
+          {
+            "curve": 15,
+            "t0": 0.94,
+            "t1": 0.66
+          },
+          {
+            "curve": 15,
+            "t0": 0.05,
+            "t1": 0.37
+          }
+        ],
+        "b": [
+          {
+            "curve": 25,
+            "t0": 0.0,
+            "t1": 1.0
+          },
+          {
+            "curve": 27,
+            "t0": 0.0,
+            "t1": 1.0
+          }
+        ],
+        "correspondence": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.29,
+            0.63
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      }
+    ],
+    "mannequin": {
+      "capsules": []
+    },
+    "resolution": 0.23,
+    "next_id": 33
+  }
+}
+ 	

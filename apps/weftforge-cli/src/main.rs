@@ -1,3 +1,4 @@
+use serde::{Deserialize, Serialize};
 use std::{
     error::Error,
     fs::File,
@@ -14,6 +15,37 @@ type Result<T> = std::result::Result<T, Box<dyn Error>>;
 const MAX_COMMANDS: usize = 1024;
 const MAX_COMMAND_BYTES: u64 = 1024 * 1024;
 
+#[derive(Clone, Copy, Deserialize, Serialize)]
+#[serde(
+    tag = "type",
+    content = "data",
+    rename_all = "snake_case",
+    deny_unknown_fields
+)]
+enum LengthQuery {
+    Interval { curve: u64, t0: f64, t1: f64 },
+    Seam { id: u64 },
+    SewingGroup { id: u64 },
+}
+
+fn length_report(project: &Project, query: LengthQuery) -> Result<serde_json::Value> {
+    let mut report = serde_json::json!({
+        "source_revision":project.revision,"length_unit":"m","query":query
+    });
+    let lengths = match query {
+        LengthQuery::Interval { curve, t0, t1 } => {
+            report["length_m"] =
+                serde_json::json!(project.interval_length(CurveInterval { curve, t0, t1 })?);
+            return Ok(report);
+        }
+        LengthQuery::Seam { id } => project.seam_lengths(id)?,
+        LengthQuery::SewingGroup { id } => project.sewing_group_geometry(id)?.lengths,
+    };
+    report["lengths_m"] = serde_json::json!(lengths);
+    report["mismatch_b_minus_a_m"] = serde_json::json!(lengths[1] - lengths[0]);
+    Ok(report)
+}
+
 fn main() {
     if let Err(error) = run() {
         eprintln!("weftforge-cli: {error}");
@@ -24,7 +56,7 @@ fn run() -> Result<()> {
     let args: Vec<_> = std::env::args().skip(1).collect();
     match args.first().map(String::as_str) {
         None | Some("--help" | "-h" | "help") => println!(
-            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nimport-svg INPUT OUTPUT PATTERNS.svg   editable closed paths with physical mm scale\nimport-dxf INPUT OUTPUT PATTERNS.dxf   bounded R2000 LINE/cubic boundaries in mm\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj\nexport-svg PROJECT OUTPUT.svg\nexport-dxf PROJECT OUTPUT.dxf          exterior pattern boundaries in mm\nsimulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
+            "WeftForge CLI — offline editable garment tools\n\nmcp                                    local MCP stdio file authoring\nnew PROJECT\nsample PROJECT                         original two-panel shirt (implementation fixture)\ninspect PROJECT\nlengths PROJECT interval CURVE_ID T0 T1   authored/rest length, unrounded SI JSON\nlengths PROJECT seam SEAM_ID\nlengths PROJECT sewing-group GROUP_ID\ninspect-sewing PROJECT                  authored groups, portions and rest stitches (JSON)\nexecute INPUT OUTPUT COMMANDS.json      one atomic shared command array\nimport-svg INPUT OUTPUT PATTERNS.svg   editable closed paths with physical mm scale\nimport-dxf INPUT OUTPUT PATTERNS.dxf   bounded R2000 LINE/cubic boundaries in mm\nrectangle INPUT OUTPUT NAME X Y WIDTH HEIGHT\nellipse INPUT OUTPUT NAME X Y WIDTH HEIGHT   four editable cubic spans\nresize INPUT OUTPUT PIECE_ID WIDTH HEIGHT\ncurve-controls INPUT OUTPUT CURVE_ID X1 Y1 X2 Y2   absolute cubic controls in m\ncurve-controls INPUT OUTPUT CURVE_ID straight\nsplit INPUT OUTPUT CURVE_ID T          interior curve parameter; preserves sewing\njoin INPUT OUTPUT CURVE_ID             shape-preserving join with next boundary\ngrain INPUT OUTPUT PIECE_ID RADIANS    warp: 0=+U, positive toward +V\nstiffness INPUT OUTPUT MATERIAL_ID WARP WEFT   physical N/m\nexport-obj PROJECT OUTPUT.obj\nexport-svg PROJECT OUTPUT.svg\nexport-dxf PROJECT OUTPUT.dxf          exterior pattern boundaries in mm\nsimulate PROJECT OUTPUT.obj STEPS      f64 CPU XPBD, contacts always enabled\nbenchmark PROJECT STEPS                JSON measurements for the same solver\nfit-benchmark PROJECT                  explicit 1 s zero-gravity assembly, 2 s drape\nfit PROJECT OUTPUT.obj                same protocol, exports only after quality checks pass\nrecover PROJECT OUTPUT                explicitly load last valid recovery\n\nUnits: metres, kilograms, seconds; Y-up. Legacy seam fractions use curve t; sewing groups use authored arc length. All edits use the desktop command engine.\nSimulation is currently a rebuildable state; projects store editable construction."
         ),
         Some("mcp") => {
             count(&args, 1)?;
@@ -42,13 +74,42 @@ fn run() -> Result<()> {
             count(&args, 2)?;
             let p = Project::load(Path::new(&args[1]))?;
             let mesh = p.mesh()?;
-            let seams:Vec<_>=p.seams.iter().map(|s|serde_json::json!({"id":s.id,"name":s.name,"lengths_m":p.seam_lengths(s.id).ok()})).collect();
+            let seams: Vec<_> = p
+                .seams
+                .iter()
+                .map(|s| {
+                    p.seam_lengths(s.id).map(
+                        |lengths| serde_json::json!({"id":s.id,"name":s.name,"lengths_m":lengths}),
+                    )
+                })
+                .collect::<weftforge_core::Result<_>>()?;
             println!(
                 "{}",
                 serde_json::to_string_pretty(
                     &serde_json::json!({"revision":p.revision,"units":"m","up":"Y","pieces":p.pieces.len(),"curves":p.curves.len(),"construction":{"points":p.points,"curves":p.curves},"vertices":mesh.positions.len(),"triangles":mesh.triangles.len(),"seams":seams,"sewing_groups":p.sewing_groups,"sewing_group_geometry":sewing_geometry(&mesh),"stitches":mesh.stitches.len(),"patterns":p.pieces.iter().map(|piece|serde_json::json!({"id":piece.id,"name":piece.name,"material":piece.material,"grain_angle_radians":piece.grain_angle})).collect::<Vec<_>>(),"materials":p.materials})
                 )?
             );
+        }
+        Some("lengths") => {
+            let query = match args.get(2).map(String::as_str) {
+                Some("interval") => {
+                    count(&args, 6)?;
+                    LengthQuery::Interval {
+                        curve: args[3].parse()?,
+                        t0: number(&args[4])?,
+                        t1: number(&args[5])?,
+                    }
+                }
+                Some("seam" | "sewing-group") => {
+                    count(&args, 4)?;
+                    let id = args[3].parse()?;
+                    if args[2] == "seam" { LengthQuery::Seam { id } }
+                    else { LengthQuery::SewingGroup { id } }
+                }
+                _ => return Err("Expected lengths PROJECT interval CURVE_ID T0 T1, seam SEAM_ID, or sewing-group GROUP_ID".into()),
+            };
+            let project = Project::load(Path::new(&args[1]))?;
+            println!("{}", length_report(&project, query)?);
         }
         Some("inspect-sewing") => {
             count(&args, 2)?;

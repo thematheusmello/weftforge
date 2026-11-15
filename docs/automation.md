@@ -40,7 +40,7 @@ its input. Concurrent desktop/file writers are not coordinated by this adapter.
 
 The official specifications were checked on 2026-11-13. The adapter supports the
 current **2026-07-28** request metadata profile and the **2025-11-25** legacy
-initialization profile. They share the eight tools below. Only `tools: {}` is
+initialization profile. They share the nine tools below. Only `tools: {}` is
 advertised; no resources, prompts, subscriptions, tasks, logging, sampling, or
 elicitation capabilities are advertised.
 
@@ -92,6 +92,7 @@ are rejected. The tool names and arguments are:
 | Tool | Required arguments | Result in `structuredContent` |
 | --- | --- | --- |
 | `project_inspect` | `path` | Complete validated `project`, SI `units`, `up: "Y"`; includes stable points, curves, piece boundaries, materials, placements, grain, legacy seams, sewing groups, mannequin, resolution, revision and next ID |
+| `project_lengths` | `path`, `query` | Applied `source_revision`, `length_unit: "m"`, echoed query, and unrounded authored/rest length(s); pairs include signed `mismatch_b_minus_a_m` |
 | `project_create` | `output` | Saved `output` and `revision`; existing output paths are refused |
 | `project_execute` | `input`, `output`, `commands` | Saved paths, new `revision`, and `commands_applied` |
 | `project_import_svg` | `input`, `output`, `svg` | Added `pieces_imported`, new `revision`, `metres_per_user_unit`, preserved-origin convention and explicit construction-only `scope` |
@@ -189,6 +190,47 @@ The [bounded join contract](../spec/features/PAT-005-sewn-curve-editing.md#shape
 defines its geometry and parameter limits.
 
 ## Ordered sewing and headless inspection
+
+Authored length queries read editable construction directly, without a rest mesh,
+simulation, editor/history changes, save or recovery writes. Full curves are
+intervals from 0 to 1; reversed endpoints retain their supplied order in the echo
+and return the same positive length. Legacy seam and ordered-group pairs retain
+authored A/B order, including ordered disconnected spans; gaps add no length and
+correspondence does not change either side's raw length.
+
+```sh
+weftforge-cli lengths original.weftforge interval 7 0.2 0.8
+weftforge-cli lengths original.weftforge seam 23
+weftforge-cli lengths original.weftforge sewing-group 42
+```
+
+The shared MCP query uses closed `type`/`data` variants. For example:
+
+```json
+{"jsonrpc":"2.0","id":6,"method":"tools/call","params":{"name":"project_lengths","arguments":{"path":"original.weftforge","query":{"type":"interval","data":{"curve":7,"t0":0.2,"t1":0.8}}}}}
+{"jsonrpc":"2.0","id":7,"method":"tools/call","params":{"name":"project_lengths","arguments":{"path":"original.weftforge","query":{"type":"seam","data":{"id":23}}}}}
+{"jsonrpc":"2.0","id":8,"method":"tools/call","params":{"name":"project_lengths","arguments":{"path":"original.weftforge","query":{"type":"sewing_group","data":{"id":42}}}}}
+```
+
+These are legacy-profile requests after initialization; current-profile requests
+also include per-request metadata. CLI JSON, MCP structured content and MCP text
+JSON return the same report for the same saved revision/query. An interval report
+contains `source_revision`, `length_unit: "m"`, `query` and `length_m`. A pair report
+contains the same revision/unit/query fields, `lengths_m: [A, B]`, and
+`mismatch_b_minus_a_m`, computed directly as B − A. JSON retains SI f64 precision.
+Values do not depend on mesh resolution, 3D placement or current cloth positions.
+The desktop presents applied values separately from drafts/previews, as
+millimetres to three decimal places with a signed B − A value.
+
+Unknown IDs, missing/unknown/duplicate/null fields, nonfinite or out-of-range
+endpoints, and endpoint differences of at most `1e-8` fail explicitly. Existing
+bounded metric precision/work failures are preserved; no sampled fallback or
+previous result is returned as a new success. Curved legacy `inspect.lengths_m`
+now uses the same accurate authored metric and propagates errors. These reports
+add no angle, perimeter, warning threshold, ratio or persistent measurement.
+They are implementation feedback under the
+[authored-length contract](../spec/features/PAT-007-authored-length-feedback.md),
+with reference numerical/rounding/selection behavior still unobserved.
 
 `add_sewing_group` takes `name`, ordered interval arrays `a`/`b`, and a monotone
 `correspondence`. `update_sewing_group` takes the complete `group` object;

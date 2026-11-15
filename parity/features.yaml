@@ -18,7 +18,8 @@
         "parity/reports/WF-20261115-SVG-STUDIO-001.json",
         "parity/scenarios/FILE-DXF-STUDIO-001.json",
         "parity/reports/WF-20261115-DXF-STUDIO-001.json",
-        "parity/reports/WF-20261115-PHOTOCRAFT-STUDIO-001.json"
+        "parity/reports/WF-20261115-PHOTOCRAFT-STUDIO-001.json",
+        "parity/reports/WF-20261115-AUTHORED-LENGTH-001.json"
       ],
       "scenarios": [
         {
@@ -78,6 +79,15 @@
           },
           "initial_conditions": "Fresh owned no-argument nativeEmpty revision0; nativeXfocus/selection/raw/value barriers mandatory before typing. Separate visualpreview may load the alreadypublicoriginalHarbor readonly.",
           "expected_outcomes": "Only after every frozen focus/raw/value/samepixel barrier succeeds may the two named nativeoutputs be saved and independently graded to the fixedgeometry/tolerances. A missing observation or mismatch stops; previouscases never receive later credit."
+        },
+        {
+          "id": "NATIVE-LENGTH-READOUTS-20261115-002",
+          "path": "parity/reports/artifacts/authored-length-20261115/native-002/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/authored-length-20261115/independent/fixture.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d"
+          },
+          "initial_conditions": "Same original revision137fixture, sourcebe8, readonly fresh owned process; no authoring or simulation.",
+          "expected_outcomes": "Exact three-decimalmm curve/seam/group values and signed B\u2212A with applied revision137/draft qualifier, within300s/24pairs; source/binary/fixture unchanged."
         }
       ],
       "comparison_criteria": {
@@ -103,7 +113,8 @@
         "https://github.com/thematheusmello/weftforge/pull/37",
         "https://github.com/thematheusmello/weftforge/pull/39",
         "https://github.com/thematheusmello/weftforge/pull/42",
-        "https://github.com/thematheusmello/weftforge/pull/43"
+        "https://github.com/thematheusmello/weftforge/pull/43",
+        "https://github.com/thematheusmello/weftforge/pull/44"
       ],
       "implementation_status": "partial",
       "verification_status": "not_run",
@@ -2171,6 +2182,65 @@
             "parity/reports/artifacts/photocraft-studio-20261115/captures/selected-boundary.jpg": "4a2ee45beaa2bb309d48cd1dbf45883ed7c24cd3707483afc5b15969228f2a53"
           },
           "path": "parity/reports/WF-20261115-PHOTOCRAFT-STUDIO-001.json"
+        },
+        {
+          "id": "WF-20261115-AUTHORED-LENGTH-001",
+          "commit": "be8a031b5f8342d0857f3bed34f52dd165fa86da",
+          "timestamp": "2026-11-15T14:34:31Z",
+          "platform": "macOS27.2 arm64; Rust1.94.1; native1640x1032 debug preview",
+          "artifact_hashes": {
+            "parity/reports/artifacts/authored-length-20261115/PUBLICATION.json": "78af662501e5cd1cb2ee51b1b487448f123b30dac4539f9052f9d75001901285",
+            "parity/reports/artifacts/authored-length-20261115/README.md": "19fb09752f997819df6ea572ce9d7f3ac54c2df372bdbfe96de8c4e7e13f32ef",
+            "parity/reports/artifacts/authored-length-20261115/REGRESSIONS.md": "4892d8fe625f51ae123a8742c4a4201dcb651ee31867e176179d722a029d9022",
+            "parity/reports/artifacts/authored-length-20261115/SOURCE-REVIEW.md": "a476a664f14436fc36d11dcbd26583c1befb1df0c9c03c2260299fba0fab4c5c",
+            "parity/reports/artifacts/authored-length-20261115/build/FINAL-BINDING-be8a031.json": "c8388a82368ef2b1ac27f81ab973556486eda90075d6828b5092eefd1a7ce8c5",
+            "parity/reports/artifacts/authored-length-20261115/build/SOURCE-SHA256SUMS-be8a031": "1fec297f8565042c896a90370c454096bc2df34bab9a29d3ab1bc76440055548",
+            "parity/reports/artifacts/authored-length-20261115/build/debug-build-final-be8a031.log": "a178c7902ac24dda0e2c0cd4cf0e47a2a6976ef30481cb4015f2f71620380d8b",
+            "parity/reports/artifacts/authored-length-20261115/build/full-clippy-be8a031.log": "4dbe1679afb87e469629df7885c564f2b07119e7b2dfd0f899bf35d23cad3794",
+            "parity/reports/artifacts/authored-length-20261115/build/full-fmt-be8a031.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/authored-length-20261115/build/full-gates-be8a031.json": "9c3eab309b02e55a64986e3261015251eaa772d47c6df56810e2cf271b003185",
+            "parity/reports/artifacts/authored-length-20261115/build/full-package-be8a031.log": "dae5e5b942689e8756fde3fdff3d2b8a875a32aac70e41b9fbc230d10461c21d",
+            "parity/reports/artifacts/authored-length-20261115/build/full-test-be8a031.log": "6d2f80ff26fec3515e133aeb55778a6633659e6d45269f6108bff101240f1840",
+            "parity/reports/artifacts/authored-length-20261115/build/full-verify-be8a031.log": "b6acd9bacba28630fbc4b9fde6278f6ba9233c1ad64389227326027526ae7771",
+            "parity/reports/artifacts/authored-length-20261115/build/package-binding-be8a031.json": "6f55e45781665f6a090deb4e0048eebfc859d39077264c46027150c620f24494",
+            "parity/reports/artifacts/authored-length-20261115/build/scroll-layout-green2.log": "0d00bb6ccac0a68ef2daba298b952f3914435e5a730bd5c3dbc5e9c4fad8cf72",
+            "parity/reports/artifacts/authored-length-20261115/build/scroll-layout-red-7976bfc.log": "d842695f69e9acd1de9b9af6c79fdcde4a4ffa1b5f7f1217e2c0a3ab57916069",
+            "parity/reports/artifacts/authored-length-20261115/build/source-a820519-focused-checks.json": "9f8d3fe859386bcd44206450ae79ace91caa558792e2b30321f097132dfb5d01",
+            "parity/reports/artifacts/authored-length-20261115/build/source-binding-be8a031.json": "2e7d1e39e51119f4b4bcd116b602f7a9e20e70813309ceb41d93fcb4412de500",
+            "parity/reports/artifacts/authored-length-20261115/independent/PLAN.md": "5153e42e04c748ff6202fadc3444e0faaaf658e240df4d5d788b3af4a1bb1f48",
+            "parity/reports/artifacts/authored-length-20261115/independent/ROOT-REVIEW.json": "90b33d8a6d11528e3fba627a2e03ac91bcdc4ede8c184fd48aa0ce0a44de133e",
+            "parity/reports/artifacts/authored-length-20261115/independent/SHA256SUMS": "a3c5448aabc169ae35fd647f251a82cddd3f3a33c6c00a0f31ff59f014608974",
+            "parity/reports/artifacts/authored-length-20261115/independent/criteria.json": "19a06ccc09cd8d446d2dfc901da27c3a57d28e8f2401094a72a5ad3e570f231d",
+            "parity/reports/artifacts/authored-length-20261115/independent/fixture.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d",
+            "parity/reports/artifacts/authored-length-20261115/independent/grade_lengths.py": "e39a81a6627ed48a363c50747039ff9c517d52de0ccde024fe37b5f9eaf04902",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/RUN-SHA256SUMS": "ee43fac163b5e5f5c4e49a4971d841e5f203c7f5de4e67d62ee3e157d76cf95a",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/binary-hashes.json": "50acc0e27fd04c025ab8ae6917bf7132ebfeb7c2397ebc51c2bf15fcefe91b3f",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/input.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/input.weftforge.recovery": "0939db31ff9ab3303b6eb9de361e97897f6de8c15d79b94083f475cb2a5cedfa",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/invalid.weftforge": "06da0cb084b0926d6cc49a47d2d6eaeb9d16d1d39f21fbf277232b1f626c10cc",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/invalid.weftforge.recovery": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/isolation.weftforge": "0ff93749c931f229ce4250d30ff6fa4d3948c1dc79233c78fbc6ba58debe889d",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/report.json": "faf8044dcec9901e99fa6ed0c5312b870e9409c3f1830c43a77eb22f7731c454",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/runner-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/runner-stdout.txt": "0378f4e4750fc67b2d4f2faf1a424dd287b3dbb7ef398f1a09b5713be4a903e9",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/transcript.json": "76f6a5fd2da9b91e10e66747fe9203de874d8dac5311343c66435ed91d182ac2",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/unrelated.weftforge": "ef234f3402c54b8189b5fb1855640b7c35a6bff9021307ece8302a55bd3cf76c",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/unrelated.weftforge.recovery": "a9f67bb84e06dc4557a80330ffb49a5fcc9f9ff6fc3addabe634e52c1af3eac1",
+            "parity/reports/artifacts/authored-length-20261115/native-001/BEFORE-AFTER.json": "a1a012365e194c998a0084f438f07bce609b8f27c889c8f344328f4d86de8209",
+            "parity/reports/artifacts/authored-length-20261115/native-001/OUTCOME.json": "f8e7f99e045df7c58ee5636739a8071d23667d44b2f9f010906216f0dda38c8e",
+            "parity/reports/artifacts/authored-length-20261115/native-001/PLAN.json": "c36e65e48052a8f76d5d5d4365e0eb09a10f92a0b88733fe7a6fa02885868016",
+            "parity/reports/artifacts/authored-length-20261115/native-002/BEFORE-AFTER.json": "193efbe05372483a92cbeee882fd81189f1d3a66ce79166f1ad00a24f6a3eda3",
+            "parity/reports/artifacts/authored-length-20261115/native-002/OFFLINE-RECORDER-CHECK.json": "c3eea3217f6a1830a7c3d9694ec30e584d6eee23b2602cc6b1eac7e99d15fa38",
+            "parity/reports/artifacts/authored-length-20261115/native-002/OUTCOME.json": "fb0d6095d558c935e8107f4f732db196b4f9f422ec14644614043106a26e8f2b",
+            "parity/reports/artifacts/authored-length-20261115/native-002/PLAN.json": "9e5c7ffd647e934835f777d824ef5b94bf0cd5efcfa7ab2b146d0ea6216c3f81",
+            "parity/reports/artifacts/authored-length-20261115/native-002/SOURCE.json": "8a968eb972285a5f97fb339bd5c4fae0d78e1de16df189f68da46850fdbcb7b8",
+            "parity/reports/artifacts/authored-length-20261115/native-002/captures/01-boundary-selector.jpg": "6569b4359e73ebadbf0acb04d6afb8586e16cbeb355006510880428a5cbb1b0d",
+            "parity/reports/artifacts/authored-length-20261115/native-002/captures/02-curve15.jpg": "c6dcf91107c5e29fc9934c065403a681c8564960d87a9a20d6f67eddcf77c5ff",
+            "parity/reports/artifacts/authored-length-20261115/native-002/captures/03-sewing-readouts.jpg": "5ad3ca2a74a5b26e286cd343948c8a2decf7e249bf10feef0ce5c5f5704d2075",
+            "parity/reports/artifacts/authored-length-20261115/native-002/captures/04-seam31-group32.jpg": "1264be26717a7af25afcff9197fea7bcb5aeb9a9f25b47142b0e171b40549028",
+            "parity/reports/artifacts/authored-length-20261115/native-002/recorder.cjs": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc"
+          },
+          "path": "parity/reports/WF-20261115-AUTHORED-LENGTH-001.json"
         }
       ],
       "known_gaps": [
@@ -7351,9 +7421,32 @@
         "https://support.marvelousdesigner.com/",
         "https://www.marvelousdesigner.com/products/releases"
       ],
-      "reference_observation_status": "unobserved",
-      "evidence_ids": [],
-      "scenarios": [],
+      "reference_observation_status": "observed",
+      "evidence_ids": [
+        "spec/features/PAT-007-line-length-runtime-20261115.md",
+        "spec/observations/REF-UI-LENGTH-OBSERVATION-20261115.json",
+        "parity/reports/WF-20261115-AUTHORED-LENGTH-001.json"
+      ],
+      "scenarios": [
+        {
+          "id": "NATIVE-LENGTH-READOUTS-20261115-002",
+          "path": "parity/reports/artifacts/authored-length-20261115/native-002/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/authored-length-20261115/independent/fixture.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d"
+          },
+          "initial_conditions": "Same original revision137fixture, sourcebe8, readonly fresh owned process; no authoring or simulation.",
+          "expected_outcomes": "Exact three-decimalmm curve/seam/group values and signed B\u2212A with applied revision137/draft qualifier, within300s/24pairs; source/binary/fixture unchanged."
+        },
+        {
+          "id": "WF-LENGTH-ANALYTIC-001",
+          "path": "parity/reports/artifacts/authored-length-20261115/independent/criteria.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/authored-length-20261115/independent/fixture.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d"
+          },
+          "initial_conditions": "Original native-v3 revision137; two pieces, one legacy seam and one ordered group; no simulation. Frozen independent analytic primitive and tolerances before execution.",
+          "expected_outcomes": "1e-8m lengths,2e-8m independent B\u2212A; exact SI/revision/query echo and CLI/MCP structured/text equality; strict errors and unchanged primary/recovery/unrelated bytes."
+        }
+      ],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
         "exact": [
@@ -7365,22 +7458,95 @@
       "dependencies": [
         "PAT-002"
       ],
-      "implementation_locations": [],
+      "implementation_locations": [
+        "crates/weftforge-core/src/sewing.rs",
+        "crates/weftforge-core/src/geometry.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/src/mcp.rs"
+      ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3"
       ],
-      "prs": [],
-      "implementation_status": "planned",
+      "prs": [
+        "https://github.com/thematheusmello/weftforge/pull/44"
+      ],
+      "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261115-AUTHORED-LENGTH-001",
+          "commit": "be8a031b5f8342d0857f3bed34f52dd165fa86da",
+          "timestamp": "2026-11-15T14:34:31Z",
+          "platform": "macOS27.2 arm64; Rust1.94.1; native1640x1032 debug preview",
+          "artifact_hashes": {
+            "parity/reports/artifacts/authored-length-20261115/PUBLICATION.json": "78af662501e5cd1cb2ee51b1b487448f123b30dac4539f9052f9d75001901285",
+            "parity/reports/artifacts/authored-length-20261115/README.md": "19fb09752f997819df6ea572ce9d7f3ac54c2df372bdbfe96de8c4e7e13f32ef",
+            "parity/reports/artifacts/authored-length-20261115/REGRESSIONS.md": "4892d8fe625f51ae123a8742c4a4201dcb651ee31867e176179d722a029d9022",
+            "parity/reports/artifacts/authored-length-20261115/SOURCE-REVIEW.md": "a476a664f14436fc36d11dcbd26583c1befb1df0c9c03c2260299fba0fab4c5c",
+            "parity/reports/artifacts/authored-length-20261115/build/FINAL-BINDING-be8a031.json": "c8388a82368ef2b1ac27f81ab973556486eda90075d6828b5092eefd1a7ce8c5",
+            "parity/reports/artifacts/authored-length-20261115/build/SOURCE-SHA256SUMS-be8a031": "1fec297f8565042c896a90370c454096bc2df34bab9a29d3ab1bc76440055548",
+            "parity/reports/artifacts/authored-length-20261115/build/debug-build-final-be8a031.log": "a178c7902ac24dda0e2c0cd4cf0e47a2a6976ef30481cb4015f2f71620380d8b",
+            "parity/reports/artifacts/authored-length-20261115/build/full-clippy-be8a031.log": "4dbe1679afb87e469629df7885c564f2b07119e7b2dfd0f899bf35d23cad3794",
+            "parity/reports/artifacts/authored-length-20261115/build/full-fmt-be8a031.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/authored-length-20261115/build/full-gates-be8a031.json": "9c3eab309b02e55a64986e3261015251eaa772d47c6df56810e2cf271b003185",
+            "parity/reports/artifacts/authored-length-20261115/build/full-package-be8a031.log": "dae5e5b942689e8756fde3fdff3d2b8a875a32aac70e41b9fbc230d10461c21d",
+            "parity/reports/artifacts/authored-length-20261115/build/full-test-be8a031.log": "6d2f80ff26fec3515e133aeb55778a6633659e6d45269f6108bff101240f1840",
+            "parity/reports/artifacts/authored-length-20261115/build/full-verify-be8a031.log": "b6acd9bacba28630fbc4b9fde6278f6ba9233c1ad64389227326027526ae7771",
+            "parity/reports/artifacts/authored-length-20261115/build/package-binding-be8a031.json": "6f55e45781665f6a090deb4e0048eebfc859d39077264c46027150c620f24494",
+            "parity/reports/artifacts/authored-length-20261115/build/scroll-layout-green2.log": "0d00bb6ccac0a68ef2daba298b952f3914435e5a730bd5c3dbc5e9c4fad8cf72",
+            "parity/reports/artifacts/authored-length-20261115/build/scroll-layout-red-7976bfc.log": "d842695f69e9acd1de9b9af6c79fdcde4a4ffa1b5f7f1217e2c0a3ab57916069",
+            "parity/reports/artifacts/authored-length-20261115/build/source-a820519-focused-checks.json": "9f8d3fe859386bcd44206450ae79ace91caa558792e2b30321f097132dfb5d01",
+            "parity/reports/artifacts/authored-length-20261115/build/source-binding-be8a031.json": "2e7d1e39e51119f4b4bcd116b602f7a9e20e70813309ceb41d93fcb4412de500",
+            "parity/reports/artifacts/authored-length-20261115/independent/PLAN.md": "5153e42e04c748ff6202fadc3444e0faaaf658e240df4d5d788b3af4a1bb1f48",
+            "parity/reports/artifacts/authored-length-20261115/independent/ROOT-REVIEW.json": "90b33d8a6d11528e3fba627a2e03ac91bcdc4ede8c184fd48aa0ce0a44de133e",
+            "parity/reports/artifacts/authored-length-20261115/independent/SHA256SUMS": "a3c5448aabc169ae35fd647f251a82cddd3f3a33c6c00a0f31ff59f014608974",
+            "parity/reports/artifacts/authored-length-20261115/independent/criteria.json": "19a06ccc09cd8d446d2dfc901da27c3a57d28e8f2401094a72a5ad3e570f231d",
+            "parity/reports/artifacts/authored-length-20261115/independent/fixture.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d",
+            "parity/reports/artifacts/authored-length-20261115/independent/grade_lengths.py": "e39a81a6627ed48a363c50747039ff9c517d52de0ccde024fe37b5f9eaf04902",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/RUN-SHA256SUMS": "ee43fac163b5e5f5c4e49a4971d841e5f203c7f5de4e67d62ee3e157d76cf95a",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/binary-hashes.json": "50acc0e27fd04c025ab8ae6917bf7132ebfeb7c2397ebc51c2bf15fcefe91b3f",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/input.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/input.weftforge.recovery": "0939db31ff9ab3303b6eb9de361e97897f6de8c15d79b94083f475cb2a5cedfa",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/invalid.weftforge": "06da0cb084b0926d6cc49a47d2d6eaeb9d16d1d39f21fbf277232b1f626c10cc",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/invalid.weftforge.recovery": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/isolation.weftforge": "0ff93749c931f229ce4250d30ff6fa4d3948c1dc79233c78fbc6ba58debe889d",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/report.json": "faf8044dcec9901e99fa6ed0c5312b870e9409c3f1830c43a77eb22f7731c454",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/runner-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/runner-stdout.txt": "0378f4e4750fc67b2d4f2faf1a424dd287b3dbb7ef398f1a09b5713be4a903e9",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/transcript.json": "76f6a5fd2da9b91e10e66747fe9203de874d8dac5311343c66435ed91d182ac2",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/unrelated.weftforge": "ef234f3402c54b8189b5fb1855640b7c35a6bff9021307ece8302a55bd3cf76c",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/unrelated.weftforge.recovery": "a9f67bb84e06dc4557a80330ffb49a5fcc9f9ff6fc3addabe634e52c1af3eac1",
+            "parity/reports/artifacts/authored-length-20261115/native-001/BEFORE-AFTER.json": "a1a012365e194c998a0084f438f07bce609b8f27c889c8f344328f4d86de8209",
+            "parity/reports/artifacts/authored-length-20261115/native-001/OUTCOME.json": "f8e7f99e045df7c58ee5636739a8071d23667d44b2f9f010906216f0dda38c8e",
+            "parity/reports/artifacts/authored-length-20261115/native-001/PLAN.json": "c36e65e48052a8f76d5d5d4365e0eb09a10f92a0b88733fe7a6fa02885868016",
+            "parity/reports/artifacts/authored-length-20261115/native-002/BEFORE-AFTER.json": "193efbe05372483a92cbeee882fd81189f1d3a66ce79166f1ad00a24f6a3eda3",
+            "parity/reports/artifacts/authored-length-20261115/native-002/OFFLINE-RECORDER-CHECK.json": "c3eea3217f6a1830a7c3d9694ec30e584d6eee23b2602cc6b1eac7e99d15fa38",
+            "parity/reports/artifacts/authored-length-20261115/native-002/OUTCOME.json": "fb0d6095d558c935e8107f4f732db196b4f9f422ec14644614043106a26e8f2b",
+            "parity/reports/artifacts/authored-length-20261115/native-002/PLAN.json": "9e5c7ffd647e934835f777d824ef5b94bf0cd5efcfa7ab2b146d0ea6216c3f81",
+            "parity/reports/artifacts/authored-length-20261115/native-002/SOURCE.json": "8a968eb972285a5f97fb339bd5c4fae0d78e1de16df189f68da46850fdbcb7b8",
+            "parity/reports/artifacts/authored-length-20261115/native-002/captures/01-boundary-selector.jpg": "6569b4359e73ebadbf0acb04d6afb8586e16cbeb355006510880428a5cbb1b0d",
+            "parity/reports/artifacts/authored-length-20261115/native-002/captures/02-curve15.jpg": "c6dcf91107c5e29fc9934c065403a681c8564960d87a9a20d6f67eddcf77c5ff",
+            "parity/reports/artifacts/authored-length-20261115/native-002/captures/03-sewing-readouts.jpg": "5ad3ca2a74a5b26e286cd343948c8a2decf7e249bf10feef0ce5c5f5704d2075",
+            "parity/reports/artifacts/authored-length-20261115/native-002/captures/04-seam31-group32.jpg": "1264be26717a7af25afcff9197fea7bcb5aeb9a9f25b47142b0e171b40549028",
+            "parity/reports/artifacts/authored-length-20261115/native-002/recorder.cjs": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc"
+          },
+          "path": "parity/reports/WF-20261115-AUTHORED-LENGTH-001.json"
+        }
+      ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "The candidate adds applied selected-boundary length and raw seam/group A/B plus signed B\u2212A feedback. Arbitrary interval query is available through CLI/MCP; persistent measurements, angles, perimeters and complete native/reference behavior remain unverified.",
+        "A bounded reference canvas toggle labels unselected boundaries in literal mm with one fractional digit; Select All separately retains aggregate selected-line readouts. Our three-decimal selected-inspector readout is a different partial presentation. Exact arc/rounding/angle, general aggregation and complete measurement behavior remain unknown/unimplemented."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "missing"
+      "freshness": "current",
+      "contract_documents": {
+        "spec/features/PAT-007-authored-length-feedback.md": "4f79150ed28854b8a16760af07b1558808dcca2080bc1ee8e114d5b2682f851c"
+      }
     },
     {
       "id": "PAT-008",
@@ -11238,7 +11404,8 @@
       "reference_observation_status": "documentation_only",
       "evidence_ids": [
         "spec/features/SEW-001-oriented-segment-sewing.md",
-        "parity/reports/WF-20261114-ORDERED-SEWING-001.json"
+        "parity/reports/WF-20261114-ORDERED-SEWING-001.json",
+        "parity/reports/WF-20261115-AUTHORED-LENGTH-001.json"
       ],
       "scenarios": [
         {
@@ -11286,6 +11453,24 @@
           },
           "initial_conditions": "Original independent v3 ordered2:3, nonuniform/asymmetric cubic, coarse/fine and legacyv1/v2 inputs. Frozen declaration precedes implementation/output inspection. Native case starts from original no-group v3 revision73/next1001, rest arrangement/paused.",
           "expected_outcomes": "Exact authoring fields/order/IDs/f64 bits; legacy appearance colors retainf32 semantics. New groups use cumulative authored arc length with1e-8m budget; both one-sided disconnected endpoints remain; all actual weighted stitches own their source curve. Existing mesh caps and resolution are unchanged. One accepted gesture/edit is one history step; allocator never rewinds; failed overlap retains Redo; save/reopen retains all supported construction."
+        },
+        {
+          "id": "NATIVE-LENGTH-READOUTS-20261115-002",
+          "path": "parity/reports/artifacts/authored-length-20261115/native-002/PLAN.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/authored-length-20261115/independent/fixture.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d"
+          },
+          "initial_conditions": "Same original revision137fixture, sourcebe8, readonly fresh owned process; no authoring or simulation.",
+          "expected_outcomes": "Exact three-decimalmm curve/seam/group values and signed B\u2212A with applied revision137/draft qualifier, within300s/24pairs; source/binary/fixture unchanged."
+        },
+        {
+          "id": "WF-LENGTH-ANALYTIC-001",
+          "path": "parity/reports/artifacts/authored-length-20261115/independent/criteria.json",
+          "fixture_hashes": {
+            "parity/reports/artifacts/authored-length-20261115/independent/fixture.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d"
+          },
+          "initial_conditions": "Original native-v3 revision137; two pieces, one legacy seam and one ordered group; no simulation. Frozen independent analytic primitive and tolerances before execution.",
+          "expected_outcomes": "1e-8m lengths,2e-8m independent B\u2212A; exact SI/revision/query echo and CLI/MCP structured/text equality; strict errors and unchanged primary/recovery/unrelated bytes."
         }
       ],
       "comparison_criteria": {
@@ -11302,14 +11487,19 @@
       "implementation_locations": [
         "crates/weftforge-core/src/lib.rs",
         "apps/weftforge/src/main.rs",
-        "crates/weftforge-core/src/document.rs"
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/geometry.rs",
+        "crates/weftforge-core/src/sewing.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/src/mcp.rs"
       ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3",
         "https://github.com/thematheusmello/weftforge/issues/9"
       ],
       "prs": [
-        "https://github.com/thematheusmello/weftforge/pull/33"
+        "https://github.com/thematheusmello/weftforge/pull/33",
+        "https://github.com/thematheusmello/weftforge/pull/44"
       ],
       "implementation_status": "partial",
       "verification_status": "not_run",
@@ -12283,19 +12473,80 @@
             "parity/reports/artifacts/capture-encoding-20261114/audit.json": "f4c9e3202fd5fb0913c4ec43a5274d346e64f25e50eaaa2aa121bc44ec120071"
           },
           "path": "parity/reports/WF-20261114-ORDERED-SEWING-001.json"
+        },
+        {
+          "id": "WF-20261115-AUTHORED-LENGTH-001",
+          "commit": "be8a031b5f8342d0857f3bed34f52dd165fa86da",
+          "timestamp": "2026-11-15T14:34:31Z",
+          "platform": "macOS27.2 arm64; Rust1.94.1; native1640x1032 debug preview",
+          "artifact_hashes": {
+            "parity/reports/artifacts/authored-length-20261115/PUBLICATION.json": "78af662501e5cd1cb2ee51b1b487448f123b30dac4539f9052f9d75001901285",
+            "parity/reports/artifacts/authored-length-20261115/README.md": "19fb09752f997819df6ea572ce9d7f3ac54c2df372bdbfe96de8c4e7e13f32ef",
+            "parity/reports/artifacts/authored-length-20261115/REGRESSIONS.md": "4892d8fe625f51ae123a8742c4a4201dcb651ee31867e176179d722a029d9022",
+            "parity/reports/artifacts/authored-length-20261115/SOURCE-REVIEW.md": "a476a664f14436fc36d11dcbd26583c1befb1df0c9c03c2260299fba0fab4c5c",
+            "parity/reports/artifacts/authored-length-20261115/build/FINAL-BINDING-be8a031.json": "c8388a82368ef2b1ac27f81ab973556486eda90075d6828b5092eefd1a7ce8c5",
+            "parity/reports/artifacts/authored-length-20261115/build/SOURCE-SHA256SUMS-be8a031": "1fec297f8565042c896a90370c454096bc2df34bab9a29d3ab1bc76440055548",
+            "parity/reports/artifacts/authored-length-20261115/build/debug-build-final-be8a031.log": "a178c7902ac24dda0e2c0cd4cf0e47a2a6976ef30481cb4015f2f71620380d8b",
+            "parity/reports/artifacts/authored-length-20261115/build/full-clippy-be8a031.log": "4dbe1679afb87e469629df7885c564f2b07119e7b2dfd0f899bf35d23cad3794",
+            "parity/reports/artifacts/authored-length-20261115/build/full-fmt-be8a031.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/authored-length-20261115/build/full-gates-be8a031.json": "9c3eab309b02e55a64986e3261015251eaa772d47c6df56810e2cf271b003185",
+            "parity/reports/artifacts/authored-length-20261115/build/full-package-be8a031.log": "dae5e5b942689e8756fde3fdff3d2b8a875a32aac70e41b9fbc230d10461c21d",
+            "parity/reports/artifacts/authored-length-20261115/build/full-test-be8a031.log": "6d2f80ff26fec3515e133aeb55778a6633659e6d45269f6108bff101240f1840",
+            "parity/reports/artifacts/authored-length-20261115/build/full-verify-be8a031.log": "b6acd9bacba28630fbc4b9fde6278f6ba9233c1ad64389227326027526ae7771",
+            "parity/reports/artifacts/authored-length-20261115/build/package-binding-be8a031.json": "6f55e45781665f6a090deb4e0048eebfc859d39077264c46027150c620f24494",
+            "parity/reports/artifacts/authored-length-20261115/build/scroll-layout-green2.log": "0d00bb6ccac0a68ef2daba298b952f3914435e5a730bd5c3dbc5e9c4fad8cf72",
+            "parity/reports/artifacts/authored-length-20261115/build/scroll-layout-red-7976bfc.log": "d842695f69e9acd1de9b9af6c79fdcde4a4ffa1b5f7f1217e2c0a3ab57916069",
+            "parity/reports/artifacts/authored-length-20261115/build/source-a820519-focused-checks.json": "9f8d3fe859386bcd44206450ae79ace91caa558792e2b30321f097132dfb5d01",
+            "parity/reports/artifacts/authored-length-20261115/build/source-binding-be8a031.json": "2e7d1e39e51119f4b4bcd116b602f7a9e20e70813309ceb41d93fcb4412de500",
+            "parity/reports/artifacts/authored-length-20261115/independent/PLAN.md": "5153e42e04c748ff6202fadc3444e0faaaf658e240df4d5d788b3af4a1bb1f48",
+            "parity/reports/artifacts/authored-length-20261115/independent/ROOT-REVIEW.json": "90b33d8a6d11528e3fba627a2e03ac91bcdc4ede8c184fd48aa0ce0a44de133e",
+            "parity/reports/artifacts/authored-length-20261115/independent/SHA256SUMS": "a3c5448aabc169ae35fd647f251a82cddd3f3a33c6c00a0f31ff59f014608974",
+            "parity/reports/artifacts/authored-length-20261115/independent/criteria.json": "19a06ccc09cd8d446d2dfc901da27c3a57d28e8f2401094a72a5ad3e570f231d",
+            "parity/reports/artifacts/authored-length-20261115/independent/fixture.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d",
+            "parity/reports/artifacts/authored-length-20261115/independent/grade_lengths.py": "e39a81a6627ed48a363c50747039ff9c517d52de0ccde024fe37b5f9eaf04902",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/RUN-SHA256SUMS": "ee43fac163b5e5f5c4e49a4971d841e5f203c7f5de4e67d62ee3e157d76cf95a",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/binary-hashes.json": "50acc0e27fd04c025ab8ae6917bf7132ebfeb7c2397ebc51c2bf15fcefe91b3f",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/input.weftforge": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/input.weftforge.recovery": "0939db31ff9ab3303b6eb9de361e97897f6de8c15d79b94083f475cb2a5cedfa",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/invalid.weftforge": "06da0cb084b0926d6cc49a47d2d6eaeb9d16d1d39f21fbf277232b1f626c10cc",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/invalid.weftforge.recovery": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/isolation.weftforge": "0ff93749c931f229ce4250d30ff6fa4d3948c1dc79233c78fbc6ba58debe889d",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/report.json": "faf8044dcec9901e99fa6ed0c5312b870e9409c3f1830c43a77eb22f7731c454",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/runner-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/runner-stdout.txt": "0378f4e4750fc67b2d4f2faf1a424dd287b3dbb7ef398f1a09b5713be4a903e9",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/transcript.json": "76f6a5fd2da9b91e10e66747fe9203de874d8dac5311343c66435ed91d182ac2",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/unrelated.weftforge": "ef234f3402c54b8189b5fb1855640b7c35a6bff9021307ece8302a55bd3cf76c",
+            "parity/reports/artifacts/authored-length-20261115/independent/runs/a820519-001/unrelated.weftforge.recovery": "a9f67bb84e06dc4557a80330ffb49a5fcc9f9ff6fc3addabe634e52c1af3eac1",
+            "parity/reports/artifacts/authored-length-20261115/native-001/BEFORE-AFTER.json": "a1a012365e194c998a0084f438f07bce609b8f27c889c8f344328f4d86de8209",
+            "parity/reports/artifacts/authored-length-20261115/native-001/OUTCOME.json": "f8e7f99e045df7c58ee5636739a8071d23667d44b2f9f010906216f0dda38c8e",
+            "parity/reports/artifacts/authored-length-20261115/native-001/PLAN.json": "c36e65e48052a8f76d5d5d4365e0eb09a10f92a0b88733fe7a6fa02885868016",
+            "parity/reports/artifacts/authored-length-20261115/native-002/BEFORE-AFTER.json": "193efbe05372483a92cbeee882fd81189f1d3a66ce79166f1ad00a24f6a3eda3",
+            "parity/reports/artifacts/authored-length-20261115/native-002/OFFLINE-RECORDER-CHECK.json": "c3eea3217f6a1830a7c3d9694ec30e584d6eee23b2602cc6b1eac7e99d15fa38",
+            "parity/reports/artifacts/authored-length-20261115/native-002/OUTCOME.json": "fb0d6095d558c935e8107f4f732db196b4f9f422ec14644614043106a26e8f2b",
+            "parity/reports/artifacts/authored-length-20261115/native-002/PLAN.json": "9e5c7ffd647e934835f777d824ef5b94bf0cd5efcfa7ab2b146d0ea6216c3f81",
+            "parity/reports/artifacts/authored-length-20261115/native-002/SOURCE.json": "8a968eb972285a5f97fb339bd5c4fae0d78e1de16df189f68da46850fdbcb7b8",
+            "parity/reports/artifacts/authored-length-20261115/native-002/captures/01-boundary-selector.jpg": "6569b4359e73ebadbf0acb04d6afb8586e16cbeb355006510880428a5cbb1b0d",
+            "parity/reports/artifacts/authored-length-20261115/native-002/captures/02-curve15.jpg": "c6dcf91107c5e29fc9934c065403a681c8564960d87a9a20d6f67eddcf77c5ff",
+            "parity/reports/artifacts/authored-length-20261115/native-002/captures/03-sewing-readouts.jpg": "5ad3ca2a74a5b26e286cd343948c8a2decf7e249bf10feef0ce5c5f5704d2075",
+            "parity/reports/artifacts/authored-length-20261115/native-002/captures/04-seam31-group32.jpg": "1264be26717a7af25afcff9197fea7bcb5aeb9a9f25b47142b0e171b40549028",
+            "parity/reports/artifacts/authored-length-20261115/native-002/recorder.cjs": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc"
+          },
+          "path": "parity/reports/WF-20261115-AUTHORED-LENGTH-001.json"
         }
       ],
       "known_gaps": [
         "Full reference contract and runtime comparison not yet established.",
-        "Native structured group span/map editing, identity, directions, lengths/mismatch, guides and ReverseB twice have bounded acceptance. Rich diagnostics, broad editing and reference/physical equivalence remain incomplete."
+        "Native structured group span/map editing, identity, directions, lengths/mismatch, guides and ReverseB twice have bounded acceptance. Rich diagnostics, broad editing and reference/physical equivalence remain incomplete.",
+        "Raw authored A/B lengths and signed B\u2212A are a bounded measurement increment. No mismatch warning threshold, gathered-seam policy, simulation outcome or reference equivalence is inferred."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "stale",
+      "freshness": "current",
       "contract_documents": {
-        "spec/features/SEW-002-native-reversal.md": "0df0735180daed956d9f37cd00f66a20c01c13b6557bf51b4f7559d8fd30557f"
+        "spec/features/SEW-002-native-reversal.md": "0df0735180daed956d9f37cd00f66a20c01c13b6557bf51b4f7559d8fd30557f",
+        "spec/features/PAT-007-authored-length-feedback.md": "4f79150ed28854b8a16760af07b1558808dcca2080bc1ee8e114d5b2682f851c"
       }
     },
     {

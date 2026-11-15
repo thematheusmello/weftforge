@@ -1,0 +1,119 @@
+{
+  "case": "NATIVE-LENGTH-READOUTS-20261115-002",
+  "status": "observed_match",
+  "scope": "Prospective single view-only native analytic length-readout case. This is screenshot acceptance for these readouts only.",
+  "utc": "2026-11-15T14:27:02.476364+00:00",
+  "plan_sha256": "9e5c7ffd647e934835f777d824ef5b94bf0cd5efcfa7ab2b146d0ea6216c3f81",
+  "runtime_commit": "be8a031b5f8342d0857f3bed34f52dd165fa86da",
+  "own_pid": 14269,
+  "own_app": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/WeftForgeLengthPreviewV2.app",
+  "preflight": "preflight/RESULT.json",
+  "instrumented_API_pairs": 15,
+  "API_pair_cap": 24,
+  "native_input_actions": [
+    {
+      "kind": "click",
+      "target": "Frame all"
+    },
+    {
+      "kind": "click",
+      "target": "Scene Original parabola panel / piece11"
+    },
+    {
+      "kind": "click",
+      "target": "Properties Choose boundary selector"
+    },
+    {
+      "kind": "click",
+      "target": "Visible Boundary 1 · curve #15 menu option",
+      "coordinate": [
+        1438,
+        189
+      ],
+      "basis": "Original captures/01-boundary-selector.jpg; first option input, no retry"
+    },
+    {
+      "kind": "scroll",
+      "target": "Properties",
+      "direction": "down",
+      "pages": 2
+    },
+    {
+      "kind": "scroll",
+      "target": "Properties",
+      "direction": "up",
+      "pages": 0.2
+    }
+  ],
+  "selector_observation_detail": "The selector click opened the menu successfully. AX did not expose menu options; an observation-only screenshot showed the unambiguous Boundary 1 · curve #15 option. The first option selection used its observed coordinate. No repeated, failed or ambiguous boundary-option input was issued.",
+  "images": [
+    {
+      "path": "captures/01-boundary-selector.jpg",
+      "sha256": "6569b4359e73ebadbf0acb04d6afb8586e16cbeb355006510880428a5cbb1b0d",
+      "bytes": 197474,
+      "width": 1640,
+      "height": 1032,
+      "source_record": "0009",
+      "unedited": true
+    },
+    {
+      "path": "captures/02-curve15.jpg",
+      "sha256": "c6dcf91107c5e29fc9934c065403a681c8564960d87a9a20d6f67eddcf77c5ff",
+      "bytes": 213234,
+      "width": 1640,
+      "height": 1032,
+      "source_record": "0011",
+      "unedited": true
+    },
+    {
+      "path": "captures/03-sewing-readouts.jpg",
+      "sha256": "5ad3ca2a74a5b26e286cd343948c8a2decf7e249bf10feef0ce5c5f5704d2075",
+      "bytes": 210091,
+      "width": 1640,
+      "height": 1032,
+      "source_record": "0013",
+      "unedited": true
+    },
+    {
+      "path": "captures/04-seam31-group32.jpg",
+      "sha256": "1264be26717a7af25afcff9197fea7bcb5aeb9a9f25b47142b0e171b40549028",
+      "bytes": 217292,
+      "width": 1640,
+      "height": 1032,
+      "source_record": "0015",
+      "unedited": true
+    }
+  ],
+  "readout_manifest": "OBSERVED-READOUTS.json",
+  "final_revision": 137,
+  "mesh_status": "Rest mesh rebuilt from editable construction; current revision137,55vertices. No stale numbers or waiting required.",
+  "final_observation_utc": "2026-11-15T14:25:12.273Z",
+  "UI_elapsed_to_final_observation_seconds": 161.406806,
+  "UI_cap_seconds": 300,
+  "completion": {
+    "operation": "mcp__cua_repl.js completion_summary",
+    "arguments": {
+      "completion_summary": "Verified analytic native length readouts"
+    },
+    "returned": "Completion summary received.",
+    "next_CUA_tool_after_final_observation": true,
+    "exactly_once_in_case002": true,
+    "actor_recorded_utc": "2026-11-15T14:27:02.476072+00:00",
+    "provenance": "Actor receipt; actual CUA tool result is in session transcript."
+  },
+  "before_after": {
+    "all56_scoped_files_match_pinned_commit": true,
+    "original_and_staged_fixture_unchanged": true,
+    "source_and_owned_binary_unchanged": true,
+    "staged_fixture_mode": "0o444"
+  },
+  "limits": [
+    "Read-only native length display check only. No authoring, numeric typing, Save, history, simulation, contact, export, Snap, permissions or foreign-app control.",
+    "No native authoring, persistence, full garment, other-platform, reference or full parity acceptance.",
+    "No performance claim; parent owns integrated Cargo gates.",
+    "Full trace/completion compliance remains actor reported unless independently audited.",
+    "Initial getApp automatically emitted its AX tree; its recorder receipt binds the selected own app. Subsequent AX and screenshot observations are serialized locally.",
+    "Own process left running; no quit/signal sent.",
+    "Case001 remains permanently stopped and unchanged."
+  ]
+}

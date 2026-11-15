@@ -1,0 +1,47 @@
+{
+  "source_commit": "a8205194608ddf95a81730c1d1698d559f236cd6",
+  "scope": "Implementation acceptance only; full workspace gates and independent native acceptance pending",
+  "focused_checks": [
+    {
+      "log": "focused-fmt.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "status": "passed"
+    },
+    {
+      "log": "focused-core-retry.log",
+      "sha256": "de0d8fbee11b5fd04007dfe43dd6934d971e27c623f8c6cde87625041500dd79",
+      "status": "passed"
+    },
+    {
+      "log": "focused-native-retry3.log",
+      "sha256": "c39ae5514e81921770e2f2ea85c96f924c1eb90313b90cfc35ceef592e74fbfd",
+      "status": "passed"
+    },
+    {
+      "log": "focused-all-adapter-native-tests.log",
+      "sha256": "e99ae7b2f02f665e2c562e374c88d5be96d288f3af99562059f73fa50f1103cc",
+      "status": "passed"
+    },
+    {
+      "log": "focused-adapter-native-clippy.log",
+      "sha256": "c0c02764bfb5e1182fb35797b5125244371bc9483993c7fd2c6c5d6d3a2a6310",
+      "status": "passed"
+    },
+    {
+      "log": "debug-build-a820519.log",
+      "sha256": "6cf2f6cb5bfb6759bc9a55f4f560b3977e31f45a4923c4b8af690fb2665a218b",
+      "status": "passed"
+    }
+  ],
+  "corrections": [
+    "Used the frozen 1e-8 m numerical criterion for independently budgeted group/interval metrics; exact equality remains required between adapters. No production tolerance changed.",
+    "Native assertions initially counted AccessKit parent Label and child text-run nodes. Restricting the helper to Role::Label removed duplicate text. Successful native test now executes metric-query counters: exactly two across repeated idle/draft/preview frames.",
+    "The initial test counter used an unstable LocalKey<Cell>::update API. It now uses stable get/set; no production code depended on this test-only API."
+  ],
+  "focused_counts": {
+    "core_sewing_groups": 16,
+    "native_unit": 53,
+    "cli_unit": 3,
+    "cli_integration": 16
+  }
+}

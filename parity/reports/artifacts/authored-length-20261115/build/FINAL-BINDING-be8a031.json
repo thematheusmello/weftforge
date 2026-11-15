@@ -1,0 +1,34 @@
+{
+  "candidate_source": "be8a031b5f8342d0857f3bed34f52dd165fa86da",
+  "implementation_commits": [
+    "a8205194608ddf95a81730c1d1698d559f236cd6",
+    "be8a031b5f8342d0857f3bed34f52dd165fa86da"
+  ],
+  "source_files_checked": 56,
+  "tracked_clean": true,
+  "debug_binaries": {
+    "weftforge": {
+      "sha256": "ff3834ed029edd7050ec2abc7c6679c85d74f5a0d3aaec3cfaa90ed4bfdb95a8",
+      "bytes": 60498776
+    },
+    "weftforge-cli": {
+      "sha256": "eed0a32b63a8b9dac7d0e2654ca1dd514f6392167fdca4008d3fdb63fa89bbcf",
+      "bytes": 9040656
+    }
+  },
+  "debug_build_command": [
+    "cargo",
+    "build",
+    "-p",
+    "weftforge",
+    "-p",
+    "weftforge-cli"
+  ],
+  "debug_build_log_sha256": "a178c7902ac24dda0e2c0cd4cf0e47a2a6976ef30481cb4015f2f71620380d8b",
+  "gates_manifest_sha256": "9c3eab309b02e55a64986e3261015251eaa772d47c6df56810e2cf271b003185",
+  "package_binding_sha256": "6f55e45781665f6a090deb4e0048eebfc859d39077264c46027150c620f24494",
+  "source_manifest_sha256": "1fec297f8565042c896a90370c454096bc2df34bab9a29d3ab1bc76440055548",
+  "rust_tests_passed": 205,
+  "python_tests_passed": 54,
+  "build_context_note": "xtask verify cargo run of CLI alone yielded debug CLI SHA 658cc93017bc7d3a5a07baec622a0aaf1563a84359be8cea54ce0536f6176e99, recorded in package binding. Final multi-package debug build restores the accepted CLI SHA eed0a32b63a8b9dac7d0e2654ca1dd514f6392167fdca4008d3fdb63fa89bbcf; no source change or acceptance rerun."
+}

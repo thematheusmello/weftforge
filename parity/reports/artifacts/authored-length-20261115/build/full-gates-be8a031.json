@@ -1,0 +1,87 @@
+{
+  "source_commit": "be8a031b5f8342d0857f3bed34f52dd165fa86da",
+  "started_at": "2026-11-15T14:13:43.937826+00:00",
+  "clean_before": true,
+  "target_is_symlink": false,
+  "checks": [
+    {
+      "name": "fmt",
+      "command": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "log": "full-fmt-be8a031.log",
+      "started_at": "2026-11-15T14:13:44.124685+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-11-15T14:13:44.565778+00:00",
+      "wall_seconds": 0.4407505840063095,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "test",
+      "command": [
+        "cargo",
+        "test",
+        "--workspace"
+      ],
+      "log": "full-test-be8a031.log",
+      "started_at": "2026-11-15T14:13:44.617783+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-11-15T14:14:26.501621+00:00",
+      "wall_seconds": 41.883331166929565,
+      "sha256": "54ed1d4b6b8f2c366d72d7f2227f9845c1425b57359dd956c9a0514a2fe48037"
+    },
+    {
+      "name": "clippy",
+      "command": [
+        "cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "log": "full-clippy-be8a031.log",
+      "started_at": "2026-11-15T14:14:26.574919+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-11-15T14:14:31.129614+00:00",
+      "wall_seconds": 4.554335874971002,
+      "sha256": "c2b56ba455907bf9316900fb79297c064652bdfe66d01b4a8435ee7d3d857824"
+    },
+    {
+      "name": "verify",
+      "command": [
+        "cargo",
+        "xtask",
+        "verify"
+      ],
+      "log": "full-verify-be8a031.log",
+      "started_at": "2026-11-15T14:14:31.180227+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-11-15T14:16:05.384452+00:00",
+      "wall_seconds": 94.20326199999545,
+      "sha256": "812e05bb712589720726b54d3d6149be145bdb6615a3a20f25cf862d94c612d7"
+    },
+    {
+      "name": "package",
+      "command": [
+        "cargo",
+        "xtask",
+        "package"
+      ],
+      "log": "full-package-be8a031.log",
+      "started_at": "2026-11-15T14:16:05.439710+00:00",
+      "exit_code": 0,
+      "finished_at": "2026-11-15T14:16:41.070937+00:00",
+      "wall_seconds": 35.630641915951855,
+      "sha256": "a81c01bd8944907214531e39bde0eb700e15f41921deb5df11e1ff4e6f24ffa0"
+    }
+  ],
+  "status": "passed",
+  "clean_after": true,
+  "source_after": "be8a031b5f8342d0857f3bed34f52dd165fa86da",
+  "finished_at": "2026-11-15T14:16:41.133365+00:00"
+}

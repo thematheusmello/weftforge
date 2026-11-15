@@ -1,0 +1,38 @@
+{
+  "before": {
+    "case": "NATIVE-LENGTH-READOUTS-20261115-001",
+    "utc": "2026-11-15T14:15:48.700785+00:00",
+    "source_commit": "be8a031b5f8342d0857f3bed34f52dd165fa86da",
+    "source_status_porcelain": "",
+    "source_worktree": "<CHECKOUT>",
+    "plan_sha256": "c36e65e48052a8f76d5d5d4365e0eb09a10f92a0b88733fe7a6fa02885868016",
+    "binary": {
+      "source": "<CHECKOUT>/target/debug/weftforge",
+      "owned": "<WORKSPACE>/.local/native-length-readouts-20261115/WeftForgeLengthPreview.app/Contents/MacOS/WeftForgeLengthPreview",
+      "sha256": "ff3834ed029edd7050ec2abc7c6679c85d74f5a0d3aaec3cfaa90ed4bfdb95a8",
+      "bytes": 60498776
+    },
+    "fixture_before": {
+      "original": "<WORKSPACE>/.local/length-independent-evaluation-20261115/fixture.weftforge",
+      "original_sha256": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d",
+      "staged": "<WORKSPACE>/.local/native-length-readouts-20261115/inputs/fixture-readonly.weftforge",
+      "staged_sha256": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d",
+      "staged_mode": "0o444"
+    },
+    "bundle": "<WORKSPACE>/.local/native-length-readouts-20261115/WeftForgeLengthPreview.app",
+    "bundle_id": "org.weftforge.preview.lengthreadouts20261115",
+    "scope": "One read-only native analytic length readout case. No performance, native authoring, persistence, garment or reference acceptance."
+  },
+  "after": {
+    "recorded_utc": "2026-11-15T14:17:54.791410+00:00",
+    "original_fixture_sha256": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d",
+    "staged_fixture_sha256": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d",
+    "staged_fixture_mode": "0o444",
+    "source_binary_sha256": "ff3834ed029edd7050ec2abc7c6679c85d74f5a0d3aaec3cfaa90ed4bfdb95a8",
+    "owned_binary_sha256": "ff3834ed029edd7050ec2abc7c6679c85d74f5a0d3aaec3cfaa90ed4bfdb95a8",
+    "source_commit": "be8a031b5f8342d0857f3bed34f52dd165fa86da",
+    "source_status_porcelain": "",
+    "fixture_bytes_unchanged": true,
+    "binary_bytes_unchanged": true
+  }
+}
