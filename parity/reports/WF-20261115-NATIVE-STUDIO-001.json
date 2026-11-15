@@ -79,7 +79,7 @@
     "spec/features/UI-003-original-position-snapping.md",
     "spec/features/UI-native-task-progress.md"
   ],
-  "freshness": "current",
+  "freshness": "stale",
   "scope": "Combined native studio checks remain failed/unaccepted:001 setup stop and002 focus-witness stop before typing. Successful192Rust/54Python/full-five-gate components and a separate read-only visual preview do not accept the frozen native method or establish a product defect.",
   "scenario": "parity/scenarios/UI-NATIVE-STUDIO-001.json",
   "packet_manifest": "parity/reports/artifacts/native-studio-20261115/MANIFEST.json",
@@ -296,5 +296,6 @@
     "packet_and_source_gate": "All referenced artifacts tracked/hash-correct;109packetfiles and49runtime+2contracts match their bindings.",
     "receipt_append_policy": "Final receiptcommit receives metadata-only registry/map/trackedhash/source checks before publication. Final head/exits are recorded externally; no report self-certifies its own receipt append.",
     "product_Cargo_UI_consumer_or_replay_rerun": false
-  }
+  },
+  "freshness_reason": "Native workspace presentation, menu/view handling, bundled typefaces and packaging changed for the PhotoCraft visual refresh. Source21b observations, failures and artifacts remain unchanged; no functional, garment or physics replay is transferred to the new UI source."
 }

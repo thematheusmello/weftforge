@@ -14,8 +14,14 @@ upstream license and notice texts for the actual shipped dependencies.
 Notable components: egui/eframe/wgpu (MIT OR Apache-2.0), serde/serde_json
 (MIT OR Apache-2.0), earcutr (ISC), rfd (MIT), and tobj (MIT, test-only).
 Pinned versions and full declared expressions are in the manifest and inventory.
-Fonts are the epaint_default_fonts redistributable embedded defaults; their
-upstream font notices must accompany distributed builds.
+The UI embeds Inter Regular and SemiBold (The Inter Project Authors) and
+JetBrains Mono Regular (The JetBrains Mono Project Authors), under the SIL Open
+Font License 1.1. The original license texts are in
+`apps/weftforge/assets/fonts/OFL-Inter.txt` and `OFL-JetBrainsMono.txt`; packaging
+includes them in `licenses/` and the macOS application's resources. The exact
+upstream source and checksums are recorded beside the font files. The
+epaint_default_fonts embedded defaults remain as fallbacks; collecting their
+upstream notices remains part of the complete distribution audit.
 
 The runtime is native Rust application code, not an entirely Rust dependency
 or operating-system stack. macOS uses Objective-C/AppKit, CoreFoundation,
@@ -30,6 +36,7 @@ independent OBJ consumer. They are not runtime prerequisites.
 
 Engineering reference: [PhotoCraft](https://github.com/storytold/photocraft) and its
 [architecture](https://github.com/storytold/photocraft/blob/main/docs/architecture.md)
-inform responsibility boundaries and evidence discipline. No source is copied.
+inform responsibility boundaries and evidence discipline. Application code is
+independently authored; the bundled upstream fonts are credited above.
 [ArtCraft](https://getartcraft.com/apps) provides product context. Cloth equations
 and citations are documented in [physics.md](docs/physics.md).

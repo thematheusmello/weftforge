@@ -1,11 +1,42 @@
 # Native studio preview
 
-These are unedited 1640 × 1032 captures of the running native Rust application on
-macOS. The current images use source `21b9f5e76a77ca21357783240cef7506b3887fbc`.
-PhotoCraft informed the charcoal workspace and teal accents; the application,
-documents and graphics are original WeftForge work.
+These are actual native Rust/egui captures. The current images use source
+`7ab2107aaa51f2c0fa9c9fd2ada972a08c433882` on macOS arm64 at 1640 × 1032.
+[PhotoCraft](https://github.com/storytold/photocraft) informed the compact charcoal
+editor structure. WeftForge uses its own garment graphics and working tools.
 
-## Current workspace and Snap choices
+## Current compact workspace
+
+![Compact native workspace with menus, tool rail, document tab and Properties/Scene docks](../parity/reports/artifacts/photocraft-studio-20261115/captures/overview.jpg)
+
+The left tool rail exposes Select/edit, Polygon, Rectangle, Sewing and M:N sewing.
+File/Edit/View/Help menus, context controls and a document tab keep the two
+canvases prominent. Properties sits above the real Scene list; simulation and
+status occupy the bottom rows. Inter and JetBrains Mono are bundled with their
+original font licenses.
+
+The existing original Harbor project is paused in Rest at revision 20: two pieces,
+eight seams and 654 rest vertices. This read-only preview frames and selects
+construction; it performs no numeric authoring, Save, history or simulation.
+
+## Current boundary selection
+
+![Selected boundary remains readable in its dropdown](../parity/reports/artifacts/photocraft-studio-20261115/captures/selected-boundary-dropdown.jpg)
+
+The first boundary is selected with readable light text. Scene rows are left
+aligned and selected labels stay light. Global selected text also covers sewing
+span choices.
+
+![Selected curve and its editable properties after dismissing the dropdown](../parity/reports/artifacts/photocraft-studio-20261115/captures/selected-boundary.jpg)
+
+All five local gates passed at this source: 195 Rust tests, 54 Python tests,
+formatting, strict Clippy, registry/map verification and unsigned packaging.
+The [scoped report](../parity/reports/WF-20261115-PHOTOCRAFT-STUDIO-001.json)
+records source/binary identities and limits. Smaller windows, other platforms,
+screen-reader use, full native authoring and garment/physics acceptance remain
+unverified. Earlier captures below retain their original source and outcomes.
+
+## Historical Snap workspace (21b9)
 
 ![Current studio with inline Snap choices and connected construction/rest views](../parity/reports/artifacts/native-studio-20261115/preview/captures/studio-current-hero.jpg)
 
@@ -16,7 +47,7 @@ action. It shows the current workspace, not completed garment or snapping qualit
 The session-only Off / 1 / 5 / 10 mm preference and Alt/Option bypass are implemented.
 The preference applies to pointer positions while numeric edits stay exact.
 
-## Current task details
+## Historical task details (21b9)
 
 ![Current transport showing the accepted rest-mesh task](../parity/reports/artifacts/native-studio-20261115/preview/captures/studio-task-details.jpg)
 

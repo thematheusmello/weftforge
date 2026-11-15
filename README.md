@@ -15,13 +15,14 @@ See [current status](STATUS.md), [generated progress](docs/progress.md), [dashbo
 Original sample projects are available in [fixtures](fixtures). See
 [verification](docs/verification.md) for tested workflows and current limits.
 
-![Current WeftForge studio with Snap choices, connected pattern views and task details](parity/reports/artifacts/native-studio-20261115/preview/captures/studio-current-hero.jpg)
+![WeftForge with compact menus, left tools, paired canvases and Properties/Scene docks](parity/reports/artifacts/photocraft-studio-20261115/captures/overview.jpg)
 
-The updated studio uses a charcoal workspace, teal editing accents, compact
-document controls, connected 2D/3D views, a properties inspector and a persistent
-simulation transport. [PhotoCraft](https://github.com/storytold/photocraft)
+The updated studio uses charcoal surfaces, compact menus, a left tool rail,
+a document tab, paired 2D/3D canvases, Properties and Scene docks, and a slim
+simulation transport. Inter and JetBrains Mono keep controls and values legible.
+[PhotoCraft](https://github.com/storytold/photocraft)
 informed the visual direction. See the [native preview gallery](docs/studio-preview.md)
-for the current Snap and task display, earlier SVG/DXF workflows, editable cubic
+for the new workspace, selected-boundary view, earlier SVG/DXF workflows, editable cubic
 controls, framing, ellipses, sewing and the build's limits.
 
 ## Current capabilities

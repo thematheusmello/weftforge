@@ -130,10 +130,25 @@ fn run() -> Result<()> {
             ] {
                 fs::copy(name, dest.join(name))?;
             }
+            let font_notices = ["OFL-Inter.txt", "OFL-JetBrainsMono.txt"];
+            fs::create_dir_all(dest.join("licenses"))?;
+            for name in font_notices {
+                fs::copy(
+                    format!("apps/weftforge/assets/fonts/{name}"),
+                    dest.join("licenses").join(name),
+                )?;
+            }
             if cfg!(target_os = "macos") {
                 let app = dest.join("WeftForge.app/Contents");
                 fs::create_dir_all(app.join("MacOS"))?;
                 fs::copy("target/release/weftforge", app.join("MacOS/weftforge"))?;
+                fs::create_dir_all(app.join("Resources/licenses"))?;
+                for name in font_notices {
+                    fs::copy(
+                        format!("apps/weftforge/assets/fonts/{name}"),
+                        app.join("Resources/licenses").join(name),
+                    )?;
+                }
                 fs::write(
                     app.join("Info.plist"),
                     r#"<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"><plist version="1.0"><dict><key>CFBundleExecutable</key><string>weftforge</string><key>CFBundleIdentifier</key><string>org.weftforge.studio</string><key>CFBundleName</key><string>WeftForge</string><key>CFBundlePackageType</key><string>APPL</string><key>CFBundleShortVersionString</key><string>0.1.0</string><key>NSHighResolutionCapable</key><true/><key>LSMinimumSystemVersion</key><string>14.0</string></dict></plist>"#,
