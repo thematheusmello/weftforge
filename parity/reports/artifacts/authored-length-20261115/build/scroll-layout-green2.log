@@ -1,0 +1,15 @@
+   Compiling weftforge v0.1.0 (<CHECKOUT>/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.32s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 6 tests
+test authored_length_tests::partially_clipped_legacy_feedback_is_measured_once ... ok
+legacy scroll content height: initial=3787 scrolled=3787 returned=3787 px; measured 2/25 legacy pairs
+test authored_length_tests::scrolling_legacy_feedback_preserves_content_height_without_measuring_hidden_rows ... ok
+test authored_length_tests::revisions_and_same_identity_document_replacement_invalidate_lengths ... ok
+test authored_length_tests::legacy_queries_are_lazy_errors_cached_and_groups_wait_for_matching_mesh_jobs ... ok
+test authored_length_tests::applied_lengths_are_formatted_cached_and_ignore_drafts_preview_and_simulation ... ok
+test authored_length_tests::feedback_state_changes_preserve_focused_numeric_text_caret_and_pending_edits ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 49 filtered out; finished in 0.35s
+

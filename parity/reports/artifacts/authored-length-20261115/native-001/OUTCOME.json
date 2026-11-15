@@ -1,0 +1,63 @@
+{
+  "case": "NATIVE-LENGTH-READOUTS-20261115-001",
+  "recorded_utc": "2026-11-15T14:17:54.913574+00:00",
+  "status": "stopped_unverified",
+  "reason": "Local CUA recorder setup raised `require is not defined` before any UI input or screenshot capture. The frozen plan requires stopping on an error without retry/fallback.",
+  "plan_sha256": "c36e65e48052a8f76d5d5d4365e0eb09a10f92a0b88733fe7a6fa02885868016",
+  "source_commit": "be8a031b5f8342d0857f3bed34f52dd165fa86da",
+  "own_pid": 2209,
+  "app_window_binding": {
+    "app_path": "<WORKSPACE>/.local/native-length-readouts-20261115/WeftForgeLengthPreview.app",
+    "app_display_name_observed": "WeftForgeLengthPreview",
+    "window_title_observed": "WeftForge",
+    "OS_window_id": null,
+    "pid_window_independent_inventory_binding": "not completed; recorder error occurred first"
+  },
+  "actual_screenshots": [],
+  "image_hashes": [],
+  "native_input_actions": [],
+  "actual_CUA_calls": [
+    {
+      "call": 1,
+      "operation": "getApp with owned unique app path",
+      "result": "actual initial AX state emitted"
+    },
+    {
+      "call": 2,
+      "operation": "recorder initialization, planned inventory",
+      "result": "exception at first require expression; no CUA API invoked"
+    },
+    {
+      "call": 3,
+      "operation": "completion_summary",
+      "result": "received"
+    }
+  ],
+  "completion_summary": {
+    "text": "Stopped length preview after recorder error",
+    "calls": 1,
+    "next_CUA_call_after_final_outcome": true
+  },
+  "time_cap": {
+    "started_utc": "2026-11-15T14:15:48.731953+00:00",
+    "cap_seconds": 300,
+    "paired_call_cap": 24,
+    "no_input_after_stop": true
+  },
+  "observations": "Initial accessibility output contained expected seam/group strings and revision137; these are not visual screenshot acceptance. Curve readout was not selected or observed.",
+  "before_after": {
+    "fixture_bytes_unchanged": true,
+    "binary_bytes_unchanged": true,
+    "source_commit_unchanged": true,
+    "source_worktree_clean": true
+  },
+  "limits": [
+    "No screenshot captured; visual readout criterion unverified.",
+    "No Frame all, selection, scrolling, authoring, Save, history, simulation, export, Snap, permission, or foreign-app input.",
+    "Only the uniquely owned new app was selected; old apps and closed cases untouched.",
+    "Own process left running, with PID recorded; no quit or signal sent.",
+    "Local trace receipts are actor recorded; full serializer setup failed. Session tool transcript contains original emitted CUA response.",
+    "No Cargo or source edit was performed. Parent owns integrated Cargo gates.",
+    "No native authoring, persistence, full garment, other-platform, performance, reference, or full parity acceptance."
+  ]
+}

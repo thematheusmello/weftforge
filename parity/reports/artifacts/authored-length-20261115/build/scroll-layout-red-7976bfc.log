@@ -1,0 +1,22 @@
+   Compiling weftforge v0.1.0 (<CHECKOUT>/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.62s
+     Running unittests src/main.rs (target/debug/deps/weftforge-8c5bde1273f05de7)
+
+running 1 test
+test authored_length_tests::scrolling_legacy_feedback_preserves_content_height_without_measuring_hidden_rows ... FAILED
+
+failures:
+
+---- authored_length_tests::scrolling_legacy_feedback_preserves_content_height_without_measuring_hidden_rows stdout ----
+
+thread 'authored_length_tests::scrolling_legacy_feedback_preserves_content_height_without_measuring_hidden_rows' (60434151) panicked at apps/weftforge/src/main.rs:10339:9:
+scrolling changed content height: 2198 -> 2290
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    authored_length_tests::scrolling_legacy_feedback_preserves_content_height_without_measuring_hidden_rows
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 53 filtered out; finished in 0.10s
+
+error: test failed, to rerun pass `-p weftforge --bin weftforge`

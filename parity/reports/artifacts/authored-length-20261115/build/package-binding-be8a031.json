@@ -1,0 +1,78 @@
+{
+  "source_commit": "be8a031b5f8342d0857f3bed34f52dd165fa86da",
+  "gate_manifest": "full-gates-be8a031.json",
+  "gate_manifest_sha256": "9c3eab309b02e55a64986e3261015251eaa772d47c6df56810e2cf271b003185",
+  "binary_and_bundle_files": [
+    {
+      "path": "target/debug/weftforge",
+      "sha256": "ff3834ed029edd7050ec2abc7c6679c85d74f5a0d3aaec3cfaa90ed4bfdb95a8",
+      "bytes": 60498776
+    },
+    {
+      "path": "target/debug/weftforge-cli",
+      "sha256": "658cc93017bc7d3a5a07baec622a0aaf1563a84359be8cea54ce0536f6176e99",
+      "bytes": 9043696
+    },
+    {
+      "path": "target/release/weftforge",
+      "sha256": "31a4a256988c15b60d7100bfd4651aa5704b734ad47b485633544d1d0e3b85ca",
+      "bytes": 15323984
+    },
+    {
+      "path": "target/release/weftforge-cli",
+      "sha256": "a4caa6276161b8c076c022ae81b4433717bce14eb9605ec69772246e450e163a",
+      "bytes": 2245952
+    },
+    {
+      "path": "target/package/weftforge",
+      "sha256": "31a4a256988c15b60d7100bfd4651aa5704b734ad47b485633544d1d0e3b85ca",
+      "bytes": 15323984
+    },
+    {
+      "path": "target/package/weftforge-cli",
+      "sha256": "a4caa6276161b8c076c022ae81b4433717bce14eb9605ec69772246e450e163a",
+      "bytes": 2245952
+    },
+    {
+      "path": "target/package/WeftForge.app/Contents/MacOS/weftforge",
+      "sha256": "31a4a256988c15b60d7100bfd4651aa5704b734ad47b485633544d1d0e3b85ca",
+      "bytes": 15323984
+    },
+    {
+      "path": "target/package/WeftForge.app/Contents/Info.plist",
+      "sha256": "5ac9539a4fb95ced9cc9463a5840176f69b86a826c39be0f7971378d93c218b5",
+      "bytes": 557
+    }
+  ],
+  "font_notices": [
+    {
+      "source": "apps/weftforge/assets/fonts/OFL-Inter.txt",
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "copies": [
+        {
+          "path": "target/package/licenses/OFL-Inter.txt",
+          "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+        },
+        {
+          "path": "target/package/WeftForge.app/Contents/Resources/licenses/OFL-Inter.txt",
+          "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+        }
+      ]
+    },
+    {
+      "source": "apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt",
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "copies": [
+        {
+          "path": "target/package/licenses/OFL-JetBrainsMono.txt",
+          "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697"
+        },
+        {
+          "path": "target/package/WeftForge.app/Contents/Resources/licenses/OFL-JetBrainsMono.txt",
+          "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697"
+        }
+      ]
+    }
+  ],
+  "scope": "Unsigned local macOS package; no store signing or reference-parity claim"
+}

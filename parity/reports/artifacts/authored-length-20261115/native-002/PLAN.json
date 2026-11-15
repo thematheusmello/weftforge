@@ -1,0 +1,70 @@
+{
+  "case": "NATIVE-LENGTH-READOUTS-20261115-002",
+  "frozen_utc": "2026-11-15T14:20:14.920880+00:00",
+  "status": "prospective; no native run yet",
+  "source_binding": "Runtime be8a031b5f8342d0857f3bed34f52dd165fa86da; debug native ff3834ed029edd7050ec2abc7c6679c85d74f5a0d3aaec3cfaa90ed4bfdb95a8. Metadata may change only if all56scoped files match.",
+  "input": {
+    "original_fixture": ".local/length-independent-evaluation-20261115/fixture.weftforge",
+    "sha256": "c176c16a370b46fd68370faac585a431a9186ee468e74ef199e2ea0cd31afa3d",
+    "revision": 137,
+    "pieces": 2,
+    "seams": 1,
+    "sewing_groups": 1,
+    "copy_policy": "New readonly copy; original and staged bytes unchanged."
+  },
+  "oracle": "Frozen independent analytic criteria19a06ccc... source fixture parabolic P(t)=(t,t\u00b2), 3-4-5 straight and authored interval sums; expected display was calculated before any native output.",
+  "expected_text": {
+    "curve15": "1478.943 mm",
+    "seam31": [
+      "A 861.752 mm",
+      "B 400.000 mm",
+      "B \u2212 A -461.752 mm"
+    ],
+    "group32": [
+      "A 880.196 mm",
+      "B 900.000 mm",
+      "B \u2212 A +19.804 mm"
+    ],
+    "qualifier": "Applied rest length \u00b7 revision 137; Draft/preview edits are not included."
+  },
+  "allowed_actions": [
+    "Launch one new owned unique app/process with verified binary and staged original fixture.",
+    "Frame all; select parabola piece11 then its boundary15 from observed Scene/Properties controls.",
+    "Capture selected-boundary applied readout.",
+    "Scroll Properties through actual observed controls; expand seam/group disclosure if needed; capture legacy31 and group32 readouts.",
+    "Wait for matching revision137 rest mesh only, at most30seconds with observations; no simulation.",
+    "Final view-only capture if useful."
+  ],
+  "forbidden": [
+    "numeric typing",
+    "authoring",
+    "Save",
+    "Undo/Redo",
+    "simulation",
+    "export",
+    "Snap changes",
+    "old app/case/reference process control",
+    "permission/global settings changes",
+    "pointer fallbacks or repeated ambiguous actions"
+  ],
+  "criteria": [
+    "Actual unedited native screenshots, at1640x1032 if supported.",
+    "All displayed mm values/signs and applied revision/qualifier match independent expected strings.",
+    "No authoring actions; revision stays137. Only visibility/navigation/selection changes.",
+    "Fixture original/staged and binary hashes stay unchanged.",
+    "Errors, missing controls/readouts, timeouts and input ambiguity cause an honest stopped/unverified result, without retries or criterion/fixture repairs."
+  ],
+  "limits": [
+    "Visual/read-only check only; no native authoring, numeric focus, history/persistence, simulation/contact, other-platform or reference parity acceptance.",
+    "Group numbers rely on current-revision mesh; a failed/unready mesh is not replaced with stale numbers.",
+    "Full trace/completion compliance is actor reported unless independently audited."
+  ],
+  "caps": {
+    "ui_seconds": 300,
+    "paired_calls": 24,
+    "matching_mesh_wait_seconds": 30
+  },
+  "closure": "CUA completion_summary exactly once as next CUA tool immediately after final observed outcome; then write finite original image/source/outcome manifest. No old evidence overwritten.",
+  "previous_case": "001 permanently stopped before input/screenshots on recorder import error; no regrade.",
+  "prospective_setup_correction": "Load the same recorder bytes with createRequire imported from node:module. Prove module load, pair writing, artifact hash and bad ID rejection using an offline temporary directory before launching new002app. No plain global require assumption. No criteria/caps/fixture or runtime change."
+}

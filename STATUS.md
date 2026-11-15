@@ -1,49 +1,61 @@
 # WeftForge status — active development, 2026-11-15
 
-The native workspace now follows PhotoCraft’s compact charcoal editor structure:
-menus, left tools, context controls, document tab, paired 2D/3D canvases,
-Properties/Scene docks and slim simulation/status rows. The complete garment
-studio remains the goal: **0/56 coarse reference contracts verified**, discovery
-incomplete, and **no roadmap gate accepted**. The 949 observed interface entries
-are an engineering inventory. See [roadmap](ROADMAP.md) and [registry](parity/features.yaml).
+The PhotoCraft-inspired native shell is merged in [PR43](https://github.com/thematheusmello/weftforge/pull/43),
+main `351382875b389188d19170a1854a25096207787a`. The next source checkpoint
+`be8a031b5f8342d0857f3bed34f52dd165fa86da` adds authored/rest boundary lengths,
+raw seam/group A/B and signed B−A in the native inspector and strict CLI/MCP queries.
+All creation remains native Rust; no dependency, solver or document-format change.
 
-## Current UI delivery
+The complete garment studio remains the goal: **0/56 coarse reference contracts
+verified**, **39 partial / 17 planned**, discovery incomplete and **no roadmap gate
+accepted**. The 949 observed entries / 205 packets are an engineering inventory.
 
-The visual delivery is [PR43](https://github.com/thematheusmello/weftforge/pull/43).
-Runtime source is `7ab2107aaa51f2c0fa9c9fd2ada972a08c433882`, after
-[PR42](https://github.com/thematheusmello/weftforge/pull/42) main `f8be9b7`.
-The [gallery](docs/studio-preview.md) shows actual unedited 1640 × 1032 captures.
-The original Harbor fixture stays paused in Rest at revision 20: two pieces,
-eight seams, 654 rest vertices. Only framing, selection and dropdown actions ran.
-Selected Scene, Snap and boundary dropdown text is readable; Scene rows are
-left aligned. No authoring, numeric entry, Save, history or physics ran here.
+## Current measurement delivery
 
-The [scoped UI report](parity/reports/WF-20261115-PHOTOCRAFT-STUDIO-001.json)
-is a bounded implementation-only pass. All five final local gates pass from a
-clean source checkpoint using that worktree’s own target:195Rust tests
-(49 native), 54 Python tests, formatting, strict workspace/all-target Clippy,
-xtask registry/map verification and unsigned packaging. Both embedded font OFLs
-match in regular and app-bundle package locations. Debug capture and release
-package identities are separate; there is no new binary release. Smaller windows,
-other platforms and screen-reader use remain unverified.
+The [scoped report](parity/reports/WF-20261115-AUTHORED-LENGTH-001.json) is a
+bounded implementation-only pass. All five clean same-worktree gates pass:
+205 Rust tests,54 Python tests, formatting, strict workspace/all-target Clippy,
+xtask registry/map verification and unsigned packaging. Both font OFLs match in
+both regular/app package destinations. Debug and release identities are separate;
+no new signed/published binary or other-platform acceptance is claimed.
 
-Two reproduced popup regressions were fixed: open menus no longer dispatch
-canvas/transport shortcuts, and keyboard menu activation no longer restores stale
-numeric focus. Pointer text/caret retention and ordinary canvas shortcuts remain
-covered. Independent source review found one remaining dropdown contrast issue;
-the shared light selection stroke fix is followed by final gates and actual
-dropdown capture. See the [packet](parity/reports/artifacts/photocraft-studio-20261115/README.md).
+The independent frozen analytic case runs 46 processes:30 CLI successes/12 expected
+errors and 4 MCP sessions with 44 length successes / 76 tool errors / 12 RPC errors / 8 setup
+checks. Unrounded SI, query/revision, signed B−A, schema and file preservation pass;
+CLI/MCP structured/text JSON are exactly equal. Length/mismatch tolerances stay
+1e-8 / 2e-8 m. The accepted a820/eed0 CLI source and executable remain byte-identical
+at be8 after the native-only fix. The CLI-only xtask feature context and restored
+multi-package context are both disclosed in the build binding.
 
-Source 21b’s [native 001/002 report](parity/reports/WF-20261115-NATIVE-STUDIO-001.json)
-remains failed/unaccepted and is now stale. Its setup and focus-witness stops are
-unchanged, as are all original garment/physics failures. This visual increment
-does not rerun or transfer them. UI-001 stays partial/not_run with current bounded
-visual evidence; UI-003/UI-005 retain stale prior evidence. All complete-contract,
-reference, single-workflow and full-native-plan flags remain false.
+Native 001 permanently stopped before input/screenshots on recorder import. After
+offline createRequire preflight, separate native 002 retained the same criteria,
+fixture and caps. Three actual unedited 1640 × 1032 images show 1478.943 mm curved
+length, 861.752/400.000/−461.752mm legacy pair and 880.196/900.000/+19.804mm group,
+revision 137 and draft qualifiers. Root directly reviewed those readouts. Full
+trace/completion compliance remains actor reported. No authoring, numeric input,
+Save, history, physics or export ran. See the [gallery](docs/studio-preview.md).
 
-GitHub Actions and automated Pages deployments stay disabled until the complete
-project is done. The existing static Pages site is preserved. Local gates are
-terminal; no Cargo, CUA or physical acceptance job from this UI pass remains active.
+Independent source review found a real scrolling-layout defect in a820. The
+controlled RED changed height 2198→2290px; be8 holds 3787→3787→3787px while measuring
+only 2 of 25 pairs. Fixed row footprints, lazy visible computation, partial clipping,
+errors, revision replacement and numeric text/caret preservation are covered.
+Initial exact-float/AX-helper test mistakes were corrected to the frozen criteria,
+not by widening production tolerance. [Retained packet](parity/reports/artifacts/authored-length-20261115/README.md).
+
+Fresh REA observation separately confirms unselected one-decimal mm canvas labels
+and Select All aggregate readouts in the reference. Exact arc/rounding/angle and
+general selection semantics remain unknown. Our three-decimal selected inspector
+is a different partial presentation; all-edge overlays/aggregate/angles and
+persistent measurements remain pending. See the
+[reviewed observation](spec/features/PAT-007-line-length-runtime-20261115.md).
+
+PAT-007/SEW-004/UI-001 stay partial/not_run with current bounded evidence. The 7ab
+visual report is stale on this changed source and retains its original results.
+Older native/garment/physics failures stay unchanged. All complete-contract,
+reference-comparison, single-workflow and full-native-plan flags remain false.
+Actions and automated Pages deployments stay disabled; preserve the existing
+static site. All build/CUA/physical jobs for this checkpoint are terminal; own
+preview PID 14269 was left paused at its last observation, not a reusable authority.
 
 ## Failures and historical checkpoints
 
@@ -98,29 +110,17 @@ quality pass follows. Later 7fe strict-trace incompleteness, A29 strain and 9–
 contact failures remain in the physics evidence. General convergence, calibration,
 surface contact, full persistence and full garment acceptance remain open.
 
-## Next implementation and reference questions
+## Exact next work
 
-UI/visual work takes priority over the old focus diagnostics. The reviewed next
-feature is precise authored/rest boundary and sewing-length feedback: reuse the
-existing bounded arc metric, report raw A/B lengths and signed B−A in explicit
-units, and expose the same read-only query through CLI/MCP. Preserve drafts,
-geometry/history and revision-aware display. Source implementation is assigned
-to a separate worktree; its results are not yet accepted or published.
+Publish only tracked, source-bound evidence after clean registry/map checks.
+Then implement one-piece 2D translation/rotation from the reviewed proposal in an
+isolated worktree: preserve stable geometry/sewing IDs, one atomic undo, explicit
+pivot and grain/3D-arrangement policy. Current coordinates directly feed UV/3D
+placement, so compensation must be explicit; reference behavior is still unknown.
+Do not silently change existing MovePoint/ResizePiece/SetPlacement semantics.
 
-Then implement 2D piece translation/rotation, physical-length partial Free Sewing,
-internal straight lines and a bounded topological cut. Their remaining reference
-semantics stay explicit. Presence of a reference menu item alone is not executed
-behavior or parity. The executed 100 mm Free Sewing pair is recorded in the
-[reviewed behavior contract](spec/features/SEW-002-paired-runtime-20261114.md).
-
-The legitimate reference baseline is provisional. The old Rectangle manual
-handoff has no inferred outcome. Keep the
-[dated runtime notes](spec/features/SEW-002-runtime-notes-20261114.md). Raw
-commercial/account material stays private; fresh implementers receive reviewed
-public behavior contracts. Old closed cases are not restarted or regraded.
-
-Next checks: review length implementation and independent analytic/adapter
-outcomes, run the required integrated gates, inspect its actual native readout,
-and publish only source-bound tracked evidence. Continue full garment/contact
-work under new explicit source/input/criteria bindings after these authoring
-increments. No roadmap gate is accepted by a screenshot or unit-test count.
+Follow with physical-length partial Free Sewing, internal lines and bounded
+topological cuts. Keep the full roadmap and unknown reference semantics visible.
+The old Rectangle manual handoff has no inferred outcome; no old closed case is
+restarted or regraded. Raw commercial/account material stays private. Full garment
+contact/physics acceptance requires new source/input/criteria bindings.
