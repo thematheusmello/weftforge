@@ -12,7 +12,7 @@ use std::{
 };
 use weftforge_core::{
     Command, Curve, CurveInterval, DxfPatternImport, Editor, Id, Material, Mesh, Placement,
-    Project, SewingGroup, SvgPatternImport,
+    Project, SewingDirection, SewingGroup, SewingSideByLength, SvgPatternImport,
 };
 use weftforge_sim::{Cloth, MaterialAxis, SimulationError, StepSettings};
 
@@ -23,6 +23,7 @@ enum Tool {
     Polygon,
     Rectangle,
     Sew,
+    FreeSewing,
     SewingPaths,
 }
 impl Tool {
@@ -33,6 +34,7 @@ impl Tool {
             Self::Polygon => "Polygon",
             Self::Rectangle => "Rectangle",
             Self::Sew => "Sew edges",
+            Self::FreeSewing => "Free sewing",
             Self::SewingPaths => "M:N sewing",
         }
     }
@@ -202,6 +204,150 @@ struct RectangleDraft {
 }
 
 #[derive(Clone)]
+struct RetainedInspectorInput {
+    revision: u64,
+    selected: Option<Id>,
+    focus: Option<egui::Id>,
+    text: Option<(String, Option<egui::text_edit::TextEditState>)>,
+}
+impl RetainedInspectorInput {
+    fn restore(&self, ctx: &egui::Context) {
+        if let (Some(id), Some((text, state))) = (self.focus, &self.text) {
+            ctx.data_mut(|data| data.insert_temp(id, text.clone()));
+            if let Some(state) = state {
+                state.clone().store(ctx, id);
+            }
+        }
+    }
+    fn close_without_commit(&self, ctx: &egui::Context) {
+        self.restore(ctx);
+        finish_numeric_action(ctx, self.focus, false);
+        if self.text.is_some() {
+            let closed = ctx.cumulative_frame_nr();
+            ctx.data_mut(|data| {
+                data.insert_temp(
+                    egui::Id::new("cancelled-inspector-input"),
+                    (closed, self.clone()),
+                )
+            });
+        }
+    }
+}
+
+#[derive(Clone, PartialEq)]
+struct FreeSewingSide {
+    curve: Option<Id>,
+    start_t: String,
+    direction: Option<SewingDirection>,
+    length_mm: String,
+}
+impl FreeSewingSide {
+    fn new(curve: Option<Id>) -> Self {
+        Self {
+            curve,
+            start_t: "0".into(),
+            direction: None,
+            length_mm: String::new(),
+        }
+    }
+    fn parse(&self) -> Result<SewingSideByLength, String> {
+        let start_t = self
+            .start_t
+            .trim()
+            .parse::<f64>()
+            .map_err(|_| "Enter an exact Start t in [0,1].")?;
+        let length_mm = self
+            .length_mm
+            .trim()
+            .parse::<f64>()
+            .map_err(|_| "Enter a positive finite Length in mm.")?;
+        let length_m = length_mm / 1000.;
+        if !start_t.is_finite() || !(0.0..=1.0).contains(&start_t) {
+            return Err("Start t must be finite and in [0,1].".into());
+        }
+        if !length_mm.is_finite() || !length_m.is_finite() || length_m <= 0. {
+            return Err("Length must be positive finite mm.".into());
+        }
+        Ok(SewingSideByLength {
+            curve: self.curve.ok_or("Choose a boundary.")?,
+            start_t,
+            direction: self
+                .direction
+                .ok_or("Choose Forward or Reverse explicitly.")?,
+            length_m,
+        })
+    }
+}
+
+#[derive(Clone, Copy)]
+struct ResolvedFreeSewingSide {
+    source: SewingSideByLength,
+    interval: CurveInterval,
+    length: f64,
+}
+struct FreeSewingPreview {
+    inputs: [FreeSewingSide; 2],
+    pending: Vec<Command>,
+    project: Result<Project, String>,
+    resolved: [Result<ResolvedFreeSewingSide, String>; 2],
+}
+struct FreeSewingDraft {
+    revision: u64,
+    sides: [FreeSewingSide; 2],
+    selecting_b: bool,
+    modal: bool,
+    input: RetainedInspectorInput,
+    field_focus: Option<egui::Id>,
+    epoch: u64,
+    preview: Option<FreeSewingPreview>,
+    error: Option<String>,
+}
+impl FreeSewingDraft {
+    fn refresh(&mut self, project: &Project, pending: Vec<Command>) {
+        if self
+            .preview
+            .as_ref()
+            .is_some_and(|preview| preview.inputs == self.sides && preview.pending == pending)
+        {
+            return;
+        }
+        let candidate = if pending.is_empty() {
+            Ok(project.clone())
+        } else {
+            Editor::new(project.clone())
+                .and_then(|mut editor| {
+                    editor.execute(Command::Transaction(pending.clone()))?;
+                    Ok(editor.project)
+                })
+                .map_err(|error| error.to_string())
+        };
+        let resolved = std::array::from_fn(|index| {
+            let candidate = candidate.as_ref().map_err(Clone::clone)?;
+            let source = self.sides[index].parse()?;
+            #[cfg(test)]
+            authored_length_tests::record_query();
+            let interval = candidate
+                .interval_from_length(source)
+                .map_err(|error| error.to_string())?;
+            let length = candidate
+                .interval_length(interval)
+                .map_err(|error| error.to_string())?;
+            Ok(ResolvedFreeSewingSide {
+                source,
+                interval,
+                length,
+            })
+        });
+        self.preview = Some(FreeSewingPreview {
+            inputs: self.sides.clone(),
+            pending,
+            project: candidate,
+            resolved,
+        });
+    }
+}
+
+#[derive(Clone)]
 struct TransformDraft {
     piece: Id,
     revision: u64,
@@ -228,24 +374,17 @@ impl TransformDraft {
         self.translation == [0.; 2] && self.angle == 0.
     }
     fn restore_inspector_text(&self, ctx: &egui::Context) {
-        if let (Some(id), Some((text, state))) = (self.focus, &self.inspector_text) {
-            ctx.data_mut(|data| data.insert_temp(id, text.clone()));
-            if let Some(state) = state {
-                state.clone().store(ctx, id);
-            }
-        }
+        self.retained_input().restore(ctx);
     }
     fn close_without_commit(&self, ctx: &egui::Context) {
-        self.restore_inspector_text(ctx);
-        finish_numeric_action(ctx, self.focus, false);
-        if self.inspector_text.is_some() {
-            let closed = ctx.cumulative_frame_nr();
-            ctx.data_mut(|data| {
-                data.insert_temp(
-                    egui::Id::new("transform-cancel-input"),
-                    (closed, self.clone()),
-                )
-            });
+        self.retained_input().close_without_commit(ctx);
+    }
+    fn retained_input(&self) -> RetainedInspectorInput {
+        RetainedInspectorInput {
+            revision: self.revision,
+            selected: Some(self.piece),
+            focus: self.focus,
+            text: self.inspector_text.clone(),
         }
     }
 }
@@ -334,13 +473,16 @@ impl InspectorDraft {
         }
     }
     fn commands(&self, project: &Project) -> Vec<Command> {
-        let original = Self::new(
-            project,
-            self.selected,
-            self.curve.as_ref().map(|curve| curve.id),
-        );
+        let original_curve = self
+            .curve
+            .as_ref()
+            .and_then(|curve| project.curve(curve.id));
+        let original_piece = self.selected.and_then(|piece| project.piece(piece));
+        let original_dimensions = original_piece
+            .and_then(|piece| project.piece_bounds(piece.id).ok())
+            .map(|[min, max]| std::array::from_fn(|axis| max[axis] - min[axis]));
         let mut commands = Vec::new();
-        if self.curve != original.curve
+        if self.curve.as_ref() != original_curve
             && let Some(curve) = &self.curve
         {
             commands.push(Command::SetCurveControls {
@@ -349,7 +491,7 @@ impl InspectorDraft {
             });
         }
         if let Some(piece) = self.selected {
-            if self.dimensions != original.dimensions
+            if self.dimensions != original_dimensions
                 && let Some([width, height]) = self.dimensions
             {
                 commands.push(Command::ResizePiece {
@@ -358,17 +500,18 @@ impl InspectorDraft {
                     height,
                 });
             }
-            if self.placement != original.placement
+            if self.placement != original_piece.map(|piece| piece.placement)
                 && let Some(placement) = self.placement
             {
                 commands.push(Command::SetPlacement { piece, placement });
             }
-            if self.grain_angle != original.grain_angle
+            if self.grain_angle != original_piece.map(|piece| piece.grain_angle)
                 && let Some(angle) = self.grain_angle
             {
                 commands.push(Command::SetGrain { piece, angle });
             }
-            if self.material != original.material
+            if self.material.as_ref()
+                != original_piece.and_then(|piece| project.material(piece.material))
                 && let Some(material) = &self.material
             {
                 commands.push(Command::UpdateMaterial {
@@ -503,6 +646,7 @@ struct Studio {
     preview: Option<[f64; 2]>,
     seam_start: Option<Id>,
     sewing_draft: OrderedSewingDraft,
+    free_sewing: Option<FreeSewingDraft>,
     sewing_edit: Option<SewingGroupEdit>,
     reversed: bool,
     intervals: [[f64; 2]; 2],
@@ -580,6 +724,7 @@ impl Studio {
             preview: None,
             seam_start: None,
             sewing_draft: OrderedSewingDraft::default(),
+            free_sewing: None,
             sewing_edit: None,
             reversed: true,
             intervals: [[0., 1.]; 2],
@@ -673,6 +818,7 @@ impl Studio {
         self.polygon.clear();
         self.seam_start = None;
         self.sewing_draft = OrderedSewingDraft::default();
+        self.free_sewing = None;
         self.drag_point = None;
         self.preview = None;
         self.drag_start = None;
@@ -1068,7 +1214,7 @@ impl Studio {
         }
     }
     fn choose_open(&mut self) {
-        if !self.commit_draft() {
+        if self.free_sewing.is_none() && !self.commit_draft() {
             return;
         }
         if self.dirty {
@@ -1286,6 +1432,7 @@ impl Studio {
         written
     }
     fn history(&mut self, ctx: &egui::Context, redo: bool) {
+        self.free_sewing = None;
         if !self.commit_draft() {
             return;
         }
@@ -1336,7 +1483,7 @@ impl Studio {
         }
     }
     fn recover(&mut self, path: PathBuf) {
-        if !self.commit_draft() {
+        if self.free_sewing.is_none() && !self.commit_draft() {
             return;
         }
         if self.dirty {
@@ -1350,7 +1497,7 @@ impl Studio {
             return;
         }
         let mut open = true;
-        egui::Window::new("Recover editable construction").enabled(self.rectangle.is_none() && self.transform.is_none() && self.sewing_edit.is_none() && self.pattern_import.is_none()).open(&mut open).default_width(520.0).show(ctx,|ui| {
+        egui::Window::new("Recover editable construction").enabled(self.rectangle.is_none() && self.transform.is_none() && self.sewing_edit.is_none() && self.pattern_import.is_none() && !self.free_sewing.as_ref().is_some_and(|draft| draft.modal)).open(&mut open).default_width(520.0).show(ctx,|ui| {
             ui.label("Recovery opens a copy. Save current edits before replacing the document.");
             ui.horizontal(|ui| {
                 if ui.button("Refresh").clicked() { self.refresh_recovery(); }
@@ -1657,6 +1804,16 @@ impl Studio {
                 ui.label(format!("Side {} · A {} / B {}", if self.sewing_draft.selecting_b { "B" } else { "A" }, self.sewing_draft.a.len(), self.sewing_draft.b.len()))
                     .on_hover_text("Select boundaries in order. Enter confirms a side; Delete removes the last span; Escape cancels.");
             }
+            if self.tool == Tool::FreeSewing {
+                ui.separator();
+                ui.label(if self.free_sewing.as_ref().is_some_and(|draft| draft.selecting_b) { "Pending · side B" } else { "Pending · side A" });
+                let response = ui.button("Create Sewing Line");
+                self.retain_inspector_input(&response, false);
+                if response.clicked() { self.open_free_sewing(ui.ctx()); }
+                let response = ui.button("Cancel free sewing");
+                self.retain_inspector_input(&response, false);
+                if response.clicked() { self.cancel_free_sewing(ui.ctx()); }
+            }
         });
     }
 
@@ -1668,6 +1825,7 @@ impl Studio {
             Tool::Polygon,
             Tool::Rectangle,
             Tool::Sew,
+            Tool::FreeSewing,
             Tool::SewingPaths,
         ] {
             if tool == Tool::Sew {
@@ -1961,6 +2119,7 @@ impl Studio {
                             .is_some_and(|pointer| response.rect.contains(pointer))
                     }))
             || self.tool == Tool::SewingPaths
+            || self.tool == Tool::FreeSewing
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some()
             || ui
@@ -2350,6 +2509,251 @@ impl Studio {
             self.scale = scale;
         }
     }
+    fn free_sewing_input(&self, ctx: &egui::Context) -> RetainedInspectorInput {
+        let focus = self.inspector_focus(ctx);
+        RetainedInspectorInput {
+            revision: self.editor.project.revision,
+            selected: self.selected,
+            focus,
+            text: focus.and_then(|id| {
+                ctx.data_mut(|data| data.get_temp::<String>(id))
+                    .map(|text| (text, egui::TextEdit::load_state(ctx, id)))
+            }),
+        }
+    }
+    fn begin_free_sewing(&mut self, ctx: &egui::Context) {
+        if self.free_sewing.is_none() {
+            let curve = self.selected_curve.or_else(|| {
+                self.editor
+                    .project
+                    .pieces
+                    .iter()
+                    .find_map(|piece| piece.boundary.first().copied())
+            });
+            self.free_sewing = Some(FreeSewingDraft {
+                revision: self.editor.project.revision,
+                sides: std::array::from_fn(|_| FreeSewingSide::new(curve)),
+                selecting_b: false,
+                modal: false,
+                input: self.free_sewing_input(ctx),
+                field_focus: None,
+                epoch: ctx.cumulative_frame_nr(),
+                preview: None,
+                error: None,
+            });
+        }
+    }
+    fn free_sewing_pending(&self) -> Vec<Command> {
+        self.draft
+            .as_ref()
+            .filter(|draft| draft.revision == self.editor.project.revision)
+            .map_or_else(Vec::new, |draft| draft.commands(&self.editor.project))
+    }
+    fn refresh_free_sewing(&mut self) {
+        let pending = self.free_sewing_pending();
+        if let Some(draft) = &mut self.free_sewing {
+            draft.refresh(&self.editor.project, pending);
+        }
+    }
+    fn open_free_sewing(&mut self, ctx: &egui::Context) {
+        self.begin_free_sewing(ctx);
+        let input = self.free_sewing_input(ctx);
+        let draft = self.free_sewing.as_mut().unwrap();
+        draft.input = input;
+        draft.modal = true;
+        finish_numeric_action(ctx, draft.input.focus, false);
+    }
+    fn cancel_free_sewing(&mut self, ctx: &egui::Context) {
+        if let Some(draft) = self.free_sewing.take() {
+            draft.input.close_without_commit(ctx);
+            self.message = "Free sewing cancelled; construction unchanged.".into();
+        }
+    }
+    fn discard_stale_free_sewing(&mut self) {
+        if self
+            .free_sewing
+            .as_ref()
+            .is_some_and(|draft| draft.revision != self.editor.project.revision)
+        {
+            self.free_sewing = None;
+            self.message = "Free sewing cancelled: construction revision changed.".into();
+        }
+    }
+    fn free_sewing_window(&mut self, ctx: &egui::Context) {
+        let pending = self.free_sewing_pending();
+        let Some(mut draft) = self.free_sewing.take() else {
+            return;
+        };
+        if !draft.modal {
+            self.free_sewing = Some(draft);
+            return;
+        }
+        let index = usize::from(draft.selecting_b);
+        let enter = ctx.input(|input| input.key_pressed(egui::Key::Enter));
+        let tab = ctx.input(|input| input.key_pressed(egui::Key::Tab));
+        let mut accept = false;
+        let mut cancel = false;
+        let mut validate = false;
+        let response = egui::Modal::new(egui::Id::new(("free-sewing-line", draft.epoch, index)))
+            .show(ctx, |ui| {
+                ui.set_width(430.);
+                ui.horizontal(|ui| {
+                    ui.heading("Create Sewing Line");
+                    cancel = ui.button("Close").clicked();
+                });
+                ui.label(format!(
+                    "Pending side {} · construction revision {}",
+                    if index == 0 { "A" } else { "B" },
+                    draft.revision
+                ));
+                ui.small(
+                    "A stays transient. Accepting B creates one physical-length sewing group.",
+                );
+                let side = &mut draft.sides[index];
+                ui.horizontal(|ui| {
+                    let label = ui.label("Boundary");
+                    egui::ComboBox::from_id_salt("free-sewing-boundary")
+                        .selected_text(
+                            side.curve.map_or("Choose boundary".into(), |curve| {
+                                format!("Curve #{curve}")
+                            }),
+                        )
+                        .show_ui(ui, |ui| {
+                            for piece in &self.editor.project.pieces {
+                                for (boundary, curve) in piece.boundary.iter().enumerate() {
+                                    ui.selectable_value(
+                                        &mut side.curve,
+                                        Some(*curve),
+                                        format!(
+                                            "{} · boundary {} · #{curve}",
+                                            piece.name,
+                                            boundary + 1
+                                        ),
+                                    );
+                                }
+                            }
+                        })
+                        .response
+                        .labelled_by(label.id);
+                });
+                for (salt, name, value) in [
+                    ("start-t", "Start t", &mut side.start_t),
+                    ("length", "Length", &mut side.length_mm),
+                ] {
+                    ui.horizontal(|ui| {
+                        let label = ui.label(name);
+                        let response = ui
+                            .add(
+                                egui::TextEdit::singleline(value)
+                                    .id_salt(salt)
+                                    .desired_width(160.),
+                            )
+                            .labelled_by(label.id);
+                        if response.has_focus() {
+                            draft.field_focus = Some(response.id);
+                        }
+                        validate |= tab && response.lost_focus();
+                        if name == "Length" {
+                            ui.label("mm");
+                        }
+                    });
+                }
+                ui.label("Direction");
+                ui.horizontal(|ui| {
+                    ui.radio_value(
+                        &mut side.direction,
+                        Some(SewingDirection::Forward),
+                        "Forward (increasing t)",
+                    );
+                    ui.radio_value(
+                        &mut side.direction,
+                        Some(SewingDirection::Reverse),
+                        "Reverse (decreasing t)",
+                    );
+                });
+                ui.small("Exact Start t corrects the display-chord pointer approximation.");
+                if let Some(error) = &draft.error {
+                    ui.colored_label(Color32::LIGHT_RED, error);
+                }
+                ui.horizontal(|ui| {
+                    accept = ui.button("OK").clicked();
+                    cancel |= ui.button("Cancel").clicked();
+                });
+            });
+        if cancel || response.should_close() {
+            if let Some(id) = draft.field_focus {
+                ctx.memory_mut(|memory| memory.surrender_focus(id));
+            }
+            draft.input.close_without_commit(ctx);
+            self.message = "Free sewing cancelled; construction unchanged.".into();
+            return;
+        }
+        draft.refresh(&self.editor.project, pending);
+        if accept || enter || validate {
+            let preview = draft.preview.as_ref().unwrap();
+            let invalid_property = draft.input.text.as_ref().is_some_and(|(text, _)| {
+                text.trim()
+                    .parse::<f64>()
+                    .ok()
+                    .is_none_or(|value| !value.is_finite())
+            });
+            let result = if invalid_property {
+                Err("Correct the pending property value before sewing.".into())
+            } else {
+                preview.resolved[index]
+                    .as_ref()
+                    .map(|_| ())
+                    .map_err(Clone::clone)
+            };
+            if validate && !accept && !enter {
+                draft.error = result.err();
+            } else {
+                match result {
+                    Ok(()) if index == 0 => {
+                        draft.selecting_b = true;
+                        draft.modal = false;
+                        draft.error = None;
+                        if let Some(id) = draft.field_focus.take() {
+                            ctx.memory_mut(|memory| memory.surrender_focus(id));
+                        }
+                        draft.input.close_without_commit(ctx);
+                        self.message = "Side A pending. Choose B's start and direction, then Create Sewing Line.".into();
+                    }
+                    Ok(()) => {
+                        let command = preview.resolved[0]
+                            .as_ref()
+                            .map(|a| Command::AddSewingByLength {
+                                name: format!(
+                                    "Free sewing {}",
+                                    self.editor.project.sewing_groups.len() + 1
+                                ),
+                                a: a.source,
+                                b: preview.resolved[1].as_ref().unwrap().source,
+                            })
+                            .map_err(Clone::clone);
+                        match command {
+                            Ok(command) => {
+                                if self.apply_inspector_action(ctx, command, draft.input.focus) {
+                                    return;
+                                }
+                                draft.error = Some(self.message.clone());
+                            }
+                            Err(error) => draft.error = Some(error),
+                        }
+                    }
+                    Err(error) => draft.error = Some(error),
+                }
+            }
+            if (accept || enter)
+                && draft.modal
+                && let Some(id) = draft.field_focus
+            {
+                ctx.memory_mut(|memory| memory.request_focus(id));
+            }
+        }
+        draft.input.restore(ctx);
+        self.free_sewing = Some(draft);
+    }
     fn transform_edit(&self, ctx: &egui::Context, piece: Id) -> Option<TransformDraft> {
         let [min, max] = self.editor.project.piece_bounds(piece).ok()?;
         let focus = self.inspector_focus(ctx);
@@ -2526,14 +2930,14 @@ impl Studio {
         edit.restore_inspector_text(ctx);
         self.transform = Some(edit);
     }
-    fn restore_cancelled_transform_input(&self, ctx: &egui::Context) {
-        let key = egui::Id::new("transform-cancel-input");
+    fn restore_cancelled_inspector_input(&self, ctx: &egui::Context) {
+        let key = egui::Id::new("cancelled-inspector-input");
         if let Some((closed, edit)) = ctx.data_mut(|data| {
-            let retained = data.get_temp::<(u64, TransformDraft)>(key);
-            data.remove::<(u64, TransformDraft)>(key);
+            let retained = data.get_temp::<(u64, RetainedInspectorInput)>(key);
+            data.remove::<(u64, RetainedInspectorInput)>(key);
             retained
         }) && edit.revision == self.editor.project.revision
-            && self.selected == Some(edit.piece)
+            && self.selected == edit.selected
         {
             let new_input = ctx.cumulative_frame_nr() > closed
                 && ctx.input(|input| {
@@ -2548,7 +2952,7 @@ impl Studio {
                 });
             if !new_input && ctx.cumulative_frame_nr() <= closed + 3 {
                 // A closing modal blocks background focus for a pass, then DragValue gains focus again.
-                edit.restore_inspector_text(ctx);
+                edit.restore(ctx);
                 finish_numeric_action(ctx, edit.focus, false);
                 if ctx.cumulative_frame_nr() < closed + 3 {
                     ctx.data_mut(|data| data.insert_temp(key, (closed, edit)));
@@ -2621,6 +3025,8 @@ impl Studio {
     }
     fn patterns(&mut self, ui: &mut egui::Ui) {
         self.discard_stale_transform();
+        self.discard_stale_free_sewing();
+        self.refresh_free_sewing();
         if self.search || egui::Popup::is_any_open(ui.ctx()) {
             self.transform_gesture = None;
         }
@@ -2657,6 +3063,14 @@ impl Studio {
         let pointer = response
             .interact_pointer_pos()
             .or_else(|| ui.input(|i| i.pointer.hover_pos()));
+        let free_pointer = pointer.map(|pointer| {
+            [
+                self.center[0]
+                    + (f64::from(pointer.x) - f64::from(r.center().x)) / f64::from(self.scale),
+                self.center[1]
+                    - (f64::from(pointer.y) - f64::from(r.center().y)) / f64::from(self.scale),
+            ]
+        });
         if let Some(position) =
             pointer.map(|pointer| self.to_pattern(pointer, r, PositionSnap::Off))
             && let Some(gesture) = &mut self.transform_gesture
@@ -2671,6 +3085,13 @@ impl Studio {
             .transform_gesture
             .as_ref()
             .and_then(|gesture| gesture.preview().ok())
+            .or_else(|| {
+                self.free_sewing
+                    .as_ref()
+                    .and_then(|draft| draft.preview.as_ref())
+                    .and_then(|preview| preview.project.as_ref().ok())
+                    .cloned()
+            })
             .unwrap_or_else(|| self.editor.project.clone());
         if let (Some(id), Some(position)) = (self.drag_point, self.preview)
             && let Some(point) = doc.points.iter_mut().find(|p| p.id == id)
@@ -2821,6 +3242,87 @@ impl Studio {
                                 Stroke::new(1., Color32::from_rgb(125, 165, 235)),
                             );
                         }
+                    }
+                }
+                if let Some(portion) = geometry.portions.first() {
+                    for (side, interval, length, color) in [
+                        (
+                            "A",
+                            &portion.a,
+                            geometry.lengths[0],
+                            Color32::from_rgb(100, 200, 255),
+                        ),
+                        (
+                            "B",
+                            &portion.b,
+                            geometry.lengths[1],
+                            Color32::from_rgb(235, 145, 240),
+                        ),
+                    ] {
+                        self.paint_sewing_label(
+                            guide_project,
+                            &painter,
+                            interval,
+                            r,
+                            &format!("{side} applied · {:.1} mm", length * 1000.),
+                            color,
+                        );
+                    }
+                }
+            }
+        }
+        if let Some(draft) = &self.free_sewing {
+            let index = usize::from(draft.selecting_b);
+            for (side, resolved, color) in draft.preview.iter().flat_map(|preview| {
+                [
+                    ("A", &preview.resolved[0], Color32::from_rgb(100, 200, 255)),
+                    ("B", &preview.resolved[1], Color32::from_rgb(235, 145, 240)),
+                ]
+            }) {
+                if let Ok(resolved) = resolved {
+                    self.paint_sewing_interval(&doc, &painter, &resolved.interval, r, color);
+                    self.paint_sewing_label(
+                        &doc,
+                        &painter,
+                        &resolved.interval,
+                        r,
+                        &format!("{side} pending · {:.1} mm", resolved.length * 1000.),
+                        color,
+                    );
+                }
+            }
+            if let Some(curve) = draft.sides[index].curve.and_then(|curve| doc.curve(curve))
+                && let Ok(t) = draft.sides[index].start_t.trim().parse::<f64>()
+                && let Ok(point) = curve.evaluate(&doc, t)
+            {
+                let point = self.to_screen(point, r);
+                painter.circle_stroke(point, 6., Stroke::new(2., Color32::GOLD));
+                painter.text(
+                    point + Vec2::new(7., -7.),
+                    egui::Align2::LEFT_BOTTOM,
+                    format!(
+                        "{} start · #{} · t {}",
+                        if index == 0 { "A" } else { "B" },
+                        curve.id,
+                        draft.sides[index].start_t
+                    ),
+                    egui::FontId::proportional(11.),
+                    Color32::GOLD,
+                );
+            }
+            if let Some(preview) = &draft.preview
+                && let [Ok(a), Ok(b)] = &preview.resolved
+            {
+                for fraction in [0., 1.] {
+                    let endpoint = |interval: CurveInterval| {
+                        doc.curve(interval.curve)
+                            .and_then(|curve| {
+                                curve.evaluate(&doc, interval.parameter(fraction)).ok()
+                            })
+                            .map(|point| self.to_screen(point, r))
+                    };
+                    if let (Some(a), Some(b)) = (endpoint(a.interval), endpoint(b.interval)) {
+                        painter.line_segment([a, b], Stroke::new(1., Color32::GOLD));
                     }
                 }
             }
@@ -3100,6 +3602,29 @@ impl Studio {
                         }
                     }
                 }
+                Tool::FreeSewing => {
+                    if let Some(pointer) = free_pointer
+                        && let Some((curve, t)) = free_sewing_pick(
+                            &doc,
+                            pointer,
+                            12. / self.scale as f64,
+                            self.selected_curve,
+                            None,
+                        )
+                    {
+                        self.begin_free_sewing(ui.ctx());
+                        let draft = self.free_sewing.as_mut().unwrap();
+                        let side = &mut draft.sides[usize::from(draft.selecting_b)];
+                        *side = FreeSewingSide {
+                            curve: Some(curve),
+                            start_t: t.to_string(),
+                            direction: None,
+                            length_mm: String::new(),
+                        };
+                        draft.error = None;
+                        self.message = "Free sewing start chosen. Right-click along this boundary, or enter exact controls in Create Sewing Line.".into();
+                    }
+                }
                 Tool::Rectangle => {
                     if let Some(p) = pointer {
                         // shortcut: existing snapped lower-left anchor; reference equivalence needs observation.
@@ -3111,6 +3636,68 @@ impl Studio {
                     }
                 }
             }
+        }
+        if self.tool == Tool::FreeSewing
+            && response.secondary_clicked()
+            && let Some(pointer) = free_pointer
+        {
+            self.begin_free_sewing(ui.ctx());
+            let draft = self.free_sewing.as_ref().unwrap();
+            let side = &draft.sides[usize::from(draft.selecting_b)];
+            let end = free_sewing_pick(
+                &doc,
+                pointer,
+                12. / self.scale as f64,
+                self.selected_curve,
+                side.curve,
+            );
+            if let (Some((curve, end_t)), Ok(start_t)) = (end, side.start_t.trim().parse::<f64>()) {
+                let interval = CurveInterval {
+                    curve,
+                    t0: start_t,
+                    t1: end_t,
+                };
+                let length = doc.interval_length(interval).ok();
+                self.open_free_sewing(ui.ctx());
+                let draft = self.free_sewing.as_mut().unwrap();
+                let side = &mut draft.sides[usize::from(draft.selecting_b)];
+                side.direction = if end_t > start_t {
+                    Some(SewingDirection::Forward)
+                } else if end_t < start_t {
+                    Some(SewingDirection::Reverse)
+                } else {
+                    None
+                };
+                side.length_mm =
+                    length.map_or(String::new(), |length| (length * 1000.).to_string());
+                draft.error = side.direction.is_none().then(|| {
+                    "The direction click equals Start t. Choose Direction explicitly.".into()
+                });
+            } else {
+                self.message = "Right-click the chosen boundary, or open Create Sewing Line for exact controls.".into();
+            }
+        }
+    }
+    fn paint_sewing_label(
+        &self,
+        project: &Project,
+        painter: &egui::Painter,
+        interval: &CurveInterval,
+        rect: Rect,
+        text: &str,
+        color: Color32,
+    ) {
+        if let Some(point) = project
+            .curve(interval.curve)
+            .and_then(|curve| curve.evaluate(project, interval.parameter(0.5)).ok())
+        {
+            painter.text(
+                self.to_screen(point, rect) + Vec2::new(4., -9.),
+                egui::Align2::LEFT_BOTTOM,
+                text,
+                egui::FontId::proportional(12.),
+                color,
+            );
         }
     }
     fn paint_sewing_interval(
@@ -3360,8 +3947,10 @@ impl eframe::App for Studio {
         self.poll();
         self.poll_autosave();
         self.discard_stale_transform();
+        self.discard_stale_free_sewing();
         let authoring_modal = self.rectangle.is_some()
             || self.transform.is_some()
+            || self.free_sewing.as_ref().is_some_and(|draft| draft.modal)
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some();
         let global_shortcuts = !authoring_modal && !egui::Popup::is_any_open(&ctx);
@@ -3422,6 +4011,8 @@ impl eframe::App for Studio {
             if ctx.input(|i| i.key_pressed(egui::Key::Enter)) {
                 if self.tool == Tool::SewingPaths {
                     self.confirm_sewing_side(&ctx);
+                } else if self.tool == Tool::FreeSewing {
+                    self.open_free_sewing(&ctx);
                 } else {
                     self.finish_polygon();
                 }
@@ -3434,6 +4025,7 @@ impl eframe::App for Studio {
                 self.delete_sewing_span();
             }
             if ctx.input(|i| i.key_pressed(egui::Key::Escape)) {
+                self.cancel_free_sewing(&ctx);
                 self.reset_gestures();
             }
         }
@@ -3581,6 +4173,7 @@ impl eframe::App for Studio {
                         "Rectangle",
                         "Add ellipse",
                         "Sew edges",
+                        "Free sewing",
                         "M:N sewing",
                     ] {
                         if !label.to_lowercase().contains(&self.query.to_lowercase()) {
@@ -3618,6 +4211,7 @@ impl eframe::App for Studio {
                                     self.add_ellipse(&ctx, focused);
                                 }
                                 "Sew edges" => self.set_tool(Tool::Sew),
+                                "Free sewing" => self.set_tool(Tool::FreeSewing),
                                 "M:N sewing" => self.set_tool(Tool::SewingPaths),
                                 _ => {}
                             }
@@ -3633,6 +4227,7 @@ impl eframe::App for Studio {
         }
         self.rectangle_window(&ctx);
         self.transform_window(&ctx);
+        self.free_sewing_window(&ctx);
         self.sewing_group_window(&ctx);
         self.pattern_import_window(&ctx);
         if let Some((_, Some(format), focused)) = ctx
@@ -3656,7 +4251,7 @@ impl eframe::App for Studio {
         {
             self.choose_import(&ctx, format, focused);
         }
-        self.restore_cancelled_transform_input(&ctx);
+        self.restore_cancelled_inspector_input(&ctx);
     }
 }
 fn pane_heading(ui: &mut egui::Ui, title: &str) -> egui::Response {
@@ -3753,10 +4348,10 @@ fn tool_button(ui: &mut egui::Ui, tool: Tool, selected: bool) -> egui::Response 
                 egui::StrokeKind::Inside,
             );
         }
-        Tool::Sew | Tool::SewingPaths => {
+        Tool::Sew | Tool::FreeSewing | Tool::SewingPaths => {
             painter.line_segment([point(-7.0, -8.0), point(-7.0, 8.0)], stroke);
             painter.line_segment([point(7.0, -8.0), point(7.0, 8.0)], stroke);
-            if tool == Tool::Sew {
+            if tool != Tool::SewingPaths {
                 for y in [-5.0, 0.0, 5.0] {
                     painter.line_segment([point(-5.0, y - 2.0), point(5.0, y + 2.0)], stroke);
                 }
@@ -4085,6 +4680,72 @@ fn segment_distance(p: Pos2, a: Pos2, b: Pos2) -> f32 {
     let t = ((p - a).dot(ab) / ab.length_sq().max(1e-9)).clamp(0., 1.);
     p.distance(a + ab * t)
 }
+fn free_sewing_pick(
+    project: &Project,
+    pointer: [f64; 2],
+    radius: f64,
+    selected: Option<Id>,
+    only: Option<Id>,
+) -> Option<(Id, f64)> {
+    let mut boundaries: Vec<_> = project
+        .pieces
+        .iter()
+        .flat_map(|piece| piece.boundary.iter().copied())
+        .filter(|curve| only.is_none_or(|only| *curve == only))
+        .collect();
+    boundaries.sort_by_key(|curve| Some(*curve) != selected);
+    let distance = |a: [f64; 2], b: [f64; 2]| (a[0] - b[0]).powi(2) + (a[1] - b[1]).powi(2);
+    let radius_squared = radius * radius;
+    for id in &boundaries {
+        let Some(curve) = project.curve(*id) else {
+            continue;
+        };
+        let endpoints = [0., 1.].map(|t| {
+            curve
+                .evaluate(project, t)
+                .ok()
+                .map(|point| (t, distance(point, pointer)))
+        });
+        if let Some((t, _)) = endpoints
+            .into_iter()
+            .flatten()
+            .filter(|(_, distance)| *distance <= radius_squared)
+            .min_by(|a, b| a.1.total_cmp(&b.1).then(a.0.total_cmp(&b.0)))
+        {
+            return Some((*id, t));
+        }
+    }
+    let mut nearest = None;
+    let mut best = radius_squared;
+    for id in boundaries {
+        let Some(curve) = project.curve(id) else {
+            continue;
+        };
+        let steps = if curve.controls.is_some() { 24 } else { 1 };
+        for index in 0..steps {
+            let (Ok(a), Ok(b)) = (
+                curve.evaluate(project, index as f64 / steps as f64),
+                curve.evaluate(project, (index + 1) as f64 / steps as f64),
+            ) else {
+                continue;
+            };
+            let ab: [f64; 2] = std::array::from_fn(|axis| b[axis] - a[axis]);
+            let denominator = ab[0] * ab[0] + ab[1] * ab[1];
+            if denominator == 0. {
+                continue;
+            }
+            let u = (((pointer[0] - a[0]) * ab[0] + (pointer[1] - a[1]) * ab[1]) / denominator)
+                .clamp(0., 1.);
+            let projected = std::array::from_fn(|axis| a[axis] + u * ab[axis]);
+            let d = distance(pointer, projected);
+            if d < best || (d == best && nearest.is_none()) {
+                best = d;
+                nearest = Some((id, (index as f64 + u) / steps as f64));
+            }
+        }
+    }
+    nearest
+}
 fn point_in_triangle(p: Pos2, t: [Pos2; 3]) -> bool {
     let cross = |a: Vec2, b: Vec2| a.x * b.y - a.y * b.x;
     let area = cross(t[1] - t[0], t[2] - t[0]);
@@ -4193,7 +4854,10 @@ fn main() -> eframe::Result {
 #[cfg(test)]
 mod tests {
     use super::*;
-    fn command_search_action(output: &egui::FullOutput, label: &str) -> egui::accesskit::NodeId {
+    pub(super) fn command_search_action(
+        output: &egui::FullOutput,
+        label: &str,
+    ) -> egui::accesskit::NodeId {
         use egui::accesskit::{Action, Role};
         let nodes = &output
             .platform_output
@@ -10331,6 +10995,791 @@ mod pattern_import_tests {
 }
 
 #[cfg(test)]
+mod physical_sewing_tests {
+    use super::*;
+    use egui::accesskit::{Action, ActionData, ActionRequest, NodeId, TreeId};
+
+    fn frame(ctx: &egui::Context, app: &mut Studio, events: Vec<egui::Event>) -> egui::FullOutput {
+        ctx.run_ui(
+            egui::RawInput {
+                screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1640., 1600.))),
+                events,
+                ..Default::default()
+            },
+            |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+        )
+    }
+    fn action(target_node: NodeId, action: Action, data: Option<ActionData>) -> egui::Event {
+        egui::Event::AccessKitActionRequest(ActionRequest {
+            target_node,
+            action,
+            data,
+            target_tree: TreeId::ROOT,
+        })
+    }
+    fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+        egui::Event::Key {
+            key,
+            physical_key: None,
+            pressed: true,
+            repeat: false,
+            modifiers,
+        }
+    }
+    fn button(output: &egui::FullOutput, label: &str) -> NodeId {
+        output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .rfind(|(_, node)| {
+                node.label() == Some(label)
+                    && node.supports_action(Action::Click)
+                    && !node.is_disabled()
+            })
+            .unwrap_or_else(|| panic!("missing enabled button {label}"))
+            .0
+    }
+    fn click(ctx: &egui::Context, app: &mut Studio, label: &str) {
+        let output = frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![action(button(&output, label), Action::Click, None)],
+        );
+    }
+    fn field(output: &egui::FullOutput, label: &str) -> NodeId {
+        let nodes = &output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes;
+        let labels: Vec<_> = nodes
+            .iter()
+            .filter(|(_, node)| node.label() == Some(label) || node.value() == Some(label))
+            .map(|(id, _)| *id)
+            .collect();
+        nodes
+            .iter()
+            .find(|(_, node)| {
+                node.role() == egui::accesskit::Role::TextInput
+                    && !node.is_disabled()
+                    && node.labelled_by().iter().any(|id| labels.contains(id))
+            })
+            .unwrap_or_else(|| panic!("missing labelled text field {label}"))
+            .0
+    }
+    fn type_field(ctx: &egui::Context, app: &mut Studio, label: &str, text: &str) -> egui::Id {
+        let output = frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![action(field(&output, label), Action::Focus, None)],
+        );
+        frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text(text.into()),
+                key(egui::Key::ArrowLeft, egui::Modifiers::NONE),
+            ],
+        );
+        ctx.memory(|memory| memory.focused())
+            .expect("text field focus")
+    }
+    fn pointer(
+        ctx: &egui::Context,
+        app: &mut Studio,
+        pos: Pos2,
+        button: egui::PointerButton,
+        pressed: bool,
+    ) -> egui::FullOutput {
+        frame(
+            ctx,
+            app,
+            vec![
+                egui::Event::PointerMoved(pos),
+                egui::Event::PointerButton {
+                    pos,
+                    button,
+                    pressed,
+                    modifiers: egui::Modifiers::NONE,
+                },
+            ],
+        )
+    }
+    fn pointer_click(
+        ctx: &egui::Context,
+        app: &mut Studio,
+        pos: Pos2,
+        button: egui::PointerButton,
+    ) {
+        pointer(ctx, app, pos, button, true);
+        pointer(ctx, app, pos, button, false);
+    }
+    fn button_position(output: &egui::FullOutput, label: &str) -> Pos2 {
+        let id = button(output, label);
+        let bounds = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(node, _)| *node == id)
+            .unwrap()
+            .1
+            .bounds()
+            .unwrap();
+        Pos2::new(
+            ((bounds.x0 + bounds.x1) * 0.5) as f32,
+            ((bounds.y0 + bounds.y1) * 0.5) as f32,
+        )
+    }
+    fn fixture() -> Studio {
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.editor
+            .execute(Command::AddPolygon {
+                name: "Analytic curved panel".into(),
+                vertices: vec![[0., 0.], [0.2, 0.1], [0.2, 0.3], [0., 0.3]],
+            })
+            .unwrap();
+        let piece = app.editor.project.pieces[0].id;
+        let curve = app.editor.project.pieces[0].boundary[0];
+        for command in [
+            Command::SetCurveControls {
+                curve,
+                controls: Some([[0.2 / 3., 0.], [0.4 / 3., 0.1 / 3.]]),
+            },
+            Command::AddRectangle {
+                name: "Straight panel".into(),
+                origin: [0.4, 0.],
+                width: 0.2,
+                height: 0.3,
+            },
+            Command::SetGrain { piece, angle: 0.37 },
+            Command::SetGrain { piece, angle: 0.39 },
+        ] {
+            app.editor.execute(command).unwrap();
+        }
+        assert!(app.editor.undo());
+        app.selected = Some(piece);
+        app.selected_curve = Some(curve);
+        app.tool = Tool::FreeSewing;
+        app.center = [0.3, 0.15];
+        app.scale = 700.;
+        let mesh = Arc::new(app.editor.project.mesh().unwrap());
+        app.cloth = Some(Arc::new(
+            weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap(),
+        ));
+        app.mesh = Some(mesh);
+        app
+    }
+    fn new_context() -> egui::Context {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        ctx
+    }
+    fn accept_a(ctx: &egui::Context, app: &mut Studio) {
+        click(ctx, app, "Create Sewing Line");
+        type_field(ctx, app, "Length", "100");
+        click(ctx, app, "Forward (increasing t)");
+        click(ctx, app, "OK");
+        assert!(
+            app.free_sewing
+                .as_ref()
+                .is_some_and(|draft| draft.selecting_b && !draft.modal)
+        );
+    }
+    fn choose_boundary(ctx: &egui::Context, app: &mut Studio, from: Id, to: Id) {
+        let output = frame(ctx, app, vec![]);
+        let value = format!("Curve #{from}");
+        let combo = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| {
+                node.value() == Some(value.as_str())
+                    && node.supports_action(Action::Click)
+                    && !node.is_disabled()
+            })
+            .unwrap()
+            .0;
+        frame(ctx, app, vec![action(combo, Action::Click, None)]);
+        click(ctx, app, &format!("Straight panel · boundary 1 · #{to}"));
+    }
+    fn property_text(ctx: &egui::Context, app: &mut Studio, text: &str) -> egui::Id {
+        let output = frame(ctx, app, vec![]);
+        let id = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| node.numeric_value() == Some(0.37))
+            .unwrap()
+            .0;
+        frame(ctx, app, vec![action(id, Action::Focus, None)]);
+        frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text(text.into()),
+                key(egui::Key::ArrowLeft, egui::Modifiers::NONE),
+            ],
+        );
+        numeric_focus(ctx).unwrap()
+    }
+
+    #[test]
+    fn free_sewing_pick_preserves_endpoints_ties_and_unsnapped_chord_projection() {
+        let mut app = fixture();
+        let a = app.editor.project.pieces[0].boundary[0];
+        let closing = app.editor.project.pieces[0].boundary[3];
+        let b = app.editor.project.pieces[1].boundary[0];
+        assert_eq!(
+            free_sewing_pick(&app.editor.project, [0., 0.], 0.012, None, None),
+            Some((a, 0.))
+        );
+        assert_eq!(
+            free_sewing_pick(&app.editor.project, [0., 0.], 0.012, Some(closing), None),
+            Some((closing, 1.))
+        );
+        assert_eq!(
+            free_sewing_pick(&app.editor.project, [0.001, 0.0001], 0.012, None, None),
+            Some((a, 0.))
+        );
+        let line_t = 0.713_271_828_182_845;
+        let (_, projected) = free_sewing_pick(
+            &app.editor.project,
+            [0.4 + 0.2 * line_t, 0.0001],
+            0.012,
+            None,
+            Some(b),
+        )
+        .unwrap();
+        assert!((projected - line_t).abs() < 1e-14);
+        let curve = app.editor.project.curve(a).unwrap();
+        let (p, q) = (
+            curve.evaluate(&app.editor.project, 11. / 24.).unwrap(),
+            curve.evaluate(&app.editor.project, 12. / 24.).unwrap(),
+        );
+        let u = 0.371_828_182_845;
+        let point = std::array::from_fn(|axis| p[axis] + u * (q[axis] - p[axis]));
+        let (_, t) = free_sewing_pick(&app.editor.project, point, 0.012, None, Some(a)).unwrap();
+        assert!((t - (11. + u) / 24.).abs() < 1e-14);
+        assert!(free_sewing_pick(&app.editor.project, [3., 3.], 0.012, None, None).is_none());
+        // Coincident pieces retain authored order unless a boundary is explicitly selected.
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Coincident original panel".into(),
+                origin: [0.4, 0.],
+                width: 0.2,
+                height: 0.3,
+            })
+            .unwrap();
+        let c = app.editor.project.pieces[2].boundary[0];
+        assert_eq!(
+            free_sewing_pick(&app.editor.project, [0.4, 0.], 0.012, None, None),
+            Some((b, 0.))
+        );
+        assert_eq!(
+            free_sewing_pick(&app.editor.project, [0.4, 0.], 0.012, Some(c), None),
+            Some((c, 0.))
+        );
+    }
+
+    #[test]
+    fn free_sewing_pointer_tab_ok_creates_one_physical_pair_and_two_applied_labels() {
+        let ctx = new_context();
+        let mut app = fixture();
+        let before = app.editor.clone();
+        let a = before.project.pieces[0].boundary[0];
+        let b = before.project.pieces[1].boundary[0];
+        let mut pending = InspectorDraft::new(&before.project, app.selected, app.selected_curve);
+        pending.resolution = 0.025;
+        app.draft = Some(pending);
+        frame(&ctx, &mut app, vec![]);
+        frame(&ctx, &mut app, vec![]);
+        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        let pos = app.to_screen([0., 0.], rect);
+        pointer_click(&ctx, &mut app, pos, egui::PointerButton::Primary);
+        assert_eq!(app.free_sewing.as_ref().unwrap().sides[0].start_t, "0");
+        let pos = app.to_screen([0.16, 0.064], rect);
+        pointer_click(&ctx, &mut app, pos, egui::PointerButton::Secondary);
+        assert!(app.free_sewing.as_ref().unwrap().modal);
+        assert!(
+            app.free_sewing.as_ref().unwrap().sides[0]
+                .length_mm
+                .parse::<f64>()
+                .unwrap()
+                > 100.
+        );
+        type_field(&ctx, &mut app, "Length", "100");
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+        );
+        let output = frame(&ctx, &mut app, vec![]);
+        let ok = button_position(&output, "OK");
+        for pressed in [true, false] {
+            pointer(&ctx, &mut app, ok, egui::PointerButton::Primary, pressed);
+            assert_eq!(format!("{:?}", app.editor), format!("{before:?}"));
+        }
+        assert!(app.free_sewing.as_ref().unwrap().selecting_b);
+        assert!(!app.dirty && app.editor.can_redo());
+        frame(&ctx, &mut app, vec![]);
+        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        let pos = app.to_screen([0.55, 0.], rect);
+        pointer_click(&ctx, &mut app, pos, egui::PointerButton::Primary);
+        assert!(
+            (app.free_sewing.as_ref().unwrap().sides[1]
+                .start_t
+                .parse::<f64>()
+                .unwrap()
+                - 0.75)
+                .abs()
+                < 1e-6
+        );
+        let pos = app.to_screen([0.45, 0.], rect);
+        pointer_click(&ctx, &mut app, pos, egui::PointerButton::Secondary);
+        type_field(&ctx, &mut app, "Start t", "0.75");
+        type_field(&ctx, &mut app, "Length", "100");
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+        );
+        click(&ctx, &mut app, "OK");
+        assert!(app.free_sewing.is_none());
+        let mut expected = before.clone();
+        expected
+            .execute(Command::Transaction(vec![
+                Command::SetResolution { metres: 0.025 },
+                Command::AddSewingByLength {
+                    name: "Free sewing 1".into(),
+                    a: SewingSideByLength {
+                        curve: a,
+                        start_t: 0.,
+                        direction: SewingDirection::Forward,
+                        length_m: 0.1,
+                    },
+                    b: SewingSideByLength {
+                        curve: b,
+                        start_t: 0.75,
+                        direction: SewingDirection::Reverse,
+                        length_m: 0.1,
+                    },
+                },
+            ]))
+            .unwrap();
+        assert_eq!(format!("{:?}", app.editor), format!("{expected:?}"));
+        let group = app.editor.project.sewing_groups[0].clone();
+        assert!((group.a[0].t1 - 0.481_944_556_456_328_4).abs() < 1e-7);
+        app.needs_mesh = false;
+        app.cloth = None;
+        app.mesh = Some(Arc::new(app.editor.project.mesh().unwrap()));
+        let output = frame(&ctx, &mut app, vec![]);
+        for label in ["A applied · 100.0 mm", "B applied · 100.0 mm"] {
+            assert!(output.shapes.iter().any(|shape| matches!(&shape.shape, egui::Shape::Text(text) if text.galley.job.text == label)), "missing canvas label {label}");
+        }
+        let guides = output.shapes.iter().filter(|shape| matches!(&shape.shape, egui::Shape::LineSegment { stroke, .. } if stroke.color == Color32::from_rgb(125, 165, 235))).count();
+        assert_eq!(guides, 2);
+        app.history(&ctx, false);
+        assert!(app.editor.project.sewing_groups.is_empty());
+        assert_eq!(app.editor.project.resolution, before.project.resolution);
+        app.history(&ctx, true);
+        assert_eq!(app.editor.project.sewing_groups, vec![group]);
+    }
+
+    #[test]
+    fn free_sewing_accessible_exact_controls_and_equal_click_require_direction() {
+        let ctx = new_context();
+        let mut app = fixture();
+        app.tool = Tool::Select;
+        app.search = true;
+        app.query = "Free sewing".into();
+        let before = format!("{:?}", app.editor);
+        frame(&ctx, &mut app, vec![]);
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(
+                tests::command_search_action(&output, "Free sewing"),
+                Action::Click,
+                None,
+            )],
+        );
+        assert!(app.tool == Tool::FreeSewing && !app.search);
+        assert_eq!(format!("{:?}", app.editor), before);
+        click(&ctx, &mut app, "Create Sewing Line");
+        type_field(&ctx, &mut app, "Start t", "0.8");
+        type_field(&ctx, &mut app, "Length", "100");
+        click(&ctx, &mut app, "OK");
+        assert!(
+            app.free_sewing
+                .as_ref()
+                .unwrap()
+                .error
+                .as_ref()
+                .unwrap()
+                .contains("explicitly")
+        );
+        click(&ctx, &mut app, "Reverse (decreasing t)");
+        click(&ctx, &mut app, "OK");
+        let draft = app.free_sewing.as_ref().unwrap();
+        let a = draft.preview.as_ref().unwrap().resolved[0]
+            .as_ref()
+            .unwrap();
+        assert!((a.interval.t1 - 0.370_288_198_499_144_4).abs() < 1e-7);
+        let output = frame(&ctx, &mut app, vec![]);
+        assert!(output.shapes.iter().any(|shape| matches!(&shape.shape, egui::Shape::Text(text) if text.galley.job.text == "A pending · 100.0 mm")));
+        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        let pos = app.to_screen([0.55, 0.], rect);
+        pointer_click(&ctx, &mut app, pos, egui::PointerButton::Primary);
+        pointer_click(&ctx, &mut app, pos, egui::PointerButton::Secondary);
+        let draft = app.free_sewing.as_ref().unwrap();
+        assert!(draft.sides[1].direction.is_none() && draft.error.is_some());
+        click(&ctx, &mut app, "Close");
+        assert!(app.free_sewing.is_none());
+        assert_eq!(format!("{:?}", app.editor), before);
+    }
+
+    #[test]
+    fn free_sewing_accessible_boundary_and_enter_resolve_against_pending_construction() {
+        let ctx = new_context();
+        let mut app = fixture();
+        let before = app.editor.clone();
+        let a = before.project.pieces[0].boundary[0];
+        let b = before.project.pieces[1].boundary[0];
+        let mut draft = InspectorDraft::new(&before.project, app.selected, app.selected_curve);
+        draft.curve.as_mut().unwrap().controls = Some([[0.01, 0.04], [0.19, 0.09]]);
+        let mut commands = draft.commands(&before.project);
+        app.draft = Some(draft);
+        accept_a(&ctx, &mut app);
+        assert_eq!(format!("{:?}", app.editor), format!("{before:?}"));
+        click(&ctx, &mut app, "Create Sewing Line");
+        choose_boundary(&ctx, &mut app, a, b);
+        type_field(&ctx, &mut app, "Start t", "0.1");
+        type_field(&ctx, &mut app, "Length", "100");
+        click(&ctx, &mut app, "Forward (increasing t)");
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+        );
+        assert!(app.free_sewing.is_none());
+        commands.push(Command::AddSewingByLength {
+            name: "Free sewing 1".into(),
+            a: SewingSideByLength {
+                curve: a,
+                start_t: 0.,
+                direction: SewingDirection::Forward,
+                length_m: 0.1,
+            },
+            b: SewingSideByLength {
+                curve: b,
+                start_t: 0.1,
+                direction: SewingDirection::Forward,
+                length_m: 0.1,
+            },
+        });
+        let mut expected = before;
+        expected.execute(Command::Transaction(commands)).unwrap();
+        assert_eq!(format!("{:?}", app.editor), format!("{expected:?}"));
+        assert!(
+            (app.editor.project.sewing_groups[0].a[0].t1 - 0.481_944_556_456_328_4).abs() > 0.01
+        );
+        assert!((app.editor.project.sewing_groups[0].b[0].t1 - 0.6).abs() < 1e-14);
+    }
+
+    #[test]
+    fn free_sewing_invalid_property_and_tool_switch_preserve_unfinished_property_text() {
+        let ctx = new_context();
+        let mut app = fixture();
+        let property = property_text(&ctx, &mut app, "-");
+        let before = format!("{:?}", app.editor);
+        let raw = ctx.data_mut(|data| data.get_temp::<String>(property));
+        let caret = egui::TextEdit::load_state(&ctx, property)
+            .unwrap()
+            .cursor
+            .char_range();
+        click(&ctx, &mut app, "Create Sewing Line");
+        type_field(&ctx, &mut app, "Length", "100");
+        click(&ctx, &mut app, "Forward (increasing t)");
+        click(&ctx, &mut app, "OK");
+        assert!(
+            app.free_sewing
+                .as_ref()
+                .unwrap()
+                .error
+                .as_ref()
+                .unwrap()
+                .contains("pending property")
+        );
+        click(&ctx, &mut app, "Cancel");
+        let output = frame(&ctx, &mut app, vec![]);
+        let pos = button_position(&output, "Select / edit");
+        for pressed in [true, false] {
+            pointer(&ctx, &mut app, pos, egui::PointerButton::Primary, pressed);
+            assert_eq!(format!("{:?}", app.editor), before);
+        }
+        for _ in 0..4 {
+            frame(&ctx, &mut app, vec![]);
+            assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(property)), raw);
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, property)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            assert_eq!(format!("{:?}", app.editor), before);
+        }
+        assert!(app.tool == Tool::Select && app.editor.can_redo() && !app.dirty);
+    }
+
+    #[test]
+    fn free_sewing_failure_and_cancel_retain_raw_text_carets_redo_and_accepted_state() {
+        for stage_b in [false, true] {
+            for cancel in ["Cancel", "Close", "Escape"] {
+                let ctx = new_context();
+                let mut app = fixture();
+                if stage_b {
+                    accept_a(&ctx, &mut app);
+                }
+                let property = property_text(&ctx, &mut app, "0.47");
+                let raw = ctx.data_mut(|data| data.get_temp::<String>(property));
+                let caret = egui::TextEdit::load_state(&ctx, property)
+                    .unwrap()
+                    .cursor
+                    .char_range();
+                let before = format!("{:?}", app.editor);
+                let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+                let mesh = app.mesh.as_ref().unwrap().clone();
+                let cloth = app.cloth.as_ref().unwrap().clone();
+                let output = frame(&ctx, &mut app, vec![]);
+                pointer_click(
+                    &ctx,
+                    &mut app,
+                    button_position(&output, "Create Sewing Line"),
+                    egui::PointerButton::Primary,
+                );
+                let modal_field = type_field(&ctx, &mut app, "Length", "1e-");
+                let modal_caret = egui::TextEdit::load_state(&ctx, modal_field)
+                    .unwrap()
+                    .cursor
+                    .char_range();
+                let output = frame(&ctx, &mut app, vec![]);
+                let ok = button_position(&output, "OK");
+                for pressed in [true, false] {
+                    pointer(&ctx, &mut app, ok, egui::PointerButton::Primary, pressed);
+                    assert_eq!(format!("{:?}", app.editor), before);
+                }
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, vec![]);
+                    let draft = app.free_sewing.as_ref().unwrap();
+                    assert!(draft.modal && draft.error.is_some());
+                    assert_eq!(draft.sides[usize::from(stage_b)].length_mm, "1e-");
+                    assert_eq!(
+                        egui::TextEdit::load_state(&ctx, modal_field)
+                            .unwrap()
+                            .cursor
+                            .char_range(),
+                        modal_caret
+                    );
+                    assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(property)), raw);
+                    assert_eq!(
+                        egui::TextEdit::load_state(&ctx, property)
+                            .unwrap()
+                            .cursor
+                            .char_range(),
+                        caret
+                    );
+                    assert_eq!(
+                        app.draft.as_ref().unwrap().commands(&app.editor.project),
+                        pending
+                    );
+                    assert_eq!(format!("{:?}", app.editor), before);
+                }
+                if cancel == "Escape" {
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+                    );
+                } else {
+                    let output = frame(&ctx, &mut app, vec![]);
+                    let pos = button_position(&output, cancel);
+                    for pressed in [true, false] {
+                        pointer(&ctx, &mut app, pos, egui::PointerButton::Primary, pressed);
+                        assert_eq!(format!("{:?}", app.editor), before);
+                    }
+                }
+                assert!(app.free_sewing.is_none());
+                for _ in 0..4 {
+                    frame(&ctx, &mut app, vec![]);
+                    assert_eq!(format!("{:?}", app.editor), before);
+                    assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(property)), raw);
+                    assert_eq!(
+                        egui::TextEdit::load_state(&ctx, property)
+                            .unwrap()
+                            .cursor
+                            .char_range(),
+                        caret
+                    );
+                    assert_eq!(
+                        app.draft.as_ref().unwrap().commands(&app.editor.project),
+                        pending
+                    );
+                    assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+                    assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+                    assert!(!app.dirty && !app.needs_mesh && app.editor.can_redo());
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn free_sewing_modal_shields_background_and_rejects_overlap_without_history_loss() {
+        let ctx = new_context();
+        let mut app = fixture();
+        let output = frame(&ctx, &mut app, vec![]);
+        let add = button(&output, "Add ellipse");
+        let undo = button(&output, "Undo");
+        let numeric = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| node.numeric_value() == Some(0.37))
+            .unwrap()
+            .0;
+        accept_a(&ctx, &mut app);
+        click(&ctx, &mut app, "Create Sewing Line");
+        let before = format!("{:?}", app.editor);
+        frame(
+            &ctx,
+            &mut app,
+            vec![
+                action(add, Action::Click, None),
+                action(undo, Action::Click, None),
+                action(
+                    numeric,
+                    Action::SetValue,
+                    Some(ActionData::NumericValue(0.9)),
+                ),
+                key(egui::Key::Space, egui::Modifiers::NONE),
+            ],
+        );
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert!(!app.playing && app.job.is_none());
+        type_field(&ctx, &mut app, "Length", "100");
+        click(&ctx, &mut app, "Forward (increasing t)");
+        click(&ctx, &mut app, "OK");
+        assert!(app.free_sewing.as_ref().unwrap().error.is_some());
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert!(app.editor.can_redo());
+        click(&ctx, &mut app, "Cancel");
+        for _ in 0..3 {
+            frame(&ctx, &mut app, vec![]);
+        }
+        assert_eq!(format!("{:?}", app.editor), before);
+        let output = frame(&ctx, &mut app, vec![]);
+        let background = button_position(&output, "Add ellipse");
+        click(&ctx, &mut app, "Create Sewing Line");
+        for pressed in [true, false] {
+            pointer(
+                &ctx,
+                &mut app,
+                background,
+                egui::PointerButton::Primary,
+                pressed,
+            );
+            assert_eq!(format!("{:?}", app.editor), before);
+        }
+        for _ in 0..3 {
+            frame(&ctx, &mut app, vec![]);
+        }
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert!(!app.dirty && app.editor.can_redo());
+    }
+
+    #[test]
+    fn free_sewing_preview_cache_and_revision_reset_load_history_boundaries() {
+        for reset in ["tool", "reset", "history", "stale", "failed-load", "load"] {
+            let ctx = new_context();
+            let mut app = fixture();
+            accept_a(&ctx, &mut app);
+            let before = format!("{:?}", app.editor);
+            frame(&ctx, &mut app, vec![]);
+            let queries = authored_length_tests::query_count();
+            for _ in 0..5 {
+                frame(&ctx, &mut app, vec![]);
+            }
+            assert_eq!(
+                authored_length_tests::query_count(),
+                queries,
+                "steady frames must reuse authored metrics"
+            );
+            match reset {
+                "tool" => app.set_tool(Tool::Select),
+                "reset" => app.reset_gestures(),
+                "history" => app.history(&ctx, false),
+                "stale" => {
+                    app.editor
+                        .execute(Command::SetResolution { metres: 0.03 })
+                        .unwrap();
+                    frame(&ctx, &mut app, vec![]);
+                    assert!(app.message.contains("revision changed"));
+                }
+                "failed-load" => {
+                    app.open(
+                        std::env::temp_dir()
+                            .join("weftforge-no-such-physical-sewing-project.weftforge"),
+                    );
+                    assert!(app.free_sewing.is_some());
+                    assert_eq!(format!("{:?}", app.editor), before);
+                    continue;
+                }
+                "load" => {
+                    let path = std::env::temp_dir().join(format!(
+                        "weftforge-physical-load-{}-{}.weftforge",
+                        std::process::id(),
+                        SystemTime::now()
+                            .duration_since(UNIX_EPOCH)
+                            .unwrap()
+                            .as_nanos()
+                    ));
+                    app.editor.project.save(&path).unwrap();
+                    app.open(path.clone());
+                    fs::remove_file(path).unwrap();
+                }
+                _ => unreachable!(),
+            }
+            assert!(app.free_sewing.is_none());
+            assert!(app.editor.project.sewing_groups.is_empty());
+        }
+    }
+}
+
+#[cfg(test)]
 mod pattern_framing_tests {
     use super::*;
     use egui::accesskit::{Action, ActionRequest, TreeId};
@@ -11730,6 +13179,9 @@ mod authored_length_tests {
     thread_local! { static QUERIES: Cell<usize> = const { Cell::new(0) }; }
     pub(super) fn record_query() {
         QUERIES.set(QUERIES.get() + 1);
+    }
+    pub(super) fn query_count() -> usize {
+        QUERIES.get()
     }
 
     fn scene() -> Studio {
