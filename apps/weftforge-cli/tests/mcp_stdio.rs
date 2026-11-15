@@ -318,7 +318,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
             .as_array()
             .unwrap()
             .len(),
-        25
+        26
     );
     success(&server.call("project_create", json!({"output":project_path})));
     let initial = server.call("project_inspect", json!({"path":project_path}));
@@ -455,7 +455,7 @@ fn sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constrai
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 25);
+    assert_eq!(variants.len(), 26);
     for name in [
         "add_sewing_group",
         "update_sewing_group",
@@ -606,6 +606,290 @@ fn cli_command_files_are_bounded_strict_and_do_not_replace_failed_destinations()
         assert_eq!(fs::read(&output).unwrap(), original);
         assert!(!recovery_path(&output).exists());
     }
+}
+
+fn physical_sewing_input() -> (Editor, u64, u64, Command) {
+    use weftforge_core::{SewingDirection, SewingSideByLength};
+    let mut editor = Editor::default();
+    editor
+        .execute(Command::AddPolygon {
+            name: "Original physical-length curved panel".into(),
+            vertices: vec![[0., 0.], [0.2, 0.1], [0.2, 0.3], [0., 0.3]],
+        })
+        .unwrap();
+    editor
+        .execute(Command::AddRectangle {
+            name: "Original physical-length straight panel".into(),
+            origin: [0.4, 0.],
+            width: 0.2,
+            height: 0.3,
+        })
+        .unwrap();
+    let a = editor.project.pieces[0].boundary[0];
+    let b = editor.project.pieces[1].boundary[0];
+    let command = Command::AddSewingByLength {
+        name: "Original physical 100 mm pair".into(),
+        a: SewingSideByLength {
+            curve: a,
+            start_t: 0.,
+            direction: SewingDirection::Forward,
+            length_m: 0.1,
+        },
+        b: SewingSideByLength {
+            curve: b,
+            start_t: 0.75,
+            direction: SewingDirection::Reverse,
+            length_m: 0.1,
+        },
+    };
+    (editor, a, b, command)
+}
+
+#[test]
+fn physical_length_sewing_schema_and_cli_mcp_use_the_shared_candidate_transaction() {
+    let directory = Directory::new();
+    let input = directory.path("original.weftforge");
+    let output = directory.path("mcp.weftforge");
+    let cli_output = directory.path("cli.weftforge");
+    let command_file = directory.path("commands.json");
+    let (mut editor, a, _, command) = physical_sewing_input();
+    editor.project.save(&input).unwrap();
+    let source = fs::read(&input).unwrap();
+    editor.project.save(&output).unwrap();
+    editor.project.save(&cli_output).unwrap();
+    let commands = vec![
+        Command::SetCurveControls {
+            curve: a,
+            controls: Some([[0.2 / 3., 0.], [0.4 / 3., 0.1 / 3.]]),
+        },
+        command,
+    ];
+    let revision = editor.project.revision;
+    editor
+        .execute(Command::Transaction(commands.clone()))
+        .unwrap();
+    assert_eq!(editor.project.revision, revision + 1);
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let listed = server.request("tools/list", json!({}));
+    let tools = listed["result"]["tools"].as_array().unwrap();
+    assert_eq!(tools.len(), 9);
+    let variants = tools
+        .iter()
+        .find(|tool| tool["name"] == "project_execute")
+        .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
+        .as_array()
+        .unwrap();
+    assert_eq!(variants.len(), 26);
+    let variant = variants
+        .iter()
+        .find(|variant| variant["properties"]["type"]["const"] == "add_sewing_by_length")
+        .unwrap();
+    assert_eq!(variant["additionalProperties"], false);
+    let data = &variant["properties"]["data"];
+    assert_eq!(data["additionalProperties"], false);
+    assert_eq!(data["required"], json!(["name", "a", "b"]));
+    for side in ["a", "b"] {
+        let schema = &data["properties"][side];
+        assert_eq!(schema["additionalProperties"], false);
+        assert_eq!(
+            schema["required"],
+            json!(["curve", "start_t", "direction", "length_m"])
+        );
+        assert_eq!(schema["properties"]["start_t"]["minimum"], 0);
+        assert_eq!(schema["properties"]["start_t"]["maximum"], 1);
+        assert_eq!(
+            schema["properties"]["direction"]["enum"],
+            json!(["forward", "reverse"])
+        );
+        assert_eq!(schema["properties"]["length_m"]["exclusiveMinimum"], 0);
+    }
+    let response = server.call(
+        "project_execute",
+        json!({"input":input,"output":output,"commands":commands}),
+    );
+    assert_eq!(success(&response)["commands_applied"], 2);
+    assert_eq!(success(&response)["revision"], revision + 1);
+    assert_eq!(Project::load(&output).unwrap(), editor.project);
+    assert_eq!(
+        fs::read(&output).unwrap(),
+        editor.project.to_json().unwrap()
+    );
+    fs::write(&command_file, serde_json::to_vec(&commands).unwrap()).unwrap();
+    let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+        .arg("execute")
+        .arg(&input)
+        .arg(&cli_output)
+        .arg(&command_file)
+        .output()
+        .unwrap();
+    assert!(
+        cli.status.success(),
+        "{}",
+        String::from_utf8_lossy(&cli.stderr)
+    );
+    assert_eq!(fs::read(&output).unwrap(), fs::read(&cli_output).unwrap());
+    assert_eq!(fs::read(recovery_path(&output)).unwrap(), source);
+    assert_eq!(fs::read(recovery_path(&cli_output)).unwrap(), source);
+    assert_eq!(fs::read(&input).unwrap(), source);
+    let group = &editor.project.sewing_groups[0];
+    assert!((group.a[0].t1 - 0.4819445564563284).abs() < 1e-8);
+    assert!((group.b[0].t1 - 0.25).abs() < 1e-14);
+    let inspected = server.call("project_inspect", json!({"path":output}));
+    assert_eq!(
+        success(&inspected)["project"],
+        native_project_json(&editor.project)
+    );
+    let saved: Value = serde_json::from_slice(&fs::read(&output).unwrap()).unwrap();
+    assert_eq!(saved["version"], 3);
+    for side in ["a", "b"] {
+        assert_eq!(
+            saved["project"]["sewing_groups"][0][side][0]
+                .as_object()
+                .unwrap()
+                .len(),
+            3
+        );
+    }
+    let report = server.call(
+        "project_lengths",
+        json!({"path":output,"query":{"type":"sewing_group","data":{"id":group.id}}}),
+    );
+    for length in success(&report)["lengths_m"].as_array().unwrap() {
+        assert!((length.as_f64().unwrap() - 0.1).abs() < 1e-8);
+    }
+    server.finish();
+}
+
+#[test]
+fn physical_length_sewing_rejects_original_strict_payloads_and_preserves_same_file_bytes() {
+    let directory = Directory::new();
+    let path = directory.path("original.weftforge");
+    let command_file = directory.path("commands.json");
+    let (editor, _, _, command) = physical_sewing_input();
+    editor.project.save(&path).unwrap();
+    editor.project.save(&path).unwrap();
+    let primary = fs::read(&path).unwrap();
+    let recovery = fs::read(recovery_path(&path)).unwrap();
+    let valid = json!(command);
+    let mut invalid = Vec::new();
+    for field in ["name", "a", "b"] {
+        let mut missing = valid.clone();
+        missing["data"].as_object_mut().unwrap().remove(field);
+        invalid.push(missing);
+    }
+    for side in ["a", "b"] {
+        for field in ["curve", "start_t", "direction", "length_m"] {
+            let mut missing = valid.clone();
+            missing["data"][side].as_object_mut().unwrap().remove(field);
+            invalid.push(missing);
+        }
+        for (field, value) in [
+            ("curve", json!(u64::MAX)),
+            ("curve", json!(null)),
+            ("start_t", json!(-0.1)),
+            ("start_t", json!(1.1)),
+            ("start_t", json!(null)),
+            ("direction", json!("Forward")),
+            ("direction", json!(1)),
+            ("direction", json!(null)),
+            ("length_m", json!(0)),
+            ("length_m", json!(-0.1)),
+            ("length_m", json!(1e300)),
+            ("length_m", json!(1e-12)),
+            ("length_m", json!("NaN")),
+            ("extra", json!(true)),
+        ] {
+            let mut bad = valid.clone();
+            bad["data"][side][field] = value;
+            invalid.push(bad);
+        }
+    }
+    let mut overlapping = valid.clone();
+    overlapping["data"]["b"] = overlapping["data"]["a"].clone();
+    invalid.push(overlapping);
+    let mut invalid_name = valid.clone();
+    invalid_name["data"]["name"] = json!("");
+    invalid.push(invalid_name);
+    let mut extra = valid.clone();
+    extra["data"]["extra"] = json!(true);
+    invalid.push(extra);
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    for bad in invalid {
+        let commands = json!([{"type":"set_resolution","data":{"metres":0.09}}, bad]);
+        tool_error(&server.call(
+            "project_execute",
+            json!({"input":path,"output":path,"commands":commands}),
+        ));
+        fs::write(&command_file, serde_json::to_vec(&commands).unwrap()).unwrap();
+        let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+            .arg("execute")
+            .arg(&path)
+            .arg(&path)
+            .arg(&command_file)
+            .output()
+            .unwrap();
+        assert!(!cli.status.success(), "{commands}");
+        assert_eq!(fs::read(&path).unwrap(), primary);
+        assert_eq!(fs::read(recovery_path(&path)).unwrap(), recovery);
+    }
+    let raw = json!({"jsonrpc":"2.0","id":"strict-physical-length","method":"tools/call","params":{"name":"project_execute","arguments":{"input":path,"output":path,"commands":[valid]}}}).to_string();
+    for (token, replacement) in [
+        ("\"length_m\":0.1", "\"length_m\":1e400"),
+        ("\"length_m\":0.1", "\"length_m\":0.1,\"length_m\":0.2"),
+        (
+            "\"direction\":\"forward\"",
+            "\"direction\":\"forward\",\"direction\":\"reverse\"",
+        ),
+        ("\"start_t\":0.0", "\"start_t\":0.0,\"start_t\":0.1"),
+    ] {
+        let request = raw.replace(token, replacement);
+        assert_ne!(request, raw);
+        server.send(&request);
+        let result = server.receive();
+        assert!(
+            result.get("error").is_some() || result["result"]["isError"] == true,
+            "{result}"
+        );
+        fs::write(
+            &command_file,
+            format!("[{}]", valid.to_string().replace(token, replacement)),
+        )
+        .unwrap();
+        let cli = Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+            .arg("execute")
+            .arg(&path)
+            .arg(&path)
+            .arg(&command_file)
+            .output()
+            .unwrap();
+        assert!(!cli.status.success());
+        assert_eq!(fs::read(&path).unwrap(), primary);
+        assert_eq!(fs::read(recovery_path(&path)).unwrap(), recovery);
+    }
+    let folder = directory.path("folder.weftforge");
+    fs::create_dir(&folder).unwrap();
+    fs::write(folder.join("retained"), b"folder contents").unwrap();
+    fs::write(recovery_path(&folder), &recovery).unwrap();
+    tool_error(&server.call(
+        "project_execute",
+        json!({"input":path,"output":folder,"commands":[valid]}),
+    ));
+    assert_eq!(
+        fs::read(folder.join("retained")).unwrap(),
+        b"folder contents"
+    );
+    assert_eq!(fs::read(recovery_path(&folder)).unwrap(), recovery);
+    assert_eq!(fs::read(&path).unwrap(), primary);
+    assert_eq!(fs::read(recovery_path(&path)).unwrap(), recovery);
+    success(&server.call(
+        "project_execute",
+        json!({"input":path,"output":path,"commands":[valid]}),
+    ));
+    assert_eq!(Project::load(&path).unwrap().sewing_groups.len(), 1);
+    assert_eq!(fs::read(recovery_path(&path)).unwrap(), primary);
+    server.finish();
 }
 
 #[test]

@@ -1,6 +1,9 @@
 use serde_json::json;
 use std::time::Instant;
-use weftforge_core::{Command, CurveInterval, Editor, Mesh, Project, SewingGroup, WeightedVertex};
+use weftforge_core::{
+    Command, CurveInterval, Editor, Mesh, Project, SewingDirection, SewingGroup,
+    SewingSideByLength, WeightedVertex,
+};
 
 fn interval(curve: u64, t0: f64, t1: f64) -> CurveInterval {
     CurveInterval { curve, t0, t1 }
@@ -1208,4 +1211,418 @@ fn conditioned_short_spans_reject_global_parameter_rounding_before_commit_or_io(
     assert_eq!(editor.project, before);
     assert!(editor.redo());
     std::fs::remove_dir_all(directory).unwrap();
+}
+
+fn physical_length_scene() -> (Editor, u64, u64) {
+    let mut editor = Editor::default();
+    editor
+        .execute(Command::AddPolygon {
+            name: "Original 200 by 300 mm curved panel".into(),
+            vertices: vec![[0., 0.], [0.2, 0.1], [0.2, 0.3], [0., 0.3]],
+        })
+        .unwrap();
+    let a = editor.project.pieces[0].boundary[0];
+    editor
+        .execute(Command::SetCurveControls {
+            curve: a,
+            controls: Some([[0.2 / 3., 0.], [0.4 / 3., 0.1 / 3.]]),
+        })
+        .unwrap();
+    editor
+        .execute(Command::AddRectangle {
+            name: "Original 200 by 300 mm straight panel".into(),
+            origin: [0.4, 0.],
+            width: 0.2,
+            height: 0.3,
+        })
+        .unwrap();
+    let b = editor.project.pieces[1].boundary[0];
+    (editor, a, b)
+}
+
+fn length_side(
+    curve: u64,
+    start_t: f64,
+    direction: SewingDirection,
+    length_m: f64,
+) -> SewingSideByLength {
+    SewingSideByLength {
+        curve,
+        start_t,
+        direction,
+        length_m,
+    }
+}
+
+fn physical_primitive(t: f64) -> f64 {
+    0.1 * (t * (1. + t * t).sqrt() + t.asinh())
+}
+
+fn physical_inverse(length_m: f64) -> f64 {
+    let mut lo = 0.;
+    let mut hi = 1.;
+    for _ in 0..60 {
+        let mid = (lo + hi) * 0.5;
+        if physical_primitive(mid) < length_m {
+            lo = mid;
+        } else {
+            hi = mid;
+        }
+    }
+    (lo + hi) * 0.5
+}
+
+#[test]
+fn physical_length_intervals_match_primitive_and_derivative_oracles_in_both_directions() {
+    use SewingDirection::{Forward, Reverse};
+    let (editor, a, b) = physical_length_scene();
+    let before = format!("{editor:?}");
+    close(physical_primitive(1.), 0.22955871493926383);
+    for (start_t, direction, expected_t) in [
+        (0., Forward, 0.4819445564563284),
+        (0.8, Reverse, 0.3702881984991444),
+    ] {
+        let resolved = editor
+            .project
+            .interval_from_length(length_side(a, start_t, direction, 0.1))
+            .unwrap();
+        assert_eq!(resolved.t0.to_bits(), start_t.to_bits());
+        let target = physical_primitive(start_t) + if direction == Forward { 0.1 } else { -0.1 };
+        let expected = physical_inverse(target);
+        assert!((expected - expected_t).abs() < 1e-14);
+        close_point(
+            point(&editor.project, resolved, true),
+            [0.2 * expected, 0.1 * expected * expected],
+        );
+        close(oracle_length(&editor.project, resolved, resolved.t1), 0.1);
+        close(editor.project.interval_length(resolved).unwrap(), 0.1);
+        let full = interval(a, start_t, if direction == Forward { 1. } else { 0. });
+        let fraction = 0.1 / oracle_length(&editor.project, full, full.t1);
+        close_point(
+            point(&editor.project, resolved, true),
+            editor
+                .project
+                .curve(a)
+                .unwrap()
+                .evaluate(
+                    &editor.project,
+                    oracle_parameter(&editor.project, full, fraction),
+                )
+                .unwrap(),
+        );
+    }
+    for (start_t, direction, expected_t) in [(0.75, Reverse, 0.25), (0.1, Forward, 0.6)] {
+        let resolved = editor
+            .project
+            .interval_from_length(length_side(b, start_t, direction, 0.1))
+            .unwrap();
+        assert!((resolved.t1 - expected_t).abs() < 1e-14);
+        close(oracle_length(&editor.project, resolved, resolved.t1), 0.1);
+    }
+    for curve in [a, b] {
+        for (start_t, direction, end) in [
+            (0., Forward, 1.),
+            (1., Reverse, 0.),
+            (0.37, Forward, 1.),
+            (0.63, Reverse, 0.),
+        ] {
+            let remaining = interval(curve, start_t, end);
+            let length_m = editor.project.interval_length(remaining).unwrap();
+            let resolved = editor
+                .project
+                .interval_from_length(length_side(curve, start_t, direction, length_m))
+                .unwrap();
+            assert_eq!(resolved, remaining);
+            assert!(
+                editor
+                    .project
+                    .interval_from_length(length_side(
+                        curve,
+                        start_t,
+                        direction,
+                        length_m.next_up()
+                    ))
+                    .is_err()
+            );
+        }
+    }
+    assert_eq!(format!("{editor:?}"), before);
+}
+
+#[test]
+fn physical_length_command_is_one_persistent_group_with_physical_correspondence_and_history() {
+    use SewingDirection::{Forward, Reverse};
+    let (mut editor, a, b) = physical_length_scene();
+    editor
+        .execute(Command::AddSeam {
+            name: "Original legacy nonlinear t map".into(),
+            a: interval(a, 0.1, 0.8),
+            b: interval(b, 0.9, 0.1),
+            correspondence: vec![[0., 0.], [0.3, 0.72], [1., 1.]],
+        })
+        .unwrap();
+    let original = editor.project.clone();
+    editor
+        .execute(Command::AddSewingByLength {
+            name: "Original physical 100 mm pair".into(),
+            a: length_side(a, 0., Forward, 0.1),
+            b: length_side(b, 0.75, Reverse, 0.1),
+        })
+        .unwrap();
+    assert_eq!(editor.project.revision, original.revision + 1);
+    assert_eq!(editor.project.seams, original.seams);
+    assert_eq!(editor.project.sewing_groups.len(), 1);
+    let group = editor.project.sewing_groups[0].clone();
+    assert_eq!(group.correspondence, vec![[0., 0.], [1., 1.]]);
+    assert_eq!(group.a.len(), 1);
+    assert_eq!(group.b.len(), 1);
+    assert_eq!(group.a[0].t0, 0.);
+    assert_eq!(group.b[0].t0, 0.75);
+    let geometry = editor.project.sewing_group_geometry(group.id).unwrap();
+    for length in geometry.lengths {
+        close(length, 0.1);
+    }
+    let encoded = editor.project.to_json().unwrap();
+    assert_eq!(
+        serde_json::from_slice::<serde_json::Value>(&encoded).unwrap()["version"],
+        3
+    );
+    assert_eq!(Project::from_json(&encoded).unwrap(), editor.project);
+
+    let mut knots = editor.project.clone();
+    knots.sewing_groups[0].correspondence =
+        vec![[0., 0.], [0.25, 0.25], [0.5, 0.5], [0.75, 0.75], [1., 1.]];
+    let quarters = knots.sewing_group_geometry(group.id).unwrap();
+    for (index, portion) in quarters.portions.iter().enumerate() {
+        for (end, fraction) in [
+            (false, index as f64 * 0.25),
+            (true, (index + 1) as f64 * 0.25),
+        ] {
+            let expected = physical_inverse(0.1 * fraction);
+            close_point(
+                point(&knots, portion.a, end),
+                [0.2 * expected, 0.1 * expected * expected],
+            );
+            close_point(point(&knots, portion.b, end), [0.55 - 0.1 * fraction, 0.]);
+        }
+    }
+    assert!((physical_inverse(0.05) - group.a[0].parameter(0.5)).abs() > 0.005);
+    for resolution in [0.09, 0.025] {
+        let mut project = editor.project.clone();
+        project.resolution = resolution;
+        let mesh = project.mesh().unwrap();
+        assert_eq!(mesh.sewing_groups, vec![geometry.clone()]);
+        for stitch in mesh
+            .stitches
+            .iter()
+            .filter(|stitch| stitch.seam == group.id)
+        {
+            let at = parameter(&mesh, a, stitch.a).unwrap();
+            let bt = parameter(&mesh, b, stitch.b).unwrap();
+            close(physical_primitive(at), (0.75 - bt) * 0.2);
+        }
+        for stitch in mesh
+            .stitches
+            .iter()
+            .filter(|stitch| stitch.seam == original.seams[0].id)
+        {
+            let at = parameter(&mesh, a, stitch.a).unwrap();
+            let bt = parameter(&mesh, b, stitch.b).unwrap();
+            let seam = &original.seams[0];
+            close(
+                (bt - seam.b.t0) / (seam.b.t1 - seam.b.t0),
+                paired((at - seam.a.t0) / (seam.a.t1 - seam.a.t0)),
+            );
+        }
+    }
+    assert!(editor.undo());
+    assert!(editor.project.sewing_groups.is_empty());
+    assert_eq!(editor.project.seams, original.seams);
+    assert!(editor.redo());
+    assert_eq!(editor.project.sewing_groups, vec![group.clone()]);
+    editor
+        .execute(Command::SetCurveControls {
+            curve: a,
+            controls: None,
+        })
+        .unwrap();
+    assert_eq!(editor.project.sewing_groups, vec![group]);
+    assert!(
+        (editor
+            .project
+            .sewing_group_geometry(geometry.id)
+            .unwrap()
+            .lengths[0]
+            - 0.1)
+            .abs()
+            > 1e-5
+    );
+}
+
+#[test]
+fn physical_length_failures_preserve_document_allocator_and_both_history_stacks() {
+    use SewingDirection::{Forward, Reverse};
+    let (mut editor, a, b) = physical_length_scene();
+    editor
+        .execute(Command::SetResolution { metres: 0.09 })
+        .unwrap();
+    assert!(editor.undo());
+    let before = format!("{editor:?}");
+    let bytes = editor.project.to_json().unwrap();
+    let valid_a = length_side(a, 0., Forward, 0.1);
+    let valid_b = length_side(b, 0.75, Reverse, 0.1);
+    let mut invalid = vec![
+        length_side(u64::MAX, 0., Forward, 0.1),
+        length_side(a, 1., Forward, 0.1),
+        length_side(a, 0., Reverse, 0.1),
+        length_side(a, 0., Forward, 1e-12),
+        length_side(a, 0., Forward, 1.),
+    ];
+    for start_t in [-0.1, 1.1, f64::NAN, f64::INFINITY, f64::NEG_INFINITY] {
+        invalid.push(SewingSideByLength { start_t, ..valid_a });
+    }
+    for length_m in [
+        0.,
+        -0.1,
+        f64::NAN,
+        f64::INFINITY,
+        f64::NEG_INFINITY,
+        f64::MAX,
+    ] {
+        invalid.push(SewingSideByLength {
+            length_m,
+            ..valid_a
+        });
+    }
+    for side in invalid {
+        assert!(editor.project.interval_from_length(side).is_err());
+        for (a, b) in [(side, valid_b), (valid_a, side)] {
+            assert!(
+                editor
+                    .execute(Command::AddSewingByLength {
+                        name: "Rejected pair".into(),
+                        a,
+                        b
+                    })
+                    .is_err()
+            );
+            assert_eq!(format!("{editor:?}"), before);
+            assert_eq!(editor.project.to_json().unwrap(), bytes);
+        }
+    }
+    for name in ["", " ", "Bad\nname", &"x".repeat(257)] {
+        assert!(
+            editor
+                .execute(Command::AddSewingByLength {
+                    name: name.into(),
+                    a: valid_a,
+                    b: valid_b
+                })
+                .is_err()
+        );
+        assert_eq!(format!("{editor:?}"), before);
+    }
+    assert!(
+        editor
+            .execute(Command::AddSewingByLength {
+                name: "Overlap".into(),
+                a: valid_a,
+                b: valid_a
+            })
+            .unwrap_err()
+            .0
+            .contains("overlaps")
+    );
+    assert_eq!(format!("{editor:?}"), before);
+    assert!(
+        editor
+            .execute(Command::AddSewingByLength {
+                name: "Unresolvable proportion".into(),
+                a: valid_a,
+                b: length_side(b, 0., Forward, 1e-8)
+            })
+            .unwrap_err()
+            .0
+            .contains("precision budget")
+    );
+    assert_eq!(format!("{editor:?}"), before);
+    assert!(
+        editor
+            .execute(Command::Transaction(vec![
+                Command::SetCurveControls {
+                    curve: a,
+                    controls: None
+                },
+                Command::AddSewingByLength {
+                    name: "Rejected second side".into(),
+                    a: valid_a,
+                    b: length_side(b, 1., Forward, 0.1)
+                },
+            ]))
+            .is_err()
+    );
+    assert_eq!(format!("{editor:?}"), before);
+    for field in ["next_id", "revision"] {
+        let mut document: serde_json::Value = serde_json::from_slice(&bytes).unwrap();
+        document["project"][field] = json!(u64::MAX);
+        let mut exhausted =
+            Editor::new(Project::from_json(&serde_json::to_vec(&document).unwrap()).unwrap())
+                .unwrap();
+        let unchanged = format!("{exhausted:?}");
+        assert!(
+            exhausted
+                .execute(Command::AddSewingByLength {
+                    name: "Exhausted".into(),
+                    a: valid_a,
+                    b: valid_b
+                })
+                .is_err()
+        );
+        assert_eq!(format!("{exhausted:?}"), unchanged);
+        if field == "next_id" {
+            assert!(
+                exhausted
+                    .execute(Command::AddSewingByLength {
+                        name: "Resolve before allocation".into(),
+                        a: valid_a,
+                        b: length_side(u64::MAX, 0., Forward, 0.1)
+                    })
+                    .unwrap_err()
+                    .0
+                    .contains("curve is missing")
+            );
+            assert_eq!(format!("{exhausted:?}"), unchanged);
+        }
+    }
+    assert!(editor.redo());
+}
+
+#[test]
+fn physical_length_creation_reuses_same_curve_disjoint_and_unequal_length_group_rules() {
+    use SewingDirection::{Forward, Reverse};
+    let (mut editor, _, b) = physical_length_scene();
+    editor
+        .execute(Command::AddSewingByLength {
+            name: "Disjoint unequal lengths".into(),
+            a: length_side(b, 0., Forward, 0.025),
+            b: length_side(b, 1., Reverse, 0.05),
+        })
+        .unwrap();
+    let group = &editor.project.sewing_groups[0];
+    assert_eq!(group.a.len(), 1);
+    assert_eq!(group.b.len(), 1);
+    assert_eq!(group.a[0].curve, b);
+    assert_eq!(group.b[0].curve, b);
+    assert_eq!(group.a[0].t0, 0.);
+    assert_eq!(group.b[0].t0, 1.);
+    close(group.a[0].t1, 0.125);
+    close(group.b[0].t1, 0.75);
+    assert_eq!(group.correspondence, vec![[0., 0.], [1., 1.]]);
+    let lengths = editor
+        .project
+        .sewing_group_geometry(group.id)
+        .unwrap()
+        .lengths;
+    close(lengths[0], 0.025);
+    close(lengths[1], 0.05);
 }

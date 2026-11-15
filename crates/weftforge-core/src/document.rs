@@ -244,6 +244,22 @@ impl CurveInterval {
     }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case", deny_unknown_fields)]
+pub enum SewingDirection {
+    Forward,
+    Reverse,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct SewingSideByLength {
+    pub curve: Id,
+    pub start_t: f64,
+    pub direction: SewingDirection,
+    pub length_m: f64,
+}
+
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct Seam {
@@ -1128,6 +1144,16 @@ impl Project {
                     correspondence,
                 });
             }
+            Command::AddSewingByLength { name, a, b } => {
+                let a = self.interval_from_length(a)?;
+                let b = self.interval_from_length(b)?;
+                self.apply(Command::AddSewingGroup {
+                    name,
+                    a: vec![a],
+                    b: vec![b],
+                    correspondence: vec![[0., 0.], [1., 1.]],
+                })?;
+            }
             Command::UpdateSewingGroup { group } => {
                 let target = self
                     .sewing_groups
@@ -1517,6 +1543,11 @@ pub enum Command {
         a: Vec<CurveInterval>,
         b: Vec<CurveInterval>,
         correspondence: Vec<[f64; 2]>,
+    },
+    AddSewingByLength {
+        name: String,
+        a: SewingSideByLength,
+        b: SewingSideByLength,
     },
     UpdateSewingGroup {
         group: SewingGroup,

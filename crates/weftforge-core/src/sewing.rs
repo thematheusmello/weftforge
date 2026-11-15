@@ -1,5 +1,6 @@
 use crate::{
-    BoundarySample, CurveInterval, Error, Id, Mesh, Project, Result, SewingGroup, Stitch, ensure,
+    BoundarySample, CurveInterval, Error, Id, Mesh, Project, Result, SewingDirection, SewingGroup,
+    SewingSideByLength, Stitch, ensure,
 };
 use std::collections::{BTreeMap, BTreeSet};
 
@@ -605,6 +606,31 @@ impl GroupMetric {
 }
 
 impl Project {
+    pub fn interval_from_length(&self, side: SewingSideByLength) -> Result<CurveInterval> {
+        ensure(
+            side.start_t.is_finite() && (0.0..=1.0).contains(&side.start_t),
+            "Sewing start t must be in [0,1]",
+        )?;
+        ensure(
+            side.length_m.is_finite() && side.length_m > 0.,
+            "Sewing length must be positive finite metres",
+        )?;
+        let remaining = CurveInterval {
+            curve: side.curve,
+            t0: side.start_t,
+            t1: match side.direction {
+                SewingDirection::Forward => 1.,
+                SewingDirection::Reverse => 0.,
+            },
+        };
+        let interval = CurveInterval {
+            t1: self.interval_parameter_at_length(remaining, side.length_m)?,
+            ..remaining
+        };
+        self.interval_length(interval)?;
+        Ok(interval)
+    }
+
     pub fn interval_length(&self, interval: CurveInterval) -> Result<f64> {
         Ok(IntervalMetric::new(self, interval, METRIC_BUDGET, &mut Work::new(&|| false))?.length)
     }
