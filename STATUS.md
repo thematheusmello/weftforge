@@ -5,6 +5,37 @@ reference parity is **0/56** coarse contracts; discovery is incomplete and no
 roadmap gate is accepted. The 949 observed interface entries are an engineering
 inventory, not a feature-completion denominator.
 
+## Current continuation
+
+Published main is `d65f935aea54bb5d8cf882d8c212fee8dbe314cf`, merged through
+[PR37](https://github.com/thematheusmello/weftforge/pull/37). The primary checkout
+has fast-forwarded cleanly; its39 runtime/test files equal testedb760. Final
+clean85577d0 registry/map checks passed and all2,087 referenced artifacts are
+tracked and hash-correct. The merge tree equals that reviewed head. Actions is
+still `enabled:false`; both head and merge have zero workflow runs. Publication
+receipt: `.local/verification/published-d65f935aea54.json`.
+
+The next candidate is private0770204, with40 frozen runtime/test files,153
+passing Rust tests and the reviewed static capsule contact fix. Its original
+Harbor inputs, source snapshot and readonly driver are prepared in
+`.local/capsule-garment-20261115`. Planv2 retains420s whole-case,256MiB numerical
+output and a separate256MiB producer peak-RSS bound. Geometry-only preflights
+match both old rest meshes byte-for-byte. No physical case has run on this
+candidate. The independent evaluator and bounded runner agents are preparing
+their source, selfchecks and frozen receipts; root execution authorization has
+not been written. Do not start cases before reviewing both and binding their
+exact files. Keep the old contact/strain/trace failures visible.
+
+The completed7fe native workflow and its original closure inventories remain
+immutable. Its37 runtime/test files are separately archived from Git at
+`.local/harbor-native-source-7fe9e187-20261115`; the old evaluator's live-checkout
+guard is intentionally historical after this fast-forward. Original7fe process
+14668 and preview32794 were rechecked live in their separate copied bundles;
+both are paused and no solver job is active. The primary and preview target
+trees with inherited shared links were preserved under ignored local storage;
+their replacements are real private directories. External cache destinations
+were untouched. Keep using isolated targets for new work.
+
 ## Native visual preview checkpoint
 
 The user requested the latest running appearance and confirmed PhotoCraft as
@@ -69,8 +100,8 @@ produced the exact physical fields and restOBJ for caseB. B completed in
 6.8045029% and sampled seam gap6.08705e-9m. Independent curve/t measurements
 confirm the front changes0.04m at rest and0.029859952m at frame180. Process14668
 is saved at revision23, paused at Drape3.000s, with no active solver job.
-Root's37 frozen runtime/test files and the observed de81 executable remain
-unchanged. The closed private native inventory contains398payload files and48
+The37 frozen runtime/test files stayed unchanged through closure, and the
+observed de81 executable is retained. The closed private native inventory contains398payload files and48
 unedited JPEGs; full public preparation is still pending.
 
 The original workflow evaluator's revision sequence assumption fails across
@@ -96,10 +127,10 @@ under `.local/capsule-integrated-checks-20261115` (exec93102/wrapper30000, all
 terminal0). Independent execution of the unchanged Rust detector also agrees
 with the original83oracle cases. No garment has run on that new solver.
 
-Preview evidence is under `.local/native-preview-20261114` and the staged public
-gallery; it cannot substitute for empty-project acceptance. Next publish the
-reviewed gallery/source and fixed contact counterexamples, then complete the contact increment's
-integration and prospective garment checks. GitHub Actions was rechecked
+Preview evidence is under `.local/native-preview-20261114` and the published
+gallery; it cannot substitute for empty-project acceptance. Next finish the
+contact increment's independent evaluator/runner review and prospective garment
+checks, then integrate its qualified results. GitHub Actions was rechecked
 `enabled:false` on2026-11-15; README branding remains product focused.
 
 ## Publication and cost policy
