@@ -1,4 +1,5 @@
 //! Deterministic f64 CPU cloth in SI units. The authored document is owned by the caller.
+mod capsule;
 mod constraints;
 mod contact;
 mod math;
@@ -164,7 +165,11 @@ pub struct Diagnostics {
     pub max_seam_error: f64,
     /// Largest temporary stitch target distance while sewing assembles, metres.
     pub seam_assembly_remaining: f64,
+    /// Current maximum supported penetration, including full static triangle/capsule occupancy.
     pub max_contact_error: f64,
+    /// Current triangle/capsule pairs evaluated with a conservative uncertain-geometry distance.
+    #[serde(default)]
+    pub capsule_surface_uncertain_pairs: usize,
     pub kinetic_energy: f64,
     /// Number of contacts projected during this call, including repeated iterations.
     pub contacts: usize,
@@ -353,8 +358,8 @@ impl Cloth {
                 ..Default::default()
             },
         };
-        let (contact_error, intersections) =
-            cloth.initial_contact_errors_cancellable(&cloth.positions, &cancelled)?;
+        let contact_error = cloth.contact_errors_cancellable(&cloth.positions, &cancelled)?;
+        let intersections = contact_error.intersections;
         cloth.diagnostics =
             cloth.measure_errors_with_contact(&cloth.positions, &cloth.velocities, contact_error);
         cloth.diagnostics.initial_intersections = intersections;
@@ -401,8 +406,10 @@ impl Cloth {
             finite: true,
             ..Default::default()
         };
-        self.diagnostics.initial_intersections = self.contact_errors(&self.positions).1;
-        self.update_errors();
+        let contact_error = self.contact_errors(&self.positions);
+        self.diagnostics.initial_intersections = contact_error.intersections;
+        self.diagnostics =
+            self.measure_errors_with_contact(&self.positions, &self.velocities, contact_error);
     }
 
     /// Transactional whole-call stepping: cancellation, invalid settings and numerical failures
@@ -483,7 +490,7 @@ impl Cloth {
                         lambda,
                     );
                 }
-                contacts += self.project_colliders(&mut x, &previous);
+                contacts += self.project_colliders(&mut x, &previous, &cancelled)?;
                 contacts += self.project_cloth(&mut x, &previous, &cancelled)?;
                 self.apply_pins(&mut x);
                 if !x.iter().copied().all(finite) {
@@ -506,7 +513,8 @@ impl Cloth {
         if cancelled() {
             return Err(SimulationError::Cancelled);
         }
-        let mut diagnostics = self.measure_errors(&x, &velocities);
+        let contact_error = self.contact_errors_cancellable(&x, &cancelled)?;
+        let mut diagnostics = self.measure_errors_with_contact(&x, &velocities, contact_error);
         if !diagnostics.finite || diagnostics.max_stretch_error > 5. {
             return Err(SimulationError::Unstable(format!(
                 "finite={}, material-axis extension={:.1}% (limit 500%), seam gap={:.6}m, contact penetration={:.6}m",
@@ -535,17 +543,11 @@ impl Cloth {
             x[pin.vertex] = pin.target;
         }
     }
-    fn update_errors(&mut self) {
-        self.diagnostics = self.measure_errors(&self.positions, &self.velocities);
-    }
-    fn measure_errors(&self, positions: &[Vec3], velocities: &[Vec3]) -> Diagnostics {
-        self.measure_errors_with_contact(positions, velocities, self.contact_errors(positions).0)
-    }
     fn measure_errors_with_contact(
         &self,
         positions: &[Vec3],
         velocities: &[Vec3],
-        contact_error: f64,
+        contact_error: contact::ContactErrors,
     ) -> Diagnostics {
         let mut diagnostics = self.diagnostics.clone();
         diagnostics.seam_assembly_remaining =
@@ -576,7 +578,8 @@ impl Cloth {
             .iter()
             .map(|s| length(sub(s.a.position(positions), s.b.position(positions))))
             .fold(0., f64::max);
-        diagnostics.max_contact_error = contact_error;
+        diagnostics.max_contact_error = contact_error.maximum;
+        diagnostics.capsule_surface_uncertain_pairs = contact_error.uncertain_capsule_pairs;
         diagnostics.kinetic_energy = self
             .masses
             .iter()

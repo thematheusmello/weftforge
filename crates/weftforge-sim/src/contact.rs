@@ -1,15 +1,34 @@
 use crate::{
-    CANCELLATION_CHECK_INTERVAL, Cloth, Collider, SimulationError, Vec3, check_cancel, math::*,
+    CANCELLATION_CHECK_INTERVAL, Cloth, Collider, SimulationError, Vec3, capsule, check_cancel,
+    math::*,
 };
 
+#[derive(Default)]
+pub(crate) struct ContactErrors {
+    pub maximum: f64,
+    pub intersections: usize,
+    pub uncertain_capsule_pairs: usize,
+}
+
 impl Cloth {
-    pub(crate) fn project_colliders(&self, x: &mut [Vec3], previous: &[Vec3]) -> usize {
+    pub(crate) fn project_colliders(
+        &self,
+        x: &mut [Vec3],
+        previous: &[Vec3],
+        cancelled: &impl Fn() -> bool,
+    ) -> Result<usize, SimulationError> {
         let mut contacts = 0;
         for i in 0..x.len() {
+            if i % CANCELLATION_CHECK_INTERVAL == 0 {
+                check_cancel(cancelled)?;
+            }
             if self.inverse_masses[i] == 0. {
                 continue;
             }
-            for &collider in &self.input.colliders {
+            for (ci, &collider) in self.input.colliders.iter().enumerate() {
+                if ci % CANCELLATION_CHECK_INTERVAL == 0 {
+                    check_cancel(cancelled)?;
+                }
                 if let Some((normal, depth)) = collider_contact(collider, x[i], self.thickness[i]) {
                     x[i] = add(x[i], mul(normal, depth));
                     let displacement = sub(x[i], previous[i]);
@@ -25,7 +44,65 @@ impl Cloth {
                 }
             }
         }
-        contacts
+        for (ti, &tri) in self.input.triangles.iter().enumerate() {
+            if ti % CANCELLATION_CHECK_INTERVAL == 0 {
+                check_cancel(cancelled)?;
+            }
+            let thickness = tri
+                .map(|i| self.thickness[i])
+                .into_iter()
+                .fold(0., f64::max);
+            for (ci, &collider) in self.input.colliders.iter().enumerate() {
+                if ci % CANCELLATION_CHECK_INTERVAL == 0 {
+                    check_cancel(cancelled)?;
+                }
+                let Collider::Capsule { a, b, radius } = collider else {
+                    continue;
+                };
+                let feature = capsule::closest(tri.map(|i| x[i]), a, b);
+                let depth = radius + thickness - feature.distance;
+                if depth <= 0. {
+                    continue;
+                }
+                let weights = tri.map(|i| self.inverse_masses[i]);
+                let denominator = (0..3)
+                    .map(|j| weights[j] * feature.bary[j].powi(2))
+                    .sum::<f64>();
+                if denominator == 0. {
+                    continue;
+                }
+                let normal =
+                    capsule::normal(feature, tri.map(|i| x[i]), tri.map(|i| previous[i]), a, b);
+                let impulse = depth / denominator;
+                for j in 0..3 {
+                    x[tri[j]] = add(
+                        x[tri[j]],
+                        mul(normal, weights[j] * feature.bary[j] * impulse),
+                    );
+                }
+                let displacement = sub(
+                    bary_point(x, tri, feature.bary),
+                    bary_point(previous, tri, feature.bary),
+                );
+                let tangent = sub(displacement, mul(normal, dot(displacement, normal)));
+                let distance = length(tangent);
+                if distance > 1e-14 {
+                    let friction = (0..3)
+                        .map(|j| self.friction[tri[j]] * feature.bary[j])
+                        .sum::<f64>();
+                    let amount = (friction * impulse).min(distance / denominator);
+                    let direction = mul(tangent, distance.recip());
+                    for j in 0..3 {
+                        x[tri[j]] = sub(
+                            x[tri[j]],
+                            mul(direction, weights[j] * feature.bary[j] * amount),
+                        );
+                    }
+                }
+                contacts += 1;
+            }
+        }
+        Ok(contacts)
     }
 
     pub(crate) fn project_cloth(
@@ -129,21 +206,21 @@ impl Cloth {
         Ok(contacts)
     }
 
-    pub(crate) fn contact_errors(&self, x: &[Vec3]) -> (f64, usize) {
+    pub(crate) fn contact_errors(&self, x: &[Vec3]) -> ContactErrors {
         self.analyze_contacts(x, &|| false, true)
             .expect("A non-cancelling callback cannot interrupt contact analysis")
     }
 
     #[cfg(test)]
-    pub(crate) fn exhaustive_contact_errors(&self, x: &[Vec3]) -> (f64, usize) {
+    pub(crate) fn exhaustive_contact_errors(&self, x: &[Vec3]) -> ContactErrors {
         self.analyze_contacts(x, &|| false, false).unwrap()
     }
 
-    pub(crate) fn initial_contact_errors_cancellable(
+    pub(crate) fn contact_errors_cancellable(
         &self,
         x: &[Vec3],
         cancelled: &impl Fn() -> bool,
-    ) -> Result<(f64, usize), SimulationError> {
+    ) -> Result<ContactErrors, SimulationError> {
         self.analyze_contacts(x, cancelled, true)
     }
 
@@ -152,7 +229,7 @@ impl Cloth {
         x: &[Vec3],
         cancelled: &impl Fn() -> bool,
         indexed: bool,
-    ) -> Result<(f64, usize), SimulationError> {
+    ) -> Result<ContactErrors, SimulationError> {
         let mut max_thickness = 0_f64;
         for (i, &thickness) in self.thickness.iter().enumerate() {
             if i % CANCELLATION_CHECK_INTERVAL == 0 {
@@ -217,7 +294,36 @@ impl Cloth {
                 }
             }
         }
-        Ok((maximum, count))
+        let mut uncertain_capsule_pairs = 0;
+        for (ti, &tri) in self.input.triangles.iter().enumerate() {
+            if ti % CANCELLATION_CHECK_INTERVAL == 0 {
+                check_cancel(cancelled)?;
+            }
+            let thickness = tri
+                .map(|i| self.thickness[i])
+                .into_iter()
+                .fold(0., f64::max);
+            for (ci, &collider) in self.input.colliders.iter().enumerate() {
+                if ci % CANCELLATION_CHECK_INTERVAL == 0 {
+                    check_cancel(cancelled)?;
+                }
+                let Collider::Capsule { a, b, radius } = collider else {
+                    continue;
+                };
+                let feature = capsule::closest(tri.map(|i| x[i]), a, b);
+                uncertain_capsule_pairs += usize::from(feature.uncertain);
+                let depth = radius + thickness - feature.distance;
+                maximum = maximum.max(depth);
+                if depth > 1e-8 {
+                    count += 1;
+                }
+            }
+        }
+        Ok(ContactErrors {
+            maximum,
+            intersections: count,
+            uncertain_capsule_pairs,
+        })
     }
 }
 
