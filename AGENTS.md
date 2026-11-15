@@ -21,6 +21,8 @@ bounded to integrated increments while preserving the full parity target.
 - Keep GitHub Actions disabled during development at the user's request. Run
   checks locally; re-enable Actions and automated Pages deployments only once the
   full project is done. Preserve the existing static Pages site.
+- Close finished test and preview windows after retaining their results. Keep only
+  windows in active use; record post-case cleanup separately from frozen evidence.
 - Maintain STATUS.md with evidence, exact next steps and confirmed job handles.
 - Before publishing evidence, require every artifact to be Git-tracked and run
   registry/map checks from a clean checkout; local ignored files are not delivery.
