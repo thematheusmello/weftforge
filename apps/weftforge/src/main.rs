@@ -1135,6 +1135,8 @@ impl Studio {
                 }
             }
             ui.separator();
+            self.frame_patterns_button(ui);
+            ui.separator();
             let name = self
                 .path
                 .as_ref()
@@ -1494,6 +1496,46 @@ impl Studio {
             snap(self.center[1] - d.y as f64),
         ]
     }
+    fn frame_patterns_button(&self, ui: &mut egui::Ui) {
+        let focused = self.inspector_focus(ui.ctx());
+        let response = ui.add_enabled(
+            !self.editor.project.pieces.is_empty(),
+            egui::Button::new("Frame all").small(),
+        );
+        if response.is_pointer_button_down_on() || response.clicked() {
+            finish_numeric_action(ui.ctx(), focused, false);
+        }
+        if response.clicked() {
+            let frame = ui.ctx().cumulative_frame_nr();
+            ui.ctx()
+                .data_mut(|data| data.insert_temp(egui::Id::new("frame-all-patterns"), frame));
+        }
+    }
+    fn frame_patterns(&mut self, rect: Rect) {
+        let inset = rect.shrink(28.0);
+        if !inset.is_finite() || inset.width() <= 0.0 || inset.height() <= 0.0 {
+            return;
+        }
+        let mut min = [f64::INFINITY; 2];
+        let mut max = [f64::NEG_INFINITY; 2];
+        for piece in &self.editor.project.pieces {
+            let Ok([piece_min, piece_max]) = self.editor.project.piece_bounds(piece.id) else {
+                return;
+            };
+            for axis in 0..2 {
+                min[axis] = min[axis].min(piece_min[axis]);
+                max[axis] = max[axis].max(piece_max[axis]);
+            }
+        }
+        let center = std::array::from_fn(|axis| (min[axis] + max[axis]) * 0.5);
+        let scale = ((inset.width() as f64 / (max[0] - min[0]))
+            .min(inset.height() as f64 / (max[1] - min[1]))
+            .min(3000.0)) as f32;
+        if center.iter().all(|value| value.is_finite()) && scale.is_finite() && scale > 0.0 {
+            self.center = center;
+            self.scale = scale;
+        }
+    }
     fn rectangle_window(&mut self, ctx: &egui::Context) {
         let Some(mut rectangle) = self.rectangle.take() else {
             return;
@@ -1571,10 +1613,17 @@ impl Studio {
         let (response, painter) = ui.allocate_painter(ui.available_size(), Sense::click_and_drag());
         self.pattern_canvas = Some(response.id);
         let r = response.rect;
+        if ui
+            .ctx()
+            .data_mut(|data| data.remove_temp::<u64>(egui::Id::new("frame-all-patterns")))
+            == Some(ui.ctx().cumulative_frame_nr())
+        {
+            self.frame_patterns(r);
+        }
         painter.rect_filled(r, 3., Color32::from_rgb(31, 36, 40));
         if response.hovered() {
             self.scale = (self.scale * (ui.input(|i| i.smooth_scroll_delta.y) * 0.001).exp())
-                .clamp(40., 3000.);
+                .clamp(f32::MIN_POSITIVE, 3000.);
         }
         if response.dragged_by(egui::PointerButton::Middle) {
             let d = ui.input(|i| i.pointer.delta()) / self.scale;
@@ -7490,5 +7539,202 @@ mod svg_import_tests {
         click(&ctx, &mut app, "Cancel");
         assert_eq!(app.editor.project, before);
         fs::remove_file(path).unwrap();
+    }
+}
+
+#[cfg(test)]
+mod pattern_framing_tests {
+    use super::*;
+    use egui::accesskit::{Action, ActionRequest, TreeId};
+
+    fn frame(
+        ctx: &egui::Context,
+        app: &mut Studio,
+        size: [f32; 2],
+        events: Vec<egui::Event>,
+    ) -> egui::FullOutput {
+        ctx.run_ui(
+            egui::RawInput {
+                screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::from(size))),
+                events,
+                ..Default::default()
+            },
+            |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+        )
+    }
+
+    fn assert_outlines_fit(app: &Studio, rect: Rect) {
+        let inset = rect.shrink(28.0).expand(0.001);
+        assert!(app.scale.is_finite() && app.scale > 0.0);
+        assert!(app.center.iter().all(|value| value.is_finite()));
+        for piece in &app.editor.project.pieces {
+            let [min, max] = app.editor.project.piece_bounds(piece.id).unwrap();
+            for point in [min, max, [min[0], max[1]], [max[0], min[1]]] {
+                assert!(inset.contains(app.to_screen(point, rect)), "{point:?}");
+            }
+            for curve in &piece.boundary {
+                for step in 0..=64 {
+                    let point = app
+                        .editor
+                        .project
+                        .curve(*curve)
+                        .unwrap()
+                        .evaluate(&app.editor.project, step as f64 / 64.0)
+                        .unwrap();
+                    assert!(inset.contains(app.to_screen(point, rect)), "{point:?}");
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn frame_all_fits_authored_outlines_without_changing_document_or_pending_edits() {
+        for size in [[1000.0, 650.0], [1640.0, 1000.0]] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            studio_style(&ctx);
+            let mut app = Studio::empty();
+            app.session_autosave = None;
+            for (origin, width, height) in [([-12.0, -9.0], 4.0, 3.0), ([-4.0, -3.0], 1.0, 1.5)] {
+                app.editor
+                    .execute(Command::AddRectangle {
+                        name: "Original panel".into(),
+                        origin,
+                        width,
+                        height,
+                    })
+                    .unwrap();
+            }
+            let piece = app.editor.project.pieces[0].id;
+            let curve = app.editor.project.pieces[0].boundary[0];
+            app.editor
+                .execute(Command::SetCurveControls {
+                    curve,
+                    controls: Some([[-12.0, -13.0], [-8.0, -13.0]]),
+                })
+                .unwrap();
+            // This cubic's y minimum is -12 at t=1/2, beyond every endpoint.
+            assert_eq!(app.editor.project.piece_bounds(piece).unwrap()[0][1], -12.0);
+            app.editor
+                .execute(Command::SetGrain { piece, angle: 0.25 })
+                .unwrap();
+            assert!(app.editor.undo());
+            app.selected = Some(piece);
+            app.selected_curve = Some(curve);
+            let mut draft =
+                InspectorDraft::new(&app.editor.project, app.selected, app.selected_curve);
+            draft.grain_angle = Some(0.375);
+            draft.curve.as_mut().unwrap().controls = Some([[-12.0, -800.0], [-8.0, -800.0]]);
+            let pending = draft.commands(&app.editor.project);
+            app.draft = Some(draft);
+            let editor = format!("{:?}", app.editor);
+            let selection = (app.selected, app.selected_curve);
+            frame(&ctx, &mut app, size, vec![]);
+            let output = frame(&ctx, &mut app, size, vec![]);
+            let nodes = output.platform_output.accesskit_update.unwrap().nodes;
+            let button = nodes
+                .iter()
+                .find(|(_, node)| node.label() == Some("Frame all"))
+                .unwrap();
+            assert!(!button.1.is_disabled());
+            let field = nodes
+                .iter()
+                .find(|(_, node)| node.numeric_value() == Some(-800.0))
+                .unwrap();
+            frame(
+                &ctx,
+                &mut app,
+                size,
+                vec![egui::Event::AccessKitActionRequest(ActionRequest {
+                    action: Action::Focus,
+                    target_tree: TreeId::ROOT,
+                    target_node: field.0,
+                    data: None,
+                })],
+            );
+            frame(&ctx, &mut app, size, vec![]);
+            app.center = [600.0, -700.0];
+            app.scale = 40.0;
+            let bounds = button.1.bounds().unwrap();
+            let pos = Pos2::new(
+                ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                ((bounds.y0 + bounds.y1) * 0.5) as f32,
+            );
+            for pressed in [true, false] {
+                frame(
+                    &ctx,
+                    &mut app,
+                    size,
+                    vec![
+                        egui::Event::PointerMoved(pos),
+                        egui::Event::PointerButton {
+                            pos,
+                            button: egui::PointerButton::Primary,
+                            pressed,
+                            modifiers: egui::Modifiers::NONE,
+                        },
+                    ],
+                );
+            }
+            frame(&ctx, &mut app, size, vec![]);
+            frame(&ctx, &mut app, size, vec![]);
+            let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+            assert_outlines_fit(&app, rect);
+            assert_eq!(app.center, [-7.5, -6.75]);
+            assert_eq!(format!("{:?}", app.editor), editor);
+            assert_eq!((app.selected, app.selected_curve), selection);
+            assert_eq!(
+                app.draft.as_ref().unwrap().commands(&app.editor.project),
+                pending
+            );
+            assert!(!app.dirty && !app.needs_mesh && app.job.is_none());
+            assert!(app.mesh.is_none() && app.cloth.is_none() && app.pending_batch.is_none());
+
+            app.editor = Editor::default();
+            for origin in [[-1000.0, -1000.0], [999.8, 999.8]] {
+                app.editor
+                    .execute(Command::AddRectangle {
+                        name: "Full coordinate range".into(),
+                        origin,
+                        width: 0.2,
+                        height: 0.2,
+                    })
+                    .unwrap();
+            }
+            app.frame_patterns(rect);
+            assert_outlines_fit(&app, rect);
+            assert!(app.scale < 40.0);
+            let fitted = app.scale;
+            let pointer = egui::Event::PointerMoved(rect.center());
+            // A hovered canvas with no scroll must retain the large-range fit.
+            app.draft = None;
+            app.selected = None;
+            app.selected_curve = None;
+            frame(&ctx, &mut app, size, vec![pointer]);
+            assert_eq!(app.scale, fitted);
+
+            for point in &mut app.editor.project.points {
+                point.position = [-3.0, -5.0];
+            }
+            app.frame_patterns(rect);
+            assert_eq!(app.center, [-3.0, -5.0]);
+            assert_eq!(app.scale, 3000.0);
+            let view = (app.center, app.scale);
+            app.frame_patterns(Rect::from_min_size(Pos2::ZERO, Vec2::splat(56.0)));
+            assert_eq!((app.center, app.scale), view);
+            app.editor = Editor::default();
+            app.frame_patterns(rect);
+            assert_eq!((app.center, app.scale), view);
+            let output = frame(&ctx, &mut app, size, vec![]);
+            assert!(
+                output
+                    .platform_output
+                    .accesskit_update
+                    .unwrap()
+                    .nodes
+                    .iter()
+                    .any(|(_, node)| node.label() == Some("Frame all") && node.is_disabled())
+            );
+        }
     }
 }
