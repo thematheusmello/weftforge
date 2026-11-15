@@ -246,10 +246,14 @@ one atomic import/Undo step; Cancel retains pending numeric drafts.
 The reader is limited to 1 MiB, 131072 group pairs, 64 pieces and 4096 boundary
 entities. Other units, versions, entities, flags, fields, nonzero Z, gaps,
 unsupported metadata or block/paper geometry reject the whole drawing. Native
-construction validation also applies. Source, existing project and output/
-recovery files remain protected on failure. This is source support for a narrow
-profile; native runtime acceptance, full DXF interchange and reference parity
-remain separate requirements.
+construction validation also applies. Rejected imports preserve the existing
+authored project; CLI/MCP source-path guards protect the DXF, and failed saves
+retain the existing output primary. Native saving copies the valid current
+primary to recovery before replacing the primary, so recovery may already have
+advanced to that valid snapshot if the final primary replacement fails. The two
+files are not one atomic transaction. This is source support for a narrow
+profile; full persistence acceptance, native runtime acceptance, full DXF
+interchange and reference parity remain separate requirements.
 
 Future formats must specify what they preserve and reject unsupported important
 data explicitly. They must not accept a familiar extension without decoding it,

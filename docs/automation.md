@@ -155,8 +155,11 @@ escaping; the file tool can read the full SVG byte allowance.
 `import_dxf_patterns` takes `{"dxf":"...original ASCII DXF..."}` and adds the
 supported patterns atomically. CLI `import-dxf INPUT OUTPUT PATTERNS.dxf` and
 MCP `project_import_dxf` read the source with a 1 MiB bound, execute the same
-command and use native atomic save/recovery protection. Output and recovery may
-not replace the DXF source. The [DXF import profile](../spec/features/FILE-005-dxf-pattern-import.md)
+command and use native primary/recovery handling. Failed saves retain the output
+primary; recovery may already have advanced to the valid current-primary snapshot
+if final primary replacement fails. This is not an atomic two-file transaction.
+The separate path guard refuses output or recovery replacement of the DXF source.
+The [DXF import profile](../spec/features/FILE-005-dxf-pattern-import.md)
 requires the existing R2000 millimetre `LINE`/clamped cubic `SPLINE` structure,
 declared `WF_PIECE_<id>` layers and exactly closed ordered contours. X/Y maps to
 U/V with origin/layout preserved and no Y inversion. Layer names become piece
