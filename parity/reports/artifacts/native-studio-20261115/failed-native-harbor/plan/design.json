@@ -1,0 +1,75 @@
+{
+  "case": "NATIVE-HARBOR-EMPTY-20261115-001",
+  "runtime_commit": "76be95d4d7928bcb703e1f52f4a5404bc955f567",
+  "runtime_scope_files": 49,
+  "native_sha256": "232b19369bf966bfcaf7400aa829e3722b1c4011c7d011fbff0dee58d044cac7",
+  "original_authored_spec": "parity/reports/artifacts/closed-stitch-harbor-20261115/experiment/inputs/height.weftforge",
+  "original_authored_spec_sha256": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5",
+  "units": "metres kilograms seconds; right-handed Y-up; U/V material metres",
+  "pieces": [
+    {
+      "name": "Harbor front",
+      "vertices": [[-1.08, 0.96], [-0.36, 0.96], [-0.38, 1.289375], [-0.09, 1.15125], [-0.06, 1.4275], [-0.44, 1.64], [-0.6, 1.64], [-0.62, 1.53375], [-0.82, 1.53375], [-0.84, 1.64], [-1.0, 1.64], [-1.38, 1.4275], [-1.35, 1.15125], [-1.06, 1.289375]],
+      "translation": [0.72, 0.0, 0.24],
+      "rotation": [0.0, 0.0, 0.0],
+      "grain_angle": 1.5707963267948966
+    },
+    {
+      "name": "Harbor back",
+      "vertices": [[0.36, 0.96], [1.08, 0.96], [1.06, 1.27], [1.35, 1.14], [1.38, 1.4], [1.0, 1.6], [0.84, 1.6], [0.82, 1.5], [0.62, 1.5], [0.6, 1.6], [0.44, 1.6], [0.06, 1.4], [0.09, 1.14], [0.38, 1.27]],
+      "translation": [-0.72, 0.0, -0.24],
+      "rotation": [0.0, 0.0, 0.0],
+      "grain_angle": 1.5707963267948966
+    }
+  ],
+  "seam_boundary_indices_zero_based_in_creation_order": [1, 2, 4, 5, 9, 10, 12, 13],
+  "seam_intervals": [0.0, 1.0],
+  "seam_correspondence": [[0.0, 0.0], [1.0, 1.0]],
+  "resolution": 0.07,
+  "material": {
+    "name": "Cotton approximation (uncalibrated)",
+    "areal_density": 0.18,
+    "warp_stiffness": 400.0,
+    "weft_stiffness": 400.0,
+    "shear_stiffness": 100.0,
+    "bending_stiffness": 0.003,
+    "damping": 0.2,
+    "friction": 0.4,
+    "collision_thickness": 0.003,
+    "color": [0.22, 0.55, 0.76]
+  },
+  "capsules": [
+    {"a": [0.0, 0.9, 0.0], "b": [0.0, 1.4, 0.0], "radius": 0.18},
+    {"a": [0.0, 1.53, 0.0], "b": [0.0, 1.65, 0.0], "radius": 0.105},
+    {"a": [-0.22, 1.4, 0.0], "b": [-0.55, 1.22, 0.0], "radius": 0.065},
+    {"a": [0.22, 1.4, 0.0], "b": [0.55, 1.22, 0.0], "radius": 0.065},
+    {"a": [-0.09, 0.88, 0.0], "b": [-0.09, 0.18, 0.0], "radius": 0.085},
+    {"a": [0.09, 0.88, 0.0], "b": [0.09, 0.18, 0.0], "radius": 0.085}
+  ],
+  "edit": {"front_height_before_m": 0.68, "front_height_after_m": 0.70, "min_v_anchor_m": 0.96, "shared_areal_density_after_kg_m2": 0.20},
+  "empty_snapshot": "empty.weftforge",
+  "snapshots": [
+    {"file": "baseline.weftforge", "edited_height": false, "density": 0.18, "revision_offset": 0},
+    {"file": "baseline-after-drape.weftforge", "edited_height": false, "density": 0.18, "revision_offset": 0},
+    {"file": "baseline-reopened.weftforge", "edited_height": false, "density": 0.18, "revision_offset": 0},
+    {"file": "height.weftforge", "edited_height": true, "density": 0.18, "revision_offset": 1},
+    {"file": "fabric.weftforge", "edited_height": true, "density": 0.20, "revision_offset": 2},
+    {"file": "undo.weftforge", "edited_height": true, "density": 0.18, "revision_offset": 3},
+    {"file": "redo.weftforge", "edited_height": true, "density": 0.20, "revision_offset": 4},
+    {"file": "edited-reopened.weftforge", "edited_height": true, "density": 0.20, "revision_offset": 4},
+    {"file": "edited-after-drape.weftforge", "edited_height": true, "density": 0.20, "revision_offset": 4}
+  ],
+  "limits": {
+    "authored_m_rad_scalar": 1e-12,
+    "obj_geometry_m": 1e-9,
+    "uv_area_m2": 1e-10,
+    "normal_length": 1e-6,
+    "strain_strictly_below": 0.15,
+    "continuous_exported_seam_gap_strictly_below_m": 0.005,
+    "avatar_surface_ground_penetration_strictly_below_m": 0.002,
+    "max_file_bytes": 16777216,
+    "max_numerical_bundle_bytes": 134217728,
+    "max_obj_vertices": 10000,
+    "max_obj_faces": 20000
+  }
+}

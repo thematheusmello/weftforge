@@ -1,0 +1,106 @@
+{
+  "case": "NATIVE-HARBOR-EMPTY-20261115-001",
+  "status": "prepared_v2_frozen_not_executed",
+  "frozen_utc": "2026-11-15T08:39:39.099006+00:00",
+  "runtime_commit_expected": "76be95d4d7928bcb703e1f52f4a5404bc955f567",
+  "runtime_scope_files_expected": 49,
+  "native_sha256_expected": "232b19369bf966bfcaf7400aa829e3722b1c4011c7d011fbff0dee58d044cac7",
+  "runtime_identity_basis": "root-provided; evaluator did not launch/hash/read product source",
+  "original_authored_spec_sha256": "725fc896bc7f020682e2bef3a471a3e1a9048dcab50a7733afad3597722a7ec5",
+  "physical_or_ui_execution_authorized": false,
+  "actual_actor_pid_job_handles": null,
+  "fixed_workload": {
+    "native_polygon_points": 28,
+    "polygon_commits": 2,
+    "legacy_seams": 8,
+    "physical_phases": 2,
+    "assembly_steps_per_phase": 60,
+    "drape_steps_per_phase": 120,
+    "total_public_steps": 360,
+    "phase_seconds_including_analysis": 420,
+    "actor_ui_seconds_excluding_phases": 1800,
+    "total_run_seconds": 2640,
+    "native_peak_rss_cap_formula": "settled empty process B + 512 MiB; absolute cap must be recorded before garment authoring",
+    "native_snapshots": 10,
+    "obj_exports": 4,
+    "retries": 0,
+    "initial_native_empty_save_copies": 1,
+    "same_live_primary_for_all_authoring_saves": true
+  },
+  "preparation_execution_only": [
+    "read public documentation/authoring specification",
+    "write only assigned local preparation folder",
+    "standard-library synthetic self-checks",
+    "independent original-spec transcription/ordinary geometry derivation",
+    "file hashing",
+    "private byte-exact v1 archival",
+    "AST comparison of private preparation grader v1/v2 only"
+  ],
+  "selfcheck_final": "self-check-v2-attempt-01.json",
+  "preparation_attempts": [
+    {
+      "file": "self-check-v2-attempt-01.json",
+      "status": "passed",
+      "qualification": "frozen v2 checker; adds only empty positive and malformed-empty negative to existing tests"
+    }
+  ],
+  "failed_preparation_attempts": [],
+  "remaining_release_requirements": [
+    "explicit root UI/dynamics release",
+    "observed actor/independent time-resource observer and actual PID",
+    "empty native RSS baseline and absolute cap before garment authoring",
+    "actual canvas/focus/dialog/job-state and process-termination evidence",
+    "root source/executable identity check"
+  ],
+  "unresolved_claims": [
+    "witnessed UI workflow until actual evidence review",
+    "all per-frame trajectory and multiplier/velocity diagnostics",
+    "full self-contact/CCD",
+    "convergence",
+    "calibration",
+    "reference parity",
+    "Gate 1/full native studio acceptance"
+  ],
+  "artifacts": {
+    "METHOD-PLAN.md": {
+      "bytes": 17492,
+      "sha256": "32cb9e78127809ee002a2fa27739cf7d516d32ca51d248ef08622a905dbc097d"
+    },
+    "design-derivation.json": {
+      "bytes": 1255,
+      "sha256": "be4e2c5858dd59e4513aa83599df122added885319e826b1d62632b1b2764081"
+    },
+    "design.json": {
+      "bytes": 3822,
+      "sha256": "3217348cfcfc82d8bd4380f18bad676c5bf7921dc1e0ab043efa27a5e3b08e30"
+    },
+    "grade.py": {
+      "bytes": 30650,
+      "sha256": "de73bee146d6c3e5e5f5ba81453dc9863b715ca31029012ce899fac2aece77eb"
+    },
+    "self-check-v2-attempt-01.json": {
+      "bytes": 843,
+      "sha256": "7424e08d4ae7baf097efaec9f16ffd3bcc6693b1daafdd62c3586f4aeb165290"
+    },
+    "self-check-v2-attempt-01.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "preparation_version": 2,
+  "previous_private_freeze": {
+    "path": "preparation-v1/FREEZE.json",
+    "sha256": "8d1fb7386e6becab72e78865a3fe7baa79fec718c56918145c2cbf71af5ce021",
+    "all_original_artifacts_verified_byte_identical": true
+  },
+  "prospective_changes": [
+    "Actual native initial Save/copy empty.weftforge, retaining the SAME live primary throughout; exact default empty state independently checked.",
+    "Completed finite phase with authored/file/export structure and resource checks passing but ONLY final physical-screen failure remains FAILED and may continue exactly the already planned edit/second phase. Operational/structural/nonfinite/resource/cancelled/incomplete errors STOP the whole case."
+  ],
+  "unchanged_checks": "AST comparison: all prior functions except grade/self_check byte-equivalent as AST; only check_empty added; all physical formulas/thresholds/design parameters/history expectations/caps unchanged.",
+  "failure_policy": {
+    "classification_authority": "root, using grade JSON plus actual actor/job/resource receipts",
+    "physical_screen_only": "If operationally complete, finite, within caps and all authored/file/exportstructure checks pass, retain FAILED and continue only the already planned dimension/fabric/history/restart and second phase; no green credit to failed phase.",
+    "all_other_failures": "Engine/mesh/save/authored/attribute/nonfinite/resource/unsupported-control or cancelled/incomplete phase STOP whole case; no retry, continuation or parameter tuning."
+  }
+}

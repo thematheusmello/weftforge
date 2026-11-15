@@ -1,0 +1,338 @@
+   Compiling weftforge v0.1.0 (WORKSPACE_ROOT/.local/native-snapping-integration-20261115/apps/weftforge)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.00s
+     Running unittests src/main.rs (target/debug/deps/weftforge-bdb461f0b12f8f78)
+
+running 46 tests
+test tests::canvas_picking ... ok
+test tests::cancelled_and_obsolete_jobs_do_not_replace_the_display_snapshot ... ok
+test tests::export_guard_preserves_source_projects_and_symlink_aliases ... ok
+test tests::inspecting_and_recoloring_preserves_valid_imported_dimensions_and_physics ... ok
+test tests::inspector_updates_commit_once_and_undo_as_one_transaction ... ok
+test tests::exit_retains_last_valid_geometry_and_reports_when_all_recovery_paths_fail ... ok
+test tests::bounded_fit_phases_queue_without_rebuild_and_continue_accepted_cloth_state ... ok
+test tests::exit_retains_last_second_drafts_after_an_older_autosave_then_recovers_exactly ... ok
+test tests::exit_preserves_primary_clean_and_discarded_states_and_uses_unique_fallback ... ok
+test tests::numeric_fields_preserve_unedited_bits_and_accept_text_steps_and_drags ... ok
+test tests::ellipse_accessible_button_and_search_commit_once_and_preserve_failed_drafts ... ok
+test tests::inspector_focus_does_not_reuse_edit_text_after_adding_or_selecting_pieces ... ok
+test tests::ordered_sewing::all_portion_guides_use_the_current_mesh_revision_and_authoritative_source ... ok
+test tests::numeric_rectangle_click_commits_once_and_cancel_or_errors_preserve_drafts_and_history ... ok
+test pattern_import_tests::original_baseline_decimal_width_return_commits_once_and_history_is_exact ... ok
+test pattern_import_tests::import_modal_controls_are_reachable_from_the_accessibility_root ... ok
+test pattern_import_tests::chooser_modal_import_commits_pending_edits_and_all_pieces_as_one_undo ... ok
+test tests::position_snapping_rounds_scaled_ties_away_from_zero_and_off_preserves_bits ... ok
+test tests::obj_export_uses_ready_rest_or_current_drape_without_changing_construction ... ok
+test pattern_framing_tests::frame_all_fits_authored_outlines_without_changing_document_or_pending_edits ... ok
+test tests::focused_numeric_history_restore_survives_blur_and_retains_redo ... ok
+test tests::focusing_small_and_large_piece_sizes_preserves_document_and_history ... ok
+test tests::selected_curve_controls_and_split_use_fresh_drafts_atomic_history_and_invalidation ... ok
+test tests::stage_and_snapshot_survive_unaccepted_jobs ... ok
+test tests::stage_resets_when_accepting_mesh_and_preserves_queued_work ... ok
+test tests::stage_resets_when_construction_becomes_empty ... ok
+test tests::stage_resets_only_on_successful_document_load ... ok
+test pattern_import_tests::cancelled_invalid_and_failed_import_keep_pending_drafts_ids_and_redo ... ok
+test tests::selected_join_button_commits_one_revision_and_rejects_pending_edits_atomically ... ok
+test tests::untitled_autosave_recovers_editable_work_and_failed_recovery_retains_it ... ok
+test tests::ordered_sewing::accesskit_only_two_to_three_creation_keeps_drafts_outside_document_until_one_commit ... ok
+test tests::worker_failure_survives_late_cancel_and_revision_change ... ok
+test tests::ordered_sewing::canvas_enter_sides_delete_escape_history_and_load_are_atomic ... ok
+test tests::tabbing_over_unedited_curve_control_preserves_saved_f64_precision ... ok
+test tests::ordered_sewing::rejected_create_and_group_edit_cancel_keep_numeric_drafts_and_redo ... ok
+test tests::task_progress_correlates_real_workers_and_retains_unaccepted_snapshots ... ok
+test tests::ordered_sewing::group_controls_edit_all_fields_reverse_remove_and_preserve_one_step_history ... ok
+test tests::ordered_sewing::pointer_reverse_b_clears_all_reordered_row_buffers_and_preserves_pending_edits ... ok
+test pattern_import_tests::pointer_cancel_retains_focused_numeric_draft_revision_and_history ... ok
+test tests::rectangle_modal_blocks_background_accesskit_actions_and_preserves_staged_edits ... ok
+test tests::studio_workspace_keeps_creation_and_transport_visible ... ok
+test tests::position_snapping_inline_choices_preserve_unfinished_numeric_text_and_caret ... ok
+test tests::position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule ... ok
+test tests::join_focus_keeps_failed_drafts_and_clears_successful_control_text_before_tab ... ok
+test tests::seam_reverse_button_keeps_focused_drafts_atomic_and_draws_endpoint_pairs ... ok
+test tests::focused_export_keeps_failed_drafts_and_history_until_output_is_written ... ok
+
+test result: ok. 46 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 9.47s
+
+     Running unittests src/main.rs (target/debug/deps/weftforge_cli-19ea051bc90f0ba5)
+
+running 3 tests
+test tests::fit_quality_requires_closed_seams_and_all_declared_bounds ... ok
+test tests::legacy_diagnostics_remain_readable_with_no_attribution ... ok
+test tests::shirt_is_editable_and_interval_sewn ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/curves.rs (target/debug/deps/curves-0fb5f23934cf1b89)
+
+running 1 test
+test cli_edits_splits_and_joins_sewn_curves_and_preserves_outputs_on_failure ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.41s
+
+     Running tests/dxf_import.rs (target/debug/deps/dxf_import-542dc94af3ef78fa)
+
+running 1 test
+test cli_import_dxf_edits_once_reports_scale_and_preserves_files_after_failures ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+
+     Running tests/ellipse.rs (target/debug/deps/ellipse-dab1eee5c140e17a)
+
+running 1 test
+test cli_ellipse_creates_inspects_and_preserves_files_after_invalid_input ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+
+     Running tests/grain.rs (target/debug/deps/grain-0c4af12bb4b440e6)
+
+running 1 test
+test cli_authors_grain_and_orthotropy_and_preserves_output_on_invalid_values ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+
+     Running tests/mcp_stdio.rs (target/debug/deps/mcp_stdio-975abca2e7fa89f9)
+
+running 10 tests
+test inspection_matches_saved_native_json_without_changing_f32_materials_or_f64_geometry ... ok
+test stdio_validates_protocol_lifecycle_modern_metadata_and_line_bounds ... ok
+test stdio_advertises_and_executes_join_atomically_without_overwriting_failed_output ... ok
+test cli_command_files_are_bounded_strict_and_do_not_replace_failed_destinations ... ok
+test stdio_ellipse_discovery_creation_inspection_and_failure_preservation ... ok
+test svg_import_stdio_discovers_shared_command_reports_physical_scale_and_is_atomic ... ok
+test dxf_import_stdio_discovers_shared_command_reports_physical_scale_and_is_atomic ... ok
+test sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constraints ... ok
+test stdio_errors_preserve_input_output_and_recovery_and_allow_retry ... ok
+test stdio_authors_atomic_shared_commands_and_exports_physical_units ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s
+
+     Running tests/svg_import.rs (target/debug/deps/svg_import-1aed92b2d3b04df2)
+
+running 1 test
+test cli_import_svg_edits_once_reports_scale_and_preserves_files_after_failures ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+
+     Running unittests src/lib.rs (target/debug/deps/weftforge_core-0ecbef5a2026db34)
+
+running 12 tests
+test sewing::tests::new_groups_do_not_snap_nearby_parameters_by_a_legacy_t_tolerance ... ok
+test geometry::quality_tests::cancellation_leaves_authoring_unchanged ... ok
+test sewing::tests::metric_limits_cancel_or_reject_without_an_approximate_fallback ... ok
+test geometry::quality_tests::interior_flip_preserves_boundary_and_area_while_improving_sliver ... ok
+test simulation::tests::rejects_stale_and_foreign_meshes_without_panicking ... ok
+test simulation::tests::cancellable_adapter_reaches_initial_contacts_and_retains_inputs ... ok
+test simulation::tests::strain_attribution_resolves_current_piece_and_rejects_stale_indices ... ok
+test persistence::tests::interrupted_save_and_invalid_inputs_preserve_the_previous_document ... ok
+test persistence::tests::saves_refuse_nonregular_destinations_without_changing_targets_or_recovery ... ok
+test persistence::tests::exports_preserve_native_projects_and_aliases_at_any_extension ... ok
+test simulation::tests::original_shirt_initial_contacts_match_full_scan_at_multiple_resolutions ... ok
+test geometry::quality_tests::fine_curved_panels_preserve_area_topology_and_sewing_within_mesh_limits ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 12.69s
+
+     Running tests/dxf.rs (target/debug/deps/dxf-8edfdae2649044d9)
+
+running 4 tests
+test r2000_infrastructure_has_resolved_unique_handles_counts_and_layout_links ... ok
+test exact_authored_boundaries_and_piece_order_survive_ascii_mm_export ... ok
+test known_dimensions_and_geometry_ignore_placement_resolution_and_simulation ... ok
+test empty_project_is_valid_and_failed_exports_preserve_project_history_and_files ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+
+     Running tests/dxf_import.rs (target/debug/deps/dxf_import-148af960f795c349)
+
+running 6 tests
+test own_writer_round_trip_is_supplemental_and_keeps_cubics_and_f64_scale ... ok
+test original_drawing_adds_exact_editable_si_curves_layout_and_layer_names_in_one_undo ... ok
+test command_wire_fields_are_strict_and_file_loading_is_bounded ... ok
+test malformed_unsupported_or_unsafe_input_preserves_document_and_both_history_directions ... ok
+test entity_limit_accepts_4096_and_rejects_4097_before_authoring ... ok
+test full_import_and_later_batch_failure_leave_old_project_and_id_allocator_unchanged ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+     Running tests/ellipse.rs (target/debug/deps/ellipse-bfb478e9e1a5714c)
+
+running 4 tests
+test ellipse_radial_error_obeys_predeclared_independent_polynomial_bound ... ok
+test ellipse_has_declared_controls_ids_bounds_tangents_and_one_persistent_transaction ... ok
+test ellipse_rejects_bad_dimensions_coordinates_names_ids_and_resource_counts_atomically ... ok
+test ellipse_boundaries_keep_authored_ids_and_sewing_under_remeshing ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.27s
+
+     Running tests/grain.rs (target/debug/deps/grain-83c7672492d707cf)
+
+running 3 tests
+test invalid_grain_or_directional_stiffness_retains_document_and_history ... ok
+test grain_and_orthotropy_are_one_transaction_with_history_and_stale_mesh_rejection ... ok
+test authored_grain_rotates_real_cpu_response_while_color_preserves_physics ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+     Running tests/joins.rs (target/debug/deps/joins-a1ac733604117993)
+
+running 7 tests
+test join_rejects_placement_roundoff_above_the_physical_point_tolerance ... ok
+test join_rejects_numerically_ambiguous_or_extreme_parameter_reconstruction ... ok
+test incompatible_midpoint_invisible_cubics_mixed_controls_and_corners_reject_atomically ... ok
+test join_rejects_self_seams_tiny_remapped_intervals_and_failing_transactions ... ok
+test join_rejects_a_full_domain_roundoff_error_above_the_unchanged_tolerance ... ok
+test join_recovers_analytic_cubic_children_including_stationary_derivatives_and_wrap ... ok
+test join_preserves_both_children_sewn_pairs_in_all_orientations_and_v3_remesh ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+
+     Running tests/migration.rs (target/debug/deps/migration-f5e02c3a02f5bab5)
+
+running 9 tests
+test nondefault_v1_material_values_are_mapped_instead_of_replaced_by_defaults ... ok
+test duplicate_fields_are_rejected_at_envelope_project_and_material_boundaries ... ok
+test both_schema_readers_reject_nonfinite_and_out_of_range_numbers ... ok
+test version_dispatch_rejects_mixed_schemas_unknown_fields_and_unsupported_versions ... ok
+test real_v1_fixtures_migrate_without_authored_geometry_or_physical_data_loss ... ok
+test original_v1_point_bits_survive_load_migration_save_and_reload ... ok
+test v1_hard_decimals_and_large_authoring_values_keep_their_bits ... ok
+test v2_hard_decimals_and_large_authoring_values_keep_their_bits ... ok
+test v3_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+
+     Running tests/seam_reversal.rs (target/debug/deps/seam_reversal-9dab6dca84a5dceb)
+
+running 2 tests
+test rejected_staged_reversal_retains_document_and_redo ... ok
+test reversal_changes_endpoint_pairing_and_preserves_partial_nonlinear_construction ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.90s
+
+     Running tests/sewing_groups.rs (target/debug/deps/sewing_groups-17a80c81923b0808)
+
+running 13 tests
+test group_commands_reversal_history_branches_and_dependent_removal_are_atomic ... ok
+test disjoint_same_curve_coverage_survives_split_join_but_overlaps_are_rejected ... ok
+test a_thousand_cubic_spans_share_one_absolute_path_budget ... ok
+test strict_v3_and_legacy_v2_keep_authored_values_and_maps_without_reinterpretation ... ok
+test disconnected_two_to_three_keeps_both_one_sided_knots_and_real_constraints ... ok
+test collinear_nonuniform_cubic_uses_physical_length_in_both_directions ... ok
+test geometry_edits_keep_attachments_recompute_lengths_and_reject_old_meshes ... ok
+test group_save_reopen_recovery_and_failed_metric_save_keep_existing_files ... ok
+test conditioned_short_spans_reject_global_parameter_rounding_before_commit_or_io ... ok
+test split_join_partial_cubics_keep_group_identity_maps_and_pair_locations ... ok
+test resource_precision_cancellation_and_invalid_preview_fail_without_mutation ... ok
+test split_at_partial_endpoints_and_authored_map_knots_keeps_all_positive_spans ... ok
+test asymmetric_cubic_metric_and_nonlinear_pairs_match_independent_integrals ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.18s
+
+     Running tests/shirt.rs (target/debug/deps/shirt-01e50d7a0067de46)
+
+running 1 test
+test original_shirt_builds_conforming_positive_area_cloth_at_multiple_resolutions ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.23s
+
+     Running tests/svg_import.rs (target/debug/deps/svg_import-2ec4ca9277dfa77a)
+
+running 5 tests
+test shared_command_serde_is_strict_and_preserves_original_svg_bytes ... ok
+test rejected_svg_preserves_project_stable_ids_and_undo_redo_history ... ok
+test original_svg_preserves_physical_geometry_names_layout_and_one_editable_transaction ... ok
+test own_export_retains_explicit_closing_cubics_and_absolute_origin_without_flattening ... ok
+test parser_resource_limits_and_native_capacity_revision_id_limits_are_atomic ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+
+     Running tests/workflow.rs (target/debug/deps/workflow-f64bf9b800996e79)
+
+running 10 tests
+test invalid_contours_and_failed_transactions_leave_document_and_history_unchanged ... ok
+test transactions_history_and_stable_ids_survive_branching ... ok
+test a_seam_cannot_reference_the_same_curve_on_both_sides ... ok
+test loaded_duplicate_ids_dangling_relationships_and_non_monotone_seams_are_rejected ... ok
+test rest_mesh_has_physical_scale_consistent_uvs_and_conforming_refinement ... ok
+test split_cubic_is_exact_and_resize_updates_real_geometry ... ok
+test independent_obj_parser_observes_metres_y_up_uvs_normals_and_piece_groups ... ok
+test sewn_splits_preserve_gathered_pairs_in_both_directions_at_breakpoints_and_interval_ends ... ok
+test multiple_seams_survive_split_remesh_history_branching_and_v3_save_reopen ... ok
+test reversed_gathered_cubic_intervals_retain_correspondence_through_remesh_edits_and_files ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.33s
+
+     Running unittests src/lib.rs (target/debug/deps/weftforge_sim-f2c47d8c2132eeba)
+
+running 51 tests
+test strain::tests::rounded_squares_are_compensated_and_nonfinite_sums_stay_nonfinite ... ok
+test tests::analytic_dihedral_gradient_matches_independent_finite_difference ... ok
+test tests::bending_reduces_fold_angle_without_translating_center_of_mass ... ok
+test capsule::tests::parallel_and_coplanar_segments_reach_face_between_outside_endpoints ... ok
+test capsule::tests::saved_original_and_harbor_surface_witnesses_are_detected ... ok
+test capsule::tests::exact_closest_features_include_caps_faces_edges_and_vertices ... ok
+test capsule::tests::tiny_and_degenerate_triangles_keep_closed_surface_coverage ... ok
+test capsule::tests::distance_and_barycentric_gradients_survive_rigid_transforms ... ok
+test tests::cancellable_constructor_keeps_invalid_input_checks_and_honors_early_cancel ... ok
+test tests::closed_elastic_stitch_handles_zero_gap_pins_and_denominator_guard ... ok
+test tests::closed_elastic_stitch_keeps_accepted_weights_and_endpoint_arithmetic ... ok
+test tests::closed_elastic_stitch_merges_repeated_and_cross_side_vertices ... ok
+test capsule::tests::zero_distance_fallback_is_deterministic_finite_and_radial ... ok
+test tests::closed_elastic_stitch_preserves_isolated_energy_and_units ... ok
+test tests::closed_elastic_stitch_n32_matches_independent_quadratic_and_individual_actions ... ok
+test tests::closed_elastic_stitch_two_free_masses_preserve_reactions_under_rigid_transforms ... ok
+test contact::tests::hierarchy_query_cancels_when_all_bounds_overlap ... ok
+test tests::capsule_surface_projection_uses_barycentric_inverse_masses_and_existing_friction ... ok
+test contact::tests::moving_contact_query_reaches_a_later_plane ... ok
+test tests::finite_diagnostics_do_not_claim_satisfied_contact ... ok
+test tests::cancellation_after_measurement_preserves_peak_strain ... ok
+test tests::capsule_surface_fixed_nodes_report_conflict_and_reset_restores_full_occupancy ... ok
+test contact::tests::partitioned_queries_preserve_sequential_contact_order ... ok
+test tests::capsule_axis_face_crossing_has_finite_deterministic_recovery_and_honest_residual ... ok
+test tests::closed_elastic_stitch_cancellation_and_failure_retain_whole_call_state ... ok
+test tests::elastic_stitch_substeps_reset_multipliers_when_target_reaches_zero ... ok
+test tests::capsule_projection_and_final_surface_analysis_cancellation_preserve_the_accepted_step ... ok
+test tests::cancellation_and_failures_preserve_old_state_and_allow_recovery ... ok
+test tests::final_capsule_surface_residual_rechecks_contacts_undone_by_a_later_capsule ... ok
+test tests::malformed_external_geometry_material_and_constraints_are_rejected ... ok
+test tests::nonfinite_strain_after_a_finite_candidate_invalidates_diagnostics ... ok
+test tests::peak_strain_uses_input_triangle_order_and_exact_ties_choose_warp ... ok
+test tests::conservative_skinny_capsule_pairs_remain_visible_and_exact_collapsed_faces_are_not_dropped ... ok
+test tests::ground_torso_and_capsule_project_to_exterior ... ok
+test tests::freefall_matches_symplectic_euler_and_refines_toward_analytic_solution ... ok
+test tests::membrane_projection_matches_analytic_uniaxial_and_shear_updates ... ok
+test tests::membrane_affine_strain_follows_material_axes_under_arrangement_and_winding ... ok
+test tests::positive_targets_and_hard_stitches_keep_radial_updates ... ok
+test tests::layers_contact_and_transfer_motion_to_the_other_layer ... ok
+test tests::shared_edge_peak_preserves_exact_transforms_and_distinguishes_near_ties ... ok
+test tests::weighted_stitch_closes_unequal_samples_and_preserves_momentum ... ok
+test tests::area_mass_rest_and_reset_are_si_consistent ... ok
+test contact::tests::swept_hierarchy_candidates_equal_exhaustive_inclusive_queries ... ok
+test contact::tests::hierarchy_build_and_partition_cancel_during_work ... ok
+test tests::swept_layer_crossing_is_resolved_and_ground_friction_resists_slide ... ok
+test contact::tests::hierarchy_is_conservative_and_prunes_separated_bounds ... ok
+test tests::seam_assembly_is_bounded_monotone_cancellable_and_resettable ... ok
+test tests::grain_rotation_changes_the_physical_hanging_response ... ok
+test tests::initial_hierarchy_matches_brute_force_for_contacts_thickness_and_sewing_filters ... ok
+test tests::constructor_cancels_inside_initial_contact_query_without_publishing_state ... ok
+test tests::physical_stiffness_changes_extension_and_refinement_preserves_mass_and_sag ... ok
+
+test result: ok. 51 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.00s
+
+     Running unittests src/main.rs (target/debug/deps/xtask-b6366e7a162e5888)
+
+running 1 test
+test tests::selects_the_nearest_runtime_checkout_and_rejects_outside_directories ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests weftforge_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests weftforge_sim
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

@@ -1,0 +1,107 @@
+Window: "WeftForge", App: WeftForge Studio Preview.
+0 standard window WeftForge, Secondary Actions: Raise
+	1 container (showing 0-100 of 147 items)
+		2 text (settable) WeftForge
+		3 text (settable) GARMENT STUDIO
+		4 button Open…
+		5 button Import SVG…
+		6 button Import DXF…
+		7 button Save
+		8 button Save as…
+		9 button Recover…
+		10 button Export OBJ
+		11 button Export SVG
+		12 button Export DXF
+		13 button Undo
+		14 button Redo
+		15 button Commands ⌘K
+		16 toggle button (settable, boolean) Select / edit, Value: on
+		17 toggle button (settable, boolean) Polygon, Value: off
+		18 toggle button (settable, boolean) Rectangle, Value: off
+		19 toggle button (settable, boolean) Sew edges, Value: off
+		20 toggle button (settable, boolean) M:N sewing, Value: off
+		21 button Frame all
+		22 text (settable) Snap
+		23 toggle button (settable, boolean) Off, Value: off
+		24 toggle button (settable, boolean) 1 mm, Value: off
+		25 toggle button (settable, boolean) 5 mm, Value: off
+		26 toggle button (settable, boolean) 10 mm, Value: on
+		27 text (settable) Harbor-rest.weftforge
+		28 text (settable) rev 20
+		29 text (settable) SIMULATION
+		30 button Play
+		31 button Step
+		32 button Assemble (gravity off)
+		33 button Drape
+		34 button Reset
+		35 checkbox (settable, boolean) Wireframe, Value: off
+		36 text (settable) Stage: Rest arrangement
+		37 text (settable) Next step settings: dt 0.01667 s · 4 substeps · 8 iterations · gravity [0.0, -9.81, 0.0] m/s² · seam closure 0.50 m/s
+		38 button Task details
+		39 text (settable) Application task IDs identify workers in this session, not OS thread handles.
+		40 text (settable) Last: task 1 · Mesh · input rev 20 · Accepted
+		41 text (settable) Cancel requested: false · obsolete input: false
+		42 text (settable) Worker outcome: succeeded
+		43 text (settable) 2 pieces  ·  8 seams  ·  0 sewing groups  ·  654 vertices
+		44 text (settable) Rest mesh rebuilt from editable construction.
+		45 text (settable) Properties
+		46 text (settable) Editable construction
+		47 text (settable) OBJECTS
+		48 toggle button (settable, boolean) Harbor front, Value: on
+		49 toggle button (settable, boolean) Harbor back, Value: off
+		50 text (settable) Boundary curve · select here or in 2D
+		51 pop up button (settable) Choose boundary
+		52 text (settable) CREATE PATTERN
+		53 text (settable) Pattern name
+		54 text field (settable) Pattern 1
+		55 text (settable) W / H m
+		56 stepper (settable) 0.50
+		57 stepper (settable) 0.60
+		58 text (settable) X / Y m
+		59 stepper (settable) -0.25
+		60 stepper (settable) 1.00
+		61 button Add rectangle
+		62 button Add ellipse
+		63 button Add polygon point
+		64 button Close pattern (0 points)
+		65 text (settable) Harbor front
+		66 text (settable) Size m
+		67 stepper (settable) 1.320
+		68 stepper (settable) 0.640
+		69 text (settable) Arrange X / Y / Z m
+		70 stepper (settable) 0.72
+		71 stepper (settable) 0.00
+		72 stepper (settable) 0.24
+		73 text (settable) Rotate X / Y / Z radians
+		74 stepper (settable) 0.00
+		75 stepper (settable) 0.00
+		76 stepper (settable) 0.00
+		77 text (settable) Warp angle radians
+		78 text (settable) 0 = +U (right); positive turns toward +V (up).
+		79 stepper (settable) 1.5708
+		80 text (settable) Shared fabric · 2 pieces
+		81 text (settable) Changes affect every assigned piece. Uncalibrated approximation.
+		82 text (settable) Mass/area kg/m²
+		83 stepper (settable) 0.18
+		84 text (settable) Warp stiffness N/m
+		85 stepper (settable) 400
+		86 text (settable) Weft stiffness N/m
+		87 stepper (settable) 400
+		88 text (settable) Bend N·m
+		89 stepper (settable) 0.00300
+		90 color well
+		91 button Delete selected
+		92 text (settable) SEWING
+		93 checkbox (settable, boolean) Reverse paired edge, Value: on
+		94 text (settable) A interval / B interval (0–1)
+		95 stepper (settable) 0.00
+		96 stepper (settable) 1.00
+		97 stepper (settable) 0.00
+		98 stepper (settable) 1.00
+		99 text (settable) Sew edges: click two 2D boundaries.
+		100 text (settable) Intervals use curve parameter t, not arc length. Reverse swaps B's direction and keeps the normalized mapping.
+		101 text (settable) Seam 1 · #60
+	102 text WeftForge
+	103 menu button Window sharing
+104 menu bar
+	105 WeftForge

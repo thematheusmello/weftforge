@@ -1,0 +1,66 @@
+Independent failed-native-case review — 2026-11-15
+
+NATIVE-HARBOR-EMPTY-20261115-001 remains FAILED / STOPPED before any physical phase. The first decisive recorded mismatch is back point 7: trace 0192 requests X text "0.84"; the first subsequent native state, 0198, displays X "84.00", Y "1.60", Close pattern (7 points), revision 1 and one committed piece. The input mechanism that produced the mismatch is UNRESOLVED. This is not evidence that the validator rejects the declared valid design.
+
+Scope and identities
+
+This review read only the assigned plan/design, selected own-app authoring traces/captures, terminal observer records, scoped source contracts, and own native-file snapshot bytes. It wrote only this review folder. It did not control, focus, save, cancel, quit or relaunch PID 66557, execute CUA, Cargo, product CLI, simulation, producers, replays or either old grader. It did not inspect OS chooser content, unrelated apps/documents, or broad private context. The task's already-completed CUA summary is a stop constraint; its exact-once count is not independently derivable from the 256 product-action pairs.
+
+Declared frozen runtime: commit 76be95d4d7928bcb703e1f52f4a5404bc955f567, native SHA-256 232b19369bf966bfcaf7400aa829e3722b1c4011c7d011fbff0dee58d044cac7. This review independently compared the two inspected source files with that commit, not the complete 49-file runtime or executable.
+Plan FREEZE SHA-256: c33991c58f56b761e2281b040f52994b1611bdf50453fa88c3e51782f9df50b7.
+Design SHA-256: 3217348cfcfc82d8bd4380f18bad676c5bf7921dc1e0ab043efa27a5e3b08e30.
+Actor OUTCOME SHA-256: cf85d194a3292a740c226d281a4187a4e392212619bf9b29fd2195257518e210.
+Actor inventory SHA-256: 4d001d18f9a0c270cf32ea4f123e2fbeb32f70d7aabf39f45adfd40c338ba463.
+Actor input audit SHA-256: b15aa1cc376c21ad24799d2bb57a90d2a30c7f2b37c0a4d2b42bdfe39254797e.
+These last three files were treated as actor claims and checked against the raw evidence below. Matching their hashes does not certify every claim they contain.
+
+Decisive raw sequence
+
+Times below are 2026-11-15 UTC, recorded start→return. EVIDENCE.json retains the corresponding monotonic times and durations.
+
+0190 09:36:10.545→09:36:11.001: own PID AX shows creation X stepper 50 = 1.00, Y stepper 51 = 1.60, Add button 54, Close button 55 (6 points), revision 1. No focused-element line.
+0191 09:36:11.016→09:36:11.509: triple click [1415,422], source image 0139-native.jpg; actor refers to AX 0190. The coordinate lies over the visible X field in that own-app image. Returned result is null; focus/selection is not observed.
+0192 09:36:11.515→09:36:11.535: app.typeText text "0.84", actor ref AX 0190. Returned result is null.
+0193 09:36:11.539→09:36:11.598: Return; result null. Recorded type completion→Return start gap is 4.632459 ms. This is timing evidence, not a demonstrated causal threshold.
+0194 09:36:11.603→09:36:12.108: triple click [1472,422] for Y, same source image/ref; result null.
+0195 09:36:12.124→09:36:12.169: type "1.6"; result null.
+0196 09:36:12.180→09:36:12.276: Return; result null.
+0197 09:36:12.289→09:36:12.374: click Add button 54 using the AX 0190 ref; result null. The recorder's literal_U 0.84 / literal_V 1.6 fields are actor intent metadata, not an independent reading of what app.click consumed.
+0198 09:36:12.382→09:36:12.853: next own PID AX shows X 84.00 / Y 1.60, 7 staged points, revision 1, one piece. No focused-element line. Separate 0198-ax.txt equals the raw returned AX exactly.
+0199 starts 09:36:12.877: point 8 X click proceeds 23.900500 ms after 0198 returned. Points 8–14 and Close 0255 follow. This is the missed stop barrier.
+
+Trace 0192-before SHA-256: f68df6b37f5f4740fd479374edf44d13a7823a3a28c2398f3850359d8c800db4.
+Trace 0198-after SHA-256: f18c6514c2f4eb7c6e7760e6061431aa5555b9f5ade38dd9fa64c3b53d3444b4.
+Capture 0198 AX SHA-256: 279b96a76cb968e4bf17c0c0e9e5c106f5094d49b3b58d5440c219b025a9fd2e.
+
+No raw intermediate "0.84" field state is recorded between 0191 and 0198. The click/type/Return calls return no state, and there is no intervening native image/AX/focus capture. The AX_record reference is not evidence that X retained focus after the click. The record neither proves wrong target/focus nor rules it out. It does not show whether loss happened during selection, text input/event delivery, parsing, Return, blur or Add. Saying "the decimal parser ate the decimal", "the click hit Y", "the application multiplied by 100", or "an event race caused it" would exceed this evidence.
+
+Comparable recorded positive entries weaken any general decimal-failure claim: the same [1415,422] triple-click / type / Return sequence yields X 0.36 at 0150, 1.08 at 0158, 1.06 at 0166, 1.35 at 0174, 1.38 at 0182 and 1.00 at 0190; the next entry yields 0.82 at 0206. All use the own 0139 image and the contemporaneous actor AX reference. There is no intermediate focus witness for these either. Their successful final displays do not identify the failing mechanism.
+
+Protocol violation and observed final state
+
+The frozen ACTOR-PLAN paired_recorder.batching contract says: "Retain AX after each staged point/polygon and each committed edit, stop on mismatch." The actor did retain 0198, but continued at 0199 despite its incompatible numeric value. Count 7 and revision 1 do not validate X/Y. The actor admits checking point count/revision while omitting a numeric assertion; the raw sequence independently confirms continuation after the visible mismatch. Correct protocol would have stopped after 0198, before point 8, without correcting or retrying this case.
+
+0255 clicks Close pattern (14 points) once at 09:36:25.030→09:36:25.049. Returned own native AX/image 0256 (09:36:25.061→09:36:25.532) shows "Pattern boundary self-intersects or touches itself", revision 1, Harbor front only, 0 seams, rest arrangement, Unsaved, and rejected Harbor back still at 14 staged points. The image shows the yellow staged contour extending beyond the right side of the 2D canvas; it does not reveal an exact staged numeric vector. The label "both original polygons committed" in 0256-before is intent and is contradicted by the returned state.
+0256 AX SHA-256: 7380addc27824a63ee8ff03f7e894f21ba5a7d9310f035ea554954c9336b81bb.
+0256 native JPEG SHA-256: 636e629eb40af2f01706ef8b521bc1d05ee148a7f8fc8358609924499959e3c9.
+
+Independent checks found 256 contiguous, paired, sequential before/after records. Mapping the integer-target native clicks after 0025 through their actual referenced AX states yields exactly 28 Add polygon point and two Close pattern (14 points) clicks, with no physical button click. The terminal observer event stream has no active or closed physical phase, ends observer_stopped, and final jobs/results are empty; MONITOR-EXIT records exit 0 at 09:37:50.215301. That process exit is not a case pass. Consumer execution was not reached; no physical/garment/restart/history/OBJ acceptance can be inferred.
+
+Independent geometry and limited source contract
+
+GEOMETRY.json uses exact rational arithmetic on the declared design decimals, without product or grader execution. Both declared 14-point contours have no nonadjacent intersection/touch; their signed areas are front 0.62931875 m² and back 0.5923 m². If only back point 7 X is replaced by 84, its one-based edges 5 and 7 have a proper crossing at (9914/8337,62546/41685) m = approximately (1.189156771020751,1.5004438047259205) m. This is a conditional reconstruction consistent with rejection, not direct proof of the unsaved staged vector.
+
+Frozen-matching apps/weftforge/src/main.rs (SHA-256 aa9143cde0dbdb02fd6a2b802f5f0b0264067086e42291e6882dd1b2e3b9cc48) binds X/Y to f64 creation coordinates through numeric_value/egui DragValue (lines 1365 and 2709), pushes the current coordinate on Add (1374), and clones the staged polygon into AddPolygon on Close (1152); it clears staging only if revision changes. Its inspected helper customizes formatting; the source does not witness actual focus or text events. Frozen-matching core geometry.rs (SHA-256 66d094f631997e5b737960cd9a5d834bcbad05c2ccf4c117bdd5a8c903c578ce) associates the observed error with nonadjacent segment intersection (521). These contracts explain the UI state transitions and preserve validation; they do not establish the 0.84→84 mechanism or a validator defect.
+
+File snapshots and publication boundary
+
+The actual empty output and live primary each read as v3, revision 0, no points/curves/pieces/seams, 1977 bytes, SHA-256 a7efc773896b7d0b1cd1de1cbda888bb589aaf213eaa214f7232453ef33fd962. Native autosave and recovery each read as v3, revision 1, Harbor front, 14 points/curves, no seams, 5331 bytes, SHA-256 f1202c1ffe9a98744b44d1ccf024c231f7fcce7f92996d8f77f92a607353a361. They contain no staged back. EVIDENCE.json records the snapshot read times and size/mtime stability during each read; live files remain mutable after those reads. No whole-case immutability claim is made. This review did not re-inspect the OS Save chooser; byte contents alone do not prove the native Save gesture.
+
+PUBLICATION-ALLOWLIST.json enumerates a finite 90-file candidate set with exact hashes, plus this review's sanitized derivatives. It excludes the private app/executable, OS chooser/inventory content, all unlisted traces, raw path-bearing actor/root/observer records, live sidecars and unrelated material. It is neither an export nor publication approval. Before publication, review each chosen artifact, Git-track every delivered byte and run registry/map checks from a clean checkout. The original failed/stopped label and unresolved causes must remain visible; this ignored local folder is not tracked delivery.
+
+Smallest proposed NEW diagnostic — proposal only, not executed or authorized here
+
+Use a separately named case, fresh own app/process and separately frozen source/binary identity with no old primary or recovery access. Bound it to one scalar sequence and at most three minutes, no retries. From empty state, establish X = 1.00 once and verify it. Select the observed current X text; capture focused element and selection/raw edit text where the native API exposes them. Type "0.84" once, then capture own AX and native image before Return. Capture again immediately after one Return, after a settled focus/blur barrier, and, only if exact X/Y still match, after one Add. Stop at the first mismatch or unavailable required observation. No Close, Save, simulation, garment replay, tolerance change or old-case continuation is needed. Those barriers can localize when the value diverges; they cannot retroactively fix or promote this failed case. A source change would require its own frozen diagnostic identity and subsequent review.
+
+Skipped: product/GUI execution, source fixes, whole-runtime rehash, historical graders, OS chooser review and public publication. Risk: the underlying scalar-entry/focus cause remains unresolved, and live sidecars may change after the recorded snapshot reads.

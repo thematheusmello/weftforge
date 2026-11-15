@@ -15,13 +15,14 @@ See [current status](STATUS.md), [generated progress](docs/progress.md), [dashbo
 Original sample projects are available in [fixtures](fixtures). See
 [verification](docs/verification.md) for tested workflows and current limits.
 
-![Current WeftForge studio with SVG and DXF import, editable shirt patterns and rest arrangement](parity/reports/artifacts/dxf-studio-20261115/preview/Harbor-current-studio-rest-hero.jpg)
+![Current WeftForge studio with Snap choices, connected pattern views and task details](parity/reports/artifacts/native-studio-20261115/preview/captures/studio-current-hero.jpg)
 
 The updated studio uses a charcoal workspace, teal editing accents, compact
 document controls, connected 2D/3D views, a properties inspector and a persistent
 simulation transport. [PhotoCraft](https://github.com/storytold/photocraft)
 informed the visual direction. See the [native preview gallery](docs/studio-preview.md)
-for SVG/DXF import, editable cubic controls, framing, ellipses, sewing and the build's limits.
+for the current Snap and task display, earlier SVG/DXF workflows, editable cubic
+controls, framing, ellipses, sewing and the build's limits.
 
 ## Current capabilities
 
@@ -42,6 +43,8 @@ maps; legacy single seams retain their curve-parameter correspondence.
 An f64 CPU cloth solver provides membrane/bending constraints, sewn boundaries,
 gravity, ground/analytic mannequin contact, and self-contact. Simulation runs in
 cancelable background batches; material values are uncalibrated approximations.
+The transport's **Task details** shows the current or last background job, its
+input revision, progress when available, outcome and cancellation/obsolete flags.
 The inspector identifies the pattern and warp/weft direction at peak strain,
 with a signed percentage for extension or compression.
 The solver is early; general garment convergence and contact robustness remain
@@ -92,8 +95,9 @@ and easing-map edits. `weftforge-cli inspect-sewing PROJECT` exposes the authore
 groups, derived portions and weighted rest-mesh stitches for headless inspection.
 
 CLI dimensions use metres, kilograms, seconds, radians, and Y-up 3D. The desktop
-currently snaps canvas gestures to 1 cm. Fine numeric editing and modifier support
-remain partial.
+inline **Snap** selector offers Off, 1 mm, 5 mm, or 10 mm (default) for existing pointer
+positions. Hold Alt / Option when starting a drag or clicking to bypass. This
+session preference survives opening projects; numeric edits stay exact.
 
 Select a boundary in 2D or in the inspector's boundary list to edit absolute
 cubic controls or make it straight. The selected edge and controls are gold;

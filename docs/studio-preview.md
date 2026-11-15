@@ -1,26 +1,41 @@
 # Native studio preview
 
-These are unedited captures of the running Rust desktop application on macOS
-at 1640 × 1032 pixels. The current build is
-`76be95d4d7928bcb703e1f52f4a5404bc955f567`. PhotoCraft informed the charcoal
-workspace and teal accents; the application, documents and graphics are original
-WeftForge work.
+These are unedited 1640 × 1032 captures of the running native Rust application on
+macOS. The current images use source `21b9f5e76a77ca21357783240cef7506b3887fbc`.
+PhotoCraft informed the charcoal workspace and teal accents; the application,
+documents and graphics are original WeftForge work.
 
-## Current garment workspace
+## Current workspace and Snap choices
 
-![Current studio with SVG and DXF import, connected 2D construction and 3D rest arrangement](../parity/reports/artifacts/dxf-studio-20261115/preview/Harbor-current-studio-rest-hero.jpg)
+![Current studio with inline Snap choices and connected construction/rest views](../parity/reports/artifacts/native-studio-20261115/preview/captures/studio-current-hero.jpg)
 
-The current toolbar includes **Import SVG…**, **Import DXF…** and **Frame all**,
-alongside file, history and construction tools. The shirt view shows the Harbor
-rest arrangement at revision 20, with two editable panels, eight seams and 654
-rest vertices. Properties and simulation transport remain available beside and
-below the paired viewports. This separate read-only preview loaded a copy of
-the existing project; it made no authoring edits, saves, imports, history or
-simulation actions. It establishes the displayed workspace, not drape quality.
+This separate read-only preview loads the existing original Harbor project at
+revision 20: two pieces, eight seams and 654 rest vertices. Snap remains 10 mm.
+It makes no numeric input, construction edit, Save, history, Snap change or physics
+action. It shows the current workspace, not completed garment or snapping quality.
+The session-only Off / 1 / 5 / 10 mm preference and Alt/Option bypass are implemented.
+The preference applies to pointer positions while numeric edits stay exact.
 
-## Editable DXF import workflow
+## Current task details
 
-The current native workflow adds two original DXF patterns to an existing piece
+![Current transport showing the accepted rest-mesh task](../parity/reports/artifacts/native-studio-20261115/preview/captures/studio-task-details.jpg)
+
+Task details shows Mesh task 1, input revision 20, Accepted, worker outcome
+succeeded, cancel=false and obsolete=false. The expanded panel keeps the job
+identity and outcome beside the transport while both construction and rest views
+remain visible.
+
+Native numeric/snapping and task-lifecycle acceptance remains unverified; see the
+[scoped verification report](../parity/reports/WF-20261115-NATIVE-STUDIO-001.json).
+
+## Historical DXF workflow (76be)
+
+![Earlier source 76be studio in Harbor rest arrangement](../parity/reports/artifacts/dxf-studio-20261115/preview/Harbor-current-studio-rest-hero.jpg)
+
+These captures retain their original source 76be results and limits. That report
+is stale on the current native source; this publication reruns none of its cases.
+
+The source 76be native workflow adds two original DXF patterns to an existing piece
 after review of count, 1 mm per DXF unit, retained origin/layout, layer names and
 construction-only scope. The strict R2000 profile accepts ordered closed `LINE`
 and clamped cubic `SPLINE` boundaries; it is not general CAD or apparel import.
@@ -43,7 +58,7 @@ printing. Background autosaves retained temporary edits even though all original
 input primaries remained unchanged. The complete frozen native plan, full
 persistence behavior, printing and reference parity remain unestablished.
 
-### Current DXF review, editing and restoration
+### DXF review, editing and restoration
 
 ![DXF review before import, showing count, millimetre scale and construction scope](../parity/reports/artifacts/dxf-studio-20261115/native-v2/captures/04-original-dxf-review-before-import.jpg)
 
@@ -64,8 +79,7 @@ This establishes construction editing, not simulated garment quality.
 
 This view follows the third launch used to restore saved revision 10 after the
 separate temporary document was explicitly discarded. Phase A quit/fresh-open/
-resave is separately recorded; this restoration is not a retry. The Harbor hero
-above is a different read-only Rest preview.
+resave is separately recorded; this restoration is not a retry. The source 76be Harbor Rest preview belongs to that earlier checkpoint.
 
 ## Historical SVG workflow (32f9)
 

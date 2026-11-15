@@ -1,0 +1,66 @@
+{
+  "case": "NATIVE-STUDIO-CHECK-20261115-001",
+  "status": "STOPPED_UNVERIFIED_BEFORE_AUTHORING",
+  "reason": "Read-only viewport binder expected one own layer0 window but found main studio plus auxiliary Window. Frozen any-error stop applied; no correction or retry. This is a harness binding failure, not evidence of a product geometry/focus/snapping/task failure.",
+  "stopped_utc": "2026-11-15T10:40:28.752791+00:00",
+  "conservative_elapsed_s": 149.514399667,
+  "clock_note": "Same system monotonic clock; no phase subtraction",
+  "source_commit": "21b9f5e76a77ca21357783240cef7506b3887fbc",
+  "native_sha256": "116755960fb0d1c15c531568976417490d88da2ccdb48d3b5f48639e2aba66c7",
+  "pid": 63694,
+  "initial_observation": "Own source21b studio freshEmpty rev0 0pieces 0seams 0groups 0vertices .070mesh Snap10mm; Taskdetailscollapsed; pausedRest",
+  "viewport_partial": {
+    "native_image_pixels": [
+      1640,
+      1032
+    ],
+    "actual_main_window_bounds": {
+      "Height": 1032.0,
+      "Width": 1640.0,
+      "X": 460.0,
+      "Y": 105.0
+    },
+    "display_DPI": "not collected because windowcountassertionstopped"
+  },
+  "native_UI_inputs_after_getApp": 0,
+  "construction_edits": 0,
+  "native_saves": 0,
+  "geometry_checker_invocations": 0,
+  "physics_jobs": 0,
+  "retries": 0,
+  "focus_selection_raw_barriers": "NOTEXERCISED; no focus click/type/Return occurred",
+  "snapping_raw_draft_check": "NOTEXERCISED",
+  "same_P_pair": "NOTEXERCISED",
+  "task_details_check": "NOTEXERCISED",
+  "hero": "NOTCAPTURED; initialdiagnosticnativeimageonly; optionalpreviewnotopened",
+  "completion_summary": {
+    "called_once": true,
+    "text": "Stopped the studio binding check",
+    "immediate_next_tool_after_detected_stop": true
+  },
+  "frozen_artifacts_unchanged": true,
+  "optional_preview_original_unchanged": true,
+  "optional_preview_copy_unchanged": true,
+  "own_primary_and_two_outputs_absent": true,
+  "trace_pairs": [
+    {
+      "id": "0001",
+      "before_sha256": "bddf07619da3133e73679333517b0151ccfea1a7c26d014b82a3202b2b00e484",
+      "after_sha256": "bc3a004823643bb8db7bca59d02051efc67f2fc8f6b30010030073d59472b0fd"
+    },
+    {
+      "id": "0002",
+      "before_sha256": "fb063f12b82fd6d9b67b597fe817620a53e9d361e6b101c541f49013c8d14e0f",
+      "after_sha256": "d8bc0ac31cf39af87a5a39dc5b9e2fd556aa9d739e555ef3b8e5eedd789280c1"
+    },
+    {
+      "id": "0003",
+      "before_sha256": "90bb1d88b3bbce9cba451007841105b122e8a9ab5064cd05efb52204d66246e1",
+      "after_sha256": "24abf35dbdaf47546409693dbf17528a5f90967135781c551da70c86475f7785"
+    }
+  ],
+  "app_state": "Leave own PID alive unchanged Empty; no Close/Quit/Save afterstop",
+  "old_case_control": false,
+  "old_scalar_loss_cause": "unresolved",
+  "physics_garment_reference_claim": false
+}

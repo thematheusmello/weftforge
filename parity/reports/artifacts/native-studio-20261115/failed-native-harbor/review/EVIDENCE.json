@@ -1,0 +1,484 @@
+{
+  "review_recorded_utc": "2026-11-15T10:02:06.420545+00:00",
+  "case": "NATIVE-HARBOR-EMPTY-20261115-001",
+  "status": "read_only_forensic_review; original STOP unchanged",
+  "actor_claims_independently_treated_as_claims": [
+    "OUTCOME.json",
+    "INPUT-OBSERVATION-AUDIT.json",
+    "ACTOR-INVENTORY.json"
+  ],
+  "input_identities": [
+    {
+      "file": ".local/native-garment-plan-20261115/FREEZE.json",
+      "bytes": 5046,
+      "sha256": "c33991c58f56b761e2281b040f52994b1611bdf50453fa88c3e51782f9df50b7"
+    },
+    {
+      "file": ".local/native-garment-plan-20261115/METHOD-PLAN.md",
+      "bytes": 17492,
+      "sha256": "32cb9e78127809ee002a2fa27739cf7d516d32ca51d248ef08622a905dbc097d"
+    },
+    {
+      "file": ".local/native-garment-plan-20261115/design.json",
+      "bytes": 3822,
+      "sha256": "3217348cfcfc82d8bd4380f18bad676c5bf7921dc1e0ab043efa27a5e3b08e30"
+    },
+    {
+      "file": ".local/native-garment-acceptance-20261115/CASE-FREEZE.json",
+      "bytes": 897,
+      "sha256": "314024b950f5476a2f109f928da513226e43daa1f7b7b9d48b9599ae1b9a748b"
+    },
+    {
+      "file": ".local/native-garment-acceptance-20261115/ACTOR-PLAN.json",
+      "bytes": 26874,
+      "sha256": "2c95a257b338b0d20b0fd81e19f5cfb09c1a0acb4a90d5249507270419adbde9"
+    },
+    {
+      "file": ".local/native-garment-acceptance-20261115/OUTCOME.json",
+      "bytes": 4151,
+      "sha256": "cf85d194a3292a740c226d281a4187a4e392212619bf9b29fd2195257518e210"
+    },
+    {
+      "file": ".local/native-garment-acceptance-20261115/ACTOR-INVENTORY.json",
+      "bytes": 119368,
+      "sha256": "4d001d18f9a0c270cf32ea4f123e2fbeb32f70d7aabf39f45adfd40c338ba463"
+    },
+    {
+      "file": ".local/native-garment-acceptance-20261115/INPUT-OBSERVATION-AUDIT.json",
+      "bytes": 7783,
+      "sha256": "b15aa1cc376c21ad24799d2bb57a90d2a30c7f2b37c0a4d2b42bdfe39254797e"
+    },
+    {
+      "file": ".local/native-garment-acceptance-20261115/recorder.cjs",
+      "bytes": 5889,
+      "sha256": "4f7aecb192eea89953b1fa6bc648cda6adf9750855019731598aa630939feedc"
+    },
+    {
+      "file": ".local/native-garment-observer-20261115/ROOT-UI-OBSERVATION-SCOPE.json",
+      "bytes": 1549,
+      "sha256": "28c41bddd406394912b3836fdf35fda7e2f180d79ca2a0cee53f18475e830fa5"
+    },
+    {
+      "file": ".local/native-garment-observer-20261115/FINAL-RESOURCE-SCOPE.json",
+      "bytes": 4126,
+      "sha256": "e89a3209f4c7753e644c647d89a558813ed7cfbb479932beb476616264052cc2"
+    },
+    {
+      "file": ".local/native-garment-observer-20261115/MONITOR-EXIT.json",
+      "bytes": 149,
+      "sha256": "4acea4c6f9c207e191ce970590c1255dd49539013c5c066ee2513b30660444a8"
+    },
+    {
+      "file": ".local/native-garment-observer-20261115/run/FINAL.json",
+      "bytes": 1314,
+      "sha256": "236cd72b8563b69811f8f9cbafe30c856cbceccb823f3e9cec9c3aef790b485e"
+    },
+    {
+      "file": ".local/native-garment-observer-20261115/run/events.jsonl",
+      "bytes": 229128,
+      "sha256": "c32666fa57b3a16f3e3bef4573ec7f0e57528414b713af743ce88702ffa1c1b9"
+    }
+  ],
+  "pair_check": {
+    "contiguous_before_after_pairs": 256,
+    "sequential_nonoverlapping_recorded_times": true,
+    "native_index_button_clicks_after_0025": {
+      "button Add polygon point": 28,
+      "button Close pattern (14 points)": 2
+    }
+  },
+  "decisive_sequence": [
+    {
+      "id": "0190",
+      "label": "back staged point count 6",
+      "method": "app.getAXState",
+      "arguments": {
+        "emit": false,
+        "disableDiffing": true,
+        "pid": 66557
+      },
+      "observed_control": null,
+      "started_utc": "2026-11-15T09:36:10.545Z",
+      "completed_utc": "2026-11-15T09:36:11.001Z",
+      "started_monotonic_ns": "857686677744666",
+      "completed_monotonic_ns": "857687134520416",
+      "duration_ms": 456.77575,
+      "returned_status": "returned",
+      "returned_XY": [
+        "1.00",
+        "1.60"
+      ],
+      "has_focused_element_line": false
+    },
+    {
+      "id": "0191",
+      "label": "back point7 X select observed numeric text",
+      "method": "app.click",
+      "arguments": {
+        "target": [
+          1415,
+          422
+        ],
+        "clickCount": 3,
+        "source_image": "0139-native.jpg"
+      },
+      "observed_control": {
+        "AX_record": "0190"
+      },
+      "started_utc": "2026-11-15T09:36:11.016Z",
+      "completed_utc": "2026-11-15T09:36:11.509Z",
+      "started_monotonic_ns": "857687149617666",
+      "completed_monotonic_ns": "857687642591708",
+      "duration_ms": 492.974042,
+      "returned_status": "returned",
+      "returned_result": null
+    },
+    {
+      "id": "0192",
+      "label": "back point7 X type literal target",
+      "method": "app.typeText",
+      "arguments": {
+        "text": "0.84"
+      },
+      "observed_control": {
+        "AX_record": "0190"
+      },
+      "started_utc": "2026-11-15T09:36:11.515Z",
+      "completed_utc": "2026-11-15T09:36:11.535Z",
+      "started_monotonic_ns": "857687648544541",
+      "completed_monotonic_ns": "857687667758791",
+      "duration_ms": 19.21425,
+      "returned_status": "returned",
+      "returned_result": null
+    },
+    {
+      "id": "0193",
+      "label": "back point7 X native Return",
+      "method": "app.pressKey",
+      "arguments": {
+        "key": "Return"
+      },
+      "observed_control": {
+        "AX_record": "0190"
+      },
+      "started_utc": "2026-11-15T09:36:11.539Z",
+      "completed_utc": "2026-11-15T09:36:11.598Z",
+      "started_monotonic_ns": "857687672391250",
+      "completed_monotonic_ns": "857687731681666",
+      "duration_ms": 59.290416,
+      "returned_status": "returned",
+      "returned_result": null
+    },
+    {
+      "id": "0194",
+      "label": "back point7 Y select observed numeric text",
+      "method": "app.click",
+      "arguments": {
+        "target": [
+          1472,
+          422
+        ],
+        "clickCount": 3,
+        "source_image": "0139-native.jpg"
+      },
+      "observed_control": {
+        "AX_record": "0190"
+      },
+      "started_utc": "2026-11-15T09:36:11.603Z",
+      "completed_utc": "2026-11-15T09:36:12.108Z",
+      "started_monotonic_ns": "857687736555625",
+      "completed_monotonic_ns": "857688241357083",
+      "duration_ms": 504.801458,
+      "returned_status": "returned",
+      "returned_result": null
+    },
+    {
+      "id": "0195",
+      "label": "back point7 Y type literal target",
+      "method": "app.typeText",
+      "arguments": {
+        "text": "1.6"
+      },
+      "observed_control": {
+        "AX_record": "0190"
+      },
+      "started_utc": "2026-11-15T09:36:12.124Z",
+      "completed_utc": "2026-11-15T09:36:12.169Z",
+      "started_monotonic_ns": "857688256940708",
+      "completed_monotonic_ns": "857688302288833",
+      "duration_ms": 45.348125,
+      "returned_status": "returned",
+      "returned_result": null
+    },
+    {
+      "id": "0196",
+      "label": "back point7 Y native Return",
+      "method": "app.pressKey",
+      "arguments": {
+        "key": "Return"
+      },
+      "observed_control": {
+        "AX_record": "0190"
+      },
+      "started_utc": "2026-11-15T09:36:12.180Z",
+      "completed_utc": "2026-11-15T09:36:12.276Z",
+      "started_monotonic_ns": "857688313431500",
+      "completed_monotonic_ns": "857688409443000",
+      "duration_ms": 96.0115,
+      "returned_status": "returned",
+      "returned_result": null
+    },
+    {
+      "id": "0197",
+      "label": "stage back polygon point 7",
+      "method": "app.click",
+      "arguments": {
+        "target": 54,
+        "literal_U": 0.84,
+        "literal_V": 1.6
+      },
+      "observed_control": {
+        "AX_record": "0190"
+      },
+      "started_utc": "2026-11-15T09:36:12.289Z",
+      "completed_utc": "2026-11-15T09:36:12.374Z",
+      "started_monotonic_ns": "857688421727083",
+      "completed_monotonic_ns": "857688507649083",
+      "duration_ms": 85.922,
+      "returned_status": "returned",
+      "returned_result": null
+    },
+    {
+      "id": "0198",
+      "label": "back staged point count 7",
+      "method": "app.getAXState",
+      "arguments": {
+        "emit": false,
+        "disableDiffing": true,
+        "pid": 66557
+      },
+      "observed_control": null,
+      "started_utc": "2026-11-15T09:36:12.382Z",
+      "completed_utc": "2026-11-15T09:36:12.853Z",
+      "started_monotonic_ns": "857688514925791",
+      "completed_monotonic_ns": "857688986292833",
+      "duration_ms": 471.367042,
+      "returned_status": "returned",
+      "returned_XY": [
+        "84.00",
+        "1.60"
+      ],
+      "has_focused_element_line": false
+    },
+    {
+      "id": "0199",
+      "label": "back point8 X select observed numeric text",
+      "method": "app.click",
+      "arguments": {
+        "target": [
+          1415,
+          422
+        ],
+        "clickCount": 3,
+        "source_image": "0139-native.jpg"
+      },
+      "observed_control": {
+        "AX_record": "0198"
+      },
+      "started_utc": "2026-11-15T09:36:12.877Z",
+      "completed_utc": "2026-11-15T09:36:13.401Z",
+      "started_monotonic_ns": "857689010193333",
+      "completed_monotonic_ns": "857689533927250",
+      "duration_ms": 523.733917,
+      "returned_status": "returned",
+      "returned_result": null
+    }
+  ],
+  "comparable_entries": [
+    {
+      "AX_id": "0150",
+      "X_type_id": "0144",
+      "typed_X": "0.36",
+      "returned_XY": [
+        "0.36",
+        "0.96"
+      ],
+      "type_duration_ms": 33.106167,
+      "type_to_Return_gap_ms": 4.792
+    },
+    {
+      "AX_id": "0158",
+      "X_type_id": "0152",
+      "typed_X": "1.08",
+      "returned_XY": [
+        "1.08",
+        "0.96"
+      ],
+      "type_duration_ms": 26.955542,
+      "type_to_Return_gap_ms": 5.019042
+    },
+    {
+      "AX_id": "0166",
+      "X_type_id": "0160",
+      "typed_X": "1.06",
+      "returned_XY": [
+        "1.06",
+        "1.27"
+      ],
+      "type_duration_ms": 32.696792,
+      "type_to_Return_gap_ms": 5.371125
+    },
+    {
+      "AX_id": "0174",
+      "X_type_id": "0168",
+      "typed_X": "1.35",
+      "returned_XY": [
+        "1.35",
+        "1.14"
+      ],
+      "type_duration_ms": 44.031417,
+      "type_to_Return_gap_ms": 4.850083
+    },
+    {
+      "AX_id": "0182",
+      "X_type_id": "0176",
+      "typed_X": "1.38",
+      "returned_XY": [
+        "1.38",
+        "1.40"
+      ],
+      "type_duration_ms": 36.48875,
+      "type_to_Return_gap_ms": 4.550958
+    },
+    {
+      "AX_id": "0190",
+      "X_type_id": "0184",
+      "typed_X": "1",
+      "returned_XY": [
+        "1.00",
+        "1.60"
+      ],
+      "type_duration_ms": 22.446666,
+      "type_to_Return_gap_ms": 4.667209
+    },
+    {
+      "AX_id": "0206",
+      "X_type_id": "0200",
+      "typed_X": "0.82",
+      "returned_XY": [
+        "0.82",
+        "1.50"
+      ],
+      "type_duration_ms": 47.032875,
+      "type_to_Return_gap_ms": 7.6125
+    }
+  ],
+  "source_contract_files": [
+    {
+      "file": "apps/weftforge/src/main.rs",
+      "sha256": "aa9143cde0dbdb02fd6a2b802f5f0b0264067086e42291e6882dd1b2e3b9cc48",
+      "matches_runtime_commit_file": true
+    },
+    {
+      "file": "crates/weftforge-core/src/geometry.rs",
+      "sha256": "66d094f631997e5b737960cd9a5d834bcbad05c2ccf4c117bdd5a8c903c578ce",
+      "matches_runtime_commit_file": true
+    }
+  ],
+  "observer_terminal_summary": {
+    "event_counts": {
+      "monitor_ready": 1,
+      "request": 3,
+      "ack": 3,
+      "resource_sample": 732,
+      "ALARM": 1,
+      "observer_stopped": 1
+    },
+    "active_phase_ever_nonnull": false,
+    "closed_phases_ever_nonempty": false,
+    "final_event": "observer_stopped",
+    "monitor_exit": {
+      "monitor_pid": 65915,
+      "wrapper_pid": 65893,
+      "exit_code": 0,
+      "utc": "2026-11-15T09:37:50.215301+00:00",
+      "monotonic_ns": 857786347333666
+    },
+    "final_jobs": [],
+    "final_phase_results": {}
+  },
+  "native_file_snapshot_reads": [
+    {
+      "file": "outputs/empty.weftforge",
+      "observed_utc": "2026-11-15T10:02:06.366845+00:00",
+      "bytes": 1977,
+      "sha256": "a7efc773896b7d0b1cd1de1cbda888bb589aaf213eaa214f7232453ef33fd962",
+      "size_and_mtime_stable_during_read": true,
+      "format": "weftforge",
+      "version": 3,
+      "revision": 0,
+      "piece_names": [],
+      "point_count": 0,
+      "curve_count": 0,
+      "seam_count": 0,
+      "qualification": "snapshot-time read only; live files may change after this read"
+    },
+    {
+      "file": "live/native-harbor.weftforge",
+      "observed_utc": "2026-11-15T10:02:06.367654+00:00",
+      "bytes": 1977,
+      "sha256": "a7efc773896b7d0b1cd1de1cbda888bb589aaf213eaa214f7232453ef33fd962",
+      "size_and_mtime_stable_during_read": true,
+      "format": "weftforge",
+      "version": 3,
+      "revision": 0,
+      "piece_names": [],
+      "point_count": 0,
+      "curve_count": 0,
+      "seam_count": 0,
+      "qualification": "snapshot-time read only; live files may change after this read"
+    },
+    {
+      "file": "live/native-harbor.weftforge.autosave",
+      "observed_utc": "2026-11-15T10:02:06.367843+00:00",
+      "bytes": 5331,
+      "sha256": "f1202c1ffe9a98744b44d1ccf024c231f7fcce7f92996d8f77f92a607353a361",
+      "size_and_mtime_stable_during_read": true,
+      "format": "weftforge",
+      "version": 3,
+      "revision": 1,
+      "piece_names": [
+        "Harbor front"
+      ],
+      "point_count": 14,
+      "curve_count": 14,
+      "seam_count": 0,
+      "qualification": "snapshot-time read only; live files may change after this read"
+    },
+    {
+      "file": "live/native-harbor.weftforge.autosave.recovery",
+      "observed_utc": "2026-11-15T10:02:06.367940+00:00",
+      "bytes": 5331,
+      "sha256": "f1202c1ffe9a98744b44d1ccf024c231f7fcce7f92996d8f77f92a607353a361",
+      "size_and_mtime_stable_during_read": true,
+      "format": "weftforge",
+      "version": 3,
+      "revision": 1,
+      "piece_names": [
+        "Harbor front"
+      ],
+      "point_count": 14,
+      "curve_count": 14,
+      "seam_count": 0,
+      "qualification": "snapshot-time read only; live files may change after this read"
+    }
+  ],
+  "qualifications": [
+    "No intermediate field/focus state exists in recorded0191\u20130197 action returns; all are null.",
+    "Observed_control AX_record0190 is an actor reference, not an independently confirmed focused element after each click.",
+    "literal_U/V arguments on0197 record intent; app.click target54 consumes its own UI state.",
+    "No product/GUI/CUA/Cargo/CLI/producer/replay/old grader execution was performed.",
+    "No active process or private context scan was performed.",
+    "No claim of whole-case immutability; sidecars are snapshot-time mutable."
+  ]
+}

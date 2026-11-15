@@ -77,7 +77,7 @@
     "xtask",
     "spec/features/FILE-005-dxf-pattern-import.md"
   ],
-  "freshness": "current",
+  "freshness": "stale",
   "scope": "Passed bounded headless import/save/export and exact MCP comparisons, the unchanged nine-checkpoint native file/export grade, and independently supported observed native components. This status does not accept every frozen native PLAN criterion, complete UI/file/adapter contracts or reference parity.",
   "scenario": "parity/scenarios/FILE-DXF-STUDIO-001.json",
   "packet_manifest": "parity/reports/artifacts/dxf-studio-20261115/MANIFEST.json",
@@ -1190,5 +1190,6 @@
     "entrypoint_flag_preserved_false_external_clean_tracking_gate_passed": true,
     "new_product_UI_Cargo_physics_runs": 0,
     "full_native_plan_accepted": false
-  }
+  },
+  "freshness_reason": "Native position-snapping source changed after the tested source76be DXF checkpoint. Original component passes, full-native-plan gaps, old failures, artifact hashes and source bindings remain unchanged; no window or acceptance-case regrading is claimed."
 }

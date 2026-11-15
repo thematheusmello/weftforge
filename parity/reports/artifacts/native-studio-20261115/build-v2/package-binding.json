@@ -1,0 +1,57 @@
+{
+  "source_commit": "21b9f5e76a77ca21357783240cef7506b3887fbc",
+  "tree": "ada23bc049230817a6884c94b332d95eb40f5c7e",
+  "source_pretest_sha256": "c61f5b7fcc066bfb667978e8a76c7b9fd7770f1363492e58992daec4d817613c",
+  "binaries": {
+    "target/release/weftforge": "116755960fb0d1c15c531568976417490d88da2ccdb48d3b5f48639e2aba66c7",
+    "target/release/weftforge-cli": "b2c9919869e02c4ab35f9a2e65c689bfcda04c01505e6f71082f045f2aa45a05"
+  },
+  "unsigned_package_files": {
+    "target/package/LICENSE-APACHE": {
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    "target/package/LICENSE-MIT": {
+      "sha256": "5a79a5be6e18069ea095bcb13f724f90cee6a70b1fd6b5e2b1f505f050c25b0d",
+      "bytes": 1079
+    },
+    "target/package/README.md": {
+      "sha256": "fa9796a180182b2a1fc2f67a8f6ad6f0c53e4a22f10b3d0610825cd14bd5978f",
+      "bytes": 7363
+    },
+    "target/package/THIRD_PARTY.md": {
+      "sha256": "da5201bd1cadff85193d02040d0f99b7a7b4949fe4857684f91efaa1f5799a0d",
+      "bytes": 2189
+    },
+    "target/package/WeftForge.app/Contents/Info.plist": {
+      "sha256": "5ac9539a4fb95ced9cc9463a5840176f69b86a826c39be0f7971378d93c218b5",
+      "bytes": 557
+    },
+    "target/package/WeftForge.app/Contents/MacOS/weftforge": {
+      "sha256": "116755960fb0d1c15c531568976417490d88da2ccdb48d3b5f48639e2aba66c7",
+      "bytes": 14555200
+    },
+    "target/package/weftforge": {
+      "sha256": "116755960fb0d1c15c531568976417490d88da2ccdb48d3b5f48639e2aba66c7",
+      "bytes": 14555200
+    },
+    "target/package/weftforge-cli": {
+      "sha256": "b2c9919869e02c4ab35f9a2e65c689bfcda04c01505e6f71082f045f2aa45a05",
+      "bytes": 2166464
+    }
+  },
+  "all_five_gates_exit_zero": true,
+  "runtime_source_files": 49,
+  "contract_source_files": 2,
+  "rust_tests": 192,
+  "python_tests": [
+    48,
+    6
+  ],
+  "git_clean": true,
+  "prior_190_receipts_and_archived_binaries_unchanged": true,
+  "all_heavy_process_groups_stopped": true,
+  "process_group_check_utc": "2026-11-15T10:30:21.158701+00:00",
+  "live_gate_groups": [],
+  "target_reuse": "Authorized within same isolated worktree target only; no target/cache copies or symlinks."
+}

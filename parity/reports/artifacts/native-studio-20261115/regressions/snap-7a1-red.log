@@ -1,0 +1,11 @@
+   Compiling position-snapping-review v0.0.0 (WORKSPACE_ROOT/.local/position-snapping-review-20261115)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.29s
+     Running `target/debug/keyboard-review`
+tool=Select focus_before_enter_is_off=true focus_after_enter_is_off=true focus_after_enter_is_old_numeric=false chosen=Off
+tool=SewingPaths focus_before_enter_is_off=true focus_after_enter_is_off=false focus_after_enter_is_old_numeric=true chosen=Off
+
+thread 'main' (58249420) panicked at src/keyboard.rs:62:9:
+assertion `left == right` failed: keyboard activation must retain focus on Snap choice
+  left: 1
+ right: 0
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

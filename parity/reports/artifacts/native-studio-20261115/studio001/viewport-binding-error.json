@@ -1,0 +1,34 @@
+{
+  "utc": "2026-11-15T10:40:28.750859+00:00",
+  "operation": "Read-only CoreGraphics own-window/display metadata binding before authoring",
+  "native_UI_input": false,
+  "status": "harness_binding_assertion_failed",
+  "assertion": "Expected exactly one own PID/layer0 on-screen window",
+  "actual_own_windows": [
+    {
+      "kCGWindowBounds": {
+        "Height": 20.0,
+        "Width": 66.0,
+        "X": 466.0,
+        "Y": 111.0
+      },
+      "kCGWindowName": "Window",
+      "kCGWindowNumber": 68049,
+      "kCGWindowOwnerPID": 63694
+    },
+    {
+      "kCGWindowBounds": {
+        "Height": 1032.0,
+        "Width": 1640.0,
+        "X": 460.0,
+        "Y": 105.0
+      },
+      "kCGWindowName": "WeftForge",
+      "kCGWindowNumber": 68011,
+      "kCGWindowOwnerPID": 63694
+    }
+  ],
+  "exception_type": "AssertionError",
+  "possible_auxiliary_surface": "Screenshot shows Window sharing capsule; no attribution toproductlogic established",
+  "repair_or_retry": false
+}
