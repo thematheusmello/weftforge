@@ -77,7 +77,9 @@ existing mesh limits, authored boundary parameters and cancellation checks remai
 
 `Editor::execute(Command)` clones, validates and commits a document transaction;
 failure retains the previous project/history. A transaction groups related
-commands into one undo entry. IDs are not reused after an undo branch. Persistent
+commands into one undo entry. Undo/redo increment the revision and retain the
+allocator high-water mark; removed object IDs stay reserved across saving. IDs
+are not reused after an undo branch. Persistent
 construction differs from selection, camera, simulation frames and rebuildable
 caches. Point-drag previews do not mutate construction until commit. Inspector
 numeric drafts commit once per gesture. Mesh preparation and solver stepping

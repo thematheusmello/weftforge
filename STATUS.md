@@ -9,42 +9,57 @@ inventory, not a feature-completion denominator.
 
 Latest public main is `c0201a74933a4785aa454e7740420fcee54f504e` from
 [PR38](https://github.com/thematheusmello/weftforge/pull/38). Actions remain disabled
-and the merge has zero workflow runs. This isolated integration combines the
-bounded editable SVG importer (`a27f2e4`) with diagnostic-only strain arithmetic
-(`2079411`) on the published full static capsule-contact implementation. No force,
-constraint projection, material, quality threshold or original experiment changed.
+and that merge has zero workflow runs. The active isolated branch is
+`feat/svg-studio-integration`, worktree `.local/svg-studio-integration-20261115`.
+Its tested runtime is `32f9b3481c46e28a3b3acc49e6cf3908c7001b28`: all45
+runtime/test files remain byte-identical through native verification and
+publication assembly. The packaged native SHA256 is
+`ef4e1a0f9ca797669e549f407a234ad0a8295fadab281d791b9ab92158b76a4e`.
 
-The combined `bb6010a7` runtime passed all5 local gates from a fresh real target:
-formatting,165Rust tests, strict workspace/all-target Clippy, xtask verification
-with54Python checks, and unsigned native packaging. No source bytes changed during
-validation. The packaged native hash is `6c39006f069a791af12a5e1b7f3c24b799d64fa7c60fa0bea55881b1d0f8a149`.
+The build combines editable SVG pattern import (core, native, CLI and MCP),
+the shared numeric Cancel fix, view-only **Frame all**, full static capsule
+contact and diagnostic-only canonical strain reporting. No force, projection,
+material, physical quality threshold or original experiment changed in this
+SVG/diagnostic increment. Current screenshots are in the
+[native gallery](docs/studio-preview.md).
 
-SVG import also has an independent svgpathtools consumer check. The first actual
-native attempt opened the original baseline, staged width.125m, and reviewed the
-correct2piece/2mm-per-unit summary. Clicking Cancel incorrectly committed that
-width, advancing revision1→2; no SVG was imported. This is a confirmed failure.
-An initial missing-accessibility claim is qualified: the native inspector snapshot
-truncates at0–100 of109nodes, so an actual software accessibility defect is
-unproven. Original captures/traces and after-closure qualification remain separate.
-The unique SVG app was actually quit and is no longer running. Native import/
-edit/Undo/save/reopen/export acceptance remains unrun after that failing Cancel.
-The shared Cancel fix `cd3266c4` is integrated. Its native-like pointer regression
-reproduces the old failure and preserves the complete editor/history after the
-fix; later deliberate refocus/Tab still commits once. Ordinary export/focus and
-sewing cancellation regressions also pass. AccessKit root traversal reaches the
-visible/enabled modal controls both before and after; no accessibility rendering
-change was necessary. Actual fixed-source native acceptance is still pending.
+The combined source passes formatting,168Rust tests, strict workspace/all-target
+Clippy, xtask verification with54Python checks and unsigned packaging. The real
+private target was initially empty at earlierbb6010a and reused only within this
+same worktree. All five latest jobs are terminal0 under
+`.local/svg-studio-integrated-checks-v2-20261115` (wrapper4460/session40202).
+The earlier165-test package and its original results remain retained separately.
 
-A view-only **Frame all** toolbar action (`9471a66`) is also integrated. It uses
-existing exact cubic bounds and28px padding in the current2Dcanvas, preserving
-pending drafts, selection, project/history and work queues. Its analytic/pointer
-regression covers normal/minimum windows, negative origin, cubic extrema and the
-full valid coordinate range. These latest source changes still need root's
-combined local gates and packaged native workflow acceptance. The
-compiled new diagnostic helper exactly matches all362 frozen peaks and all838,392
-triangle-axis values from the unchanged evaluator, with30 static analytic checks;
-its42 simulator tests, formatting and strict simulator Clippy pass. This supplies
-no new physical acceptance. Original strict failures remain immutable.
+Nativev1 onbb6010a reproduced Cancel committing pending width/revision; the
+shared blur-guard fixcd3266c has native-like pointer/complete-history regressions.
+The initial accessibility defect claim is qualified: the provider clips at100
+nodes; emitted AccessKit root traversal reaches all enabled modal controls before
+and after. Nativev2 then exercised the functional import/history/edit/retention/
+quit/reopen flow with74 before/returned input records. Its independent final
+geometry/SVG/exact-reopen check passed. An extra root protocol incorrectly
+required Undo to rewind the ID allocator11 instead of retaining29; that original
+strict v2 result remains failed, with no retroactive promotion.
+
+A NEW prospectively frozen nativev3 case used the same binary and original
+fixtures, with analytically derived exact allocator29 after import and Undo.
+All75 native inputs000–074 have before/returned records. Both unchanged final
+geometry/SVG/reopen checking and the separately frozen seven-checkpoint history
+supplement passed, with exact revisions1/2/3/4/5/5/5 and allocators11/29/29/29/29/
+29/29. Edited, rejected and fresh-reopened/resaved files are byte-identical.
+Two actor input corrections and one premature quit-inventory assertion remain
+retained; all observer assertions did NOT pass. Settled inventory confirmed
+actual exit before the fresh Empty0 launch. Independent raw-trace/privacy review
+and clean tracked publication closure are pending. The newv3app is open paused
+in Rest with reopened revision5/three pieces. The v2app remains on the original
+Harbor rest preview; neither native case ran simulation.
+
+The new diagnostic helper2079411 matches all362 frozen peaks and838,392
+triangle-axis values in actual compiled static replay, without initialization or
+integration. Projection/step/reset/validation/common math remain byte-identical;
+original physical and strict results remain immutable. The portable29-file
+[diagnostic packet](parity/reports/artifacts/diagnostic-static-20261115/README.md)
+is tracked locally; its default-root replay passes at the integrated source.
+No new physical acceptance, calibration, convergence or reference parity follows.
 
 PR38 retains exact tested runtime `0770204a54abdf5f929b6626b01d7fcfb0e13ca4`.
 The [capsule packet](parity/reports/artifacts/capsule-surface-20261115/README.md)

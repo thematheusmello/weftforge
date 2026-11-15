@@ -1,0 +1,33 @@
+{
+  "kind": "Original partial native SVG acceptance attempt, not full acceptance",
+  "recorded_utc": "2026-11-15T02:15:41.086024+00:00",
+  "source_commit": "bb6010a7d07b9f2c3167b71327e043ea60f3d237",
+  "plan_sha256": "02ab3d9546bf577203c9ea6ef4545e0de89822fb5d443c1a389a4761b32f4f07",
+  "status": "failed",
+  "observed": [
+    "Fresh unique native app opened Empty rev0, then opened original CLI-generated baseline rev1 with1piece",
+    "Focused width typed0.125 without Enter; rev1 remained through original SVG chooser and review",
+    "Visible modal correctly states2pieces,2mm/SVGunit,origin/upwardaxis and omissions; background disabled",
+    "Modal controls remain absent from full native AX snapshots, including after harmless heading click",
+    "Visible Cancel closed modal but incorrectly committed width revision1\u21922;1piece remains, no SVG import occurred",
+    "Actual CmdQ followed by confirmed no matching native app running"
+  ],
+  "input_files_unchanged": true,
+  "packaged_native_unchanged": true,
+  "simulation_actions": 0,
+  "unfinished": [
+    "Import",
+    "Undo/Redo",
+    "Cubic edit",
+    "Save/reopen/export",
+    "Independent native-file/export consumer"
+  ],
+  "pre_action_helper_failures": [
+    "Regular-expression syntax error before any UI API",
+    "Trace primitive counter rollback caused EEXIST before any UI API; next IDs derived from filesystem"
+  ],
+  "all_executed_input_calls_have_before_and_after_records": true,
+  "initial_launch_after_ax": "Diff only; full initial launch state is retained in original tool output, not fabricated here",
+  "limits": "Partial failed attempt; no full native delivery, physical or reference acceptance. Original helper failure tool inputs remain in conversation; derivative explanation is explicitly labeled.",
+  "executed_input_calls": 18
+}

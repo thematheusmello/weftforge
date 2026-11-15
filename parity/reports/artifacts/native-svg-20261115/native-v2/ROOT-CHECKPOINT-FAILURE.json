@@ -1,0 +1,19 @@
+{
+  "kind": "Original extra root checkpoint assertion failed; no production change",
+  "recorded_utc": "2026-11-15T02:50:03.690386+00:00",
+  "plan_sha256": "59fd63d2bb3234108ebb923bef0e827ea04d054eaf673297010a28f57beda979",
+  "status": "failed",
+  "first_failed_assertion": "without_revision(after-undo)==without_revision(baseline)",
+  "actual_difference": {
+    "project.next_id": {
+      "baseline": 11,
+      "after_undo": 29
+    }
+  },
+  "planned_expectation": "Every field includingallocator equalsbaseline exceptrevision1\u21923",
+  "script_exit_code": 1,
+  "later_checks_in_that_script": "NOT_EXECUTED after first assertion. Separate binding closure below is a different check.",
+  "methodological_diagnosis": "Existing stable-ID policy retains allocator highwater on undo/redo to preventreuse. The root protocol wrongly expected it to rewind. No productbug established; original frozenv2 strict result remainsfailed.",
+  "independent_final_geometry_svg_reopen": "Original frozen independentchecker separatelypassed withoutrevisionexemption; see siblingcopiedreceipt.",
+  "new_native_v3": "Willpredeclareexact29highwater afterimport/undo/redo andexecutea newUIcase; no reinterpretationofthisfailedassertion."
+}

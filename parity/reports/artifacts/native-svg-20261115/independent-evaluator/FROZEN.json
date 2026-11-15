@@ -1,0 +1,24 @@
+{
+  "kind": "Prospectively frozen independent original WeftForge SVG native static evaluator",
+  "frozen_utc": "2026-11-15T02:22:56.715178+00:00",
+  "actual_native_outputs_read": false,
+  "evaluator_sha256": {
+    "check.py": "a015c01c864533d2f4e3b872da78c9fc72892b7b8f54a79aae9544fe5c984c6d",
+    "METHOD.txt": "3f1b1e67399173352800b6d41f0cb41afee8d76dab90162db208d2f88ab002aa",
+    "SELF_CHECKS.json": "ce71b56480397388f6d374fc11b8000aebc8bce1eaec65698f801b30d4b1fd97"
+  },
+  "spec_sha256": "953328e9cb6a4d74c1d2235435f33adef52b6bcfd5a182ee30602341e622af13",
+  "original_plan_sha256": "02ab3d9546bf577203c9ea6ef4545e0de89822fb5d443c1a389a4761b32f4f07",
+  "original_input_sha256": {
+    "baseline.weftforge": "1ec589e21fe616ef0145bdab7f830283c5c5502a982ad718d6da762566e5278f",
+    "original-editable-patterns.svg": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+    "unsupported-transform.svg": "a95bb5bbf2b14284029abe653fbf220e6d6b6d9563a731dd586bb517b8af78ac"
+  },
+  "limits": {
+    "endpoint_control_tolerance_m": 1e-12,
+    "sample_tolerance_m": 1e-08,
+    "samples_per_span": 17
+  },
+  "implementation_read": false,
+  "consumer": "Python standard library ElementTree plus independent fixture-profile M/L/C/Z parser; no dependencies"
+}

@@ -1,0 +1,14 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.26s
+     Running unittests src/main.rs (target/debug/deps/weftforge-6c446856fc1ca7b5)
+
+running 7 tests
+test tests::inspector_focus_does_not_reuse_edit_text_after_adding_or_selecting_pieces ... ok
+test svg_import_tests::pointer_cancel_retains_focused_numeric_draft_revision_and_history ... ok
+test tests::focused_numeric_history_restore_survives_blur_and_retains_redo ... ok
+test tests::focusing_small_and_large_piece_sizes_preserves_document_and_history ... ok
+test tests::seam_reverse_button_keeps_focused_drafts_atomic_and_draws_endpoint_pairs ... ok
+test tests::join_focus_keeps_failed_drafts_and_clears_successful_control_text_before_tab ... ok
+test tests::focused_export_keeps_failed_drafts_and_history_until_output_is_written ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 32 filtered out; finished in 8.64s
+
