@@ -791,6 +791,88 @@ impl Studio {
         }
         clicked
     }
+    fn new_empty_button(&self, ui: &mut egui::Ui) -> bool {
+        let focused = self.inspector_focus(ui.ctx());
+        let response = ui.button("New Empty");
+        let clicked = response.clicked();
+        if response.is_pointer_button_down_on() || clicked {
+            finish_numeric_action(ui.ctx(), focused, false);
+            let frame = ui.ctx().cumulative_frame_nr();
+            ui.ctx().data_mut(|data| {
+                data.insert_temp(
+                    egui::Id::new("new-empty-request"),
+                    (frame, clicked, focused),
+                )
+            });
+        }
+        clicked
+    }
+
+    fn new_empty(&mut self, ctx: &egui::Context, focused: Option<egui::Id>) {
+        let pending_text = focused
+            .and_then(|id| ctx.data_mut(|data| data.get_temp::<String>(id)))
+            .is_some_and(|text| {
+                text.trim()
+                    .parse::<f64>()
+                    .ok()
+                    .is_none_or(|value| !value.is_finite())
+            });
+        let pending_commands = self
+            .draft
+            .as_ref()
+            .filter(|draft| draft.revision == self.editor.project.revision)
+            .is_some_and(|draft| !draft.commands(&self.editor.project).is_empty());
+        let gesture = !self.polygon.is_empty()
+            || self.seam_start.is_some()
+            || !self.sewing_draft.a.is_empty()
+            || !self.sewing_draft.b.is_empty()
+            || self.sewing_draft.selecting_b
+            || self.drag_point.is_some()
+            || self.preview.is_some()
+            || self.drag_start.is_some()
+            || self.rectangle.is_some()
+            || self.transform.is_some()
+            || self.transform_gesture.is_some()
+            || self.sewing_edit.is_some()
+            || self.pattern_import.is_some();
+        let refusal = if pending_text || pending_commands {
+            Some("Apply or cancel the current property edit, then save before creating New Empty.")
+        } else if gesture {
+            Some("Finish or cancel the current construction gesture before creating New Empty.")
+        } else if self.dirty {
+            Some("Save current edits before creating New Empty.")
+        } else if self.autosave_job.is_some() {
+            Some("Wait for the current autosave to finish before creating New Empty.")
+        } else {
+            None
+        };
+        if let Some(message) = refusal {
+            self.message = message.into();
+            finish_numeric_action(ctx, focused, false);
+            return;
+        }
+        self.cancel();
+        self.job = None;
+        self.last_job = None;
+        self.editor = Editor::default();
+        self.path = None;
+        self.dirty = false;
+        self.discard_on_exit = false;
+        self.selected = None;
+        self.selected_curve = None;
+        self.reset_gestures();
+        self.sewing_edit = None;
+        self.pattern_import = None;
+        self.show_recovery = false;
+        self.mesh = None;
+        self.reset_simulation();
+        self.rebuild();
+        self.autosave = Instant::now();
+        self.message =
+            "New empty editable project · draw a pattern or enter dimensions in metres.".into();
+        finish_numeric_action(ctx, focused, true);
+    }
+
     fn select(&mut self, ctx: &egui::Context, selected: Option<Id>) -> bool {
         if self.tool == Tool::Transform {
             let focus = self.inspector_focus(ctx);
@@ -1541,6 +1623,9 @@ impl Studio {
     fn menu_bar(&mut self, ui: &mut egui::Ui) {
         egui::MenuBar::new().ui(ui, |ui| {
             let (response, menu) = egui::menu::MenuButton::new("File").ui(ui, |ui| {
+                if self.new_empty_button(ui) {
+                    ui.close();
+                }
                 if ui.button("Open…").clicked() {
                     self.choose_open();
                     ui.close();
@@ -1963,6 +2048,14 @@ impl Studio {
             || self.tool == Tool::SewingPaths
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some()
+            || ui
+                .ctx()
+                .data_mut(|data| {
+                    data.get_temp::<(u64, bool, Option<egui::Id>)>(egui::Id::new(
+                        "new-empty-request",
+                    ))
+                })
+                .is_some_and(|(frame, _, _)| frame == ui.ctx().cumulative_frame_nr())
             || ui
                 .ctx()
                 .data_mut(|data| {
@@ -2621,9 +2714,16 @@ impl Studio {
     }
     fn patterns(&mut self, ui: &mut egui::Ui) {
         self.discard_stale_transform();
-        if self.search || egui::Popup::is_any_open(ui.ctx()) {
-            self.transform_gesture = None;
-        }
+        let gesture_paused = self.search
+            || egui::Popup::is_any_open(ui.ctx())
+            || ui
+                .ctx()
+                .data_mut(|data| {
+                    data.get_temp::<(u64, bool, Option<egui::Id>)>(egui::Id::new(
+                        "new-empty-request",
+                    ))
+                })
+                .is_some_and(|(frame, _, _)| frame == ui.ctx().cumulative_frame_nr());
         pane_heading(ui, "2D Pattern").on_hover_text("Editable construction in metres. Alt / Option bypasses snap; scroll zooms; middle drag pans.");
         let (response, painter) = ui.allocate_painter(ui.available_size(), Sense::click_and_drag());
         self.pattern_canvas = Some(response.id);
@@ -2657,8 +2757,9 @@ impl Studio {
         let pointer = response
             .interact_pointer_pos()
             .or_else(|| ui.input(|i| i.pointer.hover_pos()));
-        if let Some(position) =
-            pointer.map(|pointer| self.to_pattern(pointer, r, PositionSnap::Off))
+        if !gesture_paused
+            && let Some(position) =
+                pointer.map(|pointer| self.to_pattern(pointer, r, PositionSnap::Off))
             && let Some(gesture) = &mut self.transform_gesture
             && ui.input(|input| {
                 input.pointer.primary_down()
@@ -2902,8 +3003,8 @@ impl Studio {
                     Stroke::new(1., Color32::GOLD),
                 );
                 painter.text(
-                    origin + Vec2::new(9., 9.),
-                    egui::Align2::LEFT_TOP,
+                    origin + Vec2::new(9., -9.),
+                    egui::Align2::LEFT_BOTTOM,
                     "Pivot",
                     egui::FontId::proportional(11.),
                     Color32::GOLD,
@@ -2989,7 +3090,8 @@ impl Studio {
             }
         }
         let mut transformed = false;
-        if ui.input(|input| input.pointer.button_released(egui::PointerButton::Primary))
+        if !gesture_paused
+            && ui.input(|input| input.pointer.button_released(egui::PointerButton::Primary))
             && let Some(mut gesture) = self.transform_gesture.take()
             && !gesture.edit.is_identity()
         {
@@ -3021,10 +3123,13 @@ impl Studio {
                     .map(|p| p.0);
             }
         }
-        if response.dragged_by(egui::PointerButton::Primary) && self.drag_point.is_some() {
+        if !gesture_paused
+            && response.dragged_by(egui::PointerButton::Primary)
+            && self.drag_point.is_some()
+        {
             self.preview = pointer.map(|p| self.to_pattern(p, r, self.drag_snap));
         }
-        if response.drag_stopped_by(egui::PointerButton::Primary) {
+        if !gesture_paused && response.drag_stopped_by(egui::PointerButton::Primary) {
             if let (Some(point), Some(position)) = (self.drag_point.take(), self.preview.take()) {
                 self.execute(Command::MovePoint { point, position });
             }
@@ -3564,6 +3669,7 @@ impl eframe::App for Studio {
                 .show(&ctx, |ui| {
                     ui.text_edit_singleline(&mut self.query);
                     for label in [
+                        "New Empty",
                         "Save project",
                         "Open project",
                         "Import SVG…",
@@ -3587,6 +3693,7 @@ impl eframe::App for Studio {
                             continue;
                         }
                         let clicked = match label {
+                            "New Empty" => self.new_empty_button(ui),
                             "Import SVG…" => self.import_button(ui, PatternFormat::Svg, label),
                             "Import DXF…" => self.import_button(ui, PatternFormat::Dxf, label),
                             "Export OBJ" => self.export_button(ui, ExportFormat::Obj, label),
@@ -3596,6 +3703,7 @@ impl eframe::App for Studio {
                         };
                         if clicked {
                             match label {
+                                "New Empty" => {}
                                 "Save project" => self.save(false),
                                 "Open project" => self.choose_open(),
                                 "Import SVG…" | "Import DXF…" => {}
@@ -3655,6 +3763,16 @@ impl eframe::App for Studio {
             .filter(|(frame, _, _)| *frame == ctx.cumulative_frame_nr())
         {
             self.choose_import(&ctx, format, focused);
+        }
+        if let Some((_, true, focused)) = ctx
+            .data_mut(|data| {
+                data.remove_temp::<(u64, bool, Option<egui::Id>)>(egui::Id::new(
+                    "new-empty-request",
+                ))
+            })
+            .filter(|(frame, _, _)| *frame == ctx.cumulative_frame_nr())
+        {
+            self.new_empty(&ctx, focused);
         }
         self.restore_cancelled_transform_input(&ctx);
     }
@@ -9666,6 +9784,575 @@ mod tests {
             stop_jobs(&mut app);
             assert_construction(&app.editor.project, &before);
             assert!(!app.editor.can_undo() && app.editor.can_redo());
+        }
+    }
+}
+
+#[cfg(test)]
+mod new_empty_tests {
+    use super::*;
+    use egui::accesskit::{Action, ActionData, ActionRequest, NodeId, TreeId};
+
+    fn frame(ctx: &egui::Context, app: &mut Studio, events: Vec<egui::Event>) -> egui::FullOutput {
+        ctx.run_ui(
+            egui::RawInput {
+                screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1640., 1800.))),
+                events,
+                ..Default::default()
+            },
+            |ui| eframe::App::ui(app, ui, &mut eframe::Frame::_new_kittest()),
+        )
+    }
+
+    fn action(id: NodeId, action: Action, data: Option<ActionData>) -> egui::Event {
+        egui::Event::AccessKitActionRequest(ActionRequest {
+            action,
+            target_tree: TreeId::ROOT,
+            target_node: id,
+            data,
+        })
+    }
+
+    fn button(output: &egui::FullOutput, label: &str) -> (NodeId, Pos2) {
+        let (id, node) = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| {
+                node.label() == Some(label)
+                    && node.supports_action(Action::Click)
+                    && !node.is_disabled()
+            })
+            .unwrap_or_else(|| panic!("missing accessible {label:?}"));
+        let bounds = node.bounds().unwrap();
+        (
+            *id,
+            Pos2::new(
+                ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                ((bounds.y0 + bounds.y1) * 0.5) as f32,
+            ),
+        )
+    }
+
+    fn route(ctx: &egui::Context, app: &mut Studio, search: bool) -> (NodeId, Pos2) {
+        if search {
+            app.search = true;
+            app.query = "New Empty".into();
+        }
+        frame(ctx, app, vec![]);
+        let mut output = frame(ctx, app, vec![]);
+        if !search {
+            frame(
+                ctx,
+                app,
+                vec![action(button(&output, "File").0, Action::Click, None)],
+            );
+            output = frame(ctx, app, vec![]);
+        }
+        button(&output, "New Empty")
+    }
+
+    fn fixture() -> Studio {
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Saved original panel".into(),
+                origin: [0., 0.],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+        let piece = app.editor.project.pieces[0].id;
+        app.editor
+            .execute(Command::SetGrain { piece, angle: 0.37 })
+            .unwrap();
+        app.editor
+            .execute(Command::SetResolution { metres: 0.08 })
+            .unwrap();
+        assert!(app.editor.undo());
+        app.selected = Some(piece);
+        let mesh = Arc::new(app.editor.project.mesh().unwrap());
+        app.cloth = Some(Arc::new(
+            weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap(),
+        ));
+        app.mesh = Some(mesh);
+        app.position_snap = PositionSnap::Mm1;
+        app.center = [0.3, 0.4];
+        app.scale = 233.;
+        app.yaw = 0.7;
+        app.pitch = -0.2;
+        app.camera_scale = 350.;
+        app.wireframe = true;
+        app
+    }
+
+    fn clean_route(search: bool) {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture();
+        let directory = std::env::temp_dir().join(format!(
+            "weftforge-new-empty-{}-{}-{search}",
+            std::process::id(),
+            SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        fs::create_dir(&directory).unwrap();
+        let path = directory.join("saved.weftforge");
+        app.editor.project.save(&path).unwrap();
+        app.editor.project.save(&path).unwrap();
+        let autosave = append_suffix(&path, ".autosave");
+        fs::write(&autosave, b"existing autosave retained").unwrap();
+        app.path = Some(path.clone());
+        let original = app.editor.project.clone();
+        let primary = fs::read(&path).unwrap();
+        let recovery = fs::read(weftforge_core::recovery_path(&path)).unwrap();
+        let (sender, receiver) = mpsc::channel();
+        let cancel = Arc::new(AtomicBool::new(false));
+        app.job = Some(Job {
+            id: 91,
+            revision: 0,
+            kind: JobKind::Mesh,
+            batch: None,
+            completed_steps: Arc::new(AtomicU64::new(0)),
+            cancel: cancel.clone(),
+            receiver,
+        });
+        app.last_job = Some(FinishedJob {
+            id: 90,
+            revision: original.revision,
+            kind: JobKind::Mesh,
+            progress: None,
+            status: JobStatus::Accepted,
+            outcome: Ok(()),
+            cancel_requested: false,
+            obsolete: false,
+        });
+        app.playing = true;
+        app.pending_batch = Some(SimulationBatch::drape());
+        let route = route(&ctx, &mut app, search);
+        frame(&ctx, &mut app, vec![action(route.0, Action::Click, None)]);
+        for _ in 0..3 {
+            frame(&ctx, &mut app, vec![]);
+        }
+        assert_eq!(app.editor.project, Project::default());
+        assert!(!app.editor.can_undo() && !app.editor.can_redo());
+        assert!(app.path.is_none() && app.selected.is_none() && app.selected_curve.is_none());
+        assert!(
+            app.mesh.is_none()
+                && app.cloth.is_none()
+                && app.job.is_none()
+                && app.last_job.is_none()
+        );
+        assert!(!app.dirty && !app.needs_mesh && !app.playing && app.pending_batch.is_none());
+        assert_eq!(app.last_stage, "Rest arrangement");
+        assert!(cancel.load(Ordering::Relaxed));
+        assert!(
+            sender
+                .send(Ok(JobOutput::Mesh(Arc::new(Mesh::default()))))
+                .is_err()
+        );
+        app.poll();
+        assert!(app.mesh.is_none());
+        assert_eq!(app.position_snap, PositionSnap::Mm1);
+        assert_eq!(app.center, [0.3, 0.4]);
+        assert_eq!(
+            (
+                app.scale,
+                app.yaw,
+                app.pitch,
+                app.camera_scale,
+                app.wireframe
+            ),
+            (233., 0.7, -0.2, 350., true)
+        );
+        assert_eq!(fs::read(&path).unwrap(), primary);
+        assert_eq!(
+            fs::read(weftforge_core::recovery_path(&path)).unwrap(),
+            recovery
+        );
+        assert_eq!(fs::read(&autosave).unwrap(), b"existing autosave retained");
+        app.open(path);
+        assert_eq!(app.editor.project, original);
+        assert_eq!(fs::read(&autosave).unwrap(), b"existing autosave retained");
+        fs::remove_dir_all(directory).unwrap();
+    }
+
+    #[test]
+    fn new_empty_file_route_replaces_clean_document_and_retains_files_and_preferences() {
+        clean_route(false);
+    }
+
+    #[test]
+    fn new_empty_search_route_replaces_clean_document_and_retains_files_and_preferences() {
+        clean_route(true);
+    }
+
+    fn key(key: egui::Key, modifiers: egui::Modifiers) -> egui::Event {
+        egui::Event::Key {
+            key,
+            physical_key: None,
+            pressed: true,
+            repeat: false,
+            modifiers,
+        }
+    }
+
+    fn focus_property(ctx: &egui::Context, app: &mut Studio, text: &str) -> egui::Id {
+        frame(ctx, app, vec![]);
+        let output = frame(ctx, app, vec![]);
+        let id = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| node.numeric_value() == Some(0.37))
+            .unwrap()
+            .0;
+        frame(ctx, app, vec![action(id, Action::Focus, None)]);
+        frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text(text.into()),
+                key(egui::Key::ArrowLeft, egui::Modifiers::NONE),
+            ],
+        );
+        numeric_focus(ctx).unwrap()
+    }
+
+    #[test]
+    fn new_empty_refusals_keep_numeric_text_caret_drafts_redo_and_accepted_display_across_frames() {
+        for search in [false, true] {
+            for pointer in [false, true] {
+                for text in ["0.47", "1e-", "NaN"] {
+                    let ctx = egui::Context::default();
+                    ctx.enable_accesskit();
+                    let mut app = fixture();
+                    let focused = focus_property(&ctx, &mut app, text);
+                    let raw = ctx.data_mut(|data| data.get_temp::<String>(focused));
+                    let caret = egui::TextEdit::load_state(&ctx, focused)
+                        .unwrap()
+                        .cursor
+                        .char_range();
+                    let before = format!("{:?}", app.editor);
+                    let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+                    if text == "1e-" {
+                        assert!(pending.is_empty(), "{text}: {pending:?}");
+                    }
+                    let pending = format!("{pending:?}");
+                    let mesh = app.mesh.clone().unwrap();
+                    let cloth = app.cloth.clone().unwrap();
+                    let selection = (app.selected, app.selected_curve);
+                    let (id, pos) = route(&ctx, &mut app, search);
+                    if pointer {
+                        for pressed in [true, false] {
+                            frame(
+                                &ctx,
+                                &mut app,
+                                vec![
+                                    egui::Event::PointerMoved(pos),
+                                    egui::Event::PointerButton {
+                                        pos,
+                                        button: egui::PointerButton::Primary,
+                                        pressed,
+                                        modifiers: egui::Modifiers::NONE,
+                                    },
+                                ],
+                            );
+                            assert_eq!(
+                                format!("{:?}", app.editor),
+                                before,
+                                "press/release {search} {text}"
+                            );
+                        }
+                    } else {
+                        frame(&ctx, &mut app, vec![action(id, Action::Click, None)]);
+                    }
+                    assert!(app.message.contains("Apply or cancel"), "{}", app.message);
+                    for _ in 0..4 {
+                        frame(&ctx, &mut app, vec![]);
+                        assert_eq!(
+                            format!("{:?}", app.editor),
+                            before,
+                            "later frame {search} {pointer} {text}"
+                        );
+                        assert_eq!(
+                            format!(
+                                "{:?}",
+                                app.draft.as_ref().unwrap().commands(&app.editor.project)
+                            ),
+                            pending
+                        );
+                        assert_eq!((app.selected, app.selected_curve), selection);
+                        assert_eq!(numeric_focus(&ctx), Some(focused));
+                        assert_eq!(ctx.data_mut(|data| data.get_temp::<String>(focused)), raw);
+                        assert_eq!(
+                            egui::TextEdit::load_state(&ctx, focused)
+                                .unwrap()
+                                .cursor
+                                .char_range(),
+                            caret
+                        );
+                        assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+                        assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+                        assert!(!app.dirty && !app.needs_mesh && app.job.is_none());
+                        assert!(app.editor.can_redo());
+                    }
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn new_empty_decision_observes_current_inspector_pass_without_committing_it() {
+        for search in [false, true] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let route = route(&ctx, &mut app, search);
+            let output = frame(&ctx, &mut app, vec![]);
+            let field = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(_, node)| node.numeric_value() == Some(0.37))
+                .unwrap()
+                .0;
+            let before = format!("{:?}", app.editor);
+            frame(
+                &ctx,
+                &mut app,
+                vec![
+                    action(
+                        field,
+                        Action::SetValue,
+                        Some(ActionData::NumericValue(0.47)),
+                    ),
+                    action(route.0, Action::Click, None),
+                ],
+            );
+            assert!(app.message.contains("Apply or cancel"));
+            for _ in 0..3 {
+                frame(&ctx, &mut app, vec![]);
+                assert_eq!(format!("{:?}", app.editor), before);
+                assert_eq!(app.draft.as_ref().unwrap().grain_angle, Some(0.47));
+                assert!(app.editor.can_redo());
+            }
+        }
+    }
+
+    #[test]
+    fn new_empty_dirty_refusal_preserves_primary_recovery_autosave_and_redo() {
+        for search in [false, true] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let directory = std::env::temp_dir().join(format!(
+                "weftforge-new-empty-dirty-{}-{}-{search}",
+                std::process::id(),
+                SystemTime::now()
+                    .duration_since(UNIX_EPOCH)
+                    .unwrap()
+                    .as_nanos()
+            ));
+            fs::create_dir(&directory).unwrap();
+            let path = directory.join("saved.weftforge");
+            app.editor.project.save(&path).unwrap();
+            app.editor.project.save(&path).unwrap();
+            let primary = fs::read(&path).unwrap();
+            let recovery = fs::read(weftforge_core::recovery_path(&path)).unwrap();
+            let autosave = append_suffix(&path, ".autosave");
+            fs::write(&autosave, b"older autosave").unwrap();
+            app.path = Some(path.clone());
+            app.dirty = true;
+            let before = format!("{:?}", app.editor);
+            let route = route(&ctx, &mut app, search);
+            frame(&ctx, &mut app, vec![action(route.0, Action::Click, None)]);
+            for _ in 0..3 {
+                frame(&ctx, &mut app, vec![]);
+            }
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert!(app.message.contains("Save current edits"));
+            assert_eq!(app.path.as_ref(), Some(&path));
+            assert!(app.dirty && app.editor.can_redo());
+            assert_eq!(fs::read(&path).unwrap(), primary);
+            assert_eq!(
+                fs::read(weftforge_core::recovery_path(&path)).unwrap(),
+                recovery
+            );
+            assert_eq!(fs::read(&autosave).unwrap(), b"older autosave");
+            fs::remove_dir_all(directory).unwrap();
+        }
+    }
+
+    #[test]
+    fn new_empty_refuses_unfinished_construction_gestures_without_resetting_them() {
+        for search in [false, true] {
+            for gesture in 0..7 {
+                let ctx = egui::Context::default();
+                ctx.enable_accesskit();
+                let mut app = fixture();
+                let curve = app.editor.project.pieces[0].boundary[0];
+                match gesture {
+                    0 => app.polygon = vec![[0.1, 0.2]],
+                    1 => app.seam_start = Some(curve),
+                    2 => app.sewing_draft.a = vec![CurveInterval::full(curve)],
+                    3 => app.sewing_draft.b = vec![CurveInterval::reversed(curve)],
+                    4 => app.drag_point = Some(app.editor.project.points[0].id),
+                    5 => app.drag_start = Some([0.1, 0.2]),
+                    _ => app.preview = Some([0.1, 0.2]),
+                }
+                let before = format!("{:?}", app.editor);
+                let state = (
+                    app.polygon.clone(),
+                    app.seam_start,
+                    app.sewing_draft.a.clone(),
+                    app.sewing_draft.b.clone(),
+                    app.drag_point,
+                    app.drag_start,
+                    app.preview,
+                );
+                let route = route(&ctx, &mut app, search);
+                frame(&ctx, &mut app, vec![action(route.0, Action::Click, None)]);
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, vec![]);
+                }
+                assert!(
+                    app.message.contains("Finish or cancel"),
+                    "gesture {gesture}: {}",
+                    app.message
+                );
+                assert_eq!(format!("{:?}", app.editor), before);
+                assert_eq!(
+                    (
+                        app.polygon.clone(),
+                        app.seam_start,
+                        app.sewing_draft.a.clone(),
+                        app.sewing_draft.b.clone(),
+                        app.drag_point,
+                        app.drag_start,
+                        app.preview
+                    ),
+                    state
+                );
+                assert!(app.editor.can_redo());
+            }
+        }
+    }
+
+    #[test]
+    fn new_empty_authoring_modal_keeps_background_accesskit_action_shielded() {
+        for search in [false, true] {
+            let ctx = egui::Context::default();
+            ctx.enable_accesskit();
+            let mut app = fixture();
+            let route = route(&ctx, &mut app, search);
+            let before = format!("{:?}", app.editor);
+            app.rectangle = Some(RectangleDraft {
+                origin: [0., 0.],
+                dimensions_mm: ["1e-".into(), "100".into()],
+                error: None,
+            });
+            frame(&ctx, &mut app, vec![action(route.0, Action::Click, None)]);
+            for _ in 0..3 {
+                frame(&ctx, &mut app, vec![]);
+            }
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!(
+                app.rectangle.as_ref().unwrap().dimensions_mm,
+                ["1e-", "100"]
+            );
+            assert!(app.editor.can_redo());
+        }
+    }
+
+    #[test]
+    fn new_empty_waits_for_existing_autosave_worker_without_dropping_it() {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = fixture();
+        let (sender, receiver) = mpsc::channel();
+        app.autosave_job = Some(AutosaveJob { receiver });
+        let before = format!("{:?}", app.editor);
+        let target = route(&ctx, &mut app, false);
+        frame(&ctx, &mut app, vec![action(target.0, Action::Click, None)]);
+        assert!(app.message.contains("Wait for the current autosave"));
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert!(app.autosave_job.is_some());
+        sender.send(Ok(())).unwrap();
+        frame(&ctx, &mut app, vec![]);
+        let target = route(&ctx, &mut app, false);
+        frame(&ctx, &mut app, vec![action(target.0, Action::Click, None)]);
+        assert_eq!(app.editor.project, Project::default());
+    }
+
+    #[test]
+    fn new_empty_refusal_keeps_transform_gesture_across_menu_search_and_pointer_release() {
+        for search in [false, true] {
+            for pointer in [false, true] {
+                let ctx = egui::Context::default();
+                ctx.enable_accesskit();
+                let mut app = fixture();
+                app.tool = Tool::Transform;
+                let mut edit = app.transform_edit(&ctx, app.selected.unwrap()).unwrap();
+                edit.translation = [0.1, 0.2];
+                app.transform_gesture = Some(TransformGesture {
+                    original: app.editor.project.clone(),
+                    pending: vec![],
+                    edit,
+                    start: [0., 0.],
+                    snap: PositionSnap::Mm1,
+                    rotating: false,
+                });
+                let before = format!("{:?}", app.editor);
+                let (id, pos) = route(&ctx, &mut app, search);
+                assert!(
+                    app.transform_gesture.is_some(),
+                    "opening route search={search}"
+                );
+                if pointer {
+                    for pressed in [true, false] {
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![
+                                egui::Event::PointerMoved(pos),
+                                egui::Event::PointerButton {
+                                    pos,
+                                    button: egui::PointerButton::Primary,
+                                    pressed,
+                                    modifiers: egui::Modifiers::NONE,
+                                },
+                            ],
+                        );
+                        assert_eq!(format!("{:?}", app.editor), before);
+                    }
+                } else {
+                    frame(&ctx, &mut app, vec![action(id, Action::Click, None)]);
+                }
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, vec![]);
+                }
+                assert!(app.message.contains("Finish or cancel"));
+                assert_eq!(format!("{:?}", app.editor), before);
+                let gesture = app.transform_gesture.as_ref().unwrap();
+                assert_eq!(gesture.edit.translation, [0.1, 0.2]);
+                assert_eq!(gesture.original, app.editor.project);
+                assert!(app.editor.can_redo());
+            }
         }
     }
 }
