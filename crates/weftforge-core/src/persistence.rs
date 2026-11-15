@@ -11,6 +11,8 @@ use std::path::{Path, PathBuf};
 use std::sync::atomic::{AtomicU64, Ordering};
 
 mod dxf;
+mod svg;
+pub use svg::{MAX_SVG_BYTES, SVG_IMPORT_SCOPE, SvgPatternImport};
 
 pub const FORMAT_VERSION: u32 = 3;
 pub const MAX_PROJECT_BYTES: u64 = 16 * 1024 * 1024;

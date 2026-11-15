@@ -191,6 +191,23 @@ the complete garment document when imported elsewhere. Printer scaling, page
 layout/tiling, margins and units in third-party readers still
 need independent workflow validation.
 
+Choose **Import SVG…** in the desktop toolbar or command search to add editable
+exterior patterns, or run `weftforge-cli import-svg INPUT OUTPUT PATTERNS.svg`.
+The [bounded SVG import profile](../spec/features/FILE-005-svg-pattern-import.md)
+requires physical `mm` width/height and a uniformly scaled `viewBox`; it accepts
+direct, closed single-contour paths using absolute `M/L/C/Z` commands. Straight
+and cubic construction, names and relative layout survive as editable objects.
+The drawing's user-space origin is retained, without subtracting the viewBox
+minimum; SVG Y is inverted into upward pattern V. The native summary shows the
+physical scale before applying all pieces and pending edits as one undo step.
+Missing/other units, transforms, CSS, unsupported geometry/path commands, open
+or compound contours, DTDs and external resources reject the whole import.
+Import is limited to 1 MiB, 64 pieces and 4096 total spans; native validation and
+its bounded cubic contour predicate still apply. Appearance, descriptions,
+sewing, grain, internal details and simulation are omitted explicitly. Imported
+pieces use the first existing fabric and default 3D placement. Native documents
+remain necessary for the complete garment.
+
 DXF writes the [FILE-005-v1 R2000 profile](../spec/features/FILE-005-dxf-pattern-export.md):
 ASCII `AC1015`, numeric millimetres and `$INSUNITS=4`. Pattern U/V maps to DXF X/Y
 with positive V upward and Z zero; 3D placements and simulated positions do not
