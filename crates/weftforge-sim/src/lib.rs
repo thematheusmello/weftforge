@@ -220,6 +220,7 @@ impl Cloth {
     }
 
     /// Builds a complete state or returns cancellation; no partially built cloth is published.
+    /// Calls the control callback before each geometry record, task or candidate predicate.
     pub fn new_cancellable(
         input: ClothInput,
         cancelled: impl Fn() -> bool,
@@ -227,12 +228,24 @@ impl Cloth {
         check_cancel(&cancelled)?;
         validate(&input, &cancelled)?;
         let n = input.positions.len();
-        let mut masses = vec![0.; n];
-        let mut thickness = vec![0_f64; n];
-        let mut damping = vec![0.; n];
-        let mut friction = vec![0.; n];
+        let mut positions = Vec::with_capacity(n);
+        let mut velocities = Vec::with_capacity(n);
+        let mut masses = Vec::with_capacity(n);
+        let mut thickness = Vec::<f64>::with_capacity(n);
+        let mut damping = Vec::with_capacity(n);
+        let mut friction = Vec::with_capacity(n);
         let mut membrane = Vec::with_capacity(input.triangles.len());
-        let mut excluded = vec![BTreeSet::new(); n];
+        let mut excluded = Vec::with_capacity(n);
+        for &position in &input.positions {
+            check_cancel(&cancelled)?;
+            positions.push(position);
+            velocities.push([0.; 3]);
+            masses.push(0.);
+            thickness.push(0.);
+            damping.push(0.);
+            friction.push(0.);
+            excluded.push(BTreeSet::new());
+        }
         let mut edge_faces: BTreeMap<[usize; 2], Vec<(usize, usize)>> = BTreeMap::new();
         for (ti, (&tri, &material)) in input
             .triangles
@@ -240,22 +253,25 @@ impl Cloth {
             .zip(&input.triangle_materials)
             .enumerate()
         {
-            if ti % CANCELLATION_CHECK_INTERVAL == 0 {
-                check_cancel(&cancelled)?;
-            }
+            check_cancel(&cancelled)?;
             let constraint = Membrane::new(tri, &input.material_uv, material);
             if !constraint.valid_scale() {
                 return Err(invalid("non-finite derived membrane coefficients"));
             }
             let mass = constraint.area * material.areal_density / 3.;
             for &v in &tri {
+                check_cancel(&cancelled)?;
                 masses[v] += mass;
                 thickness[v] = thickness[v].max(material.collision_thickness);
                 damping[v] += mass * material.damping;
                 friction[v] += mass * material.friction;
-                excluded[v].extend(tri);
+                for neighbor in tri {
+                    check_cancel(&cancelled)?;
+                    excluded[v].insert(neighbor);
+                }
             }
             for j in 0..3 {
+                check_cancel(&cancelled)?;
                 let mut edge = [tri[j], tri[(j + 1) % 3]];
                 edge.sort_unstable();
                 edge_faces
@@ -266,10 +282,8 @@ impl Cloth {
             membrane.push(constraint);
         }
         let mut bends = Vec::new();
-        for (i, (edge, faces)) in edge_faces.into_iter().enumerate() {
-            if i % CANCELLATION_CHECK_INTERVAL == 0 {
-                check_cancel(&cancelled)?;
-            }
+        for (edge, faces) in edge_faces {
+            check_cancel(&cancelled)?;
             if faces.len() > 2 {
                 return Err(invalid("non-manifold triangle edge"));
             }
@@ -287,13 +301,12 @@ impl Cloth {
                 }
             }
         }
-        for (i, stitch) in input.stitches.iter().enumerate() {
-            if i % CANCELLATION_CHECK_INTERVAL == 0 {
-                check_cancel(&cancelled)?;
-            }
+        for stitch in &input.stitches {
+            check_cancel(&cancelled)?;
             // Sewing neighborhoods are one surface after closure, so thickness must not oppose the seam.
             for a in stitch.a.vertices {
                 for b in stitch.b.vertices {
+                    check_cancel(&cancelled)?;
                     excluded[a].insert(b);
                     excluded[b].insert(a);
                 }
@@ -301,9 +314,7 @@ impl Cloth {
         }
         let mut inverse_masses = Vec::with_capacity(n);
         for i in 0..n {
-            if i % CANCELLATION_CHECK_INTERVAL == 0 {
-                check_cancel(&cancelled)?;
-            }
+            check_cancel(&cancelled)?;
             if !masses[i].is_finite() || masses[i] <= 1e-16 {
                 return Err(invalid(
                     "every vertex must have positive incident material area and mass",
@@ -321,20 +332,15 @@ impl Cloth {
             }
             inverse_masses.push(masses[i].recip());
         }
-        for (i, pin) in input.pins.iter().enumerate() {
-            if i % CANCELLATION_CHECK_INTERVAL == 0 {
-                check_cancel(&cancelled)?;
-            }
+        for pin in &input.pins {
+            check_cancel(&cancelled)?;
             inverse_masses[pin.vertex] = 0.;
         }
         let seam_remaining = input
             .stitches
             .iter()
-            .enumerate()
-            .map(|(i, s)| {
-                if i % CANCELLATION_CHECK_INTERVAL == 0 {
-                    check_cancel(&cancelled)?;
-                }
+            .map(|s| {
+                check_cancel(&cancelled)?;
                 Ok(length(sub(
                     s.a.position(&input.positions),
                     s.b.position(&input.positions),
@@ -342,8 +348,8 @@ impl Cloth {
             })
             .collect::<Result<_, SimulationError>>()?;
         let mut cloth = Self {
-            positions: input.positions.clone(),
-            velocities: vec![[0.; 3]; n],
+            positions,
+            velocities,
             masses,
             inverse_masses,
             thickness,
@@ -361,8 +367,12 @@ impl Cloth {
         };
         let contact_error = cloth.contact_errors_cancellable(&cloth.positions, &cancelled)?;
         let intersections = contact_error.intersections;
-        cloth.diagnostics =
-            cloth.measure_errors_with_contact(&cloth.positions, &cloth.velocities, contact_error);
+        cloth.diagnostics = cloth.measure_errors_with_contact_cancellable(
+            &cloth.positions,
+            &cloth.velocities,
+            contact_error,
+            &cancelled,
+        )?;
         cloth.diagnostics.initial_intersections = intersections;
         if !cloth.diagnostics.finite {
             return Err(invalid(
@@ -553,13 +563,31 @@ impl Cloth {
         velocities: &[Vec3],
         contact_error: contact::ContactErrors,
     ) -> Diagnostics {
+        self.measure_errors_with_contact_cancellable(positions, velocities, contact_error, &|| {
+            false
+        })
+        .expect("A non-cancelling callback cannot interrupt diagnostics")
+    }
+
+    fn measure_errors_with_contact_cancellable(
+        &self,
+        positions: &[Vec3],
+        velocities: &[Vec3],
+        contact_error: contact::ContactErrors,
+        cancelled: &impl Fn() -> bool,
+    ) -> Result<Diagnostics, SimulationError> {
         let mut diagnostics = self.diagnostics.clone();
-        diagnostics.seam_assembly_remaining =
-            self.seam_remaining.iter().copied().fold(0., f64::max);
+        diagnostics.seam_assembly_remaining = 0.;
+        for &remaining in &self.seam_remaining {
+            check_cancel(cancelled)?;
+            diagnostics.seam_assembly_remaining =
+                diagnostics.seam_assembly_remaining.max(remaining);
+        }
         diagnostics.max_stretch_error = 0.;
         diagnostics.peak_strain = None;
         let mut finite_strains = true;
         for (triangle, &vertices) in self.input.triangles.iter().enumerate() {
+            check_cancel(cancelled)?;
             let [warp, weft] = strain::signed_strains(
                 vertices.map(|v| positions[v]),
                 vertices.map(|v| self.input.material_uv[v]),
@@ -580,22 +608,36 @@ impl Cloth {
                 }
             }
         }
-        diagnostics.max_seam_error = self
-            .input
-            .stitches
-            .iter()
-            .map(|s| length(sub(s.a.position(positions), s.b.position(positions))))
-            .fold(0., f64::max);
+        diagnostics.max_seam_error = 0.;
+        for s in &self.input.stitches {
+            check_cancel(cancelled)?;
+            diagnostics.max_seam_error = diagnostics.max_seam_error.max(length(sub(
+                s.a.position(positions),
+                s.b.position(positions),
+            )));
+        }
         diagnostics.max_contact_error = contact_error.maximum;
         diagnostics.capsule_surface_uncertain_pairs = contact_error.uncertain_capsule_pairs;
-        diagnostics.kinetic_energy = self
-            .masses
-            .iter()
-            .zip(velocities)
-            .map(|(m, v)| 0.5 * m * dot(*v, *v))
-            .sum();
+        diagnostics.kinetic_energy =
+            self.masses
+                .iter()
+                .zip(velocities)
+                .try_fold(0., |energy, (m, v)| {
+                    check_cancel(cancelled)?;
+                    Ok::<_, SimulationError>(energy + 0.5 * m * dot(*v, *v))
+                })?;
+        let mut finite_state = true;
+        if finite_strains {
+            for &position in positions.iter().chain(velocities) {
+                check_cancel(cancelled)?;
+                if !finite(position) {
+                    finite_state = false;
+                    break;
+                }
+            }
+        }
         diagnostics.finite = finite_strains
-            && positions.iter().chain(velocities).copied().all(finite)
+            && finite_state
             && diagnostics
                 .peak_strain
                 .is_none_or(|peak| peak.signed_strain.is_finite())
@@ -607,7 +649,7 @@ impl Cloth {
             ]
             .into_iter()
             .all(f64::is_finite);
-        diagnostics
+        Ok(diagnostics)
     }
 }
 
@@ -632,24 +674,15 @@ fn validate(input: &ClothInput, cancelled: &impl Fn() -> bool) -> Result<(), Sim
             "require vertices, material coordinates and one material per triangle",
         ));
     }
-    for (i, (&position, uv)) in input.positions.iter().zip(&input.material_uv).enumerate() {
-        if i % CANCELLATION_CHECK_INTERVAL == 0 {
-            check_cancel(cancelled)?;
-        }
+    for (&position, uv) in input.positions.iter().zip(&input.material_uv) {
+        check_cancel(cancelled)?;
         if !finite(position) || !uv.iter().all(|v| v.is_finite()) {
             return Err(invalid("non-finite rest/material coordinates"));
         }
     }
     let mut unique_triangles = BTreeSet::new();
-    for (i, (tri, mat)) in input
-        .triangles
-        .iter()
-        .zip(&input.triangle_materials)
-        .enumerate()
-    {
-        if i % CANCELLATION_CHECK_INTERVAL == 0 {
-            check_cancel(cancelled)?;
-        }
+    for (tri, mat) in input.triangles.iter().zip(&input.triangle_materials) {
+        check_cancel(cancelled)?;
         if tri.iter().any(|&i| i >= n) || tri[0] == tri[1] || tri[1] == tri[2] || tri[2] == tri[0] {
             return Err(invalid("triangle contains invalid/repeated vertex index"));
         }
@@ -700,10 +733,8 @@ fn validate(input: &ClothInput, cancelled: &impl Fn() -> bool) -> Result<(), Sim
             ));
         }
     }
-    for (i, stitch) in input.stitches.iter().enumerate() {
-        if i % CANCELLATION_CHECK_INTERVAL == 0 {
-            check_cancel(cancelled)?;
-        }
+    for stitch in &input.stitches {
+        check_cancel(cancelled)?;
         if !stitch.compliance.is_finite() || stitch.compliance < 0. {
             return Err(invalid("invalid stitch compliance"));
         }
@@ -721,18 +752,14 @@ fn validate(input: &ClothInput, cancelled: &impl Fn() -> bool) -> Result<(), Sim
         }
     }
     let mut pinned = BTreeSet::new();
-    for (i, pin) in input.pins.iter().enumerate() {
-        if i % CANCELLATION_CHECK_INTERVAL == 0 {
-            check_cancel(cancelled)?;
-        }
+    for pin in &input.pins {
+        check_cancel(cancelled)?;
         if pin.vertex >= n || !finite(pin.target) || !pinned.insert(pin.vertex) {
             return Err(invalid("invalid or duplicate pin"));
         }
     }
-    for (i, collider) in input.colliders.iter().enumerate() {
-        if i % CANCELLATION_CHECK_INTERVAL == 0 {
-            check_cancel(cancelled)?;
-        }
+    for collider in &input.colliders {
+        check_cancel(cancelled)?;
         let valid = match *collider {
             Collider::Ground { height } => height.is_finite(),
             Collider::Torso { center, radii } => {
@@ -751,3 +778,218 @@ fn validate(input: &ClothInput, cancelled: &impl Fn() -> bool) -> Result<(), Sim
 
 #[cfg(test)]
 mod tests;
+
+#[cfg(test)]
+mod constructor_control_tests {
+    use super::*;
+    use std::cell::Cell;
+
+    fn squares(patches: usize) -> ClothInput {
+        let mut input = ClothInput::default();
+        for patch in 0..patches {
+            let offset = input.positions.len();
+            let x = 3. * patch as f64;
+            input
+                .positions
+                .extend([[x, 1., 0.], [x + 1., 1., 0.], [x + 1., 1., 1.], [x, 1., 1.]]);
+            input
+                .material_uv
+                .extend([[0., 0.], [1., 0.], [1., 1.], [0., 1.]]);
+            input.triangles.extend([
+                [offset, offset + 1, offset + 2],
+                [offset, offset + 2, offset + 3],
+            ]);
+            input.triangle_materials.extend([Material::default(); 2]);
+            input.stitches.push(Stitch {
+                a: WeightedPoint::vertex(offset),
+                b: WeightedPoint::vertex(offset + 1),
+                compliance: 0.,
+            });
+            input.pins.push(Pin {
+                vertex: offset,
+                target: input.positions[offset],
+            });
+        }
+        input.colliders = vec![
+            Collider::Ground { height: 0. },
+            Collider::Capsule {
+                a: [-1e6, 0., 0.],
+                b: [-1e6, 1., 0.],
+                radius: 0.1,
+            },
+        ];
+        input
+    }
+
+    #[test]
+    fn validation_charges_each_record_and_stops_exactly_at_caller_abort() {
+        let input = squares(CANCELLATION_CHECK_INTERVAL + 1);
+        let stages = [
+            input.positions.len(),
+            input.triangles.len(),
+            input.stitches.len(),
+            input.pins.len(),
+            input.colliders.len(),
+        ];
+        let calls = Cell::new(0);
+        validate(&input, &|| {
+            calls.set(calls.get() + 1);
+            false
+        })
+        .unwrap();
+        assert_eq!(calls.get(), stages.iter().sum::<usize>());
+        let mut start = 0;
+        for stage in stages {
+            let stop_at = start + stage.min(CANCELLATION_CHECK_INTERVAL + 1);
+            let calls = Cell::new(0);
+            assert_eq!(
+                validate(&input, &|| {
+                    calls.set(calls.get() + 1);
+                    assert!(calls.get() <= stop_at);
+                    calls.get() == stop_at
+                }),
+                Err(SimulationError::Cancelled)
+            );
+            assert_eq!(calls.get(), stop_at);
+            start += stage;
+        }
+    }
+
+    #[test]
+    fn diagnostics_charges_each_scan_and_preserves_numeric_results() {
+        let cloth = Cloth::new(squares(CANCELLATION_CHECK_INTERVAL + 1)).unwrap();
+        let velocities: Vec<Vec3> = (0..cloth.positions.len())
+            .map(|i| [i as f64 / 7., (i % 5) as f64 / 3., -(i as f64) / 13.])
+            .collect();
+        let stages = [
+            cloth.seam_remaining.len(),
+            cloth.input.triangles.len(),
+            cloth.input.stitches.len(),
+            cloth.masses.len(),
+            cloth.positions.len(),
+            velocities.len(),
+        ];
+        let calls = Cell::new(0);
+        let diagnostics = cloth
+            .measure_errors_with_contact_cancellable(
+                &cloth.positions,
+                &velocities,
+                contact::ContactErrors::default(),
+                &|| {
+                    calls.set(calls.get() + 1);
+                    false
+                },
+            )
+            .unwrap();
+        assert_eq!(calls.get(), stages.iter().sum::<usize>());
+        let energy: f64 = cloth
+            .masses
+            .iter()
+            .zip(&velocities)
+            .map(|(m, v)| 0.5 * m * dot(*v, *v))
+            .sum();
+        assert_eq!(diagnostics.kinetic_energy.to_bits(), energy.to_bits());
+        assert_eq!(diagnostics.max_stretch_error, 0.);
+        assert_eq!(diagnostics.max_seam_error, 1.);
+        assert_eq!(diagnostics.seam_assembly_remaining, 1.);
+        assert!(diagnostics.finite);
+        let mut start = 0;
+        for stage in stages {
+            let stop_at = start + CANCELLATION_CHECK_INTERVAL + 1;
+            let calls = Cell::new(0);
+            let result = cloth.measure_errors_with_contact_cancellable(
+                &cloth.positions,
+                &velocities,
+                contact::ContactErrors::default(),
+                &|| {
+                    calls.set(calls.get() + 1);
+                    assert!(calls.get() <= stop_at);
+                    calls.get() == stop_at
+                },
+            );
+            assert!(matches!(result, Err(SimulationError::Cancelled)));
+            assert_eq!(calls.get(), stop_at);
+            start += stage;
+        }
+    }
+
+    #[test]
+    fn constructor_charges_initialization_and_never_publishes_after_abort() {
+        let patches = CANCELLATION_CHECK_INTERVAL + 1;
+        let input = squares(patches);
+        let total = Cell::new(0);
+        let complete = Cloth::new_cancellable(input.clone(), || {
+            total.set(total.get() + 1);
+            false
+        })
+        .unwrap();
+        let ordinary = Cloth::new(input.clone()).unwrap();
+        assert_eq!(format!("{complete:?}"), format!("{ordinary:?}"));
+        assert_eq!(complete.positions(), input.positions);
+        assert_eq!(complete.membrane.len(), 2 * patches);
+        assert_eq!(complete.bends.len(), patches);
+        assert_eq!(complete.diagnostics.initial_intersections, 0);
+        assert_eq!(complete.diagnostics.max_contact_error, 0.);
+        assert!((complete.masses.iter().sum::<f64>() - 0.2 * patches as f64).abs() < 1e-12);
+        let contacts = Cell::new(0);
+        let errors = complete
+            .contact_errors_cancellable(&complete.positions, &|| {
+                contacts.set(contacts.get() + 1);
+                false
+            })
+            .unwrap();
+        let diagnostics = Cell::new(0);
+        complete
+            .measure_errors_with_contact_cancellable(
+                &complete.positions,
+                &complete.velocities,
+                errors,
+                &|| {
+                    diagnostics.set(diagnostics.get() + 1);
+                    false
+                },
+            )
+            .unwrap();
+        let validation = input.positions.len()
+            + input.triangles.len()
+            + input.stitches.len()
+            + input.pins.len()
+            + input.colliders.len();
+        let initialization = 2 * input.positions.len()
+            + 16 * input.triangles.len()
+            + 5 * patches
+            + 6 * input.stitches.len()
+            + input.pins.len();
+        let contact_start = 1 + validation + initialization;
+        assert_eq!(
+            total.get(),
+            contact_start + contacts.get() + diagnostics.get() + 1
+        );
+        let mut accepted = Cloth::new(squares(1)).unwrap();
+        let previous = format!("{accepted:?}");
+        for stop_at in [
+            1,
+            CANCELLATION_CHECK_INTERVAL + 1,
+            1 + validation + CANCELLATION_CHECK_INTERVAL + 1,
+            contact_start,
+            contact_start + CANCELLATION_CHECK_INTERVAL + 1,
+            contact_start + contacts.get() / 2,
+            contact_start + contacts.get() + CANCELLATION_CHECK_INTERVAL + 1,
+            total.get(),
+        ] {
+            let calls = Cell::new(0);
+            let result = Cloth::new_cancellable(input.clone(), || {
+                calls.set(calls.get() + 1);
+                assert!(
+                    calls.get() <= stop_at,
+                    "continued work after abort at {stop_at}"
+                );
+                calls.get() == stop_at
+            })
+            .map(|next| accepted = next);
+            assert_eq!(result, Err(SimulationError::Cancelled));
+            assert_eq!(calls.get(), stop_at);
+            assert_eq!(format!("{accepted:?}"), previous);
+        }
+    }
+}

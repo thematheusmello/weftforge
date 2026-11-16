@@ -417,12 +417,23 @@ impl Project {
     }
 
     pub fn piece_bounds(&self, id: Id) -> Result<[[f64; 2]; 2]> {
+        self.piece_bounds_with_work(id, None)
+    }
+
+    pub(crate) fn piece_bounds_with_work(
+        &self,
+        id: Id,
+        work: Option<&crate::offset::Work<'_>>,
+    ) -> Result<[[f64; 2]; 2]> {
         let piece = self
             .piece(id)
             .ok_or_else(|| Error("Unknown piece".into()))?;
         let mut min = [f64::INFINITY; 2];
         let mut max = [f64::NEG_INFINITY; 2];
         for curve in &piece.boundary {
+            if let Some(work) = work {
+                work.step()?;
+            }
             let curve = self
                 .curve(*curve)
                 .ok_or_else(|| Error("Missing boundary curve".into()))?;
@@ -447,6 +458,11 @@ impl Project {
         &self,
         containment_work: &mut crate::geometry::ContainmentWork,
     ) -> Result<()> {
+        let mut hole_count = 0;
+        for piece in &self.pieces {
+            containment_work.charge_request()?;
+            hole_count += piece.holes.len();
+        }
         ensure(
             self.points.len()
                 + self.curves.len()
@@ -454,11 +470,7 @@ impl Project {
                 + self.materials.len()
                 + self.seams.len()
                 + self.sewing_groups.len()
-                + self
-                    .pieces
-                    .iter()
-                    .map(|piece| piece.holes.len())
-                    .sum::<usize>()
+                + hole_count
                 <= MAX_OBJECTS,
             "Project object limit exceeded",
         )?;
@@ -587,6 +599,7 @@ impl Project {
             )?;
             let mut local_points = BTreeSet::new();
             for boundary in piece.boundary_loops() {
+                containment_work.charge_request()?;
                 ensure(
                     boundary.len() >= 3,
                     "A boundary needs at least three curves",
@@ -639,6 +652,7 @@ impl Project {
                 )?;
             }
             for id in local_points {
+                containment_work.charge_request()?;
                 ensure(
                     used_points.insert(id),
                     "Points cannot be shared between pieces",
@@ -659,6 +673,7 @@ impl Project {
             containment_work.charge_request()?;
             validate_name(&seam.name)?;
             for interval in [seam.a, seam.b] {
+                containment_work.charge_request()?;
                 self.require_boundary_curve(interval.curve)?;
                 ensure(
                     interval.t0.is_finite()
@@ -680,6 +695,7 @@ impl Project {
                 "Seam correspondence must include [0,0] and [1,1]",
             )?;
             for pair in seam.correspondence.windows(2) {
+                containment_work.charge_request()?;
                 ensure(
                     pair[1]
                         .iter()
@@ -690,12 +706,13 @@ impl Project {
                 )?;
             }
         }
+        let mut span_count = 0;
+        for group in &self.sewing_groups {
+            containment_work.charge_request()?;
+            span_count += group.a.len() + group.b.len();
+        }
         ensure(
-            self.sewing_groups
-                .iter()
-                .map(|group| group.a.len() + group.b.len())
-                .sum::<usize>()
-                <= MAX_SEWING_SPANS,
+            span_count <= MAX_SEWING_SPANS,
             "Sewing group interval reference limit exceeded",
         )?;
         for group in &self.sewing_groups {
@@ -708,6 +725,7 @@ impl Project {
                     "A sewing group side needs 1 to 1024 intervals",
                 )?;
                 for interval in side {
+                    containment_work.charge_request()?;
                     self.require_boundary_curve(interval.curve)?;
                     ensure(
                         interval.t0.is_finite()
@@ -724,11 +742,18 @@ impl Project {
                 }
             }
             for intervals in coverage.values_mut() {
-                intervals.sort_by(|a, b| a[0].total_cmp(&b[0]));
-                ensure(
-                    intervals.windows(2).all(|pair| pair[0][1] <= pair[1][0]),
-                    "Sewing group coverage overlaps on the same curve",
+                earcutr::sort_by_with_control(
+                    intervals,
+                    |a, b| a[0].total_cmp(&b[0]),
+                    || containment_work.charge_request(),
                 )?;
+                for pair in intervals.windows(2) {
+                    containment_work.charge_request()?;
+                    ensure(
+                        pair[0][1] <= pair[1][0],
+                        "Sewing group coverage overlaps on the same curve",
+                    )?;
+                }
             }
             ensure(
                 (2..=1024).contains(&group.correspondence.len())
@@ -737,6 +762,7 @@ impl Project {
                 "Sewing group correspondence must include [0,0] and [1,1]",
             )?;
             for pair in group.correspondence.windows(2) {
+                containment_work.charge_request()?;
                 ensure(
                     pair[1]
                         .iter()
@@ -752,6 +778,7 @@ impl Project {
             "Too many mannequin capsules",
         )?;
         for capsule in &self.mannequin.capsules {
+            containment_work.charge_request()?;
             validate_coordinates(&capsule.a)?;
             validate_coordinates(&capsule.b)?;
             ensure(
@@ -776,6 +803,7 @@ impl Project {
         cut_work: &mut crate::geometry::ContainmentWork,
     ) -> Result<()> {
         for pattern in patterns {
+            cut_work.charge_request()?;
             let first_curve = self.curves.len();
             self.apply(
                 Command::AddPolygon {
@@ -785,6 +813,7 @@ impl Project {
                 cut_work,
             )?;
             for (curve, controls) in self.curves[first_curve..].iter_mut().zip(pattern.controls) {
+                cut_work.charge_request()?;
                 curve.controls = controls;
             }
         }
@@ -941,6 +970,7 @@ impl Project {
         command: Command,
         cut_work: &mut crate::geometry::ContainmentWork,
     ) -> Result<()> {
+        cut_work.charge_request()?;
         match command {
             Command::ImportSvgPatterns { svg } => {
                 let imported = crate::SvgPatternImport::from_bytes(svg.as_bytes())?;
@@ -957,6 +987,7 @@ impl Project {
                 )?;
                 validate_name(&name)?;
                 for vertex in &vertices {
+                    cut_work.charge_request()?;
                     validate_coordinates(vertex)?;
                 }
                 let material = self
@@ -967,12 +998,14 @@ impl Project {
                 let id = self.allocate_id()?;
                 let mut point_ids = Vec::new();
                 for position in vertices {
+                    cut_work.charge_request()?;
                     let id = self.allocate_id()?;
                     self.points.push(Point { id, position });
                     point_ids.push(id);
                 }
                 let mut boundary = Vec::new();
                 for index in 0..point_ids.len() {
+                    cut_work.charge_request()?;
                     let id = self.allocate_id()?;
                     self.curves.push(Curve {
                         id,
@@ -1045,6 +1078,7 @@ impl Project {
                     [[x, cy - k * ry], [cx - k * rx, y]],
                 ];
                 for (curve, controls) in self.curves[first_curve..].iter_mut().zip(controls) {
+                    cut_work.charge_request()?;
                     curve.controls = Some(controls);
                 }
             }
@@ -1087,12 +1121,14 @@ impl Project {
                 let id = self.allocate_id()?;
                 let mut points = Vec::with_capacity(vertices.len());
                 for position in vertices {
+                    cut_work.charge_request()?;
                     let id = self.allocate_id()?;
                     self.points.push(Point { id, position });
                     points.push(id);
                 }
                 let mut boundary = Vec::with_capacity(points.len());
                 for index in 0..points.len() {
+                    cut_work.charge_request()?;
                     let id = self.allocate_id()?;
                     self.curves.push(Curve {
                         id,
@@ -1271,7 +1307,8 @@ impl Project {
                     .ok_or_else(|| Error("Curve has no piece".into()))?;
                 boundary.insert(index + 1, second);
                 for seam in std::mem::take(&mut self.seams) {
-                    let portions = split_seam(seam, curve, second, t);
+                    cut_work.charge_request()?;
+                    let portions = split_seam(seam, curve, second, t, cut_work)?;
                     for (index, mut portion) in portions.into_iter().enumerate() {
                         if index > 0 {
                             portion.id = self.allocate_id()?;
@@ -1281,10 +1318,12 @@ impl Project {
                 }
                 for group in &mut self.sewing_groups {
                     for side in [&mut group.a, &mut group.b] {
-                        *side = side
-                            .iter()
-                            .flat_map(|&interval| split_group_interval(interval, curve, second, t))
-                            .collect();
+                        let mut portions = Vec::new();
+                        for &interval in side.iter() {
+                            cut_work.charge_request()?;
+                            portions.extend(split_group_interval(interval, curve, second, t));
+                        }
+                        *side = portions;
                     }
                 }
             }
@@ -1378,10 +1417,16 @@ impl Project {
                         }),
                     "Join would remove referenced construction geometry",
                 )?;
-                let (controls, t) =
-                    joined_geometry(self, &left, &right, self.pieces[piece_index].placement)?;
+                let (controls, t) = joined_geometry(
+                    self,
+                    &left,
+                    &right,
+                    self.pieces[piece_index].placement,
+                    cut_work,
+                )?;
                 for seam in &mut self.seams {
                     for interval in [&mut seam.a, &mut seam.b] {
+                        cut_work.charge_request()?;
                         if interval.curve == curve {
                             interval.t0 *= t;
                             interval.t1 *= t;
@@ -1394,6 +1439,7 @@ impl Project {
                 }
                 for group in &mut self.sewing_groups {
                     for interval in group.a.iter_mut().chain(&mut group.b) {
+                        cut_work.charge_request()?;
                         if interval.curve == curve {
                             interval.t0 *= t;
                             interval.t1 *= t;
@@ -1431,9 +1477,12 @@ impl Project {
                 width,
                 outward,
             } => {
-                *self = self
-                    .prepare_outline_offset(piece, width, outward, || false)?
-                    .candidate;
+                let prepared = if let Some(work) = cut_work.request_work() {
+                    self.prepare_outline_offset_with_work(piece, width, outward, work)?
+                } else {
+                    self.prepare_outline_offset(piece, width, outward, || false)?
+                };
+                *self = prepared.candidate;
             }
             Command::ResizePiece {
                 piece,
@@ -1444,7 +1493,7 @@ impl Project {
                     width.is_finite() && height.is_finite() && width > 1.0e-6 && height > 1.0e-6,
                     "Piece dimensions must be positive metres",
                 )?;
-                let [min, max] = self.piece_bounds(piece)?;
+                let [min, max] = self.piece_bounds_with_work(piece, cut_work.request_work())?;
                 let scale = [width / (max[0] - min[0]), height / (max[1] - min[1])];
                 let owner = self
                     .piece(piece)
@@ -1456,6 +1505,7 @@ impl Project {
                     .iter_mut()
                     .filter(|curve| owned.contains(&curve.id))
                 {
+                    cut_work.charge_request()?;
                     point_ids.extend([curve.start, curve.end]);
                     if let Some(controls) = &mut curve.controls {
                         for control in controls {
@@ -1471,6 +1521,7 @@ impl Project {
                     .iter_mut()
                     .filter(|point| point_ids.contains(&point.id))
                 {
+                    cut_work.charge_request()?;
                     for axis in 0..2 {
                         point.position[axis] =
                             min[axis] + (point.position[axis] - min[axis]) * scale[axis];
@@ -1517,6 +1568,7 @@ impl Project {
                     .iter_mut()
                     .filter(|curve| original.construction_curves().any(|&id| id == curve.id))
                 {
+                    cut_work.charge_request()?;
                     point_ids.extend([curve.start, curve.end]);
                     if let Some(controls) = &mut curve.controls {
                         *controls = controls.map(transform);
@@ -1527,6 +1579,7 @@ impl Project {
                     .iter_mut()
                     .filter(|point| point_ids.contains(&point.id))
                 {
+                    cut_work.charge_request()?;
                     point.position = transform(point.position);
                 }
                 let transformed = self
@@ -1623,8 +1676,8 @@ impl Project {
                 });
             }
             Command::AddSewingByLength { name, a, b } => {
-                let a = self.interval_from_length(a)?;
-                let b = self.interval_from_length(b)?;
+                let a = self.interval_from_length_with_work(a, cut_work.request_work())?;
+                let b = self.interval_from_length_with_work(b, cut_work.request_work())?;
                 self.apply(
                     Command::AddSewingGroup {
                         name,
@@ -1731,7 +1784,9 @@ fn joined_geometry(
     left: &Curve,
     right: &Curve,
     placement: Placement,
+    work: &crate::geometry::ContainmentWork,
 ) -> Result<(Option<[[f64; 2]; 2]>, f64)> {
+    work.charge_request()?;
     const TOLERANCE: f64 = 1.0e-12;
     let a = project
         .point(left.start)
@@ -1790,6 +1845,7 @@ fn joined_geometry(
             ];
             let mut accepted: Option<([[f64; 2]; 2], f64)> = None;
             for (order, derivative) in derivatives.into_iter().enumerate() {
+                work.charge_request()?;
                 let norms = derivative.map(length);
                 if norms.iter().any(|&norm| norm <= TOLERANCE) {
                     continue;
@@ -1849,13 +1905,19 @@ fn joined_geometry(
     }
 }
 
-fn split_seam(seam: Seam, curve: Id, second: Id, t: f64) -> Vec<Seam> {
+fn split_seam(
+    seam: Seam,
+    curve: Id,
+    second: Id,
+    t: f64,
+    work: &crate::geometry::ContainmentWork,
+) -> Result<Vec<Seam>> {
     let source = if seam.a.curve == curve {
         0
     } else if seam.b.curve == curve {
         1
     } else {
-        return vec![seam];
+        return Ok(vec![seam]);
     };
     let intervals = [seam.a, seam.b];
     let interval = intervals[source];
@@ -1864,16 +1926,23 @@ fn split_seam(seam: Seam, curve: Id, second: Id, t: f64) -> Vec<Seam> {
     if fraction > 0.0 && fraction < 1.0 {
         let mut cut = [0.0; 2];
         cut[source] = fraction;
-        cut[1 - source] = crate::geometry::correspondence(&seam.correspondence, fraction, source);
+        cut[1 - source] = crate::geometry::correspondence_with_control(
+            &seam.correspondence,
+            fraction,
+            source,
+            || work.charge_request(),
+        )?;
         cuts.push(cut);
     }
     cuts.push([1.0, 1.0]);
     cuts.windows(2)
         .map(|bounds| {
+            work.charge_request()?;
             let [start, end] = [bounds[0], bounds[1]];
             let mut portion = seam.clone();
             portion.correspondence = vec![[0.0, 0.0]];
             for pair in &seam.correspondence {
+                work.charge_request()?;
                 // An interpolated cut can round onto a breakpoint on either axis.
                 if (0..2).all(|axis| pair[axis] > start[axis] && pair[axis] < end[axis]) {
                     portion.correspondence.push(std::array::from_fn(|axis| {
@@ -1912,7 +1981,7 @@ fn split_seam(seam: Seam, curve: Id, second: Id, t: f64) -> Vec<Seam> {
             };
             portion.a = remap(0);
             portion.b = remap(1);
-            portion
+            Ok(portion)
         })
         .collect()
 }
@@ -2146,10 +2215,16 @@ impl Editor {
             _ => BTreeSet::new(),
         };
         let mut next = self.project.clone();
-        let mut work = crate::geometry::ContainmentWork::new();
+        let not_cancelled = || false;
+        let request = crate::offset::Work::new(&not_cancelled);
+        let mut work = if offset_pieces.is_empty() {
+            crate::geometry::ContainmentWork::new()
+        } else {
+            crate::geometry::ContainmentWork::for_offset(&request)
+        };
         next.apply(command, &mut work)?;
         next.validate_with_work(&mut work)?;
-        if !next.sewing_groups.is_empty() {
+        if !next.sewing_groups.is_empty() && offset_pieces.is_empty() {
             use std::collections::BTreeMap;
             let old_points: BTreeMap<_, _> = self
                 .project
@@ -2208,16 +2283,24 @@ impl Editor {
         if !offset_pieces.is_empty() {
             // Later members can change meshing or physical settings after an offset was prepared.
             crate::offset::check_serialized_size(&next)?;
-            let mesh = next.mesh()?;
+            let mesh = next.mesh_for_offset(&request)?;
+            let mut counts = std::collections::BTreeMap::<Id, usize>::new();
+            for id in &mesh.piece_ids {
+                request.step()?;
+                if offset_pieces.contains(id) {
+                    *counts.entry(*id).or_default() += 1;
+                }
+            }
             for piece in offset_pieces {
                 ensure(
-                    mesh.piece_ids.iter().filter(|id| **id == piece).count() <= 65_536,
+                    counts.get(&piece).copied().unwrap_or(0) <= 65_536,
                     &format!(
                         "OffsetDerivedVertexBudgetExceeded: final transaction piece {piece} exceeds 65536 vertices"
                     ),
                 )?;
             }
-            crate::simulation::create_cloth(&next, &mesh)?;
+            crate::simulation::create_cloth_for_offset(&next, &mesh, &request)?;
+            request.check()?;
         }
         self.revision = revision;
         self.undo.push(std::mem::replace(&mut self.project, next));

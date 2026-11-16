@@ -563,6 +563,7 @@ fn final_transaction_mesh_preflight_catches_later_resolution_and_nested_batches_
     let old = e.project.clone();
     let old_mesh = old.mesh().unwrap();
     let old_cloth = create_cloth(&old, &old_mesh).unwrap();
+    let history = (e.can_undo(), e.can_redo());
     let error = e
         .execute(Command::Transaction(vec![
             Command::OffsetOutline {
@@ -575,7 +576,10 @@ fn final_transaction_mesh_preflight_catches_later_resolution_and_nested_batches_
         .unwrap_err();
     assert!(error.to_string().contains("limit"), "{error}");
     assert_eq!(e.project, old);
+    assert_eq!((e.can_undo(), e.can_redo()), history);
+    assert_eq!(e.project.mesh().unwrap(), old_mesh);
     assert_eq!(old_cloth.positions(), old_mesh.positions);
+    close(old_cloth.masses().iter().sum(), 4. * 0.18, 2e-10);
     e.execute(Command::Transaction(vec![Command::Transaction(vec![
         Command::OffsetOutline {
             piece,
@@ -585,6 +589,7 @@ fn final_transaction_mesh_preflight_catches_later_resolution_and_nested_batches_
     ])]))
     .unwrap_err();
     assert_eq!(e.project, old);
+    assert_eq!((e.can_undo(), e.can_redo()), history);
     e.execute(Command::Transaction(vec![
         Command::OffsetOutline {
             piece,
@@ -596,6 +601,135 @@ fn final_transaction_mesh_preflight_catches_later_resolution_and_nested_batches_
     .unwrap();
     assert_eq!(e.project.revision, old.revision + 1);
     close(total_rest(&e.project).0, 2.02 * 2.02, 1e-9);
+}
+
+#[test]
+fn offset_preflight_preserves_unrelated_concave_curves_holes_topology_and_real_mass() {
+    let mut e = rectangle();
+    let piece = e.project.pieces[0].id;
+    let baseline_work = e
+        .project
+        .prepare_outline_offset(piece, 0.01, true, || false)
+        .unwrap()
+        .certificate()
+        .geometry_work;
+    e.execute(Command::AddPolygon {
+        name: "Unrelated original L with a hole".into(),
+        vertices: vec![
+            [1., 0.],
+            [1.4, 0.],
+            [1.4, 0.2],
+            [1.2, 0.2],
+            [1.2, 0.4],
+            [1., 0.4],
+        ],
+    })
+    .unwrap();
+    let unrelated = e.project.pieces[1].id;
+    e.execute(Command::AddHole {
+        piece: unrelated,
+        vertices: vec![[1.04, 0.04], [1.04, 0.1], [1.1, 0.1], [1.1, 0.04]],
+    })
+    .unwrap();
+    e.execute(Command::AddRectangle {
+        name: "Unrelated original curved panel".into(),
+        origin: [2., 0.],
+        width: 0.4,
+        height: 0.6,
+    })
+    .unwrap();
+    let curved = e.project.pieces[2].id;
+    e.execute(Command::SetCurveControls {
+        curve: e.project.pieces[2].boundary[1],
+        controls: Some([[2.5, 0.2], [2.5, 0.4]]),
+    })
+    .unwrap();
+    let old = e.project.clone();
+    let old_mesh = old.mesh().unwrap();
+    let old_cloth = create_cloth(&old, &old_mesh).unwrap();
+    let history = (e.can_undo(), e.can_redo());
+    let polls = Cell::new(0);
+    let prepared = e
+        .project
+        .prepare_outline_offset(piece, 0.01, true, || {
+            polls.set(polls.get() + 1);
+            false
+        })
+        .unwrap();
+    assert!(prepared.certificate().geometry_work > baseline_work + 512);
+    assert_eq!(prepared.project().pieces[1], old.pieces[1]);
+    assert_eq!(prepared.project().pieces[2], old.pieces[2]);
+    let mesh = prepared.mesh();
+    let cloth = create_cloth(prepared.project(), mesh).unwrap();
+    let mut edges = std::collections::BTreeSet::new();
+    let mut area = 0.;
+    let mut faces = 0;
+    for t in mesh
+        .triangles
+        .iter()
+        .filter(|t| mesh.piece_ids[t[0]] == unrelated)
+    {
+        let [a, b, c] = t.map(|i| mesh.uv[i]);
+        area += ((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])) / 2.;
+        faces += 1;
+        for i in 0..3 {
+            let (a, b) = (t[i], t[(i + 1) % 3]);
+            edges.insert((a.min(b), a.max(b)));
+        }
+    }
+    let vertices = mesh.piece_ids.iter().filter(|&&id| id == unrelated).count();
+    assert_eq!(vertices + faces, edges.len()); // One material hole: Euler characteristic zero.
+    close(area, 0.12 - 0.0036, 1e-12);
+    close(
+        cloth
+            .masses()
+            .iter()
+            .zip(&mesh.piece_ids)
+            .filter(|(_, id)| **id == unrelated)
+            .map(|(mass, _)| mass)
+            .sum(),
+        0.1164 * 0.2,
+        2e-10,
+    );
+    let curved_area = mesh
+        .triangles
+        .iter()
+        .filter(|t| mesh.piece_ids[t[0]] == curved)
+        .map(|t| {
+            let [a, b, c] = t.map(|i| mesh.uv[i]);
+            ((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])) / 2.
+        })
+        .sum();
+    close(curved_area, 0.27, 5e-6); // Exact cubic line integral, independent of triangulation.
+    close(
+        cloth
+            .masses()
+            .iter()
+            .zip(&mesh.piece_ids)
+            .filter(|(_, id)| **id == curved)
+            .map(|(mass, _)| mass)
+            .sum(),
+        0.27 * 0.2,
+        1e-6,
+    );
+    close(prepared.after().rest_area, 0.2604, 1e-9);
+    close(prepared.after().cloth_mass, 0.05208, 2e-10);
+    let cancellation_poll = polls.get() - 1;
+    let cancellation_polls = Cell::new(0);
+    let error = e
+        .project
+        .prepare_outline_offset(piece, 0.01, true, || {
+            cancellation_polls.set(cancellation_polls.get() + 1);
+            cancellation_polls.get() == cancellation_poll
+        })
+        .unwrap_err();
+    assert!(error.to_string().starts_with("OffsetCancelled"), "{error}");
+    assert_eq!(cancellation_polls.get(), cancellation_poll);
+    assert_eq!(e.project, old);
+    assert_eq!((e.can_undo(), e.can_redo()), history);
+    assert_eq!(e.project.mesh().unwrap(), old_mesh);
+    assert_eq!(old_cloth.positions(), old_mesh.positions);
+    close(old_cloth.masses().iter().sum(), 0.6264 * 0.2, 1e-6);
 }
 
 #[test]

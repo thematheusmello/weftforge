@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "attempt_id": "OFFSET-R1-001",
+  "status": "STOPPED_CONTROLLER_BINDING_FAILURE",
+  "case_started_at_utc": "2026-11-16T12:00:23.776913+00:00",
+  "case_stopped_recorded_at_utc": "2026-11-16T12:01:16.798205+00:00",
+  "step": 1,
+  "first_unexpected_failure": {
+    "layer": "native-controller binding",
+    "tool": "mcp__cua_repl.js",
+    "call": "let app = await cua.getApp('<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-001/bin/weftforge');",
+    "returned_text_unedited": "Invalid app: <private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-001/bin/weftforge",
+    "scope": "No actual native window was observed. This is a controller/setup stop, not evidence of a product geometry failure."
+  },
+  "process_1": {
+    "sequence": 1,
+    "step": 1,
+    "kind": "launch",
+    "started_at_utc": "2026-11-16T12:00:23.776913+00:00",
+    "monotonic_start": 952739.28882875,
+    "pid": 24739,
+    "argv": [
+      "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-001/bin/weftforge"
+    ],
+    "ps_unedited": "24739 24717 Mon Nov 16 12:00:23 2026     <private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-001/bin/weftforge\n",
+    "launch_arguments": [],
+    "binary_sha256": "6450fcfbf998b41563673acae0a1dd5374d0231f33ac65de7ef512c32f1e219a"
+  },
+  "process_2": null,
+  "authoring_actions": 0,
+  "native_snapshots_or_exports_created": false,
+  "CUA_completion_summary": "Stopped the native binding attempt",
+  "CUA_completion_summary_returned_text_unedited": "Completion summary received.",
+  "grader_invocations": 0,
+  "no_retry_or_repair_or_regrade": true,
+  "product_or_reference_acceptance": false
+}

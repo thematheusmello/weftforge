@@ -1,0 +1,108 @@
+{
+  "id": "NATIVE-IDLE-DIAG-001",
+  "status": "ENDED_NOT_REPRODUCED_NO_CAUSE_IDENTIFIED",
+  "native_acceptance": false,
+  "product_fix": false,
+  "reference_verified": false,
+  "owned_pid": 56917,
+  "launch_started_at_utc": "2026-11-16T12:50:08.344056+00:00",
+  "initial_CUA_getApp": "Returned full AX with rev0,0pieces,clean; exact UTC not separately captured; raw output retained in tool conversation.",
+  "observations": [
+    {
+      "kind": "idle AX diff and screenshot",
+      "started_at_utc": "2026-11-16T12:50:41.073Z",
+      "ended_at_utc": "2026-11-16T12:50:41.153Z",
+      "outcome": "rev0,0pieces,clean"
+    },
+    {
+      "kind": "File menu action and AX",
+      "started_at_utc": "2026-11-16T12:51:13.145Z",
+      "ended_at_utc": "2026-11-16T12:51:13.728Z"
+    },
+    {
+      "kind": "New Empty action and final AX/screenshot",
+      "started_at_utc": "2026-11-16T12:51:19.412Z",
+      "ended_at_utc": "2026-11-16T12:51:19.927Z",
+      "outcome": "New empty editable project; rev0,0pieces,clean"
+    }
+  ],
+  "timing_deviation": "Scheduled10/25/45s snapshots were missed due documentation/controller/model latency. First retained screenshot was32.729s,File64.801s,New71.068s. No timing was fabricated; hard120s and two product actions were respected.",
+  "raw_frame_count": 62,
+  "trace_marker_counts": {
+    "NUMERIC_WRITE": 0,
+    "DRAFT_COMPARE": 0,
+    "COMMAND_BEFORE": 0,
+    "COMMAND_AFTER": 0,
+    "MESH_START": 0
+  },
+  "initial_resolution_bits": "3fb1eb851eb851ec",
+  "all_raw_resolution_bits": [
+    "3fb1eb851eb851ec"
+  ],
+  "nonempty_raw_inputs": [
+    "WF_IDLE_DIAG RAW frame=2 time=Some(0.26516575) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[WindowFocused(true), WindowFocused(true)]",
+    "WF_IDLE_DIAG RAW frame=5 time=Some(2.756313208) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[PointerMoved([1310.9 966.4]), MouseMoved([41.0 -46.0]), PointerMoved([1351.6 920.6])]",
+    "WF_IDLE_DIAG RAW frame=6 time=Some(2.765238208) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([183.0 -199.0]), PointerMoved([1534.4 721.9])]",
+    "WF_IDLE_DIAG RAW frame=9 time=Some(2.785056292) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([90.0 -93.0]), PointerMoved([1624.5 628.4])]",
+    "WF_IDLE_DIAG RAW frame=11 time=Some(2.7991370829999997) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[PointerGone]",
+    "WF_IDLE_DIAG RAW frame=13 time=Some(2.831527917) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[PointerMoved([899.1 571.6])]",
+    "WF_IDLE_DIAG RAW frame=14 time=Some(2.846605542) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([11.0 -27.0])]",
+    "WF_IDLE_DIAG RAW frame=15 time=Some(2.863303) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([15.0 -48.0])]",
+    "WF_IDLE_DIAG RAW frame=16 time=Some(2.877338875) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([5.0 -16.0])]",
+    "WF_IDLE_DIAG RAW frame=17 time=Some(2.894137583) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([3.0 -22.0])]",
+    "WF_IDLE_DIAG RAW frame=18 time=Some(2.902619917) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([1.0 -19.0])]",
+    "WF_IDLE_DIAG RAW frame=19 time=Some(2.922179958) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([0.0 -9.0])]",
+    "WF_IDLE_DIAG RAW frame=20 time=Some(2.9385719999999997) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([0.0 -6.0])]",
+    "WF_IDLE_DIAG RAW frame=21 time=Some(2.957351375) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([-1.0 -29.0])]",
+    "WF_IDLE_DIAG RAW frame=22 time=Some(2.973505125) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([-5.0 -22.0])]",
+    "WF_IDLE_DIAG RAW frame=23 time=Some(2.9880556670000002) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([-10.0 -25.0])]",
+    "WF_IDLE_DIAG RAW frame=24 time=Some(3.008263458) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([-7.0 -11.0])]",
+    "WF_IDLE_DIAG RAW frame=25 time=Some(3.022194875) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([-42.0 -41.0])]",
+    "WF_IDLE_DIAG RAW frame=26 time=Some(3.054140833) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([-39.0 -26.0])]",
+    "WF_IDLE_DIAG RAW frame=28 time=Some(3.110191375) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([-66.0 -40.0]), PointerMoved([1582.9 160.8]), MouseMoved([-33.0 -29.0]), PointerMoved([1550.7 131.0])]",
+    "WF_IDLE_DIAG RAW frame=29 time=Some(3.130621042) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([-15.0 -16.0]), PointerMoved([1535.7 115.1])]",
+    "WF_IDLE_DIAG RAW frame=30 time=Some(3.189808583) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([-40.0 -66.0]), PointerMoved([1495.7 49.0])]",
+    "WF_IDLE_DIAG RAW frame=31 time=Some(3.222017667) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([-4.0 -26.0]), PointerMoved([1491.0 23.3])]",
+    "WF_IDLE_DIAG RAW frame=32 time=Some(3.241286167) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([0.0 -11.0]), PointerMoved([1491.0 12.4])]",
+    "WF_IDLE_DIAG RAW frame=33 time=Some(3.254375208) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([0.0 -4.0]), PointerMoved([1491.7 8.8])]",
+    "WF_IDLE_DIAG RAW frame=34 time=Some(3.266667583) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([0.0 -6.0]), PointerMoved([1492.4 2.8])]",
+    "WF_IDLE_DIAG RAW frame=35 time=Some(3.286248833) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=true events=[MouseMoved([0.0 -7.0]), PointerGone]",
+    "WF_IDLE_DIAG RAW frame=38 time=Some(3.911861167) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=false events=[WindowFocused(false)]",
+    "WF_IDLE_DIAG RAW frame=41 time=Some(63.493044625) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=false events=[AccessKitActionRequest(ActionRequest { action: Click, target_tree: TreeId(00000000-0000-0000-0000-000000000000), target_node: #10571055659483573335, data: None })]",
+    "WF_IDLE_DIAG RAW frame=59 time=Some(69.727800083) revision=0 resolution_bits=3fb1eb851eb851ec focus=None native_focused=false events=[AccessKitActionRequest(ActionRequest { action: Click, target_tree: TreeId(00000000-0000-0000-0000-000000000000), target_node: #1797340586975527107, data: None })]"
+  ],
+  "final_CUA_summary": {
+    "headline": "Observed a clean empty document",
+    "was_next_tool_call_after_final_CUA_outcome": true,
+    "called_exactly_once": true
+  },
+  "cleanup": {
+    "owned_pid": 56917,
+    "started_at_utc": "2026-11-16T12:51:40.136352+00:00",
+    "observed_argv_before_cleanup": "<private-workspace>/.local/native-idle-fix-review-20261116/diagnostic-001/bundle/WeftForge.app/Contents/MacOS/weftforge",
+    "independently_absent": true,
+    "remaining_ps_stdout": "",
+    "finished_at_utc": "2026-11-16T12:51:40.207696+00:00",
+    "elapsed_seconds_from_launch": 91.86311604199
+  },
+  "frozen_case002_digest_check": {
+    "RUN-STOP-002.json": "adc734e689744b610b59fa857763897669f809a6b40a91738e1267ea94710154",
+    "observations/003-new-empty.png": "0c794e6aa7b900d1fe53afb3f0dbd115dcfd3135fe7d94491c6bd923f89f6a1a",
+    "observations/native-actions.jsonl": "88468fa60c282b473c820038ca44e5096f8f8540e3f2e1b5975062a0dc5fef0e"
+  },
+  "artifacts": {
+    "001-idle.ax.txt": "6ddeccd617064bdb2662a2186f8970272c5660b65ade46e5dc52ead38098e4f6",
+    "001-idle.png": "47d491801d2c0ac29d5c4b0aefe0c1f12a13fd5ed90a3d0e3557300b016badc2",
+    "002-file-menu.ax.txt": "36e06f1cd171deecc95f2a3962f2e6540abbb224c6d5378dafa56a68bf4e6d38",
+    "003-new-empty.ax.txt": "5ff0c2e00adfe80ca3861367d47fe1185282399dc6c543f622300f6871b138d0",
+    "003-new-empty.png": "da1a95e1f50bad3175101a095ee24873454db35eb03d3519b83bb13676a29806",
+    "CUA-ACTIONS.json": "c6ca97b655d9239b377d73fbf4340aae8fe56118109375085258040343da2a7e",
+    "DIAGNOSTIC-PLAN.json": "1014793151097e0eae22b129019949ec7c0e1a913e4c2543aab3f77a110da514",
+    "DIAGNOSTIC.patch": "64b404425d3048cbae9d4f739448b93605534b0637f8c4646abdd680ee4b6b37",
+    "POST-DIAGNOSTIC-CLEANUP.json": "0b122ce85774afa95809383e0c7b27bd1bf3c3a9bd27791c93a8aaa1dd32e4b0",
+    "PROCESS-LAUNCH.json": "dfc64842c37c5588e9ae9e1ac62f97069f938938764725b9294d60a4025075df",
+    "ROOT-DIAGNOSTIC-BINDING.json": "8d3179441a83ef92770022eb0efba566dbc77c064dfcc1ea4406d73c626ee816",
+    "diagnostic.stderr.log": "d4f9cbce22857c811079f6e2ccd94d36761b3e6b83dc6d726fb659284dea9924",
+    "diagnostic.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

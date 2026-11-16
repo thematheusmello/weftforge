@@ -82,8 +82,9 @@ Cloth mass. Apply produces editable straight/cubic construction and updates the
 actual rest mesh and cloth in one Undo step, preserving fabric, grain and
 arrangement. Target sewing, holes and internal construction refuse the operation;
 uncertain geometry and exhausted budgets also refuse without changing the piece.
-Persistent seam allowances and selected-edge offsets remain open. Cancellation
-can wait for triangulation to finish; native workflow acceptance is pending. See
+Persistent seam allowances and selected-edge offsets remain open. Geometry and
+cloth preparation support cancellation; native responsiveness and complete
+offset workflow acceptance remain pending. See
 the [material-outline contract](spec/features/PAT-009-material-outline-offset.md).
 
 **Transform pattern** translates or rotates one 2D piece, with numeric angle,

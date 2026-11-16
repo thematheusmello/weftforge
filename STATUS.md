@@ -2,41 +2,57 @@
 
 The latest public main is `1fc1d71993cf193801e44982b757fca8abc5aba7`:
 [PR #49](https://github.com/thematheusmello/weftforge/pull/49) merged the hole,
-Cut & Sew and SVG canvas work. Actions is still disabled; the existing Pages
-configuration and recent run IDs were unchanged after merging.
+Cut & Sew and SVG canvas work. Actions remains disabled; the existing Pages
+configuration and recent run IDs were unchanged in the last remote check.
 
-Active offset work is on `feat/material-outline-offset`. It adds the shared
-`offset_outline` operation, certified editable line/cubic fitting, actual
-rest/Cloth preparation and the native preview/Apply workflow. Integrated
-formatting, **363 workspace Rust tests**, strict all-target Clippy and fresh
-native/CLI debug builds passed with all **79 source inputs unchanged**. The
-source-gate receipt is
-`6257e853ec5404dd7d4cd6446beb1bf3648345c09f02fcac62903a5809eae66a`.
-Independent numerical/atomicness review and its one-line schema-test supplement
-are complete. The map/progress cycle and 39 registry tests passed. Current source
-inventory: 39 rows, 23 surfaces, 23 contracts, 349 anchors, 34 Rust commands,
-33 schemas and nine tools. PAT-009 is partial with source-only evidence; progress
-is **41 partial / 15 planned / 0 of 56 reference contracts verified**. Clean
-committed integration and the bound native rectangle case remain pending.
-No test window or reference session has been opened for this increment.
+Active offset integration is on `feat/cancellable-triangulation`, based on the
+frozen `89e6d53` offset checkpoint (runtime `d8cef84`). It combines the editable
+material-outline preview/Apply operation with a locally licensed triangulator
+that supports fallible internal callbacks, shared geometry work accounting,
+sewing and Cloth initialization control, and shared offset-transaction budgets.
+Independent source review prompted fixes for sewing-length inversion, split/join
+certificates and bounds calculations in transaction siblings. The pending-refinement guard is integrated and independent source review found
+no remaining blocker. Final formatting, **385 workspace Rust tests**, strict
+all-target Clippy, native/CLI debug builds and **30 vendored triangulator tests**
+passed with all **87 source inputs unchanged**. These are source checks; native
+responsiveness and complete offset workflow acceptance remain unverified.
 
-The review found and prompted fixes for invalid interval arithmetic, nonlinear
-corner sweeps, final transaction mesh/Cloth validation and cancellation through
-validation. The pinned triangulation library still has an opaque inner call:
-its internal predicates cannot yet be individually charged or polled. The strict
-whole-request work/cancellation criterion remains open. Full PAT-009, all
-reference contracts and roadmap gates remain incomplete. Public progress counts
-have not been upgraded from this uncommitted work.
+The original offset source passed formatting, **363 workspace Rust tests**,
+strict all-target Clippy and native/CLI debug builds with 79 inputs unchanged:
+receipt `6257e853ec5404dd7d4cd6446beb1bf3648345c09f02fcac62903a5809eae66a`.
+Clean committed verification/build at `89e6d53` also passed, receipt
+`160ac382f1590dc05214f5e7540fdc4a6734cef0a1a174b35813bc166d4f78d9`.
+Those results identify the frozen source and do not validate this later runtime.
+The source map/progress checkpoint records 39 rows, 23 surfaces, 23 contracts,
+349 anchors, 34 Rust commands, 33 schemas and nine tools. Progress remains
+**41 partial / 15 planned / 0 of 56 reference contracts verified**, with no
+roadmap gate accepted.
 
-All recorded Cargo jobs are terminal, including root session 17319, exit 0.
-The earlier full run retained its failure at one old discovery assertion that
-still expected 32 commands; correcting it to 33 changed no production code.
-The exact-source review pins were refreshed for that test-only correction.
-Metadata cycle receipt:
-`b3692669fef7ce7d7177693e45e9f5f78d993ecb19cc68cddcaa1658e1f7222f`.
-Next: run the clean committed registry/map gate, then bind and execute the fresh
-rectangle workflow. Curved/concave native
-cases, broader offset/allowance work and triangulation cancellation remain due.
+Two closed native attempts on that frozen source remain visible. OFFSET-R1-001
+stopped at controller setup because a bare executable was not an app selector.
+OFFSET-R1-002 selected its own app bundle but stopped before rectangle authoring:
+an empty document advanced from revision 0 to 2 and New Empty refused unsaved
+changes. No geometry, saves, exports or acceptance were obtained. A separate
+instrumented diagnostic did not reproduce the problem: its empty document stayed
+clean and New succeeded. Its missed scheduled observation times are retained.
+The cause remains unexplained; no production fix or repaired result is claimed.
+Three ordinary headless idle/focus/precision regressions are retained; all
+temporary tracing has been removed. Finished test windows are closed.
+
+Final source receipt: `4843ca67cac78b1bd2e1d091631ef18671e8a2847c2f2da3fa2dca44185d490a`;
+public logs and independent review are selected under
+`parity/reports/artifacts/material-outline-offset-work-control-20261116/`.
+The native binary is `c05bac974a4f8b40e2c5c46e4f857d5e00c270410f3a817f83439dbbb1f5d71e`;
+CLI is `a7f23bd8876a04456e0d668e11eabefe54f510757664d0180cc17e03c51e058c`.
+Final sessions 11517/6268/70912/10226 are terminal exit 0; no Cargo job remains.
+The earlier constructor-handoff compile failure and fixture-assumption failures
+remain recorded separately. No binaries or target caches crossed worktrees.
+
+Next: commit this runtime, update current maps/reports, run clean committed
+xtask verification, then bind a fresh native rectangle workflow to that exact
+binary. The successor is prepared separately and has not launched.
+Closed native cases are never replayed or regraded. Curved/concave native cases,
+full editable allowances and the rest of the roadmap remain due.
 
 ## Merged hole and Cut & Sew checkpoint
 

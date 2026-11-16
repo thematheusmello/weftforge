@@ -1,0 +1,272 @@
+{
+  "id": "WF-20261116-MATERIAL-OUTLINE-OFFSET-001",
+  "commit": "d8cef845630e381c4f3339ee867ebc66ed17e443",
+  "timestamp": "2026-11-16T11:40:18.933077Z",
+  "timestamp_qualification": "Metadata report preparation only. Root's retained source gates have their own clocks/identities. No Cargo/product/native/reference/evaluator execution was performed for this report.",
+  "platform": "macOS 27.2 arm64; Rust1.94.1; own-target native and CLI debug builds; source/CLI/MCP/headless egui tests only",
+  "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
+  "kind": "implementation_only",
+  "status": "passed",
+  "freshness": "current",
+  "feature_ids": [
+    "PAT-009"
+  ],
+  "complete_contract": false,
+  "reference_executed": false,
+  "reference_verified": false,
+  "native_case_status": "not_run",
+  "native_ui_verified": false,
+  "native_case_executed": false,
+  "single_identified_candidate_workflow": false,
+  "full_feature_accepted": false,
+  "whole_first_increment_accepted": false,
+  "full_garment_accepted": false,
+  "physics_accepted": false,
+  "actual_native_particle_mass_verified": false,
+  "scope": "Passed declared source-only OffsetOutline geometry/material/atomic-history/CLI/MCP/headless-UI subset and integrated fmt363Rust/strictClippy/debug-build gates. This is partial whole-material outline functionality, not full PAT-009 or complete first-phase acceptance. Strict earcut hidden-predicate/per256/whole-request work remains UNMET; actual native/reference cases are not run.",
+  "source_hashes": {
+    ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+    "Cargo.lock": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c",
+    "Cargo.toml": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+    "apps/weftforge-cli/Cargo.toml": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+    "apps/weftforge-cli/src/main.rs": "7049615180a793ad1557a2bbd3a27797b4b06aac060a2cb0620bd40436e64e0b",
+    "apps/weftforge-cli/src/mcp.rs": "b0ac7f62a8f9f5e27236ebfc92b26791e9f7a84d67e7adcb663b43566dd34ef9",
+    "apps/weftforge-cli/tests/curves.rs": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+    "apps/weftforge-cli/tests/dxf_import.rs": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d",
+    "apps/weftforge-cli/tests/ellipse.rs": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+    "apps/weftforge-cli/tests/grain.rs": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+    "apps/weftforge-cli/tests/holes.rs": "c7e0656dcb756db3ced588e52c08c969a997b99661f85bbb8d5079a27421ad77",
+    "apps/weftforge-cli/tests/mcp_stdio.rs": "8c20f4e7bfd7b0a2ef60538a43c662d4363288b66ba05abd1c5528b15fde3811",
+    "apps/weftforge-cli/tests/svg_import.rs": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af",
+    "apps/weftforge/Cargo.toml": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+    "apps/weftforge/assets/fonts/Inter-Regular.ttf": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82",
+    "apps/weftforge/assets/fonts/Inter-SemiBold.ttf": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3",
+    "apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1",
+    "apps/weftforge/assets/fonts/OFL-Inter.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+    "apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+    "apps/weftforge/assets/fonts/SOURCES.json": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c",
+    "apps/weftforge/src/main.rs": "24de266c826ab46d1c5d8cfb885de0b2a275e5b6f735dd3918f894a57913c95e",
+    "crates/weftforge-core/Cargo.toml": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+    "crates/weftforge-core/src/document.rs": "e51a9889d743dc3530cc83e15c55938dece9bd8d37430859775e0f8ad344f010",
+    "crates/weftforge-core/src/geometry.rs": "ff833b2f42b41713508a448392cfeb319f0df0a480837796622f3a973f4c973a",
+    "crates/weftforge-core/src/lib.rs": "8f1a57b619222ea11986bf68a424e277b31a26d8da5eccef7c6d31b913ce76f8",
+    "crates/weftforge-core/src/offset.rs": "77669333b842d3d75cfc5cadf785592f661ea225092c7e0575d7dfbbdda63177",
+    "crates/weftforge-core/src/persistence.rs": "69e76f3c73567731a46bc234e9a28e89d6036cb069c0ad501b4dd4570e40d691",
+    "crates/weftforge-core/src/persistence/dxf.rs": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338",
+    "crates/weftforge-core/src/persistence/dxf_import.rs": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+    "crates/weftforge-core/src/persistence/svg.rs": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7",
+    "crates/weftforge-core/src/sewing.rs": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed",
+    "crates/weftforge-core/src/simulation.rs": "4265e2239c7ec54d7b9ba2f91bdd0e9c7bd039e7495e830c0d9f84f6832c4386",
+    "crates/weftforge-core/tests/cut_piece.rs": "7c5e12e7a4b6f0cec65199e795c8ad16889a0f0aa08247da2a2f94b567a59c86",
+    "crates/weftforge-core/tests/dxf.rs": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+    "crates/weftforge-core/tests/dxf_import.rs": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+    "crates/weftforge-core/tests/ellipse.rs": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78",
+    "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+    "crates/weftforge-core/tests/fixtures/original-cut-l.weftforge": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d",
+    "crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+    "crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+    "crates/weftforge-core/tests/fixtures/original-editable-patterns.svg": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+    "crates/weftforge-core/tests/grain.rs": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+    "crates/weftforge-core/tests/hole_io.rs": "35e4b82cf53dc0b80218574e948d0b0fa09f7e8f4c1524e52b6a8650cd83ea98",
+    "crates/weftforge-core/tests/holes.rs": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594",
+    "crates/weftforge-core/tests/internal_lines.rs": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786",
+    "crates/weftforge-core/tests/joins.rs": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10",
+    "crates/weftforge-core/tests/migration.rs": "1f4b8aec8bfa9622c7c69b2b7ef2a9ec2c745340c5d56c5edab87d40d7f66418",
+    "crates/weftforge-core/tests/outline_offset.rs": "3b6e3c75e9fa525d7b1556bb7280aa2af4cebe2c7f7349246876c0e7b2aac2ea",
+    "crates/weftforge-core/tests/pattern_transform.rs": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31",
+    "crates/weftforge-core/tests/seam_reversal.rs": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d",
+    "crates/weftforge-core/tests/sewing_groups.rs": "a3e9ad0393b0039b7257193b5bcd0f54e7aafe5ab5566ae8459c1392a0ce6f41",
+    "crates/weftforge-core/tests/shirt.rs": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+    "crates/weftforge-core/tests/svg_import.rs": "57d693d8cc307bb711093140f0b1110cddfd2a5b68bce8e338d54a2deddd34ab",
+    "crates/weftforge-core/tests/workflow.rs": "05eba55a4ee1d2ea5c569dad68f6c4fdeb3e02a9bf09f0778dce00e4bbc3dea7",
+    "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+    "crates/weftforge-sim/src/capsule.rs": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7",
+    "crates/weftforge-sim/src/constraints.rs": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+    "crates/weftforge-sim/src/contact.rs": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655",
+    "crates/weftforge-sim/src/lib.rs": "d614d1dc3b66fd6c5e4d4179a9ba8776f2abfd264e2a30723c3a122fc6fc77ab",
+    "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+    "crates/weftforge-sim/src/strain.rs": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+    "crates/weftforge-sim/src/tests.rs": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+    "docs/architecture.md": "c0c0a1e786f28ab7b3af7bc9dad51dfd0ab598e6c6a8fe6a2e7627d30a923dba",
+    "docs/automation.md": "04597a2ec92023e3ae76868863f3d3f69ac4834741ad6d5e1833191293a6bacb",
+    "docs/file-formats.md": "1d61ad2278a74ebf5e236d4ec9d0f2441d6abbf05e22212d4ce33d214df69a50",
+    "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+    "spec/features/APP-001-new-empty.md": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+    "spec/features/PAT-004-native-transform-selection.md": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
+    "spec/features/PAT-004-piece-rigid-transform.md": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+    "spec/features/PAT-006-internal-segments.md": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+    "spec/features/PAT-006-straight-cut.md": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c",
+    "spec/features/PAT-006-straight-hole.md": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f",
+    "spec/features/PAT-009-material-outline-offset.md": "3e5759ad49f2f3a6b7d3342222e62d67b8bee8fa956f8a3f96a8422f0e914b6b",
+    "spec/features/SEW-001-cut-and-sew.md": "9420f9a88ea184868aba5543f0d356181fcd8373dadfa4632376cc4a5a5f8941",
+    "spec/features/SEW-002-physical-length.md": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+    "spec/features/fixtures/PAT-009-offset-originals.json": "6de6eefff1bc040363f1f2de335f5c4f70dc526dacd5224ba22e1c33e1820bec",
+    "spec/features/fixtures/PAT-009-offset-reviewed-additions.json": "fc4b133cadada09a676266cea90c736a35342767552cb54a573460eea9f41991",
+    "xtask/Cargo.toml": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+    "xtask/src/main.rs": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709"
+  },
+  "source_scope": [
+    ".cargo",
+    "Cargo.toml",
+    "Cargo.lock",
+    "rust-toolchain.toml",
+    "apps",
+    "crates",
+    "xtask",
+    "docs/architecture.md",
+    "docs/automation.md",
+    "docs/file-formats.md",
+    "spec/features/APP-001-new-empty.md",
+    "spec/features/PAT-004-native-transform-selection.md",
+    "spec/features/PAT-004-piece-rigid-transform.md",
+    "spec/features/PAT-006-internal-segments.md",
+    "spec/features/PAT-006-straight-cut.md",
+    "spec/features/PAT-006-straight-hole.md",
+    "spec/features/SEW-001-cut-and-sew.md",
+    "spec/features/SEW-002-physical-length.md",
+    "spec/features/PAT-009-material-outline-offset.md",
+    "spec/features/fixtures/PAT-009-offset-originals.json",
+    "spec/features/fixtures/PAT-009-offset-reviewed-additions.json"
+  ],
+  "artifact_hashes": {
+    "parity/reports/artifacts/material-outline-offset-20261116/PUBLICATION-SCOPE-001.json": "03fc54932e18ddf95d2395d3a171565f63cba7fac8bee63a8d186a16f7db1a33",
+    "parity/reports/artifacts/material-outline-offset-20261116/SOURCE-CHECK-PUBLICATION-001.json": "b8424930ce29f796fa8fd26b3bf0d18fba3a8d0e020f81fb27ee8996b43e5765",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/MCP-DISCOVERY-CORRECTION.patch": "e8f20393b33cfa6229e878ea62d86392302ffa64b1166f62e8a455fd26a8ec71",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-001/CHECKS.json": "fda1e5fe16802e9f94e5040d95e64b127c2fa085d7274a4859970c26547c53da",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-001/SOURCE-INPUTS.json": "d5dfbd11e33a441e541115100d4d8ae93159667ec1466b796ca41f2906f2fce8",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-001/fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-001/fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-001/test.stderr": "1c987945ace62c98c233a3dbe111698c13484413d00184ec1d48d8ce7d58f5d5",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-001/test.stdout": "b0728e4b591a87d4841a747a09e2be870f1dd29b942a2698dfa36ac0a1b0a8ec",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-002/PRECHECK-STOP.json": "96682af7b12432535bf6cecbd3fba6a84b8f41b55fe20fb7826df2b90f977bfa",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/CHECKS.json": "1de617493c237516a9cd71e730ba3c40833804e0b499a856b7dc43d06853a6f0",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/SOURCE-INPUTS.json": "e1c3f00da24fbc9eada09dbeffbbd2447dcfca1ccb94c98ad70c8c4742c1f31a",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/clippy.stderr": "9a945924d5aaec17fcb7de619f034b0d1747c956938d4fe97eb3aa4b7dbcb730",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/debug-build.stderr": "e4789b2fdd4014a8b07a0c22857ead874e8ec4ea0dff89cbe26db061fe9c48fe",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/debug-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/test.stderr": "add600ee119147a113d221b57dcbdeb0173ebe444d88fd15fc1b0e74f9e49b59",
+    "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/test.stdout": "05e1c46623b4f86189e810e0c0bfa47ffb3acdf01d83fb9035c460ad7089f277",
+    "parity/reports/artifacts/material-outline-offset-20261116/history/WF-20261116-HOLE-EXPORT-001.original.json": "7e2951fa5d7ab22a01379d6ef4efa71be62dd71fc46926839fc294b5047d495f",
+    "parity/reports/artifacts/material-outline-offset-20261116/review/REVIEW-001.md": "e50d8112148261713b71b784c4d95bf3c15fa822c71e454541c60c0f9bf5a110",
+    "parity/reports/artifacts/material-outline-offset-20261116/review/REVIEW-SUPPLEMENT-002.md": "a289bcbcb53bf0475b880e7502c1f1e5a2fd4c579c4469821e9353853d5276fe",
+    "parity/reports/artifacts/material-outline-offset-20261116/review/SOURCE-PINS-001.json": "524e130e9503cabd3916894ec927234ca9bb30bb63f52eaec8b1fe4b353b061f",
+    "parity/reports/artifacts/material-outline-offset-20261116/review/SOURCE-PINS-002.json": "36d5883d29fb7778316cb86a24a1e5bf25d1e5f5919abd5722e92cf0715f7a58",
+    "parity/reports/artifacts/material-outline-offset-20261116/review/SUPPLEMENT-PUBLICATION-002.json": "5a2477bb031204d9cad0ab39747b84236d8007c1139ce46e08eda4448724c860"
+  },
+  "source_and_build_identity": {
+    "runtime_commit": "d8cef845630e381c4f3339ee867ebc66ed17e443",
+    "source_inputs": 79,
+    "native_binary_sha256": "6450fcfbf998b41563673acae0a1dd5374d0231f33ac65de7ef512c32f1e219a",
+    "native_binary_bytes": 63391144,
+    "cli_binary_sha256": "132500cb74412ec94ffd4015db9502681deb9a8a9346b8486b9d22e9e4b70155",
+    "cli_binary_bytes": 11098576,
+    "executables_distributed": false,
+    "source_input_receipt": {
+      "path": "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/SOURCE-INPUTS.json",
+      "sha256": "e1c3f00da24fbc9eada09dbeffbbd2447dcfca1ccb94c98ad70c8c4742c1f31a"
+    }
+  },
+  "retained_local_gates": {
+    "source_checks": {
+      "path": "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/CHECKS.json",
+      "sha256": "1de617493c237516a9cd71e730ba3c40833804e0b499a856b7dc43d06853a6f0"
+    },
+    "original_private_receipt_sha256": "6257e853ec5404dd7d4cd6446beb1bf3648345c09f02fcac62903a5809eae66a",
+    "public_copy_manifest": {
+      "path": "parity/reports/artifacts/material-outline-offset-20261116/SOURCE-CHECK-PUBLICATION-001.json",
+      "sha256": "b8424930ce29f796fa8fd26b3bf0d18fba3a8d0e020f81fb27ee8996b43e5765"
+    },
+    "all_steps_exit_zero": [
+      "cargo fmt --all --check",
+      "cargo test --workspace",
+      "cargo clippy --workspace --all-targets -- -D warnings",
+      "cargo build -p weftforge -p weftforge-cli"
+    ],
+    "Rust_tests_passed": 363,
+    "Rust_tests_failed": 0,
+    "source79_unchanged_before_after": true,
+    "qualification": "Root-retained executions at frozen inputs. Public gate/log derivatives only normalize declared literal paths; original/public identities are in the publication manifest. Root's committed clean xtask/tracking gate follows metadata integration and is not claimed here."
+  },
+  "bounded_source_results": {
+    "geometry_and_material": "OffsetOutline replaces one selected whole simple material exterior with ordinary editable f64 lines/cubics, preserving piece/material/placement/grain identity and source-order descendant IDs. Material-relative Extend/Retract uses finite positive metre width, winding/tangent/regularity interval bounds, miter ratio4/bevel, certified local trim, continuous fitted-cubic residual and source-order continuation checks. Uncertain signs/roots/topology, collapse or budget exhaustion refuse; no sampled topology repair or reappearing branch is accepted. Preparation is revision-bound and transient, includes separate authored/rest area and actual initialized Cloth mass measurements, and prepares the new actual Mesh/Cloth before one atomic commit/history entry. Cancel/refusal/stale candidate preserves accepted construction/IDs/history and rest/simulation; successful native Apply replaces coherent products and clears stale revision displays. Source curves retain their first surviving descendant identity; bevel retires a source vertex and allocates fresh endpoints. Existing object/mesh/ID/revision/serialization caps remain. Holes, attached internal geometry and affected seams/groups refuse without deleting blockers; unrelated construction survives. Native Inspector/Edit/search open the same job-backed material modal with width mm, Extend/Retract, before/after dimensions/authored area/rest area/actual Cloth mass, dashed-source/solid-preview, explicit pending/error, raw caret retention, focused later Enter/Apply and Cancel/Escape/backdrop. Selection/revision/request/job/epoch guards prevent stale publication. Source tests separately check line/concave/cubic math, actual Mesh/Cloth, history/IDs, IO/physical SVG/DXF/rest OBJ, strict CLI/MCP and six headless native UI paths. This is source coverage, not actual native execution or full first-phase acceptance.",
+    "actual_constructor_measurements": "Passing source tests construct actual rest Mesh and initialized Cloth, independently sum UV triangle area and Cloth::masses at explicit density0.2 and compare straight/curved analytic targets. These are real constructor source tests, separate from labels/analytic mass and from unexecuted native particle-mass/solver/drape proof.",
+    "adapters": "34 Rust variants/33 closed schemas/nine tools. Required piece,width,outward uses existing execute/project_execute on both MCP profiles and CLI with duplicate/unknown/missing/type/nonfinite/bounds/transaction/refusal and saved ordinary-v5/physical export checks; no new verb/tool/version.",
+    "headless_UI": "Six egui tests cover inspector/Edit/search routes, opening Enter, actual preview/new Mesh/Cloth and one-history Apply, raw invalid width/caret/modal shields, direction keyboard review, cancellation/stale revision/selection/request publication guards, failed-IO/lifecycle/save-reopen and attached/pending-property refusal. This is headless UI-test evidence, not native OS/CUA acceptance."
+  },
+  "independent_source_review": [
+    {
+      "path": "parity/reports/artifacts/material-outline-offset-20261116/review/REVIEW-001.md",
+      "sha256": "e50d8112148261713b71b784c4d95bf3c15fa822c71e454541c60c0f9bf5a110"
+    },
+    {
+      "path": "parity/reports/artifacts/material-outline-offset-20261116/review/REVIEW-SUPPLEMENT-002.md",
+      "sha256": "a289bcbcb53bf0475b880e7502c1f1e5a2fd4c579c4469821e9353853d5276fe"
+    },
+    {
+      "path": "parity/reports/artifacts/material-outline-offset-20261116/review/SOURCE-PINS-001.json",
+      "sha256": "524e130e9503cabd3916894ec927234ca9bb30bb63f52eaec8b1fe4b353b061f"
+    },
+    {
+      "path": "parity/reports/artifacts/material-outline-offset-20261116/review/SOURCE-PINS-002.json",
+      "sha256": "36d5883d29fb7778316cb86a24a1e5bf25d1e5f5919abd5722e92cf0715f7a58"
+    }
+  ],
+  "unmet_work_and_cancellation": {
+    "status": "UNMET",
+    "opaque_dependency": "existing earcutr0.5.0 monolithic triangulation",
+    "controlled_work_charged_and_cancellable": true,
+    "earcut_internal_predicates_individually_charged": false,
+    "earcut_internal_predicates_polled_every256": false,
+    "strict_whole_request_cap_established": false,
+    "hard_cancellation_latency_established": false,
+    "required_follow_on": "Instrument or replace that internal kernel before claiming strict whole-request work/per256 cancellation or complete first increment."
+  },
+  "retained_failed_attempts": {
+    "source_gates_001": {
+      "receipt": {
+        "path": "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-001/CHECKS.json",
+        "sha256": "fda1e5fe16802e9f94e5040d95e64b127c2fa085d7274a4859970c26547c53da"
+      },
+      "status": "FAILED/exit101",
+      "reason": "One old multiline MCP discovery test expected32 rather than33 schemas. Original receipt successful-group count138 excludes17 passed tests in its failed group; keep original result/stdout/stderr, not a final pass."
+    },
+    "precheck_002": {
+      "receipt": {
+        "path": "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-002/PRECHECK-STOP.json",
+        "sha256": "96682af7b12432535bf6cecbd3fba6a84b8f41b55fe20fb7826df2b90f977bfa"
+      },
+      "Cargo_executed": false,
+      "status": "stopped before Cargo",
+      "reason": "Independent source pin still contained old discovery assertion; exact one-token reversal proved the delta, then independent supplement repinned it."
+    },
+    "correction": "Only apps/weftforge-cli/tests/mcp_stdio.rs32→33 differs between failed001 and passed003 source inventories; other78 inputs are byte-exact. This expected-count correction does not change product geometry, numerical criteria or earcut limitation."
+  },
+  "historical_native_freshness": {
+    "H3_previous_exact_top_level": {
+      "path": "parity/reports/artifacts/material-outline-offset-20261116/history/WF-20261116-HOLE-EXPORT-001.original.json",
+      "sha256": "7e2951fa5d7ab22a01379d6ef4efa71be62dd71fc46926839fc294b5047d495f"
+    },
+    "H3_current_report_sha256": "5398f2021804639b4d347b7b45115cac5358b3a43fcacab8cbdfa2c54cf9ef68",
+    "root_only_semantic_changes": [
+      "freshness current→stale",
+      "freshness_reason added"
+    ],
+    "nonfreshness_fields_unchanged": true,
+    "other41_old_reports_byte_exact": true,
+    "all_prior_run_identity_and_artifact_maps_unchanged": true,
+    "native_credit_transferred": false
+  },
+  "remaining_gaps": [
+    "Strict whole-request16777216 work cap and every256 cancellation polling remain UNMET inside the existing opaque earcutr0.5.0 call. Controlled geometry/validation/mesh/Cloth work is charged/polled, with checks around the monolithic call; hidden predicates are not individually charged or polled. No hard request-wide latency or whole-first-increment acceptance.",
+    "Actual native curved/concave/cancellation cases and all required first-phase SA-001–010/013–015 plus reviewed additions remain unexecuted. Source tests, preview labels and analytic area*density do not establish native particle mass, reference semantics, full feature or roadmap acceptance.",
+    "Full persistent seam allowances, guide/material/construction roles, per-edge/interval widths, holes/internal/open offsets/endpoint extension, multiple offsets, source-to-internal retention, relationship remapping and manufacturing/printing/reference workflows remain open. Conservative refusal does not complete those requirements."
+  ],
+  "evidence_qualifications": [
+    "Only this report's source79 and declared source-test subset are current. All prior native cut/hole/Sew results remain bound to their actual historical builds; H3 current947 result is stale after scoped source changes. No old case/grader replay or acceptance transfer occurred.",
+    "Original independent recipes/reviewed additions keep planned/unexecuted fields as freeze history, not current scenario results. Every required first-phase native/output workflow remains pending independently of source test coverage.",
+    "No full-contract, whole-first-increment, reference, full-feature, physics, native particle-mass, complete garment or roadmap gate is accepted. Source constructor mass is actual Cloth evidence only within those executed source tests."
+  ]
+}

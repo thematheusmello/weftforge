@@ -35,13 +35,13 @@ status. The reviewed mathematical supplement's original SHA-256 is
 `b5e0b8c441d0fdc595840ee13ca8d56ae113b682e7c42ae499ad4a5466c2f73a`.
 No expected value comes from product output.
 
-The current implementation charges and polls its controlled geometry,
-validation, rest-mesh and Cloth preparation. The existing pinned triangulator
-has a monolithic call with checks before and after; its hidden predicates are
-not individually charged or polled. The strict whole-request work/cancellation
-criterion below remains unmet at that boundary. No hard cancellation latency,
-complete first increment or full PAT-009 acceptance follows from the current
-partial implementation. Instrumenting or replacing that kernel remains due.
+The development source uses a local ISC-licensed earcutr fork with fallible
+internal task callbacks. Geometry certification, validation, triangulation,
+rest refinement, sewing and actual Cloth initialization share the request
+counter. Offset transactions also share it across child preparations and final
+mesh/Cloth validation. Source checks assess those control paths; native timing
+and workflow results require their own attributable runs. Hard cancellation
+latency, complete first-increment acceptance and full PAT-009 remain unverified.
 
 ## Orientation, joins and the valid domain
 

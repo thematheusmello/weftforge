@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "case_id": "OFFSET-R1",
+  "status": "BOUND_READY_UNEXECUTED",
+  "execution_allowed": true,
+  "protocol": {
+    "path": "NATIVE-PROTOCOL-002.md",
+    "sha256": "2f15c5bd9fd4500c0ea8566d658d789be5aff05c20f6d44028593c8299c797b8",
+    "frozen": true
+  },
+  "independent_oracles": {
+    "original_scenarios_relative": "../seam-allowance-contract-20261116/ORIGINAL-SCENARIOS-001.json",
+    "original_scenarios_sha256": "6de6eefff1bc040363f1f2de335f5c4f70dc526dacd5224ba22e1c33e1820bec",
+    "reviewed_contract_relative": "../seam-allowance-contract-review-20261116/CONTRACT-REVIEWED-001.md",
+    "reviewed_contract_sha256": "b5e0b8c441d0fdc595840ee13ca8d56ae113b682e7c42ae499ad4a5466c2f73a",
+    "fixture": "original F-RECT; rectangle targets remain independent of implementation"
+  },
+  "final_binding": {
+    "clean_source_commit": "89e6d53b9ab78b8c6642ebe2eae07e9f56f42da4",
+    "clean_checkout_verified": true,
+    "integrated_gate_evidence": [
+      {
+        "path": "<private-workspace>/.local/material-outline-offset-integration-20261116/source-gates-003/CHECKS.json",
+        "sha256": "6257e853ec5404dd7d4cd6446beb1bf3648345c09f02fcac62903a5809eae66a"
+      },
+      {
+        "path": "<private-workspace>/.local/material-outline-offset-integration-20261116/clean-89e6d53-verify-build-001/CHECKS.json",
+        "sha256": "160ac382f1590dc05214f5e7540fdc4a6734cef0a1a174b35813bc166d4f78d9"
+      }
+    ],
+    "binary_path": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/bundle/WeftForge.app/Contents/MacOS/weftforge",
+    "binary_sha256": "6450fcfbf998b41563673acae0a1dd5374d0231f33ac65de7ef512c32f1e219a",
+    "launch_arguments": [],
+    "os_hardware_display": {
+      "architecture": "arm64",
+      "os": "ProductName:\t\tmacOS\nProductVersion:\t\t27.2\nBuildVersion:\t\t26B123\n",
+      "hardware": "Mac15,9\n51539607552\n16\n",
+      "display_facts": [
+        {
+          "_spdisplays_resolution": "2560 x 1440 @ 144.00Hz"
+        },
+        {
+          "spdisplays_pixelresolution": "spdisplays_qhd"
+        },
+        {
+          "spdisplays_resolution": "2560 x 1440 @ 144.00Hz"
+        },
+        {
+          "_spdisplays_resolution": "1728 x 1117 @ 120.00Hz"
+        },
+        {
+          "spdisplays_pixelresolution": "spdisplays_3456x2234Retina"
+        },
+        {
+          "_spdisplays_resolution": "2560 x 1440 @ 144.00Hz"
+        },
+        {
+          "spdisplays_pixelresolution": "spdisplays_qhd"
+        },
+        {
+          "spdisplays_resolution": "2560 x 1440 @ 144.00Hz"
+        }
+      ],
+      "window_observation": "Actor records actual initial window size/scale before authoring; no pixel/reference comparison claim. Pointer displacement uses observed width per frozen protocol."
+    },
+    "case_output_directory": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002",
+    "read_only_file_measurement_method": {
+      "path": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/measure_saved_files.py",
+      "sha256": "cd8ab9e04b930778636323c821b619b9512bce3192e785e7b44db69cc7468d0b",
+      "tool_version": "3.13.0 (main, Nov 12 2025, 18:15:04) [Clang 17.0.0 (clang-1700.0.13.3)]",
+      "formal_invocations_allowed": 1,
+      "invocation": "python3 measure_saved_files.py BINDING.final.json",
+      "scope": "saved authored/output files only; independent of WeftForge; UI/table/actual Cloth dataflow/cleanup reviewed separately",
+      "self_check": {
+        "method_sha256": "cd8ab9e04b930778636323c821b619b9512bce3192e785e7b44db69cc7468d0b",
+        "mode": "synthetic_original arithmetic/strict-JSON/SVG/DXF/OBJ self-check only",
+        "result": "passed",
+        "actual_native_or_product_outputs_read": false,
+        "formal_case_assessments_so_far": 0,
+        "python_version": "3.13.0 (main, Nov 12 2025, 18:15:04) [Clang 17.0.0 (clang-1700.0.13.3)]"
+      }
+    },
+    "final_source_actual_Cloth_dataflow_audit": {
+      "path": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/ROOT-CLOTH-DATAFLOW-AUDIT-001.json",
+      "sha256": "1c837dc43c2ddb9ae07a234cae9b638875042d10cece618a2fda33d5d921cd8c",
+      "mode": "source-backed only; no live debugger observation"
+    },
+    "bound_before_execution_at": "2026-11-16T12:08:59.220723+00:00",
+    "runtime_source_commit": "d8cef845630e381c4f3339ee867ebc66ed17e443",
+    "source_hashes": {
+      ".cargo/config.toml": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+      "Cargo.lock": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c",
+      "Cargo.toml": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+      "apps/weftforge-cli/Cargo.toml": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+      "apps/weftforge-cli/src/main.rs": "7049615180a793ad1557a2bbd3a27797b4b06aac060a2cb0620bd40436e64e0b",
+      "apps/weftforge-cli/src/mcp.rs": "b0ac7f62a8f9f5e27236ebfc92b26791e9f7a84d67e7adcb663b43566dd34ef9",
+      "apps/weftforge-cli/tests/curves.rs": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+      "apps/weftforge-cli/tests/dxf_import.rs": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d",
+      "apps/weftforge-cli/tests/ellipse.rs": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+      "apps/weftforge-cli/tests/grain.rs": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+      "apps/weftforge-cli/tests/holes.rs": "c7e0656dcb756db3ced588e52c08c969a997b99661f85bbb8d5079a27421ad77",
+      "apps/weftforge-cli/tests/mcp_stdio.rs": "8c20f4e7bfd7b0a2ef60538a43c662d4363288b66ba05abd1c5528b15fde3811",
+      "apps/weftforge-cli/tests/svg_import.rs": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af",
+      "apps/weftforge/Cargo.toml": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+      "apps/weftforge/assets/fonts/Inter-Regular.ttf": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82",
+      "apps/weftforge/assets/fonts/Inter-SemiBold.ttf": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3",
+      "apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1",
+      "apps/weftforge/assets/fonts/OFL-Inter.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "apps/weftforge/assets/fonts/SOURCES.json": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c",
+      "apps/weftforge/src/main.rs": "24de266c826ab46d1c5d8cfb885de0b2a275e5b6f735dd3918f894a57913c95e",
+      "crates/weftforge-core/Cargo.toml": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+      "crates/weftforge-core/src/document.rs": "e51a9889d743dc3530cc83e15c55938dece9bd8d37430859775e0f8ad344f010",
+      "crates/weftforge-core/src/geometry.rs": "ff833b2f42b41713508a448392cfeb319f0df0a480837796622f3a973f4c973a",
+      "crates/weftforge-core/src/lib.rs": "8f1a57b619222ea11986bf68a424e277b31a26d8da5eccef7c6d31b913ce76f8",
+      "crates/weftforge-core/src/offset.rs": "77669333b842d3d75cfc5cadf785592f661ea225092c7e0575d7dfbbdda63177",
+      "crates/weftforge-core/src/persistence.rs": "69e76f3c73567731a46bc234e9a28e89d6036cb069c0ad501b4dd4570e40d691",
+      "crates/weftforge-core/src/persistence/dxf.rs": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338",
+      "crates/weftforge-core/src/persistence/dxf_import.rs": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+      "crates/weftforge-core/src/persistence/svg.rs": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7",
+      "crates/weftforge-core/src/sewing.rs": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed",
+      "crates/weftforge-core/src/simulation.rs": "4265e2239c7ec54d7b9ba2f91bdd0e9c7bd039e7495e830c0d9f84f6832c4386",
+      "crates/weftforge-core/tests/cut_piece.rs": "7c5e12e7a4b6f0cec65199e795c8ad16889a0f0aa08247da2a2f94b567a59c86",
+      "crates/weftforge-core/tests/dxf.rs": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+      "crates/weftforge-core/tests/dxf_import.rs": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+      "crates/weftforge-core/tests/ellipse.rs": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78",
+      "crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+      "crates/weftforge-core/tests/fixtures/original-cut-l.weftforge": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d",
+      "crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+      "crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "crates/weftforge-core/tests/fixtures/original-editable-patterns.svg": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+      "crates/weftforge-core/tests/grain.rs": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+      "crates/weftforge-core/tests/hole_io.rs": "35e4b82cf53dc0b80218574e948d0b0fa09f7e8f4c1524e52b6a8650cd83ea98",
+      "crates/weftforge-core/tests/holes.rs": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594",
+      "crates/weftforge-core/tests/internal_lines.rs": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786",
+      "crates/weftforge-core/tests/joins.rs": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10",
+      "crates/weftforge-core/tests/migration.rs": "1f4b8aec8bfa9622c7c69b2b7ef2a9ec2c745340c5d56c5edab87d40d7f66418",
+      "crates/weftforge-core/tests/outline_offset.rs": "3b6e3c75e9fa525d7b1556bb7280aa2af4cebe2c7f7349246876c0e7b2aac2ea",
+      "crates/weftforge-core/tests/pattern_transform.rs": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31",
+      "crates/weftforge-core/tests/seam_reversal.rs": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d",
+      "crates/weftforge-core/tests/sewing_groups.rs": "a3e9ad0393b0039b7257193b5bcd0f54e7aafe5ab5566ae8459c1392a0ce6f41",
+      "crates/weftforge-core/tests/shirt.rs": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+      "crates/weftforge-core/tests/svg_import.rs": "57d693d8cc307bb711093140f0b1110cddfd2a5b68bce8e338d54a2deddd34ab",
+      "crates/weftforge-core/tests/workflow.rs": "05eba55a4ee1d2ea5c569dad68f6c4fdeb3e02a9bf09f0778dce00e4bbc3dea7",
+      "crates/weftforge-sim/Cargo.toml": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+      "crates/weftforge-sim/src/capsule.rs": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7",
+      "crates/weftforge-sim/src/constraints.rs": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+      "crates/weftforge-sim/src/contact.rs": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655",
+      "crates/weftforge-sim/src/lib.rs": "d614d1dc3b66fd6c5e4d4179a9ba8776f2abfd264e2a30723c3a122fc6fc77ab",
+      "crates/weftforge-sim/src/math.rs": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+      "crates/weftforge-sim/src/strain.rs": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+      "crates/weftforge-sim/src/tests.rs": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+      "docs/architecture.md": "c0c0a1e786f28ab7b3af7bc9dad51dfd0ab598e6c6a8fe6a2e7627d30a923dba",
+      "docs/automation.md": "04597a2ec92023e3ae76868863f3d3f69ac4834741ad6d5e1833191293a6bacb",
+      "docs/file-formats.md": "1d61ad2278a74ebf5e236d4ec9d0f2441d6abbf05e22212d4ce33d214df69a50",
+      "rust-toolchain.toml": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+      "spec/features/APP-001-new-empty.md": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+      "spec/features/PAT-004-native-transform-selection.md": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
+      "spec/features/PAT-004-piece-rigid-transform.md": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+      "spec/features/PAT-006-internal-segments.md": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+      "spec/features/PAT-006-straight-cut.md": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c",
+      "spec/features/PAT-006-straight-hole.md": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f",
+      "spec/features/PAT-009-material-outline-offset.md": "3e5759ad49f2f3a6b7d3342222e62d67b8bee8fa956f8a3f96a8422f0e914b6b",
+      "spec/features/SEW-001-cut-and-sew.md": "9420f9a88ea184868aba5543f0d356181fcd8373dadfa4632376cc4a5a5f8941",
+      "spec/features/SEW-002-physical-length.md": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+      "spec/features/fixtures/PAT-009-offset-originals.json": "6de6eefff1bc040363f1f2de335f5c4f70dc526dacd5224ba22e1c33e1820bec",
+      "spec/features/fixtures/PAT-009-offset-reviewed-additions.json": "fc4b133cadada09a676266cea90c736a35342767552cb54a573460eea9f41991",
+      "xtask/Cargo.toml": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+      "xtask/src/main.rs": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709"
+    },
+    "native_bundle_route": {
+      "bundle_path": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/bundle/WeftForge.app",
+      "info_plist_path": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/bundle/WeftForge.app/Contents/Info.plist",
+      "info_plist_sha256": "b891496cc4ac9d101036881024bdf4575c8cc7398cf4ee327af8e2bda0897e55",
+      "bundle_identifier": "org.weftforge.nativecase.offsetr1.r002",
+      "launcher_executable": "/usr/bin/open",
+      "launcher_arguments": [
+        "-n",
+        "-a",
+        "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/bundle/WeftForge.app"
+      ],
+      "product_arguments": [],
+      "owned_process_proof": "Actual PID and full executable argv must resolve to bound bundle Contents/MacOS/weftforge before CUA selection.",
+      "CUA_selector": "org.weftforge.nativecase.offsetr1.r002",
+      "CUA_call": "await cua.getApp(\"org.weftforge.nativecase.offsetr1.r002\");"
+    },
+    "controller_preparation": "Reset the prior automation REPL before launch if needed; first post-reset selection uses the exact bound bundle identifier. No app state is changed by that reset."
+  },
+  "paths": {
+    "before": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/snapshots/before.weftforge",
+    "cancel": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/snapshots/cancel.weftforge",
+    "applied": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/snapshots/applied.weftforge",
+    "undo": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/snapshots/undo.weftforge",
+    "redo": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/snapshots/redo.weftforge",
+    "edited": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/snapshots/edited.weftforge",
+    "final": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/snapshots/final.weftforge",
+    "svg": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/exports/OFFSET-R1.svg",
+    "dxf": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/exports/OFFSET-R1.dxf",
+    "rest_obj": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/exports/OFFSET-R1.obj",
+    "native_action_trace": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/observations/native-actions.jsonl",
+    "screenshots_or_AX": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/observations",
+    "independent_file_measurements": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/independent-file-measurements.json",
+    "post_case_cleanup_record": "<private-workspace>/.local/native-material-outline-offset-20261116/OFFSET-R1-002/POST-CASE-CLEANUP.json"
+  },
+  "observations": {
+    "case_started_at": null,
+    "case_ended_at": null,
+    "process_1_confirmed_handle": null,
+    "process_2_confirmed_handle": null,
+    "original_revision_R": null,
+    "actual_stable_IDs": null,
+    "direct_native_UI": null,
+    "independent_authored_output_files": null,
+    "source_tests_separate": null,
+    "actual_Cloth_dataflow_source_backed": null,
+    "first_failure_step_and_reason": null,
+    "remaining_unproved_claims": null,
+    "overall_result": "not_run",
+    "cleanup_result": null
+  },
+  "precision_policy": {
+    "mass_kg_decimals": 12,
+    "area_m2_decimals": 9,
+    "dimensions_mm_decimals": 3,
+    "coordinate_tolerance_m": 1e-09,
+    "area_tolerance_m2": 1e-09,
+    "mass_tolerance_kg": 2e-10,
+    "saved_restore_tolerance_m": 1e-12,
+    "svg_physical_dimension_tolerance_mm": 0.01,
+    "mass_rest_relation": "abs(Mdisplay-0.2*Arest_display)+1.005e-10 <=2e-10 kg"
+  },
+  "limits": {
+    "total_minutes": 25,
+    "meaningful_UI_actions": 100,
+    "fresh_processes": 2,
+    "window_or_open_seconds": 30,
+    "preview_mesh_or_write_seconds_after_dialog": 10,
+    "file_dialog_seconds": 60,
+    "quit_seconds": 10,
+    "first_unexpected_failure": "stop, freeze, cleanup only; no repair/replay/regrade"
+  },
+  "scope": {
+    "reference_runtime": "unobserved",
+    "parity_credit": 0,
+    "feature_complete": false,
+    "whole_first_increment_complete": false,
+    "historical_indexes_unchanged": [
+      949,
+      205,
+      56
+    ],
+    "pending_separate_checks": "curved/concave native and cubic exports; unsupported sewing; cancellation/stale jobs; other original scenarios; CLI/MCP; full PAT-009"
+  },
+  "attempt_id": "OFFSET-R1-002",
+  "protocol_header_qualification": "Unbound/unexecuted wording records protocol preparation. This final binding is the authoritative prelaunch freeze; outcome will be retained separately.",
+  "prior_attempt": {
+    "attempt": "OFFSET-R1-001",
+    "status": "closed controller/setup stop; no product result",
+    "stop_sha256": "546a38ef0c67d79c5f2cb0f101ec882f83bc04b2720d3188561c20564b99a27b",
+    "cleanup_sha256": "9ce55a93c1d5072f6be20af3b14620be01a99b7dc4007dc79beeb7ec3d8d418d",
+    "owned_pid24739_independently_absent": true,
+    "no_original_files_modified": true
+  }
+}

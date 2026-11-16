@@ -1,0 +1,44 @@
+{
+  "diagnostic_id": "NATIVE-IDLE-DIAG-001",
+  "status": "proposed_not_run_ROOT_GO_required",
+  "question": "Which actual command/value/raw-input event causes an untouched native empty document to advance revision0 to2?",
+  "maximum_seconds_from_launch": 120,
+  "maximum_product_actions": 2,
+  "maximum_processes": 1,
+  "ordinary_UI": "Same defaults, formatter, precision, app name, and1640x1000 inner geometry (native titlebar may produce1640x1032 outer); temporary stderr tracing only.",
+  "launch_argv": [
+    "/usr/bin/open",
+    "-n",
+    "-a",
+    "<private-workspace>/.local/native-idle-fix-review-20261116/diagnostic-001/bundle/WeftForge.app",
+    "--stdout",
+    "<private-workspace>/.local/native-idle-fix-review-20261116/diagnostic-001/diagnostic.stdout.log",
+    "--stderr",
+    "<private-workspace>/.local/native-idle-fix-review-20261116/diagnostic-001/diagnostic.stderr.log"
+  ],
+  "prelaunch": [
+    "ROOT must approve/bind this plan/source/patch/binary/plist.",
+    "Verify all proposed digests and binary mode. Confirm no live process already uses this unique bundle executable.",
+    "Launch only this bundle with the exact argv, then record ownedPID and full executable argv before CUA selection."
+  ],
+  "selector": "org.weftforge.nativecase.idlediag.d1",
+  "first_CUA_call": "await cua.getApp(\"org.weftforge.nativecase.idlediag.d1\");",
+  "fixed_observations_seconds_after_launch": [
+    0,
+    10,
+    25,
+    45
+  ],
+  "actions_if_no_earlier_drift": [
+    "After45s observe the File menu and click it once.",
+    "Observe New Empty and click it once; observe the result."
+  ],
+  "first_stop": [
+    "Stop immediately at unintended revision/dirty change or a clear logged command/cause.",
+    "Otherwise stop after the single File/New sequence or at120s, whichever arrives first.",
+    "No rectangle, offset, save/export, replay, grader, acceptance, repair or retry."
+  ],
+  "CUA_completion": "Immediately after observing the final CUA outcome, the very next tool call must be cua_repl.js with only completion_summary, exactly once; then retain stderr/raw observations and clean up only the ownedPID.",
+  "cleanup": "Terminate only the diagnostic ownedPID if still alive and independently verify absence; frozen OFFSET-R1-002 and its artifacts remain read-only.",
+  "record": "Retain raw stderr/stdout, ownedPID/argv, actual observation times, AX/screenshots and a concise outcome; not a product/reference acceptance."
+}

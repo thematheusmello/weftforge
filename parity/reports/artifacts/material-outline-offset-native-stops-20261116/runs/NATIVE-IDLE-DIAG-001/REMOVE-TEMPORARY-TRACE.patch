@@ -1,0 +1,112 @@
+--- a/apps/weftforge/src/main.rs
++++ b/apps/weftforge/src/main.rs
+@@ -957,14 +957,6 @@
+         cc.egui_ctx
+             .send_viewport_cmd(egui::ViewportCommand::SetTheme(egui::SystemTheme::Dark));
+         let mut app = Self::empty();
+-        eprintln!(
+-            "WF_IDLE_DIAG INIT revision={} pieces={} resolution={:.17} resolution_bits={:016x} dirty={}",
+-            app.editor.project.revision,
+-            app.editor.project.pieces.len(),
+-            app.editor.project.resolution,
+-            app.editor.project.resolution.to_bits(),
+-            app.dirty
+-        );
+         if let Some(path) = std::env::args_os().nth(1) {
+             app.open(PathBuf::from(path));
+         }
+@@ -1052,25 +1044,10 @@
+         }
+     }
+     fn apply_command(&mut self, command: Command) -> bool {
+-        eprintln!(
+-            "WF_IDLE_DIAG COMMAND_BEFORE revision={} resolution={:.17} bits={:016x} dirty={} selected={:?} command={command:?}",
+-            self.editor.project.revision,
+-            self.editor.project.resolution,
+-            self.editor.project.resolution.to_bits(),
+-            self.dirty,
+-            self.selected
+-        );
+         let old_pieces = self.editor.project.pieces.len();
+         let old_groups = self.editor.project.sewing_groups.len();
+         match self.editor.execute(command) {
+             Ok(()) => {
+-                eprintln!(
+-                    "WF_IDLE_DIAG COMMAND_AFTER revision={} resolution={:.17} bits={:016x} pieces={}",
+-                    self.editor.project.revision,
+-                    self.editor.project.resolution,
+-                    self.editor.project.resolution.to_bits(),
+-                    self.editor.project.pieces.len()
+-                );
+                 self.dirty = true;
+                 self.message = "Construction updated; simulation invalidated.".into();
+                 if self.editor.project.pieces.len() < old_pieces
+@@ -1098,17 +1075,6 @@
+             return true;
+         }
+         let commands = draft.commands(&self.editor.project);
+-        eprintln!(
+-            "WF_IDLE_DIAG DRAFT_COMPARE revision={} source_revision={} selected={:?} curve={:?} source_resolution={:.17} source_bits={:016x} draft_resolution={:.17} draft_bits={:016x} commands={commands:?}",
+-            draft.revision,
+-            self.editor.project.revision,
+-            draft.selected,
+-            draft.curve.as_ref().map(|curve| curve.id),
+-            self.editor.project.resolution,
+-            self.editor.project.resolution.to_bits(),
+-            draft.resolution,
+-            draft.resolution.to_bits()
+-        );
+         commands.is_empty() || self.apply_command(Command::Transaction(commands))
+     }
+     fn apply_inspector_action(
+@@ -1524,13 +1490,6 @@
+         if self.job.is_some() || !self.needs_mesh {
+             return;
+         }
+-        eprintln!(
+-            "WF_IDLE_DIAG MESH_START frame={} revision={} pieces={} resolution_bits={:016x}",
+-            ctx.cumulative_frame_nr(),
+-            self.editor.project.revision,
+-            self.editor.project.pieces.len(),
+-            self.editor.project.resolution.to_bits()
+-        );
+         let project = self.editor.project.clone();
+         self.needs_mesh = false;
+         self.job = Some(Job::spawn(
+@@ -5855,19 +5814,6 @@
+     }
+ }
+ impl eframe::App for Studio {
+-    fn raw_input_hook(&mut self, ctx: &egui::Context, raw_input: &mut egui::RawInput) {
+-        eprintln!(
+-            "WF_IDLE_DIAG RAW frame={} time={:?} revision={} resolution_bits={:016x} focus={:?} native_focused={} viewport={:?} events={:?}",
+-            ctx.cumulative_frame_nr(),
+-            raw_input.time,
+-            self.editor.project.revision,
+-            self.editor.project.resolution.to_bits(),
+-            ctx.memory(|memory| memory.focused()),
+-            raw_input.focused,
+-            raw_input.viewport(),
+-            raw_input.events
+-        );
+-    }
+     fn on_exit(&mut self) {
+         // macOS application Quit bypasses the cancellable viewport close request.
+         if let Err(error) = self.retain_on_exit() {
+@@ -6565,15 +6511,8 @@
+ fn numeric_value<'a>(ui: &egui::Ui, value: &'a mut f64) -> egui::DragValue<'a> {
+     let id = ui.next_auto_id();
+     let ctx = ui.ctx().clone();
+-    let trace_ctx = ctx.clone();
+     let formatter = ui.style().number_formatter.clone();
+-    egui::DragValue::from_get_set(move |next| {
+-        if let Some(next) = next {
+-            eprintln!("WF_IDLE_DIAG NUMERIC_WRITE frame={} id={id:?} old={:.17} old_bits={:016x} new={next:.17} new_bits={:016x} focus={:?} events={:?}", trace_ctx.cumulative_frame_nr(), *value, value.to_bits(), next.to_bits(), trace_ctx.memory(|memory|memory.focused()), trace_ctx.input(|input| input.events.clone()));
+-            *value = next;
+-        }
+-        *value
+-    }).custom_formatter(move |value, decimals| {
++    egui::DragValue::new(value).custom_formatter(move |value, decimals| {
+         // egui reparses its edit buffer on blur even when the text was never changed.
+         if ctx.memory(|memory| memory.has_focus(id)) {
+             value.to_string()

@@ -65,20 +65,21 @@ fn create_cloth_context(
         "Rest mesh belongs to an obsolete document revision",
     )?;
     crate::ensure(
-        mesh.sewing_groups
-            .iter()
-            .map(|group| group.id)
-            .eq(project.sewing_groups.iter().map(|group| group.id)),
+        mesh.sewing_groups.len() == project.sewing_groups.len(),
         "Rest mesh sewing previews belong to different construction",
     )?;
+    for (preview, group) in mesh.sewing_groups.iter().zip(&project.sewing_groups) {
+        check()?;
+        crate::ensure(
+            preview.id == group.id,
+            "Rest mesh sewing previews belong to different construction",
+        )?;
+    }
     let triangle_materials = mesh
         .triangles
         .iter()
-        .enumerate()
-        .map(|(i, triangle)| {
-            if i % 256 == 0 {
-                check()?;
-            }
+        .map(|triangle| {
+            check()?;
             let piece = project
                 .piece(mesh.piece_ids[triangle[0]])
                 .ok_or_else(|| crate::Error("Rest mesh references an unknown piece".into()))?;
@@ -105,11 +106,8 @@ fn create_cloth_context(
     let stitches = mesh
         .stitches
         .iter()
-        .enumerate()
-        .map(|(i, stitch)| {
-            if i % 256 == 0 {
-                check()?;
-            }
+        .map(|stitch| {
+            check()?;
             Ok(Stitch {
                 a: weighted(&stitch.a),
                 b: weighted(&stitch.b),
@@ -118,10 +116,8 @@ fn create_cloth_context(
         })
         .collect::<Result<_>>()?;
     let mut colliders = vec![Collider::Ground { height: 0.0 }];
-    for (i, capsule) in project.mannequin.capsules.iter().enumerate() {
-        if i % 256 == 0 {
-            check()?;
-        }
+    for capsule in &project.mannequin.capsules {
+        check()?;
         colliders.push(Collider::Capsule {
             a: capsule.a,
             b: capsule.b,

@@ -131,6 +131,7 @@ impl Cloth {
                 if overlaps(&bounds[i], x[v], previous[v]) {
                     candidates.push(i);
                 }
+                Ok(())
             })?;
             candidates.sort_unstable();
             let (mut next, mut candidate, mut linear) = (0, 0, false);
@@ -231,10 +232,8 @@ impl Cloth {
         indexed: bool,
     ) -> Result<ContactErrors, SimulationError> {
         let mut max_thickness = 0_f64;
-        for (i, &thickness) in self.thickness.iter().enumerate() {
-            if i % CANCELLATION_CHECK_INTERVAL == 0 {
-                check_cancel(cancelled)?;
-            }
+        for &thickness in &self.thickness {
+            check_cancel(cancelled)?;
             max_thickness = max_thickness.max(thickness);
         }
         let bounds = triangle_bounds_cancellable(
@@ -253,10 +252,8 @@ impl Cloth {
         let mut count = 0;
         for v in 0..x.len() {
             check_cancel(cancelled)?;
-            for (i, &collider) in self.input.colliders.iter().enumerate() {
-                if i % CANCELLATION_CHECK_INTERVAL == 0 {
-                    check_cancel(cancelled)?;
-                }
+            for &collider in &self.input.colliders {
+                check_cancel(cancelled)?;
                 if let Some((_, depth)) = collider_contact(collider, x[v], self.thickness[v]) {
                     maximum = maximum.max(depth);
                     if depth > 1e-8 {
@@ -269,8 +266,9 @@ impl Cloth {
                 if tri.iter().any(|i| self.excluded[v].contains(i))
                     || !overlaps(&bounds[i], x[v], x[v])
                 {
-                    return;
+                    return Ok(());
                 }
+                check_cancel(cancelled)?;
                 let gap = self.thickness[v]
                     + tri
                         .map(|i| self.thickness[i])
@@ -282,35 +280,30 @@ impl Cloth {
                         count += 1;
                     }
                 }
+                Ok(())
             };
             if let Some(hierarchy) = &hierarchy {
                 hierarchy.visit(0, x[v], cancelled, &mut consider)?;
             } else {
                 for i in 0..self.input.triangles.len() {
-                    if i % CANCELLATION_CHECK_INTERVAL == 0 {
-                        check_cancel(cancelled)?;
-                    }
-                    consider(i);
+                    check_cancel(cancelled)?;
+                    consider(i)?;
                 }
             }
         }
         let mut uncertain_capsule_pairs = 0;
-        for (ti, &tri) in self.input.triangles.iter().enumerate() {
-            if ti % CANCELLATION_CHECK_INTERVAL == 0 {
-                check_cancel(cancelled)?;
-            }
+        for &tri in &self.input.triangles {
+            check_cancel(cancelled)?;
             let thickness = tri
                 .map(|i| self.thickness[i])
                 .into_iter()
                 .fold(0., f64::max);
-            for (ci, &collider) in self.input.colliders.iter().enumerate() {
-                if ci % CANCELLATION_CHECK_INTERVAL == 0 {
-                    check_cancel(cancelled)?;
-                }
+            for &collider in &self.input.colliders {
+                check_cancel(cancelled)?;
                 let Collider::Capsule { a, b, radius } = collider else {
                     continue;
                 };
-                let feature = capsule::closest(tri.map(|i| x[i]), a, b);
+                let feature = capsule::closest_cancellable(tri.map(|i| x[i]), a, b, cancelled)?;
                 uncertain_capsule_pairs += usize::from(feature.uncertain);
                 let depth = radius + thickness - feature.distance;
                 maximum = maximum.max(depth);
@@ -344,9 +337,7 @@ impl TriangleHierarchy {
     fn new(bounds: &[Bounds], cancelled: &impl Fn() -> bool) -> Result<Self, SimulationError> {
         let indices = (0..bounds.len())
             .map(|i| {
-                if i % CANCELLATION_CHECK_INTERVAL == 0 {
-                    check_cancel(cancelled)?;
-                }
+                check_cancel(cancelled)?;
                 Ok(i)
             })
             .collect::<Result<_, SimulationError>>()?;
@@ -366,10 +357,8 @@ impl TriangleHierarchy {
     ) -> Result<usize, SimulationError> {
         check_cancel(cancelled)?;
         let mut combined = [[f64::INFINITY; 3], [f64::NEG_INFINITY; 3]];
-        for (i, &triangle) in self.indices[range.clone()].iter().enumerate() {
-            if i % CANCELLATION_CHECK_INTERVAL == 0 {
-                check_cancel(cancelled)?;
-            }
+        for &triangle in &self.indices[range.clone()] {
+            check_cancel(cancelled)?;
             for axis in 0..3 {
                 combined[0][axis] = combined[0][axis].min(bounds[triangle][0][axis]);
                 combined[1][axis] = combined[1][axis].max(bounds[triangle][1][axis]);
@@ -401,7 +390,7 @@ impl TriangleHierarchy {
         node: usize,
         point: Vec3,
         cancelled: &impl Fn() -> bool,
-        consider: &mut impl FnMut(usize),
+        consider: &mut impl FnMut(usize) -> Result<(), SimulationError>,
     ) -> Result<(), SimulationError> {
         self.visit_swept(node, point, point, cancelled, consider)
     }
@@ -412,7 +401,7 @@ impl TriangleHierarchy {
         point: Vec3,
         previous: Vec3,
         cancelled: &impl Fn() -> bool,
-        consider: &mut impl FnMut(usize),
+        consider: &mut impl FnMut(usize) -> Result<(), SimulationError>,
     ) -> Result<(), SimulationError> {
         check_cancel(cancelled)?;
         let node = &self.nodes[node];
@@ -423,7 +412,8 @@ impl TriangleHierarchy {
                 }
             } else {
                 for &triangle in &self.indices[node.range.clone()] {
-                    consider(triangle);
+                    check_cancel(cancelled)?;
+                    consider(triangle)?;
                 }
             }
         }
@@ -442,12 +432,11 @@ fn partition_triangles(
     let mut work = 0;
     // shortcut: capped selection can yield coarse splits, upgrade if measured pruning regresses.
     while end - start > 1 && work < indices.len().saturating_mul(4) {
+        check_cancel(cancelled)?;
         let pivot = bounds[indices[start + (end - start) / 2]][0][axis];
         let (mut lower, mut i, mut upper) = (start, start, end);
         while i < upper {
-            if work % CANCELLATION_CHECK_INTERVAL == 0 {
-                check_cancel(cancelled)?;
-            }
+            check_cancel(cancelled)?;
             work += 1;
             match bounds[indices[i]][0][axis].total_cmp(&pivot) {
                 std::cmp::Ordering::Less => {
@@ -482,11 +471,8 @@ fn triangle_bounds_cancellable(
 ) -> Result<Vec<Bounds>, SimulationError> {
     triangles
         .iter()
-        .enumerate()
-        .map(|(i, tri)| {
-            if i % CANCELLATION_CHECK_INTERVAL == 0 {
-                check_cancel(cancelled)?;
-            }
+        .map(|tri| {
+            check_cancel(cancelled)?;
             let mut bounds = [[f64::INFINITY; 3], [f64::NEG_INFINITY; 3]];
             for &v in tri {
                 for axis in 0..3 {
@@ -701,6 +687,7 @@ mod tests {
                 if overlaps(&bounds[i], positions[0], positions[0]) {
                     candidates.push(i);
                 }
+                Ok(())
             })
             .unwrap();
         assert!(candidates.iter().position(|i| *i == 2) < candidates.iter().position(|i| *i == 1));
@@ -738,6 +725,7 @@ mod tests {
                     if overlaps(&bounds[i], a, b) {
                         actual.push(i);
                     }
+                    Ok(())
                 })
                 .unwrap();
             actual.sort_unstable();
@@ -757,7 +745,10 @@ mod tests {
         let hierarchy = TriangleHierarchy::new(&bounds, &|| false).unwrap();
         let mut candidates = 0;
         hierarchy
-            .visit(0, [0.5; 3], &|| false, &mut |_| candidates += 1)
+            .visit(0, [0.5; 3], &|| false, &mut |_| {
+                candidates += 1;
+                Ok(())
+            })
             .unwrap();
         assert!(
             candidates <= 8,
@@ -788,6 +779,7 @@ mod tests {
                     if overlaps(&bounds[i], point, point) {
                         actual.push(i);
                     }
+                    Ok(())
                 })
                 .unwrap();
             actual.sort_unstable();
@@ -802,7 +794,10 @@ mod tests {
         let hierarchy = TriangleHierarchy::new(&bounds, &|| false).unwrap();
         let mut candidates = Vec::new();
         hierarchy
-            .visit(0, [0.; 3], &|| false, &mut |i| candidates.push(i))
+            .visit(0, [0.; 3], &|| false, &mut |i| {
+                candidates.push(i);
+                Ok(())
+            })
             .unwrap();
         candidates.sort_unstable();
         assert_eq!(candidates, (0..bounds.len()).collect::<Vec<_>>());
@@ -853,10 +848,11 @@ mod tests {
                     polls.set(polls.get() + 1);
                     false
                 },
-                &mut |_| {},
+                &mut |_| Ok(()),
             )
             .unwrap();
-        for stop_at in [2, polls.get() / 2] {
+        assert_eq!(polls.get(), hierarchy.nodes.len() + bounds.len());
+        for stop_at in [2, CANCELLATION_CHECK_INTERVAL + 1, polls.get() / 2] {
             let calls = Cell::new(0);
             let mut candidates = 0;
             assert_eq!(
@@ -868,12 +864,52 @@ mod tests {
                         assert!(calls.get() <= stop_at);
                         calls.get() == stop_at
                     },
-                    &mut |_| candidates += 1,
+                    &mut |_| {
+                        candidates += 1;
+                        Ok(())
+                    },
                 ),
                 Err(SimulationError::Cancelled)
             );
             assert_eq!(calls.get(), stop_at);
             assert!(candidates < bounds.len());
         }
+    }
+
+    #[test]
+    fn leaf_candidates_and_bounds_stop_before_each_primitive() {
+        let bounds = vec![[[0.; 3], [1.; 3]]; 8];
+        let hierarchy = TriangleHierarchy::new(&bounds, &|| false).unwrap();
+        for stop_at in 2..=bounds.len() + 1 {
+            let calls = Cell::new(0);
+            let mut candidates = 0;
+            let result = hierarchy.visit(
+                0,
+                [0.5; 3],
+                &|| {
+                    calls.set(calls.get() + 1);
+                    assert!(calls.get() <= stop_at);
+                    calls.get() == stop_at
+                },
+                &mut |_| {
+                    candidates += 1;
+                    Ok(())
+                },
+            );
+            assert_eq!(result, Err(SimulationError::Cancelled));
+            assert_eq!(calls.get(), stop_at);
+            assert_eq!(candidates, stop_at - 2);
+        }
+        let mut triangles = vec![[0, 1, 2]; CANCELLATION_CHECK_INTERVAL + 2];
+        *triangles.last_mut().unwrap() = [usize::MAX; 3];
+        let x = [[0.; 3], [1., 0., 0.], [0., 1., 0.]];
+        let calls = Cell::new(0);
+        let result = triangle_bounds_cancellable(&triangles, &x, &x, 0.002, &|| {
+            calls.set(calls.get() + 1);
+            assert!(calls.get() <= triangles.len());
+            calls.get() == triangles.len()
+        });
+        assert_eq!(result, Err(SimulationError::Cancelled));
+        assert_eq!(calls.get(), triangles.len());
     }
 }

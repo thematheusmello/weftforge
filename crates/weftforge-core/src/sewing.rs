@@ -29,15 +29,23 @@ pub struct SewingGroupGeometry {
 
 struct Work<'a> {
     cancelled: &'a dyn Fn() -> bool,
+    shared: Option<&'a crate::offset::Work<'a>>,
     used: usize,
 }
 
 impl<'a> Work<'a> {
     fn new(cancelled: &'a dyn Fn() -> bool) -> Self {
-        Self { cancelled, used: 0 }
+        Self {
+            cancelled,
+            shared: None,
+            used: 0,
+        }
     }
 
     fn step(&mut self) -> Result<()> {
+        if let Some(shared) = self.shared {
+            shared.step()?;
+        }
         self.used += 1;
         ensure(
             self.used <= MAX_METRIC_WORK,
@@ -51,6 +59,42 @@ impl<'a> Work<'a> {
         }
         Ok(())
     }
+
+    fn partition_point<T>(
+        &mut self,
+        values: &[T],
+        mut predicate: impl FnMut(&T) -> bool,
+    ) -> Result<usize> {
+        let mut lo = 0;
+        let mut hi = values.len();
+        while lo < hi {
+            self.step()?;
+            let mid = lo + (hi - lo) / 2;
+            if predicate(&values[mid]) {
+                lo = mid + 1;
+            } else {
+                hi = mid;
+            }
+        }
+        Ok(lo)
+    }
+}
+
+fn dedup_fractions(values: &mut Vec<f64>, tolerance: f64, work: &mut Work<'_>) -> Result<()> {
+    let mut kept = usize::from(!values.is_empty());
+    for read in 1..values.len() {
+        work.step()?;
+        if (values[read] - values[kept - 1]).abs() <= tolerance {
+            if values[read] == 1. {
+                values[kept - 1] = 1.;
+            }
+        } else {
+            values[kept] = values[read];
+            kept += 1;
+        }
+    }
+    values.truncate(kept);
+    Ok(())
 }
 
 type Cubic = [[f64; 2]; 4];
@@ -259,6 +303,7 @@ impl IntervalMetric {
             let mut total = 0.;
             let mut correction = 0.;
             for leaf in &mut leaves {
+                work.step()?;
                 leaf.start = total;
                 add_length(&mut total, &mut correction, leaf.length);
             }
@@ -299,7 +344,12 @@ impl IntervalMetric {
             work,
             &mut leaves,
         )?;
-        Ok(leaves.iter().map(|leaf| leaf.length).sum())
+        let mut length = 0.;
+        for leaf in &leaves {
+            work.step()?;
+            length += leaf.length;
+        }
+        Ok(length)
     }
 
     fn length_at(&self, t: f64, work: &mut Work<'_>) -> Result<f64> {
@@ -314,9 +364,8 @@ impl IntervalMetric {
                 (t - self.interval.t0) / (self.interval.t1 - self.interval.t0) * self.length,
             );
         }
-        let index = self
-            .leaves
-            .partition_point(|leaf| leaf.t[1] < t)
+        let index = work
+            .partition_point(&self.leaves, |leaf| leaf.t[1] < t)?
             .min(self.leaves.len() - 1);
         let leaf = &self.leaves[index];
         let u = ((t - leaf.t[0]) / (leaf.t[1] - leaf.t[0])).clamp(0., 1.);
@@ -347,9 +396,8 @@ impl IntervalMetric {
         } else {
             self.length - length
         };
-        let index = self
-            .leaves
-            .partition_point(|leaf| leaf.start + leaf.length < target)
+        let index = work
+            .partition_point(&self.leaves, |leaf| leaf.start + leaf.length < target)?
             .min(self.leaves.len() - 1);
         let leaf = &self.leaves[index];
         let target = (target - leaf.start).clamp(0., leaf.length);
@@ -407,7 +455,10 @@ impl PathMetric {
         let mut total = 0.;
         let mut correction = 0.;
         let mut starts = Vec::new();
+        let mut rounding = 0.;
         for interval in &intervals {
+            work.step()?;
+            rounding += interval.rounding;
             starts.push(total);
             let previous = total;
             add_length(&mut total, &mut correction, interval.length);
@@ -416,14 +467,21 @@ impl PathMetric {
                 "Positive sewing span collapsed in the cumulative length precision",
             )?;
         }
-        let mut knots: Vec<_> = starts.iter().map(|start| start / total).collect();
+        let mut knots = Vec::with_capacity(starts.len() + 1);
+        for start in &starts {
+            work.step()?;
+            knots.push(start / total);
+        }
         knots.push(1.);
-        ensure(
-            knots.windows(2).all(|pair| pair[0] < pair[1]),
-            "Positive sewing span collapsed in normalized path precision",
-        )?;
+        for pair in knots.windows(2) {
+            work.step()?;
+            ensure(
+                pair[0] < pair[1],
+                "Positive sewing span collapsed in normalized path precision",
+            )?;
+        }
         Ok(Self {
-            rounding: intervals.iter().map(|interval| interval.rounding).sum(),
+            rounding,
             intervals,
             starts,
             knots,
@@ -431,10 +489,10 @@ impl PathMetric {
         })
     }
 
-    fn owner(&self, fraction: f64) -> usize {
-        self.knots[1..]
-            .partition_point(|&knot| knot <= fraction)
-            .min(self.intervals.len() - 1)
+    fn owner(&self, fraction: f64, work: &mut Work<'_>) -> Result<usize> {
+        Ok(work
+            .partition_point(&self.knots[1..], |&knot| knot <= fraction)?
+            .min(self.intervals.len() - 1))
     }
 
     fn parameter(
@@ -444,6 +502,7 @@ impl PathMetric {
         precision: f64,
         work: &mut Work<'_>,
     ) -> Result<f64> {
+        work.step()?;
         let interval = &self.intervals[owner];
         if (fraction - self.knots[owner]).abs() * self.total <= precision {
             return Ok(interval.interval.t0);
@@ -480,22 +539,27 @@ impl GroupMetric {
         ensure(
             (2..=1024).contains(&group.correspondence.len())
                 && group.correspondence.first() == Some(&[0., 0.])
-                && group.correspondence.last() == Some(&[1., 1.])
-                && group.correspondence.windows(2).all(|pair| {
-                    pair[1]
-                        .iter()
-                        .all(|v| v.is_finite() && (0.0..=1.).contains(v))
-                        && pair[0][0] < pair[1][0]
-                        && pair[0][1] < pair[1][1]
-                }),
+                && group.correspondence.last() == Some(&[1., 1.]),
             "Invalid sewing group correspondence",
         )?;
+        for pair in group.correspondence.windows(2) {
+            work.step()?;
+            ensure(
+                pair[1]
+                    .iter()
+                    .all(|v| v.is_finite() && (0.0..=1.).contains(v))
+                    && pair[0][0] < pair[1][0]
+                    && pair[0][1] < pair[1][1],
+                "Invalid sewing group correspondence",
+            )?;
+        }
         let mut paths = [
             PathMetric::new(project, &group.a, METRIC_BUDGET, work)?,
             PathMetric::new(project, &group.b, METRIC_BUDGET, work)?,
         ];
         let mut condition: f64 = 1.;
         for pair in group.correspondence.windows(2) {
+            work.step()?;
             let ratio = (pair[1][1] - pair[0][1]) / (pair[1][0] - pair[0][0]) * paths[1].total
                 / paths[0].total;
             condition = condition.max(ratio).max(1. / ratio);
@@ -519,27 +583,29 @@ impl GroupMetric {
     }
 
     fn cells(&self, group: &SewingGroup, work: &mut Work<'_>) -> Result<Vec<Cell>> {
-        let mut cuts = self.paths[0].knots.clone();
-        cuts.extend(
-            self.paths[1].knots.iter().map(|&fraction| {
-                crate::geometry::correspondence(&group.correspondence, fraction, 1)
-            }),
-        );
-        cuts.extend(group.correspondence.iter().map(|pair| pair[0]));
-        cuts.sort_by(f64::total_cmp);
+        let mut cuts = Vec::new();
+        for &knot in &self.paths[0].knots {
+            work.step()?;
+            cuts.push(knot);
+        }
+        for &fraction in &self.paths[1].knots {
+            work.step()?;
+            cuts.push(crate::geometry::correspondence_with_control(
+                &group.correspondence,
+                fraction,
+                1,
+                || work.step(),
+            )?);
+        }
+        for pair in &group.correspondence {
+            work.step()?;
+            cuts.push(pair[0]);
+        }
+        earcutr::sort_by_with_control(&mut cuts, f64::total_cmp, || work.step())?;
         // Algebraically equal A/B knots can differ by an ulp after split/remap.
         // Owners still resolve both exact source endpoints at the shared cut.
         let merge_distance = self.precision / self.paths[0].total.max(self.paths[1].total);
-        cuts.dedup_by(|a, b| {
-            if (*a - *b).abs() <= merge_distance {
-                if *a == 1. {
-                    *b = 1.;
-                }
-                true
-            } else {
-                false
-            }
-        });
+        dedup_fractions(&mut cuts, merge_distance, work)?;
         let mut cells = Vec::new();
         for bounds in cuts.windows(2) {
             work.step()?;
@@ -548,25 +614,38 @@ impl GroupMetric {
                 bounds[0] < middle && middle < bounds[1],
                 "Sewing correspondence cell precision collapsed",
             )?;
+            let paired = crate::geometry::correspondence_with_control(
+                &group.correspondence,
+                middle,
+                0,
+                || work.step(),
+            )?;
             let owners = [
-                self.paths[0].owner(middle),
-                self.paths[1].owner(crate::geometry::correspondence(
-                    &group.correspondence,
-                    middle,
-                    0,
-                )),
+                self.paths[0].owner(middle, work)?,
+                self.paths[1].owner(paired, work)?,
             ];
             let mut intervals = [
                 self.paths[0].intervals[owners[0]].interval,
                 self.paths[1].intervals[owners[1]].interval,
             ];
             for side in 0..2 {
+                work.step()?;
                 let fractions = if side == 0 {
                     [bounds[0], bounds[1]]
                 } else {
                     [
-                        crate::geometry::correspondence(&group.correspondence, bounds[0], 0),
-                        crate::geometry::correspondence(&group.correspondence, bounds[1], 0),
+                        crate::geometry::correspondence_with_control(
+                            &group.correspondence,
+                            bounds[0],
+                            0,
+                            || work.step(),
+                        )?,
+                        crate::geometry::correspondence_with_control(
+                            &group.correspondence,
+                            bounds[1],
+                            0,
+                            || work.step(),
+                        )?,
                     ]
                 };
                 intervals[side].t0 =
@@ -588,7 +667,11 @@ impl GroupMetric {
             });
         }
         for side in 0..2 {
-            let owners: BTreeSet<_> = cells.iter().map(|cell| cell.owners[side]).collect();
+            let mut owners = BTreeSet::new();
+            for cell in &cells {
+                work.step()?;
+                owners.insert(cell.owners[side]);
+            }
             ensure(
                 owners.len() == self.paths[side].intervals.len(),
                 "Positive sewing span collapsed in correspondence cell precision",
@@ -597,17 +680,38 @@ impl GroupMetric {
         Ok(cells)
     }
 
-    fn geometry(&self, group: &SewingGroup, cells: &[Cell]) -> SewingGroupGeometry {
-        SewingGroupGeometry {
+    fn geometry(
+        &self,
+        group: &SewingGroup,
+        cells: &[Cell],
+        work: &mut Work<'_>,
+    ) -> Result<SewingGroupGeometry> {
+        let mut portions = Vec::with_capacity(cells.len());
+        for cell in cells {
+            work.step()?;
+            portions.push(cell.portion);
+        }
+        Ok(SewingGroupGeometry {
             id: group.id,
             lengths: self.paths.each_ref().map(|path| path.total),
-            portions: cells.iter().map(|cell| cell.portion).collect(),
-        }
+            portions,
+        })
     }
 }
 
 impl Project {
     pub fn interval_from_length(&self, side: SewingSideByLength) -> Result<CurveInterval> {
+        self.interval_from_length_with_work(side, None)
+    }
+
+    pub(crate) fn interval_from_length_with_work(
+        &self,
+        side: SewingSideByLength,
+        shared: Option<&crate::offset::Work<'_>>,
+    ) -> Result<CurveInterval> {
+        let mut work = Work::new(&|| false);
+        work.shared = shared;
+        work.step()?;
         self.require_boundary_curve(side.curve)?;
         ensure(
             side.start_t.is_finite() && (0.0..=1.0).contains(&side.start_t),
@@ -626,10 +730,14 @@ impl Project {
             },
         };
         let interval = CurveInterval {
-            t1: self.interval_parameter_at_length(remaining, side.length_m)?,
+            t1: IntervalMetric::new(self, remaining, METRIC_BUDGET, &mut work)?.parameter(
+                side.length_m,
+                METRIC_BUDGET,
+                &mut work,
+            )?,
             ..remaining
         };
-        self.interval_length(interval)?;
+        IntervalMetric::new(self, interval, METRIC_BUDGET, &mut work)?;
         Ok(interval)
     }
 
@@ -659,12 +767,13 @@ impl Project {
         let mut work = Work::new(&|| false);
         let metric = GroupMetric::new(self, group, &mut work)?;
         let cells = metric.cells(group, &mut work)?;
-        Ok(metric.geometry(group, &cells))
+        metric.geometry(group, &cells, &mut work)
     }
 
     pub(crate) fn validate_sewing_metrics(&self, selected: Option<&BTreeSet<Id>>) -> Result<()> {
         let mut work = Work::new(&|| false);
         for group in &self.sewing_groups {
+            work.step()?;
             if selected.is_none_or(|ids| ids.contains(&group.id)) {
                 let metric = GroupMetric::new(self, group, &mut work)?;
                 metric.cells(group, &mut work)?;
@@ -677,65 +786,83 @@ impl Project {
         &self,
         mesh: &mut Mesh,
         cancelled: &dyn Fn() -> bool,
+        shared: Option<&crate::offset::Work<'_>>,
     ) -> Result<()> {
         if self.sewing_groups.is_empty() {
             return Ok(());
         }
         let mut work = Work::new(cancelled);
+        work.shared = shared;
         let mut boundary = BTreeMap::<Id, Vec<BoundarySample>>::new();
         for &sample in &mesh.boundary {
             work.step()?;
             boundary.entry(sample.curve).or_default().push(sample);
         }
         for samples in boundary.values_mut() {
-            samples.sort_by(|a, b| a.t.total_cmp(&b.t));
+            earcutr::sort_by_with_control(samples, |a, b| a.t.total_cmp(&b.t), || work.step())?;
+        }
+        let mut portion_count = 0;
+        for group in &mesh.sewing_groups {
+            work.step()?;
+            portion_count += group.portions.len();
         }
         for group in &self.sewing_groups {
+            work.step()?;
             let metric = GroupMetric::new(self, group, &mut work)?;
             let cells = metric.cells(group, &mut work)?;
             ensure(
-                mesh.sewing_groups
-                    .iter()
-                    .map(|g| g.portions.len())
-                    .sum::<usize>()
-                    + cells.len()
-                    <= MAX_SEWING_PORTIONS,
+                portion_count + cells.len() <= MAX_SEWING_PORTIONS,
                 "Sewing portion limit exceeded",
             )?;
+            portion_count += cells.len();
             for cell in &cells {
+                work.step()?;
                 let intervals = [cell.portion.a, cell.portion.b];
                 let mut fractions = vec![cell.domain[0], cell.domain[1]];
                 for (side, &interval) in intervals.iter().enumerate() {
+                    work.step()?;
                     let samples = boundary
                         .get(&interval.curve)
                         .ok_or_else(|| Error("Sewing group has no mesh boundary".into()))?;
                     let lo = interval.t0.min(interval.t1);
                     let hi = interval.t0.max(interval.t1);
-                    let start = samples.partition_point(|sample| sample.t < lo);
-                    for sample in samples[start..].iter().take_while(|sample| sample.t <= hi) {
+                    let start = work.partition_point(samples, |sample| sample.t < lo)?;
+                    for sample in &samples[start..] {
                         work.step()?;
+                        if sample.t > hi {
+                            break;
+                        }
                         let fraction =
                             metric.paths[side].fraction(cell.owners[side], sample.t, &mut work)?;
                         let fraction = if side == 0 {
                             fraction
                         } else {
-                            crate::geometry::correspondence(&group.correspondence, fraction, 1)
+                            crate::geometry::correspondence_with_control(
+                                &group.correspondence,
+                                fraction,
+                                1,
+                                || work.step(),
+                            )?
                         };
                         if (cell.domain[0]..=cell.domain[1]).contains(&fraction) {
                             fractions.push(fraction);
                         }
                     }
                 }
-                fractions.sort_by(f64::total_cmp);
-                fractions.dedup();
+                earcutr::sort_by_with_control(&mut fractions, f64::total_cmp, || work.step())?;
+                dedup_fractions(&mut fractions, 0., &mut work)?;
                 for fraction in fractions {
                     work.step()?;
                     ensure(
                         mesh.stitches.len() < MAX_SEWING_STITCHES,
                         "Sewing stitch limit exceeded",
                     )?;
-                    let paired =
-                        crate::geometry::correspondence(&group.correspondence, fraction, 0);
+                    let paired = crate::geometry::correspondence_with_control(
+                        &group.correspondence,
+                        fraction,
+                        0,
+                        || work.step(),
+                    )?;
                     let a = metric.paths[0].parameter(
                         cell.owners[0],
                         fraction,
@@ -750,18 +877,21 @@ impl Project {
                     )?;
                     mesh.stitches.push(Stitch {
                         seam: group.id,
-                        a: crate::geometry::weighted_sample_at_t(
+                        a: crate::geometry::weighted_sample_at_t_with_control(
                             &boundary[&intervals[0].curve],
                             a,
+                            || work.step(),
                         )?,
-                        b: crate::geometry::weighted_sample_at_t(
+                        b: crate::geometry::weighted_sample_at_t_with_control(
                             &boundary[&intervals[1].curve],
                             b,
+                            || work.step(),
                         )?,
                     });
                 }
             }
-            mesh.sewing_groups.push(metric.geometry(group, &cells));
+            mesh.sewing_groups
+                .push(metric.geometry(group, &cells, &mut work)?);
         }
         Ok(())
     }
@@ -770,6 +900,52 @@ impl Project {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn fraction_cleanup_preserves_exact_values_endpoints_and_cancellation() {
+        let mut values = vec![
+            0.,
+            -0.,
+            0.25,
+            0.25,
+            0.25_f64.next_up(),
+            1_f64.next_down(),
+            1.,
+        ];
+        dedup_fractions(&mut values, 0., &mut Work::new(&|| false)).unwrap();
+        assert_eq!(
+            values,
+            [0., 0.25, 0.25_f64.next_up(), 1_f64.next_down(), 1.]
+        );
+        assert_eq!(values[0].to_bits(), 0_f64.to_bits());
+        dedup_fractions(&mut values, 1e-14, &mut Work::new(&|| false)).unwrap();
+        assert_eq!(values, [0., 0.25, 1.]);
+
+        let polls = std::cell::Cell::new(0);
+        let cancelled = || {
+            polls.set(polls.get() + 1);
+            polls.get() == 3
+        };
+        let mut work = Work::new(&cancelled);
+        let error = dedup_fractions(&mut vec![0.5; 1024], 0., &mut work).unwrap_err();
+        assert!(error.0.contains("cancelled"));
+        assert_eq!(work.used, 256);
+        assert_eq!(polls.get(), 3);
+    }
+
+    #[test]
+    fn partition_queries_match_boundary_ownership_and_stop_before_predicates() {
+        let values = [0., 0., 0.25, 0.5, 1.];
+        for fraction in [-1., 0., 0.125, 0.25, 0.75, 1., 2.] {
+            let owner = Work::new(&|| false)
+                .partition_point(&values, |knot| *knot <= fraction)
+                .unwrap();
+            assert_eq!(owner, values.partition_point(|knot| *knot <= fraction));
+        }
+        Work::new(&|| true)
+            .partition_point(&values, |_| panic!("predicate after cancellation"))
+            .unwrap_err();
+    }
 
     #[test]
     fn metric_limits_cancel_or_reject_without_an_approximate_fallback() {

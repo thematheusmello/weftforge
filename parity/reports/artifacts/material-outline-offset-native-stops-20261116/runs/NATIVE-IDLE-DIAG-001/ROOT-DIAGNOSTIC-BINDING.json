@@ -1,0 +1,48 @@
+{
+  "id": "NATIVE-IDLE-DIAG-001",
+  "bound_at_utc": "2026-11-16T12:49:25.473004+00:00",
+  "status": "BOUND_DIAGNOSTIC_ONLY_NOT_ACCEPTANCE",
+  "base_commit": "89e6d53b9ab78b8c6642ebe2eae07e9f56f42da4",
+  "main_sha256": "161a5e58152def3cb3632cf9ee6929c096aebd78e1439a03015f800f7e2635b0",
+  "checks": {
+    "temporary_patch": {
+      "path": ".local/native-idle-fix-review-20261116/diagnostic-001/DIAGNOSTIC.patch",
+      "sha256": "64b404425d3048cbae9d4f739448b93605534b0637f8c4646abdd680ee4b6b37"
+    },
+    "binary": {
+      "path": ".local/native-idle-fix-review-20261116/diagnostic-001/bundle/WeftForge.app/Contents/MacOS/weftforge",
+      "sha256": "0f5416888eded8d5eda756178b02a4f3611b8d13f046652bdf324f3bbb6de2c9"
+    },
+    "plist": {
+      "path": ".local/native-idle-fix-review-20261116/diagnostic-001/bundle/WeftForge.app/Contents/Info.plist",
+      "sha256": "5b0f1379fb094c1ee7d0f567603407741305e6a13755ccfad68425cf2433fd2b"
+    },
+    "plan": {
+      "path": ".local/native-idle-fix-review-20261116/diagnostic-001/DIAGNOSTIC-PLAN.json",
+      "sha256": "1014793151097e0eae22b129019949ec7c0e1a913e4c2543aab3f77a110da514"
+    }
+  },
+  "selector": "org.weftforge.nativecase.idlediag.d1",
+  "launch_argv": [
+    "/usr/bin/open",
+    "-n",
+    "-a",
+    "<private-workspace>/.local/native-idle-fix-review-20261116/diagnostic-001/bundle/WeftForge.app",
+    "--stdout",
+    "<private-workspace>/.local/native-idle-fix-review-20261116/diagnostic-001/diagnostic.stdout.log",
+    "--stderr",
+    "<private-workspace>/.local/native-idle-fix-review-20261116/diagnostic-001/diagnostic.stderr.log"
+  ],
+  "limits": {
+    "maximum_seconds": 120,
+    "maximum_product_actions": 2,
+    "maximum_processes": 1
+  },
+  "native_acceptance": false,
+  "reference_verified": false,
+  "closed_cases_untouched": [
+    "OFFSET-R1-001",
+    "OFFSET-R1-002"
+  ],
+  "prelaunch_owned_processes": []
+}

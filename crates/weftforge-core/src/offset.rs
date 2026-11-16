@@ -209,7 +209,14 @@ pub(crate) struct Work<'a> {
     units: Cell<usize>,
     cancelled: &'a dyn Fn() -> bool,
 }
-impl Work<'_> {
+impl<'a> Work<'a> {
+    pub(crate) fn new(cancelled: &'a dyn Fn() -> bool) -> Self {
+        Self {
+            units: Cell::new(0),
+            cancelled,
+        }
+    }
+
     pub(crate) fn step(&self) -> Result<()> {
         let units = self.units.get();
         if units.is_multiple_of(256) {
@@ -341,7 +348,7 @@ pub struct OutlineOffsetSpan {
 pub struct OutlineOffsetCertificate {
     pub tolerance: f64,
     pub maximum_error: f64,
-    /// Charged Rust work; opaque earcut dependency predicates are not individually observable.
+    /// Shared request work, including triangulation's internal tasks and candidate predicates.
     pub geometry_work: usize,
     pub spans: Vec<OutlineOffsetSpan>,
     pub joins: Vec<OutlineOffsetJoin>,
@@ -430,7 +437,7 @@ fn source_area(s: &Source) -> I {
     a
 }
 
-fn regular(s: &Source, d: I, depth: u32, work: &mut Work<'_>) -> Result<()> {
+fn regular(s: &Source, d: I, depth: u32, work: &Work<'_>) -> Result<()> {
     work.step()?;
     let v = if s.line {
         s.v(I::point(0.))
@@ -586,7 +593,7 @@ fn trim_line_cubic(
     curve: &Source,
     d: f64,
     epsilon: f64,
-    work: &mut Work<'_>,
+    work: &Work<'_>,
 ) -> Result<(IV, I, I)> {
     let direction = line.v(I::point(0.));
     let origin = line.q(I::point(0.), I::point(d));
@@ -603,10 +610,11 @@ fn trim_line_cubic(
         );
         cross(vm(v, factor), direction)
     };
+    work.step()?;
     let mut tasks = vec![(0., 1., 0u32)];
     let mut sign = 0;
     while let Some((a, b, depth)) = tasks.pop() {
-        work.step()?;
+        work.check()?;
         let v = derivative_box(a, b, I::range(0., d));
         if v.excludes_zero() {
             let s = if v.lo > 0. { 1 } else { -1 };
@@ -627,7 +635,10 @@ fn trim_line_cubic(
                 ),
             )?;
             let m = (a + b) * 0.5;
-            tasks.extend([(m, b, depth + 1), (a, m, depth + 1)]);
+            for task in [(m, b, depth + 1), (a, m, depth + 1)] {
+                work.step()?;
+                tasks.push(task);
+            }
         }
     }
     let (mut a, mut b) = (0., 1.);
@@ -724,12 +735,12 @@ mod tests {
         let a = mid(s.q(I::point(0.), I::point(0.01)));
         let b = mid(s.q(I::point(1.), I::point(0.01)));
         let candidate = [a, [0.8, 0.2], [0.8, 0.4], b].map(iv);
-        let mut work = Work {
+        let work = Work {
             units: Cell::new(0),
             cancelled: &|| false,
         };
         assert!(
-            certificate(source, candidate, 0.01, 1e-5, 0, &mut work)
+            certificate(source, candidate, 0.01, 1e-5, 0, &work)
                 .unwrap()
                 .is_none()
         );
@@ -780,6 +791,419 @@ mod tests {
     }
 
     #[test]
+    fn triangulation_holes_and_later_pieces_share_the_exact_request_budget() {
+        let mut holed: Vec<_> = (0..128)
+            .flat_map(|i| {
+                let t = std::f64::consts::TAU * i as f64 / 128.;
+                [2. * t.cos(), 2. * t.sin()]
+            })
+            .collect();
+        holed.extend([-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5]);
+        let other = [0., 0., 4., 0., 4., 1., 1., 1., 1., 4., 0., 4.];
+        let complete = Work {
+            units: Cell::new(123),
+            cancelled: &|| false,
+        };
+        let first =
+            crate::geometry::triangulate(&holed, &[128], &|| false, Some(&complete)).unwrap();
+        let first_work = complete.units.get() - 123;
+        let second = crate::geometry::triangulate(&other, &[], &|| false, Some(&complete)).unwrap();
+        let total_work = complete.units.get() - 123;
+        assert!(first_work > 256 && total_work > first_work);
+
+        let exact = Work {
+            units: Cell::new(MAX_WORK - total_work),
+            cancelled: &|| false,
+        };
+        assert_eq!(
+            crate::geometry::triangulate(&holed, &[128], &|| false, Some(&exact)).unwrap(),
+            first
+        );
+        assert_eq!(
+            crate::geometry::triangulate(&other, &[], &|| false, Some(&exact)).unwrap(),
+            second
+        );
+        assert_eq!(exact.units.get(), MAX_WORK);
+        assert!(
+            exact
+                .step()
+                .unwrap_err()
+                .to_string()
+                .contains("OffsetBudgetExceeded")
+        );
+
+        let exhausted = Work {
+            units: Cell::new(MAX_WORK - total_work + 1),
+            cancelled: &|| false,
+        };
+        assert_eq!(
+            crate::geometry::triangulate(&holed, &[128], &|| false, Some(&exhausted)).unwrap(),
+            first
+        );
+        assert_eq!(
+            exhausted.units.get(),
+            MAX_WORK - (total_work - first_work) + 1
+        );
+        let error =
+            crate::geometry::triangulate(&other, &[], &|| false, Some(&exhausted)).unwrap_err();
+        assert!(
+            error.to_string().starts_with("OffsetBudgetExceeded"),
+            "{error}"
+        );
+        assert_eq!(exhausted.units.get(), MAX_WORK);
+    }
+
+    #[test]
+    fn triangulation_internal_tasks_poll_shared_cancellation_every_256_units() {
+        let flat: Vec<_> = (0..128)
+            .flat_map(|i| {
+                let t = std::f64::consts::TAU * i as f64 / 128.;
+                [t.cos(), t.sin()]
+            })
+            .collect();
+        let polls = Cell::new(0);
+        let cancelled = || {
+            polls.set(polls.get() + 1);
+            polls.get() == 5
+        };
+        let work = Work {
+            units: Cell::new(0),
+            cancelled: &cancelled,
+        };
+        let error = crate::geometry::triangulate(&flat, &[], &|| false, Some(&work)).unwrap_err();
+        assert!(error.to_string().starts_with("OffsetCancelled"), "{error}");
+        assert_eq!(polls.get(), 5);
+        assert_eq!(work.units.get(), 768);
+
+        let cancelled = Work {
+            units: Cell::new(MAX_WORK),
+            cancelled: &|| true,
+        };
+        let error =
+            crate::geometry::triangulate(&flat, &[], &|| false, Some(&cancelled)).unwrap_err();
+        assert!(error.to_string().starts_with("OffsetCancelled"), "{error}");
+        assert_eq!(cancelled.units.get(), MAX_WORK);
+    }
+
+    #[test]
+    fn sorting_and_final_measurements_use_the_same_exact_request_counter() {
+        let mut values: Vec<_> = (0..512).map(|i| ((i * 31) % 512, i)).collect();
+        let exhausted = Work {
+            units: Cell::new(MAX_WORK - 513),
+            cancelled: &|| false,
+        };
+        let error =
+            earcutr::sort_by_with_control(&mut values, |a, b| a.0.cmp(&b.0), || exhausted.step())
+                .unwrap_err();
+        assert!(error.to_string().starts_with("OffsetBudgetExceeded"));
+        assert_eq!(exhausted.units.get(), MAX_WORK);
+        let polls = Cell::new(0);
+        let cancelled = || {
+            polls.set(polls.get() + 1);
+            polls.get() == 3
+        };
+        let work = Work {
+            units: Cell::new(0),
+            cancelled: &cancelled,
+        };
+        let error =
+            earcutr::sort_by_with_control(&mut values, |a, b| a.0.cmp(&b.0), || work.step())
+                .unwrap_err();
+        assert!(error.to_string().starts_with("OffsetCancelled"));
+        assert_eq!(work.units.get(), 512);
+
+        let mut editor = crate::Editor::default();
+        editor
+            .execute(crate::Command::AddRectangle {
+                name: "Original bounded measurements".into(),
+                origin: [0., 0.],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+        editor
+            .execute(crate::Command::SetCurveControls {
+                curve: editor.project.pieces[0].boundary[1],
+                controls: Some([[0.5, 0.2], [0.5, 0.4]]),
+            })
+            .unwrap();
+        let project = &editor.project;
+        let original = project.clone();
+        let piece = project.pieces[0].id;
+        let mesh = project.mesh().unwrap();
+        let cloth = crate::simulation::create_cloth(project, &mesh).unwrap();
+        let complete = Work {
+            units: Cell::new(0),
+            cancelled: &|| false,
+        };
+        let measured = measurements(project, piece, &mesh, &cloth, &complete).unwrap();
+        assert_eq!(measured.bounds, project.piece_bounds(piece).unwrap());
+        assert!((measured.authored_area - 0.27).abs() < 1e-12);
+        assert!((measured.rest_area - 0.27).abs() < 1e-5);
+        assert!((measured.cloth_mass - 0.18 * measured.rest_area).abs() < 1e-10);
+        assert!(complete.units.get() > 256);
+        let exhausted = Work {
+            units: Cell::new(MAX_WORK - complete.units.get() + 1),
+            cancelled: &|| false,
+        };
+        let error = measurements(project, piece, &mesh, &cloth, &exhausted).unwrap_err();
+        assert!(error.to_string().starts_with("OffsetBudgetExceeded"));
+        assert_eq!(exhausted.units.get(), MAX_WORK);
+        assert_eq!(project, &original);
+        assert_eq!(cloth.positions(), mesh.positions);
+    }
+
+    #[test]
+    fn validation_and_real_sewing_preparation_share_the_cumulative_budget() {
+        let mut editor = crate::Editor::default();
+        for x in [0., 1.] {
+            editor
+                .execute(crate::Command::AddRectangle {
+                    name: "Original cumulative sewing panel".into(),
+                    origin: [x, 0.],
+                    width: 0.4,
+                    height: 0.6,
+                })
+                .unwrap();
+        }
+        editor
+            .execute(crate::Command::AddSewingGroup {
+                name: "Original cumulative sewing group".into(),
+                a: vec![crate::CurveInterval::full(
+                    editor.project.pieces[0].boundary[1],
+                )],
+                b: vec![crate::CurveInterval::full(
+                    editor.project.pieces[1].boundary[3],
+                )],
+                correspondence: vec![[0., 0.], [0.5, 0.3], [1., 1.]],
+            })
+            .unwrap();
+        let project = &editor.project;
+        let original = project.clone();
+        let original_mesh = project.mesh().unwrap();
+        let saved_mesh = original_mesh.clone();
+        let complete = Work::new(&|| false);
+        project.validate_for_offset(&complete).unwrap();
+        let validation_work = complete.units.get();
+        let mut candidate = original_mesh.clone();
+        candidate.stitches.clear();
+        candidate.sewing_groups.clear();
+        project
+            .append_sewing_groups(&mut candidate, &|| false, Some(&complete))
+            .unwrap();
+        assert!(validation_work > 0 && complete.units.get() > validation_work + 256);
+        assert_eq!(candidate.stitches, original_mesh.stitches);
+        assert_eq!(candidate.sewing_groups, original_mesh.sewing_groups);
+
+        let exhausted = Work {
+            units: Cell::new(MAX_WORK - complete.units.get() + 1),
+            cancelled: &|| false,
+        };
+        project.validate_for_offset(&exhausted).unwrap();
+        let mut candidate = original_mesh.clone();
+        candidate.stitches.clear();
+        candidate.sewing_groups.clear();
+        let error = project
+            .append_sewing_groups(&mut candidate, &|| false, Some(&exhausted))
+            .unwrap_err();
+        assert!(
+            error.to_string().starts_with("OffsetBudgetExceeded"),
+            "{error}"
+        );
+        assert_eq!(exhausted.units.get(), MAX_WORK);
+        assert_eq!(project, &original);
+        assert_eq!(original_mesh, saved_mesh);
+    }
+
+    #[test]
+    fn repeated_real_offset_preparations_cannot_reset_a_shared_request_budget() {
+        let mut editor = crate::Editor::default();
+        editor
+            .execute(crate::Command::SetResolution { metres: 0.25 })
+            .unwrap();
+        editor
+            .execute(crate::Command::AddRectangle {
+                name: "Original cumulative offset".into(),
+                origin: [0., 0.],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+        let original = editor.project.clone();
+        let history = (editor.can_undo(), editor.can_redo());
+        let piece = original.pieces[0].id;
+        let once = Work::new(&|| false);
+        let prepared = original
+            .prepare_outline_offset_with_work(piece, 0.01, true, &once)
+            .unwrap();
+        assert!((prepared.after().rest_area - 0.2604).abs() < 1e-10);
+        assert!((prepared.after().cloth_mass - 0.18 * 0.2604).abs() < 1e-10);
+        let cost = once.units.get();
+        assert!(cost > 256 && 2 * cost < MAX_WORK);
+        let work = Work {
+            units: Cell::new(MAX_WORK - 2 * cost + 1),
+            cancelled: &|| false,
+        };
+        let prepared = original
+            .prepare_outline_offset_with_work(piece, 0.01, true, &work)
+            .unwrap();
+        assert_eq!(prepared.certificate().geometry_work, MAX_WORK - cost + 1);
+        let error = original
+            .prepare_outline_offset_with_work(piece, 0.01, true, &work)
+            .unwrap_err();
+        assert!(
+            error.to_string().starts_with("OffsetBudgetExceeded"),
+            "{error}"
+        );
+        assert_eq!(work.units.get(), MAX_WORK);
+        assert_eq!(editor.project, original);
+        assert_eq!((editor.can_undo(), editor.can_redo()), history);
+    }
+
+    #[test]
+    fn nonlinear_length_inverse_and_resize_bounds_preserve_the_shared_request() {
+        let mut editor = crate::Editor::default();
+        editor
+            .execute(crate::Command::AddRectangle {
+                name: "Original nonlinear shared inverse".into(),
+                origin: [0., 0.],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+        let piece = editor.project.pieces[0].id;
+        let curve = editor.project.pieces[0].boundary[1];
+        editor
+            .execute(crate::Command::SetCurveControls {
+                curve,
+                controls: Some([[0.4, 0.], [0.4, 0.]]),
+            })
+            .unwrap();
+        let original = editor.project.clone();
+        let parameter = 0.37123456789_f64;
+        let side = crate::SewingSideByLength {
+            curve,
+            start_t: 0.,
+            direction: crate::SewingDirection::Forward,
+            length_m: 0.6 * parameter.powi(3),
+        };
+        let complete = Work::new(&|| false);
+        let interval = original
+            .interval_from_length_with_work(side, Some(&complete))
+            .unwrap();
+        assert!((interval.t1 - parameter).abs() < 1e-8); // y(t)=0.6*t^3, so authored arc length is exact.
+        let inverse_work = complete.units.get();
+        assert!(inverse_work > 32 && inverse_work < 512);
+        let exhausted = Work {
+            units: Cell::new(MAX_WORK - inverse_work / 2),
+            cancelled: &|| false,
+        };
+        let error = original
+            .interval_from_length_with_work(side, Some(&exhausted))
+            .unwrap_err();
+        assert!(
+            error.to_string().starts_with("OffsetBudgetExceeded"),
+            "{error}"
+        );
+        assert_eq!(exhausted.units.get(), MAX_WORK);
+        let cancelled = Work {
+            units: Cell::new(512 - inverse_work / 2),
+            cancelled: &|| true,
+        };
+        let error = original
+            .interval_from_length_with_work(side, Some(&cancelled))
+            .unwrap_err();
+        assert!(error.to_string().starts_with("OffsetCancelled"), "{error}");
+        assert_eq!(cancelled.units.get(), 512);
+        let before_bounds = complete.units.get();
+        assert_eq!(
+            original
+                .piece_bounds_with_work(piece, Some(&complete))
+                .unwrap(),
+            [[0., 0.], [0.4, 0.6]]
+        );
+        assert!(complete.units.get() > before_bounds);
+        let exhausted = Work {
+            units: Cell::new(MAX_WORK - 1),
+            cancelled: &|| false,
+        };
+        assert!(
+            original
+                .piece_bounds_with_work(piece, Some(&exhausted))
+                .unwrap_err()
+                .to_string()
+                .starts_with("OffsetBudgetExceeded")
+        );
+        assert_eq!(exhausted.units.get(), MAX_WORK);
+        assert_eq!(editor.project, original);
+    }
+
+    #[test]
+    fn a_public_offset_transaction_cannot_restart_the_request_budget_or_history() {
+        let mut editor = crate::Editor::default();
+        editor
+            .execute(crate::Command::AddRectangle {
+                name: "Original public cumulative offset batch".into(),
+                origin: [0., 0.],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+        editor
+            .execute(crate::Command::SetResolution { metres: 0.02 })
+            .unwrap();
+        editor
+            .execute(crate::Command::SetResolution { metres: 0.03 })
+            .unwrap();
+        assert!(editor.undo());
+        let control = editor.clone();
+        let old_json = editor.project.to_json().unwrap();
+        let piece = editor.project.pieces[0].id;
+        editor
+            .project
+            .prepare_outline_offset(piece, 1e-6, true, || false)
+            .unwrap();
+        let error = editor
+            .execute(crate::Command::Transaction(
+                (0..1024)
+                    .map(|_| crate::Command::OffsetOutline {
+                        piece,
+                        width: 1e-6,
+                        outward: true,
+                    })
+                    .collect(),
+            ))
+            .unwrap_err();
+        assert!(
+            error.to_string().starts_with("OffsetBudgetExceeded"),
+            "{error}"
+        );
+        assert_eq!(editor.project.to_json().unwrap(), old_json);
+        assert_eq!(
+            (editor.can_undo(), editor.can_redo()),
+            (control.can_undo(), control.can_redo())
+        );
+        for redo in [false, true] {
+            let (mut actual, mut expected) = (editor.clone(), control.clone());
+            loop {
+                let (a, b) = if redo {
+                    (actual.redo(), expected.redo())
+                } else {
+                    (actual.undo(), expected.undo())
+                };
+                assert_eq!(a, b);
+                assert_eq!(
+                    actual.project.to_json().unwrap(),
+                    expected.project.to_json().unwrap()
+                );
+                if !b {
+                    break;
+                }
+            }
+        }
+    }
+
+    #[test]
     fn cusp_regularization_and_unrepresentable_arithmetic_refuse() {
         let source = Source {
             id: 77,
@@ -787,11 +1211,11 @@ mod tests {
             p: [[0.2, 0.], [0., 0.4], [0.2, 0.4], [0., 0.]].map(iv),
             line: false,
         };
-        let mut work = Work {
+        let work = Work {
             units: Cell::new(0),
             cancelled: &|| false,
         };
-        let error = regular(&source, I::range(0., 0.01), 0, &mut work).unwrap_err();
+        let error = regular(&source, I::range(0., 0.01), 0, &work).unwrap_err();
         assert!(error.to_string().contains("77"));
         assert!(bounded_point([I::range(1000., 1000_f64.next_up()), I::point(0.)], 1e-20).is_err());
     }
@@ -818,7 +1242,7 @@ fn matrix_vector(m: Matrix, v: [I; 2]) -> [I; 2] {
 
 /// A uniform contraction maps this parameter box into its interior for every d in the interval.
 /// Thus a unique intersection exists for every intermediate distance, by the fixed-point theorem.
-fn root_box(a: &Source, b: &Source, x: [I; 2], d: I, work: &mut Work<'_>) -> Result<bool> {
+fn root_box(a: &Source, b: &Source, x: [I; 2], d: I, work: &Work<'_>) -> Result<bool> {
     work.step()?;
     let center = x.map(I::mid);
     let v = a.qp(I::point(center[0]), I::point(d.mid()));
@@ -855,7 +1279,7 @@ fn exclude_other_roots(
     known: [I; 2],
     d: I,
     depth: u32,
-    work: &mut Work<'_>,
+    work: &Work<'_>,
 ) -> Result<()> {
     work.step()?;
     let [ar, br] = ranges;
@@ -890,7 +1314,7 @@ fn trim_cubic_pair(
     b: &Source,
     d: f64,
     epsilon: f64,
-    work: &mut Work<'_>,
+    work: &Work<'_>,
 ) -> Result<(IV, I, I)> {
     let p = a.q(I::point(1.), I::point(d));
     let q = b.q(I::point(0.), I::point(d));
@@ -993,11 +1417,12 @@ fn joins(
     sources: &[Source],
     d: f64,
     epsilon: f64,
-    work: &mut Work<'_>,
+    work: &Work<'_>,
 ) -> Result<(Vec<Span>, Vec<Corner>)> {
     let n = sources.len();
     let mut spans = Vec::with_capacity(n);
     for s in sources {
+        work.step()?;
         spans.push(Span {
             a: 0.,
             b: 1.,
@@ -1123,6 +1548,7 @@ fn joins(
         }
     }
     for (s, span) in sources.iter().zip(&spans) {
+        work.step()?;
         ensure(
             span.b > span.a,
             &format!("OffsetCollapse: curve {} source interval reversed", s.id),
@@ -1151,7 +1577,7 @@ fn certificate(
     d: f64,
     epsilon: f64,
     depth: u32,
-    work: &mut Work<'_>,
+    work: &Work<'_>,
 ) -> Result<Option<f64>> {
     work.step()?;
     let s = Source {
@@ -1203,7 +1629,7 @@ struct Fitter<'a, 'b> {
     d: f64,
     epsilon: f64,
     limit: usize,
-    work: &'a mut Work<'b>,
+    work: &'a Work<'b>,
     output: Vec<Fit>,
 }
 impl Fitter<'_, '_> {
@@ -1309,7 +1735,7 @@ fn swept_pair(
     br: [f64; 2],
     d: I,
     depth: u32,
-    work: &mut Work<'_>,
+    work: &Work<'_>,
 ) -> Result<()> {
     work.step()?;
     let ab = a.bounds(ar[0], ar[1], d);
@@ -1340,7 +1766,7 @@ fn swept_corner(
     corner: IV,
     d: I,
     depth: u32,
-    work: &mut Work<'_>,
+    work: &Work<'_>,
 ) -> Result<()> {
     work.step()?;
     if disjoint(s.bounds(range[0], range[1], d), corner) {
@@ -1370,7 +1796,7 @@ fn same_source_cells(
     br: [f64; 2],
     d: I,
     depth: u32,
-    work: &mut Work<'_>,
+    work: &Work<'_>,
 ) -> Result<()> {
     work.step()?;
     // Regular offsets retain the source tangent, so this projection is ordered for every width.
@@ -1399,7 +1825,7 @@ fn same_source_cells(
         same_source_cells(s, ar, [m, br[1]], d, depth + 1, work)
     }
 }
-fn self_sweep(s: &Source, range: [f64; 2], d: I, depth: u32, work: &mut Work<'_>) -> Result<()> {
+fn self_sweep(s: &Source, range: [f64; 2], d: I, depth: u32, work: &Work<'_>) -> Result<()> {
     work.step()?;
     if monotone_chord(s, range) {
         return Ok(());
@@ -1435,7 +1861,7 @@ fn gap_sources(
     direction: IV,
     d: I,
     depth: u32,
-    work: &mut Work<'_>,
+    work: &Work<'_>,
 ) -> Result<()> {
     work.step()?;
     let [ar, br] = ranges;
@@ -1475,7 +1901,7 @@ fn incident_join(
     join: (IV, IV),
     d: I,
     depth: u32,
-    work: &mut Work<'_>,
+    work: &Work<'_>,
 ) -> Result<()> {
     work.step()?;
     let (corner, direction) = join;
@@ -1499,13 +1925,14 @@ fn incident_join(
     incident_join(s, [range[0], m], incoming, join, d, depth + 1, work)?;
     incident_join(s, [m, range[1]], incoming, join, d, depth + 1, work)
 }
-fn continuation(sources: &[Source], corners: &[Corner], d: f64, work: &mut Work<'_>) -> Result<()> {
+fn continuation(sources: &[Source], corners: &[Corner], d: f64, work: &Work<'_>) -> Result<()> {
     let n = sources.len();
     let drange = I::range(0., d);
     for s in sources {
         self_sweep(s, [0., 1.], drange, 0, work)?;
     }
     for (j, corner) in corners.iter().enumerate() {
+        work.step()?;
         if corner.kind == OutlineJoinKind::AdjacentTrim {
             continue;
         }
@@ -1548,12 +1975,14 @@ fn continuation(sources: &[Source], corners: &[Corner], d: f64, work: &mut Work<
     }
     for (i, a) in sources.iter().enumerate() {
         for (j, b) in sources.iter().enumerate().skip(i + 1) {
+            work.step()?;
             if j == i + 1 || (i == 0 && j == n - 1) {
                 continue;
             }
             swept_pair(a, [0., 1.], b, [0., 1.], drange, 0, work)?;
         }
         for (j, c) in corners.iter().enumerate() {
+            work.step()?;
             if j == i || j == (i + 1) % n {
                 continue;
             }
@@ -1619,7 +2048,7 @@ fn contour_pair(
     b: &ContourNode,
     common: Option<IV>,
     depth: u32,
-    work: &mut Work<'_>,
+    work: &Work<'_>,
 ) -> Result<()> {
     work.step()?;
     if disjoint(a.bounds(), b.bounds()) || common.is_some_and(|p| separated_at_vertex(a, b, p)) {
@@ -1643,7 +2072,7 @@ fn contour_nodes(
     node: ContourNode,
     depth: u32,
     out: &mut Vec<ContourNode>,
-    work: &mut Work<'_>,
+    work: &Work<'_>,
 ) -> Result<()> {
     work.step()?;
     ensure(
@@ -1667,7 +2096,7 @@ fn contour_nodes(
     contour_nodes(a, depth + 1, out, work)?;
     contour_nodes(b, depth + 1, out, work)
 }
-fn simple_contour(fits: &[Fit], work: &mut Work<'_>) -> Result<()> {
+fn simple_contour(fits: &[Fit], work: &Work<'_>) -> Result<()> {
     let mut nodes = Vec::new();
     for f in fits {
         contour_nodes(
@@ -1695,7 +2124,7 @@ fn simple_contour(fits: &[Fit], work: &mut Work<'_>) -> Result<()> {
     Ok(())
 }
 
-fn preflight(project: &Project, piece: Id, width: f64) -> Result<()> {
+fn preflight(project: &Project, piece: Id, width: f64, work: Option<&Work<'_>>) -> Result<()> {
     ensure(
         width.is_finite() && width > 0.,
         "OffsetInvalidWidth: width must be finite positive SI metres",
@@ -1721,8 +2150,17 @@ fn preflight(project: &Project, piece: Id, width: f64) -> Result<()> {
             owner.internal_curves.first().copied().unwrap_or(0)
         ),
     )?;
-    let owned: BTreeSet<_> = owner.boundary.iter().copied().collect();
+    let mut owned = BTreeSet::new();
+    for &id in &owner.boundary {
+        if let Some(work) = work {
+            work.step()?;
+        }
+        owned.insert(id);
+    }
     for seam in &project.seams {
+        if let Some(work) = work {
+            work.step()?;
+        }
         ensure(
             !owned.contains(&seam.a.curve) && !owned.contains(&seam.b.curve),
             &format!(
@@ -1732,12 +2170,21 @@ fn preflight(project: &Project, piece: Id, width: f64) -> Result<()> {
         )?;
     }
     for group in &project.sewing_groups {
+        if let Some(work) = work {
+            work.step()?;
+        }
+        let mut attached = false;
+        for interval in group.a.iter().chain(&group.b) {
+            if let Some(work) = work {
+                work.step()?;
+            }
+            if owned.contains(&interval.curve) {
+                attached = true;
+                break;
+            }
+        }
         ensure(
-            !group
-                .a
-                .iter()
-                .chain(&group.b)
-                .any(|i| owned.contains(&i.curve)),
+            !attached,
             &format!(
                 "OffsetUnsupportedSewingGroup: piece {piece} is attached to group {}",
                 group.id
@@ -1752,35 +2199,35 @@ fn measurements(
     piece: Id,
     mesh: &Mesh,
     cloth: &Cloth,
+    work: &Work<'_>,
 ) -> Result<OutlineMeasurements> {
     let owner = project
         .piece(piece)
         .ok_or_else(|| Error("OffsetUnknownPiece".into()))?;
     let mut area = I::point(0.);
     for id in &owner.boundary {
-        area = area.add(source_area(&Source::from_curve(
-            project,
-            project.curve(*id).unwrap(),
-        )));
+        work.step()?;
+        let curve = project.curve(*id).unwrap();
+        area = area.add(source_area(&Source::from_curve(project, curve)));
     }
-    let rest_area = mesh
-        .triangles
-        .iter()
-        .filter(|t| mesh.piece_ids[t[0]] == piece)
-        .map(|t| {
+    let mut rest_area = 0.;
+    for t in &mesh.triangles {
+        work.step()?;
+        if mesh.piece_ids[t[0]] == piece {
             let [a, b, c] = t.map(|i| mesh.uv[i]);
-            ((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])).abs() * 0.5
-        })
-        .sum();
-    let cloth_mass = cloth
-        .masses()
-        .iter()
-        .zip(&mesh.piece_ids)
-        .filter(|(_, id)| **id == piece)
-        .map(|(m, _)| m)
-        .sum();
+            rest_area +=
+                ((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])).abs() * 0.5;
+        }
+    }
+    let mut cloth_mass = 0.;
+    for (&mass, &id) in cloth.masses().iter().zip(&mesh.piece_ids) {
+        work.step()?;
+        if id == piece {
+            cloth_mass += mass;
+        }
+    }
     Ok(OutlineMeasurements {
-        bounds: project.piece_bounds(piece)?,
+        bounds: project.piece_bounds_with_work(piece, Some(work))?,
         authored_area: area.mid().abs(),
         rest_area,
         cloth_mass,
@@ -1797,20 +2244,27 @@ impl Project {
         outward: bool,
         cancelled: impl Fn() -> bool,
     ) -> Result<PreparedOutlineOffset> {
-        let mut work = Work {
-            units: Cell::new(0),
-            cancelled: &cancelled,
-        };
+        let work = Work::new(&cancelled);
+        self.prepare_outline_offset_with_work(piece, width, outward, &work)
+    }
+
+    pub(crate) fn prepare_outline_offset_with_work(
+        &self,
+        piece: Id,
+        width: f64,
+        outward: bool,
+        work: &Work<'_>,
+    ) -> Result<PreparedOutlineOffset> {
         work.check()?;
-        preflight(self, piece, width)?;
-        self.validate_for_offset(&work)?;
+        preflight(self, piece, width, Some(work))?;
+        self.validate_for_offset(work)?;
         work.check()?;
         let owner = self.piece(piece).unwrap();
-        let sources: Vec<_> = owner
-            .boundary
-            .iter()
-            .map(|id| Source::from_curve(self, self.curve(*id).unwrap()))
-            .collect();
+        let mut sources = Vec::with_capacity(owner.boundary.len());
+        for id in &owner.boundary {
+            work.step()?;
+            sources.push(Source::from_curve(self, self.curve(*id).unwrap()));
+        }
         let mut area = I::point(0.);
         for s in &sources {
             work.step()?;
@@ -1831,38 +2285,51 @@ impl Project {
             "OffsetNumericUncertainty: width is not representable at the required tolerance",
         )?;
         for s in &sources {
-            regular(s, I::range(0., d), 0, &mut work)?;
+            regular(s, I::range(0., d), 0, work)?;
         }
-        let originals: Vec<_> = sources
-            .iter()
-            .map(|s| Fit {
+        let mut originals = Vec::with_capacity(sources.len());
+        for s in &sources {
+            work.step()?;
+            originals.push(Fit {
                 p: s.p.map(mid),
                 line: s.line,
                 source: None,
                 start_id: None,
-            })
-            .collect();
-        simple_contour(&originals, &mut work)?;
-        let (spans, corners) = joins(&sources, d, epsilon, &mut work)?;
-        continuation(&sources, &corners, d, &mut work)?;
+            });
+        }
+        simple_contour(&originals, work)?;
+        let (spans, corners) = joins(&sources, d, epsilon, work)?;
+        continuation(&sources, &corners, d, work)?;
+        let mut holes = 0;
+        for piece in &self.pieces {
+            work.step()?;
+            holes += piece.holes.len();
+        }
         let objects = self.points.len()
             + self.curves.len()
             + self.pieces.len()
             + self.materials.len()
             + self.seams.len()
             + self.sewing_groups.len()
-            + self.pieces.iter().map(|p| p.holes.len()).sum::<usize>();
+            + holes;
         let other = objects - 2 * sources.len();
         let limit = MAX_OUTPUT.min((crate::MAX_OBJECTS - other) / 2);
-        let join_count = corners.iter().map(|c| c.vertices.len() - 1).sum::<usize>();
+        let mut join_count = 0;
+        for corner in &corners {
+            work.step()?;
+            join_count += corner.vertices.len() - 1;
+        }
         ensure(
             join_count < limit,
             "OffsetOutputBudgetExceeded: no document object budget for offset spans",
         )?;
         let mut output = Vec::new();
+        let mut remaining_joins = join_count;
         for (i, s) in sources.iter().enumerate() {
+            work.step()?;
             let c = &corners[i];
             for k in 0..c.vertices.len() - 1 {
+                work.step()?;
                 output.push(Fit {
                     p: [
                         c.vertices[k],
@@ -1879,11 +2346,7 @@ impl Project {
                     },
                 });
             }
-            let remaining_joins = join_count
-                - corners[..=i]
-                    .iter()
-                    .map(|c| c.vertices.len() - 1)
-                    .sum::<usize>();
+            remaining_joins -= c.vertices.len() - 1;
             let remaining = limit
                 .checked_sub(output.len() + remaining_joins)
                 .filter(|remaining| *remaining > 0)
@@ -1897,7 +2360,7 @@ impl Project {
                 d,
                 epsilon,
                 limit: remaining,
-                work: &mut work,
+                work,
                 output: Vec::new(),
             };
             fitter.fit(s, i, &spans[i], 0)?;
@@ -1912,12 +2375,26 @@ impl Project {
             output.len() <= limit,
             "OffsetOutputBudgetExceeded: global document object limit",
         )?;
-        simple_contour(&output, &mut work)?;
+        simple_contour(&output, work)?;
         let mut candidate = self.clone();
-        let old_curves: BTreeSet<_> = sources.iter().map(|s| s.id).collect();
-        let old_points: BTreeSet<_> = sources.iter().map(|s| s.start).collect();
-        candidate.curves.retain(|c| !old_curves.contains(&c.id));
-        candidate.points.retain(|p| !old_points.contains(&p.id));
+        let (mut old_curves, mut old_points) = (BTreeSet::new(), BTreeSet::new());
+        for source in &sources {
+            work.step()?;
+            old_curves.insert(source.id);
+            old_points.insert(source.start);
+        }
+        for curve in std::mem::take(&mut candidate.curves) {
+            work.step()?;
+            if !old_curves.contains(&curve.id) {
+                candidate.curves.push(curve);
+            }
+        }
+        for point in std::mem::take(&mut candidate.points) {
+            work.step()?;
+            if !old_points.contains(&point.id) {
+                candidate.points.push(point);
+            }
+        }
         let mut point_ids = Vec::with_capacity(output.len());
         for f in &output {
             work.step()?;
@@ -1968,21 +2445,37 @@ impl Project {
             .revision
             .checked_add(1)
             .ok_or_else(|| Error("Document revision limit reached".into()))?;
-        candidate.validate_for_offset(&work)?;
+        candidate.validate_for_offset(work)?;
         check_serialized_size(&candidate)?;
         work.check()?;
         // Meshing and solver initialization are publication prerequisites, not a later best effort.
-        let before_mesh = self.mesh_for_offset(&work)?;
-        let before_cloth = crate::simulation::create_cloth_for_offset(self, &before_mesh, &work)?;
-        let before = measurements(self, piece, &before_mesh, &before_cloth)?;
+        let before_mesh = self.mesh_for_offset(work)?;
+        let before_cloth = crate::simulation::create_cloth_for_offset(self, &before_mesh, work)?;
+        let before = measurements(self, piece, &before_mesh, &before_cloth, work)?;
         work.check()?;
-        let mesh = candidate.mesh_for_offset(&work)?;
+        let mesh = candidate.mesh_for_offset(work)?;
+        let mut piece_vertices = 0;
+        for &id in &mesh.piece_ids {
+            work.step()?;
+            piece_vertices += usize::from(id == piece);
+        }
         ensure(
-            mesh.piece_ids.iter().filter(|id| **id == piece).count() <= MAX_OUTPUT,
+            piece_vertices <= MAX_OUTPUT,
             "OffsetDerivedVertexBudgetExceeded: target piece exceeds 65536 vertices",
         )?;
-        let cloth = crate::simulation::create_cloth_for_offset(&candidate, &mesh, &work)?;
-        let after = measurements(&candidate, piece, &mesh, &cloth)?;
+        let cloth = crate::simulation::create_cloth_for_offset(&candidate, &mesh, work)?;
+        let after = measurements(&candidate, piece, &mesh, &cloth, work)?;
+        let mut certified_joins = Vec::with_capacity(corners.len());
+        for (i, c) in corners.iter().enumerate() {
+            work.step()?;
+            certified_joins.push(OutlineOffsetJoin {
+                source_vertex: sources[i].start,
+                incoming_curve: sources[(i + sources.len() - 1) % sources.len()].id,
+                outgoing_curve: sources[i].id,
+                kind: c.kind,
+                trim_parameters: c.trim_parameters,
+            });
+        }
         work.check()?;
         Ok(PreparedOutlineOffset {
             source: self.clone(),
@@ -1999,17 +2492,7 @@ impl Project {
                 maximum_error,
                 geometry_work: work.units.get(),
                 spans: proof,
-                joins: corners
-                    .iter()
-                    .enumerate()
-                    .map(|(i, c)| OutlineOffsetJoin {
-                        source_vertex: sources[i].start,
-                        incoming_curve: sources[(i + sources.len() - 1) % sources.len()].id,
-                        outgoing_curve: sources[i].id,
-                        kind: c.kind,
-                        trim_parameters: c.trim_parameters,
-                    })
-                    .collect(),
+                joins: certified_joins,
                 continuous_topology: true,
                 continuation: true,
             },
@@ -2022,7 +2505,7 @@ pub(crate) fn recheck(prepared: &PreparedOutlineOffset, source: &Project) -> Res
         source == &prepared.source,
         "OffsetStalePreparation: source construction changed; previous project retained",
     )?;
-    preflight(source, prepared.piece, prepared.width)
+    preflight(source, prepared.piece, prepared.width, None)
 }
 
 pub(crate) fn check_serialized_size(project: &Project) -> Result<()> {
