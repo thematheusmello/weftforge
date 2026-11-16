@@ -211,31 +211,41 @@ impl Project {
             check_cancel(&cancelled)?;
             let start = mesh.positions.len();
             let mut vertex_for_point = BTreeMap::new();
-            for id in &piece.boundary {
-                check_cancel(&cancelled)?;
-                let curve = self
-                    .curve(*id)
-                    .ok_or_else(|| Error("Missing boundary curve".into()))?;
-                let samples = sample_curve(self, curve, self.resolution)?;
-                vertex_for_point.insert(curve.start, mesh.positions.len());
-                for &(t, point) in samples.iter().take(samples.len() - 1) {
-                    let vertex = mesh.positions.len();
-                    mesh.positions.push(piece.placement.transform(point));
-                    mesh.uv.push(point);
-                    mesh.piece_ids.push(piece.id);
-                    mesh.boundary.push(BoundarySample {
-                        piece: piece.id,
-                        curve: curve.id,
-                        t,
-                        vertex,
-                    });
+            let mut holes = Vec::new();
+            for (loop_index, boundary) in piece.boundary_loops().enumerate() {
+                if loop_index > 0 {
+                    holes.push(mesh.positions.len() - start);
+                }
+                for id in boundary {
+                    check_cancel(&cancelled)?;
+                    let curve = self
+                        .curve(*id)
+                        .ok_or_else(|| Error("Missing boundary curve".into()))?;
+                    let samples = sample_curve(self, curve, self.resolution)?;
+                    ensure(
+                        mesh.positions.len() - start + samples.len() - 1 <= MAX_BOUNDARY_SAMPLES,
+                        "Piece boundary sample limit exceeded",
+                    )?;
+                    vertex_for_point.insert(curve.start, mesh.positions.len());
+                    for &(t, point) in samples.iter().take(samples.len() - 1) {
+                        let vertex = mesh.positions.len();
+                        mesh.positions.push(piece.placement.transform(point));
+                        mesh.uv.push(point);
+                        mesh.piece_ids.push(piece.id);
+                        mesh.boundary.push(BoundarySample {
+                            piece: piece.id,
+                            curve: curve.id,
+                            t,
+                            vertex,
+                        });
+                    }
                 }
             }
             ensure(
                 mesh.positions.len() <= MAX_MESH_VERTICES,
                 "Mesh vertex limit exceeded",
             )?;
-            for id in &piece.boundary {
+            for id in piece.boundary_loops().flatten() {
                 check_cancel(&cancelled)?;
                 let curve = self
                     .curve(*id)
@@ -248,7 +258,7 @@ impl Project {
                 });
             }
             let flat: Vec<f64> = mesh.uv[start..].iter().flatten().copied().collect();
-            let indices = earcutr::earcut(&flat, &[], 2)
+            let indices = earcutr::earcut(&flat, &holes, 2)
                 .map_err(|error| Error(format!("Triangulation failed: {error}")))?;
             ensure(
                 indices.len() >= 3 && indices.len() % 3 == 0,
@@ -295,6 +305,8 @@ impl Project {
             .iter()
             .find(|seam| seam.id == id)
             .ok_or_else(|| Error("Unknown seam".into()))?;
+        self.require_boundary_curve(seam.a.curve)?;
+        self.require_boundary_curve(seam.b.curve)?;
         Ok([self.interval_length(seam.a)?, self.interval_length(seam.b)?])
     }
 }
@@ -600,35 +612,246 @@ fn internal_segment_inside(
 }
 
 fn straight_polygon(project: &Project, piece: &Piece) -> Result<Vec<[f64; 2]>> {
+    straight_loop(project, &piece.boundary)
+}
+
+fn straight_loop(project: &Project, boundary: &[Id]) -> Result<Vec<[f64; 2]>> {
     ensure(
-        piece.boundary.len() >= 3,
-        "Cut contour needs at least three edges",
+        boundary.len() >= 3,
+        "Straight contour needs at least three edges",
     )?;
     let mut points = BTreeSet::new();
     let mut curves = BTreeSet::new();
-    let mut polygon = Vec::with_capacity(piece.boundary.len());
-    for (index, id) in piece.boundary.iter().enumerate() {
+    let mut polygon = Vec::with_capacity(boundary.len());
+    for (index, id) in boundary.iter().enumerate() {
         let curve = project
             .curve(*id)
-            .ok_or_else(|| Error("Missing cut boundary curve".into()))?;
+            .ok_or_else(|| Error("Missing straight boundary curve".into()))?;
         let next = project
-            .curve(piece.boundary[(index + 1) % piece.boundary.len()])
-            .ok_or_else(|| Error("Missing cut boundary curve".into()))?;
+            .curve(boundary[(index + 1) % boundary.len()])
+            .ok_or_else(|| Error("Missing straight boundary curve".into()))?;
         ensure(
             curve.controls.is_none()
                 && curve.end == next.start
                 && curves.insert(*id)
                 && points.insert(curve.start),
-            "Cut needs an ordered, exclusively owned straight contour",
+            "An ordered, exclusively owned straight contour is required",
         )?;
         let position = project
             .point(curve.start)
-            .ok_or_else(|| Error("Missing cut boundary point".into()))?
+            .ok_or_else(|| Error("Missing straight boundary point".into()))?
             .position;
         crate::document::validate_coordinates(&position)?;
         polygon.push(position);
     }
     Ok(polygon)
+}
+
+pub(crate) fn prepare_hole(
+    project: &Project,
+    piece: &Piece,
+    vertices: &mut [[f64; 2]],
+    work: &mut ContainmentWork,
+) -> Result<()> {
+    let outer = straight_polygon(project, piece)?;
+    let (outer_area, hole_area) = validate_hole_domain(project, piece, &outer, vertices, work)?;
+    if outer_area.signum() == hole_area.signum() {
+        vertices[1..].reverse();
+    }
+    Ok(())
+}
+
+pub(crate) fn validate_holed_piece(
+    project: &Project,
+    piece: &Piece,
+    work: &mut ContainmentWork,
+) -> Result<()> {
+    let outer = straight_polygon(project, piece)?;
+    let hole = straight_loop(project, &piece.holes[0].boundary)?;
+    let (outer_area, hole_area) = validate_hole_domain(project, piece, &outer, &hole, work)?;
+    ensure(
+        outer_area.signum() != hole_area.signum(),
+        "Hole must wind opposite its outer boundary",
+    )
+}
+
+fn validate_hole_domain(
+    project: &Project,
+    piece: &Piece,
+    outer: &[[f64; 2]],
+    hole: &[[f64; 2]],
+    work: &mut ContainmentWork,
+) -> Result<(f64, f64)> {
+    for polygon in [outer, hole] {
+        ensure(
+            (3..=4096).contains(&polygon.len()),
+            "A holed piece needs 3 to 4096 straight edges in each loop",
+        )?;
+        for vertex in polygon {
+            crate::document::validate_coordinates(vertex)?;
+        }
+    }
+    let mut scale = outer
+        .iter()
+        .chain(hole)
+        .flatten()
+        .copied()
+        .map(f64::abs)
+        .fold(1.0, f64::max);
+    let mut annotations = Vec::new();
+    for id in &piece.internal_curves {
+        let curve = project
+            .curve(*id)
+            .ok_or_else(|| Error("Missing hole owner annotation".into()))?;
+        ensure(
+            curve.controls.is_none(),
+            "Hole owner annotations must be straight",
+        )?;
+        let mut endpoints = [[0.; 2]; 2];
+        for (point, id) in endpoints.iter_mut().zip([curve.start, curve.end]) {
+            *point = project
+                .point(id)
+                .ok_or_else(|| Error("Missing annotation endpoint".into()))?
+                .position;
+            crate::document::validate_coordinates(point)?;
+            scale = point.iter().copied().map(f64::abs).fold(scale, f64::max);
+        }
+        annotations.push((*id, endpoints));
+    }
+    let reserve = (256.0 * f64::EPSILON * scale).next_up();
+    let outer_area = validate_straight_loop(outer, reserve, work)?;
+    let hole_area = validate_straight_loop(hole, reserve, work)?;
+    ensure(
+        outer_area.abs() - hole_area.abs() > 1.0e-10,
+        "Hole must leave positive material area",
+    )?;
+    let clearance = (INTERNAL_CLEARANCE + reserve).next_up();
+    for i in 0..hole.len() {
+        ensure(
+            straight_segment_inside(
+                hole[i],
+                hole[(i + 1) % hole.len()],
+                outer,
+                clearance,
+                reserve,
+                work,
+            )?,
+            "Hole edges must stay wholly inside the exterior with more than 1e-6 metre clearance",
+        )?;
+    }
+    let clearance = (INTERNAL_CLEARANCE + INTERNAL_FLATNESS + reserve).next_up();
+    for (id, [a, b]) in annotations {
+        ensure(
+            straight_segment_inside(a, b, outer, clearance, reserve, work)?,
+            &format!(
+                "Internal curve {id} must stay strictly inside its owning contour with 1e-6 metre clearance"
+            ),
+        )?;
+        ensure(
+            !straight_segment_inside(a, b, hole, clearance, reserve, work)?,
+            &format!("Internal curve {id} cannot enter or be surrounded by a hole"),
+        )?;
+    }
+    Ok((outer_area, hole_area))
+}
+
+fn validate_straight_loop(
+    polygon: &[[f64; 2]],
+    reserve: f64,
+    work: &mut ContainmentWork,
+) -> Result<f64> {
+    let n = polygon.len();
+    // Relative coordinates retain small areas under large authoring translations.
+    let area2: f64 = (1..n - 1)
+        .map(|i| cross(polygon[0], polygon[i], polygon[i + 1]))
+        .sum();
+    ensure(
+        area2.abs() > 1.0e-10,
+        "Pattern loop has zero or near-zero area",
+    )?;
+    let mut edges: Vec<_> = (0..n)
+        .map(|i| {
+            let (a, b) = (polygon[i], polygon[(i + 1) % n]);
+            (
+                a[0].min(b[0]),
+                a[0].max(b[0]),
+                a[1].min(b[1]),
+                a[1].max(b[1]),
+                i,
+            )
+        })
+        .collect();
+    edges.sort_by(|a, b| a.0.total_cmp(&b.0));
+    for (position, edge) in edges.iter().enumerate() {
+        work.step()?;
+        let i = edge.4;
+        ensure(
+            distance(polygon[i], polygon[(i + 1) % n]) > reserve.max(1.0e-9)
+                && point_segment_distance(polygon[(i + 2) % n], polygon[i], polygon[(i + 1) % n])
+                    > reserve
+                && point_segment_distance(polygon[i], polygon[(i + 1) % n], polygon[(i + 2) % n])
+                    > reserve,
+            "Pattern loop has a degenerate, backtracking or uncertain edge",
+        )?;
+        for other in edges.iter().skip(position + 1) {
+            work.step()?;
+            if other.0 > edge.1 + reserve {
+                break;
+            }
+            let j = other.4;
+            if (i + 1) % n == j
+                || (j + 1) % n == i
+                || other.2 > edge.3 + reserve
+                || other.3 < edge.2 - reserve
+            {
+                continue;
+            }
+            work.step()?;
+            ensure(
+                segment_distance(
+                    polygon[i],
+                    polygon[(i + 1) % n],
+                    polygon[j],
+                    polygon[(j + 1) % n],
+                ) > reserve,
+                "Pattern loop self-intersects, touches or is numerically uncertain",
+            )?;
+        }
+    }
+    Ok(area2)
+}
+
+fn straight_segment_inside(
+    a: [f64; 2],
+    b: [f64; 2],
+    polygon: &[[f64; 2]],
+    clearance: f64,
+    reserve: f64,
+    work: &mut ContainmentWork,
+) -> Result<bool> {
+    let mut winding = 0_i32;
+    for i in 0..polygon.len() {
+        work.step()?;
+        let (c, d) = (polygon[i], polygon[(i + 1) % polygon.len()]);
+        ensure(
+            segment_distance(a, b, c, d) > clearance,
+            "Straight domain segment crosses, touches or is too close to a boundary",
+        )?;
+        if (c[1] <= a[1] && d[1] > a[1]) || (d[1] <= a[1] && c[1] > a[1]) {
+            work.step()?;
+            let sign = cross(c, d, a);
+            ensure(
+                sign.abs() > reserve * distance(c, d),
+                "Straight domain winding is numerically uncertain",
+            )?;
+            if c[1] <= a[1] && sign > 0.0 {
+                winding += 1;
+            } else if d[1] <= a[1] && sign < 0.0 {
+                winding -= 1;
+            }
+        }
+    }
+    Ok(winding != 0)
 }
 
 pub(crate) fn validate_straight_cut(
@@ -928,8 +1151,34 @@ fn include_collinear_vertices(mesh: &mut Mesh, start: usize, triangle_start: usi
         .flatten()
         .copied()
         .collect();
+    let mut edges: BTreeSet<_> = mesh.triangles[triangle_start..]
+        .iter()
+        .flat_map(|triangle| (0..3).map(|i| edge_key(triangle[i], triangle[(i + 1) % 3])))
+        .collect();
+    let mut samples = BTreeMap::<Id, Vec<BoundarySample>>::new();
+    for &sample in mesh.boundary.iter().filter(|sample| sample.vertex >= start) {
+        samples.entry(sample.curve).or_default().push(sample);
+    }
+    let mut neighbors = BTreeMap::<usize, BTreeSet<usize>>::new();
+    for samples in samples.values_mut() {
+        samples.sort_by(|a, b| a.t.total_cmp(&b.t));
+        for pair in samples.windows(2) {
+            neighbors
+                .entry(pair[0].vertex)
+                .or_default()
+                .insert(pair[1].vertex);
+            neighbors
+                .entry(pair[1].vertex)
+                .or_default()
+                .insert(pair[0].vertex);
+        }
+    }
     for vertex in start..mesh.positions.len() {
-        if used.contains(&vertex) {
+        if used.contains(&vertex)
+            && neighbors[&vertex]
+                .iter()
+                .all(|&other| edges.contains(&edge_key(vertex, other)))
+        {
             continue;
         }
         let point = mesh.uv[vertex];
@@ -947,12 +1196,43 @@ fn include_collinear_vertices(mesh: &mut Mesh, start: usize, triangle_start: usi
                 }
             }
         }
-        let (index, a, b, c) =
-            found.ok_or_else(|| Error("Triangulation lost a boundary vertex".into()))?;
-        mesh.triangles[index] = [a, vertex, c];
-        mesh.triangles.push([vertex, b, c]);
-        used.insert(vertex);
+        if let Some((_, a, b, _)) = found {
+            // A hole bridge can use a collinear vertex while omitting it from its contour edge.
+            for index in triangle_start..mesh.triangles.len() {
+                let triangle = mesh.triangles[index];
+                if let Some(edge) = (0..3).find(|&edge| {
+                    edge_key(triangle[edge], triangle[(edge + 1) % 3]) == edge_key(a, b)
+                }) {
+                    let (a, b, c) = (
+                        triangle[edge],
+                        triangle[(edge + 1) % 3],
+                        triangle[(edge + 2) % 3],
+                    );
+                    mesh.triangles[index] = [a, vertex, c];
+                    mesh.triangles.push([vertex, b, c]);
+                    edges.remove(&edge_key(a, b));
+                    edges.extend([
+                        edge_key(a, vertex),
+                        edge_key(vertex, b),
+                        edge_key(vertex, c),
+                    ]);
+                }
+            }
+            used.insert(vertex);
+        }
+        ensure(
+            used.contains(&vertex),
+            "Triangulation lost a boundary vertex",
+        )?;
     }
+    ensure(
+        neighbors.iter().all(|(&vertex, others)| {
+            others
+                .iter()
+                .all(|&other| edges.contains(&edge_key(vertex, other)))
+        }),
+        "Triangulation lost an authored boundary edge",
+    )?;
     Ok(())
 }
 

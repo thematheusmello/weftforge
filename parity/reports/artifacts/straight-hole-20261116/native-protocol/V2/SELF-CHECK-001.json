@@ -1,0 +1,19 @@
+{
+  "status": "passed_small_synthetic_state_export_copy_readiness_checks_only",
+  "rejected_mutants": [
+    "missing required v5 holes",
+    "wrong Hole allocator",
+    "Undo did not restore corner bits",
+    "reopen lost unchanged signed zero",
+    "extra draft diagnostic in final binding",
+    "OBJ cap fills open hole",
+    "OBJ wrong world/UV scale",
+    "SVG missing evenodd semantics",
+    "SVG wrong physical scale",
+    "OBJ differs from already-graded actual R6 domain",
+    "readiness cannot omit one cross-cell helper flag"
+  ],
+  "allowed_point13_roundoff_and_matching_OBJ_SVG_after_full_state_grade": true,
+  "actual_native_CUA_product_evaluator_or_formal_grade_executed": false,
+  "temporary_synthetic_files_deleted": true
+}

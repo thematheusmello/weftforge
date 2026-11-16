@@ -1,0 +1,276 @@
+{
+  "schema": "weftforge.native.actor-outcome.v1",
+  "case": "HOLE-H2",
+  "attempt": "H2-001",
+  "outcome": "native_route_completed_saved_r6_exports_and_declared_DXF_refusal_pending_root_assessment",
+  "root_binding_sha256": "f09209ccfaba7083b8fb9f55b6c4bb81668f297b735efdac34589cd85f36a556",
+  "owned_pid": 95274,
+  "accepted_H1_dependency": {
+    "root_binding_path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/ROOT-BINDING.json",
+    "root_binding_sha256": "e9e2bed535024602b54a285f8ccd28a0f3a8ecf93fdcc5be4e8629f05e2f3cfc",
+    "attempt": "H1-002",
+    "snapshot_sha256": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41",
+    "saved_grade_report_sha256": "7c939e55ed30b5aebb3bb4f81fb28e449ce21cde67855d88fc592336665bf4f3",
+    "root_native_ui_review_sha256": "b6d79aeb220bf8a1fe291fb82149a7afab9f37b7909baf53f67ab5957d56f712"
+  },
+  "actual_runtime_proof_sha256": "7c21452ff981468a662b04deaff7c03b142ab982943515ecd714ee4e168ffe99",
+  "prelaunch_readiness_all_flags_true": true,
+  "initial_actual_R5_input_capture": "0007",
+  "selected_Hole11_curve16_capture": "0009",
+  "single_vertex_edit_commit_record": "0015",
+  "revision6_capture": "0016",
+  "terminal_source_record": "0079",
+  "planned_quit_source_record": "0079",
+  "immediate_completion_summary_calls": 1,
+  "completion_summary": "Completed the reopened hole exports",
+  "completion_summary_tool_return": "Completion summary received.",
+  "summary_invocation_time_exact": false,
+  "paired_native_external_operations": 79,
+  "documentation_refresh_calls": 0,
+  "overall_actual_calls": 80,
+  "continuous_elapsed_upper_bound_s": 538.413611,
+  "operation_cap": 100,
+  "overall_cap": 101,
+  "elapsed_cap_s": 1200,
+  "readiness_wait_pairs": 0,
+  "scroll_capture_pairs": 0,
+  "simulation_started": false,
+  "method_counts": {
+    "getState": 1,
+    "local-filesystem-proof": 1,
+    "local-runtime-bindings-check": 1,
+    "external.open": 1,
+    "external.pid": 1,
+    "getApp": 1,
+    "getAXStateAndScreenshot": 34,
+    "click": 15,
+    "pressKey": 11,
+    "typeText": 5,
+    "setValue": 4,
+    "fs.raw_snapshot": 4
+  },
+  "raw_JPG_capture_count": 34,
+  "raw_AX_capture_count": 34,
+  "project_snapshot": {
+    "path": "snapshots/reopened-r6.weftforge",
+    "sha256": "934538360a8ed2dc106b616ec7dd1bbcd68f42fde485802535c04485637bcac3",
+    "bytes": 4190,
+    "mode": "444",
+    "receipt": {
+      "schema": "weftforge.straight-cut.raw-copy.v1",
+      "evidence_kind": "native_saved_bytes",
+      "case": "HOLE-H2",
+      "label": "reopened-r6",
+      "revision": 6,
+      "primary_relative_path": "work/hole-r240-reopened.work.weftforge",
+      "primary_sha256": "934538360a8ed2dc106b616ec7dd1bbcd68f42fde485802535c04485637bcac3",
+      "snapshot_sha256": "934538360a8ed2dc106b616ec7dd1bbcd68f42fde485802535c04485637bcac3",
+      "bytes": 4190,
+      "native_save_record": "0029",
+      "clean_capture_record": "0030",
+      "raw_copy_record": "0031",
+      "previous_saved_label": null,
+      "sidecars": {
+        ".recovery": {
+          "present": false,
+          "bytes": null,
+          "sha256": null
+        },
+        ".autosave": {
+          "present": false,
+          "bytes": null,
+          "sha256": null
+        },
+        ".autosave.recovery": {
+          "present": false,
+          "bytes": null,
+          "sha256": null
+        }
+      },
+      "construction_graded": false,
+      "raw_bytes_unedited": true
+    },
+    "receipt_sha256": "284791f67e1f0d7d28662ee9c30502c3d03450e782d93a1d8d051299aba92181"
+  },
+  "exports_retained": [
+    {
+      "path": "exports-retained/hole-r6.obj",
+      "sha256": "8cdc16c7b61172083be0d48652311017b66cc02368883fdaef30717524411017",
+      "bytes": 9578,
+      "mode": "444",
+      "receipt": {
+        "schema": "weftforge.straight-hole.export-copy.v1",
+        "case": "HOLE-H2",
+        "label": "hole-r6.obj",
+        "revision": 6,
+        "sha256": "8cdc16c7b61172083be0d48652311017b66cc02368883fdaef30717524411017",
+        "bytes": 9578,
+        "ui_action_record": "0044",
+        "clean_capture_record": "0045",
+        "raw_copy_record": "0046",
+        "sidecars": {
+          ".recovery": {
+            "present": false,
+            "bytes": null,
+            "sha256": null
+          },
+          ".autosave": {
+            "present": false,
+            "bytes": null,
+            "sha256": null
+          },
+          ".autosave.recovery": {
+            "present": false,
+            "bytes": null,
+            "sha256": null
+          }
+        },
+        "intentional_refusal": false,
+        "construction_graded": false
+      },
+      "receipt_sha256": "933d21dfefd21ac4260e74c182e5c0b4284b0ab7fe30667eedc4ccc305a01272"
+    },
+    {
+      "path": "exports-retained/hole-r6.svg",
+      "sha256": "c920f54f3d1e2114aad2bcd59c2a091b38074af2223ea15066369500ffb8238a",
+      "bytes": 677,
+      "mode": "444",
+      "receipt": {
+        "schema": "weftforge.straight-hole.export-copy.v1",
+        "case": "HOLE-H2",
+        "label": "hole-r6.svg",
+        "revision": 6,
+        "sha256": "c920f54f3d1e2114aad2bcd59c2a091b38074af2223ea15066369500ffb8238a",
+        "bytes": 677,
+        "ui_action_record": "0059",
+        "clean_capture_record": "0060",
+        "raw_copy_record": "0061",
+        "sidecars": {
+          ".recovery": {
+            "present": false,
+            "bytes": null,
+            "sha256": null
+          },
+          ".autosave": {
+            "present": false,
+            "bytes": null,
+            "sha256": null
+          },
+          ".autosave.recovery": {
+            "present": false,
+            "bytes": null,
+            "sha256": null
+          }
+        },
+        "intentional_refusal": false,
+        "construction_graded": false
+      },
+      "receipt_sha256": "9c790537fe38c9476511145f53d40d998afad571c5cbfd85ce349adf648acbb2"
+    },
+    {
+      "path": "exports-retained/hole-r6.dxf",
+      "sha256": "a013339c8be1e5fb5f0f81c7d2df390c7c81fd404572916ba191cc50b2599cdf",
+      "bytes": 41,
+      "mode": "444",
+      "receipt": {
+        "schema": "weftforge.straight-hole.export-copy.v1",
+        "case": "HOLE-H2",
+        "label": "hole-r6.dxf",
+        "revision": 6,
+        "sha256": "a013339c8be1e5fb5f0f81c7d2df390c7c81fd404572916ba191cc50b2599cdf",
+        "bytes": 41,
+        "ui_action_record": "0076",
+        "clean_capture_record": "0077",
+        "raw_copy_record": "0078",
+        "sidecars": {
+          ".recovery": {
+            "present": true,
+            "bytes": 42,
+            "sha256": "90503ddab50b562191e7bccb3d37315bbf01a356e2dac8d5ab69686ac8988fee"
+          },
+          ".autosave": {
+            "present": false,
+            "bytes": null,
+            "sha256": null
+          },
+          ".autosave.recovery": {
+            "present": false,
+            "bytes": null,
+            "sha256": null
+          }
+        },
+        "intentional_refusal": true,
+        "construction_graded": false
+      },
+      "receipt_sha256": "87fffd46785a1e4ca67967e06618166a388ce2aba1a0501b42e3b2a3c6876502"
+    }
+  ],
+  "native_UI_export_results": {
+    "OBJ": {
+      "action_record": "0044",
+      "capture_record": "0045",
+      "raw_copy_record": "0046",
+      "observed_status": "Exported OBJ cloth surface in metres; internal annotations stay in .weftforge."
+    },
+    "SVG": {
+      "action_record": "0059",
+      "capture_record": "0060",
+      "raw_copy_record": "0061",
+      "observed_status": "Exported compound SVG boundaries, including holes, in millimetres; hole-aware reimport is not yet supported. Internal annotations stay in .weftforge."
+    },
+    "DXF": {
+      "save_action_record": "0074",
+      "observed_replace_prompt_capture": "0075",
+      "single_replace_record": "0076",
+      "refusal_capture_record": "0077",
+      "raw_copy_record": "0078",
+      "observed_status": "DXF v1 export does not support holes; save native v5 or export SVG/OBJ instead"
+    }
+  },
+  "current_work_raw_inventory": [
+    {
+      "path": "work/hole-r240-reopened.work.weftforge",
+      "sha256": "934538360a8ed2dc106b616ec7dd1bbcd68f42fde485802535c04485637bcac3",
+      "bytes": 4190,
+      "mode": "644"
+    }
+  ],
+  "current_export_raw_inventory": [
+    {
+      "path": "exports/hole-r6.dxf",
+      "sha256": "a013339c8be1e5fb5f0f81c7d2df390c7c81fd404572916ba191cc50b2599cdf",
+      "bytes": 41,
+      "mode": "644"
+    },
+    {
+      "path": "exports/hole-r6.dxf.recovery",
+      "sha256": "90503ddab50b562191e7bccb3d37315bbf01a356e2dac8d5ab69686ac8988fee",
+      "bytes": 42,
+      "mode": "644"
+    },
+    {
+      "path": "exports/hole-r6.obj",
+      "sha256": "8cdc16c7b61172083be0d48652311017b66cc02368883fdaef30717524411017",
+      "bytes": 9578,
+      "mode": "644"
+    },
+    {
+      "path": "exports/hole-r6.svg",
+      "sha256": "c920f54f3d1e2114aad2bcd59c2a091b38074af2223ea15066369500ffb8238a",
+      "bytes": 677,
+      "mode": "644"
+    }
+  ],
+  "source_inputs_unchanged": true,
+  "native_binary_unchanged": true,
+  "source_head_unchanged": true,
+  "postflight_raw_sha256": "22123b6d17e5bd7d7769ca31af3bc0841b92023cd5d5ebbd7544f834894dd036",
+  "delegated_actual_proof_transcript_sha256": "0452bf9a71e9c73b783ac48ba2d4b3e7eccfa6c77560a555c86226be9534e9da",
+  "delegated_terminal_transcript_sha256": "8caf4c3d81bf3c4836628bed55e578cce476c26c7c798be9f1da1bc600596c30",
+  "unexpected_barrier": null,
+  "construction_or_export_content_parsed_or_graded_by_actor": false,
+  "formal_grading_performed": false,
+  "native_exit_independently_verified": false,
+  "actual_closure_verification": "root separate GUI part after raw-retention handoff",
+  "scope": "bounded actual HOLE-H2 UI route and opaque saved/export bytes; root independent UI review and sole saved/export assessment remain required; no parity or native physics claim"
+}

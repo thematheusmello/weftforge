@@ -1,0 +1,103 @@
+{
+  "scope": "Explicit metadata derivative under the existing Hole policy. Duplicate screenshot/chooser AX payloads, raw session bodies and internal session locators are omitted as listed. Retained exact/unedited assertions describe immutable private originals, not this wrapper. Root corroboration is retrospective, not an in-situ transport receipt or exact invocation timestamp.",
+  "original_private_sha256": "a6930e65d15703137c6df954d713dbc6df5953d34aa3d20a994ee15db4b3bfc5",
+  "original_private_bytes": 5079,
+  "omitted_fields": [
+    "/source_journal_path",
+    "/source_records_and_calls/standalone_getState/call_id",
+    "/source_records_and_calls/bootstrap_proof0002/call_id",
+    "/source_records_and_calls/readiness0003/call_id",
+    "/source_records_and_calls/initial_getApp_capture/call_id",
+    "/source_records_and_calls/required_documentation_refresh/call_id",
+    "/source_records_and_calls/planned_quit0057/call_id",
+    "/source_records_and_calls/immediate_summary/call_id"
+  ],
+  "record": {
+    "kind": "delegated retrospective exact primary-journal reread after canonical native input closure; no new CUA",
+    "case": "SEW-S2",
+    "attempt": "S2-001",
+    "raw_excerpts_path": "ACTOR-CUA-JOURNAL-POST-CLOSURE.jsonl",
+    "raw_excerpts_sha256": "bbf2929e30b42906db22822cddac35f044c70e347fcc5898dc3f68904f609f2e",
+    "copied_response_item_lines": 14,
+    "source_lines_verbatim_unedited": true,
+    "retained_after_actor_native_input_ended_by_quit_and_summary": true,
+    "root_input_closure_receipt_present_at_retention": true,
+    "root_input_closure_sha256_at_retention": "1deba4ae2b3393b158e8b6cc46c7aa615b0157bb8b64fc90c5082527f80d224b",
+    "exact_tool_invocation_UTC_claimed": false,
+    "journal_record_timestamps_promoted_to_case_clock": false,
+    "new_CUA_calls_to_obtain_history": false,
+    "source_records_and_calls": {
+      "standalone_getState": {
+        "call_line": 4423,
+        "return_line": 4426,
+        "call_raw_journal_line_sha256": "fabfc3ed2d95591d8dce41973d3e29bc50a68f847c6fe7bea845b2fbf2f93393",
+        "return_raw_journal_line_sha256": "66e1858a53731cf949d4b8bf127a2fe8da2d7fff8639f6a2aa5c855301f9f68a"
+      },
+      "bootstrap_proof0002": {
+        "call_line": 4428,
+        "return_line": 4431,
+        "call_raw_journal_line_sha256": "c1c1d4772e15e3b37c18fda97a393592f3372d73230dbf30208b6a9742e7c962",
+        "return_raw_journal_line_sha256": "0aef2da5f1ef1536a52fdb6dfae550922fe9d10ee6a6d670f3f26f68fecb73eb"
+      },
+      "readiness0003": {
+        "call_line": 4435,
+        "return_line": 4438,
+        "call_raw_journal_line_sha256": "679d887615f095f4b5977d2a4a3f7e4822ec3025e7c5a8f5e98e7189a7563400",
+        "return_raw_journal_line_sha256": "a40aafd0465802753d09601d9c730e7d078a966e23ce8230f3ba80ec84715f5f"
+      },
+      "initial_getApp_capture": {
+        "call_line": 4445,
+        "return_line": 4448,
+        "call_raw_journal_line_sha256": "ee1f54cbd18a1cb0e8838e507a57b0fc00d4268e83264766c9528d00c63a3337",
+        "return_raw_journal_line_sha256": "e1f28a97493c836a20ed5d1b668cc2256f4fb5b22f2ce0b53c61e8f903d303e0"
+      },
+      "required_documentation_refresh": {
+        "call_line": 4476,
+        "return_line": 4479,
+        "call_raw_journal_line_sha256": "f8831e47056958edcd1681156fbd7dbb7d40b6dff15bd961d368fee749a652e7",
+        "return_raw_journal_line_sha256": "d5d3604e602a3151d9501bacd9f16a7399b0cacbea3452d61fe57938178f2c27"
+      },
+      "planned_quit0057": {
+        "call_line": 4642,
+        "return_line": 4645,
+        "call_raw_journal_line_sha256": "fadce0147d297515171d42f47a4f19604fd741cd892791963faac21c1374501e",
+        "return_raw_journal_line_sha256": "eb57302d21bc59d15de65c3655f53d6126fab31940a691a3017758c36e762523"
+      },
+      "immediate_summary": {
+        "call_line": 4647,
+        "return_line": 4650,
+        "call_raw_journal_line_sha256": "65369869700daf3c6bf7d87ed0a1cd93e039e8985f77c9c28d289b89a662d5a1",
+        "return_raw_journal_line_sha256": "47b418699626d27afd62f0c2d971576eae1a487acdbc273f80c57f04a48c7b92"
+      }
+    },
+    "complete_startup_cell_code_matches_staged_sources": {
+      "ACTOR-BOOTSTRAP.js": {
+        "actual_tool_code_sha256": "ef651e4aa1dc921ad0e0a2b87a15eeb30d34b20e22e275c868300fbeda7646df",
+        "staged_file_sha256": "ef651e4aa1dc921ad0e0a2b87a15eeb30d34b20e22e275c868300fbeda7646df",
+        "byte_exact": true
+      },
+      "ACTOR-PERSISTENCE-CHECK.js": {
+        "actual_tool_code_sha256": "70abbd63b7cc074b1655d5bb009d73c47a833bd5515fc22a53d98ef89f467ff4",
+        "staged_file_sha256": "70abbd63b7cc074b1655d5bb009d73c47a833bd5515fc22a53d98ef89f467ff4",
+        "byte_exact": true
+      },
+      "ACTOR-INITIAL-CAPTURE.js": {
+        "actual_tool_code_sha256": "501d44a850e0897c3d987db7688770f77c451bf7daef3637c4e886d7bcb95d4b",
+        "staged_file_sha256": "501d44a850e0897c3d987db7688770f77c451bf7daef3637c4e886d7bcb95d4b",
+        "byte_exact": true
+      }
+    },
+    "quit_followed_by_very_next_tool_summary_only": true,
+    "summary_calls": 1,
+    "documentation_refresh_calls": 1,
+    "documentation_refresh_no_native_input": true,
+    "proof0002_displayed_return_text_path": "ACTOR-PROOF0002-DISPLAYED-RETURN.txt",
+    "proof0002_displayed_return_text_sha256": "36c8d9aa76f6a939961180ec5199ec58e8e29c6b64cfd4ca1a5c1223f3bd4bab",
+    "runtime_proof_sha256": "b0668204ef1e28dd933220d3557eaf3af114c94654f12c156469d2dc863ae4e6",
+    "root_correlated_with_actual_CUA_tool_history": false,
+    "formal_grading_performed": false,
+    "captured_after_input_closure": true,
+    "earlier_post_summary_excerpt_retained_unchanged": true,
+    "earlier_excerpt_metadata_sha256": "83a023d4a7a32aae9e97f03700015dbadcdddc20cbe6d6c50b314d978bbc9be5"
+  }
+}

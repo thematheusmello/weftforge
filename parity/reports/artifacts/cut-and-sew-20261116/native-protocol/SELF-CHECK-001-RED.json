@@ -1,0 +1,10 @@
+{
+  "status": "failed_offline_synthetic_control_only",
+  "command": "python3 .local/cut-and-sew-native-plan-20261116/selfcheck.py .local/cut-and-sew-native-plan-20261116/SELF-CHECK-001.json",
+  "exit_code": 1,
+  "error": "AssertionError: analytic child perimeters differ",
+  "cause": "The positive synthetic control moved all four anchors U by 5e-13 m. Its left perimeter changed by about 1e-12 m plus floating roundoff, exceeding the independent 1e-12 m perimeter budget. The grader correctly refused that combined measurement.",
+  "correction": "Use a 2e-13 m synthetic anchor perturbation that satisfies all original length, area and mass budgets. No acceptance tolerance or product behavior was changed.",
+  "formal_grade_marker_or_report_created": false,
+  "actual_case_or_product_executed": false
+}

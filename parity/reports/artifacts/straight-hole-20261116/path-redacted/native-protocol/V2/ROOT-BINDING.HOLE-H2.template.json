@@ -1,0 +1,72 @@
+{
+  "schema": "weftforge.straight-cut.root-binding.v2",
+  "case": "HOLE-H2",
+  "attempt": null,
+  "root_authorized_for_case": false,
+  "native_lease_granted": false,
+  "freeze_sha256": null,
+  "source_commit": "a021a2581c8e1dd000e535a417dcd964c3835884",
+  "clean_metadata_commit": "52163adb86b9f48fdd06f042e4ddf615797c3947",
+  "source_worktree": "<WORKSPACE>/.local/straight-holes-20261116",
+  "own_target_directory": "<WORKSPACE>/.local/straight-holes-20261116/target",
+  "source_input_count": 73,
+  "source_inputs": {},
+  "integrated_local_gate_receipts": {
+    "runtime": {
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/CHECKS.json",
+      "sha256": "5b60dcd33e167da93c9f93fff7f6fa9a2e751887d88d7cfc690f20d30588b3f0"
+    },
+    "clean_build": {
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/CHECKS.json",
+      "sha256": "7b5fc16346ce8719be669dd32881635fd9b645d62a2885c5f040a50486bac290"
+    }
+  },
+  "clean_source_metadata_receipt": {
+    "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/CHECKS.json",
+    "sha256": "7b5fc16346ce8719be669dd32881635fd9b645d62a2885c5f040a50486bac290"
+  },
+  "bundle": null,
+  "bundle_identifier": null,
+  "bundle_plist_sha256": null,
+  "native_binary_path": null,
+  "native_binary_sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c",
+  "os_version": null,
+  "launcher_path": "/usr/bin/open",
+  "launcher_argv": null,
+  "input_argv": null,
+  "inputs": {
+    "inputs/accepted-redo-r5.weftforge": null
+  },
+  "actor_filename": null,
+  "actor_sha256": null,
+  "actor_persistence_check": {
+    "path": null,
+    "sha256": null
+  },
+  "actor_initial_capture": {
+    "path": null,
+    "sha256": null
+  },
+  "accepted_h1_dependency": {
+    "root_binding_path": null,
+    "root_binding_sha256": null,
+    "attempt": null,
+    "snapshot_sha256": null,
+    "saved_grade_report_sha256": null,
+    "root_native_ui_review_sha256": null
+  },
+  "controller": "<WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs",
+  "recorder": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+  "observer": "<WORKSPACE>/.local/native-internal-annotations-20261115/C002/OBSERVER-FRAGMENT.cjs",
+  "controller_sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+  "recorder_sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+  "observer_sha256": "d580450b45fc2fe42b19c146fb7023f84d04e7b9596ac24a8f5afe3e81be7729",
+  "controller_configuration": {
+    "root": null,
+    "recorderPath": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+    "evidenceKind": "native",
+    "callCap": 100,
+    "elapsedCapS": 1200,
+    "baselineCalls": 0
+  }
+}

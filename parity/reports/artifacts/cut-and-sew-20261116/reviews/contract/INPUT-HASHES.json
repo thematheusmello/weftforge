@@ -1,0 +1,146 @@
+{
+  "kind": "private_read_only_proposal_review_inputs",
+  "review": "REVIEW-001.md",
+  "prepared_date": "2026-11-16",
+  "source_runtime_commit": "a021a2581c8e1dd000e535a417dcd964c3835884",
+  "inspected_metadata_ref": "52163adb86b9f48fdd06f042e4ddf615797c3947",
+  "source_root": ".local/straight-holes-20261116",
+  "proposal_root": ".local/cut-and-sew-contract-20261116",
+  "proposal_artifacts": [
+    {
+      "path": "CONTRACT.md",
+      "sha256": "57a121c85f599cc41931dc32993e57f29541c1ea161f6286f391db2ecd4a90f3"
+    },
+    {
+      "path": "ORACLE.json",
+      "sha256": "cf4f9c75afa31b6afdbcfc6890f6b51509e55ce9eb7c1d149987cb2666f823ac"
+    },
+    {
+      "path": "SOURCE-REACH.md",
+      "sha256": "813f57b0fcc3d4be756550897018f0e09521f0cf7bdf9f70b0df7b7d9628e7da"
+    }
+  ],
+  "source_hashes_verified_against_proposal": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "b9bdf4c9b881d0ab6c084a5314c45f4f55ff0bb17d19fafe357caa353cd7e78e",
+      "matches_proposal": true
+    },
+    {
+      "path": "crates/weftforge-core/src/document.rs",
+      "sha256": "4ce5ea5d3919e4fa180d723558ad30975ce2158f68772bc3c151e86857bb05f0",
+      "matches_proposal": true
+    },
+    {
+      "path": "crates/weftforge-core/src/geometry.rs",
+      "sha256": "d4ba435fe2fbcd907c97a01b16be2b8bcfa934a1e3cbb4882fc75ab43f380105",
+      "matches_proposal": true
+    },
+    {
+      "path": "crates/weftforge-core/src/sewing.rs",
+      "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed",
+      "matches_proposal": true
+    },
+    {
+      "path": "crates/weftforge-core/src/simulation.rs",
+      "sha256": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29",
+      "matches_proposal": true
+    },
+    {
+      "path": "crates/weftforge-core/src/persistence.rs",
+      "sha256": "42c3d163bf347af1dcf3bb007ac15c7ba3e4836c829b18904592cb96b6cd9812",
+      "matches_proposal": true
+    },
+    {
+      "path": "crates/weftforge-core/src/lib.rs",
+      "sha256": "157990183f20487c3b1494a837914e81fb98e3e4fb35a1f0dedc0542a1ec6661",
+      "matches_proposal": true
+    },
+    {
+      "path": "crates/weftforge-sim/src/lib.rs",
+      "sha256": "5bfc996e6bf1067ac261358fdd043815adf304a5d8d512a0e6429c913e90fa76",
+      "matches_proposal": true
+    },
+    {
+      "path": "apps/weftforge/src/main.rs",
+      "sha256": "71b2ff79a315a5de5347ce36a4a07a13a3e9faca6c46e77086338bb24b8a2d48",
+      "matches_proposal": true
+    },
+    {
+      "path": "apps/weftforge-cli/src/main.rs",
+      "sha256": "7049615180a793ad1557a2bbd3a27797b4b06aac060a2cb0620bd40436e64e0b",
+      "matches_proposal": true
+    },
+    {
+      "path": "apps/weftforge-cli/src/mcp.rs",
+      "sha256": "34af8f549de7eac7f025089fddb8c1d798fbd1e65b85d5fce74de473ba72c7cb",
+      "matches_proposal": true
+    },
+    {
+      "path": "crates/weftforge-core/tests/cut_piece.rs",
+      "sha256": "c5b673f0a69a43086c3a6d5b7aa58e4b68bcf061637f57c4731a83af4879f018",
+      "matches_proposal": true
+    },
+    {
+      "path": "crates/weftforge-core/tests/holes.rs",
+      "sha256": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594",
+      "matches_proposal": true
+    },
+    {
+      "path": "crates/weftforge-core/tests/hole_io.rs",
+      "sha256": "dfe604ad08e660e9feecb88d99153eee78bb1cadcbb8307350ad9983956025a2",
+      "matches_proposal": true
+    },
+    {
+      "path": "apps/weftforge-cli/tests/mcp_stdio.rs",
+      "sha256": "23f3d0d1ee01d86dfb426e2a89b514a399ba53b51159dedbf932b18ce93753f4",
+      "matches_proposal": true
+    },
+    {
+      "path": "spec/features/PAT-006-straight-cut.md",
+      "sha256": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c",
+      "matches_proposal": true
+    },
+    {
+      "path": "spec/features/PAT-006-straight-hole.md",
+      "sha256": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f",
+      "matches_proposal": true
+    },
+    {
+      "path": "crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge",
+      "sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+      "matches_proposal": true
+    },
+    {
+      "path": "crates/weftforge-core/tests/fixtures/original-cut-l.weftforge",
+      "sha256": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d",
+      "matches_proposal": true
+    },
+    {
+      "path": "docs/automation.md",
+      "sha256": "a32c398cd5bfa9c5f8073f9015e883712e3b62c2152023cd9d01797794613528",
+      "matches_proposal": true
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "ce2709de29fc64a5de302870b4b6d47fbc66b331aae699687a629953ca895e88",
+      "matches_proposal": true
+    },
+    {
+      "path": "docs/file-formats.md",
+      "sha256": "880888c4da9bead588f0d77b3e82f0d845f947387211e493059bf28d4bba4b36",
+      "matches_proposal": true
+    },
+    {
+      "path": "spec/inventory/weftforge-current-source-addendum.json",
+      "sha256": "12031db93d5e64b25e9f4eea2e7c57c01fc18b351e7184b9efc3c80d469c1cb2",
+      "matches_proposal": true
+    },
+    {
+      "path": "spec/inventory/weftforge-current-source-addendum.md",
+      "sha256": "0c9d8f005c1c949079c4449465e5b0d8275cd7197fd730fec14c1d32bf16c2c5",
+      "matches_proposal": true
+    }
+  ],
+  "inspection_scope": "Relevant source ranges were inspected; complete files were hashed. This manifest is not a build, execution, source73 reseal or reference result."
+}

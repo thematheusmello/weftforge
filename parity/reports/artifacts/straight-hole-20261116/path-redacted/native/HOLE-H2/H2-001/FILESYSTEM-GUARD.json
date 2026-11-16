@@ -1,0 +1,1144 @@
+{
+  "kind": "H2-001 prepare-only filesystem guard; no runtime authority or native clock",
+  "case": "HOLE-H2",
+  "attempt": "H2-001",
+  "pins": [
+    {
+      "name": "source73/.cargo/config.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/.cargo/config.toml",
+      "expected_sha256": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+      "sha256": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+      "matches": true
+    },
+    {
+      "name": "source73/Cargo.lock",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/Cargo.lock",
+      "expected_sha256": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c",
+      "sha256": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c",
+      "matches": true
+    },
+    {
+      "name": "source73/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/Cargo.toml",
+      "expected_sha256": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+      "sha256": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge-cli/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/Cargo.toml",
+      "expected_sha256": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+      "sha256": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge-cli/src/main.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/src/main.rs",
+      "expected_sha256": "7049615180a793ad1557a2bbd3a27797b4b06aac060a2cb0620bd40436e64e0b",
+      "sha256": "7049615180a793ad1557a2bbd3a27797b4b06aac060a2cb0620bd40436e64e0b",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge-cli/src/mcp.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/src/mcp.rs",
+      "expected_sha256": "34af8f549de7eac7f025089fddb8c1d798fbd1e65b85d5fce74de473ba72c7cb",
+      "sha256": "34af8f549de7eac7f025089fddb8c1d798fbd1e65b85d5fce74de473ba72c7cb",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge-cli/tests/curves.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/tests/curves.rs",
+      "expected_sha256": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+      "sha256": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge-cli/tests/dxf_import.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/tests/dxf_import.rs",
+      "expected_sha256": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d",
+      "sha256": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge-cli/tests/ellipse.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/tests/ellipse.rs",
+      "expected_sha256": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+      "sha256": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge-cli/tests/grain.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/tests/grain.rs",
+      "expected_sha256": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+      "sha256": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge-cli/tests/holes.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/tests/holes.rs",
+      "expected_sha256": "c7e0656dcb756db3ced588e52c08c969a997b99661f85bbb8d5079a27421ad77",
+      "sha256": "c7e0656dcb756db3ced588e52c08c969a997b99661f85bbb8d5079a27421ad77",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge-cli/tests/mcp_stdio.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/tests/mcp_stdio.rs",
+      "expected_sha256": "23f3d0d1ee01d86dfb426e2a89b514a399ba53b51159dedbf932b18ce93753f4",
+      "sha256": "23f3d0d1ee01d86dfb426e2a89b514a399ba53b51159dedbf932b18ce93753f4",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge-cli/tests/svg_import.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/tests/svg_import.rs",
+      "expected_sha256": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af",
+      "sha256": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/Cargo.toml",
+      "expected_sha256": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+      "sha256": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge/assets/fonts/Inter-Regular.ttf",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/assets/fonts/Inter-Regular.ttf",
+      "expected_sha256": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82",
+      "sha256": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge/assets/fonts/Inter-SemiBold.ttf",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/assets/fonts/Inter-SemiBold.ttf",
+      "expected_sha256": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3",
+      "sha256": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf",
+      "expected_sha256": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1",
+      "sha256": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge/assets/fonts/OFL-Inter.txt",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/assets/fonts/OFL-Inter.txt",
+      "expected_sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt",
+      "expected_sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge/assets/fonts/SOURCES.json",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/assets/fonts/SOURCES.json",
+      "expected_sha256": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c",
+      "sha256": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c",
+      "matches": true
+    },
+    {
+      "name": "source73/apps/weftforge/src/main.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/src/main.rs",
+      "expected_sha256": "71b2ff79a315a5de5347ce36a4a07a13a3e9faca6c46e77086338bb24b8a2d48",
+      "sha256": "71b2ff79a315a5de5347ce36a4a07a13a3e9faca6c46e77086338bb24b8a2d48",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/Cargo.toml",
+      "expected_sha256": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+      "sha256": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/src/document.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/document.rs",
+      "expected_sha256": "4ce5ea5d3919e4fa180d723558ad30975ce2158f68772bc3c151e86857bb05f0",
+      "sha256": "4ce5ea5d3919e4fa180d723558ad30975ce2158f68772bc3c151e86857bb05f0",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/src/geometry.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/geometry.rs",
+      "expected_sha256": "d4ba435fe2fbcd907c97a01b16be2b8bcfa934a1e3cbb4882fc75ab43f380105",
+      "sha256": "d4ba435fe2fbcd907c97a01b16be2b8bcfa934a1e3cbb4882fc75ab43f380105",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/src/lib.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/lib.rs",
+      "expected_sha256": "157990183f20487c3b1494a837914e81fb98e3e4fb35a1f0dedc0542a1ec6661",
+      "sha256": "157990183f20487c3b1494a837914e81fb98e3e4fb35a1f0dedc0542a1ec6661",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/src/persistence.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/persistence.rs",
+      "expected_sha256": "42c3d163bf347af1dcf3bb007ac15c7ba3e4836c829b18904592cb96b6cd9812",
+      "sha256": "42c3d163bf347af1dcf3bb007ac15c7ba3e4836c829b18904592cb96b6cd9812",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/src/persistence/dxf.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/persistence/dxf.rs",
+      "expected_sha256": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338",
+      "sha256": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/src/persistence/dxf_import.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/persistence/dxf_import.rs",
+      "expected_sha256": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+      "sha256": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/src/persistence/svg.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/persistence/svg.rs",
+      "expected_sha256": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7",
+      "sha256": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/src/sewing.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/sewing.rs",
+      "expected_sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed",
+      "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/src/simulation.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/simulation.rs",
+      "expected_sha256": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29",
+      "sha256": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/cut_piece.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/cut_piece.rs",
+      "expected_sha256": "c5b673f0a69a43086c3a6d5b7aa58e4b68bcf061637f57c4731a83af4879f018",
+      "sha256": "c5b673f0a69a43086c3a6d5b7aa58e4b68bcf061637f57c4731a83af4879f018",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/dxf.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/dxf.rs",
+      "expected_sha256": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+      "sha256": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/dxf_import.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/dxf_import.rs",
+      "expected_sha256": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+      "sha256": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/ellipse.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/ellipse.rs",
+      "expected_sha256": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78",
+      "sha256": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge",
+      "expected_sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+      "sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/fixtures/original-cut-l.weftforge",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/fixtures/original-cut-l.weftforge",
+      "expected_sha256": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d",
+      "sha256": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge",
+      "expected_sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+      "sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf",
+      "expected_sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/fixtures/original-editable-patterns.svg",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/fixtures/original-editable-patterns.svg",
+      "expected_sha256": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+      "sha256": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/grain.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/grain.rs",
+      "expected_sha256": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+      "sha256": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/hole_io.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/hole_io.rs",
+      "expected_sha256": "dfe604ad08e660e9feecb88d99153eee78bb1cadcbb8307350ad9983956025a2",
+      "sha256": "dfe604ad08e660e9feecb88d99153eee78bb1cadcbb8307350ad9983956025a2",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/holes.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/holes.rs",
+      "expected_sha256": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594",
+      "sha256": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/internal_lines.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/internal_lines.rs",
+      "expected_sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786",
+      "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/joins.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/joins.rs",
+      "expected_sha256": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10",
+      "sha256": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/migration.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/migration.rs",
+      "expected_sha256": "1f4b8aec8bfa9622c7c69b2b7ef2a9ec2c745340c5d56c5edab87d40d7f66418",
+      "sha256": "1f4b8aec8bfa9622c7c69b2b7ef2a9ec2c745340c5d56c5edab87d40d7f66418",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/pattern_transform.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/pattern_transform.rs",
+      "expected_sha256": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31",
+      "sha256": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/seam_reversal.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/seam_reversal.rs",
+      "expected_sha256": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d",
+      "sha256": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/sewing_groups.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/sewing_groups.rs",
+      "expected_sha256": "a3e9ad0393b0039b7257193b5bcd0f54e7aafe5ab5566ae8459c1392a0ce6f41",
+      "sha256": "a3e9ad0393b0039b7257193b5bcd0f54e7aafe5ab5566ae8459c1392a0ce6f41",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/shirt.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/shirt.rs",
+      "expected_sha256": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+      "sha256": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/svg_import.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/svg_import.rs",
+      "expected_sha256": "3b9601a0023c1d91b96a309d0822439afa75e97f97a5e53c5104cbef3e6ed72e",
+      "sha256": "3b9601a0023c1d91b96a309d0822439afa75e97f97a5e53c5104cbef3e6ed72e",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-core/tests/workflow.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/workflow.rs",
+      "expected_sha256": "3f7ad8f050b6f749e85e7c865cf35d0cdc31d3f86023a05d5db19d4bfec495c2",
+      "sha256": "3f7ad8f050b6f749e85e7c865cf35d0cdc31d3f86023a05d5db19d4bfec495c2",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-sim/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/Cargo.toml",
+      "expected_sha256": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+      "sha256": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-sim/src/capsule.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/src/capsule.rs",
+      "expected_sha256": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7",
+      "sha256": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-sim/src/constraints.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/src/constraints.rs",
+      "expected_sha256": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+      "sha256": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-sim/src/contact.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/src/contact.rs",
+      "expected_sha256": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655",
+      "sha256": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-sim/src/lib.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/src/lib.rs",
+      "expected_sha256": "5bfc996e6bf1067ac261358fdd043815adf304a5d8d512a0e6429c913e90fa76",
+      "sha256": "5bfc996e6bf1067ac261358fdd043815adf304a5d8d512a0e6429c913e90fa76",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-sim/src/math.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/src/math.rs",
+      "expected_sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+      "sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-sim/src/strain.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/src/strain.rs",
+      "expected_sha256": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+      "sha256": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+      "matches": true
+    },
+    {
+      "name": "source73/crates/weftforge-sim/src/tests.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/src/tests.rs",
+      "expected_sha256": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+      "sha256": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+      "matches": true
+    },
+    {
+      "name": "source73/docs/architecture.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/docs/architecture.md",
+      "expected_sha256": "ce2709de29fc64a5de302870b4b6d47fbc66b331aae699687a629953ca895e88",
+      "sha256": "ce2709de29fc64a5de302870b4b6d47fbc66b331aae699687a629953ca895e88",
+      "matches": true
+    },
+    {
+      "name": "source73/docs/automation.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/docs/automation.md",
+      "expected_sha256": "a32c398cd5bfa9c5f8073f9015e883712e3b62c2152023cd9d01797794613528",
+      "sha256": "a32c398cd5bfa9c5f8073f9015e883712e3b62c2152023cd9d01797794613528",
+      "matches": true
+    },
+    {
+      "name": "source73/docs/file-formats.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/docs/file-formats.md",
+      "expected_sha256": "880888c4da9bead588f0d77b3e82f0d845f947387211e493059bf28d4bba4b36",
+      "sha256": "880888c4da9bead588f0d77b3e82f0d845f947387211e493059bf28d4bba4b36",
+      "matches": true
+    },
+    {
+      "name": "source73/rust-toolchain.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/rust-toolchain.toml",
+      "expected_sha256": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+      "sha256": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+      "matches": true
+    },
+    {
+      "name": "source73/spec/features/APP-001-new-empty.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/spec/features/APP-001-new-empty.md",
+      "expected_sha256": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+      "sha256": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+      "matches": true
+    },
+    {
+      "name": "source73/spec/features/PAT-004-native-transform-selection.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/spec/features/PAT-004-native-transform-selection.md",
+      "expected_sha256": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
+      "sha256": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
+      "matches": true
+    },
+    {
+      "name": "source73/spec/features/PAT-004-piece-rigid-transform.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/spec/features/PAT-004-piece-rigid-transform.md",
+      "expected_sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+      "sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+      "matches": true
+    },
+    {
+      "name": "source73/spec/features/PAT-006-internal-segments.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/spec/features/PAT-006-internal-segments.md",
+      "expected_sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+      "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+      "matches": true
+    },
+    {
+      "name": "source73/spec/features/PAT-006-straight-cut.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/spec/features/PAT-006-straight-cut.md",
+      "expected_sha256": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c",
+      "sha256": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c",
+      "matches": true
+    },
+    {
+      "name": "source73/spec/features/PAT-006-straight-hole.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/spec/features/PAT-006-straight-hole.md",
+      "expected_sha256": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f",
+      "sha256": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f",
+      "matches": true
+    },
+    {
+      "name": "source73/spec/features/SEW-002-physical-length.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/spec/features/SEW-002-physical-length.md",
+      "expected_sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+      "sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+      "matches": true
+    },
+    {
+      "name": "source73/xtask/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/xtask/Cargo.toml",
+      "expected_sha256": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+      "sha256": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+      "matches": true
+    },
+    {
+      "name": "source73/xtask/src/main.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/xtask/src/main.rs",
+      "expected_sha256": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709",
+      "sha256": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709",
+      "matches": true
+    },
+    {
+      "name": "packet-freeze",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/FREEZE.json",
+      "expected_sha256": "13fb9c37e4d3c56f5e017f39fcf9db1b87ddb821cffd9ee96627e778db69193c",
+      "sha256": "13fb9c37e4d3c56f5e017f39fcf9db1b87ddb821cffd9ee96627e778db69193c",
+      "matches": true
+    },
+    {
+      "name": "packet/ACTOR-PERSISTENCE-CHECK-RESULT.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/ACTOR-PERSISTENCE-CHECK-RESULT.template.json",
+      "expected_sha256": "c8de6c5079a5b1c94dc44b0b2c9f2eb559a788c1bf5ef922dd1d5321ceeff62a",
+      "sha256": "c8de6c5079a5b1c94dc44b0b2c9f2eb559a788c1bf5ef922dd1d5321ceeff62a",
+      "matches": true
+    },
+    {
+      "name": "packet/ACTOR-RUNTIME-PROOF.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/ACTOR-RUNTIME-PROOF.template.json",
+      "expected_sha256": "380b68b7afde3448b04655410212183be0a109dbc54c9381bbd0c4f2964fa9f2",
+      "sha256": "380b68b7afde3448b04655410212183be0a109dbc54c9381bbd0c4f2964fa9f2",
+      "matches": true
+    },
+    {
+      "name": "packet/ACTOR-RUNTIME-TOOL-HISTORY.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/ACTOR-RUNTIME-TOOL-HISTORY.template.json",
+      "expected_sha256": "e371a1d48ec000a602deff4f7669289d012c70dadf65e9d04a9b4cfd00446950",
+      "sha256": "e371a1d48ec000a602deff4f7669289d012c70dadf65e9d04a9b4cfd00446950",
+      "matches": true
+    },
+    {
+      "name": "packet/COMPLETION-SUMMARY-RETURN.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/COMPLETION-SUMMARY-RETURN.template.json",
+      "expected_sha256": "d715f63af22627102a8dd4328204ef4ee2ef77949e15e672ea264879ca0da1ae",
+      "sha256": "d715f63af22627102a8dd4328204ef4ee2ef77949e15e672ea264879ca0da1ae",
+      "matches": true
+    },
+    {
+      "name": "packet/NATIVE-LEASE-CLOSED.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/NATIVE-LEASE-CLOSED.template.json",
+      "expected_sha256": "8ca6a4e559b375120423894bc1265b270062a77fbcc9138ecaa470f48dc89c8f",
+      "sha256": "8ca6a4e559b375120423894bc1265b270062a77fbcc9138ecaa470f48dc89c8f",
+      "matches": true
+    },
+    {
+      "name": "packet/PLAN.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/PLAN.json",
+      "expected_sha256": "c1fff1ebcd6a40ecafe2f66a6192945b09d4d856204c2174a6e98efcf7688708",
+      "sha256": "c1fff1ebcd6a40ecafe2f66a6192945b09d4d856204c2174a6e98efcf7688708",
+      "matches": true
+    },
+    {
+      "name": "packet/POSTFLIGHT.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/POSTFLIGHT.template.json",
+      "expected_sha256": "854051d1e449a68005969dc7a1524ef06abac22a00f54ba6261327a057f6f5c0",
+      "sha256": "854051d1e449a68005969dc7a1524ef06abac22a00f54ba6261327a057f6f5c0",
+      "matches": true
+    },
+    {
+      "name": "packet/PREFLIGHT.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/PREFLIGHT.json",
+      "expected_sha256": "a6c958ab6940262a5ed1ddacc4627a583ce4ab8d9702b726d691502cedd4b8f8",
+      "sha256": "a6c958ab6940262a5ed1ddacc4627a583ce4ab8d9702b726d691502cedd4b8f8",
+      "matches": true
+    },
+    {
+      "name": "packet/README.md",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/README.md",
+      "expected_sha256": "298d72e5420553def11c42986c62bb599935f1e5c3c4f39b069c0b009d39ff6c",
+      "sha256": "298d72e5420553def11c42986c62bb599935f1e5c3c4f39b069c0b009d39ff6c",
+      "matches": true
+    },
+    {
+      "name": "packet/REVIEW-V2.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/REVIEW-V2.json",
+      "expected_sha256": "fb82abd14cdcce56dad7936759901625e5c53dcf6f126b26bde46610f9f31107",
+      "sha256": "fb82abd14cdcce56dad7936759901625e5c53dcf6f126b26bde46610f9f31107",
+      "matches": true
+    },
+    {
+      "name": "packet/ROOT-BINDING.HOLE-H1.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/ROOT-BINDING.HOLE-H1.template.json",
+      "expected_sha256": "1cbf59bdef55132367d5a13f6f4feb4cbf84cb551658de3b3025413c3b23a9fb",
+      "sha256": "1cbf59bdef55132367d5a13f6f4feb4cbf84cb551658de3b3025413c3b23a9fb",
+      "matches": true
+    },
+    {
+      "name": "packet/ROOT-BINDING.HOLE-H2.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/ROOT-BINDING.HOLE-H2.template.json",
+      "expected_sha256": "ea50001d629a37056aedb443c554aa2f5264cc08e6c4c221a83dc24aa0274ddf",
+      "sha256": "ea50001d629a37056aedb443c554aa2f5264cc08e6c4c221a83dc24aa0274ddf",
+      "matches": true
+    },
+    {
+      "name": "packet/ROOT-UI-ACCEPTANCE.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/ROOT-UI-ACCEPTANCE.template.json",
+      "expected_sha256": "f86b3f03679dddb4eed76d4f48ac00a63698d61b6286aff85350200eb9d79d86",
+      "sha256": "f86b3f03679dddb4eed76d4f48ac00a63698d61b6286aff85350200eb9d79d86",
+      "matches": true
+    },
+    {
+      "name": "packet/RUNTIME-PROTOCOL.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/RUNTIME-PROTOCOL.json",
+      "expected_sha256": "5504bea325e18ec13e095b3d9790727eec1b39786f32165f23f92cfbc58e0fea",
+      "sha256": "5504bea325e18ec13e095b3d9790727eec1b39786f32165f23f92cfbc58e0fea",
+      "matches": true
+    },
+    {
+      "name": "packet/SELF-CHECK-001.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/SELF-CHECK-001.json",
+      "expected_sha256": "c71ac8eee57ea76b62c9dd86a8bd9880a872338225c5164b198390d8d73f4294",
+      "sha256": "c71ac8eee57ea76b62c9dd86a8bd9880a872338225c5164b198390d8d73f4294",
+      "matches": true
+    },
+    {
+      "name": "packet/SOURCE-73.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/SOURCE-73.json",
+      "expected_sha256": "6618ce59f0aeeb0b7ab7a61bcc0c8986ad52f90f48d8ce4af793fae759f1dfe0",
+      "sha256": "6618ce59f0aeeb0b7ab7a61bcc0c8986ad52f90f48d8ce4af793fae759f1dfe0",
+      "matches": true
+    },
+    {
+      "name": "packet/fixtures/R240-v5-assessment.weftforge",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/fixtures/R240-v5-assessment.weftforge",
+      "expected_sha256": "efded819acf663319dba7cb74e31e6291901d62a46eba671b14de16fd206e400",
+      "sha256": "efded819acf663319dba7cb74e31e6291901d62a46eba671b14de16fd206e400",
+      "matches": true
+    },
+    {
+      "name": "packet/fixtures/hole-r6.dxf",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/fixtures/hole-r6.dxf",
+      "expected_sha256": "a013339c8be1e5fb5f0f81c7d2df390c7c81fd404572916ba191cc50b2599cdf",
+      "sha256": "a013339c8be1e5fb5f0f81c7d2df390c7c81fd404572916ba191cc50b2599cdf",
+      "matches": true
+    },
+    {
+      "name": "packet/fixtures/hole-r6.dxf.recovery",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/fixtures/hole-r6.dxf.recovery",
+      "expected_sha256": "90503ddab50b562191e7bccb3d37315bbf01a356e2dac8d5ab69686ac8988fee",
+      "sha256": "90503ddab50b562191e7bccb3d37315bbf01a356e2dac8d5ab69686ac8988fee",
+      "matches": true
+    },
+    {
+      "name": "packet/grade_exports.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/grade_exports.py",
+      "expected_sha256": "56ab4c66ea5d70846b532e3abae951e2af1e2c1ea0a9baee5a924a154d06ba11",
+      "sha256": "56ab4c66ea5d70846b532e3abae951e2af1e2c1ea0a9baee5a924a154d06ba11",
+      "matches": true
+    },
+    {
+      "name": "packet/grade_saved.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/grade_saved.py",
+      "expected_sha256": "486328f13c49018e240cbbd3f52e8b1cf9dd0d97747d3653ee3b927d3b2a31b9",
+      "sha256": "486328f13c49018e240cbbd3f52e8b1cf9dd0d97747d3653ee3b927d3b2a31b9",
+      "matches": true
+    },
+    {
+      "name": "packet/retain_saved.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/retain_saved.py",
+      "expected_sha256": "335492634daf33f2d5def104829f2ac17d6c0b704a2d53954ec4ff39aa0a6950",
+      "sha256": "335492634daf33f2d5def104829f2ac17d6c0b704a2d53954ec4ff39aa0a6950",
+      "matches": true
+    },
+    {
+      "name": "packet/selfcheck.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/selfcheck.py",
+      "expected_sha256": "249ffb0d2caa086d1cc709cc8b840007679afce71f093b79444171ad0a9c23fd",
+      "sha256": "249ffb0d2caa086d1cc709cc8b840007679afce71f093b79444171ad0a9c23fd",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-contract-20261116/CONTRACT.md",
+      "path": "<WORKSPACE>/.local/straight-hole-contract-20261116/CONTRACT.md",
+      "expected_sha256": "dc6b66c6d278ec25165979c2a2c729b4a871f8798baa1f7fe53a5d7299dd8797",
+      "sha256": "dc6b66c6d278ec25165979c2a2c729b4a871f8798baa1f7fe53a5d7299dd8797",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-contract-20261116/ORACLE-SUMMARY.json",
+      "path": "<WORKSPACE>/.local/straight-hole-contract-20261116/ORACLE-SUMMARY.json",
+      "expected_sha256": "6cce2ccc38d28e2bc4b724e32867a052461c63c9b711378d1a2b414a63a84ba2",
+      "sha256": "6cce2ccc38d28e2bc4b724e32867a052461c63c9b711378d1a2b414a63a84ba2",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-cut-contract-20261115/approved-v2/fixtures/R240.weftforge",
+      "path": "<WORKSPACE>/.local/straight-cut-contract-20261115/approved-v2/fixtures/R240.weftforge",
+      "expected_sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+      "sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-cut-native-plan-v2-20261116/grade_saved.py",
+      "path": "<WORKSPACE>/.local/straight-cut-native-plan-v2-20261116/grade_saved.py",
+      "expected_sha256": "a9d7d866f7a4639ed57eee94f79428dd4026baba073c95043c2d9bd9a7931d62",
+      "sha256": "a9d7d866f7a4639ed57eee94f79428dd4026baba073c95043c2d9bd9a7931d62",
+      "matches": true
+    },
+    {
+      "name": "external/.local/internal-native-plan-v2-20261115/grade_saved.py",
+      "path": "<WORKSPACE>/.local/internal-native-plan-v2-20261115/grade_saved.py",
+      "expected_sha256": "6b3aefcca60fcc12d78a75e967f63c582d76e7a2d134975393a72a3a9c184c78",
+      "sha256": "6b3aefcca60fcc12d78a75e967f63c582d76e7a2d134975393a72a3a9c184c78",
+      "matches": true
+    },
+    {
+      "name": "external/.local/native-transform-controller-20261115/controller.cjs",
+      "path": "<WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs",
+      "expected_sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+      "sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+      "matches": true
+    },
+    {
+      "name": "external/.local/native-length-readouts-v2-20261115/recorder.cjs",
+      "path": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+      "expected_sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+      "sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+      "matches": true
+    },
+    {
+      "name": "external/.local/native-internal-annotations-20261115/C002/OBSERVER-FRAGMENT.cjs",
+      "path": "<WORKSPACE>/.local/native-internal-annotations-20261115/C002/OBSERVER-FRAGMENT.cjs",
+      "expected_sha256": "d580450b45fc2fe42b19c146fb7023f84d04e7b9596ac24a8f5afe3e81be7729",
+      "sha256": "d580450b45fc2fe42b19c146fb7023f84d04e7b9596ac24a8f5afe3e81be7729",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-holes-20261116/apps/weftforge/src/main.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/src/main.rs",
+      "expected_sha256": "71b2ff79a315a5de5347ce36a4a07a13a3e9faca6c46e77086338bb24b8a2d48",
+      "sha256": "71b2ff79a315a5de5347ce36a4a07a13a3e9faca6c46e77086338bb24b8a2d48",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/CHECKS.json",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/CHECKS.json",
+      "expected_sha256": "5b60dcd33e167da93c9f93fff7f6fa9a2e751887d88d7cfc690f20d30588b3f0",
+      "sha256": "5b60dcd33e167da93c9f93fff7f6fa9a2e751887d88d7cfc690f20d30588b3f0",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/fmt.stdout",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/fmt.stdout",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/fmt.stderr",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/fmt.stderr",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/test.stdout",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/test.stdout",
+      "expected_sha256": "b330041645812acd9c482779e86e95dcd7554867fd1b203444287ef840009f51",
+      "sha256": "b330041645812acd9c482779e86e95dcd7554867fd1b203444287ef840009f51",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/test.stderr",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/test.stderr",
+      "expected_sha256": "d9378bd73cbe130f9000c1ee532c35e0bdbf150d14e4efba6c290a3fc8bb0738",
+      "sha256": "d9378bd73cbe130f9000c1ee532c35e0bdbf150d14e4efba6c290a3fc8bb0738",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/clippy.stdout",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/clippy.stdout",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/clippy.stderr",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/clippy.stderr",
+      "expected_sha256": "7e124730c1f0d62be0d1895cb6c676f9eb13021aea35a22de52fca1c1dbe5bc6",
+      "sha256": "7e124730c1f0d62be0d1895cb6c676f9eb13021aea35a22de52fca1c1dbe5bc6",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/debug-build.stdout",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/debug-build.stdout",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/debug-build.stderr",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/debug-build.stderr",
+      "expected_sha256": "ff5a6ab211780afa5fb105f61d8ad02f84a6fd503986ed21c1bd791049d4f6b2",
+      "sha256": "ff5a6ab211780afa5fb105f61d8ad02f84a6fd503986ed21c1bd791049d4f6b2",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/CHECKS.json",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/CHECKS.json",
+      "expected_sha256": "7b5fc16346ce8719be669dd32881635fd9b645d62a2885c5f040a50486bac290",
+      "sha256": "7b5fc16346ce8719be669dd32881635fd9b645d62a2885c5f040a50486bac290",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/xtask.stdout",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/xtask.stdout",
+      "expected_sha256": "3318510a59b31208b1cd4ab2e7a9cb8e0b7d9170137aa84e1072c02ccd3c2dd3",
+      "sha256": "3318510a59b31208b1cd4ab2e7a9cb8e0b7d9170137aa84e1072c02ccd3c2dd3",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/xtask.stderr",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/xtask.stderr",
+      "expected_sha256": "ef4616bf095f86eb589c1eee2689d7d150cc5b07a7ddc143953404d5d4794565",
+      "sha256": "ef4616bf095f86eb589c1eee2689d7d150cc5b07a7ddc143953404d5d4794565",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/debug-build.stdout",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/debug-build.stdout",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/debug-build.stderr",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/debug-build.stderr",
+      "expected_sha256": "9a30d54c8b16d7e49510b182028079bca120aeebb7d662e88f8566e6196a49f6",
+      "sha256": "9a30d54c8b16d7e49510b182028079bca120aeebb7d662e88f8566e6196a49f6",
+      "matches": true
+    },
+    {
+      "name": "external/.local/native-straight-cut-20261116/R003/ACTOR-BOOTSTRAP.js",
+      "path": "<WORKSPACE>/.local/native-straight-cut-20261116/R003/ACTOR-BOOTSTRAP.js",
+      "expected_sha256": "9eb7cd6362c968af6df837c4ccb0ed3f9dc629330053fc7594e85944fc211f79",
+      "sha256": "9eb7cd6362c968af6df837c4ccb0ed3f9dc629330053fc7594e85944fc211f79",
+      "matches": true
+    },
+    {
+      "name": "external/.local/native-straight-cut-20261116/R003/ACTOR-PERSISTENCE-CHECK.js",
+      "path": "<WORKSPACE>/.local/native-straight-cut-20261116/R003/ACTOR-PERSISTENCE-CHECK.js",
+      "expected_sha256": "559a5dc04924b06ffb1aac929f449758973f32a586f3fb21534815b137b2bc52",
+      "sha256": "559a5dc04924b06ffb1aac929f449758973f32a586f3fb21534815b137b2bc52",
+      "matches": true
+    },
+    {
+      "name": "external/.local/native-straight-cut-20261116/R003/ORCHESTRATION-ADDENDUM.json",
+      "path": "<WORKSPACE>/.local/native-straight-cut-20261116/R003/ORCHESTRATION-ADDENDUM.json",
+      "expected_sha256": "17569569ff8e26a6d7fca009792297fc01651268157e77ce28a798eb9f9f6b6a",
+      "sha256": "17569569ff8e26a6d7fca009792297fc01651268157e77ce28a798eb9f9f6b6a",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/ACTOR-PERSISTENCE-CHECK-RESULT.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/ACTOR-PERSISTENCE-CHECK-RESULT.template.json",
+      "expected_sha256": "c8de6c5079a5b1c94dc44b0b2c9f2eb559a788c1bf5ef922dd1d5321ceeff62a",
+      "sha256": "c8de6c5079a5b1c94dc44b0b2c9f2eb559a788c1bf5ef922dd1d5321ceeff62a",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/selfcheck.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/selfcheck.py",
+      "expected_sha256": "46793cdc34f2617480ebfd5d16a369f0bc3fc114214ab02d80cbcbd2419162fa",
+      "sha256": "46793cdc34f2617480ebfd5d16a369f0bc3fc114214ab02d80cbcbd2419162fa",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/PLAN.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/PLAN.json",
+      "expected_sha256": "c1fff1ebcd6a40ecafe2f66a6192945b09d4d856204c2174a6e98efcf7688708",
+      "sha256": "c1fff1ebcd6a40ecafe2f66a6192945b09d4d856204c2174a6e98efcf7688708",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/ACTOR-RUNTIME-TOOL-HISTORY.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/ACTOR-RUNTIME-TOOL-HISTORY.template.json",
+      "expected_sha256": "e371a1d48ec000a602deff4f7669289d012c70dadf65e9d04a9b4cfd00446950",
+      "sha256": "e371a1d48ec000a602deff4f7669289d012c70dadf65e9d04a9b4cfd00446950",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/grade_saved.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/grade_saved.py",
+      "expected_sha256": "e74271985f0b386d0baa110ab50e0912af91287569f59485bb77ae7bf4698c45",
+      "sha256": "e74271985f0b386d0baa110ab50e0912af91287569f59485bb77ae7bf4698c45",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/retain_saved.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/retain_saved.py",
+      "expected_sha256": "335492634daf33f2d5def104829f2ac17d6c0b704a2d53954ec4ff39aa0a6950",
+      "sha256": "335492634daf33f2d5def104829f2ac17d6c0b704a2d53954ec4ff39aa0a6950",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/SELF-CHECK-001.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/SELF-CHECK-001.json",
+      "expected_sha256": "96aee0eabfa063b379250c2d800f8cae76193602304439cade9ab01278736a41",
+      "sha256": "96aee0eabfa063b379250c2d800f8cae76193602304439cade9ab01278736a41",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/NATIVE-LEASE-CLOSED.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/NATIVE-LEASE-CLOSED.template.json",
+      "expected_sha256": "8ca6a4e559b375120423894bc1265b270062a77fbcc9138ecaa470f48dc89c8f",
+      "sha256": "8ca6a4e559b375120423894bc1265b270062a77fbcc9138ecaa470f48dc89c8f",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/ROOT-BINDING.HOLE-H2.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/ROOT-BINDING.HOLE-H2.template.json",
+      "expected_sha256": "ea50001d629a37056aedb443c554aa2f5264cc08e6c4c221a83dc24aa0274ddf",
+      "sha256": "ea50001d629a37056aedb443c554aa2f5264cc08e6c4c221a83dc24aa0274ddf",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/COMPLETION-SUMMARY-RETURN.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/COMPLETION-SUMMARY-RETURN.template.json",
+      "expected_sha256": "d715f63af22627102a8dd4328204ef4ee2ef77949e15e672ea264879ca0da1ae",
+      "sha256": "d715f63af22627102a8dd4328204ef4ee2ef77949e15e672ea264879ca0da1ae",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/ROOT-BINDING.HOLE-H1.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/ROOT-BINDING.HOLE-H1.template.json",
+      "expected_sha256": "1cbf59bdef55132367d5a13f6f4feb4cbf84cb551658de3b3025413c3b23a9fb",
+      "sha256": "1cbf59bdef55132367d5a13f6f4feb4cbf84cb551658de3b3025413c3b23a9fb",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/README.md",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/README.md",
+      "expected_sha256": "2c93b78c89a5a27a0b7b9d3ba7fc381968b4c26980178ac356aa47f2c0dafc93",
+      "sha256": "2c93b78c89a5a27a0b7b9d3ba7fc381968b4c26980178ac356aa47f2c0dafc93",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/grade_exports.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/grade_exports.py",
+      "expected_sha256": "1c7eacb2d6697c034bb8b1fd63cd77631e1c0ae880e760f9f990661fdd244d56",
+      "sha256": "1c7eacb2d6697c034bb8b1fd63cd77631e1c0ae880e760f9f990661fdd244d56",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/SELF-CHECK-003.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/SELF-CHECK-003.json",
+      "expected_sha256": "3d9f856be430110322b40ff958cae0dcb4c4312319aaee673f150d4db0c13445",
+      "sha256": "3d9f856be430110322b40ff958cae0dcb4c4312319aaee673f150d4db0c13445",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/ACTOR-RUNTIME-PROOF.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/ACTOR-RUNTIME-PROOF.template.json",
+      "expected_sha256": "380b68b7afde3448b04655410212183be0a109dbc54c9381bbd0c4f2964fa9f2",
+      "sha256": "380b68b7afde3448b04655410212183be0a109dbc54c9381bbd0c4f2964fa9f2",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/ROOT-UI-ACCEPTANCE.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/ROOT-UI-ACCEPTANCE.template.json",
+      "expected_sha256": "f86b3f03679dddb4eed76d4f48ac00a63698d61b6286aff85350200eb9d79d86",
+      "sha256": "f86b3f03679dddb4eed76d4f48ac00a63698d61b6286aff85350200eb9d79d86",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/RUNTIME-PROTOCOL.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/RUNTIME-PROTOCOL.json",
+      "expected_sha256": "5504bea325e18ec13e095b3d9790727eec1b39786f32165f23f92cfbc58e0fea",
+      "sha256": "5504bea325e18ec13e095b3d9790727eec1b39786f32165f23f92cfbc58e0fea",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/SELF-CHECK-002.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/SELF-CHECK-002.json",
+      "expected_sha256": "3d9f856be430110322b40ff958cae0dcb4c4312319aaee673f150d4db0c13445",
+      "sha256": "3d9f856be430110322b40ff958cae0dcb4c4312319aaee673f150d4db0c13445",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/PREFLIGHT.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/PREFLIGHT.json",
+      "expected_sha256": "8ca90bb24eace5049feabc7a268f2f1ea527146fcb82258e5e2982d5e5bfae5f",
+      "sha256": "8ca90bb24eace5049feabc7a268f2f1ea527146fcb82258e5e2982d5e5bfae5f",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/SOURCE-73.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/SOURCE-73.json",
+      "expected_sha256": "6618ce59f0aeeb0b7ab7a61bcc0c8986ad52f90f48d8ce4af793fae759f1dfe0",
+      "sha256": "6618ce59f0aeeb0b7ab7a61bcc0c8986ad52f90f48d8ce4af793fae759f1dfe0",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/SELF-CHECK-004.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/SELF-CHECK-004.json",
+      "expected_sha256": "3d9f856be430110322b40ff958cae0dcb4c4312319aaee673f150d4db0c13445",
+      "sha256": "3d9f856be430110322b40ff958cae0dcb4c4312319aaee673f150d4db0c13445",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/FREEZE.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/FREEZE.json",
+      "expected_sha256": "736b4d7555a85f59d8ee44cafa7fc88d2b1ff9a3ec285284d133c4df62c30999",
+      "sha256": "736b4d7555a85f59d8ee44cafa7fc88d2b1ff9a3ec285284d133c4df62c30999",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/POSTFLIGHT.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/POSTFLIGHT.template.json",
+      "expected_sha256": "854051d1e449a68005969dc7a1524ef06abac22a00f54ba6261327a057f6f5c0",
+      "sha256": "854051d1e449a68005969dc7a1524ef06abac22a00f54ba6261327a057f6f5c0",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/fixtures/hole-r6.dxf.recovery",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/fixtures/hole-r6.dxf.recovery",
+      "expected_sha256": "90503ddab50b562191e7bccb3d37315bbf01a356e2dac8d5ab69686ac8988fee",
+      "sha256": "90503ddab50b562191e7bccb3d37315bbf01a356e2dac8d5ab69686ac8988fee",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/fixtures/hole-r6.dxf",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/fixtures/hole-r6.dxf",
+      "expected_sha256": "a013339c8be1e5fb5f0f81c7d2df390c7c81fd404572916ba191cc50b2599cdf",
+      "sha256": "a013339c8be1e5fb5f0f81c7d2df390c7c81fd404572916ba191cc50b2599cdf",
+      "matches": true
+    },
+    {
+      "name": "external/.local/straight-hole-native-plan-20261116/fixtures/R240-v5-assessment.weftforge",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/fixtures/R240-v5-assessment.weftforge",
+      "expected_sha256": "efded819acf663319dba7cb74e31e6291901d62a46eba671b14de16fd206e400",
+      "sha256": "efded819acf663319dba7cb74e31e6291901d62a46eba671b14de16fd206e400",
+      "matches": true
+    },
+    {
+      "name": "fresh-own-native",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/WeftForgeHoleH2001.app/Contents/MacOS/weftforge",
+      "expected_sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c",
+      "sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c",
+      "matches": true
+    },
+    {
+      "name": "build-original",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/target/debug/weftforge",
+      "expected_sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c",
+      "sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c",
+      "matches": true
+    },
+    {
+      "name": "accepted-H1-binding",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/ROOT-BINDING.json",
+      "expected_sha256": "e9e2bed535024602b54a285f8ccd28a0f3a8ecf93fdcc5be4e8629f05e2f3cfc",
+      "sha256": "e9e2bed535024602b54a285f8ccd28a0f3a8ecf93fdcc5be4e8629f05e2f3cfc",
+      "matches": true
+    },
+    {
+      "name": "accepted-H1-snapshot",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/snapshots/redo-r5.weftforge",
+      "expected_sha256": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41",
+      "sha256": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41",
+      "matches": true
+    },
+    {
+      "name": "own-readonly-actual-input",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/inputs/accepted-redo-r5.weftforge",
+      "expected_sha256": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41",
+      "sha256": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41",
+      "matches": true
+    },
+    {
+      "name": "accepted-H1-single-grade",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/SAVED-GRADE-001.json",
+      "expected_sha256": "7c939e55ed30b5aebb3bb4f81fb28e449ce21cde67855d88fc592336665bf4f3",
+      "sha256": "7c939e55ed30b5aebb3bb4f81fb28e449ce21cde67855d88fc592336665bf4f3",
+      "matches": true
+    },
+    {
+      "name": "accepted-H1-root-UI",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/ROOT-UI-ACCEPTANCE.json",
+      "expected_sha256": "b6d79aeb220bf8a1fe291fb82149a7afab9f37b7909baf53f67ab5957d56f712",
+      "sha256": "b6d79aeb220bf8a1fe291fb82149a7afab9f37b7909baf53f67ab5957d56f712",
+      "matches": true
+    }
+  ],
+  "pinned_nodes": 156,
+  "all_pins_match": true,
+  "source_count": 73,
+  "source_head_text": "ref: refs/heads/feat/straight-pattern-holes",
+  "resolved_source_head": "52163adb86b9f48fdd06f042e4ddf615797c3947",
+  "source73_and_clean_HEAD_unchanged": true,
+  "own_native_sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c",
+  "own_native_bytes": 62233432,
+  "own_native_mode": "555",
+  "actual_input_copy": {
+    "method": "fs.copyFileSync from actual accepted H1-002 snapshot, opaque bytes unedited",
+    "source": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/snapshots/redo-r5.weftforge",
+    "destination": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/inputs/accepted-redo-r5.weftforge",
+    "sha256": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41",
+    "bytes": 4190,
+    "mode": "444",
+    "equals_actual_accepted_source": true,
+    "parsed_or_generated": false
+  },
+  "inputs": [
+    "accepted-redo-r5.weftforge"
+  ],
+  "work_at_preparation": [],
+  "exports_at_preparation": [],
+  "future_root_staged_literal_DXF": [
+    {
+      "future_path": "exports/hole-r6.dxf",
+      "frozen_source": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/fixtures/hole-r6.dxf",
+      "sha256": "a013339c8be1e5fb5f0f81c7d2df390c7c81fd404572916ba191cc50b2599cdf",
+      "currently_staged": false,
+      "staging_owner": "root before any case clock/GO"
+    },
+    {
+      "future_path": "exports/hole-r6.dxf.recovery",
+      "frozen_source": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/fixtures/hole-r6.dxf.recovery",
+      "sha256": "90503ddab50b562191e7bccb3d37315bbf01a356e2dac8d5ab69686ac8988fee",
+      "currently_staged": false,
+      "staging_owner": "root before any case clock/GO"
+    }
+  ],
+  "prior_H1_002_manifest_sha256": "892bb93748745eec9cfd7b846d0f3dd548456585a0248f19c1c1bed85206b5c1",
+  "prior_original_manifest_file_count": 849,
+  "prior_original_hashes_and_modes_unchanged": true,
+  "prior_changes": [],
+  "runtime_artifacts_absent": true
+}

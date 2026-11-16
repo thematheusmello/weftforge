@@ -1,0 +1,33 @@
+   Compiling weftforge-core v0.1.0 (<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.17s
+     Running tests/cut_piece.rs (target/debug/deps/cut_piece-7890166ec1dcb519)
+
+running 10 tests
+test cut_wire_envelope_required_fields_and_original_duplicate_bytes_are_strict ... ok
+test annotations_move_whole_in_original_order_or_refuse_the_entire_cut ... ok
+test original_r240_exact_identity_history_and_independent_child_edits ... ok
+test swapped_addresses_are_identical_and_clockwise_winding_is_preserved ... ok
+test invalid_addresses_numeric_geometry_and_late_transaction_are_atomic ... ok
+test tilted_and_large_offset_arrangement_and_untouched_float_bits_survive ... ok
+test every_target_sewing_reference_refuses_and_other_piece_relationships_stay_exact ... ok
+test ordinary_v4_exports_have_both_exterior_copies_independent_obj_components_and_safe_io ... FAILED
+test id_object_revision_and_shared_outer_transaction_work_caps_are_atomic ... ok
+test original_r_l_eligibility_supported_mesh_mass_and_explicit_fine_l_vertex_cap ... ok
+
+failures:
+
+---- ordinary_v4_exports_have_both_exterior_copies_independent_obj_components_and_safe_io stdout ----
+
+thread 'ordinary_v4_exports_have_both_exterior_copies_independent_obj_components_and_safe_io' (65654206) panicked at crates/weftforge-core/tests/cut_piece.rs:1126:5:
+assertion `left == right` failed
+  left: Number(5)
+ right: 4
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    ordinary_v4_exports_have_both_exterior_copies_independent_obj_components_and_safe_io
+
+test result: FAILED. 9 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 37.11s
+
+error: test failed, to rerun pass `-p weftforge-core --test cut_piece`

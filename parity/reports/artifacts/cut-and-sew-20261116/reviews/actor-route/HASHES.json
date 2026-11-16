@@ -1,0 +1,47 @@
+{
+  "status": "read-only prospective source-route review; no native execution, controller, clock, product/evaluator imports, Git or Cargo",
+  "reviewed_packet_revision": 2,
+  "review": {
+    "path": ".local/cut-and-sew-actor-route-review-20261116/REVIEW-001.md",
+    "sha256": "40244dd2932cf99aa2e535ce22ece5a5aa83ba979fc40c227af89f2972071722",
+    "bytes": 18579
+  },
+  "reviewed_input_hashes": {
+    ".local/straight-cut-and-sew-20261116/apps/weftforge/src/main.rs": "e561485f666197368aad44c302a2216635c5ff2afdb08a6cfc4bfa77d4e4bb44",
+    ".local/straight-cut-and-sew-20261116/spec/features/SEW-001-cut-and-sew.md": "9420f9a88ea184868aba5543f0d356181fcd8373dadfa4632376cc4a5a5f8941",
+    ".local/cut-and-sew-contract-20261116/CONTRACT.md": "57a121c85f599cc41931dc32993e57f29541c1ea161f6286f391db2ecd4a90f3",
+    ".local/cut-and-sew-native-plan-20261116/PLAN.json": "9ab5a3f4ff302ee1d6313a3ec1d7ad799ee8d679c422b6ea3189bb08e78161d4",
+    ".local/cut-and-sew-native-plan-20261116/RUNTIME-PROTOCOL.json": "df481919b9dfde53032d7fd51db14b6332cbaff8ad62f41e0f9c2485bea86c49",
+    ".local/cut-and-sew-native-plan-20261116/PROVENANCE.json": "c0ca94468568b56e46d64c74daa9e645dcd94cfebfdae34ad18507ddb8c4dcf9",
+    ".local/cut-and-sew-native-plan-20261116/DRAFT.json": "274d0a1485069ab2c6c2722008638d31dc1aed4e24fdc74a3b2a2669bd0fdfef",
+    ".local/cut-and-sew-native-plan-20261116/README.md": "c90b93c651eb8e128f51f62a82441ff1b752936afa991efdf4fe2f50c275f208",
+    ".local/cut-and-sew-native-plan-20261116/SOURCE-74.json": "ee012acf52f6080f7608a8496ae4d4f2e789199bcfd6e2dcc86f52581a9491c8",
+    ".local/cut-and-sew-native-plan-20261116/REVISION-002.json": "06e461c16842dedfa70eeeee2d13ddb77326dd14e2accf6f54fd1c4d16240f09",
+    ".local/cut-and-sew-native-plan-20261116/DRAFT-INVENTORY-002.json": "430c378e72b461bd36b09cc9eb72cfed41b83f9a7cb919b9d8f5ece94a8783ce",
+    ".local/cut-and-sew-native-plan-20261116/ACTOR-RUNTIME-PROOF.template.json": "5055a85aa9fd5915e271686e9b655dfb6b78cae8ba897d7b5eb175ca9749c48b",
+    ".local/cut-and-sew-native-plan-20261116/ACTOR-PERSISTENCE-CHECK-RESULT.template.json": "a47d3373b0e5d0db6c8764218fa9b9c4dd488e3f594b994f32a1e9a3d6374ec2",
+    ".local/cut-and-sew-native-plan-20261116/POSTFLIGHT.template.json": "b80f3f74c1e11256c1400c3e91c32b7c14dd7ed3759eaf71488530b26c40c3ac",
+    ".local/cut-and-sew-native-plan-20261116/ROOT-BINDING.SEW-S1.template.json": "1a7fa26a27c8a47d265f065b8290cc28f64075db27e8064e9ad47d63180a0b8c",
+    ".local/cut-and-sew-native-plan-20261116/ROOT-BINDING.SEW-S2.template.json": "cf094299e2ad7c175c04bde8080a0b3b8e4e411bcfcfc965e72a342b89fc4dfb"
+  },
+  "passive_arithmetic_and_identity_checks": {
+    "UI_hash_matches_source74": true,
+    "source_inventory_count_is74": true,
+    "PLAN_reviewed_REV002_hash_unchanged": true,
+    "draft_step_sums": {
+      "SEW-S1": 149,
+      "SEW-S2": 68
+    },
+    "proposed_S1_paired": 148,
+    "proposed_S1_documentation": 1,
+    "proposed_S1_static": 149,
+    "S1_cap": 160,
+    "S1_reserve": 11,
+    "proposed_S2_paired": 71,
+    "proposed_S2_documentation": 1,
+    "proposed_S2_static": 72,
+    "S2_cap": 75,
+    "S2_reserve": 3,
+    "FREEZE_present": false
+  }
+}

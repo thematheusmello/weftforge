@@ -1,0 +1,65 @@
+{
+  "kind": "fresh S1 preparation only, no authority or GO",
+  "case": "SEW-S1",
+  "attempt": "S1-001",
+  "root_authorized_for_case": false,
+  "native_lease_granted": false,
+  "current_packet_freeze_sha256": "5ab3b3238d2b50a5f6fdfa58965c94a7a057b5f5cb084c46117e949d986f3b0c",
+  "native_source": {
+    "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/target/debug/weftforge",
+    "sha256": "7809e41948e19d0055da45e10a3b55225173df48e43465fab1b48effd7efa1c8",
+    "bytes": 62245032,
+    "mode": "0o755"
+  },
+  "own_bundle": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/WeftForgeSewS1001.app",
+  "bundle_identifier": "org.weftforge.preview.sew20261116.s1001",
+  "own_native": {
+    "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/WeftForgeSewS1001.app/Contents/MacOS/weftforge",
+    "sha256": "7809e41948e19d0055da45e10a3b55225173df48e43465fab1b48effd7efa1c8",
+    "bytes": 62245032,
+    "mode": "0o555"
+  },
+  "plist": {
+    "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/WeftForgeSewS1001.app/Contents/Info.plist",
+    "sha256": "f13562ed221dd4d30b9c421674f96bf4a1189d701954cd5eb55c842164a0da4c",
+    "bytes": 863,
+    "mode": "0o444"
+  },
+  "accepted_input": {
+    "source": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/snapshots/parent-r1.weftforge",
+    "destination": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/inputs/accepted-parent-r1.weftforge",
+    "sha256": "525855265074aed8ff1af10297c353973cc294a3d83fca818161ce702ba7310f",
+    "bytes": 3232,
+    "mode": "0o444",
+    "copy_only_actual_native_bytes": true,
+    "never_assessment_or_generated_input": true
+  },
+  "input_argv": [
+    "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/inputs/accepted-parent-r1.weftforge"
+  ],
+  "launcher_path": "/usr/bin/open",
+  "launcher_argv": [
+    "-n",
+    "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/WeftForgeSewS1001.app",
+    "--args",
+    "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/inputs/accepted-parent-r1.weftforge"
+  ],
+  "accepted_input_dependency": {
+    "case": "HOLE-H1",
+    "attempt": "H1-002",
+    "snapshot_label": "parent-r1",
+    "root_binding_path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/ROOT-BINDING.json",
+    "root_binding_sha256": "e9e2bed535024602b54a285f8ccd28a0f3a8ecf93fdcc5be4e8629f05e2f3cfc",
+    "snapshot_sha256": "525855265074aed8ff1af10297c353973cc294a3d83fca818161ce702ba7310f",
+    "saved_grade_report_sha256": "7c939e55ed30b5aebb3bb4f81fb28e449ce21cde67855d88fc592336665bf4f3",
+    "root_native_ui_review_sha256": "b6d79aeb220bf8a1fe291fb82149a7afab9f37b7909baf53f67ab5957d56f712"
+  },
+  "work_empty": true,
+  "exports_in_case_scope": false,
+  "S2_staged": false,
+  "canonical_draft_has_no_extra_keys_or_required_nulls": true,
+  "grants_still_false": true,
+  "staged_runtime_cells_executed": false,
+  "case_clock_or_controller_started": false,
+  "formal_grading_performed": false
+}

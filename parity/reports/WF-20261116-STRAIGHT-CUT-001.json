@@ -7,7 +7,7 @@
   "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
   "kind": "implementation_only",
   "status": "passed",
-  "freshness": "current",
+  "freshness": "stale",
   "feature_ids": [
     "PAT-006"
   ],
@@ -1585,5 +1585,6 @@
     "No native concave-cut, failed-I/O, export/interoperability, all numeric/work limits or broader selection/offset contract is qualified by CUT-R1/R003 and CUT-R2/R2-001.",
     "Original and post-cut fine L at 0.005 m retain the existing mesh vertex-cap refusal; no fine-L mesh/Cloth/mass result.",
     "No native solver/particle-mass, drape/contact-quality, full-garment, cross-platform or reference parity acceptance."
-  ]
+  ],
+  "freshness_reason": "Runtime 5898f1a adds the separate strict-v5 hole and bounded CutAndSew source, changing scoped core/UI/adapters/tests/docs since tested 19b1. Preserve CUT-R1/R003 and qualified CUT-R2/R2-001 outcomes, failed attempts, timing/extra-draft-flag qualifications, tested identities and every artifact hash. No case was replayed/repaired/regraded; current 5898 native CutAndSew and reference behavior remain unobserved. Private H1/H2 hole work is not this public v4 cut result or current 5898 evidence."
 }

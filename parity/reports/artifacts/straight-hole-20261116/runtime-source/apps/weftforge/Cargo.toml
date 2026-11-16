@@ -1,0 +1,14 @@
+[package]
+name = "weftforge"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+weftforge-core = { path = "../../crates/weftforge-core" }
+weftforge-sim = { path = "../../crates/weftforge-sim" }
+eframe.workspace = true
+rfd.workspace = true
+serde_json.workspace = true

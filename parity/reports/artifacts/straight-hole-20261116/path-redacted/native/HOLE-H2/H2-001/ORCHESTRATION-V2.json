@@ -1,0 +1,82 @@
+{
+  "kind": "fresh H2-001 preparation only; separate root final binding/DXF staging/review/GO required",
+  "case": "HOLE-H2",
+  "attempt": "H2-001",
+  "packet": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116",
+  "freeze_sha256": "13fb9c37e4d3c56f5e017f39fcf9db1b87ddb821cffd9ee96627e778db69193c",
+  "source_commit": "a021a2581c8e1dd000e535a417dcd964c3835884",
+  "clean_metadata_commit": "52163adb86b9f48fdd06f042e4ddf615797c3947",
+  "native_binary_sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c",
+  "fresh_bundle": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/WeftForgeHoleH2001.app",
+  "bundle_identifier": "org.weftforge.preview.hole20261116.h2001",
+  "accepted_h1_dependency": {
+    "root_binding_path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/ROOT-BINDING.json",
+    "root_binding_sha256": "e9e2bed535024602b54a285f8ccd28a0f3a8ecf93fdcc5be4e8629f05e2f3cfc",
+    "attempt": "H1-002",
+    "snapshot_sha256": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41",
+    "saved_grade_report_sha256": "7c939e55ed30b5aebb3bb4f81fb28e449ce21cde67855d88fc592336665bf4f3",
+    "root_native_ui_review_sha256": "b6d79aeb220bf8a1fe291fb82149a7afab9f37b7909baf53f67ab5957d56f712"
+  },
+  "physical_project_input": "ONLY actual accepted H1-002 R5 copy, readonly444, opaque/unedited; no generated or assessment fixture",
+  "input_argv": [
+    "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/inputs/accepted-redo-r5.weftforge"
+  ],
+  "inputs": {
+    "inputs/accepted-redo-r5.weftforge": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41"
+  },
+  "work_and_exports_currently_empty": true,
+  "root_future_DXF_sentinels": [
+    {
+      "future_path": "exports/hole-r6.dxf",
+      "frozen_source": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/fixtures/hole-r6.dxf",
+      "sha256": "a013339c8be1e5fb5f0f81c7d2df390c7c81fd404572916ba191cc50b2599cdf",
+      "currently_staged": false,
+      "staging_owner": "root before any case clock/GO"
+    },
+    {
+      "future_path": "exports/hole-r6.dxf.recovery",
+      "frozen_source": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/fixtures/hole-r6.dxf.recovery",
+      "sha256": "90503ddab50b562191e7bccb3d37315bbf01a356e2dac8d5ab69686ac8988fee",
+      "currently_staged": false,
+      "staging_owner": "root before any case clock/GO"
+    }
+  ],
+  "current_draft": "ROOT-BINDING-V2-DRAFT.json",
+  "root_authorized_for_case": false,
+  "native_lease_granted": false,
+  "canonical_binding_keys_only": true,
+  "complete_future_sources": [
+    "ACTOR-START-CLOCK.cjs",
+    "ACTOR-BOOTSTRAP.js",
+    "ACTOR-PERSISTENCE-CHECK.js",
+    "ACTOR-LAUNCH-PID.cjs",
+    "ACTOR-INITIAL-CAPTURE.js",
+    "ACTOR-POSTFLIGHT-RAW.cjs"
+  ],
+  "prospective_steps": [
+    "Root stages only exact frozen literal exports/hole-r6.dxf and .recovery; verifies and grants exact final canonical H2 binding separately. Current empty exports receipt stays historical preparation metadata.",
+    "After root GO: ACTOR-START-CLOCK.cjs requires the final binding SHA argument, starts continuous UTC/monotonic clock and standalonegetState before0001; first actual CUA cell only await cua.getState();.",
+    "Execute complete ACTOR-BOOTSTRAP.js with20 initialized program-top-level helpers; canonical actual-CUA0002 proof verifies source73/native/accepted H1 bytes/receipts and root-staged DXF literals.",
+    "Separate independent actual0003 closed H2 readiness flags all true before external launch.",
+    "ACTOR-LAUNCH-PID.cjs0004 uses exact native input argv;0005 expected_binary is native binary, expected_command=[binary,...inputargv].join(\" \"), ps filter matches that complete command exactly.",
+    "Exact initial fragment0006/0007 binds only already-running own bundle and observes actual R5.",
+    "Original native H2 route95static: select Hole11/current curve16; current-screenshot raw-coordinate U12 .08 field entry; one TabR6; SaveAs exact hole-r240-reopened.work.weftforge; opaque reopened-r6 retention.",
+    "Wait only original bounded readiness pairs before OBJ as needed; native fresh hole-r6.obj, hole-r6.svg choosers each one current Name setValue/enabled-Save capture/oneSave; retain opaque bytes.",
+    "DXF chooses existing hole-r6.dxf; one observed Replace/capture, expected refusal, retain original sentinel/recovery opaque bytes. No simulation, preclosure construction/export interpretation, retries, offsets, cached coordinates, numericAX fallback or grader.",
+    "Success realQuit last native operation then VERYNEXTtool summary-only once; unexpected barrier same immediate summary-only without observer/input/Quit.",
+    "After actual summary return retain honest bounds/counts, exact journal proof/terminal excerpts, raw guard and manifest; root separately verifies exit, closes native input, corroborates history and performs sole formal saved/export grade."
+  ],
+  "all_cross_cell_CUA_vars_program_top_level": true,
+  "observer_arguments": 5,
+  "postflight_nested_descriptor_comparison_fixed": true,
+  "static_operations": 95,
+  "startup_operations": 13,
+  "operation_cap": 100,
+  "summary_calls": 1,
+  "overall_cap": 101,
+  "elapsed_cap_s": 1200,
+  "continuous_clock_never_reset": true,
+  "mandatory_doc_refresh_consumes_reserve": true,
+  "original_models_tolerances_routes_and_caps_unchanged": true,
+  "actual_GUI_clock_launch_controller_product_or_evaluator_execution": false
+}

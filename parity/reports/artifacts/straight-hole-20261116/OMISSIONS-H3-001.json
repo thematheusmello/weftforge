@@ -1,0 +1,301 @@
+{
+  "whole_file_omissions": {
+    "reviews/H3-root/H3-001-FAILED-POSTGUARD-PRIMARY-EXCERPTS.jsonl": {
+      "original_sha256": "8d33a82ab71e24968c673fe7c15f4ab1966a1d35b5d783b27d82fe8d14508f1f",
+      "original_bytes": 8626,
+      "reason": "whole primary raw-session excerpt private; selected H3-only guard return and declared invocation metadata retained, without unrelated parallel branch data"
+    },
+    "native/HOLE-H3/H3-001/ACTOR-CUA-JOURNAL-EXCERPTS.jsonl": {
+      "original_sha256": "ed74649b22111bbc4baae524e000adf8e7b7d1cc58ec757b04bf4919b75cc2e4",
+      "original_bytes": 324650,
+      "reason": "whole raw-session excerpt private; declared metadata wrappers/hash/line counts and root correlation retained"
+    },
+    "native/HOLE-H3/H3-001/WeftForgeSvgHoleH3001.app/Contents/Info.plist": {
+      "original_sha256": "2d317eaf39fd9a30ce03a080c4c15af5dfb76efd780c58c159a85a2bb0a36283",
+      "original_bytes": 614,
+      "reason": "owned bundle omitted whole; exact binary/plist identities retained"
+    },
+    "native/HOLE-H3/H3-001/WeftForgeSvgHoleH3001.app/Contents/MacOS/weftforge": {
+      "original_sha256": "f74350126898e07729f898cb641442baecacc29404f5620b1cfabb03926e282a",
+      "original_bytes": 62231992,
+      "reason": "owned bundle omitted whole; exact binary/plist identities retained"
+    },
+    "native/HOLE-H3/H3-001/captures/dxf-exact-sentinel-basename-enabled-save-0.jpg": {
+      "original_sha256": "386204c54658b8c6e66eaf589dc2a1e42e1e8cd1cb197d820b5354588e18ad5c",
+      "original_bytes": 15126,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/dxf-exact-sentinel-basename-enabled-save.txt": {
+      "original_sha256": "968d4d8b2e9c7c54ac8c10746837673fe5d98b58eaf422174b25d4022a530c33",
+      "original_bytes": 359,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/dxf-in-owned-h3-export-folder-0.jpg": {
+      "original_sha256": "c8faa363ecf84b1d4bd9e9dedda31731d78efa48c544baf6eb7db3cff42f285c",
+      "original_bytes": 14969,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/dxf-in-owned-h3-export-folder.txt": {
+      "original_sha256": "e44e2b23e6fc9b049e1f562f7efce18a151426a9fe0a76ec9f335d72cf69c086",
+      "original_bytes": 1089,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/dxf-owned-export-folder-literal-0.jpg": {
+      "original_sha256": "603edb9a05c1136fc199b3288af79335a4d22ae17dc4fb74cc197d1ce4856ac7",
+      "original_bytes": 20346,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/dxf-owned-export-folder-literal.txt": {
+      "original_sha256": "1d8be88c2ce09789f0643dac4ef28410221f91302cb434c131c082c3670cddb1",
+      "original_bytes": 266,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/dxf-owned-export-folder-prompt-0.jpg": {
+      "original_sha256": "6eea5b71d68f4d20e3d65597a679767f55b4ff72bb4b82431b7b6f8784669b37",
+      "original_bytes": 21225,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/dxf-owned-export-folder-prompt.txt": {
+      "original_sha256": "ea1ba54ec955d002209a73bc37be84f992b40cf0fc623e3c61c6e244f5b2d92d",
+      "original_bytes": 1772,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/fresh-native-obj-export-chooser-0.jpg": {
+      "original_sha256": "44163f4a19bfda5ca93cbc38d1ce7e45726328c2983dd1063e1fe22cceb215e1",
+      "original_bytes": 14758,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/fresh-native-obj-export-chooser.txt": {
+      "original_sha256": "6f5e8a066aee28c5f7032b10058741328600ccd4ea640417cf24aac843b6140d",
+      "original_bytes": 1086,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/fresh-native-save-as-chooser-0.jpg": {
+      "original_sha256": "a1fa885293b66d670f6b72c3d2f3bbc64f286f78c374eb96ed034c50f487fdb5",
+      "original_bytes": 14963,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/fresh-native-save-as-chooser.txt": {
+      "original_sha256": "ab3df0256e65c5907267faeac4f29e345064665eb4e703c681d6ff0a5a6497e3",
+      "original_bytes": 1107,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/fresh-native-svg-export-chooser-0.jpg": {
+      "original_sha256": "409f777397ddfe40cd05c07c1822c98fcebee4a6855b9a58e6c12f7712cbf15d",
+      "original_bytes": 14997,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/fresh-native-svg-export-chooser.txt": {
+      "original_sha256": "6ab698bbb2379ef2bd9431bd15d2f2f01b6f751867c9a7f1f603fb9f600b5e84",
+      "original_bytes": 1089,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/native-dxf-refusal-chooser-0.jpg": {
+      "original_sha256": "c8faa363ecf84b1d4bd9e9dedda31731d78efa48c544baf6eb7db3cff42f285c",
+      "original_bytes": 14969,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/native-dxf-refusal-chooser.txt": {
+      "original_sha256": "90b9f678926b944c88465fbad4b5e0c05f152e1054e48c9d270a45f1995cc4f2",
+      "original_bytes": 1089,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/obj-exact-basename-enabled-save-0.jpg": {
+      "original_sha256": "6e97f0eca853796dbfc098bc6495ef8aca3193c6d433a19f0520f5fc875a87c0",
+      "original_bytes": 15117,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/obj-exact-basename-enabled-save.txt": {
+      "original_sha256": "dc4ba24a4e417641ada642b5c0e64126a4d7ea4f1f0659409eec7f269f9b5ed9",
+      "original_bytes": 359,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/obj-in-owned-h3-export-folder-0.jpg": {
+      "original_sha256": "0120660b9222d091e4490488311c84155171a02f272d4b8036d82945802a7e88",
+      "original_bytes": 14966,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/obj-in-owned-h3-export-folder.txt": {
+      "original_sha256": "91232c826b36000ed7f482d3cdc0a054fb36e0a48294dccb1bada9a960564ecf",
+      "original_bytes": 1088,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/obj-owned-export-folder-literal-0.jpg": {
+      "original_sha256": "205d86698c64aff71e02f4a2beda0d9e5b1fdcc2b069f474cb748077ac1fbd0c",
+      "original_bytes": 16622,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/obj-owned-export-folder-literal.txt": {
+      "original_sha256": "4326aab7ce634dabd50b7a2246920bf276613201d835ce56c0e3c350df10eced",
+      "original_bytes": 564,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/obj-owned-export-folder-prompt-0.jpg": {
+      "original_sha256": "c6625cb3769e3d3f110ebd686a88b780213b8756e983ed528aca8384af6013dd",
+      "original_bytes": 17465,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/obj-owned-export-folder-prompt.txt": {
+      "original_sha256": "c44ca9d0cee243e3e4ae53cc125572c0ec88dfcc88781c818fa6b8b31d119a52",
+      "original_bytes": 1364,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/owned-pid-process-list.txt": {
+      "original_sha256": "a1de3b6ae67843811dbf6ea7a5e0bc3cb34bcd484db243d9208583c98694bd1d",
+      "original_bytes": 193573,
+      "reason": "whole global PID inventory private; own PID/exit receipt/hash retained"
+    },
+    "native/HOLE-H3/H3-001/captures/save-as-exact-h3-basename-enabled-save-0.jpg": {
+      "original_sha256": "f1d76f43e188e4cd974f8b49f8f7e66cce910fc2727ec78165a10fa2d7f10b47",
+      "original_bytes": 15946,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/save-as-exact-h3-basename-enabled-save.txt": {
+      "original_sha256": "1dd64dc8757296de2f2b22d639a392459b36126243fe61c7eafb9da532446893",
+      "original_bytes": 391,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/save-as-in-owned-h3-work-folder-0.jpg": {
+      "original_sha256": "9028ca1fca4f1f431bec2bed325d1b9552cd89a3e292f1b6ae39dc849c5dd68d",
+      "original_bytes": 14442,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/save-as-in-owned-h3-work-folder.txt": {
+      "original_sha256": "779d5b0d2418e742159c9eb8675745793e967f0d3d8d8359a0cb2874c31ac123",
+      "original_bytes": 1081,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/save-as-owned-folder-prompt-0.jpg": {
+      "original_sha256": "a02d250765d1d7167a77c1a386a5425b115232260217e6df3ed29187f9f62553",
+      "original_bytes": 17038,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/save-as-owned-folder-prompt.txt": {
+      "original_sha256": "68d8ee736eabf69abadfbebb5e1543401a6ba8971640047228aa8a345db0eec9",
+      "original_bytes": 1328,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/save-as-owned-h3-work-folder-literal-0.jpg": {
+      "original_sha256": "79e90b13f45166cc92399867e500359513a36ac48503d3babb162346b94c20b5",
+      "original_bytes": 15942,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/save-as-owned-h3-work-folder-literal.txt": {
+      "original_sha256": "f373e80ffffbdfc0dc68f8aafff6158a9d2d45298c96f70ac7bf9f5f38463b4b",
+      "original_bytes": 892,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/svg-exact-basename-enabled-save-0.jpg": {
+      "original_sha256": "3d08595c5661582932f998b4a18355fae121add2e082a2b2e43a9bd6f44073ec",
+      "original_bytes": 15153,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/svg-exact-basename-enabled-save.txt": {
+      "original_sha256": "e14cda8f4a073f6328275ecbd57620a1fc439a8cf2ff52746a706c86b87a8f18",
+      "original_bytes": 359,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/svg-in-owned-h3-export-folder-0.jpg": {
+      "original_sha256": "e1fde8107154efdb8247d49d6a4784bad46620a8aabc56651e00d9db287996f4",
+      "original_bytes": 14974,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/svg-in-owned-h3-export-folder.txt": {
+      "original_sha256": "d2096a4c2b23fce38f0b35ddea4cf8923399af4e88cc21a79212ea5ac45995bf",
+      "original_bytes": 1089,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/svg-owned-export-folder-literal-0.jpg": {
+      "original_sha256": "529efacf0ac98d38dc5d0ee79747c037397c7299aec201a4670bb161d617e828",
+      "original_bytes": 19596,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/svg-owned-export-folder-literal.txt": {
+      "original_sha256": "1d8be88c2ce09789f0643dac4ef28410221f91302cb434c131c082c3670cddb1",
+      "original_bytes": 266,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/svg-owned-export-folder-prompt-0.jpg": {
+      "original_sha256": "71434b8e3ed9fa7fb1785d3af97822bd48bed170278ea8ab8c15f933c75bb20f",
+      "original_bytes": 20432,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    },
+    "native/HOLE-H3/H3-001/captures/svg-owned-export-folder-prompt.txt": {
+      "original_sha256": "ea1ba54ec955d002209a73bc37be84f992b40cf0fc623e3c61c6e244f5b2d92d",
+      "original_bytes": 1772,
+      "reason": "whole private chooser JPEG/AX omitted; original capture hashes and method/accounting preserved"
+    }
+  },
+  "body_omissions": {
+    "reviews/H3-root/H3-001-FAILED-POSTGUARD-INVOCATION-001.json": {
+      "original_sha256": "88ad6f4d5998efb968a153f8f56111a8215251eecafb94adfb4ea1ea26b0bae2",
+      "original_bytes": 1353,
+      "reason": "raw session history and internal session metadata omitted",
+      "omitted_fields": [
+        "actual_call_id",
+        "source_journal_path"
+      ],
+      "public_metadata_path": "history-metadata/reviews/H3-root/H3-001-FAILED-POSTGUARD-INVOCATION-001.json"
+    },
+    "reviews/H3-independent-UI/H3-001-CAPTURE-NODE-INVENTORY.json": {
+      "original_sha256": "76f5fb223dfdf9bc7fe1383bc508cedd02cc98de588601e5f96f33b0c249779e",
+      "original_bytes": 873487,
+      "omitted_fields": [
+        "captures_chronological[].full_original_ax_text",
+        "captures_chronological[].literal_ax_node_lines",
+        "initial_getApp_ax_baseline.full_original_text",
+        "initial_getApp_ax_baseline.retained_call_id",
+        "input_result_pairs[method=getAXStateAndScreenshot].after.result",
+        "retained_journal_checks"
+      ],
+      "public_metadata_path": "review-metadata/reviews/H3-independent-UI/H3-001-CAPTURE-NODE-INVENTORY.json"
+    },
+    "native/HOLE-H3/H3-001/ACTOR-ACTUAL-TOOL-JOURNAL.DRAFT.json": {
+      "original_sha256": "863af5d049528baf0ce1a81046b1b7287fc423cc7fb7f3db92a540ae411a5378",
+      "original_bytes": 36323,
+      "reason": "raw session history and internal session metadata omitted",
+      "omitted_fields": [
+        "actual_CUA_runtime_proof",
+        "independent_readiness_displayed_return",
+        "initial_CUA_call",
+        "startup_sources",
+        "terminal_adjacent_actual_tool_entries"
+      ],
+      "public_metadata_path": "history-metadata/native/HOLE-H3/H3-001/ACTOR-ACTUAL-TOOL-JOURNAL.DRAFT.json"
+    },
+    "native/HOLE-H3/H3-001/ACTOR-CUA-JOURNAL-EXCERPTS.json": {
+      "original_sha256": "c22ca64188b9c942eecdac533831b42dae5c0b450b5065752821addd07df9654",
+      "original_bytes": 16703,
+      "reason": "raw session history and internal session metadata omitted",
+      "omitted_fields": [
+        "all_CUA_calls_between_standalone_inventory_and_summary",
+        "raw_excerpts_path",
+        "source_journal_path",
+        "source_records_and_calls"
+      ],
+      "public_metadata_path": "history-metadata/native/HOLE-H3/H3-001/ACTOR-CUA-JOURNAL-EXCERPTS.json"
+    },
+    "native/HOLE-H3/H3-001/ACTOR-RUNTIME-RAW-TOOL-HISTORY.json": {
+      "original_sha256": "86920ec52f50cb249e93cbcd78bfcf6b50c199d13e78e2204d57058388daca11",
+      "original_bytes": 331169,
+      "reason": "raw session history and internal session metadata omitted",
+      "omitted_fields": [
+        "source_journal_path",
+        "selected_original_lines[].raw_utf8"
+      ],
+      "public_metadata_path": "history-metadata/native/HOLE-H3/H3-001/ACTOR-RUNTIME-RAW-TOOL-HISTORY.json"
+    },
+    "native/HOLE-H3/H3-001/ROOT-ACTUAL-TOOL-HISTORY.json": {
+      "original_sha256": "86920ec52f50cb249e93cbcd78bfcf6b50c199d13e78e2204d57058388daca11",
+      "original_bytes": 331169,
+      "reason": "raw session history and internal session metadata omitted",
+      "omitted_fields": [
+        "source_journal_path",
+        "selected_original_lines[].raw_utf8"
+      ],
+      "public_metadata_path": "history-metadata/native/HOLE-H3/H3-001/ROOT-ACTUAL-TOOL-HISTORY.json"
+    }
+  },
+  "duplicate_result_policy": "All34 screenshot results omit duplicate image/AX payloads; every before method/args and after ID/status/error/timestamps remains. Review inventory duplicate AX/node/result/journal bodies have a separate declared metadata derivative.",
+  "session_policy": "Raw JSONL session bodies private, including unrelated parallel-branch data. Selected H3 failed-guard return is retained separately; metadata wrappers preserve original hashes, root correlations, failure/exit1 and unknown exact invocation-time qualifications."
+}

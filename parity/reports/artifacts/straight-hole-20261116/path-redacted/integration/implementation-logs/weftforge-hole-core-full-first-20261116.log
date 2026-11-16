@@ -1,0 +1,33 @@
+   Compiling weftforge-core v0.1.0 (<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.28s
+     Running tests/holes.rs (target/debug/deps/holes-1e0c481417c2cc30)
+
+running 12 tests
+test last_first_join_preserves_addressable_hole_and_removes_only_common_geometry ... ok
+test exact_stable_identity_edit_history_split_join_remove_and_abandoned_branch ... ok
+test annotations_remain_exact_and_their_whole_segments_exclude_the_closed_hole ... ok
+test ownership_winding_and_orphans_are_rejected_at_the_document_boundary ... ok
+test invalid_commands_are_atomic_and_do_not_consume_ids_or_abandon_redo ... FAILED
+test outer_sewing_remains_exact_and_every_hole_sewing_route_refuses ... ok
+test winding_large_translation_concavity_and_authored_eligibility_are_resolution_independent ... ok
+test resize_transform_placement_and_piece_removal_include_both_loops_and_annotations ... ok
+test containment_budget_is_shared_across_hole_operations_in_a_transaction ... ok
+test stable_id_and_total_object_limits_include_holes_and_refuse_before_mutation ... ok
+test actual_annular_mesh_and_cloth_match_analytic_domain_topology_area_and_mass ... ok
+test eligible_large_annulus_reports_bounded_mesh_refusal_without_losing_authored_hole ... ok
+
+failures:
+
+---- invalid_commands_are_atomic_and_do_not_consume_ids_or_abandon_redo stdout ----
+
+thread 'invalid_commands_are_atomic_and_do_not_consume_ids_or_abandon_redo' (65630993) panicked at crates/weftforge-core/tests/holes.rs:52:41:
+called `Result::unwrap_err()` on an `Ok` value: ()
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    invalid_commands_are_atomic_and_do_not_consume_ids_or_abandon_redo
+
+test result: FAILED. 11 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 20.96s
+
+error: test failed, to rerun pass `-p weftforge-core --test holes`

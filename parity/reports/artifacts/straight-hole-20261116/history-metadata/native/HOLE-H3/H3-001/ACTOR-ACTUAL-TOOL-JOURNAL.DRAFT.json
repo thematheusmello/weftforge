@@ -1,0 +1,50 @@
+{
+  "scope": "Tool-history metadata derivative. Raw session/journal lines and internal session locators omitted. Root corroboration receipt is retained separately; this derivative is not raw transport evidence.",
+  "original_private_sha256": "863af5d049528baf0ce1a81046b1b7287fc423cc7fb7f3db92a540ae411a5378",
+  "original_private_bytes": 36323,
+  "omitted_fields": [
+    "actual_CUA_runtime_proof",
+    "independent_readiness_displayed_return",
+    "initial_CUA_call",
+    "startup_sources",
+    "terminal_adjacent_actual_tool_entries"
+  ],
+  "record": {
+    "schema": "weftforge.svg-hole-successor.actor-journal-draft.v1",
+    "case": "HOLE-H3",
+    "attempt": "H3-001",
+    "root_binding_sha256": "cf935f50874beb3d2ef0a4059a4fe66219f627e60afb3dc837daac2d40c6f8b5",
+    "evidence_kind": "retrospective_actor_copy_of_displayed_calls_and_returns_requires_root_actual_history_corroboration",
+    "captured_after_actual_completion_summary_return": true,
+    "root_correlated_with_actual_CUA_tool_history": false,
+    "invocation_timestamp_exact": false,
+    "owned_pid": 78706,
+    "documentation_refresh_calls": [],
+    "four_live_opaque_retentions": [
+      {
+        "record": "0031",
+        "label": "reopened-r6"
+      },
+      {
+        "record": "0046",
+        "label": "hole-r6.obj"
+      },
+      {
+        "record": "0061",
+        "label": "hole-r6.svg"
+      },
+      {
+        "record": "0078",
+        "label": "hole-r6.dxf"
+      }
+    ],
+    "no_actual_tool_call_between_Quit_and_summary": true,
+    "summary_calls": 1,
+    "paired_operations": 79,
+    "overall_calls": 80,
+    "summary_return_draft_sha256": "aea4c3bc56be7750fc44544d39217b4ea807d3d6bf6b7c7e0c8c5a441bfc3f8c",
+    "no_native_input_after_terminal": true,
+    "formal_grading_performed": false,
+    "native_exit_independently_verified": false
+  }
+}

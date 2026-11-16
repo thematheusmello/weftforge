@@ -1,0 +1,11 @@
+{
+  "status": "failed_offline_synthetic_harness_only",
+  "command": "python3 .local/cut-and-sew-native-plan-20261116/selfcheck.py .local/cut-and-sew-native-plan-20261116/SELF-CHECK-001.json",
+  "exit_code": 1,
+  "error": "FileExistsError from the expected opaque-retainer overwrite refusal",
+  "cause": "The frozen retainer correctly opened an immutable snapshot with xb and refused an overwrite. The synthetic negative-control harness did not yet recognize FileExistsError as the expected refusal.",
+  "correction": "Include FileExistsError in the selfcheck harness's expected refusal types. No retainer or grading rule changed.",
+  "temporary_synthetic_files_deleted": true,
+  "formal_grade_marker_or_report_created": false,
+  "actual_case_or_product_executed": false
+}

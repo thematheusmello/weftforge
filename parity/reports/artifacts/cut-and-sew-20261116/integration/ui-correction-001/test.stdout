@@ -1,0 +1,19 @@
+
+running 14 tests
+test cut_piece_tests::cut_picker_restricts_owner_projects_unsnapped_and_refuses_vertices_extensions_and_multiple_hits ... ok
+test cut_piece_tests::cut_opening_return_without_draft_only_opens_review ... ok
+test cut_piece_tests::cut_opening_return_after_first_anchor_only_opens_review ... ok
+test cut_piece_tests::cut_sew_checkbox_keyboard_toggles_do_not_apply ... ok
+test cut_piece_tests::cut_sew_option_refreshes_only_preview_and_keeps_raw_parameters_and_caret ... ok
+test cut_piece_tests::cut_concave_outside_preview_refuses_then_corrected_review_returns_one_command ... ok
+test cut_piece_tests::cut_sew_apply_history_save_reopen_and_seam_removal_keep_both_pieces ... ok
+test cut_piece_tests::cut_two_picks_review_exact_apply_history_and_reopened_child_edit_are_independent ... ok
+test cut_piece_tests::cut_dense_annotation_review_and_status_stay_bounded ... ok
+test cut_piece_tests::cut_rail_menu_search_and_precise_routes_use_typed_owner_boundaries ... ok
+test cut_piece_tests::cut_nonmodal_cancel_preserves_property_text_entered_after_the_first_anchor ... ok
+test cut_piece_tests::cut_failed_modal_input_retains_caret_and_shields_background_until_cancel_escape_or_backdrop ... ok
+test cut_piece_tests::cut_entry_refuses_pending_or_incomplete_properties_without_losing_text_caret_or_redo ... ok
+test cut_piece_tests::cut_sew_review_resets_on_accepted_lifecycle_changes_and_survives_failed_io_and_new_refusal ... ok
+
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 110 filtered out; finished in 2.95s
+

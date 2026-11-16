@@ -1,0 +1,120 @@
+{
+  "schema": "weftforge.native.actor-outcome.v1",
+  "case": "HOLE-H1",
+  "attempt": "H1-001",
+  "outcome": "native_route_completed_saved_r5_pending_root_assessment",
+  "root_binding_sha256": "48ffa015e8edb213037fa39dcde743ec0f9f5d42c2312189087229417e33e385",
+  "owned_pid": 57480,
+  "actual_runtime_proof_sha256": "1d1a40c88811d94287b161683bf8e6afb801713509413e23e0c243897ce05d9c",
+  "prelaunch_readiness_all_flags_true": true,
+  "empty_native_start": true,
+  "terminal_source_record": "0172",
+  "final_saved_capture_record": "0168",
+  "final_inspection_capture_record": "0171",
+  "planned_quit_source_record": "0172",
+  "immediate_completion_summary_calls": 1,
+  "completion_summary": "Completed the native hole sequence",
+  "completion_summary_tool_return": "Completion summary received.",
+  "summary_invocation_time_exact": false,
+  "paired_native_external_operations": 172,
+  "documentation_refresh_calls": 1,
+  "overall_actual_calls": 174,
+  "continuous_elapsed_upper_bound_s": 821.144232708,
+  "modal_cancellation_observed": [
+    "explicit_cancel_r1",
+    "escape_r1",
+    "background_undo_backdrop_r1"
+  ],
+  "keyboard_open_observed": "visible_y_focus_then_three_distinct_tabs_then_return_review_only",
+  "shortcut_shields_observed": [
+    "super+s",
+    "super+z",
+    "space",
+    "super+k"
+  ],
+  "raw_caret_witness": "1e0-",
+  "outside_candidate_refused_at_r1": true,
+  "accepted_apply_records": [
+    "0133"
+  ],
+  "single_vertex_edit_commit_record": "0149",
+  "undo_record": "0156",
+  "redo_record": "0163",
+  "final_visible_identity": {
+    "owner": 2,
+    "hole": 11,
+    "curve": 16,
+    "point0": 12,
+    "point3": 13,
+    "revision": 5
+  },
+  "snapshots": [
+    {
+      "label": "parent-r1",
+      "receipt_path": "snapshots/parent-r1.receipt.json",
+      "receipt_sha256": "fd3bd8c669d15db245aeb7260872cab499660de5a5af9eed89e9e37acead9404",
+      "snapshot_path": "snapshots/parent-r1.weftforge",
+      "snapshot_sha256": "525855265074aed8ff1af10297c353973cc294a3d83fca818161ce702ba7310f",
+      "bytes": 3232,
+      "mode": "444",
+      "native_save_record": "0049",
+      "clean_capture_record": "0050",
+      "raw_copy_record": "0051"
+    },
+    {
+      "label": "hole-r2",
+      "receipt_path": "snapshots/hole-r2.receipt.json",
+      "receipt_sha256": "c14cbf02ff022d1fd3c1839cf8a86ad53ea678500fa440db4e75b8579e53640e",
+      "snapshot_path": "snapshots/hole-r2.weftforge",
+      "snapshot_sha256": "cf9ab135a02d5bfc3da3c7292d58bd61b25263eabcb7588bf7bc69c3cfc53920",
+      "bytes": 4190,
+      "mode": "444",
+      "native_save_record": "0137",
+      "clean_capture_record": "0138",
+      "raw_copy_record": "0139"
+    },
+    {
+      "label": "edit-r3",
+      "receipt_path": "snapshots/edit-r3.receipt.json",
+      "receipt_sha256": "0dd532ef06b7d010b06cda3ed455f4cefc129188c7cb9414e5bc08558b15fbf2",
+      "snapshot_path": "snapshots/edit-r3.weftforge",
+      "snapshot_sha256": "de7e0664599bb40280ec2148270140fc57765443bd02621275feb25a4496dcfb",
+      "bytes": 4190,
+      "mode": "444",
+      "native_save_record": "0153",
+      "clean_capture_record": "0154",
+      "raw_copy_record": "0155"
+    },
+    {
+      "label": "undo-r4",
+      "receipt_path": "snapshots/undo-r4.receipt.json",
+      "receipt_sha256": "5e7d63254d819529c685a4389e03a56620821f0786fed67b0a893ad3d20626fb",
+      "snapshot_path": "snapshots/undo-r4.weftforge",
+      "snapshot_sha256": "67b29fd49696c17755eaa291364bd176e9e768bc3050d6da4ebd98214c601891",
+      "bytes": 4190,
+      "mode": "444",
+      "native_save_record": "0160",
+      "clean_capture_record": "0161",
+      "raw_copy_record": "0162"
+    },
+    {
+      "label": "redo-r5",
+      "receipt_path": "snapshots/redo-r5.receipt.json",
+      "receipt_sha256": "612fa1fca7397c0bd2e4c3bfb0d5b193b5390b8af6e0ac60bffc39cae2399046",
+      "snapshot_path": "snapshots/redo-r5.weftforge",
+      "snapshot_sha256": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41",
+      "bytes": 4190,
+      "mode": "444",
+      "native_save_record": "0167",
+      "clean_capture_record": "0168",
+      "raw_copy_record": "0169"
+    }
+  ],
+  "source_inputs_unchanged": true,
+  "native_binary_unchanged": true,
+  "source_head_unchanged": true,
+  "unexpected_barrier": null,
+  "formal_grading_performed": false,
+  "actual_closure_verification": "root separate GUI part after retained handoff",
+  "scope": "bounded native HOLE-H1 observations and raw bytes only; no full parity or native physics claim"
+}

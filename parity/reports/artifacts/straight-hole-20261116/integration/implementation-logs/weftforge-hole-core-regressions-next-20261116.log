@@ -1,0 +1,62 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s
+     Running tests/holes.rs (target/debug/deps/holes-1e0c481417c2cc30)
+
+running 12 tests
+test last_first_join_preserves_addressable_hole_and_removes_only_common_geometry ... ok
+test invalid_commands_are_atomic_and_do_not_consume_ids_or_abandon_redo ... ok
+test ownership_winding_and_orphans_are_rejected_at_the_document_boundary ... ok
+test exact_stable_identity_edit_history_split_join_remove_and_abandoned_branch ... ok
+test annotations_remain_exact_and_their_whole_segments_exclude_the_closed_hole ... ok
+test outer_sewing_remains_exact_and_every_hole_sewing_route_refuses ... ok
+test winding_large_translation_concavity_and_authored_eligibility_are_resolution_independent ... ok
+test resize_transform_placement_and_piece_removal_include_both_loops_and_annotations ... ok
+test containment_budget_is_shared_across_hole_operations_in_a_transaction ... ok
+test stable_id_and_total_object_limits_include_holes_and_refuse_before_mutation ... ok
+test actual_annular_mesh_and_cloth_match_analytic_domain_topology_area_and_mass ... ok
+test eligible_large_annulus_reports_bounded_mesh_refusal_without_losing_authored_hole ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 20.79s
+
+     Running tests/internal_lines.rs (target/debug/deps/internal_lines-1292ce1867109601)
+
+running 10 tests
+test collinear_backtracking_inside_flatness_tube_is_refused_atomically ... ok
+test standalone_owned_internal_curve_requires_both_actual_endpoint_objects ... ok
+test original_r_ids_analytic_length_history_and_endpoint_transaction ... ok
+test crossing_and_coincident_annotations_stay_independent_and_exclusive ... ok
+test v4_endpoint_bits_and_strict_annotation_input_round_trip ... ok
+test resize_rigid_transform_boundary_edits_and_owner_removal_keep_both_endpoints ... ok
+test original_l_c_and_clearance_are_whole_segment_and_resolution_independent ... ok
+test exterior_exports_omit_annotations_and_failed_native_save_keeps_both_files ... ok
+test actual_project_validation_exhausts_fixed_containment_budget_atomically ... ok
+test annotations_leave_every_mesh_and_physical_field_exterior_only ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.49s
+
+     Running tests/joins.rs (target/debug/deps/joins-3c0d65df8063550c)
+
+running 7 tests
+test join_rejects_placement_roundoff_above_the_physical_point_tolerance ... ok
+test join_rejects_numerically_ambiguous_or_extreme_parameter_reconstruction ... ok
+test incompatible_midpoint_invisible_cubics_mixed_controls_and_corners_reject_atomically ... ok
+test join_rejects_self_seams_tiny_remapped_intervals_and_failing_transactions ... ok
+test join_rejects_a_full_domain_roundoff_error_above_the_unchanged_tolerance ... ok
+test join_recovers_analytic_cubic_children_including_stationary_derivatives_and_wrap ... ok
+test join_preserves_both_children_sewn_pairs_in_all_orientations_and_v4_remesh ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.14s
+
+     Running tests/pattern_transform.rs (target/debug/deps/pattern_transform-e930dfff25b02dc7)
+
+running 8 tests
+test transform_json_requires_all_fields_fixed_arrays_and_original_strict_number_tokens ... ok
+test control_only_and_compensated_placement_overflow_reject_atomically ... ok
+test huge_existing_grain_is_rotated_as_a_unit_vector_without_addition_overflow ... ok
+test quarter_turn_has_independent_polynomial_order_grain_and_sewing_oracles ... ok
+test translation_uses_single_additions_and_keeps_zero_components_and_unrelated_bits ... ok
+test mesh_rebuild_uses_new_authored_uvs_and_revision_and_native_v4_round_trips ... ok
+test invalid_inputs_results_and_late_transactions_retain_every_history_branch ... ok
+test non_right_angle_inverse_and_pivot_preserve_tilted_gimbal_and_large_scale_surfaces ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.20s
+

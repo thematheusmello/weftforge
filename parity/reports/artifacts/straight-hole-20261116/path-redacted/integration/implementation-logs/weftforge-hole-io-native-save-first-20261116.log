@@ -1,0 +1,11 @@
+   Compiling weftforge-core v0.1.0 (<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.71s
+     Running unittests src/lib.rs (target/debug/deps/weftforge_core-50eef958ab38b631)
+
+running 3 tests
+test persistence::tests::saves_refuse_nonregular_destinations_without_changing_targets_or_recovery ... ok
+test persistence::tests::exports_preserve_native_projects_and_aliases_at_any_extension ... ok
+test persistence::tests::interrupted_save_and_invalid_inputs_preserve_the_previous_document ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.15s
+

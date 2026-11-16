@@ -1,0 +1,40 @@
+{
+  "status": "prospective V2 ready for root freeze verification/final binding/separate GO",
+  "version": 2,
+  "runtime_authorized": false,
+  "native_lease_granted": false,
+  "V1_freeze_sha256": "736b4d7555a85f59d8ee44cafa7fc88d2b1ff9a3ec285284d133c4df62c30999",
+  "V1_all26_files_preserved_unexecuted": true,
+  "review": "REVIEW-V2.json",
+  "reviewed_final_sha256": {
+    "grade_saved.py": "486328f13c49018e240cbbd3f52e8b1cf9dd0d97747d3653ee3b927d3b2a31b9",
+    "grade_exports.py": "56ab4c66ea5d70846b532e3abae951e2af1e2c1ea0a9baee5a924a154d06ba11",
+    "selfcheck.py": "249ffb0d2caa086d1cc709cc8b840007679afce71f093b79444171ad0a9c23fd"
+  },
+  "selfcheck": "SELF-CHECK-001.json",
+  "focused_allowed_roundoff_matching_OBJ_SVG_positive": true,
+  "original10_plus_wrong_actual_domain_negative_checks_passed": true,
+  "actual_native_CUA_product_Cargo_grader_entrypoint_or_case_executed": false,
+  "formal_attempt_marker_created": false,
+  "source_Git_old_packets_or_modules_mutated": false,
+  "subagents_spawned": false,
+  "runtime_or_actual_input_staged_in_packet": false,
+  "unchanged_runtime": "a021a2581c8e1dd000e535a417dcd964c3835884",
+  "unchanged_clean_metadata": "52163adb86b9f48fdd06f042e4ddf615797c3947",
+  "source_input_count": 73,
+  "unchanged_static_operations": {
+    "HOLE-H1": 187,
+    "HOLE-H2": 95
+  },
+  "unchanged_lab_caps": {
+    "HOLE-H1": "200+1summary/1800s",
+    "HOLE-H2": "100+1summary/1200s"
+  },
+  "remaining": [
+    "Root verifies this successor freeze and updates any unexecuted staging draft to the reviewed V2.",
+    "Root binds concrete own actors/bundle/OS/argv, clears canonical required nulls/extra diagnostics before hash/clock, and grants separate GO.",
+    "H1 Return-open focus route remains unobserved; any ambiguity stops without alternate route.",
+    "H2 requires exact accepted ACTUAL H1 R5/binding/attempt/single-grade/root-UI identity."
+  ],
+  "actual_Cloth_masses_native_UI_reference_or_full_feature_credit": false
+}

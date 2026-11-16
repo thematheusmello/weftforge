@@ -1,0 +1,89 @@
+{
+  "id": "0003",
+  "status": "returned",
+  "result": {
+    "schema": "weftforge.straight-cut-and-sew.actor-readiness.v1",
+    "case": "SEW-S1",
+    "attempt": "S1-001",
+    "root_binding_sha256": "80a45a09e7439792eddfc31be7000dfe9033760fad11a1baa8c00e4fe02ea807",
+    "source_record": "0003",
+    "actual_cua_runtime": true,
+    "native_UI_calls": 0,
+    "helper_types": {
+      "sewModule": "object",
+      "sewRequire": "function",
+      "sewFs": "object",
+      "sewPath": "object",
+      "sewCrypto": "object",
+      "sewProcess": "object",
+      "sewRoot": "string",
+      "sewRepo": "string",
+      "sewPacket": "string",
+      "sewHash": "function",
+      "sewWrite": "function",
+      "sewBindingBytes": "object",
+      "sewBindingSha": "string",
+      "sewBinding": "object",
+      "sewRecorder": "object",
+      "sewController": "object",
+      "sewObserve": "function",
+      "sewMark": "function",
+      "sewProofId": "string",
+      "sewProofSha": "string"
+    },
+    "helper_flags": {
+      "sewModule": true,
+      "sewRequire": true,
+      "sewFs": true,
+      "sewPath": true,
+      "sewCrypto": true,
+      "sewProcess": true,
+      "sewRoot": true,
+      "sewRepo": true,
+      "sewPacket": true,
+      "sewHash": true,
+      "sewWrite": true,
+      "sewBindingBytes": true,
+      "sewBindingSha": true,
+      "sewBinding": true,
+      "sewRecorder": true,
+      "sewController": true,
+      "sewObserve": true,
+      "sewMark": true,
+      "sewProofId": true,
+      "sewProofSha": true
+    },
+    "helpers_ready": true,
+    "root": {
+      "expected": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001",
+      "actual": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001"
+    },
+    "controller_configuration": {
+      "expected": {
+        "root": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001",
+        "recorderPath": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+        "evidenceKind": "native",
+        "callCap": 160,
+        "elapsedCapS": 1800,
+        "baselineCalls": 0
+      },
+      "actual": {
+        "root": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001",
+        "recorderPath": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+        "evidenceKind": "native",
+        "callCap": 160,
+        "elapsedCapS": 1800,
+        "baselineCalls": 0
+      }
+    },
+    "context_schema_ready": true,
+    "proof_schema_ready": true,
+    "proof_result_ready": true,
+    "offline_artifact_ready": true,
+    "controller_status_ready": true,
+    "proof_sha256": "b20e3981eb69c7b905fda50d67a41591ccd1696012fce47d0ff36e36361b0190"
+  },
+  "error": null,
+  "utc": "2026-11-16T07:37:09.273Z",
+  "monotonic_ns": "936944884766416"
+}

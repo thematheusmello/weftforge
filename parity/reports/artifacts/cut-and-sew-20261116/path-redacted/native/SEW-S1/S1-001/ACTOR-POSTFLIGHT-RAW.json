@@ -1,0 +1,3433 @@
+{
+  "schema": "weftforge.native.actor-postflight-raw.v1",
+  "evidence_kind": "postcase_filesystem_identity_and_raw_trace_only",
+  "case": "SEW-S1",
+  "attempt": "S1-001",
+  "root_binding_sha256": "80a45a09e7439792eddfc31be7000dfe9033760fad11a1baa8c00e4fe02ea807",
+  "pinned_nodes": [
+    {
+      "label": "source74/.cargo/config.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/.cargo/config.toml",
+      "expected": {
+        "sha256": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637"
+      },
+      "actual": {
+        "sha256": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+        "bytes": 34,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/Cargo.lock",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/Cargo.lock",
+      "expected": {
+        "sha256": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c"
+      },
+      "actual": {
+        "sha256": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c",
+        "bytes": 107166,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/Cargo.toml",
+      "expected": {
+        "sha256": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af"
+      },
+      "actual": {
+        "sha256": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+        "bytes": 667,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge-cli/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/Cargo.toml",
+      "expected": {
+        "sha256": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb"
+      },
+      "actual": {
+        "sha256": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+        "bytes": 347,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge-cli/src/main.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/src/main.rs",
+      "expected": {
+        "sha256": "7049615180a793ad1557a2bbd3a27797b4b06aac060a2cb0620bd40436e64e0b"
+      },
+      "actual": {
+        "sha256": "7049615180a793ad1557a2bbd3a27797b4b06aac060a2cb0620bd40436e64e0b",
+        "bytes": 28534,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge-cli/src/mcp.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/src/mcp.rs",
+      "expected": {
+        "sha256": "eace4c5773e8e9031430612823546ecbbf437adf8a1c0a30082bc5bc4d6e6528"
+      },
+      "actual": {
+        "sha256": "eace4c5773e8e9031430612823546ecbbf437adf8a1c0a30082bc5bc4d6e6528",
+        "bytes": 30944,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge-cli/tests/curves.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/curves.rs",
+      "expected": {
+        "sha256": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e"
+      },
+      "actual": {
+        "sha256": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+        "bytes": 5513,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge-cli/tests/dxf_import.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/dxf_import.rs",
+      "expected": {
+        "sha256": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d"
+      },
+      "actual": {
+        "sha256": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d",
+        "bytes": 5338,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge-cli/tests/ellipse.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/ellipse.rs",
+      "expected": {
+        "sha256": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b"
+      },
+      "actual": {
+        "sha256": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+        "bytes": 4339,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge-cli/tests/grain.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/grain.rs",
+      "expected": {
+        "sha256": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542"
+      },
+      "actual": {
+        "sha256": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+        "bytes": 3098,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge-cli/tests/holes.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/holes.rs",
+      "expected": {
+        "sha256": "c7e0656dcb756db3ced588e52c08c969a997b99661f85bbb8d5079a27421ad77"
+      },
+      "actual": {
+        "sha256": "c7e0656dcb756db3ced588e52c08c969a997b99661f85bbb8d5079a27421ad77",
+        "bytes": 5651,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge-cli/tests/mcp_stdio.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/mcp_stdio.rs",
+      "expected": {
+        "sha256": "84693ca3844ee75f6ffa7174aff70fcf5a8e1a66fe44af9ffdfae52cdc6ce948"
+      },
+      "actual": {
+        "sha256": "84693ca3844ee75f6ffa7174aff70fcf5a8e1a66fe44af9ffdfae52cdc6ce948",
+        "bytes": 113045,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge-cli/tests/svg_import.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/svg_import.rs",
+      "expected": {
+        "sha256": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af"
+      },
+      "actual": {
+        "sha256": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af",
+        "bytes": 5336,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/Cargo.toml",
+      "expected": {
+        "sha256": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95"
+      },
+      "actual": {
+        "sha256": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+        "bytes": 365,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge/assets/fonts/Inter-Regular.ttf",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/Inter-Regular.ttf",
+      "expected": {
+        "sha256": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82"
+      },
+      "actual": {
+        "sha256": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82",
+        "bytes": 411640,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge/assets/fonts/Inter-SemiBold.ttf",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/Inter-SemiBold.ttf",
+      "expected": {
+        "sha256": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3"
+      },
+      "actual": {
+        "sha256": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3",
+        "bytes": 419744,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf",
+      "expected": {
+        "sha256": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1"
+      },
+      "actual": {
+        "sha256": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1",
+        "bytes": 270224,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge/assets/fonts/OFL-Inter.txt",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/OFL-Inter.txt",
+      "expected": {
+        "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+      },
+      "actual": {
+        "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "bytes": 4380,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt",
+      "expected": {
+        "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697"
+      },
+      "actual": {
+        "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+        "bytes": 4399,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge/assets/fonts/SOURCES.json",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/SOURCES.json",
+      "expected": {
+        "sha256": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c"
+      },
+      "actual": {
+        "sha256": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c",
+        "bytes": 1445,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/apps/weftforge/src/main.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/src/main.rs",
+      "expected": {
+        "sha256": "e561485f666197368aad44c302a2216635c5ff2afdb08a6cfc4bfa77d4e4bb44"
+      },
+      "actual": {
+        "sha256": "e561485f666197368aad44c302a2216635c5ff2afdb08a6cfc4bfa77d4e4bb44",
+        "bytes": 792994,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/Cargo.toml",
+      "expected": {
+        "sha256": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9"
+      },
+      "actual": {
+        "sha256": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+        "bytes": 341,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/src/document.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/document.rs",
+      "expected": {
+        "sha256": "0c17946892e686aeaaacd49aa6cc733a80bd2f8c7e8aa0a8b9d490111b828ebe"
+      },
+      "actual": {
+        "sha256": "0c17946892e686aeaaacd49aa6cc733a80bd2f8c7e8aa0a8b9d490111b828ebe",
+        "bytes": 80364,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/src/geometry.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/geometry.rs",
+      "expected": {
+        "sha256": "d4ba435fe2fbcd907c97a01b16be2b8bcfa934a1e3cbb4882fc75ab43f380105"
+      },
+      "actual": {
+        "sha256": "d4ba435fe2fbcd907c97a01b16be2b8bcfa934a1e3cbb4882fc75ab43f380105",
+        "bytes": 58425,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/src/lib.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/lib.rs",
+      "expected": {
+        "sha256": "157990183f20487c3b1494a837914e81fb98e3e4fb35a1f0dedc0542a1ec6661"
+      },
+      "actual": {
+        "sha256": "157990183f20487c3b1494a837914e81fb98e3e4fb35a1f0dedc0542a1ec6661",
+        "bytes": 1288,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/src/persistence.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/persistence.rs",
+      "expected": {
+        "sha256": "42c3d163bf347af1dcf3bb007ac15c7ba3e4836c829b18904592cb96b6cd9812"
+      },
+      "actual": {
+        "sha256": "42c3d163bf347af1dcf3bb007ac15c7ba3e4836c829b18904592cb96b6cd9812",
+        "bytes": 30106,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/src/persistence/dxf.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/persistence/dxf.rs",
+      "expected": {
+        "sha256": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338"
+      },
+      "actual": {
+        "sha256": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338",
+        "bytes": 7133,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/src/persistence/dxf_import.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/persistence/dxf_import.rs",
+      "expected": {
+        "sha256": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec"
+      },
+      "actual": {
+        "sha256": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+        "bytes": 18713,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/src/persistence/svg.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/persistence/svg.rs",
+      "expected": {
+        "sha256": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7"
+      },
+      "actual": {
+        "sha256": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7",
+        "bytes": 18436,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/src/sewing.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/sewing.rs",
+      "expected": {
+        "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed"
+      },
+      "actual": {
+        "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed",
+        "bytes": 28379,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/src/simulation.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/simulation.rs",
+      "expected": {
+        "sha256": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29"
+      },
+      "actual": {
+        "sha256": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29",
+        "bytes": 9490,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/cut_piece.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/cut_piece.rs",
+      "expected": {
+        "sha256": "7c5e12e7a4b6f0cec65199e795c8ad16889a0f0aa08247da2a2f94b567a59c86"
+      },
+      "actual": {
+        "sha256": "7c5e12e7a4b6f0cec65199e795c8ad16889a0f0aa08247da2a2f94b567a59c86",
+        "bytes": 62804,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/dxf.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/dxf.rs",
+      "expected": {
+        "sha256": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a"
+      },
+      "actual": {
+        "sha256": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+        "bytes": 16900,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/dxf_import.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/dxf_import.rs",
+      "expected": {
+        "sha256": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b"
+      },
+      "actual": {
+        "sha256": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+        "bytes": 14935,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/ellipse.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/ellipse.rs",
+      "expected": {
+        "sha256": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78"
+      },
+      "actual": {
+        "sha256": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78",
+        "bytes": 12167,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge",
+      "expected": {
+        "sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d"
+      },
+      "actual": {
+        "sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+        "bytes": 8107,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/fixtures/original-cut-l.weftforge",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/fixtures/original-cut-l.weftforge",
+      "expected": {
+        "sha256": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d"
+      },
+      "actual": {
+        "sha256": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d",
+        "bytes": 3622,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge",
+      "expected": {
+        "sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50"
+      },
+      "actual": {
+        "sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+        "bytes": 3211,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf",
+      "expected": {
+        "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+      },
+      "actual": {
+        "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+        "bytes": 4289,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/fixtures/original-editable-patterns.svg",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/fixtures/original-editable-patterns.svg",
+      "expected": {
+        "sha256": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676"
+      },
+      "actual": {
+        "sha256": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+        "bytes": 729,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/grain.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/grain.rs",
+      "expected": {
+        "sha256": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580"
+      },
+      "actual": {
+        "sha256": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+        "bytes": 5015,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/hole_io.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/hole_io.rs",
+      "expected": {
+        "sha256": "dfe604ad08e660e9feecb88d99153eee78bb1cadcbb8307350ad9983956025a2"
+      },
+      "actual": {
+        "sha256": "dfe604ad08e660e9feecb88d99153eee78bb1cadcbb8307350ad9983956025a2",
+        "bytes": 10737,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/holes.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/holes.rs",
+      "expected": {
+        "sha256": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594"
+      },
+      "actual": {
+        "sha256": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594",
+        "bytes": 36802,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/internal_lines.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/internal_lines.rs",
+      "expected": {
+        "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
+      },
+      "actual": {
+        "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786",
+        "bytes": 24048,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/joins.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/joins.rs",
+      "expected": {
+        "sha256": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10"
+      },
+      "actual": {
+        "sha256": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10",
+        "bytes": 19861,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/migration.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/migration.rs",
+      "expected": {
+        "sha256": "1f4b8aec8bfa9622c7c69b2b7ef2a9ec2c745340c5d56c5edab87d40d7f66418"
+      },
+      "actual": {
+        "sha256": "1f4b8aec8bfa9622c7c69b2b7ef2a9ec2c745340c5d56c5edab87d40d7f66418",
+        "bytes": 17548,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/pattern_transform.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/pattern_transform.rs",
+      "expected": {
+        "sha256": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31"
+      },
+      "actual": {
+        "sha256": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31",
+        "bytes": 24219,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/seam_reversal.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/seam_reversal.rs",
+      "expected": {
+        "sha256": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d"
+      },
+      "actual": {
+        "sha256": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d",
+        "bytes": 6231,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/sewing_groups.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/sewing_groups.rs",
+      "expected": {
+        "sha256": "a3e9ad0393b0039b7257193b5bcd0f54e7aafe5ab5566ae8459c1392a0ce6f41"
+      },
+      "actual": {
+        "sha256": "a3e9ad0393b0039b7257193b5bcd0f54e7aafe5ab5566ae8459c1392a0ce6f41",
+        "bytes": 57301,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/shirt.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/shirt.rs",
+      "expected": {
+        "sha256": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618"
+      },
+      "actual": {
+        "sha256": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+        "bytes": 2949,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/svg_import.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/svg_import.rs",
+      "expected": {
+        "sha256": "3b9601a0023c1d91b96a309d0822439afa75e97f97a5e53c5104cbef3e6ed72e"
+      },
+      "actual": {
+        "sha256": "3b9601a0023c1d91b96a309d0822439afa75e97f97a5e53c5104cbef3e6ed72e",
+        "bytes": 14807,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-core/tests/workflow.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/workflow.rs",
+      "expected": {
+        "sha256": "3f7ad8f050b6f749e85e7c865cf35d0cdc31d3f86023a05d5db19d4bfec495c2"
+      },
+      "actual": {
+        "sha256": "3f7ad8f050b6f749e85e7c865cf35d0cdc31d3f86023a05d5db19d4bfec495c2",
+        "bytes": 23886,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-sim/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/Cargo.toml",
+      "expected": {
+        "sha256": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250"
+      },
+      "actual": {
+        "sha256": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+        "bytes": 205,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-sim/src/capsule.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/capsule.rs",
+      "expected": {
+        "sha256": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7"
+      },
+      "actual": {
+        "sha256": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7",
+        "bytes": 18343,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-sim/src/constraints.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/constraints.rs",
+      "expected": {
+        "sha256": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035"
+      },
+      "actual": {
+        "sha256": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+        "bytes": 7237,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-sim/src/contact.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/contact.rs",
+      "expected": {
+        "sha256": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655"
+      },
+      "actual": {
+        "sha256": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655",
+        "bytes": 31515,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-sim/src/lib.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/lib.rs",
+      "expected": {
+        "sha256": "d614d1dc3b66fd6c5e4d4179a9ba8776f2abfd264e2a30723c3a122fc6fc77ab"
+      },
+      "actual": {
+        "sha256": "d614d1dc3b66fd6c5e4d4179a9ba8776f2abfd264e2a30723c3a122fc6fc77ab",
+        "bytes": 26945,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-sim/src/math.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/math.rs",
+      "expected": {
+        "sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424"
+      },
+      "actual": {
+        "sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+        "bytes": 2391,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-sim/src/strain.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/strain.rs",
+      "expected": {
+        "sha256": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78"
+      },
+      "actual": {
+        "sha256": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+        "bytes": 1858,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/crates/weftforge-sim/src/tests.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/tests.rs",
+      "expected": {
+        "sha256": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09"
+      },
+      "actual": {
+        "sha256": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+        "bytes": 59354,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/docs/architecture.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/docs/architecture.md",
+      "expected": {
+        "sha256": "c0c0a1e786f28ab7b3af7bc9dad51dfd0ab598e6c6a8fe6a2e7627d30a923dba"
+      },
+      "actual": {
+        "sha256": "c0c0a1e786f28ab7b3af7bc9dad51dfd0ab598e6c6a8fe6a2e7627d30a923dba",
+        "bytes": 13035,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/docs/automation.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/docs/automation.md",
+      "expected": {
+        "sha256": "0aefa17e21664f183af23a64a14c2001fb9786f8cb9e3420383da7baacef7728"
+      },
+      "actual": {
+        "sha256": "0aefa17e21664f183af23a64a14c2001fb9786f8cb9e3420383da7baacef7728",
+        "bytes": 29567,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/docs/file-formats.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/docs/file-formats.md",
+      "expected": {
+        "sha256": "6174d3db1df6c1fd35acd95cdf03858fd377ac55e90437a737f1de6acede0a78"
+      },
+      "actual": {
+        "sha256": "6174d3db1df6c1fd35acd95cdf03858fd377ac55e90437a737f1de6acede0a78",
+        "bytes": 24168,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/rust-toolchain.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/rust-toolchain.toml",
+      "expected": {
+        "sha256": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51"
+      },
+      "actual": {
+        "sha256": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+        "bytes": 86,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/spec/features/APP-001-new-empty.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/APP-001-new-empty.md",
+      "expected": {
+        "sha256": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7"
+      },
+      "actual": {
+        "sha256": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+        "bytes": 2422,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/spec/features/PAT-004-native-transform-selection.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/PAT-004-native-transform-selection.md",
+      "expected": {
+        "sha256": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7"
+      },
+      "actual": {
+        "sha256": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
+        "bytes": 1051,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/spec/features/PAT-004-piece-rigid-transform.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/PAT-004-piece-rigid-transform.md",
+      "expected": {
+        "sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557"
+      },
+      "actual": {
+        "sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+        "bytes": 22481,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/spec/features/PAT-006-internal-segments.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/PAT-006-internal-segments.md",
+      "expected": {
+        "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66"
+      },
+      "actual": {
+        "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+        "bytes": 43508,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/spec/features/PAT-006-straight-cut.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/PAT-006-straight-cut.md",
+      "expected": {
+        "sha256": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c"
+      },
+      "actual": {
+        "sha256": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c",
+        "bytes": 17836,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/spec/features/PAT-006-straight-hole.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/PAT-006-straight-hole.md",
+      "expected": {
+        "sha256": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f"
+      },
+      "actual": {
+        "sha256": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f",
+        "bytes": 24548,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/spec/features/SEW-001-cut-and-sew.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/SEW-001-cut-and-sew.md",
+      "expected": {
+        "sha256": "9420f9a88ea184868aba5543f0d356181fcd8373dadfa4632376cc4a5a5f8941"
+      },
+      "actual": {
+        "sha256": "9420f9a88ea184868aba5543f0d356181fcd8373dadfa4632376cc4a5a5f8941",
+        "bytes": 9082,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/spec/features/SEW-002-physical-length.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/SEW-002-physical-length.md",
+      "expected": {
+        "sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2"
+      },
+      "actual": {
+        "sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+        "bytes": 14576,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/xtask/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/xtask/Cargo.toml",
+      "expected": {
+        "sha256": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204"
+      },
+      "actual": {
+        "sha256": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+        "bytes": 241,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source74/xtask/src/main.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/xtask/src/main.rs",
+      "expected": {
+        "sha256": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709"
+      },
+      "actual": {
+        "sha256": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709",
+        "bytes": 7562,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "own-native",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/WeftForgeSewS1001.app/Contents/MacOS/weftforge",
+      "expected": {
+        "sha256": "7809e41948e19d0055da45e10a3b55225173df48e43465fab1b48effd7efa1c8"
+      },
+      "actual": {
+        "sha256": "7809e41948e19d0055da45e10a3b55225173df48e43465fab1b48effd7efa1c8",
+        "bytes": 62245032,
+        "mode": "0o555"
+      },
+      "matches": true
+    },
+    {
+      "label": "source-default-target-native",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/target/debug/weftforge",
+      "expected": {
+        "sha256": "7809e41948e19d0055da45e10a3b55225173df48e43465fab1b48effd7efa1c8"
+      },
+      "actual": {
+        "sha256": "7809e41948e19d0055da45e10a3b55225173df48e43465fab1b48effd7efa1c8",
+        "bytes": 62245032,
+        "mode": "0o755"
+      },
+      "matches": true
+    },
+    {
+      "label": "bundle-plist",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/WeftForgeSewS1001.app/Contents/Info.plist",
+      "expected": {
+        "sha256": "f13562ed221dd4d30b9c421674f96bf4a1189d701954cd5eb55c842164a0da4c"
+      },
+      "actual": {
+        "sha256": "f13562ed221dd4d30b9c421674f96bf4a1189d701954cd5eb55c842164a0da4c",
+        "bytes": 863,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "accepted-input/inputs/accepted-parent-r1.weftforge",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/inputs/accepted-parent-r1.weftforge",
+      "expected": {
+        "sha256": "525855265074aed8ff1af10297c353973cc294a3d83fca818161ce702ba7310f",
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "525855265074aed8ff1af10297c353973cc294a3d83fca818161ce702ba7310f",
+        "bytes": 3232,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "accepted-H1-binding",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/ROOT-BINDING.json",
+      "expected": {
+        "sha256": "e9e2bed535024602b54a285f8ccd28a0f3a8ecf93fdcc5be4e8629f05e2f3cfc"
+      },
+      "actual": {
+        "sha256": "e9e2bed535024602b54a285f8ccd28a0f3a8ecf93fdcc5be4e8629f05e2f3cfc",
+        "bytes": 12575,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "accepted-H1-single-grade",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/SAVED-GRADE-001.json",
+      "expected": {
+        "sha256": "7c939e55ed30b5aebb3bb4f81fb28e449ce21cde67855d88fc592336665bf4f3"
+      },
+      "actual": {
+        "sha256": "7c939e55ed30b5aebb3bb4f81fb28e449ce21cde67855d88fc592336665bf4f3",
+        "bytes": 1690,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "accepted-H1-root-UI",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/ROOT-UI-ACCEPTANCE.json",
+      "expected": {
+        "sha256": "b6d79aeb220bf8a1fe291fb82149a7afab9f37b7909baf53f67ab5957d56f712"
+      },
+      "actual": {
+        "sha256": "b6d79aeb220bf8a1fe291fb82149a7afab9f37b7909baf53f67ab5957d56f712",
+        "bytes": 2808,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "controller",
+      "path": "<WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs",
+      "expected": {
+        "sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b"
+      },
+      "actual": {
+        "sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+        "bytes": 8012,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "recorder",
+      "path": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+      "expected": {
+        "sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc"
+      },
+      "actual": {
+        "sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+        "bytes": 2460,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "observer",
+      "path": "<WORKSPACE>/.local/native-internal-annotations-20261115/C002/OBSERVER-FRAGMENT.cjs",
+      "expected": {
+        "sha256": "d580450b45fc2fe42b19c146fb7023f84d04e7b9596ac24a8f5afe3e81be7729"
+      },
+      "actual": {
+        "sha256": "d580450b45fc2fe42b19c146fb7023f84d04e7b9596ac24a8f5afe3e81be7729",
+        "bytes": 393,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "bootstrap",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/ACTOR-BOOTSTRAP.js",
+      "expected": {
+        "sha256": "9ae48868aa0295234da34923b2d9d04a4583c851c0026df19c92587356d3b3ed"
+      },
+      "actual": {
+        "sha256": "9ae48868aa0295234da34923b2d9d04a4583c851c0026df19c92587356d3b3ed",
+        "bytes": 12451,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "actor_persistence_check",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/ACTOR-PERSISTENCE-CHECK.js",
+      "expected": {
+        "sha256": "8a4bafceabf47096fde940f25a55256677dbbc2c6ab73247df1aafb8ad81956b"
+      },
+      "actual": {
+        "sha256": "8a4bafceabf47096fde940f25a55256677dbbc2c6ab73247df1aafb8ad81956b",
+        "bytes": 10543,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "actor_initial_capture",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/ACTOR-INITIAL-CAPTURE.js",
+      "expected": {
+        "sha256": "501d44a850e0897c3d987db7688770f77c451bf7daef3637c4e886d7bcb95d4b"
+      },
+      "actual": {
+        "sha256": "501d44a850e0897c3d987db7688770f77c451bf7daef3637c4e886d7bcb95d4b",
+        "bytes": 365,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet-freeze",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/FREEZE.json",
+      "expected": {
+        "sha256": "5ab3b3238d2b50a5f6fdfa58965c94a7a057b5f5cb084c46117e949d986f3b0c"
+      },
+      "actual": {
+        "sha256": "5ab3b3238d2b50a5f6fdfa58965c94a7a057b5f5cb084c46117e949d986f3b0c",
+        "bytes": 21694,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/ACTOR-PERSISTENCE-CHECK-RESULT.template.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/ACTOR-PERSISTENCE-CHECK-RESULT.template.json",
+      "expected": {
+        "sha256": "a47d3373b0e5d0db6c8764218fa9b9c4dd488e3f594b994f32a1e9a3d6374ec2"
+      },
+      "actual": {
+        "sha256": "a47d3373b0e5d0db6c8764218fa9b9c4dd488e3f594b994f32a1e9a3d6374ec2",
+        "bytes": 1942,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/ACTOR-RUNTIME-PROOF.template.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/ACTOR-RUNTIME-PROOF.template.json",
+      "expected": {
+        "sha256": "5055a85aa9fd5915e271686e9b655dfb6b78cae8ba897d7b5eb175ca9749c48b"
+      },
+      "actual": {
+        "sha256": "5055a85aa9fd5915e271686e9b655dfb6b78cae8ba897d7b5eb175ca9749c48b",
+        "bytes": 1221,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/ACTOR-RUNTIME-TOOL-HISTORY.template.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/ACTOR-RUNTIME-TOOL-HISTORY.template.json",
+      "expected": {
+        "sha256": "337cc358500e607d510a255a1078b655d3d3f69de40c3ef1efb96006cb326f24"
+      },
+      "actual": {
+        "sha256": "337cc358500e607d510a255a1078b655d3d3f69de40c3ef1efb96006cb326f24",
+        "bytes": 549,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/COMPLETION-SUMMARY-RETURN.template.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/COMPLETION-SUMMARY-RETURN.template.json",
+      "expected": {
+        "sha256": "8d3b04a1930f1c79df236ac581a00927790847db770ba28a91ff5543215034d9"
+      },
+      "actual": {
+        "sha256": "8d3b04a1930f1c79df236ac581a00927790847db770ba28a91ff5543215034d9",
+        "bytes": 639,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/DRAFT-INVENTORY-002.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/DRAFT-INVENTORY-002.json",
+      "expected": {
+        "sha256": "430c378e72b461bd36b09cc9eb72cfed41b83f9a7cb919b9d8f5ece94a8783ce"
+      },
+      "actual": {
+        "sha256": "430c378e72b461bd36b09cc9eb72cfed41b83f9a7cb919b9d8f5ece94a8783ce",
+        "bytes": 6730,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/DRAFT-INVENTORY-003.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/DRAFT-INVENTORY-003.json",
+      "expected": {
+        "sha256": "f52ad6a92a33d4619af2b4b5c9fb909b63b2a5d8f9577612ff18494236ff8d2c"
+      },
+      "actual": {
+        "sha256": "f52ad6a92a33d4619af2b4b5c9fb909b63b2a5d8f9577612ff18494236ff8d2c",
+        "bytes": 7737,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/DRAFT-INVENTORY.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/DRAFT-INVENTORY.json",
+      "expected": {
+        "sha256": "8d2d65b076d6cdd67c3605fd786104f83a71d850874b3e0b0288916e1d71efe6"
+      },
+      "actual": {
+        "sha256": "8d2d65b076d6cdd67c3605fd786104f83a71d850874b3e0b0288916e1d71efe6",
+        "bytes": 4877,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/DRAFT-STATIC-CHECK-001.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/DRAFT-STATIC-CHECK-001.json",
+      "expected": {
+        "sha256": "d79b55049a2bcf3720385995dd977d5197075617416b9eafd7dc932b58462534"
+      },
+      "actual": {
+        "sha256": "d79b55049a2bcf3720385995dd977d5197075617416b9eafd7dc932b58462534",
+        "bytes": 459,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/DRAFT-STATIC-CHECK-002.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/DRAFT-STATIC-CHECK-002.json",
+      "expected": {
+        "sha256": "0b04e6379a0772f6309f9d87979d13b46be2817ae0ac44303785bf24cf146337"
+      },
+      "actual": {
+        "sha256": "0b04e6379a0772f6309f9d87979d13b46be2817ae0ac44303785bf24cf146337",
+        "bytes": 917,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/DRAFT-STATIC-CHECK-003.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/DRAFT-STATIC-CHECK-003.json",
+      "expected": {
+        "sha256": "75e3682bdafff1a9a2b37fae827defb7f26fa38b025afad9112e2f2510f9dc52"
+      },
+      "actual": {
+        "sha256": "75e3682bdafff1a9a2b37fae827defb7f26fa38b025afad9112e2f2510f9dc52",
+        "bytes": 1445,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/DRAFT.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/DRAFT.json",
+      "expected": {
+        "sha256": "0596d50e384ee6d27967640434914cf3b75da57141c7e20c1f196614ee9961ad"
+      },
+      "actual": {
+        "sha256": "0596d50e384ee6d27967640434914cf3b75da57141c7e20c1f196614ee9961ad",
+        "bytes": 3713,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/EXPECTED-STATES.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/EXPECTED-STATES.json",
+      "expected": {
+        "sha256": "811e2da7f34612ff9f6c92a07e6e24f1b76797873240e9f0ea46069faa4c303f"
+      },
+      "actual": {
+        "sha256": "811e2da7f34612ff9f6c92a07e6e24f1b76797873240e9f0ea46069faa4c303f",
+        "bytes": 31933,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/NATIVE-LEASE-CLOSED.template.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/NATIVE-LEASE-CLOSED.template.json",
+      "expected": {
+        "sha256": "02d297943f9750c990de11625d65d850439c7b9ce56930d61003f421d8cca72b"
+      },
+      "actual": {
+        "sha256": "02d297943f9750c990de11625d65d850439c7b9ce56930d61003f421d8cca72b",
+        "bytes": 423,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/ORACLE.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/ORACLE.json",
+      "expected": {
+        "sha256": "db2582debe10ec80e519a71403ab51831cc97a425c9b0ccd25ef5063001f08e5"
+      },
+      "actual": {
+        "sha256": "db2582debe10ec80e519a71403ab51831cc97a425c9b0ccd25ef5063001f08e5",
+        "bytes": 7648,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/PLAN.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/PLAN.json",
+      "expected": {
+        "sha256": "17198471053042141f4bb64561fb3906b842645a7d364bfd21b8cd2a5517ac5f"
+      },
+      "actual": {
+        "sha256": "17198471053042141f4bb64561fb3906b842645a7d364bfd21b8cd2a5517ac5f",
+        "bytes": 7402,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/POSTFLIGHT.template.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/POSTFLIGHT.template.json",
+      "expected": {
+        "sha256": "b80f3f74c1e11256c1400c3e91c32b7c14dd7ed3759eaf71488530b26c40c3ac"
+      },
+      "actual": {
+        "sha256": "b80f3f74c1e11256c1400c3e91c32b7c14dd7ed3759eaf71488530b26c40c3ac",
+        "bytes": 583,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/PROVENANCE.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/PROVENANCE.json",
+      "expected": {
+        "sha256": "de49712315c4b4e8273da865deb8919b9056096689a770f74ce66b75255c1880"
+      },
+      "actual": {
+        "sha256": "de49712315c4b4e8273da865deb8919b9056096689a770f74ce66b75255c1880",
+        "bytes": 5562,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/README.md",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/README.md",
+      "expected": {
+        "sha256": "012b10e034f016e170626225cbb0b6286d2a8c4456509ed21c8e592e82b183b3"
+      },
+      "actual": {
+        "sha256": "012b10e034f016e170626225cbb0b6286d2a8c4456509ed21c8e592e82b183b3",
+        "bytes": 16853,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/REVISION-002.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/REVISION-002.json",
+      "expected": {
+        "sha256": "06e461c16842dedfa70eeeee2d13ddb77326dd14e2accf6f54fd1c4d16240f09"
+      },
+      "actual": {
+        "sha256": "06e461c16842dedfa70eeeee2d13ddb77326dd14e2accf6f54fd1c4d16240f09",
+        "bytes": 3884,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/REVISION-003.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/REVISION-003.json",
+      "expected": {
+        "sha256": "bd0bc6842e9a86c52060d36c193fd00bf4b3cea948e831410fd2fc7bda7659ba"
+      },
+      "actual": {
+        "sha256": "bd0bc6842e9a86c52060d36c193fd00bf4b3cea948e831410fd2fc7bda7659ba",
+        "bytes": 4594,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/ROOT-BINDING.SEW-S1.template.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/ROOT-BINDING.SEW-S1.template.json",
+      "expected": {
+        "sha256": "1a7fa26a27c8a47d265f065b8290cc28f64075db27e8064e9ad47d63180a0b8c"
+      },
+      "actual": {
+        "sha256": "1a7fa26a27c8a47d265f065b8290cc28f64075db27e8064e9ad47d63180a0b8c",
+        "bytes": 12166,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/ROOT-BINDING.SEW-S2.template.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/ROOT-BINDING.SEW-S2.template.json",
+      "expected": {
+        "sha256": "cf094299e2ad7c175c04bde8080a0b3b8e4e411bcfcfc965e72a342b89fc4dfb"
+      },
+      "actual": {
+        "sha256": "cf094299e2ad7c175c04bde8080a0b3b8e4e411bcfcfc965e72a342b89fc4dfb",
+        "bytes": 11722,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/ROOT-UI-ACCEPTANCE.template.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/ROOT-UI-ACCEPTANCE.template.json",
+      "expected": {
+        "sha256": "6fd353e446dc878fcd76ce2891ec83ab6de1b76c8786149ee003b9778763cd03"
+      },
+      "actual": {
+        "sha256": "6fd353e446dc878fcd76ce2891ec83ab6de1b76c8786149ee003b9778763cd03",
+        "bytes": 387,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/RUNTIME-PROTOCOL.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/RUNTIME-PROTOCOL.json",
+      "expected": {
+        "sha256": "afb7c59deb5d70af31794f20de70aa048105f8d2f609f4483b90e18976ca7234"
+      },
+      "actual": {
+        "sha256": "afb7c59deb5d70af31794f20de70aa048105f8d2f609f4483b90e18976ca7234",
+        "bytes": 6482,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/SELF-CHECK-001-RED.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/SELF-CHECK-001-RED.json",
+      "expected": {
+        "sha256": "0646cb6abc1692fbb914c55a740aa8565d98d5c902d688a54c72f1b9867dae4d"
+      },
+      "actual": {
+        "sha256": "0646cb6abc1692fbb914c55a740aa8565d98d5c902d688a54c72f1b9867dae4d",
+        "bytes": 805,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/SELF-CHECK-001.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/SELF-CHECK-001.json",
+      "expected": {
+        "sha256": "a56b2efbfc4315dcd89a279c1b9fc4c6f649fe640ed6762afd7b7206983a6eee"
+      },
+      "actual": {
+        "sha256": "a56b2efbfc4315dcd89a279c1b9fc4c6f649fe640ed6762afd7b7206983a6eee",
+        "bytes": 1832,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/SELF-CHECK-002-RED.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/SELF-CHECK-002-RED.json",
+      "expected": {
+        "sha256": "bb81bdb844f63f10345b25ecda627298b13853685689c36c02978eef3627ad32"
+      },
+      "actual": {
+        "sha256": "bb81bdb844f63f10345b25ecda627298b13853685689c36c02978eef3627ad32",
+        "bytes": 772,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/SELF-CHECK-002.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/SELF-CHECK-002.json",
+      "expected": {
+        "sha256": "a56b2efbfc4315dcd89a279c1b9fc4c6f649fe640ed6762afd7b7206983a6eee"
+      },
+      "actual": {
+        "sha256": "a56b2efbfc4315dcd89a279c1b9fc4c6f649fe640ed6762afd7b7206983a6eee",
+        "bytes": 1832,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/SELF-CHECK-003.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/SELF-CHECK-003.json",
+      "expected": {
+        "sha256": "a56b2efbfc4315dcd89a279c1b9fc4c6f649fe640ed6762afd7b7206983a6eee"
+      },
+      "actual": {
+        "sha256": "a56b2efbfc4315dcd89a279c1b9fc4c6f649fe640ed6762afd7b7206983a6eee",
+        "bytes": 1832,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/SELF-CHECK-AUTHORITY-003.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/SELF-CHECK-AUTHORITY-003.json",
+      "expected": {
+        "sha256": "7508254f0d3e76a4788b1f3058357d2064400366470ea7f615078597d0b40935"
+      },
+      "actual": {
+        "sha256": "7508254f0d3e76a4788b1f3058357d2064400366470ea7f615078597d0b40935",
+        "bytes": 1491,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/SOURCE-74.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/SOURCE-74.json",
+      "expected": {
+        "sha256": "ee012acf52f6080f7608a8496ae4d4f2e789199bcfd6e2dcc86f52581a9491c8"
+      },
+      "actual": {
+        "sha256": "ee012acf52f6080f7608a8496ae4d4f2e789199bcfd6e2dcc86f52581a9491c8",
+        "bytes": 9221,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/grade_saved.py",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/grade_saved.py",
+      "expected": {
+        "sha256": "70d269ccc25df07ce8e4da3b8cb30f631d923ac3f3f3245b2ed76bae512fc2f8"
+      },
+      "actual": {
+        "sha256": "70d269ccc25df07ce8e4da3b8cb30f631d923ac3f3f3245b2ed76bae512fc2f8",
+        "bytes": 29400,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/retain_saved.py",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/retain_saved.py",
+      "expected": {
+        "sha256": "cfa252e9c003730a7832a01740122180f4fd90300bf9fac9161362ba617fe11c"
+      },
+      "actual": {
+        "sha256": "cfa252e9c003730a7832a01740122180f4fd90300bf9fac9161362ba617fe11c",
+        "bytes": 1387,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/selfcheck.py",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/selfcheck.py",
+      "expected": {
+        "sha256": "cd83cf0d34aea17d8a116f272eebe2d55df93244c78eb31f69f200c7dd6b86a7"
+      },
+      "actual": {
+        "sha256": "cd83cf0d34aea17d8a116f272eebe2d55df93244c78eb31f69f200c7dd6b86a7",
+        "bytes": 12893,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/selfcheck_authority.py",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-20261116/selfcheck_authority.py",
+      "expected": {
+        "sha256": "9fe521c6cfe77d9a25a13182aa75c0af5cea0c5e501ecace69e007c27d4becc7"
+      },
+      "actual": {
+        "sha256": "9fe521c6cfe77d9a25a13182aa75c0af5cea0c5e501ecace69e007c27d4becc7",
+        "bytes": 9562,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-actor-route-review-20261116/REVIEW-001.md",
+      "path": "<WORKSPACE>/.local/cut-and-sew-actor-route-review-20261116/REVIEW-001.md",
+      "expected": {
+        "sha256": "40244dd2932cf99aa2e535ce22ece5a5aa83ba979fc40c227af89f2972071722"
+      },
+      "actual": {
+        "sha256": "40244dd2932cf99aa2e535ce22ece5a5aa83ba979fc40c227af89f2972071722",
+        "bytes": 18579,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-contract-20261116/CONTRACT.md",
+      "path": "<WORKSPACE>/.local/cut-and-sew-contract-20261116/CONTRACT.md",
+      "expected": {
+        "sha256": "57a121c85f599cc41931dc32993e57f29541c1ea161f6286f391db2ecd4a90f3"
+      },
+      "actual": {
+        "sha256": "57a121c85f599cc41931dc32993e57f29541c1ea161f6286f391db2ecd4a90f3",
+        "bytes": 11622,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-contract-20261116/ORACLE.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-contract-20261116/ORACLE.json",
+      "expected": {
+        "sha256": "cf4f9c75afa31b6afdbcfc6890f6b51509e55ce9eb7c1d149987cb2666f823ac"
+      },
+      "actual": {
+        "sha256": "cf4f9c75afa31b6afdbcfc6890f6b51509e55ce9eb7c1d149987cb2666f823ac",
+        "bytes": 11834,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-contract-review-20261116/REVIEW-001.md",
+      "path": "<WORKSPACE>/.local/cut-and-sew-contract-review-20261116/REVIEW-001.md",
+      "expected": {
+        "sha256": "1be6e0174787c60d5eb19e4923158c1af9dd5553a3bceb3436775c88c428b6cc"
+      },
+      "actual": {
+        "sha256": "1be6e0174787c60d5eb19e4923158c1af9dd5553a3bceb3436775c88c428b6cc",
+        "bytes": 9787,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-integration-20261116/clean-3858848-verify-build-001/CHECKS.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/clean-3858848-verify-build-001/CHECKS.json",
+      "expected": {
+        "sha256": "fd8e69195e15c996e668107a5a5f0012c99346fecb549347e01b06d184d77f5a"
+      },
+      "actual": {
+        "sha256": "fd8e69195e15c996e668107a5a5f0012c99346fecb549347e01b06d184d77f5a",
+        "bytes": 10531,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-integration-20261116/clean-3858848-verify-build-001/debug-build.stderr",
+      "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/clean-3858848-verify-build-001/debug-build.stderr",
+      "expected": {
+        "sha256": "0b53209db424367e80c52cd8cde8b75e37af110438a0efde777104a1463956de"
+      },
+      "actual": {
+        "sha256": "0b53209db424367e80c52cd8cde8b75e37af110438a0efde777104a1463956de",
+        "bytes": 72,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-integration-20261116/clean-3858848-verify-build-001/debug-build.stdout",
+      "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/clean-3858848-verify-build-001/debug-build.stdout",
+      "expected": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "actual": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-integration-20261116/clean-3858848-verify-build-001/xtask.stderr",
+      "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/clean-3858848-verify-build-001/xtask.stderr",
+      "expected": {
+        "sha256": "52fd2a49aa577e651c1452063491d90ee1418ab7ccfefe37fc61a3040c88e968"
+      },
+      "actual": {
+        "sha256": "52fd2a49aa577e651c1452063491d90ee1418ab7ccfefe37fc61a3040c88e968",
+        "bytes": 1364,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-integration-20261116/clean-3858848-verify-build-001/xtask.stdout",
+      "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/clean-3858848-verify-build-001/xtask.stdout",
+      "expected": {
+        "sha256": "522685e772c16e586af9036ed68d2be0a81559fadb2127b199331a1838b6a2e1"
+      },
+      "actual": {
+        "sha256": "522685e772c16e586af9036ed68d2be0a81559fadb2127b199331a1838b6a2e1",
+        "bytes": 2712,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/CHECKS.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/CHECKS.json",
+      "expected": {
+        "sha256": "34db1fa96460c6468cb4c6ea93da198dcdac6907e9016dd2ff5dc039ab945599"
+      },
+      "actual": {
+        "sha256": "34db1fa96460c6468cb4c6ea93da198dcdac6907e9016dd2ff5dc039ab945599",
+        "bytes": 11317,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/CHECKS.partial.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/CHECKS.partial.json",
+      "expected": {
+        "sha256": "b4dbf40af9dd7193b91184a461973a4c26907a041a81446be2449cb50e4128dd"
+      },
+      "actual": {
+        "sha256": "b4dbf40af9dd7193b91184a461973a4c26907a041a81446be2449cb50e4128dd",
+        "bytes": 10708,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/clippy.stderr",
+      "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/clippy.stderr",
+      "expected": {
+        "sha256": "7b6c5074f31981b047200790b20d8799976efa753e8f61f93e9b949e95e3c383"
+      },
+      "actual": {
+        "sha256": "7b6c5074f31981b047200790b20d8799976efa753e8f61f93e9b949e95e3c383",
+        "bytes": 6429,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/clippy.stdout",
+      "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/clippy.stdout",
+      "expected": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "actual": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/debug-build.stderr",
+      "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/debug-build.stderr",
+      "expected": {
+        "sha256": "e976f706bb221ea045fa43759f576603f0857644508d0a087d791a0ed3566d8a"
+      },
+      "actual": {
+        "sha256": "e976f706bb221ea045fa43759f576603f0857644508d0a087d791a0ed3566d8a",
+        "bytes": 220,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/debug-build.stdout",
+      "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/debug-build.stdout",
+      "expected": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "actual": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/fmt.stderr",
+      "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/fmt.stderr",
+      "expected": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "actual": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/fmt.stdout",
+      "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/fmt.stdout",
+      "expected": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "actual": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/test.stderr",
+      "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/test.stderr",
+      "expected": {
+        "sha256": "c2fda43768843caffe3697575cc04b4509de8bd486613223b8abcc373d5cf624"
+      },
+      "actual": {
+        "sha256": "c2fda43768843caffe3697575cc04b4509de8bd486613223b8abcc373d5cf624",
+        "bytes": 2480,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/test.stdout",
+      "path": "<WORKSPACE>/.local/cut-and-sew-integration-20261116/runtime-5898f1a-001/test.stdout",
+      "expected": {
+        "sha256": "29b67018d1190f699c01236dcc44db6f1c163aa2e756f3d52aed2e1bfcd016ff"
+      },
+      "actual": {
+        "sha256": "29b67018d1190f699c01236dcc44db6f1c163aa2e756f3d52aed2e1bfcd016ff",
+        "bytes": 34033,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-native-plan-review-20261116/INPUT-HASHES-002.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-review-20261116/INPUT-HASHES-002.json",
+      "expected": {
+        "sha256": "e0e21b953515c9251133dbd3720620e9efc48ad10ed1fae68747b2acf41c3a73"
+      },
+      "actual": {
+        "sha256": "e0e21b953515c9251133dbd3720620e9efc48ad10ed1fae68747b2acf41c3a73",
+        "bytes": 19139,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-native-plan-review-20261116/INPUT-HASHES.json",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-review-20261116/INPUT-HASHES.json",
+      "expected": {
+        "sha256": "0eb2dd9d9df6bc5ad9bf5cd2cf218343b888e13d36e65f1908aa191d75c0c3c6"
+      },
+      "actual": {
+        "sha256": "0eb2dd9d9df6bc5ad9bf5cd2cf218343b888e13d36e65f1908aa191d75c0c3c6",
+        "bytes": 16809,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-native-plan-review-20261116/REVIEW-001.md",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-review-20261116/REVIEW-001.md",
+      "expected": {
+        "sha256": "def0fa416ad88c0f7c634623a2c2c86aff876236233a51fb2e2f4c6528c7fd6c"
+      },
+      "actual": {
+        "sha256": "def0fa416ad88c0f7c634623a2c2c86aff876236233a51fb2e2f4c6528c7fd6c",
+        "bytes": 10044,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-native-plan-review-20261116/REVIEW-002.md",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-review-20261116/REVIEW-002.md",
+      "expected": {
+        "sha256": "d01e0ed64b9c380bb0c80e24aae079e5172ec4f09a18b69af931185940a39a08"
+      },
+      "actual": {
+        "sha256": "d01e0ed64b9c380bb0c80e24aae079e5172ec4f09a18b69af931185940a39a08",
+        "bytes": 7863,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-native-plan-review-20261116/SHA256SUMS",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-review-20261116/SHA256SUMS",
+      "expected": {
+        "sha256": "1df8049a5f54e8b9cdc44494566fda807fb33124d7b65962cdd9ddabc3317406"
+      },
+      "actual": {
+        "sha256": "1df8049a5f54e8b9cdc44494566fda807fb33124d7b65962cdd9ddabc3317406",
+        "bytes": 164,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/cut-and-sew-native-plan-review-20261116/SHA256SUMS-002",
+      "path": "<WORKSPACE>/.local/cut-and-sew-native-plan-review-20261116/SHA256SUMS-002",
+      "expected": {
+        "sha256": "af22c0343ecfa3f786d7b4f687017f6da3384879e131db2a24c6b8675911dff3"
+      },
+      "actual": {
+        "sha256": "af22c0343ecfa3f786d7b4f687017f6da3384879e131db2a24c6b8675911dff3",
+        "bytes": 168,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/internal-native-plan-v2-20261115/grade_saved.py",
+      "path": "<WORKSPACE>/.local/internal-native-plan-v2-20261115/grade_saved.py",
+      "expected": {
+        "sha256": "6b3aefcca60fcc12d78a75e967f63c582d76e7a2d134975393a72a3a9c184c78"
+      },
+      "actual": {
+        "sha256": "6b3aefcca60fcc12d78a75e967f63c582d76e7a2d134975393a72a3a9c184c78",
+        "bytes": 28049,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-internal-annotations-20261115/C002/OBSERVER-FRAGMENT.cjs",
+      "path": "<WORKSPACE>/.local/native-internal-annotations-20261115/C002/OBSERVER-FRAGMENT.cjs",
+      "expected": {
+        "sha256": "d580450b45fc2fe42b19c146fb7023f84d04e7b9596ac24a8f5afe3e81be7729"
+      },
+      "actual": {
+        "sha256": "d580450b45fc2fe42b19c146fb7023f84d04e7b9596ac24a8f5afe3e81be7729",
+        "bytes": 393,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-length-readouts-v2-20261115/recorder.cjs",
+      "path": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+      "expected": {
+        "sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc"
+      },
+      "actual": {
+        "sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+        "bytes": 2460,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-straight-hole-20261116/H1-002/NATIVE-LEASE-CLOSED.json",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/NATIVE-LEASE-CLOSED.json",
+      "expected": {
+        "sha256": "d356e1597ea641f83626e548d525495fed17668f048594fefaaa259d0f26270f"
+      },
+      "actual": {
+        "sha256": "d356e1597ea641f83626e548d525495fed17668f048594fefaaa259d0f26270f",
+        "bytes": 500,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-straight-hole-20261116/H1-002/POSTFLIGHT.json",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/POSTFLIGHT.json",
+      "expected": {
+        "sha256": "08660b2859c2bdd2bb63131c7892db4d5f5fc9ebda0774e0631aa6dd4a0c43a4"
+      },
+      "actual": {
+        "sha256": "08660b2859c2bdd2bb63131c7892db4d5f5fc9ebda0774e0631aa6dd4a0c43a4",
+        "bytes": 1183,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-straight-hole-20261116/H1-002/ROOT-BINDING.json",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/ROOT-BINDING.json",
+      "expected": {
+        "sha256": "e9e2bed535024602b54a285f8ccd28a0f3a8ecf93fdcc5be4e8629f05e2f3cfc"
+      },
+      "actual": {
+        "sha256": "e9e2bed535024602b54a285f8ccd28a0f3a8ecf93fdcc5be4e8629f05e2f3cfc",
+        "bytes": 12575,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-straight-hole-20261116/H1-002/ROOT-UI-ACCEPTANCE.json",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/ROOT-UI-ACCEPTANCE.json",
+      "expected": {
+        "sha256": "b6d79aeb220bf8a1fe291fb82149a7afab9f37b7909baf53f67ab5957d56f712"
+      },
+      "actual": {
+        "sha256": "b6d79aeb220bf8a1fe291fb82149a7afab9f37b7909baf53f67ab5957d56f712",
+        "bytes": 2808,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-straight-hole-20261116/H1-002/SAVED-GRADE-001.json",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/SAVED-GRADE-001.json",
+      "expected": {
+        "sha256": "7c939e55ed30b5aebb3bb4f81fb28e449ce21cde67855d88fc592336665bf4f3"
+      },
+      "actual": {
+        "sha256": "7c939e55ed30b5aebb3bb4f81fb28e449ce21cde67855d88fc592336665bf4f3",
+        "bytes": 1690,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-straight-hole-20261116/H1-002/SAVED-GRADE-ATTEMPT.json",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/SAVED-GRADE-ATTEMPT.json",
+      "expected": {
+        "sha256": "a224b07aa3f36d351dc37bf7cfc7198cded9e91ece5e11ee22d92b23d2862bab"
+      },
+      "actual": {
+        "sha256": "a224b07aa3f36d351dc37bf7cfc7198cded9e91ece5e11ee22d92b23d2862bab",
+        "bytes": 138,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-straight-hole-20261116/H1-002/snapshots/parent-r1.weftforge",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/snapshots/parent-r1.weftforge",
+      "expected": {
+        "sha256": "525855265074aed8ff1af10297c353973cc294a3d83fca818161ce702ba7310f"
+      },
+      "actual": {
+        "sha256": "525855265074aed8ff1af10297c353973cc294a3d83fca818161ce702ba7310f",
+        "bytes": 3232,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-transform-controller-20261115/controller.cjs",
+      "path": "<WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs",
+      "expected": {
+        "sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b"
+      },
+      "actual": {
+        "sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+        "bytes": 8012,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/.cargo/config.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/.cargo/config.toml",
+      "expected": {
+        "sha256": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637"
+      },
+      "actual": {
+        "sha256": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+        "bytes": 34,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/Cargo.lock",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/Cargo.lock",
+      "expected": {
+        "sha256": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c"
+      },
+      "actual": {
+        "sha256": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c",
+        "bytes": 107166,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/Cargo.toml",
+      "expected": {
+        "sha256": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af"
+      },
+      "actual": {
+        "sha256": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+        "bytes": 667,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/Cargo.toml",
+      "expected": {
+        "sha256": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb"
+      },
+      "actual": {
+        "sha256": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+        "bytes": 347,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/src/main.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/src/main.rs",
+      "expected": {
+        "sha256": "7049615180a793ad1557a2bbd3a27797b4b06aac060a2cb0620bd40436e64e0b"
+      },
+      "actual": {
+        "sha256": "7049615180a793ad1557a2bbd3a27797b4b06aac060a2cb0620bd40436e64e0b",
+        "bytes": 28534,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/src/mcp.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/src/mcp.rs",
+      "expected": {
+        "sha256": "eace4c5773e8e9031430612823546ecbbf437adf8a1c0a30082bc5bc4d6e6528"
+      },
+      "actual": {
+        "sha256": "eace4c5773e8e9031430612823546ecbbf437adf8a1c0a30082bc5bc4d6e6528",
+        "bytes": 30944,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/curves.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/curves.rs",
+      "expected": {
+        "sha256": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e"
+      },
+      "actual": {
+        "sha256": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+        "bytes": 5513,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/dxf_import.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/dxf_import.rs",
+      "expected": {
+        "sha256": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d"
+      },
+      "actual": {
+        "sha256": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d",
+        "bytes": 5338,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/ellipse.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/ellipse.rs",
+      "expected": {
+        "sha256": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b"
+      },
+      "actual": {
+        "sha256": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+        "bytes": 4339,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/grain.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/grain.rs",
+      "expected": {
+        "sha256": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542"
+      },
+      "actual": {
+        "sha256": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+        "bytes": 3098,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/holes.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/holes.rs",
+      "expected": {
+        "sha256": "c7e0656dcb756db3ced588e52c08c969a997b99661f85bbb8d5079a27421ad77"
+      },
+      "actual": {
+        "sha256": "c7e0656dcb756db3ced588e52c08c969a997b99661f85bbb8d5079a27421ad77",
+        "bytes": 5651,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/mcp_stdio.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/mcp_stdio.rs",
+      "expected": {
+        "sha256": "84693ca3844ee75f6ffa7174aff70fcf5a8e1a66fe44af9ffdfae52cdc6ce948"
+      },
+      "actual": {
+        "sha256": "84693ca3844ee75f6ffa7174aff70fcf5a8e1a66fe44af9ffdfae52cdc6ce948",
+        "bytes": 113045,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/svg_import.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge-cli/tests/svg_import.rs",
+      "expected": {
+        "sha256": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af"
+      },
+      "actual": {
+        "sha256": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af",
+        "bytes": 5336,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/Cargo.toml",
+      "expected": {
+        "sha256": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95"
+      },
+      "actual": {
+        "sha256": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+        "bytes": 365,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/Inter-Regular.ttf",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/Inter-Regular.ttf",
+      "expected": {
+        "sha256": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82"
+      },
+      "actual": {
+        "sha256": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82",
+        "bytes": 411640,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/Inter-SemiBold.ttf",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/Inter-SemiBold.ttf",
+      "expected": {
+        "sha256": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3"
+      },
+      "actual": {
+        "sha256": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3",
+        "bytes": 419744,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf",
+      "expected": {
+        "sha256": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1"
+      },
+      "actual": {
+        "sha256": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1",
+        "bytes": 270224,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/OFL-Inter.txt",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/OFL-Inter.txt",
+      "expected": {
+        "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+      },
+      "actual": {
+        "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "bytes": 4380,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt",
+      "expected": {
+        "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697"
+      },
+      "actual": {
+        "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+        "bytes": 4399,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/SOURCES.json",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/assets/fonts/SOURCES.json",
+      "expected": {
+        "sha256": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c"
+      },
+      "actual": {
+        "sha256": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c",
+        "bytes": 1445,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/apps/weftforge/src/main.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/apps/weftforge/src/main.rs",
+      "expected": {
+        "sha256": "e561485f666197368aad44c302a2216635c5ff2afdb08a6cfc4bfa77d4e4bb44"
+      },
+      "actual": {
+        "sha256": "e561485f666197368aad44c302a2216635c5ff2afdb08a6cfc4bfa77d4e4bb44",
+        "bytes": 792994,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/Cargo.toml",
+      "expected": {
+        "sha256": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9"
+      },
+      "actual": {
+        "sha256": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+        "bytes": 341,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/document.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/document.rs",
+      "expected": {
+        "sha256": "0c17946892e686aeaaacd49aa6cc733a80bd2f8c7e8aa0a8b9d490111b828ebe"
+      },
+      "actual": {
+        "sha256": "0c17946892e686aeaaacd49aa6cc733a80bd2f8c7e8aa0a8b9d490111b828ebe",
+        "bytes": 80364,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/geometry.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/geometry.rs",
+      "expected": {
+        "sha256": "d4ba435fe2fbcd907c97a01b16be2b8bcfa934a1e3cbb4882fc75ab43f380105"
+      },
+      "actual": {
+        "sha256": "d4ba435fe2fbcd907c97a01b16be2b8bcfa934a1e3cbb4882fc75ab43f380105",
+        "bytes": 58425,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/lib.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/lib.rs",
+      "expected": {
+        "sha256": "157990183f20487c3b1494a837914e81fb98e3e4fb35a1f0dedc0542a1ec6661"
+      },
+      "actual": {
+        "sha256": "157990183f20487c3b1494a837914e81fb98e3e4fb35a1f0dedc0542a1ec6661",
+        "bytes": 1288,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/persistence.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/persistence.rs",
+      "expected": {
+        "sha256": "42c3d163bf347af1dcf3bb007ac15c7ba3e4836c829b18904592cb96b6cd9812"
+      },
+      "actual": {
+        "sha256": "42c3d163bf347af1dcf3bb007ac15c7ba3e4836c829b18904592cb96b6cd9812",
+        "bytes": 30106,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/persistence/dxf.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/persistence/dxf.rs",
+      "expected": {
+        "sha256": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338"
+      },
+      "actual": {
+        "sha256": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338",
+        "bytes": 7133,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/persistence/dxf_import.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/persistence/dxf_import.rs",
+      "expected": {
+        "sha256": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec"
+      },
+      "actual": {
+        "sha256": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+        "bytes": 18713,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/persistence/svg.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/persistence/svg.rs",
+      "expected": {
+        "sha256": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7"
+      },
+      "actual": {
+        "sha256": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7",
+        "bytes": 18436,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/sewing.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/sewing.rs",
+      "expected": {
+        "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed"
+      },
+      "actual": {
+        "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed",
+        "bytes": 28379,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/simulation.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/src/simulation.rs",
+      "expected": {
+        "sha256": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29"
+      },
+      "actual": {
+        "sha256": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29",
+        "bytes": 9490,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/cut_piece.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/cut_piece.rs",
+      "expected": {
+        "sha256": "7c5e12e7a4b6f0cec65199e795c8ad16889a0f0aa08247da2a2f94b567a59c86"
+      },
+      "actual": {
+        "sha256": "7c5e12e7a4b6f0cec65199e795c8ad16889a0f0aa08247da2a2f94b567a59c86",
+        "bytes": 62804,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/dxf.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/dxf.rs",
+      "expected": {
+        "sha256": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a"
+      },
+      "actual": {
+        "sha256": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+        "bytes": 16900,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/dxf_import.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/dxf_import.rs",
+      "expected": {
+        "sha256": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b"
+      },
+      "actual": {
+        "sha256": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+        "bytes": 14935,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/ellipse.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/ellipse.rs",
+      "expected": {
+        "sha256": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78"
+      },
+      "actual": {
+        "sha256": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78",
+        "bytes": 12167,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge",
+      "expected": {
+        "sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d"
+      },
+      "actual": {
+        "sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+        "bytes": 8107,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/fixtures/original-cut-l.weftforge",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/fixtures/original-cut-l.weftforge",
+      "expected": {
+        "sha256": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d"
+      },
+      "actual": {
+        "sha256": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d",
+        "bytes": 3622,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge",
+      "expected": {
+        "sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50"
+      },
+      "actual": {
+        "sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+        "bytes": 3211,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf",
+      "expected": {
+        "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+      },
+      "actual": {
+        "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+        "bytes": 4289,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/fixtures/original-editable-patterns.svg",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/fixtures/original-editable-patterns.svg",
+      "expected": {
+        "sha256": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676"
+      },
+      "actual": {
+        "sha256": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+        "bytes": 729,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/grain.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/grain.rs",
+      "expected": {
+        "sha256": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580"
+      },
+      "actual": {
+        "sha256": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+        "bytes": 5015,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/hole_io.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/hole_io.rs",
+      "expected": {
+        "sha256": "dfe604ad08e660e9feecb88d99153eee78bb1cadcbb8307350ad9983956025a2"
+      },
+      "actual": {
+        "sha256": "dfe604ad08e660e9feecb88d99153eee78bb1cadcbb8307350ad9983956025a2",
+        "bytes": 10737,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/holes.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/holes.rs",
+      "expected": {
+        "sha256": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594"
+      },
+      "actual": {
+        "sha256": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594",
+        "bytes": 36802,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/internal_lines.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/internal_lines.rs",
+      "expected": {
+        "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
+      },
+      "actual": {
+        "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786",
+        "bytes": 24048,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/joins.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/joins.rs",
+      "expected": {
+        "sha256": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10"
+      },
+      "actual": {
+        "sha256": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10",
+        "bytes": 19861,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/migration.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/migration.rs",
+      "expected": {
+        "sha256": "1f4b8aec8bfa9622c7c69b2b7ef2a9ec2c745340c5d56c5edab87d40d7f66418"
+      },
+      "actual": {
+        "sha256": "1f4b8aec8bfa9622c7c69b2b7ef2a9ec2c745340c5d56c5edab87d40d7f66418",
+        "bytes": 17548,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/pattern_transform.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/pattern_transform.rs",
+      "expected": {
+        "sha256": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31"
+      },
+      "actual": {
+        "sha256": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31",
+        "bytes": 24219,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/seam_reversal.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/seam_reversal.rs",
+      "expected": {
+        "sha256": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d"
+      },
+      "actual": {
+        "sha256": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d",
+        "bytes": 6231,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/sewing_groups.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/sewing_groups.rs",
+      "expected": {
+        "sha256": "a3e9ad0393b0039b7257193b5bcd0f54e7aafe5ab5566ae8459c1392a0ce6f41"
+      },
+      "actual": {
+        "sha256": "a3e9ad0393b0039b7257193b5bcd0f54e7aafe5ab5566ae8459c1392a0ce6f41",
+        "bytes": 57301,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/shirt.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/shirt.rs",
+      "expected": {
+        "sha256": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618"
+      },
+      "actual": {
+        "sha256": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+        "bytes": 2949,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/svg_import.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/svg_import.rs",
+      "expected": {
+        "sha256": "3b9601a0023c1d91b96a309d0822439afa75e97f97a5e53c5104cbef3e6ed72e"
+      },
+      "actual": {
+        "sha256": "3b9601a0023c1d91b96a309d0822439afa75e97f97a5e53c5104cbef3e6ed72e",
+        "bytes": 14807,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/workflow.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-core/tests/workflow.rs",
+      "expected": {
+        "sha256": "3f7ad8f050b6f749e85e7c865cf35d0cdc31d3f86023a05d5db19d4bfec495c2"
+      },
+      "actual": {
+        "sha256": "3f7ad8f050b6f749e85e7c865cf35d0cdc31d3f86023a05d5db19d4bfec495c2",
+        "bytes": 23886,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/Cargo.toml",
+      "expected": {
+        "sha256": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250"
+      },
+      "actual": {
+        "sha256": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+        "bytes": 205,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/capsule.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/capsule.rs",
+      "expected": {
+        "sha256": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7"
+      },
+      "actual": {
+        "sha256": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7",
+        "bytes": 18343,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/constraints.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/constraints.rs",
+      "expected": {
+        "sha256": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035"
+      },
+      "actual": {
+        "sha256": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+        "bytes": 7237,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/contact.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/contact.rs",
+      "expected": {
+        "sha256": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655"
+      },
+      "actual": {
+        "sha256": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655",
+        "bytes": 31515,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/lib.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/lib.rs",
+      "expected": {
+        "sha256": "d614d1dc3b66fd6c5e4d4179a9ba8776f2abfd264e2a30723c3a122fc6fc77ab"
+      },
+      "actual": {
+        "sha256": "d614d1dc3b66fd6c5e4d4179a9ba8776f2abfd264e2a30723c3a122fc6fc77ab",
+        "bytes": 26945,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/math.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/math.rs",
+      "expected": {
+        "sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424"
+      },
+      "actual": {
+        "sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+        "bytes": 2391,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/strain.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/strain.rs",
+      "expected": {
+        "sha256": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78"
+      },
+      "actual": {
+        "sha256": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+        "bytes": 1858,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/tests.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/crates/weftforge-sim/src/tests.rs",
+      "expected": {
+        "sha256": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09"
+      },
+      "actual": {
+        "sha256": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+        "bytes": 59354,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/docs/architecture.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/docs/architecture.md",
+      "expected": {
+        "sha256": "c0c0a1e786f28ab7b3af7bc9dad51dfd0ab598e6c6a8fe6a2e7627d30a923dba"
+      },
+      "actual": {
+        "sha256": "c0c0a1e786f28ab7b3af7bc9dad51dfd0ab598e6c6a8fe6a2e7627d30a923dba",
+        "bytes": 13035,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/docs/automation.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/docs/automation.md",
+      "expected": {
+        "sha256": "0aefa17e21664f183af23a64a14c2001fb9786f8cb9e3420383da7baacef7728"
+      },
+      "actual": {
+        "sha256": "0aefa17e21664f183af23a64a14c2001fb9786f8cb9e3420383da7baacef7728",
+        "bytes": 29567,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/docs/file-formats.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/docs/file-formats.md",
+      "expected": {
+        "sha256": "6174d3db1df6c1fd35acd95cdf03858fd377ac55e90437a737f1de6acede0a78"
+      },
+      "actual": {
+        "sha256": "6174d3db1df6c1fd35acd95cdf03858fd377ac55e90437a737f1de6acede0a78",
+        "bytes": 24168,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/rust-toolchain.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/rust-toolchain.toml",
+      "expected": {
+        "sha256": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51"
+      },
+      "actual": {
+        "sha256": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+        "bytes": 86,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/spec/features/APP-001-new-empty.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/APP-001-new-empty.md",
+      "expected": {
+        "sha256": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7"
+      },
+      "actual": {
+        "sha256": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+        "bytes": 2422,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/spec/features/PAT-004-native-transform-selection.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/PAT-004-native-transform-selection.md",
+      "expected": {
+        "sha256": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7"
+      },
+      "actual": {
+        "sha256": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
+        "bytes": 1051,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/spec/features/PAT-004-piece-rigid-transform.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/PAT-004-piece-rigid-transform.md",
+      "expected": {
+        "sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557"
+      },
+      "actual": {
+        "sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+        "bytes": 22481,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/spec/features/PAT-006-internal-segments.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/PAT-006-internal-segments.md",
+      "expected": {
+        "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66"
+      },
+      "actual": {
+        "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+        "bytes": 43508,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/spec/features/PAT-006-straight-cut.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/PAT-006-straight-cut.md",
+      "expected": {
+        "sha256": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c"
+      },
+      "actual": {
+        "sha256": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c",
+        "bytes": 17836,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/spec/features/PAT-006-straight-hole.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/PAT-006-straight-hole.md",
+      "expected": {
+        "sha256": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f"
+      },
+      "actual": {
+        "sha256": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f",
+        "bytes": 24548,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/spec/features/SEW-001-cut-and-sew.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/SEW-001-cut-and-sew.md",
+      "expected": {
+        "sha256": "9420f9a88ea184868aba5543f0d356181fcd8373dadfa4632376cc4a5a5f8941"
+      },
+      "actual": {
+        "sha256": "9420f9a88ea184868aba5543f0d356181fcd8373dadfa4632376cc4a5a5f8941",
+        "bytes": 9082,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/spec/features/SEW-002-physical-length.md",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/spec/features/SEW-002-physical-length.md",
+      "expected": {
+        "sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2"
+      },
+      "actual": {
+        "sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+        "bytes": 14576,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/target/debug/weftforge",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/target/debug/weftforge",
+      "expected": {
+        "sha256": "7809e41948e19d0055da45e10a3b55225173df48e43465fab1b48effd7efa1c8"
+      },
+      "actual": {
+        "sha256": "7809e41948e19d0055da45e10a3b55225173df48e43465fab1b48effd7efa1c8",
+        "bytes": 62245032,
+        "mode": "0o755"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/xtask/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/xtask/Cargo.toml",
+      "expected": {
+        "sha256": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204"
+      },
+      "actual": {
+        "sha256": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+        "bytes": 241,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-and-sew-20261116/xtask/src/main.rs",
+      "path": "<WORKSPACE>/.local/straight-cut-and-sew-20261116/xtask/src/main.rs",
+      "expected": {
+        "sha256": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709"
+      },
+      "actual": {
+        "sha256": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709",
+        "bytes": 7562,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-native-plan-v2-20261116/grade_saved.py",
+      "path": "<WORKSPACE>/.local/straight-cut-native-plan-v2-20261116/grade_saved.py",
+      "expected": {
+        "sha256": "a9d7d866f7a4639ed57eee94f79428dd4026baba073c95043c2d9bd9a7931d62"
+      },
+      "actual": {
+        "sha256": "a9d7d866f7a4639ed57eee94f79428dd4026baba073c95043c2d9bd9a7931d62",
+        "bytes": 37138,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-native-plan-v2-20261116/retain_saved.py",
+      "path": "<WORKSPACE>/.local/straight-cut-native-plan-v2-20261116/retain_saved.py",
+      "expected": {
+        "sha256": "5fd28138d6ce42991ad3576a5ecfec2a4f8cbe70a0b98be32ebb37f809a12888"
+      },
+      "actual": {
+        "sha256": "5fd28138d6ce42991ad3576a5ecfec2a4f8cbe70a0b98be32ebb37f809a12888",
+        "bytes": 3672,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-v2-20261116/PLAN.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/PLAN.json",
+      "expected": {
+        "sha256": "c1fff1ebcd6a40ecafe2f66a6192945b09d4d856204c2174a6e98efcf7688708"
+      },
+      "actual": {
+        "sha256": "c1fff1ebcd6a40ecafe2f66a6192945b09d4d856204c2174a6e98efcf7688708",
+        "bytes": 4567,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-v2-20261116/RUNTIME-PROTOCOL.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/RUNTIME-PROTOCOL.json",
+      "expected": {
+        "sha256": "5504bea325e18ec13e095b3d9790727eec1b39786f32165f23f92cfbc58e0fea"
+      },
+      "actual": {
+        "sha256": "5504bea325e18ec13e095b3d9790727eec1b39786f32165f23f92cfbc58e0fea",
+        "bytes": 2973,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-v2-20261116/fixtures/R240-v5-assessment.weftforge",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/fixtures/R240-v5-assessment.weftforge",
+      "expected": {
+        "sha256": "efded819acf663319dba7cb74e31e6291901d62a46eba671b14de16fd206e400"
+      },
+      "actual": {
+        "sha256": "efded819acf663319dba7cb74e31e6291901d62a46eba671b14de16fd206e400",
+        "bytes": 3233,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-v2-20261116/grade_saved.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/grade_saved.py",
+      "expected": {
+        "sha256": "486328f13c49018e240cbbd3f52e8b1cf9dd0d97747d3653ee3b927d3b2a31b9"
+      },
+      "actual": {
+        "sha256": "486328f13c49018e240cbbd3f52e8b1cf9dd0d97747d3653ee3b927d3b2a31b9",
+        "bytes": 30144,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ACTOR-BOOTSTRAP.js",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/ACTOR-BOOTSTRAP.js",
+      "expected": {
+        "sha256": "9ae48868aa0295234da34923b2d9d04a4583c851c0026df19c92587356d3b3ed",
+        "bytes": 12451,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "9ae48868aa0295234da34923b2d9d04a4583c851c0026df19c92587356d3b3ed",
+        "bytes": 12451,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ACTOR-INITIAL-CAPTURE.js",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/ACTOR-INITIAL-CAPTURE.js",
+      "expected": {
+        "sha256": "501d44a850e0897c3d987db7688770f77c451bf7daef3637c4e886d7bcb95d4b",
+        "bytes": 365,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "501d44a850e0897c3d987db7688770f77c451bf7daef3637c4e886d7bcb95d4b",
+        "bytes": 365,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ACTOR-LAUNCH-PID.cjs",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/ACTOR-LAUNCH-PID.cjs",
+      "expected": {
+        "sha256": "59c54e48d27038b30ca451d67460b2a0c9e7935d40c6a9952092ef6fb3465fe4",
+        "bytes": 2531,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "59c54e48d27038b30ca451d67460b2a0c9e7935d40c6a9952092ef6fb3465fe4",
+        "bytes": 2531,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ACTOR-PERSISTENCE-CHECK.js",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/ACTOR-PERSISTENCE-CHECK.js",
+      "expected": {
+        "sha256": "8a4bafceabf47096fde940f25a55256677dbbc2c6ab73247df1aafb8ad81956b",
+        "bytes": 10543,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "8a4bafceabf47096fde940f25a55256677dbbc2c6ab73247df1aafb8ad81956b",
+        "bytes": 10543,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ACTOR-POSTFLIGHT-RAW.cjs",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/ACTOR-POSTFLIGHT-RAW.cjs",
+      "expected": {
+        "sha256": "f1b6e6f1ccf1fb40734b2c18159458efd71e815fcea0d193dff7a1984487a74c",
+        "bytes": 6433,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "f1b6e6f1ccf1fb40734b2c18159458efd71e815fcea0d193dff7a1984487a74c",
+        "bytes": 6433,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ACTOR-START-CLOCK.cjs",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/ACTOR-START-CLOCK.cjs",
+      "expected": {
+        "sha256": "a745ed2e1f5aeb9c09d4f1e137ab15d6ab9d01f4f5e590456aa4f1a54e163a92",
+        "bytes": 1613,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "a745ed2e1f5aeb9c09d4f1e137ab15d6ab9d01f4f5e590456aa4f1a54e163a92",
+        "bytes": 1613,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/FILESYSTEM-GUARD.json",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/FILESYSTEM-GUARD.json",
+      "expected": {
+        "sha256": "410fbeb41aaa360a9cbf10f0a43635455b47fb857b6c4273a4364e9b28519a8c",
+        "bytes": 24404,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "410fbeb41aaa360a9cbf10f0a43635455b47fb857b6c4273a4364e9b28519a8c",
+        "bytes": 24404,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ORCHESTRATION.md",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/ORCHESTRATION.md",
+      "expected": {
+        "sha256": "b71754c77d10e7e4fa82444efa21275f52a5c9c9fba7bd32678370a622d03022",
+        "bytes": 6988,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "b71754c77d10e7e4fa82444efa21275f52a5c9c9fba7bd32678370a622d03022",
+        "bytes": 6988,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/PASSIVE-STATIC-CHECK.cjs",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/PASSIVE-STATIC-CHECK.cjs",
+      "expected": {
+        "sha256": "b04153b0627f33251b0fce788b957d1a103c45da16f7265081016f27b71b4269",
+        "bytes": 24479,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "b04153b0627f33251b0fce788b957d1a103c45da16f7265081016f27b71b4269",
+        "bytes": 24479,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/PASSIVE-STATIC-CHECK.json",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/PASSIVE-STATIC-CHECK.json",
+      "expected": {
+        "sha256": "06ab0e8e10dc136d4244c3a55845a51cfa879b60e908ff167dae0ee812405e77",
+        "bytes": 2457,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "06ab0e8e10dc136d4244c3a55845a51cfa879b60e908ff167dae0ee812405e77",
+        "bytes": 2457,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ROOT-BINDING-DRAFT.json",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/ROOT-BINDING-DRAFT.json",
+      "expected": {
+        "sha256": "0650c9173d02e2eba5b55a84fd36d89d61929a4f72293fe28af497cd7468d166",
+        "bytes": 13734,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "0650c9173d02e2eba5b55a84fd36d89d61929a4f72293fe28af497cd7468d166",
+        "bytes": 13734,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/STAGING-MANIFEST.json",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/STAGING-MANIFEST.json",
+      "expected": {
+        "sha256": "3289bad898cceba3c200af16908ce275e175c52c0ad5626ad276964df1982b22",
+        "bytes": 3456,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "3289bad898cceba3c200af16908ce275e175c52c0ad5626ad276964df1982b22",
+        "bytes": 3456,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/WeftForgeSewS1001.app/Contents/Info.plist",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/WeftForgeSewS1001.app/Contents/Info.plist",
+      "expected": {
+        "sha256": "f13562ed221dd4d30b9c421674f96bf4a1189d701954cd5eb55c842164a0da4c",
+        "bytes": 863,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "f13562ed221dd4d30b9c421674f96bf4a1189d701954cd5eb55c842164a0da4c",
+        "bytes": 863,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/WeftForgeSewS1001.app/Contents/MacOS/weftforge",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/WeftForgeSewS1001.app/Contents/MacOS/weftforge",
+      "expected": {
+        "sha256": "7809e41948e19d0055da45e10a3b55225173df48e43465fab1b48effd7efa1c8",
+        "bytes": 62245032,
+        "mode": "0o555"
+      },
+      "actual": {
+        "sha256": "7809e41948e19d0055da45e10a3b55225173df48e43465fab1b48effd7efa1c8",
+        "bytes": 62245032,
+        "mode": "0o555"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/inputs/accepted-parent-r1.weftforge",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/inputs/accepted-parent-r1.weftforge",
+      "expected": {
+        "sha256": "525855265074aed8ff1af10297c353973cc294a3d83fca818161ce702ba7310f",
+        "bytes": 3232,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "525855265074aed8ff1af10297c353973cc294a3d83fca818161ce702ba7310f",
+        "bytes": 3232,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/templates/ACTOR-RUNTIME-TOOL-HISTORY.template.json",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/templates/ACTOR-RUNTIME-TOOL-HISTORY.template.json",
+      "expected": {
+        "sha256": "337cc358500e607d510a255a1078b655d3d3f69de40c3ef1efb96006cb326f24",
+        "bytes": 549,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "337cc358500e607d510a255a1078b655d3d3f69de40c3ef1efb96006cb326f24",
+        "bytes": 549,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/templates/COMPLETION-SUMMARY-RETURN.template.json",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/templates/COMPLETION-SUMMARY-RETURN.template.json",
+      "expected": {
+        "sha256": "8d3b04a1930f1c79df236ac581a00927790847db770ba28a91ff5543215034d9",
+        "bytes": 639,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "8d3b04a1930f1c79df236ac581a00927790847db770ba28a91ff5543215034d9",
+        "bytes": 639,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/templates/NATIVE-LEASE-CLOSED.template.json",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/templates/NATIVE-LEASE-CLOSED.template.json",
+      "expected": {
+        "sha256": "02d297943f9750c990de11625d65d850439c7b9ce56930d61003f421d8cca72b",
+        "bytes": 423,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "02d297943f9750c990de11625d65d850439c7b9ce56930d61003f421d8cca72b",
+        "bytes": 423,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/templates/POSTFLIGHT.template.json",
+      "path": "<WORKSPACE>/.local/native-cut-and-sew-20261116/S1-001/templates/POSTFLIGHT.template.json",
+      "expected": {
+        "sha256": "b80f3f74c1e11256c1400c3e91c32b7c14dd7ed3759eaf71488530b26c40c3ac",
+        "bytes": 583,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "b80f3f74c1e11256c1400c3e91c32b7c14dd7ed3759eaf71488530b26c40c3ac",
+        "bytes": 583,
+        "mode": "0o444"
+      },
+      "matches": true
+    }
+  ],
+  "pinned_node_count": 259,
+  "all_pinned_nodes_unchanged": true,
+  "source_input_count": 74,
+  "source_inputs_unchanged": true,
+  "native_binary_unchanged": true,
+  "resolved_source_head": "3858848afb3764014a5d305a0e5dfb5661ea6d86",
+  "source_head_unchanged": true,
+  "paired_native_external_operations": 132,
+  "trace_error_records": [],
+  "documentation_refresh_calls": 1,
+  "summary_calls": 1,
+  "overall_actual_calls": 134,
+  "controller_context_sha256": "29f6b34f38e96f167bacec14a9217646913bce1f18aded9775271e3f8eee492f",
+  "runtime_proof_sha256": "b20e3981eb69c7b905fda50d67a41591ccd1696012fce47d0ff36e36361b0190",
+  "actor_readiness_sha256": "63b4b4cdbdbf163c6c2330ab735824759f3572306c7c6951de059e27cfa536e9",
+  "completion_summary_return_sha256": "bf496ab69b069811a2c9816c605921107003daa644c16dd431cb39a37068f0d3",
+  "native_exit_independently_verified": false,
+  "formal_grading_performed": false
+}

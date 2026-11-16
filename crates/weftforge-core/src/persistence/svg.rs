@@ -14,7 +14,7 @@ use std::{
 pub const MAX_SVG_BYTES: usize = 1024 * 1024;
 const MAX_SVG_PIECES: usize = 64;
 const MAX_SVG_SPANS: usize = 4096;
-pub const SVG_IMPORT_SCOPE: &str = "Imported editable exterior boundaries and names only. Appearance, descriptions, sewing, grain, internal details, allowances, grading and simulation are omitted; new pieces use the first material and default 3D placement.";
+pub const SVG_IMPORT_SCOPE: &str = "Imported editable exterior boundaries and names only; compound paths with holes are unsupported and refused. Appearance, descriptions, sewing, grain, internal details, allowances, grading and simulation are omitted; new pieces use the first material and default 3D placement.";
 
 /// The bounded FILE-005-SVG-import-v1 drawing and its physical scale.
 #[derive(Debug, Clone)]
@@ -77,7 +77,7 @@ impl SvgPatternImport {
                         }
                         (Some("svg"), "path") => {
                             ensure(patterns.len() < MAX_SVG_PIECES, "SVG exceeds the 64-piece limit")?;
-                            check_attributes(&attributes, &["id", "data-name", "d", "fill", "stroke", "stroke-width"])?;
+                            check_attributes(&attributes, &["id", "data-name", "d", "fill", "fill-rule", "stroke", "stroke-width"])?;
                             for (key, value) in &attributes {
                                 if matches!(key.as_str(), "fill" | "stroke") {
                                     let color = value.strip_prefix('#').is_some_and(|hex| {
@@ -86,6 +86,8 @@ impl SvgPatternImport {
                                     ensure(color || matches!(value.as_str(), "none" | "black" | "white"), "SVG supports only literal black, white, none or hexadecimal fill/stroke; appearance is omitted")?;
                                 } else if key == "stroke-width" {
                                     ensure(single_number(value)? >= 0.0, "SVG stroke-width must be nonnegative and unitless; appearance is omitted")?;
+                                } else if key == "fill-rule" {
+                                    ensure(matches!(value.as_str(), "evenodd" | "nonzero"), "SVG fill-rule must be evenodd or nonzero; compound paths with holes are unsupported")?;
                                 }
                             }
                             let name = attributes.get("data-name").or_else(|| attributes.get("id")).cloned().unwrap_or_else(|| format!("SVG pattern {}", patterns.len() + 1));
@@ -299,6 +301,11 @@ fn parse_path(data: &str, scale: f64) -> Result<ImportedPattern> {
     loop {
         if let Some(next) = numbers.command() {
             if next == b'Z' {
+                numbers.skip_whitespace();
+                ensure(
+                    !matches!(numbers.peek(), Some(b'M' | b'm')),
+                    "SVG compound paths with holes are unsupported; import requires one closed contour per piece",
+                )?;
                 numbers.finish()?;
                 if vertices.last() == vertices.first() {
                     vertices.pop();

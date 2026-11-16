@@ -1,0 +1,17 @@
+{
+  "id": "0005",
+  "label": "account-exact-live-owned-hole-pid",
+  "method": "external.pid",
+  "arguments": {
+    "executable": "/bin/ps",
+    "argv": [
+      "-axo",
+      "pid=,command="
+    ],
+    "expected_binary": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/WeftForgeHoleH2001.app/Contents/MacOS/weftforge",
+    "expected_command": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/WeftForgeHoleH2001.app/Contents/MacOS/weftforge <WORKSPACE>/.local/native-straight-hole-20261116/H2-001/inputs/accepted-redo-r5.weftforge",
+    "evidenceKind": "native"
+  },
+  "utc": "2026-11-16T05:50:38.392Z",
+  "monotonic_ns": "930554044301666"
+}

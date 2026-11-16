@@ -1,0 +1,87 @@
+{
+  "kind": "actor preparation freeze for root review only; no final binding/GO",
+  "case": "HOLE-H1",
+  "attempt": "H1-001",
+  "current_packet_freeze_sha256": "13fb9c37e4d3c56f5e017f39fcf9db1b87ddb821cffd9ee96627e778db69193c",
+  "root_authorized_for_case": false,
+  "native_lease_granted": false,
+  "V1_historical_receipts": {
+    "ROOT-BINDING-DRAFT.json": "473aa30414dfd769706fe2803c47e01cfd25067266cc08dd84c0578da503d908",
+    "FILESYSTEM-GUARD.json": "5381b56a28fbeb75056a60cb231d3dd20b44789ac0b88634df55e184eb7c1ebf"
+  },
+  "files": {
+    "ACTOR-BOOTSTRAP.js": {
+      "sha256": "59b89ab65c4d2574ceebc555d624148f99b69f84592998d369e78a9276cfb755",
+      "bytes": 9641,
+      "mode": "0o444"
+    },
+    "ACTOR-INITIAL-CAPTURE.js": {
+      "sha256": "c3462f887bb51245cd3209791147359036b2bdbadb83d20281e91b2498edddac",
+      "bytes": 377,
+      "mode": "0o444"
+    },
+    "ACTOR-PERSISTENCE-CHECK.js": {
+      "sha256": "fa52bd5765f74f0556753af29effc64f381c3b38cdf73aa3d1cc8cc2c0c70071",
+      "bytes": 10869,
+      "mode": "0o444"
+    },
+    "FILESYSTEM-GUARD.json": {
+      "sha256": "5381b56a28fbeb75056a60cb231d3dd20b44789ac0b88634df55e184eb7c1ebf",
+      "bytes": 18196,
+      "mode": "0o644"
+    },
+    "ORCHESTRATION-V2.json": {
+      "sha256": "966e7ac4c6e9085a3a8be6ac8291198d89d9ecc13a8c27375d4ddadb19a5c944",
+      "bytes": 4322,
+      "mode": "0o444"
+    },
+    "PASSIVE-STATIC-CHECK-PRE-HEAD-FIX.json": {
+      "sha256": "1e6c535f4b7c918660dab15ba94df6c31b72e0abba78cabf92271fa76f3ffc2d",
+      "bytes": 1305,
+      "mode": "0o444"
+    },
+    "PASSIVE-STATIC-CHECK.cjs": {
+      "sha256": "b1497a9e601efdc19ad66941258a7ccd0edec5e6d5fc25e6eccb6e9a4535fa64",
+      "bytes": 12367,
+      "mode": "0o444"
+    },
+    "PASSIVE-STATIC-CHECK.json": {
+      "sha256": "1e6c535f4b7c918660dab15ba94df6c31b72e0abba78cabf92271fa76f3ffc2d",
+      "bytes": 1305,
+      "mode": "0o444"
+    },
+    "ROOT-BINDING-DRAFT.json": {
+      "sha256": "473aa30414dfd769706fe2803c47e01cfd25067266cc08dd84c0578da503d908",
+      "bytes": 12005,
+      "mode": "0o644"
+    },
+    "ROOT-BINDING-V2-DRAFT.json": {
+      "sha256": "617e087bb34184650e21e323c8c935334c0015b15c9e3930054079c4072ad9a8",
+      "bytes": 12577,
+      "mode": "0o444"
+    },
+    "WeftForgeHoleH1001.app/Contents/Info.plist": {
+      "sha256": "0e459ed5fd9bdc24f10ba2a4b0760af200aeab2421ed7f55d336e613ff7c72be",
+      "bytes": 866,
+      "mode": "0o444"
+    },
+    "WeftForgeHoleH1001.app/Contents/MacOS/weftforge": {
+      "sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c",
+      "bytes": 62233432,
+      "mode": "0o555"
+    },
+    "STAGING-MANIFEST-V2.json": {
+      "sha256": "61477c39d48f9b1f40c348bb8d2ae52c8b7a9d11786adff0d65e863f05435937",
+      "bytes": 22292,
+      "mode": "0o444"
+    }
+  },
+  "static_operations": 187,
+  "startup_operations": 13,
+  "operation_cap": 200,
+  "summary_calls": 1,
+  "overall_cap": 201,
+  "elapsed_cap_s": 1800,
+  "budgets_are_laboratory_bounds_not_product_speed_criteria": true,
+  "actual_runtime_proof_or_native_acceptance": false
+}

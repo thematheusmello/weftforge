@@ -1,0 +1,2374 @@
+{
+  "schema": "weftforge.native.actor-postflight-raw.v1",
+  "evidence_kind": "postcase_filesystem_identity_and_raw_trace_only",
+  "case": "HOLE-H2",
+  "attempt": "H2-001",
+  "root_binding_sha256": "f09209ccfaba7083b8fb9f55b6c4bb81668f297b735efdac34589cd85f36a556",
+  "pinned_nodes": [
+    {
+      "label": "source73/.cargo/config.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/.cargo/config.toml",
+      "expected": {
+        "sha256": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637"
+      },
+      "actual": {
+        "sha256": "c185a2b859850d94af015a9672c1568e1ef73b12612d820f596ef967b835f637",
+        "bytes": 34,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/Cargo.lock",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/Cargo.lock",
+      "expected": {
+        "sha256": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c"
+      },
+      "actual": {
+        "sha256": "5efe2ab4c54793e055438928f6adcc94747ef0153a02e71a24d01f9cca58747c",
+        "bytes": 107166,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/Cargo.toml",
+      "expected": {
+        "sha256": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af"
+      },
+      "actual": {
+        "sha256": "352cba000ecd733bac3677582dd1a9740abc70a4b534097c13372c4a3b49b7af",
+        "bytes": 667,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge-cli/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/Cargo.toml",
+      "expected": {
+        "sha256": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb"
+      },
+      "actual": {
+        "sha256": "f5af9ff8dadc43bb6d6670a3d5f022ca1963149c16dce3cd8fa7865549f6e5eb",
+        "bytes": 347,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge-cli/src/main.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/src/main.rs",
+      "expected": {
+        "sha256": "7049615180a793ad1557a2bbd3a27797b4b06aac060a2cb0620bd40436e64e0b"
+      },
+      "actual": {
+        "sha256": "7049615180a793ad1557a2bbd3a27797b4b06aac060a2cb0620bd40436e64e0b",
+        "bytes": 28534,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge-cli/src/mcp.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/src/mcp.rs",
+      "expected": {
+        "sha256": "34af8f549de7eac7f025089fddb8c1d798fbd1e65b85d5fce74de473ba72c7cb"
+      },
+      "actual": {
+        "sha256": "34af8f549de7eac7f025089fddb8c1d798fbd1e65b85d5fce74de473ba72c7cb",
+        "bytes": 30994,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge-cli/tests/curves.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/tests/curves.rs",
+      "expected": {
+        "sha256": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e"
+      },
+      "actual": {
+        "sha256": "db4e377f48b452f9e838df6a246709b0d93703118c55388382f77d02e5b6874e",
+        "bytes": 5513,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge-cli/tests/dxf_import.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/tests/dxf_import.rs",
+      "expected": {
+        "sha256": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d"
+      },
+      "actual": {
+        "sha256": "6687aef924966a5f4def92d29f5231708baeaeb71afaff1fb887f16c8047952d",
+        "bytes": 5338,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge-cli/tests/ellipse.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/tests/ellipse.rs",
+      "expected": {
+        "sha256": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b"
+      },
+      "actual": {
+        "sha256": "ae3905ff22e9887ea7951b0351ccaa16e2d9be065c736a85f9b993ed02190f7b",
+        "bytes": 4339,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge-cli/tests/grain.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/tests/grain.rs",
+      "expected": {
+        "sha256": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542"
+      },
+      "actual": {
+        "sha256": "6cb9c6873e6594412601c3e96b10d4610137f89e94816587438d1ac5e3b0e542",
+        "bytes": 3098,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge-cli/tests/holes.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/tests/holes.rs",
+      "expected": {
+        "sha256": "c7e0656dcb756db3ced588e52c08c969a997b99661f85bbb8d5079a27421ad77"
+      },
+      "actual": {
+        "sha256": "c7e0656dcb756db3ced588e52c08c969a997b99661f85bbb8d5079a27421ad77",
+        "bytes": 5651,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge-cli/tests/mcp_stdio.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/tests/mcp_stdio.rs",
+      "expected": {
+        "sha256": "23f3d0d1ee01d86dfb426e2a89b514a399ba53b51159dedbf932b18ce93753f4"
+      },
+      "actual": {
+        "sha256": "23f3d0d1ee01d86dfb426e2a89b514a399ba53b51159dedbf932b18ce93753f4",
+        "bytes": 105733,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge-cli/tests/svg_import.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge-cli/tests/svg_import.rs",
+      "expected": {
+        "sha256": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af"
+      },
+      "actual": {
+        "sha256": "948c77a4027559ed0f3f8b5a20224819732cc00ba5f432208160ae1f4a9162af",
+        "bytes": 5336,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/Cargo.toml",
+      "expected": {
+        "sha256": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95"
+      },
+      "actual": {
+        "sha256": "3a4aa76a11f9f3e2c0302121779032192609da6443a1c64e7eb6dfad6ab13d95",
+        "bytes": 365,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge/assets/fonts/Inter-Regular.ttf",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/assets/fonts/Inter-Regular.ttf",
+      "expected": {
+        "sha256": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82"
+      },
+      "actual": {
+        "sha256": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82",
+        "bytes": 411640,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge/assets/fonts/Inter-SemiBold.ttf",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/assets/fonts/Inter-SemiBold.ttf",
+      "expected": {
+        "sha256": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3"
+      },
+      "actual": {
+        "sha256": "78a843fade9d4612a5567302fb595b56976eb5fcebf4fea5a5912d638bafcde3",
+        "bytes": 419744,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/assets/fonts/JetBrainsMono-Regular.ttf",
+      "expected": {
+        "sha256": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1"
+      },
+      "actual": {
+        "sha256": "e6fd0d7e91550b3ed2b735d4312474362c4716edc4fc0577a0f61ed782d5aed1",
+        "bytes": 270224,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge/assets/fonts/OFL-Inter.txt",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/assets/fonts/OFL-Inter.txt",
+      "expected": {
+        "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+      },
+      "actual": {
+        "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "bytes": 4380,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/assets/fonts/OFL-JetBrainsMono.txt",
+      "expected": {
+        "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697"
+      },
+      "actual": {
+        "sha256": "a76abf002c49097d146e86740a3105a5d00450b1592e820a1109a8c5680cd697",
+        "bytes": 4399,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge/assets/fonts/SOURCES.json",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/assets/fonts/SOURCES.json",
+      "expected": {
+        "sha256": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c"
+      },
+      "actual": {
+        "sha256": "74406ff5e285ac786376485baa4498c6803546a982cfaae781f7edfb8e6a724c",
+        "bytes": 1445,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/apps/weftforge/src/main.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/src/main.rs",
+      "expected": {
+        "sha256": "71b2ff79a315a5de5347ce36a4a07a13a3e9faca6c46e77086338bb24b8a2d48"
+      },
+      "actual": {
+        "sha256": "71b2ff79a315a5de5347ce36a4a07a13a3e9faca6c46e77086338bb24b8a2d48",
+        "bytes": 782185,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/Cargo.toml",
+      "expected": {
+        "sha256": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9"
+      },
+      "actual": {
+        "sha256": "453344f945bb7eeb78faf00e15dcc870763735140f7e7483a4f3f99d24ab94c9",
+        "bytes": 341,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/src/document.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/document.rs",
+      "expected": {
+        "sha256": "4ce5ea5d3919e4fa180d723558ad30975ce2158f68772bc3c151e86857bb05f0"
+      },
+      "actual": {
+        "sha256": "4ce5ea5d3919e4fa180d723558ad30975ce2158f68772bc3c151e86857bb05f0",
+        "bytes": 79881,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/src/geometry.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/geometry.rs",
+      "expected": {
+        "sha256": "d4ba435fe2fbcd907c97a01b16be2b8bcfa934a1e3cbb4882fc75ab43f380105"
+      },
+      "actual": {
+        "sha256": "d4ba435fe2fbcd907c97a01b16be2b8bcfa934a1e3cbb4882fc75ab43f380105",
+        "bytes": 58425,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/src/lib.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/lib.rs",
+      "expected": {
+        "sha256": "157990183f20487c3b1494a837914e81fb98e3e4fb35a1f0dedc0542a1ec6661"
+      },
+      "actual": {
+        "sha256": "157990183f20487c3b1494a837914e81fb98e3e4fb35a1f0dedc0542a1ec6661",
+        "bytes": 1288,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/src/persistence.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/persistence.rs",
+      "expected": {
+        "sha256": "42c3d163bf347af1dcf3bb007ac15c7ba3e4836c829b18904592cb96b6cd9812"
+      },
+      "actual": {
+        "sha256": "42c3d163bf347af1dcf3bb007ac15c7ba3e4836c829b18904592cb96b6cd9812",
+        "bytes": 30106,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/src/persistence/dxf.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/persistence/dxf.rs",
+      "expected": {
+        "sha256": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338"
+      },
+      "actual": {
+        "sha256": "353c493c0128f335fa7ea088bd5f007738bba93c0b0a0c321f5f89007baca338",
+        "bytes": 7133,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/src/persistence/dxf_import.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/persistence/dxf_import.rs",
+      "expected": {
+        "sha256": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec"
+      },
+      "actual": {
+        "sha256": "40c68ef7e3d3312a0a1b777a6386d3a6f313338985be14e1de09fcc06d34f4ec",
+        "bytes": 18713,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/src/persistence/svg.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/persistence/svg.rs",
+      "expected": {
+        "sha256": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7"
+      },
+      "actual": {
+        "sha256": "d45cdaaf7f22359cdc22d32de64edc05a5f14a1b8c227899f95f6b48fd7683f7",
+        "bytes": 18436,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/src/sewing.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/sewing.rs",
+      "expected": {
+        "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed"
+      },
+      "actual": {
+        "sha256": "b68442ce95e3207bcfb34745e2c653eddaea1ce65fa8feda56321bbcc9d415ed",
+        "bytes": 28379,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/src/simulation.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/src/simulation.rs",
+      "expected": {
+        "sha256": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29"
+      },
+      "actual": {
+        "sha256": "73ee0a5d1c6d5b58c70a9ccac74898e12e4ffb51bfe2e3f2002b339912715f29",
+        "bytes": 9490,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/cut_piece.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/cut_piece.rs",
+      "expected": {
+        "sha256": "c5b673f0a69a43086c3a6d5b7aa58e4b68bcf061637f57c4731a83af4879f018"
+      },
+      "actual": {
+        "sha256": "c5b673f0a69a43086c3a6d5b7aa58e4b68bcf061637f57c4731a83af4879f018",
+        "bytes": 42520,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/dxf.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/dxf.rs",
+      "expected": {
+        "sha256": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a"
+      },
+      "actual": {
+        "sha256": "41a83385609d6af7aeb07362a9429adf7638c761ee86f3ae59882fac96327c5a",
+        "bytes": 16900,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/dxf_import.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/dxf_import.rs",
+      "expected": {
+        "sha256": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b"
+      },
+      "actual": {
+        "sha256": "9bcd1101232daf242d1feec76bab33c40c320c2536d4a1f6813d78ed52bdbd9b",
+        "bytes": 14935,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/ellipse.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/ellipse.rs",
+      "expected": {
+        "sha256": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78"
+      },
+      "actual": {
+        "sha256": "7716d9290bc397a191fef310762eb9f6f84147c96c36305a00d23a8adca72c78",
+        "bytes": 12167,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/fixtures/asymmetric-fine.weftforge",
+      "expected": {
+        "sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d"
+      },
+      "actual": {
+        "sha256": "c3c626ace0bda438ec2d800112ac35848e358b486e42b02e9b5c5cfd13c3687d",
+        "bytes": 8107,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/fixtures/original-cut-l.weftforge",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/fixtures/original-cut-l.weftforge",
+      "expected": {
+        "sha256": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d"
+      },
+      "actual": {
+        "sha256": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d",
+        "bytes": 3622,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge",
+      "expected": {
+        "sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50"
+      },
+      "actual": {
+        "sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+        "bytes": 3211,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/fixtures/original-editable-patterns.dxf",
+      "expected": {
+        "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385"
+      },
+      "actual": {
+        "sha256": "1c1b4d854696688bd2ee58b09003fb3a239337c0abb0d324038e3eafe53f3385",
+        "bytes": 4289,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/fixtures/original-editable-patterns.svg",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/fixtures/original-editable-patterns.svg",
+      "expected": {
+        "sha256": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676"
+      },
+      "actual": {
+        "sha256": "0c85ec3b00665cc668c3dbcc32b0d35e7ba73d0cb26d19a25763ae27426f3676",
+        "bytes": 729,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/grain.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/grain.rs",
+      "expected": {
+        "sha256": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580"
+      },
+      "actual": {
+        "sha256": "2ed930e3715e66baddd246f35d68af6d962309545941dd28c5d131eda7fa6580",
+        "bytes": 5015,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/hole_io.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/hole_io.rs",
+      "expected": {
+        "sha256": "dfe604ad08e660e9feecb88d99153eee78bb1cadcbb8307350ad9983956025a2"
+      },
+      "actual": {
+        "sha256": "dfe604ad08e660e9feecb88d99153eee78bb1cadcbb8307350ad9983956025a2",
+        "bytes": 10737,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/holes.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/holes.rs",
+      "expected": {
+        "sha256": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594"
+      },
+      "actual": {
+        "sha256": "eaf21904ea94858632e6d11caddda63c0bf220845788633481c3bd114a355594",
+        "bytes": 36802,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/internal_lines.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/internal_lines.rs",
+      "expected": {
+        "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786"
+      },
+      "actual": {
+        "sha256": "77a0cb3ed869bfd48fa993dbb411b0887634c5d4a48f333bb5e05ddce347b786",
+        "bytes": 24048,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/joins.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/joins.rs",
+      "expected": {
+        "sha256": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10"
+      },
+      "actual": {
+        "sha256": "7e50bdadb03f8d7f160fb091279a39254cedc1da70e917f488d61cd23f8f9b10",
+        "bytes": 19861,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/migration.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/migration.rs",
+      "expected": {
+        "sha256": "1f4b8aec8bfa9622c7c69b2b7ef2a9ec2c745340c5d56c5edab87d40d7f66418"
+      },
+      "actual": {
+        "sha256": "1f4b8aec8bfa9622c7c69b2b7ef2a9ec2c745340c5d56c5edab87d40d7f66418",
+        "bytes": 17548,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/pattern_transform.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/pattern_transform.rs",
+      "expected": {
+        "sha256": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31"
+      },
+      "actual": {
+        "sha256": "02626171c06366a68962b5d8bfcf53297f0e0e5c4a03f7ed43551dae437c1a31",
+        "bytes": 24219,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/seam_reversal.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/seam_reversal.rs",
+      "expected": {
+        "sha256": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d"
+      },
+      "actual": {
+        "sha256": "6a6590557bcdfd29d7a6d0b85de939ed542586e0c573180a1b035b8aaa114c5d",
+        "bytes": 6231,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/sewing_groups.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/sewing_groups.rs",
+      "expected": {
+        "sha256": "a3e9ad0393b0039b7257193b5bcd0f54e7aafe5ab5566ae8459c1392a0ce6f41"
+      },
+      "actual": {
+        "sha256": "a3e9ad0393b0039b7257193b5bcd0f54e7aafe5ab5566ae8459c1392a0ce6f41",
+        "bytes": 57301,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/shirt.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/shirt.rs",
+      "expected": {
+        "sha256": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618"
+      },
+      "actual": {
+        "sha256": "66b48d66f7417586d0350298ef3a1bd673084ad920b1afa61cc3d686eefd0618",
+        "bytes": 2949,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/svg_import.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/svg_import.rs",
+      "expected": {
+        "sha256": "3b9601a0023c1d91b96a309d0822439afa75e97f97a5e53c5104cbef3e6ed72e"
+      },
+      "actual": {
+        "sha256": "3b9601a0023c1d91b96a309d0822439afa75e97f97a5e53c5104cbef3e6ed72e",
+        "bytes": 14807,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-core/tests/workflow.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core/tests/workflow.rs",
+      "expected": {
+        "sha256": "3f7ad8f050b6f749e85e7c865cf35d0cdc31d3f86023a05d5db19d4bfec495c2"
+      },
+      "actual": {
+        "sha256": "3f7ad8f050b6f749e85e7c865cf35d0cdc31d3f86023a05d5db19d4bfec495c2",
+        "bytes": 23886,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-sim/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/Cargo.toml",
+      "expected": {
+        "sha256": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250"
+      },
+      "actual": {
+        "sha256": "3ff8f904c1af4b24090194f48080fa95f4f760318a283bf6aa1dbd8dd41bf250",
+        "bytes": 205,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-sim/src/capsule.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/src/capsule.rs",
+      "expected": {
+        "sha256": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7"
+      },
+      "actual": {
+        "sha256": "67bed0887b2a0644dbab7c7003228427c0f9540e5d09a1170961f46cd14e9de7",
+        "bytes": 18343,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-sim/src/constraints.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/src/constraints.rs",
+      "expected": {
+        "sha256": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035"
+      },
+      "actual": {
+        "sha256": "382e63ba5bcb8827ccf7353792b75c8e10ed8c137d7c2b5025eb87cc20eb3035",
+        "bytes": 7237,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-sim/src/contact.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/src/contact.rs",
+      "expected": {
+        "sha256": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655"
+      },
+      "actual": {
+        "sha256": "1f4d90e04f8df4a49d6fc8da99ad4b29bfacada960740ef2cec7ba14153b5655",
+        "bytes": 31515,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-sim/src/lib.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/src/lib.rs",
+      "expected": {
+        "sha256": "5bfc996e6bf1067ac261358fdd043815adf304a5d8d512a0e6429c913e90fa76"
+      },
+      "actual": {
+        "sha256": "5bfc996e6bf1067ac261358fdd043815adf304a5d8d512a0e6429c913e90fa76",
+        "bytes": 26868,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-sim/src/math.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/src/math.rs",
+      "expected": {
+        "sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424"
+      },
+      "actual": {
+        "sha256": "4f344da57b5bcb7fb994bb67ae40f3909b7e23814969971dbe457c9094d1b424",
+        "bytes": 2391,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-sim/src/strain.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/src/strain.rs",
+      "expected": {
+        "sha256": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78"
+      },
+      "actual": {
+        "sha256": "25ec7e32e956cb23f65e4336529ec8b11bdb0cbabd932e7d996231e069b47c78",
+        "bytes": 1858,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/crates/weftforge-sim/src/tests.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-sim/src/tests.rs",
+      "expected": {
+        "sha256": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09"
+      },
+      "actual": {
+        "sha256": "f343e0a88ced6f3de1e7b84dd47de163729b80afa2f4f2c7a7de2bc9cb5eea09",
+        "bytes": 59354,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/docs/architecture.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/docs/architecture.md",
+      "expected": {
+        "sha256": "ce2709de29fc64a5de302870b4b6d47fbc66b331aae699687a629953ca895e88"
+      },
+      "actual": {
+        "sha256": "ce2709de29fc64a5de302870b4b6d47fbc66b331aae699687a629953ca895e88",
+        "bytes": 12171,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/docs/automation.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/docs/automation.md",
+      "expected": {
+        "sha256": "a32c398cd5bfa9c5f8073f9015e883712e3b62c2152023cd9d01797794613528"
+      },
+      "actual": {
+        "sha256": "a32c398cd5bfa9c5f8073f9015e883712e3b62c2152023cd9d01797794613528",
+        "bytes": 28165,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/docs/file-formats.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/docs/file-formats.md",
+      "expected": {
+        "sha256": "880888c4da9bead588f0d77b3e82f0d845f947387211e493059bf28d4bba4b36"
+      },
+      "actual": {
+        "sha256": "880888c4da9bead588f0d77b3e82f0d845f947387211e493059bf28d4bba4b36",
+        "bytes": 23465,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/rust-toolchain.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/rust-toolchain.toml",
+      "expected": {
+        "sha256": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51"
+      },
+      "actual": {
+        "sha256": "79232b66fc5f11105cb6d32dc4c0188ef47465304398fb3cd73e68417ccc2e51",
+        "bytes": 86,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/spec/features/APP-001-new-empty.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/spec/features/APP-001-new-empty.md",
+      "expected": {
+        "sha256": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7"
+      },
+      "actual": {
+        "sha256": "ce6de41684f98772c69bf8e0117e22f5f2cdf6b15952e4394f6756dd0077deb7",
+        "bytes": 2422,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/spec/features/PAT-004-native-transform-selection.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/spec/features/PAT-004-native-transform-selection.md",
+      "expected": {
+        "sha256": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7"
+      },
+      "actual": {
+        "sha256": "b5cb53682e0b2da486393852bc84e9edb2ba9a6c7d6e1fa16763ed4fffde19c7",
+        "bytes": 1051,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/spec/features/PAT-004-piece-rigid-transform.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/spec/features/PAT-004-piece-rigid-transform.md",
+      "expected": {
+        "sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557"
+      },
+      "actual": {
+        "sha256": "afffdf4e68ca5afb7f0038d2568576feb66824f873a8aaa659f60bfc072bf557",
+        "bytes": 22481,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/spec/features/PAT-006-internal-segments.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/spec/features/PAT-006-internal-segments.md",
+      "expected": {
+        "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66"
+      },
+      "actual": {
+        "sha256": "84014cffd5ec0c4fc3375b552d6238bd0b7dcda7a7ac5b10d7fc383621f69d66",
+        "bytes": 43508,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/spec/features/PAT-006-straight-cut.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/spec/features/PAT-006-straight-cut.md",
+      "expected": {
+        "sha256": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c"
+      },
+      "actual": {
+        "sha256": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c",
+        "bytes": 17836,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/spec/features/PAT-006-straight-hole.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/spec/features/PAT-006-straight-hole.md",
+      "expected": {
+        "sha256": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f"
+      },
+      "actual": {
+        "sha256": "634028923f25811aa364d85ce13947db242812d6523635c13ce5a715277b1d2f",
+        "bytes": 24548,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/spec/features/SEW-002-physical-length.md",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/spec/features/SEW-002-physical-length.md",
+      "expected": {
+        "sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2"
+      },
+      "actual": {
+        "sha256": "4016013d9dda6bf4f910e52224586925314c156b9489d3c6d4a0599411fa18b2",
+        "bytes": 14576,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/xtask/Cargo.toml",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/xtask/Cargo.toml",
+      "expected": {
+        "sha256": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204"
+      },
+      "actual": {
+        "sha256": "d98057f579fd3dcec49f802655867f0104c9122288929c158ff9daf05998e204",
+        "bytes": 241,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "source73/xtask/src/main.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/xtask/src/main.rs",
+      "expected": {
+        "sha256": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709"
+      },
+      "actual": {
+        "sha256": "79a1de6f9fcb02b0d6af1f0603f4da725e123e26fcb08aaa4bc705028034f709",
+        "bytes": 7562,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "own-native",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/WeftForgeHoleH2001.app/Contents/MacOS/weftforge",
+      "expected": {
+        "sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c"
+      },
+      "actual": {
+        "sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c",
+        "bytes": 62233432,
+        "mode": "0o555"
+      },
+      "matches": true
+    },
+    {
+      "label": "source-default-target-native",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/target/debug/weftforge",
+      "expected": {
+        "sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c"
+      },
+      "actual": {
+        "sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c",
+        "bytes": 62233432,
+        "mode": "0o755"
+      },
+      "matches": true
+    },
+    {
+      "label": "bundle-plist",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/WeftForgeHoleH2001.app/Contents/Info.plist",
+      "expected": {
+        "sha256": "813a6f2524a67d61b3a2f0bf0acd53bd3fd9d6d810c0e173826525a5bde070a2"
+      },
+      "actual": {
+        "sha256": "813a6f2524a67d61b3a2f0bf0acd53bd3fd9d6d810c0e173826525a5bde070a2",
+        "bytes": 866,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "accepted-input/inputs/accepted-redo-r5.weftforge",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/inputs/accepted-redo-r5.weftforge",
+      "expected": {
+        "sha256": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41",
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41",
+        "bytes": 4190,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "accepted-H1-binding",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/ROOT-BINDING.json",
+      "expected": {
+        "sha256": "e9e2bed535024602b54a285f8ccd28a0f3a8ecf93fdcc5be4e8629f05e2f3cfc"
+      },
+      "actual": {
+        "sha256": "e9e2bed535024602b54a285f8ccd28a0f3a8ecf93fdcc5be4e8629f05e2f3cfc",
+        "bytes": 12575,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "accepted-H1-single-grade",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/SAVED-GRADE-001.json",
+      "expected": {
+        "sha256": "7c939e55ed30b5aebb3bb4f81fb28e449ce21cde67855d88fc592336665bf4f3"
+      },
+      "actual": {
+        "sha256": "7c939e55ed30b5aebb3bb4f81fb28e449ce21cde67855d88fc592336665bf4f3",
+        "bytes": 1690,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "accepted-H1-root-UI",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H1-002/ROOT-UI-ACCEPTANCE.json",
+      "expected": {
+        "sha256": "b6d79aeb220bf8a1fe291fb82149a7afab9f37b7909baf53f67ab5957d56f712"
+      },
+      "actual": {
+        "sha256": "b6d79aeb220bf8a1fe291fb82149a7afab9f37b7909baf53f67ab5957d56f712",
+        "bytes": 2808,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "controller",
+      "path": "<WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs",
+      "expected": {
+        "sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b"
+      },
+      "actual": {
+        "sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+        "bytes": 8012,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "recorder",
+      "path": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+      "expected": {
+        "sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc"
+      },
+      "actual": {
+        "sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+        "bytes": 2460,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "observer",
+      "path": "<WORKSPACE>/.local/native-internal-annotations-20261115/C002/OBSERVER-FRAGMENT.cjs",
+      "expected": {
+        "sha256": "d580450b45fc2fe42b19c146fb7023f84d04e7b9596ac24a8f5afe3e81be7729"
+      },
+      "actual": {
+        "sha256": "d580450b45fc2fe42b19c146fb7023f84d04e7b9596ac24a8f5afe3e81be7729",
+        "bytes": 393,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "bootstrap",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/ACTOR-BOOTSTRAP.js",
+      "expected": {
+        "sha256": "46811852d34a8a8aeaec6226ade489af01f4b9b954608fe136fc3ba1dcae8aaf"
+      },
+      "actual": {
+        "sha256": "46811852d34a8a8aeaec6226ade489af01f4b9b954608fe136fc3ba1dcae8aaf",
+        "bytes": 12325,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "actor_persistence_check",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/ACTOR-PERSISTENCE-CHECK.js",
+      "expected": {
+        "sha256": "16d941f762ec656732be4eed2e6ea147e6600f6da5a31b1236dde20209f70b4f"
+      },
+      "actual": {
+        "sha256": "16d941f762ec656732be4eed2e6ea147e6600f6da5a31b1236dde20209f70b4f",
+        "bytes": 10869,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "actor_initial_capture",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/ACTOR-INITIAL-CAPTURE.js",
+      "expected": {
+        "sha256": "c3462f887bb51245cd3209791147359036b2bdbadb83d20281e91b2498edddac"
+      },
+      "actual": {
+        "sha256": "c3462f887bb51245cd3209791147359036b2bdbadb83d20281e91b2498edddac",
+        "bytes": 377,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet-freeze",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/FREEZE.json",
+      "expected": {
+        "sha256": "13fb9c37e4d3c56f5e017f39fcf9db1b87ddb821cffd9ee96627e778db69193c"
+      },
+      "actual": {
+        "sha256": "13fb9c37e4d3c56f5e017f39fcf9db1b87ddb821cffd9ee96627e778db69193c",
+        "bytes": 10656,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/ACTOR-PERSISTENCE-CHECK-RESULT.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/ACTOR-PERSISTENCE-CHECK-RESULT.template.json",
+      "expected": {
+        "sha256": "c8de6c5079a5b1c94dc44b0b2c9f2eb559a788c1bf5ef922dd1d5321ceeff62a"
+      },
+      "actual": {
+        "sha256": "c8de6c5079a5b1c94dc44b0b2c9f2eb559a788c1bf5ef922dd1d5321ceeff62a",
+        "bytes": 1976,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/ACTOR-RUNTIME-PROOF.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/ACTOR-RUNTIME-PROOF.template.json",
+      "expected": {
+        "sha256": "380b68b7afde3448b04655410212183be0a109dbc54c9381bbd0c4f2964fa9f2"
+      },
+      "actual": {
+        "sha256": "380b68b7afde3448b04655410212183be0a109dbc54c9381bbd0c4f2964fa9f2",
+        "bytes": 1222,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/ACTOR-RUNTIME-TOOL-HISTORY.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/ACTOR-RUNTIME-TOOL-HISTORY.template.json",
+      "expected": {
+        "sha256": "e371a1d48ec000a602deff4f7669289d012c70dadf65e9d04a9b4cfd00446950"
+      },
+      "actual": {
+        "sha256": "e371a1d48ec000a602deff4f7669289d012c70dadf65e9d04a9b4cfd00446950",
+        "bytes": 550,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/COMPLETION-SUMMARY-RETURN.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/COMPLETION-SUMMARY-RETURN.template.json",
+      "expected": {
+        "sha256": "d715f63af22627102a8dd4328204ef4ee2ef77949e15e672ea264879ca0da1ae"
+      },
+      "actual": {
+        "sha256": "d715f63af22627102a8dd4328204ef4ee2ef77949e15e672ea264879ca0da1ae",
+        "bytes": 640,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/NATIVE-LEASE-CLOSED.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/NATIVE-LEASE-CLOSED.template.json",
+      "expected": {
+        "sha256": "8ca6a4e559b375120423894bc1265b270062a77fbcc9138ecaa470f48dc89c8f"
+      },
+      "actual": {
+        "sha256": "8ca6a4e559b375120423894bc1265b270062a77fbcc9138ecaa470f48dc89c8f",
+        "bytes": 424,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/PLAN.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/PLAN.json",
+      "expected": {
+        "sha256": "c1fff1ebcd6a40ecafe2f66a6192945b09d4d856204c2174a6e98efcf7688708"
+      },
+      "actual": {
+        "sha256": "c1fff1ebcd6a40ecafe2f66a6192945b09d4d856204c2174a6e98efcf7688708",
+        "bytes": 4567,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/POSTFLIGHT.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/POSTFLIGHT.template.json",
+      "expected": {
+        "sha256": "854051d1e449a68005969dc7a1524ef06abac22a00f54ba6261327a057f6f5c0"
+      },
+      "actual": {
+        "sha256": "854051d1e449a68005969dc7a1524ef06abac22a00f54ba6261327a057f6f5c0",
+        "bytes": 584,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/PREFLIGHT.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/PREFLIGHT.json",
+      "expected": {
+        "sha256": "a6c958ab6940262a5ed1ddacc4627a583ce4ab8d9702b726d691502cedd4b8f8"
+      },
+      "actual": {
+        "sha256": "a6c958ab6940262a5ed1ddacc4627a583ce4ab8d9702b726d691502cedd4b8f8",
+        "bytes": 1963,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/README.md",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/README.md",
+      "expected": {
+        "sha256": "298d72e5420553def11c42986c62bb599935f1e5c3c4f39b069c0b009d39ff6c"
+      },
+      "actual": {
+        "sha256": "298d72e5420553def11c42986c62bb599935f1e5c3c4f39b069c0b009d39ff6c",
+        "bytes": 9073,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/REVIEW-V2.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/REVIEW-V2.json",
+      "expected": {
+        "sha256": "fb82abd14cdcce56dad7936759901625e5c53dcf6f126b26bde46610f9f31107"
+      },
+      "actual": {
+        "sha256": "fb82abd14cdcce56dad7936759901625e5c53dcf6f126b26bde46610f9f31107",
+        "bytes": 961,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/ROOT-BINDING.HOLE-H1.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/ROOT-BINDING.HOLE-H1.template.json",
+      "expected": {
+        "sha256": "1cbf59bdef55132367d5a13f6f4feb4cbf84cb551658de3b3025413c3b23a9fb"
+      },
+      "actual": {
+        "sha256": "1cbf59bdef55132367d5a13f6f4feb4cbf84cb551658de3b3025413c3b23a9fb",
+        "bytes": 3038,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/ROOT-BINDING.HOLE-H2.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/ROOT-BINDING.HOLE-H2.template.json",
+      "expected": {
+        "sha256": "ea50001d629a37056aedb443c554aa2f5264cc08e6c4c221a83dc24aa0274ddf"
+      },
+      "actual": {
+        "sha256": "ea50001d629a37056aedb443c554aa2f5264cc08e6c4c221a83dc24aa0274ddf",
+        "bytes": 3284,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/ROOT-UI-ACCEPTANCE.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/ROOT-UI-ACCEPTANCE.template.json",
+      "expected": {
+        "sha256": "f86b3f03679dddb4eed76d4f48ac00a63698d61b6286aff85350200eb9d79d86"
+      },
+      "actual": {
+        "sha256": "f86b3f03679dddb4eed76d4f48ac00a63698d61b6286aff85350200eb9d79d86",
+        "bytes": 333,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/RUNTIME-PROTOCOL.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/RUNTIME-PROTOCOL.json",
+      "expected": {
+        "sha256": "5504bea325e18ec13e095b3d9790727eec1b39786f32165f23f92cfbc58e0fea"
+      },
+      "actual": {
+        "sha256": "5504bea325e18ec13e095b3d9790727eec1b39786f32165f23f92cfbc58e0fea",
+        "bytes": 2973,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/SELF-CHECK-001.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/SELF-CHECK-001.json",
+      "expected": {
+        "sha256": "c71ac8eee57ea76b62c9dd86a8bd9880a872338225c5164b198390d8d73f4294"
+      },
+      "actual": {
+        "sha256": "c71ac8eee57ea76b62c9dd86a8bd9880a872338225c5164b198390d8d73f4294",
+        "bytes": 740,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/SOURCE-73.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/SOURCE-73.json",
+      "expected": {
+        "sha256": "6618ce59f0aeeb0b7ab7a61bcc0c8986ad52f90f48d8ce4af793fae759f1dfe0"
+      },
+      "actual": {
+        "sha256": "6618ce59f0aeeb0b7ab7a61bcc0c8986ad52f90f48d8ce4af793fae759f1dfe0",
+        "bytes": 9113,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/fixtures/R240-v5-assessment.weftforge",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/fixtures/R240-v5-assessment.weftforge",
+      "expected": {
+        "sha256": "efded819acf663319dba7cb74e31e6291901d62a46eba671b14de16fd206e400"
+      },
+      "actual": {
+        "sha256": "efded819acf663319dba7cb74e31e6291901d62a46eba671b14de16fd206e400",
+        "bytes": 3233,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/fixtures/hole-r6.dxf",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/fixtures/hole-r6.dxf",
+      "expected": {
+        "sha256": "a013339c8be1e5fb5f0f81c7d2df390c7c81fd404572916ba191cc50b2599cdf"
+      },
+      "actual": {
+        "sha256": "a013339c8be1e5fb5f0f81c7d2df390c7c81fd404572916ba191cc50b2599cdf",
+        "bytes": 41,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/fixtures/hole-r6.dxf.recovery",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/fixtures/hole-r6.dxf.recovery",
+      "expected": {
+        "sha256": "90503ddab50b562191e7bccb3d37315bbf01a356e2dac8d5ab69686ac8988fee"
+      },
+      "actual": {
+        "sha256": "90503ddab50b562191e7bccb3d37315bbf01a356e2dac8d5ab69686ac8988fee",
+        "bytes": 42,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/grade_exports.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/grade_exports.py",
+      "expected": {
+        "sha256": "56ab4c66ea5d70846b532e3abae951e2af1e2c1ea0a9baee5a924a154d06ba11"
+      },
+      "actual": {
+        "sha256": "56ab4c66ea5d70846b532e3abae951e2af1e2c1ea0a9baee5a924a154d06ba11",
+        "bytes": 10451,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/grade_saved.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/grade_saved.py",
+      "expected": {
+        "sha256": "486328f13c49018e240cbbd3f52e8b1cf9dd0d97747d3653ee3b927d3b2a31b9"
+      },
+      "actual": {
+        "sha256": "486328f13c49018e240cbbd3f52e8b1cf9dd0d97747d3653ee3b927d3b2a31b9",
+        "bytes": 30144,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/retain_saved.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/retain_saved.py",
+      "expected": {
+        "sha256": "335492634daf33f2d5def104829f2ac17d6c0b704a2d53954ec4ff39aa0a6950"
+      },
+      "actual": {
+        "sha256": "335492634daf33f2d5def104829f2ac17d6c0b704a2d53954ec4ff39aa0a6950",
+        "bytes": 5822,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "packet/selfcheck.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-v2-20261116/selfcheck.py",
+      "expected": {
+        "sha256": "249ffb0d2caa086d1cc709cc8b840007679afce71f093b79444171ad0a9c23fd"
+      },
+      "actual": {
+        "sha256": "249ffb0d2caa086d1cc709cc8b840007679afce71f093b79444171ad0a9c23fd",
+        "bytes": 9079,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-contract-20261116/CONTRACT.md",
+      "path": "<WORKSPACE>/.local/straight-hole-contract-20261116/CONTRACT.md",
+      "expected": {
+        "sha256": "dc6b66c6d278ec25165979c2a2c729b4a871f8798baa1f7fe53a5d7299dd8797"
+      },
+      "actual": {
+        "sha256": "dc6b66c6d278ec25165979c2a2c729b4a871f8798baa1f7fe53a5d7299dd8797",
+        "bytes": 24568,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-contract-20261116/ORACLE-SUMMARY.json",
+      "path": "<WORKSPACE>/.local/straight-hole-contract-20261116/ORACLE-SUMMARY.json",
+      "expected": {
+        "sha256": "6cce2ccc38d28e2bc4b724e32867a052461c63c9b711378d1a2b414a63a84ba2"
+      },
+      "actual": {
+        "sha256": "6cce2ccc38d28e2bc4b724e32867a052461c63c9b711378d1a2b414a63a84ba2",
+        "bytes": 3638,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-contract-20261115/approved-v2/fixtures/R240.weftforge",
+      "path": "<WORKSPACE>/.local/straight-cut-contract-20261115/approved-v2/fixtures/R240.weftforge",
+      "expected": {
+        "sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50"
+      },
+      "actual": {
+        "sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+        "bytes": 3211,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-cut-native-plan-v2-20261116/grade_saved.py",
+      "path": "<WORKSPACE>/.local/straight-cut-native-plan-v2-20261116/grade_saved.py",
+      "expected": {
+        "sha256": "a9d7d866f7a4639ed57eee94f79428dd4026baba073c95043c2d9bd9a7931d62"
+      },
+      "actual": {
+        "sha256": "a9d7d866f7a4639ed57eee94f79428dd4026baba073c95043c2d9bd9a7931d62",
+        "bytes": 37138,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/internal-native-plan-v2-20261115/grade_saved.py",
+      "path": "<WORKSPACE>/.local/internal-native-plan-v2-20261115/grade_saved.py",
+      "expected": {
+        "sha256": "6b3aefcca60fcc12d78a75e967f63c582d76e7a2d134975393a72a3a9c184c78"
+      },
+      "actual": {
+        "sha256": "6b3aefcca60fcc12d78a75e967f63c582d76e7a2d134975393a72a3a9c184c78",
+        "bytes": 28049,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-transform-controller-20261115/controller.cjs",
+      "path": "<WORKSPACE>/.local/native-transform-controller-20261115/controller.cjs",
+      "expected": {
+        "sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b"
+      },
+      "actual": {
+        "sha256": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+        "bytes": 8012,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-length-readouts-v2-20261115/recorder.cjs",
+      "path": "<WORKSPACE>/.local/native-length-readouts-v2-20261115/recorder.cjs",
+      "expected": {
+        "sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc"
+      },
+      "actual": {
+        "sha256": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+        "bytes": 2460,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-internal-annotations-20261115/C002/OBSERVER-FRAGMENT.cjs",
+      "path": "<WORKSPACE>/.local/native-internal-annotations-20261115/C002/OBSERVER-FRAGMENT.cjs",
+      "expected": {
+        "sha256": "d580450b45fc2fe42b19c146fb7023f84d04e7b9596ac24a8f5afe3e81be7729"
+      },
+      "actual": {
+        "sha256": "d580450b45fc2fe42b19c146fb7023f84d04e7b9596ac24a8f5afe3e81be7729",
+        "bytes": 393,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-holes-20261116/apps/weftforge/src/main.rs",
+      "path": "<WORKSPACE>/.local/straight-holes-20261116/apps/weftforge/src/main.rs",
+      "expected": {
+        "sha256": "71b2ff79a315a5de5347ce36a4a07a13a3e9faca6c46e77086338bb24b8a2d48"
+      },
+      "actual": {
+        "sha256": "71b2ff79a315a5de5347ce36a4a07a13a3e9faca6c46e77086338bb24b8a2d48",
+        "bytes": 782185,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/CHECKS.json",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/CHECKS.json",
+      "expected": {
+        "sha256": "5b60dcd33e167da93c9f93fff7f6fa9a2e751887d88d7cfc690f20d30588b3f0"
+      },
+      "actual": {
+        "sha256": "5b60dcd33e167da93c9f93fff7f6fa9a2e751887d88d7cfc690f20d30588b3f0",
+        "bytes": 11379,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/fmt.stdout",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/fmt.stdout",
+      "expected": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "actual": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/fmt.stderr",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/fmt.stderr",
+      "expected": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "actual": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/test.stdout",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/test.stdout",
+      "expected": {
+        "sha256": "b330041645812acd9c482779e86e95dcd7554867fd1b203444287ef840009f51"
+      },
+      "actual": {
+        "sha256": "b330041645812acd9c482779e86e95dcd7554867fd1b203444287ef840009f51",
+        "bytes": 33444,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/test.stderr",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/test.stderr",
+      "expected": {
+        "sha256": "d9378bd73cbe130f9000c1ee532c35e0bdbf150d14e4efba6c290a3fc8bb0738"
+      },
+      "actual": {
+        "sha256": "d9378bd73cbe130f9000c1ee532c35e0bdbf150d14e4efba6c290a3fc8bb0738",
+        "bytes": 3287,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/clippy.stdout",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/clippy.stdout",
+      "expected": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "actual": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/clippy.stderr",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/clippy.stderr",
+      "expected": {
+        "sha256": "7e124730c1f0d62be0d1895cb6c676f9eb13021aea35a22de52fca1c1dbe5bc6"
+      },
+      "actual": {
+        "sha256": "7e124730c1f0d62be0d1895cb6c676f9eb13021aea35a22de52fca1c1dbe5bc6",
+        "bytes": 1026,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/debug-build.stdout",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/debug-build.stdout",
+      "expected": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "actual": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-integration-20261116/runtime-a021a25-001/debug-build.stderr",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/runtime-a021a25-001/debug-build.stderr",
+      "expected": {
+        "sha256": "ff5a6ab211780afa5fb105f61d8ad02f84a6fd503986ed21c1bd791049d4f6b2"
+      },
+      "actual": {
+        "sha256": "ff5a6ab211780afa5fb105f61d8ad02f84a6fd503986ed21c1bd791049d4f6b2",
+        "bytes": 214,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/CHECKS.json",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/CHECKS.json",
+      "expected": {
+        "sha256": "7b5fc16346ce8719be669dd32881635fd9b645d62a2885c5f040a50486bac290"
+      },
+      "actual": {
+        "sha256": "7b5fc16346ce8719be669dd32881635fd9b645d62a2885c5f040a50486bac290",
+        "bytes": 10230,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/xtask.stdout",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/xtask.stdout",
+      "expected": {
+        "sha256": "3318510a59b31208b1cd4ab2e7a9cb8e0b7d9170137aa84e1072c02ccd3c2dd3"
+      },
+      "actual": {
+        "sha256": "3318510a59b31208b1cd4ab2e7a9cb8e0b7d9170137aa84e1072c02ccd3c2dd3",
+        "bytes": 2712,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/xtask.stderr",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/xtask.stderr",
+      "expected": {
+        "sha256": "ef4616bf095f86eb589c1eee2689d7d150cc5b07a7ddc143953404d5d4794565"
+      },
+      "actual": {
+        "sha256": "ef4616bf095f86eb589c1eee2689d7d150cc5b07a7ddc143953404d5d4794565",
+        "bytes": 825,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/debug-build.stdout",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/debug-build.stdout",
+      "expected": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "actual": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/debug-build.stderr",
+      "path": "<WORKSPACE>/.local/straight-hole-integration-20261116/clean-52163ad-verify-build-001/debug-build.stderr",
+      "expected": {
+        "sha256": "9a30d54c8b16d7e49510b182028079bca120aeebb7d662e88f8566e6196a49f6"
+      },
+      "actual": {
+        "sha256": "9a30d54c8b16d7e49510b182028079bca120aeebb7d662e88f8566e6196a49f6",
+        "bytes": 72,
+        "mode": "0o644"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-straight-cut-20261116/R003/ACTOR-BOOTSTRAP.js",
+      "path": "<WORKSPACE>/.local/native-straight-cut-20261116/R003/ACTOR-BOOTSTRAP.js",
+      "expected": {
+        "sha256": "9eb7cd6362c968af6df837c4ccb0ed3f9dc629330053fc7594e85944fc211f79"
+      },
+      "actual": {
+        "sha256": "9eb7cd6362c968af6df837c4ccb0ed3f9dc629330053fc7594e85944fc211f79",
+        "bytes": 8693,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-straight-cut-20261116/R003/ACTOR-PERSISTENCE-CHECK.js",
+      "path": "<WORKSPACE>/.local/native-straight-cut-20261116/R003/ACTOR-PERSISTENCE-CHECK.js",
+      "expected": {
+        "sha256": "559a5dc04924b06ffb1aac929f449758973f32a586f3fb21534815b137b2bc52"
+      },
+      "actual": {
+        "sha256": "559a5dc04924b06ffb1aac929f449758973f32a586f3fb21534815b137b2bc52",
+        "bytes": 10047,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/native-straight-cut-20261116/R003/ORCHESTRATION-ADDENDUM.json",
+      "path": "<WORKSPACE>/.local/native-straight-cut-20261116/R003/ORCHESTRATION-ADDENDUM.json",
+      "expected": {
+        "sha256": "17569569ff8e26a6d7fca009792297fc01651268157e77ce28a798eb9f9f6b6a"
+      },
+      "actual": {
+        "sha256": "17569569ff8e26a6d7fca009792297fc01651268157e77ce28a798eb9f9f6b6a",
+        "bytes": 4987,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/ACTOR-PERSISTENCE-CHECK-RESULT.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/ACTOR-PERSISTENCE-CHECK-RESULT.template.json",
+      "expected": {
+        "sha256": "c8de6c5079a5b1c94dc44b0b2c9f2eb559a788c1bf5ef922dd1d5321ceeff62a"
+      },
+      "actual": {
+        "sha256": "c8de6c5079a5b1c94dc44b0b2c9f2eb559a788c1bf5ef922dd1d5321ceeff62a",
+        "bytes": 1976,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/selfcheck.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/selfcheck.py",
+      "expected": {
+        "sha256": "46793cdc34f2617480ebfd5d16a369f0bc3fc114214ab02d80cbcbd2419162fa"
+      },
+      "actual": {
+        "sha256": "46793cdc34f2617480ebfd5d16a369f0bc3fc114214ab02d80cbcbd2419162fa",
+        "bytes": 7905,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/PLAN.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/PLAN.json",
+      "expected": {
+        "sha256": "c1fff1ebcd6a40ecafe2f66a6192945b09d4d856204c2174a6e98efcf7688708"
+      },
+      "actual": {
+        "sha256": "c1fff1ebcd6a40ecafe2f66a6192945b09d4d856204c2174a6e98efcf7688708",
+        "bytes": 4567,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/ACTOR-RUNTIME-TOOL-HISTORY.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/ACTOR-RUNTIME-TOOL-HISTORY.template.json",
+      "expected": {
+        "sha256": "e371a1d48ec000a602deff4f7669289d012c70dadf65e9d04a9b4cfd00446950"
+      },
+      "actual": {
+        "sha256": "e371a1d48ec000a602deff4f7669289d012c70dadf65e9d04a9b4cfd00446950",
+        "bytes": 550,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/grade_saved.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/grade_saved.py",
+      "expected": {
+        "sha256": "e74271985f0b386d0baa110ab50e0912af91287569f59485bb77ae7bf4698c45"
+      },
+      "actual": {
+        "sha256": "e74271985f0b386d0baa110ab50e0912af91287569f59485bb77ae7bf4698c45",
+        "bytes": 30076,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/retain_saved.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/retain_saved.py",
+      "expected": {
+        "sha256": "335492634daf33f2d5def104829f2ac17d6c0b704a2d53954ec4ff39aa0a6950"
+      },
+      "actual": {
+        "sha256": "335492634daf33f2d5def104829f2ac17d6c0b704a2d53954ec4ff39aa0a6950",
+        "bytes": 5822,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/SELF-CHECK-001.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/SELF-CHECK-001.json",
+      "expected": {
+        "sha256": "96aee0eabfa063b379250c2d800f8cae76193602304439cade9ab01278736a41"
+      },
+      "actual": {
+        "sha256": "96aee0eabfa063b379250c2d800f8cae76193602304439cade9ab01278736a41",
+        "bytes": 557,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/NATIVE-LEASE-CLOSED.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/NATIVE-LEASE-CLOSED.template.json",
+      "expected": {
+        "sha256": "8ca6a4e559b375120423894bc1265b270062a77fbcc9138ecaa470f48dc89c8f"
+      },
+      "actual": {
+        "sha256": "8ca6a4e559b375120423894bc1265b270062a77fbcc9138ecaa470f48dc89c8f",
+        "bytes": 424,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/ROOT-BINDING.HOLE-H2.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/ROOT-BINDING.HOLE-H2.template.json",
+      "expected": {
+        "sha256": "ea50001d629a37056aedb443c554aa2f5264cc08e6c4c221a83dc24aa0274ddf"
+      },
+      "actual": {
+        "sha256": "ea50001d629a37056aedb443c554aa2f5264cc08e6c4c221a83dc24aa0274ddf",
+        "bytes": 3284,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/COMPLETION-SUMMARY-RETURN.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/COMPLETION-SUMMARY-RETURN.template.json",
+      "expected": {
+        "sha256": "d715f63af22627102a8dd4328204ef4ee2ef77949e15e672ea264879ca0da1ae"
+      },
+      "actual": {
+        "sha256": "d715f63af22627102a8dd4328204ef4ee2ef77949e15e672ea264879ca0da1ae",
+        "bytes": 640,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/ROOT-BINDING.HOLE-H1.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/ROOT-BINDING.HOLE-H1.template.json",
+      "expected": {
+        "sha256": "1cbf59bdef55132367d5a13f6f4feb4cbf84cb551658de3b3025413c3b23a9fb"
+      },
+      "actual": {
+        "sha256": "1cbf59bdef55132367d5a13f6f4feb4cbf84cb551658de3b3025413c3b23a9fb",
+        "bytes": 3038,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/README.md",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/README.md",
+      "expected": {
+        "sha256": "2c93b78c89a5a27a0b7b9d3ba7fc381968b4c26980178ac356aa47f2c0dafc93"
+      },
+      "actual": {
+        "sha256": "2c93b78c89a5a27a0b7b9d3ba7fc381968b4c26980178ac356aa47f2c0dafc93",
+        "bytes": 8271,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/grade_exports.py",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/grade_exports.py",
+      "expected": {
+        "sha256": "1c7eacb2d6697c034bb8b1fd63cd77631e1c0ae880e760f9f990661fdd244d56"
+      },
+      "actual": {
+        "sha256": "1c7eacb2d6697c034bb8b1fd63cd77631e1c0ae880e760f9f990661fdd244d56",
+        "bytes": 9289,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/SELF-CHECK-003.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/SELF-CHECK-003.json",
+      "expected": {
+        "sha256": "3d9f856be430110322b40ff958cae0dcb4c4312319aaee673f150d4db0c13445"
+      },
+      "actual": {
+        "sha256": "3d9f856be430110322b40ff958cae0dcb4c4312319aaee673f150d4db0c13445",
+        "bytes": 604,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/ACTOR-RUNTIME-PROOF.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/ACTOR-RUNTIME-PROOF.template.json",
+      "expected": {
+        "sha256": "380b68b7afde3448b04655410212183be0a109dbc54c9381bbd0c4f2964fa9f2"
+      },
+      "actual": {
+        "sha256": "380b68b7afde3448b04655410212183be0a109dbc54c9381bbd0c4f2964fa9f2",
+        "bytes": 1222,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/ROOT-UI-ACCEPTANCE.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/ROOT-UI-ACCEPTANCE.template.json",
+      "expected": {
+        "sha256": "f86b3f03679dddb4eed76d4f48ac00a63698d61b6286aff85350200eb9d79d86"
+      },
+      "actual": {
+        "sha256": "f86b3f03679dddb4eed76d4f48ac00a63698d61b6286aff85350200eb9d79d86",
+        "bytes": 333,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/RUNTIME-PROTOCOL.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/RUNTIME-PROTOCOL.json",
+      "expected": {
+        "sha256": "5504bea325e18ec13e095b3d9790727eec1b39786f32165f23f92cfbc58e0fea"
+      },
+      "actual": {
+        "sha256": "5504bea325e18ec13e095b3d9790727eec1b39786f32165f23f92cfbc58e0fea",
+        "bytes": 2973,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/SELF-CHECK-002.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/SELF-CHECK-002.json",
+      "expected": {
+        "sha256": "3d9f856be430110322b40ff958cae0dcb4c4312319aaee673f150d4db0c13445"
+      },
+      "actual": {
+        "sha256": "3d9f856be430110322b40ff958cae0dcb4c4312319aaee673f150d4db0c13445",
+        "bytes": 604,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/PREFLIGHT.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/PREFLIGHT.json",
+      "expected": {
+        "sha256": "8ca90bb24eace5049feabc7a268f2f1ea527146fcb82258e5e2982d5e5bfae5f"
+      },
+      "actual": {
+        "sha256": "8ca90bb24eace5049feabc7a268f2f1ea527146fcb82258e5e2982d5e5bfae5f",
+        "bytes": 1666,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/SOURCE-73.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/SOURCE-73.json",
+      "expected": {
+        "sha256": "6618ce59f0aeeb0b7ab7a61bcc0c8986ad52f90f48d8ce4af793fae759f1dfe0"
+      },
+      "actual": {
+        "sha256": "6618ce59f0aeeb0b7ab7a61bcc0c8986ad52f90f48d8ce4af793fae759f1dfe0",
+        "bytes": 9113,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/SELF-CHECK-004.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/SELF-CHECK-004.json",
+      "expected": {
+        "sha256": "3d9f856be430110322b40ff958cae0dcb4c4312319aaee673f150d4db0c13445"
+      },
+      "actual": {
+        "sha256": "3d9f856be430110322b40ff958cae0dcb4c4312319aaee673f150d4db0c13445",
+        "bytes": 604,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/FREEZE.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/FREEZE.json",
+      "expected": {
+        "sha256": "736b4d7555a85f59d8ee44cafa7fc88d2b1ff9a3ec285284d133c4df62c30999"
+      },
+      "actual": {
+        "sha256": "736b4d7555a85f59d8ee44cafa7fc88d2b1ff9a3ec285284d133c4df62c30999",
+        "bytes": 6841,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/POSTFLIGHT.template.json",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/POSTFLIGHT.template.json",
+      "expected": {
+        "sha256": "854051d1e449a68005969dc7a1524ef06abac22a00f54ba6261327a057f6f5c0"
+      },
+      "actual": {
+        "sha256": "854051d1e449a68005969dc7a1524ef06abac22a00f54ba6261327a057f6f5c0",
+        "bytes": 584,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/fixtures/hole-r6.dxf.recovery",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/fixtures/hole-r6.dxf.recovery",
+      "expected": {
+        "sha256": "90503ddab50b562191e7bccb3d37315bbf01a356e2dac8d5ab69686ac8988fee"
+      },
+      "actual": {
+        "sha256": "90503ddab50b562191e7bccb3d37315bbf01a356e2dac8d5ab69686ac8988fee",
+        "bytes": 42,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/fixtures/hole-r6.dxf",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/fixtures/hole-r6.dxf",
+      "expected": {
+        "sha256": "a013339c8be1e5fb5f0f81c7d2df390c7c81fd404572916ba191cc50b2599cdf"
+      },
+      "actual": {
+        "sha256": "a013339c8be1e5fb5f0f81c7d2df390c7c81fd404572916ba191cc50b2599cdf",
+        "bytes": 41,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "external/.local/straight-hole-native-plan-20261116/fixtures/R240-v5-assessment.weftforge",
+      "path": "<WORKSPACE>/.local/straight-hole-native-plan-20261116/fixtures/R240-v5-assessment.weftforge",
+      "expected": {
+        "sha256": "efded819acf663319dba7cb74e31e6291901d62a46eba671b14de16fd206e400"
+      },
+      "actual": {
+        "sha256": "efded819acf663319dba7cb74e31e6291901d62a46eba671b14de16fd206e400",
+        "bytes": 3233,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ACTOR-BOOTSTRAP.js",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/ACTOR-BOOTSTRAP.js",
+      "expected": {
+        "sha256": "46811852d34a8a8aeaec6226ade489af01f4b9b954608fe136fc3ba1dcae8aaf",
+        "bytes": 12325,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "46811852d34a8a8aeaec6226ade489af01f4b9b954608fe136fc3ba1dcae8aaf",
+        "bytes": 12325,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ACTOR-INITIAL-CAPTURE.js",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/ACTOR-INITIAL-CAPTURE.js",
+      "expected": {
+        "sha256": "c3462f887bb51245cd3209791147359036b2bdbadb83d20281e91b2498edddac",
+        "bytes": 377,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "c3462f887bb51245cd3209791147359036b2bdbadb83d20281e91b2498edddac",
+        "bytes": 377,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ACTOR-LAUNCH-PID.cjs",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/ACTOR-LAUNCH-PID.cjs",
+      "expected": {
+        "sha256": "63bfc0b5f837bc06a600fb74464c56c2f64bf72521de62e33ef41a1a63935441",
+        "bytes": 2531,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "63bfc0b5f837bc06a600fb74464c56c2f64bf72521de62e33ef41a1a63935441",
+        "bytes": 2531,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ACTOR-PERSISTENCE-CHECK.js",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/ACTOR-PERSISTENCE-CHECK.js",
+      "expected": {
+        "sha256": "16d941f762ec656732be4eed2e6ea147e6600f6da5a31b1236dde20209f70b4f",
+        "bytes": 10869,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "16d941f762ec656732be4eed2e6ea147e6600f6da5a31b1236dde20209f70b4f",
+        "bytes": 10869,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ACTOR-POSTFLIGHT-RAW.cjs",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/ACTOR-POSTFLIGHT-RAW.cjs",
+      "expected": {
+        "sha256": "f2fa1b1894ec018af135fbf11f0c723f1dba18e465daf9604fe71e408f64607b",
+        "bytes": 6439,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "f2fa1b1894ec018af135fbf11f0c723f1dba18e465daf9604fe71e408f64607b",
+        "bytes": 6439,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ACTOR-START-CLOCK.cjs",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/ACTOR-START-CLOCK.cjs",
+      "expected": {
+        "sha256": "caf636cc84cbbe4b02904f74cc670b429716f6741d9352b1ec3bdbc7c3e73e18",
+        "bytes": 1615,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "caf636cc84cbbe4b02904f74cc670b429716f6741d9352b1ec3bdbc7c3e73e18",
+        "bytes": 1615,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/FILESYSTEM-GUARD.json",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/FILESYSTEM-GUARD.json",
+      "expected": {
+        "sha256": "ef5efaf92b74b3a3005238e9bbe835b7a70d78c014de51ad58c8a058dce6b669",
+        "bytes": 69957,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "ef5efaf92b74b3a3005238e9bbe835b7a70d78c014de51ad58c8a058dce6b669",
+        "bytes": 69957,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/inputs/accepted-redo-r5.weftforge",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/inputs/accepted-redo-r5.weftforge",
+      "expected": {
+        "sha256": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41",
+        "bytes": 4190,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "c38163911b3160e738ac5049eba58d85f572d074289fa10a683d31e259332a41",
+        "bytes": 4190,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ORCHESTRATION-V2.json",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/ORCHESTRATION-V2.json",
+      "expected": {
+        "sha256": "0ab65a08c7d545eb14eedac95a04997cb5ba3f0498a6b2726fc4042e5b7e743f",
+        "bytes": 5744,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "0ab65a08c7d545eb14eedac95a04997cb5ba3f0498a6b2726fc4042e5b7e743f",
+        "bytes": 5744,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/PASSIVE-STATIC-CHECK.cjs",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/PASSIVE-STATIC-CHECK.cjs",
+      "expected": {
+        "sha256": "bbc3254b7a9ce026cf98265b51c8bd61969f7ea621991c50c9863b59871a075f",
+        "bytes": 20036,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "bbc3254b7a9ce026cf98265b51c8bd61969f7ea621991c50c9863b59871a075f",
+        "bytes": 20036,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/PASSIVE-STATIC-CHECK.json",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/PASSIVE-STATIC-CHECK.json",
+      "expected": {
+        "sha256": "506eb7cd55898b86eeb7307c0b036ccc16fc20f9e64be41c08032b9183b8525c",
+        "bytes": 1676,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "506eb7cd55898b86eeb7307c0b036ccc16fc20f9e64be41c08032b9183b8525c",
+        "bytes": 1676,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/RECORDER-PREFLIGHT-AUDIT.json",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/RECORDER-PREFLIGHT-AUDIT.json",
+      "expected": {
+        "sha256": "2218c46916383e81932208f88be1e2cb5487d2e9a9727108422cba439f069305",
+        "bytes": 5237,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "2218c46916383e81932208f88be1e2cb5487d2e9a9727108422cba439f069305",
+        "bytes": 5237,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/ROOT-BINDING-V2-DRAFT.json",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/ROOT-BINDING-V2-DRAFT.json",
+      "expected": {
+        "sha256": "b7015542cda1e95b0fee94bdaac0a58306e0d7434f8124caf906239386df81e1",
+        "bytes": 13572,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "b7015542cda1e95b0fee94bdaac0a58306e0d7434f8124caf906239386df81e1",
+        "bytes": 13572,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/WeftForgeHoleH2001.app/Contents/Info.plist",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/WeftForgeHoleH2001.app/Contents/Info.plist",
+      "expected": {
+        "sha256": "813a6f2524a67d61b3a2f0bf0acd53bd3fd9d6d810c0e173826525a5bde070a2",
+        "bytes": 866,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "813a6f2524a67d61b3a2f0bf0acd53bd3fd9d6d810c0e173826525a5bde070a2",
+        "bytes": 866,
+        "mode": "0o444"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/WeftForgeHoleH2001.app/Contents/MacOS/weftforge",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/WeftForgeHoleH2001.app/Contents/MacOS/weftforge",
+      "expected": {
+        "sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c",
+        "bytes": 62233432,
+        "mode": "0o555"
+      },
+      "actual": {
+        "sha256": "4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c",
+        "bytes": 62233432,
+        "mode": "0o555"
+      },
+      "matches": true
+    },
+    {
+      "label": "preparation/STAGING-MANIFEST-V2.json",
+      "path": "<WORKSPACE>/.local/native-straight-hole-20261116/H2-001/STAGING-MANIFEST-V2.json",
+      "expected": {
+        "sha256": "e77d99d780a673e640d7748858c39ecf1d6a8b78f073dd5f83b51513d6d8290c",
+        "bytes": 3765,
+        "mode": "0o444"
+      },
+      "actual": {
+        "sha256": "e77d99d780a673e640d7748858c39ecf1d6a8b78f073dd5f83b51513d6d8290c",
+        "bytes": 3765,
+        "mode": "0o444"
+      },
+      "matches": true
+    }
+  ],
+  "pinned_node_count": 178,
+  "all_pinned_nodes_unchanged": true,
+  "source_input_count": 73,
+  "source_inputs_unchanged": true,
+  "native_binary_unchanged": true,
+  "resolved_source_head": "52163adb86b9f48fdd06f042e4ddf615797c3947",
+  "source_head_unchanged": true,
+  "paired_native_external_operations": 79,
+  "trace_error_records": [],
+  "documentation_refresh_calls": 0,
+  "summary_calls": 1,
+  "overall_actual_calls": 80,
+  "controller_context_sha256": "1d43c5f48c5184275926cca3fb1d1c011b07487d45982d9bf185dd1a2d86722e",
+  "runtime_proof_sha256": "7c21452ff981468a662b04deaff7c03b142ab982943515ecd714ee4e168ffe99",
+  "actor_readiness_sha256": "1637f91b768870ec90728db5dbc0873f398bf495e61371a6e2619162ae4cd2b0",
+  "completion_summary_return_sha256": "52ef864972ff79020dbf1c6d84904a72192ed6c237fcc2d29354c5c58063ed73",
+  "native_exit_independently_verified": false,
+  "formal_grading_performed": false
+}

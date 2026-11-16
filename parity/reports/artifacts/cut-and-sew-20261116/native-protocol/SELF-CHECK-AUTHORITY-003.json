@@ -1,0 +1,29 @@
+{
+  "status": "passed_offline_synthetic_dependency_and_freeze_coverage_checks_only",
+  "rejected_mutants": [
+    "fully hash-linked accepted prior S1 with wrong prior-metadata",
+    "fully hash-linked accepted prior S1 with wrong prior-freeze",
+    "fully hash-linked accepted prior S1 with wrong prior-source-inventory",
+    "fully hash-linked accepted prior S1 with wrong prior-source-count",
+    "empty frozen packet file inventory",
+    "frozen packet omits EXPECTED-STATES.json",
+    "frozen packet omits PLAN.json",
+    "frozen packet omits SOURCE-74.json",
+    "frozen packet omits grade_saved.py",
+    "frozen packet omits retain_saved.py",
+    "frozen packet omits ROOT-UI-ACCEPTANCE.template.json",
+    "empty declared external dependency coverage",
+    "one declared external dependency omitted",
+    "declared external dependency hash changed"
+  ],
+  "positive_same385_source74_currentfreeze_dependency": true,
+  "negative_dependencies_relinked_binding_grade_review_closure_attempt_and_postflight": true,
+  "dependency_failures_reached_the_new_identity_gate": true,
+  "positive_mandatory_file_and_declared_dependency_coverage": true,
+  "all_nine_authority_templates_are_mandatory": true,
+  "freeze_manifests_were_in_memory_only": true,
+  "synthetic_history_files_were_temporary_fixtures_not_formal_grade_attempts": true,
+  "product_native_CUA_controller_clock_actual_case_or_formal_grade_executed": false,
+  "temporary_synthetic_files_deleted": true,
+  "freeze_created": false
+}

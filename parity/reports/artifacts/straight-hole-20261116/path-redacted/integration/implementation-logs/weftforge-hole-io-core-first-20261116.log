@@ -1,0 +1,63 @@
+   Compiling weftforge-core v0.1.0 (<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.86s
+     Running tests/dxf.rs (target/debug/deps/dxf-4cdf0f8b28ba0261)
+
+running 4 tests
+test r2000_infrastructure_has_resolved_unique_handles_counts_and_layout_links ... ok
+test exact_authored_boundaries_and_piece_order_survive_ascii_mm_export ... ok
+test empty_project_is_valid_and_failed_exports_preserve_project_history_and_files ... ok
+test known_dimensions_and_geometry_ignore_placement_resolution_and_simulation ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+
+     Running tests/dxf_import.rs (target/debug/deps/dxf_import-9227c3d94fe82df1)
+
+running 6 tests
+test command_wire_fields_are_strict_and_file_loading_is_bounded ... ok
+test own_writer_round_trip_is_supplemental_and_keeps_cubics_and_f64_scale ... ok
+test original_drawing_adds_exact_editable_si_curves_layout_and_layer_names_in_one_undo ... ok
+test malformed_unsupported_or_unsafe_input_preserves_document_and_both_history_directions ... ok
+test entity_limit_accepts_4096_and_rejects_4097_before_authoring ... ok
+test full_import_and_later_batch_failure_leave_old_project_and_id_allocator_unchanged ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+
+     Running tests/hole_io.rs (target/debug/deps/hole_io-0d165f2dd75e7e0f)
+
+running 5 tests
+test holed_dxf_refuses_before_staging_and_preserves_destination_and_recovery ... ok
+test strict_v5_retains_hole_identity_and_rejects_incomplete_or_ambiguous_ownership ... ok
+test svg_is_one_evenodd_compound_path_in_mm_and_current_import_refuses_it_atomically ... ok
+test obj_writes_the_actual_annular_rest_mesh_in_one_piece_group ... ok
+test v5_save_recovery_and_early_validation_preserve_exact_files ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+     Running tests/migration.rs (target/debug/deps/migration-019a4c5ebdd51c7b)
+
+running 11 tests
+test nondefault_v1_material_values_are_mapped_instead_of_replaced_by_defaults ... ok
+test duplicate_fields_are_rejected_at_envelope_project_and_material_boundaries ... ok
+test both_schema_readers_reject_nonfinite_and_out_of_range_numbers ... ok
+test version_dispatch_rejects_mixed_schemas_unknown_fields_and_unsupported_versions ... ok
+test real_v1_fixtures_migrate_without_authored_geometry_or_physical_data_loss ... ok
+test v2_hard_decimals_and_large_authoring_values_keep_their_bits ... ok
+test v1_hard_decimals_and_large_authoring_values_keep_their_bits ... ok
+test original_v1_point_bits_survive_load_migration_save_and_reload ... ok
+test current_saves_orthotropy_and_grain_while_recovery_retains_original_v1_bytes ... ok
+test original_v4_adds_only_empty_holes_without_reordering_or_renumbering ... ok
+test original_v3_migrates_only_empty_internal_and_hole_ownership_and_keeps_f64_bits ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+
+     Running tests/svg_import.rs (target/debug/deps/svg_import-fd69842975fc7fe5)
+
+running 5 tests
+test shared_command_serde_is_strict_and_preserves_original_svg_bytes ... ok
+test rejected_svg_preserves_project_stable_ids_and_undo_redo_history ... ok
+test own_export_retains_explicit_closing_cubics_and_absolute_origin_without_flattening ... ok
+test original_svg_preserves_physical_geometry_names_layout_and_one_editable_transaction ... ok
+test parser_resource_limits_and_native_capacity_revision_id_limits_are_atomic ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+

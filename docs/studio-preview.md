@@ -1,5 +1,59 @@
 # Native studio preview
 
+## Cut & Sew and reopened seam removal (5898)
+
+These are actual native UI captures from source
+`5898f1a1274f8632d96b5fd0898f8253dee2f4db` and executable
+`7809e41948e19d0055da45e10a3b55225173df48e43465fab1b48effd7efa1c8`.
+The bounded S1/S2 cases passed separate saved-file and UI reviews. Their results
+remain attributed to that build; they are stale on the changed SVG-export source.
+Public JPEG copies remove eight device-identifier bytes per image from the color
+profile. Encoded pixels and the remaining bytes match the private originals; the
+[publication index](../parity/reports/artifacts/cut-and-sew-20261116/PUBLICATION-CURRENT.json)
+records image, path and tool-history derivatives and whole-file omissions.
+
+![One Apply creates two editable pieces and their oriented cut seam](../parity/reports/artifacts/cut-and-sew-20261116/native/SEW-S1/S1-001/captures/applied-seam-r2-inspection-0.jpg)
+
+The review's **Sew cut edges** option adds a seam in the same operation as
+the straight cut. Each side measures 360.000 mm, with opposite authored
+directions. Invalid unfinished input and Cancel retain the original piece;
+one Undo/Redo restores the same construction IDs and seam.
+
+![The reopened child remains editable after removing only its seam](../parity/reports/artifacts/cut-and-sew-20261116/native/SEW-S2/S2-001/captures/s2-final-child-fifteen-r6-state-0.jpg)
+
+A fresh process opens the actual Redo save. Removing the seam preserves both
+pieces; changing child #15 to 0.400 m height leaves the other child's saved
+anchors unchanged. These are authoring/history/persistence checks. Native cloth
+mass, drape, contact, broader cutting and full sewing acceptance remain open.
+See the [bounded report](../parity/reports/WF-20261116-CUT-AND-SEW-001.json).
+
+## Editable holes and physical-scale export (a021 / 947)
+
+The original H1 creation/edit/history/save case belongs to source
+`a021a2581c8e1dd000e535a417dcd964c3835884` and executable
+`4b5623d59fe897bfe507eed93c9d6982492fdcc18c9d6414a80e98f057ff869c`.
+Its accepted save is the explicit historical input to fresh export case H3,
+source `947bfbe4dcb74fb253d584709376ace5a08db838`, executable
+`f74350126898e07729f898cb641442baecacc29404f5620b1cfabb03926e282a`.
+The [H1 report](../parity/reports/WF-20261116-STRAIGHT-HOLE-001.json) is stale;
+H3 does not establish current-build hole creation acceptance.
+
+![The reopened hole retains editable boundary points and a real rest-mesh opening](../parity/reports/artifacts/straight-hole-20261116/native/HOLE-H3/H3-001/captures/point-twelve-r6-one-tab-committed-0.jpg)
+
+H3 moves point #12 to U=0.080 m, saves native v5, exports an annular OBJ and
+exports a compound even-odd SVG with a 240 × 360 mm canvas. DXF refuses the
+unsupported holed project while preserving both existing output and recovery
+files. An independent saved-file assessment and separate UI review passed.
+The original postflight guard still records a failed string-versus-integer
+permission comparison; a separate direct byte/permission audit supplies the
+qualification. The earlier H2 SVG-padding failure remains failed. See the
+[qualified H3 report](../parity/reports/WF-20261116-HOLE-EXPORT-001.json) and
+[publication index](../parity/reports/artifacts/straight-hole-20261116/PUBLICATION-CURRENT-003.json)
+for original/derivative hashes, omissions and historical scope.
+
+All three finished test processes exited. These cases supply bounded
+implementation evidence, with no reference-parity or cloth-physics acceptance.
+
 ## Straight cuts and reopened child editing (19b1)
 
 These native frames come from runtime

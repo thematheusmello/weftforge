@@ -1,0 +1,44 @@
+   Compiling weftforge-core v0.1.0 (<WORKSPACE>/.local/straight-holes-20261116/crates/weftforge-core)
+warning: unused imports: `CurveInterval`, `Curve`, `Material`, `Placement`, `Point`, `SewingDirection`, and `SewingSideByLength`
+ --> crates/weftforge-core/tests/holes.rs:4:14
+  |
+4 |     Command, Curve, CurveInterval, Editor, Hole, Id, Material, Mesh, Placement, Point,
+  |              ^^^^^  ^^^^^^^^^^^^^                    ^^^^^^^^        ^^^^^^^^^  ^^^^^
+5 |     Project, SewingDirection, SewingSideByLength, simulation::create_cloth,
+  |              ^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `with_next_id` is never used
+  --> crates/weftforge-core/tests/holes.rs:33:4
+   |
+33 | fn with_next_id(project: Project, id: Id) -> Project {
+   |    ^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `rejected` is never used
+  --> crates/weftforge-core/tests/holes.rs:39:4
+   |
+39 | fn rejected(editor: &mut Editor, command: Command) -> String {
+   |    ^^^^^^^^
+
+warning: `weftforge-core` (test "holes") generated 3 warnings (run `cargo fix --test "holes" -p weftforge-core` to apply 1 suggestion)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.36s
+     Running tests/holes.rs (target/debug/deps/holes-1e0c481417c2cc30)
+
+running 1 test
+
+thread 'actual_annular_mesh_and_cloth_match_analytic_domain_topology_area_and_mass' (65616320) panicked at crates/weftforge-core/tests/holes.rs:153:5:
+Boundary branches: [(216, [0.0, 0.12], [(215, [0.0, 0.125]), (217, [0.0, 0.11499999999999999]), (4850, [0.005, 0.12]), (4851, [0.0053125, 0.12])])]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test actual_annular_mesh_and_cloth_match_analytic_domain_topology_area_and_mass ... FAILED
+
+failures:
+
+failures:
+    actual_annular_mesh_and_cloth_match_analytic_domain_topology_area_and_mass
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 2 filtered out; finished in 4.52s
+
+error: test failed, to rerun pass `-p weftforge-core --test holes`

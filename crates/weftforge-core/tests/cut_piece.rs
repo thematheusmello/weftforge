@@ -31,6 +31,46 @@ fn cut() -> Command {
     }
 }
 
+fn sew_cut(command: Command) -> Command {
+    let Command::CutPiece {
+        piece,
+        start_curve,
+        start_t,
+        end_curve,
+        end_t,
+    } = command
+    else {
+        panic!("Expected a straight cut")
+    };
+    Command::CutAndSew {
+        piece,
+        start_curve,
+        start_t,
+        end_curve,
+        end_t,
+    }
+}
+
+fn sewn_matches_cut(before: &Project, ordinary: &Project, command: Command) -> Project {
+    let mut editor = Editor::new(before.clone()).unwrap();
+    editor.execute(sew_cut(command)).unwrap();
+    let mut unsewn = editor.project.clone();
+    let seam = unsewn.seams.pop().unwrap();
+    let seam_id = next_id(ordinary);
+    let chords = &ordinary.curves[ordinary.curves.len() - 2..];
+    assert_eq!(
+        (seam.id, seam.name),
+        (seam_id, format!("Cut seam #{seam_id}"))
+    );
+    assert_eq!(seam.a, CurveInterval::full(chords[0].id));
+    assert_eq!(seam.b, CurveInterval::reversed(chords[1].id));
+    assert_eq!(seam.correspondence, [[0., 0.], [1., 1.]]);
+    assert_eq!(next_id(&unsewn), seam_id + 1);
+    assert_eq!(wire(&allocator(unsewn, seam_id)), wire(ordinary));
+    independent_ownership(&editor.project);
+    editor.project
+}
+
 fn wire(project: &Project) -> Vec<u8> {
     serde_json::to_vec(project).unwrap()
 }
@@ -49,10 +89,12 @@ fn allocator(project: Project, id: Id) -> Project {
 
 fn rejected(editor: &mut Editor, command: Command) -> String {
     let before = wire(&editor.project);
+    let before_editor = format!("{editor:?}");
     let history = (editor.can_undo(), editor.can_redo());
     let error = editor.execute(command).unwrap_err().to_string();
     assert_eq!(wire(&editor.project), before, "{error}");
     assert_eq!((editor.can_undo(), editor.can_redo()), history);
+    assert_eq!(format!("{editor:?}"), before_editor, "{error}");
     error
 }
 
@@ -319,13 +361,25 @@ fn original_r240_exact_identity_history_and_independent_child_edits() {
     }
 }
 
-fn check_mesh(project: &Project, mesh: &Mesh, expected: &[(Id, f64)], tolerance: f64) {
+fn check_mesh(
+    project: &Project,
+    mesh: &Mesh,
+    expected: &[(Id, f64)],
+    tolerance: f64,
+) -> weftforge_sim::Cloth {
     mesh.validate().unwrap();
     let cloth = create_cloth(project, mesh).unwrap();
     assert_eq!(cloth.positions(), mesh.positions);
     assert_eq!(cloth.masses().len(), mesh.positions.len());
     assert_eq!(cloth.simulation_time(), 0.);
-    assert!(mesh.stitches.is_empty());
+    if project.seams.is_empty() {
+        assert!(mesh.stitches.is_empty());
+        assert!(cloth.stitches().is_empty());
+    } else {
+        assert_eq!(project.seams.len(), 1);
+        assert!(!mesh.stitches.is_empty());
+    }
+    assert_eq!(cloth.stitches().len(), mesh.stitches.len());
     assert!(mesh.sewing_groups.is_empty());
     let polygons: BTreeMap<_, _> = project
         .pieces
@@ -334,6 +388,7 @@ fn check_mesh(project: &Project, mesh: &Mesh, expected: &[(Id, f64)], tolerance:
         .collect();
     let mut triangles = BTreeMap::<_, Vec<f64>>::new();
     let mut edge_owners = BTreeMap::new();
+    let mut adjacency = vec![Vec::new(); mesh.positions.len()];
     for triangle in &mesh.triangles {
         let owner = mesh.piece_ids[triangle[0]];
         assert!(triangle.iter().all(|v| mesh.piece_ids[*v] == owner));
@@ -358,6 +413,8 @@ fn check_mesh(project: &Project, mesh: &Mesh, expected: &[(Id, f64)], tolerance:
         ] {
             let key = if u < v { (u, v) } else { (v, u) };
             assert_eq!(*edge_owners.entry(key).or_insert(owner), owner);
+            adjacency[u].push(v);
+            adjacency[v].push(u);
             let points = &polygons[&owner];
             for i in 0..points.len() {
                 assert!(!proper_intersection(
@@ -372,6 +429,24 @@ fn check_mesh(project: &Project, mesh: &Mesh, expected: &[(Id, f64)], tolerance:
     }
     let mut masses = Vec::new();
     for &(id, analytic_area) in expected {
+        let vertices: BTreeSet<_> = mesh
+            .piece_ids
+            .iter()
+            .enumerate()
+            .filter_map(|(vertex, owner)| (*owner == id).then_some(vertex))
+            .collect();
+        let mut pending = vec![*vertices.first().unwrap()];
+        let mut visited = BTreeSet::new();
+        while let Some(vertex) = pending.pop() {
+            if visited.insert(vertex) {
+                assert_eq!(mesh.piece_ids[vertex], id);
+                pending.extend(&adjacency[vertex]);
+            }
+        }
+        assert_eq!(
+            visited, vertices,
+            "Each child must be one material component"
+        );
         near(area(&polygons[&id]).abs(), analytic_area, tolerance);
         near(
             stable_sum(triangles[&id].iter().copied()),
@@ -410,6 +485,393 @@ fn check_mesh(project: &Project, mesh: &Mesh, expected: &[(Id, f64)], tolerance:
         })
         .collect();
     assert!(boundary_vertices[&expected[0].0].is_disjoint(&boundary_vertices[&expected[1].0]));
+    cloth
+}
+
+fn weighted<const N: usize>(
+    points: &[[f64; N]],
+    vertices: [usize; 2],
+    weights: [f64; 2],
+) -> [f64; N] {
+    std::array::from_fn(|axis| {
+        points[vertices[0]][axis] * weights[0] + points[vertices[1]][axis] * weights[1]
+    })
+}
+
+fn check_cut_stitches(
+    project: &Project,
+    mesh: &Mesh,
+    cloth: &weftforge_sim::Cloth,
+    owners: [Id; 2],
+    chords: [Id; 2],
+    line: [[f64; 2]; 2],
+    tolerance: f64,
+) {
+    let seam = &project.seams[0];
+    assert_eq!(seam.a, CurveInterval::full(chords[0]));
+    assert_eq!(seam.b, CurveInterval::reversed(chords[1]));
+    assert_eq!(seam.correspondence, [[0., 0.], [1., 1.]]);
+    assert_eq!(mesh.stitches.len(), cloth.stitches().len());
+    assert!(mesh.stitches.len() >= 2);
+    let boundary: [BTreeSet<usize>; 2] = std::array::from_fn(|side| {
+        mesh.boundary
+            .iter()
+            .filter(|sample| sample.piece == owners[side] && sample.curve == chords[side])
+            .map(|sample| sample.vertex)
+            .collect::<BTreeSet<_>>()
+    });
+    assert!(boundary.iter().all(|vertices| vertices.len() >= 2));
+    assert!(boundary[0].is_disjoint(&boundary[1]));
+    let delta = [line[1][0] - line[0][0], line[1][1] - line[0][1]];
+    let length = delta[0].hypot(delta[1]);
+    let placement = project.piece(owners[0]).unwrap().placement;
+    let ((sx, cx), (sy, cy), (sz, cz)) = (
+        placement.rotation[0].sin_cos(),
+        placement.rotation[1].sin_cos(),
+        placement.rotation[2].sin_cos(),
+    );
+    let basis = [
+        [cy * cz, sx * sy * cz - cx * sz],
+        [cy * sz, sx * sy * sz + cx * cz],
+        [-sy, sx * cy],
+    ];
+    let world_tolerance = if placement == Placement::default() {
+        tolerance
+    } else {
+        tolerance.max(1e-10)
+    };
+    let mut fractions = Vec::new();
+    for (mesh_stitch, actual) in mesh.stitches.iter().zip(cloth.stitches()) {
+        assert_eq!(mesh_stitch.seam, seam.id);
+        assert_eq!(actual.compliance, 1e-8);
+        let endpoints = [mesh_stitch.a, mesh_stitch.b];
+        let actual_endpoints = [actual.a, actual.b];
+        let mut uv = [[0.; 2]; 2];
+        let mut world = [[0.; 3]; 2];
+        for (side, (endpoint, actual)) in endpoints.into_iter().zip(actual_endpoints).enumerate() {
+            assert!(endpoint.weight.is_finite() && (0. ..=1.).contains(&endpoint.weight));
+            assert_eq!(actual.vertices, endpoint.vertices);
+            assert_eq!(actual.weights, [1. - endpoint.weight, endpoint.weight]);
+            assert!(
+                actual
+                    .weights
+                    .iter()
+                    .all(|weight| weight.is_finite() && (0. ..=1.).contains(weight))
+            );
+            near(actual.weights.iter().sum(), 1., 1e-12);
+            for vertex in actual.vertices {
+                assert!(boundary[side].contains(&vertex));
+                assert_eq!(mesh.piece_ids[vertex], owners[side]);
+            }
+            uv[side] = weighted(&mesh.uv, actual.vertices, actual.weights);
+            world[side] = weighted(cloth.positions(), actual.vertices, actual.weights);
+            let mesh_world = weighted(
+                &mesh.positions,
+                endpoint.vertices,
+                [1. - endpoint.weight, endpoint.weight],
+            );
+            for (actual, expected) in world[side].into_iter().zip(mesh_world) {
+                near(actual, expected, world_tolerance);
+            }
+        }
+        let fraction = ((uv[0][0] - line[0][0]) * delta[0] + (uv[0][1] - line[0][1]) * delta[1])
+            / length.powi(2);
+        assert!((-tolerance..=1. + tolerance).contains(&fraction));
+        let expected = [
+            line[0][0] + delta[0] * fraction,
+            line[0][1] + delta[1] * fraction,
+        ];
+        let expected_world: [f64; 3] = std::array::from_fn(|axis| {
+            placement.translation[axis]
+                + expected[0] * basis[axis][0]
+                + expected[1] * basis[axis][1]
+        });
+        for (uv, world) in uv.into_iter().zip(world) {
+            for (actual, expected) in uv.into_iter().zip(expected) {
+                near(actual, expected, tolerance);
+            }
+            for (actual, expected) in world.into_iter().zip(expected_world) {
+                near(actual, expected, world_tolerance);
+            }
+        }
+        fractions.push(fraction);
+    }
+    near(fractions[0], 0., tolerance);
+    near(*fractions.last().unwrap(), 1., tolerance);
+    assert!(
+        fractions.windows(2).all(|pair| pair[0] < pair[1]),
+        "Pairing must be monotone and noncrossing"
+    );
+    for sample in mesh
+        .boundary
+        .iter()
+        .filter(|sample| chords.contains(&sample.curve))
+    {
+        let side = usize::from(sample.curve == chords[1]);
+        assert_eq!(sample.piece, owners[side]);
+        let fraction = if side == 0 { sample.t } else { 1. - sample.t };
+        let expected = [
+            line[0][0] + delta[0] * fraction,
+            line[0][1] + delta[1] * fraction,
+        ];
+        for (actual, expected) in mesh.uv[sample.vertex].into_iter().zip(expected) {
+            near(actual, expected, tolerance);
+        }
+        assert!(
+            fractions
+                .iter()
+                .any(|actual| (actual - fraction).abs() * length <= tolerance),
+            "Uncovered chord boundary sample {sample:?}"
+        );
+    }
+}
+
+#[test]
+fn cut_and_sew_exact_seam_history_high_water_removal_and_native_v5() {
+    let mut ordinary = rectangle();
+    let before = ordinary.project.clone();
+    ordinary.execute(cut()).unwrap();
+    let accepted = sewn_matches_cut(&before, &ordinary.project, cut());
+    assert_eq!((accepted.revision, next_id(&accepted)), (2, 21));
+    let seam = &accepted.seams[0];
+    assert_eq!((seam.id, seam.name.as_str()), (20, "Cut seam #20"));
+    assert_eq!(seam.a, CurveInterval::full(18));
+    assert_eq!(seam.b, CurveInterval::reversed(19));
+    assert_eq!(seam.correspondence, [[0., 0.], [1., 1.]]);
+    let mut swapped = rectangle();
+    swapped
+        .execute(Command::CutAndSew {
+            piece: 2,
+            start_curve: 9,
+            start_t: 0.625,
+            end_curve: 7,
+            end_t: 0.375,
+        })
+        .unwrap();
+    assert_eq!(wire(&swapped.project), wire(&accepted));
+
+    let mut editor = rectangle();
+    editor.execute(sew_cut(cut())).unwrap();
+    assert_eq!(wire(&editor.project), wire(&accepted));
+    assert!(editor.undo());
+    let mut undone = allocator(before, 21);
+    undone.revision = 3;
+    assert_eq!(wire(&editor.project), wire(&undone));
+    assert!(editor.redo());
+    let mut expected = accepted.clone();
+    expected.revision = 4;
+    assert_eq!(wire(&editor.project), wire(&expected));
+    assert!(editor.undo());
+    assert_eq!(editor.project.revision, 5);
+    editor.execute(sew_cut(cut())).unwrap();
+    assert_eq!((editor.project.revision, next_id(&editor.project)), (6, 31));
+    assert_eq!(editor.project.pieces[1].id, 25);
+    assert_eq!(editor.project.pieces[0].boundary, [7, 28, 24, 10]);
+    assert_eq!(editor.project.pieces[1].boundary, [22, 8, 9, 29]);
+    assert_eq!(editor.project.seams[0].id, 30);
+    assert_eq!(editor.project.seams[0].a, CurveInterval::full(28));
+    assert_eq!(editor.project.seams[0].b, CurveInterval::reversed(29));
+    assert!(!editor.can_redo());
+
+    let mut editor = Editor::new(accepted.clone()).unwrap();
+    editor.execute(Command::RemoveSeam { seam: 20 }).unwrap();
+    let mut expected = accepted.clone();
+    expected.seams.clear();
+    expected.revision = 3;
+    assert_eq!(wire(&editor.project), wire(&expected));
+    let mesh = editor.project.mesh().unwrap();
+    assert!(mesh.stitches.is_empty());
+    assert!(
+        create_cloth(&editor.project, &mesh)
+            .unwrap()
+            .stitches()
+            .is_empty()
+    );
+    assert!(editor.undo());
+    expected = accepted.clone();
+    expected.revision = 4;
+    assert_eq!(wire(&editor.project), wire(&expected));
+
+    let directory = Directory::new();
+    let path = directory.0.join("cut-and-sew.weftforge");
+    accepted.save(&path).unwrap();
+    let bytes = fs::read(&path).unwrap();
+    assert_eq!(
+        serde_json::from_slice::<serde_json::Value>(&bytes).unwrap()["version"],
+        5
+    );
+    let reopened = Editor::new(Project::load(&path).unwrap()).unwrap();
+    assert_eq!(wire(&reopened.project), wire(&accepted));
+    assert!(!reopened.can_undo() && !reopened.can_redo());
+    for removed in [2, 15] {
+        let other = if removed == 2 { 15 } else { 2 };
+        let piece = accepted.piece(other).unwrap().clone();
+        let curves: Vec<_> = piece
+            .boundary
+            .iter()
+            .map(|id| accepted.curve(*id).unwrap().clone())
+            .collect();
+        let points: Vec<_> = curves
+            .iter()
+            .map(|curve| accepted.point(curve.start).unwrap().clone())
+            .collect();
+        let mut editor = Editor::new(accepted.clone()).unwrap();
+        editor
+            .execute(Command::RemovePiece { piece: removed })
+            .unwrap();
+        assert!(editor.project.seams.is_empty());
+        assert_eq!(editor.project.pieces, [piece]);
+        assert_eq!(next_id(&editor.project), 21);
+        for curve in curves {
+            assert_eq!(editor.project.curve(curve.id).unwrap(), &curve);
+        }
+        for point in points {
+            assert_eq!(editor.project.point(point.id).unwrap(), &point);
+        }
+        independent_ownership(&editor.project);
+        editor.project.validate().unwrap();
+    }
+}
+
+#[test]
+fn cut_and_sew_actual_r240_l_mesh_mass_and_retained_cloth_stitches() {
+    for resolution in [0.005, 0.07, 0.5] {
+        for is_l in [false, true] {
+            let mut ordinary = if is_l { l_shape() } else { rectangle() };
+            ordinary
+                .execute(Command::SetResolution { metres: resolution })
+                .unwrap();
+            let before = ordinary.project.clone();
+            let old_mesh = if is_l && resolution == 0.005 {
+                assert_eq!(
+                    before.mesh().unwrap_err().to_string(),
+                    "Refinement exceeds mesh vertex limit; increase resolution"
+                );
+                None
+            } else {
+                Some(before.mesh().unwrap())
+            };
+            let command = if is_l {
+                Command::CutPiece {
+                    piece: 2,
+                    start_curve: 10,
+                    start_t: 0.5,
+                    end_curve: 14,
+                    end_t: 0.8,
+                }
+            } else {
+                cut()
+            };
+            if is_l {
+                assert!(
+                    rejected(
+                        &mut ordinary,
+                        Command::CutAndSew {
+                            piece: 2,
+                            start_curve: 11,
+                            start_t: 1. / 3.,
+                            end_curve: 12,
+                            end_t: 2. / 3.,
+                        }
+                    )
+                    .contains("midpoint must be strictly inside")
+                );
+            }
+            ordinary.execute(command.clone()).unwrap();
+            assert!(ordinary.project.seams.is_empty());
+            let project = sewn_matches_cut(&before, &ordinary.project, command);
+            if let Some(old) = old_mesh {
+                assert!(
+                    create_cloth(&project, &old)
+                        .unwrap_err()
+                        .to_string()
+                        .contains("obsolete document revision")
+                );
+            }
+            let (owners, chords, line, areas, seam_id) = if is_l {
+                (
+                    [2, 19],
+                    [22, 23],
+                    [[1., 0.2], [0., 0.2]],
+                    [(2, 0.2), (19, 0.44)],
+                    24,
+                )
+            } else {
+                (
+                    [2, 15],
+                    [18, 19],
+                    [[0.09, 0.], [0.09, 0.36]],
+                    [(2, 0.0324), (15, 0.054)],
+                    20,
+                )
+            };
+            assert_eq!(project.seams[0].id, seam_id);
+            if is_l && resolution == 0.005 {
+                assert_eq!(
+                    project.mesh().unwrap_err().to_string(),
+                    "Refinement exceeds mesh vertex limit; increase resolution"
+                );
+                continue;
+            }
+            let mesh = project.mesh().unwrap();
+            let cloth = check_mesh(&project, &mesh, &areas, 1e-12);
+            check_cut_stitches(&project, &mesh, &cloth, owners, chords, line, 1e-12);
+        }
+    }
+}
+
+#[test]
+fn forward_b_control_has_equal_lengths_and_midpoint_but_wrong_actual_cloth_endpoints() {
+    let mut editor = rectangle();
+    editor.execute(sew_cut(cut())).unwrap();
+    editor.project.seams[0].b = CurveInterval::full(19);
+    for length in editor.project.seam_lengths(20).unwrap() {
+        near(length, 0.36, 1e-12);
+    }
+    let mesh = editor.project.mesh().unwrap();
+    let cloth = create_cloth(&editor.project, &mesh).unwrap();
+    let gaps: Vec<_> = cloth
+        .stitches()
+        .iter()
+        .map(|stitch| {
+            let uv = weighted(&mesh.uv, stitch.a.vertices, stitch.a.weights);
+            let a = weighted(cloth.positions(), stitch.a.vertices, stitch.a.weights);
+            let b = weighted(cloth.positions(), stitch.b.vertices, stitch.b.weights);
+            let gap = a
+                .into_iter()
+                .zip(b)
+                .map(|(a, b)| (a - b).powi(2))
+                .sum::<f64>()
+                .sqrt();
+            (uv[1] / 0.36, gap)
+        })
+        .collect();
+    near(gaps[0].0, 0., 1e-12);
+    near(gaps.last().unwrap().0, 1., 1e-12);
+    near(gaps[0].1, 0.36, 1e-12);
+    near(gaps.last().unwrap().1, 0.36, 1e-12);
+    let midpoint = gaps
+        .iter()
+        .find(|(fraction, _)| (*fraction - 0.5).abs() < 1e-12)
+        .unwrap();
+    near(midpoint.1, 0., 1e-12);
+    assert!(
+        !gaps.iter().all(|(_, gap)| *gap <= 1e-12),
+        "Independent coincidence check must reject forward B"
+    );
+}
+
+#[test]
+fn cut_and_sew_keeps_holed_owner_refusal_atomic() {
+    let mut editor = rectangle();
+    editor
+        .execute(Command::AddHole {
+            piece: 2,
+            vertices: vec![[0.12, 0.12], [0.12, 0.24], [0.16, 0.24], [0.16, 0.12]],
+        })
+        .unwrap();
+    assert!(rejected(&mut editor, cut()).contains("with a hole"));
+    assert!(rejected(&mut editor, sew_cut(cut())).contains("with a hole"));
 }
 
 #[test]
@@ -601,6 +1063,21 @@ fn tilted_and_large_offset_arrangement_and_untouched_float_bits_survive() {
                 near(actual, expected, 1e-10);
             }
         }
+        let sewn = sewn_matches_cut(&old, &editor.project, cut());
+        let mesh = sewn.mesh().unwrap();
+        let cloth = check_mesh(&sewn, &mesh, &[(2, 0.0324), (15, 0.054)], tolerance);
+        check_cut_stitches(
+            &sewn,
+            &mesh,
+            &cloth,
+            [2, 15],
+            [18, 19],
+            [
+                [offset[0] + 0.09, offset[1]],
+                [offset[0] + 0.09, offset[1] + 0.36],
+            ],
+            tolerance,
+        );
         for (copy, source) in [(16, 11), (17, 13)] {
             assert_eq!(
                 editor
@@ -699,6 +1176,8 @@ fn annotations_move_whole_in_original_order_or_refuse_the_entire_cut() {
         }
     }
     independent_ownership(&editor.project);
+    let sewn = sewn_matches_cut(&before, &editor.project, cut());
+    assert_eq!((next_id(&sewn), sewn.seams[0].id), (27, 26));
     let mut ordered = rectangle();
     ordered
         .execute(Command::Transaction(vec![
@@ -720,6 +1199,7 @@ fn annotations_move_whole_in_original_order_or_refuse_the_entire_cut() {
         let mut editor = rectangle();
         editor.execute(annotation(start, end)).unwrap();
         assert!(rejected(&mut editor, cut()).contains("cannot be assigned unchanged"));
+        assert!(rejected(&mut editor, sew_cut(cut())).contains("cannot be assigned unchanged"));
         assert_eq!((editor.project.revision, next_id(&editor.project)), (2, 14));
     }
 }
@@ -769,6 +1249,7 @@ fn every_target_sewing_reference_refuses_and_other_piece_relationships_stay_exac
             .unwrap();
         assert_eq!(next_id(&editor.project), 21);
         assert!(rejected(&mut editor, cut()).contains("sewing on any boundary"));
+        assert!(rejected(&mut editor, sew_cut(cut())).contains("sewing on any boundary"));
     }
     let mut editor = rectangle();
     partner(&mut editor, 0.4);
@@ -826,6 +1307,10 @@ fn every_target_sewing_reference_refuses_and_other_piece_relationships_stay_exac
     for curve in before.curves.iter().filter(|c| c.id >= 16) {
         assert_eq!(editor.project.curve(curve.id).unwrap(), curve);
     }
+    let sewn = sewn_matches_cut(&before, &editor.project, cut());
+    assert_eq!(sewn.seams[..before.seams.len()], before.seams);
+    assert_eq!(sewn.sewing_groups, before.sewing_groups);
+    sewn.mesh().unwrap();
     editor.project.mesh().unwrap();
 }
 
@@ -859,20 +1344,23 @@ fn invalid_addresses_numeric_geometry_and_late_transaction_are_atomic() {
         (u64::MAX, 7, 0.375, 9, 0.625),
         (2, 7, 1. - 1e-5, 8, 1e-5),
     ] {
-        rejected(
-            &mut editor,
-            Command::CutPiece {
-                piece,
-                start_curve: a,
-                start_t: t,
-                end_curve: b,
-                end_t: u,
-            },
-        );
+        let command = Command::CutPiece {
+            piece,
+            start_curve: a,
+            start_t: t,
+            end_curve: b,
+            end_t: u,
+        };
+        rejected(&mut editor, command.clone());
+        rejected(&mut editor, sew_cut(command));
     }
     rejected(
         &mut editor,
         Command::Transaction(vec![cut(), Command::SetResolution { metres: 0. }]),
+    );
+    rejected(
+        &mut editor,
+        Command::Transaction(vec![sew_cut(cut()), Command::SetResolution { metres: 0. }]),
     );
     assert!(
         rejected(
@@ -911,6 +1399,7 @@ fn invalid_addresses_numeric_geometry_and_late_transaction_are_atomic() {
         })
         .unwrap();
     rejected(&mut curved, cut());
+    rejected(&mut curved, sew_cut(cut()));
     let mut collinear = Editor::default();
     collinear
         .execute(Command::AddPolygon {
@@ -964,10 +1453,22 @@ fn id_object_revision_and_shared_outer_transaction_work_caps_are_atomic() {
     let mut last = Editor::new(allocator(rectangle().project, u64::MAX - 9)).unwrap();
     last.execute(cut()).unwrap();
     assert_eq!(next_id(&last.project), u64::MAX);
+    let mut invalid = sew_cut(cut());
+    if let Command::CutAndSew { start_t, .. } = &mut invalid {
+        *start_t = f64::NAN;
+    }
+    let mut nine_ids = Editor::new(allocator(rectangle().project, u64::MAX - 9)).unwrap();
+    assert!(rejected(&mut nine_ids, sew_cut(cut())).contains("stable ID limit"));
+    assert!(rejected(&mut nine_ids, invalid.clone()).contains("stable ID limit"));
+    let mut ten_ids = Editor::new(allocator(rectangle().project, u64::MAX - 10)).unwrap();
+    ten_ids.execute(sew_cut(cut())).unwrap();
+    assert_eq!(next_id(&ten_ids.project), u64::MAX);
+    assert_eq!(ten_ids.project.seams[0].id, u64::MAX - 1);
     let mut old = rectangle().project;
     old.revision = u64::MAX;
     let mut editor = Editor::new(old).unwrap();
     assert!(rejected(&mut editor, cut()).contains("revision limit"));
+    assert!(rejected(&mut editor, sew_cut(cut())).contains("revision limit"));
     let mut project = rectangle().project;
     let mut id = 11;
     while project.points.len()
@@ -986,6 +1487,23 @@ fn id_object_revision_and_shared_outer_transaction_work_caps_are_atomic() {
     assert!(rejected(&mut editor, cut()).contains("object limit"));
     let mut project = editor.project.clone();
     project.materials.pop();
+    let mut nine_objects = Editor::new(project.clone()).unwrap();
+    assert!(rejected(&mut nine_objects, sew_cut(cut())).contains("object limit"));
+    assert!(rejected(&mut nine_objects, invalid).contains("object limit"));
+    let mut ten_object_project = project.clone();
+    ten_object_project.materials.pop();
+    let mut ten_objects = Editor::new(ten_object_project).unwrap();
+    ten_objects.execute(sew_cut(cut())).unwrap();
+    let project = &ten_objects.project;
+    assert_eq!(
+        project.points.len()
+            + project.curves.len()
+            + project.pieces.len()
+            + project.materials.len()
+            + project.seams.len(),
+        MAX_OBJECTS
+    );
+    let project = nine_objects.project;
     let mut exact = Editor::new(project).unwrap();
     exact.execute(cut()).unwrap();
     assert_eq!(
@@ -1016,9 +1534,21 @@ fn id_object_revision_and_shared_outer_transaction_work_caps_are_atomic() {
             .unwrap()
             .execute(command.clone())
             .unwrap();
+        Editor::new(editor.project.clone())
+            .unwrap()
+            .execute(sew_cut(command.clone()))
+            .unwrap();
     }
     assert!(
-        rejected(&mut editor, Command::Transaction(commands)).contains("work budget exhausted")
+        rejected(&mut editor, Command::Transaction(commands.clone()))
+            .contains("work budget exhausted")
+    );
+    assert!(
+        rejected(
+            &mut editor,
+            Command::Transaction(commands.into_iter().map(sew_cut).collect())
+        )
+        .contains("work budget exhausted")
     );
     let mut oversized = Editor::default();
     oversized.execute(regular_polygon(4096, 0.)).unwrap();
@@ -1044,39 +1574,43 @@ fn id_object_revision_and_shared_outer_transaction_work_caps_are_atomic() {
 
 #[test]
 fn cut_wire_envelope_required_fields_and_original_duplicate_bytes_are_strict() {
-    let valid = json!({"type":"cut_piece","data":{"piece":2,"start_curve":7,"start_t":0.375,"end_curve":9,"end_t":0.625}});
-    assert_eq!(serde_json::to_value(cut()).unwrap(), valid);
-    for field in ["piece", "start_curve", "start_t", "end_curve", "end_t"] {
-        let mut missing = valid.clone();
-        missing["data"].as_object_mut().unwrap().remove(field);
-        assert!(serde_json::from_value::<Command>(missing).is_err());
-        let raw = valid.to_string();
-        let needle = format!("\"{field}\":{}", valid["data"][field]);
-        assert!(
-            serde_json::from_str::<Command>(&raw.replace(&needle, &format!("{needle},{needle}")))
+    for (command, kind) in [(cut(), "cut_piece"), (sew_cut(cut()), "cut_and_sew")] {
+        let valid = json!({"type":kind,"data":{"piece":2,"start_curve":7,"start_t":0.375,"end_curve":9,"end_t":0.625}});
+        assert_eq!(serde_json::to_value(command).unwrap(), valid);
+        for field in ["piece", "start_curve", "start_t", "end_curve", "end_t"] {
+            let mut missing = valid.clone();
+            missing["data"].as_object_mut().unwrap().remove(field);
+            assert!(serde_json::from_value::<Command>(missing).is_err());
+            let raw = valid.to_string();
+            let needle = format!("\"{field}\":{}", valid["data"][field]);
+            assert!(
+                serde_json::from_str::<Command>(
+                    &raw.replace(&needle, &format!("{needle},{needle}"))
+                )
                 .is_err()
-        );
+            );
+        }
+        for raw in [
+            r#"{"type":"cut_piece","piece":2,"start_curve":7,"start_t":0.375,"end_curve":9,"end_t":0.625}"#,
+            r#"{"type":"cut_piece","type":"cut_piece","data":{"piece":2,"start_curve":7,"start_t":0.375,"end_curve":9,"end_t":0.625}}"#,
+            r#"{"type":"cut_piece","data":{"piece":2,"start_curve":7,"start_t":1e309,"end_curve":9,"end_t":0.625}}"#,
+        ] {
+            assert!(serde_json::from_str::<Command>(&raw.replace("cut_piece", kind)).is_err());
+        }
+        for (field, value) in [
+            ("unknown", json!(0)),
+            ("piece", json!(-1)),
+            ("piece", json!(2.5)),
+            ("start_t", json!(null)),
+        ] {
+            let mut bad = valid.clone();
+            bad["data"][field] = value;
+            assert!(serde_json::from_value::<Command>(bad).is_err());
+        }
+        let mut outer = valid;
+        outer["unknown"] = json!(0);
+        assert!(serde_json::from_value::<Command>(outer).is_err());
     }
-    for raw in [
-        r#"{"type":"cut_piece","piece":2,"start_curve":7,"start_t":0.375,"end_curve":9,"end_t":0.625}"#,
-        r#"{"type":"cut_piece","type":"cut_piece","data":{"piece":2,"start_curve":7,"start_t":0.375,"end_curve":9,"end_t":0.625}}"#,
-        r#"{"type":"cut_piece","data":{"piece":2,"start_curve":7,"start_t":1e309,"end_curve":9,"end_t":0.625}}"#,
-    ] {
-        assert!(serde_json::from_str::<Command>(raw).is_err());
-    }
-    for (field, value) in [
-        ("unknown", json!(0)),
-        ("piece", json!(-1)),
-        ("piece", json!(2.5)),
-        ("start_t", json!(null)),
-    ] {
-        let mut bad = valid.clone();
-        bad["data"][field] = value;
-        assert!(serde_json::from_value::<Command>(bad).is_err());
-    }
-    let mut outer = valid;
-    outer["unknown"] = json!(0);
-    assert!(serde_json::from_value::<Command>(outer).is_err());
 }
 
 struct Directory(PathBuf);
@@ -1125,7 +1659,7 @@ fn ordinary_v4_exports_have_both_exterior_copies_independent_obj_components_and_
     let bytes = fs::read(&primary).unwrap();
     assert_eq!(
         serde_json::from_slice::<serde_json::Value>(&bytes).unwrap()["version"],
-        4
+        weftforge_core::FORMAT_VERSION
     );
     let loaded = Project::load(&primary).unwrap();
     assert_eq!(wire(&loaded), accepted);

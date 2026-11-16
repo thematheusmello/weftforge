@@ -1,0 +1,59 @@
+{
+  "schema": "weftforge.publication-privacy-scope.v1",
+  "date": "2026-11-16",
+  "status": "independent_private_archive_reviews_passed_and_exact_approved_bytes_copied",
+  "scope": "Publication privacy and byte integrity only; native outcomes and their qualifications remain in the separately scoped reports. Git tracking and clean-checkout integration validation are separate gates.",
+  "archives": [
+    {
+      "path": "parity/reports/artifacts/straight-hole-20261116",
+      "files": 2863,
+      "bytes": 44522227,
+      "approved_COPY_NODES_sha256": "deaa9c68bb864422a4475a8af4bd5bf8bb6613e4fa06fb8ca9663e9dd386d30d",
+      "independent_review_sha256": "df08c016fc524e5af0ff5bbe0ff76bd18fcfa159a14ccd6630ce89f2c8750763",
+      "independent_review_input_manifest_sha256": "9eed3ab45db3056cc3f38ecec36803c663cf7fb31baf80c16483a0d95b3c64f7",
+      "selected_public_JPEGs": 166,
+      "index": "PUBLICATION-CURRENT-003.json"
+    },
+    {
+      "path": "parity/reports/artifacts/cut-and-sew-20261116",
+      "files": 1195,
+      "bytes": 20023160,
+      "approved_COPY_NODES_sha256": "18d1f2bc0e4fe6e2bfba5c59c903ec3e00e0972d6609a127fefd542260b6e742",
+      "independent_review_sha256": "54fca22c9b48d1fda9efdcdddac34f3324ed5fd6bdaedf882fff96ce6656558a",
+      "independent_review_input_manifest_sha256": "6cc9253d6d6f371823a4804d069b60fc35953321c2000cbdf79f3ab24cded292",
+      "selected_public_JPEGs": 74,
+      "index": "PUBLICATION-CURRENT.json"
+    }
+  ],
+  "total_archive_files": 4058,
+  "total_archive_bytes": 64545387,
+  "root_copy_receipt_sha256": "902d78b7fb77527130f1ae1157092e8ad56498105a84c7c645dca0e7b438f51f",
+  "copy_checks": {
+    "all_nodes_regular_and_non_symlink": true,
+    "all_git_modes": "100644",
+    "all_source_and_destination_lengths_and_SHA256_match_approved_index": true,
+    "no_existing_files_overwritten": true,
+    "original_cases_packets_and_stages_unchanged": true
+  },
+  "JPEG_derivative_scope": {
+    "images": 240,
+    "changed_bytes_per_image": 8,
+    "changed_bytes_total": 1920,
+    "changed_region": "Declared device identifier in JPEG ICC profile only",
+    "all_other_bytes_and_encoded_pixels_match_private_originals": true,
+    "not_whole_byte_originals": true
+  },
+  "other_derivative_scope": "Each archive index separately records path derivatives, tool/screenshot result metadata wrappers, review inventory wrappers and whole-file omissions. Image-only byte statements do not apply to these derivatives.",
+  "failure_preservation": [
+    "H1-001 expected-binary preflight failure is retained.",
+    "H2-001 SVG canvas-padding saved-file failure remains failed.",
+    "H3-001 original actor postflight comparison failed with exit 1; independent actual bytes and permission audit is a separate qualification, not a replacement or green reclassification.",
+    "Earlier source compile and native focus/setup failures retain their original outcomes."
+  ],
+  "independent_audit_records": "Complete private reviews are retained outside public artifacts; their SHA256 identities above identify the exact bounded audits without publishing personal paths or omitted session content.",
+  "claims": {
+    "reference_comparison": false,
+    "complete_feature_acceptance": false,
+    "native_cloth_particle_mass_acceptance": false
+  }
+}

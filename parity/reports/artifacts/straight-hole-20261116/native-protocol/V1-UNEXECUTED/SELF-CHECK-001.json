@@ -1,0 +1,16 @@
+{
+  "status": "passed_small_synthetic_state_export_copy_readiness_checks_only",
+  "rejected_mutants": [
+    "missing required v5 holes",
+    "wrong Hole allocator",
+    "Undo did not restore corner bits",
+    "reopen lost unchanged signed zero",
+    "OBJ cap fills open hole",
+    "OBJ wrong world/UV scale",
+    "SVG missing evenodd semantics",
+    "SVG wrong physical scale",
+    "readiness cannot omit one cross-cell helper flag"
+  ],
+  "actual_native_CUA_product_evaluator_or_formal_grade_executed": false,
+  "temporary_synthetic_files_deleted": true
+}

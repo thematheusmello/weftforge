@@ -1,0 +1,35 @@
+{
+  "utc": "2026-11-16T07:34:00.510482+00:00",
+  "case": "SEW-S1",
+  "attempt": "S1-001",
+  "root_binding_sha256": "80a45a09e7439792eddfc31be7000dfe9033760fad11a1baa8c00e4fe02ea807",
+  "packet_freeze_sha256": "5ab3b3238d2b50a5f6fdfa58965c94a7a057b5f5cb084c46117e949d986f3b0c",
+  "preparation_freeze_sha256": "bca45d40108d59cf67e3e2737bd711b363e4d8ca592263aa311f2599c479a160",
+  "reviewed_complete_orchestration_sources": [
+    "ACTOR-BOOTSTRAP.js",
+    "ACTOR-PERSISTENCE-CHECK.js",
+    "ACTOR-INITIAL-CAPTURE.js",
+    "ACTOR-START-CLOCK.cjs",
+    "ACTOR-LAUNCH-PID.cjs",
+    "ACTOR-POSTFLIGHT-RAW.cjs"
+  ],
+  "preparation_files_exact": 19,
+  "packet_files_exact": 35,
+  "packet_dependencies_exact": 117,
+  "all_source74_sealed_clean385": true,
+  "no_live_weftforge_before_grant": true,
+  "canonical_binding_complete": true,
+  "s1_only_exclusive_native_lease_granted": true,
+  "no_case_clock_or_launch_in_this_review": true,
+  "root_review_findings_corrected_before_GO": [
+    "closed launch/PID argument shapes",
+    "accepted_input_dependency in postflight; all used properties checked"
+  ],
+  "limits": {
+    "continuous_elapsed_s": 1800,
+    "paired_plus_documentation_cap": 160,
+    "summary_calls": 1,
+    "no_exports_or_simulation_in_scope": true
+  },
+  "next_action": "Separate explicit bounded S1 GO to prepared actor; no S2 authority."
+}

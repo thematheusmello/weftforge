@@ -1,0 +1,87 @@
+{
+  "revision": 3,
+  "status": "DRAFT_requested_review_corrections_NOT_FREEZE_NO_GO",
+  "previous_inventory": {
+    "path": "DRAFT-INVENTORY-002.json",
+    "sha256": "430c378e72b461bd36b09cc9eb72cfed41b83f9a7cb919b9d8f5ece94a8783ce",
+    "retained_unchanged_as_history": true
+  },
+  "initial_inventory": {
+    "path": "DRAFT-INVENTORY.json",
+    "sha256": "8d2d65b076d6cdd67c3605fd786104f83a71d850874b3e0b0288916e1d71efe6",
+    "retained_unchanged_as_history": true
+  },
+  "reason": "Root-approved relocation and source-backed actor routes/counts plus root-relayed independent review dependency/freeze-coverage blockers. The written updated independent review remains pending; its approval is not synthesized.",
+  "changed_files": {
+    "DRAFT.json": {
+      "revision002_sha256": "274d0a1485069ab2c6c2722008638d31dc1aed4e24fdc74a3b2a2669bd0fdfef",
+      "revision003_sha256": "0596d50e384ee6d27967640434914cf3b75da57141c7e20c1f196614ee9961ad"
+    },
+    "ORACLE.json": {
+      "revision002_sha256": "49f1e0c97661781c095113008a72487cc53b5d124d2b0f4e521376b03e5b3301",
+      "revision003_sha256": "db2582debe10ec80e519a71403ab51831cc97a425c9b0ccd25ef5063001f08e5"
+    },
+    "PLAN.json": {
+      "revision002_sha256": "9ab5a3f4ff302ee1d6313a3ec1d7ad799ee8d679c422b6ea3189bb08e78161d4",
+      "revision003_sha256": "17198471053042141f4bb64561fb3906b842645a7d364bfd21b8cd2a5517ac5f"
+    },
+    "PROVENANCE.json": {
+      "revision002_sha256": "c0ca94468568b56e46d64c74daa9e645dcd94cfebfdae34ad18507ddb8c4dcf9",
+      "revision003_sha256": "de49712315c4b4e8273da865deb8919b9056096689a770f74ce66b75255c1880"
+    },
+    "README.md": {
+      "revision002_sha256": "c90b93c651eb8e128f51f62a82441ff1b752936afa991efdf4fe2f50c275f208",
+      "revision003_sha256": "012b10e034f016e170626225cbb0b6286d2a8c4456509ed21c8e592e82b183b3"
+    },
+    "RUNTIME-PROTOCOL.json": {
+      "revision002_sha256": "df481919b9dfde53032d7fd51db14b6332cbaff8ad62f41e0f9c2485bea86c49",
+      "revision003_sha256": "afb7c59deb5d70af31794f20de70aa048105f8d2f609f4483b90e18976ca7234"
+    },
+    "grade_saved.py": {
+      "revision002_sha256": "bd2d2cdcfc03bf5643a65489cb60d51dfefc3746fcc29e671aaec137e9d98fed",
+      "revision003_sha256": "70d269ccc25df07ce8e4da3b8cb30f631d923ac3f3f3245b2ed76bae512fc2f8"
+    }
+  },
+  "added_review_records": [
+    "selfcheck_authority.py",
+    "SELF-CHECK-003.json",
+    "SELF-CHECK-AUTHORITY-003.json",
+    "DRAFT-STATIC-CHECK-003.json",
+    "REVISION-003.json",
+    "DRAFT-INVENTORY-003.json"
+  ],
+  "source_commit_unchanged": "5898f1a1274f8632d96b5fd0898f8253dee2f4db",
+  "clean_metadata_commit_unchanged": "3858848afb3764014a5d305a0e5dfb5661ea6d86",
+  "source_input_count_unchanged": 74,
+  "native_identity_unchanged": {
+    "sha256": "7809e41948e19d0055da45e10a3b55225173df48e43465fab1b48effd7efa1c8",
+    "bytes": 62245032
+  },
+  "source_backed_actor_review": {
+    "path": ".local/cut-and-sew-actor-route-review-20261116/REVIEW-001.md",
+    "sha256": "40244dd2932cf99aa2e535ce22ece5a5aa83ba979fc40c227af89f2972071722",
+    "status": "changes requested against revision002; prospective requested changes incorporated, no approval inferred"
+  },
+  "corrections": {
+    "S1": "Same8 shields moved after no-refocus1e0- invalid-field witness and before fullcorrection; no Space between second review Sew-on and ONE Apply; total149/paired148/cap160/reserve11 unchanged.",
+    "S2_route": "Exact retained2/Boundary combo/Boundary2curve18/child15 route is8 operations; total72/paired71/cap75/reserve3, summary1/900s unchanged.",
+    "S2_dependency": "Prior/current clean385, exact source74 named inventory/count and current bound freeze required; prior sole grade must use samefreeze. Pinned historical H1-002 exception for S1 is explicit.",
+    "freeze_boundary": "Mandatory19 packet inputs including all9 authority templates/model/plan/source/provenance/readme/gates/protocol/grader/retainer plus declared external dependency/digest coverage required before byte-hash loops."
+  },
+  "offline_checks": {
+    "existing_refusal_controls": 33,
+    "new_fully_hashlinked_dependency_refusals": 4,
+    "new_manifest_omission_or_hash_refusals": 10,
+    "proper_positive_controls_passed": true,
+    "static_checks_passed": true,
+    "temporary_synthetic_files_deleted": true,
+    "formal_case_grader_never_invoked": true
+  },
+  "pending_before_freeze": [
+    "source-backed actor recheck of this exact revision",
+    "independent review of this exact revision",
+    "root complete artifact/dependency freeze and separate case binding/GO"
+  ],
+  "grants_remain_false": true,
+  "freeze_created": false
+}

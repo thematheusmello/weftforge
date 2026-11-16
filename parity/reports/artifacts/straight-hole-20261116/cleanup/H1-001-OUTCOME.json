@@ -1,0 +1,37 @@
+{
+  "scope": "Separate post-case exit verification after actor retained handoff; no native inputs, no getApp/relaunch, no frozen case mutation",
+  "case": "HOLE-H1",
+  "attempt": "H1-001",
+  "actor_owned_pid": 57480,
+  "CUA_inventory": {
+    "observed_utc": "2026-11-16T04:44:29.262Z",
+    "matching_apps": [
+      {
+        "displayName": "WeftForge",
+        "id": "org.weftforge.studio",
+        "isRunning": false,
+        "lastUsedDate": 816220800,
+        "useCount": 7
+      }
+    ],
+    "running_WeftForge_apps": 0
+  },
+  "immediate_next_tool": {
+    "completion_summary": "Confirmed finished project windows closed",
+    "return": "Completion summary received."
+  },
+  "ps_check": {
+    "utc": "2026-11-16T04:45:44.666771+00:00",
+    "argv": [
+      "ps",
+      "-p",
+      "57480",
+      "-o",
+      "pid=,comm="
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "exited": true
+}
