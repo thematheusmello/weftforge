@@ -31,9 +31,10 @@ colliders and duplicate pins are rejected before a solver is returned.
 
 ## Integration and compliant constraints
 
-The engineering choice is a deterministic sequential CPU XPBD path, using the
-compliant local projection method from
+The engineering choice is a deterministic sequential CPU path. Bending and
+sewing retain the compliant local XPBD projection method from
 [Macklin, Müller and Chentanez, XPBD (2016)](https://matthias-research.github.io/pages/publications/XPBD.pdf).
+Membrane projection uses the coupled incremental-energy update described below.
 The small dependency surface and explicit physical energy coefficients make it
 suitable for repeatable checks and future accelerated-path comparisons. It is not
 a promise of time-step, mesh or iteration independence at finite convergence.
@@ -45,9 +46,10 @@ v* = exp(-damping*h) * (v + h*gravity)
 x* = x + h*v*
 ```
 
-The solver clears elastic/seam multipliers at each substep and iterates membrane,
-bending, sewing, analytic contact, cloth contact and pins in that order. For an
-energy E = k*C(x)^2/2, the constraint compliance is alpha = 1/k:
+The solver clears material correction history and bending/seam multipliers at
+each substep, then iterates membrane, bending, sewing, analytic contact, cloth
+contact and pins in that order. For a scalar bending or radial sewing energy
+E = k*C(x)^2/2, the constraint compliance is alpha = 1/k:
 
 ```text
 a = alpha / h²
@@ -103,6 +105,63 @@ sets piece grain to zero, preserving the old physical inputs. Neither set is an
 identified measured fabric or a reference-application preset. Shear, bending,
 density, damping, friction and collision offset remain separate parameters;
 changing the display color does not change them.
+
+### Coupled material projection
+
+Warp, weft and shear share each triangle's positions. A scalar multiplier history
+alone does not retain the nonlinear inertial relation when their gradients
+rotate. The original XPBD derivation explicitly omits that primal residual;
+[Chen et al. (2024)](https://physbam.stanford.edu/papers/stanford2024-02_2.pdf)
+also discuss its effect on backward-Euler force balance. The local update here
+is derived directly from this crate's existing material energy; it is not a
+calibrated implementation or a convergence claim for either paper's full method.
+
+For each triangle, p stores its three accumulated positional corrections, in
+metres. Removing its previous correction from current positions gives local
+anchor z=x-p. With other stages held fixed during this projection, the local
+incremental objective is:
+
+```text
+Phi(q) = (q-z)^T M (q-z)/(2*h²) + sum_a(k_a*C_a(q)²)/2
+```
+
+M contains the incident particle masses; pinned coordinates are fixed. Let J
+contain the three current constraint gradients, W their inverse masses and
+k the existing area-scaled warp/weft/shear coefficients. One Gauss–Newton step
+is reduced by the Woodbury identity to a three-by-three system:
+
+```text
+A = J*W*J^T + diag(1/(k_a*h²))
+A*eta = J*p - C
+d = -p + W*J^T*eta
+```
+
+Eta is a temporary linear-solve unknown, not a retained material multiplier.
+The system uses a diagonally scaled Cholesky factorization. Each declared outer
+iteration performs one such coupled material step per triangle. An Armijo energy
+check on h²*Phi uses coefficient 1e-4 and at most 16 trial fractions, starting at
+one and halving; these trials evaluate local energy, not additional material
+iterations. Only an accepted finite trial updates positions and p, using the
+rounded position displacement actually applied. An unusable factorization or
+exhausted line search leaves that projection unchanged. Extreme deformation or
+ill conditioning can therefore stall; existing strain/contact/finite diagnostics
+remain necessary and no general convergence guarantee is supplied.
+
+Correction history uses nine f64 values per triangle instead of three scalar
+multipliers and is reset each substep. It remains local to the candidate step,
+so cancellation or failure preserves the accepted cloth state. Cancellation
+is polled before each material triangle; one local solve and its bounded line
+search can finish before the next poll. This is cooperative cancellation, not
+a hard latency guarantee.
+
+The focused pinned/free-node regression compares the projected positions with
+an independent dense Newton solution of the inertial-plus-material energy and
+evaluates its force balance from a direct deformation gradient, with bounds of
+1e-8 m and 1e-6 N. This checks a small incremental-energy problem, not a garment
+answer. Inter-element convergence at finite budgets, the remaining scalar
+bending/sewing updates, friction, and complete coupled-contact equilibrium remain
+separate questions. Earlier garment results below retain their original source
+and algorithm attribution; this source change does not regrade them.
 
 `max_stretch_error` reports max(abs(length(f_w)-1), abs(length(f_f)-1)). It is a
 material-axis length diagnostic, not a bound on all principal strains or shear.
