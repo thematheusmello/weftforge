@@ -113,9 +113,19 @@ Selected logs are under `photocraft-workspace-publication-checks-20261116`.
 That publication append changed only status and those logs; no native, reference or
 complete-workflow acceptance transfers from the CLI verification.
 
-Next: root reviews this clean follow-up checkpoint, runs its clean committed
-xtask and decides publication. The full separately bound rectangle-offset native
-workflow and independent saved-file/export assessment remain due. Prior closed
+Clean committed `cargo xtask verify` passed at
+`8f1c64916d21f562f489ecd4555011b9aaa46bf4` in 202.8 seconds. All 87 source
+inputs, 50 reports and five qualifying metadata files stayed unchanged, and the
+tracked checkout remained clean. Session **49585** / Cargo PID **48516** is
+terminal, exit **0**. Selected original/locator-normalized logs are retained under
+`offset-native-stops-publication-checks-20261116/clean-8f1c649-verify-001`.
+This final append changes only status and those logs; source gates were not
+repeated and no native, reference or complete-workflow credit transfers.
+
+Next: continue the separately bound pointer-input diagnosis and full native
+rectangle-offset workflow, then independently assess its required saved files
+and exports. The reviewed controller evidence remains a bounded draft update
+to [PR #51](https://github.com/thematheusmello/weftforge/pull/51). Prior closed
 cases remain unchanged. GitHub Actions stays disabled and the
 existing static Pages site remains unchanged. Full editable allowances,
 native offset acceptance, curved/concave/cancellation cases and the complete
