@@ -1,0 +1,15 @@
+{
+  "case": "POINT-EDIT-D003",
+  "utc": "2026-11-16T20:01:12.258Z",
+  "status": "NATIVE_EDIT_UNDO_REDO_SAVE_OBSERVED",
+  "source_commit": "3fddeb9a72e5b4395e8e874a628086937331af2f",
+  "observations": [
+    "One drag changed point3 from(-.01,-.01)to(-.02,-.01),revision5to6",
+    "One nativeUndo restored original point,revision7",
+    "One nativeRedo restored edited point,revision8",
+    "NativeCmdS reported atomically saved editable project aftereach state; exactbyte snapshots retained"
+  ],
+  "independent_file_check": "pending",
+  "fresh_process_reopen": "pending",
+  "full_contract_accepted": false
+}

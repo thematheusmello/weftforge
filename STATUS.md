@@ -1,5 +1,77 @@
 # WeftForge status — active development, 2026-11-16
 
+Current tested endpoint source is `3fddeb9a72e5b4395e8e874a628086937331af2f`, preserved in integrated
+checkpoint `ac6c2e53b47f2d19772d2bfb341e1500dae2cf0c` with all 87 source inputs byte-identical.
+The [source report](parity/reports/WF-20261116-ENDPOINT-EDIT-SOURCE-001.json) retains **397 workspace Rust tests**,
+strict all-target workspace Clippy and native debug build, each passed once.
+Full formatting passed on the exact main source and is reused with its explicit
+qualification. Focused final green has eight test functions; original red 6134
+had 5 passed/3 failed at 787fcadc and excludes later ownership/Escape/pending-grain
+variants. No old red or native case was rerun, repaired or regraded.
+
+The [bounded native/file report](parity/reports/WF-20261116-ENDPOINT-EDIT-NATIVE-001.json) retains one 10 mm endpoint
+drag R5→R6/P0#3(-.02,-.01), one Undo R7 and Redo R8, three native saves and native
+Open of final R8 in the second independently verified fresh owned process.
+The separately frozen, single-run file check passes all authoring/ID/revision and
+straight-edge area targets within 1e-12 SI; maximum area error 1.942e-17 m² and
+maximum coordinate error 0. It transfers no UI/lifecycle/physics acceptance.
+
+**Lifecycle qualification:** after first Quit, an AX query returned a new empty
+process rather than App quit error. Its startup mechanism was untraced;
+observer auto-launch is inference. Verified second PID 3213 was used for the
+predeclared read-only reopen; no third launch or second drag occurred. Both owned
+PIDs 2719/3213 were independently absent afterward. Native saves, working project,
+autosave and recovery writes remain retained. D003 does not qualify as a compliant
+full workflow or native-broad/reference/physics/full-feature/garment/roadmap pass.
+Its 532.051439 s / 900 s, 24 semantic actions, 22 physical calls, 55 app calls,
+33 observations and 8 original images remain exact; public selection retains
+42 of 165 files, 9 standalone AX and 3 unchanged own-app images, with omissions mapped.
+
+The complete target remains **56 full contracts: 41 partial, 15 planned, 0 full
+implementations and 0 reference-verified**; no roadmap gate is accepted.
+Four b776 reports are stale with exact originals archived and only freshness/reason
+changed; all other 46 prior reports and eight immutable inventory files stay exact.
+The current source map pins integrated ac6 with 39 rows / 23 surfaces / 23 contracts and
+378 actual anchors; command/schema/tool identities remain 34/33/9.
+E001 retains its failed point drag and budget overruns; D001/D002 remain failed
+no-commit cases. D002 trace47 is historical diagnostic-only and excluded from
+shipping ancestry. See [endpoint issue #52](https://github.com/thematheusmello/weftforge/issues/52).
+
+Confirmed source handles are terminal: focused green 35485 / Cargo 86429;
+workspace 89394 / Cargo 91355; Clippy 60306 / Cargo 95040;
+native build 12453 / Cargo 95894, all exit 0. Original red 6134 / Cargo 78888 exited 101.
+No Cargo job or native window is active. The one local metadata cycle passed:
+current-map PID 22434, progress generation 23370, progress check26435 and 39 registry
+tests PID 29660, all terminal/exit 0. The [tracked checkpoint](parity/reports/artifacts/endpoint-edit-source-20261116/METADATA-CHECKPOINT-001.json)
+retains exact commands, raw logs and before/after invariants. Full staged whitespace
+checking exits 2 on preserved raw log EOFs and valid single-space blank unified-diff
+context lines; no shipping source changed or full whitespace pass is claimed.
+Root authorizes a scoped check excluding only these exact preserved artifacts:
+
+- [workspace-tests.log](parity/reports/artifacts/endpoint-edit-source-20261116/broad-gates/workspace-tests.log): original blank EOF.
+- [green.log](parity/reports/artifacts/endpoint-edit-source-20261116/green.log): original blank EOF.
+- [red.patch](parity/reports/artifacts/endpoint-edit-source-20261116/red.patch): structural blank context markers.
+- [green.patch](parity/reports/artifacts/endpoint-edit-source-20261116/green.patch): structural blank context markers.
+
+All raw bytes remain exact. The single scoped staged check passed (PID 39171,
+exit 0); every other staged file was included. Root owns final clean
+committed `cargo xtask verify` and public draft PR publication.
+
+Next: root independently verifies this clean committed checkpoint with
+`cargo xtask verify` before publishing the public draft PR. Remaining
+work includes Rectangle/Transform/middle-pan gesture behavior, complete offset
+first-phase/advanced authoring tools, current empty-project garment authoring,
+sewing/fitting/save-reopen-edit/export, physics/reference acceptance and all later
+roadmap gates. No physics3652429 merge belongs to this endpoint increment.
+GitHub Actions and automated Pages deployments stay disabled; the existing static
+Pages site is preserved. This checkpoint makes no remote or deployment change.
+
+## Historical source and evidence checkpoints
+
+Everything below records its original earlier context, including prior current,
+pending and next-step wording. Those source identities/results remain historical;
+b776 and the392-test4d8 checkpoint are not the current endpoint source.
+
 The source follow-up for [endpoint input issue #52](https://github.com/thematheusmello/weftforge/issues/52)
 reconstructs one completed primary endpoint drag when its press/move/release
 arrives in one frame. It uses the existing boundary/internal/hole hit selection
@@ -767,7 +839,7 @@ quality pass follows. Later 7fe strict-trace incompleteness, A29 strain and 9–
 contact failures remain in the physics evidence. General convergence, calibration,
 surface contact, full persistence and full garment acceptance remain open.
 
-## Exact next work
+## Earlier continuation notes (historical)
 
 Root independently audits the clean tracked publication candidate, mappings,
 source 65, scopes and check receipts before remote publication. Continue the

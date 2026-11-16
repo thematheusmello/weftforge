@@ -1,0 +1,73 @@
+{
+  "case": "POINT-EDIT-D003",
+  "status": "BOUNDED_NATIVE_ENDPOINT_EDIT_HISTORY_SAVE_REOPEN_OBSERVED_WITH_LIFECYCLE_QUALIFICATION",
+  "source_commit": "3fddeb9a72e5b4395e8e874a628086937331af2f",
+  "native_sha256": "eccf633cbdb82dcd91952bf1123395e82a528180fc8959dab3509a3ea4c5d66d",
+  "plan_sha256": "e3398378031162cee7604e27ef75313fbde9c3225f9a032257d149ad45aa79b6",
+  "native_observed": {
+    "single_canvas_drag": true,
+    "revision5_to6": true,
+    "point3_after_m": [
+      -0.02,
+      -0.01
+    ],
+    "one_undo_revision7_original_point": true,
+    "one_redo_revision8_edited_point": true,
+    "three_native_atomically_saved_states": true,
+    "second_fresh_process_native_Open_exact_final_file": true,
+    "reopened_revision8_point3_and_curve7_editability_observed": true
+  },
+  "file_geometry_assessment": "Pending separately frozen independent checker; no math/physics assertion by this native outcome",
+  "snapshots": {
+    "undo.weftforge": {
+      "sha256": "bfe3243c6222d03a1449284228154b4f62b83d9e8b1ac0cce620a25854680cbd",
+      "bytes": 3308
+    },
+    "redo.weftforge": {
+      "sha256": "25187f68130d53b6d22c1cab2525b67268571d6c91d3bc1d6d2ac60393a79bc5",
+      "bytes": 3276
+    },
+    "edited.weftforge": {
+      "sha256": "c916a6f3fc1e5bb9d49fea37742cd44742fc664bf002d07ca29de3e08c7f9eb3",
+      "bytes": 3276
+    }
+  },
+  "working_file_byte_equals_redo": true,
+  "lifecycle_deviation": {
+    "first_pid": 2719,
+    "post_first_Quit_AX_returned": "new empty revision0 view, not App quit error",
+    "observed_second_pid": 3213,
+    "second_start": "Mon Nov 16 20:01:12 2026",
+    "exact_second_owned_binary_no_args": true,
+    "explicit_second_launch_performed": false,
+    "automatic_observer_launch": "Inference from timing/state; mechanism not separately traced",
+    "second_process_used_for_predeclared_readonly_Open": true,
+    "third_process_created": false,
+    "qualified_compliant_full_workflow_claim": false
+  },
+  "elapsed_first_launch_to_final_quit_return_seconds": 532.051439,
+  "within900s_and60actions_and2processes": true,
+  "counts": {
+    "utc": "2026-11-16T20:06:26.367Z",
+    "calls": 55,
+    "semantic_actions_including_two_processes_and_quits": 24,
+    "physical_input_API_calls": 22,
+    "observations_including_binds_and_first_postquit_AX": 33,
+    "images": 8,
+    "local_controller_failures": 0,
+    "lifecycle_deviation_retained": true,
+    "no_post_second_quit_App_observation": true,
+    "summary_required_next": true
+  },
+  "source87_and_native_target_bundle_unchanged": true,
+  "owned_pids_absent": true,
+  "old_cases_replayed_repaired_or_regraded": false,
+  "complete_contract": false,
+  "native_ui_verified_broad": false,
+  "full_offset_workflow_accepted": false,
+  "reference_executed": false,
+  "physics_accepted": false,
+  "full_garment_accepted": false,
+  "roadmap_accepted": false,
+  "observed_disk_writes": "NativeSave snapshots, own working project, autosave and recovery retained; no zero-background-writes claim"
+}
