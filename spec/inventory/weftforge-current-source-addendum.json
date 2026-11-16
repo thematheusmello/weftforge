@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "purpose": "Additive immutable-source review of the shared OffsetOutline work/cancellation control. Existing material-outline geometry, routes and command/API counts remain bounded. Historical949/205/56 and all eight original inventory/map/check files remain exact. Source control checks, closed native failures and a separate diagnostic provide no reference parity, full feature or roadmap acceptance.",
+  "purpose": "Additive immutable-source review of the PhotoCraft-inspired native workspace headings, Scene rows, Sewing disclosure and control drawing. Existing authoring, material-outline geometry and command/API scopes remain bounded. Historical 949/205/56 and all eight original inventory/map/check files remain exact. Static source mapping supplies no native authoring, reference parity, full feature or roadmap acceptance.",
   "historical_map_commit": "af79f596f247cc48e709b818bb70a30d1b716580",
   "historical_map_sha256": "9323eb803af6d07d6178fd6e808fd61f87e5da71e3b07ab4b279b3141b11c8ec",
   "historical_source_commit": "3eddef067c8a1f03f192c8e6822a8da2a94f9bf9",
-  "source_commit": "4f80d064a60cbdba1358df9074beb74b803e1ee8",
+  "source_commit": "160562d58e105b4b03dda5030d42e54daa34b91b",
   "source_pins": [
     {
       "commit": "af79f596f247cc48e709b818bb70a30d1b716580",
@@ -45,6 +45,10 @@
     {
       "commit": "4f80d064a60cbdba1358df9074beb74b803e1ee8",
       "scope": "Offset requests share one 16,777,216-unit counter through geometry certification, validation/subdivision, fallible ISC earcut triangulation, rest refinement, sewing, actual Cloth initialization and final measurements. Nested transactions retain that counter across child preparations and final mesh/Cloth validation. Controlled sorting, internal tasks and candidate predicates propagate refusal; cancellation is polled at least every 256 charged units. Source tests cover exact-limit/first-over-limit work, internal triangulation cancellation, later-piece/hole work, repeated preparations/transactions, independent concave/curved/holed geometry and actual Cloth measurements. These are source-test results; native latency and workflow acceptance require their own runs."
+    },
+    {
+      "commit": "160562d58e105b4b03dda5030d42e54daa34b91b",
+      "scope": "Integrated runtime after the UI-only cherry-pick and published offset-metadata merge. All 87 frozen source inputs are byte-identical to b7767bc94c89196f93b4ddbd1e06245f569936ff; main.rs SHA-256 is 6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd. The source adds section headings, original Scene item icons and selectable hierarchy rows, context/document-aware Sewing disclosure state and control colors. Its four headless regression definitions are explicitly anchored below. Separately retained headless results identify b7767bc94c89196f93b4ddbd1e06245f569936ff; this mapping task does not execute them or establish populated OS-window, native authoring, physics, reference or roadmap acceptance."
     }
   ],
   "historical_invariants": {
@@ -159,7 +163,7 @@
   "source_rechecks": [
     {
       "group_id": "project-new",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -174,7 +178,7 @@
         "mcp"
       ],
       "current": {
-        "candidate_behavior": "File > New Empty and the New Empty command-search row queue the same post-inspector replacement action. A clean replacement creates Editor::default at revision 0 with no file path, selection, history or derived mesh/cloth, cancels the old worker and retains session view/snap settings. Dirty accepted work, pending or invalid numeric input, unfinished construction and an active autosave cause a retained-state refusal. This native session action is distinct from CLI new/MCP project_create file creation and adds no Command variant. Unfinished internal-line creation/endpoint state also blocks clean New Empty; successful replacement clears those revision/owner/target-bound previews. An unfinished first cut anchor or modal review also blocks clean New Empty. Accepted tool/owner/history/open/recovery lifecycle changes discard stale cut drafts; failed IO and New refusal retain still-valid state. An open hole review also blocks clean New Empty; accepted replacement clears that transient owner/revision/epoch-bound state without publishing its candidate. The existing cut-review state also owns a transient default-off sew option; New Empty refusal and accepted lifecycle reset do not publish that clone-only candidate.",
+        "candidate_behavior": "File > New Empty and the New Empty command-search row queue the same post-inspector replacement action. A clean replacement creates Editor::default at revision 0 with no file path, selection, history or derived mesh/cloth, cancels the old worker and retains session view/snap settings. Dirty accepted work, pending or invalid numeric input, unfinished construction and an active autosave cause a retained-state refusal. This native session action is distinct from CLI new/MCP project_create file creation and adds no Command variant. Unfinished internal-line creation/endpoint state also blocks clean New Empty; successful replacement clears those revision/owner/target-bound previews. An unfinished first cut anchor or modal review also blocks clean New Empty. Accepted tool/owner/history/open/recovery lifecycle changes discard stale cut drafts; failed IO and New refusal retain still-valid state. An open hole review also blocks clean New Empty; accepted replacement clears that transient owner/revision/epoch-bound state without publishing its candidate. The existing cut-review state also owns a transient default-off sew option; New Empty refusal and accepted lifecycle reset do not publish that clone-only candidate. Successful New Empty resets the Sewing disclosure from the active tool and the accepted empty document. Failed Open and refused New Empty preserve its state alongside the accepted construction; the disclosure does not author or add history.",
         "missing_functionality": [
           "Reference New Project/New Garment initial-state, discard/confirmation, option and session semantics remain unknown. Read actual native qualification only from the registry/reports at the reported revision.",
           "New Empty deliberately refuses replacement until edits/gestures are applied or cancelled and saved; no discard option or new shortcut is supplied."
@@ -184,50 +188,56 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn new_empty_button(",
-          "line": 1239,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 1241,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn new_empty(",
-          "line": 1256,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 1258,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn new_empty_file_route_replaces_clean_document_and_retains_files_and_preferences",
-          "line": 12971,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 13478,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn new_empty_search_route_replaces_clean_document_and_retains_files_and_preferences",
-          "line": 12976,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 13483,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_unfinished_creation_blocks_clean_new_and_escape_abandons_without_history",
-          "line": 18788,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 19295,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_sew_review_resets_on_accepted_lifecycle_changes_and_survives_failed_io_and_new_refusal()",
-          "line": 17967,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 18474,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn discard_stale_hole(",
-          "line": 3501,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3541,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn sewing_section_defaults_follow_accepted_documents_and_preserve_failed_transitions",
+          "line": 7653,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "workspace-panels",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -243,7 +253,7 @@
         "ui_modal_tests"
       ],
       "current": {
-        "candidate_behavior": "The fixed native studio shell has File/Create 2D/Edit/View/Help menus, an icon tool rail, a context toolbar, document tab/revision, equal 2D Pattern and 3D Garment canvases, Properties with a Scene list, simulation transport and a status/message bar. The existing action/focus path protects numeric drafts while menus, tool choices and command search are used; authoring modals shield background input. Source layout and focus checks are implementation candidates only. The tool rail, Create 2D menu, search, Scene/Properties owner lists and precise endpoint modal now expose the original Internal line annotation route. Cut piece is exposed in the rail, Create 2D menu and command search; its context action opens an owner/revision-bound review modal with typed boundary selectors, raw decimal t fields and a retained/new piece summary. Scene rows display piece name and stable ID. Create 2D, command search and Properties expose Add hole…; Scene lists Hole #id under its owner. The numeric rectangular-hole modal previews both loops and net area, and Properties identifies hole curve/vertex IDs with distinct Remove hole and Delete owner piece actions.",
+        "candidate_behavior": "The fixed native studio shell has File/Create 2D/Edit/View/Help menus, an icon tool rail, a context toolbar, document tab/revision, equal 2D Pattern and 3D Garment canvases, Properties with a Scene list, simulation transport and a status/message bar. The existing action/focus path protects numeric drafts while menus, tool choices and command search are used; authoring modals shield background input. Source layout and focus checks are implementation candidates only. The tool rail, Create 2D menu, search, Scene/Properties owner lists and precise endpoint modal now expose the original Internal line annotation route. Cut piece is exposed in the rail, Create 2D menu and command search; its context action opens an owner/revision-bound review modal with typed boundary selectors, raw decimal t fields and a retained/new piece summary. Scene rows display piece name and stable ID. Create 2D, command search and Properties expose Add hole…; Scene lists Hole #id under its owner. The numeric rectangular-hole modal previews both loops and net area, and Properties identifies hole curve/vertex IDs with distinct Remove hole and Delete owner piece actions. Properties groups the same controls under Pattern, Arrangement, Fabric, Create pattern, Sewing and Simulation settings headings. Sewing is a disclosure around the existing legacy and ordered controls. Scene shows an empty-document hint, pattern rows and indented internal-line/hole rows with original role icons and stable labels. These changes retain the fixed panels and existing authoring routes.",
         "missing_functionality": [
           "Docking, arbitrary panel/tab visibility, independent windows, asset/material/timeline browsers and full context/accessibility contracts remain open. Source layout assertions do not qualify an actual native window."
         ]
@@ -252,68 +262,74 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn menu_bar(",
-          "line": 2188,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2192,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn tool_rail(",
-          "line": 2371,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2375,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn document_tab(",
-          "line": 2401,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2405,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn studio_workspace_keeps_creation_and_transport_visible",
-          "line": 7316,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 7453,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn studio_menus_and_tool_rail_preserve_numeric_drafts_text_and_caret",
-          "line": 7428,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 7935,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_window(",
-          "line": 4270,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4310,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn selected_internal_curve(",
-          "line": 4104,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4144,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_piece_window(",
-          "line": 3975,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4015,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn add_hole_button(",
-          "line": 3446,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3486,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_window(",
-          "line": 3515,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3555,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn workspace_sewing_properties_open_for_the_active_tool_without_authoring",
+          "line": 7567,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "workspace-layout",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -327,14 +343,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn studio_workspace_keeps_creation_and_transport_visible",
-          "line": 7316,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 7453,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "appearance-preferences",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -344,26 +360,32 @@
         "ui_rgb_buffer"
       ],
       "current": {
-        "candidate_behavior": "The native shell uses a fixed dark theme, original icon drawing, bundled licensed Inter/JetBrains Mono typography and distinct selection/status colors through studio_style. Material RGB editing remains an authoring field. No user palette/theme/typography preference interface is implemented."
+        "candidate_behavior": "The native shell uses a fixed dark theme, original icon drawing, bundled licensed Inter/JetBrains Mono typography and distinct selection/status colors through studio_style. Material RGB editing remains an authoring field. No user palette/theme/typography preference interface is implemented. Section headings use compact framed labels. Tool and Scene selection use the original blue accent, while hover/active/open text and icons receive the source-defined contrast treatment; these are fixed drawing choices rather than new appearance preferences."
       },
       "source_anchors": [
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn studio_style(",
-          "line": 6931,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 7043,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn tool_button(",
-          "line": 6232,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 6337,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn pane_heading(",
+          "line": 6261,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "help-resources",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -377,26 +399,26 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn menu_bar(",
-          "line": 2188,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2192,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Internal line: select an owner, then click start/end or enter precise endpoints.",
-          "line": 2281,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2285,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Add hole…: select an owner, then review a numeric rectangular opening.",
-          "line": 2283,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2287,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "selection",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -409,7 +431,7 @@
         "ui_field_state"
       ],
       "current": {
-        "candidate_behavior": "One selected owner piece and selected curve connect 2D, Scene/Properties and existing 3D piece picking. The selected curve can be an exterior boundary, owned hole boundary or straight annotation; selected_internal_curve/selected_hole/selected_boundary_curve helpers distinguish the roles, with selected_boundary_curve remaining exterior-only. Select draws/picks both open endpoints, and internal endpoint drags capture the selected annotation so coincident coordinates do not choose an unrelated earlier line. Cross-piece selection while Transform/Internal line or an internal selection has staged commands/incomplete numeric text refuses and retains text/caret/history through the house selection guard. Sewing/free-sewing/ordered groups and Transform handles continue to use exterior-only picking; hole edge/vertex Select picking and dragging use the owned construction loops. This is original one-piece policy, not observed reference selection semantics. Cut uses a separate owner-restricted picker: unsnapped projection within 12 logical pixels, refusal near any owner vertex, raw interior t and world clearances, and exactly one eligible owner edge. Other pieces and internal annotations are not cut-pick candidates. Precise selectors retain typed curve IDs instead of editing IDs through f64. Accepted Apply selects the new child by its stable ID, clears curve selection and returns to Select; Undo/Redo use the existing selection policy. Hole Scene/Properties selectors retain the stable owner/Hole/curve/vertex identities. Cut refuses a holed owner before boundary picking. No separate hole piece, multi-selection model or hole sewing route is introduced. Checked and unchecked cut review both select the appended child, clear curve selection and return to Select only after one successful shared command; the checkbox supplies no picker or persistent selection model.",
+        "candidate_behavior": "One selected owner piece and selected curve connect 2D, Scene/Properties and existing 3D piece picking. The selected curve can be an exterior boundary, owned hole boundary or straight annotation; selected_internal_curve/selected_hole/selected_boundary_curve helpers distinguish the roles, with selected_boundary_curve remaining exterior-only. Select draws/picks both open endpoints, and internal endpoint drags capture the selected annotation so coincident coordinates do not choose an unrelated earlier line. Cross-piece selection while Transform/Internal line or an internal selection has staged commands/incomplete numeric text refuses and retains text/caret/history through the house selection guard. Sewing/free-sewing/ordered groups and Transform handles continue to use exterior-only picking; hole edge/vertex Select picking and dragging use the owned construction loops. This is original one-piece policy, not observed reference selection semantics. Cut uses a separate owner-restricted picker: unsnapped projection within 12 logical pixels, refusal near any owner vertex, raw interior t and world clearances, and exactly one eligible owner edge. Other pieces and internal annotations are not cut-pick candidates. Precise selectors retain typed curve IDs instead of editing IDs through f64. Accepted Apply selects the new child by its stable ID, clears curve selection and returns to Select; Undo/Redo use the existing selection policy. Hole Scene/Properties selectors retain the stable owner/Hole/curve/vertex identities. Cut refuses a holed owner before boundary picking. No separate hole piece, multi-selection model or hole sewing route is introduced. Checked and unchecked cut review both select the appended child, clear curve selection and return to Select only after one successful shared command; the checkbox supplies no picker or persistent selection model. Styled Scene buttons retain the existing owner and selected-curve handlers and numeric-input guards. Pattern, internal-line and hole rows expose real construction identities; selecting a child highlights its owner and child, and clicking an owner follows the existing curve-retention policy. The row icons add no object type or authoring command.",
         "missing_functionality": [
           "Multi-object/subobject selection, select-all/invert/sewn traversal, modifier rules and 3D manipulation gizmos remain open."
         ]
@@ -418,74 +440,86 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn select(",
-          "line": 1326,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 1329,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_cross_piece_refusal_retains_staged_or_invalid_raw_text_caret_and_redo",
-          "line": 16266,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 16773,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_scene_row_selection_preserves_staged_and_raw_edits_through_real_ui_actions",
-          "line": 16324,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 16831,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn select_curve(",
-          "line": 1363,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 1366,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn selected_boundary_curve(",
-          "line": 4111,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4151,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_review_coincident_endpoints_drag_only_the_selected_later_annotation",
-          "line": 19173,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 19680,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_cross_piece_selection_and_incomplete_source_text_are_retained",
-          "line": 18688,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 19195,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_piece_pick(",
-          "line": 6793,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 6905,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_two_picks_review_exact_apply_history_and_reopened_child_edit_are_independent()",
-          "line": 17466,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 17973,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn selected_hole(",
-          "line": 3889,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3929,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_edges_pick_and_drag_as_boundaries_but_never_enter_sewing_or_cut()",
-          "line": 20691,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 21227,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn scene_row(",
+          "line": 6279,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn scene_hierarchy_rows_select_real_pattern_annotations_and_holes",
+          "line": 7839,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "ellipse",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -519,8 +553,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn add_ellipse(",
-          "line": 1124,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 1126,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/ellipse.rs",
@@ -531,14 +565,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn ellipse_accessible_button_and_search_commit_once_and_preserve_failed_drafts",
-          "line": 9460,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 9967,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "pattern-transform-tool",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -578,14 +612,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_window(",
-          "line": 4436,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4476,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn apply_transform(",
-          "line": 4415,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4455,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/pattern_transform.rs",
@@ -596,8 +630,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_pointer_translation_and_rotation_capture_original_geometry_and_snap_once",
-          "line": 15769,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 16276,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/src/document.rs",
@@ -627,7 +661,7 @@
     },
     {
       "group_id": "pattern-rotate",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -660,8 +694,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_window(",
-          "line": 4436,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4476,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/internal_lines.rs",
@@ -679,7 +713,7 @@
     },
     {
       "group_id": "grid-snap",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -701,43 +735,43 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "enum PositionSnap {",
           "line": 48,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn position_snap_control(",
-          "line": 3131,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3171,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn position_snapping_pointer_geometry_bypass_and_history_use_one_captured_rule",
-          "line": 7865,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 8372,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn position_snapping_inline_choices_preserve_unfinished_numeric_text_and_caret",
-          "line": 8200,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 8707,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_search_rail_and_snapped_two_click_creation_are_atomic",
-          "line": 18144,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 18651,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_picker_restricts_owner_projects_unsnapped_and_refuses_vertices_extensions_and_multiple_hits()",
-          "line": 17259,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 17766,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "pattern-smart-snap",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -753,13 +787,13 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "enum PositionSnap {",
           "line": 48,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "pattern-view-extents",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -780,20 +814,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn frame_patterns_button(",
-          "line": 3161,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3201,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn frame_patterns(",
-          "line": 3176,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3216,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "pattern-snapshot-print",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -830,14 +864,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn choose_import(",
-          "line": 1717,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 1721,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn pattern_import_window(",
-          "line": 1761,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 1765,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/src/persistence/svg.rs",
@@ -854,14 +888,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn chooser_modal_import_commits_pending_edits_and_all_pieces_as_one_undo",
-          "line": 13832,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 14339,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Compound pattern boundaries include holes; hole-aware SVG reimport is not yet supported. Internal annotations stay in the native project.",
-          "line": 1206,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 1208,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/src/persistence.rs",
@@ -939,7 +973,7 @@
     },
     {
       "group_id": "automation-scripts",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -1081,7 +1115,7 @@
     },
     {
       "group_id": "line-measure-display",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -1112,7 +1146,7 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_length_heading(",
           "line": 838,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge-cli/src/main.rs",
@@ -1129,8 +1163,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_lengths_are_formatted_cached_and_ignore_drafts_preview_and_simulation",
-          "line": 19307,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 19814,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/src/document.rs",
@@ -1148,13 +1182,13 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "hole_endpoints: selected_curve",
           "line": 696,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "selected-line-lengths",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -1185,7 +1219,7 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_length_heading(",
           "line": 838,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge-cli/src/main.rs",
@@ -1202,8 +1236,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_lengths_are_formatted_cached_and_ignore_drafts_preview_and_simulation",
-          "line": 19307,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 19814,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/src/document.rs",
@@ -1221,13 +1255,13 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "hole_endpoints: selected_curve",
           "line": 696,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "sewing-length-check",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -1258,7 +1292,7 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_length_heading(",
           "line": 838,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge-cli/src/main.rs",
@@ -1275,8 +1309,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn applied_lengths_are_formatted_cached_and_ignore_drafts_preview_and_simulation",
-          "line": 19307,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 19814,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/src/document.rs",
@@ -1294,19 +1328,19 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "hole_endpoints: selected_curve",
           "line": 696,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "let lengths=project.seam_lengths(seam.id)",
-          "line": 4031,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4071,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "free-chain-sewing",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -1357,20 +1391,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_window(",
-          "line": 3271,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3311,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_failure_and_cancel_retain_raw_text_carets_redo_and_accepted_state",
-          "line": 14778,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 15285,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_new_empty_refuses_pending_a_and_b_without_dropping_or_committing_them",
-          "line": 14961,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 15468,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/sewing_groups.rs",
@@ -1400,7 +1434,7 @@
     },
     {
       "group_id": "free-sewing-length-preview",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -1447,20 +1481,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_window(",
-          "line": 3271,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3311,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_failure_and_cancel_retain_raw_text_carets_redo_and_accepted_state",
-          "line": 14778,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 15285,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_new_empty_refuses_pending_a_and_b_without_dropping_or_committing_them",
-          "line": 14961,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 15468,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/sewing_groups.rs",
@@ -1490,7 +1524,7 @@
     },
     {
       "group_id": "undo-redo",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -1527,50 +1561,50 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn apply_inspector_action(",
-          "line": 1080,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 1082,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_new_empty_refuses_pending_a_and_b_without_dropping_or_committing_them",
-          "line": 14961,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 15468,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn apply_internal_line(",
-          "line": 4214,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4254,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_review_compound_endpoints_and_staged_grain_commit_one_revision_and_undo",
-          "line": 18912,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 19419,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_review_accepted_drag_commits_source_boundary_control_and_endpoint_once",
-          "line": 19149,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 19656,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_opening_return_without_draft_only_opens_review()",
-          "line": 17372,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 17879,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_opening_return_after_first_anchor_only_opens_review()",
-          "line": 17377,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 17884,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_failed_modal_input_retains_caret_and_shields_background_until_cancel_escape_or_backdrop()",
-          "line": 17665,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 18172,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/cut_piece.rs",
@@ -1587,14 +1621,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_menu_search_inspector_opening_return_reviews_then_one_later_apply_commits()",
-          "line": 20451,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 20987,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_stale_sources_and_history_load_reset_lifecycles_cannot_publish_preview()",
-          "line": 20745,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 21281,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/cut_piece.rs",
@@ -1605,20 +1639,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_sew_checkbox_keyboard_toggles_do_not_apply()",
-          "line": 17172,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 17679,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_sew_apply_history_save_reopen_and_seam_removal_keep_both_pieces()",
-          "line": 17203,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 17710,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "simulate",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -1644,20 +1678,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn simulation_bar(",
-          "line": 2456,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2467,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn task_details(",
-          "line": 2546,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2557,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn task_progress_correlates_real_workers_and_retains_unaccepted_snapshots",
-          "line": 11545,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 12052,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-sim/src/contact.rs",
@@ -1729,7 +1763,7 @@
     },
     {
       "group_id": "workspace-statistics",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -1753,14 +1787,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn status_bar(",
-          "line": 2416,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2427,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn task_details(",
-          "line": 2546,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2557,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-sim/src/contact.rs",
@@ -1771,14 +1805,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Internal annotations: {} retained, {} moved.",
-          "line": 4077,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4117,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "fit-maps",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -1800,8 +1834,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "if let Some(peak)=diagnostics.peak_strain",
-          "line": 3030,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3070,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "spec/features/SIM-005-strain-attribution.md",
@@ -1813,7 +1847,7 @@
     },
     {
       "group_id": "pattern-name-property",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -1823,14 +1857,14 @@
         "ui_properties"
       ],
       "current": {
-        "candidate_behavior": "Piece names remain authored native data. Creation now accepts names through AddPolygon/AddRectangle/AddEllipse and bounded SVG/DXF imports; imported names follow their explicit profiles. The native Pattern name field configures creation and is not a selected-piece rename command. Internal annotations have stable curve IDs and owner labels, with no new authored line-name or rename field."
+        "candidate_behavior": "Piece names remain authored native data. Creation now accepts names through AddPolygon/AddRectangle/AddEllipse and bounded SVG/DXF imports; imported names follow their explicit profiles. The native Pattern name field configures creation and is not a selected-piece rename command. Internal annotations have stable curve IDs and owner labels, with no new authored line-name or rename field. The Create pattern heading retains the same name field and places Add rectangle and Add ellipse beside each other; it adds no constructor or naming policy."
       },
       "source_anchors": [
         {
           "path": "apps/weftforge/src/main.rs",
-          "anchor": "ui.strong(\"Create pattern\")",
-          "line": 2906,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "anchor": "pane_heading(ui,\"Create pattern\")",
+          "line": 2919,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/src/document.rs",
@@ -1842,7 +1876,7 @@
     },
     {
       "group_id": "unit-display-preferences",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -1861,37 +1895,37 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn length_mm(",
           "line": 810,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_window(",
-          "line": 3271,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3311,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_window(",
-          "line": 4436,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4476,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_window(",
-          "line": 4270,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4310,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Dimensionless decimal t; position snapping does not change these boundary addresses.",
-          "line": 4010,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4050,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "shortcut-preferences",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -1908,38 +1942,38 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "egui::Window::new(\"Command search\")",
-          "line": 6087,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 6127,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "let global_shortcuts = !authoring_modal",
-          "line": 5847,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 5887,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "if self.tool == Tool::Select",
-          "line": 5247,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 5287,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn selected_internal_curve(",
-          "line": 4104,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4144,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn open_cut_piece(",
-          "line": 3931,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3971,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "internal-primitives",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -2006,14 +2040,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_window(",
-          "line": 4270,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4310,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_search_rail_and_snapped_two_click_creation_are_atomic",
-          "line": 18144,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 18651,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/internal_lines.rs",
@@ -2085,19 +2119,19 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "struct HoleDraft {",
           "line": 446,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn open_hole(",
-          "line": 3455,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3495,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_window(",
-          "line": 3515,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3555,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "spec/features/PAT-006-straight-hole.md",
@@ -2109,7 +2143,7 @@
     },
     {
       "group_id": "project-load-save",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality"
@@ -2211,14 +2245,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_sew_apply_history_save_reopen_and_seam_removal_keep_both_pieces()",
-          "line": 17203,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 17710,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "delete-selection",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "shared_commands"
@@ -2252,14 +2286,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "\"Delete owner piece\"",
-          "line": 2897,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2910,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_picking_delete_and_boundary_tools_keep_roles_separate",
-          "line": 18554,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 19061,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/cut_piece.rs",
@@ -2276,14 +2310,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "let response=ui.button(\"Remove hole\");",
-          "line": 2831,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2842,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "point-pattern-edit",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "shared_commands"
@@ -2308,25 +2342,25 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "struct InternalLineDraft {",
           "line": 410,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_edit(",
-          "line": 4118,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4158,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn apply_internal_line(",
-          "line": 4214,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4254,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_review_rejected_drag_retains_boundary_draft_raw_caret_redo_and_outputs",
-          "line": 19154,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 19661,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/cut_piece.rs",
@@ -2338,13 +2372,13 @@
           "path": "apps/weftforge/src/main.rs",
           "anchor": "if let (Some(curve), Some(endpoints)) = (original_curve, self.hole_endpoints)",
           "line": 748,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_corner_numeric_edit_split_join_and_removal_keep_stable_identity_and_one_history_entry()",
-          "line": 20633,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 21169,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/holes.rs",
@@ -2356,7 +2390,7 @@
     },
     {
       "group_id": "curve-tools",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -2380,8 +2414,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "if internal {",
-          "line": 2805,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2816,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/internal_lines.rs",
@@ -2405,7 +2439,7 @@
     },
     {
       "group_id": "split-boundary",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -2469,7 +2503,7 @@
     },
     {
       "group_id": "resolution",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -2543,7 +2577,7 @@
     },
     {
       "group_id": "segment-sewing",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -2568,8 +2602,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn selected_boundary_curve(",
-          "line": 4111,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4151,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/internal_lines.rs",
@@ -2599,7 +2633,7 @@
     },
     {
       "group_id": "sewing-editor",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -2612,7 +2646,7 @@
         "mcp_schema"
       ],
       "current": {
-        "candidate_behavior": "Legacy seam ID/name/curve/parameter rows retain Reverse/Remove. New ordered group rows identify every span and direction, report current revision-derived arc lengths/mismatch/paired portions, and expose Edit group, Reverse B and Remove group. The structured modal edits name, ordered curve-ID/t intervals and explicit nonlinear easing knots; accessible boundary-add controls and row comboboxes support precise paths. Shared commands combine pending inspector edits and one completed action into one transaction; rejection retains draft/input/history and Cancel commits nothing. Full canvas seam picking, general legacy interval/name/property editing, multi-selection and reference-equivalent preflight remain absent. Current ownership validation requires all seam/group targets to be exterior boundaries. Native sewing controls and pick paths retain boundary-only roles even when internal annotations are selectable/measurable. Internal annotations do not become sewable, folded or physical through existing seam/group commands. CutPiece refuses if any legacy seam or ordered group references any target-owner boundary, including intervals remote from the chord. Unaffected other-piece relationships remain authored and unchanged. No generated seam, cut-and-sew or target sewing/attachment remapping is supplied. A clear interior hole preserves existing exterior relationship IDs/intervals/maps/orientation/lengths; every hole-curve creation/update/load/physical-length sewing route still refuses. Native sew pickers/selectors remain exterior-only even though hole boundary samples are present in the mesh. A generated Cut seam #id uses this same ordinary inspection/removal route. RemoveSeam deletes only its constraint, leaving both editable pieces and their independent cut boundaries; its saved native workflow remains unobserved at 947."
+        "candidate_behavior": "Legacy seam ID/name/curve/parameter rows retain Reverse/Remove. New ordered group rows identify every span and direction, report current revision-derived arc lengths/mismatch/paired portions, and expose Edit group, Reverse B and Remove group. The structured modal edits name, ordered curve-ID/t intervals and explicit nonlinear easing knots; accessible boundary-add controls and row comboboxes support precise paths. Shared commands combine pending inspector edits and one completed action into one transaction; rejection retains draft/input/history and Cancel commits nothing. Full canvas seam picking, general legacy interval/name/property editing, multi-selection and reference-equivalent preflight remain absent. Current ownership validation requires all seam/group targets to be exterior boundaries. Native sewing controls and pick paths retain boundary-only roles even when internal annotations are selectable/measurable. Internal annotations do not become sewable, folded or physical through existing seam/group commands. CutPiece refuses if any legacy seam or ordered group references any target-owner boundary, including intervals remote from the chord. Unaffected other-piece relationships remain authored and unchanged. No generated seam, cut-and-sew or target sewing/attachment remapping is supplied. A clear interior hole preserves existing exterior relationship IDs/intervals/maps/orientation/lengths; every hole-curve creation/update/load/physical-length sewing route still refuses. Native sew pickers/selectors remain exterior-only even though hole boundary samples are present in the mesh. A generated Cut seam #id uses this same ordinary inspection/removal route. RemoveSeam deletes only its constraint, leaving both editable pieces and their independent cut boundaries; its saved native workflow remains unobserved at 947. Legacy and ordered controls are inside the Sewing disclosure. Its default after an accepted new/open/recovery transition follows the active sewing tool or stored seams/groups; switching into Sew edges, Free sewing or M:N sewing opens it. Manual collapse persists until a relevant tool/document transition. Pointer toggling retains pending numeric text/caret and accepted construction/history. Failed document transitions retain the disclosure state; the disclosure itself executes no authoring command."
       },
       "source_anchors": [
         {
@@ -2624,8 +2658,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn selected_boundary_curve(",
-          "line": 4111,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4151,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/internal_lines.rs",
@@ -2648,14 +2682,26 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Sew cut edges",
-          "line": 4011,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4051,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "egui::CollapsingHeader::new(egui::RichText::new(\"Sewing\").small().strong())",
+          "line": 2952,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
+        },
+        {
+          "path": "apps/weftforge/src/main.rs",
+          "anchor": "fn sewing_section_pointer_toggle_preserves_numeric_draft_text_and_caret",
+          "line": 7728,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "reverse-sewing",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -2680,8 +2726,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn selected_boundary_curve(",
-          "line": 4111,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4151,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/internal_lines.rs",
@@ -2705,7 +2751,7 @@
     },
     {
       "group_id": "internal-line-display",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior"
       ],
@@ -2723,26 +2769,26 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "for id in &piece.internal_curves {",
-          "line": 4821,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4861,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Internal annotations · owned by this pattern",
-          "line": 2776,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2788,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_picking_delete_and_boundary_tools_keep_roles_separate",
-          "line": 18554,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 19061,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
     {
       "group_id": "cut-and-sew",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -2815,20 +2861,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_piece_pick(",
-          "line": 6793,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 6905,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_piece_window(",
-          "line": 3975,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4015,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_two_picks_review_exact_apply_history_and_reopened_child_edit_are_independent()",
-          "line": 17466,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 17973,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/cut_piece.rs",
@@ -2851,8 +2897,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Cut piece does not yet support patterns with holes.",
-          "line": 6803,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 6915,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/src/document.rs",
@@ -2875,8 +2921,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Sew cut edges",
-          "line": 4011,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4051,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "crates/weftforge-core/tests/cut_piece.rs",
@@ -2906,7 +2952,7 @@
     },
     {
       "group_id": "offsets",
-      "reason": "Static source mapping at 4f80d06 after shared work/cancellation control. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. No product/native/reference workflow is executed here.",
+      "reason": "Static source mapping at 160562d after the UI-only workspace polish and published metadata merge. Rehash literal anchors and first-match lines, preserving prior scopes and historical native failures/results. This map-only update executes no source tests, product workflow, native case or reference comparison.",
       "changed_fields": [
         "candidate_behavior",
         "missing_functionality",
@@ -3036,20 +3082,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn open_outline_offset(",
-          "line": 3618,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3658,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn current_outline_offset_job(",
-          "line": 3708,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3748,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn outline_offset_window(",
-          "line": 3802,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3842,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "spec/features/PAT-009-material-outline-offset.md",
@@ -3170,8 +3216,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn menu_bar(",
-          "line": 2188,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2192,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3198,14 +3244,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "egui::Window::new(\"Command search\")",
-          "line": 6087,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 6127,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn open_outline_offset(",
-          "line": 3618,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3658,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3229,8 +3275,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn menu_bar(",
-          "line": 2188,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2192,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3261,8 +3307,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn tool_rail(",
-          "line": 2371,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2375,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3294,8 +3340,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn toolbar(",
-          "line": 2320,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2324,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3319,8 +3365,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn status_bar(",
-          "line": 2416,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2427,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3347,7 +3393,10 @@
         "Add hole…",
         "Remove hole distinct from Delete owner piece",
         "Hole Split / Join; cubic controls unavailable",
-        "Offset outline… opens selected-owner whole-material review; no pending property autocommit"
+        "Offset outline… opens selected-owner whole-material review; no pending property autocommit",
+        "Pattern / Arrangement / Fabric section headings",
+        "Scene pattern, internal-line and hole icons with selectable owner/child rows",
+        "Empty Scene hint: Create a pattern in 2D to see it here."
       ],
       "group_ids": [
         "selection",
@@ -3367,14 +3416,14 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn inspector(",
-          "line": 2607,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2618,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn open_outline_offset(",
-          "line": 3618,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3658,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3388,7 +3437,8 @@
         "Add ellipse",
         "Add polygon point",
         "Close pattern",
-        "Internal line… (selected owner)"
+        "Internal line… (selected owner)",
+        "Create pattern section heading; adjacent Add rectangle / Add ellipse buttons"
       ],
       "group_ids": [
         "polygon",
@@ -3400,9 +3450,9 @@
       "source_anchors": [
         {
           "path": "apps/weftforge/src/main.rs",
-          "anchor": "ui.strong(\"Create pattern\")",
-          "line": 2906,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "anchor": "pane_heading(ui,\"Create pattern\")",
+          "line": 2919,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3415,7 +3465,9 @@
         "Applied lengths and signed mismatch",
         "Ordered A/B span controls",
         "Confirm A / Create group / Delete last / Cancel",
-        "Edit group / Reverse B / Remove group"
+        "Edit group / Reverse B / Remove group",
+        "Sewing disclosure; document/tool-aware default with manual collapse",
+        "Ordered sewing groups section heading"
       ],
       "group_ids": [
         "segment-sewing",
@@ -3427,9 +3479,9 @@
       "source_anchors": [
         {
           "path": "apps/weftforge/src/main.rs",
-          "anchor": "ui.strong(\"Ordered sewing groups\")",
-          "line": 2959,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "anchor": "pane_heading(ui,\"Ordered sewing groups\")",
+          "line": 2992,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3449,8 +3501,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn rectangle_window(",
-          "line": 4570,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4610,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3472,8 +3524,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn transform_window(",
-          "line": 4436,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4476,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3497,8 +3549,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn free_sewing_window(",
-          "line": 3271,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3311,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3521,8 +3573,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn sewing_group_window(",
-          "line": 5601,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 5641,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3545,8 +3597,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn pattern_import_window(",
-          "line": 1761,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 1765,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3568,8 +3620,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn recovery_window(",
-          "line": 1994,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 1998,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3604,8 +3656,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn patterns(",
-          "line": 4633,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4673,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3631,8 +3683,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn simulation_bar(",
-          "line": 2456,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2467,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3642,7 +3694,8 @@
         "Mesh edge length m",
         "Iterations / substeps",
         "Assembly/strain/seam/contact/intersection diagnostics",
-        "Peak pattern and material axis"
+        "Peak pattern and material axis",
+        "Simulation settings section heading"
       ],
       "group_ids": [
         "resolution",
@@ -3654,8 +3707,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "ui.make_persistent_id(\"mesh-settings\")",
-          "line": 3021,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3060,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3676,8 +3729,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "egui::menu::MenuButton::new(\"Create 2D\")",
-          "line": 2230,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 2234,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3702,8 +3755,8 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn internal_line_window(",
-          "line": 4270,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4310,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3735,32 +3788,32 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_piece_window(",
-          "line": 3975,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4015,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "struct CutDraft {",
           "line": 429,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn open_cut_piece(",
-          "line": 3931,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3971,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "Sew cut edges",
-          "line": 4011,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 4051,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn cut_sew_option_refreshes_only_preview_and_keeps_raw_parameters_and_caret()",
-          "line": 17069,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 17576,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3786,20 +3839,20 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn open_hole(",
-          "line": 3455,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3495,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_window(",
-          "line": 3515,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3555,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn hole_invalid_text_outside_apply_and_all_cancel_routes_preserve_caret_editor_and_outputs()",
-          "line": 20505,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 21041,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     },
@@ -3823,26 +3876,26 @@
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn outline_offset_window(",
-          "line": 3802,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 3842,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn outline_offset_routes_preview_cancel_and_apply_use_real_cloth_and_one_history_action()",
-          "line": 19880,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 20416,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn outline_offset_invalid_width_keeps_raw_text_caret_and_blocks_modal_background_actions()",
-          "line": 19977,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 20513,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         },
         {
           "path": "apps/weftforge/src/main.rs",
           "anchor": "fn outline_offset_cancellation_stale_revision_selection_and_replaced_requests_cannot_publish()",
-          "line": 20138,
-          "sha256": "f1945b09560d986f08e45cb43a33f2530d3260beebb06710def4ed0dd949c588"
+          "line": 20674,
+          "sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd"
         }
       ]
     }
@@ -3969,7 +4022,7 @@
     "Current implementation/reference/verification/freshness and retained failures must be joined from parity/features.yaml and reports at the revision reported. No such status/evidence fields are copied here.",
     "No new reference/catalog IDs or aliases are invented for original WeftForge controls. FILE-005 imports use an existing engineering bucket without implying that a reference import menu was observed.",
     "Owned straight annotations, bounded unsewn CutPiece and sewn CutAndSew exterior cuts, and one simple straight hole per simple straight owner are source candidates. Multiple/curved/nested holes, closed-shape conversion/fill-back, hole sewing, slits, cut-through-hole partition, internal-path/vertex/curved/simultaneous multiple cuts, target sewing/attachment remapping, linked cuts, folds and internal sewing remain missing. An annotation is not a physical boundary, stitch or cut path. Full Cut & Sew/reference contracts and all roadmap gates remain incomplete.",
-    "This update performs static immutable-source/map and ordinary registry/renderer checks only. Source test definitions are anchors, not a statement that this mapping task executed source/product/native/reference workflows. Separately retained CUT-R1/R003 and qualified CUT-R2/R2-001 results are attributable only through parity/reports/WF-20261116-STRAIGHT-CUT-001.json and its tracked artifacts, with failed attempts and all qualifications preserved. Full native/reference cut, transform pointer and physical-length qualification remain independent work. Those bounded published cut results remain bound to 19b1 and stale at changed 947 source. Separately attributable reports retain historical a021 H1 creation/edit/save, failed H1-001/H2-001, sealed5898 S1/S2 Sew and current947 H3 compatibility reopen/export only. Their source identities, status/qualification and exact artifacts must be joined from WF-20261116-STRAIGHT-HOLE-001, WF-20261116-CUT-AND-SEW-001 and WF-20261116-HOLE-EXPORT-001; no current947 empty creation or Sew transfer follows. At current 4f80d06 all prior native source reports are stale, including947 H3 after root's two-field freshness transition. Their accepted results/identities/artifact maps remain historical and exact; no offset or current native authority transfers.",
+    "This map-only update performs static immutable-source/map checks; broader registry/renderer checks and evidence selection belong to a later checkpoint. Source test definitions are anchors, not a statement that this mapping task executed source/product/native/reference workflows. Separately retained CUT-R1/R003 and qualified CUT-R2/R2-001 results are attributable only through parity/reports/WF-20261116-STRAIGHT-CUT-001.json and its tracked artifacts, with failed attempts and all qualifications preserved. Full native/reference cut, transform pointer and physical-length qualification remain independent work. Those bounded published cut results remain bound to 19b1 and stale at changed 947 source. Separately attributable reports retain historical a021 H1 creation/edit/save, failed H1-001/H2-001, sealed5898 S1/S2 Sew and current947 H3 compatibility reopen/export only. Their source identities, status/qualification and exact artifacts must be joined from WF-20261116-STRAIGHT-HOLE-001, WF-20261116-CUT-AND-SEW-001 and WF-20261116-HOLE-EXPORT-001; no current947 empty creation or Sew transfer follows. At the preceding 4f80 source-map checkpoint, the earlier native source reports were stale, including947 H3 after root's two-field freshness transition. Their accepted results/identities/artifact maps remain historical and exact; no offset or current native authority transfers.",
     "Unlisted groups retain only the historical source review. Do not silently describe the complete 205-group map as current at this newer pin.",
     "The preceding d8cef addendum remains byte-exact at89e6d53 with its full prior chain. Re-pinned source hashes/lines establish source inspection only. The prior source-only OffsetOutline report is archived exactly and changes only freshness/reason. All other42 prior top-level reports and all prior result/run/identity/artifact maps remain exact.",
     "General Save commits an ordinary inspector draft before chooser/IO; this source increment does not establish global Save-cancel/failure draft atomicity. Accepted primary/recovery staging keeps its existing ordering and may advance recovery before failed primary replacement.",
@@ -3980,13 +4033,14 @@
     "The shared request counter and internal cooperative triangulation control have source-test coverage. A work unit is a documented task/candidate, not a wall-clock bound. Hard native cancellation latency, complete first-increment acceptance and full PAT-009 remain unverified.",
     "Actual native curved/concave/cancellation cases and all required first-phase SA-001–010/013–015 plus reviewed additions remain unexecuted. Source tests, preview labels and analytic area*density do not establish native particle mass, reference semantics, full feature or roadmap acceptance.",
     "Full persistent seam allowances, guide/material/construction roles, per-edge/interval widths, holes/internal/open offsets/endpoint extension, multiple offsets, source-to-internal retention, relationship remapping and manufacturing/printing/reference workflows remain open. Conservative refusal does not complete those requirements.",
-    "Closed OFFSET-R1-001 stopped at controller binding; OFFSET-R1-002 stopped at step1 after unexplained revision0-to2/dirty drift and New Empty refusal, before authoring. The separate instrumented NATIVE-IDLE-DIAG-001 did not reproduce that behavior and established no cause or fix. No old case was replayed/regraded; all geometry, apply/cancel/history/reopen/output/native/reference acceptance remains unproved."
+    "Closed OFFSET-R1-001 stopped at controller binding; OFFSET-R1-002 stopped at step1 after unexplained revision0-to2/dirty drift and New Empty refusal, before authoring. The separate instrumented NATIVE-IDLE-DIAG-001 did not reproduce that behavior and established no cause or fix. No old case was replayed/regraded; all geometry, apply/cancel/history/reopen/output/native/reference acceptance remains unproved.",
+    "The preceding 4f80 JSON/Markdown remain exact at a433806 with 39 rows/23 surfaces/23 contracts/363 anchors and their full prior chain. This UI-only overlay changes source descriptions, literal presentation anchors and first-match locations. It supplies no native populated-workspace or authoring acceptance, no diagnosed controller/product cause, no complete accessibility/high-DPI contract and no feature/reference/roadmap completion. Reports/features/evidence remain separate authority."
   ],
   "source_update_origin": {
-    "previous_addendum_commit": "89e6d53b9ab78b8c6642ebe2eae07e9f56f42da4",
-    "previous_addendum_sha256": "1569d309a61a2bc0896fc65b40cc07d8df20b9a4182c5bcc745f6e2be9fc38b8",
-    "previous_markdown_sha256": "e89bd88b42560b328dae1b7d274631cf49eb4d613c0499b1ace44dda86ef7d71",
-    "previous_source_commit": "d8cef845630e381c4f3339ee867ebc66ed17e443",
-    "preservation_rule": "Preserve exact d8cef addendum at89e6d53:39 rechecks/23 surfaces/23 contracts/349 anchors and34 variants/33 schemas/nine tools, including its full earlier source chain. Keep all949 historical catalog records/205 packets/56 landmark identities and all eight original inventory/map/check files exact. Re-pin literal anchors/hashes/first-match lines and append control/test anchors only. Only the old source-only OffsetOutline report changes freshness/reason after its exact archive; all other42 prior report bytes and all old result/run/identity/artifact fields stay exact."
+    "previous_addendum_commit": "a433806a199c6fb101e463e46056a1a45490f9e5",
+    "previous_addendum_sha256": "9f2d5f73f1ee59f631dc13509f5aa0a374673894a4bde3902e8611d2fa7a3b88",
+    "previous_markdown_sha256": "1514ec940a7d350a9b6d4c12923efd58ffe5d09e981f01f078b53467732faf94",
+    "previous_source_commit": "4f80d064a60cbdba1358df9074beb74b803e1ee8",
+    "preservation_rule": "Preserve the exact preceding 4f80 addendum at a433806: 39 rechecks/23 surfaces/23 contracts/363 anchors and34 variants/33 schemas/nine tools, including its full earlier source chain. Keep all 949 historical catalog records/205 packets/56 landmark identities and all eight original inventory/map/check files exact. Re-pin literal main.rs anchors/hashes/first-match lines; explicitly replace the two obsolete strong-label literals with pane_heading labels and append the four existing UI regression definitions plus actual presentation/disclosure helper anchors. Existing group/surface identities and missing-feature scopes remain. Reports, feature authority, evidence selection, STATUS and broader publication checks are outside this map-only change."
   }
 }
