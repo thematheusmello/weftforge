@@ -116,19 +116,28 @@ also discuss its effect on backward-Euler force balance. The local update here
 is derived directly from this crate's existing material energy; it is not a
 calibrated implementation or a convergence claim for either paper's full method.
 
-For each triangle, p stores its three accumulated positional corrections, in
-metres. Removing its previous correction from current positions gives local
-anchor z=x-p. With other stages held fixed during this projection, the local
-incremental objective is:
+Adjacent material triangles are partitioned into two-face groups, with singleton
+leftovers. Shared edges are considered by increasing rest material-UV length;
+vertex IDs break equal-length ties. A face is paired only while both faces are
+unassigned. Groups are visited by their first triangle index. Every triangle's
+unchanged energy belongs to exactly one group; bending, sewing, contact and pins
+retain their previous algorithms and stage order. This deterministic pairing is
+a coupling heuristic, not a mesh-independent convergence guarantee.
+
+For each group, p stores its accumulated actual positional correction, in metres,
+for its three or four union nodes. Removing its previous correction from current
+positions gives local anchor z=x-p. With other groups/stages held fixed during
+this projection, the local incremental objective is:
 
 ```text
-Phi(q) = (q-z)^T M (q-z)/(2*h²) + sum_a(k_a*C_a(q)²)/2
+Phi(q) = (q-z)^T M (q-z)/(2*h²) + sum_triangles_in_group sum_a(k_a*C_a(q)²)/2
 ```
 
-M contains the incident particle masses; pinned coordinates are fixed. Let J
-contain the three current constraint gradients, W their inverse masses and
-k the existing area-scaled warp/weft/shear coefficients. One Gauss–Newton step
-is reduced by the Woodbury identity to a three-by-three system:
+M contains each union node's physical lumped mass once; pinned coordinates are
+fixed. Let J contain the three singleton or six paired constraint gradients,
+embedded in those same union-node coordinates, W their inverse masses and k the
+existing per-triangle area-scaled warp/weft/shear coefficients. One Gauss–Newton
+step is reduced by the Woodbury identity to a three- or six-row system:
 
 ```text
 A = J*W*J^T + diag(1/(k_a*h²))
@@ -138,7 +147,7 @@ d = -p + W*J^T*eta
 
 Eta is a temporary linear-solve unknown, not a retained material multiplier.
 The system uses a diagonally scaled Cholesky factorization. Each declared outer
-iteration performs one such coupled material step per triangle. An Armijo energy
+iteration performs one such coupled material step per group. An Armijo energy
 check on h²*Phi uses coefficient 1e-4 and at most 16 trial fractions, starting at
 one and halving; these trials evaluate local energy, not additional material
 iterations. Only an accepted finite trial updates positions and p, using the
@@ -147,20 +156,35 @@ exhausted line search leaves that projection unchanged. Extreme deformation or
 ill conditioning can therefore stall; existing strain/contact/finite diagnostics
 remain necessary and no general convergence guarantee is supplied.
 
-Correction history uses nine f64 values per triangle instead of three scalar
-multipliers and is reset each substep. It remains local to the candidate step,
-so cancellation or failure preserves the accepted cloth state. Cancellation
-is polled before each material triangle; one local solve and its bounded line
-search can finish before the next poll. This is cooperative cancellation, not
-a hard latency guarantee.
+Correction history uses twelve f64 values per group, with the fourth node slot
+unused for a singleton, and resets each substep. A fully paired region therefore
+uses twelve correction values per two faces versus the previous eighteen;
+singletons use twelve versus nine. Immutable group/union-node mappings add cache
+storage. The six-row factor costs more than two three-row factors; no speed or
+large-mesh benchmark is implied. Pair construction and each material group poll
+cancellation; one local solve and its at-most-sixteen energy trials can finish
+before the next poll. Candidate histories remain local to the step, so failure or
+cancellation preserves the accepted cloth state.
+
+The sum of actual group corrections retains the material stage's displacement
+accounting while each triangle energy occurs once. If every group equation and
+the remaining stages converge, their force balances sum with the physical nodal
+inertia. A finite number of group sweeps can still leave inter-group, bending,
+sewing or contact residuals. Pairing does not establish full coupled equilibrium.
 
 The focused pinned/free-node regression compares the projected positions with
 an independent dense Newton solution of the inertial-plus-material energy and
 evaluates its force balance from a direct deformation gradient, with bounds of
-1e-8 m and 1e-6 N. This checks a small incremental-energy problem, not a garment
-answer. Inter-element convergence at finite budgets, the remaining scalar
-bending/sewing updates, friction, and complete coupled-contact equilibrium remain
-separate questions. Earlier garment results below retain their original source
+1e-8 m and 1e-6 N. A second fixed regression uses two triangles sharing two free
+edge nodes and independently derived UV-area masses. Its six-DOF energy reference
+has a positive Hessian bound on an inertia ball containing every minimizer; an
+independent cubic reduction and high-precision/finite-difference checks support
+the same predeclared position/force bounds. Mixed anisotropy/grain, fixed pins,
+once-only face coverage and whole-call cancellation are checked separately.
+These are small incremental-energy component checks, not garment answers.
+Inter-group convergence at finite budgets, the remaining scalar bending/sewing
+updates, friction, and complete coupled-contact equilibrium remain separate
+questions. Earlier garment results below retain their original source
 and algorithm attribution; this source change does not regrade them.
 
 `max_stretch_error` reports max(abs(length(f_w)-1), abs(length(f_f)-1)). It is a

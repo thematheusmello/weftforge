@@ -49,45 +49,144 @@ impl Membrane {
             add(mul(b, self.weft[1]), mul(c, self.weft[2])),
         )
     }
-    fn local_energy(
-        &self,
-        x: [Vec3; 3],
-        correction: [Vec3; 3],
-        inverse_mass: [f64; 3],
-        dt_squared: f64,
-    ) -> f64 {
-        let inertia = correction
+    fn values_gradients(&self, positions: [Vec3; 3]) -> ([f64; 3], [[Vec3; 3]; 3]) {
+        let (w, f) = self.deformation(positions);
+        (
+            [0.5 * (dot(w, w) - 1.), 0.5 * (dot(f, f) - 1.), dot(w, f)],
+            [
+                self.warp.map(|q| mul(w, q)),
+                self.weft.map(|q| mul(f, q)),
+                std::array::from_fn(|i| add(mul(f, self.warp[i]), mul(w, self.weft[i]))),
+            ],
+        )
+    }
+
+    fn energy(&self, positions: [Vec3; 3]) -> f64 {
+        let (w, f) = self.deformation(positions);
+        [0.5 * (dot(w, w) - 1.), 0.5 * (dot(f, f) - 1.), dot(w, f)]
             .into_iter()
-            .zip(inverse_mass)
-            .filter(|(_, weight)| *weight > 0.)
-            .map(|(p, weight)| dot(p, p) / weight)
-            .sum::<f64>();
-        let (w, f) = self.deformation(x);
-        let values = [0.5 * (dot(w, w) - 1.), 0.5 * (dot(f, f) - 1.), dot(w, f)];
-        0.5 * (inertia
-            + dt_squared
-                * values
-                    .into_iter()
-                    .zip(self.stiffness)
-                    .map(|(value, k)| k * value * value)
-                    .sum::<f64>())
+            .zip(self.stiffness)
+            .map(|(c, k)| 0.5 * k * c * c)
+            .sum()
     }
 
     pub fn solve(&self, x: &mut [Vec3], inverse_mass: &[f64], dt: f64, correction: &mut [Vec3; 3]) {
+        let (values, gradients) = self.values_gradients(self.vertices.map(|v| x[v]));
+        MaterialProjection {
+            vertices: self.vertices,
+            values,
+            gradients,
+            stiffness: self.stiffness,
+        }
+        .solve(x, inverse_mass, dt, correction, |q| self.energy(q));
+    }
+}
+
+#[derive(Clone, Debug)]
+pub(crate) enum MaterialGroup {
+    Single(usize),
+    Pair {
+        membranes: [usize; 2],
+        vertices: [usize; 4],
+        local: [[usize; 3]; 2],
+    },
+}
+
+impl MaterialGroup {
+    pub(crate) fn pair(a: usize, b: usize, membrane: &[Membrane]) -> Self {
+        let first = membrane[a].vertices;
+        let second = membrane[b].vertices;
+        let fourth = second
+            .into_iter()
+            .find(|v| !first.contains(v))
+            .expect("validated adjacent distinct triangles have four union vertices");
+        let vertices = [first[0], first[1], first[2], fourth];
+        let local = [first, second].map(|triangle| {
+            triangle.map(|v| {
+                vertices
+                    .iter()
+                    .position(|&u| u == v)
+                    .expect("material group vertex")
+            })
+        });
+        Self::Pair {
+            membranes: [a, b],
+            vertices,
+            local,
+        }
+    }
+
+    pub(crate) fn solve(
+        &self,
+        membrane: &[Membrane],
+        x: &mut [Vec3],
+        inverse_mass: &[f64],
+        dt: f64,
+        correction: &mut [Vec3; 4],
+    ) {
+        match self {
+            Self::Single(id) => {
+                let mut single = [correction[0], correction[1], correction[2]];
+                membrane[*id].solve(x, inverse_mass, dt, &mut single);
+                correction[..3].copy_from_slice(&single);
+            }
+            Self::Pair {
+                membranes,
+                vertices,
+                local,
+            } => {
+                let positions = vertices.map(|v| x[v]);
+                let rows = std::array::from_fn::<_, 2, _>(|i| {
+                    membrane[membranes[i]].values_gradients(local[i].map(|v| positions[v]))
+                });
+                let values = std::array::from_fn::<_, 6, _>(|i| rows[i / 3].0[i % 3]);
+                let stiffness =
+                    std::array::from_fn(|i| membrane[membranes[i / 3]].stiffness[i % 3]);
+                let mut gradients = [[[0.; 3]; 4]; 6];
+                for i in 0..6 {
+                    for j in 0..3 {
+                        gradients[i][local[i / 3][j]] = rows[i / 3].1[i % 3][j];
+                    }
+                }
+                MaterialProjection {
+                    vertices: *vertices,
+                    values,
+                    gradients,
+                    stiffness,
+                }
+                .solve(x, inverse_mass, dt, correction, |q| {
+                    (0..2)
+                        .map(|i| membrane[membranes[i]].energy(local[i].map(|v| q[v])))
+                        .sum()
+                });
+            }
+        }
+    }
+}
+
+struct MaterialProjection<const V: usize, const C: usize> {
+    vertices: [usize; V],
+    values: [f64; C],
+    gradients: [[Vec3; V]; C],
+    stiffness: [f64; C],
+}
+
+impl<const V: usize, const C: usize> MaterialProjection<V, C> {
+    fn solve(
+        self,
+        x: &mut [Vec3],
+        inverse_mass: &[f64],
+        dt: f64,
+        correction: &mut [Vec3; V],
+        elastic_energy: impl Fn([Vec3; V]) -> f64,
+    ) {
         let positions = self.vertices.map(|v| x[v]);
         let weights = self.vertices.map(|v| inverse_mass[v]);
         let dt_squared = dt * dt;
-        let (w, f) = self.deformation(positions);
-        let values = [0.5 * (dot(w, w) - 1.), 0.5 * (dot(f, f) - 1.), dot(w, f)];
-        let gradients = [
-            self.warp.map(|q| mul(w, q)),
-            self.weft.map(|q| mul(f, q)),
-            std::array::from_fn(|i| add(mul(f, self.warp[i]), mul(w, self.weft[i]))),
-        ];
         let matrix = std::array::from_fn(|i| {
             std::array::from_fn(|j| {
-                (0..3)
-                    .map(|v| weights[v] * dot(gradients[i][v], gradients[j][v]))
+                (0..V)
+                    .map(|v| weights[v] * dot(self.gradients[i][v], self.gradients[j][v]))
                     .sum::<f64>()
                     + if i == j {
                         self.stiffness[i].recip() / dt_squared
@@ -97,51 +196,59 @@ impl Membrane {
             })
         });
         let rhs = std::array::from_fn(|i| {
-            (0..3)
-                .map(|v| dot(gradients[i][v], correction[v]))
+            (0..V)
+                .map(|v| dot(self.gradients[i][v], correction[v]))
                 .sum::<f64>()
-                - values[i]
+                - self.values[i]
         });
-        let Some(multiplier) = solve_spd3(matrix, rhs) else {
+        let Some(multiplier) = solve_spd::<C>(matrix, rhs) else {
             return;
         };
-        // Actual positional corrections retain the inertial anchor when nonlinear gradients rotate.
-        let direction: [Vec3; 3] = std::array::from_fn(|v| {
+        let direction: [Vec3; V] = std::array::from_fn(|v| {
             sub(
                 mul(
-                    (0..3).fold([0.; 3], |sum, i| {
-                        add(sum, mul(gradients[i][v], multiplier[i]))
+                    (0..C).fold([0.; 3], |sum, i| {
+                        add(sum, mul(self.gradients[i][v], multiplier[i]))
                     }),
                     weights[v],
                 ),
                 correction[v],
             )
         });
-        let slope = (0..3)
+        let slope = (0..V)
             .filter(|&v| weights[v] > 0.)
             .map(|v| dot(correction[v], direction[v]) / weights[v])
             .sum::<f64>()
             + dt_squared
-                * (0..3)
+                * (0..C)
                     .map(|i| {
                         self.stiffness[i]
-                            * values[i]
-                            * (0..3)
-                                .map(|v| dot(gradients[i][v], direction[v]))
+                            * self.values[i]
+                            * (0..V)
+                                .map(|v| dot(self.gradients[i][v], direction[v]))
                                 .sum::<f64>()
                     })
                     .sum::<f64>();
         if !slope.is_finite() || slope >= 0. {
             return;
         }
-        let energy = self.local_energy(positions, *correction, weights, dt_squared);
+        let objective = |q: [Vec3; V], p: [Vec3; V]| {
+            0.5 * p
+                .into_iter()
+                .zip(weights)
+                .filter(|(_, w)| *w > 0.)
+                .map(|(p, w)| dot(p, p) / w)
+                .sum::<f64>()
+                + dt_squared * elastic_energy(q)
+        };
+        let energy = objective(positions, *correction);
         let mut fraction = 1.;
         // shortcut: cap local backtracking at 16; use a trust region if extreme compression stalls.
         for _ in 0..16 {
             let trial = std::array::from_fn(|v| add(positions[v], mul(direction[v], fraction)));
             let trial_correction =
                 std::array::from_fn(|v| add(correction[v], sub(trial[v], positions[v])));
-            let trial_energy = self.local_energy(trial, trial_correction, weights, dt_squared);
+            let trial_energy = objective(trial, trial_correction);
             if trial_energy.is_finite() && trial_energy <= energy + 1e-4 * fraction * slope {
                 for (v, position) in self.vertices.into_iter().zip(trial) {
                     x[v] = position;
@@ -154,30 +261,38 @@ impl Membrane {
     }
 }
 
-fn solve_spd3(matrix: [[f64; 3]; 3], rhs: [f64; 3]) -> Option<[f64; 3]> {
-    let scale: [f64; 3] = std::array::from_fn(|i| matrix[i][i].sqrt());
+// The only two sizes are three rows for a singleton and six for an adjacent pair.
+fn solve_spd<const N: usize>(matrix: [[f64; N]; N], rhs: [f64; N]) -> Option<[f64; N]> {
+    let scale: [f64; N] = std::array::from_fn(|i| matrix[i][i].sqrt());
     if !scale.iter().all(|s| s.is_finite() && *s > 0.) {
         return None;
     }
-    let a: [[f64; 3]; 3] =
+    let a: [[f64; N]; N] =
         std::array::from_fn(|i| std::array::from_fn(|j| matrix[i][j] / scale[i] / scale[j]));
-    let b: [f64; 3] = std::array::from_fn(|i| rhs[i] / scale[i]);
-    let l00 = a[0][0].sqrt();
-    let l10 = a[1][0] / l00;
-    let l20 = a[2][0] / l00;
-    let l11 = (a[1][1] - l10 * l10).sqrt();
-    let l21 = (a[2][1] - l20 * l10) / l11;
-    let l22 = (a[2][2] - l20 * l20 - l21 * l21).sqrt();
-    if ![l00, l11, l22].iter().all(|s| s.is_finite() && *s > 0.) {
-        return None;
+    let b: [f64; N] = std::array::from_fn(|i| rhs[i] / scale[i]);
+    let mut l = [[0.; N]; N];
+    for i in 0..N {
+        for j in 0..=i {
+            let value = a[i][j] - (0..j).map(|k| l[i][k] * l[j][k]).sum::<f64>();
+            l[i][j] = if i == j {
+                value.sqrt()
+            } else {
+                value / l[j][j]
+            };
+            if !l[i][j].is_finite() || (i == j && l[i][j] <= 0.) {
+                return None;
+            }
+        }
     }
-    let y0 = b[0] / l00;
-    let y1 = (b[1] - l10 * y0) / l11;
-    let y2 = (b[2] - l20 * y0 - l21 * y1) / l22;
-    let z2 = y2 / l22;
-    let z1 = (y1 - l21 * z2) / l11;
-    let z0 = (y0 - l10 * z1 - l20 * z2) / l00;
-    let solution = [z0 / scale[0], z1 / scale[1], z2 / scale[2]];
+    let mut y = [0.; N];
+    for i in 0..N {
+        y[i] = (b[i] - (0..i).map(|j| l[i][j] * y[j]).sum::<f64>()) / l[i][i];
+    }
+    let mut z = [0.; N];
+    for i in (0..N).rev() {
+        z[i] = (y[i] - (i + 1..N).map(|j| l[j][i] * z[j]).sum::<f64>()) / l[i][i];
+    }
+    let solution = std::array::from_fn(|i| z[i] / scale[i]);
     solution.iter().all(|s| s.is_finite()).then_some(solution)
 }
 
