@@ -1,0 +1,880 @@
+{
+  "case_id": "NATIVE-TEXT-FOCUS-003",
+  "kind": "Selected public derivative; new distinct case, no repair/regrade",
+  "prepared_utc": "2026-11-16T15:51:58.246965+00:00",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "source87_sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+  "main_rs_sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd",
+  "native_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "original_case_locator": "${ROOT}/.local/native-text-focus-20261116/N003",
+  "original_whole_case_manifest": {
+    "path": "${ROOT}/.local/native-text-focus-20261116/N003/ARTIFACT-MANIFEST.json",
+    "sha256": "8ce4119f9c08b15a8d63544abdf875f8358412ed48650334c636b382d41df277",
+    "bytes": 9530,
+    "mode": "0644"
+  },
+  "original_frozen_artifacts_verified": 52,
+  "selected_original_file_count": 50,
+  "generated_context_files": [
+    "README.md",
+    "SUMMARY.json"
+  ],
+  "public_case_file_count_including_this_manifest": 53,
+  "manifest_self_excluded": true,
+  "observation_accounting_clarification": {
+    "scope": "Clarification added only to derivative context; original OUTCOME.json and raw artifacts are unchanged.",
+    "original_OUTCOME_state_or_image_observations": 12,
+    "explicit_recorded_standalone_AX_returns": 7,
+    "explicit_recorded_screenshots": 4,
+    "final_explicit_post_close_AX_error": 1,
+    "explicit_observations_total_including_final_error": 12,
+    "getApp_automatic_tool_emission_additional": 1,
+    "inclusive_observation_count": 13,
+    "plan_observation_cap": 14,
+    "within_cap_including_getApp_emission": true,
+    "raw_record_limits": "The 7 standalone AX returns and 4 screenshots have retained raw artifacts/paired traces. The final procNotFound error is recorded by the frozen cleanup receipt and outcome, not a separate raw error trace. The getApp automatic emission is not reconstructed as a retained AX return."
+  },
+  "original_immutability_audit": {
+    "scope": "All original regular files, including the 52 frozen-manifest artifacts, original manifest and app bundle; SHA256, bytes and permission mode before/after",
+    "original_file_count": 55,
+    "before_snapshot_sha256": "91e3136ed173e65b8ddebfd5646ed2524af50ba1be1f284ed07caded347ed1ab",
+    "after_snapshot_sha256": "91e3136ed173e65b8ddebfd5646ed2524af50ba1be1f284ed07caded347ed1ab",
+    "all_files_identical": true,
+    "source87_equal_before_after": true,
+    "native_target_sha_size_mode_equal_before_after": true
+  },
+  "previous_staging_immutability": {
+    "P001_N002_public_files": 73,
+    "all_previous_staging_files_including_old_audit": 75,
+    "before_snapshot_sha256": "34f9a184db291f44d56454fd32e91cdea818f7f40d465d88cf9f8d2dbd979ca3",
+    "after_snapshot_sha256": "34f9a184db291f44d56454fd32e91cdea818f7f40d465d88cf9f8d2dbd979ca3",
+    "all_files_identical": true,
+    "old_STAGING_AUDIT_unchanged": true
+  },
+  "transform_policy": {
+    "ROOT": "Literal original absolute repository locator replaced by ${ROOT}; original locator SHA256 recorded per affected file.",
+    "HOME": "After ROOT replacement, literal original absolute home locator replaced by ${HOME}; original locator SHA256 recorded per affected file.",
+    "raw_ps": "Only process/LAUNCH-OWNERSHIP.json /raw_ps is omitted with exact decoded-string hash and reason; no other semantic field changes.",
+    "unchanged": "All screenshots and raw AX remain byte-identical. Original OUTCOME.json is byte-identical, including its count 12. Nested hashes/results/timestamps/historical source references remain original claims.",
+    "public_hashes": "Use this manifest for derivative hashes; frozen nested hashes still identify their originals."
+  },
+  "omitted_original_case_files": [
+    "ARTIFACT-MANIFEST.json",
+    "WeftForge Text Focus N003.app/Contents/Info.plist",
+    "WeftForge Text Focus N003.app/Contents/MacOS/weftforge",
+    "trace/0000-after.json",
+    "trace/0000-before.json"
+  ],
+  "duplicate_gate_artifacts_added": false,
+  "sibling_gate_selections": {
+    "p001_manifest_sha256": "2a9f2507ade20d4abb262f85a69e54782ca4a92f1b63c0ff3e32c65cc95e918f",
+    "n002_manifest_sha256": "52eeee8d7bbb5ed769de64603fc982987edf8f26dcadc3f88daa9f4626bda6d7"
+  },
+  "files": [
+    {
+      "public_file": "PLAN.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/PLAN.json",
+      "original": {
+        "sha256": "77fe7bf470fc88083accbd2783557b7b85a7fdf7431268300b9c009f57a7a502",
+        "bytes": 12494,
+        "mode": "0444"
+      },
+      "public": {
+        "sha256": "bd434603a2537a0e6984b7434de5e02980ff84dc0d9e78ac2416d0044f60f133",
+        "bytes": 12438
+      },
+      "transforms": [
+        {
+          "operation": "literal_locator_replacement",
+          "locator": "ROOT",
+          "original_locator_utf8_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "${ROOT}",
+          "occurrences": 1
+        }
+      ],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "OUTCOME.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/OUTCOME.json",
+      "original": {
+        "sha256": "24dc3f92d9e16b4d4ce4a6588b28c4bbcf4e44040973a58bb3447b6704ac519c",
+        "bytes": 3204,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "24dc3f92d9e16b4d4ce4a6588b28c4bbcf4e44040973a58bb3447b6704ac519c",
+        "bytes": 3204
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "SOURCE-AFTER.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/SOURCE-AFTER.json",
+      "original": {
+        "sha256": "61fa18548aa9c6946cbf2085f4c67eabcdf05b5e1dbf8edf7bffd5c6aba0bfce",
+        "bytes": 383,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "61fa18548aa9c6946cbf2085f4c67eabcdf05b5e1dbf8edf7bffd5c6aba0bfce",
+        "bytes": 383
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "process/LAUNCH-OWNERSHIP.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/process/LAUNCH-OWNERSHIP.json",
+      "original": {
+        "sha256": "d6031e487451668d118ad0c4e78227a802ba2c960ff391996eea913f1616c119",
+        "bytes": 1070,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "6cb57d1e0a5aac235e552571e3b6c1a604d91f493b5e59fecd3901cde59055bb",
+        "bytes": 704
+      },
+      "transforms": [
+        {
+          "operation": "omit_json_field",
+          "json_pointer": "/raw_ps",
+          "reason": "Redundant column-truncated ps line contains a truncated personal executable locator. Complete owned[].argv and executable fields and full_argv_exact remain with declared literal locator normalization. No process identity or result is repaired.",
+          "omitted_decoded_string_utf8_sha256": "6e2824ed8c7b687ff0c39c15bcc4a2e7ec81ccf7a3fe3458172313315d6647b0",
+          "serialization": "JSON indent=2, ensure_ascii=true, terminal newline"
+        },
+        {
+          "operation": "literal_locator_replacement",
+          "locator": "ROOT",
+          "original_locator_utf8_sha256": "25c844a1e4f468ea9172401fa4d7fe712fbc39f11abed917b55efe1f43af44fa",
+          "replacement": "${ROOT}",
+          "occurrences": 3
+        }
+      ],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "process/POST-CASE-CLEANUP.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/process/POST-CASE-CLEANUP.json",
+      "original": {
+        "sha256": "079765c1a1bcd6942eea0df204bbba13d650c2612f48d8f069fd628b6e106700",
+        "bytes": 517,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "079765c1a1bcd6942eea0df204bbba13d650c2612f48d8f069fd628b6e106700",
+        "bytes": 517
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "captures/01-initial.jpg",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/captures/01-initial.jpg",
+      "original": {
+        "sha256": "6eeb833805cd57d8dfa722eb741ea0ef7db69f08a59cc0797901bf57712290df",
+        "bytes": 159031,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "6eeb833805cd57d8dfa722eb741ea0ef7db69f08a59cc0797901bf57712290df",
+        "bytes": 159031
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "captures/02-after-Raise.jpg",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/captures/02-after-Raise.jpg",
+      "original": {
+        "sha256": "69bbb2826e5810358444ea7d83f121a3f304f30fbd1381be143a46030c210fae",
+        "bytes": 159399,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "69bbb2826e5810358444ea7d83f121a3f304f30fbd1381be143a46030c210fae",
+        "bytes": 159399
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "captures/04-name-after-Tab.jpg",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/captures/04-name-after-Tab.jpg",
+      "original": {
+        "sha256": "a7c4ab0e877c33ce6ed5d6034ed503f46f8c354b9cec2cb897b2715e17fba87a",
+        "bytes": 159902,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "a7c4ab0e877c33ce6ed5d6034ed503f46f8c354b9cec2cb897b2715e17fba87a",
+        "bytes": 159902
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "captures/06-selected-piece.jpg",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/captures/06-selected-piece.jpg",
+      "original": {
+        "sha256": "7e6ae6284612e7d45732765a02fa683cd070fb7589e04f09942f62205fc9aa4d",
+        "bytes": 188845,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "7e6ae6284612e7d45732765a02fa683cd070fb7589e04f09942f62205fc9aa4d",
+        "bytes": 188845
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "captures/01-initial-ax.txt",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/captures/01-initial-ax.txt",
+      "original": {
+        "sha256": "790e1ccdd565f6006c7d23c5b60e516b115901552d1955bd716fb99b21a3a541",
+        "bytes": 179,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "790e1ccdd565f6006c7d23c5b60e516b115901552d1955bd716fb99b21a3a541",
+        "bytes": 179
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "captures/02-after-Raise-ax.txt",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/captures/02-after-Raise-ax.txt",
+      "original": {
+        "sha256": "aa33e2e77f34d73b0d80d0fff9a0e0848e6a6130c7b3772c30f4ddd0167d931d",
+        "bytes": 2622,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "aa33e2e77f34d73b0d80d0fff9a0e0848e6a6130c7b3772c30f4ddd0167d931d",
+        "bytes": 2622
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "captures/03-name-immediate-ax.txt",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/captures/03-name-immediate-ax.txt",
+      "original": {
+        "sha256": "9e810b149378e7f862e66395c376b5d999e36340691e085c5bf1413f6b51022b",
+        "bytes": 2693,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "9e810b149378e7f862e66395c376b5d999e36340691e085c5bf1413f6b51022b",
+        "bytes": 2693
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "captures/04-name-after-Tab-ax.txt",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/captures/04-name-after-Tab-ax.txt",
+      "original": {
+        "sha256": "c5374cff09d9589703b1ecffd5d8938a345eaeee81ca4bb8d2b3827b0b4e6a58",
+        "bytes": 2920,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "c5374cff09d9589703b1ecffd5d8938a345eaeee81ca4bb8d2b3827b0b4e6a58",
+        "bytes": 2920
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "captures/05-pre-Add-ax.txt",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/captures/05-pre-Add-ax.txt",
+      "original": {
+        "sha256": "c5374cff09d9589703b1ecffd5d8938a345eaeee81ca4bb8d2b3827b0b4e6a58",
+        "bytes": 2920,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "c5374cff09d9589703b1ecffd5d8938a345eaeee81ca4bb8d2b3827b0b4e6a58",
+        "bytes": 2920
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "captures/06-after-Add-ax.txt",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/captures/06-after-Add-ax.txt",
+      "original": {
+        "sha256": "797588b50b9968a324966fd3bdcbfded05edfd07f235691f93f48f8e17e30c36",
+        "bytes": 4183,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "797588b50b9968a324966fd3bdcbfded05edfd07f235691f93f48f8e17e30c36",
+        "bytes": 4183
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "captures/07-pre-close-ax.txt",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/captures/07-pre-close-ax.txt",
+      "original": {
+        "sha256": "797588b50b9968a324966fd3bdcbfded05edfd07f235691f93f48f8e17e30c36",
+        "bytes": 4183,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "797588b50b9968a324966fd3bdcbfded05edfd07f235691f93f48f8e17e30c36",
+        "bytes": 4183
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0001-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0001-before.json",
+      "original": {
+        "sha256": "e47261b4d8f242a9944f8fe54bf022a94157d6fee5fe88ae0e90d4f7decbe882",
+        "bytes": 104,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "e47261b4d8f242a9944f8fe54bf022a94157d6fee5fe88ae0e90d4f7decbe882",
+        "bytes": 104
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0001-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0001-after.json",
+      "original": {
+        "sha256": "f72c88ea280918fb5110d4a35b14b0db3e11a8b74dff078dc920674873452318",
+        "bytes": 206,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "f72c88ea280918fb5110d4a35b14b0db3e11a8b74dff078dc920674873452318",
+        "bytes": 206
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0002-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0002-before.json",
+      "original": {
+        "sha256": "721a5d1fdfea305f2b985be7ff7adb3a1fdf5c00c521367473b26a071c237309",
+        "bytes": 116,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "721a5d1fdfea305f2b985be7ff7adb3a1fdf5c00c521367473b26a071c237309",
+        "bytes": 116
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0002-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0002-after.json",
+      "original": {
+        "sha256": "552e50fcc40bb99cc54c5521dea55d159209e9b272e9beab984765fc89728275",
+        "bytes": 322,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "552e50fcc40bb99cc54c5521dea55d159209e9b272e9beab984765fc89728275",
+        "bytes": 322
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0003-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0003-before.json",
+      "original": {
+        "sha256": "e34bedc1c0e4ada3db3f7dd485f08c55c3c6c5eaec0d284f91327f5876c8b438",
+        "bytes": 108,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "e34bedc1c0e4ada3db3f7dd485f08c55c3c6c5eaec0d284f91327f5876c8b438",
+        "bytes": 108
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0003-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0003-after.json",
+      "original": {
+        "sha256": "b8aba750194a80b6d62d4e6c84c91c820b61be5e7e9e68412a5c1dcf3366801b",
+        "bytes": 186,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "b8aba750194a80b6d62d4e6c84c91c820b61be5e7e9e68412a5c1dcf3366801b",
+        "bytes": 186
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0004-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0004-before.json",
+      "original": {
+        "sha256": "a07506d3ae762d20ec9a6d92bd307c54fb3701cde5967d2da8844ab20bc1b712",
+        "bytes": 111,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "a07506d3ae762d20ec9a6d92bd307c54fb3701cde5967d2da8844ab20bc1b712",
+        "bytes": 111
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0004-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0004-after.json",
+      "original": {
+        "sha256": "3fa22cbff98da288dcc887b805aef98952b7e40bc42a10fb4bde92be762afd60",
+        "bytes": 178,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "3fa22cbff98da288dcc887b805aef98952b7e40bc42a10fb4bde92be762afd60",
+        "bytes": 178
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0005-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0005-before.json",
+      "original": {
+        "sha256": "75d34db3abb888fc367c1b8d91e19e4a70a011718a5e5dba30a0114af7e74de9",
+        "bytes": 117,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "75d34db3abb888fc367c1b8d91e19e4a70a011718a5e5dba30a0114af7e74de9",
+        "bytes": 117
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0005-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0005-after.json",
+      "original": {
+        "sha256": "a510d4b68fda7f97168f8de56533aba09647bd5bf41b848a4e26bab7fd9f2d16",
+        "bytes": 2969,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "a510d4b68fda7f97168f8de56533aba09647bd5bf41b848a4e26bab7fd9f2d16",
+        "bytes": 2969
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0006-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0006-before.json",
+      "original": {
+        "sha256": "5cad60f61c6839bc1e4f146d9a571b2f7d843e2cc9eeed44195b68d8b3155334",
+        "bytes": 109,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "5cad60f61c6839bc1e4f146d9a571b2f7d843e2cc9eeed44195b68d8b3155334",
+        "bytes": 109
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0006-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0006-after.json",
+      "original": {
+        "sha256": "def4e09bf50d24b6d7e0381441091c6419beb96c833788715d477ca151a94357",
+        "bytes": 194,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "def4e09bf50d24b6d7e0381441091c6419beb96c833788715d477ca151a94357",
+        "bytes": 194
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0007-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0007-before.json",
+      "original": {
+        "sha256": "d60f085fe925449c996a4ebad4cb0d2e30472705fec13ccea47e19cd0acdb3d2",
+        "bytes": 117,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "d60f085fe925449c996a4ebad4cb0d2e30472705fec13ccea47e19cd0acdb3d2",
+        "bytes": 117
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0007-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0007-after.json",
+      "original": {
+        "sha256": "ba0d316badf9d2e2dbd7e899c41ce8a07ef144b95fd8044be3ce8350835910a4",
+        "bytes": 277,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "ba0d316badf9d2e2dbd7e899c41ce8a07ef144b95fd8044be3ce8350835910a4",
+        "bytes": 277
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0008-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0008-before.json",
+      "original": {
+        "sha256": "c30196b70277e3431db085b0efeec1676d35469152e3833f24063a2d73485eb7",
+        "bytes": 107,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "c30196b70277e3431db085b0efeec1676d35469152e3833f24063a2d73485eb7",
+        "bytes": 107
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0008-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0008-after.json",
+      "original": {
+        "sha256": "7cfdb9563f3586938edeb59a9cc24e2901a0424e28193a452a05f2f26be52345",
+        "bytes": 3027,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "7cfdb9563f3586938edeb59a9cc24e2901a0424e28193a452a05f2f26be52345",
+        "bytes": 3027
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0009-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0009-before.json",
+      "original": {
+        "sha256": "464bf41db1881a7cfb4e97f9752e73b8c3b1a54f2c549dd093b57c90b7146cf5",
+        "bytes": 103,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "464bf41db1881a7cfb4e97f9752e73b8c3b1a54f2c549dd093b57c90b7146cf5",
+        "bytes": 103
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0009-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0009-after.json",
+      "original": {
+        "sha256": "c3f6d82572fb4848ce29fcc9ada164ebcc5a4d8abe30251e71235d48fe09d2dd",
+        "bytes": 155,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "c3f6d82572fb4848ce29fcc9ada164ebcc5a4d8abe30251e71235d48fe09d2dd",
+        "bytes": 155
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0010-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0010-before.json",
+      "original": {
+        "sha256": "35b2ba0c336e1117ea01d7ff8353191cf766b6f8d5b9212556654542e4227f1a",
+        "bytes": 105,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "35b2ba0c336e1117ea01d7ff8353191cf766b6f8d5b9212556654542e4227f1a",
+        "bytes": 105
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0010-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0010-after.json",
+      "original": {
+        "sha256": "a7620a1845825d3ab387cb34ca138dd4e0417f19ceff9869e46f23d2fb89abd8",
+        "bytes": 3258,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "a7620a1845825d3ab387cb34ca138dd4e0417f19ceff9869e46f23d2fb89abd8",
+        "bytes": 3258
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0011-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0011-before.json",
+      "original": {
+        "sha256": "e136672faba2db3ad5037b8acdd208c9958b25a62fe9791efc4906736a5d3e51",
+        "bytes": 115,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "e136672faba2db3ad5037b8acdd208c9958b25a62fe9791efc4906736a5d3e51",
+        "bytes": 115
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0011-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0011-after.json",
+      "original": {
+        "sha256": "714d193deb3ecf6ca716e6a5122dbccf93e0f9b53e04917d15db321dcc8b4b52",
+        "bytes": 200,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "714d193deb3ecf6ca716e6a5122dbccf93e0f9b53e04917d15db321dcc8b4b52",
+        "bytes": 200
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0012-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0012-before.json",
+      "original": {
+        "sha256": "8f61d18f23e586c6a32377babcd0c1a9fcc16dd708e4e34d5c0186c7517aedaf",
+        "bytes": 104,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "8f61d18f23e586c6a32377babcd0c1a9fcc16dd708e4e34d5c0186c7517aedaf",
+        "bytes": 104
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0012-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0012-after.json",
+      "original": {
+        "sha256": "c2cf8dafb163f2e3cdf2d107529042346ed310153dca251855ee4468f94965ce",
+        "bytes": 3258,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "c2cf8dafb163f2e3cdf2d107529042346ed310153dca251855ee4468f94965ce",
+        "bytes": 3258
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0013-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0013-before.json",
+      "original": {
+        "sha256": "95a82b1866e882a11be21e3d01f37671704783d852c52660d1c885561521d81c",
+        "bytes": 111,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "95a82b1866e882a11be21e3d01f37671704783d852c52660d1c885561521d81c",
+        "bytes": 111
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0013-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0013-after.json",
+      "original": {
+        "sha256": "84402ba8ceb3c39bdb5871609e89a39df956063e840abbba774e316354f923ea",
+        "bytes": 211,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "84402ba8ceb3c39bdb5871609e89a39df956063e840abbba774e316354f923ea",
+        "bytes": 211
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0014-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0014-before.json",
+      "original": {
+        "sha256": "9f2c3701f97098f88718f900fddbf740ecb6d6b0e70d44ce4a6f2cc72c35267c",
+        "bytes": 102,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "9f2c3701f97098f88718f900fddbf740ecb6d6b0e70d44ce4a6f2cc72c35267c",
+        "bytes": 102
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0014-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0014-after.json",
+      "original": {
+        "sha256": "05c08900fe09f622f5df3769bd480f99334eabebfa12a4da5e796013f606bc99",
+        "bytes": 4618,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "05c08900fe09f622f5df3769bd480f99334eabebfa12a4da5e796013f606bc99",
+        "bytes": 4618
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0015-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0015-before.json",
+      "original": {
+        "sha256": "7a2184550a404f7ef15815ff9849289852a59926fe73cfe1bf78ad4f5847df3b",
+        "bytes": 115,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "7a2184550a404f7ef15815ff9849289852a59926fe73cfe1bf78ad4f5847df3b",
+        "bytes": 115
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0015-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0015-after.json",
+      "original": {
+        "sha256": "5b216510bbc30ac8b642d3734958207d85e9823bf6b3bf2582d3114e4e910105",
+        "bytes": 200,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "5b216510bbc30ac8b642d3734958207d85e9823bf6b3bf2582d3114e4e910105",
+        "bytes": 200
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0016-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0016-before.json",
+      "original": {
+        "sha256": "a7f2b8b08c03b9b2d3bd540dbde3856d4e11ec8200e3f607f0affc364efbc306",
+        "bytes": 106,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "a7f2b8b08c03b9b2d3bd540dbde3856d4e11ec8200e3f607f0affc364efbc306",
+        "bytes": 106
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0016-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0016-after.json",
+      "original": {
+        "sha256": "019db4fb8405a126637178d1f93b7e52b02e0b562fd543e295a4fcb4b760dfea",
+        "bytes": 4625,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "019db4fb8405a126637178d1f93b7e52b02e0b562fd543e295a4fcb4b760dfea",
+        "bytes": 4625
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0017-before.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0017-before.json",
+      "original": {
+        "sha256": "e8371ba572ea961687b71c785324bac850f26386262064209a7cbec941a47d7a",
+        "bytes": 118,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "e8371ba572ea961687b71c785324bac850f26386262064209a7cbec941a47d7a",
+        "bytes": 118
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "trace/0017-after.json",
+      "original_file": "${ROOT}/.local/native-text-focus-20261116/N003/trace/0017-after.json",
+      "original": {
+        "sha256": "d790d1c77fd1d809965a38f56a42e4afe45f346ceac0e2944b278004fa305e0f",
+        "bytes": 194,
+        "mode": "0644"
+      },
+      "public": {
+        "sha256": "d790d1c77fd1d809965a38f56a42e4afe45f346ceac0e2944b278004fa305e0f",
+        "bytes": 194
+      },
+      "transforms": [],
+      "role": "Selected frozen N003 own-app case artifact; distinct from P001 and N002"
+    },
+    {
+      "public_file": "README.md",
+      "original_file": null,
+      "original": null,
+      "public": {
+        "sha256": "ff72ba35807a6a88717900f1436f421709884587824eda7f596058eea48d3f0e",
+        "bytes": 3871
+      },
+      "transforms": [
+        {
+          "operation": "new_derivative_context",
+          "description": "Explicit selected-case summary, limits and observation-accounting clarification; no original outcome or raw artifact mutation."
+        }
+      ]
+    },
+    {
+      "public_file": "SUMMARY.json",
+      "original_file": null,
+      "original": null,
+      "public": {
+        "sha256": "a8b55be0ba116db2709059093ca8e96565d40b4848cd55a24d1e9134829508ea",
+        "bytes": 5917
+      },
+      "transforms": [
+        {
+          "operation": "new_derivative_context",
+          "description": "Explicit selected-case summary, limits and observation-accounting clarification; no original outcome or raw artifact mutation."
+        }
+      ]
+    }
+  ],
+  "no_regrade": true,
+  "new_UI_launch_process_inventory_or_deeper_probe": false
+}

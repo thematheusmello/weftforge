@@ -1,0 +1,125 @@
+{
+  "case_id": "NATIVE-TEXT-FOCUS-002",
+  "status": "FROZEN_PROPOSAL_AWAITING_ROOT_GO_NO_LAUNCH",
+  "question": "Can documented native Tab focus and one macOS paste establish a usable constructor-name route?",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "source87_sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+  "main_rs_sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd",
+  "native_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "bundle_id": "org.weftforge.nativecase.textfocus.n002",
+  "scope": [
+    "New independent focus/paste calibration only. P001 and old 001/002/003 cases remain closed with their original outcomes.",
+    "P001 established no product defect or cause; Winit installed default accepts_first_mouse=true, so no first-click explanation is assumed.",
+    "No source, Cargo, Git, evaluator or old-case edits; no compilation cache copied.",
+    "No reference, release, physics, offset or full workflow acceptance."
+  ],
+  "limits": {
+    "seconds_launch_to_cleanup": 360,
+    "launches": 1,
+    "owned_processes": 1,
+    "calibration_attempts": 1,
+    "meaningful_non_search_navigation_actions": 20,
+    "focus_search_tabs": 40,
+    "fresh_full_AX_reads_after_search_tabs": 40,
+    "real_own_app_images_target": [
+      2,
+      3
+    ]
+  },
+  "pre_clock": [
+    "Require ROOT GO bound to proposal hash and confirmation root-owned publication xtask 35392 finished.",
+    "Initialize CUA using only getState first if needed; read returned native API documentation. No selected app or screenshot.",
+    "Initialize one declared persistent n002 state object and recorder with a no-UI selfcheck, using explicit variable declarations. Confirm documented pressKey, paste, full AX, screenshot and close APIs before timed launch.",
+    "Rerun read-only source87, candidate clean commit, binary/bundle, plan/proposal checks and exact-owned-executable absence. Stop on mismatch."
+  ],
+  "launch": {
+    "argv": [
+      "/usr/bin/open",
+      "-n",
+      "-a",
+      "${ROOT}/.local/native-text-focus-20261116/N002/WeftForge Text Focus N002.app"
+    ],
+    "document_arguments": [],
+    "clock": "UTC and monotonic start recorded immediately before the only open invocation.",
+    "ownership": "Before cua.getApp, independently prove exactly one newly created PID with actual executable/full argv equal to this bundle Contents/MacOS/weftforge and persist process/OWNED-PID-PROOF.json.",
+    "getApp_target": "org.weftforge.nativecase.textfocus.n002",
+    "prohibited_getApp_target": "Bare executable path"
+  },
+  "steps": [
+    {
+      "id": "N1",
+      "action": "Bind only the proven unique app ID, then observe fresh full AX plus real own-window screenshot.",
+      "require": "Actual own clean window, rev 0, 0 pieces, no Unsaved marker. Record initial focus. Missing full revision/piece/focus evidence is a stop, not a guessed pass.",
+      "image": "01-empty-clean"
+    },
+    {
+      "id": "N2",
+      "action": "Press only Tab then obtain fresh full AX after each, at most 40 times. Record each actual focused AX line, exact field value, revision and piece count.",
+      "exit_when": "The actual focused UI element is a text field whose exact current value is Pattern 1; field presence alone is insufficient.",
+      "require": "At every step rev 0, 0 pieces and no Unsaved marker remain unchanged. No pointer focus, typeText, setValue, shortcut variation, reverse navigation or retries.",
+      "stop": "First unexpected state, missing focus/revision evidence, loop limit or wall budget. Retain second real own-app image, then cleanup."
+    },
+    {
+      "id": "N3",
+      "only_if": "N2 actual focus and value proved.",
+      "action": [
+        "Exactly one documented Cmd+A",
+        "Exactly one app.paste(Studio preview, {format: text}) using the documented text API",
+        "Immediate full AX before any blur; require exact constructor field value Studio preview and rev 0 / 0 pieces",
+        "Exactly one Tab to commit/blur",
+        "Fresh full AX plus real own-app screenshot; require exact constructor value Studio preview again and rev 0 / 0 pieces before any Add"
+      ],
+      "image": "02-name-paste-result",
+      "stop": "Any mismatch ends calibration with no fallback, second paste, alternative input path or Add."
+    },
+    {
+      "id": "N4",
+      "only_if": "N3 exact value verified before and after Tab.",
+      "action": [
+        "Click Add rectangle once using its fresh current AX button identity, leaving all dimensions/coordinates at defaults",
+        "Observe full AX for the actual single Studio preview piece, accepted rest mesh and selected Scene row; bounded reads only, no additional authoring",
+        "Only if framing is needed, use the freshly observed Frame all button once",
+        "Capture the actual selected Properties and Scene in the third real own-app screenshot"
+      ],
+      "require": "Actual accepted one-piece/rest-mesh state; implementation tests do not establish runtime success.",
+      "image": "03-single-piece-properties-scene"
+    },
+    {
+      "id": "N5",
+      "action": "Close only the owned preview by its documented and observed native close route. If dirty, observe and activate Discard and close. Observe final dismissal; if no close route is exposed, stop CUA at that actual observed outcome.",
+      "summary_order": "The very next tool call after final observed CUA outcome MUST be mcp__cua_repl.js with only completion_summary exactly once. Do not run file IO, trace finalization, shell/PID check or another tool between final CUA observation and summary.",
+      "post_summary": "Independently verify original owned PID/full argv; if it remains, SIGTERM only that proven exact owned process and confirm absence. No other process or app is affected.",
+      "cleanup_record": "process/POST-CASE-CLEANUP.json separate from frozen evidence"
+    }
+  ],
+  "action_counting": {
+    "non_navigation": "Count launch, getApp, every app input/observation outside N2, screenshots and close/Discard/confirmation within 20; keep capacity for cleanup.",
+    "navigation": "N2 Tab and its fresh full AX read form one separately tracked search step, maximum 40 pairs. N3 blur Tab is counted as a non-navigation input.",
+    "excluded": "Recorder/file IO, summary-only CUA completion call and independent process proof are not UI actions.",
+    "budget": "Reserve time for cleanup; when any cap approaches, stop the calibration, retain actual failure state if allowed by budget, then cleanup."
+  },
+  "evidence": {
+    "raw_AX": "Persist full returned AX privately, including each navigation state; emit only focus line/value, rev, piece count and status.",
+    "screenshots": "2\u20133 actual own-app images, unedited; no other app or desktop/personal browser capture. Early stop may retain fewer images if capture itself would exceed a bound.",
+    "trace": "Paired before/returned records with UTC and monotonic times. Persist the focus sequence and both exact-value checks.",
+    "provenance": "Bind plan, proposal, SOURCE87, gate receipts, unique bundle and byte-exact executable.",
+    "outcome": "Report failures and unknowns without diagnosing cause from the unsuccessful earlier route."
+  },
+  "forbidden": [
+    "Save",
+    "Export",
+    "old or external fixtures",
+    "full offset workflow",
+    "physics actions",
+    "reference acceptance",
+    "source edits",
+    "Cargo during GUI",
+    "second launch",
+    "mouse focus",
+    "typeText",
+    "setValue",
+    "input fallback or retry",
+    "old-case replay or regrade",
+    "personal Chrome interaction or capture"
+  ]
+}

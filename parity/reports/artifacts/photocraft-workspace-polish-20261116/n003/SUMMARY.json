@@ -1,0 +1,104 @@
+{
+  "case_id": "NATIVE-TEXT-FOCUS-003",
+  "derivative_kind": "Selected public derivative of a new distinct closed bounded native case",
+  "frozen_status": "CLOSED_BOUNDED_NAME_AND_SINGLE_RECTANGLE_OBSERVED",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "source87_sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+  "main_rs_sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd",
+  "native_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "actual_result": "A workable constructor-name route and one default rectangle were observed for this bound executable and this small case only.",
+  "native_sequence": [
+    "Initial standalone full AX request returned native chrome only.",
+    "One actually exposed window Raise action on index 0, followed by standalone AX with full application controls and clean rev 0 / 0 pieces. This temporal observation does not establish a cause for older failures.",
+    "One screenshot-coordinate double-click on the name field, super+a, and macOS app.paste of Studio preview.",
+    "Immediate standalone AX showed exact Studio preview value and focused text field.",
+    "One Tab retained exact name while clean at rev 0 / 0 pieces.",
+    "One default Add rectangle using fresh AX button identity.",
+    "Actual rev 1 / one selected Studio preview piece #2 / 141 rest vertices; status Rest mesh rebuilt from editable construction.",
+    "Actual 2D pattern, 3D rest surface, grouped Pattern / Arrangement / Fabric and selected Scene row captured.",
+    "Fresh AX Discard and close; final AX procNotFound, next-tool CUA summary, then independent PID absence."
+  ],
+  "observation_accounting_clarification": {
+    "scope": "Clarification added only to derivative context; original OUTCOME.json and raw artifacts are unchanged.",
+    "original_OUTCOME_state_or_image_observations": 12,
+    "explicit_recorded_standalone_AX_returns": 7,
+    "explicit_recorded_screenshots": 4,
+    "final_explicit_post_close_AX_error": 1,
+    "explicit_observations_total_including_final_error": 12,
+    "getApp_automatic_tool_emission_additional": 1,
+    "inclusive_observation_count": 13,
+    "plan_observation_cap": 14,
+    "within_cap_including_getApp_emission": true,
+    "raw_record_limits": "The 7 standalone AX returns and 4 screenshots have retained raw artifacts/paired traces. The final procNotFound error is recorded by the frozen cleanup receipt and outcome, not a separate raw error trace. The getApp automatic emission is not reconstructed as a retained AX return."
+  },
+  "captures": [
+    {
+      "path": "captures/01-initial.jpg",
+      "role": "Initial clean studio before the observed Raise.",
+      "sha256": "6eeb833805cd57d8dfa722eb741ea0ef7db69f08a59cc0797901bf57712290df",
+      "bytes": 159031,
+      "unedited": true
+    },
+    {
+      "path": "captures/02-after-Raise.jpg",
+      "role": "Clean studio after the observed Raise, with full standalone AX retained separately.",
+      "sha256": "69bbb2826e5810358444ea7d83f121a3f304f30fbd1381be143a46030c210fae",
+      "bytes": 159399,
+      "unedited": true
+    },
+    {
+      "path": "captures/04-name-after-Tab.jpg",
+      "role": "Exact name retained after Tab, corroborated by standalone AX.",
+      "sha256": "a7c4ab0e877c33ce6ed5d6034ed503f46f8c354b9cec2cb897b2715e17fba87a",
+      "bytes": 159902,
+      "unedited": true
+    },
+    {
+      "path": "captures/06-selected-piece.jpg",
+      "role": "Selected single piece with actual 2D / 3D rest surface, grouped properties and selected Scene row.",
+      "sha256": "7e6ae6284612e7d45732765a02fa683cd070fb7589e04f09942f62205fc9aa4d",
+      "bytes": 188845,
+      "unedited": true
+    }
+  ],
+  "AX_artifacts": [
+    "captures/01-initial-ax.txt",
+    "captures/02-after-Raise-ax.txt",
+    "captures/03-name-immediate-ax.txt",
+    "captures/04-name-after-Tab-ax.txt",
+    "captures/05-pre-Add-ax.txt",
+    "captures/06-after-Add-ax.txt",
+    "captures/07-pre-close-ax.txt"
+  ],
+  "matching_AX_content_note": "04-name-after-Tab and 05-pre-Add contain identical text from separate observations. 06-after-Add and 07-pre-close likewise match; their distinct timing/control purposes and paired traces are retained.",
+  "counts": {
+    "launches": 1,
+    "name_replacement_attempts": 1,
+    "rectangle_additions": 1,
+    "Save": 0,
+    "Export": 0,
+    "offset": 0,
+    "simulation": 0,
+    "retries": 0
+  },
+  "cleanup": {
+    "owned_pid": 16412,
+    "closed_via": "Fresh AX Discard and close",
+    "post_close_AX": "procNotFound recorded in frozen cleanup receipt/outcome",
+    "very_next_tool": "CUA completion_summary only, exactly once",
+    "independent_owned_PID_absence_confirmed_in_frozen_receipt": true,
+    "elapsed_seconds": 225.14110750006512,
+    "SIGTERM_needed": false,
+    "fresh_process_or_UI_check_during_derivative_preparation": false
+  },
+  "implementation_gates": "No duplicate gate artifacts added; same-source 389-workspace-test and strict Clippy evidence remains in sibling P001/N002 selections. PLAN.json retains the exact 87-source roster.",
+  "privacy_transform_note": "Only declared literal ROOT/HOME locator normalization and the documented redundant process/LAUNCH-OWNERSHIP.json /raw_ps omission apply; no semantic repair.",
+  "acceptance_limits": [
+    "N003 is a distinct case; P001 and N002 remain closed failures/unknowns with unchanged selected derivatives.",
+    "No source fix or proven cause for earlier failures is inferred.",
+    "Bounded constructor-name input and one default rectangle only; no offset, simulation, physics, geometry-output grader, save/reopen, reference, full-contract, roadmap or release acceptance.",
+    "No new UI, launch, process inventory or deeper probe during derivative preparation.",
+    "No claim that the app or OS made no disk writes.",
+    "Prepared private staging is not tracked public delivery."
+  ]
+}

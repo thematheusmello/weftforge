@@ -1,0 +1,97 @@
+{
+  "case_id": "NATIVE-UI-PREVIEW-001",
+  "status": "CLOSED_FAILED_PLAIN_NAME_CALIBRATION_PRECONDITION",
+  "root_binding_sha256": "471e14a691e364a1565638bf7d117b285de97f6b60c23d12f003fd238c006220",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "main_source_sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd",
+  "native_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "calibration": {
+    "status": "failed required plain-name precondition; no Add performed",
+    "expected_name": "Studio preview",
+    "first_observed_fields": [
+      "+\t\t50 text field (settable) Pattern 1"
+    ],
+    "second_observed_fields": [
+      "\t\t44 text field (settable) Pattern 1"
+    ],
+    "still_empty": true,
+    "observed_cause": "unknown; no alternate route or retry",
+    "source_records": [
+      "0007",
+      "0008"
+    ],
+    "meaningful_calls": 9,
+    "seconds_from_launch": 180.397
+  },
+  "observed_initial_state": "Own screenshot shows clean empty revision0, 0pieces and grouped Create pattern / collapsed Sewing / Simulation settings. Initial AX exposed native window chrome only.",
+  "observed_final_state": "AX and screenshot still show Pattern 1, revision0, 0pieces, 0vertices, no Unsaved marker. AX focus is File; status reads Create a pattern first.",
+  "input_route": {
+    "observed_coordinate": [
+      1441,
+      189
+    ],
+    "source": "captures/01-empty-clean.jpg",
+    "sequence": [
+      "coordinate click",
+      "super+a",
+      "typeText Studio preview",
+      "Tab"
+    ],
+    "name_rereads": 2,
+    "alternative_routes": 0,
+    "retries": 0
+  },
+  "plain_name_result": "Expected Studio preview; observed Pattern 1 twice. Cause unknown.",
+  "authoring_reached": false,
+  "add_rectangle_calls": 0,
+  "save_export_calls": 0,
+  "geometry_rest_mesh_selected_scene_case": "not reached; remains unknown",
+  "visual_result": "Two actual unedited own-app empty-workspace screenshots retained. Selected-piece properties/populated Scene were not natively verified.",
+  "screenshots": [
+    {
+      "path": "captures/01-empty-clean.jpg",
+      "sha256": "924d75642c8d003f7d31a0e6921b3f96a245baa30e8ee8da0f73cb9c5712b061",
+      "bytes": 158557
+    },
+    {
+      "path": "captures/02-name-calibration-mismatch.jpg",
+      "sha256": "02ce56cbbd56bc78898f9d941ca8e0f0543317da4c6fd8e81ce270965766fa3f",
+      "bytes": 157844
+    }
+  ],
+  "trace": {
+    "paired_records": 9,
+    "all_calls_returned": true,
+    "meaningful_calls_including_launch": 9
+  },
+  "limits": {
+    "launches": 1,
+    "owned_processes": 1,
+    "elapsed_seconds_to_pid_absence": 267.921961417,
+    "within_360_seconds": true,
+    "within_20_meaningful_calls": true
+  },
+  "cleanup": {
+    "record": "process/POST-CASE-CLEANUP.json",
+    "owned_pid": 85382,
+    "method": "Final CUA failure observation followed by next-tool completion_summary exactly once; then independent PID/full-command proof and ROOT-authorized SIGTERM because final AX exposed no clean close control.",
+    "window_dismissal_ui_observed": false,
+    "independent_pid_absence_confirmed": true,
+    "remaining_owned_executable_processes": []
+  },
+  "automatic_recovery": {
+    "scope": "Read-only check for this owned PID recovery filename prefix only; not a claim of no disk writes",
+    "owned_pid": 85382,
+    "matching_files_observed": [],
+    "ui_autosaving_or_recovery_write_observed": false,
+    "other_os_or_application_writes": "not inspected or excluded"
+  },
+  "source_native_identity": "All87 inputs and both native copies unchanged after UI; no source edits or Cargo during GUI.",
+  "acceptance_limits": [
+    "No offset/full-workflow, physics, reference-parity or release acceptance.",
+    "Old closed cases preserved; registry/metadata/xtask still pending.",
+    "No no-disk-writes claim."
+  ],
+  "gui_lease_released": true,
+  "finalized_utc": "2026-11-16T15:10:16.270050+00:00"
+}

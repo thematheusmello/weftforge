@@ -1,0 +1,89 @@
+{
+  "case_id": "NATIVE-TEXT-FOCUS-002",
+  "status": "CLOSED_STOPPED_INITIAL_AX_PRECONDITION",
+  "finalized_utc": "2026-11-16T15:38:13.276993+00:00",
+  "root_binding_sha256": "8eb228f303be71ce655dea0d44e9125473ad2be9c185cab54e39131666e4f396",
+  "proposal_sha256": "bc99659872cc93ef16ce0e57c6bcffb8cea88c3a69bdae990b3c30282cd535e6",
+  "plan_sha256": "5e50f94f3e0691e95b50e5505be263365b3579b82f55e64cace30d4838edba27",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "source87_sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+  "main_rs_sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd",
+  "native_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "calibration": {
+    "question": "Can documented native Tab focus and one macOS paste establish a usable constructor-name route?",
+    "result": "Unknown; constructor input route was not reached.",
+    "stop_gate": "N1 fresh full AX plus screenshot lacks revision, piece-count and focused-element evidence. Frozen plan requires stop on missing evidence.",
+    "getApp_auto_emission": "The tool displayed full app controls including rev 0 / 0 pieces and Pattern 1 immediately on binding; getApp returns an app object, so that auto-emission was not stored as an AX return by the recorder. It did not display a focused-element line.",
+    "first_and_final_fresh_AX": "Both retained full AX returns contain native window chrome only, not application controls. Cause is unknown.",
+    "screenshots_observed": "Both actual own-app screenshots show the clean empty studio, rev 0, 0 pieces and Pattern 1.",
+    "input_attempts": {
+      "search_tabs": 0,
+      "CmdA": 0,
+      "paste": 0,
+      "typeText": 0,
+      "setValue": 0,
+      "mouse_focus": 0,
+      "Add_rectangle": 0,
+      "retries": 0,
+      "fallbacks": 0
+    },
+    "name_verified_before_Add": false,
+    "authoring_reached": false,
+    "rest_mesh_selected_properties_scene": "Not reached; remains unknown.",
+    "product_defect_or_cause_claimed": false
+  },
+  "screenshots": [
+    {
+      "path": "captures/01-empty-clean.jpg",
+      "sha256": "6eeb833805cd57d8dfa722eb741ea0ef7db69f08a59cc0797901bf57712290df",
+      "bytes": 159031,
+      "unedited": true,
+      "source_record": "0002"
+    },
+    {
+      "path": "captures/02-initial-ax-precondition-stop.jpg",
+      "sha256": "6eeb833805cd57d8dfa722eb741ea0ef7db69f08a59cc0797901bf57712290df",
+      "bytes": 159031,
+      "unedited": true,
+      "source_record": "0003"
+    }
+  ],
+  "trace": {
+    "paired_records": 4,
+    "all_calls_returned": true,
+    "meaningful_non_navigation_UI_actions": 4,
+    "launches": 1,
+    "owned_processes": 1,
+    "search_tabs": 0,
+    "fresh_AX_reads_after_tabs": 0
+  },
+  "limits": {
+    "elapsed_seconds_launch_to_owned_PID_absence": 66.749413917,
+    "within_360_seconds": true,
+    "within_20_meaningful_UI_actions": true,
+    "actual_own_app_images": 2
+  },
+  "cleanup": {
+    "record": "process/POST-CASE-CLEANUP.json",
+    "owned_pid": 11422,
+    "final_AX_exposed_close_route": false,
+    "window_dismissal_UI_observed": false,
+    "very_next_tool_after_final_observation": "CUA completion_summary only, exactly once",
+    "owned_process_termination": "After the CUA summary, independently re-proved exact executable/full argv, then SIGTERM only original PID per ROOT/frozen plan.",
+    "owned_PID_absence_confirmed": true,
+    "remaining_owned_executable_processes": []
+  },
+  "controller_preparation": {
+    "initial_CJS_file_import": "Unsupported before launch; preserved in preflight receipt, corrected with node:module createRequire before the timed probe. No app/UI call occurred during initialization.",
+    "recorder_synthetic_storage_selfcheck": "Passed; not runtime GUI evidence."
+  },
+  "source_binary_unchanged": "All 87 source inputs, clean candidate commit and both native executable copies reverified after UI. All proposal-bound static artifacts unchanged.",
+  "acceptance_limits": [
+    "No native name-input result: missing initial AX evidence stopped the case before any Tab or paste.",
+    "No offset, reference, physics, release or full-workflow acceptance.",
+    "P001 and all old closed cases remain closed and unchanged; this is an independent case.",
+    "Save/Export were not invoked; no claim that the app or OS made no disk writes.",
+    "Private ignored artifacts are not public delivery."
+  ],
+  "gui_lease_released": true
+}

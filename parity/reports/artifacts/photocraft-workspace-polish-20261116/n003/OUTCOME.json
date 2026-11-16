@@ -1,0 +1,69 @@
+{
+  "case_id": "NATIVE-TEXT-FOCUS-003",
+  "status": "CLOSED_BOUNDED_NAME_AND_SINGLE_RECTANGLE_OBSERVED",
+  "plan_sha256": "77fe7bf470fc88083accbd2783557b7b85a7fdf7431268300b9c009f57a7a502",
+  "runtime_source": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "source87_sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+  "native_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "source_count": 87,
+  "source_binary_and_clean_candidate_unchanged": true,
+  "native_observations": {
+    "initial_standalone_AX": "Native chrome only; no document controls.",
+    "after_one_observed_Raise": "Standalone AX contains full app controls, clean rev0/0pieces; actual own screenshot corroborates. This temporal observation does not establish the cause of prior failures.",
+    "name_input": "One screenshot-coordinate double-click at1441,189; super+a; one macOS app.paste of Studio preview.",
+    "immediate_AX": "Exact Studio preview value and focused textfield observed.",
+    "after_one_Tab": "Exact Studio preview value retained; clean revision0/0pieces before Add.",
+    "authoring": "One fresh-AX Add rectangle at defaults.",
+    "actual_result": "rev1/one selected Studio preview piece #2/141 rest vertices; Rest mesh rebuilt from editable construction. Actual 2D pattern, 3D rest surface, grouped properties and Scene row captured.",
+    "frame_all_needed": false,
+    "close": "Fresh AX Discard and close; final getAXState returned procNotFound; independent PID absence after immediate CUA summary."
+  },
+  "counts": {
+    "launches": 1,
+    "name_replacement_attempts": 1,
+    "rectangle_additions": 1,
+    "state_or_image_observations": 12,
+    "Save": 0,
+    "Export": 0,
+    "offset": 0,
+    "simulation": 0,
+    "retries": 0
+  },
+  "elapsed_launch_to_independent_absence_seconds": 225.14110750006512,
+  "images": [
+    {
+      "path": "captures/01-initial.jpg",
+      "sha256": "6eeb833805cd57d8dfa722eb741ea0ef7db69f08a59cc0797901bf57712290df",
+      "bytes": 159031,
+      "unedited": true
+    },
+    {
+      "path": "captures/02-after-Raise.jpg",
+      "sha256": "69bbb2826e5810358444ea7d83f121a3f304f30fbd1381be143a46030c210fae",
+      "bytes": 159399,
+      "unedited": true
+    },
+    {
+      "path": "captures/04-name-after-Tab.jpg",
+      "sha256": "a7c4ab0e877c33ce6ed5d6034ed503f46f8c354b9cec2cb897b2715e17fba87a",
+      "bytes": 159902,
+      "unedited": true
+    },
+    {
+      "path": "captures/06-selected-piece.jpg",
+      "sha256": "7e6ae6284612e7d45732765a02fa683cd070fb7589e04f09942f62205fc9aa4d",
+      "bytes": 188845,
+      "unedited": true
+    }
+  ],
+  "cleanup": "process/POST-CASE-CLEANUP.json",
+  "acceptance_limits": [
+    "A workable input route was observed only for this bound b776 executable and this small case.",
+    "Older P001/N002/001/002/003 cases remain failures/unknowns; no repair or regrade.",
+    "No source fix or proven cause for earlier failures.",
+    "No offset, geometry-output grader, save/reopen, reference, physics, full-contract or roadmap acceptance.",
+    "No claim that app or OS made no disk writes.",
+    "Private ignored evidence is not public delivery."
+  ],
+  "gui_lease_released": true
+}

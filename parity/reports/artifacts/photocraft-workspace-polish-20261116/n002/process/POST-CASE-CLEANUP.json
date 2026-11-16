@@ -1,0 +1,26 @@
+{
+  "kind": "post-case cleanup; separate from frozen calibration and screenshots",
+  "observed_utc": "2026-11-16T15:37:00.544888+00:00",
+  "owned_pid": 11422,
+  "expected_executable": "${ROOT}/.local/native-text-focus-20261116/N002/WeftForge Text Focus N002.app/Contents/MacOS/weftforge",
+  "before": {
+    "exit_code": 0,
+    "full_argv": "${ROOT}/.local/native-text-focus-20261116/N002/WeftForge Text Focus N002.app/Contents/MacOS/weftforge",
+    "executable": "${ROOT}/.local/native-text-focus-20261116/N002/WeftForge Text Focus N002.app/Contents/MacOS/weftforge"
+  },
+  "summary_only_CUA_was_very_next_tool_after_final_observation": true,
+  "CUA_completion_summary_calls": 1,
+  "window_dismissal_UI_observed": false,
+  "reason": "Calibration stopped at initial fresh AX missing revision/pieces/focus. Final own AX exposes no close control or close secondary action. ROOT/frozen plan authorize exact-owned PID cleanup after the CUA summary.",
+  "termination_signal": "SIGTERM",
+  "after": {
+    "exit_code": 1,
+    "raw_ps": "",
+    "full_argv": "",
+    "executable": ""
+  },
+  "remaining_owned_executable_processes": [],
+  "owned_pid_absent": true,
+  "completed_utc": "2026-11-16T15:37:00.760082+00:00",
+  "elapsed_seconds_from_launch": 66.749413917
+}

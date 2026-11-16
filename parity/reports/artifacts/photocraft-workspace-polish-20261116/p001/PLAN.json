@@ -1,0 +1,99 @@
+{
+  "case_id": "NATIVE-UI-PREVIEW-001",
+  "status": "prepared; pre-GO workspace gates passed; no GUI launch; explicit ROOT GO required",
+  "purpose": "Bounded native visual review and one calibrated plain-name constructor route; no release/reference/physics acceptance",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "main_source_sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd",
+  "bundle_id": "org.weftforge.nativecase.photocraftpolish.p001",
+  "native_binary_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "limits": {
+    "wall_seconds_from_launch_to_close": 360,
+    "owned_processes": 1,
+    "launches": 1,
+    "calibration_attempts": 1,
+    "actual_screenshots": [
+      2,
+      3
+    ],
+    "meaningful_actions": 20
+  },
+  "preparation": [
+    "CUA inventory/docs initialized before timed launch; no app selected or captured.",
+    "All 87 source inputs and native binary match fixed commit/hash.",
+    "One proper macOS .app bundle with static Info.plist and 0755 byte-identical own native copy."
+  ],
+  "launch": {
+    "command": [
+      "open",
+      "-n",
+      "-a",
+      "${ROOT}/.local/photocraft-workspace-polish-review-20261116/NATIVE-UI-PREVIEW-001/WeftForge UI Preview P001.app"
+    ],
+    "document_arguments": [],
+    "required_before_getApp": "Independent process table proof of exactly one new PID whose executable is this bundle Contents/MacOS/weftforge; record PID, command and launch time.",
+    "getApp_target_after_pid_proof": "org.weftforge.nativecase.photocraftpolish.p001",
+    "never_use": "bare executable with getApp"
+  },
+  "steps": [
+    {
+      "id": "P1",
+      "actions": "Observe only",
+      "require": "Owned empty window is clean revision 0, 0 pieces, no Unsaved marker; capture own screenshot and AX state."
+    },
+    {
+      "id": "P2",
+      "actions": [
+        "Click plain constructor name field by coordinates derived from P1 screenshot",
+        "Cmd+A",
+        "Type literal Studio preview",
+        "Tab"
+      ],
+      "require": "Immediately read AX, then reread exact constructor value Studio preview before any Add; still revision 0 and 0 pieces.",
+      "on_mismatch": "Stop calibration; no alternate route or retry; retain actual returned state."
+    },
+    {
+      "id": "P3",
+      "only_if": "P2 exact value verified twice",
+      "actions": [
+        "Add rectangle once with default constructor dimensions and coordinates",
+        "Wait through observed state reads for 1 piece and accepted rest mesh",
+        "Frame all only if needed"
+      ],
+      "require": "Observe actual single Studio preview piece, rest mesh and selected Scene row; capture grouped Properties and Scene."
+    },
+    {
+      "id": "P4",
+      "actions": [
+        "Inspect current grouped properties/selection and Sewing header; scroll only within observed Properties if needed",
+        "Toggle Sewing once if needed to inspect actual expanded state"
+      ],
+      "require": "Capture up to one additional own screenshot, for a total of 2\u20133. No extra authoring."
+    },
+    {
+      "id": "P5",
+      "actions": "Close owned dirty preview using observed explicit Discard and close control",
+      "on_calibration_failure_before_authoring": "Close clean owned preview using observed native window close control; this is cleanup, not a calibration retry.",
+      "require": "Observe owned window dismissal without another getApp, then make the very next tool call CUA completion_summary only, exactly once, then independently verify owned PID absence."
+    }
+  ],
+  "forbidden": [
+    "offset/full workflow binding",
+    "physics or reference-parity acceptance",
+    "Save or Export",
+    "Harbor/old-case/external fixtures",
+    "source edits or Cargo during GUI",
+    "personal Chrome capture or interaction",
+    "another launch or calibration route"
+  ],
+  "evidence": {
+    "captures": "Only owned-app unedited screenshots and AX state under captures/",
+    "trace": "Paired before/returned records with UTC and monotonic timestamps under trace/",
+    "process": "Launch route, exact PID proof and independent post-CUA PID absence under process/",
+    "cleanup": "Post-case cleanup recorded separately from frozen action and screenshot evidence"
+  },
+  "scope_limits": [
+    "All 389 workspace tests and strict workspace Clippy passed before this preview freeze; registry/metadata/xtask remain pending, so this is not release readiness.",
+    "Full registry/metadata/xtask remain pending and no reference/native unknown outcome is promoted."
+  ],
+  "action_count_policy": "Count launch, getApp and each app input/observation. Trace/file bookkeeping, final summary and independent PID proof do not consume UI actions; reserve cleanup within the 20-action cap."
+}

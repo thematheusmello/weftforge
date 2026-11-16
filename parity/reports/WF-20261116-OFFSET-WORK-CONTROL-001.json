@@ -7,7 +7,7 @@
   "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
   "kind": "implementation_only",
   "status": "passed",
-  "freshness": "current",
+  "freshness": "stale",
   "feature_ids": [
     "PAT-009"
   ],
@@ -409,5 +409,6 @@
     "Source-only tests add no native, reference, calibrated physics, full garment or complete first-phase credit.",
     "All56 required behavior/scenario/dependency/comparison scopes are preserved. PAT-009 stays partial/not_run/unobserved.",
     "The old closed cases and different diagnostic remain historically attributed; no replay, repair, regrade or acceptance transfer."
-  ]
+  ],
+  "freshness_reason": "The native main.rs source changed from tested 4f80 to b776 workspace polish. The original source/native-stop outcome, identity, result and artifact fields are retained unchanged, with exact original report bytes archived beside the new UI evidence. N003 covers name input and one default rectangle only and supplies no offset acceptance; the closed old cases are not replayed, repaired or regraded."
 }

@@ -1,5 +1,82 @@
 # WeftForge status — active development, 2026-11-16
 
+Current UI source is `b7767bc94c89196f93b4ddbd1e06245f569936ff`, integrated on
+`feat/photocraft-ui-integration`. Runtime source checkpoint `160562d` and
+ancestry checkpoint `d4c220d` match all **87 frozen b776 source inputs**;
+the tested b776 commit is reachable in the integrated history. Current-source
+map checkpoint `a9b6db2` retains **39 rows / 23 surfaces / 23 contracts /
+370 anchors**, **34 Rust variants / 33 schemas / nine MCP tools**. Its one
+clean current-map check passed (session 7345, terminal exit 0); the original
+949/205/56 inventory and eight historical files remain exact.
+
+The PhotoCraft-inspired polish groups Pattern, Arrangement, Fabric, Create
+pattern and Simulation settings; adds original Scene row icons/selection
+styling; and makes existing Sewing controls a document/tool-aware disclosure.
+It changes no shared authoring command, schema, file format or dependency.
+Retained b776 formatting, **389 workspace Rust tests** (including 137 app tests),
+strict all-target workspace Clippy and native debug build passed on that
+source. These were **not rerun in this integration checkout**. Native identity:
+`1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c`.
+Original source-gate handles 65030/40882/13931/55188 are terminal exit 0;
+no Cargo job is active and no binary or compiled target crossed worktrees.
+
+Three separately attributable implementation-only reports retain the source
+and native scopes:
+
+- [Source gates](parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-SOURCE-001.json)
+  pass only the declared source checks and four headless regression definitions.
+- [N003 bounded preview](parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-PREVIEW-001.json)
+  observes one screenshot-grounded name double-click/paste, exact name retained
+  after Tab, then one default Add rectangle: revision 1, selected piece #2,
+  141 displayed rest vertices and matching actual Properties/Scene/2D/3D rest
+  display. Four screenshots and seven AX files remain original bytes.
+  Inclusive observation count 13 / cap 14 and elapsed 225.141 s / cap 420 s are qualified
+  in the selected SUMMARY; the original OUTCOME is unchanged.
+- [P001/N002 stops](parity/reports/WF-20261116-PHOTOCRAFT-WORKSPACE-NATIVE-STOPS-001.json)
+  remain blocked before authoring. P001 retained Pattern 1 instead of the planned
+  name. N002 fresh combined AX showed chrome only; no Tab/paste/Add occurred.
+  Causes remain unknown; N003 is a distinct case and supplies no repair/regrade.
+
+N003's initial standalone AX was chrome-only; full AX followed one observed
+Raise. That temporal sequence establishes no product/controller cause or source
+fix. No Save, Export, offset, simulation, independent geometry-output grade,
+reference comparison or complete feature/workflow was executed by N003.
+Broad `native_ui_verified` remains false; only its explicitly bounded preview
+observation is true. Separate cleanup receipts retain absence of owned PIDs
+85382/11422/16412; no WeftForge test window or WeftForge GUI lease is active.
+No process/UI probe
+was repeated during publication preparation.
+
+All **129 reviewed public derivative files** are retained under
+`parity/reports/artifacts/photocraft-workspace-polish-20261116/` as sibling
+case and headless-gate namespaces. Case bytes/manifests remain untouched.
+Original locator hashes and declared ROOT/HOME transformations retain distinct
+meanings; two redundant raw_ps omissions are explicit. The two workspace raw
+test logs retain their original blank EOF; only those two paths are excluded
+from the scoped whitespace check. Exact old 4f80 reports are archived in the
+separate history namespace before freshness/reason-only transitions to stale.
+No old failed outcome, grade, identity, run or artifact map is rewritten.
+
+Progress remains **41 partial / 15 planned / 0 full contracts / 0 reference
+contracts verified**. UI-001/UI-002/PAT-003 whole verification remains
+`not_run`; PAT-009 remains `partial/blocked` with stale 4f80 evidence.
+All 56 full behavior/scenario/dependency/comparison scopes and the other 52
+feature objects remain exact. UI-006 stays planned. No roadmap gate is accepted.
+
+Metadata cycle passed once: progress generation, progress check and **39
+registry tests**. Session **73628** is terminal, exit **0**. Raw command/output
+and exact-input records are retained privately for root review; no source gates
+were rerun. Clean committed xtask remains due before publication.
+
+Next: root reviews the clean evidence checkpoint, runs clean-committed
+`cargo xtask verify`, then decides publication/PR scope. No push or PR action
+is performed by this integration task. GitHub Actions stays disabled and the
+existing static Pages site remains unchanged. Full editable allowances,
+native offset acceptance, curved/concave/cancellation cases and the complete
+ROADMAP target remain due.
+
+## Earlier offset-publication context (retained)
+
 The latest public main is `1fc1d71993cf193801e44982b757fca8abc5aba7`:
 [PR #49](https://github.com/thematheusmello/weftforge/pull/49) merged the hole,
 Cut & Sew and SVG canvas work. Actions remains disabled; the existing Pages

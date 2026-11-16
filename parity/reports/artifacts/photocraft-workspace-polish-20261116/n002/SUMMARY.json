@@ -1,0 +1,52 @@
+{
+  "case_id": "NATIVE-TEXT-FOCUS-002",
+  "derivative_kind": "Selected public derivative of a separate closed private case",
+  "frozen_status": "CLOSED_STOPPED_INITIAL_AX_PRECONDITION",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "main_rs_sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd",
+  "native_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "actual_result": "Both explicit combined state-and-screenshot returns expose native chrome only. The initial required AX revision/piece-count/focus evidence was missing, so the frozen gate stopped the case.",
+  "explicit_state_API": "app.getAXStateAndScreenshot({ disableDiffing: true, emit: false })",
+  "standalone_getAXState_calls": 0,
+  "getApp_automatic_emission": "The controller tool initially displayed full application controls, but that automatic emission was not stored as an AX return; the retained trace/0001-after.json stores only the binding receipt. No full AX return is reconstructed or credited.",
+  "search_tabs": 0,
+  "paste_attempts": 0,
+  "Add_rectangle_calls": 0,
+  "cause": "Unknown",
+  "captures": [
+    {
+      "path": "captures/01-empty-clean.jpg",
+      "source_record": "0002",
+      "role": "Initial explicit combined capture at the N1 evidence gate."
+    },
+    {
+      "path": "captures/02-initial-ax-precondition-stop.jpg",
+      "source_record": "0003",
+      "role": "Separate subsequent actual combined capture preserving the stopped state before cleanup."
+    }
+  ],
+  "identical_capture_bytes": true,
+  "identical_capture_sha256": "6eeb833805cd57d8dfa722eb741ea0ef7db69f08a59cc0797901bf57712290df",
+  "identical_captures_explanation": "Both actual capture calls returned identical image bytes. Both files and their distinct timestamps/source records are retained; they are not two different visual results. Their actual AX text is also identical chrome-only text.",
+  "cleanup": {
+    "owned_pid": 11422,
+    "method": "Recorded exact executable/full argv re-proof and SIGTERM after next-tool CUA summary",
+    "independent_absence_confirmed_in_frozen_receipt": true,
+    "elapsed_seconds": 66.749413917,
+    "fresh_check_during_derivative_preparation": false,
+    "public_field_omission": "process/POST-CASE-CLEANUP.json /before/raw_ps omitted because it contains a truncated personal executable locator; complete sibling executable/full_argv fields remain after literal normalization."
+  },
+  "implementation_gates": {
+    "workspace_tests_passed": 389,
+    "workspace_tests_failed": 0,
+    "strict_workspace_clippy_exit_code": 0,
+    "read_only_reuse": "Original P001 implementation logs and byte-identical source-bound receipts; no N002 Cargo rerun."
+  },
+  "limits": [
+    "Causes remain unknown; no proven product defect.",
+    "No filled UI, native authoring, selected-piece/rest-mesh, reference parity, physics, full-feature or release credit.",
+    "Implementation tests and strict Clippy do not establish reference parity or successful native input.",
+    "No replay, repair or regrade; the two frozen cases remain separate.",
+    "Existing cleanup receipts record PID absence; no fresh process inventory or UI check was performed during preparation."
+  ]
+}

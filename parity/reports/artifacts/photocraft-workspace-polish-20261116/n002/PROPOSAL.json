@@ -1,0 +1,97 @@
+{
+  "case_id": "NATIVE-TEXT-FOCUS-002",
+  "status": "PROPOSAL_READY_AWAITING_ROOT_GO",
+  "prepared_utc": "2026-11-16T15:28:14.437821+00:00",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "runtime_worktree": "${ROOT}/.local/photocraft-workspace-polish-20261116",
+  "source87_sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+  "main_rs_sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd",
+  "native_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "source_count": 87,
+  "all_source_inputs_match": true,
+  "clean_runtime_git_status": true,
+  "bundle_path": "${ROOT}/.local/native-text-focus-20261116/N002/WeftForge Text Focus N002.app",
+  "bundle_id": "org.weftforge.nativecase.textfocus.n002",
+  "bundle_mode": "0755",
+  "launch_argv": [
+    "/usr/bin/open",
+    "-n",
+    "-a",
+    "${ROOT}/.local/native-text-focus-20261116/N002/WeftForge Text Focus N002.app"
+  ],
+  "bound_artifacts": {
+    "PLAN.json": {
+      "sha256": "5e50f94f3e0691e95b50e5505be263365b3579b82f55e64cace30d4838edba27",
+      "bytes": 7741
+    },
+    "SOURCE87.json": {
+      "sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+      "bytes": 10161
+    },
+    "SOURCE-CHECK.json": {
+      "sha256": "8b314c556b54ee3a1e0bdafb99e247156a57342c9be75c9467947a7847b2bb02",
+      "bytes": 10647
+    },
+    "GATES.json": {
+      "sha256": "595234dc79ca0b95fbd5dcb51be9e0a407ceb585b2547f139a8fa0a1a02ed0c4",
+      "bytes": 4882
+    },
+    "gates/WORKSPACE-TEST-RECEIPT.json": {
+      "sha256": "8bd30ac98dfb4417164048830b0c968a19ba12e7ce49f1d884f3fc7f93ffbdc8",
+      "bytes": 10420
+    },
+    "gates/WORKSPACE-CLIPPY-RECEIPT.json": {
+      "sha256": "fd18154ee9868ee50f9a00b9e2a9d2996f6fcebccd18fd663fbc62c8546dde70",
+      "bytes": 10432
+    },
+    "recorder.cjs": {
+      "sha256": "4c34ff28585c827e08c2dac0e76cffa0ba1628b2240acec8b2476d41ace5e770",
+      "bytes": 2464
+    },
+    "RECORDER-SELFCHECK.json": {
+      "sha256": "6c8706ca7ab43b1623d02abbea84b64e08290cecd4632442350a65baa1663078",
+      "bytes": 525
+    },
+    "PREPARATION.json": {
+      "sha256": "6b013ce118ffae560b407980068f758024fbf52235f5add21c31ea0d3dbbbc2f",
+      "bytes": 893
+    },
+    "WeftForge Text Focus N002.app/Contents/Info.plist": {
+      "sha256": "b88b5ff9a640b2d6c90f0051ab498a1c1cb323db8ee3c10bb57d5a1e0aeedbea",
+      "bytes": 696
+    },
+    "WeftForge Text Focus N002.app/Contents/MacOS/weftforge": {
+      "sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+      "bytes": 62635032
+    }
+  },
+  "preparation_checks": {
+    "recorder_selfcheck": "passed",
+    "node_check": "passed",
+    "plist_lint": "passed"
+  },
+  "gates": {
+    "fmt": "reused source-identical passed receipt/log",
+    "workspace_tests_passed": 389,
+    "workspace_tests_failed": 0,
+    "strict_workspace_clippy": "reused source-identical passed receipt/log",
+    "native_build": "reused source-identical passed receipt/log",
+    "publication_xtask_35392": "Root must confirm finished before GO; no result claimed here"
+  },
+  "execution_allowed": false,
+  "launch_performed": false,
+  "getApp_performed": false,
+  "CUA_calls_performed": false,
+  "owned_pid": null,
+  "root_GO_required": {
+    "proposal_sha256": "SHA256 of this complete file must be explicitly bound by ROOT",
+    "additional_condition": "Root-owned publication clean checkout xtask session 35392 finished",
+    "authority": "ROOT only; this proposal is not a GO"
+  },
+  "closed_cases": "P001 and older 001/002/003 retained unchanged; N002 does not replay, repair or regrade them",
+  "acceptance_limits": [
+    "Only one fresh native focus/paste calibration",
+    "No reference, release, offset, physics or full workflow acceptance",
+    "Private ignored preparation files are not public delivery"
+  ]
+}

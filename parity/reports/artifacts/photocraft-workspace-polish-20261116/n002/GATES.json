@@ -1,0 +1,87 @@
+{
+  "case_id": "NATIVE-TEXT-FOCUS-002",
+  "purpose": "Read-only reuse of source-identical pre-UI implementation gate evidence; no Cargo rerun and no closed UI-case promotion.",
+  "runtime_source_commit": "b7767bc94c89196f93b4ddbd1e06245f569936ff",
+  "source87_sha256": "8071c59415f47a305d5ef13ab9404b34ae44972308907a23d12e37d90eeedbe9",
+  "main_rs_sha256": "6fbba0e0a1f7a2ef90359375b867b1b6e0650cd90469f9174ede7c21d41a5dcd",
+  "native_sha256": "1bfb3b966b5ac8dbf5f16c49d58b16cf2759bbb66b0b18307a6908cc9365145c",
+  "origin_manifest": {
+    "path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/NATIVE-UI-PREVIEW-001/GATE-LOGS.json",
+    "sha256": "c1831f67dcf162773d4cf18cdae92a9a6ac9cd51b6d258936dc4e5aa5d499546"
+  },
+  "logs": [
+    {
+      "path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/cargo-fmt-all-check-final.log",
+      "command": "cargo fmt --all --check",
+      "exit_code": 0,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "origin_path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/cargo-fmt-all-check-final.log",
+      "verified_utc": "2026-11-16T15:27:19.811323+00:00"
+    },
+    {
+      "path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/cargo-test-app-final.log",
+      "command": "cargo test -p weftforge --bin weftforge",
+      "exit_code": 0,
+      "bytes": 14244,
+      "sha256": "21c80958f85841a7bd3948940ea72444c3df85967bb5212d9ca557727d1c89fb",
+      "origin_path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/cargo-test-app-final.log",
+      "verified_utc": "2026-11-16T15:27:19.811875+00:00"
+    },
+    {
+      "path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/cargo-clippy-app-all-targets-final.log",
+      "command": "cargo clippy -p weftforge --all-targets -- -D warnings",
+      "exit_code": 0,
+      "bytes": 6229,
+      "sha256": "21aa715ae8f87eb216f4b4dc7574277166b016f5730a0a1a9f3b304250900a53",
+      "origin_path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/cargo-clippy-app-all-targets-final.log",
+      "verified_utc": "2026-11-16T15:27:19.812216+00:00"
+    },
+    {
+      "path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/cargo-build-native-final.log",
+      "command": "cargo build -p weftforge --bin weftforge",
+      "exit_code": 0,
+      "bytes": 227,
+      "sha256": "cb97adcb1ae25745bd33f46689ce6ac3b573b4bc63de0c0a4849ff6e7a0c1454",
+      "origin_path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/cargo-build-native-final.log",
+      "verified_utc": "2026-11-16T15:27:19.812725+00:00"
+    },
+    {
+      "path": "gates/cargo-test-workspace.log",
+      "command": "cargo test --workspace",
+      "exit_code": 0,
+      "bytes": 42776,
+      "sha256": "bcf2e6b718da212eb22ab1b59a9040c6aa0c605c3812771cfe66c5236a9686a0",
+      "origin_path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/NATIVE-UI-PREVIEW-001/gates/cargo-test-workspace.log",
+      "verified_utc": "2026-11-16T15:27:19.813181+00:00"
+    },
+    {
+      "path": "gates/cargo-clippy-workspace-all-targets.log",
+      "command": "cargo clippy --workspace --all-targets -- -D warnings",
+      "exit_code": 0,
+      "bytes": 1092,
+      "sha256": "36643441c484657d53e5a99b6b17c2bb0bed66eda76334f6324415bb49fece69",
+      "origin_path": "${ROOT}/.local/photocraft-workspace-polish-review-20261116/NATIVE-UI-PREVIEW-001/gates/cargo-clippy-workspace-all-targets.log",
+      "verified_utc": "2026-11-16T15:27:19.813490+00:00"
+    }
+  ],
+  "workspace_tests": {
+    "passed": 389,
+    "failed": 0,
+    "exit_code": 0,
+    "tool_session_id": 40882,
+    "receipt": "gates/WORKSPACE-TEST-RECEIPT.json",
+    "sha256": "8bd30ac98dfb4417164048830b0c968a19ba12e7ce49f1d884f3fc7f93ffbdc8"
+  },
+  "strict_workspace_clippy": {
+    "exit_code": 0,
+    "tool_session_id": 13931,
+    "receipt": "gates/WORKSPACE-CLIPPY-RECEIPT.json",
+    "sha256": "fd18154ee9868ee50f9a00b9e2a9d2996f6fcebccd18fd663fbc62c8546dde70"
+  },
+  "root_publication_xtask": {
+    "tool_session_id": 35392,
+    "status": "Root-owned separate clean publication check; must finish before ROOT GO; not inspected or claimed here."
+  },
+  "release_reference_physics_acceptance": false
+}

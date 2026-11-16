@@ -7,7 +7,7 @@
   "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
   "kind": "implementation_only",
   "status": "blocked",
-  "freshness": "current",
+  "freshness": "stale",
   "feature_ids": [
     "PAT-009"
   ],
@@ -318,5 +318,6 @@
     "sha256": "d2a11bedde3bb7852048101237e4da016298754ec53ed0927fccf1fbd8b20016",
     "remains_current_and_byte_exact": true
   },
-  "unproved": "Offset geometry/math/preview/apply/cancel/history/save/reopen/export, native acceptance, reference parity, physics and full-feature/roadmap acceptance."
+  "unproved": "Offset geometry/math/preview/apply/cancel/history/save/reopen/export, native acceptance, reference parity, physics and full-feature/roadmap acceptance.",
+  "freshness_reason": "The native main.rs source changed from tested 4f80 to b776 workspace polish. The original source/native-stop outcome, identity, result and artifact fields are retained unchanged, with exact original report bytes archived beside the new UI evidence. N003 covers name input and one default rectangle only and supplies no offset acceptance; the closed old cases are not replayed, repaired or regraded."
 }

@@ -1,0 +1,15 @@
+# N002 — stopped initial AX evidence gate
+
+This is a selected public derivative of the separate closed `NATIVE-TEXT-FOCUS-002` case. Both explicit `app.getAXStateAndScreenshot({ disableDiffing: true, emit: false })` returns contain native window chrome only. The initial revision/piece-count/focus AX precondition failed, so no Tab, paste or Add was attempted. The cause is unknown.
+
+The [initial actual capture](captures/01-empty-clean.jpg) and [later stopped-state capture](captures/02-initial-ax-precondition-stop.jpg) are byte-identical. They remain two separate actual calls, with distinct timestamps and source records `0002` and `0003`; they do not represent different visual results. Their [first AX text](captures/01-empty-clean-ax.txt) and [later AX text](captures/02-initial-ax-precondition-stop-ax.txt) are also identical chrome-only returns. The images show the clean empty studio, rev 0, 0 pieces and `Pattern 1`.
+
+The controller's `getApp` automatic tool emission initially displayed full application controls. That emission was not stored as an AX return: [trace/0001-after.json](trace/0001-after.json) contains only the app-binding receipt. This derivative does not reconstruct it or credit it as retained full AX. Paired traces `0002`/`0003` preserve the exact documented API arguments and actual combined-return state. No standalone `getAXState` call occurred.
+
+[SUMMARY.json](SUMMARY.json) and the frozen plan/proposal/root binding, outcome, calibration/focus records, source roster/source-after record, source-identical 389-test and strict workspace Clippy receipts/raw logs, and separate cleanup receipt retain the evidence. The raw implementation logs are explicitly reused from P001's same source/binary gate run; they are not an N002 runtime result. PID 11422 absence is recorded by the existing independent cleanup receipt; no new process or UI check occurred during derivative preparation.
+
+[MANIFEST.json](MANIFEST.json) maps original SHA256, byte size and mode to public derivative SHA256 and byte size. Images and raw AX are unchanged. The cleanup field `/before/raw_ps` is explicitly omitted because its redundant column text contains a truncated personal executable locator. Its complete executable and full-argv sibling fields remain, with declared literal repository/home locator normalization. This is a documented omission, not a command or result repair.
+
+Other text changes are only declared literal locator normalization. Embedded frozen hashes and historical pending-gate statements retain their original meaning. The executable/app bundle, caches, recorder/setup files, unrelated process inventory, redundant source check, original whole-case manifest and launch trace pair are omitted; their exact original case-file omissions and original manifest hash are recorded. Supplemental gate logs named by the frozen gate manifest are outside this selection.
+
+P001 is not rerun, repaired or regraded by N002. Neither case provides proven product-defect, filled-UI, native-authoring, selected-piece/rest-mesh, reference-parity, physics, full-feature or release credit.
