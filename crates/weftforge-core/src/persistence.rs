@@ -374,22 +374,18 @@ impl Project {
     pub fn export_svg(&self, path: impl AsRef<Path>) -> Result<()> {
         export_path_guard(path.as_ref())?;
         self.validate()?;
-        let mut min = [0.0_f64; 2];
-        let mut max = [1.0_f64; 2];
-        for id in self.pieces.iter().flat_map(|piece| &piece.boundary) {
-            let curve = self.curve(*id).unwrap();
-            for point in [
-                self.point(curve.start).unwrap().position,
-                self.point(curve.end).unwrap().position,
-            ]
-            .into_iter()
-            .chain(curve.controls.into_iter().flatten())
-            {
-                for axis in 0..2 {
-                    min[axis] = min[axis].min(point[axis]);
-                    max[axis] = max[axis].max(point[axis]);
-                }
+        let mut min = [f64::INFINITY; 2];
+        let mut max = [f64::NEG_INFINITY; 2];
+        for piece in &self.pieces {
+            let [piece_min, piece_max] = self.piece_bounds(piece.id)?;
+            for axis in 0..2 {
+                min[axis] = min[axis].min(piece_min[axis]);
+                max[axis] = max[axis].max(piece_max[axis]);
             }
+        }
+        if self.pieces.is_empty() {
+            min = [0.0; 2];
+            max = [1.0; 2];
         }
         let width = (max[0] - min[0]) * 1000.0;
         let height = (max[1] - min[1]) * 1000.0;

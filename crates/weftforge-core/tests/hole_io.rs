@@ -171,7 +171,7 @@ fn svg_is_one_evenodd_compound_path_in_mm_and_current_import_refuses_it_atomical
     let svg = fs::read_to_string(&path).unwrap();
     assert_eq!(svg.matches("<path ").count(), 1);
     assert!(svg.contains("fill-rule=\"evenodd\""));
-    assert!(svg.contains("width=\"1000mm\" height=\"1000mm\""));
+    assert!(svg.contains("width=\"240mm\" height=\"360mm\" viewBox=\"0 -360 240 360\""));
     assert!(svg.contains("data-name=\"Original &lt;R240 &amp; hole&gt;\""));
     let data = svg
         .split(" d=\"")

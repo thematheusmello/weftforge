@@ -27,6 +27,43 @@ fn close(actual: [f64; 2], expected: [f64; 2]) {
     );
 }
 
+fn assert_svg_canvas(svg: &str, expected: [f64; 4]) {
+    let root = svg.lines().find(|line| line.starts_with("<svg ")).unwrap();
+    let attribute = |name| {
+        root.split_once(&format!("{name}=\""))
+            .unwrap()
+            .1
+            .split_once('"')
+            .unwrap()
+            .0
+    };
+    let view_box = attribute("viewBox")
+        .split_whitespace()
+        .map(|number| number.parse::<f64>().unwrap())
+        .collect::<Vec<_>>();
+    assert_eq!(view_box.len(), 4);
+    for (actual, expected) in view_box.into_iter().zip(expected).chain(
+        ["width", "height"]
+            .into_iter()
+            .zip([expected[2], expected[3]])
+            .map(|(name, expected)| {
+                (
+                    attribute(name)
+                        .strip_suffix("mm")
+                        .unwrap()
+                        .parse::<f64>()
+                        .unwrap(),
+                    expected,
+                )
+            }),
+    ) {
+        assert!(
+            actual.is_finite() && (actual - expected).abs() <= 1e-9,
+            "canvas {actual} != {expected}"
+        );
+    }
+}
+
 fn history(editor: &Editor) -> [Vec<Project>; 2] {
     let mut backward = editor.clone();
     let mut forward = editor.clone();
@@ -213,6 +250,86 @@ fn own_export_retains_explicit_closing_cubics_and_absolute_origin_without_flatte
     for (a, b) in imported.project.pieces.iter().zip(&original.project.pieces) {
         assert_eq!(a.name, b.name);
     }
+}
+
+#[test]
+fn export_canvas_preserves_negative_large_offset_and_multiple_piece_layouts() {
+    let directory = Directory::new();
+    for (name, rectangles, expected) in [
+        (
+            "negative",
+            vec![([-2., -3.], 0.24, 0.36)],
+            [-2000., 2640., 240., 360.],
+        ),
+        (
+            "large-offset",
+            vec![([999., 999.], 0.24, 0.36)],
+            [999000., -999360., 240., 360.],
+        ),
+        (
+            "multiple-pieces",
+            vec![([-2., -3.], 0.24, 0.36), ([2., 3.], 0.4, 0.5)],
+            [-2000., -3500., 4400., 6500.],
+        ),
+    ] {
+        let mut editor = Editor::default();
+        for (origin, width, height) in rectangles {
+            editor
+                .execute(Command::AddRectangle {
+                    name: name.into(),
+                    origin,
+                    width,
+                    height,
+                })
+                .unwrap();
+        }
+        let path = directory.0.join(format!("{name}.svg"));
+        editor.project.export_svg(&path).unwrap();
+        assert_svg_canvas(&fs::read_to_string(&path).unwrap(), expected);
+        let mut imported = Editor::default();
+        imported
+            .execute(SvgPatternImport::load(&path).unwrap().command())
+            .unwrap();
+        assert_eq!(imported.project.points.len(), editor.project.points.len());
+        for (actual, expected) in imported.project.points.iter().zip(&editor.project.points) {
+            close(actual.position, expected.position);
+        }
+        assert_eq!(imported.project.pieces.len(), editor.project.pieces.len());
+    }
+}
+
+#[test]
+fn export_canvas_includes_true_cubic_extrema_without_control_hull_padding() {
+    let mut editor = Editor::default();
+    editor
+        .execute(Command::AddPolygon {
+            name: "Cubic bulge".into(),
+            vertices: vec![[0., 0.], [1., 0.], [1., -1.], [0., -1.]],
+        })
+        .unwrap();
+    editor
+        .execute(Command::SetCurveControls {
+            curve: editor.project.pieces[0].boundary[0],
+            controls: Some([[0., 1.], [1., 1.]]),
+        })
+        .unwrap();
+    let directory = Directory::new();
+    let path = directory.0.join("cubic.svg");
+    editor.project.export_svg(&path).unwrap();
+    let svg = fs::read_to_string(&path).unwrap();
+    // V(t) = 3t(1-t): the true maximum is .75, between endpoints0 and controls1.
+    assert_svg_canvas(&svg, [0., -750., 1000., 1750.]);
+    assert!(svg.contains("M 0 -0 C 0 -1000 1000 -1000 1000 -0 L 1000 1000"));
+}
+
+#[test]
+fn empty_export_keeps_the_one_metre_blank_canvas() {
+    let directory = Directory::new();
+    let path = directory.0.join("empty.svg");
+    Editor::default().project.export_svg(&path).unwrap();
+    let svg = fs::read_to_string(&path).unwrap();
+    assert_svg_canvas(&svg, [0., -1000., 1000., 1000.]);
+    assert!(!svg.contains("<path "));
 }
 
 #[test]

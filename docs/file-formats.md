@@ -257,7 +257,9 @@ this increment. Every successful edit still invalidates derived revisions.
 
 SVG exports each authored exterior boundary as a named path, retaining straight
 segments and cubic Beziers. Internal annotations are omitted. One user unit is one millimetre; physical width/height
-are expressed in mm and V is converted to downward SVG Y. It does not reconstruct
+are expressed in mm and V is converted to downward SVG Y. Nonempty SVG canvases
+use the union of analytic exterior curve bounds and preserve absolute authored
+U/V coordinates. It does not reconstruct
 the complete garment document when imported elsewhere. Printer scaling, page
 layout/tiling, margins and units in third-party readers still
 need independent workflow validation.
