@@ -54,12 +54,21 @@ Root authorizes a scoped check excluding only these exact preserved artifacts:
 - [green.patch](parity/reports/artifacts/endpoint-edit-source-20261116/green.patch): structural blank context markers.
 
 All raw bytes remain exact. The single scoped staged check passed (PID 39171,
-exit 0); every other staged file was included. Root owns final clean
-committed `cargo xtask verify` and public draft PR publication.
+exit 0); every other staged file was included. Root independently reviewed all
+56 preserved full scopes, eight original inventory files, 46 unchanged reports,
+four freshness-only archives and 85 new report artifact references.
 
-Next: root independently verifies this clean committed checkpoint with
-`cargo xtask verify` before publishing the public draft PR. Remaining
-work includes Rectangle/Transform/middle-pan gesture behavior, complete offset
+Clean committed `cargo xtask verify` passed at `f79f88e5749c24fb642bee5f75979c957c600f40`
+(session 34874 / PID 47646, terminal exit 0, 206.643517 s). It checked the registry,
+generated progress, source map, 48 script tests, six independent evaluator tests
+and CLI help. All 144 frozen source/report/metadata inputs stayed exact and the
+checkout remained clean. The [publication evidence](parity/reports/artifacts/endpoint-edit-publication-20261116/PUBLICATION-MANIFEST-001.json)
+retains the actual logs, hashes, root review and input guards; published locator
+normalization is declared separately. The endpoint's 397 Rust tests, formatting
+and strict Clippy are reused from byte-identical tested source, not rerun here.
+This verification supplies no additional native, physics or reference acceptance.
+
+Remaining work includes Rectangle/Transform/middle-pan gesture behavior, complete offset
 first-phase/advanced authoring tools, current empty-project garment authoring,
 sewing/fitting/save-reopen-edit/export, physics/reference acceptance and all later
 roadmap gates. No physics3652429 merge belongs to this endpoint increment.
