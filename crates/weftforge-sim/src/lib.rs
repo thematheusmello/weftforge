@@ -475,15 +475,16 @@ impl Cloth {
             for remaining in &mut seam_remaining {
                 *remaining -= (settings.seam_closure_speed * dt).min(*remaining);
             }
-            let mut membrane_lambda = vec![[0.; 3]; self.membrane.len()];
+            let mut membrane_corrections = vec![[[0.; 3]; 3]; self.membrane.len()];
             let mut bend_lambda = vec![0.; self.bends.len()];
             let mut seam_lambda = vec![[0.; 3]; self.input.stitches.len()];
             for _ in 0..settings.iterations {
                 if cancelled() {
                     return Err(SimulationError::Cancelled);
                 }
-                for (m, lambda) in self.membrane.iter().zip(&mut membrane_lambda) {
-                    m.solve(&mut x, &self.inverse_masses, dt, lambda);
+                for (m, correction) in self.membrane.iter().zip(&mut membrane_corrections) {
+                    check_cancel(&cancelled)?;
+                    m.solve(&mut x, &self.inverse_masses, dt, correction);
                 }
                 for (b, lambda) in self.bends.iter().zip(&mut bend_lambda) {
                     b.solve(&mut x, &self.inverse_masses, dt, lambda);
