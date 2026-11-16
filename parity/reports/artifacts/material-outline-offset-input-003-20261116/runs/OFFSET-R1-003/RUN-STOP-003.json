@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "attempt_id": "OFFSET-R1-003",
+  "status": "STOPPED_STEP_1_PATTERN_NAME_ENTRY_NOT_APPLIED",
+  "recorded_at_utc": "2026-11-16T13:58:58.010819+00:00",
+  "case_started_at_utc": "2026-11-16T13:57:09.525816+00:00",
+  "process_1_pid": 34836,
+  "process_2_started": false,
+  "binding_sha256": "12adb0b89c9ee98b98f998db3ab8a3efadd33d3f37c0d0dd0c5cdb69f956ca65",
+  "CUA_selector": "org.weftforge.nativecase.offsetr1.r003",
+  "initial_observation": "Fresh native window at revision0,0pieces,clean; File > New Empty succeeded and stayed revision0,0pieces,clean.",
+  "first_unexpected_failure": {
+    "step": 1,
+    "action": "Pattern name planned text replacement: click AX text field43, Cmd+A, type OFFSET-R1, Tab.",
+    "observed": "Pattern name remained Pattern 1 in subsequent AX and screenshot. Batched Properties W replacement via double-click/Cmd+A/type0.4/Tab showed0.40.",
+    "evidence_AX": "observations/003-rectangle-draft-name-width.ax.txt",
+    "evidence_screenshot": "observations/003-rectangle-draft-name-width.png",
+    "consequence": "Stopped before Add rectangle, material entry, baseline save or offset workflow. No alternate input route, repeat, repair or retry performed.",
+    "attribution": "Controller/input-route observation; no cause or product defect asserted."
+  },
+  "last_native_state": "revision0;0pieces;namePattern1;width0.40;height0.6;X-0.25;Y1.00;no material outline dialog entered.",
+  "meaningful_native_actions": 4,
+  "raw_action_sequence": [
+    {
+      "action": "File menu",
+      "meaningful_actions": 1,
+      "total_meaningful_actions": 1,
+      "started_at_utc": "2026-11-16T13:57:18.745Z",
+      "ended_at_utc": "2026-11-16T13:57:18.771Z"
+    },
+    {
+      "action": "New Empty",
+      "meaningful_actions": 1,
+      "total_meaningful_actions": 2,
+      "started_at_utc": "2026-11-16T13:57:23.908Z",
+      "ended_at_utc": "2026-11-16T13:57:23.931Z"
+    },
+    {
+      "action": "Pattern name text replacement and focus transfer",
+      "meaningful_actions": 1,
+      "total_meaningful_actions": 3,
+      "started_at_utc": "2026-11-16T13:57:52.487Z",
+      "ended_at_utc": "2026-11-16T13:57:52.702Z"
+    },
+    {
+      "action": "Properties W text replacement committed with Tab",
+      "meaningful_actions": 1,
+      "total_meaningful_actions": 4,
+      "started_at_utc": "2026-11-16T13:57:52.702Z",
+      "ended_at_utc": "2026-11-16T13:57:53.041Z"
+    }
+  ],
+  "authoring_commands_performed": 0,
+  "snapshot_or_export_outputs_created": false,
+  "formal_method_invocations": 0,
+  "CUA_completion_summary": {
+    "headline": "Stopped the rectangle entry case",
+    "returned_text_unedited": "Completion summary received.",
+    "was_very_next_tool_call_after_final_CUA_outcome": true,
+    "called_exactly_once": true
+  },
+  "no_repair_retry_replay_regrade": true,
+  "native_acceptance_result": false,
+  "reference_verified": false,
+  "production_fix_for_prior002_claimed": false,
+  "frozen_observation_artifacts": {
+    "observations/001-initial.ax.txt": {
+      "sha256": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+      "bytes": 75
+    },
+    "observations/001-initial.png": {
+      "sha256": "0e0281299a097e681d2baa56ed3578302a6478cd3aec5bd7a784b09fb796d1da",
+      "bytes": 175782
+    },
+    "observations/001-initial.time.json": {
+      "sha256": "744a3602b580f9c46f8be83a707ea26f77a48459dc9b063305498f5b1aa9488e",
+      "bytes": 78
+    },
+    "observations/002-new-empty.ax.txt": {
+      "sha256": "b778b885c2edbd59f893ad159dff50689f0006ae99881eaedca7c5271d6b542c",
+      "bytes": 322
+    },
+    "observations/002-new-empty.png": {
+      "sha256": "7df41b8a2c60c2dc8ea8e51c53ec461d508bbceae39e778532fbe51e24228760",
+      "bytes": 176595
+    },
+    "observations/002-new-empty.time.json": {
+      "sha256": "493da9dd1553361e33b1a91f73ec1727553b291ae58540d6c75f8f9e7d67277c",
+      "bytes": 78
+    },
+    "observations/003-rectangle-draft-name-width.ax.txt": {
+      "sha256": "055a667f8e81837720c1f88b03df8613a7070fc1a213399956938661ea7311a5",
+      "bytes": 3407
+    },
+    "observations/003-rectangle-draft-name-width.png": {
+      "sha256": "99bf218379a0127fbdac599af85e3dffb027964a1ce3bdc16bf683ef9aade9ab",
+      "bytes": 177673
+    },
+    "observations/003-rectangle-draft-name-width.time.json": {
+      "sha256": "42fed1889b88c759865cad90d2fdcdb5f7af40d0b13cf7db8966c2969aca719c",
+      "bytes": 78
+    },
+    "observations/native-actions.jsonl": {
+      "sha256": "bcb5a3663dd2039579e0e7324dea8d397a7c34c61398b6b446c04cf1533f1359",
+      "bytes": 722
+    },
+    "observations/process-1-launch.json": {
+      "sha256": "0d34b3bcd2d76b89dc793a9c02c87f90d6b73308b06870b2fcbc86b26fb9fc00",
+      "bytes": 823
+    }
+  }
+}

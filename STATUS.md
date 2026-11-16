@@ -60,10 +60,32 @@ Its selected logs are under the work-control artifact namespace; original
 receipt: `e5819d8eb479eaf833da5e1c3fa426b3e2172aae6544ae5be99d2e41fd3663c3`.
 Session 7611 is terminal exit 0; the native binary is unchanged.
 
-Next: bind and run a fresh native rectangle workflow on that exact binary. OFFSET-R1-003 is packaged separately and has not
-launched. A further PhotoCraft-inspired inspector/Scene polish is isolated on
-`feat/photocraft-workspace-polish`; its source changes have no Cargo/native
-result yet and do not alter this frozen candidate.
+OFFSET-R1-003 is now closed before authoring. New Empty succeeded cleanly,
+but the planned name replacement remained “Pattern 1”; the width replacement
+showed 0.40. No rectangle, material edit, offset, saves, exports or grading
+followed. The controller/input cause remains unknown; this establishes no
+product defect or geometry result. Its selected packet and current blocked
+report are retained under `material-outline-offset-input-003-20261116`.
+PAT-009 verification is blocked by that entry route; overall verification states
+are **48 not run / 5 failed / 3 blocked**, with **41 partial / 15 planned** and
+**0/56 reference contracts verified**. All 56 full scopes remain unchanged.
+No test window is open; owned PID 34836 was independently confirmed absent.
+
+[Draft PR #50](https://github.com/thematheusmello/weftforge/pull/50) publishes
+source/checkpoint `2483c24`; Actions remains disabled, zero new runs were
+created, and Pages is unchanged. This follow-up adds the closed003 packet and
+blocked status while keeping all 45 prior reports and source87 exact. Its
+progress/check/39-registry-test cycle passed (session 50454, exit 0; receipt
+`61d79aae5dad4325269b73bc2ec94a728917a9f64ac567cb050d7d556bc1a9ce`).
+
+Next: run clean committed xtask in this publication checkout, then publish the
+evidence follow-up to PR #50. Calibrate name entry and inspect the new UI on a
+separate checked executable before binding another full offset workflow.
+
+A further PhotoCraft-inspired inspector/Scene polish is isolated on
+`feat/photocraft-workspace-polish`; its 137 headless app tests, formatting, strict app Clippy and native build passed.
+Full workspace checks and an actual OS-window preview remain pending. It does
+not alter this frozen source candidate.
 Closed native cases are never replayed or regraded. Curved/concave native cases,
 full editable allowances and the rest of the roadmap remain due.
 

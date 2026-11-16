@@ -19356,7 +19356,9 @@
         "parity/reports/WF-20261116-MATERIAL-OUTLINE-OFFSET-NATIVE-STOPS-001.json",
         "parity/reports/WF-20261116-OFFSET-WORK-CONTROL-001.json",
         "parity/reports/artifacts/material-outline-offset-work-control-20261116/SOURCE-CHECK-PUBLICATION.json",
-        "parity/reports/artifacts/material-outline-offset-native-stops-20261116/PUBLICATION-MANIFEST.json"
+        "parity/reports/artifacts/material-outline-offset-native-stops-20261116/PUBLICATION-MANIFEST.json",
+        "parity/reports/WF-20261116-OFFSET-NATIVE-INPUT-003.json",
+        "parity/reports/artifacts/material-outline-offset-input-003-20261116/PUBLICATION-MANIFEST.json"
       ],
       "scenarios": [],
       "comparison_criteria": {
@@ -19391,7 +19393,7 @@
       ],
       "prs": [],
       "implementation_status": "partial",
-      "verification_status": "not_run",
+      "verification_status": "blocked",
       "verification_runs": [
         {
           "id": "WF-20261116-MATERIAL-OUTLINE-OFFSET-001",
@@ -19498,6 +19500,35 @@
             "parity/reports/artifacts/material-outline-offset-work-control-20261116/source-review/review.txt": "1a09080c943f495e9075381612d52a91b90628f27fe07f074c097cf3d818f9c2"
           },
           "path": "parity/reports/WF-20261116-OFFSET-WORK-CONTROL-001.json"
+        },
+        {
+          "id": "WF-20261116-OFFSET-NATIVE-INPUT-003",
+          "commit": "4f80d064a60cbdba1358df9074beb74b803e1ee8",
+          "timestamp": "2026-11-16T14:30:54.906477Z",
+          "platform": "macOS27.2 arm64; own WeftForge native CUA input-route observation only",
+          "artifact_hashes": {
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/PUBLICATION-MANIFEST.json": "7e12c04299cb2dac5557acb08cacd938a8383ac2d71a2b6cef0f24291cd48017",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/README.md": "0f206ad9797b7a63f5acc424a716fd759529fe686c51798c58e0766033cbdf57",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/SUMMARY.json": "79086b339ec7143d58c30c744b3e3f14706e3a4220ee3371582c23906410cdef",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/ARTIFACTS-after-stop-003.json": "b32b9e9bc1bc031e459398370a557e2de32438d845694d83a3740b8642b5d63f",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/BINDING.final.json": "36ea4fbc112bc04bf43e8ed99a251fc7c4566b13bdf523d06bf603ffb3e1a9b8",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/NATIVE-PROTOCOL-003.md": "98b664a6aa5832af40535783ab49cc67f30db421a8b6a659de0a3b7e669a56b6",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/POST-CASE-CLEANUP.json": "0564f8fb98143003294bbd68d921c2f2b947a70f94e1c25d58f3c2cb64ab909f",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/ROOT-CLOTH-DATAFLOW-AUDIT-001.json": "f715201d2a7b1c10bbd94431b07d5fa328010f63378dd0c050170f1e28c37155",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/RUN-STOP-003.json": "c7407d3dbbc01b9cb5b718dcce84016fec6e32235473161713e6f183414eed7d",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/observations/001-initial.ax.txt": "af148cd934f2948d1f2537163131874202220d8aa7cb95d886a19ea8cdcaed03",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/observations/001-initial.png": "0e0281299a097e681d2baa56ed3578302a6478cd3aec5bd7a784b09fb796d1da",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/observations/001-initial.time.json": "744a3602b580f9c46f8be83a707ea26f77a48459dc9b063305498f5b1aa9488e",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/observations/002-new-empty.ax.txt": "b778b885c2edbd59f893ad159dff50689f0006ae99881eaedca7c5271d6b542c",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/observations/002-new-empty.png": "7df41b8a2c60c2dc8ea8e51c53ec461d508bbceae39e778532fbe51e24228760",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/observations/002-new-empty.time.json": "493da9dd1553361e33b1a91f73ec1727553b291ae58540d6c75f8f9e7d67277c",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/observations/003-rectangle-draft-name-width.ax.txt": "055a667f8e81837720c1f88b03df8613a7070fc1a213399956938661ea7311a5",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/observations/003-rectangle-draft-name-width.png": "99bf218379a0127fbdac599af85e3dffb027964a1ce3bdc16bf683ef9aade9ab",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/observations/003-rectangle-draft-name-width.time.json": "42fed1889b88c759865cad90d2fdcdb5f7af40d0b13cf7db8966c2969aca719c",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/observations/native-actions.jsonl": "bcb5a3663dd2039579e0e7324dea8d397a7c34c61398b6b446c04cf1533f1359",
+            "parity/reports/artifacts/material-outline-offset-input-003-20261116/runs/OFFSET-R1-003/observations/process-1-launch.json": "ccde7cafe144633cd8d9f530c8ccfab0a5c13dab1b1bf962a79f2d8f29e1d2ee"
+          },
+          "path": "parity/reports/WF-20261116-OFFSET-NATIVE-INPUT-003.json"
         }
       ],
       "known_gaps": [
@@ -19505,8 +19536,9 @@
         "The shared request counter and internal cooperative triangulation control have source-test coverage. A work unit is a documented task/candidate, not a wall-clock bound. Hard native cancellation latency, complete first-increment acceptance and full PAT-009 remain unverified.",
         "Actual native curved/concave/cancellation cases and all required first-phase SA-001–010/013–015 plus reviewed additions remain unexecuted. Source tests, preview labels and analytic area*density do not establish native particle mass, reference semantics, full feature or roadmap acceptance.",
         "Full persistent seam allowances, guide/material/construction roles, per-edge/interval widths, holes/internal/open offsets/endpoint extension, multiple offsets, source-to-internal retention, relationship remapping and manufacturing/printing/reference workflows remain open. Conservative refusal does not complete those requirements.",
-        "Current freshness describes only gated source87 implementation evidence at 4f80d06. Whole PAT-009 stays partial/not_run and reference unobserved. No actual native-case, complete first-phase or reference credit; original full scope/scenarios/dependencies/comparison criteria remain unchanged.",
-        "Closed OFFSET-R1-001 stopped at controller binding; OFFSET-R1-002 stopped at step1 after unexplained revision0-to2/dirty drift and New Empty refusal, before authoring. The separate instrumented NATIVE-IDLE-DIAG-001 did not reproduce that behavior and established no cause or fix. No old case was replayed/regraded; all geometry, apply/cancel/history/reopen/output/native/reference acceptance remains unproved."
+        "Current freshness joins unchanged gated source87 implementation evidence at4f80 with the current blocked case003 controller/input record. Whole PAT-009 stays partial and reference unobserved; no complete first-phase or reference credit. Original full scope/scenarios/dependencies/comparison criteria remain unchanged.",
+        "Closed OFFSET-R1-001 stopped at controller binding; OFFSET-R1-002 stopped at step1 after unexplained revision0-to2/dirty drift and New Empty refusal, before authoring. The separate instrumented NATIVE-IDLE-DIAG-001 did not reproduce that behavior and established no cause or fix. No old case was replayed/regraded; all geometry, apply/cancel/history/reopen/output/native/reference acceptance remains unproved.",
+        "OFFSET-R1-003: This is a controller/input-route block before authoring, not a proven product failure or identified cause. New Empty succeeded cleanly; the planned name was not retained through the recorded AX click, Cmd+A, typing and Tab route. The case stopped before Add rectangle, saves, offset preparation or geometry/output grading."
       ],
       "contradictions": [],
       "blockers": [
