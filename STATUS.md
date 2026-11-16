@@ -13,12 +13,22 @@ terminal exit **0**). Private red/green inputs and receipts await root review
 and publication; ignored local logs are not delivered evidence. No Cargo job
 or GUI window is active.
 
-This changes one frozen source input. The b776 source/native receipts below
-identify the published baseline and do not validate this increment. Exact next
-steps: review the isolated diff, run the required integrated formatting,
-workspace tests, strict Clippy and clean-checkout verification, then reconcile
-source-map/report freshness before publishing tracked evidence. No new native
-run or reference comparison has occurred. Completely compressed gestures and
+This changes one frozen source input. At reviewed source checkpoint
+`4d8c2c381f7df1995720e3677b9b26df6ee063cf`, full formatting, **392 workspace
+Rust tests**, strict all-target workspace Clippy and the native debug build
+passed once, sequentially with one Cargo build job and this checkout's own
+target. All **87 source inputs** remained byte-identical before/after every
+gate. Sessions **88837 / 56926 / 11098 / 93104** are terminal, all exit **0**.
+Native binary identity is
+`3cac4e20fa13b4b9d4305ac2fb97375a64266e1860524244d018fab24a7742f2`;
+it was built but never launched. Actual raw logs, hashes and command receipts
+remain private review inputs pending tracked publication. The b776 source/native
+receipts below identify the published baseline.
+
+Exact next steps: reconcile source-map/report freshness, select and track the
+reviewed evidence, then run registry checks and clean committed `cargo xtask
+verify`. No new native UI run or reference comparison has occurred. Completely
+compressed gestures and
 CUA coordinate delivery remain separate unknowns; this source fix does not
 establish the cause or resolution of the closed exploratory E001 no-commit
 observation. All full contracts, inventory files, disabled Actions and static
