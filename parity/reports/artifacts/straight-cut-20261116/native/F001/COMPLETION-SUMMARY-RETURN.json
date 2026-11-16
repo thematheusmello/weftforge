@@ -1,0 +1,21 @@
+{
+  "kind": "focus diagnostic summary bounds, not exact invocation time",
+  "summary_calls": 1,
+  "paired_operations": 20,
+  "overall_calls": 21,
+  "operation_cap": 40,
+  "overall_cap": 41,
+  "continuous_elapsed_cap_s": 180,
+  "lower_conditional_marker": {
+    "source_record": "0020",
+    "utc": "2026-11-16T02:01:29.473Z",
+    "monotonic_ns": "916805215138791",
+    "conditional_marker_only": true
+  },
+  "upper_after_return": {
+    "utc": "2026-11-16T02:02:19.540Z",
+    "monotonic_ns": "916855282451125"
+  },
+  "summary": "Completed focus probe; closure unverified",
+  "immediate_next_tool_call_after_terminal": true
+}

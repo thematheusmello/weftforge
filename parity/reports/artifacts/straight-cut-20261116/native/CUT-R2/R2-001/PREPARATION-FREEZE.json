@@ -1,0 +1,81 @@
+{
+  "schema": "weftforge.straight-cut.R2-001-preparation-freeze.v1",
+  "status": "preparation freeze only; root UI acceptance hash pending, no final binding/GO",
+  "case": "CUT-R2",
+  "attempt": "R2-001",
+  "root_authorized_for_case": false,
+  "native_lease_granted": false,
+  "missing_root_UI_dependency": true,
+  "original_packet_freeze_sha256": "e8a1a0f2d2b744dcb143bbefe9b3c848c0505be6d71b9ec96c64cefa8e63d3bb",
+  "files": {
+    "ACTOR-BOOTSTRAP.js": {
+      "sha256": "eda4177a143ecccaa74ee859fe87c1c63764211d5852c14248287b66ebbcaa45",
+      "bytes": 9995,
+      "mode": "0o444"
+    },
+    "ACTOR-INITIAL-CAPTURE.js": {
+      "sha256": "7ccca394ecd13cba4afc61b85c89fc99f06f623a22b6bb0c50031fe4b7f421df",
+      "bytes": 440,
+      "mode": "0o444"
+    },
+    "ACTOR-PERSISTENCE-CHECK.js": {
+      "sha256": "f0f2595f8b5099144be3cb3c3c1c52a206aa32c754930ace9be536641a9ba69c",
+      "bytes": 10052,
+      "mode": "0o444"
+    },
+    "ORCHESTRATION-ADDENDUM.json": {
+      "sha256": "123d7f249bd700c69e60588df24d7f9ae0e0406fe740f6d1ccabbe6daded5c48",
+      "bytes": 5315,
+      "mode": "0o444"
+    },
+    "PASSIVE-STATIC-CHECK.cjs": {
+      "sha256": "b5fb3bfde2a5bd529f596258e49f01adef730ef6fa2ca510b8d585f19bdf1229",
+      "bytes": 10432,
+      "mode": "0o444"
+    },
+    "PASSIVE-STATIC-CHECK.json": {
+      "sha256": "1949d483942dcfbcdb272eda796db09c9d5cb900863c19d416423a3756ae4539",
+      "bytes": 1280,
+      "mode": "0o444"
+    },
+    "PREPARATION-PRESERVATION.json": {
+      "sha256": "87cc862f8722b584133f64e3b31774c7c02170f5da25bdd8bb7e33282f80a0cc",
+      "bytes": 104731,
+      "mode": "0o444"
+    },
+    "ROOT-BINDING-DRAFT.json": {
+      "sha256": "5b586da5e9723e85261896f07b6621d1c457b467532333ef4e3b4c93493aba8e",
+      "bytes": 15207,
+      "mode": "0o444"
+    },
+    "WeftForgeCutR2001.app/Contents/Info.plist": {
+      "sha256": "ae9379e3a1d3817fef572760166d53ee64660bd36c032515923e4fbc6eb0f2f5",
+      "bytes": 863,
+      "mode": "0o444"
+    },
+    "WeftForgeCutR2001.app/Contents/MacOS/weftforge": {
+      "sha256": "117981304290aca8ea5f2d63bb77d81641791667bdc8ee89e5cb2b92de3c8d3e",
+      "bytes": 61532936,
+      "mode": "0o555"
+    },
+    "inputs/accepted-redo-r4.weftforge": {
+      "sha256": "85ef9d89d4080a8994ca7c11f060e37d3c9ad91a613b090e07182fb5de6df366",
+      "bytes": 4447,
+      "mode": "0o444"
+    },
+    "STAGING-MANIFEST.json": {
+      "sha256": "8307dce78d4c3a3901d5d14a86f13552995468dc10e7dc11f85e077619da35c6",
+      "bytes": 12388,
+      "mode": "0o444"
+    }
+  },
+  "original_static_operations": 49,
+  "adjusted_static_operations": 50,
+  "startup_operations": 13,
+  "remaining_reserve_operations": 15,
+  "operation_cap": 65,
+  "summary_calls": 1,
+  "overall_call_cap": 66,
+  "elapsed_cap_s": 600,
+  "actual_runtime_proof_or_native_acceptance": false
+}

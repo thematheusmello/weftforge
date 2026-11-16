@@ -1,0 +1,95 @@
+{
+  "case": "CUT-R1",
+  "attempt": "R003",
+  "outcome": "completed",
+  "meaning": "Declared native input/save sequence completed; formal saved-data assessment and root raw UI review pending.",
+  "terminal_source_record": "0139",
+  "planned_quit_source_record": "0139",
+  "owned_pid": 79977,
+  "planned_quit_returned": true,
+  "process_exit_unverified_by_actor": true,
+  "root_separate_exit_verification_required": true,
+  "actual_empty_R0_seen": true,
+  "actual_runtime_proof_passed": true,
+  "actual_cross_cell_check_all20_helpers_and_readiness": true,
+  "field_focus_method": "ONE current-screenshot raw coordinate click; no offsets or copied F001 coordinates",
+  "witnesses": {
+    "creation_fields_exact": true,
+    "parent_R1_created_and_clean_saved": true,
+    "first_precise_boundaries_7_9": true,
+    "invalid_literal": "1e-",
+    "end_literal": "0.625",
+    "left_once": true,
+    "apply_refused_once_r1": true,
+    "zero_insert_without_refocus_literal": "1e0-",
+    "explicit_cancel_r1": true,
+    "two_fresh_boundary_picks_opened_review_only": true,
+    "background_undo_pointer_click_cancelled_review_r1": true,
+    "exact_cut_start": "0.375",
+    "exact_cut_end": "0.625",
+    "exact_review_tab_once": true,
+    "accepted_apply_count": 1,
+    "accepted_R2_new_piece15_selected": true,
+    "select_tool_after_apply": true,
+    "curve_selection_choose_boundary": true,
+    "retained2_inspector_size_m": [
+      0.09,
+      0.36
+    ],
+    "new15_inspector_size_m": [
+      0.15,
+      0.36
+    ],
+    "undo_once_R3_one_piece": true,
+    "redo_once_R4_pieces2_and15": true
+  },
+  "raw_saves": [
+    {
+      "label": "parent-r1",
+      "save_record": "0049",
+      "capture_record": "0050",
+      "retain_record": "0051",
+      "sha256": "afb60f6babbd8667698a84e86a3daf18d1d92a3ae555e302f46f5cd4e9f53e7d"
+    },
+    {
+      "label": "cut-r2",
+      "save_record": "0118",
+      "capture_record": "0119",
+      "retain_record": "0120",
+      "sha256": "05034a5aed0e8440133abb4158b67ec9ca35daeb932d7015191714439f298172"
+    },
+    {
+      "label": "undo-r3",
+      "save_record": "0129",
+      "capture_record": "0130",
+      "retain_record": "0131",
+      "sha256": "534dbf09ee0cf8e712415e241eafea58c0be604346b1e0a0446921cfbe1d09ca"
+    },
+    {
+      "label": "redo-r4",
+      "save_record": "0136",
+      "capture_record": "0137",
+      "retain_record": "0138",
+      "sha256": "85ef9d89d4080a8994ca7c11f060e37d3c9ad91a613b090e07182fb5de6df366"
+    }
+  ],
+  "saved_data_assessment_run": false,
+  "root_UI_review_pending": true,
+  "allocator_and_independent_endpoint_ID_checks_pending_saved_grade": true,
+  "readiness_waits": 0,
+  "inspector_scrolls": 0,
+  "documentation_refresh_calls": 0,
+  "paired_operations": 139,
+  "summary_calls": 1,
+  "overall_actual_calls": 140,
+  "last_native_operation_elapsed_s": 1038.368520875,
+  "immediate_next_tool_call_was_summary_only": true,
+  "summary": "Completed native cut save sequence",
+  "no_retry_repair_or_cleanup_within_case": true,
+  "reference_app_touched": false,
+  "post_summary_upper": {
+    "utc": "2026-11-16T02:48:06.671Z",
+    "monotonic_ns": "919602397952250"
+  },
+  "no_reference_parity_or_full_feature_claim": true
+}

@@ -132,7 +132,7 @@ existing projects may assign different IDs. Current-profile calls use the same
 arguments and additionally include the per-request `_meta` shown above.
 
 The supported shared commands are `import_svg_patterns`, `import_dxf_patterns`, `add_polygon`, `add_rectangle`, `add_ellipse`, `add_internal_segment`, `remove_internal_curve`, `move_point`,
-`set_curve_controls`, `split_curve`, `join_curve`, `resize_piece`, `transform_piece`, `set_placement`, `set_grain`,
+`set_curve_controls`, `split_curve`, `join_curve`, `cut_piece`, `resize_piece`, `transform_piece`, `set_placement`, `set_grain`,
 `set_material`, `add_material`, `update_material`, `add_seam`, `update_seam`,
 `remove_seam`, `add_sewing_group`, `add_sewing_by_length`, `update_sewing_group`, `remove_sewing_group`,
 `remove_piece`, `set_resolution`, and `set_mannequin`.
@@ -163,6 +163,32 @@ can measure them. They do not affect triangulation, stitches, cloth or mass; an
 accepted edit still invalidates old derived revisions. CLI `inspect` exposes each
 pattern's `boundary` and `internal_curves`; MCP inspection returns full construction.
 These are two alternatives on the existing nine tools, with no new CLI verb.
+
+`cut_piece` takes an owner and two distinct straight boundary addresses. Each
+address uses a dimensionless curve parameter strictly between `1e-6` and
+`1 - 1e-6`. For an original 0.24 by 0.36 m rectangle at the origin, this example
+cuts at U = 0.09 m:
+
+```json
+{"type":"cut_piece","data":{"piece":2,"start_curve":7,"start_t":0.375,"end_curve":9,"end_t":0.625}}
+```
+
+Inspect IDs in existing projects before using the example. The result is two
+ordinary editable pieces, with independent boundary points and unchanged fabric,
+placement and grain. The original piece stays on the arc containing its first
+vertex; the appended child is named `Cut piece #<id>`. Swapping the two addresses
+preserves identity. Each cut allocates nine IDs and commits one revision. Undo
+retains allocator high-water; a rejected cut preserves the old document, history
+and output/recovery bytes. A later command failure rolls back the entire batch.
+
+The chord must lie strictly inside a certified simple straight contour. Curved,
+vertex, same-edge, touching, ambiguous and work-exhausted cuts refuse. Any target
+legacy seam or ordered sewing group also refuses, including remote intervals.
+Existing annotations move unchanged to exactly one child; crossing, near-cut or
+ambiguous annotations refuse. See the [engineering contract](../spec/features/PAT-006-straight-cut.md)
+for clearance and work limits. This is one schema alternative on `project_execute`
+and CLI `execute`; the nine MCP tools and native v4 format are retained. Cut & Sew,
+holes, curved cuts and target relationship remapping remain open.
 
 `import_svg_patterns` takes `{"svg":"...original SVG XML..."}` and adds all
 supported pieces as one typed authoring action. The dedicated CLI

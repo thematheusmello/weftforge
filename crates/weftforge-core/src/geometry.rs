@@ -562,33 +562,238 @@ pub(crate) fn validate_internal_segments(
             let curve = project.curve(*id).unwrap();
             let a = project.point(curve.start).unwrap().position;
             let b = project.point(curve.end).unwrap().position;
-            let mut winding = 0_i32;
-            for i in 0..n {
-                work.step()
-                    .map_err(|error| Error(format!("Internal curve {id}: {error}")))?;
-                let (c, d) = (polygon[i], polygon[(i + 1) % n]);
-                ensure(
-                    segment_distance(a, b, c, d) > clearance,
-                    &format!(
-                        "Internal curve {id} must stay strictly inside with 1e-6 metre clearance"
-                    ),
-                )?;
-                work.step()
-                    .map_err(|error| Error(format!("Internal curve {id}: {error}")))?;
-                if c[1] <= a[1] && d[1] > a[1] && cross(c, d, a) > 0.0 {
-                    winding += 1;
-                } else if d[1] <= a[1] && c[1] > a[1] && cross(c, d, a) < 0.0 {
-                    winding -= 1;
-                }
-            }
             ensure(
-                winding != 0,
-                &format!("Internal curve {id} is outside its owning contour"),
+                internal_segment_inside(a, b, &polygon, clearance, work)
+                    .map_err(|error| Error(format!("Internal curve {id}: {error}")))?,
+                &format!(
+                    "Internal curve {id} must stay strictly inside its owning contour with 1e-6 metre clearance"
+                ),
             )?;
         }
         Ok(())
     };
     validate().map_err(|error| Error(format!("Internal curve {first} containment: {error}")))
+}
+
+fn internal_segment_inside(
+    a: [f64; 2],
+    b: [f64; 2],
+    polygon: &[[f64; 2]],
+    clearance: f64,
+    work: &mut ContainmentWork,
+) -> Result<bool> {
+    let mut winding = 0_i32;
+    for i in 0..polygon.len() {
+        work.step()?;
+        let (c, d) = (polygon[i], polygon[(i + 1) % polygon.len()]);
+        if segment_distance(a, b, c, d) <= clearance {
+            return Ok(false);
+        }
+        work.step()?;
+        if c[1] <= a[1] && d[1] > a[1] && cross(c, d, a) > 0.0 {
+            winding += 1;
+        } else if d[1] <= a[1] && c[1] > a[1] && cross(c, d, a) < 0.0 {
+            winding -= 1;
+        }
+    }
+    Ok(winding != 0)
+}
+
+fn straight_polygon(project: &Project, piece: &Piece) -> Result<Vec<[f64; 2]>> {
+    ensure(
+        piece.boundary.len() >= 3,
+        "Cut contour needs at least three edges",
+    )?;
+    let mut points = BTreeSet::new();
+    let mut curves = BTreeSet::new();
+    let mut polygon = Vec::with_capacity(piece.boundary.len());
+    for (index, id) in piece.boundary.iter().enumerate() {
+        let curve = project
+            .curve(*id)
+            .ok_or_else(|| Error("Missing cut boundary curve".into()))?;
+        let next = project
+            .curve(piece.boundary[(index + 1) % piece.boundary.len()])
+            .ok_or_else(|| Error("Missing cut boundary curve".into()))?;
+        ensure(
+            curve.controls.is_none()
+                && curve.end == next.start
+                && curves.insert(*id)
+                && points.insert(curve.start),
+            "Cut needs an ordered, exclusively owned straight contour",
+        )?;
+        let position = project
+            .point(curve.start)
+            .ok_or_else(|| Error("Missing cut boundary point".into()))?
+            .position;
+        crate::document::validate_coordinates(&position)?;
+        polygon.push(position);
+    }
+    Ok(polygon)
+}
+
+pub(crate) fn validate_straight_cut(
+    project: &Project,
+    piece: &Piece,
+    a: (usize, f64),
+    b: (usize, f64),
+    work: &mut ContainmentWork,
+) -> Result<f64> {
+    ensure(
+        (3..=4096).contains(&piece.boundary.len()),
+        "Cut supports 3 to 4096 authored straight boundary curves",
+    )?;
+    for t in [a.1, b.1] {
+        ensure(
+            t.is_finite() && t > 1.0e-6 && t < 1.0 - 1.0e-6,
+            "Cut t must be strictly inside the curve",
+        )?;
+    }
+    let polygon = straight_polygon(project, piece)?;
+    let mut scale = polygon
+        .iter()
+        .flatten()
+        .copied()
+        .map(f64::abs)
+        .fold(1.0, f64::max);
+    for id in &piece.internal_curves {
+        let curve = project
+            .curve(*id)
+            .ok_or_else(|| Error("Missing cut annotation".into()))?;
+        ensure(curve.controls.is_none(), "Cut annotations must be straight")?;
+        for id in [curve.start, curve.end] {
+            let position = project
+                .point(id)
+                .ok_or_else(|| Error("Missing cut annotation point".into()))?
+                .position;
+            crate::document::validate_coordinates(&position)?;
+            scale = position.into_iter().map(f64::abs).fold(scale, f64::max);
+        }
+    }
+    let reserve = (256.0 * f64::EPSILON * scale).next_up();
+    let clearance = (INTERNAL_CLEARANCE + reserve).next_up();
+    let n = polygon.len();
+    for i in 0..n {
+        work.step()?;
+        ensure(
+            distance(polygon[i], polygon[(i + 1) % n]) > reserve
+                && point_segment_distance(polygon[(i + 2) % n], polygon[i], polygon[(i + 1) % n])
+                    > reserve,
+            "Cut contour has a degenerate, backtracking or uncertain adjacent edge",
+        )?;
+        for j in i + 1..n {
+            work.step()?;
+            if (i + 1) % n == j || (j + 1) % n == i {
+                continue;
+            }
+            work.step()?;
+            ensure(
+                segment_distance(
+                    polygon[i],
+                    polygon[(i + 1) % n],
+                    polygon[j],
+                    polygon[(j + 1) % n],
+                ) > reserve,
+                "Cut contour self-intersects, touches or is numerically uncertain",
+            )?;
+        }
+    }
+    let anchor = |(index, t)| {
+        project
+            .curve(piece.boundary[index])
+            .unwrap()
+            .evaluate(project, t)
+    };
+    let (start, end) = (anchor(a)?, anchor(b)?);
+    ensure(
+        distance(start, end) > 2.0 * clearance,
+        "Cut chord is too short",
+    )?;
+    for point in &polygon {
+        work.step()?;
+        ensure(
+            distance(start, *point) > clearance && distance(end, *point) > clearance,
+            "Cut endpoints must stay farther than 1e-6 metres from every old vertex",
+        )?;
+    }
+    for i in 0..n {
+        work.step()?;
+        let (c, d) = (polygon[i], polygon[(i + 1) % n]);
+        if i == a.0 || i == b.0 {
+            let far = if i == a.0 { end } else { start };
+            ensure(
+                cross(c, d, far).abs() / distance(c, d) > clearance,
+                "Cut chord is collinear or too close to an addressed edge's support line",
+            )?;
+        } else {
+            work.step()?;
+            ensure(
+                segment_distance(start, end, c, d) > clearance,
+                "Cut chord crosses, touches or lies too close to another boundary",
+            )?;
+        }
+    }
+    let center = std::array::from_fn(|i| start[i] + (end[i] - start[i]) * 0.5);
+    let mut winding = 0_i32;
+    for i in 0..n {
+        work.step()?;
+        let (c, d) = (polygon[i], polygon[(i + 1) % n]);
+        ensure(
+            point_segment_distance(center, c, d) > reserve,
+            "Cut midpoint is on an uncertain boundary",
+        )?;
+        if (c[1] <= center[1] && d[1] > center[1]) || (d[1] <= center[1] && c[1] > center[1]) {
+            work.step()?;
+            let sign = cross(c, d, center);
+            ensure(
+                sign.abs() > reserve * distance(c, d),
+                "Cut midpoint has an uncertain winding sign",
+            )?;
+            if c[1] <= center[1] && sign > 0.0 {
+                winding += 1;
+            } else if d[1] <= center[1] && sign < 0.0 {
+                winding -= 1;
+            }
+        }
+    }
+    ensure(
+        winding != 0,
+        "Cut chord midpoint must be strictly inside the contour",
+    )?;
+    Ok(reserve)
+}
+
+pub(crate) fn partition_cut_annotations(
+    project: &Project,
+    original: &Piece,
+    retained: &Piece,
+    child: &Piece,
+    reserve: f64,
+    work: &mut ContainmentWork,
+) -> Result<(Vec<Id>, Vec<Id>)> {
+    let polygons = [
+        straight_polygon(project, retained)?,
+        straight_polygon(project, child)?,
+    ];
+    let clearance = (INTERNAL_CLEARANCE + INTERNAL_FLATNESS + reserve).next_up();
+    let (mut kept, mut moved) = (Vec::new(), Vec::new());
+    for id in &original.internal_curves {
+        let curve = project.curve(*id).unwrap();
+        let [a, b] = [curve.start, curve.end].map(|id| project.point(id).unwrap().position);
+        let left = internal_segment_inside(a, b, &polygons[0], clearance, work)?;
+        let right = internal_segment_inside(a, b, &polygons[1], clearance, work)?;
+        ensure(
+            left != right,
+            &format!(
+                "Internal curve {id} cannot be assigned unchanged to exactly one cut child with 1e-6 metre clearance"
+            ),
+        )?;
+        if left {
+            kept.push(*id);
+        } else {
+            moved.push(*id);
+        }
+    }
+    Ok((kept, moved))
 }
 
 fn flatten_internal_contour(

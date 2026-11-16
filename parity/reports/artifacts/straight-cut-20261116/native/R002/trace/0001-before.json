@@ -1,0 +1,13 @@
+{
+  "id": "0001",
+  "label": "fresh-standalone-cua-inventory",
+  "method": "getState",
+  "arguments": {
+    "entrypoint": "mcp__cua_repl.js",
+    "code": "await cua.getState();",
+    "evidenceKind": "native",
+    "standalone": true
+  },
+  "utc": "2026-11-16T01:48:34.829Z",
+  "monotonic_ns": "916030575987750"
+}

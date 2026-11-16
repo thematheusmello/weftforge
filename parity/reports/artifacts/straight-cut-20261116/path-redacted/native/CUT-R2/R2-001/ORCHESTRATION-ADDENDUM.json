@@ -1,0 +1,82 @@
+{
+  "schema": "weftforge.straight-cut.R2-001-orchestration-addendum.v1",
+  "status": "prospective only; root UI acceptance hash pending, no GO/clock/CUA/launch",
+  "case": "CUT-R2",
+  "attempt": "R2-001",
+  "runtime_authorized": false,
+  "native_lease_granted": false,
+  "original_packet_freeze_sha256": "e8a1a0f2d2b744dcb143bbefe9b3c848c0505be6d71b9ec96c64cefa8e63d3bb",
+  "original_native_procedure_sha256": "c810155dd3df45dbce5576d6e8e925e82f07c9a685063ea3ce941d6cfa146158",
+  "actual_input": {
+    "source_snapshot": "<WORKSPACE>/.local/native-straight-cut-20261116/R003/snapshots/redo-r4.weftforge",
+    "copied_input": "<WORKSPACE>/.local/native-straight-cut-20261116/R2-001/inputs/accepted-redo-r4.weftforge",
+    "sha256": "85ef9d89d4080a8994ca7c11f060e37d3c9ad91a613b090e07182fb5de6df366",
+    "read_only": true,
+    "copied_exact_opaque_bytes": true,
+    "no_generated_fixture": true
+  },
+  "accepted_cut_r1_dependency": {
+    "case": "CUT-R1",
+    "snapshot_label": "redo-r4",
+    "root_accepted": false,
+    "snapshot_path": "<WORKSPACE>/.local/native-straight-cut-20261116/R003/snapshots/redo-r4.weftforge",
+    "snapshot_sha256": "85ef9d89d4080a8994ca7c11f060e37d3c9ad91a613b090e07182fb5de6df366",
+    "saved_grade_report": "<WORKSPACE>/.local/native-straight-cut-20261116/R003/SAVED-GRADE-001.json",
+    "saved_grade_report_sha256": "9ad7a17901cea3673069b3ccf9ae67a505a5e48efc7fad2ec1fc75875cf90d54",
+    "root_native_ui_review": "<WORKSPACE>/.local/native-straight-cut-20261116/R003/ROOT-UI-ACCEPTANCE.json",
+    "root_native_ui_review_sha256": null,
+    "root_binding_path": "<WORKSPACE>/.local/native-straight-cut-20261116/R003/ROOT-BINDING.json",
+    "root_binding_sha256": "7cb154dbb530e63a397a4f9671b970effc558fa3085937ade08a62d140315e1e",
+    "attempt": "R003"
+  },
+  "missing_required_before_final_binding_and_GO": {
+    "root_native_ui_review_sha256": null,
+    "root_accepted": false,
+    "note": "Root reports critical-frame review passed so far; independent complete image/trace review is still pending. No acceptance inferred from saved-file grade."
+  },
+  "bootstrap_changes_from_R003": "Reuse top-level declarations/explicit observer/canonical proof/check; adapt case/attempt/owned paths and CUT-R2 caps; replace actual-empty guard with narrow read-only actual-R003 input plus exact dependency receipt hash checks. No live construction parsing or grader execution.",
+  "canonical_proof_case": "CUT-R2",
+  "actual_prelaunch_check": {
+    "source_record": "0003",
+    "method": "local-runtime-bindings-check",
+    "all20_helper_flags_and_context_proof_offline_readiness_required": true,
+    "before_any_launch": true
+  },
+  "declared_field_focus_method": "ONE raw current-screenshot coordinate click; no offset/cache/F001 coordinates. Original SaveAs current Name setValue and fresh observed buttons remain.",
+  "original_steps": [
+    "Fresh process loads only actual accepted R4, fresh history.",
+    "Select new piece15 by current displayed ID.",
+    "Focus current Size m second HEIGHT field; select-all/type literal0.40; capture.",
+    "ONE Tab/capture commits R5/next20.",
+    "Initial SaveAs cut-r240-reopened.work.weftforge in owned work; one current editable Name setValue, exact basename/enabled Save capture, one Save.",
+    "One fs.raw_snapshot retention child-height-r5 after clean R5 save.",
+    "Select retained2 and inspect unchanged anchors; exact saved anchor checks belong to once postclosure grader.",
+    "At most2 inspector scroll/capture and3 readiness wait/capture pairs as original; planned real Quit LAST native operation, very next tool summary-only."
+  ],
+  "unchanged": {
+    "source_commit": "19b1e88245dc627cfec8164f4924b335fe44853d",
+    "clean_metadata_commit": "982ad0340d3c848bb8a959dca7a934886f1d7ae9",
+    "source_input_count": 69,
+    "native_binary_sha256": "117981304290aca8ea5f2d63bb77d81641791667bdc8ee89e5cb2b92de3c8d3e",
+    "immutable_V2_models_tolerances_math_and_saved_grader": true,
+    "original_static_operations": 49,
+    "original_startup_operations": 12,
+    "adjusted_static_operations": 50,
+    "adjusted_startup_operations": 13,
+    "extra_FS_reserve_used": 1,
+    "remaining_reserve_operations": 15,
+    "operation_cap": 65,
+    "summary_calls": 1,
+    "overall_call_cap": 66,
+    "continuous_elapsed_cap_s": 600
+  },
+  "actor_sources": {
+    "ACTOR-BOOTSTRAP.js": "eda4177a143ecccaa74ee859fe87c1c63764211d5852c14248287b66ebbcaa45",
+    "ACTOR-PERSISTENCE-CHECK.js": "f0f2595f8b5099144be3cb3c3c1c52a206aa32c754930ace9be536641a9ba69c",
+    "ACTOR-INITIAL-CAPTURE.js": "7ccca394ecd13cba4afc61b85c89fc99f06f623a22b6bb0c50031fe4b7f421df"
+  },
+  "later_capture_policy": "await cutObserve(cutController, cutApp, 'literal-planned-label', cutMark, nodeRepl); all five actual arguments; no future-app closure.",
+  "old_R003_and_other_attempts_untouched": true,
+  "no_new_harness_or_runtime_helpers": true,
+  "passive_check_only": "Reuse AST/planned-proof schema check adapted to case/caps/input draft; not actual CUA proof."
+}

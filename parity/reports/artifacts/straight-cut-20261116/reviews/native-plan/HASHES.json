@@ -1,0 +1,63 @@
+{
+  "schema": "weftforge.straight-cut.native-plan-static-review.v1",
+  "review": "review001",
+  "status": "two_provenance_blockers_before_execution",
+  "native_case_or_formal_grade_executed": false,
+  "reviewed_freeze_sha256": "1deb948c67b6bfb86d6aa383a21b92145c4021607311ddab1141950815e0d2a3",
+  "report_sha256": "cc1f53e0b6d07a03385092178c486fa123bbe2b67cbd476cb30e877bf74e8c47",
+  "packet_files_including_freeze": 19,
+  "external_dependencies": 14,
+  "all_pinned_hashes_matched": true,
+  "independent_accounting": {
+    "CUT-R1": {
+      "static": 158,
+      "cap": 175,
+      "summary": 1,
+      "seconds": 1200
+    },
+    "CUT-R2": {
+      "static": 49,
+      "cap": 65,
+      "summary": 1,
+      "seconds": 600
+    },
+    "Start12": 12,
+    "SaveAs15": 15
+  },
+  "inputs_sha256": {
+    ".local/straight-cut-native-plan-20261116/FREEZE.json": "1deb948c67b6bfb86d6aa383a21b92145c4021607311ddab1141950815e0d2a3",
+    ".local/straight-cut-native-plan-20261116/COMPLETION-SUMMARY-RETURN.template.json": "0835d802930b5d377dce9306ea4cf86f96cc3991b3d2b88ca93379bcf8a0fe5d",
+    ".local/straight-cut-native-plan-20261116/CUA-HANDOFF.md": "4bd86ae47e2cf68e50308f34a021c7a195091a4206f069d2f813201513d8f5f5",
+    ".local/straight-cut-native-plan-20261116/CUA-INITIAL-CAPTURE.template.js": "7ccca394ecd13cba4afc61b85c89fc99f06f623a22b6bb0c50031fe4b7f421df",
+    ".local/straight-cut-native-plan-20261116/NATIVE-LEASE-CLOSED.template.json": "1de67b56175e1b09147915d5985a33a713fede95855faaf9b6cc57ee1af01bc0",
+    ".local/straight-cut-native-plan-20261116/PLAN.json": "c2144f37bccc0cafa58016aa787d332e3839c9ba8ef8a2fdfcd573189a2c3d82",
+    ".local/straight-cut-native-plan-20261116/PREFLIGHT.json": "78c6c3a1e3b51561a9b489c31f4a5cdb15dc40dfbc7bc851d7290cd30edd0d8d",
+    ".local/straight-cut-native-plan-20261116/README.md": "1ff69241576dabb467ebdf4c3a0aa27e2c8995420f370ebab86263332023f81d",
+    ".local/straight-cut-native-plan-20261116/ROOT-BINDING.CUT-R1.template.json": "a216ac503e5f3e1648b848e423b516626905f926b9ad45f6c302f8168d27e7c6",
+    ".local/straight-cut-native-plan-20261116/ROOT-BINDING.CUT-R2.template.json": "aa6ff7bbe5581f8dfb4895d3b66d3249ded9f5e14e0a294bb2cd3bf23a6446bd",
+    ".local/straight-cut-native-plan-20261116/ROOT-NATIVE-UI-REVIEW.template.json": "b4841e02b71607262e2eec6c98ac7b7c91f23308d0a3a22e9663b3634ff6bb61",
+    ".local/straight-cut-native-plan-20261116/SELF-CHECK-OBSERVER-001.json": "89093bb5968d27743b4b83d36c8170f353b6016e1eec1821c9c17031430216ad",
+    ".local/straight-cut-native-plan-20261116/SELF-CHECK-SAVED-001.json": "f9beb8594d1eba787f8aecd34168aad6e8ec7371eff9ae5522a6fb8f1fbd005c",
+    ".local/straight-cut-native-plan-20261116/SELF-CHECK-SAVED-002.json": "f9beb8594d1eba787f8aecd34168aad6e8ec7371eff9ae5522a6fb8f1fbd005c",
+    ".local/straight-cut-native-plan-20261116/SOURCE-ROUTES.md": "69d86e96f7d3d19c21a58ef2fe3787a102a3dedf49316c80bc5102803f183208",
+    ".local/straight-cut-native-plan-20261116/grade_saved.py": "84083ee02976187d45bb0e68351997e9d63ba0235927c6f09c69357229a3a45b",
+    ".local/straight-cut-native-plan-20261116/retain_saved.py": "5fd28138d6ce42991ad3576a5ecfec2a4f8cbe70a0b98be32ebb37f809a12888",
+    ".local/straight-cut-native-plan-20261116/selfcheck_observer.cjs": "cce327970542f6c85a8c1d20579c2302f3d96cf09431100a61960b871f9ff72a",
+    ".local/straight-cut-native-plan-20261116/selfcheck_saved.py": "5c54832e996521c6125d1e501830d9060f753e7366b4f36156927e94d3dff453",
+    ".local/straight-cut-contract-20261115/approved-v2/MANIFEST.json": "1144d1e955cd77bd3e8690364555e7f0e9fec1a921b7ee410966a45fd0edd942",
+    ".local/straight-cut-contract-20261115/approved-v2/CONTRACT.md": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c",
+    ".local/straight-cut-contract-20261115/approved-v2/ORACLE.json": "13846d635a1432c3e5bfd77eb66802cc633bd29a3661c940972783dc2f5dfea2",
+    ".local/straight-cut-contract-20261115/approved-v2/NATIVE-R.md": "c810155dd3df45dbce5576d6e8e925e82f07c9a685063ea3ce941d6cfa146158",
+    ".local/straight-cut-contract-20261115/approved-v2/fixtures/R240.weftforge": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+    ".local/straight-cut-contract-20261115/approved-v2/fixtures/L.weftforge": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d",
+    ".local/internal-native-plan-v2-20261115/grade_saved.py": "6b3aefcca60fcc12d78a75e967f63c582d76e7a2d134975393a72a3a9c184c78",
+    ".local/internal-native-plan-v2-20261115/retain_saved.py": "6cc6224724ce74cb15f7674e3b3198e065ef0670c6dae03357c6229fec54a588",
+    ".local/native-transform-controller-20261115/controller.cjs": "9debdc6b1d42b49dce16c8b1227df0621b579532ca7c5fd76c3a8a5db537790b",
+    ".local/native-length-readouts-v2-20261115/recorder.cjs": "45707351f12007967c3803a7551a262607fd68ff2939a2793f7c4c86921329fc",
+    ".local/native-internal-annotations-20261115/C002/OBSERVER-FRAGMENT.cjs": "d580450b45fc2fe42b19c146fb7023f84d04e7b9596ac24a8f5afe3e81be7729",
+    ".local/straight-cut-20261115/apps/weftforge/src/main.rs": "2e8a3f7003ab5ee56c38042162bcdfc325d30428510b878b0d0bf66053e68343",
+    ".local/straight-cut-contract-20261115/approved-v2/check_arithmetic.py": "ca7ba64c80a0b54eda9ee005f0374e431eaf2686d08e79d27ed9b28c76e5d955",
+    ".local/straight-cut-contract-20261115/approved-v2/ARITHMETIC-CHECK.json": "359678bcf84b6821a2ce7c63567d905097bd32862a72147d87dc470c85c37465",
+    "AGENTS.md": "b9bdf4c9b881d0ab6c084a5314c45f4f55ff0bb17d19fafe357caa353cd7e78e"
+  }
+}

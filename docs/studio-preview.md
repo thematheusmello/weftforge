@@ -1,6 +1,54 @@
 # Native studio preview
 
-## Straight internal annotations (ad7, native A only)
+## Straight cuts and reopened child editing (19b1)
+
+These native frames come from runtime
+`19b1e88245dc627cfec8164f4924b335fe44853d` and executable
+`117981304290aca8ea5f2d63bb77d81641791667bdc8ee89e5cb2b92de3c8d3e`.
+The two bounded cases start with actual empty UI authoring, then reopen the
+actual accepted Redo save in a fresh process. Saved-file assessment and raw-UI
+review are separate; both passed their original criteria.
+Public copies remove device identifiers from color-profile metadata; their
+encoded pixels and color data are unchanged. The
+[metadata record](../parity/reports/artifacts/straight-cut-20261116/JPEG-METADATA-REDACTION.json)
+distinguishes these copies from the untouched private originals.
+
+![Exact cut parameters and independent child areas before Apply](../parity/reports/artifacts/straight-cut-20261116/native/R003/captures/exact-cut-tabbed-ready-0.jpg)
+
+The original rectangle is 0.24 × 0.36 m. Curve #7 at t=0.375 and curve #9 at
+t=0.625 define a vertical cut at U=0.09 m. The review shows the proposed
+0.0324 / 0.054 m² pieces before accepting anything. Unfinished `1e-` is refused;
+the [no-refocus caret witness](../parity/reports/artifacts/straight-cut-20261116/native/R003/captures/invalid-start-caret-witness-one-e-zero-minus-0.jpg)
+retains `1e0-`. Explicit Cancel and a later backdrop click leave R1 unchanged.
+Two pointer picks open review without applying a cut.
+
+![One Apply creates two editable pieces and selects the new child](../parity/reports/artifacts/straight-cut-20261116/native/R003/captures/accepted-cut-r2-new-fifteen-selected-0.jpg)
+
+One Apply creates R2 and selects child #15. Its size is 0.15 × 0.36 m; retained
+piece #2 is 0.09 × 0.36 m. Undo restores the single rectangle at R3; Redo restores
+the same two independent pieces at R4. Four clean native saves retain the declared
+IDs, boundary walks, allocator high-water, materials, placement and grain.
+
+![The reopened child is edited and saved with height 0.400 m](../parity/reports/artifacts/straight-cut-20261116/native/CUT-R2/R2-001/captures/child-height-r5-clean-save-0.jpg)
+
+A fresh process loads the exact R4 snapshot. Editing child #15's height to
+0.40 m and pressing Tab once commits R5. The
+[retained piece inspection](../parity/reports/artifacts/straight-cut-20261116/native/CUT-R2/R2-001/captures/reopen-retained-piece-two-inspected-r5-0.jpg)
+still shows 0.09 × 0.36 m. Independent saved-state checks verify the retained
+anchors and IDs; the child's intentional area increase is separate from the
+pre-edit cut conservation check. Both owned test processes quit and their exits
+were verified separately.
+
+This is a straight, unsewn rectangle workflow. Native concave/failed-I/O cases,
+general cutting, holes, Cut & Sew and reference parity remain open. R2's
+contradictory draft-only metadata flag is preserved with its clarification and
+qualified acceptance; actual required dependency files/hashes were present.
+Earlier setup/focus failures and the focus diagnostic's timing uncertainty remain
+in the [bounded report](../parity/reports/WF-20261116-STRAIGHT-CUT-001.json) and
+[evidence collection](../parity/reports/artifacts/straight-cut-20261116/README.md).
+The shaded 3D rest preview is not a drape or contact-quality acceptance.
+
+## Historical straight internal annotations (ad7, native A only)
 
 These are untouched product-UI images from runtime
 ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5 and native debug executable
@@ -9,6 +57,7 @@ Root accepted bounded A003 after a separate review of all 60 original images and
 142 returned pairs; root directly reviewed fourteen keyframes. The saved grader
 ran once and passed six native v4 states. B–E remain required and are outside this
 packet’s coverage. Full annotation, accessibility, reference and garment acceptance remain open.
+Its evidence is stale on the changed cut runtime; the original result is preserved.
 
 ![Straight internal line selected inside its owning unit-square piece](../parity/reports/artifacts/internal-annotations-20261115/native/A003/captures/internal-line-created-0.jpg)
 

@@ -23,6 +23,7 @@ enum Tool {
     Polygon,
     Rectangle,
     InternalLine,
+    CutPiece,
     Sew,
     FreeSewing,
     SewingPaths,
@@ -35,6 +36,7 @@ impl Tool {
             Self::Polygon => "Polygon",
             Self::Rectangle => "Rectangle",
             Self::InternalLine => "Internal line",
+            Self::CutPiece => "Cut piece",
             Self::Sew => "Sew edges",
             Self::FreeSewing => "Free sewing",
             Self::SewingPaths => "M:N sewing",
@@ -414,6 +416,72 @@ struct InternalLineDraft {
     epoch: u64,
     error: Option<String>,
 }
+
+struct CutPreview {
+    curves: [Option<Id>; 2],
+    parameters: [String; 2],
+    project: Result<Project, String>,
+}
+struct CutDraft {
+    piece: Id,
+    revision: u64,
+    curves: [Option<Id>; 2],
+    parameters: [String; 2],
+    modal: bool,
+    input: RetainedInspectorInput,
+    field_focus: Option<egui::Id>,
+    epoch: u64,
+    preview: Option<CutPreview>,
+    error: Option<String>,
+}
+impl CutDraft {
+    fn command(&self) -> Result<Command, String> {
+        let mut parameters = [0.; 2];
+        for (parameter, text) in parameters.iter_mut().zip(&self.parameters) {
+            *parameter = text.trim().parse::<f64>().map_err(|_| {
+                "Enter finite decimal Start t and End t, strictly between 0.000001 and 0.999999."
+            })?;
+            if !parameter.is_finite() {
+                return Err("Cut parameters must be finite.".into());
+            }
+        }
+        Ok(Command::CutPiece {
+            piece: self.piece,
+            start_curve: self.curves[0].ok_or("Choose the start boundary.")?,
+            start_t: parameters[0],
+            end_curve: self.curves[1].ok_or("Choose the end boundary.")?,
+            end_t: parameters[1],
+        })
+    }
+    fn refresh(&mut self, project: &Project) {
+        if self.preview.as_ref().is_some_and(|preview| {
+            preview.curves == self.curves && preview.parameters == self.parameters
+        }) {
+            return;
+        }
+        self.error = None;
+        let candidate = self.command().and_then(|command| {
+            let mut editor = Editor::new(project.clone()).map_err(|error| error.to_string())?;
+            editor.execute(command).map_err(|error| error.to_string())?;
+            Ok(editor.project)
+        });
+        self.preview = Some(CutPreview {
+            curves: self.curves,
+            parameters: self.parameters.clone(),
+            project: candidate,
+        });
+    }
+    fn endpoints(&self, project: &Project) -> Option<[[f64; 2]; 2]> {
+        let mut points = [[0.; 2]; 2];
+        for (index, point) in points.iter_mut().enumerate() {
+            let curve = project.curve(self.curves[index]?)?;
+            *point = curve
+                .evaluate(project, self.parameters[index].trim().parse().ok()?)
+                .ok()?;
+        }
+        Some(points)
+    }
+}
 impl InternalLineDraft {
     fn commands(&self, project: &Project) -> Vec<Command> {
         if let Some(curve) = self.curve.and_then(|id| project.curve(id)) {
@@ -681,6 +749,7 @@ struct Studio {
     transform: Option<TransformDraft>,
     transform_gesture: Option<TransformGesture>,
     internal_line: Option<InternalLineDraft>,
+    cut_piece: Option<CutDraft>,
     drag_input: Option<RetainedInspectorInput>,
     drag_piece: Option<Id>,
     pattern_import: Option<PatternImportDraft>,
@@ -762,6 +831,7 @@ impl Studio {
             transform: None,
             transform_gesture: None,
             internal_line: None,
+            cut_piece: None,
             drag_input: None,
             drag_piece: None,
             pattern_import: None,
@@ -874,6 +944,7 @@ impl Studio {
         self.transform = None;
         self.transform_gesture = None;
         self.internal_line = None;
+        self.cut_piece = None;
         self.drag_input = None;
         self.drag_piece = None;
     }
@@ -1034,6 +1105,7 @@ impl Studio {
             || self.transform.is_some()
             || self.transform_gesture.is_some()
             || self.internal_line.is_some()
+            || self.cut_piece.is_some()
             || self.free_sewing.is_some()
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some();
@@ -1078,6 +1150,7 @@ impl Studio {
     fn select(&mut self, ctx: &egui::Context, selected: Option<Id>) -> bool {
         if self.tool == Tool::Transform
             || self.tool == Tool::InternalLine
+            || self.tool == Tool::CutPiece
             || self.selected_internal_curve().is_some()
         {
             if self.selected == selected {
@@ -1091,6 +1164,7 @@ impl Studio {
             self.selected_curve = None;
             self.draft = None;
             self.internal_line = None;
+            self.cut_piece = None;
             self.drag_point = None;
             self.preview = None;
             self.drag_input = None;
@@ -1109,6 +1183,12 @@ impl Studio {
     fn select_curve(&mut self, ctx: &egui::Context, selected: Option<(Id, Id)>) {
         let piece = selected.map(|(piece, _)| piece);
         let curve = selected.map(|(_, curve)| curve);
+        if self.tool == Tool::CutPiece
+            && (self.selected != piece || self.selected_curve != curve)
+            && !self.allow_piece_selection(ctx)
+        {
+            return;
+        }
         if self.selected != piece
             && selected.is_some_and(|(piece, curve)| {
                 self.editor
@@ -1123,6 +1203,7 @@ impl Studio {
         if self.selected != piece
             && (self.tool == Tool::Transform
                 || self.tool == Tool::InternalLine
+                || self.tool == Tool::CutPiece
                 || self.selected_internal_curve().is_some())
             && !self.select(ctx, piece)
         {
@@ -1130,6 +1211,7 @@ impl Studio {
         }
         if (self.selected != piece || self.selected_curve != curve) && self.commit_draft() {
             self.internal_line = None;
+            self.cut_piece = None;
             self.selected = piece;
             self.selected_curve = curve;
         }
@@ -1179,6 +1261,7 @@ impl Studio {
         self.transform = None;
         self.transform_gesture = None;
         self.internal_line = None;
+        self.cut_piece = None;
         self.drag_point = None;
         self.preview = None;
         self.drag_input = None;
@@ -1392,7 +1475,7 @@ impl Studio {
         }
     }
     fn choose_open(&mut self) {
-        if self.free_sewing.is_none() && !self.commit_draft() {
+        if self.free_sewing.is_none() && self.cut_piece.is_none() && !self.commit_draft() {
             return;
         }
         if self.dirty {
@@ -1612,6 +1695,7 @@ impl Studio {
     fn history(&mut self, ctx: &egui::Context, redo: bool) {
         self.free_sewing = None;
         self.internal_line = None;
+        self.cut_piece = None;
         self.drag_point = None;
         self.preview = None;
         self.drag_input = None;
@@ -1666,7 +1750,7 @@ impl Studio {
         }
     }
     fn recover(&mut self, path: PathBuf) {
-        if self.free_sewing.is_none() && !self.commit_draft() {
+        if self.free_sewing.is_none() && self.cut_piece.is_none() && !self.commit_draft() {
             return;
         }
         if self.dirty {
@@ -1680,7 +1764,7 @@ impl Studio {
             return;
         }
         let mut open = true;
-        egui::Window::new("Recover editable construction").enabled(self.rectangle.is_none() && self.transform.is_none() && self.sewing_edit.is_none() && self.pattern_import.is_none() && !self.free_sewing.as_ref().is_some_and(|draft| draft.modal)).open(&mut open).default_width(520.0).show(ctx,|ui| {
+        egui::Window::new("Recover editable construction").enabled(self.rectangle.is_none() && self.transform.is_none() && self.sewing_edit.is_none() && self.pattern_import.is_none() && !self.free_sewing.as_ref().is_some_and(|draft| draft.modal) && !self.cut_piece.as_ref().is_some_and(|draft|draft.modal)).open(&mut open).default_width(520.0).show(ctx,|ui| {
             ui.label("Recovery opens a copy. Save current edits before replacing the document.");
             ui.horizontal(|ui| {
                 if ui.button("Refresh").clicked() { self.refresh_recovery(); }
@@ -1916,6 +2000,12 @@ impl Studio {
                     self.set_tool(Tool::InternalLine);
                     ui.close();
                 }
+                let response = ui.add_enabled(self.selected.is_some(), egui::Button::new("Cut piece"));
+                self.retain_inspector_input(&response, false);
+                if response.clicked() {
+                    self.begin_cut_piece(ui.ctx());
+                    ui.close();
+                }
                 if self.selected.is_none() { ui.small("Select an owner pattern first."); }
             });
             self.retain_inspector_input(&response, menu.is_some());
@@ -1948,6 +2038,7 @@ impl Studio {
                 ui.label("Transform pattern: drag a boundary to translate or its handle to rotate.");
                 ui.label("Transform keeps the arranged 3D surface and world warp fixed; placement rotation values may change.");
                 ui.label("Internal line: select an owner, then click start/end or enter precise endpoints.");
+                ui.label("Cut piece: select an owner and two straight boundaries, then review the independent pieces.");
                 ui.label("SVG and DXF export exterior boundaries only; OBJ exports cloth surfaces. Internal annotations stay in the native project.");
                 ui.label("3D: drag to orbit; scroll to zoom.");
                 ui.label("Space plays or pauses simulation.");
@@ -2006,6 +2097,16 @@ impl Studio {
                 self.retain_inspector_input(&response, false);
                 if response.clicked() { self.cancel_internal_line(ui.ctx()); }
             }
+            if self.tool == Tool::CutPiece {
+                ui.separator();
+                ui.label(if self.selected.is_none() { "Select an owner pattern first." } else if self.cut_piece.is_some() { "Choose end boundary · review before cutting" } else { "Choose start boundary · straight cut" });
+                let response = ui.add_enabled(self.selected.is_some(), egui::Button::new("Cut piece…"));
+                self.retain_inspector_input(&response, false);
+                if response.clicked() { self.open_cut_piece(ui.ctx()); }
+                let response = ui.button("Cancel cut");
+                self.retain_inspector_input(&response, false);
+                if response.clicked() { self.cancel_cut_piece(ui.ctx()); }
+            }
             if self.tool == Tool::SewingPaths {
                 ui.separator();
                 ui.label(format!("Side {} · A {} / B {}", if self.sewing_draft.selecting_b { "B" } else { "A" }, self.sewing_draft.a.len(), self.sewing_draft.b.len()))
@@ -2032,6 +2133,7 @@ impl Studio {
             Tool::Polygon,
             Tool::Rectangle,
             Tool::InternalLine,
+            Tool::CutPiece,
             Tool::Sew,
             Tool::FreeSewing,
             Tool::SewingPaths,
@@ -2044,7 +2146,11 @@ impl Studio {
             let response = tool_button(ui, tool, self.tool == tool);
             self.retain_inspector_input(&response, false);
             if response.clicked() {
-                self.set_tool(tool);
+                if tool == Tool::CutPiece {
+                    self.begin_cut_piece(ui.ctx());
+                } else {
+                    self.set_tool(tool);
+                }
             }
         }
     }
@@ -2287,8 +2393,11 @@ impl Studio {
                                         let selected = self.selected == Some(piece.id);
                                         let mut button = egui::Button::selectable(
                                             selected,
-                                            egui::RichText::new(&piece.name)
-                                                .color(Color32::from_gray(222)),
+                                            egui::RichText::new(format!(
+                                                "{} · #{}",
+                                                piece.name, piece.id
+                                            ))
+                                            .color(Color32::from_gray(222)),
                                         )
                                         .min_size(Vec2::new(ui.available_width(), 25.0))
                                         .truncate();
@@ -2300,6 +2409,7 @@ impl Studio {
                                         let response = ui.add(button).on_hover_text(&piece.name);
                                         if self.tool == Tool::Transform
                                             || self.tool == Tool::InternalLine
+                                            || self.tool == Tool::CutPiece
                                             || self.selected_internal_curve().is_some()
                                         {
                                             self.retain_inspector_input(&response, false);
@@ -2331,11 +2441,13 @@ impl Studio {
         let mut commit = false;
         let mut acting = self.search
             || self.internal_line.is_some()
+            || self.cut_piece.is_some()
             || self.transform.is_some()
             || self.transform_gesture.is_some()
             || ((self.tool == Tool::Transform
                 || self.tool == Tool::Select
-                || self.tool == Tool::InternalLine)
+                || self.tool == Tool::InternalLine
+                || self.tool == Tool::CutPiece)
                 && ui.input(|input| input.pointer.any_down() || input.pointer.any_released())
                 && self
                     .pattern_canvas
@@ -2406,7 +2518,7 @@ impl Studio {
             let mut remove_internal=None;
             let mut remove_piece=None;
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
-                ui.separator(); ui.strong(&piece.name);
+                ui.separator(); ui.strong(format!("{} · #{}",piece.name,piece.id));
                 if let Some(curve)=&mut draft.curve {
                     ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("curve",curve.id))),|ui| {
                     let internal=piece.internal_curves.contains(&curve.id);
@@ -2656,6 +2768,7 @@ impl Studio {
             && self.transform.is_none()
             && self.transform_gesture.is_none()
             && self.internal_line.is_none()
+            && self.cut_piece.is_none()
             && !opening_rectangle
             && self.commit_draft()
             && let Some(id) = action_focus
@@ -3024,6 +3137,198 @@ impl Studio {
         }
         draft.input.restore(ctx);
         self.free_sewing = Some(draft);
+    }
+    fn begin_cut_piece(&mut self, ctx: &egui::Context) -> bool {
+        if !self.allow_piece_selection(ctx) {
+            self.message =
+                "Apply or cancel the current property edit before cutting a piece.".into();
+            return false;
+        }
+        self.set_tool(Tool::CutPiece);
+        true
+    }
+    fn cut_piece_draft(&self, ctx: &egui::Context) -> Option<CutDraft> {
+        let piece = self.selected.and_then(|id| self.editor.project.piece(id))?;
+        let start = self
+            .selected_boundary_curve()
+            .or_else(|| piece.boundary.first().copied());
+        Some(CutDraft {
+            piece: piece.id,
+            revision: self.editor.project.revision,
+            curves: [
+                start,
+                piece.boundary.iter().copied().find(|id| Some(*id) != start),
+            ],
+            parameters: ["0.5".into(), "0.5".into()],
+            modal: false,
+            input: self.free_sewing_input(ctx),
+            field_focus: None,
+            epoch: ctx.cumulative_frame_nr(),
+            preview: None,
+            error: None,
+        })
+    }
+    fn open_cut_piece(&mut self, ctx: &egui::Context) {
+        if !self.begin_cut_piece(ctx) {
+            return;
+        }
+        self.discard_stale_cut_piece();
+        let Some(mut draft) = self.cut_piece.take().or_else(|| self.cut_piece_draft(ctx)) else {
+            self.message = "Select an owner pattern before cutting a piece.".into();
+            return;
+        };
+        draft.input = self.free_sewing_input(ctx);
+        draft.modal = true;
+        // Opening Return must not also accept the newly visible review.
+        ctx.input_mut(|input| input.consume_key(input.modifiers, egui::Key::Enter));
+        finish_numeric_action(ctx, draft.input.focus, false);
+        self.cut_piece = Some(draft);
+    }
+    fn cancel_cut_piece(&mut self, ctx: &egui::Context) {
+        if let Some(draft) = self.cut_piece.take() {
+            if let Some(id) = draft.field_focus {
+                ctx.memory_mut(|memory| memory.surrender_focus(id));
+            }
+            if draft.revision == self.editor.project.revision && self.selected == Some(draft.piece)
+            {
+                self.free_sewing_input(ctx).close_without_commit(ctx);
+            }
+            self.message = "Cut cancelled; construction unchanged.".into();
+        }
+    }
+    fn discard_stale_cut_piece(&mut self) {
+        if self.cut_piece.as_ref().is_some_and(|draft| {
+            draft.revision != self.editor.project.revision
+                || self.selected != Some(draft.piece)
+                || self.tool != Tool::CutPiece
+                || !self.editor.project.piece(draft.piece).is_some_and(|piece| {
+                    draft
+                        .curves
+                        .iter()
+                        .flatten()
+                        .all(|curve| piece.boundary.contains(curve))
+                })
+        }) {
+            self.cut_piece = None;
+        }
+    }
+    fn cut_piece_window(&mut self, ctx: &egui::Context) {
+        self.discard_stale_cut_piece();
+        let Some(mut draft) = self.cut_piece.take() else {
+            return;
+        };
+        if !draft.modal {
+            self.cut_piece = Some(draft);
+            return;
+        }
+        let enter = ctx.input(|input| input.key_pressed(egui::Key::Enter));
+        let mut accept = false;
+        let mut cancel = false;
+        let response = egui::Modal::new(egui::Id::new(("cut-piece", draft.piece, draft.revision, draft.epoch))).show(ctx, |ui| {
+            ui.set_width(460.);
+            ui.heading("Review cut piece");
+            let piece = self.editor.project.piece(draft.piece).expect("current cut owner");
+            ui.label(format!("{} · #{} · revision {}",piece.name,piece.id,draft.revision));
+            ui.small("One straight cut creates two independent editable pieces. Review before applying.");
+            for (index, (boundary, parameter)) in [("Start boundary", "Start t"), ("End boundary", "End t")].into_iter().enumerate() {
+                ui.horizontal(|ui| {
+                    let label = ui.label(boundary);
+                    egui::ComboBox::from_id_salt(("cut-boundary",index))
+                        .selected_text(draft.curves[index].map_or("Choose boundary".into(),|id|format!("Curve #{id}")))
+                        .show_ui(ui,|ui| {
+                            for (boundary,curve) in piece.boundary.iter().enumerate() {
+                                ui.selectable_value(&mut draft.curves[index],Some(*curve),format!("Boundary {} · curve #{curve}",boundary+1));
+                            }
+                        }).response.labelled_by(label.id);
+                });
+                ui.horizontal(|ui| {
+                    let label = ui.label(parameter);
+                    let response = ui.add(egui::TextEdit::singleline(&mut draft.parameters[index]).id_salt(("cut-t",index)).desired_width(180.)).labelled_by(label.id);
+                    if response.has_focus() || response.lost_focus() { draft.field_focus=Some(response.id); }
+                });
+            }
+            ui.small("Dimensionless decimal t; position snapping does not change these boundary addresses.");
+            draft.refresh(&self.editor.project);
+            if let Some([start,end])=draft.endpoints(&self.editor.project) {
+                ui.separator();
+                ui.label(format!("Start: {:.9}, {:.9} m",start[0],start[1]));
+                ui.label(format!("End: {:.9}, {:.9} m",end[0],end[1]));
+                ui.label(format!("Cut length: {:.9} m",(end[0]-start[0]).hypot(end[1]-start[1])));
+            }
+            let preview=draft.preview.as_ref().expect("refreshed cut preview");
+            if let Ok(project)=&preview.project {
+                let retained=project.piece(draft.piece).expect("retained cut owner");
+                let new=project.pieces.last().expect("appended cut child");
+                ui.label(format!("Retained: {} · #{} · area {:.9} m²",retained.name,retained.id,straight_piece_area(project,retained.id)));
+                ui.label(format!("New: {} · #{} · area {:.9} m²",new.name,new.id,straight_piece_area(project,new.id)));
+                ui.small(format!("Internal annotations: {} retained · {} new",retained.internal_curves.len(),new.internal_curves.len()));
+            }
+            if let Some(error)=draft.error.as_ref().or_else(||preview.project.as_ref().err()) {
+                ui.colored_label(Color32::LIGHT_RED,error);
+            }
+            ui.horizontal(|ui| {
+                accept=ui.button("Apply cut").clicked();
+                cancel=ui.button("Cancel cut").clicked();
+            });
+        });
+        if cancel || response.should_close() {
+            self.cut_piece = Some(draft);
+            self.cancel_cut_piece(ctx);
+            return;
+        }
+        if accept || enter {
+            let command = draft.command().and_then(|command| {
+                draft
+                    .preview
+                    .as_ref()
+                    .expect("refreshed cut preview")
+                    .project
+                    .as_ref()
+                    .map_err(Clone::clone)?;
+                Ok(command)
+            });
+            match command {
+                Ok(command) if self.allow_piece_selection(ctx) => {
+                    if self.apply_command(command) {
+                        let new = self
+                            .editor
+                            .project
+                            .pieces
+                            .last()
+                            .expect("appended cut child");
+                        let new_id = new.id;
+                        let retained = self
+                            .editor
+                            .project
+                            .piece(draft.piece)
+                            .expect("retained cut owner");
+                        self.message = format!(
+                            "Cut retained #{}; new #{} selected. Internal annotations: {} retained, {} moved.",
+                            draft.piece,
+                            new_id,
+                            retained.internal_curves.len(),
+                            new.internal_curves.len()
+                        );
+                        self.selected = Some(new_id);
+                        self.selected_curve = None;
+                        self.set_tool(Tool::Select);
+                        if let Some(id) = draft.field_focus {
+                            ctx.memory_mut(|memory| memory.surrender_focus(id));
+                        }
+                        finish_numeric_action(ctx, draft.input.focus, true);
+                        return;
+                    }
+                    draft.error = Some(self.message.clone());
+                }
+                Ok(_) => draft.error = Some(self.message.clone()),
+                Err(error) => draft.error = Some(error),
+            }
+            if let Some(id) = draft.field_focus {
+                ctx.memory_mut(|memory| memory.request_focus(id));
+            }
+        }
+        draft.input.restore(ctx);
+        self.cut_piece = Some(draft);
     }
     fn selected_internal_curve(&self) -> Option<Id> {
         self.selected_curve.filter(|curve| {
@@ -3557,6 +3862,7 @@ impl Studio {
     fn patterns(&mut self, ui: &mut egui::Ui) {
         self.discard_stale_transform();
         self.discard_stale_internal_line();
+        self.discard_stale_cut_piece();
         self.discard_stale_free_sewing();
         self.refresh_free_sewing();
         let gesture_paused = self.search
@@ -3574,7 +3880,7 @@ impl Studio {
         self.pattern_canvas = Some(response.id);
         if matches!(
             self.tool,
-            Tool::FreeSewing | Tool::Select | Tool::InternalLine
+            Tool::FreeSewing | Tool::Select | Tool::InternalLine | Tool::CutPiece
         ) {
             self.retain_inspector_input(&response, false);
         }
@@ -3999,6 +4305,21 @@ impl Studio {
                 );
             }
         }
+        if let Some(draft) = &self.cut_piece
+            && let Some(curve) = draft.curves[0].and_then(|id| doc.curve(id))
+            && let Ok(t) = draft.parameters[0].trim().parse::<f64>()
+            && let Ok(start) = curve.evaluate(&doc, t)
+        {
+            let start = self.to_screen(start, r);
+            painter.circle_stroke(start, 6., Stroke::new(2., Color32::GOLD));
+            let end = draft
+                .endpoints(&doc)
+                .map(|points| self.to_screen(points[1], r))
+                .or(pointer.filter(|pointer| r.contains(*pointer)));
+            if let Some(end) = end {
+                painter.line_segment([start, end], Stroke::new(1.5, Color32::GOLD));
+            }
+        }
         let mut handle_clicked = false;
         let transform_controls = if self.tool == Tool::Transform {
             self.selected.and_then(|piece| {
@@ -4374,6 +4695,40 @@ impl Studio {
                         }
                     }
                 }
+                Tool::CutPiece => {
+                    if self.allow_piece_selection(ui.ctx()) {
+                        let hit = self
+                            .selected
+                            .ok_or_else(|| "Select an owner pattern before cutting a piece.".into())
+                            .and_then(|piece| {
+                                cut_piece_pick(
+                                    &self.editor.project,
+                                    piece,
+                                    free_pointer.ok_or("Choose a straight owner boundary.")?,
+                                    12. / f64::from(self.scale),
+                                )
+                            });
+                        match hit {
+                            Ok((curve, t)) => {
+                                if let Some(draft) = &mut self.cut_piece {
+                                    draft.curves[1] = Some(curve);
+                                    draft.parameters[1] = t.to_string();
+                                    draft.modal = true;
+                                    draft.error = None;
+                                } else if let Some(mut draft) = self.cut_piece_draft(ui.ctx()) {
+                                    draft.curves = [Some(curve), None];
+                                    draft.parameters = [t.to_string(), "0.5".into()];
+                                    finish_numeric_action(ui.ctx(), draft.input.focus, false);
+                                    self.cut_piece = Some(draft);
+                                }
+                                self.message =
+                                    "Cut boundary chosen; review exact parameters before Apply."
+                                        .into();
+                            }
+                            Err(error) => self.message = error,
+                        }
+                    }
+                }
             }
         }
         if self.tool == Tool::FreeSewing
@@ -4688,13 +5043,21 @@ impl eframe::App for Studio {
         self.discard_stale_transform();
         self.discard_stale_free_sewing();
         self.discard_stale_internal_line();
+        self.discard_stale_cut_piece();
         let authoring_modal = self.rectangle.is_some()
             || self.transform.is_some()
             || self.internal_line.as_ref().is_some_and(|edit| edit.modal)
+            || self.cut_piece.as_ref().is_some_and(|draft| draft.modal)
             || self.free_sewing.as_ref().is_some_and(|draft| draft.modal)
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some();
         let global_shortcuts = !authoring_modal && !egui::Popup::is_any_open(&ctx);
+        if global_shortcuts
+            && self.cut_piece.is_some()
+            && ctx.input_mut(|input| input.consume_key(egui::Modifiers::NONE, egui::Key::Escape))
+        {
+            self.cancel_cut_piece(&ctx);
+        }
         if global_shortcuts
             && self.transform_gesture.is_some()
             && ctx.input_mut(|input| input.consume_key(egui::Modifiers::NONE, egui::Key::Escape))
@@ -4775,6 +5138,8 @@ impl eframe::App for Studio {
                     self.open_free_sewing(&ctx);
                 } else if self.tool == Tool::InternalLine {
                     self.open_internal_line(&ctx, None);
+                } else if self.tool == Tool::CutPiece {
+                    self.open_cut_piece(&ctx);
                 } else {
                     self.finish_polygon();
                 }
@@ -4797,6 +5162,7 @@ impl eframe::App for Studio {
             }
             if ctx.input(|i| i.key_pressed(egui::Key::Escape)) {
                 self.cancel_internal_line(&ctx);
+                self.cancel_cut_piece(&ctx);
                 self.cancel_free_sewing(&ctx);
                 self.reset_gestures();
             }
@@ -4945,6 +5311,7 @@ impl eframe::App for Studio {
                         "Polygon",
                         "Rectangle",
                         "Internal line",
+                        "Cut piece",
                         "Add ellipse",
                         "Sew edges",
                         "Free sewing",
@@ -4983,6 +5350,9 @@ impl eframe::App for Studio {
                                 "Polygon" => self.set_tool(Tool::Polygon),
                                 "Rectangle" => self.set_tool(Tool::Rectangle),
                                 "Internal line" => self.set_tool(Tool::InternalLine),
+                                "Cut piece" => {
+                                    self.begin_cut_piece(&ctx);
+                                }
                                 "Add ellipse" => {
                                     let focused = self.inspector_focus(&ctx);
                                     self.add_ellipse(&ctx, focused);
@@ -5005,6 +5375,7 @@ impl eframe::App for Studio {
         self.rectangle_window(&ctx);
         self.transform_window(&ctx);
         self.internal_line_window(&ctx);
+        self.cut_piece_window(&ctx);
         self.free_sewing_window(&ctx);
         self.sewing_group_window(&ctx);
         self.pattern_import_window(&ctx);
@@ -5141,6 +5512,15 @@ fn tool_button(ui: &mut egui::Ui, tool: Tool, selected: bool) -> egui::Response 
             for p in [point(-7., 5.), point(7., -5.)] {
                 painter.circle_stroke(p, 2.5, stroke);
             }
+        }
+        Tool::CutPiece => {
+            painter.rect_stroke(
+                Rect::from_center_size(c, Vec2::splat(15.)),
+                0.,
+                stroke,
+                egui::StrokeKind::Inside,
+            );
+            painter.line_segment([point(-3., 10.), point(3., -10.)], stroke);
         }
         Tool::Sew | Tool::FreeSewing | Tool::SewingPaths => {
             painter.line_segment([point(-7.0, -8.0), point(-7.0, 8.0)], stroke);
@@ -5546,6 +5926,116 @@ fn free_sewing_pick(
         }
     }
     nearest
+}
+fn cut_piece_pick(
+    project: &Project,
+    owner: Id,
+    pointer: [f64; 2],
+    radius: f64,
+) -> Result<(Id, f64), String> {
+    let piece = project
+        .piece(owner)
+        .ok_or("Select an owner pattern before cutting a piece.")?;
+    if !pointer.into_iter().all(f64::is_finite) || !radius.is_finite() || radius <= 0. {
+        return Err("Choose a finite position on a straight owner boundary.".into());
+    }
+    let mut vertices = Vec::with_capacity(piece.boundary.len());
+    let mut scale = 1_f64;
+    for (index, id) in piece
+        .boundary
+        .iter()
+        .chain(&piece.internal_curves)
+        .enumerate()
+    {
+        let curve = project.curve(*id).ok_or("Missing owner curve.")?;
+        if index < piece.boundary.len() && curve.controls.is_some() {
+            return Err("Cut piece requires straight owner boundaries.".into());
+        }
+        for point in [curve.start, curve.end] {
+            let position = project.point(point).ok_or("Missing owner point.")?.position;
+            scale = position.into_iter().map(f64::abs).fold(scale, f64::max);
+        }
+        if index < piece.boundary.len() {
+            vertices.push(
+                project
+                    .point(curve.start)
+                    .ok_or("Missing owner vertex.")?
+                    .position,
+            );
+        }
+    }
+    let distance = |a: [f64; 2], b: [f64; 2]| (a[0] - b[0]).hypot(a[1] - b[1]);
+    if vertices
+        .iter()
+        .any(|vertex| distance(*vertex, pointer) <= radius)
+    {
+        return Err("Choose a boundary farther than 12 px from every owner vertex, or use precise controls.".into());
+    }
+    let reserve = (256. * f64::EPSILON * scale).next_up();
+    let clearance = (1e-6 + reserve).next_up();
+    let mut hit = None;
+    for id in &piece.boundary {
+        let curve = project.curve(*id).ok_or("Missing owner boundary.")?;
+        let a = project
+            .point(curve.start)
+            .ok_or("Missing boundary start.")?
+            .position;
+        let b = project
+            .point(curve.end)
+            .ok_or("Missing boundary end.")?
+            .position;
+        let ab: [f64; 2] = std::array::from_fn(|axis| b[axis] - a[axis]);
+        let denominator = ab[0] * ab[0] + ab[1] * ab[1];
+        if denominator == 0. {
+            continue;
+        }
+        let t = ((pointer[0] - a[0]) * ab[0] + (pointer[1] - a[1]) * ab[1]) / denominator;
+        if t <= 1e-6 || t >= 1. - 1e-6 {
+            continue;
+        }
+        let projected = std::array::from_fn(|axis| a[axis] + t * ab[axis]);
+        if distance(pointer, projected) < radius
+            && vertices
+                .iter()
+                .all(|vertex| distance(*vertex, projected) > clearance)
+        {
+            if hit.is_some() {
+                return Err(
+                    "Multiple owner boundaries are inside the pick radius; use precise controls."
+                        .into(),
+                );
+            }
+            hit = Some((*id, t));
+        }
+    }
+    hit.ok_or_else(|| {
+        "Choose one straight owner boundary away from its vertices, or use precise controls.".into()
+    })
+}
+fn straight_piece_area(project: &Project, piece: Id) -> f64 {
+    let piece = project.piece(piece).expect("validated preview piece");
+    let origin = project
+        .curve(piece.boundary[0])
+        .and_then(|curve| project.point(curve.start))
+        .expect("validated preview origin")
+        .position;
+    piece
+        .boundary
+        .iter()
+        .map(|id| {
+            let curve = project.curve(*id).expect("validated preview boundary");
+            let [a, b] = [curve.start, curve.end].map(|id| {
+                let point = project
+                    .point(id)
+                    .expect("validated preview endpoint")
+                    .position;
+                [point[0] - origin[0], point[1] - origin[1]]
+            });
+            a[0] * b[1] - a[1] * b[0]
+        })
+        .sum::<f64>()
+        .abs()
+        * 0.5
 }
 fn point_in_triangle(p: Pos2, t: [Pos2; 3]) -> bool {
     let cross = |a: Vec2, b: Vec2| a.x * b.y - a.y * b.x;
@@ -8119,7 +8609,11 @@ mod tests {
         frame(
             &ctx,
             &mut app,
-            vec![action(&output, "Curve A", Action::Click)],
+            vec![action(
+                &output,
+                &format!("Curve A · #{first}"),
+                Action::Click,
+            )],
         );
         let curve = app.editor.project.piece(first).unwrap().boundary[2];
         app.select_curve(&ctx, Some((first, curve)));
@@ -8172,7 +8666,11 @@ mod tests {
         frame(
             &ctx,
             &mut app,
-            vec![action(&output, "Curve B", Action::Click)],
+            vec![action(
+                &output,
+                &format!("Curve B · #{second}"),
+                Action::Click,
+            )],
         );
         assert_eq!(
             app.editor.project.curve(curve).unwrap().controls.unwrap()[0][0],
@@ -14703,7 +15201,10 @@ mod pattern_transform_tests {
                     app.draft.as_ref().unwrap().commands(&app.editor.project)
                 );
                 let output = frame(&ctx, &mut app, vec![]);
-                let row = button(&output, "Separate panel");
+                let row = button(
+                    &output,
+                    &format!("Separate panel · #{}", app.editor.project.pieces[1].id),
+                );
                 if pointer {
                     let bounds = output
                         .platform_output
@@ -14765,7 +15266,10 @@ mod pattern_transform_tests {
             let before = format!("{:?}", app.editor);
             frame(&ctx, &mut app, vec![]);
             let output = frame(&ctx, &mut app, vec![]);
-            let row = button(&output, "Separate panel");
+            let row = button(
+                &output,
+                &format!("Separate panel · #{}", app.editor.project.pieces[1].id),
+            );
             frame(&ctx, &mut app, vec![action(row, Action::Click, None)]);
             assert_eq!(app.selected, Some(app.editor.project.pieces[1].id));
             assert_eq!(format!("{:?}", app.editor), before);
@@ -15260,6 +15764,926 @@ mod pattern_transform_tests {
                     .char_range(),
                 caret
             );
+        }
+    }
+}
+
+#[cfg(test)]
+mod cut_piece_tests {
+    use super::pattern_transform_tests::{
+        action, button, focus_property, frame, key, pointer_frame,
+    };
+    use super::*;
+    use egui::accesskit::{Action, ActionData, NodeId, Role};
+
+    fn fixture() -> Studio {
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Original Cut R240".into(),
+                origin: [0.; 2],
+                width: 0.24,
+                height: 0.36,
+            })
+            .unwrap();
+        app.selected = Some(2);
+        app.center = [0.12, 0.18];
+        app.scale = 1000.;
+        app
+    }
+    fn context() -> egui::Context {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        ctx
+    }
+    fn click(ctx: &egui::Context, app: &mut Studio, label: &str) {
+        let output = frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![action(button(&output, label), Action::Click, None)],
+        );
+    }
+    fn position(output: &egui::FullOutput, id: NodeId) -> Pos2 {
+        let bounds = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(node, _)| *node == id)
+            .unwrap()
+            .1
+            .bounds()
+            .unwrap();
+        Pos2::new(
+            ((bounds.x0 + bounds.x1) * 0.5) as f32,
+            ((bounds.y0 + bounds.y1) * 0.5) as f32,
+        )
+    }
+    fn pick(ctx: &egui::Context, app: &mut Studio, point: [f64; 2]) {
+        frame(ctx, app, vec![]);
+        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        let point = app.to_screen(point, rect);
+        pointer_frame(ctx, app, point, Some(true), false);
+        pointer_frame(ctx, app, point, Some(false), false);
+    }
+    fn labelled(output: &egui::FullOutput, label: &str, role: Role) -> NodeId {
+        let nodes = &output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes;
+        let labels: Vec<_> = nodes
+            .iter()
+            .filter(|(_, node)| node.label() == Some(label) || node.value() == Some(label))
+            .map(|(id, _)| *id)
+            .collect();
+        nodes
+            .iter()
+            .find(|(_, node)| {
+                node.role() == role
+                    && !node.is_disabled()
+                    && node.labelled_by().iter().any(|id| labels.contains(id))
+            })
+            .unwrap_or_else(|| panic!("missing {label}"))
+            .0
+    }
+    fn parameter(ctx: &egui::Context, app: &mut Studio, label: &str, text: &str) -> egui::Id {
+        let output = frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![action(
+                labelled(&output, label, Role::TextInput),
+                Action::Focus,
+                None,
+            )],
+        );
+        frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text(text.into()),
+                key(egui::Key::ArrowLeft, egui::Modifiers::NONE),
+            ],
+        );
+        ctx.memory(|memory| memory.focused())
+            .expect("cut parameter focus")
+    }
+    fn boundary(ctx: &egui::Context, app: &mut Studio, label: &str, index: usize, id: Id) {
+        let output = frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![action(
+                labelled(&output, label, Role::ComboBox),
+                Action::Click,
+                None,
+            )],
+        );
+        click(ctx, app, &format!("Boundary {index} · curve #{id}"));
+    }
+    fn precise(ctx: &egui::Context, app: &mut Studio) {
+        click(ctx, app, "Cut piece");
+        click(ctx, app, "Cut piece…");
+        boundary(ctx, app, "End boundary", 3, 9);
+        parameter(ctx, app, "Start t", "0.375");
+        parameter(ctx, app, "End t", "0.625");
+    }
+    fn with_redo(app: &mut Studio) {
+        app.editor
+            .execute(Command::SetGrain {
+                piece: 2,
+                angle: 0.37,
+            })
+            .unwrap();
+        app.editor
+            .execute(Command::SetResolution { metres: 0.03 })
+            .unwrap();
+        assert!(app.editor.undo());
+    }
+    fn directory() -> PathBuf {
+        let path = std::env::temp_dir().join(format!(
+            "weftforge-cut-ui-{}-{}",
+            std::process::id(),
+            SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        fs::create_dir(&path).unwrap();
+        path
+    }
+
+    #[test]
+    fn cut_picker_restricts_owner_projects_unsnapped_and_refuses_vertices_extensions_and_multiple_hits()
+     {
+        let mut app = fixture();
+        let pointer = [0.24 * 0.373_271_828, 0.0001];
+        let (curve, t) = cut_piece_pick(&app.editor.project, 2, pointer, 0.012).unwrap();
+        assert_eq!(curve, 7);
+        assert!((t - 0.373_271_828).abs() < 1e-14);
+        for point in [[0., 0.], [0.001, 0.001], [-0.02, 0.01], [3., 3.]] {
+            assert!(
+                cut_piece_pick(&app.editor.project, 2, point, 0.012).is_err(),
+                "{point:?}"
+            );
+        }
+        assert!(cut_piece_pick(&app.editor.project, 2, [0.5e-6, 0.], 1e-9).is_err());
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Coincident duplicate".into(),
+                origin: [0.; 2],
+                width: 0.24,
+                height: 0.36,
+            })
+            .unwrap();
+        let other = app.editor.project.pieces[1].id;
+        assert_eq!(
+            cut_piece_pick(&app.editor.project, 2, pointer, 0.012)
+                .unwrap()
+                .0,
+            7
+        );
+        assert_eq!(
+            cut_piece_pick(&app.editor.project, other, pointer, 0.012)
+                .unwrap()
+                .0,
+            app.editor.project.pieces[1].boundary[0]
+        );
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Thin owner".into(),
+                origin: [1., 0.],
+                width: 0.24,
+                height: 0.01,
+            })
+            .unwrap();
+        let thin = app.editor.project.pieces[2].id;
+        assert!(
+            cut_piece_pick(&app.editor.project, thin, [1.12, 0.005], 0.012)
+                .unwrap_err()
+                .contains("Multiple")
+        );
+        assert!(cut_piece_pick(&app.editor.project, 2, [1.12, 0.005], 0.012).is_err());
+        assert_eq!(
+            free_sewing_pick(&app.editor.project, [0., 0.], 0.012, None, None),
+            Some((7, 0.))
+        );
+    }
+
+    #[test]
+    fn cut_rail_menu_search_and_precise_routes_use_typed_owner_boundaries() {
+        for route in ["rail", "menu", "search"] {
+            let ctx = context();
+            let mut app = fixture();
+            let before = format!("{:?}", app.editor);
+            if route == "menu" {
+                click(&ctx, &mut app, "Create 2D");
+                let output = frame(&ctx, &mut app, vec![]);
+                let id = output
+                    .platform_output
+                    .accesskit_update
+                    .as_ref()
+                    .unwrap()
+                    .nodes
+                    .iter()
+                    .rfind(|(_, node)| {
+                        node.label() == Some("Cut piece") && node.supports_action(Action::Click)
+                    })
+                    .unwrap()
+                    .0;
+                frame(&ctx, &mut app, vec![action(id, Action::Click, None)]);
+            } else if route == "search" {
+                app.search = true;
+                app.query = "Cut piece".into();
+                let output = frame(&ctx, &mut app, vec![]);
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![action(
+                        tests::command_search_action(&output, "Cut piece"),
+                        Action::Click,
+                        None,
+                    )],
+                );
+            } else {
+                click(&ctx, &mut app, "Cut piece");
+            }
+            assert!(app.tool == Tool::CutPiece && !app.search);
+            click(&ctx, &mut app, "Cut piece…");
+            boundary(&ctx, &mut app, "End boundary", 3, 9);
+            let output = frame(&ctx, &mut app, vec![]);
+            let draft = app.cut_piece.as_ref().unwrap();
+            assert_eq!(draft.curves, [Some(7), Some(9)]);
+            assert!(draft.modal);
+            for label in ["Start boundary", "End boundary"] {
+                labelled(&output, label, Role::ComboBox);
+            }
+            for label in ["Start t", "End t"] {
+                labelled(&output, label, Role::TextInput);
+            }
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert!(app.mesh.is_none() && app.cloth.is_none() && app.job.is_none() && !app.dirty);
+        }
+    }
+
+    #[test]
+    fn cut_opening_return_without_draft_only_opens_review() {
+        opening_return_only_reviews(false);
+    }
+
+    #[test]
+    fn cut_opening_return_after_first_anchor_only_opens_review() {
+        opening_return_only_reviews(true);
+    }
+
+    fn opening_return_only_reviews(first_anchor: bool) {
+        let ctx = context();
+        let mut app = fixture();
+        with_redo(&mut app);
+        let mesh = Arc::new(app.editor.project.mesh().unwrap());
+        let cloth =
+            Arc::new(weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap());
+        app.mesh = Some(mesh.clone());
+        app.cloth = Some(cloth.clone());
+        let (_sender, receiver) = mpsc::channel();
+        let cancelled = Arc::new(AtomicBool::new(false));
+        app.job = Some(Job {
+            id: 42,
+            revision: app.editor.project.revision,
+            kind: JobKind::Mesh,
+            batch: None,
+            completed_steps: Arc::new(AtomicU64::new(0)),
+            cancel: cancelled.clone(),
+            receiver,
+        });
+        click(&ctx, &mut app, "Cut piece");
+        if first_anchor {
+            pick(&ctx, &mut app, [0.09, 0.]);
+            assert!(!app.cut_piece.as_ref().unwrap().modal);
+        }
+        let before = app.editor.clone();
+        let selection = (app.selected, app.selected_curve);
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+        );
+        assert_eq!(
+            format!("{:?}", app.editor),
+            format!("{before:?}"),
+            "opening Return must preserve construction, allocator and history"
+        );
+        let draft = app
+            .cut_piece
+            .as_ref()
+            .expect("opening Return must retain review");
+        assert!(
+            draft.modal && draft.error.is_none(),
+            "opening Return must not attempt Apply"
+        );
+        assert_eq!((app.selected, app.selected_curve), selection);
+        assert!(
+            Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh)
+                && Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth)
+        );
+        assert!(!app.dirty && !app.needs_mesh && !cancelled.load(Ordering::Relaxed));
+        assert_eq!(app.job.as_ref().unwrap().id, 42);
+        boundary(&ctx, &mut app, "End boundary", 3, 9);
+        parameter(&ctx, &mut app, "Start t", "0.375");
+        parameter(&ctx, &mut app, "End t", "0.625");
+        let mut expected = before;
+        expected
+            .execute(Command::CutPiece {
+                piece: 2,
+                start_curve: 7,
+                start_t: 0.375,
+                end_curve: 9,
+                end_t: 0.625,
+            })
+            .unwrap();
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+        );
+        assert_eq!(
+            format!("{:?}", app.editor),
+            format!("{expected:?}"),
+            "a later Return must execute one shared cut"
+        );
+        assert!(app.cut_piece.is_none() && app.tool == Tool::Select && app.selected == Some(15));
+        assert!(app.dirty && cancelled.load(Ordering::Relaxed));
+        frame(&ctx, &mut app, vec![]);
+        assert_eq!(format!("{:?}", app.editor), format!("{expected:?}"));
+        app.history(&ctx, false);
+        assert!(expected.undo());
+        assert_eq!(format!("{:?}", app.editor), format!("{expected:?}"));
+    }
+
+    #[test]
+    fn cut_two_picks_review_exact_apply_history_and_reopened_child_edit_are_independent() {
+        let ctx = context();
+        let mut app = fixture();
+        app.selected_curve = Some(7);
+        let mesh = Arc::new(app.editor.project.mesh().unwrap());
+        let cloth =
+            Arc::new(weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap());
+        app.mesh = Some(mesh.clone());
+        app.cloth = Some(cloth.clone());
+        let (_sender, receiver) = mpsc::channel();
+        let cancelled = Arc::new(AtomicBool::new(false));
+        app.job = Some(Job {
+            id: 0,
+            revision: 1,
+            kind: JobKind::Mesh,
+            batch: None,
+            completed_steps: Arc::new(AtomicU64::new(0)),
+            cancel: cancelled.clone(),
+            receiver,
+        });
+        let before = format!("{:?}", app.editor);
+        click(&ctx, &mut app, "Cut piece");
+        pick(&ctx, &mut app, [0.09, 0.]);
+        assert!(!app.cut_piece.as_ref().unwrap().modal);
+        pick(&ctx, &mut app, [0.09, 0.36]);
+        assert!(app.cut_piece.as_ref().unwrap().modal);
+        parameter(&ctx, &mut app, "Start t", "0.375");
+        parameter(&ctx, &mut app, "End t", "0.625");
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+        );
+        let draft = app.cut_piece.as_ref().unwrap();
+        assert_eq!(draft.curves, [Some(7), Some(9)]);
+        let candidate = draft.preview.as_ref().unwrap().project.as_ref().unwrap();
+        assert_eq!(candidate.pieces[0].boundary, vec![7, 18, 14, 10]);
+        assert_eq!(candidate.pieces[1].boundary, vec![12, 8, 9, 19]);
+        assert!((straight_piece_area(candidate, 2) - 0.0324).abs() < 1e-12);
+        assert!((straight_piece_area(candidate, 15) - 0.054).abs() < 1e-12);
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert!(
+            Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh)
+                && Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth)
+        );
+        assert!(!cancelled.load(Ordering::Relaxed) && !app.dirty && !app.needs_mesh);
+        click(&ctx, &mut app, "Apply cut");
+        assert_eq!(app.editor.project.revision, 2);
+        assert_eq!(app.selected, Some(15));
+        assert!(
+            app.selected_curve.is_none() && app.cut_piece.is_none() && app.tool == Tool::Select
+        );
+        assert!(cancelled.load(Ordering::Relaxed) && app.dirty && app.needs_mesh);
+        assert!(app.message.contains("retained #2") && app.message.contains("new #15"));
+        app.history(&ctx, false);
+        assert_eq!(app.editor.project.revision, 3);
+        assert_eq!(app.editor.project.pieces.len(), 1);
+        assert!(app.selected.is_none());
+        app.history(&ctx, true);
+        assert_eq!(app.editor.project.revision, 4);
+        assert_eq!(app.editor.project.pieces[1].id, 15);
+        assert!(app.selected.is_none());
+        let dir = directory();
+        let path = dir.join("cut.weftforge");
+        app.editor.project.save(&path).unwrap();
+        let mut reopened = Studio::empty();
+        reopened.session_autosave = None;
+        reopened.open(path);
+        let ctx = context();
+        click(&ctx, &mut reopened, "Cut piece #15 · #15");
+        let retained = reopened.editor.project.piece(2).unwrap().clone();
+        let retained_points: Vec<_> = retained
+            .boundary
+            .iter()
+            .map(|id| reopened.editor.project.curve(*id).unwrap().start)
+            .map(|id| reopened.editor.project.point(id).unwrap().clone())
+            .collect();
+        let output = frame(&ctx, &mut reopened, vec![]);
+        let height = output
+            .platform_output
+            .accesskit_update
+            .as_ref()
+            .unwrap()
+            .nodes
+            .iter()
+            .find(|(_, node)| node.numeric_value() == Some(0.36))
+            .unwrap()
+            .0;
+        frame(
+            &ctx,
+            &mut reopened,
+            vec![action(height, Action::Focus, None)],
+        );
+        frame(&ctx, &mut reopened, vec![]);
+        frame(
+            &ctx,
+            &mut reopened,
+            vec![
+                key(egui::Key::A, egui::Modifiers::COMMAND),
+                egui::Event::Text("0.40".into()),
+            ],
+        );
+        frame(
+            &ctx,
+            &mut reopened,
+            vec![key(egui::Key::Tab, egui::Modifiers::NONE)],
+        );
+        assert_eq!(reopened.editor.project.revision, 5);
+        assert_eq!(reopened.editor.project.piece(2).unwrap(), &retained);
+        for point in retained_points {
+            assert_eq!(reopened.editor.project.point(point.id).unwrap(), &point);
+        }
+        assert!((reopened.editor.project.point(5).unwrap().position[1] - 0.4).abs() < 1e-12);
+        assert!((reopened.editor.project.point(17).unwrap().position[1] - 0.4).abs() < 1e-12);
+        fs::remove_dir_all(dir).unwrap();
+    }
+
+    #[test]
+    fn cut_entry_refuses_pending_or_incomplete_properties_without_losing_text_caret_or_redo() {
+        for raw in ["0.47", "1e-", "-"] {
+            for route in ["rail", "menu", "search", "precise", "pick"] {
+                let ctx = context();
+                let mut app = fixture();
+                with_redo(&mut app);
+                if matches!(route, "precise" | "pick") {
+                    app.set_tool(Tool::CutPiece);
+                }
+                let focus = focus_property(&ctx, &mut app, raw);
+                let caret = egui::TextEdit::load_state(&ctx, focus)
+                    .unwrap()
+                    .cursor
+                    .char_range();
+                let before = format!("{:?}", app.editor);
+                let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+                match route {
+                    "rail" => click(&ctx, &mut app, "Cut piece"),
+                    "menu" => {
+                        click(&ctx, &mut app, "Create 2D");
+                        let output = frame(&ctx, &mut app, vec![]);
+                        let id = output
+                            .platform_output
+                            .accesskit_update
+                            .as_ref()
+                            .unwrap()
+                            .nodes
+                            .iter()
+                            .rfind(|(_, node)| {
+                                node.label() == Some("Cut piece")
+                                    && node.supports_action(Action::Click)
+                            })
+                            .unwrap()
+                            .0;
+                        frame(&ctx, &mut app, vec![action(id, Action::Click, None)]);
+                    }
+                    "search" => {
+                        app.search = true;
+                        app.query = "Cut piece".into();
+                        let output = frame(&ctx, &mut app, vec![]);
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![action(
+                                tests::command_search_action(&output, "Cut piece"),
+                                Action::Click,
+                                None,
+                            )],
+                        );
+                    }
+                    "precise" => click(&ctx, &mut app, "Cut piece…"),
+                    "pick" => pick(&ctx, &mut app, [0.09, 0.]),
+                    _ => unreachable!(),
+                }
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, vec![]);
+                }
+                assert_eq!(format!("{:?}", app.editor), before, "{route} {raw}");
+                assert!(app.cut_piece.is_none() && !app.dirty && app.editor.can_redo());
+                assert_eq!(
+                    app.draft.as_ref().unwrap().commands(&app.editor.project),
+                    pending
+                );
+                assert_eq!(
+                    ctx.data_mut(|data| data.get_temp::<String>(focus))
+                        .as_deref(),
+                    Some(raw)
+                );
+                assert_eq!(
+                    egui::TextEdit::load_state(&ctx, focus)
+                        .unwrap()
+                        .cursor
+                        .char_range(),
+                    caret
+                );
+                assert!(app.message.contains("property edit"));
+            }
+        }
+    }
+
+    #[test]
+    fn cut_failed_modal_input_retains_caret_and_shields_background_until_cancel_escape_or_backdrop()
+    {
+        for cancel in ["cancel", "escape", "backdrop"] {
+            let ctx = context();
+            let mut app = fixture();
+            with_redo(&mut app);
+            let dir = directory();
+            let path = dir.join("primary.weftforge");
+            app.editor.project.save(&path).unwrap();
+            app.path = Some(path.clone());
+            let primary = fs::read(&path).unwrap();
+            let output = frame(&ctx, &mut app, vec![]);
+            let undo = button(&output, "Undo");
+            let backdrop = position(&output, undo);
+            let background =
+                ["Add rectangle", "Undo", "Select / edit"].map(|label| button(&output, label));
+            let numeric = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(_, node)| node.numeric_value() == Some(0.37))
+                .unwrap()
+                .0;
+            let source_focus = focus_property(&ctx, &mut app, "0.3700");
+            let source_caret = egui::TextEdit::load_state(&ctx, source_focus)
+                .unwrap()
+                .cursor
+                .char_range();
+            precise(&ctx, &mut app);
+            let field = parameter(&ctx, &mut app, "Start t", "1e-");
+            let caret = egui::TextEdit::load_state(&ctx, field)
+                .unwrap()
+                .cursor
+                .char_range();
+            let before = format!("{:?}", app.editor);
+            let output = frame(&ctx, &mut app, vec![]);
+            let apply = position(&output, button(&output, "Apply cut"));
+            pointer_frame(&ctx, &mut app, apply, Some(true), false);
+            pointer_frame(&ctx, &mut app, apply, Some(false), false);
+            assert_eq!(app.cut_piece.as_ref().unwrap().parameters[0], "1e-");
+            assert!(app.cut_piece.as_ref().unwrap().error.is_some());
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, field)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            frame(&ctx, &mut app, vec![egui::Event::Text("0".into())]);
+            assert_eq!(app.cut_piece.as_ref().unwrap().parameters[0], "1e0-");
+            for id in background {
+                frame(&ctx, &mut app, vec![action(id, Action::Click, None)]);
+            }
+            for event in [
+                action(
+                    numeric,
+                    Action::SetValue,
+                    Some(ActionData::NumericValue(0.8)),
+                ),
+                key(egui::Key::S, egui::Modifiers::COMMAND),
+                key(egui::Key::O, egui::Modifiers::COMMAND),
+                key(egui::Key::Z, egui::Modifiers::COMMAND),
+                key(egui::Key::Space, egui::Modifiers::NONE),
+                key(egui::Key::K, egui::Modifiers::COMMAND),
+            ] {
+                frame(&ctx, &mut app, vec![event]);
+                assert_eq!(format!("{:?}", app.editor), before);
+                assert!(
+                    app.cut_piece.as_ref().unwrap().modal
+                        && !app.playing
+                        && !app.search
+                        && !app.dirty
+                );
+            }
+            match cancel {
+                "cancel" => click(&ctx, &mut app, "Cancel cut"),
+                "escape" => {
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+                    );
+                }
+                "backdrop" => {
+                    pointer_frame(&ctx, &mut app, backdrop, Some(true), false);
+                    pointer_frame(&ctx, &mut app, backdrop, Some(false), false);
+                }
+                _ => unreachable!(),
+            }
+            for _ in 0..3 {
+                frame(&ctx, &mut app, vec![]);
+            }
+            assert!(app.cut_piece.is_none() && app.editor.can_redo() && !app.dirty);
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!(fs::read(path).unwrap(), primary);
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(source_focus))
+                    .as_deref(),
+                Some("0.3700")
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, source_focus)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                source_caret
+            );
+            fs::remove_dir_all(dir).unwrap();
+        }
+    }
+
+    #[test]
+    fn cut_concave_outside_preview_refuses_then_corrected_review_returns_one_command() {
+        let ctx = context();
+        let mut app = fixture();
+        app.editor = Editor::default();
+        app.editor
+            .execute(Command::AddPolygon {
+                name: "Original L".into(),
+                vertices: vec![
+                    [0., 0.],
+                    [1., 0.],
+                    [1., 0.4],
+                    [0.4, 0.4],
+                    [0.4, 1.],
+                    [0., 1.],
+                ],
+            })
+            .unwrap();
+        click(&ctx, &mut app, "Cut piece");
+        click(&ctx, &mut app, "Cut piece…");
+        boundary(&ctx, &mut app, "Start boundary", 3, 11);
+        boundary(&ctx, &mut app, "End boundary", 4, 12);
+        parameter(&ctx, &mut app, "Start t", "0.3333333333333333");
+        parameter(&ctx, &mut app, "End t", "0.6666666666666666");
+        let before = format!("{:?}", app.editor);
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+        );
+        assert!(
+            app.cut_piece
+                .as_ref()
+                .unwrap()
+                .preview
+                .as_ref()
+                .unwrap()
+                .project
+                .is_err()
+        );
+        assert_eq!(format!("{:?}", app.editor), before);
+        boundary(&ctx, &mut app, "Start boundary", 2, 10);
+        boundary(&ctx, &mut app, "End boundary", 6, 14);
+        parameter(&ctx, &mut app, "Start t", "0.5");
+        parameter(&ctx, &mut app, "End t", "0.8");
+        let candidate = app
+            .cut_piece
+            .as_ref()
+            .unwrap()
+            .preview
+            .as_ref()
+            .unwrap()
+            .project
+            .as_ref()
+            .unwrap();
+        assert!((straight_piece_area(candidate, 2) - 0.2).abs() < 1e-12);
+        assert!((straight_piece_area(candidate, 19) - 0.44).abs() < 1e-12);
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+        );
+        assert_eq!(app.editor.project.revision, 2);
+        assert_eq!(app.selected, Some(19));
+        assert!(app.cut_piece.is_none());
+    }
+
+    #[test]
+    fn cut_dense_annotation_review_and_status_stay_bounded() {
+        let ctx = context();
+        let mut app = fixture();
+        let mut commands = Vec::new();
+        for index in 0..64 {
+            let y = 0.003 + index as f64 * 0.005;
+            for (start, end) in [(0.01, 0.07), (0.12, 0.22)] {
+                commands.push(Command::AddInternalSegment {
+                    piece: 2,
+                    start: [start, y],
+                    end: [end, y],
+                });
+            }
+        }
+        app.editor.execute(Command::Transaction(commands)).unwrap();
+        precise(&ctx, &mut app);
+        let output = ctx.run_ui(
+            egui::RawInput {
+                screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1000., 650.))),
+                ..Default::default()
+            },
+            |ui| eframe::App::ui(&mut app, ui, &mut eframe::Frame::_new_kittest()),
+        );
+        let labels: Vec<_> = output
+            .shapes
+            .iter()
+            .filter_map(|shape| match &shape.shape {
+                egui::Shape::Text(text)
+                    if text.galley.job.text.starts_with("Internal annotations:") =>
+                {
+                    Some(text.galley.job.text.as_str())
+                }
+                _ => None,
+            })
+            .collect();
+        assert_eq!(labels, vec!["Internal annotations: 64 retained · 64 new"]);
+        for label in ["Apply cut", "Cancel cut"] {
+            let id = button(&output, label);
+            let bounds = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(node, _)| *node == id)
+                .unwrap()
+                .1
+                .bounds()
+                .unwrap();
+            assert!(
+                bounds.x0 >= 0. && bounds.x1 <= 1000. && bounds.y0 >= 0. && bounds.y1 <= 650.,
+                "{label}: {bounds:?}"
+            );
+        }
+        click(&ctx, &mut app, "Apply cut");
+        assert!(app.cut_piece.is_none());
+        assert!(app.message.len() < 160 && app.message.contains("64 retained, 64 moved"));
+        assert_eq!(app.editor.project.pieces[0].internal_curves.len(), 64);
+        assert_eq!(app.editor.project.pieces[1].internal_curves.len(), 64);
+    }
+
+    #[test]
+    fn cut_nonmodal_cancel_preserves_property_text_entered_after_the_first_anchor() {
+        for cancel in ["button", "escape"] {
+            for raw in ["0.47", "1e-", "-"] {
+                let ctx = context();
+                let mut app = fixture();
+                with_redo(&mut app);
+                click(&ctx, &mut app, "Cut piece");
+                pick(&ctx, &mut app, [0.09, 0.]);
+                let focus = focus_property(&ctx, &mut app, raw);
+                let caret = egui::TextEdit::load_state(&ctx, focus)
+                    .unwrap()
+                    .cursor
+                    .char_range();
+                let pending = app.draft.as_ref().unwrap().commands(&app.editor.project);
+                let before = format!("{:?}", app.editor);
+                if cancel == "button" {
+                    click(&ctx, &mut app, "Cancel cut");
+                } else {
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+                    );
+                }
+                for _ in 0..3 {
+                    frame(&ctx, &mut app, vec![]);
+                }
+                assert!(app.cut_piece.is_none() && app.editor.can_redo() && !app.dirty);
+                assert_eq!(format!("{:?}", app.editor), before);
+                assert_eq!(
+                    app.draft.as_ref().unwrap().commands(&app.editor.project),
+                    pending
+                );
+                assert_eq!(
+                    ctx.data_mut(|data| data.get_temp::<String>(focus))
+                        .as_deref(),
+                    Some(raw)
+                );
+                assert_eq!(
+                    egui::TextEdit::load_state(&ctx, focus)
+                        .unwrap()
+                        .cursor
+                        .char_range(),
+                    caret
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn cut_anchor_resets_on_accepted_lifecycle_changes_and_survives_failed_io_and_new_refusal() {
+        for change in [
+            "tool",
+            "owner",
+            "curve",
+            "revision",
+            "history",
+            "load",
+            "recover",
+            "reset",
+            "rebuild",
+            "new",
+            "failed-open",
+            "failed-save",
+        ] {
+            let ctx = context();
+            let mut app = fixture();
+            let dir = directory();
+            let source = dir.join("source.weftforge");
+            app.editor.project.save(&source).unwrap();
+            click(&ctx, &mut app, "Cut piece");
+            pick(&ctx, &mut app, [0.09, 0.]);
+            let before = format!("{:?}", app.editor);
+            assert!(app.cut_piece.is_some());
+            match change {
+                "tool" => app.set_tool(Tool::Select),
+                "owner" => {
+                    assert!(app.select(&ctx, None));
+                }
+                "curve" => app.select_curve(&ctx, Some((2, 9))),
+                "revision" => {
+                    app.editor
+                        .execute(Command::SetResolution { metres: 0.03 })
+                        .unwrap();
+                }
+                "history" => app.history(&ctx, false),
+                "load" => app.open(source),
+                "recover" => app.recover(source),
+                "reset" => app.reset_gestures(),
+                "rebuild" => app.rebuild(),
+                "new" => app.new_empty(&ctx, None),
+                "failed-open" => app.open(dir.join("missing.weftforge")),
+                "failed-save" => {
+                    app.path = Some(dir.join("missing/primary.weftforge"));
+                    app.save(false);
+                }
+                _ => unreachable!(),
+            }
+            frame(&ctx, &mut app, vec![]);
+            if matches!(change, "new" | "failed-open" | "failed-save") {
+                assert!(app.cut_piece.is_some(), "{change}");
+                assert_eq!(format!("{:?}", app.editor), before);
+                if change == "new" {
+                    app.cancel_cut_piece(&ctx);
+                    app.new_empty(&ctx, None);
+                    assert!(app.editor.project.pieces.is_empty());
+                }
+            } else {
+                assert!(app.cut_piece.is_none(), "{change}");
+            }
+            fs::remove_dir_all(dir).unwrap();
         }
     }
 }
@@ -15794,6 +17218,7 @@ mod internal_line_tests {
             Tool::SewingPaths,
             Tool::FreeSewing,
             Tool::Transform,
+            Tool::CutPiece,
         ] {
             app.set_tool(tool);
             click_pattern(&ctx, &mut app, [0.5; 2], false);
@@ -15802,6 +17227,7 @@ mod internal_line_tests {
                 app.seam_start.is_none()
                     && app.sewing_draft.a.is_empty()
                     && app.transform_gesture.is_none()
+                    && app.cut_piece.is_none()
             );
             if tool == Tool::FreeSewing {
                 app.begin_free_sewing(&ctx);
@@ -15922,7 +17348,8 @@ mod internal_line_tests {
                 .cursor
                 .char_range();
             let output = frame(&ctx, &mut app, vec![]);
-            let other = position(&output, "Other owner");
+            let other_label = format!("Other owner · #{}", app.editor.project.pieces[1].id);
+            let other = position(&output, &other_label);
             pointer_frame(&ctx, &mut app, other, Some(true), false);
             pointer_frame(&ctx, &mut app, other, Some(false), false);
             assert_eq!((app.selected, app.selected_curve), selected);
@@ -15930,7 +17357,7 @@ mod internal_line_tests {
             frame(
                 &ctx,
                 &mut app,
-                vec![action(button(&output, "Other owner"), Action::Click, None)],
+                vec![action(button(&output, &other_label), Action::Click, None)],
             );
             click_pattern(&ctx, &mut app, [1.5, 0.], false);
             assert_eq!(format!("{:?}", app.editor), before);

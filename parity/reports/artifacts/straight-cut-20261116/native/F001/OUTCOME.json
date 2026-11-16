@@ -1,0 +1,70 @@
+{
+  "kind": "small separate focus diagnostic; no cut acceptance",
+  "case": "F001",
+  "outcome": "focus_observed_successfully; closure_unverified",
+  "owned_pid": 57315,
+  "native_binary_sha256": "117981304290aca8ea5f2d63bb77d81641791667bdc8ee89e5cb2b92de3c8d3e",
+  "name_route": {
+    "coordinate": [
+      1440,
+      189
+    ],
+    "coordinate_source": "current raw screenshot0006; no invented offsets",
+    "focus_click_record": "0007",
+    "focus_capture_record": "0008",
+    "focused_AX_element_observed": "43 text field Pattern 1",
+    "select_all_record": "0009",
+    "literal_type_record": "0010",
+    "literal": "Focus Diagnostic F001",
+    "typed_capture_record": "0011",
+    "literal_name_visibly_and_in_AX_present": true
+  },
+  "numeric_route": {
+    "coordinate": [
+      1432,
+      214
+    ],
+    "coordinate_source": "current raw screenshot0011",
+    "focus_click_record": "0012",
+    "focus_capture_record": "0013",
+    "selected_text_observed": "0.5",
+    "select_all_record": "0014",
+    "literal_type_record": "0015",
+    "literal": "0.23",
+    "typed_capture_record": "0016",
+    "tab_record": "0017",
+    "tab_capture_record": "0018",
+    "literal_width_visibly_and_in_AX_present": true,
+    "tab_moved_to_next_height_field": true
+  },
+  "AX_setValue_fallback_used": false,
+  "rectangles_created": 0,
+  "saves": 0,
+  "document_revision_observed": 0,
+  "pattern_pieces_observed": 0,
+  "quit": {
+    "record": "0019",
+    "action": "super+q",
+    "returned": true
+  },
+  "final_inventory": {
+    "record": "0020",
+    "method": "listApps",
+    "owned_probe_reported_running": true
+  },
+  "terminal_barrier": "Immediate fresh listApps after returned Quit still reported owned probe isRunning true; no claim whether eventual termination completed.",
+  "window_or_process_cleanup_left_to_root": true,
+  "summary_calls": 1,
+  "paired_operations": 20,
+  "overall_calls": 21,
+  "elapsed_at_terminal_operation_s": 133.460578,
+  "immediate_summary_only": true,
+  "no_retry_or_recalibration": true,
+  "no_source_Cargo_helpers_reference_or_evaluator_touched": true,
+  "interpretation": "Raw coordinate focus and one name/numeric entry worked in this diagnostic. No general product defect or cut acceptance classification follows.",
+  "post_summary_upper": {
+    "utc": "2026-11-16T02:02:19.540Z",
+    "monotonic_ns": "916855282451125"
+  },
+  "elapsed_at_postcase_receipt_s": 183.527439834
+}

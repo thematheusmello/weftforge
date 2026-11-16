@@ -15,14 +15,14 @@ See [current status](STATUS.md), [generated progress](docs/progress.md), [dashbo
 Original sample projects are available in [fixtures](fixtures). See
 [verification](docs/verification.md) for tested workflows and current limits.
 
-![WeftForge with compact menus, left tools, paired canvases and Properties/Scene docks](parity/reports/artifacts/photocraft-studio-20261115/captures/overview.jpg)
+![WeftForge’s native studio with two independently editable cut pieces](parity/reports/artifacts/straight-cut-20261116/native/R003/captures/accepted-cut-r2-new-fifteen-selected-0.jpg)
 
 The updated studio uses charcoal surfaces, compact menus, a left tool rail,
 a document tab, paired 2D/3D canvases, Properties and Scene docks, and a slim
 simulation transport. Inter and JetBrains Mono keep controls and values legible.
 [PhotoCraft](https://github.com/storytold/photocraft)
 informed the visual direction. See the [native preview gallery](docs/studio-preview.md)
-for the new workspace, selected-boundary view, earlier SVG/DXF workflows, editable cubic
+for the cut/reopen workflow, selected-boundary view, earlier SVG/DXF workflows, editable cubic
 controls, framing, ellipses, sewing and the build's limits.
 
 ## Current capabilities
@@ -51,9 +51,18 @@ chain workflows and garment simulation acceptance remain open.
 **Internal line** adds straight annotations owned by a pattern piece, with a
 two-point tool, exact endpoint editing, selection/removal and applied length
 feedback. A valid endpoint edit and staged piece properties share one Undo step.
-These editable annotations are stored in strict native v4; cutting, holes,
-internal shapes, folds and internal sewing remain future work. See the
+These editable annotations are stored in strict native v4; internal shapes,
+folds and internal sewing remain future work. See the
 [actual native annotation gallery](docs/studio-preview.md).
+
+**Cut piece** divides an eligible straight pattern into two independent editable
+pieces. Pick two boundaries or enter their exact curve parameters, review the
+preview, then apply once. Undo/Redo and native saves retain both pieces; the
+bounded restart check edits one child while preserving the other. Target sewing,
+curved contours and crossing annotations refuse the cut. Holes, Cut & Sew and
+general cutting workflows remain open. See the
+[native cut gallery](docs/studio-preview.md) and
+[straight-cut contract](spec/features/PAT-006-straight-cut.md).
 
 **Transform pattern** translates or rotates one 2D piece, with numeric angle,
 translation and pivot controls plus canvas handles. This layout operation keeps

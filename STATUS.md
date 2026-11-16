@@ -1,31 +1,96 @@
-# WeftForge status — active development, 2026-11-15
+# WeftForge status — active development, 2026-11-16
 
-The current runtime is ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5. The source/evidence
+This cut publication records runtime 19b1e88245dc627cfec8164f4924b335fe44853d.
+The preceding published runtime ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5 was merged in
+[PR #47](https://github.com/thematheusmello/weftforge/pull/47) at
+bbada3f7f5228a9479a76c0c300d3aa716e57d77. GitHub Actions remains disabled and the
+existing Pages configuration is preserved. The source/evidence
 publication candidate retains **0/56 coarse reference contracts verified**,
-**39 partial / 17 planned**, discovery incomplete and **no roadmap gate accepted**.
+**40 partial / 16 planned**, discovery incomplete and **no roadmap gate accepted**.
 The historical 949 entries / 205 packets / 56 landmarks remain an engineering
 inventory, not a complete product denominator.
 
-## Current straight-annotation evidence — bounded headless and native A
+## Current implementation: first straight piece cut
+
+The straight-cut runtime is complete for its bounded engineering subset; its
+publication branch is `feat/straight-cut-publication` in a separate worktree.
+Core/CLI and native UI have separate owners using the
+[reviewed engineering contract](spec/features/PAT-006-straight-cut.md). Original
+R240/L fixtures, literal geometry/ID/mass oracles and bounded R author/restart
+native procedures were declared before implementation. These are engineering
+criteria; no reference cut behavior or implementation acceptance follows from them.
+The original native-check worktree stays unchanged at db8/ad7. Its annotation C001
+case retained a prospective Select-tool correction and 170+1 operations / 1200 s
+caps. C001 stopped on an observer setup error before input. C002 reached R6, then
+its single drag produced no expected R7; all four required saved states are
+missing. Both windows were separately closed after retention. These private
+checks supply no new native acceptance; pointer delivery/origin remains unresolved.
+
+Core/CLI package checks passed 136 tests and strict Clippy; native headless checks
+passed 116 tests and strict Clippy. Independent source review found one opening-
+Return defect, fixed with two RED/GREEN regressions: opening review preserves
+construction and only a later Return applies a cut. The source review found no
+remaining blocker. Actual R240 meshes/initial cloth/analytic mass pass at
+0.005/0.07/0.5 m; L passes those checks at 0.07/0.5 m. At L 0.005 m, both original
+and cut meshes hit the existing vertex cap; cut eligibility still passes and no
+fine-L cloth/mass acceptance is claimed. Caps and tolerances are unchanged.
+
+The clean runtime checkpoint19b1e88245dc627cfec8164f4924b335fe44853d passed
+workspace formatting, **304 Rust tests / zero failures**, and strict
+workspace/all-target Clippy. All69 runtime/build/test/doc/contract inputs remained
+exact through those checks. Source-map/registry integration, clean xtask validation
+and the native build also passed at metadata checkpoint 982ad03.
+
+Actual native CUT-R1/R003 passed its separate raw-UI review and one-shot saved-file
+assessment: empty authoring, precise refusal/caret/cancellation, one accepted cut,
+four native saves, Undo and Redo. CUT-R2/R2-001 opened that actual accepted R4 in a
+fresh process, edited only child #15 to height 0.40 m, saved R5 and inspected the
+unchanged retained piece. Its separate review and one-shot assessment passed the
+original barriers. R2 retains a contradictory extra draft-only metadata flag;
+the canonical accepted dependency files/hashes were present before launch, and
+the clarification and qualified acceptance remain visible. Neither case was
+repaired or regraded. Both processes quit and exit was separately corroborated.
+See the [bounded report](parity/reports/WF-20261116-STRAIGHT-CUT-001.json) and
+[native gallery](docs/studio-preview.md).
+
+PAT-006 is now partial; whole-contract verification remains not_run and reference
+behavior unobserved. Full cuts, holes, target sewing, Cut & Sew, native concave and
+failed-I/O cases remain open. Saved analytic area/density is not a native particle-
+mass or physics acceptance. Source and case originals remain isolated. Finished
+cut windows are closed and their jobs are terminal. Clean tracked checkpoint
+4fb6c47 passed its [publication gate](parity/reports/artifacts/straight-cut-publication-20261116/clean-4fb6c47/PUBLICATION.json):
+all 1,262 evidence Git blobs match, source69 is unchanged, and registry/map/Python
+checks plus CLI help pass through `cargo xtask verify`. Public screenshot copies
+remove only eight device-identifier metadata bytes each; decoded pixels, scan data
+and color characterization remain exact. Original private captures stay untouched.
+GitHub Actions remains disabled and the existing static Pages site is preserved.
+The separate strict-v5 straight-hole candidate has passed 329 Rust tests and local
+source gates; its native acceptance remains unexecuted and is outside this cut
+collection. Continue that workflow after the bounded cut publication checkpoint.
+Prior reports with changed scoped source are marked stale without altering their
+original results, tested commits or artifacts. Fresh default targets stay separate across worktrees.
+
+## Prior straight-annotation evidence — bounded headless and native A
 
 The [implementation-only report](parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json)
-is passed/current only for the original 86-observation headless run and root-accepted
-native A003. PAT-007, UI-004 and APP-001 remain partial/not_run for their coarse
+retains its original passed result for the 86-observation headless run and
+root-accepted native A003; it is now stale on the straight-cut candidate. PAT-007, UI-004 and APP-001 remain partial/not_run for their coarse
 contracts. APP-001 attribution covers the exercised shared-command/input/history
 adapters and A's empty launch; it supplies no native New/Recover, full automation
-or process-restart acceptance. PAT-006 stays wholly planned: straight annotations
-do not implement cutting or holes.
+or process-restart acceptance. Straight annotations add no cut/hole credit;
+PAT-006's partial status comes from the separate bounded cut report above.
 
 The source implements piece-owned straight annotations, native two-point creation,
 precise endpoint editing, selection/removal, applied lengths and one transaction
 with valid staged properties. Strict native v4 stores ownership; supported v1/v2/v3
 reads add empty internal lists. Annotations remain separate from exterior topology,
 sewing targets, mesh constraints and simulation. Internal cubics/shapes, notches,
-persistent measurements/constraints, folds, cuts and internal sewing remain open.
+persistent measurements/constraints, folds, general cuts and internal sewing remain open.
 The [approved engineering contract](spec/features/PAT-006-internal-segments.md)
 provides policy rather than reference behavior despite its PAT-006 filename.
 
-All **65 runtime/build/test/contract/doc inputs** remain byte-identical to ad7.
+At the published checkpoint all **65 runtime/build/test/contract/doc inputs**
+were byte-identical to ad7.
 Original formatting, **282 workspace Rust tests / zero failures**, strict
 workspace/all-target Clippy and native+CLI debug builds are reused by exact source
 identity. Their manifest SHA is
@@ -121,7 +186,7 @@ No driver binary or target/cache is published. Publication performs no new
 physical run and changes no production default.
 No native/reference/contact-completeness or sufficient-fix credit follows.
 
-The current source-only addendum records 29 command variants / 28 nontransaction
+The current source-only addendum records 30 command variants / 29 nontransaction
 schemas/nine MCP tools. Historical JSON remains unchanged. Old Transform pointer,
 New/recovery, garment-contact and physics gaps below remain visible. Keep only
 active test windows; close finished windows after retaining evidence and record

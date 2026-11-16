@@ -153,6 +153,210 @@ fn native_project_json(project: &Project) -> Value {
     serde_json::from_slice::<Value>(&project.to_json().unwrap()).unwrap()["project"].clone()
 }
 
+#[test]
+fn cut_piece_closed_schema_cli_mcp_and_same_path_atomic_refusals() {
+    let dir = Directory::new();
+    let original =
+        include_bytes!("../../../crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge");
+    let cli_path = dir.path("cut-cli.weftforge");
+    let mcp_path = dir.path("cut-mcp.weftforge");
+    let failed_cli = dir.path("refuse-cli.weftforge");
+    let failed_mcp = dir.path("refuse-mcp.weftforge");
+    let commands_file = dir.path("commands.json");
+    for path in [&cli_path, &mcp_path, &failed_cli, &failed_mcp] {
+        fs::write(path, original).unwrap();
+    }
+    let backup = Project::default().to_json().unwrap();
+    for path in [&failed_cli, &failed_mcp] {
+        fs::write(recovery_path(path), &backup).unwrap();
+    }
+    let command = json!({"type":"cut_piece","data":{"piece":2,"start_curve":7,"start_t":0.375,"end_curve":9,"end_t":0.625}});
+    let run = |path: &Path, raw: &str| {
+        fs::write(&commands_file, raw).unwrap();
+        Process::new(env!("CARGO_BIN_EXE_weftforge-cli"))
+            .arg("execute")
+            .arg(path)
+            .arg(path)
+            .arg(&commands_file)
+            .output()
+            .unwrap()
+    };
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let listed = server.request("tools/list", json!({}));
+    let tools = listed["result"]["tools"].as_array().unwrap();
+    assert_eq!(tools.len(), 9);
+    let variants = tools
+        .iter()
+        .find(|tool| tool["name"] == "project_execute")
+        .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
+        .as_array()
+        .unwrap();
+    assert_eq!(variants.len(), 29);
+    let cut = variants
+        .iter()
+        .filter(|variant| variant["properties"]["type"]["const"] == "cut_piece")
+        .collect::<Vec<_>>();
+    assert_eq!(cut.len(), 1);
+    assert_eq!(cut[0]["required"], json!(["type", "data"]));
+    assert_eq!(cut[0]["additionalProperties"], false);
+    let schema = &cut[0]["properties"]["data"];
+    assert_eq!(
+        schema["required"],
+        json!(["piece", "start_curve", "start_t", "end_curve", "end_t"])
+    );
+    assert_eq!(schema["additionalProperties"], false);
+    assert_eq!(schema["properties"].as_object().unwrap().len(), 5);
+    for id in ["piece", "start_curve", "end_curve"] {
+        assert_eq!(schema["properties"][id]["type"], "integer");
+        assert_eq!(schema["properties"][id]["minimum"], 1);
+        assert_eq!(schema["properties"][id]["maximum"], u64::MAX);
+    }
+    for t in ["start_t", "end_t"] {
+        assert_eq!(schema["properties"][t]["type"], "number");
+        assert_eq!(schema["properties"][t]["exclusiveMinimum"], 1e-6);
+        assert_eq!(schema["properties"][t]["exclusiveMaximum"], 1. - 1e-6);
+    }
+    let result = run(&cli_path, &json!([command.clone()]).to_string());
+    assert!(
+        result.status.success(),
+        "{}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+    assert_eq!(
+        serde_json::from_slice::<Value>(&result.stdout).unwrap(),
+        json!({"revision":2,"commands_applied":1})
+    );
+    let response = server.call(
+        "project_execute",
+        json!({"input":mcp_path,"output":mcp_path,"commands":[command.clone()]}),
+    );
+    assert_eq!(success(&response)["revision"], 2);
+    assert_eq!(fs::read(&cli_path).unwrap(), fs::read(&mcp_path).unwrap());
+    for path in [&cli_path, &mcp_path] {
+        assert_eq!(fs::read(recovery_path(path)).unwrap(), original);
+    }
+    let saved = Project::load(&mcp_path).unwrap();
+    assert_eq!(
+        saved
+            .pieces
+            .iter()
+            .map(|piece| piece.id)
+            .collect::<Vec<_>>(),
+        [2, 15]
+    );
+    assert_eq!(saved.pieces[0].boundary, [7, 18, 14, 10]);
+    assert_eq!(saved.pieces[1].boundary, [12, 8, 9, 19]);
+    let inspected = server.call("project_inspect", json!({"path":mcp_path}));
+    assert_eq!(success(&inspected)["project"], native_project_json(&saved));
+    let lengths = server.call(
+        "project_lengths",
+        json!({"path":mcp_path,"query":{"type":"interval","data":{"curve":18,"t0":0.,"t1":1.}}}),
+    );
+    assert!((success(&lengths)["length_m"].as_f64().unwrap() - 0.36).abs() < 1e-12);
+
+    let mut failures = Vec::new();
+    for field in ["piece", "start_curve", "start_t", "end_curve", "end_t"] {
+        let mut missing = command.clone();
+        missing["data"].as_object_mut().unwrap().remove(field);
+        failures.push(json!([missing]).to_string());
+        let needle = format!("\"{field}\":{}", command["data"][field]);
+        failures.push(
+            json!([command.clone()])
+                .to_string()
+                .replace(&needle, &format!("{needle},{needle}")),
+        );
+    }
+    for (field, value) in [
+        ("piece", json!(0)),
+        ("piece", json!(-1)),
+        ("piece", json!(2.5)),
+        ("start_curve", json!(0)),
+        ("end_curve", json!(0)),
+        ("start_curve", json!(u64::MAX)),
+        ("start_t", json!(0)),
+        ("start_t", json!(1e-6)),
+        ("end_t", json!(1)),
+        ("end_t", json!(null)),
+        ("end_curve", json!(7)),
+        ("unexpected", json!(true)),
+    ] {
+        let mut bad = command.clone();
+        bad["data"][field] = value;
+        failures.push(json!([bad]).to_string());
+    }
+    let mut outer = command.clone();
+    outer["unknown"] = json!(true);
+    failures.push(json!([outer]).to_string());
+    failures
+        .push(json!([command.clone(),{"type":"set_resolution","data":{"metres":0}}]).to_string());
+    failures.push(json!([{"type":"cut_piece","piece":2,"start_curve":7,"start_t":0.375,"end_curve":9,"end_t":0.625}]).to_string());
+    failures.push(json!([command.clone()]).to_string().replace(
+        "\"type\":\"cut_piece\"",
+        "\"type\":\"cut_piece\",\"type\":\"cut_piece\"",
+    ));
+    failures.push(
+        json!([command.clone()])
+            .to_string()
+            .replace("\"piece\":2", "\"piece\":18446744073709551616"),
+    );
+    failures.push(
+        json!([command.clone()])
+            .to_string()
+            .replace("\"start_t\":0.375", "\"start_t\":1e309"),
+    );
+    failures.push("[]".into());
+    failures.push(json!([{"type":"transaction","data":[command.clone()]}]).to_string());
+    failures.push(json!(vec![command.clone(); 1025]).to_string());
+    failures.push(format!("[{}]", " ".repeat(1024 * 1024)));
+    for raw in failures {
+        let result = run(&failed_cli, &raw);
+        assert!(!result.status.success(), "accepted CLI {raw}");
+        let request = json!({"jsonrpc":"2.0","id":"raw-cut","method":"tools/call","params":{"name":"project_execute","arguments":{"input":failed_mcp,"output":failed_mcp,"commands":"CUT_RAW_COMMANDS"}}}).to_string().replace("\"CUT_RAW_COMMANDS\"", &raw);
+        server.send(&request);
+        let response = server.receive();
+        if request.len() > 1024 * 1024 {
+            assert_eq!(response["error"]["code"], -32600);
+        } else {
+            tool_error(&response);
+        }
+        for path in [&failed_cli, &failed_mcp] {
+            assert_eq!(fs::read(path).unwrap(), original);
+            assert_eq!(fs::read(recovery_path(path)).unwrap(), backup);
+        }
+    }
+    for path in [&failed_cli, &failed_mcp] {
+        fs::remove_file(recovery_path(path)).unwrap();
+        fs::create_dir(recovery_path(path)).unwrap();
+    }
+    assert!(
+        !run(&failed_cli, &json!([command.clone()]).to_string())
+            .status
+            .success()
+    );
+    tool_error(&server.call(
+        "project_execute",
+        json!({"input":failed_mcp,"output":failed_mcp,"commands":[command]}),
+    ));
+    for path in [&failed_cli, &failed_mcp] {
+        assert_eq!(fs::read(path).unwrap(), original);
+        assert!(recovery_path(path).is_dir());
+    }
+    let l_path = dir.path("concave.weftforge");
+    let l_bytes =
+        include_bytes!("../../../crates/weftforge-core/tests/fixtures/original-cut-l.weftforge");
+    fs::write(&l_path, l_bytes).unwrap();
+    let invalid = json!([{"type":"cut_piece","data":{"piece":2,"start_curve":11,"start_t":1./3.,"end_curve":12,"end_t":2./3.}}]);
+    assert!(!run(&l_path, &invalid.to_string()).status.success());
+    tool_error(&server.call(
+        "project_execute",
+        json!({"input":l_path,"output":l_path,"commands":invalid}),
+    ));
+    assert_eq!(fs::read(&l_path).unwrap(), l_bytes);
+    assert!(!recovery_path(&l_path).exists());
+    server.finish();
+}
+
 fn tool_error(response: &Value) {
     assert_eq!(response["result"]["isError"], true, "{response}");
     assert!(
@@ -318,7 +522,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
             .as_array()
             .unwrap()
             .len(),
-        28
+        29
     );
     success(&server.call("project_create", json!({"output":project_path})));
     let initial = server.call("project_inspect", json!({"path":project_path}));
@@ -455,7 +659,7 @@ fn sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constrai
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 28);
+    assert_eq!(variants.len(), 29);
     for name in [
         "add_sewing_group",
         "update_sewing_group",
@@ -680,7 +884,7 @@ fn physical_length_sewing_schema_and_cli_mcp_use_the_shared_candidate_transactio
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 28);
+    assert_eq!(variants.len(), 29);
     let variant = variants
         .iter()
         .find(|variant| variant["properties"]["type"]["const"] == "add_sewing_by_length")
@@ -2117,7 +2321,7 @@ fn internal_annotations_share_closed_schema_cli_and_mcp_transactions_without_new
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 28);
+    assert_eq!(variants.len(), 29);
     for (name, required, id_field) in [
         (
             "add_internal_segment",

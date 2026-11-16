@@ -1,0 +1,40 @@
+{
+  "kind": "root_implementation_GO_straight_cut_reviewed_v2",
+  "utc": "2026-11-15T23:29:27.309936+00:00",
+  "worktree": ".local/straight-cut-20261115",
+  "branch": "feat/straight-topology-cut",
+  "base": "bbada3f7f5228a9479a76c0c300d3aa716e57d77",
+  "manifest_sha256": "1144d1e955cd77bd3e8690364555e7f0e9fec1a921b7ee410966a45fd0edd942",
+  "contract_sha256": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c",
+  "oracle_sha256": "13846d635a1432c3e5bfd77eb66802cc633bd29a3661c940972783dc2f5dfea2",
+  "original_contract_and_review_unchanged": true,
+  "root_review": "Reviewed corrected contract, original independent R/L coordinate/default fixtures, literal IDs/areas/masses/history/ownership/reopen oracle, stdlib arithmetic-check source/result and two original R native action/cap tables. Three agreed corrections only; no target-derived answer.",
+  "grants": {
+    "core_CLI_implementation": true,
+    "native_UI_implementation": true,
+    "core_CLI_targeted_Cargo_lease": true,
+    "native_UI_Cargo_lease": false,
+    "native_UI_execution": false,
+    "reference_execution": false,
+    "parity_or_full_feature_acceptance": false
+  },
+  "ownership": {
+    "/root/straight_cut_core": [
+      "crates/weftforge-core/**",
+      "apps/weftforge-cli/**"
+    ],
+    "/root/straight_cut_native_ui": [
+      "apps/weftforge/src/main.rs"
+    ],
+    "root": [
+      "docs",
+      "parity",
+      "spec",
+      "integration",
+      "Git/publication/native acceptance"
+    ]
+  },
+  "Cargo": "Core/CLI agent may run targeted meaningful tests in this worktree own fresh DEFAULT target. No target copies/overrides; package-only formatting while UI edits. Root coordinates later integrated fmt/tests/Clippy/xtask/debug gates. Native UI agent no Cargo until lease.",
+  "bounds": "Do not weaken core eligibility/atomicity/oracle tolerances or add schema/dependency/tool framework. Existing v4 ordinary pieces only; fullcuts/holes/targetsewing/curves/Cut&Sew/ref remain open.",
+  "native_next": "CUT-R1/R2 require final runtime/controller/binary binding and separate root GO after integration. Concave/IO native still separately required. Existing annotation C source remains immutable db8 in another worktree."
+}

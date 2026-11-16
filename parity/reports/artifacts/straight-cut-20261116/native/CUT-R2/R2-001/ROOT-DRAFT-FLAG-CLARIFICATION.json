@@ -1,0 +1,13 @@
+{
+  "kind": "post-case root clarification of stale extra draft diagnostic, original binding unchanged",
+  "root_binding_sha256": "9faa47fb4e8a47a4f2c1a00c3ed2aa1ac31e3c2ce79999efd115e8605ad3a5a1",
+  "field": "missing_root_UI_dependency",
+  "original_value": true,
+  "cause": "Root populated canonical dependency and grant fields but omitted clearing this extra draft-only marker.",
+  "canonical_dependency_present_before_GO": true,
+  "accepted_R003_review_sha256": "5399e1cb6bd223c7fd2899d2b9ba39f09ffb82f22ae1ae6cebb4d4932ed8d560",
+  "actual_FS0003_checked_dependencies_before_launch": true,
+  "original_V2_scope": "The extra marker is not in the frozen root-binding template or dependency schema. Canonical required fields and actual hashed files are checked independently by the unchanged one-shot grader.",
+  "qualification": "Preserve contradiction explicitly; no silent repair/regrade or claim of a pristine binding. No geometry/reference inference follows from metadata alone.",
+  "written_utc": "2026-11-16T03:16:56.151486+00:00"
+}
