@@ -1,6 +1,7 @@
 # WeftForge status — active development, 2026-11-16
 
-The last published runtime is ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5, merged in
+This cut publication records runtime 19b1e88245dc627cfec8164f4924b335fe44853d.
+The preceding published runtime ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5 was merged in
 [PR #47](https://github.com/thematheusmello/weftforge/pull/47) at
 bbada3f7f5228a9479a76c0c300d3aa716e57d77. GitHub Actions remains disabled and the
 existing Pages configuration is preserved. The source/evidence
@@ -56,8 +57,13 @@ PAT-006 is now partial; whole-contract verification remains not_run and referenc
 behavior unobserved. Full cuts, holes, target sewing, Cut & Sew, native concave and
 failed-I/O cases remain open. Saved analytic area/density is not a native particle-
 mass or physics acceptance. Source and case originals remain isolated. Finished
-cut windows are closed and their jobs are terminal. Root's next publication gate
-is privacy-safe evidence, Git blob tracking and clean registry/map/xtask checks.
+cut windows are closed and their jobs are terminal. Clean tracked checkpoint
+4fb6c47 passed its [publication gate](parity/reports/artifacts/straight-cut-publication-20261116/clean-4fb6c47/PUBLICATION.json):
+all 1,262 evidence Git blobs match, source69 is unchanged, and registry/map/Python
+checks plus CLI help pass through `cargo xtask verify`. Public screenshot copies
+remove only eight device-identifier metadata bytes each; decoded pixels, scan data
+and color characterization remain exact. Original private captures stay untouched.
+GitHub Actions remains disabled and the existing static Pages site is preserved.
 The separate strict-v5 straight-hole candidate has passed 329 Rust tests and local
 source gates; its native acceptance remains unexecuted and is outside this cut
 collection. Continue that workflow after the bounded cut publication checkpoint.

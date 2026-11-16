@@ -1,0 +1,33 @@
+{
+  "kind": "clean tracked publication gate at identified4fb6c47",
+  "checked_clean_commit": "4fb6c47d65bf99aefc358155cf2305f647c205e2",
+  "source69_unchanged": true,
+  "tracked_artifact_blobs": 1262,
+  "all_Git_blob_hashes_exact": true,
+  "commands": [
+    "cargo xtask verify"
+  ],
+  "exit_code": 0,
+  "reused_Rust_gates": "Prior fmt/304Rust/strictClippy9ebba8... retained by exact69-input identity; no native/evaluator case replay.",
+  "record_qualification": "CHECKS and log hash fields retain original execution attribution; literal-path derivatives have distinct public hashes below. This was a fresh own default publication Cargo target, no target copying. Original case/source/evidence files unchanged.",
+  "files": {
+    "CHECKS.json": {
+      "original_sha256": "56ec8493b210c28ba84141568c991d40b71b410fef9e2ffc076633bde1229f80",
+      "public_sha256": "fad583fbf5335bff962433323690e6ebaf4565ebbdc6668574842f5e8bc0cb60",
+      "kind": "literal_path_only_derivative",
+      "bytes": 8976
+    },
+    "xtask.stdout": {
+      "original_sha256": "0386c487cc90643d900752584174350bee863708f1a67f0824882b706443f1ea",
+      "public_sha256": "0386c487cc90643d900752584174350bee863708f1a67f0824882b706443f1ea",
+      "kind": "exact_original",
+      "bytes": 2686
+    },
+    "xtask.stderr": {
+      "original_sha256": "772c5bbc3321b913b28a7e3ee3081ad83a5065b4c2fd5a9c1f4337c5255e7e6b",
+      "public_sha256": "9c8c8d3bc6b268412a791c3b7590cf994a4d71757027e5446c94ac745ed88c75",
+      "kind": "literal_path_only_derivative",
+      "bytes": 1350
+    }
+  }
+}

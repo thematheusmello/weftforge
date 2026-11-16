@@ -77,6 +77,14 @@ reference comparisons remain open. Analytic saved area times density is not an
 actual particle-mass measurement; the separate Rust mesh/Cloth constructor checks
 and their fine-L resource refusal retain their narrower scope.
 
+The separate [clean tracked publication check](../parity/reports/artifacts/straight-cut-publication-20261116/clean-4fb6c47/PUBLICATION.json)
+binds checkpoint 4fb6c47, all 1,262 evidence Git blobs and unchanged source69.
+It runs registry/map/Python checks and CLI help through `cargo xtask verify`;
+the prior Rust gates retain their actual execution identity. Public JPEG copies
+have only device identifiers removed from ICC metadata, with matching decoded
+pixels, scan data and color-characterization tags. Original native captures and
+case records remain private and unchanged.
+
 ## Historical native studio checks (21b9)
 
 Source `21b9f5e76a77ca21357783240cef7506b3887fbc` passes all five integrated
