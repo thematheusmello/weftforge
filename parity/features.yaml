@@ -19346,7 +19346,14 @@
         "https://www.marvelousdesigner.com/products/releases"
       ],
       "reference_observation_status": "unobserved",
-      "evidence_ids": [],
+      "evidence_ids": [
+        "spec/features/PAT-009-material-outline-offset.md",
+        "spec/features/fixtures/PAT-009-offset-originals.json",
+        "spec/features/fixtures/PAT-009-offset-reviewed-additions.json",
+        "parity/reports/WF-20261116-MATERIAL-OUTLINE-OFFSET-001.json",
+        "parity/reports/artifacts/material-outline-offset-20261116/PUBLICATION-SCOPE-001.json",
+        "parity/reports/artifacts/material-outline-offset-20261116/SOURCE-CHECK-PUBLICATION-001.json"
+      ],
       "scenarios": [],
       "comparison_criteria": {
         "units": "SI metres, kilograms, seconds; radians",
@@ -19359,22 +19366,77 @@
       "dependencies": [
         "PAT-002"
       ],
-      "implementation_locations": [],
+      "implementation_locations": [
+        "crates/weftforge-core/src/offset.rs",
+        "crates/weftforge-core/src/document.rs",
+        "crates/weftforge-core/src/geometry.rs",
+        "crates/weftforge-core/src/simulation.rs",
+        "crates/weftforge-core/tests/outline_offset.rs",
+        "apps/weftforge/src/main.rs",
+        "apps/weftforge-cli/src/main.rs",
+        "apps/weftforge-cli/src/mcp.rs",
+        "apps/weftforge-cli/tests/mcp_stdio.rs"
+      ],
       "issues": [
         "https://github.com/thematheusmello/weftforge/issues/3"
       ],
       "prs": [],
-      "implementation_status": "planned",
+      "implementation_status": "partial",
       "verification_status": "not_run",
-      "verification_runs": [],
+      "verification_runs": [
+        {
+          "id": "WF-20261116-MATERIAL-OUTLINE-OFFSET-001",
+          "commit": "d8cef845630e381c4f3339ee867ebc66ed17e443",
+          "timestamp": "2026-11-16T11:40:18.933077Z",
+          "platform": "macOS 27.2 arm64; Rust1.94.1; own-target native and CLI debug builds; source/CLI/MCP/headless egui tests only",
+          "artifact_hashes": {
+            "parity/reports/artifacts/material-outline-offset-20261116/PUBLICATION-SCOPE-001.json": "03fc54932e18ddf95d2395d3a171565f63cba7fac8bee63a8d186a16f7db1a33",
+            "parity/reports/artifacts/material-outline-offset-20261116/SOURCE-CHECK-PUBLICATION-001.json": "b8424930ce29f796fa8fd26b3bf0d18fba3a8d0e020f81fb27ee8996b43e5765",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/MCP-DISCOVERY-CORRECTION.patch": "e8f20393b33cfa6229e878ea62d86392302ffa64b1166f62e8a455fd26a8ec71",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-001/CHECKS.json": "fda1e5fe16802e9f94e5040d95e64b127c2fa085d7274a4859970c26547c53da",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-001/SOURCE-INPUTS.json": "d5dfbd11e33a441e541115100d4d8ae93159667ec1466b796ca41f2906f2fce8",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-001/fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-001/fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-001/test.stderr": "1c987945ace62c98c233a3dbe111698c13484413d00184ec1d48d8ce7d58f5d5",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-001/test.stdout": "b0728e4b591a87d4841a747a09e2be870f1dd29b942a2698dfa36ac0a1b0a8ec",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-002/PRECHECK-STOP.json": "96682af7b12432535bf6cecbd3fba6a84b8f41b55fe20fb7826df2b90f977bfa",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/CHECKS.json": "1de617493c237516a9cd71e730ba3c40833804e0b499a856b7dc43d06853a6f0",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/SOURCE-INPUTS.json": "e1c3f00da24fbc9eada09dbeffbbd2447dcfca1ccb94c98ad70c8c4742c1f31a",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/clippy.stderr": "9a945924d5aaec17fcb7de619f034b0d1747c956938d4fe97eb3aa4b7dbcb730",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/clippy.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/debug-build.stderr": "e4789b2fdd4014a8b07a0c22857ead874e8ec4ea0dff89cbe26db061fe9c48fe",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/debug-build.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/fmt.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/fmt.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/test.stderr": "add600ee119147a113d221b57dcbdeb0173ebe444d88fd15fc1b0e74f9e49b59",
+            "parity/reports/artifacts/material-outline-offset-20261116/gates/source-gates-003/test.stdout": "05e1c46623b4f86189e810e0c0bfa47ffb3acdf01d83fb9035c460ad7089f277",
+            "parity/reports/artifacts/material-outline-offset-20261116/history/WF-20261116-HOLE-EXPORT-001.original.json": "7e2951fa5d7ab22a01379d6ef4efa71be62dd71fc46926839fc294b5047d495f",
+            "parity/reports/artifacts/material-outline-offset-20261116/review/REVIEW-001.md": "e50d8112148261713b71b784c4d95bf3c15fa822c71e454541c60c0f9bf5a110",
+            "parity/reports/artifacts/material-outline-offset-20261116/review/REVIEW-SUPPLEMENT-002.md": "a289bcbcb53bf0475b880e7502c1f1e5a2fd4c579c4469821e9353853d5276fe",
+            "parity/reports/artifacts/material-outline-offset-20261116/review/SOURCE-PINS-001.json": "524e130e9503cabd3916894ec927234ca9bb30bb63f52eaec8b1fe4b353b061f",
+            "parity/reports/artifacts/material-outline-offset-20261116/review/SOURCE-PINS-002.json": "36d5883d29fb7778316cb86a24a1e5bf25d1e5f5919abd5722e92cf0715f7a58",
+            "parity/reports/artifacts/material-outline-offset-20261116/review/SUPPLEMENT-PUBLICATION-002.json": "5a2477bb031204d9cad0ab39747b84236d8007c1139ce46e08eda4448724c860"
+          },
+          "path": "parity/reports/WF-20261116-MATERIAL-OUTLINE-OFFSET-001.json"
+        }
+      ],
       "known_gaps": [
-        "Full reference contract and runtime comparison not yet established."
+        "Full reference contract and runtime comparison not yet established.",
+        "Strict whole-request16777216 work cap and every256 cancellation polling remain UNMET inside the existing opaque earcutr0.5.0 call. Controlled geometry/validation/mesh/Cloth work is charged/polled, with checks around the monolithic call; hidden predicates are not individually charged or polled. No hard request-wide latency or whole-first-increment acceptance.",
+        "Actual native curved/concave/cancellation cases and all required first-phase SA-001–010/013–015 plus reviewed additions remain unexecuted. Source tests, preview labels and analytic area*density do not establish native particle mass, reference semantics, full feature or roadmap acceptance.",
+        "Full persistent seam allowances, guide/material/construction roles, per-edge/interval widths, holes/internal/open offsets/endpoint extension, multiple offsets, source-to-internal retention, relationship remapping and manufacturing/printing/reference workflows remain open. Conservative refusal does not complete those requirements.",
+        "Current freshness describes only the exact gated implementation-evidence subset on d8cef/source79. Whole PAT-009 verification stays not_run and reference behavior unobserved; source/headless UI tests add no actual native-case, complete first-phase or reference credit. Existing original scenarios/dependencies/comparison criteria remain unchanged."
       ],
       "contradictions": [],
       "blockers": [
         "Reference workspace is accessible; complete behavior execution and frozen baseline settings remain pending."
       ],
-      "freshness": "missing"
+      "freshness": "current",
+      "contract_documents": {
+        "spec/features/PAT-009-material-outline-offset.md": "3e5759ad49f2f3a6b7d3342222e62d67b8bee8fa956f8a3f96a8422f0e914b6b",
+        "spec/features/fixtures/PAT-009-offset-originals.json": "6de6eefff1bc040363f1f2de335f5c4f70dc526dacd5224ba22e1c33e1820bec",
+        "spec/features/fixtures/PAT-009-offset-reviewed-additions.json": "fc4b133cadada09a676266cea90c736a35342767552cb54a573460eea9f41991"
+      }
     },
     {
       "id": "PAT-010",

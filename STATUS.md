@@ -13,9 +13,12 @@ native/CLI debug builds passed with all **79 source inputs unchanged**. The
 source-gate receipt is
 `6257e853ec5404dd7d4cd6446beb1bf3648345c09f02fcac62903a5809eae66a`.
 Independent numerical/atomicness review and its one-line schema-test supplement
-are complete. Clean registry/map integration and the bound native rectangle
-case remain pending. No test window or reference session has been opened for
-this increment.
+are complete. The map/progress cycle and 39 registry tests passed. Current source
+inventory: 39 rows, 23 surfaces, 23 contracts, 349 anchors, 34 Rust commands,
+33 schemas and nine tools. PAT-009 is partial with source-only evidence; progress
+is **41 partial / 15 planned / 0 of 56 reference contracts verified**. Clean
+committed integration and the bound native rectangle case remain pending.
+No test window or reference session has been opened for this increment.
 
 The review found and prompted fixes for invalid interval arithmetic, nonlinear
 corner sweeps, final transaction mesh/Cloth validation and cancellation through
@@ -29,8 +32,10 @@ All recorded Cargo jobs are terminal, including root session 17319, exit 0.
 The earlier full run retained its failure at one old discovery assertion that
 still expected 32 commands; correcting it to 33 changed no production code.
 The exact-source review pins were refreshed for that test-only correction.
-Next: integrate the current source map and source-only report, run the clean
-registry/map gate, then bind and execute the fresh rectangle workflow. Curved/concave native
+Metadata cycle receipt:
+`b3692669fef7ce7d7177693e45e9f5f78d993ecb19cc68cddcaa1658e1f7222f`.
+Next: run the clean committed registry/map gate, then bind and execute the fresh
+rectangle workflow. Curved/concave native
 cases, broader offset/allowance work and triangulation cancellation remain due.
 
 ## Merged hole and Cut & Sew checkpoint
