@@ -439,6 +439,10 @@ impl Project {
         self.validate_with_work(&mut crate::geometry::ContainmentWork::new())
     }
 
+    pub(crate) fn validate_for_offset(&self, work: &crate::offset::Work<'_>) -> Result<()> {
+        self.validate_with_work(&mut crate::geometry::ContainmentWork::for_offset(work))
+    }
+
     fn validate_with_work(
         &self,
         containment_work: &mut crate::geometry::ContainmentWork,
@@ -479,6 +483,7 @@ impl Project {
             .chain(self.seams.iter().map(|x| x.id))
             .chain(self.sewing_groups.iter().map(|x| x.id))
         {
+            containment_work.charge_request()?;
             ensure(
                 id != 0 && ids.insert(id),
                 "Object IDs must be nonzero and globally unique",
@@ -489,9 +494,11 @@ impl Project {
             "Invalid next stable ID",
         )?;
         for point in &self.points {
+            containment_work.charge_request()?;
             validate_coordinates(&point.position)?;
         }
         for curve in &self.curves {
+            containment_work.charge_request()?;
             ensure(
                 curve.start != curve.end
                     && self.point(curve.start).is_some()
@@ -505,6 +512,7 @@ impl Project {
             }
         }
         for material in &self.materials {
+            containment_work.charge_request()?;
             validate_name(&material.name)?;
             ensure(
                 material.areal_density.is_finite()
@@ -550,6 +558,7 @@ impl Project {
         let mut used_curves = BTreeSet::new();
         let mut used_points = BTreeSet::new();
         for piece in &self.pieces {
+            containment_work.charge_request()?;
             validate_name(&piece.name)?;
             ensure(
                 piece.grain_angle.is_finite(),
@@ -583,6 +592,7 @@ impl Project {
                     "A boundary needs at least three curves",
                 )?;
                 for (index, id) in boundary.iter().enumerate() {
+                    containment_work.charge_request()?;
                     ensure(
                         used_curves.insert(*id),
                         "Curves must have exactly one boundary or internal owner",
@@ -604,6 +614,7 @@ impl Project {
                 }
             }
             for id in &piece.internal_curves {
+                containment_work.charge_request()?;
                 ensure(
                     used_curves.insert(*id),
                     "Curves must have exactly one boundary or internal owner",
@@ -634,7 +645,7 @@ impl Project {
                 )?;
             }
             if piece.holes.is_empty() {
-                crate::geometry::validate_contour(self, piece)?;
+                crate::geometry::validate_contour_with_work(self, piece, containment_work)?;
                 crate::geometry::validate_internal_segments(self, piece, containment_work)?;
             } else {
                 crate::geometry::validate_holed_piece(self, piece, containment_work)?;
@@ -645,6 +656,7 @@ impl Project {
             "Orphan construction geometry is unsupported",
         )?;
         for seam in &self.seams {
+            containment_work.charge_request()?;
             validate_name(&seam.name)?;
             for interval in [seam.a, seam.b] {
                 self.require_boundary_curve(interval.curve)?;
@@ -687,6 +699,7 @@ impl Project {
             "Sewing group interval reference limit exceeded",
         )?;
         for group in &self.sewing_groups {
+            containment_work.charge_request()?;
             validate_name(&group.name)?;
             let mut coverage = std::collections::BTreeMap::<Id, Vec<[f64; 2]>>::new();
             for side in [&group.a, &group.b] {
@@ -749,7 +762,7 @@ impl Project {
         Ok(())
     }
 
-    fn allocate_id(&mut self) -> Result<Id> {
+    pub(crate) fn allocate_id(&mut self) -> Result<Id> {
         let id = self.next_id;
         self.next_id = id
             .checked_add(1)
@@ -1413,6 +1426,15 @@ impl Project {
                 self.curves.retain(|item| item.id != second);
                 self.points.retain(|item| item.id != left.end);
             }
+            Command::OffsetOutline {
+                piece,
+                width,
+                outward,
+            } => {
+                *self = self
+                    .prepare_outline_offset(piece, width, outward, || false)?
+                    .candidate;
+            }
             Command::ResizePiece {
                 piece,
                 width,
@@ -1985,6 +2007,12 @@ pub enum Command {
     JoinCurve {
         curve: Id,
     },
+    /// Replaces one whole exterior with editable material geometry; unsupported attachments refuse.
+    OffsetOutline {
+        piece: Id,
+        width: f64,
+        outward: bool,
+    },
     ResizePiece {
         piece: Id,
         width: f64,
@@ -2084,6 +2112,39 @@ impl Editor {
     }
 
     pub fn execute(&mut self, command: Command) -> Result<()> {
+        if let Command::Transaction(commands) = &command {
+            ensure(
+                !commands
+                    .iter()
+                    .any(|command| matches!(command, Command::Transaction(_))),
+                "Nested transactions are unsupported",
+            )?;
+        }
+        if let Command::OffsetOutline {
+            piece,
+            width,
+            outward,
+        } = command
+        {
+            let prepared = self
+                .project
+                .prepare_outline_offset(piece, width, outward, || false)?;
+            self.commit_outline_offset(prepared)?;
+            return Ok(());
+        }
+        let offset_pieces: BTreeSet<_> = match &command {
+            Command::Transaction(commands) => commands
+                .iter()
+                .filter_map(|command| {
+                    if let Command::OffsetOutline { piece, .. } = command {
+                        Some(*piece)
+                    } else {
+                        None
+                    }
+                })
+                .collect(),
+            _ => BTreeSet::new(),
+        };
         let mut next = self.project.clone();
         let mut work = crate::geometry::ContainmentWork::new();
         next.apply(command, &mut work)?;
@@ -2144,6 +2205,20 @@ impl Editor {
             .checked_add(1)
             .ok_or_else(|| Error("Document revision limit reached".into()))?;
         next.revision = revision;
+        if !offset_pieces.is_empty() {
+            // Later members can change meshing or physical settings after an offset was prepared.
+            crate::offset::check_serialized_size(&next)?;
+            let mesh = next.mesh()?;
+            for piece in offset_pieces {
+                ensure(
+                    mesh.piece_ids.iter().filter(|id| **id == piece).count() <= 65_536,
+                    &format!(
+                        "OffsetDerivedVertexBudgetExceeded: final transaction piece {piece} exceeds 65536 vertices"
+                    ),
+                )?;
+            }
+            crate::simulation::create_cloth(&next, &mesh)?;
+        }
         self.revision = revision;
         self.undo.push(std::mem::replace(&mut self.project, next));
         if self.undo.len() > 128 {
@@ -2155,6 +2230,30 @@ impl Editor {
 
     pub fn can_undo(&self) -> bool {
         !self.undo.is_empty()
+    }
+
+    /// Publishes an already validated rest/solver candidate as one history action, without remeshing.
+    pub fn commit_outline_offset(
+        &mut self,
+        prepared: crate::PreparedOutlineOffset,
+    ) -> Result<(crate::Mesh, weftforge_sim::Cloth)> {
+        crate::offset::recheck(&prepared, &self.project)?;
+        let revision = self
+            .revision
+            .checked_add(1)
+            .ok_or_else(|| Error("Document revision limit reached".into()))?;
+        ensure(
+            prepared.candidate.revision == revision,
+            "OffsetStalePreparation: revision changed",
+        )?;
+        self.revision = revision;
+        self.undo
+            .push(std::mem::replace(&mut self.project, prepared.candidate));
+        if self.undo.len() > 128 {
+            self.undo.remove(0);
+        }
+        self.redo.clear();
+        Ok((prepared.mesh, prepared.cloth))
     }
     pub fn can_redo(&self) -> bool {
         !self.redo.is_empty()

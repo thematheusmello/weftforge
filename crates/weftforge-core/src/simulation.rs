@@ -25,16 +25,40 @@ pub fn create_cloth_cancellable(
     mesh: &Mesh,
     cancelled: impl Fn() -> bool,
 ) -> Result<Cloth> {
+    create_cloth_context(project, mesh, cancelled, None)
+}
+
+pub(crate) fn create_cloth_for_offset(
+    project: &Project,
+    mesh: &Mesh,
+    work: &crate::offset::Work<'_>,
+) -> Result<Cloth> {
+    create_cloth_context(project, mesh, || false, Some(work))
+}
+
+fn create_cloth_context(
+    project: &Project,
+    mesh: &Mesh,
+    cancelled: impl Fn() -> bool,
+    work: Option<&crate::offset::Work<'_>>,
+) -> Result<Cloth> {
     let check = || {
+        if let Some(work) = work {
+            work.step()?;
+        }
         crate::ensure(
             !cancelled(),
             "Simulation initialization cancelled; previous state retained",
         )
     };
     check()?;
-    project.validate()?;
+    if let Some(work) = work {
+        project.validate_for_offset(work)?;
+    } else {
+        project.validate()?;
+    }
     check()?;
-    mesh.validate()?;
+    mesh.validate_context(work)?;
     check()?;
     crate::ensure(
         mesh.doc_revision == project.revision,
@@ -105,7 +129,8 @@ pub fn create_cloth_cancellable(
         });
     }
     check()?;
-    Cloth::new_cancellable(
+    let failure = std::cell::RefCell::new(None);
+    let result = Cloth::new_cancellable(
         ClothInput {
             positions: mesh.positions.clone(),
             triangles: mesh.triangles.clone(),
@@ -115,9 +140,22 @@ pub fn create_cloth_cancellable(
             pins: vec![],
             colliders,
         },
-        cancelled,
+        || {
+            if let Some(work) = work
+                && let Err(error) = work.check().and_then(|()| work.step())
+            {
+                *failure.borrow_mut() = Some(error);
+                return true;
+            }
+            cancelled()
+        },
     )
-    .map_err(|error| crate::Error(error.to_string()))
+    .map_err(|error| crate::Error(error.to_string()));
+    if let Some(error) = failure.into_inner() {
+        Err(error)
+    } else {
+        result
+    }
 }
 
 #[cfg(test)]

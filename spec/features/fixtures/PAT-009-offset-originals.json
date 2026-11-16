@@ -1,0 +1,1004 @@
+{
+  "schema_version": 1,
+  "id": "PAT-009-ORIGINAL-SCENARIOS-001",
+  "created_date": "2026-11-16",
+  "status": "preimplementation independent plan; every case unexecuted",
+  "ownership": "No product files, evaluator scripts or product-generated expected fixtures are supplied. All coordinates/formulas are original independent recipes.",
+  "root_scope_decision": "First integrated phase is actual authored material-outline offset, not cutting-guide-only allowance.",
+  "global_assumptions": {
+    "authoring_units": "SI m, f64",
+    "three_d": "Y-up; preserve selected piece arrangement, compare intrinsic rest geometry before any deformed-state export",
+    "surface_mass": "0.2 kg/m2, mapped without rounding to the existing material model; if represented as density*thickness, freeze both inputs giving that same areal mass",
+    "default_width": "not inferred from MD; every scenario supplies its width",
+    "reference_defaults_and_behavior": "unknown",
+    "stable_ids": "Record actual IDs after original authoring; do not invent product ID allocation values. Test equality/preservation/remapping against recorded input IDs."
+  },
+  "acceptance_tolerances": {
+    "analytic_straight_coordinates_m": 1e-09,
+    "saved_authored_restore_m": 1e-12,
+    "offset_fit_m": "min(1e-5,width_m/64)",
+    "rest_export_tessellation_m": 1e-05,
+    "physical_svg_dimensions_mm": 0.01,
+    "curved_area_m2": 5e-05,
+    "curved_mass_kg": 1e-05
+  },
+  "fixtures": [
+    {
+      "id": "F-RECT",
+      "kind": "original_authoring_recipe",
+      "units": "m",
+      "vertices_ccw": [
+        [
+          0,
+          0
+        ],
+        [
+          0.4,
+          0
+        ],
+        [
+          0.4,
+          0.6
+        ],
+        [
+          0,
+          0.6
+        ]
+      ],
+      "segments": "four authored straight boundaries",
+      "mass_per_area_kg_m2": 0.2,
+      "base_area_m2": 0.24,
+      "base_mass_kg": 0.048,
+      "attachments": "none; no holes; preserve fabric and arrangement"
+    },
+    {
+      "id": "F-CURVE",
+      "kind": "original_authoring_recipe",
+      "units": "m",
+      "boundary_ccw": [
+        {
+          "line": [
+            [
+              0,
+              0
+            ],
+            [
+              0.4,
+              0
+            ]
+          ]
+        },
+        {
+          "cubic": [
+            [
+              0.4,
+              0
+            ],
+            [
+              0.5,
+              0.2
+            ],
+            [
+              0.5,
+              0.4
+            ],
+            [
+              0.4,
+              0.6
+            ]
+          ]
+        },
+        {
+          "line": [
+            [
+              0.4,
+              0.6
+            ],
+            [
+              0,
+              0.6
+            ]
+          ]
+        },
+        {
+          "line": [
+            [
+              0,
+              0.6
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "mass_per_area_kg_m2": 0.2,
+      "base_area_m2": 0.27,
+      "base_mass_kg": 0.054,
+      "analytic_curve": "C(t)=(0.4+0.3*t*(1-t),0.6*t), 0<=t<=1",
+      "analytic_derivative": "Cprime(t)=(0.3-0.6*t,0.6)",
+      "attachments": "none; no holes"
+    },
+    {
+      "id": "F-CURVE-SPLIT",
+      "kind": "original_authoring_recipe",
+      "units": "m",
+      "same_as": "F-CURVE except the right cubic is replaced by these exact de Casteljau halves",
+      "cubics": [
+        [
+          [
+            0.4,
+            0
+          ],
+          [
+            0.45,
+            0.1
+          ],
+          [
+            0.475,
+            0.2
+          ],
+          [
+            0.475,
+            0.3
+          ]
+        ],
+        [
+          [
+            0.475,
+            0.3
+          ],
+          [
+            0.475,
+            0.4
+          ],
+          [
+            0.45,
+            0.5
+          ],
+          [
+            0.4,
+            0.6
+          ]
+        ]
+      ],
+      "base_area_m2": 0.27,
+      "mass_per_area_kg_m2": 0.2
+    },
+    {
+      "id": "F-L",
+      "kind": "original_authoring_recipe",
+      "units": "m",
+      "vertices_ccw": [
+        [
+          0,
+          0
+        ],
+        [
+          0.4,
+          0
+        ],
+        [
+          0.4,
+          0.2
+        ],
+        [
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.4
+        ],
+        [
+          0,
+          0.4
+        ]
+      ],
+      "base_area_m2": 0.12,
+      "mass_per_area_kg_m2": 0.2,
+      "attachments": "none"
+    },
+    {
+      "id": "F-ACUTE",
+      "kind": "original_authoring_recipe",
+      "units": "m",
+      "vertices_ccw": [
+        [
+          0,
+          0
+        ],
+        [
+          0.4,
+          0
+        ],
+        [
+          0.2,
+          0.02
+        ]
+      ],
+      "base_area_m2": 0.004,
+      "mass_per_area_kg_m2": 0.2,
+      "attachments": "none"
+    },
+    {
+      "id": "F-U",
+      "kind": "original_authoring_recipe",
+      "units": "m",
+      "vertices_ccw": [
+        [
+          0,
+          0
+        ],
+        [
+          0.4,
+          0
+        ],
+        [
+          0.4,
+          0.4
+        ],
+        [
+          0.3,
+          0.4
+        ],
+        [
+          0.3,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.4
+        ],
+        [
+          0,
+          0.4
+        ]
+      ],
+      "attachments": "none",
+      "negative_purpose": "An outward distance 0.11 crosses nonadjacent offset source spans across the 0.2-wide notch; phase one must not silently merge them."
+    },
+    {
+      "id": "F-CUSP",
+      "kind": "original_authoring_recipe",
+      "units": "m",
+      "boundary_ccw": [
+        {
+          "line": [
+            [
+              0,
+              0
+            ],
+            [
+              0.2,
+              0
+            ]
+          ]
+        },
+        {
+          "cubic": [
+            [
+              0.2,
+              0
+            ],
+            [
+              0,
+              0.4
+            ],
+            [
+              0.2,
+              0.4
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "negative_purpose": "Cubic derivative vanishes at t=0.5, point (0.1,0.3).",
+      "if_source_validation_refuses": "Record that refusal separately; do not count it as reaching the offset command. The offset-planner singular-tangent case remains required."
+    },
+    {
+      "id": "F-HOLE",
+      "kind": "original_authoring_recipe",
+      "units": "m",
+      "exterior_ccw": [
+        [
+          0,
+          0
+        ],
+        [
+          0.6,
+          0
+        ],
+        [
+          0.6,
+          0.6
+        ],
+        [
+          0,
+          0.6
+        ]
+      ],
+      "hole_cw": [
+        [
+          0.2,
+          0.2
+        ],
+        [
+          0.2,
+          0.4
+        ],
+        [
+          0.4,
+          0.4
+        ],
+        [
+          0.4,
+          0.2
+        ]
+      ],
+      "base_area_m2": 0.32,
+      "mass_per_area_kg_m2": 0.2
+    },
+    {
+      "id": "F-SEWN",
+      "kind": "original_authoring_recipe",
+      "units": "m",
+      "pieces": [
+        {
+          "recipe": "F-RECT",
+          "translation_m": [
+            0,
+            0
+          ]
+        },
+        {
+          "recipe": "F-RECT",
+          "translation_m": [
+            1,
+            0
+          ]
+        }
+      ],
+      "relationship": "Sew first piece right boundary to second piece left boundary; record the real globally stable owner/curve/sewing IDs. Also prepare an ordered-group variant.",
+      "negative_purpose": "Phase-one attached relationship refusal; no guessed remapping."
+    },
+    {
+      "id": "F-LIMIT",
+      "kind": "original_authoring_recipe",
+      "units": "m",
+      "vertices_formula": "p_i=(0.5*cos(2*pi*i/N),0.5*sin(2*pi*i/N)), i=0..N-1, N in {4096,4097}",
+      "segments": "regular polygon, no zero-length edges or attachments",
+      "negative_purpose": "4097 valid authored segments exceed the proposed offset-request ceiling independently of document load limits."
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "SA-001",
+      "phase": "first",
+      "title": "Analytic rectangle extends the actual material",
+      "fixtures": [
+        "F-RECT"
+      ],
+      "action": {
+        "operation": "whole exterior material-outline offset",
+        "direction": "extend/away from material",
+        "distance_m": 0.01,
+        "count": 1,
+        "join": "miter with ratio limit 4 and bevel fallback"
+      },
+      "expected": {
+        "authored_vertices_ccw_m": [
+          [
+            -0.01,
+            -0.01
+          ],
+          [
+            0.41,
+            -0.01
+          ],
+          [
+            0.41,
+            0.61
+          ],
+          [
+            -0.01,
+            0.61
+          ]
+        ],
+        "area_m2": 0.2604,
+        "perimeter_m": 2.08,
+        "mass_kg": 0.05208,
+        "intrinsic_rest_bounds_m": [
+          0.42,
+          0.62
+        ],
+        "piece_fabric_arrangement": "preserved",
+        "old_boundary": "available in Undo, not retained as construction unless a separately supported option is requested",
+        "simulation": "no old-revision state continues under the new outline",
+        "export": "SVG/DXF supported material boundary and rest-mesh OBJ describe the applied domain, not the old rectangle"
+      },
+      "status": "planned_not_run",
+      "tolerances": {
+        "coordinate_m": 1e-09,
+        "area_m2": 1e-09,
+        "perimeter_m": 1e-09,
+        "mass_kg": 2e-10
+      },
+      "oracle": "Independent rectangle arithmetic, not product output."
+    },
+    {
+      "id": "SA-002",
+      "phase": "first",
+      "title": "Rectangle retracts and displays units without rescaling",
+      "fixtures": [
+        "F-RECT"
+      ],
+      "action": {
+        "direction": "retract/toward material",
+        "distance_m": 0.01,
+        "count": 1,
+        "alternate_input": "1 cm, 10 mm, and 0.3937007874015748 inch each denote 0.01 m"
+      },
+      "expected": {
+        "authored_vertices_ccw_m": [
+          [
+            0.01,
+            0.01
+          ],
+          [
+            0.39,
+            0.01
+          ],
+          [
+            0.39,
+            0.59
+          ],
+          [
+            0.01,
+            0.59
+          ]
+        ],
+        "area_m2": 0.2204,
+        "perimeter_m": 1.92,
+        "mass_kg": 0.04408,
+        "intrinsic_rest_bounds_m": [
+          0.38,
+          0.58
+        ],
+        "units": "switching presentation changes no saved coordinates, dimensions, mass or physical export scale"
+      },
+      "status": "planned_not_run",
+      "tolerances": {
+        "coordinate_m": 1e-09,
+        "converted_width_m": 1e-12,
+        "area_m2": 1e-09,
+        "mass_kg": 2e-10
+      }
+    },
+    {
+      "id": "SA-003",
+      "phase": "first",
+      "title": "Cubic normal offset remains editable cubic construction",
+      "fixtures": [
+        "F-CURVE",
+        "F-CURVE-SPLIT"
+      ],
+      "action": {
+        "direction": "extend",
+        "distance_m": 0.01,
+        "count": 1
+      },
+      "expected": {
+        "normal_locus": "Q(t)=C(t)+0.01*(0.6,-(0.3-0.6*t))/sqrt((0.3-0.6*t)^2+0.6^2)",
+        "locus_samples_m": [
+          {
+            "t": 0.25,
+            "point": [
+              0.4659514250014533,
+              0.14757464374963666
+            ]
+          },
+          {
+            "t": 0.5,
+            "point": [
+              0.485,
+              0.3
+            ]
+          },
+          {
+            "t": 0.75,
+            "point": [
+              0.4659514250014533,
+              0.4524253562503633
+            ]
+          }
+        ],
+        "miter_join_points_m": [
+          [
+            0.40618033988749896,
+            -0.01
+          ],
+          [
+            0.40618033988749896,
+            0.61
+          ]
+        ],
+        "bounds_m": {
+          "min": [
+            -0.01,
+            -0.01
+          ],
+          "max": [
+            0.485,
+            0.61
+          ]
+        },
+        "area_m2": 0.2906113444752574,
+        "mass_kg": 0.05812226889505148,
+        "representation": "One or more ordinary editable authored cubics approximate the curved locus. Rest/display/export tessellation is a separate product.",
+        "split_invariance": "Offset F-CURVE and F-CURVE-SPLIT agree geometrically within twice fit tolerance; no artificial corner at t=0.5.",
+        "editability": "After reopen select one resulting cubic control by its actual stable ID, change x by 0.001 m, apply once, verify saved authored delta and changed rest/export geometry; Undo restores the offset result exactly.",
+        "zoom_invariance": "Preview zoom/tessellation display choices do not alter saved offset authoring.",
+        "fit_certification": "A bound between sampling sites is required; the three listed samples and aggregate area alone do not certify global offset error."
+      },
+      "status": "planned_not_run",
+      "tolerances": {
+        "fit_point_to_locus_m": 1e-05,
+        "rest_export_tessellation_m": 1e-05,
+        "bounds_m": 2e-05,
+        "area_m2": 5e-05,
+        "mass_kg": 1e-05,
+        "history_authored_restore_m": 1e-12
+      },
+      "oracle": {
+        "base_area": "0.24 + integral_0^1 0.3*t*(1-t)*0.6 dt = 0.27",
+        "curved_edge_length": "0.6*(0.5*sqrt(1.25)+asinh(0.5)) = 0.6241372916607305",
+        "offset_area": "0.27 + d*(1.4+curved_edge_length) + d^2*(atan(0.5)+2+sqrt(5)-1), d=0.01",
+        "cross_check": "A separate dense shoelace integration of the analytic normal locus gave 0.29061134446289494; no WeftForge input or output was used."
+      }
+    },
+    {
+      "id": "SA-004",
+      "phase": "first",
+      "title": "Concave L retains a single valid material boundary",
+      "fixtures": [
+        "F-L"
+      ],
+      "action": {
+        "direction": "extend",
+        "distance_m": 0.01,
+        "count": 1
+      },
+      "expected": {
+        "authored_vertices_ccw_m": [
+          [
+            -0.01,
+            -0.01
+          ],
+          [
+            0.41,
+            -0.01
+          ],
+          [
+            0.41,
+            0.21
+          ],
+          [
+            0.21,
+            0.21
+          ],
+          [
+            0.21,
+            0.41
+          ],
+          [
+            -0.01,
+            0.41
+          ]
+        ],
+        "area_m2": 0.1364,
+        "mass_kg": 0.02728,
+        "concave_join": "Adjacent shifted spans meet at (0.21,0.21); no loop discarded or nonadjacent clipping.",
+        "rest": "Triangulation contains the L domain and excludes the notch; sum of triangle areas matches expected area."
+      },
+      "status": "planned_not_run",
+      "tolerances": {
+        "coordinate_m": 1e-09,
+        "area_m2": 1e-09,
+        "mass_kg": 2e-10
+      }
+    },
+    {
+      "id": "SA-005",
+      "phase": "first",
+      "title": "Acute corners use the declared bevel fallback",
+      "fixtures": [
+        "F-ACUTE"
+      ],
+      "action": {
+        "direction": "extend",
+        "distance_m": 0.01,
+        "miter_limit_ratio": 4
+      },
+      "expected": {
+        "authored_vertices_ccw_m": [
+          [
+            -0.000995037190209989,
+            0.009950371902099893
+          ],
+          [
+            0,
+            -0.01
+          ],
+          [
+            0.4,
+            -0.01
+          ],
+          [
+            0.40099503719021,
+            0.009950371902099893
+          ],
+          [
+            0.2,
+            0.030049875621120888
+          ]
+        ],
+        "area_m2": 0.012039900620350458,
+        "mass_kg": 0.0024079801240700915,
+        "join_rule": "Miter length divided by distance exceeds 4 at the two narrow base corners; connect the two shifted edge endpoints there. The apex uses a miter.",
+        "reference_equivalence": "No claim that this equals any MD corner label."
+      },
+      "status": "planned_not_run",
+      "tolerances": {
+        "coordinate_m": 1e-09,
+        "area_m2": 1e-09,
+        "mass_kg": 2e-10
+      }
+    },
+    {
+      "id": "SA-006",
+      "phase": "first",
+      "title": "Collapsed, nonfinite and invalid input preserve the old project",
+      "fixtures": [
+        "F-RECT"
+      ],
+      "action": {
+        "attempts": [
+          {
+            "direction": "retract",
+            "distance_m": 0.2,
+            "reason": "width collapses to zero"
+          },
+          {
+            "direction": "retract",
+            "distance_m": 0.21,
+            "reason": "offset passes collapse"
+          },
+          {
+            "input_token": "NaN"
+          },
+          {
+            "input_token": "Infinity"
+          },
+          {
+            "distance_m": 0
+          },
+          {
+            "distance_m": -0.01
+          },
+          {
+            "owner_id": "unresolved or belongs to another piece"
+          },
+          {
+            "count": 2,
+            "reason": "multiple offsets unsupported in phase one"
+          }
+        ]
+      },
+      "expected": {
+        "result": "Typed specific refusal before commit; no NaN geometry, clipping or unsigned reinterpretation.",
+        "old_state": "Document authoring, current revision, stable IDs/counter, undo/redo stack, rest/simulation identity and existing save/output bytes unchanged.",
+        "native_draft": "Invalid text/number stays available for correction; Escape cancels it without applying or allocating IDs."
+      },
+      "status": "planned_not_run"
+    },
+    {
+      "id": "SA-007",
+      "phase": "first",
+      "title": "Nonadjacent offset-span overlap is an explicit refusal",
+      "fixtures": [
+        "F-U"
+      ],
+      "action": {
+        "direction": "extend",
+        "distance_m": 0.11
+      },
+      "expected": {
+        "result": "NonAdjacentOffsetIntersection / unsupported topology repair diagnostic before commit.",
+        "geometry": "Do not silently merge opposing notch walls or choose a surviving component.",
+        "old_state": "Exact prior authoring, relationships, revision/history, rest and files remain current."
+      },
+      "status": "planned_not_run"
+    },
+    {
+      "id": "SA-008",
+      "phase": "first",
+      "title": "Singular tangent and excessive source size are bounded",
+      "fixtures": [
+        "F-CUSP",
+        "F-LIMIT"
+      ],
+      "action": {
+        "attempts": [
+          {
+            "fixture": "F-CUSP",
+            "direction": "extend",
+            "distance_m": 0.01
+          },
+          {
+            "fixture": "F-LIMIT",
+            "N": 4097,
+            "direction": "extend",
+            "distance_m": 0.01
+          }
+        ]
+      },
+      "expected": {
+        "result": "Singular tangent and budget limit have distinguishable refusal diagnostics and source identities.",
+        "old_state": "No partial authoring, mesh, history or output replacement.",
+        "coverage": "A source-validation refusal is retained separately and cannot be misreported as an executed offset-planner check."
+      },
+      "status": "planned_not_run"
+    },
+    {
+      "id": "SA-009",
+      "phase": "first",
+      "title": "Unsupported holes and attached sewing refuse without lost data",
+      "fixtures": [
+        "F-HOLE",
+        "F-SEWN"
+      ],
+      "action": {
+        "direction": "extend",
+        "distance_m": 0.01,
+        "targets": "Hole-bearing piece; then sewn piece A with seam variant and ordered sewing-group variant; also any attached internal/pin/tack/link relationship not supported by the reviewed command."
+      },
+      "expected": {
+        "result": "Explicit atomic unsupported-relationship/hole refusal identifying the blocker.",
+        "identity": "Both pieces, all boundary and seam/group IDs, intervals, original settings, document revision/history, current rest/simulation and saved files unchanged.",
+        "forbidden": "No dropped seam, guessed nearest-edge remap, hole fill, or partial offset of only the exterior."
+      },
+      "status": "planned_not_run"
+    },
+    {
+      "id": "SA-010",
+      "phase": "first",
+      "title": "Native end-to-end material offset and editable saved result",
+      "fixtures": [
+        "F-RECT",
+        "F-CURVE",
+        "F-L"
+      ],
+      "action": {
+        "workflow": [
+          "Start an empty original project; author the declared fixtures through native controls; save before.",
+          "Select rectangle; enter 1 cm Extend; inspect preview dimensions/area/mass; Cancel. Saved/applied state must remain before.",
+          "Preview and Apply 10 mm once; save; inspect actual new rest domain/mass. Undo once restores original; Redo once reapplies.",
+          "Keep a focused distance draft and cancel it; confirm no accidental Apply on unrelated selection/quit path.",
+          "Offset curve and L through native tools; verify their declared numeric outcomes.",
+          "Save; close process after retaining outputs; reopen the same project; select and edit a resulting cubic control, then Undo.",
+          "Export current material boundary SVG/DXF and the available supported rest-mesh OBJ, retaining success/unsupported outcomes honestly.",
+          "Attempt to offset an attached-seam piece; verify explicit refusal and preservation.",
+          "Retain screenshots/AX where available plus saved authored geometry, numeric rest/mass records, exports and cleanup record; close finished test windows."
+        ]
+      },
+      "expected": {
+        "transactions": "Every Apply is one undo step; preview/Cancel has no committed revision/ID/history effect.",
+        "persistence": "Saved/reopened ordinary editable line/cubic geometry, identities, fabric/physical settings and arrangement agree; no new live width attribute is implied.",
+        "scale": "Applied rectangle physical bounds 420x620 mm; SVG physical dimensions and coordinates agree within 0.01 mm. Supported DXF declares millimetres and has the same material extents. Rest OBJ intrinsic bounds are 0.42x0.62 m after its explicit unit conversion.",
+        "mass": "Rectangle applied rest area 0.2604 m2 and physical mass 0.05208 kg; old rectangle 0.24 m2/0.048 kg is not used by the current solver.",
+        "export_failure": "Any genuinely unsupported format/role is explicit and does not replace an existing destination; do not grade unsupported output as success.",
+        "evidence": "Source and executable identities, initial settings, original recipes, action trace, measurements and cleanup pinned before acceptance; native visual presence alone is insufficient.",
+        "mandatory_output_gates": "SVG, supported boundary DXF and rest-geometry OBJ for accepted first-phase fixtures must succeed with the stated scale/geometry. An unsupported outcome remains incomplete, not a waiver."
+      },
+      "status": "planned_not_run"
+    },
+    {
+      "id": "SA-011",
+      "phase": "later_full_scope",
+      "title": "Hole side semantics and material-area accounting",
+      "fixtures": [
+        "F-HOLE"
+      ],
+      "action": {
+        "operation": "offset all relevant material loops",
+        "direction": "away from material",
+        "distance_m": 0.01
+      },
+      "expected": {
+        "exterior_ccw_m": [
+          [
+            -0.01,
+            -0.01
+          ],
+          [
+            0.61,
+            -0.01
+          ],
+          [
+            0.61,
+            0.61
+          ],
+          [
+            -0.01,
+            0.61
+          ]
+        ],
+        "hole_cw_m": [
+          [
+            0.21,
+            0.21
+          ],
+          [
+            0.21,
+            0.39
+          ],
+          [
+            0.39,
+            0.39
+          ],
+          [
+            0.39,
+            0.21
+          ]
+        ],
+        "area_m2": 0.352,
+        "mass_kg": 0.0704,
+        "orientation": "Reversing source parameter order does not reverse material-relative side.",
+        "relationships": "Hole identities/ownership persist; no material added across the hole by triangulation.",
+        "phase_one": "Must refuse this unsupported input atomically; this numeric result does not constitute phase-one support."
+      },
+      "status": "planned_not_run",
+      "tolerances": {
+        "coordinate_m": 1e-09,
+        "area_m2": 1e-09,
+        "mass_kg": 2e-10
+      }
+    },
+    {
+      "id": "SA-012",
+      "phase": "later_full_scope",
+      "title": "Persistent seam allowance and relationship behavior remains required",
+      "fixtures": [
+        "F-RECT",
+        "F-CURVE",
+        "F-SEWN",
+        "F-HOLE"
+      ],
+      "action": {
+        "role": "explicit cutting-guide allowance first; explicit material application separately",
+        "width_m": 0.01,
+        "future_operations": [
+          "per-edge and interval width editing",
+          "split/join with unequal widths",
+          "mirror/rotate/translate and nonuniform resize",
+          "cut/new-hole/Cut-and-Sew",
+          "multiple offsets from previous or selected source",
+          "save/reopen/migration and scaled cutting export"
+        ]
+      },
+      "expected": {
+        "guide_only": "Rectangle guide cut bounds 420x620 mm while actual cloth remains 0.24 m2 and 0.048 kg; UI/export identify the guide role.",
+        "material_application": "Only an explicit material operation changes domain/mass to 0.2604 m2/0.05208 kg.",
+        "authority": "Settings and stable source references remain authoritative; derived contours are revision-tagged caches, not replacement construction.",
+        "relationships": "No dropped settings, inferred seam/cut role switch, averaged unequal widths or dangling IDs; new-cut-edge policy must be reviewed before implementation.",
+        "phase_one": "No persistent-guide model or completion claim is required/earned by material-outline offset."
+      },
+      "status": "planned_not_run"
+    },
+    {
+      "id": "SA-013",
+      "phase": "first",
+      "title": "Shared-command equivalence, transforms and source edits",
+      "fixtures": [
+        "F-RECT",
+        "F-CURVE",
+        "F-CURVE-SPLIT"
+      ],
+      "action": {
+        "routes": [
+          "native UI",
+          "CLI",
+          "MCP"
+        ],
+        "commands": "Same whole-piece material-offset semantics, finite SI width and direction; use independent copies with identical starting authoring and ID counters.",
+        "variants": [
+          "translate source by (1.2,-0.3) m then offset",
+          "rotate source 90 degrees then offset",
+          "mirror source, normalizing material side without using incidental winding",
+          "uniform/nonuniform resize source first, then offset by the same 0.01 m",
+          "split the cubic exactly at t=0.5 before offset"
+        ]
+      },
+      "expected": {
+        "result": "All routes produce equivalent ordinary authored geometry, stable-identity rules, actual rest/mass, transaction count and errors.",
+        "covariance": "Offset commutes with rigid transforms; intrinsic area/mass unchanged by them. Offset after nonuniform resize is a new constant-distance offset, not an affine transform of a prior offset.",
+        "resize_exact_subcase": "Resize F-RECT to 0.8x0.3 m before 0.01 m Extend: material rectangle 0.82x0.32 m, area 0.2624 m2, mass 0.05248 kg.",
+        "saved_result_edit": "After Apply, later point/curve edits operate on the resulting ordinary construction; do not pretend an earlier offset width is a persistent parameter.",
+        "schemas": "CLI help/MCP tool schema and command errors expose the same supported scope."
+      },
+      "status": "planned_not_run",
+      "tolerances": {
+        "rigid_transform_coordinate_m": 1e-09,
+        "curve_fit_m": 1e-05,
+        "rect_area_m2": 1e-09,
+        "rect_mass_kg": 2e-10
+      }
+    },
+    {
+      "id": "SA-014",
+      "phase": "first",
+      "title": "Failed load, save and export never replace good data",
+      "fixtures": [
+        "F-RECT",
+        "F-CURVE"
+      ],
+      "action": {
+        "attempts": [
+          "Open a malformed project with duplicate global IDs, dangling curve refs, nonfinite coordinates, unknown schema or invalid curve/domain geometry.",
+          "Save or export the valid applied project to a destination with a real controlled write failure or cancel before replacement; retain a prior sentinel file and its digest.",
+          "Export a curved result through an incapable requested format/role."
+        ]
+      },
+      "expected": {
+        "load": "Open document, authoring/revision/history and current successful saved file remain intact.",
+        "write": "Existing destination bytes remain exactly the prior digest on failure/cancellation; no success notification or partial file replacing it.",
+        "portable": "A successful offset result saves/reopens in the current ordinary geometry schema; supported older files still open unchanged.",
+        "truth": "Record unavailable I/O failure mechanisms or unsupported exporters as blocked/unsupported; do not invent a passing failure injection."
+      },
+      "status": "planned_not_run"
+    },
+    {
+      "id": "SA-015",
+      "phase": "first",
+      "title": "Bounded preview cancellation and stale-result suppression",
+      "fixtures": [
+        "F-CURVE",
+        "F-LIMIT"
+      ],
+      "action": {
+        "attempts": [
+          "Start offset preview for a valid 4096-segment source; cancel it or change selection/document revision before worker result publication.",
+          "Exercise a pre-cancelled token and a cancellation during bounded geometry operations through the existing job/test mechanism.",
+          "Exercise output-fit/subdivision/derived-vertex exhaustion when a declared original fixture reaches it; if it cannot be reached, preserve that untested limit explicitly."
+        ]
+      },
+      "expected": {
+        "limits": "<=4096 source segments, <=65536 authored output segments, <=65536 derived vertices, depth <=24; no partial/truncated geometry.",
+        "cancellation": "Observed at least every 256 geometry operations; no result publishes for an old revision or cancelled request.",
+        "authoring": "Preview is transient; no permanent IDs/revision/history/file change before successful Apply.",
+        "native": "Escape cancels the draft even if computation finishes first. A completed-before-cancel run is not counted as a cancelled-worker observation.",
+        "offline": "Core command/planner requires no GUI or network dependency.",
+        "timing": "Freeze hardware and record wall-clock UI responsiveness separately; no baseline speed parity inferred."
+      },
+      "status": "planned_not_run"
+    }
+  ],
+  "formal_results": {
+    "run": false,
+    "parity_credit": 0,
+    "native_execution": false,
+    "cargo_checks": false,
+    "legacy_case_grading": false
+  },
+  "error_classification_note": "Descriptive proposed classifications; final public error names follow existing command conventions.",
+  "reference_expectation": "Unknown for all cases; these are independent WeftForge engineering requirements, not baseline expectations."
+}

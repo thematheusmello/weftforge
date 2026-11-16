@@ -1,0 +1,23 @@
+   Compiling ahash v0.8.12
+   Compiling weftforge-core v0.1.0 ([WORKSPACE]/crates/weftforge-core)
+   Compiling getrandom v0.3.4
+   Compiling tobj v4.0.5
+   Compiling epaint v0.35.0
+   Compiling egui v0.35.0
+   Compiling egui-winit v0.35.0
+   Compiling egui-wgpu v0.35.0
+   Compiling eframe v0.35.0
+   Compiling weftforge v0.1.0 ([WORKSPACE]/apps/weftforge)
+   Compiling weftforge-cli v0.1.0 ([WORKSPACE]/apps/weftforge-cli)
+   Compiling xtask v0.1.0 ([WORKSPACE]/xtask)
+   Compiling weftforge-sim v0.1.0 ([WORKSPACE]/crates/weftforge-sim)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 57.72s
+     Running unittests src/main.rs (target-material-outline-offset/debug/deps/weftforge-cfef1c79100bdd74)
+     Running unittests src/main.rs (target-material-outline-offset/debug/deps/weftforge_cli-6e6f4b1d524158e1)
+     Running tests/curves.rs (target-material-outline-offset/debug/deps/curves-1c00c550ab8f271d)
+     Running tests/dxf_import.rs (target-material-outline-offset/debug/deps/dxf_import-2c082eb8589fc9ce)
+     Running tests/ellipse.rs (target-material-outline-offset/debug/deps/ellipse-fb1eeee5a940d01b)
+     Running tests/grain.rs (target-material-outline-offset/debug/deps/grain-64bce898ad26ec09)
+     Running tests/holes.rs (target-material-outline-offset/debug/deps/holes-b848075512480db9)
+     Running tests/mcp_stdio.rs (target-material-outline-offset/debug/deps/mcp_stdio-880c9231a329bae6)
+error: test failed, to rerun pass `-p weftforge-cli --test mcp_stdio`

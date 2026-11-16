@@ -76,6 +76,16 @@ holes, curved owners, hole sewing and cuts through holes remain open. See the
 [hole contract](spec/features/PAT-006-straight-hole.md) and the
 [native hole/export gallery](docs/studio-preview.md).
 
+**Offset outline…** previews an Extend or Retract operation on an eligible
+whole pattern. It shows before/after dimensions, authored/rest area and computed
+Cloth mass. Apply produces editable straight/cubic construction and updates the
+actual rest mesh and cloth in one Undo step, preserving fabric, grain and
+arrangement. Target sewing, holes and internal construction refuse the operation;
+uncertain geometry and exhausted budgets also refuse without changing the piece.
+Persistent seam allowances and selected-edge offsets remain open. Cancellation
+can wait for triangulation to finish; native workflow acceptance is pending. See
+the [material-outline contract](spec/features/PAT-009-material-outline-offset.md).
+
 **Transform pattern** translates or rotates one 2D piece, with numeric angle,
 translation and pivot controls plus canvas handles. This layout operation keeps
 the arranged 3D surface and world warp fixed. **New Empty**, available in File

@@ -674,6 +674,17 @@ fn command_schema() -> Value {
         ),
         ("cut_piece", cut.clone()),
         ("cut_and_sew", cut),
+        (
+            "offset_outline",
+            object(
+                json!({
+                    "piece":{"type":"integer","minimum":1,"maximum":u64::MAX},
+                    "width":{"type":"number","exclusiveMinimum":0,"description":"Positive offset in metres; changes the actual material outline, rest mesh and cloth mass."},
+                    "outward":{"type":"boolean","description":"True extends the material outline; false retracts it. Unsupported attached construction and invalid or unproved geometry refuse atomically."}
+                }),
+                &["piece", "width", "outward"],
+            ),
+        ),
         ("join_curve", object(json!({"curve":id}), &["curve"])),
         (
             "resize_piece",

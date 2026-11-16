@@ -1,0 +1,297 @@
+{
+  "schema_version": 1,
+  "id": "PAT-009-INDEPENDENT-REVIEWED-ADDITIONS-001",
+  "date": "2026-11-16",
+  "status": "frozen original research recipes; all product/reference scenarios unexecuted",
+  "normative_contract": "../PAT-009-material-outline-offset.md",
+  "base_packet": "PAT-009-offset-originals.json",
+  "base_scenarios_sha256": "6de6eefff1bc040363f1f2de335f5c4f70dc526dacd5224ba22e1c33e1820bec",
+  "phase_one_originals": [
+    "SA-001",
+    "SA-002",
+    "SA-003",
+    "SA-004",
+    "SA-005",
+    "SA-006",
+    "SA-007",
+    "SA-008",
+    "SA-009",
+    "SA-010",
+    "SA-013",
+    "SA-014",
+    "SA-015"
+  ],
+  "later_full_scope_originals": [
+    "SA-011",
+    "SA-012"
+  ],
+  "all_original_target_values": "unchanged; this addendum tightens ambiguities and adds independent coverage without rewriting old recipes",
+  "fixtures": [
+    {
+      "id": "RF-CURVED-CONCAVE-L",
+      "kind": "original_authoring_recipe",
+      "units": "m",
+      "winding": "CCW",
+      "boundary": [
+        {
+          "line": [
+            [
+              0,
+              0
+            ],
+            [
+              0.4,
+              0
+            ]
+          ]
+        },
+        {
+          "line": [
+            [
+              0.4,
+              0
+            ],
+            [
+              0.4,
+              0.2
+            ]
+          ]
+        },
+        {
+          "cubic": [
+            [
+              0.4,
+              0.2
+            ],
+            [
+              0.35,
+              0.18
+            ],
+            [
+              0.25,
+              0.18
+            ],
+            [
+              0.2,
+              0.2
+            ]
+          ]
+        },
+        {
+          "line": [
+            [
+              0.2,
+              0.2
+            ],
+            [
+              0.2,
+              0.4
+            ]
+          ]
+        },
+        {
+          "line": [
+            [
+              0.2,
+              0.4
+            ],
+            [
+              0,
+              0.4
+            ]
+          ]
+        },
+        {
+          "line": [
+            [
+              0,
+              0.4
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "attachments": "none; no hole or internal construction",
+      "material_areal_density_kg_m2": 0.2,
+      "base_area_m2": 0.1179,
+      "base_mass_kg": 0.02358,
+      "source_cubic": {
+        "x": "0.4-0.15*t-0.15*t^2+0.1*t^3",
+        "y": "0.2-0.06*t+0.06*t^2",
+        "dx": "-0.15-0.3*t+0.3*t^2",
+        "dy": "-0.06+0.12*t"
+      },
+      "independent_base_area": "0.12 - 0.06*integral_0^1 t*(1-t)*(0.15+0.3*t-0.3*t^2) dt = 0.1179"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "SAR-001",
+      "phase": "first",
+      "status": "planned_not_run",
+      "title": "Actual cubic concavity with adjacent-locus trim",
+      "fixture": "RF-CURVED-CONCAVE-L",
+      "action": {
+        "direction": "Extend",
+        "width_m": 0.01,
+        "join": "reviewed miter ratio<=4, bevel otherwise"
+      },
+      "analytic_expectation": {
+        "normal_locus": "Q(t)=(x(t)+0.01*dy(t)/hypot(dx,dy), y(t)-0.01*dx(t)/hypot(dx,dy))",
+        "trim_definition": "unique t* in [0.95,1] with Qx(t*)=0.21; retain [0,t*], not the untrimmed source-end offset",
+        "trim_t_approx": 0.9564693930114259,
+        "trim_bracket_maybe_read_as_numerical_only": [
+          0.9564693930114,
+          0.9564693930115
+        ],
+        "trim_point_m": [
+          0.21,
+          0.20697791651287822
+        ],
+        "cubic_start_offset_m": [
+          0.39628609323645897,
+          0.20928476690885262
+        ],
+        "incoming_miter_m": [
+          0.41,
+          0.214770329614269
+        ],
+        "result_traversal": "(-.01,-.01)->(.41,-.01)->M=(.41,.214770329614269)->Q(0), then Q(t) to Q(t*), then (.21,.41)->(-.01,.41)->close; collinear line subdivisions allowed only with preserved IDs/source spans",
+        "locus_samples_m": [
+          {
+            "t": 0.25,
+            "point": [
+              0.35324810154285896,
+              0.19864586439284512
+            ]
+          },
+          {
+            "t": 0.5,
+            "point": [
+              0.3,
+              0.195
+            ]
+          },
+          {
+            "t": 0.75,
+            "point": [
+              0.24675189845714116,
+              0.19864586439284515
+            ]
+          }
+        ],
+        "bounds_m": {
+          "min": [
+            -0.01,
+            -0.01
+          ],
+          "max": [
+            0.41,
+            0.41
+          ]
+        },
+        "area_exact_definition": "A=1/2*(sum cross(P_i,P_(i+1)) over stated straight edges + integral_0^t* (Qx*Qyprime-Qy*Qxprime) dt), excluding the nonexistent chord from Q(0) to Q(t*)",
+        "area_m2_approx": 0.13437458628915014,
+        "mass_kg_approx": 0.02687491725783003,
+        "independent_crosscheck": {
+          "method_1": "analytic normal-locus derivative, composite Simpson N=32768 on [0,t*] plus exact line terms",
+          "method_2": "dense normal-locus shoelace N=131072 plus straight terms",
+          "area_method_2_m2": 0.13437458628926646,
+          "difference_m2": 1.1632361740510078e-13,
+          "limitation": "arithmetic crosscheck only, not an interval proof or product fit certificate"
+        },
+        "representation": "true editable cubic fit to surviving exact normal locus; actual rest mesh and real Cloth mass change",
+        "continuous_geometry": "prove source/offset regularity, join/trim root and simple result including between samples; samples are inspection witnesses only",
+        "output": "save/reopen, edit resulting cubic, Undo, SVG/cubic DXF/rest OBJ succeed at physical scale"
+      },
+      "tolerances": {
+        "normal_fit_m": "min(1e-5,width/64)",
+        "trim_endpoint_m": 2e-05,
+        "authored_area_m2": 5e-05,
+        "actual_rest_area_m2": 5e-05,
+        "actual_Cloth_total_mass_kg": 1e-05,
+        "mass_minus_density_times_actual_rest_area_kg": 2e-10,
+        "bounds_m": 2e-05,
+        "saved_authored_restore_m": 1e-12
+      },
+      "oracle_origin": "Original independent analytic recipe frozen before implementation; no product output or evaluator fixture used."
+    },
+    {
+      "id": "SAR-002",
+      "phase": "first",
+      "status": "planned_not_run",
+      "title": "Retraction cannot pass collapse and regain a spurious valid polygon",
+      "fixture": "original F-RECT",
+      "action": {
+        "direction": "Retract",
+        "width_m": 0.31
+      },
+      "expected": {
+        "result": "atomic collapse/source-span reversal refusal",
+        "naive_unacceptable_vertices_m": [
+          [
+            0.31,
+            0.31
+          ],
+          [
+            0.09,
+            0.31
+          ],
+          [
+            0.09,
+            0.29
+          ],
+          [
+            0.31,
+            0.29
+          ]
+        ],
+        "naive_spurious_positive_area_m2": 0.0044,
+        "reason": "both dimensions passed collapse, so final signed area and containment alone are insufficient; source straight-span tangent projection has reversed",
+        "preservation": "unchanged old construction/IDs/counter/revision/undo/redo/current rest/Cloth/file bytes"
+      }
+    },
+    {
+      "id": "SAR-003",
+      "phase": "first",
+      "status": "planned_not_run",
+      "title": "ID policy and actual masses are measured independently of presentation",
+      "fixtures": [
+        "original F-RECT",
+        "original F-ACUTE",
+        "original F-CURVE",
+        "RF-CURVED-CONCAVE-L"
+      ],
+      "action": {
+        "routes": [
+          "native UI",
+          "CLI shared execute",
+          "MCP project_execute"
+        ],
+        "state": "independent identical starting authored projects/ID counters; areal_density explicitly 0.2; no deformed export"
+      },
+      "expected": {
+        "rectangle": "source piece/points/curve IDs retained where unique; all fabric/grain/arrangement values preserved",
+        "acute": "two bevel vertices retire their original point IDs and allocate four fresh endpoint IDs; apex point remains; no deleted ID reuse",
+        "curve": "each original curve ID belongs to first surviving fit descendant, never a join arm; extra knots/spans are fresh; source intervals ordered",
+        "history": "Apply one revision/undo entry; preview/Cancel no mutation; Undo/Redo exact authored values/IDs but monotonically newer revisions and next_id high-water; diverged branch never recycles allocated IDs",
+        "real_material": "retain independent authored area, triangle UV rest area and actual sum(Cloth::masses()) before/after/after reopen; a displayed area*density value alone cannot pass",
+        "mass_values": "original fixture targets, new curved-L target, and abs(actual_mass-0.2*actual_rest_area)<=2e-10 kg",
+        "negative_preflight": "exercise controlled cancellation/mesh or Cloth-init failure before commit and preserve complete old state; unavailable failure mechanisms remain blocked not invented successes",
+        "proof": "retain certified whole-cell residual/error and topology decisions with tolerances/work count; expected samples never substitute for the certificate",
+        "exports": "SVG boundary+viewport scale, actual cubic DXF entities and current rest OBJ all measured from output bytes; atomic destination behavior retained"
+      }
+    }
+  ],
+  "no_product_execution": true,
+  "no_reference_execution": true,
+  "no_closed_case_or_grader_run": true,
+  "parity_credit": 0,
+  "registry_change": null,
+  "scope_note": "Research scenario additions are not new feature or inventory denominators. All 949/205/56 historical indexes and original full scope remain unchanged.",
+  "public_copy_qualification": "Derivative JSON: original fixture/scenario values are unchanged; two documentation links are normalized, and this qualification plus the reviewed-original digest are added.",
+  "reviewed_original_sha256": "3e2a1e8064b5bb4a810d168095ec5d0e8fef4ee664a6394ce62cb020be47462a"
+}

@@ -1,5 +1,40 @@
 # WeftForge status — active development, 2026-11-16
 
+The latest public main is `1fc1d71993cf193801e44982b757fca8abc5aba7`:
+[PR #49](https://github.com/thematheusmello/weftforge/pull/49) merged the hole,
+Cut & Sew and SVG canvas work. Actions is still disabled; the existing Pages
+configuration and recent run IDs were unchanged after merging.
+
+Active offset work is on `feat/material-outline-offset`. It adds the shared
+`offset_outline` operation, certified editable line/cubic fitting, actual
+rest/Cloth preparation and the native preview/Apply workflow. Integrated
+formatting, **363 workspace Rust tests**, strict all-target Clippy and fresh
+native/CLI debug builds passed with all **79 source inputs unchanged**. The
+source-gate receipt is
+`6257e853ec5404dd7d4cd6446beb1bf3648345c09f02fcac62903a5809eae66a`.
+Independent numerical/atomicness review and its one-line schema-test supplement
+are complete. Clean registry/map integration and the bound native rectangle
+case remain pending. No test window or reference session has been opened for
+this increment.
+
+The review found and prompted fixes for invalid interval arithmetic, nonlinear
+corner sweeps, final transaction mesh/Cloth validation and cancellation through
+validation. The pinned triangulation library still has an opaque inner call:
+its internal predicates cannot yet be individually charged or polled. The strict
+whole-request work/cancellation criterion remains open. Full PAT-009, all
+reference contracts and roadmap gates remain incomplete. Public progress counts
+have not been upgraded from this uncommitted work.
+
+All recorded Cargo jobs are terminal, including root session 17319, exit 0.
+The earlier full run retained its failure at one old discovery assertion that
+still expected 32 commands; correcting it to 33 changed no production code.
+The exact-source review pins were refreshed for that test-only correction.
+Next: integrate the current source map and source-only report, run the clean
+registry/map gate, then bind and execute the fresh rectangle workflow. Curved/concave native
+cases, broader offset/allowance work and triangulation cancellation remain due.
+
+## Merged hole and Cut & Sew checkpoint
+
 Current integrated runtime source is `947bfbe4dcb74fb253d584709376ace5a08db838`.
 PR #49 contains the hole, Cut & Sew and SVG canvas changes. The tracked evidence
 checkpoint is `7abfa075b4f6685c43618a7b0b881fd3dcf7ef5f`; final local integration

@@ -1,0 +1,11 @@
+--- source-gates-001/apps/weftforge-cli/tests/mcp_stdio.rs
++++ source-gates-003/apps/weftforge-cli/tests/mcp_stdio.rs
+@@ -726,7 +726,7 @@
+             .as_array()
+             .unwrap()
+             .len(),
+-        32
++        33
+     );
+     success(&server.call("project_create", json!({"output":project_path})));
+     let initial = server.call("project_inspect", json!({"path":project_path}));

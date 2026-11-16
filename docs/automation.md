@@ -132,7 +132,7 @@ existing projects may assign different IDs. Current-profile calls use the same
 arguments and additionally include the per-request `_meta` shown above.
 
 The supported shared commands are `import_svg_patterns`, `import_dxf_patterns`, `add_polygon`, `add_rectangle`, `add_ellipse`, `add_hole`, `remove_hole`, `add_internal_segment`, `remove_internal_curve`, `move_point`,
-`set_curve_controls`, `split_curve`, `join_curve`, `cut_piece`, `cut_and_sew`, `resize_piece`, `transform_piece`, `set_placement`, `set_grain`,
+`set_curve_controls`, `split_curve`, `join_curve`, `cut_piece`, `cut_and_sew`, `offset_outline`, `resize_piece`, `transform_piece`, `set_placement`, `set_grain`,
 `set_material`, `add_material`, `update_material`, `add_seam`, `update_seam`,
 `remove_seam`, `add_sewing_group`, `add_sewing_by_length`, `update_sewing_group`, `remove_sewing_group`,
 `remove_piece`, `set_resolution`, and `set_mannequin`.
@@ -213,6 +213,28 @@ Command/schema failures preserve primary/output/recovery bytes; on a late IO
 failure the primary stays exact while recovery may advance to its valid prior
 primary. This bounded behavior does not establish native or reference parity.
 
+`offset_outline` changes a piece's actual material boundary. Its three required
+fields are a stable piece ID, a positive width in metres, and an explicit direction:
+
+```json
+{"type":"offset_outline","data":{"piece":2,"width":0.01,"outward":true}}
+```
+
+`outward:true` extends the material; `false` retracts it. One application replaces
+the whole exterior with ordinary editable straight/cubic construction. The piece,
+fabric, grain and 3D arrangement remain attached. Preview is transient; applying
+through either shared command route creates one revision, including when combined
+with other commands in the same array. A 0.4 × 0.6 m rectangle extended by 10 mm
+has 0.42 × 0.62 m material bounds and 0.2604 m² area.
+
+The operation prepares the actual rest mesh and Cloth before committing. It
+refuses unsupported sewing, holes or internal construction on the target,
+collapse, topology changes, uncertain geometry and exhausted resource budgets.
+Finite positive width is required; zero, negative, missing, mistyped, duplicate
+or extra fields reject without saving. Earlier commands in a failing array also
+remain unapplied. Persistent seam allowances, selected-edge offsets and retaining
+the old outline as internal construction remain future work.
+
 `add_hole` creates one straight closed hole in a hole-free straight owner;
 `remove_hole` fills it by its stable Hole ID:
 
@@ -232,9 +254,9 @@ piece cannot be cut. Existing exterior sewing remains attached.
 Native v5 preserves both editable loops. SVG exports one compound evenodd path
 per piece, but current SVG import refuses hole subpaths. DXF export refuses a
 holed project before staging; OBJ exports its actual annular surface. See the
-[hole contract](../spec/features/PAT-006-straight-hole.md). With `cut_and_sew`, the
-shared schema has 32 nontransaction alternatives; the core enum includes
-Transaction as its 33rd variant. No CLI verb or MCP tool was added.
+[hole contract](../spec/features/PAT-006-straight-hole.md). With `offset_outline`,
+the shared schema has 33 nontransaction alternatives; the core enum includes
+Transaction as its 34th variant. No CLI verb or MCP tool was added.
 
 `import_svg_patterns` takes `{"svg":"...original SVG XML..."}` and adds all
 supported pieces as one typed authoring action. The dedicated CLI

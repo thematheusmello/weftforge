@@ -1,0 +1,12 @@
+{
+  "utc": "2026-11-16T11:18:55.332253+00:00",
+  "status": "stopped_before_any_Cargo_command",
+  "cause": "Original independent source pin includes the old32-command MCP test expectation. Root corrected only that assertion to33 after full gate001 found it.",
+  "actual_changed_file": "apps/weftforge-cli/tests/mcp_stdio.rs",
+  "prior_sha256": "f8fa6ffe6f1b664810aec4d1b68ba82e6888f752cfce2475325f2e8354aa9f63",
+  "current_sha256": "8c20f4e7bfd7b0a2ef60538a43c662d4363288b66ba05abd1c5528b15fde3811",
+  "exact_33_to_32_reconstruction_matches_prior_pinned_bytes": true,
+  "production_and_numeric_source_changes": false,
+  "next": "Independent targeted pin supplement, then final full gates.",
+  "no_native_or_reference_execution": true
+}

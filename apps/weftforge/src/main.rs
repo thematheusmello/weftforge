@@ -12,7 +12,8 @@ use std::{
 };
 use weftforge_core::{
     Command, Curve, CurveInterval, DxfPatternImport, Editor, Id, Material, Mesh, Placement,
-    Project, SewingDirection, SewingGroup, SewingSideByLength, SvgPatternImport,
+    PreparedOutlineOffset, Project, SewingDirection, SewingGroup, SewingSideByLength,
+    SvgPatternImport,
 };
 use weftforge_sim::{Cloth, MaterialAxis, SimulationError, StepSettings};
 
@@ -79,6 +80,7 @@ enum ExportFormat {
 enum JobKind {
     Mesh,
     Simulation,
+    OutlineOffset,
 }
 #[derive(Clone, Copy, Debug, PartialEq)]
 enum JobStatus {
@@ -92,7 +94,7 @@ impl JobStatus {
         match self {
             Self::Accepted => "Accepted",
             Self::Cancelled => "Cancelled · result discarded",
-            Self::Discarded => "Discarded · obsolete input revision",
+            Self::Discarded => "Discarded · obsolete input",
             Self::Failed => "Failed · previous state retained",
         }
     }
@@ -116,6 +118,7 @@ struct FinishedJob {
 enum JobOutput {
     Mesh(Arc<Mesh>),
     Simulation(Arc<Cloth>),
+    OutlineOffset(Box<OutlineOffsetPreview>),
 }
 #[derive(Clone, Copy)]
 struct SimulationBatch {
@@ -449,6 +452,58 @@ struct HoleDraft {
     epoch: u64,
     preview: Option<HolePreview>,
     error: Option<String>,
+}
+
+struct OutlineOffsetPreview {
+    prepared: PreparedOutlineOffset,
+    source_outline: Vec<[f64; 2]>,
+    candidate_outline: Vec<[f64; 2]>,
+}
+struct OutlineOffsetDraft {
+    piece: Id,
+    revision: u64,
+    width_mm: String,
+    outward: bool,
+    input: RetainedInspectorInput,
+    field_focus: Option<egui::Id>,
+    apply_focus: Option<egui::Id>,
+    epoch: u64,
+    inputs: Option<(String, bool)>,
+    job: Option<u64>,
+    preview: Option<Box<OutlineOffsetPreview>>,
+    error: Option<String>,
+}
+impl OutlineOffsetDraft {
+    fn width(&self) -> Result<f64, String> {
+        let width = self
+            .width_mm
+            .trim()
+            .parse::<f64>()
+            .map_err(|_| "Enter a positive finite width in millimetres.")?
+            / 1000.;
+        if !width.is_finite() || width <= 0. {
+            return Err("Enter a positive finite width in millimetres.".into());
+        }
+        Ok(width)
+    }
+    fn refresh_inputs(&mut self) -> bool {
+        let inputs = (self.width_mm.clone(), self.outward);
+        if self.inputs.as_ref() == Some(&inputs) {
+            return false;
+        }
+        self.inputs = Some(inputs);
+        self.job = None;
+        self.preview = None;
+        self.error = self.width().err();
+        true
+    }
+    fn matches(&self, prepared: &PreparedOutlineOffset) -> bool {
+        self.revision == prepared.source_revision()
+            && self.piece == prepared.piece()
+            && self.outward == prepared.outward()
+            && self.width().is_ok_and(|width| width == prepared.width())
+            && self.inputs.as_ref() == Some(&(self.width_mm.clone(), self.outward))
+    }
 }
 impl HoleDraft {
     fn command(&self) -> Result<Command, String> {
@@ -862,6 +917,7 @@ struct Studio {
     internal_line: Option<InternalLineDraft>,
     cut_piece: Option<CutDraft>,
     hole: Option<HoleDraft>,
+    outline_offset: Option<OutlineOffsetDraft>,
     drag_input: Option<RetainedInspectorInput>,
     drag_piece: Option<Id>,
     pattern_import: Option<PatternImportDraft>,
@@ -945,6 +1001,7 @@ impl Studio {
             internal_line: None,
             cut_piece: None,
             hole: None,
+            outline_offset: None,
             drag_input: None,
             drag_piece: None,
             pattern_import: None,
@@ -1046,6 +1103,8 @@ impl Studio {
     }
 
     fn reset_gestures(&mut self) {
+        self.cancel_outline_offset_job();
+        self.outline_offset = None;
         self.polygon.clear();
         self.seam_start = None;
         self.sewing_draft = OrderedSewingDraft::default();
@@ -1222,6 +1281,7 @@ impl Studio {
             || self.internal_line.is_some()
             || self.cut_piece.is_some()
             || self.hole.is_some()
+            || self.outline_offset.is_some()
             || self.free_sewing.is_some()
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some();
@@ -1264,6 +1324,9 @@ impl Studio {
     }
 
     fn select(&mut self, ctx: &egui::Context, selected: Option<Id>) -> bool {
+        if self.selected != selected {
+            self.cancel_outline_offset(ctx);
+        }
         if self.tool == Tool::Transform
             || self.tool == Tool::InternalLine
             || self.tool == Tool::CutPiece
@@ -1300,6 +1363,9 @@ impl Studio {
     fn select_curve(&mut self, ctx: &egui::Context, selected: Option<(Id, Id)>) {
         let piece = selected.map(|(piece, _)| piece);
         let curve = selected.map(|(_, curve)| curve);
+        if self.selected != piece || self.selected_curve != curve {
+            self.cancel_outline_offset(ctx);
+        }
         if self.tool == Tool::CutPiece
             && (self.selected != piece || self.selected_curve != curve)
             && !self.allow_piece_selection(ctx)
@@ -1376,6 +1442,7 @@ impl Studio {
         self.cloth = None;
     }
     fn rebuild(&mut self) {
+        self.outline_offset = None;
         self.transform = None;
         self.transform_gesture = None;
         self.internal_line = None;
@@ -1511,8 +1578,18 @@ impl Studio {
         if let Some(result) = result {
             let job = self.job.take().expect("finished job");
             let cancel_requested = job.cancel.load(Ordering::Relaxed);
-            let obsolete = job.revision != self.editor.project.revision;
-            let can_accept = job.accepts(self.editor.project.revision);
+            let current_offset = job.kind != JobKind::OutlineOffset
+                || (self.current_outline_offset_job(&job)
+                    && match &result {
+                        Ok(JobOutput::OutlineOffset(preview)) => self
+                            .outline_offset
+                            .as_ref()
+                            .is_some_and(|draft| draft.matches(&preview.prepared)),
+                        Ok(_) => false,
+                        Err(_) => true,
+                    });
+            let obsolete = job.revision != self.editor.project.revision || !current_offset;
+            let can_accept = job.accepts(self.editor.project.revision) && current_offset;
             let status = match &result {
                 Err(JobError::Failed(_)) => JobStatus::Failed,
                 Err(JobError::Cancelled) => JobStatus::Cancelled,
@@ -1553,12 +1630,38 @@ impl Studio {
                     );
                     self.cloth = Some(state);
                 }
+                Ok(JobOutput::OutlineOffset(preview)) if can_accept => {
+                    let draft = self.outline_offset.as_mut().expect("current offset draft");
+                    draft.job = None;
+                    draft.error = None;
+                    draft.preview = Some(preview);
+                    self.message =
+                        "Material outline preview ready; Apply to update the cloth.".into();
+                }
                 Err(JobError::Failed(e)) => {
-                    self.message = e;
-                    if can_accept {
+                    if job.kind == JobKind::OutlineOffset {
+                        if current_offset {
+                            let draft = self.outline_offset.as_mut().expect("current offset draft");
+                            draft.job = None;
+                            draft.error = Some(e.clone());
+                            self.message = e;
+                        }
+                    } else {
+                        self.message = e;
+                    }
+                    if can_accept && job.kind != JobKind::OutlineOffset {
                         self.playing = false;
                         self.pending_batch = None;
                     }
+                }
+                Err(JobError::Cancelled)
+                    if job.kind == JobKind::OutlineOffset && current_offset =>
+                {
+                    let draft = self.outline_offset.as_mut().expect("current offset draft");
+                    draft.job = None;
+                    draft.error = Some(
+                        "Outline preview cancelled; change the width to prepare it again.".into(),
+                    );
                 }
                 _ => {}
             }
@@ -1595,6 +1698,7 @@ impl Studio {
         if self.free_sewing.is_none()
             && self.cut_piece.is_none()
             && self.hole.is_none()
+            && self.outline_offset.is_none()
             && !self.commit_draft()
         {
             return;
@@ -1814,6 +1918,7 @@ impl Studio {
         written
     }
     fn history(&mut self, ctx: &egui::Context, redo: bool) {
+        self.cancel_outline_offset(ctx);
         self.free_sewing = None;
         self.internal_line = None;
         self.cut_piece = None;
@@ -1875,6 +1980,7 @@ impl Studio {
         if self.free_sewing.is_none()
             && self.cut_piece.is_none()
             && self.hole.is_none()
+            && self.outline_offset.is_none()
             && !self.commit_draft()
         {
             return;
@@ -1890,7 +1996,7 @@ impl Studio {
             return;
         }
         let mut open = true;
-        egui::Window::new("Recover editable construction").enabled(self.rectangle.is_none() && self.transform.is_none() && self.sewing_edit.is_none() && self.pattern_import.is_none() && !self.free_sewing.as_ref().is_some_and(|draft| draft.modal) && !self.cut_piece.as_ref().is_some_and(|draft|draft.modal) && self.hole.is_none()).open(&mut open).default_width(520.0).show(ctx,|ui| {
+        egui::Window::new("Recover editable construction").enabled(self.rectangle.is_none() && self.transform.is_none() && self.sewing_edit.is_none() && self.pattern_import.is_none() && !self.free_sewing.as_ref().is_some_and(|draft| draft.modal) && !self.cut_piece.as_ref().is_some_and(|draft|draft.modal) && self.hole.is_none() && self.outline_offset.is_none()).open(&mut open).default_width(520.0).show(ctx,|ui| {
             ui.label("Recovery opens a copy. Save current edits before replacing the document.");
             ui.horizontal(|ui| {
                 if ui.button("Refresh").clicked() { self.refresh_recovery(); }
@@ -1936,6 +2042,7 @@ impl Studio {
     }
     fn retain_on_exit(&mut self) -> Result<Option<PathBuf>, String> {
         self.cancel();
+        self.outline_offset = None;
         if !self.discard_on_exit && !self.commit_draft() {
             eprintln!(
                 "Pending edit rejected before shutdown recovery: {}",
@@ -2149,6 +2256,10 @@ impl Studio {
                     ui.close();
                 }
                 ui.separator();
+                if self.outline_offset_button(ui).clicked() {
+                    self.open_outline_offset(ui.ctx());
+                    ui.close();
+                }
                 if ui.button("Commands ⌘K").clicked() {
                     self.search = true;
                     ui.close();
@@ -2170,6 +2281,7 @@ impl Studio {
                 ui.label("Internal line: select an owner, then click start/end or enter precise endpoints.");
                 ui.label("Cut piece: select an owner and two straight boundaries, then review the independent pieces.");
                 ui.label("Add hole…: select an owner, then review a numeric rectangular opening. Hole boundaries remain editable.");
+                ui.label("Offset outline…: review a whole-piece material change, then Apply once. Cancel leaves the cloth unchanged.");
                 ui.label("SVG exports compound boundaries with holes; hole-aware SVG reimport is not yet supported. DXF refuses holes; OBJ exports cloth surfaces. Internal annotations stay in the native project.");
                 ui.label("3D: drag to orbit; scroll to zoom.");
                 ui.label("Space plays or pauses simulation.");
@@ -2326,10 +2438,12 @@ impl Studio {
                 ui.spinner();
                 ui.small(if job.cancel.load(Ordering::Relaxed) {
                     "Cancelling…"
-                } else if job.kind == JobKind::Mesh {
-                    "Meshing…"
                 } else {
-                    "Simulating…"
+                    match job.kind {
+                        JobKind::Mesh => "Meshing…",
+                        JobKind::Simulation => "Simulating…",
+                        JobKind::OutlineOffset => "Preparing outline…",
+                    }
                 });
             }
             if self.autosave_job.is_some() {
@@ -2587,6 +2701,7 @@ impl Studio {
             || self.internal_line.is_some()
             || self.cut_piece.is_some()
             || self.hole.is_some()
+            || self.outline_offset.is_some()
             || self.transform.is_some()
             || self.transform_gesture.is_some()
             || ((self.tool == Tool::Transform
@@ -2674,11 +2789,15 @@ impl Studio {
             let mut edit_internal=None;
             let mut create_internal=false;
             let mut create_hole=false;
+            let mut offset_outline=false;
             let mut remove_internal=None;
             let mut remove_hole=None;
             let mut remove_piece=None;
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
                 ui.separator(); ui.strong(format!("{} · #{}",piece.name,piece.id));
+                let response=self.outline_offset_button(ui);
+                acting|=response.is_pointer_button_down_on() || response.clicked();
+                if response.clicked() { offset_outline=true; }
                 if let Some(curve)=&mut draft.curve {
                     ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("curve",curve.id))),|ui| {
                     let internal=piece.internal_curves.contains(&curve.id);
@@ -2918,6 +3037,7 @@ impl Studio {
             }
             });
             self.draft=Some(draft);
+            if offset_outline { self.open_outline_offset(ui.ctx()); }
             if create_hole { self.open_hole(ui.ctx()); }
             if create_internal { self.open_internal_line(ui.ctx(),None); }
             if let Some(curve)=edit_internal { self.open_internal_line(ui.ctx(),Some(curve)); }
@@ -3487,6 +3607,284 @@ impl Studio {
         }
         draft.input.restore(ctx);
         self.hole = Some(draft);
+    }
+    fn outline_offset_button(&self, ui: &mut egui::Ui) -> egui::Response {
+        let response = ui
+            .add_enabled(self.selected.is_some(), egui::Button::new("Offset outline…"))
+            .on_hover_text("Change the whole material boundary and cloth mass. Attached sewing, holes and internal construction are unsupported.");
+        self.retain_inspector_input(&response, false);
+        response
+    }
+    fn open_outline_offset(&mut self, ctx: &egui::Context) {
+        if !self.allow_piece_selection(ctx) || self.outline_offset.is_some() {
+            return;
+        }
+        let Some(piece) = self
+            .selected
+            .filter(|id| self.editor.project.piece(*id).is_some())
+        else {
+            self.message = "Select a pattern before offsetting its outline.".into();
+            return;
+        };
+        if !self.polygon.is_empty()
+            || self.seam_start.is_some()
+            || !self.sewing_draft.a.is_empty()
+            || !self.sewing_draft.b.is_empty()
+            || self.rectangle.is_some()
+            || self.transform.is_some()
+            || self.transform_gesture.is_some()
+            || self.internal_line.is_some()
+            || self.cut_piece.is_some()
+            || self.hole.is_some()
+            || self.free_sewing.is_some()
+            || self.sewing_edit.is_some()
+            || self.pattern_import.is_some()
+            || self.drag_point.is_some()
+            || self.drag_start.is_some()
+        {
+            self.message =
+                "Finish or cancel the current construction gesture before offsetting an outline."
+                    .into();
+            return;
+        }
+        let input = self.free_sewing_input(ctx);
+        self.set_tool(Tool::Select);
+        if self
+            .job
+            .as_ref()
+            .is_some_and(|job| job.kind == JobKind::Mesh)
+        {
+            self.needs_mesh = true;
+        }
+        self.cancel();
+        ctx.input_mut(|input| input.consume_key(input.modifiers, egui::Key::Enter));
+        finish_numeric_action(ctx, input.focus, false);
+        self.outline_offset = Some(OutlineOffsetDraft {
+            piece,
+            revision: self.editor.project.revision,
+            width_mm: "10".into(),
+            outward: true,
+            input,
+            field_focus: None,
+            apply_focus: None,
+            epoch: ctx.cumulative_frame_nr(),
+            inputs: None,
+            job: None,
+            preview: None,
+            error: None,
+        });
+    }
+    fn cancel_outline_offset_job(&self) {
+        if let Some(job) = &self.job
+            && job.kind == JobKind::OutlineOffset
+        {
+            job.cancel.store(true, Ordering::Relaxed);
+        }
+    }
+    fn cancel_outline_offset(&mut self, ctx: &egui::Context) {
+        self.cancel_outline_offset_job();
+        if let Some(draft) = self.outline_offset.take() {
+            if let Some(id) = draft.field_focus {
+                ctx.memory_mut(|memory| memory.surrender_focus(id));
+            }
+            if draft.revision == self.editor.project.revision && self.selected == Some(draft.piece)
+            {
+                draft.input.close_without_commit(ctx);
+            }
+            self.message = "Outline offset cancelled; material unchanged.".into();
+        }
+    }
+    fn discard_stale_outline_offset(&mut self) {
+        if self.outline_offset.as_ref().is_some_and(|draft| {
+            draft.revision != self.editor.project.revision
+                || self.selected != Some(draft.piece)
+                || self.tool != Tool::Select
+                || self.editor.project.piece(draft.piece).is_none()
+        }) {
+            self.cancel_outline_offset_job();
+            self.outline_offset = None;
+        }
+    }
+    fn current_outline_offset_job(&self, job: &Job) -> bool {
+        self.outline_offset.as_ref().is_some_and(|draft| {
+            draft.job == Some(job.id)
+                && self.selected == Some(draft.piece)
+                && self.tool == Tool::Select
+                && draft.revision == self.editor.project.revision
+                && draft.inputs.as_ref() == Some(&(draft.width_mm.clone(), draft.outward))
+        })
+    }
+    fn start_outline_offset(&mut self, ctx: &egui::Context) {
+        self.discard_stale_outline_offset();
+        let Some(mut draft) = self.outline_offset.take() else {
+            return;
+        };
+        if draft.refresh_inputs() {
+            self.cancel_outline_offset_job();
+        }
+        if draft.job.is_none()
+            && draft.preview.is_none()
+            && draft.error.is_none()
+            && self.job.is_none()
+        {
+            let project = self.editor.project.clone();
+            let piece = draft.piece;
+            let width = draft.width().expect("validated outline width");
+            let outward = draft.outward;
+            let job = Job::spawn(
+                ctx,
+                draft.revision,
+                JobKind::OutlineOffset,
+                move |cancel, _| {
+                    let prepared = cancellable_core_job(cancel, |cancelled| {
+                        project.prepare_outline_offset(piece, width, outward, cancelled)
+                    })?;
+                    let source_outline = outline_display_points(&project, piece, cancel)?;
+                    let candidate_outline =
+                        outline_display_points(prepared.project(), piece, cancel)?;
+                    Ok(JobOutput::OutlineOffset(Box::new(OutlineOffsetPreview {
+                        prepared,
+                        source_outline,
+                        candidate_outline,
+                    })))
+                },
+            );
+            draft.job = Some(job.id);
+            self.job = Some(job);
+        }
+        self.outline_offset = Some(draft);
+    }
+    fn apply_outline_offset(
+        &mut self,
+        ctx: &egui::Context,
+        draft: &mut OutlineOffsetDraft,
+    ) -> bool {
+        if draft.revision != self.editor.project.revision
+            || self.selected != Some(draft.piece)
+            || self.tool != Tool::Select
+        {
+            draft.error =
+                Some("Construction changed; cancel and review a new outline offset.".into());
+            return false;
+        }
+        let Some(preview) = draft
+            .preview
+            .take()
+            .filter(|preview| draft.matches(&preview.prepared))
+        else {
+            draft.error = Some(draft.width().err().unwrap_or_else(|| {
+                "Wait for the current material preview before applying.".into()
+            }));
+            return false;
+        };
+        match self.editor.commit_outline_offset(preview.prepared) {
+            Ok((mesh, cloth)) => {
+                self.rebuild();
+                self.mesh = Some(Arc::new(mesh));
+                self.cloth = Some(Arc::new(cloth));
+                self.needs_mesh = false;
+                self.last_stage = "Rest arrangement";
+                self.dirty = true;
+                self.message =
+                    "Material outline offset applied; editable boundary and cloth updated.".into();
+                if let Some(id) = draft.field_focus {
+                    ctx.memory_mut(|memory| memory.surrender_focus(id));
+                }
+                finish_numeric_action(ctx, draft.input.focus, true);
+                true
+            }
+            Err(error) => {
+                draft.error = Some(error.to_string());
+                false
+            }
+        }
+    }
+    fn outline_offset_window(&mut self, ctx: &egui::Context) {
+        self.start_outline_offset(ctx);
+        let Some(mut draft) = self.outline_offset.take() else {
+            return;
+        };
+        let enter = ctx.input(|input| input.key_pressed(egui::Key::Enter))
+            && ctx.cumulative_frame_nr() > draft.epoch
+            && ctx
+                .memory(|memory| memory.focused())
+                .is_some_and(|id| Some(id) == draft.field_focus || Some(id) == draft.apply_focus);
+        let mut accept = false;
+        let mut cancel = false;
+        let response = egui::Modal::new(egui::Id::new(("outline-offset", draft.piece, draft.revision, draft.epoch))).show(ctx, |ui| {
+            ui.set_width(520.);
+            ui.heading("Offset material outline");
+            let piece = self.editor.project.piece(draft.piece).expect("current offset owner");
+            ui.label(format!("{} · #{} · revision {}", piece.name, piece.id, draft.revision));
+            ui.small("Material change · extend adds fabric; retract removes fabric. The resulting boundary stays editable.");
+            ui.horizontal(|ui| {
+                let label = ui.label("Width (mm)");
+                let response = ui.add(egui::TextEdit::singleline(&mut draft.width_mm).id_salt("outline-offset-width").desired_width(140.)).labelled_by(label.id);
+                if draft.field_focus.is_none() {
+                    response.request_focus();
+                }
+                draft.field_focus = Some(response.id);
+                ui.radio_value(&mut draft.outward, true, "Extend");
+                ui.radio_value(&mut draft.outward, false, "Retract");
+            });
+            if draft.refresh_inputs() {
+                self.cancel_outline_offset_job();
+            }
+            ui.allocate_ui_with_layout(Vec2::new(ui.available_width(), 330.), egui::Layout::top_down(egui::Align::Min), |ui| {
+            if let Some(preview) = &draft.preview {
+                let before = preview.prepared.before();
+                let after = preview.prepared.after();
+                egui::Grid::new("outline-offset-measurements").num_columns(3).spacing([18., 5.]).show(ui, |ui| {
+                    ui.label("Selected material"); ui.strong("Before"); ui.strong("After"); ui.end_row();
+                    ui.label("Dimensions (mm)");
+                    for value in [before, after] { ui.label(format!("{:.3} × {:.3}", (value.bounds[1][0]-value.bounds[0][0])*1000., (value.bounds[1][1]-value.bounds[0][1])*1000.)); }
+                    ui.end_row();
+                    for (label, values, precision) in [
+                        ("Authored area (m²)", [before.authored_area, after.authored_area], 9),
+                        ("Rest area (m²)", [before.rest_area, after.rest_area], 9),
+                        ("Cloth mass (kg)", [before.cloth_mass, after.cloth_mass], 12),
+                    ] {
+                        ui.label(label); for value in values { ui.label(format!("{value:.precision$}")); } ui.end_row();
+                    }
+                });
+                ui.small("Source: dashed · Preview: solid. Measurements use the selected piece's rest cloth.");
+                paint_outline_offset(ui, preview);
+            } else if draft.error.is_none() {
+                ui.horizontal(|ui| { ui.spinner(); ui.label("Preparing outline and cloth measurements…"); });
+            }
+            if let Some(error) = &draft.error { ui.colored_label(Color32::LIGHT_RED, error); }
+            });
+            ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("outline-offset-actions")), |ui| {
+            ui.horizontal(|ui| {
+                let apply = ui.add_enabled(draft.preview.is_some(), egui::Button::new("Apply outline offset"));
+                draft.apply_focus = Some(apply.id);
+                accept = apply.clicked();
+                cancel = ui.button("Cancel outline offset").clicked();
+            });
+            });
+        });
+        if cancel || response.should_close() {
+            self.outline_offset = Some(draft);
+            self.cancel_outline_offset(ctx);
+            return;
+        }
+        if accept || enter {
+            let caret = draft
+                .field_focus
+                .and_then(|id| egui::TextEdit::load_state(ctx, id));
+            if draft.preview.is_some() && self.apply_outline_offset(ctx, &mut draft) {
+                return;
+            }
+            if let Some(id) = draft.field_focus {
+                ctx.memory_mut(|memory| memory.request_focus(id));
+                if let Some(caret) = caret {
+                    caret.store(ctx, id);
+                }
+            }
+        }
+        draft.input.restore(ctx);
+        self.outline_offset = Some(draft);
+        self.start_outline_offset(ctx);
     }
     fn selected_hole(&self) -> Option<Id> {
         let piece = self.selected.and_then(|id| self.editor.project.piece(id))?;
@@ -5436,11 +5834,13 @@ impl eframe::App for Studio {
         self.discard_stale_internal_line();
         self.discard_stale_cut_piece();
         self.discard_stale_hole();
+        self.discard_stale_outline_offset();
         let authoring_modal = self.rectangle.is_some()
             || self.transform.is_some()
             || self.internal_line.as_ref().is_some_and(|edit| edit.modal)
             || self.cut_piece.as_ref().is_some_and(|draft| draft.modal)
             || self.hole.is_some()
+            || self.outline_offset.is_some()
             || self.free_sewing.as_ref().is_some_and(|draft| draft.modal)
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some();
@@ -5557,11 +5957,14 @@ impl eframe::App for Studio {
                 self.cancel_internal_line(&ctx);
                 self.cancel_cut_piece(&ctx);
                 self.cancel_hole(&ctx);
+                self.cancel_outline_offset(&ctx);
                 self.cancel_free_sewing(&ctx);
                 self.reset_gestures();
             }
         }
-        if self.needs_mesh && self.job.is_none() {
+        if self.outline_offset.is_some() {
+            self.start_outline_offset(&ctx);
+        } else if self.needs_mesh && self.job.is_none() {
             self.start_mesh(&ctx);
         } else if let Some(batch) = self.pending_batch
             && self.job.is_none()
@@ -5707,6 +6110,7 @@ impl eframe::App for Studio {
                         "Internal line",
                         "Cut piece",
                         "Add hole…",
+                        "Offset outline…",
                         "Add ellipse",
                         "Sew edges",
                         "Free sewing",
@@ -5723,6 +6127,7 @@ impl eframe::App for Studio {
                             "Export SVG" => self.export_button(ui, ExportFormat::Svg, label),
                             "Export DXF" => self.export_button(ui, ExportFormat::Dxf, label),
                             "Add hole…" => self.add_hole_button(ui).clicked(),
+                            "Offset outline…" => self.outline_offset_button(ui).clicked(),
                             _ => ui.button(label).clicked(),
                         };
                         if clicked {
@@ -5750,6 +6155,7 @@ impl eframe::App for Studio {
                                     self.begin_cut_piece(&ctx);
                                 }
                                 "Add hole…" => self.open_hole(&ctx),
+                                "Offset outline…" => self.open_outline_offset(&ctx),
                                 "Add ellipse" => {
                                     let focused = self.inspector_focus(&ctx);
                                     self.add_ellipse(&ctx, focused);
@@ -5774,6 +6180,7 @@ impl eframe::App for Studio {
         self.internal_line_window(&ctx);
         self.cut_piece_window(&ctx);
         self.hole_window(&ctx);
+        self.outline_offset_window(&ctx);
         self.free_sewing_window(&ctx);
         self.sewing_group_window(&ctx);
         self.pattern_import_window(&ctx);
@@ -6134,6 +6541,64 @@ fn check_cancelled(cancel: &AtomicBool) -> Result<(), JobError> {
     } else {
         Ok(())
     }
+}
+fn outline_display_points(
+    project: &Project,
+    piece: Id,
+    cancel: &AtomicBool,
+) -> Result<Vec<[f64; 2]>, JobError> {
+    let owner = project
+        .piece(piece)
+        .ok_or_else(|| JobError::Failed("Offset owner no longer exists.".into()))?;
+    let mut points = Vec::new();
+    // These cached samples draw the preview; the prepared core result certifies its geometry.
+    for id in &owner.boundary {
+        let curve = project.curve(*id).expect("validated preview boundary");
+        let steps = if curve.controls.is_some() { 16 } else { 1 };
+        for index in 0..steps {
+            if points.len().is_multiple_of(256) {
+                check_cancelled(cancel)?;
+            }
+            points.push(
+                curve
+                    .evaluate(project, index as f64 / steps as f64)
+                    .map_err(|error| JobError::Failed(error.to_string()))?,
+            );
+        }
+    }
+    if let Some(first) = points.first().copied() {
+        points.push(first);
+    }
+    check_cancelled(cancel)?;
+    Ok(points)
+}
+fn paint_outline_offset(ui: &mut egui::Ui, preview: &OutlineOffsetPreview) {
+    let before = preview.prepared.before().bounds;
+    let after = preview.prepared.after().bounds;
+    let min: [f64; 2] = std::array::from_fn(|axis| before[0][axis].min(after[0][axis]));
+    let max: [f64; 2] = std::array::from_fn(|axis| before[1][axis].max(after[1][axis]));
+    let (response, painter) =
+        ui.allocate_painter(Vec2::new(ui.available_width(), 160.), Sense::hover());
+    let rect = response.rect.shrink(12.);
+    painter.rect_filled(response.rect, 3., Color32::from_gray(32));
+    let scale = (f64::from(rect.width()) / (max[0] - min[0]))
+        .min(f64::from(rect.height()) / (max[1] - min[1]));
+    let screen = |point: &[f64; 2]| {
+        rect.center()
+            + Vec2::new(
+                ((point[0] - (min[0] + max[0]) * 0.5) * scale) as f32,
+                (-((point[1] - (min[1] + max[1]) * 0.5) * scale)) as f32,
+            )
+    };
+    let source: Vec<_> = preview.source_outline.iter().map(screen).collect();
+    let candidate = preview.candidate_outline.iter().map(screen).collect();
+    painter.extend(egui::Shape::dashed_line(
+        &source,
+        Stroke::new(1.5, Color32::from_gray(190)),
+        5.,
+        4.,
+    ));
+    painter.add(egui::Shape::line(candidate, Stroke::new(2., Color32::GOLD)));
 }
 fn cancellable_core_job<T>(
     cancel: &AtomicBool,
@@ -10553,6 +11018,9 @@ mod tests {
                     Ok(match kind {
                         JobKind::Mesh => JobOutput::Mesh(Arc::new((*mesh).clone())),
                         JobKind::Simulation => JobOutput::Simulation(Arc::new((*cloth).clone())),
+                        JobKind::OutlineOffset => {
+                            unreachable!("offset jobs have separate lifecycle tests")
+                        }
                     })
                 };
                 sender.send(output).ok().unwrap();
@@ -19043,6 +19511,623 @@ mod authored_length_tests {
             assert_eq!(
                 labels.matches("B − A +200.000 mm").count(),
                 if outcome == "accepted" { 2 } else { 1 }
+            );
+        }
+    }
+}
+
+#[cfg(test)]
+mod outline_offset_tests {
+    use super::cut_piece_tests::{parameter, position};
+    use super::pattern_transform_tests::{
+        action, button, focus_property, frame, key, pointer_frame,
+    };
+    use super::*;
+    use egui::accesskit::{Action, ActionData};
+
+    fn fixture() -> (egui::Context, Studio) {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Original material panel".into(),
+                origin: [0.; 2],
+                width: 0.4,
+                height: 0.6,
+            })
+            .unwrap();
+        let piece = app.editor.project.pieces[0].id;
+        let mut material = app.editor.project.materials[0].clone();
+        material.areal_density = 0.2;
+        for command in [
+            Command::UpdateMaterial { material },
+            Command::SetGrain { piece, angle: 0.37 },
+            Command::SetResolution { metres: 0.1 },
+            Command::SetResolution { metres: 0.09 },
+        ] {
+            app.editor.execute(command).unwrap();
+        }
+        assert!(app.editor.undo());
+        app.selected = Some(piece);
+        app.selected_curve = Some(app.editor.project.pieces[0].boundary[0]);
+        let mesh = Arc::new(app.editor.project.mesh().unwrap());
+        app.cloth = Some(Arc::new(
+            weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap(),
+        ));
+        app.mesh = Some(mesh);
+        (ctx, app)
+    }
+    fn click(ctx: &egui::Context, app: &mut Studio, label: &str) {
+        let output = frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![action(button(&output, label), Action::Click, None)],
+        );
+    }
+    fn wait_preview(ctx: &egui::Context, app: &mut Studio) {
+        let deadline = Instant::now() + Duration::from_secs(15);
+        loop {
+            frame(ctx, app, vec![]);
+            let draft = app.outline_offset.as_ref().expect("offset review retained");
+            assert!(draft.error.is_none(), "{:?}", draft.error);
+            if draft.preview.is_some() {
+                return;
+            }
+            assert!(Instant::now() < deadline, "offset worker did not finish");
+            std::thread::sleep(Duration::from_millis(1));
+        }
+    }
+    fn wait_job(app: &mut Studio) {
+        let deadline = Instant::now() + Duration::from_secs(5);
+        while app.job.is_some() {
+            app.poll();
+            assert!(Instant::now() < deadline, "worker did not stop");
+            std::thread::sleep(Duration::from_millis(1));
+        }
+    }
+    fn directory() -> PathBuf {
+        let path = std::env::temp_dir().join(format!(
+            "weftforge-offset-ui-{}-{}",
+            std::process::id(),
+            SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        fs::create_dir(&path).unwrap();
+        path
+    }
+    fn rest_area(mesh: &Mesh) -> f64 {
+        mesh.triangles
+            .iter()
+            .map(|triangle| {
+                let [a, b, c] = triangle.map(|index| mesh.uv[index]);
+                ((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])).abs() * 0.5
+            })
+            .sum()
+    }
+
+    #[test]
+    fn outline_offset_routes_preview_cancel_and_apply_use_real_cloth_and_one_history_action() {
+        for route in ["inspector", "menu", "search"] {
+            let (ctx, mut app) = fixture();
+            let original = app.editor.project.clone();
+            let editor = format!("{:?}", app.editor);
+            let mesh = app.mesh.clone().unwrap();
+            let cloth = app.cloth.clone().unwrap();
+            if route == "menu" {
+                click(&ctx, &mut app, "Edit");
+            }
+            if route == "search" {
+                app.search = true;
+                app.query = "Offset outline".into();
+            }
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![
+                    action(button(&output, "Offset outline…"), Action::Click, None),
+                    key(egui::Key::Enter, egui::Modifiers::NONE),
+                ],
+            );
+            assert_eq!(format!("{:?}", app.editor), editor);
+            wait_preview(&ctx, &mut app);
+            let preview = &app
+                .outline_offset
+                .as_ref()
+                .unwrap()
+                .preview
+                .as_ref()
+                .unwrap()
+                .prepared;
+            assert!((preview.before().authored_area - 0.24).abs() < 1e-12);
+            assert!((preview.before().cloth_mass - 0.048).abs() < 2e-10);
+            assert!((preview.after().authored_area - 0.2604).abs() < 1e-12);
+            assert!((preview.after().rest_area - 0.2604).abs() < 1e-12);
+            assert!((preview.after().cloth_mass - 0.05208).abs() < 2e-10);
+            assert_eq!(format!("{:?}", app.editor), editor);
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+            let output = frame(&ctx, &mut app, vec![]);
+            let labels = output
+                .platform_output
+                .accesskit_update
+                .unwrap()
+                .nodes
+                .iter()
+                .filter_map(|(_, node)| node.value().or(node.label()))
+                .collect::<Vec<_>>()
+                .join(" ");
+            for expected in [
+                "Dimensions (mm)",
+                "Authored area (m²)",
+                "Rest area (m²)",
+                "Cloth mass (kg)",
+                "0.052080000",
+                "Source: dashed · Preview: solid",
+            ] {
+                assert!(labels.contains(expected), "{expected}");
+            }
+            click(&ctx, &mut app, "Cancel outline offset");
+            assert!(app.outline_offset.is_none() && app.editor.can_redo() && !app.dirty);
+            assert_eq!(format!("{:?}", app.editor), editor);
+            click(&ctx, &mut app, "Offset outline…");
+            wait_preview(&ctx, &mut app);
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+            );
+            assert!(
+                app.outline_offset.is_none(),
+                "width Return applies the prepared preview"
+            );
+            assert_eq!(app.editor.project.revision, original.revision + 1);
+            assert!(
+                !app.playing && app.pending_batch.is_none() && !app.needs_mesh && app.job.is_none()
+            );
+            let applied = app.editor.project.clone();
+            assert_eq!(app.mesh.as_ref().unwrap().doc_revision, applied.revision);
+            assert!((rest_area(app.mesh.as_ref().unwrap()) - 0.2604).abs() < 1e-12);
+            assert!(
+                (app.cloth.as_ref().unwrap().masses().iter().sum::<f64>() - 0.05208).abs() < 2e-10
+            );
+            assert!(app.dirty && !app.editor.can_redo());
+            click(&ctx, &mut app, "Undo");
+            assert_eq!(app.editor.project.points, original.points);
+            assert_eq!(app.editor.project.curves, original.curves);
+            assert_eq!(app.editor.project.pieces, original.pieces);
+            click(&ctx, &mut app, "Redo");
+            assert_eq!(app.editor.project.points, applied.points);
+            assert_eq!(app.editor.project.curves, applied.curves);
+        }
+    }
+
+    #[test]
+    fn outline_offset_invalid_width_keeps_raw_text_caret_and_blocks_modal_background_actions() {
+        for cancel in ["button", "escape", "backdrop"] {
+            let (ctx, mut app) = fixture();
+            let output = frame(&ctx, &mut app, vec![]);
+            let backdrop = position(&output, button(&output, "Undo"));
+            let background =
+                ["Add rectangle", "Undo", "Polygon"].map(|label| button(&output, label));
+            let numeric = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(_, node)| node.numeric_value() == Some(0.37))
+                .unwrap()
+                .0;
+            let source = focus_property(&ctx, &mut app, "0.3700");
+            let source_caret = egui::TextEdit::load_state(&ctx, source)
+                .unwrap()
+                .cursor
+                .char_range();
+            click(&ctx, &mut app, "Offset outline…");
+            let before = format!("{:?}", app.editor);
+            let mesh = app.mesh.clone().unwrap();
+            let cloth = app.cloth.clone().unwrap();
+            let field = parameter(&ctx, &mut app, "Width (mm)", "1e-");
+            let caret = egui::TextEdit::load_state(&ctx, field)
+                .unwrap()
+                .cursor
+                .char_range();
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+            );
+            assert_eq!(app.outline_offset.as_ref().unwrap().width_mm, "1e-");
+            assert!(app.outline_offset.as_ref().unwrap().error.is_some());
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, field)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            frame(&ctx, &mut app, vec![egui::Event::Text("0".into())]);
+            assert_eq!(app.outline_offset.as_ref().unwrap().width_mm, "1e0-");
+            for text in ["NaN", "inf", "0", "-10", "1e-323"] {
+                parameter(&ctx, &mut app, "Width (mm)", text);
+                assert!(
+                    app.outline_offset.as_ref().unwrap().width().is_err(),
+                    "{text}"
+                );
+            }
+            for id in background {
+                frame(&ctx, &mut app, vec![action(id, Action::Click, None)]);
+            }
+            for event in [
+                action(
+                    numeric,
+                    Action::SetValue,
+                    Some(ActionData::NumericValue(0.8)),
+                ),
+                key(egui::Key::S, egui::Modifiers::COMMAND),
+                key(egui::Key::O, egui::Modifiers::COMMAND),
+                key(egui::Key::Z, egui::Modifiers::COMMAND),
+                key(egui::Key::Space, egui::Modifiers::NONE),
+                key(egui::Key::K, egui::Modifiers::COMMAND),
+            ] {
+                frame(&ctx, &mut app, vec![event]);
+                assert_eq!(format!("{:?}", app.editor), before);
+                assert!(app.outline_offset.is_some() && !app.dirty && !app.playing && !app.search);
+            }
+            match cancel {
+                "button" => click(&ctx, &mut app, "Cancel outline offset"),
+                "escape" => {
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+                    );
+                }
+                "backdrop" => {
+                    pointer_frame(&ctx, &mut app, backdrop, Some(true), false);
+                    pointer_frame(&ctx, &mut app, backdrop, Some(false), false);
+                }
+                _ => unreachable!(),
+            }
+            wait_job(&mut app);
+            for _ in 0..3 {
+                frame(&ctx, &mut app, vec![]);
+            }
+            assert!(
+                app.outline_offset.is_none() && app.editor.can_redo(),
+                "{cancel}: draft={} redo={} {}",
+                app.outline_offset.is_some(),
+                app.editor.can_redo(),
+                app.message
+            );
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(source))
+                    .as_deref(),
+                Some("0.3700")
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, source)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                source_caret
+            );
+        }
+    }
+
+    #[test]
+    fn outline_offset_direction_keyboard_reviews_retraction_without_applying_or_repeating_work() {
+        let (ctx, mut app) = fixture();
+        let before = format!("{:?}", app.editor);
+        click(&ctx, &mut app, "Offset outline…");
+        wait_preview(&ctx, &mut app);
+        let output = frame(&ctx, &mut app, vec![]);
+        let retract = button(&output, "Retract");
+        frame(&ctx, &mut app, vec![action(retract, Action::Focus, None)]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Space, egui::Modifiers::NONE)],
+        );
+        wait_preview(&ctx, &mut app);
+        assert!(!app.outline_offset.as_ref().unwrap().outward);
+        let preview = &app
+            .outline_offset
+            .as_ref()
+            .unwrap()
+            .preview
+            .as_ref()
+            .unwrap()
+            .prepared;
+        assert!((preview.after().rest_area - 0.2204).abs() < 1e-12);
+        assert!((preview.after().cloth_mass - 0.04408).abs() < 2e-10);
+        let job = app.last_job.as_ref().unwrap().id;
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+        );
+        for _ in 0..4 {
+            frame(&ctx, &mut app, vec![]);
+        }
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert!(app.outline_offset.is_some() && app.job.is_none());
+        assert_eq!(app.last_job.as_ref().unwrap().id, job);
+        click(&ctx, &mut app, "Apply outline offset");
+        assert!(app.outline_offset.is_none());
+        assert!((app.cloth.as_ref().unwrap().masses().iter().sum::<f64>() - 0.04408).abs() < 2e-10);
+    }
+
+    #[test]
+    fn outline_offset_cancellation_stale_revision_selection_and_replaced_requests_cannot_publish() {
+        let (ctx, mut app) = fixture();
+        let before = format!("{:?}", app.editor);
+        app.open_outline_offset(&ctx);
+        app.outline_offset.as_mut().unwrap().refresh_inputs();
+        let (started, observed) = mpsc::channel();
+        let (release, released) = mpsc::channel();
+        let job = Job::spawn(
+            &ctx,
+            app.editor.project.revision,
+            JobKind::OutlineOffset,
+            move |cancel, _| {
+                started.send(()).unwrap();
+                released.recv_timeout(Duration::from_secs(3)).unwrap();
+                check_cancelled(cancel)?;
+                Err(JobError::Failed("cancellation was not observed".into()))
+            },
+        );
+        app.outline_offset.as_mut().unwrap().job = Some(job.id);
+        app.job = Some(job);
+        observed.recv_timeout(Duration::from_secs(3)).unwrap();
+        app.cancel_outline_offset(&ctx);
+        release.send(()).unwrap();
+        wait_job(&mut app);
+        assert_eq!(app.last_job.as_ref().unwrap().status, JobStatus::Cancelled);
+        assert_eq!(
+            app.last_job.as_ref().unwrap().outcome,
+            Err(JobError::Cancelled)
+        );
+        assert_eq!(format!("{:?}", app.editor), before);
+
+        for change in [
+            "width",
+            "direction",
+            "selection",
+            "revision",
+            "replaced_request",
+        ] {
+            let (ctx, mut app) = fixture();
+            let mesh = app.mesh.clone().unwrap();
+            let cloth = app.cloth.clone().unwrap();
+            let piece = app.selected.unwrap();
+            let prepared = app
+                .editor
+                .project
+                .prepare_outline_offset(piece, 0.01, true, || false)
+                .unwrap();
+            let preview = OutlineOffsetPreview {
+                prepared,
+                source_outline: vec![],
+                candidate_outline: vec![],
+            };
+            app.open_outline_offset(&ctx);
+            let draft = app.outline_offset.as_mut().unwrap();
+            draft.refresh_inputs();
+            draft.job = Some(9001);
+            match change {
+                "width" => draft.width_mm = "20".into(),
+                "direction" => draft.outward = false,
+                "selection" => app.selected = None,
+                "revision" => app
+                    .editor
+                    .execute(Command::SetGrain { piece, angle: 0.5 })
+                    .unwrap(),
+                "replaced_request" => {
+                    draft.width_mm = "20".into();
+                    draft.refresh_inputs();
+                    draft.width_mm = "10".into();
+                    draft.refresh_inputs();
+                }
+                _ => unreachable!(),
+            }
+            let before = format!("{:?}", app.editor);
+            let (sender, receiver) = mpsc::channel();
+            app.job = Some(Job {
+                id: 9001,
+                revision: preview.prepared.source_revision(),
+                kind: JobKind::OutlineOffset,
+                batch: None,
+                completed_steps: Arc::new(AtomicU64::new(0)),
+                cancel: Arc::new(AtomicBool::new(false)),
+                receiver,
+            });
+            sender
+                .send(Ok(JobOutput::OutlineOffset(Box::new(preview))))
+                .ok()
+                .unwrap();
+            app.poll();
+            assert_eq!(
+                app.last_job.as_ref().unwrap().status,
+                JobStatus::Discarded,
+                "{change}"
+            );
+            assert!(
+                app.outline_offset.as_ref().unwrap().preview.is_none(),
+                "{change}"
+            );
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+            app.reset_gestures();
+        }
+    }
+
+    #[test]
+    fn outline_offset_lifecycle_failed_io_preserves_preview_and_applied_native_save_reopens() {
+        let (ctx, mut app) = fixture();
+        let dir = directory();
+        let path = dir.join("material.weftforge");
+        app.editor.project.save(&path).unwrap();
+        app.path = Some(path.clone());
+        let source_bytes = fs::read(&path).unwrap();
+        click(&ctx, &mut app, "Offset outline…");
+        wait_preview(&ctx, &mut app);
+        let before = format!("{:?}", app.editor);
+        app.new_empty(&ctx, None);
+        assert!(app.outline_offset.as_ref().unwrap().preview.is_some());
+        fs::write(dir.join("malformed.weftforge"), b"{not a project}").unwrap();
+        app.load_document(dir.join("malformed.weftforge"), false);
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert!(app.outline_offset.as_ref().unwrap().preview.is_some());
+        app.path = Some(dir.clone());
+        app.save(false);
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert!(app.outline_offset.as_ref().unwrap().preview.is_some());
+        assert_eq!(fs::read(&path).unwrap(), source_bytes);
+        app.path = Some(path.clone());
+        click(&ctx, &mut app, "Apply outline offset");
+        let applied = app.editor.project.clone();
+        app.save(false);
+        assert!(!app.dirty);
+        assert_eq!(Project::load(&path).unwrap(), applied);
+        click(&ctx, &mut app, "Offset outline…");
+        wait_preview(&ctx, &mut app);
+        app.load_document(path.clone(), false);
+        assert!(app.outline_offset.is_none() && app.selected_curve.is_none());
+        assert_eq!(app.editor.project, applied);
+        app.selected = Some(applied.pieces[0].id);
+        app.needs_mesh = false;
+        click(&ctx, &mut app, "Offset outline…");
+        wait_preview(&ctx, &mut app);
+        let before_reopened = app
+            .outline_offset
+            .as_ref()
+            .unwrap()
+            .preview
+            .as_ref()
+            .unwrap()
+            .prepared
+            .before();
+        assert!((before_reopened.authored_area - 0.2604).abs() < 1e-12);
+        assert!((before_reopened.rest_area - 0.2604).abs() < 1e-12);
+        assert!((before_reopened.cloth_mass - 0.05208).abs() < 2e-10);
+        app.retain_on_exit().unwrap();
+        assert!(app.outline_offset.is_none());
+        assert_eq!(app.editor.project, applied);
+        assert_eq!(Project::load(&path).unwrap(), applied);
+        fs::remove_dir_all(dir).unwrap();
+    }
+
+    #[test]
+    fn outline_offset_refuses_attached_geometry_and_pending_properties_without_data_loss() {
+        for attachment in ["hole", "internal", "seam", "group"] {
+            let (ctx, mut app) = fixture();
+            let piece = app.selected.unwrap();
+            let boundary = app.editor.project.pieces[0].boundary[0];
+            match attachment {
+                "hole" => app
+                    .editor
+                    .execute(Command::AddHole {
+                        piece,
+                        vertices: vec![[0.1, 0.1], [0.1, 0.2], [0.2, 0.2], [0.2, 0.1]],
+                    })
+                    .unwrap(),
+                "internal" => app
+                    .editor
+                    .execute(Command::AddInternalSegment {
+                        piece,
+                        start: [0.1, 0.1],
+                        end: [0.2, 0.2],
+                    })
+                    .unwrap(),
+                "seam" | "group" => {
+                    app.editor
+                        .execute(Command::AddRectangle {
+                            name: "Other cloth".into(),
+                            origin: [1., 0.],
+                            width: 0.4,
+                            height: 0.6,
+                        })
+                        .unwrap();
+                    let a = CurveInterval::full(boundary);
+                    let b = CurveInterval::reversed(app.editor.project.pieces[1].boundary[0]);
+                    app.editor
+                        .execute(if attachment == "seam" {
+                            Command::AddSeam {
+                                name: "Attached seam".into(),
+                                a,
+                                b,
+                                correspondence: vec![[0., 0.], [1., 1.]],
+                            }
+                        } else {
+                            Command::AddSewingGroup {
+                                name: "Attached sewing".into(),
+                                a: vec![a],
+                                b: vec![b],
+                                correspondence: vec![[0., 0.], [1., 1.]],
+                            }
+                        })
+                        .unwrap();
+                }
+                _ => unreachable!(),
+            }
+            let mesh = Arc::new(app.editor.project.mesh().unwrap());
+            let cloth = Arc::new(
+                weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap(),
+            );
+            app.mesh = Some(mesh.clone());
+            app.cloth = Some(cloth.clone());
+            app.playing = true;
+            app.pending_batch = Some(SimulationBatch::drape());
+            let before = format!("{:?}", app.editor);
+            app.open_outline_offset(&ctx);
+            app.start_outline_offset(&ctx);
+            wait_job(&mut app);
+            let draft = app.outline_offset.as_ref().unwrap();
+            assert!(
+                draft.preview.is_none()
+                    && draft.error.as_ref().is_some_and(|error| !error.is_empty()),
+                "{attachment}"
+            );
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert!(Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh));
+            assert!(Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth));
+            assert!(app.playing && app.pending_batch.is_some());
+            app.cancel_outline_offset(&ctx);
+        }
+        for text in ["0.52", "1e-"] {
+            let (ctx, mut app) = fixture();
+            let source = focus_property(&ctx, &mut app, text);
+            let caret = egui::TextEdit::load_state(&ctx, source)
+                .unwrap()
+                .cursor
+                .char_range();
+            let before = format!("{:?}", app.editor);
+            click(&ctx, &mut app, "Offset outline…");
+            assert!(app.outline_offset.is_none());
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(source))
+                    .as_deref(),
+                Some(text)
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, source)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
             );
         }
     }
