@@ -1,70 +1,81 @@
 # WeftForge status — active development, 2026-11-16
 
-Current integrated runtime source is `5898f1a1274f8632d96b5fd0898f8253dee2f4db`. The inherited published
-straight-cut collection remains bound to 19b1; origin/main 734e5762 is being merged
-with the newer hole/CutAndSew candidate. Registry progress remains **40 partial /
-16 planned**, **0/56 coarse reference contracts verified**, discovery incomplete
-and **no roadmap gate accepted**. PAT-006 remains partial with whole-contract
-verification not_run. Historical 949/205/56 inventory/maps remain byte-exact.
-GitHub Actions stays disabled; existing static Pages configuration is preserved.
+Current integrated runtime source is `947bfbe4dcb74fb253d584709376ace5a08db838`. The published bounded
+straight-cut collection remains bound to 19b1 and stale on changed current source.
+Registry progress remains **40 partial / 16 planned**, **0/56 coarse reference
+contracts verified**, discovery incomplete and **no roadmap gate accepted**.
+PAT-006 remains partial with whole-contract verification not_run. Historical
+949/205/56 maps and all 39 report results/artifact hashes remain unchanged.
+GitHub Actions stays disabled; the existing static Pages configuration is preserved.
 
-## Current candidate: straight Cut & Sew and inherited editable holes
+## Current candidate: bounded SVG canvas correction
 
-The shared five-field `CutAndSew` reuses the private straight-cut helper and adds
-one ordinary full-A/reversed-B identity-map Seam in the same candidate. It
-reserves ten IDs/objects; ordinary `CutPiece` retains its exact nine-ID unsewn
-construction. Both pieces keep independent construction/mesh/particle identities.
-The existing native cut review has a default-off `Sew cut edges` option with
-clone-only preview, raw text/caret retention, candidate seam inspection and
-checkbox keyboard shielding. RemoveSeam removes only the constraint. Strict v5,
-all inherited hole restrictions, conservative guards and target-sewing refusals
-remain. See the [engineering contract](spec/features/SEW-001-cut-and-sew.md).
+The shared SVG writer now unions ALL existing analytic exterior curve bounds,
+including cubic extrema, preserving absolute authored U/V, millimetre scale and
+inverted SVG Y. Only an empty project keeps the one-metre blank canvas. The old
+0–1 m seed/control hull added blank padding; clipping was not observed in H2-001.
+Compound path bytes, validation/path guards and staged atomic replacement remain
+unchanged. Source regressions cover R240 at 240×360 mm with `viewBox="0 -360 240 360"`,
+all-negative/large-offset/multipiece layouts, true cubic extrema and empty fallback.
+The legacy workflow's obsolete 1000 mm expectation was corrected to its literal
+500×700 mm geometry. No schema/version/command/tool/UI/dependency or print-margin
+contract is added. Source checks do not establish native exports or reference parity.
 
-The clean 5898 runtime passed formatting, **336 Rust tests / zero failures**,
-strict workspace/all-target Clippy and fresh native+CLI debug builds in its own
-target. All **74 runtime/build/test/doc/contract inputs** stayed exact. Root's
-retained local gate receipt SHA-256 is
-`34db1fa96460c6468cb4c6ea93da198dcdac6907e9016dd2ff5dc039ab945599`.
-Earlier failed compile/UI-test attempts and their corrections remain retained;
-they were not converted into successful runs. These private local results are
-not tracked published native/reference evidence. Metadata conflicts are resolved
-in the working files. Python map, registry generation/check and 39 registry unit
-tests passed locally; root still owns staging, the merge commit and final clean
-`cargo xtask verify`.
-No Cargo job is active.
+Root's clean 947 runtime passed formatting, **339 Rust tests / zero failures**,
+strict workspace/all-target Clippy and fresh native+CLI debug builds in this
+worktree's separate target; all **74 runtime/build/test/doc/contract inputs**
+remain immutable. The retained local gate receipt SHA-256 is
+`15d3225ef669621690f7aabfe47d481509d2b78a232c3b4d61779898e83b78bd`.
+The native executable identity is
+`f74350126898e07729f898cb641442baecacc29404f5620b1cfabb03926e282a`
+(62,231,992B); CLI is
+`45fac9485a32699ee1b9dfe882d6481099e2e75fa8c2de6f3f507a0040006dc1`
+(10,328,720B). Earlier failed assertions and their correction receipts remain
+retained rather than converted to passes. These local source/build checks are
+separate from tracked native/reference evidence. No Cargo job is active.
 
-The source-only addendum now pins actual **33 Rust alternatives / 32 schemas /
-9 tools**, retaining 38 candidate rows and 22 native surfaces, with 22 reviewed
-contracts and 318 actual source-anchor occurrences. Source tests inspect real initial Mesh
-and retained Cloth stitches/masses; no drape, calibrated fabric, reference physics
-or actual native CutAndSew lifecycle follows from those tests. Current 5898 native
-off/on preview, one Apply/history/save, real process restart/reopen and persisted
-seam inspection/removal remain **unobserved**.
+The source-only addendum repins **33 Rust alternatives / 32 schemas / 9 tools**,
+**38 candidate rows / 22 native surfaces / 22 reviewed contracts / 321 actual
+source-anchor occurrences** to 947. Exact 5898-source / 385-metadata JSON/Markdown
+history and the older 52163ad/982ad03/ad7/B657 chain remain read-only Git references.
+All 39 reports were already stale; no old report result, identity or artifact was
+rewritten. Root owns this metadata commit and the clean xtask/debug-build gate.
 
-The inherited one-straight-hole/v5 source remains separately described by its
-[contract](spec/features/PAT-006-straight-hole.md). Private H1-002 acceptance is
-bound to a021a25 and is not a published/current 5898 hole or CutAndSew result.
-H2-001 on sealed source 73/metadata 52163ad is closed. Its one formal V2 grade
-**failed** (private receipt prefix `5457c733`): SVG exports a fixed
-`1000 mm × 1000 mm` canvas with `viewBox="0 -1000 1000 1000"`, while the declared
-R240 export bounds require `240 mm × 360 mm` and `viewBox="0 -360 240 360"`.
-Passive inspection found the shape's physical coordinates correct; the export
-canvas/bounds mismatch remains a product defect to fix separately. The old case
-was not repaired or regraded and earns no accepted H2 result.
+## Inherited CutAndSew and hole scope remains separately qualified
 
-Root separately verified all test windows closed at `2026-11-16T06:02:33.966Z`;
-that cleanup is outside the frozen case evidence. No GUI lease is active. A
-read-only SVG-writer diagnosis is the confirmed follow-up job. This metadata
-task changes no H1/H2 packet or frozen source. Full hole/CutAndSew/reference
-qualification remains open.
+The five-field CutAndSew retains its ten-ID cut-plus-ordinary-reversed-B seam
+candidate and default-off Sew cut edges preview; ordinary CutPiece keeps its
+nine-ID unsewn behavior. Construction, rest meshes, Cloth and display state stay
+revision-separated. Existing strict v5, hole restrictions, target sewing refusals,
+atomic command/history and raw/caret/checkbox guards remain. Source Mesh/Cloth
+stitch/mass assertions establish no current native Sew, drape/calibration,
+reference physics or full-feature acceptance. The separate private SEW-S1/S2 REV003 packet passed independent review and is
+prospectively frozen on sealed source 5898 / metadata 385. S1 actor preparation
+is separate; no native Sew case or GO exists. This metadata update changes
+neither that source nor its packet.
 
-Exact next steps: finish this metadata merge without changing source 74; let root
-stage/commit and run the clean tracked registry/map/xtask gate; keep the published
-v4 cut outcomes/qualifiers while marking their changed-source freshness stale;
-finish the read-only SVG diagnosis and make any writer correction in a new
-isolated product change after this metadata checkpoint. Preserve the failed H2
-case unchanged. Current native CutAndSew remains unobserved and needs its own
-declared source/executable/lifecycle acceptance plan.
+The [hole contract](spec/features/PAT-006-straight-hole.md) remains bounded.
+Private H1-002's acceptance is bound to a021/source73/meta521, not current 947.
+H2-001 on that old source is closed FAILED: sole frozen grade
+`5457c733571b632dcc8cbde58a878d86035b6701db4284063ba8d19f9fe7db1d`
+found `1000×1000 mm / viewBox="0 -1000 1000 1000"` instead of the R240
+`240×360 mm / viewBox="0 -360 240 360"`.
+Its path coordinates had correct physical scale. It has no accepted H2 exports;
+the case/output/evaluator were not repaired or regraded. Current writer correction
+does not retroactively accept it. Root's separate exit receipt SHA-256 is
+`b21a1503b8c7b033e6dd26002000b916fd8df0f2dd378695b4fdb2dfdcf843a0`:
+fresh 06:02:33.966Z inventory showed no running WeftForge, immediately followed by
+summary-only, with owned PID 95274 later absent. Cleanup remains outside frozen
+case evidence. No GUI lease is active.
+
+The metadata map/progress checks and all 39 registry tests passed in one local
+cycle. Exact next handles: root metadata commit and clean tracked xtask/debug
+build; bind those results into the separately reviewed current 947 SVG/H3 draft
+and recheck its completed identities before freeze. H3 remains prospective and
+unexecuted, without current native/export acceptance. Keep the sealed5898 Sew
+S1/S2 packet and actor preparation separate, preserve failed H2-001 unchanged,
+and retain all historical cut/hole/physics/reference limits. No Cargo, Rust test,
+GUI/product/evaluator or Git staging/commit is performed by this metadata task.
 
 ## Published bounded v4 cut qualification — historical source 19b1
 
