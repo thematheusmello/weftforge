@@ -1,10 +1,10 @@
 # WeftForge status — active development, 2026-11-16
 
-Current integrated runtime source is `947bfbe4dcb74fb253d584709376ace5a08db838`,
-with clean metadata `a362f64ea84b60407501dd641c9f5f51a327351a`. PR #49 remains
-a draft; Hole and Cut & Sew publication is in progress on
-`feat/holes-sewn-cuts-publication`. No merge, tracked-delivery or final public-gate
-completion is claimed. Registry progress remains **40 partial / 16 planned**,
+Current integrated runtime source is `947bfbe4dcb74fb253d584709376ace5a08db838`.
+PR #49 contains the hole, Cut & Sew and SVG canvas changes. The tracked evidence
+checkpoint is `7abfa075b4f6685c43618a7b0b881fd3dcf7ef5f`; final local integration
+checks passed from that clean checkout on `feat/holes-sewn-cuts-publication`.
+Registry progress remains **40 partial / 16 planned**,
 **0/56 coarse reference contracts verified**, discovery incomplete and **no
 roadmap gate accepted**. All 56 feature statuses/contract verification and all
 39 earlier report bytes/results/artifact hashes stay exact. Actions remains
@@ -92,8 +92,13 @@ is made. Both independent private privacy/byte reviews passed; Hole v3 is bound 
 review df08c016. Root copied exactly2,863 Hole+1,195 Sew files/64,545,387B
 without overwrites and rechecked every destination SHA/size/mode; copy receipt
 `902d78b7fb77527130f1ae1157092e8ad56498105a84c7c645dca0e7b438f51f`.
-Root public tracking and clean-checkout publication gates remain pending. Old
-stage/case/source/packet bytes remain immutable.
+All 4,058 approved archive files are tracked; every staged Git blob matches its
+approved hash, length and mode. The initial tracking check found 15 reviewed
+autosave/recovery files excluded by generic ignore rules. Those exact files were
+explicitly added; the ignore rules and archive bytes were unchanged. The passing
+blob receipt is `44d3d44af2136dc22aa74107d2a62e87dcf8c84eda233cfe29fe491ae08baad2`.
+Old stage/case/source/packet bytes remain immutable. See the
+[publication privacy scope](parity/reports/artifacts/holes-sewn-cuts-publication-20261116/PUBLICATION-PRIVACY-001.json).
 
 The single metadata-only Python cycle passed: implementation-map check, progress
 generation/check and **39/39 registry tests**. Preservation audit confirms all39
@@ -102,11 +107,25 @@ current source bytes, all56 feature authority records and prior run attribution
 remain exact. Metadata-cycle receipt SHA-256 is
 `33ad5319a6b229a3830068e9d906ebdf5ff8060d17cc67605269ab19a8ccd137`.
 
-Exact next steps: root reviews and commits metadata/artifacts, verifies every
-artifact is tracked, then runs final registry/map gates from a clean checkout.
-Root owns subsequent push, PR readiness and merge; those delivery steps remain
-pending. No Cargo/native/evaluator/grade replay, Git staging or commit is part
-of this metadata task.
+Root independently preserved all 39 older reports, eight historical map/check
+files, 56 feature authority records and the exact 74 source inputs. The immutable
+older Cut report and Git tree contain 1,262 artifacts; an earlier continuation
+summary's prediction of 1,266 was incorrect. Every actual artifact remains exact.
+Root preservation receipt:
+`acbb48cc701148dc6a086ba3ad6db530b2dbda6e897d63689e37912a0f2ebe3e`.
+
+Final clean-checkout `cargo xtask verify` and native/CLI debug builds passed at
+7abfa07. Session 40358 is terminal, exit 0; receipt:
+`e90c6a412b2fc04f924ec1d165c774887bbd87250c4fd18c6387e35aac7c6677`.
+The source inputs and locally built executable hashes are unchanged. Formatting,
+339 Rust tests and strict Clippy retain their exact-source 947 gate above;
+no native case, evaluator or saved grade was replayed. This status-only update
+does not change the tested source, registry, maps, generated docs or artifacts.
+
+Next: publish this reviewed checkpoint through PR #49, preserve disabled Actions
+and the existing Pages site, then implement PAT-009 material-outline offsets from
+the independent reviewed contract. Persistent seam allowances and the complete
+roadmap remain required. No Cargo job or GUI lease is active.
 
 ## Published bounded v4 cut qualification — historical source 19b1
 
