@@ -54,8 +54,13 @@ Final sessions 11517/6268/70912/10226 are terminal exit 0; no Cargo job remains.
 The earlier constructor-handoff compile failure and fixture-assumption failures
 remain recorded separately. No binaries or target caches crossed worktrees.
 
-Next: run clean committed xtask verification, then bind a fresh native rectangle
-workflow to that exact binary. OFFSET-R1-003 is packaged separately and has not
+Clean committed `cargo xtask verify` passed at `7a8df7e` in 154.7 seconds,
+with all 87 source inputs, 45 reports and qualifying metadata unchanged.
+Its selected logs are under the work-control artifact namespace; original
+receipt: `e5819d8eb479eaf833da5e1c3fa426b3e2172aae6544ae5be99d2e41fd3663c3`.
+Session 7611 is terminal exit 0; the native binary is unchanged.
+
+Next: bind and run a fresh native rectangle workflow on that exact binary. OFFSET-R1-003 is packaged separately and has not
 launched. A further PhotoCraft-inspired inspector/Scene polish is isolated on
 `feat/photocraft-workspace-polish`; its source changes have no Cargo/native
 result yet and do not alter this frozen candidate.

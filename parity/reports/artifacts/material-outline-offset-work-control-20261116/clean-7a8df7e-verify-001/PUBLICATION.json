@@ -1,0 +1,33 @@
+{
+  "at_utc": "2026-11-16T13:53:24.949797+00:00",
+  "notice": "Selected clean-checkpoint logs, with declared locator-only normalization. No new native or reference execution.",
+  "tested_clean_commit": "7a8df7ee7d611d700cf094cf03b04ac41e94427c",
+  "runtime_source_commit": "4f80d064a60cbdba1358df9074beb74b803e1ee8",
+  "passed": true,
+  "source_inputs": 87,
+  "reports": 45,
+  "native_binary_unchanged": true,
+  "source_and_qualifying_metadata_unchanged_after_gate": true,
+  "items": [
+    {
+      "path": "CHECKS.json",
+      "original_sha256": "e5819d8eb479eaf833da5e1c3fa426b3e2172aae6544ae5be99d2e41fd3663c3",
+      "public_sha256": "e5819d8eb479eaf833da5e1c3fa426b3e2172aae6544ae5be99d2e41fd3663c3",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "verify.stdout",
+      "original_sha256": "73d3c124e2ba257b51bc82f1924d028b6a1a5b7eabc61a0874ac69ca252c7dc3",
+      "public_sha256": "73d3c124e2ba257b51bc82f1924d028b6a1a5b7eabc61a0874ac69ca252c7dc3",
+      "transformation": "byte-identical copy"
+    },
+    {
+      "path": "verify.stderr",
+      "original_sha256": "af5ce347eff3e69ced0f2971342fa866fcb3944968d7fb5e64aa25e9d7a44097",
+      "public_sha256": "0b26d8cdeacc18c19af127b73b7c8def16dfbb34a48099f5228e37a611ee31fd",
+      "transformation": "exact private workspace/home prefix normalization only"
+    }
+  ],
+  "native_acceptance": false,
+  "reference_or_physics_accepted": false
+}
