@@ -1928,6 +1928,7 @@ impl Studio {
         self.cut_piece = None;
         self.hole = None;
         self.drag_point = None;
+        self.drag_start = None;
         self.preview = None;
         self.drag_input = None;
         self.drag_piece = None;
@@ -2715,8 +2716,10 @@ impl Studio {
             || self.transform.is_some()
             || self.transform_gesture.is_some()
             || self.drag_point.is_some()
+            || self.drag_start.is_some()
             || ((self.tool == Tool::Transform
                 || self.tool == Tool::Select
+                || self.tool == Tool::Rectangle
                 || self.tool == Tool::InternalLine
                 || self.tool == Tool::CutPiece)
                 && ui.input(|input| input.pointer.any_down() || input.pointer.any_released())
@@ -2727,7 +2730,7 @@ impl Studio {
                     .filter_map(|id| ui.ctx().read_response(id))
                     .any(|response| {
                         ui.input(|input| {
-                            (self.tool == Tool::Select)
+                            matches!(self.tool, Tool::Select | Tool::Rectangle)
                                 .then(|| {
                                     input.raw.events.iter().find_map(|event| match event {
                                         egui::Event::PointerButton {
@@ -4708,7 +4711,7 @@ impl Studio {
         self.pattern_canvas = Some(response.id);
         if matches!(
             self.tool,
-            Tool::FreeSewing | Tool::Select | Tool::InternalLine | Tool::CutPiece
+            Tool::FreeSewing | Tool::Select | Tool::Rectangle | Tool::InternalLine | Tool::CutPiece
         ) {
             self.retain_inspector_input(&response, false);
         }
@@ -5316,11 +5319,11 @@ impl Studio {
             });
         let released_pointer = releases.next().filter(|_| releases.next().is_none());
         // egui does not recognize a drag when its entire press/move/release arrives in one frame.
-        let completed_point_drag = match pointer_buttons.as_slice() {
+        let completed_canvas_drag = match pointer_buttons.as_slice() {
             [
                 (press, egui::PointerButton::Primary, true, modifiers),
                 (release, egui::PointerButton::Primary, false, _),
-            ] if self.tool == Tool::Select
+            ] if matches!(self.tool, Tool::Select | Tool::Rectangle)
                 && self.drag_point.is_none()
                 && !gesture_paused
                 && ui.is_enabled()
@@ -5349,57 +5352,85 @@ impl Studio {
             }
             _ => None,
         };
-        let endpoint_released = response.drag_stopped_by(egui::PointerButton::Primary)
-            || completed_point_drag.is_some();
-        if (response.drag_started_by(egui::PointerButton::Primary)
-            || completed_point_drag.is_some())
-            && let Some(p) = completed_point_drag.map(|(press, _)| press).or(pointer)
-        {
-            self.drag_snap = completed_point_drag.map_or(snap, |(_, snap)| snap);
-            if self.tool == Tool::Rectangle {
-                self.drag_start = Some(self.to_pattern(p, r, self.drag_snap));
-            }
-            if self.tool == Tool::Select {
-                let press = completed_point_drag
-                    .map(|(press, _)| press)
-                    .or_else(|| ui.input(|input| input.pointer.press_origin()))
-                    .unwrap_or(p);
-                let selected_endpoints = self
-                    .selected_internal_curve()
-                    .and_then(|curve| doc.curve(curve))
-                    .map(|curve| [curve.start, curve.end]);
-                let point = doc
-                    .points
-                    .iter()
-                    .filter_map(|point| {
-                        let d = self.to_screen(point.position, r).distance(press);
-                        (d < 12.).then_some((
-                            point.id,
-                            d,
-                            selected_endpoints.is_some_and(|points| points.contains(&point.id)),
-                        ))
-                    })
-                    .min_by(|a, b| a.1.total_cmp(&b.1).then(b.2.cmp(&a.2)))
-                    .map(|p| p.0);
-                if let Some(point) = point {
-                    let owner = doc.pieces.iter().find_map(|piece| {
-                        piece.construction_curves().find_map(|curve| {
-                            doc.curve(*curve)
-                                .filter(|curve| curve.start == point || curve.end == point)
-                                .map(|_| (piece.id, *curve))
-                        })
-                    });
-                    if let Some((piece, curve)) = owner
-                        && (self.selected == Some(piece)
-                            || !doc
-                                .piece(piece)
-                                .is_some_and(|piece| piece.internal_curves.contains(&curve))
-                            || self.allow_piece_selection(ui.ctx()))
+        if self.tool == Tool::Rectangle {
+            if gesture_paused
+                || !ui.is_enabled()
+                || ui.input(|input| input.key_pressed(egui::Key::Escape))
+            {
+                self.drag_start = None;
+                self.drag_input = None;
+            } else if let Some((press, snap)) =
+                completed_canvas_drag.or_else(|| match pointer_buttons.as_slice() {
+                    [(press, egui::PointerButton::Primary, true, modifiers)]
+                        if response.is_pointer_button_down_on()
+                            && r.contains(*press)
+                            && ui.clip_rect().contains(*press)
+                            && ui.ctx().layer_id_at(*press) == Some(response.layer_id) =>
                     {
-                        self.drag_point = Some(point);
-                        self.drag_piece = self.selected;
-                        self.drag_input = Some(self.free_sewing_input(ui.ctx()));
+                        Some((
+                            *press,
+                            if modifiers.alt {
+                                PositionSnap::Off
+                            } else {
+                                self.position_snap
+                            },
+                        ))
                     }
+                    _ => None,
+                })
+            {
+                self.drag_snap = snap;
+                self.drag_start = Some(self.to_pattern(press, r, snap));
+                self.drag_input = Some(self.free_sewing_input(ui.ctx()));
+            }
+        }
+        let endpoint_released = response.drag_stopped_by(egui::PointerButton::Primary)
+            || completed_canvas_drag.is_some();
+        if (response.drag_started_by(egui::PointerButton::Primary)
+            || completed_canvas_drag.is_some())
+            && self.tool == Tool::Select
+            && let Some(p) = completed_canvas_drag.map(|(press, _)| press).or(pointer)
+        {
+            self.drag_snap = completed_canvas_drag.map_or(snap, |(_, snap)| snap);
+            let press = completed_canvas_drag
+                .map(|(press, _)| press)
+                .or_else(|| ui.input(|input| input.pointer.press_origin()))
+                .unwrap_or(p);
+            let selected_endpoints = self
+                .selected_internal_curve()
+                .and_then(|curve| doc.curve(curve))
+                .map(|curve| [curve.start, curve.end]);
+            let point = doc
+                .points
+                .iter()
+                .filter_map(|point| {
+                    let d = self.to_screen(point.position, r).distance(press);
+                    (d < 12.).then_some((
+                        point.id,
+                        d,
+                        selected_endpoints.is_some_and(|points| points.contains(&point.id)),
+                    ))
+                })
+                .min_by(|a, b| a.1.total_cmp(&b.1).then(b.2.cmp(&a.2)))
+                .map(|p| p.0);
+            if let Some(point) = point {
+                let owner = doc.pieces.iter().find_map(|piece| {
+                    piece.construction_curves().find_map(|curve| {
+                        doc.curve(*curve)
+                            .filter(|curve| curve.start == point || curve.end == point)
+                            .map(|_| (piece.id, *curve))
+                    })
+                });
+                if let Some((piece, curve)) = owner
+                    && (self.selected == Some(piece)
+                        || !doc
+                            .piece(piece)
+                            .is_some_and(|piece| piece.internal_curves.contains(&curve))
+                        || self.allow_piece_selection(ui.ctx()))
+                {
+                    self.drag_point = Some(point);
+                    self.drag_piece = self.selected;
+                    self.drag_input = Some(self.free_sewing_input(ui.ctx()));
                 }
             }
         }
@@ -5464,16 +5495,41 @@ impl Studio {
                     }
                 }
             }
-            if let (Some(start), Some(p)) = (self.drag_start.take(), pointer) {
+            if let (Some(start), Some(p)) = (self.drag_start.take(), released_pointer) {
                 let end = self.to_pattern(p, r, self.drag_snap);
-                self.execute(Command::AddRectangle {
-                    name: self.name.clone(),
-                    origin: [start[0].min(end[0]), start[1].min(end[1])],
-                    width: (end[0] - start[0]).abs(),
-                    height: (end[1] - start[1]).abs(),
-                });
-                self.select(ui.ctx(), self.editor.project.pieces.last().map(|p| p.id));
+                let focused = input
+                    .as_ref()
+                    .and_then(|input| input.focus)
+                    .or_else(|| self.inspector_focus(ui.ctx()));
+                if focused
+                    .and_then(|id| ui.ctx().data_mut(|data| data.get_temp::<String>(id)))
+                    .is_some_and(|text| {
+                        text.trim()
+                            .parse::<f64>()
+                            .ok()
+                            .is_none_or(|value| !value.is_finite())
+                    })
+                {
+                    self.message =
+                        "Correct the pending property value before creating this rectangle.".into();
+                    finish_numeric_action(ui.ctx(), focused, false);
+                } else if self.apply_inspector_action(
+                    ui.ctx(),
+                    Command::AddRectangle {
+                        name: self.name.clone(),
+                        origin: [start[0].min(end[0]), start[1].min(end[1])],
+                        width: (end[0] - start[0]).abs(),
+                        height: (end[1] - start[1]).abs(),
+                    },
+                    focused,
+                ) {
+                    self.select(ui.ctx(), self.editor.project.pieces.last().map(|p| p.id));
+                }
             }
+        }
+        if self.tool == Tool::Rectangle && !ui.input(|input| input.pointer.primary_down()) {
+            self.drag_start = None;
+            self.drag_input = None;
         }
         if gesture_paused && response.drag_stopped_by(egui::PointerButton::Primary) {
             self.drag_point = None;
@@ -8543,21 +8599,21 @@ mod tests {
             (
                 PositionSnap::Off,
                 false,
-                [-0.276, -0.246],
+                [-0.284, -0.246],
                 [-0.146, -0.384],
                 [-0.157, -0.333],
             ),
             (
                 PositionSnap::Mm1,
                 false,
-                [-0.276, -0.246],
+                [-0.284, -0.246],
                 [-0.146, -0.384],
                 [-0.157, -0.333],
             ),
             (
                 PositionSnap::Mm5,
                 false,
-                [-0.275, -0.245],
+                [-0.285, -0.245],
                 [-0.145, -0.385],
                 [-0.155, -0.335],
             ),
@@ -8571,7 +8627,7 @@ mod tests {
             (
                 PositionSnap::Mm10,
                 true,
-                [-0.276, -0.246],
+                [-0.284, -0.246],
                 [-0.146, -0.384],
                 [-0.157, -0.333],
             ),
@@ -8648,7 +8704,7 @@ mod tests {
             );
             assert_position(app.drag_start.unwrap(), start);
             assert_eq!(app.editor.project.revision, 0);
-            // Modifier changes after drag recognition must not mix snapped and raw corners.
+            // Modifier changes after the press must not mix snapped and raw corners.
             let released_modifiers = if bypass {
                 egui::Modifiers::NONE
             } else {
@@ -8735,7 +8791,7 @@ mod tests {
             app.set_tool(Tool::Polygon);
             let revision = app.editor.project.revision;
             for (index, offset) in [
-                Vec2::new(-76., -54.),
+                Vec2::new(-84., -54.),
                 Vec2::new(54., 84.),
                 Vec2::new(43., 33.),
             ]
@@ -8761,7 +8817,7 @@ mod tests {
             assert_eq!(app.position_snap, snap);
 
             app.set_tool(Tool::Rectangle);
-            click(&ctx, &mut app, center + Vec2::new(-76., -54.), modifiers);
+            click(&ctx, &mut app, center + Vec2::new(-84., -54.), modifiers);
             assert_position(app.rectangle.as_ref().unwrap().origin, start);
             app.rectangle.as_mut().unwrap().dimensions_mm =
                 ["123.456789".into(), "234.567891".into()];
@@ -21864,5 +21920,406 @@ mod point_drag_release_tests {
             ],
         );
         assert_move_and_history(&ctx, &mut app, &before, point, [-0.03, -0.01]);
+    }
+}
+
+#[cfg(test)]
+mod rectangle_drag_tests {
+    use super::pattern_transform_tests::{action, button, frame, key, pointer_frame};
+    use super::*;
+
+    fn fixture() -> (egui::Context, Studio, Rect) {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.set_tool(Tool::Rectangle);
+        app.position_snap = PositionSnap::Off;
+        app.scale = 1000.;
+        frame(&ctx, &mut app, vec![]);
+        frame(&ctx, &mut app, vec![]);
+        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        (ctx, app, rect)
+    }
+
+    fn primary(pos: Pos2, pressed: bool) -> egui::Event {
+        egui::Event::PointerButton {
+            pos,
+            button: egui::PointerButton::Primary,
+            pressed,
+            modifiers: egui::Modifiers::NONE,
+        }
+    }
+
+    fn coalesced(press: Pos2, release: Pos2) -> Vec<egui::Event> {
+        vec![
+            egui::Event::PointerMoved(press),
+            primary(press, true),
+            egui::Event::PointerMoved(release),
+            primary(release, false),
+        ]
+    }
+
+    fn drag(ctx: &egui::Context, app: &mut Studio, press: Pos2, release: Pos2, single_frame: bool) {
+        if single_frame {
+            frame(ctx, app, coalesced(press, release));
+        } else {
+            pointer_frame(ctx, app, press, Some(true), false);
+            pointer_frame(ctx, app, press + Vec2::splat(20.), None, false);
+            pointer_frame(ctx, app, release, Some(false), false);
+        }
+    }
+
+    fn assert_original_rectangle(ctx: &egui::Context, app: &mut Studio) {
+        assert_eq!(app.editor.project.pieces.len(), 1);
+        assert_eq!(app.editor.project.revision, 1);
+        assert!(app.rectangle.is_none() && app.drag_start.is_none());
+        let piece = &app.editor.project.pieces[0];
+        assert_eq!(app.selected, Some(piece.id));
+        // Original corners: (-84, -54) px and (54, 84) px at 1000 px/m, centered at (0, 1) m.
+        let bounds = app.editor.project.piece_bounds(piece.id).unwrap();
+        for (actual, expected) in bounds
+            .into_iter()
+            .flatten()
+            .zip([-0.084, 0.916, 0.054, 1.054])
+        {
+            assert!((actual - expected).abs() < 1e-7, "{bounds:?}");
+        }
+        let rectangle = app.editor.project.clone();
+        frame(ctx, app, vec![egui::Event::PointerMoved(Pos2::new(5., 5.))]);
+        assert_eq!(app.editor.project, rectangle);
+        app.history(ctx, false);
+        assert!(app.editor.project.pieces.is_empty() && !app.editor.can_undo());
+        assert!(app.editor.can_redo());
+        app.history(ctx, true);
+        let mut expected = rectangle;
+        expected.revision = app.editor.project.revision;
+        assert_eq!(app.editor.project, expected);
+    }
+
+    #[test]
+    fn rectangle_canvas_drag_coalesced_uses_original_press_and_final_release() {
+        let (ctx, mut app, rect) = fixture();
+        let press = rect.center() + Vec2::new(-84., -54.);
+        let release = rect.center() + Vec2::new(54., 84.);
+        frame(
+            &ctx,
+            &mut app,
+            vec![
+                egui::Event::PointerMoved(press),
+                primary(press, true),
+                egui::Event::PointerMoved(release),
+                primary(release, false),
+                egui::Event::PointerMoved(rect.right_top() + Vec2::new(100., 0.)),
+            ],
+        );
+        assert_original_rectangle(&ctx, &mut app);
+    }
+
+    #[test]
+    fn rectangle_canvas_drag_multiframe_uses_original_press_and_final_release() {
+        let (ctx, mut app, rect) = fixture();
+        let press = rect.center() + Vec2::new(-84., -54.);
+        let release = rect.center() + Vec2::new(54., 84.);
+        pointer_frame(&ctx, &mut app, press, Some(true), false);
+        pointer_frame(&ctx, &mut app, press + Vec2::splat(20.), None, false);
+        assert_eq!(app.editor.project.revision, 0);
+        frame(
+            &ctx,
+            &mut app,
+            vec![
+                egui::Event::PointerMoved(release),
+                primary(release, false),
+                egui::Event::PointerMoved(rect.right_top() + Vec2::new(100., 0.)),
+            ],
+        );
+        assert_original_rectangle(&ctx, &mut app);
+    }
+
+    #[test]
+    fn rectangle_canvas_drag_captures_snap_and_alt_at_the_press() {
+        for single_frame in [false, true] {
+            for bypass in [false, true] {
+                let (ctx, mut app, rect) = fixture();
+                app.position_snap = PositionSnap::Mm10;
+                let press = rect.center() + Vec2::new(-84., -54.);
+                let release = rect.center() + Vec2::new(54., 84.);
+                if single_frame {
+                    let mut events = coalesced(press, release);
+                    if let egui::Event::PointerButton { modifiers, .. } = &mut events[1] {
+                        modifiers.alt = bypass;
+                    }
+                    if let egui::Event::PointerButton { modifiers, .. } = &mut events[3] {
+                        modifiers.alt = !bypass;
+                    }
+                    frame(&ctx, &mut app, events);
+                } else {
+                    pointer_frame(&ctx, &mut app, press, Some(true), bypass);
+                    app.position_snap = PositionSnap::Off;
+                    pointer_frame(&ctx, &mut app, press + Vec2::splat(20.), None, !bypass);
+                    pointer_frame(&ctx, &mut app, release, Some(false), !bypass);
+                }
+                assert_eq!(app.editor.project.revision, 1);
+                let bounds = app
+                    .editor
+                    .project
+                    .piece_bounds(app.editor.project.pieces[0].id)
+                    .unwrap();
+                let expected = if bypass {
+                    [-0.084, 0.916, 0.054, 1.054]
+                } else {
+                    [-0.08, 0.92, 0.05, 1.05]
+                };
+                for (actual, expected) in bounds.into_iter().flatten().zip(expected) {
+                    assert!((actual - expected).abs() < 1e-7, "{bounds:?}");
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn rectangle_canvas_drag_respects_blocking_ownership_and_ambiguous_input() {
+        for single_frame in [false, true] {
+            for case in [
+                "paused",
+                "popup",
+                "disabled",
+                "outside",
+                "other control",
+                "secondary",
+                "two pairs",
+                "cancel",
+            ] {
+                let (ctx, mut app, rect) = fixture();
+                app.editor
+                    .execute(Command::SetResolution { metres: 0.2 })
+                    .unwrap();
+                assert!(app.editor.undo());
+                let mut press = rect.center() + Vec2::new(-84., -54.);
+                let release = rect.center() + Vec2::new(54., 84.);
+                match case {
+                    "paused" => app.search = true,
+                    "popup" => {
+                        let output = frame(&ctx, &mut app, vec![]);
+                        frame(
+                            &ctx,
+                            &mut app,
+                            vec![action(
+                                button(&output, "File"),
+                                egui::accesskit::Action::Click,
+                                None,
+                            )],
+                        );
+                        assert!(egui::Popup::is_any_open(&ctx));
+                    }
+                    "disabled" => {
+                        app.rectangle = Some(RectangleDraft {
+                            origin: [0.; 2],
+                            dimensions_mm: ["400".into(), "600".into()],
+                            error: None,
+                        })
+                    }
+                    "outside" => press = Pos2::new(rect.left() - 2., rect.center().y),
+                    "other control" => {
+                        app.show_recovery = true;
+                        app.recovery_files = (0..4)
+                            .map(|index| {
+                                PathBuf::from(format!("rectangle-own-fixture-{index}.weftforge"))
+                            })
+                            .collect();
+                        frame(&ctx, &mut app, vec![]);
+                        let output = frame(&ctx, &mut app, vec![]);
+                        let bounds = output
+                            .platform_output
+                            .accesskit_update
+                            .unwrap()
+                            .nodes
+                            .iter()
+                            .rev()
+                            .find(|(_, node)| node.label() == Some("Recover copy"))
+                            .unwrap()
+                            .1
+                            .bounds()
+                            .unwrap();
+                        press = Pos2::new(
+                            ((bounds.x0 + bounds.x1) * 0.5) as f32,
+                            ((bounds.y0 + bounds.y1) * 0.5) as f32,
+                        );
+                        assert!(rect.contains(press));
+                        assert_ne!(
+                            ctx.layer_id_at(press),
+                            Some(
+                                ctx.read_response(app.pattern_canvas.unwrap())
+                                    .unwrap()
+                                    .layer_id
+                            )
+                        );
+                    }
+                    _ => {}
+                }
+                let before = format!("{:?}", app.editor);
+                if matches!(case, "secondary" | "two pairs" | "cancel") {
+                    let mut events = coalesced(press, release);
+                    match case {
+                        "secondary" => {
+                            for event in &mut events {
+                                if let egui::Event::PointerButton { button, .. } = event {
+                                    *button = egui::PointerButton::Secondary;
+                                }
+                            }
+                        }
+                        "two pairs" => events.extend(coalesced(press, release)),
+                        "cancel" => events.push(key(egui::Key::Escape, egui::Modifiers::NONE)),
+                        _ => unreachable!(),
+                    }
+                    frame(&ctx, &mut app, events);
+                } else {
+                    drag(&ctx, &mut app, press, release, single_frame);
+                }
+                assert_eq!(
+                    format!("{:?}", app.editor),
+                    before,
+                    "{case}, single_frame={single_frame}"
+                );
+                assert!(
+                    app.drag_start.is_none() && !app.dirty && app.editor.can_redo(),
+                    "{case}"
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn rectangle_canvas_drag_interruptions_do_not_rearm_after_release() {
+        for case in [
+            "paused",
+            "disabled",
+            "cancel",
+            "ambiguous release",
+            "history",
+        ] {
+            let (ctx, mut app, rect) = fixture();
+            app.editor
+                .execute(Command::SetResolution { metres: 0.2 })
+                .unwrap();
+            assert!(app.editor.undo());
+            let press = rect.center() + Vec2::new(-84., -54.);
+            let release = rect.center() + Vec2::new(54., 84.);
+            pointer_frame(&ctx, &mut app, press, Some(true), false);
+            pointer_frame(&ctx, &mut app, press + Vec2::splat(20.), None, false);
+            assert!(app.drag_start.is_some());
+            let mut events = vec![egui::Event::PointerMoved(release), primary(release, false)];
+            match case {
+                "paused" => app.search = true,
+                "disabled" => {
+                    app.rectangle = Some(RectangleDraft {
+                        origin: [0.; 2],
+                        dimensions_mm: ["400".into(), "600".into()],
+                        error: None,
+                    })
+                }
+                "cancel" => events.push(key(egui::Key::Escape, egui::Modifiers::NONE)),
+                "ambiguous release" => events.push(primary(release, false)),
+                "history" => {
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![key(
+                            egui::Key::Z,
+                            egui::Modifiers::COMMAND | egui::Modifiers::SHIFT,
+                        )],
+                    );
+                    assert_eq!(app.editor.project.resolution, 0.2);
+                }
+                _ => unreachable!(),
+            }
+            let before = format!("{:?}", app.editor);
+            frame(&ctx, &mut app, events);
+            app.search = false;
+            app.rectangle = None;
+            pointer_frame(&ctx, &mut app, rect.center(), None, false);
+            assert_eq!(format!("{:?}", app.editor), before, "{case}");
+            assert!(app.drag_start.is_none(), "{case}");
+        }
+    }
+
+    #[test]
+    fn rectangle_canvas_drag_commits_pending_properties_once_or_preserves_rejected_input() {
+        use egui::accesskit::Action;
+        for single_frame in [false, true] {
+            for case in ["valid", "invalid text", "zero width", "snapped zero width"] {
+                let (ctx, mut app, rect) = fixture();
+                app.editor
+                    .execute(Command::SetResolution { metres: 0.2 })
+                    .unwrap();
+                assert!(app.editor.undo());
+                let before = app.editor.project.clone();
+                let output = frame(&ctx, &mut app, vec![]);
+                let property = output
+                    .platform_output
+                    .accesskit_update
+                    .unwrap()
+                    .nodes
+                    .iter()
+                    .find(|(_, node)| node.numeric_value() == Some(before.resolution))
+                    .unwrap()
+                    .0;
+                frame(&ctx, &mut app, vec![action(property, Action::Focus, None)]);
+                frame(&ctx, &mut app, vec![]);
+                let text = if case == "invalid text" {
+                    "invalid"
+                } else {
+                    "0.085"
+                };
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![
+                        key(egui::Key::A, egui::Modifiers::COMMAND),
+                        egui::Event::Text(text.into()),
+                        key(egui::Key::ArrowLeft, egui::Modifiers::NONE),
+                    ],
+                );
+                let focused = numeric_focus(&ctx).unwrap();
+                let editor = format!("{:?}", app.editor);
+                let press = rect.center() + Vec2::new(-84., -54.);
+                let release = match case {
+                    "zero width" => press + Vec2::new(0., 100.),
+                    "snapped zero width" => {
+                        app.position_snap = PositionSnap::Mm10;
+                        press + Vec2::new(3., 100.)
+                    }
+                    _ => rect.center() + Vec2::new(54., 84.),
+                };
+                drag(&ctx, &mut app, press, release, single_frame);
+                if case == "valid" {
+                    assert_eq!(app.editor.project.revision, before.revision + 1);
+                    assert_eq!(app.editor.project.pieces.len(), 1);
+                    assert_eq!(app.editor.project.resolution, 0.085);
+                    app.history(&ctx, false);
+                    assert!(
+                        app.editor.project.pieces.is_empty()
+                            && app.editor.project.points.is_empty()
+                            && app.editor.project.curves.is_empty()
+                    );
+                    assert_eq!(app.editor.project.resolution, before.resolution);
+                    assert!(!app.editor.can_undo() && app.editor.can_redo());
+                } else {
+                    assert_eq!(
+                        format!("{:?}", app.editor),
+                        editor,
+                        "{case}, single_frame={single_frame}"
+                    );
+                    assert!(app.editor.can_redo() && !app.dirty);
+                    assert!(app.drag_start.is_none());
+                    assert_eq!(
+                        ctx.data_mut(|data| data.get_temp::<String>(focused))
+                            .as_deref(),
+                        Some(text),
+                        "{case}"
+                    );
+                }
+            }
+        }
     }
 }
