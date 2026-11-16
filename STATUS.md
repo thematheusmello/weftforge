@@ -33,19 +33,25 @@ remaining blocker. Actual R240 meshes/initial cloth/analytic mass pass at
 and cut meshes hit the existing vertex cap; cut eligibility still passes and no
 fine-L cloth/mass acceptance is claimed. Caps and tolerances are unchanged.
 
-The new cut candidate has not passed its integrated workspace or native gates. The
+The clean runtime checkpoint19b1e88245dc627cfec8164f4924b335fe44853d passed
+workspace formatting, **304 Rust tests / zero failures**, and strict
+workspace/all-target Clippy. All69 runtime/build/test/doc/contract inputs remained
+exact through those checks. Source-map/registry integration, one clean xtask check,
+actual native build and CUT-R1/R2 remain pending. The candidate has no native cut
+acceptance. The
 retained checks below apply to the published annotation checkpoint and are not
 reused as cut acceptance. PAT-006 remains planned until an actual cut implementation
 is checked. Full cuts, holes, target sewing, Cut & Sew and reference behavior remain
-open. Package Cargo jobs are complete and their leases returned. Root owns the next
-workspace formatting/test/Clippy/build checks and source-map integration. No GUI
-lease is active. Fresh default targets stay separate across worktrees.
+open. Package and root workspace Cargo jobs are complete; no Cargo process or GUI lease
+is active. Root owns the next clean metadata/xtask/build gate and native binding.
+Prior reports with changed scoped source are marked stale without altering their
+original results, tested commits or artifacts. Fresh default targets stay separate across worktrees.
 
 ## Current straight-annotation evidence — bounded headless and native A
 
 The [implementation-only report](parity/reports/WF-20261115-INTERNAL-ANNOTATIONS-001.json)
-is passed/current only for the original 86-observation headless run and root-accepted
-native A003. PAT-007, UI-004 and APP-001 remain partial/not_run for their coarse
+retains its original passed result for the 86-observation headless run and
+root-accepted native A003; it is now stale on the straight-cut candidate. PAT-007, UI-004 and APP-001 remain partial/not_run for their coarse
 contracts. APP-001 attribution covers the exercised shared-command/input/history
 adapters and A's empty launch; it supplies no native New/Recover, full automation
 or process-restart acceptance. PAT-006 stays wholly planned: straight annotations

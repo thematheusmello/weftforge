@@ -7,7 +7,7 @@
   "reference_baseline": "MD-2026.1.237.58920-macos-arm64-20261113",
   "kind": "implementation_only",
   "status": "failed",
-  "freshness": "current",
+  "freshness": "stale",
   "feature_ids": [
     "SIM-006"
   ],
@@ -253,5 +253,6 @@
     "regular_artifacts_including_inventory": 122,
     "typed_relative_links": 0,
     "full_indexed_byte_link_audit_required": true
-  }
+  },
+  "freshness_reason": "Runtime 19b1e88245dc627cfec8164f4924b335fe44853d adds independent straight cuts and changes scoped core/UI/adapters/docs. Preserve this original result and artifacts; no runtime, grader, physics or reference rerun is supplied by source integration."
 }
