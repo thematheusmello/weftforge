@@ -1,6 +1,30 @@
 # WeftForge status — active development, 2026-11-16
 
-Current UI source is `b7767bc94c89196f93b4ddbd1e06245f569936ff`, integrated on
+An isolated pointer-release source increment updates endpoint preview positions
+on the release frame before the existing typed `MovePoint` transaction. The
+shared native handler covers exterior, internal-line and hole endpoints;
+captured snap, paused-gesture handling and project validation remain in place.
+Three full-Studio pointer regressions each exercise all three owners: a snapped
+no-op preview followed by a 10 mm release move, a release beyond a changed
+preview, and invalid final geometry preserving the old project and history.
+The unchanged handler failed all three tests once (session **81295**, terminal
+exit **101**); the two-line condition change passed all three (session **29690**,
+terminal exit **0**). Private red/green inputs and receipts await root review
+and publication; ignored local logs are not delivered evidence. No Cargo job
+or GUI window is active.
+
+This changes one frozen source input. The b776 source/native receipts below
+identify the published baseline and do not validate this increment. Exact next
+steps: review the isolated diff, run the required integrated formatting,
+workspace tests, strict Clippy and clean-checkout verification, then reconcile
+source-map/report freshness before publishing tracked evidence. No new native
+run or reference comparison has occurred. Completely compressed gestures and
+CUA coordinate delivery remain separate unknowns; this source fix does not
+establish the cause or resolution of the closed exploratory E001 no-commit
+observation. All full contracts, inventory files, disabled Actions and static
+Pages remain unchanged.
+
+Published UI source is `b7767bc94c89196f93b4ddbd1e06245f569936ff`, integrated on
 `feat/photocraft-ui-integration`. Runtime source checkpoint `160562d` and
 ancestry checkpoint `d4c220d` match all **87 frozen b776 source inputs**;
 the tested b776 commit is reachable in the integrated history. Current-source

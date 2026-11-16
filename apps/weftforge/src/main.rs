@@ -5326,7 +5326,8 @@ impl Studio {
             }
         }
         if !gesture_paused
-            && response.dragged_by(egui::PointerButton::Primary)
+            && (response.dragged_by(egui::PointerButton::Primary)
+                || response.drag_stopped_by(egui::PointerButton::Primary))
             && self.drag_point.is_some()
         {
             self.preview = pointer.map(|p| self.to_pattern(p, r, self.drag_snap));
@@ -21358,5 +21359,184 @@ mod hole_tests {
         );
         let output = ctx.run_ui(egui::RawInput::default(), |ui| app.garment(ui));
         assert!(!output.shapes.iter().any(|shape| matches!(shape.shape,egui::Shape::Path(ref path) if path.fill!=Color32::TRANSPARENT)));
+    }
+}
+
+#[cfg(test)]
+mod point_drag_release_tests {
+    use super::pattern_transform_tests::{frame, pointer_frame};
+    use super::*;
+
+    fn fixture(owner: &str) -> (egui::Context, Studio, Id) {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Endpoint release".into(),
+                origin: if owner == "boundary" {
+                    [-0.01; 2]
+                } else {
+                    [-0.2; 2]
+                },
+                width: 0.42,
+                height: 0.62,
+            })
+            .unwrap();
+        let piece = app.editor.project.pieces[0].id;
+        match owner {
+            "internal" => app
+                .editor
+                .execute(Command::AddInternalSegment {
+                    piece,
+                    start: [-0.01; 2],
+                    end: [0.1; 2],
+                })
+                .unwrap(),
+            "hole" => app
+                .editor
+                .execute(Command::AddHole {
+                    piece,
+                    vertices: vec![[-0.01; 2], [0.09, -0.01], [0.09; 2], [-0.01, 0.09]],
+                })
+                .unwrap(),
+            "boundary" => {}
+            _ => panic!("unknown endpoint owner"),
+        }
+        app.editor
+            .execute(Command::SetResolution { metres: 0.2 })
+            .unwrap();
+        app.editor
+            .execute(Command::SetGrain { piece, angle: 0.3 })
+            .unwrap();
+        assert!(app.editor.undo());
+        let point = app
+            .editor
+            .project
+            .points
+            .iter()
+            .find(|point| point.position == [-0.01; 2])
+            .unwrap()
+            .id;
+        app.selected = Some(piece);
+        app.selected_curve = app
+            .editor
+            .project
+            .curves
+            .iter()
+            .find(|curve| curve.start == point)
+            .map(|curve| curve.id);
+        app.center = [0., 0.1];
+        app.scale = 2000.;
+        frame(&ctx, &mut app, vec![]);
+        frame(&ctx, &mut app, vec![]);
+        (ctx, app, point)
+    }
+
+    fn assert_move_and_history(
+        ctx: &egui::Context,
+        app: &mut Studio,
+        before: &Project,
+        point: Id,
+        position: [f64; 2],
+    ) {
+        let mut expected = before.clone();
+        expected.revision += 1;
+        expected
+            .points
+            .iter_mut()
+            .find(|candidate| candidate.id == point)
+            .unwrap()
+            .position = position;
+        assert_eq!(app.editor.project, expected);
+        assert!(app.drag_point.is_none() && app.preview.is_none());
+        app.history(ctx, false);
+        let mut restored = before.clone();
+        restored.revision = app.editor.project.revision;
+        assert_eq!(app.editor.project, restored);
+        app.history(ctx, true);
+        expected.revision = app.editor.project.revision;
+        assert_eq!(app.editor.project, expected);
+    }
+
+    #[test]
+    fn point_drag_release_commits_final_movement_after_a_snapped_noop_preview() {
+        for owner in ["boundary", "internal", "hole"] {
+            let (ctx, mut app, point) = fixture(owner);
+            let before = app.editor.project.clone();
+            let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+            let start = app.to_screen([-0.01; 2], rect);
+            pointer_frame(&ctx, &mut app, start, Some(true), false);
+            pointer_frame(&ctx, &mut app, start - Vec2::new(8., 0.), None, false);
+            assert_eq!(app.drag_point, Some(point), "{owner}");
+            assert_eq!(app.preview, Some([-0.01; 2]), "{owner}");
+            assert_eq!(app.editor.project, before);
+            pointer_frame(
+                &ctx,
+                &mut app,
+                start - Vec2::new(20., 0.),
+                Some(false),
+                false,
+            );
+            assert_move_and_history(&ctx, &mut app, &before, point, [-0.02, -0.01]);
+        }
+    }
+
+    #[test]
+    fn point_drag_release_commits_beyond_the_previous_changed_preview() {
+        for owner in ["boundary", "internal", "hole"] {
+            let (ctx, mut app, point) = fixture(owner);
+            let before = app.editor.project.clone();
+            let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+            let start = app.to_screen([-0.01; 2], rect);
+            pointer_frame(&ctx, &mut app, start, Some(true), false);
+            pointer_frame(&ctx, &mut app, start - Vec2::new(20., 0.), None, false);
+            assert_eq!(app.preview, Some([-0.02, -0.01]), "{owner}");
+            assert_eq!(app.editor.project, before);
+            pointer_frame(
+                &ctx,
+                &mut app,
+                start - Vec2::new(40., 0.),
+                Some(false),
+                false,
+            );
+            assert_move_and_history(&ctx, &mut app, &before, point, [-0.03, -0.01]);
+        }
+    }
+
+    #[test]
+    fn point_drag_release_rejects_an_invalid_final_position_without_committing_the_preview() {
+        for owner in ["boundary", "internal", "hole"] {
+            let (ctx, mut app, point) = fixture(owner);
+            let before = format!("{:?}", app.editor);
+            let curve = app
+                .editor
+                .project
+                .curve(app.selected_curve.unwrap())
+                .unwrap();
+            let invalid = app.editor.project.point(curve.end).unwrap().position;
+            let mut candidate = app.editor.clone();
+            assert!(
+                candidate
+                    .execute(Command::MovePoint {
+                        point,
+                        position: invalid
+                    })
+                    .is_err(),
+                "{owner}"
+            );
+            let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+            let start = app.to_screen([-0.01; 2], rect);
+            pointer_frame(&ctx, &mut app, start, Some(true), false);
+            pointer_frame(&ctx, &mut app, start - Vec2::new(20., 0.), None, false);
+            assert_eq!(app.preview, Some([-0.02, -0.01]), "{owner}");
+            let release = app.to_screen(invalid, rect);
+            pointer_frame(&ctx, &mut app, release, Some(false), false);
+            assert_eq!(format!("{:?}", app.editor), before, "{owner}");
+            assert!(app.drag_point.is_none() && app.preview.is_none());
+            assert!(!app.dirty);
+            assert!(app.editor.can_redo());
+        }
     }
 }
