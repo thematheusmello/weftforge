@@ -1,0 +1,24 @@
+{
+  "schema": "weftforge.straight-cut.native-ui-review.v2",
+  "case": "CUT-R1",
+  "accepted": true,
+  "reviewed_raw_images_and_traces": true,
+  "accepted_redo_r4_sha256": "85ef9d89d4080a8994ca7c11f060e37d3c9ad91a613b090e07182fb5de6df366",
+  "root_binding_sha256": "7cb154dbb530e63a397a4f9671b970effc558fa3085937ade08a62d140315e1e",
+  "single_saved_grade_report_sha256": "9ad7a17901cea3673069b3ccf9ae67a505a5e48efc7fad2ec1fc75875cf90d54",
+  "criteria": "Root directly reviewed every original native barrier through 19 critical original images and all139 action traces; independent reviewer read all60 original images/AX and every paired trace. Exact saved-state assessment passed separately. Bounded CUT-R1 only, no complete-feature, particle-mass or reference acceptance.",
+  "attempt": "R003",
+  "source_commit": "19b1e88245dc627cfec8164f4924b335fe44853d",
+  "native_binary_sha256": "117981304290aca8ea5f2d63bb77d81641791667bdc8ee89e5cb2b92de3c8d3e",
+  "review_evidence": {
+    "root_critical_images": 19,
+    "root_input_traces": 139,
+    "independent_all_images_AX": 60,
+    "independent_review_path": ".local/straight-cut-native-plan-review-20261116/R003-UI-REVIEW.md",
+    "independent_review_sha256": "68b76a2ce64555807be363588ee8b0de6d740fb8662aa06198481c9611282d9a",
+    "capture_trace_manifest_sha256": "8720cb3f970fe9caa718538942f6ead8ff820a96c15f86e090217f6c4e1c1b09",
+    "separate_exit_receipt_sha256": "8dab410ad6ac93f28263d81f9940a77b681c9b4b270bae95e3cde2fac3739ce5",
+    "tool_history_qualification": "delegated retrospective proof-return corroboration, not independently saved in-situ transport",
+    "decision_utc": "2026-11-16T03:05:34.633754+00:00"
+  }
+}

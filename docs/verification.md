@@ -13,7 +13,7 @@ reviewed behavior documents.
 cargo fmt --all --check
 cargo test --workspace
 cargo clippy --workspace --all-targets -- -D warnings
-python 3 -m pip install -r requirements-dev.txt
+python3 -m pip install -r requirements-dev.txt
 cargo xtask progress
 cargo xtask verify
 cargo xtask scenario
@@ -43,7 +43,41 @@ still fail the declared criteria. A separate relaxed shirt passes the explicit
 substeps/32 iterations. See physics.md, STATUS.md and attributable run reports.
 Elementary cloth tests do not prove garment fitting quality.
 
-## Current native studio: gated source, unaccepted native checks
+## Bounded straight-cut authoring and restart
+
+Runtime `19b1e88245dc627cfec8164f4924b335fe44853d` passed formatting,
+304 workspace Rust tests and strict all-target Clippy; clean metadata 982ad03
+also passed registry/map/xtask checks and its native build. The 69 guarded inputs
+remain identical in this publication candidate, so these source checks retain
+their original executions rather than being relabelled as new runs.
+
+Two actual native cases have separate saved-file assessment and raw-UI acceptance.
+CUT-R1/R003 starts empty, authors the declared 0.24 × 0.36 m rectangle, exercises
+invalid decimal/caret and cancellation barriers, applies one exact cut and retains
+four clean saves across Undo/Redo. CUT-R2/R2-001 launches a fresh process with only
+that actual accepted R4 snapshot, edits child #15's height to 0.40 m with one Tab,
+saves R5 and inspects retained #2. The independent assessments check full native
+v4 data, IDs, boundary walks, ownership, allocator high-water, revision and unchanged
+numeric bits. R2's extra contradictory draft flag remains visible with its later
+clarification; canonical required dependency hashes were checked before launch.
+
+R003 uses 139 paired operations plus one summary; R2 uses 34 plus one. Their
+conservative summary-return bounds are 1122.241026542/1200 and 373.045164/600
+seconds. These bound laboratory execution, not application performance. Both
+cases Quit as their final native operation, immediately summarize, and have later
+separate exit corroboration. Runtime proof/tool-history records state their
+retrospective/delegated limits. Earlier bootstrap/focus failures and F001's
+unqualified 180-second timing remain retained.
+
+The [scoped report](../parity/reports/WF-20261116-STRAIGHT-CUT-001.json),
+[evidence collection](../parity/reports/artifacts/straight-cut-20261116/README.md)
+and [native gallery](studio-preview.md) separate actual UI, saved geometry and
+source tests. Native concave/failed-I/O cases, general cuts, holes, Cut & Sew and
+reference comparisons remain open. Analytic saved area times density is not an
+actual particle-mass measurement; the separate Rust mesh/Cloth constructor checks
+and their fine-L resource refusal retain their narrower scope.
+
+## Historical native studio checks (21b9)
 
 Source `21b9f5e76a77ca21357783240cef7506b3887fbc` passes all five integrated
 gates with 192 Rust and 54 Python checks. The report binds 49 runtime files plus
@@ -54,11 +88,11 @@ focused AX TextField witness was unavailable. These are setup/observability
 stops, not demonstrated product defects. All subsequent numeric, pending-Snap,
 same-pixel, Save, geometry-consumer and lifecycle checks remain unexercised.
 
-The separate read-only current Harbor preview shows the workspace and one
+The separate read-only Harbor preview shows the workspace and one
 Accepted/succeeded Mesh task. It performs no numeric/authoring/Save/physics action
 and supplies no acceptance credit to the closed cases. Historical source REDs,
 the source 76be failed garment attempt and unresolved scalar-loss cause remain.
-See the [current report](../parity/reports/WF-20261115-NATIVE-STUDIO-001.json),
+See the [historical report](../parity/reports/WF-20261115-NATIVE-STUDIO-001.json),
 [retained criteria](../parity/scenarios/UI-NATIVE-STUDIO-001.json) and
 [finite evidence](../parity/reports/artifacts/native-studio-20261115/README.md).
 

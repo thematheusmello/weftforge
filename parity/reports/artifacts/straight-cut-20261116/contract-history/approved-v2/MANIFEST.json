@@ -1,0 +1,99 @@
+{
+  "status": "reviewed-v2 prospective packet; root implementation/execution authorization still required",
+  "revision": 2,
+  "source_context": "ad7cc8bbbfc7a1ae735a400c21dcc7a37c80a5c5; unchanged runtime files in db8ee77f708a5088c3597030bd16de5d8912ca43; architecture only",
+  "changes_from_original": [
+    "type/data serde command envelope",
+    "cut-local owner-restricted raw straight projection with strict endpoint/multiple-hit refusal, unchanged sewing picker",
+    "exact decimal UI t literals and upward-rounded all-target-coordinate clearance/sign refusal"
+  ],
+  "new_files": [
+    {
+      "path": "ARITHMETIC-CHECK.json",
+      "sha256": "359678bcf84b6821a2ce7c63567d905097bd32862a72147d87dc470c85c37465",
+      "bytes": 222
+    },
+    {
+      "path": "CONTRACT.md",
+      "sha256": "da88a248482dd45dd702b57e33dab13c38b885c222042863e973bf809c886b0c",
+      "bytes": 17836
+    },
+    {
+      "path": "NATIVE-R.md",
+      "sha256": "c810155dd3df45dbce5576d6e8e925e82f07c9a685063ea3ce941d6cfa146158",
+      "bytes": 6873
+    },
+    {
+      "path": "ORACLE.json",
+      "sha256": "13846d635a1432c3e5bfd77eb66802cc633bd29a3661c940972783dc2f5dfea2",
+      "bytes": 14919
+    },
+    {
+      "path": "check_arithmetic.py",
+      "sha256": "ca7ba64c80a0b54eda9ee005f0374e431eaf2686d08e79d27ed9b28c76e5d955",
+      "bytes": 3475
+    },
+    {
+      "path": "fixtures/L.weftforge",
+      "sha256": "a8ddc0c3b9e625e6bc77d72ec382cc333dcd4225e87a6c91261636af28828e7d",
+      "bytes": 3622
+    },
+    {
+      "path": "fixtures/R240.weftforge",
+      "sha256": "afcd39b8e65caa76a4fe7e556d10d58a0117c5af6954859cfa6ad35d50bb1d50",
+      "bytes": 3211
+    }
+  ],
+  "frozen_file_count_including_manifest": 8,
+  "manifest_self_hash": "Reported separately; manifest does not list itself",
+  "provenance": [
+    {
+      "path": ".local/straight-cut-contract-20261115/CONTRACT.md",
+      "sha256": "f77cb6d07f2b7d3fe0d67cf60e067f28f483d6b714bf6e069e1d469ba4dd6e11"
+    },
+    {
+      "path": ".local/straight-cut-contract-20261115/review-001/REVIEW.md",
+      "sha256": "5d3a71ef6387d8f7938f655e740244ca6a781119ed6c2154f07479e1296e89bb"
+    },
+    {
+      "path": ".local/straight-cut-contract-20261115/review-001/SOURCE-SHA256.txt",
+      "sha256": "532d97e820613a8dfcb56bb126a760edc256b007bd36f35bb78956f1bd7d5a01"
+    },
+    {
+      "path": ".local/straight-cut-contract-20261115/SOURCE-CONTEXT.json",
+      "sha256": "4c50e60de59d06c661c4f8a7d4b3122143a0afa69fc184976394948c5189fce1"
+    },
+    {
+      "path": ".local/internal-line-independent-v2-20261115/fixtures/R.weftforge",
+      "sha256": "a00f9ac953ec09a07bfa7b01a93a2edb2269fc539d4da3bbc4d6abcec7f34ede"
+    }
+  ],
+  "fixture_origin": "Independent v2 R schema/defaults only; manually literal R240 and L coordinates/IDs; no target-generated geometry",
+  "native_cases": [
+    {
+      "case": "CUT-R1",
+      "status": "required unexecuted",
+      "static_operations": 158,
+      "operation_cap": 175,
+      "separate_completion_summary_calls": 1,
+      "seconds": 1200
+    },
+    {
+      "case": "CUT-R2",
+      "status": "required unexecuted dependent on accepted actual CUT-R1 R4 bytes",
+      "static_operations": 49,
+      "operation_cap": 65,
+      "separate_completion_summary_calls": 1,
+      "seconds": 600
+    }
+  ],
+  "future_required_native": "Concave and failed-I/O cases; remaining full cut/Cut&Sew/holes/curved/symmetry roadmap stays open",
+  "arithmetic_check": "ARITHMETIC-CHECK.json; literal stdlib rational math/ID/walk/action sums only; no runtime product/reference/GUI/Cargo/evaluator/Git work",
+  "grants": {
+    "implementation": false,
+    "native_execution": false,
+    "reference_parity": false,
+    "full_feature_acceptance": false
+  },
+  "preserved": "Original contract/review and every previous packet/model/output/worktree untouched; no old-output grading"
+}

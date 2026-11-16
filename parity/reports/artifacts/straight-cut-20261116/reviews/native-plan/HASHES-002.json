@@ -1,0 +1,40 @@
+{
+  "schema": "weftforge.straight-cut.native-plan-static-review.v1",
+  "review": "review002",
+  "status": "original_two_provenance_blockers_addressed_in_reviewed_v2_draft",
+  "authority": "static review only; root must verify final freeze/binding and separate GO",
+  "native_case_or_formal_grade_or_selfchecks_executed": false,
+  "reviewed_draft_files_sha256": {
+    "ACTOR-RUNTIME-PROOF.template.json": "bf867a2df861c6a17351a7c280ac8189641c36cdfd91085d1cda20c09e6502f3",
+    "ACTOR-RUNTIME-TOOL-HISTORY.template.json": "86f74235c1d145fa29bd76e6cebedda7354559844cc87362f30f2e92c20256cd",
+    "COMPLETION-SUMMARY-RETURN.template.json": "cfd620f90abccfcb0f46222bae048fc273db21a1c9531b2c743b8dd014e8a926",
+    "CUA-HANDOFF.md": "60cb041220d29442a73f85dd96a9f9dec884a9e704ef8940485cf8c7e0bf5583",
+    "CUA-INITIAL-CAPTURE.template.js": "7ccca394ecd13cba4afc61b85c89fc99f06f623a22b6bb0c50031fe4b7f421df",
+    "NATIVE-LEASE-CLOSED.template.json": "907ae4c5b9b58226fd907e573f3505cb8adae29bf2564339036507299a44c340",
+    "PLAN.json": "c2144f37bccc0cafa58016aa787d332e3839c9ba8ef8a2fdfcd573189a2c3d82",
+    "POSTFLIGHT.template.json": "71e297d5033048f0cf687a020a7c527c20f9bc63547884163c89e1c1970c407e",
+    "README.md": "535968b5eb821e1e5c5ed5d77003a159e58f687b8599183aff7110ce4ff83534",
+    "ROOT-BINDING.CUT-R1.template.json": "efafceeae31d175d09c1c13cc3cfab65c4af412fe012246a0a89714e65fba4db",
+    "ROOT-BINDING.CUT-R2.template.json": "65effd9df2869f62c3dd02c989d5dad592de99a3ccf56eb3b35bc72cd3a07ba6",
+    "ROOT-UI-ACCEPTANCE.template.json": "84b957d0a13fce85828e55b7726ff907f24cb5a18e6668e21d23e585b6080e54",
+    "SELF-CHECK-OBSERVER-001.json": "89093bb5968d27743b4b83d36c8170f353b6016e1eec1821c9c17031430216ad",
+    "SELF-CHECK-PROVENANCE-001.json": "5452b1021e4c401dfe9f1f4918bbcbb4e0c405be293820f5d70a059bfaa87e1e",
+    "SELF-CHECK-PROVENANCE-002.json": "7dac82eed94c3faeb6d4dc5c61bd36f6c3caf7ddd501812e530c974f0242495a",
+    "SELF-CHECK-SAVED-001.json": "f9beb8594d1eba787f8aecd34168aad6e8ec7371eff9ae5522a6fb8f1fbd005c",
+    "SOURCE-69.json": "def2cce2a4b5093054b52a1108e5641cbf7ed12a5d69c1b1c72f0bc97e6dd696",
+    "SOURCE-ROUTES.md": "69d86e96f7d3d19c21a58ef2fe3787a102a3dedf49316c80bc5102803f183208",
+    "grade_saved.py": "a9d7d866f7a4639ed57eee94f79428dd4026baba073c95043c2d9bd9a7931d62",
+    "retain_saved.py": "5fd28138d6ce42991ad3576a5ecfec2a4f8cbe70a0b98be32ebb37f809a12888",
+    "selfcheck_observer.cjs": "cce327970542f6c85a8c1d20579c2302f3d96cf09431100a61960b871f9ff72a",
+    "selfcheck_provenance.py": "3369074f897110515376ddca3b02ed2c0b1b685771dcbfe77e35ace8e1c79b86",
+    "selfcheck_saved.py": "42ffef507259d0bb4b4f9b226f97aa0a766a98f105c8edc55f1a4f3a34d0c0b7"
+  },
+  "existing_receipts_sha256": {
+    ".local/straight-cut-integration-20261116/runtime-19b1e88-001/CHECKS.json": "9ebba8d0f05e26fef075d18338ea75f9ffd9a1e9b7bd2c23754ae2bbd9a2614c",
+    ".local/straight-cut-integration-20261116/clean-982ad03-verify-build-001/CHECKS.json": "21e8652f901da8570ab42c8c0b8b9d7e16064fe5c06cee9580d54234e2c1fefd",
+    ".local/native-straight-cut-20261116/R001/ROOT-STAGING.json": "3e4880744bde1c932cd4447f1565371e2d9cfdd78d528419215149b737b9d9db"
+  },
+  "report_sha256": "40aa715aefde8766a36b8a7017c77cac7f871c003def4e6c39922d7642e5da46",
+  "prior_review_report_sha256": "cc1f53e0b6d07a03385092178c486fa123bbe2b67cbd476cb30e877bf74e8c47",
+  "v1_freeze_sha256": "1deb948c67b6bfb86d6aa383a21b92145c4021607311ddab1141950815e0d2a3"
+}

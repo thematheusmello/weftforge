@@ -1,0 +1,15 @@
+{
+  "id": "0004",
+  "label": "focus-owned-pid",
+  "method": "external.pid",
+  "arguments": {
+    "executable": "/bin/ps",
+    "argv": [
+      "-axo",
+      "pid=,command="
+    ],
+    "binary": "<WORKSPACE>/.local/native-focus-diagnostic-20261116/F001/WeftForgeFocusF001.app/Contents/MacOS/weftforge"
+  },
+  "utc": "2026-11-16T01:59:51.604Z",
+  "monotonic_ns": "916707347169250"
+}

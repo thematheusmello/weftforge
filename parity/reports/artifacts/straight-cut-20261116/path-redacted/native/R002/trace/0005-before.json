@@ -1,0 +1,16 @@
+{
+  "id": "0005",
+  "label": "account-exact-live-owned-pid",
+  "method": "external.pid",
+  "arguments": {
+    "executable": "/bin/ps",
+    "argv": [
+      "-axo",
+      "pid=,command="
+    ],
+    "expected_binary": "<WORKSPACE>/.local/native-straight-cut-20261116/R002/WeftForgeCutR002.app/Contents/MacOS/weftforge",
+    "evidenceKind": "native"
+  },
+  "utc": "2026-11-16T01:50:59.457Z",
+  "monotonic_ns": "916175202982416"
+}
