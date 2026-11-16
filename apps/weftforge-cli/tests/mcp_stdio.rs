@@ -288,11 +288,12 @@ fn check_cut_command(kind: &str, modern: bool) {
     assert_eq!(saved.pieces[1].boundary, [12, 8, 9, 19]);
     let saved_bytes = fs::read(&mcp_path).unwrap();
     let sewn = kind == "cut_and_sew";
-    assert_eq!(saved.next_id, if sewn { 21 } else { 20 });
+    let saved_value: Value = serde_json::from_slice(&saved_bytes).unwrap();
     assert_eq!(
-        serde_json::from_slice::<Value>(&saved_bytes).unwrap()["version"],
-        weftforge_core::FORMAT_VERSION
+        saved_value["project"]["next_id"],
+        if sewn { 21 } else { 20 }
     );
+    assert_eq!(saved_value["version"], weftforge_core::FORMAT_VERSION);
     let seams = if sewn {
         json!([{"id":20,"name":"Cut seam #20",
             "a":{"curve":18,"t0":0.,"t1":1.},
