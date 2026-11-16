@@ -119,6 +119,16 @@ increasing normalized correspondence pairs including `[0,0]` and `[1,1]`.
 Decreasing interval endpoints encode reversed direction. Derived seam samples
 reference those authored relationships rather than persistent vertex indices.
 
+`cut_and_sew` saves exactly these ordinary piece/curve/point and seam objects;
+native v5 gains no fields, command tag or migration. In the original R240 example,
+seam 20 joins full retained chord 18 (`t0=0,t1=1`) to reversed child chord 19
+(`t0=1,t1=0`) with `[[0,0],[1,1]]`. The two chords keep disjoint IDs even though
+their endpoint coordinates coincide. Removing the seam keeps both pieces and
+their boundaries; undo history and the transient native `Sew cut edges` option
+are not serialized. SVG/DXF retain two exterior outlines and OBJ two independent
+surface components; none of those geometry exports round-trips the seam.
+See the [Cut & Sew contract](../spec/features/SEW-001-cut-and-sew.md).
+
 Each `sewing_groups` entry stores `id`, `name`, ordered `a` and `b` arrays of
 curve intervals, and an explicit correspondence map. Unlike legacy seam maps,
 the group map uses normalized cumulative **authored arc length**. Disconnected

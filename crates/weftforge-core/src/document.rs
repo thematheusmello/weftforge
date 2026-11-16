@@ -778,6 +778,151 @@ impl Project {
         Ok(())
     }
 
+    fn cut_piece(
+        &mut self,
+        piece: Id,
+        start: (Id, f64),
+        end: (Id, f64),
+        reserve_seam: bool,
+        cut_work: &mut crate::geometry::ContainmentWork,
+    ) -> Result<[Id; 2]> {
+        let (start_curve, start_t) = start;
+        let (end_curve, end_t) = end;
+        ensure(
+            piece != 0 && start_curve != 0 && end_curve != 0,
+            "Cut piece and curve IDs must be nonzero",
+        )?;
+        let piece_index = self
+            .pieces
+            .iter()
+            .position(|item| item.id == piece)
+            .ok_or_else(|| Error("Unknown cut piece".into()))?;
+        let original = self.pieces[piece_index].clone();
+        ensure(
+            original.holes.is_empty(),
+            "Cutting a piece with a hole is unsupported",
+        )?;
+        let boundary_index = |curve| {
+            original
+                .boundary
+                .iter()
+                .position(|&id| id == curve)
+                .ok_or_else(|| Error("Cut addresses must be this piece's outer boundaries".into()))
+        };
+        let mut a = (boundary_index(start_curve)?, start_curve, start_t);
+        let mut b = (boundary_index(end_curve)?, end_curve, end_t);
+        ensure(a.0 != b.0, "Cut needs two distinct boundary curves")?;
+        if a.0 > b.0 {
+            std::mem::swap(&mut a, &mut b);
+        }
+        let owned: BTreeSet<_> = original.boundary.iter().copied().collect();
+        ensure(
+            !self
+                .seams
+                .iter()
+                .any(|seam| owned.contains(&seam.a.curve) || owned.contains(&seam.b.curve))
+                && !self.sewing_groups.iter().any(|group| {
+                    group
+                        .a
+                        .iter()
+                        .chain(&group.b)
+                        .any(|interval| owned.contains(&interval.curve))
+                }),
+            "Cut cannot remap sewing on any boundary of the target piece",
+        )?;
+        let additions = if reserve_seam { 10 } else { 9 };
+        ensure(
+            self.points.len()
+                + self.curves.len()
+                + self.pieces.len()
+                + self.materials.len()
+                + self.seams.len()
+                + self.sewing_groups.len()
+                + self
+                    .pieces
+                    .iter()
+                    .map(|piece| piece.holes.len())
+                    .sum::<usize>()
+                <= MAX_OBJECTS - additions,
+            "Cut exceeds the project object limit",
+        )?;
+        let first_id = self.next_id;
+        ensure(
+            first_id.checked_add(additions as u64).is_some(),
+            "Cut exceeds the stable ID limit",
+        )?;
+        let reserve = crate::geometry::validate_straight_cut(
+            self,
+            &original,
+            (a.0, a.2),
+            (b.0, b.2),
+            cut_work,
+        )?;
+        self.apply(Command::SplitCurve { curve: a.1, t: a.2 }, cut_work)?;
+        self.apply(Command::SplitCurve { curve: b.1, t: b.2 }, cut_work)?;
+        let (anchor_a, tail_a, anchor_b, tail_b) =
+            (first_id, first_id + 1, first_id + 2, first_id + 3);
+        let new_piece = self.allocate_id()?;
+        let copy_a = self.allocate_id()?;
+        let copy_b = self.allocate_id()?;
+        let retained_chord = self.allocate_id()?;
+        let new_chord = self.allocate_id()?;
+        for (id, anchor) in [(copy_a, anchor_a), (copy_b, anchor_b)] {
+            self.points.push(Point {
+                id,
+                position: self.point(anchor).unwrap().position,
+            });
+        }
+        self.curves
+            .iter_mut()
+            .find(|curve| curve.id == tail_a)
+            .unwrap()
+            .start = copy_a;
+        self.curves
+            .iter_mut()
+            .find(|curve| curve.id == b.1)
+            .unwrap()
+            .end = copy_b;
+        self.curves.extend([
+            Curve {
+                id: retained_chord,
+                start: anchor_a,
+                end: anchor_b,
+                controls: None,
+            },
+            Curve {
+                id: new_chord,
+                start: copy_b,
+                end: copy_a,
+                controls: None,
+            },
+        ]);
+        let mut retained = original.clone();
+        retained.boundary = original.boundary[..=a.0].to_vec();
+        retained.boundary.extend([retained_chord, tail_b]);
+        retained
+            .boundary
+            .extend_from_slice(&original.boundary[b.0 + 1..]);
+        let mut child = Piece {
+            id: new_piece,
+            name: format!("Cut piece #{new_piece}"),
+            boundary: vec![tail_a],
+            internal_curves: Vec::new(),
+            ..original.clone()
+        };
+        child
+            .boundary
+            .extend_from_slice(&original.boundary[a.0 + 1..=b.0]);
+        child.boundary.push(new_chord);
+        (retained.internal_curves, child.internal_curves) =
+            crate::geometry::partition_cut_annotations(
+                self, &original, &retained, &child, reserve, cut_work,
+            )?;
+        self.pieces[piece_index] = retained;
+        self.pieces.push(child);
+        Ok([retained_chord, new_chord])
+    }
+
     fn apply(
         &mut self,
         command: Command,
@@ -1137,139 +1282,37 @@ impl Project {
                 end_curve,
                 end_t,
             } => {
-                ensure(
-                    piece != 0 && start_curve != 0 && end_curve != 0,
-                    "Cut piece and curve IDs must be nonzero",
-                )?;
-                let piece_index = self
-                    .pieces
-                    .iter()
-                    .position(|item| item.id == piece)
-                    .ok_or_else(|| Error("Unknown cut piece".into()))?;
-                let original = self.pieces[piece_index].clone();
-                ensure(
-                    original.holes.is_empty(),
-                    "Cutting a piece with a hole is unsupported",
-                )?;
-                let boundary_index = |curve| {
-                    original
-                        .boundary
-                        .iter()
-                        .position(|&id| id == curve)
-                        .ok_or_else(|| {
-                            Error("Cut addresses must be this piece's outer boundaries".into())
-                        })
-                };
-                let mut a = (boundary_index(start_curve)?, start_curve, start_t);
-                let mut b = (boundary_index(end_curve)?, end_curve, end_t);
-                ensure(a.0 != b.0, "Cut needs two distinct boundary curves")?;
-                if a.0 > b.0 {
-                    std::mem::swap(&mut a, &mut b);
-                }
-                let owned: BTreeSet<_> = original.boundary.iter().copied().collect();
-                ensure(
-                    !self
-                        .seams
-                        .iter()
-                        .any(|seam| owned.contains(&seam.a.curve) || owned.contains(&seam.b.curve))
-                        && !self.sewing_groups.iter().any(|group| {
-                            group
-                                .a
-                                .iter()
-                                .chain(&group.b)
-                                .any(|interval| owned.contains(&interval.curve))
-                        }),
-                    "Cut cannot remap sewing on any boundary of the target piece",
-                )?;
-                ensure(
-                    self.points.len()
-                        + self.curves.len()
-                        + self.pieces.len()
-                        + self.materials.len()
-                        + self.seams.len()
-                        + self.sewing_groups.len()
-                        + self
-                            .pieces
-                            .iter()
-                            .map(|piece| piece.holes.len())
-                            .sum::<usize>()
-                        <= MAX_OBJECTS - 9,
-                    "Cut exceeds the project object limit",
-                )?;
-                let first_id = self.next_id;
-                ensure(
-                    first_id.checked_add(9).is_some(),
-                    "Cut exceeds the stable ID limit",
-                )?;
-                let reserve = crate::geometry::validate_straight_cut(
-                    self,
-                    &original,
-                    (a.0, a.2),
-                    (b.0, b.2),
+                self.cut_piece(
+                    piece,
+                    (start_curve, start_t),
+                    (end_curve, end_t),
+                    false,
                     cut_work,
                 )?;
-                self.apply(Command::SplitCurve { curve: a.1, t: a.2 }, cut_work)?;
-                self.apply(Command::SplitCurve { curve: b.1, t: b.2 }, cut_work)?;
-                let (anchor_a, tail_a, anchor_b, tail_b) =
-                    (first_id, first_id + 1, first_id + 2, first_id + 3);
-                let new_piece = self.allocate_id()?;
-                let copy_a = self.allocate_id()?;
-                let copy_b = self.allocate_id()?;
-                let retained_chord = self.allocate_id()?;
-                let new_chord = self.allocate_id()?;
-                for (id, anchor) in [(copy_a, anchor_a), (copy_b, anchor_b)] {
-                    self.points.push(Point {
-                        id,
-                        position: self.point(anchor).unwrap().position,
-                    });
-                }
-                self.curves
-                    .iter_mut()
-                    .find(|curve| curve.id == tail_a)
-                    .unwrap()
-                    .start = copy_a;
-                self.curves
-                    .iter_mut()
-                    .find(|curve| curve.id == b.1)
-                    .unwrap()
-                    .end = copy_b;
-                self.curves.extend([
-                    Curve {
-                        id: retained_chord,
-                        start: anchor_a,
-                        end: anchor_b,
-                        controls: None,
+            }
+            Command::CutAndSew {
+                piece,
+                start_curve,
+                start_t,
+                end_curve,
+                end_t,
+            } => {
+                let [a, b] = self.cut_piece(
+                    piece,
+                    (start_curve, start_t),
+                    (end_curve, end_t),
+                    true,
+                    cut_work,
+                )?;
+                self.apply(
+                    Command::AddSeam {
+                        name: format!("Cut seam #{}", self.next_id),
+                        a: CurveInterval::full(a),
+                        b: CurveInterval::reversed(b),
+                        correspondence: vec![[0., 0.], [1., 1.]],
                     },
-                    Curve {
-                        id: new_chord,
-                        start: copy_b,
-                        end: copy_a,
-                        controls: None,
-                    },
-                ]);
-                let mut retained = original.clone();
-                retained.boundary = original.boundary[..=a.0].to_vec();
-                retained.boundary.extend([retained_chord, tail_b]);
-                retained
-                    .boundary
-                    .extend_from_slice(&original.boundary[b.0 + 1..]);
-                let mut child = Piece {
-                    id: new_piece,
-                    name: format!("Cut piece #{new_piece}"),
-                    boundary: vec![tail_a],
-                    internal_curves: Vec::new(),
-                    ..original.clone()
-                };
-                child
-                    .boundary
-                    .extend_from_slice(&original.boundary[a.0 + 1..=b.0]);
-                child.boundary.push(new_chord);
-                (retained.internal_curves, child.internal_curves) =
-                    crate::geometry::partition_cut_annotations(
-                        self, &original, &retained, &child, reserve, cut_work,
-                    )?;
-                self.pieces[piece_index] = retained;
-                self.pieces.push(child);
+                    cut_work,
+                )?;
             }
             Command::JoinCurve { curve } => {
                 let piece_index = self
@@ -1926,6 +1969,13 @@ pub enum Command {
         t: f64,
     },
     CutPiece {
+        piece: Id,
+        start_curve: Id,
+        start_t: f64,
+        end_curve: Id,
+        end_t: f64,
+    },
+    CutAndSew {
         piece: Id,
         start_curve: Id,
         start_t: f64,

@@ -577,6 +577,16 @@ fn command_schema() -> Value {
         json!({"capsules":{"type":"array","items":object(json!({"a":xyz,"b":xyz,"radius":number}), &["a","b","radius"])}}),
         &["capsules"],
     );
+    let cut = object(
+        json!({
+            "piece":{"type":"integer","minimum":1,"maximum":u64::MAX},
+            "start_curve":{"type":"integer","minimum":1,"maximum":u64::MAX},
+            "start_t":{"type":"number","exclusiveMinimum":1e-6,"exclusiveMaximum":1.-1e-6},
+            "end_curve":{"type":"integer","minimum":1,"maximum":u64::MAX},
+            "end_t":{"type":"number","exclusiveMinimum":1e-6,"exclusiveMaximum":1.-1e-6}
+        }),
+        &["piece", "start_curve", "start_t", "end_curve", "end_t"],
+    );
     let variants = [
         (
             "import_dxf_patterns",
@@ -662,19 +672,8 @@ fn command_schema() -> Value {
             "split_curve",
             object(json!({"curve":id,"t":number}), &["curve", "t"]),
         ),
-        (
-            "cut_piece",
-            object(
-                json!({
-                    "piece":{"type":"integer","minimum":1,"maximum":u64::MAX},
-                    "start_curve":{"type":"integer","minimum":1,"maximum":u64::MAX},
-                    "start_t":{"type":"number","exclusiveMinimum":1e-6,"exclusiveMaximum":1.-1e-6},
-                    "end_curve":{"type":"integer","minimum":1,"maximum":u64::MAX},
-                    "end_t":{"type":"number","exclusiveMinimum":1e-6,"exclusiveMaximum":1.-1e-6}
-                }),
-                &["piece", "start_curve", "start_t", "end_curve", "end_t"],
-            ),
-        ),
+        ("cut_piece", cut.clone()),
+        ("cut_and_sew", cut),
         ("join_curve", object(json!({"curve":id}), &["curve"])),
         (
             "resize_piece",

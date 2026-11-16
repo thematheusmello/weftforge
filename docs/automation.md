@@ -132,7 +132,7 @@ existing projects may assign different IDs. Current-profile calls use the same
 arguments and additionally include the per-request `_meta` shown above.
 
 The supported shared commands are `import_svg_patterns`, `import_dxf_patterns`, `add_polygon`, `add_rectangle`, `add_ellipse`, `add_hole`, `remove_hole`, `add_internal_segment`, `remove_internal_curve`, `move_point`,
-`set_curve_controls`, `split_curve`, `join_curve`, `cut_piece`, `resize_piece`, `transform_piece`, `set_placement`, `set_grain`,
+`set_curve_controls`, `split_curve`, `join_curve`, `cut_piece`, `cut_and_sew`, `resize_piece`, `transform_piece`, `set_placement`, `set_grain`,
 `set_material`, `add_material`, `update_material`, `add_seam`, `update_seam`,
 `remove_seam`, `add_sewing_group`, `add_sewing_by_length`, `update_sewing_group`, `remove_sewing_group`,
 `remove_piece`, `set_resolution`, and `set_mannequin`.
@@ -188,8 +188,30 @@ Existing annotations move unchanged to exactly one child; crossing, near-cut or
 ambiguous annotations refuse. See the [engineering contract](../spec/features/PAT-006-straight-cut.md)
 for clearance and work limits. This is one schema alternative on `project_execute`
 and CLI `execute`; the nine MCP tools are retained. Native v5 stores the resulting
-ordinary pieces. Cut & Sew, curved cuts, cuts through holes and target relationship
+ordinary pieces. Curved cuts, cuts through holes and target relationship
 remapping remain open.
+
+`cut_and_sew` requires the same five fields and strict bounds as `cut_piece`:
+
+```json
+{"type":"cut_and_sew","data":{"piece":2,"start_curve":7,"start_t":0.375,"end_curve":9,"end_t":0.625}}
+```
+
+It makes the same two independent pieces and appends one ordinary seam in the
+same candidate and revision. For this R240 example, retained chord 18 runs bottom
+to top and child chord 19 runs top to bottom. Seam 20, named `Cut seam #20`, uses
+A `{curve:18,t0:0,t1:1}`, B `{curve:19,t0:1,t1:0}` and correspondence
+`[[0,0],[1,1]]`, pairing coincident endpoints without easing. Ten IDs are reserved
+before construction; next ID becomes 21. The command adds no material, welded
+points, linked editing or simulation step. Removing seam 20 with `remove_seam`
+keeps both editable pieces and their cut boundaries; it does not fill or join
+them. Already sewn targets still refuse, including a child until its seam is
+removed. Save/reopen preserves the ordinary seam in native v5 with no format bump.
+See the [Cut & Sew engineering contract](../spec/features/SEW-001-cut-and-sew.md).
+The existing `execute`/`project_execute` routes and nine tools remain unchanged.
+Command/schema failures preserve primary/output/recovery bytes; on a late IO
+failure the primary stays exact while recovery may advance to its valid prior
+primary. This bounded behavior does not establish native or reference parity.
 
 `add_hole` creates one straight closed hole in a hole-free straight owner;
 `remove_hole` fills it by its stable Hole ID:
@@ -210,9 +232,9 @@ piece cannot be cut. Existing exterior sewing remains attached.
 Native v5 preserves both editable loops. SVG exports one compound evenodd path
 per piece, but current SVG import refuses hole subpaths. DXF export refuses a
 holed project before staging; OBJ exports its actual annular surface. See the
-[hole contract](../spec/features/PAT-006-straight-hole.md). The shared schema now
-has 31 nontransaction alternatives; the core enum includes Transaction as its
-32nd variant. No CLI verb or MCP tool was added.
+[hole contract](../spec/features/PAT-006-straight-hole.md). With `cut_and_sew`, the
+shared schema has 32 nontransaction alternatives; the core enum includes
+Transaction as its 33rd variant. No CLI verb or MCP tool was added.
 
 `import_svg_patterns` takes `{"svg":"...original SVG XML..."}` and adds all
 supported pieces as one typed authoring action. The dedicated CLI

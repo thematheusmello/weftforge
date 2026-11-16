@@ -420,6 +420,7 @@ struct InternalLineDraft {
 struct CutPreview {
     curves: [Option<Id>; 2],
     parameters: [String; 2],
+    sew_cut_edges: bool,
     project: Result<Project, String>,
 }
 struct CutDraft {
@@ -427,6 +428,7 @@ struct CutDraft {
     revision: u64,
     curves: [Option<Id>; 2],
     parameters: [String; 2],
+    sew_cut_edges: bool,
     modal: bool,
     input: RetainedInspectorInput,
     field_focus: Option<egui::Id>,
@@ -505,17 +507,31 @@ impl CutDraft {
                 return Err("Cut parameters must be finite.".into());
             }
         }
-        Ok(Command::CutPiece {
-            piece: self.piece,
-            start_curve: self.curves[0].ok_or("Choose the start boundary.")?,
-            start_t: parameters[0],
-            end_curve: self.curves[1].ok_or("Choose the end boundary.")?,
-            end_t: parameters[1],
+        let start_curve = self.curves[0].ok_or("Choose the start boundary.")?;
+        let end_curve = self.curves[1].ok_or("Choose the end boundary.")?;
+        Ok(if self.sew_cut_edges {
+            Command::CutAndSew {
+                piece: self.piece,
+                start_curve,
+                start_t: parameters[0],
+                end_curve,
+                end_t: parameters[1],
+            }
+        } else {
+            Command::CutPiece {
+                piece: self.piece,
+                start_curve,
+                start_t: parameters[0],
+                end_curve,
+                end_t: parameters[1],
+            }
         })
     }
     fn refresh(&mut self, project: &Project) {
         if self.preview.as_ref().is_some_and(|preview| {
-            preview.curves == self.curves && preview.parameters == self.parameters
+            preview.curves == self.curves
+                && preview.parameters == self.parameters
+                && preview.sew_cut_edges == self.sew_cut_edges
         }) {
             return;
         }
@@ -528,6 +544,7 @@ impl CutDraft {
         self.preview = Some(CutPreview {
             curves: self.curves,
             parameters: self.parameters.clone(),
+            sew_cut_edges: self.sew_cut_edges,
             project: candidate,
         });
     }
@@ -3504,6 +3521,7 @@ impl Studio {
                 piece.boundary.iter().copied().find(|id| Some(*id) != start),
             ],
             parameters: ["0.5".into(), "0.5".into()],
+            sew_cut_edges: false,
             modal: false,
             input: self.free_sewing_input(ctx),
             field_focus: None,
@@ -3565,7 +3583,7 @@ impl Studio {
             self.cut_piece = Some(draft);
             return;
         }
-        let enter = ctx.input(|input| input.key_pressed(egui::Key::Enter));
+        let mut enter = ctx.input(|input| input.key_pressed(egui::Key::Enter));
         let mut accept = false;
         let mut cancel = false;
         let response = egui::Modal::new(egui::Id::new(("cut-piece", draft.piece, draft.revision, draft.epoch))).show(ctx, |ui| {
@@ -3592,6 +3610,8 @@ impl Studio {
                 });
             }
             ui.small("Dimensionless decimal t; position snapping does not change these boundary addresses.");
+            let sewing=ui.checkbox(&mut draft.sew_cut_edges,"Sew cut edges");
+            if sewing.has_focus() || sewing.clicked() { enter=false; }
             draft.refresh(&self.editor.project);
             if let Some([start,end])=draft.endpoints(&self.editor.project) {
                 ui.separator();
@@ -3606,6 +3626,15 @@ impl Studio {
                 ui.label(format!("Retained: {} · #{} · area {:.9} m²",retained.name,retained.id,straight_piece_area(project,retained.id)));
                 ui.label(format!("New: {} · #{} · area {:.9} m²",new.name,new.id,straight_piece_area(project,new.id)));
                 ui.small(format!("Internal annotations: {} retained · {} new",retained.internal_curves.len(),new.internal_curves.len()));
+                if draft.sew_cut_edges {
+                    let seam=project.seams.last().expect("appended cut seam");
+                    ui.label(format!("Sewing: {} · #{}",seam.name,seam.id));
+                    ui.small(format!("A #{}: t {} → {} · B #{}: t {} → {}",seam.a.curve,seam.a.t0,seam.a.t1,seam.b.curve,seam.b.t0,seam.b.t1));
+                    let lengths=project.seam_lengths(seam.id).map_err(|error|error.to_string());
+                    pair_length_feedback(ui,Some(lengths.as_ref().copied().map_err(String::as_str)));
+                } else {
+                    ui.small("Sewing: none");
+                }
             }
             if let Some(error)=draft.error.as_ref().or_else(||preview.project.as_ref().err()) {
                 ui.colored_label(Color32::LIGHT_RED,error);
@@ -16303,6 +16332,189 @@ mod cut_piece_tests {
     }
 
     #[test]
+    fn cut_sew_option_refreshes_only_preview_and_keeps_raw_parameters_and_caret() {
+        let ctx = context();
+        let mut app = fixture();
+        with_redo(&mut app);
+        let mesh = Arc::new(app.editor.project.mesh().unwrap());
+        let cloth =
+            Arc::new(weftforge_core::simulation::create_cloth(&app.editor.project, &mesh).unwrap());
+        app.mesh = Some(mesh.clone());
+        app.cloth = Some(cloth.clone());
+        let before = format!("{:?}", app.editor);
+        let selection = (app.selected, app.selected_curve);
+        precise(&ctx, &mut app);
+        let draft = app.cut_piece.as_ref().unwrap();
+        assert!(!draft.sew_cut_edges);
+        assert!(matches!(draft.command().unwrap(), Command::CutPiece { .. }));
+        let candidate = draft.preview.as_ref().unwrap().project.as_ref().unwrap();
+        assert!(candidate.seams.is_empty());
+        assert_eq!(serde_json::to_value(candidate).unwrap()["next_id"], 20);
+        for sewn in [true, false, true] {
+            click(&ctx, &mut app, "Sew cut edges");
+            let draft = app.cut_piece.as_ref().unwrap();
+            let preview = draft.preview.as_ref().unwrap();
+            assert_eq!((draft.sew_cut_edges, preview.sew_cut_edges), (sewn, sewn));
+            assert_eq!(
+                matches!(draft.command().unwrap(), Command::CutAndSew { .. }),
+                sewn
+            );
+            let candidate = preview.project.as_ref().unwrap();
+            assert_eq!(candidate.pieces[1].id, 15);
+            assert_eq!(candidate.seams.len(), usize::from(sewn));
+            assert_eq!(
+                serde_json::to_value(candidate).unwrap()["next_id"],
+                if sewn { 21 } else { 20 }
+            );
+            if sewn {
+                let seam = &candidate.seams[0];
+                assert_eq!((seam.id, seam.name.as_str()), (20, "Cut seam #20"));
+                assert_eq!(seam.a, CurveInterval::full(18));
+                assert_eq!(seam.b, CurveInterval::reversed(19));
+                assert_eq!(seam.correspondence, [[0., 0.], [1., 1.]]);
+                let output = frame(&ctx, &mut app, vec![]);
+                for expected in [
+                    "Sewing: Cut seam #20 · #20",
+                    "A #18: t 0 → 1 · B #19: t 1 → 0",
+                    "A 360.000 mm\nB 360.000 mm\nB − A +0.000 mm",
+                ] {
+                    assert!(output.shapes.iter().any(|shape| {
+                        matches!(&shape.shape, egui::Shape::Text(text) if text.galley.job.text == expected)
+                    }), "{expected}");
+                }
+            }
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!((app.selected, app.selected_curve), selection);
+            assert!(app.editor.can_redo() && !app.dirty && !app.needs_mesh);
+            assert!(
+                Arc::ptr_eq(app.mesh.as_ref().unwrap(), &mesh)
+                    && Arc::ptr_eq(app.cloth.as_ref().unwrap(), &cloth)
+            );
+        }
+        let field = parameter(&ctx, &mut app, "Start t", "1e-");
+        let caret = egui::TextEdit::load_state(&ctx, field)
+            .unwrap()
+            .cursor
+            .char_range();
+        for sewn in [false, true] {
+            click(&ctx, &mut app, "Sew cut edges");
+            let draft = app.cut_piece.as_ref().unwrap();
+            assert_eq!(draft.sew_cut_edges, sewn);
+            assert_eq!(draft.parameters, ["1e-", "0.625"]);
+            assert!(draft.preview.as_ref().unwrap().project.is_err());
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, field)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert!(app.editor.can_redo() && !app.dirty);
+        }
+        parameter(&ctx, &mut app, "Start t", "0.375");
+        assert!(
+            app.cut_piece
+                .as_ref()
+                .unwrap()
+                .preview
+                .as_ref()
+                .unwrap()
+                .project
+                .is_ok()
+        );
+        click(&ctx, &mut app, "Cancel cut");
+        assert_eq!(format!("{:?}", app.editor), before);
+    }
+
+    #[test]
+    fn cut_sew_checkbox_keyboard_toggles_do_not_apply() {
+        let ctx = context();
+        let mut app = fixture();
+        precise(&ctx, &mut app);
+        let before = format!("{:?}", app.editor);
+        let output = frame(&ctx, &mut app, vec![]);
+        frame(
+            &ctx,
+            &mut app,
+            vec![action(
+                button(&output, "Sew cut edges"),
+                Action::Focus,
+                None,
+            )],
+        );
+        for (key_code, sewn) in [(egui::Key::Enter, true), (egui::Key::Space, false)] {
+            frame(&ctx, &mut app, vec![key(key_code, egui::Modifiers::NONE)]);
+            let draft = app
+                .cut_piece
+                .as_ref()
+                .expect("checkbox keeps the review open");
+            assert!(draft.modal && draft.error.is_none());
+            assert_eq!(draft.sew_cut_edges, sewn);
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert!(!app.dirty);
+        }
+        click(&ctx, &mut app, "Cancel cut");
+        assert_eq!(format!("{:?}", app.editor), before);
+    }
+
+    #[test]
+    fn cut_sew_apply_history_save_reopen_and_seam_removal_keep_both_pieces() {
+        let ctx = context();
+        let mut app = fixture();
+        precise(&ctx, &mut app);
+        click(&ctx, &mut app, "Sew cut edges");
+        click(&ctx, &mut app, "Apply cut");
+        assert_eq!(app.editor.project.revision, 2);
+        assert_eq!(app.editor.project.seams[0].id, 20);
+        assert_eq!(app.selected, Some(15));
+        assert!(
+            app.selected_curve.is_none() && app.cut_piece.is_none() && app.tool == Tool::Select
+        );
+        let accepted = app.editor.project.clone();
+        frame(&ctx, &mut app, vec![]);
+        assert_eq!(app.editor.project, accepted);
+        app.history(&ctx, false);
+        assert_eq!(app.editor.project.revision, 3);
+        assert_eq!(app.editor.project.pieces.len(), 1);
+        assert!(app.editor.project.seams.is_empty() && app.selected.is_none());
+        app.history(&ctx, true);
+        let mut expected = accepted;
+        expected.revision = 4;
+        assert_eq!(app.editor.project, expected);
+        assert!(app.selected.is_none());
+        let dir = directory();
+        let path = dir.join("cut-and-sew.weftforge");
+        app.path = Some(path.clone());
+        app.save(false);
+        assert!(!app.dirty);
+        assert_eq!(
+            serde_json::from_slice::<serde_json::Value>(&fs::read(&path).unwrap()).unwrap()["version"],
+            5
+        );
+        let mut reopened = Studio::empty();
+        reopened.session_autosave = None;
+        reopened.open(path);
+        assert_eq!(reopened.editor.project, expected);
+        assert!(!reopened.editor.can_undo() && !reopened.editor.can_redo());
+        let ctx = context();
+        click(&ctx, &mut reopened, "Cut piece #15 · #15");
+        click(&ctx, &mut reopened, "Remove");
+        assert!(reopened.editor.project.seams.is_empty());
+        assert_eq!(reopened.editor.project.pieces, expected.pieces);
+        assert_eq!(reopened.editor.project.points, expected.points);
+        assert_eq!(reopened.editor.project.curves, expected.curves);
+        assert_eq!(
+            serde_json::to_value(&reopened.editor.project).unwrap()["next_id"],
+            21
+        );
+        reopened.history(&ctx, false);
+        expected.revision = 6;
+        assert_eq!(reopened.editor.project, expected);
+        fs::remove_dir_all(dir).unwrap();
+    }
+
+    #[test]
     fn cut_picker_restricts_owner_projects_unsnapped_and_refuses_vertices_extensions_and_multiple_hits()
      {
         let mut app = fixture();
@@ -16741,6 +16953,7 @@ mod cut_piece_tests {
                 .cursor
                 .char_range();
             precise(&ctx, &mut app);
+            click(&ctx, &mut app, "Sew cut edges");
             let field = parameter(&ctx, &mut app, "Start t", "1e-");
             let caret = egui::TextEdit::load_state(&ctx, field)
                 .unwrap()
@@ -16781,6 +16994,7 @@ mod cut_piece_tests {
                 assert_eq!(format!("{:?}", app.editor), before);
                 assert!(
                     app.cut_piece.as_ref().unwrap().modal
+                        && app.cut_piece.as_ref().unwrap().sew_cut_edges
                         && !app.playing
                         && !app.search
                         && !app.dirty
@@ -16847,6 +17061,7 @@ mod cut_piece_tests {
         boundary(&ctx, &mut app, "End boundary", 4, 12);
         parameter(&ctx, &mut app, "Start t", "0.3333333333333333");
         parameter(&ctx, &mut app, "End t", "0.6666666666666666");
+        click(&ctx, &mut app, "Sew cut edges");
         let before = format!("{:?}", app.editor);
         frame(
             &ctx,
@@ -16887,6 +17102,9 @@ mod cut_piece_tests {
         );
         assert_eq!(app.editor.project.revision, 2);
         assert_eq!(app.selected, Some(19));
+        assert_eq!(app.editor.project.seams[0].id, 24);
+        assert_eq!(app.editor.project.seams[0].a, CurveInterval::full(22));
+        assert_eq!(app.editor.project.seams[0].b, CurveInterval::reversed(23));
         assert!(app.cut_piece.is_none());
     }
 
@@ -16907,6 +17125,7 @@ mod cut_piece_tests {
         }
         app.editor.execute(Command::Transaction(commands)).unwrap();
         precise(&ctx, &mut app);
+        click(&ctx, &mut app, "Sew cut edges");
         let output = ctx.run_ui(
             egui::RawInput {
                 screen_rect: Some(Rect::from_min_size(Pos2::ZERO, Vec2::new(1000., 650.))),
@@ -17004,7 +17223,8 @@ mod cut_piece_tests {
     }
 
     #[test]
-    fn cut_anchor_resets_on_accepted_lifecycle_changes_and_survives_failed_io_and_new_refusal() {
+    fn cut_sew_review_resets_on_accepted_lifecycle_changes_and_survives_failed_io_and_new_refusal()
+    {
         for change in [
             "tool",
             "owner",
@@ -17026,6 +17246,8 @@ mod cut_piece_tests {
             app.editor.project.save(&source).unwrap();
             click(&ctx, &mut app, "Cut piece");
             pick(&ctx, &mut app, [0.09, 0.]);
+            app.open_cut_piece(&ctx);
+            click(&ctx, &mut app, "Sew cut edges");
             let before = format!("{:?}", app.editor);
             assert!(app.cut_piece.is_some());
             match change {
@@ -17054,7 +17276,7 @@ mod cut_piece_tests {
             }
             frame(&ctx, &mut app, vec![]);
             if matches!(change, "new" | "failed-open" | "failed-save") {
-                assert!(app.cut_piece.is_some(), "{change}");
+                assert!(app.cut_piece.as_ref().unwrap().sew_cut_edges, "{change}");
                 assert_eq!(format!("{:?}", app.editor), before);
                 if change == "new" {
                     app.cancel_cut_piece(&ctx);

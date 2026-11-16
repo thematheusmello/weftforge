@@ -76,6 +76,18 @@ authored straight-contour/chord/assignment predicates and final hole/annotation
 validation across the outer transaction, independently of mesh resolution. The [straight-cut contract](../spec/features/PAT-006-straight-cut.md)
 defines numeric margins, ownership, nine-ID allocation and current eligibility.
 
+`CutAndSew` reuses that same private cut construction, reserving ten objects/IDs
+before either split, then appends one ordinary seam through the existing AddSeam
+path on the same candidate and work budget. The seam covers the retained chord
+in its forward direction and the child's oppositely directed chord in reverse,
+with identity correspondence. One successful command is one revision/Undo entry.
+The pieces keep disjoint point/curve IDs, mesh indices and particles; sewing
+constrains weighted boundary samples without welding or adding material or
+cross-cut bending. RemoveSeam removes only the constraint. Native v5 already
+stores all resulting objects; no persistent cut link or format change is added.
+The [Cut & Sew contract](../spec/features/SEW-001-cut-and-sew.md) separates this
+engineering behavior from still-unqualified native/reference execution.
+
 A seam stores two oriented [t0,t1]
 intervals and a monotone normalized parameter correspondence; it never refers to
 simulation vertex indices. Unequal lengths are deliberate easing.

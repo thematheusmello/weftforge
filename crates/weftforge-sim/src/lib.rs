@@ -382,6 +382,9 @@ impl Cloth {
     pub fn masses(&self) -> &[f64] {
         &self.masses
     }
+    pub fn stitches(&self) -> &[Stitch] {
+        &self.input.stitches
+    }
     pub fn simulation_time(&self) -> f64 {
         self.diagnostics.simulation_time
     }
