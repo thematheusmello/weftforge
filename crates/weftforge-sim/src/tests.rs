@@ -246,6 +246,55 @@ fn nonfinite_strain_after_a_finite_candidate_invalidates_diagnostics() {
 }
 
 #[test]
+fn coupled_membrane_reaches_independent_incremental_energy_equilibrium() {
+    let uv = [[0., 0.], [0.01, 0.], [0.003, 0.07]];
+    let material = Material {
+        areal_density: 0.18,
+        warp_stiffness: 400.,
+        weft_stiffness: 400.,
+        shear_stiffness: 100.,
+        grain_angle: std::f64::consts::FRAC_PI_2,
+        ..Default::default()
+    };
+    let membrane = constraints::Membrane::new([0, 1, 2], &uv, material);
+    let h = (1. / 60.) / 8.;
+    let area = 0.01 * 0.07 / 2.;
+    let mass = 0.18 * area / 3.;
+    let predicted = [0.012, 0.002, 0.];
+    let mut x = [[0.; 3], predicted, [0.003, 0.07, 0.]];
+    let mut state = [[0.; 3]; 3];
+    for _ in 0..32 {
+        membrane.solve(&mut x, &[0., 1. / mass, 0.], h, &mut state);
+    }
+
+    // Independent dense Newton root of inertia plus the direct deformation-gradient energy.
+    let expected = [0.010007132086944948, 0.000027306978065735514, 0.];
+    let position_error = length(sub(x[1], expected));
+    let u = mul(x[1], 100.);
+    let v = mul(sub([0.003, 0.07, 0.], mul(x[1], 0.3)), 1. / 0.07);
+    let cu = 0.5 * (dot(u, u) - 1.);
+    let cv = 0.5 * (dot(v, v) - 1.);
+    let cs = dot(u, v);
+    let elastic_gradient = add(
+        mul(
+            add(mul(u, 100. * cu), mul(v, -0.3 / 0.07 * cv)),
+            400. * area,
+        ),
+        mul(add(mul(v, 100.), mul(u, -0.3 / 0.07)), 100. * area * cs),
+    );
+    let stationarity = length(add(
+        mul(sub(x[1], predicted), mass / (h * h)),
+        elastic_gradient,
+    ));
+    println!(
+        "independent energy position error={position_error:e}m stationarity={stationarity:e}N"
+    );
+    assert!(position_error < 1e-8 && stationarity < 1e-6);
+    assert_eq!(x[0], [0.; 3]);
+    assert_eq!(x[2], [0.003, 0.07, 0.]);
+}
+
+#[test]
 fn membrane_projection_matches_analytic_uniaxial_and_shear_updates() {
     let uv = [[0., 0.], [1., 0.], [0., 1.]];
     for (grain_angle, expected_x) in [
@@ -264,7 +313,7 @@ fn membrane_projection_matches_analytic_uniaxial_and_shear_updates() {
         );
         let mut x = [[0., 0., 0.], [1.2, 0., 0.], [0., 1., 0.]];
         // Only x[1] moves: C=0.22, dC/dx=1.2, alpha=4 or 0.2 for area=0.5 m².
-        membrane.solve(&mut x, &[0., 1., 0.], 0.1, &mut [0.; 3]);
+        membrane.solve(&mut x, &[0., 1., 0.], 0.1, &mut [[0.; 3]; 3]);
         assert!((x[1][0] - expected_x).abs() < 1e-14);
         assert_eq!(x[0], [0.; 3]);
         assert_eq!(x[2], [0., 1., 0.]);
@@ -279,12 +328,16 @@ fn membrane_projection_matches_analytic_uniaxial_and_shear_updates() {
     );
     let height = 0.91_f64.sqrt();
     let mut x = [[0., 0., 0.], [1., 0., 0.], [0.3, height, 0.]];
-    // Both axes have unit length: only shear acts, with C=0.3 and delta_lambda=-1/32.
-    membrane.solve(&mut x, &[1.; 3], 0.2, &mut [0.; 3]);
+    // Exact rational solve of the coupled Gram matrix with rows [33/16,3/10,8/5],
+    // [3/10,25/12,8/5], [8/5,8/5,48/5] and RHS [0,0,-3/10].
+    membrane.solve(&mut x, &[1.; 3], 0.2, &mut [[0.; 3]; 3]);
+    let [warp, weft, shear] = [1284. / 46963., 1269. / 46963., -60579. / 1502816.];
+    let u = [1., 0., 0.];
+    let v = [0.3, height, 0.];
     let expected = [
-        [0.040625, height / 32., 0.],
-        [0.990625, -height / 32., 0.],
-        [0.26875, height, 0.],
+        mul(add(mul(u, warp + shear), mul(v, weft + shear)), -1.),
+        add(u, add(mul(u, warp), mul(v, shear))),
+        add(v, add(mul(v, weft), mul(u, shear))),
     ];
     for (actual, expected) in x.into_iter().zip(expected) {
         assert!(length(sub(actual, expected)) < 1e-14);
@@ -908,17 +961,25 @@ fn cancellation_after_measurement_preserves_peak_strain() {
 
 #[test]
 fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
-    let mut cloth = Cloth::new(square()).unwrap();
+    let mut input = square();
+    for position in &mut input.positions {
+        position[0] *= 1.5;
+    }
+    let mut cloth = Cloth::new(input).unwrap();
     let before = cloth.positions().to_vec();
     let before_peak = cloth.diagnostics().peak_strain;
+    let before_state = format!("{cloth:?}");
     let counter = std::cell::Cell::new(0);
     let error = cloth
         .step(settings(), || {
             counter.set(counter.get() + 1);
+            // Cancel between material triangles after the strained first triangle was projected.
             counter.get() > 4
         })
         .unwrap_err();
     assert_eq!(error, SimulationError::Cancelled);
+    assert_eq!(counter.get(), 5);
+    assert_eq!(format!("{cloth:?}"), before_state);
     assert_eq!(cloth.positions(), before);
     assert_eq!(cloth.diagnostics().peak_strain, before_peak);
     assert_eq!(cloth.simulation_time(), 0.);
@@ -935,6 +996,7 @@ fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
     );
     assert_eq!(cloth.positions(), before);
     assert_eq!(cloth.diagnostics().peak_strain, before_peak);
+    assert_eq!(format!("{cloth:?}"), before_state);
     assert!(matches!(
         cloth.step(
             StepSettings {
@@ -947,8 +1009,10 @@ fn cancellation_and_failures_preserve_old_state_and_allow_recovery() {
     ));
     assert_eq!(cloth.positions(), before);
     assert_eq!(cloth.diagnostics().peak_strain, before_peak);
+    assert_eq!(format!("{cloth:?}"), before_state);
     cloth.step(settings(), || false).unwrap();
     assert!(cloth.diagnostics().finite);
+    assert_ne!(cloth.positions(), before);
 }
 
 #[test]

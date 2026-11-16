@@ -40,37 +40,145 @@ impl Membrane {
             && self.stiffness.iter().all(|s| s.is_finite() && *s > 0.)
             && self.warp.iter().chain(&self.weft).all(|q| q.is_finite())
     }
-    fn deformation(&self, x: &[Vec3]) -> (Vec3, Vec3) {
+    fn deformation(&self, x: [Vec3; 3]) -> (Vec3, Vec3) {
         // Relative positions avoid cancellation when the garment is translated far from the origin.
-        let b = sub(x[self.vertices[1]], x[self.vertices[0]]);
-        let c = sub(x[self.vertices[2]], x[self.vertices[0]]);
+        let b = sub(x[1], x[0]);
+        let c = sub(x[2], x[0]);
         (
             add(mul(b, self.warp[1]), mul(c, self.warp[2])),
             add(mul(b, self.weft[1]), mul(c, self.weft[2])),
         )
     }
-    pub fn solve(&self, x: &mut [Vec3], inverse_mass: &[f64], dt: f64, lambda: &mut [f64; 3]) {
-        for (kind, lambda) in lambda.iter_mut().enumerate() {
-            let (w, f) = self.deformation(x);
-            let (value, gradient) = match kind {
-                0 => (0.5 * (dot(w, w) - 1.), self.warp.map(|q| mul(w, q))),
-                1 => (0.5 * (dot(f, f) - 1.), self.weft.map(|q| mul(f, q))),
-                _ => (
-                    dot(w, f),
-                    std::array::from_fn(|i| add(mul(f, self.warp[i]), mul(w, self.weft[i]))),
+    fn local_energy(
+        &self,
+        x: [Vec3; 3],
+        correction: [Vec3; 3],
+        inverse_mass: [f64; 3],
+        dt_squared: f64,
+    ) -> f64 {
+        let inertia = correction
+            .into_iter()
+            .zip(inverse_mass)
+            .filter(|(_, weight)| *weight > 0.)
+            .map(|(p, weight)| dot(p, p) / weight)
+            .sum::<f64>();
+        let (w, f) = self.deformation(x);
+        let values = [0.5 * (dot(w, w) - 1.), 0.5 * (dot(f, f) - 1.), dot(w, f)];
+        0.5 * (inertia
+            + dt_squared
+                * values
+                    .into_iter()
+                    .zip(self.stiffness)
+                    .map(|(value, k)| k * value * value)
+                    .sum::<f64>())
+    }
+
+    pub fn solve(&self, x: &mut [Vec3], inverse_mass: &[f64], dt: f64, correction: &mut [Vec3; 3]) {
+        let positions = self.vertices.map(|v| x[v]);
+        let weights = self.vertices.map(|v| inverse_mass[v]);
+        let dt_squared = dt * dt;
+        let (w, f) = self.deformation(positions);
+        let values = [0.5 * (dot(w, w) - 1.), 0.5 * (dot(f, f) - 1.), dot(w, f)];
+        let gradients = [
+            self.warp.map(|q| mul(w, q)),
+            self.weft.map(|q| mul(f, q)),
+            std::array::from_fn(|i| add(mul(f, self.warp[i]), mul(w, self.weft[i]))),
+        ];
+        let matrix = std::array::from_fn(|i| {
+            std::array::from_fn(|j| {
+                (0..3)
+                    .map(|v| weights[v] * dot(gradients[i][v], gradients[j][v]))
+                    .sum::<f64>()
+                    + if i == j {
+                        self.stiffness[i].recip() / dt_squared
+                    } else {
+                        0.
+                    }
+            })
+        });
+        let rhs = std::array::from_fn(|i| {
+            (0..3)
+                .map(|v| dot(gradients[i][v], correction[v]))
+                .sum::<f64>()
+                - values[i]
+        });
+        let Some(multiplier) = solve_spd3(matrix, rhs) else {
+            return;
+        };
+        // Actual positional corrections retain the inertial anchor when nonlinear gradients rotate.
+        let direction: [Vec3; 3] = std::array::from_fn(|v| {
+            sub(
+                mul(
+                    (0..3).fold([0.; 3], |sum, i| {
+                        add(sum, mul(gradients[i][v], multiplier[i]))
+                    }),
+                    weights[v],
                 ),
-            };
-            project(
-                &self.vertices,
-                &gradient,
-                value,
-                self.stiffness[kind].recip() / (dt * dt),
-                lambda,
-                x,
-                inverse_mass,
-            );
+                correction[v],
+            )
+        });
+        let slope = (0..3)
+            .filter(|&v| weights[v] > 0.)
+            .map(|v| dot(correction[v], direction[v]) / weights[v])
+            .sum::<f64>()
+            + dt_squared
+                * (0..3)
+                    .map(|i| {
+                        self.stiffness[i]
+                            * values[i]
+                            * (0..3)
+                                .map(|v| dot(gradients[i][v], direction[v]))
+                                .sum::<f64>()
+                    })
+                    .sum::<f64>();
+        if !slope.is_finite() || slope >= 0. {
+            return;
+        }
+        let energy = self.local_energy(positions, *correction, weights, dt_squared);
+        let mut fraction = 1.;
+        // shortcut: cap local backtracking at 16; use a trust region if extreme compression stalls.
+        for _ in 0..16 {
+            let trial = std::array::from_fn(|v| add(positions[v], mul(direction[v], fraction)));
+            let trial_correction =
+                std::array::from_fn(|v| add(correction[v], sub(trial[v], positions[v])));
+            let trial_energy = self.local_energy(trial, trial_correction, weights, dt_squared);
+            if trial_energy.is_finite() && trial_energy <= energy + 1e-4 * fraction * slope {
+                for (v, position) in self.vertices.into_iter().zip(trial) {
+                    x[v] = position;
+                }
+                *correction = trial_correction;
+                return;
+            }
+            fraction *= 0.5;
         }
     }
+}
+
+fn solve_spd3(matrix: [[f64; 3]; 3], rhs: [f64; 3]) -> Option<[f64; 3]> {
+    let scale: [f64; 3] = std::array::from_fn(|i| matrix[i][i].sqrt());
+    if !scale.iter().all(|s| s.is_finite() && *s > 0.) {
+        return None;
+    }
+    let a: [[f64; 3]; 3] =
+        std::array::from_fn(|i| std::array::from_fn(|j| matrix[i][j] / scale[i] / scale[j]));
+    let b: [f64; 3] = std::array::from_fn(|i| rhs[i] / scale[i]);
+    let l00 = a[0][0].sqrt();
+    let l10 = a[1][0] / l00;
+    let l20 = a[2][0] / l00;
+    let l11 = (a[1][1] - l10 * l10).sqrt();
+    let l21 = (a[2][1] - l20 * l10) / l11;
+    let l22 = (a[2][2] - l20 * l20 - l21 * l21).sqrt();
+    if ![l00, l11, l22].iter().all(|s| s.is_finite() && *s > 0.) {
+        return None;
+    }
+    let y0 = b[0] / l00;
+    let y1 = (b[1] - l10 * y0) / l11;
+    let y2 = (b[2] - l20 * y0 - l21 * y1) / l22;
+    let z2 = y2 / l22;
+    let z1 = (y1 - l21 * z2) / l11;
+    let z0 = (y0 - l10 * z1 - l20 * z2) / l00;
+    let solution = [z0 / scale[0], z1 / scale[1], z2 / scale[2]];
+    solution.iter().all(|s| s.is_finite()).then_some(solution)
 }
 
 #[derive(Clone, Debug)]
