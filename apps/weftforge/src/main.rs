@@ -434,6 +434,66 @@ struct CutDraft {
     preview: Option<CutPreview>,
     error: Option<String>,
 }
+struct HolePreview {
+    fields: [String; 4],
+    project: Result<Project, String>,
+}
+struct HoleDraft {
+    piece: Id,
+    revision: u64,
+    fields: [String; 4],
+    input: RetainedInspectorInput,
+    field_focus: Option<egui::Id>,
+    epoch: u64,
+    preview: Option<HolePreview>,
+    error: Option<String>,
+}
+impl HoleDraft {
+    fn command(&self) -> Result<Command, String> {
+        let mut values = [0.; 4];
+        for (value, text) in values.iter_mut().zip(&self.fields) {
+            *value = text
+                .trim()
+                .parse::<f64>()
+                .map_err(|_| "Enter finite decimal coordinates and dimensions in metres.")?;
+            if !value.is_finite() {
+                return Err("Hole coordinates and dimensions must be finite.".into());
+            }
+        }
+        let [u, v, width, height] = values;
+        if width <= 0. || height <= 0. {
+            return Err("Hole width and height must be positive.".into());
+        }
+        Ok(Command::AddHole {
+            piece: self.piece,
+            vertices: vec![
+                [u, v],
+                [u, v + height],
+                [u + width, v + height],
+                [u + width, v],
+            ],
+        })
+    }
+    fn refresh(&mut self, project: &Project) {
+        if self
+            .preview
+            .as_ref()
+            .is_some_and(|preview| preview.fields == self.fields)
+        {
+            return;
+        }
+        self.error = None;
+        let candidate = self.command().and_then(|command| {
+            let mut editor = Editor::new(project.clone()).map_err(|error| error.to_string())?;
+            editor.execute(command).map_err(|error| error.to_string())?;
+            Ok(editor.project)
+        });
+        self.preview = Some(HolePreview {
+            fields: self.fields.clone(),
+            project: candidate,
+        });
+    }
+}
 impl CutDraft {
     fn command(&self) -> Result<Command, String> {
         let mut parameters = [0.; 2];
@@ -545,6 +605,7 @@ struct InspectorDraft {
     revision: u64,
     selected: Option<Id>,
     curve: Option<Curve>,
+    hole_endpoints: Option<[[f64; 2]; 2]>,
     applied_length: Option<Result<f64, String>>,
     dimensions: Option<[f64; 2]>,
     placement: Option<Placement>,
@@ -560,12 +621,35 @@ impl InspectorDraft {
             revision: project.revision,
             selected,
             curve: selected_curve.and_then(|id| project.curve(id)).cloned(),
+            hole_endpoints: selected_curve
+                .filter(|id| {
+                    piece.is_some_and(|piece| {
+                        piece.holes.iter().any(|hole| hole.boundary.contains(id))
+                    })
+                })
+                .and_then(|id| project.curve(id))
+                .map(|curve| {
+                    [curve.start, curve.end]
+                        .map(|id| project.point(id).expect("validated hole point").position)
+                }),
             applied_length: selected_curve.map(|curve| {
                 #[cfg(test)]
                 authored_length_tests::record_query();
-                project
-                    .interval_length(CurveInterval::full(curve))
-                    .map_err(|error| error.to_string())
+                if piece.is_some_and(|piece| {
+                    piece
+                        .holes
+                        .iter()
+                        .any(|hole| hole.boundary.contains(&curve))
+                }) {
+                    let curve = project.curve(curve).expect("validated hole curve");
+                    let [a, b] = [curve.start, curve.end]
+                        .map(|id| project.point(id).expect("validated hole point").position);
+                    Ok((b[0] - a[0]).hypot(b[1] - a[1]))
+                } else {
+                    project
+                        .interval_length(CurveInterval::full(curve))
+                        .map_err(|error| error.to_string())
+                }
             }),
             dimensions: piece
                 .and_then(|piece| project.piece_bounds(piece.id).ok())
@@ -589,6 +673,16 @@ impl InspectorDraft {
             .and_then(|piece| project.piece_bounds(piece.id).ok())
             .map(|[min, max]| std::array::from_fn(|axis| max[axis] - min[axis]));
         let mut commands = Vec::new();
+        if let (Some(curve), Some(endpoints)) = (original_curve, self.hole_endpoints) {
+            for (point, position) in [curve.start, curve.end].into_iter().zip(endpoints) {
+                if project
+                    .point(point)
+                    .is_some_and(|point| point.position != position)
+                {
+                    commands.push(Command::MovePoint { point, position });
+                }
+            }
+        }
         if self.curve.as_ref() != original_curve
             && let Some(curve) = &self.curve
         {
@@ -750,6 +844,7 @@ struct Studio {
     transform_gesture: Option<TransformGesture>,
     internal_line: Option<InternalLineDraft>,
     cut_piece: Option<CutDraft>,
+    hole: Option<HoleDraft>,
     drag_input: Option<RetainedInspectorInput>,
     drag_piece: Option<Id>,
     pattern_import: Option<PatternImportDraft>,
@@ -832,6 +927,7 @@ impl Studio {
             transform_gesture: None,
             internal_line: None,
             cut_piece: None,
+            hole: None,
             drag_input: None,
             drag_piece: None,
             pattern_import: None,
@@ -945,6 +1041,7 @@ impl Studio {
         self.transform_gesture = None;
         self.internal_line = None;
         self.cut_piece = None;
+        self.hole = None;
         self.drag_input = None;
         self.drag_piece = None;
     }
@@ -1030,7 +1127,8 @@ impl Studio {
     fn export_button(&self, ui: &mut egui::Ui, format: ExportFormat, label: &str) -> bool {
         let focused = self.inspector_focus(ui.ctx());
         let response = ui.button(label).on_hover_text(match format {
-            ExportFormat::Svg | ExportFormat::Dxf => "Exterior boundaries only; internal annotations stay in the native project.",
+            ExportFormat::Svg => "Compound pattern boundaries include holes; hole-aware SVG reimport is not yet supported. Internal annotations stay in the native project.",
+            ExportFormat::Dxf => "Exterior boundaries only; projects with holes are refused. Internal annotations stay in the native project.",
             ExportFormat::Obj => "Rest/current cloth surface only; no annotation line primitives. Save the native project to keep editable internal lines.",
         });
         let clicked = response.clicked();
@@ -1106,6 +1204,7 @@ impl Studio {
             || self.transform_gesture.is_some()
             || self.internal_line.is_some()
             || self.cut_piece.is_some()
+            || self.hole.is_some()
             || self.free_sewing.is_some()
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some();
@@ -1165,6 +1264,7 @@ impl Studio {
             self.draft = None;
             self.internal_line = None;
             self.cut_piece = None;
+            self.hole = None;
             self.drag_point = None;
             self.preview = None;
             self.drag_input = None;
@@ -1212,6 +1312,7 @@ impl Studio {
         if (self.selected != piece || self.selected_curve != curve) && self.commit_draft() {
             self.internal_line = None;
             self.cut_piece = None;
+            self.hole = None;
             self.selected = piece;
             self.selected_curve = curve;
         }
@@ -1262,6 +1363,7 @@ impl Studio {
         self.transform_gesture = None;
         self.internal_line = None;
         self.cut_piece = None;
+        self.hole = None;
         self.drag_point = None;
         self.preview = None;
         self.drag_input = None;
@@ -1289,9 +1391,7 @@ impl Studio {
             !self
                 .selected
                 .and_then(|id| self.editor.project.piece(id))
-                .is_some_and(|piece| {
-                    piece.boundary.contains(&curve) || piece.internal_curves.contains(&curve)
-                })
+                .is_some_and(|piece| piece.construction_curves().any(|id| *id == curve))
         }) {
             self.selected_curve = None;
         }
@@ -1475,7 +1575,11 @@ impl Studio {
         }
     }
     fn choose_open(&mut self) {
-        if self.free_sewing.is_none() && self.cut_piece.is_none() && !self.commit_draft() {
+        if self.free_sewing.is_none()
+            && self.cut_piece.is_none()
+            && self.hole.is_none()
+            && !self.commit_draft()
+        {
             return;
         }
         if self.dirty {
@@ -1685,7 +1789,7 @@ impl Studio {
             Ok(false) => "Export cancelled; pending edits retained.".into(),
             Ok(true) => match format {
                 ExportFormat::Dxf => "Exported exterior DXF boundaries in millimetres; internal annotations, sewing and materials stay in .weftforge.".into(),
-                ExportFormat::Svg => "Exported exterior SVG boundaries in millimetres; internal annotations stay in .weftforge.".into(),
+                ExportFormat::Svg => "Exported compound SVG boundaries, including holes, in millimetres; hole-aware reimport is not yet supported. Internal annotations stay in .weftforge.".into(),
                 ExportFormat::Obj => "Exported OBJ cloth surface in metres; internal annotations stay in .weftforge.".into(),
             },
             Err(error) => error,
@@ -1696,6 +1800,7 @@ impl Studio {
         self.free_sewing = None;
         self.internal_line = None;
         self.cut_piece = None;
+        self.hole = None;
         self.drag_point = None;
         self.preview = None;
         self.drag_input = None;
@@ -1750,7 +1855,11 @@ impl Studio {
         }
     }
     fn recover(&mut self, path: PathBuf) {
-        if self.free_sewing.is_none() && self.cut_piece.is_none() && !self.commit_draft() {
+        if self.free_sewing.is_none()
+            && self.cut_piece.is_none()
+            && self.hole.is_none()
+            && !self.commit_draft()
+        {
             return;
         }
         if self.dirty {
@@ -1764,7 +1873,7 @@ impl Studio {
             return;
         }
         let mut open = true;
-        egui::Window::new("Recover editable construction").enabled(self.rectangle.is_none() && self.transform.is_none() && self.sewing_edit.is_none() && self.pattern_import.is_none() && !self.free_sewing.as_ref().is_some_and(|draft| draft.modal) && !self.cut_piece.as_ref().is_some_and(|draft|draft.modal)).open(&mut open).default_width(520.0).show(ctx,|ui| {
+        egui::Window::new("Recover editable construction").enabled(self.rectangle.is_none() && self.transform.is_none() && self.sewing_edit.is_none() && self.pattern_import.is_none() && !self.free_sewing.as_ref().is_some_and(|draft| draft.modal) && !self.cut_piece.as_ref().is_some_and(|draft|draft.modal) && self.hole.is_none()).open(&mut open).default_width(520.0).show(ctx,|ui| {
             ui.label("Recovery opens a copy. Save current edits before replacing the document.");
             ui.horizontal(|ui| {
                 if ui.button("Refresh").clicked() { self.refresh_recovery(); }
@@ -2006,6 +2115,10 @@ impl Studio {
                     self.begin_cut_piece(ui.ctx());
                     ui.close();
                 }
+                if self.add_hole_button(ui).clicked() {
+                    self.open_hole(ui.ctx());
+                    ui.close();
+                }
                 if self.selected.is_none() { ui.small("Select an owner pattern first."); }
             });
             self.retain_inspector_input(&response, menu.is_some());
@@ -2039,7 +2152,8 @@ impl Studio {
                 ui.label("Transform keeps the arranged 3D surface and world warp fixed; placement rotation values may change.");
                 ui.label("Internal line: select an owner, then click start/end or enter precise endpoints.");
                 ui.label("Cut piece: select an owner and two straight boundaries, then review the independent pieces.");
-                ui.label("SVG and DXF export exterior boundaries only; OBJ exports cloth surfaces. Internal annotations stay in the native project.");
+                ui.label("Add hole…: select an owner, then review a numeric rectangular opening. Hole boundaries remain editable.");
+                ui.label("SVG exports compound boundaries with holes; hole-aware SVG reimport is not yet supported. DXF refuses holes; OBJ exports cloth surfaces. Internal annotations stay in the native project.");
                 ui.label("3D: drag to orbit; scroll to zoom.");
                 ui.label("Space plays or pauses simulation.");
                 ui.label("Enter confirms polygon or sewing; Escape cancels.");
@@ -2431,6 +2545,19 @@ impl Studio {
                                                 );
                                             }
                                         }
+                                        for hole in &piece.holes {
+                                            let response = ui.selectable_label(
+                                                self.selected_hole() == Some(hole.id),
+                                                format!("  Hole #{}", hole.id),
+                                            );
+                                            self.retain_inspector_input(&response, false);
+                                            if response.clicked() {
+                                                self.select_curve(
+                                                    ui.ctx(),
+                                                    Some((piece.id, hole.boundary[0])),
+                                                );
+                                            }
+                                        }
                                     },
                                 );
                             }
@@ -2442,6 +2569,7 @@ impl Studio {
         let mut acting = self.search
             || self.internal_line.is_some()
             || self.cut_piece.is_some()
+            || self.hole.is_some()
             || self.transform.is_some()
             || self.transform_gesture.is_some()
             || ((self.tool == Tool::Transform
@@ -2499,6 +2627,19 @@ impl Studio {
                             if ui.selectable_label(self.selected_curve==Some(*id),format!("Boundary {} · curve #{id}",index+1)).clicked() { self.select_curve(ui.ctx(), Some((piece.id,*id))); }
                         }
                     });
+                for hole in &piece.holes {
+                    ui.strong(format!("Hole #{} · {} edges",hole.id,hole.boundary.len()));
+                    egui::ComboBox::from_id_salt(("hole-curve",hole.id))
+                        .selected_text(self.selected_curve.filter(|curve| hole.boundary.contains(curve)).map_or("Choose hole edge".into(),|id|format!("Curve #{id}")))
+                        .show_ui(ui,|ui| {
+                            for (index,id) in hole.boundary.iter().enumerate() {
+                                let curve=self.editor.project.curve(*id).expect("validated hole edge");
+                                let response=ui.selectable_label(self.selected_curve==Some(*id),format!("Hole #{} · edge {} · curve #{id} · vertices #{} / #{}",hole.id,index+1,curve.start,curve.end));
+                                self.retain_inspector_input(&response,false);
+                                if response.clicked() { self.select_curve(ui.ctx(),Some((piece.id,*id))); }
+                            }
+                        });
+                }
                 if !piece.internal_curves.is_empty() {
                     ui.label("Internal annotations · owned by this pattern");
                     for curve in &piece.internal_curves {
@@ -2515,14 +2656,17 @@ impl Studio {
             let mut reverse=None;
             let mut edit_internal=None;
             let mut create_internal=false;
+            let mut create_hole=false;
             let mut remove_internal=None;
+            let mut remove_hole=None;
             let mut remove_piece=None;
             if let Some(piece)=self.selected.and_then(|id|self.editor.project.piece(id)).cloned() {
                 ui.separator(); ui.strong(format!("{} · #{}",piece.name,piece.id));
                 if let Some(curve)=&mut draft.curve {
                     ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id(("curve",curve.id))),|ui| {
                     let internal=piece.internal_curves.contains(&curve.id);
-                    ui.strong(if internal { format!("Internal line #{}",curve.id) } else { format!("Selected curve #{}",curve.id) });
+                    let hole=piece.holes.iter().find(|hole| hole.boundary.contains(&curve.id));
+                    ui.strong(if internal { format!("Internal line #{}",curve.id) } else if let Some(hole)=hole { format!("Hole #{} · curve #{}",hole.id,curve.id) } else { format!("Selected curve #{}",curve.id) });
                     let start=self.editor.project.point(curve.start).expect("validated curve start").position;
                     let end=self.editor.project.point(curve.end).expect("validated curve end").position;
                     ui.label(format!("P0 #{} · {:.6} / {:.6} m",curve.start,start[0],start[1]));
@@ -2536,6 +2680,23 @@ impl Studio {
                         acting|=response.is_pointer_button_down_on() || response.clicked();
                         if response.clicked() { remove_internal=Some(curve.id); }
                     } else {
+                    if let Some(hole)=hole {
+                        ui.small("Free material boundary · hole edges cannot be sewn or cut.");
+                        if let Some(points)=&mut draft.hole_endpoints {
+                            for (id,point) in [curve.start,curve.end].into_iter().zip(points) {
+                                for (axis,value) in ["U","V"].into_iter().zip(point) {
+                                    ui.horizontal(|ui| {
+                                        let label=ui.label(format!("Vertex #{id} {axis} m"));
+                                        commit|=numeric_commit(&ui.add(numeric_value(ui,value).speed(0.001)).labelled_by(label.id));
+                                    });
+                                }
+                            }
+                        }
+                        let response=ui.button("Remove hole");
+                        acting|=response.is_pointer_button_down_on() || response.clicked();
+                        if response.clicked() { remove_hole=Some(hole.id); }
+                    }
+                    if piece.holes.is_empty() {
                     let mut cubic=curve.controls.is_some();
                     if ui.checkbox(&mut cubic,"Cubic Bezier").changed() {
                         curve.controls=cubic.then(||[1.0/3.0,2.0/3.0].map(|t|std::array::from_fn(|axis|start[axis]+(end[axis]-start[axis])*t)));
@@ -2546,6 +2707,7 @@ impl Studio {
                             ui.label(format!("P{} control X / Y m",index+1));
                             ui.horizontal(|ui| { for value in point { commit|=numeric_commit(&ui.add(numeric_value(ui,value).speed(0.001))); } });
                         }
+                    }
                     }
                     ui.scope_builder(egui::UiBuilder::new().id(ui.make_persistent_id("split")),|ui| {
                         ui.horizontal(|ui| { ui.label("Split parameter t"); ui.add(numeric_value(ui,&mut self.split_t).speed(0.01)); });
@@ -2596,7 +2758,7 @@ impl Studio {
                     commit|=draft.color_pending && ui.input(|input|input.pointer.any_released());
                 }
                 });
-                let response=ui.button(if self.selected_internal_curve().is_some() { "Delete owner piece" } else { "Delete selected" });
+                let response=ui.button(if self.selected_internal_curve().is_some() || self.selected_hole().is_some() { "Delete owner piece" } else { "Delete selected" });
                 acting|=response.is_pointer_button_down_on() || response.clicked();
                 if response.clicked() { remove_piece=Some(piece.id); }
             }
@@ -2611,6 +2773,9 @@ impl Studio {
             if ui.button("Add rectangle").clicked() { acting=true; add_rectangle=true; }
             if ui.button("Add ellipse").clicked() { acting=true; add_ellipse=true; }
             if self.selected.is_some() {
+                let response=self.add_hole_button(ui);
+                acting|=response.is_pointer_button_down_on() || response.clicked();
+                if response.clicked() { create_hole=true; }
                 let response=ui.button("Internal line…");
                 acting|=response.is_pointer_button_down_on() || response.clicked();
                 if response.clicked() { create_internal=true; }
@@ -2736,9 +2901,11 @@ impl Studio {
             }
             });
             self.draft=Some(draft);
+            if create_hole { self.open_hole(ui.ctx()); }
             if create_internal { self.open_internal_line(ui.ctx(),None); }
             if let Some(curve)=edit_internal { self.open_internal_line(ui.ctx(),Some(curve)); }
             if let Some(curve)=remove_internal { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemoveInternalCurve { curve },action_focus); }
+            if let Some(hole)=remove_hole { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemoveHole { hole },action_focus); }
             if let Some(piece)=remove_piece { acting=true; self.apply_inspector_action(ui.ctx(),Command::RemovePiece { piece },action_focus); }
             if add_rectangle {
                 self.execute(Command::AddRectangle { name:self.name.clone(),origin:self.coordinate,width:self.size[0],height:self.size[1] });
@@ -2769,6 +2936,7 @@ impl Studio {
             && self.transform_gesture.is_none()
             && self.internal_line.is_none()
             && self.cut_piece.is_none()
+            && self.hole.is_none()
             && !opening_rectangle
             && self.commit_draft()
             && let Some(id) = action_focus
@@ -3137,6 +3305,182 @@ impl Studio {
         }
         draft.input.restore(ctx);
         self.free_sewing = Some(draft);
+    }
+    fn add_hole_button(&self, ui: &mut egui::Ui) -> egui::Response {
+        let eligible = self
+            .selected
+            .and_then(|id| self.editor.project.piece(id))
+            .is_some_and(|piece| piece.holes.is_empty());
+        let response = ui.add_enabled(eligible, egui::Button::new("Add hole…"));
+        self.retain_inspector_input(&response, false);
+        response
+    }
+    fn open_hole(&mut self, ctx: &egui::Context) {
+        if !self.allow_piece_selection(ctx) {
+            return;
+        }
+        let Some(piece) = self.selected.and_then(|id| self.editor.project.piece(id)) else {
+            self.message = "Select an owner pattern before adding a hole.".into();
+            return;
+        };
+        if !piece.holes.is_empty() {
+            self.message = "This increment supports one hole per pattern.".into();
+            return;
+        }
+        let piece = piece.id;
+        let Ok([min, max]) = self.editor.project.piece_bounds(piece) else {
+            return;
+        };
+        let size: [f64; 2] = std::array::from_fn(|axis| (max[axis] - min[axis]) / 3.);
+        let input = self.free_sewing_input(ctx);
+        self.set_tool(Tool::Select);
+        let draft = HoleDraft {
+            piece,
+            revision: self.editor.project.revision,
+            fields: [min[0] + size[0], min[1] + size[1], size[0], size[1]]
+                .map(|value| value.to_string()),
+            input,
+            field_focus: None,
+            epoch: ctx.cumulative_frame_nr(),
+            preview: None,
+            error: None,
+        };
+        ctx.input_mut(|input| input.consume_key(input.modifiers, egui::Key::Enter));
+        finish_numeric_action(ctx, draft.input.focus, false);
+        self.hole = Some(draft);
+    }
+    fn cancel_hole(&mut self, ctx: &egui::Context) {
+        if let Some(draft) = self.hole.take() {
+            if let Some(id) = draft.field_focus {
+                ctx.memory_mut(|memory| memory.surrender_focus(id));
+            }
+            if draft.revision == self.editor.project.revision && self.selected == Some(draft.piece)
+            {
+                draft.input.close_without_commit(ctx);
+            }
+            self.message = "Hole cancelled; construction unchanged.".into();
+        }
+    }
+    fn discard_stale_hole(&mut self) {
+        if self.hole.as_ref().is_some_and(|draft| {
+            draft.revision != self.editor.project.revision
+                || self.selected != Some(draft.piece)
+                || self.tool != Tool::Select
+                || !self
+                    .editor
+                    .project
+                    .piece(draft.piece)
+                    .is_some_and(|piece| piece.holes.is_empty())
+        }) {
+            self.hole = None;
+        }
+    }
+    fn hole_window(&mut self, ctx: &egui::Context) {
+        self.discard_stale_hole();
+        let Some(mut draft) = self.hole.take() else {
+            return;
+        };
+        let enter = ctx.input(|input| input.key_pressed(egui::Key::Enter))
+            && ctx.cumulative_frame_nr() > draft.epoch;
+        let mut accept = false;
+        let mut cancel = false;
+        let response=egui::Modal::new(egui::Id::new(("add-hole",draft.piece,draft.revision,draft.epoch))).show(ctx,|ui| {
+            ui.set_width(460.);
+            ui.heading("Review rectangular hole");
+            let piece=self.editor.project.piece(draft.piece).expect("current hole owner");
+            ui.label(format!("{} · #{} · revision {}",piece.name,piece.id,draft.revision));
+            ui.small("One opening in this editable pattern. Review the isolated candidate before applying.");
+            for (index,label) in ["Origin U m","Origin V m","Width m","Height m"].into_iter().enumerate() {
+                ui.horizontal(|ui| {
+                    let label=ui.label(label);
+                    let response=ui.add(egui::TextEdit::singleline(&mut draft.fields[index]).id_salt(("hole-field",index)).desired_width(180.)).labelled_by(label.id);
+                    if response.has_focus() || response.lost_focus() { draft.field_focus=Some(response.id); }
+                });
+            }
+            draft.refresh(&self.editor.project);
+            let preview=draft.preview.as_ref().expect("refreshed hole preview");
+            if let Ok(project)=&preview.project {
+                ui.label(format!("Candidate net area: {:.9} m²",straight_piece_area(project,draft.piece)));
+                let (response,painter)=ui.allocate_painter(Vec2::new(ui.available_width(),150.),Sense::hover());
+                let [min,max]=project.piece_bounds(draft.piece).expect("validated hole bounds");
+                let rect=response.rect.shrink(10.);
+                let scale=(f64::from(rect.width())/(max[0]-min[0])).min(f64::from(rect.height())/(max[1]-min[1]));
+                let owner=project.piece(draft.piece).expect("validated hole candidate");
+                for boundary in owner.boundary_loops() {
+                    let points=boundary.iter().map(|id| {
+                        let curve=project.curve(*id).expect("validated candidate boundary");
+                        let p=project.point(curve.start).expect("validated candidate vertex").position;
+                        rect.center()+Vec2::new(((p[0]-(min[0]+max[0])*0.5)*scale) as f32,(-((p[1]-(min[1]+max[1])*0.5)*scale)) as f32)
+                    }).collect();
+                    painter.add(egui::Shape::closed_line(points,Stroke::new(2.,Color32::GOLD)));
+                }
+            }
+            if let Some(error)=draft.error.as_ref().or_else(||preview.project.as_ref().err()) {
+                ui.colored_label(Color32::LIGHT_RED,error);
+            }
+            ui.horizontal(|ui| {
+                accept=ui.button("Apply hole").clicked();
+                cancel=ui.button("Cancel hole").clicked();
+            });
+        });
+        if cancel || response.should_close() {
+            self.hole = Some(draft);
+            self.cancel_hole(ctx);
+            return;
+        }
+        if accept || enter {
+            let command = draft.command().and_then(|command| {
+                draft
+                    .preview
+                    .as_ref()
+                    .expect("refreshed hole preview")
+                    .project
+                    .as_ref()
+                    .map_err(Clone::clone)?;
+                Ok(command)
+            });
+            match command {
+                Ok(command) if self.allow_piece_selection(ctx) => {
+                    if self.apply_command(command) {
+                        let hole = &self
+                            .editor
+                            .project
+                            .piece(draft.piece)
+                            .expect("accepted hole owner")
+                            .holes[0];
+                        self.selected_curve = Some(hole.boundary[0]);
+                        self.message = format!(
+                            "Added editable Hole #{}; owner piece #{} retained.",
+                            hole.id, draft.piece
+                        );
+                        if let Some(id) = draft.field_focus {
+                            ctx.memory_mut(|memory| memory.surrender_focus(id));
+                        }
+                        finish_numeric_action(ctx, draft.input.focus, true);
+                        return;
+                    }
+                    draft.error = Some(self.message.clone());
+                }
+                Ok(_) => draft.error = Some(self.message.clone()),
+                Err(error) => draft.error = Some(error),
+            }
+            if let Some(id) = draft.field_focus {
+                ctx.memory_mut(|memory| memory.request_focus(id));
+            }
+        }
+        draft.input.restore(ctx);
+        self.hole = Some(draft);
+    }
+    fn selected_hole(&self) -> Option<Id> {
+        let piece = self.selected.and_then(|id| self.editor.project.piece(id))?;
+        piece
+            .holes
+            .iter()
+            .find(|hole| {
+                self.selected_curve
+                    .is_some_and(|curve| hole.boundary.contains(&curve))
+            })
+            .map(|hole| hole.id)
     }
     fn begin_cut_piece(&mut self, ctx: &egui::Context) -> bool {
         if !self.allow_piece_selection(ctx) {
@@ -3863,6 +4207,7 @@ impl Studio {
         self.discard_stale_transform();
         self.discard_stale_internal_line();
         self.discard_stale_cut_piece();
+        self.discard_stale_hole();
         self.discard_stale_free_sewing();
         self.refresh_free_sewing();
         let gesture_paused = self.search
@@ -3989,58 +4334,60 @@ impl Studio {
             } else {
                 Color32::from_rgb(165, 180, 198)
             };
-            for id in &piece.boundary {
-                if let Some(curve) = doc.curve(*id) {
-                    let samples: Vec<_> = (0..=24)
-                        .filter_map(|i| curve.evaluate(&doc, i as f64 / 24.).ok())
-                        .map(|p| self.to_screen(p, r))
-                        .collect();
-                    if let Some(p) = pointer {
-                        for s in samples.windows(2) {
-                            let d = segment_distance(p, s[0], s[1]);
-                            if d < boundary_distance {
-                                boundary_distance = d;
-                                boundary_nearest = Some((piece.id, *id));
-                            }
-                            if d < distance {
-                                distance = d;
-                                nearest = Some((piece.id, *id));
+            for (loop_index, boundary) in piece.boundary_loops().enumerate() {
+                for id in boundary {
+                    if let Some(curve) = doc.curve(*id) {
+                        let samples: Vec<_> = (0..=24)
+                            .filter_map(|i| curve.evaluate(&doc, i as f64 / 24.).ok())
+                            .map(|p| self.to_screen(p, r))
+                            .collect();
+                        if let Some(p) = pointer {
+                            for s in samples.windows(2) {
+                                let d = segment_distance(p, s[0], s[1]);
+                                if loop_index == 0 && d < boundary_distance {
+                                    boundary_distance = d;
+                                    boundary_nearest = Some((piece.id, *id));
+                                }
+                                if d < distance {
+                                    distance = d;
+                                    nearest = Some((piece.id, *id));
+                                }
                             }
                         }
-                    }
-                    painter.add(egui::Shape::line(
-                        samples,
+                        painter.add(egui::Shape::line(
+                            samples,
+                            if self.selected_curve == Some(*id) {
+                                Stroke::new(4., Color32::GOLD)
+                            } else {
+                                Stroke::new(if selected { 2.5 } else { 1.5 }, color)
+                            },
+                        ));
                         if self.selected_curve == Some(*id) {
-                            Stroke::new(4., Color32::GOLD)
-                        } else {
-                            Stroke::new(if selected { 2.5 } else { 1.5 }, color)
-                        },
-                    ));
-                    if self.selected_curve == Some(*id) {
-                        if let Some([a, b]) = curve.controls {
-                            for (point, control) in [(curve.start, a), (curve.end, b)] {
-                                if let Some(point) = doc.point(point) {
-                                    painter.line_segment(
-                                        [
-                                            self.to_screen(point.position, r),
-                                            self.to_screen(control, r),
-                                        ],
-                                        Stroke::new(1., Color32::GOLD),
+                            if let Some([a, b]) = curve.controls {
+                                for (point, control) in [(curve.start, a), (curve.end, b)] {
+                                    if let Some(point) = doc.point(point) {
+                                        painter.line_segment(
+                                            [
+                                                self.to_screen(point.position, r),
+                                                self.to_screen(control, r),
+                                            ],
+                                            Stroke::new(1., Color32::GOLD),
+                                        );
+                                    }
+                                    painter.circle_stroke(
+                                        self.to_screen(control, r),
+                                        4.,
+                                        Stroke::new(1.5, Color32::GOLD),
                                     );
                                 }
-                                painter.circle_stroke(
-                                    self.to_screen(control, r),
-                                    4.,
-                                    Stroke::new(1.5, Color32::GOLD),
-                                );
+                            }
+                            if let Ok(point) = curve.evaluate(&doc, self.split_t) {
+                                painter.circle_filled(self.to_screen(point, r), 4., Color32::WHITE);
                             }
                         }
-                        if let Ok(point) = curve.evaluate(&doc, self.split_t) {
-                            painter.circle_filled(self.to_screen(point, r), 4., Color32::WHITE);
+                        if let Some(point) = doc.point(curve.start) {
+                            painter.circle_filled(self.to_screen(point.position, r), 3.5, color);
                         }
-                    }
-                    if let Some(point) = doc.point(curve.start) {
-                        painter.circle_filled(self.to_screen(point.position, r), 3.5, color);
                     }
                 }
             }
@@ -4422,7 +4769,12 @@ impl Studio {
             let piece = if rotating {
                 self.selected
             } else {
-                boundary_nearest.map(|(piece, _)| piece)
+                nearest
+                    .filter(|(piece, curve)| {
+                        doc.piece(*piece)
+                            .is_some_and(|piece| !piece.internal_curves.contains(curve))
+                    })
+                    .map(|(piece, _)| piece)
             };
             if let Some(piece) = piece
                 && self.select(ui.ctx(), Some(piece))
@@ -4486,15 +4838,11 @@ impl Studio {
                     .map(|p| p.0);
                 if let Some(point) = point {
                     let owner = doc.pieces.iter().find_map(|piece| {
-                        piece
-                            .boundary
-                            .iter()
-                            .chain(&piece.internal_curves)
-                            .find_map(|curve| {
-                                doc.curve(*curve)
-                                    .filter(|curve| curve.start == point || curve.end == point)
-                                    .map(|_| (piece.id, *curve))
-                            })
+                        piece.construction_curves().find_map(|curve| {
+                            doc.curve(*curve)
+                                .filter(|curve| curve.start == point || curve.end == point)
+                                .map(|_| (piece.id, *curve))
+                        })
                     });
                     if let Some((piece, curve)) = owner
                         && (self.selected == Some(piece)
@@ -4546,6 +4894,7 @@ impl Studio {
                         piece
                             .internal_curves
                             .iter()
+                            .chain(piece.holes.iter().flat_map(|hole| &hole.boundary))
                             .find(|id| {
                                 self.editor
                                     .project
@@ -4586,7 +4935,10 @@ impl Studio {
             match self.tool {
                 Tool::Select => self.select_curve(ui.ctx(), nearest),
                 Tool::Transform => {
-                    if let Some((piece, _)) = boundary_nearest {
+                    if let Some((piece, _)) = nearest.filter(|(piece, curve)| {
+                        doc.piece(*piece)
+                            .is_some_and(|piece| !piece.internal_curves.contains(curve))
+                    }) {
                         self.select(ui.ctx(), Some(piece));
                     }
                 }
@@ -4938,7 +5290,11 @@ impl Studio {
             painter.circle_filled(a, radius, c);
             painter.circle_filled(b, radius, c);
         }
-        if let Some(mesh) = &self.mesh {
+        if let Some(mesh) = self
+            .mesh
+            .as_ref()
+            .filter(|mesh| mesh.doc_revision == self.editor.project.revision)
+        {
             let positions = self
                 .cloth
                 .as_ref()
@@ -5002,7 +5358,13 @@ impl Studio {
         painter.text(
             r.left_top() + Vec2::splat(12.),
             egui::Align2::LEFT_TOP,
-            if self
+            if self.last_job.as_ref().is_some_and(|job| {
+                job.kind == JobKind::Mesh
+                    && job.revision == self.editor.project.revision
+                    && job.status == JobStatus::Failed
+            }) {
+                "REST MESH UNAVAILABLE · current construction retained"
+            } else if self
                 .mesh
                 .as_ref()
                 .is_some_and(|mesh| mesh.doc_revision != self.editor.project.revision)
@@ -5044,10 +5406,12 @@ impl eframe::App for Studio {
         self.discard_stale_free_sewing();
         self.discard_stale_internal_line();
         self.discard_stale_cut_piece();
+        self.discard_stale_hole();
         let authoring_modal = self.rectangle.is_some()
             || self.transform.is_some()
             || self.internal_line.as_ref().is_some_and(|edit| edit.modal)
             || self.cut_piece.as_ref().is_some_and(|draft| draft.modal)
+            || self.hole.is_some()
             || self.free_sewing.as_ref().is_some_and(|draft| draft.modal)
             || self.sewing_edit.is_some()
             || self.pattern_import.is_some();
@@ -5163,6 +5527,7 @@ impl eframe::App for Studio {
             if ctx.input(|i| i.key_pressed(egui::Key::Escape)) {
                 self.cancel_internal_line(&ctx);
                 self.cancel_cut_piece(&ctx);
+                self.cancel_hole(&ctx);
                 self.cancel_free_sewing(&ctx);
                 self.reset_gestures();
             }
@@ -5312,6 +5677,7 @@ impl eframe::App for Studio {
                         "Rectangle",
                         "Internal line",
                         "Cut piece",
+                        "Add hole…",
                         "Add ellipse",
                         "Sew edges",
                         "Free sewing",
@@ -5327,6 +5693,7 @@ impl eframe::App for Studio {
                             "Export OBJ" => self.export_button(ui, ExportFormat::Obj, label),
                             "Export SVG" => self.export_button(ui, ExportFormat::Svg, label),
                             "Export DXF" => self.export_button(ui, ExportFormat::Dxf, label),
+                            "Add hole…" => self.add_hole_button(ui).clicked(),
                             _ => ui.button(label).clicked(),
                         };
                         if clicked {
@@ -5353,6 +5720,7 @@ impl eframe::App for Studio {
                                 "Cut piece" => {
                                     self.begin_cut_piece(&ctx);
                                 }
+                                "Add hole…" => self.open_hole(&ctx),
                                 "Add ellipse" => {
                                     let focused = self.inspector_focus(&ctx);
                                     self.add_ellipse(&ctx, focused);
@@ -5376,6 +5744,7 @@ impl eframe::App for Studio {
         self.transform_window(&ctx);
         self.internal_line_window(&ctx);
         self.cut_piece_window(&ctx);
+        self.hole_window(&ctx);
         self.free_sewing_window(&ctx);
         self.sewing_group_window(&ctx);
         self.pattern_import_window(&ctx);
@@ -5936,6 +6305,9 @@ fn cut_piece_pick(
     let piece = project
         .piece(owner)
         .ok_or("Select an owner pattern before cutting a piece.")?;
+    if !piece.holes.is_empty() {
+        return Err("Cut piece does not yet support patterns with holes.".into());
+    }
     if !pointer.into_iter().all(f64::is_finite) || !radius.is_finite() || radius <= 0. {
         return Err("Choose a finite position on a straight owner boundary.".into());
     }
@@ -6020,18 +6392,22 @@ fn straight_piece_area(project: &Project, piece: Id) -> f64 {
         .expect("validated preview origin")
         .position;
     piece
-        .boundary
-        .iter()
-        .map(|id| {
-            let curve = project.curve(*id).expect("validated preview boundary");
-            let [a, b] = [curve.start, curve.end].map(|id| {
-                let point = project
-                    .point(id)
-                    .expect("validated preview endpoint")
-                    .position;
-                [point[0] - origin[0], point[1] - origin[1]]
-            });
-            a[0] * b[1] - a[1] * b[0]
+        .boundary_loops()
+        .map(|boundary| {
+            boundary
+                .iter()
+                .map(|id| {
+                    let curve = project.curve(*id).expect("validated preview boundary");
+                    let [a, b] = [curve.start, curve.end].map(|id| {
+                        let point = project
+                            .point(id)
+                            .expect("validated preview endpoint")
+                            .position;
+                        [point[0] - origin[0], point[1] - origin[1]]
+                    });
+                    a[0] * b[1] - a[1] * b[0]
+                })
+                .sum::<f64>()
         })
         .sum::<f64>()
         .abs()
@@ -15805,7 +16181,7 @@ mod cut_piece_tests {
             vec![action(button(&output, label), Action::Click, None)],
         );
     }
-    fn position(output: &egui::FullOutput, id: NodeId) -> Pos2 {
+    pub(super) fn position(output: &egui::FullOutput, id: NodeId) -> Pos2 {
         let bounds = output
             .platform_output
             .accesskit_update
@@ -15830,7 +16206,7 @@ mod cut_piece_tests {
         pointer_frame(ctx, app, point, Some(true), false);
         pointer_frame(ctx, app, point, Some(false), false);
     }
-    fn labelled(output: &egui::FullOutput, label: &str, role: Role) -> NodeId {
+    pub(super) fn labelled(output: &egui::FullOutput, label: &str, role: Role) -> NodeId {
         let nodes = &output
             .platform_output
             .accesskit_update
@@ -15852,7 +16228,12 @@ mod cut_piece_tests {
             .unwrap_or_else(|| panic!("missing {label}"))
             .0
     }
-    fn parameter(ctx: &egui::Context, app: &mut Studio, label: &str, text: &str) -> egui::Id {
+    pub(super) fn parameter(
+        ctx: &egui::Context,
+        app: &mut Studio,
+        label: &str,
+        text: &str,
+    ) -> egui::Id {
         let output = frame(ctx, app, vec![]);
         frame(
             ctx,
@@ -18417,5 +18798,431 @@ mod authored_length_tests {
                 if outcome == "accepted" { 2 } else { 1 }
             );
         }
+    }
+}
+
+#[cfg(test)]
+mod hole_tests {
+    fn next_id(project: &Project) -> u64 {
+        serde_json::from_slice::<serde_json::Value>(&project.to_json().unwrap()).unwrap()["project"]
+            ["next_id"]
+            .as_u64()
+            .unwrap()
+    }
+    use super::cut_piece_tests::{parameter, position};
+    use super::pattern_transform_tests::{
+        action, button, focus_property, frame, key, pointer_frame, set_field,
+    };
+    use super::*;
+    use egui::accesskit::{Action, ActionData};
+
+    fn fixture() -> (egui::Context, Studio) {
+        let ctx = egui::Context::default();
+        ctx.enable_accesskit();
+        let mut app = Studio::empty();
+        app.session_autosave = None;
+        app.editor
+            .execute(Command::AddRectangle {
+                name: "Original Hole R240".into(),
+                origin: [0.; 2],
+                width: 0.24,
+                height: 0.36,
+            })
+            .unwrap();
+        app.selected = Some(2);
+        app.center = [0.12, 0.18];
+        app.scale = 1000.;
+        (ctx, app)
+    }
+    fn click(ctx: &egui::Context, app: &mut Studio, label: &str) {
+        let output = frame(ctx, app, vec![]);
+        frame(
+            ctx,
+            app,
+            vec![action(button(&output, label), Action::Click, None)],
+        );
+    }
+    fn accept(ctx: &egui::Context, app: &mut Studio) {
+        click(ctx, app, "Add hole…");
+        click(ctx, app, "Apply hole");
+        assert!(app.hole.is_none());
+        assert_eq!(app.selected_hole(), Some(11));
+    }
+
+    #[test]
+    fn hole_menu_search_inspector_opening_return_reviews_then_one_later_apply_commits() {
+        for route in ["inspector", "menu", "search"] {
+            let (ctx, mut app) = fixture();
+            let original = app.editor.project.clone();
+            if route == "menu" {
+                click(&ctx, &mut app, "Create 2D");
+            }
+            if route == "search" {
+                app.search = true;
+                app.query = "hole".into();
+            }
+            let output = frame(&ctx, &mut app, vec![]);
+            frame(
+                &ctx,
+                &mut app,
+                vec![
+                    action(button(&output, "Add hole…"), Action::Click, None),
+                    key(egui::Key::Enter, egui::Modifiers::NONE),
+                ],
+            );
+            assert_eq!(app.editor.project, original);
+            assert!(!app.dirty);
+            let draft = app.hole.as_ref().expect("review opened");
+            let candidate = draft.preview.as_ref().unwrap().project.as_ref().unwrap();
+            assert!((straight_piece_area(candidate, 2) - 0.0768).abs() < 1e-14);
+            assert_eq!(candidate.pieces[0].holes[0].id, 11);
+            assert_eq!(next_id(&app.editor.project), 11);
+            assert!(app.mesh.is_none() && app.cloth.is_none());
+            if route == "search" {
+                frame(
+                    &ctx,
+                    &mut app,
+                    vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+                );
+            } else {
+                click(&ctx, &mut app, "Apply hole");
+            }
+            assert!(app.hole.is_none());
+            assert_eq!(app.editor.project.revision, 2);
+            assert_eq!(next_id(&app.editor.project), 20);
+            assert_eq!(
+                app.editor.project.pieces[0].holes[0].boundary,
+                vec![16, 17, 18, 19]
+            );
+            assert_eq!(app.selected_hole(), Some(11));
+            assert!(app.editor.undo());
+            assert!(app.editor.project.pieces[0].holes.is_empty());
+            assert_eq!(next_id(&app.editor.project), 20);
+            assert_eq!(app.editor.project.points, original.points);
+            assert_eq!(app.editor.project.curves, original.curves);
+        }
+    }
+
+    #[test]
+    fn hole_invalid_text_outside_apply_and_all_cancel_routes_preserve_caret_editor_and_outputs() {
+        for cancel in ["button", "escape", "backdrop"] {
+            let (ctx, mut app) = fixture();
+            app.editor
+                .execute(Command::SetGrain {
+                    piece: 2,
+                    angle: 0.37,
+                })
+                .unwrap();
+            app.editor
+                .execute(Command::SetResolution { metres: 0.03 })
+                .unwrap();
+            assert!(app.editor.undo());
+            let dir = std::env::temp_dir().join(format!(
+                "weftforge-hole-ui-{}-{}-{cancel}",
+                std::process::id(),
+                SystemTime::now()
+                    .duration_since(UNIX_EPOCH)
+                    .unwrap()
+                    .as_nanos()
+            ));
+            fs::create_dir(&dir).unwrap();
+            let path = dir.join("primary.weftforge");
+            app.editor.project.save(&path).unwrap();
+            app.path = Some(path.clone());
+            let primary = fs::read(&path).unwrap();
+            let output = frame(&ctx, &mut app, vec![]);
+            let backdrop = position(&output, button(&output, "Undo"));
+            let background =
+                ["Add rectangle", "Undo", "Select / edit"].map(|label| button(&output, label));
+            let numeric = output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .find(|(_, node)| node.numeric_value() == Some(0.37))
+                .unwrap()
+                .0;
+            let source = focus_property(&ctx, &mut app, "0.3700");
+            let source_caret = egui::TextEdit::load_state(&ctx, source)
+                .unwrap()
+                .cursor
+                .char_range();
+            click(&ctx, &mut app, "Add hole…");
+            let before = format!("{:?}", app.editor);
+            let field = parameter(&ctx, &mut app, "Origin U m", "1e-");
+            let caret = egui::TextEdit::load_state(&ctx, field)
+                .unwrap()
+                .cursor
+                .char_range();
+            let output = frame(&ctx, &mut app, vec![]);
+            let apply = position(&output, button(&output, "Apply hole"));
+            pointer_frame(&ctx, &mut app, apply, Some(true), false);
+            pointer_frame(&ctx, &mut app, apply, Some(false), false);
+            assert_eq!(app.hole.as_ref().unwrap().fields[0], "1e-");
+            assert!(app.hole.as_ref().unwrap().error.is_some());
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, field)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                caret
+            );
+            frame(&ctx, &mut app, vec![egui::Event::Text("0".into())]);
+            assert_eq!(app.hole.as_ref().unwrap().fields[0], "1e0-");
+            parameter(&ctx, &mut app, "Origin U m", "0.20");
+            click(&ctx, &mut app, "Apply hole");
+            assert!(app.hole.as_ref().unwrap().error.is_some());
+            assert_eq!(app.hole.as_ref().unwrap().fields[0], "0.20");
+            for id in background {
+                frame(&ctx, &mut app, vec![action(id, Action::Click, None)]);
+            }
+            for event in [
+                action(
+                    numeric,
+                    Action::SetValue,
+                    Some(ActionData::NumericValue(0.8)),
+                ),
+                key(egui::Key::S, egui::Modifiers::COMMAND),
+                key(egui::Key::O, egui::Modifiers::COMMAND),
+                key(egui::Key::Z, egui::Modifiers::COMMAND),
+                key(egui::Key::Space, egui::Modifiers::NONE),
+                key(egui::Key::K, egui::Modifiers::COMMAND),
+            ] {
+                frame(&ctx, &mut app, vec![event]);
+                assert_eq!(format!("{:?}", app.editor), before);
+                assert!(app.hole.is_some() && !app.dirty && !app.playing && !app.search);
+            }
+            match cancel {
+                "button" => click(&ctx, &mut app, "Cancel hole"),
+                "escape" => {
+                    frame(
+                        &ctx,
+                        &mut app,
+                        vec![key(egui::Key::Escape, egui::Modifiers::NONE)],
+                    );
+                }
+                "backdrop" => {
+                    pointer_frame(&ctx, &mut app, backdrop, Some(true), false);
+                    pointer_frame(&ctx, &mut app, backdrop, Some(false), false);
+                }
+                _ => unreachable!(),
+            }
+            for _ in 0..3 {
+                frame(&ctx, &mut app, vec![]);
+            }
+            assert!(app.hole.is_none() && app.editor.can_redo() && !app.dirty);
+            assert_eq!(format!("{:?}", app.editor), before);
+            assert_eq!(fs::read(&path).unwrap(), primary);
+            assert_eq!(
+                ctx.data_mut(|data| data.get_temp::<String>(source))
+                    .as_deref(),
+                Some("0.3700")
+            );
+            assert_eq!(
+                egui::TextEdit::load_state(&ctx, source)
+                    .unwrap()
+                    .cursor
+                    .char_range(),
+                source_caret
+            );
+            fs::remove_dir_all(dir).unwrap();
+        }
+    }
+
+    #[test]
+    fn hole_corner_numeric_edit_split_join_and_removal_keep_stable_identity_and_one_history_entry()
+    {
+        let (ctx, mut app) = fixture();
+        accept(&ctx, &mut app);
+        let original = app.editor.project.clone();
+        set_field(&ctx, &mut app, "Vertex #12 U m", 0.06);
+        assert_eq!(app.editor.project.revision, 3);
+        assert_eq!(app.editor.project.point(12).unwrap().position, [0.06, 0.12]);
+        assert_eq!(app.selected_hole(), Some(11));
+        assert!((straight_piece_area(&app.editor.project, 2) - 0.0756).abs() < 1e-14);
+        click(&ctx, &mut app, "Undo");
+        assert_eq!(app.editor.project.point(12).unwrap().position, [0.08, 0.12]);
+        click(&ctx, &mut app, "Redo");
+        assert_eq!(app.editor.project.revision, 5);
+        assert_eq!(app.editor.project.point(12).unwrap().position, [0.06, 0.12]);
+        click(&ctx, &mut app, "Undo");
+        let output = frame(&ctx, &mut app, vec![]);
+        assert!(
+            !output
+                .platform_output
+                .accesskit_update
+                .as_ref()
+                .unwrap()
+                .nodes
+                .iter()
+                .any(|(_, node)| node.label() == Some("Cubic Bezier")
+                    && node.supports_action(Action::Click))
+        );
+        click(&ctx, &mut app, "Split selected curve");
+        assert_eq!(
+            app.editor.project.pieces[0].holes[0].boundary,
+            vec![16, 21, 17, 18, 19]
+        );
+        assert_eq!(app.selected_hole(), Some(11));
+        click(&ctx, &mut app, "Join with next boundary");
+        assert_eq!(
+            app.editor.project.pieces[0].holes[0],
+            original.pieces[0].holes[0]
+        );
+        assert_eq!(app.selected_hole(), Some(11));
+        click(&ctx, &mut app, "Remove hole");
+        assert_eq!(app.editor.project.pieces.len(), 1);
+        assert!(app.editor.project.pieces[0].holes.is_empty());
+        assert_eq!(next_id(&app.editor.project), 22);
+        click(&ctx, &mut app, "Undo");
+        assert_eq!(app.editor.project.pieces[0].holes[0].id, 11);
+        assert_eq!(
+            app.editor.project.pieces[0].holes[0].boundary,
+            vec![16, 17, 18, 19]
+        );
+        app.select_curve(&ctx, Some((2, 16)));
+        let before = format!("{:?}", app.editor);
+        set_field(&ctx, &mut app, "Vertex #12 U m", 0.4);
+        assert_eq!(format!("{:?}", app.editor), before);
+        assert_eq!(app.selected_hole(), Some(11));
+    }
+
+    #[test]
+    fn hole_edges_pick_and_drag_as_boundaries_but_never_enter_sewing_or_cut() {
+        let (ctx, mut app) = fixture();
+        accept(&ctx, &mut app);
+        app.selected_curve = None;
+        frame(&ctx, &mut app, vec![]);
+        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        let midpoint = app.to_screen([0.08, 0.18], rect);
+        pointer_frame(&ctx, &mut app, midpoint, Some(true), false);
+        pointer_frame(&ctx, &mut app, midpoint, Some(false), false);
+        assert_eq!(app.selected_curve, Some(16));
+        assert_eq!(app.selected_boundary_curve(), None);
+        assert_eq!(app.selected_hole(), Some(11));
+        assert_eq!(
+            free_sewing_pick(&app.editor.project, [0.08, 0.18], 0.012, Some(16), None),
+            None
+        );
+        assert!(
+            cut_piece_pick(&app.editor.project, 2, [0.12, 0.], 0.012)
+                .unwrap_err()
+                .contains("holes")
+        );
+        let original = app.editor.project.clone();
+        for tool in [Tool::Sew, Tool::SewingPaths, Tool::FreeSewing] {
+            app.set_tool(tool);
+            pointer_frame(&ctx, &mut app, midpoint, Some(true), false);
+            pointer_frame(&ctx, &mut app, midpoint, Some(false), false);
+            assert!(
+                app.seam_start.is_none()
+                    && app.sewing_draft.a.is_empty()
+                    && app.free_sewing.is_none()
+            );
+            assert_eq!(app.editor.project, original);
+        }
+        app.set_tool(Tool::Select);
+        app.position_snap = PositionSnap::Mm1;
+        frame(&ctx, &mut app, vec![]);
+        let rect = ctx.read_response(app.pattern_canvas.unwrap()).unwrap().rect;
+        let start = app.to_screen([0.08, 0.12], rect);
+        let end = app.to_screen([0.06, 0.12], rect);
+        pointer_frame(&ctx, &mut app, start, Some(true), false);
+        pointer_frame(&ctx, &mut app, end, None, false);
+        pointer_frame(&ctx, &mut app, end, Some(false), false);
+        assert!(
+            (app.editor.project.point(12).unwrap().position[0] - 0.06).abs() < 1e-12,
+            "{:?} / {} / drag {:?}",
+            app.editor.project.point(12),
+            app.message,
+            app.drag_point
+        );
+        assert_eq!(app.selected_hole(), Some(11));
+        assert_eq!(app.editor.project.revision, 3);
+    }
+
+    #[test]
+    fn hole_stale_sources_and_history_load_reset_lifecycles_cannot_publish_preview() {
+        for change in ["revision", "selection", "tool", "history", "reset", "new"] {
+            let (ctx, mut app) = fixture();
+            click(&ctx, &mut app, "Add hole…");
+            let original = app.editor.project.clone();
+            match change {
+                "revision" => {
+                    app.editor
+                        .execute(Command::SetResolution { metres: 0.03 })
+                        .unwrap();
+                }
+                "selection" => app.selected = None,
+                "tool" => app.set_tool(Tool::Polygon),
+                "history" => app.history(&ctx, false),
+                "reset" => app.reset_gestures(),
+                "new" => {
+                    app.new_empty(&ctx, None);
+                    assert_eq!(app.editor.project, original);
+                    app.reset_gestures();
+                }
+                _ => unreachable!(),
+            }
+            frame(
+                &ctx,
+                &mut app,
+                vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+            );
+            assert!(app.hole.is_none(), "{change}");
+            assert!(
+                app.editor
+                    .project
+                    .pieces
+                    .iter()
+                    .all(|piece| piece.holes.is_empty())
+            );
+            assert_eq!(next_id(&app.editor.project), 11);
+        }
+        let (ctx, mut app) = fixture();
+        let dir = std::env::temp_dir().join(format!(
+            "weftforge-hole-load-ui-{}-{}",
+            std::process::id(),
+            SystemTime::now()
+                .duration_since(UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        fs::create_dir(&dir).unwrap();
+        let path = dir.join("same-revision.weftforge");
+        app.editor.project.save(&path).unwrap();
+        click(&ctx, &mut app, "Add hole…");
+        let before = format!("{:?}", app.editor);
+        app.load_document(dir.join("missing.weftforge"), false);
+        assert!(app.hole.is_some());
+        assert_eq!(format!("{:?}", app.editor), before);
+        app.load_document(path.clone(), false);
+        frame(
+            &ctx,
+            &mut app,
+            vec![key(egui::Key::Enter, egui::Modifiers::NONE)],
+        );
+        assert!(app.hole.is_none() && app.editor.project.pieces[0].holes.is_empty());
+        app.selected = Some(2);
+        accept(&ctx, &mut app);
+        app.editor.project.save(&path).unwrap();
+        app.load_document(path, false);
+        assert!(app.hole.is_none() && app.selected_curve.is_none());
+        app.select_curve(&ctx, Some((2, 16)));
+        assert_eq!(app.selected_hole(), Some(11));
+        assert_eq!(next_id(&app.editor.project), 20);
+        fs::remove_dir_all(dir).unwrap();
+        let (ctx, mut app) = fixture();
+        app.mesh = Some(Arc::new(app.editor.project.mesh().unwrap()));
+        accept(&ctx, &mut app);
+        assert!(
+            app.mesh
+                .as_ref()
+                .is_some_and(|mesh| mesh.doc_revision != app.editor.project.revision)
+        );
+        let output = ctx.run_ui(egui::RawInput::default(), |ui| app.garment(ui));
+        assert!(!output.shapes.iter().any(|shape| matches!(shape.shape,egui::Shape::Path(ref path) if path.fill!=Color32::TRANSPARENT)));
     }
 }

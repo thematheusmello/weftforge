@@ -30,7 +30,7 @@ The libraries do not depend on egui, a browser, Python, REA, or commercial SDKs.
 
 ## Authored geometry, rest mesh and state
 
-Every point, curve, piece, material, seam and sewing group has a stable integer ID. Curves
+Every point, curve, piece, hole, material, seam and sewing group has a stable integer ID. Curves
 reference authored points and optional absolute Bezier control coordinates.
 Piece boundaries are ordered closed chains. Each piece also owns an explicit
 `internal_curves` array of independent straight annotations backed by dedicated
@@ -39,7 +39,23 @@ coincident coordinates do not create shared topology. These lines are editable
 construction with no cut, hole, fold, sewing, mass or simulation effect. Boundary
 controls/split/join and every sewing route reject internal targets. Resize, rigid
 transform and removal traverse both endpoints, while bounds, mesh construction
-and SVG/DXF exports use the exterior only. OBJ contains no annotation primitives.
+and exports omit annotations. OBJ contains no annotation primitives.
+
+Each piece also owns a required `holes` array. The first supported increment permits
+one simple straight hole in a simple straight exterior, with a stable Hole ID and
+an oppositely wound closed chain of ordinary Curve/Point IDs. Shared boundary-loop
+traversal keeps rendering, picking, split/join, resize, transform and removal
+consistent. Annotations must remain outside the closed hole. Sewing still accepts
+only exterior curves; cutting a holed piece refuses. The
+[hole contract](../spec/features/PAT-006-straight-hole.md) defines validation,
+clearance, work limits and the unsupported curved/multiple-hole cases.
+
+Meshing passes both sampled loops and their actual vertex offsets to earcut.
+Collinear recovery restores authored contour edges even when the hole bridge
+already uses their intermediate vertex. Refinement preserves both free boundaries;
+the existing triangle-area masses and two-face bending operate on the annulus.
+SVG writes one compound evenodd outline per piece; its current importer rejects
+hole subpaths. The current DXF profile refuses holed projects before staging.
 
 Annotation validation establishes whole-segment separation from a certified
 curved-contour polyline, independently of mesh resolution: 1e-6 m clearance,
@@ -55,9 +71,9 @@ It splits two distinct boundary edges, duplicates their new anchor points and
 closes each child with its own chord. Material, placement and grain are retained;
 there is no persistent link between the two cut edges. One command is one history
 entry. Target sewing refuses the whole cut; annotations must fit wholly inside
-exactly one child or the cut refuses. A separate one-million-step budget covers
-authored straight-contour/chord/assignment predicates across the outer transaction,
-independently of mesh resolution. The [straight-cut contract](../spec/features/PAT-006-straight-cut.md)
+exactly one child or the cut refuses. A shared one-million-step budget covers
+authored straight-contour/chord/assignment predicates and final hole/annotation
+validation across the outer transaction, independently of mesh resolution. The [straight-cut contract](../spec/features/PAT-006-straight-cut.md)
 defines numeric margins, ownership, nine-ID allocation and current eligibility.
 
 A seam stores two oriented [t0,t1]
@@ -69,7 +85,7 @@ normalized cumulative arc lengths. Each interval retains its curve t endpoints;
 gaps between disconnected spans add no length. Both one-sided endpoints at a
 path knot survive. Metric work is bounded, with a1e-8m authored-path budget and
 explicit errors for exhausted work or unsupported floating-point precision.
-Native v4 saves legacy seams, groups and owned internal annotations; strict older-format migration
+Native v5 saves legacy seams, groups, owned annotations and holes; strict v1–v4 migration
 does not reinterpret legacy correspondence.
 
 The rebuildable rest mesh has material coordinates, physical arranged positions,

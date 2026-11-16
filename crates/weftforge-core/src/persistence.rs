@@ -23,7 +23,7 @@ pub(crate) struct ImportedPattern {
     pub controls: Vec<Option<[[f64; 2]; 2]>>,
 }
 
-pub const FORMAT_VERSION: u32 = 4;
+pub const FORMAT_VERSION: u32 = 5;
 pub const MAX_PROJECT_BYTES: u64 = 16 * 1024 * 1024;
 static TEMP_ID: AtomicU64 = AtomicU64::new(0);
 
@@ -114,6 +114,65 @@ impl From<ProjectV3> for Project {
 
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
+struct ProjectV4 {
+    revision: u64,
+    points: Vec<Point>,
+    curves: Vec<Curve>,
+    pieces: Vec<PieceV4>,
+    materials: Vec<Material>,
+    seams: Vec<Seam>,
+    sewing_groups: Vec<crate::SewingGroup>,
+    mannequin: Mannequin,
+    resolution: f64,
+    next_id: Id,
+}
+
+impl From<ProjectV4> for Project {
+    fn from(old: ProjectV4) -> Self {
+        Self {
+            revision: old.revision,
+            points: old.points,
+            curves: old.curves,
+            pieces: old.pieces.into_iter().map(Into::into).collect(),
+            materials: old.materials,
+            seams: old.seams,
+            sewing_groups: old.sewing_groups,
+            mannequin: old.mannequin,
+            resolution: old.resolution,
+            next_id: old.next_id,
+        }
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct PieceV4 {
+    id: Id,
+    name: String,
+    boundary: Vec<Id>,
+    internal_curves: Vec<Id>,
+    placement: Placement,
+    material: Id,
+    grain_angle: f64,
+}
+
+impl From<PieceV4> for Piece {
+    fn from(old: PieceV4) -> Self {
+        Self {
+            id: old.id,
+            name: old.name,
+            boundary: old.boundary,
+            holes: Vec::new(),
+            internal_curves: old.internal_curves,
+            placement: old.placement,
+            material: old.material,
+            grain_angle: old.grain_angle,
+        }
+    }
+}
+
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
 struct PieceV2V3 {
     id: Id,
     name: String,
@@ -129,6 +188,7 @@ impl From<PieceV2V3> for Piece {
             id: old.id,
             name: old.name,
             boundary: old.boundary,
+            holes: Vec::new(),
             internal_curves: Vec::new(),
             placement: old.placement,
             material: old.material,
@@ -175,6 +235,7 @@ impl From<ProjectV1> for Project {
                     id: piece.id,
                     name: piece.name,
                     boundary: piece.boundary,
+                    holes: Vec::new(),
                     internal_curves: Vec::new(),
                     placement: piece.placement,
                     material: piece.material,
@@ -245,6 +306,9 @@ impl Project {
                 .project
                 .into(),
             3 => serde_json::from_slice::<Document<ProjectV3>>(bytes)?
+                .project
+                .into(),
+            4 => serde_json::from_slice::<Document<ProjectV4>>(bytes)?
                 .project
                 .into(),
             FORMAT_VERSION => serde_json::from_slice::<Document>(bytes)?.project,
@@ -330,56 +394,64 @@ impl Project {
         let width = (max[0] - min[0]) * 1000.0;
         let height = (max[1] - min[1]) * 1000.0;
         let mut svg = format!(
-            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width}mm\" height=\"{height}mm\" viewBox=\"{} {} {width} {height}\">\n<title>WeftForge editable pattern export</title>\n<desc>Scale: one SVG user unit is one millimetre. Pattern V points upward; SVG Y is inverted. Exterior boundaries only; internal annotations are omitted.</desc>\n",
+            "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width}mm\" height=\"{height}mm\" viewBox=\"{} {} {width} {height}\">\n<title>WeftForge editable pattern export</title>\n<desc>Scale: one SVG user unit is one millimetre. Pattern V points upward; SVG Y is inverted. Each piece uses one evenodd path with closed exterior and hole subpaths; internal annotations are omitted. Compound paths with holes cannot yet be reimported.</desc>\n",
             min[0] * 1000.0,
             -max[1] * 1000.0
         );
         for piece in &self.pieces {
             let mut data = String::new();
-            for (index, id) in piece.boundary.iter().enumerate() {
-                let curve = self
-                    .curve(*id)
-                    .ok_or_else(|| Error("Missing boundary curve".into()))?;
-                let a = self
-                    .point(curve.start)
-                    .ok_or_else(|| Error("Missing point".into()))?
-                    .position;
-                let b = self
-                    .point(curve.end)
-                    .ok_or_else(|| Error("Missing point".into()))?
-                    .position;
-                if index == 0 {
-                    write!(data, "M {} {} ", a[0] * 1000.0, -a[1] * 1000.0)
+            for boundary in piece.boundary_loops() {
+                for (index, id) in boundary.iter().enumerate() {
+                    let curve = self
+                        .curve(*id)
+                        .ok_or_else(|| Error("Missing boundary curve".into()))?;
+                    let a = self
+                        .point(curve.start)
+                        .ok_or_else(|| Error("Missing point".into()))?
+                        .position;
+                    let b = self
+                        .point(curve.end)
+                        .ok_or_else(|| Error("Missing point".into()))?
+                        .position;
+                    if index == 0 {
+                        write!(data, "M {} {} ", a[0] * 1000.0, -a[1] * 1000.0)
+                            .expect("Writing a String cannot fail");
+                    }
+                    if let Some([c, d]) = curve.controls {
+                        write!(
+                            data,
+                            "C {} {} {} {} {} {} ",
+                            c[0] * 1000.0,
+                            -c[1] * 1000.0,
+                            d[0] * 1000.0,
+                            -d[1] * 1000.0,
+                            b[0] * 1000.0,
+                            -b[1] * 1000.0
+                        )
                         .expect("Writing a String cannot fail");
+                    } else {
+                        write!(data, "L {} {} ", b[0] * 1000.0, -b[1] * 1000.0)
+                            .expect("Writing a String cannot fail");
+                    }
                 }
-                if let Some([c, d]) = curve.controls {
-                    write!(
-                        data,
-                        "C {} {} {} {} {} {} ",
-                        c[0] * 1000.0,
-                        -c[1] * 1000.0,
-                        d[0] * 1000.0,
-                        -d[1] * 1000.0,
-                        b[0] * 1000.0,
-                        -b[1] * 1000.0
-                    )
-                    .expect("Writing a String cannot fail");
-                } else {
-                    write!(data, "L {} {} ", b[0] * 1000.0, -b[1] * 1000.0)
-                        .expect("Writing a String cannot fail");
-                }
+                data.push_str("Z ");
             }
-            writeln!(svg,"<path id=\"piece-{}\" data-name=\"{}\" d=\"{}Z\" fill=\"none\" stroke=\"black\" stroke-width=\"0.3\"/> ",piece.id,xml_escape(&piece.name),data).expect("Writing a String cannot fail");
+            writeln!(svg,"<path id=\"piece-{}\" data-name=\"{}\" d=\"{}\" fill=\"none\" fill-rule=\"evenodd\" stroke=\"black\" stroke-width=\"0.3\"/> ",piece.id,xml_escape(&piece.name),data.trim_end()).expect("Writing a String cannot fail");
         }
         svg.push_str("</svg>\n");
         StagedFile::write(path.as_ref(), svg.as_bytes())?.replace(path.as_ref())
     }
 
     /// Exports authored pattern boundaries in millimetres, using the FILE-005-v1
-    /// ASCII R2000 profile. Sewing, materials, placement and simulation are omitted.
+    /// ASCII R2000 profile. Holes are unsupported; sewing, materials, placement
+    /// and simulation are omitted.
     pub fn export_dxf(&self, path: impl AsRef<Path>) -> Result<()> {
         export_path_guard(path.as_ref())?;
         self.validate()?;
+        ensure(
+            self.pieces.iter().all(|piece| piece.holes.is_empty()),
+            "DXF v1 export does not support holes; save native v5 or export SVG/OBJ instead",
+        )?;
         let dxf = dxf::render(self)?;
         StagedFile::write(path.as_ref(), dxf.as_bytes())?.replace(path.as_ref())
     }
@@ -740,6 +812,18 @@ mod tests {
         editor.project.save(&path).unwrap();
         assert_eq!(Project::load(&path).unwrap(), editor.project);
         assert!(Project::recover(&path).unwrap().pieces.is_empty());
+        let prior_primary = fs::read(&path).unwrap();
+        editor
+            .execute(Command::AddHole {
+                piece: 2,
+                vertices: vec![[0.1, 0.1], [0.1, 0.2], [0.2, 0.2], [0.2, 0.1]],
+            })
+            .unwrap();
+        assert!(editor.project.save_impl(&path, true).is_err());
+        assert_eq!(fs::read(&path).unwrap(), prior_primary);
+        assert_eq!(fs::read(recovery_path(&path)).unwrap(), prior_primary);
+        editor.project.save(&path).unwrap();
+        assert_eq!(Project::load(&path).unwrap(), editor.project);
         let valid = fs::read(&path).unwrap();
         editor.project.resolution = f64::NAN;
         assert!(editor.project.save(&path).is_err());

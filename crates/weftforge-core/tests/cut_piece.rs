@@ -1125,7 +1125,7 @@ fn ordinary_v4_exports_have_both_exterior_copies_independent_obj_components_and_
     let bytes = fs::read(&primary).unwrap();
     assert_eq!(
         serde_json::from_slice::<serde_json::Value>(&bytes).unwrap()["version"],
-        4
+        weftforge_core::FORMAT_VERSION
     );
     let loaded = Project::load(&primary).unwrap();
     assert_eq!(wire(&loaded), accepted);

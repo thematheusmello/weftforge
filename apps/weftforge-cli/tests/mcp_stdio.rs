@@ -192,7 +192,7 @@ fn cut_piece_closed_schema_cli_mcp_and_same_path_atomic_refusals() {
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 29);
+    assert_eq!(variants.len(), 31);
     let cut = variants
         .iter()
         .filter(|variant| variant["properties"]["type"]["const"] == "cut_piece")
@@ -522,7 +522,7 @@ fn stdio_authors_atomic_shared_commands_and_exports_physical_units() {
             .as_array()
             .unwrap()
             .len(),
-        29
+        31
     );
     success(&server.call("project_create", json!({"output":project_path})));
     let initial = server.call("project_inspect", json!({"path":project_path}));
@@ -659,7 +659,7 @@ fn sewing_groups_share_cli_and_mcp_transactions_and_inspect_actual_rest_constrai
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 29);
+    assert_eq!(variants.len(), 31);
     for name in [
         "add_sewing_group",
         "update_sewing_group",
@@ -884,7 +884,7 @@ fn physical_length_sewing_schema_and_cli_mcp_use_the_shared_candidate_transactio
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 29);
+    assert_eq!(variants.len(), 31);
     let variant = variants
         .iter()
         .find(|variant| variant["properties"]["type"]["const"] == "add_sewing_by_length")
@@ -2321,7 +2321,7 @@ fn internal_annotations_share_closed_schema_cli_and_mcp_transactions_without_new
         .unwrap()["inputSchema"]["properties"]["commands"]["items"]["oneOf"]
         .as_array()
         .unwrap();
-    assert_eq!(variants.len(), 29);
+    assert_eq!(variants.len(), 31);
     for (name, required, id_field) in [
         (
             "add_internal_segment",
@@ -2360,7 +2360,7 @@ fn internal_annotations_share_closed_schema_cli_and_mcp_transactions_without_new
     assert_eq!(saved.pieces[0].internal_curves, [13]);
     assert_eq!(
         serde_json::from_slice::<Value>(&fs::read(&mcp_path).unwrap()).unwrap()["version"],
-        4
+        weftforge_core::FORMAT_VERSION
     );
     let inspected = server.call("project_inspect", json!({"path":mcp_path}));
     assert_eq!(success(&inspected)["project"], native_project_json(&saved));
@@ -2479,5 +2479,209 @@ fn internal_annotations_share_closed_schema_cli_and_mcp_transactions_without_new
     let removed = Project::load(&mcp_path).unwrap();
     assert!(removed.pieces[0].internal_curves.is_empty());
     assert_eq!(removed.points.len(), 4);
+    server.finish();
+}
+
+#[test]
+fn straight_holes_keep_closed_discovery_shared_ids_and_atomic_refusal() {
+    let directory = Directory::new();
+    let path = directory.path("annulus.weftforge");
+    let refused = directory.path("retained.weftforge");
+    let original =
+        include_bytes!("../../../crates/weftforge-core/tests/fixtures/original-cut-r240.weftforge");
+    let backup = Project::default().to_json().unwrap();
+    for target in [&path, &refused] {
+        fs::write(target, original).unwrap();
+        fs::write(recovery_path(target), &backup).unwrap();
+    }
+    let mut server = Server::start();
+    server.initialize("2025-11-25");
+    let listed = server.request("tools/list", json!({}));
+    let tools = listed["result"]["tools"].as_array().unwrap();
+    assert_eq!(tools.len(), 9);
+    let execute = tools
+        .iter()
+        .find(|tool| tool["name"] == "project_execute")
+        .unwrap();
+    let commands = &execute["inputSchema"]["properties"]["commands"];
+    assert_eq!(commands["minItems"], 1);
+    assert_eq!(commands["maxItems"], 1024);
+    let variants = commands["items"]["oneOf"].as_array().unwrap();
+    assert_eq!(variants.len(), 31);
+    for (name, required, id) in [
+        ("add_hole", json!(["piece", "vertices"]), "piece"),
+        ("remove_hole", json!(["hole"]), "hole"),
+    ] {
+        let matching = variants
+            .iter()
+            .filter(|variant| variant["properties"]["type"]["const"] == name)
+            .collect::<Vec<_>>();
+        assert_eq!(matching.len(), 1);
+        let variant = matching[0];
+        assert_eq!(variant["required"], json!(["type", "data"]));
+        assert_eq!(variant["additionalProperties"], false);
+        let data = &variant["properties"]["data"];
+        assert_eq!(data["required"], required);
+        assert_eq!(data["additionalProperties"], false);
+        assert_eq!(
+            data["properties"].as_object().unwrap().len(),
+            required.as_array().unwrap().len()
+        );
+        assert_eq!(data["properties"][id]["type"], "integer");
+        assert_eq!(data["properties"][id]["minimum"], 1);
+        assert_eq!(data["properties"][id]["maximum"], u64::MAX);
+        if name == "add_hole" {
+            let vertices = &data["properties"]["vertices"];
+            assert_eq!(vertices["minItems"], 3);
+            assert_eq!(vertices["maxItems"], 4096);
+            assert_eq!(vertices["items"]["minItems"], 2);
+            assert_eq!(vertices["items"]["maxItems"], 2);
+            assert_eq!(vertices["items"]["items"]["type"], "number");
+            assert_eq!(vertices["items"]["items"]["minimum"], -1000);
+            assert_eq!(vertices["items"]["items"]["maximum"], 1000);
+        }
+    }
+    for name in [
+        "project_export_svg",
+        "project_export_obj",
+        "project_export_dxf",
+        "project_import_svg",
+    ] {
+        let description = tools.iter().find(|tool| tool["name"] == name).unwrap()["description"]
+            .as_str()
+            .unwrap();
+        assert!(description.contains("holes"), "{description}");
+    }
+    let add = json!({"type":"add_hole","data":{"piece":2,"vertices":[[0.08,0.12],[0.08,0.24],[0.16,0.24],[0.16,0.12]]}});
+    let result = server.call(
+        "project_execute",
+        json!({"input":path,"output":path,"commands":[add]}),
+    );
+    assert_eq!(success(&result)["revision"], 2);
+    let mut expected = Editor::new(Project::from_json(original).unwrap()).unwrap();
+    expected
+        .execute(serde_json::from_value(add.clone()).unwrap())
+        .unwrap();
+    assert_eq!(Project::load(&path).unwrap(), expected.project);
+    assert_eq!(fs::read(recovery_path(&path)).unwrap(), original);
+    let inspection = server.call("project_inspect", json!({"path":path}));
+    assert_eq!(
+        success(&inspection)["project"],
+        native_project_json(&expected.project)
+    );
+    assert_eq!(
+        success(&inspection)["project"]["pieces"][0]["holes"],
+        json!([{"id":11,"boundary":[16,17,18,19]}])
+    );
+    let obj = directory.path("annulus.obj");
+    let svg = directory.path("annulus.svg");
+    for (tool, output) in [("project_export_obj", &obj), ("project_export_svg", &svg)] {
+        let result = server.call(tool, json!({"input":path,"output":output}));
+        assert_eq!(success(&result)["source_revision"], 2);
+    }
+    assert!(fs::read_to_string(&obj).unwrap().contains("g piece_2\n"));
+    let svg_text = fs::read_to_string(&svg).unwrap();
+    assert_eq!(svg_text.matches("<path ").count(), 1);
+    assert!(svg_text.contains("fill-rule=\"evenodd\""));
+    let primary = fs::read(&path).unwrap();
+    tool_error(&server.call(
+        "project_import_svg",
+        json!({"input":path,"output":path,"svg":svg}),
+    ));
+    assert_eq!(fs::read(&path).unwrap(), primary);
+    assert_eq!(fs::read(recovery_path(&path)).unwrap(), original);
+    let dxf = directory.path("retained.dxf");
+    fs::write(&dxf, b"DXF sentinel").unwrap();
+    fs::write(recovery_path(&dxf), b"DXF recovery sentinel").unwrap();
+    let result = server.call("project_export_dxf", json!({"input":path,"output":dxf}));
+    tool_error(&result);
+    assert!(
+        result["result"]["structuredContent"]["error"]
+            .as_str()
+            .unwrap()
+            .contains("DXF v1 export does not support holes")
+    );
+    assert_eq!(fs::read(&dxf).unwrap(), b"DXF sentinel");
+    assert_eq!(
+        fs::read(recovery_path(&dxf)).unwrap(),
+        b"DXF recovery sentinel"
+    );
+    let mut failures = Vec::new();
+    for (field, value) in [
+        ("piece", json!(0)),
+        ("piece", json!(-1)),
+        ("piece", json!(2.5)),
+        ("piece", json!("2")),
+        ("piece", Value::Null),
+        ("vertices", json!([])),
+        ("vertices", json!([[0.08, 0.12], [0.08, 0.24]])),
+        ("vertices", json!([[0.08], [0.08, 0.24], [0.16, 0.24]])),
+        (
+            "vertices",
+            json!([[0.08, 0.12, 0.], [0.08, 0.24], [0.16, 0.24]]),
+        ),
+        (
+            "vertices",
+            json!([[1000.1, 0.12], [0.08, 0.24], [0.16, 0.24]]),
+        ),
+        (
+            "vertices",
+            json!([["0.08", 0.12], [0.08, 0.24], [0.16, 0.24]]),
+        ),
+        ("vertices", json!(vec![[0.08, 0.12]; 4097])),
+        ("unknown", json!(true)),
+    ] {
+        let mut bad = add.clone();
+        bad["data"][field] = value;
+        failures.push(json!([bad]).to_string());
+    }
+    for field in ["piece", "vertices"] {
+        let mut bad = add.clone();
+        bad["data"].as_object_mut().unwrap().remove(field);
+        failures.push(json!([bad]).to_string());
+    }
+    for raw in [
+        r#"[{"type":"remove_hole","data":{}}]"#,
+        r#"[{"type":"remove_hole","data":{"hole":11,"hole":11}}]"#,
+        r#"[{"type":"remove_hole","data":{"hole":0}}]"#,
+        r#"[{"type":"remove_hole","data":{"hole":11,"unknown":true}}]"#,
+        r#"[{"type":"remove_hole","data":{"hole":18446744073709551616}}]"#,
+    ] {
+        failures.push(raw.to_owned());
+    }
+    let valid = json!([add.clone()]).to_string();
+    failures.push(valid.replace("\"piece\":2", "\"piece\":2,\"piece\":2"));
+    failures.push(valid.replace("\"piece\":2", "\"piece\":18446744073709551616"));
+    failures.push(valid.replace("\"vertices\":", "\"vertices\":[],\"vertices\":"));
+    failures.push(valid.replace("0.08", "1e309"));
+    failures.push(valid.replace(
+        "\"type\":\"add_hole\"",
+        "\"type\":\"add_hole\",\"type\":\"add_hole\"",
+    ));
+    failures.push(json!([add.clone(), {"type":"set_resolution","data":{"metres":0}}]).to_string());
+    failures.push(json!([{"type":"transaction","data":[add.clone()]}]).to_string());
+    failures.push(json!(vec![add.clone(); 1025]).to_string());
+    failures.push("[]".into());
+    failures.push(format!("[{}]", " ".repeat(1024 * 1024)));
+    for raw in failures {
+        let request = json!({"jsonrpc":"2.0","id":"raw-hole","method":"tools/call","params":{"name":"project_execute","arguments":{"input":refused,"output":refused,"commands":"HOLE_RAW_COMMANDS"}}}).to_string().replace("\"HOLE_RAW_COMMANDS\"", &raw);
+        server.send(&request);
+        let result = server.receive();
+        if request.len() > 1024 * 1024 {
+            assert_eq!(result["error"]["code"], -32600);
+        } else {
+            tool_error(&result);
+        }
+        assert_eq!(fs::read(&refused).unwrap(), original);
+        assert_eq!(fs::read(recovery_path(&refused)).unwrap(), backup);
+    }
+    let removed = server.call(
+        "project_execute",
+        json!({"input":path,"output":path,"commands":[{"type":"remove_hole","data":{"hole":11}}]}),
+    );
+    assert_eq!(success(&removed)["revision"], 3);
+    expected.execute(Command::RemoveHole { hole: 11 }).unwrap();
+    assert_eq!(Project::load(&path).unwrap(), expected.project);
+    assert_eq!(fs::read(recovery_path(&path)).unwrap(), primary);
     server.finish();
 }
